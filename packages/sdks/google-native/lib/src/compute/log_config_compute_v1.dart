@@ -8,11 +8,11 @@ import 'log_config_data_access_options_compute_v1.dart';
 /// This is deprecated and has no effect. Do not use.
 class LogConfigComputeV1 {
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<LogConfigCloudAuditOptionsComputeV1>? cloudAudit;
+  final pulumi.Input<LogConfigCloudAuditOptionsComputeV1?>? cloudAudit;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<LogConfigCounterOptionsComputeV1>? counter;
+  final pulumi.Input<LogConfigCounterOptionsComputeV1?>? counter;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<LogConfigDataAccessOptionsComputeV1>? dataAccess;
+  final pulumi.Input<LogConfigDataAccessOptionsComputeV1?>? dataAccess;
 
   /// Creates a new [LogConfigComputeV1].
   /// [cloudAudit] This is deprecated and has no effect. Do not use.

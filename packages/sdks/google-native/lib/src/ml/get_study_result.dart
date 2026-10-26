@@ -5,15 +5,15 @@ import 'google_cloud_ml_v1_study_config_response.dart';
 /// Result data returned by getStudy.
 class GetStudyResult {
   /// Time at which the study was created.
-  final String createTime;
+  final String? createTime;
   /// A human readable reason why the Study is inactive. This should be empty if a study is ACTIVE or COMPLETED.
-  final String inactiveReason;
+  final String? inactiveReason;
   /// The name of a study.
-  final String name;
+  final String? name;
   /// The detailed state of a study.
-  final String state;
+  final String? state;
   /// Configuration of the study.
-  final GoogleCloudMlV1StudyConfigResponse studyConfig;
+  final GoogleCloudMlV1StudyConfigResponse? studyConfig;
 
   /// Creates a new [GetStudyResult].
   /// [createTime] Time at which the study was created.
@@ -22,30 +22,30 @@ class GetStudyResult {
   /// [state] The detailed state of a study.
   /// [studyConfig] Configuration of the study.
   const GetStudyResult({
-    required this.createTime,
-    required this.inactiveReason,
-    required this.name,
-    required this.state,
-    required this.studyConfig,
+    this.createTime,
+    this.inactiveReason,
+    this.name,
+    this.state,
+    this.studyConfig,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'inactiveReason': inactiveReason,
-      'name': name,
-      'state': state,
-      'studyConfig': studyConfig.toMap(),
+      'createTime': ?createTime,
+      'inactiveReason': ?inactiveReason,
+      'name': ?name,
+      'state': ?state,
+      'studyConfig': ?studyConfig?.toMap(),
     };
   }
 
   factory GetStudyResult.fromMap(Map<String, dynamic> map) {
     return GetStudyResult(
-      createTime: map['createTime'] as String,
-      inactiveReason: map['inactiveReason'] as String,
-      name: map['name'] as String,
-      state: map['state'] as String,
-      studyConfig: GoogleCloudMlV1StudyConfigResponse.fromMap((map['studyConfig']! as Map).cast<String, dynamic>()),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      inactiveReason: (() { final guardedValue = map['inactiveReason']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      studyConfig: (() { final guardedValue = map['studyConfig']; if (guardedValue == null) return null; return GoogleCloudMlV1StudyConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

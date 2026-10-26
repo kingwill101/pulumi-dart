@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkservices_v1_service_binding_args_doc}
 class ServiceBindingArgs {
   /// Optional. A free-text description of the resource. Max length 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Set of label tags associated with the ServiceBinding resource.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
   final pulumi.Input<String> service;
   /// Required. Short name of the ServiceBinding resource to be created.

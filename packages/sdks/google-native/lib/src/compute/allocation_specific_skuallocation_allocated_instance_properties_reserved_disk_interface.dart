@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
-enum AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface {
+enum AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface implements pulumi.PulumiEnum<String> {
   nvdimm("NVDIMM"),
   nvme("NVME"),
   scsi("SCSI");
 
   const AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface(this.wireValue);
+  @override
   final String wireValue;
 
   static AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface fromValue(String value) {

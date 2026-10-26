@@ -54,13 +54,13 @@ class GoogleCloudRunV2ProbeResponse {
 
   factory GoogleCloudRunV2ProbeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2ProbeResponse(
-      failureThreshold: pulumi.Input.fromValue(map['failureThreshold'] as int),
+      failureThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['failureThreshold'])),
       grpc: pulumi.Input.fromValue(GoogleCloudRunV2GRPCActionResponse.fromMap((map['grpc']! as Map).cast<String, dynamic>())),
       httpGet: pulumi.Input.fromValue(GoogleCloudRunV2HTTPGetActionResponse.fromMap((map['httpGet']! as Map).cast<String, dynamic>())),
-      initialDelaySeconds: pulumi.Input.fromValue(map['initialDelaySeconds'] as int),
-      periodSeconds: pulumi.Input.fromValue(map['periodSeconds'] as int),
+      initialDelaySeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['initialDelaySeconds'])),
+      periodSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['periodSeconds'])),
       tcpSocket: pulumi.Input.fromValue(GoogleCloudRunV2TCPSocketActionResponse.fromMap((map['tcpSocket']! as Map).cast<String, dynamic>())),
-      timeoutSeconds: pulumi.Input.fromValue(map['timeoutSeconds'] as int),
+      timeoutSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeoutSeconds'])),
     );
   }
 }

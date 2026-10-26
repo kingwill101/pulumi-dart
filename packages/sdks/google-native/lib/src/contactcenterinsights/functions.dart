@@ -26,6 +26,17 @@ Future<GetAnalysisResult> getAnalysis(
   return GetAnalysisResult.fromMap(result);
 }
 
+pulumi.Output<GetAnalysisResult> getAnalysisOutput(
+  GetAnalysisArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:contactcenterinsights/v1:getAnalysis',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAnalysisResult.fromMap);
+}
+
 /// Gets a conversation.
 /// [args] Arguments passed to this invoke. {@macro pulumi_contactcenterinsights_v1_get_conversation_args_doc}
 /// [options] Invoke options controlling this call.
@@ -40,6 +51,17 @@ Future<GetConversationResult> getConversation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConversationResult.fromMap(result);
+}
+
+pulumi.Output<GetConversationResult> getConversationOutput(
+  GetConversationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:contactcenterinsights/v1:getConversation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConversationResult.fromMap);
 }
 
 /// Gets an issue model.
@@ -58,6 +80,17 @@ Future<GetIssueModelResult> getIssueModel(
   return GetIssueModelResult.fromMap(result);
 }
 
+pulumi.Output<GetIssueModelResult> getIssueModelOutput(
+  GetIssueModelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:contactcenterinsights/v1:getIssueModel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIssueModelResult.fromMap);
+}
+
 /// Gets a phrase matcher.
 /// [args] Arguments passed to this invoke. {@macro pulumi_contactcenterinsights_v1_get_phrase_matcher_args_doc}
 /// [options] Invoke options controlling this call.
@@ -74,6 +107,17 @@ Future<GetPhraseMatcherResult> getPhraseMatcher(
   return GetPhraseMatcherResult.fromMap(result);
 }
 
+pulumi.Output<GetPhraseMatcherResult> getPhraseMatcherOutput(
+  GetPhraseMatcherArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:contactcenterinsights/v1:getPhraseMatcher',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPhraseMatcherResult.fromMap);
+}
+
 /// Gets a view.
 /// [args] Arguments passed to this invoke. {@macro pulumi_contactcenterinsights_v1_get_view_args_doc}
 /// [options] Invoke options controlling this call.
@@ -88,4 +132,15 @@ Future<GetViewResult> getView(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetViewResult.fromMap(result);
+}
+
+pulumi.Output<GetViewResult> getViewOutput(
+  GetViewArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:contactcenterinsights/v1:getView',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetViewResult.fromMap);
 }

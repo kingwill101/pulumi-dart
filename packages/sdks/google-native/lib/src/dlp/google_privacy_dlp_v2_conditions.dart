@@ -6,7 +6,7 @@ import 'google_privacy_dlp_v2_condition.dart';
 /// A collection of conditions.
 class GooglePrivacyDlpV2Conditions {
   /// A collection of conditions.
-  final pulumi.Input<List<GooglePrivacyDlpV2Condition>>? conditions;
+  final pulumi.Input<List<GooglePrivacyDlpV2Condition>?>? conditions;
 
   /// Creates a new [GooglePrivacyDlpV2Conditions].
   /// [conditions] A collection of conditions.

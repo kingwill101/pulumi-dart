@@ -6,9 +6,9 @@ import 'processing_options_html_sanitization_jobs_v4.dart';
 /// Options for job processing.
 class ProcessingOptionsJobsV4 {
   /// If set to `true`, the service does not attempt to resolve a more precise address for the job.
-  final pulumi.Input<bool>? disableStreetAddressResolution;
+  final pulumi.Input<bool?>? disableStreetAddressResolution;
   /// Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation isn't disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
-  final pulumi.Input<ProcessingOptionsHtmlSanitizationJobsV4>? htmlSanitization;
+  final pulumi.Input<ProcessingOptionsHtmlSanitizationJobsV4?>? htmlSanitization;
 
   /// Creates a new [ProcessingOptionsJobsV4].
   /// [disableStreetAddressResolution] If set to `true`, the service does not attempt to resolve a more precise address for the job.

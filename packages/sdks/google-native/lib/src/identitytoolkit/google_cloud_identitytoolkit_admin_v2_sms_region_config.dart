@@ -7,9 +7,9 @@ import 'google_cloud_identitytoolkit_admin_v2_allowlist_only.dart';
 /// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
 class GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig {
   /// A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2AllowByDefault>? allowByDefault;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2AllowByDefault?>? allowByDefault;
   /// A policy of only allowing regions by explicitly adding them to an allowlist.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2AllowlistOnly>? allowlistOnly;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2AllowlistOnly?>? allowlistOnly;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig].
   /// [allowByDefault] A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.

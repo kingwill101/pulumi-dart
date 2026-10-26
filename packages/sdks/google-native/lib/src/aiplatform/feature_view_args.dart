@@ -11,22 +11,22 @@ import 'google_cloud_aiplatform_v1_feature_view_sync_config.dart';
 /// {@macro pulumi_aiplatform_v1_feature_view_args_doc}
 class FeatureViewArgs {
   /// Optional. Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
-  final pulumi.Input<GoogleCloudAiplatformV1FeatureViewBigQuerySource>? bigQuerySource;
+  final pulumi.Input<GoogleCloudAiplatformV1FeatureViewBigQuerySource?>? bigQuerySource;
   /// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   final pulumi.Input<String> featureOnlineStoreId;
   /// Optional. Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
-  final pulumi.Input<GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource>? featureRegistrySource;
+  final pulumi.Input<GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource?>? featureRegistrySource;
   /// Required. The ID to use for the FeatureView, which will become the final component of the FeatureView's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within a FeatureOnlineStore.
   final pulumi.Input<String> featureViewId;
   /// Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Immutable. If set to true, one on demand sync will be run immediately, regardless whether the FeatureView.sync_config is configured or not.
-  final pulumi.Input<bool>? runSyncImmediately;
+  final pulumi.Input<bool?>? runSyncImmediately;
   /// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
-  final pulumi.Input<GoogleCloudAiplatformV1FeatureViewSyncConfig>? syncConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1FeatureViewSyncConfig?>? syncConfig;
 
   /// Creates a new [FeatureViewArgs].
   /// [bigQuerySource] Optional. Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.

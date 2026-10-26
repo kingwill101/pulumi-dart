@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The type of the product. Default to Catalog.product_level_config.ingestion_product_type if unset.
-enum ProductTypeRetailV2alpha {
+enum ProductTypeRetailV2alpha implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   primary("PRIMARY"),
   variant("VARIANT"),
   collection("COLLECTION");
 
   const ProductTypeRetailV2alpha(this.wireValue);
+  @override
   final String wireValue;
 
   static ProductTypeRetailV2alpha fromValue(String value) {

@@ -6,7 +6,7 @@ import 'google_cloud_contentwarehouse_v1_user_info.dart';
 /// Meta information is used to improve the performance of the service.
 class GoogleCloudContentwarehouseV1RequestMetadata {
   /// Provides user unique identification and groups information.
-  final pulumi.Input<GoogleCloudContentwarehouseV1UserInfo>? userInfo;
+  final pulumi.Input<GoogleCloudContentwarehouseV1UserInfo?>? userInfo;
 
   /// Creates a new [GoogleCloudContentwarehouseV1RequestMetadata].
   /// [userInfo] Provides user unique identification and groups information.

@@ -6,7 +6,7 @@ import 'common_language_settings.dart';
 /// Settings for Ruby client libraries.
 class RubySettings {
   /// Some settings.
-  final pulumi.Input<CommonLanguageSettings>? common;
+  final pulumi.Input<CommonLanguageSettings?>? common;
 
   /// Creates a new [RubySettings].
   /// [common] Some settings.

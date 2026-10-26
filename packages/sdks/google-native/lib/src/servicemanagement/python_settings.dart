@@ -6,7 +6,7 @@ import 'common_language_settings.dart';
 /// Settings for Python client libraries.
 class PythonSettings {
   /// Some settings.
-  final pulumi.Input<CommonLanguageSettings>? common;
+  final pulumi.Input<CommonLanguageSettings?>? common;
 
   /// Creates a new [PythonSettings].
   /// [common] Some settings.

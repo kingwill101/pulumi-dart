@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackupManagedidentitiesV1beta1Args {
   final pulumi.Input<String> backupId;
   final pulumi.Input<String> domainId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetBackupManagedidentitiesV1beta1Args].
   /// [backupId] Required.

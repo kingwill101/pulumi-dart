@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-enum PubsubConfigState {
+enum PubsubConfigState implements pulumi.PulumiEnum<String> {
   stateUnspecified("STATE_UNSPECIFIED"),
   ok("OK"),
   subscriptionDeleted("SUBSCRIPTION_DELETED"),
@@ -7,6 +9,7 @@ enum PubsubConfigState {
   subscriptionMisconfigured("SUBSCRIPTION_MISCONFIGURED");
 
   const PubsubConfigState(this.wireValue);
+  @override
   final String wireValue;
 
   static PubsubConfigState fromValue(String value) {

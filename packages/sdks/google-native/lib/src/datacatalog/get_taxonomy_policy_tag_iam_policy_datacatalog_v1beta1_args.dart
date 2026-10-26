@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args {
   final pulumi.Input<String> location;
   final pulumi.Input<String> policyTagId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> taxonomyId;
 
   /// Creates a new [GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args].

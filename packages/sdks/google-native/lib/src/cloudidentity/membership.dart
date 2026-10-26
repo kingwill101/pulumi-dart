@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'entity_key_response.dart';
 import 'membership_args.dart';
+import 'membership_role_response.dart';
 
 /// Creates a `Membership`.
 /// Auto-naming is currently not supported for this resource.
@@ -15,7 +16,7 @@ class Membership extends pulumi.CustomResource {
   /// Immutable. The `EntityKey` of the member.
   late final pulumi.Output<EntityKeyResponse> preferredMemberKey;
   /// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
-  late final pulumi.Output<List<Map<String, dynamic>>> roles;
+  late final pulumi.Output<List<MembershipRoleResponse>> roles;
   /// The type of the membership.
   late final pulumi.Output<String> type;
   /// The time when the `Membership` was last updated.
@@ -33,14 +34,33 @@ class Membership extends pulumi.CustomResource {
           'google-native:cloudidentity/v1:Membership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['groupId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deliverySetting = registerOutput<String>('deliverySetting');
     groupId = registerOutput<String>('groupId');
     this.name = registerOutput<String>('name');
     preferredMemberKey = registerOutput<EntityKeyResponse>('preferredMemberKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntityKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    roles = registerOutput<List<Map<String, dynamic>>>('roles');
+    roles = registerOutput<List<MembershipRoleResponse>>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MembershipRoleResponse>(guardedValue, (value) => MembershipRoleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Membership] resource.
+  Membership.reference(String urn)
+    : super(
+        'google-native:cloudidentity/v1:Membership',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deliverySetting = registerOutput<String>('deliverySetting');
+    groupId = registerOutput<String>('groupId');
+    this.name = registerOutput<String>('name');
+    preferredMemberKey = registerOutput<EntityKeyResponse>('preferredMemberKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntityKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    roles = registerOutput<List<MembershipRoleResponse>>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MembershipRoleResponse>(guardedValue, (value) => MembershipRoleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');
   }

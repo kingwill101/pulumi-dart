@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A securely stored value.
 class SecretMetastoreV1alpha {
   /// The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
-  final pulumi.Input<String>? cloudSecret;
+  final pulumi.Input<String?>? cloudSecret;
 
   /// Creates a new [SecretMetastoreV1alpha].
   /// [cloudSecret] The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.

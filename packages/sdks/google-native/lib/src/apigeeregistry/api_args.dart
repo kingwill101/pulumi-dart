@@ -8,25 +8,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apigeeregistry_v1_api_args_doc}
 class ApiArgs {
   /// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Required. The ID to use for the API, which will become the final component of the API's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
   final pulumi.Input<String> apiId;
   /// A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g., "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
-  final pulumi.Input<String>? availability;
+  final pulumi.Input<String?>? availability;
   /// A detailed description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Human-meaningful name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Resource name.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
-  final pulumi.Input<String>? recommendedDeployment;
+  final pulumi.Input<String?>? recommendedDeployment;
   /// The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
-  final pulumi.Input<String>? recommendedVersion;
+  final pulumi.Input<String?>? recommendedVersion;
 
   /// Creates a new [ApiArgs].
   /// [annotations] Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.

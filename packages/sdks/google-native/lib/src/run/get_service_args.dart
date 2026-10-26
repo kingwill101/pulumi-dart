@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_run_v1_get_service_args_doc}
 class GetServiceArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> serviceId;
 
   /// Creates a new [GetServiceArgs].

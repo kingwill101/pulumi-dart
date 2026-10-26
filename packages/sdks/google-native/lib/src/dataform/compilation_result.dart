@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'code_compilation_config_response.dart';
+import 'compilation_error_response.dart';
 import 'compilation_result_args.dart';
 
 /// Creates a new CompilationResult in a given project and location.
@@ -10,7 +11,7 @@ class CompilationResult extends pulumi.CustomResource {
   /// Immutable. If set, fields of `code_compilation_config` override the default compilation settings that are specified in dataform.json.
   late final pulumi.Output<CodeCompilationConfigResponse> codeCompilationConfig;
   /// Errors encountered during project compilation.
-  late final pulumi.Output<List<Map<String, dynamic>>> compilationErrors;
+  late final pulumi.Output<List<CompilationErrorResponse>> compilationErrors;
   /// The version of `@dataform/core` that was used for compilation.
   late final pulumi.Output<String> dataformCoreVersion;
   /// Immutable. Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository. Examples: - a commit SHA: `12ade345` - a tag: `tag1` - a branch name: `branch1`
@@ -39,10 +40,32 @@ class CompilationResult extends pulumi.CustomResource {
           'google-native:dataform/v1beta1:CompilationResult',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'repositoryId']).merge(options),
         ) {
     codeCompilationConfig = registerOutput<CodeCompilationConfigResponse>('codeCompilationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CodeCompilationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    compilationErrors = registerOutput<List<Map<String, dynamic>>>('compilationErrors');
+    compilationErrors = registerOutput<List<CompilationErrorResponse>>('compilationErrors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CompilationErrorResponse>(guardedValue, (value) => CompilationErrorResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    dataformCoreVersion = registerOutput<String>('dataformCoreVersion');
+    gitCommitish = registerOutput<String>('gitCommitish');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    releaseConfig = registerOutput<String>('releaseConfig');
+    repositoryId = registerOutput<String>('repositoryId');
+    resolvedGitCommitSha = registerOutput<String>('resolvedGitCommitSha');
+    workspace = registerOutput<String>('workspace');
+  }
+
+  /// Creates a typed reference to an existing [CompilationResult] resource.
+  CompilationResult.reference(String urn)
+    : super(
+        'google-native:dataform/v1beta1:CompilationResult',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    codeCompilationConfig = registerOutput<CodeCompilationConfigResponse>('codeCompilationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CodeCompilationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    compilationErrors = registerOutput<List<CompilationErrorResponse>>('compilationErrors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CompilationErrorResponse>(guardedValue, (value) => CompilationErrorResponse.fromMap((value as Map).cast<String, dynamic>())); });
     dataformCoreVersion = registerOutput<String>('dataformCoreVersion');
     gitCommitish = registerOutput<String>('gitCommitish');
     location = registerOutput<String>('location');

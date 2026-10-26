@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
-enum KeyVersionSpecAlgorithm {
+enum KeyVersionSpecAlgorithm implements pulumi.PulumiEnum<String> {
   signHashAlgorithmUnspecified("SIGN_HASH_ALGORITHM_UNSPECIFIED"),
   rsaPss2048Sha256("RSA_PSS_2048_SHA256"),
   rsaPss3072Sha256("RSA_PSS_3072_SHA256"),
@@ -11,6 +13,7 @@ enum KeyVersionSpecAlgorithm {
   ecP384Sha384("EC_P384_SHA384");
 
   const KeyVersionSpecAlgorithm(this.wireValue);
+  @override
   final String wireValue;
 
   static KeyVersionSpecAlgorithm fromValue(String value) {

@@ -1,8 +1,11 @@
-enum SecurityPolicyAdvancedOptionsConfigLogLevelComputeBeta {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum SecurityPolicyAdvancedOptionsConfigLogLevelComputeBeta implements pulumi.PulumiEnum<String> {
   normal("NORMAL"),
   verbose("VERBOSE");
 
   const SecurityPolicyAdvancedOptionsConfigLogLevelComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityPolicyAdvancedOptionsConfigLogLevelComputeBeta fromValue(String value) {

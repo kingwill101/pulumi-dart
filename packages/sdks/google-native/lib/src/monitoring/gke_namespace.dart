@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (for example, k8s_container or k8s_pod).
 class GkeNamespace {
   /// The name of the parent cluster.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// The location of the parent cluster. This may be a zone or region.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of this namespace.
-  final pulumi.Input<String>? namespaceName;
+  final pulumi.Input<String?>? namespaceName;
 
   /// Creates a new [GkeNamespace].
   /// [clusterName] The name of the parent cluster.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A quantity based policy specifies that a certain number of the most recent successful backups should be retained.
 class QuantityBasedRetentionAlloydbV1alpha {
   /// The number of backups to retain.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
 
   /// Creates a new [QuantityBasedRetentionAlloydbV1alpha].
   /// [count] The number of backups to retain.
@@ -21,7 +21,7 @@ class QuantityBasedRetentionAlloydbV1alpha {
 
   factory QuantityBasedRetentionAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return QuantityBasedRetentionAlloydbV1alpha(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

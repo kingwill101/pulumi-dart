@@ -7,7 +7,7 @@ class GoogleCloudContentwarehouseV1EnumTypeOptions {
   /// List of possible enum values.
   final pulumi.Input<List<String>> possibleValues;
   /// Make sure the Enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-  final pulumi.Input<bool>? validationCheckDisabled;
+  final pulumi.Input<bool?>? validationCheckDisabled;
 
   /// Creates a new [GoogleCloudContentwarehouseV1EnumTypeOptions].
   /// [possibleValues] List of possible enum values.

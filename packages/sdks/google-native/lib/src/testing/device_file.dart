@@ -7,9 +7,9 @@ import 'regular_file.dart';
 /// A single device file description.
 class DeviceFile {
   /// A reference to an opaque binary blob file.
-  final pulumi.Input<ObbFile>? obbFile;
+  final pulumi.Input<ObbFile?>? obbFile;
   /// A reference to a regular file.
-  final pulumi.Input<RegularFile>? regularFile;
+  final pulumi.Input<RegularFile?>? regularFile;
 
   /// Creates a new [DeviceFile].
   /// [obbFile] A reference to an opaque binary blob file.

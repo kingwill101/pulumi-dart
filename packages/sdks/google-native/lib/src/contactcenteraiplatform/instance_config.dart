@@ -6,7 +6,7 @@ import 'instance_config_instance_size.dart';
 /// Message storing the instance configuration.
 class InstanceConfig {
   /// The instance size of this the instance configuration.
-  final pulumi.Input<InstanceConfigInstanceSize>? instanceSize;
+  final pulumi.Input<InstanceConfigInstanceSize?>? instanceSize;
 
   /// Creates a new [InstanceConfig].
   /// [instanceSize] The instance size of this the instance configuration.

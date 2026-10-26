@@ -28,8 +28,24 @@ class FolderPolicy extends pulumi.CustomResource {
           'google-native:orgpolicy/v2:FolderPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['folderId']).merge(options),
         ) {
+    alternate = registerOutput<GoogleCloudOrgpolicyV2AlternatePolicySpecResponse>('alternate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudOrgpolicyV2AlternatePolicySpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dryRunSpec = registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>('dryRunSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudOrgpolicyV2PolicySpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    folderId = registerOutput<String>('folderId');
+    this.name = registerOutput<String>('name');
+    spec = registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudOrgpolicyV2PolicySpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [FolderPolicy] resource.
+  FolderPolicy.reference(String urn)
+    : super(
+        'google-native:orgpolicy/v2:FolderPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     alternate = registerOutput<GoogleCloudOrgpolicyV2AlternatePolicySpecResponse>('alternate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudOrgpolicyV2AlternatePolicySpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dryRunSpec = registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>('dryRunSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudOrgpolicyV2PolicySpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     folderId = registerOutput<String>('folderId');

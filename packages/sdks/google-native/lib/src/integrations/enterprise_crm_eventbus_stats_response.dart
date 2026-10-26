@@ -43,10 +43,10 @@ class EnterpriseCrmEventbusStatsResponse {
   factory EnterpriseCrmEventbusStatsResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusStatsResponse(
       dimensions: pulumi.Input.fromValue(EnterpriseCrmEventbusStatsDimensionsResponse.fromMap((map['dimensions']! as Map).cast<String, dynamic>())),
-      durationInSeconds: pulumi.Input.fromValue(map['durationInSeconds'] as double),
-      errorRate: pulumi.Input.fromValue(map['errorRate'] as double),
-      qps: pulumi.Input.fromValue(map['qps'] as double),
-      warningRate: pulumi.Input.fromValue(map['warningRate'] as double),
+      durationInSeconds: pulumi.Input.fromValue((map['durationInSeconds'] as num).toDouble()),
+      errorRate: pulumi.Input.fromValue((map['errorRate'] as num).toDouble()),
+      qps: pulumi.Input.fromValue((map['qps'] as num).toDouble()),
+      warningRate: pulumi.Input.fromValue((map['warningRate'] as num).toDouble()),
     );
   }
 }

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_deploymentmanager_v2beta_get_deployment_deploymentmanager_v2beta_args_doc}
 class GetDeploymentDeploymentmanagerV2betaArgs {
   final pulumi.Input<String> deployment;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDeploymentDeploymentmanagerV2betaArgs].
   /// [deployment] Required.

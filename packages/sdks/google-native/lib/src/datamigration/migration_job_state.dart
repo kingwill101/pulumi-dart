@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The current migration job state.
-enum MigrationJobState {
+enum MigrationJobState implements pulumi.PulumiEnum<String> {
   stateUnspecified("STATE_UNSPECIFIED"),
   maintenance("MAINTENANCE"),
   draft("DRAFT"),
@@ -18,6 +20,7 @@ enum MigrationJobState {
   resuming("RESUMING");
 
   const MigrationJobState(this.wireValue);
+  @override
   final String wireValue;
 
   static MigrationJobState fromValue(String value) {

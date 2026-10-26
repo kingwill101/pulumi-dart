@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the spec to match integer values from parent parameter.
 class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec {
   /// Matches values of the parent parameter with type 'INTEGER'. All values must lie in `integer_value_spec` of parent parameter.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec].
   /// [values] Matches values of the parent parameter with type 'INTEGER'. All values must lie in `integer_value_spec` of parent parameter.

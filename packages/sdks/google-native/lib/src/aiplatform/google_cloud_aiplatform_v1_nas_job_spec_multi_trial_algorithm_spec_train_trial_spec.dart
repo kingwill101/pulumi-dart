@@ -32,8 +32,8 @@ class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec {
 
   factory GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec(
-      frequency: pulumi.Input.fromValue(map['frequency'] as int),
-      maxParallelTrialCount: pulumi.Input.fromValue(map['maxParallelTrialCount'] as int),
+      frequency: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['frequency'])),
+      maxParallelTrialCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxParallelTrialCount'])),
       trainTrialJobSpec: pulumi.Input.fromValue(GoogleCloudAiplatformV1CustomJobSpec.fromMap((map['trainTrialJobSpec']! as Map).cast<String, dynamic>())),
     );
   }

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
-enum S3CompatibleMetadataRequestModel {
+enum S3CompatibleMetadataRequestModel implements pulumi.PulumiEnum<String> {
   requestModelUnspecified("REQUEST_MODEL_UNSPECIFIED"),
   requestModelVirtualHostedStyle("REQUEST_MODEL_VIRTUAL_HOSTED_STYLE"),
   requestModelPathStyle("REQUEST_MODEL_PATH_STYLE");
 
   const S3CompatibleMetadataRequestModel(this.wireValue);
+  @override
   final String wireValue;
 
   static S3CompatibleMetadataRequestModel fromValue(String value) {

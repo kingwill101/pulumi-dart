@@ -10,13 +10,13 @@ import 'weekly_schedule_osconfig_v1beta.dart';
 /// Sets the time for recurring patch deployments.
 class RecurringScheduleOsconfigV1beta {
   /// Optional. The end time at which a recurring patch deployment schedule is no longer active.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The frequency unit of this recurring schedule.
   final pulumi.Input<RecurringScheduleFrequencyOsconfigV1beta> frequency;
   /// Schedule with monthly executions.
   final pulumi.Input<MonthlyScheduleOsconfigV1beta> monthly;
   /// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Time of the day to run a recurring deployment.
   final pulumi.Input<TimeOfDayOsconfigV1beta> timeOfDay;
   /// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.

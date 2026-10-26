@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_retail_v2_model_model_features_config_response.dart';
+import 'google_cloud_retail_v2_model_serving_config_list_response.dart';
 import 'model_args.dart';
 
 /// Creates a new model.
@@ -28,7 +29,7 @@ class Model extends pulumi.CustomResource {
   late final pulumi.Output<String> periodicTuningState;
   late final pulumi.Output<String> project;
   /// The list of valid serving configs associated with the PageOptimizationConfig.
-  late final pulumi.Output<List<Map<String, dynamic>>> servingConfigLists;
+  late final pulumi.Output<List<GoogleCloudRetailV2ModelServingConfigListResponse>> servingConfigLists;
   /// The serving state of the model: `ACTIVE`, `NOT_ACTIVE`.
   late final pulumi.Output<String> servingState;
   /// Optional. The training state that the model is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running the service is frequency of training - this can be used to determine when to train model in order to control cost. If not specified: the default value for `CreateModel` method is `TRAINING`. The default value for `UpdateModel` method is to keep the state the same as before.
@@ -52,7 +53,7 @@ class Model extends pulumi.CustomResource {
           'google-native:retail/v2:Model',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['catalogId', 'location', 'project']).merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     createTime = registerOutput<String>('createTime');
@@ -67,7 +68,37 @@ class Model extends pulumi.CustomResource {
     optimizationObjective = registerOutput<String>('optimizationObjective');
     periodicTuningState = registerOutput<String>('periodicTuningState');
     project = registerOutput<String>('project');
-    servingConfigLists = registerOutput<List<Map<String, dynamic>>>('servingConfigLists');
+    servingConfigLists = registerOutput<List<GoogleCloudRetailV2ModelServingConfigListResponse>>('servingConfigLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRetailV2ModelServingConfigListResponse>(guardedValue, (value) => GoogleCloudRetailV2ModelServingConfigListResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    servingState = registerOutput<String>('servingState');
+    trainingState = registerOutput<String>('trainingState');
+    tuningOperation = registerOutput<String>('tuningOperation');
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Model] resource.
+  Model.reference(String urn)
+    : super(
+        'google-native:retail/v2:Model',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    catalogId = registerOutput<String>('catalogId');
+    createTime = registerOutput<String>('createTime');
+    dataState = registerOutput<String>('dataState');
+    displayName = registerOutput<String>('displayName');
+    dryRun = registerOutput<bool?>('dryRun');
+    filteringOption = registerOutput<String>('filteringOption');
+    lastTuneTime = registerOutput<String>('lastTuneTime');
+    location = registerOutput<String>('location');
+    modelFeaturesConfig = registerOutput<GoogleCloudRetailV2ModelModelFeaturesConfigResponse>('modelFeaturesConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRetailV2ModelModelFeaturesConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    optimizationObjective = registerOutput<String>('optimizationObjective');
+    periodicTuningState = registerOutput<String>('periodicTuningState');
+    project = registerOutput<String>('project');
+    servingConfigLists = registerOutput<List<GoogleCloudRetailV2ModelServingConfigListResponse>>('servingConfigLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRetailV2ModelServingConfigListResponse>(guardedValue, (value) => GoogleCloudRetailV2ModelServingConfigListResponse.fromMap((value as Map).cast<String, dynamic>())); });
     servingState = registerOutput<String>('servingState');
     trainingState = registerOutput<String>('trainingState');
     tuningOperation = registerOutput<String>('tuningOperation');

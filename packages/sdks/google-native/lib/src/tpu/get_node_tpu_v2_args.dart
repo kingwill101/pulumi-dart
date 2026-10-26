@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNodeTpuV2Args {
   final pulumi.Input<String> location;
   final pulumi.Input<String> nodeId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetNodeTpuV2Args].
   /// [location] Required.

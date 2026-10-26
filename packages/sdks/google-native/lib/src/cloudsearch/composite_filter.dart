@@ -6,9 +6,9 @@ import 'filter.dart';
 
 class CompositeFilter {
   /// The logic operator of the sub filter.
-  final pulumi.Input<CompositeFilterLogicOperator>? logicOperator;
+  final pulumi.Input<CompositeFilterLogicOperator?>? logicOperator;
   /// Sub filters.
-  final pulumi.Input<List<Filter>>? subFilters;
+  final pulumi.Input<List<Filter>?>? subFilters;
 
   /// Creates a new [CompositeFilter].
   /// [logicOperator] The logic operator of the sub filter.

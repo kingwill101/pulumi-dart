@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A single target dataset to which all data will be streamed.
 class SingleTargetDataset {
   /// The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
-  final pulumi.Input<String>? datasetId;
+  final pulumi.Input<String?>? datasetId;
 
   /// Creates a new [SingleTargetDataset].
   /// [datasetId] The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.

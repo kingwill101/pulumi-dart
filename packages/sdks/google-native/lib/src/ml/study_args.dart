@@ -8,8 +8,8 @@ import 'google_cloud_ml_v1_study_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_ml_v1_study_args_doc}
 class StudyArgs {
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Configuration of the study.
   final pulumi.Input<GoogleCloudMlV1StudyConfig> studyConfig;
   /// Required. The ID to use for the study, which will become the final component of the study's resource name.

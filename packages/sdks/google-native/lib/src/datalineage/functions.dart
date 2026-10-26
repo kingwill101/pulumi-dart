@@ -22,6 +22,17 @@ Future<GetLineageEventResult> getLineageEvent(
   return GetLineageEventResult.fromMap(result);
 }
 
+pulumi.Output<GetLineageEventResult> getLineageEventOutput(
+  GetLineageEventArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datalineage/v1:getLineageEvent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLineageEventResult.fromMap);
+}
+
 /// Gets the details of the specified process.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datalineage_v1_get_process_args_doc}
 /// [options] Invoke options controlling this call.
@@ -38,6 +49,17 @@ Future<GetProcessResult> getProcess(
   return GetProcessResult.fromMap(result);
 }
 
+pulumi.Output<GetProcessResult> getProcessOutput(
+  GetProcessArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datalineage/v1:getProcess',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProcessResult.fromMap);
+}
+
 /// Gets the details of the specified run.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datalineage_v1_get_run_args_doc}
 /// [options] Invoke options controlling this call.
@@ -52,4 +74,15 @@ Future<GetRunResult> getRun(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRunResult.fromMap(result);
+}
+
+pulumi.Output<GetRunResult> getRunOutput(
+  GetRunArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datalineage/v1:getRun',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRunResult.fromMap);
 }

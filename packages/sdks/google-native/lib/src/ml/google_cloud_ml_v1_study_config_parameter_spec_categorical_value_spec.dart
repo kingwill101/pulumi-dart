@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
   /// Must be specified if type is `CATEGORICAL`. The list of possible categories.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec].
   /// [values] Must be specified if type is `CATEGORICAL`. The list of possible categories.

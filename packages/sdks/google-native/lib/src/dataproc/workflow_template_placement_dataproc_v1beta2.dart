@@ -7,9 +7,9 @@ import 'managed_cluster_dataproc_v1beta2.dart';
 /// Specifies workflow execution target.Either managed_cluster or cluster_selector is required.
 class WorkflowTemplatePlacementDataprocV1beta2 {
   /// Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted.
-  final pulumi.Input<ClusterSelectorDataprocV1beta2>? clusterSelector;
+  final pulumi.Input<ClusterSelectorDataprocV1beta2?>? clusterSelector;
   /// Optional. A cluster that is managed by the workflow.
-  final pulumi.Input<ManagedClusterDataprocV1beta2>? managedCluster;
+  final pulumi.Input<ManagedClusterDataprocV1beta2?>? managedCluster;
 
   /// Creates a new [WorkflowTemplatePlacementDataprocV1beta2].
   /// [clusterSelector] Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted.

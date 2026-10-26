@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_workstations_v1beta_workstation_workstations_v1beta_args_doc}
 class WorkstationWorkstationsV1betaArgs {
   /// Optional. Client-specified annotations.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Optional. Human-readable name for this workstation.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. Environment variables passed to the workstation container's entrypoint.
-  final pulumi.Input<Map<String, String>>? env;
+  final pulumi.Input<Map<String, String>?>? env;
   /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Identifier. Full name of this workstation.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> workstationClusterId;
   final pulumi.Input<String> workstationConfigId;
   /// Required. ID to use for the workstation.

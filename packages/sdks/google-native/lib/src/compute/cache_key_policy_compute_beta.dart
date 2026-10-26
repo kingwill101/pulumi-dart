@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Message containing what to include in the cache key for a request for Cloud CDN.
 class CacheKeyPolicyComputeBeta {
   /// If true, requests to different hosts will be cached separately.
-  final pulumi.Input<bool>? includeHost;
+  final pulumi.Input<bool?>? includeHost;
   /// Allows HTTP request headers (by name) to be used in the cache key.
-  final pulumi.Input<List<String>>? includeHttpHeaders;
+  final pulumi.Input<List<String>?>? includeHttpHeaders;
   /// Allows HTTP cookies (by name) to be used in the cache key. The name=value pair will be used in the cache key Cloud CDN generates.
-  final pulumi.Input<List<String>>? includeNamedCookies;
+  final pulumi.Input<List<String>?>? includeNamedCookies;
   /// If true, http and https requests will be cached separately.
-  final pulumi.Input<bool>? includeProtocol;
+  final pulumi.Input<bool?>? includeProtocol;
   /// If true, include query string parameters in the cache key according to query_string_whitelist and query_string_blacklist. If neither is set, the entire query string will be included. If false, the query string will be excluded from the cache key entirely.
-  final pulumi.Input<bool>? includeQueryString;
+  final pulumi.Input<bool?>? includeQueryString;
   /// Names of query string parameters to exclude in cache keys. All other parameters will be included. Either specify query_string_whitelist or query_string_blacklist, not both. '&' and '=' will be percent encoded and not treated as delimiters.
-  final pulumi.Input<List<String>>? queryStringBlacklist;
+  final pulumi.Input<List<String>?>? queryStringBlacklist;
   /// Names of query string parameters to include in cache keys. All other parameters will be excluded. Either specify query_string_whitelist or query_string_blacklist, not both. '&' and '=' will be percent encoded and not treated as delimiters.
-  final pulumi.Input<List<String>>? queryStringWhitelist;
+  final pulumi.Input<List<String>?>? queryStringWhitelist;
 
   /// Creates a new [CacheKeyPolicyComputeBeta].
   /// [includeHost] If true, requests to different hosts will be cached separately.

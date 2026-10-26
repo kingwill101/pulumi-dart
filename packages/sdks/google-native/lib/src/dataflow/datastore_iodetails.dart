@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata for a Datastore connector used by the job.
 class DatastoreIODetails {
   /// Namespace used in the connection.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// ProjectId accessed in the connection.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [DatastoreIODetails].
   /// [namespace] Namespace used in the connection.

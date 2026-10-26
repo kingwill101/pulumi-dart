@@ -18,8 +18,20 @@ class TopicPubsubV1beta1a extends pulumi.CustomResource {
           'google-native:pubsub/v1beta1a:Topic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [TopicPubsubV1beta1a] resource.
+  TopicPubsubV1beta1a.reference(String urn)
+    : super(
+        'google-native:pubsub/v1beta1a:Topic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
   }
 }

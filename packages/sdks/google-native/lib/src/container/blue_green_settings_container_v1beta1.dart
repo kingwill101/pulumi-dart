@@ -6,9 +6,9 @@ import 'standard_rollout_policy_container_v1beta1.dart';
 /// Settings for blue-green upgrade.
 class BlueGreenSettingsContainerV1beta1 {
   /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
-  final pulumi.Input<String>? nodePoolSoakDuration;
+  final pulumi.Input<String?>? nodePoolSoakDuration;
   /// Standard policy for the blue-green upgrade.
-  final pulumi.Input<StandardRolloutPolicyContainerV1beta1>? standardRolloutPolicy;
+  final pulumi.Input<StandardRolloutPolicyContainerV1beta1?>? standardRolloutPolicy;
 
   /// Creates a new [BlueGreenSettingsContainerV1beta1].
   /// [nodePoolSoakDuration] Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.

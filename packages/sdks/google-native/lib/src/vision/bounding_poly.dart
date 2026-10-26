@@ -7,9 +7,9 @@ import 'vertex.dart';
 /// A bounding polygon for the detected image annotation.
 class BoundingPoly {
   /// The bounding polygon normalized vertices.
-  final pulumi.Input<List<NormalizedVertex>>? normalizedVertices;
+  final pulumi.Input<List<NormalizedVertex>?>? normalizedVertices;
   /// The bounding polygon vertices.
-  final pulumi.Input<List<Vertex>>? vertices;
+  final pulumi.Input<List<Vertex>?>? vertices;
 
   /// Creates a new [BoundingPoly].
   /// [normalizedVertices] The bounding polygon normalized vertices.

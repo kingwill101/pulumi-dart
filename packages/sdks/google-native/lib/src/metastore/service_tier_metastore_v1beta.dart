@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The tier of the service.
-enum ServiceTierMetastoreV1beta {
+enum ServiceTierMetastoreV1beta implements pulumi.PulumiEnum<String> {
   tierUnspecified("TIER_UNSPECIFIED"),
   developer("DEVELOPER"),
   enterprise("ENTERPRISE");
 
   const ServiceTierMetastoreV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceTierMetastoreV1beta fromValue(String value) {

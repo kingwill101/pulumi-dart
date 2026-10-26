@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances. Only applicable for instances in App Engine flexible environment.
 class HealthCheckAppengineV1beta {
   /// Interval between health checks.
-  final pulumi.Input<String>? checkInterval;
+  final pulumi.Input<String?>? checkInterval;
   /// Whether to explicitly disable health checks for this instance.
-  final pulumi.Input<bool>? disableHealthCheck;
+  final pulumi.Input<bool?>? disableHealthCheck;
   /// Number of consecutive successful health checks required before receiving traffic.
-  final pulumi.Input<int>? healthyThreshold;
+  final pulumi.Input<int?>? healthyThreshold;
   /// Host header to send when performing an HTTP health check. Example: "myapp.appspot.com"
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// Number of consecutive failed health checks required before an instance is restarted.
-  final pulumi.Input<int>? restartThreshold;
+  final pulumi.Input<int?>? restartThreshold;
   /// Time before the health check is considered failed.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
   /// Number of consecutive failed health checks required before removing traffic.
-  final pulumi.Input<int>? unhealthyThreshold;
+  final pulumi.Input<int?>? unhealthyThreshold;
 
   /// Creates a new [HealthCheckAppengineV1beta].
   /// [checkInterval] Interval between health checks.
@@ -53,11 +53,11 @@ class HealthCheckAppengineV1beta {
     return HealthCheckAppengineV1beta(
       checkInterval: (() { final guardedValue = map['checkInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disableHealthCheck: (() { final guardedValue = map['disableHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      healthyThreshold: (() { final guardedValue = map['healthyThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      healthyThreshold: (() { final guardedValue = map['healthyThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      restartThreshold: (() { final guardedValue = map['restartThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      restartThreshold: (() { final guardedValue = map['restartThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      unhealthyThreshold: (() { final guardedValue = map['unhealthyThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      unhealthyThreshold: (() { final guardedValue = map['unhealthyThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

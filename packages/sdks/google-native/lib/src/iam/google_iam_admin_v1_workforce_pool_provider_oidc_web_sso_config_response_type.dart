@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The Response Type to request for in the OIDC Authorization Request for web sign-in. The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
-enum GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType {
+enum GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType implements pulumi.PulumiEnum<String> {
   responseTypeUnspecified("RESPONSE_TYPE_UNSPECIFIED"),
   code("CODE"),
   idToken("ID_TOKEN");
 
   const GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType fromValue(String value) {

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defined in CVSS v3, CVSS v2
-enum CVSSConfidentialityImpactContaineranalysisV1alpha1 {
+enum CVSSConfidentialityImpactContaineranalysisV1alpha1 implements pulumi.PulumiEnum<String> {
   impactUnspecified("IMPACT_UNSPECIFIED"),
   impactHigh("IMPACT_HIGH"),
   impactLow("IMPACT_LOW"),
@@ -8,6 +10,7 @@ enum CVSSConfidentialityImpactContaineranalysisV1alpha1 {
   impactComplete("IMPACT_COMPLETE");
 
   const CVSSConfidentialityImpactContaineranalysisV1alpha1(this.wireValue);
+  @override
   final String wireValue;
 
   static CVSSConfidentialityImpactContaineranalysisV1alpha1 fromValue(String value) {

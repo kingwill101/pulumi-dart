@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a part of a training phrase.
 class GoogleCloudDialogflowV2IntentTrainingPhrasePart {
   /// Optional. The parameter name for the value extracted from the annotated part of the example. This field is required for annotated parts of the training phrase.
-  final pulumi.Input<String>? alias;
+  final pulumi.Input<String?>? alias;
   /// Optional. The entity type name prefixed with `@`. This field is required for annotated parts of the training phrase.
-  final pulumi.Input<String>? entityType;
+  final pulumi.Input<String?>? entityType;
   /// The text for this part.
   final pulumi.Input<String> text;
   /// Optional. Indicates whether the text was manually annotated. This field is set to true when the Dialogflow Console is used to manually annotate the part. When creating an annotated part with the API, you must set this to true.
-  final pulumi.Input<bool>? userDefined;
+  final pulumi.Input<bool?>? userDefined;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentTrainingPhrasePart].
   /// [alias] Optional. The parameter name for the value extracted from the annotated part of the example. This field is required for annotated parts of the training phrase.

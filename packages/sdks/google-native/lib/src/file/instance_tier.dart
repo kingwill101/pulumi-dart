@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The service tier of the instance.
-enum InstanceTier {
+enum InstanceTier implements pulumi.PulumiEnum<String> {
   tierUnspecified("TIER_UNSPECIFIED"),
   standard("STANDARD"),
   premium("PREMIUM"),
@@ -11,6 +13,7 @@ enum InstanceTier {
   regional("REGIONAL");
 
   const InstanceTier(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceTier fromValue(String value) {

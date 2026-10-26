@@ -1,4 +1,6 @@
-enum VersionInboundServicesItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum VersionInboundServicesItem implements pulumi.PulumiEnum<String> {
   inboundServiceUnspecified("INBOUND_SERVICE_UNSPECIFIED"),
   inboundServiceMail("INBOUND_SERVICE_MAIL"),
   inboundServiceMailBounce("INBOUND_SERVICE_MAIL_BOUNCE"),
@@ -10,6 +12,7 @@ enum VersionInboundServicesItem {
   inboundServiceWarmup("INBOUND_SERVICE_WARMUP");
 
   const VersionInboundServicesItem(this.wireValue);
+  @override
   final String wireValue;
 
   static VersionInboundServicesItem fromValue(String value) {

@@ -110,7 +110,7 @@ class BuildStepResponse {
       dir: pulumi.Input.fromValue(map['dir'] as String),
       entrypoint: pulumi.Input.fromValue(map['entrypoint'] as String),
       env: pulumi.Input.fromValue((map['env'] as List).cast<String>()),
-      exitCode: pulumi.Input.fromValue(map['exitCode'] as int),
+      exitCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['exitCode'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       pullTiming: pulumi.Input.fromValue(TimeSpanResponse.fromMap((map['pullTiming']! as Map).cast<String, dynamic>())),
       script: pulumi.Input.fromValue(map['script'] as String),

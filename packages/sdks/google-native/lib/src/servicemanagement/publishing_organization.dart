@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// For whom the client library is being published.
-enum PublishingOrganization {
+enum PublishingOrganization implements pulumi.PulumiEnum<String> {
   clientLibraryOrganizationUnspecified("CLIENT_LIBRARY_ORGANIZATION_UNSPECIFIED"),
   cloud("CLOUD"),
   ads("ADS"),
@@ -10,6 +12,7 @@ enum PublishingOrganization {
   generativeAi("GENERATIVE_AI");
 
   const PublishingOrganization(this.wireValue);
+  @override
   final String wireValue;
 
   static PublishingOrganization fromValue(String value) {

@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'build_artifact_response.dart';
 import 'delivery_pipeline_response.dart';
 import 'release_args.dart';
 import 'release_condition_response.dart';
+import 'target_response.dart';
 
 /// Creates a new Release in a given project and location.
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
@@ -12,7 +14,7 @@ class Release extends pulumi.CustomResource {
   /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
   late final pulumi.Output<Map<String, String>> annotations;
   /// List of artifacts to pass through to Skaffold command.
-  late final pulumi.Output<List<Map<String, dynamic>>> buildArtifacts;
+  late final pulumi.Output<List<BuildArtifactResponse>> buildArtifacts;
   /// Information around the state of the Release.
   late final pulumi.Output<ReleaseConditionResponse> condition;
   /// Time at which the `Release` was created.
@@ -53,7 +55,7 @@ class Release extends pulumi.CustomResource {
   /// Map from target ID to details of the render operation for that target.
   late final pulumi.Output<Map<String, String>> targetRenders;
   /// Snapshot of the targets taken at release creation time.
-  late final pulumi.Output<List<Map<String, dynamic>>> targetSnapshots;
+  late final pulumi.Output<List<TargetResponse>> targetSnapshots;
   /// Unique identifier of the `Release`.
   late final pulumi.Output<String> uid;
 
@@ -69,19 +71,19 @@ class Release extends pulumi.CustomResource {
           'google-native:clouddeploy/v1:Release',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['deliveryPipelineId', 'location', 'project', 'releaseId']).merge(options),
         ) {
     abandoned = registerOutput<bool>('abandoned');
-    annotations = registerOutput<Map<String, String>>('annotations');
-    buildArtifacts = registerOutput<List<Map<String, dynamic>>>('buildArtifacts');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    buildArtifacts = registerOutput<List<BuildArtifactResponse>>('buildArtifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BuildArtifactResponse>(guardedValue, (value) => BuildArtifactResponse.fromMap((value as Map).cast<String, dynamic>())); });
     condition = registerOutput<ReleaseConditionResponse>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReleaseConditionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deliveryPipelineId = registerOutput<String>('deliveryPipelineId');
     deliveryPipelineSnapshot = registerOutput<DeliveryPipelineResponse>('deliveryPipelineSnapshot', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeliveryPipelineResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    deployParameters = registerOutput<Map<String, String>>('deployParameters');
+    deployParameters = registerOutput<Map<String, String>>('deployParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -93,9 +95,46 @@ class Release extends pulumi.CustomResource {
     skaffoldConfigPath = registerOutput<String>('skaffoldConfigPath');
     skaffoldConfigUri = registerOutput<String>('skaffoldConfigUri');
     skaffoldVersion = registerOutput<String>('skaffoldVersion');
-    targetArtifacts = registerOutput<Map<String, String>>('targetArtifacts');
-    targetRenders = registerOutput<Map<String, String>>('targetRenders');
-    targetSnapshots = registerOutput<List<Map<String, dynamic>>>('targetSnapshots');
+    targetArtifacts = registerOutput<Map<String, String>>('targetArtifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetRenders = registerOutput<Map<String, String>>('targetRenders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetSnapshots = registerOutput<List<TargetResponse>>('targetSnapshots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetResponse>(guardedValue, (value) => TargetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    uid = registerOutput<String>('uid');
+  }
+
+  /// Creates a typed reference to an existing [Release] resource.
+  Release.reference(String urn)
+    : super(
+        'google-native:clouddeploy/v1:Release',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    abandoned = registerOutput<bool>('abandoned');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    buildArtifacts = registerOutput<List<BuildArtifactResponse>>('buildArtifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BuildArtifactResponse>(guardedValue, (value) => BuildArtifactResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    condition = registerOutput<ReleaseConditionResponse>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReleaseConditionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deliveryPipelineId = registerOutput<String>('deliveryPipelineId');
+    deliveryPipelineSnapshot = registerOutput<DeliveryPipelineResponse>('deliveryPipelineSnapshot', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeliveryPipelineResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deployParameters = registerOutput<Map<String, String>>('deployParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    releaseId = registerOutput<String>('releaseId');
+    renderEndTime = registerOutput<String>('renderEndTime');
+    renderStartTime = registerOutput<String>('renderStartTime');
+    renderState = registerOutput<String>('renderState');
+    requestId = registerOutput<String?>('requestId');
+    skaffoldConfigPath = registerOutput<String>('skaffoldConfigPath');
+    skaffoldConfigUri = registerOutput<String>('skaffoldConfigUri');
+    skaffoldVersion = registerOutput<String>('skaffoldVersion');
+    targetArtifacts = registerOutput<Map<String, String>>('targetArtifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetRenders = registerOutput<Map<String, String>>('targetRenders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetSnapshots = registerOutput<List<TargetResponse>>('targetSnapshots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetResponse>(guardedValue, (value) => TargetResponse.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
   }
 }

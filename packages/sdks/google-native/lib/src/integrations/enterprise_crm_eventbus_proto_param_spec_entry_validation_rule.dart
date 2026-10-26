@@ -6,9 +6,9 @@ import 'enterprise_crm_eventbus_proto_param_spec_entry_validation_rule_int_range
 import 'enterprise_crm_eventbus_proto_param_spec_entry_validation_rule_string_regex.dart';
 
 class EnterpriseCrmEventbusProtoParamSpecEntryValidationRule {
-  final pulumi.Input<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange>? doubleRange;
-  final pulumi.Input<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange>? intRange;
-  final pulumi.Input<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex>? stringRegex;
+  final pulumi.Input<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange?>? doubleRange;
+  final pulumi.Input<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange?>? intRange;
+  final pulumi.Input<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex?>? stringRegex;
 
   /// Creates a new [EnterpriseCrmEventbusProtoParamSpecEntryValidationRule].
   /// [doubleRange] Optional.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Time window specified for hourly operations.
 class ResourcePolicyHourlyCycle {
   /// Defines a schedule with units measured in hours. The value determines how many hours pass between the start of each cycle.
-  final pulumi.Input<int>? hoursInCycle;
+  final pulumi.Input<int?>? hoursInCycle;
   /// Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [ResourcePolicyHourlyCycle].
   /// [hoursInCycle] Defines a schedule with units measured in hours. The value determines how many hours pass between the start of each cycle.
@@ -26,7 +26,7 @@ class ResourcePolicyHourlyCycle {
 
   factory ResourcePolicyHourlyCycle.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyHourlyCycle(
-      hoursInCycle: (() { final guardedValue = map['hoursInCycle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      hoursInCycle: (() { final guardedValue = map['hoursInCycle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

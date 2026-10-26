@@ -10,7 +10,7 @@ class GetCutoverJobVmmigrationV1alpha1Args {
   final pulumi.Input<String> cutoverJobId;
   final pulumi.Input<String> location;
   final pulumi.Input<String> migratingVmId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> sourceId;
 
   /// Creates a new [GetCutoverJobVmmigrationV1alpha1Args].

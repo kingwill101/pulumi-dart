@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Identifies an account and how to log into it.
 class Account {
   /// An automatic google login account.
-  final pulumi.Input<Map<String, dynamic>>? googleAuto;
+  final pulumi.Input<Map<String, dynamic>?>? googleAuto;
 
   /// Creates a new [Account].
   /// [googleAuto] An automatic google login account.

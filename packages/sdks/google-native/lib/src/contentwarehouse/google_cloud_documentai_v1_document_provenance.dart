@@ -7,13 +7,13 @@ import 'google_cloud_documentai_v1_document_provenance_type.dart';
 /// Structure to identify provenance relationships between annotations in different revisions.
 class GoogleCloudDocumentaiV1DocumentProvenance {
   /// The Id of this operation. Needs to be unique within the scope of the revision.
-  final pulumi.Input<int>? id;
+  final pulumi.Input<int?>? id;
   /// References to the original elements that are replaced.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentProvenanceParent>>? parents;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentProvenanceParent>?>? parents;
   /// The index of the revision that produced this element.
-  final pulumi.Input<int>? revision;
+  final pulumi.Input<int?>? revision;
   /// The type of provenance operation.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentProvenanceType>? type;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentProvenanceType?>? type;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentProvenance].
   /// [id] The Id of this operation. Needs to be unique within the scope of the revision.
@@ -38,9 +38,9 @@ class GoogleCloudDocumentaiV1DocumentProvenance {
 
   factory GoogleCloudDocumentaiV1DocumentProvenance.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentProvenance(
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       parents: (() { final guardedValue = map['parents']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentProvenanceParent>(guardedValue, (value) => GoogleCloudDocumentaiV1DocumentProvenanceParent.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDocumentaiV1DocumentProvenanceType.fromValue(guardedValue as String)); })(),
     );
   }

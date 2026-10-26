@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Determines how messages that fail to parse are handled.
-enum SchemaPackageSchematizedParsingTypeHealthcareV1beta1 {
+enum SchemaPackageSchematizedParsingTypeHealthcareV1beta1 implements pulumi.PulumiEnum<String> {
   schematizedParsingTypeUnspecified("SCHEMATIZED_PARSING_TYPE_UNSPECIFIED"),
   softFail("SOFT_FAIL"),
   hardFail("HARD_FAIL");
 
   const SchemaPackageSchematizedParsingTypeHealthcareV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static SchemaPackageSchematizedParsingTypeHealthcareV1beta1 fromValue(String value) {

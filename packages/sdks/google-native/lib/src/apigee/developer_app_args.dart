@@ -9,26 +9,26 @@ import 'google_cloud_apigee_v1_attribute.dart';
 /// {@macro pulumi_apigee_v1_developer_app_args_doc}
 class DeveloperAppArgs {
   /// List of API products associated with the developer app.
-  final pulumi.Input<List<String>>? apiProducts;
+  final pulumi.Input<List<String>?>? apiProducts;
   /// Developer app family.
-  final pulumi.Input<String>? appFamily;
+  final pulumi.Input<String?>? appFamily;
   /// ID of the developer app.
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   /// List of attributes for the developer app.
-  final pulumi.Input<List<GoogleCloudApigeeV1Attribute>>? attributes;
+  final pulumi.Input<List<GoogleCloudApigeeV1Attribute>?>? attributes;
   /// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
-  final pulumi.Input<String>? callbackUrl;
+  final pulumi.Input<String?>? callbackUrl;
   /// ID of the developer.
   final pulumi.Input<String> developerId;
   /// Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
-  final pulumi.Input<String>? keyExpiresIn;
+  final pulumi.Input<String?>? keyExpiresIn;
   /// Name of the developer app.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
   /// Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
   /// Status of the credential. Valid values include `approved` or `revoked`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [DeveloperAppArgs].
   /// [apiProducts] List of API products associated with the developer app.

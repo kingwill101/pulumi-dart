@@ -14,20 +14,20 @@ import 'google_cloud_aiplatform_v1_sampling_strategy.dart';
 /// {@macro pulumi_aiplatform_v1_model_deployment_monitoring_job_args_doc}
 class ModelDeploymentMonitoringJobArgs {
   /// YAML schema file uri describing the format of a single instance that you want Tensorflow Data Validation (TFDV) to analyze. If this field is empty, all the feature data types are inferred from predict_instance_schema_uri, meaning that TFDV will use the data in the exact format(data type) as prediction request/response. If there are any data type differences between predict instance and TFDV instance, this field can be used to override the schema. For models trained with Vertex AI, this field must be set as all the fields in predict instance formatted as string.
-  final pulumi.Input<String>? analysisInstanceSchemaUri;
+  final pulumi.Input<String?>? analysisInstanceSchemaUri;
   /// The user-defined name of the ModelDeploymentMonitoringJob. The name can be up to 128 characters long and can consist of any UTF-8 characters. Display name of a ModelDeploymentMonitoringJob.
   final pulumi.Input<String> displayName;
   /// If true, the scheduled monitoring pipeline logs are sent to Google Cloud Logging, including pipeline status and anomalies detected. Please note the logs incur cost, which are subject to [Cloud Logging pricing](https://cloud.google.com/logging#pricing).
-  final pulumi.Input<bool>? enableMonitoringPipelineLogs;
+  final pulumi.Input<bool?>? enableMonitoringPipelineLogs;
   /// Customer-managed encryption key spec for a ModelDeploymentMonitoringJob. If set, this ModelDeploymentMonitoringJob and all sub-resources of this ModelDeploymentMonitoringJob will be secured by this key.
-  final pulumi.Input<GoogleCloudAiplatformV1EncryptionSpec>? encryptionSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1EncryptionSpec?>? encryptionSpec;
   /// Endpoint resource name. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
   final pulumi.Input<String> endpoint;
   /// The labels with user-defined metadata to organize your ModelDeploymentMonitoringJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// The TTL of BigQuery tables in user projects which stores logs. A day is the basic unit of the TTL and we take the ceil of TTL/86400(a day). e.g. { second: 3600} indicates ttl = 1 day.
-  final pulumi.Input<String>? logTtl;
+  final pulumi.Input<String?>? logTtl;
   /// Sample Strategy for logging.
   final pulumi.Input<GoogleCloudAiplatformV1SamplingStrategy> loggingSamplingStrategy;
   /// The config for monitoring objectives. This is a per DeployedModel config. Each DeployedModel needs to be configured separately.
@@ -35,14 +35,14 @@ class ModelDeploymentMonitoringJobArgs {
   /// Schedule config for running the monitoring job.
   final pulumi.Input<GoogleCloudAiplatformV1ModelDeploymentMonitoringScheduleConfig> modelDeploymentMonitoringScheduleConfig;
   /// Alert config for model monitoring.
-  final pulumi.Input<GoogleCloudAiplatformV1ModelMonitoringAlertConfig>? modelMonitoringAlertConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1ModelMonitoringAlertConfig?>? modelMonitoringAlertConfig;
   /// YAML schema file uri describing the format of a single instance, which are given to format this Endpoint's prediction (and explanation). If not set, we will generate predict schema from collected predict requests.
-  final pulumi.Input<String>? predictInstanceSchemaUri;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? predictInstanceSchemaUri;
+  final pulumi.Input<String?>? project;
   /// Sample Predict instance, same format as PredictRequest.instances, this can be set as a replacement of ModelDeploymentMonitoringJob.predict_instance_schema_uri. If not set, we will generate predict schema from collected predict requests.
   final pulumi.Input<dynamic>? samplePredictInstance;
   /// Stats anomalies base folder path.
-  final pulumi.Input<GoogleCloudAiplatformV1GcsDestination>? statsAnomaliesBaseDirectory;
+  final pulumi.Input<GoogleCloudAiplatformV1GcsDestination?>? statsAnomaliesBaseDirectory;
 
   /// Creates a new [ModelDeploymentMonitoringJobArgs].
   /// [analysisInstanceSchemaUri] YAML schema file uri describing the format of a single instance that you want Tensorflow Data Validation (TFDV) to analyze. If this field is empty, all the feature data types are inferred from predict_instance_schema_uri, meaning that TFDV will use the data in the exact format(data type) as prediction request/response. If there are any data type differences between predict instance and TFDV instance, this field can be used to override the schema. For models trained with Vertex AI, this field must be set as all the fields in predict instance formatted as string.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration and status of a managed SSL certificate.
 class SslCertificateManagedSslCertificate {
   /// The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
-  final pulumi.Input<List<String>>? domains;
+  final pulumi.Input<List<String>?>? domains;
 
   /// Creates a new [SslCertificateManagedSslCertificate].
   /// [domains] The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).

@@ -6,7 +6,7 @@ import 'pubsub_destination.dart';
 /// Output configuration for asset feed destination.
 class FeedOutputConfig {
   /// Destination on Pub/Sub.
-  final pulumi.Input<PubsubDestination>? pubsubDestination;
+  final pulumi.Input<PubsubDestination?>? pubsubDestination;
 
   /// Creates a new [FeedOutputConfig].
   /// [pubsubDestination] Destination on Pub/Sub.

@@ -8,11 +8,11 @@ class GoogleCloudDialogflowCxV3beta1EventHandler {
   /// The name of the event to handle.
   final pulumi.Input<String> event;
   /// The target flow to transition to. Format: `projects//locations//agents//flows/`.
-  final pulumi.Input<String>? targetFlow;
+  final pulumi.Input<String?>? targetFlow;
   /// The target page to transition to. Format: `projects//locations//agents//flows//pages/`.
-  final pulumi.Input<String>? targetPage;
+  final pulumi.Input<String?>? targetPage;
   /// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1Fulfillment>? triggerFulfillment;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1Fulfillment?>? triggerFulfillment;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1EventHandler].
   /// [event] The name of the event to handle.

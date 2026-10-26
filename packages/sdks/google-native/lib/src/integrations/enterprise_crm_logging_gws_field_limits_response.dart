@@ -41,8 +41,8 @@ class EnterpriseCrmLoggingGwsFieldLimitsResponse {
     return EnterpriseCrmLoggingGwsFieldLimitsResponse(
       logAction: pulumi.Input.fromValue(map['logAction'] as String),
       logType: pulumi.Input.fromValue((map['logType'] as List).cast<String>()),
-      maxArraySize: pulumi.Input.fromValue(map['maxArraySize'] as int),
-      maxStringLength: pulumi.Input.fromValue(map['maxStringLength'] as int),
+      maxArraySize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxArraySize'])),
+      maxStringLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxStringLength'])),
       shortenerType: pulumi.Input.fromValue(map['shortenerType'] as String),
     );
   }

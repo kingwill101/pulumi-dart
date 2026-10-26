@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
-enum InstanceGroupConfigPreemptibility {
+enum InstanceGroupConfigPreemptibility implements pulumi.PulumiEnum<String> {
   preemptibilityUnspecified("PREEMPTIBILITY_UNSPECIFIED"),
   nonPreemptible("NON_PREEMPTIBLE"),
   preemptible("PREEMPTIBLE"),
   spot("SPOT");
 
   const InstanceGroupConfigPreemptibility(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceGroupConfigPreemptibility fromValue(String value) {

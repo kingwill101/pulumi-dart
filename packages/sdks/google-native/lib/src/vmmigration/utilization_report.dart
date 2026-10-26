@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'status_response.dart';
 import 'utilization_report_args.dart';
+import 'vm_utilization_info_response.dart';
 
 /// Creates a new UtilizationReport.
 /// Auto-naming is currently not supported for this resource.
@@ -31,7 +32,7 @@ class UtilizationReport extends pulumi.CustomResource {
   /// Total number of VMs included in the report.
   late final pulumi.Output<int> vmCount;
   /// List of utilization information per VM. When sent as part of the request, the "vm_id" field is used in order to specify which VMs to include in the report. In that case all other fields are ignored.
-  late final pulumi.Output<List<Map<String, dynamic>>> vms;
+  late final pulumi.Output<List<VmUtilizationInfoResponse>> vms;
 
   /// Creates a new [UtilizationReport].
   /// [name] The Pulumi resource name.
@@ -45,7 +46,7 @@ class UtilizationReport extends pulumi.CustomResource {
           'google-native:vmmigration/v1:UtilizationReport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'sourceId', 'utilizationReportId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
@@ -61,6 +62,32 @@ class UtilizationReport extends pulumi.CustomResource {
     timeFrame = registerOutput<String>('timeFrame');
     utilizationReportId = registerOutput<String>('utilizationReportId');
     vmCount = registerOutput<int>('vmCount');
-    vms = registerOutput<List<Map<String, dynamic>>>('vms');
+    vms = registerOutput<List<VmUtilizationInfoResponse>>('vms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VmUtilizationInfoResponse>(guardedValue, (value) => VmUtilizationInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [UtilizationReport] resource.
+  UtilizationReport.reference(String urn)
+    : super(
+        'google-native:vmmigration/v1:UtilizationReport',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    error = registerOutput<StatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    frameEndTime = registerOutput<String>('frameEndTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    sourceId = registerOutput<String>('sourceId');
+    state = registerOutput<String>('state');
+    stateTime = registerOutput<String>('stateTime');
+    timeFrame = registerOutput<String>('timeFrame');
+    utilizationReportId = registerOutput<String>('utilizationReportId');
+    vmCount = registerOutput<int>('vmCount');
+    vms = registerOutput<List<VmUtilizationInfoResponse>>('vms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VmUtilizationInfoResponse>(guardedValue, (value) => VmUtilizationInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

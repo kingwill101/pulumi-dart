@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Scoring configurations for a source while processing a Search or Suggest request.
 class ScoringConfig {
   /// Whether to use freshness as a ranking signal. By default, freshness is used as a ranking signal. Note that this setting is not available in the Admin UI.
-  final pulumi.Input<bool>? disableFreshness;
+  final pulumi.Input<bool?>? disableFreshness;
   /// Whether to personalize the results. By default, personal signals will be used to boost results.
-  final pulumi.Input<bool>? disablePersonalization;
+  final pulumi.Input<bool?>? disablePersonalization;
 
   /// Creates a new [ScoringConfig].
   /// [disableFreshness] Whether to use freshness as a ranking signal. By default, freshness is used as a ranking signal. Note that this setting is not available in the Admin UI.

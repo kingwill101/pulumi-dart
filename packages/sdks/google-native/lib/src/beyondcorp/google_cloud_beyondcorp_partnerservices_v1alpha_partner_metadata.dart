@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata associated with PartnerTenant and is provided by the Partner.
 class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata {
   /// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
-  final pulumi.Input<String>? internalTenantId;
+  final pulumi.Input<String?>? internalTenantId;
   /// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
-  final pulumi.Input<String>? partnerTenantId;
+  final pulumi.Input<String?>? partnerTenantId;
 
   /// Creates a new [GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata].
   /// [internalTenantId] Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.

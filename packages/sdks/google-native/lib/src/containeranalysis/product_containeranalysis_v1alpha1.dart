@@ -6,11 +6,11 @@ import 'identifier_helper.dart';
 /// Product contains information about a product and how to uniquely identify it.
 class ProductContaineranalysisV1alpha1 {
   /// Token that identifies a product so that it can be referred to from other parts in the document. There is no predefined format as long as it uniquely identifies a group in the context of the current document.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Helps in identifying the underlying product.
-  final pulumi.Input<IdentifierHelper>? identifierHelper;
+  final pulumi.Input<IdentifierHelper?>? identifierHelper;
   /// Name of the product.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ProductContaineranalysisV1alpha1].
   /// [id] Token that identifies a product so that it can be referred to from other parts in the document. There is no predefined format as long as it uniquely identifies a group in the context of the current document.

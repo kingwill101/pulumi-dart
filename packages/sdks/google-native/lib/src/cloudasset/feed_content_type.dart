@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Asset content type. If not specified, no content but the asset name and type will be returned.
-enum FeedContentType {
+enum FeedContentType implements pulumi.PulumiEnum<String> {
   contentTypeUnspecified("CONTENT_TYPE_UNSPECIFIED"),
   resource("RESOURCE"),
   iamPolicy("IAM_POLICY"),
@@ -9,6 +11,7 @@ enum FeedContentType {
   relationship("RELATIONSHIP");
 
   const FeedContentType(this.wireValue);
+  @override
   final String wireValue;
 
   static FeedContentType fromValue(String value) {

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NetworkInterface represents a NIC of a VM.
 class NetworkInterface {
   /// The external IP to define in the NIC.
-  final pulumi.Input<String>? externalIp;
+  final pulumi.Input<String?>? externalIp;
   /// The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
-  final pulumi.Input<String>? internalIp;
+  final pulumi.Input<String?>? internalIp;
   /// The network to connect the NIC to.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The subnetwork to connect the NIC to.
-  final pulumi.Input<String>? subnetwork;
+  final pulumi.Input<String?>? subnetwork;
 
   /// Creates a new [NetworkInterface].
   /// [externalIp] The external IP to define in the NIC.

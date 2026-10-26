@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines reference in reply.
 class GoogleCloudDiscoveryengineV1betaReplyReference {
   /// Anchor text.
-  final pulumi.Input<String>? anchorText;
+  final pulumi.Input<String?>? anchorText;
   /// Anchor text end index.
-  final pulumi.Input<int>? end;
+  final pulumi.Input<int?>? end;
   /// Anchor text start index.
-  final pulumi.Input<int>? start;
+  final pulumi.Input<int?>? start;
   /// URI link reference.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [GoogleCloudDiscoveryengineV1betaReplyReference].
   /// [anchorText] Anchor text.
@@ -37,8 +37,8 @@ class GoogleCloudDiscoveryengineV1betaReplyReference {
   factory GoogleCloudDiscoveryengineV1betaReplyReference.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1betaReplyReference(
       anchorText: (() { final guardedValue = map['anchorText']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      end: (() { final guardedValue = map['end']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      start: (() { final guardedValue = map['start']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      end: (() { final guardedValue = map['end']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      start: (() { final guardedValue = map['start']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

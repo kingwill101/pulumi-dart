@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A patient identifier and associated type.
 class PatientId {
   /// ID type. For example, MRN or NHS.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The patient's unique identifier.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [PatientId].
   /// [type] ID type. For example, MRN or NHS.

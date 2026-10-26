@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A class of status codes to accept.
-enum ResponseStatusCodeStatusClass {
+enum ResponseStatusCodeStatusClass implements pulumi.PulumiEnum<String> {
   statusClassUnspecified("STATUS_CLASS_UNSPECIFIED"),
   statusClass1xx("STATUS_CLASS_1XX"),
   statusClass2xx("STATUS_CLASS_2XX"),
@@ -9,6 +11,7 @@ enum ResponseStatusCodeStatusClass {
   statusClassAny("STATUS_CLASS_ANY");
 
   const ResponseStatusCodeStatusClass(this.wireValue);
+  @override
   final String wireValue;
 
   static ResponseStatusCodeStatusClass fromValue(String value) {

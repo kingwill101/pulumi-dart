@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
-enum PacketMirroringFilterDirection {
+enum PacketMirroringFilterDirection implements pulumi.PulumiEnum<String> {
   both("BOTH"),
   egress("EGRESS"),
   ingress("INGRESS");
 
   const PacketMirroringFilterDirection(this.wireValue);
+  @override
   final String wireValue;
 
   static PacketMirroringFilterDirection fromValue(String value) {

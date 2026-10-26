@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// day of week
-enum GooglePrivacyDlpV2ValueDayOfWeekValue {
+enum GooglePrivacyDlpV2ValueDayOfWeekValue implements pulumi.PulumiEnum<String> {
   dayOfWeekUnspecified("DAY_OF_WEEK_UNSPECIFIED"),
   monday("MONDAY"),
   tuesday("TUESDAY"),
@@ -10,6 +12,7 @@ enum GooglePrivacyDlpV2ValueDayOfWeekValue {
   sunday("SUNDAY");
 
   const GooglePrivacyDlpV2ValueDayOfWeekValue(this.wireValue);
+  @override
   final String wireValue;
 
   static GooglePrivacyDlpV2ValueDayOfWeekValue fromValue(String value) {

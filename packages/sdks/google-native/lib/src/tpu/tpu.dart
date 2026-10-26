@@ -6,7 +6,7 @@ import 'node_spec.dart';
 /// Details of the TPU resource(s) being requested.
 class Tpu {
   /// The TPU node(s) being requested.
-  final pulumi.Input<List<NodeSpec>>? nodeSpec;
+  final pulumi.Input<List<NodeSpec>?>? nodeSpec;
 
   /// Creates a new [Tpu].
   /// [nodeSpec] The TPU node(s) being requested.

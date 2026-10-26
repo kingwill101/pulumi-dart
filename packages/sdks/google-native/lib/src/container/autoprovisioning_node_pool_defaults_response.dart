@@ -75,7 +75,7 @@ class AutoprovisioningNodePoolDefaultsResponse {
   factory AutoprovisioningNodePoolDefaultsResponse.fromMap(Map<String, dynamic> map) {
     return AutoprovisioningNodePoolDefaultsResponse(
       bootDiskKmsKey: pulumi.Input.fromValue(map['bootDiskKmsKey'] as String),
-      diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as int),
+      diskSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskSizeGb'])),
       diskType: pulumi.Input.fromValue(map['diskType'] as String),
       imageType: pulumi.Input.fromValue(map['imageType'] as String),
       insecureKubeletReadonlyPortEnabled: pulumi.Input.fromValue(map['insecureKubeletReadonlyPortEnabled'] as bool),

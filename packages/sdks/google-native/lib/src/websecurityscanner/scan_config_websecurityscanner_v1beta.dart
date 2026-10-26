@@ -50,10 +50,10 @@ class ScanConfigWebsecurityscannerV1beta extends pulumi.CustomResource {
           'google-native:websecurityscanner/v1beta:ScanConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     authentication = registerOutput<AuthenticationResponseWebsecurityscannerV1beta>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthenticationResponseWebsecurityscannerV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    blacklistPatterns = registerOutput<List<String>>('blacklistPatterns');
+    blacklistPatterns = registerOutput<List<String>>('blacklistPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
     exportToSecurityCommandCenter = registerOutput<String>('exportToSecurityCommandCenter');
     ignoreHttpStatusErrors = registerOutput<bool>('ignoreHttpStatusErrors');
@@ -64,9 +64,36 @@ class ScanConfigWebsecurityscannerV1beta extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     riskLevel = registerOutput<String>('riskLevel');
     schedule = registerOutput<ScheduleResponseWebsecurityscannerV1beta>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleResponseWebsecurityscannerV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    startingUrls = registerOutput<List<String>>('startingUrls');
+    startingUrls = registerOutput<List<String>>('startingUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     staticIpScan = registerOutput<bool>('staticIpScan');
-    targetPlatforms = registerOutput<List<String>>('targetPlatforms');
+    targetPlatforms = registerOutput<List<String>>('targetPlatforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    userAgent = registerOutput<String>('userAgent');
+  }
+
+  /// Creates a typed reference to an existing [ScanConfigWebsecurityscannerV1beta] resource.
+  ScanConfigWebsecurityscannerV1beta.reference(String urn)
+    : super(
+        'google-native:websecurityscanner/v1beta:ScanConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authentication = registerOutput<AuthenticationResponseWebsecurityscannerV1beta>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthenticationResponseWebsecurityscannerV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    blacklistPatterns = registerOutput<List<String>>('blacklistPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayName = registerOutput<String>('displayName');
+    exportToSecurityCommandCenter = registerOutput<String>('exportToSecurityCommandCenter');
+    ignoreHttpStatusErrors = registerOutput<bool>('ignoreHttpStatusErrors');
+    latestRun = registerOutput<ScanRunResponseWebsecurityscannerV1beta>('latestRun', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScanRunResponseWebsecurityscannerV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managedScan = registerOutput<bool>('managedScan');
+    maxQps = registerOutput<int>('maxQps');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    riskLevel = registerOutput<String>('riskLevel');
+    schedule = registerOutput<ScheduleResponseWebsecurityscannerV1beta>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleResponseWebsecurityscannerV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startingUrls = registerOutput<List<String>>('startingUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    staticIpScan = registerOutput<bool>('staticIpScan');
+    targetPlatforms = registerOutput<List<String>>('targetPlatforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     userAgent = registerOutput<String>('userAgent');
   }
 }

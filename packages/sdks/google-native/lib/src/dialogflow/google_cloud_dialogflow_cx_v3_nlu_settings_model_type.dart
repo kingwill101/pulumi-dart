@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates the type of NLU model.
-enum GoogleCloudDialogflowCxV3NluSettingsModelType {
+enum GoogleCloudDialogflowCxV3NluSettingsModelType implements pulumi.PulumiEnum<String> {
   modelTypeUnspecified("MODEL_TYPE_UNSPECIFIED"),
   modelTypeStandard("MODEL_TYPE_STANDARD"),
   modelTypeAdvanced("MODEL_TYPE_ADVANCED");
 
   const GoogleCloudDialogflowCxV3NluSettingsModelType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowCxV3NluSettingsModelType fromValue(String value) {

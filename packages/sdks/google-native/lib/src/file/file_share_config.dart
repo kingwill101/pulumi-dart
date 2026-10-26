@@ -6,13 +6,13 @@ import 'nfs_export_options.dart';
 /// File share configuration for the instance.
 class FileShareConfig {
   /// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
-  final pulumi.Input<String>? capacityGb;
+  final pulumi.Input<String?>? capacityGb;
   /// The name of the file share (must be 16 characters or less).
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Nfs Export Options. There is a limit of 10 export options per file share.
-  final pulumi.Input<List<NfsExportOptions>>? nfsExportOptions;
+  final pulumi.Input<List<NfsExportOptions>?>? nfsExportOptions;
   /// The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
-  final pulumi.Input<String>? sourceBackup;
+  final pulumi.Input<String?>? sourceBackup;
 
   /// Creates a new [FileShareConfig].
   /// [capacityGb] File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.

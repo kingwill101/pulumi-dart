@@ -6,9 +6,9 @@ import 'confidential_instance_config_confidential_instance_type.dart';
 /// A set of Confidential Instance options.
 class ConfidentialInstanceConfig {
   /// Defines the type of technology used by the confidential instance.
-  final pulumi.Input<ConfidentialInstanceConfigConfidentialInstanceType>? confidentialInstanceType;
+  final pulumi.Input<ConfidentialInstanceConfigConfidentialInstanceType?>? confidentialInstanceType;
   /// Defines whether the instance should have confidential compute enabled.
-  final pulumi.Input<bool>? enableConfidentialCompute;
+  final pulumi.Input<bool?>? enableConfidentialCompute;
 
   /// Creates a new [ConfidentialInstanceConfig].
   /// [confidentialInstanceType] Defines the type of technology used by the confidential instance.

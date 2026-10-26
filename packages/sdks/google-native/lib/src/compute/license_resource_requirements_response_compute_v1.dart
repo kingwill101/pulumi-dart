@@ -25,8 +25,8 @@ class LicenseResourceRequirementsResponseComputeV1 {
 
   factory LicenseResourceRequirementsResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return LicenseResourceRequirementsResponseComputeV1(
-      minGuestCpuCount: pulumi.Input.fromValue(map['minGuestCpuCount'] as int),
-      minMemoryMb: pulumi.Input.fromValue(map['minMemoryMb'] as int),
+      minGuestCpuCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minGuestCpuCount'])),
+      minMemoryMb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minMemoryMb'])),
     );
   }
 }

@@ -27,7 +27,7 @@ class BareMetalAdminDrainingMachineResponse {
   factory BareMetalAdminDrainingMachineResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminDrainingMachineResponse(
       nodeIp: pulumi.Input.fromValue(map['nodeIp'] as String),
-      podCount: pulumi.Input.fromValue(map['podCount'] as int),
+      podCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['podCount'])),
     );
   }
 }

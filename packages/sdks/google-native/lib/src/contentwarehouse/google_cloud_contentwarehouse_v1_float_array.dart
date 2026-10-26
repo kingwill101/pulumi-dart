@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Float values.
 class GoogleCloudContentwarehouseV1FloatArray {
   /// List of float values.
-  final pulumi.Input<List<double>>? values;
+  final pulumi.Input<List<double>?>? values;
 
   /// Creates a new [GoogleCloudContentwarehouseV1FloatArray].
   /// [values] List of float values.

@@ -6,7 +6,7 @@ import 'google_cloud_retail_v2alpha_search_request_personalization_spec_mode.dar
 /// The specification for personalization.
 class GoogleCloudRetailV2alphaSearchRequestPersonalizationSpec {
   /// Defaults to Mode.AUTO.
-  final pulumi.Input<GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode>? mode;
+  final pulumi.Input<GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode?>? mode;
 
   /// Creates a new [GoogleCloudRetailV2alphaSearchRequestPersonalizationSpec].
   /// [mode] Defaults to Mode.AUTO.

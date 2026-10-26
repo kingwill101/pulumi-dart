@@ -7,15 +7,15 @@ import 'google_cloud_recaptchaenterprise_v1_firewall_action_substitute_action.da
 /// An individual action. Each action represents what to do if a policy matches.
 class GoogleCloudRecaptchaenterpriseV1FirewallAction {
   /// The user request did not match any policy and should be allowed access to the requested resource.
-  final pulumi.Input<Map<String, dynamic>>? allow;
+  final pulumi.Input<Map<String, dynamic>?>? allow;
   /// This action will deny access to a given page. The user will get an HTTP error code.
-  final pulumi.Input<Map<String, dynamic>>? block;
+  final pulumi.Input<Map<String, dynamic>?>? block;
   /// This action will redirect the request to a ReCaptcha interstitial to attach a token.
-  final pulumi.Input<Map<String, dynamic>>? redirect;
+  final pulumi.Input<Map<String, dynamic>?>? redirect;
   /// This action will set a custom header but allow the request to continue to the customer backend.
-  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction>? setHeader;
+  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction?>? setHeader;
   /// This action will transparently serve a different page to an offending user.
-  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction>? substitute;
+  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction?>? substitute;
 
   /// Creates a new [GoogleCloudRecaptchaenterpriseV1FirewallAction].
   /// [allow] The user request did not match any policy and should be allowed access to the requested resource.

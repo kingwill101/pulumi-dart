@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The disk type to use in the VM.
-enum ComputeEngineTargetDefaultsDiskTypeVmmigrationV1alpha1 {
+enum ComputeEngineTargetDefaultsDiskTypeVmmigrationV1alpha1 implements pulumi.PulumiEnum<String> {
   computeEngineDiskTypeUnspecified("COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"),
   computeEngineDiskTypeStandard("COMPUTE_ENGINE_DISK_TYPE_STANDARD"),
   computeEngineDiskTypeSsd("COMPUTE_ENGINE_DISK_TYPE_SSD"),
   computeEngineDiskTypeBalanced("COMPUTE_ENGINE_DISK_TYPE_BALANCED");
 
   const ComputeEngineTargetDefaultsDiskTypeVmmigrationV1alpha1(this.wireValue);
+  @override
   final String wireValue;
 
   static ComputeEngineTargetDefaultsDiskTypeVmmigrationV1alpha1 fromValue(String value) {

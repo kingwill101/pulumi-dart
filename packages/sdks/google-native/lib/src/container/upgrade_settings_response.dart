@@ -38,8 +38,8 @@ class UpgradeSettingsResponse {
   factory UpgradeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return UpgradeSettingsResponse(
       blueGreenSettings: pulumi.Input.fromValue(BlueGreenSettingsResponse.fromMap((map['blueGreenSettings']! as Map).cast<String, dynamic>())),
-      maxSurge: pulumi.Input.fromValue(map['maxSurge'] as int),
-      maxUnavailable: pulumi.Input.fromValue(map['maxUnavailable'] as int),
+      maxSurge: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxSurge'])),
+      maxUnavailable: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxUnavailable'])),
       strategy: pulumi.Input.fromValue(map['strategy'] as String),
     );
   }

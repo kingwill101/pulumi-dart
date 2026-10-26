@@ -8,11 +8,11 @@ import 'postgresql_rdbms.dart';
 /// Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
 class BackfillAllStrategy {
   /// MySQL data source objects to avoid backfilling.
-  final pulumi.Input<MysqlRdbms>? mysqlExcludedObjects;
+  final pulumi.Input<MysqlRdbms?>? mysqlExcludedObjects;
   /// Oracle data source objects to avoid backfilling.
-  final pulumi.Input<OracleRdbms>? oracleExcludedObjects;
+  final pulumi.Input<OracleRdbms?>? oracleExcludedObjects;
   /// PostgreSQL data source objects to avoid backfilling.
-  final pulumi.Input<PostgresqlRdbms>? postgresqlExcludedObjects;
+  final pulumi.Input<PostgresqlRdbms?>? postgresqlExcludedObjects;
 
   /// Creates a new [BackfillAllStrategy].
   /// [mysqlExcludedObjects] MySQL data source objects to avoid backfilling.

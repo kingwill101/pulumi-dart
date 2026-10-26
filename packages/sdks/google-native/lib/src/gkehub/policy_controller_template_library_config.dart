@@ -6,7 +6,7 @@ import 'policy_controller_template_library_config_installation.dart';
 /// The config specifying which default library templates to install.
 class PolicyControllerTemplateLibraryConfig {
   /// Configures the manner in which the template library is installed on the cluster.
-  final pulumi.Input<PolicyControllerTemplateLibraryConfigInstallation>? installation;
+  final pulumi.Input<PolicyControllerTemplateLibraryConfigInstallation?>? installation;
 
   /// Creates a new [PolicyControllerTemplateLibraryConfig].
   /// [installation] Configures the manner in which the template library is installed on the cluster.

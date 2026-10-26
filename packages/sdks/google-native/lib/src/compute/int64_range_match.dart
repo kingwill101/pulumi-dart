@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// HttpRouteRuleMatch criteria for field values that must stay within the specified integer range.
 class Int64RangeMatch {
   /// The end of the range (exclusive) in signed long integer format.
-  final pulumi.Input<String>? rangeEnd;
+  final pulumi.Input<String?>? rangeEnd;
   /// The start of the range (inclusive) in signed long integer format.
-  final pulumi.Input<String>? rangeStart;
+  final pulumi.Input<String?>? rangeStart;
 
   /// Creates a new [Int64RangeMatch].
   /// [rangeEnd] The end of the range (exclusive) in signed long integer format.

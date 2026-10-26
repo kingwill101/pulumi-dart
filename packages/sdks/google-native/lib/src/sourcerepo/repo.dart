@@ -28,12 +28,29 @@ class Repo extends pulumi.CustomResource {
           'google-native:sourcerepo/v1:Repo',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     mirrorConfig = registerOutput<MirrorConfigResponse>('mirrorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MirrorConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pubsubConfigs = registerOutput<Map<String, String>>('pubsubConfigs');
+    pubsubConfigs = registerOutput<Map<String, String>>('pubsubConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    size = registerOutput<String>('size');
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [Repo] resource.
+  Repo.reference(String urn)
+    : super(
+        'google-native:sourcerepo/v1:Repo',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    mirrorConfig = registerOutput<MirrorConfigResponse>('mirrorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MirrorConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pubsubConfigs = registerOutput<Map<String, String>>('pubsubConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     size = registerOutput<String>('size');
     url = registerOutput<String>('url');
   }

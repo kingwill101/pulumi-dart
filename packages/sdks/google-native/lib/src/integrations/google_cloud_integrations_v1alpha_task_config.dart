@@ -13,37 +13,37 @@ import 'google_cloud_integrations_v1alpha_task_config_task_execution_strategy.da
 /// The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task.
 class GoogleCloudIntegrationsV1alphaTaskConfig {
   /// Optional. User-provided description intended to give additional business context about the task.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. User-provided label that is attached to this TaskConfig in the UI.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
-  final pulumi.Input<String>? errorCatcherId;
+  final pulumi.Input<String?>? errorCatcherId;
   /// Optional. External task type of the task
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType>? externalTaskType;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType?>? externalTaskType;
   /// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaFailurePolicy>? failurePolicy;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaFailurePolicy?>? failurePolicy;
   /// Optional. If set, overrides the option configured in the Task implementation class.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption>? jsonValidationOption;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption?>? jsonValidationOption;
   /// Optional. The set of tasks that are next in line to be executed as per the execution graph defined for the parent event, specified by `event_config_id`. Each of these next tasks are executed only if the condition associated with them evaluates to true.
-  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaNextTask>>? nextTasks;
+  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaNextTask>?>? nextTasks;
   /// Optional. The policy dictating the execution of the next set of tasks for the current task.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy>? nextTasksExecutionPolicy;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy?>? nextTasksExecutionPolicy;
   /// Optional. The customized parameters the user can pass to this task.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Optional. Informs the front-end application where to draw this error catcher config on the UI.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaCoordinate>? position;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaCoordinate?>? position;
   /// Optional. Determines what action to take upon successful task completion.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaSuccessPolicy>? successPolicy;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaSuccessPolicy?>? successPolicy;
   /// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for synchronous calls to Eventbus alone (Post).
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaFailurePolicy>? synchronousCallFailurePolicy;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaFailurePolicy?>? synchronousCallFailurePolicy;
   /// Optional. The name for the task.
-  final pulumi.Input<String>? task;
+  final pulumi.Input<String?>? task;
   /// Optional. The policy dictating the execution strategy of this task.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy>? taskExecutionStrategy;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy?>? taskExecutionStrategy;
   /// The identifier of this task within its parent event config, specified by the client. This should be unique among all the tasks belong to the same event config. We use this field as the identifier to find next tasks (via field `next_tasks.task_id`).
   final pulumi.Input<String> taskId;
   /// Optional. Used to define task-template name if task is of type task-template
-  final pulumi.Input<String>? taskTemplate;
+  final pulumi.Input<String?>? taskTemplate;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaTaskConfig].
   /// [description] Optional. User-provided description intended to give additional business context about the task.

@@ -12,21 +12,21 @@ import 'data_store_solution_types_item.dart';
 class DataStoreArgs {
   final pulumi.Input<String> collectionId;
   /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to ContentConfig.NO_CONTENT.
-  final pulumi.Input<DataStoreContentConfig>? contentConfig;
+  final pulumi.Input<DataStoreContentConfig?>? contentConfig;
   /// A boolean flag indicating whether user want to directly create an advanced data store for site search. If the data store is not configured as site search (GENERIC vertical and PUBLIC_WEBSITE content_config), this flag will be ignored.
-  final pulumi.Input<bool>? createAdvancedSiteSearch;
+  final pulumi.Input<bool?>? createAdvancedSiteSearch;
   /// Required. The ID to use for the DataStore, which will become the final component of the DataStore's resource name. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
   final pulumi.Input<String> dataStoreId;
   /// The data store display name. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
   final pulumi.Input<String> displayName;
   /// Immutable. The industry vertical that the data store registers.
-  final pulumi.Input<DataStoreIndustryVertical>? industryVertical;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<DataStoreIndustryVertical?>? industryVertical;
+  final pulumi.Input<String?>? location;
   /// Immutable. The full resource name of the data store. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is automatically enrolled. Other solutions cannot be enrolled.
-  final pulumi.Input<List<DataStoreSolutionTypesItem>>? solutionTypes;
+  final pulumi.Input<List<DataStoreSolutionTypesItem>?>? solutionTypes;
 
   /// Creates a new [DataStoreArgs].
   /// [collectionId] Required.

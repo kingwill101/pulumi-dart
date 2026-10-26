@@ -17,3 +17,14 @@ Future<GetKeyResult> getKey(
   );
   return GetKeyResult.fromMap(result);
 }
+
+pulumi.Output<GetKeyResult> getKeyOutput(
+  GetKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apikeys/v2:getKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKeyResult.fromMap);
+}

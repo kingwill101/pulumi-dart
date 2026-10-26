@@ -12,18 +12,18 @@ class ContentitemArgs {
   /// Content data in string format.
   final pulumi.Input<String> dataText;
   /// Optional. Description of the content.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. User defined labels for the content.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   final pulumi.Input<String> lakeId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Notebook related configurations.
-  final pulumi.Input<GoogleCloudDataplexV1ContentNotebook>? notebook;
+  final pulumi.Input<GoogleCloudDataplexV1ContentNotebook?>? notebook;
   /// The path for the Content file, represented as directory structure. Unique within a lake. Limited to alphanumerics, hyphens, underscores, dots and slashes.
   final pulumi.Input<String> path;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Sql Script related configurations.
-  final pulumi.Input<GoogleCloudDataplexV1ContentSqlScript>? sqlScript;
+  final pulumi.Input<GoogleCloudDataplexV1ContentSqlScript?>? sqlScript;
 
   /// Creates a new [ContentitemArgs].
   /// [dataText] Content data in string format.

@@ -99,12 +99,12 @@ class InterconnectAttachmentComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:InterconnectAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     adminEnabled = registerOutput<bool>('adminEnabled');
     bandwidth = registerOutput<String>('bandwidth');
-    candidateIpv6Subnets = registerOutput<List<String>>('candidateIpv6Subnets');
-    candidateSubnets = registerOutput<List<String>>('candidateSubnets');
+    candidateIpv6Subnets = registerOutput<List<String>>('candidateIpv6Subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    candidateSubnets = registerOutput<List<String>>('candidateSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cloudRouterIpAddress = registerOutput<String>('cloudRouterIpAddress');
     cloudRouterIpv6Address = registerOutput<String>('cloudRouterIpv6Address');
     cloudRouterIpv6InterfaceId = registerOutput<String>('cloudRouterIpv6InterfaceId');
@@ -119,10 +119,62 @@ class InterconnectAttachmentComputeV1 extends pulumi.CustomResource {
     encryption = registerOutput<String>('encryption');
     googleReferenceId = registerOutput<String>('googleReferenceId');
     interconnect = registerOutput<String>('interconnect');
-    ipsecInternalAddresses = registerOutput<List<String>>('ipsecInternalAddresses');
+    ipsecInternalAddresses = registerOutput<List<String>>('ipsecInternalAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kind = registerOutput<String>('kind');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    mtu = registerOutput<int>('mtu');
+    this.name = registerOutput<String>('name');
+    operationalStatus = registerOutput<String>('operationalStatus');
+    pairingKey = registerOutput<String>('pairingKey');
+    partnerAsn = registerOutput<String>('partnerAsn');
+    partnerMetadata = registerOutput<InterconnectAttachmentPartnerMetadataResponseComputeV1>('partnerMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectAttachmentPartnerMetadataResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateInterconnectInfo = registerOutput<InterconnectAttachmentPrivateInfoResponseComputeV1>('privateInterconnectInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectAttachmentPrivateInfoResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    remoteService = registerOutput<String>('remoteService');
+    requestId = registerOutput<String?>('requestId');
+    router = registerOutput<String>('router');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    selfLink = registerOutput<String>('selfLink');
+    stackType = registerOutput<String>('stackType');
+    state = registerOutput<String>('state');
+    subnetLength = registerOutput<int>('subnetLength');
+    type = registerOutput<String>('type');
+    vlanTag8021q = registerOutput<int>('vlanTag8021q');
+  }
+
+  /// Creates a typed reference to an existing [InterconnectAttachmentComputeV1] resource.
+  InterconnectAttachmentComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:InterconnectAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    adminEnabled = registerOutput<bool>('adminEnabled');
+    bandwidth = registerOutput<String>('bandwidth');
+    candidateIpv6Subnets = registerOutput<List<String>>('candidateIpv6Subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    candidateSubnets = registerOutput<List<String>>('candidateSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    cloudRouterIpAddress = registerOutput<String>('cloudRouterIpAddress');
+    cloudRouterIpv6Address = registerOutput<String>('cloudRouterIpv6Address');
+    cloudRouterIpv6InterfaceId = registerOutput<String>('cloudRouterIpv6InterfaceId');
+    configurationConstraints = registerOutput<InterconnectAttachmentConfigurationConstraintsResponseComputeV1>('configurationConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectAttachmentConfigurationConstraintsResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    customerRouterIpAddress = registerOutput<String>('customerRouterIpAddress');
+    customerRouterIpv6Address = registerOutput<String>('customerRouterIpv6Address');
+    customerRouterIpv6InterfaceId = registerOutput<String>('customerRouterIpv6InterfaceId');
+    dataplaneVersion = registerOutput<int>('dataplaneVersion');
+    description = registerOutput<String>('description');
+    edgeAvailabilityDomain = registerOutput<String>('edgeAvailabilityDomain');
+    encryption = registerOutput<String>('encryption');
+    googleReferenceId = registerOutput<String>('googleReferenceId');
+    interconnect = registerOutput<String>('interconnect');
+    ipsecInternalAddresses = registerOutput<List<String>>('ipsecInternalAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    kind = registerOutput<String>('kind');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     mtu = registerOutput<int>('mtu');
     this.name = registerOutput<String>('name');
     operationalStatus = registerOutput<String>('operationalStatus');

@@ -37,7 +37,7 @@ class SecretVolumeSourceResponse {
 
   factory SecretVolumeSourceResponse.fromMap(Map<String, dynamic> map) {
     return SecretVolumeSourceResponse(
-      defaultMode: pulumi.Input.fromValue(map['defaultMode'] as int),
+      defaultMode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['defaultMode'])),
       items: pulumi.Input.fromValue(pulumi.Input.decodeList<KeyToPathResponse>(map['items']!, (value) => KeyToPathResponse.fromMap((value as Map).cast<String, dynamic>()))),
       optional: pulumi.Input.fromValue(map['optional'] as bool),
       secretName: pulumi.Input.fromValue(map['secretName'] as String),

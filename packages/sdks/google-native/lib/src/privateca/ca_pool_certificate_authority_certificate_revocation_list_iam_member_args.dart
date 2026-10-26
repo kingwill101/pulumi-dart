@@ -9,7 +9,7 @@ import '../accesscontextmanager/condition.dart';
 /// {@macro pulumi_privateca_v1_ca_pool_certificate_authority_certificate_revocation_list_iam_member_args_doc}
 class CaPoolCertificateAuthorityCertificateRevocationListIamMemberArgs {
   /// An IAM Condition for a given binding.
-  final pulumi.Input<Condition>? condition;
+  final pulumi.Input<Condition?>? condition;
   /// Identity that will be granted the privilege in role. The entry can have one of the following values:
   ///
   /// * user:{emailid}: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.

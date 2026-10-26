@@ -6,7 +6,7 @@ import 'google_cloud_datacatalog_v1_dataplex_spec.dart';
 /// Entry specyfication for a Dataplex fileset.
 class GoogleCloudDatacatalogV1DataplexFilesetSpec {
   /// Common Dataplex fields.
-  final pulumi.Input<GoogleCloudDatacatalogV1DataplexSpec>? dataplexSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1DataplexSpec?>? dataplexSpec;
 
   /// Creates a new [GoogleCloudDatacatalogV1DataplexFilesetSpec].
   /// [dataplexSpec] Common Dataplex fields.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NodeConfig for setting the min/max number of nodes associated with the environment.
 class GoogleCloudApigeeV1NodeConfig {
   /// Optional. The maximum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended maximum number of nodes for that gateway.
-  final pulumi.Input<String>? maxNodeCount;
+  final pulumi.Input<String?>? maxNodeCount;
   /// Optional. The minimum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended minimum number of nodes for that gateway.
-  final pulumi.Input<String>? minNodeCount;
+  final pulumi.Input<String?>? minNodeCount;
 
   /// Creates a new [GoogleCloudApigeeV1NodeConfig].
   /// [maxNodeCount] Optional. The maximum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended maximum number of nodes for that gateway.

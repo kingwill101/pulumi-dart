@@ -6,9 +6,9 @@ import 'fixed_or_percent_compute_beta.dart';
 /// Configuration that allows for slower scale in so that even if Autoscaler recommends an abrupt scale in of a MIG, it will be throttled as specified by the parameters below.
 class AutoscalingPolicyScaleInControlComputeBeta {
   /// Maximum allowed number (or %) of VMs that can be deducted from the peak recommendation during the window autoscaler looks at when computing recommendations. Possibly all these VMs can be deleted at once so user service needs to be prepared to lose that many VMs in one step.
-  final pulumi.Input<FixedOrPercentComputeBeta>? maxScaledInReplicas;
+  final pulumi.Input<FixedOrPercentComputeBeta?>? maxScaledInReplicas;
   /// How far back autoscaling looks when computing recommendations to include directives regarding slower scale in, as described above.
-  final pulumi.Input<int>? timeWindowSec;
+  final pulumi.Input<int?>? timeWindowSec;
 
   /// Creates a new [AutoscalingPolicyScaleInControlComputeBeta].
   /// [maxScaledInReplicas] Maximum allowed number (or %) of VMs that can be deducted from the peak recommendation during the window autoscaler looks at when computing recommendations. Possibly all these VMs can be deleted at once so user service needs to be prepared to lose that many VMs in one step.
@@ -28,7 +28,7 @@ class AutoscalingPolicyScaleInControlComputeBeta {
   factory AutoscalingPolicyScaleInControlComputeBeta.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyScaleInControlComputeBeta(
       maxScaledInReplicas: (() { final guardedValue = map['maxScaledInReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FixedOrPercentComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      timeWindowSec: (() { final guardedValue = map['timeWindowSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeWindowSec: (() { final guardedValue = map['timeWindowSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'ds_record_domains_v1beta1.dart';
 /// Configuration for an arbitrary DNS provider.
 class CustomDnsDomainsV1beta1 {
   /// The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
-  final pulumi.Input<List<DsRecordDomainsV1beta1>>? dsRecords;
+  final pulumi.Input<List<DsRecordDomainsV1beta1>?>? dsRecords;
   /// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
   final pulumi.Input<List<String>> nameServers;
 

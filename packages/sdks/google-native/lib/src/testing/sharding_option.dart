@@ -8,11 +8,11 @@ import 'uniform_sharding.dart';
 /// Options for enabling sharding.
 class ShardingOption {
   /// Shards test cases into the specified groups of packages, classes, and/or methods.
-  final pulumi.Input<ManualSharding>? manualSharding;
+  final pulumi.Input<ManualSharding?>? manualSharding;
   /// Shards test based on previous test case timing records.
-  final pulumi.Input<SmartSharding>? smartSharding;
+  final pulumi.Input<SmartSharding?>? smartSharding;
   /// Uniformly shards test cases given a total number of shards.
-  final pulumi.Input<UniformSharding>? uniformSharding;
+  final pulumi.Input<UniformSharding?>? uniformSharding;
 
   /// Creates a new [ShardingOption].
   /// [manualSharding] Shards test cases into the specified groups of packages, classes, and/or methods.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the service account which can be used to generate access token for authenticating the service call.
 class GoogleCloudIntegrationsV1alphaServiceAccountCredentials {
   /// A space-delimited list of requested scope permissions.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// Name of the service account that has the permission to make the request.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaServiceAccountCredentials].
   /// [scope] A space-delimited list of requested scope permissions.

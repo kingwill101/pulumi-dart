@@ -44,8 +44,33 @@ class NetworkPolicy extends pulumi.CustomResource {
           'google-native:vmwareengine/v1:NetworkPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'networkPolicyId', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    edgeServicesCidr = registerOutput<String>('edgeServicesCidr');
+    externalIp = registerOutput<NetworkServiceResponse>('externalIp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    internetAccess = registerOutput<NetworkServiceResponse>('internetAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkPolicyId = registerOutput<String>('networkPolicyId');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    vmwareEngineNetwork = registerOutput<String>('vmwareEngineNetwork');
+    vmwareEngineNetworkCanonical = registerOutput<String>('vmwareEngineNetworkCanonical');
+  }
+
+  /// Creates a typed reference to an existing [NetworkPolicy] resource.
+  NetworkPolicy.reference(String urn)
+    : super(
+        'google-native:vmwareengine/v1:NetworkPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     edgeServicesCidr = registerOutput<String>('edgeServicesCidr');

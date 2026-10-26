@@ -7,8 +7,8 @@ import 'in_toto_statement_containeranalysis_v1alpha1.dart';
 /// An occurrence describing an attestation on a resource
 class DSSEAttestationOccurrenceContaineranalysisV1alpha1 {
   /// If doing something security critical, make sure to verify the signatures in this metadata.
-  final pulumi.Input<EnvelopeContaineranalysisV1alpha1>? envelope;
-  final pulumi.Input<InTotoStatementContaineranalysisV1alpha1>? statement;
+  final pulumi.Input<EnvelopeContaineranalysisV1alpha1?>? envelope;
+  final pulumi.Input<InTotoStatementContaineranalysisV1alpha1?>? statement;
 
   /// Creates a new [DSSEAttestationOccurrenceContaineranalysisV1alpha1].
   /// [envelope] If doing something security critical, make sure to verify the signatures in this metadata.

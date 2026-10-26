@@ -33,8 +33,28 @@ class BillingAccountBucketLink extends pulumi.CustomResource {
           'google-native:logging/v2:BillingAccountBucketLink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['billingAccountId', 'bucketId', 'linkId', 'location']).merge(options),
         ) {
+    bigqueryDataset = registerOutput<BigQueryDatasetResponse>('bigqueryDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryDatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    billingAccountId = registerOutput<String>('billingAccountId');
+    bucketId = registerOutput<String>('bucketId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    lifecycleState = registerOutput<String>('lifecycleState');
+    linkId = registerOutput<String>('linkId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [BillingAccountBucketLink] resource.
+  BillingAccountBucketLink.reference(String urn)
+    : super(
+        'google-native:logging/v2:BillingAccountBucketLink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bigqueryDataset = registerOutput<BigQueryDatasetResponse>('bigqueryDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryDatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     billingAccountId = registerOutput<String>('billingAccountId');
     bucketId = registerOutput<String>('bucketId');

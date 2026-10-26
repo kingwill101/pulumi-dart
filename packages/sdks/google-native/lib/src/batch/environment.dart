@@ -6,11 +6,11 @@ import 'kmsenv_map.dart';
 /// An Environment describes a collection of environment variables to set when executing Tasks.
 class Environment {
   /// An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their values.
-  final pulumi.Input<KMSEnvMap>? encryptedVariables;
+  final pulumi.Input<KMSEnvMap?>? encryptedVariables;
   /// A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to set the value of each environment variable.
-  final pulumi.Input<Map<String, String>>? secretVariables;
+  final pulumi.Input<Map<String, String>?>? secretVariables;
   /// A map of environment variable names to values.
-  final pulumi.Input<Map<String, String>>? variables;
+  final pulumi.Input<Map<String, String>?>? variables;
 
   /// Creates a new [Environment].
   /// [encryptedVariables] An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their values.

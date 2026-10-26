@@ -6,9 +6,9 @@ import 'project_repo_id_containeranalysis_v1beta1.dart';
 /// A unique identifier for a Cloud Repo.
 class RepoIdContaineranalysisV1beta1 {
   /// A combination of a project ID and a repo name.
-  final pulumi.Input<ProjectRepoIdContaineranalysisV1beta1>? projectRepoId;
+  final pulumi.Input<ProjectRepoIdContaineranalysisV1beta1?>? projectRepoId;
   /// A server-assigned, globally unique identifier.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
 
   /// Creates a new [RepoIdContaineranalysisV1beta1].
   /// [projectRepoId] A combination of a project ID and a repo name.

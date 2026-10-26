@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Scheduler settings for standard environment.
 class StandardSchedulerSettings {
   /// Maximum number of instances to run for this version. Set to zero to disable max_instances configuration.
-  final pulumi.Input<int>? maxInstances;
+  final pulumi.Input<int?>? maxInstances;
   /// Minimum number of instances to run for this version. Set to zero to disable min_instances configuration.
-  final pulumi.Input<int>? minInstances;
+  final pulumi.Input<int?>? minInstances;
   /// Target CPU utilization ratio to maintain when scaling.
-  final pulumi.Input<double>? targetCpuUtilization;
+  final pulumi.Input<double?>? targetCpuUtilization;
   /// Target throughput utilization ratio to maintain when scaling
-  final pulumi.Input<double>? targetThroughputUtilization;
+  final pulumi.Input<double?>? targetThroughputUtilization;
 
   /// Creates a new [StandardSchedulerSettings].
   /// [maxInstances] Maximum number of instances to run for this version. Set to zero to disable max_instances configuration.
@@ -36,10 +36,10 @@ class StandardSchedulerSettings {
 
   factory StandardSchedulerSettings.fromMap(Map<String, dynamic> map) {
     return StandardSchedulerSettings(
-      maxInstances: (() { final guardedValue = map['maxInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minInstances: (() { final guardedValue = map['minInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      targetCpuUtilization: (() { final guardedValue = map['targetCpuUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      targetThroughputUtilization: (() { final guardedValue = map['targetThroughputUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxInstances: (() { final guardedValue = map['maxInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minInstances: (() { final guardedValue = map['minInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      targetCpuUtilization: (() { final guardedValue = map['targetCpuUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      targetThroughputUtilization: (() { final guardedValue = map['targetThroughputUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

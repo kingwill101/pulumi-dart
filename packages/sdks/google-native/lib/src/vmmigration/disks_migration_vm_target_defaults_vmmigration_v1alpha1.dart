@@ -9,31 +9,31 @@ import 'network_interface_vmmigration_v1alpha1.dart';
 /// Details for creation of a VM that migrated data disks will be attached to.
 class DisksMigrationVmTargetDefaultsVmmigrationV1alpha1 {
   /// Optional. Additional licenses to assign to the VM.
-  final pulumi.Input<List<String>>? additionalLicenses;
+  final pulumi.Input<List<String>?>? additionalLicenses;
   /// Optional. Details of the boot disk of the VM.
-  final pulumi.Input<BootDiskDefaultsVmmigrationV1alpha1>? bootDiskDefaults;
+  final pulumi.Input<BootDiskDefaultsVmmigrationV1alpha1?>? bootDiskDefaults;
   /// Optional. Compute instance scheduling information (if empty default is used).
-  final pulumi.Input<ComputeSchedulingVmmigrationV1alpha1>? computeScheduling;
+  final pulumi.Input<ComputeSchedulingVmmigrationV1alpha1?>? computeScheduling;
   /// Optional. The encryption to apply to the VM.
-  final pulumi.Input<EncryptionVmmigrationV1alpha1>? encryption;
+  final pulumi.Input<EncryptionVmmigrationV1alpha1?>? encryption;
   /// Optional. The hostname to assign to the VM.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Optional. A map of labels to associate with the VM.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The machine type to create the VM with.
   final pulumi.Input<String> machineType;
   /// Optional. The machine type series to create the VM with. For presentation only.
-  final pulumi.Input<String>? machineTypeSeries;
+  final pulumi.Input<String?>? machineTypeSeries;
   /// Optional. The metadata key/value pairs to assign to the VM.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// Optional. NICs to attach to the VM.
-  final pulumi.Input<List<NetworkInterfaceVmmigrationV1alpha1>>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterfaceVmmigrationV1alpha1>?>? networkInterfaces;
   /// Optional. A list of network tags to associate with the VM.
-  final pulumi.Input<List<String>>? networkTags;
+  final pulumi.Input<List<String>?>? networkTags;
   /// Optional. Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
-  final pulumi.Input<bool>? secureBoot;
+  final pulumi.Input<bool?>? secureBoot;
   /// Optional. The service account to associate the VM with.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// The name of the VM to create.
   final pulumi.Input<String> vmName;
 

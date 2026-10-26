@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Service Account used as a credential.
 class ServiceAccountDeploymentmanagerV2beta {
   /// The IAM service account email address like test@myproject.iam.gserviceaccount.com
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
 
   /// Creates a new [ServiceAccountDeploymentmanagerV2beta].
   /// [email] The IAM service account email address like test@myproject.iam.gserviceaccount.com

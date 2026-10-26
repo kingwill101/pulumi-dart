@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields.
-enum FirewallDirection {
+enum FirewallDirection implements pulumi.PulumiEnum<String> {
   egress("EGRESS"),
   ingress("INGRESS");
 
   const FirewallDirection(this.wireValue);
+  @override
   final String wireValue;
 
   static FirewallDirection fromValue(String value) {

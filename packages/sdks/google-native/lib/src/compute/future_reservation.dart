@@ -55,8 +55,37 @@ class FutureReservation extends pulumi.CustomResource {
           'google-native:compute/alpha:FutureReservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'zone']).merge(options),
         ) {
+    autoCreatedReservationsDeleteTime = registerOutput<String>('autoCreatedReservationsDeleteTime');
+    autoCreatedReservationsDuration = registerOutput<DurationResponse>('autoCreatedReservationsDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoDeleteAutoCreatedReservations = registerOutput<bool>('autoDeleteAutoCreatedReservations');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    planningStatus = registerOutput<String>('planningStatus');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    shareSettings = registerOutput<ShareSettingsResponse>('shareSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ShareSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    specificSkuProperties = registerOutput<FutureReservationSpecificSKUPropertiesResponse>('specificSkuProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationSpecificSKUPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<FutureReservationStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeWindow = registerOutput<FutureReservationTimeWindowResponse>('timeWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationTimeWindowResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [FutureReservation] resource.
+  FutureReservation.reference(String urn)
+    : super(
+        'google-native:compute/alpha:FutureReservation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoCreatedReservationsDeleteTime = registerOutput<String>('autoCreatedReservationsDeleteTime');
     autoCreatedReservationsDuration = registerOutput<DurationResponse>('autoCreatedReservationsDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoDeleteAutoCreatedReservations = registerOutput<bool>('autoDeleteAutoCreatedReservations');

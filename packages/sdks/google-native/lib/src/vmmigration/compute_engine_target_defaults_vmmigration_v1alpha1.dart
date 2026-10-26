@@ -10,39 +10,39 @@ import 'network_interface_vmmigration_v1alpha1.dart';
 /// ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
 class ComputeEngineTargetDefaultsVmmigrationV1alpha1 {
   /// Additional licenses to assign to the VM.
-  final pulumi.Input<List<String>>? additionalLicenses;
+  final pulumi.Input<List<String>?>? additionalLicenses;
   /// Compute instance scheduling information (if empty default is used).
-  final pulumi.Input<ComputeSchedulingVmmigrationV1alpha1>? computeScheduling;
+  final pulumi.Input<ComputeSchedulingVmmigrationV1alpha1?>? computeScheduling;
   /// The disk type to use in the VM.
-  final pulumi.Input<ComputeEngineTargetDefaultsDiskTypeVmmigrationV1alpha1>? diskType;
+  final pulumi.Input<ComputeEngineTargetDefaultsDiskTypeVmmigrationV1alpha1?>? diskType;
   /// Optional. Immutable. The encryption to apply to the VM disks.
-  final pulumi.Input<EncryptionVmmigrationV1alpha1>? encryption;
+  final pulumi.Input<EncryptionVmmigrationV1alpha1?>? encryption;
   /// The hostname to assign to the VM.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// A map of labels to associate with the VM.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The license type to use in OS adaptation.
-  final pulumi.Input<ComputeEngineTargetDefaultsLicenseTypeVmmigrationV1alpha1>? licenseType;
+  final pulumi.Input<ComputeEngineTargetDefaultsLicenseTypeVmmigrationV1alpha1?>? licenseType;
   /// The machine type to create the VM with.
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// The machine type series to create the VM with.
-  final pulumi.Input<String>? machineTypeSeries;
+  final pulumi.Input<String?>? machineTypeSeries;
   /// The metadata key/value pairs to assign to the VM.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// List of NICs connected to this VM.
-  final pulumi.Input<List<NetworkInterfaceVmmigrationV1alpha1>>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterfaceVmmigrationV1alpha1>?>? networkInterfaces;
   /// A list of network tags to associate with the VM.
-  final pulumi.Input<List<String>>? networkTags;
+  final pulumi.Input<List<String>?>? networkTags;
   /// Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
-  final pulumi.Input<bool>? secureBoot;
+  final pulumi.Input<bool?>? secureBoot;
   /// The service account to associate the VM with.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
-  final pulumi.Input<String>? targetProject;
+  final pulumi.Input<String?>? targetProject;
   /// The name of the VM to create.
-  final pulumi.Input<String>? vmName;
+  final pulumi.Input<String?>? vmName;
   /// The zone in which to create the VM.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [ComputeEngineTargetDefaultsVmmigrationV1alpha1].
   /// [additionalLicenses] Additional licenses to assign to the VM.

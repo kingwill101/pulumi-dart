@@ -26,7 +26,7 @@ class GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse {
 
   factory GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse(
-      size: pulumi.Input.fromValue(map['size'] as double),
+      size: pulumi.Input.fromValue((map['size'] as num).toDouble()),
       unit: pulumi.Input.fromValue(map['unit'] as String),
     );
   }

@@ -5,17 +5,17 @@ import 'security_policy_rule_preconfigured_waf_config_exclusion_field_params_com
 
 class SecurityPolicyRulePreconfiguredWafConfigExclusionComputeBeta {
   /// A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
-  final pulumi.Input<List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta>>? requestCookiesToExclude;
+  final pulumi.Input<List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta>?>? requestCookiesToExclude;
   /// A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
-  final pulumi.Input<List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta>>? requestHeadersToExclude;
+  final pulumi.Input<List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta>?>? requestHeadersToExclude;
   /// A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
-  final pulumi.Input<List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta>>? requestQueryParamsToExclude;
+  final pulumi.Input<List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta>?>? requestQueryParamsToExclude;
   /// A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
-  final pulumi.Input<List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta>>? requestUrisToExclude;
+  final pulumi.Input<List<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta>?>? requestUrisToExclude;
   /// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-  final pulumi.Input<List<String>>? targetRuleIds;
+  final pulumi.Input<List<String>?>? targetRuleIds;
   /// Target WAF rule set to apply the preconfigured WAF exclusion.
-  final pulumi.Input<String>? targetRuleSet;
+  final pulumi.Input<String?>? targetRuleSet;
 
   /// Creates a new [SecurityPolicyRulePreconfiguredWafConfigExclusionComputeBeta].
   /// [requestCookiesToExclude] A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.

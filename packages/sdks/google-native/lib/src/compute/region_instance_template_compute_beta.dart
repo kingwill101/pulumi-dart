@@ -38,8 +38,30 @@ class RegionInstanceTemplateComputeBeta extends pulumi.CustomResource {
           'google-native:compute/beta:RegionInstanceTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    properties = registerOutput<InstancePropertiesResponseComputeBeta>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePropertiesResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    sourceInstance = registerOutput<String>('sourceInstance');
+    sourceInstanceParams = registerOutput<SourceInstanceParamsResponseComputeBeta>('sourceInstanceParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceInstanceParamsResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [RegionInstanceTemplateComputeBeta] resource.
+  RegionInstanceTemplateComputeBeta.reference(String urn)
+    : super(
+        'google-native:compute/beta:RegionInstanceTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     kind = registerOutput<String>('kind');

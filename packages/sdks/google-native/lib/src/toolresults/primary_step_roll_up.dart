@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Rollup test status of multiple steps that were run with the same configuration as a group.
-enum PrimaryStepRollUp {
+enum PrimaryStepRollUp implements pulumi.PulumiEnum<String> {
   unset("unset"),
   success("success"),
   failure("failure"),
@@ -8,6 +10,7 @@ enum PrimaryStepRollUp {
   flaky("flaky");
 
   const PrimaryStepRollUp(this.wireValue);
+  @override
   final String wireValue;
 
   static PrimaryStepRollUp fromValue(String value) {

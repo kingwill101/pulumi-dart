@@ -44,6 +44,17 @@ Future<GetSchemaResult> getSchema(
   return GetSchemaResult.fromMap(result);
 }
 
+pulumi.Output<GetSchemaResult> getSchemaOutput(
+  GetSchemaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:pubsub/v1:getSchema',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSchemaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_pubsub_v1_get_schema_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -58,6 +69,17 @@ Future<GetSchemaIamPolicyResult> getSchemaIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSchemaIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetSchemaIamPolicyResult> getSchemaIamPolicyOutput(
+  GetSchemaIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:pubsub/v1:getSchemaIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSchemaIamPolicyResult.fromMap);
 }
 
 /// Gets the configuration details of a snapshot. Snapshots are used in [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot.
@@ -76,6 +98,17 @@ Future<GetSnapshotResult> getSnapshot(
   return GetSnapshotResult.fromMap(result);
 }
 
+pulumi.Output<GetSnapshotResult> getSnapshotOutput(
+  GetSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:pubsub/v1:getSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_pubsub_v1_get_snapshot_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -90,6 +123,17 @@ Future<GetSnapshotIamPolicyResult> getSnapshotIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSnapshotIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetSnapshotIamPolicyResult> getSnapshotIamPolicyOutput(
+  GetSnapshotIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:pubsub/v1:getSnapshotIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotIamPolicyResult.fromMap);
 }
 
 /// Gets the configuration details of a subscription.
@@ -108,6 +152,17 @@ Future<GetSubscriptionResult> getSubscription(
   return GetSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetSubscriptionResult> getSubscriptionOutput(
+  GetSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:pubsub/v1:getSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_pubsub_v1_get_subscription_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -122,6 +177,17 @@ Future<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubscriptionIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicyOutput(
+  GetSubscriptionIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:pubsub/v1:getSubscriptionIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionIamPolicyResult.fromMap);
 }
 
 /// Gets the configuration of a topic.
@@ -140,6 +206,17 @@ Future<GetTopicResult> getTopic(
   return GetTopicResult.fromMap(result);
 }
 
+pulumi.Output<GetTopicResult> getTopicOutput(
+  GetTopicArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:pubsub/v1:getTopic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTopicResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_pubsub_v1_get_topic_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -154,6 +231,17 @@ Future<GetTopicIamPolicyResult> getTopicIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTopicIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetTopicIamPolicyResult> getTopicIamPolicyOutput(
+  GetTopicIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:pubsub/v1:getTopicIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTopicIamPolicyResult.fromMap);
 }
 
 /// Gets the configuration details of a subscription.
@@ -172,6 +260,17 @@ Future<GetSubscriptionPubsubV1beta1aResult> getSubscriptionPubsubV1beta1a(
   return GetSubscriptionPubsubV1beta1aResult.fromMap(result);
 }
 
+pulumi.Output<GetSubscriptionPubsubV1beta1aResult> getSubscriptionPubsubV1beta1aOutput(
+  GetSubscriptionPubsubV1beta1aArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:pubsub/v1beta1a:getSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionPubsubV1beta1aResult.fromMap);
+}
+
 /// Gets the configuration of a topic. Since the topic only has the name attribute, this method is only useful to check the existence of a topic. If other attributes are added in the future, they will be returned here.
 /// [args] Arguments passed to this invoke. {@macro pulumi_pubsub_v1beta1a_get_topic_pubsub_v1beta1a_args_doc}
 /// [options] Invoke options controlling this call.
@@ -186,6 +285,17 @@ Future<GetTopicPubsubV1beta1aResult> getTopicPubsubV1beta1a(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTopicPubsubV1beta1aResult.fromMap(result);
+}
+
+pulumi.Output<GetTopicPubsubV1beta1aResult> getTopicPubsubV1beta1aOutput(
+  GetTopicPubsubV1beta1aArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:pubsub/v1beta1a:getTopic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTopicPubsubV1beta1aResult.fromMap);
 }
 
 /// Gets the configuration details of a subscription.
@@ -204,6 +314,17 @@ Future<GetSubscriptionPubsubV1beta2Result> getSubscriptionPubsubV1beta2(
   return GetSubscriptionPubsubV1beta2Result.fromMap(result);
 }
 
+pulumi.Output<GetSubscriptionPubsubV1beta2Result> getSubscriptionPubsubV1beta2Output(
+  GetSubscriptionPubsubV1beta2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:pubsub/v1beta2:getSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionPubsubV1beta2Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_pubsub_v1beta2_get_subscription_iam_policy_pubsub_v1beta2_args_doc}
 /// [options] Invoke options controlling this call.
@@ -218,6 +339,17 @@ Future<GetSubscriptionIamPolicyPubsubV1beta2Result> getSubscriptionIamPolicyPubs
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubscriptionIamPolicyPubsubV1beta2Result.fromMap(result);
+}
+
+pulumi.Output<GetSubscriptionIamPolicyPubsubV1beta2Result> getSubscriptionIamPolicyPubsubV1beta2Output(
+  GetSubscriptionIamPolicyPubsubV1beta2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:pubsub/v1beta2:getSubscriptionIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionIamPolicyPubsubV1beta2Result.fromMap);
 }
 
 /// Gets the configuration of a topic.
@@ -236,6 +368,17 @@ Future<GetTopicPubsubV1beta2Result> getTopicPubsubV1beta2(
   return GetTopicPubsubV1beta2Result.fromMap(result);
 }
 
+pulumi.Output<GetTopicPubsubV1beta2Result> getTopicPubsubV1beta2Output(
+  GetTopicPubsubV1beta2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:pubsub/v1beta2:getTopic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTopicPubsubV1beta2Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_pubsub_v1beta2_get_topic_iam_policy_pubsub_v1beta2_args_doc}
 /// [options] Invoke options controlling this call.
@@ -250,4 +393,15 @@ Future<GetTopicIamPolicyPubsubV1beta2Result> getTopicIamPolicyPubsubV1beta2(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTopicIamPolicyPubsubV1beta2Result.fromMap(result);
+}
+
+pulumi.Output<GetTopicIamPolicyPubsubV1beta2Result> getTopicIamPolicyPubsubV1beta2Output(
+  GetTopicIamPolicyPubsubV1beta2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:pubsub/v1beta2:getTopicIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTopicIamPolicyPubsubV1beta2Result.fromMap);
 }

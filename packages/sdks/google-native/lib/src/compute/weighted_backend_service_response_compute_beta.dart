@@ -34,7 +34,7 @@ class WeightedBackendServiceResponseComputeBeta {
     return WeightedBackendServiceResponseComputeBeta(
       backendService: pulumi.Input.fromValue(map['backendService'] as String),
       headerAction: pulumi.Input.fromValue(HttpHeaderActionResponseComputeBeta.fromMap((map['headerAction']! as Map).cast<String, dynamic>())),
-      weight: pulumi.Input.fromValue(map['weight'] as int),
+      weight: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['weight'])),
     );
   }
 }

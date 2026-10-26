@@ -57,7 +57,7 @@ class Restore extends pulumi.CustomResource {
           'google-native:gkebackup/v1:Restore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'restoreId', 'restorePlanId']).merge(options),
         ) {
     backup = registerOutput<String>('backup');
     cluster = registerOutput<String>('cluster');
@@ -65,7 +65,39 @@ class Restore extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    resourcesExcludedCount = registerOutput<int>('resourcesExcludedCount');
+    resourcesFailedCount = registerOutput<int>('resourcesFailedCount');
+    resourcesRestoredCount = registerOutput<int>('resourcesRestoredCount');
+    restoreConfig = registerOutput<RestoreConfigResponse>('restoreConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoreConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    restoreId = registerOutput<String>('restoreId');
+    restorePlanId = registerOutput<String>('restorePlanId');
+    state = registerOutput<String>('state');
+    stateReason = registerOutput<String>('stateReason');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    volumesRestoredCount = registerOutput<int>('volumesRestoredCount');
+  }
+
+  /// Creates a typed reference to an existing [Restore] resource.
+  Restore.reference(String urn)
+    : super(
+        'google-native:gkebackup/v1:Restore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backup = registerOutput<String>('backup');
+    cluster = registerOutput<String>('cluster');
+    completeTime = registerOutput<String>('completeTime');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

@@ -61,7 +61,7 @@ class GooglePrivacyDlpV2ValueResponse {
       booleanValue: pulumi.Input.fromValue(map['booleanValue'] as bool),
       dateValue: pulumi.Input.fromValue(GoogleTypeDateResponse.fromMap((map['dateValue']! as Map).cast<String, dynamic>())),
       dayOfWeekValue: pulumi.Input.fromValue(map['dayOfWeekValue'] as String),
-      floatValue: pulumi.Input.fromValue(map['floatValue'] as double),
+      floatValue: pulumi.Input.fromValue((map['floatValue'] as num).toDouble()),
       integerValue: pulumi.Input.fromValue(map['integerValue'] as String),
       stringValue: pulumi.Input.fromValue(map['stringValue'] as String),
       timeValue: pulumi.Input.fromValue(GoogleTypeTimeOfDayResponse.fromMap((map['timeValue']! as Map).cast<String, dynamic>())),

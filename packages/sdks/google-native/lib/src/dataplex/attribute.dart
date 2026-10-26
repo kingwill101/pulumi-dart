@@ -48,7 +48,7 @@ class Attribute extends pulumi.CustomResource {
           'google-native:dataplex/v1:Attribute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['dataAttributeId', 'dataTaxonomyId', 'location', 'project']).merge(options),
         ) {
     attributeCount = registerOutput<int>('attributeCount');
     createTime = registerOutput<String>('createTime');
@@ -58,7 +58,34 @@ class Attribute extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    parentId = registerOutput<String>('parentId');
+    project = registerOutput<String>('project');
+    resourceAccessSpec = registerOutput<GoogleCloudDataplexV1ResourceAccessSpecResponse>('resourceAccessSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1ResourceAccessSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Attribute] resource.
+  Attribute.reference(String urn)
+    : super(
+        'google-native:dataplex/v1:Attribute',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attributeCount = registerOutput<int>('attributeCount');
+    createTime = registerOutput<String>('createTime');
+    dataAccessSpec = registerOutput<GoogleCloudDataplexV1DataAccessSpecResponse>('dataAccessSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1DataAccessSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataAttributeId = registerOutput<String>('dataAttributeId');
+    dataTaxonomyId = registerOutput<String>('dataTaxonomyId');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     parentId = registerOutput<String>('parentId');

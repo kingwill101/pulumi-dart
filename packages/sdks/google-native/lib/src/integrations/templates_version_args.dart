@@ -14,29 +14,29 @@ import 'templates_version_database_persistence_policy.dart';
 /// {@macro pulumi_integrations_v1alpha_templates_version_args_doc}
 class TemplatesVersionArgs {
   /// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
-  final pulumi.Input<TemplatesVersionDatabasePersistencePolicy>? databasePersistencePolicy;
+  final pulumi.Input<TemplatesVersionDatabasePersistencePolicy?>? databasePersistencePolicy;
   /// Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
-  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaErrorCatcherConfig>>? errorCatcherConfigs;
+  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaErrorCatcherConfig>?>? errorCatcherConfigs;
   final pulumi.Input<String> integrationtemplateId;
   /// Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-  final pulumi.Input<String>? lastModifierEmail;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? lastModifierEmail;
+  final pulumi.Input<String?>? location;
   /// Optional. ID of the IntegrationVersion that was used to create this IntegrationTemplateVersion
-  final pulumi.Input<String>? parentIntegrationVersionId;
+  final pulumi.Input<String?>? parentIntegrationVersionId;
   final pulumi.Input<String> productId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Optional. Task configuration for the IntegrationTemplateVersion. It's optional, but the IntegrationTemplateVersion doesn't do anything without task_configs.
-  final pulumi.Input<List<EnterpriseCrmFrontendsEventbusProtoTaskConfig>>? taskConfigs;
+  final pulumi.Input<List<EnterpriseCrmFrontendsEventbusProtoTaskConfig>?>? taskConfigs;
   /// Optional. Contains a graph of tasks that will be executed before putting the event in a terminal state (SUCCEEDED/FAILED/FATAL), regardless of success or failure, similar to "finally" in code.
-  final pulumi.Input<EnterpriseCrmEventbusProtoTeardown>? teardown;
+  final pulumi.Input<EnterpriseCrmEventbusProtoTeardown?>? teardown;
   /// Optional. Parameters that are expected to be passed to the IntegrationTemplateVersion when an event is triggered. This consists of all the parameters that are expected in the IntegrationTemplateVersion execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoWorkflowParameters>? templateParameters;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoWorkflowParameters?>? templateParameters;
   /// Optional. Trigger configurations.
-  final pulumi.Input<List<EnterpriseCrmFrontendsEventbusProtoTriggerConfig>>? triggerConfigs;
+  final pulumi.Input<List<EnterpriseCrmFrontendsEventbusProtoTriggerConfig>?>? triggerConfigs;
   /// Optional. A user-defined label that annotates an integration version. Typically, this is only set when the integration version is created.
-  final pulumi.Input<String>? userLabel;
+  final pulumi.Input<String?>? userLabel;
 
   /// Creates a new [TemplatesVersionArgs].
   /// [databasePersistencePolicy] Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.

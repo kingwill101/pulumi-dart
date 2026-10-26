@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Collection of [GCP labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels).
 class ResourceLabels {
   /// Map of node label keys and node label values.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
 
   /// Creates a new [ResourceLabels].
   /// [labels] Map of node label keys and node label values.

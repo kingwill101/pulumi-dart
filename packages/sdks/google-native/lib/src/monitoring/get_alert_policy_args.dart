@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_monitoring_v3_get_alert_policy_args_doc}
 class GetAlertPolicyArgs {
   final pulumi.Input<String> alertPolicyId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAlertPolicyArgs].
   /// [alertPolicyId] Required.

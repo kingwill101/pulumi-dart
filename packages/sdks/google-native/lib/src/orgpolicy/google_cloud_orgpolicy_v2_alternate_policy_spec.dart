@@ -6,9 +6,9 @@ import 'google_cloud_orgpolicy_v2_policy_spec.dart';
 /// Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
 class GoogleCloudOrgpolicyV2AlternatePolicySpec {
   /// Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
-  final pulumi.Input<String>? launch;
+  final pulumi.Input<String?>? launch;
   /// Specify constraint for configurations of Google Cloud resources.
-  final pulumi.Input<GoogleCloudOrgpolicyV2PolicySpec>? spec;
+  final pulumi.Input<GoogleCloudOrgpolicyV2PolicySpec?>? spec;
 
   /// Creates a new [GoogleCloudOrgpolicyV2AlternatePolicySpec].
   /// [launch] Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.

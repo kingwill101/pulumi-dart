@@ -6,13 +6,13 @@ import 'start_activity_intent.dart';
 /// Message for specifying the start activities to crawl.
 class RoboStartingIntent {
   /// An intent that starts the main launcher activity.
-  final pulumi.Input<Map<String, dynamic>>? launcherActivity;
+  final pulumi.Input<Map<String, dynamic>?>? launcherActivity;
   /// Skips the starting activity
-  final pulumi.Input<Map<String, dynamic>>? noActivity;
+  final pulumi.Input<Map<String, dynamic>?>? noActivity;
   /// An intent that starts an activity with specific details.
-  final pulumi.Input<StartActivityIntent>? startActivity;
+  final pulumi.Input<StartActivityIntent?>? startActivity;
   /// Timeout in seconds for each intent.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [RoboStartingIntent].
   /// [launcherActivity] An intent that starts the main launcher activity.

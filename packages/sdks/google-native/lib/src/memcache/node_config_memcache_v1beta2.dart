@@ -26,8 +26,8 @@ class NodeConfigMemcacheV1beta2 {
 
   factory NodeConfigMemcacheV1beta2.fromMap(Map<String, dynamic> map) {
     return NodeConfigMemcacheV1beta2(
-      cpuCount: pulumi.Input.fromValue(map['cpuCount'] as int),
-      memorySizeMb: pulumi.Input.fromValue(map['memorySizeMb'] as int),
+      cpuCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cpuCount'])),
+      memorySizeMb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memorySizeMb'])),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A Cloud Storage source of conversation data.
 class GoogleCloudContactcenterinsightsV1GcsSource {
   /// Cloud Storage URI that points to a file that contains the conversation audio.
-  final pulumi.Input<String>? audioUri;
+  final pulumi.Input<String?>? audioUri;
   /// Immutable. Cloud Storage URI that points to a file that contains the conversation transcript.
-  final pulumi.Input<String>? transcriptUri;
+  final pulumi.Input<String?>? transcriptUri;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1GcsSource].
   /// [audioUri] Cloud Storage URI that points to a file that contains the conversation audio.

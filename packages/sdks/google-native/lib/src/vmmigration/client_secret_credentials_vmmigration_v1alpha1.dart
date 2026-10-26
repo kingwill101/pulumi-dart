@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Message describing Azure Credentials using tenant ID, client ID and secret.
 class ClientSecretCredentialsVmmigrationV1alpha1 {
   /// Azure client ID.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Input only. Azure client secret.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Azure tenant ID.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ClientSecretCredentialsVmmigrationV1alpha1].
   /// [clientId] Azure client ID.

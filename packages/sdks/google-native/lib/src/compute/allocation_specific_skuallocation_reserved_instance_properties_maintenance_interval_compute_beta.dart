@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-enum AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalComputeBeta {
+enum AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalComputeBeta implements pulumi.PulumiEnum<String> {
   asNeeded("AS_NEEDED"),
   periodic("PERIODIC"),
   recurrent("RECURRENT");
 
   const AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalComputeBeta fromValue(String value) {

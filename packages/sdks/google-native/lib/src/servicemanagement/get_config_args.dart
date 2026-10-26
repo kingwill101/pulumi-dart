@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigArgs {
   final pulumi.Input<String> configId;
   final pulumi.Input<String> serviceName;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetConfigArgs].
   /// [configId] Required.

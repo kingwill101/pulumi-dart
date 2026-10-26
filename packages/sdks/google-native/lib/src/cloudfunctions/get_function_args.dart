@@ -9,8 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFunctionArgs {
   final pulumi.Input<String> functionId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? versionId;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? versionId;
 
   /// Creates a new [GetFunctionArgs].
   /// [functionId] Required.

@@ -6,7 +6,7 @@ import 'google_cloud_identitytoolkit_admin_v2_request_logging.dart';
 /// Configuration related to monitoring project activity.
 class GoogleCloudIdentitytoolkitAdminV2MonitoringConfig {
   /// Configuration for logging requests made to this project to Stackdriver Logging
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2RequestLogging>? requestLogging;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2RequestLogging?>? requestLogging;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2MonitoringConfig].
   /// [requestLogging] Configuration for logging requests made to this project to Stackdriver Logging

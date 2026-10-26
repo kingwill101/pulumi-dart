@@ -37,7 +37,7 @@ class YarnApplicationResponse {
   factory YarnApplicationResponse.fromMap(Map<String, dynamic> map) {
     return YarnApplicationResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      progress: pulumi.Input.fromValue(map['progress'] as double),
+      progress: pulumi.Input.fromValue((map['progress'] as num).toDouble()),
       state: pulumi.Input.fromValue(map['state'] as String),
       trackingUrl: pulumi.Input.fromValue(map['trackingUrl'] as String),
     );

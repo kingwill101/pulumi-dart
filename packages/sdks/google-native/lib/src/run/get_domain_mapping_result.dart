@@ -7,15 +7,15 @@ import 'object_meta_response.dart';
 /// Result data returned by getDomainMapping.
 class GetDomainMappingResult {
   /// The API version for this call such as "domains.cloudrun.com/v1".
-  final String apiVersion;
+  final String? apiVersion;
   /// The kind of resource, in this case "DomainMapping".
-  final String kind;
+  final String? kind;
   /// Metadata associated with this BuildTemplate.
-  final ObjectMetaResponse metadata;
+  final ObjectMetaResponse? metadata;
   /// The spec for this DomainMapping.
-  final DomainMappingSpecResponse spec;
+  final DomainMappingSpecResponse? spec;
   /// The current status of the DomainMapping.
-  final DomainMappingStatusResponse status;
+  final DomainMappingStatusResponse? status;
 
   /// Creates a new [GetDomainMappingResult].
   /// [apiVersion] The API version for this call such as "domains.cloudrun.com/v1".
@@ -24,30 +24,30 @@ class GetDomainMappingResult {
   /// [spec] The spec for this DomainMapping.
   /// [status] The current status of the DomainMapping.
   const GetDomainMappingResult({
-    required this.apiVersion,
-    required this.kind,
-    required this.metadata,
-    required this.spec,
-    required this.status,
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.spec,
+    this.status,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiVersion': apiVersion,
-      'kind': kind,
-      'metadata': metadata.toMap(),
-      'spec': spec.toMap(),
-      'status': status.toMap(),
+      'apiVersion': ?apiVersion,
+      'kind': ?kind,
+      'metadata': ?metadata?.toMap(),
+      'spec': ?spec?.toMap(),
+      'status': ?status?.toMap(),
     };
   }
 
   factory GetDomainMappingResult.fromMap(Map<String, dynamic> map) {
     return GetDomainMappingResult(
-      apiVersion: map['apiVersion'] as String,
-      kind: map['kind'] as String,
-      metadata: ObjectMetaResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
-      spec: DomainMappingSpecResponse.fromMap((map['spec']! as Map).cast<String, dynamic>()),
-      status: DomainMappingStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>()),
+      apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return ObjectMetaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return DomainMappingSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return DomainMappingStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

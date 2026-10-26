@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
-enum ExecutionTemplateScaleTier {
+enum ExecutionTemplateScaleTier implements pulumi.PulumiEnum<String> {
   scaleTierUnspecified("SCALE_TIER_UNSPECIFIED"),
   basic("BASIC"),
   standard1("STANDARD_1"),
@@ -9,6 +11,7 @@ enum ExecutionTemplateScaleTier {
   custom("CUSTOM");
 
   const ExecutionTemplateScaleTier(this.wireValue);
+  @override
   final String wireValue;
 
   static ExecutionTemplateScaleTier fromValue(String value) {

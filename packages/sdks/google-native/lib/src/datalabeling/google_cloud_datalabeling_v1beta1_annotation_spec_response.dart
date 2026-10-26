@@ -33,7 +33,7 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpecResponse {
     return GoogleCloudDatalabelingV1beta1AnnotationSpecResponse(
       description: pulumi.Input.fromValue(map['description'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      index: pulumi.Input.fromValue(map['index'] as int),
+      index: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['index'])),
     );
   }
 }

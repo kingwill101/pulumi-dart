@@ -58,9 +58,9 @@ class DimensionResponse {
     return DimensionResponse(
       column: pulumi.Input.fromValue(map['column'] as String),
       columnType: pulumi.Input.fromValue(map['columnType'] as String),
-      floatBinSize: pulumi.Input.fromValue(map['floatBinSize'] as double),
-      maxBinCount: pulumi.Input.fromValue(map['maxBinCount'] as int),
-      numericBinSize: pulumi.Input.fromValue(map['numericBinSize'] as int),
+      floatBinSize: pulumi.Input.fromValue((map['floatBinSize'] as num).toDouble()),
+      maxBinCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxBinCount'])),
+      numericBinSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numericBinSize'])),
       sortColumn: pulumi.Input.fromValue(map['sortColumn'] as String),
       sortOrder: pulumi.Input.fromValue(map['sortOrder'] as String),
       timeBinSize: pulumi.Input.fromValue(map['timeBinSize'] as String),

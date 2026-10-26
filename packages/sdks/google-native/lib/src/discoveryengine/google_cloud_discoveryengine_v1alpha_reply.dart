@@ -7,11 +7,11 @@ import 'google_cloud_discoveryengine_v1alpha_search_response_summary.dart';
 /// Defines a reply message to user.
 class GoogleCloudDiscoveryengineV1alphaReply {
   /// References in the reply.
-  final pulumi.Input<List<GoogleCloudDiscoveryengineV1alphaReplyReference>>? references;
+  final pulumi.Input<List<GoogleCloudDiscoveryengineV1alphaReplyReference>?>? references;
   /// DEPRECATED: use `summary` instead. Text reply.
-  final pulumi.Input<String>? reply;
+  final pulumi.Input<String?>? reply;
   /// Summary based on search results.
-  final pulumi.Input<GoogleCloudDiscoveryengineV1alphaSearchResponseSummary>? summary;
+  final pulumi.Input<GoogleCloudDiscoveryengineV1alphaSearchResponseSummary?>? summary;
 
   /// Creates a new [GoogleCloudDiscoveryengineV1alphaReply].
   /// [references] References in the reply.

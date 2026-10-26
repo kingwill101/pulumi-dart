@@ -7,9 +7,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_dns_v1_get_policy_args_doc}
 class GetPolicyArgs {
-  final pulumi.Input<String>? clientOperationId;
+  final pulumi.Input<String?>? clientOperationId;
   final pulumi.Input<String> policy;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetPolicyArgs].
   /// [clientOperationId] Optional.

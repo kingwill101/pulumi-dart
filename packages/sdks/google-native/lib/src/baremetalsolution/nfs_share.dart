@@ -1,10 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'allowed_client_response.dart';
 import 'nfs_share_args.dart';
 
 /// Create an NFS share.
 class NfsShare extends pulumi.CustomResource {
   /// List of allowed access points.
-  late final pulumi.Output<List<Map<String, dynamic>>> allowedClients;
+  late final pulumi.Output<List<AllowedClientResponse>> allowedClients;
   /// Labels as key value pairs.
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
@@ -36,10 +37,32 @@ class NfsShare extends pulumi.CustomResource {
           'google-native:baremetalsolution/v2:NfsShare',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
-    allowedClients = registerOutput<List<Map<String, dynamic>>>('allowedClients');
-    labels = registerOutput<Map<String, String>>('labels');
+    allowedClients = registerOutput<List<AllowedClientResponse>>('allowedClients', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AllowedClientResponse>(guardedValue, (value) => AllowedClientResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nfsShareId = registerOutput<String>('nfsShareId');
+    pod = registerOutput<String>('pod');
+    project = registerOutput<String>('project');
+    requestedSizeGib = registerOutput<String>('requestedSizeGib');
+    state = registerOutput<String>('state');
+    storageType = registerOutput<String>('storageType');
+    volume = registerOutput<String>('volume');
+  }
+
+  /// Creates a typed reference to an existing [NfsShare] resource.
+  NfsShare.reference(String urn)
+    : super(
+        'google-native:baremetalsolution/v2:NfsShare',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedClients = registerOutput<List<AllowedClientResponse>>('allowedClients', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AllowedClientResponse>(guardedValue, (value) => AllowedClientResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     nfsShareId = registerOutput<String>('nfsShareId');

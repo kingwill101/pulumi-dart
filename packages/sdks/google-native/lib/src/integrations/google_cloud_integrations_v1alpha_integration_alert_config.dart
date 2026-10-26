@@ -8,23 +8,23 @@ import 'google_cloud_integrations_v1alpha_integration_alert_config_threshold_val
 /// Message to be used to configure custom alerting in the {@code EventConfig} protos for an event.
 class GoogleCloudIntegrationsV1alphaIntegrationAlertConfig {
   /// The period over which the metric value should be aggregated and evaluated. Format is , where integer should be a positive integer and unit should be one of (s,m,h,d,w) meaning (second, minute, hour, day, week). For an EXPECTED_MIN threshold, this aggregation_period must be lesser than 24 hours.
-  final pulumi.Input<String>? aggregationPeriod;
+  final pulumi.Input<String?>? aggregationPeriod;
   /// For how many contiguous aggregation periods should the expected min or max be violated for the alert to be fired.
-  final pulumi.Input<int>? alertThreshold;
+  final pulumi.Input<int?>? alertThreshold;
   /// Set to false by default. When set to true, the metrics are not aggregated or pushed to Monarch for this integration alert.
-  final pulumi.Input<bool>? disableAlert;
+  final pulumi.Input<bool?>? disableAlert;
   /// Name of the alert. This will be displayed in the alert subject. If set, this name should be unique within the scope of the integration.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Should be specified only for *AVERAGE_DURATION and *PERCENTILE_DURATION metrics. This member should be used to specify what duration value the metrics should exceed for the alert to trigger.
-  final pulumi.Input<String>? durationThreshold;
+  final pulumi.Input<String?>? durationThreshold;
   /// The type of metric.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType>? metricType;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType?>? metricType;
   /// For either events or tasks, depending on the type of alert, count only final attempts, not retries.
-  final pulumi.Input<bool>? onlyFinalAttempt;
+  final pulumi.Input<bool?>? onlyFinalAttempt;
   /// The threshold type, whether lower(expected_min) or upper(expected_max), for which this alert is being configured. If value falls below expected_min or exceeds expected_max, an alert will be fired.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType>? thresholdType;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType?>? thresholdType;
   /// The metric value, above or below which the alert should be triggered.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue>? thresholdValue;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue?>? thresholdValue;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaIntegrationAlertConfig].
   /// [aggregationPeriod] The period over which the metric value should be aggregated and evaluated. Format is , where integer should be a positive integer and unit should be one of (s,m,h,d,w) meaning (second, minute, hour, day, week). For an EXPECTED_MIN threshold, this aggregation_period must be lesser than 24 hours.
@@ -65,7 +65,7 @@ class GoogleCloudIntegrationsV1alphaIntegrationAlertConfig {
   factory GoogleCloudIntegrationsV1alphaIntegrationAlertConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaIntegrationAlertConfig(
       aggregationPeriod: (() { final guardedValue = map['aggregationPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      alertThreshold: (() { final guardedValue = map['alertThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      alertThreshold: (() { final guardedValue = map['alertThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       disableAlert: (() { final guardedValue = map['disableAlert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       durationThreshold: (() { final guardedValue = map['durationThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

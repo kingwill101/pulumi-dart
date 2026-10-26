@@ -6,9 +6,9 @@ import 'software_recipe_step_run_script_interpreter.dart';
 /// Runs a script through an interpreter.
 class SoftwareRecipeStepRunScript {
   /// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-  final pulumi.Input<List<int>>? allowedExitCodes;
+  final pulumi.Input<List<int>?>? allowedExitCodes;
   /// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
-  final pulumi.Input<SoftwareRecipeStepRunScriptInterpreter>? interpreter;
+  final pulumi.Input<SoftwareRecipeStepRunScriptInterpreter?>? interpreter;
   /// The shell script to be executed.
   final pulumi.Input<String> script;
 

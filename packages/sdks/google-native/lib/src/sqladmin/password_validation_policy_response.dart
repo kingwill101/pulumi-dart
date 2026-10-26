@@ -55,9 +55,9 @@ class PasswordValidationPolicyResponse {
       disallowCompromisedCredentials: pulumi.Input.fromValue(map['disallowCompromisedCredentials'] as bool),
       disallowUsernameSubstring: pulumi.Input.fromValue(map['disallowUsernameSubstring'] as bool),
       enablePasswordPolicy: pulumi.Input.fromValue(map['enablePasswordPolicy'] as bool),
-      minLength: pulumi.Input.fromValue(map['minLength'] as int),
+      minLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minLength'])),
       passwordChangeInterval: pulumi.Input.fromValue(map['passwordChangeInterval'] as String),
-      reuseInterval: pulumi.Input.fromValue(map['reuseInterval'] as int),
+      reuseInterval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['reuseInterval'])),
     );
   }
 }

@@ -33,8 +33,8 @@ class GooglePrivacyDlpV2FindingLimitsResponse {
   factory GooglePrivacyDlpV2FindingLimitsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2FindingLimitsResponse(
       maxFindingsPerInfoType: pulumi.Input.fromValue(pulumi.Input.decodeList<GooglePrivacyDlpV2InfoTypeLimitResponse>(map['maxFindingsPerInfoType']!, (value) => GooglePrivacyDlpV2InfoTypeLimitResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      maxFindingsPerItem: pulumi.Input.fromValue(map['maxFindingsPerItem'] as int),
-      maxFindingsPerRequest: pulumi.Input.fromValue(map['maxFindingsPerRequest'] as int),
+      maxFindingsPerItem: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxFindingsPerItem'])),
+      maxFindingsPerRequest: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxFindingsPerRequest'])),
     );
   }
 }

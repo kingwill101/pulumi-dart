@@ -8,12 +8,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_file_v1_snapshot_args_doc}
 class SnapshotArgs {
   /// A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   final pulumi.Input<String> instanceId;
   /// Resource labels to represent user provided metadata.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Required. The ID to use for the snapshot. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
   final pulumi.Input<String> snapshotId;
 

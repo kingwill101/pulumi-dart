@@ -42,10 +42,10 @@ class SourceNumericFilterResponse {
   factory SourceNumericFilterResponse.fromMap(Map<String, dynamic> map) {
     return SourceNumericFilterResponse(
       numericFilterOption: pulumi.Input.fromValue(map['numericFilterOption'] as String),
-      sourceMaxPrecisionFilter: pulumi.Input.fromValue(map['sourceMaxPrecisionFilter'] as int),
-      sourceMaxScaleFilter: pulumi.Input.fromValue(map['sourceMaxScaleFilter'] as int),
-      sourceMinPrecisionFilter: pulumi.Input.fromValue(map['sourceMinPrecisionFilter'] as int),
-      sourceMinScaleFilter: pulumi.Input.fromValue(map['sourceMinScaleFilter'] as int),
+      sourceMaxPrecisionFilter: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sourceMaxPrecisionFilter'])),
+      sourceMaxScaleFilter: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sourceMaxScaleFilter'])),
+      sourceMinPrecisionFilter: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sourceMinPrecisionFilter'])),
+      sourceMinScaleFilter: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sourceMinScaleFilter'])),
     );
   }
 }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
-enum ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta {
+enum ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta implements pulumi.PulumiEnum<String> {
   perimeterTypeRegular("PERIMETER_TYPE_REGULAR"),
   perimeterTypeBridge("PERIMETER_TYPE_BRIDGE");
 
   const ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta fromValue(String value) {

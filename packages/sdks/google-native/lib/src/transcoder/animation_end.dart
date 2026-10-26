@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// End previous overlay animation from the video. Without `AnimationEnd`, the overlay object will keep the state of previous animation until the end of the video.
 class AnimationEnd {
   /// The time to end overlay object, in seconds. Default: 0
-  final pulumi.Input<String>? startTimeOffset;
+  final pulumi.Input<String?>? startTimeOffset;
 
   /// Creates a new [AnimationEnd].
   /// [startTimeOffset] The time to end overlay object, in seconds. Default: 0

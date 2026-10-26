@@ -17,3 +17,14 @@ Future<GetJobResult> getJob(
   );
   return GetJobResult.fromMap(result);
 }
+
+pulumi.Output<GetJobResult> getJobOutput(
+  GetJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:batch/v1:getJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobResult.fromMap);
+}

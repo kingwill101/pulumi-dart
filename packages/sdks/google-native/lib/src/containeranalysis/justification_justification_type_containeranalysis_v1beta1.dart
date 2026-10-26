@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The justification type for this vulnerability.
-enum JustificationJustificationTypeContaineranalysisV1beta1 {
+enum JustificationJustificationTypeContaineranalysisV1beta1 implements pulumi.PulumiEnum<String> {
   justificationTypeUnspecified("JUSTIFICATION_TYPE_UNSPECIFIED"),
   componentNotPresent("COMPONENT_NOT_PRESENT"),
   vulnerableCodeNotPresent("VULNERABLE_CODE_NOT_PRESENT"),
@@ -8,6 +10,7 @@ enum JustificationJustificationTypeContaineranalysisV1beta1 {
   inlineMitigationsAlreadyExist("INLINE_MITIGATIONS_ALREADY_EXIST");
 
   const JustificationJustificationTypeContaineranalysisV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static JustificationJustificationTypeContaineranalysisV1beta1 fromValue(String value) {

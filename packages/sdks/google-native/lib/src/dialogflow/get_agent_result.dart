@@ -10,41 +10,41 @@ import 'google_cloud_dialogflow_cx_v3_text_to_speech_settings_response.dart';
 /// Result data returned by getAgent.
 class GetAgentResult {
   /// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
-  final GoogleCloudDialogflowCxV3AdvancedSettingsResponse advancedSettings;
+  final GoogleCloudDialogflowCxV3AdvancedSettingsResponse? advancedSettings;
   /// Optional. Answer feedback collection settings.
-  final GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsResponse answerFeedbackSettings;
+  final GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsResponse? answerFeedbackSettings;
   /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
-  final String avatarUri;
+  final String? avatarUri;
   /// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
-  final String defaultLanguageCode;
+  final String? defaultLanguageCode;
   /// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
-  final String description;
+  final String? description;
   /// The human-readable name of the agent, unique within the location.
-  final String displayName;
+  final String? displayName;
   /// Indicates if automatic spell correction is enabled in detect intent requests.
-  final bool enableSpellCorrection;
+  final bool? enableSpellCorrection;
   /// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
-  final bool enableStackdriverLogging;
+  final bool? enableStackdriverLogging;
   /// Gen App Builder-related agent-level settings.
-  final GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsResponse genAppBuilderSettings;
+  final GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsResponse? genAppBuilderSettings;
   /// Git integration settings for this agent.
-  final GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsResponse gitIntegrationSettings;
+  final GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsResponse? gitIntegrationSettings;
   /// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
-  final bool locked;
+  final bool? locked;
   /// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
-  final String name;
+  final String? name;
   /// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
-  final String securitySettings;
+  final String? securitySettings;
   /// Speech recognition related settings.
-  final GoogleCloudDialogflowCxV3SpeechToTextSettingsResponse speechToTextSettings;
+  final GoogleCloudDialogflowCxV3SpeechToTextSettingsResponse? speechToTextSettings;
   /// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
-  final String startFlow;
+  final String? startFlow;
   /// The list of all languages supported by the agent (except for the `default_language_code`).
-  final List<String> supportedLanguageCodes;
+  final List<String>? supportedLanguageCodes;
   /// Settings on instructing the speech synthesizer on how to generate the output audio content.
-  final GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse textToSpeechSettings;
+  final GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse? textToSpeechSettings;
   /// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
-  final String timeZone;
+  final String? timeZone;
 
   /// Creates a new [GetAgentResult].
   /// [advancedSettings] Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
@@ -66,69 +66,69 @@ class GetAgentResult {
   /// [textToSpeechSettings] Settings on instructing the speech synthesizer on how to generate the output audio content.
   /// [timeZone] The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
   const GetAgentResult({
-    required this.advancedSettings,
-    required this.answerFeedbackSettings,
-    required this.avatarUri,
-    required this.defaultLanguageCode,
-    required this.description,
-    required this.displayName,
-    required this.enableSpellCorrection,
-    required this.enableStackdriverLogging,
-    required this.genAppBuilderSettings,
-    required this.gitIntegrationSettings,
-    required this.locked,
-    required this.name,
-    required this.securitySettings,
-    required this.speechToTextSettings,
-    required this.startFlow,
-    required this.supportedLanguageCodes,
-    required this.textToSpeechSettings,
-    required this.timeZone,
+    this.advancedSettings,
+    this.answerFeedbackSettings,
+    this.avatarUri,
+    this.defaultLanguageCode,
+    this.description,
+    this.displayName,
+    this.enableSpellCorrection,
+    this.enableStackdriverLogging,
+    this.genAppBuilderSettings,
+    this.gitIntegrationSettings,
+    this.locked,
+    this.name,
+    this.securitySettings,
+    this.speechToTextSettings,
+    this.startFlow,
+    this.supportedLanguageCodes,
+    this.textToSpeechSettings,
+    this.timeZone,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedSettings': advancedSettings.toMap(),
-      'answerFeedbackSettings': answerFeedbackSettings.toMap(),
-      'avatarUri': avatarUri,
-      'defaultLanguageCode': defaultLanguageCode,
-      'description': description,
-      'displayName': displayName,
-      'enableSpellCorrection': enableSpellCorrection,
-      'enableStackdriverLogging': enableStackdriverLogging,
-      'genAppBuilderSettings': genAppBuilderSettings.toMap(),
-      'gitIntegrationSettings': gitIntegrationSettings.toMap(),
-      'locked': locked,
-      'name': name,
-      'securitySettings': securitySettings,
-      'speechToTextSettings': speechToTextSettings.toMap(),
-      'startFlow': startFlow,
-      'supportedLanguageCodes': supportedLanguageCodes,
-      'textToSpeechSettings': textToSpeechSettings.toMap(),
-      'timeZone': timeZone,
+      'advancedSettings': ?advancedSettings?.toMap(),
+      'answerFeedbackSettings': ?answerFeedbackSettings?.toMap(),
+      'avatarUri': ?avatarUri,
+      'defaultLanguageCode': ?defaultLanguageCode,
+      'description': ?description,
+      'displayName': ?displayName,
+      'enableSpellCorrection': ?enableSpellCorrection,
+      'enableStackdriverLogging': ?enableStackdriverLogging,
+      'genAppBuilderSettings': ?genAppBuilderSettings?.toMap(),
+      'gitIntegrationSettings': ?gitIntegrationSettings?.toMap(),
+      'locked': ?locked,
+      'name': ?name,
+      'securitySettings': ?securitySettings,
+      'speechToTextSettings': ?speechToTextSettings?.toMap(),
+      'startFlow': ?startFlow,
+      'supportedLanguageCodes': ?supportedLanguageCodes,
+      'textToSpeechSettings': ?textToSpeechSettings?.toMap(),
+      'timeZone': ?timeZone,
     };
   }
 
   factory GetAgentResult.fromMap(Map<String, dynamic> map) {
     return GetAgentResult(
-      advancedSettings: GoogleCloudDialogflowCxV3AdvancedSettingsResponse.fromMap((map['advancedSettings']! as Map).cast<String, dynamic>()),
-      answerFeedbackSettings: GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsResponse.fromMap((map['answerFeedbackSettings']! as Map).cast<String, dynamic>()),
-      avatarUri: map['avatarUri'] as String,
-      defaultLanguageCode: map['defaultLanguageCode'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      enableSpellCorrection: map['enableSpellCorrection'] as bool,
-      enableStackdriverLogging: map['enableStackdriverLogging'] as bool,
-      genAppBuilderSettings: GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsResponse.fromMap((map['genAppBuilderSettings']! as Map).cast<String, dynamic>()),
-      gitIntegrationSettings: GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsResponse.fromMap((map['gitIntegrationSettings']! as Map).cast<String, dynamic>()),
-      locked: map['locked'] as bool,
-      name: map['name'] as String,
-      securitySettings: map['securitySettings'] as String,
-      speechToTextSettings: GoogleCloudDialogflowCxV3SpeechToTextSettingsResponse.fromMap((map['speechToTextSettings']! as Map).cast<String, dynamic>()),
-      startFlow: map['startFlow'] as String,
-      supportedLanguageCodes: (map['supportedLanguageCodes'] as List).cast<String>(),
-      textToSpeechSettings: GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse.fromMap((map['textToSpeechSettings']! as Map).cast<String, dynamic>()),
-      timeZone: map['timeZone'] as String,
+      advancedSettings: (() { final guardedValue = map['advancedSettings']; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3AdvancedSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      answerFeedbackSettings: (() { final guardedValue = map['answerFeedbackSettings']; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      avatarUri: (() { final guardedValue = map['avatarUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultLanguageCode: (() { final guardedValue = map['defaultLanguageCode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enableSpellCorrection: (() { final guardedValue = map['enableSpellCorrection']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      enableStackdriverLogging: (() { final guardedValue = map['enableStackdriverLogging']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      genAppBuilderSettings: (() { final guardedValue = map['genAppBuilderSettings']; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      gitIntegrationSettings: (() { final guardedValue = map['gitIntegrationSettings']; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      locked: (() { final guardedValue = map['locked']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      securitySettings: (() { final guardedValue = map['securitySettings']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      speechToTextSettings: (() { final guardedValue = map['speechToTextSettings']; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3SpeechToTextSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      startFlow: (() { final guardedValue = map['startFlow']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      supportedLanguageCodes: (() { final guardedValue = map['supportedLanguageCodes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      textToSpeechSettings: (() { final guardedValue = map['textToSpeechSettings']; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

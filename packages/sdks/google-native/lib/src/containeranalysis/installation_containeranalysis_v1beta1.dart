@@ -7,9 +7,9 @@ import 'location_containeranalysis_v1beta1.dart';
 /// This represents how a particular software package may be installed on a system.
 class InstallationContaineranalysisV1beta1 {
   /// Licenses that have been declared by the authors of the package.
-  final pulumi.Input<LicenseContaineranalysisV1beta1>? license;
+  final pulumi.Input<LicenseContaineranalysisV1beta1?>? license;
   /// All of the places within the filesystem versions of this package have been found.
-  final pulumi.Input<List<LocationContaineranalysisV1beta1>>? location;
+  final pulumi.Input<List<LocationContaineranalysisV1beta1>?>? location;
 
   /// Creates a new [InstallationContaineranalysisV1beta1].
   /// [license] Licenses that have been declared by the authors of the package.

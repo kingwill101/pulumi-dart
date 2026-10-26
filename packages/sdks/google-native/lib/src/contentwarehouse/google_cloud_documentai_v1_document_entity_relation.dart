@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Relationship between Entities.
 class GoogleCloudDocumentaiV1DocumentEntityRelation {
   /// Object entity id.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// Relationship description.
-  final pulumi.Input<String>? relation;
+  final pulumi.Input<String?>? relation;
   /// Subject entity id.
-  final pulumi.Input<String>? subjectId;
+  final pulumi.Input<String?>? subjectId;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentEntityRelation].
   /// [objectId] Object entity id.

@@ -32,7 +32,7 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfigResponse {
 
   factory GooglePrivacyDlpV2FixedSizeBucketingConfigResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2FixedSizeBucketingConfigResponse(
-      bucketSize: pulumi.Input.fromValue(map['bucketSize'] as double),
+      bucketSize: pulumi.Input.fromValue((map['bucketSize'] as num).toDouble()),
       lowerBound: pulumi.Input.fromValue(GooglePrivacyDlpV2ValueResponse.fromMap((map['lowerBound']! as Map).cast<String, dynamic>())),
       upperBound: pulumi.Input.fromValue(GooglePrivacyDlpV2ValueResponse.fromMap((map['upperBound']! as Map).cast<String, dynamic>())),
     );

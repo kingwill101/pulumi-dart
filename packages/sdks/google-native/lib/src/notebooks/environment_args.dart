@@ -10,19 +10,19 @@ import 'vm_image.dart';
 /// {@macro pulumi_notebooks_v1_environment_args_doc}
 class EnvironmentArgs {
   /// Use a container image to start the notebook instance.
-  final pulumi.Input<ContainerImage>? containerImage;
+  final pulumi.Input<ContainerImage?>? containerImage;
   /// A brief description of this environment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name of this environment for the UI.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Required. User-defined unique ID of this environment. The `environment_id` must be 1 to 63 characters long and contain only lowercase letters, numeric characters, and dashes. The first character must be a lowercase letter and the last character cannot be a dash.
   final pulumi.Input<String> environmentId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
-  final pulumi.Input<String>? postStartupScript;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? postStartupScript;
+  final pulumi.Input<String?>? project;
   /// Use a Compute Engine VM image to start the notebook instance.
-  final pulumi.Input<VmImage>? vmImage;
+  final pulumi.Input<VmImage?>? vmImage;
 
   /// Creates a new [EnvironmentArgs].
   /// [containerImage] Use a container image to start the notebook instance.

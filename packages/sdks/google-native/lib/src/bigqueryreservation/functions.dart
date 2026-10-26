@@ -24,6 +24,17 @@ Future<GetCapacityCommitmentResult> getCapacityCommitment(
   return GetCapacityCommitmentResult.fromMap(result);
 }
 
+pulumi.Output<GetCapacityCommitmentResult> getCapacityCommitmentOutput(
+  GetCapacityCommitmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:bigqueryreservation/v1:getCapacityCommitment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCapacityCommitmentResult.fromMap);
+}
+
 /// Returns information about the reservation.
 /// [args] Arguments passed to this invoke. {@macro pulumi_bigqueryreservation_v1_get_reservation_args_doc}
 /// [options] Invoke options controlling this call.
@@ -38,6 +49,17 @@ Future<GetReservationResult> getReservation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReservationResult.fromMap(result);
+}
+
+pulumi.Output<GetReservationResult> getReservationOutput(
+  GetReservationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:bigqueryreservation/v1:getReservation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReservationResult.fromMap);
 }
 
 /// Returns information about the capacity commitment.
@@ -56,6 +78,17 @@ Future<GetCapacityCommitmentBigqueryreservationV1beta1Result> getCapacityCommitm
   return GetCapacityCommitmentBigqueryreservationV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetCapacityCommitmentBigqueryreservationV1beta1Result> getCapacityCommitmentBigqueryreservationV1beta1Output(
+  GetCapacityCommitmentBigqueryreservationV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:bigqueryreservation/v1beta1:getCapacityCommitment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCapacityCommitmentBigqueryreservationV1beta1Result.fromMap);
+}
+
 /// Returns information about the reservation.
 /// [args] Arguments passed to this invoke. {@macro pulumi_bigqueryreservation_v1beta1_get_reservation_bigqueryreservation_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -70,4 +103,15 @@ Future<GetReservationBigqueryreservationV1beta1Result> getReservationBigqueryres
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReservationBigqueryreservationV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetReservationBigqueryreservationV1beta1Result> getReservationBigqueryreservationV1beta1Output(
+  GetReservationBigqueryreservationV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:bigqueryreservation/v1beta1:getReservation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReservationBigqueryreservationV1beta1Result.fromMap);
 }

@@ -6,13 +6,13 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_card_button.dart';
 /// The card response message.
 class GoogleCloudDialogflowV2beta1IntentMessageCard {
   /// Optional. The collection of card buttons.
-  final pulumi.Input<List<GoogleCloudDialogflowV2beta1IntentMessageCardButton>>? buttons;
+  final pulumi.Input<List<GoogleCloudDialogflowV2beta1IntentMessageCardButton>?>? buttons;
   /// Optional. The public URI to an image file for the card.
-  final pulumi.Input<String>? imageUri;
+  final pulumi.Input<String?>? imageUri;
   /// Optional. The subtitle of the card.
-  final pulumi.Input<String>? subtitle;
+  final pulumi.Input<String?>? subtitle;
   /// Optional. The title of the card.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageCard].
   /// [buttons] Optional. The collection of card buttons.

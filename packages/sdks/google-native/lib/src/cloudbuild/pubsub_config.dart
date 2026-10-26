@@ -6,11 +6,11 @@ import 'pubsub_config_state.dart';
 /// PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
 class PubsubConfig {
   /// Service account that will make the push request.
-  final pulumi.Input<String>? serviceAccountEmail;
+  final pulumi.Input<String?>? serviceAccountEmail;
   /// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-  final pulumi.Input<PubsubConfigState>? state;
+  final pulumi.Input<PubsubConfigState?>? state;
   /// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
-  final pulumi.Input<String>? topic;
+  final pulumi.Input<String?>? topic;
 
   /// Creates a new [PubsubConfig].
   /// [serviceAccountEmail] Service account that will make the push request.

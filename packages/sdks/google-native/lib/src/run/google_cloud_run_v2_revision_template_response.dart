@@ -90,7 +90,7 @@ class GoogleCloudRunV2RevisionTemplateResponse {
       encryptionKey: pulumi.Input.fromValue(map['encryptionKey'] as String),
       executionEnvironment: pulumi.Input.fromValue(map['executionEnvironment'] as String),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
-      maxInstanceRequestConcurrency: pulumi.Input.fromValue(map['maxInstanceRequestConcurrency'] as int),
+      maxInstanceRequestConcurrency: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxInstanceRequestConcurrency'])),
       revision: pulumi.Input.fromValue(map['revision'] as String),
       scaling: pulumi.Input.fromValue(GoogleCloudRunV2RevisionScalingResponse.fromMap((map['scaling']! as Map).cast<String, dynamic>())),
       serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),

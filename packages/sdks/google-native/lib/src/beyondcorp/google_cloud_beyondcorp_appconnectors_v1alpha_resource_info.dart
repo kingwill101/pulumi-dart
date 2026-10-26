@@ -8,13 +8,13 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo {
   /// Unique Id for the resource.
   final pulumi.Input<String> id;
   /// Specific details for the resource. This is for internal use only.
-  final pulumi.Input<Map<String, String>>? resource;
+  final pulumi.Input<Map<String, String>?>? resource;
   /// Overall health status. Overall status is derived based on the status of each sub level resources.
-  final pulumi.Input<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus>? status;
+  final pulumi.Input<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus?>? status;
   /// List of Info for the sub level resources.
-  final pulumi.Input<List<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo>>? sub;
+  final pulumi.Input<List<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo>?>? sub;
   /// The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
-  final pulumi.Input<String>? time;
+  final pulumi.Input<String?>? time;
 
   /// Creates a new [GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo].
   /// [id] Unique Id for the resource.

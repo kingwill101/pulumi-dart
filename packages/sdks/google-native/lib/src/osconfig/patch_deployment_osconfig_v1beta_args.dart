@@ -13,24 +13,24 @@ import 'recurring_schedule_osconfig_v1beta.dart';
 /// {@macro pulumi_osconfig_v1beta_patch_deployment_osconfig_v1beta_args_doc}
 class PatchDeploymentOsconfigV1betaArgs {
   /// Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Duration of the patch. After the duration ends, the patch times out.
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// VM instances to patch.
   final pulumi.Input<PatchInstanceFilterOsconfigV1beta> instanceFilter;
   /// Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Schedule a one-time execution.
   final pulumi.Input<OneTimeScheduleOsconfigV1beta> oneTimeSchedule;
   /// Optional. Patch configuration that is applied.
-  final pulumi.Input<PatchConfigOsconfigV1beta>? patchConfig;
+  final pulumi.Input<PatchConfigOsconfigV1beta?>? patchConfig;
   /// Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
   final pulumi.Input<String> patchDeploymentId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Schedule recurring executions.
   final pulumi.Input<RecurringScheduleOsconfigV1beta> recurringSchedule;
   /// Optional. Rollout strategy of the patch job.
-  final pulumi.Input<PatchRolloutOsconfigV1beta>? rollout;
+  final pulumi.Input<PatchRolloutOsconfigV1beta?>? rollout;
 
   /// Creates a new [PatchDeploymentOsconfigV1betaArgs].
   /// [description] Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.

@@ -6,9 +6,9 @@ import 'audit_log_config_log_type_domains_v1beta1.dart';
 /// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 class AuditLogConfigDomainsV1beta1 {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-  final pulumi.Input<List<String>>? exemptedMembers;
+  final pulumi.Input<List<String>?>? exemptedMembers;
   /// The log type that this config enables.
-  final pulumi.Input<AuditLogConfigLogTypeDomainsV1beta1>? logType;
+  final pulumi.Input<AuditLogConfigLogTypeDomainsV1beta1?>? logType;
 
   /// Creates a new [AuditLogConfigDomainsV1beta1].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.

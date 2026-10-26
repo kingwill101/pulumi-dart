@@ -37,8 +37,8 @@ class TaskStatusResponse {
 
   factory TaskStatusResponse.fromMap(Map<String, dynamic> map) {
     return TaskStatusResponse(
-      attemptDispatchCount: pulumi.Input.fromValue(map['attemptDispatchCount'] as int),
-      attemptResponseCount: pulumi.Input.fromValue(map['attemptResponseCount'] as int),
+      attemptDispatchCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['attemptDispatchCount'])),
+      attemptResponseCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['attemptResponseCount'])),
       firstAttemptStatus: pulumi.Input.fromValue(AttemptStatusResponse.fromMap((map['firstAttemptStatus']! as Map).cast<String, dynamic>())),
       lastAttemptStatus: pulumi.Input.fromValue(AttemptStatusResponse.fromMap((map['lastAttemptStatus']! as Map).cast<String, dynamic>())),
     );

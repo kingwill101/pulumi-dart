@@ -42,7 +42,7 @@ class ComputeSchedulingResponseVmmigrationV1alpha1 {
   factory ComputeSchedulingResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return ComputeSchedulingResponseVmmigrationV1alpha1(
       automaticRestart: pulumi.Input.fromValue(map['automaticRestart'] as bool),
-      minNodeCpus: pulumi.Input.fromValue(map['minNodeCpus'] as int),
+      minNodeCpus: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minNodeCpus'])),
       nodeAffinities: pulumi.Input.fromValue(pulumi.Input.decodeList<SchedulingNodeAffinityResponseVmmigrationV1alpha1>(map['nodeAffinities']!, (value) => SchedulingNodeAffinityResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>()))),
       onHostMaintenance: pulumi.Input.fromValue(map['onHostMaintenance'] as String),
       restartType: pulumi.Input.fromValue(map['restartType'] as String),

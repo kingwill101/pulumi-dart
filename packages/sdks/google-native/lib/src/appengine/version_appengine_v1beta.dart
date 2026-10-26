@@ -5,13 +5,16 @@ import 'basic_scaling_response_appengine_v1beta.dart';
 import 'deployment_response_appengine_v1beta.dart';
 import 'endpoints_api_service_response_appengine_v1beta.dart';
 import 'entrypoint_response_appengine_v1beta.dart';
+import 'error_handler_response_appengine_v1beta.dart';
 import 'flexible_runtime_settings_response_appengine_v1beta.dart';
 import 'health_check_response_appengine_v1beta.dart';
+import 'library_response_appengine_v1beta.dart';
 import 'liveness_check_response_appengine_v1beta.dart';
 import 'manual_scaling_response_appengine_v1beta.dart';
 import 'network_response_appengine_v1beta.dart';
 import 'readiness_check_response_appengine_v1beta.dart';
 import 'resources_response_appengine_v1beta.dart';
+import 'url_map_response_appengine_v1beta.dart';
 import 'version_appengine_v1beta_args.dart';
 import 'vpc_access_connector_response_appengine_v1beta.dart';
 
@@ -50,13 +53,13 @@ class VersionAppengineV1beta extends pulumi.CustomResource {
   /// Environment variables available to the application.Only returned in GET requests if view=FULL is set.
   late final pulumi.Output<Map<String, String>> envVariables;
   /// Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
-  late final pulumi.Output<List<Map<String, dynamic>>> errorHandlers;
+  late final pulumi.Output<List<ErrorHandlerResponseAppengineV1beta>> errorHandlers;
   /// Settings for App Engine flexible runtimes.
   late final pulumi.Output<FlexibleRuntimeSettingsResponseAppengineV1beta> flexibleRuntimeSettings;
   /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
   late final pulumi.Output<Map<String, String>> generatedCustomerMetadata;
   /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
-  late final pulumi.Output<List<Map<String, dynamic>>> handlers;
+  late final pulumi.Output<List<UrlMapResponseAppengineV1beta>> handlers;
   /// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
   late final pulumi.Output<HealthCheckResponseAppengineV1beta> healthCheck;
   /// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
@@ -64,7 +67,7 @@ class VersionAppengineV1beta extends pulumi.CustomResource {
   /// Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.
   late final pulumi.Output<String> instanceClass;
   /// Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
-  late final pulumi.Output<List<Map<String, dynamic>>> libraries;
+  late final pulumi.Output<List<LibraryResponseAppengineV1beta>> libraries;
   /// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
   late final pulumi.Output<LivenessCheckResponseAppengineV1beta> livenessCheck;
   /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
@@ -115,15 +118,15 @@ class VersionAppengineV1beta extends pulumi.CustomResource {
           'google-native:appengine/v1beta:Version',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['appId', 'serviceId']).merge(options),
         ) {
     apiConfig = registerOutput<ApiConfigHandlerResponseAppengineV1beta>('apiConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiConfigHandlerResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     appEngineApis = registerOutput<bool>('appEngineApis');
     appId = registerOutput<String>('appId');
     automaticScaling = registerOutput<AutomaticScalingResponseAppengineV1beta>('automaticScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomaticScalingResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     basicScaling = registerOutput<BasicScalingResponseAppengineV1beta>('basicScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BasicScalingResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    betaSettings = registerOutput<Map<String, String>>('betaSettings');
-    buildEnvVariables = registerOutput<Map<String, String>>('buildEnvVariables');
+    betaSettings = registerOutput<Map<String, String>>('betaSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    buildEnvVariables = registerOutput<Map<String, String>>('buildEnvVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createTime = registerOutput<String>('createTime');
     createdBy = registerOutput<String>('createdBy');
     defaultExpiration = registerOutput<String>('defaultExpiration');
@@ -132,15 +135,15 @@ class VersionAppengineV1beta extends pulumi.CustomResource {
     endpointsApiService = registerOutput<EndpointsApiServiceResponseAppengineV1beta>('endpointsApiService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointsApiServiceResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     entrypoint = registerOutput<EntrypointResponseAppengineV1beta>('entrypoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntrypointResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     env = registerOutput<String>('env');
-    envVariables = registerOutput<Map<String, String>>('envVariables');
-    errorHandlers = registerOutput<List<Map<String, dynamic>>>('errorHandlers');
+    envVariables = registerOutput<Map<String, String>>('envVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    errorHandlers = registerOutput<List<ErrorHandlerResponseAppengineV1beta>>('errorHandlers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ErrorHandlerResponseAppengineV1beta>(guardedValue, (value) => ErrorHandlerResponseAppengineV1beta.fromMap((value as Map).cast<String, dynamic>())); });
     flexibleRuntimeSettings = registerOutput<FlexibleRuntimeSettingsResponseAppengineV1beta>('flexibleRuntimeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleRuntimeSettingsResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    generatedCustomerMetadata = registerOutput<Map<String, String>>('generatedCustomerMetadata');
-    handlers = registerOutput<List<Map<String, dynamic>>>('handlers');
+    generatedCustomerMetadata = registerOutput<Map<String, String>>('generatedCustomerMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    handlers = registerOutput<List<UrlMapResponseAppengineV1beta>>('handlers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UrlMapResponseAppengineV1beta>(guardedValue, (value) => UrlMapResponseAppengineV1beta.fromMap((value as Map).cast<String, dynamic>())); });
     healthCheck = registerOutput<HealthCheckResponseAppengineV1beta>('healthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HealthCheckResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    inboundServices = registerOutput<List<String>>('inboundServices');
+    inboundServices = registerOutput<List<String>>('inboundServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     instanceClass = registerOutput<String>('instanceClass');
-    libraries = registerOutput<List<Map<String, dynamic>>>('libraries');
+    libraries = registerOutput<List<LibraryResponseAppengineV1beta>>('libraries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LibraryResponseAppengineV1beta>(guardedValue, (value) => LibraryResponseAppengineV1beta.fromMap((value as Map).cast<String, dynamic>())); });
     livenessCheck = registerOutput<LivenessCheckResponseAppengineV1beta>('livenessCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LivenessCheckResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     manualScaling = registerOutput<ManualScalingResponseAppengineV1beta>('manualScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManualScalingResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -159,6 +162,60 @@ class VersionAppengineV1beta extends pulumi.CustomResource {
     versionUrl = registerOutput<String>('versionUrl');
     vm = registerOutput<bool>('vm');
     vpcAccessConnector = registerOutput<VpcAccessConnectorResponseAppengineV1beta>('vpcAccessConnector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcAccessConnectorResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    zones = registerOutput<List<String>>('zones');
+    zones = registerOutput<List<String>>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VersionAppengineV1beta] resource.
+  VersionAppengineV1beta.reference(String urn)
+    : super(
+        'google-native:appengine/v1beta:Version',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiConfig = registerOutput<ApiConfigHandlerResponseAppengineV1beta>('apiConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiConfigHandlerResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    appEngineApis = registerOutput<bool>('appEngineApis');
+    appId = registerOutput<String>('appId');
+    automaticScaling = registerOutput<AutomaticScalingResponseAppengineV1beta>('automaticScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomaticScalingResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    basicScaling = registerOutput<BasicScalingResponseAppengineV1beta>('basicScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BasicScalingResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    betaSettings = registerOutput<Map<String, String>>('betaSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    buildEnvVariables = registerOutput<Map<String, String>>('buildEnvVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    createTime = registerOutput<String>('createTime');
+    createdBy = registerOutput<String>('createdBy');
+    defaultExpiration = registerOutput<String>('defaultExpiration');
+    deployment = registerOutput<DeploymentResponseAppengineV1beta>('deployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    diskUsageBytes = registerOutput<String>('diskUsageBytes');
+    endpointsApiService = registerOutput<EndpointsApiServiceResponseAppengineV1beta>('endpointsApiService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointsApiServiceResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    entrypoint = registerOutput<EntrypointResponseAppengineV1beta>('entrypoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntrypointResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    env = registerOutput<String>('env');
+    envVariables = registerOutput<Map<String, String>>('envVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    errorHandlers = registerOutput<List<ErrorHandlerResponseAppengineV1beta>>('errorHandlers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ErrorHandlerResponseAppengineV1beta>(guardedValue, (value) => ErrorHandlerResponseAppengineV1beta.fromMap((value as Map).cast<String, dynamic>())); });
+    flexibleRuntimeSettings = registerOutput<FlexibleRuntimeSettingsResponseAppengineV1beta>('flexibleRuntimeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleRuntimeSettingsResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    generatedCustomerMetadata = registerOutput<Map<String, String>>('generatedCustomerMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    handlers = registerOutput<List<UrlMapResponseAppengineV1beta>>('handlers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UrlMapResponseAppengineV1beta>(guardedValue, (value) => UrlMapResponseAppengineV1beta.fromMap((value as Map).cast<String, dynamic>())); });
+    healthCheck = registerOutput<HealthCheckResponseAppengineV1beta>('healthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HealthCheckResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inboundServices = registerOutput<List<String>>('inboundServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    instanceClass = registerOutput<String>('instanceClass');
+    libraries = registerOutput<List<LibraryResponseAppengineV1beta>>('libraries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LibraryResponseAppengineV1beta>(guardedValue, (value) => LibraryResponseAppengineV1beta.fromMap((value as Map).cast<String, dynamic>())); });
+    livenessCheck = registerOutput<LivenessCheckResponseAppengineV1beta>('livenessCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LivenessCheckResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    manualScaling = registerOutput<ManualScalingResponseAppengineV1beta>('manualScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManualScalingResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<NetworkResponseAppengineV1beta>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nobuildFilesRegex = registerOutput<String>('nobuildFilesRegex');
+    readinessCheck = registerOutput<ReadinessCheckResponseAppengineV1beta>('readinessCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReadinessCheckResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resources = registerOutput<ResourcesResponseAppengineV1beta>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcesResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    runtime = registerOutput<String>('runtime');
+    runtimeApiVersion = registerOutput<String>('runtimeApiVersion');
+    runtimeChannel = registerOutput<String>('runtimeChannel');
+    runtimeMainExecutablePath = registerOutput<String>('runtimeMainExecutablePath');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    serviceId = registerOutput<String>('serviceId');
+    servingStatus = registerOutput<String>('servingStatus');
+    threadsafe = registerOutput<bool>('threadsafe');
+    versionUrl = registerOutput<String>('versionUrl');
+    vm = registerOutput<bool>('vm');
+    vpcAccessConnector = registerOutput<VpcAccessConnectorResponseAppengineV1beta>('vpcAccessConnector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcAccessConnectorResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zones = registerOutput<List<String>>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

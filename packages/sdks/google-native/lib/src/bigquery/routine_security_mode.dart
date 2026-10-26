@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
-enum RoutineSecurityMode {
+enum RoutineSecurityMode implements pulumi.PulumiEnum<String> {
   securityModeUnspecified("SECURITY_MODE_UNSPECIFIED"),
   definer("DEFINER"),
   invoker("INVOKER");
 
   const RoutineSecurityMode(this.wireValue);
+  @override
   final String wireValue;
 
   static RoutineSecurityMode fromValue(String value) {

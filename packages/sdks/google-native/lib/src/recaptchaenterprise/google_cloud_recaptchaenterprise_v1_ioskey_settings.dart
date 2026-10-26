@@ -6,11 +6,11 @@ import 'google_cloud_recaptchaenterprise_v1_apple_developer_id.dart';
 /// Settings specific to keys that can be used by iOS apps.
 class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
   /// Optional. If set to true, allowed_bundle_ids are not enforced.
-  final pulumi.Input<bool>? allowAllBundleIds;
+  final pulumi.Input<bool?>? allowAllBundleIds;
   /// Optional. iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
-  final pulumi.Input<List<String>>? allowedBundleIds;
+  final pulumi.Input<List<String>?>? allowedBundleIds;
   /// Optional. Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform-specific checks like Apple App Attest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
-  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1AppleDeveloperId>? appleDeveloperId;
+  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1AppleDeveloperId?>? appleDeveloperId;
 
   /// Creates a new [GoogleCloudRecaptchaenterpriseV1IOSKeySettings].
   /// [allowAllBundleIds] Optional. If set to true, allowed_bundle_ids are not enforced.

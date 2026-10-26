@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_monitoring_v3_get_uptime_check_config_args_doc}
 class GetUptimeCheckConfigArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> uptimeCheckConfigId;
 
   /// Creates a new [GetUptimeCheckConfigArgs].

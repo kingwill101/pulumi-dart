@@ -5,9 +5,9 @@ import 'instance_message_code.dart';
 
 class InstanceMessage {
   /// A code that correspond to one type of user-facing message.
-  final pulumi.Input<InstanceMessageCode>? code;
+  final pulumi.Input<InstanceMessageCode?>? code;
   /// Message on memcached instance which will be exposed to users.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [InstanceMessage].
   /// [code] A code that correspond to one type of user-facing message.

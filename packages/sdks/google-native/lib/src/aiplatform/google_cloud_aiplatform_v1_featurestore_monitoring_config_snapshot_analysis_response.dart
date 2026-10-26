@@ -32,8 +32,8 @@ class GoogleCloudAiplatformV1FeaturestoreMonitoringConfigSnapshotAnalysisRespons
   factory GoogleCloudAiplatformV1FeaturestoreMonitoringConfigSnapshotAnalysisResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FeaturestoreMonitoringConfigSnapshotAnalysisResponse(
       disabled: pulumi.Input.fromValue(map['disabled'] as bool),
-      monitoringIntervalDays: pulumi.Input.fromValue(map['monitoringIntervalDays'] as int),
-      stalenessDays: pulumi.Input.fromValue(map['stalenessDays'] as int),
+      monitoringIntervalDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['monitoringIntervalDays'])),
+      stalenessDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['stalenessDays'])),
     );
   }
 }

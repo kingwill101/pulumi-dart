@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The instance size of this the instance configuration.
-enum InstanceConfigInstanceSize {
+enum InstanceConfigInstanceSize implements pulumi.PulumiEnum<String> {
   instanceSizeUnspecified("INSTANCE_SIZE_UNSPECIFIED"),
   standardSmall("STANDARD_SMALL"),
   standardMedium("STANDARD_MEDIUM"),
@@ -10,6 +12,7 @@ enum InstanceConfigInstanceSize {
   devXsmall("DEV_XSMALL");
 
   const InstanceConfigInstanceSize(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceConfigInstanceSize fromValue(String value) {

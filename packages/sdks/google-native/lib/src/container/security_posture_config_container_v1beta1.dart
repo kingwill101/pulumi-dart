@@ -7,9 +7,9 @@ import 'security_posture_config_vulnerability_mode_container_v1beta1.dart';
 /// SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
 class SecurityPostureConfigContainerV1beta1 {
   /// Sets which mode to use for Security Posture features.
-  final pulumi.Input<SecurityPostureConfigModeContainerV1beta1>? mode;
+  final pulumi.Input<SecurityPostureConfigModeContainerV1beta1?>? mode;
   /// Sets which mode to use for vulnerability scanning.
-  final pulumi.Input<SecurityPostureConfigVulnerabilityModeContainerV1beta1>? vulnerabilityMode;
+  final pulumi.Input<SecurityPostureConfigVulnerabilityModeContainerV1beta1?>? vulnerabilityMode;
 
   /// Creates a new [SecurityPostureConfigContainerV1beta1].
   /// [mode] Sets which mode to use for Security Posture features.

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Upgrade Distribution represents metadata about the Upgrade for each operating system (CPE). Some distributions have additional metadata around updates, classifying them into various categories and severities.
 class UpgradeDistributionContaineranalysisV1alpha1 {
   /// The operating system classification of this Upgrade, as specified by the upstream operating system upgrade feed.
-  final pulumi.Input<String>? classification;
+  final pulumi.Input<String?>? classification;
   /// Required - The specific operating system this metadata applies to. See https://cpe.mitre.org/specification/.
-  final pulumi.Input<String>? cpeUri;
+  final pulumi.Input<String?>? cpeUri;
   /// The cve that would be resolved by this upgrade.
-  final pulumi.Input<List<String>>? cve;
+  final pulumi.Input<List<String>?>? cve;
   /// The severity as specified by the upstream operating system.
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
 
   /// Creates a new [UpgradeDistributionContaineranalysisV1alpha1].
   /// [classification] The operating system classification of this Upgrade, as specified by the upstream operating system upgrade feed.

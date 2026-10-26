@@ -9,15 +9,15 @@ import 'ios_xc_test.dart';
 /// A iOS mobile test specification
 class IosTest {
   /// Information about the application under test.
-  final pulumi.Input<IosAppInfo>? iosAppInfo;
+  final pulumi.Input<IosAppInfo?>? iosAppInfo;
   /// An iOS Robo test.
-  final pulumi.Input<Map<String, dynamic>>? iosRoboTest;
+  final pulumi.Input<Map<String, dynamic>?>? iosRoboTest;
   /// An iOS test loop.
-  final pulumi.Input<IosTestLoop>? iosTestLoop;
+  final pulumi.Input<IosTestLoop?>? iosTestLoop;
   /// An iOS XCTest.
-  final pulumi.Input<IosXcTest>? iosXcTest;
+  final pulumi.Input<IosXcTest?>? iosXcTest;
   /// Max time a test is allowed to run before it is automatically cancelled.
-  final pulumi.Input<Duration>? testTimeout;
+  final pulumi.Input<Duration?>? testTimeout;
 
   /// Creates a new [IosTest].
   /// [iosAppInfo] Information about the application under test.

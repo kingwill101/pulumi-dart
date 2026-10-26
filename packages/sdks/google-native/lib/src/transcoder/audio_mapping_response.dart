@@ -47,11 +47,11 @@ class AudioMappingResponse {
   factory AudioMappingResponse.fromMap(Map<String, dynamic> map) {
     return AudioMappingResponse(
       atomKey: pulumi.Input.fromValue(map['atomKey'] as String),
-      gainDb: pulumi.Input.fromValue(map['gainDb'] as double),
-      inputChannel: pulumi.Input.fromValue(map['inputChannel'] as int),
+      gainDb: pulumi.Input.fromValue((map['gainDb'] as num).toDouble()),
+      inputChannel: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['inputChannel'])),
       inputKey: pulumi.Input.fromValue(map['inputKey'] as String),
-      inputTrack: pulumi.Input.fromValue(map['inputTrack'] as int),
-      outputChannel: pulumi.Input.fromValue(map['outputChannel'] as int),
+      inputTrack: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['inputTrack'])),
+      outputChannel: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['outputChannel'])),
     );
   }
 }

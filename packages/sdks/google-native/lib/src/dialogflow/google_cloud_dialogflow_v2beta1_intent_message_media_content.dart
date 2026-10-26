@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContent {
   /// List of media objects.
   final pulumi.Input<List<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject>> mediaObjects;
   /// Optional. What type of media is the content (ie "audio").
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType>? mediaType;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType?>? mediaType;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageMediaContent].
   /// [mediaObjects] List of media objects.

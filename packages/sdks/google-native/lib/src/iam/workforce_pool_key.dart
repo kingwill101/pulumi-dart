@@ -33,8 +33,28 @@ class WorkforcePoolKey extends pulumi.CustomResource {
           'google-native:iam/v1:WorkforcePoolKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'providerId', 'workforcePoolId', 'workforcePoolProviderKeyId']).merge(options),
         ) {
+    expireTime = registerOutput<String>('expireTime');
+    keyData = registerOutput<KeyDataResponse>('keyData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    providerId = registerOutput<String>('providerId');
+    state = registerOutput<String>('state');
+    use = registerOutput<String>('use');
+    workforcePoolId = registerOutput<String>('workforcePoolId');
+    workforcePoolProviderKeyId = registerOutput<String>('workforcePoolProviderKeyId');
+  }
+
+  /// Creates a typed reference to an existing [WorkforcePoolKey] resource.
+  WorkforcePoolKey.reference(String urn)
+    : super(
+        'google-native:iam/v1:WorkforcePoolKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     expireTime = registerOutput<String>('expireTime');
     keyData = registerOutput<KeyDataResponse>('keyData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');

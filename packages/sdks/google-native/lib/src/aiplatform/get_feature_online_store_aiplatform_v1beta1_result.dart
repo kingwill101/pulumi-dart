@@ -7,25 +7,25 @@ import 'google_cloud_aiplatform_v1beta1_feature_online_store_embedding_managemen
 /// Result data returned by getFeatureOnlineStore.
 class GetFeatureOnlineStoreAiplatformV1beta1Result {
   /// Contains settings for the Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
-  final GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponse bigtable;
+  final GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponse? bigtable;
   /// Timestamp when this FeatureOnlineStore was created.
-  final String createTime;
+  final String? createTime;
   /// Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
-  final GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse dedicatedServingEndpoint;
+  final GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse? dedicatedServingEndpoint;
   /// Optional. The settings for embedding management in FeatureOnlineStore.
-  final GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse embeddingManagement;
+  final GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse? embeddingManagement;
   /// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final String etag;
+  final String? etag;
   /// Optional. The labels with user-defined metadata to organize your FeatureOnlineStore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
-  final String name;
+  final String? name;
   /// Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
-  final Map<String, dynamic> optimized;
+  final Map<String, dynamic>? optimized;
   /// State of the featureOnlineStore.
-  final String state;
+  final String? state;
   /// Timestamp when this FeatureOnlineStore was last updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetFeatureOnlineStoreAiplatformV1beta1Result].
   /// [bigtable] Contains settings for the Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
@@ -39,45 +39,45 @@ class GetFeatureOnlineStoreAiplatformV1beta1Result {
   /// [state] State of the featureOnlineStore.
   /// [updateTime] Timestamp when this FeatureOnlineStore was last updated.
   const GetFeatureOnlineStoreAiplatformV1beta1Result({
-    required this.bigtable,
-    required this.createTime,
-    required this.dedicatedServingEndpoint,
-    required this.embeddingManagement,
-    required this.etag,
-    required this.labels,
-    required this.name,
-    required this.optimized,
-    required this.state,
-    required this.updateTime,
+    this.bigtable,
+    this.createTime,
+    this.dedicatedServingEndpoint,
+    this.embeddingManagement,
+    this.etag,
+    this.labels,
+    this.name,
+    this.optimized,
+    this.state,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigtable': bigtable.toMap(),
-      'createTime': createTime,
-      'dedicatedServingEndpoint': dedicatedServingEndpoint.toMap(),
-      'embeddingManagement': embeddingManagement.toMap(),
-      'etag': etag,
-      'labels': labels,
-      'name': name,
-      'optimized': optimized,
-      'state': state,
-      'updateTime': updateTime,
+      'bigtable': ?bigtable?.toMap(),
+      'createTime': ?createTime,
+      'dedicatedServingEndpoint': ?dedicatedServingEndpoint?.toMap(),
+      'embeddingManagement': ?embeddingManagement?.toMap(),
+      'etag': ?etag,
+      'labels': ?labels,
+      'name': ?name,
+      'optimized': ?optimized,
+      'state': ?state,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetFeatureOnlineStoreAiplatformV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetFeatureOnlineStoreAiplatformV1beta1Result(
-      bigtable: GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponse.fromMap((map['bigtable']! as Map).cast<String, dynamic>()),
-      createTime: map['createTime'] as String,
-      dedicatedServingEndpoint: GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse.fromMap((map['dedicatedServingEndpoint']! as Map).cast<String, dynamic>()),
-      embeddingManagement: GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse.fromMap((map['embeddingManagement']! as Map).cast<String, dynamic>()),
-      etag: map['etag'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      optimized: (map['optimized']! as Map).cast<String, dynamic>(),
-      state: map['state'] as String,
-      updateTime: map['updateTime'] as String,
+      bigtable: (() { final guardedValue = map['bigtable']; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dedicatedServingEndpoint: (() { final guardedValue = map['dedicatedServingEndpoint']; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      embeddingManagement: (() { final guardedValue = map['embeddingManagement']; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      optimized: (() { final guardedValue = map['optimized']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

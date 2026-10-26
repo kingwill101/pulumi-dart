@@ -6,9 +6,9 @@ import 'system_parameter.dart';
 /// Define a system parameter rule mapping system parameter definitions to methods.
 class SystemParameterRule {
   /// Define parameters. Multiple names may be defined for a parameter. For a given method call, only one of them should be used. If multiple names are used the behavior is implementation-dependent. If none of the specified names are present the behavior is parameter-dependent.
-  final pulumi.Input<List<SystemParameter>>? parameters;
+  final pulumi.Input<List<SystemParameter>?>? parameters;
   /// Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs. Refer to selector for syntax details.
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
 
   /// Creates a new [SystemParameterRule].
   /// [parameters] Define parameters. Multiple names may be defined for a parameter. For a given method call, only one of them should be used. If multiple names are used the behavior is implementation-dependent. If none of the specified names are present the behavior is parameter-dependent.

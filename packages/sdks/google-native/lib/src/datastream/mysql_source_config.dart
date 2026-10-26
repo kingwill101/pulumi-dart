@@ -6,13 +6,13 @@ import 'mysql_rdbms.dart';
 /// MySQL source configuration
 class MysqlSourceConfig {
   /// MySQL objects to exclude from the stream.
-  final pulumi.Input<MysqlRdbms>? excludeObjects;
+  final pulumi.Input<MysqlRdbms?>? excludeObjects;
   /// MySQL objects to retrieve from the source.
-  final pulumi.Input<MysqlRdbms>? includeObjects;
+  final pulumi.Input<MysqlRdbms?>? includeObjects;
   /// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
-  final pulumi.Input<int>? maxConcurrentBackfillTasks;
+  final pulumi.Input<int?>? maxConcurrentBackfillTasks;
   /// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
-  final pulumi.Input<int>? maxConcurrentCdcTasks;
+  final pulumi.Input<int?>? maxConcurrentCdcTasks;
 
   /// Creates a new [MysqlSourceConfig].
   /// [excludeObjects] MySQL objects to exclude from the stream.
@@ -39,8 +39,8 @@ class MysqlSourceConfig {
     return MysqlSourceConfig(
       excludeObjects: (() { final guardedValue = map['excludeObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MysqlRdbms.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       includeObjects: (() { final guardedValue = map['includeObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MysqlRdbms.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxConcurrentBackfillTasks: (() { final guardedValue = map['maxConcurrentBackfillTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxConcurrentCdcTasks: (() { final guardedValue = map['maxConcurrentCdcTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxConcurrentBackfillTasks: (() { final guardedValue = map['maxConcurrentBackfillTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxConcurrentCdcTasks: (() { final guardedValue = map['maxConcurrentCdcTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

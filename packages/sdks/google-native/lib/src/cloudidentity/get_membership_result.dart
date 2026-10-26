@@ -7,19 +7,19 @@ import 'membership_role_response.dart';
 /// Result data returned by getMembership.
 class GetMembershipResult {
   /// The time when the `Membership` was created.
-  final String createTime;
+  final String? createTime;
   /// Delivery setting associated with the membership.
-  final String deliverySetting;
+  final String? deliverySetting;
   /// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group}/memberships/{membership}`.
-  final String name;
+  final String? name;
   /// Immutable. The `EntityKey` of the member.
-  final EntityKeyResponse preferredMemberKey;
+  final EntityKeyResponse? preferredMemberKey;
   /// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
-  final List<MembershipRoleResponse> roles;
+  final List<MembershipRoleResponse>? roles;
   /// The type of the membership.
-  final String type;
+  final String? type;
   /// The time when the `Membership` was last updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetMembershipResult].
   /// [createTime] The time when the `Membership` was created.
@@ -30,36 +30,36 @@ class GetMembershipResult {
   /// [type] The type of the membership.
   /// [updateTime] The time when the `Membership` was last updated.
   const GetMembershipResult({
-    required this.createTime,
-    required this.deliverySetting,
-    required this.name,
-    required this.preferredMemberKey,
-    required this.roles,
-    required this.type,
-    required this.updateTime,
+    this.createTime,
+    this.deliverySetting,
+    this.name,
+    this.preferredMemberKey,
+    this.roles,
+    this.type,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'deliverySetting': deliverySetting,
-      'name': name,
-      'preferredMemberKey': preferredMemberKey.toMap(),
-      'roles': pulumi.Input.encodeList<MembershipRoleResponse, Map<String, dynamic>>(roles, (value) => value.toMap()),
-      'type': type,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'deliverySetting': ?deliverySetting,
+      'name': ?name,
+      'preferredMemberKey': ?preferredMemberKey?.toMap(),
+      'roles': ?(() { final guardedValue = roles; if (guardedValue == null) return null; return pulumi.Input.encodeList<MembershipRoleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'type': ?type,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetMembershipResult.fromMap(Map<String, dynamic> map) {
     return GetMembershipResult(
-      createTime: map['createTime'] as String,
-      deliverySetting: map['deliverySetting'] as String,
-      name: map['name'] as String,
-      preferredMemberKey: EntityKeyResponse.fromMap((map['preferredMemberKey']! as Map).cast<String, dynamic>()),
-      roles: pulumi.Input.decodeList<MembershipRoleResponse>(map['roles']!, (value) => MembershipRoleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deliverySetting: (() { final guardedValue = map['deliverySetting']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      preferredMemberKey: (() { final guardedValue = map['preferredMemberKey']; if (guardedValue == null) return null; return EntityKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      roles: (() { final guardedValue = map['roles']; if (guardedValue == null) return null; return pulumi.Input.decodeList<MembershipRoleResponse>(guardedValue, (value) => MembershipRoleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

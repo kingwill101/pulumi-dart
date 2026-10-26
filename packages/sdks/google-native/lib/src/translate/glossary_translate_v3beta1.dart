@@ -35,8 +35,28 @@ class GlossaryTranslateV3beta1 extends pulumi.CustomResource {
           'google-native:translate/v3beta1:Glossary',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    endTime = registerOutput<String>('endTime');
+    entryCount = registerOutput<int>('entryCount');
+    inputConfig = registerOutput<GlossaryInputConfigResponseTranslateV3beta1>('inputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlossaryInputConfigResponseTranslateV3beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    languageCodesSet = registerOutput<LanguageCodesSetResponseTranslateV3beta1>('languageCodesSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LanguageCodesSetResponseTranslateV3beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    languagePair = registerOutput<LanguageCodePairResponseTranslateV3beta1>('languagePair', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LanguageCodePairResponseTranslateV3beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    submitTime = registerOutput<String>('submitTime');
+  }
+
+  /// Creates a typed reference to an existing [GlossaryTranslateV3beta1] resource.
+  GlossaryTranslateV3beta1.reference(String urn)
+    : super(
+        'google-native:translate/v3beta1:Glossary',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     endTime = registerOutput<String>('endTime');
     entryCount = registerOutput<int>('entryCount');
     inputConfig = registerOutput<GlossaryInputConfigResponseTranslateV3beta1>('inputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlossaryInputConfigResponseTranslateV3beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });

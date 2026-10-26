@@ -19,33 +19,33 @@ import 'spark_sql_job_dataproc_v1beta2.dart';
 /// {@macro pulumi_dataproc_v1beta2_job_dataproc_v1beta2_args_doc}
 class JobDataprocV1beta2Args {
   /// Optional. Job is a Hadoop job.
-  final pulumi.Input<HadoopJobDataprocV1beta2>? hadoopJob;
+  final pulumi.Input<HadoopJobDataprocV1beta2?>? hadoopJob;
   /// Optional. Job is a Hive job.
-  final pulumi.Input<HiveJobDataprocV1beta2>? hiveJob;
+  final pulumi.Input<HiveJobDataprocV1beta2?>? hiveJob;
   /// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Optional. Job is a Pig job.
-  final pulumi.Input<PigJobDataprocV1beta2>? pigJob;
+  final pulumi.Input<PigJobDataprocV1beta2?>? pigJob;
   /// Job information, including how, when, and where to run the job.
   final pulumi.Input<JobPlacementDataprocV1beta2> placement;
   /// Optional. Job is a Presto job.
-  final pulumi.Input<PrestoJobDataprocV1beta2>? prestoJob;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<PrestoJobDataprocV1beta2?>? prestoJob;
+  final pulumi.Input<String?>? project;
   /// Optional. Job is a PySpark job.
-  final pulumi.Input<PySparkJobDataprocV1beta2>? pysparkJob;
+  final pulumi.Input<PySparkJobDataprocV1beta2?>? pysparkJob;
   /// Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id.
-  final pulumi.Input<JobReferenceDataprocV1beta2>? reference;
+  final pulumi.Input<JobReferenceDataprocV1beta2?>? reference;
   final pulumi.Input<String> region;
   /// Optional. A unique id used to identify the request. If the server receives two SubmitJobRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#google.cloud.dataproc.v1.SubmitJobRequest)s with the same id, then the second request will be ignored and the first Job created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Optional. Job scheduling configuration.
-  final pulumi.Input<JobSchedulingDataprocV1beta2>? scheduling;
+  final pulumi.Input<JobSchedulingDataprocV1beta2?>? scheduling;
   /// Optional. Job is a Spark job.
-  final pulumi.Input<SparkJobDataprocV1beta2>? sparkJob;
+  final pulumi.Input<SparkJobDataprocV1beta2?>? sparkJob;
   /// Optional. Job is a SparkR job.
-  final pulumi.Input<SparkRJobDataprocV1beta2>? sparkRJob;
+  final pulumi.Input<SparkRJobDataprocV1beta2?>? sparkRJob;
   /// Optional. Job is a SparkSql job.
-  final pulumi.Input<SparkSqlJobDataprocV1beta2>? sparkSqlJob;
+  final pulumi.Input<SparkSqlJobDataprocV1beta2?>? sparkSqlJob;
 
   /// Creates a new [JobDataprocV1beta2Args].
   /// [hadoopJob] Optional. Job is a Hadoop job.

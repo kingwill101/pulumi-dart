@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether the resource is continuously analyzed.
-enum DiscoveredContinuousAnalysisContaineranalysisV1beta1 {
+enum DiscoveredContinuousAnalysisContaineranalysisV1beta1 implements pulumi.PulumiEnum<String> {
   continuousAnalysisUnspecified("CONTINUOUS_ANALYSIS_UNSPECIFIED"),
   active("ACTIVE"),
   inactive("INACTIVE");
 
   const DiscoveredContinuousAnalysisContaineranalysisV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static DiscoveredContinuousAnalysisContaineranalysisV1beta1 fromValue(String value) {

@@ -12,21 +12,21 @@ import 'user_password.dart';
 /// AuthConfig defines details of a authentication type.
 class AuthConfig {
   /// List containing additional auth configs.
-  final pulumi.Input<List<ConfigVariable>>? additionalVariables;
+  final pulumi.Input<List<ConfigVariable>?>? additionalVariables;
   /// Identifier key for auth config
-  final pulumi.Input<String>? authKey;
+  final pulumi.Input<String?>? authKey;
   /// The type of authentication configured.
-  final pulumi.Input<AuthConfigAuthType>? authType;
+  final pulumi.Input<AuthConfigAuthType?>? authType;
   /// Oauth2AuthCodeFlow.
-  final pulumi.Input<Oauth2AuthCodeFlow>? oauth2AuthCodeFlow;
+  final pulumi.Input<Oauth2AuthCodeFlow?>? oauth2AuthCodeFlow;
   /// Oauth2ClientCredentials.
-  final pulumi.Input<Oauth2ClientCredentials>? oauth2ClientCredentials;
+  final pulumi.Input<Oauth2ClientCredentials?>? oauth2ClientCredentials;
   /// Oauth2JwtBearer.
-  final pulumi.Input<Oauth2JwtBearer>? oauth2JwtBearer;
+  final pulumi.Input<Oauth2JwtBearer?>? oauth2JwtBearer;
   /// SSH Public Key.
-  final pulumi.Input<SshPublicKey>? sshPublicKey;
+  final pulumi.Input<SshPublicKey?>? sshPublicKey;
   /// UserPassword.
-  final pulumi.Input<UserPassword>? userPassword;
+  final pulumi.Input<UserPassword?>? userPassword;
 
   /// Creates a new [AuthConfig].
   /// [additionalVariables] List containing additional auth configs.

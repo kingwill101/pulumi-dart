@@ -20,6 +20,17 @@ Future<GetAgentPoolResult> getAgentPool(
   return GetAgentPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetAgentPoolResult> getAgentPoolOutput(
+  GetAgentPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:storagetransfer/v1:getAgentPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPoolResult.fromMap);
+}
+
 /// Gets a transfer job.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storagetransfer_v1_get_transfer_job_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetTransferJobResult> getTransferJob(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTransferJobResult.fromMap(result);
+}
+
+pulumi.Output<GetTransferJobResult> getTransferJobOutput(
+  GetTransferJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:storagetransfer/v1:getTransferJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTransferJobResult.fromMap);
 }

@@ -6,17 +6,17 @@ import 'deployment_occurrence_platform.dart';
 /// The period during which some deployable was active in a runtime.
 class DeploymentOccurrence {
   /// Address of the runtime element hosting this deployment.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Configuration used to create this deployment.
-  final pulumi.Input<String>? config;
+  final pulumi.Input<String?>? config;
   /// Beginning of the lifetime of this deployment.
   final pulumi.Input<String> deployTime;
   /// Platform hosting this deployment.
-  final pulumi.Input<DeploymentOccurrencePlatform>? platform;
+  final pulumi.Input<DeploymentOccurrencePlatform?>? platform;
   /// End of the lifetime of this deployment.
-  final pulumi.Input<String>? undeployTime;
+  final pulumi.Input<String?>? undeployTime;
   /// Identity of the user that triggered this deployment.
-  final pulumi.Input<String>? userEmail;
+  final pulumi.Input<String?>? userEmail;
 
   /// Creates a new [DeploymentOccurrence].
   /// [address] Address of the runtime element hosting this deployment.

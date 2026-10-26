@@ -46,15 +46,41 @@ class DeliveryPipeline extends pulumi.CustomResource {
           'google-native:clouddeploy/v1:DeliveryPipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['deliveryPipelineId', 'location', 'project']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     condition = registerOutput<PipelineConditionResponse>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineConditionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deliveryPipelineId = registerOutput<String>('deliveryPipelineId');
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    serialPipeline = registerOutput<SerialPipelineResponse>('serialPipeline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SerialPipelineResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    suspended = registerOutput<bool>('suspended');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [DeliveryPipeline] resource.
+  DeliveryPipeline.reference(String urn)
+    : super(
+        'google-native:clouddeploy/v1:DeliveryPipeline',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    condition = registerOutput<PipelineConditionResponse>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineConditionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deliveryPipelineId = registerOutput<String>('deliveryPipelineId');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

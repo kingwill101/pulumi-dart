@@ -6,7 +6,7 @@ import 'google_cloud_channel_v1_renewal_settings.dart';
 /// Commitment settings for commitment-based offers.
 class GoogleCloudChannelV1CommitmentSettings {
   /// Optional. Renewal settings applicable for a commitment-based Offer.
-  final pulumi.Input<GoogleCloudChannelV1RenewalSettings>? renewalSettings;
+  final pulumi.Input<GoogleCloudChannelV1RenewalSettings?>? renewalSettings;
 
   /// Creates a new [GoogleCloudChannelV1CommitmentSettings].
   /// [renewalSettings] Optional. Renewal settings applicable for a commitment-based Offer.

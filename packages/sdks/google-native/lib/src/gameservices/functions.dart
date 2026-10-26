@@ -20,6 +20,17 @@ Future<GetGameServerDeploymentIamPolicyResult> getGameServerDeploymentIamPolicy(
   return GetGameServerDeploymentIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetGameServerDeploymentIamPolicyResult> getGameServerDeploymentIamPolicyOutput(
+  GetGameServerDeploymentIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gameservices/v1:getGameServerDeploymentIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGameServerDeploymentIamPolicyResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gameservices_v1beta_get_game_server_deployment_iam_policy_gameservices_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetGameServerDeploymentIamPolicyGameservicesV1betaResult> getGameServerDe
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGameServerDeploymentIamPolicyGameservicesV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetGameServerDeploymentIamPolicyGameservicesV1betaResult> getGameServerDeploymentIamPolicyGameservicesV1betaOutput(
+  GetGameServerDeploymentIamPolicyGameservicesV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gameservices/v1beta:getGameServerDeploymentIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGameServerDeploymentIamPolicyGameservicesV1betaResult.fromMap);
 }

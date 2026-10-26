@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents configuration parameters for a manual load balancer.
 class BareMetalManualLbConfig {
   /// Whether manual load balancing is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [BareMetalManualLbConfig].
   /// [enabled] Whether manual load balancing is enabled.

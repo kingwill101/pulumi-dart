@@ -6,7 +6,7 @@ import 'telemetry_config_log_format_metastore_v1beta.dart';
 /// Telemetry Configuration for the Dataproc Metastore service.
 class TelemetryConfigMetastoreV1beta {
   /// The output format of the Dataproc Metastore service's logs.
-  final pulumi.Input<TelemetryConfigLogFormatMetastoreV1beta>? logFormat;
+  final pulumi.Input<TelemetryConfigLogFormatMetastoreV1beta?>? logFormat;
 
   /// Creates a new [TelemetryConfigMetastoreV1beta].
   /// [logFormat] The output format of the Dataproc Metastore service's logs.

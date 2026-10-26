@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'message_args.dart';
 import 'parsed_data_response.dart';
+import 'patient_id_response.dart';
 import 'schematized_data_response.dart';
 
 /// Parses and stores an HL7v2 message. This method triggers an asynchronous notification to any Pub/Sub topic configured in Hl7V2Store.Hl7V2NotificationConfig, if the filtering matches the message. If an MLLP adapter is configured to listen to a Pub/Sub topic, the adapter transmits the message when a notification is received.
@@ -21,7 +22,7 @@ class Message extends pulumi.CustomResource {
   /// The parsed version of the raw message data.
   late final pulumi.Output<ParsedDataResponse> parsedData;
   /// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
-  late final pulumi.Output<List<Map<String, dynamic>>> patientIds;
+  late final pulumi.Output<List<PatientIdResponse>> patientIds;
   late final pulumi.Output<String> project;
   /// The parsed version of the raw message data schematized according to this store's schemas and type definitions.
   late final pulumi.Output<SchematizedDataResponse> schematizedData;
@@ -42,18 +43,43 @@ class Message extends pulumi.CustomResource {
           'google-native:healthcare/v1:Message',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['datasetId', 'hl7V2StoreId', 'location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     data = registerOutput<String>('data');
     datasetId = registerOutput<String>('datasetId');
     hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     messageType = registerOutput<String>('messageType');
     this.name = registerOutput<String>('name');
     parsedData = registerOutput<ParsedDataResponse>('parsedData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ParsedDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    patientIds = registerOutput<List<Map<String, dynamic>>>('patientIds');
+    patientIds = registerOutput<List<PatientIdResponse>>('patientIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PatientIdResponse>(guardedValue, (value) => PatientIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    schematizedData = registerOutput<SchematizedDataResponse>('schematizedData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchematizedDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sendFacility = registerOutput<String>('sendFacility');
+    sendTime = registerOutput<String>('sendTime');
+  }
+
+  /// Creates a typed reference to an existing [Message] resource.
+  Message.reference(String urn)
+    : super(
+        'google-native:healthcare/v1:Message',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    data = registerOutput<String>('data');
+    datasetId = registerOutput<String>('datasetId');
+    hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    messageType = registerOutput<String>('messageType');
+    this.name = registerOutput<String>('name');
+    parsedData = registerOutput<ParsedDataResponse>('parsedData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ParsedDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    patientIds = registerOutput<List<PatientIdResponse>>('patientIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PatientIdResponse>(guardedValue, (value) => PatientIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     schematizedData = registerOutput<SchematizedDataResponse>('schematizedData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchematizedDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sendFacility = registerOutput<String>('sendFacility');

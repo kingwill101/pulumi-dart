@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The amount of padding around the widget
-enum TextStylePadding {
+enum TextStylePadding implements pulumi.PulumiEnum<String> {
   paddingSizeUnspecified("PADDING_SIZE_UNSPECIFIED"),
   pExtraSmall("P_EXTRA_SMALL"),
   pSmall("P_SMALL"),
@@ -8,6 +10,7 @@ enum TextStylePadding {
   pExtraLarge("P_EXTRA_LARGE");
 
   const TextStylePadding(this.wireValue);
+  @override
   final String wireValue;
 
   static TextStylePadding fromValue(String value) {

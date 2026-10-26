@@ -46,14 +46,40 @@ class RestorePlan extends pulumi.CustomResource {
           'google-native:gkebackup/v1:RestorePlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'restorePlanId']).merge(options),
         ) {
     backupPlan = registerOutput<String>('backupPlan');
     cluster = registerOutput<String>('cluster');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    restoreConfig = registerOutput<RestoreConfigResponse>('restoreConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoreConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    restorePlanId = registerOutput<String>('restorePlanId');
+    state = registerOutput<String>('state');
+    stateReason = registerOutput<String>('stateReason');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [RestorePlan] resource.
+  RestorePlan.reference(String urn)
+    : super(
+        'google-native:gkebackup/v1:RestorePlan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backupPlan = registerOutput<String>('backupPlan');
+    cluster = registerOutput<String>('cluster');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

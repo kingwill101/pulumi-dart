@@ -11,7 +11,7 @@ class GetConversationDiscoveryengineV1betaArgs {
   final pulumi.Input<String> conversationId;
   final pulumi.Input<String> dataStoreId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetConversationDiscoveryengineV1betaArgs].
   /// [collectionId] Required.

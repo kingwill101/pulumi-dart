@@ -43,9 +43,9 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse {
   factory GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse(
       confidenceInterval: pulumi.Input.fromValue(GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalResponse.fromMap((map['confidenceInterval']! as Map).cast<String, dynamic>())),
-      count: pulumi.Input.fromValue(map['count'] as double),
+      count: pulumi.Input.fromValue((map['count'] as num).toDouble()),
       countType: pulumi.Input.fromValue(map['countType'] as String),
-      ratio: pulumi.Input.fromValue(map['ratio'] as double),
+      ratio: pulumi.Input.fromValue((map['ratio'] as num).toDouble()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

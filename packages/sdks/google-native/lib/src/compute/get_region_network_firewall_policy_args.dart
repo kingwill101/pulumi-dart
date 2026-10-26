@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_alpha_get_region_network_firewall_policy_args_doc}
 class GetRegionNetworkFirewallPolicyArgs {
   final pulumi.Input<String> firewallPolicy;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
 
   /// Creates a new [GetRegionNetworkFirewallPolicyArgs].

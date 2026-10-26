@@ -7,11 +7,11 @@ import 'storage_source_cloudfunctions_v2alpha.dart';
 /// The location of the function source code.
 class SourceCloudfunctionsV2alpha {
   /// If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob//
-  final pulumi.Input<String>? gitUri;
+  final pulumi.Input<String?>? gitUri;
   /// If provided, get the source from this location in a Cloud Source Repository.
-  final pulumi.Input<RepoSourceCloudfunctionsV2alpha>? repoSource;
+  final pulumi.Input<RepoSourceCloudfunctionsV2alpha?>? repoSource;
   /// If provided, get the source from this location in Google Cloud Storage.
-  final pulumi.Input<StorageSourceCloudfunctionsV2alpha>? storageSource;
+  final pulumi.Input<StorageSourceCloudfunctionsV2alpha?>? storageSource;
 
   /// Creates a new [SourceCloudfunctionsV2alpha].
   /// [gitUri] If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob//

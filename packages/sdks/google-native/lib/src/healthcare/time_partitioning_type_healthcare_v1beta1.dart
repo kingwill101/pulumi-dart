@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of partitioning.
-enum TimePartitioningTypeHealthcareV1beta1 {
+enum TimePartitioningTypeHealthcareV1beta1 implements pulumi.PulumiEnum<String> {
   partitionTypeUnspecified("PARTITION_TYPE_UNSPECIFIED"),
   hour("HOUR"),
   day("DAY"),
@@ -7,6 +9,7 @@ enum TimePartitioningTypeHealthcareV1beta1 {
   year("YEAR");
 
   const TimePartitioningTypeHealthcareV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static TimePartitioningTypeHealthcareV1beta1 fromValue(String value) {

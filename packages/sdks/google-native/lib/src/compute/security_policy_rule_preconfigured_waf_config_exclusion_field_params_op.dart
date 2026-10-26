@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The match operator for the field.
-enum SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp {
+enum SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp implements pulumi.PulumiEnum<String> {
   contains("CONTAINS"),
   endsWith("ENDS_WITH"),
   equals("EQUALS"),
@@ -7,6 +9,7 @@ enum SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp {
   startsWith("STARTS_WITH");
 
   const SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp fromValue(String value) {

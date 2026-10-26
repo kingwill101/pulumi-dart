@@ -20,6 +20,17 @@ Future<GetJobResult> getJob(
   return GetJobResult.fromMap(result);
 }
 
+pulumi.Output<GetJobResult> getJobOutput(
+  GetJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dataflow/v1b3:getJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobResult.fromMap);
+}
+
 /// Get the template associated with a template.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataflow_v1b3_get_template_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetTemplateResult> getTemplate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTemplateResult.fromMap(result);
+}
+
+pulumi.Output<GetTemplateResult> getTemplateOutput(
+  GetTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dataflow/v1b3:getTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTemplateResult.fromMap);
 }

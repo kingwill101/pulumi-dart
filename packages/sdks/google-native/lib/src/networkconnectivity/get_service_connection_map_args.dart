@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkconnectivity_v1_get_service_connection_map_args_doc}
 class GetServiceConnectionMapArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> serviceConnectionMapId;
 
   /// Creates a new [GetServiceConnectionMapArgs].

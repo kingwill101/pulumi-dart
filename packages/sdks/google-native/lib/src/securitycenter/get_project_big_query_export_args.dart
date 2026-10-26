@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_securitycenter_v1_get_project_big_query_export_args_doc}
 class GetProjectBigQueryExportArgs {
   final pulumi.Input<String> bigQueryExportId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetProjectBigQueryExportArgs].
   /// [bigQueryExportId] Required.

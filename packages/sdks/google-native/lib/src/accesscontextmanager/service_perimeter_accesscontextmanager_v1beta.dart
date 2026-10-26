@@ -28,8 +28,25 @@ class ServicePerimeterAccesscontextmanagerV1beta extends pulumi.CustomResource {
           'google-native:accesscontextmanager/v1beta:ServicePerimeter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['accessPolicyId']).merge(options),
         ) {
+    accessPolicyId = registerOutput<String>('accessPolicyId');
+    description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    perimeterType = registerOutput<String>('perimeterType');
+    status = registerOutput<ServicePerimeterConfigResponseAccesscontextmanagerV1beta>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterConfigResponseAccesscontextmanagerV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    title = registerOutput<String>('title');
+  }
+
+  /// Creates a typed reference to an existing [ServicePerimeterAccesscontextmanagerV1beta] resource.
+  ServicePerimeterAccesscontextmanagerV1beta.reference(String urn)
+    : super(
+        'google-native:accesscontextmanager/v1beta:ServicePerimeter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');

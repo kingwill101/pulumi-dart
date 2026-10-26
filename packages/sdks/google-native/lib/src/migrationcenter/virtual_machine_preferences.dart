@@ -12,19 +12,19 @@ import 'vmware_engine_preferences.dart';
 /// VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
 class VirtualMachinePreferences {
   /// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-  final pulumi.Input<VirtualMachinePreferencesCommitmentPlan>? commitmentPlan;
+  final pulumi.Input<VirtualMachinePreferencesCommitmentPlan?>? commitmentPlan;
   /// Compute Engine preferences concern insights and recommendations for Compute Engine target.
-  final pulumi.Input<ComputeEnginePreferences>? computeEnginePreferences;
+  final pulumi.Input<ComputeEnginePreferences?>? computeEnginePreferences;
   /// Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with.
-  final pulumi.Input<RegionPreferences>? regionPreferences;
+  final pulumi.Input<RegionPreferences?>? regionPreferences;
   /// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
-  final pulumi.Input<VirtualMachinePreferencesSizingOptimizationStrategy>? sizingOptimizationStrategy;
+  final pulumi.Input<VirtualMachinePreferencesSizingOptimizationStrategy?>? sizingOptimizationStrategy;
   /// Preferences concerning Sole Tenant nodes and virtual machines.
-  final pulumi.Input<SoleTenancyPreferences>? soleTenancyPreferences;
+  final pulumi.Input<SoleTenancyPreferences?>? soleTenancyPreferences;
   /// Target product for assets using this preference set. Specify either target product or business goal, but not both.
-  final pulumi.Input<VirtualMachinePreferencesTargetProduct>? targetProduct;
+  final pulumi.Input<VirtualMachinePreferencesTargetProduct?>? targetProduct;
   /// Preferences concerning insights and recommendations for Google Cloud VMware Engine.
-  final pulumi.Input<VmwareEnginePreferences>? vmwareEnginePreferences;
+  final pulumi.Input<VmwareEnginePreferences?>? vmwareEnginePreferences;
 
   /// Creates a new [VirtualMachinePreferences].
   /// [commitmentPlan] Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.

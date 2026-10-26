@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Input only. Indicates the type of the disk.
-enum DataDiskDiskType {
+enum DataDiskDiskType implements pulumi.PulumiEnum<String> {
   diskTypeUnspecified("DISK_TYPE_UNSPECIFIED"),
   pdStandard("PD_STANDARD"),
   pdSsd("PD_SSD"),
@@ -7,6 +9,7 @@ enum DataDiskDiskType {
   pdExtreme("PD_EXTREME");
 
   const DataDiskDiskType(this.wireValue);
+  @override
   final String wireValue;
 
   static DataDiskDiskType fromValue(String value) {

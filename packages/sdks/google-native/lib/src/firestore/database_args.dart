@@ -13,24 +13,24 @@ import 'database_type.dart';
 /// {@macro pulumi_firestore_v1_database_args_doc}
 class DatabaseArgs {
   /// The App Engine integration mode to use for this database.
-  final pulumi.Input<DatabaseAppEngineIntegrationMode>? appEngineIntegrationMode;
+  final pulumi.Input<DatabaseAppEngineIntegrationMode?>? appEngineIntegrationMode;
   /// The concurrency control mode to use for this database.
-  final pulumi.Input<DatabaseConcurrencyMode>? concurrencyMode;
+  final pulumi.Input<DatabaseConcurrencyMode?>? concurrencyMode;
   /// Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
   final pulumi.Input<String> databaseId;
   /// State of delete protection for the database.
-  final pulumi.Input<DatabaseDeleteProtectionState>? deleteProtectionState;
+  final pulumi.Input<DatabaseDeleteProtectionState?>? deleteProtectionState;
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The location of the database. Available locations are listed at https://cloud.google.com/firestore/docs/locations.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the Database. Format: `projects/{project}/databases/{database}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether to enable the PITR feature on this database.
-  final pulumi.Input<DatabasePointInTimeRecoveryEnablement>? pointInTimeRecoveryEnablement;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<DatabasePointInTimeRecoveryEnablement?>? pointInTimeRecoveryEnablement;
+  final pulumi.Input<String?>? project;
   /// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
-  final pulumi.Input<DatabaseType>? type;
+  final pulumi.Input<DatabaseType?>? type;
 
   /// Creates a new [DatabaseArgs].
   /// [appEngineIntegrationMode] The App Engine integration mode to use for this database.

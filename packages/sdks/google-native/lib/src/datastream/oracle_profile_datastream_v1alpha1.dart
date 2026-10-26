@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Oracle database profile.
 class OracleProfileDatastreamV1alpha1 {
   /// Connection string attributes
-  final pulumi.Input<Map<String, String>>? connectionAttributes;
+  final pulumi.Input<Map<String, String>?>? connectionAttributes;
   /// Database for the Oracle connection.
   final pulumi.Input<String> databaseService;
   /// Hostname for the Oracle connection.
@@ -13,7 +13,7 @@ class OracleProfileDatastreamV1alpha1 {
   /// Password for the Oracle connection.
   final pulumi.Input<String> password;
   /// Port for the Oracle connection, default value is 1521.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Username for the Oracle connection.
   final pulumi.Input<String> username;
 
@@ -50,7 +50,7 @@ class OracleProfileDatastreamV1alpha1 {
       databaseService: pulumi.Input.fromValue(map['databaseService'] as String),
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }

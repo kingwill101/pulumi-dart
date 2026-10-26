@@ -26,8 +26,8 @@ class LatLngResponse {
 
   factory LatLngResponse.fromMap(Map<String, dynamic> map) {
     return LatLngResponse(
-      latitude: pulumi.Input.fromValue(map['latitude'] as double),
-      longitude: pulumi.Input.fromValue(map['longitude'] as double),
+      latitude: pulumi.Input.fromValue((map['latitude'] as num).toDouble()),
+      longitude: pulumi.Input.fromValue((map['longitude'] as num).toDouble()),
     );
   }
 }

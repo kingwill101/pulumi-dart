@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Kernel
-enum JupyterConfigKernel {
+enum JupyterConfigKernel implements pulumi.PulumiEnum<String> {
   kernelUnspecified("KERNEL_UNSPECIFIED"),
   python("PYTHON"),
   scala("SCALA");
 
   const JupyterConfigKernel(this.wireValue);
+  @override
   final String wireValue;
 
   static JupyterConfigKernel fromValue(String value) {

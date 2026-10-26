@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The text response message.
 class GoogleCloudDialogflowV2IntentMessageText {
   /// Optional. The collection of the agent's responses.
-  final pulumi.Input<List<String>>? text;
+  final pulumi.Input<List<String>?>? text;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageText].
   /// [text] Optional. The collection of the agent's responses.

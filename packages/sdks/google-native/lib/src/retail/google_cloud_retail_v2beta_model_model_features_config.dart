@@ -6,7 +6,7 @@ import 'google_cloud_retail_v2beta_model_frequently_bought_together_features_con
 /// Additional model features config.
 class GoogleCloudRetailV2betaModelModelFeaturesConfig {
   /// Additional configs for frequently-bought-together models.
-  final pulumi.Input<GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig>? frequentlyBoughtTogetherConfig;
+  final pulumi.Input<GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig?>? frequentlyBoughtTogetherConfig;
 
   /// Creates a new [GoogleCloudRetailV2betaModelModelFeaturesConfig].
   /// [frequentlyBoughtTogetherConfig] Additional configs for frequently-bought-together models.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.
-enum GoogleFirestoreAdminV1WeeklyRecurrenceDay {
+enum GoogleFirestoreAdminV1WeeklyRecurrenceDay implements pulumi.PulumiEnum<String> {
   dayOfWeekUnspecified("DAY_OF_WEEK_UNSPECIFIED"),
   monday("MONDAY"),
   tuesday("TUESDAY"),
@@ -10,6 +12,7 @@ enum GoogleFirestoreAdminV1WeeklyRecurrenceDay {
   sunday("SUNDAY");
 
   const GoogleFirestoreAdminV1WeeklyRecurrenceDay(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleFirestoreAdminV1WeeklyRecurrenceDay fromValue(String value) {

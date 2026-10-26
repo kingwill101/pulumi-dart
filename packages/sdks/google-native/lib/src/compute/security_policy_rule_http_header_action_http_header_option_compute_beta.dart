@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionComputeBeta {
   /// The name of the header to set.
-  final pulumi.Input<String>? headerName;
+  final pulumi.Input<String?>? headerName;
   /// The value to set the named header to.
-  final pulumi.Input<String>? headerValue;
+  final pulumi.Input<String?>? headerValue;
 
   /// Creates a new [SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionComputeBeta].
   /// [headerName] The name of the header to set.

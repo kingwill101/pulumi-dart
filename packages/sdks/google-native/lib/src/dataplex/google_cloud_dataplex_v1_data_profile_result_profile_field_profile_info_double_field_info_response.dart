@@ -41,11 +41,11 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldIn
 
   factory GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse(
-      average: pulumi.Input.fromValue(map['average'] as double),
-      max: pulumi.Input.fromValue(map['max'] as double),
-      min: pulumi.Input.fromValue(map['min'] as double),
+      average: pulumi.Input.fromValue((map['average'] as num).toDouble()),
+      max: pulumi.Input.fromValue((map['max'] as num).toDouble()),
+      min: pulumi.Input.fromValue((map['min'] as num).toDouble()),
       quartiles: pulumi.Input.fromValue((map['quartiles'] as List).cast<double>()),
-      standardDeviation: pulumi.Input.fromValue(map['standardDeviation'] as double),
+      standardDeviation: pulumi.Input.fromValue((map['standardDeviation'] as num).toDouble()),
     );
   }
 }

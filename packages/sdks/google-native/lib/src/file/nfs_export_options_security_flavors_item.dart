@@ -1,4 +1,6 @@
-enum NfsExportOptionsSecurityFlavorsItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum NfsExportOptionsSecurityFlavorsItem implements pulumi.PulumiEnum<String> {
   securityFlavorUnspecified("SECURITY_FLAVOR_UNSPECIFIED"),
   authSys("AUTH_SYS"),
   krb5("KRB5"),
@@ -6,6 +8,7 @@ enum NfsExportOptionsSecurityFlavorsItem {
   krb5p("KRB5P");
 
   const NfsExportOptionsSecurityFlavorsItem(this.wireValue);
+  @override
   final String wireValue;
 
   static NfsExportOptionsSecurityFlavorsItem fromValue(String value) {

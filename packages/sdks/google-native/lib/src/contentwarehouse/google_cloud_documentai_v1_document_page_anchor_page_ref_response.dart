@@ -43,7 +43,7 @@ class GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse {
   factory GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse(
       boundingPoly: pulumi.Input.fromValue(GoogleCloudDocumentaiV1BoundingPolyResponse.fromMap((map['boundingPoly']! as Map).cast<String, dynamic>())),
-      confidence: pulumi.Input.fromValue(map['confidence'] as double),
+      confidence: pulumi.Input.fromValue((map['confidence'] as num).toDouble()),
       layoutId: pulumi.Input.fromValue(map['layoutId'] as String),
       layoutType: pulumi.Input.fromValue(map['layoutType'] as String),
       page: pulumi.Input.fromValue(map['page'] as String),

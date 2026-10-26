@@ -9,13 +9,13 @@ import 'enterprise_crm_logging_gws_sanitize_options.dart';
 /// The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information.
 class EnterpriseCrmEventbusProtoLogSettings {
   /// The name of corresponding logging field of the event property. If omitted, assumes the same name as the event property key.
-  final pulumi.Input<String>? logFieldName;
+  final pulumi.Input<String?>? logFieldName;
   /// Contains the scrubbing options, such as whether to scrub, obfuscate, etc.
-  final pulumi.Input<EnterpriseCrmLoggingGwsSanitizeOptions>? sanitizeOptions;
-  final pulumi.Input<EnterpriseCrmEventbusProtoLogSettingsSeedPeriod>? seedPeriod;
-  final pulumi.Input<EnterpriseCrmEventbusProtoLogSettingsSeedScope>? seedScope;
+  final pulumi.Input<EnterpriseCrmLoggingGwsSanitizeOptions?>? sanitizeOptions;
+  final pulumi.Input<EnterpriseCrmEventbusProtoLogSettingsSeedPeriod?>? seedPeriod;
+  final pulumi.Input<EnterpriseCrmEventbusProtoLogSettingsSeedScope?>? seedScope;
   /// Contains the field limits for shortening, such as max string length and max array length.
-  final pulumi.Input<EnterpriseCrmLoggingGwsFieldLimits>? shorteningLimits;
+  final pulumi.Input<EnterpriseCrmLoggingGwsFieldLimits?>? shorteningLimits;
 
   /// Creates a new [EnterpriseCrmEventbusProtoLogSettings].
   /// [logFieldName] The name of corresponding logging field of the event property. If omitted, assumes the same name as the event property key.

@@ -32,6 +32,17 @@ Future<GetConnectionProfileResult> getConnectionProfile(
   return GetConnectionProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectionProfileResult> getConnectionProfileOutput(
+  GetConnectionProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datastream/v1:getConnectionProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionProfileResult.fromMap);
+}
+
 /// Use this method to get details about a private connectivity configuration.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datastream_v1_get_private_connection_args_doc}
 /// [options] Invoke options controlling this call.
@@ -46,6 +57,17 @@ Future<GetPrivateConnectionResult> getPrivateConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateConnectionResult> getPrivateConnectionOutput(
+  GetPrivateConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datastream/v1:getPrivateConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateConnectionResult.fromMap);
 }
 
 /// Use this method to get details about a route.
@@ -64,6 +86,17 @@ Future<GetRouteResult> getRoute(
   return GetRouteResult.fromMap(result);
 }
 
+pulumi.Output<GetRouteResult> getRouteOutput(
+  GetRouteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datastream/v1:getRoute',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteResult.fromMap);
+}
+
 /// Use this method to get details about a stream.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datastream_v1_get_stream_args_doc}
 /// [options] Invoke options controlling this call.
@@ -78,6 +111,17 @@ Future<GetStreamResult> getStream(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStreamResult.fromMap(result);
+}
+
+pulumi.Output<GetStreamResult> getStreamOutput(
+  GetStreamArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datastream/v1:getStream',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStreamResult.fromMap);
 }
 
 /// Use this method to get details about a connection profile.
@@ -96,6 +140,17 @@ Future<GetConnectionProfileDatastreamV1alpha1Result> getConnectionProfileDatastr
   return GetConnectionProfileDatastreamV1alpha1Result.fromMap(result);
 }
 
+pulumi.Output<GetConnectionProfileDatastreamV1alpha1Result> getConnectionProfileDatastreamV1alpha1Output(
+  GetConnectionProfileDatastreamV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datastream/v1alpha1:getConnectionProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionProfileDatastreamV1alpha1Result.fromMap);
+}
+
 /// Use this method to get details about a private connectivity configuration.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datastream_v1alpha1_get_private_connection_datastream_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -110,6 +165,17 @@ Future<GetPrivateConnectionDatastreamV1alpha1Result> getPrivateConnectionDatastr
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateConnectionDatastreamV1alpha1Result.fromMap(result);
+}
+
+pulumi.Output<GetPrivateConnectionDatastreamV1alpha1Result> getPrivateConnectionDatastreamV1alpha1Output(
+  GetPrivateConnectionDatastreamV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datastream/v1alpha1:getPrivateConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateConnectionDatastreamV1alpha1Result.fromMap);
 }
 
 /// Use this method to get details about a route.
@@ -128,6 +194,17 @@ Future<GetRouteDatastreamV1alpha1Result> getRouteDatastreamV1alpha1(
   return GetRouteDatastreamV1alpha1Result.fromMap(result);
 }
 
+pulumi.Output<GetRouteDatastreamV1alpha1Result> getRouteDatastreamV1alpha1Output(
+  GetRouteDatastreamV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datastream/v1alpha1:getRoute',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteDatastreamV1alpha1Result.fromMap);
+}
+
 /// Use this method to get details about a stream.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datastream_v1alpha1_get_stream_datastream_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -142,4 +219,15 @@ Future<GetStreamDatastreamV1alpha1Result> getStreamDatastreamV1alpha1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStreamDatastreamV1alpha1Result.fromMap(result);
+}
+
+pulumi.Output<GetStreamDatastreamV1alpha1Result> getStreamDatastreamV1alpha1Output(
+  GetStreamDatastreamV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datastream/v1alpha1:getStream',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStreamDatastreamV1alpha1Result.fromMap);
 }

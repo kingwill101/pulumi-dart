@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_descriptor_containeranalysis_v1alpha1.dart';
 
 class BuildDefinitionContaineranalysisV1alpha1 {
-  final pulumi.Input<String>? buildType;
-  final pulumi.Input<Map<String, String>>? externalParameters;
-  final pulumi.Input<Map<String, String>>? internalParameters;
-  final pulumi.Input<List<ResourceDescriptorContaineranalysisV1alpha1>>? resolvedDependencies;
+  final pulumi.Input<String?>? buildType;
+  final pulumi.Input<Map<String, String>?>? externalParameters;
+  final pulumi.Input<Map<String, String>?>? internalParameters;
+  final pulumi.Input<List<ResourceDescriptorContaineranalysisV1alpha1>?>? resolvedDependencies;
 
   /// Creates a new [BuildDefinitionContaineranalysisV1alpha1].
   /// [buildType] Optional.

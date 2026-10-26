@@ -14,23 +14,23 @@ import 'google_cloud_aiplatform_v1_study_spec_study_stopping_config.dart';
 /// Represents specification of a Study.
 class GoogleCloudAiplatformV1StudySpec {
   /// The search algorithm specified for the Study.
-  final pulumi.Input<GoogleCloudAiplatformV1StudySpecAlgorithm>? algorithm;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecAlgorithm?>? algorithm;
   /// The automated early stopping spec using convex stopping rule.
-  final pulumi.Input<GoogleCloudAiplatformV1StudySpecConvexAutomatedStoppingSpec>? convexAutomatedStoppingSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecConvexAutomatedStoppingSpec?>? convexAutomatedStoppingSpec;
   /// The automated early stopping spec using decay curve rule.
-  final pulumi.Input<GoogleCloudAiplatformV1StudySpecDecayCurveAutomatedStoppingSpec>? decayCurveStoppingSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecDecayCurveAutomatedStoppingSpec?>? decayCurveStoppingSpec;
   /// Describe which measurement selection type will be used
-  final pulumi.Input<GoogleCloudAiplatformV1StudySpecMeasurementSelectionType>? measurementSelectionType;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecMeasurementSelectionType?>? measurementSelectionType;
   /// The automated early stopping spec using median rule.
-  final pulumi.Input<GoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpec>? medianAutomatedStoppingSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpec?>? medianAutomatedStoppingSpec;
   /// Metric specs for the Study.
   final pulumi.Input<List<GoogleCloudAiplatformV1StudySpecMetricSpec>> metrics;
   /// The observation noise level of the study. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
-  final pulumi.Input<GoogleCloudAiplatformV1StudySpecObservationNoise>? observationNoise;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecObservationNoise?>? observationNoise;
   /// The set of parameters to tune.
   final pulumi.Input<List<GoogleCloudAiplatformV1StudySpecParameterSpec>> parameters;
   /// Conditions for automated stopping of a Study. Enable automated stopping by configuring at least one condition.
-  final pulumi.Input<GoogleCloudAiplatformV1StudySpecStudyStoppingConfig>? studyStoppingConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecStudyStoppingConfig?>? studyStoppingConfig;
 
   /// Creates a new [GoogleCloudAiplatformV1StudySpec].
   /// [algorithm] The search algorithm specified for the Study.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the network configuration required for the VMware user clusters with DHCP IP configurations.
 class VmwareDhcpIpConfig {
   /// enabled is a flag to mark if DHCP IP allocation is used for VMware user clusters.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [VmwareDhcpIpConfig].
   /// [enabled] enabled is a flag to mark if DHCP IP allocation is used for VMware user clusters.

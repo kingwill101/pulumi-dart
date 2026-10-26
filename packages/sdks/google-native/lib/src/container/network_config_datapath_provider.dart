@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
-enum NetworkConfigDatapathProvider {
+enum NetworkConfigDatapathProvider implements pulumi.PulumiEnum<String> {
   datapathProviderUnspecified("DATAPATH_PROVIDER_UNSPECIFIED"),
   legacyDatapath("LEGACY_DATAPATH"),
   advancedDatapath("ADVANCED_DATAPATH");
 
   const NetworkConfigDatapathProvider(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkConfigDatapathProvider fromValue(String value) {

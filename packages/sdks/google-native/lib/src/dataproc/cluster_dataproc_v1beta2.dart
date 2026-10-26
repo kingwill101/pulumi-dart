@@ -24,7 +24,7 @@ class ClusterDataprocV1beta2 extends pulumi.CustomResource {
   /// Cluster status.
   late final pulumi.Output<ClusterStatusResponseDataprocV1beta2> status;
   /// The previous cluster status.
-  late final pulumi.Output<List<Map<String, dynamic>>> statusHistory;
+  late final pulumi.Output<List<ClusterStatusResponseDataprocV1beta2>> statusHistory;
 
   /// Creates a new [ClusterDataprocV1beta2].
   /// [name] The Pulumi resource name.
@@ -38,17 +38,38 @@ class ClusterDataprocV1beta2 extends pulumi.CustomResource {
           'google-native:dataproc/v1beta2:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     clusterName = registerOutput<String>('clusterName');
     clusterUuid = registerOutput<String>('clusterUuid');
     config = registerOutput<ClusterConfigResponseDataprocV1beta2>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterConfigResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     metrics = registerOutput<ClusterMetricsResponseDataprocV1beta2>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMetricsResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');
     status = registerOutput<ClusterStatusResponseDataprocV1beta2>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterStatusResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    statusHistory = registerOutput<List<Map<String, dynamic>>>('statusHistory');
+    statusHistory = registerOutput<List<ClusterStatusResponseDataprocV1beta2>>('statusHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterStatusResponseDataprocV1beta2>(guardedValue, (value) => ClusterStatusResponseDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ClusterDataprocV1beta2] resource.
+  ClusterDataprocV1beta2.reference(String urn)
+    : super(
+        'google-native:dataproc/v1beta2:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterName = registerOutput<String>('clusterName');
+    clusterUuid = registerOutput<String>('clusterUuid');
+    config = registerOutput<ClusterConfigResponseDataprocV1beta2>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterConfigResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    metrics = registerOutput<ClusterMetricsResponseDataprocV1beta2>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMetricsResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    status = registerOutput<ClusterStatusResponseDataprocV1beta2>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterStatusResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    statusHistory = registerOutput<List<ClusterStatusResponseDataprocV1beta2>>('statusHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterStatusResponseDataprocV1beta2>(guardedValue, (value) => ClusterStatusResponseDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

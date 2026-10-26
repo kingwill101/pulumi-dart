@@ -8,14 +8,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apigee_v1_endpoint_attachment_args_doc}
 class EndpointAttachmentArgs {
   /// ID to use for the endpoint attachment. ID must start with a lowercase letter followed by up to 31 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. The minimum length is 2.
-  final pulumi.Input<String>? endpointAttachmentId;
+  final pulumi.Input<String?>? endpointAttachmentId;
   /// Location of the endpoint attachment.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
   /// Format: projects/*/regions/*/serviceAttachments/*
-  final pulumi.Input<String>? serviceAttachment;
+  final pulumi.Input<String?>? serviceAttachment;
 
   /// Creates a new [EndpointAttachmentArgs].
   /// [endpointAttachmentId] ID to use for the endpoint attachment. ID must start with a lowercase letter followed by up to 31 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. The minimum length is 2.

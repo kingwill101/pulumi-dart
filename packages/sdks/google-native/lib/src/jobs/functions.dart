@@ -26,6 +26,17 @@ Future<GetCompanyResult> getCompany(
   return GetCompanyResult.fromMap(result);
 }
 
+pulumi.Output<GetCompanyResult> getCompanyOutput(
+  GetCompanyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:jobs/v3:getCompany',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCompanyResult.fromMap);
+}
+
 /// Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days.
 /// [args] Arguments passed to this invoke. {@macro pulumi_jobs_v3_get_job_args_doc}
 /// [options] Invoke options controlling this call.
@@ -40,6 +51,17 @@ Future<GetJobResult> getJob(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetJobResult.fromMap(result);
+}
+
+pulumi.Output<GetJobResult> getJobOutput(
+  GetJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:jobs/v3:getJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobResult.fromMap);
 }
 
 /// Retrieves specified company.
@@ -58,6 +80,17 @@ Future<GetCompanyJobsV4Result> getCompanyJobsV4(
   return GetCompanyJobsV4Result.fromMap(result);
 }
 
+pulumi.Output<GetCompanyJobsV4Result> getCompanyJobsV4Output(
+  GetCompanyJobsV4Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:jobs/v4:getCompany',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCompanyJobsV4Result.fromMap);
+}
+
 /// Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days.
 /// [args] Arguments passed to this invoke. {@macro pulumi_jobs_v4_get_job_jobs_v4_args_doc}
 /// [options] Invoke options controlling this call.
@@ -74,6 +107,17 @@ Future<GetJobJobsV4Result> getJobJobsV4(
   return GetJobJobsV4Result.fromMap(result);
 }
 
+pulumi.Output<GetJobJobsV4Result> getJobJobsV4Output(
+  GetJobJobsV4Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:jobs/v4:getJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobJobsV4Result.fromMap);
+}
+
 /// Retrieves specified tenant.
 /// [args] Arguments passed to this invoke. {@macro pulumi_jobs_v4_get_tenant_args_doc}
 /// [options] Invoke options controlling this call.
@@ -88,4 +132,15 @@ Future<GetTenantResult> getTenant(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTenantResult.fromMap(result);
+}
+
+pulumi.Output<GetTenantResult> getTenantOutput(
+  GetTenantArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:jobs/v4:getTenant',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTenantResult.fromMap);
 }

@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseCrmEventbusProtoIntParameterArray {
-  final pulumi.Input<List<String>>? intValues;
+  final pulumi.Input<List<String>?>? intValues;
 
   /// Creates a new [EnterpriseCrmEventbusProtoIntParameterArray].
   /// [intValues] Optional.

@@ -17,69 +17,69 @@ import 'stateful_policy_response.dart';
 /// Result data returned by getInstanceGroupManager.
 class GetInstanceGroupManagerResult {
   /// Specifies configuration that overrides the instance template configuration for the group.
-  final InstanceGroupManagerAllInstancesConfigResponse allInstancesConfig;
+  final InstanceGroupManagerAllInstancesConfigResponse? allInstancesConfig;
   /// The autohealing policy for this managed instance group. You can specify only one value.
-  final List<InstanceGroupManagerAutoHealingPolicyResponse> autoHealingPolicies;
+  final List<InstanceGroupManagerAutoHealingPolicyResponse>? autoHealingPolicies;
   /// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
-  final String baseInstanceName;
+  final String? baseInstanceName;
   /// The creation timestamp for this managed instance group in RFC3339 text format.
-  final String creationTimestamp;
+  final String? creationTimestamp;
   /// The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
-  final InstanceGroupManagerActionsSummaryResponse currentActions;
+  final InstanceGroupManagerActionsSummaryResponse? currentActions;
   /// An optional description of this resource.
-  final String description;
+  final String? description;
   /// Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
-  final DistributionPolicyResponse distributionPolicy;
+  final DistributionPolicyResponse? distributionPolicy;
   /// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
-  final String failoverAction;
+  final String? failoverAction;
   /// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
-  final String fingerprint;
+  final String? fingerprint;
   /// Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
-  final InstanceGroupManagerInstanceFlexibilityPolicyResponse instanceFlexibilityPolicy;
+  final InstanceGroupManagerInstanceFlexibilityPolicyResponse? instanceFlexibilityPolicy;
   /// The URL of the Instance Group resource.
-  final String instanceGroup;
+  final String? instanceGroup;
   /// The repair policy for this managed instance group.
-  final InstanceGroupManagerInstanceLifecyclePolicyResponse instanceLifecyclePolicy;
+  final InstanceGroupManagerInstanceLifecyclePolicyResponse? instanceLifecyclePolicy;
   /// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
-  final String instanceTemplate;
+  final String? instanceTemplate;
   /// The resource type, which is always compute#instanceGroupManager for managed instance groups.
-  final String kind;
+  final String? kind;
   /// Pagination behavior of the listManagedInstances API method for this managed instance group.
-  final String listManagedInstancesResults;
+  final String? listManagedInstancesResults;
   /// The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
-  final String name;
+  final String? name;
   /// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
-  final List<NamedPortResponse> namedPorts;
+  final List<NamedPortResponse>? namedPorts;
   /// The URL of the region where the managed instance group resides (for regional resources).
-  final String region;
+  final String? region;
   /// The URL for this managed instance group. The server defines this URL.
-  final String selfLink;
+  final String? selfLink;
   /// Server-defined URL for this resource with the resource id.
-  final String selfLinkWithId;
+  final String? selfLinkWithId;
   /// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
-  final String serviceAccount;
+  final String? serviceAccount;
   /// Standby policy for stopped and suspended instances.
-  final InstanceGroupManagerStandbyPolicyResponse standbyPolicy;
+  final InstanceGroupManagerStandbyPolicyResponse? standbyPolicy;
   /// Stateful configuration for this Instanced Group Manager
-  final StatefulPolicyResponse statefulPolicy;
+  final StatefulPolicyResponse? statefulPolicy;
   /// The status of this managed instance group.
-  final InstanceGroupManagerStatusResponse status;
+  final InstanceGroupManagerStatusResponse? status;
   /// The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
-  final List<String> targetPools;
+  final List<String>? targetPools;
   /// The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
-  final int targetSize;
+  final int? targetSize;
   /// The unit of measure for the target size.
-  final String targetSizeUnit;
+  final String? targetSizeUnit;
   /// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method.
-  final int targetStoppedSize;
+  final int? targetStoppedSize;
   /// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method.
-  final int targetSuspendedSize;
+  final int? targetSuspendedSize;
   /// The update policy for this managed instance group.
-  final InstanceGroupManagerUpdatePolicyResponse updatePolicy;
+  final InstanceGroupManagerUpdatePolicyResponse? updatePolicy;
   /// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
-  final List<InstanceGroupManagerVersionResponse> versions;
+  final List<InstanceGroupManagerVersionResponse>? versions;
   /// The URL of a zone where the managed instance group is located (for zonal resources).
-  final String zone;
+  final String? zone;
 
   /// Creates a new [GetInstanceGroupManagerResult].
   /// [allInstancesConfig] Specifies configuration that overrides the instance template configuration for the group.
@@ -115,111 +115,111 @@ class GetInstanceGroupManagerResult {
   /// [versions] Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
   /// [zone] The URL of a zone where the managed instance group is located (for zonal resources).
   const GetInstanceGroupManagerResult({
-    required this.allInstancesConfig,
-    required this.autoHealingPolicies,
-    required this.baseInstanceName,
-    required this.creationTimestamp,
-    required this.currentActions,
-    required this.description,
-    required this.distributionPolicy,
-    required this.failoverAction,
-    required this.fingerprint,
-    required this.instanceFlexibilityPolicy,
-    required this.instanceGroup,
-    required this.instanceLifecyclePolicy,
-    required this.instanceTemplate,
-    required this.kind,
-    required this.listManagedInstancesResults,
-    required this.name,
-    required this.namedPorts,
-    required this.region,
-    required this.selfLink,
-    required this.selfLinkWithId,
-    required this.serviceAccount,
-    required this.standbyPolicy,
-    required this.statefulPolicy,
-    required this.status,
-    required this.targetPools,
-    required this.targetSize,
-    required this.targetSizeUnit,
-    required this.targetStoppedSize,
-    required this.targetSuspendedSize,
-    required this.updatePolicy,
-    required this.versions,
-    required this.zone,
+    this.allInstancesConfig,
+    this.autoHealingPolicies,
+    this.baseInstanceName,
+    this.creationTimestamp,
+    this.currentActions,
+    this.description,
+    this.distributionPolicy,
+    this.failoverAction,
+    this.fingerprint,
+    this.instanceFlexibilityPolicy,
+    this.instanceGroup,
+    this.instanceLifecyclePolicy,
+    this.instanceTemplate,
+    this.kind,
+    this.listManagedInstancesResults,
+    this.name,
+    this.namedPorts,
+    this.region,
+    this.selfLink,
+    this.selfLinkWithId,
+    this.serviceAccount,
+    this.standbyPolicy,
+    this.statefulPolicy,
+    this.status,
+    this.targetPools,
+    this.targetSize,
+    this.targetSizeUnit,
+    this.targetStoppedSize,
+    this.targetSuspendedSize,
+    this.updatePolicy,
+    this.versions,
+    this.zone,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allInstancesConfig': allInstancesConfig.toMap(),
-      'autoHealingPolicies': pulumi.Input.encodeList<InstanceGroupManagerAutoHealingPolicyResponse, Map<String, dynamic>>(autoHealingPolicies, (value) => value.toMap()),
-      'baseInstanceName': baseInstanceName,
-      'creationTimestamp': creationTimestamp,
-      'currentActions': currentActions.toMap(),
-      'description': description,
-      'distributionPolicy': distributionPolicy.toMap(),
-      'failoverAction': failoverAction,
-      'fingerprint': fingerprint,
-      'instanceFlexibilityPolicy': instanceFlexibilityPolicy.toMap(),
-      'instanceGroup': instanceGroup,
-      'instanceLifecyclePolicy': instanceLifecyclePolicy.toMap(),
-      'instanceTemplate': instanceTemplate,
-      'kind': kind,
-      'listManagedInstancesResults': listManagedInstancesResults,
-      'name': name,
-      'namedPorts': pulumi.Input.encodeList<NamedPortResponse, Map<String, dynamic>>(namedPorts, (value) => value.toMap()),
-      'region': region,
-      'selfLink': selfLink,
-      'selfLinkWithId': selfLinkWithId,
-      'serviceAccount': serviceAccount,
-      'standbyPolicy': standbyPolicy.toMap(),
-      'statefulPolicy': statefulPolicy.toMap(),
-      'status': status.toMap(),
-      'targetPools': targetPools,
-      'targetSize': targetSize,
-      'targetSizeUnit': targetSizeUnit,
-      'targetStoppedSize': targetStoppedSize,
-      'targetSuspendedSize': targetSuspendedSize,
-      'updatePolicy': updatePolicy.toMap(),
-      'versions': pulumi.Input.encodeList<InstanceGroupManagerVersionResponse, Map<String, dynamic>>(versions, (value) => value.toMap()),
-      'zone': zone,
+      'allInstancesConfig': ?allInstancesConfig?.toMap(),
+      'autoHealingPolicies': ?(() { final guardedValue = autoHealingPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<InstanceGroupManagerAutoHealingPolicyResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'baseInstanceName': ?baseInstanceName,
+      'creationTimestamp': ?creationTimestamp,
+      'currentActions': ?currentActions?.toMap(),
+      'description': ?description,
+      'distributionPolicy': ?distributionPolicy?.toMap(),
+      'failoverAction': ?failoverAction,
+      'fingerprint': ?fingerprint,
+      'instanceFlexibilityPolicy': ?instanceFlexibilityPolicy?.toMap(),
+      'instanceGroup': ?instanceGroup,
+      'instanceLifecyclePolicy': ?instanceLifecyclePolicy?.toMap(),
+      'instanceTemplate': ?instanceTemplate,
+      'kind': ?kind,
+      'listManagedInstancesResults': ?listManagedInstancesResults,
+      'name': ?name,
+      'namedPorts': ?(() { final guardedValue = namedPorts; if (guardedValue == null) return null; return pulumi.Input.encodeList<NamedPortResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'region': ?region,
+      'selfLink': ?selfLink,
+      'selfLinkWithId': ?selfLinkWithId,
+      'serviceAccount': ?serviceAccount,
+      'standbyPolicy': ?standbyPolicy?.toMap(),
+      'statefulPolicy': ?statefulPolicy?.toMap(),
+      'status': ?status?.toMap(),
+      'targetPools': ?targetPools,
+      'targetSize': ?targetSize,
+      'targetSizeUnit': ?targetSizeUnit,
+      'targetStoppedSize': ?targetStoppedSize,
+      'targetSuspendedSize': ?targetSuspendedSize,
+      'updatePolicy': ?updatePolicy?.toMap(),
+      'versions': ?(() { final guardedValue = versions; if (guardedValue == null) return null; return pulumi.Input.encodeList<InstanceGroupManagerVersionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'zone': ?zone,
     };
   }
 
   factory GetInstanceGroupManagerResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupManagerResult(
-      allInstancesConfig: InstanceGroupManagerAllInstancesConfigResponse.fromMap((map['allInstancesConfig']! as Map).cast<String, dynamic>()),
-      autoHealingPolicies: pulumi.Input.decodeList<InstanceGroupManagerAutoHealingPolicyResponse>(map['autoHealingPolicies']!, (value) => InstanceGroupManagerAutoHealingPolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      baseInstanceName: map['baseInstanceName'] as String,
-      creationTimestamp: map['creationTimestamp'] as String,
-      currentActions: InstanceGroupManagerActionsSummaryResponse.fromMap((map['currentActions']! as Map).cast<String, dynamic>()),
-      description: map['description'] as String,
-      distributionPolicy: DistributionPolicyResponse.fromMap((map['distributionPolicy']! as Map).cast<String, dynamic>()),
-      failoverAction: map['failoverAction'] as String,
-      fingerprint: map['fingerprint'] as String,
-      instanceFlexibilityPolicy: InstanceGroupManagerInstanceFlexibilityPolicyResponse.fromMap((map['instanceFlexibilityPolicy']! as Map).cast<String, dynamic>()),
-      instanceGroup: map['instanceGroup'] as String,
-      instanceLifecyclePolicy: InstanceGroupManagerInstanceLifecyclePolicyResponse.fromMap((map['instanceLifecyclePolicy']! as Map).cast<String, dynamic>()),
-      instanceTemplate: map['instanceTemplate'] as String,
-      kind: map['kind'] as String,
-      listManagedInstancesResults: map['listManagedInstancesResults'] as String,
-      name: map['name'] as String,
-      namedPorts: pulumi.Input.decodeList<NamedPortResponse>(map['namedPorts']!, (value) => NamedPortResponse.fromMap((value as Map).cast<String, dynamic>())),
-      region: map['region'] as String,
-      selfLink: map['selfLink'] as String,
-      selfLinkWithId: map['selfLinkWithId'] as String,
-      serviceAccount: map['serviceAccount'] as String,
-      standbyPolicy: InstanceGroupManagerStandbyPolicyResponse.fromMap((map['standbyPolicy']! as Map).cast<String, dynamic>()),
-      statefulPolicy: StatefulPolicyResponse.fromMap((map['statefulPolicy']! as Map).cast<String, dynamic>()),
-      status: InstanceGroupManagerStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>()),
-      targetPools: (map['targetPools'] as List).cast<String>(),
-      targetSize: map['targetSize'] as int,
-      targetSizeUnit: map['targetSizeUnit'] as String,
-      targetStoppedSize: map['targetStoppedSize'] as int,
-      targetSuspendedSize: map['targetSuspendedSize'] as int,
-      updatePolicy: InstanceGroupManagerUpdatePolicyResponse.fromMap((map['updatePolicy']! as Map).cast<String, dynamic>()),
-      versions: pulumi.Input.decodeList<InstanceGroupManagerVersionResponse>(map['versions']!, (value) => InstanceGroupManagerVersionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      zone: map['zone'] as String,
+      allInstancesConfig: (() { final guardedValue = map['allInstancesConfig']; if (guardedValue == null) return null; return InstanceGroupManagerAllInstancesConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      autoHealingPolicies: (() { final guardedValue = map['autoHealingPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceGroupManagerAutoHealingPolicyResponse>(guardedValue, (value) => InstanceGroupManagerAutoHealingPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      baseInstanceName: (() { final guardedValue = map['baseInstanceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      currentActions: (() { final guardedValue = map['currentActions']; if (guardedValue == null) return null; return InstanceGroupManagerActionsSummaryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      distributionPolicy: (() { final guardedValue = map['distributionPolicy']; if (guardedValue == null) return null; return DistributionPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      failoverAction: (() { final guardedValue = map['failoverAction']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceFlexibilityPolicy: (() { final guardedValue = map['instanceFlexibilityPolicy']; if (guardedValue == null) return null; return InstanceGroupManagerInstanceFlexibilityPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      instanceGroup: (() { final guardedValue = map['instanceGroup']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceLifecyclePolicy: (() { final guardedValue = map['instanceLifecyclePolicy']; if (guardedValue == null) return null; return InstanceGroupManagerInstanceLifecyclePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      instanceTemplate: (() { final guardedValue = map['instanceTemplate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      listManagedInstancesResults: (() { final guardedValue = map['listManagedInstancesResults']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      namedPorts: (() { final guardedValue = map['namedPorts']; if (guardedValue == null) return null; return pulumi.Input.decodeList<NamedPortResponse>(guardedValue, (value) => NamedPortResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      selfLinkWithId: (() { final guardedValue = map['selfLinkWithId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      standbyPolicy: (() { final guardedValue = map['standbyPolicy']; if (guardedValue == null) return null; return InstanceGroupManagerStandbyPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      statefulPolicy: (() { final guardedValue = map['statefulPolicy']; if (guardedValue == null) return null; return StatefulPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return InstanceGroupManagerStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      targetPools: (() { final guardedValue = map['targetPools']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      targetSize: (() { final guardedValue = map['targetSize']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      targetSizeUnit: (() { final guardedValue = map['targetSizeUnit']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      targetStoppedSize: (() { final guardedValue = map['targetStoppedSize']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      targetSuspendedSize: (() { final guardedValue = map['targetSuspendedSize']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      updatePolicy: (() { final guardedValue = map['updatePolicy']; if (guardedValue == null) return null; return InstanceGroupManagerUpdatePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      versions: (() { final guardedValue = map['versions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceGroupManagerVersionResponse>(guardedValue, (value) => InstanceGroupManagerVersionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

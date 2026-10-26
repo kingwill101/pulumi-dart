@@ -9,13 +9,13 @@ import 'ospolicy_resource_repository_resource_zypper_repository.dart';
 /// A resource that manages a package repository.
 class OSPolicyResourceRepositoryResource {
   /// An Apt Repository.
-  final pulumi.Input<OSPolicyResourceRepositoryResourceAptRepository>? apt;
+  final pulumi.Input<OSPolicyResourceRepositoryResourceAptRepository?>? apt;
   /// A Goo Repository.
-  final pulumi.Input<OSPolicyResourceRepositoryResourceGooRepository>? goo;
+  final pulumi.Input<OSPolicyResourceRepositoryResourceGooRepository?>? goo;
   /// A Yum Repository.
-  final pulumi.Input<OSPolicyResourceRepositoryResourceYumRepository>? yum;
+  final pulumi.Input<OSPolicyResourceRepositoryResourceYumRepository?>? yum;
   /// A Zypper Repository.
-  final pulumi.Input<OSPolicyResourceRepositoryResourceZypperRepository>? zypper;
+  final pulumi.Input<OSPolicyResourceRepositoryResourceZypperRepository?>? zypper;
 
   /// Creates a new [OSPolicyResourceRepositoryResource].
   /// [apt] An Apt Repository.

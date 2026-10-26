@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Rule used to validate strings.
 class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex {
   /// Whether the regex matcher is applied exclusively (if true, matching values will be rejected).
-  final pulumi.Input<bool>? exclusive;
+  final pulumi.Input<bool?>? exclusive;
   /// The regex applied to the input value(s).
-  final pulumi.Input<String>? regex;
+  final pulumi.Input<String?>? regex;
 
   /// Creates a new [EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex].
   /// [exclusive] Whether the regex matcher is applied exclusively (if true, matching values will be rejected).

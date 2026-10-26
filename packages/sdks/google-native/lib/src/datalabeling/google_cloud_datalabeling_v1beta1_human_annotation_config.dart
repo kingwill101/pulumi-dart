@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for how human labeling task should be done.
 class GoogleCloudDatalabelingV1beta1HumanAnnotationConfig {
   /// Optional. A human-readable description for AnnotatedDataset. The description can be up to 10000 characters long.
-  final pulumi.Input<String>? annotatedDatasetDescription;
+  final pulumi.Input<String?>? annotatedDatasetDescription;
   /// A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
   final pulumi.Input<String> annotatedDatasetDisplayName;
   /// Optional. If you want your own labeling contributors to manage and work on this labeling request, you can set these contributors here. We will give them access to the question types in crowdcompute. Note that these emails must be registered in crowdcompute worker UI: https://crowd-compute.appspot.com/
-  final pulumi.Input<List<String>>? contributorEmails;
+  final pulumi.Input<List<String>?>? contributorEmails;
   /// Instruction resource name.
   final pulumi.Input<String> instruction;
   /// Optional. A human-readable label used to logically group labeling tasks. This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.
-  final pulumi.Input<String>? labelGroup;
+  final pulumi.Input<String?>? labelGroup;
   /// Optional. The Language of this question, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US. Only need to set this when task is language related. For example, French text classification.
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   /// Optional. Maximum duration for contributors to answer a question. Maximum is 3600 seconds. Default is 3600 seconds.
-  final pulumi.Input<String>? questionDuration;
+  final pulumi.Input<String?>? questionDuration;
   /// Optional. Replication of questions. Each question will be sent to up to this number of contributors to label. Aggregated answers will be returned. Default is set to 1. For image related labeling, valid values are 1, 3, 5.
-  final pulumi.Input<int>? replicaCount;
+  final pulumi.Input<int?>? replicaCount;
   /// Email of the user who started the labeling task and should be notified by email. If empty no notification will be sent.
-  final pulumi.Input<String>? userEmailAddress;
+  final pulumi.Input<String?>? userEmailAddress;
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1HumanAnnotationConfig].
   /// [annotatedDatasetDescription] Optional. A human-readable description for AnnotatedDataset. The description can be up to 10000 characters long.
@@ -68,7 +68,7 @@ class GoogleCloudDatalabelingV1beta1HumanAnnotationConfig {
       labelGroup: (() { final guardedValue = map['labelGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       languageCode: (() { final guardedValue = map['languageCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       questionDuration: (() { final guardedValue = map['questionDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       userEmailAddress: (() { final guardedValue = map['userEmailAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

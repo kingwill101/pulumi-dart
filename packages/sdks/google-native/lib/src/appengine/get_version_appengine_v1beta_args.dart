@@ -8,10 +8,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_appengine_v1beta_get_version_appengine_v1beta_args_doc}
 class GetVersionAppengineV1betaArgs {
   final pulumi.Input<String> appId;
-  final pulumi.Input<String>? includeExtraData;
+  final pulumi.Input<String?>? includeExtraData;
   final pulumi.Input<String> serviceId;
   final pulumi.Input<String> versionId;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetVersionAppengineV1betaArgs].
   /// [appId] Required.

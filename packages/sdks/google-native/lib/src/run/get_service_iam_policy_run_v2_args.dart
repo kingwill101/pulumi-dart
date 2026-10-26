@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_run_v2_get_service_iam_policy_run_v2_args_doc}
 class GetServiceIamPolicyRunV2Args {
   final pulumi.Input<String> location;
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> serviceId;
 
   /// Creates a new [GetServiceIamPolicyRunV2Args].
@@ -36,7 +36,7 @@ class GetServiceIamPolicyRunV2Args {
   factory GetServiceIamPolicyRunV2Args.fromMap(Map<String, dynamic> map) {
     return GetServiceIamPolicyRunV2Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
     );

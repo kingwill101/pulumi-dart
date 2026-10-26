@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes a change made to a configuration.
 class MutationRecord {
   /// When the change occurred.
-  final pulumi.Input<String>? mutateTime;
+  final pulumi.Input<String?>? mutateTime;
   /// The email address of the user making the change.
-  final pulumi.Input<String>? mutatedBy;
+  final pulumi.Input<String?>? mutatedBy;
 
   /// Creates a new [MutationRecord].
   /// [mutateTime] When the change occurred.

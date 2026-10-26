@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
 class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial {
   /// Collection of cryptographic digests for the contents of this artifact.
-  final pulumi.Input<Map<String, String>>? digest;
+  final pulumi.Input<Map<String, String>?>? digest;
   /// The method by which this artifact was referenced during the build.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial].
   /// [digest] Collection of cryptographic digests for the contents of this artifact.

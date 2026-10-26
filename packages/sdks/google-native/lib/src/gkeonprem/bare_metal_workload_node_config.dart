@@ -6,9 +6,9 @@ import 'bare_metal_workload_node_config_container_runtime.dart';
 /// Specifies the workload node configurations.
 class BareMetalWorkloadNodeConfig {
   /// Specifies which container runtime will be used.
-  final pulumi.Input<BareMetalWorkloadNodeConfigContainerRuntime>? containerRuntime;
+  final pulumi.Input<BareMetalWorkloadNodeConfigContainerRuntime?>? containerRuntime;
   /// The maximum number of pods a node can run. The size of the CIDR range assigned to the node will be derived from this parameter.
-  final pulumi.Input<String>? maxPodsPerNode;
+  final pulumi.Input<String?>? maxPodsPerNode;
 
   /// Creates a new [BareMetalWorkloadNodeConfig].
   /// [containerRuntime] Specifies which container runtime will be used.

@@ -11,7 +11,7 @@ class EnvgroupAttachmentArgs {
   /// ID of the attached environment.
   final pulumi.Input<String> environment;
   /// ID of the environment group attachment.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
 
   /// Creates a new [EnvgroupAttachmentArgs].

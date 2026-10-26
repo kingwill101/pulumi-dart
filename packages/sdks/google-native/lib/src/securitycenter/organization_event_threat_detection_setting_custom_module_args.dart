@@ -9,18 +9,18 @@ import 'organization_event_threat_detection_setting_custom_module_enablement_sta
 /// {@macro pulumi_securitycenter_v1_organization_event_threat_detection_setting_custom_module_args_doc}
 class OrganizationEventThreatDetectionSettingCustomModuleArgs {
   /// Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
-  final pulumi.Input<Map<String, String>>? config;
+  final pulumi.Input<Map<String, String>?>? config;
   /// The description for the module.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The human readable name to be displayed for the module.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The state of enablement for the module at the given level of the hierarchy.
-  final pulumi.Input<OrganizationEventThreatDetectionSettingCustomModuleEnablementState>? enablementState;
+  final pulumi.Input<OrganizationEventThreatDetectionSettingCustomModuleEnablementState?>? enablementState;
   /// Immutable. The resource name of the Event Threat Detection custom module. Its format is: * "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". * "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
   /// Type for the module. e.g. CONFIGURABLE_BAD_IP.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [OrganizationEventThreatDetectionSettingCustomModuleArgs].
   /// [config] Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.

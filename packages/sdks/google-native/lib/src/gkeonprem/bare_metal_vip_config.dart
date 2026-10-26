@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the VIP config for the bare metal load balancer.
 class BareMetalVipConfig {
   /// The VIP which you previously set aside for the Kubernetes API of this bare metal user cluster.
-  final pulumi.Input<String>? controlPlaneVip;
+  final pulumi.Input<String?>? controlPlaneVip;
   /// The VIP which you previously set aside for ingress traffic into this bare metal user cluster.
-  final pulumi.Input<String>? ingressVip;
+  final pulumi.Input<String?>? ingressVip;
 
   /// Creates a new [BareMetalVipConfig].
   /// [controlPlaneVip] The VIP which you previously set aside for the Kubernetes API of this bare metal user cluster.

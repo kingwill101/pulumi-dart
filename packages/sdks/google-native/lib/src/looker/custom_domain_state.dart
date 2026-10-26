@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Domain state.
-enum CustomDomainState {
+enum CustomDomainState implements pulumi.PulumiEnum<String> {
   customDomainStateUnspecified("CUSTOM_DOMAIN_STATE_UNSPECIFIED"),
   unverified("UNVERIFIED"),
   verified("VERIFIED"),
@@ -9,6 +11,7 @@ enum CustomDomainState {
   unknown("UNKNOWN");
 
   const CustomDomainState(this.wireValue);
+  @override
   final String wireValue;
 
   static CustomDomainState fromValue(String value) {

@@ -6,9 +6,9 @@ import 'maven_repository_config_version_policy_artifactregistry_v1beta2.dart';
 /// MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
 class MavenRepositoryConfigArtifactregistryV1beta2 {
   /// The repository with this flag will allow publishing the same snapshot versions.
-  final pulumi.Input<bool>? allowSnapshotOverwrites;
+  final pulumi.Input<bool?>? allowSnapshotOverwrites;
   /// Version policy defines the versions that the registry will accept.
-  final pulumi.Input<MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2>? versionPolicy;
+  final pulumi.Input<MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2?>? versionPolicy;
 
   /// Creates a new [MavenRepositoryConfigArtifactregistryV1beta2].
   /// [allowSnapshotOverwrites] The repository with this flag will allow publishing the same snapshot versions.

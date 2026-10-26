@@ -1,9 +1,12 @@
-enum GooglePrivacyDlpV2BigQueryTableTypesTypesItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum GooglePrivacyDlpV2BigQueryTableTypesTypesItem implements pulumi.PulumiEnum<String> {
   bigQueryTableTypeUnspecified("BIG_QUERY_TABLE_TYPE_UNSPECIFIED"),
   bigQueryTableTypeTable("BIG_QUERY_TABLE_TYPE_TABLE"),
   bigQueryTableTypeExternalBigLake("BIG_QUERY_TABLE_TYPE_EXTERNAL_BIG_LAKE");
 
   const GooglePrivacyDlpV2BigQueryTableTypesTypesItem(this.wireValue);
+  @override
   final String wireValue;
 
   static GooglePrivacyDlpV2BigQueryTableTypesTypesItem fromValue(String value) {

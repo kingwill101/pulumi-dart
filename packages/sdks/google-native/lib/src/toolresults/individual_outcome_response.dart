@@ -35,7 +35,7 @@ class IndividualOutcomeResponse {
 
   factory IndividualOutcomeResponse.fromMap(Map<String, dynamic> map) {
     return IndividualOutcomeResponse(
-      multistepNumber: pulumi.Input.fromValue(map['multistepNumber'] as int),
+      multistepNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['multistepNumber'])),
       outcomeSummary: pulumi.Input.fromValue(map['outcomeSummary'] as String),
       runDuration: pulumi.Input.fromValue(DurationResponse.fromMap((map['runDuration']! as Map).cast<String, dynamic>())),
       stepId: pulumi.Input.fromValue(map['stepId'] as String),

@@ -31,9 +31,9 @@ class GoogleCloudRetailV2ImageResponse {
 
   factory GoogleCloudRetailV2ImageResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2ImageResponse(
-      height: pulumi.Input.fromValue(map['height'] as int),
+      height: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['height'])),
       uri: pulumi.Input.fromValue(map['uri'] as String),
-      width: pulumi.Input.fromValue(map['width'] as int),
+      width: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['width'])),
     );
   }
 }

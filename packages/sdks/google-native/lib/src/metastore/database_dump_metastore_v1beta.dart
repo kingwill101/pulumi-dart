@@ -7,13 +7,13 @@ import 'database_dump_type_metastore_v1beta.dart';
 /// A specification of the location of and metadata about a database dump from a relational database management system.
 class DatabaseDumpMetastoreV1beta {
   /// The type of the database.
-  final pulumi.Input<DatabaseDumpDatabaseTypeMetastoreV1beta>? databaseType;
+  final pulumi.Input<DatabaseDumpDatabaseTypeMetastoreV1beta?>? databaseType;
   /// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
-  final pulumi.Input<String>? gcsUri;
+  final pulumi.Input<String?>? gcsUri;
   /// The name of the source database.
-  final pulumi.Input<String>? sourceDatabase;
+  final pulumi.Input<String?>? sourceDatabase;
   /// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
-  final pulumi.Input<DatabaseDumpTypeMetastoreV1beta>? type;
+  final pulumi.Input<DatabaseDumpTypeMetastoreV1beta?>? type;
 
   /// Creates a new [DatabaseDumpMetastoreV1beta].
   /// [databaseType] The type of the database.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Deprecated. Must use the MetricDescriptor.launch_stage instead.
-enum MetricDescriptorMetadataLaunchStage {
+enum MetricDescriptorMetadataLaunchStage implements pulumi.PulumiEnum<String> {
   launchStageUnspecified("LAUNCH_STAGE_UNSPECIFIED"),
   unimplemented("UNIMPLEMENTED"),
   prelaunch("PRELAUNCH"),
@@ -10,6 +12,7 @@ enum MetricDescriptorMetadataLaunchStage {
   deprecated("DEPRECATED");
 
   const MetricDescriptorMetadataLaunchStage(this.wireValue);
+  @override
   final String wireValue;
 
   static MetricDescriptorMetadataLaunchStage fromValue(String value) {

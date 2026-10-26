@@ -1,4 +1,6 @@
-enum WindowsUpdateSettingsClassificationsItemOsconfigV1beta {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum WindowsUpdateSettingsClassificationsItemOsconfigV1beta implements pulumi.PulumiEnum<String> {
   classificationUnspecified("CLASSIFICATION_UNSPECIFIED"),
   critical("CRITICAL"),
   security("SECURITY"),
@@ -11,6 +13,7 @@ enum WindowsUpdateSettingsClassificationsItemOsconfigV1beta {
   update("UPDATE");
 
   const WindowsUpdateSettingsClassificationsItemOsconfigV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static WindowsUpdateSettingsClassificationsItemOsconfigV1beta fromValue(String value) {

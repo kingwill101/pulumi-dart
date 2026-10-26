@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
-enum VirtualMachinePreferencesCommitmentPlan {
+enum VirtualMachinePreferencesCommitmentPlan implements pulumi.PulumiEnum<String> {
   commitmentPlanUnspecified("COMMITMENT_PLAN_UNSPECIFIED"),
   commitmentPlanNone("COMMITMENT_PLAN_NONE"),
   commitmentPlanOneYear("COMMITMENT_PLAN_ONE_YEAR"),
   commitmentPlanThreeYears("COMMITMENT_PLAN_THREE_YEARS");
 
   const VirtualMachinePreferencesCommitmentPlan(this.wireValue);
+  @override
   final String wireValue;
 
   static VirtualMachinePreferencesCommitmentPlan fromValue(String value) {

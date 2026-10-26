@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration of preserved resources.
 class StatefulPolicyPreservedState {
   /// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-  final pulumi.Input<Map<String, String>>? disks;
+  final pulumi.Input<Map<String, String>?>? disks;
   /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-  final pulumi.Input<Map<String, String>>? externalIPs;
+  final pulumi.Input<Map<String, String>?>? externalIPs;
   /// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-  final pulumi.Input<Map<String, String>>? internalIPs;
+  final pulumi.Input<Map<String, String>?>? internalIPs;
 
   /// Creates a new [StatefulPolicyPreservedState].
   /// [disks] Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.

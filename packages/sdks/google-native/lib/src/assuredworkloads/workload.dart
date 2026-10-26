@@ -3,6 +3,8 @@ import 'google_cloud_assuredworkloads_v1_workload_compliance_status_response.dar
 import 'google_cloud_assuredworkloads_v1_workload_ekm_provisioning_response_response.dart';
 import 'google_cloud_assuredworkloads_v1_workload_kmssettings_response.dart';
 import 'google_cloud_assuredworkloads_v1_workload_partner_permissions_response.dart';
+import 'google_cloud_assuredworkloads_v1_workload_resource_info_response.dart';
+import 'google_cloud_assuredworkloads_v1_workload_resource_settings_response.dart';
 import 'google_cloud_assuredworkloads_v1_workload_saa_enrollment_response_response.dart';
 import 'workload_args.dart';
 
@@ -47,9 +49,9 @@ class Workload extends pulumi.CustomResource {
   /// Indicates whether resource monitoring is enabled for workload or not. It is true when Resource feed is subscribed to AWM topic and AWM Service Agent Role is binded to AW Service Account for resource Assured workload.
   late final pulumi.Output<bool> resourceMonitoringEnabled;
   /// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
-  late final pulumi.Output<List<Map<String, dynamic>>> resourceSettings;
+  late final pulumi.Output<List<GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse>> resourceSettings;
   /// The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
-  late final pulumi.Output<List<Map<String, dynamic>>> resources;
+  late final pulumi.Output<List<GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse>> resources;
   /// Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
   late final pulumi.Output<GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse> saaEnrollmentResponse;
   /// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
@@ -67,12 +69,12 @@ class Workload extends pulumi.CustomResource {
           'google-native:assuredworkloads/v1:Workload',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'organizationId']).merge(options),
         ) {
     billingAccount = registerOutput<String>('billingAccount');
     complianceRegime = registerOutput<String>('complianceRegime');
     complianceStatus = registerOutput<GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse>('complianceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    compliantButDisallowedServices = registerOutput<List<String>>('compliantButDisallowedServices');
+    compliantButDisallowedServices = registerOutput<List<String>>('compliantButDisallowedServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     ekmProvisioningResponse = registerOutput<GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse>('ekmProvisioningResponse', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -81,7 +83,7 @@ class Workload extends pulumi.CustomResource {
     externalId = registerOutput<String?>('externalId');
     kajEnrollmentState = registerOutput<String>('kajEnrollmentState');
     kmsSettings = registerOutput<GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse>('kmsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
@@ -89,8 +91,43 @@ class Workload extends pulumi.CustomResource {
     partnerPermissions = registerOutput<GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse>('partnerPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisionedResourcesParent = registerOutput<String>('provisionedResourcesParent');
     resourceMonitoringEnabled = registerOutput<bool>('resourceMonitoringEnabled');
-    resourceSettings = registerOutput<List<Map<String, dynamic>>>('resourceSettings');
-    resources = registerOutput<List<Map<String, dynamic>>>('resources');
+    resourceSettings = registerOutput<List<GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse>>('resourceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse>(guardedValue, (value) => GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    resources = registerOutput<List<GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse>(guardedValue, (value) => GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    saaEnrollmentResponse = registerOutput<GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse>('saaEnrollmentResponse', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    violationNotificationsEnabled = registerOutput<bool>('violationNotificationsEnabled');
+  }
+
+  /// Creates a typed reference to an existing [Workload] resource.
+  Workload.reference(String urn)
+    : super(
+        'google-native:assuredworkloads/v1:Workload',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    billingAccount = registerOutput<String>('billingAccount');
+    complianceRegime = registerOutput<String>('complianceRegime');
+    complianceStatus = registerOutput<GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse>('complianceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    compliantButDisallowedServices = registerOutput<List<String>>('compliantButDisallowedServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    ekmProvisioningResponse = registerOutput<GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse>('ekmProvisioningResponse', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enableSovereignControls = registerOutput<bool>('enableSovereignControls');
+    etag = registerOutput<String>('etag');
+    externalId = registerOutput<String?>('externalId');
+    kajEnrollmentState = registerOutput<String>('kajEnrollmentState');
+    kmsSettings = registerOutput<GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse>('kmsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    partner = registerOutput<String>('partner');
+    partnerPermissions = registerOutput<GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse>('partnerPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisionedResourcesParent = registerOutput<String>('provisionedResourcesParent');
+    resourceMonitoringEnabled = registerOutput<bool>('resourceMonitoringEnabled');
+    resourceSettings = registerOutput<List<GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse>>('resourceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse>(guardedValue, (value) => GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    resources = registerOutput<List<GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse>(guardedValue, (value) => GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
     saaEnrollmentResponse = registerOutput<GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse>('saaEnrollmentResponse', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     violationNotificationsEnabled = registerOutput<bool>('violationNotificationsEnabled');
   }

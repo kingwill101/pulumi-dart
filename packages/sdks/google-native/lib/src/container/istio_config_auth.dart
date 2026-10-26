@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The specified Istio auth mode, either none, or mutual TLS.
-enum IstioConfigAuth {
+enum IstioConfigAuth implements pulumi.PulumiEnum<String> {
   authNone("AUTH_NONE"),
   authMutualTls("AUTH_MUTUAL_TLS");
 
   const IstioConfigAuth(this.wireValue);
+  @override
   final String wireValue;
 
   static IstioConfigAuth fromValue(String value) {

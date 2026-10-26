@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_container_v1_get_server_config_args_doc}
 class GetServerConfigArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? projectId;
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? projectId;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [GetServerConfigArgs].
   /// [location] Required.

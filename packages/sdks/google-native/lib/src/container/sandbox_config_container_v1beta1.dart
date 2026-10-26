@@ -6,9 +6,9 @@ import 'sandbox_config_type_container_v1beta1.dart';
 /// SandboxConfig contains configurations of the sandbox to use for the node.
 class SandboxConfigContainerV1beta1 {
   /// Type of the sandbox to use for the node (e.g. 'gvisor')
-  final pulumi.Input<String>? sandboxType;
+  final pulumi.Input<String?>? sandboxType;
   /// Type of the sandbox to use for the node.
-  final pulumi.Input<SandboxConfigTypeContainerV1beta1>? type;
+  final pulumi.Input<SandboxConfigTypeContainerV1beta1?>? type;
 
   /// Creates a new [SandboxConfigContainerV1beta1].
   /// [sandboxType] Type of the sandbox to use for the node (e.g. 'gvisor')

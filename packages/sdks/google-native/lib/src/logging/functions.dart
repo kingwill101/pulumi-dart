@@ -58,6 +58,17 @@ Future<GetBillingAccountBucketResult> getBillingAccountBucket(
   return GetBillingAccountBucketResult.fromMap(result);
 }
 
+pulumi.Output<GetBillingAccountBucketResult> getBillingAccountBucketOutput(
+  GetBillingAccountBucketArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getBillingAccountBucket',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBillingAccountBucketResult.fromMap);
+}
+
 /// Gets a link.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logging_v2_get_billing_account_bucket_link_args_doc}
 /// [options] Invoke options controlling this call.
@@ -72,6 +83,17 @@ Future<GetBillingAccountBucketLinkResult> getBillingAccountBucketLink(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBillingAccountBucketLinkResult.fromMap(result);
+}
+
+pulumi.Output<GetBillingAccountBucketLinkResult> getBillingAccountBucketLinkOutput(
+  GetBillingAccountBucketLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getBillingAccountBucketLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBillingAccountBucketLinkResult.fromMap);
 }
 
 /// Gets a view on a log bucket.
@@ -90,6 +112,17 @@ Future<GetBillingAccountBucketViewResult> getBillingAccountBucketView(
   return GetBillingAccountBucketViewResult.fromMap(result);
 }
 
+pulumi.Output<GetBillingAccountBucketViewResult> getBillingAccountBucketViewOutput(
+  GetBillingAccountBucketViewArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getBillingAccountBucketView',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBillingAccountBucketViewResult.fromMap);
+}
+
 /// Gets the description of an exclusion in the _Default sink.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logging_v2_get_billing_account_exclusion_args_doc}
 /// [options] Invoke options controlling this call.
@@ -104,6 +137,17 @@ Future<GetBillingAccountExclusionResult> getBillingAccountExclusion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBillingAccountExclusionResult.fromMap(result);
+}
+
+pulumi.Output<GetBillingAccountExclusionResult> getBillingAccountExclusionOutput(
+  GetBillingAccountExclusionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getBillingAccountExclusion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBillingAccountExclusionResult.fromMap);
 }
 
 /// Gets a sink.
@@ -122,6 +166,17 @@ Future<GetBillingAccountSinkResult> getBillingAccountSink(
   return GetBillingAccountSinkResult.fromMap(result);
 }
 
+pulumi.Output<GetBillingAccountSinkResult> getBillingAccountSinkOutput(
+  GetBillingAccountSinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getBillingAccountSink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBillingAccountSinkResult.fromMap);
+}
+
 /// Gets a log bucket.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logging_v2_get_bucket_args_doc}
 /// [options] Invoke options controlling this call.
@@ -136,6 +191,17 @@ Future<GetBucketResult> getBucket(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBucketResult.fromMap(result);
+}
+
+pulumi.Output<GetBucketResult> getBucketOutput(
+  GetBucketArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getBucket',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketResult.fromMap);
 }
 
 /// Gets a view on a log bucket.
@@ -154,6 +220,17 @@ Future<GetBucketViewResult> getBucketView(
   return GetBucketViewResult.fromMap(result);
 }
 
+pulumi.Output<GetBucketViewResult> getBucketViewOutput(
+  GetBucketViewArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getBucketView',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketViewResult.fromMap);
+}
+
 /// Gets the description of an exclusion in the _Default sink.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logging_v2_get_exclusion_args_doc}
 /// [options] Invoke options controlling this call.
@@ -168,6 +245,17 @@ Future<GetExclusionResult> getExclusion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExclusionResult.fromMap(result);
+}
+
+pulumi.Output<GetExclusionResult> getExclusionOutput(
+  GetExclusionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getExclusion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExclusionResult.fromMap);
 }
 
 /// Gets a log bucket.
@@ -186,6 +274,17 @@ Future<GetFolderBucketResult> getFolderBucket(
   return GetFolderBucketResult.fromMap(result);
 }
 
+pulumi.Output<GetFolderBucketResult> getFolderBucketOutput(
+  GetFolderBucketArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getFolderBucket',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFolderBucketResult.fromMap);
+}
+
 /// Gets a link.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logging_v2_get_folder_bucket_link_args_doc}
 /// [options] Invoke options controlling this call.
@@ -200,6 +299,17 @@ Future<GetFolderBucketLinkResult> getFolderBucketLink(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFolderBucketLinkResult.fromMap(result);
+}
+
+pulumi.Output<GetFolderBucketLinkResult> getFolderBucketLinkOutput(
+  GetFolderBucketLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getFolderBucketLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFolderBucketLinkResult.fromMap);
 }
 
 /// Gets a view on a log bucket.
@@ -218,6 +328,17 @@ Future<GetFolderBucketViewResult> getFolderBucketView(
   return GetFolderBucketViewResult.fromMap(result);
 }
 
+pulumi.Output<GetFolderBucketViewResult> getFolderBucketViewOutput(
+  GetFolderBucketViewArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getFolderBucketView',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFolderBucketViewResult.fromMap);
+}
+
 /// Gets the description of an exclusion in the _Default sink.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logging_v2_get_folder_exclusion_args_doc}
 /// [options] Invoke options controlling this call.
@@ -232,6 +353,17 @@ Future<GetFolderExclusionResult> getFolderExclusion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFolderExclusionResult.fromMap(result);
+}
+
+pulumi.Output<GetFolderExclusionResult> getFolderExclusionOutput(
+  GetFolderExclusionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getFolderExclusion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFolderExclusionResult.fromMap);
 }
 
 /// Gets a sink.
@@ -250,6 +382,17 @@ Future<GetFolderSinkResult> getFolderSink(
   return GetFolderSinkResult.fromMap(result);
 }
 
+pulumi.Output<GetFolderSinkResult> getFolderSinkOutput(
+  GetFolderSinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getFolderSink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFolderSinkResult.fromMap);
+}
+
 /// Gets a link.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logging_v2_get_link_args_doc}
 /// [options] Invoke options controlling this call.
@@ -264,6 +407,17 @@ Future<GetLinkResult> getLink(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLinkResult.fromMap(result);
+}
+
+pulumi.Output<GetLinkResult> getLinkOutput(
+  GetLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLinkResult.fromMap);
 }
 
 /// Gets a logs-based metric.
@@ -282,6 +436,17 @@ Future<GetMetricResult> getMetric(
   return GetMetricResult.fromMap(result);
 }
 
+pulumi.Output<GetMetricResult> getMetricOutput(
+  GetMetricArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getMetric',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMetricResult.fromMap);
+}
+
 /// Gets a log bucket.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logging_v2_get_organization_bucket_args_doc}
 /// [options] Invoke options controlling this call.
@@ -296,6 +461,17 @@ Future<GetOrganizationBucketResult> getOrganizationBucket(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationBucketResult.fromMap(result);
+}
+
+pulumi.Output<GetOrganizationBucketResult> getOrganizationBucketOutput(
+  GetOrganizationBucketArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getOrganizationBucket',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationBucketResult.fromMap);
 }
 
 /// Gets a link.
@@ -314,6 +490,17 @@ Future<GetOrganizationBucketLinkResult> getOrganizationBucketLink(
   return GetOrganizationBucketLinkResult.fromMap(result);
 }
 
+pulumi.Output<GetOrganizationBucketLinkResult> getOrganizationBucketLinkOutput(
+  GetOrganizationBucketLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getOrganizationBucketLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationBucketLinkResult.fromMap);
+}
+
 /// Gets a view on a log bucket.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logging_v2_get_organization_bucket_view_args_doc}
 /// [options] Invoke options controlling this call.
@@ -328,6 +515,17 @@ Future<GetOrganizationBucketViewResult> getOrganizationBucketView(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationBucketViewResult.fromMap(result);
+}
+
+pulumi.Output<GetOrganizationBucketViewResult> getOrganizationBucketViewOutput(
+  GetOrganizationBucketViewArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getOrganizationBucketView',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationBucketViewResult.fromMap);
 }
 
 /// Gets the description of an exclusion in the _Default sink.
@@ -346,6 +544,17 @@ Future<GetOrganizationExclusionResult> getOrganizationExclusion(
   return GetOrganizationExclusionResult.fromMap(result);
 }
 
+pulumi.Output<GetOrganizationExclusionResult> getOrganizationExclusionOutput(
+  GetOrganizationExclusionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getOrganizationExclusion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationExclusionResult.fromMap);
+}
+
 /// Gets a sink.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logging_v2_get_organization_sink_args_doc}
 /// [options] Invoke options controlling this call.
@@ -362,6 +571,17 @@ Future<GetOrganizationSinkResult> getOrganizationSink(
   return GetOrganizationSinkResult.fromMap(result);
 }
 
+pulumi.Output<GetOrganizationSinkResult> getOrganizationSinkOutput(
+  GetOrganizationSinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getOrganizationSink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationSinkResult.fromMap);
+}
+
 /// Gets a sink.
 /// [args] Arguments passed to this invoke. {@macro pulumi_logging_v2_get_sink_args_doc}
 /// [options] Invoke options controlling this call.
@@ -376,4 +596,15 @@ Future<GetSinkResult> getSink(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSinkResult.fromMap(result);
+}
+
+pulumi.Output<GetSinkResult> getSinkOutput(
+  GetSinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:logging/v2:getSink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSinkResult.fromMap);
 }

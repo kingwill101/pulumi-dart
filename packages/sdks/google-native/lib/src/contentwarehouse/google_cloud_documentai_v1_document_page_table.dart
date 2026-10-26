@@ -9,15 +9,15 @@ import 'google_cloud_documentai_v1_document_provenance.dart';
 /// A table representation similar to HTML table structure.
 class GoogleCloudDocumentaiV1DocumentPageTable {
   /// Body rows of the table.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageTableTableRow>>? bodyRows;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageTableTableRow>?>? bodyRows;
   /// A list of detected languages together with confidence.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>>? detectedLanguages;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>?>? detectedLanguages;
   /// Header rows of the table.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageTableTableRow>>? headerRows;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageTableTableRow>?>? headerRows;
   /// Layout for Table.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout>? layout;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout?>? layout;
   /// The history of this table.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentProvenance>? provenance;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentProvenance?>? provenance;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageTable].
   /// [bodyRows] Body rows of the table.

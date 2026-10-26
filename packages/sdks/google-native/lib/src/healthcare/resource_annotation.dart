@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resource level annotation.
 class ResourceAnnotation {
   /// A description of the annotation record.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
 
   /// Creates a new [ResourceAnnotation].
   /// [label] A description of the annotation record.

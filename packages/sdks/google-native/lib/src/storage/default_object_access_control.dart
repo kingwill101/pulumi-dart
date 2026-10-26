@@ -54,8 +54,32 @@ class DefaultObjectAccessControl extends pulumi.CustomResource {
           'google-native:storage/v1:DefaultObjectAccessControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['bucket']).merge(options),
         ) {
+    bucket = registerOutput<String>('bucket');
+    domain = registerOutput<String>('domain');
+    email = registerOutput<String>('email');
+    entity = registerOutput<String>('entity');
+    entityId = registerOutput<String>('entityId');
+    etag = registerOutput<String>('etag');
+    generation = registerOutput<String>('generation');
+    kind = registerOutput<String>('kind');
+    object_ = registerOutput<String>('object');
+    projectTeam = registerOutput<DefaultObjectAccessControlProjectTeamResponse>('projectTeam', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DefaultObjectAccessControlProjectTeamResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    role = registerOutput<String>('role');
+    selfLink = registerOutput<String>('selfLink');
+    userProject = registerOutput<String?>('userProject');
+  }
+
+  /// Creates a typed reference to an existing [DefaultObjectAccessControl] resource.
+  DefaultObjectAccessControl.reference(String urn)
+    : super(
+        'google-native:storage/v1:DefaultObjectAccessControl',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     domain = registerOutput<String>('domain');
     email = registerOutput<String>('email');

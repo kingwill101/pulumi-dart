@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a Sql Server user on the Cloud SQL instance.
 class SqlServerUserDetailsSqladminV1beta4 {
   /// If the user has been disabled
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The server roles for this user
-  final pulumi.Input<List<String>>? serverRoles;
+  final pulumi.Input<List<String>?>? serverRoles;
 
   /// Creates a new [SqlServerUserDetailsSqladminV1beta4].
   /// [disabled] If the user has been disabled

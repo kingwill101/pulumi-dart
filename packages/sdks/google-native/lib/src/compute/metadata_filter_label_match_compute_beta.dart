@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the load balancer.
 class MetadataFilterLabelMatchComputeBeta {
   /// Name of metadata label. The name can have a maximum length of 1024 characters and must be at least 1 character long.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of the label must match the specified value. value can have a maximum length of 1024 characters.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [MetadataFilterLabelMatchComputeBeta].
   /// [name] Name of metadata label. The name can have a maximum length of 1024 characters and must be at least 1 character long.

@@ -6,9 +6,9 @@ import 'response_status_code_status_class.dart';
 /// A status to accept. Either a status code class like "2xx", or an integer status code like "200".
 class ResponseStatusCode {
   /// A class of status codes to accept.
-  final pulumi.Input<ResponseStatusCodeStatusClass>? statusClass;
+  final pulumi.Input<ResponseStatusCodeStatusClass?>? statusClass;
   /// A status code to accept.
-  final pulumi.Input<int>? statusValue;
+  final pulumi.Input<int?>? statusValue;
 
   /// Creates a new [ResponseStatusCode].
   /// [statusClass] A class of status codes to accept.
@@ -28,7 +28,7 @@ class ResponseStatusCode {
   factory ResponseStatusCode.fromMap(Map<String, dynamic> map) {
     return ResponseStatusCode(
       statusClass: (() { final guardedValue = map['statusClass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResponseStatusCodeStatusClass.fromValue(guardedValue as String)); })(),
-      statusValue: (() { final guardedValue = map['statusValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      statusValue: (() { final guardedValue = map['statusValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

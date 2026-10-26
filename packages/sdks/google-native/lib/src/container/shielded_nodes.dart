@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration of Shielded Nodes feature.
 class ShieldedNodes {
   /// Whether Shielded Nodes features are enabled on all nodes in this cluster.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ShieldedNodes].
   /// [enabled] Whether Shielded Nodes features are enabled on all nodes in this cluster.

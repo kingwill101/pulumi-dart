@@ -9,15 +9,15 @@ import 'statistical_time_series_filter.dart';
 /// A pair of time series filters that define a ratio computation. The output time series is the pair-wise division of each aligned element from the numerator and denominator time series.
 class TimeSeriesFilterRatio {
   /// The denominator of the ratio.
-  final pulumi.Input<RatioPart>? denominator;
+  final pulumi.Input<RatioPart?>? denominator;
   /// The numerator of the ratio.
-  final pulumi.Input<RatioPart>? numerator;
+  final pulumi.Input<RatioPart?>? numerator;
   /// Ranking based time series filter.
-  final pulumi.Input<PickTimeSeriesFilter>? pickTimeSeriesFilter;
+  final pulumi.Input<PickTimeSeriesFilter?>? pickTimeSeriesFilter;
   /// Apply a second aggregation after the ratio is computed.
-  final pulumi.Input<Aggregation>? secondaryAggregation;
+  final pulumi.Input<Aggregation?>? secondaryAggregation;
   /// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-  final pulumi.Input<StatisticalTimeSeriesFilter>? statisticalTimeSeriesFilter;
+  final pulumi.Input<StatisticalTimeSeriesFilter?>? statisticalTimeSeriesFilter;
 
   /// Creates a new [TimeSeriesFilterRatio].
   /// [denominator] The denominator of the ratio.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Additional transformation that can be done on the source entity name before it is being used by the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION
-enum MultiEntityRenameSourceNameTransformation {
+enum MultiEntityRenameSourceNameTransformation implements pulumi.PulumiEnum<String> {
   entityNameTransformationUnspecified("ENTITY_NAME_TRANSFORMATION_UNSPECIFIED"),
   entityNameTransformationNoTransformation("ENTITY_NAME_TRANSFORMATION_NO_TRANSFORMATION"),
   entityNameTransformationLowerCase("ENTITY_NAME_TRANSFORMATION_LOWER_CASE"),
@@ -7,6 +9,7 @@ enum MultiEntityRenameSourceNameTransformation {
   entityNameTransformationCapitalizedCase("ENTITY_NAME_TRANSFORMATION_CAPITALIZED_CASE");
 
   const MultiEntityRenameSourceNameTransformation(this.wireValue);
+  @override
   final String wireValue;
 
   static MultiEntityRenameSourceNameTransformation fromValue(String value) {

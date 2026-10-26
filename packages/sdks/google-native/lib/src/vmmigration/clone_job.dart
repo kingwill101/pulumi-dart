@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'clone_job_args.dart';
+import 'clone_step_response.dart';
 import 'compute_engine_disks_target_details_response.dart';
 import 'compute_engine_target_details_response.dart';
 import 'status_response.dart';
@@ -34,7 +35,7 @@ class CloneJob extends pulumi.CustomResource {
   /// The time the state was last updated.
   late final pulumi.Output<String> stateTime;
   /// The clone steps list representing its progress.
-  late final pulumi.Output<List<Map<String, dynamic>>> steps;
+  late final pulumi.Output<List<CloneStepResponse>> steps;
 
   /// Creates a new [CloneJob].
   /// [name] The Pulumi resource name.
@@ -48,7 +49,7 @@ class CloneJob extends pulumi.CustomResource {
           'google-native:vmmigration/v1:CloneJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['cloneJobId', 'location', 'migratingVmId', 'project', 'sourceId']).merge(options),
         ) {
     cloneJobId = registerOutput<String>('cloneJobId');
     computeEngineDisksTargetDetails = registerOutput<ComputeEngineDisksTargetDetailsResponse>('computeEngineDisksTargetDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEngineDisksTargetDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -64,6 +65,32 @@ class CloneJob extends pulumi.CustomResource {
     sourceId = registerOutput<String>('sourceId');
     state = registerOutput<String>('state');
     stateTime = registerOutput<String>('stateTime');
-    steps = registerOutput<List<Map<String, dynamic>>>('steps');
+    steps = registerOutput<List<CloneStepResponse>>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloneStepResponse>(guardedValue, (value) => CloneStepResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [CloneJob] resource.
+  CloneJob.reference(String urn)
+    : super(
+        'google-native:vmmigration/v1:CloneJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cloneJobId = registerOutput<String>('cloneJobId');
+    computeEngineDisksTargetDetails = registerOutput<ComputeEngineDisksTargetDetailsResponse>('computeEngineDisksTargetDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEngineDisksTargetDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    computeEngineTargetDetails = registerOutput<ComputeEngineTargetDetailsResponse>('computeEngineTargetDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEngineTargetDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    endTime = registerOutput<String>('endTime');
+    error = registerOutput<StatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    migratingVmId = registerOutput<String>('migratingVmId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    sourceId = registerOutput<String>('sourceId');
+    state = registerOutput<String>('state');
+    stateTime = registerOutput<String>('stateTime');
+    steps = registerOutput<List<CloneStepResponse>>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloneStepResponse>(guardedValue, (value) => CloneStepResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

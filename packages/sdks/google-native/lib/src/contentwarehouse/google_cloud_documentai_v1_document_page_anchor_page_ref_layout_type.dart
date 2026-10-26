@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The type of the layout element that is being referenced if any.
-enum GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType {
+enum GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType implements pulumi.PulumiEnum<String> {
   layoutTypeUnspecified("LAYOUT_TYPE_UNSPECIFIED"),
   block("BLOCK"),
   paragraph("PARAGRAPH"),
@@ -10,6 +12,7 @@ enum GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType {
   formField("FORM_FIELD");
 
   const GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType fromValue(String value) {

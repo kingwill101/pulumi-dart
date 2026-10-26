@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPerfSampleSeriesArgs {
   final pulumi.Input<String> executionId;
   final pulumi.Input<String> historyId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> sampleSeriesId;
   final pulumi.Input<String> stepId;
 

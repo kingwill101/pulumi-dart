@@ -6,7 +6,7 @@ import 'header.dart';
 /// Wraps the Header object.
 class HeaderOverride {
   /// header embodying a key and a value.
-  final pulumi.Input<Header>? header;
+  final pulumi.Input<Header?>? header;
 
   /// Creates a new [HeaderOverride].
   /// [header] header embodying a key and a value.

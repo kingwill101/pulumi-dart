@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_managedidentities_v1beta1_args.dart';
+import 'trust_response_managedidentities_v1beta1.dart';
 
 /// Creates a Microsoft AD domain.
 /// Auto-naming is currently not supported for this resource.
@@ -30,7 +31,7 @@ class DomainManagedidentitiesV1beta1 extends pulumi.CustomResource {
   /// Additional information about the current status of this domain, if available.
   late final pulumi.Output<String> statusMessage;
   /// The current trusts associated with the domain.
-  late final pulumi.Output<List<Map<String, dynamic>>> trusts;
+  late final pulumi.Output<List<TrustResponseManagedidentitiesV1beta1>> trusts;
   /// The last update time.
   late final pulumi.Output<String> updateTime;
 
@@ -46,22 +47,48 @@ class DomainManagedidentitiesV1beta1 extends pulumi.CustomResource {
           'google-native:managedidentities/v1beta1:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['domainName', 'project']).merge(options),
         ) {
     admin = registerOutput<String>('admin');
     auditLogsEnabled = registerOutput<bool>('auditLogsEnabled');
-    authorizedNetworks = registerOutput<List<String>>('authorizedNetworks');
+    authorizedNetworks = registerOutput<List<String>>('authorizedNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     domainName = registerOutput<String>('domainName');
     fqdn = registerOutput<String>('fqdn');
-    labels = registerOutput<Map<String, String>>('labels');
-    locations = registerOutput<List<String>>('locations');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    locations = registerOutput<List<String>>('locations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     reservedIpRange = registerOutput<String>('reservedIpRange');
     state = registerOutput<String>('state');
     statusMessage = registerOutput<String>('statusMessage');
-    trusts = registerOutput<List<Map<String, dynamic>>>('trusts');
+    trusts = registerOutput<List<TrustResponseManagedidentitiesV1beta1>>('trusts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrustResponseManagedidentitiesV1beta1>(guardedValue, (value) => TrustResponseManagedidentitiesV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [DomainManagedidentitiesV1beta1] resource.
+  DomainManagedidentitiesV1beta1.reference(String urn)
+    : super(
+        'google-native:managedidentities/v1beta1:Domain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    admin = registerOutput<String>('admin');
+    auditLogsEnabled = registerOutput<bool>('auditLogsEnabled');
+    authorizedNetworks = registerOutput<List<String>>('authorizedNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createTime = registerOutput<String>('createTime');
+    domainName = registerOutput<String>('domainName');
+    fqdn = registerOutput<String>('fqdn');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    locations = registerOutput<List<String>>('locations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    reservedIpRange = registerOutput<String>('reservedIpRange');
+    state = registerOutput<String>('state');
+    statusMessage = registerOutput<String>('statusMessage');
+    trusts = registerOutput<List<TrustResponseManagedidentitiesV1beta1>>('trusts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrustResponseManagedidentitiesV1beta1>(guardedValue, (value) => TrustResponseManagedidentitiesV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

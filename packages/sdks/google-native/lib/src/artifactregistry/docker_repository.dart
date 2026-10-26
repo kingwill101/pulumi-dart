@@ -6,7 +6,7 @@ import 'docker_repository_public_repository.dart';
 /// Configuration for a Docker remote repository.
 class DockerRepository {
   /// One of the publicly available Docker repositories supported by Artifact Registry.
-  final pulumi.Input<DockerRepositoryPublicRepository>? publicRepository;
+  final pulumi.Input<DockerRepositoryPublicRepository?>? publicRepository;
 
   /// Creates a new [DockerRepository].
   /// [publicRepository] One of the publicly available Docker repositories supported by Artifact Registry.

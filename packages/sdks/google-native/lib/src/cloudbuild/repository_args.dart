@@ -8,14 +8,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudbuild_v2_repository_args_doc}
 class RepositoryArgs {
   /// Allows clients to store small amounts of arbitrary data.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   final pulumi.Input<String> connectionId;
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? etag;
+  final pulumi.Input<String?>? location;
   /// Immutable. Resource name of the repository, in the format `projects/*/locations/*/connections/*/repositories/*`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Git Clone HTTPS URI.
   final pulumi.Input<String> remoteUri;
   /// Required. The ID to use for the repository, which will become the final component of the repository's resource name. This ID should be unique in the connection. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.

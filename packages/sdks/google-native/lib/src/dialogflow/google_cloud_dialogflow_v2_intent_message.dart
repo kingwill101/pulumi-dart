@@ -19,35 +19,35 @@ import 'google_cloud_dialogflow_v2_intent_message_text.dart';
 /// A rich response message. Corresponds to the intent `Response` field in the Dialogflow console. For more information, see [Rich response messages](https://cloud.google.com/dialogflow/docs/intents-rich-messages).
 class GoogleCloudDialogflowV2IntentMessage {
   /// The basic card response for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageBasicCard>? basicCard;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageBasicCard?>? basicCard;
   /// Browse carousel card for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard>? browseCarouselCard;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard?>? browseCarouselCard;
   /// The card response.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageCard>? card;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageCard?>? card;
   /// The carousel card response for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageCarouselSelect>? carouselSelect;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageCarouselSelect?>? carouselSelect;
   /// The image response.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageImage>? image;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageImage?>? image;
   /// The link out suggestion chip for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion>? linkOutSuggestion;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion?>? linkOutSuggestion;
   /// The list card response for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageListSelect>? listSelect;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageListSelect?>? listSelect;
   /// The media content card for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageMediaContent>? mediaContent;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageMediaContent?>? mediaContent;
   /// A custom platform-specific response.
-  final pulumi.Input<Map<String, String>>? payload;
+  final pulumi.Input<Map<String, String>?>? payload;
   /// Optional. The platform that this message is intended for.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessagePlatform>? platform;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessagePlatform?>? platform;
   /// The quick replies response.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageQuickReplies>? quickReplies;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageQuickReplies?>? quickReplies;
   /// The voice and text-only responses for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageSimpleResponses>? simpleResponses;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageSimpleResponses?>? simpleResponses;
   /// The suggestion chips for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageSuggestions>? suggestions;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageSuggestions?>? suggestions;
   /// Table card for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageTableCard>? tableCard;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageTableCard?>? tableCard;
   /// The text response.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageText>? text;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageText?>? text;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessage].
   /// [basicCard] The basic card response for Actions on Google.

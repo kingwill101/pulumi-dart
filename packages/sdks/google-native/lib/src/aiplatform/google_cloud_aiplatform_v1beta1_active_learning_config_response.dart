@@ -39,7 +39,7 @@ class GoogleCloudAiplatformV1beta1ActiveLearningConfigResponse {
   factory GoogleCloudAiplatformV1beta1ActiveLearningConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ActiveLearningConfigResponse(
       maxDataItemCount: pulumi.Input.fromValue(map['maxDataItemCount'] as String),
-      maxDataItemPercentage: pulumi.Input.fromValue(map['maxDataItemPercentage'] as int),
+      maxDataItemPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxDataItemPercentage'])),
       sampleConfig: pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1SampleConfigResponse.fromMap((map['sampleConfig']! as Map).cast<String, dynamic>())),
       trainingConfig: pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1TrainingConfigResponse.fromMap((map['trainingConfig']! as Map).cast<String, dynamic>())),
     );

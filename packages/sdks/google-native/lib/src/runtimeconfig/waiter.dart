@@ -36,8 +36,29 @@ class Waiter extends pulumi.CustomResource {
           'google-native:runtimeconfig/v1beta1:Waiter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['configId', 'project']).merge(options),
         ) {
+    configId = registerOutput<String>('configId');
+    createTime = registerOutput<String>('createTime');
+    done = registerOutput<bool>('done');
+    error = registerOutput<StatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    failure = registerOutput<EndConditionResponse>('failure', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndConditionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    success = registerOutput<EndConditionResponse>('success', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndConditionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeout = registerOutput<String>('timeout');
+  }
+
+  /// Creates a typed reference to an existing [Waiter] resource.
+  Waiter.reference(String urn)
+    : super(
+        'google-native:runtimeconfig/v1beta1:Waiter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     configId = registerOutput<String>('configId');
     createTime = registerOutput<String>('createTime');
     done = registerOutput<bool>('done');

@@ -22,39 +22,39 @@ import 'trino_job.dart';
 /// {@macro pulumi_dataproc_v1_job_args_doc}
 class JobArgs {
   /// Optional. Driver scheduling configuration.
-  final pulumi.Input<DriverSchedulingConfig>? driverSchedulingConfig;
+  final pulumi.Input<DriverSchedulingConfig?>? driverSchedulingConfig;
   /// Optional. Job is a Flink job.
-  final pulumi.Input<FlinkJob>? flinkJob;
+  final pulumi.Input<FlinkJob?>? flinkJob;
   /// Optional. Job is a Hadoop job.
-  final pulumi.Input<HadoopJob>? hadoopJob;
+  final pulumi.Input<HadoopJob?>? hadoopJob;
   /// Optional. Job is a Hive job.
-  final pulumi.Input<HiveJob>? hiveJob;
+  final pulumi.Input<HiveJob?>? hiveJob;
   /// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Optional. Job is a Pig job.
-  final pulumi.Input<PigJob>? pigJob;
+  final pulumi.Input<PigJob?>? pigJob;
   /// Job information, including how, when, and where to run the job.
   final pulumi.Input<JobPlacement> placement;
   /// Optional. Job is a Presto job.
-  final pulumi.Input<PrestoJob>? prestoJob;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<PrestoJob?>? prestoJob;
+  final pulumi.Input<String?>? project;
   /// Optional. Job is a PySpark job.
-  final pulumi.Input<PySparkJob>? pysparkJob;
+  final pulumi.Input<PySparkJob?>? pysparkJob;
   /// Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id.
-  final pulumi.Input<JobReference>? reference;
+  final pulumi.Input<JobReference?>? reference;
   final pulumi.Input<String> region;
   /// Optional. A unique id used to identify the request. If the server receives two SubmitJobRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.SubmitJobRequest)s with the same id, then the second request will be ignored and the first Job created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Optional. Job scheduling configuration.
-  final pulumi.Input<JobScheduling>? scheduling;
+  final pulumi.Input<JobScheduling?>? scheduling;
   /// Optional. Job is a Spark job.
-  final pulumi.Input<SparkJob>? sparkJob;
+  final pulumi.Input<SparkJob?>? sparkJob;
   /// Optional. Job is a SparkR job.
-  final pulumi.Input<SparkRJob>? sparkRJob;
+  final pulumi.Input<SparkRJob?>? sparkRJob;
   /// Optional. Job is a SparkSql job.
-  final pulumi.Input<SparkSqlJob>? sparkSqlJob;
+  final pulumi.Input<SparkSqlJob?>? sparkSqlJob;
   /// Optional. Job is a Trino job.
-  final pulumi.Input<TrinoJob>? trinoJob;
+  final pulumi.Input<TrinoJob?>? trinoJob;
 
   /// Creates a new [JobArgs].
   /// [driverSchedulingConfig] Optional. Driver scheduling configuration.

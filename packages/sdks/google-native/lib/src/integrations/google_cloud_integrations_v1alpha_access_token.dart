@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The access token represents the authorization of a specific application to access specific parts of a user’s data.
 class GoogleCloudIntegrationsV1alphaAccessToken {
   /// The access token encapsulating the security identity of a process or thread.
-  final pulumi.Input<String>? accessToken;
+  final pulumi.Input<String?>? accessToken;
   /// The approximate time until the access token retrieved is valid.
   final pulumi.Input<String> accessTokenExpireTime;
   /// If the access token will expire, use the refresh token to obtain another access token.
-  final pulumi.Input<String>? refreshToken;
+  final pulumi.Input<String?>? refreshToken;
   /// The approximate time until the refresh token retrieved is valid.
-  final pulumi.Input<String>? refreshTokenExpireTime;
+  final pulumi.Input<String?>? refreshTokenExpireTime;
   /// Only support "bearer" token in v1 as bearer token is the predominant type used with OAuth 2.0.
-  final pulumi.Input<String>? tokenType;
+  final pulumi.Input<String?>? tokenType;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaAccessToken].
   /// [accessToken] The access token encapsulating the security identity of a process or thread.

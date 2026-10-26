@@ -11,10 +11,10 @@ class StoredInfoTypeArgs {
   /// Configuration of the storedInfoType to create.
   final pulumi.Input<GooglePrivacyDlpV2StoredInfoTypeConfig> config;
   /// Deprecated. This field has no effect.
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-  final pulumi.Input<String>? storedInfoTypeId;
+  final pulumi.Input<String?>? storedInfoTypeId;
 
   /// Creates a new [StoredInfoTypeArgs].
   /// [config] Configuration of the storedInfoType to create.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Private Connectivity
 class PrivateConnectivityDatastreamV1alpha1 {
-  final pulumi.Input<String>? privateConnectionName;
+  final pulumi.Input<String?>? privateConnectionName;
 
   /// Creates a new [PrivateConnectivityDatastreamV1alpha1].
   /// [privateConnectionName] Optional.

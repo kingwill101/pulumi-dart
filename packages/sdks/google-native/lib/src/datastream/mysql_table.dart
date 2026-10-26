@@ -6,9 +6,9 @@ import 'mysql_column.dart';
 /// MySQL table.
 class MysqlTable {
   /// MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
-  final pulumi.Input<List<MysqlColumn>>? mysqlColumns;
+  final pulumi.Input<List<MysqlColumn>?>? mysqlColumns;
   /// Table name.
-  final pulumi.Input<String>? table;
+  final pulumi.Input<String?>? table;
 
   /// Creates a new [MysqlTable].
   /// [mysqlColumns] MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.

@@ -6,7 +6,7 @@ import 'cluster_network_performance_config_total_egress_bandwidth_tier_container
 /// Configuration of all network bandwidth tiers
 class ClusterNetworkPerformanceConfigContainerV1beta1 {
   /// Specifies the total network bandwidth tier for the NodePool.
-  final pulumi.Input<ClusterNetworkPerformanceConfigTotalEgressBandwidthTierContainerV1beta1>? totalEgressBandwidthTier;
+  final pulumi.Input<ClusterNetworkPerformanceConfigTotalEgressBandwidthTierContainerV1beta1?>? totalEgressBandwidthTier;
 
   /// Creates a new [ClusterNetworkPerformanceConfigContainerV1beta1].
   /// [totalEgressBandwidthTier] Specifies the total network bandwidth tier for the NodePool.

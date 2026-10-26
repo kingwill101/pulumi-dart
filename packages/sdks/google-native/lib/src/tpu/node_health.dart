@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The health status of the TPU node.
-enum NodeHealth {
+enum NodeHealth implements pulumi.PulumiEnum<String> {
   healthUnspecified("HEALTH_UNSPECIFIED"),
   healthy("HEALTHY"),
   deprecatedUnhealthy("DEPRECATED_UNHEALTHY"),
@@ -8,6 +10,7 @@ enum NodeHealth {
   unhealthyMaintenance("UNHEALTHY_MAINTENANCE");
 
   const NodeHealth(this.wireValue);
+  @override
   final String wireValue;
 
   static NodeHealth fromValue(String value) {

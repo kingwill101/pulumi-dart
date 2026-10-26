@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig {
   /// Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.
-  final pulumi.Input<String>? leafNodeEmbeddingCount;
+  final pulumi.Input<String?>? leafNodeEmbeddingCount;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig].
   /// [leafNodeEmbeddingCount] Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.

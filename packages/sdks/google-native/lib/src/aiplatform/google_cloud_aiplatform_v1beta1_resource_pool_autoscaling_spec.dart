@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The min/max number of replicas allowed if enabling autoscaling
 class GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec {
   /// Optional. max replicas in the node pool, must be ≥ replica_count and &gt; min_replica_count or will throw error
-  final pulumi.Input<String>? maxReplicaCount;
+  final pulumi.Input<String?>? maxReplicaCount;
   /// Optional. min replicas in the node pool, must be ≤ replica_count and &lt; max_replica_count or will throw error
-  final pulumi.Input<String>? minReplicaCount;
+  final pulumi.Input<String?>? minReplicaCount;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec].
   /// [maxReplicaCount] Optional. max replicas in the node pool, must be ≥ replica_count and &gt; min_replica_count or will throw error

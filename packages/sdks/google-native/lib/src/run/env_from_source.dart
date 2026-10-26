@@ -7,11 +7,11 @@ import 'secret_env_source.dart';
 /// Not supported by Cloud Run. EnvFromSource represents the source of a set of ConfigMaps
 class EnvFromSource {
   /// The ConfigMap to select from
-  final pulumi.Input<ConfigMapEnvSource>? configMapRef;
+  final pulumi.Input<ConfigMapEnvSource?>? configMapRef;
   /// An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// The Secret to select from
-  final pulumi.Input<SecretEnvSource>? secretRef;
+  final pulumi.Input<SecretEnvSource?>? secretRef;
 
   /// Creates a new [EnvFromSource].
   /// [configMapRef] The ConfigMap to select from

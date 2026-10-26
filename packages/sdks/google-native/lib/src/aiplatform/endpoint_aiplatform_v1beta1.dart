@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_aiplatform_v1beta1_args.dart';
+import 'google_cloud_aiplatform_v1beta1_deployed_model_response.dart';
 import 'google_cloud_aiplatform_v1beta1_encryption_spec_response.dart';
 import 'google_cloud_aiplatform_v1beta1_predict_request_response_logging_config_response.dart';
 
@@ -9,7 +10,7 @@ class EndpointAiplatformV1beta1 extends pulumi.CustomResource {
   /// Timestamp when this Endpoint was created.
   late final pulumi.Output<String> createTime;
   /// The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively.
-  late final pulumi.Output<List<Map<String, dynamic>>> deployedModels;
+  late final pulumi.Output<List<GoogleCloudAiplatformV1beta1DeployedModelResponse>> deployedModels;
   /// The description of the Endpoint.
   late final pulumi.Output<String> description;
   /// The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -51,24 +52,52 @@ class EndpointAiplatformV1beta1 extends pulumi.CustomResource {
           'google-native:aiplatform/v1beta1:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
-    deployedModels = registerOutput<List<Map<String, dynamic>>>('deployedModels');
+    deployedModels = registerOutput<List<GoogleCloudAiplatformV1beta1DeployedModelResponse>>('deployedModels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1DeployedModelResponse>(guardedValue, (value) => GoogleCloudAiplatformV1beta1DeployedModelResponse.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     enablePrivateServiceConnect = registerOutput<bool>('enablePrivateServiceConnect');
     encryptionSpec = registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpointId = registerOutput<String?>('endpointId');
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     modelDeploymentMonitoringJob = registerOutput<String>('modelDeploymentMonitoringJob');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     predictRequestResponseLoggingConfig = registerOutput<GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigResponse>('predictRequestResponseLoggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    trafficSplit = registerOutput<Map<String, String>>('trafficSplit');
+    trafficSplit = registerOutput<Map<String, String>>('trafficSplit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [EndpointAiplatformV1beta1] resource.
+  EndpointAiplatformV1beta1.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1beta1:Endpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deployedModels = registerOutput<List<GoogleCloudAiplatformV1beta1DeployedModelResponse>>('deployedModels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1DeployedModelResponse>(guardedValue, (value) => GoogleCloudAiplatformV1beta1DeployedModelResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    enablePrivateServiceConnect = registerOutput<bool>('enablePrivateServiceConnect');
+    encryptionSpec = registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpointId = registerOutput<String?>('endpointId');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    modelDeploymentMonitoringJob = registerOutput<String>('modelDeploymentMonitoringJob');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    predictRequestResponseLoggingConfig = registerOutput<GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigResponse>('predictRequestResponseLoggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    trafficSplit = registerOutput<Map<String, String>>('trafficSplit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

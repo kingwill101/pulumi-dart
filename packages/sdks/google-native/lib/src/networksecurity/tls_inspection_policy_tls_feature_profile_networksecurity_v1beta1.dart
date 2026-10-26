@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers ("PROFILE_COMPATIBLE"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
-enum TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1 {
+enum TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1 implements pulumi.PulumiEnum<String> {
   profileUnspecified("PROFILE_UNSPECIFIED"),
   profileCompatible("PROFILE_COMPATIBLE"),
   profileModern("PROFILE_MODERN"),
@@ -7,6 +9,7 @@ enum TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1 {
   profileCustom("PROFILE_CUSTOM");
 
   const TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1 fromValue(String value) {

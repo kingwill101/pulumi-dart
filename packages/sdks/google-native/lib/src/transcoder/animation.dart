@@ -8,11 +8,11 @@ import 'animation_static.dart';
 /// Animation types.
 class Animation {
   /// End previous animation.
-  final pulumi.Input<AnimationEnd>? animationEnd;
+  final pulumi.Input<AnimationEnd?>? animationEnd;
   /// Display overlay object with fade animation.
-  final pulumi.Input<AnimationFade>? animationFade;
+  final pulumi.Input<AnimationFade?>? animationFade;
   /// Display static overlay object.
-  final pulumi.Input<AnimationStatic>? animationStatic;
+  final pulumi.Input<AnimationStatic?>? animationStatic;
 
   /// Creates a new [Animation].
   /// [animationEnd] End previous animation.

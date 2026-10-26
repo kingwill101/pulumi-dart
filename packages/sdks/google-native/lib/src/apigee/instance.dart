@@ -47,9 +47,36 @@ class Instance extends pulumi.CustomResource {
           'google-native:apigee/v1:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId']).merge(options),
         ) {
-    consumerAcceptList = registerOutput<List<String>>('consumerAcceptList');
+    consumerAcceptList = registerOutput<List<String>>('consumerAcceptList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String>('description');
+    diskEncryptionKeyName = registerOutput<String>('diskEncryptionKeyName');
+    displayName = registerOutput<String>('displayName');
+    host = registerOutput<String>('host');
+    ipRange = registerOutput<String>('ipRange');
+    lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    peeringCidrRange = registerOutput<String>('peeringCidrRange');
+    port = registerOutput<String>('port');
+    runtimeVersion = registerOutput<String>('runtimeVersion');
+    serviceAttachment = registerOutput<String>('serviceAttachment');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'google-native:apigee/v1:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    consumerAcceptList = registerOutput<List<String>>('consumerAcceptList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String>('description');
     diskEncryptionKeyName = registerOutput<String>('diskEncryptionKeyName');

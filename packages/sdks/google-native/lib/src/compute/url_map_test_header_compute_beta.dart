@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// HTTP headers used in UrlMapTests.
 class UrlMapTestHeaderComputeBeta {
   /// Header name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Header value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [UrlMapTestHeaderComputeBeta].
   /// [name] Header name.

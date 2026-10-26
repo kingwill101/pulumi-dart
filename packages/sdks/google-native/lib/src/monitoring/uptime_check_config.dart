@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'content_matcher_response.dart';
 import 'http_check_response.dart';
+import 'internal_checker_response.dart';
 import 'monitored_resource_response_monitoring_v3.dart';
 import 'resource_group_response.dart';
 import 'synthetic_monitor_target_response.dart';
@@ -11,13 +13,13 @@ class UptimeCheckConfig extends pulumi.CustomResource {
   /// The type of checkers to use to execute the Uptime check.
   late final pulumi.Output<String> checkerType;
   /// The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.
-  late final pulumi.Output<List<Map<String, dynamic>>> contentMatchers;
+  late final pulumi.Output<List<ContentMatcherResponse>> contentMatchers;
   /// A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
   late final pulumi.Output<String> displayName;
   /// Contains information needed to make an HTTP or HTTPS check.
   late final pulumi.Output<HttpCheckResponse> httpCheck;
   /// The internal checkers that this check will egress from. If is_internal is true and this list is empty, the check will egress from all the InternalCheckers configured for the project that owns this UptimeCheckConfig.
-  late final pulumi.Output<List<Map<String, dynamic>>> internalCheckers;
+  late final pulumi.Output<List<InternalCheckerResponse>> internalCheckers;
   /// If this is true, then checks are made only from the 'internal_checkers'. If it is false, then checks are made only from the 'selected_regions'. It is an error to provide 'selected_regions' when is_internal is true, or to provide 'internal_checkers' when is_internal is false.
   late final pulumi.Output<bool> isInternal;
   /// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer k8s_service servicedirectory_service cloud_run_revision
@@ -52,23 +54,50 @@ class UptimeCheckConfig extends pulumi.CustomResource {
           'google-native:monitoring/v3:UptimeCheckConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     checkerType = registerOutput<String>('checkerType');
-    contentMatchers = registerOutput<List<Map<String, dynamic>>>('contentMatchers');
+    contentMatchers = registerOutput<List<ContentMatcherResponse>>('contentMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContentMatcherResponse>(guardedValue, (value) => ContentMatcherResponse.fromMap((value as Map).cast<String, dynamic>())); });
     displayName = registerOutput<String>('displayName');
     httpCheck = registerOutput<HttpCheckResponse>('httpCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpCheckResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    internalCheckers = registerOutput<List<Map<String, dynamic>>>('internalCheckers');
+    internalCheckers = registerOutput<List<InternalCheckerResponse>>('internalCheckers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InternalCheckerResponse>(guardedValue, (value) => InternalCheckerResponse.fromMap((value as Map).cast<String, dynamic>())); });
     isInternal = registerOutput<bool>('isInternal');
     monitoredResource = registerOutput<MonitoredResourceResponseMonitoringV3>('monitoredResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitoredResourceResponseMonitoringV3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     period = registerOutput<String>('period');
     project = registerOutput<String>('project');
     resourceGroup = registerOutput<ResourceGroupResponse>('resourceGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceGroupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    selectedRegions = registerOutput<List<String>>('selectedRegions');
+    selectedRegions = registerOutput<List<String>>('selectedRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     syntheticMonitor = registerOutput<SyntheticMonitorTargetResponse>('syntheticMonitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SyntheticMonitorTargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tcpCheck = registerOutput<TcpCheckResponse>('tcpCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TcpCheckResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeout = registerOutput<String>('timeout');
-    userLabels = registerOutput<Map<String, String>>('userLabels');
+    userLabels = registerOutput<Map<String, String>>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [UptimeCheckConfig] resource.
+  UptimeCheckConfig.reference(String urn)
+    : super(
+        'google-native:monitoring/v3:UptimeCheckConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    checkerType = registerOutput<String>('checkerType');
+    contentMatchers = registerOutput<List<ContentMatcherResponse>>('contentMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContentMatcherResponse>(guardedValue, (value) => ContentMatcherResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    displayName = registerOutput<String>('displayName');
+    httpCheck = registerOutput<HttpCheckResponse>('httpCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpCheckResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    internalCheckers = registerOutput<List<InternalCheckerResponse>>('internalCheckers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InternalCheckerResponse>(guardedValue, (value) => InternalCheckerResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    isInternal = registerOutput<bool>('isInternal');
+    monitoredResource = registerOutput<MonitoredResourceResponseMonitoringV3>('monitoredResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitoredResourceResponseMonitoringV3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    period = registerOutput<String>('period');
+    project = registerOutput<String>('project');
+    resourceGroup = registerOutput<ResourceGroupResponse>('resourceGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceGroupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selectedRegions = registerOutput<List<String>>('selectedRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    syntheticMonitor = registerOutput<SyntheticMonitorTargetResponse>('syntheticMonitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SyntheticMonitorTargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tcpCheck = registerOutput<TcpCheckResponse>('tcpCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TcpCheckResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeout = registerOutput<String>('timeout');
+    userLabels = registerOutput<Map<String, String>>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

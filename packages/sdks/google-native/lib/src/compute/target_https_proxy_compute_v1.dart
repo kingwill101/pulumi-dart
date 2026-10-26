@@ -51,7 +51,7 @@ class TargetHttpsProxyComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:TargetHttpsProxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     authorizationPolicy = registerOutput<String>('authorizationPolicy');
     certificateMap = registerOutput<String>('certificateMap');
@@ -68,7 +68,36 @@ class TargetHttpsProxyComputeV1 extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     selfLink = registerOutput<String>('selfLink');
     serverTlsPolicy = registerOutput<String>('serverTlsPolicy');
-    sslCertificates = registerOutput<List<String>>('sslCertificates');
+    sslCertificates = registerOutput<List<String>>('sslCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sslPolicy = registerOutput<String>('sslPolicy');
+    urlMap = registerOutput<String>('urlMap');
+  }
+
+  /// Creates a typed reference to an existing [TargetHttpsProxyComputeV1] resource.
+  TargetHttpsProxyComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:TargetHttpsProxy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authorizationPolicy = registerOutput<String>('authorizationPolicy');
+    certificateMap = registerOutput<String>('certificateMap');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    httpKeepAliveTimeoutSec = registerOutput<int>('httpKeepAliveTimeoutSec');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    proxyBind = registerOutput<bool>('proxyBind');
+    quicOverride = registerOutput<String>('quicOverride');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    serverTlsPolicy = registerOutput<String>('serverTlsPolicy');
+    sslCertificates = registerOutput<List<String>>('sslCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sslPolicy = registerOutput<String>('sslPolicy');
     urlMap = registerOutput<String>('urlMap');
   }

@@ -7,15 +7,15 @@ import 'template_contents_interpreter.dart';
 /// Files that make up the template contents of a template type.
 class TemplateContents {
   /// Import files referenced by the main template.
-  final pulumi.Input<List<ImportFile>>? imports;
+  final pulumi.Input<List<ImportFile>?>? imports;
   /// Which interpreter (python or jinja) should be used during expansion.
-  final pulumi.Input<TemplateContentsInterpreter>? interpreter;
+  final pulumi.Input<TemplateContentsInterpreter?>? interpreter;
   /// The filename of the mainTemplate
-  final pulumi.Input<String>? mainTemplate;
+  final pulumi.Input<String?>? mainTemplate;
   /// The contents of the template schema.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
   /// The contents of the main template file.
-  final pulumi.Input<String>? template;
+  final pulumi.Input<String?>? template;
 
   /// Creates a new [TemplateContents].
   /// [imports] Import files referenced by the main template.

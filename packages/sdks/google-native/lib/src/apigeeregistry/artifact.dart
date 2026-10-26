@@ -41,15 +41,41 @@ class Artifact extends pulumi.CustomResource {
           'google-native:apigeeregistry/v1:Artifact',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['apiId', 'artifactId', 'location', 'project', 'specId', 'versionId']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     apiId = registerOutput<String>('apiId');
     artifactId = registerOutput<String>('artifactId');
     contents = registerOutput<String>('contents');
     createTime = registerOutput<String>('createTime');
     hash = registerOutput<String>('hash');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    mimeType = registerOutput<String>('mimeType');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    sizeBytes = registerOutput<int>('sizeBytes');
+    specId = registerOutput<String>('specId');
+    updateTime = registerOutput<String>('updateTime');
+    versionId = registerOutput<String>('versionId');
+  }
+
+  /// Creates a typed reference to an existing [Artifact] resource.
+  Artifact.reference(String urn)
+    : super(
+        'google-native:apigeeregistry/v1:Artifact',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    apiId = registerOutput<String>('apiId');
+    artifactId = registerOutput<String>('artifactId');
+    contents = registerOutput<String>('contents');
+    createTime = registerOutput<String>('createTime');
+    hash = registerOutput<String>('hash');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     mimeType = registerOutput<String>('mimeType');
     this.name = registerOutput<String>('name');

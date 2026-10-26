@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the CIS benchmark version that is applicable to a given OS and os version.
 class ComplianceVersionContaineranalysisV1alpha1 {
   /// The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".
-  final pulumi.Input<String>? benchmarkDocument;
+  final pulumi.Input<String?>? benchmarkDocument;
   /// The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
-  final pulumi.Input<String>? cpeUri;
+  final pulumi.Input<String?>? cpeUri;
   /// The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ComplianceVersionContaineranalysisV1alpha1].
   /// [benchmarkDocument] The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".

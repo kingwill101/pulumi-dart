@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_jobs_v3_get_company_args_doc}
 class GetCompanyArgs {
   final pulumi.Input<String> companyId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetCompanyArgs].
   /// [companyId] Required.

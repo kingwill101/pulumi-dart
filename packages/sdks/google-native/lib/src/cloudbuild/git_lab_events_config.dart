@@ -7,13 +7,13 @@ import 'push_filter.dart';
 /// GitLabEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab event is received.
 class GitLabEventsConfig {
   /// The GitLab config resource that this trigger config maps to.
-  final pulumi.Input<String>? gitlabConfigResource;
+  final pulumi.Input<String?>? gitlabConfigResource;
   /// Namespace of the GitLab project.
-  final pulumi.Input<String>? projectNamespace;
+  final pulumi.Input<String?>? projectNamespace;
   /// Filter to match changes in pull requests.
-  final pulumi.Input<PullRequestFilter>? pullRequest;
+  final pulumi.Input<PullRequestFilter?>? pullRequest;
   /// Filter to match changes in refs like branches, tags.
-  final pulumi.Input<PushFilter>? push;
+  final pulumi.Input<PushFilter?>? push;
 
   /// Creates a new [GitLabEventsConfig].
   /// [gitlabConfigResource] The GitLab config resource that this trigger config maps to.

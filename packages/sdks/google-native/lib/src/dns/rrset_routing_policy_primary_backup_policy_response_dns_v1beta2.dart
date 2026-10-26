@@ -40,7 +40,7 @@ class RRSetRoutingPolicyPrimaryBackupPolicyResponseDnsV1beta2 {
       backupGeoTargets: pulumi.Input.fromValue(RRSetRoutingPolicyGeoPolicyResponseDnsV1beta2.fromMap((map['backupGeoTargets']! as Map).cast<String, dynamic>())),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       primaryTargets: pulumi.Input.fromValue(RRSetRoutingPolicyHealthCheckTargetsResponseDnsV1beta2.fromMap((map['primaryTargets']! as Map).cast<String, dynamic>())),
-      trickleTraffic: pulumi.Input.fromValue(map['trickleTraffic'] as double),
+      trickleTraffic: pulumi.Input.fromValue((map['trickleTraffic'] as num).toDouble()),
     );
   }
 }

@@ -26,8 +26,8 @@ class GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse {
 
   factory GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse(
-      executorsCount: pulumi.Input.fromValue(map['executorsCount'] as int),
-      maxExecutorsCount: pulumi.Input.fromValue(map['maxExecutorsCount'] as int),
+      executorsCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['executorsCount'])),
+      maxExecutorsCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxExecutorsCount'])),
     );
   }
 }

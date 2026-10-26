@@ -81,7 +81,7 @@ class CutoverJobResponse {
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
       error: pulumi.Input.fromValue(StatusResponse.fromMap((map['error']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
-      progressPercent: pulumi.Input.fromValue(map['progressPercent'] as int),
+      progressPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['progressPercent'])),
       state: pulumi.Input.fromValue(map['state'] as String),
       stateMessage: pulumi.Input.fromValue(map['stateMessage'] as String),
       stateTime: pulumi.Input.fromValue(map['stateTime'] as String),

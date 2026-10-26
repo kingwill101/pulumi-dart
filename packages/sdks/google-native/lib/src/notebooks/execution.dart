@@ -40,8 +40,31 @@ class Execution extends pulumi.CustomResource {
           'google-native:notebooks/v1:Execution',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['executionId', 'location', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    executionId = registerOutput<String>('executionId');
+    executionTemplate = registerOutput<ExecutionTemplateResponse>('executionTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExecutionTemplateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jobUri = registerOutput<String>('jobUri');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    outputNotebookFile = registerOutput<String>('outputNotebookFile');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Execution] resource.
+  Execution.reference(String urn)
+    : super(
+        'google-native:notebooks/v1:Execution',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');

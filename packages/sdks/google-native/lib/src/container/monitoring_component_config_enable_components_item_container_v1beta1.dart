@@ -1,4 +1,6 @@
-enum MonitoringComponentConfigEnableComponentsItemContainerV1beta1 {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum MonitoringComponentConfigEnableComponentsItemContainerV1beta1 implements pulumi.PulumiEnum<String> {
   componentUnspecified("COMPONENT_UNSPECIFIED"),
   systemComponents("SYSTEM_COMPONENTS"),
   workloads("WORKLOADS"),
@@ -13,6 +15,7 @@ enum MonitoringComponentConfigEnableComponentsItemContainerV1beta1 {
   statefulset("STATEFULSET");
 
   const MonitoringComponentConfigEnableComponentsItemContainerV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static MonitoringComponentConfigEnableComponentsItemContainerV1beta1 fromValue(String value) {

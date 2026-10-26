@@ -38,13 +38,35 @@ class SavedQuery extends pulumi.CustomResource {
           'google-native:cloudasset/v1:SavedQuery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['savedQueryId', 'v1Id', 'v1Id1']).merge(options),
         ) {
     content = registerOutput<QueryContentResponse>('content', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueryContentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
     description = registerOutput<String>('description');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lastUpdateTime = registerOutput<String>('lastUpdateTime');
+    lastUpdater = registerOutput<String>('lastUpdater');
+    this.name = registerOutput<String>('name');
+    savedQueryId = registerOutput<String>('savedQueryId');
+    v1Id = registerOutput<String>('v1Id');
+    v1Id1 = registerOutput<String>('v1Id1');
+  }
+
+  /// Creates a typed reference to an existing [SavedQuery] resource.
+  SavedQuery.reference(String urn)
+    : super(
+        'google-native:cloudasset/v1:SavedQuery',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    content = registerOutput<QueryContentResponse>('content', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueryContentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    creator = registerOutput<String>('creator');
+    description = registerOutput<String>('description');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastUpdateTime = registerOutput<String>('lastUpdateTime');
     lastUpdater = registerOutput<String>('lastUpdater');
     this.name = registerOutput<String>('name');

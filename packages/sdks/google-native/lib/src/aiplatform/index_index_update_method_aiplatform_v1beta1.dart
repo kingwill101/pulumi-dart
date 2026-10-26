@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The update method to use with this Index. If not set, BATCH_UPDATE will be used by default.
-enum IndexIndexUpdateMethodAiplatformV1beta1 {
+enum IndexIndexUpdateMethodAiplatformV1beta1 implements pulumi.PulumiEnum<String> {
   indexUpdateMethodUnspecified("INDEX_UPDATE_METHOD_UNSPECIFIED"),
   batchUpdate("BATCH_UPDATE"),
   streamUpdate("STREAM_UPDATE");
 
   const IndexIndexUpdateMethodAiplatformV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static IndexIndexUpdateMethodAiplatformV1beta1 fromValue(String value) {

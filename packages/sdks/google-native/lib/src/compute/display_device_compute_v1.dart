@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A set of Display Device options
 class DisplayDeviceComputeV1 {
   /// Defines whether the instance has Display enabled.
-  final pulumi.Input<bool>? enableDisplay;
+  final pulumi.Input<bool?>? enableDisplay;
 
   /// Creates a new [DisplayDeviceComputeV1].
   /// [enableDisplay] Defines whether the instance has Display enabled.

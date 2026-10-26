@@ -10,13 +10,13 @@ import 'release_type.dart';
 class ReleaseArgs {
   final pulumi.Input<String> channelId;
   /// The deploy description when the release was created. The value can be up to 512 characters.
-  final pulumi.Input<String>? message;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? message;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> siteId;
   /// Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type release.
-  final pulumi.Input<ReleaseType>? type;
+  final pulumi.Input<ReleaseType?>? type;
   /// The unique identifier for a version, in the format: sites/SITE_ID/versions/ VERSION_ID The SITE_ID in this version identifier must match the SITE_ID in the `parent` parameter. This query parameter must be empty if the `type` field in the request body is `SITE_DISABLE`.
-  final pulumi.Input<String>? versionName;
+  final pulumi.Input<String?>? versionName;
 
   /// Creates a new [ReleaseArgs].
   /// [channelId] Required.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Launch stage of this version of the API.
-enum ClientLibrarySettingsLaunchStage {
+enum ClientLibrarySettingsLaunchStage implements pulumi.PulumiEnum<String> {
   launchStageUnspecified("LAUNCH_STAGE_UNSPECIFIED"),
   unimplemented("UNIMPLEMENTED"),
   prelaunch("PRELAUNCH"),
@@ -10,6 +12,7 @@ enum ClientLibrarySettingsLaunchStage {
   deprecated("DEPRECATED");
 
   const ClientLibrarySettingsLaunchStage(this.wireValue);
+  @override
   final String wireValue;
 
   static ClientLibrarySettingsLaunchStage fromValue(String value) {

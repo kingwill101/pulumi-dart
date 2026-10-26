@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Looker instance OAuth login settings.
 class OAuthConfig {
   /// Input only. Client ID from an external OAuth application. This is an input-only field, and thus will not be set in any responses.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Input only. Client secret from an external OAuth application. This is an input-only field, and thus will not be set in any responses.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
 
   /// Creates a new [OAuthConfig].
   /// [clientId] Input only. Client ID from an external OAuth application. This is an input-only field, and thus will not be set in any responses.

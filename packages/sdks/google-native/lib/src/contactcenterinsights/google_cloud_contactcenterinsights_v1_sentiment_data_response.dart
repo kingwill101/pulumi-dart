@@ -26,8 +26,8 @@ class GoogleCloudContactcenterinsightsV1SentimentDataResponse {
 
   factory GoogleCloudContactcenterinsightsV1SentimentDataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1SentimentDataResponse(
-      magnitude: pulumi.Input.fromValue(map['magnitude'] as double),
-      score: pulumi.Input.fromValue(map['score'] as double),
+      magnitude: pulumi.Input.fromValue((map['magnitude'] as num).toDouble()),
+      score: pulumi.Input.fromValue((map['score'] as num).toDouble()),
     );
   }
 }

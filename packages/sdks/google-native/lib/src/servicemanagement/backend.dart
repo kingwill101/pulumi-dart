@@ -6,7 +6,7 @@ import 'backend_rule.dart';
 /// `Backend` defines the backend configuration for a service.
 class Backend {
   /// A list of API backend rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-  final pulumi.Input<List<BackendRule>>? rules;
+  final pulumi.Input<List<BackendRule>?>? rules;
 
   /// Creates a new [Backend].
   /// [rules] A list of API backend rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A predefined masking expression.
-enum DataMaskingPolicyPredefinedExpression {
+enum DataMaskingPolicyPredefinedExpression implements pulumi.PulumiEnum<String> {
   predefinedExpressionUnspecified("PREDEFINED_EXPRESSION_UNSPECIFIED"),
   sha256("SHA256"),
   alwaysNull("ALWAYS_NULL"),
@@ -10,6 +12,7 @@ enum DataMaskingPolicyPredefinedExpression {
   dateYearMask("DATE_YEAR_MASK");
 
   const DataMaskingPolicyPredefinedExpression(this.wireValue);
+  @override
   final String wireValue;
 
   static DataMaskingPolicyPredefinedExpression fromValue(String value) {

@@ -68,7 +68,7 @@ class GoogleCloudDataplexV1DataQualityResultResponse {
       rowCount: pulumi.Input.fromValue(map['rowCount'] as String),
       rules: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDataplexV1DataQualityRuleResultResponse>(map['rules']!, (value) => GoogleCloudDataplexV1DataQualityRuleResultResponse.fromMap((value as Map).cast<String, dynamic>()))),
       scannedData: pulumi.Input.fromValue(GoogleCloudDataplexV1ScannedDataResponse.fromMap((map['scannedData']! as Map).cast<String, dynamic>())),
-      score: pulumi.Input.fromValue(map['score'] as double),
+      score: pulumi.Input.fromValue((map['score'] as num).toDouble()),
     );
   }
 }

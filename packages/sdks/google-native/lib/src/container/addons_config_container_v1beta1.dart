@@ -18,31 +18,31 @@ import 'network_policy_config_container_v1beta1.dart';
 /// Configuration for the addons that can be automatically spun up in the cluster, enabling additional functionality.
 class AddonsConfigContainerV1beta1 {
   /// Configuration for the Cloud Run addon. The `IstioConfig` addon must be enabled in order to enable Cloud Run addon. This option can only be enabled at cluster creation time.
-  final pulumi.Input<CloudRunConfigContainerV1beta1>? cloudRunConfig;
+  final pulumi.Input<CloudRunConfigContainerV1beta1?>? cloudRunConfig;
   /// Configuration for the ConfigConnector add-on, a Kubernetes extension to manage hosted GCP services through the Kubernetes API
-  final pulumi.Input<ConfigConnectorConfigContainerV1beta1>? configConnectorConfig;
+  final pulumi.Input<ConfigConnectorConfigContainerV1beta1?>? configConnectorConfig;
   /// Configuration for NodeLocalDNS, a dns cache running on cluster nodes
-  final pulumi.Input<DnsCacheConfigContainerV1beta1>? dnsCacheConfig;
+  final pulumi.Input<DnsCacheConfigContainerV1beta1?>? dnsCacheConfig;
   /// Configuration for the Compute Engine Persistent Disk CSI driver.
-  final pulumi.Input<GcePersistentDiskCsiDriverConfigContainerV1beta1>? gcePersistentDiskCsiDriverConfig;
+  final pulumi.Input<GcePersistentDiskCsiDriverConfigContainerV1beta1?>? gcePersistentDiskCsiDriverConfig;
   /// Configuration for the GCP Filestore CSI driver.
-  final pulumi.Input<GcpFilestoreCsiDriverConfigContainerV1beta1>? gcpFilestoreCsiDriverConfig;
+  final pulumi.Input<GcpFilestoreCsiDriverConfigContainerV1beta1?>? gcpFilestoreCsiDriverConfig;
   /// Configuration for the Cloud Storage Fuse CSI driver.
-  final pulumi.Input<GcsFuseCsiDriverConfigContainerV1beta1>? gcsFuseCsiDriverConfig;
+  final pulumi.Input<GcsFuseCsiDriverConfigContainerV1beta1?>? gcsFuseCsiDriverConfig;
   /// Configuration for the Backup for GKE agent addon.
-  final pulumi.Input<GkeBackupAgentConfigContainerV1beta1>? gkeBackupAgentConfig;
+  final pulumi.Input<GkeBackupAgentConfigContainerV1beta1?>? gkeBackupAgentConfig;
   /// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
-  final pulumi.Input<HorizontalPodAutoscalingContainerV1beta1>? horizontalPodAutoscaling;
+  final pulumi.Input<HorizontalPodAutoscalingContainerV1beta1?>? horizontalPodAutoscaling;
   /// Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
-  final pulumi.Input<HttpLoadBalancingContainerV1beta1>? httpLoadBalancing;
+  final pulumi.Input<HttpLoadBalancingContainerV1beta1?>? httpLoadBalancing;
   /// Configuration for Istio, an open platform to connect, manage, and secure microservices.
-  final pulumi.Input<IstioConfig>? istioConfig;
+  final pulumi.Input<IstioConfig?>? istioConfig;
   /// Configuration for the KALM addon, which manages the lifecycle of k8s applications.
-  final pulumi.Input<KalmConfig>? kalmConfig;
+  final pulumi.Input<KalmConfig?>? kalmConfig;
   /// Configuration for the Kubernetes Dashboard. This addon is deprecated, and will be disabled in 1.15. It is recommended to use the Cloud Console to manage and monitor your Kubernetes clusters, workloads and applications. For more information, see: https://cloud.google.com/kubernetes-engine/docs/concepts/dashboards
-  final pulumi.Input<KubernetesDashboardContainerV1beta1>? kubernetesDashboard;
+  final pulumi.Input<KubernetesDashboardContainerV1beta1?>? kubernetesDashboard;
   /// Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
-  final pulumi.Input<NetworkPolicyConfigContainerV1beta1>? networkPolicyConfig;
+  final pulumi.Input<NetworkPolicyConfigContainerV1beta1?>? networkPolicyConfig;
 
   /// Creates a new [AddonsConfigContainerV1beta1].
   /// [cloudRunConfig] Configuration for the Cloud Run addon. The `IstioConfig` addon must be enabled in order to enable Cloud Run addon. This option can only be enabled at cluster creation time.

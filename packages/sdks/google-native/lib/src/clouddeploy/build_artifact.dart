@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Description of an a image to use during Skaffold rendering.
 class BuildArtifact {
   /// Image name in Skaffold configuration.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// Image tag to use. This will generally be the full path to an image, such as "gcr.io/my-project/busybox:1.2.3" or "gcr.io/my-project/busybox@sha256:abc123".
-  final pulumi.Input<String>? tag;
+  final pulumi.Input<String?>? tag;
 
   /// Creates a new [BuildArtifact].
   /// [image] Image name in Skaffold configuration.

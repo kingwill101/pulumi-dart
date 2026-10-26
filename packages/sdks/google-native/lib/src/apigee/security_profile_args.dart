@@ -10,18 +10,18 @@ import 'google_cloud_apigee_v1_security_profile_scoring_config.dart';
 /// {@macro pulumi_apigee_v1_security_profile_args_doc}
 class SecurityProfileArgs {
   /// Description of the security profile.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name of the security profile.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// List of environments attached to security profile.
-  final pulumi.Input<List<Map<String, dynamic>>>? environments;
+  final pulumi.Input<List<Map<String, dynamic>>?>? environments;
   /// Immutable. Name of the security profile resource. Format: organizations/{org}/securityProfiles/{profile}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
   /// Customized profile configuration that computes the security score.
   final pulumi.Input<GoogleCloudApigeeV1ProfileConfig> profileConfig;
   /// List of profile scoring configs in this revision.
-  final pulumi.Input<List<GoogleCloudApigeeV1SecurityProfileScoringConfig>>? scoringConfigs;
+  final pulumi.Input<List<GoogleCloudApigeeV1SecurityProfileScoringConfig>?>? scoringConfigs;
   /// Required. The ID to use for the SecurityProfile, which will become the final component of the action's resource name. This value should be 1-63 characters and validated by "(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$)".
   final pulumi.Input<String> securityProfileId;
 

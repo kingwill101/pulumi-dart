@@ -7,11 +7,11 @@ import 'google_cloud_integrations_v1alpha_mock_config_mock_strategy.dart';
 /// The configuration for mocking of a task during test execution Next available id: 4
 class GoogleCloudIntegrationsV1alphaMockConfig {
   /// Optional. Number of times the given task should fail for failure mock strategy
-  final pulumi.Input<String>? failedExecutions;
+  final pulumi.Input<String?>? failedExecutions;
   /// Mockstrategy defines how the particular task should be mocked during test execution
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaMockConfigMockStrategy>? mockStrategy;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaMockConfigMockStrategy?>? mockStrategy;
   /// Optional. List of key-value pairs for specific mock strategy
-  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaEventParameter>>? parameters;
+  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaEventParameter>?>? parameters;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaMockConfig].
   /// [failedExecutions] Optional. Number of times the given task should fail for failure mock strategy

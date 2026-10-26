@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.
 class Condition {
   /// An optional description of the expression. This is a longer text which describes the expression, e.g., when hovering over it in a UI.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Textual representation of an expression in Common Expression Language syntax.
   final pulumi.Input<String> expression;
   /// A title for the expression, i.e. a short string describing its purpose.

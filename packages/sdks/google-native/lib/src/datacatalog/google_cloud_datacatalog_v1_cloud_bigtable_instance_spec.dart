@@ -6,7 +6,7 @@ import 'google_cloud_datacatalog_v1_cloud_bigtable_instance_spec_cloud_bigtable_
 /// Specification that applies to Instance entries that are part of `CLOUD_BIGTABLE` system. (user_specified_type)
 class GoogleCloudDatacatalogV1CloudBigtableInstanceSpec {
   /// The list of clusters for the Instance.
-  final pulumi.Input<List<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>>? cloudBigtableClusterSpecs;
+  final pulumi.Input<List<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>?>? cloudBigtableClusterSpecs;
 
   /// Creates a new [GoogleCloudDatacatalogV1CloudBigtableInstanceSpec].
   /// [cloudBigtableClusterSpecs] The list of clusters for the Instance.

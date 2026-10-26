@@ -44,8 +44,33 @@ class Environment extends pulumi.CustomResource {
           'google-native:apigee/v1:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId']).merge(options),
         ) {
+    apiProxyType = registerOutput<String>('apiProxyType');
+    createdAt = registerOutput<String>('createdAt');
+    deploymentType = registerOutput<String>('deploymentType');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    forwardProxyUri = registerOutput<String>('forwardProxyUri');
+    hasAttachedFlowHooks = registerOutput<bool>('hasAttachedFlowHooks');
+    lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    nodeConfig = registerOutput<GoogleCloudApigeeV1NodeConfigResponse>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1NodeConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    organizationId = registerOutput<String>('organizationId');
+    properties = registerOutput<GoogleCloudApigeeV1PropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1PropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Environment] resource.
+  Environment.reference(String urn)
+    : super(
+        'google-native:apigee/v1:Environment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiProxyType = registerOutput<String>('apiProxyType');
     createdAt = registerOutput<String>('createdAt');
     deploymentType = registerOutput<String>('deploymentType');

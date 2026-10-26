@@ -6,27 +6,27 @@ import 'google_cloud_dataplex_v1_data_attribute_binding_path_response.dart';
 /// Result data returned by getDataAttributeBinding.
 class GetDataAttributeBindingResult {
   /// Optional. List of attributes to be associated with the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
-  final List<String> attributes;
+  final List<String>? attributes;
   /// The time when the DataAttributeBinding was created.
-  final String createTime;
+  final String? createTime;
   /// Optional. Description of the DataAttributeBinding.
-  final String description;
+  final String? description;
   /// Optional. User friendly display name.
-  final String displayName;
+  final String? displayName;
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. Etags must be used when calling the DeleteDataAttributeBinding and the UpdateDataAttributeBinding method.
-  final String etag;
+  final String? etag;
   /// Optional. User-defined labels for the DataAttributeBinding.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// The relative resource name of the Data Attribute Binding, of the form: projects/{project_number}/locations/{location}/dataAttributeBindings/{data_attribute_binding_id}
-  final String name;
+  final String? name;
   /// Optional. The list of paths for items within the associated resource (eg. columns and partitions within a table) along with attribute bindings.
-  final List<GoogleCloudDataplexV1DataAttributeBindingPathResponse> paths;
+  final List<GoogleCloudDataplexV1DataAttributeBindingPathResponse>? paths;
   /// Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
-  final String resource;
+  final String? resource;
   /// System generated globally unique ID for the DataAttributeBinding. This ID will be different if the DataAttributeBinding is deleted and re-created with the same name.
-  final String uid;
+  final String? uid;
   /// The time when the DataAttributeBinding was last updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetDataAttributeBindingResult].
   /// [attributes] Optional. List of attributes to be associated with the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
@@ -41,48 +41,48 @@ class GetDataAttributeBindingResult {
   /// [uid] System generated globally unique ID for the DataAttributeBinding. This ID will be different if the DataAttributeBinding is deleted and re-created with the same name.
   /// [updateTime] The time when the DataAttributeBinding was last updated.
   const GetDataAttributeBindingResult({
-    required this.attributes,
-    required this.createTime,
-    required this.description,
-    required this.displayName,
-    required this.etag,
-    required this.labels,
-    required this.name,
-    required this.paths,
-    required this.resource,
-    required this.uid,
-    required this.updateTime,
+    this.attributes,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.etag,
+    this.labels,
+    this.name,
+    this.paths,
+    this.resource,
+    this.uid,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributes': attributes,
-      'createTime': createTime,
-      'description': description,
-      'displayName': displayName,
-      'etag': etag,
-      'labels': labels,
-      'name': name,
-      'paths': pulumi.Input.encodeList<GoogleCloudDataplexV1DataAttributeBindingPathResponse, Map<String, dynamic>>(paths, (value) => value.toMap()),
-      'resource': resource,
-      'uid': uid,
-      'updateTime': updateTime,
+      'attributes': ?attributes,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'labels': ?labels,
+      'name': ?name,
+      'paths': ?(() { final guardedValue = paths; if (guardedValue == null) return null; return pulumi.Input.encodeList<GoogleCloudDataplexV1DataAttributeBindingPathResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'resource': ?resource,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetDataAttributeBindingResult.fromMap(Map<String, dynamic> map) {
     return GetDataAttributeBindingResult(
-      attributes: (map['attributes'] as List).cast<String>(),
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      etag: map['etag'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      paths: pulumi.Input.decodeList<GoogleCloudDataplexV1DataAttributeBindingPathResponse>(map['paths']!, (value) => GoogleCloudDataplexV1DataAttributeBindingPathResponse.fromMap((value as Map).cast<String, dynamic>())),
-      resource: map['resource'] as String,
-      uid: map['uid'] as String,
-      updateTime: map['updateTime'] as String,
+      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      paths: (() { final guardedValue = map['paths']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDataplexV1DataAttributeBindingPathResponse>(guardedValue, (value) => GoogleCloudDataplexV1DataAttributeBindingPathResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

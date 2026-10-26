@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Secret provides a reference to entries in Secret Manager.
 class Secret {
   /// The resource name of the secret version in the format, format as: `projects/*/secrets/*/versions/*`.
-  final pulumi.Input<String>? secretVersion;
+  final pulumi.Input<String?>? secretVersion;
 
   /// Creates a new [Secret].
   /// [secretVersion] The resource name of the secret version in the format, format as: `projects/*/secrets/*/versions/*`.

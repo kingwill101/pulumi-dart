@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A service account.
 class ServiceAccountComputeV1 {
   /// Email address of the service account.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The list of scopes to be made available for this service account.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
 
   /// Creates a new [ServiceAccountComputeV1].
   /// [email] Email address of the service account.

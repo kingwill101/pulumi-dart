@@ -10,25 +10,25 @@ import 'google_cloud_aiplatform_v1_private_service_connect_config.dart';
 /// {@macro pulumi_aiplatform_v1_index_endpoint_args_doc}
 class IndexEndpointArgs {
   /// The description of the IndexEndpoint.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the IndexEndpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
   final pulumi.Input<String> displayName;
   /// Optional. Deprecated: If true, expose the IndexEndpoint via private service connect. Only one of the fields, network or enable_private_service_connect, can be set.
-  final pulumi.Input<bool>? enablePrivateServiceConnect;
+  final pulumi.Input<bool?>? enablePrivateServiceConnect;
   /// Immutable. Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
-  final pulumi.Input<GoogleCloudAiplatformV1EncryptionSpec>? encryptionSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1EncryptionSpec?>? encryptionSpec;
   /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The labels with user-defined metadata to organize your IndexEndpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the IndexEndpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. network and private_service_connect_config are mutually exclusive. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in '12345', and {network} is network name.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Optional. Configuration for private service connect. network and private_service_connect_config are mutually exclusive.
-  final pulumi.Input<GoogleCloudAiplatformV1PrivateServiceConnectConfig>? privateServiceConnectConfig;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<GoogleCloudAiplatformV1PrivateServiceConnectConfig?>? privateServiceConnectConfig;
+  final pulumi.Input<String?>? project;
   /// Optional. If true, the deployed index will be accessible through public endpoint.
-  final pulumi.Input<bool>? publicEndpointEnabled;
+  final pulumi.Input<bool?>? publicEndpointEnabled;
 
   /// Creates a new [IndexEndpointArgs].
   /// [description] The description of the IndexEndpoint.

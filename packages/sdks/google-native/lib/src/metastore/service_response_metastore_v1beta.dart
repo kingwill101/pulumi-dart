@@ -147,7 +147,7 @@ class ServiceResponseMetastoreV1beta {
       name: pulumi.Input.fromValue(map['name'] as String),
       network: pulumi.Input.fromValue(map['network'] as String),
       networkConfig: pulumi.Input.fromValue(NetworkConfigResponseMetastoreV1beta.fromMap((map['networkConfig']! as Map).cast<String, dynamic>())),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       releaseChannel: pulumi.Input.fromValue(map['releaseChannel'] as String),
       scalingConfig: pulumi.Input.fromValue(ScalingConfigResponseMetastoreV1beta.fromMap((map['scalingConfig']! as Map).cast<String, dynamic>())),
       state: pulumi.Input.fromValue(map['state'] as String),

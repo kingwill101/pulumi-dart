@@ -5,11 +5,11 @@ import 'packet_mirroring_filter_direction.dart';
 
 class PacketMirroringFilter {
   /// IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-  final pulumi.Input<List<String>>? cidrRanges;
+  final pulumi.Input<List<String>?>? cidrRanges;
   /// Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
-  final pulumi.Input<PacketMirroringFilterDirection>? direction;
+  final pulumi.Input<PacketMirroringFilterDirection?>? direction;
   /// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-  final pulumi.Input<List<String>>? ipProtocols;
+  final pulumi.Input<List<String>?>? ipProtocols;
 
   /// Creates a new [PacketMirroringFilter].
   /// [cidrRanges] IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.

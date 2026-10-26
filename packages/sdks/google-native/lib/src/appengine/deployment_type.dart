@@ -8,13 +8,13 @@ import 'zip_info.dart';
 /// Code and application artifacts used to deploy a version to App Engine.
 class DeploymentType {
   /// Options for any Google Cloud Build builds created as a part of this deployment.These options will only be used if a new build is created, such as when deploying to the App Engine flexible environment using files or zip.
-  final pulumi.Input<CloudBuildOptions>? cloudBuildOptions;
+  final pulumi.Input<CloudBuildOptions?>? cloudBuildOptions;
   /// The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment.
-  final pulumi.Input<ContainerInfo>? container;
+  final pulumi.Input<ContainerInfo?>? container;
   /// Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
-  final pulumi.Input<Map<String, String>>? files;
+  final pulumi.Input<Map<String, String>?>? files;
   /// The zip file for this deployment, if this is a zip deployment.
-  final pulumi.Input<ZipInfo>? zip;
+  final pulumi.Input<ZipInfo?>? zip;
 
   /// Creates a new [DeploymentType].
   /// [cloudBuildOptions] Options for any Google Cloud Build builds created as a part of this deployment.These options will only be used if a new build is created, such as when deploying to the App Engine flexible environment using files or zip.

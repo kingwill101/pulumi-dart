@@ -8,31 +8,31 @@ import 'network_address.dart';
 /// Configuration parameters for a new instance.
 class InstanceConfig {
   /// If true networks can be from different projects of the same vendor account.
-  final pulumi.Input<bool>? accountNetworksEnabled;
+  final pulumi.Input<bool?>? accountNetworksEnabled;
   /// Client network address. Filled if InstanceConfig.multivlan_config is false.
-  final pulumi.Input<NetworkAddress>? clientNetwork;
+  final pulumi.Input<NetworkAddress?>? clientNetwork;
   /// Whether the instance should be provisioned with Hyperthreading enabled.
-  final pulumi.Input<bool>? hyperthreading;
+  final pulumi.Input<bool?>? hyperthreading;
   /// A transient unique identifier to idenfity an instance within an ProvisioningConfig request.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
-  final pulumi.Input<String>? instanceType;
+  final pulumi.Input<String?>? instanceType;
   /// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
-  final pulumi.Input<List<GoogleCloudBaremetalsolutionV2LogicalInterface>>? logicalInterfaces;
+  final pulumi.Input<List<GoogleCloudBaremetalsolutionV2LogicalInterface>?>? logicalInterfaces;
   /// The name of the instance config.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of network configuration on the instance.
-  final pulumi.Input<InstanceConfigNetworkConfig>? networkConfig;
+  final pulumi.Input<InstanceConfigNetworkConfig?>? networkConfig;
   /// Server network template name. Filled if InstanceConfig.multivlan_config is true.
-  final pulumi.Input<String>? networkTemplate;
+  final pulumi.Input<String?>? networkTemplate;
   /// OS image to initialize the instance. [Available images](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
-  final pulumi.Input<String>? osImage;
+  final pulumi.Input<String?>? osImage;
   /// Private network address, if any. Filled if InstanceConfig.multivlan_config is false.
-  final pulumi.Input<NetworkAddress>? privateNetwork;
+  final pulumi.Input<NetworkAddress?>? privateNetwork;
   /// Optional. List of names of ssh keys used to provision the instance.
-  final pulumi.Input<List<String>>? sshKeyNames;
+  final pulumi.Input<List<String>?>? sshKeyNames;
   /// User note field, it can be used by customers to add additional information for the BMS Ops team .
-  final pulumi.Input<String>? userNote;
+  final pulumi.Input<String?>? userNote;
 
   /// Creates a new [InstanceConfig].
   /// [accountNetworksEnabled] If true networks can be from different projects of the same vendor account.

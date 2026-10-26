@@ -196,7 +196,7 @@ class JobStatistics2Response {
   factory JobStatistics2Response.fromMap(Map<String, dynamic> map) {
     return JobStatistics2Response(
       biEngineStatistics: pulumi.Input.fromValue(BiEngineStatisticsResponse.fromMap((map['biEngineStatistics']! as Map).cast<String, dynamic>())),
-      billingTier: pulumi.Input.fromValue(map['billingTier'] as int),
+      billingTier: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['billingTier'])),
       cacheHit: pulumi.Input.fromValue(map['cacheHit'] as bool),
       ddlAffectedRowAccessPolicyCount: pulumi.Input.fromValue(map['ddlAffectedRowAccessPolicyCount'] as String),
       ddlDestinationTable: pulumi.Input.fromValue(TableReferenceResponse.fromMap((map['ddlDestinationTable']! as Map).cast<String, dynamic>())),
@@ -209,7 +209,7 @@ class JobStatistics2Response {
       estimatedBytesProcessed: pulumi.Input.fromValue(map['estimatedBytesProcessed'] as String),
       mlStatistics: pulumi.Input.fromValue(MlStatisticsResponse.fromMap((map['mlStatistics']! as Map).cast<String, dynamic>())),
       modelTraining: pulumi.Input.fromValue(BigQueryModelTrainingResponse.fromMap((map['modelTraining']! as Map).cast<String, dynamic>())),
-      modelTrainingCurrentIteration: pulumi.Input.fromValue(map['modelTrainingCurrentIteration'] as int),
+      modelTrainingCurrentIteration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['modelTrainingCurrentIteration'])),
       modelTrainingExpectedTotalIteration: pulumi.Input.fromValue(map['modelTrainingExpectedTotalIteration'] as String),
       numDmlAffectedRows: pulumi.Input.fromValue(map['numDmlAffectedRows'] as String),
       queryPlan: pulumi.Input.fromValue(pulumi.Input.decodeList<ExplainQueryStageResponse>(map['queryPlan']!, (value) => ExplainQueryStageResponse.fromMap((value as Map).cast<String, dynamic>()))),

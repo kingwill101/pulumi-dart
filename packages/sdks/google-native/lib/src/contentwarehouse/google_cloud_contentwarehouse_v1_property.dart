@@ -13,23 +13,23 @@ import 'google_cloud_contentwarehouse_v1_timestamp_array.dart';
 /// Property of a document.
 class GoogleCloudContentwarehouseV1Property {
   /// Date time property values. It is not supported by CMEK compliant deployment.
-  final pulumi.Input<GoogleCloudContentwarehouseV1DateTimeArray>? dateTimeValues;
+  final pulumi.Input<GoogleCloudContentwarehouseV1DateTimeArray?>? dateTimeValues;
   /// Enum property values.
-  final pulumi.Input<GoogleCloudContentwarehouseV1EnumArray>? enumValues;
+  final pulumi.Input<GoogleCloudContentwarehouseV1EnumArray?>? enumValues;
   /// Float property values.
-  final pulumi.Input<GoogleCloudContentwarehouseV1FloatArray>? floatValues;
+  final pulumi.Input<GoogleCloudContentwarehouseV1FloatArray?>? floatValues;
   /// Integer property values.
-  final pulumi.Input<GoogleCloudContentwarehouseV1IntegerArray>? integerValues;
+  final pulumi.Input<GoogleCloudContentwarehouseV1IntegerArray?>? integerValues;
   /// Map property values.
-  final pulumi.Input<GoogleCloudContentwarehouseV1MapProperty>? mapProperty;
+  final pulumi.Input<GoogleCloudContentwarehouseV1MapProperty?>? mapProperty;
   /// Must match the name of a PropertyDefinition in the DocumentSchema.
   final pulumi.Input<String> name;
   /// Nested structured data property values.
-  final pulumi.Input<GoogleCloudContentwarehouseV1PropertyArray>? propertyValues;
+  final pulumi.Input<GoogleCloudContentwarehouseV1PropertyArray?>? propertyValues;
   /// String/text property values.
-  final pulumi.Input<GoogleCloudContentwarehouseV1TextArray>? textValues;
+  final pulumi.Input<GoogleCloudContentwarehouseV1TextArray?>? textValues;
   /// Timestamp property values. It is not supported by CMEK compliant deployment.
-  final pulumi.Input<GoogleCloudContentwarehouseV1TimestampArray>? timestampValues;
+  final pulumi.Input<GoogleCloudContentwarehouseV1TimestampArray?>? timestampValues;
 
   /// Creates a new [GoogleCloudContentwarehouseV1Property].
   /// [dateTimeValues] Date time property values. It is not supported by CMEK compliant deployment.

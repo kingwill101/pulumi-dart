@@ -10,7 +10,7 @@ class GetUserDataMappingHealthcareV1beta1Args {
   final pulumi.Input<String> consentStoreId;
   final pulumi.Input<String> datasetId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> userDataMappingId;
 
   /// Creates a new [GetUserDataMappingHealthcareV1beta1Args].

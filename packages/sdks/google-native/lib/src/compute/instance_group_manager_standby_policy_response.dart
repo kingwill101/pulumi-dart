@@ -24,7 +24,7 @@ class InstanceGroupManagerStandbyPolicyResponse {
 
   factory InstanceGroupManagerStandbyPolicyResponse.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerStandbyPolicyResponse(
-      initialDelaySec: pulumi.Input.fromValue(map['initialDelaySec'] as int),
+      initialDelaySec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['initialDelaySec'])),
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }

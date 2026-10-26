@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_beta_get_target_instance_compute_beta_args_doc}
 class GetTargetInstanceComputeBetaArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> targetInstance;
   final pulumi.Input<String> zone;
 

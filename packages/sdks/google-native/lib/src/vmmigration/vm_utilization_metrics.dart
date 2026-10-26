@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Utilization metrics values for a single VM.
 class VmUtilizationMetrics {
   /// Average CPU usage, percent.
-  final pulumi.Input<int>? cpuAveragePercent;
+  final pulumi.Input<int?>? cpuAveragePercent;
   /// Max CPU usage, percent.
-  final pulumi.Input<int>? cpuMaxPercent;
+  final pulumi.Input<int?>? cpuMaxPercent;
   /// Average disk IO rate, in kilobytes per second.
-  final pulumi.Input<String>? diskIoRateAverageKbps;
+  final pulumi.Input<String?>? diskIoRateAverageKbps;
   /// Max disk IO rate, in kilobytes per second.
-  final pulumi.Input<String>? diskIoRateMaxKbps;
+  final pulumi.Input<String?>? diskIoRateMaxKbps;
   /// Average memory usage, percent.
-  final pulumi.Input<int>? memoryAveragePercent;
+  final pulumi.Input<int?>? memoryAveragePercent;
   /// Max memory usage, percent.
-  final pulumi.Input<int>? memoryMaxPercent;
+  final pulumi.Input<int?>? memoryMaxPercent;
   /// Average network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
-  final pulumi.Input<String>? networkThroughputAverageKbps;
+  final pulumi.Input<String?>? networkThroughputAverageKbps;
   /// Max network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
-  final pulumi.Input<String>? networkThroughputMaxKbps;
+  final pulumi.Input<String?>? networkThroughputMaxKbps;
 
   /// Creates a new [VmUtilizationMetrics].
   /// [cpuAveragePercent] Average CPU usage, percent.
@@ -56,12 +56,12 @@ class VmUtilizationMetrics {
 
   factory VmUtilizationMetrics.fromMap(Map<String, dynamic> map) {
     return VmUtilizationMetrics(
-      cpuAveragePercent: (() { final guardedValue = map['cpuAveragePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      cpuMaxPercent: (() { final guardedValue = map['cpuMaxPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cpuAveragePercent: (() { final guardedValue = map['cpuAveragePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      cpuMaxPercent: (() { final guardedValue = map['cpuMaxPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       diskIoRateAverageKbps: (() { final guardedValue = map['diskIoRateAverageKbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskIoRateMaxKbps: (() { final guardedValue = map['diskIoRateMaxKbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      memoryAveragePercent: (() { final guardedValue = map['memoryAveragePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      memoryMaxPercent: (() { final guardedValue = map['memoryMaxPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      memoryAveragePercent: (() { final guardedValue = map['memoryAveragePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      memoryMaxPercent: (() { final guardedValue = map['memoryMaxPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       networkThroughputAverageKbps: (() { final guardedValue = map['networkThroughputAverageKbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkThroughputMaxKbps: (() { final guardedValue = map['networkThroughputMaxKbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

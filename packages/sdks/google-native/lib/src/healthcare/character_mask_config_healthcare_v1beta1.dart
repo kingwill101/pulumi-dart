@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Mask a string by replacing its characters with a fixed character.
 class CharacterMaskConfigHealthcareV1beta1 {
   /// Character to mask the sensitive values. If not supplied, defaults to "*".
-  final pulumi.Input<String>? maskingCharacter;
+  final pulumi.Input<String?>? maskingCharacter;
 
   /// Creates a new [CharacterMaskConfigHealthcareV1beta1].
   /// [maskingCharacter] Character to mask the sensitive values. If not supplied, defaults to "*".

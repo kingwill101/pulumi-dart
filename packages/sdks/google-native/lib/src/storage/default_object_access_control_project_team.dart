@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The project team associated with the entity, if any.
 class DefaultObjectAccessControlProjectTeam {
   /// The project number.
-  final pulumi.Input<String>? projectNumber;
+  final pulumi.Input<String?>? projectNumber;
   /// The team.
-  final pulumi.Input<String>? team;
+  final pulumi.Input<String?>? team;
 
   /// Creates a new [DefaultObjectAccessControlProjectTeam].
   /// [projectNumber] The project number.

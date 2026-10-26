@@ -6,9 +6,9 @@ import 'alias_context_kind.dart';
 /// An alias to a repo revision.
 class AliasContext {
   /// The alias kind.
-  final pulumi.Input<AliasContextKind>? kind;
+  final pulumi.Input<AliasContextKind?>? kind;
   /// The alias name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AliasContext].
   /// [kind] The alias kind.

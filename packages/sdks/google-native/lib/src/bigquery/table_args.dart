@@ -20,45 +20,45 @@ import 'view_definition.dart';
 /// {@macro pulumi_bigquery_v2_table_args_doc}
 class TableArgs {
   /// [Optional] Specifies the configuration of a BigLake managed table.
-  final pulumi.Input<BigLakeConfiguration>? biglakeConfiguration;
+  final pulumi.Input<BigLakeConfiguration?>? biglakeConfiguration;
   /// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
-  final pulumi.Input<Clustering>? clustering;
+  final pulumi.Input<Clustering?>? clustering;
   final pulumi.Input<String> datasetId;
   /// [Optional] A user-friendly description of this table.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Custom encryption configuration (e.g., Cloud KMS keys).
-  final pulumi.Input<EncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<EncryptionConfiguration?>? encryptionConfiguration;
   /// [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
-  final pulumi.Input<String>? expirationTime;
+  final pulumi.Input<String?>? expirationTime;
   /// [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
-  final pulumi.Input<ExternalDataConfiguration>? externalDataConfiguration;
+  final pulumi.Input<ExternalDataConfiguration?>? externalDataConfiguration;
   /// [Optional] A descriptive name for this table.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// [Optional] Materialized view definition.
-  final pulumi.Input<MaterializedViewDefinition>? materializedView;
+  final pulumi.Input<MaterializedViewDefinition?>? materializedView;
   /// [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
-  final pulumi.Input<String>? maxStaleness;
+  final pulumi.Input<String?>? maxStaleness;
   /// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
-  final pulumi.Input<ModelDefinition>? model;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<ModelDefinition?>? model;
+  final pulumi.Input<String?>? project;
   /// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
-  final pulumi.Input<RangePartitioning>? rangePartitioning;
+  final pulumi.Input<RangePartitioning?>? rangePartitioning;
   /// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
-  final pulumi.Input<bool>? requirePartitionFilter;
+  final pulumi.Input<bool?>? requirePartitionFilter;
   /// [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
-  final pulumi.Input<Map<String, String>>? resourceTags;
+  final pulumi.Input<Map<String, String>?>? resourceTags;
   /// [Optional] Describes the schema of this table.
-  final pulumi.Input<TableSchema>? schema;
+  final pulumi.Input<TableSchema?>? schema;
   /// [Optional] The table constraints on the table.
-  final pulumi.Input<TableConstraints>? tableConstraints;
+  final pulumi.Input<TableConstraints?>? tableConstraints;
   /// [Required] Reference describing the ID of this table.
-  final pulumi.Input<TableReference>? tableReference;
+  final pulumi.Input<TableReference?>? tableReference;
   /// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
-  final pulumi.Input<TimePartitioning>? timePartitioning;
+  final pulumi.Input<TimePartitioning?>? timePartitioning;
   /// [Optional] The view definition.
-  final pulumi.Input<ViewDefinition>? view;
+  final pulumi.Input<ViewDefinition?>? view;
 
   /// Creates a new [TableArgs].
   /// [biglakeConfiguration] [Optional] Specifies the configuration of a BigLake managed table.

@@ -4,6 +4,8 @@ import 'security_policy_adaptive_protection_config_response_compute_v1.dart';
 import 'security_policy_advanced_options_config_response_compute_v1.dart';
 import 'security_policy_ddos_protection_config_response_compute_v1.dart';
 import 'security_policy_recaptcha_options_config_response_compute_v1.dart';
+import 'security_policy_rule_response_compute_v1.dart';
+import 'security_policy_user_defined_field_response_compute_v1.dart';
 
 /// Creates a new policy in the specified project using the data included in the request.
 class RegionSecurityPolicyComputeV1 extends pulumi.CustomResource {
@@ -30,13 +32,13 @@ class RegionSecurityPolicyComputeV1 extends pulumi.CustomResource {
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   late final pulumi.Output<String?> requestId;
   /// A list of rules that belong to this policy. There must always be a default rule which is a rule with priority 2147483647 and match all condition (for the match condition this means match "*" for srcIpRanges and for the networkMatch condition every field must be either match "*" or not set). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<SecurityPolicyRuleResponseComputeV1>> rules;
   /// Server-defined URL for the resource.
   late final pulumi.Output<String> selfLink;
   /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
   late final pulumi.Output<String> type;
   /// Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
-  late final pulumi.Output<List<Map<String, dynamic>>> userDefinedFields;
+  late final pulumi.Output<List<SecurityPolicyUserDefinedFieldResponseComputeV1>> userDefinedFields;
 
   /// Creates a new [RegionSecurityPolicyComputeV1].
   /// [name] The Pulumi resource name.
@@ -50,7 +52,7 @@ class RegionSecurityPolicyComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:RegionSecurityPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     adaptiveProtectionConfig = registerOutput<SecurityPolicyAdaptiveProtectionConfigResponseComputeV1>('adaptiveProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyAdaptiveProtectionConfigResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     advancedOptionsConfig = registerOutput<SecurityPolicyAdvancedOptionsConfigResponseComputeV1>('advancedOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyAdvancedOptionsConfigResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -60,15 +62,44 @@ class RegionSecurityPolicyComputeV1 extends pulumi.CustomResource {
     fingerprint = registerOutput<String>('fingerprint');
     kind = registerOutput<String>('kind');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     recaptchaOptionsConfig = registerOutput<SecurityPolicyRecaptchaOptionsConfigResponseComputeV1>('recaptchaOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyRecaptchaOptionsConfigResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<SecurityPolicyRuleResponseComputeV1>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityPolicyRuleResponseComputeV1>(guardedValue, (value) => SecurityPolicyRuleResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     type = registerOutput<String>('type');
-    userDefinedFields = registerOutput<List<Map<String, dynamic>>>('userDefinedFields');
+    userDefinedFields = registerOutput<List<SecurityPolicyUserDefinedFieldResponseComputeV1>>('userDefinedFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityPolicyUserDefinedFieldResponseComputeV1>(guardedValue, (value) => SecurityPolicyUserDefinedFieldResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [RegionSecurityPolicyComputeV1] resource.
+  RegionSecurityPolicyComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:RegionSecurityPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    adaptiveProtectionConfig = registerOutput<SecurityPolicyAdaptiveProtectionConfigResponseComputeV1>('adaptiveProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyAdaptiveProtectionConfigResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    advancedOptionsConfig = registerOutput<SecurityPolicyAdvancedOptionsConfigResponseComputeV1>('advancedOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyAdvancedOptionsConfigResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    ddosProtectionConfig = registerOutput<SecurityPolicyDdosProtectionConfigResponseComputeV1>('ddosProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyDdosProtectionConfigResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    kind = registerOutput<String>('kind');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    recaptchaOptionsConfig = registerOutput<SecurityPolicyRecaptchaOptionsConfigResponseComputeV1>('recaptchaOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyRecaptchaOptionsConfigResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    rules = registerOutput<List<SecurityPolicyRuleResponseComputeV1>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityPolicyRuleResponseComputeV1>(guardedValue, (value) => SecurityPolicyRuleResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
+    selfLink = registerOutput<String>('selfLink');
+    type = registerOutput<String>('type');
+    userDefinedFields = registerOutput<List<SecurityPolicyUserDefinedFieldResponseComputeV1>>('userDefinedFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityPolicyUserDefinedFieldResponseComputeV1>(guardedValue, (value) => SecurityPolicyUserDefinedFieldResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -31,9 +31,9 @@ class ColorResponse {
 
   factory ColorResponse.fromMap(Map<String, dynamic> map) {
     return ColorResponse(
-      brightness: pulumi.Input.fromValue(map['brightness'] as double),
-      contrast: pulumi.Input.fromValue(map['contrast'] as double),
-      saturation: pulumi.Input.fromValue(map['saturation'] as double),
+      brightness: pulumi.Input.fromValue((map['brightness'] as num).toDouble()),
+      contrast: pulumi.Input.fromValue((map['contrast'] as num).toDouble()),
+      saturation: pulumi.Input.fromValue((map['saturation'] as num).toDouble()),
     );
   }
 }

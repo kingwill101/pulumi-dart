@@ -27,7 +27,7 @@ class GoogleCloudRetailV2alphaRuleForceReturnFacetActionFacetPositionAdjustmentR
   factory GoogleCloudRetailV2alphaRuleForceReturnFacetActionFacetPositionAdjustmentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaRuleForceReturnFacetActionFacetPositionAdjustmentResponse(
       attributeName: pulumi.Input.fromValue(map['attributeName'] as String),
-      position: pulumi.Input.fromValue(map['position'] as int),
+      position: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['position'])),
     );
   }
 }

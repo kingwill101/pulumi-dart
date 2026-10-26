@@ -1,10 +1,13 @@
-enum EnterpriseCrmEventbusStatsDimensionsRetryAttempt {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum EnterpriseCrmEventbusStatsDimensionsRetryAttempt implements pulumi.PulumiEnum<String> {
   unspecified("UNSPECIFIED"),
   final_("FINAL"),
   retryable("RETRYABLE"),
   canceled("CANCELED");
 
   const EnterpriseCrmEventbusStatsDimensionsRetryAttempt(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmEventbusStatsDimensionsRetryAttempt fromValue(String value) {

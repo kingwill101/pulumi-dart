@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_args.dart';
 import 'encryption_config_response.dart';
+import 'encryption_info_response.dart';
 import 'restore_info_response.dart';
 
 /// Creates a new Cloud Spanner database and starts to prepare it for serving. The returned long-running operation will have a name of the format `/operations/` and can be used to track preparation of the database. The metadata field type is CreateDatabaseMetadata. The response field type is Database, if successful.
@@ -19,7 +20,7 @@ class Database extends pulumi.CustomResource {
   /// For databases that are using customer managed encryption, this field contains the encryption configuration for the database. For databases that are using Google default or other types of encryption, this field is empty.
   late final pulumi.Output<EncryptionConfigResponse> encryptionConfig;
   /// For databases that are using customer managed encryption, this field contains the encryption information for the database, such as all Cloud KMS key versions that are in use. The `encryption_status' field inside of each `EncryptionInfo` is not populated. For databases that are using Google default or other types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a delay from when a key version is being used and when it appears in this field.
-  late final pulumi.Output<List<Map<String, dynamic>>> encryptionInfo;
+  late final pulumi.Output<List<EncryptionInfoResponse>> encryptionInfo;
   late final pulumi.Output<String> instanceId;
   /// The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
   late final pulumi.Output<String> name;
@@ -45,7 +46,7 @@ class Database extends pulumi.CustomResource {
           'google-native:spanner/v1:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instanceId', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     databaseDialect = registerOutput<String>('databaseDialect');
@@ -53,7 +54,32 @@ class Database extends pulumi.CustomResource {
     earliestVersionTime = registerOutput<String>('earliestVersionTime');
     enableDropProtection = registerOutput<bool>('enableDropProtection');
     encryptionConfig = registerOutput<EncryptionConfigResponse>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    encryptionInfo = registerOutput<List<Map<String, dynamic>>>('encryptionInfo');
+    encryptionInfo = registerOutput<List<EncryptionInfoResponse>>('encryptionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EncryptionInfoResponse>(guardedValue, (value) => EncryptionInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    restoreInfo = registerOutput<RestoreInfoResponse>('restoreInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoreInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    versionRetentionPeriod = registerOutput<String>('versionRetentionPeriod');
+  }
+
+  /// Creates a typed reference to an existing [Database] resource.
+  Database.reference(String urn)
+    : super(
+        'google-native:spanner/v1:Database',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    databaseDialect = registerOutput<String>('databaseDialect');
+    defaultLeader = registerOutput<String>('defaultLeader');
+    earliestVersionTime = registerOutput<String>('earliestVersionTime');
+    enableDropProtection = registerOutput<bool>('enableDropProtection');
+    encryptionConfig = registerOutput<EncryptionConfigResponse>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionInfo = registerOutput<List<EncryptionInfoResponse>>('encryptionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EncryptionInfoResponse>(guardedValue, (value) => EncryptionInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

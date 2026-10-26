@@ -7,9 +7,9 @@ import 'grpc_route_fault_injection_policy_delay.dart';
 /// The specification for fault injection introduced into traffic to test the resiliency of clients to destination service failure. As part of fault injection, when clients send requests to a destination, delays can be introduced on a percentage of requests before sending those requests to the destination service. Similarly requests from clients can be aborted by for a percentage of requests.
 class GrpcRouteFaultInjectionPolicy {
   /// The specification for aborting to client requests.
-  final pulumi.Input<GrpcRouteFaultInjectionPolicyAbort>? abort;
+  final pulumi.Input<GrpcRouteFaultInjectionPolicyAbort?>? abort;
   /// The specification for injecting delay to client requests.
-  final pulumi.Input<GrpcRouteFaultInjectionPolicyDelay>? delay;
+  final pulumi.Input<GrpcRouteFaultInjectionPolicyDelay?>? delay;
 
   /// Creates a new [GrpcRouteFaultInjectionPolicy].
   /// [abort] The specification for aborting to client requests.

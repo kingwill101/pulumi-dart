@@ -120,7 +120,7 @@ class Table extends pulumi.CustomResource {
           'google-native:bigquery/v2:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['datasetId', 'project']).merge(options),
         ) {
     biglakeConfiguration = registerOutput<BigLakeConfigurationResponse>('biglakeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigLakeConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloneDefinition = registerOutput<CloneDefinitionResponse>('cloneDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloneDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -136,7 +136,7 @@ class Table extends pulumi.CustomResource {
     externalDataConfiguration = registerOutput<ExternalDataConfigurationResponse>('externalDataConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExternalDataConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     friendlyName = registerOutput<String>('friendlyName');
     kind = registerOutput<String>('kind');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     location = registerOutput<String>('location');
     materializedView = registerOutput<MaterializedViewDefinitionResponse>('materializedView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaterializedViewDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -157,7 +157,63 @@ class Table extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     rangePartitioning = registerOutput<RangePartitioningResponse>('rangePartitioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RangePartitioningResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     requirePartitionFilter = registerOutput<bool>('requirePartitionFilter');
-    resourceTags = registerOutput<Map<String, String>>('resourceTags');
+    resourceTags = registerOutput<Map<String, String>>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schema = registerOutput<TableSchemaResponse>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableSchemaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selfLink = registerOutput<String>('selfLink');
+    snapshotDefinition = registerOutput<SnapshotDefinitionResponse>('snapshotDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    streamingBuffer = registerOutput<StreamingbufferResponse>('streamingBuffer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamingbufferResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableConstraints = registerOutput<TableConstraintsResponse>('tableConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableConstraintsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableReference = registerOutput<TableReferenceResponse>('tableReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timePartitioning = registerOutput<TimePartitioningResponse>('timePartitioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimePartitioningResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    view = registerOutput<ViewDefinitionResponse>('view', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ViewDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Table] resource.
+  Table.reference(String urn)
+    : super(
+        'google-native:bigquery/v2:Table',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    biglakeConfiguration = registerOutput<BigLakeConfigurationResponse>('biglakeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigLakeConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloneDefinition = registerOutput<CloneDefinitionResponse>('cloneDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloneDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clustering = registerOutput<ClusteringResponse>('clustering', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusteringResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTime = registerOutput<String>('creationTime');
+    datasetId = registerOutput<String>('datasetId');
+    defaultCollation = registerOutput<String>('defaultCollation');
+    defaultRoundingMode = registerOutput<String>('defaultRoundingMode');
+    description = registerOutput<String>('description');
+    encryptionConfiguration = registerOutput<EncryptionConfigurationResponse>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    expirationTime = registerOutput<String>('expirationTime');
+    externalDataConfiguration = registerOutput<ExternalDataConfigurationResponse>('externalDataConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExternalDataConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    friendlyName = registerOutput<String>('friendlyName');
+    kind = registerOutput<String>('kind');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    location = registerOutput<String>('location');
+    materializedView = registerOutput<MaterializedViewDefinitionResponse>('materializedView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaterializedViewDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maxStaleness = registerOutput<String>('maxStaleness');
+    model = registerOutput<ModelDefinitionResponse>('model', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    numActiveLogicalBytes = registerOutput<String>('numActiveLogicalBytes');
+    numActivePhysicalBytes = registerOutput<String>('numActivePhysicalBytes');
+    numBytes = registerOutput<String>('numBytes');
+    numLongTermBytes = registerOutput<String>('numLongTermBytes');
+    numLongTermLogicalBytes = registerOutput<String>('numLongTermLogicalBytes');
+    numLongTermPhysicalBytes = registerOutput<String>('numLongTermPhysicalBytes');
+    numPartitions = registerOutput<String>('numPartitions');
+    numPhysicalBytes = registerOutput<String>('numPhysicalBytes');
+    numRows = registerOutput<String>('numRows');
+    numTimeTravelPhysicalBytes = registerOutput<String>('numTimeTravelPhysicalBytes');
+    numTotalLogicalBytes = registerOutput<String>('numTotalLogicalBytes');
+    numTotalPhysicalBytes = registerOutput<String>('numTotalPhysicalBytes');
+    project = registerOutput<String>('project');
+    rangePartitioning = registerOutput<RangePartitioningResponse>('rangePartitioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RangePartitioningResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    requirePartitionFilter = registerOutput<bool>('requirePartitionFilter');
+    resourceTags = registerOutput<Map<String, String>>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     schema = registerOutput<TableSchemaResponse>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableSchemaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
     snapshotDefinition = registerOutput<SnapshotDefinitionResponse>('snapshotDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

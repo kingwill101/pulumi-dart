@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Audio encoding of the synthesized audio content.
-enum GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding {
+enum GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding implements pulumi.PulumiEnum<String> {
   outputAudioEncodingUnspecified("OUTPUT_AUDIO_ENCODING_UNSPECIFIED"),
   outputAudioEncodingLinear16("OUTPUT_AUDIO_ENCODING_LINEAR_16"),
   outputAudioEncodingMp3("OUTPUT_AUDIO_ENCODING_MP3"),
@@ -8,6 +10,7 @@ enum GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding {
   outputAudioEncodingMulaw("OUTPUT_AUDIO_ENCODING_MULAW");
 
   const GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding fromValue(String value) {

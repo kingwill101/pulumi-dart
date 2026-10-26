@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomConnectorVersionArgs {
   final pulumi.Input<String> customConnectorId;
   final pulumi.Input<String> customConnectorVersionId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetCustomConnectorVersionArgs].
   /// [customConnectorId] Required.

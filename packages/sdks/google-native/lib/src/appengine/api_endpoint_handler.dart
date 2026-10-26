@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Uses Google Cloud Endpoints to handle requests.
 class ApiEndpointHandler {
   /// Path to the script from the application root directory.
-  final pulumi.Input<String>? scriptPath;
+  final pulumi.Input<String?>? scriptPath;
 
   /// Creates a new [ApiEndpointHandler].
   /// [scriptPath] Path to the script from the application root directory.

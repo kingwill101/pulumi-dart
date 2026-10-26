@@ -33,7 +33,7 @@ class GoogleCloudDialogflowCxV3beta1RolloutStateResponse {
     return GoogleCloudDialogflowCxV3beta1RolloutStateResponse(
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       step: pulumi.Input.fromValue(map['step'] as String),
-      stepIndex: pulumi.Input.fromValue(map['stepIndex'] as int),
+      stepIndex: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['stepIndex'])),
     );
   }
 }

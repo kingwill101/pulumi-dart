@@ -37,7 +37,7 @@ class ServiceLevelObjective extends pulumi.CustomResource {
           'google-native:monitoring/v3:ServiceLevelObjective',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['serviceId', 'v3Id', 'v3Id1']).merge(options),
         ) {
     calendarPeriod = registerOutput<String>('calendarPeriod');
     displayName = registerOutput<String>('displayName');
@@ -47,7 +47,29 @@ class ServiceLevelObjective extends pulumi.CustomResource {
     serviceId = registerOutput<String>('serviceId');
     serviceLevelIndicator = registerOutput<ServiceLevelIndicatorResponse>('serviceLevelIndicator', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLevelIndicatorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceLevelObjectiveId = registerOutput<String?>('serviceLevelObjectiveId');
-    userLabels = registerOutput<Map<String, String>>('userLabels');
+    userLabels = registerOutput<Map<String, String>>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    v3Id = registerOutput<String>('v3Id');
+    v3Id1 = registerOutput<String>('v3Id1');
+  }
+
+  /// Creates a typed reference to an existing [ServiceLevelObjective] resource.
+  ServiceLevelObjective.reference(String urn)
+    : super(
+        'google-native:monitoring/v3:ServiceLevelObjective',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    calendarPeriod = registerOutput<String>('calendarPeriod');
+    displayName = registerOutput<String>('displayName');
+    goal = registerOutput<double>('goal');
+    this.name = registerOutput<String>('name');
+    rollingPeriod = registerOutput<String>('rollingPeriod');
+    serviceId = registerOutput<String>('serviceId');
+    serviceLevelIndicator = registerOutput<ServiceLevelIndicatorResponse>('serviceLevelIndicator', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLevelIndicatorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceLevelObjectiveId = registerOutput<String?>('serviceLevelObjectiveId');
+    userLabels = registerOutput<Map<String, String>>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     v3Id = registerOutput<String>('v3Id');
     v3Id1 = registerOutput<String>('v3Id1');
   }

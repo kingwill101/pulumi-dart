@@ -8,11 +8,11 @@ import 'resource_policy_snapshot_schedule_policy_snapshot_properties_compute_bet
 /// A snapshot schedule policy specifies when and how frequently snapshots are to be created for the target disk. Also specifies how many and how long these scheduled snapshots should be retained.
 class ResourcePolicySnapshotSchedulePolicyComputeBeta {
   /// Retention policy applied to snapshots created by this resource policy.
-  final pulumi.Input<ResourcePolicySnapshotSchedulePolicyRetentionPolicyComputeBeta>? retentionPolicy;
+  final pulumi.Input<ResourcePolicySnapshotSchedulePolicyRetentionPolicyComputeBeta?>? retentionPolicy;
   /// A Vm Maintenance Policy specifies what kind of infrastructure maintenance we are allowed to perform on this VM and when. Schedule that is applied to disks covered by this policy.
-  final pulumi.Input<ResourcePolicySnapshotSchedulePolicyScheduleComputeBeta>? schedule;
+  final pulumi.Input<ResourcePolicySnapshotSchedulePolicyScheduleComputeBeta?>? schedule;
   /// Properties with which snapshots are created such as labels, encryption keys.
-  final pulumi.Input<ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeBeta>? snapshotProperties;
+  final pulumi.Input<ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeBeta?>? snapshotProperties;
 
   /// Creates a new [ResourcePolicySnapshotSchedulePolicyComputeBeta].
   /// [retentionPolicy] Retention policy applied to snapshots created by this resource policy.

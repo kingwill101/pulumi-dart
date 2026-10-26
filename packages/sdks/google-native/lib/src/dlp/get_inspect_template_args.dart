@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInspectTemplateArgs {
   final pulumi.Input<String> inspectTemplateId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetInspectTemplateArgs].
   /// [inspectTemplateId] Required.

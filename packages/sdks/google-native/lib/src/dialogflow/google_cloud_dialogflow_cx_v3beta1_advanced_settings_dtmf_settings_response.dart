@@ -33,7 +33,7 @@ class GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettingsResponse {
     return GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettingsResponse(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       finishDigit: pulumi.Input.fromValue(map['finishDigit'] as String),
-      maxDigits: pulumi.Input.fromValue(map['maxDigits'] as int),
+      maxDigits: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxDigits'])),
     );
   }
 }

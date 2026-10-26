@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Spec that applies to clusters of an Instance of Cloud Bigtable.
 class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec {
   /// Name of the cluster.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// A link back to the parent resource, in this case Instance.
-  final pulumi.Input<String>? linkedResource;
+  final pulumi.Input<String?>? linkedResource;
   /// Location of the cluster, typically a Cloud zone.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Type of the resource. For a cluster this would be "CLUSTER".
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec].
   /// [displayName] Name of the cluster.

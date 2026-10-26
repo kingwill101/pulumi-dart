@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ml_v1_get_trial_args_doc}
 class GetTrialArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> studyId;
   final pulumi.Input<String> trialId;
 

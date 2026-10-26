@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The source syntax of the service.
-enum ApiSyntax {
+enum ApiSyntax implements pulumi.PulumiEnum<String> {
   syntaxProto2("SYNTAX_PROTO2"),
   syntaxProto3("SYNTAX_PROTO3"),
   syntaxEditions("SYNTAX_EDITIONS");
 
   const ApiSyntax(this.wireValue);
+  @override
   final String wireValue;
 
   static ApiSyntax fromValue(String value) {

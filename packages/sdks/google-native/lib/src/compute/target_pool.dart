@@ -44,14 +44,40 @@ class TargetPool extends pulumi.CustomResource {
           'google-native:compute/alpha:TargetPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     backupPool = registerOutput<String>('backupPool');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     failoverRatio = registerOutput<double>('failoverRatio');
-    healthChecks = registerOutput<List<String>>('healthChecks');
-    instances = registerOutput<List<String>>('instances');
+    healthChecks = registerOutput<List<String>>('healthChecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    instances = registerOutput<List<String>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    securityPolicy = registerOutput<String>('securityPolicy');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    sessionAffinity = registerOutput<String>('sessionAffinity');
+  }
+
+  /// Creates a typed reference to an existing [TargetPool] resource.
+  TargetPool.reference(String urn)
+    : super(
+        'google-native:compute/alpha:TargetPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backupPool = registerOutput<String>('backupPool');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    failoverRatio = registerOutput<double>('failoverRatio');
+    healthChecks = registerOutput<List<String>>('healthChecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    instances = registerOutput<List<String>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

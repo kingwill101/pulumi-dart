@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_pubsub_v1beta2_topic_pubsub_v1beta2_args_doc}
 class TopicPubsubV1beta2Args {
   /// The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> topicId;
 
   /// Creates a new [TopicPubsubV1beta2Args].

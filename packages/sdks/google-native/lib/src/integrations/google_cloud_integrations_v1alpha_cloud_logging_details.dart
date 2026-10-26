@@ -6,9 +6,9 @@ import 'google_cloud_integrations_v1alpha_cloud_logging_details_cloud_logging_se
 /// Cloud Logging details for execution info
 class GoogleCloudIntegrationsV1alphaCloudLoggingDetails {
   /// Optional. Severity selected by the customer for the logs to be sent to Cloud Logging, for the integration version getting executed.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity>? cloudLoggingSeverity;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity?>? cloudLoggingSeverity;
   /// Optional. Status of whether Cloud Logging is enabled or not for the integration version getting executed.
-  final pulumi.Input<bool>? enableCloudLogging;
+  final pulumi.Input<bool?>? enableCloudLogging;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaCloudLoggingDetails].
   /// [cloudLoggingSeverity] Optional. Severity selected by the customer for the logs to be sent to Cloud Logging, for the integration version getting executed.

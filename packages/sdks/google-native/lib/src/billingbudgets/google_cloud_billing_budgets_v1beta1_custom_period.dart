@@ -6,7 +6,7 @@ import 'google_type_date_billingbudgets_v1beta1.dart';
 /// All date times begin at 12 AM US and Canadian Pacific Time (UTC-8).
 class GoogleCloudBillingBudgetsV1beta1CustomPeriod {
   /// Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
-  final pulumi.Input<GoogleTypeDateBillingbudgetsV1beta1>? endDate;
+  final pulumi.Input<GoogleTypeDateBillingbudgetsV1beta1?>? endDate;
   /// The start date must be after January 1, 2017.
   final pulumi.Input<GoogleTypeDateBillingbudgetsV1beta1> startDate;
 

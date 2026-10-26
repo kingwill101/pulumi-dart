@@ -6,9 +6,9 @@ import 'time_partitioning_type.dart';
 /// Configuration for FHIR BigQuery time-partitioned tables.
 class TimePartitioning {
   /// Number of milliseconds for which to keep the storage for a partition.
-  final pulumi.Input<String>? expirationMs;
+  final pulumi.Input<String?>? expirationMs;
   /// Type of partitioning.
-  final pulumi.Input<TimePartitioningType>? type;
+  final pulumi.Input<TimePartitioningType?>? type;
 
   /// Creates a new [TimePartitioning].
   /// [expirationMs] Number of milliseconds for which to keep the storage for a partition.

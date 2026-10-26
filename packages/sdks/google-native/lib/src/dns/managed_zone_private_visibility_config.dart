@@ -6,10 +6,10 @@ import 'managed_zone_private_visibility_config_network.dart';
 
 class ManagedZonePrivateVisibilityConfig {
   /// The list of Google Kubernetes Engine clusters that can see this zone.
-  final pulumi.Input<List<ManagedZonePrivateVisibilityConfigGKECluster>>? gkeClusters;
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<List<ManagedZonePrivateVisibilityConfigGKECluster>?>? gkeClusters;
+  final pulumi.Input<String?>? kind;
   /// The list of VPC networks that can see this zone.
-  final pulumi.Input<List<ManagedZonePrivateVisibilityConfigNetwork>>? networks;
+  final pulumi.Input<List<ManagedZonePrivateVisibilityConfigNetwork>?>? networks;
 
   /// Creates a new [ManagedZonePrivateVisibilityConfig].
   /// [gkeClusters] The list of Google Kubernetes Engine clusters that can see this zone.

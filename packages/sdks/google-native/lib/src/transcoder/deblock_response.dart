@@ -27,7 +27,7 @@ class DeblockResponse {
   factory DeblockResponse.fromMap(Map<String, dynamic> map) {
     return DeblockResponse(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      strength: pulumi.Input.fromValue(map['strength'] as double),
+      strength: pulumi.Input.fromValue((map['strength'] as num).toDouble()),
     );
   }
 }

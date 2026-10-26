@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Credential type of the encrypted credential.
-enum AuthConfigCredentialType {
+enum AuthConfigCredentialType implements pulumi.PulumiEnum<String> {
   credentialTypeUnspecified("CREDENTIAL_TYPE_UNSPECIFIED"),
   usernameAndPassword("USERNAME_AND_PASSWORD"),
   apiKey("API_KEY"),
@@ -14,6 +16,7 @@ enum AuthConfigCredentialType {
   oidcToken("OIDC_TOKEN");
 
   const AuthConfigCredentialType(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthConfigCredentialType fromValue(String value) {

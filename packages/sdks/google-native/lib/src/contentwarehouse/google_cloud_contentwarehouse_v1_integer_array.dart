@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Integer values.
 class GoogleCloudContentwarehouseV1IntegerArray {
   /// List of integer values.
-  final pulumi.Input<List<int>>? values;
+  final pulumi.Input<List<int>?>? values;
 
   /// Creates a new [GoogleCloudContentwarehouseV1IntegerArray].
   /// [values] List of integer values.

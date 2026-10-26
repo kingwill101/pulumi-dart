@@ -22,6 +22,17 @@ Future<GetNfsShareResult> getNfsShare(
   return GetNfsShareResult.fromMap(result);
 }
 
+pulumi.Output<GetNfsShareResult> getNfsShareOutput(
+  GetNfsShareArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:baremetalsolution/v2:getNfsShare',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNfsShareResult.fromMap);
+}
+
 /// Get ProvisioningConfig by name.
 /// [args] Arguments passed to this invoke. {@macro pulumi_baremetalsolution_v2_get_provisioning_config_args_doc}
 /// [options] Invoke options controlling this call.
@@ -38,6 +49,17 @@ Future<GetProvisioningConfigResult> getProvisioningConfig(
   return GetProvisioningConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetProvisioningConfigResult> getProvisioningConfigOutput(
+  GetProvisioningConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:baremetalsolution/v2:getProvisioningConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProvisioningConfigResult.fromMap);
+}
+
 /// Returns the specified snapshot resource. Returns INVALID_ARGUMENT if called for a non-boot volume.
 /// [args] Arguments passed to this invoke. {@macro pulumi_baremetalsolution_v2_get_snapshot_args_doc}
 /// [options] Invoke options controlling this call.
@@ -52,4 +74,15 @@ Future<GetSnapshotResult> getSnapshot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSnapshotResult.fromMap(result);
+}
+
+pulumi.Output<GetSnapshotResult> getSnapshotOutput(
+  GetSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:baremetalsolution/v2:getSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotResult.fromMap);
 }

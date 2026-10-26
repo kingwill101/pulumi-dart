@@ -9,11 +9,11 @@ import 'google_cloud_ml_v1_study_config_parameter_spec.dart';
 /// Represents configuration of a study.
 class GoogleCloudMlV1StudyConfig {
   /// The search algorithm specified for the study.
-  final pulumi.Input<GoogleCloudMlV1StudyConfigAlgorithm>? algorithm;
+  final pulumi.Input<GoogleCloudMlV1StudyConfigAlgorithm?>? algorithm;
   /// Configuration for automated stopping of unpromising Trials.
-  final pulumi.Input<GoogleCloudMlV1AutomatedStoppingConfig>? automatedStoppingConfig;
+  final pulumi.Input<GoogleCloudMlV1AutomatedStoppingConfig?>? automatedStoppingConfig;
   /// Metric specs for the study.
-  final pulumi.Input<List<GoogleCloudMlV1StudyConfigMetricSpec>>? metrics;
+  final pulumi.Input<List<GoogleCloudMlV1StudyConfigMetricSpec>?>? metrics;
   /// The set of parameters to tune.
   final pulumi.Input<List<GoogleCloudMlV1StudyConfigParameterSpec>> parameters;
 

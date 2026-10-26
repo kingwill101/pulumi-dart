@@ -10,55 +10,55 @@ import 'external_dataset_reference_response.dart';
 /// Result data returned by getDataset.
 class GetDatasetResult {
   /// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
-  final List<DatasetAccessItemResponse> access;
+  final List<DatasetAccessItemResponse>? access;
   /// The time when this dataset was created, in milliseconds since the epoch.
-  final String creationTime;
+  final String? creationTime;
   /// [Required] A reference that identifies the dataset.
-  final DatasetReferenceResponse datasetReference;
+  final DatasetReferenceResponse? datasetReference;
   /// The default collation of the dataset.
-  final String defaultCollation;
-  final EncryptionConfigurationResponse defaultEncryptionConfiguration;
+  final String? defaultCollation;
+  final EncryptionConfigurationResponse? defaultEncryptionConfiguration;
   /// [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
-  final String defaultPartitionExpirationMs;
+  final String? defaultPartitionExpirationMs;
   /// The default rounding mode of the dataset.
-  final String defaultRoundingMode;
+  final String? defaultRoundingMode;
   /// [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
-  final String defaultTableExpirationMs;
+  final String? defaultTableExpirationMs;
   /// [Optional] A user-friendly description of the dataset.
-  final String description;
+  final String? description;
   /// A hash of the resource.
-  final String etag;
+  final String? etag;
   /// [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
-  final ExternalDatasetReferenceResponse externalDatasetReference;
+  final ExternalDatasetReferenceResponse? externalDatasetReference;
   /// [Optional] A descriptive name for the dataset.
-  final String friendlyName;
+  final String? friendlyName;
   /// [Optional] Indicates if table names are case insensitive in the dataset.
-  final bool isCaseInsensitive;
+  final bool? isCaseInsensitive;
   /// The resource type.
-  final String kind;
+  final String? kind;
   /// The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
-  final String lastModifiedTime;
+  final String? lastModifiedTime;
   /// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
-  final String location;
+  final String? location;
   /// [Optional] Number of hours for the max time travel for all tables in the dataset.
-  final String maxTimeTravelHours;
+  final String? maxTimeTravelHours;
   /// Reserved for future use.
-  final bool satisfiesPzs;
+  final bool? satisfiesPzs;
   /// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
-  final String selfLink;
+  final String? selfLink;
   /// [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
-  final String storageBillingModel;
+  final String? storageBillingModel;
   /// [Optional]The tags associated with this dataset. Tag keys are globally unique.
-  final List<DatasetTagsItemResponse> tags;
+  final List<DatasetTagsItemResponse>? tags;
 
   /// Creates a new [GetDatasetResult].
   /// [access] [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
   /// [creationTime] The time when this dataset was created, in milliseconds since the epoch.
   /// [datasetReference] [Required] A reference that identifies the dataset.
   /// [defaultCollation] The default collation of the dataset.
-  /// [defaultEncryptionConfiguration] Required.
+  /// [defaultEncryptionConfiguration] Optional.
   /// [defaultPartitionExpirationMs] [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
   /// [defaultRoundingMode] The default rounding mode of the dataset.
   /// [defaultTableExpirationMs] [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
@@ -77,81 +77,81 @@ class GetDatasetResult {
   /// [storageBillingModel] [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
   /// [tags] [Optional]The tags associated with this dataset. Tag keys are globally unique.
   const GetDatasetResult({
-    required this.access,
-    required this.creationTime,
-    required this.datasetReference,
-    required this.defaultCollation,
-    required this.defaultEncryptionConfiguration,
-    required this.defaultPartitionExpirationMs,
-    required this.defaultRoundingMode,
-    required this.defaultTableExpirationMs,
-    required this.description,
-    required this.etag,
-    required this.externalDatasetReference,
-    required this.friendlyName,
-    required this.isCaseInsensitive,
-    required this.kind,
-    required this.labels,
-    required this.lastModifiedTime,
-    required this.location,
-    required this.maxTimeTravelHours,
-    required this.satisfiesPzs,
-    required this.selfLink,
-    required this.storageBillingModel,
-    required this.tags,
+    this.access,
+    this.creationTime,
+    this.datasetReference,
+    this.defaultCollation,
+    this.defaultEncryptionConfiguration,
+    this.defaultPartitionExpirationMs,
+    this.defaultRoundingMode,
+    this.defaultTableExpirationMs,
+    this.description,
+    this.etag,
+    this.externalDatasetReference,
+    this.friendlyName,
+    this.isCaseInsensitive,
+    this.kind,
+    this.labels,
+    this.lastModifiedTime,
+    this.location,
+    this.maxTimeTravelHours,
+    this.satisfiesPzs,
+    this.selfLink,
+    this.storageBillingModel,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'access': pulumi.Input.encodeList<DatasetAccessItemResponse, Map<String, dynamic>>(access, (value) => value.toMap()),
-      'creationTime': creationTime,
-      'datasetReference': datasetReference.toMap(),
-      'defaultCollation': defaultCollation,
-      'defaultEncryptionConfiguration': defaultEncryptionConfiguration.toMap(),
-      'defaultPartitionExpirationMs': defaultPartitionExpirationMs,
-      'defaultRoundingMode': defaultRoundingMode,
-      'defaultTableExpirationMs': defaultTableExpirationMs,
-      'description': description,
-      'etag': etag,
-      'externalDatasetReference': externalDatasetReference.toMap(),
-      'friendlyName': friendlyName,
-      'isCaseInsensitive': isCaseInsensitive,
-      'kind': kind,
-      'labels': labels,
-      'lastModifiedTime': lastModifiedTime,
-      'location': location,
-      'maxTimeTravelHours': maxTimeTravelHours,
-      'satisfiesPzs': satisfiesPzs,
-      'selfLink': selfLink,
-      'storageBillingModel': storageBillingModel,
-      'tags': pulumi.Input.encodeList<DatasetTagsItemResponse, Map<String, dynamic>>(tags, (value) => value.toMap()),
+      'access': ?(() { final guardedValue = access; if (guardedValue == null) return null; return pulumi.Input.encodeList<DatasetAccessItemResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'creationTime': ?creationTime,
+      'datasetReference': ?datasetReference?.toMap(),
+      'defaultCollation': ?defaultCollation,
+      'defaultEncryptionConfiguration': ?defaultEncryptionConfiguration?.toMap(),
+      'defaultPartitionExpirationMs': ?defaultPartitionExpirationMs,
+      'defaultRoundingMode': ?defaultRoundingMode,
+      'defaultTableExpirationMs': ?defaultTableExpirationMs,
+      'description': ?description,
+      'etag': ?etag,
+      'externalDatasetReference': ?externalDatasetReference?.toMap(),
+      'friendlyName': ?friendlyName,
+      'isCaseInsensitive': ?isCaseInsensitive,
+      'kind': ?kind,
+      'labels': ?labels,
+      'lastModifiedTime': ?lastModifiedTime,
+      'location': ?location,
+      'maxTimeTravelHours': ?maxTimeTravelHours,
+      'satisfiesPzs': ?satisfiesPzs,
+      'selfLink': ?selfLink,
+      'storageBillingModel': ?storageBillingModel,
+      'tags': ?(() { final guardedValue = tags; if (guardedValue == null) return null; return pulumi.Input.encodeList<DatasetTagsItemResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetDatasetResult.fromMap(Map<String, dynamic> map) {
     return GetDatasetResult(
-      access: pulumi.Input.decodeList<DatasetAccessItemResponse>(map['access']!, (value) => DatasetAccessItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      creationTime: map['creationTime'] as String,
-      datasetReference: DatasetReferenceResponse.fromMap((map['datasetReference']! as Map).cast<String, dynamic>()),
-      defaultCollation: map['defaultCollation'] as String,
-      defaultEncryptionConfiguration: EncryptionConfigurationResponse.fromMap((map['defaultEncryptionConfiguration']! as Map).cast<String, dynamic>()),
-      defaultPartitionExpirationMs: map['defaultPartitionExpirationMs'] as String,
-      defaultRoundingMode: map['defaultRoundingMode'] as String,
-      defaultTableExpirationMs: map['defaultTableExpirationMs'] as String,
-      description: map['description'] as String,
-      etag: map['etag'] as String,
-      externalDatasetReference: ExternalDatasetReferenceResponse.fromMap((map['externalDatasetReference']! as Map).cast<String, dynamic>()),
-      friendlyName: map['friendlyName'] as String,
-      isCaseInsensitive: map['isCaseInsensitive'] as bool,
-      kind: map['kind'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      lastModifiedTime: map['lastModifiedTime'] as String,
-      location: map['location'] as String,
-      maxTimeTravelHours: map['maxTimeTravelHours'] as String,
-      satisfiesPzs: map['satisfiesPzs'] as bool,
-      selfLink: map['selfLink'] as String,
-      storageBillingModel: map['storageBillingModel'] as String,
-      tags: pulumi.Input.decodeList<DatasetTagsItemResponse>(map['tags']!, (value) => DatasetTagsItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      access: (() { final guardedValue = map['access']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetAccessItemResponse>(guardedValue, (value) => DatasetAccessItemResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      datasetReference: (() { final guardedValue = map['datasetReference']; if (guardedValue == null) return null; return DatasetReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      defaultCollation: (() { final guardedValue = map['defaultCollation']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultEncryptionConfiguration: (() { final guardedValue = map['defaultEncryptionConfiguration']; if (guardedValue == null) return null; return EncryptionConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      defaultPartitionExpirationMs: (() { final guardedValue = map['defaultPartitionExpirationMs']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultRoundingMode: (() { final guardedValue = map['defaultRoundingMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultTableExpirationMs: (() { final guardedValue = map['defaultTableExpirationMs']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      externalDatasetReference: (() { final guardedValue = map['externalDatasetReference']; if (guardedValue == null) return null; return ExternalDatasetReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isCaseInsensitive: (() { final guardedValue = map['isCaseInsensitive']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      maxTimeTravelHours: (() { final guardedValue = map['maxTimeTravelHours']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      satisfiesPzs: (() { final guardedValue = map['satisfiesPzs']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageBillingModel: (() { final guardedValue = map['storageBillingModel']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetTagsItemResponse>(guardedValue, (value) => DatasetTagsItemResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

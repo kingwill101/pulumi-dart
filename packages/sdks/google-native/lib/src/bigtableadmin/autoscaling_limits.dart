@@ -26,8 +26,8 @@ class AutoscalingLimits {
 
   factory AutoscalingLimits.fromMap(Map<String, dynamic> map) {
     return AutoscalingLimits(
-      maxServeNodes: pulumi.Input.fromValue(map['maxServeNodes'] as int),
-      minServeNodes: pulumi.Input.fromValue(map['minServeNodes'] as int),
+      maxServeNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxServeNodes'])),
+      minServeNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minServeNodes'])),
     );
   }
 }

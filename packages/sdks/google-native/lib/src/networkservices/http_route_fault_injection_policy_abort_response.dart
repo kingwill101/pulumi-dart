@@ -26,8 +26,8 @@ class HttpRouteFaultInjectionPolicyAbortResponse {
 
   factory HttpRouteFaultInjectionPolicyAbortResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteFaultInjectionPolicyAbortResponse(
-      httpStatus: pulumi.Input.fromValue(map['httpStatus'] as int),
-      percentage: pulumi.Input.fromValue(map['percentage'] as int),
+      httpStatus: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['httpStatus'])),
+      percentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['percentage'])),
     );
   }
 }

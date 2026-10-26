@@ -13,23 +13,23 @@ import 'text_config_healthcare_v1beta1.dart';
 /// Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
 class DeidentifyConfigHealthcareV1beta1 {
   /// Configures how annotations, meaning that the location and infoType of sensitive information findings, are created during de-identification. If unspecified, no annotations are created.
-  final pulumi.Input<AnnotationConfig>? annotation;
+  final pulumi.Input<AnnotationConfig?>? annotation;
   /// Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
-  final pulumi.Input<DicomConfigHealthcareV1beta1>? dicom;
+  final pulumi.Input<DicomConfigHealthcareV1beta1?>? dicom;
   /// Configures de-id of application/DICOM content.
-  final pulumi.Input<DicomTagConfig>? dicomTagConfig;
+  final pulumi.Input<DicomTagConfig?>? dicomTagConfig;
   /// Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
-  final pulumi.Input<FhirConfigHealthcareV1beta1>? fhir;
+  final pulumi.Input<FhirConfigHealthcareV1beta1?>? fhir;
   /// Configures de-id of application/FHIR content.
-  final pulumi.Input<FhirFieldConfig>? fhirFieldConfig;
+  final pulumi.Input<FhirFieldConfig?>? fhirFieldConfig;
   /// Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
-  final pulumi.Input<ImageConfigHealthcareV1beta1>? image;
+  final pulumi.Input<ImageConfigHealthcareV1beta1?>? image;
   /// Details about the work the de-identify operation performed.
-  final pulumi.Input<DeidentifyOperationMetadata>? operationMetadata;
+  final pulumi.Input<DeidentifyOperationMetadata?>? operationMetadata;
   /// Configures de-identification of text wherever it is found in the source_dataset.
-  final pulumi.Input<TextConfigHealthcareV1beta1>? text;
+  final pulumi.Input<TextConfigHealthcareV1beta1?>? text;
   /// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated DicomConfig or FhirConfig are used, then `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
-  final pulumi.Input<bool>? useRegionalDataProcessing;
+  final pulumi.Input<bool?>? useRegionalDataProcessing;
 
   /// Creates a new [DeidentifyConfigHealthcareV1beta1].
   /// [annotation] Configures how annotations, meaning that the location and infoType of sensitive information findings, are created during de-identification. If unspecified, no annotations are created.

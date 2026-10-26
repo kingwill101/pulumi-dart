@@ -36,10 +36,10 @@ class TimeOfDayResponseMemcacheV1beta2 {
 
   factory TimeOfDayResponseMemcacheV1beta2.fromMap(Map<String, dynamic> map) {
     return TimeOfDayResponseMemcacheV1beta2(
-      hours: pulumi.Input.fromValue(map['hours'] as int),
-      minutes: pulumi.Input.fromValue(map['minutes'] as int),
-      nanos: pulumi.Input.fromValue(map['nanos'] as int),
-      seconds: pulumi.Input.fromValue(map['seconds'] as int),
+      hours: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['hours'])),
+      minutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minutes'])),
+      nanos: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nanos'])),
+      seconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['seconds'])),
     );
   }
 }

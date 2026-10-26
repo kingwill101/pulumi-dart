@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dialogflow_v3_get_security_setting_args_doc}
 class GetSecuritySettingArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> securitySettingId;
 
   /// Creates a new [GetSecuritySettingArgs].

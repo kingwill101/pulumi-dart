@@ -36,10 +36,10 @@ class NetworkUtilizationResponse {
 
   factory NetworkUtilizationResponse.fromMap(Map<String, dynamic> map) {
     return NetworkUtilizationResponse(
-      targetReceivedBytesPerSecond: pulumi.Input.fromValue(map['targetReceivedBytesPerSecond'] as int),
-      targetReceivedPacketsPerSecond: pulumi.Input.fromValue(map['targetReceivedPacketsPerSecond'] as int),
-      targetSentBytesPerSecond: pulumi.Input.fromValue(map['targetSentBytesPerSecond'] as int),
-      targetSentPacketsPerSecond: pulumi.Input.fromValue(map['targetSentPacketsPerSecond'] as int),
+      targetReceivedBytesPerSecond: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetReceivedBytesPerSecond'])),
+      targetReceivedPacketsPerSecond: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetReceivedPacketsPerSecond'])),
+      targetSentBytesPerSecond: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetSentBytesPerSecond'])),
+      targetSentPacketsPerSecond: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetSentPacketsPerSecond'])),
     );
   }
 }

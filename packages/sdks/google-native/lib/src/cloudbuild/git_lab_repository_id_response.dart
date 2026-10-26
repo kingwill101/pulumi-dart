@@ -21,7 +21,7 @@ class GitLabRepositoryIdResponse {
 
   factory GitLabRepositoryIdResponse.fromMap(Map<String, dynamic> map) {
     return GitLabRepositoryIdResponse(
-      webhookId: pulumi.Input.fromValue(map['webhookId'] as int),
+      webhookId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['webhookId'])),
     );
   }
 }

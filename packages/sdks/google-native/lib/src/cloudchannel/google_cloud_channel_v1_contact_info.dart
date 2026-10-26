@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Contact information for a customer account.
 class GoogleCloudChannelV1ContactInfo {
   /// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The customer account contact's first name. Optional for Team customers.
-  final pulumi.Input<String>? firstName;
+  final pulumi.Input<String?>? firstName;
   /// The customer account contact's last name. Optional for Team customers.
-  final pulumi.Input<String>? lastName;
+  final pulumi.Input<String?>? lastName;
   /// The customer account's contact phone number.
-  final pulumi.Input<String>? phone;
+  final pulumi.Input<String?>? phone;
   /// Optional. The customer account contact's job title.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [GoogleCloudChannelV1ContactInfo].
   /// [email] The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.

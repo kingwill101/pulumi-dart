@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSfdcChannelArgs {
   final pulumi.Input<String> location;
   final pulumi.Input<String> productId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> sfdcChannelId;
   final pulumi.Input<String> sfdcInstanceId;
 

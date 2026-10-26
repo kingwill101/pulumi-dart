@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_documentai_v1_processor_version_alias_response.dart';
 import 'processor_args.dart';
 
 /// Creates a processor from the ProcessorType provided. The processor will be at `ENABLED` state by default after its creation.
@@ -18,7 +19,7 @@ class Processor extends pulumi.CustomResource {
   /// Immutable. The http endpoint that can be called to invoke processing.
   late final pulumi.Output<String> processEndpoint;
   /// The processor version aliases.
-  late final pulumi.Output<List<Map<String, dynamic>>> processorVersionAliases;
+  late final pulumi.Output<List<GoogleCloudDocumentaiV1ProcessorVersionAliasResponse>> processorVersionAliases;
   late final pulumi.Output<String> project;
   /// The state of the processor.
   late final pulumi.Output<String> state;
@@ -37,7 +38,7 @@ class Processor extends pulumi.CustomResource {
           'google-native:documentai/v1:Processor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     defaultProcessorVersion = registerOutput<String>('defaultProcessorVersion');
@@ -46,7 +47,29 @@ class Processor extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     processEndpoint = registerOutput<String>('processEndpoint');
-    processorVersionAliases = registerOutput<List<Map<String, dynamic>>>('processorVersionAliases');
+    processorVersionAliases = registerOutput<List<GoogleCloudDocumentaiV1ProcessorVersionAliasResponse>>('processorVersionAliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDocumentaiV1ProcessorVersionAliasResponse>(guardedValue, (value) => GoogleCloudDocumentaiV1ProcessorVersionAliasResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Processor] resource.
+  Processor.reference(String urn)
+    : super(
+        'google-native:documentai/v1:Processor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    defaultProcessorVersion = registerOutput<String>('defaultProcessorVersion');
+    displayName = registerOutput<String>('displayName');
+    kmsKeyName = registerOutput<String>('kmsKeyName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    processEndpoint = registerOutput<String>('processEndpoint');
+    processorVersionAliases = registerOutput<List<GoogleCloudDocumentaiV1ProcessorVersionAliasResponse>>('processorVersionAliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDocumentaiV1ProcessorVersionAliasResponse>(guardedValue, (value) => GoogleCloudDocumentaiV1ProcessorVersionAliasResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');
     type = registerOutput<String>('type');

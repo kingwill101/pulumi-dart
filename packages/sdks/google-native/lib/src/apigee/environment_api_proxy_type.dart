@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
-enum EnvironmentApiProxyType {
+enum EnvironmentApiProxyType implements pulumi.PulumiEnum<String> {
   apiProxyTypeUnspecified("API_PROXY_TYPE_UNSPECIFIED"),
   programmable("PROGRAMMABLE"),
   configurable("CONFIGURABLE");
 
   const EnvironmentApiProxyType(this.wireValue);
+  @override
   final String wireValue;
 
   static EnvironmentApiProxyType fromValue(String value) {

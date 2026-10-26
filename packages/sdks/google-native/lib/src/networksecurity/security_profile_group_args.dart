@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networksecurity_v1beta1_security_profile_group_args_doc}
 class SecurityProfileGroupArgs {
   /// Optional. An optional description of the profile group. Max length 2048 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Labels as key value pairs.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Immutable. Identifier. Name of the SecurityProfileGroup resource. It matches pattern `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
   /// Required. Short name of the SecurityProfileGroup resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "security_profile_group1".
   final pulumi.Input<String> securityProfileGroupId;
   /// Optional. Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
-  final pulumi.Input<String>? threatPreventionProfile;
+  final pulumi.Input<String?>? threatPreventionProfile;
 
   /// Creates a new [SecurityProfileGroupArgs].
   /// [description] Optional. An optional description of the profile group. Max length 2048 characters.

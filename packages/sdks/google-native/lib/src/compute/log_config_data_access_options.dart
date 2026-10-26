@@ -6,7 +6,7 @@ import 'log_config_data_access_options_log_mode.dart';
 /// This is deprecated and has no effect. Do not use.
 class LogConfigDataAccessOptions {
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<LogConfigDataAccessOptionsLogMode>? logMode;
+  final pulumi.Input<LogConfigDataAccessOptionsLogMode?>? logMode;
 
   /// Creates a new [LogConfigDataAccessOptions].
   /// [logMode] This is deprecated and has no effect. Do not use.

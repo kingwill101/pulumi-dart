@@ -9,23 +9,23 @@ import 'google_cloud_integrations_v1alpha_string_parameter_array.dart';
 /// The type of the parameter.
 class GoogleCloudIntegrationsV1alphaValueType {
   /// Boolean Array.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaBooleanParameterArray>? booleanArray;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaBooleanParameterArray?>? booleanArray;
   /// Boolean.
-  final pulumi.Input<bool>? booleanValue;
+  final pulumi.Input<bool?>? booleanValue;
   /// Double Number Array.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaDoubleParameterArray>? doubleArray;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaDoubleParameterArray?>? doubleArray;
   /// Double Number.
-  final pulumi.Input<double>? doubleValue;
+  final pulumi.Input<double?>? doubleValue;
   /// Integer Array.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaIntParameterArray>? intArray;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaIntParameterArray?>? intArray;
   /// Integer.
-  final pulumi.Input<String>? intValue;
+  final pulumi.Input<String?>? intValue;
   /// Json.
-  final pulumi.Input<String>? jsonValue;
+  final pulumi.Input<String?>? jsonValue;
   /// String Array.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaStringParameterArray>? stringArray;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaStringParameterArray?>? stringArray;
   /// String.
-  final pulumi.Input<String>? stringValue;
+  final pulumi.Input<String?>? stringValue;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaValueType].
   /// [booleanArray] Boolean Array.
@@ -68,7 +68,7 @@ class GoogleCloudIntegrationsV1alphaValueType {
       booleanArray: (() { final guardedValue = map['booleanArray']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudIntegrationsV1alphaBooleanParameterArray.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       booleanValue: (() { final guardedValue = map['booleanValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       doubleArray: (() { final guardedValue = map['doubleArray']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudIntegrationsV1alphaDoubleParameterArray.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      doubleValue: (() { final guardedValue = map['doubleValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      doubleValue: (() { final guardedValue = map['doubleValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       intArray: (() { final guardedValue = map['intArray']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudIntegrationsV1alphaIntParameterArray.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       intValue: (() { final guardedValue = map['intValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jsonValue: (() { final guardedValue = map['jsonValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

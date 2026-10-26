@@ -26,8 +26,8 @@ class GoogleMonitoringV3RangeResponse {
 
   factory GoogleMonitoringV3RangeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleMonitoringV3RangeResponse(
-      max: pulumi.Input.fromValue(map['max'] as double),
-      min: pulumi.Input.fromValue(map['min'] as double),
+      max: pulumi.Input.fromValue((map['max'] as num).toDouble()),
+      min: pulumi.Input.fromValue((map['min'] as num).toDouble()),
     );
   }
 }

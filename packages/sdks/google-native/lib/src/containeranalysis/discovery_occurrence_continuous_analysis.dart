@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether the resource is continuously analyzed.
-enum DiscoveryOccurrenceContinuousAnalysis {
+enum DiscoveryOccurrenceContinuousAnalysis implements pulumi.PulumiEnum<String> {
   continuousAnalysisUnspecified("CONTINUOUS_ANALYSIS_UNSPECIFIED"),
   active("ACTIVE"),
   inactive("INACTIVE");
 
   const DiscoveryOccurrenceContinuousAnalysis(this.wireValue);
+  @override
   final String wireValue;
 
   static DiscoveryOccurrenceContinuousAnalysis fromValue(String value) {

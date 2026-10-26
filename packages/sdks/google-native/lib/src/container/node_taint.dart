@@ -6,11 +6,11 @@ import 'node_taint_effect.dart';
 /// Kubernetes taint is composed of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
 class NodeTaint {
   /// Effect for taint.
-  final pulumi.Input<NodeTaintEffect>? effect;
+  final pulumi.Input<NodeTaintEffect?>? effect;
   /// Key for taint.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Value for taint.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [NodeTaint].
   /// [effect] Effect for taint.

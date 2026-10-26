@@ -6,7 +6,7 @@ import 'google_privacy_dlp_v2_big_query_discovery_target.dart';
 /// Target used to match against for Discovery.
 class GooglePrivacyDlpV2DiscoveryTarget {
   /// BigQuery target for Discovery. The first target to match a table will be the one applied.
-  final pulumi.Input<GooglePrivacyDlpV2BigQueryDiscoveryTarget>? bigQueryTarget;
+  final pulumi.Input<GooglePrivacyDlpV2BigQueryDiscoveryTarget?>? bigQueryTarget;
 
   /// Creates a new [GooglePrivacyDlpV2DiscoveryTarget].
   /// [bigQueryTarget] BigQuery target for Discovery. The first target to match a table will be the one applied.

@@ -27,7 +27,7 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse {
   factory GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse(
       testingChallenge: pulumi.Input.fromValue(map['testingChallenge'] as String),
-      testingScore: pulumi.Input.fromValue(map['testingScore'] as double),
+      testingScore: pulumi.Input.fromValue((map['testingScore'] as num).toDouble()),
     );
   }
 }

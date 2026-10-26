@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Predeploy contains the predeploy job configuration information.
 class Predeploy {
   /// Optional. A sequence of Skaffold custom actions to invoke during execution of the predeploy job.
-  final pulumi.Input<List<String>>? actions;
+  final pulumi.Input<List<String>?>? actions;
 
   /// Creates a new [Predeploy].
   /// [actions] Optional. A sequence of Skaffold custom actions to invoke during execution of the predeploy job.

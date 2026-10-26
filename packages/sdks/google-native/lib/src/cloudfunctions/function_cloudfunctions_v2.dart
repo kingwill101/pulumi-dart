@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'build_config_response.dart';
 import 'event_trigger_response_cloudfunctions_v2.dart';
 import 'function_cloudfunctions_v2_args.dart';
+import 'google_cloud_functions_v2_state_message_response.dart';
 import 'service_config_response.dart';
 
 /// Creates a new function. If a function with the given name already exists in the specified project, the long running operation will return `ALREADY_EXISTS` error.
@@ -31,7 +32,7 @@ class FunctionCloudfunctionsV2 extends pulumi.CustomResource {
   /// State of the function.
   late final pulumi.Output<String> state;
   /// State Messages for this Cloud Function.
-  late final pulumi.Output<List<Map<String, dynamic>>> stateMessages;
+  late final pulumi.Output<List<GoogleCloudFunctionsV2StateMessageResponse>> stateMessages;
   /// The last update timestamp of a Cloud Function.
   late final pulumi.Output<String> updateTime;
   /// The deployed url for the function.
@@ -49,7 +50,7 @@ class FunctionCloudfunctionsV2 extends pulumi.CustomResource {
           'google-native:cloudfunctions/v2:Function',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     buildConfig = registerOutput<BuildConfigResponse>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
@@ -57,14 +58,41 @@ class FunctionCloudfunctionsV2 extends pulumi.CustomResource {
     eventTrigger = registerOutput<EventTriggerResponseCloudfunctionsV2>('eventTrigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventTriggerResponseCloudfunctionsV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     functionId = registerOutput<String?>('functionId');
     kmsKeyName = registerOutput<String>('kmsKeyName');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     serviceConfig = registerOutput<ServiceConfigResponse>('serviceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
-    stateMessages = registerOutput<List<Map<String, dynamic>>>('stateMessages');
+    stateMessages = registerOutput<List<GoogleCloudFunctionsV2StateMessageResponse>>('stateMessages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudFunctionsV2StateMessageResponse>(guardedValue, (value) => GoogleCloudFunctionsV2StateMessageResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [FunctionCloudfunctionsV2] resource.
+  FunctionCloudfunctionsV2.reference(String urn)
+    : super(
+        'google-native:cloudfunctions/v2:Function',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    buildConfig = registerOutput<BuildConfigResponse>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    environment = registerOutput<String>('environment');
+    eventTrigger = registerOutput<EventTriggerResponseCloudfunctionsV2>('eventTrigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventTriggerResponseCloudfunctionsV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    functionId = registerOutput<String?>('functionId');
+    kmsKeyName = registerOutput<String>('kmsKeyName');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    serviceConfig = registerOutput<ServiceConfigResponse>('serviceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    stateMessages = registerOutput<List<GoogleCloudFunctionsV2StateMessageResponse>>('stateMessages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudFunctionsV2StateMessageResponse>(guardedValue, (value) => GoogleCloudFunctionsV2StateMessageResponse.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
     url = registerOutput<String>('url');
   }

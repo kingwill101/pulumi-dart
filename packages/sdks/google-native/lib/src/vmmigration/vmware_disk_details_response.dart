@@ -31,7 +31,7 @@ class VmwareDiskDetailsResponse {
 
   factory VmwareDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return VmwareDiskDetailsResponse(
-      diskNumber: pulumi.Input.fromValue(map['diskNumber'] as int),
+      diskNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskNumber'])),
       label: pulumi.Input.fromValue(map['label'] as String),
       sizeGb: pulumi.Input.fromValue(map['sizeGb'] as String),
     );

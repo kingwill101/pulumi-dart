@@ -6,9 +6,9 @@ import 'build_signature.dart';
 /// Note holding the version of the provider's builder and the signature of the provenance message in linked BuildDetails.
 class BuildType {
   /// Version of the builder which produced this Note.
-  final pulumi.Input<String>? builderVersion;
+  final pulumi.Input<String?>? builderVersion;
   /// Signature of the build in Occurrences pointing to the Note containing this `BuilderDetails`.
-  final pulumi.Input<BuildSignature>? signature;
+  final pulumi.Input<BuildSignature?>? signature;
 
   /// Creates a new [BuildType].
   /// [builderVersion] Version of the builder which produced this Note.

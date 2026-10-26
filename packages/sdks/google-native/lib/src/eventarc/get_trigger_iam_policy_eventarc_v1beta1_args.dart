@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_eventarc_v1beta1_get_trigger_iam_policy_eventarc_v1beta1_args_doc}
 class GetTriggerIamPolicyEventarcV1beta1Args {
   final pulumi.Input<String> location;
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> triggerId;
 
   /// Creates a new [GetTriggerIamPolicyEventarcV1beta1Args].
@@ -36,7 +36,7 @@ class GetTriggerIamPolicyEventarcV1beta1Args {
   factory GetTriggerIamPolicyEventarcV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetTriggerIamPolicyEventarcV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       triggerId: pulumi.Input.fromValue(map['triggerId'] as String),
     );

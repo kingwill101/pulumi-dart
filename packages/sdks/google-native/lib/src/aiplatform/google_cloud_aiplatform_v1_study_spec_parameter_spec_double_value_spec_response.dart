@@ -31,9 +31,9 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecDoubleValueSpecResponse {
 
   factory GoogleCloudAiplatformV1StudySpecParameterSpecDoubleValueSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1StudySpecParameterSpecDoubleValueSpecResponse(
-      defaultValue: pulumi.Input.fromValue(map['defaultValue'] as double),
-      maxValue: pulumi.Input.fromValue(map['maxValue'] as double),
-      minValue: pulumi.Input.fromValue(map['minValue'] as double),
+      defaultValue: pulumi.Input.fromValue((map['defaultValue'] as num).toDouble()),
+      maxValue: pulumi.Input.fromValue((map['maxValue'] as num).toDouble()),
+      minValue: pulumi.Input.fromValue((map['minValue'] as num).toDouble()),
     );
   }
 }

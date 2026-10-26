@@ -6,7 +6,7 @@ import 'username_password_credentials.dart';
 /// The credentials to access the remote repository.
 class UpstreamCredentials {
   /// Use username and password to access the remote repository.
-  final pulumi.Input<UsernamePasswordCredentials>? usernamePasswordCredentials;
+  final pulumi.Input<UsernamePasswordCredentials?>? usernamePasswordCredentials;
 
   /// Creates a new [UpstreamCredentials].
   /// [usernamePasswordCredentials] Use username and password to access the remote repository.

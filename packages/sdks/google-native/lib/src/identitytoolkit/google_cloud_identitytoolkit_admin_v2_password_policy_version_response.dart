@@ -28,7 +28,7 @@ class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse {
   factory GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse(
       customStrengthOptions: pulumi.Input.fromValue(GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse.fromMap((map['customStrengthOptions']! as Map).cast<String, dynamic>())),
-      schemaVersion: pulumi.Input.fromValue(map['schemaVersion'] as int),
+      schemaVersion: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['schemaVersion'])),
     );
   }
 }

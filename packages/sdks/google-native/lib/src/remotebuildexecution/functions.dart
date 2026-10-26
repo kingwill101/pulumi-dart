@@ -20,6 +20,17 @@ Future<GetInstanceResult> getInstance(
   return GetInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:remotebuildexecution/v1alpha:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
+}
+
 /// Returns the specified worker pool.
 /// [args] Arguments passed to this invoke. {@macro pulumi_remotebuildexecution_v1alpha_get_worker_pool_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetWorkerPoolResult> getWorkerPool(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkerPoolResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkerPoolResult> getWorkerPoolOutput(
+  GetWorkerPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:remotebuildexecution/v1alpha:getWorkerPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkerPoolResult.fromMap);
 }

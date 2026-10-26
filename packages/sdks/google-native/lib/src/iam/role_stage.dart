@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
-enum RoleStage {
+enum RoleStage implements pulumi.PulumiEnum<String> {
   alpha("ALPHA"),
   beta("BETA"),
   ga("GA"),
@@ -8,6 +10,7 @@ enum RoleStage {
   eap("EAP");
 
   const RoleStage(this.wireValue);
+  @override
   final String wireValue;
 
   static RoleStage fromValue(String value) {

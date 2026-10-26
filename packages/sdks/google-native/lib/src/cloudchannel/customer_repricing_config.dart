@@ -26,8 +26,24 @@ class CustomerRepricingConfig extends pulumi.CustomResource {
           'google-native:cloudchannel/v1:CustomerRepricingConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['accountId', 'customerId']).merge(options),
         ) {
+    accountId = registerOutput<String>('accountId');
+    customerId = registerOutput<String>('customerId');
+    this.name = registerOutput<String>('name');
+    repricingConfig = registerOutput<GoogleCloudChannelV1RepricingConfigResponse>('repricingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudChannelV1RepricingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [CustomerRepricingConfig] resource.
+  CustomerRepricingConfig.reference(String urn)
+    : super(
+        'google-native:cloudchannel/v1:CustomerRepricingConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String>('accountId');
     customerId = registerOutput<String>('customerId');
     this.name = registerOutput<String>('name');

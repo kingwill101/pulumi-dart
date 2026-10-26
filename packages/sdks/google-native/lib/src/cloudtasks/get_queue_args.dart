@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudtasks_v2_get_queue_args_doc}
 class GetQueueArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> queueId;
 
   /// Creates a new [GetQueueArgs].

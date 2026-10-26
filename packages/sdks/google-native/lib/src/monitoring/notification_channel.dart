@@ -15,7 +15,7 @@ class NotificationChannel extends pulumi.CustomResource {
   /// Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the NotificationChannelDescriptor.labels of the NotificationChannelDescriptor corresponding to the type field.
   late final pulumi.Output<Map<String, String>> labels;
   /// Records of the modification of this channel.
-  late final pulumi.Output<List<Map<String, dynamic>>> mutationRecords;
+  late final pulumi.Output<List<MutationRecordResponse>> mutationRecords;
   /// The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
@@ -38,18 +38,40 @@ class NotificationChannel extends pulumi.CustomResource {
           'google-native:monitoring/v3:NotificationChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     creationRecord = registerOutput<MutationRecordResponse>('creationRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MutationRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool>('enabled');
-    labels = registerOutput<Map<String, String>>('labels');
-    mutationRecords = registerOutput<List<Map<String, dynamic>>>('mutationRecords');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    mutationRecords = registerOutput<List<MutationRecordResponse>>('mutationRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MutationRecordResponse>(guardedValue, (value) => MutationRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     type = registerOutput<String>('type');
-    userLabels = registerOutput<Map<String, String>>('userLabels');
+    userLabels = registerOutput<Map<String, String>>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    verificationStatus = registerOutput<String>('verificationStatus');
+  }
+
+  /// Creates a typed reference to an existing [NotificationChannel] resource.
+  NotificationChannel.reference(String urn)
+    : super(
+        'google-native:monitoring/v3:NotificationChannel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationRecord = registerOutput<MutationRecordResponse>('creationRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MutationRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool>('enabled');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    mutationRecords = registerOutput<List<MutationRecordResponse>>('mutationRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MutationRecordResponse>(guardedValue, (value) => MutationRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    type = registerOutput<String>('type');
+    userLabels = registerOutput<Map<String, String>>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     verificationStatus = registerOutput<String>('verificationStatus');
   }
 }

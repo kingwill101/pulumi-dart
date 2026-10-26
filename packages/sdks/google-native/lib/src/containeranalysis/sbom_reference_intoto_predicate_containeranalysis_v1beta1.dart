@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A predicate which describes the SBOM being referenced.
 class SbomReferenceIntotoPredicateContaineranalysisV1beta1 {
   /// A map of algorithm to digest of the contents of the SBOM.
-  final pulumi.Input<Map<String, String>>? digest;
+  final pulumi.Input<Map<String, String>?>? digest;
   /// The location of the SBOM.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The mime type of the SBOM.
-  final pulumi.Input<String>? mimeType;
+  final pulumi.Input<String?>? mimeType;
   /// The person or system referring this predicate to the consumer.
-  final pulumi.Input<String>? referrerId;
+  final pulumi.Input<String?>? referrerId;
 
   /// Creates a new [SbomReferenceIntotoPredicateContaineranalysisV1beta1].
   /// [digest] A map of algorithm to digest of the contents of the SBOM.

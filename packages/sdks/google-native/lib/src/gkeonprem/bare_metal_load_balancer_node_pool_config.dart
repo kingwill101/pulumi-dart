@@ -6,7 +6,7 @@ import 'bare_metal_node_pool_config.dart';
 /// Specifies the load balancer's node pool configuration.
 class BareMetalLoadBalancerNodePoolConfig {
   /// The generic configuration for a node pool running a load balancer.
-  final pulumi.Input<BareMetalNodePoolConfig>? nodePoolConfig;
+  final pulumi.Input<BareMetalNodePoolConfig?>? nodePoolConfig;
 
   /// Creates a new [BareMetalLoadBalancerNodePoolConfig].
   /// [nodePoolConfig] The generic configuration for a node pool running a load balancer.

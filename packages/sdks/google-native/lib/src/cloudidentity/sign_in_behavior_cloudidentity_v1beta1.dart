@@ -6,7 +6,7 @@ import 'sign_in_behavior_redirect_condition_cloudidentity_v1beta1.dart';
 /// Controls sign-in behavior.
 class SignInBehaviorCloudidentityV1beta1 {
   /// When to redirect sign-ins to the IdP.
-  final pulumi.Input<SignInBehaviorRedirectConditionCloudidentityV1beta1>? redirectCondition;
+  final pulumi.Input<SignInBehaviorRedirectConditionCloudidentityV1beta1?>? redirectCondition;
 
   /// Creates a new [SignInBehaviorCloudidentityV1beta1].
   /// [redirectCondition] When to redirect sign-ins to the IdP.

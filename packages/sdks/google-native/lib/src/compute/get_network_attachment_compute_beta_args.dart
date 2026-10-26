@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_beta_get_network_attachment_compute_beta_args_doc}
 class GetNetworkAttachmentComputeBetaArgs {
   final pulumi.Input<String> networkAttachment;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
 
   /// Creates a new [GetNetworkAttachmentComputeBetaArgs].

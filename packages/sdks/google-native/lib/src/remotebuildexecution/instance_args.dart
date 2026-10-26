@@ -9,14 +9,14 @@ import 'google_devtools_remotebuildexecution_admin_v1alpha_feature_policy.dart';
 /// {@macro pulumi_remotebuildexecution_v1alpha_instance_args_doc}
 class InstanceArgs {
   /// The policy to define whether or not RBE features can be used or how they can be used.
-  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy>? featurePolicy;
+  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy?>? featurePolicy;
   /// ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// The location is a GCP region. Currently only `us-central1` is supported.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
-  final pulumi.Input<String>? parent;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? parent;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [InstanceArgs].
   /// [featurePolicy] The policy to define whether or not RBE features can be used or how they can be used.

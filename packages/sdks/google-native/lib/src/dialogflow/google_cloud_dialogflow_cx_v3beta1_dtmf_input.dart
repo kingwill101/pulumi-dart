@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the input for dtmf event.
 class GoogleCloudDialogflowCxV3beta1DtmfInput {
   /// The dtmf digits.
-  final pulumi.Input<String>? digits;
+  final pulumi.Input<String?>? digits;
   /// The finish digit (if any).
-  final pulumi.Input<String>? finishDigit;
+  final pulumi.Input<String?>? finishDigit;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1DtmfInput].
   /// [digits] The dtmf digits.

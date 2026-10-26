@@ -7,9 +7,9 @@ import 'cloud_audit_options_log_name_gameservices_v1beta.dart';
 /// Write a Cloud Audit log
 class CloudAuditOptionsGameservicesV1beta {
   /// Information used by the Cloud Audit Logging pipeline.
-  final pulumi.Input<AuthorizationLoggingOptionsGameservicesV1beta>? authorizationLoggingOptions;
+  final pulumi.Input<AuthorizationLoggingOptionsGameservicesV1beta?>? authorizationLoggingOptions;
   /// The log_name to populate in the Cloud Audit Record.
-  final pulumi.Input<CloudAuditOptionsLogNameGameservicesV1beta>? logName;
+  final pulumi.Input<CloudAuditOptionsLogNameGameservicesV1beta?>? logName;
 
   /// Creates a new [CloudAuditOptionsGameservicesV1beta].
   /// [authorizationLoggingOptions] Information used by the Cloud Audit Logging pipeline.

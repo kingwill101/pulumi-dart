@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dialogflow_v2beta1_get_version_dialogflow_v2beta1_args_doc}
 class GetVersionDialogflowV2beta1Args {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> versionId;
 
   /// Creates a new [GetVersionDialogflowV2beta1Args].

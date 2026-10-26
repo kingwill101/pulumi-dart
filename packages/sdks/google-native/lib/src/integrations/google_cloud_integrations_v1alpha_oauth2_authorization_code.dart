@@ -8,27 +8,27 @@ import 'google_cloud_integrations_v1alpha_parameter_map.dart';
 /// The OAuth Type where the client sends request with the client id and requested scopes to auth endpoint. User sees a consent screen and auth code is received at specified redirect url afterwards. The auth code is then combined with the client id and secret and sent to the token endpoint in exchange for the access and refresh token. The refresh token can be used to fetch new access tokens.
 class GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode {
   /// The access token received from the token endpoint.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaAccessToken>? accessToken;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaAccessToken?>? accessToken;
   /// Indicates if the user has opted in Google Reauth Policy. If opted in, the refresh token will be valid for 20 hours, after which time users must re-authenticate in order to obtain a new one.
-  final pulumi.Input<bool>? applyReauthPolicy;
+  final pulumi.Input<bool?>? applyReauthPolicy;
   /// The Auth Code that is used to initially retrieve the access token.
-  final pulumi.Input<String>? authCode;
+  final pulumi.Input<String?>? authCode;
   /// The auth url endpoint to send the auth code request to.
-  final pulumi.Input<String>? authEndpoint;
+  final pulumi.Input<String?>? authEndpoint;
   /// The auth parameters sent along with the auth code request.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMap>? authParams;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMap?>? authParams;
   /// The client's id.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The client's secret.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Represent how to pass parameters to fetch access token
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType>? requestType;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType?>? requestType;
   /// A space-delimited list of requested scope permissions.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// The token url endpoint to send the token request to.
-  final pulumi.Input<String>? tokenEndpoint;
+  final pulumi.Input<String?>? tokenEndpoint;
   /// The token parameters sent along with the token request.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMap>? tokenParams;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMap?>? tokenParams;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode].
   /// [accessToken] The access token received from the token endpoint.

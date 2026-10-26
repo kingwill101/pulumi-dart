@@ -7,7 +7,7 @@ import 'google_cloud_dialogflow_v2_intent_message_browse_carousel_card_image_dis
 /// Browse Carousel Card for Actions on Google. https://developers.google.com/actions/assistant/responses#browsing_carousel
 class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
   /// Optional. Settings for displaying the image. Applies to every image in items.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions>? imageDisplayOptions;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions?>? imageDisplayOptions;
   /// List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
   final pulumi.Input<List<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem>> items;
 

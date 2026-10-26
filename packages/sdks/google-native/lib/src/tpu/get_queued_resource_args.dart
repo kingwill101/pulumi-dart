@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_tpu_v2alpha1_get_queued_resource_args_doc}
 class GetQueuedResourceArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> queuedResourceId;
 
   /// Creates a new [GetQueuedResourceArgs].

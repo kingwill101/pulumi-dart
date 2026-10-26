@@ -7,8 +7,8 @@ import 'in_toto_statement.dart';
 /// Deprecated. Prefer to use a regular Occurrence, and populate the Envelope at the top level of the Occurrence.
 class DSSEAttestationOccurrence {
   /// If doing something security critical, make sure to verify the signatures in this metadata.
-  final pulumi.Input<Envelope>? envelope;
-  final pulumi.Input<InTotoStatement>? statement;
+  final pulumi.Input<Envelope?>? envelope;
+  final pulumi.Input<InTotoStatement?>? statement;
 
   /// Creates a new [DSSEAttestationOccurrence].
   /// [envelope] If doing something security critical, make sure to verify the signatures in this metadata.

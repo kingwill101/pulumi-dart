@@ -7,11 +7,11 @@ import 'enterprise_crm_eventbus_proto_value_type.dart';
 /// Condition that uses `operator` to evaluate the key against the value.
 class EnterpriseCrmEventbusProtoCondition {
   /// Key that's evaluated against the `value`. Please note the data type of the runtime value associated with the key should match the data type of `value`, else an IllegalArgumentException is thrown.
-  final pulumi.Input<String>? eventPropertyKey;
+  final pulumi.Input<String?>? eventPropertyKey;
   /// Operator used to evaluate the condition. Please note that an operator with an inappropriate key/value operand will result in IllegalArgumentException, e.g. CONTAINS with boolean key/value pair.
-  final pulumi.Input<EnterpriseCrmEventbusProtoConditionOperator>? operator;
+  final pulumi.Input<EnterpriseCrmEventbusProtoConditionOperator?>? operator;
   /// Value that's checked for the key.
-  final pulumi.Input<EnterpriseCrmEventbusProtoValueType>? value;
+  final pulumi.Input<EnterpriseCrmEventbusProtoValueType?>? value;
 
   /// Creates a new [EnterpriseCrmEventbusProtoCondition].
   /// [eventPropertyKey] Key that's evaluated against the `value`. Please note the data type of the runtime value associated with the key should match the data type of `value`, else an IllegalArgumentException is thrown.

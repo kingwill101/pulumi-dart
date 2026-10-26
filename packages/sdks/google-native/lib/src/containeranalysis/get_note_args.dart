@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_containeranalysis_v1_get_note_args_doc}
 class GetNoteArgs {
   final pulumi.Input<String> noteId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetNoteArgs].
   /// [noteId] Required.

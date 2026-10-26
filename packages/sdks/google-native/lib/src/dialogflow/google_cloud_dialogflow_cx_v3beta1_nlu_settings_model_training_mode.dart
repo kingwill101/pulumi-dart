@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates NLU model training mode.
-enum GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode {
+enum GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode implements pulumi.PulumiEnum<String> {
   modelTrainingModeUnspecified("MODEL_TRAINING_MODE_UNSPECIFIED"),
   modelTrainingModeAutomatic("MODEL_TRAINING_MODE_AUTOMATIC"),
   modelTrainingModeManual("MODEL_TRAINING_MODE_MANUAL");
 
   const GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode fromValue(String value) {

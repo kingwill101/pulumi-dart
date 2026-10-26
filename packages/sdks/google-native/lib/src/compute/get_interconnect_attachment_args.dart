@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_alpha_get_interconnect_attachment_args_doc}
 class GetInterconnectAttachmentArgs {
   final pulumi.Input<String> interconnectAttachment;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
 
   /// Creates a new [GetInterconnectAttachmentArgs].

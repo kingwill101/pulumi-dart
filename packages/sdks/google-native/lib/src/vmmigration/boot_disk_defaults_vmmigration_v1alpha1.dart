@@ -8,15 +8,15 @@ import 'encryption_vmmigration_v1alpha1.dart';
 /// BootDiskDefaults hold information about the boot disk of a VM.
 class BootDiskDefaultsVmmigrationV1alpha1 {
   /// Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
-  final pulumi.Input<String>? deviceName;
+  final pulumi.Input<String?>? deviceName;
   /// Optional. The name of the disk.
-  final pulumi.Input<String>? diskName;
+  final pulumi.Input<String?>? diskName;
   /// Optional. The type of disk provisioning to use for the VM.
-  final pulumi.Input<BootDiskDefaultsDiskTypeVmmigrationV1alpha1>? diskType;
+  final pulumi.Input<BootDiskDefaultsDiskTypeVmmigrationV1alpha1?>? diskType;
   /// Optional. The encryption to apply to the boot disk.
-  final pulumi.Input<EncryptionVmmigrationV1alpha1>? encryption;
+  final pulumi.Input<EncryptionVmmigrationV1alpha1?>? encryption;
   /// The image to use when creating the disk.
-  final pulumi.Input<DiskImageDefaultsVmmigrationV1alpha1>? image;
+  final pulumi.Input<DiskImageDefaultsVmmigrationV1alpha1?>? image;
 
   /// Creates a new [BootDiskDefaultsVmmigrationV1alpha1].
   /// [deviceName] Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.

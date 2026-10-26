@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_datacatalog_v1_get_tag_template_iam_policy_args_doc}
 class GetTagTemplateIamPolicyArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> tagTemplateId;
 
   /// Creates a new [GetTagTemplateIamPolicyArgs].

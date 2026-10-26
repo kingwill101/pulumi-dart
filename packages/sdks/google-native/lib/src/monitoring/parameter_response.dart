@@ -26,7 +26,7 @@ class ParameterResponse {
 
   factory ParameterResponse.fromMap(Map<String, dynamic> map) {
     return ParameterResponse(
-      doubleValue: pulumi.Input.fromValue(map['doubleValue'] as double),
+      doubleValue: pulumi.Input.fromValue((map['doubleValue'] as num).toDouble()),
       intValue: pulumi.Input.fromValue(map['intValue'] as String),
     );
   }

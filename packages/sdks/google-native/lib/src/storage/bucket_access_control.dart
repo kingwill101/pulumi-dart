@@ -6,11 +6,11 @@ import 'bucket_access_control_project_team.dart';
 /// An access-control entry.
 class BucketAccessControl {
   /// The name of the bucket.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// The domain associated with the entity, if any.
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// The email address associated with the entity, if any.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The entity holding the permission, in one of the following forms:
   /// - user-userId
   /// - user-email
@@ -23,21 +23,21 @@ class BucketAccessControl {
   /// - The user liz@example.com would be user-liz@example.com.
   /// - The group example@googlegroups.com would be group-example@googlegroups.com.
   /// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
-  final pulumi.Input<String>? entity;
+  final pulumi.Input<String?>? entity;
   /// The ID for the entity, if any.
-  final pulumi.Input<String>? entityId;
+  final pulumi.Input<String?>? entityId;
   /// HTTP 1.1 Entity tag for the access-control entry.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The ID of the access-control entry.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The project team associated with the entity, if any.
-  final pulumi.Input<BucketAccessControlProjectTeam>? projectTeam;
+  final pulumi.Input<BucketAccessControlProjectTeam?>? projectTeam;
   /// The access permission for the entity.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// The link to this access-control entry.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
 
   /// Creates a new [BucketAccessControl].
   /// [bucket] The name of the bucket.

@@ -10,7 +10,7 @@ import 'google_cloud_policysimulator_v1beta1_replay_config.dart';
 class OrganizationReplayPolicysimulatorV1beta1Args {
   /// The configuration used for the `Replay`.
   final pulumi.Input<GoogleCloudPolicysimulatorV1beta1ReplayConfig> config;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   final pulumi.Input<String> organizationId;
 
   /// Creates a new [OrganizationReplayPolicysimulatorV1beta1Args].

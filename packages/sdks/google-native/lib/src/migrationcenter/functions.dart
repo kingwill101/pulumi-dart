@@ -44,6 +44,17 @@ Future<GetGroupResult> getGroup(
   return GetGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetGroupResult> getGroupOutput(
+  GetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:migrationcenter/v1:getGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupResult.fromMap);
+}
+
 /// Gets an import data file.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrationcenter_v1_get_import_data_file_args_doc}
 /// [options] Invoke options controlling this call.
@@ -58,6 +69,17 @@ Future<GetImportDataFileResult> getImportDataFile(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImportDataFileResult.fromMap(result);
+}
+
+pulumi.Output<GetImportDataFileResult> getImportDataFileOutput(
+  GetImportDataFileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:migrationcenter/v1:getImportDataFile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImportDataFileResult.fromMap);
 }
 
 /// Gets the details of an import job.
@@ -76,6 +98,17 @@ Future<GetImportJobResult> getImportJob(
   return GetImportJobResult.fromMap(result);
 }
 
+pulumi.Output<GetImportJobResult> getImportJobOutput(
+  GetImportJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:migrationcenter/v1:getImportJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImportJobResult.fromMap);
+}
+
 /// Gets the details of a preference set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrationcenter_v1_get_preference_set_args_doc}
 /// [options] Invoke options controlling this call.
@@ -90,6 +123,17 @@ Future<GetPreferenceSetResult> getPreferenceSet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPreferenceSetResult.fromMap(result);
+}
+
+pulumi.Output<GetPreferenceSetResult> getPreferenceSetOutput(
+  GetPreferenceSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:migrationcenter/v1:getPreferenceSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPreferenceSetResult.fromMap);
 }
 
 /// Gets details of a single Report.
@@ -108,6 +152,17 @@ Future<GetReportResult> getReport(
   return GetReportResult.fromMap(result);
 }
 
+pulumi.Output<GetReportResult> getReportOutput(
+  GetReportArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:migrationcenter/v1:getReport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReportResult.fromMap);
+}
+
 /// Gets details of a single ReportConfig.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrationcenter_v1_get_report_config_args_doc}
 /// [options] Invoke options controlling this call.
@@ -122,6 +177,17 @@ Future<GetReportConfigResult> getReportConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReportConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetReportConfigResult> getReportConfigOutput(
+  GetReportConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:migrationcenter/v1:getReportConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReportConfigResult.fromMap);
 }
 
 /// Gets the details of a source.
@@ -140,6 +206,17 @@ Future<GetSourceResult> getSource(
   return GetSourceResult.fromMap(result);
 }
 
+pulumi.Output<GetSourceResult> getSourceOutput(
+  GetSourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:migrationcenter/v1:getSource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSourceResult.fromMap);
+}
+
 /// Gets the details of a group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrationcenter_v1alpha1_get_group_migrationcenter_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -154,6 +231,17 @@ Future<GetGroupMigrationcenterV1alpha1Result> getGroupMigrationcenterV1alpha1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGroupMigrationcenterV1alpha1Result.fromMap(result);
+}
+
+pulumi.Output<GetGroupMigrationcenterV1alpha1Result> getGroupMigrationcenterV1alpha1Output(
+  GetGroupMigrationcenterV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:migrationcenter/v1alpha1:getGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupMigrationcenterV1alpha1Result.fromMap);
 }
 
 /// Gets an import data file.
@@ -172,6 +260,17 @@ Future<GetImportDataFileMigrationcenterV1alpha1Result> getImportDataFileMigratio
   return GetImportDataFileMigrationcenterV1alpha1Result.fromMap(result);
 }
 
+pulumi.Output<GetImportDataFileMigrationcenterV1alpha1Result> getImportDataFileMigrationcenterV1alpha1Output(
+  GetImportDataFileMigrationcenterV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:migrationcenter/v1alpha1:getImportDataFile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImportDataFileMigrationcenterV1alpha1Result.fromMap);
+}
+
 /// Gets the details of an import job.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrationcenter_v1alpha1_get_import_job_migrationcenter_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -186,6 +285,17 @@ Future<GetImportJobMigrationcenterV1alpha1Result> getImportJobMigrationcenterV1a
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImportJobMigrationcenterV1alpha1Result.fromMap(result);
+}
+
+pulumi.Output<GetImportJobMigrationcenterV1alpha1Result> getImportJobMigrationcenterV1alpha1Output(
+  GetImportJobMigrationcenterV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:migrationcenter/v1alpha1:getImportJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImportJobMigrationcenterV1alpha1Result.fromMap);
 }
 
 /// Gets the details of a preference set.
@@ -204,6 +314,17 @@ Future<GetPreferenceSetMigrationcenterV1alpha1Result> getPreferenceSetMigrationc
   return GetPreferenceSetMigrationcenterV1alpha1Result.fromMap(result);
 }
 
+pulumi.Output<GetPreferenceSetMigrationcenterV1alpha1Result> getPreferenceSetMigrationcenterV1alpha1Output(
+  GetPreferenceSetMigrationcenterV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:migrationcenter/v1alpha1:getPreferenceSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPreferenceSetMigrationcenterV1alpha1Result.fromMap);
+}
+
 /// Gets details of a single Report.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrationcenter_v1alpha1_get_report_migrationcenter_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -218,6 +339,17 @@ Future<GetReportMigrationcenterV1alpha1Result> getReportMigrationcenterV1alpha1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReportMigrationcenterV1alpha1Result.fromMap(result);
+}
+
+pulumi.Output<GetReportMigrationcenterV1alpha1Result> getReportMigrationcenterV1alpha1Output(
+  GetReportMigrationcenterV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:migrationcenter/v1alpha1:getReport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReportMigrationcenterV1alpha1Result.fromMap);
 }
 
 /// Gets details of a single ReportConfig.
@@ -236,6 +368,17 @@ Future<GetReportConfigMigrationcenterV1alpha1Result> getReportConfigMigrationcen
   return GetReportConfigMigrationcenterV1alpha1Result.fromMap(result);
 }
 
+pulumi.Output<GetReportConfigMigrationcenterV1alpha1Result> getReportConfigMigrationcenterV1alpha1Output(
+  GetReportConfigMigrationcenterV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:migrationcenter/v1alpha1:getReportConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReportConfigMigrationcenterV1alpha1Result.fromMap);
+}
+
 /// Gets the details of a source.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrationcenter_v1alpha1_get_source_migrationcenter_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -250,4 +393,15 @@ Future<GetSourceMigrationcenterV1alpha1Result> getSourceMigrationcenterV1alpha1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSourceMigrationcenterV1alpha1Result.fromMap(result);
+}
+
+pulumi.Output<GetSourceMigrationcenterV1alpha1Result> getSourceMigrationcenterV1alpha1Output(
+  GetSourceMigrationcenterV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:migrationcenter/v1alpha1:getSource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSourceMigrationcenterV1alpha1Result.fromMap);
 }

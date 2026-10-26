@@ -10,7 +10,7 @@ class GetCertificateMapEntryArgs {
   final pulumi.Input<String> certificateMapEntryId;
   final pulumi.Input<String> certificateMapId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetCertificateMapEntryArgs].
   /// [certificateMapEntryId] Required.

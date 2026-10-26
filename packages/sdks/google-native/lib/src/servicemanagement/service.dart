@@ -21,8 +21,21 @@ class Service extends pulumi.CustomResource {
           'google-native:servicemanagement/v1:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
+    producerProjectId = registerOutput<String>('producerProjectId');
+    serviceName = registerOutput<String>('serviceName');
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'google-native:servicemanagement/v1:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     producerProjectId = registerOutput<String>('producerProjectId');
     serviceName = registerOutput<String>('serviceName');
   }

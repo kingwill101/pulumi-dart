@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies a bandwidth limit for an agent pool.
 class BandwidthLimit {
   /// Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
-  final pulumi.Input<String>? limitMbps;
+  final pulumi.Input<String?>? limitMbps;
 
   /// Creates a new [BandwidthLimit].
   /// [limitMbps] Bandwidth rate in megabytes per second, distributed across all the agents in the pool.

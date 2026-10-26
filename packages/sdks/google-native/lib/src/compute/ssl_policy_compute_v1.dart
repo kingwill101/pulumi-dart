@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ssl_policy_compute_v1_args.dart';
+import 'ssl_policy_warnings_item_response_compute_v1.dart';
 
 /// Returns the specified SSL policy resource.
 class SslPolicyComputeV1 extends pulumi.CustomResource {
@@ -29,7 +30,7 @@ class SslPolicyComputeV1 extends pulumi.CustomResource {
   /// Server-defined URL for the resource.
   late final pulumi.Output<String> selfLink;
   /// If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-  late final pulumi.Output<List<Map<String, dynamic>>> warnings;
+  late final pulumi.Output<List<SslPolicyWarningsItemResponseComputeV1>> warnings;
 
   /// Creates a new [SslPolicyComputeV1].
   /// [name] The Pulumi resource name.
@@ -43,12 +44,12 @@ class SslPolicyComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:SslPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
-    customFeatures = registerOutput<List<String>>('customFeatures');
+    customFeatures = registerOutput<List<String>>('customFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String>('description');
-    enabledFeatures = registerOutput<List<String>>('enabledFeatures');
+    enabledFeatures = registerOutput<List<String>>('enabledFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     fingerprint = registerOutput<String>('fingerprint');
     kind = registerOutput<String>('kind');
     minTlsVersion = registerOutput<String>('minTlsVersion');
@@ -58,6 +59,31 @@ class SslPolicyComputeV1 extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');
     selfLink = registerOutput<String>('selfLink');
-    warnings = registerOutput<List<Map<String, dynamic>>>('warnings');
+    warnings = registerOutput<List<SslPolicyWarningsItemResponseComputeV1>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SslPolicyWarningsItemResponseComputeV1>(guardedValue, (value) => SslPolicyWarningsItemResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [SslPolicyComputeV1] resource.
+  SslPolicyComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:SslPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    customFeatures = registerOutput<List<String>>('customFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String>('description');
+    enabledFeatures = registerOutput<List<String>>('enabledFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    fingerprint = registerOutput<String>('fingerprint');
+    kind = registerOutput<String>('kind');
+    minTlsVersion = registerOutput<String>('minTlsVersion');
+    this.name = registerOutput<String>('name');
+    profile = registerOutput<String>('profile');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    warnings = registerOutput<List<SslPolicyWarningsItemResponseComputeV1>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SslPolicyWarningsItemResponseComputeV1>(guardedValue, (value) => SslPolicyWarningsItemResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

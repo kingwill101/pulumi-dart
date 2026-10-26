@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Rendered image contents for this page.
 class GoogleCloudDocumentaiV1DocumentPageImage {
   /// Raw byte content of the image.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// Height of the image in pixels.
-  final pulumi.Input<int>? height;
+  final pulumi.Input<int?>? height;
   /// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the image.
-  final pulumi.Input<String>? mimeType;
+  final pulumi.Input<String?>? mimeType;
   /// Width of the image in pixels.
-  final pulumi.Input<int>? width;
+  final pulumi.Input<int?>? width;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageImage].
   /// [content] Raw byte content of the image.
@@ -37,9 +37,9 @@ class GoogleCloudDocumentaiV1DocumentPageImage {
   factory GoogleCloudDocumentaiV1DocumentPageImage.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageImage(
       content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      height: (() { final guardedValue = map['height']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      height: (() { final guardedValue = map['height']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       mimeType: (() { final guardedValue = map['mimeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      width: (() { final guardedValue = map['width']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      width: (() { final guardedValue = map['width']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

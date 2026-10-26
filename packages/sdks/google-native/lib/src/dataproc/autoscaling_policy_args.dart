@@ -9,15 +9,15 @@ import 'instance_group_autoscaling_policy_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_dataproc_v1_autoscaling_policy_args_doc}
 class AutoscalingPolicyArgs {
-  final pulumi.Input<BasicAutoscalingAlgorithm>? basicAlgorithm;
+  final pulumi.Input<BasicAutoscalingAlgorithm?>? basicAlgorithm;
   /// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
   final pulumi.Input<String> id;
   /// Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Optional. Describes how the autoscaler will operate for secondary workers.
-  final pulumi.Input<InstanceGroupAutoscalingPolicyConfig>? secondaryWorkerConfig;
+  final pulumi.Input<InstanceGroupAutoscalingPolicyConfig?>? secondaryWorkerConfig;
   /// Describes how the autoscaler will operate for primary workers.
   final pulumi.Input<InstanceGroupAutoscalingPolicyConfig> workerConfig;
 

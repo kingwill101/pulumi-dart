@@ -192,7 +192,7 @@ class GoogleCloudRetailV2ProductResponse {
       attributes: pulumi.Input.fromValue((map['attributes'] as Map).cast<String, String>()),
       audience: pulumi.Input.fromValue(GoogleCloudRetailV2AudienceResponse.fromMap((map['audience']! as Map).cast<String, dynamic>())),
       availability: pulumi.Input.fromValue(map['availability'] as String),
-      availableQuantity: pulumi.Input.fromValue(map['availableQuantity'] as int),
+      availableQuantity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['availableQuantity'])),
       availableTime: pulumi.Input.fromValue(map['availableTime'] as String),
       brands: pulumi.Input.fromValue((map['brands'] as List).cast<String>()),
       categories: pulumi.Input.fromValue((map['categories'] as List).cast<String>()),

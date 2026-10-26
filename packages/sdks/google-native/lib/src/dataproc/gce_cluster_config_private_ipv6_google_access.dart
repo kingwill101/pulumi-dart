@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The type of IPv6 access for a cluster.
-enum GceClusterConfigPrivateIpv6GoogleAccess {
+enum GceClusterConfigPrivateIpv6GoogleAccess implements pulumi.PulumiEnum<String> {
   privateIpv6GoogleAccessUnspecified("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"),
   inheritFromSubnetwork("INHERIT_FROM_SUBNETWORK"),
   outbound("OUTBOUND"),
   bidirectional("BIDIRECTIONAL");
 
   const GceClusterConfigPrivateIpv6GoogleAccess(this.wireValue);
+  @override
   final String wireValue;
 
   static GceClusterConfigPrivateIpv6GoogleAccess fromValue(String value) {

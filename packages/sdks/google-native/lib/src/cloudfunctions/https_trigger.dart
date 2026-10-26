@@ -6,7 +6,7 @@ import 'https_trigger_security_level.dart';
 /// Describes HttpsTrigger, could be used to connect web hooks to function.
 class HttpsTrigger {
   /// The security level for the function.
-  final pulumi.Input<HttpsTriggerSecurityLevel>? securityLevel;
+  final pulumi.Input<HttpsTriggerSecurityLevel?>? securityLevel;
 
   /// Creates a new [HttpsTrigger].
   /// [securityLevel] The security level for the function.

@@ -28,13 +28,32 @@ class Context extends pulumi.CustomResource {
           'google-native:dialogflow/v2:Context',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['environmentId', 'location', 'project', 'sessionId', 'userId']).merge(options),
         ) {
     environmentId = registerOutput<String>('environmentId');
     lifespanCount = registerOutput<int>('lifespanCount');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>>('parameters');
+    parameters = registerOutput<Map<String, String>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    project = registerOutput<String>('project');
+    sessionId = registerOutput<String>('sessionId');
+    userId = registerOutput<String>('userId');
+  }
+
+  /// Creates a typed reference to an existing [Context] resource.
+  Context.reference(String urn)
+    : super(
+        'google-native:dialogflow/v2:Context',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    environmentId = registerOutput<String>('environmentId');
+    lifespanCount = registerOutput<int>('lifespanCount');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     project = registerOutput<String>('project');
     sessionId = registerOutput<String>('sessionId');
     userId = registerOutput<String>('userId');

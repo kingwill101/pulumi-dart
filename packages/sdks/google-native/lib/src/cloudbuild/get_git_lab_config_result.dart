@@ -8,19 +8,19 @@ import 'git_lab_secrets_response.dart';
 /// Result data returned by getGitLabConfig.
 class GetGitLabConfigResult {
   /// Connected GitLab.com or GitLabEnterprise repositories for this config.
-  final List<GitLabRepositoryIdResponse> connectedRepositories;
+  final List<GitLabRepositoryIdResponse>? connectedRepositories;
   /// Time when the config was created.
-  final String createTime;
+  final String? createTime;
   /// Optional. GitLabEnterprise config.
-  final GitLabEnterpriseConfigResponse enterpriseConfig;
+  final GitLabEnterpriseConfigResponse? enterpriseConfig;
   /// The resource name for the config.
-  final String name;
+  final String? name;
   /// Secret Manager secrets needed by the config.
-  final GitLabSecretsResponse secrets;
+  final GitLabSecretsResponse? secrets;
   /// Username of the GitLab.com or GitLab Enterprise account Cloud Build will use.
-  final String username;
+  final String? username;
   /// UUID included in webhook requests. The UUID is used to look up the corresponding config.
-  final String webhookKey;
+  final String? webhookKey;
 
   /// Creates a new [GetGitLabConfigResult].
   /// [connectedRepositories] Connected GitLab.com or GitLabEnterprise repositories for this config.
@@ -31,36 +31,36 @@ class GetGitLabConfigResult {
   /// [username] Username of the GitLab.com or GitLab Enterprise account Cloud Build will use.
   /// [webhookKey] UUID included in webhook requests. The UUID is used to look up the corresponding config.
   const GetGitLabConfigResult({
-    required this.connectedRepositories,
-    required this.createTime,
-    required this.enterpriseConfig,
-    required this.name,
-    required this.secrets,
-    required this.username,
-    required this.webhookKey,
+    this.connectedRepositories,
+    this.createTime,
+    this.enterpriseConfig,
+    this.name,
+    this.secrets,
+    this.username,
+    this.webhookKey,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectedRepositories': pulumi.Input.encodeList<GitLabRepositoryIdResponse, Map<String, dynamic>>(connectedRepositories, (value) => value.toMap()),
-      'createTime': createTime,
-      'enterpriseConfig': enterpriseConfig.toMap(),
-      'name': name,
-      'secrets': secrets.toMap(),
-      'username': username,
-      'webhookKey': webhookKey,
+      'connectedRepositories': ?(() { final guardedValue = connectedRepositories; if (guardedValue == null) return null; return pulumi.Input.encodeList<GitLabRepositoryIdResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'createTime': ?createTime,
+      'enterpriseConfig': ?enterpriseConfig?.toMap(),
+      'name': ?name,
+      'secrets': ?secrets?.toMap(),
+      'username': ?username,
+      'webhookKey': ?webhookKey,
     };
   }
 
   factory GetGitLabConfigResult.fromMap(Map<String, dynamic> map) {
     return GetGitLabConfigResult(
-      connectedRepositories: pulumi.Input.decodeList<GitLabRepositoryIdResponse>(map['connectedRepositories']!, (value) => GitLabRepositoryIdResponse.fromMap((value as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] as String,
-      enterpriseConfig: GitLabEnterpriseConfigResponse.fromMap((map['enterpriseConfig']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      secrets: GitLabSecretsResponse.fromMap((map['secrets']! as Map).cast<String, dynamic>()),
-      username: map['username'] as String,
-      webhookKey: map['webhookKey'] as String,
+      connectedRepositories: (() { final guardedValue = map['connectedRepositories']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GitLabRepositoryIdResponse>(guardedValue, (value) => GitLabRepositoryIdResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enterpriseConfig: (() { final guardedValue = map['enterpriseConfig']; if (guardedValue == null) return null; return GitLabEnterpriseConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return GitLabSecretsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      webhookKey: (() { final guardedValue = map['webhookKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

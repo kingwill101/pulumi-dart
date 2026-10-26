@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 class MultiClusterIngressFeatureSpec {
   /// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
-  final pulumi.Input<String>? configMembership;
+  final pulumi.Input<String?>? configMembership;
 
   /// Creates a new [MultiClusterIngressFeatureSpec].
   /// [configMembership] Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`

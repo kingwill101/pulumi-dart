@@ -5,9 +5,9 @@ import 'instance_message_code_memcache_v1beta2.dart';
 
 class InstanceMessageMemcacheV1beta2 {
   /// A code that correspond to one type of user-facing message.
-  final pulumi.Input<InstanceMessageCodeMemcacheV1beta2>? code;
+  final pulumi.Input<InstanceMessageCodeMemcacheV1beta2?>? code;
   /// Message on memcached instance which will be exposed to users.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [InstanceMessageMemcacheV1beta2].
   /// [code] A code that correspond to one type of user-facing message.

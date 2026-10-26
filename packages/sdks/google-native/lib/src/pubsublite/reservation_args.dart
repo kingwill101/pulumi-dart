@@ -7,14 +7,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_pubsublite_v1_reservation_args_doc}
 class ReservationArgs {
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Required. The ID to use for the reservation, which will become the final component of the reservation's name. This value is structured like: `my-reservation-name`.
   final pulumi.Input<String> reservationId;
   /// The reserved throughput capacity. Every unit of throughput capacity is equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed messages. Any topics which are declared as using capacity from a Reservation will consume resources from this reservation instead of being charged individually.
-  final pulumi.Input<String>? throughputCapacity;
+  final pulumi.Input<String?>? throughputCapacity;
 
   /// Creates a new [ReservationArgs].
   /// [location] Optional.

@@ -7,15 +7,15 @@ import 'vmware_control_plane_vsphere_config.dart';
 /// Specifies control plane node config for the VMware user cluster.
 class VmwareControlPlaneNodeConfig {
   /// AutoResizeConfig provides auto resizing configurations.
-  final pulumi.Input<VmwareAutoResizeConfig>? autoResizeConfig;
+  final pulumi.Input<VmwareAutoResizeConfig?>? autoResizeConfig;
   /// The number of CPUs for each admin cluster node that serve as control planes for this VMware user cluster. (default: 4 CPUs)
-  final pulumi.Input<String>? cpus;
+  final pulumi.Input<String?>? cpus;
   /// The megabytes of memory for each admin cluster node that serves as a control plane for this VMware user cluster (default: 8192 MB memory).
-  final pulumi.Input<String>? memory;
+  final pulumi.Input<String?>? memory;
   /// The number of control plane nodes for this VMware user cluster. (default: 1 replica).
-  final pulumi.Input<String>? replicas;
+  final pulumi.Input<String?>? replicas;
   /// Vsphere-specific config.
-  final pulumi.Input<VmwareControlPlaneVsphereConfig>? vsphereConfig;
+  final pulumi.Input<VmwareControlPlaneVsphereConfig?>? vsphereConfig;
 
   /// Creates a new [VmwareControlPlaneNodeConfig].
   /// [autoResizeConfig] AutoResizeConfig provides auto resizing configurations.

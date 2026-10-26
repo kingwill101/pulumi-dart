@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAuthorizedCertificateAppengineV1alphaArgs {
   final pulumi.Input<String> appId;
   final pulumi.Input<String> authorizedCertificateId;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetAuthorizedCertificateAppengineV1alphaArgs].
   /// [appId] Required.

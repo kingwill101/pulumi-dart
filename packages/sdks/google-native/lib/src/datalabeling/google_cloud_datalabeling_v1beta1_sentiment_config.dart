@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Config for setting up sentiments.
 class GoogleCloudDatalabelingV1beta1SentimentConfig {
   /// If set to true, contributors will have the option to select sentiment of the label they selected, to mark it as negative or positive label. Default is false.
-  final pulumi.Input<bool>? enableLabelSentimentSelection;
+  final pulumi.Input<bool?>? enableLabelSentimentSelection;
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1SentimentConfig].
   /// [enableLabelSentimentSelection] If set to true, contributors will have the option to select sentiment of the label they selected, to mark it as negative or positive label. Default is false.

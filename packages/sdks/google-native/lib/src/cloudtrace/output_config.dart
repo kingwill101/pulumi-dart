@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// OutputConfig contains a destination for writing trace data.
 class OutputConfig {
   /// The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-  final pulumi.Input<String>? destination;
+  final pulumi.Input<String?>? destination;
 
   /// Creates a new [OutputConfig].
   /// [destination] The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"

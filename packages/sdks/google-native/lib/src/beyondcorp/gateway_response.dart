@@ -33,7 +33,7 @@ class GatewayResponse {
     return GatewayResponse(
       type: pulumi.Input.fromValue(map['type'] as String),
       uri: pulumi.Input.fromValue(map['uri'] as String),
-      userPort: pulumi.Input.fromValue(map['userPort'] as int),
+      userPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['userPort'])),
     );
   }
 }

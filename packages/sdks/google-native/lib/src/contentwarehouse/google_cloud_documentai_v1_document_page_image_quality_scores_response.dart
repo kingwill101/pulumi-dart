@@ -28,7 +28,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponse {
   factory GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponse(
       detectedDefects: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse>(map['detectedDefects']!, (value) => GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      qualityScore: pulumi.Input.fromValue(map['qualityScore'] as double),
+      qualityScore: pulumi.Input.fromValue((map['qualityScore'] as num).toDouble()),
     );
   }
 }

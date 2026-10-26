@@ -11,21 +11,21 @@ import 'encryption_config.dart';
 /// {@macro pulumi_bigtableadmin_v2_cluster_args_doc}
 class ClusterArgs {
   /// Configuration for this cluster.
-  final pulumi.Input<ClusterConfig>? clusterConfig;
+  final pulumi.Input<ClusterConfig?>? clusterConfig;
   /// Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.
   final pulumi.Input<String> clusterId;
   /// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
-  final pulumi.Input<ClusterDefaultStorageType>? defaultStorageType;
+  final pulumi.Input<ClusterDefaultStorageType?>? defaultStorageType;
   /// Immutable. The encryption configuration for CMEK-protected clusters.
-  final pulumi.Input<EncryptionConfig>? encryptionConfig;
+  final pulumi.Input<EncryptionConfig?>? encryptionConfig;
   final pulumi.Input<String> instanceId;
   /// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
-  final pulumi.Input<int>? serveNodes;
+  final pulumi.Input<int?>? serveNodes;
 
   /// Creates a new [ClusterArgs].
   /// [clusterConfig] Configuration for this cluster.
@@ -73,7 +73,7 @@ class ClusterArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      serveNodes: (() { final guardedValue = map['serveNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      serveNodes: (() { final guardedValue = map['serveNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

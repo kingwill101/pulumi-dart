@@ -5,9 +5,9 @@ import 'envelope_signature_containeranalysis_v1beta1.dart';
 
 /// MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.
 class EnvelopeContaineranalysisV1beta1 {
-  final pulumi.Input<String>? payload;
-  final pulumi.Input<String>? payloadType;
-  final pulumi.Input<List<EnvelopeSignatureContaineranalysisV1beta1>>? signatures;
+  final pulumi.Input<String?>? payload;
+  final pulumi.Input<String?>? payloadType;
+  final pulumi.Input<List<EnvelopeSignatureContaineranalysisV1beta1>?>? signatures;
 
   /// Creates a new [EnvelopeContaineranalysisV1beta1].
   /// [payload] Optional.

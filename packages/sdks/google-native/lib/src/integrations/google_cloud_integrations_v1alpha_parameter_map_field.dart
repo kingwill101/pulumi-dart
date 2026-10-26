@@ -6,9 +6,9 @@ import 'google_cloud_integrations_v1alpha_value_type.dart';
 /// Field represents either the key or value in an entry.
 class GoogleCloudIntegrationsV1alphaParameterMapField {
   /// Passing a literal value.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaValueType>? literalValue;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaValueType?>? literalValue;
   /// Referencing one of the Integration variables.
-  final pulumi.Input<String>? referenceKey;
+  final pulumi.Input<String?>? referenceKey;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaParameterMapField].
   /// [literalValue] Passing a literal value.

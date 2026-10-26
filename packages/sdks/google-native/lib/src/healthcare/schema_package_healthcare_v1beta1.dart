@@ -9,15 +9,15 @@ import 'schema_package_unexpected_segment_handling_healthcare_v1beta1.dart';
 /// A schema package contains a set of schemas and type definitions.
 class SchemaPackageHealthcareV1beta1 {
   /// Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent.
-  final pulumi.Input<bool>? ignoreMinOccurs;
+  final pulumi.Input<bool?>? ignoreMinOccurs;
   /// Schema configs that are layered based on their VersionSources that match the incoming message. Schema configs present in higher indices override those in lower indices with the same message type and trigger event if their VersionSources all match an incoming message.
-  final pulumi.Input<List<Hl7SchemaConfigHealthcareV1beta1>>? schemas;
+  final pulumi.Input<List<Hl7SchemaConfigHealthcareV1beta1>?>? schemas;
   /// Determines how messages that fail to parse are handled.
-  final pulumi.Input<SchemaPackageSchematizedParsingTypeHealthcareV1beta1>? schematizedParsingType;
+  final pulumi.Input<SchemaPackageSchematizedParsingTypeHealthcareV1beta1?>? schematizedParsingType;
   /// Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
-  final pulumi.Input<List<Hl7TypesConfigHealthcareV1beta1>>? types;
+  final pulumi.Input<List<Hl7TypesConfigHealthcareV1beta1>?>? types;
   /// Determines how unexpected segments (segments not matched to the schema) are handled.
-  final pulumi.Input<SchemaPackageUnexpectedSegmentHandlingHealthcareV1beta1>? unexpectedSegmentHandling;
+  final pulumi.Input<SchemaPackageUnexpectedSegmentHandlingHealthcareV1beta1?>? unexpectedSegmentHandling;
 
   /// Creates a new [SchemaPackageHealthcareV1beta1].
   /// [ignoreMinOccurs] Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent.

@@ -100,6 +100,17 @@ Future<GetAliasResult> getAlias(
   return GetAliasResult.fromMap(result);
 }
 
+pulumi.Output<GetAliasResult> getAliasOutput(
+  GetAliasArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getAlias',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAliasResult.fromMap);
+}
+
 /// Gets an API proxy including a list of existing revisions.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_api_args_doc}
 /// [options] Invoke options controlling this call.
@@ -114,6 +125,17 @@ Future<GetApiResult> getApi(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApiResult.fromMap(result);
+}
+
+pulumi.Output<GetApiResult> getApiOutput(
+  GetApiArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getApi',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiResult.fromMap);
 }
 
 /// Gets configuration details for an API product. The API product name required in the request URL is the internal name of the product, not the display name. While they may be the same, it depends on whether the API product was created via the UI or the API. View the list of API products to verify the internal name.
@@ -132,6 +154,17 @@ Future<GetApiProductResult> getApiProduct(
   return GetApiProductResult.fromMap(result);
 }
 
+pulumi.Output<GetApiProductResult> getApiProductOutput(
+  GetApiProductArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getApiProduct',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiProductResult.fromMap);
+}
+
 /// Gets an API category.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_apicategory_args_doc}
 /// [options] Invoke options controlling this call.
@@ -146,6 +179,17 @@ Future<GetApicategoryResult> getApicategory(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApicategoryResult.fromMap(result);
+}
+
+pulumi.Output<GetApicategoryResult> getApicategoryOutput(
+  GetApicategoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getApicategory',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApicategoryResult.fromMap);
 }
 
 /// Returns the details for an AppGroup app.
@@ -164,6 +208,17 @@ Future<GetAppGroupAppResult> getAppGroupApp(
   return GetAppGroupAppResult.fromMap(result);
 }
 
+pulumi.Output<GetAppGroupAppResult> getAppGroupAppOutput(
+  GetAppGroupAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getAppGroupApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppGroupAppResult.fromMap);
+}
+
 /// Gets details for a consumer key for a AppGroup app, including the key and secret value, associated API products, and other information.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_app_group_app_key_args_doc}
 /// [options] Invoke options controlling this call.
@@ -178,6 +233,17 @@ Future<GetAppGroupAppKeyResult> getAppGroupAppKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAppGroupAppKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetAppGroupAppKeyResult> getAppGroupAppKeyOutput(
+  GetAppGroupAppKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getAppGroupAppKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppGroupAppKeyResult.fromMap);
 }
 
 /// Returns the AppGroup details for the provided AppGroup name in the request URI.
@@ -196,6 +262,17 @@ Future<GetAppgroupResult> getAppgroup(
   return GetAppgroupResult.fromMap(result);
 }
 
+pulumi.Output<GetAppgroupResult> getAppgroupOutput(
+  GetAppgroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getAppgroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppgroupResult.fromMap);
+}
+
 /// Gets the specified ArchiveDeployment.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_archive_deployment_args_doc}
 /// [options] Invoke options controlling this call.
@@ -210,6 +287,17 @@ Future<GetArchiveDeploymentResult> getArchiveDeployment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetArchiveDeploymentResult.fromMap(result);
+}
+
+pulumi.Output<GetArchiveDeploymentResult> getArchiveDeploymentOutput(
+  GetArchiveDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getArchiveDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetArchiveDeploymentResult.fromMap);
 }
 
 /// Gets a CanaryEvaluation for an organization.
@@ -228,6 +316,17 @@ Future<GetCanaryEvaluationResult> getCanaryEvaluation(
   return GetCanaryEvaluationResult.fromMap(result);
 }
 
+pulumi.Output<GetCanaryEvaluationResult> getCanaryEvaluationOutput(
+  GetCanaryEvaluationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getCanaryEvaluation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCanaryEvaluationResult.fromMap);
+}
+
 /// Gets a data collector.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_data_collector_args_doc}
 /// [options] Invoke options controlling this call.
@@ -242,6 +341,17 @@ Future<GetDataCollectorResult> getDataCollector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataCollectorResult.fromMap(result);
+}
+
+pulumi.Output<GetDataCollectorResult> getDataCollectorOutput(
+  GetDataCollectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getDataCollector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataCollectorResult.fromMap);
 }
 
 /// Get a Datastore
@@ -260,6 +370,17 @@ Future<GetDatastoreResult> getDatastore(
   return GetDatastoreResult.fromMap(result);
 }
 
+pulumi.Output<GetDatastoreResult> getDatastoreOutput(
+  GetDatastoreArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getDatastore',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatastoreResult.fromMap);
+}
+
 /// Retrieves a debug session.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_debug_session_args_doc}
 /// [options] Invoke options controlling this call.
@@ -274,6 +395,17 @@ Future<GetDebugSessionResult> getDebugSession(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDebugSessionResult.fromMap(result);
+}
+
+pulumi.Output<GetDebugSessionResult> getDebugSessionOutput(
+  GetDebugSessionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getDebugSession',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDebugSessionResult.fromMap);
 }
 
 /// Returns the developer details, including the developer's name, email address, apps, and other information. **Note**: The response includes only the first 100 developer apps.
@@ -292,6 +424,17 @@ Future<GetDeveloperResult> getDeveloper(
   return GetDeveloperResult.fromMap(result);
 }
 
+pulumi.Output<GetDeveloperResult> getDeveloperOutput(
+  GetDeveloperArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getDeveloper',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeveloperResult.fromMap);
+}
+
 /// Returns the details for a developer app.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_developer_app_args_doc}
 /// [options] Invoke options controlling this call.
@@ -306,6 +449,17 @@ Future<GetDeveloperAppResult> getDeveloperApp(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeveloperAppResult.fromMap(result);
+}
+
+pulumi.Output<GetDeveloperAppResult> getDeveloperAppOutput(
+  GetDeveloperAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getDeveloperApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeveloperAppResult.fromMap);
 }
 
 /// Gets details for a consumer key for a developer app, including the key and secret value, associated API products, and other information.
@@ -324,6 +478,17 @@ Future<GetDeveloperAppKeyResult> getDeveloperAppKey(
   return GetDeveloperAppKeyResult.fromMap(result);
 }
 
+pulumi.Output<GetDeveloperAppKeyResult> getDeveloperAppKeyOutput(
+  GetDeveloperAppKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getDeveloperAppKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeveloperAppKeyResult.fromMap);
+}
+
 /// Gets the endpoint attachment.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_endpoint_attachment_args_doc}
 /// [options] Invoke options controlling this call.
@@ -338,6 +503,17 @@ Future<GetEndpointAttachmentResult> getEndpointAttachment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEndpointAttachmentResult.fromMap(result);
+}
+
+pulumi.Output<GetEndpointAttachmentResult> getEndpointAttachmentOutput(
+  GetEndpointAttachmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getEndpointAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEndpointAttachmentResult.fromMap);
 }
 
 /// Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
@@ -356,6 +532,17 @@ Future<GetEntryResult> getEntry(
   return GetEntryResult.fromMap(result);
 }
 
+pulumi.Output<GetEntryResult> getEntryOutput(
+  GetEntryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getEntry',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEntryResult.fromMap);
+}
+
 /// Gets an environment group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_envgroup_args_doc}
 /// [options] Invoke options controlling this call.
@@ -370,6 +557,17 @@ Future<GetEnvgroupResult> getEnvgroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEnvgroupResult.fromMap(result);
+}
+
+pulumi.Output<GetEnvgroupResult> getEnvgroupOutput(
+  GetEnvgroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getEnvgroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvgroupResult.fromMap);
 }
 
 /// Gets an environment group attachment.
@@ -388,6 +586,17 @@ Future<GetEnvgroupAttachmentResult> getEnvgroupAttachment(
   return GetEnvgroupAttachmentResult.fromMap(result);
 }
 
+pulumi.Output<GetEnvgroupAttachmentResult> getEnvgroupAttachmentOutput(
+  GetEnvgroupAttachmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getEnvgroupAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvgroupAttachmentResult.fromMap);
+}
+
 /// Gets environment details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_environment_args_doc}
 /// [options] Invoke options controlling this call.
@@ -402,6 +611,17 @@ Future<GetEnvironmentResult> getEnvironment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEnvironmentResult.fromMap(result);
+}
+
+pulumi.Output<GetEnvironmentResult> getEnvironmentOutput(
+  GetEnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getEnvironment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentResult.fromMap);
 }
 
 /// Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
@@ -420,6 +640,17 @@ Future<GetEnvironmentEntryResult> getEnvironmentEntry(
   return GetEnvironmentEntryResult.fromMap(result);
 }
 
+pulumi.Output<GetEnvironmentEntryResult> getEnvironmentEntryOutput(
+  GetEnvironmentEntryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getEnvironmentEntry',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentEntryResult.fromMap);
+}
+
 /// Gets the details and status of an analytics export job. If the export job is still in progress, its `state` is set to "running". After the export job has completed successfully, its `state` is set to "completed". If the export job fails, its `state` is set to `failed`.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_export_args_doc}
 /// [options] Invoke options controlling this call.
@@ -434,6 +665,17 @@ Future<GetExportResult> getExport(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExportResult.fromMap(result);
+}
+
+pulumi.Output<GetExportResult> getExportOutput(
+  GetExportArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getExport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExportResult.fromMap);
 }
 
 /// Get status of a query submitted at host level. If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
@@ -452,6 +694,17 @@ Future<GetHostQueryResult> getHostQuery(
   return GetHostQueryResult.fromMap(result);
 }
 
+pulumi.Output<GetHostQueryResult> getHostQueryOutput(
+  GetHostQueryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getHostQuery',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHostQueryResult.fromMap);
+}
+
 /// Get status of a query submitted at host level. If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_host_security_report_args_doc}
 /// [options] Invoke options controlling this call.
@@ -466,6 +719,17 @@ Future<GetHostSecurityReportResult> getHostSecurityReport(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHostSecurityReportResult.fromMap(result);
+}
+
+pulumi.Output<GetHostSecurityReportResult> getHostSecurityReportOutput(
+  GetHostSecurityReportArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getHostSecurityReport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHostSecurityReportResult.fromMap);
 }
 
 /// Gets the details for an Apigee runtime instance. **Note:** Not supported for Apigee hybrid.
@@ -484,6 +748,17 @@ Future<GetInstanceResult> getInstance(
   return GetInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
+}
+
 /// Gets an attachment. **Note:** Not supported for Apigee hybrid.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_instance_attachment_args_doc}
 /// [options] Invoke options controlling this call.
@@ -498,6 +773,17 @@ Future<GetInstanceAttachmentResult> getInstanceAttachment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceAttachmentResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceAttachmentResult> getInstanceAttachmentOutput(
+  GetInstanceAttachmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getInstanceAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceAttachmentResult.fromMap);
 }
 
 /// Gets a keystore or truststore.
@@ -516,6 +802,17 @@ Future<GetKeystoreResult> getKeystore(
   return GetKeystoreResult.fromMap(result);
 }
 
+pulumi.Output<GetKeystoreResult> getKeystoreOutput(
+  GetKeystoreArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getKeystore',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKeystoreResult.fromMap);
+}
+
 /// Gets the details of a NAT address. **Note:** Not supported for Apigee hybrid.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_nat_address_args_doc}
 /// [options] Invoke options controlling this call.
@@ -530,6 +827,17 @@ Future<GetNatAddressResult> getNatAddress(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNatAddressResult.fromMap(result);
+}
+
+pulumi.Output<GetNatAddressResult> getNatAddressOutput(
+  GetNatAddressArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getNatAddress',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNatAddressResult.fromMap);
 }
 
 /// Gets the profile for an Apigee organization. See [Understanding organizations](https://cloud.google.com/apigee/docs/api-platform/fundamentals/organization-structure).
@@ -548,6 +856,17 @@ Future<GetOrganizationResult> getOrganization(
   return GetOrganizationResult.fromMap(result);
 }
 
+pulumi.Output<GetOrganizationResult> getOrganizationOutput(
+  GetOrganizationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getOrganization',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationResult.fromMap);
+}
+
 /// Gets the IAM policy on an environment. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.getIamPolicy` permission to call this API.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_organization_environment_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -562,6 +881,17 @@ Future<GetOrganizationEnvironmentIamPolicyResult> getOrganizationEnvironmentIamP
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationEnvironmentIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetOrganizationEnvironmentIamPolicyResult> getOrganizationEnvironmentIamPolicyOutput(
+  GetOrganizationEnvironmentIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getOrganizationEnvironmentIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationEnvironmentIamPolicyResult.fromMap);
 }
 
 /// Gets a trace configuration override.
@@ -580,6 +910,17 @@ Future<GetOverrideResult> getOverride(
   return GetOverrideResult.fromMap(result);
 }
 
+pulumi.Output<GetOverrideResult> getOverrideOutput(
+  GetOverrideArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getOverride',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOverrideResult.fromMap);
+}
+
 /// Get query status If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_query_args_doc}
 /// [options] Invoke options controlling this call.
@@ -594,6 +935,17 @@ Future<GetQueryResult> getQuery(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetQueryResult.fromMap(result);
+}
+
+pulumi.Output<GetQueryResult> getQueryOutput(
+  GetQueryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getQuery',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQueryResult.fromMap);
 }
 
 /// Gets the details of a rate plan.
@@ -612,6 +964,17 @@ Future<GetRatePlanResult> getRatePlan(
   return GetRatePlanResult.fromMap(result);
 }
 
+pulumi.Output<GetRatePlanResult> getRatePlanOutput(
+  GetRatePlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getRatePlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRatePlanResult.fromMap);
+}
+
 /// Gets a Reference resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_reference_args_doc}
 /// [options] Invoke options controlling this call.
@@ -626,6 +989,17 @@ Future<GetReferenceResult> getReference(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReferenceResult.fromMap(result);
+}
+
+pulumi.Output<GetReferenceResult> getReferenceOutput(
+  GetReferenceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getReference',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReferenceResult.fromMap);
 }
 
 /// Retrieve a custom report definition.
@@ -644,6 +1018,17 @@ Future<GetReportResult> getReport(
   return GetReportResult.fromMap(result);
 }
 
+pulumi.Output<GetReportResult> getReportOutput(
+  GetReportArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getReport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReportResult.fromMap);
+}
+
 /// Gets the contents of a resource file. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_resourcefile_args_doc}
 /// [options] Invoke options controlling this call.
@@ -658,6 +1043,17 @@ Future<GetResourcefileResult> getResourcefile(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourcefileResult.fromMap(result);
+}
+
+pulumi.Output<GetResourcefileResult> getResourcefileOutput(
+  GetResourcefileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getResourcefile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourcefileResult.fromMap);
 }
 
 /// Get a SecurityAction by name.
@@ -676,6 +1072,17 @@ Future<GetSecurityActionResult> getSecurityAction(
   return GetSecurityActionResult.fromMap(result);
 }
 
+pulumi.Output<GetSecurityActionResult> getSecurityActionOutput(
+  GetSecurityActionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getSecurityAction',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityActionResult.fromMap);
+}
+
 /// GetSecurityProfile gets the specified security profile. Returns NOT_FOUND if security profile is not present for the specified organization.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_security_profile_args_doc}
 /// [options] Invoke options controlling this call.
@@ -690,6 +1097,17 @@ Future<GetSecurityProfileResult> getSecurityProfile(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecurityProfileResult.fromMap(result);
+}
+
+pulumi.Output<GetSecurityProfileResult> getSecurityProfileOutput(
+  GetSecurityProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getSecurityProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityProfileResult.fromMap);
 }
 
 /// Get security report status If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
@@ -708,6 +1126,17 @@ Future<GetSecurityReportResult> getSecurityReport(
   return GetSecurityReportResult.fromMap(result);
 }
 
+pulumi.Output<GetSecurityReportResult> getSecurityReportOutput(
+  GetSecurityReportArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getSecurityReport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityReportResult.fromMap);
+}
+
 /// Gets a shared flow by name, including a list of its revisions.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_sharedflow_args_doc}
 /// [options] Invoke options controlling this call.
@@ -722,6 +1151,17 @@ Future<GetSharedflowResult> getSharedflow(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSharedflowResult.fromMap(result);
+}
+
+pulumi.Output<GetSharedflowResult> getSharedflowOutput(
+  GetSharedflowArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getSharedflow',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSharedflowResult.fromMap);
 }
 
 /// Gets details for an API product subscription.
@@ -740,6 +1180,17 @@ Future<GetSubscriptionResult> getSubscription(
   return GetSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetSubscriptionResult> getSubscriptionOutput(
+  GetSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionResult.fromMap);
+}
+
 /// Gets a TargetServer resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_target_server_args_doc}
 /// [options] Invoke options controlling this call.
@@ -754,4 +1205,15 @@ Future<GetTargetServerResult> getTargetServer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetServerResult.fromMap(result);
+}
+
+pulumi.Output<GetTargetServerResult> getTargetServerOutput(
+  GetTargetServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigee/v1:getTargetServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetServerResult.fromMap);
 }

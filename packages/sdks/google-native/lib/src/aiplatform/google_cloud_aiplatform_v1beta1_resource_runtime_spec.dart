@@ -7,9 +7,9 @@ import 'google_cloud_aiplatform_v1beta1_service_account_spec.dart';
 /// Configuration for the runtime on a PersistentResource instance, including but not limited to: * Service accounts used to run the workloads. * Whether to make it a dedicated Ray Cluster.
 class GoogleCloudAiplatformV1beta1ResourceRuntimeSpec {
   /// Optional. Ray cluster configuration. Required when creating a dedicated RayCluster on the PersistentResource.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1RaySpec>? raySpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1RaySpec?>? raySpec;
   /// Optional. Configure the use of workload identity on the PersistentResource
-  final pulumi.Input<GoogleCloudAiplatformV1beta1ServiceAccountSpec>? serviceAccountSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1ServiceAccountSpec?>? serviceAccountSpec;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ResourceRuntimeSpec].
   /// [raySpec] Optional. Ray cluster configuration. Required when creating a dedicated RayCluster on the PersistentResource.

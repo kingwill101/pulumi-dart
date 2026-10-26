@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExecutionArgs {
   final pulumi.Input<String> executionId;
   final pulumi.Input<String> historyId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetExecutionArgs].
   /// [executionId] Required.

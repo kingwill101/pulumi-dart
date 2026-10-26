@@ -7,19 +7,19 @@ import 'option.dart';
 /// Method represents a method of an API interface.
 class Method {
   /// The simple name of this method.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Any metadata attached to the method.
-  final pulumi.Input<List<Option>>? options;
+  final pulumi.Input<List<Option>?>? options;
   /// If true, the request is streamed.
-  final pulumi.Input<bool>? requestStreaming;
+  final pulumi.Input<bool?>? requestStreaming;
   /// A URL of the input message type.
-  final pulumi.Input<String>? requestTypeUrl;
+  final pulumi.Input<String?>? requestTypeUrl;
   /// If true, the response is streamed.
-  final pulumi.Input<bool>? responseStreaming;
+  final pulumi.Input<bool?>? responseStreaming;
   /// The URL of the output message type.
-  final pulumi.Input<String>? responseTypeUrl;
+  final pulumi.Input<String?>? responseTypeUrl;
   /// The source syntax of this method.
-  final pulumi.Input<MethodSyntax>? syntax;
+  final pulumi.Input<MethodSyntax?>? syntax;
 
   /// Creates a new [Method].
   /// [name] The simple name of this method.

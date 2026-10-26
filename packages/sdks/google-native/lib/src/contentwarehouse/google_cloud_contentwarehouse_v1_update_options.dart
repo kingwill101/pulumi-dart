@@ -7,11 +7,11 @@ import 'google_cloud_contentwarehouse_v1_update_options_update_type.dart';
 /// Options for Update operations.
 class GoogleCloudContentwarehouseV1UpdateOptions {
   /// Options for merging.
-  final pulumi.Input<GoogleCloudContentwarehouseV1MergeFieldsOptions>? mergeFieldsOptions;
+  final pulumi.Input<GoogleCloudContentwarehouseV1MergeFieldsOptions?>? mergeFieldsOptions;
   /// Field mask for merging Document fields. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
-  final pulumi.Input<String>? updateMask;
+  final pulumi.Input<String?>? updateMask;
   /// Type for update.
-  final pulumi.Input<GoogleCloudContentwarehouseV1UpdateOptionsUpdateType>? updateType;
+  final pulumi.Input<GoogleCloudContentwarehouseV1UpdateOptionsUpdateType?>? updateType;
 
   /// Creates a new [GoogleCloudContentwarehouseV1UpdateOptions].
   /// [mergeFieldsOptions] Options for merging.

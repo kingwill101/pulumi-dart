@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the action responsible for deleting the document.
 class GoogleCloudContentwarehouseV1DeleteDocumentAction {
   /// Boolean field to select between hard vs soft delete options. Set 'true' for 'hard delete' and 'false' for 'soft delete'.
-  final pulumi.Input<bool>? enableHardDelete;
+  final pulumi.Input<bool?>? enableHardDelete;
 
   /// Creates a new [GoogleCloudContentwarehouseV1DeleteDocumentAction].
   /// [enableHardDelete] Boolean field to select between hard vs soft delete options. Set 'true' for 'hard delete' and 'false' for 'soft delete'.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata for a Pub/Sub connector used by the job.
 class PubSubIODetails {
   /// Subscription used in the connection.
-  final pulumi.Input<String>? subscription;
+  final pulumi.Input<String?>? subscription;
   /// Topic accessed in the connection.
-  final pulumi.Input<String>? topic;
+  final pulumi.Input<String?>? topic;
 
   /// Creates a new [PubSubIODetails].
   /// [subscription] Subscription used in the connection.

@@ -6,11 +6,11 @@ import 'service_directory_config.dart';
 /// GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise integration.
 class GitLabEnterpriseConfig {
   /// Immutable. The URI of the GitlabEnterprise host.
-  final pulumi.Input<String>? hostUri;
+  final pulumi.Input<String?>? hostUri;
   /// The Service Directory configuration to be used when reaching out to the GitLab Enterprise instance.
-  final pulumi.Input<ServiceDirectoryConfig>? serviceDirectoryConfig;
+  final pulumi.Input<ServiceDirectoryConfig?>? serviceDirectoryConfig;
   /// The SSL certificate to use in requests to GitLab Enterprise instances.
-  final pulumi.Input<String>? sslCa;
+  final pulumi.Input<String?>? sslCa;
 
   /// Creates a new [GitLabEnterpriseConfig].
   /// [hostUri] Immutable. The URI of the GitlabEnterprise host.

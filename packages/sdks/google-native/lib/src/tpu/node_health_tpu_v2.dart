@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The health status of the TPU node.
-enum NodeHealthTpuV2 {
+enum NodeHealthTpuV2 implements pulumi.PulumiEnum<String> {
   healthUnspecified("HEALTH_UNSPECIFIED"),
   healthy("HEALTHY"),
   timeout("TIMEOUT"),
@@ -7,6 +9,7 @@ enum NodeHealthTpuV2 {
   unhealthyMaintenance("UNHEALTHY_MAINTENANCE");
 
   const NodeHealthTpuV2(this.wireValue);
+  @override
   final String wireValue;
 
   static NodeHealthTpuV2 fromValue(String value) {

@@ -1,4 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_dialogflow_v2beta1_context_response.dart';
+import 'google_cloud_dialogflow_v2beta1_intent_followup_intent_info_response.dart';
+import 'google_cloud_dialogflow_v2beta1_intent_message_response.dart';
+import 'google_cloud_dialogflow_v2beta1_intent_parameter_response.dart';
+import 'google_cloud_dialogflow_v2beta1_intent_training_phrase_response.dart';
 import 'intent_dialogflow_v2beta1_args.dart';
 
 /// Creates an intent in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
@@ -15,7 +20,7 @@ class IntentDialogflowV2beta1 extends pulumi.CustomResource {
   /// Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.
   late final pulumi.Output<List<String>> events;
   /// Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only in the output.
-  late final pulumi.Output<List<Map<String, dynamic>>> followupIntentInfo;
+  late final pulumi.Output<List<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse>> followupIntentInfo;
   /// Optional. The list of context names required for this intent to be triggered. Formats: - `projects//agent/sessions/-/contexts/` - `projects//locations//agent/sessions/-/contexts/`
   late final pulumi.Output<List<String>> inputContextNames;
   /// Optional. The resource view to apply to the returned intent.
@@ -28,7 +33,7 @@ class IntentDialogflowV2beta1 extends pulumi.CustomResource {
   late final pulumi.Output<bool> liveAgentHandoff;
   late final pulumi.Output<String> location;
   /// Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
-  late final pulumi.Output<List<Map<String, dynamic>>> messages;
+  late final pulumi.Output<List<GoogleCloudDialogflowV2beta1IntentMessageResponse>> messages;
   /// Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.
   late final pulumi.Output<bool> mlDisabled;
   /// Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.
@@ -36,9 +41,9 @@ class IntentDialogflowV2beta1 extends pulumi.CustomResource {
   /// Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and Intents.BatchUpdateIntents methods. Supported formats: - `projects//agent/intents/` - `projects//locations//agent/intents/`
   late final pulumi.Output<String> name;
   /// Optional. The collection of contexts that are activated when the intent is matched. Context messages in this collection should not set the parameters field. Setting the `lifespan_count` to 0 will reset the context when the intent is matched. Format: `projects//agent/sessions/-/contexts/`.
-  late final pulumi.Output<List<Map<String, dynamic>>> outputContexts;
+  late final pulumi.Output<List<GoogleCloudDialogflowV2beta1ContextResponse>> outputContexts;
   /// Optional. The collection of parameters associated with the intent.
-  late final pulumi.Output<List<Map<String, dynamic>>> parameters;
+  late final pulumi.Output<List<GoogleCloudDialogflowV2beta1IntentParameterResponse>> parameters;
   /// Optional. The unique identifier of the parent intent in the chain of followup intents. You can set this field when creating an intent, for example with CreateIntent or BatchUpdateIntents, in order to make this intent a followup intent. It identifies the parent followup intent. Format: `projects//agent/intents/`.
   late final pulumi.Output<String> parentFollowupIntentName;
   /// Optional. The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
@@ -49,7 +54,7 @@ class IntentDialogflowV2beta1 extends pulumi.CustomResource {
   /// The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. Format: `projects//agent/intents/`.
   late final pulumi.Output<String> rootFollowupIntentName;
   /// Optional. The collection of examples that the agent is trained on.
-  late final pulumi.Output<List<Map<String, dynamic>>> trainingPhrases;
+  late final pulumi.Output<List<GoogleCloudDialogflowV2beta1IntentTrainingPhraseResponse>> trainingPhrases;
   /// Optional. Indicates whether webhooks are enabled for the intent.
   late final pulumi.Output<String> webhookState;
 
@@ -65,32 +70,68 @@ class IntentDialogflowV2beta1 extends pulumi.CustomResource {
           'google-native:dialogflow/v2beta1:Intent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     action = registerOutput<String>('action');
-    defaultResponsePlatforms = registerOutput<List<String>>('defaultResponsePlatforms');
+    defaultResponsePlatforms = registerOutput<List<String>>('defaultResponsePlatforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
     endInteraction = registerOutput<bool>('endInteraction');
-    events = registerOutput<List<String>>('events');
-    followupIntentInfo = registerOutput<List<Map<String, dynamic>>>('followupIntentInfo');
-    inputContextNames = registerOutput<List<String>>('inputContextNames');
+    events = registerOutput<List<String>>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    followupIntentInfo = registerOutput<List<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse>>('followupIntentInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse>(guardedValue, (value) => GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    inputContextNames = registerOutput<List<String>>('inputContextNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     intentView = registerOutput<String?>('intentView');
     isFallback = registerOutput<bool>('isFallback');
     languageCode = registerOutput<String?>('languageCode');
     liveAgentHandoff = registerOutput<bool>('liveAgentHandoff');
     location = registerOutput<String>('location');
-    messages = registerOutput<List<Map<String, dynamic>>>('messages');
+    messages = registerOutput<List<GoogleCloudDialogflowV2beta1IntentMessageResponse>>('messages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageResponse>(guardedValue, (value) => GoogleCloudDialogflowV2beta1IntentMessageResponse.fromMap((value as Map).cast<String, dynamic>())); });
     mlDisabled = registerOutput<bool>('mlDisabled');
     mlEnabled = registerOutput<bool>('mlEnabled');
     this.name = registerOutput<String>('name');
-    outputContexts = registerOutput<List<Map<String, dynamic>>>('outputContexts');
-    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
+    outputContexts = registerOutput<List<GoogleCloudDialogflowV2beta1ContextResponse>>('outputContexts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1ContextResponse>(guardedValue, (value) => GoogleCloudDialogflowV2beta1ContextResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    parameters = registerOutput<List<GoogleCloudDialogflowV2beta1IntentParameterResponse>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentParameterResponse>(guardedValue, (value) => GoogleCloudDialogflowV2beta1IntentParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
     parentFollowupIntentName = registerOutput<String>('parentFollowupIntentName');
     priority = registerOutput<int>('priority');
     project = registerOutput<String>('project');
     resetContexts = registerOutput<bool>('resetContexts');
     rootFollowupIntentName = registerOutput<String>('rootFollowupIntentName');
-    trainingPhrases = registerOutput<List<Map<String, dynamic>>>('trainingPhrases');
+    trainingPhrases = registerOutput<List<GoogleCloudDialogflowV2beta1IntentTrainingPhraseResponse>>('trainingPhrases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentTrainingPhraseResponse>(guardedValue, (value) => GoogleCloudDialogflowV2beta1IntentTrainingPhraseResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    webhookState = registerOutput<String>('webhookState');
+  }
+
+  /// Creates a typed reference to an existing [IntentDialogflowV2beta1] resource.
+  IntentDialogflowV2beta1.reference(String urn)
+    : super(
+        'google-native:dialogflow/v2beta1:Intent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    defaultResponsePlatforms = registerOutput<List<String>>('defaultResponsePlatforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayName = registerOutput<String>('displayName');
+    endInteraction = registerOutput<bool>('endInteraction');
+    events = registerOutput<List<String>>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    followupIntentInfo = registerOutput<List<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse>>('followupIntentInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse>(guardedValue, (value) => GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    inputContextNames = registerOutput<List<String>>('inputContextNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    intentView = registerOutput<String?>('intentView');
+    isFallback = registerOutput<bool>('isFallback');
+    languageCode = registerOutput<String?>('languageCode');
+    liveAgentHandoff = registerOutput<bool>('liveAgentHandoff');
+    location = registerOutput<String>('location');
+    messages = registerOutput<List<GoogleCloudDialogflowV2beta1IntentMessageResponse>>('messages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageResponse>(guardedValue, (value) => GoogleCloudDialogflowV2beta1IntentMessageResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    mlDisabled = registerOutput<bool>('mlDisabled');
+    mlEnabled = registerOutput<bool>('mlEnabled');
+    this.name = registerOutput<String>('name');
+    outputContexts = registerOutput<List<GoogleCloudDialogflowV2beta1ContextResponse>>('outputContexts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1ContextResponse>(guardedValue, (value) => GoogleCloudDialogflowV2beta1ContextResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    parameters = registerOutput<List<GoogleCloudDialogflowV2beta1IntentParameterResponse>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentParameterResponse>(guardedValue, (value) => GoogleCloudDialogflowV2beta1IntentParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    parentFollowupIntentName = registerOutput<String>('parentFollowupIntentName');
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    resetContexts = registerOutput<bool>('resetContexts');
+    rootFollowupIntentName = registerOutput<String>('rootFollowupIntentName');
+    trainingPhrases = registerOutput<List<GoogleCloudDialogflowV2beta1IntentTrainingPhraseResponse>>('trainingPhrases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentTrainingPhraseResponse>(guardedValue, (value) => GoogleCloudDialogflowV2beta1IntentTrainingPhraseResponse.fromMap((value as Map).cast<String, dynamic>())); });
     webhookState = registerOutput<String>('webhookState');
   }
 }

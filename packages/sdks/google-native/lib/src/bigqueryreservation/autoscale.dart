@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Auto scaling settings.
 class Autoscale {
   /// Number of slots to be scaled when needed.
-  final pulumi.Input<String>? maxSlots;
+  final pulumi.Input<String?>? maxSlots;
 
   /// Creates a new [Autoscale].
   /// [maxSlots] Number of slots to be scaled when needed.

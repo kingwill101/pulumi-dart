@@ -6,9 +6,9 @@ import 'gcspayload_info_format.dart';
 /// A resource that represents a payload hosted on Google Cloud Storage.
 class GCSPayloadInfo {
   /// The import job format.
-  final pulumi.Input<GCSPayloadInfoFormat>? format;
+  final pulumi.Input<GCSPayloadInfoFormat?>? format;
   /// The payload path in Google Cloud Storage.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [GCSPayloadInfo].
   /// [format] The import job format.

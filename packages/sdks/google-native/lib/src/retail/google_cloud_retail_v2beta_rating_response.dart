@@ -31,8 +31,8 @@ class GoogleCloudRetailV2betaRatingResponse {
 
   factory GoogleCloudRetailV2betaRatingResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2betaRatingResponse(
-      averageRating: pulumi.Input.fromValue(map['averageRating'] as double),
-      ratingCount: pulumi.Input.fromValue(map['ratingCount'] as int),
+      averageRating: pulumi.Input.fromValue((map['averageRating'] as num).toDouble()),
+      ratingCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ratingCount'])),
       ratingHistogram: pulumi.Input.fromValue((map['ratingHistogram'] as List).cast<int>()),
     );
   }

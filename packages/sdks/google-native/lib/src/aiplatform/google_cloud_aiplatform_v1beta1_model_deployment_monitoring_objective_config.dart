@@ -6,9 +6,9 @@ import 'google_cloud_aiplatform_v1beta1_model_monitoring_objective_config.dart';
 /// ModelDeploymentMonitoringObjectiveConfig contains the pair of deployed_model_id to ModelMonitoringObjectiveConfig.
 class GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig {
   /// The DeployedModel ID of the objective config.
-  final pulumi.Input<String>? deployedModelId;
+  final pulumi.Input<String?>? deployedModelId;
   /// The objective config of for the modelmonitoring job of this deployed model.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig>? objectiveConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig?>? objectiveConfig;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig].
   /// [deployedModelId] The DeployedModel ID of the objective config.

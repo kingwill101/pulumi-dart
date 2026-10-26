@@ -5,9 +5,9 @@ import 'envelope_signature.dart';
 
 /// MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.
 class Envelope {
-  final pulumi.Input<String>? payload;
-  final pulumi.Input<String>? payloadType;
-  final pulumi.Input<List<EnvelopeSignature>>? signatures;
+  final pulumi.Input<String?>? payload;
+  final pulumi.Input<String?>? payloadType;
+  final pulumi.Input<List<EnvelopeSignature>?>? signatures;
 
   /// Creates a new [Envelope].
   /// [payload] Optional.

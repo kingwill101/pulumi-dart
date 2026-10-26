@@ -68,7 +68,7 @@ class GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse {
       labelGroup: pulumi.Input.fromValue(map['labelGroup'] as String),
       languageCode: pulumi.Input.fromValue(map['languageCode'] as String),
       questionDuration: pulumi.Input.fromValue(map['questionDuration'] as String),
-      replicaCount: pulumi.Input.fromValue(map['replicaCount'] as int),
+      replicaCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['replicaCount'])),
       userEmailAddress: pulumi.Input.fromValue(map['userEmailAddress'] as String),
     );
   }

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_beta_get_instance_group_manager_resize_request_compute_beta_args_doc}
 class GetInstanceGroupManagerResizeRequestComputeBetaArgs {
   final pulumi.Input<String> instanceGroupManager;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> resizeRequest;
   final pulumi.Input<String> zone;
 

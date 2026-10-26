@@ -5,7 +5,7 @@ import 'security_policy_rule_matcher_expr_options_recaptcha_options_compute_beta
 
 class SecurityPolicyRuleMatcherExprOptionsComputeBeta {
   /// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
-  final pulumi.Input<SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsComputeBeta>? recaptchaOptions;
+  final pulumi.Input<SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsComputeBeta?>? recaptchaOptions;
 
   /// Creates a new [SecurityPolicyRuleMatcherExprOptionsComputeBeta].
   /// [recaptchaOptions] reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.

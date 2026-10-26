@@ -7,19 +7,19 @@ import 'identity.dart';
 /// Windows Update represents the metadata about the update for the Windows operating system. The fields in this message come from the Windows Update API documented at https://docs.microsoft.com/en-us/windows/win32/api/wuapi/nn-wuapi-iupdate.
 class WindowsUpdate {
   /// The list of categories to which the update belongs.
-  final pulumi.Input<List<Category>>? categories;
+  final pulumi.Input<List<Category>?>? categories;
   /// The localized description of the update.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Required - The unique identifier for the update.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// The Microsoft Knowledge Base article IDs that are associated with the update.
-  final pulumi.Input<List<String>>? kbArticleIds;
+  final pulumi.Input<List<String>?>? kbArticleIds;
   /// The last published timestamp of the update.
-  final pulumi.Input<String>? lastPublishedTimestamp;
+  final pulumi.Input<String?>? lastPublishedTimestamp;
   /// The hyperlink to the support information for the update.
-  final pulumi.Input<String>? supportUrl;
+  final pulumi.Input<String?>? supportUrl;
   /// The localized title of the update.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [WindowsUpdate].
   /// [categories] The list of categories to which the update belongs.

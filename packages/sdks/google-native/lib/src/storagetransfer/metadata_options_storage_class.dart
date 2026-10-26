@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
-enum MetadataOptionsStorageClass {
+enum MetadataOptionsStorageClass implements pulumi.PulumiEnum<String> {
   storageClassUnspecified("STORAGE_CLASS_UNSPECIFIED"),
   storageClassDestinationBucketDefault("STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT"),
   storageClassPreserve("STORAGE_CLASS_PRESERVE"),
@@ -9,6 +11,7 @@ enum MetadataOptionsStorageClass {
   storageClassArchive("STORAGE_CLASS_ARCHIVE");
 
   const MetadataOptionsStorageClass(this.wireValue);
+  @override
   final String wireValue;
 
   static MetadataOptionsStorageClass fromValue(String value) {

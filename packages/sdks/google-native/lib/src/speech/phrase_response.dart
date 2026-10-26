@@ -26,7 +26,7 @@ class PhraseResponse {
 
   factory PhraseResponse.fromMap(Map<String, dynamic> map) {
     return PhraseResponse(
-      boost: pulumi.Input.fromValue(map['boost'] as double),
+      boost: pulumi.Input.fromValue((map['boost'] as num).toDouble()),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }

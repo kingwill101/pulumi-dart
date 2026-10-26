@@ -3,11 +3,12 @@ import 'bucket_object_args.dart';
 import 'bucket_object_customer_encryption_response.dart';
 import 'bucket_object_owner_response.dart';
 import 'bucket_object_retention_response.dart';
+import 'object_access_control_response.dart';
 
 /// Stores a new object and metadata.
 class BucketObject extends pulumi.CustomResource {
   /// Access controls on the object.
-  late final pulumi.Output<List<Map<String, dynamic>>> acl;
+  late final pulumi.Output<List<ObjectAccessControlResponse>> acl;
   late final pulumi.Output<String> bucket;
   /// Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600.
   late final pulumi.Output<String> cacheControl;
@@ -100,9 +101,9 @@ class BucketObject extends pulumi.CustomResource {
           'google-native:storage/v1:BucketObject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['bucket']).merge(options),
         ) {
-    acl = registerOutput<List<Map<String, dynamic>>>('acl');
+    acl = registerOutput<List<ObjectAccessControlResponse>>('acl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ObjectAccessControlResponse>(guardedValue, (value) => ObjectAccessControlResponse.fromMap((value as Map).cast<String, dynamic>())); });
     bucket = registerOutput<String>('bucket');
     cacheControl = registerOutput<String>('cacheControl');
     componentCount = registerOutput<int>('componentCount');
@@ -125,7 +126,59 @@ class BucketObject extends pulumi.CustomResource {
     kmsKeyName = registerOutput<String>('kmsKeyName');
     md5Hash = registerOutput<String>('md5Hash');
     mediaLink = registerOutput<String>('mediaLink');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    metageneration = registerOutput<String>('metageneration');
+    this.name = registerOutput<String>('name');
+    owner = registerOutput<BucketObjectOwnerResponse>('owner', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectOwnerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    predefinedAcl = registerOutput<String?>('predefinedAcl');
+    projection = registerOutput<String?>('projection');
+    retention = registerOutput<BucketObjectRetentionResponse>('retention', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectRetentionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retentionExpirationTime = registerOutput<String>('retentionExpirationTime');
+    selfLink = registerOutput<String>('selfLink');
+    size = registerOutput<String>('size');
+    softDeleteTime = registerOutput<String>('softDeleteTime');
+    storageClass = registerOutput<String>('storageClass');
+    temporaryHold = registerOutput<bool>('temporaryHold');
+    timeCreated = registerOutput<String>('timeCreated');
+    timeDeleted = registerOutput<String>('timeDeleted');
+    timeStorageClassUpdated = registerOutput<String>('timeStorageClassUpdated');
+    updated = registerOutput<String>('updated');
+    userProject = registerOutput<String?>('userProject');
+  }
+
+  /// Creates a typed reference to an existing [BucketObject] resource.
+  BucketObject.reference(String urn)
+    : super(
+        'google-native:storage/v1:BucketObject',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acl = registerOutput<List<ObjectAccessControlResponse>>('acl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ObjectAccessControlResponse>(guardedValue, (value) => ObjectAccessControlResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    bucket = registerOutput<String>('bucket');
+    cacheControl = registerOutput<String>('cacheControl');
+    componentCount = registerOutput<int>('componentCount');
+    contentDisposition = registerOutput<String>('contentDisposition');
+    contentEncoding = registerOutput<String>('contentEncoding');
+    contentLanguage = registerOutput<String>('contentLanguage');
+    contentType = registerOutput<String>('contentType');
+    crc32c = registerOutput<String>('crc32c');
+    customTime = registerOutput<String>('customTime');
+    customerEncryption = registerOutput<BucketObjectCustomerEncryptionResponse>('customerEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectCustomerEncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    eventBasedHold = registerOutput<bool>('eventBasedHold');
+    generation = registerOutput<String>('generation');
+    hardDeleteTime = registerOutput<String>('hardDeleteTime');
+    ifGenerationMatch = registerOutput<String?>('ifGenerationMatch');
+    ifGenerationNotMatch = registerOutput<String?>('ifGenerationNotMatch');
+    ifMetagenerationMatch = registerOutput<String?>('ifMetagenerationMatch');
+    ifMetagenerationNotMatch = registerOutput<String?>('ifMetagenerationNotMatch');
+    kind = registerOutput<String>('kind');
+    kmsKeyName = registerOutput<String>('kmsKeyName');
+    md5Hash = registerOutput<String>('md5Hash');
+    mediaLink = registerOutput<String>('mediaLink');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     metageneration = registerOutput<String>('metageneration');
     this.name = registerOutput<String>('name');
     owner = registerOutput<BucketObjectOwnerResponse>('owner', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectOwnerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

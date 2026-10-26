@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the criteria for selecting VM Instances by OS type.
 class AssignmentOsType {
   /// Targets VM instances with OS Inventory enabled and having the following OS architecture.
-  final pulumi.Input<String>? osArchitecture;
+  final pulumi.Input<String?>? osArchitecture;
   /// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
-  final pulumi.Input<String>? osShortName;
+  final pulumi.Input<String?>? osShortName;
   /// Targets VM instances with OS Inventory enabled and having the following following OS version.
-  final pulumi.Input<String>? osVersion;
+  final pulumi.Input<String?>? osVersion;
 
   /// Creates a new [AssignmentOsType].
   /// [osArchitecture] Targets VM instances with OS Inventory enabled and having the following OS architecture.

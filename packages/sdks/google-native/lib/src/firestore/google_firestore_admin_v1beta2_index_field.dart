@@ -7,11 +7,11 @@ import 'google_firestore_admin_v1beta2_index_field_order.dart';
 /// A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed.
 class GoogleFirestoreAdminV1beta2IndexField {
   /// Indicates that this field supports operations on `array_value`s.
-  final pulumi.Input<GoogleFirestoreAdminV1beta2IndexFieldArrayConfig>? arrayConfig;
+  final pulumi.Input<GoogleFirestoreAdminV1beta2IndexFieldArrayConfig?>? arrayConfig;
   /// Can be __name__. For single field indexes, this must match the name of the field or may be omitted.
-  final pulumi.Input<String>? fieldPath;
+  final pulumi.Input<String?>? fieldPath;
   /// Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
-  final pulumi.Input<GoogleFirestoreAdminV1beta2IndexFieldOrder>? order;
+  final pulumi.Input<GoogleFirestoreAdminV1beta2IndexFieldOrder?>? order;
 
   /// Creates a new [GoogleFirestoreAdminV1beta2IndexField].
   /// [arrayConfig] Indicates that this field supports operations on `array_value`s.

@@ -9,17 +9,17 @@ import 'money.dart';
 /// A compensation entry that represents one component of compensation, such as base pay, bonus, or other compensation type. Annualization: One compensation entry can be annualized if - it contains valid amount or range. - and its expected_units_per_year is set or can be derived. Its annualized range is determined as (amount or range) times expected_units_per_year.
 class CompensationEntry {
   /// Optional. Compensation amount.
-  final pulumi.Input<Money>? amount;
+  final pulumi.Input<Money?>? amount;
   /// Optional. Compensation description. For example, could indicate equity terms or provide additional context to an estimated bonus.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Expected number of units paid each year. If not specified, when Job.employment_types is FULLTIME, a default value is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY: 12 - ANNUAL: 1
-  final pulumi.Input<double>? expectedUnitsPerYear;
+  final pulumi.Input<double?>? expectedUnitsPerYear;
   /// Optional. Compensation range.
-  final pulumi.Input<CompensationRange>? range;
+  final pulumi.Input<CompensationRange?>? range;
   /// Optional. Compensation type. Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
-  final pulumi.Input<CompensationEntryType>? type;
+  final pulumi.Input<CompensationEntryType?>? type;
   /// Optional. Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
-  final pulumi.Input<CompensationEntryUnit>? unit;
+  final pulumi.Input<CompensationEntryUnit?>? unit;
 
   /// Creates a new [CompensationEntry].
   /// [amount] Optional. Compensation amount.
@@ -52,7 +52,7 @@ class CompensationEntry {
     return CompensationEntry(
       amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Money.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      expectedUnitsPerYear: (() { final guardedValue = map['expectedUnitsPerYear']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      expectedUnitsPerYear: (() { final guardedValue = map['expectedUnitsPerYear']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       range: (() { final guardedValue = map['range']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CompensationRange.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CompensationEntryType.fromValue(guardedValue as String)); })(),
       unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CompensationEntryUnit.fromValue(guardedValue as String)); })(),

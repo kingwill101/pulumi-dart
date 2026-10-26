@@ -43,13 +43,38 @@ class ConversionWorkspace extends pulumi.CustomResource {
           'google-native:datamigration/v1:ConversionWorkspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['conversionWorkspaceId', 'location', 'project']).merge(options),
         ) {
     conversionWorkspaceId = registerOutput<String>('conversionWorkspaceId');
     createTime = registerOutput<String>('createTime');
     destination = registerOutput<DatabaseEngineInfoResponse>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseEngineInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
-    globalSettings = registerOutput<Map<String, String>>('globalSettings');
+    globalSettings = registerOutput<Map<String, String>>('globalSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    hasUncommittedChanges = registerOutput<bool>('hasUncommittedChanges');
+    latestCommitId = registerOutput<String>('latestCommitId');
+    latestCommitTime = registerOutput<String>('latestCommitTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    source = registerOutput<DatabaseEngineInfoResponse>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseEngineInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ConversionWorkspace] resource.
+  ConversionWorkspace.reference(String urn)
+    : super(
+        'google-native:datamigration/v1:ConversionWorkspace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    conversionWorkspaceId = registerOutput<String>('conversionWorkspaceId');
+    createTime = registerOutput<String>('createTime');
+    destination = registerOutput<DatabaseEngineInfoResponse>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseEngineInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    globalSettings = registerOutput<Map<String, String>>('globalSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     hasUncommittedChanges = registerOutput<bool>('hasUncommittedChanges');
     latestCommitId = registerOutput<String>('latestCommitId');
     latestCommitTime = registerOutput<String>('latestCommitTime');

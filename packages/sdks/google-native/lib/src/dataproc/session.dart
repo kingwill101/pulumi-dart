@@ -4,6 +4,7 @@ import 'jupyter_config_response.dart';
 import 'runtime_config_response.dart';
 import 'runtime_info_response.dart';
 import 'session_args.dart';
+import 'session_state_history_response.dart';
 
 /// Create an interactive session asynchronously.
 class Session extends pulumi.CustomResource {
@@ -34,7 +35,7 @@ class Session extends pulumi.CustomResource {
   /// A state of the session.
   late final pulumi.Output<String> state;
   /// Historical state information for the session.
-  late final pulumi.Output<List<Map<String, dynamic>>> stateHistory;
+  late final pulumi.Output<List<SessionStateHistoryResponse>> stateHistory;
   /// Session state details, such as the failure description if the state is FAILED.
   late final pulumi.Output<String> stateMessage;
   /// The time when the session entered the current state.
@@ -56,13 +57,13 @@ class Session extends pulumi.CustomResource {
           'google-native:dataproc/v1:Session',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'sessionId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
     environmentConfig = registerOutput<EnvironmentConfigResponse>('environmentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jupyterSession = registerOutput<JupyterConfigResponse>('jupyterSession', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JupyterConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -72,7 +73,37 @@ class Session extends pulumi.CustomResource {
     sessionId = registerOutput<String>('sessionId');
     sessionTemplate = registerOutput<String>('sessionTemplate');
     state = registerOutput<String>('state');
-    stateHistory = registerOutput<List<Map<String, dynamic>>>('stateHistory');
+    stateHistory = registerOutput<List<SessionStateHistoryResponse>>('stateHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SessionStateHistoryResponse>(guardedValue, (value) => SessionStateHistoryResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    stateMessage = registerOutput<String>('stateMessage');
+    stateTime = registerOutput<String>('stateTime');
+    user = registerOutput<String>('user');
+    uuid = registerOutput<String>('uuid');
+  }
+
+  /// Creates a typed reference to an existing [Session] resource.
+  Session.reference(String urn)
+    : super(
+        'google-native:dataproc/v1:Session',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    creator = registerOutput<String>('creator');
+    environmentConfig = registerOutput<EnvironmentConfigResponse>('environmentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jupyterSession = registerOutput<JupyterConfigResponse>('jupyterSession', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JupyterConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    runtimeConfig = registerOutput<RuntimeConfigResponse>('runtimeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    runtimeInfo = registerOutput<RuntimeInfoResponse>('runtimeInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sessionId = registerOutput<String>('sessionId');
+    sessionTemplate = registerOutput<String>('sessionTemplate');
+    state = registerOutput<String>('state');
+    stateHistory = registerOutput<List<SessionStateHistoryResponse>>('stateHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SessionStateHistoryResponse>(guardedValue, (value) => SessionStateHistoryResponse.fromMap((value as Map).cast<String, dynamic>())); });
     stateMessage = registerOutput<String>('stateMessage');
     stateTime = registerOutput<String>('stateTime');
     user = registerOutput<String>('user');

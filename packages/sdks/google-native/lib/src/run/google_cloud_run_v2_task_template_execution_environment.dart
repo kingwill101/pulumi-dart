@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The execution environment being used to host this Task.
-enum GoogleCloudRunV2TaskTemplateExecutionEnvironment {
+enum GoogleCloudRunV2TaskTemplateExecutionEnvironment implements pulumi.PulumiEnum<String> {
   executionEnvironmentUnspecified("EXECUTION_ENVIRONMENT_UNSPECIFIED"),
   executionEnvironmentGen1("EXECUTION_ENVIRONMENT_GEN1"),
   executionEnvironmentGen2("EXECUTION_ENVIRONMENT_GEN2");
 
   const GoogleCloudRunV2TaskTemplateExecutionEnvironment(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudRunV2TaskTemplateExecutionEnvironment fromValue(String value) {

@@ -5,9 +5,9 @@ import 'managed_zone_service_directory_config_namespace_dns_v1beta2.dart';
 
 /// Contains information about Service Directory-backed zones.
 class ManagedZoneServiceDirectoryConfigDnsV1beta2 {
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Contains information about the namespace associated with the zone.
-  final pulumi.Input<ManagedZoneServiceDirectoryConfigNamespaceDnsV1beta2>? namespace;
+  final pulumi.Input<ManagedZoneServiceDirectoryConfigNamespaceDnsV1beta2?>? namespace;
 
   /// Creates a new [ManagedZoneServiceDirectoryConfigDnsV1beta2].
   /// [kind] Optional.

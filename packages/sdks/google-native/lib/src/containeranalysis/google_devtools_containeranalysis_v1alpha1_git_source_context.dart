@@ -7,7 +7,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext {
   /// Git commit hash.
   final pulumi.Input<String> revisionId;
   /// Git repository URL.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext].
   /// [revisionId] Git commit hash.

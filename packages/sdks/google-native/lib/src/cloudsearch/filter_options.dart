@@ -6,9 +6,9 @@ import 'filter.dart';
 /// Filter options to be applied on query.
 class FilterOptions {
   /// Generic filter to restrict the search, such as `lang:en`, `site:xyz`.
-  final pulumi.Input<Filter>? filter;
+  final pulumi.Input<Filter?>? filter;
   /// If object_type is set, only objects of that type are returned. This should correspond to the name of the object that was registered within the definition of schema. The maximum length is 256 characters.
-  final pulumi.Input<String>? objectType;
+  final pulumi.Input<String?>? objectType;
 
   /// Creates a new [FilterOptions].
   /// [filter] Generic filter to restrict the search, such as `lang:en`, `site:xyz`.

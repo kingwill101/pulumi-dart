@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
-enum MetadataOptionsKmsKey {
+enum MetadataOptionsKmsKey implements pulumi.PulumiEnum<String> {
   kmsKeyUnspecified("KMS_KEY_UNSPECIFIED"),
   kmsKeyDestinationBucketDefault("KMS_KEY_DESTINATION_BUCKET_DEFAULT"),
   kmsKeyPreserve("KMS_KEY_PRESERVE");
 
   const MetadataOptionsKmsKey(this.wireValue);
+  @override
   final String wireValue;
 
   static MetadataOptionsKmsKey fromValue(String value) {

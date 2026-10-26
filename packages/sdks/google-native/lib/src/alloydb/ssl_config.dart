@@ -7,9 +7,9 @@ import 'ssl_config_ssl_mode.dart';
 /// SSL configuration.
 class SslConfig {
   /// Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.
-  final pulumi.Input<SslConfigCaSource>? caSource;
+  final pulumi.Input<SslConfigCaSource?>? caSource;
   /// Optional. SSL mode. Specifies client-server SSL/TLS connection behavior.
-  final pulumi.Input<SslConfigSslMode>? sslMode;
+  final pulumi.Input<SslConfigSslMode?>? sslMode;
 
   /// Creates a new [SslConfig].
   /// [caSource] Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.

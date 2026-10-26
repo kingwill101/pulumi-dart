@@ -6,9 +6,9 @@ import 'duration_compute_beta.dart';
 /// Specifies the delay introduced by the load balancer before forwarding the request to the backend service as part of fault injection.
 class HttpFaultDelayComputeBeta {
   /// Specifies the value of the fixed delay interval.
-  final pulumi.Input<DurationComputeBeta>? fixedDelay;
+  final pulumi.Input<DurationComputeBeta?>? fixedDelay;
   /// The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
-  final pulumi.Input<double>? percentage;
+  final pulumi.Input<double?>? percentage;
 
   /// Creates a new [HttpFaultDelayComputeBeta].
   /// [fixedDelay] Specifies the value of the fixed delay interval.
@@ -28,7 +28,7 @@ class HttpFaultDelayComputeBeta {
   factory HttpFaultDelayComputeBeta.fromMap(Map<String, dynamic> map) {
     return HttpFaultDelayComputeBeta(
       fixedDelay: (() { final guardedValue = map['fixedDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DurationComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      percentage: (() { final guardedValue = map['percentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      percentage: (() { final guardedValue = map['percentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

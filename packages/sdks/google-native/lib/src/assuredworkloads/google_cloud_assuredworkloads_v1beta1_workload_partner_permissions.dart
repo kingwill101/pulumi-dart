@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Permissions granted to the AW Partner SA account for the customer workload
 class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions {
   /// Optional. Allow partner to view violation alerts.
-  final pulumi.Input<bool>? assuredWorkloadsMonitoring;
+  final pulumi.Input<bool?>? assuredWorkloadsMonitoring;
   /// Allow the partner to view inspectability logs and monitoring violations.
-  final pulumi.Input<bool>? dataLogsViewer;
+  final pulumi.Input<bool?>? dataLogsViewer;
   /// Optional. Allow partner to view access approval logs.
-  final pulumi.Input<bool>? serviceAccessApprover;
+  final pulumi.Input<bool?>? serviceAccessApprover;
 
   /// Creates a new [GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions].
   /// [assuredWorkloadsMonitoring] Optional. Allow partner to view violation alerts.

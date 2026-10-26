@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'entity_type_dialogflow_v3_args.dart';
+import 'google_cloud_dialogflow_cx_v3_entity_type_entity_response.dart';
+import 'google_cloud_dialogflow_cx_v3_entity_type_excluded_phrase_response.dart';
 
 /// Creates an entity type in the specified agent. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
 class EntityTypeDialogflowV3 extends pulumi.CustomResource {
@@ -11,9 +13,9 @@ class EntityTypeDialogflowV3 extends pulumi.CustomResource {
   /// Enables fuzzy entity extraction during classification.
   late final pulumi.Output<bool> enableFuzzyExtraction;
   /// The collection of entity entries associated with the entity type.
-  late final pulumi.Output<List<Map<String, dynamic>>> entities;
+  late final pulumi.Output<List<GoogleCloudDialogflowCxV3EntityTypeEntityResponse>> entities;
   /// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
-  late final pulumi.Output<List<Map<String, dynamic>>> excludedPhrases;
+  late final pulumi.Output<List<GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse>> excludedPhrases;
   /// Indicates the kind of entity type.
   late final pulumi.Output<String> kind;
   /// The language of the following fields in `entity_type`: * `EntityType.entities.value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
@@ -37,14 +39,37 @@ class EntityTypeDialogflowV3 extends pulumi.CustomResource {
           'google-native:dialogflow/v3:EntityType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['agentId', 'location', 'project']).merge(options),
         ) {
     agentId = registerOutput<String>('agentId');
     autoExpansionMode = registerOutput<String>('autoExpansionMode');
     displayName = registerOutput<String>('displayName');
     enableFuzzyExtraction = registerOutput<bool>('enableFuzzyExtraction');
-    entities = registerOutput<List<Map<String, dynamic>>>('entities');
-    excludedPhrases = registerOutput<List<Map<String, dynamic>>>('excludedPhrases');
+    entities = registerOutput<List<GoogleCloudDialogflowCxV3EntityTypeEntityResponse>>('entities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3EntityTypeEntityResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3EntityTypeEntityResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    excludedPhrases = registerOutput<List<GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse>>('excludedPhrases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    kind = registerOutput<String>('kind');
+    languageCode = registerOutput<String?>('languageCode');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    redact = registerOutput<bool>('redact');
+  }
+
+  /// Creates a typed reference to an existing [EntityTypeDialogflowV3] resource.
+  EntityTypeDialogflowV3.reference(String urn)
+    : super(
+        'google-native:dialogflow/v3:EntityType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentId = registerOutput<String>('agentId');
+    autoExpansionMode = registerOutput<String>('autoExpansionMode');
+    displayName = registerOutput<String>('displayName');
+    enableFuzzyExtraction = registerOutput<bool>('enableFuzzyExtraction');
+    entities = registerOutput<List<GoogleCloudDialogflowCxV3EntityTypeEntityResponse>>('entities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3EntityTypeEntityResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3EntityTypeEntityResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    excludedPhrases = registerOutput<List<GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse>>('excludedPhrases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse.fromMap((value as Map).cast<String, dynamic>())); });
     kind = registerOutput<String>('kind');
     languageCode = registerOutput<String?>('languageCode');
     location = registerOutput<String>('location');

@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_alpha_get_instance_args_doc}
 class GetInstanceArgs {
   final pulumi.Input<String> instance;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? view;
   final pulumi.Input<String> zone;
 
   /// Creates a new [GetInstanceArgs].

@@ -32,7 +32,7 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResp
   factory GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse(
       count: pulumi.Input.fromValue(map['count'] as String),
-      ratio: pulumi.Input.fromValue(map['ratio'] as double),
+      ratio: pulumi.Input.fromValue((map['ratio'] as num).toDouble()),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }

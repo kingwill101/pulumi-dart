@@ -1,15 +1,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'event_notification_config_response.dart';
 import 'http_config_response.dart';
 import 'mqtt_config_response.dart';
 import 'registry_args.dart';
+import 'registry_credential_response.dart';
 import 'state_notification_config_response.dart';
 
 /// Creates a device registry that contains devices.
 class Registry extends pulumi.CustomResource {
   /// The credentials used to verify the device credentials. No more than 10 credentials can be bound to a single registry at a time. The verification process occurs at the time of device creation or update. If this field is empty, no verification is performed. Otherwise, the credentials of a newly created device or added credentials of an updated device should be signed with one of these registry credentials. Note, however, that existing devices will never be affected by modifications to this list of credentials: after a device has been successfully created in a registry, it should be able to connect even if its registry credentials are revoked, deleted, or modified.
-  late final pulumi.Output<List<Map<String, dynamic>>> credentials;
+  late final pulumi.Output<List<RegistryCredentialResponse>> credentials;
   /// The configuration for notification of telemetry events received from the device. All telemetry events that were successfully published by the device and acknowledged by Cloud IoT Core are guaranteed to be delivered to Cloud Pub/Sub. If multiple configurations match a message, only the first matching configuration is used. If you try to publish a device telemetry event using MQTT without specifying a Cloud Pub/Sub topic for the device's registry, the connection closes automatically. If you try to do so using an HTTP connection, an error is returned. Up to 10 configurations may be provided.
-  late final pulumi.Output<List<Map<String, dynamic>>> eventNotificationConfigs;
+  late final pulumi.Output<List<EventNotificationConfigResponse>> eventNotificationConfigs;
   /// The DeviceService (HTTP) configuration for this device registry.
   late final pulumi.Output<HttpConfigResponse> httpConfig;
   late final pulumi.Output<String> location;
@@ -35,10 +37,30 @@ class Registry extends pulumi.CustomResource {
           'google-native:cloudiot/v1:Registry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
-    credentials = registerOutput<List<Map<String, dynamic>>>('credentials');
-    eventNotificationConfigs = registerOutput<List<Map<String, dynamic>>>('eventNotificationConfigs');
+    credentials = registerOutput<List<RegistryCredentialResponse>>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryCredentialResponse>(guardedValue, (value) => RegistryCredentialResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    eventNotificationConfigs = registerOutput<List<EventNotificationConfigResponse>>('eventNotificationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventNotificationConfigResponse>(guardedValue, (value) => EventNotificationConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    httpConfig = registerOutput<HttpConfigResponse>('httpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    logLevel = registerOutput<String>('logLevel');
+    mqttConfig = registerOutput<MqttConfigResponse>('mqttConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MqttConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    stateNotificationConfig = registerOutput<StateNotificationConfigResponse>('stateNotificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StateNotificationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Registry] resource.
+  Registry.reference(String urn)
+    : super(
+        'google-native:cloudiot/v1:Registry',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    credentials = registerOutput<List<RegistryCredentialResponse>>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryCredentialResponse>(guardedValue, (value) => RegistryCredentialResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    eventNotificationConfigs = registerOutput<List<EventNotificationConfigResponse>>('eventNotificationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventNotificationConfigResponse>(guardedValue, (value) => EventNotificationConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     httpConfig = registerOutput<HttpConfigResponse>('httpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     logLevel = registerOutput<String>('logLevel');

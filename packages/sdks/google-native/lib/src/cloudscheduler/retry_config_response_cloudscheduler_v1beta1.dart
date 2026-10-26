@@ -42,10 +42,10 @@ class RetryConfigResponseCloudschedulerV1beta1 {
   factory RetryConfigResponseCloudschedulerV1beta1.fromMap(Map<String, dynamic> map) {
     return RetryConfigResponseCloudschedulerV1beta1(
       maxBackoffDuration: pulumi.Input.fromValue(map['maxBackoffDuration'] as String),
-      maxDoublings: pulumi.Input.fromValue(map['maxDoublings'] as int),
+      maxDoublings: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxDoublings'])),
       maxRetryDuration: pulumi.Input.fromValue(map['maxRetryDuration'] as String),
       minBackoffDuration: pulumi.Input.fromValue(map['minBackoffDuration'] as String),
-      retryCount: pulumi.Input.fromValue(map['retryCount'] as int),
+      retryCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retryCount'])),
     );
   }
 }

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Must have a value of NO_NAT. Protocol forwarding delivers packets while preserving the destination IP address of the forwarding rule referencing the target instance.
-enum TargetInstanceNatPolicyComputeBeta {
+enum TargetInstanceNatPolicyComputeBeta implements pulumi.PulumiEnum<String> {
   noNat("NO_NAT");
 
   const TargetInstanceNatPolicyComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static TargetInstanceNatPolicyComputeBeta fromValue(String value) {

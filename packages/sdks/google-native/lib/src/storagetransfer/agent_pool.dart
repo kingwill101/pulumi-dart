@@ -28,8 +28,25 @@ class AgentPool extends pulumi.CustomResource {
           'google-native:storagetransfer/v1:AgentPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['agentPoolId', 'project']).merge(options),
         ) {
+    agentPoolId = registerOutput<String>('agentPoolId');
+    bandwidthLimit = registerOutput<BandwidthLimitResponse>('bandwidthLimit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BandwidthLimitResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [AgentPool] resource.
+  AgentPool.reference(String urn)
+    : super(
+        'google-native:storagetransfer/v1:AgentPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     agentPoolId = registerOutput<String>('agentPoolId');
     bandwidthLimit = registerOutput<BandwidthLimitResponse>('bandwidthLimit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BandwidthLimitResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');

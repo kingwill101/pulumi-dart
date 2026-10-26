@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_beta_get_global_address_compute_beta_args_doc}
 class GetGlobalAddressComputeBetaArgs {
   final pulumi.Input<String> address;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetGlobalAddressComputeBetaArgs].
   /// [address] Required.

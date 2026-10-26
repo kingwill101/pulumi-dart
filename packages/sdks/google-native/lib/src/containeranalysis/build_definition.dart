@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_descriptor.dart';
 
 class BuildDefinition {
-  final pulumi.Input<String>? buildType;
-  final pulumi.Input<Map<String, String>>? externalParameters;
-  final pulumi.Input<Map<String, String>>? internalParameters;
-  final pulumi.Input<List<ResourceDescriptor>>? resolvedDependencies;
+  final pulumi.Input<String?>? buildType;
+  final pulumi.Input<Map<String, String>?>? externalParameters;
+  final pulumi.Input<Map<String, String>?>? internalParameters;
+  final pulumi.Input<List<ResourceDescriptor>?>? resolvedDependencies;
 
   /// Creates a new [BuildDefinition].
   /// [buildType] Optional.

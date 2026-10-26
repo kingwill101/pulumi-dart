@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The encoding of messages validated against `schema`.
-enum SchemaSettingsEncoding {
+enum SchemaSettingsEncoding implements pulumi.PulumiEnum<String> {
   encodingUnspecified("ENCODING_UNSPECIFIED"),
   json("JSON"),
   binary("BINARY");
 
   const SchemaSettingsEncoding(this.wireValue);
+  @override
   final String wireValue;
 
   static SchemaSettingsEncoding fromValue(String value) {

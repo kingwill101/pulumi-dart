@@ -30,15 +30,34 @@ class SpecialistPoolAiplatformV1beta1 extends pulumi.CustomResource {
           'google-native:aiplatform/v1beta1:SpecialistPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    pendingDataLabelingJobs = registerOutput<List<String>>('pendingDataLabelingJobs');
+    pendingDataLabelingJobs = registerOutput<List<String>>('pendingDataLabelingJobs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
-    specialistManagerEmails = registerOutput<List<String>>('specialistManagerEmails');
+    specialistManagerEmails = registerOutput<List<String>>('specialistManagerEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     specialistManagersCount = registerOutput<int>('specialistManagersCount');
-    specialistWorkerEmails = registerOutput<List<String>>('specialistWorkerEmails');
+    specialistWorkerEmails = registerOutput<List<String>>('specialistWorkerEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [SpecialistPoolAiplatformV1beta1] resource.
+  SpecialistPoolAiplatformV1beta1.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1beta1:SpecialistPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    pendingDataLabelingJobs = registerOutput<List<String>>('pendingDataLabelingJobs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    specialistManagerEmails = registerOutput<List<String>>('specialistManagerEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    specialistManagersCount = registerOutput<int>('specialistManagersCount');
+    specialistWorkerEmails = registerOutput<List<String>>('specialistWorkerEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

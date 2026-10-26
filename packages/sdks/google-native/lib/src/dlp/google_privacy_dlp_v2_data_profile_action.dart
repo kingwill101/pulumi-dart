@@ -7,9 +7,9 @@ import 'google_privacy_dlp_v2_pub_sub_notification.dart';
 /// A task to execute when a data profile has been generated.
 class GooglePrivacyDlpV2DataProfileAction {
   /// Export data profiles into a provided location.
-  final pulumi.Input<GooglePrivacyDlpV2Export>? exportData;
+  final pulumi.Input<GooglePrivacyDlpV2Export?>? exportData;
   /// Publish a message into the Pub/Sub topic.
-  final pulumi.Input<GooglePrivacyDlpV2PubSubNotification>? pubSubNotification;
+  final pulumi.Input<GooglePrivacyDlpV2PubSubNotification?>? pubSubNotification;
 
   /// Creates a new [GooglePrivacyDlpV2DataProfileAction].
   /// [exportData] Export data profiles into a provided location.

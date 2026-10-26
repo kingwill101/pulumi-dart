@@ -6,7 +6,7 @@ import 'mysql_database.dart';
 /// MySQL database structure
 class MysqlRdbms {
   /// Mysql databases on the server
-  final pulumi.Input<List<MysqlDatabase>>? mysqlDatabases;
+  final pulumi.Input<List<MysqlDatabase>?>? mysqlDatabases;
 
   /// Creates a new [MysqlRdbms].
   /// [mysqlDatabases] Mysql databases on the server

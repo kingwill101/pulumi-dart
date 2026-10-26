@@ -10,13 +10,13 @@ class ApiArgs {
   /// Required. Identifier to assign to the API. Must be unique within scope of the parent resource.
   final pulumi.Input<String> apiId;
   /// Optional. Display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
-  final pulumi.Input<String>? managedService;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? managedService;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [ApiArgs].
   /// [apiId] Required. Identifier to assign to the API. Must be unique within scope of the parent resource.

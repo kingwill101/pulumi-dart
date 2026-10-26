@@ -9,18 +9,18 @@ import 'routing_vpc.dart';
 /// {@macro pulumi_networkconnectivity_v1_hub_args_doc}
 class HubArgs {
   /// An optional description of the hub.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Required. A unique identifier for the hub.
   final pulumi.Input<String> hubId;
   /// Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
-  final pulumi.Input<List<RoutingVPC>>? routingVpcs;
+  final pulumi.Input<List<RoutingVPC>?>? routingVpcs;
 
   /// Creates a new [HubArgs].
   /// [description] An optional description of the hub.

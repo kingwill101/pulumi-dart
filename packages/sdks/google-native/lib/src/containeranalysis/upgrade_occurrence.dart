@@ -8,13 +8,13 @@ import 'windows_update.dart';
 /// An Upgrade Occurrence represents that a specific resource_url could install a specific upgrade. This presence is supplied via local sources (i.e. it is present in the mirror and the running system has noticed its availability). For Windows, both distribution and windows_update contain information for the Windows update.
 class UpgradeOccurrence {
   /// Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
-  final pulumi.Input<UpgradeDistribution>? distribution;
+  final pulumi.Input<UpgradeDistribution?>? distribution;
   /// Required for non-Windows OS. The package this Upgrade is for.
-  final pulumi.Input<String>? package;
+  final pulumi.Input<String?>? package;
   /// Required for non-Windows OS. The version of the package in a machine + human readable form.
-  final pulumi.Input<Version>? parsedVersion;
+  final pulumi.Input<Version?>? parsedVersion;
   /// Required for Windows OS. Represents the metadata about the Windows update.
-  final pulumi.Input<WindowsUpdate>? windowsUpdate;
+  final pulumi.Input<WindowsUpdate?>? windowsUpdate;
 
   /// Creates a new [UpgradeOccurrence].
   /// [distribution] Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.

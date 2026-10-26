@@ -8,10 +8,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_vmmigration_v1alpha1_get_utilization_report_vmmigration_v1alpha1_args_doc}
 class GetUtilizationReportVmmigrationV1alpha1Args {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> sourceId;
   final pulumi.Input<String> utilizationReportId;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetUtilizationReportVmmigrationV1alpha1Args].
   /// [location] Required.

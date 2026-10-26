@@ -6,11 +6,11 @@ import 'oracle_rdbms_datastream_v1alpha1.dart';
 /// Oracle data source configuration
 class OracleSourceConfigDatastreamV1alpha1 {
   /// Oracle objects to include in the stream.
-  final pulumi.Input<OracleRdbmsDatastreamV1alpha1>? allowlist;
+  final pulumi.Input<OracleRdbmsDatastreamV1alpha1?>? allowlist;
   /// Drop large object values.
-  final pulumi.Input<Map<String, dynamic>>? dropLargeObjects;
+  final pulumi.Input<Map<String, dynamic>?>? dropLargeObjects;
   /// Oracle objects to exclude from the stream.
-  final pulumi.Input<OracleRdbmsDatastreamV1alpha1>? rejectlist;
+  final pulumi.Input<OracleRdbmsDatastreamV1alpha1?>? rejectlist;
 
   /// Creates a new [OracleSourceConfigDatastreamV1alpha1].
   /// [allowlist] Oracle objects to include in the stream.

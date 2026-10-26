@@ -10,7 +10,7 @@ class GetArtifactArgs {
   final pulumi.Input<String> artifactId;
   final pulumi.Input<String> location;
   final pulumi.Input<String> metadataStoreId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetArtifactArgs].
   /// [artifactId] Required.

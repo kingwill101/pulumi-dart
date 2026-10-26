@@ -65,7 +65,7 @@ class TransferConfig extends pulumi.CustomResource {
           'google-native:bigquerydatatransfer/v1:TransferConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     authorizationCode = registerOutput<String?>('authorizationCode');
     dataRefreshWindowDays = registerOutput<int>('dataRefreshWindowDays');
@@ -81,7 +81,41 @@ class TransferConfig extends pulumi.CustomResource {
     nextRunTime = registerOutput<String>('nextRunTime');
     notificationPubsubTopic = registerOutput<String>('notificationPubsubTopic');
     ownerInfo = registerOutput<UserInfoResponse>('ownerInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    params = registerOutput<Map<String, String>>('params');
+    params = registerOutput<Map<String, String>>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    project = registerOutput<String>('project');
+    schedule = registerOutput<String>('schedule');
+    scheduleOptions = registerOutput<ScheduleOptionsResponse>('scheduleOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceAccountName = registerOutput<String?>('serviceAccountName');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+    userId = registerOutput<String>('userId');
+    versionInfo = registerOutput<String?>('versionInfo');
+  }
+
+  /// Creates a typed reference to an existing [TransferConfig] resource.
+  TransferConfig.reference(String urn)
+    : super(
+        'google-native:bigquerydatatransfer/v1:TransferConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authorizationCode = registerOutput<String?>('authorizationCode');
+    dataRefreshWindowDays = registerOutput<int>('dataRefreshWindowDays');
+    dataSourceId = registerOutput<String>('dataSourceId');
+    datasetRegion = registerOutput<String>('datasetRegion');
+    destinationDatasetId = registerOutput<String>('destinationDatasetId');
+    disabled = registerOutput<bool>('disabled');
+    displayName = registerOutput<String>('displayName');
+    emailPreferences = registerOutput<EmailPreferencesResponse>('emailPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EmailPreferencesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionConfiguration = registerOutput<EncryptionConfigurationResponse>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nextRunTime = registerOutput<String>('nextRunTime');
+    notificationPubsubTopic = registerOutput<String>('notificationPubsubTopic');
+    ownerInfo = registerOutput<UserInfoResponse>('ownerInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    params = registerOutput<Map<String, String>>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     project = registerOutput<String>('project');
     schedule = registerOutput<String>('schedule');
     scheduleOptions = registerOutput<ScheduleOptionsResponse>('scheduleOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

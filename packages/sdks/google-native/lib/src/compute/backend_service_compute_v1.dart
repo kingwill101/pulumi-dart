@@ -1,10 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'backend_response_compute_v1.dart';
 import 'backend_service_cdn_policy_response_compute_v1.dart';
 import 'backend_service_compute_v1_args.dart';
 import 'backend_service_connection_tracking_policy_response_compute_v1.dart';
 import 'backend_service_failover_policy_response_compute_v1.dart';
 import 'backend_service_iapresponse_compute_v1.dart';
+import 'backend_service_locality_load_balancing_policy_config_response_compute_v1.dart';
 import 'backend_service_log_config_response_compute_v1.dart';
+import 'backend_service_used_by_response_compute_v1.dart';
 import 'circuit_breakers_response_compute_v1.dart';
 import 'connection_draining_response_compute_v1.dart';
 import 'consistent_hash_load_balancer_settings_response_compute_v1.dart';
@@ -18,7 +21,7 @@ class BackendServiceComputeV1 extends pulumi.CustomResource {
   /// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
   late final pulumi.Output<int> affinityCookieTtlSec;
   /// The list of backends that serve this BackendService.
-  late final pulumi.Output<List<Map<String, dynamic>>> backends;
+  late final pulumi.Output<List<BackendResponseComputeV1>> backends;
   /// Cloud CDN configuration for this BackendService. Only available for specified load balancer types.
   late final pulumi.Output<BackendServiceCdnPolicyResponseComputeV1> cdnPolicy;
   late final pulumi.Output<CircuitBreakersResponseComputeV1> circuitBreakers;
@@ -54,7 +57,7 @@ class BackendServiceComputeV1 extends pulumi.CustomResource {
   /// Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
   late final pulumi.Output<String> loadBalancingScheme;
   /// A list of locality load-balancing policies to be used in order of preference. When you use localityLbPolicies, you must set at least one value for either the localityLbPolicies[].policy or the localityLbPolicies[].customPolicy field. localityLbPolicies overrides any value set in the localityLbPolicy field. For an example of how to use this field, see Define a list of preferred policies. Caution: This field and its children are intended for use in a service mesh that includes gRPC clients only. Envoy proxies can't use backend services that have this configuration.
-  late final pulumi.Output<List<Map<String, dynamic>>> localityLbPolicies;
+  late final pulumi.Output<List<BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeV1>> localityLbPolicies;
   /// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
   late final pulumi.Output<String> localityLbPolicy;
   /// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is enabled, logs will be exported to Stackdriver.
@@ -93,7 +96,7 @@ class BackendServiceComputeV1 extends pulumi.CustomResource {
   late final pulumi.Output<SubsettingResponseComputeV1> subsetting;
   /// The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings. The default is 30 seconds. The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
   late final pulumi.Output<int> timeoutSec;
-  late final pulumi.Output<List<Map<String, dynamic>>> usedBy;
+  late final pulumi.Output<List<BackendServiceUsedByResponseComputeV1>> usedBy;
 
   /// Creates a new [BackendServiceComputeV1].
   /// [name] The Pulumi resource name.
@@ -107,10 +110,10 @@ class BackendServiceComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:BackendService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     affinityCookieTtlSec = registerOutput<int>('affinityCookieTtlSec');
-    backends = registerOutput<List<Map<String, dynamic>>>('backends');
+    backends = registerOutput<List<BackendResponseComputeV1>>('backends', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendResponseComputeV1>(guardedValue, (value) => BackendResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
     cdnPolicy = registerOutput<BackendServiceCdnPolicyResponseComputeV1>('cdnPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceCdnPolicyResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     circuitBreakers = registerOutput<CircuitBreakersResponseComputeV1>('circuitBreakers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CircuitBreakersResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compressionMode = registerOutput<String>('compressionMode');
@@ -118,22 +121,22 @@ class BackendServiceComputeV1 extends pulumi.CustomResource {
     connectionTrackingPolicy = registerOutput<BackendServiceConnectionTrackingPolicyResponseComputeV1>('connectionTrackingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceConnectionTrackingPolicyResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consistentHash = registerOutput<ConsistentHashLoadBalancerSettingsResponseComputeV1>('consistentHash', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsistentHashLoadBalancerSettingsResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
-    customRequestHeaders = registerOutput<List<String>>('customRequestHeaders');
-    customResponseHeaders = registerOutput<List<String>>('customResponseHeaders');
+    customRequestHeaders = registerOutput<List<String>>('customRequestHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    customResponseHeaders = registerOutput<List<String>>('customResponseHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String>('description');
     edgeSecurityPolicy = registerOutput<String>('edgeSecurityPolicy');
     enableCDN = registerOutput<bool>('enableCDN');
     failoverPolicy = registerOutput<BackendServiceFailoverPolicyResponseComputeV1>('failoverPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceFailoverPolicyResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fingerprint = registerOutput<String>('fingerprint');
-    healthChecks = registerOutput<List<String>>('healthChecks');
+    healthChecks = registerOutput<List<String>>('healthChecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     iap = registerOutput<BackendServiceIAPResponseComputeV1>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceIAPResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
     loadBalancingScheme = registerOutput<String>('loadBalancingScheme');
-    localityLbPolicies = registerOutput<List<Map<String, dynamic>>>('localityLbPolicies');
+    localityLbPolicies = registerOutput<List<BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeV1>>('localityLbPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeV1>(guardedValue, (value) => BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
     localityLbPolicy = registerOutput<String>('localityLbPolicy');
     logConfig = registerOutput<BackendServiceLogConfigResponseComputeV1>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceLogConfigResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxStreamDuration = registerOutput<DurationResponseComputeV1>('maxStreamDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DurationResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    metadatas = registerOutput<Map<String, String>>('metadatas');
+    metadatas = registerOutput<Map<String, String>>('metadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     outlierDetection = registerOutput<OutlierDetectionResponseComputeV1>('outlierDetection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutlierDetectionResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -146,10 +149,63 @@ class BackendServiceComputeV1 extends pulumi.CustomResource {
     securityPolicy = registerOutput<String>('securityPolicy');
     securitySettings = registerOutput<SecuritySettingsResponseComputeV1>('securitySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecuritySettingsResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
-    serviceBindings = registerOutput<List<String>>('serviceBindings');
+    serviceBindings = registerOutput<List<String>>('serviceBindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sessionAffinity = registerOutput<String>('sessionAffinity');
     subsetting = registerOutput<SubsettingResponseComputeV1>('subsetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubsettingResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeoutSec = registerOutput<int>('timeoutSec');
-    usedBy = registerOutput<List<Map<String, dynamic>>>('usedBy');
+    usedBy = registerOutput<List<BackendServiceUsedByResponseComputeV1>>('usedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendServiceUsedByResponseComputeV1>(guardedValue, (value) => BackendServiceUsedByResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [BackendServiceComputeV1] resource.
+  BackendServiceComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:BackendService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    affinityCookieTtlSec = registerOutput<int>('affinityCookieTtlSec');
+    backends = registerOutput<List<BackendResponseComputeV1>>('backends', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendResponseComputeV1>(guardedValue, (value) => BackendResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
+    cdnPolicy = registerOutput<BackendServiceCdnPolicyResponseComputeV1>('cdnPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceCdnPolicyResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    circuitBreakers = registerOutput<CircuitBreakersResponseComputeV1>('circuitBreakers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CircuitBreakersResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    compressionMode = registerOutput<String>('compressionMode');
+    connectionDraining = registerOutput<ConnectionDrainingResponseComputeV1>('connectionDraining', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionDrainingResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectionTrackingPolicy = registerOutput<BackendServiceConnectionTrackingPolicyResponseComputeV1>('connectionTrackingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceConnectionTrackingPolicyResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    consistentHash = registerOutput<ConsistentHashLoadBalancerSettingsResponseComputeV1>('consistentHash', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsistentHashLoadBalancerSettingsResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    customRequestHeaders = registerOutput<List<String>>('customRequestHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    customResponseHeaders = registerOutput<List<String>>('customResponseHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String>('description');
+    edgeSecurityPolicy = registerOutput<String>('edgeSecurityPolicy');
+    enableCDN = registerOutput<bool>('enableCDN');
+    failoverPolicy = registerOutput<BackendServiceFailoverPolicyResponseComputeV1>('failoverPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceFailoverPolicyResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fingerprint = registerOutput<String>('fingerprint');
+    healthChecks = registerOutput<List<String>>('healthChecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    iap = registerOutput<BackendServiceIAPResponseComputeV1>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceIAPResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    loadBalancingScheme = registerOutput<String>('loadBalancingScheme');
+    localityLbPolicies = registerOutput<List<BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeV1>>('localityLbPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeV1>(guardedValue, (value) => BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
+    localityLbPolicy = registerOutput<String>('localityLbPolicy');
+    logConfig = registerOutput<BackendServiceLogConfigResponseComputeV1>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceLogConfigResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maxStreamDuration = registerOutput<DurationResponseComputeV1>('maxStreamDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DurationResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadatas = registerOutput<Map<String, String>>('metadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    outlierDetection = registerOutput<OutlierDetectionResponseComputeV1>('outlierDetection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutlierDetectionResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    port = registerOutput<int>('port');
+    portName = registerOutput<String>('portName');
+    project = registerOutput<String>('project');
+    protocol = registerOutput<String>('protocol');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    securityPolicy = registerOutput<String>('securityPolicy');
+    securitySettings = registerOutput<SecuritySettingsResponseComputeV1>('securitySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecuritySettingsResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selfLink = registerOutput<String>('selfLink');
+    serviceBindings = registerOutput<List<String>>('serviceBindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sessionAffinity = registerOutput<String>('sessionAffinity');
+    subsetting = registerOutput<SubsettingResponseComputeV1>('subsetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubsettingResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeoutSec = registerOutput<int>('timeoutSec');
+    usedBy = registerOutput<List<BackendServiceUsedByResponseComputeV1>>('usedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendServiceUsedByResponseComputeV1>(guardedValue, (value) => BackendServiceUsedByResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

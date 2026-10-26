@@ -6,9 +6,9 @@ import 'table_constraints_primary_key.dart';
 
 class TableConstraints {
   /// [Optional] The foreign keys of the tables.
-  final pulumi.Input<List<TableConstraintsForeignKeysItem>>? foreignKeys;
+  final pulumi.Input<List<TableConstraintsForeignKeysItem>?>? foreignKeys;
   /// [Optional] The primary key of the table.
-  final pulumi.Input<TableConstraintsPrimaryKey>? primaryKey;
+  final pulumi.Input<TableConstraintsPrimaryKey?>? primaryKey;
 
   /// Creates a new [TableConstraints].
   /// [foreignKeys] [Optional] The foreign keys of the tables.

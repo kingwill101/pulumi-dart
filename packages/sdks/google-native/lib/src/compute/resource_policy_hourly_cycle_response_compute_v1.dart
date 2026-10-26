@@ -32,7 +32,7 @@ class ResourcePolicyHourlyCycleResponseComputeV1 {
   factory ResourcePolicyHourlyCycleResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyHourlyCycleResponseComputeV1(
       duration: pulumi.Input.fromValue(map['duration'] as String),
-      hoursInCycle: pulumi.Input.fromValue(map['hoursInCycle'] as int),
+      hoursInCycle: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['hoursInCycle'])),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }

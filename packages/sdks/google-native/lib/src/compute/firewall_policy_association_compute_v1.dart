@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyAssociationComputeV1 {
   /// The target that the firewall policy is attached to.
-  final pulumi.Input<String>? attachmentTarget;
+  final pulumi.Input<String?>? attachmentTarget;
   /// The name for an association.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [FirewallPolicyAssociationComputeV1].
   /// [attachmentTarget] The target that the firewall policy is attached to.

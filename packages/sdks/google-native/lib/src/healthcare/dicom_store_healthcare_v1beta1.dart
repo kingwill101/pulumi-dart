@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dicom_store_healthcare_v1beta1_args.dart';
+import 'google_cloud_healthcare_v1beta1_dicom_stream_config_response.dart';
 import 'notification_config_response_healthcare_v1beta1.dart';
 
 /// Creates a new DICOM store within the parent dataset.
@@ -16,7 +17,7 @@ class DicomStoreHealthcareV1beta1 extends pulumi.CustomResource {
   late final pulumi.Output<NotificationConfigResponseHealthcareV1beta1> notificationConfig;
   late final pulumi.Output<String> project;
   /// Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
-  late final pulumi.Output<List<Map<String, dynamic>>> streamConfigs;
+  late final pulumi.Output<List<GoogleCloudHealthcareV1beta1DicomStreamConfigResponse>> streamConfigs;
 
   /// Creates a new [DicomStoreHealthcareV1beta1].
   /// [name] The Pulumi resource name.
@@ -30,15 +31,34 @@ class DicomStoreHealthcareV1beta1 extends pulumi.CustomResource {
           'google-native:healthcare/v1beta1:DicomStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['datasetId', 'location', 'project']).merge(options),
         ) {
     datasetId = registerOutput<String>('datasetId');
     dicomStoreId = registerOutput<String?>('dicomStoreId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     notificationConfig = registerOutput<NotificationConfigResponseHealthcareV1beta1>('notificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationConfigResponseHealthcareV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    streamConfigs = registerOutput<List<Map<String, dynamic>>>('streamConfigs');
+    streamConfigs = registerOutput<List<GoogleCloudHealthcareV1beta1DicomStreamConfigResponse>>('streamConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudHealthcareV1beta1DicomStreamConfigResponse>(guardedValue, (value) => GoogleCloudHealthcareV1beta1DicomStreamConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DicomStoreHealthcareV1beta1] resource.
+  DicomStoreHealthcareV1beta1.reference(String urn)
+    : super(
+        'google-native:healthcare/v1beta1:DicomStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    datasetId = registerOutput<String>('datasetId');
+    dicomStoreId = registerOutput<String?>('dicomStoreId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    notificationConfig = registerOutput<NotificationConfigResponseHealthcareV1beta1>('notificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationConfigResponseHealthcareV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    streamConfigs = registerOutput<List<GoogleCloudHealthcareV1beta1DicomStreamConfigResponse>>('streamConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudHealthcareV1beta1DicomStreamConfigResponse>(guardedValue, (value) => GoogleCloudHealthcareV1beta1DicomStreamConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// One of the publicly available Docker repositories supported by Artifact Registry.
-enum DockerRepositoryPublicRepository {
+enum DockerRepositoryPublicRepository implements pulumi.PulumiEnum<String> {
   publicRepositoryUnspecified("PUBLIC_REPOSITORY_UNSPECIFIED"),
   dockerHub("DOCKER_HUB");
 
   const DockerRepositoryPublicRepository(this.wireValue);
+  @override
   final String wireValue;
 
   static DockerRepositoryPublicRepository fromValue(String value) {

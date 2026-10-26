@@ -6,9 +6,9 @@ import 'google_cloud_dataplex_v1_trigger_schedule.dart';
 /// DataScan scheduling and trigger settings.
 class GoogleCloudDataplexV1Trigger {
   /// The scan runs once via RunDataScan API.
-  final pulumi.Input<Map<String, dynamic>>? onDemand;
+  final pulumi.Input<Map<String, dynamic>?>? onDemand;
   /// The scan is scheduled to run periodically.
-  final pulumi.Input<GoogleCloudDataplexV1TriggerSchedule>? schedule;
+  final pulumi.Input<GoogleCloudDataplexV1TriggerSchedule?>? schedule;
 
   /// Creates a new [GoogleCloudDataplexV1Trigger].
   /// [onDemand] The scan runs once via RunDataScan API.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// This message only contains a field of integer array.
 class GoogleCloudIntegrationsV1alphaIntParameterArray {
   /// Integer array.
-  final pulumi.Input<List<String>>? intValues;
+  final pulumi.Input<List<String>?>? intValues;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaIntParameterArray].
   /// [intValues] Integer array.

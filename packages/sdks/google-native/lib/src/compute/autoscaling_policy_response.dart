@@ -69,12 +69,12 @@ class AutoscalingPolicyResponse {
 
   factory AutoscalingPolicyResponse.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyResponse(
-      coolDownPeriodSec: pulumi.Input.fromValue(map['coolDownPeriodSec'] as int),
+      coolDownPeriodSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['coolDownPeriodSec'])),
       cpuUtilization: pulumi.Input.fromValue(AutoscalingPolicyCpuUtilizationResponse.fromMap((map['cpuUtilization']! as Map).cast<String, dynamic>())),
       customMetricUtilizations: pulumi.Input.fromValue(pulumi.Input.decodeList<AutoscalingPolicyCustomMetricUtilizationResponse>(map['customMetricUtilizations']!, (value) => AutoscalingPolicyCustomMetricUtilizationResponse.fromMap((value as Map).cast<String, dynamic>()))),
       loadBalancingUtilization: pulumi.Input.fromValue(AutoscalingPolicyLoadBalancingUtilizationResponse.fromMap((map['loadBalancingUtilization']! as Map).cast<String, dynamic>())),
-      maxNumReplicas: pulumi.Input.fromValue(map['maxNumReplicas'] as int),
-      minNumReplicas: pulumi.Input.fromValue(map['minNumReplicas'] as int),
+      maxNumReplicas: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNumReplicas'])),
+      minNumReplicas: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minNumReplicas'])),
       mode: pulumi.Input.fromValue(map['mode'] as String),
       scaleDownControl: pulumi.Input.fromValue(AutoscalingPolicyScaleDownControlResponse.fromMap((map['scaleDownControl']! as Map).cast<String, dynamic>())),
       scaleInControl: pulumi.Input.fromValue(AutoscalingPolicyScaleInControlResponse.fromMap((map['scaleInControl']! as Map).cast<String, dynamic>())),

@@ -9,21 +9,21 @@ import 'google_cloud_dialogflow_cx_v3_response_message.dart';
 /// A fulfillment can do one or more of the following actions at the same time: * Generate rich message responses. * Set parameter values. * Call the webhook. Fulfillments can be called at various stages in the Page or Form lifecycle. For example, when a DetectIntentRequest drives a session to enter a new page, the page's entry fulfillment can add a static response to the QueryResult in the returning DetectIntentResponse, call the webhook (for example, to load user data from a database), or both.
 class GoogleCloudDialogflowCxV3Fulfillment {
   /// Hierarchical advanced settings for this fulfillment. The settings exposed at the lower level overrides the settings exposed at the higher level.
-  final pulumi.Input<GoogleCloudDialogflowCxV3AdvancedSettings>? advancedSettings;
+  final pulumi.Input<GoogleCloudDialogflowCxV3AdvancedSettings?>? advancedSettings;
   /// Conditional cases for this fulfillment.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3FulfillmentConditionalCases>>? conditionalCases;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3FulfillmentConditionalCases>?>? conditionalCases;
   /// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
-  final pulumi.Input<bool>? enableGenerativeFallback;
+  final pulumi.Input<bool?>? enableGenerativeFallback;
   /// The list of rich message responses to present to the user.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3ResponseMessage>>? messages;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3ResponseMessage>?>? messages;
   /// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-  final pulumi.Input<bool>? returnPartialResponses;
+  final pulumi.Input<bool?>? returnPartialResponses;
   /// Set parameter values before executing the webhook.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3FulfillmentSetParameterAction>>? setParameterActions;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3FulfillmentSetParameterAction>?>? setParameterActions;
   /// The value of this field will be populated in the WebhookRequest `fulfillmentInfo.tag` field by Dialogflow when the associated webhook is called. The tag is typically used by the webhook service to identify which fulfillment is being called, but it could be used for other purposes. This field is required if `webhook` is specified.
-  final pulumi.Input<String>? tag;
+  final pulumi.Input<String?>? tag;
   /// The webhook to call. Format: `projects//locations//agents//webhooks/`.
-  final pulumi.Input<String>? webhook;
+  final pulumi.Input<String?>? webhook;
 
   /// Creates a new [GoogleCloudDialogflowCxV3Fulfillment].
   /// [advancedSettings] Hierarchical advanced settings for this fulfillment. The settings exposed at the lower level overrides the settings exposed at the higher level.

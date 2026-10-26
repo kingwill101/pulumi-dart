@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Android app information.
 class AndroidAppInfo {
   /// The name of the app. Optional
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The package name of the app. Required.
-  final pulumi.Input<String>? packageName;
+  final pulumi.Input<String?>? packageName;
   /// The internal version code of the app. Optional.
-  final pulumi.Input<String>? versionCode;
+  final pulumi.Input<String?>? versionCode;
   /// The version name of the app. Optional.
-  final pulumi.Input<String>? versionName;
+  final pulumi.Input<String?>? versionName;
 
   /// Creates a new [AndroidAppInfo].
   /// [name] The name of the app. Optional

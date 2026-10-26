@@ -37,14 +37,36 @@ class Gateway extends pulumi.CustomResource {
           'google-native:apigateway/v1:Gateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['gatewayId', 'location', 'project']).merge(options),
         ) {
     apiConfig = registerOutput<String>('apiConfig');
     createTime = registerOutput<String>('createTime');
     defaultHostname = registerOutput<String>('defaultHostname');
     displayName = registerOutput<String>('displayName');
     gatewayId = registerOutput<String>('gatewayId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Gateway] resource.
+  Gateway.reference(String urn)
+    : super(
+        'google-native:apigateway/v1:Gateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiConfig = registerOutput<String>('apiConfig');
+    createTime = registerOutput<String>('createTime');
+    defaultHostname = registerOutput<String>('defaultHostname');
+    displayName = registerOutput<String>('displayName');
+    gatewayId = registerOutput<String>('gatewayId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

@@ -41,7 +41,7 @@ class LocationResponse {
       latLng: pulumi.Input.fromValue(LatLngResponse.fromMap((map['latLng']! as Map).cast<String, dynamic>())),
       locationType: pulumi.Input.fromValue(map['locationType'] as String),
       postalAddress: pulumi.Input.fromValue(PostalAddressResponse.fromMap((map['postalAddress']! as Map).cast<String, dynamic>())),
-      radiusInMiles: pulumi.Input.fromValue(map['radiusInMiles'] as double),
+      radiusInMiles: pulumi.Input.fromValue((map['radiusInMiles'] as num).toDouble()),
     );
   }
 }

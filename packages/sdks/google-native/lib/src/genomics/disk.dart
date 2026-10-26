@@ -6,17 +6,17 @@ import 'disk_type.dart';
 /// A Google Compute Engine disk resource specification.
 class Disk {
   /// Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
-  final pulumi.Input<bool>? autoDelete;
+  final pulumi.Input<bool?>? autoDelete;
   /// Required at create time and cannot be overridden at run time. Specifies the path in the docker container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the parameter has `localPath` `inputs/file.txt`, the docker container can access the data at `/mnt/disk/inputs/file.txt`.
-  final pulumi.Input<String>? mountPoint;
+  final pulumi.Input<String?>? mountPoint;
   /// The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
   final pulumi.Input<String> name;
   /// Specifies how a sourced-base persistent disk will be mounted. See https://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances for more details. Can only be set at create time.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// The size of the disk. Defaults to 500 (GB). This field is not applicable for local SSD.
-  final pulumi.Input<int>? sizeGb;
+  final pulumi.Input<int?>? sizeGb;
   /// The full or partial URL of the persistent disk to attach. See https://cloud.google.com/compute/docs/reference/latest/instances#resource and https://cloud.google.com/compute/docs/disks/persistent-disks#snapshots for more details.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// The type of the disk to create.
   final pulumi.Input<DiskType> type;
 
@@ -56,7 +56,7 @@ class Disk {
       mountPoint: (() { final guardedValue = map['mountPoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(DiskType.fromValue(map['type']! as String)),
     );

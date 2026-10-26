@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration for scheduled snapshot creation mechanism.
 class ScheduledSnapshotsConfigComposerV1beta1 {
   /// Optional. Whether scheduled snapshots creation is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
-  final pulumi.Input<String>? snapshotCreationSchedule;
+  final pulumi.Input<String?>? snapshotCreationSchedule;
   /// Optional. The Cloud Storage location for storing automatically created snapshots.
-  final pulumi.Input<String>? snapshotLocation;
+  final pulumi.Input<String?>? snapshotLocation;
   /// Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [ScheduledSnapshotsConfigComposerV1beta1].
   /// [enabled] Optional. Whether scheduled snapshots creation is enabled.

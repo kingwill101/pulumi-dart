@@ -13,19 +13,19 @@ class CertificateArgs {
   /// Required. A user-provided name of the certificate.
   final pulumi.Input<String> certificateId;
   /// One or more paragraphs of text description of a certificate.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Set of labels associated with a Certificate.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// If set, contains configuration and state of a managed certificate.
-  final pulumi.Input<ManagedCertificate>? managed;
+  final pulumi.Input<ManagedCertificate?>? managed;
   /// A user-defined name of the certificate. Certificate names must be unique globally and match pattern `projects/*/locations/*/certificates/*`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Immutable. The scope of the certificate.
-  final pulumi.Input<CertificateScope>? scope;
+  final pulumi.Input<CertificateScope?>? scope;
   /// If set, defines data of a self-managed certificate.
-  final pulumi.Input<SelfManagedCertificate>? selfManaged;
+  final pulumi.Input<SelfManagedCertificate?>? selfManaged;
 
   /// Creates a new [CertificateArgs].
   /// [certificateId] Required. A user-provided name of the certificate.

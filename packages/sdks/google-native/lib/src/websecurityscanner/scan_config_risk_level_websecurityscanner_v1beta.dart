@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The risk level selected for the scan
-enum ScanConfigRiskLevelWebsecurityscannerV1beta {
+enum ScanConfigRiskLevelWebsecurityscannerV1beta implements pulumi.PulumiEnum<String> {
   riskLevelUnspecified("RISK_LEVEL_UNSPECIFIED"),
   normal("NORMAL"),
   low("LOW");
 
   const ScanConfigRiskLevelWebsecurityscannerV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static ScanConfigRiskLevelWebsecurityscannerV1beta fromValue(String value) {

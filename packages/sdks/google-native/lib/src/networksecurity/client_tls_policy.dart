@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'client_tls_policy_args.dart';
 import 'google_cloud_networksecurity_v1_certificate_provider_response.dart';
+import 'validation_caresponse.dart';
 
 /// Creates a new ClientTlsPolicy in a given project and location.
 class ClientTlsPolicy extends pulumi.CustomResource {
@@ -19,7 +20,7 @@ class ClientTlsPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   /// Optional. Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
-  late final pulumi.Output<List<Map<String, dynamic>>> serverValidationCa;
+  late final pulumi.Output<List<ValidationCAResponse>> serverValidationCa;
   /// Optional. Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
   late final pulumi.Output<String> sni;
   /// The timestamp when the resource was updated.
@@ -37,17 +38,39 @@ class ClientTlsPolicy extends pulumi.CustomResource {
           'google-native:networksecurity/v1:ClientTlsPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['clientTlsPolicyId', 'location', 'project']).merge(options),
         ) {
     clientCertificate = registerOutput<GoogleCloudNetworksecurityV1CertificateProviderResponse>('clientCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudNetworksecurityV1CertificateProviderResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientTlsPolicyId = registerOutput<String>('clientTlsPolicyId');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    serverValidationCa = registerOutput<List<Map<String, dynamic>>>('serverValidationCa');
+    serverValidationCa = registerOutput<List<ValidationCAResponse>>('serverValidationCa', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ValidationCAResponse>(guardedValue, (value) => ValidationCAResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sni = registerOutput<String>('sni');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ClientTlsPolicy] resource.
+  ClientTlsPolicy.reference(String urn)
+    : super(
+        'google-native:networksecurity/v1:ClientTlsPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clientCertificate = registerOutput<GoogleCloudNetworksecurityV1CertificateProviderResponse>('clientCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudNetworksecurityV1CertificateProviderResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientTlsPolicyId = registerOutput<String>('clientTlsPolicyId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    serverValidationCa = registerOutput<List<ValidationCAResponse>>('serverValidationCa', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ValidationCAResponse>(guardedValue, (value) => ValidationCAResponse.fromMap((value as Map).cast<String, dynamic>())); });
     sni = registerOutput<String>('sni');
     updateTime = registerOutput<String>('updateTime');
   }

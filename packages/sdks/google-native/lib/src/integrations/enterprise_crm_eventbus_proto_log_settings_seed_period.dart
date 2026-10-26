@@ -1,10 +1,13 @@
-enum EnterpriseCrmEventbusProtoLogSettingsSeedPeriod {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum EnterpriseCrmEventbusProtoLogSettingsSeedPeriod implements pulumi.PulumiEnum<String> {
   seedPeriodUnspecified("SEED_PERIOD_UNSPECIFIED"),
   day("DAY"),
   week("WEEK"),
   month("MONTH");
 
   const EnterpriseCrmEventbusProtoLogSettingsSeedPeriod(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmEventbusProtoLogSettingsSeedPeriod fromValue(String value) {

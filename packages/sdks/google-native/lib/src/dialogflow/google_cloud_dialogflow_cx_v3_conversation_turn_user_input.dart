@@ -6,13 +6,13 @@ import 'google_cloud_dialogflow_cx_v3_query_input.dart';
 /// The input from the human user.
 class GoogleCloudDialogflowCxV3ConversationTurnUserInput {
   /// Whether sentiment analysis is enabled.
-  final pulumi.Input<bool>? enableSentimentAnalysis;
+  final pulumi.Input<bool?>? enableSentimentAnalysis;
   /// Parameters that need to be injected into the conversation during intent detection.
-  final pulumi.Input<Map<String, String>>? injectedParameters;
+  final pulumi.Input<Map<String, String>?>? injectedParameters;
   /// Supports text input, event input, dtmf input in the test case.
-  final pulumi.Input<GoogleCloudDialogflowCxV3QueryInput>? input;
+  final pulumi.Input<GoogleCloudDialogflowCxV3QueryInput?>? input;
   /// If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
-  final pulumi.Input<bool>? isWebhookEnabled;
+  final pulumi.Input<bool?>? isWebhookEnabled;
 
   /// Creates a new [GoogleCloudDialogflowCxV3ConversationTurnUserInput].
   /// [enableSentimentAnalysis] Whether sentiment analysis is enabled.

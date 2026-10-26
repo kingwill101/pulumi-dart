@@ -9,7 +9,7 @@ import '../accesscontextmanager/condition.dart';
 /// {@macro pulumi_aiplatform_v1beta1_notebook_runtime_template_iam_member_aiplatform_v1beta1_args_doc}
 class NotebookRuntimeTemplateIamMemberAiplatformV1beta1Args {
   /// An IAM Condition for a given binding.
-  final pulumi.Input<Condition>? condition;
+  final pulumi.Input<Condition?>? condition;
   /// Identity that will be granted the privilege in role. The entry can have one of the following values:
   ///
   /// * user:{emailid}: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.

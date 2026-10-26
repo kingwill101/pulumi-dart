@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Indicates whether the filter matches rows with values that are present in the list or those with values not present in it.
-enum ValueListFilterValuePresentList {
+enum ValueListFilterValuePresentList implements pulumi.PulumiEnum<String> {
   valuePresentInListUnspecified("VALUE_PRESENT_IN_LIST_UNSPECIFIED"),
   valuePresentInListIfValueList("VALUE_PRESENT_IN_LIST_IF_VALUE_LIST"),
   valuePresentInListIfValueNotList("VALUE_PRESENT_IN_LIST_IF_VALUE_NOT_LIST");
 
   const ValueListFilterValuePresentList(this.wireValue);
+  @override
   final String wireValue;
 
   static ValueListFilterValuePresentList fromValue(String value) {

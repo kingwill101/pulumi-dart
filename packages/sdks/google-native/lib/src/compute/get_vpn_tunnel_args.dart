@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_alpha_get_vpn_tunnel_args_doc}
 class GetVpnTunnelArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
   final pulumi.Input<String> vpnTunnel;
 

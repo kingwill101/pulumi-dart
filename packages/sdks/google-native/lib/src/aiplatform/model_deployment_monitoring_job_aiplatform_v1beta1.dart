@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_encryption_spec_response.dart';
 import 'google_cloud_aiplatform_v1beta1_gcs_destination_response.dart';
+import 'google_cloud_aiplatform_v1beta1_model_deployment_monitoring_big_query_table_response.dart';
 import 'google_cloud_aiplatform_v1beta1_model_deployment_monitoring_job_latest_monitoring_pipeline_metadata_response.dart';
+import 'google_cloud_aiplatform_v1beta1_model_deployment_monitoring_objective_config_response.dart';
 import 'google_cloud_aiplatform_v1beta1_model_deployment_monitoring_schedule_config_response.dart';
 import 'google_cloud_aiplatform_v1beta1_model_monitoring_alert_config_response.dart';
 import 'google_cloud_aiplatform_v1beta1_sampling_strategy_response.dart';
@@ -14,7 +16,7 @@ class ModelDeploymentMonitoringJobAiplatformV1beta1 extends pulumi.CustomResourc
   /// YAML schema file uri describing the format of a single instance that you want Tensorflow Data Validation (TFDV) to analyze. If this field is empty, all the feature data types are inferred from predict_instance_schema_uri, meaning that TFDV will use the data in the exact format(data type) as prediction request/response. If there are any data type differences between predict instance and TFDV instance, this field can be used to override the schema. For models trained with Vertex AI, this field must be set as all the fields in predict instance formatted as string.
   late final pulumi.Output<String> analysisInstanceSchemaUri;
   /// The created bigquery tables for the job under customer project. Customer could do their own query & analysis. There could be 4 log tables in maximum: 1. Training data logging predict request/response 2. Serving data logging predict request/response
-  late final pulumi.Output<List<Map<String, dynamic>>> bigqueryTables;
+  late final pulumi.Output<List<GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse>> bigqueryTables;
   /// Timestamp when this ModelDeploymentMonitoringJob was created.
   late final pulumi.Output<String> createTime;
   /// The user-defined name of the ModelDeploymentMonitoringJob. The name can be up to 128 characters long and can consist of any UTF-8 characters. Display name of a ModelDeploymentMonitoringJob.
@@ -37,7 +39,7 @@ class ModelDeploymentMonitoringJobAiplatformV1beta1 extends pulumi.CustomResourc
   /// Sample Strategy for logging.
   late final pulumi.Output<GoogleCloudAiplatformV1beta1SamplingStrategyResponse> loggingSamplingStrategy;
   /// The config for monitoring objectives. This is a per DeployedModel config. Each DeployedModel needs to be configured separately.
-  late final pulumi.Output<List<Map<String, dynamic>>> modelDeploymentMonitoringObjectiveConfigs;
+  late final pulumi.Output<List<GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponse>> modelDeploymentMonitoringObjectiveConfigs;
   /// Schedule config for running the monitoring job.
   late final pulumi.Output<GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigResponse> modelDeploymentMonitoringScheduleConfig;
   /// Alert config for model monitoring.
@@ -72,22 +74,58 @@ class ModelDeploymentMonitoringJobAiplatformV1beta1 extends pulumi.CustomResourc
           'google-native:aiplatform/v1beta1:ModelDeploymentMonitoringJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     analysisInstanceSchemaUri = registerOutput<String>('analysisInstanceSchemaUri');
-    bigqueryTables = registerOutput<List<Map<String, dynamic>>>('bigqueryTables');
+    bigqueryTables = registerOutput<List<GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse>>('bigqueryTables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse>(guardedValue, (value) => GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     enableMonitoringPipelineLogs = registerOutput<bool>('enableMonitoringPipelineLogs');
     encryptionSpec = registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoint = registerOutput<String>('endpoint');
     error = registerOutput<GoogleRpcStatusResponseAiplatformV1beta1>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleRpcStatusResponseAiplatformV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     latestMonitoringPipelineMetadata = registerOutput<GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse>('latestMonitoringPipelineMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     logTtl = registerOutput<String>('logTtl');
     loggingSamplingStrategy = registerOutput<GoogleCloudAiplatformV1beta1SamplingStrategyResponse>('loggingSamplingStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1SamplingStrategyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    modelDeploymentMonitoringObjectiveConfigs = registerOutput<List<Map<String, dynamic>>>('modelDeploymentMonitoringObjectiveConfigs');
+    modelDeploymentMonitoringObjectiveConfigs = registerOutput<List<GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponse>>('modelDeploymentMonitoringObjectiveConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponse>(guardedValue, (value) => GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    modelDeploymentMonitoringScheduleConfig = registerOutput<GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigResponse>('modelDeploymentMonitoringScheduleConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    modelMonitoringAlertConfig = registerOutput<GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponse>('modelMonitoringAlertConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    nextScheduleTime = registerOutput<String>('nextScheduleTime');
+    predictInstanceSchemaUri = registerOutput<String>('predictInstanceSchemaUri');
+    project = registerOutput<String>('project');
+    samplePredictInstance = registerOutput<dynamic>('samplePredictInstance');
+    scheduleState = registerOutput<String>('scheduleState');
+    state = registerOutput<String>('state');
+    statsAnomaliesBaseDirectory = registerOutput<GoogleCloudAiplatformV1beta1GcsDestinationResponse>('statsAnomaliesBaseDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1GcsDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ModelDeploymentMonitoringJobAiplatformV1beta1] resource.
+  ModelDeploymentMonitoringJobAiplatformV1beta1.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1beta1:ModelDeploymentMonitoringJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    analysisInstanceSchemaUri = registerOutput<String>('analysisInstanceSchemaUri');
+    bigqueryTables = registerOutput<List<GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse>>('bigqueryTables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse>(guardedValue, (value) => GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    enableMonitoringPipelineLogs = registerOutput<bool>('enableMonitoringPipelineLogs');
+    encryptionSpec = registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpoint = registerOutput<String>('endpoint');
+    error = registerOutput<GoogleRpcStatusResponseAiplatformV1beta1>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleRpcStatusResponseAiplatformV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    latestMonitoringPipelineMetadata = registerOutput<GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse>('latestMonitoringPipelineMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    logTtl = registerOutput<String>('logTtl');
+    loggingSamplingStrategy = registerOutput<GoogleCloudAiplatformV1beta1SamplingStrategyResponse>('loggingSamplingStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1SamplingStrategyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    modelDeploymentMonitoringObjectiveConfigs = registerOutput<List<GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponse>>('modelDeploymentMonitoringObjectiveConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponse>(guardedValue, (value) => GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     modelDeploymentMonitoringScheduleConfig = registerOutput<GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigResponse>('modelDeploymentMonitoringScheduleConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     modelMonitoringAlertConfig = registerOutput<GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponse>('modelMonitoringAlertConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

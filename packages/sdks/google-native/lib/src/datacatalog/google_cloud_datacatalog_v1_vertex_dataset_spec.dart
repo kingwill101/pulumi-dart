@@ -6,9 +6,9 @@ import 'google_cloud_datacatalog_v1_vertex_dataset_spec_data_type.dart';
 /// Specification for vertex dataset resources.
 class GoogleCloudDatacatalogV1VertexDatasetSpec {
   /// The number of DataItems in this Dataset. Only apply for non-structured Dataset.
-  final pulumi.Input<String>? dataItemCount;
+  final pulumi.Input<String?>? dataItemCount;
   /// Type of the dataset.
-  final pulumi.Input<GoogleCloudDatacatalogV1VertexDatasetSpecDataType>? dataType;
+  final pulumi.Input<GoogleCloudDatacatalogV1VertexDatasetSpecDataType?>? dataType;
 
   /// Creates a new [GoogleCloudDatacatalogV1VertexDatasetSpec].
   /// [dataItemCount] The number of DataItems in this Dataset. Only apply for non-structured Dataset.

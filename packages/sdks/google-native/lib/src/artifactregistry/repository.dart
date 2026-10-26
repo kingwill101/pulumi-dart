@@ -56,16 +56,46 @@ class Repository extends pulumi.CustomResource {
           'google-native:artifactregistry/v1:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'repositoryId']).merge(options),
         ) {
-    cleanupPolicies = registerOutput<Map<String, String>>('cleanupPolicies');
+    cleanupPolicies = registerOutput<Map<String, String>>('cleanupPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     cleanupPolicyDryRun = registerOutput<bool>('cleanupPolicyDryRun');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     dockerConfig = registerOutput<DockerRepositoryConfigResponse>('dockerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DockerRepositoryConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     format = registerOutput<String>('format');
     kmsKeyName = registerOutput<String>('kmsKeyName');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    mavenConfig = registerOutput<MavenRepositoryConfigResponse>('mavenConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MavenRepositoryConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mode = registerOutput<String>('mode');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    remoteRepositoryConfig = registerOutput<RemoteRepositoryConfigResponse>('remoteRepositoryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemoteRepositoryConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    repositoryId = registerOutput<String>('repositoryId');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    sizeBytes = registerOutput<String>('sizeBytes');
+    updateTime = registerOutput<String>('updateTime');
+    virtualRepositoryConfig = registerOutput<VirtualRepositoryConfigResponse>('virtualRepositoryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualRepositoryConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Repository] resource.
+  Repository.reference(String urn)
+    : super(
+        'google-native:artifactregistry/v1:Repository',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cleanupPolicies = registerOutput<Map<String, String>>('cleanupPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    cleanupPolicyDryRun = registerOutput<bool>('cleanupPolicyDryRun');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    dockerConfig = registerOutput<DockerRepositoryConfigResponse>('dockerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DockerRepositoryConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    format = registerOutput<String>('format');
+    kmsKeyName = registerOutput<String>('kmsKeyName');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     mavenConfig = registerOutput<MavenRepositoryConfigResponse>('mavenConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MavenRepositoryConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mode = registerOutput<String>('mode');

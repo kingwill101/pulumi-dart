@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'server_binding_type_compute_beta.dart';
 
 class ServerBindingComputeBeta {
-  final pulumi.Input<ServerBindingTypeComputeBeta>? type;
+  final pulumi.Input<ServerBindingTypeComputeBeta?>? type;
 
   /// Creates a new [ServerBindingComputeBeta].
   /// [type] Optional.

@@ -47,7 +47,7 @@ class SslCertificateComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:SslCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     certificate = registerOutput<String>('certificate');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -62,7 +62,33 @@ class SslCertificateComputeV1 extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     selfLink = registerOutput<String>('selfLink');
     selfManaged = registerOutput<SslCertificateSelfManagedSslCertificateResponseComputeV1>('selfManaged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SslCertificateSelfManagedSslCertificateResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames');
+    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SslCertificateComputeV1] resource.
+  SslCertificateComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:SslCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    certificate = registerOutput<String>('certificate');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    expireTime = registerOutput<String>('expireTime');
+    kind = registerOutput<String>('kind');
+    managed = registerOutput<SslCertificateManagedSslCertificateResponseComputeV1>('managed', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SslCertificateManagedSslCertificateResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    privateKey = registerOutput<String>('privateKey');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    selfManaged = registerOutput<SslCertificateSelfManagedSslCertificateResponseComputeV1>('selfManaged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SslCertificateSelfManagedSslCertificateResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
   }
 }

@@ -26,9 +26,26 @@ class Namespace extends pulumi.CustomResource {
           'google-native:servicedirectory/v1:Namespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'namespaceId', 'project']).merge(options),
         ) {
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    namespaceId = registerOutput<String>('namespaceId');
+    project = registerOutput<String>('project');
+    uid = registerOutput<String>('uid');
+  }
+
+  /// Creates a typed reference to an existing [Namespace] resource.
+  Namespace.reference(String urn)
+    : super(
+        'google-native:servicedirectory/v1:Namespace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     namespaceId = registerOutput<String>('namespaceId');

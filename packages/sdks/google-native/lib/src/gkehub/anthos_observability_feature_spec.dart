@@ -6,7 +6,7 @@ import 'anthos_observability_membership_spec.dart';
 /// **Anthos Observability**: Spec
 class AnthosObservabilityFeatureSpec {
   /// Default membership spec for unconfigured memberships
-  final pulumi.Input<AnthosObservabilityMembershipSpec>? defaultMembershipSpec;
+  final pulumi.Input<AnthosObservabilityMembershipSpec?>? defaultMembershipSpec;
 
   /// Creates a new [AnthosObservabilityFeatureSpec].
   /// [defaultMembershipSpec] Default membership spec for unconfigured memberships

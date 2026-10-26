@@ -6,21 +6,21 @@ import 'vpc_peering_config_response.dart';
 /// Result data returned by getPrivateConnection.
 class GetPrivateConnectionResult {
   /// The create time of the resource.
-  final String createTime;
+  final String? createTime;
   /// Display name.
-  final String displayName;
+  final String? displayName;
   /// In case of error, the details of the error in a user-friendly format.
-  final ErrorResponse error;
+  final ErrorResponse? error;
   /// Labels.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// The resource's name.
-  final String name;
+  final String? name;
   /// The state of the Private Connection.
-  final String state;
+  final String? state;
   /// The update time of the resource.
-  final String updateTime;
+  final String? updateTime;
   /// VPC Peering Config.
-  final VpcPeeringConfigResponse vpcPeeringConfig;
+  final VpcPeeringConfigResponse? vpcPeeringConfig;
 
   /// Creates a new [GetPrivateConnectionResult].
   /// [createTime] The create time of the resource.
@@ -32,39 +32,39 @@ class GetPrivateConnectionResult {
   /// [updateTime] The update time of the resource.
   /// [vpcPeeringConfig] VPC Peering Config.
   const GetPrivateConnectionResult({
-    required this.createTime,
-    required this.displayName,
-    required this.error,
-    required this.labels,
-    required this.name,
-    required this.state,
-    required this.updateTime,
-    required this.vpcPeeringConfig,
+    this.createTime,
+    this.displayName,
+    this.error,
+    this.labels,
+    this.name,
+    this.state,
+    this.updateTime,
+    this.vpcPeeringConfig,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'displayName': displayName,
-      'error': error.toMap(),
-      'labels': labels,
-      'name': name,
-      'state': state,
-      'updateTime': updateTime,
-      'vpcPeeringConfig': vpcPeeringConfig.toMap(),
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'error': ?error?.toMap(),
+      'labels': ?labels,
+      'name': ?name,
+      'state': ?state,
+      'updateTime': ?updateTime,
+      'vpcPeeringConfig': ?vpcPeeringConfig?.toMap(),
     };
   }
 
   factory GetPrivateConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateConnectionResult(
-      createTime: map['createTime'] as String,
-      displayName: map['displayName'] as String,
-      error: ErrorResponse.fromMap((map['error']! as Map).cast<String, dynamic>()),
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      state: map['state'] as String,
-      updateTime: map['updateTime'] as String,
-      vpcPeeringConfig: VpcPeeringConfigResponse.fromMap((map['vpcPeeringConfig']! as Map).cast<String, dynamic>()),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return ErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vpcPeeringConfig: (() { final guardedValue = map['vpcPeeringConfig']; if (guardedValue == null) return null; return VpcPeeringConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

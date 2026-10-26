@@ -1,4 +1,6 @@
-enum DocumentKnowledgeTypesItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum DocumentKnowledgeTypesItem implements pulumi.PulumiEnum<String> {
   knowledgeTypeUnspecified("KNOWLEDGE_TYPE_UNSPECIFIED"),
   faq("FAQ"),
   extractiveQa("EXTRACTIVE_QA"),
@@ -6,6 +8,7 @@ enum DocumentKnowledgeTypesItem {
   agentFacingSmartReply("AGENT_FACING_SMART_REPLY");
 
   const DocumentKnowledgeTypesItem(this.wireValue);
+  @override
   final String wireValue;
 
   static DocumentKnowledgeTypesItem fromValue(String value) {

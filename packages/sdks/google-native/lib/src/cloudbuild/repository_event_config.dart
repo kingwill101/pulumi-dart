@@ -7,11 +7,11 @@ import 'push_filter.dart';
 /// The configuration of a trigger that creates a build whenever an event from Repo API is received.
 class RepositoryEventConfig {
   /// Filter to match changes in pull requests.
-  final pulumi.Input<PullRequestFilter>? pullRequest;
+  final pulumi.Input<PullRequestFilter?>? pullRequest;
   /// Filter to match changes in refs like branches, tags.
-  final pulumi.Input<PushFilter>? push;
+  final pulumi.Input<PushFilter?>? push;
   /// The resource name of the Repo API resource.
-  final pulumi.Input<String>? repository;
+  final pulumi.Input<String?>? repository;
 
   /// Creates a new [RepositoryEventConfig].
   /// [pullRequest] Filter to match changes in pull requests.

@@ -10,23 +10,23 @@ import 'scheduling_provisioning_model_compute_v1.dart';
 /// Sets the scheduling options for an Instance.
 class SchedulingComputeV1 {
   /// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
-  final pulumi.Input<bool>? automaticRestart;
+  final pulumi.Input<bool?>? automaticRestart;
   /// Specifies the termination action for the instance.
-  final pulumi.Input<SchedulingInstanceTerminationActionComputeV1>? instanceTerminationAction;
+  final pulumi.Input<SchedulingInstanceTerminationActionComputeV1?>? instanceTerminationAction;
   /// Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour.
-  final pulumi.Input<DurationComputeV1>? localSsdRecoveryTimeout;
+  final pulumi.Input<DurationComputeV1?>? localSsdRecoveryTimeout;
   /// An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
-  final pulumi.Input<String>? locationHint;
+  final pulumi.Input<String?>? locationHint;
   /// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
-  final pulumi.Input<int>? minNodeCpus;
+  final pulumi.Input<int?>? minNodeCpus;
   /// A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
-  final pulumi.Input<List<SchedulingNodeAffinityComputeV1>>? nodeAffinities;
+  final pulumi.Input<List<SchedulingNodeAffinityComputeV1>?>? nodeAffinities;
   /// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
-  final pulumi.Input<SchedulingOnHostMaintenanceComputeV1>? onHostMaintenance;
+  final pulumi.Input<SchedulingOnHostMaintenanceComputeV1?>? onHostMaintenance;
   /// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
-  final pulumi.Input<bool>? preemptible;
+  final pulumi.Input<bool?>? preemptible;
   /// Specifies the provisioning model of the instance.
-  final pulumi.Input<SchedulingProvisioningModelComputeV1>? provisioningModel;
+  final pulumi.Input<SchedulingProvisioningModelComputeV1?>? provisioningModel;
 
   /// Creates a new [SchedulingComputeV1].
   /// [automaticRestart] Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
@@ -70,7 +70,7 @@ class SchedulingComputeV1 {
       instanceTerminationAction: (() { final guardedValue = map['instanceTerminationAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SchedulingInstanceTerminationActionComputeV1.fromValue(guardedValue as String)); })(),
       localSsdRecoveryTimeout: (() { final guardedValue = map['localSsdRecoveryTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DurationComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       locationHint: (() { final guardedValue = map['locationHint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minNodeCpus: (() { final guardedValue = map['minNodeCpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minNodeCpus: (() { final guardedValue = map['minNodeCpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nodeAffinities: (() { final guardedValue = map['nodeAffinities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SchedulingNodeAffinityComputeV1>(guardedValue, (value) => SchedulingNodeAffinityComputeV1.fromMap((value as Map).cast<String, dynamic>()))); })(),
       onHostMaintenance: (() { final guardedValue = map['onHostMaintenance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SchedulingOnHostMaintenanceComputeV1.fromValue(guardedValue as String)); })(),
       preemptible: (() { final guardedValue = map['preemptible']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

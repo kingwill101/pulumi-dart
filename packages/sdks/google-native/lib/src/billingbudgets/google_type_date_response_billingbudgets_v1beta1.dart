@@ -31,9 +31,9 @@ class GoogleTypeDateResponseBillingbudgetsV1beta1 {
 
   factory GoogleTypeDateResponseBillingbudgetsV1beta1.fromMap(Map<String, dynamic> map) {
     return GoogleTypeDateResponseBillingbudgetsV1beta1(
-      day: pulumi.Input.fromValue(map['day'] as int),
-      month: pulumi.Input.fromValue(map['month'] as int),
-      year: pulumi.Input.fromValue(map['year'] as int),
+      day: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['day'])),
+      month: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['month'])),
+      year: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['year'])),
     );
   }
 }

@@ -8,11 +8,11 @@ import 'enterprise_crm_logging_gws_sanitize_options_sanitize_type.dart';
 /// Identifies whether a field contains, or may contain, PII or sensitive data, and how to sanitize the field if it does. If a field's privacy type cannot be determined then it is sanitized (e.g., scrubbed). The specific sanitizer implementation is determined by run-time configuration and environment options (e.g., prod vs. qa). next_id: 5
 class EnterpriseCrmLoggingGwsSanitizeOptions {
   /// If true, the value has already been sanitized and needs no further sanitization. For instance, a D3 customer id is already an obfuscated entity and *might not* need further sanitization.
-  final pulumi.Input<bool>? isAlreadySanitized;
+  final pulumi.Input<bool?>? isAlreadySanitized;
   /// To which type(s) of logs the sanitize options apply.
-  final pulumi.Input<List<EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem>>? logType;
-  final pulumi.Input<EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy>? privacy;
-  final pulumi.Input<EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType>? sanitizeType;
+  final pulumi.Input<List<EnterpriseCrmLoggingGwsSanitizeOptionsLogTypeItem>?>? logType;
+  final pulumi.Input<EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy?>? privacy;
+  final pulumi.Input<EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType?>? sanitizeType;
 
   /// Creates a new [EnterpriseCrmLoggingGwsSanitizeOptions].
   /// [isAlreadySanitized] If true, the value has already been sanitized and needs no further sanitization. For instance, a D3 customer id is already an obfuscated entity and *might not* need further sanitization.

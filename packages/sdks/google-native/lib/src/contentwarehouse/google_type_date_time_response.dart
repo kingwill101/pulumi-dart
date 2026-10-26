@@ -62,15 +62,15 @@ class GoogleTypeDateTimeResponse {
 
   factory GoogleTypeDateTimeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleTypeDateTimeResponse(
-      day: pulumi.Input.fromValue(map['day'] as int),
-      hours: pulumi.Input.fromValue(map['hours'] as int),
-      minutes: pulumi.Input.fromValue(map['minutes'] as int),
-      month: pulumi.Input.fromValue(map['month'] as int),
-      nanos: pulumi.Input.fromValue(map['nanos'] as int),
-      seconds: pulumi.Input.fromValue(map['seconds'] as int),
+      day: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['day'])),
+      hours: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['hours'])),
+      minutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minutes'])),
+      month: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['month'])),
+      nanos: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nanos'])),
+      seconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['seconds'])),
       timeZone: pulumi.Input.fromValue(GoogleTypeTimeZoneResponse.fromMap((map['timeZone']! as Map).cast<String, dynamic>())),
       utcOffset: pulumi.Input.fromValue(map['utcOffset'] as String),
-      year: pulumi.Input.fromValue(map['year'] as int),
+      year: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['year'])),
     );
   }
 }

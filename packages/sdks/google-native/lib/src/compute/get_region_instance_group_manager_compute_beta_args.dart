@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_beta_get_region_instance_group_manager_compute_beta_args_doc}
 class GetRegionInstanceGroupManagerComputeBetaArgs {
   final pulumi.Input<String> instanceGroupManager;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
 
   /// Creates a new [GetRegionInstanceGroupManagerComputeBetaArgs].

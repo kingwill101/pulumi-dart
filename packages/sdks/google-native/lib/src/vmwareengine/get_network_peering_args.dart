@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_vmwareengine_v1_get_network_peering_args_doc}
 class GetNetworkPeeringArgs {
   final pulumi.Input<String> networkPeeringId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetNetworkPeeringArgs].
   /// [networkPeeringId] Required.

@@ -49,13 +49,13 @@ class Workflow extends pulumi.CustomResource {
           'google-native:workflows/v1:Workflow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'workflowId']).merge(options),
         ) {
     callLogLevel = registerOutput<String>('callLogLevel');
     createTime = registerOutput<String>('createTime');
     cryptoKeyName = registerOutput<String>('cryptoKeyName');
     description = registerOutput<String>('description');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -66,7 +66,35 @@ class Workflow extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     stateError = registerOutput<StateErrorResponse>('stateError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StateErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
-    userEnvVars = registerOutput<Map<String, String>>('userEnvVars');
+    userEnvVars = registerOutput<Map<String, String>>('userEnvVars', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workflowId = registerOutput<String>('workflowId');
+  }
+
+  /// Creates a typed reference to an existing [Workflow] resource.
+  Workflow.reference(String urn)
+    : super(
+        'google-native:workflows/v1:Workflow',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    callLogLevel = registerOutput<String>('callLogLevel');
+    createTime = registerOutput<String>('createTime');
+    cryptoKeyName = registerOutput<String>('cryptoKeyName');
+    description = registerOutput<String>('description');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    revisionId = registerOutput<String>('revisionId');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    sourceContents = registerOutput<String>('sourceContents');
+    state = registerOutput<String>('state');
+    stateError = registerOutput<StateErrorResponse>('stateError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StateErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+    userEnvVars = registerOutput<Map<String, String>>('userEnvVars', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workflowId = registerOutput<String>('workflowId');
   }
 }

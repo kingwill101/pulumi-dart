@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration of a specific monitoring destination (the producer project or the consumer project).
 class MonitoringDestination {
   /// Types of the metrics to report to this monitoring destination. Each type must be defined in Service.metrics section.
-  final pulumi.Input<List<String>>? metrics;
+  final pulumi.Input<List<String>?>? metrics;
   /// The monitored resource type. The type must be defined in Service.monitored_resources section.
-  final pulumi.Input<String>? monitoredResource;
+  final pulumi.Input<String?>? monitoredResource;
 
   /// Creates a new [MonitoringDestination].
   /// [metrics] Types of the metrics to report to this monitoring destination. Each type must be defined in Service.metrics section.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines what happens to the task upon failure.
-enum GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy {
+enum GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy implements pulumi.PulumiEnum<String> {
   retryStrategyUnspecified("RETRY_STRATEGY_UNSPECIFIED"),
   ignore("IGNORE"),
   none("NONE"),
@@ -10,6 +12,7 @@ enum GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy {
   restartIntegrationWithBackoff("RESTART_INTEGRATION_WITH_BACKOFF");
 
   const GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy fromValue(String value) {

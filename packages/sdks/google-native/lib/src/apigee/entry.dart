@@ -23,8 +23,24 @@ class Entry extends pulumi.CustomResource {
           'google-native:apigee/v1:Entry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['apiId', 'keyvaluemapId', 'organizationId']).merge(options),
         ) {
+    apiId = registerOutput<String>('apiId');
+    keyvaluemapId = registerOutput<String>('keyvaluemapId');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [Entry] resource.
+  Entry.reference(String urn)
+    : super(
+        'google-native:apigee/v1:Entry',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiId = registerOutput<String>('apiId');
     keyvaluemapId = registerOutput<String>('keyvaluemapId');
     this.name = registerOutput<String>('name');

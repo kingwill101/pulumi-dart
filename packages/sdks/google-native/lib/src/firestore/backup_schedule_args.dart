@@ -9,13 +9,13 @@ import 'google_firestore_admin_v1_weekly_recurrence.dart';
 /// {@macro pulumi_firestore_v1_backup_schedule_args_doc}
 class BackupScheduleArgs {
   /// For a schedule that runs daily at a specified time.
-  final pulumi.Input<Map<String, dynamic>>? dailyRecurrence;
+  final pulumi.Input<Map<String, dynamic>?>? dailyRecurrence;
   final pulumi.Input<String> databaseId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
-  final pulumi.Input<String>? retention;
+  final pulumi.Input<String?>? retention;
   /// For a schedule that runs weekly on a specific day and time.
-  final pulumi.Input<GoogleFirestoreAdminV1WeeklyRecurrence>? weeklyRecurrence;
+  final pulumi.Input<GoogleFirestoreAdminV1WeeklyRecurrence?>? weeklyRecurrence;
 
   /// Creates a new [BackupScheduleArgs].
   /// [dailyRecurrence] For a schedule that runs daily at a specified time.

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// RepoSource describes the location of the source in a Google Cloud Source Repository.
 class RepoSource {
   /// Name of the branch to build.
-  final pulumi.Input<String>? branchName;
+  final pulumi.Input<String?>? branchName;
   /// Explicit commit SHA to build.
-  final pulumi.Input<String>? commitSha;
+  final pulumi.Input<String?>? commitSha;
   /// ID of the project that owns the repo.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Name of the repo.
-  final pulumi.Input<String>? repoName;
+  final pulumi.Input<String?>? repoName;
   /// Name of the tag to build.
-  final pulumi.Input<String>? tagName;
+  final pulumi.Input<String?>? tagName;
 
   /// Creates a new [RepoSource].
   /// [branchName] Name of the branch to build.

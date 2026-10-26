@@ -20,6 +20,17 @@ Future<GetFirewallpolicyResult> getFirewallpolicy(
   return GetFirewallpolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallpolicyResult> getFirewallpolicyOutput(
+  GetFirewallpolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:recaptchaenterprise/v1:getFirewallpolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallpolicyResult.fromMap);
+}
+
 /// Returns the specified key.
 /// [args] Arguments passed to this invoke. {@macro pulumi_recaptchaenterprise_v1_get_key_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetKeyResult> getKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetKeyResult> getKeyOutput(
+  GetKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:recaptchaenterprise/v1:getKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKeyResult.fromMap);
 }

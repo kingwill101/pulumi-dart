@@ -8,7 +8,7 @@ class Build {
   /// Immutable. Version of the builder which produced this build.
   final pulumi.Input<String> builderVersion;
   /// Signature of the build in occurrences pointing to this build note containing build details.
-  final pulumi.Input<BuildSignatureContaineranalysisV1beta1>? signature;
+  final pulumi.Input<BuildSignatureContaineranalysisV1beta1?>? signature;
 
   /// Creates a new [Build].
   /// [builderVersion] Immutable. Version of the builder which produced this build.

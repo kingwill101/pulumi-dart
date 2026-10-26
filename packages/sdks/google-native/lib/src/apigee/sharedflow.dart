@@ -28,13 +28,30 @@ class Sharedflow extends pulumi.CustomResource {
           'google-native:apigee/v1:Sharedflow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['action', 'name', 'organizationId']).merge(options),
         ) {
     action = registerOutput<String>('action');
     latestRevisionId = registerOutput<String>('latestRevisionId');
     metaData = registerOutput<GoogleCloudApigeeV1EntityMetadataResponse>('metaData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1EntityMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
-    revision = registerOutput<List<String>>('revision');
+    revision = registerOutput<List<String>>('revision', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Sharedflow] resource.
+  Sharedflow.reference(String urn)
+    : super(
+        'google-native:apigee/v1:Sharedflow',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    latestRevisionId = registerOutput<String>('latestRevisionId');
+    metaData = registerOutput<GoogleCloudApigeeV1EntityMetadataResponse>('metaData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1EntityMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    revision = registerOutput<List<String>>('revision', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

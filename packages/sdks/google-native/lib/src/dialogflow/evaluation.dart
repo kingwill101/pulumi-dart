@@ -35,8 +35,28 @@ class Evaluation extends pulumi.CustomResource {
           'google-native:dialogflow/v2:Evaluation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['conversationModelId', 'location', 'project']).merge(options),
         ) {
+    conversationModelId = registerOutput<String>('conversationModelId');
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    evaluationConfig = registerOutput<GoogleCloudDialogflowV2EvaluationConfigResponse>('evaluationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowV2EvaluationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    rawHumanEvalTemplateCsv = registerOutput<String>('rawHumanEvalTemplateCsv');
+    smartReplyMetrics = registerOutput<GoogleCloudDialogflowV2SmartReplyMetricsResponse>('smartReplyMetrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowV2SmartReplyMetricsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Evaluation] resource.
+  Evaluation.reference(String urn)
+    : super(
+        'google-native:dialogflow/v2:Evaluation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     conversationModelId = registerOutput<String>('conversationModelId');
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');

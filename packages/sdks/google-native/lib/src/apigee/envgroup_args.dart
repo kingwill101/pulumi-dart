@@ -10,7 +10,7 @@ class EnvgroupArgs {
   /// Host names for this environment group.
   final pulumi.Input<List<String>> hostnames;
   /// ID of the environment group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
 
   /// Creates a new [EnvgroupArgs].

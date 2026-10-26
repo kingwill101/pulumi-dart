@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketAccessControlArgs {
   final pulumi.Input<String> bucket;
   final pulumi.Input<String> entity;
-  final pulumi.Input<String>? userProject;
+  final pulumi.Input<String?>? userProject;
 
   /// Creates a new [GetBucketAccessControlArgs].
   /// [bucket] Required.

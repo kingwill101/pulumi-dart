@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Sets which mode to use for Security Posture features.
-enum SecurityPostureConfigModeContainerV1beta1 {
+enum SecurityPostureConfigModeContainerV1beta1 implements pulumi.PulumiEnum<String> {
   modeUnspecified("MODE_UNSPECIFIED"),
   disabled("DISABLED"),
   basic("BASIC");
 
   const SecurityPostureConfigModeContainerV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityPostureConfigModeContainerV1beta1 fromValue(String value) {

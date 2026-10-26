@@ -14,23 +14,23 @@ class AppProfileArgs {
   /// Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
   final pulumi.Input<String> appProfileId;
   /// Long form description of the use case for this AppProfile.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// If true, ignore safety checks when creating the app profile.
-  final pulumi.Input<bool>? ignoreWarnings;
+  final pulumi.Input<bool?>? ignoreWarnings;
   final pulumi.Input<String> instanceId;
   /// Use a multi-cluster routing policy.
-  final pulumi.Input<MultiClusterRoutingUseAny>? multiClusterRoutingUseAny;
+  final pulumi.Input<MultiClusterRoutingUseAny?>? multiClusterRoutingUseAny;
   /// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
-  final pulumi.Input<AppProfilePriority>? priority;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<AppProfilePriority?>? priority;
+  final pulumi.Input<String?>? project;
   /// Use a single-cluster routing policy.
-  final pulumi.Input<SingleClusterRouting>? singleClusterRouting;
+  final pulumi.Input<SingleClusterRouting?>? singleClusterRouting;
   /// The standard options used for isolating this app profile's traffic from other use cases.
-  final pulumi.Input<StandardIsolation>? standardIsolation;
+  final pulumi.Input<StandardIsolation?>? standardIsolation;
 
   /// Creates a new [AppProfileArgs].
   /// [appProfileId] Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.

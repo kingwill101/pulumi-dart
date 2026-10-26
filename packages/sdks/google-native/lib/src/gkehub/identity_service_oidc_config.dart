@@ -5,31 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for OIDC Auth flow.
 class IdentityServiceOidcConfig {
   /// PEM-encoded CA for OIDC provider.
-  final pulumi.Input<String>? certificateAuthorityData;
+  final pulumi.Input<String?>? certificateAuthorityData;
   /// ID for OIDC client application.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Input only. Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Flag to denote if reverse proxy is used to connect to auth provider. This flag should be set to true when provider is not reachable by Google Cloud Console.
-  final pulumi.Input<bool>? deployCloudConsoleProxy;
+  final pulumi.Input<bool?>? deployCloudConsoleProxy;
   /// Enable access token.
-  final pulumi.Input<bool>? enableAccessToken;
+  final pulumi.Input<bool?>? enableAccessToken;
   /// Comma-separated list of key-value pairs.
-  final pulumi.Input<String>? extraParams;
+  final pulumi.Input<String?>? extraParams;
   /// Prefix to prepend to group name.
-  final pulumi.Input<String>? groupPrefix;
+  final pulumi.Input<String?>? groupPrefix;
   /// Claim in OIDC ID token that holds group information.
-  final pulumi.Input<String>? groupsClaim;
+  final pulumi.Input<String?>? groupsClaim;
   /// URI for the OIDC provider. This should point to the level below .well-known/openid-configuration.
-  final pulumi.Input<String>? issuerUri;
+  final pulumi.Input<String?>? issuerUri;
   /// Registered redirect uri to redirect users going through OAuth flow using kubectl plugin.
-  final pulumi.Input<String>? kubectlRedirectUri;
+  final pulumi.Input<String?>? kubectlRedirectUri;
   /// Comma-separated list of identifiers.
-  final pulumi.Input<String>? scopes;
+  final pulumi.Input<String?>? scopes;
   /// Claim in OIDC ID token that holds username.
-  final pulumi.Input<String>? userClaim;
+  final pulumi.Input<String?>? userClaim;
   /// Prefix to prepend to user name.
-  final pulumi.Input<String>? userPrefix;
+  final pulumi.Input<String?>? userPrefix;
 
   /// Creates a new [IdentityServiceOidcConfig].
   /// [certificateAuthorityData] PEM-encoded CA for OIDC provider.

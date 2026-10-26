@@ -21,7 +21,7 @@ class StackdriverLoggingConfigResponse {
 
   factory StackdriverLoggingConfigResponse.fromMap(Map<String, dynamic> map) {
     return StackdriverLoggingConfigResponse(
-      samplingRatio: pulumi.Input.fromValue(map['samplingRatio'] as double),
+      samplingRatio: pulumi.Input.fromValue((map['samplingRatio'] as num).toDouble()),
     );
   }
 }

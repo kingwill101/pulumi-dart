@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details for an outcome with a SKIPPED outcome summary.
 class SkippedDetail {
   /// If the App doesn't support the specific API level.
-  final pulumi.Input<bool>? incompatibleAppVersion;
+  final pulumi.Input<bool?>? incompatibleAppVersion;
   /// If the App doesn't run on the specific architecture, for example, x86.
-  final pulumi.Input<bool>? incompatibleArchitecture;
+  final pulumi.Input<bool?>? incompatibleArchitecture;
   /// If the requested OS version doesn't run on the specific device model.
-  final pulumi.Input<bool>? incompatibleDevice;
+  final pulumi.Input<bool?>? incompatibleDevice;
 
   /// Creates a new [SkippedDetail].
   /// [incompatibleAppVersion] If the App doesn't support the specific API level.

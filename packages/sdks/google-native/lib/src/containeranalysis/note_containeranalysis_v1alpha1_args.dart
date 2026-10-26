@@ -25,50 +25,50 @@ import 'vulnerability_type.dart';
 /// {@macro pulumi_containeranalysis_v1alpha1_note_containeranalysis_v1alpha1_args_doc}
 class NoteContaineranalysisV1alpha1Args {
   /// A note describing an attestation role.
-  final pulumi.Input<AttestationAuthority>? attestationAuthority;
+  final pulumi.Input<AttestationAuthority?>? attestationAuthority;
   /// A note describing a base image.
-  final pulumi.Input<Basis>? baseImage;
+  final pulumi.Input<Basis?>? baseImage;
   /// Build provenance type for a verifiable build.
-  final pulumi.Input<BuildType>? buildType;
+  final pulumi.Input<BuildType?>? buildType;
   /// A note describing a compliance check.
-  final pulumi.Input<ComplianceNoteContaineranalysisV1alpha1>? compliance;
+  final pulumi.Input<ComplianceNoteContaineranalysisV1alpha1?>? compliance;
   /// A note describing something that can be deployed.
-  final pulumi.Input<Deployable>? deployable;
+  final pulumi.Input<Deployable?>? deployable;
   /// A note describing a provider/analysis type.
-  final pulumi.Input<Discovery>? discovery;
+  final pulumi.Input<Discovery?>? discovery;
   /// A note describing a dsse attestation note.
-  final pulumi.Input<DSSEAttestationNoteContaineranalysisV1alpha1>? dsseAttestation;
+  final pulumi.Input<DSSEAttestationNoteContaineranalysisV1alpha1?>? dsseAttestation;
   /// Time of expiration for this note, null if note does not expire.
-  final pulumi.Input<String>? expirationTime;
+  final pulumi.Input<String?>? expirationTime;
   /// A detailed description of this `Note`.
-  final pulumi.Input<String>? longDescription;
+  final pulumi.Input<String?>? longDescription;
   /// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID to use for this note.
-  final pulumi.Input<String>? noteId;
+  final pulumi.Input<String?>? noteId;
   /// A note describing a package hosted by various package managers.
-  final pulumi.Input<Package>? package;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Package?>? package;
+  final pulumi.Input<String?>? project;
   /// URLs associated with this note
-  final pulumi.Input<List<RelatedUrlContaineranalysisV1alpha1>>? relatedUrl;
+  final pulumi.Input<List<RelatedUrlContaineranalysisV1alpha1>?>? relatedUrl;
   /// A note describing a software bill of materials.
-  final pulumi.Input<DocumentNote>? sbom;
+  final pulumi.Input<DocumentNote?>? sbom;
   /// A note describing a reference to an SBOM.
-  final pulumi.Input<SBOMReferenceNoteContaineranalysisV1alpha1>? sbomReference;
+  final pulumi.Input<SBOMReferenceNoteContaineranalysisV1alpha1?>? sbomReference;
   /// A one sentence description of this `Note`.
-  final pulumi.Input<String>? shortDescription;
+  final pulumi.Input<String?>? shortDescription;
   /// A note describing an SPDX File.
-  final pulumi.Input<FileNote>? spdxFile;
+  final pulumi.Input<FileNote?>? spdxFile;
   /// A note describing an SPDX Package.
-  final pulumi.Input<PackageInfoNote>? spdxPackage;
+  final pulumi.Input<PackageInfoNote?>? spdxPackage;
   /// A note describing a relationship between SPDX elements.
-  final pulumi.Input<RelationshipNote>? spdxRelationship;
+  final pulumi.Input<RelationshipNote?>? spdxRelationship;
   /// A note describing an upgrade.
-  final pulumi.Input<UpgradeNoteContaineranalysisV1alpha1>? upgrade;
+  final pulumi.Input<UpgradeNoteContaineranalysisV1alpha1?>? upgrade;
   /// A note describing a vulnerability assessment.
-  final pulumi.Input<VulnerabilityAssessmentNoteContaineranalysisV1alpha1>? vulnerabilityAssessment;
+  final pulumi.Input<VulnerabilityAssessmentNoteContaineranalysisV1alpha1?>? vulnerabilityAssessment;
   /// A package vulnerability type of note.
-  final pulumi.Input<VulnerabilityType>? vulnerabilityType;
+  final pulumi.Input<VulnerabilityType?>? vulnerabilityType;
 
   /// Creates a new [NoteContaineranalysisV1alpha1Args].
   /// [attestationAuthority] A note describing an attestation role.

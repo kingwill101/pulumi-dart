@@ -37,8 +37,29 @@ class Glossary extends pulumi.CustomResource {
           'google-native:translate/v3:Glossary',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    displayName = registerOutput<String>('displayName');
+    endTime = registerOutput<String>('endTime');
+    entryCount = registerOutput<int>('entryCount');
+    inputConfig = registerOutput<GlossaryInputConfigResponse>('inputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlossaryInputConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    languageCodesSet = registerOutput<LanguageCodesSetResponse>('languageCodesSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LanguageCodesSetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    languagePair = registerOutput<LanguageCodePairResponse>('languagePair', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LanguageCodePairResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    submitTime = registerOutput<String>('submitTime');
+  }
+
+  /// Creates a typed reference to an existing [Glossary] resource.
+  Glossary.reference(String urn)
+    : super(
+        'google-native:translate/v3:Glossary',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     displayName = registerOutput<String>('displayName');
     endTime = registerOutput<String>('endTime');
     entryCount = registerOutput<int>('entryCount');

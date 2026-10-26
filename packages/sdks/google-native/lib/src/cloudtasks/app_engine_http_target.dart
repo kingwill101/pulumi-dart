@@ -6,7 +6,7 @@ import 'app_engine_routing_cloudtasks_v2beta2.dart';
 /// App Engine HTTP target. The task will be delivered to the App Engine application hostname specified by its AppEngineHttpTarget and AppEngineHttpRequest. The documentation for AppEngineHttpRequest explains how the task's host URL is constructed. Using AppEngineHttpTarget requires [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control) Google IAM permission for the project and the following scope: `https://www.googleapis.com/auth/cloud-platform`
 class AppEngineHttpTarget {
   /// Overrides for the task-level app_engine_routing. If set, `app_engine_routing_override` is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
-  final pulumi.Input<AppEngineRoutingCloudtasksV2beta2>? appEngineRoutingOverride;
+  final pulumi.Input<AppEngineRoutingCloudtasksV2beta2?>? appEngineRoutingOverride;
 
   /// Creates a new [AppEngineHttpTarget].
   /// [appEngineRoutingOverride] Overrides for the task-level app_engine_routing. If set, `app_engine_routing_override` is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.

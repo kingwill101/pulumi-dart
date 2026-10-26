@@ -11,31 +11,31 @@ import 'google_cloud_integrations_v1alpha_trigger_config_trigger_type.dart';
 /// Configuration detail of a trigger.
 class GoogleCloudIntegrationsV1alphaTriggerConfig {
   /// Optional. An alert threshold configuration for the [trigger + client + integration] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + integration] when published.
-  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaIntegrationAlertConfig>>? alertConfig;
+  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaIntegrationAlertConfig>?>? alertConfig;
   /// Optional. Cloud Scheduler Trigger related metadata
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaCloudSchedulerConfig>? cloudSchedulerConfig;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaCloudSchedulerConfig?>? cloudSchedulerConfig;
   /// Optional. User-provided description intended to give additional business context about the task.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
-  final pulumi.Input<String>? errorCatcherId;
+  final pulumi.Input<String?>? errorCatcherId;
   /// Optional. The user created label for a particular trigger.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Optional. Dictates how next tasks will be executed.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicy>? nextTasksExecutionPolicy;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicy?>? nextTasksExecutionPolicy;
   /// Optional. Informs the front-end application where to draw this error catcher config on the UI.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaCoordinate>? position;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaCoordinate?>? position;
   /// Optional. Configurable properties of the trigger, not to be confused with integration parameters. E.g. "name" is a property for API triggers and "subscription" is a property for Pub/sub triggers.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Optional. Set of tasks numbers from where the integration execution is started by this trigger. If this is empty, then integration is executed with default start tasks. In the list of start tasks, none of two tasks can have direct ancestor-descendant relationships (i.e. in a same integration execution graph).
-  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaNextTask>>? startTasks;
+  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaNextTask>?>? startTasks;
   /// Optional. Name of the trigger. Example: "API Trigger", "Cloud Pub Sub Trigger" When set will be sent out to monitoring dashabord for tracking purpose.
-  final pulumi.Input<String>? trigger;
+  final pulumi.Input<String?>? trigger;
   /// Optional. The backend trigger ID.
-  final pulumi.Input<String>? triggerId;
+  final pulumi.Input<String?>? triggerId;
   /// A number to uniquely identify each trigger config within the integration on UI.
   final pulumi.Input<String> triggerNumber;
   /// Optional. Type of trigger
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType>? triggerType;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType?>? triggerType;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaTriggerConfig].
   /// [alertConfig] Optional. An alert threshold configuration for the [trigger + client + integration] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + integration] when published.

@@ -35,11 +35,31 @@ class CaPool extends pulumi.CustomResource {
           'google-native:privateca/v1:CaPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['caPoolId', 'location', 'project']).merge(options),
         ) {
     caPoolId = registerOutput<String>('caPoolId');
     issuancePolicy = registerOutput<IssuancePolicyResponse>('issuancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IssuancePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    publishingOptions = registerOutput<PublishingOptionsResponse>('publishingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PublishingOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    requestId = registerOutput<String?>('requestId');
+    tier = registerOutput<String>('tier');
+  }
+
+  /// Creates a typed reference to an existing [CaPool] resource.
+  CaPool.reference(String urn)
+    : super(
+        'google-native:privateca/v1:CaPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    caPoolId = registerOutput<String>('caPoolId');
+    issuancePolicy = registerOutput<IssuancePolicyResponse>('issuancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IssuancePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

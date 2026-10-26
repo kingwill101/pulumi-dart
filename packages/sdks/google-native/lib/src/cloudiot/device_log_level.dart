@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
-enum DeviceLogLevel {
+enum DeviceLogLevel implements pulumi.PulumiEnum<String> {
   logLevelUnspecified("LOG_LEVEL_UNSPECIFIED"),
   none("NONE"),
   error("ERROR"),
@@ -7,6 +9,7 @@ enum DeviceLogLevel {
   debug("DEBUG");
 
   const DeviceLogLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static DeviceLogLevel fromValue(String value) {

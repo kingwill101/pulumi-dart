@@ -10,9 +10,9 @@ class GetNodePoolArgs {
   final pulumi.Input<String> clusterId;
   final pulumi.Input<String> location;
   final pulumi.Input<String> nodePoolId;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? projectId;
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? projectId;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [GetNodePoolArgs].
   /// [clusterId] Required.

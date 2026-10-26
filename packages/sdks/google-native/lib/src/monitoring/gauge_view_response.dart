@@ -26,8 +26,8 @@ class GaugeViewResponse {
 
   factory GaugeViewResponse.fromMap(Map<String, dynamic> map) {
     return GaugeViewResponse(
-      lowerBound: pulumi.Input.fromValue(map['lowerBound'] as double),
-      upperBound: pulumi.Input.fromValue(map['upperBound'] as double),
+      lowerBound: pulumi.Input.fromValue((map['lowerBound'] as num).toDouble()),
+      upperBound: pulumi.Input.fromValue((map['upperBound'] as num).toDouble()),
     );
   }
 }

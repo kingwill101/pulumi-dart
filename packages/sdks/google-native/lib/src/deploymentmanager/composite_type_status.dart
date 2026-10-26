@@ -1,10 +1,13 @@
-enum CompositeTypeStatus {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum CompositeTypeStatus implements pulumi.PulumiEnum<String> {
   unknownStatus("UNKNOWN_STATUS"),
   deprecated("DEPRECATED"),
   experimental("EXPERIMENTAL"),
   supported("SUPPORTED");
 
   const CompositeTypeStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static CompositeTypeStatus fromValue(String value) {

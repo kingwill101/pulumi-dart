@@ -6,7 +6,7 @@ import 'policy_controller_template_library_config_installation_gkehub_v1alpha.da
 /// The config specifying which default library templates to install.
 class PolicyControllerTemplateLibraryConfigGkehubV1alpha {
   /// Configures the manner in which the template library is installed on the cluster.
-  final pulumi.Input<PolicyControllerTemplateLibraryConfigInstallationGkehubV1alpha>? installation;
+  final pulumi.Input<PolicyControllerTemplateLibraryConfigInstallationGkehubV1alpha?>? installation;
 
   /// Creates a new [PolicyControllerTemplateLibraryConfigGkehubV1alpha].
   /// [installation] Configures the manner in which the template library is installed on the cluster.

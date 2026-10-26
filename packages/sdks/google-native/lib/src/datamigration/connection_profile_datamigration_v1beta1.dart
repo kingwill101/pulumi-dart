@@ -45,14 +45,39 @@ class ConnectionProfileDatamigrationV1beta1 extends pulumi.CustomResource {
           'google-native:datamigration/v1beta1:ConnectionProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['connectionProfileId', 'location', 'project']).merge(options),
         ) {
     cloudsql = registerOutput<CloudSqlConnectionProfileResponseDatamigrationV1beta1>('cloudsql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudSqlConnectionProfileResponseDatamigrationV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionProfileId = registerOutput<String>('connectionProfileId');
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     error = registerOutput<StatusResponseDatamigrationV1beta1>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponseDatamigrationV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    mysql = registerOutput<MySqlConnectionProfileResponseDatamigrationV1beta1>('mysql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MySqlConnectionProfileResponseDatamigrationV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    provider = registerOutput<String>('provider');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ConnectionProfileDatamigrationV1beta1] resource.
+  ConnectionProfileDatamigrationV1beta1.reference(String urn)
+    : super(
+        'google-native:datamigration/v1beta1:ConnectionProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cloudsql = registerOutput<CloudSqlConnectionProfileResponseDatamigrationV1beta1>('cloudsql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudSqlConnectionProfileResponseDatamigrationV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectionProfileId = registerOutput<String>('connectionProfileId');
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    error = registerOutput<StatusResponseDatamigrationV1beta1>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponseDatamigrationV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     mysql = registerOutput<MySqlConnectionProfileResponseDatamigrationV1beta1>('mysql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MySqlConnectionProfileResponseDatamigrationV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

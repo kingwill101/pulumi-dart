@@ -9,21 +9,21 @@ import 'weekly_schedule.dart';
 /// Message describing the user-specified automated backup policy. All fields in the automated backup policy are optional. Defaults for each field are provided if they are not set.
 class AutomatedBackupPolicy {
   /// The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed. The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it defaults to 1 hour.
-  final pulumi.Input<String>? backupWindow;
+  final pulumi.Input<String?>? backupWindow;
   /// Whether automated automated backups are enabled. If not set, defaults to true.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Optional. The encryption config can be specified to encrypt the backups with a customer-managed encryption key (CMEK). When this field is not specified, the backup will then use default encryption scheme to protect the user data.
-  final pulumi.Input<EncryptionConfig>? encryptionConfig;
+  final pulumi.Input<EncryptionConfig?>? encryptionConfig;
   /// Labels to apply to backups created using this configuration.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster. If empty, defaults to the region of the cluster.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Quantity-based Backup retention policy to retain recent backups.
-  final pulumi.Input<QuantityBasedRetention>? quantityBasedRetention;
+  final pulumi.Input<QuantityBasedRetention?>? quantityBasedRetention;
   /// Time-based Backup retention policy.
-  final pulumi.Input<TimeBasedRetention>? timeBasedRetention;
+  final pulumi.Input<TimeBasedRetention?>? timeBasedRetention;
   /// Weekly schedule for the Backup.
-  final pulumi.Input<WeeklySchedule>? weeklySchedule;
+  final pulumi.Input<WeeklySchedule?>? weeklySchedule;
 
   /// Creates a new [AutomatedBackupPolicy].
   /// [backupWindow] The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed. The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it defaults to 1 hour.

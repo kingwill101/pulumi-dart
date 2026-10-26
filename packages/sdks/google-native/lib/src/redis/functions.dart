@@ -24,6 +24,17 @@ Future<GetClusterResult> getCluster(
   return GetClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:redis/v1:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
+}
+
 /// Gets the details of a specific Redis instance.
 /// [args] Arguments passed to this invoke. {@macro pulumi_redis_v1_get_instance_args_doc}
 /// [options] Invoke options controlling this call.
@@ -38,6 +49,17 @@ Future<GetInstanceResult> getInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:redis/v1:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
 }
 
 /// Gets the details of a specific Redis cluster.
@@ -56,6 +78,17 @@ Future<GetClusterRedisV1beta1Result> getClusterRedisV1beta1(
   return GetClusterRedisV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetClusterRedisV1beta1Result> getClusterRedisV1beta1Output(
+  GetClusterRedisV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:redis/v1beta1:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterRedisV1beta1Result.fromMap);
+}
+
 /// Gets the details of a specific Redis instance.
 /// [args] Arguments passed to this invoke. {@macro pulumi_redis_v1beta1_get_instance_redis_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -70,4 +103,15 @@ Future<GetInstanceRedisV1beta1Result> getInstanceRedisV1beta1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceRedisV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetInstanceRedisV1beta1Result> getInstanceRedisV1beta1Output(
+  GetInstanceRedisV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:redis/v1beta1:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceRedisV1beta1Result.fromMap);
 }

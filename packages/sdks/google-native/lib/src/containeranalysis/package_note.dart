@@ -10,27 +10,27 @@ import 'version.dart';
 /// PackageNote represents a particular package version.
 class PackageNote {
   /// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
-  final pulumi.Input<PackageNoteArchitecture>? architecture;
+  final pulumi.Input<PackageNoteArchitecture?>? architecture;
   /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
-  final pulumi.Input<String>? cpeUri;
+  final pulumi.Input<String?>? cpeUri;
   /// The description of this package.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Hash value, typically a file digest, that allows unique identification a specific package.
-  final pulumi.Input<List<Digest>>? digest;
+  final pulumi.Input<List<Digest>?>? digest;
   /// Deprecated. The various channels by which a package is distributed.
-  final pulumi.Input<List<Distribution>>? distribution;
+  final pulumi.Input<List<Distribution>?>? distribution;
   /// Licenses that have been declared by the authors of the package.
-  final pulumi.Input<License>? license;
+  final pulumi.Input<License?>? license;
   /// A freeform text denoting the maintainer of this package.
-  final pulumi.Input<String>? maintainer;
+  final pulumi.Input<String?>? maintainer;
   /// Immutable. The name of the package.
   final pulumi.Input<String> name;
   /// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
-  final pulumi.Input<String>? packageType;
+  final pulumi.Input<String?>? packageType;
   /// The homepage for this package.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
   /// The version of the package.
-  final pulumi.Input<Version>? version;
+  final pulumi.Input<Version?>? version;
 
   /// Creates a new [PackageNote].
   /// [architecture] The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.

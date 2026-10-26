@@ -1,8 +1,11 @@
-enum InstanceSuspensionReasonsItemRedisV1beta1 {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum InstanceSuspensionReasonsItemRedisV1beta1 implements pulumi.PulumiEnum<String> {
   suspensionReasonUnspecified("SUSPENSION_REASON_UNSPECIFIED"),
   customerManagedKeyIssue("CUSTOMER_MANAGED_KEY_ISSUE");
 
   const InstanceSuspensionReasonsItemRedisV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceSuspensionReasonsItemRedisV1beta1 fromValue(String value) {

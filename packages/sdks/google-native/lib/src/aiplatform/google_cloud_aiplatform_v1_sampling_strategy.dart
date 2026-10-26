@@ -6,7 +6,7 @@ import 'google_cloud_aiplatform_v1_sampling_strategy_random_sample_config.dart';
 /// Sampling Strategy for logging, can be for both training and prediction dataset.
 class GoogleCloudAiplatformV1SamplingStrategy {
   /// Random sample config. Will support more sampling strategies later.
-  final pulumi.Input<GoogleCloudAiplatformV1SamplingStrategyRandomSampleConfig>? randomSampleConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1SamplingStrategyRandomSampleConfig?>? randomSampleConfig;
 
   /// Creates a new [GoogleCloudAiplatformV1SamplingStrategy].
   /// [randomSampleConfig] Random sample config. Will support more sampling strategies later.

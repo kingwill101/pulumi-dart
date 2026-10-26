@@ -46,7 +46,7 @@ class CustomJob extends pulumi.CustomResource {
           'google-native:aiplatform/v1:CustomJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
@@ -54,13 +54,38 @@ class CustomJob extends pulumi.CustomResource {
     endTime = registerOutput<String>('endTime');
     error = registerOutput<GoogleRpcStatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleRpcStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jobSpec = registerOutput<GoogleCloudAiplatformV1CustomJobSpecResponse>('jobSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1CustomJobSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     startTime = registerOutput<String>('startTime');
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
-    webAccessUris = registerOutput<Map<String, String>>('webAccessUris');
+    webAccessUris = registerOutput<Map<String, String>>('webAccessUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CustomJob] resource.
+  CustomJob.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1:CustomJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    encryptionSpec = registerOutput<GoogleCloudAiplatformV1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endTime = registerOutput<String>('endTime');
+    error = registerOutput<GoogleRpcStatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleRpcStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jobSpec = registerOutput<GoogleCloudAiplatformV1CustomJobSpecResponse>('jobSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1CustomJobSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    startTime = registerOutput<String>('startTime');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+    webAccessUris = registerOutput<Map<String, String>>('webAccessUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

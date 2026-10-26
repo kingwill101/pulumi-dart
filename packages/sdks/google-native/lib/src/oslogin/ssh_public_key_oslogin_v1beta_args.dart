@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_oslogin_v1beta_ssh_public_key_oslogin_v1beta_args_doc}
 class SshPublicKeyOsloginV1betaArgs {
   /// An expiration time in microseconds since epoch.
-  final pulumi.Input<String>? expirationTimeUsec;
+  final pulumi.Input<String?>? expirationTimeUsec;
   /// Public key text in SSH format, defined by RFC4253 section 6.6.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   final pulumi.Input<String> userId;
 
   /// Creates a new [SshPublicKeyOsloginV1betaArgs].

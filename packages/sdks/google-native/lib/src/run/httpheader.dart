@@ -7,7 +7,7 @@ class HTTPHeader {
   /// The header field name
   final pulumi.Input<String> name;
   /// The header field value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [HTTPHeader].
   /// [name] The header field name

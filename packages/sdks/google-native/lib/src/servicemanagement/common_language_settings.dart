@@ -6,9 +6,9 @@ import 'common_language_settings_destinations_item.dart';
 /// Required information for every language.
 class CommonLanguageSettings {
   /// The destination where API teams want this client library to be published.
-  final pulumi.Input<List<CommonLanguageSettingsDestinationsItem>>? destinations;
+  final pulumi.Input<List<CommonLanguageSettingsDestinationsItem>?>? destinations;
   /// Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest
-  final pulumi.Input<String>? referenceDocsUri;
+  final pulumi.Input<String?>? referenceDocsUri;
 
   /// Creates a new [CommonLanguageSettings].
   /// [destinations] The destination where API teams want this client library to be published.

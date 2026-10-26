@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
-enum GatewayType {
+enum GatewayType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   openMesh("OPEN_MESH"),
   secureWebGateway("SECURE_WEB_GATEWAY");
 
   const GatewayType(this.wireValue);
+  @override
   final String wireValue;
 
   static GatewayType fromValue(String value) {

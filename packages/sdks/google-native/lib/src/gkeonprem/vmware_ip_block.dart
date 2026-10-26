@@ -6,11 +6,11 @@ import 'vmware_host_ip.dart';
 /// Represents a collection of IP addresses to assign to nodes.
 class VmwareIpBlock {
   /// The network gateway used by the VMware user cluster.
-  final pulumi.Input<String>? gateway;
+  final pulumi.Input<String?>? gateway;
   /// The node's network configurations used by the VMware user cluster.
-  final pulumi.Input<List<VmwareHostIp>>? ips;
+  final pulumi.Input<List<VmwareHostIp>?>? ips;
   /// The netmask used by the VMware user cluster.
-  final pulumi.Input<String>? netmask;
+  final pulumi.Input<String?>? netmask;
 
   /// Creates a new [VmwareIpBlock].
   /// [gateway] The network gateway used by the VMware user cluster.

@@ -25,8 +25,24 @@ class Override extends pulumi.CustomResource {
           'google-native:apigee/v1:Override',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['environmentId', 'organizationId']).merge(options),
         ) {
+    apiProxy = registerOutput<String>('apiProxy');
+    environmentId = registerOutput<String>('environmentId');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    samplingConfig = registerOutput<GoogleCloudApigeeV1TraceSamplingConfigResponse>('samplingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1TraceSamplingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Override] resource.
+  Override.reference(String urn)
+    : super(
+        'google-native:apigee/v1:Override',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiProxy = registerOutput<String>('apiProxy');
     environmentId = registerOutput<String>('environmentId');
     this.name = registerOutput<String>('name');

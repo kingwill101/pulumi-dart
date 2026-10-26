@@ -12,21 +12,21 @@ import 'spanner_iodetails.dart';
 /// Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
 class JobMetadata {
   /// Identification of a Cloud Bigtable source used in the Dataflow job.
-  final pulumi.Input<List<BigTableIODetails>>? bigTableDetails;
+  final pulumi.Input<List<BigTableIODetails>?>? bigTableDetails;
   /// Identification of a BigQuery source used in the Dataflow job.
-  final pulumi.Input<List<BigQueryIODetails>>? bigqueryDetails;
+  final pulumi.Input<List<BigQueryIODetails>?>? bigqueryDetails;
   /// Identification of a Datastore source used in the Dataflow job.
-  final pulumi.Input<List<DatastoreIODetails>>? datastoreDetails;
+  final pulumi.Input<List<DatastoreIODetails>?>? datastoreDetails;
   /// Identification of a File source used in the Dataflow job.
-  final pulumi.Input<List<FileIODetails>>? fileDetails;
+  final pulumi.Input<List<FileIODetails>?>? fileDetails;
   /// Identification of a Pub/Sub source used in the Dataflow job.
-  final pulumi.Input<List<PubSubIODetails>>? pubsubDetails;
+  final pulumi.Input<List<PubSubIODetails>?>? pubsubDetails;
   /// The SDK version used to run the job.
-  final pulumi.Input<SdkVersion>? sdkVersion;
+  final pulumi.Input<SdkVersion?>? sdkVersion;
   /// Identification of a Spanner source used in the Dataflow job.
-  final pulumi.Input<List<SpannerIODetails>>? spannerDetails;
+  final pulumi.Input<List<SpannerIODetails>?>? spannerDetails;
   /// List of display properties to help UI filter jobs.
-  final pulumi.Input<Map<String, String>>? userDisplayProperties;
+  final pulumi.Input<Map<String, String>?>? userDisplayProperties;
 
   /// Creates a new [JobMetadata].
   /// [bigTableDetails] Identification of a Cloud Bigtable source used in the Dataflow job.

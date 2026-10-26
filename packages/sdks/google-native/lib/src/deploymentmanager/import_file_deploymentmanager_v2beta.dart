@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImportFileDeploymentmanagerV2beta {
   /// The contents of the file.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The name of the file.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ImportFileDeploymentmanagerV2beta].
   /// [content] The contents of the file.

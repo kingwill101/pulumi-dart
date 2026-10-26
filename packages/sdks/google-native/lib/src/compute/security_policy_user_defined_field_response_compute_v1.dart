@@ -43,8 +43,8 @@ class SecurityPolicyUserDefinedFieldResponseComputeV1 {
       base: pulumi.Input.fromValue(map['base'] as String),
       mask: pulumi.Input.fromValue(map['mask'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      offset: pulumi.Input.fromValue(map['offset'] as int),
-      size: pulumi.Input.fromValue(map['size'] as int),
+      offset: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['offset'])),
+      size: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['size'])),
     );
   }
 }

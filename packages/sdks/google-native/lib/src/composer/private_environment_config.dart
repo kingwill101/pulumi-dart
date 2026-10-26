@@ -7,21 +7,21 @@ import 'private_cluster_config.dart';
 /// The configuration information for configuring a Private IP Cloud Composer environment.
 class PrivateEnvironmentConfig {
   /// Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
-  final pulumi.Input<String>? cloudComposerConnectionSubnetwork;
+  final pulumi.Input<String?>? cloudComposerConnectionSubnetwork;
   /// Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-  final pulumi.Input<String>? cloudComposerNetworkIpv4CidrBlock;
+  final pulumi.Input<String?>? cloudComposerNetworkIpv4CidrBlock;
   /// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
-  final pulumi.Input<String>? cloudSqlIpv4CidrBlock;
+  final pulumi.Input<String?>? cloudSqlIpv4CidrBlock;
   /// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-  final pulumi.Input<bool>? enablePrivateEnvironment;
+  final pulumi.Input<bool?>? enablePrivateEnvironment;
   /// Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
-  final pulumi.Input<bool>? enablePrivatelyUsedPublicIps;
+  final pulumi.Input<bool?>? enablePrivatelyUsedPublicIps;
   /// Optional. Configuration for the network connections configuration in the environment.
-  final pulumi.Input<NetworkingConfig>? networkingConfig;
+  final pulumi.Input<NetworkingConfig?>? networkingConfig;
   /// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
-  final pulumi.Input<PrivateClusterConfig>? privateClusterConfig;
+  final pulumi.Input<PrivateClusterConfig?>? privateClusterConfig;
   /// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-  final pulumi.Input<String>? webServerIpv4CidrBlock;
+  final pulumi.Input<String?>? webServerIpv4CidrBlock;
 
   /// Creates a new [PrivateEnvironmentConfig].
   /// [cloudComposerConnectionSubnetwork] Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.

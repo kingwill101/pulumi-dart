@@ -40,17 +40,41 @@ class RegionHealthCheckServiceComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:RegionHealthCheckService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     fingerprint = registerOutput<String>('fingerprint');
-    healthChecks = registerOutput<List<String>>('healthChecks');
+    healthChecks = registerOutput<List<String>>('healthChecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     healthStatusAggregationPolicy = registerOutput<String>('healthStatusAggregationPolicy');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    networkEndpointGroups = registerOutput<List<String>>('networkEndpointGroups');
-    notificationEndpoints = registerOutput<List<String>>('notificationEndpoints');
+    networkEndpointGroups = registerOutput<List<String>>('networkEndpointGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    notificationEndpoints = registerOutput<List<String>>('notificationEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+  }
+
+  /// Creates a typed reference to an existing [RegionHealthCheckServiceComputeV1] resource.
+  RegionHealthCheckServiceComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:RegionHealthCheckService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    healthChecks = registerOutput<List<String>>('healthChecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    healthStatusAggregationPolicy = registerOutput<String>('healthStatusAggregationPolicy');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    networkEndpointGroups = registerOutput<List<String>>('networkEndpointGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    notificationEndpoints = registerOutput<List<String>>('notificationEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');

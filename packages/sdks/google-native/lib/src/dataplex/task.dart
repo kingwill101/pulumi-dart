@@ -53,14 +53,42 @@ class Task extends pulumi.CustomResource {
           'google-native:dataplex/v1:Task',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['lakeId', 'location', 'project', 'taskId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     executionSpec = registerOutput<GoogleCloudDataplexV1TaskExecutionSpecResponse>('executionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1TaskExecutionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     executionStatus = registerOutput<GoogleCloudDataplexV1TaskExecutionStatusResponse>('executionStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1TaskExecutionStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lakeId = registerOutput<String>('lakeId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    notebook = registerOutput<GoogleCloudDataplexV1TaskNotebookTaskConfigResponse>('notebook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1TaskNotebookTaskConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    spark = registerOutput<GoogleCloudDataplexV1TaskSparkTaskConfigResponse>('spark', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1TaskSparkTaskConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    taskId = registerOutput<String>('taskId');
+    triggerSpec = registerOutput<GoogleCloudDataplexV1TaskTriggerSpecResponse>('triggerSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1TaskTriggerSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Task] resource.
+  Task.reference(String urn)
+    : super(
+        'google-native:dataplex/v1:Task',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    executionSpec = registerOutput<GoogleCloudDataplexV1TaskExecutionSpecResponse>('executionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1TaskExecutionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    executionStatus = registerOutput<GoogleCloudDataplexV1TaskExecutionStatusResponse>('executionStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1TaskExecutionStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lakeId = registerOutput<String>('lakeId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

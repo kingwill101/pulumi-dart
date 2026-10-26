@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_contactcenterinsights_v1_get_view_args_doc}
 class GetViewArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> viewId;
 
   /// Creates a new [GetViewArgs].

@@ -6,27 +6,27 @@ import 'google_cloud_contactcenterinsights_v1_phrase_match_rule_group_response.d
 /// Result data returned by getPhraseMatcher.
 class GetPhraseMatcherResult {
   /// The most recent time at which the activation status was updated.
-  final String activationUpdateTime;
+  final String? activationUpdateTime;
   /// Applies the phrase matcher only when it is active.
-  final bool active;
+  final bool? active;
   /// The human-readable name of the phrase matcher.
-  final String displayName;
+  final String? displayName;
   /// The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
-  final String name;
+  final String? name;
   /// A list of phase match rule groups that are included in this matcher.
-  final List<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse> phraseMatchRuleGroups;
+  final List<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse>? phraseMatchRuleGroups;
   /// The timestamp of when the revision was created. It is also the create time when a new matcher is added.
-  final String revisionCreateTime;
+  final String? revisionCreateTime;
   /// Immutable. The revision ID of the phrase matcher. A new revision is committed whenever the matcher is changed, except when it is activated or deactivated. A server generated random ID will be used. Example: locations/global/phraseMatchers/my-first-matcher@1234567
-  final String revisionId;
+  final String? revisionId;
   /// The role whose utterances the phrase matcher should be matched against. If the role is ROLE_UNSPECIFIED it will be matched against any utterances in the transcript.
-  final String roleMatch;
+  final String? roleMatch;
   /// The type of this phrase matcher.
-  final String type;
+  final String? type;
   /// The most recent time at which the phrase matcher was updated.
-  final String updateTime;
+  final String? updateTime;
   /// The customized version tag to use for the phrase matcher. If not specified, it will default to `revision_id`.
-  final String versionTag;
+  final String? versionTag;
 
   /// Creates a new [GetPhraseMatcherResult].
   /// [activationUpdateTime] The most recent time at which the activation status was updated.
@@ -41,48 +41,48 @@ class GetPhraseMatcherResult {
   /// [updateTime] The most recent time at which the phrase matcher was updated.
   /// [versionTag] The customized version tag to use for the phrase matcher. If not specified, it will default to `revision_id`.
   const GetPhraseMatcherResult({
-    required this.activationUpdateTime,
-    required this.active,
-    required this.displayName,
-    required this.name,
-    required this.phraseMatchRuleGroups,
-    required this.revisionCreateTime,
-    required this.revisionId,
-    required this.roleMatch,
-    required this.type,
-    required this.updateTime,
-    required this.versionTag,
+    this.activationUpdateTime,
+    this.active,
+    this.displayName,
+    this.name,
+    this.phraseMatchRuleGroups,
+    this.revisionCreateTime,
+    this.revisionId,
+    this.roleMatch,
+    this.type,
+    this.updateTime,
+    this.versionTag,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activationUpdateTime': activationUpdateTime,
-      'active': active,
-      'displayName': displayName,
-      'name': name,
-      'phraseMatchRuleGroups': pulumi.Input.encodeList<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse, Map<String, dynamic>>(phraseMatchRuleGroups, (value) => value.toMap()),
-      'revisionCreateTime': revisionCreateTime,
-      'revisionId': revisionId,
-      'roleMatch': roleMatch,
-      'type': type,
-      'updateTime': updateTime,
-      'versionTag': versionTag,
+      'activationUpdateTime': ?activationUpdateTime,
+      'active': ?active,
+      'displayName': ?displayName,
+      'name': ?name,
+      'phraseMatchRuleGroups': ?(() { final guardedValue = phraseMatchRuleGroups; if (guardedValue == null) return null; return pulumi.Input.encodeList<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'revisionCreateTime': ?revisionCreateTime,
+      'revisionId': ?revisionId,
+      'roleMatch': ?roleMatch,
+      'type': ?type,
+      'updateTime': ?updateTime,
+      'versionTag': ?versionTag,
     };
   }
 
   factory GetPhraseMatcherResult.fromMap(Map<String, dynamic> map) {
     return GetPhraseMatcherResult(
-      activationUpdateTime: map['activationUpdateTime'] as String,
-      active: map['active'] as bool,
-      displayName: map['displayName'] as String,
-      name: map['name'] as String,
-      phraseMatchRuleGroups: pulumi.Input.decodeList<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse>(map['phraseMatchRuleGroups']!, (value) => GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
-      revisionCreateTime: map['revisionCreateTime'] as String,
-      revisionId: map['revisionId'] as String,
-      roleMatch: map['roleMatch'] as String,
-      type: map['type'] as String,
-      updateTime: map['updateTime'] as String,
-      versionTag: map['versionTag'] as String,
+      activationUpdateTime: (() { final guardedValue = map['activationUpdateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      active: (() { final guardedValue = map['active']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      phraseMatchRuleGroups: (() { final guardedValue = map['phraseMatchRuleGroups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse>(guardedValue, (value) => GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      revisionCreateTime: (() { final guardedValue = map['revisionCreateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      revisionId: (() { final guardedValue = map['revisionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      roleMatch: (() { final guardedValue = map['roleMatch']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      versionTag: (() { final guardedValue = map['versionTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

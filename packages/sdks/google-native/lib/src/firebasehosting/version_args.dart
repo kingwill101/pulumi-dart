@@ -9,17 +9,17 @@ import 'serving_config.dart';
 /// {@macro pulumi_firebasehosting_v1beta1_version_args_doc}
 class VersionArgs {
   /// The configuration for the behavior of the site. This configuration exists in the [`firebase.json`](https://firebase.google.com/docs/cli/#the_firebasejson_file) file.
-  final pulumi.Input<ServingConfig>? config;
+  final pulumi.Input<ServingConfig?>? config;
   /// The labels used for extra metadata and/or filtering.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create).
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> siteId;
   /// The self-reported size of the version. This value is used for a pre-emptive quota check for legacy version uploads.
-  final pulumi.Input<String>? sizeBytes;
+  final pulumi.Input<String?>? sizeBytes;
   /// A unique id for the new version. This is was only specified for legacy version creations, and should be blank.
-  final pulumi.Input<String>? versionId;
+  final pulumi.Input<String?>? versionId;
 
   /// Creates a new [VersionArgs].
   /// [config] The configuration for the behavior of the site. This configuration exists in the [`firebase.json`](https://firebase.google.com/docs/cli/#the_firebasejson_file) file.

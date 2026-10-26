@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the permission that was checked.
-enum AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta {
+enum AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta implements pulumi.PulumiEnum<String> {
   permissionTypeUnspecified("PERMISSION_TYPE_UNSPECIFIED"),
   adminRead("ADMIN_READ"),
   adminWrite("ADMIN_WRITE"),
@@ -7,6 +9,7 @@ enum AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta {
   dataWrite("DATA_WRITE");
 
   const AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta fromValue(String value) {

@@ -36,6 +36,17 @@ Future<GetDeidentifyTemplateResult> getDeidentifyTemplate(
   return GetDeidentifyTemplateResult.fromMap(result);
 }
 
+pulumi.Output<GetDeidentifyTemplateResult> getDeidentifyTemplateOutput(
+  GetDeidentifyTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dlp/v2:getDeidentifyTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeidentifyTemplateResult.fromMap);
+}
+
 /// Gets a discovery configuration.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dlp_v2_get_discovery_config_args_doc}
 /// [options] Invoke options controlling this call.
@@ -50,6 +61,17 @@ Future<GetDiscoveryConfigResult> getDiscoveryConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDiscoveryConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetDiscoveryConfigResult> getDiscoveryConfigOutput(
+  GetDiscoveryConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dlp/v2:getDiscoveryConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiscoveryConfigResult.fromMap);
 }
 
 /// Gets the latest state of a long-running DlpJob. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
@@ -68,6 +90,17 @@ Future<GetDlpJobResult> getDlpJob(
   return GetDlpJobResult.fromMap(result);
 }
 
+pulumi.Output<GetDlpJobResult> getDlpJobOutput(
+  GetDlpJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dlp/v2:getDlpJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDlpJobResult.fromMap);
+}
+
 /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dlp_v2_get_inspect_template_args_doc}
 /// [options] Invoke options controlling this call.
@@ -82,6 +115,17 @@ Future<GetInspectTemplateResult> getInspectTemplate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInspectTemplateResult.fromMap(result);
+}
+
+pulumi.Output<GetInspectTemplateResult> getInspectTemplateOutput(
+  GetInspectTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dlp/v2:getInspectTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInspectTemplateResult.fromMap);
 }
 
 /// Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
@@ -100,6 +144,17 @@ Future<GetJobTriggerResult> getJobTrigger(
   return GetJobTriggerResult.fromMap(result);
 }
 
+pulumi.Output<GetJobTriggerResult> getJobTriggerOutput(
+  GetJobTriggerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dlp/v2:getJobTrigger',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobTriggerResult.fromMap);
+}
+
 /// Gets a discovery configuration.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dlp_v2_get_organization_discovery_config_args_doc}
 /// [options] Invoke options controlling this call.
@@ -114,6 +169,17 @@ Future<GetOrganizationDiscoveryConfigResult> getOrganizationDiscoveryConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationDiscoveryConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetOrganizationDiscoveryConfigResult> getOrganizationDiscoveryConfigOutput(
+  GetOrganizationDiscoveryConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dlp/v2:getOrganizationDiscoveryConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationDiscoveryConfigResult.fromMap);
 }
 
 /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
@@ -132,6 +198,17 @@ Future<GetOrganizationInspectTemplateResult> getOrganizationInspectTemplate(
   return GetOrganizationInspectTemplateResult.fromMap(result);
 }
 
+pulumi.Output<GetOrganizationInspectTemplateResult> getOrganizationInspectTemplateOutput(
+  GetOrganizationInspectTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dlp/v2:getOrganizationInspectTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationInspectTemplateResult.fromMap);
+}
+
 /// Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dlp_v2_get_organization_job_trigger_args_doc}
 /// [options] Invoke options controlling this call.
@@ -146,6 +223,17 @@ Future<GetOrganizationJobTriggerResult> getOrganizationJobTrigger(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationJobTriggerResult.fromMap(result);
+}
+
+pulumi.Output<GetOrganizationJobTriggerResult> getOrganizationJobTriggerOutput(
+  GetOrganizationJobTriggerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dlp/v2:getOrganizationJobTrigger',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationJobTriggerResult.fromMap);
 }
 
 /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
@@ -164,6 +252,17 @@ Future<GetOrganizationsDeidentifyTemplateResult> getOrganizationsDeidentifyTempl
   return GetOrganizationsDeidentifyTemplateResult.fromMap(result);
 }
 
+pulumi.Output<GetOrganizationsDeidentifyTemplateResult> getOrganizationsDeidentifyTemplateOutput(
+  GetOrganizationsDeidentifyTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dlp/v2:getOrganizationsDeidentifyTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationsDeidentifyTemplateResult.fromMap);
+}
+
 /// Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dlp_v2_get_stored_info_type_args_doc}
 /// [options] Invoke options controlling this call.
@@ -178,4 +277,15 @@ Future<GetStoredInfoTypeResult> getStoredInfoType(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStoredInfoTypeResult.fromMap(result);
+}
+
+pulumi.Output<GetStoredInfoTypeResult> getStoredInfoTypeOutput(
+  GetStoredInfoTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dlp/v2:getStoredInfoType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStoredInfoTypeResult.fromMap);
 }

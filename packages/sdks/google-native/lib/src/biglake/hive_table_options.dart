@@ -6,11 +6,11 @@ import 'storage_descriptor.dart';
 /// Options of a Hive table.
 class HiveTableOptions {
   /// Stores user supplied Hive table parameters.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Stores physical storage information of the data.
-  final pulumi.Input<StorageDescriptor>? storageDescriptor;
+  final pulumi.Input<StorageDescriptor?>? storageDescriptor;
   /// Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
-  final pulumi.Input<String>? tableType;
+  final pulumi.Input<String?>? tableType;
 
   /// Creates a new [HiveTableOptions].
   /// [parameters] Stores user supplied Hive table parameters.

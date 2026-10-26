@@ -1,10 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'route_as_path_response_compute_beta.dart';
 import 'route_compute_beta_args.dart';
+import 'route_warnings_item_response_compute_beta.dart';
 
 /// Creates a Route resource in the specified project using the data included in the request.
 class RouteComputeBeta extends pulumi.CustomResource {
   /// AS path.
-  late final pulumi.Output<List<Map<String, dynamic>>> asPaths;
+  late final pulumi.Output<List<RouteAsPathResponseComputeBeta>> asPaths;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
   /// An optional description of this resource. Provide this field when you create the resource.
@@ -49,7 +51,7 @@ class RouteComputeBeta extends pulumi.CustomResource {
   /// A list of instance tags to which this route applies.
   late final pulumi.Output<List<String>> tags;
   /// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
-  late final pulumi.Output<List<Map<String, dynamic>>> warnings;
+  late final pulumi.Output<List<RouteWarningsItemResponseComputeBeta>> warnings;
 
   /// Creates a new [RouteComputeBeta].
   /// [name] The Pulumi resource name.
@@ -63,9 +65,9 @@ class RouteComputeBeta extends pulumi.CustomResource {
           'google-native:compute/beta:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
-    asPaths = registerOutput<List<Map<String, dynamic>>>('asPaths');
+    asPaths = registerOutput<List<RouteAsPathResponseComputeBeta>>('asPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteAsPathResponseComputeBeta>(guardedValue, (value) => RouteAsPathResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     destRange = registerOutput<String>('destRange');
@@ -87,7 +89,42 @@ class RouteComputeBeta extends pulumi.CustomResource {
     routeStatus = registerOutput<String>('routeStatus');
     routeType = registerOutput<String>('routeType');
     selfLink = registerOutput<String>('selfLink');
-    tags = registerOutput<List<String>>('tags');
-    warnings = registerOutput<List<Map<String, dynamic>>>('warnings');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    warnings = registerOutput<List<RouteWarningsItemResponseComputeBeta>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteWarningsItemResponseComputeBeta>(guardedValue, (value) => RouteWarningsItemResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [RouteComputeBeta] resource.
+  RouteComputeBeta.reference(String urn)
+    : super(
+        'google-native:compute/beta:Route',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    asPaths = registerOutput<List<RouteAsPathResponseComputeBeta>>('asPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteAsPathResponseComputeBeta>(guardedValue, (value) => RouteAsPathResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    destRange = registerOutput<String>('destRange');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    nextHopGateway = registerOutput<String>('nextHopGateway');
+    nextHopHub = registerOutput<String>('nextHopHub');
+    nextHopIlb = registerOutput<String>('nextHopIlb');
+    nextHopInstance = registerOutput<String>('nextHopInstance');
+    nextHopInterconnectAttachment = registerOutput<String>('nextHopInterconnectAttachment');
+    nextHopIp = registerOutput<String>('nextHopIp');
+    nextHopNetwork = registerOutput<String>('nextHopNetwork');
+    nextHopPeering = registerOutput<String>('nextHopPeering');
+    nextHopVpnTunnel = registerOutput<String>('nextHopVpnTunnel');
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    routeStatus = registerOutput<String>('routeStatus');
+    routeType = registerOutput<String>('routeType');
+    selfLink = registerOutput<String>('selfLink');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    warnings = registerOutput<List<RouteWarningsItemResponseComputeBeta>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteWarningsItemResponseComputeBeta>(guardedValue, (value) => RouteWarningsItemResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

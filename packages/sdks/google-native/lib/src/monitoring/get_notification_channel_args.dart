@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_monitoring_v3_get_notification_channel_args_doc}
 class GetNotificationChannelArgs {
   final pulumi.Input<String> notificationChannelId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetNotificationChannelArgs].
   /// [notificationChannelId] Required.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Sets the scheduling options for this node.
 class SchedulingConfig {
   /// Defines whether the node is preemptible.
-  final pulumi.Input<bool>? preemptible;
+  final pulumi.Input<bool?>? preemptible;
   /// Whether the node is created under a reservation.
-  final pulumi.Input<bool>? reserved;
+  final pulumi.Input<bool?>? reserved;
 
   /// Creates a new [SchedulingConfig].
   /// [preemptible] Defines whether the node is preemptible.

@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
-enum VersionKind {
+enum VersionKind implements pulumi.PulumiEnum<String> {
   versionKindUnspecified("VERSION_KIND_UNSPECIFIED"),
   normal("NORMAL"),
   minimum("MINIMUM"),
   maximum("MAXIMUM");
 
   const VersionKind(this.wireValue);
+  @override
   final String wireValue;
 
   static VersionKind fromValue(String value) {

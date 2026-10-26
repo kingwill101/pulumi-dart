@@ -65,8 +65,8 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentR
 
   factory GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse(
-      channelTag: pulumi.Input.fromValue(map['channelTag'] as int),
-      confidence: pulumi.Input.fromValue(map['confidence'] as double),
+      channelTag: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['channelTag'])),
+      confidence: pulumi.Input.fromValue((map['confidence'] as num).toDouble()),
       dialogflowSegmentMetadata: pulumi.Input.fromValue(GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse.fromMap((map['dialogflowSegmentMetadata']! as Map).cast<String, dynamic>())),
       languageCode: pulumi.Input.fromValue(map['languageCode'] as String),
       messageTime: pulumi.Input.fromValue(map['messageTime'] as String),

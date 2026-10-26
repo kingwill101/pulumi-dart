@@ -20,6 +20,17 @@ Future<GetDataSourceResult> getDataSource(
   return GetDataSourceResult.fromMap(result);
 }
 
+pulumi.Output<GetDataSourceResult> getDataSourceOutput(
+  GetDataSourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudsearch/v1:getDataSource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataSourceResult.fromMap);
+}
+
 /// Gets the specified search application. **Note:** This API requires an admin account to execute.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudsearch_v1_get_search_application_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetSearchApplicationResult> getSearchApplication(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSearchApplicationResult.fromMap(result);
+}
+
+pulumi.Output<GetSearchApplicationResult> getSearchApplicationOutput(
+  GetSearchApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudsearch/v1:getSearchApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSearchApplicationResult.fromMap);
 }

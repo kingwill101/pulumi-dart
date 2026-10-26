@@ -6,9 +6,9 @@ import 'google_cloud_ml_v1_measurement_metric.dart';
 /// A message representing a measurement.
 class GoogleCloudMlV1Measurement {
   /// Provides a list of metrics that act as inputs into the objective function.
-  final pulumi.Input<List<GoogleCloudMlV1MeasurementMetric>>? metrics;
+  final pulumi.Input<List<GoogleCloudMlV1MeasurementMetric>?>? metrics;
   /// The number of steps a machine learning model has been trained for. Must be non-negative.
-  final pulumi.Input<String>? stepCount;
+  final pulumi.Input<String?>? stepCount;
 
   /// Creates a new [GoogleCloudMlV1Measurement].
   /// [metrics] Provides a list of metrics that act as inputs into the objective function.

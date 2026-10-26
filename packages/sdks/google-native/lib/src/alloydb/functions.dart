@@ -40,6 +40,17 @@ Future<GetBackupResult> getBackup(
   return GetBackupResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupResult> getBackupOutput(
+  GetBackupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:alloydb/v1:getBackup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupResult.fromMap);
+}
+
 /// Gets details of a single Cluster.
 /// [args] Arguments passed to this invoke. {@macro pulumi_alloydb_v1_get_cluster_args_doc}
 /// [options] Invoke options controlling this call.
@@ -54,6 +65,17 @@ Future<GetClusterResult> getCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:alloydb/v1:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
 }
 
 /// Gets details of a single Instance.
@@ -72,6 +94,17 @@ Future<GetInstanceResult> getInstance(
   return GetInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:alloydb/v1:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
+}
+
 /// Gets details of a single User.
 /// [args] Arguments passed to this invoke. {@macro pulumi_alloydb_v1_get_user_args_doc}
 /// [options] Invoke options controlling this call.
@@ -86,6 +119,17 @@ Future<GetUserResult> getUser(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserResult.fromMap(result);
+}
+
+pulumi.Output<GetUserResult> getUserOutput(
+  GetUserArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:alloydb/v1:getUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserResult.fromMap);
 }
 
 /// Gets details of a single Backup.
@@ -104,6 +148,17 @@ Future<GetBackupAlloydbV1alphaResult> getBackupAlloydbV1alpha(
   return GetBackupAlloydbV1alphaResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupAlloydbV1alphaResult> getBackupAlloydbV1alphaOutput(
+  GetBackupAlloydbV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:alloydb/v1alpha:getBackup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupAlloydbV1alphaResult.fromMap);
+}
+
 /// Gets details of a single Cluster.
 /// [args] Arguments passed to this invoke. {@macro pulumi_alloydb_v1alpha_get_cluster_alloydb_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
@@ -118,6 +173,17 @@ Future<GetClusterAlloydbV1alphaResult> getClusterAlloydbV1alpha(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClusterAlloydbV1alphaResult.fromMap(result);
+}
+
+pulumi.Output<GetClusterAlloydbV1alphaResult> getClusterAlloydbV1alphaOutput(
+  GetClusterAlloydbV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:alloydb/v1alpha:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterAlloydbV1alphaResult.fromMap);
 }
 
 /// Gets details of a single Instance.
@@ -136,6 +202,17 @@ Future<GetInstanceAlloydbV1alphaResult> getInstanceAlloydbV1alpha(
   return GetInstanceAlloydbV1alphaResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceAlloydbV1alphaResult> getInstanceAlloydbV1alphaOutput(
+  GetInstanceAlloydbV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:alloydb/v1alpha:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceAlloydbV1alphaResult.fromMap);
+}
+
 /// Gets details of a single User.
 /// [args] Arguments passed to this invoke. {@macro pulumi_alloydb_v1alpha_get_user_alloydb_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
@@ -150,6 +227,17 @@ Future<GetUserAlloydbV1alphaResult> getUserAlloydbV1alpha(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserAlloydbV1alphaResult.fromMap(result);
+}
+
+pulumi.Output<GetUserAlloydbV1alphaResult> getUserAlloydbV1alphaOutput(
+  GetUserAlloydbV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:alloydb/v1alpha:getUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserAlloydbV1alphaResult.fromMap);
 }
 
 /// Gets details of a single Backup.
@@ -168,6 +256,17 @@ Future<GetBackupAlloydbV1betaResult> getBackupAlloydbV1beta(
   return GetBackupAlloydbV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupAlloydbV1betaResult> getBackupAlloydbV1betaOutput(
+  GetBackupAlloydbV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:alloydb/v1beta:getBackup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupAlloydbV1betaResult.fromMap);
+}
+
 /// Gets details of a single Cluster.
 /// [args] Arguments passed to this invoke. {@macro pulumi_alloydb_v1beta_get_cluster_alloydb_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -182,6 +281,17 @@ Future<GetClusterAlloydbV1betaResult> getClusterAlloydbV1beta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClusterAlloydbV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetClusterAlloydbV1betaResult> getClusterAlloydbV1betaOutput(
+  GetClusterAlloydbV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:alloydb/v1beta:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterAlloydbV1betaResult.fromMap);
 }
 
 /// Gets details of a single Instance.
@@ -200,6 +310,17 @@ Future<GetInstanceAlloydbV1betaResult> getInstanceAlloydbV1beta(
   return GetInstanceAlloydbV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceAlloydbV1betaResult> getInstanceAlloydbV1betaOutput(
+  GetInstanceAlloydbV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:alloydb/v1beta:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceAlloydbV1betaResult.fromMap);
+}
+
 /// Gets details of a single User.
 /// [args] Arguments passed to this invoke. {@macro pulumi_alloydb_v1beta_get_user_alloydb_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -214,4 +335,15 @@ Future<GetUserAlloydbV1betaResult> getUserAlloydbV1beta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserAlloydbV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetUserAlloydbV1betaResult> getUserAlloydbV1betaOutput(
+  GetUserAlloydbV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:alloydb/v1beta:getUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserAlloydbV1betaResult.fromMap);
 }

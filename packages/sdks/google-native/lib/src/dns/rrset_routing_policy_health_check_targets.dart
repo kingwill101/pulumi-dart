@@ -5,7 +5,7 @@ import 'rrset_routing_policy_load_balancer_target.dart';
 
 /// HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the healthy endpoints will be included in the response.
 class RRSetRoutingPolicyHealthCheckTargets {
-  final pulumi.Input<List<RRSetRoutingPolicyLoadBalancerTarget>>? internalLoadBalancers;
+  final pulumi.Input<List<RRSetRoutingPolicyLoadBalancerTarget>?>? internalLoadBalancers;
 
   /// Creates a new [RRSetRoutingPolicyHealthCheckTargets].
   /// [internalLoadBalancers] Optional.

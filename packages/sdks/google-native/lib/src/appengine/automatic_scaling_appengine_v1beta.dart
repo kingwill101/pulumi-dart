@@ -11,33 +11,33 @@ import 'standard_scheduler_settings_appengine_v1beta.dart';
 /// Automatic scaling is based on request rate, response latencies, and other application metrics.
 class AutomaticScalingAppengineV1beta {
   /// The time period that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. Only applicable in the App Engine flexible environment.
-  final pulumi.Input<String>? coolDownPeriod;
+  final pulumi.Input<String?>? coolDownPeriod;
   /// Target scaling by CPU usage.
-  final pulumi.Input<CpuUtilizationAppengineV1beta>? cpuUtilization;
+  final pulumi.Input<CpuUtilizationAppengineV1beta?>? cpuUtilization;
   /// Target scaling by user-provided metrics. Only applicable in the App Engine flexible environment.
-  final pulumi.Input<List<CustomMetric>>? customMetrics;
+  final pulumi.Input<List<CustomMetric>?>? customMetrics;
   /// Target scaling by disk usage.
-  final pulumi.Input<DiskUtilizationAppengineV1beta>? diskUtilization;
+  final pulumi.Input<DiskUtilizationAppengineV1beta?>? diskUtilization;
   /// Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.Defaults to a runtime-specific value.
-  final pulumi.Input<int>? maxConcurrentRequests;
+  final pulumi.Input<int?>? maxConcurrentRequests;
   /// Maximum number of idle instances that should be maintained for this version.
-  final pulumi.Input<int>? maxIdleInstances;
+  final pulumi.Input<int?>? maxIdleInstances;
   /// Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
-  final pulumi.Input<String>? maxPendingLatency;
+  final pulumi.Input<String?>? maxPendingLatency;
   /// Maximum number of instances that should be started to handle requests for this version.
-  final pulumi.Input<int>? maxTotalInstances;
+  final pulumi.Input<int?>? maxTotalInstances;
   /// Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
-  final pulumi.Input<int>? minIdleInstances;
+  final pulumi.Input<int?>? minIdleInstances;
   /// Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
-  final pulumi.Input<String>? minPendingLatency;
+  final pulumi.Input<String?>? minPendingLatency;
   /// Minimum number of running instances that should be maintained for this version.
-  final pulumi.Input<int>? minTotalInstances;
+  final pulumi.Input<int?>? minTotalInstances;
   /// Target scaling by network usage.
-  final pulumi.Input<NetworkUtilizationAppengineV1beta>? networkUtilization;
+  final pulumi.Input<NetworkUtilizationAppengineV1beta?>? networkUtilization;
   /// Target scaling by request utilization.
-  final pulumi.Input<RequestUtilizationAppengineV1beta>? requestUtilization;
+  final pulumi.Input<RequestUtilizationAppengineV1beta?>? requestUtilization;
   /// Scheduler settings for standard environment.
-  final pulumi.Input<StandardSchedulerSettingsAppengineV1beta>? standardSchedulerSettings;
+  final pulumi.Input<StandardSchedulerSettingsAppengineV1beta?>? standardSchedulerSettings;
 
   /// Creates a new [AutomaticScalingAppengineV1beta].
   /// [coolDownPeriod] The time period that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. Only applicable in the App Engine flexible environment.
@@ -96,13 +96,13 @@ class AutomaticScalingAppengineV1beta {
       cpuUtilization: (() { final guardedValue = map['cpuUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CpuUtilizationAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       customMetrics: (() { final guardedValue = map['customMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CustomMetric>(guardedValue, (value) => CustomMetric.fromMap((value as Map).cast<String, dynamic>()))); })(),
       diskUtilization: (() { final guardedValue = map['diskUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiskUtilizationAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxConcurrentRequests: (() { final guardedValue = map['maxConcurrentRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxIdleInstances: (() { final guardedValue = map['maxIdleInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxConcurrentRequests: (() { final guardedValue = map['maxConcurrentRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxIdleInstances: (() { final guardedValue = map['maxIdleInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       maxPendingLatency: (() { final guardedValue = map['maxPendingLatency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxTotalInstances: (() { final guardedValue = map['maxTotalInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minIdleInstances: (() { final guardedValue = map['minIdleInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxTotalInstances: (() { final guardedValue = map['maxTotalInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minIdleInstances: (() { final guardedValue = map['minIdleInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       minPendingLatency: (() { final guardedValue = map['minPendingLatency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minTotalInstances: (() { final guardedValue = map['minTotalInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minTotalInstances: (() { final guardedValue = map['minTotalInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       networkUtilization: (() { final guardedValue = map['networkUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkUtilizationAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       requestUtilization: (() { final guardedValue = map['requestUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RequestUtilizationAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       standardSchedulerSettings: (() { final guardedValue = map['standardSchedulerSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StandardSchedulerSettingsAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

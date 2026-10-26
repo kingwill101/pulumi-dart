@@ -9,15 +9,15 @@ import 'google_cloud_dialogflow_v2_intent_message_table_card_row.dart';
 /// Table card for Actions on Google.
 class GoogleCloudDialogflowV2IntentMessageTableCard {
   /// Optional. List of buttons for the card.
-  final pulumi.Input<List<GoogleCloudDialogflowV2IntentMessageBasicCardButton>>? buttons;
+  final pulumi.Input<List<GoogleCloudDialogflowV2IntentMessageBasicCardButton>?>? buttons;
   /// Optional. Display properties for the columns in this table.
-  final pulumi.Input<List<GoogleCloudDialogflowV2IntentMessageColumnProperties>>? columnProperties;
+  final pulumi.Input<List<GoogleCloudDialogflowV2IntentMessageColumnProperties>?>? columnProperties;
   /// Optional. Image which should be displayed on the card.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageImage>? image;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageImage?>? image;
   /// Optional. Rows in this table of data.
-  final pulumi.Input<List<GoogleCloudDialogflowV2IntentMessageTableCardRow>>? rows;
+  final pulumi.Input<List<GoogleCloudDialogflowV2IntentMessageTableCardRow>?>? rows;
   /// Optional. Subtitle to the title.
-  final pulumi.Input<String>? subtitle;
+  final pulumi.Input<String?>? subtitle;
   /// Title of the card.
   final pulumi.Input<String> title;
 

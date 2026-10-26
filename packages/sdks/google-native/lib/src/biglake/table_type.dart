@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The table type.
-enum TableType {
+enum TableType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   hive("HIVE");
 
   const TableType(this.wireValue);
+  @override
   final String wireValue;
 
   static TableType fromValue(String value) {

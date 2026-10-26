@@ -61,7 +61,7 @@ class AuthConfig extends pulumi.CustomResource {
           'google-native:integrations/v1alpha:AuthConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'productId', 'project']).merge(options),
         ) {
     certificateId = registerOutput<String>('certificateId');
     clientCertificateEncryptedPrivateKey = registerOutput<String?>('clientCertificateEncryptedPrivateKey');
@@ -74,7 +74,41 @@ class AuthConfig extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     encryptedCredential = registerOutput<String>('encryptedCredential');
-    expiryNotificationDuration = registerOutput<List<String>>('expiryNotificationDuration');
+    expiryNotificationDuration = registerOutput<List<String>>('expiryNotificationDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    lastModifierEmail = registerOutput<String>('lastModifierEmail');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    overrideValidTime = registerOutput<String>('overrideValidTime');
+    productId = registerOutput<String>('productId');
+    project = registerOutput<String>('project');
+    reason = registerOutput<String>('reason');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+    validTime = registerOutput<String>('validTime');
+    visibility = registerOutput<String>('visibility');
+  }
+
+  /// Creates a typed reference to an existing [AuthConfig] resource.
+  AuthConfig.reference(String urn)
+    : super(
+        'google-native:integrations/v1alpha:AuthConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    certificateId = registerOutput<String>('certificateId');
+    clientCertificateEncryptedPrivateKey = registerOutput<String?>('clientCertificateEncryptedPrivateKey');
+    clientCertificatePassphrase = registerOutput<String?>('clientCertificatePassphrase');
+    clientCertificateSslCertificate = registerOutput<String?>('clientCertificateSslCertificate');
+    createTime = registerOutput<String>('createTime');
+    creatorEmail = registerOutput<String>('creatorEmail');
+    credentialType = registerOutput<String>('credentialType');
+    decryptedCredential = registerOutput<GoogleCloudIntegrationsV1alphaCredentialResponse>('decryptedCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIntegrationsV1alphaCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    encryptedCredential = registerOutput<String>('encryptedCredential');
+    expiryNotificationDuration = registerOutput<List<String>>('expiryNotificationDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     lastModifierEmail = registerOutput<String>('lastModifierEmail');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

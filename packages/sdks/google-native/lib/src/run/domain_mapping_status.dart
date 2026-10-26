@@ -7,15 +7,15 @@ import 'resource_record.dart';
 /// The current state of the Domain Mapping.
 class DomainMappingStatus {
   /// Array of observed DomainMappingConditions, indicating the current state of the DomainMapping.
-  final pulumi.Input<List<GoogleCloudRunV1Condition>>? conditions;
+  final pulumi.Input<List<GoogleCloudRunV1Condition>?>? conditions;
   /// The name of the route that the mapping currently points to.
-  final pulumi.Input<String>? mappedRouteName;
+  final pulumi.Input<String?>? mappedRouteName;
   /// ObservedGeneration is the 'Generation' of the DomainMapping that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
-  final pulumi.Input<int>? observedGeneration;
+  final pulumi.Input<int?>? observedGeneration;
   /// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
-  final pulumi.Input<List<ResourceRecord>>? resourceRecords;
+  final pulumi.Input<List<ResourceRecord>?>? resourceRecords;
   /// Optional. Not supported by Cloud Run.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [DomainMappingStatus].
   /// [conditions] Array of observed DomainMappingConditions, indicating the current state of the DomainMapping.
@@ -45,7 +45,7 @@ class DomainMappingStatus {
     return DomainMappingStatus(
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudRunV1Condition>(guardedValue, (value) => GoogleCloudRunV1Condition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       mappedRouteName: (() { final guardedValue = map['mappedRouteName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceRecords: (() { final guardedValue = map['resourceRecords']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceRecord>(guardedValue, (value) => ResourceRecord.fromMap((value as Map).cast<String, dynamic>()))); })(),
       url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

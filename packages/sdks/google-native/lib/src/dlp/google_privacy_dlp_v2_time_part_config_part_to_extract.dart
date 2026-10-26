@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The part of the time to keep.
-enum GooglePrivacyDlpV2TimePartConfigPartToExtract {
+enum GooglePrivacyDlpV2TimePartConfigPartToExtract implements pulumi.PulumiEnum<String> {
   timePartUnspecified("TIME_PART_UNSPECIFIED"),
   year("YEAR"),
   month("MONTH"),
@@ -9,6 +11,7 @@ enum GooglePrivacyDlpV2TimePartConfigPartToExtract {
   hourOfDay("HOUR_OF_DAY");
 
   const GooglePrivacyDlpV2TimePartConfigPartToExtract(this.wireValue);
+  @override
   final String wireValue;
 
   static GooglePrivacyDlpV2TimePartConfigPartToExtract fromValue(String value) {

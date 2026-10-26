@@ -10,18 +10,18 @@ import 'response_policy_rule_local_data_dns_v1beta2.dart';
 /// {@macro pulumi_dns_v1beta2_response_policy_rule_args_doc}
 class ResponsePolicyRuleArgs {
   /// Answer this query with a behavior rather than DNS data.
-  final pulumi.Input<ResponsePolicyRuleBehaviorDnsV1beta2>? behavior;
+  final pulumi.Input<ResponsePolicyRuleBehaviorDnsV1beta2?>? behavior;
   /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-  final pulumi.Input<String>? clientOperationId;
+  final pulumi.Input<String?>? clientOperationId;
   /// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
-  final pulumi.Input<String>? dnsName;
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? dnsName;
+  final pulumi.Input<String?>? kind;
   /// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
-  final pulumi.Input<ResponsePolicyRuleLocalDataDnsV1beta2>? localData;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<ResponsePolicyRuleLocalDataDnsV1beta2?>? localData;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> responsePolicy;
   /// An identifier for this rule. Must be unique with the ResponsePolicy.
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
 
   /// Creates a new [ResponsePolicyRuleArgs].
   /// [behavior] Answer this query with a behavior rather than DNS data.

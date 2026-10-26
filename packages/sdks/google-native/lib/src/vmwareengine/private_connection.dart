@@ -49,8 +49,36 @@ class PrivateConnection extends pulumi.CustomResource {
           'google-native:vmwareengine/v1:PrivateConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'privateConnectionId', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    peeringId = registerOutput<String>('peeringId');
+    peeringState = registerOutput<String>('peeringState');
+    privateConnectionId = registerOutput<String>('privateConnectionId');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    routingMode = registerOutput<String>('routingMode');
+    serviceNetwork = registerOutput<String>('serviceNetwork');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    vmwareEngineNetwork = registerOutput<String>('vmwareEngineNetwork');
+    vmwareEngineNetworkCanonical = registerOutput<String>('vmwareEngineNetworkCanonical');
+  }
+
+  /// Creates a typed reference to an existing [PrivateConnection] resource.
+  PrivateConnection.reference(String urn)
+    : super(
+        'google-native:vmwareengine/v1:PrivateConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     location = registerOutput<String>('location');

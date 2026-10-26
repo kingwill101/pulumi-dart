@@ -2,7 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_redis_v1beta1_args.dart';
 import 'maintenance_policy_response_redis_v1beta1.dart';
 import 'maintenance_schedule_response_redis_v1beta1.dart';
+import 'node_info_response_redis_v1beta1.dart';
 import 'persistence_config_response_redis_v1beta1.dart';
+import 'tls_certificate_response_redis_v1beta1.dart';
 
 /// Creates a Redis instance based on the specified tier and memory size. By default, the instance is accessible from the project's [default network](https://cloud.google.com/vpc/docs/vpc). The creation is executed asynchronously and callers may check the returned operation to track its progress. Once the operation is completed the Redis instance will be fully functional. The completed longrunning.Operation will contain the new instance object in the response field. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation.
 class InstanceRedisV1beta1 extends pulumi.CustomResource {
@@ -42,7 +44,7 @@ class InstanceRedisV1beta1 extends pulumi.CustomResource {
   /// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
   late final pulumi.Output<String> name;
   /// Info per node.
-  late final pulumi.Output<List<Map<String, dynamic>>> nodes;
+  late final pulumi.Output<List<NodeInfoResponseRedisV1beta1>> nodes;
   /// Optional. Persistence configuration parameters
   late final pulumi.Output<PersistenceConfigResponseRedisV1beta1> persistenceConfig;
   /// Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export operation.
@@ -69,7 +71,7 @@ class InstanceRedisV1beta1 extends pulumi.CustomResource {
   /// Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto".
   late final pulumi.Output<String> secondaryIpRange;
   /// List of server CA certificates for the instance.
-  late final pulumi.Output<List<Map<String, dynamic>>> serverCaCerts;
+  late final pulumi.Output<List<TlsCertificateResponseRedisV1beta1>> serverCaCerts;
   /// The current state of this instance.
   late final pulumi.Output<String> state;
   /// Additional information about the current status of this instance, if available.
@@ -93,12 +95,12 @@ class InstanceRedisV1beta1 extends pulumi.CustomResource {
           'google-native:redis/v1beta1:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instanceId', 'location', 'project']).merge(options),
         ) {
     alternativeLocationId = registerOutput<String>('alternativeLocationId');
     authEnabled = registerOutput<bool>('authEnabled');
     authorizedNetwork = registerOutput<String>('authorizedNetwork');
-    availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions');
+    availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     connectMode = registerOutput<String>('connectMode');
     createTime = registerOutput<String>('createTime');
     currentLocationId = registerOutput<String>('currentLocationId');
@@ -106,14 +108,14 @@ class InstanceRedisV1beta1 extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     host = registerOutput<String>('host');
     instanceId = registerOutput<String>('instanceId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     maintenancePolicy = registerOutput<MaintenancePolicyResponseRedisV1beta1>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenancePolicyResponseRedisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maintenanceSchedule = registerOutput<MaintenanceScheduleResponseRedisV1beta1>('maintenanceSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceScheduleResponseRedisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maintenanceVersion = registerOutput<String>('maintenanceVersion');
     memorySizeGb = registerOutput<int>('memorySizeGb');
     this.name = registerOutput<String>('name');
-    nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
+    nodes = registerOutput<List<NodeInfoResponseRedisV1beta1>>('nodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeInfoResponseRedisV1beta1>(guardedValue, (value) => NodeInfoResponseRedisV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
     persistenceConfig = registerOutput<PersistenceConfigResponseRedisV1beta1>('persistenceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PersistenceConfigResponseRedisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     persistenceIamIdentity = registerOutput<String>('persistenceIamIdentity');
     port = registerOutput<int>('port');
@@ -121,16 +123,65 @@ class InstanceRedisV1beta1 extends pulumi.CustomResource {
     readEndpoint = registerOutput<String>('readEndpoint');
     readEndpointPort = registerOutput<int>('readEndpointPort');
     readReplicasMode = registerOutput<String>('readReplicasMode');
-    redisConfigs = registerOutput<Map<String, String>>('redisConfigs');
+    redisConfigs = registerOutput<Map<String, String>>('redisConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     redisVersion = registerOutput<String>('redisVersion');
     replicaCount = registerOutput<int>('replicaCount');
     reservedIpRange = registerOutput<String>('reservedIpRange');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     secondaryIpRange = registerOutput<String>('secondaryIpRange');
-    serverCaCerts = registerOutput<List<Map<String, dynamic>>>('serverCaCerts');
+    serverCaCerts = registerOutput<List<TlsCertificateResponseRedisV1beta1>>('serverCaCerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsCertificateResponseRedisV1beta1>(guardedValue, (value) => TlsCertificateResponseRedisV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
     state = registerOutput<String>('state');
     statusMessage = registerOutput<String>('statusMessage');
-    suspensionReasons = registerOutput<List<String>>('suspensionReasons');
+    suspensionReasons = registerOutput<List<String>>('suspensionReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tier = registerOutput<String>('tier');
+    transitEncryptionMode = registerOutput<String>('transitEncryptionMode');
+  }
+
+  /// Creates a typed reference to an existing [InstanceRedisV1beta1] resource.
+  InstanceRedisV1beta1.reference(String urn)
+    : super(
+        'google-native:redis/v1beta1:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alternativeLocationId = registerOutput<String>('alternativeLocationId');
+    authEnabled = registerOutput<bool>('authEnabled');
+    authorizedNetwork = registerOutput<String>('authorizedNetwork');
+    availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectMode = registerOutput<String>('connectMode');
+    createTime = registerOutput<String>('createTime');
+    currentLocationId = registerOutput<String>('currentLocationId');
+    customerManagedKey = registerOutput<String>('customerManagedKey');
+    displayName = registerOutput<String>('displayName');
+    host = registerOutput<String>('host');
+    instanceId = registerOutput<String>('instanceId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    maintenancePolicy = registerOutput<MaintenancePolicyResponseRedisV1beta1>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenancePolicyResponseRedisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceSchedule = registerOutput<MaintenanceScheduleResponseRedisV1beta1>('maintenanceSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceScheduleResponseRedisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceVersion = registerOutput<String>('maintenanceVersion');
+    memorySizeGb = registerOutput<int>('memorySizeGb');
+    this.name = registerOutput<String>('name');
+    nodes = registerOutput<List<NodeInfoResponseRedisV1beta1>>('nodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeInfoResponseRedisV1beta1>(guardedValue, (value) => NodeInfoResponseRedisV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+    persistenceConfig = registerOutput<PersistenceConfigResponseRedisV1beta1>('persistenceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PersistenceConfigResponseRedisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    persistenceIamIdentity = registerOutput<String>('persistenceIamIdentity');
+    port = registerOutput<int>('port');
+    project = registerOutput<String>('project');
+    readEndpoint = registerOutput<String>('readEndpoint');
+    readEndpointPort = registerOutput<int>('readEndpointPort');
+    readReplicasMode = registerOutput<String>('readReplicasMode');
+    redisConfigs = registerOutput<Map<String, String>>('redisConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    redisVersion = registerOutput<String>('redisVersion');
+    replicaCount = registerOutput<int>('replicaCount');
+    reservedIpRange = registerOutput<String>('reservedIpRange');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    secondaryIpRange = registerOutput<String>('secondaryIpRange');
+    serverCaCerts = registerOutput<List<TlsCertificateResponseRedisV1beta1>>('serverCaCerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsCertificateResponseRedisV1beta1>(guardedValue, (value) => TlsCertificateResponseRedisV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+    state = registerOutput<String>('state');
+    statusMessage = registerOutput<String>('statusMessage');
+    suspensionReasons = registerOutput<List<String>>('suspensionReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tier = registerOutput<String>('tier');
     transitEncryptionMode = registerOutput<String>('transitEncryptionMode');
   }

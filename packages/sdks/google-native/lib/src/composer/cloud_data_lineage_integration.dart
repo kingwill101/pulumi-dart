@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for Cloud Data Lineage integration.
 class CloudDataLineageIntegration {
   /// Optional. Whether or not Cloud Data Lineage integration is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [CloudDataLineageIntegration].
   /// [enabled] Optional. Whether or not Cloud Data Lineage integration is enabled.

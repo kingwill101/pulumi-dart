@@ -23,8 +23,22 @@ class AccessPolicyAccesscontextmanagerV1beta extends pulumi.CustomResource {
           'google-native:accesscontextmanager/v1beta:AccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    title = registerOutput<String>('title');
+  }
+
+  /// Creates a typed reference to an existing [AccessPolicyAccesscontextmanagerV1beta] resource.
+  AccessPolicyAccesscontextmanagerV1beta.reference(String urn)
+    : super(
+        'google-native:accesscontextmanager/v1beta:AccessPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     title = registerOutput<String>('title');

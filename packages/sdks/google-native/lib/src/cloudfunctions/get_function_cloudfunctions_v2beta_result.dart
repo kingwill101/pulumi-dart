@@ -9,31 +9,31 @@ import 'service_config_response_cloudfunctions_v2beta.dart';
 /// Result data returned by getFunction.
 class GetFunctionCloudfunctionsV2betaResult {
   /// Describes the Build step of the function that builds a container from the given source.
-  final BuildConfigResponseCloudfunctionsV2beta buildConfig;
+  final BuildConfigResponseCloudfunctionsV2beta? buildConfig;
   /// User-provided description of a function.
-  final String description;
+  final String? description;
   /// Describe whether the function is 1st Gen or 2nd Gen.
-  final String environment;
+  final String? environment;
   /// An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
-  final EventTriggerResponseCloudfunctionsV2beta eventTrigger;
+  final EventTriggerResponseCloudfunctionsV2beta? eventTrigger;
   /// [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-  final String kmsKeyName;
+  final String? kmsKeyName;
   /// Labels associated with this Cloud Function.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
-  final String name;
+  final String? name;
   /// Reserved for future use.
-  final bool satisfiesPzs;
+  final bool? satisfiesPzs;
   /// Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
-  final ServiceConfigResponseCloudfunctionsV2beta serviceConfig;
+  final ServiceConfigResponseCloudfunctionsV2beta? serviceConfig;
   /// State of the function.
-  final String state;
+  final String? state;
   /// State Messages for this Cloud Function.
-  final List<GoogleCloudFunctionsV2betaStateMessageResponse> stateMessages;
+  final List<GoogleCloudFunctionsV2betaStateMessageResponse>? stateMessages;
   /// The last update timestamp of a Cloud Function.
-  final String updateTime;
+  final String? updateTime;
   /// The deployed url for the function.
-  final String url;
+  final String? url;
 
   /// Creates a new [GetFunctionCloudfunctionsV2betaResult].
   /// [buildConfig] Describes the Build step of the function that builds a container from the given source.
@@ -50,54 +50,54 @@ class GetFunctionCloudfunctionsV2betaResult {
   /// [updateTime] The last update timestamp of a Cloud Function.
   /// [url] The deployed url for the function.
   const GetFunctionCloudfunctionsV2betaResult({
-    required this.buildConfig,
-    required this.description,
-    required this.environment,
-    required this.eventTrigger,
-    required this.kmsKeyName,
-    required this.labels,
-    required this.name,
-    required this.satisfiesPzs,
-    required this.serviceConfig,
-    required this.state,
-    required this.stateMessages,
-    required this.updateTime,
-    required this.url,
+    this.buildConfig,
+    this.description,
+    this.environment,
+    this.eventTrigger,
+    this.kmsKeyName,
+    this.labels,
+    this.name,
+    this.satisfiesPzs,
+    this.serviceConfig,
+    this.state,
+    this.stateMessages,
+    this.updateTime,
+    this.url,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buildConfig': buildConfig.toMap(),
-      'description': description,
-      'environment': environment,
-      'eventTrigger': eventTrigger.toMap(),
-      'kmsKeyName': kmsKeyName,
-      'labels': labels,
-      'name': name,
-      'satisfiesPzs': satisfiesPzs,
-      'serviceConfig': serviceConfig.toMap(),
-      'state': state,
-      'stateMessages': pulumi.Input.encodeList<GoogleCloudFunctionsV2betaStateMessageResponse, Map<String, dynamic>>(stateMessages, (value) => value.toMap()),
-      'updateTime': updateTime,
-      'url': url,
+      'buildConfig': ?buildConfig?.toMap(),
+      'description': ?description,
+      'environment': ?environment,
+      'eventTrigger': ?eventTrigger?.toMap(),
+      'kmsKeyName': ?kmsKeyName,
+      'labels': ?labels,
+      'name': ?name,
+      'satisfiesPzs': ?satisfiesPzs,
+      'serviceConfig': ?serviceConfig?.toMap(),
+      'state': ?state,
+      'stateMessages': ?(() { final guardedValue = stateMessages; if (guardedValue == null) return null; return pulumi.Input.encodeList<GoogleCloudFunctionsV2betaStateMessageResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'updateTime': ?updateTime,
+      'url': ?url,
     };
   }
 
   factory GetFunctionCloudfunctionsV2betaResult.fromMap(Map<String, dynamic> map) {
     return GetFunctionCloudfunctionsV2betaResult(
-      buildConfig: BuildConfigResponseCloudfunctionsV2beta.fromMap((map['buildConfig']! as Map).cast<String, dynamic>()),
-      description: map['description'] as String,
-      environment: map['environment'] as String,
-      eventTrigger: EventTriggerResponseCloudfunctionsV2beta.fromMap((map['eventTrigger']! as Map).cast<String, dynamic>()),
-      kmsKeyName: map['kmsKeyName'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      satisfiesPzs: map['satisfiesPzs'] as bool,
-      serviceConfig: ServiceConfigResponseCloudfunctionsV2beta.fromMap((map['serviceConfig']! as Map).cast<String, dynamic>()),
-      state: map['state'] as String,
-      stateMessages: pulumi.Input.decodeList<GoogleCloudFunctionsV2betaStateMessageResponse>(map['stateMessages']!, (value) => GoogleCloudFunctionsV2betaStateMessageResponse.fromMap((value as Map).cast<String, dynamic>())),
-      updateTime: map['updateTime'] as String,
-      url: map['url'] as String,
+      buildConfig: (() { final guardedValue = map['buildConfig']; if (guardedValue == null) return null; return BuildConfigResponseCloudfunctionsV2beta.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      eventTrigger: (() { final guardedValue = map['eventTrigger']; if (guardedValue == null) return null; return EventTriggerResponseCloudfunctionsV2beta.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      satisfiesPzs: (() { final guardedValue = map['satisfiesPzs']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      serviceConfig: (() { final guardedValue = map['serviceConfig']; if (guardedValue == null) return null; return ServiceConfigResponseCloudfunctionsV2beta.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      stateMessages: (() { final guardedValue = map['stateMessages']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudFunctionsV2betaStateMessageResponse>(guardedValue, (value) => GoogleCloudFunctionsV2betaStateMessageResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

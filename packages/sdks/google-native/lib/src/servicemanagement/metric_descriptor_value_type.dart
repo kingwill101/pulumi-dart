@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether the measurement is an integer, a floating-point number, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
-enum MetricDescriptorValueType {
+enum MetricDescriptorValueType implements pulumi.PulumiEnum<String> {
   valueTypeUnspecified("VALUE_TYPE_UNSPECIFIED"),
   bool_("BOOL"),
   int64("INT64"),
@@ -9,6 +11,7 @@ enum MetricDescriptorValueType {
   money("MONEY");
 
   const MetricDescriptorValueType(this.wireValue);
+  @override
   final String wireValue;
 
   static MetricDescriptorValueType fromValue(String value) {

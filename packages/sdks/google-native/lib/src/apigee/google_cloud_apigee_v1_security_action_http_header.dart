@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An HTTP header.
 class GoogleCloudApigeeV1SecurityActionHttpHeader {
   /// The header name to be sent to the target.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The header value to be sent to the target.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [GoogleCloudApigeeV1SecurityActionHttpHeader].
   /// [name] The header name to be sent to the target.

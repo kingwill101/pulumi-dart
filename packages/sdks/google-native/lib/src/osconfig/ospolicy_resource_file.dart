@@ -7,13 +7,13 @@ import 'ospolicy_resource_file_remote.dart';
 /// A remote or local file.
 class OSPolicyResourceFile {
   /// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
-  final pulumi.Input<bool>? allowInsecure;
+  final pulumi.Input<bool?>? allowInsecure;
   /// A Cloud Storage object.
-  final pulumi.Input<OSPolicyResourceFileGcs>? gcs;
+  final pulumi.Input<OSPolicyResourceFileGcs?>? gcs;
   /// A local path within the VM to use.
-  final pulumi.Input<String>? localPath;
+  final pulumi.Input<String?>? localPath;
   /// A generic remote file.
-  final pulumi.Input<OSPolicyResourceFileRemote>? remote;
+  final pulumi.Input<OSPolicyResourceFileRemote?>? remote;
 
   /// Creates a new [OSPolicyResourceFile].
   /// [allowInsecure] Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.

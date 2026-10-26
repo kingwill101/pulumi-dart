@@ -10,7 +10,7 @@ class GoogleCloudAiplatformV1CreatePipelineJobRequest {
   /// The PipelineJob to create.
   final pulumi.Input<GoogleCloudAiplatformV1PipelineJob> pipelineJob;
   /// The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
-  final pulumi.Input<String>? pipelineJobId;
+  final pulumi.Input<String?>? pipelineJobId;
 
   /// Creates a new [GoogleCloudAiplatformV1CreatePipelineJobRequest].
   /// [parent] The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}`

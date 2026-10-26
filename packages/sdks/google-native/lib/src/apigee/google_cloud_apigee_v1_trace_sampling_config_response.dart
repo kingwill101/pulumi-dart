@@ -27,7 +27,7 @@ class GoogleCloudApigeeV1TraceSamplingConfigResponse {
   factory GoogleCloudApigeeV1TraceSamplingConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1TraceSamplingConfigResponse(
       sampler: pulumi.Input.fromValue(map['sampler'] as String),
-      samplingRate: pulumi.Input.fromValue(map['samplingRate'] as double),
+      samplingRate: pulumi.Input.fromValue((map['samplingRate'] as num).toDouble()),
     );
   }
 }

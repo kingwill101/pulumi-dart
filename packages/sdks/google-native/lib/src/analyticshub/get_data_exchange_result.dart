@@ -5,21 +5,21 @@ import 'sharing_environment_config_response.dart';
 /// Result data returned by getDataExchange.
 class GetDataExchangeResult {
   /// Optional. Description of the data exchange. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
-  final String description;
+  final String? description;
   /// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and must not start or end with spaces. Default value is an empty string. Max length: 63 bytes.
-  final String displayName;
+  final String? displayName;
   /// Optional. Documentation describing the data exchange.
-  final String documentation;
+  final String? documentation;
   /// Optional. Base64 encoded image representing the data exchange. Max Size: 3.0MiB Expected image dimensions are 512x512 pixels, however the API only performs validation on size of the encoded data. Note: For byte fields, the content of the fields are base64-encoded (which increases the size of the data by 33-36%) when using JSON on the wire.
-  final String icon;
+  final String? icon;
   /// Number of listings contained in the data exchange.
-  final int listingCount;
+  final int? listingCount;
   /// The resource name of the data exchange. e.g. `projects/myproject/locations/US/dataExchanges/123`.
-  final String name;
+  final String? name;
   /// Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
-  final String primaryContact;
+  final String? primaryContact;
   /// Optional. Configurable data sharing environment option for a data exchange.
-  final SharingEnvironmentConfigResponse sharingEnvironmentConfig;
+  final SharingEnvironmentConfigResponse? sharingEnvironmentConfig;
 
   /// Creates a new [GetDataExchangeResult].
   /// [description] Optional. Description of the data exchange. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
@@ -31,39 +31,39 @@ class GetDataExchangeResult {
   /// [primaryContact] Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
   /// [sharingEnvironmentConfig] Optional. Configurable data sharing environment option for a data exchange.
   const GetDataExchangeResult({
-    required this.description,
-    required this.displayName,
-    required this.documentation,
-    required this.icon,
-    required this.listingCount,
-    required this.name,
-    required this.primaryContact,
-    required this.sharingEnvironmentConfig,
+    this.description,
+    this.displayName,
+    this.documentation,
+    this.icon,
+    this.listingCount,
+    this.name,
+    this.primaryContact,
+    this.sharingEnvironmentConfig,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'description': description,
-      'displayName': displayName,
-      'documentation': documentation,
-      'icon': icon,
-      'listingCount': listingCount,
-      'name': name,
-      'primaryContact': primaryContact,
-      'sharingEnvironmentConfig': sharingEnvironmentConfig.toMap(),
+      'description': ?description,
+      'displayName': ?displayName,
+      'documentation': ?documentation,
+      'icon': ?icon,
+      'listingCount': ?listingCount,
+      'name': ?name,
+      'primaryContact': ?primaryContact,
+      'sharingEnvironmentConfig': ?sharingEnvironmentConfig?.toMap(),
     };
   }
 
   factory GetDataExchangeResult.fromMap(Map<String, dynamic> map) {
     return GetDataExchangeResult(
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      documentation: map['documentation'] as String,
-      icon: map['icon'] as String,
-      listingCount: map['listingCount'] as int,
-      name: map['name'] as String,
-      primaryContact: map['primaryContact'] as String,
-      sharingEnvironmentConfig: SharingEnvironmentConfigResponse.fromMap((map['sharingEnvironmentConfig']! as Map).cast<String, dynamic>()),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      documentation: (() { final guardedValue = map['documentation']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      icon: (() { final guardedValue = map['icon']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      listingCount: (() { final guardedValue = map['listingCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      primaryContact: (() { final guardedValue = map['primaryContact']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sharingEnvironmentConfig: (() { final guardedValue = map['sharingEnvironmentConfig']; if (guardedValue == null) return null; return SharingEnvironmentConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

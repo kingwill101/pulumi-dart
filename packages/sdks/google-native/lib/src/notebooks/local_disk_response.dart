@@ -82,7 +82,7 @@ class LocalDiskResponse {
       boot: pulumi.Input.fromValue(map['boot'] as bool),
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
       guestOsFeatures: pulumi.Input.fromValue(pulumi.Input.decodeList<RuntimeGuestOsFeatureResponse>(map['guestOsFeatures']!, (value) => RuntimeGuestOsFeatureResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      index: pulumi.Input.fromValue(map['index'] as int),
+      index: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['index'])),
       initializeParams: pulumi.Input.fromValue(LocalDiskInitializeParamsResponse.fromMap((map['initializeParams']! as Map).cast<String, dynamic>())),
       interface: pulumi.Input.fromValue(map['interface'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),

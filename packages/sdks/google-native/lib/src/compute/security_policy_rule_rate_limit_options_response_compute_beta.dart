@@ -63,7 +63,7 @@ class SecurityPolicyRuleRateLimitOptionsResponseComputeBeta {
 
   factory SecurityPolicyRuleRateLimitOptionsResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleRateLimitOptionsResponseComputeBeta(
-      banDurationSec: pulumi.Input.fromValue(map['banDurationSec'] as int),
+      banDurationSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['banDurationSec'])),
       banThreshold: pulumi.Input.fromValue(SecurityPolicyRuleRateLimitOptionsThresholdResponseComputeBeta.fromMap((map['banThreshold']! as Map).cast<String, dynamic>())),
       conformAction: pulumi.Input.fromValue(map['conformAction'] as String),
       enforceOnKey: pulumi.Input.fromValue(map['enforceOnKey'] as String),

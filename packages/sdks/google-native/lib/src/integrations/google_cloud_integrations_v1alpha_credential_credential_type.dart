@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Credential type associated with auth config.
-enum GoogleCloudIntegrationsV1alphaCredentialCredentialType {
+enum GoogleCloudIntegrationsV1alphaCredentialCredentialType implements pulumi.PulumiEnum<String> {
   credentialTypeUnspecified("CREDENTIAL_TYPE_UNSPECIFIED"),
   usernameAndPassword("USERNAME_AND_PASSWORD"),
   apiKey("API_KEY"),
@@ -14,6 +16,7 @@ enum GoogleCloudIntegrationsV1alphaCredentialCredentialType {
   oidcToken("OIDC_TOKEN");
 
   const GoogleCloudIntegrationsV1alphaCredentialCredentialType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudIntegrationsV1alphaCredentialCredentialType fromValue(String value) {

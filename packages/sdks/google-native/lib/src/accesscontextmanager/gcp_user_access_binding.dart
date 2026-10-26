@@ -25,10 +25,26 @@ class GcpUserAccessBinding extends pulumi.CustomResource {
           'google-native:accesscontextmanager/v1:GcpUserAccessBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId']).merge(options),
         ) {
-    accessLevels = registerOutput<List<String>>('accessLevels');
-    dryRunAccessLevels = registerOutput<List<String>>('dryRunAccessLevels');
+    accessLevels = registerOutput<List<String>>('accessLevels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dryRunAccessLevels = registerOutput<List<String>>('dryRunAccessLevels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    groupKey = registerOutput<String>('groupKey');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+  }
+
+  /// Creates a typed reference to an existing [GcpUserAccessBinding] resource.
+  GcpUserAccessBinding.reference(String urn)
+    : super(
+        'google-native:accesscontextmanager/v1:GcpUserAccessBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessLevels = registerOutput<List<String>>('accessLevels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dryRunAccessLevels = registerOutput<List<String>>('dryRunAccessLevels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     groupKey = registerOutput<String>('groupKey');
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');

@@ -6,9 +6,9 @@ import 'custom_domain_state.dart';
 /// Custom domain information.
 class CustomDomain {
   /// Domain name.
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// Domain state.
-  final pulumi.Input<CustomDomainState>? state;
+  final pulumi.Input<CustomDomainState?>? state;
 
   /// Creates a new [CustomDomain].
   /// [domain] Domain name.

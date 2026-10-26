@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
-enum ConsentHeaderHandlingProfile {
+enum ConsentHeaderHandlingProfile implements pulumi.PulumiEnum<String> {
   scopeProfileUnspecified("SCOPE_PROFILE_UNSPECIFIED"),
   permitEmptyScope("PERMIT_EMPTY_SCOPE"),
   requiredOnRead("REQUIRED_ON_READ");
 
   const ConsentHeaderHandlingProfile(this.wireValue);
+  @override
   final String wireValue;
 
   static ConsentHeaderHandlingProfile fromValue(String value) {

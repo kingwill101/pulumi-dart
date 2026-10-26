@@ -14,23 +14,23 @@ import 'metadata_options_uid.dart';
 /// Specifies the metadata options for running a transfer.
 class MetadataOptions {
   /// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
-  final pulumi.Input<MetadataOptionsAcl>? acl;
+  final pulumi.Input<MetadataOptionsAcl?>? acl;
   /// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
-  final pulumi.Input<MetadataOptionsGid>? gid;
+  final pulumi.Input<MetadataOptionsGid?>? gid;
   /// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
-  final pulumi.Input<MetadataOptionsKmsKey>? kmsKey;
+  final pulumi.Input<MetadataOptionsKmsKey?>? kmsKey;
   /// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
-  final pulumi.Input<MetadataOptionsMode>? mode;
+  final pulumi.Input<MetadataOptionsMode?>? mode;
   /// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
-  final pulumi.Input<MetadataOptionsStorageClass>? storageClass;
+  final pulumi.Input<MetadataOptionsStorageClass?>? storageClass;
   /// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
-  final pulumi.Input<MetadataOptionsSymlink>? symlink;
+  final pulumi.Input<MetadataOptionsSymlink?>? symlink;
   /// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
-  final pulumi.Input<MetadataOptionsTemporaryHold>? temporaryHold;
+  final pulumi.Input<MetadataOptionsTemporaryHold?>? temporaryHold;
   /// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
-  final pulumi.Input<MetadataOptionsTimeCreated>? timeCreated;
+  final pulumi.Input<MetadataOptionsTimeCreated?>? timeCreated;
   /// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
-  final pulumi.Input<MetadataOptionsUid>? uid;
+  final pulumi.Input<MetadataOptionsUid?>? uid;
 
   /// Creates a new [MetadataOptions].
   /// [acl] Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.

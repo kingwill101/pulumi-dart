@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackendServiceUsedBy {
-  final pulumi.Input<String>? reference;
+  final pulumi.Input<String?>? reference;
 
   /// Creates a new [BackendServiceUsedBy].
   /// [reference] Optional.

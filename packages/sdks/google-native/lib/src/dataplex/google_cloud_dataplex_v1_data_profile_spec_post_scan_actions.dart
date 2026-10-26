@@ -6,7 +6,7 @@ import 'google_cloud_dataplex_v1_data_profile_spec_post_scan_actions_big_query_e
 /// The configuration of post scan actions of DataProfileScan job.
 class GoogleCloudDataplexV1DataProfileSpecPostScanActions {
   /// Optional. If set, results will be exported to the provided BigQuery table.
-  final pulumi.Input<GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport>? bigqueryExport;
+  final pulumi.Input<GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport?>? bigqueryExport;
 
   /// Creates a new [GoogleCloudDataplexV1DataProfileSpecPostScanActions].
   /// [bigqueryExport] Optional. If set, results will be exported to the provided BigQuery table.

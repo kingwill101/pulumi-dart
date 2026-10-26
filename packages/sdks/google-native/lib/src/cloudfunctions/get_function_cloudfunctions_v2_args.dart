@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFunctionCloudfunctionsV2Args {
   final pulumi.Input<String> functionId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetFunctionCloudfunctionsV2Args].
   /// [functionId] Required.

@@ -6,7 +6,7 @@ import 'task_spec.dart';
 /// TaskTemplateSpec describes the data a task should have when created from a template.
 class TaskTemplateSpec {
   /// Optional. Specification of the desired behavior of the task.
-  final pulumi.Input<TaskSpec>? spec;
+  final pulumi.Input<TaskSpec?>? spec;
 
   /// Creates a new [TaskTemplateSpec].
   /// [spec] Optional. Specification of the desired behavior of the task.

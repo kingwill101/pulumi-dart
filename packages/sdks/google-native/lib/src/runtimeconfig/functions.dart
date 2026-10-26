@@ -24,6 +24,17 @@ Future<GetConfigResult> getConfig(
   return GetConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigResult> getConfigOutput(
+  GetConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:runtimeconfig/v1beta1:getConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_runtimeconfig_v1beta1_get_config_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -38,6 +49,17 @@ Future<GetConfigIamPolicyResult> getConfigIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetConfigIamPolicyResult> getConfigIamPolicyOutput(
+  GetConfigIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:runtimeconfig/v1beta1:getConfigIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigIamPolicyResult.fromMap);
 }
 
 /// Gets information about a single variable.
@@ -56,6 +78,17 @@ Future<GetVariableResult> getVariable(
   return GetVariableResult.fromMap(result);
 }
 
+pulumi.Output<GetVariableResult> getVariableOutput(
+  GetVariableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:runtimeconfig/v1beta1:getVariable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVariableResult.fromMap);
+}
+
 /// Gets information about a single waiter.
 /// [args] Arguments passed to this invoke. {@macro pulumi_runtimeconfig_v1beta1_get_waiter_args_doc}
 /// [options] Invoke options controlling this call.
@@ -70,4 +103,15 @@ Future<GetWaiterResult> getWaiter(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWaiterResult.fromMap(result);
+}
+
+pulumi.Output<GetWaiterResult> getWaiterOutput(
+  GetWaiterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:runtimeconfig/v1beta1:getWaiter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWaiterResult.fromMap);
 }

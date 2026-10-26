@@ -4,15 +4,15 @@
 /// Result data returned by getEnvgroup.
 class GetEnvgroupResult {
   /// The time at which the environment group was created as milliseconds since epoch.
-  final String createdAt;
+  final String? createdAt;
   /// Host names for this environment group.
-  final List<String> hostnames;
+  final List<String>? hostnames;
   /// The time at which the environment group was last updated as milliseconds since epoch.
-  final String lastModifiedAt;
+  final String? lastModifiedAt;
   /// ID of the environment group.
-  final String name;
+  final String? name;
   /// State of the environment group. Values other than ACTIVE means the resource is not ready to use.
-  final String state;
+  final String? state;
 
   /// Creates a new [GetEnvgroupResult].
   /// [createdAt] The time at which the environment group was created as milliseconds since epoch.
@@ -21,30 +21,30 @@ class GetEnvgroupResult {
   /// [name] ID of the environment group.
   /// [state] State of the environment group. Values other than ACTIVE means the resource is not ready to use.
   const GetEnvgroupResult({
-    required this.createdAt,
-    required this.hostnames,
-    required this.lastModifiedAt,
-    required this.name,
-    required this.state,
+    this.createdAt,
+    this.hostnames,
+    this.lastModifiedAt,
+    this.name,
+    this.state,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createdAt': createdAt,
-      'hostnames': hostnames,
-      'lastModifiedAt': lastModifiedAt,
-      'name': name,
-      'state': state,
+      'createdAt': ?createdAt,
+      'hostnames': ?hostnames,
+      'lastModifiedAt': ?lastModifiedAt,
+      'name': ?name,
+      'state': ?state,
     };
   }
 
   factory GetEnvgroupResult.fromMap(Map<String, dynamic> map) {
     return GetEnvgroupResult(
-      createdAt: map['createdAt'] as String,
-      hostnames: (map['hostnames'] as List).cast<String>(),
-      lastModifiedAt: map['lastModifiedAt'] as String,
-      name: map['name'] as String,
-      state: map['state'] as String,
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostnames: (() { final guardedValue = map['hostnames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      lastModifiedAt: (() { final guardedValue = map['lastModifiedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

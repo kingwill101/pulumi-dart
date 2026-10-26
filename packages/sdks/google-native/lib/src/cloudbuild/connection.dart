@@ -46,9 +46,34 @@ class Connection extends pulumi.CustomResource {
           'google-native:cloudbuild/v2:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['connectionId', 'location', 'project']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    connectionId = registerOutput<String>('connectionId');
+    createTime = registerOutput<String>('createTime');
+    disabled = registerOutput<bool>('disabled');
+    etag = registerOutput<String>('etag');
+    githubConfig = registerOutput<GitHubConfigResponse>('githubConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitHubConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    githubEnterpriseConfig = registerOutput<GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponse>('githubEnterpriseConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gitlabConfig = registerOutput<GoogleDevtoolsCloudbuildV2GitLabConfigResponse>('gitlabConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleDevtoolsCloudbuildV2GitLabConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    installationState = registerOutput<InstallationStateResponse>('installationState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstallationStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Connection] resource.
+  Connection.reference(String urn)
+    : super(
+        'google-native:cloudbuild/v2:Connection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     connectionId = registerOutput<String>('connectionId');
     createTime = registerOutput<String>('createTime');
     disabled = registerOutput<bool>('disabled');

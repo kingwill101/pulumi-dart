@@ -9,15 +9,15 @@ import 'annotation_type.dart';
 /// {@macro pulumi_rapidmigrationassessment_v1_annotation_args_doc}
 class AnnotationArgs {
   /// Labels as key value pairs.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// name of resource.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Optional. An optional request ID to identify requests.
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Type of an annotation.
-  final pulumi.Input<AnnotationType>? type;
+  final pulumi.Input<AnnotationType?>? type;
 
   /// Creates a new [AnnotationArgs].
   /// [labels] Labels as key value pairs.

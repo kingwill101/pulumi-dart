@@ -20,7 +20,7 @@ class SystraceSetupResponse {
 
   factory SystraceSetupResponse.fromMap(Map<String, dynamic> map) {
     return SystraceSetupResponse(
-      durationSeconds: pulumi.Input.fromValue(map['durationSeconds'] as int),
+      durationSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['durationSeconds'])),
     );
   }
 }

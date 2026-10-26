@@ -8,13 +8,13 @@ import 'google_privacy_dlp_v2_pub_sub_notification_event.dart';
 /// Send a Pub/Sub message into the given Pub/Sub topic to connect other systems to data profile generation. The message payload data will be the byte serialization of `DataProfilePubSubMessage`.
 class GooglePrivacyDlpV2PubSubNotification {
   /// How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).
-  final pulumi.Input<GooglePrivacyDlpV2PubSubNotificationDetailOfMessage>? detailOfMessage;
+  final pulumi.Input<GooglePrivacyDlpV2PubSubNotificationDetailOfMessage?>? detailOfMessage;
   /// The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
-  final pulumi.Input<GooglePrivacyDlpV2PubSubNotificationEvent>? event;
+  final pulumi.Input<GooglePrivacyDlpV2PubSubNotificationEvent?>? event;
   /// Conditions (e.g., data risk or sensitivity level) for triggering a Pub/Sub.
-  final pulumi.Input<GooglePrivacyDlpV2DataProfilePubSubCondition>? pubsubCondition;
+  final pulumi.Input<GooglePrivacyDlpV2DataProfilePubSubCondition?>? pubsubCondition;
   /// Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
-  final pulumi.Input<String>? topic;
+  final pulumi.Input<String?>? topic;
 
   /// Creates a new [GooglePrivacyDlpV2PubSubNotification].
   /// [detailOfMessage] How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).

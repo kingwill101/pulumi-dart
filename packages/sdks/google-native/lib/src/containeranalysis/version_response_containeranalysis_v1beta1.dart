@@ -41,7 +41,7 @@ class VersionResponseContaineranalysisV1beta1 {
 
   factory VersionResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return VersionResponseContaineranalysisV1beta1(
-      epoch: pulumi.Input.fromValue(map['epoch'] as int),
+      epoch: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['epoch'])),
       inclusive: pulumi.Input.fromValue(map['inclusive'] as bool),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),

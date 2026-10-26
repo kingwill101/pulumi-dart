@@ -54,8 +54,38 @@ class NetworkPeering extends pulumi.CustomResource {
           'google-native:vmwareengine/v1:NetworkPeering',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['networkPeeringId', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    exchangeSubnetRoutes = registerOutput<bool>('exchangeSubnetRoutes');
+    exportCustomRoutes = registerOutput<bool>('exportCustomRoutes');
+    exportCustomRoutesWithPublicIp = registerOutput<bool>('exportCustomRoutesWithPublicIp');
+    importCustomRoutes = registerOutput<bool>('importCustomRoutes');
+    importCustomRoutesWithPublicIp = registerOutput<bool>('importCustomRoutesWithPublicIp');
+    this.name = registerOutput<String>('name');
+    networkPeeringId = registerOutput<String>('networkPeeringId');
+    peerMtu = registerOutput<int>('peerMtu');
+    peerNetwork = registerOutput<String>('peerNetwork');
+    peerNetworkType = registerOutput<String>('peerNetworkType');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    stateDetails = registerOutput<String>('stateDetails');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    vmwareEngineNetwork = registerOutput<String>('vmwareEngineNetwork');
+  }
+
+  /// Creates a typed reference to an existing [NetworkPeering] resource.
+  NetworkPeering.reference(String urn)
+    : super(
+        'google-native:vmwareengine/v1:NetworkPeering',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     exchangeSubnetRoutes = registerOutput<bool>('exchangeSubnetRoutes');

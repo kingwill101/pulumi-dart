@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_response.dart';
 import 'custom_domain_args.dart';
 import 'dns_updates_response.dart';
+import 'status_response.dart';
 
 /// Creates a `CustomDomain`.
 /// Auto-naming is currently not supported for this resource.
@@ -25,7 +26,7 @@ class CustomDomain extends pulumi.CustomResource {
   /// The `HostState` of the domain name this `CustomDomain` refers to.
   late final pulumi.Output<String> hostState;
   /// A set of errors Hosting systems encountered when trying to establish Hosting's ability to serve secure content for your domain name. Resolve these issues to ensure your `CustomDomain` behaves properly.
-  late final pulumi.Output<List<Map<String, dynamic>>> issues;
+  late final pulumi.Output<List<StatusResponse>> issues;
   /// Labels used for extra metadata and/or filtering.
   late final pulumi.Output<Map<String, String>> labels;
   /// The fully-qualified name of the `CustomDomain`.
@@ -55,9 +56,9 @@ class CustomDomain extends pulumi.CustomResource {
           'google-native:firebasehosting/v1beta1:CustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['customDomainId', 'project', 'siteId']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     cert = registerOutput<CertificateResponse>('cert', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     certPreference = registerOutput<String>('certPreference');
     createTime = registerOutput<String>('createTime');
@@ -66,8 +67,38 @@ class CustomDomain extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
     hostState = registerOutput<String>('hostState');
-    issues = registerOutput<List<Map<String, dynamic>>>('issues');
-    labels = registerOutput<Map<String, String>>('labels');
+    issues = registerOutput<List<StatusResponse>>('issues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatusResponse>(guardedValue, (value) => StatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    ownershipState = registerOutput<String>('ownershipState');
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    redirectTarget = registerOutput<String>('redirectTarget');
+    requiredDnsUpdates = registerOutput<DnsUpdatesResponse>('requiredDnsUpdates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsUpdatesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    siteId = registerOutput<String>('siteId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [CustomDomain] resource.
+  CustomDomain.reference(String urn)
+    : super(
+        'google-native:firebasehosting/v1beta1:CustomDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    cert = registerOutput<CertificateResponse>('cert', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certPreference = registerOutput<String>('certPreference');
+    createTime = registerOutput<String>('createTime');
+    customDomainId = registerOutput<String>('customDomainId');
+    deleteTime = registerOutput<String>('deleteTime');
+    etag = registerOutput<String>('etag');
+    expireTime = registerOutput<String>('expireTime');
+    hostState = registerOutput<String>('hostState');
+    issues = registerOutput<List<StatusResponse>>('issues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatusResponse>(guardedValue, (value) => StatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     ownershipState = registerOutput<String>('ownershipState');
     project = registerOutput<String>('project');

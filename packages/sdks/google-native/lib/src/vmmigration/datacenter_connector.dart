@@ -55,8 +55,38 @@ class DatacenterConnector extends pulumi.CustomResource {
           'google-native:vmmigration/v1:DatacenterConnector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['datacenterConnectorId', 'location', 'project', 'sourceId']).merge(options),
         ) {
+    applianceInfrastructureVersion = registerOutput<String>('applianceInfrastructureVersion');
+    applianceSoftwareVersion = registerOutput<String>('applianceSoftwareVersion');
+    availableVersions = registerOutput<AvailableUpdatesResponse>('availableVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AvailableUpdatesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bucket = registerOutput<String>('bucket');
+    createTime = registerOutput<String>('createTime');
+    datacenterConnectorId = registerOutput<String>('datacenterConnectorId');
+    error = registerOutput<StatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    registrationId = registerOutput<String>('registrationId');
+    requestId = registerOutput<String?>('requestId');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    sourceId = registerOutput<String>('sourceId');
+    state = registerOutput<String>('state');
+    stateTime = registerOutput<String>('stateTime');
+    updateTime = registerOutput<String>('updateTime');
+    upgradeStatus = registerOutput<UpgradeStatusResponse>('upgradeStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UpgradeStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [DatacenterConnector] resource.
+  DatacenterConnector.reference(String urn)
+    : super(
+        'google-native:vmmigration/v1:DatacenterConnector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applianceInfrastructureVersion = registerOutput<String>('applianceInfrastructureVersion');
     applianceSoftwareVersion = registerOutput<String>('applianceSoftwareVersion');
     availableVersions = registerOutput<AvailableUpdatesResponse>('availableVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AvailableUpdatesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

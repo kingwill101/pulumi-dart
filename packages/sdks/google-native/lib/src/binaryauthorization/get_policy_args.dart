@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyArgs {
   final pulumi.Input<String> platformId;
   final pulumi.Input<String> policyId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetPolicyArgs].
   /// [platformId] Required.

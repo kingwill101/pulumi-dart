@@ -27,7 +27,7 @@ class MosaicLayoutResponse {
 
   factory MosaicLayoutResponse.fromMap(Map<String, dynamic> map) {
     return MosaicLayoutResponse(
-      columns: pulumi.Input.fromValue(map['columns'] as int),
+      columns: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['columns'])),
       tiles: pulumi.Input.fromValue(pulumi.Input.decodeList<TileResponse>(map['tiles']!, (value) => TileResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

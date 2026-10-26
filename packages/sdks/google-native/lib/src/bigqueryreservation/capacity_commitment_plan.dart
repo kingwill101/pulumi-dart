@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Capacity commitment commitment plan.
-enum CapacityCommitmentPlan {
+enum CapacityCommitmentPlan implements pulumi.PulumiEnum<String> {
   commitmentPlanUnspecified("COMMITMENT_PLAN_UNSPECIFIED"),
   flex("FLEX"),
   flexFlatRate("FLEX_FLAT_RATE"),
@@ -12,6 +14,7 @@ enum CapacityCommitmentPlan {
   none("NONE");
 
   const CapacityCommitmentPlan(this.wireValue);
+  @override
   final String wireValue;
 
   static CapacityCommitmentPlan fromValue(String value) {

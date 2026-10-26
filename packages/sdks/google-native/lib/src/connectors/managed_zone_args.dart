@@ -8,14 +8,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_connectors_v1_managed_zone_args_doc}
 class ManagedZoneArgs {
   /// Optional. Description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// DNS Name of the resource
   final pulumi.Input<String> dns;
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Required. Identifier to assign to the ManagedZone. Must be unique within scope of the parent resource.
   final pulumi.Input<String> managedZoneId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The name of the Target Project
   final pulumi.Input<String> targetProject;
   /// The name of the Target Project VPC Network

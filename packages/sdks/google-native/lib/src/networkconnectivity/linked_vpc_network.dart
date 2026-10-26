@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An existing VPC network.
 class LinkedVpcNetwork {
   /// Optional. IP ranges encompassing the subnets to be excluded from peering.
-  final pulumi.Input<List<String>>? excludeExportRanges;
+  final pulumi.Input<List<String>?>? excludeExportRanges;
   /// The URI of the VPC network resource.
   final pulumi.Input<String> uri;
 

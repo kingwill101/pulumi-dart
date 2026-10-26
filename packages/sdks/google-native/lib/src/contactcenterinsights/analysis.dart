@@ -31,8 +31,27 @@ class Analysis extends pulumi.CustomResource {
           'google-native:contactcenterinsights/v1:Analysis',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['conversationId', 'location', 'project']).merge(options),
         ) {
+    analysisResult = registerOutput<GoogleCloudContactcenterinsightsV1AnalysisResultResponse>('analysisResult', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1AnalysisResultResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    annotatorSelector = registerOutput<GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse>('annotatorSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    conversationId = registerOutput<String>('conversationId');
+    createTime = registerOutput<String>('createTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestTime = registerOutput<String>('requestTime');
+  }
+
+  /// Creates a typed reference to an existing [Analysis] resource.
+  Analysis.reference(String urn)
+    : super(
+        'google-native:contactcenterinsights/v1:Analysis',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     analysisResult = registerOutput<GoogleCloudContactcenterinsightsV1AnalysisResultResponse>('analysisResult', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1AnalysisResultResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     annotatorSelector = registerOutput<GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse>('annotatorSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     conversationId = registerOutput<String>('conversationId');

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_args.dart';
 import 'cmek_settings_response.dart';
+import 'index_config_response.dart';
 
 /// Creates a log bucket that can be used to store log entries. After a bucket has been created, the bucket's location cannot be changed.
 /// Auto-naming is currently not supported for this resource.
@@ -16,7 +17,7 @@ class Bucket extends pulumi.CustomResource {
   /// Describes this bucket.
   late final pulumi.Output<String> description;
   /// A list of indexed fields and related configuration data.
-  late final pulumi.Output<List<Map<String, dynamic>>> indexConfigs;
+  late final pulumi.Output<List<IndexConfigResponse>> indexConfigs;
   /// The bucket lifecycle state.
   late final pulumi.Output<String> lifecycleState;
   late final pulumi.Output<String> location;
@@ -44,20 +45,45 @@ class Bucket extends pulumi.CustomResource {
           'google-native:logging/v2:Bucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['bucketId', 'location', 'project']).merge(options),
         ) {
     analyticsEnabled = registerOutput<bool>('analyticsEnabled');
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<CmekSettingsResponse>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CmekSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
-    indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');
+    indexConfigs = registerOutput<List<IndexConfigResponse>>('indexConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IndexConfigResponse>(guardedValue, (value) => IndexConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     lifecycleState = registerOutput<String>('lifecycleState');
     location = registerOutput<String>('location');
     locked = registerOutput<bool>('locked');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    restrictedFields = registerOutput<List<String>>('restrictedFields');
+    restrictedFields = registerOutput<List<String>>('restrictedFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    retentionDays = registerOutput<int>('retentionDays');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Bucket] resource.
+  Bucket.reference(String urn)
+    : super(
+        'google-native:logging/v2:Bucket',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    analyticsEnabled = registerOutput<bool>('analyticsEnabled');
+    bucketId = registerOutput<String>('bucketId');
+    cmekSettings = registerOutput<CmekSettingsResponse>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CmekSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    indexConfigs = registerOutput<List<IndexConfigResponse>>('indexConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IndexConfigResponse>(guardedValue, (value) => IndexConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    lifecycleState = registerOutput<String>('lifecycleState');
+    location = registerOutput<String>('location');
+    locked = registerOutput<bool>('locked');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    restrictedFields = registerOutput<List<String>>('restrictedFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     retentionDays = registerOutput<int>('retentionDays');
     updateTime = registerOutput<String>('updateTime');
   }

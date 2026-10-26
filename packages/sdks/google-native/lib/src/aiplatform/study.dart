@@ -32,8 +32,27 @@ class Study extends pulumi.CustomResource {
           'google-native:aiplatform/v1:Study',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    inactiveReason = registerOutput<String>('inactiveReason');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    studySpec = registerOutput<GoogleCloudAiplatformV1StudySpecResponse>('studySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1StudySpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Study] resource.
+  Study.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1:Study',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     inactiveReason = registerOutput<String>('inactiveReason');

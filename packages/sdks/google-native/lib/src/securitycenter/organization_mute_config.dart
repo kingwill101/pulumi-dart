@@ -33,8 +33,28 @@ class OrganizationMuteConfig extends pulumi.CustomResource {
           'google-native:securitycenter/v1:OrganizationMuteConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['muteConfigId', 'organizationId']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    filter = registerOutput<String>('filter');
+    mostRecentEditor = registerOutput<String>('mostRecentEditor');
+    muteConfigId = registerOutput<String>('muteConfigId');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationMuteConfig] resource.
+  OrganizationMuteConfig.reference(String urn)
+    : super(
+        'google-native:securitycenter/v1:OrganizationMuteConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');

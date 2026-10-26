@@ -57,7 +57,7 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeBe
       localSsds: pulumi.Input.fromValue(pulumi.Input.decodeList<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeBeta>(map['localSsds']!, (value) => AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))),
       locationHint: pulumi.Input.fromValue(map['locationHint'] as String),
       machineType: pulumi.Input.fromValue(map['machineType'] as String),
-      maintenanceFreezeDurationHours: pulumi.Input.fromValue(map['maintenanceFreezeDurationHours'] as int),
+      maintenanceFreezeDurationHours: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maintenanceFreezeDurationHours'])),
       maintenanceInterval: pulumi.Input.fromValue(map['maintenanceInterval'] as String),
       minCpuPlatform: pulumi.Input.fromValue(map['minCpuPlatform'] as String),
     );

@@ -37,8 +37,30 @@ class Database extends pulumi.CustomResource {
           'google-native:biglake/v1:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['catalogId', 'databaseId', 'location', 'project']).merge(options),
         ) {
+    catalogId = registerOutput<String>('catalogId');
+    createTime = registerOutput<String>('createTime');
+    databaseId = registerOutput<String>('databaseId');
+    deleteTime = registerOutput<String>('deleteTime');
+    expireTime = registerOutput<String>('expireTime');
+    hiveOptions = registerOutput<HiveDatabaseOptionsResponse>('hiveOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HiveDatabaseOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Database] resource.
+  Database.reference(String urn)
+    : super(
+        'google-native:biglake/v1:Database',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     catalogId = registerOutput<String>('catalogId');
     createTime = registerOutput<String>('createTime');
     databaseId = registerOutput<String>('databaseId');

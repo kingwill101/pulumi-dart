@@ -20,6 +20,17 @@ Future<GetJobResult> getJob(
   return GetJobResult.fromMap(result);
 }
 
+pulumi.Output<GetJobResult> getJobOutput(
+  GetJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudscheduler/v1:getJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobResult.fromMap);
+}
+
 /// Gets a job.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudscheduler_v1beta1_get_job_cloudscheduler_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetJobCloudschedulerV1beta1Result> getJobCloudschedulerV1beta1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetJobCloudschedulerV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetJobCloudschedulerV1beta1Result> getJobCloudschedulerV1beta1Output(
+  GetJobCloudschedulerV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudscheduler/v1beta1:getJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobCloudschedulerV1beta1Result.fromMap);
 }

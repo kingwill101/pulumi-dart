@@ -7,8 +7,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_secretmanager_v1_get_secret_iam_policy_args_doc}
 class GetSecretIamPolicyArgs {
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> secretId;
 
   /// Creates a new [GetSecretIamPolicyArgs].
@@ -31,7 +31,7 @@ class GetSecretIamPolicyArgs {
 
   factory GetSecretIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretIamPolicyArgs(
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretId: pulumi.Input.fromValue(map['secretId'] as String),
     );

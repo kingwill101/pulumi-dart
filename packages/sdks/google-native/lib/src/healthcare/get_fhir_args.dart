@@ -12,7 +12,7 @@ class GetFhirArgs {
   final pulumi.Input<String> fhirId1;
   final pulumi.Input<String> fhirStoreId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetFhirArgs].
   /// [datasetId] Required.

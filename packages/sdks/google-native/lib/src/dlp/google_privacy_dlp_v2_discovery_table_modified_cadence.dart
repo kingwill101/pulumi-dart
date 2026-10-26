@@ -7,9 +7,9 @@ import 'google_privacy_dlp_v2_discovery_table_modified_cadence_types_item.dart';
 /// The cadence at which to update data profiles when a table is modified.
 class GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
   /// How frequently data profiles can be updated when tables are modified. Defaults to never.
-  final pulumi.Input<GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency>? frequency;
+  final pulumi.Input<GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency?>? frequency;
   /// The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP.
-  final pulumi.Input<List<GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem>>? types;
+  final pulumi.Input<List<GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem>?>? types;
 
   /// Creates a new [GooglePrivacyDlpV2DiscoveryTableModifiedCadence].
   /// [frequency] How frequently data profiles can be updated when tables are modified. Defaults to never.

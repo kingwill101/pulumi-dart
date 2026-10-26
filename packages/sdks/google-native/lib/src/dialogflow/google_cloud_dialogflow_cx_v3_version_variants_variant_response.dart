@@ -32,7 +32,7 @@ class GoogleCloudDialogflowCxV3VersionVariantsVariantResponse {
   factory GoogleCloudDialogflowCxV3VersionVariantsVariantResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3VersionVariantsVariantResponse(
       isControlGroup: pulumi.Input.fromValue(map['isControlGroup'] as bool),
-      trafficAllocation: pulumi.Input.fromValue(map['trafficAllocation'] as double),
+      trafficAllocation: pulumi.Input.fromValue((map['trafficAllocation'] as num).toDouble()),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }

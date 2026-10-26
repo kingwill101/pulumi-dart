@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The import job format.
-enum InlinePayloadInfoFormat {
+enum InlinePayloadInfoFormat implements pulumi.PulumiEnum<String> {
   importJobFormatUnspecified("IMPORT_JOB_FORMAT_UNSPECIFIED"),
   importJobFormatCmdb("IMPORT_JOB_FORMAT_CMDB"),
   importJobFormatRvtoolsXlsx("IMPORT_JOB_FORMAT_RVTOOLS_XLSX"),
@@ -9,6 +11,7 @@ enum InlinePayloadInfoFormat {
   importJobFormatManualCsv("IMPORT_JOB_FORMAT_MANUAL_CSV");
 
   const InlinePayloadInfoFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static InlinePayloadInfoFormat fromValue(String value) {

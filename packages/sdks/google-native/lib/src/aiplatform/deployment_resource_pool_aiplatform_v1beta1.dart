@@ -25,8 +25,24 @@ class DeploymentResourcePoolAiplatformV1beta1 extends pulumi.CustomResource {
           'google-native:aiplatform/v1beta1:DeploymentResourcePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    dedicatedResources = registerOutput<GoogleCloudAiplatformV1beta1DedicatedResourcesResponse>('dedicatedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1DedicatedResourcesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [DeploymentResourcePoolAiplatformV1beta1] resource.
+  DeploymentResourcePoolAiplatformV1beta1.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1beta1:DeploymentResourcePool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     dedicatedResources = registerOutput<GoogleCloudAiplatformV1beta1DedicatedResourcesResponse>('dedicatedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1DedicatedResourcesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');

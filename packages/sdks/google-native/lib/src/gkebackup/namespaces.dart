@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A list of Kubernetes Namespaces
 class Namespaces {
   /// Optional. A list of Kubernetes Namespaces
-  final pulumi.Input<List<String>>? namespaces;
+  final pulumi.Input<List<String>?>? namespaces;
 
   /// Creates a new [Namespaces].
   /// [namespaces] Optional. A list of Kubernetes Namespaces

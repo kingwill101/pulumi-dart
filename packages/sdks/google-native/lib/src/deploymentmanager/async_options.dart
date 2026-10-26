@@ -6,9 +6,9 @@ import 'polling_options.dart';
 /// Async options that determine when a resource should finish.
 class AsyncOptions {
   /// Method regex where this policy will apply.
-  final pulumi.Input<String>? methodMatch;
+  final pulumi.Input<String?>? methodMatch;
   /// Deployment manager will poll instances for this API resource setting a RUNNING state, and blocking until polling conditions tell whether the resource is completed or failed.
-  final pulumi.Input<PollingOptions>? pollingOptions;
+  final pulumi.Input<PollingOptions?>? pollingOptions;
 
   /// Creates a new [AsyncOptions].
   /// [methodMatch] Method regex where this policy will apply.

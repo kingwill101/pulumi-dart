@@ -7,9 +7,9 @@ import 'validation_options_undeclared_properties_deploymentmanager_v2beta.dart';
 /// Options for how to validate and process properties on a resource.
 class ValidationOptionsDeploymentmanagerV2beta {
   /// Customize how deployment manager will validate the resource against schema errors.
-  final pulumi.Input<ValidationOptionsSchemaValidationDeploymentmanagerV2beta>? schemaValidation;
+  final pulumi.Input<ValidationOptionsSchemaValidationDeploymentmanagerV2beta?>? schemaValidation;
   /// Specify what to do with extra properties when executing a request.
-  final pulumi.Input<ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta>? undeclaredProperties;
+  final pulumi.Input<ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta?>? undeclaredProperties;
 
   /// Creates a new [ValidationOptionsDeploymentmanagerV2beta].
   /// [schemaValidation] Customize how deployment manager will validate the resource against schema errors.

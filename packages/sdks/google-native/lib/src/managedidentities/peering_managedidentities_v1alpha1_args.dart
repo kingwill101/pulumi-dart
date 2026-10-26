@@ -12,10 +12,10 @@ class PeeringManagedidentitiesV1alpha1Args {
   /// Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form: `projects/{project_id}/locations/global/domains/{domain_name}`
   final pulumi.Input<String> domainResource;
   /// Optional. Resource labels to represent user provided metadata.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Required. Peering Id, unique name to identify peering.
   final pulumi.Input<String> peeringId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [PeeringManagedidentitiesV1alpha1Args].
   /// [authorizedNetwork] The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.

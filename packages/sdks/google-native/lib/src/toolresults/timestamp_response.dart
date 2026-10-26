@@ -26,7 +26,7 @@ class TimestampResponse {
 
   factory TimestampResponse.fromMap(Map<String, dynamic> map) {
     return TimestampResponse(
-      nanos: pulumi.Input.fromValue(map['nanos'] as int),
+      nanos: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nanos'])),
       seconds: pulumi.Input.fromValue(map['seconds'] as String),
     );
   }

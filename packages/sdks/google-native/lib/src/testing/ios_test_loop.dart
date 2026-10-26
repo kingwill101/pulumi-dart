@@ -8,7 +8,7 @@ class IosTestLoop {
   /// The .ipa of the application to test.
   final pulumi.Input<FileReference> appIpa;
   /// The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
-  final pulumi.Input<List<int>>? scenarios;
+  final pulumi.Input<List<int>?>? scenarios;
 
   /// Creates a new [IosTestLoop].
   /// [appIpa] The .ipa of the application to test.

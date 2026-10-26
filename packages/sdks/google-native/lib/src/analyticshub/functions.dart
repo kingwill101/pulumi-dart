@@ -34,6 +34,17 @@ Future<GetDataExchangeResult> getDataExchange(
   return GetDataExchangeResult.fromMap(result);
 }
 
+pulumi.Output<GetDataExchangeResult> getDataExchangeOutput(
+  GetDataExchangeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:analyticshub/v1:getDataExchange',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataExchangeResult.fromMap);
+}
+
 /// Gets the IAM policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_analyticshub_v1_get_data_exchange_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -48,6 +59,17 @@ Future<GetDataExchangeIamPolicyResult> getDataExchangeIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataExchangeIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetDataExchangeIamPolicyResult> getDataExchangeIamPolicyOutput(
+  GetDataExchangeIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:analyticshub/v1:getDataExchangeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataExchangeIamPolicyResult.fromMap);
 }
 
 /// Gets the IAM policy.
@@ -66,6 +88,17 @@ Future<GetDataExchangeListingIamPolicyResult> getDataExchangeListingIamPolicy(
   return GetDataExchangeListingIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetDataExchangeListingIamPolicyResult> getDataExchangeListingIamPolicyOutput(
+  GetDataExchangeListingIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:analyticshub/v1:getDataExchangeListingIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataExchangeListingIamPolicyResult.fromMap);
+}
+
 /// Gets the details of a listing.
 /// [args] Arguments passed to this invoke. {@macro pulumi_analyticshub_v1_get_listing_args_doc}
 /// [options] Invoke options controlling this call.
@@ -80,6 +113,17 @@ Future<GetListingResult> getListing(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetListingResult.fromMap(result);
+}
+
+pulumi.Output<GetListingResult> getListingOutput(
+  GetListingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:analyticshub/v1:getListing',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetListingResult.fromMap);
 }
 
 /// Gets the IAM policy.
@@ -98,6 +142,17 @@ Future<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicy(
   return GetSubscriptionIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicyOutput(
+  GetSubscriptionIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:analyticshub/v1:getSubscriptionIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionIamPolicyResult.fromMap);
+}
+
 /// Gets the details of a data exchange.
 /// [args] Arguments passed to this invoke. {@macro pulumi_analyticshub_v1beta1_get_data_exchange_analyticshub_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -112,6 +167,17 @@ Future<GetDataExchangeAnalyticshubV1beta1Result> getDataExchangeAnalyticshubV1be
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataExchangeAnalyticshubV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetDataExchangeAnalyticshubV1beta1Result> getDataExchangeAnalyticshubV1beta1Output(
+  GetDataExchangeAnalyticshubV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:analyticshub/v1beta1:getDataExchange',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataExchangeAnalyticshubV1beta1Result.fromMap);
 }
 
 /// Gets the IAM policy.
@@ -130,6 +196,17 @@ Future<GetDataExchangeIamPolicyAnalyticshubV1beta1Result> getDataExchangeIamPoli
   return GetDataExchangeIamPolicyAnalyticshubV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetDataExchangeIamPolicyAnalyticshubV1beta1Result> getDataExchangeIamPolicyAnalyticshubV1beta1Output(
+  GetDataExchangeIamPolicyAnalyticshubV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:analyticshub/v1beta1:getDataExchangeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataExchangeIamPolicyAnalyticshubV1beta1Result.fromMap);
+}
+
 /// Gets the IAM policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_analyticshub_v1beta1_get_data_exchange_listing_iam_policy_analyticshub_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -146,6 +223,17 @@ Future<GetDataExchangeListingIamPolicyAnalyticshubV1beta1Result> getDataExchange
   return GetDataExchangeListingIamPolicyAnalyticshubV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetDataExchangeListingIamPolicyAnalyticshubV1beta1Result> getDataExchangeListingIamPolicyAnalyticshubV1beta1Output(
+  GetDataExchangeListingIamPolicyAnalyticshubV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:analyticshub/v1beta1:getDataExchangeListingIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataExchangeListingIamPolicyAnalyticshubV1beta1Result.fromMap);
+}
+
 /// Gets the details of a listing.
 /// [args] Arguments passed to this invoke. {@macro pulumi_analyticshub_v1beta1_get_listing_analyticshub_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -160,4 +248,15 @@ Future<GetListingAnalyticshubV1beta1Result> getListingAnalyticshubV1beta1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetListingAnalyticshubV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetListingAnalyticshubV1beta1Result> getListingAnalyticshubV1beta1Output(
+  GetListingAnalyticshubV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:analyticshub/v1beta1:getListing',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetListingAnalyticshubV1beta1Result.fromMap);
 }

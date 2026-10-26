@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebhookArgs {
   final pulumi.Input<String> agentId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> webhookId;
 
   /// Creates a new [GetWebhookArgs].

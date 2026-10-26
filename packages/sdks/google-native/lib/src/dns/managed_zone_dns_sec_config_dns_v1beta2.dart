@@ -7,12 +7,12 @@ import 'managed_zone_dns_sec_config_state_dns_v1beta2.dart';
 
 class ManagedZoneDnsSecConfigDnsV1beta2 {
   /// Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF.
-  final pulumi.Input<List<DnsKeySpecDnsV1beta2>>? defaultKeySpecs;
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<List<DnsKeySpecDnsV1beta2>?>? defaultKeySpecs;
+  final pulumi.Input<String?>? kind;
   /// Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF.
-  final pulumi.Input<ManagedZoneDnsSecConfigNonExistenceDnsV1beta2>? nonExistence;
+  final pulumi.Input<ManagedZoneDnsSecConfigNonExistenceDnsV1beta2?>? nonExistence;
   /// Specifies whether DNSSEC is enabled, and what mode it is in.
-  final pulumi.Input<ManagedZoneDnsSecConfigStateDnsV1beta2>? state;
+  final pulumi.Input<ManagedZoneDnsSecConfigStateDnsV1beta2?>? state;
 
   /// Creates a new [ManagedZoneDnsSecConfigDnsV1beta2].
   /// [defaultKeySpecs] Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF.

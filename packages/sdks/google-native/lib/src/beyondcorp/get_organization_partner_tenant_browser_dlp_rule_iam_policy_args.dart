@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_beyondcorp_v1_get_organization_partner_tenant_browser_dlp_rule_iam_policy_args_doc}
 class GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyArgs {
   final pulumi.Input<String> browserDlpRuleId;
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
   final pulumi.Input<String> organizationId;
   final pulumi.Input<String> partnerTenantId;
 
@@ -36,7 +36,7 @@ class GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyArgs {
   factory GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyArgs(
       browserDlpRuleId: pulumi.Input.fromValue(map['browserDlpRuleId'] as String),
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
       partnerTenantId: pulumi.Input.fromValue(map['partnerTenantId'] as String),
     );

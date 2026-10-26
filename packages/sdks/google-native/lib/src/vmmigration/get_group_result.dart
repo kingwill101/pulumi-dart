@@ -4,17 +4,17 @@
 /// Result data returned by getGroup.
 class GetGroupResult {
   /// The create time timestamp.
-  final String createTime;
+  final String? createTime;
   /// User-provided description of the group.
-  final String description;
+  final String? description;
   /// Display name is a user defined name for this group which can be updated.
-  final String displayName;
+  final String? displayName;
   /// Immutable. The target type of this group.
-  final String migrationTargetType;
+  final String? migrationTargetType;
   /// The Group name.
-  final String name;
+  final String? name;
   /// The update time timestamp.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetGroupResult].
   /// [createTime] The create time timestamp.
@@ -24,33 +24,33 @@ class GetGroupResult {
   /// [name] The Group name.
   /// [updateTime] The update time timestamp.
   const GetGroupResult({
-    required this.createTime,
-    required this.description,
-    required this.displayName,
-    required this.migrationTargetType,
-    required this.name,
-    required this.updateTime,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.migrationTargetType,
+    this.name,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'displayName': displayName,
-      'migrationTargetType': migrationTargetType,
-      'name': name,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'migrationTargetType': ?migrationTargetType,
+      'name': ?name,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetGroupResult.fromMap(Map<String, dynamic> map) {
     return GetGroupResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      migrationTargetType: map['migrationTargetType'] as String,
-      name: map['name'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      migrationTargetType: (() { final guardedValue = map['migrationTargetType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -23,8 +23,23 @@ class Config extends pulumi.CustomResource {
           'google-native:runtimeconfig/v1beta1:Config',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+  }
+
+  /// Creates a typed reference to an existing [Config] resource.
+  Config.reference(String urn)
+    : super(
+        'google-native:runtimeconfig/v1beta1:Config',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

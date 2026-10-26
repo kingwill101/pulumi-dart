@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Deprecated] Storage type of the persistent disk.
-enum DiskStorageTypeComputeBeta {
+enum DiskStorageTypeComputeBeta implements pulumi.PulumiEnum<String> {
   hdd("HDD"),
   ssd("SSD");
 
   const DiskStorageTypeComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static DiskStorageTypeComputeBeta fromValue(String value) {

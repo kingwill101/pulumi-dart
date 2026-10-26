@@ -26,7 +26,7 @@ class GoogleCloudRunV2ContainerPortResponse {
 
   factory GoogleCloudRunV2ContainerPortResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2ContainerPortResponse(
-      containerPort: pulumi.Input.fromValue(map['containerPort'] as int),
+      containerPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['containerPort'])),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

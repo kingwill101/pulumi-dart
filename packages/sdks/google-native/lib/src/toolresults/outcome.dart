@@ -10,15 +10,15 @@ import 'success_detail.dart';
 /// Interprets a result so that humans and machines can act on it.
 class Outcome {
   /// More information about a FAILURE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not FAILURE. Optional
-  final pulumi.Input<FailureDetail>? failureDetail;
+  final pulumi.Input<FailureDetail?>? failureDetail;
   /// More information about an INCONCLUSIVE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not INCONCLUSIVE. Optional
-  final pulumi.Input<InconclusiveDetail>? inconclusiveDetail;
+  final pulumi.Input<InconclusiveDetail?>? inconclusiveDetail;
   /// More information about a SKIPPED outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SKIPPED. Optional
-  final pulumi.Input<SkippedDetail>? skippedDetail;
+  final pulumi.Input<SkippedDetail?>? skippedDetail;
   /// More information about a SUCCESS outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS. Optional
-  final pulumi.Input<SuccessDetail>? successDetail;
+  final pulumi.Input<SuccessDetail?>? successDetail;
   /// The simplest way to interpret a result. Required
-  final pulumi.Input<OutcomeSummary>? summary;
+  final pulumi.Input<OutcomeSummary?>? summary;
 
   /// Creates a new [Outcome].
   /// [failureDetail] More information about a FAILURE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not FAILURE. Optional

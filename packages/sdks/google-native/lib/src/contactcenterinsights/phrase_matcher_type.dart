@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The type of this phrase matcher.
-enum PhraseMatcherType {
+enum PhraseMatcherType implements pulumi.PulumiEnum<String> {
   phraseMatcherTypeUnspecified("PHRASE_MATCHER_TYPE_UNSPECIFIED"),
   allOf("ALL_OF"),
   anyOf("ANY_OF");
 
   const PhraseMatcherType(this.wireValue);
+  @override
   final String wireValue;
 
   static PhraseMatcherType fromValue(String value) {

@@ -32,7 +32,7 @@ class AzureDiskDetailsResponse {
   factory AzureDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AzureDiskDetailsResponse(
       diskId: pulumi.Input.fromValue(map['diskId'] as String),
-      diskNumber: pulumi.Input.fromValue(map['diskNumber'] as int),
+      diskNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskNumber'])),
       sizeGb: pulumi.Input.fromValue(map['sizeGb'] as String),
     );
   }

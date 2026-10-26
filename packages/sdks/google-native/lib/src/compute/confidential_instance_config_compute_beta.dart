@@ -6,9 +6,9 @@ import 'confidential_instance_config_confidential_instance_type_compute_beta.dar
 /// A set of Confidential Instance options.
 class ConfidentialInstanceConfigComputeBeta {
   /// Defines the type of technology used by the confidential instance.
-  final pulumi.Input<ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta>? confidentialInstanceType;
+  final pulumi.Input<ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta?>? confidentialInstanceType;
   /// Defines whether the instance should have confidential compute enabled.
-  final pulumi.Input<bool>? enableConfidentialCompute;
+  final pulumi.Input<bool?>? enableConfidentialCompute;
 
   /// Creates a new [ConfidentialInstanceConfigComputeBeta].
   /// [confidentialInstanceType] Defines the type of technology used by the confidential instance.

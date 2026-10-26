@@ -7,13 +7,13 @@ import 'database_dump_type.dart';
 /// A specification of the location of and metadata about a database dump from a relational database management system.
 class DatabaseDump {
   /// The type of the database.
-  final pulumi.Input<DatabaseDumpDatabaseType>? databaseType;
+  final pulumi.Input<DatabaseDumpDatabaseType?>? databaseType;
   /// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
-  final pulumi.Input<String>? gcsUri;
+  final pulumi.Input<String?>? gcsUri;
   /// The name of the source database.
-  final pulumi.Input<String>? sourceDatabase;
+  final pulumi.Input<String?>? sourceDatabase;
   /// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
-  final pulumi.Input<DatabaseDumpType>? type;
+  final pulumi.Input<DatabaseDumpType?>? type;
 
   /// Creates a new [DatabaseDump].
   /// [databaseType] The type of the database.

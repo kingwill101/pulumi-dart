@@ -7,11 +7,11 @@ import 'options.dart';
 /// CollectionOverride allows resource handling overrides for specific resources within a BaseType
 class CollectionOverride {
   /// The collection that identifies this resource within its service.
-  final pulumi.Input<String>? collection;
+  final pulumi.Input<String?>? collection;
   /// Custom verb method mappings to support unordered list API mappings.
-  final pulumi.Input<MethodMap>? methodMap;
+  final pulumi.Input<MethodMap?>? methodMap;
   /// The options to apply to this resource-level override
-  final pulumi.Input<Options>? options;
+  final pulumi.Input<Options?>? options;
 
   /// Creates a new [CollectionOverride].
   /// [collection] The collection that identifies this resource within its service.

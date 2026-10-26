@@ -5,8 +5,8 @@ import 'cis_benchmark_severity.dart';
 
 /// A compliance check that is a CIS benchmark.
 class CisBenchmark {
-  final pulumi.Input<int>? profileLevel;
-  final pulumi.Input<CisBenchmarkSeverity>? severity;
+  final pulumi.Input<int?>? profileLevel;
+  final pulumi.Input<CisBenchmarkSeverity?>? severity;
 
   /// Creates a new [CisBenchmark].
   /// [profileLevel] Optional.
@@ -25,7 +25,7 @@ class CisBenchmark {
 
   factory CisBenchmark.fromMap(Map<String, dynamic> map) {
     return CisBenchmark(
-      profileLevel: (() { final guardedValue = map['profileLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      profileLevel: (() { final guardedValue = map['profileLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CisBenchmarkSeverity.fromValue(guardedValue as String)); })(),
     );
   }

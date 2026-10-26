@@ -9,15 +9,15 @@ import 'duration.dart';
 /// An Android mobile test specification.
 class AndroidTest {
   /// Information about the application under test.
-  final pulumi.Input<AndroidAppInfo>? androidAppInfo;
+  final pulumi.Input<AndroidAppInfo?>? androidAppInfo;
   /// An Android instrumentation test.
-  final pulumi.Input<AndroidInstrumentationTest>? androidInstrumentationTest;
+  final pulumi.Input<AndroidInstrumentationTest?>? androidInstrumentationTest;
   /// An Android robo test.
-  final pulumi.Input<AndroidRoboTest>? androidRoboTest;
+  final pulumi.Input<AndroidRoboTest?>? androidRoboTest;
   /// An Android test loop.
-  final pulumi.Input<Map<String, dynamic>>? androidTestLoop;
+  final pulumi.Input<Map<String, dynamic>?>? androidTestLoop;
   /// Max time a test is allowed to run before it is automatically cancelled.
-  final pulumi.Input<Duration>? testTimeout;
+  final pulumi.Input<Duration?>? testTimeout;
 
   /// Creates a new [AndroidTest].
   /// [androidAppInfo] Information about the application under test.

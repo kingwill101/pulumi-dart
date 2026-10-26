@@ -11,19 +11,19 @@ import 'virtual_machine.dart';
 /// {@macro pulumi_notebooks_v1_runtime_args_doc}
 class RuntimeArgs {
   /// The config settings for accessing runtime.
-  final pulumi.Input<RuntimeAccessConfig>? accessConfig;
+  final pulumi.Input<RuntimeAccessConfig?>? accessConfig;
   /// Optional. The labels to associate with this Managed Notebook or Runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Idempotent request UUID.
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Required. User-defined unique ID of this Runtime.
   final pulumi.Input<String> runtimeId;
   /// The config settings for software inside the runtime.
-  final pulumi.Input<RuntimeSoftwareConfig>? softwareConfig;
+  final pulumi.Input<RuntimeSoftwareConfig?>? softwareConfig;
   /// Use a Compute Engine VM image to start the managed notebook instance.
-  final pulumi.Input<VirtualMachine>? virtualMachine;
+  final pulumi.Input<VirtualMachine?>? virtualMachine;
 
   /// Creates a new [RuntimeArgs].
   /// [accessConfig] The config settings for accessing runtime.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
-enum CapacityCommitmentRenewalPlan {
+enum CapacityCommitmentRenewalPlan implements pulumi.PulumiEnum<String> {
   commitmentPlanUnspecified("COMMITMENT_PLAN_UNSPECIFIED"),
   flex("FLEX"),
   flexFlatRate("FLEX_FLAT_RATE"),
@@ -12,6 +14,7 @@ enum CapacityCommitmentRenewalPlan {
   none("NONE");
 
   const CapacityCommitmentRenewalPlan(this.wireValue);
+  @override
   final String wireValue;
 
   static CapacityCommitmentRenewalPlan fromValue(String value) {

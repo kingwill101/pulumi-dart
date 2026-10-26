@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Apply a hash function on the value.
 class ApplyHash {
   /// Optional. Generate UUID from the data's byte array
-  final pulumi.Input<Map<String, dynamic>>? uuidFromBytes;
+  final pulumi.Input<Map<String, dynamic>?>? uuidFromBytes;
 
   /// Creates a new [ApplyHash].
   /// [uuidFromBytes] Optional. Generate UUID from the data's byte array

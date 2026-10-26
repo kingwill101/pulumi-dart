@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceFileV1beta1Args {
   final pulumi.Input<String> instanceId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetInstanceFileV1beta1Args].
   /// [instanceId] Required.

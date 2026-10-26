@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPipelineJobArgs {
   final pulumi.Input<String> location;
   final pulumi.Input<String> pipelineJobId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetPipelineJobArgs].
   /// [location] Required.

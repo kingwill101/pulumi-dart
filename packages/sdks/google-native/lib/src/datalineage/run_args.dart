@@ -9,18 +9,18 @@ import 'run_state.dart';
 /// {@macro pulumi_datalineage_v1_run_args_doc}
 class RunArgs {
   /// Optional. The attributes of the run. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the run). Up to 100 attributes are allowed.
-  final pulumi.Input<Map<String, String>>? attributes;
+  final pulumi.Input<Map<String, String>?>? attributes;
   /// Optional. A human-readable name you can set to display in a user interface. Must be not longer than 1024 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:&.`
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. The timestamp of the end of the run.
-  final pulumi.Input<String>? endTime;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? endTime;
+  final pulumi.Input<String?>? location;
   /// Immutable. The resource name of the run. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}`. Can be specified or auto-assigned. {run} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> processId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// The timestamp of the start of the run.
   final pulumi.Input<String> startTime;
   /// The state of the run.

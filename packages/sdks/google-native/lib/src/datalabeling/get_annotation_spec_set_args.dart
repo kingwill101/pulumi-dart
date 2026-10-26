@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_datalabeling_v1beta1_get_annotation_spec_set_args_doc}
 class GetAnnotationSpecSetArgs {
   final pulumi.Input<String> annotationSpecSetId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAnnotationSpecSetArgs].
   /// [annotationSpecSetId] Required.

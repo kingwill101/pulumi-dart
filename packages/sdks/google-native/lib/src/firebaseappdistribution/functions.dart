@@ -17,3 +17,14 @@ Future<GetGroupResult> getGroup(
   );
   return GetGroupResult.fromMap(result);
 }
+
+pulumi.Output<GetGroupResult> getGroupOutput(
+  GetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:firebaseappdistribution/v1:getGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupResult.fromMap);
+}

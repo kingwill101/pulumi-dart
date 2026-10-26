@@ -7,11 +7,11 @@ import 'node.dart';
 /// Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec provides the specification for node(s) to be created.
 class NodeSpec {
   /// Optional. Fields to specify in case of multi-node request.
-  final pulumi.Input<MultiNodeParams>? multiNodeParams;
+  final pulumi.Input<MultiNodeParams?>? multiNodeParams;
   /// The node.
   final pulumi.Input<Node> node;
   /// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multi-node requests, multi_node_params must be populated instead. It's an error to specify both node_id and multi_node_params.
-  final pulumi.Input<String>? nodeId;
+  final pulumi.Input<String?>? nodeId;
   /// The parent resource name.
   final pulumi.Input<String> parent;
 

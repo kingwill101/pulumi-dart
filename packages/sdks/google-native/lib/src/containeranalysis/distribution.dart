@@ -7,17 +7,17 @@ import 'version.dart';
 /// This represents a particular channel of distribution for a given package. E.g., Debian's jessie-backports dpkg mirror.
 class Distribution {
   /// The CPU architecture for which packages in this distribution channel were built.
-  final pulumi.Input<DistributionArchitecture>? architecture;
+  final pulumi.Input<DistributionArchitecture?>? architecture;
   /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
   final pulumi.Input<String> cpeUri;
   /// The distribution channel-specific description of this package.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The latest available version of this package in this distribution channel.
-  final pulumi.Input<Version>? latestVersion;
+  final pulumi.Input<Version?>? latestVersion;
   /// A freeform string denoting the maintainer of this package.
-  final pulumi.Input<String>? maintainer;
+  final pulumi.Input<String?>? maintainer;
   /// The distribution channel-specific homepage for this package.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [Distribution].
   /// [architecture] The CPU architecture for which packages in this distribution channel were built.

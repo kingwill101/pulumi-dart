@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The schema file format along JSON data files.
-enum JsonFileFormatSchemaFileFormatDatastreamV1alpha1 {
+enum JsonFileFormatSchemaFileFormatDatastreamV1alpha1 implements pulumi.PulumiEnum<String> {
   schemaFileFormatUnspecified("SCHEMA_FILE_FORMAT_UNSPECIFIED"),
   noSchemaFile("NO_SCHEMA_FILE"),
   avroSchemaFile("AVRO_SCHEMA_FILE");
 
   const JsonFileFormatSchemaFileFormatDatastreamV1alpha1(this.wireValue);
+  @override
   final String wireValue;
 
   static JsonFileFormatSchemaFileFormatDatastreamV1alpha1 fromValue(String value) {

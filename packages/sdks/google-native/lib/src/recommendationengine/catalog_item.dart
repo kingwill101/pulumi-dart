@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'catalog_item_args.dart';
+import 'google_cloud_recommendationengine_v1beta1_catalog_item_category_hierarchy_response.dart';
 import 'google_cloud_recommendationengine_v1beta1_feature_map_response.dart';
 import 'google_cloud_recommendationengine_v1beta1_product_catalog_item_response.dart';
 
@@ -8,7 +9,7 @@ import 'google_cloud_recommendationengine_v1beta1_product_catalog_item_response.
 class CatalogItem extends pulumi.CustomResource {
   late final pulumi.Output<String> catalogId;
   /// Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -&gt; "Shoes"] and ["Sports & Fitness" -&gt; "Athletic Clothing" -&gt; "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
-  late final pulumi.Output<List<Map<String, dynamic>>> categoryHierarchies;
+  late final pulumi.Output<List<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse>> categoryHierarchies;
   /// Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
   late final pulumi.Output<String> description;
   /// Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
@@ -38,10 +39,10 @@ class CatalogItem extends pulumi.CustomResource {
           'google-native:recommendationengine/v1beta1:CatalogItem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['catalogId', 'location', 'project']).merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
-    categoryHierarchies = registerOutput<List<Map<String, dynamic>>>('categoryHierarchies');
+    categoryHierarchies = registerOutput<List<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse>>('categoryHierarchies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse>(guardedValue, (value) => GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String>('description');
     itemAttributes = registerOutput<GoogleCloudRecommendationengineV1beta1FeatureMapResponse>('itemAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRecommendationengineV1beta1FeatureMapResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     itemGroupId = registerOutput<String>('itemGroupId');
@@ -49,7 +50,29 @@ class CatalogItem extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     productMetadata = registerOutput<GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse>('productMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    tags = registerOutput<List<String>>('tags');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    title = registerOutput<String>('title');
+  }
+
+  /// Creates a typed reference to an existing [CatalogItem] resource.
+  CatalogItem.reference(String urn)
+    : super(
+        'google-native:recommendationengine/v1beta1:CatalogItem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    catalogId = registerOutput<String>('catalogId');
+    categoryHierarchies = registerOutput<List<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse>>('categoryHierarchies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse>(guardedValue, (value) => GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String>('description');
+    itemAttributes = registerOutput<GoogleCloudRecommendationengineV1beta1FeatureMapResponse>('itemAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRecommendationengineV1beta1FeatureMapResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    itemGroupId = registerOutput<String>('itemGroupId');
+    languageCode = registerOutput<String>('languageCode');
+    location = registerOutput<String>('location');
+    productMetadata = registerOutput<GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse>('productMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     title = registerOutput<String>('title');
   }
 }

@@ -11,25 +11,25 @@ import 'value_list_filter.dart';
 /// Description of data transformation during migration as part of the ConditionalColumnSetValue.
 class ValueTransformation {
   /// Optional. Applies a hash function on the data
-  final pulumi.Input<ApplyHash>? applyHash;
+  final pulumi.Input<ApplyHash?>? applyHash;
   /// Optional. Set to max_value - if integer or numeric, will use int.maxvalue, etc
-  final pulumi.Input<Map<String, dynamic>>? assignMaxValue;
+  final pulumi.Input<Map<String, dynamic>?>? assignMaxValue;
   /// Optional. Set to min_value - if integer or numeric, will use int.minvalue, etc
-  final pulumi.Input<Map<String, dynamic>>? assignMinValue;
+  final pulumi.Input<Map<String, dynamic>?>? assignMinValue;
   /// Optional. Set to null
-  final pulumi.Input<Map<String, dynamic>>? assignNull;
+  final pulumi.Input<Map<String, dynamic>?>? assignNull;
   /// Optional. Set to a specific value (value is converted to fit the target data type)
-  final pulumi.Input<AssignSpecificValue>? assignSpecificValue;
+  final pulumi.Input<AssignSpecificValue?>? assignSpecificValue;
   /// Optional. Filter on relation between source value and compare value of type double.
-  final pulumi.Input<DoubleComparisonFilter>? doubleComparison;
+  final pulumi.Input<DoubleComparisonFilter?>? doubleComparison;
   /// Optional. Filter on relation between source value and compare value of type integer.
-  final pulumi.Input<IntComparisonFilter>? intComparison;
+  final pulumi.Input<IntComparisonFilter?>? intComparison;
   /// Optional. Value is null
-  final pulumi.Input<Map<String, dynamic>>? isNull;
+  final pulumi.Input<Map<String, dynamic>?>? isNull;
   /// Optional. Allows the data to change scale
-  final pulumi.Input<RoundToScale>? roundScale;
+  final pulumi.Input<RoundToScale?>? roundScale;
   /// Optional. Value is found in the specified list.
-  final pulumi.Input<ValueListFilter>? valueList;
+  final pulumi.Input<ValueListFilter?>? valueList;
 
   /// Creates a new [ValueTransformation].
   /// [applyHash] Optional. Applies a hash function on the data

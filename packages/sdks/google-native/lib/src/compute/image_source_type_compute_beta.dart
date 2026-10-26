@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the image used to create this disk. The default and only valid value is RAW.
-enum ImageSourceTypeComputeBeta {
+enum ImageSourceTypeComputeBeta implements pulumi.PulumiEnum<String> {
   raw("RAW");
 
   const ImageSourceTypeComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static ImageSourceTypeComputeBeta fromValue(String value) {

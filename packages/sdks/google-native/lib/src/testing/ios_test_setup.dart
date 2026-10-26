@@ -7,13 +7,13 @@ import 'ios_device_file.dart';
 /// A description of how to set up an iOS device prior to running the test.
 class IosTestSetup {
   /// iOS apps to install in addition to those being directly tested.
-  final pulumi.Input<List<FileReference>>? additionalIpas;
+  final pulumi.Input<List<FileReference>?>? additionalIpas;
   /// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
-  final pulumi.Input<String>? networkProfile;
+  final pulumi.Input<String?>? networkProfile;
   /// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (such as /Documents) by specifying the bundle ID.
-  final pulumi.Input<List<IosDeviceFile>>? pullDirectories;
+  final pulumi.Input<List<IosDeviceFile>?>? pullDirectories;
   /// List of files to push to the device before starting the test.
-  final pulumi.Input<List<IosDeviceFile>>? pushFiles;
+  final pulumi.Input<List<IosDeviceFile>?>? pushFiles;
 
   /// Creates a new [IosTestSetup].
   /// [additionalIpas] iOS apps to install in addition to those being directly tested.

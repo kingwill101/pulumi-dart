@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a Google Cloud Storage volume.
 class GCS {
   /// Remote path, either a bucket name or a subdirectory of a bucket, e.g.: bucket_name, bucket_name/subdirectory/
-  final pulumi.Input<String>? remotePath;
+  final pulumi.Input<String?>? remotePath;
 
   /// Creates a new [GCS].
   /// [remotePath] Remote path, either a bucket name or a subdirectory of a bucket, e.g.: bucket_name, bucket_name/subdirectory/

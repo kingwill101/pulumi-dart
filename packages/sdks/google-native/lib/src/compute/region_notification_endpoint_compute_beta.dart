@@ -33,8 +33,28 @@ class RegionNotificationEndpointComputeBeta extends pulumi.CustomResource {
           'google-native:compute/beta:RegionNotificationEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    grpcSettings = registerOutput<NotificationEndpointGrpcSettingsResponseComputeBeta>('grpcSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationEndpointGrpcSettingsResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+  }
+
+  /// Creates a typed reference to an existing [RegionNotificationEndpointComputeBeta] resource.
+  RegionNotificationEndpointComputeBeta.reference(String urn)
+    : super(
+        'google-native:compute/beta:RegionNotificationEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     grpcSettings = registerOutput<NotificationEndpointGrpcSettingsResponseComputeBeta>('grpcSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationEndpointGrpcSettingsResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });

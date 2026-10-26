@@ -7,7 +7,7 @@ import 'google_cloud_dataplex_v1_environment_infrastructure_spec_os_image_runtim
 /// Configuration for the underlying infrastructure used to run workloads.
 class GoogleCloudDataplexV1EnvironmentInfrastructureSpec {
   /// Optional. Compute resources needed for analyze interactive workloads.
-  final pulumi.Input<GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources>? compute;
+  final pulumi.Input<GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources?>? compute;
   /// Software Runtime Configuration for analyze interactive workloads.
   final pulumi.Input<GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime> osImage;
 

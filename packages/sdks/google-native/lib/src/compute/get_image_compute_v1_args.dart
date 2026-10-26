@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_v1_get_image_compute_v1_args_doc}
 class GetImageComputeV1Args {
   final pulumi.Input<String> image;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetImageComputeV1Args].
   /// [image] Required.

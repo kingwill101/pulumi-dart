@@ -72,7 +72,7 @@ class NodeNetworkConfigResponseContainerV1beta1 {
       networkPerformanceConfig: pulumi.Input.fromValue(NetworkPerformanceConfigResponseContainerV1beta1.fromMap((map['networkPerformanceConfig']! as Map).cast<String, dynamic>())),
       podCidrOverprovisionConfig: pulumi.Input.fromValue(PodCIDROverprovisionConfigResponseContainerV1beta1.fromMap((map['podCidrOverprovisionConfig']! as Map).cast<String, dynamic>())),
       podIpv4CidrBlock: pulumi.Input.fromValue(map['podIpv4CidrBlock'] as String),
-      podIpv4RangeUtilization: pulumi.Input.fromValue(map['podIpv4RangeUtilization'] as double),
+      podIpv4RangeUtilization: pulumi.Input.fromValue((map['podIpv4RangeUtilization'] as num).toDouble()),
       podRange: pulumi.Input.fromValue(map['podRange'] as String),
     );
   }

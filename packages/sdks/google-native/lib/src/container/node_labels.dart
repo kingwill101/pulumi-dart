@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Collection of node-level [Kubernetes labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels).
 class NodeLabels {
   /// Map of node label keys and node label values.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
 
   /// Creates a new [NodeLabels].
   /// [labels] Map of node label keys and node label values.

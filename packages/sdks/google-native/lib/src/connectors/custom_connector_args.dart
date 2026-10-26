@@ -13,16 +13,16 @@ class CustomConnectorArgs {
   /// Type of the custom connector.
   final pulumi.Input<CustomConnectorCustomConnectorType> customConnectorType;
   /// Optional. Description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Optional. Logo of the resource.
-  final pulumi.Input<String>? logo;
+  final pulumi.Input<String?>? logo;
   /// Identifier. Resource name of the CustomConnector. Format: projects/{project}/locations/{location}/customConnectors/{connector}
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [CustomConnectorArgs].
   /// [customConnectorId] Required. Identifier to assign to the CreateCustomConnector. Must be unique within scope of the parent resource.

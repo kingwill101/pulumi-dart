@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_firebase_v1beta1_get_web_app_args_doc}
 class GetWebAppArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> webAppId;
 
   /// Creates a new [GetWebAppArgs].

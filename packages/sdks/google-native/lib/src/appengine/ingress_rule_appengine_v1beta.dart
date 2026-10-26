@@ -26,8 +26,24 @@ class IngressRuleAppengineV1beta extends pulumi.CustomResource {
           'google-native:appengine/v1beta:IngressRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['appId']).merge(options),
         ) {
+    action = registerOutput<String>('action');
+    appId = registerOutput<String>('appId');
+    description = registerOutput<String>('description');
+    priority = registerOutput<int>('priority');
+    sourceRange = registerOutput<String>('sourceRange');
+  }
+
+  /// Creates a typed reference to an existing [IngressRuleAppengineV1beta] resource.
+  IngressRuleAppengineV1beta.reference(String urn)
+    : super(
+        'google-native:appengine/v1beta:IngressRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     action = registerOutput<String>('action');
     appId = registerOutput<String>('appId');
     description = registerOutput<String>('description');

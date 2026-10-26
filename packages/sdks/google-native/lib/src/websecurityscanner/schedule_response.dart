@@ -26,7 +26,7 @@ class ScheduleResponse {
 
   factory ScheduleResponse.fromMap(Map<String, dynamic> map) {
     return ScheduleResponse(
-      intervalDurationDays: pulumi.Input.fromValue(map['intervalDurationDays'] as int),
+      intervalDurationDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['intervalDurationDays'])),
       scheduleTime: pulumi.Input.fromValue(map['scheduleTime'] as String),
     );
   }

@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_secretmanager_v1_get_secret_args_doc}
 class GetSecretArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> secretId;
 
   /// Creates a new [GetSecretArgs].

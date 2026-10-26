@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Encryption configuration for a Cloud Spanner database.
 class EncryptionConfig {
   /// The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
 
   /// Creates a new [EncryptionConfig].
   /// [kmsKeyName] The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.

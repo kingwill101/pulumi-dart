@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// GRPCAction describes an action involving a GRPC port.
 class GoogleCloudRunV2GRPCAction {
   /// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
 
   /// Creates a new [GoogleCloudRunV2GRPCAction].
   /// [port] Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -26,7 +26,7 @@ class GoogleCloudRunV2GRPCAction {
 
   factory GoogleCloudRunV2GRPCAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2GRPCAction(
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

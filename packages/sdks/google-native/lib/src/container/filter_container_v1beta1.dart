@@ -6,7 +6,7 @@ import 'filter_event_type_item_container_v1beta1.dart';
 /// Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
 class FilterContainerV1beta1 {
   /// Event types to allowlist.
-  final pulumi.Input<List<FilterEventTypeItemContainerV1beta1>>? eventType;
+  final pulumi.Input<List<FilterEventTypeItemContainerV1beta1>?>? eventType;
 
   /// Creates a new [FilterContainerV1beta1].
   /// [eventType] Event types to allowlist.

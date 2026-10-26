@@ -6,7 +6,7 @@ import 'google_cloud_dialogflow_cx_v3_fulfillment_conditional_cases_case.dart';
 /// A list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
 class GoogleCloudDialogflowCxV3FulfillmentConditionalCases {
   /// A list of cascading if-else conditions.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase>>? cases;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase>?>? cases;
 
   /// Creates a new [GoogleCloudDialogflowCxV3FulfillmentConditionalCases].
   /// [cases] A list of cascading if-else conditions.

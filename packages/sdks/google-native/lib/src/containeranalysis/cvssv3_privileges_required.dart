@@ -1,10 +1,13 @@
-enum CVSSv3PrivilegesRequired {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum CVSSv3PrivilegesRequired implements pulumi.PulumiEnum<String> {
   privilegesRequiredUnspecified("PRIVILEGES_REQUIRED_UNSPECIFIED"),
   privilegesRequiredNone("PRIVILEGES_REQUIRED_NONE"),
   privilegesRequiredLow("PRIVILEGES_REQUIRED_LOW"),
   privilegesRequiredHigh("PRIVILEGES_REQUIRED_HIGH");
 
   const CVSSv3PrivilegesRequired(this.wireValue);
+  @override
   final String wireValue;
 
   static CVSSv3PrivilegesRequired fromValue(String value) {

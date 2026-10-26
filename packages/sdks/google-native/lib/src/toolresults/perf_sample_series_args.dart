@@ -9,10 +9,10 @@ import 'basic_perf_sample_series.dart';
 /// {@macro pulumi_toolresults_v1beta3_perf_sample_series_args_doc}
 class PerfSampleSeriesArgs {
   /// Basic series represented by a line chart
-  final pulumi.Input<BasicPerfSampleSeries>? basicPerfSampleSeries;
+  final pulumi.Input<BasicPerfSampleSeries?>? basicPerfSampleSeries;
   final pulumi.Input<String> executionId;
   final pulumi.Input<String> historyId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> stepId;
 
   /// Creates a new [PerfSampleSeriesArgs].

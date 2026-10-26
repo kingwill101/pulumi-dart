@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_translate_v3_dataset_args_doc}
 class DatasetArgs {
   /// The name of the dataset to show in the interface. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
-  final pulumi.Input<String>? displayName;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? displayName;
+  final pulumi.Input<String?>? location;
   /// The resource name of the dataset, in form of `projects/{project-number-or-id}/locations/{location_id}/datasets/{dataset_id}`
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// The BCP-47 language code of the source language.
-  final pulumi.Input<String>? sourceLanguageCode;
+  final pulumi.Input<String?>? sourceLanguageCode;
   /// The BCP-47 language code of the target language.
-  final pulumi.Input<String>? targetLanguageCode;
+  final pulumi.Input<String?>? targetLanguageCode;
 
   /// Creates a new [DatasetArgs].
   /// [displayName] The name of the dataset to show in the interface. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_v1_get_machine_image_compute_v1_args_doc}
 class GetMachineImageComputeV1Args {
   final pulumi.Input<String> machineImage;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetMachineImageComputeV1Args].
   /// [machineImage] Required.

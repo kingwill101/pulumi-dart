@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required for cards with vertical orientation. The height of the media within a rich card with a vertical layout. For a standalone card with horizontal layout, height is not customizable, and this field is ignored.
-enum GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight {
+enum GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight implements pulumi.PulumiEnum<String> {
   heightUnspecified("HEIGHT_UNSPECIFIED"),
   short("SHORT"),
   medium("MEDIUM"),
   tall("TALL");
 
   const GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight fromValue(String value) {

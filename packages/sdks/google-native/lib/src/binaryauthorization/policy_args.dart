@@ -9,13 +9,13 @@ import 'gke_policy.dart';
 /// {@macro pulumi_binaryauthorization_v1_policy_args_doc}
 class PolicyArgs {
   /// Optional. A description comment about the policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. GKE platform-specific policy.
-  final pulumi.Input<GkePolicy>? gkePolicy;
+  final pulumi.Input<GkePolicy?>? gkePolicy;
   final pulumi.Input<String> platformId;
   /// Required. The platform policy ID.
   final pulumi.Input<String> policyId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [PolicyArgs].
   /// [description] Optional. A description comment about the policy.

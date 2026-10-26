@@ -6,7 +6,7 @@ import 'pubsub.dart';
 /// Represents the transport intermediaries created for the trigger to deliver events.
 class Transport {
   /// The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
-  final pulumi.Input<Pubsub>? pubsub;
+  final pulumi.Input<Pubsub?>? pubsub;
 
   /// Creates a new [Transport].
   /// [pubsub] The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.

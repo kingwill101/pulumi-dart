@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Post-patch reboot settings.
-enum PatchConfigRebootConfigOsconfigV1beta {
+enum PatchConfigRebootConfigOsconfigV1beta implements pulumi.PulumiEnum<String> {
   rebootConfigUnspecified("REBOOT_CONFIG_UNSPECIFIED"),
   default_("DEFAULT"),
   always("ALWAYS"),
   never_("NEVER");
 
   const PatchConfigRebootConfigOsconfigV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static PatchConfigRebootConfigOsconfigV1beta fromValue(String value) {

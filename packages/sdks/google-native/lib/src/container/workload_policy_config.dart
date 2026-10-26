@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// WorkloadPolicyConfig is the configuration of workload policy for autopilot clusters.
 class WorkloadPolicyConfig {
   /// If true, workloads can use NET_ADMIN capability.
-  final pulumi.Input<bool>? allowNetAdmin;
+  final pulumi.Input<bool?>? allowNetAdmin;
 
   /// Creates a new [WorkloadPolicyConfig].
   /// [allowNetAdmin] If true, workloads can use NET_ADMIN capability.

@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHttpRouteArgs {
   final pulumi.Input<String> httpRouteId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetHttpRouteArgs].
   /// [httpRouteId] Required.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
-enum GoogleCloudDatalabelingV1beta1InputConfigAnnotationType {
+enum GoogleCloudDatalabelingV1beta1InputConfigAnnotationType implements pulumi.PulumiEnum<String> {
   annotationTypeUnspecified("ANNOTATION_TYPE_UNSPECIFIED"),
   imageClassificationAnnotation("IMAGE_CLASSIFICATION_ANNOTATION"),
   imageBoundingBoxAnnotation("IMAGE_BOUNDING_BOX_ANNOTATION"),
@@ -16,6 +18,7 @@ enum GoogleCloudDatalabelingV1beta1InputConfigAnnotationType {
   generalClassificationAnnotation("GENERAL_CLASSIFICATION_ANNOTATION");
 
   const GoogleCloudDatalabelingV1beta1InputConfigAnnotationType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDatalabelingV1beta1InputConfigAnnotationType fromValue(String value) {

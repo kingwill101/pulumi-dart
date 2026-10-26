@@ -45,8 +45,34 @@ class InstanceGroupManagerResizeRequestComputeBeta extends pulumi.CustomResource
           'google-native:compute/beta:InstanceGroupManagerResizeRequest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instanceGroupManager', 'project', 'zone']).merge(options),
         ) {
+    count = registerOutput<int>('count');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    instanceGroupManager = registerOutput<String>('instanceGroupManager');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    requestedRunDuration = registerOutput<DurationResponseComputeBeta>('requestedRunDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DurationResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resizeBy = registerOutput<int>('resizeBy');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    state = registerOutput<String>('state');
+    status = registerOutput<InstanceGroupManagerResizeRequestStatusResponseComputeBeta>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupManagerResizeRequestStatusResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [InstanceGroupManagerResizeRequestComputeBeta] resource.
+  InstanceGroupManagerResizeRequestComputeBeta.reference(String urn)
+    : super(
+        'google-native:compute/beta:InstanceGroupManagerResizeRequest',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     count = registerOutput<int>('count');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');

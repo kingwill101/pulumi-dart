@@ -15,38 +15,38 @@ import 'google_cloud_dialogflow_cx_v3beta1_variants_history.dart';
 class ExperimentDialogflowV3beta1Args {
   final pulumi.Input<String> agentId;
   /// Creation time of this experiment.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The definition of the experiment.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1ExperimentDefinition>? definition;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1ExperimentDefinition?>? definition;
   /// The human-readable description of the experiment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
   final pulumi.Input<String> displayName;
   /// End time of this experiment.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   final pulumi.Input<String> environmentId;
   /// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
-  final pulumi.Input<String>? experimentLength;
+  final pulumi.Input<String?>? experimentLength;
   /// Last update time of this experiment.
-  final pulumi.Input<String>? lastUpdateTime;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? lastUpdateTime;
+  final pulumi.Input<String?>? location;
   /// The name of the experiment. Format: projects//locations//agents//environments//experiments/..
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Inference result of the experiment.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1ExperimentResult>? result;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1ExperimentResult?>? result;
   /// The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1RolloutConfig>? rolloutConfig;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1RolloutConfig?>? rolloutConfig;
   /// The reason why rollout has failed. Should only be set when state is ROLLOUT_FAILED.
-  final pulumi.Input<String>? rolloutFailureReason;
+  final pulumi.Input<String?>? rolloutFailureReason;
   /// State of the auto rollout process.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1RolloutState>? rolloutState;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1RolloutState?>? rolloutState;
   /// Start time of this experiment.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT-&gt;RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT-&gt;DONE or RUNNING-&gt;DONE.
-  final pulumi.Input<ExperimentStateDialogflowV3beta1>? state;
+  final pulumi.Input<ExperimentStateDialogflowV3beta1?>? state;
   /// The history of updates to the experiment variants.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1VariantsHistory>>? variantsHistory;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1VariantsHistory>?>? variantsHistory;
 
   /// Creates a new [ExperimentDialogflowV3beta1Args].
   /// [agentId] Required.

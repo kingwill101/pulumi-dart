@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The `MembershipRole` expiry details.
 class ExpiryDetail {
   /// The time at which the `MembershipRole` will expire.
-  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String?>? expireTime;
 
   /// Creates a new [ExpiryDetail].
   /// [expireTime] The time at which the `MembershipRole` will expire.

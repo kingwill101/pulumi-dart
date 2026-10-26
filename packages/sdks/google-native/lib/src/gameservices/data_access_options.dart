@@ -5,7 +5,7 @@ import 'data_access_options_log_mode.dart';
 
 /// Write a Data Access (Gin) log
 class DataAccessOptions {
-  final pulumi.Input<DataAccessOptionsLogMode>? logMode;
+  final pulumi.Input<DataAccessOptionsLogMode?>? logMode;
 
   /// Creates a new [DataAccessOptions].
   /// [logMode] Optional.

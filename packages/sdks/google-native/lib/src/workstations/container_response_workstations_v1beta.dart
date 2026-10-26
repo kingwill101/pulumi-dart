@@ -50,7 +50,7 @@ class ContainerResponseWorkstationsV1beta {
       command: pulumi.Input.fromValue((map['command'] as List).cast<String>()),
       env: pulumi.Input.fromValue((map['env'] as Map).cast<String, String>()),
       image: pulumi.Input.fromValue(map['image'] as String),
-      runAsUser: pulumi.Input.fromValue(map['runAsUser'] as int),
+      runAsUser: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['runAsUser'])),
       workingDir: pulumi.Input.fromValue(map['workingDir'] as String),
     );
   }

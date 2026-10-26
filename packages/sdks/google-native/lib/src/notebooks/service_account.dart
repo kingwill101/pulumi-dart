@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A service account that acts as an identity.
 class ServiceAccount {
   /// Optional. Email address of the service account.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
 
   /// Creates a new [ServiceAccount].
   /// [email] Optional. Email address of the service account.

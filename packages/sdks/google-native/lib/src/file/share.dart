@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'nfs_export_options_response_file_v1beta1.dart';
 import 'share_args.dart';
 
 /// Creates a share.
@@ -21,7 +22,7 @@ class Share extends pulumi.CustomResource {
   /// The resource name of the share, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}/shares/{share_id}`.
   late final pulumi.Output<String> name;
   /// Nfs Export Options. There is a limit of 10 export options per file share.
-  late final pulumi.Output<List<Map<String, dynamic>>> nfsExportOptions;
+  late final pulumi.Output<List<NfsExportOptionsResponseFileV1beta1>> nfsExportOptions;
   late final pulumi.Output<String> project;
   /// Required. The ID to use for the share. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
   late final pulumi.Output<String> shareId;
@@ -40,18 +41,42 @@ class Share extends pulumi.CustomResource {
           'google-native:file/v1beta1:Share',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instanceId', 'location', 'project', 'shareId']).merge(options),
         ) {
     backup = registerOutput<String>('backup');
     capacityGb = registerOutput<String>('capacityGb');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     instanceId = registerOutput<String>('instanceId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     mountName = registerOutput<String>('mountName');
     this.name = registerOutput<String>('name');
-    nfsExportOptions = registerOutput<List<Map<String, dynamic>>>('nfsExportOptions');
+    nfsExportOptions = registerOutput<List<NfsExportOptionsResponseFileV1beta1>>('nfsExportOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NfsExportOptionsResponseFileV1beta1>(guardedValue, (value) => NfsExportOptionsResponseFileV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    shareId = registerOutput<String>('shareId');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [Share] resource.
+  Share.reference(String urn)
+    : super(
+        'google-native:file/v1beta1:Share',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backup = registerOutput<String>('backup');
+    capacityGb = registerOutput<String>('capacityGb');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    instanceId = registerOutput<String>('instanceId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    mountName = registerOutput<String>('mountName');
+    this.name = registerOutput<String>('name');
+    nfsExportOptions = registerOutput<List<NfsExportOptionsResponseFileV1beta1>>('nfsExportOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NfsExportOptionsResponseFileV1beta1>(guardedValue, (value) => NfsExportOptionsResponseFileV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     shareId = registerOutput<String>('shareId');
     state = registerOutput<String>('state');

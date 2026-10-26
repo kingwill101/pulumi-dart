@@ -1,8 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_cx_v3beta1_advanced_settings_response.dart';
+import 'google_cloud_dialogflow_cx_v3beta1_event_handler_response.dart';
 import 'google_cloud_dialogflow_cx_v3beta1_form_response.dart';
 import 'google_cloud_dialogflow_cx_v3beta1_fulfillment_response.dart';
 import 'google_cloud_dialogflow_cx_v3beta1_knowledge_connector_settings_response.dart';
+import 'google_cloud_dialogflow_cx_v3beta1_transition_route_response.dart';
 import 'page_dialogflow_v3beta1_args.dart';
 
 /// Creates a page in the specified flow.
@@ -15,7 +17,7 @@ class PageDialogflowV3beta1 extends pulumi.CustomResource {
   /// The fulfillment to call when the session is entering the page.
   late final pulumi.Output<GoogleCloudDialogflowCxV3beta1FulfillmentResponse> entryFulfillment;
   /// Handlers associated with the page to handle events such as webhook errors, no match or no input.
-  late final pulumi.Output<List<Map<String, dynamic>>> eventHandlers;
+  late final pulumi.Output<List<GoogleCloudDialogflowCxV3beta1EventHandlerResponse>> eventHandlers;
   late final pulumi.Output<String> flowId;
   /// The form associated with the page, used for collecting parameters relevant to the page.
   late final pulumi.Output<GoogleCloudDialogflowCxV3beta1FormResponse> form;
@@ -30,7 +32,7 @@ class PageDialogflowV3beta1 extends pulumi.CustomResource {
   /// Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -&gt; page's transition route group -&gt; flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
   late final pulumi.Output<List<String>> transitionRouteGroups;
   /// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
-  late final pulumi.Output<List<Map<String, dynamic>>> transitionRoutes;
+  late final pulumi.Output<List<GoogleCloudDialogflowCxV3beta1TransitionRouteResponse>> transitionRoutes;
 
   /// Creates a new [PageDialogflowV3beta1].
   /// [name] The Pulumi resource name.
@@ -44,13 +46,13 @@ class PageDialogflowV3beta1 extends pulumi.CustomResource {
           'google-native:dialogflow/v3beta1:Page',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['agentId', 'flowId', 'location', 'project']).merge(options),
         ) {
     advancedSettings = registerOutput<GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse>('advancedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     agentId = registerOutput<String>('agentId');
     displayName = registerOutput<String>('displayName');
     entryFulfillment = registerOutput<GoogleCloudDialogflowCxV3beta1FulfillmentResponse>('entryFulfillment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1FulfillmentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    eventHandlers = registerOutput<List<Map<String, dynamic>>>('eventHandlers');
+    eventHandlers = registerOutput<List<GoogleCloudDialogflowCxV3beta1EventHandlerResponse>>('eventHandlers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EventHandlerResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3beta1EventHandlerResponse.fromMap((value as Map).cast<String, dynamic>())); });
     flowId = registerOutput<String>('flowId');
     form = registerOutput<GoogleCloudDialogflowCxV3beta1FormResponse>('form', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1FormResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     knowledgeConnectorSettings = registerOutput<GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsResponse>('knowledgeConnectorSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -58,7 +60,32 @@ class PageDialogflowV3beta1 extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    transitionRouteGroups = registerOutput<List<String>>('transitionRouteGroups');
-    transitionRoutes = registerOutput<List<Map<String, dynamic>>>('transitionRoutes');
+    transitionRouteGroups = registerOutput<List<String>>('transitionRouteGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    transitionRoutes = registerOutput<List<GoogleCloudDialogflowCxV3beta1TransitionRouteResponse>>('transitionRoutes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1TransitionRouteResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3beta1TransitionRouteResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [PageDialogflowV3beta1] resource.
+  PageDialogflowV3beta1.reference(String urn)
+    : super(
+        'google-native:dialogflow/v3beta1:Page',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    advancedSettings = registerOutput<GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse>('advancedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    agentId = registerOutput<String>('agentId');
+    displayName = registerOutput<String>('displayName');
+    entryFulfillment = registerOutput<GoogleCloudDialogflowCxV3beta1FulfillmentResponse>('entryFulfillment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1FulfillmentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eventHandlers = registerOutput<List<GoogleCloudDialogflowCxV3beta1EventHandlerResponse>>('eventHandlers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EventHandlerResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3beta1EventHandlerResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    flowId = registerOutput<String>('flowId');
+    form = registerOutput<GoogleCloudDialogflowCxV3beta1FormResponse>('form', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1FormResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    knowledgeConnectorSettings = registerOutput<GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsResponse>('knowledgeConnectorSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    languageCode = registerOutput<String?>('languageCode');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    transitionRouteGroups = registerOutput<List<String>>('transitionRouteGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    transitionRoutes = registerOutput<List<GoogleCloudDialogflowCxV3beta1TransitionRouteResponse>>('transitionRoutes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1TransitionRouteResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3beta1TransitionRouteResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

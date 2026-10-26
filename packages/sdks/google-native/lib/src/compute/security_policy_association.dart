@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityPolicyAssociation {
   /// The resource that the security policy is attached to.
-  final pulumi.Input<String>? attachmentId;
+  final pulumi.Input<String?>? attachmentId;
   /// The name for an association.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SecurityPolicyAssociation].
   /// [attachmentId] The resource that the security policy is attached to.

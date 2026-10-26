@@ -5,19 +5,19 @@ import 'dns_resource_record_response.dart';
 /// Result data returned by getDnsAuthorization.
 class GetDnsAuthorizationResult {
   /// The creation timestamp of a DnsAuthorization.
-  final String createTime;
+  final String? createTime;
   /// One or more paragraphs of text description of a DnsAuthorization.
-  final String description;
+  final String? description;
   /// DNS Resource Record that needs to be added to DNS configuration.
-  final DnsResourceRecordResponse dnsResourceRecord;
+  final DnsResourceRecordResponse? dnsResourceRecord;
   /// Immutable. A domain that is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
-  final String domain;
+  final String? domain;
   /// Set of labels associated with a DnsAuthorization.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
-  final String name;
+  final String? name;
   /// The last update timestamp of a DnsAuthorization.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetDnsAuthorizationResult].
   /// [createTime] The creation timestamp of a DnsAuthorization.
@@ -28,36 +28,36 @@ class GetDnsAuthorizationResult {
   /// [name] A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
   /// [updateTime] The last update timestamp of a DnsAuthorization.
   const GetDnsAuthorizationResult({
-    required this.createTime,
-    required this.description,
-    required this.dnsResourceRecord,
-    required this.domain,
-    required this.labels,
-    required this.name,
-    required this.updateTime,
+    this.createTime,
+    this.description,
+    this.dnsResourceRecord,
+    this.domain,
+    this.labels,
+    this.name,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'dnsResourceRecord': dnsResourceRecord.toMap(),
-      'domain': domain,
-      'labels': labels,
-      'name': name,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'description': ?description,
+      'dnsResourceRecord': ?dnsResourceRecord?.toMap(),
+      'domain': ?domain,
+      'labels': ?labels,
+      'name': ?name,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetDnsAuthorizationResult.fromMap(Map<String, dynamic> map) {
     return GetDnsAuthorizationResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      dnsResourceRecord: DnsResourceRecordResponse.fromMap((map['dnsResourceRecord']! as Map).cast<String, dynamic>()),
-      domain: map['domain'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dnsResourceRecord: (() { final guardedValue = map['dnsResourceRecord']; if (guardedValue == null) return null; return DnsResourceRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

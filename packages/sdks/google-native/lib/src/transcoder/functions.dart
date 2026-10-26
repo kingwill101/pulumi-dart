@@ -20,6 +20,17 @@ Future<GetJobResult> getJob(
   return GetJobResult.fromMap(result);
 }
 
+pulumi.Output<GetJobResult> getJobOutput(
+  GetJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:transcoder/v1:getJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobResult.fromMap);
+}
+
 /// Returns the job template data.
 /// [args] Arguments passed to this invoke. {@macro pulumi_transcoder_v1_get_job_template_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetJobTemplateResult> getJobTemplate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetJobTemplateResult.fromMap(result);
+}
+
+pulumi.Output<GetJobTemplateResult> getJobTemplateOutput(
+  GetJobTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:transcoder/v1:getJobTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobTemplateResult.fromMap);
 }

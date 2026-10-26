@@ -7,9 +7,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_spanner_v1_get_instance_args_doc}
 class GetInstanceArgs {
-  final pulumi.Input<String>? fieldMask;
+  final pulumi.Input<String?>? fieldMask;
   final pulumi.Input<String> instanceId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetInstanceArgs].
   /// [fieldMask] Optional.

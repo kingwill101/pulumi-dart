@@ -55,14 +55,45 @@ class StoragePool extends pulumi.CustomResource {
           'google-native:compute/alpha:StoragePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'zone']).merge(options),
         ) {
     capacityProvisioningType = registerOutput<String>('capacityProvisioningType');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     kind = registerOutput<String>('kind');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    performanceProvisioningType = registerOutput<String>('performanceProvisioningType');
+    project = registerOutput<String>('project');
+    provisionedIops = registerOutput<String>('provisionedIops');
+    provisionedThroughput = registerOutput<String>('provisionedThroughput');
+    requestId = registerOutput<String?>('requestId');
+    resourceStatus = registerOutput<StoragePoolResourceStatusResponse>('resourceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StoragePoolResourceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    sizeGb = registerOutput<String>('sizeGb');
+    state = registerOutput<String>('state');
+    status = registerOutput<StoragePoolResourceStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StoragePoolResourceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storagePoolType = registerOutput<String>('storagePoolType');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [StoragePool] resource.
+  StoragePool.reference(String urn)
+    : super(
+        'google-native:compute/alpha:StoragePool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    capacityProvisioningType = registerOutput<String>('capacityProvisioningType');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    kind = registerOutput<String>('kind');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     performanceProvisioningType = registerOutput<String>('performanceProvisioningType');
     project = registerOutput<String>('project');

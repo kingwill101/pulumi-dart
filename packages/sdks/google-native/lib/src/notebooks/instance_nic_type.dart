@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
-enum InstanceNicType {
+enum InstanceNicType implements pulumi.PulumiEnum<String> {
   unspecifiedNicType("UNSPECIFIED_NIC_TYPE"),
   virtioNet("VIRTIO_NET"),
   gvnic("GVNIC");
 
   const InstanceNicType(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceNicType fromValue(String value) {

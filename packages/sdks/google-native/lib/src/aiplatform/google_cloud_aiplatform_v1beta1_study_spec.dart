@@ -16,27 +16,27 @@ import 'google_cloud_aiplatform_v1beta1_study_spec_transfer_learning_config.dart
 /// Represents specification of a Study.
 class GoogleCloudAiplatformV1beta1StudySpec {
   /// The search algorithm specified for the Study.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecAlgorithm>? algorithm;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecAlgorithm?>? algorithm;
   /// The automated early stopping spec using convex stopping rule.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec>? convexAutomatedStoppingSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec?>? convexAutomatedStoppingSpec;
   /// Deprecated. The automated early stopping using convex stopping rule.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecConvexStopConfig>? convexStopConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecConvexStopConfig?>? convexStopConfig;
   /// The automated early stopping spec using decay curve rule.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec>? decayCurveStoppingSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec?>? decayCurveStoppingSpec;
   /// Describe which measurement selection type will be used
-  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionType>? measurementSelectionType;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecMeasurementSelectionType?>? measurementSelectionType;
   /// The automated early stopping spec using median rule.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpec>? medianAutomatedStoppingSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpec?>? medianAutomatedStoppingSpec;
   /// Metric specs for the Study.
   final pulumi.Input<List<GoogleCloudAiplatformV1beta1StudySpecMetricSpec>> metrics;
   /// The observation noise level of the study. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecObservationNoise>? observationNoise;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecObservationNoise?>? observationNoise;
   /// The set of parameters to tune.
   final pulumi.Input<List<GoogleCloudAiplatformV1beta1StudySpecParameterSpec>> parameters;
   /// Conditions for automated stopping of a Study. Enable automated stopping by configuring at least one condition.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig>? studyStoppingConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecStudyStoppingConfig?>? studyStoppingConfig;
   /// The configuration info/options for transfer learning. Currently supported for Vertex AI Vizier service, not HyperParameterTuningJob
-  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig>? transferLearningConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig?>? transferLearningConfig;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1StudySpec].
   /// [algorithm] The search algorithm specified for the Study.

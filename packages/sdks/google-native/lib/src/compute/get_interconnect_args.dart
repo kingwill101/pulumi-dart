@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_alpha_get_interconnect_args_doc}
 class GetInterconnectArgs {
   final pulumi.Input<String> interconnect;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetInterconnectArgs].
   /// [interconnect] Required.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of this accelerator.
-enum AcceleratorConfigType {
+enum AcceleratorConfigType implements pulumi.PulumiEnum<String> {
   acceleratorTypeUnspecified("ACCELERATOR_TYPE_UNSPECIFIED"),
   nvidiaTeslaK80("NVIDIA_TESLA_K80"),
   nvidiaTeslaP100("NVIDIA_TESLA_P100"),
@@ -15,6 +17,7 @@ enum AcceleratorConfigType {
   tpuV3("TPU_V3");
 
   const AcceleratorConfigType(this.wireValue);
+  @override
   final String wireValue;
 
   static AcceleratorConfigType fromValue(String value) {

@@ -60,7 +60,7 @@ class GoogleCloudMlV1TrainingOutputResponse {
     return GoogleCloudMlV1TrainingOutputResponse(
       builtInAlgorithmOutput: pulumi.Input.fromValue(GoogleCloudMlV1BuiltInAlgorithmOutputResponse.fromMap((map['builtInAlgorithmOutput']! as Map).cast<String, dynamic>())),
       completedTrialCount: pulumi.Input.fromValue(map['completedTrialCount'] as String),
-      consumedMLUnits: pulumi.Input.fromValue(map['consumedMLUnits'] as double),
+      consumedMLUnits: pulumi.Input.fromValue((map['consumedMLUnits'] as num).toDouble()),
       hyperparameterMetricTag: pulumi.Input.fromValue(map['hyperparameterMetricTag'] as String),
       isBuiltInAlgorithmJob: pulumi.Input.fromValue(map['isBuiltInAlgorithmJob'] as bool),
       isHyperparameterTuningJob: pulumi.Input.fromValue(map['isHyperparameterTuningJob'] as bool),

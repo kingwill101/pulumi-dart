@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_alpha_get_disk_args_doc}
 class GetDiskArgs {
   final pulumi.Input<String> disk;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> zone;
 
   /// Creates a new [GetDiskArgs].

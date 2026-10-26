@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Requested verifiability options.
-enum BuildOptionsRequestedVerifyOption {
+enum BuildOptionsRequestedVerifyOption implements pulumi.PulumiEnum<String> {
   notVerified("NOT_VERIFIED"),
   verified("VERIFIED");
 
   const BuildOptionsRequestedVerifyOption(this.wireValue);
+  @override
   final String wireValue;
 
   static BuildOptionsRequestedVerifyOption fromValue(String value) {

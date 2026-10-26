@@ -2,12 +2,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dynamic_group_metadata_response_cloudidentity_v1beta1.dart';
 import 'entity_key_response_cloudidentity_v1beta1.dart';
 import 'group_cloudidentity_v1beta1_args.dart';
+import 'posix_group_response.dart';
 
 /// Creates a `Group`.
 /// Auto-naming is currently not supported for this resource.
 class GroupCloudidentityV1beta1 extends pulumi.CustomResource {
   /// Additional group keys associated with the Group.
-  late final pulumi.Output<List<Map<String, dynamic>>> additionalGroupKeys;
+  late final pulumi.Output<List<EntityKeyResponseCloudidentityV1beta1>> additionalGroupKeys;
   /// The time when the `Group` was created.
   late final pulumi.Output<String> createTime;
   /// An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
@@ -27,7 +28,7 @@ class GroupCloudidentityV1beta1 extends pulumi.CustomResource {
   /// Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source}` for external [identity-mapped groups](https://support.google.com/a/answer/9039510) or `customers/{customer_id}` for Google Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn'). [Find your customer ID.] (https://support.google.com/cloudidentity/answer/10070793)
   late final pulumi.Output<String> parent;
   /// Optional. The POSIX groups associated with the `Group`.
-  late final pulumi.Output<List<Map<String, dynamic>>> posixGroups;
+  late final pulumi.Output<List<PosixGroupResponse>> posixGroups;
   /// The time when the `Group` was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -43,19 +44,42 @@ class GroupCloudidentityV1beta1 extends pulumi.CustomResource {
           'google-native:cloudidentity/v1beta1:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['initialGroupConfig']).merge(options),
         ) {
-    additionalGroupKeys = registerOutput<List<Map<String, dynamic>>>('additionalGroupKeys');
+    additionalGroupKeys = registerOutput<List<EntityKeyResponseCloudidentityV1beta1>>('additionalGroupKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntityKeyResponseCloudidentityV1beta1>(guardedValue, (value) => EntityKeyResponseCloudidentityV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     dynamicGroupMetadata = registerOutput<DynamicGroupMetadataResponseCloudidentityV1beta1>('dynamicGroupMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DynamicGroupMetadataResponseCloudidentityV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     groupKey = registerOutput<EntityKeyResponseCloudidentityV1beta1>('groupKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntityKeyResponseCloudidentityV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     initialGroupConfig = registerOutput<String>('initialGroupConfig');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    posixGroups = registerOutput<List<Map<String, dynamic>>>('posixGroups');
+    posixGroups = registerOutput<List<PosixGroupResponse>>('posixGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PosixGroupResponse>(guardedValue, (value) => PosixGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [GroupCloudidentityV1beta1] resource.
+  GroupCloudidentityV1beta1.reference(String urn)
+    : super(
+        'google-native:cloudidentity/v1beta1:Group',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalGroupKeys = registerOutput<List<EntityKeyResponseCloudidentityV1beta1>>('additionalGroupKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntityKeyResponseCloudidentityV1beta1>(guardedValue, (value) => EntityKeyResponseCloudidentityV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    dynamicGroupMetadata = registerOutput<DynamicGroupMetadataResponseCloudidentityV1beta1>('dynamicGroupMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DynamicGroupMetadataResponseCloudidentityV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    groupKey = registerOutput<EntityKeyResponseCloudidentityV1beta1>('groupKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntityKeyResponseCloudidentityV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    initialGroupConfig = registerOutput<String>('initialGroupConfig');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    posixGroups = registerOutput<List<PosixGroupResponse>>('posixGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PosixGroupResponse>(guardedValue, (value) => PosixGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

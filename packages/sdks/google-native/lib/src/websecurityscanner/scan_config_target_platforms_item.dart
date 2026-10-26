@@ -1,4 +1,6 @@
-enum ScanConfigTargetPlatformsItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ScanConfigTargetPlatformsItem implements pulumi.PulumiEnum<String> {
   targetPlatformUnspecified("TARGET_PLATFORM_UNSPECIFIED"),
   appEngine("APP_ENGINE"),
   compute("COMPUTE"),
@@ -6,6 +8,7 @@ enum ScanConfigTargetPlatformsItem {
   cloudFunctions("CLOUD_FUNCTIONS");
 
   const ScanConfigTargetPlatformsItem(this.wireValue);
+  @override
   final String wireValue;
 
   static ScanConfigTargetPlatformsItem fromValue(String value) {

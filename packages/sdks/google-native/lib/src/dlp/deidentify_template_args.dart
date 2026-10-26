@@ -9,16 +9,16 @@ import 'google_privacy_dlp_v2_deidentify_config.dart';
 /// {@macro pulumi_dlp_v2_deidentify_template_args_doc}
 class DeidentifyTemplateArgs {
   /// The core content of the template.
-  final pulumi.Input<GooglePrivacyDlpV2DeidentifyConfig>? deidentifyConfig;
+  final pulumi.Input<GooglePrivacyDlpV2DeidentifyConfig?>? deidentifyConfig;
   /// Short description (max 256 chars).
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name (max 256 chars).
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Deprecated. This field has no effect.
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-  final pulumi.Input<String>? templateId;
+  final pulumi.Input<String?>? templateId;
 
   /// Creates a new [DeidentifyTemplateArgs].
   /// [deidentifyConfig] The core content of the template.

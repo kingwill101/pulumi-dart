@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A collection of object level retention parameters.
 class BucketObjectRetention {
   /// The bucket's object retention mode, can only be Unlocked or Locked.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// A time in RFC 3339 format until which object retention protects this object.
-  final pulumi.Input<String>? retainUntilTime;
+  final pulumi.Input<String?>? retainUntilTime;
 
   /// Creates a new [BucketObjectRetention].
   /// [mode] The bucket's object retention mode, can only be Unlocked or Locked.

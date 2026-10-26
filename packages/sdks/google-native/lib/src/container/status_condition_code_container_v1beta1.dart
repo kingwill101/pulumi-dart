@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
-enum StatusConditionCodeContainerV1beta1 {
+enum StatusConditionCodeContainerV1beta1 implements pulumi.PulumiEnum<String> {
   unknown("UNKNOWN"),
   gceStockout("GCE_STOCKOUT"),
   gkeServiceAccountDeleted("GKE_SERVICE_ACCOUNT_DELETED"),
@@ -9,6 +11,7 @@ enum StatusConditionCodeContainerV1beta1 {
   caExpiring("CA_EXPIRING");
 
   const StatusConditionCodeContainerV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static StatusConditionCodeContainerV1beta1 fromValue(String value) {

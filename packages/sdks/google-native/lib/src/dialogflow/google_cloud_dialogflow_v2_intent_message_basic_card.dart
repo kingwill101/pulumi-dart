@@ -7,15 +7,15 @@ import 'google_cloud_dialogflow_v2_intent_message_image.dart';
 /// The basic card message. Useful for displaying information.
 class GoogleCloudDialogflowV2IntentMessageBasicCard {
   /// Optional. The collection of card buttons.
-  final pulumi.Input<List<GoogleCloudDialogflowV2IntentMessageBasicCardButton>>? buttons;
+  final pulumi.Input<List<GoogleCloudDialogflowV2IntentMessageBasicCardButton>?>? buttons;
   /// Required, unless image is present. The body text of the card.
-  final pulumi.Input<String>? formattedText;
+  final pulumi.Input<String?>? formattedText;
   /// Optional. The image for the card.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageImage>? image;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageImage?>? image;
   /// Optional. The subtitle of the card.
-  final pulumi.Input<String>? subtitle;
+  final pulumi.Input<String?>? subtitle;
   /// Optional. The title of the card.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageBasicCard].
   /// [buttons] Optional. The collection of card buttons.

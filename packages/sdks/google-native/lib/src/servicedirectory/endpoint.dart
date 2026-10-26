@@ -34,10 +34,32 @@ class Endpoint extends pulumi.CustomResource {
           'google-native:servicedirectory/v1:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['endpointId', 'location', 'namespaceId', 'project', 'serviceId']).merge(options),
         ) {
     address = registerOutput<String>('address');
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    endpointId = registerOutput<String>('endpointId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    namespaceId = registerOutput<String>('namespaceId');
+    network = registerOutput<String>('network');
+    port = registerOutput<int>('port');
+    project = registerOutput<String>('project');
+    serviceId = registerOutput<String>('serviceId');
+    uid = registerOutput<String>('uid');
+  }
+
+  /// Creates a typed reference to an existing [Endpoint] resource.
+  Endpoint.reference(String urn)
+    : super(
+        'google-native:servicedirectory/v1:Endpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    address = registerOutput<String>('address');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     endpointId = registerOutput<String>('endpointId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

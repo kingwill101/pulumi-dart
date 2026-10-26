@@ -42,7 +42,7 @@ class Instance extends pulumi.CustomResource {
   /// The name of the instance resource with the format: * projects/{project}/locations/{region}/clusters/{cluster_id}/instances/{instance_id} where the cluster and instance ID segments should satisfy the regex expression `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`, e.g. 1-63 characters of lowercase letters, numbers, and dashes, starting with a letter, and ending with a letter or number. For more details see https://google.aip.dev/122. The prefix of the instance resource name is the name of the parent resource: * projects/{project}/locations/{region}/clusters/{cluster_id}
   late final pulumi.Output<String> name;
   /// List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
-  late final pulumi.Output<List<Map<String, dynamic>>> nodes;
+  late final pulumi.Output<List<NodeResponse>> nodes;
   late final pulumi.Output<String> project;
   /// Configuration for query insights.
   late final pulumi.Output<QueryInsightsInstanceConfigResponse> queryInsightsConfig;
@@ -73,14 +73,14 @@ class Instance extends pulumi.CustomResource {
           'google-native:alloydb/v1:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['clusterId', 'instanceId', 'location', 'project']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     availabilityType = registerOutput<String>('availabilityType');
     clientConnectionConfig = registerOutput<ClientConnectionConfigResponse>('clientConnectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientConnectionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<String>('clusterId');
     createTime = registerOutput<String>('createTime');
-    databaseFlags = registerOutput<Map<String, String>>('databaseFlags');
+    databaseFlags = registerOutput<Map<String, String>>('databaseFlags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
@@ -88,11 +88,49 @@ class Instance extends pulumi.CustomResource {
     instanceId = registerOutput<String>('instanceId');
     instanceType = registerOutput<String>('instanceType');
     ipAddress = registerOutput<String>('ipAddress');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     machineConfig = registerOutput<MachineConfigResponse>('machineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MachineConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
+    nodes = registerOutput<List<NodeResponse>>('nodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeResponse>(guardedValue, (value) => NodeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    queryInsightsConfig = registerOutput<QueryInsightsInstanceConfigResponse>('queryInsightsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueryInsightsInstanceConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    readPoolConfig = registerOutput<ReadPoolConfigResponse>('readPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReadPoolConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reconciling = registerOutput<bool>('reconciling');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    writableNode = registerOutput<NodeResponse>('writableNode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'google-native:alloydb/v1:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    availabilityType = registerOutput<String>('availabilityType');
+    clientConnectionConfig = registerOutput<ClientConnectionConfigResponse>('clientConnectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientConnectionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterId = registerOutput<String>('clusterId');
+    createTime = registerOutput<String>('createTime');
+    databaseFlags = registerOutput<Map<String, String>>('databaseFlags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    deleteTime = registerOutput<String>('deleteTime');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    gceZone = registerOutput<String>('gceZone');
+    instanceId = registerOutput<String>('instanceId');
+    instanceType = registerOutput<String>('instanceType');
+    ipAddress = registerOutput<String>('ipAddress');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    machineConfig = registerOutput<MachineConfigResponse>('machineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MachineConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    nodes = registerOutput<List<NodeResponse>>('nodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeResponse>(guardedValue, (value) => NodeResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     queryInsightsConfig = registerOutput<QueryInsightsInstanceConfigResponse>('queryInsightsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueryInsightsInstanceConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     readPoolConfig = registerOutput<ReadPoolConfigResponse>('readPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReadPoolConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

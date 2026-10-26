@@ -6,7 +6,7 @@ import 'google_cloud_dialogflow_cx_v3beta1_agent_git_integration_settings_github
 /// Settings for connecting to Git repository for an agent.
 class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings {
   /// GitHub settings.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings>? githubSettings;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings?>? githubSettings;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings].
   /// [githubSettings] GitHub settings.

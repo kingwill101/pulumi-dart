@@ -7,9 +7,9 @@ import 'database_type_provider.dart';
 /// A message defining the database engine and provider.
 class DatabaseType {
   /// The database engine.
-  final pulumi.Input<DatabaseTypeEngine>? engine;
+  final pulumi.Input<DatabaseTypeEngine?>? engine;
   /// The database provider.
-  final pulumi.Input<DatabaseTypeProvider>? provider;
+  final pulumi.Input<DatabaseTypeProvider?>? provider;
 
   /// Creates a new [DatabaseType].
   /// [engine] The database engine.

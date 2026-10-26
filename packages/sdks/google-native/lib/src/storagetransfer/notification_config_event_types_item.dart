@@ -1,10 +1,13 @@
-enum NotificationConfigEventTypesItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum NotificationConfigEventTypesItem implements pulumi.PulumiEnum<String> {
   eventTypeUnspecified("EVENT_TYPE_UNSPECIFIED"),
   transferOperationSuccess("TRANSFER_OPERATION_SUCCESS"),
   transferOperationFailed("TRANSFER_OPERATION_FAILED"),
   transferOperationAborted("TRANSFER_OPERATION_ABORTED");
 
   const NotificationConfigEventTypesItem(this.wireValue);
+  @override
   final String wireValue;
 
   static NotificationConfigEventTypesItem fromValue(String value) {

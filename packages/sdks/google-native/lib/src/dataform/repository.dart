@@ -39,11 +39,33 @@ class Repository extends pulumi.CustomResource {
           'google-native:dataform/v1beta1:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'repositoryId']).merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
     gitRemoteSettings = registerOutput<GitRemoteSettingsResponse>('gitRemoteSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitRemoteSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    npmrcEnvironmentVariablesSecretVersion = registerOutput<String>('npmrcEnvironmentVariablesSecretVersion');
+    project = registerOutput<String>('project');
+    repositoryId = registerOutput<String>('repositoryId');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    setAuthenticatedUserAdmin = registerOutput<bool>('setAuthenticatedUserAdmin');
+    workspaceCompilationOverrides = registerOutput<WorkspaceCompilationOverridesResponse>('workspaceCompilationOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceCompilationOverridesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Repository] resource.
+  Repository.reference(String urn)
+    : super(
+        'google-native:dataform/v1beta1:Repository',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    displayName = registerOutput<String>('displayName');
+    gitRemoteSettings = registerOutput<GitRemoteSettingsResponse>('gitRemoteSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitRemoteSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     npmrcEnvironmentVariablesSecretVersion = registerOutput<String>('npmrcEnvironmentVariablesSecretVersion');

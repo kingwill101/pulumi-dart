@@ -8,11 +8,11 @@ import 'allocation_aggregate_reservation_workload_type.dart';
 /// This reservation type is specified by total resource amounts (e.g. total count of CPUs) and can account for multiple instance SKUs. In other words, one can create instances of varying shapes against this reservation.
 class AllocationAggregateReservation {
   /// List of reserved resources (CPUs, memory, accelerators).
-  final pulumi.Input<List<AllocationAggregateReservationReservedResourceInfo>>? reservedResources;
+  final pulumi.Input<List<AllocationAggregateReservationReservedResourceInfo>?>? reservedResources;
   /// The VM family that all instances scheduled against this reservation must belong to.
-  final pulumi.Input<AllocationAggregateReservationVmFamily>? vmFamily;
+  final pulumi.Input<AllocationAggregateReservationVmFamily?>? vmFamily;
   /// The workload type of the instances that will target this reservation.
-  final pulumi.Input<AllocationAggregateReservationWorkloadType>? workloadType;
+  final pulumi.Input<AllocationAggregateReservationWorkloadType?>? workloadType;
 
   /// Creates a new [AllocationAggregateReservation].
   /// [reservedResources] List of reserved resources (CPUs, memory, accelerators).

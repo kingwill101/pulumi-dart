@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The selected network policy provider.
-enum NetworkPolicyProvider {
+enum NetworkPolicyProvider implements pulumi.PulumiEnum<String> {
   providerUnspecified("PROVIDER_UNSPECIFIED"),
   calico("CALICO");
 
   const NetworkPolicyProvider(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkPolicyProvider fromValue(String value) {

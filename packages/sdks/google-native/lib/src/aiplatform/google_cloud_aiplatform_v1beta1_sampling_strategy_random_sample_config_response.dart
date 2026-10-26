@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigResponse {
 
   factory GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigResponse(
-      sampleRate: pulumi.Input.fromValue(map['sampleRate'] as double),
+      sampleRate: pulumi.Input.fromValue((map['sampleRate'] as num).toDouble()),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Range used to validate longs and ints.
 class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange {
   /// The inclusive maximum of the acceptable range.
-  final pulumi.Input<String>? max;
+  final pulumi.Input<String?>? max;
   /// The inclusive minimum of the acceptable range.
-  final pulumi.Input<String>? min;
+  final pulumi.Input<String?>? min;
 
   /// Creates a new [EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange].
   /// [max] The inclusive maximum of the acceptable range.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableFieldSchemaPolicyTags {
   /// A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
-  final pulumi.Input<List<String>>? names;
+  final pulumi.Input<List<String>?>? names;
 
   /// Creates a new [TableFieldSchemaPolicyTags].
   /// [names] A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.

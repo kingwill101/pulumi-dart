@@ -38,13 +38,36 @@ class ExperimentAiplatformV1beta1 extends pulumi.CustomResource {
           'google-native:aiplatform/v1beta1:Experiment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'tensorboardExperimentId', 'tensorboardId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    source = registerOutput<String>('source');
+    tensorboardExperimentId = registerOutput<String>('tensorboardExperimentId');
+    tensorboardId = registerOutput<String>('tensorboardId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ExperimentAiplatformV1beta1] resource.
+  ExperimentAiplatformV1beta1.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1beta1:Experiment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

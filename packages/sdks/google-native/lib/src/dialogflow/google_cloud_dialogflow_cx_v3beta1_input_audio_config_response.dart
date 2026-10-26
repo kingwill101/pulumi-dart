@@ -63,7 +63,7 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse {
       model: pulumi.Input.fromValue(map['model'] as String),
       modelVariant: pulumi.Input.fromValue(map['modelVariant'] as String),
       phraseHints: pulumi.Input.fromValue((map['phraseHints'] as List).cast<String>()),
-      sampleRateHertz: pulumi.Input.fromValue(map['sampleRateHertz'] as int),
+      sampleRateHertz: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sampleRateHertz'])),
       singleUtterance: pulumi.Input.fromValue(map['singleUtterance'] as bool),
     );
   }

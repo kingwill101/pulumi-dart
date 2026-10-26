@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents an integer value range.
 class HttpRouteHeaderMatchIntegerRangeNetworkservicesV1beta1 {
   /// End of the range (exclusive)
-  final pulumi.Input<int>? end;
+  final pulumi.Input<int?>? end;
   /// Start of the range (inclusive)
-  final pulumi.Input<int>? start;
+  final pulumi.Input<int?>? start;
 
   /// Creates a new [HttpRouteHeaderMatchIntegerRangeNetworkservicesV1beta1].
   /// [end] End of the range (exclusive)
@@ -26,8 +26,8 @@ class HttpRouteHeaderMatchIntegerRangeNetworkservicesV1beta1 {
 
   factory HttpRouteHeaderMatchIntegerRangeNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteHeaderMatchIntegerRangeNetworkservicesV1beta1(
-      end: (() { final guardedValue = map['end']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      start: (() { final guardedValue = map['start']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      end: (() { final guardedValue = map['end']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      start: (() { final guardedValue = map['start']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -8,10 +8,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_firebasehosting_v1beta1_site_args_doc}
 class SiteArgs {
   /// Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   /// Optional. User-specified labels for the Hosting site.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? project;
   /// Required. Immutable. A globally unique identifier for the Hosting site. This identifier is used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid domain name label.
   final pulumi.Input<String> siteId;
 

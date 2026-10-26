@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_v1_get_network_compute_v1_args_doc}
 class GetNetworkComputeV1Args {
   final pulumi.Input<String> network;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetNetworkComputeV1Args].
   /// [network] Required.

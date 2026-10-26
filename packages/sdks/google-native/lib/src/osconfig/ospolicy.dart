@@ -7,9 +7,9 @@ import 'ospolicy_resource_group.dart';
 /// An OS policy defines the desired state configuration for a VM.
 class OSPolicy {
   /// This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
-  final pulumi.Input<bool>? allowNoResourceGroupMatch;
+  final pulumi.Input<bool?>? allowNoResourceGroupMatch;
   /// Policy description. Length of the description is limited to 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
   final pulumi.Input<String> id;
   /// Policy mode

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Used with equivalent term set glossaries.
 class LanguageCodesSet {
   /// The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
-  final pulumi.Input<List<String>>? languageCodes;
+  final pulumi.Input<List<String>?>? languageCodes;
 
   /// Creates a new [LanguageCodesSet].
   /// [languageCodes] The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.

@@ -10,9 +10,9 @@ class GoogleCloudDialogflowV2EvaluationConfig {
   /// Datasets used for evaluation.
   final pulumi.Input<List<GoogleCloudDialogflowV2InputDataset>> datasets;
   /// Configuration for smart compose model evalution.
-  final pulumi.Input<GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig>? smartComposeConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig?>? smartComposeConfig;
   /// Configuration for smart reply model evalution.
-  final pulumi.Input<GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig>? smartReplyConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig?>? smartReplyConfig;
 
   /// Creates a new [GoogleCloudDialogflowV2EvaluationConfig].
   /// [datasets] Datasets used for evaluation.

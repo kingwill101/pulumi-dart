@@ -7,11 +7,11 @@ import 'standard_sql_struct_type.dart';
 /// The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT&gt;: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind": "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "DATE"} } } ] } }
 class StandardSqlDataType {
   /// The type of the array's elements, if type_kind = "ARRAY".
-  final pulumi.Input<StandardSqlDataType>? arrayElementType;
+  final pulumi.Input<StandardSqlDataType?>? arrayElementType;
   /// The type of the range's elements, if type_kind = "RANGE".
-  final pulumi.Input<StandardSqlDataType>? rangeElementType;
+  final pulumi.Input<StandardSqlDataType?>? rangeElementType;
   /// The fields of this struct, in order, if type_kind = "STRUCT".
-  final pulumi.Input<StandardSqlStructType>? structType;
+  final pulumi.Input<StandardSqlStructType?>? structType;
   /// The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
   final pulumi.Input<StandardSqlDataTypeTypeKind> typeKind;
 

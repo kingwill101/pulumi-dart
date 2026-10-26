@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
 class BucketLogging {
   /// The destination bucket where the current bucket's logs should be placed.
-  final pulumi.Input<String>? logBucket;
+  final pulumi.Input<String?>? logBucket;
   /// A prefix for log object names.
-  final pulumi.Input<String>? logObjectPrefix;
+  final pulumi.Input<String?>? logObjectPrefix;
 
   /// Creates a new [BucketLogging].
   /// [logBucket] The destination bucket where the current bucket's logs should be placed.

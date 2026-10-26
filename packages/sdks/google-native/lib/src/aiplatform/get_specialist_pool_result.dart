@@ -4,17 +4,17 @@
 /// Result data returned by getSpecialistPool.
 class GetSpecialistPoolResult {
   /// The user-defined name of the SpecialistPool. The name can be up to 128 characters long and can consist of any UTF-8 characters. This field should be unique on project-level.
-  final String displayName;
+  final String? displayName;
   /// The resource name of the SpecialistPool.
-  final String name;
+  final String? name;
   /// The resource name of the pending data labeling jobs.
-  final List<String> pendingDataLabelingJobs;
+  final List<String>? pendingDataLabelingJobs;
   /// The email addresses of the managers in the SpecialistPool.
-  final List<String> specialistManagerEmails;
+  final List<String>? specialistManagerEmails;
   /// The number of managers in this SpecialistPool.
-  final int specialistManagersCount;
+  final int? specialistManagersCount;
   /// The email addresses of workers in the SpecialistPool.
-  final List<String> specialistWorkerEmails;
+  final List<String>? specialistWorkerEmails;
 
   /// Creates a new [GetSpecialistPoolResult].
   /// [displayName] The user-defined name of the SpecialistPool. The name can be up to 128 characters long and can consist of any UTF-8 characters. This field should be unique on project-level.
@@ -24,33 +24,33 @@ class GetSpecialistPoolResult {
   /// [specialistManagersCount] The number of managers in this SpecialistPool.
   /// [specialistWorkerEmails] The email addresses of workers in the SpecialistPool.
   const GetSpecialistPoolResult({
-    required this.displayName,
-    required this.name,
-    required this.pendingDataLabelingJobs,
-    required this.specialistManagerEmails,
-    required this.specialistManagersCount,
-    required this.specialistWorkerEmails,
+    this.displayName,
+    this.name,
+    this.pendingDataLabelingJobs,
+    this.specialistManagerEmails,
+    this.specialistManagersCount,
+    this.specialistWorkerEmails,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'displayName': displayName,
-      'name': name,
-      'pendingDataLabelingJobs': pendingDataLabelingJobs,
-      'specialistManagerEmails': specialistManagerEmails,
-      'specialistManagersCount': specialistManagersCount,
-      'specialistWorkerEmails': specialistWorkerEmails,
+      'displayName': ?displayName,
+      'name': ?name,
+      'pendingDataLabelingJobs': ?pendingDataLabelingJobs,
+      'specialistManagerEmails': ?specialistManagerEmails,
+      'specialistManagersCount': ?specialistManagersCount,
+      'specialistWorkerEmails': ?specialistWorkerEmails,
     };
   }
 
   factory GetSpecialistPoolResult.fromMap(Map<String, dynamic> map) {
     return GetSpecialistPoolResult(
-      displayName: map['displayName'] as String,
-      name: map['name'] as String,
-      pendingDataLabelingJobs: (map['pendingDataLabelingJobs'] as List).cast<String>(),
-      specialistManagerEmails: (map['specialistManagerEmails'] as List).cast<String>(),
-      specialistManagersCount: map['specialistManagersCount'] as int,
-      specialistWorkerEmails: (map['specialistWorkerEmails'] as List).cast<String>(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pendingDataLabelingJobs: (() { final guardedValue = map['pendingDataLabelingJobs']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      specialistManagerEmails: (() { final guardedValue = map['specialistManagerEmails']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      specialistManagersCount: (() { final guardedValue = map['specialistManagersCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      specialistWorkerEmails: (() { final guardedValue = map['specialistWorkerEmails']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

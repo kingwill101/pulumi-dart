@@ -32,8 +32,27 @@ class DeidentifyTemplate extends pulumi.CustomResource {
           'google-native:dlp/v2:DeidentifyTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    deidentifyConfig = registerOutput<GooglePrivacyDlpV2DeidentifyConfigResponse>('deidentifyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GooglePrivacyDlpV2DeidentifyConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [DeidentifyTemplate] resource.
+  DeidentifyTemplate.reference(String urn)
+    : super(
+        'google-native:dlp/v2:DeidentifyTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     deidentifyConfig = registerOutput<GooglePrivacyDlpV2DeidentifyConfigResponse>('deidentifyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GooglePrivacyDlpV2DeidentifyConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');

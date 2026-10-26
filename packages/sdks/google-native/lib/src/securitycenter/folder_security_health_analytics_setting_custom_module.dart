@@ -33,8 +33,27 @@ class FolderSecurityHealthAnalyticsSettingCustomModule extends pulumi.CustomReso
           'google-native:securitycenter/v1:FolderSecurityHealthAnalyticsSettingCustomModule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['folderId']).merge(options),
         ) {
+    ancestorModule = registerOutput<String>('ancestorModule');
+    customConfig = registerOutput<GoogleCloudSecuritycenterV1CustomConfigResponse>('customConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudSecuritycenterV1CustomConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    enablementState = registerOutput<String>('enablementState');
+    folderId = registerOutput<String>('folderId');
+    lastEditor = registerOutput<String>('lastEditor');
+    this.name = registerOutput<String>('name');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [FolderSecurityHealthAnalyticsSettingCustomModule] resource.
+  FolderSecurityHealthAnalyticsSettingCustomModule.reference(String urn)
+    : super(
+        'google-native:securitycenter/v1:FolderSecurityHealthAnalyticsSettingCustomModule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     ancestorModule = registerOutput<String>('ancestorModule');
     customConfig = registerOutput<GoogleCloudSecuritycenterV1CustomConfigResponse>('customConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudSecuritycenterV1CustomConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');

@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dialogflow_v2beta1_version_dialogflow_v2beta1_args_doc}
 class VersionDialogflowV2beta1Args {
   /// Optional. The developer-provided description of this version.
-  final pulumi.Input<String>? description;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [VersionDialogflowV2beta1Args].
   /// [description] Optional. The developer-provided description of this version.

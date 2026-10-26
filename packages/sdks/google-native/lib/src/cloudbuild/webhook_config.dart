@@ -8,7 +8,7 @@ class WebhookConfig {
   /// Resource name for the secret required as a URL parameter.
   final pulumi.Input<String> secret;
   /// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-  final pulumi.Input<WebhookConfigState>? state;
+  final pulumi.Input<WebhookConfigState?>? state;
 
   /// Creates a new [WebhookConfig].
   /// [secret] Resource name for the secret required as a URL parameter.

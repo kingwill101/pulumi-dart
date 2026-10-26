@@ -6,7 +6,7 @@ import 'target_attribute.dart';
 /// AutomationResourceSelector contains the information to select the resources to which an Automation is going to be applied.
 class AutomationResourceSelector {
   /// Contains attributes about a target.
-  final pulumi.Input<List<TargetAttribute>>? targets;
+  final pulumi.Input<List<TargetAttribute>?>? targets;
 
   /// Creates a new [AutomationResourceSelector].
   /// [targets] Contains attributes about a target.

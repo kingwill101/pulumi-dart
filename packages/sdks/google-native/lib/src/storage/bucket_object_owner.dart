@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The owner of the object. This will always be the uploader of the object.
 class BucketObjectOwner {
   /// The entity, in the form user-userId.
-  final pulumi.Input<String>? entity;
+  final pulumi.Input<String?>? entity;
   /// The ID for the entity.
-  final pulumi.Input<String>? entityId;
+  final pulumi.Input<String?>? entityId;
 
   /// Creates a new [BucketObjectOwner].
   /// [entity] The entity, in the form user-userId.

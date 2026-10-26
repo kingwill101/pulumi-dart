@@ -7,7 +7,7 @@ class GcsProfile {
   /// The Cloud Storage bucket name.
   final pulumi.Input<String> bucket;
   /// The root path inside the Cloud Storage bucket.
-  final pulumi.Input<String>? rootPath;
+  final pulumi.Input<String?>? rootPath;
 
   /// Creates a new [GcsProfile].
   /// [bucket] The Cloud Storage bucket name.

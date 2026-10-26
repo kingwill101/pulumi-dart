@@ -7,11 +7,11 @@ import 'version_containeranalysis_v1alpha1.dart';
 /// An Upgrade Occurrence represents that a specific resource_url could install a specific upgrade. This presence is supplied via local sources (i.e. it is present in the mirror and the running system has noticed its availability).
 class UpgradeOccurrenceContaineranalysisV1alpha1 {
   /// Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
-  final pulumi.Input<UpgradeDistributionContaineranalysisV1alpha1>? distribution;
+  final pulumi.Input<UpgradeDistributionContaineranalysisV1alpha1?>? distribution;
   /// Required - The package this Upgrade is for.
-  final pulumi.Input<String>? package;
+  final pulumi.Input<String?>? package;
   /// Required - The version of the package in a machine + human readable form.
-  final pulumi.Input<VersionContaineranalysisV1alpha1>? parsedVersion;
+  final pulumi.Input<VersionContaineranalysisV1alpha1?>? parsedVersion;
 
   /// Creates a new [UpgradeOccurrenceContaineranalysisV1alpha1].
   /// [distribution] Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.

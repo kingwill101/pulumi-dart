@@ -8,23 +8,23 @@ import 'google_cloud_integrations_v1alpha_parameter_map.dart';
 /// For resource owner credentials grant, the client will ask the user for their authorization credentials (ususally a username and password) and send a POST request to the authorization server. The authorization server will respond with a JSON object containing the access token.
 class GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials {
   /// Access token fetched from the authorization server.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaAccessToken>? accessToken;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaAccessToken?>? accessToken;
   /// The client's ID.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The client's secret.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// The user's password.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Represent how to pass parameters to fetch access token
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType>? requestType;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType?>? requestType;
   /// A space-delimited list of requested scope permissions.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
-  final pulumi.Input<String>? tokenEndpoint;
+  final pulumi.Input<String?>? tokenEndpoint;
   /// Token parameters for the auth request.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMap>? tokenParams;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMap?>? tokenParams;
   /// The user's username.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials].
   /// [accessToken] Access token fetched from the authorization server.

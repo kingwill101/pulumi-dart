@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The crypto key configuration. This field is used by the Customer-managed encryption keys (CMEK) feature.
 class CryptoKeyConfig {
   /// The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-  final pulumi.Input<String>? keyReference;
+  final pulumi.Input<String?>? keyReference;
 
   /// Creates a new [CryptoKeyConfig].
   /// [keyReference] The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.

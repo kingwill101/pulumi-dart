@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The consensus client.
-enum EthereumDetailsConsensusClient {
+enum EthereumDetailsConsensusClient implements pulumi.PulumiEnum<String> {
   consensusClientUnspecified("CONSENSUS_CLIENT_UNSPECIFIED"),
   lighthouse("LIGHTHOUSE"),
   erigonEmbeddedConsensusLayer("ERIGON_EMBEDDED_CONSENSUS_LAYER");
 
   const EthereumDetailsConsensusClient(this.wireValue);
+  @override
   final String wireValue;
 
   static EthereumDetailsConsensusClient fromValue(String value) {

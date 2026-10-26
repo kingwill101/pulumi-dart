@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// [Optional] The categories attached to this field, used for field-level access control.
 class TableFieldSchemaCategories {
   /// A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
-  final pulumi.Input<List<String>>? names;
+  final pulumi.Input<List<String>?>? names;
 
   /// Creates a new [TableFieldSchemaCategories].
   /// [names] A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of usage set for this internal range.
-enum InternalRangeUsageNetworkconnectivityV1alpha1 {
+enum InternalRangeUsageNetworkconnectivityV1alpha1 implements pulumi.PulumiEnum<String> {
   usageUnspecified("USAGE_UNSPECIFIED"),
   forVpc("FOR_VPC"),
   externalToVpc("EXTERNAL_TO_VPC");
 
   const InternalRangeUsageNetworkconnectivityV1alpha1(this.wireValue);
+  @override
   final String wireValue;
 
   static InternalRangeUsageNetworkconnectivityV1alpha1 fromValue(String value) {

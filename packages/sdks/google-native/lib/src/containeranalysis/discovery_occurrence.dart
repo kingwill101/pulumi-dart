@@ -9,21 +9,21 @@ import 'status.dart';
 
 /// Provides information about the analysis status of a discovered resource.
 class DiscoveryOccurrence {
-  final pulumi.Input<AnalysisCompleted>? analysisCompleted;
+  final pulumi.Input<AnalysisCompleted?>? analysisCompleted;
   /// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
-  final pulumi.Input<List<Status>>? analysisError;
+  final pulumi.Input<List<Status>?>? analysisError;
   /// The status of discovery for the resource.
-  final pulumi.Input<DiscoveryOccurrenceAnalysisStatus>? analysisStatus;
+  final pulumi.Input<DiscoveryOccurrenceAnalysisStatus?>? analysisStatus;
   /// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.
-  final pulumi.Input<Status>? analysisStatusError;
+  final pulumi.Input<Status?>? analysisStatusError;
   /// Whether the resource is continuously analyzed.
-  final pulumi.Input<DiscoveryOccurrenceContinuousAnalysis>? continuousAnalysis;
+  final pulumi.Input<DiscoveryOccurrenceContinuousAnalysis?>? continuousAnalysis;
   /// The CPE of the resource being scanned.
-  final pulumi.Input<String>? cpe;
+  final pulumi.Input<String?>? cpe;
   /// The last time this resource was scanned.
-  final pulumi.Input<String>? lastScanTime;
+  final pulumi.Input<String?>? lastScanTime;
   /// The status of an SBOM generation.
-  final pulumi.Input<SBOMStatus>? sbomStatus;
+  final pulumi.Input<SBOMStatus?>? sbomStatus;
 
   /// Creates a new [DiscoveryOccurrence].
   /// [analysisCompleted] Optional.

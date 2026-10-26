@@ -10,7 +10,7 @@ class GetImportDataFileMigrationcenterV1alpha1Args {
   final pulumi.Input<String> importDataFileId;
   final pulumi.Input<String> importJobId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetImportDataFileMigrationcenterV1alpha1Args].
   /// [importDataFileId] Required.

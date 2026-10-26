@@ -27,81 +27,81 @@ import 'vpc_access_connector_appengine_v1beta.dart';
 /// {@macro pulumi_appengine_v1beta_version_appengine_v1beta_args_doc}
 class VersionAppengineV1betaArgs {
   /// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.
-  final pulumi.Input<ApiConfigHandlerAppengineV1beta>? apiConfig;
+  final pulumi.Input<ApiConfigHandlerAppengineV1beta?>? apiConfig;
   /// Allows App Engine second generation runtimes to access the legacy bundled services.
-  final pulumi.Input<bool>? appEngineApis;
+  final pulumi.Input<bool?>? appEngineApis;
   final pulumi.Input<String> appId;
   /// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
-  final pulumi.Input<AutomaticScalingAppengineV1beta>? automaticScaling;
+  final pulumi.Input<AutomaticScalingAppengineV1beta?>? automaticScaling;
   /// A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
-  final pulumi.Input<BasicScalingAppengineV1beta>? basicScaling;
+  final pulumi.Input<BasicScalingAppengineV1beta?>? basicScaling;
   /// Metadata settings that are supplied to this version to enable beta runtime features.
-  final pulumi.Input<Map<String, String>>? betaSettings;
+  final pulumi.Input<Map<String, String>?>? betaSettings;
   /// Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
-  final pulumi.Input<Map<String, String>>? buildEnvVariables;
+  final pulumi.Input<Map<String, String>?>? buildEnvVariables;
   /// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
-  final pulumi.Input<String>? defaultExpiration;
+  final pulumi.Input<String?>? defaultExpiration;
   /// Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set.
-  final pulumi.Input<DeploymentAppengineV1beta>? deployment;
+  final pulumi.Input<DeploymentAppengineV1beta?>? deployment;
   /// Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
-  final pulumi.Input<EndpointsApiServiceAppengineV1beta>? endpointsApiService;
+  final pulumi.Input<EndpointsApiServiceAppengineV1beta?>? endpointsApiService;
   /// The entrypoint for the application.
-  final pulumi.Input<EntrypointAppengineV1beta>? entrypoint;
+  final pulumi.Input<EntrypointAppengineV1beta?>? entrypoint;
   /// App Engine execution environment for this version.Defaults to standard.
-  final pulumi.Input<String>? env;
+  final pulumi.Input<String?>? env;
   /// Environment variables available to the application.Only returned in GET requests if view=FULL is set.
-  final pulumi.Input<Map<String, String>>? envVariables;
+  final pulumi.Input<Map<String, String>?>? envVariables;
   /// Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
-  final pulumi.Input<List<ErrorHandlerAppengineV1beta>>? errorHandlers;
+  final pulumi.Input<List<ErrorHandlerAppengineV1beta>?>? errorHandlers;
   /// Settings for App Engine flexible runtimes.
-  final pulumi.Input<FlexibleRuntimeSettingsAppengineV1beta>? flexibleRuntimeSettings;
+  final pulumi.Input<FlexibleRuntimeSettingsAppengineV1beta?>? flexibleRuntimeSettings;
   /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
-  final pulumi.Input<Map<String, String>>? generatedCustomerMetadata;
+  final pulumi.Input<Map<String, String>?>? generatedCustomerMetadata;
   /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
-  final pulumi.Input<List<UrlMapAppengineV1beta>>? handlers;
+  final pulumi.Input<List<UrlMapAppengineV1beta>?>? handlers;
   /// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
-  final pulumi.Input<HealthCheckAppengineV1beta>? healthCheck;
+  final pulumi.Input<HealthCheckAppengineV1beta?>? healthCheck;
   /// Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
-  final pulumi.Input<List<VersionInboundServicesItemAppengineV1beta>>? inboundServices;
+  final pulumi.Input<List<VersionInboundServicesItemAppengineV1beta>?>? inboundServices;
   /// Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.
-  final pulumi.Input<String>? instanceClass;
+  final pulumi.Input<String?>? instanceClass;
   /// Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
-  final pulumi.Input<List<LibraryAppengineV1beta>>? libraries;
+  final pulumi.Input<List<LibraryAppengineV1beta>?>? libraries;
   /// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
-  final pulumi.Input<LivenessCheckAppengineV1beta>? livenessCheck;
+  final pulumi.Input<LivenessCheckAppengineV1beta?>? livenessCheck;
   /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
-  final pulumi.Input<ManualScalingAppengineV1beta>? manualScaling;
+  final pulumi.Input<ManualScalingAppengineV1beta?>? manualScaling;
   /// Extra network settings. Only applicable in the App Engine flexible environment.
-  final pulumi.Input<NetworkAppengineV1beta>? network;
+  final pulumi.Input<NetworkAppengineV1beta?>? network;
   /// Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
-  final pulumi.Input<String>? nobuildFilesRegex;
+  final pulumi.Input<String?>? nobuildFilesRegex;
   /// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
-  final pulumi.Input<ReadinessCheckAppengineV1beta>? readinessCheck;
+  final pulumi.Input<ReadinessCheckAppengineV1beta?>? readinessCheck;
   /// Machine resources for this version. Only applicable in the App Engine flexible environment.
-  final pulumi.Input<ResourcesAppengineV1beta>? resources;
+  final pulumi.Input<ResourcesAppengineV1beta?>? resources;
   /// Desired runtime. Example: python27.
-  final pulumi.Input<String>? runtime;
+  final pulumi.Input<String?>? runtime;
   /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
-  final pulumi.Input<String>? runtimeApiVersion;
+  final pulumi.Input<String?>? runtimeApiVersion;
   /// The channel of the runtime to use. Only available for some runtimes. Defaults to the default channel.
-  final pulumi.Input<String>? runtimeChannel;
+  final pulumi.Input<String?>? runtimeChannel;
   /// The path or name of the app's main executable.
-  final pulumi.Input<String>? runtimeMainExecutablePath;
+  final pulumi.Input<String?>? runtimeMainExecutablePath;
   /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   final pulumi.Input<String> serviceId;
   /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
-  final pulumi.Input<VersionServingStatusAppengineV1beta>? servingStatus;
+  final pulumi.Input<VersionServingStatusAppengineV1beta?>? servingStatus;
   /// Whether multiple requests can be dispatched to this version at once.
-  final pulumi.Input<bool>? threadsafe;
+  final pulumi.Input<bool?>? threadsafe;
   /// Whether to deploy this version in a container on a virtual machine.
-  final pulumi.Input<bool>? vm;
+  final pulumi.Input<bool?>? vm;
   /// Enables VPC connectivity for standard apps.
-  final pulumi.Input<VpcAccessConnectorAppengineV1beta>? vpcAccessConnector;
+  final pulumi.Input<VpcAccessConnectorAppengineV1beta?>? vpcAccessConnector;
   /// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [VersionAppengineV1betaArgs].
   /// [apiConfig] Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.

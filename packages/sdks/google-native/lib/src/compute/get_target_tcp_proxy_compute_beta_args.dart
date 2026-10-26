@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_beta_get_target_tcp_proxy_compute_beta_args_doc}
 class GetTargetTcpProxyComputeBetaArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> targetTcpProxy;
 
   /// Creates a new [GetTargetTcpProxyComputeBetaArgs].

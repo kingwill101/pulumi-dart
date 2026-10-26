@@ -39,7 +39,7 @@ class BreakdownResponse {
     return BreakdownResponse(
       aggregationFunction: pulumi.Input.fromValue(AggregationFunctionResponse.fromMap((map['aggregationFunction']! as Map).cast<String, dynamic>())),
       column: pulumi.Input.fromValue(map['column'] as String),
-      limit: pulumi.Input.fromValue(map['limit'] as int),
+      limit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['limit'])),
       sortOrder: pulumi.Input.fromValue(map['sortOrder'] as String),
     );
   }

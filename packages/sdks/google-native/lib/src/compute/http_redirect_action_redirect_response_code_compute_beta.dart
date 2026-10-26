@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The HTTP Status code to use for this RedirectAction. Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method is retained.
-enum HttpRedirectActionRedirectResponseCodeComputeBeta {
+enum HttpRedirectActionRedirectResponseCodeComputeBeta implements pulumi.PulumiEnum<String> {
   found("FOUND"),
   movedPermanentlyDefault("MOVED_PERMANENTLY_DEFAULT"),
   permanentRedirect("PERMANENT_REDIRECT"),
@@ -7,6 +9,7 @@ enum HttpRedirectActionRedirectResponseCodeComputeBeta {
   temporaryRedirect("TEMPORARY_REDIRECT");
 
   const HttpRedirectActionRedirectResponseCodeComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static HttpRedirectActionRedirectResponseCodeComputeBeta fromValue(String value) {

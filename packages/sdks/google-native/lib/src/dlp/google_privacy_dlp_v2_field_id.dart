@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// General identifier of a data field in a storage service.
 class GooglePrivacyDlpV2FieldId {
   /// Name describing the field.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GooglePrivacyDlpV2FieldId].
   /// [name] Name describing the field.

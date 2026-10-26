@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// [PRIVATE FIELD] Config for pod CIDR size overprovisioning.
 class PodCIDROverprovisionConfig {
   /// Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning is enabled by default.
-  final pulumi.Input<bool>? disable;
+  final pulumi.Input<bool?>? disable;
 
   /// Creates a new [PodCIDROverprovisionConfig].
   /// [disable] Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning is enabled by default.

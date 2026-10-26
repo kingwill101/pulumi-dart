@@ -7,9 +7,9 @@ import 'standard.dart';
 /// Strategy contains deployment strategy information.
 class Strategy {
   /// Canary deployment strategy provides progressive percentage based deployments to a Target.
-  final pulumi.Input<Canary>? canary;
+  final pulumi.Input<Canary?>? canary;
   /// Standard deployment strategy executes a single deploy and allows verifying the deployment.
-  final pulumi.Input<Standard>? standard;
+  final pulumi.Input<Standard?>? standard;
 
   /// Creates a new [Strategy].
   /// [canary] Canary deployment strategy provides progressive percentage based deployments to a Target.

@@ -6,9 +6,9 @@ import 'policy_controller_template_library_config_gkehub_v1beta.dart';
 /// PolicyContentSpec defines the user's desired content configuration on the cluster.
 class PolicyControllerPolicyContentSpecGkehubV1beta {
   /// map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
-  final pulumi.Input<Map<String, String>>? bundles;
+  final pulumi.Input<Map<String, String>?>? bundles;
   /// Configures the installation of the Template Library.
-  final pulumi.Input<PolicyControllerTemplateLibraryConfigGkehubV1beta>? templateLibrary;
+  final pulumi.Input<PolicyControllerTemplateLibraryConfigGkehubV1beta?>? templateLibrary;
 
   /// Creates a new [PolicyControllerPolicyContentSpecGkehubV1beta].
   /// [bundles] map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.

@@ -6,8 +6,8 @@ import 'run_details.dart';
 
 /// Keep in sync with schema at https://github.com/slsa-framework/slsa/blob/main/docs/provenance/schema/v1/provenance.proto Builder renamed to ProvenanceBuilder because of Java conflicts.
 class SlsaProvenanceV1 {
-  final pulumi.Input<BuildDefinition>? buildDefinition;
-  final pulumi.Input<RunDetails>? runDetails;
+  final pulumi.Input<BuildDefinition?>? buildDefinition;
+  final pulumi.Input<RunDetails?>? runDetails;
 
   /// Creates a new [SlsaProvenanceV1].
   /// [buildDefinition] Optional.

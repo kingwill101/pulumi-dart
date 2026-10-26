@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_eventarc_v1beta1_get_trigger_eventarc_v1beta1_args_doc}
 class GetTriggerEventarcV1beta1Args {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> triggerId;
 
   /// Creates a new [GetTriggerEventarcV1beta1Args].

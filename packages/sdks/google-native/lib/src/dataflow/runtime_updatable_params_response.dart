@@ -26,8 +26,8 @@ class RuntimeUpdatableParamsResponse {
 
   factory RuntimeUpdatableParamsResponse.fromMap(Map<String, dynamic> map) {
     return RuntimeUpdatableParamsResponse(
-      maxNumWorkers: pulumi.Input.fromValue(map['maxNumWorkers'] as int),
-      minNumWorkers: pulumi.Input.fromValue(map['minNumWorkers'] as int),
+      maxNumWorkers: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNumWorkers'])),
+      minNumWorkers: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minNumWorkers'])),
     );
   }
 }

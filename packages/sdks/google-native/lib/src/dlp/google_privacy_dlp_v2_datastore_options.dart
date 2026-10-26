@@ -7,9 +7,9 @@ import 'google_privacy_dlp_v2_partition_id.dart';
 /// Options defining a data set within Google Cloud Datastore.
 class GooglePrivacyDlpV2DatastoreOptions {
   /// The kind to process.
-  final pulumi.Input<GooglePrivacyDlpV2KindExpression>? kind;
+  final pulumi.Input<GooglePrivacyDlpV2KindExpression?>? kind;
   /// A partition ID identifies a grouping of entities. The grouping is always by project and namespace, however the namespace ID may be empty.
-  final pulumi.Input<GooglePrivacyDlpV2PartitionId>? partitionId;
+  final pulumi.Input<GooglePrivacyDlpV2PartitionId?>? partitionId;
 
   /// Creates a new [GooglePrivacyDlpV2DatastoreOptions].
   /// [kind] The kind to process.

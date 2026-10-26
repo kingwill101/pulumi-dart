@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Range of numerical values within min and max.
 class GoogleMonitoringV3Range {
   /// Range maximum.
-  final pulumi.Input<double>? max;
+  final pulumi.Input<double?>? max;
   /// Range minimum.
-  final pulumi.Input<double>? min;
+  final pulumi.Input<double?>? min;
 
   /// Creates a new [GoogleMonitoringV3Range].
   /// [max] Range maximum.
@@ -26,8 +26,8 @@ class GoogleMonitoringV3Range {
 
   factory GoogleMonitoringV3Range.fromMap(Map<String, dynamic> map) {
     return GoogleMonitoringV3Range(
-      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

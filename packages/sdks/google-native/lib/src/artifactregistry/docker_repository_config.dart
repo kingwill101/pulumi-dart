@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// DockerRepositoryConfig is docker related repository details. Provides additional configuration details for repositories of the docker format type.
 class DockerRepositoryConfig {
   /// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
-  final pulumi.Input<bool>? immutableTags;
+  final pulumi.Input<bool?>? immutableTags;
 
   /// Creates a new [DockerRepositoryConfig].
   /// [immutableTags] The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.

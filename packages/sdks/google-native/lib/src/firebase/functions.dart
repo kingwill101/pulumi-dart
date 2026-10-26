@@ -22,6 +22,17 @@ Future<GetAndroidAppResult> getAndroidApp(
   return GetAndroidAppResult.fromMap(result);
 }
 
+pulumi.Output<GetAndroidAppResult> getAndroidAppOutput(
+  GetAndroidAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:firebase/v1beta1:getAndroidApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAndroidAppResult.fromMap);
+}
+
 /// Gets the specified IosApp.
 /// [args] Arguments passed to this invoke. {@macro pulumi_firebase_v1beta1_get_ios_app_args_doc}
 /// [options] Invoke options controlling this call.
@@ -38,6 +49,17 @@ Future<GetIosAppResult> getIosApp(
   return GetIosAppResult.fromMap(result);
 }
 
+pulumi.Output<GetIosAppResult> getIosAppOutput(
+  GetIosAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:firebase/v1beta1:getIosApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIosAppResult.fromMap);
+}
+
 /// Gets the specified WebApp.
 /// [args] Arguments passed to this invoke. {@macro pulumi_firebase_v1beta1_get_web_app_args_doc}
 /// [options] Invoke options controlling this call.
@@ -52,4 +74,15 @@ Future<GetWebAppResult> getWebApp(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppResult> getWebAppOutput(
+  GetWebAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:firebase/v1beta1:getWebApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppResult.fromMap);
 }

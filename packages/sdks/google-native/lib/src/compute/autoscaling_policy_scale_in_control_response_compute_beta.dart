@@ -28,7 +28,7 @@ class AutoscalingPolicyScaleInControlResponseComputeBeta {
   factory AutoscalingPolicyScaleInControlResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyScaleInControlResponseComputeBeta(
       maxScaledInReplicas: pulumi.Input.fromValue(FixedOrPercentResponseComputeBeta.fromMap((map['maxScaledInReplicas']! as Map).cast<String, dynamic>())),
-      timeWindowSec: pulumi.Input.fromValue(map['timeWindowSec'] as int),
+      timeWindowSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeWindowSec'])),
     );
   }
 }

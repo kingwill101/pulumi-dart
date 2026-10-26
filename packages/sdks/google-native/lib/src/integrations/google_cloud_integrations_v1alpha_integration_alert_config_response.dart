@@ -63,7 +63,7 @@ class GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse {
   factory GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse(
       aggregationPeriod: pulumi.Input.fromValue(map['aggregationPeriod'] as String),
-      alertThreshold: pulumi.Input.fromValue(map['alertThreshold'] as int),
+      alertThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['alertThreshold'])),
       disableAlert: pulumi.Input.fromValue(map['disableAlert'] as bool),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       durationThreshold: pulumi.Input.fromValue(map['durationThreshold'] as String),

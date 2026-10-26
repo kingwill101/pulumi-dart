@@ -29,8 +29,25 @@ class IamMember extends pulumi.CustomResource {
           'google-native:iap/v1:V1IamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
+    condition = registerOutput<Condition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Condition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [IamMember] resource.
+  IamMember.reference(String urn)
+    : super(
+        'google-native:iap/v1:V1IamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<Condition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Condition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');

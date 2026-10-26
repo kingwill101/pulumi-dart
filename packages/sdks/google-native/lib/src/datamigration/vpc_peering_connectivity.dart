@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The details of the VPC where the source database is located in Google Cloud. We will use this information to set up the VPC peering connection between Cloud SQL and this VPC.
 class VpcPeeringConnectivity {
   /// The name of the VPC network to peer with the Cloud SQL private network.
-  final pulumi.Input<String>? vpc;
+  final pulumi.Input<String?>? vpc;
 
   /// Creates a new [VpcPeeringConnectivity].
   /// [vpc] The name of the VPC network to peer with the Cloud SQL private network.

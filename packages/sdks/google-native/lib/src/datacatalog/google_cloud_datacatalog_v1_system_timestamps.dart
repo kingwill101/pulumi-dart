@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Timestamps associated with this resource in a particular system.
 class GoogleCloudDatacatalogV1SystemTimestamps {
   /// Creation timestamp of the resource within the given system.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Timestamp of the last modification of the resource or its metadata within a given system. Note: Depending on the source system, not every modification updates this timestamp. For example, BigQuery timestamps every metadata modification but not data or permission changes.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [GoogleCloudDatacatalogV1SystemTimestamps].
   /// [createTime] Creation timestamp of the resource within the given system.

@@ -7,7 +7,7 @@ import 'google_iam_admin_v1_workforce_pool_provider_oidc_web_sso_config_response
 /// Configuration for web single sign-on for the OIDC provider.
 class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig {
   /// Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested. Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
-  final pulumi.Input<List<String>>? additionalScopes;
+  final pulumi.Input<List<String>?>? additionalScopes;
   /// The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
   final pulumi.Input<GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior> assertionClaimsBehavior;
   /// The Response Type to request for in the OIDC Authorization Request for web sign-in. The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.

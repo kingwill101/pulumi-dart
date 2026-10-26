@@ -6,7 +6,7 @@ import 'workload_metadata_config_mode.dart';
 /// WorkloadMetadataConfig defines the metadata configuration to expose to workloads on the node pool.
 class WorkloadMetadataConfig {
   /// Mode is the configuration for how to expose metadata to workloads running on the node pool.
-  final pulumi.Input<WorkloadMetadataConfigMode>? mode;
+  final pulumi.Input<WorkloadMetadataConfigMode?>? mode;
 
   /// Creates a new [WorkloadMetadataConfig].
   /// [mode] Mode is the configuration for how to expose metadata to workloads running on the node pool.

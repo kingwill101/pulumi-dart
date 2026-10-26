@@ -33,8 +33,28 @@ class TargetServer extends pulumi.CustomResource {
           'google-native:apigee/v1:TargetServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['environmentId', 'organizationId']).merge(options),
         ) {
+    description = registerOutput<String>('description');
+    environmentId = registerOutput<String>('environmentId');
+    host = registerOutput<String>('host');
+    isEnabled = registerOutput<bool>('isEnabled');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    port = registerOutput<int>('port');
+    protocol = registerOutput<String>('protocol');
+    sSLInfo = registerOutput<GoogleCloudApigeeV1TlsInfoResponse>('sSLInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1TlsInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [TargetServer] resource.
+  TargetServer.reference(String urn)
+    : super(
+        'google-native:apigee/v1:TargetServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String>('description');
     environmentId = registerOutput<String>('environmentId');
     host = registerOutput<String>('host');

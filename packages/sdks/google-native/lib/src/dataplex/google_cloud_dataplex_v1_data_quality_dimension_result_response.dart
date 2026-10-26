@@ -34,7 +34,7 @@ class GoogleCloudDataplexV1DataQualityDimensionResultResponse {
     return GoogleCloudDataplexV1DataQualityDimensionResultResponse(
       dimension: pulumi.Input.fromValue(GoogleCloudDataplexV1DataQualityDimensionResponse.fromMap((map['dimension']! as Map).cast<String, dynamic>())),
       passed: pulumi.Input.fromValue(map['passed'] as bool),
-      score: pulumi.Input.fromValue(map['score'] as double),
+      score: pulumi.Input.fromValue((map['score'] as num).toDouble()),
     );
   }
 }

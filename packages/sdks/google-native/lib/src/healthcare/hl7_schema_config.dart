@@ -6,9 +6,9 @@ import 'version_source.dart';
 /// Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
 class Hl7SchemaConfig {
   /// Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
-  final pulumi.Input<Map<String, String>>? messageSchemaConfigs;
+  final pulumi.Input<Map<String, String>?>? messageSchemaConfigs;
   /// Each VersionSource is tested and only if they all match is the schema used for the message.
-  final pulumi.Input<List<VersionSource>>? version;
+  final pulumi.Input<List<VersionSource>?>? version;
 
   /// Creates a new [Hl7SchemaConfig].
   /// [messageSchemaConfigs] Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.

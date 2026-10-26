@@ -10,19 +10,19 @@ class ManagedFolderArgs {
   /// The name of the bucket containing this managed folder.
   final pulumi.Input<String> bucket;
   /// The creation time of the managed folder in RFC 3339 format.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The ID of the managed folder, including the bucket name and managed folder name.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The kind of item this is. For managed folders, this is always storage#managedFolder.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The version of the metadata for this managed folder. Used for preconditions and for detecting changes in metadata.
-  final pulumi.Input<String>? metageneration;
+  final pulumi.Input<String?>? metageneration;
   /// The name of the managed folder. Required if not specified by URL parameter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The link to this managed folder.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// The last update time of the managed folder metadata in RFC 3339 format.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ManagedFolderArgs].
   /// [bucket] The name of the bucket containing this managed folder.

@@ -6,7 +6,7 @@ import 'search_parameter.dart';
 /// Contains the configuration for FHIR search.
 class SearchConfig {
   /// A list of search parameters in this FHIR store that are used to configure this FHIR store.
-  final pulumi.Input<List<SearchParameter>>? searchParameters;
+  final pulumi.Input<List<SearchParameter>?>? searchParameters;
 
   /// Creates a new [SearchConfig].
   /// [searchParameters] A list of search parameters in this FHIR store that are used to configure this FHIR store.

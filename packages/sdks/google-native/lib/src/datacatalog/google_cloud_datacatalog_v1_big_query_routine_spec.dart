@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Fields specific for BigQuery routines.
 class GoogleCloudDatacatalogV1BigQueryRoutineSpec {
   /// Paths of the imported libraries.
-  final pulumi.Input<List<String>>? importedLibraries;
+  final pulumi.Input<List<String>?>? importedLibraries;
 
   /// Creates a new [GoogleCloudDatacatalogV1BigQueryRoutineSpec].
   /// [importedLibraries] Paths of the imported libraries.

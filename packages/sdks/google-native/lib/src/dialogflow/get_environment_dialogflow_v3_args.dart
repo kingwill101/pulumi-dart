@@ -10,7 +10,7 @@ class GetEnvironmentDialogflowV3Args {
   final pulumi.Input<String> agentId;
   final pulumi.Input<String> environmentId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetEnvironmentDialogflowV3Args].
   /// [agentId] Required.

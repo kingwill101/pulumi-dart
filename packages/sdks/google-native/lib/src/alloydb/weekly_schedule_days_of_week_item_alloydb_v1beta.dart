@@ -1,4 +1,6 @@
-enum WeeklyScheduleDaysOfWeekItemAlloydbV1beta {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum WeeklyScheduleDaysOfWeekItemAlloydbV1beta implements pulumi.PulumiEnum<String> {
   dayOfWeekUnspecified("DAY_OF_WEEK_UNSPECIFIED"),
   monday("MONDAY"),
   tuesday("TUESDAY"),
@@ -9,6 +11,7 @@ enum WeeklyScheduleDaysOfWeekItemAlloydbV1beta {
   sunday("SUNDAY");
 
   const WeeklyScheduleDaysOfWeekItemAlloydbV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static WeeklyScheduleDaysOfWeekItemAlloydbV1beta fromValue(String value) {

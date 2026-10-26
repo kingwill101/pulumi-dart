@@ -6,9 +6,9 @@ import 'google_monitoring_v3_range.dart';
 /// A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the estimated count of values in the Distribution that fall within the specified min and max.
 class DistributionCut {
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
-  final pulumi.Input<String>? distributionFilter;
+  final pulumi.Input<String?>? distributionFilter;
   /// Range of values considered "good." For a one-sided range, set one bound to an infinite value.
-  final pulumi.Input<GoogleMonitoringV3Range>? range;
+  final pulumi.Input<GoogleMonitoringV3Range?>? range;
 
   /// Creates a new [DistributionCut].
   /// [distributionFilter] A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.

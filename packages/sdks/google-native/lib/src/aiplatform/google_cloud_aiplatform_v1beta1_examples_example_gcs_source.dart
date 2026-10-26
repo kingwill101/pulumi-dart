@@ -7,9 +7,9 @@ import 'google_cloud_aiplatform_v1beta1_gcs_source.dart';
 /// The Cloud Storage input instances.
 class GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource {
   /// The format in which instances are given, if not specified, assume it's JSONL format. Currently only JSONL format is supported.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat>? dataFormat;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat?>? dataFormat;
   /// The Cloud Storage location for the input instances.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1GcsSource>? gcsSource;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1GcsSource?>? gcsSource;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource].
   /// [dataFormat] The format in which instances are given, if not specified, assume it's JSONL format. Currently only JSONL format is supported.

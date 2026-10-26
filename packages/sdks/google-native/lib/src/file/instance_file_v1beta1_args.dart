@@ -13,33 +13,33 @@ import 'network_config_file_v1beta1.dart';
 /// {@macro pulumi_file_v1beta1_instance_file_v1beta1_args_doc}
 class InstanceFileV1beta1Args {
   /// The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
-  final pulumi.Input<String>? capacityGb;
+  final pulumi.Input<String?>? capacityGb;
   /// The description of the instance (2048 characters or less).
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
-  final pulumi.Input<DirectoryServicesConfig>? directoryServices;
+  final pulumi.Input<DirectoryServicesConfig?>? directoryServices;
   /// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// File system shares on the instance. For this version, only a single file share is supported.
-  final pulumi.Input<List<FileShareConfigFileV1beta1>>? fileShares;
+  final pulumi.Input<List<FileShareConfigFileV1beta1>?>? fileShares;
   /// Required. The ID of the instance to create. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
   final pulumi.Input<String> instanceId;
   /// KMS key name used for data encryption.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// Resource labels to represent user provided metadata.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// The max number of shares allowed.
-  final pulumi.Input<String>? maxShareCount;
+  final pulumi.Input<String?>? maxShareCount;
   /// Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
-  final pulumi.Input<bool>? multiShareEnabled;
+  final pulumi.Input<bool?>? multiShareEnabled;
   /// VPC networks to which the instance is connected. For this version, only a single network is supported.
-  final pulumi.Input<List<NetworkConfigFileV1beta1>>? networks;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<List<NetworkConfigFileV1beta1>?>? networks;
+  final pulumi.Input<String?>? project;
   /// Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
-  final pulumi.Input<InstanceProtocol>? protocol;
+  final pulumi.Input<InstanceProtocol?>? protocol;
   /// The service tier of the instance.
-  final pulumi.Input<InstanceTierFileV1beta1>? tier;
+  final pulumi.Input<InstanceTierFileV1beta1?>? tier;
 
   /// Creates a new [InstanceFileV1beta1Args].
   /// [capacityGb] The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.

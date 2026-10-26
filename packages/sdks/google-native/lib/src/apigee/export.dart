@@ -38,8 +38,30 @@ class Export extends pulumi.CustomResource {
           'google-native:apigee/v1:Export',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['environmentId', 'organizationId']).merge(options),
         ) {
+    created = registerOutput<String>('created');
+    datastoreName = registerOutput<String>('datastoreName');
+    description = registerOutput<String>('description');
+    environmentId = registerOutput<String>('environmentId');
+    error = registerOutput<String>('error');
+    executionTime = registerOutput<String>('executionTime');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    self = registerOutput<String>('self');
+    state = registerOutput<String>('state');
+    updated = registerOutput<String>('updated');
+  }
+
+  /// Creates a typed reference to an existing [Export] resource.
+  Export.reference(String urn)
+    : super(
+        'google-native:apigee/v1:Export',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     created = registerOutput<String>('created');
     datastoreName = registerOutput<String>('datastoreName');
     description = registerOutput<String>('description');

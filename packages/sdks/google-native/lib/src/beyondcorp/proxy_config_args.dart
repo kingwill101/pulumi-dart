@@ -11,15 +11,15 @@ import 'google_cloud_beyondcorp_partnerservices_v1alpha_transport_info.dart';
 /// {@macro pulumi_beyondcorp_v1alpha_proxy_config_args_doc}
 class ProxyConfigArgs {
   /// Optional. An arbitrary caller-provided name for the ProxyConfig. Cannot exceed 64 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. Information to encrypt JWT for the proxy server.
-  final pulumi.Input<GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo>? encryptionInfo;
+  final pulumi.Input<GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo?>? encryptionInfo;
   final pulumi.Input<String> organizationId;
   final pulumi.Input<String> partnerTenantId;
   /// The URI of the proxy server.
   final pulumi.Input<String> proxyUri;
   /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Routing info to direct traffic to the proxy server.
   final pulumi.Input<GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo> routingInfo;
   /// Transport layer information to verify for the proxy server.

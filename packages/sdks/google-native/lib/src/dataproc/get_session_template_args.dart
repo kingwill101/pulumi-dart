@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dataproc_v1_get_session_template_args_doc}
 class GetSessionTemplateArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> sessionTemplateId;
 
   /// Creates a new [GetSessionTemplateArgs].

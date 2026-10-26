@@ -45,16 +45,41 @@ class Instance extends pulumi.CustomResource {
           'google-native:spanner/v1:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     autoscalingConfig = registerOutput<AutoscalingConfigResponse>('autoscalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     config = registerOutput<String>('config');
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
-    endpointUris = registerOutput<List<String>>('endpointUris');
+    endpointUris = registerOutput<List<String>>('endpointUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     freeInstanceMetadata = registerOutput<FreeInstanceMetadataResponse>('freeInstanceMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FreeInstanceMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceType = registerOutput<String>('instanceType');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    nodeCount = registerOutput<int>('nodeCount');
+    processingUnits = registerOutput<int>('processingUnits');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'google-native:spanner/v1:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoscalingConfig = registerOutput<AutoscalingConfigResponse>('autoscalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    config = registerOutput<String>('config');
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    endpointUris = registerOutput<List<String>>('endpointUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    freeInstanceMetadata = registerOutput<FreeInstanceMetadataResponse>('freeInstanceMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FreeInstanceMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceType = registerOutput<String>('instanceType');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int>('nodeCount');
     processingUnits = registerOutput<int>('processingUnits');
