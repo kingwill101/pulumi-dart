@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_api_auth_oidc_issuer_args_doc}
 class OidcIssuerArgs {
   /// The OIDC issuer identifier
-  final pulumi.Input<String>? issuerId;
+  final pulumi.Input<String?>? issuerId;
   /// The JSON Web Key Set for the OIDC issuer.
   final pulumi.Input<dynamic>? jwks;
   /// The maximum token expiration time in seconds.
-  final pulumi.Input<int>? maxExpiration;
+  final pulumi.Input<int?>? maxExpiration;
   /// The display name of the OIDC issuer.
   final pulumi.Input<String> name;
   /// The organization name
   final pulumi.Input<String> orgName;
   /// SHA-1 certificate thumbprints used to verify the OIDC issuer's TLS certificate.
-  final pulumi.Input<List<String>>? thumbprints;
+  final pulumi.Input<List<String>?>? thumbprints;
   /// The URL of the OIDC issuer.
   final pulumi.Input<String> url;
 
@@ -56,7 +56,7 @@ class OidcIssuerArgs {
     return OidcIssuerArgs(
       issuerId: (() { final guardedValue = map['issuerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jwks: (() { final guardedValue = map['jwks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      maxExpiration: (() { final guardedValue = map['maxExpiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxExpiration: (() { final guardedValue = map['maxExpiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       orgName: pulumi.Input.fromValue(map['orgName'] as String),
       thumbprints: (() { final guardedValue = map['thumbprints']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

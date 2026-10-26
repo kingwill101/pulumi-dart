@@ -25,10 +25,27 @@ class Config extends pulumi.CustomResource {
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
+          additionalSecretOutputs: const ['secretsProvider'],
         ) {
     encryptedKey = registerOutput<String?>('encryptedKey');
     encryptionSalt = registerOutput<String?>('encryptionSalt');
     environment = registerOutput<String>('environment');
-    secretsProvider = registerOutput<String?>('secretsProvider');
+    secretsProvider = registerOutput<String?>('secretsProvider', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [Config] resource.
+  Config.reference(String urn)
+    : super(
+        'pulumiservice:api/stacks:Config',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['secretsProvider'],
+        isResourceReference: true,
+      ) {
+    encryptedKey = registerOutput<String?>('encryptedKey');
+    encryptionSalt = registerOutput<String?>('encryptionSalt');
+    environment = registerOutput<String>('environment');
+    secretsProvider = registerOutput<String?>('secretsProvider', isSecret: true);
   }
 }

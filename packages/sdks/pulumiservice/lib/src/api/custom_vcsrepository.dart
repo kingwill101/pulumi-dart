@@ -17,4 +17,14 @@ class CustomVCSRepository extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         );
+
+  /// Creates a typed reference to an existing [CustomVCSRepository] resource.
+  CustomVCSRepository.reference(String urn)
+    : super(
+        'pulumiservice:api/integrations:CustomVCSRepository',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      );
 }

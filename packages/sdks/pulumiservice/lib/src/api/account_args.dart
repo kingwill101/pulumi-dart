@@ -11,9 +11,9 @@ class AccountArgs {
   final pulumi.Input<String> accountName;
   /// The ID of the agent pool to run account discovery workflows.
   /// If not specified, discovery will use the default agent pool.
-  final pulumi.Input<String>? agentPoolID;
+  final pulumi.Input<String?>? agentPoolID;
   /// Deprecated: Use scanSchedule instead. Cron expression for scheduling scans.
-  final pulumi.Input<String>? cron;
+  final pulumi.Input<String?>? cron;
   /// Reference to an ESC environment containing provider credentials,
   /// in the format 'project/environment' with an optional @version suffix.
   final pulumi.Input<String> environment;
@@ -22,9 +22,9 @@ class AccountArgs {
   /// The cloud provider for the account (e.g., aws, gcp, azure-native).
   final pulumi.Input<String> provider;
   /// Provider-specific configuration for the account.
-  final pulumi.Input<Map<String, dynamic>>? providerConfig;
+  final pulumi.Input<Map<String, dynamic>?>? providerConfig;
   /// Schedule for automated discovery scans (e.g., 'none', 'daily').
-  final pulumi.Input<String>? scanSchedule;
+  final pulumi.Input<String?>? scanSchedule;
 
   /// Creates a new [AccountArgs].
   /// [accountName] The Insights account name

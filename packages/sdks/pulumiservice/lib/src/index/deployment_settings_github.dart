@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// GitHub settings for the deployment.
 class DeploymentSettingsGithub {
   /// Trigger a deployment running `pulumi up` on commit.
-  final pulumi.Input<bool>? deployCommits;
+  final pulumi.Input<bool?>? deployCommits;
   /// The paths within the repo that deployments should be filtered to.
-  final pulumi.Input<List<String>>? paths;
+  final pulumi.Input<List<String>?>? paths;
   /// Trigger a deployment running `pulumi preview` when a PR is opened.
-  final pulumi.Input<bool>? previewPullRequests;
+  final pulumi.Input<bool?>? previewPullRequests;
   /// Use this stack as a template for pull request review stacks.
-  final pulumi.Input<bool>? pullRequestTemplate;
+  final pulumi.Input<bool?>? pullRequestTemplate;
   /// The GitHub repository in the format org/repo.
-  final pulumi.Input<String>? repository;
+  final pulumi.Input<String?>? repository;
 
   /// Creates a new [DeploymentSettingsGithub].
   /// [deployCommits] Trigger a deployment running `pulumi up` on commit.
@@ -21,13 +21,13 @@ class DeploymentSettingsGithub {
   /// [previewPullRequests] Trigger a deployment running `pulumi preview` when a PR is opened.
   /// [pullRequestTemplate] Use this stack as a template for pull request review stacks.
   /// [repository] The GitHub repository in the format org/repo.
-  const DeploymentSettingsGithub({
-    this.deployCommits,
+  DeploymentSettingsGithub({
+    pulumi.Input<bool?>? deployCommits,
     this.paths,
-    this.previewPullRequests,
-    this.pullRequestTemplate,
+    pulumi.Input<bool?>? previewPullRequests,
+    pulumi.Input<bool?>? pullRequestTemplate,
     this.repository,
-  });
+  }) : deployCommits = deployCommits ?? pulumi.Input.fromValue(true), previewPullRequests = previewPullRequests ?? pulumi.Input.fromValue(true), pullRequestTemplate = pullRequestTemplate ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

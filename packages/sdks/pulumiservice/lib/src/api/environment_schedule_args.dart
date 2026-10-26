@@ -14,11 +14,11 @@ class EnvironmentScheduleArgs {
   /// The project name
   final pulumi.Input<String> projectName;
   /// The schedule cron
-  final pulumi.Input<String>? scheduleCron;
+  final pulumi.Input<String?>? scheduleCron;
   /// The schedule ID
-  final pulumi.Input<String>? scheduleID;
+  final pulumi.Input<String?>? scheduleID;
   /// The schedule once
-  final pulumi.Input<String>? scheduleOnce;
+  final pulumi.Input<String?>? scheduleOnce;
   /// The secret rotation request
   final pulumi.Input<dynamic>? secretRotationRequest;
 

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A reference to a policy pack within a policy group (input).
 class PolicyGroupPolicyPackReferenceInput {
   /// Optional configuration for the policy pack. The special key `all` sets the default enforcement level for every policy in the pack; per-policy entries override it.
-  final pulumi.Input<Map<String, dynamic>>? config;
+  final pulumi.Input<Map<String, dynamic>?>? config;
   /// The display name of the policy pack.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name of the policy pack.
   final pulumi.Input<String> name;
   /// The version tag of the policy pack.
-  final pulumi.Input<String>? versionTag;
+  final pulumi.Input<String?>? versionTag;
 
   /// Creates a new [PolicyGroupPolicyPackReferenceInput].
   /// [config] Optional configuration for the policy pack. The special key `all` sets the default enforcement level for every policy in the pack; per-policy entries override it.

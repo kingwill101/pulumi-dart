@@ -10,7 +10,7 @@ class OpenEnvironmentRequestArgs {
   /// Total duration that the resulting grant can be used to access the environment open endpoint (after first open)
   final pulumi.Input<int> accessDurationSeconds;
   /// The change request ID
-  final pulumi.Input<String>? changeRequestId;
+  final pulumi.Input<String?>? changeRequestId;
   /// The environment name
   final pulumi.Input<String> envName;
   /// Time from application of the request until the resulting grant expires
@@ -49,10 +49,10 @@ class OpenEnvironmentRequestArgs {
 
   factory OpenEnvironmentRequestArgs.fromMap(Map<String, dynamic> map) {
     return OpenEnvironmentRequestArgs(
-      accessDurationSeconds: pulumi.Input.fromValue(map['accessDurationSeconds'] as int),
+      accessDurationSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['accessDurationSeconds'])),
       changeRequestId: (() { final guardedValue = map['changeRequestId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       envName: pulumi.Input.fromValue(map['envName'] as String),
-      grantExpirationSeconds: pulumi.Input.fromValue(map['grantExpirationSeconds'] as int),
+      grantExpirationSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['grantExpirationSeconds'])),
       orgName: pulumi.Input.fromValue(map['orgName'] as String),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
     );

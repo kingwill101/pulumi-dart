@@ -9,13 +9,13 @@ import 'policy_pack_policy_input.dart';
 /// {@macro pulumi_index_policy_pack_args_doc}
 class PolicyPackArgs {
   /// Optional display name. Changing it requires a new versionTag (policy pack versions are immutable in Pulumi Cloud).
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Policy pack name (unique within the org).
   final pulumi.Input<String> name;
   /// Organization name.
   final pulumi.Input<String> organization;
   /// Metadata for each policy in the pack.
-  final pulumi.Input<List<PolicyPackPolicyInput>>? policies;
+  final pulumi.Input<List<PolicyPackPolicyInput>?>? policies;
   /// Path to the directory containing the policy pack source. The directory is tarballed and uploaded.
   final pulumi.Input<String> sourcePath;
   /// Semantic version tag (e.g. "1.0.0"). Versions are immutable; change to publish a new version.

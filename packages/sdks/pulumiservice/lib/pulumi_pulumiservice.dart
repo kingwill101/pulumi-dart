@@ -4,12 +4,12 @@ import 'package:pulumi_pulumiservice/api.dart' as module_api;
 import 'package:pulumi_pulumiservice/index.dart' as module_index;
 import 'package:pulumi_pulumiservice/providers.dart' as module_providers;
 
-final api = const _ApiModuleNamespace();
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final api = _ApiModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _ApiModuleNamespace {
-  const _ApiModuleNamespace();
+  _ApiModuleNamespace();
   final Account = module_api.Account.new;
   final AccountArgs = module_api.AccountArgs.new;
   final AuditLogExportConfiguration = module_api.AuditLogExportConfiguration.new;
@@ -94,12 +94,14 @@ class _ApiModuleNamespace {
   final TeamArgs = module_api.TeamArgs.new;
   final TeamToken = module_api.TeamToken.new;
   final TeamTokenArgs = module_api.TeamTokenArgs.new;
+  final UsageCap = module_api.UsageCap.new;
+  final UsageCapArgs = module_api.UsageCapArgs.new;
   final Webhook = module_api.Webhook.new;
   final WebhookArgs = module_api.WebhookApiStacksArgs.new;
 }
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final AWSOIDCConfiguration = module_index.AWSOIDCConfiguration.new;
   final AWSOIDCConfigurationArgs = module_index.AWSOIDCConfiguration.new;
   final AccessToken = module_index.AccessToken.new;
@@ -117,6 +119,9 @@ class _IndexModuleNamespace {
   final AuthPolicyTokenType = module_index.AuthPolicyTokenType.values;
   final AzureOIDCConfiguration = module_index.AzureOIDCConfiguration.new;
   final AzureOIDCConfigurationArgs = module_index.AzureOIDCConfiguration.new;
+  final BuildAccountMatchRuleArgs = module_index.BuildAccountMatchRuleArgs.new;
+  final BuildAccountMatchRuleResult = module_index.BuildAccountMatchRuleResult.new;
+  final BuildAccountMatchRuleResultArgs = module_index.BuildAccountMatchRuleResult.new;
   final BuildAllowPermissionsArgs = module_index.BuildAllowPermissionsArgs.new;
   final BuildAllowPermissionsResult = module_index.BuildAllowPermissionsResult.new;
   final BuildAllowPermissionsResultArgs = module_index.BuildAllowPermissionsResult.new;
@@ -126,6 +131,9 @@ class _IndexModuleNamespace {
   final BuildInsightsAccountScopedPermissionsArgs = module_index.BuildInsightsAccountScopedPermissionsArgs.new;
   final BuildInsightsAccountScopedPermissionsResult = module_index.BuildInsightsAccountScopedPermissionsResult.new;
   final BuildInsightsAccountScopedPermissionsResultArgs = module_index.BuildInsightsAccountScopedPermissionsResult.new;
+  final BuildStackMatchRuleArgs = module_index.BuildStackMatchRuleArgs.new;
+  final BuildStackMatchRuleResult = module_index.BuildStackMatchRuleResult.new;
+  final BuildStackMatchRuleResultArgs = module_index.BuildStackMatchRuleResult.new;
   final BuildStackScopedPermissionsArgs = module_index.BuildStackScopedPermissionsArgs.new;
   final BuildStackScopedPermissionsResult = module_index.BuildStackScopedPermissionsResult.new;
   final BuildStackScopedPermissionsResultArgs = module_index.BuildStackScopedPermissionsResult.new;
@@ -138,6 +146,8 @@ class _IndexModuleNamespace {
   final DeploymentSettingsCacheOptionsArgs = module_index.DeploymentSettingsCacheOptions.new;
   final DeploymentSettingsExecutorContext = module_index.DeploymentSettingsExecutorContext.new;
   final DeploymentSettingsExecutorContextArgs = module_index.DeploymentSettingsExecutorContext.new;
+  final DeploymentSettingsExecutorImageCredentials = module_index.DeploymentSettingsExecutorImageCredentials.new;
+  final DeploymentSettingsExecutorImageCredentialsArgs = module_index.DeploymentSettingsExecutorImageCredentials.new;
   final DeploymentSettingsGitAuthBasicAuth = module_index.DeploymentSettingsGitAuthBasicAuth.new;
   final DeploymentSettingsGitAuthBasicAuthArgs = module_index.DeploymentSettingsGitAuthBasicAuth.new;
   final DeploymentSettingsGitAuthSSHAuth = module_index.DeploymentSettingsGitAuthSSHAuth.new;
@@ -186,9 +196,15 @@ class _IndexModuleNamespace {
   final GetOrganizationMembersArgs = module_index.GetOrganizationMembersArgs.new;
   final GetOrganizationMembersResult = module_index.GetOrganizationMembersResult.new;
   final GetOrganizationMembersResultArgs = module_index.GetOrganizationMembersResult.new;
+  final GetOrganizationRoleArgs = module_index.GetOrganizationRoleArgs.new;
+  final GetOrganizationRoleResult = module_index.GetOrganizationRoleResult.new;
+  final GetOrganizationRoleResultArgs = module_index.GetOrganizationRoleResult.new;
   final GetOrganizationRoleScopesArgs = module_index.GetOrganizationRoleScopesArgs.new;
   final GetOrganizationRoleScopesResult = module_index.GetOrganizationRoleScopesResult.new;
   final GetOrganizationRoleScopesResultArgs = module_index.GetOrganizationRoleScopesResult.new;
+  final GetOrganizationRolesArgs = module_index.GetOrganizationRolesArgs.new;
+  final GetOrganizationRolesResult = module_index.GetOrganizationRolesResult.new;
+  final GetOrganizationRolesResultArgs = module_index.GetOrganizationRolesResult.new;
   final GetPolicyPackArgs = module_index.GetPolicyPackArgs.new;
   final GetPolicyPackResult = module_index.GetPolicyPackResult.new;
   final GetPolicyPackResultArgs = module_index.GetPolicyPackResult.new;
@@ -213,20 +229,29 @@ class _IndexModuleNamespace {
   final OrganizationMemberInfoArgs = module_index.OrganizationMemberInfo.new;
   final OrganizationRole = module_index.OrganizationRole.new;
   final OrganizationRoleArgs = module_index.OrganizationRoleArgs.new;
+  final OrganizationRoleInfo = module_index.OrganizationRoleInfo.new;
+  final OrganizationRoleInfoArgs = module_index.OrganizationRoleInfo.new;
   final PolicyGroup = module_index.PolicyGroup.new;
   final PolicyGroupArgs = module_index.PolicyGroupArgs.new;
+  final PolicyGroupMatchRule = module_index.PolicyGroupMatchRule.new;
+  final PolicyGroupMatchRuleArgs = module_index.PolicyGroupMatchRule.new;
   final PolicyGroupPolicyPackReference = module_index.PolicyGroupPolicyPackReference.new;
   final PolicyGroupPolicyPackReferenceArgs = module_index.PolicyGroupPolicyPackReference.new;
   final PolicyGroupPolicyPackReferenceInput = module_index.PolicyGroupPolicyPackReferenceInput.new;
   final PolicyGroupPolicyPackReferenceInputArgs = module_index.PolicyGroupPolicyPackReferenceInput.new;
   final PolicyGroupStackReference = module_index.PolicyGroupStackReference.new;
   final PolicyGroupStackReferenceArgs = module_index.PolicyGroupStackReference.new;
+  final PolicyGroupTagCondition = module_index.PolicyGroupTagCondition.new;
+  final PolicyGroupTagConditionArgs = module_index.PolicyGroupTagCondition.new;
+  final PolicyGroupTagOperator = module_index.PolicyGroupTagOperator.values;
   final PolicyPack = module_index.PolicyPack.new;
   final PolicyPackArgs = module_index.PolicyPackArgs.new;
   final PolicyPackComplianceFrameworkInput = module_index.PolicyPackComplianceFrameworkInput.new;
   final PolicyPackComplianceFrameworkInputArgs = module_index.PolicyPackComplianceFrameworkInput.new;
   final PolicyPackPolicyInput = module_index.PolicyPackPolicyInput.new;
   final PolicyPackPolicyInputArgs = module_index.PolicyPackPolicyInput.new;
+  final PolicyPackSummary = module_index.PolicyPackSummary.new;
+  final PolicyPackSummaryArgs = module_index.PolicyPackSummary.new;
   final PulumiOperation = module_index.PulumiOperation.values;
   final RbacPermission = module_index.RbacPermission.values;
   final RoleScopeInfo = module_index.RoleScopeInfo.new;
@@ -261,23 +286,44 @@ class _IndexModuleNamespace {
   final WebhookFilters = module_index.WebhookFilters.values;
   final WebhookFormat = module_index.WebhookFormat.values;
   final WebhookGroup = module_index.WebhookGroup.values;
+  final buildAccountMatchRule = module_index.buildAccountMatchRule;
+  final buildAccountMatchRuleOutput = module_index.buildAccountMatchRuleOutput;
   final buildAllowPermissions = module_index.buildAllowPermissions;
+  final buildAllowPermissionsOutput = module_index.buildAllowPermissionsOutput;
   final buildEnvironmentScopedPermissions = module_index.buildEnvironmentScopedPermissions;
+  final buildEnvironmentScopedPermissionsOutput = module_index.buildEnvironmentScopedPermissionsOutput;
   final buildInsightsAccountScopedPermissions = module_index.buildInsightsAccountScopedPermissions;
+  final buildInsightsAccountScopedPermissionsOutput = module_index.buildInsightsAccountScopedPermissionsOutput;
+  final buildStackMatchRule = module_index.buildStackMatchRule;
+  final buildStackMatchRuleOutput = module_index.buildStackMatchRuleOutput;
   final buildStackScopedPermissions = module_index.buildStackScopedPermissions;
+  final buildStackScopedPermissionsOutput = module_index.buildStackScopedPermissionsOutput;
   final getCurrentUser = module_index.getCurrentUser;
+  final getCurrentUserOutput = module_index.getCurrentUserOutput;
   final getEnvironment = module_index.getEnvironment;
+  final getEnvironmentOutput = module_index.getEnvironmentOutput;
   final getInsightsAccount = module_index.getInsightsAccount;
+  final getInsightsAccountOutput = module_index.getInsightsAccountOutput;
   final getInsightsAccounts = module_index.getInsightsAccounts;
+  final getInsightsAccountsOutput = module_index.getInsightsAccountsOutput;
   final getOrganizationMember = module_index.getOrganizationMember;
+  final getOrganizationMemberOutput = module_index.getOrganizationMemberOutput;
   final getOrganizationMembers = module_index.getOrganizationMembers;
+  final getOrganizationMembersOutput = module_index.getOrganizationMembersOutput;
+  final getOrganizationRole = module_index.getOrganizationRole;
+  final getOrganizationRoleOutput = module_index.getOrganizationRoleOutput;
   final getOrganizationRoleScopes = module_index.getOrganizationRoleScopes;
+  final getOrganizationRoleScopesOutput = module_index.getOrganizationRoleScopesOutput;
+  final getOrganizationRoles = module_index.getOrganizationRoles;
+  final getOrganizationRolesOutput = module_index.getOrganizationRolesOutput;
   final getPolicyPack = module_index.getPolicyPack;
+  final getPolicyPackOutput = module_index.getPolicyPackOutput;
   final getPolicyPacks = module_index.getPolicyPacks;
+  final getPolicyPacksOutput = module_index.getPolicyPacksOutput;
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final ProviderArgs = module_providers.ProviderArgs.new;
   final Pulumiservice = module_providers.ProviderProvider.new;
   final PulumiserviceArgs = module_providers.ProviderArgs.new;

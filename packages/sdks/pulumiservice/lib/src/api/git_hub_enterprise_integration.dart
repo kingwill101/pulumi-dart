@@ -15,6 +15,8 @@ class GitHubEnterpriseIntegration extends pulumi.CustomResource {
   late final pulumi.Output<bool> disableCodeAccessForReviews;
   /// Whether detailed property-level diffs are disabled for PR comments.
   late final pulumi.Output<bool> disableDetailedDiff;
+  /// Whether PR comments are disabled while a pull request is in draft.
+  late final pulumi.Output<bool?> disableDraftPRComments;
   /// Whether Neo AI summaries are disabled for this installation.
   late final pulumi.Output<bool> disableNeoSummaries;
   /// Whether PR comments are disabled for this installation.
@@ -25,6 +27,8 @@ class GitHubEnterpriseIntegration extends pulumi.CustomResource {
   late final pulumi.Output<bool> hasContentsPermission;
   /// Whether the installation has the 'members' permission (only relevant for organization accounts).
   late final pulumi.Output<bool> hasMembersPermission;
+  /// Whether per-user (individual) GitHub Enterprise authentication is enabled. Only applies to self-hosted GitHub Enterprise installations.
+  late final pulumi.Output<bool?> individualAuthEnabled;
   /// The GitHub installation ID.
   late final pulumi.Output<int> installationID;
   /// Whether the GitHub account is an organization (as opposed to a personal account).
@@ -32,7 +36,7 @@ class GitHubEnterpriseIntegration extends pulumi.CustomResource {
   /// Whether this is a self-hosted GitHub Enterprise installation.
   late final pulumi.Output<bool> isSelfHosted;
   /// Neo GitHub App permission requirements for this installation.
-  late final pulumi.Output<List<Map<String, dynamic>>?> neoGitHubAppPermissionRequirements;
+  late final pulumi.Output<List<dynamic>?> neoGitHubAppPermissionRequirements;
 
   /// Creates a new [GitHubEnterpriseIntegration].
   /// [name] The Pulumi resource name.
@@ -54,14 +58,44 @@ class GitHubEnterpriseIntegration extends pulumi.CustomResource {
     created = registerOutput<String?>('created');
     disableCodeAccessForReviews = registerOutput<bool>('disableCodeAccessForReviews');
     disableDetailedDiff = registerOutput<bool>('disableDetailedDiff');
+    disableDraftPRComments = registerOutput<bool?>('disableDraftPRComments');
     disableNeoSummaries = registerOutput<bool>('disableNeoSummaries');
     disablePRComments = registerOutput<bool>('disablePRComments');
     ghUrls = registerOutput<dynamic>('ghUrls');
     hasContentsPermission = registerOutput<bool>('hasContentsPermission');
     hasMembersPermission = registerOutput<bool>('hasMembersPermission');
+    individualAuthEnabled = registerOutput<bool?>('individualAuthEnabled');
     installationID = registerOutput<int>('installationID');
     isOrganization = registerOutput<bool>('isOrganization');
     isSelfHosted = registerOutput<bool>('isSelfHosted');
-    neoGitHubAppPermissionRequirements = registerOutput<List<Map<String, dynamic>>?>('neoGitHubAppPermissionRequirements');
+    neoGitHubAppPermissionRequirements = registerOutput<List<dynamic>?>('neoGitHubAppPermissionRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+  }
+
+  /// Creates a typed reference to an existing [GitHubEnterpriseIntegration] resource.
+  GitHubEnterpriseIntegration.reference(String urn)
+    : super(
+        'pulumiservice:api/integrations:GitHubEnterpriseIntegration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountID = registerOutput<int?>('accountID');
+    accountName = registerOutput<String?>('accountName');
+    avatarUrl = registerOutput<String?>('avatarUrl');
+    created = registerOutput<String?>('created');
+    disableCodeAccessForReviews = registerOutput<bool>('disableCodeAccessForReviews');
+    disableDetailedDiff = registerOutput<bool>('disableDetailedDiff');
+    disableDraftPRComments = registerOutput<bool?>('disableDraftPRComments');
+    disableNeoSummaries = registerOutput<bool>('disableNeoSummaries');
+    disablePRComments = registerOutput<bool>('disablePRComments');
+    ghUrls = registerOutput<dynamic>('ghUrls');
+    hasContentsPermission = registerOutput<bool>('hasContentsPermission');
+    hasMembersPermission = registerOutput<bool>('hasMembersPermission');
+    individualAuthEnabled = registerOutput<bool?>('individualAuthEnabled');
+    installationID = registerOutput<int>('installationID');
+    isOrganization = registerOutput<bool>('isOrganization');
+    isSelfHosted = registerOutput<bool>('isSelfHosted');
+    neoGitHubAppPermissionRequirements = registerOutput<List<dynamic>?>('neoGitHubAppPermissionRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
   }
 }

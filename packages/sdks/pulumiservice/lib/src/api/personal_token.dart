@@ -21,8 +21,23 @@ class PersonalToken extends pulumi.CustomResource {
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
+          additionalSecretOutputs: const ['tokenValue'],
         ) {
     tokenId = registerOutput<String>('tokenId');
-    tokenValue = registerOutput<String>('tokenValue');
+    tokenValue = registerOutput<String>('tokenValue', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [PersonalToken] resource.
+  PersonalToken.reference(String urn)
+    : super(
+        'pulumiservice:api/tokens:PersonalToken',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['tokenValue'],
+        isResourceReference: true,
+      ) {
+    tokenId = registerOutput<String>('tokenId');
+    tokenValue = registerOutput<String>('tokenValue', isSecret: true);
   }
 }

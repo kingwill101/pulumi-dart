@@ -6,15 +6,15 @@ import 'deployment_settings_git_source_git_auth.dart';
 /// Git source settings for a deployment.
 class DeploymentSettingsGitSource {
   /// The branch to deploy. One of either `branch` or `commit` must be specified.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// The commit to deploy. One of either `branch` or `commit` must be specified.
-  final pulumi.Input<String>? commit;
+  final pulumi.Input<String?>? commit;
   /// Git authentication configuration for this deployment. Should not be specified if there are `gitHub` settings for this deployment.
-  final pulumi.Input<DeploymentSettingsGitSourceGitAuth>? gitAuth;
+  final pulumi.Input<DeploymentSettingsGitSourceGitAuth?>? gitAuth;
   /// The directory within the repository where the Pulumi.yaml is located.
-  final pulumi.Input<String>? repoDir;
+  final pulumi.Input<String?>? repoDir;
   /// The repository URL to use for git settings. Should not be specified if there are `gitHub` settings for this deployment.
-  final pulumi.Input<String>? repoUrl;
+  final pulumi.Input<String?>? repoUrl;
 
   /// Creates a new [DeploymentSettingsGitSource].
   /// [branch] The branch to deploy. One of either `branch` or `commit` must be specified.

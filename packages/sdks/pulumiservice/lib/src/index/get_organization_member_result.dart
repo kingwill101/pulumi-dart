@@ -10,9 +10,9 @@ class GetOrganizationMemberResult {
   /// The name of the currently assigned role (custom role name, or built-in role).
   final String? roleName;
   /// The member's Pulumi Cloud username.
-  final String username;
+  final String? username;
   /// Whether this member is an admin in Pulumi Cloud without admin access on the backing identity provider.
-  final bool virtualAdmin;
+  final bool? virtualAdmin;
 
   /// Creates a new [GetOrganizationMemberResult].
   /// [role] The member's built-in role (member, admin, billing-manager). Absent when a custom role is assigned — check `roleId` in that case.
@@ -24,8 +24,8 @@ class GetOrganizationMemberResult {
     this.role,
     this.roleId,
     this.roleName,
-    required this.username,
-    required this.virtualAdmin,
+    this.username,
+    this.virtualAdmin,
   });
 
   Map<String, dynamic> toMap() {
@@ -33,8 +33,8 @@ class GetOrganizationMemberResult {
       'role': ?role,
       'roleId': ?roleId,
       'roleName': ?roleName,
-      'username': username,
-      'virtualAdmin': virtualAdmin,
+      'username': ?username,
+      'virtualAdmin': ?virtualAdmin,
     };
   }
 
@@ -43,8 +43,8 @@ class GetOrganizationMemberResult {
       role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return guardedValue as String; })(),
       roleId: (() { final guardedValue = map['roleId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       roleName: (() { final guardedValue = map['roleName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      username: map['username'] as String,
-      virtualAdmin: map['virtualAdmin'] as bool,
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      virtualAdmin: (() { final guardedValue = map['virtualAdmin']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }
