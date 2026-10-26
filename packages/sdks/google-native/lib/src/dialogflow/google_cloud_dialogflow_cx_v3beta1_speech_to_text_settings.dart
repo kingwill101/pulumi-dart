@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Settings related to speech recognition.
 class GoogleCloudDialogflowCxV3beta1SpeechToTextSettings {
   /// Whether to use speech adaptation for speech recognition.
-  final pulumi.Input<bool>? enableSpeechAdaptation;
+  final pulumi.Input<bool?>? enableSpeechAdaptation;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1SpeechToTextSettings].
   /// [enableSpeechAdaptation] Whether to use speech adaptation for speech recognition.

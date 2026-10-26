@@ -1,8 +1,11 @@
-enum NodeGroupRolesItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum NodeGroupRolesItem implements pulumi.PulumiEnum<String> {
   roleUnspecified("ROLE_UNSPECIFIED"),
   driver("DRIVER");
 
   const NodeGroupRolesItem(this.wireValue);
+  @override
   final String wireValue;
 
   static NodeGroupRolesItem fromValue(String value) {

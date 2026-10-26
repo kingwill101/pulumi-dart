@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Executions stage states allow the same set of values as JobState.
-enum ExecutionStageStateExecutionStageState {
+enum ExecutionStageStateExecutionStageState implements pulumi.PulumiEnum<String> {
   jobStateUnknown("JOB_STATE_UNKNOWN"),
   jobStateStopped("JOB_STATE_STOPPED"),
   jobStateRunning("JOB_STATE_RUNNING"),
@@ -15,6 +17,7 @@ enum ExecutionStageStateExecutionStageState {
   jobStateResourceCleaningUp("JOB_STATE_RESOURCE_CLEANING_UP");
 
   const ExecutionStageStateExecutionStageState(this.wireValue);
+  @override
   final String wireValue;
 
   static ExecutionStageStateExecutionStageState fromValue(String value) {

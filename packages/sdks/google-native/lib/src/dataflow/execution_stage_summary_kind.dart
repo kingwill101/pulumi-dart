@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of transform this stage is executing.
-enum ExecutionStageSummaryKind {
+enum ExecutionStageSummaryKind implements pulumi.PulumiEnum<String> {
   unknownKind("UNKNOWN_KIND"),
   parDoKind("PAR_DO_KIND"),
   groupByKeyKind("GROUP_BY_KEY_KIND"),
@@ -11,6 +13,7 @@ enum ExecutionStageSummaryKind {
   shuffleKind("SHUFFLE_KIND");
 
   const ExecutionStageSummaryKind(this.wireValue);
+  @override
   final String wireValue;
 
   static ExecutionStageSummaryKind fromValue(String value) {

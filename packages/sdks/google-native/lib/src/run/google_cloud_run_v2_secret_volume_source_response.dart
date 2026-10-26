@@ -32,7 +32,7 @@ class GoogleCloudRunV2SecretVolumeSourceResponse {
 
   factory GoogleCloudRunV2SecretVolumeSourceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2SecretVolumeSourceResponse(
-      defaultMode: pulumi.Input.fromValue(map['defaultMode'] as int),
+      defaultMode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['defaultMode'])),
       items: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudRunV2VersionToPathResponse>(map['items']!, (value) => GoogleCloudRunV2VersionToPathResponse.fromMap((value as Map).cast<String, dynamic>()))),
       secret: pulumi.Input.fromValue(map['secret'] as String),
     );

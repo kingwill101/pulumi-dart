@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The pointer location for this widget (also sometimes called a "tail")
-enum TextStylePointerLocation {
+enum TextStylePointerLocation implements pulumi.PulumiEnum<String> {
   pointerLocationUnspecified("POINTER_LOCATION_UNSPECIFIED"),
   plTop("PL_TOP"),
   plRight("PL_RIGHT"),
@@ -15,6 +17,7 @@ enum TextStylePointerLocation {
   plLeftTop("PL_LEFT_TOP");
 
   const TextStylePointerLocation(this.wireValue);
+  @override
   final String wireValue;
 
   static TextStylePointerLocation fromValue(String value) {

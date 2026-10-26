@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dataproc_v1beta2_get_region_cluster_iam_policy_dataproc_v1beta2_args_doc}
 class GetRegionClusterIamPolicyDataprocV1beta2Args {
   final pulumi.Input<String> clusterId;
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> regionId;
 
   /// Creates a new [GetRegionClusterIamPolicyDataprocV1beta2Args].
@@ -36,7 +36,7 @@ class GetRegionClusterIamPolicyDataprocV1beta2Args {
   factory GetRegionClusterIamPolicyDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetRegionClusterIamPolicyDataprocV1beta2Args(
       clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       regionId: pulumi.Input.fromValue(map['regionId'] as String),
     );

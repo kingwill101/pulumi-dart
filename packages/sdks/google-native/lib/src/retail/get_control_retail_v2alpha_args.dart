@@ -10,7 +10,7 @@ class GetControlRetailV2alphaArgs {
   final pulumi.Input<String> catalogId;
   final pulumi.Input<String> controlId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetControlRetailV2alphaArgs].
   /// [catalogId] Required.

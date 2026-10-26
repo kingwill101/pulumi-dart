@@ -35,15 +35,35 @@ class Feed extends pulumi.CustomResource {
           'google-native:cloudasset/v1:Feed',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['v1Id', 'v1Id1']).merge(options),
         ) {
-    assetNames = registerOutput<List<String>>('assetNames');
-    assetTypes = registerOutput<List<String>>('assetTypes');
+    assetNames = registerOutput<List<String>>('assetNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    assetTypes = registerOutput<List<String>>('assetTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     condition = registerOutput<ExprResponse>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExprResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     contentType = registerOutput<String>('contentType');
     feedOutputConfig = registerOutput<FeedOutputConfigResponse>('feedOutputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeedOutputConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    relationshipTypes = registerOutput<List<String>>('relationshipTypes');
+    relationshipTypes = registerOutput<List<String>>('relationshipTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    v1Id = registerOutput<String>('v1Id');
+    v1Id1 = registerOutput<String>('v1Id1');
+  }
+
+  /// Creates a typed reference to an existing [Feed] resource.
+  Feed.reference(String urn)
+    : super(
+        'google-native:cloudasset/v1:Feed',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assetNames = registerOutput<List<String>>('assetNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    assetTypes = registerOutput<List<String>>('assetTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    condition = registerOutput<ExprResponse>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExprResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contentType = registerOutput<String>('contentType');
+    feedOutputConfig = registerOutput<FeedOutputConfigResponse>('feedOutputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeedOutputConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    relationshipTypes = registerOutput<List<String>>('relationshipTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     v1Id = registerOutput<String>('v1Id');
     v1Id1 = registerOutput<String>('v1Id1');
   }

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Which Flexible Resource Scheduling mode to run in.
-enum EnvironmentFlexResourceSchedulingGoal {
+enum EnvironmentFlexResourceSchedulingGoal implements pulumi.PulumiEnum<String> {
   flexrsUnspecified("FLEXRS_UNSPECIFIED"),
   flexrsSpeedOptimized("FLEXRS_SPEED_OPTIMIZED"),
   flexrsCostOptimized("FLEXRS_COST_OPTIMIZED");
 
   const EnvironmentFlexResourceSchedulingGoal(this.wireValue);
+  @override
   final String wireValue;
 
   static EnvironmentFlexResourceSchedulingGoal fromValue(String value) {

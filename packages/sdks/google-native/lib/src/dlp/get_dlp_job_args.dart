@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDlpJobArgs {
   final pulumi.Input<String> dlpJobId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDlpJobArgs].
   /// [dlpJobId] Required.

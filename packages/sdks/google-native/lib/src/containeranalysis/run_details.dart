@@ -6,9 +6,9 @@ import 'provenance_builder.dart';
 import 'resource_descriptor.dart';
 
 class RunDetails {
-  final pulumi.Input<ProvenanceBuilder>? builder;
-  final pulumi.Input<List<ResourceDescriptor>>? byproducts;
-  final pulumi.Input<BuildMetadata>? metadata;
+  final pulumi.Input<ProvenanceBuilder?>? builder;
+  final pulumi.Input<List<ResourceDescriptor>?>? byproducts;
+  final pulumi.Input<BuildMetadata?>? metadata;
 
   /// Creates a new [RunDetails].
   /// [builder] Optional.

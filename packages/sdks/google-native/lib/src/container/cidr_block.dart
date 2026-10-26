@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// CidrBlock contains an optional name and one CIDR block.
 class CidrBlock {
   /// cidr_block must be specified in CIDR notation.
-  final pulumi.Input<String>? cidrBlock;
+  final pulumi.Input<String?>? cidrBlock;
   /// display_name is an optional field for users to identify CIDR blocks.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
 
   /// Creates a new [CidrBlock].
   /// [cidrBlock] cidr_block must be specified in CIDR notation.

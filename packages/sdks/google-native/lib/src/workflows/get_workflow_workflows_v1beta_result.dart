@@ -4,25 +4,25 @@
 /// Result data returned by getWorkflow.
 class GetWorkflowWorkflowsV1betaResult {
   /// The timestamp of when the workflow was created.
-  final String createTime;
+  final String? createTime;
   /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
-  final String description;
+  final String? description;
   /// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
-  final String name;
+  final String? name;
   /// The timestamp that the latest revision of the workflow was created.
-  final String revisionCreateTime;
+  final String? revisionCreateTime;
   /// The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
-  final String revisionId;
+  final String? revisionId;
   /// The service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} or {account} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
-  final String serviceAccount;
+  final String? serviceAccount;
   /// Workflow code to be executed. The size limit is 128KB.
-  final String sourceContents;
+  final String? sourceContents;
   /// State of the workflow deployment.
-  final String state;
+  final String? state;
   /// The last update timestamp of the workflow.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetWorkflowWorkflowsV1betaResult].
   /// [createTime] The timestamp of when the workflow was created.
@@ -36,45 +36,45 @@ class GetWorkflowWorkflowsV1betaResult {
   /// [state] State of the workflow deployment.
   /// [updateTime] The last update timestamp of the workflow.
   const GetWorkflowWorkflowsV1betaResult({
-    required this.createTime,
-    required this.description,
-    required this.labels,
-    required this.name,
-    required this.revisionCreateTime,
-    required this.revisionId,
-    required this.serviceAccount,
-    required this.sourceContents,
-    required this.state,
-    required this.updateTime,
+    this.createTime,
+    this.description,
+    this.labels,
+    this.name,
+    this.revisionCreateTime,
+    this.revisionId,
+    this.serviceAccount,
+    this.sourceContents,
+    this.state,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'labels': labels,
-      'name': name,
-      'revisionCreateTime': revisionCreateTime,
-      'revisionId': revisionId,
-      'serviceAccount': serviceAccount,
-      'sourceContents': sourceContents,
-      'state': state,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'description': ?description,
+      'labels': ?labels,
+      'name': ?name,
+      'revisionCreateTime': ?revisionCreateTime,
+      'revisionId': ?revisionId,
+      'serviceAccount': ?serviceAccount,
+      'sourceContents': ?sourceContents,
+      'state': ?state,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetWorkflowWorkflowsV1betaResult.fromMap(Map<String, dynamic> map) {
     return GetWorkflowWorkflowsV1betaResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      revisionCreateTime: map['revisionCreateTime'] as String,
-      revisionId: map['revisionId'] as String,
-      serviceAccount: map['serviceAccount'] as String,
-      sourceContents: map['sourceContents'] as String,
-      state: map['state'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      revisionCreateTime: (() { final guardedValue = map['revisionCreateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      revisionId: (() { final guardedValue = map['revisionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceContents: (() { final guardedValue = map['sourceContents']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

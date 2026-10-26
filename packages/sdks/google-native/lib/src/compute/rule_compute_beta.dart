@@ -8,19 +8,19 @@ import 'rule_action_compute_beta.dart';
 /// This is deprecated and has no effect. Do not use.
 class RuleComputeBeta {
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<RuleActionComputeBeta>? action;
+  final pulumi.Input<RuleActionComputeBeta?>? action;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<ConditionComputeBeta>>? conditions;
+  final pulumi.Input<List<ConditionComputeBeta>?>? conditions;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<String>>? ins;
+  final pulumi.Input<List<String>?>? ins;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<LogConfigComputeBeta>>? logConfigs;
+  final pulumi.Input<List<LogConfigComputeBeta>?>? logConfigs;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<String>>? notIns;
+  final pulumi.Input<List<String>?>? notIns;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<String>>? permissions;
+  final pulumi.Input<List<String>?>? permissions;
 
   /// Creates a new [RuleComputeBeta].
   /// [action] This is deprecated and has no effect. Do not use.

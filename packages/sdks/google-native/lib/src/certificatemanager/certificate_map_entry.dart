@@ -39,15 +39,39 @@ class CertificateMapEntry extends pulumi.CustomResource {
           'google-native:certificatemanager/v1:CertificateMapEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['certificateMapEntryId', 'certificateMapId', 'location', 'project']).merge(options),
         ) {
     certificateMapEntryId = registerOutput<String>('certificateMapEntryId');
     certificateMapId = registerOutput<String>('certificateMapId');
-    certificates = registerOutput<List<String>>('certificates');
+    certificates = registerOutput<List<String>>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     hostname = registerOutput<String>('hostname');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    matcher = registerOutput<String>('matcher');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [CertificateMapEntry] resource.
+  CertificateMapEntry.reference(String urn)
+    : super(
+        'google-native:certificatemanager/v1:CertificateMapEntry',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    certificateMapEntryId = registerOutput<String>('certificateMapEntryId');
+    certificateMapId = registerOutput<String>('certificateMapId');
+    certificates = registerOutput<List<String>>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    hostname = registerOutput<String>('hostname');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     matcher = registerOutput<String>('matcher');
     this.name = registerOutput<String>('name');

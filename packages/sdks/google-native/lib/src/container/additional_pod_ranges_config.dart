@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
 class AdditionalPodRangesConfig {
   /// Name for pod secondary ipv4 range which has the actual range defined ahead.
-  final pulumi.Input<List<String>>? podRangeNames;
+  final pulumi.Input<List<String>?>? podRangeNames;
 
   /// Creates a new [AdditionalPodRangesConfig].
   /// [podRangeNames] Name for pod secondary ipv4 range which has the actual range defined ahead.

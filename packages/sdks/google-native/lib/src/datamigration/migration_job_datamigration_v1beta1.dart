@@ -64,7 +64,7 @@ class MigrationJobDatamigrationV1beta1 extends pulumi.CustomResource {
           'google-native:datamigration/v1beta1:MigrationJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'migrationJobId', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     destination = registerOutput<String>('destination');
@@ -74,7 +74,41 @@ class MigrationJobDatamigrationV1beta1 extends pulumi.CustomResource {
     duration = registerOutput<String>('duration');
     endTime = registerOutput<String>('endTime');
     error = registerOutput<StatusResponseDatamigrationV1beta1>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponseDatamigrationV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    migrationJobId = registerOutput<String>('migrationJobId');
+    this.name = registerOutput<String>('name');
+    phase = registerOutput<String>('phase');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    reverseSshConnectivity = registerOutput<ReverseSshConnectivityResponseDatamigrationV1beta1>('reverseSshConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReverseSshConnectivityResponseDatamigrationV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    source = registerOutput<String>('source');
+    sourceDatabase = registerOutput<DatabaseTypeResponseDatamigrationV1beta1>('sourceDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseTypeResponseDatamigrationV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    staticIpConnectivity = registerOutput<Map<String, dynamic>>('staticIpConnectivity');
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+    vpcPeeringConnectivity = registerOutput<VpcPeeringConnectivityResponseDatamigrationV1beta1>('vpcPeeringConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcPeeringConnectivityResponseDatamigrationV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [MigrationJobDatamigrationV1beta1] resource.
+  MigrationJobDatamigrationV1beta1.reference(String urn)
+    : super(
+        'google-native:datamigration/v1beta1:MigrationJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    destination = registerOutput<String>('destination');
+    destinationDatabase = registerOutput<DatabaseTypeResponseDatamigrationV1beta1>('destinationDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseTypeResponseDatamigrationV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    dumpPath = registerOutput<String>('dumpPath');
+    duration = registerOutput<String>('duration');
+    endTime = registerOutput<String>('endTime');
+    error = registerOutput<StatusResponseDatamigrationV1beta1>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponseDatamigrationV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     migrationJobId = registerOutput<String>('migrationJobId');
     this.name = registerOutput<String>('name');

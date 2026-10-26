@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes Iceberg data format.
 class GoogleCloudDataplexV1StorageFormatIcebergOptions {
   /// Optional. The location of where the iceberg metadata is present, must be within the table path
-  final pulumi.Input<String>? metadataLocation;
+  final pulumi.Input<String?>? metadataLocation;
 
   /// Creates a new [GoogleCloudDataplexV1StorageFormatIcebergOptions].
   /// [metadataLocation] Optional. The location of where the iceberg metadata is present, must be within the table path

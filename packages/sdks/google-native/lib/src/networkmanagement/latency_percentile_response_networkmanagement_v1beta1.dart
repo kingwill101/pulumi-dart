@@ -27,7 +27,7 @@ class LatencyPercentileResponseNetworkmanagementV1beta1 {
   factory LatencyPercentileResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return LatencyPercentileResponseNetworkmanagementV1beta1(
       latencyMicros: pulumi.Input.fromValue(map['latencyMicros'] as String),
-      percent: pulumi.Input.fromValue(map['percent'] as int),
+      percent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['percent'])),
     );
   }
 }

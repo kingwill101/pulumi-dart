@@ -6,9 +6,9 @@ import 'postgresql_column.dart';
 /// PostgreSQL table.
 class PostgresqlTable {
   /// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
-  final pulumi.Input<List<PostgresqlColumn>>? postgresqlColumns;
+  final pulumi.Input<List<PostgresqlColumn>?>? postgresqlColumns;
   /// Table name.
-  final pulumi.Input<String>? table;
+  final pulumi.Input<String?>? table;
 
   /// Creates a new [PostgresqlTable].
   /// [postgresqlColumns] PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.

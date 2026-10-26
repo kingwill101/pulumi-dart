@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The iOS apps that are allowed to use the key.
 class IosKeyRestrictions {
   /// A list of bundle IDs that are allowed when making API calls with this key.
-  final pulumi.Input<List<String>>? allowedBundleIds;
+  final pulumi.Input<List<String>?>? allowedBundleIds;
 
   /// Creates a new [IosKeyRestrictions].
   /// [allowedBundleIds] A list of bundle IDs that are allowed when making API calls with this key.

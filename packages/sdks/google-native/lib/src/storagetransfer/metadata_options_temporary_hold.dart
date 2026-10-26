@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
-enum MetadataOptionsTemporaryHold {
+enum MetadataOptionsTemporaryHold implements pulumi.PulumiEnum<String> {
   temporaryHoldUnspecified("TEMPORARY_HOLD_UNSPECIFIED"),
   temporaryHoldSkip("TEMPORARY_HOLD_SKIP"),
   temporaryHoldPreserve("TEMPORARY_HOLD_PRESERVE");
 
   const MetadataOptionsTemporaryHold(this.wireValue);
+  @override
   final String wireValue;
 
   static MetadataOptionsTemporaryHold fromValue(String value) {

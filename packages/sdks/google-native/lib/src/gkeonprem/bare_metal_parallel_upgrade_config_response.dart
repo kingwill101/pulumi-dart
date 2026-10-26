@@ -26,8 +26,8 @@ class BareMetalParallelUpgradeConfigResponse {
 
   factory BareMetalParallelUpgradeConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalParallelUpgradeConfigResponse(
-      concurrentNodes: pulumi.Input.fromValue(map['concurrentNodes'] as int),
-      minimumAvailableNodes: pulumi.Input.fromValue(map['minimumAvailableNodes'] as int),
+      concurrentNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['concurrentNodes'])),
+      minimumAvailableNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minimumAvailableNodes'])),
     );
   }
 }

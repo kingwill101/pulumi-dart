@@ -7,15 +7,15 @@ import 'persistent_disk_defaults_vmmigration_v1alpha1.dart';
 /// ComputeEngineDisksTargetDefaults is a collection of details for creating Persistent Disks in a target Compute Engine project.
 class ComputeEngineDisksTargetDefaultsVmmigrationV1alpha1 {
   /// The details of each Persistent Disk to create.
-  final pulumi.Input<List<PersistentDiskDefaultsVmmigrationV1alpha1>>? disks;
+  final pulumi.Input<List<PersistentDiskDefaultsVmmigrationV1alpha1>?>? disks;
   /// Details of the disk only migration target.
-  final pulumi.Input<Map<String, dynamic>>? disksTargetDefaults;
+  final pulumi.Input<Map<String, dynamic>?>? disksTargetDefaults;
   /// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create the Persistent Disks.
-  final pulumi.Input<String>? targetProject;
+  final pulumi.Input<String?>? targetProject;
   /// Details of the VM migration target.
-  final pulumi.Input<DisksMigrationVmTargetDefaultsVmmigrationV1alpha1>? vmTargetDefaults;
+  final pulumi.Input<DisksMigrationVmTargetDefaultsVmmigrationV1alpha1?>? vmTargetDefaults;
   /// The zone in which to create the Persistent Disks.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [ComputeEngineDisksTargetDefaultsVmmigrationV1alpha1].
   /// [disks] The details of each Persistent Disk to create.

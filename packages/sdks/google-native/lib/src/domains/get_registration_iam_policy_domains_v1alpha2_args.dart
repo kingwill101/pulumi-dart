@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_domains_v1alpha2_get_registration_iam_policy_domains_v1alpha2_args_doc}
 class GetRegistrationIamPolicyDomainsV1alpha2Args {
   final pulumi.Input<String> location;
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> registrationId;
 
   /// Creates a new [GetRegistrationIamPolicyDomainsV1alpha2Args].
@@ -36,7 +36,7 @@ class GetRegistrationIamPolicyDomainsV1alpha2Args {
   factory GetRegistrationIamPolicyDomainsV1alpha2Args.fromMap(Map<String, dynamic> map) {
     return GetRegistrationIamPolicyDomainsV1alpha2Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       registrationId: pulumi.Input.fromValue(map['registrationId'] as String),
     );

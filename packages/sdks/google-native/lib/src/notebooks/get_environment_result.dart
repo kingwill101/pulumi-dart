@@ -6,19 +6,19 @@ import 'vm_image_response.dart';
 /// Result data returned by getEnvironment.
 class GetEnvironmentResult {
   /// Use a container image to start the notebook instance.
-  final ContainerImageResponse containerImage;
+  final ContainerImageResponse? containerImage;
   /// The time at which this environment was created.
-  final String createTime;
+  final String? createTime;
   /// A brief description of this environment.
-  final String description;
+  final String? description;
   /// Display name of this environment for the UI.
-  final String displayName;
+  final String? displayName;
   /// Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
-  final String name;
+  final String? name;
   /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
-  final String postStartupScript;
+  final String? postStartupScript;
   /// Use a Compute Engine VM image to start the notebook instance.
-  final VmImageResponse vmImage;
+  final VmImageResponse? vmImage;
 
   /// Creates a new [GetEnvironmentResult].
   /// [containerImage] Use a container image to start the notebook instance.
@@ -29,36 +29,36 @@ class GetEnvironmentResult {
   /// [postStartupScript] Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
   /// [vmImage] Use a Compute Engine VM image to start the notebook instance.
   const GetEnvironmentResult({
-    required this.containerImage,
-    required this.createTime,
-    required this.description,
-    required this.displayName,
-    required this.name,
-    required this.postStartupScript,
-    required this.vmImage,
+    this.containerImage,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.name,
+    this.postStartupScript,
+    this.vmImage,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerImage': containerImage.toMap(),
-      'createTime': createTime,
-      'description': description,
-      'displayName': displayName,
-      'name': name,
-      'postStartupScript': postStartupScript,
-      'vmImage': vmImage.toMap(),
+      'containerImage': ?containerImage?.toMap(),
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'name': ?name,
+      'postStartupScript': ?postStartupScript,
+      'vmImage': ?vmImage?.toMap(),
     };
   }
 
   factory GetEnvironmentResult.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentResult(
-      containerImage: ContainerImageResponse.fromMap((map['containerImage']! as Map).cast<String, dynamic>()),
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      name: map['name'] as String,
-      postStartupScript: map['postStartupScript'] as String,
-      vmImage: VmImageResponse.fromMap((map['vmImage']! as Map).cast<String, dynamic>()),
+      containerImage: (() { final guardedValue = map['containerImage']; if (guardedValue == null) return null; return ContainerImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      postStartupScript: (() { final guardedValue = map['postStartupScript']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vmImage: (() { final guardedValue = map['vmImage']; if (guardedValue == null) return null; return VmImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

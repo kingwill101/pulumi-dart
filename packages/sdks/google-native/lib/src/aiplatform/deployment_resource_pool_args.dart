@@ -12,10 +12,10 @@ class DeploymentResourcePoolArgs {
   final pulumi.Input<GoogleCloudAiplatformV1DedicatedResources> dedicatedResources;
   /// The ID to use for the DeploymentResourcePool, which will become the final component of the DeploymentResourcePool's resource name. The maximum length is 63 characters, and valid characters are `/^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$/`.
   final pulumi.Input<String> deploymentResourcePoolId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Immutable. The resource name of the DeploymentResourcePool. Format: `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [DeploymentResourcePoolArgs].
   /// [dedicatedResources] The underlying DedicatedResources that the DeploymentResourcePool uses.

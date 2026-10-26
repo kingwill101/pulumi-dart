@@ -34,12 +34,34 @@ class AttributeDefinitionHealthcareV1beta1 extends pulumi.CustomResource {
           'google-native:healthcare/v1beta1:AttributeDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['attributeDefinitionId', 'consentStoreId', 'datasetId', 'location', 'project']).merge(options),
         ) {
-    allowedValues = registerOutput<List<String>>('allowedValues');
+    allowedValues = registerOutput<List<String>>('allowedValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     attributeDefinitionId = registerOutput<String>('attributeDefinitionId');
     category = registerOutput<String>('category');
-    consentDefaultValues = registerOutput<List<String>>('consentDefaultValues');
+    consentDefaultValues = registerOutput<List<String>>('consentDefaultValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    consentStoreId = registerOutput<String>('consentStoreId');
+    dataMappingDefaultValue = registerOutput<String>('dataMappingDefaultValue');
+    datasetId = registerOutput<String>('datasetId');
+    description = registerOutput<String>('description');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [AttributeDefinitionHealthcareV1beta1] resource.
+  AttributeDefinitionHealthcareV1beta1.reference(String urn)
+    : super(
+        'google-native:healthcare/v1beta1:AttributeDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedValues = registerOutput<List<String>>('allowedValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    attributeDefinitionId = registerOutput<String>('attributeDefinitionId');
+    category = registerOutput<String>('category');
+    consentDefaultValues = registerOutput<List<String>>('consentDefaultValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     consentStoreId = registerOutput<String>('consentStoreId');
     dataMappingDefaultValue = registerOutput<String>('dataMappingDefaultValue');
     datasetId = registerOutput<String>('datasetId');

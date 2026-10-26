@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_firebaserules_v1_get_release_args_doc}
 class GetReleaseArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> releaseId;
 
   /// Creates a new [GetReleaseArgs].

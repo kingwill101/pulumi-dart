@@ -7,9 +7,9 @@ import 'security_posture_config_vulnerability_mode_gkehub_v1beta.dart';
 /// SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
 class SecurityPostureConfigGkehubV1beta {
   /// Sets which mode to use for Security Posture features.
-  final pulumi.Input<SecurityPostureConfigModeGkehubV1beta>? mode;
+  final pulumi.Input<SecurityPostureConfigModeGkehubV1beta?>? mode;
   /// Sets which mode to use for vulnerability scanning.
-  final pulumi.Input<SecurityPostureConfigVulnerabilityModeGkehubV1beta>? vulnerabilityMode;
+  final pulumi.Input<SecurityPostureConfigVulnerabilityModeGkehubV1beta?>? vulnerabilityMode;
 
   /// Creates a new [SecurityPostureConfigGkehubV1beta].
   /// [mode] Sets which mode to use for Security Posture features.

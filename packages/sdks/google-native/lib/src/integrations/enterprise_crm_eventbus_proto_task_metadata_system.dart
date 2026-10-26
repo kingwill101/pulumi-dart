@@ -1,4 +1,6 @@
-enum EnterpriseCrmEventbusProtoTaskMetadataSystem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum EnterpriseCrmEventbusProtoTaskMetadataSystem implements pulumi.PulumiEnum<String> {
   unspecifiedSystem("UNSPECIFIED_SYSTEM"),
   generic("GENERIC"),
   buganizer("BUGANIZER"),
@@ -12,6 +14,7 @@ enum EnterpriseCrmEventbusProtoTaskMetadataSystem {
   dataBridge("DATA_BRIDGE");
 
   const EnterpriseCrmEventbusProtoTaskMetadataSystem(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmEventbusProtoTaskMetadataSystem fromValue(String value) {

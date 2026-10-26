@@ -6,7 +6,7 @@ import 'kerberos_config_dataproc_v1beta2.dart';
 /// Security related configuration, including encryption, Kerberos, etc.
 class SecurityConfigDataprocV1beta2 {
   /// Optional. Kerberos related configuration.
-  final pulumi.Input<KerberosConfigDataprocV1beta2>? kerberosConfig;
+  final pulumi.Input<KerberosConfigDataprocV1beta2?>? kerberosConfig;
 
   /// Creates a new [SecurityConfigDataprocV1beta2].
   /// [kerberosConfig] Optional. Kerberos related configuration.

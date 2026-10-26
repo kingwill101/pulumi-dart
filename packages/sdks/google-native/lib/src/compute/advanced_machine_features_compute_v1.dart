@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
 class AdvancedMachineFeaturesComputeV1 {
   /// Whether to enable nested virtualization or not (default is false).
-  final pulumi.Input<bool>? enableNestedVirtualization;
+  final pulumi.Input<bool?>? enableNestedVirtualization;
   /// Whether to enable UEFI networking for instance creation.
-  final pulumi.Input<bool>? enableUefiNetworking;
+  final pulumi.Input<bool?>? enableUefiNetworking;
   /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
-  final pulumi.Input<int>? threadsPerCore;
+  final pulumi.Input<int?>? threadsPerCore;
   /// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance's nominal CPU count and the underlying platform's SMT width.
-  final pulumi.Input<int>? visibleCoreCount;
+  final pulumi.Input<int?>? visibleCoreCount;
 
   /// Creates a new [AdvancedMachineFeaturesComputeV1].
   /// [enableNestedVirtualization] Whether to enable nested virtualization or not (default is false).
@@ -38,8 +38,8 @@ class AdvancedMachineFeaturesComputeV1 {
     return AdvancedMachineFeaturesComputeV1(
       enableNestedVirtualization: (() { final guardedValue = map['enableNestedVirtualization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableUefiNetworking: (() { final guardedValue = map['enableUefiNetworking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      threadsPerCore: (() { final guardedValue = map['threadsPerCore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      visibleCoreCount: (() { final guardedValue = map['visibleCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      threadsPerCore: (() { final guardedValue = map['threadsPerCore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      visibleCoreCount: (() { final guardedValue = map['visibleCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

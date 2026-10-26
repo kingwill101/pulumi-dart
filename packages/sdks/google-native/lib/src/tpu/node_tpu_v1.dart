@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'network_endpoint_response.dart';
 import 'node_args.dart';
 import 'scheduling_config_response.dart';
+import 'symptom_response.dart';
 
 /// Creates a node.
 /// Auto-naming is currently not supported for this resource.
@@ -29,7 +31,7 @@ class NodeTpuV1 extends pulumi.CustomResource {
   /// The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
   late final pulumi.Output<String> network;
   /// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkEndpoints;
+  late final pulumi.Output<List<NetworkEndpointResponse>> networkEndpoints;
   /// The unqualified resource name.
   late final pulumi.Output<String?> nodeId;
   /// DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
@@ -42,7 +44,7 @@ class NodeTpuV1 extends pulumi.CustomResource {
   /// The current state for the TPU Node.
   late final pulumi.Output<String> state;
   /// The Symptoms that have occurred to the TPU Node.
-  late final pulumi.Output<List<Map<String, dynamic>>> symptoms;
+  late final pulumi.Output<List<SymptomResponse>> symptoms;
   /// The version of Tensorflow running in the Node.
   late final pulumi.Output<String> tensorflowVersion;
   /// Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering should be set up before provisioning the node. If this field is set, cidr_block field should not be specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be created with this this field enabled.
@@ -60,7 +62,7 @@ class NodeTpuV1 extends pulumi.CustomResource {
           'google-native:tpu/v1:Node',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     acceleratorType = registerOutput<String>('acceleratorType');
     apiVersion = registerOutput<String>('apiVersion');
@@ -70,18 +72,51 @@ class NodeTpuV1 extends pulumi.CustomResource {
     health = registerOutput<String>('health');
     healthDescription = registerOutput<String>('healthDescription');
     ipAddress = registerOutput<String>('ipAddress');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
-    networkEndpoints = registerOutput<List<Map<String, dynamic>>>('networkEndpoints');
+    networkEndpoints = registerOutput<List<NetworkEndpointResponse>>('networkEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkEndpointResponse>(guardedValue, (value) => NetworkEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
     nodeId = registerOutput<String?>('nodeId');
     port = registerOutput<String>('port');
     project = registerOutput<String>('project');
     schedulingConfig = registerOutput<SchedulingConfigResponse>('schedulingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchedulingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceAccount = registerOutput<String>('serviceAccount');
     state = registerOutput<String>('state');
-    symptoms = registerOutput<List<Map<String, dynamic>>>('symptoms');
+    symptoms = registerOutput<List<SymptomResponse>>('symptoms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SymptomResponse>(guardedValue, (value) => SymptomResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tensorflowVersion = registerOutput<String>('tensorflowVersion');
+    useServiceNetworking = registerOutput<bool>('useServiceNetworking');
+  }
+
+  /// Creates a typed reference to an existing [NodeTpuV1] resource.
+  NodeTpuV1.reference(String urn)
+    : super(
+        'google-native:tpu/v1:Node',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acceleratorType = registerOutput<String>('acceleratorType');
+    apiVersion = registerOutput<String>('apiVersion');
+    cidrBlock = registerOutput<String>('cidrBlock');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    health = registerOutput<String>('health');
+    healthDescription = registerOutput<String>('healthDescription');
+    ipAddress = registerOutput<String>('ipAddress');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    networkEndpoints = registerOutput<List<NetworkEndpointResponse>>('networkEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkEndpointResponse>(guardedValue, (value) => NetworkEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    nodeId = registerOutput<String?>('nodeId');
+    port = registerOutput<String>('port');
+    project = registerOutput<String>('project');
+    schedulingConfig = registerOutput<SchedulingConfigResponse>('schedulingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchedulingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceAccount = registerOutput<String>('serviceAccount');
+    state = registerOutput<String>('state');
+    symptoms = registerOutput<List<SymptomResponse>>('symptoms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SymptomResponse>(guardedValue, (value) => SymptomResponse.fromMap((value as Map).cast<String, dynamic>())); });
     tensorflowVersion = registerOutput<String>('tensorflowVersion');
     useServiceNetworking = registerOutput<bool>('useServiceNetworking');
   }

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of network.
-enum LogicalNetworkInterfaceNetworkType {
+enum LogicalNetworkInterfaceNetworkType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   client("CLIENT"),
   private("PRIVATE");
 
   const LogicalNetworkInterfaceNetworkType(this.wireValue);
+  @override
   final String wireValue;
 
   static LogicalNetworkInterfaceNetworkType fromValue(String value) {

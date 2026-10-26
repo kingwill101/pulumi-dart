@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_group_compute_v1_args.dart';
+import 'named_port_response_compute_v1.dart';
 
 /// Creates an instance group in the specified project using the parameters that are included in the request.
 class InstanceGroupComputeV1 extends pulumi.CustomResource {
@@ -14,7 +15,7 @@ class InstanceGroupComputeV1 extends pulumi.CustomResource {
   /// The name of the instance group. The name must be 1-63 characters long, and comply with RFC1035.
   late final pulumi.Output<String> name;
   /// Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "app1", port: 8080}, {name: "app1", port: 8081}, {name: "app2", port: 8082}] Named ports apply to all instances in this instance group.
-  late final pulumi.Output<List<Map<String, dynamic>>> namedPorts;
+  late final pulumi.Output<List<NamedPortResponseComputeV1>> namedPorts;
   /// The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
   late final pulumi.Output<String> network;
   late final pulumi.Output<String> project;
@@ -42,14 +43,39 @@ class InstanceGroupComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:InstanceGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'zone']).merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     fingerprint = registerOutput<String>('fingerprint');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    namedPorts = registerOutput<List<Map<String, dynamic>>>('namedPorts');
+    namedPorts = registerOutput<List<NamedPortResponseComputeV1>>('namedPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NamedPortResponseComputeV1>(guardedValue, (value) => NamedPortResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    size = registerOutput<int>('size');
+    subnetwork = registerOutput<String>('subnetwork');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [InstanceGroupComputeV1] resource.
+  InstanceGroupComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:InstanceGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    namedPorts = registerOutput<List<NamedPortResponseComputeV1>>('namedPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NamedPortResponseComputeV1>(guardedValue, (value) => NamedPortResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');

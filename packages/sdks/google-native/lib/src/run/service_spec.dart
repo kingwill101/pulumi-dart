@@ -7,9 +7,9 @@ import 'traffic_target.dart';
 /// ServiceSpec holds the desired state of the Route (from the client), which is used to manipulate the underlying Route and Configuration(s).
 class ServiceSpec {
   /// Holds the latest specification for the Revision to be stamped out.
-  final pulumi.Input<RevisionTemplate>? template;
+  final pulumi.Input<RevisionTemplate?>? template;
   /// Specifies how to distribute traffic over a collection of Knative Revisions and Configurations to the Service's main URL.
-  final pulumi.Input<List<TrafficTarget>>? traffic;
+  final pulumi.Input<List<TrafficTarget>?>? traffic;
 
   /// Creates a new [ServiceSpec].
   /// [template] Holds the latest specification for the Revision to be stamped out.

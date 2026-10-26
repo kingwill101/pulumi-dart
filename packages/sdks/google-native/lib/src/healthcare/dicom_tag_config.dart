@@ -8,11 +8,11 @@ import 'options.dart';
 /// Specifies the parameters needed for the de-identification of DICOM stores.
 class DicomTagConfig {
   /// Specifies custom tag selections and `Actions` to apply to them. Overrides `options` and `profile`. Conflicting `Actions` are applied in the order given.
-  final pulumi.Input<List<Action>>? actions;
+  final pulumi.Input<List<Action>?>? actions;
   /// Specifies additional options to apply, overriding the base `profile`.
-  final pulumi.Input<Options>? options;
+  final pulumi.Input<Options?>? options;
   /// Base profile type for handling DICOM tags.
-  final pulumi.Input<DicomTagConfigProfileType>? profileType;
+  final pulumi.Input<DicomTagConfigProfileType?>? profileType;
 
   /// Creates a new [DicomTagConfig].
   /// [actions] Specifies custom tag selections and `Actions` to apply to them. Overrides `options` and `profile`. Conflicting `Actions` are applied in the order given.

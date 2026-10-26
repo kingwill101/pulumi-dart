@@ -11,7 +11,7 @@ class GetSessionEntityTypeDialogflowV3beta1Args {
   final pulumi.Input<String> entityTypeId;
   final pulumi.Input<String> environmentId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> sessionId;
 
   /// Creates a new [GetSessionEntityTypeDialogflowV3beta1Args].

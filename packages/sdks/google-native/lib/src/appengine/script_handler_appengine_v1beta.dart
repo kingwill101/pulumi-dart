@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Executes a script to handle the request that matches the URL pattern.
 class ScriptHandlerAppengineV1beta {
   /// Path to the script from the application root directory.
-  final pulumi.Input<String>? scriptPath;
+  final pulumi.Input<String?>? scriptPath;
 
   /// Creates a new [ScriptHandlerAppengineV1beta].
   /// [scriptPath] Path to the script from the application root directory.

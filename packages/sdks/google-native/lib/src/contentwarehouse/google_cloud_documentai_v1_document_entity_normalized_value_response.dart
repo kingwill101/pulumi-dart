@@ -64,8 +64,8 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValueResponse {
       booleanValue: pulumi.Input.fromValue(map['booleanValue'] as bool),
       dateValue: pulumi.Input.fromValue(GoogleTypeDateResponse.fromMap((map['dateValue']! as Map).cast<String, dynamic>())),
       datetimeValue: pulumi.Input.fromValue(GoogleTypeDateTimeResponse.fromMap((map['datetimeValue']! as Map).cast<String, dynamic>())),
-      floatValue: pulumi.Input.fromValue(map['floatValue'] as double),
-      integerValue: pulumi.Input.fromValue(map['integerValue'] as int),
+      floatValue: pulumi.Input.fromValue((map['floatValue'] as num).toDouble()),
+      integerValue: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['integerValue'])),
       moneyValue: pulumi.Input.fromValue(GoogleTypeMoneyResponse.fromMap((map['moneyValue']! as Map).cast<String, dynamic>())),
       text: pulumi.Input.fromValue(map['text'] as String),
     );

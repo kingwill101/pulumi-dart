@@ -38,8 +38,29 @@ class WorkerPoolCloudbuildV1alpha2 extends pulumi.CustomResource {
           'google-native:cloudbuild/v1alpha2:WorkerPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'workerPoolId']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    this.name = registerOutput<String>('name');
+    networkConfig = registerOutput<NetworkConfigResponseCloudbuildV1alpha2>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkConfigResponseCloudbuildV1alpha2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+    workerConfig = registerOutput<WorkerConfigResponseCloudbuildV1alpha2>('workerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerConfigResponseCloudbuildV1alpha2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workerPoolId = registerOutput<String>('workerPoolId');
+  }
+
+  /// Creates a typed reference to an existing [WorkerPoolCloudbuildV1alpha2] resource.
+  WorkerPoolCloudbuildV1alpha2.reference(String urn)
+    : super(
+        'google-native:cloudbuild/v1alpha2:WorkerPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     this.name = registerOutput<String>('name');

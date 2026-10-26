@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
-enum GuestOsFeatureTypeComputeBeta {
+enum GuestOsFeatureTypeComputeBeta implements pulumi.PulumiEnum<String> {
   featureTypeUnspecified("FEATURE_TYPE_UNSPECIFIED"),
   gvnic("GVNIC"),
   multiIpSubnet("MULTI_IP_SUBNET"),
@@ -13,6 +15,7 @@ enum GuestOsFeatureTypeComputeBeta {
   windows("WINDOWS");
 
   const GuestOsFeatureTypeComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static GuestOsFeatureTypeComputeBeta fromValue(String value) {

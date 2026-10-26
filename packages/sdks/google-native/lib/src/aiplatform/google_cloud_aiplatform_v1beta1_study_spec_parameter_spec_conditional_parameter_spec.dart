@@ -11,11 +11,11 @@ class GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec
   /// The spec for a conditional parameter.
   final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecParameterSpec> parameterSpec;
   /// The spec for matching values from a parent parameter of `CATEGORICAL` type.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition>? parentCategoricalValues;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition?>? parentCategoricalValues;
   /// The spec for matching values from a parent parameter of `DISCRETE` type.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition>? parentDiscreteValues;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition?>? parentDiscreteValues;
   /// The spec for matching values from a parent parameter of `INTEGER` type.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueCondition>? parentIntValues;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueCondition?>? parentIntValues;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec].
   /// [parameterSpec] The spec for a conditional parameter.

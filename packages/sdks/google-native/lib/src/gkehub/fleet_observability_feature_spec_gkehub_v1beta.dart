@@ -6,7 +6,7 @@ import 'fleet_observability_logging_config_gkehub_v1beta.dart';
 /// **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
 class FleetObservabilityFeatureSpecGkehubV1beta {
   /// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
-  final pulumi.Input<FleetObservabilityLoggingConfigGkehubV1beta>? loggingConfig;
+  final pulumi.Input<FleetObservabilityLoggingConfigGkehubV1beta?>? loggingConfig;
 
   /// Creates a new [FleetObservabilityFeatureSpecGkehubV1beta].
   /// [loggingConfig] Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.

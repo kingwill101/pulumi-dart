@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// How this Service Attachment will treat traffic sent to the tunnel_ip, destined for the consumer network.
-enum ServiceAttachmentTunnelingConfigRoutingMode {
+enum ServiceAttachmentTunnelingConfigRoutingMode implements pulumi.PulumiEnum<String> {
   packetInjection("PACKET_INJECTION"),
   standardRouting("STANDARD_ROUTING"),
   unspecifiedRoutingMode("UNSPECIFIED_ROUTING_MODE");
 
   const ServiceAttachmentTunnelingConfigRoutingMode(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceAttachmentTunnelingConfigRoutingMode fromValue(String value) {

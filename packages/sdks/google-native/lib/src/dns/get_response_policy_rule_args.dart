@@ -7,8 +7,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_dns_v1_get_response_policy_rule_args_doc}
 class GetResponsePolicyRuleArgs {
-  final pulumi.Input<String>? clientOperationId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? clientOperationId;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> responsePolicy;
   final pulumi.Input<String> responsePolicyRule;
 

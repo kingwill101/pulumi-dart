@@ -54,10 +54,10 @@ class NodePoolAutoscalingResponse {
       autoprovisioned: pulumi.Input.fromValue(map['autoprovisioned'] as bool),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       locationPolicy: pulumi.Input.fromValue(map['locationPolicy'] as String),
-      maxNodeCount: pulumi.Input.fromValue(map['maxNodeCount'] as int),
-      minNodeCount: pulumi.Input.fromValue(map['minNodeCount'] as int),
-      totalMaxNodeCount: pulumi.Input.fromValue(map['totalMaxNodeCount'] as int),
-      totalMinNodeCount: pulumi.Input.fromValue(map['totalMinNodeCount'] as int),
+      maxNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNodeCount'])),
+      minNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minNodeCount'])),
+      totalMaxNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalMaxNodeCount'])),
+      totalMinNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalMinNodeCount'])),
     );
   }
 }

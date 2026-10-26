@@ -6,9 +6,9 @@ import 'data_masking_policy_predefined_expression.dart';
 /// The data masking policy that is used to specify data masking rule.
 class DataMaskingPolicy {
   /// A predefined masking expression.
-  final pulumi.Input<DataMaskingPolicyPredefinedExpression>? predefinedExpression;
+  final pulumi.Input<DataMaskingPolicyPredefinedExpression?>? predefinedExpression;
   /// The name of the BigQuery routine that contains the custom masking routine, in the format of `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
-  final pulumi.Input<String>? routine;
+  final pulumi.Input<String?>? routine;
 
   /// Creates a new [DataMaskingPolicy].
   /// [predefinedExpression] A predefined masking expression.

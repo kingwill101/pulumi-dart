@@ -6,7 +6,7 @@ import 'certificate_authority_service_config.dart';
 /// The CA that issues the workload certificate. It includes CA address, type, authentication to CA service, etc.
 class CertificateAuthorityConfig {
   /// Defines a CertificateAuthorityServiceConfig.
-  final pulumi.Input<CertificateAuthorityServiceConfig>? certificateAuthorityServiceConfig;
+  final pulumi.Input<CertificateAuthorityServiceConfig?>? certificateAuthorityServiceConfig;
 
   /// Creates a new [CertificateAuthorityConfig].
   /// [certificateAuthorityServiceConfig] Defines a CertificateAuthorityServiceConfig.

@@ -6,7 +6,7 @@ import 'cloud_healthcare_source.dart';
 /// AnnotationSource holds the source information of the annotation.
 class AnnotationSource {
   /// Cloud Healthcare API resource.
-  final pulumi.Input<CloudHealthcareSource>? cloudHealthcareSource;
+  final pulumi.Input<CloudHealthcareSource?>? cloudHealthcareSource;
 
   /// Creates a new [AnnotationSource].
   /// [cloudHealthcareSource] Cloud Healthcare API resource.

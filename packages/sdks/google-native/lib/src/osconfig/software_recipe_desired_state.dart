@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-enum SoftwareRecipeDesiredState {
+enum SoftwareRecipeDesiredState implements pulumi.PulumiEnum<String> {
   desiredStateUnspecified("DESIRED_STATE_UNSPECIFIED"),
   installed("INSTALLED"),
   updated("UPDATED"),
   removed("REMOVED");
 
   const SoftwareRecipeDesiredState(this.wireValue);
+  @override
   final String wireValue;
 
   static SoftwareRecipeDesiredState fromValue(String value) {

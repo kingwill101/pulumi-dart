@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Specifies the machine types, the number of replicas for workers and parameter servers.
-enum GoogleCloudMlV1TrainingInputScaleTier {
+enum GoogleCloudMlV1TrainingInputScaleTier implements pulumi.PulumiEnum<String> {
   basic("BASIC"),
   standard1("STANDARD_1"),
   premium1("PREMIUM_1"),
@@ -8,6 +10,7 @@ enum GoogleCloudMlV1TrainingInputScaleTier {
   custom("CUSTOM");
 
   const GoogleCloudMlV1TrainingInputScaleTier(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudMlV1TrainingInputScaleTier fromValue(String value) {

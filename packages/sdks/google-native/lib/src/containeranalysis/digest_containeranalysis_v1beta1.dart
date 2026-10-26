@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Digest information.
 class DigestContaineranalysisV1beta1 {
   /// `SHA1`, `SHA512` etc.
-  final pulumi.Input<String>? algo;
+  final pulumi.Input<String?>? algo;
   /// Value of the digest.
-  final pulumi.Input<String>? digestBytes;
+  final pulumi.Input<String?>? digestBytes;
 
   /// Creates a new [DigestContaineranalysisV1beta1].
   /// [algo] `SHA1`, `SHA512` etc.

@@ -19,7 +19,7 @@ class EnterpriseCrmEventbusProtoProtoParameterArrayResponse {
 
   factory EnterpriseCrmEventbusProtoProtoParameterArrayResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoProtoParameterArrayResponse(
-      protoValues: pulumi.Input.fromValue((map['protoValues'] as List).cast<Map<String, String>>()),
+      protoValues: pulumi.Input.fromValue(pulumi.Input.decodeList<Map<String, String>>(map['protoValues']!, (value) => (value as Map).cast<String, String>())),
     );
   }
 }

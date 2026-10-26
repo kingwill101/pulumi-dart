@@ -6,9 +6,9 @@ import 'oracle_column_datastream_v1alpha1.dart';
 /// Oracle table.
 class OracleTableDatastreamV1alpha1 {
   /// Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes everything.
-  final pulumi.Input<List<OracleColumnDatastreamV1alpha1>>? oracleColumns;
+  final pulumi.Input<List<OracleColumnDatastreamV1alpha1>?>? oracleColumns;
   /// Table name.
-  final pulumi.Input<String>? tableName;
+  final pulumi.Input<String?>? tableName;
 
   /// Creates a new [OracleTableDatastreamV1alpha1].
   /// [oracleColumns] Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes everything.

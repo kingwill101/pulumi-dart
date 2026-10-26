@@ -9,8 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityAwareProxyClientArgs {
   final pulumi.Input<String> brandId;
   /// Human-friendly name given to the OAuth client.
-  final pulumi.Input<String>? displayName;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? displayName;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [IdentityAwareProxyClientArgs].
   /// [brandId] Required.

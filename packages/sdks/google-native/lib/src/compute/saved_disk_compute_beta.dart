@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An instance-attached disk resource.
 class SavedDiskComputeBeta {
   /// Specifies a URL of the disk attached to the source instance.
-  final pulumi.Input<String>? sourceDisk;
+  final pulumi.Input<String?>? sourceDisk;
 
   /// Creates a new [SavedDiskComputeBeta].
   /// [sourceDisk] Specifies a URL of the disk attached to the source instance.

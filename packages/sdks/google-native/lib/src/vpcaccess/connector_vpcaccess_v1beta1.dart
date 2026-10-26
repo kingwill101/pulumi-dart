@@ -43,9 +43,34 @@ class ConnectorVpcaccessV1beta1 extends pulumi.CustomResource {
           'google-native:vpcaccess/v1beta1:Connector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['connectorId', 'location', 'project']).merge(options),
         ) {
-    connectedProjects = registerOutput<List<String>>('connectedProjects');
+    connectedProjects = registerOutput<List<String>>('connectedProjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectorId = registerOutput<String>('connectorId');
+    ipCidrRange = registerOutput<String>('ipCidrRange');
+    location = registerOutput<String>('location');
+    machineType = registerOutput<String>('machineType');
+    maxInstances = registerOutput<int>('maxInstances');
+    maxThroughput = registerOutput<int>('maxThroughput');
+    minInstances = registerOutput<int>('minInstances');
+    minThroughput = registerOutput<int>('minThroughput');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    subnet = registerOutput<SubnetResponseVpcaccessV1beta1>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetResponseVpcaccessV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ConnectorVpcaccessV1beta1] resource.
+  ConnectorVpcaccessV1beta1.reference(String urn)
+    : super(
+        'google-native:vpcaccess/v1beta1:Connector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    connectedProjects = registerOutput<List<String>>('connectedProjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     connectorId = registerOutput<String>('connectorId');
     ipCidrRange = registerOutput<String>('ipCidrRange');
     location = registerOutput<String>('location');

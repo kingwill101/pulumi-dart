@@ -10,7 +10,7 @@ class GetMappingRuleArgs {
   final pulumi.Input<String> conversionWorkspaceId;
   final pulumi.Input<String> location;
   final pulumi.Input<String> mappingRuleId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetMappingRuleArgs].
   /// [conversionWorkspaceId] Required.

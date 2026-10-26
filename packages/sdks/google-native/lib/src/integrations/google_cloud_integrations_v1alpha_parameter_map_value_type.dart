@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Option to specify value type for all entries of the map. If provided then field types for all entries must conform to this.
-enum GoogleCloudIntegrationsV1alphaParameterMapValueType {
+enum GoogleCloudIntegrationsV1alphaParameterMapValueType implements pulumi.PulumiEnum<String> {
   integrationParameterDataTypeUnspecified("INTEGRATION_PARAMETER_DATA_TYPE_UNSPECIFIED"),
   stringValue("STRING_VALUE"),
   intValue("INT_VALUE"),
@@ -14,6 +16,7 @@ enum GoogleCloudIntegrationsV1alphaParameterMapValueType {
   protoArray("PROTO_ARRAY");
 
   const GoogleCloudIntegrationsV1alphaParameterMapValueType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudIntegrationsV1alphaParameterMapValueType fromValue(String value) {

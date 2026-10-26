@@ -6,7 +6,7 @@ import 'policy_controller_monitoring_config_backends_item_gkehub_v1alpha.dart';
 /// MonitoringConfig specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
 class PolicyControllerMonitoringConfigGkehubV1alpha {
   /// Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
-  final pulumi.Input<List<PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha>>? backends;
+  final pulumi.Input<List<PolicyControllerMonitoringConfigBackendsItemGkehubV1alpha>?>? backends;
 
   /// Creates a new [PolicyControllerMonitoringConfigGkehubV1alpha].
   /// [backends] Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.

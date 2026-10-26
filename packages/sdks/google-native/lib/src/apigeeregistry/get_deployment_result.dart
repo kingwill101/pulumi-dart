@@ -4,33 +4,33 @@
 /// Result data returned by getDeployment.
 class GetDeploymentResult {
   /// Text briefly describing how to access the endpoint. Changes to this value will not affect the revision.
-  final String accessGuidance;
+  final String? accessGuidance;
   /// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
-  final Map<String, String> annotations;
+  final Map<String, String>? annotations;
   /// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
-  final String apiSpecRevision;
+  final String? apiSpecRevision;
   /// Creation timestamp; when the deployment resource was created.
-  final String createTime;
+  final String? createTime;
   /// A detailed description.
-  final String description;
+  final String? description;
   /// Human-meaningful name.
-  final String displayName;
+  final String? displayName;
   /// The address where the deployment is serving. Changes to this value will update the revision.
-  final String endpointUri;
+  final String? endpointUri;
   /// The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision.
-  final String externalChannelUri;
+  final String? externalChannelUri;
   /// Text briefly identifying the intended audience of the API. Changes to this value will not affect the revision.
-  final String intendedAudience;
+  final String? intendedAudience;
   /// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Revision creation timestamp; when the represented revision was created.
-  final String revisionCreateTime;
+  final String? revisionCreateTime;
   /// Immutable. The revision ID of the deployment. A new revision is committed whenever the deployment contents are changed. The format is an 8-character hexadecimal string.
-  final String revisionId;
+  final String? revisionId;
   /// Last update timestamp: when the represented revision was last modified.
-  final String revisionUpdateTime;
+  final String? revisionUpdateTime;
 
   /// Creates a new [GetDeploymentResult].
   /// [accessGuidance] Text briefly describing how to access the endpoint. Changes to this value will not affect the revision.
@@ -48,57 +48,57 @@ class GetDeploymentResult {
   /// [revisionId] Immutable. The revision ID of the deployment. A new revision is committed whenever the deployment contents are changed. The format is an 8-character hexadecimal string.
   /// [revisionUpdateTime] Last update timestamp: when the represented revision was last modified.
   const GetDeploymentResult({
-    required this.accessGuidance,
-    required this.annotations,
-    required this.apiSpecRevision,
-    required this.createTime,
-    required this.description,
-    required this.displayName,
-    required this.endpointUri,
-    required this.externalChannelUri,
-    required this.intendedAudience,
-    required this.labels,
-    required this.name,
-    required this.revisionCreateTime,
-    required this.revisionId,
-    required this.revisionUpdateTime,
+    this.accessGuidance,
+    this.annotations,
+    this.apiSpecRevision,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.endpointUri,
+    this.externalChannelUri,
+    this.intendedAudience,
+    this.labels,
+    this.name,
+    this.revisionCreateTime,
+    this.revisionId,
+    this.revisionUpdateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessGuidance': accessGuidance,
-      'annotations': annotations,
-      'apiSpecRevision': apiSpecRevision,
-      'createTime': createTime,
-      'description': description,
-      'displayName': displayName,
-      'endpointUri': endpointUri,
-      'externalChannelUri': externalChannelUri,
-      'intendedAudience': intendedAudience,
-      'labels': labels,
-      'name': name,
-      'revisionCreateTime': revisionCreateTime,
-      'revisionId': revisionId,
-      'revisionUpdateTime': revisionUpdateTime,
+      'accessGuidance': ?accessGuidance,
+      'annotations': ?annotations,
+      'apiSpecRevision': ?apiSpecRevision,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'endpointUri': ?endpointUri,
+      'externalChannelUri': ?externalChannelUri,
+      'intendedAudience': ?intendedAudience,
+      'labels': ?labels,
+      'name': ?name,
+      'revisionCreateTime': ?revisionCreateTime,
+      'revisionId': ?revisionId,
+      'revisionUpdateTime': ?revisionUpdateTime,
     };
   }
 
   factory GetDeploymentResult.fromMap(Map<String, dynamic> map) {
     return GetDeploymentResult(
-      accessGuidance: map['accessGuidance'] as String,
-      annotations: (map['annotations'] as Map).cast<String, String>(),
-      apiSpecRevision: map['apiSpecRevision'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      endpointUri: map['endpointUri'] as String,
-      externalChannelUri: map['externalChannelUri'] as String,
-      intendedAudience: map['intendedAudience'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      revisionCreateTime: map['revisionCreateTime'] as String,
-      revisionId: map['revisionId'] as String,
-      revisionUpdateTime: map['revisionUpdateTime'] as String,
+      accessGuidance: (() { final guardedValue = map['accessGuidance']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      apiSpecRevision: (() { final guardedValue = map['apiSpecRevision']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endpointUri: (() { final guardedValue = map['endpointUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      externalChannelUri: (() { final guardedValue = map['externalChannelUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      intendedAudience: (() { final guardedValue = map['intendedAudience']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      revisionCreateTime: (() { final guardedValue = map['revisionCreateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      revisionId: (() { final guardedValue = map['revisionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      revisionUpdateTime: (() { final guardedValue = map['revisionUpdateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -15,37 +15,37 @@ import 'shielded_instance_config.dart';
 /// {@macro pulumi_tpu_v2_node_tpu_v2_args_doc}
 class NodeTpuV2Args {
   /// The AccleratorConfig for the TPU Node.
-  final pulumi.Input<AcceleratorConfig>? acceleratorConfig;
+  final pulumi.Input<AcceleratorConfig?>? acceleratorConfig;
   /// Optional. The type of hardware accelerators associated with this node.
-  final pulumi.Input<String>? acceleratorType;
+  final pulumi.Input<String?>? acceleratorType;
   /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
-  final pulumi.Input<String>? cidrBlock;
+  final pulumi.Input<String?>? cidrBlock;
   /// The additional data disks for the Node.
-  final pulumi.Input<List<AttachedDisk>>? dataDisks;
+  final pulumi.Input<List<AttachedDisk>?>? dataDisks;
   /// The user-supplied description of the TPU. Maximum of 512 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The health status of the TPU node.
-  final pulumi.Input<NodeHealthTpuV2>? health;
+  final pulumi.Input<NodeHealthTpuV2?>? health;
   /// Resource labels to represent user-provided metadata.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// Network configurations for the TPU node.
-  final pulumi.Input<NetworkConfig>? networkConfig;
+  final pulumi.Input<NetworkConfig?>? networkConfig;
   /// The unqualified resource name.
-  final pulumi.Input<String>? nodeId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? nodeId;
+  final pulumi.Input<String?>? project;
   /// The runtime version running in the Node.
   final pulumi.Input<String> runtimeVersion;
   /// The scheduling options for this node.
-  final pulumi.Input<SchedulingConfigTpuV2>? schedulingConfig;
+  final pulumi.Input<SchedulingConfigTpuV2?>? schedulingConfig;
   /// The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
-  final pulumi.Input<ServiceAccount>? serviceAccount;
+  final pulumi.Input<ServiceAccount?>? serviceAccount;
   /// Shielded Instance options.
-  final pulumi.Input<ShieldedInstanceConfig>? shieldedInstanceConfig;
+  final pulumi.Input<ShieldedInstanceConfig?>? shieldedInstanceConfig;
   /// Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
 
   /// Creates a new [NodeTpuV2Args].
   /// [acceleratorConfig] The AccleratorConfig for the TPU Node.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Prevents a term in the query from being used in search. Example: Don't search for "shoddy".
 class GoogleCloudRetailV2betaRuleIgnoreAction {
   /// Terms to ignore in the search query.
-  final pulumi.Input<List<String>>? ignoreTerms;
+  final pulumi.Input<List<String>?>? ignoreTerms;
 
   /// Creates a new [GoogleCloudRetailV2betaRuleIgnoreAction].
   /// [ignoreTerms] Terms to ignore in the search query.

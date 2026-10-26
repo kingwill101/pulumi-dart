@@ -10,13 +10,13 @@ class CertificateMapArgs {
   /// Required. A user-provided name of the certificate map.
   final pulumi.Input<String> certificateMapId;
   /// One or more paragraphs of text description of a certificate map.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Set of labels associated with a Certificate Map.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [CertificateMapArgs].
   /// [certificateMapId] Required. A user-provided name of the certificate map.

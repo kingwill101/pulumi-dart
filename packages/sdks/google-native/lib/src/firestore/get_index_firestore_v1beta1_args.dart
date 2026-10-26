@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIndexFirestoreV1beta1Args {
   final pulumi.Input<String> databaseId;
   final pulumi.Input<String> indexId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetIndexFirestoreV1beta1Args].
   /// [databaseId] Required.

@@ -6,9 +6,9 @@ import 'postgresql_table.dart';
 /// PostgreSQL schema.
 class PostgresqlSchema {
   /// Tables in the schema.
-  final pulumi.Input<List<PostgresqlTable>>? postgresqlTables;
+  final pulumi.Input<List<PostgresqlTable>?>? postgresqlTables;
   /// Schema name.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
 
   /// Creates a new [PostgresqlSchema].
   /// [postgresqlTables] Tables in the schema.

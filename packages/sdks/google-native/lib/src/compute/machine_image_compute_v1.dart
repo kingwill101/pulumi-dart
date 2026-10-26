@@ -2,6 +2,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'customer_encryption_key_response_compute_v1.dart';
 import 'instance_properties_response_compute_v1.dart';
 import 'machine_image_compute_v1_args.dart';
+import 'saved_disk_response_compute_v1.dart';
+import 'source_disk_encryption_key_response_compute_v1.dart';
 import 'source_instance_properties_response_compute_v1.dart';
 
 /// Creates a machine image in the specified project using the data that is included in the request. If you are creating a new machine image to update an existing instance, your new machine image should use the same network or, if applicable, the same subnetwork as the original instance.
@@ -26,11 +28,11 @@ class MachineImageComputeV1 extends pulumi.CustomResource {
   /// Reserved for future use.
   late final pulumi.Output<bool> satisfiesPzs;
   /// An array of Machine Image specific properties for disks attached to the source instance
-  late final pulumi.Output<List<Map<String, dynamic>>> savedDisks;
+  late final pulumi.Output<List<SavedDiskResponseComputeV1>> savedDisks;
   /// The URL for this machine image. The server defines this URL.
   late final pulumi.Output<String> selfLink;
   /// [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
-  late final pulumi.Output<List<Map<String, dynamic>>> sourceDiskEncryptionKeys;
+  late final pulumi.Output<List<SourceDiskEncryptionKeyResponseComputeV1>> sourceDiskEncryptionKeys;
   /// Required. Source instance that is used to create the machine image from.
   late final pulumi.Output<String> sourceInstance;
   /// DEPRECATED: Please use instance_properties instead for source instance related properties. New properties will not be added to this field.
@@ -54,7 +56,7 @@ class MachineImageComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:MachineImage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'sourceInstance']).merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
@@ -66,13 +68,42 @@ class MachineImageComputeV1 extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
-    savedDisks = registerOutput<List<Map<String, dynamic>>>('savedDisks');
+    savedDisks = registerOutput<List<SavedDiskResponseComputeV1>>('savedDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SavedDiskResponseComputeV1>(guardedValue, (value) => SavedDiskResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
-    sourceDiskEncryptionKeys = registerOutput<List<Map<String, dynamic>>>('sourceDiskEncryptionKeys');
+    sourceDiskEncryptionKeys = registerOutput<List<SourceDiskEncryptionKeyResponseComputeV1>>('sourceDiskEncryptionKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SourceDiskEncryptionKeyResponseComputeV1>(guardedValue, (value) => SourceDiskEncryptionKeyResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
     sourceInstance = registerOutput<String>('sourceInstance');
     sourceInstanceProperties = registerOutput<SourceInstancePropertiesResponseComputeV1>('sourceInstanceProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceInstancePropertiesResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    storageLocations = registerOutput<List<String>>('storageLocations');
+    storageLocations = registerOutput<List<String>>('storageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    totalStorageBytes = registerOutput<String>('totalStorageBytes');
+  }
+
+  /// Creates a typed reference to an existing [MachineImageComputeV1] resource.
+  MachineImageComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:MachineImage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    guestFlush = registerOutput<bool>('guestFlush');
+    instanceProperties = registerOutput<InstancePropertiesResponseComputeV1>('instanceProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePropertiesResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    machineImageEncryptionKey = registerOutput<CustomerEncryptionKeyResponseComputeV1>('machineImageEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomerEncryptionKeyResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    savedDisks = registerOutput<List<SavedDiskResponseComputeV1>>('savedDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SavedDiskResponseComputeV1>(guardedValue, (value) => SavedDiskResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
+    selfLink = registerOutput<String>('selfLink');
+    sourceDiskEncryptionKeys = registerOutput<List<SourceDiskEncryptionKeyResponseComputeV1>>('sourceDiskEncryptionKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SourceDiskEncryptionKeyResponseComputeV1>(guardedValue, (value) => SourceDiskEncryptionKeyResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
+    sourceInstance = registerOutput<String>('sourceInstance');
+    sourceInstanceProperties = registerOutput<SourceInstancePropertiesResponseComputeV1>('sourceInstanceProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceInstancePropertiesResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    storageLocations = registerOutput<List<String>>('storageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     totalStorageBytes = registerOutput<String>('totalStorageBytes');
   }
 }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The HTTP method to use for the request. When specified, it overrides HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
-enum HttpTargetHttpMethod {
+enum HttpTargetHttpMethod implements pulumi.PulumiEnum<String> {
   httpMethodUnspecified("HTTP_METHOD_UNSPECIFIED"),
   post("POST"),
   get("GET"),
@@ -10,6 +12,7 @@ enum HttpTargetHttpMethod {
   options("OPTIONS");
 
   const HttpTargetHttpMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static HttpTargetHttpMethod fromValue(String value) {

@@ -69,9 +69,45 @@ class NetworkEndpointGroup extends pulumi.CustomResource {
           'google-native:compute/alpha:NetworkEndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'zone']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    appEngine = registerOutput<NetworkEndpointGroupAppEngineResponse>('appEngine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupAppEngineResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientPortMappingMode = registerOutput<String>('clientPortMappingMode');
+    cloudFunction = registerOutput<NetworkEndpointGroupCloudFunctionResponse>('cloudFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupCloudFunctionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudRun = registerOutput<NetworkEndpointGroupCloudRunResponse>('cloudRun', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupCloudRunResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    defaultPort = registerOutput<int>('defaultPort');
+    description = registerOutput<String>('description');
+    kind = registerOutput<String>('kind');
+    loadBalancer = registerOutput<NetworkEndpointGroupLbNetworkEndpointGroupResponse>('loadBalancer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupLbNetworkEndpointGroupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    networkEndpointType = registerOutput<String>('networkEndpointType');
+    project = registerOutput<String>('project');
+    pscData = registerOutput<NetworkEndpointGroupPscDataResponse>('pscData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupPscDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pscTargetService = registerOutput<String>('pscTargetService');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    serverlessDeployment = registerOutput<NetworkEndpointGroupServerlessDeploymentResponse>('serverlessDeployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupServerlessDeploymentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    size = registerOutput<int>('size');
+    subnetwork = registerOutput<String>('subnetwork');
+    type = registerOutput<String>('type');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [NetworkEndpointGroup] resource.
+  NetworkEndpointGroup.reference(String urn)
+    : super(
+        'google-native:compute/alpha:NetworkEndpointGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     appEngine = registerOutput<NetworkEndpointGroupAppEngineResponse>('appEngine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupAppEngineResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientPortMappingMode = registerOutput<String>('clientPortMappingMode');
     cloudFunction = registerOutput<NetworkEndpointGroupCloudFunctionResponse>('cloudFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupCloudFunctionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

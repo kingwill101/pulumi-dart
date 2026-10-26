@@ -6,9 +6,9 @@ import 'mysql_table.dart';
 /// MySQL database.
 class MysqlDatabase {
   /// Database name.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// Tables in the database.
-  final pulumi.Input<List<MysqlTable>>? mysqlTables;
+  final pulumi.Input<List<MysqlTable>?>? mysqlTables;
 
   /// Creates a new [MysqlDatabase].
   /// [database] Database name.

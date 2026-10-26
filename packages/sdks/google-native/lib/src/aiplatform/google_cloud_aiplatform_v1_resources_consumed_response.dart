@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1ResourcesConsumedResponse {
 
   factory GoogleCloudAiplatformV1ResourcesConsumedResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ResourcesConsumedResponse(
-      replicaHours: pulumi.Input.fromValue(map['replicaHours'] as double),
+      replicaHours: pulumi.Input.fromValue((map['replicaHours'] as num).toDouble()),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_attribute_binding_args.dart';
+import 'google_cloud_dataplex_v1_data_attribute_binding_path_response.dart';
 
 /// Create a DataAttributeBinding resource.
 /// Auto-naming is currently not supported for this resource.
@@ -22,7 +23,7 @@ class DataAttributeBinding extends pulumi.CustomResource {
   /// The relative resource name of the Data Attribute Binding, of the form: projects/{project_number}/locations/{location}/dataAttributeBindings/{data_attribute_binding_id}
   late final pulumi.Output<String> name;
   /// Optional. The list of paths for items within the associated resource (eg. columns and partitions within a table) along with attribute bindings.
-  late final pulumi.Output<List<Map<String, dynamic>>> paths;
+  late final pulumi.Output<List<GoogleCloudDataplexV1DataAttributeBindingPathResponse>> paths;
   late final pulumi.Output<String> project;
   /// Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
   late final pulumi.Output<String> resource;
@@ -43,18 +44,43 @@ class DataAttributeBinding extends pulumi.CustomResource {
           'google-native:dataplex/v1:DataAttributeBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['dataAttributeBindingId', 'location', 'project']).merge(options),
         ) {
-    attributes = registerOutput<List<String>>('attributes');
+    attributes = registerOutput<List<String>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     dataAttributeBindingId = registerOutput<String>('dataAttributeBindingId');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    paths = registerOutput<List<Map<String, dynamic>>>('paths');
+    paths = registerOutput<List<GoogleCloudDataplexV1DataAttributeBindingPathResponse>>('paths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDataplexV1DataAttributeBindingPathResponse>(guardedValue, (value) => GoogleCloudDataplexV1DataAttributeBindingPathResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    resource = registerOutput<String>('resource');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [DataAttributeBinding] resource.
+  DataAttributeBinding.reference(String urn)
+    : super(
+        'google-native:dataplex/v1:DataAttributeBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attributes = registerOutput<List<String>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createTime = registerOutput<String>('createTime');
+    dataAttributeBindingId = registerOutput<String>('dataAttributeBindingId');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    paths = registerOutput<List<GoogleCloudDataplexV1DataAttributeBindingPathResponse>>('paths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDataplexV1DataAttributeBindingPathResponse>(guardedValue, (value) => GoogleCloudDataplexV1DataAttributeBindingPathResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     resource = registerOutput<String>('resource');
     uid = registerOutput<String>('uid');

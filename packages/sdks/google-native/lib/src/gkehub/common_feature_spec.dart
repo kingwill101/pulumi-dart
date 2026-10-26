@@ -8,13 +8,13 @@ import 'multi_cluster_ingress_feature_spec.dart';
 /// CommonFeatureSpec contains Hub-wide configuration information
 class CommonFeatureSpec {
   /// Appdevexperience specific spec.
-  final pulumi.Input<Map<String, dynamic>>? appdevexperience;
+  final pulumi.Input<Map<String, dynamic>?>? appdevexperience;
   /// ClusterUpgrade (fleet-based) feature spec.
-  final pulumi.Input<ClusterUpgradeFleetSpec>? clusterupgrade;
+  final pulumi.Input<ClusterUpgradeFleetSpec?>? clusterupgrade;
   /// FleetObservability feature spec.
-  final pulumi.Input<FleetObservabilityFeatureSpec>? fleetobservability;
+  final pulumi.Input<FleetObservabilityFeatureSpec?>? fleetobservability;
   /// Multicluster Ingress-specific spec.
-  final pulumi.Input<MultiClusterIngressFeatureSpec>? multiclusteringress;
+  final pulumi.Input<MultiClusterIngressFeatureSpec?>? multiclusteringress;
 
   /// Creates a new [CommonFeatureSpec].
   /// [appdevexperience] Appdevexperience specific spec.

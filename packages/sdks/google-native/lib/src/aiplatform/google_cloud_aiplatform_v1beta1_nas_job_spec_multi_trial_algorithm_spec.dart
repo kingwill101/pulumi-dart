@@ -9,13 +9,13 @@ import 'google_cloud_aiplatform_v1beta1_nas_job_spec_multi_trial_algorithm_spec_
 /// The spec of multi-trial Neural Architecture Search (NAS).
 class GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpec {
   /// Metric specs for the NAS job. Validation for this field is done at `multi_trial_algorithm_spec` field.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpec>? metric;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpec?>? metric;
   /// The multi-trial Neural Architecture Search (NAS) algorithm type. Defaults to `REINFORCEMENT_LEARNING`.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm>? multiTrialAlgorithm;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm?>? multiTrialAlgorithm;
   /// Spec for search trials.
   final pulumi.Input<GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec> searchTrialSpec;
   /// Spec for train trials. Top N [TrainTrialSpec.max_parallel_trial_count] search trials will be trained for every M [TrainTrialSpec.frequency] trials searched.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec>? trainTrialSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec?>? trainTrialSpec;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpec].
   /// [metric] Metric specs for the NAS job. Validation for this field is done at `multi_trial_algorithm_spec` field.

@@ -7,7 +7,7 @@ class WindowsDetail {
   /// The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability affects.
   final pulumi.Input<String> cpeUri;
   /// The description of this vulnerability.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed KBs presence is considered a fix.
   final pulumi.Input<List<KnowledgeBase>> fixingKbs;
   /// The name of this vulnerability.

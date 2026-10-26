@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the redirect action.
-enum SecurityPolicyRuleRedirectOptionsTypeComputeBeta {
+enum SecurityPolicyRuleRedirectOptionsTypeComputeBeta implements pulumi.PulumiEnum<String> {
   external302("EXTERNAL_302"),
   googleRecaptcha("GOOGLE_RECAPTCHA");
 
   const SecurityPolicyRuleRedirectOptionsTypeComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityPolicyRuleRedirectOptionsTypeComputeBeta fromValue(String value) {

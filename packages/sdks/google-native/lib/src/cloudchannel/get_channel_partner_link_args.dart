@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetChannelPartnerLinkArgs {
   final pulumi.Input<String> accountId;
   final pulumi.Input<String> channelPartnerLinkId;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetChannelPartnerLinkArgs].
   /// [accountId] Required.

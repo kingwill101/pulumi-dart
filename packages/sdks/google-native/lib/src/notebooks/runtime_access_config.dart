@@ -6,9 +6,9 @@ import 'runtime_access_config_access_type.dart';
 /// Specifies the login configuration for Runtime
 class RuntimeAccessConfig {
   /// The type of access mode this instance.
-  final pulumi.Input<RuntimeAccessConfigAccessType>? accessType;
+  final pulumi.Input<RuntimeAccessConfigAccessType?>? accessType;
   /// The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
-  final pulumi.Input<String>? runtimeOwner;
+  final pulumi.Input<String?>? runtimeOwner;
 
   /// Creates a new [RuntimeAccessConfig].
   /// [accessType] The type of access mode this instance.

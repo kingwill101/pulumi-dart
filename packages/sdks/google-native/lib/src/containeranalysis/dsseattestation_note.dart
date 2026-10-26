@@ -5,7 +5,7 @@ import 'dssehint.dart';
 
 class DSSEAttestationNote {
   /// DSSEHint hints at the purpose of the attestation authority.
-  final pulumi.Input<DSSEHint>? hint;
+  final pulumi.Input<DSSEHint?>? hint;
 
   /// Creates a new [DSSEAttestationNote].
   /// [hint] DSSEHint hints at the purpose of the attestation authority.

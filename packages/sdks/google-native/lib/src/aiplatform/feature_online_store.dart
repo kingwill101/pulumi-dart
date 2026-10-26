@@ -36,13 +36,34 @@ class FeatureOnlineStore extends pulumi.CustomResource {
           'google-native:aiplatform/v1:FeatureOnlineStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['featureOnlineStoreId', 'location', 'project']).merge(options),
         ) {
     bigtable = registerOutput<GoogleCloudAiplatformV1FeatureOnlineStoreBigtableResponse>('bigtable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1FeatureOnlineStoreBigtableResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     etag = registerOutput<String>('etag');
     featureOnlineStoreId = registerOutput<String>('featureOnlineStoreId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [FeatureOnlineStore] resource.
+  FeatureOnlineStore.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1:FeatureOnlineStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bigtable = registerOutput<GoogleCloudAiplatformV1FeatureOnlineStoreBigtableResponse>('bigtable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1FeatureOnlineStoreBigtableResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    etag = registerOutput<String>('etag');
+    featureOnlineStoreId = registerOutput<String>('featureOnlineStoreId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

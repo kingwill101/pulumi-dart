@@ -7,19 +7,19 @@ import 'compliance_version_containeranalysis_v1alpha1.dart';
 /// ComplianceNote encapsulates all information about a specific compliance check.
 class ComplianceNoteContaineranalysisV1alpha1 {
   /// Right now we only have one compliance type, but we may add additional types in the future.
-  final pulumi.Input<CisBenchmarkContaineranalysisV1alpha1>? cisBenchmark;
+  final pulumi.Input<CisBenchmarkContaineranalysisV1alpha1?>? cisBenchmark;
   /// A description about this compliance check.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A rationale for the existence of this compliance check.
-  final pulumi.Input<String>? rationale;
+  final pulumi.Input<String?>? rationale;
   /// A description of remediation steps if the compliance check fails.
-  final pulumi.Input<String>? remediation;
+  final pulumi.Input<String?>? remediation;
   /// Serialized scan instructions with a predefined format.
-  final pulumi.Input<String>? scanInstructions;
+  final pulumi.Input<String?>? scanInstructions;
   /// The title that identifies this compliance check.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
   /// The OS and config versions the benchmark applies to.
-  final pulumi.Input<List<ComplianceVersionContaineranalysisV1alpha1>>? version;
+  final pulumi.Input<List<ComplianceVersionContaineranalysisV1alpha1>?>? version;
 
   /// Creates a new [ComplianceNoteContaineranalysisV1alpha1].
   /// [cisBenchmark] Right now we only have one compliance type, but we may add additional types in the future.

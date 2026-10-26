@@ -41,10 +41,10 @@ class IterationResultResponse {
   factory IterationResultResponse.fromMap(Map<String, dynamic> map) {
     return IterationResultResponse(
       durationMs: pulumi.Input.fromValue(map['durationMs'] as String),
-      evalLoss: pulumi.Input.fromValue(map['evalLoss'] as double),
-      index: pulumi.Input.fromValue(map['index'] as int),
-      learnRate: pulumi.Input.fromValue(map['learnRate'] as double),
-      trainingLoss: pulumi.Input.fromValue(map['trainingLoss'] as double),
+      evalLoss: pulumi.Input.fromValue((map['evalLoss'] as num).toDouble()),
+      index: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['index'])),
+      learnRate: pulumi.Input.fromValue((map['learnRate'] as num).toDouble()),
+      trainingLoss: pulumi.Input.fromValue((map['trainingLoss'] as num).toDouble()),
     );
   }
 }

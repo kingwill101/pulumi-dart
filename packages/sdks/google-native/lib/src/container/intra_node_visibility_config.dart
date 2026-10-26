@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// IntraNodeVisibilityConfig contains the desired config of the intra-node visibility on this cluster.
 class IntraNodeVisibilityConfig {
   /// Enables intra node visibility for this cluster.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [IntraNodeVisibilityConfig].
   /// [enabled] Enables intra node visibility for this cluster.

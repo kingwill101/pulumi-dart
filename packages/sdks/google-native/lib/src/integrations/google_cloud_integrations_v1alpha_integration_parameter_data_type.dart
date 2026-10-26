@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the parameter.
-enum GoogleCloudIntegrationsV1alphaIntegrationParameterDataType {
+enum GoogleCloudIntegrationsV1alphaIntegrationParameterDataType implements pulumi.PulumiEnum<String> {
   integrationParameterDataTypeUnspecified("INTEGRATION_PARAMETER_DATA_TYPE_UNSPECIFIED"),
   stringValue("STRING_VALUE"),
   intValue("INT_VALUE"),
@@ -14,6 +16,7 @@ enum GoogleCloudIntegrationsV1alphaIntegrationParameterDataType {
   protoArray("PROTO_ARRAY");
 
   const GoogleCloudIntegrationsV1alphaIntegrationParameterDataType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudIntegrationsV1alphaIntegrationParameterDataType fromValue(String value) {

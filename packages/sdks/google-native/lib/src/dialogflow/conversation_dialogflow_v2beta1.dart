@@ -38,8 +38,29 @@ class ConversationDialogflowV2beta1 extends pulumi.CustomResource {
           'google-native:dialogflow/v2beta1:Conversation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    conversationId = registerOutput<String?>('conversationId');
+    conversationProfile = registerOutput<String>('conversationProfile');
+    conversationStage = registerOutput<String>('conversationStage');
+    endTime = registerOutput<String>('endTime');
+    lifecycleState = registerOutput<String>('lifecycleState');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    phoneNumber = registerOutput<GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse>('phoneNumber', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    startTime = registerOutput<String>('startTime');
+  }
+
+  /// Creates a typed reference to an existing [ConversationDialogflowV2beta1] resource.
+  ConversationDialogflowV2beta1.reference(String urn)
+    : super(
+        'google-native:dialogflow/v2beta1:Conversation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     conversationId = registerOutput<String?>('conversationId');
     conversationProfile = registerOutput<String>('conversationProfile');
     conversationStage = registerOutput<String>('conversationStage');

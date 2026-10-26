@@ -10,29 +10,29 @@ class Detail {
   /// The package this vulnerability affects.
   final pulumi.Input<String> affectedPackage;
   /// The version number at the end of an interval in which this vulnerability exists. A vulnerability can affect a package between version numbers that are disjoint sets of intervals (example: [1.0.0-1.1.0], [2.4.6-2.4.8] and [4.5.6-4.6.8]) each of which will be represented in its own Detail. If a specific affected version is provided by a vulnerability database, affected_version_start and affected_version_end will be the same in that Detail.
-  final pulumi.Input<Version>? affectedVersionEnd;
+  final pulumi.Input<Version?>? affectedVersionEnd;
   /// The version number at the start of an interval in which this vulnerability exists. A vulnerability can affect a package between version numbers that are disjoint sets of intervals (example: [1.0.0-1.1.0], [2.4.6-2.4.8] and [4.5.6-4.6.8]) each of which will be represented in its own Detail. If a specific affected version is provided by a vulnerability database, affected_version_start and affected_version_end will be the same in that Detail.
-  final pulumi.Input<Version>? affectedVersionStart;
+  final pulumi.Input<Version?>? affectedVersionStart;
   /// A vendor-specific description of this vulnerability.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The distro recommended [CPE URI](https://cpe.mitre.org/specification/) to update to that contains a fix for this vulnerability. It is possible for this to be different from the affected_cpe_uri.
-  final pulumi.Input<String>? fixedCpeUri;
+  final pulumi.Input<String?>? fixedCpeUri;
   /// The distro recommended package to update to that contains a fix for this vulnerability. It is possible for this to be different from the affected_package.
-  final pulumi.Input<String>? fixedPackage;
+  final pulumi.Input<String?>? fixedPackage;
   /// The distro recommended version to update to that contains a fix for this vulnerability. Setting this to VersionKind.MAXIMUM means no such version is yet available.
-  final pulumi.Input<Version>? fixedVersion;
+  final pulumi.Input<Version?>? fixedVersion;
   /// Whether this detail is obsolete. Occurrences are expected not to point to obsolete details.
-  final pulumi.Input<bool>? isObsolete;
+  final pulumi.Input<bool?>? isObsolete;
   /// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
-  final pulumi.Input<String>? packageType;
+  final pulumi.Input<String?>? packageType;
   /// The distro assigned severity of this vulnerability.
-  final pulumi.Input<String>? severityName;
+  final pulumi.Input<String?>? severityName;
   /// The source from which the information in this Detail was obtained.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
-  final pulumi.Input<String>? sourceUpdateTime;
+  final pulumi.Input<String?>? sourceUpdateTime;
   /// The name of the vendor of the product.
-  final pulumi.Input<String>? vendor;
+  final pulumi.Input<String?>? vendor;
 
   /// Creates a new [Detail].
   /// [affectedCpeUri] The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability affects.

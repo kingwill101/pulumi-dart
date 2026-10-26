@@ -11,7 +11,7 @@ class PieChart {
   /// The queries for the chart's data.
   final pulumi.Input<List<PieChartDataSet>> dataSets;
   /// Optional. Indicates whether or not the pie chart should show slices' labels
-  final pulumi.Input<bool>? showLabels;
+  final pulumi.Input<bool?>? showLabels;
 
   /// Creates a new [PieChart].
   /// [chartType] Indicates the visualization type for the PieChart.

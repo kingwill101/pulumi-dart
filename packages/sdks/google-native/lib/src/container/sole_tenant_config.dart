@@ -6,7 +6,7 @@ import 'node_affinity.dart';
 /// SoleTenantConfig contains the NodeAffinities to specify what shared sole tenant node groups should back the node pool.
 class SoleTenantConfig {
   /// NodeAffinities used to match to a shared sole tenant node group.
-  final pulumi.Input<List<NodeAffinity>>? nodeAffinities;
+  final pulumi.Input<List<NodeAffinity>?>? nodeAffinities;
 
   /// Creates a new [SoleTenantConfig].
   /// [nodeAffinities] NodeAffinities used to match to a shared sole tenant node group.

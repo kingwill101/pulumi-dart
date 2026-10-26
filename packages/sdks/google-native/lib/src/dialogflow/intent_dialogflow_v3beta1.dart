@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_dialogflow_cx_v3beta1_intent_parameter_response.dart';
+import 'google_cloud_dialogflow_cx_v3beta1_intent_training_phrase_response.dart';
 import 'intent_dialogflow_v3beta1_args.dart';
 
 /// Creates an intent in the specified agent. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
@@ -18,12 +20,12 @@ class IntentDialogflowV3beta1 extends pulumi.CustomResource {
   /// The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.
   late final pulumi.Output<String> name;
   /// The collection of parameters associated with the intent.
-  late final pulumi.Output<List<Map<String, dynamic>>> parameters;
+  late final pulumi.Output<List<GoogleCloudDialogflowCxV3beta1IntentParameterResponse>> parameters;
   /// The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
   late final pulumi.Output<int> priority;
   late final pulumi.Output<String> project;
   /// The collection of training phrases the agent is trained on to identify the intent.
-  late final pulumi.Output<List<Map<String, dynamic>>> trainingPhrases;
+  late final pulumi.Output<List<GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse>> trainingPhrases;
 
   /// Creates a new [IntentDialogflowV3beta1].
   /// [name] The Pulumi resource name.
@@ -37,19 +39,42 @@ class IntentDialogflowV3beta1 extends pulumi.CustomResource {
           'google-native:dialogflow/v3beta1:Intent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['agentId', 'location', 'project']).merge(options),
         ) {
     agentId = registerOutput<String>('agentId');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     isFallback = registerOutput<bool>('isFallback');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     languageCode = registerOutput<String?>('languageCode');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
+    parameters = registerOutput<List<GoogleCloudDialogflowCxV3beta1IntentParameterResponse>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1IntentParameterResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3beta1IntentParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
     priority = registerOutput<int>('priority');
     project = registerOutput<String>('project');
-    trainingPhrases = registerOutput<List<Map<String, dynamic>>>('trainingPhrases');
+    trainingPhrases = registerOutput<List<GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse>>('trainingPhrases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [IntentDialogflowV3beta1] resource.
+  IntentDialogflowV3beta1.reference(String urn)
+    : super(
+        'google-native:dialogflow/v3beta1:Intent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentId = registerOutput<String>('agentId');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    isFallback = registerOutput<bool>('isFallback');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    languageCode = registerOutput<String?>('languageCode');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<List<GoogleCloudDialogflowCxV3beta1IntentParameterResponse>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1IntentParameterResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3beta1IntentParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    trainingPhrases = registerOutput<List<GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse>>('trainingPhrases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The HTTP method to use for the request. PATCH and OPTIONS are not permitted.
-enum AppEngineHttpTargetHttpMethodCloudschedulerV1beta1 {
+enum AppEngineHttpTargetHttpMethodCloudschedulerV1beta1 implements pulumi.PulumiEnum<String> {
   httpMethodUnspecified("HTTP_METHOD_UNSPECIFIED"),
   post("POST"),
   get("GET"),
@@ -10,6 +12,7 @@ enum AppEngineHttpTargetHttpMethodCloudschedulerV1beta1 {
   options("OPTIONS");
 
   const AppEngineHttpTargetHttpMethodCloudschedulerV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static AppEngineHttpTargetHttpMethodCloudschedulerV1beta1 fromValue(String value) {

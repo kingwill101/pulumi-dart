@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
 class JobExecutionInfo {
   /// A mapping from each stage to the information about that stage.
-  final pulumi.Input<Map<String, String>>? stages;
+  final pulumi.Input<Map<String, String>?>? stages;
 
   /// Creates a new [JobExecutionInfo].
   /// [stages] A mapping from each stage to the information about that stage.

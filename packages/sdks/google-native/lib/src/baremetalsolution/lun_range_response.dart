@@ -26,8 +26,8 @@ class LunRangeResponse {
 
   factory LunRangeResponse.fromMap(Map<String, dynamic> map) {
     return LunRangeResponse(
-      quantity: pulumi.Input.fromValue(map['quantity'] as int),
-      sizeGb: pulumi.Input.fromValue(map['sizeGb'] as int),
+      quantity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['quantity'])),
+      sizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeGb'])),
     );
   }
 }

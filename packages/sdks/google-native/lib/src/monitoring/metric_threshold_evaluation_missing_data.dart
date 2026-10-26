@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
-enum MetricThresholdEvaluationMissingData {
+enum MetricThresholdEvaluationMissingData implements pulumi.PulumiEnum<String> {
   evaluationMissingDataUnspecified("EVALUATION_MISSING_DATA_UNSPECIFIED"),
   evaluationMissingDataInactive("EVALUATION_MISSING_DATA_INACTIVE"),
   evaluationMissingDataActive("EVALUATION_MISSING_DATA_ACTIVE"),
   evaluationMissingDataNoOp("EVALUATION_MISSING_DATA_NO_OP");
 
   const MetricThresholdEvaluationMissingData(this.wireValue);
+  @override
   final String wireValue;
 
   static MetricThresholdEvaluationMissingData fromValue(String value) {

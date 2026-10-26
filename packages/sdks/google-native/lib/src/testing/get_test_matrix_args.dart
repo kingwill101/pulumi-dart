@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_testing_v1_get_test_matrix_args_doc}
 class GetTestMatrixArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> testMatrixId;
 
   /// Creates a new [GetTestMatrixArgs].

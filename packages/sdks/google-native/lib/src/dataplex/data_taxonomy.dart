@@ -41,7 +41,7 @@ class DataTaxonomy extends pulumi.CustomResource {
           'google-native:dataplex/v1:DataTaxonomy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['dataTaxonomyId', 'location', 'project']).merge(options),
         ) {
     attributeCount = registerOutput<int>('attributeCount');
     classCount = registerOutput<int>('classCount');
@@ -50,7 +50,31 @@ class DataTaxonomy extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [DataTaxonomy] resource.
+  DataTaxonomy.reference(String urn)
+    : super(
+        'google-native:dataplex/v1:DataTaxonomy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attributeCount = registerOutput<int>('attributeCount');
+    classCount = registerOutput<int>('classCount');
+    createTime = registerOutput<String>('createTime');
+    dataTaxonomyId = registerOutput<String>('dataTaxonomyId');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

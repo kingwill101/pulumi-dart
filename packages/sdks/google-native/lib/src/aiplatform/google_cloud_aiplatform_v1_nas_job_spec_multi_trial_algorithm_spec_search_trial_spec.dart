@@ -6,7 +6,7 @@ import 'google_cloud_aiplatform_v1_custom_job_spec.dart';
 /// Represent spec for search trials.
 class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec {
   /// The number of failed trials that need to be seen before failing the NasJob. If set to 0, Vertex AI decides how many trials must fail before the whole job fails.
-  final pulumi.Input<int>? maxFailedTrialCount;
+  final pulumi.Input<int?>? maxFailedTrialCount;
   /// The maximum number of trials to run in parallel.
   final pulumi.Input<int> maxParallelTrialCount;
   /// The maximum number of Neural Architecture Search (NAS) trials to run.
@@ -37,9 +37,9 @@ class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec {
 
   factory GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec(
-      maxFailedTrialCount: (() { final guardedValue = map['maxFailedTrialCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxParallelTrialCount: pulumi.Input.fromValue(map['maxParallelTrialCount'] as int),
-      maxTrialCount: pulumi.Input.fromValue(map['maxTrialCount'] as int),
+      maxFailedTrialCount: (() { final guardedValue = map['maxFailedTrialCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxParallelTrialCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxParallelTrialCount'])),
+      maxTrialCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxTrialCount'])),
       searchTrialJobSpec: pulumi.Input.fromValue(GoogleCloudAiplatformV1CustomJobSpec.fromMap((map['searchTrialJobSpec']! as Map).cast<String, dynamic>())),
     );
   }

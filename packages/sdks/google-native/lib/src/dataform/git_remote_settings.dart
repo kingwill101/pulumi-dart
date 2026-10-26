@@ -6,11 +6,11 @@ import 'ssh_authentication_config.dart';
 /// Controls Git remote configuration for a repository.
 class GitRemoteSettings {
   /// Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
-  final pulumi.Input<String>? authenticationTokenSecretVersion;
+  final pulumi.Input<String?>? authenticationTokenSecretVersion;
   /// The Git remote's default branch name.
   final pulumi.Input<String> defaultBranch;
   /// Optional. Authentication fields for remote uris using SSH protocol.
-  final pulumi.Input<SshAuthenticationConfig>? sshAuthenticationConfig;
+  final pulumi.Input<SshAuthenticationConfig?>? sshAuthenticationConfig;
   /// The Git remote's URL.
   final pulumi.Input<String> url;
 

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for the Analytics add-on.
 class GoogleCloudApigeeV1AnalyticsConfig {
   /// Whether the Analytics add-on is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [GoogleCloudApigeeV1AnalyticsConfig].
   /// [enabled] Whether the Analytics add-on is enabled.

@@ -34,6 +34,17 @@ Future<GetCollectionIamPolicyResult> getCollectionIamPolicy(
   return GetCollectionIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetCollectionIamPolicyResult> getCollectionIamPolicyOutput(
+  GetCollectionIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dataform/v1beta1:getCollectionIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCollectionIamPolicyResult.fromMap);
+}
+
 /// Fetches a single CompilationResult.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataform_v1beta1_get_compilation_result_args_doc}
 /// [options] Invoke options controlling this call.
@@ -48,6 +59,17 @@ Future<GetCompilationResultResult> getCompilationResult(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCompilationResultResult.fromMap(result);
+}
+
+pulumi.Output<GetCompilationResultResult> getCompilationResultOutput(
+  GetCompilationResultArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dataform/v1beta1:getCompilationResult',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCompilationResultResult.fromMap);
 }
 
 /// Fetches a single ReleaseConfig.
@@ -66,6 +88,17 @@ Future<GetReleaseConfigResult> getReleaseConfig(
   return GetReleaseConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetReleaseConfigResult> getReleaseConfigOutput(
+  GetReleaseConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dataform/v1beta1:getReleaseConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReleaseConfigResult.fromMap);
+}
+
 /// Fetches a single Repository.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataform_v1beta1_get_repository_args_doc}
 /// [options] Invoke options controlling this call.
@@ -80,6 +113,17 @@ Future<GetRepositoryResult> getRepository(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRepositoryResult.fromMap(result);
+}
+
+pulumi.Output<GetRepositoryResult> getRepositoryOutput(
+  GetRepositoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dataform/v1beta1:getRepository',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRepositoryResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -98,6 +142,17 @@ Future<GetRepositoryIamPolicyResult> getRepositoryIamPolicy(
   return GetRepositoryIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetRepositoryIamPolicyResult> getRepositoryIamPolicyOutput(
+  GetRepositoryIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dataform/v1beta1:getRepositoryIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRepositoryIamPolicyResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataform_v1beta1_get_repository_workspace_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -112,6 +167,17 @@ Future<GetRepositoryWorkspaceIamPolicyResult> getRepositoryWorkspaceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRepositoryWorkspaceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRepositoryWorkspaceIamPolicyResult> getRepositoryWorkspaceIamPolicyOutput(
+  GetRepositoryWorkspaceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dataform/v1beta1:getRepositoryWorkspaceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRepositoryWorkspaceIamPolicyResult.fromMap);
 }
 
 /// Fetches a single WorkflowConfig.
@@ -130,6 +196,17 @@ Future<GetWorkflowConfigResult> getWorkflowConfig(
   return GetWorkflowConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkflowConfigResult> getWorkflowConfigOutput(
+  GetWorkflowConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dataform/v1beta1:getWorkflowConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkflowConfigResult.fromMap);
+}
+
 /// Fetches a single WorkflowInvocation.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataform_v1beta1_get_workflow_invocation_args_doc}
 /// [options] Invoke options controlling this call.
@@ -146,6 +223,17 @@ Future<GetWorkflowInvocationResult> getWorkflowInvocation(
   return GetWorkflowInvocationResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkflowInvocationResult> getWorkflowInvocationOutput(
+  GetWorkflowInvocationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dataform/v1beta1:getWorkflowInvocation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkflowInvocationResult.fromMap);
+}
+
 /// Fetches a single Workspace.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataform_v1beta1_get_workspace_args_doc}
 /// [options] Invoke options controlling this call.
@@ -160,4 +248,15 @@ Future<GetWorkspaceResult> getWorkspace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspaceResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:dataform/v1beta1:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
 }

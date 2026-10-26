@@ -6,9 +6,9 @@ import 'secret.dart';
 /// Parameters to support Username and Password Authentication.
 class UserPassword {
   /// Secret version reference containing the password.
-  final pulumi.Input<Secret>? password;
+  final pulumi.Input<Secret?>? password;
   /// Username.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [UserPassword].
   /// [password] Secret version reference containing the password.

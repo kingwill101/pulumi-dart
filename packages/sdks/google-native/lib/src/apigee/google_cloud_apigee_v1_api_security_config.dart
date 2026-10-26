@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configurations of the API Security add-on.
 class GoogleCloudApigeeV1ApiSecurityConfig {
   /// Flag that specifies whether the API security add-on is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [GoogleCloudApigeeV1ApiSecurityConfig].
   /// [enabled] Flag that specifies whether the API security add-on is enabled.

@@ -6,17 +6,17 @@ import 'oracle_ssl_config.dart';
 /// Oracle database profile.
 class OracleProfile {
   /// Connection string attributes
-  final pulumi.Input<Map<String, String>>? connectionAttributes;
+  final pulumi.Input<Map<String, String>?>? connectionAttributes;
   /// Database for the Oracle connection.
   final pulumi.Input<String> databaseService;
   /// Hostname for the Oracle connection.
   final pulumi.Input<String> hostname;
   /// Optional. SSL configuration for the Oracle connection.
-  final pulumi.Input<OracleSslConfig>? oracleSslConfig;
+  final pulumi.Input<OracleSslConfig?>? oracleSslConfig;
   /// Password for the Oracle connection.
   final pulumi.Input<String> password;
   /// Port for the Oracle connection, default value is 1521.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Username for the Oracle connection.
   final pulumi.Input<String> username;
 
@@ -57,7 +57,7 @@ class OracleProfile {
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
       oracleSslConfig: (() { final guardedValue = map['oracleSslConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OracleSslConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       password: pulumi.Input.fromValue(map['password'] as String),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }

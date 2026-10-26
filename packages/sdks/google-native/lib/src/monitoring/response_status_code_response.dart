@@ -27,7 +27,7 @@ class ResponseStatusCodeResponse {
   factory ResponseStatusCodeResponse.fromMap(Map<String, dynamic> map) {
     return ResponseStatusCodeResponse(
       statusClass: pulumi.Input.fromValue(map['statusClass'] as String),
-      statusValue: pulumi.Input.fromValue(map['statusValue'] as int),
+      statusValue: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['statusValue'])),
     );
   }
 }

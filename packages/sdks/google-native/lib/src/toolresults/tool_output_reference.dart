@@ -8,11 +8,11 @@ import 'timestamp.dart';
 /// A reference to a ToolExecution output file.
 class ToolOutputReference {
   /// The creation time of the file. - In response: present if set by create/update request - In create/update request: optional
-  final pulumi.Input<Timestamp>? creationTime;
+  final pulumi.Input<Timestamp?>? creationTime;
   /// A FileReference to an output file. - In response: always set - In create/update request: always set
-  final pulumi.Input<FileReference>? output;
+  final pulumi.Input<FileReference?>? output;
   /// The test case to which this output file belongs. - In response: present if set by create/update request - In create/update request: optional
-  final pulumi.Input<TestCaseReference>? testCase;
+  final pulumi.Input<TestCaseReference?>? testCase;
 
   /// Creates a new [ToolOutputReference].
   /// [creationTime] The creation time of the file. - In response: present if set by create/update request - In create/update request: optional

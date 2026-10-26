@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_alpha_get_region_instant_snapshot_args_doc}
 class GetRegionInstantSnapshotArgs {
   final pulumi.Input<String> instantSnapshot;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
 
   /// Creates a new [GetRegionInstantSnapshotArgs].

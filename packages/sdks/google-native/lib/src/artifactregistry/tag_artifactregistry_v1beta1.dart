@@ -26,8 +26,26 @@ class TagArtifactregistryV1beta1 extends pulumi.CustomResource {
           'google-native:artifactregistry/v1beta1:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'packageId', 'project', 'repositoryId']).merge(options),
         ) {
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    packageId = registerOutput<String>('packageId');
+    project = registerOutput<String>('project');
+    repositoryId = registerOutput<String>('repositoryId');
+    tagId = registerOutput<String?>('tagId');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [TagArtifactregistryV1beta1] resource.
+  TagArtifactregistryV1beta1.reference(String urn)
+    : super(
+        'google-native:artifactregistry/v1beta1:Tag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     packageId = registerOutput<String>('packageId');

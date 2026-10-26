@@ -6,7 +6,7 @@ import 'file_reference.dart';
 /// An Android App Bundle file format, containing a BundleConfig.pb file, a base module directory, zero or more dynamic feature module directories. See https://developer.android.com/guide/app-bundle/build for guidance on building App Bundles.
 class AppBundle {
   /// .aab file representing the app bundle under test.
-  final pulumi.Input<FileReference>? bundleLocation;
+  final pulumi.Input<FileReference?>? bundleLocation;
 
   /// Creates a new [AppBundle].
   /// [bundleLocation] .aab file representing the app bundle under test.

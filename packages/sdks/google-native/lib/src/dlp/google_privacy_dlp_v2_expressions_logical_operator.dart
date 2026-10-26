@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The operator to apply to the result of conditions. Default and currently only supported value is `AND`.
-enum GooglePrivacyDlpV2ExpressionsLogicalOperator {
+enum GooglePrivacyDlpV2ExpressionsLogicalOperator implements pulumi.PulumiEnum<String> {
   logicalOperatorUnspecified("LOGICAL_OPERATOR_UNSPECIFIED"),
   and("AND");
 
   const GooglePrivacyDlpV2ExpressionsLogicalOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static GooglePrivacyDlpV2ExpressionsLogicalOperator fromValue(String value) {

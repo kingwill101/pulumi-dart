@@ -77,7 +77,7 @@ class MigrationJob extends pulumi.CustomResource {
           'google-native:datamigration/v1:MigrationJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'migrationJobId', 'project']).merge(options),
         ) {
     cmekKeyName = registerOutput<String>('cmekKeyName');
     conversionWorkspace = registerOutput<ConversionWorkspaceInfoResponse>('conversionWorkspace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversionWorkspaceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -91,7 +91,46 @@ class MigrationJob extends pulumi.CustomResource {
     endTime = registerOutput<String>('endTime');
     error = registerOutput<StatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     filter = registerOutput<String>('filter');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    migrationJobId = registerOutput<String>('migrationJobId');
+    this.name = registerOutput<String>('name');
+    performanceConfig = registerOutput<PerformanceConfigResponse>('performanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PerformanceConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    phase = registerOutput<String>('phase');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    reverseSshConnectivity = registerOutput<ReverseSshConnectivityResponse>('reverseSshConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReverseSshConnectivityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    source = registerOutput<String>('source');
+    sourceDatabase = registerOutput<DatabaseTypeResponse>('sourceDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseTypeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    staticIpConnectivity = registerOutput<Map<String, dynamic>>('staticIpConnectivity');
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+    vpcPeeringConnectivity = registerOutput<VpcPeeringConnectivityResponse>('vpcPeeringConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcPeeringConnectivityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [MigrationJob] resource.
+  MigrationJob.reference(String urn)
+    : super(
+        'google-native:datamigration/v1:MigrationJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cmekKeyName = registerOutput<String>('cmekKeyName');
+    conversionWorkspace = registerOutput<ConversionWorkspaceInfoResponse>('conversionWorkspace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversionWorkspaceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    destination = registerOutput<String>('destination');
+    destinationDatabase = registerOutput<DatabaseTypeResponse>('destinationDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseTypeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    dumpFlags = registerOutput<DumpFlagsResponse>('dumpFlags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DumpFlagsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dumpPath = registerOutput<String>('dumpPath');
+    duration = registerOutput<String>('duration');
+    endTime = registerOutput<String>('endTime');
+    error = registerOutput<StatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    filter = registerOutput<String>('filter');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     migrationJobId = registerOutput<String>('migrationJobId');
     this.name = registerOutput<String>('name');

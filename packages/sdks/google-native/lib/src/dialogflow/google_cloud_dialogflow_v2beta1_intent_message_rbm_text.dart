@@ -6,7 +6,7 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_rbm_suggestion.dart';
 /// Rich Business Messaging (RBM) text response with suggestions.
 class GoogleCloudDialogflowV2beta1IntentMessageRbmText {
   /// Optional. One or more suggestions to show to the user.
-  final pulumi.Input<List<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>>? rbmSuggestion;
+  final pulumi.Input<List<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>?>? rbmSuggestion;
   /// Text sent and displayed to the user.
   final pulumi.Input<String> text;
 

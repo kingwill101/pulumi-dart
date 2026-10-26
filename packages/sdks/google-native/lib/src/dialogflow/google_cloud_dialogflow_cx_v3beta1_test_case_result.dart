@@ -7,15 +7,15 @@ import 'google_cloud_dialogflow_cx_v3beta1_test_case_result_test_result.dart';
 /// Represents a result from running a test case in an agent environment.
 class GoogleCloudDialogflowCxV3beta1TestCaseResult {
   /// The conversation turns uttered during the test case replay in chronological order.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1ConversationTurn>>? conversationTurns;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1ConversationTurn>?>? conversationTurns;
   /// Environment where the test was run. If not set, it indicates the draft environment.
-  final pulumi.Input<String>? environment;
+  final pulumi.Input<String?>? environment;
   /// The resource name for the test case result. Format: `projects//locations//agents//testCases/ /results/`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether the test case passed in the agent environment.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult>? testResult;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult?>? testResult;
   /// The time that the test was run.
-  final pulumi.Input<String>? testTime;
+  final pulumi.Input<String?>? testTime;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1TestCaseResult].
   /// [conversationTurns] The conversation turns uttered during the test case replay in chronological order.

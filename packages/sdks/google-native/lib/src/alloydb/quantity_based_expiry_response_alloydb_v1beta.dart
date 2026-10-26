@@ -26,8 +26,8 @@ class QuantityBasedExpiryResponseAlloydbV1beta {
 
   factory QuantityBasedExpiryResponseAlloydbV1beta.fromMap(Map<String, dynamic> map) {
     return QuantityBasedExpiryResponseAlloydbV1beta(
-      retentionCount: pulumi.Input.fromValue(map['retentionCount'] as int),
-      totalRetentionCount: pulumi.Input.fromValue(map['totalRetentionCount'] as int),
+      retentionCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retentionCount'])),
+      totalRetentionCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalRetentionCount'])),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'security_policy_rule_preconfigured_waf_config_exclusion_compute_beta.dar
 
 class SecurityPolicyRulePreconfiguredWafConfigComputeBeta {
   /// A list of exclusions to apply during preconfigured WAF evaluation.
-  final pulumi.Input<List<SecurityPolicyRulePreconfiguredWafConfigExclusionComputeBeta>>? exclusions;
+  final pulumi.Input<List<SecurityPolicyRulePreconfiguredWafConfigExclusionComputeBeta>?>? exclusions;
 
   /// Creates a new [SecurityPolicyRulePreconfiguredWafConfigComputeBeta].
   /// [exclusions] A list of exclusions to apply during preconfigured WAF evaluation.

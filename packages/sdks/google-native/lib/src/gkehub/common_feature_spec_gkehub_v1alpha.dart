@@ -12,21 +12,21 @@ import 'namespace_actuation_feature_spec.dart';
 /// CommonFeatureSpec contains Hub-wide configuration information
 class CommonFeatureSpecGkehubV1alpha {
   /// Anthos Observability spec
-  final pulumi.Input<AnthosObservabilityFeatureSpec>? anthosobservability;
+  final pulumi.Input<AnthosObservabilityFeatureSpec?>? anthosobservability;
   /// Appdevexperience specific spec.
-  final pulumi.Input<Map<String, dynamic>>? appdevexperience;
+  final pulumi.Input<Map<String, dynamic>?>? appdevexperience;
   /// Cloud Audit Logging-specific spec.
-  final pulumi.Input<CloudAuditLoggingFeatureSpec>? cloudauditlogging;
+  final pulumi.Input<CloudAuditLoggingFeatureSpec?>? cloudauditlogging;
   /// ClusterUpgrade (fleet-based) feature spec.
-  final pulumi.Input<ClusterUpgradeFleetSpecGkehubV1alpha>? clusterupgrade;
+  final pulumi.Input<ClusterUpgradeFleetSpecGkehubV1alpha?>? clusterupgrade;
   /// FleetObservability feature spec.
-  final pulumi.Input<FleetObservabilityFeatureSpecGkehubV1alpha>? fleetobservability;
+  final pulumi.Input<FleetObservabilityFeatureSpecGkehubV1alpha?>? fleetobservability;
   /// Multicluster Ingress-specific spec.
-  final pulumi.Input<MultiClusterIngressFeatureSpecGkehubV1alpha>? multiclusteringress;
+  final pulumi.Input<MultiClusterIngressFeatureSpecGkehubV1alpha?>? multiclusteringress;
   /// Namespace Actuation feature spec
-  final pulumi.Input<NamespaceActuationFeatureSpec>? namespaceactuation;
+  final pulumi.Input<NamespaceActuationFeatureSpec?>? namespaceactuation;
   /// Workload Certificate spec.
-  final pulumi.Input<FeatureSpec>? workloadcertificate;
+  final pulumi.Input<FeatureSpec?>? workloadcertificate;
 
   /// Creates a new [CommonFeatureSpecGkehubV1alpha].
   /// [anthosobservability] Anthos Observability spec

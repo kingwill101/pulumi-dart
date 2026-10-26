@@ -6,23 +6,23 @@ import 'backup_retention_settings.dart';
 /// Database instance backup configuration.
 class BackupConfiguration {
   /// Backup retention settings.
-  final pulumi.Input<BackupRetentionSettings>? backupRetentionSettings;
+  final pulumi.Input<BackupRetentionSettings?>? backupRetentionSettings;
   /// (MySQL only) Whether binary log is enabled. If backup configuration is disabled, binarylog must be disabled as well.
-  final pulumi.Input<bool>? binaryLogEnabled;
+  final pulumi.Input<bool?>? binaryLogEnabled;
   /// Whether this configuration is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// This is always `sql#backupConfiguration`.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Location of the backup
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Whether point in time recovery is enabled.
-  final pulumi.Input<bool>? pointInTimeRecoveryEnabled;
+  final pulumi.Input<bool?>? pointInTimeRecoveryEnabled;
   /// Reserved for future use.
-  final pulumi.Input<bool>? replicationLogArchivingEnabled;
+  final pulumi.Input<bool?>? replicationLogArchivingEnabled;
   /// Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// The number of days of transaction logs we retain for point in time restore, from 1-7.
-  final pulumi.Input<int>? transactionLogRetentionDays;
+  final pulumi.Input<int?>? transactionLogRetentionDays;
 
   /// Creates a new [BackupConfiguration].
   /// [backupRetentionSettings] Backup retention settings.
@@ -70,7 +70,7 @@ class BackupConfiguration {
       pointInTimeRecoveryEnabled: (() { final guardedValue = map['pointInTimeRecoveryEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       replicationLogArchivingEnabled: (() { final guardedValue = map['replicationLogArchivingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      transactionLogRetentionDays: (() { final guardedValue = map['transactionLogRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      transactionLogRetentionDays: (() { final guardedValue = map['transactionLogRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

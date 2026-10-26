@@ -8,17 +8,17 @@ import 'google_cloud_aiplatform_v1_sampling_strategy.dart';
 /// Training Dataset information.
 class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingDataset {
   /// The BigQuery table of the unmanaged Dataset used to train this Model.
-  final pulumi.Input<GoogleCloudAiplatformV1BigQuerySource>? bigquerySource;
+  final pulumi.Input<GoogleCloudAiplatformV1BigQuerySource?>? bigquerySource;
   /// Data format of the dataset, only applicable if the input is from Google Cloud Storage. The possible formats are: "tf-record" The source file is a TFRecord file. "csv" The source file is a CSV file. "jsonl" The source file is a JSONL file.
-  final pulumi.Input<String>? dataFormat;
+  final pulumi.Input<String?>? dataFormat;
   /// The resource name of the Dataset used to train this Model.
-  final pulumi.Input<String>? dataset;
+  final pulumi.Input<String?>? dataset;
   /// The Google Cloud Storage uri of the unmanaged Dataset used to train this Model.
-  final pulumi.Input<GoogleCloudAiplatformV1GcsSource>? gcsSource;
+  final pulumi.Input<GoogleCloudAiplatformV1GcsSource?>? gcsSource;
   /// Strategy to sample data from Training Dataset. If not set, we process the whole dataset.
-  final pulumi.Input<GoogleCloudAiplatformV1SamplingStrategy>? loggingSamplingStrategy;
+  final pulumi.Input<GoogleCloudAiplatformV1SamplingStrategy?>? loggingSamplingStrategy;
   /// The target field name the model is to predict. This field will be excluded when doing Predict and (or) Explain for the training data.
-  final pulumi.Input<String>? targetField;
+  final pulumi.Input<String?>? targetField;
 
   /// Creates a new [GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingDataset].
   /// [bigquerySource] The BigQuery table of the unmanaged Dataset used to train this Model.

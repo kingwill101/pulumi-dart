@@ -10,27 +10,27 @@ import 'version_containeranalysis_v1beta1.dart';
 /// Package represents a particular package version.
 class PackageContaineranalysisV1beta1 {
   /// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
-  final pulumi.Input<PackageArchitectureContaineranalysisV1beta1>? architecture;
+  final pulumi.Input<PackageArchitectureContaineranalysisV1beta1?>? architecture;
   /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
-  final pulumi.Input<String>? cpeUri;
+  final pulumi.Input<String?>? cpeUri;
   /// The description of this package.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Hash value, typically a file digest, that allows unique identification a specific package.
-  final pulumi.Input<List<DigestContaineranalysisV1beta1>>? digest;
+  final pulumi.Input<List<DigestContaineranalysisV1beta1>?>? digest;
   /// The various channels by which a package is distributed.
-  final pulumi.Input<List<DistributionContaineranalysisV1beta1>>? distribution;
+  final pulumi.Input<List<DistributionContaineranalysisV1beta1>?>? distribution;
   /// Licenses that have been declared by the authors of the package.
-  final pulumi.Input<LicenseContaineranalysisV1beta1>? license;
+  final pulumi.Input<LicenseContaineranalysisV1beta1?>? license;
   /// A freeform text denoting the maintainer of this package.
-  final pulumi.Input<String>? maintainer;
+  final pulumi.Input<String?>? maintainer;
   /// Immutable. The name of the package.
   final pulumi.Input<String> name;
   /// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
-  final pulumi.Input<String>? packageType;
+  final pulumi.Input<String?>? packageType;
   /// The homepage for this package.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
   /// The version of the package.
-  final pulumi.Input<VersionContaineranalysisV1beta1>? version;
+  final pulumi.Input<VersionContaineranalysisV1beta1?>? version;
 
   /// Creates a new [PackageContaineranalysisV1beta1].
   /// [architecture] The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.

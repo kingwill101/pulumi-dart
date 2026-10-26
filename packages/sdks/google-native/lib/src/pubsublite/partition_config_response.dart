@@ -34,7 +34,7 @@ class PartitionConfigResponse {
     return PartitionConfigResponse(
       capacity: pulumi.Input.fromValue(CapacityResponse.fromMap((map['capacity']! as Map).cast<String, dynamic>())),
       count: pulumi.Input.fromValue(map['count'] as String),
-      scale: pulumi.Input.fromValue(map['scale'] as int),
+      scale: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scale'])),
     );
   }
 }

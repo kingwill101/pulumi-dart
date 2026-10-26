@@ -5,11 +5,11 @@ import 'replica_info_type.dart';
 
 class ReplicaInfo {
   /// If true, this location is designated as the default leader location where leader replicas are placed. See the [region types documentation](https://cloud.google.com/spanner/docs/instances#region_types) for more details.
-  final pulumi.Input<bool>? defaultLeaderLocation;
+  final pulumi.Input<bool?>? defaultLeaderLocation;
   /// The location of the serving resources, e.g. "us-central1".
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The type of replica.
-  final pulumi.Input<ReplicaInfoType>? type;
+  final pulumi.Input<ReplicaInfoType?>? type;
 
   /// Creates a new [ReplicaInfo].
   /// [defaultLeaderLocation] If true, this location is designated as the default leader location where leader replicas are placed. See the [region types documentation](https://cloud.google.com/spanner/docs/instances#region_types) for more details.

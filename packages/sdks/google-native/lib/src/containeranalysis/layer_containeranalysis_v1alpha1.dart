@@ -6,9 +6,9 @@ import 'layer_directive.dart';
 /// Layer holds metadata specific to a layer of a Docker image.
 class LayerContaineranalysisV1alpha1 {
   /// The recovered arguments to the Dockerfile directive.
-  final pulumi.Input<String>? arguments;
+  final pulumi.Input<String?>? arguments;
   /// The recovered Dockerfile directive used to construct this layer.
-  final pulumi.Input<LayerDirective>? directive;
+  final pulumi.Input<LayerDirective?>? directive;
 
   /// Creates a new [LayerContaineranalysisV1alpha1].
   /// [arguments] The recovered arguments to the Dockerfile directive.

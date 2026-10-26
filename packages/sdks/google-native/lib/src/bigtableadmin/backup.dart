@@ -41,8 +41,32 @@ class Backup extends pulumi.CustomResource {
           'google-native:bigtableadmin/v2:Backup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['backupId', 'clusterId', 'instanceId', 'project']).merge(options),
         ) {
+    backupId = registerOutput<String>('backupId');
+    clusterId = registerOutput<String>('clusterId');
+    encryptionInfo = registerOutput<EncryptionInfoResponse>('encryptionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endTime = registerOutput<String>('endTime');
+    expireTime = registerOutput<String>('expireTime');
+    instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    sizeBytes = registerOutput<String>('sizeBytes');
+    sourceBackup = registerOutput<String>('sourceBackup');
+    sourceTable = registerOutput<String>('sourceTable');
+    startTime = registerOutput<String>('startTime');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [Backup] resource.
+  Backup.reference(String urn)
+    : super(
+        'google-native:bigtableadmin/v2:Backup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     backupId = registerOutput<String>('backupId');
     clusterId = registerOutput<String>('clusterId');
     encryptionInfo = registerOutput<EncryptionInfoResponse>('encryptionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

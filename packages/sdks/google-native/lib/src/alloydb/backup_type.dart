@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The backup type, which suggests the trigger for the backup.
-enum BackupType {
+enum BackupType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   onDemand("ON_DEMAND"),
   automated("AUTOMATED"),
   continuous("CONTINUOUS");
 
   const BackupType(this.wireValue);
+  @override
   final String wireValue;
 
   static BackupType fromValue(String value) {

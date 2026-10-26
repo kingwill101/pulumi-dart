@@ -6,11 +6,11 @@ import 'primary_step.dart';
 /// Details when multiple steps are run with the same configuration as a group.
 class MultiStep {
   /// Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
-  final pulumi.Input<int>? multistepNumber;
+  final pulumi.Input<int?>? multistepNumber;
   /// Present if it is a primary (original) step.
-  final pulumi.Input<PrimaryStep>? primaryStep;
+  final pulumi.Input<PrimaryStep?>? primaryStep;
   /// Step Id of the primary (original) step, which might be this step.
-  final pulumi.Input<String>? primaryStepId;
+  final pulumi.Input<String?>? primaryStepId;
 
   /// Creates a new [MultiStep].
   /// [multistepNumber] Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
@@ -32,7 +32,7 @@ class MultiStep {
 
   factory MultiStep.fromMap(Map<String, dynamic> map) {
     return MultiStep(
-      multistepNumber: (() { final guardedValue = map['multistepNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      multistepNumber: (() { final guardedValue = map['multistepNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       primaryStep: (() { final guardedValue = map['primaryStep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrimaryStep.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       primaryStepId: (() { final guardedValue = map['primaryStepId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

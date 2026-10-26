@@ -36,8 +36,29 @@ class HmacKey extends pulumi.CustomResource {
           'google-native:storage/v1:HmacKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'serviceAccountEmail']).merge(options),
         ) {
+    accessId = registerOutput<String>('accessId');
+    etag = registerOutput<String>('etag');
+    kind = registerOutput<String>('kind');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
+    state = registerOutput<String>('state');
+    timeCreated = registerOutput<String>('timeCreated');
+    updated = registerOutput<String>('updated');
+    userProject = registerOutput<String?>('userProject');
+  }
+
+  /// Creates a typed reference to an existing [HmacKey] resource.
+  HmacKey.reference(String urn)
+    : super(
+        'google-native:storage/v1:HmacKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessId = registerOutput<String>('accessId');
     etag = registerOutput<String>('etag');
     kind = registerOutput<String>('kind');

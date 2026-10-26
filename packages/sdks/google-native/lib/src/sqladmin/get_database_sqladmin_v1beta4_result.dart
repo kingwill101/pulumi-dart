@@ -5,22 +5,22 @@ import 'sql_server_database_details_response_sqladmin_v1beta4.dart';
 /// Result data returned by getDatabase.
 class GetDatabaseSqladminV1beta4Result {
   /// The Cloud SQL charset value.
-  final String charset;
+  final String? charset;
   /// The Cloud SQL collation value.
-  final String collation;
+  final String? collation;
   /// This field is deprecated and will be removed from a future version of the API.
-  final String etag;
+  final String? etag;
   /// The name of the Cloud SQL instance. This does not include the project ID.
-  final String instance;
+  final String? instance;
   /// This is always `sql#database`.
-  final String kind;
+  final String? kind;
   /// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
-  final String name;
+  final String? name;
   /// The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
-  final String project;
+  final String? project;
   /// The URI of this resource.
-  final String selfLink;
-  final SqlServerDatabaseDetailsResponseSqladminV1beta4 sqlserverDatabaseDetails;
+  final String? selfLink;
+  final SqlServerDatabaseDetailsResponseSqladminV1beta4? sqlserverDatabaseDetails;
 
   /// Creates a new [GetDatabaseSqladminV1beta4Result].
   /// [charset] The Cloud SQL charset value.
@@ -31,44 +31,44 @@ class GetDatabaseSqladminV1beta4Result {
   /// [name] The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
   /// [project] The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
   /// [selfLink] The URI of this resource.
-  /// [sqlserverDatabaseDetails] Required.
+  /// [sqlserverDatabaseDetails] Optional.
   const GetDatabaseSqladminV1beta4Result({
-    required this.charset,
-    required this.collation,
-    required this.etag,
-    required this.instance,
-    required this.kind,
-    required this.name,
-    required this.project,
-    required this.selfLink,
-    required this.sqlserverDatabaseDetails,
+    this.charset,
+    this.collation,
+    this.etag,
+    this.instance,
+    this.kind,
+    this.name,
+    this.project,
+    this.selfLink,
+    this.sqlserverDatabaseDetails,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'charset': charset,
-      'collation': collation,
-      'etag': etag,
-      'instance': instance,
-      'kind': kind,
-      'name': name,
-      'project': project,
-      'selfLink': selfLink,
-      'sqlserverDatabaseDetails': sqlserverDatabaseDetails.toMap(),
+      'charset': ?charset,
+      'collation': ?collation,
+      'etag': ?etag,
+      'instance': ?instance,
+      'kind': ?kind,
+      'name': ?name,
+      'project': ?project,
+      'selfLink': ?selfLink,
+      'sqlserverDatabaseDetails': ?sqlserverDatabaseDetails?.toMap(),
     };
   }
 
   factory GetDatabaseSqladminV1beta4Result.fromMap(Map<String, dynamic> map) {
     return GetDatabaseSqladminV1beta4Result(
-      charset: map['charset'] as String,
-      collation: map['collation'] as String,
-      etag: map['etag'] as String,
-      instance: map['instance'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      project: map['project'] as String,
-      selfLink: map['selfLink'] as String,
-      sqlserverDatabaseDetails: SqlServerDatabaseDetailsResponseSqladminV1beta4.fromMap((map['sqlserverDatabaseDetails']! as Map).cast<String, dynamic>()),
+      charset: (() { final guardedValue = map['charset']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      collation: (() { final guardedValue = map['collation']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sqlserverDatabaseDetails: (() { final guardedValue = map['sqlserverDatabaseDetails']; if (guardedValue == null) return null; return SqlServerDatabaseDetailsResponseSqladminV1beta4.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The unit that 'retained_backups' represents.
-enum BackupRetentionSettingsRetentionUnitSqladminV1beta4 {
+enum BackupRetentionSettingsRetentionUnitSqladminV1beta4 implements pulumi.PulumiEnum<String> {
   retentionUnitUnspecified("RETENTION_UNIT_UNSPECIFIED"),
   count("COUNT");
 
   const BackupRetentionSettingsRetentionUnitSqladminV1beta4(this.wireValue);
+  @override
   final String wireValue;
 
   static BackupRetentionSettingsRetentionUnitSqladminV1beta4 fromValue(String value) {

@@ -56,7 +56,7 @@ class GooglePrivacyDlpV2BigQueryOptionsResponse {
       identifyingFields: pulumi.Input.fromValue(pulumi.Input.decodeList<GooglePrivacyDlpV2FieldIdResponse>(map['identifyingFields']!, (value) => GooglePrivacyDlpV2FieldIdResponse.fromMap((value as Map).cast<String, dynamic>()))),
       includedFields: pulumi.Input.fromValue(pulumi.Input.decodeList<GooglePrivacyDlpV2FieldIdResponse>(map['includedFields']!, (value) => GooglePrivacyDlpV2FieldIdResponse.fromMap((value as Map).cast<String, dynamic>()))),
       rowsLimit: pulumi.Input.fromValue(map['rowsLimit'] as String),
-      rowsLimitPercent: pulumi.Input.fromValue(map['rowsLimitPercent'] as int),
+      rowsLimitPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rowsLimitPercent'])),
       sampleMethod: pulumi.Input.fromValue(map['sampleMethod'] as String),
       tableReference: pulumi.Input.fromValue(GooglePrivacyDlpV2BigQueryTableResponse.fromMap((map['tableReference']! as Map).cast<String, dynamic>())),
     );

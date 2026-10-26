@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_beta_get_instant_snapshot_compute_beta_args_doc}
 class GetInstantSnapshotComputeBetaArgs {
   final pulumi.Input<String> instantSnapshot;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> zone;
 
   /// Creates a new [GetInstantSnapshotComputeBetaArgs].

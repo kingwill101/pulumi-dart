@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Settings that determine how to filter recent conversation context when generating suggestions.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings {
   /// If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
-  final pulumi.Input<bool>? dropHandoffMessages;
+  final pulumi.Input<bool?>? dropHandoffMessages;
   /// If set to true, all messages from ivr stage are dropped.
-  final pulumi.Input<bool>? dropIvrMessages;
+  final pulumi.Input<bool?>? dropIvrMessages;
   /// If set to true, all messages from virtual agent are dropped.
-  final pulumi.Input<bool>? dropVirtualAgentMessages;
+  final pulumi.Input<bool?>? dropVirtualAgentMessages;
 
   /// Creates a new [GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings].
   /// [dropHandoffMessages] If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.

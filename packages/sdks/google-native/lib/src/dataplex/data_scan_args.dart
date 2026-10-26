@@ -14,21 +14,21 @@ class DataScanArgs {
   /// The data source for DataScan.
   final pulumi.Input<GoogleCloudDataplexV1DataSource> data;
   /// DataProfileScan related setting.
-  final pulumi.Input<GoogleCloudDataplexV1DataProfileSpec>? dataProfileSpec;
+  final pulumi.Input<GoogleCloudDataplexV1DataProfileSpec?>? dataProfileSpec;
   /// DataQualityScan related setting.
-  final pulumi.Input<GoogleCloudDataplexV1DataQualitySpec>? dataQualitySpec;
+  final pulumi.Input<GoogleCloudDataplexV1DataQualitySpec?>? dataQualitySpec;
   /// Required. DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter. Must be between 1-63 characters. Must be unique within the customer project / location.
   final pulumi.Input<String> dataScanId;
   /// Optional. Description of the scan. Must be between 1-1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. User friendly display name. Must be between 1-256 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. DataScan execution settings.If not specified, the fields in it will use their default values.
-  final pulumi.Input<GoogleCloudDataplexV1DataScanExecutionSpec>? executionSpec;
+  final pulumi.Input<GoogleCloudDataplexV1DataScanExecutionSpec?>? executionSpec;
   /// Optional. User-defined labels for the scan.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [DataScanArgs].
   /// [data] The data source for DataScan.

@@ -1,4 +1,6 @@
-enum EnterpriseCrmEventbusProtoTaskMetadataCategory {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum EnterpriseCrmEventbusProtoTaskMetadataCategory implements pulumi.PulumiEnum<String> {
   unspecifiedCategory("UNSPECIFIED_CATEGORY"),
   custom("CUSTOM"),
   flowControl("FLOW_CONTROL"),
@@ -11,6 +13,7 @@ enum EnterpriseCrmEventbusProtoTaskMetadataCategory {
   taskRecommendations("TASK_RECOMMENDATIONS");
 
   const EnterpriseCrmEventbusProtoTaskMetadataCategory(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmEventbusProtoTaskMetadataCategory fromValue(String value) {

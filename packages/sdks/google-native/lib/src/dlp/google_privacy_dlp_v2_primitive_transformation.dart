@@ -15,29 +15,29 @@ import 'google_privacy_dlp_v2_time_part_config.dart';
 /// A rule for transforming a value.
 class GooglePrivacyDlpV2PrimitiveTransformation {
   /// Bucketing
-  final pulumi.Input<GooglePrivacyDlpV2BucketingConfig>? bucketingConfig;
+  final pulumi.Input<GooglePrivacyDlpV2BucketingConfig?>? bucketingConfig;
   /// Mask
-  final pulumi.Input<GooglePrivacyDlpV2CharacterMaskConfig>? characterMaskConfig;
+  final pulumi.Input<GooglePrivacyDlpV2CharacterMaskConfig?>? characterMaskConfig;
   /// Deterministic Crypto
-  final pulumi.Input<GooglePrivacyDlpV2CryptoDeterministicConfig>? cryptoDeterministicConfig;
+  final pulumi.Input<GooglePrivacyDlpV2CryptoDeterministicConfig?>? cryptoDeterministicConfig;
   /// Crypto
-  final pulumi.Input<GooglePrivacyDlpV2CryptoHashConfig>? cryptoHashConfig;
+  final pulumi.Input<GooglePrivacyDlpV2CryptoHashConfig?>? cryptoHashConfig;
   /// Ffx-Fpe
-  final pulumi.Input<GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig>? cryptoReplaceFfxFpeConfig;
+  final pulumi.Input<GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig?>? cryptoReplaceFfxFpeConfig;
   /// Date Shift
-  final pulumi.Input<GooglePrivacyDlpV2DateShiftConfig>? dateShiftConfig;
+  final pulumi.Input<GooglePrivacyDlpV2DateShiftConfig?>? dateShiftConfig;
   /// Fixed size bucketing
-  final pulumi.Input<GooglePrivacyDlpV2FixedSizeBucketingConfig>? fixedSizeBucketingConfig;
+  final pulumi.Input<GooglePrivacyDlpV2FixedSizeBucketingConfig?>? fixedSizeBucketingConfig;
   /// Redact
-  final pulumi.Input<Map<String, dynamic>>? redactConfig;
+  final pulumi.Input<Map<String, dynamic>?>? redactConfig;
   /// Replace with a specified value.
-  final pulumi.Input<GooglePrivacyDlpV2ReplaceValueConfig>? replaceConfig;
+  final pulumi.Input<GooglePrivacyDlpV2ReplaceValueConfig?>? replaceConfig;
   /// Replace with a value randomly drawn (with replacement) from a dictionary.
-  final pulumi.Input<GooglePrivacyDlpV2ReplaceDictionaryConfig>? replaceDictionaryConfig;
+  final pulumi.Input<GooglePrivacyDlpV2ReplaceDictionaryConfig?>? replaceDictionaryConfig;
   /// Replace with infotype
-  final pulumi.Input<Map<String, dynamic>>? replaceWithInfoTypeConfig;
+  final pulumi.Input<Map<String, dynamic>?>? replaceWithInfoTypeConfig;
   /// Time extraction
-  final pulumi.Input<GooglePrivacyDlpV2TimePartConfig>? timePartConfig;
+  final pulumi.Input<GooglePrivacyDlpV2TimePartConfig?>? timePartConfig;
 
   /// Creates a new [GooglePrivacyDlpV2PrimitiveTransformation].
   /// [bucketingConfig] Bucketing

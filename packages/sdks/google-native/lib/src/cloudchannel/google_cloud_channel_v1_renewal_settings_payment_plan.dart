@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes how a reseller will be billed.
-enum GoogleCloudChannelV1RenewalSettingsPaymentPlan {
+enum GoogleCloudChannelV1RenewalSettingsPaymentPlan implements pulumi.PulumiEnum<String> {
   paymentPlanUnspecified("PAYMENT_PLAN_UNSPECIFIED"),
   commitment("COMMITMENT"),
   flexible("FLEXIBLE"),
@@ -8,6 +10,7 @@ enum GoogleCloudChannelV1RenewalSettingsPaymentPlan {
   offline("OFFLINE");
 
   const GoogleCloudChannelV1RenewalSettingsPaymentPlan(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudChannelV1RenewalSettingsPaymentPlan fromValue(String value) {

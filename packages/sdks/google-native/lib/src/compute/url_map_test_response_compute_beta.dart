@@ -54,7 +54,7 @@ class UrlMapTestResponseComputeBeta {
     return UrlMapTestResponseComputeBeta(
       description: pulumi.Input.fromValue(map['description'] as String),
       expectedOutputUrl: pulumi.Input.fromValue(map['expectedOutputUrl'] as String),
-      expectedRedirectResponseCode: pulumi.Input.fromValue(map['expectedRedirectResponseCode'] as int),
+      expectedRedirectResponseCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['expectedRedirectResponseCode'])),
       headers: pulumi.Input.fromValue(pulumi.Input.decodeList<UrlMapTestHeaderResponseComputeBeta>(map['headers']!, (value) => UrlMapTestHeaderResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))),
       host: pulumi.Input.fromValue(map['host'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),

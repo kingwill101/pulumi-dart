@@ -38,8 +38,31 @@ class TargetInstanceComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:TargetInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'zone']).merge(options),
         ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    instance = registerOutput<String>('instance');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    natPolicy = registerOutput<String>('natPolicy');
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    securityPolicy = registerOutput<String>('securityPolicy');
+    selfLink = registerOutput<String>('selfLink');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [TargetInstanceComputeV1] resource.
+  TargetInstanceComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:TargetInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     instance = registerOutput<String>('instance');

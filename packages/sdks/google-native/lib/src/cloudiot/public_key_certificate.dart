@@ -6,9 +6,9 @@ import 'public_key_certificate_format.dart';
 /// A public key certificate format and data.
 class PublicKeyCertificate {
   /// The certificate data.
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// The certificate format.
-  final pulumi.Input<PublicKeyCertificateFormat>? format;
+  final pulumi.Input<PublicKeyCertificateFormat?>? format;
 
   /// Creates a new [PublicKeyCertificate].
   /// [certificate] The certificate data.

@@ -27,7 +27,7 @@ class RangeInfoResponseContainerV1beta1 {
   factory RangeInfoResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return RangeInfoResponseContainerV1beta1(
       rangeName: pulumi.Input.fromValue(map['rangeName'] as String),
-      utilization: pulumi.Input.fromValue(map['utilization'] as double),
+      utilization: pulumi.Input.fromValue((map['utilization'] as num).toDouble()),
     );
   }
 }

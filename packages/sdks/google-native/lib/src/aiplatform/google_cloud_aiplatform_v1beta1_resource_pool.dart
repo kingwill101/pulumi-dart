@@ -8,15 +8,15 @@ import 'google_cloud_aiplatform_v1beta1_resource_pool_autoscaling_spec.dart';
 /// Represents the spec of a group of resources of the same type, for example machine type, disk, and accelerators, in a PersistentResource.
 class GoogleCloudAiplatformV1beta1ResourcePool {
   /// Optional. Optional spec to configure GKE autoscaling
-  final pulumi.Input<GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec>? autoscalingSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec?>? autoscalingSpec;
   /// Optional. Disk spec for the machine in this node pool.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1DiskSpec>? diskSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1DiskSpec?>? diskSpec;
   /// Immutable. The unique ID in a PersistentResource for referring to this resource pool. User can specify it if necessary. Otherwise, it's generated automatically.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Immutable. The specification of a single machine.
   final pulumi.Input<GoogleCloudAiplatformV1beta1MachineSpec> machineSpec;
   /// Optional. The total number of machines to use for this resource pool.
-  final pulumi.Input<String>? replicaCount;
+  final pulumi.Input<String?>? replicaCount;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ResourcePool].
   /// [autoscalingSpec] Optional. Optional spec to configure GKE autoscaling

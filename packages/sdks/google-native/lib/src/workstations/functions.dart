@@ -36,6 +36,17 @@ Future<GetWorkstationResult> getWorkstation(
   return GetWorkstationResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkstationResult> getWorkstationOutput(
+  GetWorkstationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:workstations/v1:getWorkstation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkstationResult.fromMap);
+}
+
 /// Returns the requested workstation cluster.
 /// [args] Arguments passed to this invoke. {@macro pulumi_workstations_v1_get_workstation_cluster_args_doc}
 /// [options] Invoke options controlling this call.
@@ -50,6 +61,17 @@ Future<GetWorkstationClusterResult> getWorkstationCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkstationClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkstationClusterResult> getWorkstationClusterOutput(
+  GetWorkstationClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:workstations/v1:getWorkstationCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkstationClusterResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -68,6 +90,17 @@ Future<GetWorkstationClusterWorkstationConfigIamPolicyResult> getWorkstationClus
   return GetWorkstationClusterWorkstationConfigIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkstationClusterWorkstationConfigIamPolicyResult> getWorkstationClusterWorkstationConfigIamPolicyOutput(
+  GetWorkstationClusterWorkstationConfigIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:workstations/v1:getWorkstationClusterWorkstationConfigIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkstationClusterWorkstationConfigIamPolicyResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_workstations_v1_get_workstation_cluster_workstation_config_workstation_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -82,6 +115,17 @@ Future<GetWorkstationClusterWorkstationConfigWorkstationIamPolicyResult> getWork
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkstationClusterWorkstationConfigWorkstationIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkstationClusterWorkstationConfigWorkstationIamPolicyResult> getWorkstationClusterWorkstationConfigWorkstationIamPolicyOutput(
+  GetWorkstationClusterWorkstationConfigWorkstationIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:workstations/v1:getWorkstationClusterWorkstationConfigWorkstationIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkstationClusterWorkstationConfigWorkstationIamPolicyResult.fromMap);
 }
 
 /// Returns the requested workstation configuration.
@@ -100,6 +144,17 @@ Future<GetWorkstationConfigResult> getWorkstationConfig(
   return GetWorkstationConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkstationConfigResult> getWorkstationConfigOutput(
+  GetWorkstationConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:workstations/v1:getWorkstationConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkstationConfigResult.fromMap);
+}
+
 /// Returns the requested workstation.
 /// [args] Arguments passed to this invoke. {@macro pulumi_workstations_v1beta_get_workstation_workstations_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -114,6 +169,17 @@ Future<GetWorkstationWorkstationsV1betaResult> getWorkstationWorkstationsV1beta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkstationWorkstationsV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkstationWorkstationsV1betaResult> getWorkstationWorkstationsV1betaOutput(
+  GetWorkstationWorkstationsV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:workstations/v1beta:getWorkstation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkstationWorkstationsV1betaResult.fromMap);
 }
 
 /// Returns the requested workstation cluster.
@@ -132,6 +198,17 @@ Future<GetWorkstationClusterWorkstationsV1betaResult> getWorkstationClusterWorks
   return GetWorkstationClusterWorkstationsV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkstationClusterWorkstationsV1betaResult> getWorkstationClusterWorkstationsV1betaOutput(
+  GetWorkstationClusterWorkstationsV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:workstations/v1beta:getWorkstationCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkstationClusterWorkstationsV1betaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_workstations_v1beta_get_workstation_cluster_workstation_config_iam_policy_workstations_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -146,6 +223,17 @@ Future<GetWorkstationClusterWorkstationConfigIamPolicyWorkstationsV1betaResult> 
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkstationClusterWorkstationConfigIamPolicyWorkstationsV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkstationClusterWorkstationConfigIamPolicyWorkstationsV1betaResult> getWorkstationClusterWorkstationConfigIamPolicyWorkstationsV1betaOutput(
+  GetWorkstationClusterWorkstationConfigIamPolicyWorkstationsV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:workstations/v1beta:getWorkstationClusterWorkstationConfigIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkstationClusterWorkstationConfigIamPolicyWorkstationsV1betaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -164,6 +252,17 @@ Future<GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1b
   return GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaResult> getWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaOutput(
+  GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:workstations/v1beta:getWorkstationClusterWorkstationConfigWorkstationIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaResult.fromMap);
+}
+
 /// Returns the requested workstation configuration.
 /// [args] Arguments passed to this invoke. {@macro pulumi_workstations_v1beta_get_workstation_config_workstations_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -178,4 +277,15 @@ Future<GetWorkstationConfigWorkstationsV1betaResult> getWorkstationConfigWorksta
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkstationConfigWorkstationsV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkstationConfigWorkstationsV1betaResult> getWorkstationConfigWorkstationsV1betaOutput(
+  GetWorkstationConfigWorkstationsV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:workstations/v1beta:getWorkstationConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkstationConfigWorkstationsV1betaResult.fromMap);
 }

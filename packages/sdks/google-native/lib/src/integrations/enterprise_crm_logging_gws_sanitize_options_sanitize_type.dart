@@ -1,4 +1,6 @@
-enum EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType implements pulumi.PulumiEnum<String> {
   sanitizeTypeUnspecified("SANITIZE_TYPE_UNSPECIFIED"),
   scrub("SCRUB"),
   anonymize("ANONYMIZE"),
@@ -8,6 +10,7 @@ enum EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType {
   doNotSanitize("DO_NOT_SANITIZE");
 
   const EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType fromValue(String value) {

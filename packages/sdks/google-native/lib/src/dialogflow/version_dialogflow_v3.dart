@@ -33,8 +33,29 @@ class VersionDialogflowV3 extends pulumi.CustomResource {
           'google-native:dialogflow/v3:Version',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['agentId', 'flowId', 'location', 'project']).merge(options),
         ) {
+    agentId = registerOutput<String>('agentId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    flowId = registerOutput<String>('flowId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nluSettings = registerOutput<GoogleCloudDialogflowCxV3NluSettingsResponse>('nluSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3NluSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [VersionDialogflowV3] resource.
+  VersionDialogflowV3.reference(String urn)
+    : super(
+        'google-native:dialogflow/v3:Version',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     agentId = registerOutput<String>('agentId');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');

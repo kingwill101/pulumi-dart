@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Material {
-  final pulumi.Input<Map<String, String>>? digest;
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<Map<String, String>?>? digest;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [Material].
   /// [digest] Optional.

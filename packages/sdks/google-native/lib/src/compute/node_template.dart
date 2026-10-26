@@ -1,18 +1,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'accelerator_config_response.dart';
+import 'local_disk_response.dart';
 import 'node_template_args.dart';
 import 'node_template_node_type_flexibility_response.dart';
 import 'server_binding_response.dart';
 
 /// Creates a NodeTemplate resource in the specified project using the data included in the request.
 class NodeTemplate extends pulumi.CustomResource {
-  late final pulumi.Output<List<Map<String, dynamic>>> accelerators;
+  late final pulumi.Output<List<AcceleratorConfigResponse>> accelerators;
   /// CPU overcommit.
   late final pulumi.Output<String> cpuOvercommitType;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
   /// An optional description of this resource. Provide this property when you create the resource.
   late final pulumi.Output<String> description;
-  late final pulumi.Output<List<Map<String, dynamic>>> disks;
+  late final pulumi.Output<List<LocalDiskResponse>> disks;
   /// The type of the resource. Always compute#nodeTemplate for node templates.
   late final pulumi.Output<String> kind;
   /// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -50,16 +52,45 @@ class NodeTemplate extends pulumi.CustomResource {
           'google-native:compute/alpha:NodeTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
-    accelerators = registerOutput<List<Map<String, dynamic>>>('accelerators');
+    accelerators = registerOutput<List<AcceleratorConfigResponse>>('accelerators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AcceleratorConfigResponse>(guardedValue, (value) => AcceleratorConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     cpuOvercommitType = registerOutput<String>('cpuOvercommitType');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
-    disks = registerOutput<List<Map<String, dynamic>>>('disks');
+    disks = registerOutput<List<LocalDiskResponse>>('disks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocalDiskResponse>(guardedValue, (value) => LocalDiskResponse.fromMap((value as Map).cast<String, dynamic>())); });
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    nodeAffinityLabels = registerOutput<Map<String, String>>('nodeAffinityLabels');
+    nodeAffinityLabels = registerOutput<Map<String, String>>('nodeAffinityLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    nodeType = registerOutput<String>('nodeType');
+    nodeTypeFlexibility = registerOutput<NodeTemplateNodeTypeFlexibilityResponse>('nodeTypeFlexibility', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeTemplateNodeTypeFlexibilityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    serverBinding = registerOutput<ServerBindingResponse>('serverBinding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerBindingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    statusMessage = registerOutput<String>('statusMessage');
+  }
+
+  /// Creates a typed reference to an existing [NodeTemplate] resource.
+  NodeTemplate.reference(String urn)
+    : super(
+        'google-native:compute/alpha:NodeTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accelerators = registerOutput<List<AcceleratorConfigResponse>>('accelerators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AcceleratorConfigResponse>(guardedValue, (value) => AcceleratorConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    cpuOvercommitType = registerOutput<String>('cpuOvercommitType');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    disks = registerOutput<List<LocalDiskResponse>>('disks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocalDiskResponse>(guardedValue, (value) => LocalDiskResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    nodeAffinityLabels = registerOutput<Map<String, String>>('nodeAffinityLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     nodeType = registerOutput<String>('nodeType');
     nodeTypeFlexibility = registerOutput<NodeTemplateNodeTypeFlexibilityResponse>('nodeTypeFlexibility', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeTemplateNodeTypeFlexibilityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');

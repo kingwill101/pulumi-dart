@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Replaces a term in the query. Multiple replacement candidates can be specified. All `query_terms` will be replaced with the replacement term. Example: Replace "gShoe" with "google shoe".
 class GoogleCloudRetailV2RuleReplacementAction {
   /// Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.
-  final pulumi.Input<List<String>>? queryTerms;
+  final pulumi.Input<List<String>?>? queryTerms;
   /// Term that will be used for replacement.
-  final pulumi.Input<String>? replacementTerm;
+  final pulumi.Input<String?>? replacementTerm;
   /// Will be [deprecated = true] post migration;
-  final pulumi.Input<String>? term;
+  final pulumi.Input<String?>? term;
 
   /// Creates a new [GoogleCloudRetailV2RuleReplacementAction].
   /// [queryTerms] Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.

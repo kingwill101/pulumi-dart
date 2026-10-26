@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A collection of Cloud VPN tunnel resources. These resources should be redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud. Alternatively, in a passive/active configuration, all tunnels should be capable of advertising the same prefixes.
 class LinkedVpnTunnels {
   /// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
-  final pulumi.Input<bool>? siteToSiteDataTransfer;
+  final pulumi.Input<bool?>? siteToSiteDataTransfer;
   /// The URIs of linked VPN tunnel resources.
-  final pulumi.Input<List<String>>? uris;
+  final pulumi.Input<List<String>?>? uris;
 
   /// Creates a new [LinkedVpnTunnels].
   /// [siteToSiteDataTransfer] A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).

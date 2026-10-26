@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Files in the workspace to upload to Cloud Storage upon successful completion of all build steps.
 class ArtifactObjects {
   /// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Path globs used to match files in the build's workspace.
-  final pulumi.Input<List<String>>? paths;
+  final pulumi.Input<List<String>?>? paths;
 
   /// Creates a new [ArtifactObjects].
   /// [location] Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.

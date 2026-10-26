@@ -7,11 +7,11 @@ import 'google_cloud_identitytoolkit_admin_v2_password_policy_version.dart';
 /// The configuration for the password policy on the project.
 class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig {
   /// Users must have a password compliant with the password policy to sign-in.
-  final pulumi.Input<bool>? forceUpgradeOnSignin;
+  final pulumi.Input<bool?>? forceUpgradeOnSignin;
   /// Which enforcement mode to use for the password policy.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState>? passwordPolicyEnforcementState;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState?>? passwordPolicyEnforcementState;
   /// Must be of length 1. Contains the strength attributes for the password policy.
-  final pulumi.Input<List<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion>>? passwordPolicyVersions;
+  final pulumi.Input<List<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion>?>? passwordPolicyVersions;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig].
   /// [forceUpgradeOnSignin] Users must have a password compliant with the password policy to sign-in.

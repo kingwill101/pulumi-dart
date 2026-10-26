@@ -9,13 +9,13 @@ import 'service_mesh_membership_spec.dart';
 /// CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
 class CommonFleetDefaultMemberConfigSpec {
   /// Config Management-specific spec.
-  final pulumi.Input<ConfigManagementMembershipSpec>? configmanagement;
+  final pulumi.Input<ConfigManagementMembershipSpec?>? configmanagement;
   /// Identity Service-specific spec.
-  final pulumi.Input<IdentityServiceMembershipSpec>? identityservice;
+  final pulumi.Input<IdentityServiceMembershipSpec?>? identityservice;
   /// Anthos Service Mesh-specific spec
-  final pulumi.Input<ServiceMeshMembershipSpec>? mesh;
+  final pulumi.Input<ServiceMeshMembershipSpec?>? mesh;
   /// Policy Controller spec.
-  final pulumi.Input<PolicyControllerMembershipSpec>? policycontroller;
+  final pulumi.Input<PolicyControllerMembershipSpec?>? policycontroller;
 
   /// Creates a new [CommonFleetDefaultMemberConfigSpec].
   /// [configmanagement] Config Management-specific spec.

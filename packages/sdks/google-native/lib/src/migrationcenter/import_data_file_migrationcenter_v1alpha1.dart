@@ -37,8 +37,30 @@ class ImportDataFileMigrationcenterV1alpha1 extends pulumi.CustomResource {
           'google-native:migrationcenter/v1alpha1:ImportDataFile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['importDataFileId', 'importJobId', 'location', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    format = registerOutput<String>('format');
+    importDataFileId = registerOutput<String>('importDataFileId');
+    importJobId = registerOutput<String>('importJobId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    uploadFileInfo = registerOutput<UploadFileInfoResponseMigrationcenterV1alpha1>('uploadFileInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UploadFileInfoResponseMigrationcenterV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ImportDataFileMigrationcenterV1alpha1] resource.
+  ImportDataFileMigrationcenterV1alpha1.reference(String urn)
+    : super(
+        'google-native:migrationcenter/v1alpha1:ImportDataFile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     format = registerOutput<String>('format');

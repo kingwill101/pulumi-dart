@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIssueModelArgs {
   final pulumi.Input<String> issueModelId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetIssueModelArgs].
   /// [issueModelId] Required.

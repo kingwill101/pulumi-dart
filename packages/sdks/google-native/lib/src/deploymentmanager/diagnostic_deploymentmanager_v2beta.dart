@@ -5,9 +5,9 @@ import 'diagnostic_level_deploymentmanager_v2beta.dart';
 
 class DiagnosticDeploymentmanagerV2beta {
   /// JsonPath expression on the resource that if non empty, indicates that this field needs to be extracted as a diagnostic.
-  final pulumi.Input<String>? field;
+  final pulumi.Input<String?>? field;
   /// Level to record this diagnostic.
-  final pulumi.Input<DiagnosticLevelDeploymentmanagerV2beta>? level;
+  final pulumi.Input<DiagnosticLevelDeploymentmanagerV2beta?>? level;
 
   /// Creates a new [DiagnosticDeploymentmanagerV2beta].
   /// [field] JsonPath expression on the resource that if non empty, indicates that this field needs to be extracted as a diagnostic.

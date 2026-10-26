@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
-enum GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType {
+enum GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType implements pulumi.PulumiEnum<String> {
   resourceTypeUnspecified("RESOURCE_TYPE_UNSPECIFIED"),
   consumerProject("CONSUMER_PROJECT"),
   consumerFolder("CONSUMER_FOLDER"),
@@ -7,6 +9,7 @@ enum GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType {
   keyring("KEYRING");
 
   const GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType fromValue(String value) {

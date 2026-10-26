@@ -6,23 +6,23 @@ import 'tcp_route_route_rule_response.dart';
 /// Result data returned by getTcpRoute.
 class GetTcpRouteResult {
   /// The timestamp when the resource was created.
-  final String createTime;
+  final String? createTime;
   /// Optional. A free-text description of the resource. Max length 1024 characters.
-  final String description;
+  final String? description;
   /// Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
-  final List<String> gateways;
+  final List<String>? gateways;
   /// Optional. Set of label tags associated with the TcpRoute resource.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
-  final List<String> meshes;
+  final List<String>? meshes;
   /// Name of the TcpRoute resource. It matches pattern `projects/*/locations/global/tcpRoutes/tcp_route_name&gt;`.
-  final String name;
+  final String? name;
   /// Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
-  final List<TcpRouteRouteRuleResponse> rules;
+  final List<TcpRouteRouteRuleResponse>? rules;
   /// Server-defined URL of this resource
-  final String selfLink;
+  final String? selfLink;
   /// The timestamp when the resource was updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetTcpRouteResult].
   /// [createTime] The timestamp when the resource was created.
@@ -35,42 +35,42 @@ class GetTcpRouteResult {
   /// [selfLink] Server-defined URL of this resource
   /// [updateTime] The timestamp when the resource was updated.
   const GetTcpRouteResult({
-    required this.createTime,
-    required this.description,
-    required this.gateways,
-    required this.labels,
-    required this.meshes,
-    required this.name,
-    required this.rules,
-    required this.selfLink,
-    required this.updateTime,
+    this.createTime,
+    this.description,
+    this.gateways,
+    this.labels,
+    this.meshes,
+    this.name,
+    this.rules,
+    this.selfLink,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'gateways': gateways,
-      'labels': labels,
-      'meshes': meshes,
-      'name': name,
-      'rules': pulumi.Input.encodeList<TcpRouteRouteRuleResponse, Map<String, dynamic>>(rules, (value) => value.toMap()),
-      'selfLink': selfLink,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'description': ?description,
+      'gateways': ?gateways,
+      'labels': ?labels,
+      'meshes': ?meshes,
+      'name': ?name,
+      'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<TcpRouteRouteRuleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'selfLink': ?selfLink,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetTcpRouteResult.fromMap(Map<String, dynamic> map) {
     return GetTcpRouteResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      gateways: (map['gateways'] as List).cast<String>(),
-      labels: (map['labels'] as Map).cast<String, String>(),
-      meshes: (map['meshes'] as List).cast<String>(),
-      name: map['name'] as String,
-      rules: pulumi.Input.decodeList<TcpRouteRouteRuleResponse>(map['rules']!, (value) => TcpRouteRouteRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      selfLink: map['selfLink'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      gateways: (() { final guardedValue = map['gateways']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      meshes: (() { final guardedValue = map['meshes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<TcpRouteRouteRuleResponse>(guardedValue, (value) => TcpRouteRouteRuleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -35,8 +35,29 @@ class PreferenceSetMigrationcenterV1alpha1 extends pulumi.CustomResource {
           'google-native:migrationcenter/v1alpha1:PreferenceSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    preferenceSetId = registerOutput<String?>('preferenceSetId');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    updateTime = registerOutput<String>('updateTime');
+    virtualMachinePreferences = registerOutput<VirtualMachinePreferencesResponseMigrationcenterV1alpha1>('virtualMachinePreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachinePreferencesResponseMigrationcenterV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [PreferenceSetMigrationcenterV1alpha1] resource.
+  PreferenceSetMigrationcenterV1alpha1.reference(String urn)
+    : super(
+        'google-native:migrationcenter/v1alpha1:PreferenceSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');

@@ -26,8 +26,8 @@ class NodeConfig {
 
   factory NodeConfig.fromMap(Map<String, dynamic> map) {
     return NodeConfig(
-      cpuCount: pulumi.Input.fromValue(map['cpuCount'] as int),
-      memorySizeMb: pulumi.Input.fromValue(map['memorySizeMb'] as int),
+      cpuCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cpuCount'])),
+      memorySizeMb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memorySizeMb'])),
     );
   }
 }

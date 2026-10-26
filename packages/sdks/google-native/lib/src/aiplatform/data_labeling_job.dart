@@ -59,13 +59,13 @@ class DataLabelingJob extends pulumi.CustomResource {
           'google-native:aiplatform/v1:DataLabelingJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     activeLearningConfig = registerOutput<GoogleCloudAiplatformV1ActiveLearningConfigResponse>('activeLearningConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1ActiveLearningConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    annotationLabels = registerOutput<Map<String, String>>('annotationLabels');
+    annotationLabels = registerOutput<Map<String, String>>('annotationLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createTime = registerOutput<String>('createTime');
     currentSpend = registerOutput<GoogleTypeMoneyResponse>('currentSpend', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleTypeMoneyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    datasets = registerOutput<List<String>>('datasets');
+    datasets = registerOutput<List<String>>('datasets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
     encryptionSpec = registerOutput<GoogleCloudAiplatformV1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     error = registerOutput<GoogleRpcStatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleRpcStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -74,11 +74,42 @@ class DataLabelingJob extends pulumi.CustomResource {
     instructionUri = registerOutput<String>('instructionUri');
     labelerCount = registerOutput<int>('labelerCount');
     labelingProgress = registerOutput<int>('labelingProgress');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    specialistPools = registerOutput<List<String>>('specialistPools');
+    specialistPools = registerOutput<List<String>>('specialistPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [DataLabelingJob] resource.
+  DataLabelingJob.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1:DataLabelingJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activeLearningConfig = registerOutput<GoogleCloudAiplatformV1ActiveLearningConfigResponse>('activeLearningConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1ActiveLearningConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    annotationLabels = registerOutput<Map<String, String>>('annotationLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    createTime = registerOutput<String>('createTime');
+    currentSpend = registerOutput<GoogleTypeMoneyResponse>('currentSpend', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleTypeMoneyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    datasets = registerOutput<List<String>>('datasets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayName = registerOutput<String>('displayName');
+    encryptionSpec = registerOutput<GoogleCloudAiplatformV1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    error = registerOutput<GoogleRpcStatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleRpcStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inputs = registerOutput<dynamic>('inputs');
+    inputsSchemaUri = registerOutput<String>('inputsSchemaUri');
+    instructionUri = registerOutput<String>('instructionUri');
+    labelerCount = registerOutput<int>('labelerCount');
+    labelingProgress = registerOutput<int>('labelingProgress');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    specialistPools = registerOutput<List<String>>('specialistPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }

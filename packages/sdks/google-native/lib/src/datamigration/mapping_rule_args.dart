@@ -22,46 +22,46 @@ import 'source_sql_change.dart';
 /// {@macro pulumi_datamigration_v1_mapping_rule_args_doc}
 class MappingRuleArgs {
   /// Optional. Rule to specify how the data contained in a column should be transformed (such as trimmed, rounded, etc) provided that the data meets certain criteria.
-  final pulumi.Input<ConditionalColumnSetValue>? conditionalColumnSetValue;
+  final pulumi.Input<ConditionalColumnSetValue?>? conditionalColumnSetValue;
   final pulumi.Input<String> conversionWorkspaceId;
   /// Optional. Rule to specify how multiple tables should be converted with an additional rowid column.
-  final pulumi.Input<ConvertRowIdToColumn>? convertRowidColumn;
+  final pulumi.Input<ConvertRowIdToColumn?>? convertRowidColumn;
   /// Optional. A human readable name
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. Rule to specify how multiple entities should be relocated into a different schema.
-  final pulumi.Input<EntityMove>? entityMove;
+  final pulumi.Input<EntityMove?>? entityMove;
   /// The rule filter
   final pulumi.Input<MappingRuleFilter> filter;
   /// Optional. Rule to specify the list of columns to include or exclude from a table.
-  final pulumi.Input<FilterTableColumns>? filterTableColumns;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<FilterTableColumns?>? filterTableColumns;
+  final pulumi.Input<String?>? location;
   /// Required. The ID of the rule to create.
   final pulumi.Input<String> mappingRuleId;
   /// Optional. Rule to specify how multiple columns should be converted to a different data type.
-  final pulumi.Input<MultiColumnDatatypeChange>? multiColumnDataTypeChange;
+  final pulumi.Input<MultiColumnDatatypeChange?>? multiColumnDataTypeChange;
   /// Optional. Rule to specify how multiple entities should be renamed.
-  final pulumi.Input<MultiEntityRename>? multiEntityRename;
+  final pulumi.Input<MultiEntityRename?>? multiEntityRename;
   /// Full name of the mapping rule resource, in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{set}/mappingRule/{rule}.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// The order in which the rule is applied. Lower order rules are applied before higher value rules so they may end up being overridden.
   final pulumi.Input<String> ruleOrder;
   /// The rule scope
   final pulumi.Input<MappingRuleRuleScope> ruleScope;
   /// Optional. Rule to specify the primary key for a table
-  final pulumi.Input<SetTablePrimaryKey>? setTablePrimaryKey;
+  final pulumi.Input<SetTablePrimaryKey?>? setTablePrimaryKey;
   /// Optional. Rule to specify how a single column is converted.
-  final pulumi.Input<SingleColumnChange>? singleColumnChange;
+  final pulumi.Input<SingleColumnChange?>? singleColumnChange;
   /// Optional. Rule to specify how a single entity should be renamed.
-  final pulumi.Input<SingleEntityRename>? singleEntityRename;
+  final pulumi.Input<SingleEntityRename?>? singleEntityRename;
   /// Optional. Rule to specify how a single package is converted.
-  final pulumi.Input<SinglePackageChange>? singlePackageChange;
+  final pulumi.Input<SinglePackageChange?>? singlePackageChange;
   /// Optional. Rule to change the sql code for an entity, for example, function, procedure.
-  final pulumi.Input<SourceSqlChange>? sourceSqlChange;
+  final pulumi.Input<SourceSqlChange?>? sourceSqlChange;
   /// Optional. The mapping rule state
-  final pulumi.Input<MappingRuleState>? state;
+  final pulumi.Input<MappingRuleState?>? state;
 
   /// Creates a new [MappingRuleArgs].
   /// [conditionalColumnSetValue] Optional. Rule to specify how the data contained in a column should be transformed (such as trimmed, rounded, etc) provided that the data meets certain criteria.

@@ -18,44 +18,44 @@ import 'upgrade_settings_container_v1beta1.dart';
 /// {@macro pulumi_container_v1beta1_node_pool_container_v1beta1_args_doc}
 class NodePoolContainerV1beta1Args {
   /// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
-  final pulumi.Input<NodePoolAutoscalingContainerV1beta1>? autoscaling;
+  final pulumi.Input<NodePoolAutoscalingContainerV1beta1?>? autoscaling;
   /// Enable best effort provisioning for nodes
-  final pulumi.Input<BestEffortProvisioningContainerV1beta1>? bestEffortProvisioning;
+  final pulumi.Input<BestEffortProvisioningContainerV1beta1?>? bestEffortProvisioning;
   /// Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
   final pulumi.Input<String> clusterId;
   /// Which conditions caused the current node pool state.
-  final pulumi.Input<List<StatusConditionContainerV1beta1>>? conditions;
+  final pulumi.Input<List<StatusConditionContainerV1beta1>?>? conditions;
   /// The node configuration of the pool.
-  final pulumi.Input<NodeConfigContainerV1beta1>? config;
+  final pulumi.Input<NodeConfigContainerV1beta1?>? config;
   /// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
-  final pulumi.Input<int>? initialNodeCount;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<int?>? initialNodeCount;
+  final pulumi.Input<String?>? location;
   /// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// NodeManagement configuration for this NodePool.
-  final pulumi.Input<NodeManagementContainerV1beta1>? management;
+  final pulumi.Input<NodeManagementContainerV1beta1?>? management;
   /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
-  final pulumi.Input<MaxPodsConstraintContainerV1beta1>? maxPodsConstraint;
+  final pulumi.Input<MaxPodsConstraintContainerV1beta1?>? maxPodsConstraint;
   /// The name of the node pool.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
-  final pulumi.Input<NodeNetworkConfigContainerV1beta1>? networkConfig;
+  final pulumi.Input<NodeNetworkConfigContainerV1beta1?>? networkConfig;
   /// The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// Specifies the node placement policy.
-  final pulumi.Input<PlacementPolicyContainerV1beta1>? placementPolicy;
+  final pulumi.Input<PlacementPolicyContainerV1beta1?>? placementPolicy;
   /// Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Specifies the configuration of queued provisioning.
-  final pulumi.Input<QueuedProvisioningContainerV1beta1>? queuedProvisioning;
+  final pulumi.Input<QueuedProvisioningContainerV1beta1?>? queuedProvisioning;
   /// Upgrade settings control disruption and speed of the upgrade.
-  final pulumi.Input<UpgradeSettingsContainerV1beta1>? upgradeSettings;
+  final pulumi.Input<UpgradeSettingsContainerV1beta1?>? upgradeSettings;
   /// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [NodePoolContainerV1beta1Args].
   /// [autoscaling] Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
@@ -134,7 +134,7 @@ class NodePoolContainerV1beta1Args {
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StatusConditionContainerV1beta1>(guardedValue, (value) => StatusConditionContainerV1beta1.fromMap((value as Map).cast<String, dynamic>()))); })(),
       config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeConfigContainerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       locations: (() { final guardedValue = map['locations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       management: (() { final guardedValue = map['management']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeManagementContainerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

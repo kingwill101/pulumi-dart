@@ -5,7 +5,7 @@ import 'security_policy_rule_preconfigured_waf_config_exclusion.dart';
 
 class SecurityPolicyRulePreconfiguredWafConfig {
   /// A list of exclusions to apply during preconfigured WAF evaluation.
-  final pulumi.Input<List<SecurityPolicyRulePreconfiguredWafConfigExclusion>>? exclusions;
+  final pulumi.Input<List<SecurityPolicyRulePreconfiguredWafConfigExclusion>?>? exclusions;
 
   /// Creates a new [SecurityPolicyRulePreconfiguredWafConfig].
   /// [exclusions] A list of exclusions to apply during preconfigured WAF evaluation.

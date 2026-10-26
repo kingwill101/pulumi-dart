@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_config_args.dart';
+import 'replica_info_response.dart';
 
 /// Creates an instance config and begins preparing it to be used. The returned long-running operation can be used to track the progress of preparing the new instance config. The instance config name is assigned by the caller. If the named instance config already exists, `CreateInstanceConfig` returns `ALREADY_EXISTS`. Immediately after the request returns: * The instance config is readable via the API, with all requested attributes. The instance config's reconciling field is set to true. Its state is `CREATING`. While the operation is pending: * Cancelling the operation renders the instance config immediately unreadable via the API. * Except for deleting the creating resource, all other attempts to modify the instance config are rejected. Upon completion of the returned operation: * Instances can be created using the instance configuration. * The instance config's reconciling field becomes false. Its state becomes `READY`. The returned long-running operation will have a name of the format `/operations/` and can be used to track creation of the instance config. The metadata field type is CreateInstanceConfigMetadata. The response field type is InstanceConfig, if successful. Authorization requires `spanner.instanceConfigs.create` permission on the resource parent.
 class InstanceConfig extends pulumi.CustomResource {
@@ -20,12 +21,12 @@ class InstanceConfig extends pulumi.CustomResource {
   /// A unique identifier for the instance configuration. Values are of the form `projects//instanceConfigs/a-z*`.
   late final pulumi.Output<String> name;
   /// The available optional replicas to choose from for user managed configurations. Populated for Google managed configurations.
-  late final pulumi.Output<List<Map<String, dynamic>>> optionalReplicas;
+  late final pulumi.Output<List<ReplicaInfoResponse>> optionalReplicas;
   late final pulumi.Output<String> project;
   /// If true, the instance config is being created or updated. If false, there are no ongoing operations for the instance config.
   late final pulumi.Output<bool> reconciling;
   /// The geographic placement of nodes in this instance configuration and their replication properties.
-  late final pulumi.Output<List<Map<String, dynamic>>> replicas;
+  late final pulumi.Output<List<ReplicaInfoResponse>> replicas;
   /// The current instance config state. Applicable only for USER_MANAGED configs.
   late final pulumi.Output<String> state;
 
@@ -41,20 +42,44 @@ class InstanceConfig extends pulumi.CustomResource {
           'google-native:spanner/v1:InstanceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     baseConfig = registerOutput<String>('baseConfig');
     configType = registerOutput<String>('configType');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
     freeInstanceAvailability = registerOutput<String>('freeInstanceAvailability');
-    labels = registerOutput<Map<String, String>>('labels');
-    leaderOptions = registerOutput<List<String>>('leaderOptions');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    leaderOptions = registerOutput<List<String>>('leaderOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
-    optionalReplicas = registerOutput<List<Map<String, dynamic>>>('optionalReplicas');
+    optionalReplicas = registerOutput<List<ReplicaInfoResponse>>('optionalReplicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicaInfoResponse>(guardedValue, (value) => ReplicaInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
-    replicas = registerOutput<List<Map<String, dynamic>>>('replicas');
+    replicas = registerOutput<List<ReplicaInfoResponse>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicaInfoResponse>(guardedValue, (value) => ReplicaInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [InstanceConfig] resource.
+  InstanceConfig.reference(String urn)
+    : super(
+        'google-native:spanner/v1:InstanceConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    baseConfig = registerOutput<String>('baseConfig');
+    configType = registerOutput<String>('configType');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    freeInstanceAvailability = registerOutput<String>('freeInstanceAvailability');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    leaderOptions = registerOutput<List<String>>('leaderOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    optionalReplicas = registerOutput<List<ReplicaInfoResponse>>('optionalReplicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicaInfoResponse>(guardedValue, (value) => ReplicaInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    replicas = registerOutput<List<ReplicaInfoResponse>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicaInfoResponse>(guardedValue, (value) => ReplicaInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
     state = registerOutput<String>('state');
   }
 }

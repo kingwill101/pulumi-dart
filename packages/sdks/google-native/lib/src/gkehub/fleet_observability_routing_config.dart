@@ -6,7 +6,7 @@ import 'fleet_observability_routing_config_mode.dart';
 /// RoutingConfig configures the behaviour of fleet logging feature.
 class FleetObservabilityRoutingConfig {
   /// mode configures the logs routing mode.
-  final pulumi.Input<FleetObservabilityRoutingConfigMode>? mode;
+  final pulumi.Input<FleetObservabilityRoutingConfigMode?>? mode;
 
   /// Creates a new [FleetObservabilityRoutingConfig].
   /// [mode] mode configures the logs routing mode.

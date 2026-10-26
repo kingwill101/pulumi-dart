@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status of the auth config.
-enum AuthConfigState {
+enum AuthConfigState implements pulumi.PulumiEnum<String> {
   stateUnspecified("STATE_UNSPECIFIED"),
   valid("VALID"),
   invalid("INVALID"),
@@ -9,6 +11,7 @@ enum AuthConfigState {
   unsupported("UNSUPPORTED");
 
   const AuthConfigState(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthConfigState fromValue(String value) {

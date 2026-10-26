@@ -59,7 +59,7 @@ class InstanceGroupManagerUpdatePolicyResponse {
       instanceRedistributionType: pulumi.Input.fromValue(map['instanceRedistributionType'] as String),
       maxSurge: pulumi.Input.fromValue(FixedOrPercentResponse.fromMap((map['maxSurge']! as Map).cast<String, dynamic>())),
       maxUnavailable: pulumi.Input.fromValue(FixedOrPercentResponse.fromMap((map['maxUnavailable']! as Map).cast<String, dynamic>())),
-      minReadySec: pulumi.Input.fromValue(map['minReadySec'] as int),
+      minReadySec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minReadySec'])),
       minimalAction: pulumi.Input.fromValue(map['minimalAction'] as String),
       mostDisruptiveAllowedAction: pulumi.Input.fromValue(map['mostDisruptiveAllowedAction'] as String),
       replacementMethod: pulumi.Input.fromValue(map['replacementMethod'] as String),

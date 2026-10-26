@@ -6,9 +6,9 @@ import 'header.dart';
 /// Endpoint message includes details of the Destination endpoint.
 class EndPoint {
   /// The URI of the Endpoint.
-  final pulumi.Input<String>? endpointUri;
+  final pulumi.Input<String?>? endpointUri;
   /// List of Header to be added to the Endpoint.
-  final pulumi.Input<List<Header>>? headers;
+  final pulumi.Input<List<Header>?>? headers;
 
   /// Creates a new [EndPoint].
   /// [endpointUri] The URI of the Endpoint.

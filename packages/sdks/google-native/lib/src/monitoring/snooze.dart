@@ -29,8 +29,24 @@ class Snooze extends pulumi.CustomResource {
           'google-native:monitoring/v3:Snooze',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    criteria = registerOutput<CriteriaResponse>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CriteriaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    interval = registerOutput<TimeIntervalResponse>('interval', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeIntervalResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [Snooze] resource.
+  Snooze.reference(String urn)
+    : super(
+        'google-native:monitoring/v3:Snooze',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     criteria = registerOutput<CriteriaResponse>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CriteriaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
     interval = registerOutput<TimeIntervalResponse>('interval', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeIntervalResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

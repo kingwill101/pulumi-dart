@@ -27,7 +27,7 @@ class GoogleCloudMlV1MetricSpecResponse {
   factory GoogleCloudMlV1MetricSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1MetricSpecResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      target: pulumi.Input.fromValue(map['target'] as int),
+      target: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['target'])),
     );
   }
 }

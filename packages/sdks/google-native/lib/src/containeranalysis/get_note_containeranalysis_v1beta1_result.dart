@@ -20,51 +20,51 @@ import 'vulnerability_response.dart';
 /// Result data returned by getNote.
 class GetNoteContaineranalysisV1beta1Result {
   /// A note describing an attestation role.
-  final AuthorityResponse attestationAuthority;
+  final AuthorityResponse? attestationAuthority;
   /// A note describing a base image.
-  final BasisResponseContaineranalysisV1beta1 baseImage;
+  final BasisResponseContaineranalysisV1beta1? baseImage;
   /// A note describing build provenance for a verifiable build.
-  final BuildResponse build;
+  final BuildResponse? build;
   /// The time this note was created. This field can be used as a filter in list requests.
-  final String createTime;
+  final String? createTime;
   /// A note describing something that can be deployed.
-  final DeployableResponseContaineranalysisV1beta1 deployable;
+  final DeployableResponseContaineranalysisV1beta1? deployable;
   /// A note describing the initial analysis of a resource.
-  final DiscoveryResponseContaineranalysisV1beta1 discovery;
+  final DiscoveryResponseContaineranalysisV1beta1? discovery;
   /// Time of expiration for this note. Empty if note does not expire.
-  final String expirationTime;
+  final String? expirationTime;
   /// A note describing an in-toto link.
-  final InTotoResponse intoto;
+  final InTotoResponse? intoto;
   /// The type of analysis. This field can be used as a filter in list requests.
-  final String kind;
+  final String? kind;
   /// A detailed description of this note.
-  final String longDescription;
+  final String? longDescription;
   /// The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
-  final String name;
+  final String? name;
   /// A note describing a package hosted by various package managers.
-  final PackageResponseContaineranalysisV1beta1 package;
+  final PackageResponseContaineranalysisV1beta1? package;
   /// Other notes related to this note.
-  final List<String> relatedNoteNames;
+  final List<String>? relatedNoteNames;
   /// URLs associated with this note.
-  final List<RelatedUrlResponseContaineranalysisV1beta1> relatedUrl;
+  final List<RelatedUrlResponseContaineranalysisV1beta1>? relatedUrl;
   /// A note describing a software bill of materials.
-  final DocumentNoteResponseContaineranalysisV1beta1 sbom;
+  final DocumentNoteResponseContaineranalysisV1beta1? sbom;
   /// A note describing an SBOM reference.
-  final SBOMReferenceNoteResponseContaineranalysisV1beta1 sbomReference;
+  final SBOMReferenceNoteResponseContaineranalysisV1beta1? sbomReference;
   /// A one sentence description of this note.
-  final String shortDescription;
+  final String? shortDescription;
   /// A note describing an SPDX File.
-  final FileNoteResponseContaineranalysisV1beta1 spdxFile;
+  final FileNoteResponseContaineranalysisV1beta1? spdxFile;
   /// A note describing an SPDX Package.
-  final PackageInfoNoteResponseContaineranalysisV1beta1 spdxPackage;
+  final PackageInfoNoteResponseContaineranalysisV1beta1? spdxPackage;
   /// A note describing an SPDX File.
-  final RelationshipNoteResponseContaineranalysisV1beta1 spdxRelationship;
+  final RelationshipNoteResponseContaineranalysisV1beta1? spdxRelationship;
   /// The time this note was last updated. This field can be used as a filter in list requests.
-  final String updateTime;
+  final String? updateTime;
   /// A note describing a package vulnerability.
-  final VulnerabilityResponse vulnerability;
+  final VulnerabilityResponse? vulnerability;
   /// A note describing a vulnerability assessment.
-  final VulnerabilityAssessmentNoteResponseContaineranalysisV1beta1 vulnerabilityAssessment;
+  final VulnerabilityAssessmentNoteResponseContaineranalysisV1beta1? vulnerabilityAssessment;
 
   /// Creates a new [GetNoteContaineranalysisV1beta1Result].
   /// [attestationAuthority] A note describing an attestation role.
@@ -91,84 +91,84 @@ class GetNoteContaineranalysisV1beta1Result {
   /// [vulnerability] A note describing a package vulnerability.
   /// [vulnerabilityAssessment] A note describing a vulnerability assessment.
   const GetNoteContaineranalysisV1beta1Result({
-    required this.attestationAuthority,
-    required this.baseImage,
-    required this.build,
-    required this.createTime,
-    required this.deployable,
-    required this.discovery,
-    required this.expirationTime,
-    required this.intoto,
-    required this.kind,
-    required this.longDescription,
-    required this.name,
-    required this.package,
-    required this.relatedNoteNames,
-    required this.relatedUrl,
-    required this.sbom,
-    required this.sbomReference,
-    required this.shortDescription,
-    required this.spdxFile,
-    required this.spdxPackage,
-    required this.spdxRelationship,
-    required this.updateTime,
-    required this.vulnerability,
-    required this.vulnerabilityAssessment,
+    this.attestationAuthority,
+    this.baseImage,
+    this.build,
+    this.createTime,
+    this.deployable,
+    this.discovery,
+    this.expirationTime,
+    this.intoto,
+    this.kind,
+    this.longDescription,
+    this.name,
+    this.package,
+    this.relatedNoteNames,
+    this.relatedUrl,
+    this.sbom,
+    this.sbomReference,
+    this.shortDescription,
+    this.spdxFile,
+    this.spdxPackage,
+    this.spdxRelationship,
+    this.updateTime,
+    this.vulnerability,
+    this.vulnerabilityAssessment,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attestationAuthority': attestationAuthority.toMap(),
-      'baseImage': baseImage.toMap(),
-      'build': build.toMap(),
-      'createTime': createTime,
-      'deployable': deployable.toMap(),
-      'discovery': discovery.toMap(),
-      'expirationTime': expirationTime,
-      'intoto': intoto.toMap(),
-      'kind': kind,
-      'longDescription': longDescription,
-      'name': name,
-      'package': package.toMap(),
-      'relatedNoteNames': relatedNoteNames,
-      'relatedUrl': pulumi.Input.encodeList<RelatedUrlResponseContaineranalysisV1beta1, Map<String, dynamic>>(relatedUrl, (value) => value.toMap()),
-      'sbom': sbom.toMap(),
-      'sbomReference': sbomReference.toMap(),
-      'shortDescription': shortDescription,
-      'spdxFile': spdxFile.toMap(),
-      'spdxPackage': spdxPackage.toMap(),
-      'spdxRelationship': spdxRelationship.toMap(),
-      'updateTime': updateTime,
-      'vulnerability': vulnerability.toMap(),
-      'vulnerabilityAssessment': vulnerabilityAssessment.toMap(),
+      'attestationAuthority': ?attestationAuthority?.toMap(),
+      'baseImage': ?baseImage?.toMap(),
+      'build': ?build?.toMap(),
+      'createTime': ?createTime,
+      'deployable': ?deployable?.toMap(),
+      'discovery': ?discovery?.toMap(),
+      'expirationTime': ?expirationTime,
+      'intoto': ?intoto?.toMap(),
+      'kind': ?kind,
+      'longDescription': ?longDescription,
+      'name': ?name,
+      'package': ?package?.toMap(),
+      'relatedNoteNames': ?relatedNoteNames,
+      'relatedUrl': ?(() { final guardedValue = relatedUrl; if (guardedValue == null) return null; return pulumi.Input.encodeList<RelatedUrlResponseContaineranalysisV1beta1, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'sbom': ?sbom?.toMap(),
+      'sbomReference': ?sbomReference?.toMap(),
+      'shortDescription': ?shortDescription,
+      'spdxFile': ?spdxFile?.toMap(),
+      'spdxPackage': ?spdxPackage?.toMap(),
+      'spdxRelationship': ?spdxRelationship?.toMap(),
+      'updateTime': ?updateTime,
+      'vulnerability': ?vulnerability?.toMap(),
+      'vulnerabilityAssessment': ?vulnerabilityAssessment?.toMap(),
     };
   }
 
   factory GetNoteContaineranalysisV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetNoteContaineranalysisV1beta1Result(
-      attestationAuthority: AuthorityResponse.fromMap((map['attestationAuthority']! as Map).cast<String, dynamic>()),
-      baseImage: BasisResponseContaineranalysisV1beta1.fromMap((map['baseImage']! as Map).cast<String, dynamic>()),
-      build: BuildResponse.fromMap((map['build']! as Map).cast<String, dynamic>()),
-      createTime: map['createTime'] as String,
-      deployable: DeployableResponseContaineranalysisV1beta1.fromMap((map['deployable']! as Map).cast<String, dynamic>()),
-      discovery: DiscoveryResponseContaineranalysisV1beta1.fromMap((map['discovery']! as Map).cast<String, dynamic>()),
-      expirationTime: map['expirationTime'] as String,
-      intoto: InTotoResponse.fromMap((map['intoto']! as Map).cast<String, dynamic>()),
-      kind: map['kind'] as String,
-      longDescription: map['longDescription'] as String,
-      name: map['name'] as String,
-      package: PackageResponseContaineranalysisV1beta1.fromMap((map['package']! as Map).cast<String, dynamic>()),
-      relatedNoteNames: (map['relatedNoteNames'] as List).cast<String>(),
-      relatedUrl: pulumi.Input.decodeList<RelatedUrlResponseContaineranalysisV1beta1>(map['relatedUrl']!, (value) => RelatedUrlResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>())),
-      sbom: DocumentNoteResponseContaineranalysisV1beta1.fromMap((map['sbom']! as Map).cast<String, dynamic>()),
-      sbomReference: SBOMReferenceNoteResponseContaineranalysisV1beta1.fromMap((map['sbomReference']! as Map).cast<String, dynamic>()),
-      shortDescription: map['shortDescription'] as String,
-      spdxFile: FileNoteResponseContaineranalysisV1beta1.fromMap((map['spdxFile']! as Map).cast<String, dynamic>()),
-      spdxPackage: PackageInfoNoteResponseContaineranalysisV1beta1.fromMap((map['spdxPackage']! as Map).cast<String, dynamic>()),
-      spdxRelationship: RelationshipNoteResponseContaineranalysisV1beta1.fromMap((map['spdxRelationship']! as Map).cast<String, dynamic>()),
-      updateTime: map['updateTime'] as String,
-      vulnerability: VulnerabilityResponse.fromMap((map['vulnerability']! as Map).cast<String, dynamic>()),
-      vulnerabilityAssessment: VulnerabilityAssessmentNoteResponseContaineranalysisV1beta1.fromMap((map['vulnerabilityAssessment']! as Map).cast<String, dynamic>()),
+      attestationAuthority: (() { final guardedValue = map['attestationAuthority']; if (guardedValue == null) return null; return AuthorityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      baseImage: (() { final guardedValue = map['baseImage']; if (guardedValue == null) return null; return BasisResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      build: (() { final guardedValue = map['build']; if (guardedValue == null) return null; return BuildResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deployable: (() { final guardedValue = map['deployable']; if (guardedValue == null) return null; return DeployableResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      discovery: (() { final guardedValue = map['discovery']; if (guardedValue == null) return null; return DiscoveryResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      expirationTime: (() { final guardedValue = map['expirationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      intoto: (() { final guardedValue = map['intoto']; if (guardedValue == null) return null; return InTotoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      longDescription: (() { final guardedValue = map['longDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      package: (() { final guardedValue = map['package']; if (guardedValue == null) return null; return PackageResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      relatedNoteNames: (() { final guardedValue = map['relatedNoteNames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      relatedUrl: (() { final guardedValue = map['relatedUrl']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RelatedUrlResponseContaineranalysisV1beta1>(guardedValue, (value) => RelatedUrlResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>())); })(),
+      sbom: (() { final guardedValue = map['sbom']; if (guardedValue == null) return null; return DocumentNoteResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      sbomReference: (() { final guardedValue = map['sbomReference']; if (guardedValue == null) return null; return SBOMReferenceNoteResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      shortDescription: (() { final guardedValue = map['shortDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      spdxFile: (() { final guardedValue = map['spdxFile']; if (guardedValue == null) return null; return FileNoteResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      spdxPackage: (() { final guardedValue = map['spdxPackage']; if (guardedValue == null) return null; return PackageInfoNoteResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      spdxRelationship: (() { final guardedValue = map['spdxRelationship']; if (guardedValue == null) return null; return RelationshipNoteResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vulnerability: (() { final guardedValue = map['vulnerability']; if (guardedValue == null) return null; return VulnerabilityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      vulnerabilityAssessment: (() { final guardedValue = map['vulnerabilityAssessment']; if (guardedValue == null) return null; return VulnerabilityAssessmentNoteResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

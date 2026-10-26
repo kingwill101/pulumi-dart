@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppGatewayBeyondcorpV1alphaArgs {
   final pulumi.Input<String> appGatewayId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAppGatewayBeyondcorpV1alphaArgs].
   /// [appGatewayId] Required.

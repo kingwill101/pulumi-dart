@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_osconfig_v1_get_patch_deployment_args_doc}
 class GetPatchDeploymentArgs {
   final pulumi.Input<String> patchDeploymentId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetPatchDeploymentArgs].
   /// [patchDeploymentId] Required.

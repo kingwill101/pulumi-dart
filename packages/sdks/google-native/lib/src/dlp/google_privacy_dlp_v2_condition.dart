@@ -12,7 +12,7 @@ class GooglePrivacyDlpV2Condition {
   /// Operator used to compare the field or infoType to the value.
   final pulumi.Input<GooglePrivacyDlpV2ConditionOperator> operator;
   /// Value to compare against. [Mandatory, except for `EXISTS` tests.]
-  final pulumi.Input<GooglePrivacyDlpV2Value>? value;
+  final pulumi.Input<GooglePrivacyDlpV2Value?>? value;
 
   /// Creates a new [GooglePrivacyDlpV2Condition].
   /// [field] Field within the record this condition is evaluated against.

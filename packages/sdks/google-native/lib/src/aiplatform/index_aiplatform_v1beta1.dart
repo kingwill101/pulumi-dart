@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_aiplatform_v1beta1_deployed_index_ref_response.dart';
 import 'google_cloud_aiplatform_v1beta1_encryption_spec_response.dart';
 import 'google_cloud_aiplatform_v1beta1_index_stats_response.dart';
 import 'index_aiplatform_v1beta1_args.dart';
@@ -9,7 +10,7 @@ class IndexAiplatformV1beta1 extends pulumi.CustomResource {
   /// Timestamp when this Index was created.
   late final pulumi.Output<String> createTime;
   /// The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
-  late final pulumi.Output<List<Map<String, dynamic>>> deployedIndexes;
+  late final pulumi.Output<List<GoogleCloudAiplatformV1beta1DeployedIndexRefResponse>> deployedIndexes;
   /// The description of the Index.
   late final pulumi.Output<String> description;
   /// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -47,17 +48,43 @@ class IndexAiplatformV1beta1 extends pulumi.CustomResource {
           'google-native:aiplatform/v1beta1:Index',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
-    deployedIndexes = registerOutput<List<Map<String, dynamic>>>('deployedIndexes');
+    deployedIndexes = registerOutput<List<GoogleCloudAiplatformV1beta1DeployedIndexRefResponse>>('deployedIndexes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1DeployedIndexRefResponse>(guardedValue, (value) => GoogleCloudAiplatformV1beta1DeployedIndexRefResponse.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     encryptionSpec = registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     indexStats = registerOutput<GoogleCloudAiplatformV1beta1IndexStatsResponse>('indexStats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1IndexStatsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     indexUpdateMethod = registerOutput<String>('indexUpdateMethod');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    metadata = registerOutput<dynamic>('metadata');
+    metadataSchemaUri = registerOutput<String>('metadataSchemaUri');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [IndexAiplatformV1beta1] resource.
+  IndexAiplatformV1beta1.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1beta1:Index',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deployedIndexes = registerOutput<List<GoogleCloudAiplatformV1beta1DeployedIndexRefResponse>>('deployedIndexes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1DeployedIndexRefResponse>(guardedValue, (value) => GoogleCloudAiplatformV1beta1DeployedIndexRefResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    encryptionSpec = registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    indexStats = registerOutput<GoogleCloudAiplatformV1beta1IndexStatsResponse>('indexStats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1IndexStatsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    indexUpdateMethod = registerOutput<String>('indexUpdateMethod');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     metadata = registerOutput<dynamic>('metadata');
     metadataSchemaUri = registerOutput<String>('metadataSchemaUri');

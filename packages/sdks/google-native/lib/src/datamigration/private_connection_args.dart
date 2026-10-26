@@ -9,21 +9,21 @@ import 'vpc_peering_config.dart';
 /// {@macro pulumi_datamigration_v1_private_connection_args_doc}
 class PrivateConnectionArgs {
   /// The private connection display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The resource labels for private connections to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// The name of the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Required. The private connection identifier.
   final pulumi.Input<String> privateConnectionId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Optional. If set to true, will skip validations.
-  final pulumi.Input<bool>? skipValidation;
+  final pulumi.Input<bool?>? skipValidation;
   /// VPC peering configuration.
-  final pulumi.Input<VpcPeeringConfig>? vpcPeeringConfig;
+  final pulumi.Input<VpcPeeringConfig?>? vpcPeeringConfig;
 
   /// Creates a new [PrivateConnectionArgs].
   /// [displayName] The private connection display name.

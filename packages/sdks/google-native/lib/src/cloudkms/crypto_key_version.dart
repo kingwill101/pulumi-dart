@@ -56,8 +56,39 @@ class CryptoKeyVersion extends pulumi.CustomResource {
           'google-native:cloudkms/v1:CryptoKeyVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['cryptoKeyId', 'keyRingId', 'location', 'project']).merge(options),
         ) {
+    algorithm = registerOutput<String>('algorithm');
+    attestation = registerOutput<KeyOperationAttestationResponse>('attestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyOperationAttestationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    cryptoKeyId = registerOutput<String>('cryptoKeyId');
+    destroyEventTime = registerOutput<String>('destroyEventTime');
+    destroyTime = registerOutput<String>('destroyTime');
+    externalDestructionFailureReason = registerOutput<String>('externalDestructionFailureReason');
+    externalProtectionLevelOptions = registerOutput<ExternalProtectionLevelOptionsResponse>('externalProtectionLevelOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExternalProtectionLevelOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    generateTime = registerOutput<String>('generateTime');
+    generationFailureReason = registerOutput<String>('generationFailureReason');
+    importFailureReason = registerOutput<String>('importFailureReason');
+    importJob = registerOutput<String>('importJob');
+    importTime = registerOutput<String>('importTime');
+    keyRingId = registerOutput<String>('keyRingId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    protectionLevel = registerOutput<String>('protectionLevel');
+    reimportEligible = registerOutput<bool>('reimportEligible');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [CryptoKeyVersion] resource.
+  CryptoKeyVersion.reference(String urn)
+    : super(
+        'google-native:cloudkms/v1:CryptoKeyVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     algorithm = registerOutput<String>('algorithm');
     attestation = registerOutput<KeyOperationAttestationResponse>('attestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyOperationAttestationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

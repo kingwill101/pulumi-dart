@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The alias kind.
-enum GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind {
+enum GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind implements pulumi.PulumiEnum<String> {
   kindUnspecified("KIND_UNSPECIFIED"),
   fixed("FIXED"),
   movable("MOVABLE"),
   other("OTHER");
 
   const GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind fromValue(String value) {

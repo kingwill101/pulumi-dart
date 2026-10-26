@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
-enum InstanceMemcacheVersion {
+enum InstanceMemcacheVersion implements pulumi.PulumiEnum<String> {
   memcacheVersionUnspecified("MEMCACHE_VERSION_UNSPECIFIED"),
   memcache15("MEMCACHE_1_5"),
   memcache1615("MEMCACHE_1_6_15");
 
   const InstanceMemcacheVersion(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceMemcacheVersion fromValue(String value) {

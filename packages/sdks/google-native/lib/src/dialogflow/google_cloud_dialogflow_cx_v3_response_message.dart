@@ -12,25 +12,25 @@ import 'google_cloud_dialogflow_cx_v3_response_message_text.dart';
 /// Represents a response message that can be returned by a conversational agent. Response messages are also used for output audio synthesis. The approach is as follows: * If at least one OutputAudioText response is present, then all OutputAudioText responses are linearly concatenated, and the result is used for output audio synthesis. * If the OutputAudioText responses are a mixture of text and SSML, then the concatenated result is treated as SSML; otherwise, the result is treated as either text or SSML as appropriate. The agent designer should ideally use either text or SSML consistently throughout the bot design. * Otherwise, all Text responses are linearly concatenated, and the result is used for output audio synthesis. This approach allows for more sophisticated user experience scenarios, where the text displayed to the user may differ from what is heard.
 class GoogleCloudDialogflowCxV3ResponseMessage {
   /// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
-  final pulumi.Input<String>? channel;
+  final pulumi.Input<String?>? channel;
   /// Indicates that the conversation succeeded.
-  final pulumi.Input<GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess>? conversationSuccess;
+  final pulumi.Input<GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess?>? conversationSuccess;
   /// Represents info card for knowledge answers, to be better rendered in Dialogflow Messenger.
-  final pulumi.Input<Map<String, dynamic>>? knowledgeInfoCard;
+  final pulumi.Input<Map<String, dynamic>?>? knowledgeInfoCard;
   /// Hands off conversation to a human agent.
-  final pulumi.Input<GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff>? liveAgentHandoff;
+  final pulumi.Input<GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff?>? liveAgentHandoff;
   /// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
-  final pulumi.Input<GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText>? outputAudioText;
+  final pulumi.Input<GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText?>? outputAudioText;
   /// Returns a response containing a custom, platform-specific payload.
-  final pulumi.Input<Map<String, String>>? payload;
+  final pulumi.Input<Map<String, String>?>? payload;
   /// Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
-  final pulumi.Input<GoogleCloudDialogflowCxV3ResponseMessagePlayAudio>? playAudio;
+  final pulumi.Input<GoogleCloudDialogflowCxV3ResponseMessagePlayAudio?>? playAudio;
   /// Response type.
-  final pulumi.Input<GoogleCloudDialogflowCxV3ResponseMessageResponseType>? responseType;
+  final pulumi.Input<GoogleCloudDialogflowCxV3ResponseMessageResponseType?>? responseType;
   /// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
-  final pulumi.Input<GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall>? telephonyTransferCall;
+  final pulumi.Input<GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall?>? telephonyTransferCall;
   /// Returns a text response.
-  final pulumi.Input<GoogleCloudDialogflowCxV3ResponseMessageText>? text;
+  final pulumi.Input<GoogleCloudDialogflowCxV3ResponseMessageText?>? text;
 
   /// Creates a new [GoogleCloudDialogflowCxV3ResponseMessage].
   /// [channel] The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.

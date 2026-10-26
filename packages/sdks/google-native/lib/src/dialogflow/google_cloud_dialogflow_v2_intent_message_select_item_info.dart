@@ -7,7 +7,7 @@ class GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
   /// A unique key that will be sent back to the agent if this response is given.
   final pulumi.Input<String> key;
   /// Optional. A list of synonyms that can also be used to trigger this item in dialog.
-  final pulumi.Input<List<String>>? synonyms;
+  final pulumi.Input<List<String>?>? synonyms;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageSelectItemInfo].
   /// [key] A unique key that will be sent back to the agent if this response is given.

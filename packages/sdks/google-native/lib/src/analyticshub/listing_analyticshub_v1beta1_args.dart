@@ -15,30 +15,30 @@ class ListingAnalyticshubV1beta1Args {
   /// Shared dataset i.e. BigQuery dataset source.
   final pulumi.Input<BigQueryDatasetSourceAnalyticshubV1beta1> bigqueryDataset;
   /// Optional. Categories of the listing. Up to two categories are allowed.
-  final pulumi.Input<List<ListingCategoriesItemAnalyticshubV1beta1>>? categories;
+  final pulumi.Input<List<ListingCategoriesItemAnalyticshubV1beta1>?>? categories;
   final pulumi.Input<String> dataExchangeId;
   /// Optional. Details of the data provider who owns the source data.
-  final pulumi.Input<DataProviderAnalyticshubV1beta1>? dataProvider;
+  final pulumi.Input<DataProviderAnalyticshubV1beta1?>? dataProvider;
   /// Optional. Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
   final pulumi.Input<String> displayName;
   /// Optional. Documentation describing the listing.
-  final pulumi.Input<String>? documentation;
+  final pulumi.Input<String?>? documentation;
   /// Optional. Base64 encoded image representing the listing. Max Size: 3.0MiB Expected image dimensions are 512x512 pixels, however the API only performs validation on size of the encoded data. Note: For byte fields, the contents of the field are base64-encoded (which increases the size of the data by 33-36%) when using JSON on the wire.
-  final pulumi.Input<String>? icon;
+  final pulumi.Input<String?>? icon;
   /// Required. The ID of the listing to create. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
   final pulumi.Input<String> listingId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Optional. Email or URL of the primary point of contact of the listing. Max Length: 1000 bytes.
-  final pulumi.Input<String>? primaryContact;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? primaryContact;
+  final pulumi.Input<String?>? project;
   /// Optional. Details of the publisher who owns the listing and who can share the source data.
-  final pulumi.Input<PublisherAnalyticshubV1beta1>? publisher;
+  final pulumi.Input<PublisherAnalyticshubV1beta1?>? publisher;
   /// Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
-  final pulumi.Input<String>? requestAccess;
+  final pulumi.Input<String?>? requestAccess;
   /// Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
-  final pulumi.Input<RestrictedExportConfigAnalyticshubV1beta1>? restrictedExportConfig;
+  final pulumi.Input<RestrictedExportConfigAnalyticshubV1beta1?>? restrictedExportConfig;
 
   /// Creates a new [ListingAnalyticshubV1beta1Args].
   /// [bigqueryDataset] Shared dataset i.e. BigQuery dataset source.

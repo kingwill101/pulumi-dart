@@ -50,12 +50,12 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig
 
   factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigResponse(
-      confidenceThreshold: pulumi.Input.fromValue(map['confidenceThreshold'] as double),
+      confidenceThreshold: pulumi.Input.fromValue((map['confidenceThreshold'] as num).toDouble()),
       contextFilterSettings: pulumi.Input.fromValue(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponse.fromMap((map['contextFilterSettings']! as Map).cast<String, dynamic>())),
       dialogflowQuerySource: pulumi.Input.fromValue(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse.fromMap((map['dialogflowQuerySource']! as Map).cast<String, dynamic>())),
       documentQuerySource: pulumi.Input.fromValue(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponse.fromMap((map['documentQuerySource']! as Map).cast<String, dynamic>())),
       knowledgeBaseQuerySource: pulumi.Input.fromValue(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse.fromMap((map['knowledgeBaseQuerySource']! as Map).cast<String, dynamic>())),
-      maxResults: pulumi.Input.fromValue(map['maxResults'] as int),
+      maxResults: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxResults'])),
     );
   }
 }

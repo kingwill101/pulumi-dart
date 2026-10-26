@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Threat action override.
-enum SeverityOverrideAction {
+enum SeverityOverrideAction implements pulumi.PulumiEnum<String> {
   threatActionUnspecified("THREAT_ACTION_UNSPECIFIED"),
   defaultAction("DEFAULT_ACTION"),
   allow("ALLOW"),
@@ -7,6 +9,7 @@ enum SeverityOverrideAction {
   deny("DENY");
 
   const SeverityOverrideAction(this.wireValue);
+  @override
   final String wireValue;
 
   static SeverityOverrideAction fromValue(String value) {

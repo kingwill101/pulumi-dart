@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A representation of a Datastore kind.
 class GooglePrivacyDlpV2KindExpression {
   /// The name of the kind.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GooglePrivacyDlpV2KindExpression].
   /// [name] The name of the kind.

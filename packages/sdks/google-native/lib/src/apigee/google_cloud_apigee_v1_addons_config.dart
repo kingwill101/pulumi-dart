@@ -11,17 +11,17 @@ import 'google_cloud_apigee_v1_monetization_config.dart';
 /// Add-on configurations for the Apigee organization.
 class GoogleCloudApigeeV1AddonsConfig {
   /// Configuration for the Advanced API Ops add-on.
-  final pulumi.Input<GoogleCloudApigeeV1AdvancedApiOpsConfig>? advancedApiOpsConfig;
+  final pulumi.Input<GoogleCloudApigeeV1AdvancedApiOpsConfig?>? advancedApiOpsConfig;
   /// Configuration for the Analytics add-on.
-  final pulumi.Input<GoogleCloudApigeeV1AnalyticsConfig>? analyticsConfig;
+  final pulumi.Input<GoogleCloudApigeeV1AnalyticsConfig?>? analyticsConfig;
   /// Configuration for the API Security add-on.
-  final pulumi.Input<GoogleCloudApigeeV1ApiSecurityConfig>? apiSecurityConfig;
+  final pulumi.Input<GoogleCloudApigeeV1ApiSecurityConfig?>? apiSecurityConfig;
   /// Configuration for the Connectors Platform add-on.
-  final pulumi.Input<GoogleCloudApigeeV1ConnectorsPlatformConfig>? connectorsPlatformConfig;
+  final pulumi.Input<GoogleCloudApigeeV1ConnectorsPlatformConfig?>? connectorsPlatformConfig;
   /// Configuration for the Integration add-on.
-  final pulumi.Input<GoogleCloudApigeeV1IntegrationConfig>? integrationConfig;
+  final pulumi.Input<GoogleCloudApigeeV1IntegrationConfig?>? integrationConfig;
   /// Configuration for the Monetization add-on.
-  final pulumi.Input<GoogleCloudApigeeV1MonetizationConfig>? monetizationConfig;
+  final pulumi.Input<GoogleCloudApigeeV1MonetizationConfig?>? monetizationConfig;
 
   /// Creates a new [GoogleCloudApigeeV1AddonsConfig].
   /// [advancedApiOpsConfig] Configuration for the Advanced API Ops add-on.

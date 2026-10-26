@@ -12,25 +12,25 @@ import 'service_config.dart';
 /// {@macro pulumi_cloudfunctions_v2_function_cloudfunctions_v2_args_doc}
 class FunctionCloudfunctionsV2Args {
   /// Describes the Build step of the function that builds a container from the given source.
-  final pulumi.Input<BuildConfig>? buildConfig;
+  final pulumi.Input<BuildConfig?>? buildConfig;
   /// User-provided description of a function.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Describe whether the function is 1st Gen or 2nd Gen.
-  final pulumi.Input<FunctionEnvironment>? environment;
+  final pulumi.Input<FunctionEnvironment?>? environment;
   /// An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
-  final pulumi.Input<EventTriggerCloudfunctionsV2>? eventTrigger;
+  final pulumi.Input<EventTriggerCloudfunctionsV2?>? eventTrigger;
   /// The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
-  final pulumi.Input<String>? functionId;
+  final pulumi.Input<String?>? functionId;
   /// [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// Labels associated with this Cloud Function.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
-  final pulumi.Input<ServiceConfig>? serviceConfig;
+  final pulumi.Input<ServiceConfig?>? serviceConfig;
 
   /// Creates a new [FunctionCloudfunctionsV2Args].
   /// [buildConfig] Describes the Build step of the function that builds a container from the given source.

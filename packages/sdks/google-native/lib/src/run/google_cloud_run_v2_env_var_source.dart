@@ -6,7 +6,7 @@ import 'google_cloud_run_v2_secret_key_selector.dart';
 /// EnvVarSource represents a source for the value of an EnvVar.
 class GoogleCloudRunV2EnvVarSource {
   /// Selects a secret and a specific version from Cloud Secret Manager.
-  final pulumi.Input<GoogleCloudRunV2SecretKeySelector>? secretKeyRef;
+  final pulumi.Input<GoogleCloudRunV2SecretKeySelector?>? secretKeyRef;
 
   /// Creates a new [GoogleCloudRunV2EnvVarSource].
   /// [secretKeyRef] Selects a secret and a specific version from Cloud Secret Manager.

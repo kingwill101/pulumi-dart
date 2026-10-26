@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
-enum RegionCommitmentPlan {
+enum RegionCommitmentPlan implements pulumi.PulumiEnum<String> {
   invalid("INVALID"),
   thirtySixMonth("THIRTY_SIX_MONTH"),
   twelveMonth("TWELVE_MONTH");
 
   const RegionCommitmentPlan(this.wireValue);
+  @override
   final String wireValue;
 
   static RegionCommitmentPlan fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies operating system settings for cluster provisioning.
 class BareMetalOsEnvironmentConfig {
   /// Whether the package repo should not be included when initializing bare metal machines.
-  final pulumi.Input<bool>? packageRepoExcluded;
+  final pulumi.Input<bool?>? packageRepoExcluded;
 
   /// Creates a new [BareMetalOsEnvironmentConfig].
   /// [packageRepoExcluded] Whether the package repo should not be included when initializing bare metal machines.

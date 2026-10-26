@@ -47,8 +47,8 @@ class QuotaExceededInfoResponseComputeBeta {
   factory QuotaExceededInfoResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return QuotaExceededInfoResponseComputeBeta(
       dimensions: pulumi.Input.fromValue((map['dimensions'] as Map).cast<String, String>()),
-      futureLimit: pulumi.Input.fromValue(map['futureLimit'] as double),
-      limit: pulumi.Input.fromValue(map['limit'] as double),
+      futureLimit: pulumi.Input.fromValue((map['futureLimit'] as num).toDouble()),
+      limit: pulumi.Input.fromValue((map['limit'] as num).toDouble()),
       limitName: pulumi.Input.fromValue(map['limitName'] as String),
       metricName: pulumi.Input.fromValue(map['metricName'] as String),
       rolloutStatus: pulumi.Input.fromValue(map['rolloutStatus'] as String),

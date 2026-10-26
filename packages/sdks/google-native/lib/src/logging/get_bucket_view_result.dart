@@ -4,15 +4,15 @@
 /// Result data returned by getBucketView.
 class GetBucketViewResult {
   /// The creation timestamp of the view.
-  final String createTime;
+  final String? createTime;
   /// Describes this view.
-  final String description;
+  final String? description;
   /// Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
-  final String filter;
+  final String? filter;
   /// The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
-  final String name;
+  final String? name;
   /// The last update timestamp of the view.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetBucketViewResult].
   /// [createTime] The creation timestamp of the view.
@@ -21,30 +21,30 @@ class GetBucketViewResult {
   /// [name] The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
   /// [updateTime] The last update timestamp of the view.
   const GetBucketViewResult({
-    required this.createTime,
-    required this.description,
-    required this.filter,
-    required this.name,
-    required this.updateTime,
+    this.createTime,
+    this.description,
+    this.filter,
+    this.name,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'filter': filter,
-      'name': name,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'description': ?description,
+      'filter': ?filter,
+      'name': ?name,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetBucketViewResult.fromMap(Map<String, dynamic> map) {
     return GetBucketViewResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      filter: map['filter'] as String,
-      name: map['name'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

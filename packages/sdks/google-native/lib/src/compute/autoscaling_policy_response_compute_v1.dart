@@ -64,12 +64,12 @@ class AutoscalingPolicyResponseComputeV1 {
 
   factory AutoscalingPolicyResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyResponseComputeV1(
-      coolDownPeriodSec: pulumi.Input.fromValue(map['coolDownPeriodSec'] as int),
+      coolDownPeriodSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['coolDownPeriodSec'])),
       cpuUtilization: pulumi.Input.fromValue(AutoscalingPolicyCpuUtilizationResponseComputeV1.fromMap((map['cpuUtilization']! as Map).cast<String, dynamic>())),
       customMetricUtilizations: pulumi.Input.fromValue(pulumi.Input.decodeList<AutoscalingPolicyCustomMetricUtilizationResponseComputeV1>(map['customMetricUtilizations']!, (value) => AutoscalingPolicyCustomMetricUtilizationResponseComputeV1.fromMap((value as Map).cast<String, dynamic>()))),
       loadBalancingUtilization: pulumi.Input.fromValue(AutoscalingPolicyLoadBalancingUtilizationResponseComputeV1.fromMap((map['loadBalancingUtilization']! as Map).cast<String, dynamic>())),
-      maxNumReplicas: pulumi.Input.fromValue(map['maxNumReplicas'] as int),
-      minNumReplicas: pulumi.Input.fromValue(map['minNumReplicas'] as int),
+      maxNumReplicas: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNumReplicas'])),
+      minNumReplicas: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minNumReplicas'])),
       mode: pulumi.Input.fromValue(map['mode'] as String),
       scaleInControl: pulumi.Input.fromValue(AutoscalingPolicyScaleInControlResponseComputeV1.fromMap((map['scaleInControl']! as Map).cast<String, dynamic>())),
       scalingSchedules: pulumi.Input.fromValue((map['scalingSchedules'] as Map).cast<String, String>()),

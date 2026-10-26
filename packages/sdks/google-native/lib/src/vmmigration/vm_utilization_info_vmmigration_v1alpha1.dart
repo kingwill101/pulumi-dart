@@ -7,11 +7,11 @@ import 'vmware_vm_details_vmmigration_v1alpha1.dart';
 /// Utilization information of a single VM.
 class VmUtilizationInfoVmmigrationV1alpha1 {
   /// Utilization metrics for this VM.
-  final pulumi.Input<VmUtilizationMetricsVmmigrationV1alpha1>? utilization;
+  final pulumi.Input<VmUtilizationMetricsVmmigrationV1alpha1?>? utilization;
   /// The VM's ID in the source.
-  final pulumi.Input<String>? vmId;
+  final pulumi.Input<String?>? vmId;
   /// The description of the VM in a Source of type Vmware.
-  final pulumi.Input<VmwareVmDetailsVmmigrationV1alpha1>? vmwareVmDetails;
+  final pulumi.Input<VmwareVmDetailsVmmigrationV1alpha1?>? vmwareVmDetails;
 
   /// Creates a new [VmUtilizationInfoVmmigrationV1alpha1].
   /// [utilization] Utilization metrics for this VM.

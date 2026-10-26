@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines behaviour of using instances from standby pool to resize MIG.
-enum InstanceGroupManagerStandbyPolicyModeComputeBeta {
+enum InstanceGroupManagerStandbyPolicyModeComputeBeta implements pulumi.PulumiEnum<String> {
   manual("MANUAL"),
   scaleOutPool("SCALE_OUT_POOL");
 
   const InstanceGroupManagerStandbyPolicyModeComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceGroupManagerStandbyPolicyModeComputeBeta fromValue(String value) {

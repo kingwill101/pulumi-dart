@@ -8,7 +8,7 @@ class ContactDomainsV1alpha2 {
   /// Email address of the contact.
   final pulumi.Input<String> email;
   /// Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
-  final pulumi.Input<String>? faxNumber;
+  final pulumi.Input<String?>? faxNumber;
   /// Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
   final pulumi.Input<String> phoneNumber;
   /// Postal address of the contact.

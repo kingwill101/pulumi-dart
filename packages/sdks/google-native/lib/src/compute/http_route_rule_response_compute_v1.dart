@@ -58,7 +58,7 @@ class HttpRouteRuleResponseComputeV1 {
       description: pulumi.Input.fromValue(map['description'] as String),
       headerAction: pulumi.Input.fromValue(HttpHeaderActionResponseComputeV1.fromMap((map['headerAction']! as Map).cast<String, dynamic>())),
       matchRules: pulumi.Input.fromValue(pulumi.Input.decodeList<HttpRouteRuleMatchResponseComputeV1>(map['matchRules']!, (value) => HttpRouteRuleMatchResponseComputeV1.fromMap((value as Map).cast<String, dynamic>()))),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       routeAction: pulumi.Input.fromValue(HttpRouteActionResponseComputeV1.fromMap((map['routeAction']! as Map).cast<String, dynamic>())),
       service: pulumi.Input.fromValue(map['service'] as String),
       urlRedirect: pulumi.Input.fromValue(HttpRedirectActionResponseComputeV1.fromMap((map['urlRedirect']! as Map).cast<String, dynamic>())),

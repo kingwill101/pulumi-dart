@@ -6,7 +6,7 @@ import 'enterprise_crm_frontends_eventbus_proto_event_parameters.dart';
 /// Next available id: 4
 class EnterpriseCrmFrontendsEventbusProtoRollbackStrategy {
   /// Optional. The customized parameters the user can pass to this task.
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoEventParameters>? parameters;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoEventParameters?>? parameters;
   /// This is the name of the task that needs to be executed upon rollback of this task.
   final pulumi.Input<String> rollbackTaskImplementationClassName;
   /// These are the tasks numbers of the tasks whose `rollback_strategy.rollback_task_implementation_class_name` needs to be executed upon failure of this task.

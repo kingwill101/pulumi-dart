@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An artifact that can be deployed in some runtime.
 class Deployable {
   /// Resource URI for the artifact being deployed.
-  final pulumi.Input<List<String>>? resourceUri;
+  final pulumi.Input<List<String>?>? resourceUri;
 
   /// Creates a new [Deployable].
   /// [resourceUri] Resource URI for the artifact being deployed.

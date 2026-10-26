@@ -2,16 +2,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_security_policy_args.dart';
 import 'security_policy_adaptive_protection_config_response.dart';
 import 'security_policy_advanced_options_config_response.dart';
+import 'security_policy_association_response.dart';
 import 'security_policy_cloud_armor_config_response.dart';
 import 'security_policy_ddos_protection_config_response.dart';
 import 'security_policy_recaptcha_options_config_response.dart';
+import 'security_policy_rule_response.dart';
+import 'security_policy_user_defined_field_response.dart';
 
 /// Creates a new policy in the specified project using the data included in the request.
 class RegionSecurityPolicy extends pulumi.CustomResource {
   late final pulumi.Output<SecurityPolicyAdaptiveProtectionConfigResponse> adaptiveProtectionConfig;
   late final pulumi.Output<SecurityPolicyAdvancedOptionsConfigResponse> advancedOptionsConfig;
   /// A list of associations that belong to this policy.
-  late final pulumi.Output<List<Map<String, dynamic>>> associations;
+  late final pulumi.Output<List<SecurityPolicyAssociationResponse>> associations;
   late final pulumi.Output<SecurityPolicyCloudArmorConfigResponse> cloudArmorConfig;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
@@ -40,7 +43,7 @@ class RegionSecurityPolicy extends pulumi.CustomResource {
   /// Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
   late final pulumi.Output<int> ruleTupleCount;
   /// A list of rules that belong to this policy. There must always be a default rule which is a rule with priority 2147483647 and match all condition (for the match condition this means match "*" for srcIpRanges and for the networkMatch condition every field must be either match "*" or not set). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<SecurityPolicyRuleResponse>> rules;
   /// Server-defined URL for the resource.
   late final pulumi.Output<String> selfLink;
   /// Server-defined URL for this resource with the resource id.
@@ -48,7 +51,7 @@ class RegionSecurityPolicy extends pulumi.CustomResource {
   /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
   late final pulumi.Output<String> type;
   /// Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
-  late final pulumi.Output<List<Map<String, dynamic>>> userDefinedFields;
+  late final pulumi.Output<List<SecurityPolicyUserDefinedFieldResponse>> userDefinedFields;
 
   /// Creates a new [RegionSecurityPolicy].
   /// [name] The Pulumi resource name.
@@ -62,11 +65,11 @@ class RegionSecurityPolicy extends pulumi.CustomResource {
           'google-native:compute/alpha:RegionSecurityPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     adaptiveProtectionConfig = registerOutput<SecurityPolicyAdaptiveProtectionConfigResponse>('adaptiveProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyAdaptiveProtectionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     advancedOptionsConfig = registerOutput<SecurityPolicyAdvancedOptionsConfigResponse>('advancedOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyAdvancedOptionsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    associations = registerOutput<List<Map<String, dynamic>>>('associations');
+    associations = registerOutput<List<SecurityPolicyAssociationResponse>>('associations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityPolicyAssociationResponse>(guardedValue, (value) => SecurityPolicyAssociationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     cloudArmorConfig = registerOutput<SecurityPolicyCloudArmorConfigResponse>('cloudArmorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyCloudArmorConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     ddosProtectionConfig = registerOutput<SecurityPolicyDdosProtectionConfigResponse>('ddosProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyDdosProtectionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -75,7 +78,7 @@ class RegionSecurityPolicy extends pulumi.CustomResource {
     fingerprint = registerOutput<String>('fingerprint');
     kind = registerOutput<String>('kind');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     project = registerOutput<String>('project');
@@ -83,10 +86,45 @@ class RegionSecurityPolicy extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<SecurityPolicyRuleResponse>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityPolicyRuleResponse>(guardedValue, (value) => SecurityPolicyRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
     type = registerOutput<String>('type');
-    userDefinedFields = registerOutput<List<Map<String, dynamic>>>('userDefinedFields');
+    userDefinedFields = registerOutput<List<SecurityPolicyUserDefinedFieldResponse>>('userDefinedFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityPolicyUserDefinedFieldResponse>(guardedValue, (value) => SecurityPolicyUserDefinedFieldResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [RegionSecurityPolicy] resource.
+  RegionSecurityPolicy.reference(String urn)
+    : super(
+        'google-native:compute/alpha:RegionSecurityPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    adaptiveProtectionConfig = registerOutput<SecurityPolicyAdaptiveProtectionConfigResponse>('adaptiveProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyAdaptiveProtectionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    advancedOptionsConfig = registerOutput<SecurityPolicyAdvancedOptionsConfigResponse>('advancedOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyAdvancedOptionsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    associations = registerOutput<List<SecurityPolicyAssociationResponse>>('associations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityPolicyAssociationResponse>(guardedValue, (value) => SecurityPolicyAssociationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    cloudArmorConfig = registerOutput<SecurityPolicyCloudArmorConfigResponse>('cloudArmorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyCloudArmorConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    ddosProtectionConfig = registerOutput<SecurityPolicyDdosProtectionConfigResponse>('ddosProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyDdosProtectionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    fingerprint = registerOutput<String>('fingerprint');
+    kind = registerOutput<String>('kind');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    project = registerOutput<String>('project');
+    recaptchaOptionsConfig = registerOutput<SecurityPolicyRecaptchaOptionsConfigResponse>('recaptchaOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyRecaptchaOptionsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    ruleTupleCount = registerOutput<int>('ruleTupleCount');
+    rules = registerOutput<List<SecurityPolicyRuleResponse>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityPolicyRuleResponse>(guardedValue, (value) => SecurityPolicyRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    type = registerOutput<String>('type');
+    userDefinedFields = registerOutput<List<SecurityPolicyUserDefinedFieldResponse>>('userDefinedFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityPolicyUserDefinedFieldResponse>(guardedValue, (value) => SecurityPolicyUserDefinedFieldResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

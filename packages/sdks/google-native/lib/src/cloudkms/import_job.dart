@@ -45,8 +45,33 @@ class ImportJob extends pulumi.CustomResource {
           'google-native:cloudkms/v1:ImportJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['importJobId', 'keyRingId', 'location', 'project']).merge(options),
         ) {
+    attestation = registerOutput<KeyOperationAttestationResponse>('attestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyOperationAttestationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    expireEventTime = registerOutput<String>('expireEventTime');
+    expireTime = registerOutput<String>('expireTime');
+    generateTime = registerOutput<String>('generateTime');
+    importJobId = registerOutput<String>('importJobId');
+    importMethod = registerOutput<String>('importMethod');
+    keyRingId = registerOutput<String>('keyRingId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    protectionLevel = registerOutput<String>('protectionLevel');
+    publicKey = registerOutput<WrappingPublicKeyResponse>('publicKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WrappingPublicKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [ImportJob] resource.
+  ImportJob.reference(String urn)
+    : super(
+        'google-native:cloudkms/v1:ImportJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     attestation = registerOutput<KeyOperationAttestationResponse>('attestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyOperationAttestationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     expireEventTime = registerOutput<String>('expireEventTime');

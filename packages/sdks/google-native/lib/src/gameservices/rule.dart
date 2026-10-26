@@ -8,19 +8,19 @@ import 'rule_action.dart';
 /// A rule to be applied in a Policy.
 class Rule {
   /// Required
-  final pulumi.Input<RuleAction>? action;
+  final pulumi.Input<RuleAction?>? action;
   /// Additional restrictions that must be met. All conditions must pass for the rule to match.
-  final pulumi.Input<List<Condition>>? conditions;
+  final pulumi.Input<List<Condition>?>? conditions;
   /// Human-readable description of the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
-  final pulumi.Input<List<String>>? in_;
+  final pulumi.Input<List<String>?>? in_;
   /// The config returned to callers of CheckPolicy for any entries that match the LOG action.
-  final pulumi.Input<List<LogConfig>>? logConfig;
+  final pulumi.Input<List<LogConfig>?>? logConfig;
   /// If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries. The format for in and not_in entries can be found at in the Local IAM documentation (see go/local-iam#features).
-  final pulumi.Input<List<String>>? notIn;
+  final pulumi.Input<List<String>?>? notIn;
   /// A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
-  final pulumi.Input<List<String>>? permissions;
+  final pulumi.Input<List<String>?>? permissions;
 
   /// Creates a new [Rule].
   /// [action] Required

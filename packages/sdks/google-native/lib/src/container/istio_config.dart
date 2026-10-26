@@ -6,9 +6,9 @@ import 'istio_config_auth.dart';
 /// Configuration options for Istio addon.
 class IstioConfig {
   /// The specified Istio auth mode, either none, or mutual TLS.
-  final pulumi.Input<IstioConfigAuth>? auth;
+  final pulumi.Input<IstioConfigAuth?>? auth;
   /// Whether Istio is enabled for this cluster.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
 
   /// Creates a new [IstioConfig].
   /// [auth] The specified Istio auth mode, either none, or mutual TLS.

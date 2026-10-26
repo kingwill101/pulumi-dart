@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupMigrationcenterV1alpha1Args {
   final pulumi.Input<String> groupId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetGroupMigrationcenterV1alpha1Args].
   /// [groupId] Required.

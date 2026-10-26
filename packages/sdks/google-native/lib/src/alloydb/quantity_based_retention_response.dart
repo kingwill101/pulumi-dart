@@ -21,7 +21,7 @@ class QuantityBasedRetentionResponse {
 
   factory QuantityBasedRetentionResponse.fromMap(Map<String, dynamic> map) {
     return QuantityBasedRetentionResponse(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['count'])),
     );
   }
 }

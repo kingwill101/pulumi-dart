@@ -22,6 +22,17 @@ Future<GetScanConfigResult> getScanConfig(
   return GetScanConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetScanConfigResult> getScanConfigOutput(
+  GetScanConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:websecurityscanner/v1:getScanConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScanConfigResult.fromMap);
+}
+
 /// Gets a ScanConfig.
 /// [args] Arguments passed to this invoke. {@macro pulumi_websecurityscanner_v1alpha_get_scan_config_websecurityscanner_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
@@ -38,6 +49,17 @@ Future<GetScanConfigWebsecurityscannerV1alphaResult> getScanConfigWebsecuritysca
   return GetScanConfigWebsecurityscannerV1alphaResult.fromMap(result);
 }
 
+pulumi.Output<GetScanConfigWebsecurityscannerV1alphaResult> getScanConfigWebsecurityscannerV1alphaOutput(
+  GetScanConfigWebsecurityscannerV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:websecurityscanner/v1alpha:getScanConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScanConfigWebsecurityscannerV1alphaResult.fromMap);
+}
+
 /// Gets a ScanConfig.
 /// [args] Arguments passed to this invoke. {@macro pulumi_websecurityscanner_v1beta_get_scan_config_websecurityscanner_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -52,4 +74,15 @@ Future<GetScanConfigWebsecurityscannerV1betaResult> getScanConfigWebsecurityscan
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScanConfigWebsecurityscannerV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetScanConfigWebsecurityscannerV1betaResult> getScanConfigWebsecurityscannerV1betaOutput(
+  GetScanConfigWebsecurityscannerV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:websecurityscanner/v1beta:getScanConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScanConfigWebsecurityscannerV1betaResult.fromMap);
 }

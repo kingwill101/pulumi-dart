@@ -126,7 +126,7 @@ class GoogleCloudDocumentaiV1DocumentPageResponse {
       imageQualityScores: pulumi.Input.fromValue(GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponse.fromMap((map['imageQualityScores']! as Map).cast<String, dynamic>())),
       layout: pulumi.Input.fromValue(GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap((map['layout']! as Map).cast<String, dynamic>())),
       lines: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageLineResponse>(map['lines']!, (value) => GoogleCloudDocumentaiV1DocumentPageLineResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      pageNumber: pulumi.Input.fromValue(map['pageNumber'] as int),
+      pageNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['pageNumber'])),
       paragraphs: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageParagraphResponse>(map['paragraphs']!, (value) => GoogleCloudDocumentaiV1DocumentPageParagraphResponse.fromMap((value as Map).cast<String, dynamic>()))),
       provenance: pulumi.Input.fromValue(GoogleCloudDocumentaiV1DocumentProvenanceResponse.fromMap((map['provenance']! as Map).cast<String, dynamic>())),
       symbols: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageSymbolResponse>(map['symbols']!, (value) => GoogleCloudDocumentaiV1DocumentPageSymbolResponse.fromMap((value as Map).cast<String, dynamic>()))),

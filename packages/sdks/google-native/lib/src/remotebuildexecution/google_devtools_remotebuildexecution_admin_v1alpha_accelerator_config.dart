@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AcceleratorConfig defines the accelerator cards to attach to the VM.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig {
   /// The number of guest accelerator cards exposed to each VM.
-  final pulumi.Input<String>? acceleratorCount;
+  final pulumi.Input<String?>? acceleratorCount;
   /// The type of accelerator to attach to each VM, e.g. "nvidia-tesla-k80" for nVidia Tesla K80.
-  final pulumi.Input<String>? acceleratorType;
+  final pulumi.Input<String?>? acceleratorType;
 
   /// Creates a new [GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig].
   /// [acceleratorCount] The number of guest accelerator cards exposed to each VM.

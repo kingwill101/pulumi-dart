@@ -47,8 +47,35 @@ class Database extends pulumi.CustomResource {
           'google-native:firestore/v1:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['databaseId', 'project']).merge(options),
         ) {
+    appEngineIntegrationMode = registerOutput<String>('appEngineIntegrationMode');
+    concurrencyMode = registerOutput<String>('concurrencyMode');
+    createTime = registerOutput<String>('createTime');
+    databaseId = registerOutput<String>('databaseId');
+    deleteProtectionState = registerOutput<String>('deleteProtectionState');
+    earliestVersionTime = registerOutput<String>('earliestVersionTime');
+    etag = registerOutput<String>('etag');
+    keyPrefix = registerOutput<String>('keyPrefix');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    pointInTimeRecoveryEnablement = registerOutput<String>('pointInTimeRecoveryEnablement');
+    project = registerOutput<String>('project');
+    type = registerOutput<String>('type');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    versionRetentionPeriod = registerOutput<String>('versionRetentionPeriod');
+  }
+
+  /// Creates a typed reference to an existing [Database] resource.
+  Database.reference(String urn)
+    : super(
+        'google-native:firestore/v1:Database',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appEngineIntegrationMode = registerOutput<String>('appEngineIntegrationMode');
     concurrencyMode = registerOutput<String>('concurrencyMode');
     createTime = registerOutput<String>('createTime');

@@ -11,19 +11,19 @@ import 'ospolicy_assignment_rollout.dart';
 /// {@macro pulumi_osconfig_v1_os_policy_assignment_args_doc}
 class OsPolicyAssignmentArgs {
   /// OS policy assignment description. Length of the description is limited to 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Filter to select VMs.
   final pulumi.Input<OSPolicyAssignmentInstanceFilter> instanceFilter;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of OS policies to be applied to the VMs.
   final pulumi.Input<List<OSPolicy>> osPolicies;
   /// Required. The logical name of the OS policy assignment in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
   final pulumi.Input<String> osPolicyAssignmentId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
   final pulumi.Input<OSPolicyAssignmentRollout> rollout;
 

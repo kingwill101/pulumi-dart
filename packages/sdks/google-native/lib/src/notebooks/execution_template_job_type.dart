@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of Job to be used on this execution.
-enum ExecutionTemplateJobType {
+enum ExecutionTemplateJobType implements pulumi.PulumiEnum<String> {
   jobTypeUnspecified("JOB_TYPE_UNSPECIFIED"),
   vertexAi("VERTEX_AI"),
   dataproc("DATAPROC");
 
   const ExecutionTemplateJobType(this.wireValue);
+  @override
   final String wireValue;
 
   static ExecutionTemplateJobType fromValue(String value) {

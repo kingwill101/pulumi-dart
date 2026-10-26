@@ -26,8 +26,8 @@ class HttpRouteHeaderMatchIntegerRangeResponse {
 
   factory HttpRouteHeaderMatchIntegerRangeResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteHeaderMatchIntegerRangeResponse(
-      end: pulumi.Input.fromValue(map['end'] as int),
-      start: pulumi.Input.fromValue(map['start'] as int),
+      end: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['end'])),
+      start: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['start'])),
     );
   }
 }

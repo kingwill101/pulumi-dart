@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The day of week, when the window starts.
-enum MaintenanceWindowDayOfWeekMetastoreV1alpha {
+enum MaintenanceWindowDayOfWeekMetastoreV1alpha implements pulumi.PulumiEnum<String> {
   dayOfWeekUnspecified("DAY_OF_WEEK_UNSPECIFIED"),
   monday("MONDAY"),
   tuesday("TUESDAY"),
@@ -10,6 +12,7 @@ enum MaintenanceWindowDayOfWeekMetastoreV1alpha {
   sunday("SUNDAY");
 
   const MaintenanceWindowDayOfWeekMetastoreV1alpha(this.wireValue);
+  @override
   final String wireValue;
 
   static MaintenanceWindowDayOfWeekMetastoreV1alpha fromValue(String value) {

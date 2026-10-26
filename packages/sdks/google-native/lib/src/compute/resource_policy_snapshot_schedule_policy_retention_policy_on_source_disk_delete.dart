@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the behavior to apply to scheduled snapshots when the source disk is deleted.
-enum ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete {
+enum ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete implements pulumi.PulumiEnum<String> {
   applyRetentionPolicy("APPLY_RETENTION_POLICY"),
   keepAutoSnapshots("KEEP_AUTO_SNAPSHOTS"),
   unspecifiedOnSourceDiskDelete("UNSPECIFIED_ON_SOURCE_DISK_DELETE");
 
   const ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete(this.wireValue);
+  @override
   final String wireValue;
 
   static ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete fromValue(String value) {

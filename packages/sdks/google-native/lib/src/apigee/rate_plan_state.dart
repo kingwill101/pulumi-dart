@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Current state of the rate plan (draft or published).
-enum RatePlanState {
+enum RatePlanState implements pulumi.PulumiEnum<String> {
   stateUnspecified("STATE_UNSPECIFIED"),
   draft("DRAFT"),
   published("PUBLISHED");
 
   const RatePlanState(this.wireValue);
+  @override
   final String wireValue;
 
   static RatePlanState fromValue(String value) {

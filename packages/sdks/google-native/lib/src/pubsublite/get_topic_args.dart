@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_pubsublite_v1_get_topic_args_doc}
 class GetTopicArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> topicId;
 
   /// Creates a new [GetTopicArgs].

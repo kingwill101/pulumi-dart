@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Partner regime associated with this workload.
-enum WorkloadPartnerAssuredworkloadsV1beta1 {
+enum WorkloadPartnerAssuredworkloadsV1beta1 implements pulumi.PulumiEnum<String> {
   partnerUnspecified("PARTNER_UNSPECIFIED"),
   localControlsByS3ns("LOCAL_CONTROLS_BY_S3NS"),
   sovereignControlsByTSystems("SOVEREIGN_CONTROLS_BY_T_SYSTEMS"),
@@ -7,6 +9,7 @@ enum WorkloadPartnerAssuredworkloadsV1beta1 {
   sovereignControlsByPsn("SOVEREIGN_CONTROLS_BY_PSN");
 
   const WorkloadPartnerAssuredworkloadsV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static WorkloadPartnerAssuredworkloadsV1beta1 fromValue(String value) {

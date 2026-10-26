@@ -7,9 +7,9 @@ import 'network_performance_config_total_egress_bandwidth_tier_container_v1beta1
 /// Configuration of all network bandwidth tiers
 class NetworkPerformanceConfigContainerV1beta1 {
   /// Specifies the network bandwidth tier for the NodePool for traffic to external/public IP addresses.
-  final pulumi.Input<NetworkPerformanceConfigExternalIpEgressBandwidthTier>? externalIpEgressBandwidthTier;
+  final pulumi.Input<NetworkPerformanceConfigExternalIpEgressBandwidthTier?>? externalIpEgressBandwidthTier;
   /// Specifies the total network bandwidth tier for the NodePool.
-  final pulumi.Input<NetworkPerformanceConfigTotalEgressBandwidthTierContainerV1beta1>? totalEgressBandwidthTier;
+  final pulumi.Input<NetworkPerformanceConfigTotalEgressBandwidthTierContainerV1beta1?>? totalEgressBandwidthTier;
 
   /// Creates a new [NetworkPerformanceConfigContainerV1beta1].
   /// [externalIpEgressBandwidthTier] Specifies the network bandwidth tier for the NodePool for traffic to external/public IP addresses.

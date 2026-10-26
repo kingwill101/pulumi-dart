@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// This is deprecated and has no effect. Do not use.
-enum ConditionOp {
+enum ConditionOp implements pulumi.PulumiEnum<String> {
   discharged("DISCHARGED"),
   equals("EQUALS"),
   in_("IN"),
@@ -8,6 +10,7 @@ enum ConditionOp {
   noOp("NO_OP");
 
   const ConditionOp(this.wireValue);
+  @override
   final String wireValue;
 
   static ConditionOp fromValue(String value) {

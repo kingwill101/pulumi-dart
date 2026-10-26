@@ -26,8 +26,8 @@ class DriverSchedulingConfigResponse {
 
   factory DriverSchedulingConfigResponse.fromMap(Map<String, dynamic> map) {
     return DriverSchedulingConfigResponse(
-      memoryMb: pulumi.Input.fromValue(map['memoryMb'] as int),
-      vcores: pulumi.Input.fromValue(map['vcores'] as int),
+      memoryMb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memoryMb'])),
+      vcores: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vcores'])),
     );
   }
 }

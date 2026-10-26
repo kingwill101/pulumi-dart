@@ -26,8 +26,8 @@ class AutoscalingTargetsResponse {
 
   factory AutoscalingTargetsResponse.fromMap(Map<String, dynamic> map) {
     return AutoscalingTargetsResponse(
-      cpuUtilizationPercent: pulumi.Input.fromValue(map['cpuUtilizationPercent'] as int),
-      storageUtilizationGibPerNode: pulumi.Input.fromValue(map['storageUtilizationGibPerNode'] as int),
+      cpuUtilizationPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cpuUtilizationPercent'])),
+      storageUtilizationGibPerNode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['storageUtilizationGibPerNode'])),
     );
   }
 }

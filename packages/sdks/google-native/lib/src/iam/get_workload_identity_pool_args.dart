@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iam_v1_get_workload_identity_pool_args_doc}
 class GetWorkloadIdentityPoolArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> workloadIdentityPoolId;
 
   /// Creates a new [GetWorkloadIdentityPoolArgs].

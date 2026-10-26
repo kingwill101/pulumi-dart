@@ -7,9 +7,9 @@ import 'google_cloud_datacatalog_v1_entry_overview.dart';
 /// Business Context of the entry.
 class GoogleCloudDatacatalogV1BusinessContext {
   /// Contact people for the entry.
-  final pulumi.Input<GoogleCloudDatacatalogV1Contacts>? contacts;
+  final pulumi.Input<GoogleCloudDatacatalogV1Contacts?>? contacts;
   /// Entry overview fields for rich text descriptions of entries.
-  final pulumi.Input<GoogleCloudDatacatalogV1EntryOverview>? entryOverview;
+  final pulumi.Input<GoogleCloudDatacatalogV1EntryOverview?>? entryOverview;
 
   /// Creates a new [GoogleCloudDatacatalogV1BusinessContext].
   /// [contacts] Contact people for the entry.

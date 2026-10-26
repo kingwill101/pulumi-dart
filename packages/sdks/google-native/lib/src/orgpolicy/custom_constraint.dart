@@ -33,16 +33,36 @@ class CustomConstraint extends pulumi.CustomResource {
           'google-native:orgpolicy/v2:CustomConstraint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId']).merge(options),
         ) {
     actionType = registerOutput<String>('actionType');
     condition = registerOutput<String>('condition');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    methodTypes = registerOutput<List<String>>('methodTypes');
+    methodTypes = registerOutput<List<String>>('methodTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
-    resourceTypes = registerOutput<List<String>>('resourceTypes');
+    resourceTypes = registerOutput<List<String>>('resourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [CustomConstraint] resource.
+  CustomConstraint.reference(String urn)
+    : super(
+        'google-native:orgpolicy/v2:CustomConstraint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actionType = registerOutput<String>('actionType');
+    condition = registerOutput<String>('condition');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    methodTypes = registerOutput<List<String>>('methodTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    resourceTypes = registerOutput<List<String>>('resourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

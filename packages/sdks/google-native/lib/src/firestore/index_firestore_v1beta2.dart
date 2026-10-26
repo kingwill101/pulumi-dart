@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_firestore_admin_v1beta2_index_field_response.dart';
 import 'index_firestore_v1beta2_args.dart';
 
 /// Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
@@ -7,7 +8,7 @@ class IndexFirestoreV1beta2 extends pulumi.CustomResource {
   late final pulumi.Output<String> collectionGroupId;
   late final pulumi.Output<String> databaseId;
   /// The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
-  late final pulumi.Output<List<Map<String, dynamic>>> fields;
+  late final pulumi.Output<List<GoogleFirestoreAdminV1beta2IndexFieldResponse>> fields;
   /// A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
@@ -28,11 +29,29 @@ class IndexFirestoreV1beta2 extends pulumi.CustomResource {
           'google-native:firestore/v1beta2:Index',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['collectionGroupId', 'databaseId', 'project']).merge(options),
         ) {
     collectionGroupId = registerOutput<String>('collectionGroupId');
     databaseId = registerOutput<String>('databaseId');
-    fields = registerOutput<List<Map<String, dynamic>>>('fields');
+    fields = registerOutput<List<GoogleFirestoreAdminV1beta2IndexFieldResponse>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleFirestoreAdminV1beta2IndexFieldResponse>(guardedValue, (value) => GoogleFirestoreAdminV1beta2IndexFieldResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    queryScope = registerOutput<String>('queryScope');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [IndexFirestoreV1beta2] resource.
+  IndexFirestoreV1beta2.reference(String urn)
+    : super(
+        'google-native:firestore/v1beta2:Index',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    collectionGroupId = registerOutput<String>('collectionGroupId');
+    databaseId = registerOutput<String>('databaseId');
+    fields = registerOutput<List<GoogleFirestoreAdminV1beta2IndexFieldResponse>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleFirestoreAdminV1beta2IndexFieldResponse>(guardedValue, (value) => GoogleFirestoreAdminV1beta2IndexFieldResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     queryScope = registerOutput<String>('queryScope');

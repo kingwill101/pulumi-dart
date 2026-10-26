@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
-enum BootDiskDiskEncryption {
+enum BootDiskDiskEncryption implements pulumi.PulumiEnum<String> {
   diskEncryptionUnspecified("DISK_ENCRYPTION_UNSPECIFIED"),
   gmek("GMEK"),
   cmek("CMEK");
 
   const BootDiskDiskEncryption(this.wireValue);
+  @override
   final String wireValue;
 
   static BootDiskDiskEncryption fromValue(String value) {

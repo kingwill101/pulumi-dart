@@ -7,11 +7,11 @@ import 'predeploy.dart';
 /// Standard represents the standard deployment strategy.
 class Standard {
   /// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
-  final pulumi.Input<Postdeploy>? postdeploy;
+  final pulumi.Input<Postdeploy?>? postdeploy;
   /// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
-  final pulumi.Input<Predeploy>? predeploy;
+  final pulumi.Input<Predeploy?>? predeploy;
   /// Whether to verify a deployment.
-  final pulumi.Input<bool>? verify;
+  final pulumi.Input<bool?>? verify;
 
   /// Creates a new [Standard].
   /// [postdeploy] Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.

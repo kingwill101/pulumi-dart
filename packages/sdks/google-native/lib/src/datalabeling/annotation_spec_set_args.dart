@@ -11,10 +11,10 @@ class AnnotationSpecSetArgs {
   /// The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
   final pulumi.Input<List<GoogleCloudDatalabelingV1beta1AnnotationSpec>> annotationSpecs;
   /// Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
   final pulumi.Input<String> displayName;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [AnnotationSpecSetArgs].
   /// [annotationSpecs] The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.

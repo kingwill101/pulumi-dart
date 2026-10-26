@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// BareMetalAdminClusterOperationsConfig specifies the admin cluster's observability infrastructure.
 class BareMetalAdminClusterOperationsConfig {
   /// Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
-  final pulumi.Input<bool>? enableApplicationLogs;
+  final pulumi.Input<bool?>? enableApplicationLogs;
 
   /// Creates a new [BareMetalAdminClusterOperationsConfig].
   /// [enableApplicationLogs] Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).

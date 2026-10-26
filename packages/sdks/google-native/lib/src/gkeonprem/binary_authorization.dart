@@ -6,7 +6,7 @@ import 'binary_authorization_evaluation_mode.dart';
 /// Configuration for Binary Authorization.
 class BinaryAuthorization {
   /// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
-  final pulumi.Input<BinaryAuthorizationEvaluationMode>? evaluationMode;
+  final pulumi.Input<BinaryAuthorizationEvaluationMode?>? evaluationMode;
 
   /// Creates a new [BinaryAuthorization].
   /// [evaluationMode] Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.

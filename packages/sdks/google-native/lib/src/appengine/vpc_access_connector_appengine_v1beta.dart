@@ -6,9 +6,9 @@ import 'vpc_access_connector_egress_setting_appengine_v1beta.dart';
 /// VPC access connector specification.
 class VpcAccessConnectorAppengineV1beta {
   /// The egress setting for the connector, controlling what traffic is diverted through it.
-  final pulumi.Input<VpcAccessConnectorEgressSettingAppengineV1beta>? egressSetting;
+  final pulumi.Input<VpcAccessConnectorEgressSettingAppengineV1beta?>? egressSetting;
   /// Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [VpcAccessConnectorAppengineV1beta].
   /// [egressSetting] The egress setting for the connector, controlling what traffic is diverted through it.

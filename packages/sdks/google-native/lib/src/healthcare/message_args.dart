@@ -10,25 +10,25 @@ import 'schematized_data.dart';
 /// {@macro pulumi_healthcare_v1_message_args_doc}
 class MessageArgs {
   /// Raw message bytes.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   final pulumi.Input<String> datasetId;
   final pulumi.Input<String> hl7V2StoreId;
   /// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// The message type for this message. MSH-9.1.
-  final pulumi.Input<String>? messageType;
+  final pulumi.Input<String?>? messageType;
   /// Resource name of the Message, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
-  final pulumi.Input<List<PatientId>>? patientIds;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<List<PatientId>?>? patientIds;
+  final pulumi.Input<String?>? project;
   /// The parsed version of the raw message data schematized according to this store's schemas and type definitions.
-  final pulumi.Input<SchematizedData>? schematizedData;
+  final pulumi.Input<SchematizedData?>? schematizedData;
   /// The hospital that this message came from. MSH-4.
-  final pulumi.Input<String>? sendFacility;
+  final pulumi.Input<String?>? sendFacility;
   /// The datetime the sending application sent this message. MSH-7.
-  final pulumi.Input<String>? sendTime;
+  final pulumi.Input<String?>? sendTime;
 
   /// Creates a new [MessageArgs].
   /// [data] Raw message bytes.

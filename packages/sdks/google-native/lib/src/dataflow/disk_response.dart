@@ -33,7 +33,7 @@ class DiskResponse {
     return DiskResponse(
       diskType: pulumi.Input.fromValue(map['diskType'] as String),
       mountPoint: pulumi.Input.fromValue(map['mountPoint'] as String),
-      sizeGb: pulumi.Input.fromValue(map['sizeGb'] as int),
+      sizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeGb'])),
     );
   }
 }

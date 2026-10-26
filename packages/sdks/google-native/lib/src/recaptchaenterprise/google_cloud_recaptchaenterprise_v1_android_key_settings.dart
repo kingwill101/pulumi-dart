@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Settings specific to keys that can be used by Android apps.
 class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
   /// Optional. If set to true, allowed_package_names are not enforced.
-  final pulumi.Input<bool>? allowAllPackageNames;
+  final pulumi.Input<bool?>? allowAllPackageNames;
   /// Optional. Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
-  final pulumi.Input<List<String>>? allowedPackageNames;
+  final pulumi.Input<List<String>?>? allowedPackageNames;
   /// Optional. Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
-  final pulumi.Input<bool>? supportNonGoogleAppStoreDistribution;
+  final pulumi.Input<bool?>? supportNonGoogleAppStoreDistribution;
 
   /// Creates a new [GoogleCloudRecaptchaenterpriseV1AndroidKeySettings].
   /// [allowAllPackageNames] Optional. If set to true, allowed_package_names are not enforced.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_baremetalsolution_v2_get_snapshot_args_doc}
 class GetSnapshotArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> snapshotId;
   final pulumi.Input<String> volumeId;
 

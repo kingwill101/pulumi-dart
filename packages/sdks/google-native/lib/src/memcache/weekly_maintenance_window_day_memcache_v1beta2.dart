@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Allows to define schedule that runs specified day of the week.
-enum WeeklyMaintenanceWindowDayMemcacheV1beta2 {
+enum WeeklyMaintenanceWindowDayMemcacheV1beta2 implements pulumi.PulumiEnum<String> {
   dayOfWeekUnspecified("DAY_OF_WEEK_UNSPECIFIED"),
   monday("MONDAY"),
   tuesday("TUESDAY"),
@@ -10,6 +12,7 @@ enum WeeklyMaintenanceWindowDayMemcacheV1beta2 {
   sunday("SUNDAY");
 
   const WeeklyMaintenanceWindowDayMemcacheV1beta2(this.wireValue);
+  @override
   final String wireValue;
 
   static WeeklyMaintenanceWindowDayMemcacheV1beta2 fromValue(String value) {

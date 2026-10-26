@@ -7,7 +7,7 @@ import 'group_args.dart';
 /// Auto-naming is currently not supported for this resource.
 class Group extends pulumi.CustomResource {
   /// Additional group keys associated with the Group.
-  late final pulumi.Output<List<Map<String, dynamic>>> additionalGroupKeys;
+  late final pulumi.Output<List<EntityKeyResponse>> additionalGroupKeys;
   /// The time when the `Group` was created.
   late final pulumi.Output<String> createTime;
   /// An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
@@ -41,16 +41,38 @@ class Group extends pulumi.CustomResource {
           'google-native:cloudidentity/v1:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
-    additionalGroupKeys = registerOutput<List<Map<String, dynamic>>>('additionalGroupKeys');
+    additionalGroupKeys = registerOutput<List<EntityKeyResponse>>('additionalGroupKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntityKeyResponse>(guardedValue, (value) => EntityKeyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     dynamicGroupMetadata = registerOutput<DynamicGroupMetadataResponse>('dynamicGroupMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DynamicGroupMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     groupKey = registerOutput<EntityKeyResponse>('groupKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntityKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     initialGroupConfig = registerOutput<String?>('initialGroupConfig');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Group] resource.
+  Group.reference(String urn)
+    : super(
+        'google-native:cloudidentity/v1:Group',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalGroupKeys = registerOutput<List<EntityKeyResponse>>('additionalGroupKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntityKeyResponse>(guardedValue, (value) => EntityKeyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    dynamicGroupMetadata = registerOutput<DynamicGroupMetadataResponse>('dynamicGroupMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DynamicGroupMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    groupKey = registerOutput<EntityKeyResponse>('groupKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntityKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    initialGroupConfig = registerOutput<String?>('initialGroupConfig');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     updateTime = registerOutput<String>('updateTime');

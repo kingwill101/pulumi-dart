@@ -7,9 +7,9 @@ import 'http_fault_delay_compute_beta.dart';
 /// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by the load balancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
 class HttpFaultInjectionComputeBeta {
   /// The specification for how client requests are aborted as part of fault injection.
-  final pulumi.Input<HttpFaultAbortComputeBeta>? abort;
+  final pulumi.Input<HttpFaultAbortComputeBeta?>? abort;
   /// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
-  final pulumi.Input<HttpFaultDelayComputeBeta>? delay;
+  final pulumi.Input<HttpFaultDelayComputeBeta?>? delay;
 
   /// Creates a new [HttpFaultInjectionComputeBeta].
   /// [abort] The specification for how client requests are aborted as part of fault injection.

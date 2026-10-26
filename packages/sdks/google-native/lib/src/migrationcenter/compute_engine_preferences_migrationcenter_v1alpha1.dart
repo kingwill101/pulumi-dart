@@ -8,11 +8,11 @@ import 'machine_preferences_migrationcenter_v1alpha1.dart';
 /// The user preferences relating to Compute Engine target platform.
 class ComputeEnginePreferencesMigrationcenterV1alpha1 {
   /// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
-  final pulumi.Input<ComputeEnginePreferencesLicenseTypeMigrationcenterV1alpha1>? licenseType;
+  final pulumi.Input<ComputeEnginePreferencesLicenseTypeMigrationcenterV1alpha1?>? licenseType;
   /// Preferences concerning the machine types to consider on Compute Engine.
-  final pulumi.Input<MachinePreferencesMigrationcenterV1alpha1>? machinePreferences;
+  final pulumi.Input<MachinePreferencesMigrationcenterV1alpha1?>? machinePreferences;
   /// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
-  final pulumi.Input<ComputeEnginePreferencesPersistentDiskType>? persistentDiskType;
+  final pulumi.Input<ComputeEnginePreferencesPersistentDiskType?>? persistentDiskType;
 
   /// Creates a new [ComputeEnginePreferencesMigrationcenterV1alpha1].
   /// [licenseType] License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.

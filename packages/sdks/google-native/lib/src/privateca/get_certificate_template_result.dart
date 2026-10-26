@@ -7,23 +7,23 @@ import 'x509_parameters_response.dart';
 /// Result data returned by getCertificateTemplate.
 class GetCertificateTemplateResult {
   /// The time at which this CertificateTemplate was created.
-  final String createTime;
+  final String? createTime;
   /// Optional. A human-readable description of scenarios this template is intended for.
-  final String description;
+  final String? description;
   /// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
-  final CertificateIdentityConstraintsResponse identityConstraints;
+  final CertificateIdentityConstraintsResponse? identityConstraints;
   /// Optional. Labels with user-defined metadata.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Optional. The maximum lifetime allowed for issued Certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum_lifetime the minimum of the two durations will be the maximum lifetime for issued Certificates. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
-  final String maximumLifetime;
+  final String? maximumLifetime;
   /// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
-  final String name;
+  final String? name;
   /// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
-  final CertificateExtensionConstraintsResponse passthroughExtensions;
+  final CertificateExtensionConstraintsResponse? passthroughExtensions;
   /// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
-  final X509ParametersResponse predefinedValues;
+  final X509ParametersResponse? predefinedValues;
   /// The time at which this CertificateTemplate was updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetCertificateTemplateResult].
   /// [createTime] The time at which this CertificateTemplate was created.
@@ -36,42 +36,42 @@ class GetCertificateTemplateResult {
   /// [predefinedValues] Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
   /// [updateTime] The time at which this CertificateTemplate was updated.
   const GetCertificateTemplateResult({
-    required this.createTime,
-    required this.description,
-    required this.identityConstraints,
-    required this.labels,
-    required this.maximumLifetime,
-    required this.name,
-    required this.passthroughExtensions,
-    required this.predefinedValues,
-    required this.updateTime,
+    this.createTime,
+    this.description,
+    this.identityConstraints,
+    this.labels,
+    this.maximumLifetime,
+    this.name,
+    this.passthroughExtensions,
+    this.predefinedValues,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'identityConstraints': identityConstraints.toMap(),
-      'labels': labels,
-      'maximumLifetime': maximumLifetime,
-      'name': name,
-      'passthroughExtensions': passthroughExtensions.toMap(),
-      'predefinedValues': predefinedValues.toMap(),
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'description': ?description,
+      'identityConstraints': ?identityConstraints?.toMap(),
+      'labels': ?labels,
+      'maximumLifetime': ?maximumLifetime,
+      'name': ?name,
+      'passthroughExtensions': ?passthroughExtensions?.toMap(),
+      'predefinedValues': ?predefinedValues?.toMap(),
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetCertificateTemplateResult.fromMap(Map<String, dynamic> map) {
     return GetCertificateTemplateResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      identityConstraints: CertificateIdentityConstraintsResponse.fromMap((map['identityConstraints']! as Map).cast<String, dynamic>()),
-      labels: (map['labels'] as Map).cast<String, String>(),
-      maximumLifetime: map['maximumLifetime'] as String,
-      name: map['name'] as String,
-      passthroughExtensions: CertificateExtensionConstraintsResponse.fromMap((map['passthroughExtensions']! as Map).cast<String, dynamic>()),
-      predefinedValues: X509ParametersResponse.fromMap((map['predefinedValues']! as Map).cast<String, dynamic>()),
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identityConstraints: (() { final guardedValue = map['identityConstraints']; if (guardedValue == null) return null; return CertificateIdentityConstraintsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      maximumLifetime: (() { final guardedValue = map['maximumLifetime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      passthroughExtensions: (() { final guardedValue = map['passthroughExtensions']; if (guardedValue == null) return null; return CertificateExtensionConstraintsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      predefinedValues: (() { final guardedValue = map['predefinedValues']; if (guardedValue == null) return null; return X509ParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

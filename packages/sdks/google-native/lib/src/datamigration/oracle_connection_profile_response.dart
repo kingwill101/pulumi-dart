@@ -74,7 +74,7 @@ class OracleConnectionProfileResponse {
       host: pulumi.Input.fromValue(map['host'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
       passwordSet: pulumi.Input.fromValue(map['passwordSet'] as bool),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       privateConnectivity: pulumi.Input.fromValue(PrivateConnectivityResponse.fromMap((map['privateConnectivity']! as Map).cast<String, dynamic>())),
       ssl: pulumi.Input.fromValue(SslConfigResponse.fromMap((map['ssl']! as Map).cast<String, dynamic>())),
       staticServiceIpConnectivity: pulumi.Input.fromValue((map['staticServiceIpConnectivity']! as Map).cast<String, dynamic>()),

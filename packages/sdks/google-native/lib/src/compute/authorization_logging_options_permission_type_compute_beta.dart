@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// This is deprecated and has no effect. Do not use.
-enum AuthorizationLoggingOptionsPermissionTypeComputeBeta {
+enum AuthorizationLoggingOptionsPermissionTypeComputeBeta implements pulumi.PulumiEnum<String> {
   adminRead("ADMIN_READ"),
   adminWrite("ADMIN_WRITE"),
   dataRead("DATA_READ"),
@@ -7,6 +9,7 @@ enum AuthorizationLoggingOptionsPermissionTypeComputeBeta {
   permissionTypeUnspecified("PERMISSION_TYPE_UNSPECIFIED");
 
   const AuthorizationLoggingOptionsPermissionTypeComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthorizationLoggingOptionsPermissionTypeComputeBeta fromValue(String value) {

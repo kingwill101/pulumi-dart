@@ -32,8 +32,27 @@ class WorkerPool extends pulumi.CustomResource {
           'google-native:remotebuildexecution/v1alpha:WorkerPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instanceId', 'project']).merge(options),
         ) {
+    autoscale = registerOutput<GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse>('autoscale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    channel = registerOutput<String>('channel');
+    instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    workerConfig = registerOutput<GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse>('workerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workerCount = registerOutput<String>('workerCount');
+  }
+
+  /// Creates a typed reference to an existing [WorkerPool] resource.
+  WorkerPool.reference(String urn)
+    : super(
+        'google-native:remotebuildexecution/v1alpha:WorkerPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoscale = registerOutput<GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse>('autoscale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     channel = registerOutput<String>('channel');
     instanceId = registerOutput<String>('instanceId');

@@ -36,8 +36,29 @@ class WorkflowInvocation extends pulumi.CustomResource {
           'google-native:dataform/v1beta1:WorkflowInvocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'repositoryId']).merge(options),
         ) {
+    compilationResult = registerOutput<String>('compilationResult');
+    invocationConfig = registerOutput<InvocationConfigResponse>('invocationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvocationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    invocationTiming = registerOutput<IntervalResponse>('invocationTiming', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntervalResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    repositoryId = registerOutput<String>('repositoryId');
+    resolvedCompilationResult = registerOutput<String>('resolvedCompilationResult');
+    state = registerOutput<String>('state');
+    workflowConfig = registerOutput<String>('workflowConfig');
+  }
+
+  /// Creates a typed reference to an existing [WorkflowInvocation] resource.
+  WorkflowInvocation.reference(String urn)
+    : super(
+        'google-native:dataform/v1beta1:WorkflowInvocation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     compilationResult = registerOutput<String>('compilationResult');
     invocationConfig = registerOutput<InvocationConfigResponse>('invocationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvocationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     invocationTiming = registerOutput<IntervalResponse>('invocationTiming', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntervalResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

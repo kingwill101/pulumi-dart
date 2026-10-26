@@ -26,8 +26,8 @@ class JobSchedulingResponse {
 
   factory JobSchedulingResponse.fromMap(Map<String, dynamic> map) {
     return JobSchedulingResponse(
-      maxFailuresPerHour: pulumi.Input.fromValue(map['maxFailuresPerHour'] as int),
-      maxFailuresTotal: pulumi.Input.fromValue(map['maxFailuresTotal'] as int),
+      maxFailuresPerHour: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxFailuresPerHour'])),
+      maxFailuresTotal: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxFailuresTotal'])),
     );
   }
 }

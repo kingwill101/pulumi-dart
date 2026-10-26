@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLbTrafficExtensionArgs {
   final pulumi.Input<String> lbTrafficExtensionId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetLbTrafficExtensionArgs].
   /// [lbTrafficExtensionId] Required.

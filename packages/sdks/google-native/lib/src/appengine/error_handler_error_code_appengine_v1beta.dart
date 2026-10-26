@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Error condition this handler applies to.
-enum ErrorHandlerErrorCodeAppengineV1beta {
+enum ErrorHandlerErrorCodeAppengineV1beta implements pulumi.PulumiEnum<String> {
   errorCodeUnspecified("ERROR_CODE_UNSPECIFIED"),
   errorCodeDefault("ERROR_CODE_DEFAULT"),
   errorCodeOverQuota("ERROR_CODE_OVER_QUOTA"),
@@ -7,6 +9,7 @@ enum ErrorHandlerErrorCodeAppengineV1beta {
   errorCodeTimeout("ERROR_CODE_TIMEOUT");
 
   const ErrorHandlerErrorCodeAppengineV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static ErrorHandlerErrorCodeAppengineV1beta fromValue(String value) {

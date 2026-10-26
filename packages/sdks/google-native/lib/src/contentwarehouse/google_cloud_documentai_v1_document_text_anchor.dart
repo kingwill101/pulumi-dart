@@ -6,9 +6,9 @@ import 'google_cloud_documentai_v1_document_text_anchor_text_segment.dart';
 /// Text reference indexing into the Document.text.
 class GoogleCloudDocumentaiV1DocumentTextAnchor {
   /// Contains the content of the text span so that users do not have to look it up in the text_segments. It is always populated for formFields.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The text segments from the Document.text.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment>>? textSegments;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment>?>? textSegments;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentTextAnchor].
   /// [content] Contains the content of the text span so that users do not have to look it up in the text_segments. It is always populated for formFields.

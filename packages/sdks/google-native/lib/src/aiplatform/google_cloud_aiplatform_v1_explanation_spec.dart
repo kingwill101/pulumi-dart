@@ -7,7 +7,7 @@ import 'google_cloud_aiplatform_v1_explanation_parameters.dart';
 /// Specification of Model explanation.
 class GoogleCloudAiplatformV1ExplanationSpec {
   /// Optional. Metadata describing the Model's input and output for explanation.
-  final pulumi.Input<GoogleCloudAiplatformV1ExplanationMetadata>? metadata;
+  final pulumi.Input<GoogleCloudAiplatformV1ExplanationMetadata?>? metadata;
   /// Parameters that configure explaining of the Model's predictions.
   final pulumi.Input<GoogleCloudAiplatformV1ExplanationParameters> parameters;
 

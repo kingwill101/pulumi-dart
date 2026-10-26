@@ -10,16 +10,16 @@ import 'glossary_terms_set.dart';
 /// {@macro pulumi_translate_v3_glossary_entry_args_doc}
 class GlossaryEntryArgs {
   /// Describes the glossary entry.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   final pulumi.Input<String> glossaryId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the entry. Format: "projects/*/locations/*/glossaries/*/glossaryEntries/*"
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Used for an unidirectional glossary.
-  final pulumi.Input<GlossaryTermsPair>? termsPair;
+  final pulumi.Input<GlossaryTermsPair?>? termsPair;
   /// Used for an equivalent term sets glossary.
-  final pulumi.Input<GlossaryTermsSet>? termsSet;
+  final pulumi.Input<GlossaryTermsSet?>? termsSet;
 
   /// Creates a new [GlossaryEntryArgs].
   /// [description] Describes the glossary entry.

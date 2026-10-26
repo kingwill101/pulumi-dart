@@ -6,9 +6,9 @@ import 'mysql_table_datastream_v1alpha1.dart';
 /// MySQL database.
 class MysqlDatabaseDatastreamV1alpha1 {
   /// Database name.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// Tables in the database.
-  final pulumi.Input<List<MysqlTableDatastreamV1alpha1>>? mysqlTables;
+  final pulumi.Input<List<MysqlTableDatastreamV1alpha1>?>? mysqlTables;
 
   /// Creates a new [MysqlDatabaseDatastreamV1alpha1].
   /// [databaseName] Database name.

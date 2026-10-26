@@ -6,9 +6,9 @@ import 'duration.dart';
 /// Configuration for gracefully shutting down the instance.
 class SchedulingGracefulShutdown {
   /// Opts-in for graceful shutdown.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Specifies time needed to gracefully shut down the instance. After that time, the instance goes to STOPPING even if graceful shutdown is not completed.
-  final pulumi.Input<Duration>? maxDuration;
+  final pulumi.Input<Duration?>? maxDuration;
 
   /// Creates a new [SchedulingGracefulShutdown].
   /// [enabled] Opts-in for graceful shutdown.

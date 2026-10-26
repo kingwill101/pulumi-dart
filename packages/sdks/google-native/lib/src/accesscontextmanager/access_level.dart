@@ -29,8 +29,25 @@ class AccessLevel extends pulumi.CustomResource {
           'google-native:accesscontextmanager/v1:AccessLevel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['accessPolicyId']).merge(options),
         ) {
+    accessPolicyId = registerOutput<String>('accessPolicyId');
+    basic = registerOutput<BasicLevelResponse>('basic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BasicLevelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    custom = registerOutput<CustomLevelResponse>('custom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomLevelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    title = registerOutput<String>('title');
+  }
+
+  /// Creates a typed reference to an existing [AccessLevel] resource.
+  AccessLevel.reference(String urn)
+    : super(
+        'google-native:accesscontextmanager/v1:AccessLevel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     basic = registerOutput<BasicLevelResponse>('basic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BasicLevelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     custom = registerOutput<CustomLevelResponse>('custom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomLevelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

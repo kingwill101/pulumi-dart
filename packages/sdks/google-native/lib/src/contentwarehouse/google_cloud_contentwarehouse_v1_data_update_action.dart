@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the action responsible for properties update operations.
 class GoogleCloudContentwarehouseV1DataUpdateAction {
   /// Map of (K, V) -&gt; (valid name of the field, new value of the field) E.g., ("age", "60") entry triggers update of field age with a value of 60. If the field is not present then new entry is added. During update action execution, value strings will be casted to appropriate types.
-  final pulumi.Input<Map<String, String>>? entries;
+  final pulumi.Input<Map<String, String>?>? entries;
 
   /// Creates a new [GoogleCloudContentwarehouseV1DataUpdateAction].
   /// [entries] Map of (K, V) -&gt; (valid name of the field, new value of the field) E.g., ("age", "60") entry triggers update of field age with a value of 60. If the field is not present then new entry is added. During update action execution, value strings will be casted to appropriate types.

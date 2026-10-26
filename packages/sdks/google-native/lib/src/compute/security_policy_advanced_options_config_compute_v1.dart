@@ -7,11 +7,11 @@ import 'security_policy_advanced_options_config_log_level_compute_v1.dart';
 
 class SecurityPolicyAdvancedOptionsConfigComputeV1 {
   /// Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
-  final pulumi.Input<SecurityPolicyAdvancedOptionsConfigJsonCustomConfigComputeV1>? jsonCustomConfig;
-  final pulumi.Input<SecurityPolicyAdvancedOptionsConfigJsonParsingComputeV1>? jsonParsing;
-  final pulumi.Input<SecurityPolicyAdvancedOptionsConfigLogLevelComputeV1>? logLevel;
+  final pulumi.Input<SecurityPolicyAdvancedOptionsConfigJsonCustomConfigComputeV1?>? jsonCustomConfig;
+  final pulumi.Input<SecurityPolicyAdvancedOptionsConfigJsonParsingComputeV1?>? jsonParsing;
+  final pulumi.Input<SecurityPolicyAdvancedOptionsConfigLogLevelComputeV1?>? logLevel;
   /// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
-  final pulumi.Input<List<String>>? userIpRequestHeaders;
+  final pulumi.Input<List<String>?>? userIpRequestHeaders;
 
   /// Creates a new [SecurityPolicyAdvancedOptionsConfigComputeV1].
   /// [jsonCustomConfig] Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.

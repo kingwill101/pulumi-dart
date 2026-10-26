@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Severity of issue. Required.
-enum TestIssueSeverity {
+enum TestIssueSeverity implements pulumi.PulumiEnum<String> {
   unspecifiedSeverity("unspecifiedSeverity"),
   info("info"),
   suggestion("suggestion"),
@@ -7,6 +9,7 @@ enum TestIssueSeverity {
   severe("severe");
 
   const TestIssueSeverity(this.wireValue);
+  @override
   final String wireValue;
 
   static TestIssueSeverity fromValue(String value) {

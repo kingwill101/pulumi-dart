@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The allocation type for this traffic target.
-enum GoogleCloudRunV2TrafficTargetType {
+enum GoogleCloudRunV2TrafficTargetType implements pulumi.PulumiEnum<String> {
   trafficTargetAllocationTypeUnspecified("TRAFFIC_TARGET_ALLOCATION_TYPE_UNSPECIFIED"),
   trafficTargetAllocationTypeLatest("TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"),
   trafficTargetAllocationTypeRevision("TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION");
 
   const GoogleCloudRunV2TrafficTargetType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudRunV2TrafficTargetType fromValue(String value) {

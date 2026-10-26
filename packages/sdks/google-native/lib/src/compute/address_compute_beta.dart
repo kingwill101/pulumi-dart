@@ -56,7 +56,7 @@ class AddressComputeBeta extends pulumi.CustomResource {
           'google-native:compute/beta:Address',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     address = registerOutput<String>('address');
     addressType = registerOutput<String>('addressType');
@@ -66,7 +66,7 @@ class AddressComputeBeta extends pulumi.CustomResource {
     ipv6EndpointType = registerOutput<String>('ipv6EndpointType');
     kind = registerOutput<String>('kind');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     networkTier = registerOutput<String>('networkTier');
@@ -78,6 +78,38 @@ class AddressComputeBeta extends pulumi.CustomResource {
     selfLink = registerOutput<String>('selfLink');
     status = registerOutput<String>('status');
     subnetwork = registerOutput<String>('subnetwork');
-    users = registerOutput<List<String>>('users');
+    users = registerOutput<List<String>>('users', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AddressComputeBeta] resource.
+  AddressComputeBeta.reference(String urn)
+    : super(
+        'google-native:compute/beta:Address',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    address = registerOutput<String>('address');
+    addressType = registerOutput<String>('addressType');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    ipVersion = registerOutput<String>('ipVersion');
+    ipv6EndpointType = registerOutput<String>('ipv6EndpointType');
+    kind = registerOutput<String>('kind');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    networkTier = registerOutput<String>('networkTier');
+    prefixLength = registerOutput<int>('prefixLength');
+    project = registerOutput<String>('project');
+    purpose = registerOutput<String>('purpose');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    status = registerOutput<String>('status');
+    subnetwork = registerOutput<String>('subnetwork');
+    users = registerOutput<List<String>>('users', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

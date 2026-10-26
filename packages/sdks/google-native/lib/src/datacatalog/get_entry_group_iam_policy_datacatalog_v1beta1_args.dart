@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEntryGroupIamPolicyDatacatalogV1beta1Args {
   final pulumi.Input<String> entryGroupId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetEntryGroupIamPolicyDatacatalogV1beta1Args].
   /// [entryGroupId] Required.

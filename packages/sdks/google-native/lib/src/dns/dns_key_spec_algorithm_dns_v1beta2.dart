@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// String mnemonic specifying the DNSSEC algorithm of this key.
-enum DnsKeySpecAlgorithmDnsV1beta2 {
+enum DnsKeySpecAlgorithmDnsV1beta2 implements pulumi.PulumiEnum<String> {
   rsasha1("rsasha1"),
   rsasha256("rsasha256"),
   rsasha512("rsasha512"),
@@ -7,6 +9,7 @@ enum DnsKeySpecAlgorithmDnsV1beta2 {
   ecdsap384sha384("ecdsap384sha384");
 
   const DnsKeySpecAlgorithmDnsV1beta2(this.wireValue);
+  @override
   final String wireValue;
 
   static DnsKeySpecAlgorithmDnsV1beta2 fromValue(String value) {

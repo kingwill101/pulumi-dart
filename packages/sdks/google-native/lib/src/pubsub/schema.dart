@@ -29,8 +29,26 @@ class Schema extends pulumi.CustomResource {
           'google-native:pubsub/v1:Schema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    definition = registerOutput<String>('definition');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    revisionId = registerOutput<String>('revisionId');
+    schemaId = registerOutput<String?>('schemaId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Schema] resource.
+  Schema.reference(String urn)
+    : super(
+        'google-native:pubsub/v1:Schema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     definition = registerOutput<String>('definition');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

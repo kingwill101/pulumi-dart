@@ -30,6 +30,17 @@ Future<GetAutomationResult> getAutomation(
   return GetAutomationResult.fromMap(result);
 }
 
+pulumi.Output<GetAutomationResult> getAutomationOutput(
+  GetAutomationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:clouddeploy/v1:getAutomation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutomationResult.fromMap);
+}
+
 /// Gets details of a single DeliveryPipeline.
 /// [args] Arguments passed to this invoke. {@macro pulumi_clouddeploy_v1_get_delivery_pipeline_args_doc}
 /// [options] Invoke options controlling this call.
@@ -44,6 +55,17 @@ Future<GetDeliveryPipelineResult> getDeliveryPipeline(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeliveryPipelineResult.fromMap(result);
+}
+
+pulumi.Output<GetDeliveryPipelineResult> getDeliveryPipelineOutput(
+  GetDeliveryPipelineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:clouddeploy/v1:getDeliveryPipeline',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeliveryPipelineResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -62,6 +84,17 @@ Future<GetDeliveryPipelineIamPolicyResult> getDeliveryPipelineIamPolicy(
   return GetDeliveryPipelineIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetDeliveryPipelineIamPolicyResult> getDeliveryPipelineIamPolicyOutput(
+  GetDeliveryPipelineIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:clouddeploy/v1:getDeliveryPipelineIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeliveryPipelineIamPolicyResult.fromMap);
+}
+
 /// Gets details of a single Release.
 /// [args] Arguments passed to this invoke. {@macro pulumi_clouddeploy_v1_get_release_args_doc}
 /// [options] Invoke options controlling this call.
@@ -76,6 +109,17 @@ Future<GetReleaseResult> getRelease(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReleaseResult.fromMap(result);
+}
+
+pulumi.Output<GetReleaseResult> getReleaseOutput(
+  GetReleaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:clouddeploy/v1:getRelease',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReleaseResult.fromMap);
 }
 
 /// Gets details of a single Rollout.
@@ -94,6 +138,17 @@ Future<GetRolloutResult> getRollout(
   return GetRolloutResult.fromMap(result);
 }
 
+pulumi.Output<GetRolloutResult> getRolloutOutput(
+  GetRolloutArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:clouddeploy/v1:getRollout',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRolloutResult.fromMap);
+}
+
 /// Gets details of a single Target.
 /// [args] Arguments passed to this invoke. {@macro pulumi_clouddeploy_v1_get_target_args_doc}
 /// [options] Invoke options controlling this call.
@@ -110,6 +165,17 @@ Future<GetTargetResult> getTarget(
   return GetTargetResult.fromMap(result);
 }
 
+pulumi.Output<GetTargetResult> getTargetOutput(
+  GetTargetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:clouddeploy/v1:getTarget',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_clouddeploy_v1_get_target_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -124,4 +190,15 @@ Future<GetTargetIamPolicyResult> getTargetIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetTargetIamPolicyResult> getTargetIamPolicyOutput(
+  GetTargetIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:clouddeploy/v1:getTargetIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetIamPolicyResult.fromMap);
 }

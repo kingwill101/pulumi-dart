@@ -9,11 +9,11 @@ class CanaryDeployment {
   /// The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 &lt;= n &lt; 100.
   final pulumi.Input<List<int>> percentages;
   /// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, there will be no postdeploy job for this phase.
-  final pulumi.Input<Postdeploy>? postdeploy;
+  final pulumi.Input<Postdeploy?>? postdeploy;
   /// Optional. Configuration for the predeploy job of the first phase. If this is not configured, there will be no predeploy job for this phase.
-  final pulumi.Input<Predeploy>? predeploy;
+  final pulumi.Input<Predeploy?>? predeploy;
   /// Whether to run verify tests after each percentage deployment.
-  final pulumi.Input<bool>? verify;
+  final pulumi.Input<bool?>? verify;
 
   /// Creates a new [CanaryDeployment].
   /// [percentages] The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 &lt;= n &lt; 100.

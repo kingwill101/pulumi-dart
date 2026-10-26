@@ -59,8 +59,40 @@ class Entity extends pulumi.CustomResource {
           'google-native:dataplex/v1:Entity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['lakeId', 'location', 'project', 'zone']).merge(options),
         ) {
+    access = registerOutput<GoogleCloudDataplexV1StorageAccessResponse>('access', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1StorageAccessResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    asset = registerOutput<String>('asset');
+    catalogEntry = registerOutput<String>('catalogEntry');
+    compatibility = registerOutput<GoogleCloudDataplexV1EntityCompatibilityStatusResponse>('compatibility', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1EntityCompatibilityStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    dataPath = registerOutput<String>('dataPath');
+    dataPathPattern = registerOutput<String>('dataPathPattern');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    format = registerOutput<GoogleCloudDataplexV1StorageFormatResponse>('format', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1StorageFormatResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lakeId = registerOutput<String>('lakeId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    schema = registerOutput<GoogleCloudDataplexV1SchemaResponse>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1SchemaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    system = registerOutput<String>('system');
+    type = registerOutput<String>('type');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [Entity] resource.
+  Entity.reference(String urn)
+    : super(
+        'google-native:dataplex/v1:Entity',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     access = registerOutput<GoogleCloudDataplexV1StorageAccessResponse>('access', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1StorageAccessResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     asset = registerOutput<String>('asset');
     catalogEntry = registerOutput<String>('catalogEntry');

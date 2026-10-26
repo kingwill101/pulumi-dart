@@ -10,31 +10,31 @@ import 'private_connectivity_response.dart';
 /// Result data returned by getConnectionProfile.
 class GetConnectionProfileResult {
   /// BigQuery Connection Profile configuration.
-  final Map<String, dynamic> bigqueryProfile;
+  final Map<String, dynamic>? bigqueryProfile;
   /// The create time of the resource.
-  final String createTime;
+  final String? createTime;
   /// Display name.
-  final String displayName;
+  final String? displayName;
   /// Forward SSH tunnel connectivity.
-  final ForwardSshTunnelConnectivityResponse forwardSshConnectivity;
+  final ForwardSshTunnelConnectivityResponse? forwardSshConnectivity;
   /// Cloud Storage ConnectionProfile configuration.
-  final GcsProfileResponse gcsProfile;
+  final GcsProfileResponse? gcsProfile;
   /// Labels.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// MySQL ConnectionProfile configuration.
-  final MysqlProfileResponse mysqlProfile;
+  final MysqlProfileResponse? mysqlProfile;
   /// The resource's name.
-  final String name;
+  final String? name;
   /// Oracle ConnectionProfile configuration.
-  final OracleProfileResponse oracleProfile;
+  final OracleProfileResponse? oracleProfile;
   /// PostgreSQL Connection Profile configuration.
-  final PostgresqlProfileResponse postgresqlProfile;
+  final PostgresqlProfileResponse? postgresqlProfile;
   /// Private connectivity.
-  final PrivateConnectivityResponse privateConnectivity;
+  final PrivateConnectivityResponse? privateConnectivity;
   /// Static Service IP connectivity.
-  final Map<String, dynamic> staticServiceIpConnectivity;
+  final Map<String, dynamic>? staticServiceIpConnectivity;
   /// The update time of the resource.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetConnectionProfileResult].
   /// [bigqueryProfile] BigQuery Connection Profile configuration.
@@ -51,54 +51,54 @@ class GetConnectionProfileResult {
   /// [staticServiceIpConnectivity] Static Service IP connectivity.
   /// [updateTime] The update time of the resource.
   const GetConnectionProfileResult({
-    required this.bigqueryProfile,
-    required this.createTime,
-    required this.displayName,
-    required this.forwardSshConnectivity,
-    required this.gcsProfile,
-    required this.labels,
-    required this.mysqlProfile,
-    required this.name,
-    required this.oracleProfile,
-    required this.postgresqlProfile,
-    required this.privateConnectivity,
-    required this.staticServiceIpConnectivity,
-    required this.updateTime,
+    this.bigqueryProfile,
+    this.createTime,
+    this.displayName,
+    this.forwardSshConnectivity,
+    this.gcsProfile,
+    this.labels,
+    this.mysqlProfile,
+    this.name,
+    this.oracleProfile,
+    this.postgresqlProfile,
+    this.privateConnectivity,
+    this.staticServiceIpConnectivity,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigqueryProfile': bigqueryProfile,
-      'createTime': createTime,
-      'displayName': displayName,
-      'forwardSshConnectivity': forwardSshConnectivity.toMap(),
-      'gcsProfile': gcsProfile.toMap(),
-      'labels': labels,
-      'mysqlProfile': mysqlProfile.toMap(),
-      'name': name,
-      'oracleProfile': oracleProfile.toMap(),
-      'postgresqlProfile': postgresqlProfile.toMap(),
-      'privateConnectivity': privateConnectivity.toMap(),
-      'staticServiceIpConnectivity': staticServiceIpConnectivity,
-      'updateTime': updateTime,
+      'bigqueryProfile': ?bigqueryProfile,
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'forwardSshConnectivity': ?forwardSshConnectivity?.toMap(),
+      'gcsProfile': ?gcsProfile?.toMap(),
+      'labels': ?labels,
+      'mysqlProfile': ?mysqlProfile?.toMap(),
+      'name': ?name,
+      'oracleProfile': ?oracleProfile?.toMap(),
+      'postgresqlProfile': ?postgresqlProfile?.toMap(),
+      'privateConnectivity': ?privateConnectivity?.toMap(),
+      'staticServiceIpConnectivity': ?staticServiceIpConnectivity,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetConnectionProfileResult.fromMap(Map<String, dynamic> map) {
     return GetConnectionProfileResult(
-      bigqueryProfile: (map['bigqueryProfile']! as Map).cast<String, dynamic>(),
-      createTime: map['createTime'] as String,
-      displayName: map['displayName'] as String,
-      forwardSshConnectivity: ForwardSshTunnelConnectivityResponse.fromMap((map['forwardSshConnectivity']! as Map).cast<String, dynamic>()),
-      gcsProfile: GcsProfileResponse.fromMap((map['gcsProfile']! as Map).cast<String, dynamic>()),
-      labels: (map['labels'] as Map).cast<String, String>(),
-      mysqlProfile: MysqlProfileResponse.fromMap((map['mysqlProfile']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      oracleProfile: OracleProfileResponse.fromMap((map['oracleProfile']! as Map).cast<String, dynamic>()),
-      postgresqlProfile: PostgresqlProfileResponse.fromMap((map['postgresqlProfile']! as Map).cast<String, dynamic>()),
-      privateConnectivity: PrivateConnectivityResponse.fromMap((map['privateConnectivity']! as Map).cast<String, dynamic>()),
-      staticServiceIpConnectivity: (map['staticServiceIpConnectivity']! as Map).cast<String, dynamic>(),
-      updateTime: map['updateTime'] as String,
+      bigqueryProfile: (() { final guardedValue = map['bigqueryProfile']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      forwardSshConnectivity: (() { final guardedValue = map['forwardSshConnectivity']; if (guardedValue == null) return null; return ForwardSshTunnelConnectivityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      gcsProfile: (() { final guardedValue = map['gcsProfile']; if (guardedValue == null) return null; return GcsProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      mysqlProfile: (() { final guardedValue = map['mysqlProfile']; if (guardedValue == null) return null; return MysqlProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      oracleProfile: (() { final guardedValue = map['oracleProfile']; if (guardedValue == null) return null; return OracleProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      postgresqlProfile: (() { final guardedValue = map['postgresqlProfile']; if (guardedValue == null) return null; return PostgresqlProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      privateConnectivity: (() { final guardedValue = map['privateConnectivity']; if (guardedValue == null) return null; return PrivateConnectivityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      staticServiceIpConnectivity: (() { final guardedValue = map['staticServiceIpConnectivity']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

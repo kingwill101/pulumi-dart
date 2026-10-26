@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The note representing an SBOM reference.
 class SBOMReferenceNoteContaineranalysisV1alpha1 {
   /// The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [SBOMReferenceNoteContaineranalysisV1alpha1].
   /// [format] The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...

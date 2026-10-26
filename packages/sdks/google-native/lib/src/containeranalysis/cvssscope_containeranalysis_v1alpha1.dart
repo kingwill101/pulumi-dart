@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defined in CVSS v3
-enum CVSSScopeContaineranalysisV1alpha1 {
+enum CVSSScopeContaineranalysisV1alpha1 implements pulumi.PulumiEnum<String> {
   scopeUnspecified("SCOPE_UNSPECIFIED"),
   scopeUnchanged("SCOPE_UNCHANGED"),
   scopeChanged("SCOPE_CHANGED");
 
   const CVSSScopeContaineranalysisV1alpha1(this.wireValue);
+  @override
   final String wireValue;
 
   static CVSSScopeContaineranalysisV1alpha1 fromValue(String value) {

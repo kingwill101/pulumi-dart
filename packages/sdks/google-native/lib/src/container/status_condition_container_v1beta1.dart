@@ -7,11 +7,11 @@ import 'status_condition_code_container_v1beta1.dart';
 /// StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
 class StatusConditionContainerV1beta1 {
   /// Canonical code of the condition.
-  final pulumi.Input<StatusConditionCanonicalCodeContainerV1beta1>? canonicalCode;
+  final pulumi.Input<StatusConditionCanonicalCodeContainerV1beta1?>? canonicalCode;
   /// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
-  final pulumi.Input<StatusConditionCodeContainerV1beta1>? code;
+  final pulumi.Input<StatusConditionCodeContainerV1beta1?>? code;
   /// Human-friendly representation of the condition
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [StatusConditionContainerV1beta1].
   /// [canonicalCode] Canonical code of the condition.

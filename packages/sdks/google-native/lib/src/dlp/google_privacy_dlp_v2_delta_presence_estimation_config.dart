@@ -7,11 +7,11 @@ import 'google_privacy_dlp_v2_statistical_table.dart';
 /// δ-presence metric, used to estimate how likely it is for an attacker to figure out that one given individual appears in a de-identified dataset. Similarly to the k-map metric, we cannot compute δ-presence exactly without knowing the attack dataset, so we use a statistical model instead.
 class GooglePrivacyDlpV2DeltaPresenceEstimationConfig {
   /// Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers field must appear in exactly one field of one auxiliary table.
-  final pulumi.Input<List<GooglePrivacyDlpV2StatisticalTable>>? auxiliaryTables;
+  final pulumi.Input<List<GooglePrivacyDlpV2StatisticalTable>?>? auxiliaryTables;
   /// Fields considered to be quasi-identifiers. No two fields can have the same tag.
   final pulumi.Input<List<GooglePrivacyDlpV2QuasiId>> quasiIds;
   /// ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
-  final pulumi.Input<String>? regionCode;
+  final pulumi.Input<String?>? regionCode;
 
   /// Creates a new [GooglePrivacyDlpV2DeltaPresenceEstimationConfig].
   /// [auxiliaryTables] Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers field must appear in exactly one field of one auxiliary table.

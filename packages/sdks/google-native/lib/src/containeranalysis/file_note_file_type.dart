@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// This field provides information about the type of file identified
-enum FileNoteFileType {
+enum FileNoteFileType implements pulumi.PulumiEnum<String> {
   fileTypeUnspecified("FILE_TYPE_UNSPECIFIED"),
   source("SOURCE"),
   binary("BINARY"),
@@ -14,6 +16,7 @@ enum FileNoteFileType {
   other("OTHER");
 
   const FileNoteFileType(this.wireValue);
+  @override
   final String wireValue;
 
   static FileNoteFileType fromValue(String value) {

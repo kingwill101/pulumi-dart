@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
-enum ForwardingRuleIpProtocolComputeV1 {
+enum ForwardingRuleIpProtocolComputeV1 implements pulumi.PulumiEnum<String> {
   ah("AH"),
   esp("ESP"),
   icmp("ICMP"),
@@ -9,6 +11,7 @@ enum ForwardingRuleIpProtocolComputeV1 {
   udp("UDP");
 
   const ForwardingRuleIpProtocolComputeV1(this.wireValue);
+  @override
   final String wireValue;
 
   static ForwardingRuleIpProtocolComputeV1 fromValue(String value) {

@@ -42,13 +42,38 @@ class Federation extends pulumi.CustomResource {
           'google-native:metastore/v1:Federation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['federationId', 'location', 'project']).merge(options),
         ) {
-    backendMetastores = registerOutput<Map<String, String>>('backendMetastores');
+    backendMetastores = registerOutput<Map<String, String>>('backendMetastores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createTime = registerOutput<String>('createTime');
     endpointUri = registerOutput<String>('endpointUri');
     federationId = registerOutput<String>('federationId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    stateMessage = registerOutput<String>('stateMessage');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [Federation] resource.
+  Federation.reference(String urn)
+    : super(
+        'google-native:metastore/v1:Federation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backendMetastores = registerOutput<Map<String, String>>('backendMetastores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    createTime = registerOutput<String>('createTime');
+    endpointUri = registerOutput<String>('endpointUri');
+    federationId = registerOutput<String>('federationId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

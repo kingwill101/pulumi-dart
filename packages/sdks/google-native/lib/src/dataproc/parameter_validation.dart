@@ -7,9 +7,9 @@ import 'value_validation.dart';
 /// Configuration for parameter validation.
 class ParameterValidation {
   /// Validation based on regular expressions.
-  final pulumi.Input<RegexValidation>? regex;
+  final pulumi.Input<RegexValidation?>? regex;
   /// Validation based on a list of allowed values.
-  final pulumi.Input<ValueValidation>? values;
+  final pulumi.Input<ValueValidation?>? values;
 
   /// Creates a new [ParameterValidation].
   /// [regex] Validation based on regular expressions.

@@ -9,15 +9,15 @@ import 'text_config.dart';
 /// Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
 class DeidentifyConfig {
   /// Configures de-id of application/DICOM content.
-  final pulumi.Input<DicomConfig>? dicom;
+  final pulumi.Input<DicomConfig?>? dicom;
   /// Configures de-id of application/FHIR content.
-  final pulumi.Input<FhirConfig>? fhir;
+  final pulumi.Input<FhirConfig?>? fhir;
   /// Configures de-identification of image pixels wherever they are found in the source_dataset.
-  final pulumi.Input<ImageConfig>? image;
+  final pulumi.Input<ImageConfig?>? image;
   /// Configures de-identification of text wherever it is found in the source_dataset.
-  final pulumi.Input<TextConfig>? text;
+  final pulumi.Input<TextConfig?>? text;
   /// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
-  final pulumi.Input<bool>? useRegionalDataProcessing;
+  final pulumi.Input<bool?>? useRegionalDataProcessing;
 
   /// Creates a new [DeidentifyConfig].
   /// [dicom] Configures de-id of application/DICOM content.

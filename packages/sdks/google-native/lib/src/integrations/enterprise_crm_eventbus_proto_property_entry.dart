@@ -6,9 +6,9 @@ import 'enterprise_crm_eventbus_proto_value_type.dart';
 /// Key-value pair of EventBus property.
 class EnterpriseCrmEventbusProtoPropertyEntry {
   /// Key is used to retrieve the corresponding property value. This should be unique for a given fired event. The Tasks should be aware of the keys used while firing the events for them to be able to retrieve the values.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Values for the defined keys. Each value can either be string, int, double or any proto message.
-  final pulumi.Input<EnterpriseCrmEventbusProtoValueType>? value;
+  final pulumi.Input<EnterpriseCrmEventbusProtoValueType?>? value;
 
   /// Creates a new [EnterpriseCrmEventbusProtoPropertyEntry].
   /// [key] Key is used to retrieve the corresponding property value. This should be unique for a given fired event. The Tasks should be aware of the keys used while firing the events for them to be able to retrieve the values.

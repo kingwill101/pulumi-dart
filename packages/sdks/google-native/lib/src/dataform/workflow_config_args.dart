@@ -9,16 +9,16 @@ import 'invocation_config.dart';
 /// {@macro pulumi_dataform_v1beta1_workflow_config_args_doc}
 class WorkflowConfigArgs {
   /// Optional. Optional schedule (in cron format) for automatic execution of this workflow config.
-  final pulumi.Input<String>? cronSchedule;
+  final pulumi.Input<String?>? cronSchedule;
   /// Optional. If left unset, a default InvocationConfig will be used.
-  final pulumi.Input<InvocationConfig>? invocationConfig;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<InvocationConfig?>? invocationConfig;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// The name of the release config whose release_compilation_result should be executed. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
   final pulumi.Input<String> releaseConfig;
   final pulumi.Input<String> repositoryId;
   /// Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// Required. The ID to use for the workflow config, which will become the final component of the workflow config's resource name.
   final pulumi.Input<String> workflowConfigId;
 

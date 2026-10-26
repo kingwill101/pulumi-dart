@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'grpc_route_args.dart';
+import 'grpc_route_route_rule_response.dart';
 
 /// Creates a new GrpcRoute in a given project and location.
 class GrpcRoute extends pulumi.CustomResource {
@@ -22,7 +23,7 @@ class GrpcRoute extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   /// A list of detailed rules defining how to route traffic. Within a single GrpcRoute, the GrpcRoute.RouteAction associated with the first matching GrpcRoute.RouteRule will be executed. At least one rule must be supplied.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<GrpcRouteRouteRuleResponse>> rules;
   /// Server-defined URL of this resource
   late final pulumi.Output<String> selfLink;
   /// The timestamp when the resource was updated.
@@ -40,19 +41,43 @@ class GrpcRoute extends pulumi.CustomResource {
           'google-native:networkservices/v1:GrpcRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['grpcRouteId', 'location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
-    gateways = registerOutput<List<String>>('gateways');
+    gateways = registerOutput<List<String>>('gateways', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     grpcRouteId = registerOutput<String>('grpcRouteId');
-    hostnames = registerOutput<List<String>>('hostnames');
-    labels = registerOutput<Map<String, String>>('labels');
+    hostnames = registerOutput<List<String>>('hostnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
-    meshes = registerOutput<List<String>>('meshes');
+    meshes = registerOutput<List<String>>('meshes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<GrpcRouteRouteRuleResponse>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GrpcRouteRouteRuleResponse>(guardedValue, (value) => GrpcRouteRouteRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    selfLink = registerOutput<String>('selfLink');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [GrpcRoute] resource.
+  GrpcRoute.reference(String urn)
+    : super(
+        'google-native:networkservices/v1:GrpcRoute',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    gateways = registerOutput<List<String>>('gateways', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    grpcRouteId = registerOutput<String>('grpcRouteId');
+    hostnames = registerOutput<List<String>>('hostnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    meshes = registerOutput<List<String>>('meshes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    rules = registerOutput<List<GrpcRouteRouteRuleResponse>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GrpcRouteRouteRuleResponse>(guardedValue, (value) => GrpcRouteRouteRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     updateTime = registerOutput<String>('updateTime');
   }

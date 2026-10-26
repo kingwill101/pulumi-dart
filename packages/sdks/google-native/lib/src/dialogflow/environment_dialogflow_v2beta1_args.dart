@@ -10,17 +10,17 @@ import 'google_cloud_dialogflow_v2beta1_text_to_speech_settings.dart';
 /// {@macro pulumi_dialogflow_v2beta1_environment_dialogflow_v2beta1_args_doc}
 class EnvironmentDialogflowV2beta1Args {
   /// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
-  final pulumi.Input<String>? agentVersion;
+  final pulumi.Input<String?>? agentVersion;
   /// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Required. The unique id of the new environment.
   final pulumi.Input<String> environmentId;
   /// Optional. The fulfillment settings to use for this environment.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1Fulfillment>? fulfillment;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1Fulfillment?>? fulfillment;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Optional. Text to speech settings for this environment.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1TextToSpeechSettings>? textToSpeechSettings;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1TextToSpeechSettings?>? textToSpeechSettings;
 
   /// Creates a new [EnvironmentDialogflowV2beta1Args].
   /// [agentVersion] Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`

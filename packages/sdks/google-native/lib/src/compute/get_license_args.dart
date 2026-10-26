@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_alpha_get_license_args_doc}
 class GetLicenseArgs {
   final pulumi.Input<String> license;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetLicenseArgs].
   /// [license] Required.

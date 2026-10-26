@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Log configuration for the connection.
 class ConnectorsLogConfig {
   /// Enabled represents whether logging is enabled or not for a connection.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ConnectorsLogConfig].
   /// [enabled] Enabled represents whether logging is enabled or not for a connection.

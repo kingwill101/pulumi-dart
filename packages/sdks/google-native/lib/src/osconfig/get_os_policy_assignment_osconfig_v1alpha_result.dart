@@ -8,31 +8,31 @@ import 'ospolicy_response_osconfig_v1alpha.dart';
 /// Result data returned by getOsPolicyAssignment.
 class GetOsPolicyAssignmentOsconfigV1alphaResult {
   /// Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
-  final bool baseline;
+  final bool? baseline;
   /// Indicates that this revision deletes the OS policy assignment.
-  final bool deleted;
+  final bool? deleted;
   /// OS policy assignment description. Length of the description is limited to 1024 characters.
-  final String description;
+  final String? description;
   /// The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
-  final String etag;
+  final String? etag;
   /// Filter to select VMs.
-  final OSPolicyAssignmentInstanceFilterResponseOsconfigV1alpha instanceFilter;
+  final OSPolicyAssignmentInstanceFilterResponseOsconfigV1alpha? instanceFilter;
   /// Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
-  final String name;
+  final String? name;
   /// List of OS policies to be applied to the VMs.
-  final List<OSPolicyResponseOsconfigV1alpha> osPolicies;
+  final List<OSPolicyResponseOsconfigV1alpha>? osPolicies;
   /// Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
-  final bool reconciling;
+  final bool? reconciling;
   /// The timestamp that the revision was created.
-  final String revisionCreateTime;
+  final String? revisionCreateTime;
   /// The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
-  final String revisionId;
+  final String? revisionId;
   /// Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
-  final OSPolicyAssignmentRolloutResponseOsconfigV1alpha rollout;
+  final OSPolicyAssignmentRolloutResponseOsconfigV1alpha? rollout;
   /// OS policy assignment rollout state
-  final String rolloutState;
+  final String? rolloutState;
   /// Server generated unique id for the OS policy assignment resource.
-  final String uid;
+  final String? uid;
 
   /// Creates a new [GetOsPolicyAssignmentOsconfigV1alphaResult].
   /// [baseline] Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
@@ -49,54 +49,54 @@ class GetOsPolicyAssignmentOsconfigV1alphaResult {
   /// [rolloutState] OS policy assignment rollout state
   /// [uid] Server generated unique id for the OS policy assignment resource.
   const GetOsPolicyAssignmentOsconfigV1alphaResult({
-    required this.baseline,
-    required this.deleted,
-    required this.description,
-    required this.etag,
-    required this.instanceFilter,
-    required this.name,
-    required this.osPolicies,
-    required this.reconciling,
-    required this.revisionCreateTime,
-    required this.revisionId,
-    required this.rollout,
-    required this.rolloutState,
-    required this.uid,
+    this.baseline,
+    this.deleted,
+    this.description,
+    this.etag,
+    this.instanceFilter,
+    this.name,
+    this.osPolicies,
+    this.reconciling,
+    this.revisionCreateTime,
+    this.revisionId,
+    this.rollout,
+    this.rolloutState,
+    this.uid,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'baseline': baseline,
-      'deleted': deleted,
-      'description': description,
-      'etag': etag,
-      'instanceFilter': instanceFilter.toMap(),
-      'name': name,
-      'osPolicies': pulumi.Input.encodeList<OSPolicyResponseOsconfigV1alpha, Map<String, dynamic>>(osPolicies, (value) => value.toMap()),
-      'reconciling': reconciling,
-      'revisionCreateTime': revisionCreateTime,
-      'revisionId': revisionId,
-      'rollout': rollout.toMap(),
-      'rolloutState': rolloutState,
-      'uid': uid,
+      'baseline': ?baseline,
+      'deleted': ?deleted,
+      'description': ?description,
+      'etag': ?etag,
+      'instanceFilter': ?instanceFilter?.toMap(),
+      'name': ?name,
+      'osPolicies': ?(() { final guardedValue = osPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<OSPolicyResponseOsconfigV1alpha, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'reconciling': ?reconciling,
+      'revisionCreateTime': ?revisionCreateTime,
+      'revisionId': ?revisionId,
+      'rollout': ?rollout?.toMap(),
+      'rolloutState': ?rolloutState,
+      'uid': ?uid,
     };
   }
 
   factory GetOsPolicyAssignmentOsconfigV1alphaResult.fromMap(Map<String, dynamic> map) {
     return GetOsPolicyAssignmentOsconfigV1alphaResult(
-      baseline: map['baseline'] as bool,
-      deleted: map['deleted'] as bool,
-      description: map['description'] as String,
-      etag: map['etag'] as String,
-      instanceFilter: OSPolicyAssignmentInstanceFilterResponseOsconfigV1alpha.fromMap((map['instanceFilter']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      osPolicies: pulumi.Input.decodeList<OSPolicyResponseOsconfigV1alpha>(map['osPolicies']!, (value) => OSPolicyResponseOsconfigV1alpha.fromMap((value as Map).cast<String, dynamic>())),
-      reconciling: map['reconciling'] as bool,
-      revisionCreateTime: map['revisionCreateTime'] as String,
-      revisionId: map['revisionId'] as String,
-      rollout: OSPolicyAssignmentRolloutResponseOsconfigV1alpha.fromMap((map['rollout']! as Map).cast<String, dynamic>()),
-      rolloutState: map['rolloutState'] as String,
-      uid: map['uid'] as String,
+      baseline: (() { final guardedValue = map['baseline']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      deleted: (() { final guardedValue = map['deleted']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceFilter: (() { final guardedValue = map['instanceFilter']; if (guardedValue == null) return null; return OSPolicyAssignmentInstanceFilterResponseOsconfigV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      osPolicies: (() { final guardedValue = map['osPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<OSPolicyResponseOsconfigV1alpha>(guardedValue, (value) => OSPolicyResponseOsconfigV1alpha.fromMap((value as Map).cast<String, dynamic>())); })(),
+      reconciling: (() { final guardedValue = map['reconciling']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      revisionCreateTime: (() { final guardedValue = map['revisionCreateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      revisionId: (() { final guardedValue = map['revisionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rollout: (() { final guardedValue = map['rollout']; if (guardedValue == null) return null; return OSPolicyAssignmentRolloutResponseOsconfigV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      rolloutState: (() { final guardedValue = map['rolloutState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

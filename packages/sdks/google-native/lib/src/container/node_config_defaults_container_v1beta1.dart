@@ -8,11 +8,11 @@ import 'node_pool_logging_config_container_v1beta1.dart';
 /// Subset of NodeConfig message that has defaults.
 class NodeConfigDefaultsContainerV1beta1 {
   /// GCFS (Google Container File System, also known as Riptide) options.
-  final pulumi.Input<GcfsConfigContainerV1beta1>? gcfsConfig;
+  final pulumi.Input<GcfsConfigContainerV1beta1?>? gcfsConfig;
   /// HostMaintenancePolicy contains the desired maintenance policy for the Google Compute Engine hosts.
-  final pulumi.Input<HostMaintenancePolicy>? hostMaintenancePolicy;
+  final pulumi.Input<HostMaintenancePolicy?>? hostMaintenancePolicy;
   /// Logging configuration for node pools.
-  final pulumi.Input<NodePoolLoggingConfigContainerV1beta1>? loggingConfig;
+  final pulumi.Input<NodePoolLoggingConfigContainerV1beta1?>? loggingConfig;
 
   /// Creates a new [NodeConfigDefaultsContainerV1beta1].
   /// [gcfsConfig] GCFS (Google Container File System, also known as Riptide) options.

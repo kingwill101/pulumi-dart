@@ -43,9 +43,9 @@ class CustomMetricResponse {
     return CustomMetricResponse(
       filter: pulumi.Input.fromValue(map['filter'] as String),
       metricName: pulumi.Input.fromValue(map['metricName'] as String),
-      singleInstanceAssignment: pulumi.Input.fromValue(map['singleInstanceAssignment'] as double),
+      singleInstanceAssignment: pulumi.Input.fromValue((map['singleInstanceAssignment'] as num).toDouble()),
       targetType: pulumi.Input.fromValue(map['targetType'] as String),
-      targetUtilization: pulumi.Input.fromValue(map['targetUtilization'] as double),
+      targetUtilization: pulumi.Input.fromValue((map['targetUtilization'] as num).toDouble()),
     );
   }
 }

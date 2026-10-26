@@ -6,7 +6,7 @@ import 'sign_in_behavior_redirect_condition.dart';
 /// Controls sign-in behavior.
 class SignInBehavior {
   /// When to redirect sign-ins to the IdP.
-  final pulumi.Input<SignInBehaviorRedirectCondition>? redirectCondition;
+  final pulumi.Input<SignInBehaviorRedirectCondition?>? redirectCondition;
 
   /// Creates a new [SignInBehavior].
   /// [redirectCondition] When to redirect sign-ins to the IdP.

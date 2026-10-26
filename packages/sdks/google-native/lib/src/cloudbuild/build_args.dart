@@ -14,35 +14,35 @@ import 'source.dart';
 /// {@macro pulumi_cloudbuild_v1_build_args_doc}
 class BuildArgs {
   /// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
-  final pulumi.Input<Artifacts>? artifacts;
+  final pulumi.Input<Artifacts?>? artifacts;
   /// Secrets and secret environment variables.
-  final pulumi.Input<Secrets>? availableSecrets;
+  final pulumi.Input<Secrets?>? availableSecrets;
   /// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
-  final pulumi.Input<List<String>>? images;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<List<String>?>? images;
+  final pulumi.Input<String?>? location;
   /// Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
-  final pulumi.Input<String>? logsBucket;
+  final pulumi.Input<String?>? logsBucket;
   /// Special options for this build.
-  final pulumi.Input<BuildOptions>? options;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<BuildOptions?>? options;
+  final pulumi.Input<String?>? project;
   /// Required. ID of the project.
   final pulumi.Input<String> projectId;
   /// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
-  final pulumi.Input<String>? queueTtl;
+  final pulumi.Input<String?>? queueTtl;
   /// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
-  final pulumi.Input<List<Secret>>? secrets;
+  final pulumi.Input<List<Secret>?>? secrets;
   /// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// The location of the source files to build.
-  final pulumi.Input<Source>? source;
+  final pulumi.Input<Source?>? source;
   /// The operations to be performed on the workspace.
   final pulumi.Input<List<BuildStep>> steps;
   /// Substitutions data for `Build` resource.
-  final pulumi.Input<Map<String, String>>? substitutions;
+  final pulumi.Input<Map<String, String>?>? substitutions;
   /// Tags for annotation of a `Build`. These are not docker tags.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [BuildArgs].
   /// [artifacts] Artifacts produced by the build that should be uploaded upon successful completion of all build steps.

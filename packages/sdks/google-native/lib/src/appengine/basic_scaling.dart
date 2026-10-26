@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
 class BasicScaling {
   /// Duration of time after the last request that an instance must wait before the instance is shut down.
-  final pulumi.Input<String>? idleTimeout;
+  final pulumi.Input<String?>? idleTimeout;
   /// Maximum number of instances to create for this version.
-  final pulumi.Input<int>? maxInstances;
+  final pulumi.Input<int?>? maxInstances;
 
   /// Creates a new [BasicScaling].
   /// [idleTimeout] Duration of time after the last request that an instance must wait before the instance is shut down.
@@ -27,7 +27,7 @@ class BasicScaling {
   factory BasicScaling.fromMap(Map<String, dynamic> map) {
     return BasicScaling(
       idleTimeout: (() { final guardedValue = map['idleTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxInstances: (() { final guardedValue = map['maxInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxInstances: (() { final guardedValue = map['maxInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAutoscalingPolicyArgs {
   final pulumi.Input<String> autoscalingPolicyId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAutoscalingPolicyArgs].
   /// [autoscalingPolicyId] Required.

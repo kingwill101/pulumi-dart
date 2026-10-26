@@ -4,23 +4,23 @@
 /// Result data returned by getFirewallEndpointAssociation.
 class GetFirewallEndpointAssociationResult {
   /// Create time stamp
-  final String createTime;
+  final String? createTime;
   /// The URL of the FirewallEndpoint that is being associated.
-  final String firewallEndpoint;
+  final String? firewallEndpoint;
   /// Optional. Labels as key value pairs
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// name of resource
-  final String name;
+  final String? name;
   /// The URL of the network that is being associated.
-  final String network;
+  final String? network;
   /// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
-  final bool reconciling;
+  final bool? reconciling;
   /// Current state of the association.
-  final String state;
+  final String? state;
   /// Optional. The URL of the TlsInspectionPolicy that is being associated.
-  final String tlsInspectionPolicy;
+  final String? tlsInspectionPolicy;
   /// Update time stamp
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetFirewallEndpointAssociationResult].
   /// [createTime] Create time stamp
@@ -33,42 +33,42 @@ class GetFirewallEndpointAssociationResult {
   /// [tlsInspectionPolicy] Optional. The URL of the TlsInspectionPolicy that is being associated.
   /// [updateTime] Update time stamp
   const GetFirewallEndpointAssociationResult({
-    required this.createTime,
-    required this.firewallEndpoint,
-    required this.labels,
-    required this.name,
-    required this.network,
-    required this.reconciling,
-    required this.state,
-    required this.tlsInspectionPolicy,
-    required this.updateTime,
+    this.createTime,
+    this.firewallEndpoint,
+    this.labels,
+    this.name,
+    this.network,
+    this.reconciling,
+    this.state,
+    this.tlsInspectionPolicy,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'firewallEndpoint': firewallEndpoint,
-      'labels': labels,
-      'name': name,
-      'network': network,
-      'reconciling': reconciling,
-      'state': state,
-      'tlsInspectionPolicy': tlsInspectionPolicy,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'firewallEndpoint': ?firewallEndpoint,
+      'labels': ?labels,
+      'name': ?name,
+      'network': ?network,
+      'reconciling': ?reconciling,
+      'state': ?state,
+      'tlsInspectionPolicy': ?tlsInspectionPolicy,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetFirewallEndpointAssociationResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallEndpointAssociationResult(
-      createTime: map['createTime'] as String,
-      firewallEndpoint: map['firewallEndpoint'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      network: map['network'] as String,
-      reconciling: map['reconciling'] as bool,
-      state: map['state'] as String,
-      tlsInspectionPolicy: map['tlsInspectionPolicy'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      firewallEndpoint: (() { final guardedValue = map['firewallEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      reconciling: (() { final guardedValue = map['reconciling']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tlsInspectionPolicy: (() { final guardedValue = map['tlsInspectionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

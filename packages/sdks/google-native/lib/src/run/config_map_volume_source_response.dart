@@ -37,7 +37,7 @@ class ConfigMapVolumeSourceResponse {
 
   factory ConfigMapVolumeSourceResponse.fromMap(Map<String, dynamic> map) {
     return ConfigMapVolumeSourceResponse(
-      defaultMode: pulumi.Input.fromValue(map['defaultMode'] as int),
+      defaultMode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['defaultMode'])),
       items: pulumi.Input.fromValue(pulumi.Input.decodeList<KeyToPathResponse>(map['items']!, (value) => KeyToPathResponse.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
       optional: pulumi.Input.fromValue(map['optional'] as bool),

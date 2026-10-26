@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Evaluates whether each column value is contained by a specified set.
 class GoogleCloudDataplexV1DataQualityRuleSetExpectation {
   /// Optional. Expected values for the column value.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [GoogleCloudDataplexV1DataQualityRuleSetExpectation].
   /// [values] Optional. Expected values for the column value.

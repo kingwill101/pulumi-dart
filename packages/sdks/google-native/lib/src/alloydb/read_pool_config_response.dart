@@ -21,7 +21,7 @@ class ReadPoolConfigResponse {
 
   factory ReadPoolConfigResponse.fromMap(Map<String, dynamic> map) {
     return ReadPoolConfigResponse(
-      nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
+      nodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nodeCount'])),
     );
   }
 }

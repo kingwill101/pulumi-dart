@@ -6,7 +6,7 @@ import 'google_privacy_dlp_v2_expressions.dart';
 /// A condition for determining whether a transformation should be applied to a field.
 class GooglePrivacyDlpV2RecordCondition {
   /// An expression.
-  final pulumi.Input<GooglePrivacyDlpV2Expressions>? expressions;
+  final pulumi.Input<GooglePrivacyDlpV2Expressions?>? expressions;
 
   /// Creates a new [GooglePrivacyDlpV2RecordCondition].
   /// [expressions] An expression.

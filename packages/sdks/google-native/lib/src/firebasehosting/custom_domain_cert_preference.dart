@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A field that lets you specify which SSL certificate type Hosting creates for your domain name. Spark plan custom domains only have access to the `GROUPED` cert type, while Blaze plan domains can select any option.
-enum CustomDomainCertPreference {
+enum CustomDomainCertPreference implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   temporary("TEMPORARY"),
   grouped("GROUPED"),
@@ -7,6 +9,7 @@ enum CustomDomainCertPreference {
   dedicated("DEDICATED");
 
   const CustomDomainCertPreference(this.wireValue);
+  @override
   final String wireValue;
 
   static CustomDomainCertPreference fromValue(String value) {

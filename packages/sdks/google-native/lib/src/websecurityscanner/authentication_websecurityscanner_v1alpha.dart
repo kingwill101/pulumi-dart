@@ -7,9 +7,9 @@ import 'google_account_websecurityscanner_v1alpha.dart';
 /// Scan authentication configuration.
 class AuthenticationWebsecurityscannerV1alpha {
   /// Authentication using a custom account.
-  final pulumi.Input<CustomAccountWebsecurityscannerV1alpha>? customAccount;
+  final pulumi.Input<CustomAccountWebsecurityscannerV1alpha?>? customAccount;
   /// Authentication using a Google account.
-  final pulumi.Input<GoogleAccountWebsecurityscannerV1alpha>? googleAccount;
+  final pulumi.Input<GoogleAccountWebsecurityscannerV1alpha?>? googleAccount;
 
   /// Creates a new [AuthenticationWebsecurityscannerV1alpha].
   /// [customAccount] Authentication using a custom account.

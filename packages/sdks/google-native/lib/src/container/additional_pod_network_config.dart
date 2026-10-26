@@ -6,11 +6,11 @@ import 'max_pods_constraint.dart';
 /// AdditionalPodNetworkConfig is the configuration for additional pod networks within the NodeNetworkConfig message
 class AdditionalPodNetworkConfig {
   /// The maximum number of pods per node which use this pod network
-  final pulumi.Input<MaxPodsConstraint>? maxPodsPerNode;
+  final pulumi.Input<MaxPodsConstraint?>? maxPodsPerNode;
   /// The name of the secondary range on the subnet which provides IP address for this pod range
-  final pulumi.Input<String>? secondaryPodRange;
+  final pulumi.Input<String?>? secondaryPodRange;
   /// Name of the subnetwork where the additional pod network belongs
-  final pulumi.Input<String>? subnetwork;
+  final pulumi.Input<String?>? subnetwork;
 
   /// Creates a new [AdditionalPodNetworkConfig].
   /// [maxPodsPerNode] The maximum number of pods per node which use this pod network

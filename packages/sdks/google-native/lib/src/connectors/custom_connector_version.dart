@@ -41,7 +41,7 @@ class CustomConnectorVersion extends pulumi.CustomResource {
           'google-native:connectors/v1:CustomConnectorVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['customConnectorId', 'customConnectorVersionId', 'project']).merge(options),
         ) {
     authConfig = registerOutput<AuthConfigResponse>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
@@ -49,7 +49,30 @@ class CustomConnectorVersion extends pulumi.CustomResource {
     customConnectorVersionId = registerOutput<String>('customConnectorVersionId');
     destinationConfig = registerOutput<DestinationConfigResponse>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DestinationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enableBackendDestinationConfig = registerOutput<bool>('enableBackendDestinationConfig');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    specLocation = registerOutput<String>('specLocation');
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [CustomConnectorVersion] resource.
+  CustomConnectorVersion.reference(String urn)
+    : super(
+        'google-native:connectors/v1:CustomConnectorVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authConfig = registerOutput<AuthConfigResponse>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    customConnectorId = registerOutput<String>('customConnectorId');
+    customConnectorVersionId = registerOutput<String>('customConnectorVersionId');
+    destinationConfig = registerOutput<DestinationConfigResponse>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DestinationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enableBackendDestinationConfig = registerOutput<bool>('enableBackendDestinationConfig');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     specLocation = registerOutput<String>('specLocation');

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Enum values.
 class GoogleCloudContentwarehouseV1EnumArray {
   /// List of enum values.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [GoogleCloudContentwarehouseV1EnumArray].
   /// [values] List of enum values.

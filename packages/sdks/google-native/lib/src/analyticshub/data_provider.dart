@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Contains details of the data provider.
 class DataProvider {
   /// Optional. Name of the data provider.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Optional. Email or URL of the data provider. Max Length: 1000 bytes.
-  final pulumi.Input<String>? primaryContact;
+  final pulumi.Input<String?>? primaryContact;
 
   /// Creates a new [DataProvider].
   /// [name] Optional. Name of the data provider.

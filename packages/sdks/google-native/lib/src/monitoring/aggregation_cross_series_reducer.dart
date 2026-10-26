@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
-enum AggregationCrossSeriesReducer {
+enum AggregationCrossSeriesReducer implements pulumi.PulumiEnum<String> {
   reduceNone("REDUCE_NONE"),
   reduceMean("REDUCE_MEAN"),
   reduceMin("REDUCE_MIN"),
@@ -16,6 +18,7 @@ enum AggregationCrossSeriesReducer {
   reducePercentile05("REDUCE_PERCENTILE_05");
 
   const AggregationCrossSeriesReducer(this.wireValue);
+  @override
   final String wireValue;
 
   static AggregationCrossSeriesReducer fromValue(String value) {

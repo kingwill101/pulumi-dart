@@ -37,11 +37,32 @@ class Table extends pulumi.CustomResource {
           'google-native:bigtableadmin/v2:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instanceId', 'project']).merge(options),
         ) {
     changeStreamConfig = registerOutput<ChangeStreamConfigResponse>('changeStreamConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChangeStreamConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    clusterStates = registerOutput<Map<String, String>>('clusterStates');
-    columnFamilies = registerOutput<Map<String, String>>('columnFamilies');
+    clusterStates = registerOutput<Map<String, String>>('clusterStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    columnFamilies = registerOutput<Map<String, String>>('columnFamilies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    deletionProtection = registerOutput<bool>('deletionProtection');
+    granularity = registerOutput<String>('granularity');
+    instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    restoreInfo = registerOutput<RestoreInfoResponse>('restoreInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoreInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    stats = registerOutput<TableStatsResponse>('stats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableStatsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Table] resource.
+  Table.reference(String urn)
+    : super(
+        'google-native:bigtableadmin/v2:Table',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    changeStreamConfig = registerOutput<ChangeStreamConfigResponse>('changeStreamConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChangeStreamConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterStates = registerOutput<Map<String, String>>('clusterStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    columnFamilies = registerOutput<Map<String, String>>('columnFamilies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deletionProtection = registerOutput<bool>('deletionProtection');
     granularity = registerOutput<String>('granularity');
     instanceId = registerOutput<String>('instanceId');

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resource for selecting resource type.
 class GoogleCloudSecuritycenterV1ResourceSelector {
   /// The resource types to run the detector on.
-  final pulumi.Input<List<String>>? resourceTypes;
+  final pulumi.Input<List<String>?>? resourceTypes;
 
   /// Creates a new [GoogleCloudSecuritycenterV1ResourceSelector].
   /// [resourceTypes] The resource types to run the detector on.

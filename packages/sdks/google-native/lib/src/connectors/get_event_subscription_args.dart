@@ -10,7 +10,7 @@ class GetEventSubscriptionArgs {
   final pulumi.Input<String> connectionId;
   final pulumi.Input<String> eventSubscriptionId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetEventSubscriptionArgs].
   /// [connectionId] Required.

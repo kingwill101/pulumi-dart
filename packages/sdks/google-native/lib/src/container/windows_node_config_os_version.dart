@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// OSVersion specifies the Windows node config to be used on the node
-enum WindowsNodeConfigOsVersion {
+enum WindowsNodeConfigOsVersion implements pulumi.PulumiEnum<String> {
   osVersionUnspecified("OS_VERSION_UNSPECIFIED"),
   osVersionLtsc2019("OS_VERSION_LTSC2019"),
   osVersionLtsc2022("OS_VERSION_LTSC2022");
 
   const WindowsNodeConfigOsVersion(this.wireValue);
+  @override
   final String wireValue;
 
   static WindowsNodeConfigOsVersion fromValue(String value) {

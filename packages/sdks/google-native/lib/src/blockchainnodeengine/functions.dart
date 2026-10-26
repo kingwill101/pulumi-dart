@@ -17,3 +17,14 @@ Future<GetBlockchainNodeResult> getBlockchainNode(
   );
   return GetBlockchainNodeResult.fromMap(result);
 }
+
+pulumi.Output<GetBlockchainNodeResult> getBlockchainNodeOutput(
+  GetBlockchainNodeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:blockchainnodeengine/v1:getBlockchainNode',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBlockchainNodeResult.fromMap);
+}

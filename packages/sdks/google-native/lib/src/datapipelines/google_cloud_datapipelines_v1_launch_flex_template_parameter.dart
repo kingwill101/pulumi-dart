@@ -6,19 +6,19 @@ import 'google_cloud_datapipelines_v1_flex_template_runtime_environment.dart';
 /// Launch Flex Template parameter.
 class GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter {
   /// Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.
-  final pulumi.Input<String>? containerSpecGcsPath;
+  final pulumi.Input<String?>? containerSpecGcsPath;
   /// The runtime environment for the Flex Template job.
-  final pulumi.Input<GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment>? environment;
+  final pulumi.Input<GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment?>? environment;
   /// The job name to use for the created job. For an update job request, the job name should be the same as the existing running job.
   final pulumi.Input<String> jobName;
   /// Launch options for this Flex Template job. This is a common set of options across languages and templates. This should not be used to pass job parameters.
-  final pulumi.Input<Map<String, String>>? launchOptions;
+  final pulumi.Input<Map<String, String>?>? launchOptions;
   /// The parameters for the Flex Template. Example: `{"num_workers":"5"}`
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Use this to pass transform name mappings for streaming update jobs. Example: `{"oldTransformName":"newTransformName",...}`
-  final pulumi.Input<Map<String, String>>? transformNameMappings;
+  final pulumi.Input<Map<String, String>?>? transformNameMappings;
   /// Set this to true if you are sending a request to update a running streaming job. When set, the job name should be the same as the running job.
-  final pulumi.Input<bool>? update;
+  final pulumi.Input<bool?>? update;
 
   /// Creates a new [GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter].
   /// [containerSpecGcsPath] Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.

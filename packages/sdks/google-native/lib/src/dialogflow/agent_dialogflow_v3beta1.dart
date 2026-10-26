@@ -60,7 +60,7 @@ class AgentDialogflowV3beta1 extends pulumi.CustomResource {
           'google-native:dialogflow/v3beta1:Agent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     advancedSettings = registerOutput<GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse>('advancedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     answerFeedbackSettings = registerOutput<GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsResponse>('answerFeedbackSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -79,7 +79,38 @@ class AgentDialogflowV3beta1 extends pulumi.CustomResource {
     securitySettings = registerOutput<String>('securitySettings');
     speechToTextSettings = registerOutput<GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse>('speechToTextSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startFlow = registerOutput<String>('startFlow');
-    supportedLanguageCodes = registerOutput<List<String>>('supportedLanguageCodes');
+    supportedLanguageCodes = registerOutput<List<String>>('supportedLanguageCodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    textToSpeechSettings = registerOutput<GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse>('textToSpeechSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeZone = registerOutput<String>('timeZone');
+  }
+
+  /// Creates a typed reference to an existing [AgentDialogflowV3beta1] resource.
+  AgentDialogflowV3beta1.reference(String urn)
+    : super(
+        'google-native:dialogflow/v3beta1:Agent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    advancedSettings = registerOutput<GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse>('advancedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    answerFeedbackSettings = registerOutput<GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsResponse>('answerFeedbackSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    avatarUri = registerOutput<String>('avatarUri');
+    defaultLanguageCode = registerOutput<String>('defaultLanguageCode');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    enableSpellCorrection = registerOutput<bool>('enableSpellCorrection');
+    enableStackdriverLogging = registerOutput<bool>('enableStackdriverLogging');
+    genAppBuilderSettings = registerOutput<GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsResponse>('genAppBuilderSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gitIntegrationSettings = registerOutput<GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse>('gitIntegrationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    locked = registerOutput<bool>('locked');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    securitySettings = registerOutput<String>('securitySettings');
+    speechToTextSettings = registerOutput<GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse>('speechToTextSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startFlow = registerOutput<String>('startFlow');
+    supportedLanguageCodes = registerOutput<List<String>>('supportedLanguageCodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     textToSpeechSettings = registerOutput<GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse>('textToSpeechSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeZone = registerOutput<String>('timeZone');
   }

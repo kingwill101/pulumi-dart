@@ -6,11 +6,11 @@ import 'label_descriptor_value_type.dart';
 /// A description of a label.
 class LabelDescriptor {
   /// A human-readable description for the label.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The label key.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The type of data that can be assigned to the label.
-  final pulumi.Input<LabelDescriptorValueType>? valueType;
+  final pulumi.Input<LabelDescriptorValueType?>? valueType;
 
   /// Creates a new [LabelDescriptor].
   /// [description] A human-readable description for the label.

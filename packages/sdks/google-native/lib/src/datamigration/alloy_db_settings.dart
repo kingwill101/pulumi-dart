@@ -9,14 +9,14 @@ import 'user_password.dart';
 /// Settings for creating an AlloyDB cluster.
 class AlloyDbSettings {
   /// Optional. The database engine major version. This is an optional field. If a database version is not supplied at cluster creation time, then a default database version will be used.
-  final pulumi.Input<AlloyDbSettingsDatabaseVersion>? databaseVersion;
+  final pulumi.Input<AlloyDbSettingsDatabaseVersion?>? databaseVersion;
   /// Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
-  final pulumi.Input<EncryptionConfig>? encryptionConfig;
+  final pulumi.Input<EncryptionConfig?>? encryptionConfig;
   /// Input only. Initial user to setup during cluster creation. Required.
   final pulumi.Input<UserPassword> initialUser;
   /// Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<PrimaryInstanceSettings>? primaryInstanceSettings;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<PrimaryInstanceSettings?>? primaryInstanceSettings;
   /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
   final pulumi.Input<String> vpcNetwork;
 

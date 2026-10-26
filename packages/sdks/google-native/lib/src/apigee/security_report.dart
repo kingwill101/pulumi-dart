@@ -49,8 +49,34 @@ class SecurityReport extends pulumi.CustomResource {
           'google-native:apigee/v1:SecurityReport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['environmentId', 'organizationId']).merge(options),
         ) {
+    created = registerOutput<String>('created');
+    displayName = registerOutput<String>('displayName');
+    envgroupHostname = registerOutput<String>('envgroupHostname');
+    environmentId = registerOutput<String>('environmentId');
+    error = registerOutput<String>('error');
+    executionTime = registerOutput<String>('executionTime');
+    organizationId = registerOutput<String>('organizationId');
+    queryParams = registerOutput<GoogleCloudApigeeV1SecurityReportMetadataResponse>('queryParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1SecurityReportMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reportDefinitionId = registerOutput<String>('reportDefinitionId');
+    result = registerOutput<GoogleCloudApigeeV1SecurityReportResultMetadataResponse>('result', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1SecurityReportResultMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resultFileSize = registerOutput<String>('resultFileSize');
+    resultRows = registerOutput<String>('resultRows');
+    self = registerOutput<String>('self');
+    state = registerOutput<String>('state');
+    updated = registerOutput<String>('updated');
+  }
+
+  /// Creates a typed reference to an existing [SecurityReport] resource.
+  SecurityReport.reference(String urn)
+    : super(
+        'google-native:apigee/v1:SecurityReport',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     created = registerOutput<String>('created');
     displayName = registerOutput<String>('displayName');
     envgroupHostname = registerOutput<String>('envgroupHostname');

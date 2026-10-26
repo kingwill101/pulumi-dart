@@ -6,7 +6,7 @@ import 'membership_spec_certificate_management.dart';
 /// **Workload Certificate**: The membership-specific input for WorkloadCertificate feature.
 class MembershipSpec {
   /// Specifies workload certificate management.
-  final pulumi.Input<MembershipSpecCertificateManagement>? certificateManagement;
+  final pulumi.Input<MembershipSpecCertificateManagement?>? certificateManagement;
 
   /// Creates a new [MembershipSpec].
   /// [certificateManagement] Specifies workload certificate management.

@@ -8,7 +8,7 @@ class DestinationConfigDatastreamV1alpha1 {
   /// Destination connection profile identifier.
   final pulumi.Input<String> destinationConnectionProfileName;
   /// GCS destination configuration.
-  final pulumi.Input<GcsDestinationConfigDatastreamV1alpha1>? gcsDestinationConfig;
+  final pulumi.Input<GcsDestinationConfigDatastreamV1alpha1?>? gcsDestinationConfig;
 
   /// Creates a new [DestinationConfigDatastreamV1alpha1].
   /// [destinationConnectionProfileName] Destination connection profile identifier.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Setting a parameter value.
 class GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction {
   /// Display name of the parameter.
-  final pulumi.Input<String>? parameter;
+  final pulumi.Input<String?>? parameter;
   /// The new value of the parameter. A null value clears the parameter.
   final pulumi.Input<dynamic>? value;
 

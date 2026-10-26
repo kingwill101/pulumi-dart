@@ -5,11 +5,11 @@ import 'node_group_autoscaling_policy_mode_compute_beta.dart';
 
 class NodeGroupAutoscalingPolicyComputeBeta {
   /// The maximum number of nodes that the group should have. Must be set if autoscaling is enabled. Maximum value allowed is 100.
-  final pulumi.Input<int>? maxNodes;
+  final pulumi.Input<int?>? maxNodes;
   /// The minimum number of nodes that the group should have.
-  final pulumi.Input<int>? minNodes;
+  final pulumi.Input<int?>? minNodes;
   /// The autoscaling mode. Set to one of: ON, OFF, or ONLY_SCALE_OUT. For more information, see Autoscaler modes.
-  final pulumi.Input<NodeGroupAutoscalingPolicyModeComputeBeta>? mode;
+  final pulumi.Input<NodeGroupAutoscalingPolicyModeComputeBeta?>? mode;
 
   /// Creates a new [NodeGroupAutoscalingPolicyComputeBeta].
   /// [maxNodes] The maximum number of nodes that the group should have. Must be set if autoscaling is enabled. Maximum value allowed is 100.
@@ -31,8 +31,8 @@ class NodeGroupAutoscalingPolicyComputeBeta {
 
   factory NodeGroupAutoscalingPolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return NodeGroupAutoscalingPolicyComputeBeta(
-      maxNodes: (() { final guardedValue = map['maxNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minNodes: (() { final guardedValue = map['minNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxNodes: (() { final guardedValue = map['maxNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minNodes: (() { final guardedValue = map['minNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeGroupAutoscalingPolicyModeComputeBeta.fromValue(guardedValue as String)); })(),
     );
   }

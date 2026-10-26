@@ -74,7 +74,7 @@ class ServiceMetastoreV1alpha extends pulumi.CustomResource {
           'google-native:metastore/v1alpha:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'serviceId']).merge(options),
         ) {
     artifactGcsUri = registerOutput<String>('artifactGcsUri');
     createTime = registerOutput<String>('createTime');
@@ -82,7 +82,44 @@ class ServiceMetastoreV1alpha extends pulumi.CustomResource {
     encryptionConfig = registerOutput<EncryptionConfigResponseMetastoreV1alpha>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionConfigResponseMetastoreV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpointUri = registerOutput<String>('endpointUri');
     hiveMetastoreConfig = registerOutput<HiveMetastoreConfigResponseMetastoreV1alpha>('hiveMetastoreConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HiveMetastoreConfigResponseMetastoreV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    maintenanceWindow = registerOutput<MaintenanceWindowResponseMetastoreV1alpha>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceWindowResponseMetastoreV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadataIntegration = registerOutput<MetadataIntegrationResponseMetastoreV1alpha>('metadataIntegration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataIntegrationResponseMetastoreV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadataManagementActivity = registerOutput<MetadataManagementActivityResponseMetastoreV1alpha>('metadataManagementActivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataManagementActivityResponseMetastoreV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    networkConfig = registerOutput<NetworkConfigResponseMetastoreV1alpha>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkConfigResponseMetastoreV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    port = registerOutput<int>('port');
+    project = registerOutput<String>('project');
+    releaseChannel = registerOutput<String>('releaseChannel');
+    requestId = registerOutput<String?>('requestId');
+    scalingConfig = registerOutput<ScalingConfigResponseMetastoreV1alpha>('scalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScalingConfigResponseMetastoreV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceId = registerOutput<String>('serviceId');
+    state = registerOutput<String>('state');
+    stateMessage = registerOutput<String>('stateMessage');
+    telemetryConfig = registerOutput<TelemetryConfigResponseMetastoreV1alpha>('telemetryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryConfigResponseMetastoreV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tier = registerOutput<String>('tier');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ServiceMetastoreV1alpha] resource.
+  ServiceMetastoreV1alpha.reference(String urn)
+    : super(
+        'google-native:metastore/v1alpha:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    artifactGcsUri = registerOutput<String>('artifactGcsUri');
+    createTime = registerOutput<String>('createTime');
+    databaseType = registerOutput<String>('databaseType');
+    encryptionConfig = registerOutput<EncryptionConfigResponseMetastoreV1alpha>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionConfigResponseMetastoreV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpointUri = registerOutput<String>('endpointUri');
+    hiveMetastoreConfig = registerOutput<HiveMetastoreConfigResponseMetastoreV1alpha>('hiveMetastoreConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HiveMetastoreConfigResponseMetastoreV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     maintenanceWindow = registerOutput<MaintenanceWindowResponseMetastoreV1alpha>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceWindowResponseMetastoreV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadataIntegration = registerOutput<MetadataIntegrationResponseMetastoreV1alpha>('metadataIntegration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataIntegrationResponseMetastoreV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); });

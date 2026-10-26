@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Option to specify the tool to fetch the source file for the build.
-enum StorageSourceSourceFetcher {
+enum StorageSourceSourceFetcher implements pulumi.PulumiEnum<String> {
   sourceFetcherUnspecified("SOURCE_FETCHER_UNSPECIFIED"),
   gsutil("GSUTIL"),
   gcsFetcher("GCS_FETCHER");
 
   const StorageSourceSourceFetcher(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageSourceSourceFetcher fromValue(String value) {

@@ -5,11 +5,11 @@ import 'grafeas_v1_slsa_provenance_zero_two_slsa_completeness.dart';
 
 /// Other properties of the build.
 class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata {
-  final pulumi.Input<String>? buildFinishedOn;
-  final pulumi.Input<String>? buildInvocationId;
-  final pulumi.Input<String>? buildStartedOn;
-  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness>? completeness;
-  final pulumi.Input<bool>? reproducible;
+  final pulumi.Input<String?>? buildFinishedOn;
+  final pulumi.Input<String?>? buildInvocationId;
+  final pulumi.Input<String?>? buildStartedOn;
+  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness?>? completeness;
+  final pulumi.Input<bool?>? reproducible;
 
   /// Creates a new [GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata].
   /// [buildFinishedOn] Optional.

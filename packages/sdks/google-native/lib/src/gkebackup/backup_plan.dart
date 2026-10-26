@@ -54,7 +54,7 @@ class BackupPlan extends pulumi.CustomResource {
           'google-native:gkebackup/v1:BackupPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['backupPlanId', 'location', 'project']).merge(options),
         ) {
     backupConfig = registerOutput<BackupConfigResponse>('backupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backupPlanId = registerOutput<String>('backupPlanId');
@@ -64,7 +64,36 @@ class BackupPlan extends pulumi.CustomResource {
     deactivated = registerOutput<bool>('deactivated');
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    protectedPodCount = registerOutput<int>('protectedPodCount');
+    retentionPolicy = registerOutput<RetentionPolicyResponse>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RetentionPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    stateReason = registerOutput<String>('stateReason');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [BackupPlan] resource.
+  BackupPlan.reference(String urn)
+    : super(
+        'google-native:gkebackup/v1:BackupPlan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backupConfig = registerOutput<BackupConfigResponse>('backupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backupPlanId = registerOutput<String>('backupPlanId');
+    backupSchedule = registerOutput<ScheduleResponse>('backupSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cluster = registerOutput<String>('cluster');
+    createTime = registerOutput<String>('createTime');
+    deactivated = registerOutput<bool>('deactivated');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

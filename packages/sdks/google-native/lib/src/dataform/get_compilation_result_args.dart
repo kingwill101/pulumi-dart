@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCompilationResultArgs {
   final pulumi.Input<String> compilationResultId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> repositoryId;
 
   /// Creates a new [GetCompilationResultArgs].

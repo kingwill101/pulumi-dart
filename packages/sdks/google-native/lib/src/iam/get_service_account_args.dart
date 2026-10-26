@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_iam_v1_get_service_account_args_doc}
 class GetServiceAccountArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> serviceAccountId;
 
   /// Creates a new [GetServiceAccountArgs].

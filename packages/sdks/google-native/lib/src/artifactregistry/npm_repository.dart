@@ -6,7 +6,7 @@ import 'npm_repository_public_repository.dart';
 /// Configuration for a Npm remote repository.
 class NpmRepository {
   /// One of the publicly available Npm repositories supported by Artifact Registry.
-  final pulumi.Input<NpmRepositoryPublicRepository>? publicRepository;
+  final pulumi.Input<NpmRepositoryPublicRepository?>? publicRepository;
 
   /// Creates a new [NpmRepository].
   /// [publicRepository] One of the publicly available Npm repositories supported by Artifact Registry.

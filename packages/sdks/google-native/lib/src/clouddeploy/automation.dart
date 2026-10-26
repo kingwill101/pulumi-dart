@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'automation_args.dart';
 import 'automation_resource_selector_response.dart';
+import 'automation_rule_response.dart';
 
 /// Creates a new Automation in a given project and location.
 /// Auto-naming is currently not supported for this resource.
@@ -25,7 +26,7 @@ class Automation extends pulumi.CustomResource {
   /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   late final pulumi.Output<String?> requestId;
   /// List of Automation rules associated with the Automation resource. Must have at least one rule and limited to 250 rules per Delivery Pipeline. Note: the order of the rules here is not the same as the order of execution.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<AutomationRuleResponse>> rules;
   /// Selected resources to which the automation will be applied.
   late final pulumi.Output<AutomationResourceSelectorResponse> selector;
   /// Email address of the user-managed IAM service account that creates Cloud Deploy release and rollout resources.
@@ -49,20 +50,48 @@ class Automation extends pulumi.CustomResource {
           'google-native:clouddeploy/v1:Automation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['automationId', 'deliveryPipelineId', 'location', 'project']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     automationId = registerOutput<String>('automationId');
     createTime = registerOutput<String>('createTime');
     deliveryPipelineId = registerOutput<String>('deliveryPipelineId');
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<AutomationRuleResponse>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRuleResponse>(guardedValue, (value) => AutomationRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    selector = registerOutput<AutomationResourceSelectorResponse>('selector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomationResourceSelectorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceAccount = registerOutput<String>('serviceAccount');
+    suspended = registerOutput<bool>('suspended');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Automation] resource.
+  Automation.reference(String urn)
+    : super(
+        'google-native:clouddeploy/v1:Automation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    automationId = registerOutput<String>('automationId');
+    createTime = registerOutput<String>('createTime');
+    deliveryPipelineId = registerOutput<String>('deliveryPipelineId');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    rules = registerOutput<List<AutomationRuleResponse>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRuleResponse>(guardedValue, (value) => AutomationRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     selector = registerOutput<AutomationResourceSelectorResponse>('selector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomationResourceSelectorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceAccount = registerOutput<String>('serviceAccount');
     suspended = registerOutput<bool>('suspended');

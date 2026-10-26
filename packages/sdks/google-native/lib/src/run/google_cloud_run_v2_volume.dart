@@ -8,13 +8,13 @@ import 'google_cloud_run_v2_secret_volume_source.dart';
 /// Volume represents a named volume in a container.
 class GoogleCloudRunV2Volume {
   /// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
-  final pulumi.Input<GoogleCloudRunV2CloudSqlInstance>? cloudSqlInstance;
+  final pulumi.Input<GoogleCloudRunV2CloudSqlInstance?>? cloudSqlInstance;
   /// Ephemeral storage used as a shared volume.
-  final pulumi.Input<GoogleCloudRunV2EmptyDirVolumeSource>? emptyDir;
+  final pulumi.Input<GoogleCloudRunV2EmptyDirVolumeSource?>? emptyDir;
   /// Volume's name.
   final pulumi.Input<String> name;
   /// Secret represents a secret that should populate this volume.
-  final pulumi.Input<GoogleCloudRunV2SecretVolumeSource>? secret;
+  final pulumi.Input<GoogleCloudRunV2SecretVolumeSource?>? secret;
 
   /// Creates a new [GoogleCloudRunV2Volume].
   /// [cloudSqlInstance] For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.

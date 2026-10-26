@@ -12,15 +12,15 @@ class TableArgs {
   final pulumi.Input<String> catalogId;
   final pulumi.Input<String> databaseId;
   /// The checksum of a table object computed by the server based on the value of other fields. It may be sent on update requests to ensure the client has an up-to-date value before proceeding. It is only checked for update table operations.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Options of a Hive table.
-  final pulumi.Input<HiveTableOptions>? hiveOptions;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<HiveTableOptions?>? hiveOptions;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Required. The ID to use for the table, which will become the final component of the table's resource name.
   final pulumi.Input<String> tableId;
   /// The table type.
-  final pulumi.Input<TableType>? type;
+  final pulumi.Input<TableType?>? type;
 
   /// Creates a new [TableArgs].
   /// [catalogId] Required.

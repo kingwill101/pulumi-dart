@@ -32,7 +32,7 @@ class GoogleCloudApigeeV1RevenueShareRangeResponse {
   factory GoogleCloudApigeeV1RevenueShareRangeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1RevenueShareRangeResponse(
       end: pulumi.Input.fromValue(map['end'] as String),
-      sharePercentage: pulumi.Input.fromValue(map['sharePercentage'] as double),
+      sharePercentage: pulumi.Input.fromValue((map['sharePercentage'] as num).toDouble()),
       start: pulumi.Input.fromValue(map['start'] as String),
     );
   }

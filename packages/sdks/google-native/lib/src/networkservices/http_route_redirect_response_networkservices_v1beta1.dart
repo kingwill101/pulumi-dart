@@ -54,7 +54,7 @@ class HttpRouteRedirectResponseNetworkservicesV1beta1 {
       hostRedirect: pulumi.Input.fromValue(map['hostRedirect'] as String),
       httpsRedirect: pulumi.Input.fromValue(map['httpsRedirect'] as bool),
       pathRedirect: pulumi.Input.fromValue(map['pathRedirect'] as String),
-      portRedirect: pulumi.Input.fromValue(map['portRedirect'] as int),
+      portRedirect: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['portRedirect'])),
       prefixRewrite: pulumi.Input.fromValue(map['prefixRewrite'] as String),
       responseCode: pulumi.Input.fromValue(map['responseCode'] as String),
       stripQuery: pulumi.Input.fromValue(map['stripQuery'] as bool),

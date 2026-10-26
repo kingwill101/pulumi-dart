@@ -1,10 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'firewall_policy_association_response.dart';
+import 'firewall_policy_rule_response.dart';
 import 'region_network_firewall_policy_args.dart';
 
 /// Creates a new network firewall policy in the specified project and region.
 class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
   /// A list of associations that belong to this firewall policy.
-  late final pulumi.Output<List<Map<String, dynamic>>> associations;
+  late final pulumi.Output<List<FirewallPolicyAssociationResponse>> associations;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
   /// An optional description of this resource. Provide this property when you create the resource.
@@ -26,7 +28,7 @@ class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
   /// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
   late final pulumi.Output<int> ruleTupleCount;
   /// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<FirewallPolicyRuleResponse>> rules;
   /// Server-defined URL for the resource.
   late final pulumi.Output<String> selfLink;
   /// Server-defined URL for this resource with the resource id.
@@ -48,9 +50,9 @@ class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
           'google-native:compute/alpha:RegionNetworkFirewallPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
-    associations = registerOutput<List<Map<String, dynamic>>>('associations');
+    associations = registerOutput<List<FirewallPolicyAssociationResponse>>('associations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyAssociationResponse>(guardedValue, (value) => FirewallPolicyAssociationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
@@ -62,7 +64,35 @@ class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<FirewallPolicyRuleResponse>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyRuleResponse>(guardedValue, (value) => FirewallPolicyRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    shortName = registerOutput<String>('shortName');
+    vpcNetworkScope = registerOutput<String>('vpcNetworkScope');
+  }
+
+  /// Creates a typed reference to an existing [RegionNetworkFirewallPolicy] resource.
+  RegionNetworkFirewallPolicy.reference(String urn)
+    : super(
+        'google-native:compute/alpha:RegionNetworkFirewallPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    associations = registerOutput<List<FirewallPolicyAssociationResponse>>('associations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyAssociationResponse>(guardedValue, (value) => FirewallPolicyAssociationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    fingerprint = registerOutput<String>('fingerprint');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    ruleTupleCount = registerOutput<int>('ruleTupleCount');
+    rules = registerOutput<List<FirewallPolicyRuleResponse>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyRuleResponse>(guardedValue, (value) => FirewallPolicyRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
     shortName = registerOutput<String>('shortName');

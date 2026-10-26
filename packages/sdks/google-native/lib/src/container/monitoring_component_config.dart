@@ -6,7 +6,7 @@ import 'monitoring_component_config_enable_components_item.dart';
 /// MonitoringComponentConfig is cluster monitoring component configuration.
 class MonitoringComponentConfig {
   /// Select components to collect metrics. An empty set would disable all monitoring.
-  final pulumi.Input<List<MonitoringComponentConfigEnableComponentsItem>>? enableComponents;
+  final pulumi.Input<List<MonitoringComponentConfigEnableComponentsItem>?>? enableComponents;
 
   /// Creates a new [MonitoringComponentConfig].
   /// [enableComponents] Select components to collect metrics. An empty set would disable all monitoring.

@@ -10,14 +10,14 @@ import 'google_privacy_dlp_v2_timespan_config.dart';
 /// Shared message indicating Cloud storage type.
 class GooglePrivacyDlpV2StorageConfig {
   /// BigQuery options.
-  final pulumi.Input<GooglePrivacyDlpV2BigQueryOptions>? bigQueryOptions;
+  final pulumi.Input<GooglePrivacyDlpV2BigQueryOptions?>? bigQueryOptions;
   /// Cloud Storage options.
-  final pulumi.Input<GooglePrivacyDlpV2CloudStorageOptions>? cloudStorageOptions;
+  final pulumi.Input<GooglePrivacyDlpV2CloudStorageOptions?>? cloudStorageOptions;
   /// Google Cloud Datastore options.
-  final pulumi.Input<GooglePrivacyDlpV2DatastoreOptions>? datastoreOptions;
+  final pulumi.Input<GooglePrivacyDlpV2DatastoreOptions?>? datastoreOptions;
   /// Hybrid inspection options.
-  final pulumi.Input<GooglePrivacyDlpV2HybridOptions>? hybridOptions;
-  final pulumi.Input<GooglePrivacyDlpV2TimespanConfig>? timespanConfig;
+  final pulumi.Input<GooglePrivacyDlpV2HybridOptions?>? hybridOptions;
+  final pulumi.Input<GooglePrivacyDlpV2TimespanConfig?>? timespanConfig;
 
   /// Creates a new [GooglePrivacyDlpV2StorageConfig].
   /// [bigQueryOptions] BigQuery options.

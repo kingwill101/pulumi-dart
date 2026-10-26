@@ -1,9 +1,12 @@
-enum ControlSolutionTypesItemRetailV2beta {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ControlSolutionTypesItemRetailV2beta implements pulumi.PulumiEnum<String> {
   solutionTypeUnspecified("SOLUTION_TYPE_UNSPECIFIED"),
   solutionTypeRecommendation("SOLUTION_TYPE_RECOMMENDATION"),
   solutionTypeSearch("SOLUTION_TYPE_SEARCH");
 
   const ControlSolutionTypesItemRetailV2beta(this.wireValue);
+  @override
   final String wireValue;
 
   static ControlSolutionTypesItemRetailV2beta fromValue(String value) {

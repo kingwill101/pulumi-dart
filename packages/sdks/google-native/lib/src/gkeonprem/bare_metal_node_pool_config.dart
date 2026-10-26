@@ -9,15 +9,15 @@ import 'node_taint.dart';
 /// BareMetalNodePoolConfig describes the configuration of all nodes within a given bare metal node pool.
 class BareMetalNodePoolConfig {
   /// The modifiable kubelet configurations for the bare metal machines.
-  final pulumi.Input<BareMetalKubeletConfig>? kubeletConfig;
+  final pulumi.Input<BareMetalKubeletConfig?>? kubeletConfig;
   /// The labels assigned to nodes of this node pool. An object containing a list of key/value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The list of machine addresses in the bare metal node pool.
   final pulumi.Input<List<BareMetalNodeConfig>> nodeConfigs;
   /// Specifies the nodes operating system (default: LINUX).
-  final pulumi.Input<BareMetalNodePoolConfigOperatingSystem>? operatingSystem;
+  final pulumi.Input<BareMetalNodePoolConfigOperatingSystem?>? operatingSystem;
   /// The initial taints assigned to nodes of this node pool.
-  final pulumi.Input<List<NodeTaint>>? taints;
+  final pulumi.Input<List<NodeTaint>?>? taints;
 
   /// Creates a new [BareMetalNodePoolConfig].
   /// [kubeletConfig] The modifiable kubelet configurations for the bare metal machines.

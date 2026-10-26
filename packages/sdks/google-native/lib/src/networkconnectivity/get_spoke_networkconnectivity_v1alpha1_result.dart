@@ -6,27 +6,27 @@ import 'router_appliance_instance_response_networkconnectivity_v1alpha1.dart';
 /// Result data returned by getSpoke.
 class GetSpokeNetworkconnectivityV1alpha1Result {
   /// The time when the Spoke was created.
-  final String createTime;
+  final String? createTime;
   /// Short description of the spoke resource
-  final String description;
+  final String? description;
   /// The resource URL of the hub resource that the spoke is attached to
-  final String hub;
+  final String? hub;
   /// User-defined labels.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// The URIs of linked interconnect attachment resources
-  final List<String> linkedInterconnectAttachments;
+  final List<String>? linkedInterconnectAttachments;
   /// The URIs of linked Router appliance resources
-  final List<RouterApplianceInstanceResponseNetworkconnectivityV1alpha1> linkedRouterApplianceInstances;
+  final List<RouterApplianceInstanceResponseNetworkconnectivityV1alpha1>? linkedRouterApplianceInstances;
   /// The URIs of linked VPN tunnel resources
-  final List<String> linkedVpnTunnels;
+  final List<String>? linkedVpnTunnels;
   /// Immutable. The name of a Spoke resource.
-  final String name;
+  final String? name;
   /// The current lifecycle state of this Hub.
-  final String state;
+  final String? state;
   /// Google-generated UUID for this resource. This is unique across all Spoke resources. If a Spoke resource is deleted and another with the same name is created, it gets a different unique_id.
-  final String uniqueId;
+  final String? uniqueId;
   /// The time when the Spoke was updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetSpokeNetworkconnectivityV1alpha1Result].
   /// [createTime] The time when the Spoke was created.
@@ -41,48 +41,48 @@ class GetSpokeNetworkconnectivityV1alpha1Result {
   /// [uniqueId] Google-generated UUID for this resource. This is unique across all Spoke resources. If a Spoke resource is deleted and another with the same name is created, it gets a different unique_id.
   /// [updateTime] The time when the Spoke was updated.
   const GetSpokeNetworkconnectivityV1alpha1Result({
-    required this.createTime,
-    required this.description,
-    required this.hub,
-    required this.labels,
-    required this.linkedInterconnectAttachments,
-    required this.linkedRouterApplianceInstances,
-    required this.linkedVpnTunnels,
-    required this.name,
-    required this.state,
-    required this.uniqueId,
-    required this.updateTime,
+    this.createTime,
+    this.description,
+    this.hub,
+    this.labels,
+    this.linkedInterconnectAttachments,
+    this.linkedRouterApplianceInstances,
+    this.linkedVpnTunnels,
+    this.name,
+    this.state,
+    this.uniqueId,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'hub': hub,
-      'labels': labels,
-      'linkedInterconnectAttachments': linkedInterconnectAttachments,
-      'linkedRouterApplianceInstances': pulumi.Input.encodeList<RouterApplianceInstanceResponseNetworkconnectivityV1alpha1, Map<String, dynamic>>(linkedRouterApplianceInstances, (value) => value.toMap()),
-      'linkedVpnTunnels': linkedVpnTunnels,
-      'name': name,
-      'state': state,
-      'uniqueId': uniqueId,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'description': ?description,
+      'hub': ?hub,
+      'labels': ?labels,
+      'linkedInterconnectAttachments': ?linkedInterconnectAttachments,
+      'linkedRouterApplianceInstances': ?(() { final guardedValue = linkedRouterApplianceInstances; if (guardedValue == null) return null; return pulumi.Input.encodeList<RouterApplianceInstanceResponseNetworkconnectivityV1alpha1, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'linkedVpnTunnels': ?linkedVpnTunnels,
+      'name': ?name,
+      'state': ?state,
+      'uniqueId': ?uniqueId,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetSpokeNetworkconnectivityV1alpha1Result.fromMap(Map<String, dynamic> map) {
     return GetSpokeNetworkconnectivityV1alpha1Result(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      hub: map['hub'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      linkedInterconnectAttachments: (map['linkedInterconnectAttachments'] as List).cast<String>(),
-      linkedRouterApplianceInstances: pulumi.Input.decodeList<RouterApplianceInstanceResponseNetworkconnectivityV1alpha1>(map['linkedRouterApplianceInstances']!, (value) => RouterApplianceInstanceResponseNetworkconnectivityV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
-      linkedVpnTunnels: (map['linkedVpnTunnels'] as List).cast<String>(),
-      name: map['name'] as String,
-      state: map['state'] as String,
-      uniqueId: map['uniqueId'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hub: (() { final guardedValue = map['hub']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      linkedInterconnectAttachments: (() { final guardedValue = map['linkedInterconnectAttachments']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      linkedRouterApplianceInstances: (() { final guardedValue = map['linkedRouterApplianceInstances']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterApplianceInstanceResponseNetworkconnectivityV1alpha1>(guardedValue, (value) => RouterApplianceInstanceResponseNetworkconnectivityV1alpha1.fromMap((value as Map).cast<String, dynamic>())); })(),
+      linkedVpnTunnels: (() { final guardedValue = map['linkedVpnTunnels']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uniqueId: (() { final guardedValue = map['uniqueId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

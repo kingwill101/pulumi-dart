@@ -36,7 +36,7 @@ class DnsKeySpecResponseDnsV1beta2 {
   factory DnsKeySpecResponseDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return DnsKeySpecResponseDnsV1beta2(
       algorithm: pulumi.Input.fromValue(map['algorithm'] as String),
-      keyLength: pulumi.Input.fromValue(map['keyLength'] as int),
+      keyLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['keyLength'])),
       keyType: pulumi.Input.fromValue(map['keyType'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
     );

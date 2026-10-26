@@ -6,9 +6,9 @@ import 'mysql_rdbms_datastream_v1alpha1.dart';
 /// MySQL source configuration
 class MysqlSourceConfigDatastreamV1alpha1 {
   /// MySQL objects to retrieve from the source.
-  final pulumi.Input<MysqlRdbmsDatastreamV1alpha1>? allowlist;
+  final pulumi.Input<MysqlRdbmsDatastreamV1alpha1?>? allowlist;
   /// MySQL objects to exclude from the stream.
-  final pulumi.Input<MysqlRdbmsDatastreamV1alpha1>? rejectlist;
+  final pulumi.Input<MysqlRdbmsDatastreamV1alpha1?>? rejectlist;
 
   /// Creates a new [MysqlSourceConfigDatastreamV1alpha1].
   /// [allowlist] MySQL objects to retrieve from the source.

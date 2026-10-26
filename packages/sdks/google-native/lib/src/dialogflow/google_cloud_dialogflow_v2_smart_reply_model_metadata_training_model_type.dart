@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Type of the smart reply model. If not provided, model_type is used.
-enum GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType {
+enum GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType implements pulumi.PulumiEnum<String> {
   modelTypeUnspecified("MODEL_TYPE_UNSPECIFIED"),
   smartReplyDualEncoderModel("SMART_REPLY_DUAL_ENCODER_MODEL"),
   smartReplyBertModel("SMART_REPLY_BERT_MODEL");
 
   const GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType fromValue(String value) {

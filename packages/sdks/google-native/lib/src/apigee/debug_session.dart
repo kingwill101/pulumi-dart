@@ -36,8 +36,30 @@ class DebugSession extends pulumi.CustomResource {
           'google-native:apigee/v1:DebugSession',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['apiId', 'environmentId', 'organizationId', 'revisionId']).merge(options),
         ) {
+    apiId = registerOutput<String>('apiId');
+    count = registerOutput<int>('count');
+    createTime = registerOutput<String>('createTime');
+    environmentId = registerOutput<String>('environmentId');
+    filter = registerOutput<String>('filter');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    revisionId = registerOutput<String>('revisionId');
+    timeout = registerOutput<String>('timeout');
+    tracesize = registerOutput<int>('tracesize');
+    validity = registerOutput<int>('validity');
+  }
+
+  /// Creates a typed reference to an existing [DebugSession] resource.
+  DebugSession.reference(String urn)
+    : super(
+        'google-native:apigee/v1:DebugSession',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiId = registerOutput<String>('apiId');
     count = registerOutput<int>('count');
     createTime = registerOutput<String>('createTime');

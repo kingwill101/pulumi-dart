@@ -105,7 +105,7 @@ class SavedAttachedDiskResponseComputeV1 {
       diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as String),
       diskType: pulumi.Input.fromValue(map['diskType'] as String),
       guestOsFeatures: pulumi.Input.fromValue(pulumi.Input.decodeList<GuestOsFeatureResponseComputeV1>(map['guestOsFeatures']!, (value) => GuestOsFeatureResponseComputeV1.fromMap((value as Map).cast<String, dynamic>()))),
-      index: pulumi.Input.fromValue(map['index'] as int),
+      index: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['index'])),
       interface: pulumi.Input.fromValue(map['interface'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       licenses: pulumi.Input.fromValue((map['licenses'] as List).cast<String>()),

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The execution client
-enum EthereumDetailsExecutionClient {
+enum EthereumDetailsExecutionClient implements pulumi.PulumiEnum<String> {
   executionClientUnspecified("EXECUTION_CLIENT_UNSPECIFIED"),
   geth("GETH"),
   erigon("ERIGON");
 
   const EthereumDetailsExecutionClient(this.wireValue);
+  @override
   final String wireValue;
 
   static EthereumDetailsExecutionClient fromValue(String value) {

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The IP stack type of the cluster
-enum IPAllocationPolicyStackType {
+enum IPAllocationPolicyStackType implements pulumi.PulumiEnum<String> {
   stackTypeUnspecified("STACK_TYPE_UNSPECIFIED"),
   ipv4("IPV4"),
   ipv4Ipv6("IPV4_IPV6");
 
   const IPAllocationPolicyStackType(this.wireValue);
+  @override
   final String wireValue;
 
   static IPAllocationPolicyStackType fromValue(String value) {

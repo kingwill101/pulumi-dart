@@ -53,8 +53,8 @@ class GoogleCloudMlV1ParameterSpecResponse {
     return GoogleCloudMlV1ParameterSpecResponse(
       categoricalValues: pulumi.Input.fromValue((map['categoricalValues'] as List).cast<String>()),
       discreteValues: pulumi.Input.fromValue((map['discreteValues'] as List).cast<double>()),
-      maxValue: pulumi.Input.fromValue(map['maxValue'] as double),
-      minValue: pulumi.Input.fromValue(map['minValue'] as double),
+      maxValue: pulumi.Input.fromValue((map['maxValue'] as num).toDouble()),
+      minValue: pulumi.Input.fromValue((map['minValue'] as num).toDouble()),
       parameterName: pulumi.Input.fromValue(map['parameterName'] as String),
       scaleType: pulumi.Input.fromValue(map['scaleType'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),

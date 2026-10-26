@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedZonePrivateVisibilityConfigGKEClusterDnsV1beta2 {
   /// The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
-  final pulumi.Input<String>? gkeClusterName;
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? gkeClusterName;
+  final pulumi.Input<String?>? kind;
 
   /// Creates a new [ManagedZonePrivateVisibilityConfigGKEClusterDnsV1beta2].
   /// [gkeClusterName] The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get

@@ -6,9 +6,9 @@ import 'source_predefined_source.dart';
 /// Defines sources for the suggest/search APIs.
 class Source {
   /// Source name for content indexed by the Indexing API.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Predefined content source for Google Apps.
-  final pulumi.Input<SourcePredefinedSource>? predefinedSource;
+  final pulumi.Input<SourcePredefinedSource?>? predefinedSource;
 
   /// Creates a new [Source].
   /// [name] Source name for content indexed by the Indexing API.

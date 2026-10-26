@@ -8,13 +8,13 @@ import 'google_cloud_aiplatform_v1beta1_featurestore_monitoring_config_threshold
 /// Configuration of how features in Featurestore are monitored.
 class GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig {
   /// Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
-  final pulumi.Input<GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig>? categoricalThresholdConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig?>? categoricalThresholdConfig;
   /// The config for ImportFeatures Analysis Based Feature Monitoring.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysis>? importFeaturesAnalysis;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysis?>? importFeaturesAnalysis;
   /// Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
-  final pulumi.Input<GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig>? numericalThresholdConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig?>? numericalThresholdConfig;
   /// The config for Snapshot Analysis Based Feature Monitoring.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis>? snapshotAnalysis;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis?>? snapshotAnalysis;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig].
   /// [categoricalThresholdConfig] Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).

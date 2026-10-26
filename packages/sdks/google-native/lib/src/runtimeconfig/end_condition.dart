@@ -6,7 +6,7 @@ import 'cardinality.dart';
 /// The condition that a Waiter resource is waiting for.
 class EndCondition {
   /// The cardinality of the `EndCondition`.
-  final pulumi.Input<Cardinality>? cardinality;
+  final pulumi.Input<Cardinality?>? cardinality;
 
   /// Creates a new [EndCondition].
   /// [cardinality] The cardinality of the `EndCondition`.

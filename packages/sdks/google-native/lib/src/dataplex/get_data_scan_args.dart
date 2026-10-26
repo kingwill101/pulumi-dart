@@ -9,8 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataScanArgs {
   final pulumi.Input<String> dataScanId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetDataScanArgs].
   /// [dataScanId] Required.

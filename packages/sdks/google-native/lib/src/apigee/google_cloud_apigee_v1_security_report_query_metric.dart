@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metric of the Query
 class GoogleCloudApigeeV1SecurityReportQueryMetric {
   /// Aggregation function: avg, min, max, or sum.
-  final pulumi.Input<String>? aggregationFunction;
+  final pulumi.Input<String?>? aggregationFunction;
   /// Alias for the metric. Alias will be used to replace metric name in query results.
-  final pulumi.Input<String>? alias;
+  final pulumi.Input<String?>? alias;
   /// Metric name.
   final pulumi.Input<String> name;
   /// One of `+`, `-`, `/`, `%`, `*`.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
   /// Operand value should be provided when operator is set.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [GoogleCloudApigeeV1SecurityReportQueryMetric].
   /// [aggregationFunction] Aggregation function: avg, min, max, or sum.

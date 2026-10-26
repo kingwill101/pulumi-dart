@@ -1,4 +1,6 @@
-enum ScheduleState {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ScheduleState implements pulumi.PulumiEnum<String> {
   stateUnspecified("STATE_UNSPECIFIED"),
   enabled("ENABLED"),
   paused("PAUSED"),
@@ -8,6 +10,7 @@ enum ScheduleState {
   deleting("DELETING");
 
   const ScheduleState(this.wireValue);
+  @override
   final String wireValue;
 
   static ScheduleState fromValue(String value) {

@@ -6,7 +6,7 @@ import 'postgresql_schema.dart';
 /// PostgreSQL database structure.
 class PostgresqlRdbms {
   /// PostgreSQL schemas in the database server.
-  final pulumi.Input<List<PostgresqlSchema>>? postgresqlSchemas;
+  final pulumi.Input<List<PostgresqlSchema>?>? postgresqlSchemas;
 
   /// Creates a new [PostgresqlRdbms].
   /// [postgresqlSchemas] PostgreSQL schemas in the database server.

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The training state that the model is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running the service is frequency of training - this can be used to determine when to train model in order to control cost. If not specified: the default value for `CreateModel` method is `TRAINING`. The default value for `UpdateModel` method is to keep the state the same as before.
-enum ModelTrainingStateRetailV2alpha {
+enum ModelTrainingStateRetailV2alpha implements pulumi.PulumiEnum<String> {
   trainingStateUnspecified("TRAINING_STATE_UNSPECIFIED"),
   paused("PAUSED"),
   training("TRAINING");
 
   const ModelTrainingStateRetailV2alpha(this.wireValue);
+  @override
   final String wireValue;
 
   static ModelTrainingStateRetailV2alpha fromValue(String value) {

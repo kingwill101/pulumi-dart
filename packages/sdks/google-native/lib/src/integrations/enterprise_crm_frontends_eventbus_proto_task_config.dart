@@ -17,60 +17,60 @@ import 'enterprise_crm_frontends_eventbus_proto_task_entity.dart';
 /// The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task.
 class EnterpriseCrmFrontendsEventbusProtoTaskConfig {
   /// Alert configurations on error rate, warning rate, number of runs, durations, etc.
-  final pulumi.Input<List<EnterpriseCrmEventbusProtoTaskAlertConfig>>? alertConfigs;
+  final pulumi.Input<List<EnterpriseCrmEventbusProtoTaskAlertConfig>?>? alertConfigs;
   /// Auto-generated.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The creator's email address. Auto-generated from the user's email.
-  final pulumi.Input<String>? creatorEmail;
+  final pulumi.Input<String?>? creatorEmail;
   /// User-provided description intended to give more business context about the task.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// If this config contains a TypedTask, allow validation to succeed if an input is read from the output of another TypedTask whose output type is declared as a superclass of the requested input type. For instance, if the previous task declares an output of type Message, any task with this flag enabled will pass validation when attempting to read any proto Message type from the resultant Event parameter.
-  final pulumi.Input<bool>? disableStrictTypeValidation;
+  final pulumi.Input<bool?>? disableStrictTypeValidation;
   /// Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
-  final pulumi.Input<String>? errorCatcherId;
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType>? externalTaskType;
+  final pulumi.Input<String?>? errorCatcherId;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType?>? externalTaskType;
   /// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
-  final pulumi.Input<EnterpriseCrmEventbusProtoFailurePolicy>? failurePolicy;
+  final pulumi.Input<EnterpriseCrmEventbusProtoFailurePolicy?>? failurePolicy;
   /// The number of edges leading into this TaskConfig.
-  final pulumi.Input<int>? incomingEdgeCount;
+  final pulumi.Input<int?>? incomingEdgeCount;
   /// If set, overrides the option configured in the Task implementation class.
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption>? jsonValidationOption;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption?>? jsonValidationOption;
   /// User-provided label that is attached to this TaskConfig in the UI.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Auto-generated.
-  final pulumi.Input<String>? lastModifiedTime;
+  final pulumi.Input<String?>? lastModifiedTime;
   /// The set of tasks that are next in line to be executed as per the execution graph defined for the parent event, specified by `event_config_id`. Each of these next tasks are executed only if the condition associated with them evaluates to true.
-  final pulumi.Input<List<EnterpriseCrmEventbusProtoNextTask>>? nextTasks;
+  final pulumi.Input<List<EnterpriseCrmEventbusProtoNextTask>?>? nextTasks;
   /// The policy dictating the execution of the next set of tasks for the current task.
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicy>? nextTasksExecutionPolicy;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicy?>? nextTasksExecutionPolicy;
   /// The customized parameters the user can pass to this task.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Optional. Informs the front-end application where to draw this task config on the UI.
-  final pulumi.Input<EnterpriseCrmEventbusProtoCoordinate>? position;
+  final pulumi.Input<EnterpriseCrmEventbusProtoCoordinate?>? position;
   /// Optional. Standard filter expression evaluated before execution. Independent of other conditions and tasks. Can be used to enable rollout. e.g. "rollout(5)" will only allow 5% of incoming traffic to task.
-  final pulumi.Input<String>? precondition;
+  final pulumi.Input<String?>? precondition;
   /// Optional. User-provided label that is attached to precondition in the UI.
-  final pulumi.Input<String>? preconditionLabel;
+  final pulumi.Input<String?>? preconditionLabel;
   /// Optional. Contains information about what needs to be done upon failure (either a permanent error or after it has been retried too many times).
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoRollbackStrategy>? rollbackStrategy;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoRollbackStrategy?>? rollbackStrategy;
   /// Determines what action to take upon successful task completion.
-  final pulumi.Input<EnterpriseCrmEventbusProtoSuccessPolicy>? successPolicy;
+  final pulumi.Input<EnterpriseCrmEventbusProtoSuccessPolicy?>? successPolicy;
   /// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for synchronous calls to Eventbus alone (Post).
-  final pulumi.Input<EnterpriseCrmEventbusProtoFailurePolicy>? synchronousCallFailurePolicy;
+  final pulumi.Input<EnterpriseCrmEventbusProtoFailurePolicy?>? synchronousCallFailurePolicy;
   /// Copy of the task entity that this task config is an instance of.
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoTaskEntity>? taskEntity;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoTaskEntity?>? taskEntity;
   /// The policy dictating the execution strategy of this task.
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategy>? taskExecutionStrategy;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategy?>? taskExecutionStrategy;
   /// The name for the task.
-  final pulumi.Input<String>? taskName;
+  final pulumi.Input<String?>? taskName;
   /// REQUIRED: the identifier of this task within its parent event config, specified by the client. This should be unique among all the tasks belong to the same event config. We use this field as the identifier to find next tasks (via field `next_tasks.task_number`).
-  final pulumi.Input<String>? taskNumber;
+  final pulumi.Input<String?>? taskNumber;
   /// A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field.
-  final pulumi.Input<String>? taskSpec;
+  final pulumi.Input<String?>? taskSpec;
   /// Used to define task-template name if task is of type task-template
-  final pulumi.Input<String>? taskTemplateName;
+  final pulumi.Input<String?>? taskTemplateName;
   /// Defines the type of the task
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskType>? taskType;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskType?>? taskType;
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoTaskConfig].
   /// [alertConfigs] Alert configurations on error rate, warning rate, number of runs, durations, etc.
@@ -175,7 +175,7 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfig {
       errorCatcherId: (() { final guardedValue = map['errorCatcherId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       externalTaskType: (() { final guardedValue = map['externalTaskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType.fromValue(guardedValue as String)); })(),
       failurePolicy: (() { final guardedValue = map['failurePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnterpriseCrmEventbusProtoFailurePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      incomingEdgeCount: (() { final guardedValue = map['incomingEdgeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      incomingEdgeCount: (() { final guardedValue = map['incomingEdgeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       jsonValidationOption: (() { final guardedValue = map['jsonValidationOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption.fromValue(guardedValue as String)); })(),
       label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

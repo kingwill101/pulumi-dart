@@ -41,14 +41,38 @@ class Cluster extends pulumi.CustomResource {
           'google-native:vmwareengine/v1:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['clusterId', 'location', 'privateCloudId', 'project']).merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
     createTime = registerOutput<String>('createTime');
     location = registerOutput<String>('location');
     management = registerOutput<bool>('management');
     this.name = registerOutput<String>('name');
-    nodeTypeConfigs = registerOutput<Map<String, String>>('nodeTypeConfigs');
+    nodeTypeConfigs = registerOutput<Map<String, String>>('nodeTypeConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    privateCloudId = registerOutput<String>('privateCloudId');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    stretchedClusterConfig = registerOutput<StretchedClusterConfigResponse>('stretchedClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StretchedClusterConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'google-native:vmwareengine/v1:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterId = registerOutput<String>('clusterId');
+    createTime = registerOutput<String>('createTime');
+    location = registerOutput<String>('location');
+    management = registerOutput<bool>('management');
+    this.name = registerOutput<String>('name');
+    nodeTypeConfigs = registerOutput<Map<String, String>>('nodeTypeConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     privateCloudId = registerOutput<String>('privateCloudId');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');

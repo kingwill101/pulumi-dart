@@ -9,25 +9,25 @@ import 'network_config_type.dart';
 /// Configuration parameters for a new network.
 class NetworkConfig {
   /// Interconnect bandwidth. Set only when type is CLIENT.
-  final pulumi.Input<NetworkConfigBandwidth>? bandwidth;
+  final pulumi.Input<NetworkConfigBandwidth?>? bandwidth;
   /// CIDR range of the network.
-  final pulumi.Input<String>? cidr;
+  final pulumi.Input<String?>? cidr;
   /// The GCP service of the network. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
-  final pulumi.Input<String>? gcpService;
+  final pulumi.Input<String?>? gcpService;
   /// A transient unique identifier to identify a volume within an ProvisioningConfig request.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The JumboFramesEnabled option for customer to set.
-  final pulumi.Input<bool>? jumboFramesEnabled;
+  final pulumi.Input<bool?>? jumboFramesEnabled;
   /// Service CIDR, if any.
-  final pulumi.Input<NetworkConfigServiceCidr>? serviceCidr;
+  final pulumi.Input<NetworkConfigServiceCidr?>? serviceCidr;
   /// The type of this network, either Client or Private.
-  final pulumi.Input<NetworkConfigType>? type;
+  final pulumi.Input<NetworkConfigType?>? type;
   /// User note field, it can be used by customers to add additional information for the BMS Ops team .
-  final pulumi.Input<String>? userNote;
+  final pulumi.Input<String?>? userNote;
   /// List of VLAN attachments. As of now there are always 2 attachments, but it is going to change in the future (multi vlan).
-  final pulumi.Input<List<IntakeVlanAttachment>>? vlanAttachments;
+  final pulumi.Input<List<IntakeVlanAttachment>?>? vlanAttachments;
   /// Whether the VLAN attachment pair is located in the same project.
-  final pulumi.Input<bool>? vlanSameProject;
+  final pulumi.Input<bool?>? vlanSameProject;
 
   /// Creates a new [NetworkConfig].
   /// [bandwidth] Interconnect bandwidth. Set only when type is CLIENT.

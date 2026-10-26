@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
 class ProjectRepoIdContaineranalysisV1beta1 {
   /// The ID of the project.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The name of the repo. Leave empty for the default repo.
-  final pulumi.Input<String>? repoName;
+  final pulumi.Input<String?>? repoName;
 
   /// Creates a new [ProjectRepoIdContaineranalysisV1beta1].
   /// [project] The ID of the project.

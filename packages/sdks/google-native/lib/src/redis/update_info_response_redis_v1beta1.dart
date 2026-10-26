@@ -26,8 +26,8 @@ class UpdateInfoResponseRedisV1beta1 {
 
   factory UpdateInfoResponseRedisV1beta1.fromMap(Map<String, dynamic> map) {
     return UpdateInfoResponseRedisV1beta1(
-      targetReplicaCount: pulumi.Input.fromValue(map['targetReplicaCount'] as int),
-      targetShardCount: pulumi.Input.fromValue(map['targetShardCount'] as int),
+      targetReplicaCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetReplicaCount'])),
+      targetShardCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetShardCount'])),
     );
   }
 }

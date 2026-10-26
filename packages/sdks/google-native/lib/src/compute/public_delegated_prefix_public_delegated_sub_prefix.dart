@@ -6,19 +6,19 @@ import 'public_delegated_prefix_public_delegated_sub_prefix_mode.dart';
 /// Represents a sub PublicDelegatedPrefix.
 class PublicDelegatedPrefixPublicDelegatedSubPrefix {
   /// The allocatable prefix length supported by this PublicDelegatedSubPrefix.
-  final pulumi.Input<int>? allocatablePrefixLength;
+  final pulumi.Input<int?>? allocatablePrefixLength;
   /// Name of the project scoping this PublicDelegatedSubPrefix.
-  final pulumi.Input<String>? delegateeProject;
+  final pulumi.Input<String?>? delegateeProject;
   /// An optional description of this resource. Provide this property when you create the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The IP address range, in CIDR format, represented by this sub public delegated prefix.
-  final pulumi.Input<String>? ipCidrRange;
+  final pulumi.Input<String?>? ipCidrRange;
   /// Whether the sub prefix is delegated to create Address resources in the delegatee project.
-  final pulumi.Input<bool>? isAddress;
+  final pulumi.Input<bool?>? isAddress;
   /// The PublicDelegatedSubPrefix mode for IPv6 only.
-  final pulumi.Input<PublicDelegatedPrefixPublicDelegatedSubPrefixMode>? mode;
+  final pulumi.Input<PublicDelegatedPrefixPublicDelegatedSubPrefixMode?>? mode;
   /// The name of the sub public delegated prefix.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [PublicDelegatedPrefixPublicDelegatedSubPrefix].
   /// [allocatablePrefixLength] The allocatable prefix length supported by this PublicDelegatedSubPrefix.
@@ -52,7 +52,7 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefix {
 
   factory PublicDelegatedPrefixPublicDelegatedSubPrefix.fromMap(Map<String, dynamic> map) {
     return PublicDelegatedPrefixPublicDelegatedSubPrefix(
-      allocatablePrefixLength: (() { final guardedValue = map['allocatablePrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      allocatablePrefixLength: (() { final guardedValue = map['allocatablePrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       delegateeProject: (() { final guardedValue = map['delegateeProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipCidrRange: (() { final guardedValue = map['ipCidrRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

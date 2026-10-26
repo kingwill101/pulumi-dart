@@ -64,10 +64,10 @@ class PipelineResourcesResponse {
     return PipelineResourcesResponse(
       acceleratorCount: pulumi.Input.fromValue(map['acceleratorCount'] as String),
       acceleratorType: pulumi.Input.fromValue(map['acceleratorType'] as String),
-      bootDiskSizeGb: pulumi.Input.fromValue(map['bootDiskSizeGb'] as int),
+      bootDiskSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bootDiskSizeGb'])),
       disks: pulumi.Input.fromValue(pulumi.Input.decodeList<DiskResponse>(map['disks']!, (value) => DiskResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      minimumCpuCores: pulumi.Input.fromValue(map['minimumCpuCores'] as int),
-      minimumRamGb: pulumi.Input.fromValue(map['minimumRamGb'] as double),
+      minimumCpuCores: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minimumCpuCores'])),
+      minimumRamGb: pulumi.Input.fromValue((map['minimumRamGb'] as num).toDouble()),
       noAddress: pulumi.Input.fromValue(map['noAddress'] as bool),
       preemptible: pulumi.Input.fromValue(map['preemptible'] as bool),
       zones: pulumi.Input.fromValue((map['zones'] as List).cast<String>()),

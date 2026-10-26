@@ -3,6 +3,7 @@ import 'filter_response.dart';
 import 'interconnect_attachment_response.dart';
 import 'policy_based_route_args.dart';
 import 'virtual_machine_response.dart';
+import 'warnings_response.dart';
 
 /// Creates a new policy-based route in a given project and location.
 /// Auto-naming is currently not supported for this resource.
@@ -41,7 +42,7 @@ class PolicyBasedRoute extends pulumi.CustomResource {
   /// Optional. VM instances to which this policy-based route applies to.
   late final pulumi.Output<VirtualMachineResponse> virtualMachine;
   /// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
-  late final pulumi.Output<List<Map<String, dynamic>>> warnings;
+  late final pulumi.Output<List<WarningsResponse>> warnings;
 
   /// Creates a new [PolicyBasedRoute].
   /// [name] The Pulumi resource name.
@@ -55,14 +56,14 @@ class PolicyBasedRoute extends pulumi.CustomResource {
           'google-native:networkconnectivity/v1:PolicyBasedRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['policyBasedRouteId', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     filter = registerOutput<FilterResponse>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     interconnectAttachment = registerOutput<InterconnectAttachmentResponse>('interconnectAttachment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectAttachmentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     nextHopIlbIp = registerOutput<String>('nextHopIlbIp');
@@ -74,6 +75,35 @@ class PolicyBasedRoute extends pulumi.CustomResource {
     selfLink = registerOutput<String>('selfLink');
     updateTime = registerOutput<String>('updateTime');
     virtualMachine = registerOutput<VirtualMachineResponse>('virtualMachine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    warnings = registerOutput<List<Map<String, dynamic>>>('warnings');
+    warnings = registerOutput<List<WarningsResponse>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WarningsResponse>(guardedValue, (value) => WarningsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [PolicyBasedRoute] resource.
+  PolicyBasedRoute.reference(String urn)
+    : super(
+        'google-native:networkconnectivity/v1:PolicyBasedRoute',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    filter = registerOutput<FilterResponse>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    interconnectAttachment = registerOutput<InterconnectAttachmentResponse>('interconnectAttachment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectAttachmentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    nextHopIlbIp = registerOutput<String>('nextHopIlbIp');
+    nextHopOtherRoutes = registerOutput<String>('nextHopOtherRoutes');
+    policyBasedRouteId = registerOutput<String>('policyBasedRouteId');
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    updateTime = registerOutput<String>('updateTime');
+    virtualMachine = registerOutput<VirtualMachineResponse>('virtualMachine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    warnings = registerOutput<List<WarningsResponse>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WarningsResponse>(guardedValue, (value) => WarningsResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

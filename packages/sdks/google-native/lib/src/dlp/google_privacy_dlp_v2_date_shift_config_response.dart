@@ -40,8 +40,8 @@ class GooglePrivacyDlpV2DateShiftConfigResponse {
     return GooglePrivacyDlpV2DateShiftConfigResponse(
       context: pulumi.Input.fromValue(GooglePrivacyDlpV2FieldIdResponse.fromMap((map['context']! as Map).cast<String, dynamic>())),
       cryptoKey: pulumi.Input.fromValue(GooglePrivacyDlpV2CryptoKeyResponse.fromMap((map['cryptoKey']! as Map).cast<String, dynamic>())),
-      lowerBoundDays: pulumi.Input.fromValue(map['lowerBoundDays'] as int),
-      upperBoundDays: pulumi.Input.fromValue(map['upperBoundDays'] as int),
+      lowerBoundDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lowerBoundDays'])),
+      upperBoundDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['upperBoundDays'])),
     );
   }
 }

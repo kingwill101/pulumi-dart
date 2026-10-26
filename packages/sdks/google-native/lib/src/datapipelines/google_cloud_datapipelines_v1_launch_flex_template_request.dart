@@ -12,7 +12,7 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest {
   /// The ID of the Cloud Platform project that the job belongs to.
   final pulumi.Input<String> project;
   /// If true, the request is validated but not actually executed. Defaults to false.
-  final pulumi.Input<bool>? validateOnly;
+  final pulumi.Input<bool?>? validateOnly;
 
   /// Creates a new [GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest].
   /// [launchParameter] Parameter to launch a job from a Flex Template.

@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'execution_response.dart';
 import 'execution_template_response.dart';
 import 'schedule_args.dart';
 
@@ -20,7 +21,7 @@ class Schedule extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   /// The most recent execution names triggered from this schedule and their corresponding states.
-  late final pulumi.Output<List<Map<String, dynamic>>> recentExecutions;
+  late final pulumi.Output<List<ExecutionResponse>> recentExecutions;
   /// Required. User-defined unique ID of this schedule.
   late final pulumi.Output<String> scheduleId;
   late final pulumi.Output<String> state;
@@ -41,7 +42,7 @@ class Schedule extends pulumi.CustomResource {
           'google-native:notebooks/v1:Schedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'scheduleId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     cronSchedule = registerOutput<String>('cronSchedule');
@@ -51,7 +52,31 @@ class Schedule extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    recentExecutions = registerOutput<List<Map<String, dynamic>>>('recentExecutions');
+    recentExecutions = registerOutput<List<ExecutionResponse>>('recentExecutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExecutionResponse>(guardedValue, (value) => ExecutionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    scheduleId = registerOutput<String>('scheduleId');
+    state = registerOutput<String>('state');
+    timeZone = registerOutput<String>('timeZone');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Schedule] resource.
+  Schedule.reference(String urn)
+    : super(
+        'google-native:notebooks/v1:Schedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    cronSchedule = registerOutput<String>('cronSchedule');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    executionTemplate = registerOutput<ExecutionTemplateResponse>('executionTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExecutionTemplateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    recentExecutions = registerOutput<List<ExecutionResponse>>('recentExecutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExecutionResponse>(guardedValue, (value) => ExecutionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     scheduleId = registerOutput<String>('scheduleId');
     state = registerOutput<String>('state');
     timeZone = registerOutput<String>('timeZone');

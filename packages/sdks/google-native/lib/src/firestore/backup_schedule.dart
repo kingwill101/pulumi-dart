@@ -32,8 +32,27 @@ class BackupSchedule extends pulumi.CustomResource {
           'google-native:firestore/v1:BackupSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['databaseId', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    dailyRecurrence = registerOutput<Map<String, dynamic>>('dailyRecurrence');
+    databaseId = registerOutput<String>('databaseId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    retention = registerOutput<String>('retention');
+    updateTime = registerOutput<String>('updateTime');
+    weeklyRecurrence = registerOutput<GoogleFirestoreAdminV1WeeklyRecurrenceResponse>('weeklyRecurrence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleFirestoreAdminV1WeeklyRecurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [BackupSchedule] resource.
+  BackupSchedule.reference(String urn)
+    : super(
+        'google-native:firestore/v1:BackupSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     dailyRecurrence = registerOutput<Map<String, dynamic>>('dailyRecurrence');
     databaseId = registerOutput<String>('databaseId');

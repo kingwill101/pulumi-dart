@@ -8,31 +8,31 @@ import 'feature_resource_state_response.dart';
 /// Result data returned by getFeature.
 class GetFeatureResult {
   /// When the Feature resource was created.
-  final String createTime;
+  final String? createTime;
   /// When the Feature resource was deleted.
-  final String deleteTime;
+  final String? deleteTime;
   /// Optional. Feature configuration applicable to all memberships of the fleet.
-  final CommonFleetDefaultMemberConfigSpecResponse fleetDefaultMemberConfig;
+  final CommonFleetDefaultMemberConfigSpecResponse? fleetDefaultMemberConfig;
   /// Labels for this Feature.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
-  final Map<String, String> membershipSpecs;
+  final Map<String, String>? membershipSpecs;
   /// Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
-  final Map<String, String> membershipStates;
+  final Map<String, String>? membershipStates;
   /// The full, unique name of this Feature resource in the format `projects/*/locations/*/features/*`.
-  final String name;
+  final String? name;
   /// State of the Feature resource itself.
-  final FeatureResourceStateResponse resourceState;
+  final FeatureResourceStateResponse? resourceState;
   /// Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
-  final Map<String, String> scopeSpecs;
+  final Map<String, String>? scopeSpecs;
   /// Scope-specific Feature status. If this Feature does report any per-Scope status, this field may be unused. The keys indicate which Scope the state is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project.
-  final Map<String, String> scopeStates;
+  final Map<String, String>? scopeStates;
   /// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
-  final CommonFeatureSpecResponse spec;
+  final CommonFeatureSpecResponse? spec;
   /// The Hub-wide Feature state.
-  final CommonFeatureStateResponse state;
+  final CommonFeatureStateResponse? state;
   /// When the Feature resource was last updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetFeatureResult].
   /// [createTime] When the Feature resource was created.
@@ -49,54 +49,54 @@ class GetFeatureResult {
   /// [state] The Hub-wide Feature state.
   /// [updateTime] When the Feature resource was last updated.
   const GetFeatureResult({
-    required this.createTime,
-    required this.deleteTime,
-    required this.fleetDefaultMemberConfig,
-    required this.labels,
-    required this.membershipSpecs,
-    required this.membershipStates,
-    required this.name,
-    required this.resourceState,
-    required this.scopeSpecs,
-    required this.scopeStates,
-    required this.spec,
-    required this.state,
-    required this.updateTime,
+    this.createTime,
+    this.deleteTime,
+    this.fleetDefaultMemberConfig,
+    this.labels,
+    this.membershipSpecs,
+    this.membershipStates,
+    this.name,
+    this.resourceState,
+    this.scopeSpecs,
+    this.scopeStates,
+    this.spec,
+    this.state,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'deleteTime': deleteTime,
-      'fleetDefaultMemberConfig': fleetDefaultMemberConfig.toMap(),
-      'labels': labels,
-      'membershipSpecs': membershipSpecs,
-      'membershipStates': membershipStates,
-      'name': name,
-      'resourceState': resourceState.toMap(),
-      'scopeSpecs': scopeSpecs,
-      'scopeStates': scopeStates,
-      'spec': spec.toMap(),
-      'state': state.toMap(),
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'fleetDefaultMemberConfig': ?fleetDefaultMemberConfig?.toMap(),
+      'labels': ?labels,
+      'membershipSpecs': ?membershipSpecs,
+      'membershipStates': ?membershipStates,
+      'name': ?name,
+      'resourceState': ?resourceState?.toMap(),
+      'scopeSpecs': ?scopeSpecs,
+      'scopeStates': ?scopeStates,
+      'spec': ?spec?.toMap(),
+      'state': ?state?.toMap(),
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetFeatureResult.fromMap(Map<String, dynamic> map) {
     return GetFeatureResult(
-      createTime: map['createTime'] as String,
-      deleteTime: map['deleteTime'] as String,
-      fleetDefaultMemberConfig: CommonFleetDefaultMemberConfigSpecResponse.fromMap((map['fleetDefaultMemberConfig']! as Map).cast<String, dynamic>()),
-      labels: (map['labels'] as Map).cast<String, String>(),
-      membershipSpecs: (map['membershipSpecs'] as Map).cast<String, String>(),
-      membershipStates: (map['membershipStates'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      resourceState: FeatureResourceStateResponse.fromMap((map['resourceState']! as Map).cast<String, dynamic>()),
-      scopeSpecs: (map['scopeSpecs'] as Map).cast<String, String>(),
-      scopeStates: (map['scopeStates'] as Map).cast<String, String>(),
-      spec: CommonFeatureSpecResponse.fromMap((map['spec']! as Map).cast<String, dynamic>()),
-      state: CommonFeatureStateResponse.fromMap((map['state']! as Map).cast<String, dynamic>()),
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fleetDefaultMemberConfig: (() { final guardedValue = map['fleetDefaultMemberConfig']; if (guardedValue == null) return null; return CommonFleetDefaultMemberConfigSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      membershipSpecs: (() { final guardedValue = map['membershipSpecs']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      membershipStates: (() { final guardedValue = map['membershipStates']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceState: (() { final guardedValue = map['resourceState']; if (guardedValue == null) return null; return FeatureResourceStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      scopeSpecs: (() { final guardedValue = map['scopeSpecs']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      scopeStates: (() { final guardedValue = map['scopeStates']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return CommonFeatureSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return CommonFeatureStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

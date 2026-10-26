@@ -56,7 +56,7 @@ class ConnectionProfile extends pulumi.CustomResource {
           'google-native:datamigration/v1:ConnectionProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['connectionProfileId', 'location', 'project']).merge(options),
         ) {
     alloydb = registerOutput<AlloyDbConnectionProfileResponse>('alloydb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlloyDbConnectionProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudsql = registerOutput<CloudSqlConnectionProfileResponse>('cloudsql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudSqlConnectionProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -64,7 +64,36 @@ class ConnectionProfile extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     error = registerOutput<StatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    mysql = registerOutput<MySqlConnectionProfileResponse>('mysql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MySqlConnectionProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    oracle = registerOutput<OracleConnectionProfileResponse>('oracle', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OracleConnectionProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    postgresql = registerOutput<PostgreSqlConnectionProfileResponse>('postgresql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PostgreSqlConnectionProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    provider = registerOutput<String>('provider');
+    requestId = registerOutput<String?>('requestId');
+    skipValidation = registerOutput<bool?>('skipValidation');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ConnectionProfile] resource.
+  ConnectionProfile.reference(String urn)
+    : super(
+        'google-native:datamigration/v1:ConnectionProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alloydb = registerOutput<AlloyDbConnectionProfileResponse>('alloydb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlloyDbConnectionProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudsql = registerOutput<CloudSqlConnectionProfileResponse>('cloudsql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudSqlConnectionProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectionProfileId = registerOutput<String>('connectionProfileId');
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    error = registerOutput<StatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     mysql = registerOutput<MySqlConnectionProfileResponse>('mysql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MySqlConnectionProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

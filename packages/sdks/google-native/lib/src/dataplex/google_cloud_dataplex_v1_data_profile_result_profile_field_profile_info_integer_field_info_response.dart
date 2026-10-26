@@ -41,11 +41,11 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldI
 
   factory GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse(
-      average: pulumi.Input.fromValue(map['average'] as double),
+      average: pulumi.Input.fromValue((map['average'] as num).toDouble()),
       max: pulumi.Input.fromValue(map['max'] as String),
       min: pulumi.Input.fromValue(map['min'] as String),
       quartiles: pulumi.Input.fromValue((map['quartiles'] as List).cast<String>()),
-      standardDeviation: pulumi.Input.fromValue(map['standardDeviation'] as double),
+      standardDeviation: pulumi.Input.fromValue((map['standardDeviation'] as num).toDouble()),
     );
   }
 }

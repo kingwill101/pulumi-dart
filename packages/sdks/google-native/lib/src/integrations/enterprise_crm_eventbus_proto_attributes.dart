@@ -9,20 +9,20 @@ import 'enterprise_crm_eventbus_proto_value_type.dart';
 /// Attributes are additional options that can be associated with each event property. For more information, see
 class EnterpriseCrmEventbusProtoAttributes {
   /// Things like URL, Email, Currency, Timestamp (rather than string, int64...)
-  final pulumi.Input<EnterpriseCrmEventbusProtoAttributesDataType>? dataType;
+  final pulumi.Input<EnterpriseCrmEventbusProtoAttributesDataType?>? dataType;
   /// Used to define defaults.
-  final pulumi.Input<EnterpriseCrmEventbusProtoValueType>? defaultValue;
+  final pulumi.Input<EnterpriseCrmEventbusProtoValueType?>? defaultValue;
   /// Required for event execution. The validation will be done by the event bus when the event is triggered.
-  final pulumi.Input<bool>? isRequired;
+  final pulumi.Input<bool?>? isRequired;
   /// Used to indicate if a ParameterEntry should be converted to ParamIndexes for ST-Spanner full-text search. DEPRECATED: use searchable.
-  final pulumi.Input<bool>? isSearchable;
+  final pulumi.Input<bool?>? isSearchable;
   /// See
-  final pulumi.Input<EnterpriseCrmEventbusProtoLogSettings>? logSettings;
+  final pulumi.Input<EnterpriseCrmEventbusProtoLogSettings?>? logSettings;
   /// Used to indicate if the ParameterEntry is a read only field or not.
-  final pulumi.Input<bool>? readOnly;
-  final pulumi.Input<EnterpriseCrmEventbusProtoAttributesSearchable>? searchable;
+  final pulumi.Input<bool?>? readOnly;
+  final pulumi.Input<EnterpriseCrmEventbusProtoAttributesSearchable?>? searchable;
   /// List of tasks that can view this property, if empty then all.
-  final pulumi.Input<List<String>>? taskVisibility;
+  final pulumi.Input<List<String>?>? taskVisibility;
 
   /// Creates a new [EnterpriseCrmEventbusProtoAttributes].
   /// [dataType] Things like URL, Email, Currency, Timestamp (rather than string, int64...)

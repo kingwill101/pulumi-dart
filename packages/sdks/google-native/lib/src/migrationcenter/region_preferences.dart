@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The user preferences relating to target regions.
 class RegionPreferences {
   /// A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
-  final pulumi.Input<List<String>>? preferredRegions;
+  final pulumi.Input<List<String>?>? preferredRegions;
 
   /// Creates a new [RegionPreferences].
   /// [preferredRegions] A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.

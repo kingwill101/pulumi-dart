@@ -10,40 +10,40 @@ import 'google_cloud_apigee_v1_report_property.dart';
 /// {@macro pulumi_apigee_v1_report_args_doc}
 class ReportArgs {
   /// This field contains the chart type for the report
-  final pulumi.Input<String>? chartType;
+  final pulumi.Input<String?>? chartType;
   /// Legacy field: not used. This field contains a list of comments associated with custom report
-  final pulumi.Input<List<String>>? comments;
+  final pulumi.Input<List<String>?>? comments;
   /// This contains the list of dimensions for the report
-  final pulumi.Input<List<String>>? dimensions;
+  final pulumi.Input<List<String>?>? dimensions;
   /// This is the display name for the report
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// This field contains the filter expression
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// Legacy field: not used. Contains the from time for the report
-  final pulumi.Input<String>? fromTime;
+  final pulumi.Input<String?>? fromTime;
   /// Legacy field: not used This field contains the limit for the result retrieved
-  final pulumi.Input<String>? limit;
+  final pulumi.Input<String?>? limit;
   /// This contains the list of metrics
   final pulumi.Input<List<GoogleCloudApigeeV1CustomReportMetric>> metrics;
   /// Unique identifier for the report T his is a legacy field used to encode custom report unique id
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Legacy field: not used. This field contains the offset for the data
-  final pulumi.Input<String>? offset;
+  final pulumi.Input<String?>? offset;
   final pulumi.Input<String> organizationId;
   /// This field contains report properties such as ui metadata etc.
-  final pulumi.Input<List<GoogleCloudApigeeV1ReportProperty>>? properties;
+  final pulumi.Input<List<GoogleCloudApigeeV1ReportProperty>?>? properties;
   /// Legacy field: not used much. Contains the list of sort by columns
-  final pulumi.Input<List<String>>? sortByCols;
+  final pulumi.Input<List<String>?>? sortByCols;
   /// Legacy field: not used much. Contains the sort order for the sort columns
-  final pulumi.Input<String>? sortOrder;
+  final pulumi.Input<String?>? sortOrder;
   /// Legacy field: not used. This field contains a list of tags associated with custom report
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// This field contains the time unit of aggregation for the report
-  final pulumi.Input<String>? timeUnit;
+  final pulumi.Input<String?>? timeUnit;
   /// Legacy field: not used. Contains the end time for the report
-  final pulumi.Input<String>? toTime;
+  final pulumi.Input<String?>? toTime;
   /// Legacy field: not used. This field contains the top k parameter value for restricting the result
-  final pulumi.Input<String>? topk;
+  final pulumi.Input<String?>? topk;
 
   /// Creates a new [ReportArgs].
   /// [chartType] This field contains the chart type for the report

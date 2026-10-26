@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_datastream_v1alpha1_get_stream_datastream_v1alpha1_args_doc}
 class GetStreamDatastreamV1alpha1Args {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> streamId;
 
   /// Creates a new [GetStreamDatastreamV1alpha1Args].

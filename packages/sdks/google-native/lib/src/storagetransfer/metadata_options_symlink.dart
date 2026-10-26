@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
-enum MetadataOptionsSymlink {
+enum MetadataOptionsSymlink implements pulumi.PulumiEnum<String> {
   symlinkUnspecified("SYMLINK_UNSPECIFIED"),
   symlinkSkip("SYMLINK_SKIP"),
   symlinkPreserve("SYMLINK_PRESERVE");
 
   const MetadataOptionsSymlink(this.wireValue);
+  @override
   final String wireValue;
 
   static MetadataOptionsSymlink fromValue(String value) {

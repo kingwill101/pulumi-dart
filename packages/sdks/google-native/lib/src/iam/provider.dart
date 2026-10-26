@@ -47,10 +47,36 @@ class Provider extends pulumi.CustomResource {
           'google-native:iam/v1:Provider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'workloadIdentityPoolId', 'workloadIdentityPoolProviderId']).merge(options),
         ) {
     attributeCondition = registerOutput<String>('attributeCondition');
-    attributeMapping = registerOutput<Map<String, String>>('attributeMapping');
+    attributeMapping = registerOutput<Map<String, String>>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    aws = registerOutput<AwsResponse>('aws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    disabled = registerOutput<bool>('disabled');
+    displayName = registerOutput<String>('displayName');
+    expireTime = registerOutput<String>('expireTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    oidc = registerOutput<OidcResponse>('oidc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OidcResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    saml = registerOutput<SamlResponse>('saml', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SamlResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
+    workloadIdentityPoolProviderId = registerOutput<String>('workloadIdentityPoolProviderId');
+  }
+
+  /// Creates a typed reference to an existing [Provider] resource.
+  Provider.reference(String urn)
+    : super(
+        'google-native:iam/v1:Provider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attributeCondition = registerOutput<String>('attributeCondition');
+    attributeMapping = registerOutput<Map<String, String>>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     aws = registerOutput<AwsResponse>('aws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     disabled = registerOutput<bool>('disabled');

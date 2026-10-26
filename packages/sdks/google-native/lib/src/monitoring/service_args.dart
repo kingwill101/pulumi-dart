@@ -19,37 +19,37 @@ import 'telemetry.dart';
 /// {@macro pulumi_monitoring_v3_service_args_doc}
 class ServiceArgs {
   /// Type used for App Engine services.
-  final pulumi.Input<AppEngine>? appEngine;
+  final pulumi.Input<AppEngine?>? appEngine;
   /// Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
-  final pulumi.Input<BasicService>? basicService;
+  final pulumi.Input<BasicService?>? basicService;
   /// Type used for Cloud Endpoints services.
-  final pulumi.Input<CloudEndpoints>? cloudEndpoints;
+  final pulumi.Input<CloudEndpoints?>? cloudEndpoints;
   /// Type used for Cloud Run services.
-  final pulumi.Input<CloudRun>? cloudRun;
+  final pulumi.Input<CloudRun?>? cloudRun;
   /// Type used for Istio services that live in a Kubernetes cluster.
-  final pulumi.Input<ClusterIstio>? clusterIstio;
+  final pulumi.Input<ClusterIstio?>? clusterIstio;
   /// Custom service type.
-  final pulumi.Input<Map<String, dynamic>>? custom;
+  final pulumi.Input<Map<String, dynamic>?>? custom;
   /// Name used for UI elements listing this Service.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Type used for GKE Namespaces.
-  final pulumi.Input<GkeNamespace>? gkeNamespace;
+  final pulumi.Input<GkeNamespace?>? gkeNamespace;
   /// Type used for GKE Services (the Kubernetes concept of a service).
-  final pulumi.Input<GkeService>? gkeService;
+  final pulumi.Input<GkeService?>? gkeService;
   /// Type used for GKE Workloads.
-  final pulumi.Input<GkeWorkload>? gkeWorkload;
+  final pulumi.Input<GkeWorkload?>? gkeWorkload;
   /// Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
-  final pulumi.Input<IstioCanonicalService>? istioCanonicalService;
+  final pulumi.Input<IstioCanonicalService?>? istioCanonicalService;
   /// Type used for Istio services scoped to an Istio mesh.
-  final pulumi.Input<MeshIstio>? meshIstio;
+  final pulumi.Input<MeshIstio?>? meshIstio;
   /// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Optional. The Service id to use for this Service. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
-  final pulumi.Input<String>? serviceId;
+  final pulumi.Input<String?>? serviceId;
   /// Configuration for how to query telemetry on a Service.
-  final pulumi.Input<Telemetry>? telemetry;
+  final pulumi.Input<Telemetry?>? telemetry;
   /// Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
-  final pulumi.Input<Map<String, String>>? userLabels;
+  final pulumi.Input<Map<String, String>?>? userLabels;
   final pulumi.Input<String> v3Id;
   final pulumi.Input<String> v3Id1;
 

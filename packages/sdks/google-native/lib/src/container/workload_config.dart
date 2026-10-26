@@ -6,7 +6,7 @@ import 'workload_config_audit_mode.dart';
 /// WorkloadConfig defines the flags to enable or disable the workload configurations for the cluster.
 class WorkloadConfig {
   /// Sets which mode of auditing should be used for the cluster's workloads.
-  final pulumi.Input<WorkloadConfigAuditMode>? auditMode;
+  final pulumi.Input<WorkloadConfigAuditMode?>? auditMode;
 
   /// Creates a new [WorkloadConfig].
   /// [auditMode] Sets which mode of auditing should be used for the cluster's workloads.

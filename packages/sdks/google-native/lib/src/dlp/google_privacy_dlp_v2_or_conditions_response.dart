@@ -27,7 +27,7 @@ class GooglePrivacyDlpV2OrConditionsResponse {
   factory GooglePrivacyDlpV2OrConditionsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2OrConditionsResponse(
       minAge: pulumi.Input.fromValue(map['minAge'] as String),
-      minRowCount: pulumi.Input.fromValue(map['minRowCount'] as int),
+      minRowCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minRowCount'])),
     );
   }
 }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The state of this Execution. This is a property of the Execution, and does not imply or capture any ongoing process. This property is managed by clients (such as Vertex AI Pipelines) and the system does not prescribe or check the validity of state transitions.
-enum ExecutionState {
+enum ExecutionState implements pulumi.PulumiEnum<String> {
   stateUnspecified("STATE_UNSPECIFIED"),
   new_("NEW"),
   running("RUNNING"),
@@ -9,6 +11,7 @@ enum ExecutionState {
   cancelled("CANCELLED");
 
   const ExecutionState(this.wireValue);
+  @override
   final String wireValue;
 
   static ExecutionState fromValue(String value) {

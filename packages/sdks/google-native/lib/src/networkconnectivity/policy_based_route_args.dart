@@ -12,30 +12,30 @@ import 'virtual_machine.dart';
 /// {@macro pulumi_networkconnectivity_v1_policy_based_route_args_doc}
 class PolicyBasedRouteArgs {
   /// Optional. An optional description of this resource. Provide this field when you create the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The filter to match L4 traffic.
   final pulumi.Input<Filter> filter;
   /// Optional. The interconnect attachments that this policy-based route applies to.
-  final pulumi.Input<InterconnectAttachment>? interconnectAttachment;
+  final pulumi.Input<InterconnectAttachment?>? interconnectAttachment;
   /// User-defined labels.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Immutable. A unique name of the resource in the form of `projects/{project_number}/locations/global/PolicyBasedRoutes/{policy_based_route_id}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
   final pulumi.Input<String> network;
   /// Optional. The IP address of a global-access-enabled L4 ILB that is the next hop for matching packets. For this version, only nextHopIlbIp is supported.
-  final pulumi.Input<String>? nextHopIlbIp;
+  final pulumi.Input<String?>? nextHopIlbIp;
   /// Optional. Other routes that will be referenced to determine the next hop of the packet.
-  final pulumi.Input<PolicyBasedRouteNextHopOtherRoutes>? nextHopOtherRoutes;
+  final pulumi.Input<PolicyBasedRouteNextHopOtherRoutes?>? nextHopOtherRoutes;
   /// Required. Unique id for the policy-based route to create.
   final pulumi.Input<String> policyBasedRouteId;
   /// Optional. The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
-  final pulumi.Input<int>? priority;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<int?>? priority;
+  final pulumi.Input<String?>? project;
   /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Optional. VM instances to which this policy-based route applies to.
-  final pulumi.Input<VirtualMachine>? virtualMachine;
+  final pulumi.Input<VirtualMachine?>? virtualMachine;
 
   /// Creates a new [PolicyBasedRouteArgs].
   /// [description] Optional. An optional description of this resource. Provide this field when you create the resource.
@@ -96,7 +96,7 @@ class PolicyBasedRouteArgs {
       nextHopIlbIp: (() { final guardedValue = map['nextHopIlbIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nextHopOtherRoutes: (() { final guardedValue = map['nextHopOtherRoutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyBasedRouteNextHopOtherRoutes.fromValue(guardedValue as String)); })(),
       policyBasedRouteId: pulumi.Input.fromValue(map['policyBasedRouteId'] as String),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       requestId: (() { final guardedValue = map['requestId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       virtualMachine: (() { final guardedValue = map['virtualMachine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachine.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -10,10 +10,10 @@ import 'job_reference.dart';
 /// {@macro pulumi_bigquery_v2_job_args_doc}
 class JobArgs {
   /// [Required] Describes the job configuration.
-  final pulumi.Input<JobConfiguration>? configuration;
+  final pulumi.Input<JobConfiguration?>? configuration;
   /// [Optional] Reference describing the unique-per-user name of the job.
-  final pulumi.Input<JobReference>? jobReference;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<JobReference?>? jobReference;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<dynamic>? source;
 
   /// Creates a new [JobArgs].

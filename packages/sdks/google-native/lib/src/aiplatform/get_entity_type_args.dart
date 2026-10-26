@@ -10,7 +10,7 @@ class GetEntityTypeArgs {
   final pulumi.Input<String> entityTypeId;
   final pulumi.Input<String> featurestoreId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetEntityTypeArgs].
   /// [entityTypeId] Required.

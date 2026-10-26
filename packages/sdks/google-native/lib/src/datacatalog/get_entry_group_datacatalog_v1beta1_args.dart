@@ -9,8 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEntryGroupDatacatalogV1beta1Args {
   final pulumi.Input<String> entryGroupId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? readMask;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? readMask;
 
   /// Creates a new [GetEntryGroupDatacatalogV1beta1Args].
   /// [entryGroupId] Required.

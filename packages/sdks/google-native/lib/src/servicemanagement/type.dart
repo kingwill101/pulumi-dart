@@ -9,19 +9,19 @@ import 'type_syntax.dart';
 /// A protocol buffer message type.
 class Type {
   /// The source edition string, only valid when syntax is SYNTAX_EDITIONS.
-  final pulumi.Input<String>? edition;
+  final pulumi.Input<String?>? edition;
   /// The list of fields.
-  final pulumi.Input<List<Field>>? fields;
+  final pulumi.Input<List<Field>?>? fields;
   /// The fully qualified message name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The list of types appearing in `oneof` definitions in this type.
-  final pulumi.Input<List<String>>? oneofs;
+  final pulumi.Input<List<String>?>? oneofs;
   /// The protocol buffer options.
-  final pulumi.Input<List<Option>>? options;
+  final pulumi.Input<List<Option>?>? options;
   /// The source context.
-  final pulumi.Input<SourceContext>? sourceContext;
+  final pulumi.Input<SourceContext?>? sourceContext;
   /// The source syntax.
-  final pulumi.Input<TypeSyntax>? syntax;
+  final pulumi.Input<TypeSyntax?>? syntax;
 
   /// Creates a new [Type].
   /// [edition] The source edition string, only valid when syntax is SYNTAX_EDITIONS.

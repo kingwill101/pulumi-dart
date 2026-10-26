@@ -9,23 +9,23 @@ import 'private_cluster_config.dart';
 /// {@macro pulumi_workstations_v1_workstation_cluster_args_doc}
 class WorkstationClusterArgs {
   /// Optional. Client-specified annotations.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Optional. Human-readable name for this workstation cluster.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Identifier. Full name of this workstation cluster.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Optional. Configuration for private workstation cluster.
-  final pulumi.Input<PrivateClusterConfig>? privateClusterConfig;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<PrivateClusterConfig?>? privateClusterConfig;
+  final pulumi.Input<String?>? project;
   /// Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
-  final pulumi.Input<String>? subnetwork;
+  final pulumi.Input<String?>? subnetwork;
   /// Required. ID to use for the workstation cluster.
   final pulumi.Input<String> workstationClusterId;
 

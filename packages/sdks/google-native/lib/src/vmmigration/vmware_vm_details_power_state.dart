@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The power state of the VM at the moment list was taken.
-enum VmwareVmDetailsPowerState {
+enum VmwareVmDetailsPowerState implements pulumi.PulumiEnum<String> {
   powerStateUnspecified("POWER_STATE_UNSPECIFIED"),
   on("ON"),
   off("OFF"),
   suspended("SUSPENDED");
 
   const VmwareVmDetailsPowerState(this.wireValue);
+  @override
   final String wireValue;
 
   static VmwareVmDetailsPowerState fromValue(String value) {

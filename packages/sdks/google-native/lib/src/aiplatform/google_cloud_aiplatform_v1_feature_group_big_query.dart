@@ -8,7 +8,7 @@ class GoogleCloudAiplatformV1FeatureGroupBigQuery {
   /// Immutable. The BigQuery source URI that points to either a BigQuery Table or View.
   final pulumi.Input<GoogleCloudAiplatformV1BigQuerySource> bigQuerySource;
   /// Optional. Columns to construct entity_id / row keys. Currently only supports 1 entity_id_column. If not provided defaults to `entity_id`.
-  final pulumi.Input<List<String>>? entityIdColumns;
+  final pulumi.Input<List<String>?>? entityIdColumns;
 
   /// Creates a new [GoogleCloudAiplatformV1FeatureGroupBigQuery].
   /// [bigQuerySource] Immutable. The BigQuery source URI that points to either a BigQuery Table or View.

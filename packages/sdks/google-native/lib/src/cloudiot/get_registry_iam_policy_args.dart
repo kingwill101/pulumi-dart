@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudiot_v1_get_registry_iam_policy_args_doc}
 class GetRegistryIamPolicyArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> registryId;
 
   /// Creates a new [GetRegistryIamPolicyArgs].

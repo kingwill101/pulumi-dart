@@ -11,21 +11,21 @@ import 'google_cloud_dialogflow_v2beta1_entity_type_entity.dart';
 /// {@macro pulumi_dialogflow_v2beta1_entity_type_dialogflow_v2beta1_args_doc}
 class EntityTypeDialogflowV2beta1Args {
   /// Optional. Indicates whether the entity type can be automatically expanded.
-  final pulumi.Input<EntityTypeAutoExpansionModeDialogflowV2beta1>? autoExpansionMode;
+  final pulumi.Input<EntityTypeAutoExpansionModeDialogflowV2beta1?>? autoExpansionMode;
   /// The name of the entity type.
   final pulumi.Input<String> displayName;
   /// Optional. Enables fuzzy entity extraction during classification.
-  final pulumi.Input<bool>? enableFuzzyExtraction;
+  final pulumi.Input<bool?>? enableFuzzyExtraction;
   /// Optional. The collection of entity entries associated with the entity type.
-  final pulumi.Input<List<GoogleCloudDialogflowV2beta1EntityTypeEntity>>? entities;
+  final pulumi.Input<List<GoogleCloudDialogflowV2beta1EntityTypeEntity>?>? entities;
   /// Indicates the kind of entity type.
   final pulumi.Input<EntityTypeKindDialogflowV2beta1> kind;
   /// Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
-  final pulumi.Input<String>? languageCode;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? languageCode;
+  final pulumi.Input<String?>? location;
   /// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [EntityTypeDialogflowV2beta1Args].
   /// [autoExpansionMode] Optional. Indicates whether the entity type can be automatically expanded.

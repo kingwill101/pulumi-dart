@@ -6,11 +6,11 @@ import 'query_parameter_value.dart';
 
 class QueryParameter {
   /// [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// [Required] The type of this parameter.
-  final pulumi.Input<QueryParameterType>? parameterType;
+  final pulumi.Input<QueryParameterType?>? parameterType;
   /// [Required] The value of this parameter.
-  final pulumi.Input<QueryParameterValue>? parameterValue;
+  final pulumi.Input<QueryParameterValue?>? parameterValue;
 
   /// Creates a new [QueryParameter].
   /// [name] [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.

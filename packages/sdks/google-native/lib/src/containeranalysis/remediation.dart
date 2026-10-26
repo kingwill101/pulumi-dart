@@ -7,11 +7,11 @@ import 'remediation_remediation_type.dart';
 /// Specifies details on how to handle (and presumably, fix) a vulnerability.
 class Remediation {
   /// Contains a comprehensive human-readable discussion of the remediation.
-  final pulumi.Input<String>? details;
+  final pulumi.Input<String?>? details;
   /// The type of remediation that can be applied.
-  final pulumi.Input<RemediationRemediationType>? remediationType;
+  final pulumi.Input<RemediationRemediationType?>? remediationType;
   /// Contains the URL where to obtain the remediation.
-  final pulumi.Input<RelatedUrl>? remediationUri;
+  final pulumi.Input<RelatedUrl?>? remediationUri;
 
   /// Creates a new [Remediation].
   /// [details] Contains a comprehensive human-readable discussion of the remediation.

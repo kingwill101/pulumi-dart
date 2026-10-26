@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPhraseSetArgs {
   final pulumi.Input<String> location;
   final pulumi.Input<String> phraseSetId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetPhraseSetArgs].
   /// [location] Required.

@@ -27,7 +27,7 @@ class ScalingConfigResponse {
   factory ScalingConfigResponse.fromMap(Map<String, dynamic> map) {
     return ScalingConfigResponse(
       instanceSize: pulumi.Input.fromValue(map['instanceSize'] as String),
-      scalingFactor: pulumi.Input.fromValue(map['scalingFactor'] as double),
+      scalingFactor: pulumi.Input.fromValue((map['scalingFactor'] as num).toDouble()),
     );
   }
 }

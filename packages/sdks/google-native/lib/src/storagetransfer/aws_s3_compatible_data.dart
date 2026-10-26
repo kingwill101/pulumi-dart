@@ -10,11 +10,11 @@ class AwsS3CompatibleData {
   /// Specifies the endpoint of the storage service.
   final pulumi.Input<String> endpoint;
   /// Specifies the root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A S3 compatible metadata.
-  final pulumi.Input<S3CompatibleMetadata>? s3Metadata;
+  final pulumi.Input<S3CompatibleMetadata?>? s3Metadata;
 
   /// Creates a new [AwsS3CompatibleData].
   /// [bucketName] Specifies the name of the bucket.

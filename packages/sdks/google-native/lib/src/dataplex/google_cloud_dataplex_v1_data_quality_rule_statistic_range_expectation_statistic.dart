@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The aggregate metric to evaluate.
-enum GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic {
+enum GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic implements pulumi.PulumiEnum<String> {
   statisticUndefined("STATISTIC_UNDEFINED"),
   mean("MEAN"),
   min("MIN"),
   max("MAX");
 
   const GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic fromValue(String value) {

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for Hierarchy Controller
 class ConfigManagementHierarchyControllerConfig {
   /// Whether hierarchical resource quota is enabled in this cluster.
-  final pulumi.Input<bool>? enableHierarchicalResourceQuota;
+  final pulumi.Input<bool?>? enableHierarchicalResourceQuota;
   /// Whether pod tree labels are enabled in this cluster.
-  final pulumi.Input<bool>? enablePodTreeLabels;
+  final pulumi.Input<bool?>? enablePodTreeLabels;
   /// Whether Hierarchy Controller is enabled in this cluster.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ConfigManagementHierarchyControllerConfig].
   /// [enableHierarchicalResourceQuota] Whether hierarchical resource quota is enabled in this cluster.

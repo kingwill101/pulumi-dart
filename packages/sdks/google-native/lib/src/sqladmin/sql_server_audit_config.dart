@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SQL Server specific audit configuration.
 class SqlServerAuditConfig {
   /// The name of the destination bucket (e.g., gs://mybucket).
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// This is always sql#sqlServerAuditConfig
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// How long to keep generated audit files.
-  final pulumi.Input<String>? retentionInterval;
+  final pulumi.Input<String?>? retentionInterval;
   /// How often to upload generated audit files.
-  final pulumi.Input<String>? uploadInterval;
+  final pulumi.Input<String?>? uploadInterval;
 
   /// Creates a new [SqlServerAuditConfig].
   /// [bucket] The name of the destination bucket (e.g., gs://mybucket).

@@ -6,9 +6,9 @@ import 'exec_step_config_osconfig_v1beta.dart';
 /// A step that runs an executable for a PatchJob.
 class ExecStepOsconfigV1beta {
   /// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
-  final pulumi.Input<ExecStepConfigOsconfigV1beta>? linuxExecStepConfig;
+  final pulumi.Input<ExecStepConfigOsconfigV1beta?>? linuxExecStepConfig;
   /// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-  final pulumi.Input<ExecStepConfigOsconfigV1beta>? windowsExecStepConfig;
+  final pulumi.Input<ExecStepConfigOsconfigV1beta?>? windowsExecStepConfig;
 
   /// Creates a new [ExecStepOsconfigV1beta].
   /// [linuxExecStepConfig] The ExecStepConfig for all Linux VMs targeted by the PatchJob.

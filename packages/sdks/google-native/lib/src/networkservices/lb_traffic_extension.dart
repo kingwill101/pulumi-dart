@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'extension_chain_response.dart';
 import 'lb_traffic_extension_args.dart';
 
 /// Creates a new `LbTrafficExtension` resource in a given project and location.
@@ -8,7 +9,7 @@ class LbTrafficExtension extends pulumi.CustomResource {
   /// Optional. A human-readable description of the resource.
   late final pulumi.Output<String> description;
   /// A set of ordered extension chains that contain the match conditions and extensions to execute. Match conditions for each extension chain are evaluated in sequence for a given request. The first extension chain that has a condition that matches the request is executed. Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
-  late final pulumi.Output<List<Map<String, dynamic>>> extensionChains;
+  late final pulumi.Output<List<ExtensionChainResponse>> extensionChains;
   /// A list of references to the forwarding rules to which this service extension is attached to. At least one forwarding rule is required. There can be only one `LBTrafficExtension` resource per forwarding rule.
   late final pulumi.Output<List<String>> forwardingRules;
   /// Optional. Set of labels associated with the `LbTrafficExtension` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements).
@@ -38,13 +39,36 @@ class LbTrafficExtension extends pulumi.CustomResource {
           'google-native:networkservices/v1beta1:LbTrafficExtension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['lbTrafficExtensionId', 'location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
-    extensionChains = registerOutput<List<Map<String, dynamic>>>('extensionChains');
-    forwardingRules = registerOutput<List<String>>('forwardingRules');
-    labels = registerOutput<Map<String, String>>('labels');
+    extensionChains = registerOutput<List<ExtensionChainResponse>>('extensionChains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionChainResponse>(guardedValue, (value) => ExtensionChainResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    forwardingRules = registerOutput<List<String>>('forwardingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lbTrafficExtensionId = registerOutput<String>('lbTrafficExtensionId');
+    loadBalancingScheme = registerOutput<String>('loadBalancingScheme');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [LbTrafficExtension] resource.
+  LbTrafficExtension.reference(String urn)
+    : super(
+        'google-native:networkservices/v1beta1:LbTrafficExtension',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    extensionChains = registerOutput<List<ExtensionChainResponse>>('extensionChains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionChainResponse>(guardedValue, (value) => ExtensionChainResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    forwardingRules = registerOutput<List<String>>('forwardingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lbTrafficExtensionId = registerOutput<String>('lbTrafficExtensionId');
     loadBalancingScheme = registerOutput<String>('loadBalancingScheme');
     location = registerOutput<String>('location');

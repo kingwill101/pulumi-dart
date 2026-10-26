@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_logging_v2_get_metric_args_doc}
 class GetMetricArgs {
   final pulumi.Input<String> metricId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetMetricArgs].
   /// [metricId] Required.

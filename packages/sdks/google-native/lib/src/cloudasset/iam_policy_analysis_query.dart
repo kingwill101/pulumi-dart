@@ -10,15 +10,15 @@ import 'resource_selector.dart';
 /// IAM policy analysis query message.
 class IamPolicyAnalysisQuery {
   /// Optional. Specifies roles or permissions for analysis. This is optional.
-  final pulumi.Input<AccessSelector>? accessSelector;
+  final pulumi.Input<AccessSelector?>? accessSelector;
   /// Optional. The hypothetical context for IAM conditions evaluation.
-  final pulumi.Input<ConditionContext>? conditionContext;
+  final pulumi.Input<ConditionContext?>? conditionContext;
   /// Optional. Specifies an identity for analysis.
-  final pulumi.Input<IdentitySelector>? identitySelector;
+  final pulumi.Input<IdentitySelector?>? identitySelector;
   /// Optional. The query options.
-  final pulumi.Input<Options>? options;
+  final pulumi.Input<Options?>? options;
   /// Optional. Specifies a resource for analysis.
-  final pulumi.Input<ResourceSelector>? resourceSelector;
+  final pulumi.Input<ResourceSelector?>? resourceSelector;
   /// The relative name of the root asset. Only resources and IAM policies within the scope will be analyzed. This can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder or project id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
   final pulumi.Input<String> scope;
 

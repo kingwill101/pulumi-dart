@@ -27,11 +27,28 @@ class JobTemplate extends pulumi.CustomResource {
           'google-native:transcoder/v1:JobTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['jobTemplateId', 'location', 'project']).merge(options),
         ) {
     config = registerOutput<JobConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jobTemplateId = registerOutput<String>('jobTemplateId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [JobTemplate] resource.
+  JobTemplate.reference(String urn)
+    : super(
+        'google-native:transcoder/v1:JobTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    config = registerOutput<JobConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jobTemplateId = registerOutput<String>('jobTemplateId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

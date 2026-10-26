@@ -64,7 +64,7 @@ class PipelineJob extends pulumi.CustomResource {
           'google-native:aiplatform/v1:PipelineJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
@@ -72,14 +72,47 @@ class PipelineJob extends pulumi.CustomResource {
     endTime = registerOutput<String>('endTime');
     error = registerOutput<GoogleRpcStatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleRpcStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jobDetail = registerOutput<GoogleCloudAiplatformV1PipelineJobDetailResponse>('jobDetail', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1PipelineJobDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     pipelineJobId = registerOutput<String?>('pipelineJobId');
-    pipelineSpec = registerOutput<Map<String, String>>('pipelineSpec');
+    pipelineSpec = registerOutput<Map<String, String>>('pipelineSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     project = registerOutput<String>('project');
-    reservedIpRanges = registerOutput<List<String>>('reservedIpRanges');
+    reservedIpRanges = registerOutput<List<String>>('reservedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    runtimeConfig = registerOutput<GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse>('runtimeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scheduleName = registerOutput<String>('scheduleName');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    startTime = registerOutput<String>('startTime');
+    state = registerOutput<String>('state');
+    templateMetadata = registerOutput<GoogleCloudAiplatformV1PipelineTemplateMetadataResponse>('templateMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1PipelineTemplateMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    templateUri = registerOutput<String>('templateUri');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [PipelineJob] resource.
+  PipelineJob.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1:PipelineJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    encryptionSpec = registerOutput<GoogleCloudAiplatformV1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endTime = registerOutput<String>('endTime');
+    error = registerOutput<GoogleRpcStatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleRpcStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jobDetail = registerOutput<GoogleCloudAiplatformV1PipelineJobDetailResponse>('jobDetail', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1PipelineJobDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    pipelineJobId = registerOutput<String?>('pipelineJobId');
+    pipelineSpec = registerOutput<Map<String, String>>('pipelineSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    project = registerOutput<String>('project');
+    reservedIpRanges = registerOutput<List<String>>('reservedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     runtimeConfig = registerOutput<GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse>('runtimeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scheduleName = registerOutput<String>('scheduleName');
     serviceAccount = registerOutput<String>('serviceAccount');

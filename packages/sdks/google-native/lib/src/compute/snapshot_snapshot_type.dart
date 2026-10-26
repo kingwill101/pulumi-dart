@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates the type of the snapshot.
-enum SnapshotSnapshotType {
+enum SnapshotSnapshotType implements pulumi.PulumiEnum<String> {
   archive("ARCHIVE"),
   standard("STANDARD");
 
   const SnapshotSnapshotType(this.wireValue);
+  @override
   final String wireValue;
 
   static SnapshotSnapshotType fromValue(String value) {

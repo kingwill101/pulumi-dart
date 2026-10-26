@@ -26,7 +26,7 @@ class GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse {
 
   factory GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse(
-      confidence: pulumi.Input.fromValue(map['confidence'] as double),
+      confidence: pulumi.Input.fromValue((map['confidence'] as num).toDouble()),
       dialogflowIntentId: pulumi.Input.fromValue(map['dialogflowIntentId'] as String),
     );
   }

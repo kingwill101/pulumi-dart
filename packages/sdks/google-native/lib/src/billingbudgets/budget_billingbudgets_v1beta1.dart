@@ -3,6 +3,7 @@ import 'budget_billingbudgets_v1beta1_args.dart';
 import 'google_cloud_billing_budgets_v1beta1_all_updates_rule_response.dart';
 import 'google_cloud_billing_budgets_v1beta1_budget_amount_response.dart';
 import 'google_cloud_billing_budgets_v1beta1_filter_response.dart';
+import 'google_cloud_billing_budgets_v1beta1_threshold_rule_response.dart';
 
 /// Creates a new budget. See [Quotas and limits](https://cloud.google.com/billing/quotas) for more information on the limits of the number of budgets you can create.
 /// Auto-naming is currently not supported for this resource.
@@ -22,7 +23,7 @@ class BudgetBillingbudgetsV1beta1 extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> ownershipScope;
   /// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
-  late final pulumi.Output<List<Map<String, dynamic>>> thresholdRules;
+  late final pulumi.Output<List<GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse>> thresholdRules;
 
   /// Creates a new [BudgetBillingbudgetsV1beta1].
   /// [name] The Pulumi resource name.
@@ -36,7 +37,7 @@ class BudgetBillingbudgetsV1beta1 extends pulumi.CustomResource {
           'google-native:billingbudgets/v1beta1:Budget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['billingAccountId']).merge(options),
         ) {
     allUpdatesRule = registerOutput<GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse>('allUpdatesRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     amount = registerOutput<GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse>('amount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -46,6 +47,26 @@ class BudgetBillingbudgetsV1beta1 extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     ownershipScope = registerOutput<String>('ownershipScope');
-    thresholdRules = registerOutput<List<Map<String, dynamic>>>('thresholdRules');
+    thresholdRules = registerOutput<List<GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse>>('thresholdRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse>(guardedValue, (value) => GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [BudgetBillingbudgetsV1beta1] resource.
+  BudgetBillingbudgetsV1beta1.reference(String urn)
+    : super(
+        'google-native:billingbudgets/v1beta1:Budget',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allUpdatesRule = registerOutput<GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse>('allUpdatesRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    amount = registerOutput<GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse>('amount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    billingAccountId = registerOutput<String>('billingAccountId');
+    budgetFilter = registerOutput<GoogleCloudBillingBudgetsV1beta1FilterResponse>('budgetFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudBillingBudgetsV1beta1FilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    ownershipScope = registerOutput<String>('ownershipScope');
+    thresholdRules = registerOutput<List<GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse>>('thresholdRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse>(guardedValue, (value) => GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

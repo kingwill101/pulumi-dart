@@ -8,31 +8,31 @@ import 'packet_mirroring_network_info_response.dart';
 /// Result data returned by getPacketMirroring.
 class GetPacketMirroringResult {
   /// The Forwarding Rule resource of type loadBalancingScheme=INTERNAL that will be used as collector for mirrored traffic. The specified forwarding rule must have isMirroringCollector set to true.
-  final PacketMirroringForwardingRuleInfoResponse collectorIlb;
+  final PacketMirroringForwardingRuleInfoResponse? collectorIlb;
   /// Creation timestamp in RFC3339 text format.
-  final String creationTimestamp;
+  final String? creationTimestamp;
   /// An optional description of this resource. Provide this property when you create the resource.
-  final String description;
+  final String? description;
   /// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
-  final String enable;
+  final String? enable;
   /// Filter for mirrored traffic. If unspecified, all traffic is mirrored.
-  final PacketMirroringFilterResponse filter;
+  final PacketMirroringFilterResponse? filter;
   /// Type of the resource. Always compute#packetMirroring for packet mirrorings.
-  final String kind;
+  final String? kind;
   /// PacketMirroring mirroredResourceInfos. MirroredResourceInfo specifies a set of mirrored VM instances, subnetworks and/or tags for which traffic from/to all VM instances will be mirrored.
-  final PacketMirroringMirroredResourceInfoResponse mirroredResources;
+  final PacketMirroringMirroredResourceInfoResponse? mirroredResources;
   /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-  final String name;
+  final String? name;
   /// Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in the given network. All mirrored subnetworks should belong to the given network.
-  final PacketMirroringNetworkInfoResponse network;
+  final PacketMirroringNetworkInfoResponse? network;
   /// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
-  final int priority;
+  final int? priority;
   /// URI of the region where the packetMirroring resides.
-  final String region;
+  final String? region;
   /// Server-defined URL for the resource.
-  final String selfLink;
+  final String? selfLink;
   /// Server-defined URL for this resource with the resource id.
-  final String selfLinkWithId;
+  final String? selfLinkWithId;
 
   /// Creates a new [GetPacketMirroringResult].
   /// [collectorIlb] The Forwarding Rule resource of type loadBalancingScheme=INTERNAL that will be used as collector for mirrored traffic. The specified forwarding rule must have isMirroringCollector set to true.
@@ -49,54 +49,54 @@ class GetPacketMirroringResult {
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
   const GetPacketMirroringResult({
-    required this.collectorIlb,
-    required this.creationTimestamp,
-    required this.description,
-    required this.enable,
-    required this.filter,
-    required this.kind,
-    required this.mirroredResources,
-    required this.name,
-    required this.network,
-    required this.priority,
-    required this.region,
-    required this.selfLink,
-    required this.selfLinkWithId,
+    this.collectorIlb,
+    this.creationTimestamp,
+    this.description,
+    this.enable,
+    this.filter,
+    this.kind,
+    this.mirroredResources,
+    this.name,
+    this.network,
+    this.priority,
+    this.region,
+    this.selfLink,
+    this.selfLinkWithId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'collectorIlb': collectorIlb.toMap(),
-      'creationTimestamp': creationTimestamp,
-      'description': description,
-      'enable': enable,
-      'filter': filter.toMap(),
-      'kind': kind,
-      'mirroredResources': mirroredResources.toMap(),
-      'name': name,
-      'network': network.toMap(),
-      'priority': priority,
-      'region': region,
-      'selfLink': selfLink,
-      'selfLinkWithId': selfLinkWithId,
+      'collectorIlb': ?collectorIlb?.toMap(),
+      'creationTimestamp': ?creationTimestamp,
+      'description': ?description,
+      'enable': ?enable,
+      'filter': ?filter?.toMap(),
+      'kind': ?kind,
+      'mirroredResources': ?mirroredResources?.toMap(),
+      'name': ?name,
+      'network': ?network?.toMap(),
+      'priority': ?priority,
+      'region': ?region,
+      'selfLink': ?selfLink,
+      'selfLinkWithId': ?selfLinkWithId,
     };
   }
 
   factory GetPacketMirroringResult.fromMap(Map<String, dynamic> map) {
     return GetPacketMirroringResult(
-      collectorIlb: PacketMirroringForwardingRuleInfoResponse.fromMap((map['collectorIlb']! as Map).cast<String, dynamic>()),
-      creationTimestamp: map['creationTimestamp'] as String,
-      description: map['description'] as String,
-      enable: map['enable'] as String,
-      filter: PacketMirroringFilterResponse.fromMap((map['filter']! as Map).cast<String, dynamic>()),
-      kind: map['kind'] as String,
-      mirroredResources: PacketMirroringMirroredResourceInfoResponse.fromMap((map['mirroredResources']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      network: PacketMirroringNetworkInfoResponse.fromMap((map['network']! as Map).cast<String, dynamic>()),
-      priority: map['priority'] as int,
-      region: map['region'] as String,
-      selfLink: map['selfLink'] as String,
-      selfLinkWithId: map['selfLinkWithId'] as String,
+      collectorIlb: (() { final guardedValue = map['collectorIlb']; if (guardedValue == null) return null; return PacketMirroringForwardingRuleInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return PacketMirroringFilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      mirroredResources: (() { final guardedValue = map['mirroredResources']; if (guardedValue == null) return null; return PacketMirroringMirroredResourceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return PacketMirroringNetworkInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      selfLinkWithId: (() { final guardedValue = map['selfLinkWithId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

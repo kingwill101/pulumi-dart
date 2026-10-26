@@ -7,9 +7,9 @@ import 'image.dart';
 /// Overlay configuration.
 class Overlay {
   /// List of animations. The list should be chronological, without any time overlap.
-  final pulumi.Input<List<Animation>>? animations;
+  final pulumi.Input<List<Animation>?>? animations;
   /// Image overlay.
-  final pulumi.Input<Image>? image;
+  final pulumi.Input<Image?>? image;
 
   /// Creates a new [Overlay].
   /// [animations] List of animations. The list should be chronological, without any time overlap.

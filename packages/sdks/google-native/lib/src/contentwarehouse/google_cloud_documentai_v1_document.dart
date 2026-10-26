@@ -13,29 +13,29 @@ import 'google_rpc_status.dart';
 /// Document represents the canonical document resource in Document AI. It is an interchange format that provides insights into documents and allows for collaboration between users and Document AI to iterate and optimize for quality.
 class GoogleCloudDocumentaiV1Document {
   /// Optional. Inline document content, represented as a stream of bytes. Note: As with all `bytes` fields, protobuffers use a pure binary representation, whereas JSON representations use base64.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// A list of entities detected on Document.text. For document shards, entities in this list may cross shard boundaries.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentEntity>>? entities;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentEntity>?>? entities;
   /// Placeholder. Relationship among Document.entities.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentEntityRelation>>? entityRelations;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentEntityRelation>?>? entityRelations;
   /// Any error that occurred while processing this document.
-  final pulumi.Input<GoogleRpcStatus>? error;
+  final pulumi.Input<GoogleRpcStatus?>? error;
   /// An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml).
-  final pulumi.Input<String>? mimeType;
+  final pulumi.Input<String?>? mimeType;
   /// Visual page layout for the Document.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPage>>? pages;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPage>?>? pages;
   /// Placeholder. Revision history of this document.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentRevision>>? revisions;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentRevision>?>? revisions;
   /// Information about the sharding if this document is sharded part of a larger document. If the document is not sharded, this message is not specified.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentShardInfo>? shardInfo;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentShardInfo?>? shardInfo;
   /// Optional. UTF-8 encoded text in reading order from the document.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
   /// Placeholder. A list of text corrections made to Document.text. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentTextChange>>? textChanges;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentTextChange>?>? textChanges;
   /// Styles for the Document.text.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentStyle>>? textStyles;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentStyle>?>? textStyles;
   /// Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. For more information, refer to [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris).
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [GoogleCloudDocumentaiV1Document].
   /// [content] Optional. Inline document content, represented as a stream of bytes. Note: As with all `bytes` fields, protobuffers use a pure binary representation, whereas JSON representations use base64.

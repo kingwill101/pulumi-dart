@@ -6,7 +6,7 @@ import 'oracle_schema_datastream_v1alpha1.dart';
 /// Oracle database structure.
 class OracleRdbmsDatastreamV1alpha1 {
   /// Oracle schemas/databases in the database server.
-  final pulumi.Input<List<OracleSchemaDatastreamV1alpha1>>? oracleSchemas;
+  final pulumi.Input<List<OracleSchemaDatastreamV1alpha1>?>? oracleSchemas;
 
   /// Creates a new [OracleRdbmsDatastreamV1alpha1].
   /// [oracleSchemas] Oracle schemas/databases in the database server.

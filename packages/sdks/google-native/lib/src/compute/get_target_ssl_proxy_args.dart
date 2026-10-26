@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_alpha_get_target_ssl_proxy_args_doc}
 class GetTargetSslProxyArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> targetSslProxy;
 
   /// Creates a new [GetTargetSslProxyArgs].

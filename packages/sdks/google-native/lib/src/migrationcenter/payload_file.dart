@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Payload file for inline import job payload.
 class PayloadFile {
   /// The file data.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// The file name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [PayloadFile].
   /// [data] The file data.

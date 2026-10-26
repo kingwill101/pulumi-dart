@@ -14,33 +14,33 @@ import 'private_connectivity.dart';
 /// {@macro pulumi_datastream_v1_connection_profile_args_doc}
 class ConnectionProfileArgs {
   /// BigQuery Connection Profile configuration.
-  final pulumi.Input<Map<String, dynamic>>? bigqueryProfile;
+  final pulumi.Input<Map<String, dynamic>?>? bigqueryProfile;
   /// Required. The connection profile identifier.
   final pulumi.Input<String> connectionProfileId;
   /// Display name.
   final pulumi.Input<String> displayName;
   /// Optional. Create the connection profile without validating it.
-  final pulumi.Input<bool>? force;
+  final pulumi.Input<bool?>? force;
   /// Forward SSH tunnel connectivity.
-  final pulumi.Input<ForwardSshTunnelConnectivity>? forwardSshConnectivity;
+  final pulumi.Input<ForwardSshTunnelConnectivity?>? forwardSshConnectivity;
   /// Cloud Storage ConnectionProfile configuration.
-  final pulumi.Input<GcsProfile>? gcsProfile;
+  final pulumi.Input<GcsProfile?>? gcsProfile;
   /// Labels.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// MySQL ConnectionProfile configuration.
-  final pulumi.Input<MysqlProfile>? mysqlProfile;
+  final pulumi.Input<MysqlProfile?>? mysqlProfile;
   /// Oracle ConnectionProfile configuration.
-  final pulumi.Input<OracleProfile>? oracleProfile;
+  final pulumi.Input<OracleProfile?>? oracleProfile;
   /// PostgreSQL Connection Profile configuration.
-  final pulumi.Input<PostgresqlProfile>? postgresqlProfile;
+  final pulumi.Input<PostgresqlProfile?>? postgresqlProfile;
   /// Private connectivity.
-  final pulumi.Input<PrivateConnectivity>? privateConnectivity;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<PrivateConnectivity?>? privateConnectivity;
+  final pulumi.Input<String?>? project;
   /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Static Service IP connectivity.
-  final pulumi.Input<Map<String, dynamic>>? staticServiceIpConnectivity;
+  final pulumi.Input<Map<String, dynamic>?>? staticServiceIpConnectivity;
 
   /// Creates a new [ConnectionProfileArgs].
   /// [bigqueryProfile] BigQuery Connection Profile configuration.

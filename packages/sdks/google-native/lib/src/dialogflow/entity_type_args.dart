@@ -11,21 +11,21 @@ import 'google_cloud_dialogflow_v2_entity_type_entity.dart';
 /// {@macro pulumi_dialogflow_v2_entity_type_args_doc}
 class EntityTypeArgs {
   /// Optional. Indicates whether the entity type can be automatically expanded.
-  final pulumi.Input<EntityTypeAutoExpansionMode>? autoExpansionMode;
+  final pulumi.Input<EntityTypeAutoExpansionMode?>? autoExpansionMode;
   /// The name of the entity type.
   final pulumi.Input<String> displayName;
   /// Optional. Enables fuzzy entity extraction during classification.
-  final pulumi.Input<bool>? enableFuzzyExtraction;
+  final pulumi.Input<bool?>? enableFuzzyExtraction;
   /// Optional. The collection of entity entries associated with the entity type.
-  final pulumi.Input<List<GoogleCloudDialogflowV2EntityTypeEntity>>? entities;
+  final pulumi.Input<List<GoogleCloudDialogflowV2EntityTypeEntity>?>? entities;
   /// Indicates the kind of entity type.
   final pulumi.Input<EntityTypeKind> kind;
   /// Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
-  final pulumi.Input<String>? languageCode;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? languageCode;
+  final pulumi.Input<String?>? location;
   /// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [EntityTypeArgs].
   /// [autoExpansionMode] Optional. Indicates whether the entity type can be automatically expanded.

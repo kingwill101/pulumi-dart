@@ -1,9 +1,12 @@
-enum ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1alpha {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1alpha implements pulumi.PulumiEnum<String> {
   monitoringBackendUnspecified("MONITORING_BACKEND_UNSPECIFIED"),
   prometheus("PROMETHEUS"),
   cloudMonitoring("CLOUD_MONITORING");
 
   const ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1alpha(this.wireValue);
+  @override
   final String wireValue;
 
   static ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1alpha fromValue(String value) {

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
-enum BasicLevelCombiningFunctionAccesscontextmanagerV1beta {
+enum BasicLevelCombiningFunctionAccesscontextmanagerV1beta implements pulumi.PulumiEnum<String> {
   and("AND"),
   or("OR");
 
   const BasicLevelCombiningFunctionAccesscontextmanagerV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static BasicLevelCombiningFunctionAccesscontextmanagerV1beta fromValue(String value) {

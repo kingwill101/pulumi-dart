@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The immutable purpose of this CryptoKey.
-enum CryptoKeyPurpose {
+enum CryptoKeyPurpose implements pulumi.PulumiEnum<String> {
   cryptoKeyPurposeUnspecified("CRYPTO_KEY_PURPOSE_UNSPECIFIED"),
   encryptDecrypt("ENCRYPT_DECRYPT"),
   asymmetricSign("ASYMMETRIC_SIGN"),
@@ -8,6 +10,7 @@ enum CryptoKeyPurpose {
   mac("MAC");
 
   const CryptoKeyPurpose(this.wireValue);
+  @override
   final String wireValue;
 
   static CryptoKeyPurpose fromValue(String value) {

@@ -6,11 +6,11 @@ import 'google_cloud_aiplatform_v1beta1_env_var.dart';
 /// The spec of a Container.
 class GoogleCloudAiplatformV1beta1ContainerSpec {
   /// The arguments to be passed when starting the container.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// The command to be invoked when the container is started. It overrides the entrypoint instruction in Dockerfile when provided.
-  final pulumi.Input<List<String>>? command;
+  final pulumi.Input<List<String>?>? command;
   /// Environment variables to be passed to the container. Maximum limit is 100.
-  final pulumi.Input<List<GoogleCloudAiplatformV1beta1EnvVar>>? env;
+  final pulumi.Input<List<GoogleCloudAiplatformV1beta1EnvVar>?>? env;
   /// The URI of a container image in the Container Registry that is to be run on each worker replica.
   final pulumi.Input<String> imageUri;
 

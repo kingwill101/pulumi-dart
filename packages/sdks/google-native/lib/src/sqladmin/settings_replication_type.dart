@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
-enum SettingsReplicationType {
+enum SettingsReplicationType implements pulumi.PulumiEnum<String> {
   sqlReplicationTypeUnspecified("SQL_REPLICATION_TYPE_UNSPECIFIED"),
   synchronous("SYNCHRONOUS"),
   asynchronous("ASYNCHRONOUS");
 
   const SettingsReplicationType(this.wireValue);
+  @override
   final String wireValue;
 
   static SettingsReplicationType fromValue(String value) {

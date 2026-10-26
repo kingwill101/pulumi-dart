@@ -6,9 +6,9 @@ import 'policy_controller_hub_config.dart';
 /// **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR.
 class PolicyControllerMembershipSpec {
   /// Policy Controller configuration for the cluster.
-  final pulumi.Input<PolicyControllerHubConfig>? policyControllerHubConfig;
+  final pulumi.Input<PolicyControllerHubConfig?>? policyControllerHubConfig;
   /// Version of Policy Controller installed.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [PolicyControllerMembershipSpec].
   /// [policyControllerHubConfig] Policy Controller configuration for the cluster.

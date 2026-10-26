@@ -93,7 +93,7 @@ class HttpCheckResponse {
       maskHeaders: pulumi.Input.fromValue(map['maskHeaders'] as bool),
       path: pulumi.Input.fromValue(map['path'] as String),
       pingConfig: pulumi.Input.fromValue(PingConfigResponse.fromMap((map['pingConfig']! as Map).cast<String, dynamic>())),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       requestMethod: pulumi.Input.fromValue(map['requestMethod'] as String),
       useSsl: pulumi.Input.fromValue(map['useSsl'] as bool),
       validateSsl: pulumi.Input.fromValue(map['validateSsl'] as bool),

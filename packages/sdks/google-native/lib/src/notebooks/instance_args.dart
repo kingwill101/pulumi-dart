@@ -18,67 +18,67 @@ import 'vm_image.dart';
 /// {@macro pulumi_notebooks_v1_instance_args_doc}
 class InstanceArgs {
   /// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
-  final pulumi.Input<AcceleratorConfig>? acceleratorConfig;
+  final pulumi.Input<AcceleratorConfig?>? acceleratorConfig;
   /// Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
-  final pulumi.Input<String>? bootDiskSizeGb;
+  final pulumi.Input<String?>? bootDiskSizeGb;
   /// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
-  final pulumi.Input<InstanceBootDiskType>? bootDiskType;
+  final pulumi.Input<InstanceBootDiskType?>? bootDiskType;
   /// Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
-  final pulumi.Input<bool>? canIpForward;
+  final pulumi.Input<bool?>? canIpForward;
   /// Use a container image to start the notebook instance.
-  final pulumi.Input<ContainerImage>? containerImage;
+  final pulumi.Input<ContainerImage?>? containerImage;
   /// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
-  final pulumi.Input<String>? customGpuDriverPath;
+  final pulumi.Input<String?>? customGpuDriverPath;
   /// Input only. The size of the data disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). You can choose the size of the data disk based on how big your notebooks and data are. If not specified, this defaults to 100.
-  final pulumi.Input<String>? dataDiskSizeGb;
+  final pulumi.Input<String?>? dataDiskSizeGb;
   /// Input only. The type of the data disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
-  final pulumi.Input<InstanceDataDiskType>? dataDiskType;
+  final pulumi.Input<InstanceDataDiskType?>? dataDiskType;
   /// Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
-  final pulumi.Input<InstanceDiskEncryption>? diskEncryption;
+  final pulumi.Input<InstanceDiskEncryption?>? diskEncryption;
   /// Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
-  final pulumi.Input<bool>? installGpuDriver;
+  final pulumi.Input<bool?>? installGpuDriver;
   /// Required. User-defined unique ID of this instance.
   final pulumi.Input<String> instanceId;
   /// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
-  final pulumi.Input<List<String>>? instanceOwners;
+  final pulumi.Input<List<String>?>? instanceOwners;
   /// Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
   /// Labels to apply to this instance. These can be later modified by the setLabels method.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
   final pulumi.Input<String> machineType;
   /// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
-  final pulumi.Input<InstanceNicType>? nicType;
+  final pulumi.Input<InstanceNicType?>? nicType;
   /// If true, the notebook instance will not register with the proxy.
-  final pulumi.Input<bool>? noProxyAccess;
+  final pulumi.Input<bool?>? noProxyAccess;
   /// If true, no external IP will be assigned to this instance.
-  final pulumi.Input<bool>? noPublicIp;
+  final pulumi.Input<bool?>? noPublicIp;
   /// Input only. If true, the data disk will not be auto deleted when deleting the instance.
-  final pulumi.Input<bool>? noRemoveDataDisk;
+  final pulumi.Input<bool?>? noRemoveDataDisk;
   /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
-  final pulumi.Input<String>? postStartupScript;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? postStartupScript;
+  final pulumi.Input<String?>? project;
   /// Optional. The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this notebook instance.
-  final pulumi.Input<ReservationAffinity>? reservationAffinity;
+  final pulumi.Input<ReservationAffinity?>? reservationAffinity;
   /// The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
-  final pulumi.Input<List<String>>? serviceAccountScopes;
+  final pulumi.Input<List<String>?>? serviceAccountScopes;
   /// Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
-  final pulumi.Input<ShieldedInstanceConfig>? shieldedInstanceConfig;
+  final pulumi.Input<ShieldedInstanceConfig?>? shieldedInstanceConfig;
   /// The name of the subnet that this instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
-  final pulumi.Input<String>? subnet;
+  final pulumi.Input<String?>? subnet;
   /// Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// The upgrade history of this instance.
-  final pulumi.Input<List<UpgradeHistoryEntry>>? upgradeHistory;
+  final pulumi.Input<List<UpgradeHistoryEntry>?>? upgradeHistory;
   /// Use a Compute Engine VM image to start the notebook instance.
-  final pulumi.Input<VmImage>? vmImage;
+  final pulumi.Input<VmImage?>? vmImage;
 
   /// Creates a new [InstanceArgs].
   /// [acceleratorConfig] The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).

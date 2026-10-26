@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'argument_response.dart';
 import 'remote_function_options_response.dart';
 import 'routine_args.dart';
 import 'routine_reference_response.dart';
@@ -10,7 +11,7 @@ import 'standard_sql_table_type_response.dart';
 /// Auto-naming is currently not supported for this resource.
 class Routine extends pulumi.CustomResource {
   /// Optional.
-  late final pulumi.Output<List<Map<String, dynamic>>> arguments;
+  late final pulumi.Output<List<ArgumentResponse>> arguments;
   /// The time when this routine was created, in milliseconds since the epoch.
   late final pulumi.Output<String> creationTime;
   /// Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
@@ -60,9 +61,9 @@ class Routine extends pulumi.CustomResource {
           'google-native:bigquery/v2:Routine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['datasetId', 'project']).merge(options),
         ) {
-    arguments = registerOutput<List<Map<String, dynamic>>>('arguments');
+    arguments = registerOutput<List<ArgumentResponse>>('arguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ArgumentResponse>(guardedValue, (value) => ArgumentResponse.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<String>('creationTime');
     dataGovernanceType = registerOutput<String>('dataGovernanceType');
     datasetId = registerOutput<String>('datasetId');
@@ -70,7 +71,38 @@ class Routine extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     determinismLevel = registerOutput<String>('determinismLevel');
     etag = registerOutput<String>('etag');
-    importedLibraries = registerOutput<List<String>>('importedLibraries');
+    importedLibraries = registerOutput<List<String>>('importedLibraries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    language = registerOutput<String>('language');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    project = registerOutput<String>('project');
+    remoteFunctionOptions = registerOutput<RemoteFunctionOptionsResponse>('remoteFunctionOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemoteFunctionOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    returnTableType = registerOutput<StandardSqlTableTypeResponse>('returnTableType', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardSqlTableTypeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    returnType = registerOutput<StandardSqlDataTypeResponse>('returnType', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardSqlDataTypeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    routineReference = registerOutput<RoutineReferenceResponse>('routineReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutineReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    routineType = registerOutput<String>('routineType');
+    securityMode = registerOutput<String>('securityMode');
+    sparkOptions = registerOutput<SparkOptionsResponse>('sparkOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    strictMode = registerOutput<bool>('strictMode');
+  }
+
+  /// Creates a typed reference to an existing [Routine] resource.
+  Routine.reference(String urn)
+    : super(
+        'google-native:bigquery/v2:Routine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arguments = registerOutput<List<ArgumentResponse>>('arguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ArgumentResponse>(guardedValue, (value) => ArgumentResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTime = registerOutput<String>('creationTime');
+    dataGovernanceType = registerOutput<String>('dataGovernanceType');
+    datasetId = registerOutput<String>('datasetId');
+    definitionBody = registerOutput<String>('definitionBody');
+    description = registerOutput<String>('description');
+    determinismLevel = registerOutput<String>('determinismLevel');
+    etag = registerOutput<String>('etag');
+    importedLibraries = registerOutput<List<String>>('importedLibraries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     language = registerOutput<String>('language');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     project = registerOutput<String>('project');

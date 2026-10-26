@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for the Compute Engine PD CSI driver.
 class GcePersistentDiskCsiDriverConfig {
   /// Whether the Compute Engine PD CSI driver is enabled for this cluster.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [GcePersistentDiskCsiDriverConfig].
   /// [enabled] Whether the Compute Engine PD CSI driver is enabled for this cluster.

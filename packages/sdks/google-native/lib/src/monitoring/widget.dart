@@ -15,31 +15,31 @@ import 'xy_chart.dart';
 /// Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
 class Widget {
   /// A chart of alert policy data.
-  final pulumi.Input<AlertChart>? alertChart;
+  final pulumi.Input<AlertChart?>? alertChart;
   /// A blank space.
-  final pulumi.Input<Map<String, dynamic>>? blank;
+  final pulumi.Input<Map<String, dynamic>?>? blank;
   /// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
-  final pulumi.Input<CollapsibleGroup>? collapsibleGroup;
+  final pulumi.Input<CollapsibleGroup?>? collapsibleGroup;
   /// A widget that displays a list of error groups.
-  final pulumi.Input<ErrorReportingPanel>? errorReportingPanel;
+  final pulumi.Input<ErrorReportingPanel?>? errorReportingPanel;
   /// Optional. The widget id. Ids may be made up of alphanumerics, dashes and underscores. Widget ids are optional.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// A widget that shows list of incidents.
-  final pulumi.Input<IncidentList>? incidentList;
+  final pulumi.Input<IncidentList?>? incidentList;
   /// A widget that shows a stream of logs.
-  final pulumi.Input<LogsPanel>? logsPanel;
+  final pulumi.Input<LogsPanel?>? logsPanel;
   /// A widget that displays timeseries data as a pie chart.
-  final pulumi.Input<PieChart>? pieChart;
+  final pulumi.Input<PieChart?>? pieChart;
   /// A scorecard summarizing time series data.
-  final pulumi.Input<Scorecard>? scorecard;
+  final pulumi.Input<Scorecard?>? scorecard;
   /// A raw string or markdown displaying textual content.
-  final pulumi.Input<Text>? text;
+  final pulumi.Input<Text?>? text;
   /// A widget that displays time series data in a tabular format.
-  final pulumi.Input<TimeSeriesTable>? timeSeriesTable;
+  final pulumi.Input<TimeSeriesTable?>? timeSeriesTable;
   /// Optional. The title of the widget.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
   /// A chart of time series data.
-  final pulumi.Input<XyChart>? xyChart;
+  final pulumi.Input<XyChart?>? xyChart;
 
   /// Creates a new [Widget].
   /// [alertChart] A chart of alert policy data.

@@ -5,11 +5,11 @@ import 'query_parameter_type.dart';
 
 class QueryParameterTypeStructTypesItem {
   /// [Optional] Human-oriented description of the field.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// [Optional] The name of this field.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// [Required] The type of this field.
-  final pulumi.Input<QueryParameterType>? type;
+  final pulumi.Input<QueryParameterType?>? type;
 
   /// Creates a new [QueryParameterTypeStructTypesItem].
   /// [description] [Optional] Human-oriented description of the field.

@@ -9,27 +9,27 @@ class DetailContaineranalysisV1beta1 {
   /// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
   final pulumi.Input<String> cpeUri;
   /// A vendor-specific description of this note.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The fix for this specific package version.
-  final pulumi.Input<VulnerabilityLocationContaineranalysisV1beta1>? fixedLocation;
+  final pulumi.Input<VulnerabilityLocationContaineranalysisV1beta1?>? fixedLocation;
   /// Whether this detail is obsolete. Occurrences are expected not to point to obsolete details.
-  final pulumi.Input<bool>? isObsolete;
+  final pulumi.Input<bool?>? isObsolete;
   /// The max version of the package in which the vulnerability exists.
-  final pulumi.Input<VersionContaineranalysisV1beta1>? maxAffectedVersion;
+  final pulumi.Input<VersionContaineranalysisV1beta1?>? maxAffectedVersion;
   /// The min version of the package in which the vulnerability exists.
-  final pulumi.Input<VersionContaineranalysisV1beta1>? minAffectedVersion;
+  final pulumi.Input<VersionContaineranalysisV1beta1?>? minAffectedVersion;
   /// The name of the package where the vulnerability was found.
   final pulumi.Input<String> package;
   /// The type of package; whether native or non native(ruby gems, node.js packages etc).
-  final pulumi.Input<String>? packageType;
+  final pulumi.Input<String?>? packageType;
   /// The severity (eg: distro assigned severity) for this vulnerability.
-  final pulumi.Input<String>? severityName;
+  final pulumi.Input<String?>? severityName;
   /// The source from which the information in this Detail was obtained.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
-  final pulumi.Input<String>? sourceUpdateTime;
+  final pulumi.Input<String?>? sourceUpdateTime;
   /// The name of the vendor of the product.
-  final pulumi.Input<String>? vendor;
+  final pulumi.Input<String?>? vendor;
 
   /// Creates a new [DetailContaineranalysisV1beta1].
   /// [cpeUri] The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.

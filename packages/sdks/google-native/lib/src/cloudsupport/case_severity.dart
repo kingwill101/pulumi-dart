@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// REMOVED. The severity of this case. Use priority instead.
-enum CaseSeverity {
+enum CaseSeverity implements pulumi.PulumiEnum<String> {
   severityUnspecified("SEVERITY_UNSPECIFIED"),
   s0("S0"),
   s1("S1"),
@@ -8,6 +10,7 @@ enum CaseSeverity {
   s4("S4");
 
   const CaseSeverity(this.wireValue);
+  @override
   final String wireValue;
 
   static CaseSeverity fromValue(String value) {

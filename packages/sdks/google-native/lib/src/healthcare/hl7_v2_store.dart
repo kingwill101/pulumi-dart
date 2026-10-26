@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'hl7_v2_notification_config_response.dart';
 import 'hl7_v2_store_args.dart';
 import 'parser_config_response.dart';
 
@@ -13,7 +14,7 @@ class Hl7V2Store extends pulumi.CustomResource {
   /// Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
   late final pulumi.Output<String> name;
   /// A list of notification configs. Each configuration uses a filter to determine whether to publish a message (both Ingest & Create) on the corresponding notification destination. Only the message name is sent as part of the notification. Supplied by the client.
-  late final pulumi.Output<List<Map<String, dynamic>>> notificationConfigs;
+  late final pulumi.Output<List<Hl7V2NotificationConfigResponse>> notificationConfigs;
   /// The configuration for the parser. It determines how the server parses the messages.
   late final pulumi.Output<ParserConfigResponse> parserConfig;
   late final pulumi.Output<String> project;
@@ -32,14 +33,34 @@ class Hl7V2Store extends pulumi.CustomResource {
           'google-native:healthcare/v1:Hl7V2Store',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['datasetId', 'location', 'project']).merge(options),
         ) {
     datasetId = registerOutput<String>('datasetId');
     hl7V2StoreId = registerOutput<String?>('hl7V2StoreId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    notificationConfigs = registerOutput<List<Map<String, dynamic>>>('notificationConfigs');
+    notificationConfigs = registerOutput<List<Hl7V2NotificationConfigResponse>>('notificationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Hl7V2NotificationConfigResponse>(guardedValue, (value) => Hl7V2NotificationConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    parserConfig = registerOutput<ParserConfigResponse>('parserConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ParserConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    rejectDuplicateMessage = registerOutput<bool>('rejectDuplicateMessage');
+  }
+
+  /// Creates a typed reference to an existing [Hl7V2Store] resource.
+  Hl7V2Store.reference(String urn)
+    : super(
+        'google-native:healthcare/v1:Hl7V2Store',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    datasetId = registerOutput<String>('datasetId');
+    hl7V2StoreId = registerOutput<String?>('hl7V2StoreId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    notificationConfigs = registerOutput<List<Hl7V2NotificationConfigResponse>>('notificationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Hl7V2NotificationConfigResponse>(guardedValue, (value) => Hl7V2NotificationConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     parserConfig = registerOutput<ParserConfigResponse>('parserConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ParserConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     rejectDuplicateMessage = registerOutput<bool>('rejectDuplicateMessage');

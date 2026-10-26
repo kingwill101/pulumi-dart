@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies options for controlling advanced machine features.
 class AdvancedMachineFeaturesSqladminV1beta4 {
   /// The number of threads per physical core.
-  final pulumi.Input<int>? threadsPerCore;
+  final pulumi.Input<int?>? threadsPerCore;
 
   /// Creates a new [AdvancedMachineFeaturesSqladminV1beta4].
   /// [threadsPerCore] The number of threads per physical core.
@@ -21,7 +21,7 @@ class AdvancedMachineFeaturesSqladminV1beta4 {
 
   factory AdvancedMachineFeaturesSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return AdvancedMachineFeaturesSqladminV1beta4(
-      threadsPerCore: (() { final guardedValue = map['threadsPerCore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      threadsPerCore: (() { final guardedValue = map['threadsPerCore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

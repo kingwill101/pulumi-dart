@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. SSL mode. Specifies client-server SSL/TLS connection behavior.
-enum SslConfigSslMode {
+enum SslConfigSslMode implements pulumi.PulumiEnum<String> {
   sslModeUnspecified("SSL_MODE_UNSPECIFIED"),
   sslModeAllow("SSL_MODE_ALLOW"),
   sslModeRequire("SSL_MODE_REQUIRE"),
@@ -8,6 +10,7 @@ enum SslConfigSslMode {
   encryptedOnly("ENCRYPTED_ONLY");
 
   const SslConfigSslMode(this.wireValue);
+  @override
   final String wireValue;
 
   static SslConfigSslMode fromValue(String value) {

@@ -127,7 +127,7 @@ class EnvironmentConfigResponseComposerV1beta1 {
       maintenanceWindow: pulumi.Input.fromValue(MaintenanceWindowResponseComposerV1beta1.fromMap((map['maintenanceWindow']! as Map).cast<String, dynamic>())),
       masterAuthorizedNetworksConfig: pulumi.Input.fromValue(MasterAuthorizedNetworksConfigResponseComposerV1beta1.fromMap((map['masterAuthorizedNetworksConfig']! as Map).cast<String, dynamic>())),
       nodeConfig: pulumi.Input.fromValue(NodeConfigResponseComposerV1beta1.fromMap((map['nodeConfig']! as Map).cast<String, dynamic>())),
-      nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
+      nodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nodeCount'])),
       privateEnvironmentConfig: pulumi.Input.fromValue(PrivateEnvironmentConfigResponseComposerV1beta1.fromMap((map['privateEnvironmentConfig']! as Map).cast<String, dynamic>())),
       recoveryConfig: pulumi.Input.fromValue(RecoveryConfigResponseComposerV1beta1.fromMap((map['recoveryConfig']! as Map).cast<String, dynamic>())),
       resilienceMode: pulumi.Input.fromValue(map['resilienceMode'] as String),

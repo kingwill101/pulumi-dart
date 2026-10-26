@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The service tier of the instance.
-enum InstanceTier {
+enum InstanceTier implements pulumi.PulumiEnum<String> {
   tierUnspecified("TIER_UNSPECIFIED"),
   basic("BASIC"),
   standardHa("STANDARD_HA");
 
   const InstanceTier(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceTier fromValue(String value) {

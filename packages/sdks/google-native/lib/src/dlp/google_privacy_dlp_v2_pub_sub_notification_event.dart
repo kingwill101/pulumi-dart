@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of event that triggers a Pub/Sub. At most one `PubSubNotification` per EventType is permitted.
-enum GooglePrivacyDlpV2PubSubNotificationEvent {
+enum GooglePrivacyDlpV2PubSubNotificationEvent implements pulumi.PulumiEnum<String> {
   eventTypeUnspecified("EVENT_TYPE_UNSPECIFIED"),
   newProfile("NEW_PROFILE"),
   changedProfile("CHANGED_PROFILE"),
@@ -7,6 +9,7 @@ enum GooglePrivacyDlpV2PubSubNotificationEvent {
   errorChanged("ERROR_CHANGED");
 
   const GooglePrivacyDlpV2PubSubNotificationEvent(this.wireValue);
+  @override
   final String wireValue;
 
   static GooglePrivacyDlpV2PubSubNotificationEvent fromValue(String value) {

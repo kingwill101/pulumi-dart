@@ -26,7 +26,7 @@ class GoogleCloudRetailV2alphaRuleBoostActionResponse {
 
   factory GoogleCloudRetailV2alphaRuleBoostActionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaRuleBoostActionResponse(
-      boost: pulumi.Input.fromValue(map['boost'] as double),
+      boost: pulumi.Input.fromValue((map['boost'] as num).toDouble()),
       productsFilter: pulumi.Input.fromValue(map['productsFilter'] as String),
     );
   }

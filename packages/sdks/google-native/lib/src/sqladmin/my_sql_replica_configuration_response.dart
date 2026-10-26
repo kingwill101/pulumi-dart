@@ -74,7 +74,7 @@ class MySqlReplicaConfigurationResponse {
       caCertificate: pulumi.Input.fromValue(map['caCertificate'] as String),
       clientCertificate: pulumi.Input.fromValue(map['clientCertificate'] as String),
       clientKey: pulumi.Input.fromValue(map['clientKey'] as String),
-      connectRetryInterval: pulumi.Input.fromValue(map['connectRetryInterval'] as int),
+      connectRetryInterval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['connectRetryInterval'])),
       dumpFilePath: pulumi.Input.fromValue(map['dumpFilePath'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       masterHeartbeatPeriod: pulumi.Input.fromValue(map['masterHeartbeatPeriod'] as String),

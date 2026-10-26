@@ -8,13 +8,13 @@ import 'egress_source.dart';
 /// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
 class EgressFrom {
   /// A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email address. The email address should represent individual user or service account only.
-  final pulumi.Input<List<String>>? identities;
+  final pulumi.Input<List<String>?>? identities;
   /// Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
-  final pulumi.Input<EgressFromIdentityType>? identityType;
+  final pulumi.Input<EgressFromIdentityType?>? identityType;
   /// Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
-  final pulumi.Input<EgressFromSourceRestriction>? sourceRestriction;
+  final pulumi.Input<EgressFromSourceRestriction?>? sourceRestriction;
   /// Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`.
-  final pulumi.Input<List<EgressSource>>? sources;
+  final pulumi.Input<List<EgressSource>?>? sources;
 
   /// Creates a new [EgressFrom].
   /// [identities] A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email address. The email address should represent individual user or service account only.

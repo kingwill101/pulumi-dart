@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for the Google Plugin Auth flow.
 class IdentityServiceGoogleConfigGkehubV1alpha {
   /// Disable automatic configuration of Google Plugin on supported platforms.
-  final pulumi.Input<bool>? disable;
+  final pulumi.Input<bool?>? disable;
 
   /// Creates a new [IdentityServiceGoogleConfigGkehubV1alpha].
   /// [disable] Disable automatic configuration of Google Plugin on supported platforms.

@@ -1,9 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_memcache_v1beta2_maintenance_policy_response.dart';
 import 'instance_memcache_v1beta2_args.dart';
+import 'instance_message_response_memcache_v1beta2.dart';
 import 'maintenance_schedule_response_memcache_v1beta2.dart';
 import 'memcache_parameters_response_memcache_v1beta2.dart';
 import 'node_config_response_memcache_v1beta2.dart';
+import 'node_response_memcache_v1beta2.dart';
 
 /// Creates a new Instance in a given location.
 class InstanceMemcacheV1beta2 extends pulumi.CustomResource {
@@ -18,7 +20,7 @@ class InstanceMemcacheV1beta2 extends pulumi.CustomResource {
   /// Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
   late final pulumi.Output<String> instanceId;
   /// List of messages that describe the current state of the Memcached instance.
-  late final pulumi.Output<List<Map<String, dynamic>>> instanceMessages;
+  late final pulumi.Output<List<InstanceMessageResponseMemcacheV1beta2>> instanceMessages;
   /// Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
@@ -29,7 +31,7 @@ class InstanceMemcacheV1beta2 extends pulumi.CustomResource {
   /// The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".
   late final pulumi.Output<String> memcacheFullVersion;
   /// List of Memcached nodes. Refer to Node message for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> memcacheNodes;
+  late final pulumi.Output<List<NodeResponseMemcacheV1beta2>> memcacheNodes;
   /// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
   late final pulumi.Output<String> memcacheVersion;
   /// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
@@ -64,30 +66,64 @@ class InstanceMemcacheV1beta2 extends pulumi.CustomResource {
           'google-native:memcache/v1beta2:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instanceId', 'location', 'project']).merge(options),
         ) {
     authorizedNetwork = registerOutput<String>('authorizedNetwork');
     createTime = registerOutput<String>('createTime');
     discoveryEndpoint = registerOutput<String>('discoveryEndpoint');
     displayName = registerOutput<String>('displayName');
     instanceId = registerOutput<String>('instanceId');
-    instanceMessages = registerOutput<List<Map<String, dynamic>>>('instanceMessages');
-    labels = registerOutput<Map<String, String>>('labels');
+    instanceMessages = registerOutput<List<InstanceMessageResponseMemcacheV1beta2>>('instanceMessages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceMessageResponseMemcacheV1beta2>(guardedValue, (value) => InstanceMessageResponseMemcacheV1beta2.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     maintenancePolicy = registerOutput<GoogleCloudMemcacheV1beta2MaintenancePolicyResponse>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMemcacheV1beta2MaintenancePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maintenanceSchedule = registerOutput<MaintenanceScheduleResponseMemcacheV1beta2>('maintenanceSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceScheduleResponseMemcacheV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     memcacheFullVersion = registerOutput<String>('memcacheFullVersion');
-    memcacheNodes = registerOutput<List<Map<String, dynamic>>>('memcacheNodes');
+    memcacheNodes = registerOutput<List<NodeResponseMemcacheV1beta2>>('memcacheNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeResponseMemcacheV1beta2>(guardedValue, (value) => NodeResponseMemcacheV1beta2.fromMap((value as Map).cast<String, dynamic>())); });
     memcacheVersion = registerOutput<String>('memcacheVersion');
     this.name = registerOutput<String>('name');
     nodeConfig = registerOutput<NodeConfigResponseMemcacheV1beta2>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeConfigResponseMemcacheV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeCount = registerOutput<int>('nodeCount');
     parameters = registerOutput<MemcacheParametersResponseMemcacheV1beta2>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MemcacheParametersResponseMemcacheV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    reservedIpRangeId = registerOutput<List<String>>('reservedIpRangeId');
+    reservedIpRangeId = registerOutput<List<String>>('reservedIpRangeId', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     state = registerOutput<String>('state');
     updateAvailable = registerOutput<bool>('updateAvailable');
     updateTime = registerOutput<String>('updateTime');
-    zones = registerOutput<List<String>>('zones');
+    zones = registerOutput<List<String>>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [InstanceMemcacheV1beta2] resource.
+  InstanceMemcacheV1beta2.reference(String urn)
+    : super(
+        'google-native:memcache/v1beta2:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authorizedNetwork = registerOutput<String>('authorizedNetwork');
+    createTime = registerOutput<String>('createTime');
+    discoveryEndpoint = registerOutput<String>('discoveryEndpoint');
+    displayName = registerOutput<String>('displayName');
+    instanceId = registerOutput<String>('instanceId');
+    instanceMessages = registerOutput<List<InstanceMessageResponseMemcacheV1beta2>>('instanceMessages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceMessageResponseMemcacheV1beta2>(guardedValue, (value) => InstanceMessageResponseMemcacheV1beta2.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    maintenancePolicy = registerOutput<GoogleCloudMemcacheV1beta2MaintenancePolicyResponse>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMemcacheV1beta2MaintenancePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceSchedule = registerOutput<MaintenanceScheduleResponseMemcacheV1beta2>('maintenanceSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceScheduleResponseMemcacheV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    memcacheFullVersion = registerOutput<String>('memcacheFullVersion');
+    memcacheNodes = registerOutput<List<NodeResponseMemcacheV1beta2>>('memcacheNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeResponseMemcacheV1beta2>(guardedValue, (value) => NodeResponseMemcacheV1beta2.fromMap((value as Map).cast<String, dynamic>())); });
+    memcacheVersion = registerOutput<String>('memcacheVersion');
+    this.name = registerOutput<String>('name');
+    nodeConfig = registerOutput<NodeConfigResponseMemcacheV1beta2>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeConfigResponseMemcacheV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeCount = registerOutput<int>('nodeCount');
+    parameters = registerOutput<MemcacheParametersResponseMemcacheV1beta2>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MemcacheParametersResponseMemcacheV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    reservedIpRangeId = registerOutput<List<String>>('reservedIpRangeId', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    state = registerOutput<String>('state');
+    updateAvailable = registerOutput<bool>('updateAvailable');
+    updateTime = registerOutput<String>('updateTime');
+    zones = registerOutput<List<String>>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

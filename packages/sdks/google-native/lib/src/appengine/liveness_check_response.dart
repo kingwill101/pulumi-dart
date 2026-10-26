@@ -52,11 +52,11 @@ class LivenessCheckResponse {
   factory LivenessCheckResponse.fromMap(Map<String, dynamic> map) {
     return LivenessCheckResponse(
       checkInterval: pulumi.Input.fromValue(map['checkInterval'] as String),
-      failureThreshold: pulumi.Input.fromValue(map['failureThreshold'] as int),
+      failureThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['failureThreshold'])),
       host: pulumi.Input.fromValue(map['host'] as String),
       initialDelay: pulumi.Input.fromValue(map['initialDelay'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
-      successThreshold: pulumi.Input.fromValue(map['successThreshold'] as int),
+      successThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['successThreshold'])),
       timeout: pulumi.Input.fromValue(map['timeout'] as String),
     );
   }

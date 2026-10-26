@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of metric.
-enum GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType {
+enum GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType implements pulumi.PulumiEnum<String> {
   metricTypeUnspecified("METRIC_TYPE_UNSPECIFIED"),
   eventErrorRate("EVENT_ERROR_RATE"),
   eventWarningRate("EVENT_WARNING_RATE"),
@@ -13,6 +15,7 @@ enum GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType {
   taskPercentileDuration("TASK_PERCENTILE_DURATION");
 
   const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType fromValue(String value) {

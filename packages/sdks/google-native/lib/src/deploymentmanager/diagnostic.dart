@@ -5,9 +5,9 @@ import 'diagnostic_level.dart';
 
 class Diagnostic {
   /// JsonPath expression on the resource that if non empty, indicates that this field needs to be extracted as a diagnostic.
-  final pulumi.Input<String>? field;
+  final pulumi.Input<String?>? field;
   /// Level to record this diagnostic.
-  final pulumi.Input<DiagnosticLevel>? level;
+  final pulumi.Input<DiagnosticLevel?>? level;
 
   /// Creates a new [Diagnostic].
   /// [field] JsonPath expression on the resource that if non empty, indicates that this field needs to be extracted as a diagnostic.

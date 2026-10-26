@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The schema source information.
 class GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource {
   /// The schema name in the source.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Doc AI processor type name.
-  final pulumi.Input<String>? processorType;
+  final pulumi.Input<String?>? processorType;
 
   /// Creates a new [GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource].
   /// [name] The schema name in the source.

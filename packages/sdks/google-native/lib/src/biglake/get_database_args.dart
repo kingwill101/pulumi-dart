@@ -10,7 +10,7 @@ class GetDatabaseArgs {
   final pulumi.Input<String> catalogId;
   final pulumi.Input<String> databaseId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDatabaseArgs].
   /// [catalogId] Required.

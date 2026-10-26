@@ -21,42 +21,42 @@ import 'vulnerability_note.dart';
 /// {@macro pulumi_containeranalysis_v1_note_args_doc}
 class NoteArgs {
   /// A note describing an attestation role.
-  final pulumi.Input<AttestationNote>? attestation;
+  final pulumi.Input<AttestationNote?>? attestation;
   /// A note describing build provenance for a verifiable build.
-  final pulumi.Input<BuildNote>? build;
+  final pulumi.Input<BuildNote?>? build;
   /// A note describing a compliance check.
-  final pulumi.Input<ComplianceNote>? compliance;
+  final pulumi.Input<ComplianceNote?>? compliance;
   /// A note describing something that can be deployed.
-  final pulumi.Input<DeploymentNote>? deployment;
+  final pulumi.Input<DeploymentNote?>? deployment;
   /// A note describing the initial analysis of a resource.
-  final pulumi.Input<DiscoveryNote>? discovery;
+  final pulumi.Input<DiscoveryNote?>? discovery;
   /// A note describing a dsse attestation note.
-  final pulumi.Input<DSSEAttestationNote>? dsseAttestation;
+  final pulumi.Input<DSSEAttestationNote?>? dsseAttestation;
   /// Time of expiration for this note. Empty if note does not expire.
-  final pulumi.Input<String>? expirationTime;
+  final pulumi.Input<String?>? expirationTime;
   /// A note describing a base image.
-  final pulumi.Input<ImageNote>? image;
+  final pulumi.Input<ImageNote?>? image;
   /// A detailed description of this note.
-  final pulumi.Input<String>? longDescription;
+  final pulumi.Input<String?>? longDescription;
   /// Required. The ID to use for this note.
   final pulumi.Input<String> noteId;
   /// A note describing a package hosted by various package managers.
-  final pulumi.Input<PackageNote>? package;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<PackageNote?>? package;
+  final pulumi.Input<String?>? project;
   /// Other notes related to this note.
-  final pulumi.Input<List<String>>? relatedNoteNames;
+  final pulumi.Input<List<String>?>? relatedNoteNames;
   /// URLs associated with this note.
-  final pulumi.Input<List<RelatedUrl>>? relatedUrl;
+  final pulumi.Input<List<RelatedUrl>?>? relatedUrl;
   /// A note describing an SBOM reference.
-  final pulumi.Input<SBOMReferenceNote>? sbomReference;
+  final pulumi.Input<SBOMReferenceNote?>? sbomReference;
   /// A one sentence description of this note.
-  final pulumi.Input<String>? shortDescription;
+  final pulumi.Input<String?>? shortDescription;
   /// A note describing available package upgrades.
-  final pulumi.Input<UpgradeNote>? upgrade;
+  final pulumi.Input<UpgradeNote?>? upgrade;
   /// A note describing a package vulnerability.
-  final pulumi.Input<VulnerabilityNote>? vulnerability;
+  final pulumi.Input<VulnerabilityNote?>? vulnerability;
   /// A note describing a vulnerability assessment.
-  final pulumi.Input<VulnerabilityAssessmentNote>? vulnerabilityAssessment;
+  final pulumi.Input<VulnerabilityAssessmentNote?>? vulnerabilityAssessment;
 
   /// Creates a new [NoteArgs].
   /// [attestation] A note describing an attestation role.

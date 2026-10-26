@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
-enum SettingsActivationPolicy {
+enum SettingsActivationPolicy implements pulumi.PulumiEnum<String> {
   sqlActivationPolicyUnspecified("SQL_ACTIVATION_POLICY_UNSPECIFIED"),
   always("ALWAYS"),
   never_("NEVER"),
   onDemand("ON_DEMAND");
 
   const SettingsActivationPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static SettingsActivationPolicy fromValue(String value) {

@@ -6,7 +6,7 @@ import 'python_repository_public_repository.dart';
 /// Configuration for a Python remote repository.
 class PythonRepository {
   /// One of the publicly available Python repositories supported by Artifact Registry.
-  final pulumi.Input<PythonRepositoryPublicRepository>? publicRepository;
+  final pulumi.Input<PythonRepositoryPublicRepository?>? publicRepository;
 
   /// Creates a new [PythonRepository].
   /// [publicRepository] One of the publicly available Python repositories supported by Artifact Registry.

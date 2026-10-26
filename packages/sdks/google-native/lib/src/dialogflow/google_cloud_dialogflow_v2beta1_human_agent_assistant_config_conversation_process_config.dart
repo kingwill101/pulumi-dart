@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Config to process conversation.
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig {
   /// Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
-  final pulumi.Input<int>? recentSentencesCount;
+  final pulumi.Input<int?>? recentSentencesCount;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig].
   /// [recentSentencesCount] Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
@@ -21,7 +21,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessCo
 
   factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig(
-      recentSentencesCount: (() { final guardedValue = map['recentSentencesCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      recentSentencesCount: (() { final guardedValue = map['recentSentencesCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

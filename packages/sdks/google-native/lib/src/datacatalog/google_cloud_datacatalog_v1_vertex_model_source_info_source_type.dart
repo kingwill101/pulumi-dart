@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the model source.
-enum GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType {
+enum GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType implements pulumi.PulumiEnum<String> {
   modelSourceTypeUnspecified("MODEL_SOURCE_TYPE_UNSPECIFIED"),
   automl("AUTOML"),
   custom("CUSTOM"),
@@ -7,6 +9,7 @@ enum GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType {
   modelGarden("MODEL_GARDEN");
 
   const GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType fromValue(String value) {

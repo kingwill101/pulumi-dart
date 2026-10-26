@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
 class ConfidentialInstanceConfig {
   /// Optional. Defines whether the instance should have confidential compute enabled.
-  final pulumi.Input<bool>? enableConfidentialCompute;
+  final pulumi.Input<bool?>? enableConfidentialCompute;
 
   /// Creates a new [ConfidentialInstanceConfig].
   /// [enableConfidentialCompute] Optional. Defines whether the instance should have confidential compute enabled.

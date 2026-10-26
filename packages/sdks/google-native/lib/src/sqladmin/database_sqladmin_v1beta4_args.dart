@@ -9,22 +9,22 @@ import 'sql_server_database_details_sqladmin_v1beta4.dart';
 /// {@macro pulumi_sqladmin_v1beta4_database_sqladmin_v1beta4_args_doc}
 class DatabaseSqladminV1beta4Args {
   /// The Cloud SQL charset value.
-  final pulumi.Input<String>? charset;
+  final pulumi.Input<String?>? charset;
   /// The Cloud SQL collation value.
-  final pulumi.Input<String>? collation;
+  final pulumi.Input<String?>? collation;
   /// This field is deprecated and will be removed from a future version of the API.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The name of the Cloud SQL instance. This does not include the project ID.
   final pulumi.Input<String> instance;
   /// This is always `sql#database`.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The URI of this resource.
-  final pulumi.Input<String>? selfLink;
-  final pulumi.Input<SqlServerDatabaseDetailsSqladminV1beta4>? sqlserverDatabaseDetails;
+  final pulumi.Input<String?>? selfLink;
+  final pulumi.Input<SqlServerDatabaseDetailsSqladminV1beta4?>? sqlserverDatabaseDetails;
 
   /// Creates a new [DatabaseSqladminV1beta4Args].
   /// [charset] The Cloud SQL charset value.

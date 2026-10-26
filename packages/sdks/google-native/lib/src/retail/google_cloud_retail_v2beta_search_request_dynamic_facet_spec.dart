@@ -6,7 +6,7 @@ import 'google_cloud_retail_v2beta_search_request_dynamic_facet_spec_mode.dart';
 /// The specifications of dynamically generated facets.
 class GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec {
   /// Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
-  final pulumi.Input<GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode>? mode;
+  final pulumi.Input<GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode?>? mode;
 
   /// Creates a new [GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec].
   /// [mode] Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.

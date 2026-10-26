@@ -8,9 +8,9 @@ class EnvVar {
   /// Name of the environment variable.
   final pulumi.Input<String> name;
   /// Value of the environment variable. Defaults to "". Variable references are not supported in Cloud Run.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
   /// Source for the environment variable's value. Only supports secret_key_ref. Cannot be used if value is not empty.
-  final pulumi.Input<EnvVarSource>? valueFrom;
+  final pulumi.Input<EnvVarSource?>? valueFrom;
 
   /// Creates a new [EnvVar].
   /// [name] Name of the environment variable.

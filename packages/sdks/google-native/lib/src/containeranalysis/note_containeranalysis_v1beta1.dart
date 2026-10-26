@@ -10,6 +10,7 @@ import 'in_toto_response.dart';
 import 'note_containeranalysis_v1beta1_args.dart';
 import 'package_info_note_response_containeranalysis_v1beta1.dart';
 import 'package_response_containeranalysis_v1beta1.dart';
+import 'related_url_response_containeranalysis_v1beta1.dart';
 import 'relationship_note_response_containeranalysis_v1beta1.dart';
 import 'sbomreference_note_response_containeranalysis_v1beta1.dart';
 import 'vulnerability_assessment_note_response_containeranalysis_v1beta1.dart';
@@ -48,7 +49,7 @@ class NoteContaineranalysisV1beta1 extends pulumi.CustomResource {
   /// Other notes related to this note.
   late final pulumi.Output<List<String>> relatedNoteNames;
   /// URLs associated with this note.
-  late final pulumi.Output<List<Map<String, dynamic>>> relatedUrl;
+  late final pulumi.Output<List<RelatedUrlResponseContaineranalysisV1beta1>> relatedUrl;
   /// A note describing a software bill of materials.
   late final pulumi.Output<DocumentNoteResponseContaineranalysisV1beta1> sbom;
   /// A note describing an SBOM reference.
@@ -80,7 +81,7 @@ class NoteContaineranalysisV1beta1 extends pulumi.CustomResource {
           'google-native:containeranalysis/v1beta1:Note',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['noteId', 'project']).merge(options),
         ) {
     attestationAuthority = registerOutput<AuthorityResponse>('attestationAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     baseImage = registerOutput<BasisResponseContaineranalysisV1beta1>('baseImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BasisResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -96,8 +97,44 @@ class NoteContaineranalysisV1beta1 extends pulumi.CustomResource {
     noteId = registerOutput<String>('noteId');
     package = registerOutput<PackageResponseContaineranalysisV1beta1>('package', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PackageResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    relatedNoteNames = registerOutput<List<String>>('relatedNoteNames');
-    relatedUrl = registerOutput<List<Map<String, dynamic>>>('relatedUrl');
+    relatedNoteNames = registerOutput<List<String>>('relatedNoteNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    relatedUrl = registerOutput<List<RelatedUrlResponseContaineranalysisV1beta1>>('relatedUrl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RelatedUrlResponseContaineranalysisV1beta1>(guardedValue, (value) => RelatedUrlResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+    sbom = registerOutput<DocumentNoteResponseContaineranalysisV1beta1>('sbom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentNoteResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sbomReference = registerOutput<SBOMReferenceNoteResponseContaineranalysisV1beta1>('sbomReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SBOMReferenceNoteResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    shortDescription = registerOutput<String>('shortDescription');
+    spdxFile = registerOutput<FileNoteResponseContaineranalysisV1beta1>('spdxFile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileNoteResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spdxPackage = registerOutput<PackageInfoNoteResponseContaineranalysisV1beta1>('spdxPackage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PackageInfoNoteResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spdxRelationship = registerOutput<RelationshipNoteResponseContaineranalysisV1beta1>('spdxRelationship', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RelationshipNoteResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+    vulnerability = registerOutput<VulnerabilityResponse>('vulnerability', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VulnerabilityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vulnerabilityAssessment = registerOutput<VulnerabilityAssessmentNoteResponseContaineranalysisV1beta1>('vulnerabilityAssessment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VulnerabilityAssessmentNoteResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [NoteContaineranalysisV1beta1] resource.
+  NoteContaineranalysisV1beta1.reference(String urn)
+    : super(
+        'google-native:containeranalysis/v1beta1:Note',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attestationAuthority = registerOutput<AuthorityResponse>('attestationAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    baseImage = registerOutput<BasisResponseContaineranalysisV1beta1>('baseImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BasisResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    build = registerOutput<BuildResponse>('build', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deployable = registerOutput<DeployableResponseContaineranalysisV1beta1>('deployable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeployableResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    discovery = registerOutput<DiscoveryResponseContaineranalysisV1beta1>('discovery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiscoveryResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    expirationTime = registerOutput<String>('expirationTime');
+    intoto = registerOutput<InTotoResponse>('intoto', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InTotoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    longDescription = registerOutput<String>('longDescription');
+    this.name = registerOutput<String>('name');
+    noteId = registerOutput<String>('noteId');
+    package = registerOutput<PackageResponseContaineranalysisV1beta1>('package', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PackageResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    relatedNoteNames = registerOutput<List<String>>('relatedNoteNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    relatedUrl = registerOutput<List<RelatedUrlResponseContaineranalysisV1beta1>>('relatedUrl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RelatedUrlResponseContaineranalysisV1beta1>(guardedValue, (value) => RelatedUrlResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
     sbom = registerOutput<DocumentNoteResponseContaineranalysisV1beta1>('sbom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentNoteResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sbomReference = registerOutput<SBOMReferenceNoteResponseContaineranalysisV1beta1>('sbomReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SBOMReferenceNoteResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     shortDescription = registerOutput<String>('shortDescription');

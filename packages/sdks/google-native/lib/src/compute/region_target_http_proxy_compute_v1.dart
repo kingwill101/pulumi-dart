@@ -38,8 +38,31 @@ class RegionTargetHttpProxyComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:RegionTargetHttpProxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    httpKeepAliveTimeoutSec = registerOutput<int>('httpKeepAliveTimeoutSec');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    proxyBind = registerOutput<bool>('proxyBind');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    urlMap = registerOutput<String>('urlMap');
+  }
+
+  /// Creates a typed reference to an existing [RegionTargetHttpProxyComputeV1] resource.
+  RegionTargetHttpProxyComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:RegionTargetHttpProxy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     fingerprint = registerOutput<String>('fingerprint');

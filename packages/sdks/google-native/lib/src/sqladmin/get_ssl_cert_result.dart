@@ -4,23 +4,23 @@
 /// Result data returned by getSslCert.
 class GetSslCertResult {
   /// PEM representation.
-  final String cert;
+  final String? cert;
   /// Serial number, as extracted from the certificate.
-  final String certSerialNumber;
+  final String? certSerialNumber;
   /// User supplied name. Constrained to [a-zA-Z.-_ ]+.
-  final String commonName;
+  final String? commonName;
   /// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`
-  final String createTime;
+  final String? createTime;
   /// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
-  final String expirationTime;
+  final String? expirationTime;
   /// Name of the database instance.
-  final String instance;
+  final String? instance;
   /// This is always `sql#sslCert`.
-  final String kind;
+  final String? kind;
   /// The URI of this resource.
-  final String selfLink;
+  final String? selfLink;
   /// Sha1 Fingerprint.
-  final String sha1Fingerprint;
+  final String? sha1Fingerprint;
 
   /// Creates a new [GetSslCertResult].
   /// [cert] PEM representation.
@@ -33,42 +33,42 @@ class GetSslCertResult {
   /// [selfLink] The URI of this resource.
   /// [sha1Fingerprint] Sha1 Fingerprint.
   const GetSslCertResult({
-    required this.cert,
-    required this.certSerialNumber,
-    required this.commonName,
-    required this.createTime,
-    required this.expirationTime,
-    required this.instance,
-    required this.kind,
-    required this.selfLink,
-    required this.sha1Fingerprint,
+    this.cert,
+    this.certSerialNumber,
+    this.commonName,
+    this.createTime,
+    this.expirationTime,
+    this.instance,
+    this.kind,
+    this.selfLink,
+    this.sha1Fingerprint,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cert': cert,
-      'certSerialNumber': certSerialNumber,
-      'commonName': commonName,
-      'createTime': createTime,
-      'expirationTime': expirationTime,
-      'instance': instance,
-      'kind': kind,
-      'selfLink': selfLink,
-      'sha1Fingerprint': sha1Fingerprint,
+      'cert': ?cert,
+      'certSerialNumber': ?certSerialNumber,
+      'commonName': ?commonName,
+      'createTime': ?createTime,
+      'expirationTime': ?expirationTime,
+      'instance': ?instance,
+      'kind': ?kind,
+      'selfLink': ?selfLink,
+      'sha1Fingerprint': ?sha1Fingerprint,
     };
   }
 
   factory GetSslCertResult.fromMap(Map<String, dynamic> map) {
     return GetSslCertResult(
-      cert: map['cert'] as String,
-      certSerialNumber: map['certSerialNumber'] as String,
-      commonName: map['commonName'] as String,
-      createTime: map['createTime'] as String,
-      expirationTime: map['expirationTime'] as String,
-      instance: map['instance'] as String,
-      kind: map['kind'] as String,
-      selfLink: map['selfLink'] as String,
-      sha1Fingerprint: map['sha1Fingerprint'] as String,
+      cert: (() { final guardedValue = map['cert']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      certSerialNumber: (() { final guardedValue = map['certSerialNumber']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      commonName: (() { final guardedValue = map['commonName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expirationTime: (() { final guardedValue = map['expirationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sha1Fingerprint: (() { final guardedValue = map['sha1Fingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

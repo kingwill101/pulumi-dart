@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
-enum MaintenanceExclusionOptionsScope {
+enum MaintenanceExclusionOptionsScope implements pulumi.PulumiEnum<String> {
   noUpgrades("NO_UPGRADES"),
   noMinorUpgrades("NO_MINOR_UPGRADES"),
   noMinorOrNodeUpgrades("NO_MINOR_OR_NODE_UPGRADES");
 
   const MaintenanceExclusionOptionsScope(this.wireValue);
+  @override
   final String wireValue;
 
   static MaintenanceExclusionOptionsScope fromValue(String value) {

@@ -6,7 +6,7 @@ import 'authorization.dart';
 /// Specifies the security related settings for the bare metal user cluster.
 class BareMetalSecurityConfig {
   /// Configures user access to the user cluster.
-  final pulumi.Input<Authorization>? authorization;
+  final pulumi.Input<Authorization?>? authorization;
 
   /// Creates a new [BareMetalSecurityConfig].
   /// [authorization] Configures user access to the user cluster.

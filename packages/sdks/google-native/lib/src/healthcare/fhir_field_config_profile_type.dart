@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Base profile type for handling FHIR fields.
-enum FhirFieldConfigProfileType {
+enum FhirFieldConfigProfileType implements pulumi.PulumiEnum<String> {
   profileTypeUnspecified("PROFILE_TYPE_UNSPECIFIED"),
   keepAll("KEEP_ALL"),
   basic("BASIC"),
   cleanAll("CLEAN_ALL");
 
   const FhirFieldConfigProfileType(this.wireValue);
+  @override
   final String wireValue;
 
   static FhirFieldConfigProfileType fromValue(String value) {

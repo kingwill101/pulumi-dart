@@ -9,32 +9,32 @@ import 'enterprise_crm_frontends_eventbus_proto_workflow_parameter_entry_in_out_
 
 class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry {
   /// Metadata information about the parameters.
-  final pulumi.Input<EnterpriseCrmEventbusProtoAttributes>? attributes;
+  final pulumi.Input<EnterpriseCrmEventbusProtoAttributes?>? attributes;
   /// Child parameters nested within this parameter. This field only applies to protobuf parameters
-  final pulumi.Input<List<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>>? children;
+  final pulumi.Input<List<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>?>? children;
   /// The data type of the parameter.
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType>? dataType;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType?>? dataType;
   /// Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoParameterValueType>? defaultValue;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoParameterValueType?>? defaultValue;
   /// Optional. The description about the parameter
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the input/output type for the parameter.
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType>? inOutType;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType?>? inOutType;
   /// Whether this parameter is a transient parameter.
-  final pulumi.Input<bool>? isTransient;
+  final pulumi.Input<bool?>? isTransient;
   /// This schema will be used to validate runtime JSON-typed values of this parameter.
-  final pulumi.Input<String>? jsonSchema;
+  final pulumi.Input<String?>? jsonSchema;
   /// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the workflow definition.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The name (without prefix) to be displayed in the UI for this parameter. E.g. if the key is "foo.bar.myName", then the name would be "myName".
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The identifier of the node (TaskConfig/TriggerConfig) this parameter was produced by, if it is a transient param or a copy of an input param.
-  final pulumi.Input<EnterpriseCrmEventbusProtoNodeIdentifier>? producedBy;
-  final pulumi.Input<String>? producer;
+  final pulumi.Input<EnterpriseCrmEventbusProtoNodeIdentifier?>? producedBy;
+  final pulumi.Input<String?>? producer;
   /// The name of the protobuf type if the parameter has a protobuf data type.
-  final pulumi.Input<String>? protoDefName;
+  final pulumi.Input<String?>? protoDefName;
   /// If the data type is of type proto or proto array, this field needs to be populated with the fully qualified proto name. This message, for example, would be "enterprise.crm.frontends.eventbus.proto.WorkflowParameterEntry".
-  final pulumi.Input<String>? protoDefPath;
+  final pulumi.Input<String?>? protoDefPath;
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry].
   /// [attributes] Metadata information about the parameters.

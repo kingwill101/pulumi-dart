@@ -10,7 +10,7 @@ class GetContextArgs {
   final pulumi.Input<String> contextId;
   final pulumi.Input<String> location;
   final pulumi.Input<String> metadataStoreId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetContextArgs].
   /// [contextId] Required.

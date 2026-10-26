@@ -6,9 +6,9 @@ import 'sbomstatus_sbom_state.dart';
 /// The status of an SBOM generation.
 class SBOMStatus {
   /// If there was an error generating an SBOM, this will indicate what that error was.
-  final pulumi.Input<String>? error;
+  final pulumi.Input<String?>? error;
   /// The progress of the SBOM generation.
-  final pulumi.Input<SBOMStatusSbomState>? sbomState;
+  final pulumi.Input<SBOMStatusSbomState?>? sbomState;
 
   /// Creates a new [SBOMStatus].
   /// [error] If there was an error generating an SBOM, this will indicate what that error was.

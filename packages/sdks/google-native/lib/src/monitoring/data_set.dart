@@ -11,19 +11,19 @@ import 'time_series_query.dart';
 /// Groups a time series query definition with charting options.
 class DataSet {
   /// Optional. The collection of breakdowns to be applied to the dataset.
-  final pulumi.Input<List<Breakdown>>? breakdowns;
+  final pulumi.Input<List<Breakdown>?>? breakdowns;
   /// Optional. A collection of dimension columns.
-  final pulumi.Input<List<Dimension>>? dimensions;
+  final pulumi.Input<List<Dimension>?>? dimensions;
   /// A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
-  final pulumi.Input<String>? legendTemplate;
+  final pulumi.Input<String?>? legendTemplate;
   /// Optional. A collection of measures.
-  final pulumi.Input<List<Measure>>? measures;
+  final pulumi.Input<List<Measure>?>? measures;
   /// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
-  final pulumi.Input<String>? minAlignmentPeriod;
+  final pulumi.Input<String?>? minAlignmentPeriod;
   /// How this data should be plotted on the chart.
-  final pulumi.Input<DataSetPlotType>? plotType;
+  final pulumi.Input<DataSetPlotType?>? plotType;
   /// Optional. The target axis to use for plotting the metric.
-  final pulumi.Input<DataSetTargetAxis>? targetAxis;
+  final pulumi.Input<DataSetTargetAxis?>? targetAxis;
   /// Fields for querying time series data from the Stackdriver metrics API.
   final pulumi.Input<TimeSeriesQuery> timeSeriesQuery;
 

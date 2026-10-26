@@ -17,6 +17,17 @@ Future<GetClientConfigResult> getClientConfig(
   return GetClientConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetClientConfigResult> getClientConfigOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:authorization:getClientConfig',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetClientConfigResult.fromMap);
+}
+
 /// Use this function to get an Google authentication token for the current login context.
 /// [options] Invoke options controlling this call.
 Future<GetClientTokenResult> getClientToken(
@@ -30,4 +41,15 @@ Future<GetClientTokenResult> getClientToken(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClientTokenResult.fromMap(result);
+}
+
+pulumi.Output<GetClientTokenResult> getClientTokenOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:authorization:getClientToken',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetClientTokenResult.fromMap);
 }

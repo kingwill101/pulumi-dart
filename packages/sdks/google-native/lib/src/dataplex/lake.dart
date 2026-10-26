@@ -48,13 +48,39 @@ class Lake extends pulumi.CustomResource {
           'google-native:dataplex/v1:Lake',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['lakeId', 'location', 'project']).merge(options),
         ) {
     assetStatus = registerOutput<GoogleCloudDataplexV1AssetStatusResponse>('assetStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1AssetStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lakeId = registerOutput<String>('lakeId');
+    location = registerOutput<String>('location');
+    metastore = registerOutput<GoogleCloudDataplexV1LakeMetastoreResponse>('metastore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1LakeMetastoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metastoreStatus = registerOutput<GoogleCloudDataplexV1LakeMetastoreStatusResponse>('metastoreStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1LakeMetastoreStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Lake] resource.
+  Lake.reference(String urn)
+    : super(
+        'google-native:dataplex/v1:Lake',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assetStatus = registerOutput<GoogleCloudDataplexV1AssetStatusResponse>('assetStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1AssetStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lakeId = registerOutput<String>('lakeId');
     location = registerOutput<String>('location');
     metastore = registerOutput<GoogleCloudDataplexV1LakeMetastoreResponse>('metastore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1LakeMetastoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

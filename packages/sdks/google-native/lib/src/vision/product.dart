@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'key_value_response.dart';
 import 'product_args.dart';
 
 /// Creates and returns a new product resource. Possible errors: * Returns INVALID_ARGUMENT if display_name is missing or longer than 4096 characters. * Returns INVALID_ARGUMENT if description is longer than 4096 characters. * Returns INVALID_ARGUMENT if product_category is missing or invalid.
@@ -15,7 +16,7 @@ class Product extends pulumi.CustomResource {
   /// A user-supplied resource id for this Product. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
   late final pulumi.Output<String?> productId;
   /// Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet.
-  late final pulumi.Output<List<Map<String, dynamic>>> productLabels;
+  late final pulumi.Output<List<KeyValueResponse>> productLabels;
   late final pulumi.Output<String> project;
 
   /// Creates a new [Product].
@@ -30,7 +31,7 @@ class Product extends pulumi.CustomResource {
           'google-native:vision/v1:Product',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
@@ -38,7 +39,26 @@ class Product extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     productCategory = registerOutput<String>('productCategory');
     productId = registerOutput<String?>('productId');
-    productLabels = registerOutput<List<Map<String, dynamic>>>('productLabels');
+    productLabels = registerOutput<List<KeyValueResponse>>('productLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyValueResponse>(guardedValue, (value) => KeyValueResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [Product] resource.
+  Product.reference(String urn)
+    : super(
+        'google-native:vision/v1:Product',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    productCategory = registerOutput<String>('productCategory');
+    productId = registerOutput<String?>('productId');
+    productLabels = registerOutput<List<KeyValueResponse>>('productLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyValueResponse>(guardedValue, (value) => KeyValueResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
   }
 }

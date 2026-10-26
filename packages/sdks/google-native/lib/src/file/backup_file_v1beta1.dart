@@ -47,7 +47,7 @@ class BackupFileV1beta1 extends pulumi.CustomResource {
           'google-native:file/v1beta1:Backup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['backupId', 'location', 'project']).merge(options),
         ) {
     backupId = registerOutput<String>('backupId');
     capacityGb = registerOutput<String>('capacityGb');
@@ -55,7 +55,34 @@ class BackupFileV1beta1 extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     downloadBytes = registerOutput<String>('downloadBytes');
     kmsKeyName = registerOutput<String>('kmsKeyName');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    sourceFileShare = registerOutput<String>('sourceFileShare');
+    sourceInstance = registerOutput<String>('sourceInstance');
+    sourceInstanceTier = registerOutput<String>('sourceInstanceTier');
+    state = registerOutput<String>('state');
+    storageBytes = registerOutput<String>('storageBytes');
+  }
+
+  /// Creates a typed reference to an existing [BackupFileV1beta1] resource.
+  BackupFileV1beta1.reference(String urn)
+    : super(
+        'google-native:file/v1beta1:Backup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backupId = registerOutput<String>('backupId');
+    capacityGb = registerOutput<String>('capacityGb');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    downloadBytes = registerOutput<String>('downloadBytes');
+    kmsKeyName = registerOutput<String>('kmsKeyName');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

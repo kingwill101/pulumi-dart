@@ -1,10 +1,13 @@
-enum FilterEventTypeItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum FilterEventTypeItem implements pulumi.PulumiEnum<String> {
   eventTypeUnspecified("EVENT_TYPE_UNSPECIFIED"),
   upgradeAvailableEvent("UPGRADE_AVAILABLE_EVENT"),
   upgradeEvent("UPGRADE_EVENT"),
   securityBulletinEvent("SECURITY_BULLETIN_EVENT");
 
   const FilterEventTypeItem(this.wireValue);
+  @override
   final String wireValue;
 
   static FilterEventTypeItem fromValue(String value) {

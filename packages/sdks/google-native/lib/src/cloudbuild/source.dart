@@ -10,15 +10,15 @@ import 'storage_source_manifest.dart';
 /// Location of the source in a supported storage service.
 class Source {
   /// Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
-  final pulumi.Input<ConnectedRepository>? connectedRepository;
+  final pulumi.Input<ConnectedRepository?>? connectedRepository;
   /// If provided, get the source from this Git repository.
-  final pulumi.Input<GitSource>? gitSource;
+  final pulumi.Input<GitSource?>? gitSource;
   /// If provided, get the source from this location in a Cloud Source Repository.
-  final pulumi.Input<RepoSource>? repoSource;
+  final pulumi.Input<RepoSource?>? repoSource;
   /// If provided, get the source from this location in Cloud Storage.
-  final pulumi.Input<StorageSource>? storageSource;
+  final pulumi.Input<StorageSource?>? storageSource;
   /// If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
-  final pulumi.Input<StorageSourceManifest>? storageSourceManifest;
+  final pulumi.Input<StorageSourceManifest?>? storageSourceManifest;
 
   /// Creates a new [Source].
   /// [connectedRepository] Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.

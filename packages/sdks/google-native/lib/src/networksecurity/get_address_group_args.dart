@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAddressGroupArgs {
   final pulumi.Input<String> addressGroupId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAddressGroupArgs].
   /// [addressGroupId] Required.

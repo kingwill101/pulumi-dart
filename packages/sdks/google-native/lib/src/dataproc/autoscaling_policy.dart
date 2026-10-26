@@ -30,10 +30,28 @@ class AutoscalingPolicy extends pulumi.CustomResource {
           'google-native:dataproc/v1:AutoscalingPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     basicAlgorithm = registerOutput<BasicAutoscalingAlgorithmResponse>('basicAlgorithm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BasicAutoscalingAlgorithmResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    secondaryWorkerConfig = registerOutput<InstanceGroupAutoscalingPolicyConfigResponse>('secondaryWorkerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupAutoscalingPolicyConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workerConfig = registerOutput<InstanceGroupAutoscalingPolicyConfigResponse>('workerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupAutoscalingPolicyConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AutoscalingPolicy] resource.
+  AutoscalingPolicy.reference(String urn)
+    : super(
+        'google-native:dataproc/v1:AutoscalingPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    basicAlgorithm = registerOutput<BasicAutoscalingAlgorithmResponse>('basicAlgorithm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BasicAutoscalingAlgorithmResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

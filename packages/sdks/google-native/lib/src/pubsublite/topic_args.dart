@@ -10,16 +10,16 @@ import 'retention_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_pubsublite_v1_topic_args_doc}
 class TopicArgs {
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The settings for this topic's partitions.
-  final pulumi.Input<PartitionConfig>? partitionConfig;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<PartitionConfig?>? partitionConfig;
+  final pulumi.Input<String?>? project;
   /// The settings for this topic's Reservation usage.
-  final pulumi.Input<ReservationConfig>? reservationConfig;
+  final pulumi.Input<ReservationConfig?>? reservationConfig;
   /// The settings for this topic's message retention.
-  final pulumi.Input<RetentionConfig>? retentionConfig;
+  final pulumi.Input<RetentionConfig?>? retentionConfig;
   /// Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
   final pulumi.Input<String> topicId;
 

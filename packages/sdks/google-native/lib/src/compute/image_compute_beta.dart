@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'customer_encryption_key_response_compute_beta.dart';
 import 'deprecation_status_response_compute_beta.dart';
+import 'guest_os_feature_response_compute_beta.dart';
 import 'image_compute_beta_args.dart';
 import 'image_raw_disk_response_compute_beta.dart';
 import 'initial_state_config_response_compute_beta.dart';
@@ -27,7 +28,7 @@ class ImageComputeBeta extends pulumi.CustomResource {
   /// Force image creation if true.
   late final pulumi.Output<bool?> forceCreate;
   /// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
-  late final pulumi.Output<List<Map<String, dynamic>>> guestOsFeatures;
+  late final pulumi.Output<List<GuestOsFeatureResponseComputeBeta>> guestOsFeatures;
   /// Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
   late final pulumi.Output<CustomerEncryptionKeyResponseComputeBeta> imageEncryptionKey;
   /// Type of the resource. Always compute#image for images.
@@ -96,7 +97,7 @@ class ImageComputeBeta extends pulumi.CustomResource {
           'google-native:compute/beta:Image',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     architecture = registerOutput<String>('architecture');
     archiveSizeBytes = registerOutput<String>('archiveSizeBytes');
@@ -107,13 +108,13 @@ class ImageComputeBeta extends pulumi.CustomResource {
     enableConfidentialCompute = registerOutput<bool>('enableConfidentialCompute');
     family = registerOutput<String>('family');
     forceCreate = registerOutput<bool?>('forceCreate');
-    guestOsFeatures = registerOutput<List<Map<String, dynamic>>>('guestOsFeatures');
+    guestOsFeatures = registerOutput<List<GuestOsFeatureResponseComputeBeta>>('guestOsFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GuestOsFeatureResponseComputeBeta>(guardedValue, (value) => GuestOsFeatureResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
     imageEncryptionKey = registerOutput<CustomerEncryptionKeyResponseComputeBeta>('imageEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomerEncryptionKeyResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>>('labels');
-    licenseCodes = registerOutput<List<String>>('licenseCodes');
-    licenses = registerOutput<List<String>>('licenses');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    licenseCodes = registerOutput<List<String>>('licenseCodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    licenses = registerOutput<List<String>>('licenses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     locked = registerOutput<bool>('locked');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -134,7 +135,56 @@ class ImageComputeBeta extends pulumi.CustomResource {
     sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
     sourceType = registerOutput<String>('sourceType');
     status = registerOutput<String>('status');
-    storageLocations = registerOutput<List<String>>('storageLocations');
-    userLicenses = registerOutput<List<String>>('userLicenses');
+    storageLocations = registerOutput<List<String>>('storageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    userLicenses = registerOutput<List<String>>('userLicenses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ImageComputeBeta] resource.
+  ImageComputeBeta.reference(String urn)
+    : super(
+        'google-native:compute/beta:Image',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    architecture = registerOutput<String>('architecture');
+    archiveSizeBytes = registerOutput<String>('archiveSizeBytes');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deprecated = registerOutput<DeprecationStatusResponseComputeBeta>('deprecated', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeprecationStatusResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    diskSizeGb = registerOutput<String>('diskSizeGb');
+    enableConfidentialCompute = registerOutput<bool>('enableConfidentialCompute');
+    family = registerOutput<String>('family');
+    forceCreate = registerOutput<bool?>('forceCreate');
+    guestOsFeatures = registerOutput<List<GuestOsFeatureResponseComputeBeta>>('guestOsFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GuestOsFeatureResponseComputeBeta>(guardedValue, (value) => GuestOsFeatureResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
+    imageEncryptionKey = registerOutput<CustomerEncryptionKeyResponseComputeBeta>('imageEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomerEncryptionKeyResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    licenseCodes = registerOutput<List<String>>('licenseCodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    licenses = registerOutput<List<String>>('licenses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    locked = registerOutput<bool>('locked');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    rawDisk = registerOutput<ImageRawDiskResponseComputeBeta>('rawDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageRawDiskResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    requestId = registerOutput<String?>('requestId');
+    rolloutOverride = registerOutput<RolloutPolicyResponseComputeBeta>('rolloutOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RolloutPolicyResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    selfLink = registerOutput<String>('selfLink');
+    shieldedInstanceInitialState = registerOutput<InitialStateConfigResponseComputeBeta>('shieldedInstanceInitialState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InitialStateConfigResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceDisk = registerOutput<String>('sourceDisk');
+    sourceDiskEncryptionKey = registerOutput<CustomerEncryptionKeyResponseComputeBeta>('sourceDiskEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomerEncryptionKeyResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceDiskId = registerOutput<String>('sourceDiskId');
+    sourceImage = registerOutput<String>('sourceImage');
+    sourceImageEncryptionKey = registerOutput<CustomerEncryptionKeyResponseComputeBeta>('sourceImageEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomerEncryptionKeyResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceImageId = registerOutput<String>('sourceImageId');
+    sourceSnapshot = registerOutput<String>('sourceSnapshot');
+    sourceSnapshotEncryptionKey = registerOutput<CustomerEncryptionKeyResponseComputeBeta>('sourceSnapshotEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomerEncryptionKeyResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceSnapshotId = registerOutput<String>('sourceSnapshotId');
+    sourceType = registerOutput<String>('sourceType');
+    status = registerOutput<String>('status');
+    storageLocations = registerOutput<List<String>>('storageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    userLicenses = registerOutput<List<String>>('userLicenses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

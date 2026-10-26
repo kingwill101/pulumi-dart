@@ -1,10 +1,13 @@
-enum EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem implements pulumi.PulumiEnum<String> {
   logTypeUnspecified("LOG_TYPE_UNSPECIFIED"),
   gws("GWS"),
   gts("GTS"),
   all("ALL");
 
   const EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem fromValue(String value) {

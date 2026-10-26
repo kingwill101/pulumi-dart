@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Redirects a shopper to a specific page. * Rule Condition: Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
 class GoogleCloudRetailV2alphaRuleRedirectAction {
   /// URL must have length equal or less than 2000 characters.
-  final pulumi.Input<String>? redirectUri;
+  final pulumi.Input<String?>? redirectUri;
 
   /// Creates a new [GoogleCloudRetailV2alphaRuleRedirectAction].
   /// [redirectUri] URL must have length equal or less than 2000 characters.

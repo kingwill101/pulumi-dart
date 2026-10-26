@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_osconfig_v1beta_get_guest_policy_args_doc}
 class GetGuestPolicyArgs {
   final pulumi.Input<String> guestPolicyId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetGuestPolicyArgs].
   /// [guestPolicyId] Required.

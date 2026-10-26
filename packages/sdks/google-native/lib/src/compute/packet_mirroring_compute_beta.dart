@@ -46,8 +46,33 @@ class PacketMirroringComputeBeta extends pulumi.CustomResource {
           'google-native:compute/beta:PacketMirroring',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
+    collectorIlb = registerOutput<PacketMirroringForwardingRuleInfoResponseComputeBeta>('collectorIlb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringForwardingRuleInfoResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    enable = registerOutput<String>('enable');
+    filter = registerOutput<PacketMirroringFilterResponseComputeBeta>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringFilterResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    mirroredResources = registerOutput<PacketMirroringMirroredResourceInfoResponseComputeBeta>('mirroredResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringMirroredResourceInfoResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<PacketMirroringNetworkInfoResponseComputeBeta>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringNetworkInfoResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+  }
+
+  /// Creates a typed reference to an existing [PacketMirroringComputeBeta] resource.
+  PacketMirroringComputeBeta.reference(String urn)
+    : super(
+        'google-native:compute/beta:PacketMirroring',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     collectorIlb = registerOutput<PacketMirroringForwardingRuleInfoResponseComputeBeta>('collectorIlb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringForwardingRuleInfoResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');

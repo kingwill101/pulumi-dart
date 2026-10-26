@@ -4,15 +4,15 @@
 /// Result data returned by getGatewaySecurityPolicy.
 class GetGatewaySecurityPolicyNetworksecurityV1beta1Result {
   /// The timestamp when the resource was created.
-  final String createTime;
+  final String? createTime;
   /// Optional. Free-text description of the resource.
-  final String description;
+  final String? description;
   /// Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy} gateway_security_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
-  final String name;
+  final String? name;
   /// Optional. Name of a TLS Inspection Policy resource that defines how TLS inspection will be performed for any rule(s) which enables it.
-  final String tlsInspectionPolicy;
+  final String? tlsInspectionPolicy;
   /// The timestamp when the resource was updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetGatewaySecurityPolicyNetworksecurityV1beta1Result].
   /// [createTime] The timestamp when the resource was created.
@@ -21,30 +21,30 @@ class GetGatewaySecurityPolicyNetworksecurityV1beta1Result {
   /// [tlsInspectionPolicy] Optional. Name of a TLS Inspection Policy resource that defines how TLS inspection will be performed for any rule(s) which enables it.
   /// [updateTime] The timestamp when the resource was updated.
   const GetGatewaySecurityPolicyNetworksecurityV1beta1Result({
-    required this.createTime,
-    required this.description,
-    required this.name,
-    required this.tlsInspectionPolicy,
-    required this.updateTime,
+    this.createTime,
+    this.description,
+    this.name,
+    this.tlsInspectionPolicy,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'name': name,
-      'tlsInspectionPolicy': tlsInspectionPolicy,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'description': ?description,
+      'name': ?name,
+      'tlsInspectionPolicy': ?tlsInspectionPolicy,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetGatewaySecurityPolicyNetworksecurityV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetGatewaySecurityPolicyNetworksecurityV1beta1Result(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      name: map['name'] as String,
-      tlsInspectionPolicy: map['tlsInspectionPolicy'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tlsInspectionPolicy: (() { final guardedValue = map['tlsInspectionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

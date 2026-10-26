@@ -64,12 +64,12 @@ class OracleColumnResponse {
       column: pulumi.Input.fromValue(map['column'] as String),
       dataType: pulumi.Input.fromValue(map['dataType'] as String),
       encoding: pulumi.Input.fromValue(map['encoding'] as String),
-      length: pulumi.Input.fromValue(map['length'] as int),
+      length: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['length'])),
       nullable: pulumi.Input.fromValue(map['nullable'] as bool),
-      ordinalPosition: pulumi.Input.fromValue(map['ordinalPosition'] as int),
-      precision: pulumi.Input.fromValue(map['precision'] as int),
+      ordinalPosition: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ordinalPosition'])),
+      precision: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['precision'])),
       primaryKey: pulumi.Input.fromValue(map['primaryKey'] as bool),
-      scale: pulumi.Input.fromValue(map['scale'] as int),
+      scale: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scale'])),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The authentication parameters to provide to the specified resource or URL that requires a username and password. Currently, only Basic HTTP authentication (https://tools.ietf.org/html/rfc7617) is supported in Uptime checks.
 class BasicAuthentication {
   /// The password to use when authenticating with the HTTP server.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The username to use when authenticating with the HTTP server.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [BasicAuthentication].
   /// [password] The password to use when authenticating with the HTTP server.

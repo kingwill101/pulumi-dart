@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
-enum TableGranularity {
+enum TableGranularity implements pulumi.PulumiEnum<String> {
   timestampGranularityUnspecified("TIMESTAMP_GRANULARITY_UNSPECIFIED"),
   millis("MILLIS");
 
   const TableGranularity(this.wireValue);
+  @override
   final String wireValue;
 
   static TableGranularity fromValue(String value) {

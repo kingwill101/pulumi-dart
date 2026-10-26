@@ -7,13 +7,13 @@ import 'google_cloud_aiplatform_v1_training_config.dart';
 /// Parameters that configure the active learning pipeline. Active learning will label the data incrementally by several iterations. For every iteration, it will select a batch of data based on the sampling strategy.
 class GoogleCloudAiplatformV1ActiveLearningConfig {
   /// Max number of human labeled DataItems.
-  final pulumi.Input<String>? maxDataItemCount;
+  final pulumi.Input<String?>? maxDataItemCount;
   /// Max percent of total DataItems for human labeling.
-  final pulumi.Input<int>? maxDataItemPercentage;
+  final pulumi.Input<int?>? maxDataItemPercentage;
   /// Active learning data sampling config. For every active learning labeling iteration, it will select a batch of data based on the sampling strategy.
-  final pulumi.Input<GoogleCloudAiplatformV1SampleConfig>? sampleConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1SampleConfig?>? sampleConfig;
   /// CMLE training config. For every active learning labeling iteration, system will train a machine learning model on CMLE. The trained model will be used by data sampling algorithm to select DataItems.
-  final pulumi.Input<GoogleCloudAiplatformV1TrainingConfig>? trainingConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1TrainingConfig?>? trainingConfig;
 
   /// Creates a new [GoogleCloudAiplatformV1ActiveLearningConfig].
   /// [maxDataItemCount] Max number of human labeled DataItems.
@@ -39,7 +39,7 @@ class GoogleCloudAiplatformV1ActiveLearningConfig {
   factory GoogleCloudAiplatformV1ActiveLearningConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ActiveLearningConfig(
       maxDataItemCount: (() { final guardedValue = map['maxDataItemCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxDataItemPercentage: (() { final guardedValue = map['maxDataItemPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxDataItemPercentage: (() { final guardedValue = map['maxDataItemPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sampleConfig: (() { final guardedValue = map['sampleConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudAiplatformV1SampleConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       trainingConfig: (() { final guardedValue = map['trainingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudAiplatformV1TrainingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

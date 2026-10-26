@@ -6,11 +6,11 @@ import 'error_handler_error_code.dart';
 /// Custom static error page to be served when an error occurs.
 class ErrorHandler {
   /// Error condition this handler applies to.
-  final pulumi.Input<ErrorHandlerErrorCode>? errorCode;
+  final pulumi.Input<ErrorHandlerErrorCode?>? errorCode;
   /// MIME type of file. Defaults to text/html.
-  final pulumi.Input<String>? mimeType;
+  final pulumi.Input<String?>? mimeType;
   /// Static file content to be served for this error.
-  final pulumi.Input<String>? staticFile;
+  final pulumi.Input<String?>? staticFile;
 
   /// Creates a new [ErrorHandler].
   /// [errorCode] Error condition this handler applies to.

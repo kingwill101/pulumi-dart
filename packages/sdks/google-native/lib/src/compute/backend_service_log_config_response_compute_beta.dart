@@ -39,7 +39,7 @@ class BackendServiceLogConfigResponseComputeBeta {
       enable: pulumi.Input.fromValue(map['enable'] as bool),
       optionalFields: pulumi.Input.fromValue((map['optionalFields'] as List).cast<String>()),
       optionalMode: pulumi.Input.fromValue(map['optionalMode'] as String),
-      sampleRate: pulumi.Input.fromValue(map['sampleRate'] as double),
+      sampleRate: pulumi.Input.fromValue((map['sampleRate'] as num).toDouble()),
     );
   }
 }

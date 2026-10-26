@@ -38,12 +38,34 @@ class ServerTlsPolicy extends pulumi.CustomResource {
           'google-native:networksecurity/v1:ServerTlsPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'serverTlsPolicyId']).merge(options),
         ) {
     allowOpen = registerOutput<bool>('allowOpen');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    mtlsPolicy = registerOutput<MTLSPolicyResponse>('mtlsPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MTLSPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    serverCertificate = registerOutput<GoogleCloudNetworksecurityV1CertificateProviderResponse>('serverCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudNetworksecurityV1CertificateProviderResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serverTlsPolicyId = registerOutput<String>('serverTlsPolicyId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ServerTlsPolicy] resource.
+  ServerTlsPolicy.reference(String urn)
+    : super(
+        'google-native:networksecurity/v1:ServerTlsPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowOpen = registerOutput<bool>('allowOpen');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     mtlsPolicy = registerOutput<MTLSPolicyResponse>('mtlsPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MTLSPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

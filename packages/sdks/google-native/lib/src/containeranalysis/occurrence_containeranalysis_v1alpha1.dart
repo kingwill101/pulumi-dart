@@ -82,8 +82,44 @@ class OccurrenceContaineranalysisV1alpha1 extends pulumi.CustomResource {
           'google-native:containeranalysis/v1alpha1:Occurrence',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    attestation = registerOutput<AttestationResponse>('attestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttestationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    buildDetails = registerOutput<BuildDetailsResponse>('buildDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    compliance = registerOutput<ComplianceOccurrenceResponseContaineranalysisV1alpha1>('compliance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComplianceOccurrenceResponseContaineranalysisV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deployment = registerOutput<DeploymentResponse>('deployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    derivedImage = registerOutput<DerivedResponse>('derivedImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DerivedResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    discovered = registerOutput<DiscoveredResponse>('discovered', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiscoveredResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dsseAttestation = registerOutput<DSSEAttestationOccurrenceResponseContaineranalysisV1alpha1>('dsseAttestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DSSEAttestationOccurrenceResponseContaineranalysisV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    envelope = registerOutput<EnvelopeResponseContaineranalysisV1alpha1>('envelope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvelopeResponseContaineranalysisV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    installation = registerOutput<InstallationResponse>('installation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstallationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    noteName = registerOutput<String>('noteName');
+    project = registerOutput<String>('project');
+    remediation = registerOutput<String>('remediation');
+    resource = registerOutput<ResourceResponse>('resource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceUrl = registerOutput<String>('resourceUrl');
+    sbom = registerOutput<DocumentOccurrenceResponse>('sbom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sbomReference = registerOutput<SBOMReferenceOccurrenceResponseContaineranalysisV1alpha1>('sbomReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SBOMReferenceOccurrenceResponseContaineranalysisV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spdxFile = registerOutput<FileOccurrenceResponse>('spdxFile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spdxPackage = registerOutput<PackageInfoOccurrenceResponse>('spdxPackage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PackageInfoOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spdxRelationship = registerOutput<RelationshipOccurrenceResponse>('spdxRelationship', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RelationshipOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+    upgrade = registerOutput<UpgradeOccurrenceResponseContaineranalysisV1alpha1>('upgrade', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UpgradeOccurrenceResponseContaineranalysisV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vulnerabilityDetails = registerOutput<VulnerabilityDetailsResponse>('vulnerabilityDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VulnerabilityDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [OccurrenceContaineranalysisV1alpha1] resource.
+  OccurrenceContaineranalysisV1alpha1.reference(String urn)
+    : super(
+        'google-native:containeranalysis/v1alpha1:Occurrence',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     attestation = registerOutput<AttestationResponse>('attestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttestationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     buildDetails = registerOutput<BuildDetailsResponse>('buildDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compliance = registerOutput<ComplianceOccurrenceResponseContaineranalysisV1alpha1>('compliance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComplianceOccurrenceResponseContaineranalysisV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });

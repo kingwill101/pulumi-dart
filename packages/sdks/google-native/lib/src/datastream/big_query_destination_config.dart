@@ -7,11 +7,11 @@ import 'source_hierarchy_datasets.dart';
 /// BigQuery destination configuration
 class BigQueryDestinationConfig {
   /// The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
-  final pulumi.Input<String>? dataFreshness;
+  final pulumi.Input<String?>? dataFreshness;
   /// Single destination dataset.
-  final pulumi.Input<SingleTargetDataset>? singleTargetDataset;
+  final pulumi.Input<SingleTargetDataset?>? singleTargetDataset;
   /// Source hierarchy datasets.
-  final pulumi.Input<SourceHierarchyDatasets>? sourceHierarchyDatasets;
+  final pulumi.Input<SourceHierarchyDatasets?>? sourceHierarchyDatasets;
 
   /// Creates a new [BigQueryDestinationConfig].
   /// [dataFreshness] The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.

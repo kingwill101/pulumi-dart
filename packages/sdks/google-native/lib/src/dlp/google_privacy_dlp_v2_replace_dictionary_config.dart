@@ -6,7 +6,7 @@ import 'google_privacy_dlp_v2_word_list.dart';
 /// Replace each input value with a value randomly selected from the dictionary.
 class GooglePrivacyDlpV2ReplaceDictionaryConfig {
   /// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
-  final pulumi.Input<GooglePrivacyDlpV2WordList>? wordList;
+  final pulumi.Input<GooglePrivacyDlpV2WordList?>? wordList;
 
   /// Creates a new [GooglePrivacyDlpV2ReplaceDictionaryConfig].
   /// [wordList] A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.

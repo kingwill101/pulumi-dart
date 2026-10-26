@@ -8,11 +8,11 @@ class ConfigMapKeySelector {
   /// Not supported by Cloud Run.
   final pulumi.Input<String> key;
   /// Not supported by Cloud Run.
-  final pulumi.Input<LocalObjectReference>? localObjectReference;
+  final pulumi.Input<LocalObjectReference?>? localObjectReference;
   /// Not supported by Cloud Run.
   final pulumi.Input<String> name;
   /// Not supported by Cloud Run.
-  final pulumi.Input<bool>? optional;
+  final pulumi.Input<bool?>? optional;
 
   /// Creates a new [ConfigMapKeySelector].
   /// [key] Not supported by Cloud Run.

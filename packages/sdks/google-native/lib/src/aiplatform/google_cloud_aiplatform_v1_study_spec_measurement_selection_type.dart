@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describe which measurement selection type will be used
-enum GoogleCloudAiplatformV1StudySpecMeasurementSelectionType {
+enum GoogleCloudAiplatformV1StudySpecMeasurementSelectionType implements pulumi.PulumiEnum<String> {
   measurementSelectionTypeUnspecified("MEASUREMENT_SELECTION_TYPE_UNSPECIFIED"),
   lastMeasurement("LAST_MEASUREMENT"),
   bestMeasurement("BEST_MEASUREMENT");
 
   const GoogleCloudAiplatformV1StudySpecMeasurementSelectionType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudAiplatformV1StudySpecMeasurementSelectionType fromValue(String value) {

@@ -77,7 +77,7 @@ class MetricThresholdResponse {
       evaluationMissingData: pulumi.Input.fromValue(map['evaluationMissingData'] as String),
       filter: pulumi.Input.fromValue(map['filter'] as String),
       forecastOptions: pulumi.Input.fromValue(ForecastOptionsResponse.fromMap((map['forecastOptions']! as Map).cast<String, dynamic>())),
-      thresholdValue: pulumi.Input.fromValue(map['thresholdValue'] as double),
+      thresholdValue: pulumi.Input.fromValue((map['thresholdValue'] as num).toDouble()),
       trigger: pulumi.Input.fromValue(TriggerResponse.fromMap((map['trigger']! as Map).cast<String, dynamic>())),
     );
   }

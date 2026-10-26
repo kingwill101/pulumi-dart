@@ -6,9 +6,9 @@ import 'advanced_datapath_observability_config_relay_mode.dart';
 /// AdvancedDatapathObservabilityConfig specifies configuration of observability features of advanced datapath.
 class AdvancedDatapathObservabilityConfig {
   /// Expose flow metrics on nodes
-  final pulumi.Input<bool>? enableMetrics;
+  final pulumi.Input<bool?>? enableMetrics;
   /// Method used to make Relay available
-  final pulumi.Input<AdvancedDatapathObservabilityConfigRelayMode>? relayMode;
+  final pulumi.Input<AdvancedDatapathObservabilityConfigRelayMode?>? relayMode;
 
   /// Creates a new [AdvancedDatapathObservabilityConfig].
   /// [enableMetrics] Expose flow metrics on nodes

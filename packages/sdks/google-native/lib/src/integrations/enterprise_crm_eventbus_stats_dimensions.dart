@@ -5,18 +5,18 @@ import 'enterprise_crm_eventbus_stats_dimensions_enum_filter_type.dart';
 import 'enterprise_crm_eventbus_stats_dimensions_retry_attempt.dart';
 
 class EnterpriseCrmEventbusStatsDimensions {
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Whether to include or exclude the enums matching the regex.
-  final pulumi.Input<EnterpriseCrmEventbusStatsDimensionsEnumFilterType>? enumFilterType;
-  final pulumi.Input<String>? errorEnumString;
-  final pulumi.Input<EnterpriseCrmEventbusStatsDimensionsRetryAttempt>? retryAttempt;
-  final pulumi.Input<String>? taskName;
-  final pulumi.Input<String>? taskNumber;
+  final pulumi.Input<EnterpriseCrmEventbusStatsDimensionsEnumFilterType?>? enumFilterType;
+  final pulumi.Input<String?>? errorEnumString;
+  final pulumi.Input<EnterpriseCrmEventbusStatsDimensionsRetryAttempt?>? retryAttempt;
+  final pulumi.Input<String?>? taskName;
+  final pulumi.Input<String?>? taskNumber;
   /// Stats have been or will be aggregated on set fields for any semantically-meaningful combination.
-  final pulumi.Input<String>? triggerId;
-  final pulumi.Input<String>? warningEnumString;
-  final pulumi.Input<String>? workflowId;
-  final pulumi.Input<String>? workflowName;
+  final pulumi.Input<String?>? triggerId;
+  final pulumi.Input<String?>? warningEnumString;
+  final pulumi.Input<String?>? workflowId;
+  final pulumi.Input<String?>? workflowName;
 
   /// Creates a new [EnterpriseCrmEventbusStatsDimensions].
   /// [clientId] Optional.

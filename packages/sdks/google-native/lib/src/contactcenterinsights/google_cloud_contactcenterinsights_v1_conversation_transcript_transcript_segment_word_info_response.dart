@@ -36,7 +36,7 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentW
 
   factory GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse(
-      confidence: pulumi.Input.fromValue(map['confidence'] as double),
+      confidence: pulumi.Input.fromValue((map['confidence'] as num).toDouble()),
       endOffset: pulumi.Input.fromValue(map['endOffset'] as String),
       startOffset: pulumi.Input.fromValue(map['startOffset'] as String),
       word: pulumi.Input.fromValue(map['word'] as String),

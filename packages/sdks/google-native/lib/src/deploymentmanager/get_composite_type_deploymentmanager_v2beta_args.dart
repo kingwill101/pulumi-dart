@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_deploymentmanager_v2beta_get_composite_type_deploymentmanager_v2beta_args_doc}
 class GetCompositeTypeDeploymentmanagerV2betaArgs {
   final pulumi.Input<String> compositeType;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetCompositeTypeDeploymentmanagerV2betaArgs].
   /// [compositeType] Required.

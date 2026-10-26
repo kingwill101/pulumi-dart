@@ -6,17 +6,17 @@ import 'git_repo_source_repo_type.dart';
 /// GitRepoSource describes a repo and ref of a code repository.
 class GitRepoSource {
   /// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
-  final pulumi.Input<String>? bitbucketServerConfig;
+  final pulumi.Input<String?>? bitbucketServerConfig;
   /// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
-  final pulumi.Input<String>? githubEnterpriseConfig;
+  final pulumi.Input<String?>? githubEnterpriseConfig;
   /// The branch or tag to use. Must start with "refs/" (required).
-  final pulumi.Input<String>? ref;
+  final pulumi.Input<String?>? ref;
   /// See RepoType below.
-  final pulumi.Input<GitRepoSourceRepoType>? repoType;
+  final pulumi.Input<GitRepoSourceRepoType?>? repoType;
   /// The connected repository resource name, in the format `projects/*/locations/*/connections/*/repositories/*`. Either `uri` or `repository` can be specified and is required.
-  final pulumi.Input<String>? repository;
+  final pulumi.Input<String?>? repository;
   /// The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [GitRepoSource].
   /// [bitbucketServerConfig] The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.

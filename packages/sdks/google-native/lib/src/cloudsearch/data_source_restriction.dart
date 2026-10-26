@@ -7,9 +7,9 @@ import 'source.dart';
 /// Restriction on Datasource.
 class DataSourceRestriction {
   /// Filter options restricting the results. If multiple filters are present, they are grouped by object type before joining. Filters with the same object type are joined conjunctively, then the resulting expressions are joined disjunctively. The maximum number of elements is 20. NOTE: Suggest API supports only few filters at the moment: "objecttype", "type" and "mimetype". For now, schema specific filters cannot be used to filter suggestions.
-  final pulumi.Input<List<FilterOptions>>? filterOptions;
+  final pulumi.Input<List<FilterOptions>?>? filterOptions;
   /// The source of restriction.
-  final pulumi.Input<Source>? source;
+  final pulumi.Input<Source?>? source;
 
   /// Creates a new [DataSourceRestriction].
   /// [filterOptions] Filter options restricting the results. If multiple filters are present, they are grouped by object type before joining. Filters with the same object type are joined conjunctively, then the resulting expressions are joined disjunctively. The maximum number of elements is 20. NOTE: Suggest API supports only few filters at the moment: "objecttype", "type" and "mimetype". For now, schema specific filters cannot be used to filter suggestions.

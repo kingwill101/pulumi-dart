@@ -6,8 +6,8 @@ import 'backend_service_locality_load_balancing_policy_config_policy_compute_bet
 
 /// Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
 class BackendServiceLocalityLoadBalancingPolicyConfigComputeBeta {
-  final pulumi.Input<BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeBeta>? customPolicy;
-  final pulumi.Input<BackendServiceLocalityLoadBalancingPolicyConfigPolicyComputeBeta>? policy;
+  final pulumi.Input<BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeBeta?>? customPolicy;
+  final pulumi.Input<BackendServiceLocalityLoadBalancingPolicyConfigPolicyComputeBeta?>? policy;
 
   /// Creates a new [BackendServiceLocalityLoadBalancingPolicyConfigComputeBeta].
   /// [customPolicy] Optional.

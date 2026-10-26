@@ -1,4 +1,6 @@
-enum ExecutionConfigUsagesItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ExecutionConfigUsagesItem implements pulumi.PulumiEnum<String> {
   executionEnvironmentUsageUnspecified("EXECUTION_ENVIRONMENT_USAGE_UNSPECIFIED"),
   render("RENDER"),
   deploy("DEPLOY"),
@@ -7,6 +9,7 @@ enum ExecutionConfigUsagesItem {
   postdeploy("POSTDEPLOY");
 
   const ExecutionConfigUsagesItem(this.wireValue);
+  @override
   final String wireValue;
 
   static ExecutionConfigUsagesItem fromValue(String value) {

@@ -11,19 +11,19 @@ import 'runtime_config.dart';
 /// {@macro pulumi_dataproc_v1_session_template_args_doc}
 class SessionTemplateArgs {
   /// Optional. Brief description of the template.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Environment configuration for session execution.
-  final pulumi.Input<EnvironmentConfig>? environmentConfig;
+  final pulumi.Input<EnvironmentConfig?>? environmentConfig;
   /// Optional. Jupyter session config.
-  final pulumi.Input<JupyterConfig>? jupyterSession;
+  final pulumi.Input<JupyterConfig?>? jupyterSession;
   /// Optional. Labels to associate with sessions created using this template. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a session.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// The resource name of the session template.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Optional. Runtime configuration for session execution.
-  final pulumi.Input<RuntimeConfig>? runtimeConfig;
+  final pulumi.Input<RuntimeConfig?>? runtimeConfig;
 
   /// Creates a new [SessionTemplateArgs].
   /// [description] Optional. Brief description of the template.

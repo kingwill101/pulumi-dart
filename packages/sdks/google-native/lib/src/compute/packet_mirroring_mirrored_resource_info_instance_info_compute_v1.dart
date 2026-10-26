@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PacketMirroringMirroredResourceInfoInstanceInfoComputeV1 {
   /// Resource URL to the virtual machine instance which is being mirrored.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [PacketMirroringMirroredResourceInfoInstanceInfoComputeV1].
   /// [url] Resource URL to the virtual machine instance which is being mirrored.

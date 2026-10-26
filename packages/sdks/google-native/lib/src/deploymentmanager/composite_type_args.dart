@@ -10,15 +10,15 @@ import 'template_contents.dart';
 /// {@macro pulumi_deploymentmanager_alpha_composite_type_args_doc}
 class CompositeTypeArgs {
   /// An optional textual description of the resource; provided by the client when the resource is created.
-  final pulumi.Input<String>? description;
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<String?>? id;
   /// Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-  final pulumi.Input<List<CompositeTypeLabelEntry>>? labels;
+  final pulumi.Input<List<CompositeTypeLabelEntry>?>? labels;
   /// Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Files for the template type.
-  final pulumi.Input<TemplateContents>? templateContents;
+  final pulumi.Input<TemplateContents?>? templateContents;
 
   /// Creates a new [CompositeTypeArgs].
   /// [description] An optional textual description of the resource; provided by the client when the resource is created.

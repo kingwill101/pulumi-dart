@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backfill_all_strategy_response_datastream_v1alpha1.dart';
 import 'destination_config_response_datastream_v1alpha1.dart';
+import 'error_response_datastream_v1alpha1.dart';
 import 'source_config_response_datastream_v1alpha1.dart';
 import 'stream_datastream_v1alpha1_args.dart';
 
@@ -20,7 +21,7 @@ class StreamDatastreamV1alpha1 extends pulumi.CustomResource {
   /// Display name.
   late final pulumi.Output<String> displayName;
   /// Errors on the Stream.
-  late final pulumi.Output<List<Map<String, dynamic>>> errors;
+  late final pulumi.Output<List<ErrorResponseDatastreamV1alpha1>> errors;
   /// Optional. Create the stream without validating it.
   late final pulumi.Output<bool?> force;
   /// Labels.
@@ -52,7 +53,7 @@ class StreamDatastreamV1alpha1 extends pulumi.CustomResource {
           'google-native:datastream/v1alpha1:Stream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'streamId']).merge(options),
         ) {
     backfillAll = registerOutput<BackfillAllStrategyResponseDatastreamV1alpha1>('backfillAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackfillAllStrategyResponseDatastreamV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backfillNone = registerOutput<Map<String, dynamic>>('backfillNone');
@@ -60,9 +61,37 @@ class StreamDatastreamV1alpha1 extends pulumi.CustomResource {
     customerManagedEncryptionKey = registerOutput<String>('customerManagedEncryptionKey');
     destinationConfig = registerOutput<DestinationConfigResponseDatastreamV1alpha1>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DestinationConfigResponseDatastreamV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
+    errors = registerOutput<List<ErrorResponseDatastreamV1alpha1>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ErrorResponseDatastreamV1alpha1>(guardedValue, (value) => ErrorResponseDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>())); });
     force = registerOutput<bool?>('force');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    sourceConfig = registerOutput<SourceConfigResponseDatastreamV1alpha1>('sourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceConfigResponseDatastreamV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    streamId = registerOutput<String>('streamId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [StreamDatastreamV1alpha1] resource.
+  StreamDatastreamV1alpha1.reference(String urn)
+    : super(
+        'google-native:datastream/v1alpha1:Stream',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backfillAll = registerOutput<BackfillAllStrategyResponseDatastreamV1alpha1>('backfillAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackfillAllStrategyResponseDatastreamV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backfillNone = registerOutput<Map<String, dynamic>>('backfillNone');
+    createTime = registerOutput<String>('createTime');
+    customerManagedEncryptionKey = registerOutput<String>('customerManagedEncryptionKey');
+    destinationConfig = registerOutput<DestinationConfigResponseDatastreamV1alpha1>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DestinationConfigResponseDatastreamV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    errors = registerOutput<List<ErrorResponseDatastreamV1alpha1>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ErrorResponseDatastreamV1alpha1>(guardedValue, (value) => ErrorResponseDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>())); });
+    force = registerOutput<bool?>('force');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

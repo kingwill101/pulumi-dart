@@ -7,10 +7,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_dns_v1beta2_get_resource_record_set_dns_v1beta2_args_doc}
 class GetResourceRecordSetDnsV1beta2Args {
-  final pulumi.Input<String>? clientOperationId;
+  final pulumi.Input<String?>? clientOperationId;
   final pulumi.Input<String> managedZone;
   final pulumi.Input<String> name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> type;
 
   /// Creates a new [GetResourceRecordSetDnsV1beta2Args].

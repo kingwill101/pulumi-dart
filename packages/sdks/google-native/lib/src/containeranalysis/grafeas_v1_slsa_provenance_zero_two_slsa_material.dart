@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
 class GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial {
-  final pulumi.Input<Map<String, String>>? digest;
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<Map<String, String>?>? digest;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial].
   /// [digest] Optional.

@@ -6,7 +6,7 @@ import 'sandbox_config_type.dart';
 /// SandboxConfig contains configurations of the sandbox to use for the node.
 class SandboxConfig {
   /// Type of the sandbox to use for the node.
-  final pulumi.Input<SandboxConfigType>? type;
+  final pulumi.Input<SandboxConfigType?>? type;
 
   /// Creates a new [SandboxConfig].
   /// [type] Type of the sandbox to use for the node.

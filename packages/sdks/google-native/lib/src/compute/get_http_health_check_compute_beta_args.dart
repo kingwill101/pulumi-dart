@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_beta_get_http_health_check_compute_beta_args_doc}
 class GetHttpHealthCheckComputeBetaArgs {
   final pulumi.Input<String> httpHealthCheck;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetHttpHealthCheckComputeBetaArgs].
   /// [httpHealthCheck] Required.

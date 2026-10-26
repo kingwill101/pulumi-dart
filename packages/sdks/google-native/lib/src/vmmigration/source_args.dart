@@ -12,23 +12,23 @@ import 'vmware_source_details.dart';
 /// {@macro pulumi_vmmigration_v1_source_args_doc}
 class SourceArgs {
   /// AWS type source details.
-  final pulumi.Input<AwsSourceDetails>? aws;
+  final pulumi.Input<AwsSourceDetails?>? aws;
   /// Azure type source details.
-  final pulumi.Input<AzureSourceDetails>? azure;
+  final pulumi.Input<AzureSourceDetails?>? azure;
   /// User-provided description of the source.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Immutable. The encryption details of the source data stored by the service.
-  final pulumi.Input<Encryption>? encryption;
+  final pulumi.Input<Encryption?>? encryption;
   /// The labels of the source.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Required. The source identifier.
   final pulumi.Input<String> sourceId;
   /// Vmware type source details.
-  final pulumi.Input<VmwareSourceDetails>? vmware;
+  final pulumi.Input<VmwareSourceDetails?>? vmware;
 
   /// Creates a new [SourceArgs].
   /// [aws] AWS type source details.

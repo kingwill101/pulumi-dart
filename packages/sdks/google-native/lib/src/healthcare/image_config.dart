@@ -6,7 +6,7 @@ import 'image_config_text_redaction_mode.dart';
 /// Specifies how to handle de-identification of image pixels.
 class ImageConfig {
   /// Determines how to redact text from image.
-  final pulumi.Input<ImageConfigTextRedactionMode>? textRedactionMode;
+  final pulumi.Input<ImageConfigTextRedactionMode?>? textRedactionMode;
 
   /// Creates a new [ImageConfig].
   /// [textRedactionMode] Determines how to redact text from image.

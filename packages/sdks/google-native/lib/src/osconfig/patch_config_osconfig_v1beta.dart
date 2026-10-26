@@ -11,23 +11,23 @@ import 'zypper_settings_osconfig_v1beta.dart';
 /// Patch configuration specifications. Contains details on how to apply the patch(es) to a VM instance.
 class PatchConfigOsconfigV1beta {
   /// Apt update settings. Use this setting to override the default `apt` patch rules.
-  final pulumi.Input<AptSettingsOsconfigV1beta>? apt;
+  final pulumi.Input<AptSettingsOsconfigV1beta?>? apt;
   /// Goo update settings. Use this setting to override the default `goo` patch rules.
-  final pulumi.Input<Map<String, dynamic>>? goo;
+  final pulumi.Input<Map<String, dynamic>?>? goo;
   /// Allows the patch job to run on Managed instance groups (MIGs).
-  final pulumi.Input<bool>? migInstancesAllowed;
+  final pulumi.Input<bool?>? migInstancesAllowed;
   /// The `ExecStep` to run after the patch update.
-  final pulumi.Input<ExecStepOsconfigV1beta>? postStep;
+  final pulumi.Input<ExecStepOsconfigV1beta?>? postStep;
   /// The `ExecStep` to run before the patch update.
-  final pulumi.Input<ExecStepOsconfigV1beta>? preStep;
+  final pulumi.Input<ExecStepOsconfigV1beta?>? preStep;
   /// Post-patch reboot settings.
-  final pulumi.Input<PatchConfigRebootConfigOsconfigV1beta>? rebootConfig;
+  final pulumi.Input<PatchConfigRebootConfigOsconfigV1beta?>? rebootConfig;
   /// Windows update settings. Use this override the default windows patch rules.
-  final pulumi.Input<WindowsUpdateSettingsOsconfigV1beta>? windowsUpdate;
+  final pulumi.Input<WindowsUpdateSettingsOsconfigV1beta?>? windowsUpdate;
   /// Yum update settings. Use this setting to override the default `yum` patch rules.
-  final pulumi.Input<YumSettingsOsconfigV1beta>? yum;
+  final pulumi.Input<YumSettingsOsconfigV1beta?>? yum;
   /// Zypper update settings. Use this setting to override the default `zypper` patch rules.
-  final pulumi.Input<ZypperSettingsOsconfigV1beta>? zypper;
+  final pulumi.Input<ZypperSettingsOsconfigV1beta?>? zypper;
 
   /// Creates a new [PatchConfigOsconfigV1beta].
   /// [apt] Apt update settings. Use this setting to override the default `apt` patch rules.

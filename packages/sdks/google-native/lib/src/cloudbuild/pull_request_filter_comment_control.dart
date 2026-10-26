@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
-enum PullRequestFilterCommentControl {
+enum PullRequestFilterCommentControl implements pulumi.PulumiEnum<String> {
   commentsDisabled("COMMENTS_DISABLED"),
   commentsEnabled("COMMENTS_ENABLED"),
   commentsEnabledForExternalContributorsOnly("COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY");
 
   const PullRequestFilterCommentControl(this.wireValue);
+  @override
   final String wireValue;
 
   static PullRequestFilterCommentControl fromValue(String value) {

@@ -31,8 +31,8 @@ class GoogleRpcStatusResponseDialogflowV3beta1 {
 
   factory GoogleRpcStatusResponseDialogflowV3beta1.fromMap(Map<String, dynamic> map) {
     return GoogleRpcStatusResponseDialogflowV3beta1(
-      code: pulumi.Input.fromValue(map['code'] as int),
-      details: pulumi.Input.fromValue((map['details'] as List).cast<Map<String, String>>()),
+      code: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['code'])),
+      details: pulumi.Input.fromValue(pulumi.Input.decodeList<Map<String, String>>(map['details']!, (value) => (value as Map).cast<String, String>())),
       message: pulumi.Input.fromValue(map['message'] as String),
     );
   }

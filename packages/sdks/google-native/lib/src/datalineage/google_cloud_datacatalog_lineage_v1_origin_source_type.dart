@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the source. Use of a source_type other than `CUSTOM` for process creation or updating is highly discouraged, and may be restricted in the future without notice.
-enum GoogleCloudDatacatalogLineageV1OriginSourceType {
+enum GoogleCloudDatacatalogLineageV1OriginSourceType implements pulumi.PulumiEnum<String> {
   sourceTypeUnspecified("SOURCE_TYPE_UNSPECIFIED"),
   custom("CUSTOM"),
   bigquery("BIGQUERY"),
@@ -9,6 +11,7 @@ enum GoogleCloudDatacatalogLineageV1OriginSourceType {
   dataproc("DATAPROC");
 
   const GoogleCloudDatacatalogLineageV1OriginSourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDatacatalogLineageV1OriginSourceType fromValue(String value) {

@@ -6,9 +6,9 @@ import 'axis_scale.dart';
 /// A chart axis.
 class Axis {
   /// The label of the axis.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// The axis scale. By default, a linear scale is used.
-  final pulumi.Input<AxisScale>? scale;
+  final pulumi.Input<AxisScale?>? scale;
 
   /// Creates a new [Axis].
   /// [label] The label of the axis.

@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_accesscontextmanager_v1_get_access_level_args_doc}
 class GetAccessLevelArgs {
-  final pulumi.Input<String>? accessLevelFormat;
+  final pulumi.Input<String?>? accessLevelFormat;
   final pulumi.Input<String> accessLevelId;
   final pulumi.Input<String> accessPolicyId;
 

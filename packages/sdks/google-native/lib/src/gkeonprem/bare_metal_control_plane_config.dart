@@ -7,7 +7,7 @@ import 'bare_metal_control_plane_node_pool_config.dart';
 /// Specifies the control plane configuration.
 class BareMetalControlPlaneConfig {
   /// Customizes the default API server args. Only a subset of customized flags are supported. For the exact format, refer to the [API server documentation](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/).
-  final pulumi.Input<List<BareMetalApiServerArgument>>? apiServerArgs;
+  final pulumi.Input<List<BareMetalApiServerArgument>?>? apiServerArgs;
   /// Configures the node pool running the control plane.
   final pulumi.Input<BareMetalControlPlaneNodePoolConfig> controlPlaneNodePoolConfig;
 

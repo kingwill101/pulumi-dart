@@ -8,11 +8,11 @@ import 'bare_metal_admin_vip_config.dart';
 /// BareMetalAdminLoadBalancerConfig specifies the load balancer configuration.
 class BareMetalAdminLoadBalancerConfig {
   /// Manually configured load balancers.
-  final pulumi.Input<BareMetalAdminManualLbConfig>? manualLbConfig;
+  final pulumi.Input<BareMetalAdminManualLbConfig?>? manualLbConfig;
   /// Configures the ports that the load balancer will listen on.
-  final pulumi.Input<BareMetalAdminPortConfig>? portConfig;
+  final pulumi.Input<BareMetalAdminPortConfig?>? portConfig;
   /// The VIPs used by the load balancer.
-  final pulumi.Input<BareMetalAdminVipConfig>? vipConfig;
+  final pulumi.Input<BareMetalAdminVipConfig?>? vipConfig;
 
   /// Creates a new [BareMetalAdminLoadBalancerConfig].
   /// [manualLbConfig] Manually configured load balancers.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for the Connectors Platform add-on.
 class GoogleCloudApigeeV1ConnectorsPlatformConfig {
   /// Flag that specifies whether the Connectors Platform add-on is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [GoogleCloudApigeeV1ConnectorsPlatformConfig].
   /// [enabled] Flag that specifies whether the Connectors Platform add-on is enabled.

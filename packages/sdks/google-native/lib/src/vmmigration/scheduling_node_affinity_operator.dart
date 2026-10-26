@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The operator to use for the node resources specified in the `values` parameter.
-enum SchedulingNodeAffinityOperator {
+enum SchedulingNodeAffinityOperator implements pulumi.PulumiEnum<String> {
   operatorUnspecified("OPERATOR_UNSPECIFIED"),
   in_("IN"),
   notIn("NOT_IN");
 
   const SchedulingNodeAffinityOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static SchedulingNodeAffinityOperator fromValue(String value) {

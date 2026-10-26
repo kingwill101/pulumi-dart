@@ -20,6 +20,17 @@ Future<GetConnectionResult> getConnection(
   return GetConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectionResult> getConnectionOutput(
+  GetConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:bigqueryconnection/v1beta1:getConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_bigqueryconnection_v1beta1_get_connection_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetConnectionIamPolicyResult> getConnectionIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectionIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetConnectionIamPolicyResult> getConnectionIamPolicyOutput(
+  GetConnectionIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:bigqueryconnection/v1beta1:getConnectionIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionIamPolicyResult.fromMap);
 }

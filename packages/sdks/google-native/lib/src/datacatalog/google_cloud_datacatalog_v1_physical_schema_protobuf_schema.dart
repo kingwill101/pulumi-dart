@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Schema in protocol buffer format.
 class GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema {
   /// Protocol buffer source of the schema.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema].
   /// [text] Protocol buffer source of the schema.

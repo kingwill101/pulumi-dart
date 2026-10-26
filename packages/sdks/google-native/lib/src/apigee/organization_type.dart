@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Not used by Apigee.
-enum OrganizationType {
+enum OrganizationType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   typeTrial("TYPE_TRIAL"),
   typePaid("TYPE_PAID"),
   typeInternal("TYPE_INTERNAL");
 
   const OrganizationType(this.wireValue);
+  @override
   final String wireValue;
 
   static OrganizationType fromValue(String value) {

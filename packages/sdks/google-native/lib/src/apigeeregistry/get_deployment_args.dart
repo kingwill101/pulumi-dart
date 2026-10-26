@@ -10,7 +10,7 @@ class GetDeploymentArgs {
   final pulumi.Input<String> apiId;
   final pulumi.Input<String> deploymentId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDeploymentArgs].
   /// [apiId] Required.

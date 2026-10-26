@@ -39,7 +39,7 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhraseResponse {
     return GoogleCloudDialogflowV2beta1IntentTrainingPhraseResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
       parts: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartResponse>(map['parts']!, (value) => GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      timesAddedCount: pulumi.Input.fromValue(map['timesAddedCount'] as int),
+      timesAddedCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timesAddedCount'])),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

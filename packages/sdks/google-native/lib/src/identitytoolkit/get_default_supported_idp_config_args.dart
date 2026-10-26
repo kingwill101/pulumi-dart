@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_identitytoolkit_v2_get_default_supported_idp_config_args_doc}
 class GetDefaultSupportedIdpConfigArgs {
   final pulumi.Input<String> defaultSupportedIdpConfigId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> tenantId;
 
   /// Creates a new [GetDefaultSupportedIdpConfigArgs].

@@ -3,6 +3,8 @@ import 'duration_response.dart';
 import 'multi_step_response.dart';
 import 'outcome_response.dart';
 import 'step_args.dart';
+import 'step_dimension_value_entry_response.dart';
+import 'step_labels_entry_response.dart';
 import 'test_execution_step_response.dart';
 import 'timestamp_response.dart';
 import 'tool_execution_step_response.dart';
@@ -20,13 +22,13 @@ class Step extends pulumi.CustomResource {
   /// How much the device resource is used to perform the test. This is the device usage used for billing purpose, which is different from the run_duration, for example, infrastructure failure won't be charged for device usage. PRECONDITION_FAILED will be returned if one attempts to set a device_usage on a step which already has this field set. - In response: present if previously set. - In create request: optional - In update request: optional
   late final pulumi.Output<DurationResponse> deviceUsageDuration;
   /// If the execution containing this step has any dimension_definition set, then this field allows the child to specify the values of the dimensions. The keys must exactly match the dimension_definition of the execution. For example, if the execution has `dimension_definition = ['attempt', 'device']` then a step must define values for those dimensions, eg. `dimension_value = ['attempt': '1', 'device': 'Nexus 6']` If a step does not participate in one dimension of the matrix, the value for that dimension should be empty string. For example, if one of the tests is executed by a runner which does not support retries, the step could have `dimension_value = ['attempt': '', 'device': 'Nexus 6']` If the step does not participate in any dimensions of the matrix, it may leave dimension_value unset. A PRECONDITION_FAILED will be returned if any of the keys do not exist in the dimension_definition of the execution. A PRECONDITION_FAILED will be returned if another step in this execution already has the same name and dimension_value, but differs on other data fields, for example, step field is different. A PRECONDITION_FAILED will be returned if dimension_value is set, and there is a dimension_definition in the execution which is not specified as one of the keys. - In response: present if set by create - In create request: optional - In update request: never set
-  late final pulumi.Output<List<Map<String, dynamic>>> dimensionValue;
+  late final pulumi.Output<List<StepDimensionValueEntryResponse>> dimensionValue;
   late final pulumi.Output<String> executionId;
   /// Whether any of the outputs of this step are images whose thumbnails can be fetched with ListThumbnails. - In response: always set - In create/update request: never set
   late final pulumi.Output<bool> hasImages;
   late final pulumi.Output<String> historyId;
   /// Arbitrary user-supplied key/value pairs that are associated with the step. Users are responsible for managing the key namespace such that keys don't accidentally collide. An INVALID_ARGUMENT will be returned if the number of labels exceeds 100 or if the length of any of the keys or values exceeds 100 characters. - In response: always set - In create request: optional - In update request: optional; any new key/value pair will be added to the map, and any new value for an existing key will update that key's value
-  late final pulumi.Output<List<Map<String, dynamic>>> labels;
+  late final pulumi.Output<List<StepLabelsEntryResponse>> labels;
   /// Details when multiple steps are run with the same configuration as a group. These details can be used identify which group this step is part of. It also identifies the groups 'primary step' which indexes all the group members. - In response: present if previously set. - In create request: optional, set iff this step was performed more than once. - In update request: optional
   late final pulumi.Output<MultiStepResponse> multiStep;
   /// A short human-readable name to display in the UI. Maximum of 100 characters. For example: Clean build A PRECONDITION_FAILED will be returned upon creating a new step if it shares its name and dimension_value with an existing step. If two steps represent a similar action, but have different dimension values, they should share the same name. For instance, if the same set of tests is run on two different platforms, the two steps should have the same name. - In response: always set - In create request: always set - In update request: never set
@@ -59,17 +61,47 @@ class Step extends pulumi.CustomResource {
           'google-native:toolresults/v1beta3:Step',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['executionId', 'historyId', 'project']).merge(options),
         ) {
     completionTime = registerOutput<TimestampResponse>('completionTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimestampResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTime = registerOutput<TimestampResponse>('creationTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimestampResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     deviceUsageDuration = registerOutput<DurationResponse>('deviceUsageDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    dimensionValue = registerOutput<List<Map<String, dynamic>>>('dimensionValue');
+    dimensionValue = registerOutput<List<StepDimensionValueEntryResponse>>('dimensionValue', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StepDimensionValueEntryResponse>(guardedValue, (value) => StepDimensionValueEntryResponse.fromMap((value as Map).cast<String, dynamic>())); });
     executionId = registerOutput<String>('executionId');
     hasImages = registerOutput<bool>('hasImages');
     historyId = registerOutput<String>('historyId');
-    labels = registerOutput<List<Map<String, dynamic>>>('labels');
+    labels = registerOutput<List<StepLabelsEntryResponse>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StepLabelsEntryResponse>(guardedValue, (value) => StepLabelsEntryResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    multiStep = registerOutput<MultiStepResponse>('multiStep', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiStepResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    outcome = registerOutput<OutcomeResponse>('outcome', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutcomeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    runDuration = registerOutput<DurationResponse>('runDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    stepId = registerOutput<String>('stepId');
+    testExecutionStep = registerOutput<TestExecutionStepResponse>('testExecutionStep', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TestExecutionStepResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    toolExecutionStep = registerOutput<ToolExecutionStepResponse>('toolExecutionStep', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolExecutionStepResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Step] resource.
+  Step.reference(String urn)
+    : super(
+        'google-native:toolresults/v1beta3:Step',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    completionTime = registerOutput<TimestampResponse>('completionTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimestampResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTime = registerOutput<TimestampResponse>('creationTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimestampResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    deviceUsageDuration = registerOutput<DurationResponse>('deviceUsageDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dimensionValue = registerOutput<List<StepDimensionValueEntryResponse>>('dimensionValue', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StepDimensionValueEntryResponse>(guardedValue, (value) => StepDimensionValueEntryResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    executionId = registerOutput<String>('executionId');
+    hasImages = registerOutput<bool>('hasImages');
+    historyId = registerOutput<String>('historyId');
+    labels = registerOutput<List<StepLabelsEntryResponse>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StepLabelsEntryResponse>(guardedValue, (value) => StepLabelsEntryResponse.fromMap((value as Map).cast<String, dynamic>())); });
     multiStep = registerOutput<MultiStepResponse>('multiStep', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiStepResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     outcome = registerOutput<OutcomeResponse>('outcome', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutcomeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

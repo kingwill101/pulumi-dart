@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_appengine_v1_get_app_args_doc}
 class GetAppArgs {
   final pulumi.Input<String> appId;
-  final pulumi.Input<String>? includeExtraData;
+  final pulumi.Input<String?>? includeExtraData;
 
   /// Creates a new [GetAppArgs].
   /// [appId] Required.

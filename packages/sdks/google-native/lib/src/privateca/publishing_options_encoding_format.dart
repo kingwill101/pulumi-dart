@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Specifies the encoding format of each CertificateAuthority's CA certificate and CRLs. If this is omitted, CA certificates and CRLs will be published in PEM.
-enum PublishingOptionsEncodingFormat {
+enum PublishingOptionsEncodingFormat implements pulumi.PulumiEnum<String> {
   encodingFormatUnspecified("ENCODING_FORMAT_UNSPECIFIED"),
   pem("PEM"),
   der("DER");
 
   const PublishingOptionsEncodingFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static PublishingOptionsEncodingFormat fromValue(String value) {

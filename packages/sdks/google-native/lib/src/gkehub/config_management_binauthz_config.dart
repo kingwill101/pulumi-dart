@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for Binauthz
 class ConfigManagementBinauthzConfig {
   /// Whether binauthz is enabled in this cluster.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ConfigManagementBinauthzConfig].
   /// [enabled] Whether binauthz is enabled in this cluster.

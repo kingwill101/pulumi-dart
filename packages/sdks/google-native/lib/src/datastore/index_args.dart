@@ -13,7 +13,7 @@ class IndexArgs {
   final pulumi.Input<IndexAncestor> ancestor;
   /// The entity kind to which this index applies.
   final pulumi.Input<String> kind;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
   final pulumi.Input<List<GoogleDatastoreAdminV1IndexedProperty>> properties;
 

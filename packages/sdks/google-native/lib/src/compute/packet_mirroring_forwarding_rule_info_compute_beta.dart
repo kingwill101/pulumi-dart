@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PacketMirroringForwardingRuleInfoComputeBeta {
   /// Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored traffic.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [PacketMirroringForwardingRuleInfoComputeBeta].
   /// [url] Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored traffic.

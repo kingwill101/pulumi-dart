@@ -60,7 +60,7 @@ class DataScan extends pulumi.CustomResource {
           'google-native:dataplex/v1:DataScan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['dataScanId', 'location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     data = registerOutput<GoogleCloudDataplexV1DataSourceResponse>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1DataSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -73,7 +73,37 @@ class DataScan extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     executionSpec = registerOutput<GoogleCloudDataplexV1DataScanExecutionSpecResponse>('executionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1DataScanExecutionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     executionStatus = registerOutput<GoogleCloudDataplexV1DataScanExecutionStatusResponse>('executionStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1DataScanExecutionStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [DataScan] resource.
+  DataScan.reference(String urn)
+    : super(
+        'google-native:dataplex/v1:DataScan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    data = registerOutput<GoogleCloudDataplexV1DataSourceResponse>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1DataSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataProfileResult = registerOutput<GoogleCloudDataplexV1DataProfileResultResponse>('dataProfileResult', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1DataProfileResultResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataProfileSpec = registerOutput<GoogleCloudDataplexV1DataProfileSpecResponse>('dataProfileSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1DataProfileSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataQualityResult = registerOutput<GoogleCloudDataplexV1DataQualityResultResponse>('dataQualityResult', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1DataQualityResultResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataQualitySpec = registerOutput<GoogleCloudDataplexV1DataQualitySpecResponse>('dataQualitySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1DataQualitySpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataScanId = registerOutput<String>('dataScanId');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    executionSpec = registerOutput<GoogleCloudDataplexV1DataScanExecutionSpecResponse>('executionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1DataScanExecutionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    executionStatus = registerOutput<GoogleCloudDataplexV1DataScanExecutionStatusResponse>('executionStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1DataScanExecutionStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

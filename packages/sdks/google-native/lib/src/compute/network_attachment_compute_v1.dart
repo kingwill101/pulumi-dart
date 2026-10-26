@@ -1,10 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_attachment_compute_v1_args.dart';
+import 'network_attachment_connected_endpoint_response_compute_v1.dart';
 
 /// Creates a NetworkAttachment in the specified project in the given scope using the parameters that are included in the request.
 class NetworkAttachmentComputeV1 extends pulumi.CustomResource {
   /// An array of connections for all the producers connected to this network attachment.
-  late final pulumi.Output<List<Map<String, dynamic>>> connectionEndpoints;
+  late final pulumi.Output<List<NetworkAttachmentConnectedEndpointResponseComputeV1>> connectionEndpoints;
   late final pulumi.Output<String> connectionPreference;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
@@ -45,9 +46,9 @@ class NetworkAttachmentComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:NetworkAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
-    connectionEndpoints = registerOutput<List<Map<String, dynamic>>>('connectionEndpoints');
+    connectionEndpoints = registerOutput<List<NetworkAttachmentConnectedEndpointResponseComputeV1>>('connectionEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkAttachmentConnectedEndpointResponseComputeV1>(guardedValue, (value) => NetworkAttachmentConnectedEndpointResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
     connectionPreference = registerOutput<String>('connectionPreference');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
@@ -55,13 +56,40 @@ class NetworkAttachmentComputeV1 extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
-    producerAcceptLists = registerOutput<List<String>>('producerAcceptLists');
-    producerRejectLists = registerOutput<List<String>>('producerRejectLists');
+    producerAcceptLists = registerOutput<List<String>>('producerAcceptLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    producerRejectLists = registerOutput<List<String>>('producerRejectLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
-    subnetworks = registerOutput<List<String>>('subnetworks');
+    subnetworks = registerOutput<List<String>>('subnetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkAttachmentComputeV1] resource.
+  NetworkAttachmentComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:NetworkAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    connectionEndpoints = registerOutput<List<NetworkAttachmentConnectedEndpointResponseComputeV1>>('connectionEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkAttachmentConnectedEndpointResponseComputeV1>(guardedValue, (value) => NetworkAttachmentConnectedEndpointResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
+    connectionPreference = registerOutput<String>('connectionPreference');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    producerAcceptLists = registerOutput<List<String>>('producerAcceptLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    producerRejectLists = registerOutput<List<String>>('producerRejectLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    subnetworks = registerOutput<List<String>>('subnetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

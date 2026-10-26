@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
-enum ComputeEnginePreferencesLicenseType {
+enum ComputeEnginePreferencesLicenseType implements pulumi.PulumiEnum<String> {
   licenseTypeUnspecified("LICENSE_TYPE_UNSPECIFIED"),
   licenseTypeDefault("LICENSE_TYPE_DEFAULT"),
   licenseTypeBringYourOwnLicense("LICENSE_TYPE_BRING_YOUR_OWN_LICENSE");
 
   const ComputeEnginePreferencesLicenseType(this.wireValue);
+  @override
   final String wireValue;
 
   static ComputeEnginePreferencesLicenseType fromValue(String value) {

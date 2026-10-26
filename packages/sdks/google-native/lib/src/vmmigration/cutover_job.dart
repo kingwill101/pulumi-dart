@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'compute_engine_disks_target_details_response.dart';
 import 'compute_engine_target_details_response.dart';
 import 'cutover_job_args.dart';
+import 'cutover_step_response.dart';
 import 'status_response.dart';
 
 /// Initiates a Cutover of a specific migrating VM. The returned LRO is completed when the cutover job resource is created and the job is initiated.
@@ -38,7 +39,7 @@ class CutoverJob extends pulumi.CustomResource {
   /// The time the state was last updated.
   late final pulumi.Output<String> stateTime;
   /// The cutover steps list representing its progress.
-  late final pulumi.Output<List<Map<String, dynamic>>> steps;
+  late final pulumi.Output<List<CutoverStepResponse>> steps;
 
   /// Creates a new [CutoverJob].
   /// [name] The Pulumi resource name.
@@ -52,7 +53,7 @@ class CutoverJob extends pulumi.CustomResource {
           'google-native:vmmigration/v1:CutoverJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['cutoverJobId', 'location', 'migratingVmId', 'project', 'sourceId']).merge(options),
         ) {
     computeEngineDisksTargetDetails = registerOutput<ComputeEngineDisksTargetDetailsResponse>('computeEngineDisksTargetDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEngineDisksTargetDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     computeEngineTargetDetails = registerOutput<ComputeEngineTargetDetailsResponse>('computeEngineTargetDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEngineTargetDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -70,6 +71,34 @@ class CutoverJob extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     stateMessage = registerOutput<String>('stateMessage');
     stateTime = registerOutput<String>('stateTime');
-    steps = registerOutput<List<Map<String, dynamic>>>('steps');
+    steps = registerOutput<List<CutoverStepResponse>>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CutoverStepResponse>(guardedValue, (value) => CutoverStepResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [CutoverJob] resource.
+  CutoverJob.reference(String urn)
+    : super(
+        'google-native:vmmigration/v1:CutoverJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    computeEngineDisksTargetDetails = registerOutput<ComputeEngineDisksTargetDetailsResponse>('computeEngineDisksTargetDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEngineDisksTargetDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    computeEngineTargetDetails = registerOutput<ComputeEngineTargetDetailsResponse>('computeEngineTargetDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEngineTargetDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    cutoverJobId = registerOutput<String>('cutoverJobId');
+    endTime = registerOutput<String>('endTime');
+    error = registerOutput<StatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    migratingVmId = registerOutput<String>('migratingVmId');
+    this.name = registerOutput<String>('name');
+    progressPercent = registerOutput<int>('progressPercent');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    sourceId = registerOutput<String>('sourceId');
+    state = registerOutput<String>('state');
+    stateMessage = registerOutput<String>('stateMessage');
+    stateTime = registerOutput<String>('stateTime');
+    steps = registerOutput<List<CutoverStepResponse>>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CutoverStepResponse>(guardedValue, (value) => CutoverStepResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

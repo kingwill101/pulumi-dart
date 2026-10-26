@@ -6,13 +6,13 @@ import 'apt_repository_archive_type.dart';
 /// Represents a single Apt package repository. This repository is added to a repo file that is stored at `/etc/apt/sources.list.d/google_osconfig.list`.
 class AptRepository {
   /// Type of archive files in this repository. The default behavior is DEB.
-  final pulumi.Input<AptRepositoryArchiveType>? archiveType;
+  final pulumi.Input<AptRepositoryArchiveType?>? archiveType;
   /// List of components for this repository. Must contain at least one item.
   final pulumi.Input<List<String>> components;
   /// Distribution of this repository.
   final pulumi.Input<String> distribution;
   /// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in any applied guest policy.
-  final pulumi.Input<String>? gpgKey;
+  final pulumi.Input<String?>? gpgKey;
   /// URI for this repository.
   final pulumi.Input<String> uri;
 

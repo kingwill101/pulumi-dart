@@ -40,14 +40,38 @@ class AddressGroup extends pulumi.CustomResource {
           'google-native:networksecurity/v1:AddressGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['addressGroupId', 'location', 'project']).merge(options),
         ) {
     addressGroupId = registerOutput<String>('addressGroupId');
     capacity = registerOutput<int>('capacity');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
-    items = registerOutput<List<String>>('items');
-    labels = registerOutput<Map<String, String>>('labels');
+    items = registerOutput<List<String>>('items', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AddressGroup] resource.
+  AddressGroup.reference(String urn)
+    : super(
+        'google-native:networksecurity/v1:AddressGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressGroupId = registerOutput<String>('addressGroupId');
+    capacity = registerOutput<int>('capacity');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    items = registerOutput<List<String>>('items', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

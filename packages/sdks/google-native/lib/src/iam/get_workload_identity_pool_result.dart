@@ -4,17 +4,17 @@
 /// Result data returned by getWorkloadIdentityPool.
 class GetWorkloadIdentityPoolResult {
   /// A description of the pool. Cannot exceed 256 characters.
-  final String description;
+  final String? description;
   /// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
-  final bool disabled;
+  final bool? disabled;
   /// A display name for the pool. Cannot exceed 32 characters.
-  final String displayName;
+  final String? displayName;
   /// Time after which the workload identity pool will be permanently purged and cannot be recovered.
-  final String expireTime;
+  final String? expireTime;
   /// The resource name of the pool.
-  final String name;
+  final String? name;
   /// The state of the pool.
-  final String state;
+  final String? state;
 
   /// Creates a new [GetWorkloadIdentityPoolResult].
   /// [description] A description of the pool. Cannot exceed 256 characters.
@@ -24,33 +24,33 @@ class GetWorkloadIdentityPoolResult {
   /// [name] The resource name of the pool.
   /// [state] The state of the pool.
   const GetWorkloadIdentityPoolResult({
-    required this.description,
-    required this.disabled,
-    required this.displayName,
-    required this.expireTime,
-    required this.name,
-    required this.state,
+    this.description,
+    this.disabled,
+    this.displayName,
+    this.expireTime,
+    this.name,
+    this.state,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'description': description,
-      'disabled': disabled,
-      'displayName': displayName,
-      'expireTime': expireTime,
-      'name': name,
-      'state': state,
+      'description': ?description,
+      'disabled': ?disabled,
+      'displayName': ?displayName,
+      'expireTime': ?expireTime,
+      'name': ?name,
+      'state': ?state,
     };
   }
 
   factory GetWorkloadIdentityPoolResult.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolResult(
-      description: map['description'] as String,
-      disabled: map['disabled'] as bool,
-      displayName: map['displayName'] as String,
-      expireTime: map['expireTime'] as String,
-      name: map['name'] as String,
-      state: map['state'] as String,
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

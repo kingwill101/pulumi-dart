@@ -9,31 +9,31 @@ import 'state_info_response_redis_v1beta1.dart';
 /// Result data returned by getCluster.
 class GetClusterRedisV1beta1Result {
   /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-  final String authorizationMode;
+  final String? authorizationMode;
   /// The timestamp associated with the cluster creation request.
-  final String createTime;
+  final String? createTime;
   /// Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one discovery endpoint is supported.
-  final List<DiscoveryEndpointResponseRedisV1beta1> discoveryEndpoints;
+  final List<DiscoveryEndpointResponseRedisV1beta1>? discoveryEndpoints;
   /// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
-  final String name;
+  final String? name;
   /// Each PscConfig configures the consumer network where IPs will be designated to the cluster for client access through Private Service Connect Automation. Currently, only one PscConfig is supported.
-  final List<PscConfigResponseRedisV1beta1> pscConfigs;
+  final List<PscConfigResponseRedisV1beta1>? pscConfigs;
   /// PSC connections for discovery of the cluster topology and accessing the cluster.
-  final List<PscConnectionResponseRedisV1beta1> pscConnections;
+  final List<PscConnectionResponseRedisV1beta1>? pscConnections;
   /// Optional. The number of replica nodes per shard.
-  final int replicaCount;
+  final int? replicaCount;
   /// Number of shards for the Redis cluster.
-  final int shardCount;
+  final int? shardCount;
   /// Redis memory size in GB for the entire cluster.
-  final int sizeGb;
+  final int? sizeGb;
   /// The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
-  final String state;
+  final String? state;
   /// Additional information about the current state of the cluster.
-  final StateInfoResponseRedisV1beta1 stateInfo;
+  final StateInfoResponseRedisV1beta1? stateInfo;
   /// Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-  final String transitEncryptionMode;
+  final String? transitEncryptionMode;
   /// System assigned, unique identifier for the cluster.
-  final String uid;
+  final String? uid;
 
   /// Creates a new [GetClusterRedisV1beta1Result].
   /// [authorizationMode] Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
@@ -50,54 +50,54 @@ class GetClusterRedisV1beta1Result {
   /// [transitEncryptionMode] Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
   /// [uid] System assigned, unique identifier for the cluster.
   const GetClusterRedisV1beta1Result({
-    required this.authorizationMode,
-    required this.createTime,
-    required this.discoveryEndpoints,
-    required this.name,
-    required this.pscConfigs,
-    required this.pscConnections,
-    required this.replicaCount,
-    required this.shardCount,
-    required this.sizeGb,
-    required this.state,
-    required this.stateInfo,
-    required this.transitEncryptionMode,
-    required this.uid,
+    this.authorizationMode,
+    this.createTime,
+    this.discoveryEndpoints,
+    this.name,
+    this.pscConfigs,
+    this.pscConnections,
+    this.replicaCount,
+    this.shardCount,
+    this.sizeGb,
+    this.state,
+    this.stateInfo,
+    this.transitEncryptionMode,
+    this.uid,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorizationMode': authorizationMode,
-      'createTime': createTime,
-      'discoveryEndpoints': pulumi.Input.encodeList<DiscoveryEndpointResponseRedisV1beta1, Map<String, dynamic>>(discoveryEndpoints, (value) => value.toMap()),
-      'name': name,
-      'pscConfigs': pulumi.Input.encodeList<PscConfigResponseRedisV1beta1, Map<String, dynamic>>(pscConfigs, (value) => value.toMap()),
-      'pscConnections': pulumi.Input.encodeList<PscConnectionResponseRedisV1beta1, Map<String, dynamic>>(pscConnections, (value) => value.toMap()),
-      'replicaCount': replicaCount,
-      'shardCount': shardCount,
-      'sizeGb': sizeGb,
-      'state': state,
-      'stateInfo': stateInfo.toMap(),
-      'transitEncryptionMode': transitEncryptionMode,
-      'uid': uid,
+      'authorizationMode': ?authorizationMode,
+      'createTime': ?createTime,
+      'discoveryEndpoints': ?(() { final guardedValue = discoveryEndpoints; if (guardedValue == null) return null; return pulumi.Input.encodeList<DiscoveryEndpointResponseRedisV1beta1, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
+      'pscConfigs': ?(() { final guardedValue = pscConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<PscConfigResponseRedisV1beta1, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'pscConnections': ?(() { final guardedValue = pscConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<PscConnectionResponseRedisV1beta1, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'replicaCount': ?replicaCount,
+      'shardCount': ?shardCount,
+      'sizeGb': ?sizeGb,
+      'state': ?state,
+      'stateInfo': ?stateInfo?.toMap(),
+      'transitEncryptionMode': ?transitEncryptionMode,
+      'uid': ?uid,
     };
   }
 
   factory GetClusterRedisV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetClusterRedisV1beta1Result(
-      authorizationMode: map['authorizationMode'] as String,
-      createTime: map['createTime'] as String,
-      discoveryEndpoints: pulumi.Input.decodeList<DiscoveryEndpointResponseRedisV1beta1>(map['discoveryEndpoints']!, (value) => DiscoveryEndpointResponseRedisV1beta1.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      pscConfigs: pulumi.Input.decodeList<PscConfigResponseRedisV1beta1>(map['pscConfigs']!, (value) => PscConfigResponseRedisV1beta1.fromMap((value as Map).cast<String, dynamic>())),
-      pscConnections: pulumi.Input.decodeList<PscConnectionResponseRedisV1beta1>(map['pscConnections']!, (value) => PscConnectionResponseRedisV1beta1.fromMap((value as Map).cast<String, dynamic>())),
-      replicaCount: map['replicaCount'] as int,
-      shardCount: map['shardCount'] as int,
-      sizeGb: map['sizeGb'] as int,
-      state: map['state'] as String,
-      stateInfo: StateInfoResponseRedisV1beta1.fromMap((map['stateInfo']! as Map).cast<String, dynamic>()),
-      transitEncryptionMode: map['transitEncryptionMode'] as String,
-      uid: map['uid'] as String,
+      authorizationMode: (() { final guardedValue = map['authorizationMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      discoveryEndpoints: (() { final guardedValue = map['discoveryEndpoints']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiscoveryEndpointResponseRedisV1beta1>(guardedValue, (value) => DiscoveryEndpointResponseRedisV1beta1.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pscConfigs: (() { final guardedValue = map['pscConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PscConfigResponseRedisV1beta1>(guardedValue, (value) => PscConfigResponseRedisV1beta1.fromMap((value as Map).cast<String, dynamic>())); })(),
+      pscConnections: (() { final guardedValue = map['pscConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PscConnectionResponseRedisV1beta1>(guardedValue, (value) => PscConnectionResponseRedisV1beta1.fromMap((value as Map).cast<String, dynamic>())); })(),
+      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      shardCount: (() { final guardedValue = map['shardCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      stateInfo: (() { final guardedValue = map['stateInfo']; if (guardedValue == null) return null; return StateInfoResponseRedisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      transitEncryptionMode: (() { final guardedValue = map['transitEncryptionMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

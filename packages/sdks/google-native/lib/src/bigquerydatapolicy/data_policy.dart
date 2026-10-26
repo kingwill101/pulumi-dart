@@ -30,8 +30,26 @@ class DataPolicy extends pulumi.CustomResource {
           'google-native:bigquerydatapolicy/v1:DataPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    dataMaskingPolicy = registerOutput<DataMaskingPolicyResponse>('dataMaskingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataMaskingPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataPolicyId = registerOutput<String>('dataPolicyId');
+    dataPolicyType = registerOutput<String>('dataPolicyType');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    policyTag = registerOutput<String>('policyTag');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [DataPolicy] resource.
+  DataPolicy.reference(String urn)
+    : super(
+        'google-native:bigquerydatapolicy/v1:DataPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dataMaskingPolicy = registerOutput<DataMaskingPolicyResponse>('dataMaskingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataMaskingPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataPolicyId = registerOutput<String>('dataPolicyId');
     dataPolicyType = registerOutput<String>('dataPolicyType');

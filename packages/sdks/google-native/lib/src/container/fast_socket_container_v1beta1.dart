@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration of Fast Socket feature.
 class FastSocketContainerV1beta1 {
   /// Whether Fast Socket features are enabled in the node pool.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [FastSocketContainerV1beta1].
   /// [enabled] Whether Fast Socket features are enabled in the node pool.

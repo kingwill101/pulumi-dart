@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tls_route_args.dart';
+import 'tls_route_route_rule_response.dart';
 
 /// Creates a new TlsRoute in a given project and location.
 class TlsRoute extends pulumi.CustomResource {
@@ -18,7 +19,7 @@ class TlsRoute extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   /// Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<TlsRouteRouteRuleResponse>> rules;
   /// Server-defined URL of this resource
   late final pulumi.Output<String> selfLink;
   /// Required. Short name of the TlsRoute resource to be created.
@@ -38,17 +39,40 @@ class TlsRoute extends pulumi.CustomResource {
           'google-native:networkservices/v1:TlsRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'tlsRouteId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
-    gateways = registerOutput<List<String>>('gateways');
-    labels = registerOutput<Map<String, String>>('labels');
+    gateways = registerOutput<List<String>>('gateways', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
-    meshes = registerOutput<List<String>>('meshes');
+    meshes = registerOutput<List<String>>('meshes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<TlsRouteRouteRuleResponse>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsRouteRouteRuleResponse>(guardedValue, (value) => TlsRouteRouteRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    selfLink = registerOutput<String>('selfLink');
+    tlsRouteId = registerOutput<String>('tlsRouteId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [TlsRoute] resource.
+  TlsRoute.reference(String urn)
+    : super(
+        'google-native:networkservices/v1:TlsRoute',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    gateways = registerOutput<List<String>>('gateways', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    meshes = registerOutput<List<String>>('meshes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    rules = registerOutput<List<TlsRouteRouteRuleResponse>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsRouteRouteRuleResponse>(guardedValue, (value) => TlsRouteRouteRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     tlsRouteId = registerOutput<String>('tlsRouteId');
     updateTime = registerOutput<String>('updateTime');

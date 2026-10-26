@@ -37,8 +37,30 @@ class User extends pulumi.CustomResource {
           'google-native:sqladmin/v1:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instance', 'project']).merge(options),
         ) {
+    dualPasswordType = registerOutput<String>('dualPasswordType');
+    etag = registerOutput<String>('etag');
+    host = registerOutput<String>('host');
+    instance = registerOutput<String>('instance');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String>('password');
+    passwordPolicy = registerOutput<UserPasswordValidationPolicyResponse>('passwordPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPasswordValidationPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    sqlserverUserDetails = registerOutput<SqlServerUserDetailsResponse>('sqlserverUserDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlServerUserDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [User] resource.
+  User.reference(String urn)
+    : super(
+        'google-native:sqladmin/v1:User',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dualPasswordType = registerOutput<String>('dualPasswordType');
     etag = registerOutput<String>('etag');
     host = registerOutput<String>('host');

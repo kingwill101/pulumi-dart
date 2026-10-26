@@ -30,8 +30,27 @@ class DatasetVersion extends pulumi.CustomResource {
           'google-native:aiplatform/v1:DatasetVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['datasetId', 'location', 'project']).merge(options),
         ) {
+    bigQueryDatasetName = registerOutput<String>('bigQueryDatasetName');
+    createTime = registerOutput<String>('createTime');
+    datasetId = registerOutput<String>('datasetId');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [DatasetVersion] resource.
+  DatasetVersion.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1:DatasetVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bigQueryDatasetName = registerOutput<String>('bigQueryDatasetName');
     createTime = registerOutput<String>('createTime');
     datasetId = registerOutput<String>('datasetId');

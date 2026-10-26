@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Config to block services with externalIPs field.
 class ServiceExternalIPsConfig {
   /// Whether Services with ExternalIPs field are allowed or not.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ServiceExternalIPsConfig].
   /// [enabled] Whether Services with ExternalIPs field are allowed or not.

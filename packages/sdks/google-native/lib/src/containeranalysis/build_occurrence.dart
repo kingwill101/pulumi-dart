@@ -9,15 +9,15 @@ import 'in_toto_statement.dart';
 /// Details of a build occurrence.
 class BuildOccurrence {
   /// In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa spec, wrapped in an in-toto statement. This allows for direct jsonification of a to-spec in-toto slsa statement with a to-spec slsa provenance.
-  final pulumi.Input<InTotoSlsaProvenanceV1>? inTotoSlsaProvenanceV1;
+  final pulumi.Input<InTotoSlsaProvenanceV1?>? inTotoSlsaProvenanceV1;
   /// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
-  final pulumi.Input<InTotoProvenance>? intotoProvenance;
+  final pulumi.Input<InTotoProvenance?>? intotoProvenance;
   /// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
-  final pulumi.Input<InTotoStatement>? intotoStatement;
+  final pulumi.Input<InTotoStatement?>? intotoStatement;
   /// The actual provenance for the build.
-  final pulumi.Input<BuildProvenance>? provenance;
+  final pulumi.Input<BuildProvenance?>? provenance;
   /// Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
-  final pulumi.Input<String>? provenanceBytes;
+  final pulumi.Input<String?>? provenanceBytes;
 
   /// Creates a new [BuildOccurrence].
   /// [inTotoSlsaProvenanceV1] In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa spec, wrapped in an in-toto statement. This allows for direct jsonification of a to-spec in-toto slsa statement with a to-spec slsa provenance.

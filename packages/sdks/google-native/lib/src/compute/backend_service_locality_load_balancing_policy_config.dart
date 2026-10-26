@@ -6,8 +6,8 @@ import 'backend_service_locality_load_balancing_policy_config_policy.dart';
 
 /// Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
 class BackendServiceLocalityLoadBalancingPolicyConfig {
-  final pulumi.Input<BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy>? customPolicy;
-  final pulumi.Input<BackendServiceLocalityLoadBalancingPolicyConfigPolicy>? policy;
+  final pulumi.Input<BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy?>? customPolicy;
+  final pulumi.Input<BackendServiceLocalityLoadBalancingPolicyConfigPolicy?>? policy;
 
   /// Creates a new [BackendServiceLocalityLoadBalancingPolicyConfig].
   /// [customPolicy] Optional.

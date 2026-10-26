@@ -8,11 +8,11 @@ import 'google_privacy_dlp_v2_privacy_metric.dart';
 /// Configuration for a risk analysis job. See https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn more.
 class GooglePrivacyDlpV2RiskAnalysisJobConfig {
   /// Actions to execute at the completion of the job. Are executed in the order provided.
-  final pulumi.Input<List<GooglePrivacyDlpV2Action>>? actions;
+  final pulumi.Input<List<GooglePrivacyDlpV2Action>?>? actions;
   /// Privacy metric to compute.
-  final pulumi.Input<GooglePrivacyDlpV2PrivacyMetric>? privacyMetric;
+  final pulumi.Input<GooglePrivacyDlpV2PrivacyMetric?>? privacyMetric;
   /// Input dataset to compute metrics over.
-  final pulumi.Input<GooglePrivacyDlpV2BigQueryTable>? sourceTable;
+  final pulumi.Input<GooglePrivacyDlpV2BigQueryTable?>? sourceTable;
 
   /// Creates a new [GooglePrivacyDlpV2RiskAnalysisJobConfig].
   /// [actions] Actions to execute at the completion of the job. Are executed in the order provided.

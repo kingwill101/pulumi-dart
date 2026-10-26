@@ -7,11 +7,11 @@ import 'google_cloud_documentai_v1_document_page_layout.dart';
 /// Detected non-text visual elements e.g. checkbox, signature etc. on the page.
 class GoogleCloudDocumentaiV1DocumentPageVisualElement {
   /// A list of detected languages together with confidence.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>>? detectedLanguages;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>?>? detectedLanguages;
   /// Layout for VisualElement.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout>? layout;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout?>? layout;
   /// Type of the VisualElement.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageVisualElement].
   /// [detectedLanguages] A list of detected languages together with confidence.

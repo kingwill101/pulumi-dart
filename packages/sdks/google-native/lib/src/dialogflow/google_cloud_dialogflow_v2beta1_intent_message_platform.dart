@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The platform that this message is intended for.
-enum GoogleCloudDialogflowV2beta1IntentMessagePlatform {
+enum GoogleCloudDialogflowV2beta1IntentMessagePlatform implements pulumi.PulumiEnum<String> {
   platformUnspecified("PLATFORM_UNSPECIFIED"),
   facebook("FACEBOOK"),
   slack("SLACK"),
@@ -13,6 +15,7 @@ enum GoogleCloudDialogflowV2beta1IntentMessagePlatform {
   googleHangouts("GOOGLE_HANGOUTS");
 
   const GoogleCloudDialogflowV2beta1IntentMessagePlatform(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowV2beta1IntentMessagePlatform fromValue(String value) {

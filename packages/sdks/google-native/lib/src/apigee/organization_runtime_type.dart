@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
-enum OrganizationRuntimeType {
+enum OrganizationRuntimeType implements pulumi.PulumiEnum<String> {
   runtimeTypeUnspecified("RUNTIME_TYPE_UNSPECIFIED"),
   cloud("CLOUD"),
   hybrid("HYBRID");
 
   const OrganizationRuntimeType(this.wireValue);
+  @override
   final String wireValue;
 
   static OrganizationRuntimeType fromValue(String value) {

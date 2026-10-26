@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Basic Auth used as a credential.
 class BasicAuthDeploymentmanagerV2beta {
-  final pulumi.Input<String>? password;
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? password;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [BasicAuthDeploymentmanagerV2beta].
   /// [password] Optional.

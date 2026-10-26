@@ -69,11 +69,11 @@ class ReplicationCycleResponse {
 
   factory ReplicationCycleResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationCycleResponse(
-      cycleNumber: pulumi.Input.fromValue(map['cycleNumber'] as int),
+      cycleNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cycleNumber'])),
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
       error: pulumi.Input.fromValue(StatusResponse.fromMap((map['error']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
-      progressPercent: pulumi.Input.fromValue(map['progressPercent'] as int),
+      progressPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['progressPercent'])),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
       steps: pulumi.Input.fromValue(pulumi.Input.decodeList<CycleStepResponse>(map['steps']!, (value) => CycleStepResponse.fromMap((value as Map).cast<String, dynamic>()))),

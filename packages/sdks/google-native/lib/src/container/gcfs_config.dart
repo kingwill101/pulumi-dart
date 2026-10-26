@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// GcfsConfig contains configurations of Google Container File System (image streaming).
 class GcfsConfig {
   /// Whether to use GCFS.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [GcfsConfig].
   /// [enabled] Whether to use GCFS.

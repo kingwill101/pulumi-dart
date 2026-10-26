@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A service account.
 class ServiceAccount {
   /// Email address of the service account. If empty, default Compute service account will be used.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The list of scopes to be made available for this service account. If empty, access to all Cloud APIs will be allowed.
-  final pulumi.Input<List<String>>? scope;
+  final pulumi.Input<List<String>?>? scope;
 
   /// Creates a new [ServiceAccount].
   /// [email] Email address of the service account. If empty, default Compute service account will be used.

@@ -1,4 +1,6 @@
-enum EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType implements pulumi.PulumiEnum<String> {
   unknown("UNKNOWN"),
   cloudPubsub("CLOUD_PUBSUB"),
   goops("GOOPS"),
@@ -16,6 +18,7 @@ enum EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType {
   privateTrigger("PRIVATE_TRIGGER");
 
   const EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType fromValue(String value) {

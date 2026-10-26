@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alert_policy_args.dart';
 import 'alert_strategy_response.dart';
+import 'condition_response.dart';
 import 'documentation_response.dart';
 import 'mutation_record_response.dart';
 import 'status_response.dart';
@@ -12,7 +13,7 @@ class AlertPolicy extends pulumi.CustomResource {
   /// How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
   late final pulumi.Output<String> combiner;
   /// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition. If condition_monitoring_query_language is present, it must be the only condition.
-  late final pulumi.Output<List<Map<String, dynamic>>> conditions;
+  late final pulumi.Output<List<ConditionResponse>> conditions;
   /// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored.
   late final pulumi.Output<MutationRecordResponse> creationRecord;
   /// A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.The convention for the display_name of a PrometheusQueryLanguageCondition is "{rule group name}/{alert name}", where the {rule group name} and {alert name} should be taken from the corresponding Prometheus configuration file. This convention is not enforced. In any case the display_name is not a unique key of the AlertPolicy.
@@ -47,21 +48,46 @@ class AlertPolicy extends pulumi.CustomResource {
           'google-native:monitoring/v3:AlertPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     alertStrategy = registerOutput<AlertStrategyResponse>('alertStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertStrategyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     combiner = registerOutput<String>('combiner');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    conditions = registerOutput<List<ConditionResponse>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConditionResponse>(guardedValue, (value) => ConditionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     creationRecord = registerOutput<MutationRecordResponse>('creationRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MutationRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
     documentation = registerOutput<DocumentationResponse>('documentation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enabled = registerOutput<bool>('enabled');
     mutationRecord = registerOutput<MutationRecordResponse>('mutationRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MutationRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    notificationChannels = registerOutput<List<String>>('notificationChannels');
+    notificationChannels = registerOutput<List<String>>('notificationChannels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     severity = registerOutput<String>('severity');
-    userLabels = registerOutput<Map<String, String>>('userLabels');
+    userLabels = registerOutput<Map<String, String>>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    validity = registerOutput<StatusResponse>('validity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AlertPolicy] resource.
+  AlertPolicy.reference(String urn)
+    : super(
+        'google-native:monitoring/v3:AlertPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alertStrategy = registerOutput<AlertStrategyResponse>('alertStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertStrategyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    combiner = registerOutput<String>('combiner');
+    conditions = registerOutput<List<ConditionResponse>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConditionResponse>(guardedValue, (value) => ConditionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    creationRecord = registerOutput<MutationRecordResponse>('creationRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MutationRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    documentation = registerOutput<DocumentationResponse>('documentation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enabled = registerOutput<bool>('enabled');
+    mutationRecord = registerOutput<MutationRecordResponse>('mutationRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MutationRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    notificationChannels = registerOutput<List<String>>('notificationChannels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    severity = registerOutput<String>('severity');
+    userLabels = registerOutput<Map<String, String>>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     validity = registerOutput<StatusResponse>('validity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies anti affinity group config for the VMware user cluster.
 class VmwareAAGConfig {
   /// Spread nodes across at least three physical hosts (requires at least three hosts). Enabled by default.
-  final pulumi.Input<bool>? aagConfigDisabled;
+  final pulumi.Input<bool?>? aagConfigDisabled;
 
   /// Creates a new [VmwareAAGConfig].
   /// [aagConfigDisabled] Spread nodes across at least three physical hosts (requires at least three hosts). Enabled by default.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iap_v1_get_brand_args_doc}
 class GetBrandArgs {
   final pulumi.Input<String> brandId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetBrandArgs].
   /// [brandId] Required.

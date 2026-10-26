@@ -53,7 +53,7 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse {
       context: pulumi.Input.fromValue(GooglePrivacyDlpV2FieldIdResponse.fromMap((map['context']! as Map).cast<String, dynamic>())),
       cryptoKey: pulumi.Input.fromValue(GooglePrivacyDlpV2CryptoKeyResponse.fromMap((map['cryptoKey']! as Map).cast<String, dynamic>())),
       customAlphabet: pulumi.Input.fromValue(map['customAlphabet'] as String),
-      radix: pulumi.Input.fromValue(map['radix'] as int),
+      radix: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['radix'])),
       surrogateInfoType: pulumi.Input.fromValue(GooglePrivacyDlpV2InfoTypeResponse.fromMap((map['surrogateInfoType']! as Map).cast<String, dynamic>())),
     );
   }

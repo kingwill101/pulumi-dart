@@ -36,8 +36,8 @@ class MaintenanceWindowResponseSqladminV1beta4 {
 
   factory MaintenanceWindowResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowResponseSqladminV1beta4(
-      day: pulumi.Input.fromValue(map['day'] as int),
-      hour: pulumi.Input.fromValue(map['hour'] as int),
+      day: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['day'])),
+      hour: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['hour'])),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       updateTrack: pulumi.Input.fromValue(map['updateTrack'] as String),
     );

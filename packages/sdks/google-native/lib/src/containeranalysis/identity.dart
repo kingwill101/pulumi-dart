@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The unique identifier of the update.
 class Identity {
   /// The revision number of the update.
-  final pulumi.Input<int>? revision;
+  final pulumi.Input<int?>? revision;
   /// The revision independent identifier of the update.
-  final pulumi.Input<String>? updateId;
+  final pulumi.Input<String?>? updateId;
 
   /// Creates a new [Identity].
   /// [revision] The revision number of the update.
@@ -26,7 +26,7 @@ class Identity {
 
   factory Identity.fromMap(Map<String, dynamic> map) {
     return Identity(
-      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       updateId: (() { final guardedValue = map['updateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -36,7 +36,7 @@ class NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta {
 
   factory NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta(
-      defaultPort: pulumi.Input.fromValue(map['defaultPort'] as int),
+      defaultPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['defaultPort'])),
       network: pulumi.Input.fromValue(map['network'] as String),
       subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
       zone: pulumi.Input.fromValue(map['zone'] as String),

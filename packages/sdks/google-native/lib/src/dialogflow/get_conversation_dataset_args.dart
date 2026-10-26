@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConversationDatasetArgs {
   final pulumi.Input<String> conversationDatasetId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetConversationDatasetArgs].
   /// [conversationDatasetId] Required.

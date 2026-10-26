@@ -9,14 +9,14 @@ import 'schema_type.dart';
 /// {@macro pulumi_pubsub_v1_schema_args_doc}
 class SchemaArgs {
   /// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
-  final pulumi.Input<String>? definition;
+  final pulumi.Input<String?>? definition;
   /// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names for resource name constraints.
-  final pulumi.Input<String>? schemaId;
+  final pulumi.Input<String?>? schemaId;
   /// The type of the schema definition.
-  final pulumi.Input<SchemaType>? type;
+  final pulumi.Input<SchemaType?>? type;
 
   /// Creates a new [SchemaArgs].
   /// [definition] The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.

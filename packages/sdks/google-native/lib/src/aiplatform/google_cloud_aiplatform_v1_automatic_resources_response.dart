@@ -26,8 +26,8 @@ class GoogleCloudAiplatformV1AutomaticResourcesResponse {
 
   factory GoogleCloudAiplatformV1AutomaticResourcesResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1AutomaticResourcesResponse(
-      maxReplicaCount: pulumi.Input.fromValue(map['maxReplicaCount'] as int),
-      minReplicaCount: pulumi.Input.fromValue(map['minReplicaCount'] as int),
+      maxReplicaCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxReplicaCount'])),
+      minReplicaCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minReplicaCount'])),
     );
   }
 }

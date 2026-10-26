@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata for a BigQuery connector used by the job.
 class BigQueryIODetails {
   /// Dataset accessed in the connection.
-  final pulumi.Input<String>? dataset;
+  final pulumi.Input<String?>? dataset;
   /// Project accessed in the connection.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Query used to access data in the connection.
-  final pulumi.Input<String>? query;
+  final pulumi.Input<String?>? query;
   /// Table accessed in the connection.
-  final pulumi.Input<String>? table;
+  final pulumi.Input<String?>? table;
 
   /// Creates a new [BigQueryIODetails].
   /// [dataset] Dataset accessed in the connection.

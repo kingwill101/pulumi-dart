@@ -11,23 +11,23 @@ import 'network_config.dart';
 /// {@macro pulumi_file_v1_instance_args_doc}
 class InstanceArgs {
   /// The description of the instance (2048 characters or less).
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// File system shares on the instance. For this version, only a single file share is supported.
-  final pulumi.Input<List<FileShareConfig>>? fileShares;
+  final pulumi.Input<List<FileShareConfig>?>? fileShares;
   /// Required. The name of the instance to create. The name must be unique for the specified project and location.
   final pulumi.Input<String> instanceId;
   /// KMS key name used for data encryption.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// Resource labels to represent user provided metadata.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// VPC networks to which the instance is connected. For this version, only a single network is supported.
-  final pulumi.Input<List<NetworkConfig>>? networks;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<List<NetworkConfig>?>? networks;
+  final pulumi.Input<String?>? project;
   /// The service tier of the instance.
-  final pulumi.Input<InstanceTier>? tier;
+  final pulumi.Input<InstanceTier?>? tier;
 
   /// Creates a new [InstanceArgs].
   /// [description] The description of the instance (2048 characters or less).

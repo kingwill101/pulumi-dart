@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The algorithm used to generate the referenced DNSKEY.
-enum DsRecordAlgorithmDomainsV1beta1 {
+enum DsRecordAlgorithmDomainsV1beta1 implements pulumi.PulumiEnum<String> {
   algorithmUnspecified("ALGORITHM_UNSPECIFIED"),
   rsamd5("RSAMD5"),
   dh("DH"),
@@ -20,6 +22,7 @@ enum DsRecordAlgorithmDomainsV1beta1 {
   privateoid("PRIVATEOID");
 
   const DsRecordAlgorithmDomainsV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static DsRecordAlgorithmDomainsV1beta1 fromValue(String value) {

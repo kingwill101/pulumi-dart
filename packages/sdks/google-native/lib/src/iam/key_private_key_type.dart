@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
-enum KeyPrivateKeyType {
+enum KeyPrivateKeyType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   typePkcs12File("TYPE_PKCS12_FILE"),
   typeGoogleCredentialsFile("TYPE_GOOGLE_CREDENTIALS_FILE");
 
   const KeyPrivateKeyType(this.wireValue);
+  @override
   final String wireValue;
 
   static KeyPrivateKeyType fromValue(String value) {

@@ -7,11 +7,11 @@ import 'policy_binding.dart';
 /// Configuration for Binary Authorization.
 class BinaryAuthorizationContainerV1beta1 {
   /// This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
-  final pulumi.Input<BinaryAuthorizationEvaluationModeContainerV1beta1>? evaluationMode;
+  final pulumi.Input<BinaryAuthorizationEvaluationModeContainerV1beta1?>? evaluationMode;
   /// Optional. Binauthz policies that apply to this cluster.
-  final pulumi.Input<List<PolicyBinding>>? policyBindings;
+  final pulumi.Input<List<PolicyBinding>?>? policyBindings;
 
   /// Creates a new [BinaryAuthorizationContainerV1beta1].
   /// [enabled] This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.

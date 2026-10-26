@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyRuleSecureTagComputeV1 {
   /// Name of the secure tag, created with TagManager's TagValue API.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [FirewallPolicyRuleSecureTagComputeV1].
   /// [name] Name of the secure tag, created with TagManager's TagValue API.

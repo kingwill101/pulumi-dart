@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata for a File connector used by the job.
 class FileIODetails {
   /// File Pattern used to access files by the connector.
-  final pulumi.Input<String>? filePattern;
+  final pulumi.Input<String?>? filePattern;
 
   /// Creates a new [FileIODetails].
   /// [filePattern] File Pattern used to access files by the connector.

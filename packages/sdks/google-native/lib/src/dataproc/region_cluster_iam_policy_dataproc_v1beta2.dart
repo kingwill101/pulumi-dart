@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'binding_response_dataproc_v1beta2.dart';
 import 'region_cluster_iam_policy_dataproc_v1beta2_args.dart';
 
 /// Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
@@ -6,7 +7,7 @@ import 'region_cluster_iam_policy_dataproc_v1beta2_args.dart';
 /// on Google Cloud even though it will be deleted from Pulumi state.
 class RegionClusterIamPolicyDataprocV1beta2 extends pulumi.CustomResource {
   /// Associates a list of members to a role. Optionally, may specify a condition that determines how and when the bindings are applied. Each of the bindings must contain at least one member.
-  late final pulumi.Output<List<Map<String, dynamic>>> bindings;
+  late final pulumi.Output<List<BindingResponseDataprocV1beta2>> bindings;
   late final pulumi.Output<String> clusterId;
   /// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the etag in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An etag is returned in the response to getIamPolicy, and systems are expected to put that etag in the request to setIamPolicy to ensure that their change will be applied to the same version of the policy.Important: If you use IAM Conditions, you must include the etag field whenever you call setIamPolicy. If you omit this field, then IAM allows you to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version 3 policy are lost.
   late final pulumi.Output<String> etag;
@@ -27,9 +28,26 @@ class RegionClusterIamPolicyDataprocV1beta2 extends pulumi.CustomResource {
           'google-native:dataproc/v1beta2:RegionClusterIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['clusterId', 'project', 'regionId']).merge(options),
         ) {
-    bindings = registerOutput<List<Map<String, dynamic>>>('bindings');
+    bindings = registerOutput<List<BindingResponseDataprocV1beta2>>('bindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BindingResponseDataprocV1beta2>(guardedValue, (value) => BindingResponseDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>())); });
+    clusterId = registerOutput<String>('clusterId');
+    etag = registerOutput<String>('etag');
+    project = registerOutput<String>('project');
+    regionId = registerOutput<String>('regionId');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [RegionClusterIamPolicyDataprocV1beta2] resource.
+  RegionClusterIamPolicyDataprocV1beta2.reference(String urn)
+    : super(
+        'google-native:dataproc/v1beta2:RegionClusterIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bindings = registerOutput<List<BindingResponseDataprocV1beta2>>('bindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BindingResponseDataprocV1beta2>(guardedValue, (value) => BindingResponseDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>())); });
     clusterId = registerOutput<String>('clusterId');
     etag = registerOutput<String>('etag');
     project = registerOutput<String>('project');

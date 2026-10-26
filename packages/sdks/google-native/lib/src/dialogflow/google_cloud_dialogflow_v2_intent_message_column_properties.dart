@@ -8,7 +8,7 @@ class GoogleCloudDialogflowV2IntentMessageColumnProperties {
   /// Column heading.
   final pulumi.Input<String> header;
   /// Optional. Defines text alignment for all cells in this column.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment>? horizontalAlignment;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment?>? horizontalAlignment;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageColumnProperties].
   /// [header] Column heading.

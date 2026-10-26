@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents auto resizing configurations for the VMware user cluster.
 class VmwareAutoResizeConfig {
   /// Whether to enable controle plane node auto resizing.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [VmwareAutoResizeConfig].
   /// [enabled] Whether to enable controle plane node auto resizing.

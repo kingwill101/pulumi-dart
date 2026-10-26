@@ -26,6 +26,17 @@ Future<GetBackupScheduleResult> getBackupSchedule(
   return GetBackupScheduleResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupScheduleResult> getBackupScheduleOutput(
+  GetBackupScheduleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:firestore/v1:getBackupSchedule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupScheduleResult.fromMap);
+}
+
 /// Gets information about a database.
 /// [args] Arguments passed to this invoke. {@macro pulumi_firestore_v1_get_database_args_doc}
 /// [options] Invoke options controlling this call.
@@ -40,6 +51,17 @@ Future<GetDatabaseResult> getDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseResult> getDatabaseOutput(
+  GetDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:firestore/v1:getDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseResult.fromMap);
 }
 
 /// Gets a composite index.
@@ -58,6 +80,17 @@ Future<GetIndexResult> getIndex(
   return GetIndexResult.fromMap(result);
 }
 
+pulumi.Output<GetIndexResult> getIndexOutput(
+  GetIndexArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:firestore/v1:getIndex',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIndexResult.fromMap);
+}
+
 /// Gets an index.
 /// [args] Arguments passed to this invoke. {@macro pulumi_firestore_v1beta1_get_index_firestore_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -74,6 +107,17 @@ Future<GetIndexFirestoreV1beta1Result> getIndexFirestoreV1beta1(
   return GetIndexFirestoreV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetIndexFirestoreV1beta1Result> getIndexFirestoreV1beta1Output(
+  GetIndexFirestoreV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:firestore/v1beta1:getIndex',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIndexFirestoreV1beta1Result.fromMap);
+}
+
 /// Gets a composite index.
 /// [args] Arguments passed to this invoke. {@macro pulumi_firestore_v1beta2_get_index_firestore_v1beta2_args_doc}
 /// [options] Invoke options controlling this call.
@@ -88,4 +132,15 @@ Future<GetIndexFirestoreV1beta2Result> getIndexFirestoreV1beta2(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIndexFirestoreV1beta2Result.fromMap(result);
+}
+
+pulumi.Output<GetIndexFirestoreV1beta2Result> getIndexFirestoreV1beta2Output(
+  GetIndexFirestoreV1beta2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:firestore/v1beta2:getIndex',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIndexFirestoreV1beta2Result.fromMap);
 }

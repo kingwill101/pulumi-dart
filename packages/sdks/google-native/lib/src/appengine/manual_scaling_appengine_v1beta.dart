@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 class ManualScalingAppengineV1beta {
   /// Number of instances to assign to the service at the start. This number can later be altered by using the Modules API (https://cloud.google.com/appengine/docs/python/modules/functions) set_num_instances() function.
-  final pulumi.Input<int>? instances;
+  final pulumi.Input<int?>? instances;
 
   /// Creates a new [ManualScalingAppengineV1beta].
   /// [instances] Number of instances to assign to the service at the start. This number can later be altered by using the Modules API (https://cloud.google.com/appengine/docs/python/modules/functions) set_num_instances() function.
@@ -21,7 +21,7 @@ class ManualScalingAppengineV1beta {
 
   factory ManualScalingAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return ManualScalingAppengineV1beta(
-      instances: (() { final guardedValue = map['instances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instances: (() { final guardedValue = map['instances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

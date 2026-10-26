@@ -25,11 +25,28 @@ class Entity extends pulumi.CustomResource {
           'google-native:connectors/v2:Entity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['connectionId', 'entityTypeId', 'location', 'project']).merge(options),
         ) {
     connectionId = registerOutput<String>('connectionId');
     entityTypeId = registerOutput<String>('entityTypeId');
-    fields = registerOutput<Map<String, String>>('fields');
+    fields = registerOutput<Map<String, String>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [Entity] resource.
+  Entity.reference(String urn)
+    : super(
+        'google-native:connectors/v2:Entity',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    connectionId = registerOutput<String>('connectionId');
+    entityTypeId = registerOutput<String>('entityTypeId');
+    fields = registerOutput<Map<String, String>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

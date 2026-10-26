@@ -6,9 +6,9 @@ import 'options_deploymentmanager_v2beta.dart';
 /// CollectionOverride allows resource handling overrides for specific resources within a BaseType
 class CollectionOverrideDeploymentmanagerV2beta {
   /// The collection that identifies this resource within its service.
-  final pulumi.Input<String>? collection;
+  final pulumi.Input<String?>? collection;
   /// The options to apply to this resource-level override
-  final pulumi.Input<OptionsDeploymentmanagerV2beta>? options;
+  final pulumi.Input<OptionsDeploymentmanagerV2beta?>? options;
 
   /// Creates a new [CollectionOverrideDeploymentmanagerV2beta].
   /// [collection] The collection that identifies this resource within its service.

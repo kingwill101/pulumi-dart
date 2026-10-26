@@ -36,10 +36,10 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConf
 
   factory SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse(
-      autoDeployConfidenceThreshold: pulumi.Input.fromValue(map['autoDeployConfidenceThreshold'] as double),
-      autoDeployExpirationSec: pulumi.Input.fromValue(map['autoDeployExpirationSec'] as int),
-      autoDeployImpactedBaselineThreshold: pulumi.Input.fromValue(map['autoDeployImpactedBaselineThreshold'] as double),
-      autoDeployLoadThreshold: pulumi.Input.fromValue(map['autoDeployLoadThreshold'] as double),
+      autoDeployConfidenceThreshold: pulumi.Input.fromValue((map['autoDeployConfidenceThreshold'] as num).toDouble()),
+      autoDeployExpirationSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['autoDeployExpirationSec'])),
+      autoDeployImpactedBaselineThreshold: pulumi.Input.fromValue((map['autoDeployImpactedBaselineThreshold'] as num).toDouble()),
+      autoDeployLoadThreshold: pulumi.Input.fromValue((map['autoDeployLoadThreshold'] as num).toDouble()),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

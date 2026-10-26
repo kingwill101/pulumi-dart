@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The simplest way to interpret a result. Required
-enum OutcomeSummary {
+enum OutcomeSummary implements pulumi.PulumiEnum<String> {
   unset("unset"),
   success("success"),
   failure("failure"),
@@ -8,6 +10,7 @@ enum OutcomeSummary {
   flaky("flaky");
 
   const OutcomeSummary(this.wireValue);
+  @override
   final String wireValue;
 
   static OutcomeSummary fromValue(String value) {

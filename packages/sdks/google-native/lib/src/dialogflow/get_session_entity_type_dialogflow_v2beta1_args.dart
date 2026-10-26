@@ -10,7 +10,7 @@ class GetSessionEntityTypeDialogflowV2beta1Args {
   final pulumi.Input<String> entityTypeId;
   final pulumi.Input<String> environmentId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> sessionId;
   final pulumi.Input<String> userId;
 

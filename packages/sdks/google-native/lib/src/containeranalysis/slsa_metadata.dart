@@ -6,15 +6,15 @@ import 'slsa_completeness.dart';
 /// Other properties of the build.
 class SlsaMetadata {
   /// The timestamp of when the build completed.
-  final pulumi.Input<String>? buildFinishedOn;
+  final pulumi.Input<String?>? buildFinishedOn;
   /// Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
-  final pulumi.Input<String>? buildInvocationId;
+  final pulumi.Input<String?>? buildInvocationId;
   /// The timestamp of when the build started.
-  final pulumi.Input<String>? buildStartedOn;
+  final pulumi.Input<String?>? buildStartedOn;
   /// Indicates that the builder claims certain fields in this message to be complete.
-  final pulumi.Input<SlsaCompleteness>? completeness;
+  final pulumi.Input<SlsaCompleteness?>? completeness;
   /// If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
-  final pulumi.Input<bool>? reproducible;
+  final pulumi.Input<bool?>? reproducible;
 
   /// Creates a new [SlsaMetadata].
   /// [buildFinishedOn] The timestamp of when the build completed.

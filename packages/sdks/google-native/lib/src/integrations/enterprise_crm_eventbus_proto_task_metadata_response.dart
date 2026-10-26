@@ -133,7 +133,7 @@ class EnterpriseCrmEventbusProtoTaskMetadataResponse {
       descriptiveName: pulumi.Input.fromValue(map['descriptiveName'] as String),
       docMarkdown: pulumi.Input.fromValue(map['docMarkdown'] as String),
       externalCategory: pulumi.Input.fromValue(map['externalCategory'] as String),
-      externalCategorySequence: pulumi.Input.fromValue(map['externalCategorySequence'] as int),
+      externalCategorySequence: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['externalCategorySequence'])),
       externalDocHtml: pulumi.Input.fromValue(map['externalDocHtml'] as String),
       externalDocLink: pulumi.Input.fromValue(map['externalDocLink'] as String),
       externalDocMarkdown: pulumi.Input.fromValue(map['externalDocMarkdown'] as String),

@@ -6,15 +6,15 @@ import 'license_containeranalysis_v1beta1.dart';
 /// PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
 class PackageInfoOccurrenceContaineranalysisV1beta1 {
   /// A place for the SPDX file creator to record any general comments about the package being described
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// Provide the actual file name of the package, or path of the directory being treated as a package
-  final pulumi.Input<String>? filename;
+  final pulumi.Input<String?>? filename;
   /// Uniquely identify any element in an SPDX document which may be referenced by other elements
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// package or alternative values, if the governing license cannot be determined
-  final pulumi.Input<LicenseContaineranalysisV1beta1>? licenseConcluded;
+  final pulumi.Input<LicenseContaineranalysisV1beta1?>? licenseConcluded;
   /// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-  final pulumi.Input<String>? sourceInfo;
+  final pulumi.Input<String?>? sourceInfo;
 
   /// Creates a new [PackageInfoOccurrenceContaineranalysisV1beta1].
   /// [comment] A place for the SPDX file creator to record any general comments about the package being described

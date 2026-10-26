@@ -13,22 +13,22 @@ import 'google_cloud_recaptchaenterprise_v1_web_key_settings.dart';
 /// {@macro pulumi_recaptchaenterprise_v1_key_args_doc}
 class KeyArgs {
   /// Settings for keys that can be used by Android apps.
-  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1AndroidKeySettings>? androidSettings;
+  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1AndroidKeySettings?>? androidSettings;
   /// Human-readable display name of this key. Modifiable by user.
   final pulumi.Input<String> displayName;
   /// Settings for keys that can be used by iOS apps.
-  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1IOSKeySettings>? iosSettings;
+  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1IOSKeySettings?>? iosSettings;
   /// Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Optional. Options for user acceptance testing.
-  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1TestingOptions>? testingOptions;
+  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1TestingOptions?>? testingOptions;
   /// Optional. Settings for WAF
-  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1WafSettings>? wafSettings;
+  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1WafSettings?>? wafSettings;
   /// Settings for keys that can be used by websites.
-  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1WebKeySettings>? webSettings;
+  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1WebKeySettings?>? webSettings;
 
   /// Creates a new [KeyArgs].
   /// [androidSettings] Settings for keys that can be used by Android apps.

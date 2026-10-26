@@ -8,11 +8,11 @@ import 'google_privacy_dlp_v2_discovery_generation_cadence.dart';
 /// Target used to match against for discovery with BigQuery tables
 class GooglePrivacyDlpV2BigQueryDiscoveryTarget {
   /// How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
-  final pulumi.Input<GooglePrivacyDlpV2DiscoveryGenerationCadence>? cadence;
+  final pulumi.Input<GooglePrivacyDlpV2DiscoveryGenerationCadence?>? cadence;
   /// In addition to matching the filter, these conditions must be true before a profile is generated.
-  final pulumi.Input<GooglePrivacyDlpV2DiscoveryBigQueryConditions>? conditions;
+  final pulumi.Input<GooglePrivacyDlpV2DiscoveryBigQueryConditions?>? conditions;
   /// Tables that match this filter will not have profiles created.
-  final pulumi.Input<Map<String, dynamic>>? disabled;
+  final pulumi.Input<Map<String, dynamic>?>? disabled;
   /// The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
   final pulumi.Input<GooglePrivacyDlpV2DiscoveryBigQueryFilter> filter;
 

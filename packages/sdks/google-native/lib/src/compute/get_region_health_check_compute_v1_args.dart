@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_v1_get_region_health_check_compute_v1_args_doc}
 class GetRegionHealthCheckComputeV1Args {
   final pulumi.Input<String> healthCheck;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
 
   /// Creates a new [GetRegionHealthCheckComputeV1Args].

@@ -26,7 +26,7 @@ class CardinalityResponse {
 
   factory CardinalityResponse.fromMap(Map<String, dynamic> map) {
     return CardinalityResponse(
-      number: pulumi.Input.fromValue(map['number'] as int),
+      number: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['number'])),
       path: pulumi.Input.fromValue(map['path'] as String),
     );
   }

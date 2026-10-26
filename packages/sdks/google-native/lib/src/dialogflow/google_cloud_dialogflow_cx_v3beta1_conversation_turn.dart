@@ -7,9 +7,9 @@ import 'google_cloud_dialogflow_cx_v3beta1_conversation_turn_virtual_agent_outpu
 /// One interaction between a human and virtual agent. The human provides some input and the virtual agent provides a response.
 class GoogleCloudDialogflowCxV3beta1ConversationTurn {
   /// The user input.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput>? userInput;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput?>? userInput;
   /// The virtual agent output.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput>? virtualAgentOutput;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput?>? virtualAgentOutput;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1ConversationTurn].
   /// [userInput] The user input.

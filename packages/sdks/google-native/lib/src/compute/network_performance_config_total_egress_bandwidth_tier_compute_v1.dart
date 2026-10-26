@@ -1,8 +1,11 @@
-enum NetworkPerformanceConfigTotalEgressBandwidthTierComputeV1 {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum NetworkPerformanceConfigTotalEgressBandwidthTierComputeV1 implements pulumi.PulumiEnum<String> {
   default_("DEFAULT"),
   tier1("TIER_1");
 
   const NetworkPerformanceConfigTotalEgressBandwidthTierComputeV1(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkPerformanceConfigTotalEgressBandwidthTierComputeV1 fromValue(String value) {

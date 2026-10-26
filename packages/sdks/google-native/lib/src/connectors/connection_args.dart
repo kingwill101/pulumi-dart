@@ -17,37 +17,37 @@ import 'ssl_config.dart';
 /// {@macro pulumi_connectors_v1_connection_args_doc}
 class ConnectionArgs {
   /// Optional. Configuration for establishing the connection's authentication with an external system.
-  final pulumi.Input<AuthConfig>? authConfig;
+  final pulumi.Input<AuthConfig?>? authConfig;
   /// Optional. Configuration for configuring the connection with an external system.
-  final pulumi.Input<List<ConfigVariable>>? configVariables;
+  final pulumi.Input<List<ConfigVariable>?>? configVariables;
   /// Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource.
   final pulumi.Input<String> connectionId;
   /// Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
   final pulumi.Input<String> connectorVersion;
   /// Optional. Description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
-  final pulumi.Input<List<DestinationConfig>>? destinationConfigs;
+  final pulumi.Input<List<DestinationConfig>?>? destinationConfigs;
   /// Optional. Eventing config of a connection
-  final pulumi.Input<EventingConfig>? eventingConfig;
+  final pulumi.Input<EventingConfig?>? eventingConfig;
   /// Optional. Eventing enablement type. Will be nil if eventing is not enabled.
-  final pulumi.Input<ConnectionEventingEnablementType>? eventingEnablementType;
+  final pulumi.Input<ConnectionEventingEnablementType?>? eventingEnablementType;
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Optional. Configuration that indicates whether or not the Connection can be edited.
-  final pulumi.Input<LockConfig>? lockConfig;
+  final pulumi.Input<LockConfig?>? lockConfig;
   /// Optional. Log configuration for the connection.
-  final pulumi.Input<ConnectorsLogConfig>? logConfig;
+  final pulumi.Input<ConnectorsLogConfig?>? logConfig;
   /// Optional. Node configuration for the connection.
-  final pulumi.Input<NodeConfig>? nodeConfig;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<NodeConfig?>? nodeConfig;
+  final pulumi.Input<String?>? project;
   /// Optional. Service account needed for runtime plane to access Google Cloud resources.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Optional. Ssl config of a connection
-  final pulumi.Input<SslConfig>? sslConfig;
+  final pulumi.Input<SslConfig?>? sslConfig;
   /// Optional. Suspended indicates if a user has suspended a connection or not.
-  final pulumi.Input<bool>? suspended;
+  final pulumi.Input<bool?>? suspended;
 
   /// Creates a new [ConnectionArgs].
   /// [authConfig] Optional. Configuration for establishing the connection's authentication with an external system.

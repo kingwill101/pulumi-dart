@@ -70,7 +70,7 @@ class BackupConfigurationResponse {
       pointInTimeRecoveryEnabled: pulumi.Input.fromValue(map['pointInTimeRecoveryEnabled'] as bool),
       replicationLogArchivingEnabled: pulumi.Input.fromValue(map['replicationLogArchivingEnabled'] as bool),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
-      transactionLogRetentionDays: pulumi.Input.fromValue(map['transactionLogRetentionDays'] as int),
+      transactionLogRetentionDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['transactionLogRetentionDays'])),
     );
   }
 }

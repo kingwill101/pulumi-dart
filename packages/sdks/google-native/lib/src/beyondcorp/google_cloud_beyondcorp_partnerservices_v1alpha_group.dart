@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Message to capture group information
 class GoogleCloudBeyondcorpPartnerservicesV1alphaGroup {
   /// The group email id
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// Google group id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [GoogleCloudBeyondcorpPartnerservicesV1alphaGroup].
   /// [email] The group email id

@@ -6,7 +6,7 @@ import 'machine_series_migrationcenter_v1alpha1.dart';
 /// The type of machines to consider when calculating virtual machine migration insights and recommendations. Not all machine types are available in all zones and regions.
 class MachinePreferencesMigrationcenterV1alpha1 {
   /// Compute Engine machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series.
-  final pulumi.Input<List<MachineSeriesMigrationcenterV1alpha1>>? allowedMachineSeries;
+  final pulumi.Input<List<MachineSeriesMigrationcenterV1alpha1>?>? allowedMachineSeries;
 
   /// Creates a new [MachinePreferencesMigrationcenterV1alpha1].
   /// [allowedMachineSeries] Compute Engine machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series.

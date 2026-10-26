@@ -10,14 +10,14 @@ import 'google_cloud_beyondcorp_partnerservices_v1alpha_partner_metadata.dart';
 /// {@macro pulumi_beyondcorp_v1alpha_partner_tenant_args_doc}
 class PartnerTenantArgs {
   /// Optional. An arbitrary caller-provided name for the PartnerTenant. Cannot exceed 64 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. Group information for the users enabled to use the partnerTenant. If the group information is not provided then the partnerTenant will be enabled for all users.
-  final pulumi.Input<GoogleCloudBeyondcorpPartnerservicesV1alphaGroup>? group;
+  final pulumi.Input<GoogleCloudBeyondcorpPartnerservicesV1alphaGroup?>? group;
   final pulumi.Input<String> organizationId;
   /// Optional. Metadata provided by the Partner associated with PartnerTenant.
-  final pulumi.Input<GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata>? partnerMetadata;
+  final pulumi.Input<GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata?>? partnerMetadata;
   /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
 
   /// Creates a new [PartnerTenantArgs].
   /// [displayName] Optional. An arbitrary caller-provided name for the PartnerTenant. Cannot exceed 64 characters.

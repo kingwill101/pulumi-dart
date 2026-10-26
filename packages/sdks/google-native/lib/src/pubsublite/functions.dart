@@ -22,6 +22,17 @@ Future<GetReservationResult> getReservation(
   return GetReservationResult.fromMap(result);
 }
 
+pulumi.Output<GetReservationResult> getReservationOutput(
+  GetReservationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:pubsublite/v1:getReservation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReservationResult.fromMap);
+}
+
 /// Returns the subscription configuration.
 /// [args] Arguments passed to this invoke. {@macro pulumi_pubsublite_v1_get_subscription_args_doc}
 /// [options] Invoke options controlling this call.
@@ -38,6 +49,17 @@ Future<GetSubscriptionResult> getSubscription(
   return GetSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetSubscriptionResult> getSubscriptionOutput(
+  GetSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:pubsublite/v1:getSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionResult.fromMap);
+}
+
 /// Returns the topic configuration.
 /// [args] Arguments passed to this invoke. {@macro pulumi_pubsublite_v1_get_topic_args_doc}
 /// [options] Invoke options controlling this call.
@@ -52,4 +74,15 @@ Future<GetTopicResult> getTopic(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTopicResult.fromMap(result);
+}
+
+pulumi.Output<GetTopicResult> getTopicOutput(
+  GetTopicArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:pubsublite/v1:getTopic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTopicResult.fromMap);
 }

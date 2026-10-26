@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates the reason code for a configuration failure.
-enum ScanConfigErrorCode {
+enum ScanConfigErrorCode implements pulumi.PulumiEnum<String> {
   codeUnspecified("CODE_UNSPECIFIED"),
   ok("OK"),
   internalError("INTERNAL_ERROR"),
@@ -45,6 +47,7 @@ enum ScanConfigErrorCode {
   cloudAssetInventoryAssetNotFound("CLOUD_ASSET_INVENTORY_ASSET_NOT_FOUND");
 
   const ScanConfigErrorCode(this.wireValue);
+  @override
   final String wireValue;
 
   static ScanConfigErrorCode fromValue(String value) {

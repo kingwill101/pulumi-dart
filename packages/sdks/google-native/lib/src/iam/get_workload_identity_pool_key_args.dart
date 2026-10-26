@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkloadIdentityPoolKeyArgs {
   final pulumi.Input<String> keyId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> providerId;
   final pulumi.Input<String> workloadIdentityPoolId;
 

@@ -14,25 +14,25 @@ import 'source_config.dart';
 /// {@macro pulumi_cloudsearch_v1_search_application_args_doc}
 class SearchApplicationArgs {
   /// Retrictions applied to the configurations. The maximum number of elements is 10.
-  final pulumi.Input<List<DataSourceRestriction>>? dataSourceRestrictions;
+  final pulumi.Input<List<DataSourceRestriction>?>? dataSourceRestrictions;
   /// The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above.
-  final pulumi.Input<List<FacetOptions>>? defaultFacetOptions;
+  final pulumi.Input<List<FacetOptions>?>? defaultFacetOptions;
   /// The default options for sorting the search results
-  final pulumi.Input<SortOptions>? defaultSortOptions;
+  final pulumi.Input<SortOptions?>? defaultSortOptions;
   /// Display name of the Search Application. The maximum length is 300 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Indicates whether audit logging is on/off for requests made for the search application in query APIs.
-  final pulumi.Input<bool>? enableAuditLog;
+  final pulumi.Input<bool?>? enableAuditLog;
   /// The name of the Search Application. Format: searchapplications/{application_id}.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The default options for query interpretation
-  final pulumi.Input<QueryInterpretationConfig>? queryInterpretationConfig;
+  final pulumi.Input<QueryInterpretationConfig?>? queryInterpretationConfig;
   /// With each result we should return the URI for its thumbnail (when applicable)
-  final pulumi.Input<bool>? returnResultThumbnailUrls;
+  final pulumi.Input<bool?>? returnResultThumbnailUrls;
   /// Configuration for ranking results.
-  final pulumi.Input<ScoringConfig>? scoringConfig;
+  final pulumi.Input<ScoringConfig?>? scoringConfig;
   /// Configuration for a sources specified in data_source_restrictions.
-  final pulumi.Input<List<SourceConfig>>? sourceConfig;
+  final pulumi.Input<List<SourceConfig>?>? sourceConfig;
 
   /// Creates a new [SearchApplicationArgs].
   /// [dataSourceRestrictions] Retrictions applied to the configurations. The maximum number of elements is 10.

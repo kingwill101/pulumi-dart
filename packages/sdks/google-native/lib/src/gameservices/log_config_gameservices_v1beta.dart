@@ -8,11 +8,11 @@ import 'data_access_options_gameservices_v1beta.dart';
 /// Specifies what kind of log the caller must write
 class LogConfigGameservicesV1beta {
   /// Cloud audit options.
-  final pulumi.Input<CloudAuditOptionsGameservicesV1beta>? cloudAudit;
+  final pulumi.Input<CloudAuditOptionsGameservicesV1beta?>? cloudAudit;
   /// Counter options.
-  final pulumi.Input<CounterOptionsGameservicesV1beta>? counter;
+  final pulumi.Input<CounterOptionsGameservicesV1beta?>? counter;
   /// Data access options.
-  final pulumi.Input<DataAccessOptionsGameservicesV1beta>? dataAccess;
+  final pulumi.Input<DataAccessOptionsGameservicesV1beta?>? dataAccess;
 
   /// Creates a new [LogConfigGameservicesV1beta].
   /// [cloudAudit] Cloud audit options.

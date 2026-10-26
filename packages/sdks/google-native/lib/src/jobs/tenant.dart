@@ -21,8 +21,22 @@ class Tenant extends pulumi.CustomResource {
           'google-native:jobs/v4:Tenant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    externalId = registerOutput<String>('externalId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [Tenant] resource.
+  Tenant.reference(String urn)
+    : super(
+        'google-native:jobs/v4:Tenant',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     externalId = registerOutput<String>('externalId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

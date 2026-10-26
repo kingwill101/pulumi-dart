@@ -31,9 +31,9 @@ class LinearResponse {
 
   factory LinearResponse.fromMap(Map<String, dynamic> map) {
     return LinearResponse(
-      numFiniteBuckets: pulumi.Input.fromValue(map['numFiniteBuckets'] as int),
-      offset: pulumi.Input.fromValue(map['offset'] as double),
-      width: pulumi.Input.fromValue(map['width'] as double),
+      numFiniteBuckets: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numFiniteBuckets'])),
+      offset: pulumi.Input.fromValue((map['offset'] as num).toDouble()),
+      width: pulumi.Input.fromValue((map['width'] as num).toDouble()),
     );
   }
 }

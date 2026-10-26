@@ -1,4 +1,6 @@
-enum DocumentKnowledgeTypesItemDialogflowV2beta1 {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum DocumentKnowledgeTypesItemDialogflowV2beta1 implements pulumi.PulumiEnum<String> {
   knowledgeTypeUnspecified("KNOWLEDGE_TYPE_UNSPECIFIED"),
   faq("FAQ"),
   extractiveQa("EXTRACTIVE_QA"),
@@ -7,6 +9,7 @@ enum DocumentKnowledgeTypesItemDialogflowV2beta1 {
   smartReply("SMART_REPLY");
 
   const DocumentKnowledgeTypesItemDialogflowV2beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static DocumentKnowledgeTypesItemDialogflowV2beta1 fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for a push delivery endpoint.
 class PushConfigPubsubV1beta1a {
   /// A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
-  final pulumi.Input<String>? pushEndpoint;
+  final pulumi.Input<String?>? pushEndpoint;
 
   /// Creates a new [PushConfigPubsubV1beta1a].
   /// [pushEndpoint] A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".

@@ -8,15 +8,15 @@ import 'config_management_policy_controller.dart';
 /// **Anthos Config Management**: Configuration for a single cluster. Intended to parallel the ConfigManagement CR.
 class ConfigManagementMembershipSpec {
   /// The user-specified cluster name used by Config Sync cluster-name-selector annotation or ClusterSelector, for applying configs to only a subset of clusters. Omit this field if the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector. Set this field if a name different from the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector.
-  final pulumi.Input<String>? cluster;
+  final pulumi.Input<String?>? cluster;
   /// Config Sync configuration for the cluster.
-  final pulumi.Input<ConfigManagementConfigSync>? configSync;
+  final pulumi.Input<ConfigManagementConfigSync?>? configSync;
   /// Hierarchy Controller configuration for the cluster.
-  final pulumi.Input<ConfigManagementHierarchyControllerConfig>? hierarchyController;
+  final pulumi.Input<ConfigManagementHierarchyControllerConfig?>? hierarchyController;
   /// Policy Controller configuration for the cluster.
-  final pulumi.Input<ConfigManagementPolicyController>? policyController;
+  final pulumi.Input<ConfigManagementPolicyController?>? policyController;
   /// Version of ACM installed.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ConfigManagementMembershipSpec].
   /// [cluster] The user-specified cluster name used by Config Sync cluster-name-selector annotation or ClusterSelector, for applying configs to only a subset of clusters. Omit this field if the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector. Set this field if a name different from the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector.

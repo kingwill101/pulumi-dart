@@ -42,8 +42,8 @@ class GoogleCloudIdentitytoolkitAdminV2HashConfigResponse {
   factory GoogleCloudIdentitytoolkitAdminV2HashConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2HashConfigResponse(
       algorithm: pulumi.Input.fromValue(map['algorithm'] as String),
-      memoryCost: pulumi.Input.fromValue(map['memoryCost'] as int),
-      rounds: pulumi.Input.fromValue(map['rounds'] as int),
+      memoryCost: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memoryCost'])),
+      rounds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rounds'])),
       saltSeparator: pulumi.Input.fromValue(map['saltSeparator'] as String),
       signerKey: pulumi.Input.fromValue(map['signerKey'] as String),
     );

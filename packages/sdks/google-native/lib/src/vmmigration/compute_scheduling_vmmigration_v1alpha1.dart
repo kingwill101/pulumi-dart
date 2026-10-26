@@ -7,15 +7,15 @@ import 'scheduling_node_affinity_vmmigration_v1alpha1.dart';
 
 /// Scheduling information for VM on maintenance/restart behaviour and node allocation in sole tenant nodes.
 class ComputeSchedulingVmmigrationV1alpha1 {
-  final pulumi.Input<bool>? automaticRestart;
+  final pulumi.Input<bool?>? automaticRestart;
   /// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node. Ignored if no node_affinites are configured.
-  final pulumi.Input<int>? minNodeCpus;
+  final pulumi.Input<int?>? minNodeCpus;
   /// A set of node affinity and anti-affinity configurations for sole tenant nodes.
-  final pulumi.Input<List<SchedulingNodeAffinityVmmigrationV1alpha1>>? nodeAffinities;
+  final pulumi.Input<List<SchedulingNodeAffinityVmmigrationV1alpha1>?>? nodeAffinities;
   /// How the instance should behave when the host machine undergoes maintenance that may temporarily impact instance performance.
-  final pulumi.Input<ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1>? onHostMaintenance;
+  final pulumi.Input<ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1?>? onHostMaintenance;
   /// Whether the Instance should be automatically restarted whenever it is terminated by Compute Engine (not terminated by user). This configuration is identical to `automaticRestart` field in Compute Engine create instance under scheduling. It was changed to an enum (instead of a boolean) to match the default value in Compute Engine which is automatic restart.
-  final pulumi.Input<ComputeSchedulingRestartTypeVmmigrationV1alpha1>? restartType;
+  final pulumi.Input<ComputeSchedulingRestartTypeVmmigrationV1alpha1?>? restartType;
 
   /// Creates a new [ComputeSchedulingVmmigrationV1alpha1].
   /// [automaticRestart] Optional.
@@ -44,7 +44,7 @@ class ComputeSchedulingVmmigrationV1alpha1 {
   factory ComputeSchedulingVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return ComputeSchedulingVmmigrationV1alpha1(
       automaticRestart: (() { final guardedValue = map['automaticRestart']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      minNodeCpus: (() { final guardedValue = map['minNodeCpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minNodeCpus: (() { final guardedValue = map['minNodeCpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nodeAffinities: (() { final guardedValue = map['nodeAffinities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SchedulingNodeAffinityVmmigrationV1alpha1>(guardedValue, (value) => SchedulingNodeAffinityVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>()))); })(),
       onHostMaintenance: (() { final guardedValue = map['onHostMaintenance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1.fromValue(guardedValue as String)); })(),
       restartType: (() { final guardedValue = map['restartType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ComputeSchedulingRestartTypeVmmigrationV1alpha1.fromValue(guardedValue as String)); })(),

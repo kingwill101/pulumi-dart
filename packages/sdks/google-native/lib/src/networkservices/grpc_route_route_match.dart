@@ -7,9 +7,9 @@ import 'grpc_route_method_match.dart';
 /// Criteria for matching traffic. A RouteMatch will be considered to match when all supplied fields match.
 class GrpcRouteRouteMatch {
   /// Optional. Specifies a collection of headers to match.
-  final pulumi.Input<List<GrpcRouteHeaderMatch>>? headers;
+  final pulumi.Input<List<GrpcRouteHeaderMatch>?>? headers;
   /// Optional. A gRPC method to match against. If this field is empty or omitted, will match all methods.
-  final pulumi.Input<GrpcRouteMethodMatch>? method;
+  final pulumi.Input<GrpcRouteMethodMatch?>? method;
 
   /// Creates a new [GrpcRouteRouteMatch].
   /// [headers] Optional. Specifies a collection of headers to match.

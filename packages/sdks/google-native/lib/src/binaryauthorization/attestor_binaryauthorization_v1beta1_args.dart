@@ -11,14 +11,14 @@ class AttestorBinaryauthorizationV1beta1Args {
   /// Required. The attestors ID.
   final pulumi.Input<String> attestorId;
   /// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// A Drydock ATTESTATION_AUTHORITY Note, created by the user.
-  final pulumi.Input<UserOwnedDrydockNote>? userOwnedDrydockNote;
+  final pulumi.Input<UserOwnedDrydockNote?>? userOwnedDrydockNote;
 
   /// Creates a new [AttestorBinaryauthorizationV1beta1Args].
   /// [attestorId] Required. The attestors ID.

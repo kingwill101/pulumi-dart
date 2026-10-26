@@ -10,8 +10,8 @@ class GetEntityArgs {
   final pulumi.Input<String> entityId;
   final pulumi.Input<String> lakeId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? view;
   final pulumi.Input<String> zone;
 
   /// Creates a new [GetEntityArgs].

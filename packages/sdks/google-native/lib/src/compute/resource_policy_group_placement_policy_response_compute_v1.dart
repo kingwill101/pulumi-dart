@@ -31,9 +31,9 @@ class ResourcePolicyGroupPlacementPolicyResponseComputeV1 {
 
   factory ResourcePolicyGroupPlacementPolicyResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyGroupPlacementPolicyResponseComputeV1(
-      availabilityDomainCount: pulumi.Input.fromValue(map['availabilityDomainCount'] as int),
+      availabilityDomainCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['availabilityDomainCount'])),
       collocation: pulumi.Input.fromValue(map['collocation'] as String),
-      vmCount: pulumi.Input.fromValue(map['vmCount'] as int),
+      vmCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vmCount'])),
     );
   }
 }

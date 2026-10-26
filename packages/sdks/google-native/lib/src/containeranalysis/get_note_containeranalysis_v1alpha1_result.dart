@@ -22,53 +22,53 @@ import 'vulnerability_type_response.dart';
 /// Result data returned by getNote.
 class GetNoteContaineranalysisV1alpha1Result {
   /// A note describing an attestation role.
-  final AttestationAuthorityResponse attestationAuthority;
+  final AttestationAuthorityResponse? attestationAuthority;
   /// A note describing a base image.
-  final BasisResponse baseImage;
+  final BasisResponse? baseImage;
   /// Build provenance type for a verifiable build.
-  final BuildTypeResponse buildType;
+  final BuildTypeResponse? buildType;
   /// A note describing a compliance check.
-  final ComplianceNoteResponseContaineranalysisV1alpha1 compliance;
+  final ComplianceNoteResponseContaineranalysisV1alpha1? compliance;
   /// The time this note was created. This field can be used as a filter in list requests.
-  final String createTime;
+  final String? createTime;
   /// A note describing something that can be deployed.
-  final DeployableResponse deployable;
+  final DeployableResponse? deployable;
   /// A note describing a provider/analysis type.
-  final DiscoveryResponse discovery;
+  final DiscoveryResponse? discovery;
   /// A note describing a dsse attestation note.
-  final DSSEAttestationNoteResponseContaineranalysisV1alpha1 dsseAttestation;
+  final DSSEAttestationNoteResponseContaineranalysisV1alpha1? dsseAttestation;
   /// Time of expiration for this note, null if note does not expire.
-  final String expirationTime;
+  final String? expirationTime;
   /// This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
-  final String kind;
+  final String? kind;
   /// A detailed description of this `Note`.
-  final String longDescription;
+  final String? longDescription;
   /// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
-  final String name;
+  final String? name;
   /// A note describing a package hosted by various package managers.
-  final PackageResponse package;
+  final PackageResponse? package;
   /// URLs associated with this note
-  final List<RelatedUrlResponseContaineranalysisV1alpha1> relatedUrl;
+  final List<RelatedUrlResponseContaineranalysisV1alpha1>? relatedUrl;
   /// A note describing a software bill of materials.
-  final DocumentNoteResponse sbom;
+  final DocumentNoteResponse? sbom;
   /// A note describing a reference to an SBOM.
-  final SBOMReferenceNoteResponseContaineranalysisV1alpha1 sbomReference;
+  final SBOMReferenceNoteResponseContaineranalysisV1alpha1? sbomReference;
   /// A one sentence description of this `Note`.
-  final String shortDescription;
+  final String? shortDescription;
   /// A note describing an SPDX File.
-  final FileNoteResponse spdxFile;
+  final FileNoteResponse? spdxFile;
   /// A note describing an SPDX Package.
-  final PackageInfoNoteResponse spdxPackage;
+  final PackageInfoNoteResponse? spdxPackage;
   /// A note describing a relationship between SPDX elements.
-  final RelationshipNoteResponse spdxRelationship;
+  final RelationshipNoteResponse? spdxRelationship;
   /// The time this note was last updated. This field can be used as a filter in list requests.
-  final String updateTime;
+  final String? updateTime;
   /// A note describing an upgrade.
-  final UpgradeNoteResponseContaineranalysisV1alpha1 upgrade;
+  final UpgradeNoteResponseContaineranalysisV1alpha1? upgrade;
   /// A note describing a vulnerability assessment.
-  final VulnerabilityAssessmentNoteResponseContaineranalysisV1alpha1 vulnerabilityAssessment;
+  final VulnerabilityAssessmentNoteResponseContaineranalysisV1alpha1? vulnerabilityAssessment;
   /// A package vulnerability type of note.
-  final VulnerabilityTypeResponse vulnerabilityType;
+  final VulnerabilityTypeResponse? vulnerabilityType;
 
   /// Creates a new [GetNoteContaineranalysisV1alpha1Result].
   /// [attestationAuthority] A note describing an attestation role.
@@ -96,87 +96,87 @@ class GetNoteContaineranalysisV1alpha1Result {
   /// [vulnerabilityAssessment] A note describing a vulnerability assessment.
   /// [vulnerabilityType] A package vulnerability type of note.
   const GetNoteContaineranalysisV1alpha1Result({
-    required this.attestationAuthority,
-    required this.baseImage,
-    required this.buildType,
-    required this.compliance,
-    required this.createTime,
-    required this.deployable,
-    required this.discovery,
-    required this.dsseAttestation,
-    required this.expirationTime,
-    required this.kind,
-    required this.longDescription,
-    required this.name,
-    required this.package,
-    required this.relatedUrl,
-    required this.sbom,
-    required this.sbomReference,
-    required this.shortDescription,
-    required this.spdxFile,
-    required this.spdxPackage,
-    required this.spdxRelationship,
-    required this.updateTime,
-    required this.upgrade,
-    required this.vulnerabilityAssessment,
-    required this.vulnerabilityType,
+    this.attestationAuthority,
+    this.baseImage,
+    this.buildType,
+    this.compliance,
+    this.createTime,
+    this.deployable,
+    this.discovery,
+    this.dsseAttestation,
+    this.expirationTime,
+    this.kind,
+    this.longDescription,
+    this.name,
+    this.package,
+    this.relatedUrl,
+    this.sbom,
+    this.sbomReference,
+    this.shortDescription,
+    this.spdxFile,
+    this.spdxPackage,
+    this.spdxRelationship,
+    this.updateTime,
+    this.upgrade,
+    this.vulnerabilityAssessment,
+    this.vulnerabilityType,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attestationAuthority': attestationAuthority.toMap(),
-      'baseImage': baseImage.toMap(),
-      'buildType': buildType.toMap(),
-      'compliance': compliance.toMap(),
-      'createTime': createTime,
-      'deployable': deployable.toMap(),
-      'discovery': discovery.toMap(),
-      'dsseAttestation': dsseAttestation.toMap(),
-      'expirationTime': expirationTime,
-      'kind': kind,
-      'longDescription': longDescription,
-      'name': name,
-      'package': package.toMap(),
-      'relatedUrl': pulumi.Input.encodeList<RelatedUrlResponseContaineranalysisV1alpha1, Map<String, dynamic>>(relatedUrl, (value) => value.toMap()),
-      'sbom': sbom.toMap(),
-      'sbomReference': sbomReference.toMap(),
-      'shortDescription': shortDescription,
-      'spdxFile': spdxFile.toMap(),
-      'spdxPackage': spdxPackage.toMap(),
-      'spdxRelationship': spdxRelationship.toMap(),
-      'updateTime': updateTime,
-      'upgrade': upgrade.toMap(),
-      'vulnerabilityAssessment': vulnerabilityAssessment.toMap(),
-      'vulnerabilityType': vulnerabilityType.toMap(),
+      'attestationAuthority': ?attestationAuthority?.toMap(),
+      'baseImage': ?baseImage?.toMap(),
+      'buildType': ?buildType?.toMap(),
+      'compliance': ?compliance?.toMap(),
+      'createTime': ?createTime,
+      'deployable': ?deployable?.toMap(),
+      'discovery': ?discovery?.toMap(),
+      'dsseAttestation': ?dsseAttestation?.toMap(),
+      'expirationTime': ?expirationTime,
+      'kind': ?kind,
+      'longDescription': ?longDescription,
+      'name': ?name,
+      'package': ?package?.toMap(),
+      'relatedUrl': ?(() { final guardedValue = relatedUrl; if (guardedValue == null) return null; return pulumi.Input.encodeList<RelatedUrlResponseContaineranalysisV1alpha1, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'sbom': ?sbom?.toMap(),
+      'sbomReference': ?sbomReference?.toMap(),
+      'shortDescription': ?shortDescription,
+      'spdxFile': ?spdxFile?.toMap(),
+      'spdxPackage': ?spdxPackage?.toMap(),
+      'spdxRelationship': ?spdxRelationship?.toMap(),
+      'updateTime': ?updateTime,
+      'upgrade': ?upgrade?.toMap(),
+      'vulnerabilityAssessment': ?vulnerabilityAssessment?.toMap(),
+      'vulnerabilityType': ?vulnerabilityType?.toMap(),
     };
   }
 
   factory GetNoteContaineranalysisV1alpha1Result.fromMap(Map<String, dynamic> map) {
     return GetNoteContaineranalysisV1alpha1Result(
-      attestationAuthority: AttestationAuthorityResponse.fromMap((map['attestationAuthority']! as Map).cast<String, dynamic>()),
-      baseImage: BasisResponse.fromMap((map['baseImage']! as Map).cast<String, dynamic>()),
-      buildType: BuildTypeResponse.fromMap((map['buildType']! as Map).cast<String, dynamic>()),
-      compliance: ComplianceNoteResponseContaineranalysisV1alpha1.fromMap((map['compliance']! as Map).cast<String, dynamic>()),
-      createTime: map['createTime'] as String,
-      deployable: DeployableResponse.fromMap((map['deployable']! as Map).cast<String, dynamic>()),
-      discovery: DiscoveryResponse.fromMap((map['discovery']! as Map).cast<String, dynamic>()),
-      dsseAttestation: DSSEAttestationNoteResponseContaineranalysisV1alpha1.fromMap((map['dsseAttestation']! as Map).cast<String, dynamic>()),
-      expirationTime: map['expirationTime'] as String,
-      kind: map['kind'] as String,
-      longDescription: map['longDescription'] as String,
-      name: map['name'] as String,
-      package: PackageResponse.fromMap((map['package']! as Map).cast<String, dynamic>()),
-      relatedUrl: pulumi.Input.decodeList<RelatedUrlResponseContaineranalysisV1alpha1>(map['relatedUrl']!, (value) => RelatedUrlResponseContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
-      sbom: DocumentNoteResponse.fromMap((map['sbom']! as Map).cast<String, dynamic>()),
-      sbomReference: SBOMReferenceNoteResponseContaineranalysisV1alpha1.fromMap((map['sbomReference']! as Map).cast<String, dynamic>()),
-      shortDescription: map['shortDescription'] as String,
-      spdxFile: FileNoteResponse.fromMap((map['spdxFile']! as Map).cast<String, dynamic>()),
-      spdxPackage: PackageInfoNoteResponse.fromMap((map['spdxPackage']! as Map).cast<String, dynamic>()),
-      spdxRelationship: RelationshipNoteResponse.fromMap((map['spdxRelationship']! as Map).cast<String, dynamic>()),
-      updateTime: map['updateTime'] as String,
-      upgrade: UpgradeNoteResponseContaineranalysisV1alpha1.fromMap((map['upgrade']! as Map).cast<String, dynamic>()),
-      vulnerabilityAssessment: VulnerabilityAssessmentNoteResponseContaineranalysisV1alpha1.fromMap((map['vulnerabilityAssessment']! as Map).cast<String, dynamic>()),
-      vulnerabilityType: VulnerabilityTypeResponse.fromMap((map['vulnerabilityType']! as Map).cast<String, dynamic>()),
+      attestationAuthority: (() { final guardedValue = map['attestationAuthority']; if (guardedValue == null) return null; return AttestationAuthorityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      baseImage: (() { final guardedValue = map['baseImage']; if (guardedValue == null) return null; return BasisResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      buildType: (() { final guardedValue = map['buildType']; if (guardedValue == null) return null; return BuildTypeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      compliance: (() { final guardedValue = map['compliance']; if (guardedValue == null) return null; return ComplianceNoteResponseContaineranalysisV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deployable: (() { final guardedValue = map['deployable']; if (guardedValue == null) return null; return DeployableResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      discovery: (() { final guardedValue = map['discovery']; if (guardedValue == null) return null; return DiscoveryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      dsseAttestation: (() { final guardedValue = map['dsseAttestation']; if (guardedValue == null) return null; return DSSEAttestationNoteResponseContaineranalysisV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      expirationTime: (() { final guardedValue = map['expirationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      longDescription: (() { final guardedValue = map['longDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      package: (() { final guardedValue = map['package']; if (guardedValue == null) return null; return PackageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      relatedUrl: (() { final guardedValue = map['relatedUrl']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RelatedUrlResponseContaineranalysisV1alpha1>(guardedValue, (value) => RelatedUrlResponseContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>())); })(),
+      sbom: (() { final guardedValue = map['sbom']; if (guardedValue == null) return null; return DocumentNoteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      sbomReference: (() { final guardedValue = map['sbomReference']; if (guardedValue == null) return null; return SBOMReferenceNoteResponseContaineranalysisV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      shortDescription: (() { final guardedValue = map['shortDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      spdxFile: (() { final guardedValue = map['spdxFile']; if (guardedValue == null) return null; return FileNoteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      spdxPackage: (() { final guardedValue = map['spdxPackage']; if (guardedValue == null) return null; return PackageInfoNoteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      spdxRelationship: (() { final guardedValue = map['spdxRelationship']; if (guardedValue == null) return null; return RelationshipNoteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      upgrade: (() { final guardedValue = map['upgrade']; if (guardedValue == null) return null; return UpgradeNoteResponseContaineranalysisV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      vulnerabilityAssessment: (() { final guardedValue = map['vulnerabilityAssessment']; if (guardedValue == null) return null; return VulnerabilityAssessmentNoteResponseContaineranalysisV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      vulnerabilityType: (() { final guardedValue = map['vulnerabilityType']; if (guardedValue == null) return null; return VulnerabilityTypeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

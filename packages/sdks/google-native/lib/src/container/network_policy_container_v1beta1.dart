@@ -6,9 +6,9 @@ import 'network_policy_provider_container_v1beta1.dart';
 /// Configuration options for the NetworkPolicy feature. https://kubernetes.io/docs/concepts/services-networking/networkpolicies/
 class NetworkPolicyContainerV1beta1 {
   /// Whether network policy is enabled on the cluster.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The selected network policy provider.
-  final pulumi.Input<NetworkPolicyProviderContainerV1beta1>? provider;
+  final pulumi.Input<NetworkPolicyProviderContainerV1beta1?>? provider;
 
   /// Creates a new [NetworkPolicyContainerV1beta1].
   /// [enabled] Whether network policy is enabled on the cluster.

@@ -5,23 +5,23 @@ import 'git_hub_enterprise_secrets_response.dart';
 /// Result data returned by getGithubEnterpriseConfig.
 class GetGithubEnterpriseConfigResult {
   /// The GitHub app id of the Cloud Build app on the GitHub Enterprise server.
-  final String appId;
+  final String? appId;
   /// Time when the installation was associated with the project.
-  final String createTime;
+  final String? createTime;
   /// Name to display for this config.
-  final String displayName;
+  final String? displayName;
   /// The URL of the github enterprise host the configuration is for.
-  final String hostUrl;
+  final String? hostUrl;
   /// Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
-  final String name;
+  final String? name;
   /// Optional. The network to be used when reaching out to the GitHub Enterprise server. The VPC network must be enabled for private service connection. This should be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the GitHub Enterprise server will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
-  final String peeredNetwork;
+  final String? peeredNetwork;
   /// Names of secrets in Secret Manager.
-  final GitHubEnterpriseSecretsResponse secrets;
+  final GitHubEnterpriseSecretsResponse? secrets;
   /// Optional. SSL certificate to use for requests to GitHub Enterprise.
-  final String sslCa;
+  final String? sslCa;
   /// The key that should be attached to webhook calls to the ReceiveWebhook endpoint.
-  final String webhookKey;
+  final String? webhookKey;
 
   /// Creates a new [GetGithubEnterpriseConfigResult].
   /// [appId] The GitHub app id of the Cloud Build app on the GitHub Enterprise server.
@@ -34,42 +34,42 @@ class GetGithubEnterpriseConfigResult {
   /// [sslCa] Optional. SSL certificate to use for requests to GitHub Enterprise.
   /// [webhookKey] The key that should be attached to webhook calls to the ReceiveWebhook endpoint.
   const GetGithubEnterpriseConfigResult({
-    required this.appId,
-    required this.createTime,
-    required this.displayName,
-    required this.hostUrl,
-    required this.name,
-    required this.peeredNetwork,
-    required this.secrets,
-    required this.sslCa,
-    required this.webhookKey,
+    this.appId,
+    this.createTime,
+    this.displayName,
+    this.hostUrl,
+    this.name,
+    this.peeredNetwork,
+    this.secrets,
+    this.sslCa,
+    this.webhookKey,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appId': appId,
-      'createTime': createTime,
-      'displayName': displayName,
-      'hostUrl': hostUrl,
-      'name': name,
-      'peeredNetwork': peeredNetwork,
-      'secrets': secrets.toMap(),
-      'sslCa': sslCa,
-      'webhookKey': webhookKey,
+      'appId': ?appId,
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'hostUrl': ?hostUrl,
+      'name': ?name,
+      'peeredNetwork': ?peeredNetwork,
+      'secrets': ?secrets?.toMap(),
+      'sslCa': ?sslCa,
+      'webhookKey': ?webhookKey,
     };
   }
 
   factory GetGithubEnterpriseConfigResult.fromMap(Map<String, dynamic> map) {
     return GetGithubEnterpriseConfigResult(
-      appId: map['appId'] as String,
-      createTime: map['createTime'] as String,
-      displayName: map['displayName'] as String,
-      hostUrl: map['hostUrl'] as String,
-      name: map['name'] as String,
-      peeredNetwork: map['peeredNetwork'] as String,
-      secrets: GitHubEnterpriseSecretsResponse.fromMap((map['secrets']! as Map).cast<String, dynamic>()),
-      sslCa: map['sslCa'] as String,
-      webhookKey: map['webhookKey'] as String,
+      appId: (() { final guardedValue = map['appId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostUrl: (() { final guardedValue = map['hostUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      peeredNetwork: (() { final guardedValue = map['peeredNetwork']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return GitHubEnterpriseSecretsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      sslCa: (() { final guardedValue = map['sslCa']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      webhookKey: (() { final guardedValue = map['webhookKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

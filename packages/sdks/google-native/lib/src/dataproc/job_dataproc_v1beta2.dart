@@ -12,6 +12,7 @@ import 'py_spark_job_response_dataproc_v1beta2.dart';
 import 'spark_job_response_dataproc_v1beta2.dart';
 import 'spark_rjob_response_dataproc_v1beta2.dart';
 import 'spark_sql_job_response_dataproc_v1beta2.dart';
+import 'yarn_application_response_dataproc_v1beta2.dart';
 
 /// Submits a job to a cluster.
 /// Auto-naming is currently not supported for this resource.
@@ -53,11 +54,11 @@ class JobDataprocV1beta2 extends pulumi.CustomResource {
   /// The job status. Additional application-specific status information may be contained in the type_job and yarn_applications fields.
   late final pulumi.Output<JobStatusResponseDataprocV1beta2> status;
   /// The previous job status.
-  late final pulumi.Output<List<Map<String, dynamic>>> statusHistory;
+  late final pulumi.Output<List<JobStatusResponseDataprocV1beta2>> statusHistory;
   /// The email address of the user submitting the job. For jobs submitted on the cluster, the address is username@hostname.
   late final pulumi.Output<String> submittedBy;
   /// The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
-  late final pulumi.Output<List<Map<String, dynamic>>> yarnApplications;
+  late final pulumi.Output<List<YarnApplicationResponseDataprocV1beta2>> yarnApplications;
 
   /// Creates a new [JobDataprocV1beta2].
   /// [name] The Pulumi resource name.
@@ -71,7 +72,7 @@ class JobDataprocV1beta2 extends pulumi.CustomResource {
           'google-native:dataproc/v1beta2:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     done = registerOutput<bool>('done');
     driverControlFilesUri = registerOutput<String>('driverControlFilesUri');
@@ -79,7 +80,7 @@ class JobDataprocV1beta2 extends pulumi.CustomResource {
     hadoopJob = registerOutput<HadoopJobResponseDataprocV1beta2>('hadoopJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopJobResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hiveJob = registerOutput<HiveJobResponseDataprocV1beta2>('hiveJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HiveJobResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jobUuid = registerOutput<String>('jobUuid');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     pigJob = registerOutput<PigJobResponseDataprocV1beta2>('pigJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PigJobResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     placement = registerOutput<JobPlacementResponseDataprocV1beta2>('placement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobPlacementResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     prestoJob = registerOutput<PrestoJobResponseDataprocV1beta2>('prestoJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrestoJobResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -92,8 +93,41 @@ class JobDataprocV1beta2 extends pulumi.CustomResource {
     sparkRJob = registerOutput<SparkRJobResponseDataprocV1beta2>('sparkRJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkRJobResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sparkSqlJob = registerOutput<SparkSqlJobResponseDataprocV1beta2>('sparkSqlJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkSqlJobResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<JobStatusResponseDataprocV1beta2>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobStatusResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    statusHistory = registerOutput<List<Map<String, dynamic>>>('statusHistory');
+    statusHistory = registerOutput<List<JobStatusResponseDataprocV1beta2>>('statusHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobStatusResponseDataprocV1beta2>(guardedValue, (value) => JobStatusResponseDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>())); });
     submittedBy = registerOutput<String>('submittedBy');
-    yarnApplications = registerOutput<List<Map<String, dynamic>>>('yarnApplications');
+    yarnApplications = registerOutput<List<YarnApplicationResponseDataprocV1beta2>>('yarnApplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<YarnApplicationResponseDataprocV1beta2>(guardedValue, (value) => YarnApplicationResponseDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [JobDataprocV1beta2] resource.
+  JobDataprocV1beta2.reference(String urn)
+    : super(
+        'google-native:dataproc/v1beta2:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    done = registerOutput<bool>('done');
+    driverControlFilesUri = registerOutput<String>('driverControlFilesUri');
+    driverOutputResourceUri = registerOutput<String>('driverOutputResourceUri');
+    hadoopJob = registerOutput<HadoopJobResponseDataprocV1beta2>('hadoopJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HadoopJobResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hiveJob = registerOutput<HiveJobResponseDataprocV1beta2>('hiveJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HiveJobResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jobUuid = registerOutput<String>('jobUuid');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    pigJob = registerOutput<PigJobResponseDataprocV1beta2>('pigJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PigJobResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    placement = registerOutput<JobPlacementResponseDataprocV1beta2>('placement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobPlacementResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    prestoJob = registerOutput<PrestoJobResponseDataprocV1beta2>('prestoJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrestoJobResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pysparkJob = registerOutput<PySparkJobResponseDataprocV1beta2>('pysparkJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PySparkJobResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reference = registerOutput<JobReferenceResponseDataprocV1beta2>('reference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobReferenceResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    scheduling = registerOutput<JobSchedulingResponseDataprocV1beta2>('scheduling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobSchedulingResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sparkJob = registerOutput<SparkJobResponseDataprocV1beta2>('sparkJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkJobResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sparkRJob = registerOutput<SparkRJobResponseDataprocV1beta2>('sparkRJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkRJobResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sparkSqlJob = registerOutput<SparkSqlJobResponseDataprocV1beta2>('sparkSqlJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkSqlJobResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<JobStatusResponseDataprocV1beta2>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobStatusResponseDataprocV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    statusHistory = registerOutput<List<JobStatusResponseDataprocV1beta2>>('statusHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobStatusResponseDataprocV1beta2>(guardedValue, (value) => JobStatusResponseDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>())); });
+    submittedBy = registerOutput<String>('submittedBy');
+    yarnApplications = registerOutput<List<YarnApplicationResponseDataprocV1beta2>>('yarnApplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<YarnApplicationResponseDataprocV1beta2>(guardedValue, (value) => YarnApplicationResponseDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

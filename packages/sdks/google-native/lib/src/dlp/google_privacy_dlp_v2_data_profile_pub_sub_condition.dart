@@ -6,7 +6,7 @@ import 'google_privacy_dlp_v2_pub_sub_expressions.dart';
 /// A condition for determining whether a Pub/Sub should be triggered.
 class GooglePrivacyDlpV2DataProfilePubSubCondition {
   /// An expression.
-  final pulumi.Input<GooglePrivacyDlpV2PubSubExpressions>? expressions;
+  final pulumi.Input<GooglePrivacyDlpV2PubSubExpressions?>? expressions;
 
   /// Creates a new [GooglePrivacyDlpV2DataProfilePubSubCondition].
   /// [expressions] An expression.

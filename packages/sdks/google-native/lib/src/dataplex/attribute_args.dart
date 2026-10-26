@@ -10,24 +10,24 @@ import 'google_cloud_dataplex_v1_resource_access_spec.dart';
 /// {@macro pulumi_dataplex_v1_attribute_args_doc}
 class AttributeArgs {
   /// Optional. Specified when applied to data stored on the resource (eg: rows, columns in BigQuery Tables).
-  final pulumi.Input<GoogleCloudDataplexV1DataAccessSpec>? dataAccessSpec;
+  final pulumi.Input<GoogleCloudDataplexV1DataAccessSpec?>? dataAccessSpec;
   /// Required. DataAttribute identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the DataTaxonomy.
   final pulumi.Input<String> dataAttributeId;
   final pulumi.Input<String> dataTaxonomyId;
   /// Optional. Description of the DataAttribute.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. User friendly display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Optional. User-defined labels for the DataAttribute.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Optional. The ID of the parent DataAttribute resource, should belong to the same data taxonomy. Circular dependency in parent chain is not valid. Maximum depth of the hierarchy allowed is 4. a -&gt; b -&gt; c -&gt; d -&gt; e, depth = 4
-  final pulumi.Input<String>? parentId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? parentId;
+  final pulumi.Input<String?>? project;
   /// Optional. Specified when applied to a resource (eg: Cloud Storage bucket, BigQuery dataset, BigQuery table).
-  final pulumi.Input<GoogleCloudDataplexV1ResourceAccessSpec>? resourceAccessSpec;
+  final pulumi.Input<GoogleCloudDataplexV1ResourceAccessSpec?>? resourceAccessSpec;
 
   /// Creates a new [AttributeArgs].
   /// [dataAccessSpec] Optional. Specified when applied to data stored on the resource (eg: rows, columns in BigQuery Tables).

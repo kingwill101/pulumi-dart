@@ -45,7 +45,7 @@ class ImportJob extends pulumi.CustomResource {
           'google-native:migrationcenter/v1:ImportJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['importJobId', 'location', 'project']).merge(options),
         ) {
     assetSource = registerOutput<String>('assetSource');
     completeTime = registerOutput<String>('completeTime');
@@ -53,7 +53,32 @@ class ImportJob extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     executionReport = registerOutput<ExecutionReportResponse>('executionReport', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExecutionReportResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     importJobId = registerOutput<String>('importJobId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+    validationReport = registerOutput<ValidationReportResponse>('validationReport', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidationReportResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ImportJob] resource.
+  ImportJob.reference(String urn)
+    : super(
+        'google-native:migrationcenter/v1:ImportJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assetSource = registerOutput<String>('assetSource');
+    completeTime = registerOutput<String>('completeTime');
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    executionReport = registerOutput<ExecutionReportResponse>('executionReport', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExecutionReportResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    importJobId = registerOutput<String>('importJobId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

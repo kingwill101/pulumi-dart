@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for the Backup for GKE Agent.
 class GkeBackupAgentConfigContainerV1beta1 {
   /// Whether the Backup for GKE agent is enabled for this cluster.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [GkeBackupAgentConfigContainerV1beta1].
   /// [enabled] Whether the Backup for GKE agent is enabled for this cluster.

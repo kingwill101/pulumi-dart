@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetModelDeploymentMonitoringJobAiplatformV1beta1Args {
   final pulumi.Input<String> location;
   final pulumi.Input<String> modelDeploymentMonitoringJobId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetModelDeploymentMonitoringJobAiplatformV1beta1Args].
   /// [location] Required.

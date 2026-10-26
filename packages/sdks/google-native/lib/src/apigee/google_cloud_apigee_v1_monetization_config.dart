@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for the Monetization add-on.
 class GoogleCloudApigeeV1MonetizationConfig {
   /// Flag that specifies whether the Monetization add-on is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [GoogleCloudApigeeV1MonetizationConfig].
   /// [enabled] Flag that specifies whether the Monetization add-on is enabled.

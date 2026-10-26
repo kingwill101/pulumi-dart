@@ -17,3 +17,14 @@ Future<GetContactCenterResult> getContactCenter(
   );
   return GetContactCenterResult.fromMap(result);
 }
+
+pulumi.Output<GetContactCenterResult> getContactCenterOutput(
+  GetContactCenterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:contactcenteraiplatform/v1alpha1:getContactCenter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContactCenterResult.fromMap);
+}

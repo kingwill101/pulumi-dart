@@ -7,7 +7,7 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo {
   /// PEM encoded CA certificate associated with the proxy server certificate.
   final pulumi.Input<String> serverCaCertPem;
   /// Optional. PEM encoded CA certificate associated with the certificate used by proxy server for SSL decryption.
-  final pulumi.Input<String>? sslDecryptCaCertPem;
+  final pulumi.Input<String?>? sslDecryptCaCertPem;
 
   /// Creates a new [GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo].
   /// [serverCaCertPem] PEM encoded CA certificate associated with the proxy server certificate.

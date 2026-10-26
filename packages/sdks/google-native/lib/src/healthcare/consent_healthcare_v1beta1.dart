@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'consent_healthcare_v1beta1_args.dart';
+import 'google_cloud_healthcare_v1beta1_consent_policy_response.dart';
 
 /// Creates a new Consent in the parent consent store.
 class ConsentHealthcareV1beta1 extends pulumi.CustomResource {
@@ -15,7 +16,7 @@ class ConsentHealthcareV1beta1 extends pulumi.CustomResource {
   /// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
   late final pulumi.Output<String> name;
   /// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
-  late final pulumi.Output<List<Map<String, dynamic>>> policies;
+  late final pulumi.Output<List<GoogleCloudHealthcareV1beta1ConsentPolicyResponse>> policies;
   late final pulumi.Output<String> project;
   /// The timestamp that the revision was created.
   late final pulumi.Output<String> revisionCreateTime;
@@ -40,16 +41,41 @@ class ConsentHealthcareV1beta1 extends pulumi.CustomResource {
           'google-native:healthcare/v1beta1:Consent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['consentStoreId', 'datasetId', 'location', 'project']).merge(options),
         ) {
     consentArtifact = registerOutput<String>('consentArtifact');
     consentStoreId = registerOutput<String>('consentStoreId');
     datasetId = registerOutput<String>('datasetId');
     expireTime = registerOutput<String>('expireTime');
     location = registerOutput<String>('location');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    policies = registerOutput<List<Map<String, dynamic>>>('policies');
+    policies = registerOutput<List<GoogleCloudHealthcareV1beta1ConsentPolicyResponse>>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudHealthcareV1beta1ConsentPolicyResponse>(guardedValue, (value) => GoogleCloudHealthcareV1beta1ConsentPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    revisionId = registerOutput<String>('revisionId');
+    state = registerOutput<String>('state');
+    ttl = registerOutput<String>('ttl');
+    userId = registerOutput<String>('userId');
+  }
+
+  /// Creates a typed reference to an existing [ConsentHealthcareV1beta1] resource.
+  ConsentHealthcareV1beta1.reference(String urn)
+    : super(
+        'google-native:healthcare/v1beta1:Consent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    consentArtifact = registerOutput<String>('consentArtifact');
+    consentStoreId = registerOutput<String>('consentStoreId');
+    datasetId = registerOutput<String>('datasetId');
+    expireTime = registerOutput<String>('expireTime');
+    location = registerOutput<String>('location');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    policies = registerOutput<List<GoogleCloudHealthcareV1beta1ConsentPolicyResponse>>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudHealthcareV1beta1ConsentPolicyResponse>(guardedValue, (value) => GoogleCloudHealthcareV1beta1ConsentPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     revisionCreateTime = registerOutput<String>('revisionCreateTime');
     revisionId = registerOutput<String>('revisionId');

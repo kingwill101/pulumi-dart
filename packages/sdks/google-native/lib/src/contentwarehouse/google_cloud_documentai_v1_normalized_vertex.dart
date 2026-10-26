@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to the original image and range from 0 to 1.
 class GoogleCloudDocumentaiV1NormalizedVertex {
   /// X coordinate.
-  final pulumi.Input<double>? x;
+  final pulumi.Input<double?>? x;
   /// Y coordinate (starts from the top of the image).
-  final pulumi.Input<double>? y;
+  final pulumi.Input<double?>? y;
 
   /// Creates a new [GoogleCloudDocumentaiV1NormalizedVertex].
   /// [x] X coordinate.
@@ -26,8 +26,8 @@ class GoogleCloudDocumentaiV1NormalizedVertex {
 
   factory GoogleCloudDocumentaiV1NormalizedVertex.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1NormalizedVertex(
-      x: (() { final guardedValue = map['x']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      y: (() { final guardedValue = map['y']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      x: (() { final guardedValue = map['x']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      y: (() { final guardedValue = map['y']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

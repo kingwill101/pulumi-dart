@@ -8,13 +8,13 @@ import 'google_privacy_dlp_v2_storage_config.dart';
 /// Controls what and how to inspect for findings.
 class GooglePrivacyDlpV2InspectJobConfig {
   /// Actions to execute at the completion of the job.
-  final pulumi.Input<List<GooglePrivacyDlpV2Action>>? actions;
+  final pulumi.Input<List<GooglePrivacyDlpV2Action>?>? actions;
   /// How and what to scan for.
-  final pulumi.Input<GooglePrivacyDlpV2InspectConfig>? inspectConfig;
+  final pulumi.Input<GooglePrivacyDlpV2InspectConfig?>? inspectConfig;
   /// If provided, will be used as the default for all values in InspectConfig. `inspect_config` will be merged into the values persisted as part of the template.
-  final pulumi.Input<String>? inspectTemplateName;
+  final pulumi.Input<String?>? inspectTemplateName;
   /// The data to scan.
-  final pulumi.Input<GooglePrivacyDlpV2StorageConfig>? storageConfig;
+  final pulumi.Input<GooglePrivacyDlpV2StorageConfig?>? storageConfig;
 
   /// Creates a new [GooglePrivacyDlpV2InspectJobConfig].
   /// [actions] Actions to execute at the completion of the job.

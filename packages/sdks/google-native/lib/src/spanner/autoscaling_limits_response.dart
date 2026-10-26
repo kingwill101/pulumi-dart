@@ -36,10 +36,10 @@ class AutoscalingLimitsResponse {
 
   factory AutoscalingLimitsResponse.fromMap(Map<String, dynamic> map) {
     return AutoscalingLimitsResponse(
-      maxNodes: pulumi.Input.fromValue(map['maxNodes'] as int),
-      maxProcessingUnits: pulumi.Input.fromValue(map['maxProcessingUnits'] as int),
-      minNodes: pulumi.Input.fromValue(map['minNodes'] as int),
-      minProcessingUnits: pulumi.Input.fromValue(map['minProcessingUnits'] as int),
+      maxNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNodes'])),
+      maxProcessingUnits: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxProcessingUnits'])),
+      minNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minNodes'])),
+      minProcessingUnits: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minProcessingUnits'])),
     );
   }
 }

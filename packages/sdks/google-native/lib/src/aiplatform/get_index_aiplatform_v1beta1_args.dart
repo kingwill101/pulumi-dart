@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIndexAiplatformV1beta1Args {
   final pulumi.Input<String> indexId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetIndexAiplatformV1beta1Args].
   /// [indexId] Required.

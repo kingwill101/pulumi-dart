@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The policy describes the baseline against which VM instance boot integrity is measured.
 class ShieldedVmIntegrityPolicyComputeBeta {
   /// Updates the integrity policy baseline using the measurements from the VM instance's most recent boot.
-  final pulumi.Input<bool>? updateAutoLearnPolicy;
+  final pulumi.Input<bool?>? updateAutoLearnPolicy;
 
   /// Creates a new [ShieldedVmIntegrityPolicyComputeBeta].
   /// [updateAutoLearnPolicy] Updates the integrity policy baseline using the measurements from the VM instance's most recent boot.

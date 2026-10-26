@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'fhir_notification_config_response.dart';
 import 'fhir_store_args.dart';
 import 'notification_config_response.dart';
+import 'stream_config_response.dart';
 import 'validation_config_response.dart';
 
 /// Creates a new FHIR store within the parent dataset.
@@ -27,10 +29,10 @@ class FhirStore extends pulumi.CustomResource {
   /// Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
   late final pulumi.Output<NotificationConfigResponse> notificationConfig;
   /// Specifies where and whether to send notifications upon changes to a FHIR store.
-  late final pulumi.Output<List<Map<String, dynamic>>> notificationConfigs;
+  late final pulumi.Output<List<FhirNotificationConfigResponse>> notificationConfigs;
   late final pulumi.Output<String> project;
   /// A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
-  late final pulumi.Output<List<Map<String, dynamic>>> streamConfigs;
+  late final pulumi.Output<List<StreamConfigResponse>> streamConfigs;
   /// Configuration for how to validate incoming FHIR resources against configured profiles.
   late final pulumi.Output<ValidationConfigResponse> validationConfig;
   /// Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
@@ -48,7 +50,7 @@ class FhirStore extends pulumi.CustomResource {
           'google-native:healthcare/v1:FhirStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['datasetId', 'location', 'project']).merge(options),
         ) {
     complexDataTypeReferenceParsing = registerOutput<String>('complexDataTypeReferenceParsing');
     datasetId = registerOutput<String>('datasetId');
@@ -57,13 +59,40 @@ class FhirStore extends pulumi.CustomResource {
     disableResourceVersioning = registerOutput<bool>('disableResourceVersioning');
     enableUpdateCreate = registerOutput<bool>('enableUpdateCreate');
     fhirStoreId = registerOutput<String?>('fhirStoreId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     notificationConfig = registerOutput<NotificationConfigResponse>('notificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    notificationConfigs = registerOutput<List<Map<String, dynamic>>>('notificationConfigs');
+    notificationConfigs = registerOutput<List<FhirNotificationConfigResponse>>('notificationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FhirNotificationConfigResponse>(guardedValue, (value) => FhirNotificationConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
-    streamConfigs = registerOutput<List<Map<String, dynamic>>>('streamConfigs');
+    streamConfigs = registerOutput<List<StreamConfigResponse>>('streamConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StreamConfigResponse>(guardedValue, (value) => StreamConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    validationConfig = registerOutput<ValidationConfigResponse>('validationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [FhirStore] resource.
+  FhirStore.reference(String urn)
+    : super(
+        'google-native:healthcare/v1:FhirStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    complexDataTypeReferenceParsing = registerOutput<String>('complexDataTypeReferenceParsing');
+    datasetId = registerOutput<String>('datasetId');
+    defaultSearchHandlingStrict = registerOutput<bool>('defaultSearchHandlingStrict');
+    disableReferentialIntegrity = registerOutput<bool>('disableReferentialIntegrity');
+    disableResourceVersioning = registerOutput<bool>('disableResourceVersioning');
+    enableUpdateCreate = registerOutput<bool>('enableUpdateCreate');
+    fhirStoreId = registerOutput<String?>('fhirStoreId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    notificationConfig = registerOutput<NotificationConfigResponse>('notificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    notificationConfigs = registerOutput<List<FhirNotificationConfigResponse>>('notificationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FhirNotificationConfigResponse>(guardedValue, (value) => FhirNotificationConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    streamConfigs = registerOutput<List<StreamConfigResponse>>('streamConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StreamConfigResponse>(guardedValue, (value) => StreamConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     validationConfig = registerOutput<ValidationConfigResponse>('validationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
   }

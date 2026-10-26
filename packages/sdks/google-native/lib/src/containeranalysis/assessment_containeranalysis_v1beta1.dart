@@ -9,23 +9,23 @@ import 'remediation_containeranalysis_v1beta1.dart';
 /// Assessment provides all information that is related to a single vulnerability for this product.
 class AssessmentContaineranalysisV1beta1 {
   /// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
-  final pulumi.Input<String>? cve;
+  final pulumi.Input<String?>? cve;
   /// Contains information about the impact of this vulnerability, this will change with time.
-  final pulumi.Input<List<String>>? impacts;
+  final pulumi.Input<List<String>?>? impacts;
   /// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
-  final pulumi.Input<JustificationContaineranalysisV1beta1>? justification;
+  final pulumi.Input<JustificationContaineranalysisV1beta1?>? justification;
   /// A detailed description of this Vex.
-  final pulumi.Input<String>? longDescription;
+  final pulumi.Input<String?>? longDescription;
   /// Holds a list of references associated with this vulnerability item and assessment. These uris have additional information about the vulnerability and the assessment itself. E.g. Link to a document which details how this assessment concluded the state of this vulnerability.
-  final pulumi.Input<List<RelatedUrlContaineranalysisV1beta1>>? relatedUris;
+  final pulumi.Input<List<RelatedUrlContaineranalysisV1beta1>?>? relatedUris;
   /// Specifies details on how to handle (and presumably, fix) a vulnerability.
-  final pulumi.Input<List<RemediationContaineranalysisV1beta1>>? remediations;
+  final pulumi.Input<List<RemediationContaineranalysisV1beta1>?>? remediations;
   /// A one sentence description of this Vex.
-  final pulumi.Input<String>? shortDescription;
+  final pulumi.Input<String?>? shortDescription;
   /// Provides the state of this Vulnerability assessment.
-  final pulumi.Input<AssessmentStateContaineranalysisV1beta1>? state;
+  final pulumi.Input<AssessmentStateContaineranalysisV1beta1?>? state;
   /// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
-  final pulumi.Input<String>? vulnerabilityId;
+  final pulumi.Input<String?>? vulnerabilityId;
 
   /// Creates a new [AssessmentContaineranalysisV1beta1].
   /// [cve] Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.

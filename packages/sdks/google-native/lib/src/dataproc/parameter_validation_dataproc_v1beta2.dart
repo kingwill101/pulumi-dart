@@ -7,9 +7,9 @@ import 'value_validation_dataproc_v1beta2.dart';
 /// Configuration for parameter validation.
 class ParameterValidationDataprocV1beta2 {
   /// Validation based on regular expressions.
-  final pulumi.Input<RegexValidationDataprocV1beta2>? regex;
+  final pulumi.Input<RegexValidationDataprocV1beta2?>? regex;
   /// Validation based on a list of allowed values.
-  final pulumi.Input<ValueValidationDataprocV1beta2>? values;
+  final pulumi.Input<ValueValidationDataprocV1beta2?>? values;
 
   /// Creates a new [ParameterValidationDataprocV1beta2].
   /// [regex] Validation based on regular expressions.

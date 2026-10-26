@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'composite_type_args.dart';
+import 'composite_type_label_entry_response.dart';
 import 'operation_response.dart';
 import 'template_contents_response.dart';
 
@@ -10,7 +11,7 @@ class CompositeType extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> insertTime;
   /// Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-  late final pulumi.Output<List<Map<String, dynamic>>> labels;
+  late final pulumi.Output<List<CompositeTypeLabelEntryResponse>> labels;
   /// Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
   late final pulumi.Output<String> name;
   /// The Operation that most recently ran, or is currently running, on this composite type.
@@ -34,11 +35,31 @@ class CompositeType extends pulumi.CustomResource {
           'google-native:deploymentmanager/alpha:CompositeType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     description = registerOutput<String>('description');
     insertTime = registerOutput<String>('insertTime');
-    labels = registerOutput<List<Map<String, dynamic>>>('labels');
+    labels = registerOutput<List<CompositeTypeLabelEntryResponse>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CompositeTypeLabelEntryResponse>(guardedValue, (value) => CompositeTypeLabelEntryResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    operation = registerOutput<OperationResponse>('operation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OperationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    status = registerOutput<String>('status');
+    templateContents = registerOutput<TemplateContentsResponse>('templateContents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TemplateContentsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [CompositeType] resource.
+  CompositeType.reference(String urn)
+    : super(
+        'google-native:deploymentmanager/alpha:CompositeType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String>('description');
+    insertTime = registerOutput<String>('insertTime');
+    labels = registerOutput<List<CompositeTypeLabelEntryResponse>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CompositeTypeLabelEntryResponse>(guardedValue, (value) => CompositeTypeLabelEntryResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     operation = registerOutput<OperationResponse>('operation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OperationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');

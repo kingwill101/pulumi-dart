@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'duration.dart';
 
 class FutureReservationTimeWindow {
-  final pulumi.Input<Duration>? duration;
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<Duration?>? duration;
+  final pulumi.Input<String?>? endTime;
   /// Start time of the Future Reservation. The start_time is an RFC3339 string.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [FutureReservationTimeWindow].
   /// [duration] Optional.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
-enum RegionBackendServiceSessionAffinityComputeBeta {
+enum RegionBackendServiceSessionAffinityComputeBeta implements pulumi.PulumiEnum<String> {
   clientIp("CLIENT_IP"),
   clientIpNoDestination("CLIENT_IP_NO_DESTINATION"),
   clientIpPortProto("CLIENT_IP_PORT_PROTO"),
@@ -10,6 +12,7 @@ enum RegionBackendServiceSessionAffinityComputeBeta {
   none("NONE");
 
   const RegionBackendServiceSessionAffinityComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static RegionBackendServiceSessionAffinityComputeBeta fromValue(String value) {

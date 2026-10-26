@@ -21,7 +21,7 @@ class TaskExecutionResponse {
 
   factory TaskExecutionResponse.fromMap(Map<String, dynamic> map) {
     return TaskExecutionResponse(
-      exitCode: pulumi.Input.fromValue(map['exitCode'] as int),
+      exitCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['exitCode'])),
     );
   }
 }

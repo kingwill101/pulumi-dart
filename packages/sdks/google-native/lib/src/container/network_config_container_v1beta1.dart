@@ -13,29 +13,29 @@ import 'service_external_ips_config_container_v1beta1.dart';
 /// NetworkConfig reports the relative names of network & subnetwork.
 class NetworkConfigContainerV1beta1 {
   /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
-  final pulumi.Input<NetworkConfigDatapathProviderContainerV1beta1>? datapathProvider;
+  final pulumi.Input<NetworkConfigDatapathProviderContainerV1beta1?>? datapathProvider;
   /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
-  final pulumi.Input<DefaultSnatStatusContainerV1beta1>? defaultSnatStatus;
+  final pulumi.Input<DefaultSnatStatusContainerV1beta1?>? defaultSnatStatus;
   /// DNSConfig contains clusterDNS config for this cluster.
-  final pulumi.Input<DNSConfigContainerV1beta1>? dnsConfig;
+  final pulumi.Input<DNSConfigContainerV1beta1?>? dnsConfig;
   /// Whether FQDN Network Policy is enabled on this cluster.
-  final pulumi.Input<bool>? enableFqdnNetworkPolicy;
+  final pulumi.Input<bool?>? enableFqdnNetworkPolicy;
   /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
-  final pulumi.Input<bool>? enableIntraNodeVisibility;
+  final pulumi.Input<bool?>? enableIntraNodeVisibility;
   /// Whether L4ILB Subsetting is enabled for this cluster.
-  final pulumi.Input<bool>? enableL4ilbSubsetting;
+  final pulumi.Input<bool?>? enableL4ilbSubsetting;
   /// Whether multi-networking is enabled for this cluster.
-  final pulumi.Input<bool>? enableMultiNetworking;
+  final pulumi.Input<bool?>? enableMultiNetworking;
   /// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
-  final pulumi.Input<GatewayAPIConfigContainerV1beta1>? gatewayApiConfig;
+  final pulumi.Input<GatewayAPIConfigContainerV1beta1?>? gatewayApiConfig;
   /// Specify the details of in-transit encryption.
-  final pulumi.Input<NetworkConfigInTransitEncryptionConfig>? inTransitEncryptionConfig;
+  final pulumi.Input<NetworkConfigInTransitEncryptionConfig?>? inTransitEncryptionConfig;
   /// Network bandwidth tier configuration.
-  final pulumi.Input<ClusterNetworkPerformanceConfigContainerV1beta1>? networkPerformanceConfig;
+  final pulumi.Input<ClusterNetworkPerformanceConfigContainerV1beta1?>? networkPerformanceConfig;
   /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
-  final pulumi.Input<NetworkConfigPrivateIpv6GoogleAccessContainerV1beta1>? privateIpv6GoogleAccess;
+  final pulumi.Input<NetworkConfigPrivateIpv6GoogleAccessContainerV1beta1?>? privateIpv6GoogleAccess;
   /// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
-  final pulumi.Input<ServiceExternalIPsConfigContainerV1beta1>? serviceExternalIpsConfig;
+  final pulumi.Input<ServiceExternalIPsConfigContainerV1beta1?>? serviceExternalIpsConfig;
 
   /// Creates a new [NetworkConfigContainerV1beta1].
   /// [datapathProvider] The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.

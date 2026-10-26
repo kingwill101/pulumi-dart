@@ -6,7 +6,7 @@ import 'google_cloud_datacatalog_v1_vertex_dataset_spec.dart';
 /// Specification that applies to a dataset. Valid only for entries with the `DATASET` type.
 class GoogleCloudDatacatalogV1DatasetSpec {
   /// Vertex AI Dataset specific fields
-  final pulumi.Input<GoogleCloudDatacatalogV1VertexDatasetSpec>? vertexDatasetSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1VertexDatasetSpec?>? vertexDatasetSpec;
 
   /// Creates a new [GoogleCloudDatacatalogV1DatasetSpec].
   /// [vertexDatasetSpec] Vertex AI Dataset specific fields

@@ -8,19 +8,19 @@ import 'google_privacy_dlp_v2_save_findings.dart';
 /// A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
 class GooglePrivacyDlpV2Action {
   /// Create a de-identified copy of the input data.
-  final pulumi.Input<GooglePrivacyDlpV2Deidentify>? deidentify;
+  final pulumi.Input<GooglePrivacyDlpV2Deidentify?>? deidentify;
   /// Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
-  final pulumi.Input<Map<String, dynamic>>? jobNotificationEmails;
+  final pulumi.Input<Map<String, dynamic>?>? jobNotificationEmails;
   /// Publish a notification to a Pub/Sub topic.
-  final pulumi.Input<GooglePrivacyDlpV2PublishToPubSub>? pubSub;
+  final pulumi.Input<GooglePrivacyDlpV2PublishToPubSub?>? pubSub;
   /// Publish findings to Cloud Datahub.
-  final pulumi.Input<Map<String, dynamic>>? publishFindingsToCloudDataCatalog;
+  final pulumi.Input<Map<String, dynamic>?>? publishFindingsToCloudDataCatalog;
   /// Publish summary to Cloud Security Command Center (Alpha).
-  final pulumi.Input<Map<String, dynamic>>? publishSummaryToCscc;
+  final pulumi.Input<Map<String, dynamic>?>? publishSummaryToCscc;
   /// Enable Stackdriver metric dlp.googleapis.com/finding_count.
-  final pulumi.Input<Map<String, dynamic>>? publishToStackdriver;
+  final pulumi.Input<Map<String, dynamic>?>? publishToStackdriver;
   /// Save resulting findings in a provided location.
-  final pulumi.Input<GooglePrivacyDlpV2SaveFindings>? saveFindings;
+  final pulumi.Input<GooglePrivacyDlpV2SaveFindings?>? saveFindings;
 
   /// Creates a new [GooglePrivacyDlpV2Action].
   /// [deidentify] Create a de-identified copy of the input data.

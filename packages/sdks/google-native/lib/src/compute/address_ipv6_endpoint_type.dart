@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
-enum AddressIpv6EndpointType {
+enum AddressIpv6EndpointType implements pulumi.PulumiEnum<String> {
   netlb("NETLB"),
   vm("VM");
 
   const AddressIpv6EndpointType(this.wireValue);
+  @override
   final String wireValue;
 
   static AddressIpv6EndpointType fromValue(String value) {

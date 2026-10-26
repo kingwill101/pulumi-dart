@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Data cache configurations.
 class DataCacheConfig {
   /// Whether data cache is enabled for the instance.
-  final pulumi.Input<bool>? dataCacheEnabled;
+  final pulumi.Input<bool?>? dataCacheEnabled;
 
   /// Creates a new [DataCacheConfig].
   /// [dataCacheEnabled] Whether data cache is enabled for the instance.

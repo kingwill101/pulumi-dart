@@ -7,11 +7,11 @@ import 'pick_time_series_filter_ranking_method.dart';
 /// Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter.
 class PickTimeSeriesFilter {
   /// How to use the ranking to select time series that pass through the filter.
-  final pulumi.Input<PickTimeSeriesFilterDirection>? direction;
+  final pulumi.Input<PickTimeSeriesFilterDirection?>? direction;
   /// How many time series to allow to pass through the filter.
-  final pulumi.Input<int>? numTimeSeries;
+  final pulumi.Input<int?>? numTimeSeries;
   /// ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
-  final pulumi.Input<PickTimeSeriesFilterRankingMethod>? rankingMethod;
+  final pulumi.Input<PickTimeSeriesFilterRankingMethod?>? rankingMethod;
 
   /// Creates a new [PickTimeSeriesFilter].
   /// [direction] How to use the ranking to select time series that pass through the filter.
@@ -34,7 +34,7 @@ class PickTimeSeriesFilter {
   factory PickTimeSeriesFilter.fromMap(Map<String, dynamic> map) {
     return PickTimeSeriesFilter(
       direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PickTimeSeriesFilterDirection.fromValue(guardedValue as String)); })(),
-      numTimeSeries: (() { final guardedValue = map['numTimeSeries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numTimeSeries: (() { final guardedValue = map['numTimeSeries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rankingMethod: (() { final guardedValue = map['rankingMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PickTimeSeriesFilterRankingMethod.fromValue(guardedValue as String)); })(),
     );
   }

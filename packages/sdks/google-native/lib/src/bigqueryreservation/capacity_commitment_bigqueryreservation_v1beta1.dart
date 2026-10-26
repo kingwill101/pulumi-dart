@@ -42,8 +42,32 @@ class CapacityCommitmentBigqueryreservationV1beta1 extends pulumi.CustomResource
           'google-native:bigqueryreservation/v1beta1:CapacityCommitment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    capacityCommitmentId = registerOutput<String?>('capacityCommitmentId');
+    commitmentEndTime = registerOutput<String>('commitmentEndTime');
+    commitmentStartTime = registerOutput<String>('commitmentStartTime');
+    enforceSingleAdminProjectPerOrg = registerOutput<bool?>('enforceSingleAdminProjectPerOrg');
+    failureStatus = registerOutput<StatusResponseBigqueryreservationV1beta1>('failureStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponseBigqueryreservationV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    multiRegionAuxiliary = registerOutput<bool>('multiRegionAuxiliary');
+    this.name = registerOutput<String>('name');
+    plan = registerOutput<String>('plan');
+    project = registerOutput<String>('project');
+    renewalPlan = registerOutput<String>('renewalPlan');
+    slotCount = registerOutput<String>('slotCount');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [CapacityCommitmentBigqueryreservationV1beta1] resource.
+  CapacityCommitmentBigqueryreservationV1beta1.reference(String urn)
+    : super(
+        'google-native:bigqueryreservation/v1beta1:CapacityCommitment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     capacityCommitmentId = registerOutput<String?>('capacityCommitmentId');
     commitmentEndTime = registerOutput<String>('commitmentEndTime');
     commitmentStartTime = registerOutput<String>('commitmentStartTime');

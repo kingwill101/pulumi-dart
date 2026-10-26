@@ -9,7 +9,7 @@ class GatewayServiceMesh {
   /// Name of the Gateway API HTTPRoute.
   final pulumi.Input<String> httpRoute;
   /// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
-  final pulumi.Input<String>? routeUpdateWaitTime;
+  final pulumi.Input<String?>? routeUpdateWaitTime;
   /// Name of the Kubernetes Service.
   final pulumi.Input<String> service;
 

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The current connection profile state (e.g. DRAFT, READY, or FAILED).
-enum ConnectionProfileState {
+enum ConnectionProfileState implements pulumi.PulumiEnum<String> {
   stateUnspecified("STATE_UNSPECIFIED"),
   draft("DRAFT"),
   creating("CREATING"),
@@ -10,6 +12,7 @@ enum ConnectionProfileState {
   failed("FAILED");
 
   const ConnectionProfileState(this.wireValue);
+  @override
   final String wireValue;
 
   static ConnectionProfileState fromValue(String value) {

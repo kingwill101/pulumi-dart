@@ -40,8 +40,29 @@ class Job extends pulumi.CustomResource {
           'google-native:bigquery/v2:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    configuration = registerOutput<JobConfigurationResponse>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    jobCreationReason = registerOutput<dynamic>('jobCreationReason');
+    jobReference = registerOutput<JobReferenceResponse>('jobReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    statistics = registerOutput<JobStatisticsResponse>('statistics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobStatisticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<JobStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userEmail = registerOutput<String>('userEmail');
+  }
+
+  /// Creates a typed reference to an existing [Job] resource.
+  Job.reference(String urn)
+    : super(
+        'google-native:bigquery/v2:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     configuration = registerOutput<JobConfigurationResponse>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     jobCreationReason = registerOutput<dynamic>('jobCreationReason');

@@ -6,7 +6,7 @@ import 'mutual_tls.dart';
 /// [Deprecated] Configuration for the peer authentication method. Configuration for the peer authentication method.
 class PeerAuthenticationMethod {
   /// Set if mTLS is used for peer authentication.
-  final pulumi.Input<MutualTls>? mtls;
+  final pulumi.Input<MutualTls?>? mtls;
 
   /// Creates a new [PeerAuthenticationMethod].
   /// [mtls] Set if mTLS is used for peer authentication.

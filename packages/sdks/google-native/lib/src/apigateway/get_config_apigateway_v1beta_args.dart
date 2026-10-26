@@ -10,8 +10,8 @@ class GetConfigApigatewayV1betaArgs {
   final pulumi.Input<String> apiId;
   final pulumi.Input<String> configId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetConfigApigatewayV1betaArgs].
   /// [apiId] Required.

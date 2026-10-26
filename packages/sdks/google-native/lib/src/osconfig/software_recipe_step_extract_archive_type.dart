@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The type of the archive to extract.
-enum SoftwareRecipeStepExtractArchiveType {
+enum SoftwareRecipeStepExtractArchiveType implements pulumi.PulumiEnum<String> {
   archiveTypeUnspecified("ARCHIVE_TYPE_UNSPECIFIED"),
   tar("TAR"),
   tarGzip("TAR_GZIP"),
@@ -9,6 +11,7 @@ enum SoftwareRecipeStepExtractArchiveType {
   zip("ZIP");
 
   const SoftwareRecipeStepExtractArchiveType(this.wireValue);
+  @override
   final String wireValue;
 
   static SoftwareRecipeStepExtractArchiveType fromValue(String value) {

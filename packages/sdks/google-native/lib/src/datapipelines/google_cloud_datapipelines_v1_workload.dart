@@ -7,9 +7,9 @@ import 'google_cloud_datapipelines_v1_launch_template_request.dart';
 /// Workload details for creating the pipeline jobs.
 class GoogleCloudDatapipelinesV1Workload {
   /// Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
-  final pulumi.Input<GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest>? dataflowFlexTemplateRequest;
+  final pulumi.Input<GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest?>? dataflowFlexTemplateRequest;
   /// Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
-  final pulumi.Input<GoogleCloudDatapipelinesV1LaunchTemplateRequest>? dataflowLaunchTemplateRequest;
+  final pulumi.Input<GoogleCloudDatapipelinesV1LaunchTemplateRequest?>? dataflowLaunchTemplateRequest;
 
   /// Creates a new [GoogleCloudDatapipelinesV1Workload].
   /// [dataflowFlexTemplateRequest] Template information and additional parameters needed to launch a Dataflow job using the flex launch API.

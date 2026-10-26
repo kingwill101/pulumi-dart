@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the database.
-enum DatabaseDumpDatabaseTypeMetastoreV1beta {
+enum DatabaseDumpDatabaseTypeMetastoreV1beta implements pulumi.PulumiEnum<String> {
   databaseTypeUnspecified("DATABASE_TYPE_UNSPECIFIED"),
   mysql("MYSQL");
 
   const DatabaseDumpDatabaseTypeMetastoreV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static DatabaseDumpDatabaseTypeMetastoreV1beta fromValue(String value) {

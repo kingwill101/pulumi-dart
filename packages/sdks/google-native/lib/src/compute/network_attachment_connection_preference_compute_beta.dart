@@ -1,9 +1,12 @@
-enum NetworkAttachmentConnectionPreferenceComputeBeta {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum NetworkAttachmentConnectionPreferenceComputeBeta implements pulumi.PulumiEnum<String> {
   acceptAutomatic("ACCEPT_AUTOMATIC"),
   acceptManual("ACCEPT_MANUAL"),
   invalid("INVALID");
 
   const NetworkAttachmentConnectionPreferenceComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkAttachmentConnectionPreferenceComputeBeta fromValue(String value) {

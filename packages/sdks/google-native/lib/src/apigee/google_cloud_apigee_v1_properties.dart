@@ -6,7 +6,7 @@ import 'google_cloud_apigee_v1_property.dart';
 /// Message for compatibility with legacy Edge specification for Java Properties object in JSON.
 class GoogleCloudApigeeV1Properties {
   /// List of all properties in the object
-  final pulumi.Input<List<GoogleCloudApigeeV1Property>>? property;
+  final pulumi.Input<List<GoogleCloudApigeeV1Property>?>? property;
 
   /// Creates a new [GoogleCloudApigeeV1Properties].
   /// [property] List of all properties in the object

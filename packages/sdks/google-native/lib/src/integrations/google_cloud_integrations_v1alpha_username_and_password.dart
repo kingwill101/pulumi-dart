@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Username and password pair.
 class GoogleCloudIntegrationsV1alphaUsernameAndPassword {
   /// Password to be used
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Username to be used
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaUsernameAndPassword].
   /// [password] Password to be used

@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Basic Auth used as a credential.
 class BasicAuth {
-  final pulumi.Input<String>? password;
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? password;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [BasicAuth].
   /// [password] Optional.

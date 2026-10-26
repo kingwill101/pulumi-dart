@@ -4,27 +4,27 @@
 /// Result data returned by getSource.
 class GetSourceResult {
   /// The timestamp when the source was created.
-  final String createTime;
+  final String? createTime;
   /// Free-text description.
-  final String description;
+  final String? description;
   /// User-friendly display name.
-  final String displayName;
+  final String? displayName;
   /// The number of frames that were reported by the source and contained errors.
-  final int errorFrameCount;
+  final int? errorFrameCount;
   /// If `true`, the source is managed by other service(s).
-  final bool managed;
+  final bool? managed;
   /// The full name of the source.
-  final String name;
+  final String? name;
   /// Number of frames that are still being processed.
-  final int pendingFrameCount;
+  final int? pendingFrameCount;
   /// The information confidence of the source. The higher the value, the higher the confidence.
-  final int priority;
+  final int? priority;
   /// The state of the source.
-  final String state;
+  final String? state;
   /// Data source type.
-  final String type;
+  final String? type;
   /// The timestamp when the source was last updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetSourceResult].
   /// [createTime] The timestamp when the source was created.
@@ -39,48 +39,48 @@ class GetSourceResult {
   /// [type] Data source type.
   /// [updateTime] The timestamp when the source was last updated.
   const GetSourceResult({
-    required this.createTime,
-    required this.description,
-    required this.displayName,
-    required this.errorFrameCount,
-    required this.managed,
-    required this.name,
-    required this.pendingFrameCount,
-    required this.priority,
-    required this.state,
-    required this.type,
-    required this.updateTime,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.errorFrameCount,
+    this.managed,
+    this.name,
+    this.pendingFrameCount,
+    this.priority,
+    this.state,
+    this.type,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'displayName': displayName,
-      'errorFrameCount': errorFrameCount,
-      'managed': managed,
-      'name': name,
-      'pendingFrameCount': pendingFrameCount,
-      'priority': priority,
-      'state': state,
-      'type': type,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'errorFrameCount': ?errorFrameCount,
+      'managed': ?managed,
+      'name': ?name,
+      'pendingFrameCount': ?pendingFrameCount,
+      'priority': ?priority,
+      'state': ?state,
+      'type': ?type,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetSourceResult.fromMap(Map<String, dynamic> map) {
     return GetSourceResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      errorFrameCount: map['errorFrameCount'] as int,
-      managed: map['managed'] as bool,
-      name: map['name'] as String,
-      pendingFrameCount: map['pendingFrameCount'] as int,
-      priority: map['priority'] as int,
-      state: map['state'] as String,
-      type: map['type'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      errorFrameCount: (() { final guardedValue = map['errorFrameCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      managed: (() { final guardedValue = map['managed']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pendingFrameCount: (() { final guardedValue = map['pendingFrameCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

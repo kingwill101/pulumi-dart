@@ -38,7 +38,7 @@ class LongRunningResponse {
     return LongRunningResponse(
       initialPollDelay: pulumi.Input.fromValue(map['initialPollDelay'] as String),
       maxPollDelay: pulumi.Input.fromValue(map['maxPollDelay'] as String),
-      pollDelayMultiplier: pulumi.Input.fromValue(map['pollDelayMultiplier'] as double),
+      pollDelayMultiplier: pulumi.Input.fromValue((map['pollDelayMultiplier'] as num).toDouble()),
       totalPollTimeout: pulumi.Input.fromValue(map['totalPollTimeout'] as String),
     );
   }

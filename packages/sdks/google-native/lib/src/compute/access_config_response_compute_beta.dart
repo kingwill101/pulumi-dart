@@ -67,7 +67,7 @@ class AccessConfigResponseComputeBeta {
   factory AccessConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return AccessConfigResponseComputeBeta(
       externalIpv6: pulumi.Input.fromValue(map['externalIpv6'] as String),
-      externalIpv6PrefixLength: pulumi.Input.fromValue(map['externalIpv6PrefixLength'] as int),
+      externalIpv6PrefixLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['externalIpv6PrefixLength'])),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       natIP: pulumi.Input.fromValue(map['natIP'] as String),

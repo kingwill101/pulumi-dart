@@ -6,9 +6,9 @@ import 'statistical_time_series_filter_ranking_method.dart';
 /// A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.
 class StatisticalTimeSeriesFilter {
   /// How many time series to output.
-  final pulumi.Input<int>? numTimeSeries;
+  final pulumi.Input<int?>? numTimeSeries;
   /// rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
-  final pulumi.Input<StatisticalTimeSeriesFilterRankingMethod>? rankingMethod;
+  final pulumi.Input<StatisticalTimeSeriesFilterRankingMethod?>? rankingMethod;
 
   /// Creates a new [StatisticalTimeSeriesFilter].
   /// [numTimeSeries] How many time series to output.
@@ -27,7 +27,7 @@ class StatisticalTimeSeriesFilter {
 
   factory StatisticalTimeSeriesFilter.fromMap(Map<String, dynamic> map) {
     return StatisticalTimeSeriesFilter(
-      numTimeSeries: (() { final guardedValue = map['numTimeSeries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numTimeSeries: (() { final guardedValue = map['numTimeSeries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rankingMethod: (() { final guardedValue = map['rankingMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StatisticalTimeSeriesFilterRankingMethod.fromValue(guardedValue as String)); })(),
     );
   }

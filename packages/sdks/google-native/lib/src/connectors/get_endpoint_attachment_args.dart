@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointAttachmentArgs {
   final pulumi.Input<String> endpointAttachmentId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetEndpointAttachmentArgs].
   /// [endpointAttachmentId] Required.

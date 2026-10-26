@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// This is deprecated and has no effect. Do not use.
-enum ConditionSysComputeBeta {
+enum ConditionSysComputeBeta implements pulumi.PulumiEnum<String> {
   ip("IP"),
   name("NAME"),
   noAttr("NO_ATTR"),
@@ -7,6 +9,7 @@ enum ConditionSysComputeBeta {
   service("SERVICE");
 
   const ConditionSysComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static ConditionSysComputeBeta fromValue(String value) {

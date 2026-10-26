@@ -38,7 +38,7 @@ class ImportRowErrorResponseMigrationcenterV1alpha1 {
   factory ImportRowErrorResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return ImportRowErrorResponseMigrationcenterV1alpha1(
       errors: pulumi.Input.fromValue(pulumi.Input.decodeList<ImportErrorResponseMigrationcenterV1alpha1>(map['errors']!, (value) => ImportErrorResponseMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>()))),
-      rowNumber: pulumi.Input.fromValue(map['rowNumber'] as int),
+      rowNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rowNumber'])),
       vmName: pulumi.Input.fromValue(map['vmName'] as String),
       vmUuid: pulumi.Input.fromValue(map['vmUuid'] as String),
     );

@@ -9,8 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainBackupIamPolicyManagedidentitiesV1beta1Args {
   final pulumi.Input<String> backupId;
   final pulumi.Input<String> domainId;
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDomainBackupIamPolicyManagedidentitiesV1beta1Args].
   /// [backupId] Required.
@@ -37,7 +37,7 @@ class GetDomainBackupIamPolicyManagedidentitiesV1beta1Args {
     return GetDomainBackupIamPolicyManagedidentitiesV1beta1Args(
       backupId: pulumi.Input.fromValue(map['backupId'] as String),
       domainId: pulumi.Input.fromValue(map['domainId'] as String),
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

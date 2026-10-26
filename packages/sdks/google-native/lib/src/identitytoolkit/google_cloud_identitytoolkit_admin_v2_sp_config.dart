@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an authentication assertion issued by a SAML identity provider.
 class GoogleCloudIdentitytoolkitAdminV2SpConfig {
   /// Callback URI where responses from IDP are handled.
-  final pulumi.Input<String>? callbackUri;
+  final pulumi.Input<String?>? callbackUri;
   /// Unique identifier for all SAML entities.
-  final pulumi.Input<String>? spEntityId;
+  final pulumi.Input<String?>? spEntityId;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2SpConfig].
   /// [callbackUri] Callback URI where responses from IDP are handled.

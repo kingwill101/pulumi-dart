@@ -7,12 +7,12 @@ import 'recipe_containeranalysis_v1alpha1.dart';
 
 class InTotoProvenanceContaineranalysisV1alpha1 {
   /// required
-  final pulumi.Input<BuilderConfigContaineranalysisV1alpha1>? builderConfig;
+  final pulumi.Input<BuilderConfigContaineranalysisV1alpha1?>? builderConfig;
   /// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
-  final pulumi.Input<List<String>>? materials;
-  final pulumi.Input<MetadataContaineranalysisV1alpha1>? metadata;
+  final pulumi.Input<List<String>?>? materials;
+  final pulumi.Input<MetadataContaineranalysisV1alpha1?>? metadata;
   /// Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible). required
-  final pulumi.Input<RecipeContaineranalysisV1alpha1>? recipe;
+  final pulumi.Input<RecipeContaineranalysisV1alpha1?>? recipe;
 
   /// Creates a new [InTotoProvenanceContaineranalysisV1alpha1].
   /// [builderConfig] required

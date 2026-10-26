@@ -8,21 +8,21 @@ import 'google_type_color.dart';
 /// Annotation for common text style attributes. This adheres to CSS conventions as much as possible.
 class GoogleCloudDocumentaiV1DocumentStyle {
   /// Text background color.
-  final pulumi.Input<GoogleTypeColor>? backgroundColor;
+  final pulumi.Input<GoogleTypeColor?>? backgroundColor;
   /// Text color.
-  final pulumi.Input<GoogleTypeColor>? color;
+  final pulumi.Input<GoogleTypeColor?>? color;
   /// Font family such as `Arial`, `Times New Roman`. https://www.w3schools.com/cssref/pr_font_font-family.asp
-  final pulumi.Input<String>? fontFamily;
+  final pulumi.Input<String?>? fontFamily;
   /// Font size.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentStyleFontSize>? fontSize;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentStyleFontSize?>? fontSize;
   /// [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible values are `normal`, `bold`, `bolder`, and `lighter`.
-  final pulumi.Input<String>? fontWeight;
+  final pulumi.Input<String?>? fontWeight;
   /// Text anchor indexing into the Document.text.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentTextAnchor>? textAnchor;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentTextAnchor?>? textAnchor;
   /// [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard.
-  final pulumi.Input<String>? textDecoration;
+  final pulumi.Input<String?>? textDecoration;
   /// [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`, `italic`, and `oblique`.
-  final pulumi.Input<String>? textStyle;
+  final pulumi.Input<String?>? textStyle;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentStyle].
   /// [backgroundColor] Text background color.

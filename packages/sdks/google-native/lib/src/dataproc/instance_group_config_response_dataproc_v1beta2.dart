@@ -84,7 +84,7 @@ class InstanceGroupConfigResponseDataprocV1beta2 {
       machineTypeUri: pulumi.Input.fromValue(map['machineTypeUri'] as String),
       managedGroupConfig: pulumi.Input.fromValue(ManagedGroupConfigResponseDataprocV1beta2.fromMap((map['managedGroupConfig']! as Map).cast<String, dynamic>())),
       minCpuPlatform: pulumi.Input.fromValue(map['minCpuPlatform'] as String),
-      numInstances: pulumi.Input.fromValue(map['numInstances'] as int),
+      numInstances: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numInstances'])),
       preemptibility: pulumi.Input.fromValue(map['preemptibility'] as String),
     );
   }

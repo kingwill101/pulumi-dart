@@ -7,9 +7,9 @@ class EnterpriseCrmEventbusProtoTriggerCriteria {
   /// Standard filter expression, when true the workflow will be executed. If there's no trigger_criteria_task_implementation_class_name specified, the condition will be validated directly.
   final pulumi.Input<String> condition;
   /// Optional. To be used in TaskConfig for the implementation class.
-  final pulumi.Input<EnterpriseCrmEventbusProtoEventParameters>? parameters;
+  final pulumi.Input<EnterpriseCrmEventbusProtoEventParameters?>? parameters;
   /// Optional. Implementation class name. The class should implement the “TypedTask” interface.
-  final pulumi.Input<String>? triggerCriteriaTaskImplementationClassName;
+  final pulumi.Input<String?>? triggerCriteriaTaskImplementationClassName;
 
   /// Creates a new [EnterpriseCrmEventbusProtoTriggerCriteria].
   /// [condition] Standard filter expression, when true the workflow will be executed. If there's no trigger_criteria_task_implementation_class_name specified, the condition will be validated directly.

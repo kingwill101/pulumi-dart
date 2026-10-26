@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A game loop test of an iOS application.
 class IosTestLoop {
   /// Bundle ID of the app.
-  final pulumi.Input<String>? bundleId;
+  final pulumi.Input<String?>? bundleId;
 
   /// Creates a new [IosTestLoop].
   /// [bundleId] Bundle ID of the app.

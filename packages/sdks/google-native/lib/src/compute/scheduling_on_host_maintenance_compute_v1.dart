@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
-enum SchedulingOnHostMaintenanceComputeV1 {
+enum SchedulingOnHostMaintenanceComputeV1 implements pulumi.PulumiEnum<String> {
   migrate("MIGRATE"),
   terminate("TERMINATE");
 
   const SchedulingOnHostMaintenanceComputeV1(this.wireValue);
+  @override
   final String wireValue;
 
   static SchedulingOnHostMaintenanceComputeV1 fromValue(String value) {

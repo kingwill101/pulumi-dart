@@ -6,9 +6,9 @@ import 'enterprise_crm_eventbus_proto_node_identifier_element_type.dart';
 /// Represents a node identifier (type + id). Next highest id: 3
 class EnterpriseCrmEventbusProtoNodeIdentifier {
   /// Configuration of the edge.
-  final pulumi.Input<String>? elementIdentifier;
+  final pulumi.Input<String?>? elementIdentifier;
   /// Destination node where the edge ends. It can only be a task config.
-  final pulumi.Input<EnterpriseCrmEventbusProtoNodeIdentifierElementType>? elementType;
+  final pulumi.Input<EnterpriseCrmEventbusProtoNodeIdentifierElementType?>? elementType;
 
   /// Creates a new [EnterpriseCrmEventbusProtoNodeIdentifier].
   /// [elementIdentifier] Configuration of the edge.

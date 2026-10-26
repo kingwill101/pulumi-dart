@@ -8,19 +8,19 @@ import 'destination_config.dart';
 /// Eventing Configuration of a connection
 class EventingConfig {
   /// Additional eventing related field values
-  final pulumi.Input<List<ConfigVariable>>? additionalVariables;
+  final pulumi.Input<List<ConfigVariable>?>? additionalVariables;
   /// Auth details for the webhook adapter.
-  final pulumi.Input<AuthConfig>? authConfig;
+  final pulumi.Input<AuthConfig?>? authConfig;
   /// Encryption key (can be either Google managed or CMEK).
-  final pulumi.Input<ConfigVariable>? encryptionKey;
+  final pulumi.Input<ConfigVariable?>? encryptionKey;
   /// Enrichment Enabled.
-  final pulumi.Input<bool>? enrichmentEnabled;
+  final pulumi.Input<bool?>? enrichmentEnabled;
   /// Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
-  final pulumi.Input<String>? eventsListenerIngressEndpoint;
+  final pulumi.Input<String?>? eventsListenerIngressEndpoint;
   /// Optional. Private Connectivity Enabled.
-  final pulumi.Input<bool>? privateConnectivityEnabled;
+  final pulumi.Input<bool?>? privateConnectivityEnabled;
   /// Registration endpoint for auto registration.
-  final pulumi.Input<DestinationConfig>? registrationDestinationConfig;
+  final pulumi.Input<DestinationConfig?>? registrationDestinationConfig;
 
   /// Creates a new [EventingConfig].
   /// [additionalVariables] Additional eventing related field values

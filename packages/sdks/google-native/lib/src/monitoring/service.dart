@@ -62,7 +62,7 @@ class Service extends pulumi.CustomResource {
           'google-native:monitoring/v3:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['v3Id', 'v3Id1']).merge(options),
         ) {
     appEngine = registerOutput<AppEngineResponse>('appEngine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEngineResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     basicService = registerOutput<BasicServiceResponse>('basicService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BasicServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -79,7 +79,36 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     serviceId = registerOutput<String?>('serviceId');
     telemetry = registerOutput<TelemetryResponse>('telemetry', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    userLabels = registerOutput<Map<String, String>>('userLabels');
+    userLabels = registerOutput<Map<String, String>>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    v3Id = registerOutput<String>('v3Id');
+    v3Id1 = registerOutput<String>('v3Id1');
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'google-native:monitoring/v3:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appEngine = registerOutput<AppEngineResponse>('appEngine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEngineResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    basicService = registerOutput<BasicServiceResponse>('basicService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BasicServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudEndpoints = registerOutput<CloudEndpointsResponse>('cloudEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudEndpointsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudRun = registerOutput<CloudRunResponse>('cloudRun', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudRunResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterIstio = registerOutput<ClusterIstioResponse>('clusterIstio', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIstioResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    custom = registerOutput<Map<String, dynamic>>('custom');
+    displayName = registerOutput<String>('displayName');
+    gkeNamespace = registerOutput<GkeNamespaceResponse>('gkeNamespace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GkeNamespaceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gkeService = registerOutput<GkeServiceResponse>('gkeService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GkeServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gkeWorkload = registerOutput<GkeWorkloadResponse>('gkeWorkload', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GkeWorkloadResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    istioCanonicalService = registerOutput<IstioCanonicalServiceResponse>('istioCanonicalService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IstioCanonicalServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    meshIstio = registerOutput<MeshIstioResponse>('meshIstio', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MeshIstioResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    serviceId = registerOutput<String?>('serviceId');
+    telemetry = registerOutput<TelemetryResponse>('telemetry', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TelemetryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userLabels = registerOutput<Map<String, String>>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     v3Id = registerOutput<String>('v3Id');
     v3Id1 = registerOutput<String>('v3Id1');
   }

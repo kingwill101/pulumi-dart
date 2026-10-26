@@ -36,6 +36,17 @@ Future<GetBackupRunResult> getBackupRun(
   return GetBackupRunResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupRunResult> getBackupRunOutput(
+  GetBackupRunArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:sqladmin/v1:getBackupRun',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupRunResult.fromMap);
+}
+
 /// Retrieves a resource containing information about a database inside a Cloud SQL instance.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sqladmin_v1_get_database_args_doc}
 /// [options] Invoke options controlling this call.
@@ -50,6 +61,17 @@ Future<GetDatabaseResult> getDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseResult> getDatabaseOutput(
+  GetDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:sqladmin/v1:getDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseResult.fromMap);
 }
 
 /// Retrieves a resource containing information about a Cloud SQL instance.
@@ -68,6 +90,17 @@ Future<GetInstanceResult> getInstance(
   return GetInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:sqladmin/v1:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
+}
+
 /// Retrieves a particular SSL certificate. Does not include the private key (required for usage). The private key must be saved from the response to initial creation.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sqladmin_v1_get_ssl_cert_args_doc}
 /// [options] Invoke options controlling this call.
@@ -82,6 +115,17 @@ Future<GetSslCertResult> getSslCert(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSslCertResult.fromMap(result);
+}
+
+pulumi.Output<GetSslCertResult> getSslCertOutput(
+  GetSslCertArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:sqladmin/v1:getSslCert',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSslCertResult.fromMap);
 }
 
 /// Retrieves a resource containing information about a user.
@@ -100,6 +144,17 @@ Future<GetUserResult> getUser(
   return GetUserResult.fromMap(result);
 }
 
+pulumi.Output<GetUserResult> getUserOutput(
+  GetUserArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:sqladmin/v1:getUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserResult.fromMap);
+}
+
 /// Retrieves a resource containing information about a backup run.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sqladmin_v1beta4_get_backup_run_sqladmin_v1beta4_args_doc}
 /// [options] Invoke options controlling this call.
@@ -114,6 +169,17 @@ Future<GetBackupRunSqladminV1beta4Result> getBackupRunSqladminV1beta4(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackupRunSqladminV1beta4Result.fromMap(result);
+}
+
+pulumi.Output<GetBackupRunSqladminV1beta4Result> getBackupRunSqladminV1beta4Output(
+  GetBackupRunSqladminV1beta4Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:sqladmin/v1beta4:getBackupRun',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupRunSqladminV1beta4Result.fromMap);
 }
 
 /// Retrieves a resource containing information about a database inside a Cloud SQL instance.
@@ -132,6 +198,17 @@ Future<GetDatabaseSqladminV1beta4Result> getDatabaseSqladminV1beta4(
   return GetDatabaseSqladminV1beta4Result.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseSqladminV1beta4Result> getDatabaseSqladminV1beta4Output(
+  GetDatabaseSqladminV1beta4Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:sqladmin/v1beta4:getDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseSqladminV1beta4Result.fromMap);
+}
+
 /// Retrieves a resource containing information about a Cloud SQL instance.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sqladmin_v1beta4_get_instance_sqladmin_v1beta4_args_doc}
 /// [options] Invoke options controlling this call.
@@ -146,6 +223,17 @@ Future<GetInstanceSqladminV1beta4Result> getInstanceSqladminV1beta4(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceSqladminV1beta4Result.fromMap(result);
+}
+
+pulumi.Output<GetInstanceSqladminV1beta4Result> getInstanceSqladminV1beta4Output(
+  GetInstanceSqladminV1beta4Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:sqladmin/v1beta4:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceSqladminV1beta4Result.fromMap);
 }
 
 /// Retrieves a particular SSL certificate. Does not include the private key (required for usage). The private key must be saved from the response to initial creation.
@@ -164,6 +252,17 @@ Future<GetSslCertSqladminV1beta4Result> getSslCertSqladminV1beta4(
   return GetSslCertSqladminV1beta4Result.fromMap(result);
 }
 
+pulumi.Output<GetSslCertSqladminV1beta4Result> getSslCertSqladminV1beta4Output(
+  GetSslCertSqladminV1beta4Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:sqladmin/v1beta4:getSslCert',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSslCertSqladminV1beta4Result.fromMap);
+}
+
 /// Retrieves a resource containing information about a user.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sqladmin_v1beta4_get_user_sqladmin_v1beta4_args_doc}
 /// [options] Invoke options controlling this call.
@@ -178,4 +277,15 @@ Future<GetUserSqladminV1beta4Result> getUserSqladminV1beta4(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserSqladminV1beta4Result.fromMap(result);
+}
+
+pulumi.Output<GetUserSqladminV1beta4Result> getUserSqladminV1beta4Output(
+  GetUserSqladminV1beta4Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:sqladmin/v1beta4:getUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserSqladminV1beta4Result.fromMap);
 }

@@ -7,7 +7,7 @@ class EventFilter {
   /// The name of a CloudEvents attribute.
   final pulumi.Input<String> attribute;
   /// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
   /// The value for the attribute.
   final pulumi.Input<String> value;
 

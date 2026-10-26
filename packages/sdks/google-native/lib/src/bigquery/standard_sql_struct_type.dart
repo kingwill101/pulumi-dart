@@ -6,7 +6,7 @@ import 'standard_sql_field.dart';
 /// The representation of a SQL STRUCT type.
 class StandardSqlStructType {
   /// Fields within the struct.
-  final pulumi.Input<List<StandardSqlField>>? fields;
+  final pulumi.Input<List<StandardSqlField>?>? fields;
 
   /// Creates a new [StandardSqlStructType].
   /// [fields] Fields within the struct.

@@ -38,13 +38,37 @@ class EndpointServicedirectoryV1beta1 extends pulumi.CustomResource {
           'google-native:servicedirectory/v1beta1:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['endpointId', 'location', 'namespaceId', 'project', 'serviceId']).merge(options),
         ) {
     address = registerOutput<String>('address');
     createTime = registerOutput<String>('createTime');
     endpointId = registerOutput<String>('endpointId');
     location = registerOutput<String>('location');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    namespaceId = registerOutput<String>('namespaceId');
+    network = registerOutput<String>('network');
+    port = registerOutput<int>('port');
+    project = registerOutput<String>('project');
+    serviceId = registerOutput<String>('serviceId');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [EndpointServicedirectoryV1beta1] resource.
+  EndpointServicedirectoryV1beta1.reference(String urn)
+    : super(
+        'google-native:servicedirectory/v1beta1:Endpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    address = registerOutput<String>('address');
+    createTime = registerOutput<String>('createTime');
+    endpointId = registerOutput<String>('endpointId');
+    location = registerOutput<String>('location');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     namespaceId = registerOutput<String>('namespaceId');
     network = registerOutput<String>('network');

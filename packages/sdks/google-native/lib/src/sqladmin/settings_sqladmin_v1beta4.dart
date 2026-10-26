@@ -24,69 +24,69 @@ import 'sql_server_audit_config_sqladmin_v1beta4.dart';
 /// Database instance settings.
 class SettingsSqladminV1beta4 {
   /// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
-  final pulumi.Input<SettingsActivationPolicySqladminV1beta4>? activationPolicy;
+  final pulumi.Input<SettingsActivationPolicySqladminV1beta4?>? activationPolicy;
   /// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
-  final pulumi.Input<SqlActiveDirectoryConfigSqladminV1beta4>? activeDirectoryConfig;
+  final pulumi.Input<SqlActiveDirectoryConfigSqladminV1beta4?>? activeDirectoryConfig;
   /// Specifies advance machine configuration for the instance relevant only for SQL Server.
-  final pulumi.Input<AdvancedMachineFeaturesSqladminV1beta4>? advancedMachineFeatures;
+  final pulumi.Input<AdvancedMachineFeaturesSqladminV1beta4?>? advancedMachineFeatures;
   /// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
-  final pulumi.Input<List<String>>? authorizedGaeApplications;
+  final pulumi.Input<List<String>?>? authorizedGaeApplications;
   /// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
-  final pulumi.Input<SettingsAvailabilityTypeSqladminV1beta4>? availabilityType;
+  final pulumi.Input<SettingsAvailabilityTypeSqladminV1beta4?>? availabilityType;
   /// The daily backup configuration for the instance.
-  final pulumi.Input<BackupConfigurationSqladminV1beta4>? backupConfiguration;
+  final pulumi.Input<BackupConfigurationSqladminV1beta4?>? backupConfiguration;
   /// The name of server Instance collation.
-  final pulumi.Input<String>? collation;
+  final pulumi.Input<String?>? collation;
   /// Specifies if connections must use Cloud SQL connectors. Option values include the following: `NOT_REQUIRED` (Cloud SQL instances can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow connections that use Cloud SQL Connectors) Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
-  final pulumi.Input<SettingsConnectorEnforcementSqladminV1beta4>? connectorEnforcement;
+  final pulumi.Input<SettingsConnectorEnforcementSqladminV1beta4?>? connectorEnforcement;
   /// Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
-  final pulumi.Input<bool>? crashSafeReplicationEnabled;
+  final pulumi.Input<bool?>? crashSafeReplicationEnabled;
   /// Configuration for data cache.
-  final pulumi.Input<DataCacheConfigSqladminV1beta4>? dataCacheConfig;
+  final pulumi.Input<DataCacheConfigSqladminV1beta4?>? dataCacheConfig;
   /// The size of data disk, in GB. The data disk size minimum is 10GB.
-  final pulumi.Input<String>? dataDiskSizeGb;
+  final pulumi.Input<String?>? dataDiskSizeGb;
   /// The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
-  final pulumi.Input<SettingsDataDiskTypeSqladminV1beta4>? dataDiskType;
+  final pulumi.Input<SettingsDataDiskTypeSqladminV1beta4?>? dataDiskType;
   /// The database flags passed to the instance at startup.
-  final pulumi.Input<List<DatabaseFlagsSqladminV1beta4>>? databaseFlags;
+  final pulumi.Input<List<DatabaseFlagsSqladminV1beta4>?>? databaseFlags;
   /// Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
-  final pulumi.Input<bool>? databaseReplicationEnabled;
+  final pulumi.Input<bool?>? databaseReplicationEnabled;
   /// Configuration to protect against accidental instance deletion.
-  final pulumi.Input<bool>? deletionProtectionEnabled;
+  final pulumi.Input<bool?>? deletionProtectionEnabled;
   /// Deny maintenance periods
-  final pulumi.Input<List<DenyMaintenancePeriodSqladminV1beta4>>? denyMaintenancePeriods;
+  final pulumi.Input<List<DenyMaintenancePeriodSqladminV1beta4>?>? denyMaintenancePeriods;
   /// Optional. The edition of the instance.
-  final pulumi.Input<SettingsEditionSqladminV1beta4>? edition;
+  final pulumi.Input<SettingsEditionSqladminV1beta4?>? edition;
   /// Insights configuration, for now relevant only for Postgres.
-  final pulumi.Input<InsightsConfigSqladminV1beta4>? insightsConfig;
+  final pulumi.Input<InsightsConfigSqladminV1beta4?>? insightsConfig;
   /// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
-  final pulumi.Input<IpConfigurationSqladminV1beta4>? ipConfiguration;
+  final pulumi.Input<IpConfigurationSqladminV1beta4?>? ipConfiguration;
   /// This is always `sql#settings`.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
-  final pulumi.Input<LocationPreferenceSqladminV1beta4>? locationPreference;
+  final pulumi.Input<LocationPreferenceSqladminV1beta4?>? locationPreference;
   /// The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
-  final pulumi.Input<MaintenanceWindowSqladminV1beta4>? maintenanceWindow;
+  final pulumi.Input<MaintenanceWindowSqladminV1beta4?>? maintenanceWindow;
   /// The local user password validation policy of the instance.
-  final pulumi.Input<PasswordValidationPolicySqladminV1beta4>? passwordValidationPolicy;
+  final pulumi.Input<PasswordValidationPolicySqladminV1beta4?>? passwordValidationPolicy;
   /// The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
-  final pulumi.Input<SettingsPricingPlanSqladminV1beta4>? pricingPlan;
+  final pulumi.Input<SettingsPricingPlanSqladminV1beta4?>? pricingPlan;
   /// The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
-  final pulumi.Input<SettingsReplicationTypeSqladminV1beta4>? replicationType;
+  final pulumi.Input<SettingsReplicationTypeSqladminV1beta4?>? replicationType;
   /// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
-  final pulumi.Input<String>? settingsVersion;
+  final pulumi.Input<String?>? settingsVersion;
   /// SQL Server specific audit configuration.
-  final pulumi.Input<SqlServerAuditConfigSqladminV1beta4>? sqlServerAuditConfig;
+  final pulumi.Input<SqlServerAuditConfigSqladminV1beta4?>? sqlServerAuditConfig;
   /// Configuration to increase storage size automatically. The default value is true.
-  final pulumi.Input<bool>? storageAutoResize;
+  final pulumi.Input<bool?>? storageAutoResize;
   /// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
-  final pulumi.Input<String>? storageAutoResizeLimit;
+  final pulumi.Input<String?>? storageAutoResizeLimit;
   /// The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
   /// Server timezone, relevant only for Cloud SQL for SQL Server.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// User-provided labels, represented as a dictionary where each label is a single key value pair.
-  final pulumi.Input<Map<String, String>>? userLabels;
+  final pulumi.Input<Map<String, String>?>? userLabels;
 
   /// Creates a new [SettingsSqladminV1beta4].
   /// [activationPolicy] The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.

@@ -9,7 +9,7 @@ class GoogleCloudHealthcareV1ConsentPolicy {
   /// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
   final pulumi.Input<Expr> authorizationRule;
   /// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
-  final pulumi.Input<List<Attribute>>? resourceAttributes;
+  final pulumi.Input<List<Attribute>?>? resourceAttributes;
 
   /// Creates a new [GoogleCloudHealthcareV1ConsentPolicy].
   /// [authorizationRule] The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).

@@ -90,21 +90,21 @@ class InstanceGroupManagerActionsSummaryResponse {
 
   factory InstanceGroupManagerActionsSummaryResponse.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerActionsSummaryResponse(
-      abandoning: pulumi.Input.fromValue(map['abandoning'] as int),
-      creating: pulumi.Input.fromValue(map['creating'] as int),
-      creatingAtomically: pulumi.Input.fromValue(map['creatingAtomically'] as int),
-      creatingWithoutRetries: pulumi.Input.fromValue(map['creatingWithoutRetries'] as int),
-      deleting: pulumi.Input.fromValue(map['deleting'] as int),
-      none: pulumi.Input.fromValue(map['none'] as int),
-      queuing: pulumi.Input.fromValue(map['queuing'] as int),
-      recreating: pulumi.Input.fromValue(map['recreating'] as int),
-      refreshing: pulumi.Input.fromValue(map['refreshing'] as int),
-      restarting: pulumi.Input.fromValue(map['restarting'] as int),
-      resuming: pulumi.Input.fromValue(map['resuming'] as int),
-      starting: pulumi.Input.fromValue(map['starting'] as int),
-      stopping: pulumi.Input.fromValue(map['stopping'] as int),
-      suspending: pulumi.Input.fromValue(map['suspending'] as int),
-      verifying: pulumi.Input.fromValue(map['verifying'] as int),
+      abandoning: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['abandoning'])),
+      creating: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['creating'])),
+      creatingAtomically: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['creatingAtomically'])),
+      creatingWithoutRetries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['creatingWithoutRetries'])),
+      deleting: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['deleting'])),
+      none: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['none'])),
+      queuing: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['queuing'])),
+      recreating: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['recreating'])),
+      refreshing: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['refreshing'])),
+      restarting: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['restarting'])),
+      resuming: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['resuming'])),
+      starting: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['starting'])),
+      stopping: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['stopping'])),
+      suspending: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['suspending'])),
+      verifying: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['verifying'])),
     );
   }
 }

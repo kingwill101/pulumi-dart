@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainMappingArgs {
   final pulumi.Input<String> domainmappingId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDomainMappingArgs].
   /// [domainmappingId] Required.

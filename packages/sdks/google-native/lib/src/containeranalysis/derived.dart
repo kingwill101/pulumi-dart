@@ -7,9 +7,9 @@ import 'layer_containeranalysis_v1alpha1.dart';
 /// Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
 class Derived {
   /// The fingerprint of the derived image.
-  final pulumi.Input<FingerprintContaineranalysisV1alpha1>? fingerprint;
+  final pulumi.Input<FingerprintContaineranalysisV1alpha1?>? fingerprint;
   /// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
-  final pulumi.Input<List<LayerContaineranalysisV1alpha1>>? layerInfo;
+  final pulumi.Input<List<LayerContaineranalysisV1alpha1>?>? layerInfo;
 
   /// Creates a new [Derived].
   /// [fingerprint] The fingerprint of the derived image.

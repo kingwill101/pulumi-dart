@@ -11,25 +11,25 @@ import 'ssl_config_type.dart';
 /// SSL Configuration of a connection
 class SslConfig {
   /// Additional SSL related field values
-  final pulumi.Input<List<ConfigVariable>>? additionalVariables;
+  final pulumi.Input<List<ConfigVariable>?>? additionalVariables;
   /// Type of Client Cert (PEM/JKS/.. etc.)
-  final pulumi.Input<SslConfigClientCertType>? clientCertType;
+  final pulumi.Input<SslConfigClientCertType?>? clientCertType;
   /// Client Certificate
-  final pulumi.Input<Secret>? clientCertificate;
+  final pulumi.Input<Secret?>? clientCertificate;
   /// Client Private Key
-  final pulumi.Input<Secret>? clientPrivateKey;
+  final pulumi.Input<Secret?>? clientPrivateKey;
   /// Secret containing the passphrase protecting the Client Private Key
-  final pulumi.Input<Secret>? clientPrivateKeyPass;
+  final pulumi.Input<Secret?>? clientPrivateKeyPass;
   /// Private Server Certificate. Needs to be specified if trust model is `PRIVATE`.
-  final pulumi.Input<Secret>? privateServerCertificate;
+  final pulumi.Input<Secret?>? privateServerCertificate;
   /// Type of Server Cert (PEM/JKS/.. etc.)
-  final pulumi.Input<SslConfigServerCertType>? serverCertType;
+  final pulumi.Input<SslConfigServerCertType?>? serverCertType;
   /// Trust Model of the SSL connection
-  final pulumi.Input<SslConfigTrustModel>? trustModel;
+  final pulumi.Input<SslConfigTrustModel?>? trustModel;
   /// Controls the ssl type for the given connector version.
-  final pulumi.Input<SslConfigType>? type;
+  final pulumi.Input<SslConfigType?>? type;
   /// Bool for enabling SSL
-  final pulumi.Input<bool>? useSsl;
+  final pulumi.Input<bool?>? useSsl;
 
   /// Creates a new [SslConfig].
   /// [additionalVariables] Additional SSL related field values

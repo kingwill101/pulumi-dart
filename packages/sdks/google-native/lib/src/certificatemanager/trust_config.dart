@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trust_config_args.dart';
+import 'trust_store_response.dart';
 
 /// Creates a new TrustConfig in a given project and location.
 class TrustConfig extends pulumi.CustomResource {
@@ -18,7 +19,7 @@ class TrustConfig extends pulumi.CustomResource {
   /// Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
   late final pulumi.Output<String> trustConfigId;
   /// Set of trust stores to perform validation against. This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation. Only one TrustStore specified is currently allowed.
-  late final pulumi.Output<List<Map<String, dynamic>>> trustStores;
+  late final pulumi.Output<List<TrustStoreResponse>> trustStores;
   /// The last update timestamp of a TrustConfig.
   late final pulumi.Output<String> updateTime;
 
@@ -34,17 +35,38 @@ class TrustConfig extends pulumi.CustomResource {
           'google-native:certificatemanager/v1:TrustConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'trustConfigId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     trustConfigId = registerOutput<String>('trustConfigId');
-    trustStores = registerOutput<List<Map<String, dynamic>>>('trustStores');
+    trustStores = registerOutput<List<TrustStoreResponse>>('trustStores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrustStoreResponse>(guardedValue, (value) => TrustStoreResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [TrustConfig] resource.
+  TrustConfig.reference(String urn)
+    : super(
+        'google-native:certificatemanager/v1:TrustConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    trustConfigId = registerOutput<String>('trustConfigId');
+    trustStores = registerOutput<List<TrustStoreResponse>>('trustStores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrustStoreResponse>(guardedValue, (value) => TrustStoreResponse.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

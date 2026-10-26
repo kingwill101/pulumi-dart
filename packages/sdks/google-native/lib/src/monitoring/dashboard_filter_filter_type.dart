@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The specified filter type
-enum DashboardFilterFilterType {
+enum DashboardFilterFilterType implements pulumi.PulumiEnum<String> {
   filterTypeUnspecified("FILTER_TYPE_UNSPECIFIED"),
   resourceLabel("RESOURCE_LABEL"),
   metricLabel("METRIC_LABEL"),
@@ -8,6 +10,7 @@ enum DashboardFilterFilterType {
   group("GROUP");
 
   const DashboardFilterFilterType(this.wireValue);
+  @override
   final String wireValue;
 
   static DashboardFilterFilterType fromValue(String value) {

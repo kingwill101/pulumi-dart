@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
-enum InstancePeeringCidrRange {
+enum InstancePeeringCidrRange implements pulumi.PulumiEnum<String> {
   cidrRangeUnspecified("CIDR_RANGE_UNSPECIFIED"),
   slash16("SLASH_16"),
   slash17("SLASH_17"),
@@ -10,6 +12,7 @@ enum InstancePeeringCidrRange {
   slash23("SLASH_23");
 
   const InstancePeeringCidrRange(this.wireValue);
+  @override
   final String wireValue;
 
   static InstancePeeringCidrRange fromValue(String value) {

@@ -33,9 +33,30 @@ class Run extends pulumi.CustomResource {
           'google-native:datalineage/v1:Run',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'processId', 'project']).merge(options),
         ) {
-    attributes = registerOutput<Map<String, String>>('attributes');
+    attributes = registerOutput<Map<String, String>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    displayName = registerOutput<String>('displayName');
+    endTime = registerOutput<String>('endTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    processId = registerOutput<String>('processId');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    startTime = registerOutput<String>('startTime');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [Run] resource.
+  Run.reference(String urn)
+    : super(
+        'google-native:datalineage/v1:Run',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attributes = registerOutput<Map<String, String>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     displayName = registerOutput<String>('displayName');
     endTime = registerOutput<String>('endTime');
     location = registerOutput<String>('location');

@@ -1,11 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'consent_artifact_healthcare_v1beta1_args.dart';
+import 'image_response_healthcare_v1beta1.dart';
 import 'signature_response_healthcare_v1beta1.dart';
 
 /// Creates a new Consent artifact in the parent consent store.
 class ConsentArtifactHealthcareV1beta1 extends pulumi.CustomResource {
   /// Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
-  late final pulumi.Output<List<Map<String, dynamic>>> consentContentScreenshots;
+  late final pulumi.Output<List<ImageResponseHealthcareV1beta1>> consentContentScreenshots;
   /// Optional. An string indicating the version of the consent information shown to the user.
   late final pulumi.Output<String> consentContentVersion;
   late final pulumi.Output<String> consentStoreId;
@@ -37,15 +38,38 @@ class ConsentArtifactHealthcareV1beta1 extends pulumi.CustomResource {
           'google-native:healthcare/v1beta1:ConsentArtifact',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['consentStoreId', 'datasetId', 'location', 'project']).merge(options),
         ) {
-    consentContentScreenshots = registerOutput<List<Map<String, dynamic>>>('consentContentScreenshots');
+    consentContentScreenshots = registerOutput<List<ImageResponseHealthcareV1beta1>>('consentContentScreenshots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageResponseHealthcareV1beta1>(guardedValue, (value) => ImageResponseHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
     consentContentVersion = registerOutput<String>('consentContentVersion');
     consentStoreId = registerOutput<String>('consentStoreId');
     datasetId = registerOutput<String>('datasetId');
     guardianSignature = registerOutput<SignatureResponseHealthcareV1beta1>('guardianSignature', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SignatureResponseHealthcareV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    userId = registerOutput<String>('userId');
+    userSignature = registerOutput<SignatureResponseHealthcareV1beta1>('userSignature', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SignatureResponseHealthcareV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    witnessSignature = registerOutput<SignatureResponseHealthcareV1beta1>('witnessSignature', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SignatureResponseHealthcareV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ConsentArtifactHealthcareV1beta1] resource.
+  ConsentArtifactHealthcareV1beta1.reference(String urn)
+    : super(
+        'google-native:healthcare/v1beta1:ConsentArtifact',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    consentContentScreenshots = registerOutput<List<ImageResponseHealthcareV1beta1>>('consentContentScreenshots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageResponseHealthcareV1beta1>(guardedValue, (value) => ImageResponseHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+    consentContentVersion = registerOutput<String>('consentContentVersion');
+    consentStoreId = registerOutput<String>('consentStoreId');
+    datasetId = registerOutput<String>('datasetId');
+    guardianSignature = registerOutput<SignatureResponseHealthcareV1beta1>('guardianSignature', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SignatureResponseHealthcareV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     userId = registerOutput<String>('userId');

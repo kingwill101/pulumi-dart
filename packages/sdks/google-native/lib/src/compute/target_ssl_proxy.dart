@@ -39,7 +39,7 @@ class TargetSslProxy extends pulumi.CustomResource {
           'google-native:compute/alpha:TargetSslProxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     certificateMap = registerOutput<String>('certificateMap');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -51,7 +51,30 @@ class TargetSslProxy extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     selfLink = registerOutput<String>('selfLink');
     service = registerOutput<String>('service');
-    sslCertificates = registerOutput<List<String>>('sslCertificates');
+    sslCertificates = registerOutput<List<String>>('sslCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sslPolicy = registerOutput<String>('sslPolicy');
+  }
+
+  /// Creates a typed reference to an existing [TargetSslProxy] resource.
+  TargetSslProxy.reference(String urn)
+    : super(
+        'google-native:compute/alpha:TargetSslProxy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    certificateMap = registerOutput<String>('certificateMap');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    proxyHeader = registerOutput<String>('proxyHeader');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    service = registerOutput<String>('service');
+    sslCertificates = registerOutput<List<String>>('sslCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sslPolicy = registerOutput<String>('sslPolicy');
   }
 }

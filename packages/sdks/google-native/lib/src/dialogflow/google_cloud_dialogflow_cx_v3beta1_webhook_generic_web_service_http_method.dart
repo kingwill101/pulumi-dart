@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
-enum GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod {
+enum GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod implements pulumi.PulumiEnum<String> {
   httpMethodUnspecified("HTTP_METHOD_UNSPECIFIED"),
   post("POST"),
   get("GET"),
@@ -10,6 +12,7 @@ enum GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod {
   options("OPTIONS");
 
   const GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod fromValue(String value) {

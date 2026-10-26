@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The purpose of the key.
-enum WorkloadIdentityPoolKeyUse {
+enum WorkloadIdentityPoolKeyUse implements pulumi.PulumiEnum<String> {
   keyUseUnspecified("KEY_USE_UNSPECIFIED"),
   encryption("ENCRYPTION");
 
   const WorkloadIdentityPoolKeyUse(this.wireValue);
+  @override
   final String wireValue;
 
   static WorkloadIdentityPoolKeyUse fromValue(String value) {

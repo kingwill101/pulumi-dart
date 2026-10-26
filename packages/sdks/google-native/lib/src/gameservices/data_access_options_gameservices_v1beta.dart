@@ -5,7 +5,7 @@ import 'data_access_options_log_mode_gameservices_v1beta.dart';
 
 /// Write a Data Access (Gin) log
 class DataAccessOptionsGameservicesV1beta {
-  final pulumi.Input<DataAccessOptionsLogModeGameservicesV1beta>? logMode;
+  final pulumi.Input<DataAccessOptionsLogModeGameservicesV1beta?>? logMode;
 
   /// Creates a new [DataAccessOptionsGameservicesV1beta].
   /// [logMode] Optional.

@@ -40,6 +40,17 @@ Future<GetAppResult> getApp(
   return GetAppResult.fromMap(result);
 }
 
+pulumi.Output<GetAppResult> getAppOutput(
+  GetAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:appengine/v1:getApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppResult.fromMap);
+}
+
 /// Gets the specified SSL certificate.
 /// [args] Arguments passed to this invoke. {@macro pulumi_appengine_v1_get_authorized_certificate_args_doc}
 /// [options] Invoke options controlling this call.
@@ -54,6 +65,17 @@ Future<GetAuthorizedCertificateResult> getAuthorizedCertificate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAuthorizedCertificateResult.fromMap(result);
+}
+
+pulumi.Output<GetAuthorizedCertificateResult> getAuthorizedCertificateOutput(
+  GetAuthorizedCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:appengine/v1:getAuthorizedCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthorizedCertificateResult.fromMap);
 }
 
 /// Gets the specified domain mapping.
@@ -72,6 +94,17 @@ Future<GetDomainMappingResult> getDomainMapping(
   return GetDomainMappingResult.fromMap(result);
 }
 
+pulumi.Output<GetDomainMappingResult> getDomainMappingOutput(
+  GetDomainMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:appengine/v1:getDomainMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainMappingResult.fromMap);
+}
+
 /// Gets the specified firewall rule.
 /// [args] Arguments passed to this invoke. {@macro pulumi_appengine_v1_get_ingress_rule_args_doc}
 /// [options] Invoke options controlling this call.
@@ -86,6 +119,17 @@ Future<GetIngressRuleResult> getIngressRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIngressRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetIngressRuleResult> getIngressRuleOutput(
+  GetIngressRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:appengine/v1:getIngressRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIngressRuleResult.fromMap);
 }
 
 /// Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Specify the FULL_VIEW parameter to get the full resource.
@@ -104,6 +148,17 @@ Future<GetVersionResult> getVersion(
   return GetVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetVersionResult> getVersionOutput(
+  GetVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:appengine/v1:getVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVersionResult.fromMap);
+}
+
 /// Gets the specified SSL certificate.
 /// [args] Arguments passed to this invoke. {@macro pulumi_appengine_v1alpha_get_authorized_certificate_appengine_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
@@ -118,6 +173,17 @@ Future<GetAuthorizedCertificateAppengineV1alphaResult> getAuthorizedCertificateA
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAuthorizedCertificateAppengineV1alphaResult.fromMap(result);
+}
+
+pulumi.Output<GetAuthorizedCertificateAppengineV1alphaResult> getAuthorizedCertificateAppengineV1alphaOutput(
+  GetAuthorizedCertificateAppengineV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:appengine/v1alpha:getAuthorizedCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthorizedCertificateAppengineV1alphaResult.fromMap);
 }
 
 /// Gets the specified domain mapping.
@@ -136,6 +202,17 @@ Future<GetDomainMappingAppengineV1alphaResult> getDomainMappingAppengineV1alpha(
   return GetDomainMappingAppengineV1alphaResult.fromMap(result);
 }
 
+pulumi.Output<GetDomainMappingAppengineV1alphaResult> getDomainMappingAppengineV1alphaOutput(
+  GetDomainMappingAppengineV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:appengine/v1alpha:getDomainMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainMappingAppengineV1alphaResult.fromMap);
+}
+
 /// Gets information about an application.
 /// [args] Arguments passed to this invoke. {@macro pulumi_appengine_v1beta_get_app_appengine_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -150,6 +227,17 @@ Future<GetAppAppengineV1betaResult> getAppAppengineV1beta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAppAppengineV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetAppAppengineV1betaResult> getAppAppengineV1betaOutput(
+  GetAppAppengineV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:appengine/v1beta:getApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppAppengineV1betaResult.fromMap);
 }
 
 /// Gets the specified SSL certificate.
@@ -168,6 +256,17 @@ Future<GetAuthorizedCertificateAppengineV1betaResult> getAuthorizedCertificateAp
   return GetAuthorizedCertificateAppengineV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetAuthorizedCertificateAppengineV1betaResult> getAuthorizedCertificateAppengineV1betaOutput(
+  GetAuthorizedCertificateAppengineV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:appengine/v1beta:getAuthorizedCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthorizedCertificateAppengineV1betaResult.fromMap);
+}
+
 /// Gets the specified domain mapping.
 /// [args] Arguments passed to this invoke. {@macro pulumi_appengine_v1beta_get_domain_mapping_appengine_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -182,6 +281,17 @@ Future<GetDomainMappingAppengineV1betaResult> getDomainMappingAppengineV1beta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDomainMappingAppengineV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetDomainMappingAppengineV1betaResult> getDomainMappingAppengineV1betaOutput(
+  GetDomainMappingAppengineV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:appengine/v1beta:getDomainMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainMappingAppengineV1betaResult.fromMap);
 }
 
 /// Gets the specified firewall rule.
@@ -200,6 +310,17 @@ Future<GetIngressRuleAppengineV1betaResult> getIngressRuleAppengineV1beta(
   return GetIngressRuleAppengineV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetIngressRuleAppengineV1betaResult> getIngressRuleAppengineV1betaOutput(
+  GetIngressRuleAppengineV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:appengine/v1beta:getIngressRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIngressRuleAppengineV1betaResult.fromMap);
+}
+
 /// Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Specify the FULL_VIEW parameter to get the full resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_appengine_v1beta_get_version_appengine_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -214,4 +335,15 @@ Future<GetVersionAppengineV1betaResult> getVersionAppengineV1beta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVersionAppengineV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetVersionAppengineV1betaResult> getVersionAppengineV1betaOutput(
+  GetVersionAppengineV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:appengine/v1beta:getVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVersionAppengineV1betaResult.fromMap);
 }

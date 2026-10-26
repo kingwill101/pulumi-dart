@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The HTTP method to use for the request. PATCH and OPTIONS are not permitted.
-enum AppEngineHttpTargetHttpMethod {
+enum AppEngineHttpTargetHttpMethod implements pulumi.PulumiEnum<String> {
   httpMethodUnspecified("HTTP_METHOD_UNSPECIFIED"),
   post("POST"),
   get("GET"),
@@ -10,6 +12,7 @@ enum AppEngineHttpTargetHttpMethod {
   options("OPTIONS");
 
   const AppEngineHttpTargetHttpMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static AppEngineHttpTargetHttpMethod fromValue(String value) {

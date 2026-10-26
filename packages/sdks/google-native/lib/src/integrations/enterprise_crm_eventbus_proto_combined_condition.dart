@@ -6,7 +6,7 @@ import 'enterprise_crm_eventbus_proto_condition.dart';
 /// This message recursively combines constituent conditions using logical AND.
 class EnterpriseCrmEventbusProtoCombinedCondition {
   /// A set of individual constituent conditions.
-  final pulumi.Input<List<EnterpriseCrmEventbusProtoCondition>>? conditions;
+  final pulumi.Input<List<EnterpriseCrmEventbusProtoCondition>?>? conditions;
 
   /// Creates a new [EnterpriseCrmEventbusProtoCombinedCondition].
   /// [conditions] A set of individual constituent conditions.

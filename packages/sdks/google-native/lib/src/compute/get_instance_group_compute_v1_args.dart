@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_v1_get_instance_group_compute_v1_args_doc}
 class GetInstanceGroupComputeV1Args {
   final pulumi.Input<String> instanceGroup;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> zone;
 
   /// Creates a new [GetInstanceGroupComputeV1Args].

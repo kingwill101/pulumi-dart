@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for the AzureAD Auth flow.
 class IdentityServiceAzureADConfigGkehubV1alpha {
   /// ID for the registered client application that makes authentication requests to the Azure AD identity provider.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// The redirect URL that kubectl uses for authorization.
-  final pulumi.Input<String>? kubectlRedirectUri;
+  final pulumi.Input<String?>? kubectlRedirectUri;
   /// Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
-  final pulumi.Input<String>? tenant;
+  final pulumi.Input<String?>? tenant;
 
   /// Creates a new [IdentityServiceAzureADConfigGkehubV1alpha].
   /// [clientId] ID for the registered client application that makes authentication requests to the Azure AD identity provider.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Custom constraint that specifies a key and a list of allowed values for Istio attributes.
 class PermissionConstraint {
   /// Key of the constraint.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// A list of allowed values.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [PermissionConstraint].
   /// [key] Key of the constraint.

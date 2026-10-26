@@ -9,17 +9,17 @@ import 'google_rpc_status_dialogflow_v3beta1.dart';
 /// The output from the virtual agent.
 class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
   /// The Page on which the utterance was spoken. Only name and displayName will be set.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1Page>? currentPage;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1Page?>? currentPage;
   /// Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
   final pulumi.Input<Map<String, String>> diagnosticInfo;
   /// The session parameters available to the bot at this point.
-  final pulumi.Input<Map<String, String>>? sessionParameters;
+  final pulumi.Input<Map<String, String>?>? sessionParameters;
   /// Response error from the agent in the test result. If set, other output is empty.
-  final pulumi.Input<GoogleRpcStatusDialogflowV3beta1>? status;
+  final pulumi.Input<GoogleRpcStatusDialogflowV3beta1?>? status;
   /// The text responses from the agent for the turn.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1ResponseMessageText>>? textResponses;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1ResponseMessageText>?>? textResponses;
   /// The Intent that triggered the response. Only name and displayName will be set.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1Intent>? triggeredIntent;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1Intent?>? triggeredIntent;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput].
   /// [currentPage] The Page on which the utterance was spoken. Only name and displayName will be set.

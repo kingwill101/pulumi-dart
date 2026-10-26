@@ -27,7 +27,7 @@ class GooglePrivacyDlpV2LikelihoodAdjustmentResponse {
   factory GooglePrivacyDlpV2LikelihoodAdjustmentResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2LikelihoodAdjustmentResponse(
       fixedLikelihood: pulumi.Input.fromValue(map['fixedLikelihood'] as String),
-      relativeLikelihood: pulumi.Input.fromValue(map['relativeLikelihood'] as int),
+      relativeLikelihood: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['relativeLikelihood'])),
     );
   }
 }

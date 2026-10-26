@@ -29,60 +29,60 @@ import 'usage.dart';
 /// {@macro pulumi_servicemanagement_v1_config_args_doc}
 class ConfigArgs {
   /// A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api needs to be provided by the configuration author, as the remaining fields will be derived from the IDL during the normalization process. It is an error to specify an API interface here which cannot be resolved against the associated IDL files.
-  final pulumi.Input<List<Api>>? apis;
+  final pulumi.Input<List<Api>?>? apis;
   /// Auth configuration.
-  final pulumi.Input<Authentication>? authentication;
+  final pulumi.Input<Authentication?>? authentication;
   /// API backend configuration.
-  final pulumi.Input<Backend>? backend;
+  final pulumi.Input<Backend?>? backend;
   /// Billing configuration.
-  final pulumi.Input<Billing>? billing;
+  final pulumi.Input<Billing?>? billing;
   /// Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
-  final pulumi.Input<int>? configVersion;
+  final pulumi.Input<int?>? configVersion;
   /// Context configuration.
-  final pulumi.Input<Context>? context;
+  final pulumi.Input<Context?>? context;
   /// Configuration for the service control plane.
-  final pulumi.Input<Control>? control;
+  final pulumi.Input<Control?>? control;
   /// Custom error configuration.
-  final pulumi.Input<CustomError>? customError;
+  final pulumi.Input<CustomError?>? customError;
   /// Additional API documentation.
-  final pulumi.Input<Documentation>? documentation;
+  final pulumi.Input<Documentation?>? documentation;
   /// Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
-  final pulumi.Input<List<Endpoint>>? endpoints;
+  final pulumi.Input<List<Endpoint>?>? endpoints;
   /// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
-  final pulumi.Input<List<Enum>>? enums;
+  final pulumi.Input<List<Enum>?>? enums;
   /// HTTP configuration.
-  final pulumi.Input<Http>? http;
+  final pulumi.Input<Http?>? http;
   /// A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Logging configuration.
-  final pulumi.Input<Logging>? logging;
+  final pulumi.Input<Logging?>? logging;
   /// Defines the logs used by this service.
-  final pulumi.Input<List<LogDescriptor>>? logs;
+  final pulumi.Input<List<LogDescriptor>?>? logs;
   /// Defines the metrics used by this service.
-  final pulumi.Input<List<MetricDescriptor>>? metrics;
+  final pulumi.Input<List<MetricDescriptor>?>? metrics;
   /// Defines the monitored resources used by this service. This is required by the Service.monitoring and Service.logging configurations.
-  final pulumi.Input<List<MonitoredResourceDescriptor>>? monitoredResources;
+  final pulumi.Input<List<MonitoredResourceDescriptor>?>? monitoredResources;
   /// Monitoring configuration.
-  final pulumi.Input<Monitoring>? monitoring;
+  final pulumi.Input<Monitoring?>? monitoring;
   /// The service name, which is a DNS-like logical identifier for the service, such as `calendar.googleapis.com`. The service name typically goes through DNS verification to make sure the owner of the service also owns the DNS name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Google project that owns this service.
-  final pulumi.Input<String>? producerProjectId;
+  final pulumi.Input<String?>? producerProjectId;
   /// Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
-  final pulumi.Input<Publishing>? publishing;
+  final pulumi.Input<Publishing?>? publishing;
   /// Quota configuration.
-  final pulumi.Input<Quota>? quota;
+  final pulumi.Input<Quota?>? quota;
   final pulumi.Input<String> serviceName;
   /// System parameter configuration.
-  final pulumi.Input<SystemParameters>? systemParameters;
+  final pulumi.Input<SystemParameters?>? systemParameters;
   /// A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
-  final pulumi.Input<List<Type>>? systemTypes;
+  final pulumi.Input<List<Type>?>? systemTypes;
   /// The product title for this service, it is the name displayed in Google Cloud Console.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
   /// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
-  final pulumi.Input<List<Type>>? types;
+  final pulumi.Input<List<Type>?>? types;
   /// Configuration controlling usage of this service.
-  final pulumi.Input<Usage>? usage;
+  final pulumi.Input<Usage?>? usage;
 
   /// Creates a new [ConfigArgs].
   /// [apis] A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api needs to be provided by the configuration author, as the remaining fields will be derived from the IDL during the normalization process. It is an error to specify an API interface here which cannot be resolved against the associated IDL files.
@@ -183,7 +183,7 @@ class ConfigArgs {
       authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Authentication.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       backend: (() { final guardedValue = map['backend']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Backend.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       billing: (() { final guardedValue = map['billing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Billing.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      configVersion: (() { final guardedValue = map['configVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      configVersion: (() { final guardedValue = map['configVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       context: (() { final guardedValue = map['context']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Context.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       control: (() { final guardedValue = map['control']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Control.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       customError: (() { final guardedValue = map['customError']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomError.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

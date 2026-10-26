@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of authentication configured.
-enum AuthConfigAuthType {
+enum AuthConfigAuthType implements pulumi.PulumiEnum<String> {
   authTypeUnspecified("AUTH_TYPE_UNSPECIFIED"),
   userPassword("USER_PASSWORD"),
   oauth2JwtBearer("OAUTH2_JWT_BEARER"),
@@ -8,6 +10,7 @@ enum AuthConfigAuthType {
   oauth2AuthCodeFlow("OAUTH2_AUTH_CODE_FLOW");
 
   const AuthConfigAuthType(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthConfigAuthType fromValue(String value) {

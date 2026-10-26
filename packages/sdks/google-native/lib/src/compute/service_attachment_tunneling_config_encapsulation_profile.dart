@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specify the encapsulation protocol and what metadata to include in incoming encapsulated packet headers.
-enum ServiceAttachmentTunnelingConfigEncapsulationProfile {
+enum ServiceAttachmentTunnelingConfigEncapsulationProfile implements pulumi.PulumiEnum<String> {
   geneveSecurityV1("GENEVE_SECURITY_V1"),
   unspecifiedEncapsulationProfile("UNSPECIFIED_ENCAPSULATION_PROFILE");
 
   const ServiceAttachmentTunnelingConfigEncapsulationProfile(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceAttachmentTunnelingConfigEncapsulationProfile fromValue(String value) {

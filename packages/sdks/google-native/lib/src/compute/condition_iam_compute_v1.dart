@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// This is deprecated and has no effect. Do not use.
-enum ConditionIamComputeV1 {
+enum ConditionIamComputeV1 implements pulumi.PulumiEnum<String> {
   approver("APPROVER"),
   attribution("ATTRIBUTION"),
   authority("AUTHORITY"),
@@ -10,6 +12,7 @@ enum ConditionIamComputeV1 {
   securityRealm("SECURITY_REALM");
 
   const ConditionIamComputeV1(this.wireValue);
+  @override
   final String wireValue;
 
   static ConditionIamComputeV1 fromValue(String value) {

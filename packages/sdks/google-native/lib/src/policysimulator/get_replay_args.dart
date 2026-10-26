@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_policysimulator_v1_get_replay_args_doc}
 class GetReplayArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> replayId;
 
   /// Creates a new [GetReplayArgs].

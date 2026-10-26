@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A set of Compute Engine Shielded instance options.
 class GceShieldedInstanceConfigWorkstationsV1beta {
   /// Optional. Whether the instance has integrity monitoring enabled.
-  final pulumi.Input<bool>? enableIntegrityMonitoring;
+  final pulumi.Input<bool?>? enableIntegrityMonitoring;
   /// Optional. Whether the instance has Secure Boot enabled.
-  final pulumi.Input<bool>? enableSecureBoot;
+  final pulumi.Input<bool?>? enableSecureBoot;
   /// Optional. Whether the instance has the vTPM enabled.
-  final pulumi.Input<bool>? enableVtpm;
+  final pulumi.Input<bool?>? enableVtpm;
 
   /// Creates a new [GceShieldedInstanceConfigWorkstationsV1beta].
   /// [enableIntegrityMonitoring] Optional. Whether the instance has integrity monitoring enabled.

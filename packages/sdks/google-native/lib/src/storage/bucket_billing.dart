@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The bucket's billing configuration.
 class BucketBilling {
   /// When set to true, Requester Pays is enabled for this bucket.
-  final pulumi.Input<bool>? requesterPays;
+  final pulumi.Input<bool?>? requesterPays;
 
   /// Creates a new [BucketBilling].
   /// [requesterPays] When set to true, Requester Pays is enabled for this bucket.

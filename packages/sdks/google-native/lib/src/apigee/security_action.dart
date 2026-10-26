@@ -47,8 +47,33 @@ class SecurityAction extends pulumi.CustomResource {
           'google-native:apigee/v1:SecurityAction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['environmentId', 'organizationId', 'securityActionId']).merge(options),
         ) {
+    allow = registerOutput<Map<String, dynamic>>('allow');
+    conditionConfig = registerOutput<GoogleCloudApigeeV1SecurityActionConditionConfigResponse>('conditionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1SecurityActionConditionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deny = registerOutput<GoogleCloudApigeeV1SecurityActionDenyResponse>('deny', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1SecurityActionDenyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    environmentId = registerOutput<String>('environmentId');
+    expireTime = registerOutput<String>('expireTime');
+    flag = registerOutput<GoogleCloudApigeeV1SecurityActionFlagResponse>('flag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1SecurityActionFlagResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    securityActionId = registerOutput<String>('securityActionId');
+    state = registerOutput<String>('state');
+    ttl = registerOutput<String>('ttl');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [SecurityAction] resource.
+  SecurityAction.reference(String urn)
+    : super(
+        'google-native:apigee/v1:SecurityAction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     allow = registerOutput<Map<String, dynamic>>('allow');
     conditionConfig = registerOutput<GoogleCloudApigeeV1SecurityActionConditionConfigResponse>('conditionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1SecurityActionConditionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

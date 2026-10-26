@@ -36,7 +36,7 @@ class GoogleCloudAiplatformV1MachineSpecResponse {
 
   factory GoogleCloudAiplatformV1MachineSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1MachineSpecResponse(
-      acceleratorCount: pulumi.Input.fromValue(map['acceleratorCount'] as int),
+      acceleratorCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['acceleratorCount'])),
       acceleratorType: pulumi.Input.fromValue(map['acceleratorType'] as String),
       machineType: pulumi.Input.fromValue(map['machineType'] as String),
       tpuTopology: pulumi.Input.fromValue(map['tpuTopology'] as String),

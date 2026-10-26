@@ -5,11 +5,11 @@ import 'slsa_provenance_v1.dart';
 import 'subject.dart';
 
 class InTotoSlsaProvenanceV1 {
-  final pulumi.Input<SlsaProvenanceV1>? predicate;
-  final pulumi.Input<String>? predicateType;
-  final pulumi.Input<List<Subject>>? subject;
+  final pulumi.Input<SlsaProvenanceV1?>? predicate;
+  final pulumi.Input<String?>? predicateType;
+  final pulumi.Input<List<Subject>?>? subject;
   /// InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [InTotoSlsaProvenanceV1].
   /// [predicate] Optional.

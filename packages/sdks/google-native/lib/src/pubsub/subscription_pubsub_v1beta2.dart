@@ -27,8 +27,25 @@ class SubscriptionPubsubV1beta2 extends pulumi.CustomResource {
           'google-native:pubsub/v1beta2:Subscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'subscriptionId']).merge(options),
         ) {
+    ackDeadlineSeconds = registerOutput<int>('ackDeadlineSeconds');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pushConfig = registerOutput<PushConfigResponsePubsubV1beta2>('pushConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PushConfigResponsePubsubV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subscriptionId = registerOutput<String>('subscriptionId');
+    topic = registerOutput<String>('topic');
+  }
+
+  /// Creates a typed reference to an existing [SubscriptionPubsubV1beta2] resource.
+  SubscriptionPubsubV1beta2.reference(String urn)
+    : super(
+        'google-native:pubsub/v1beta2:Subscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     ackDeadlineSeconds = registerOutput<int>('ackDeadlineSeconds');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

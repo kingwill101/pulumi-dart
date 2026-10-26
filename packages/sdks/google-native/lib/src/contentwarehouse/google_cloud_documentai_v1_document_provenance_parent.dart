@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The parent element the current element is based on. Used for referencing/aligning, removal and replacement operations.
 class GoogleCloudDocumentaiV1DocumentProvenanceParent {
   /// The id of the parent provenance.
-  final pulumi.Input<int>? id;
+  final pulumi.Input<int?>? id;
   /// The index of the parent item in the corresponding item list (eg. list of entities, properties within entities, etc.) in the parent revision.
-  final pulumi.Input<int>? index;
+  final pulumi.Input<int?>? index;
   /// The index of the index into current revision's parent_ids list.
-  final pulumi.Input<int>? revision;
+  final pulumi.Input<int?>? revision;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentProvenanceParent].
   /// [id] The id of the parent provenance.
@@ -31,9 +31,9 @@ class GoogleCloudDocumentaiV1DocumentProvenanceParent {
 
   factory GoogleCloudDocumentaiV1DocumentProvenanceParent.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentProvenanceParent(
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      index: (() { final guardedValue = map['index']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      index: (() { final guardedValue = map['index']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

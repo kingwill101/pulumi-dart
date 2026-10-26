@@ -20,6 +20,17 @@ Future<GetWorkloadResult> getWorkload(
   return GetWorkloadResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkloadResult> getWorkloadOutput(
+  GetWorkloadArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:assuredworkloads/v1:getWorkload',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadResult.fromMap);
+}
+
 /// Gets Assured Workload associated with a CRM Node
 /// [args] Arguments passed to this invoke. {@macro pulumi_assuredworkloads_v1beta1_get_workload_assuredworkloads_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetWorkloadAssuredworkloadsV1beta1Result> getWorkloadAssuredworkloadsV1be
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkloadAssuredworkloadsV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetWorkloadAssuredworkloadsV1beta1Result> getWorkloadAssuredworkloadsV1beta1Output(
+  GetWorkloadAssuredworkloadsV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:assuredworkloads/v1beta1:getWorkload',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadAssuredworkloadsV1beta1Result.fromMap);
 }

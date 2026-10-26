@@ -6,11 +6,11 @@ import 'google_cloud_datalabeling_v1beta1_sentiment_config.dart';
 /// Config for text classification human labeling task.
 class GoogleCloudDatalabelingV1beta1TextClassificationConfig {
   /// Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one text segment.
-  final pulumi.Input<bool>? allowMultiLabel;
+  final pulumi.Input<bool?>? allowMultiLabel;
   /// Annotation spec set resource name.
   final pulumi.Input<String> annotationSpecSet;
   /// Optional. Configs for sentiment selection. We deprecate sentiment analysis in data labeling side as it is incompatible with uCAIP.
-  final pulumi.Input<GoogleCloudDatalabelingV1beta1SentimentConfig>? sentimentConfig;
+  final pulumi.Input<GoogleCloudDatalabelingV1beta1SentimentConfig?>? sentimentConfig;
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1TextClassificationConfig].
   /// [allowMultiLabel] Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one text segment.

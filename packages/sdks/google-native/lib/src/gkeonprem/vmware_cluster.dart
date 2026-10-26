@@ -95,11 +95,56 @@ class VmwareCluster extends pulumi.CustomResource {
           'google-native:gkeonprem/v1:VmwareCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     adminClusterMembership = registerOutput<String>('adminClusterMembership');
     adminClusterName = registerOutput<String>('adminClusterName');
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    antiAffinityGroups = registerOutput<VmwareAAGConfigResponse>('antiAffinityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAAGConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authorization = registerOutput<AuthorizationResponse>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorizationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoRepairConfig = registerOutput<VmwareAutoRepairConfigResponse>('autoRepairConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAutoRepairConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    controlPlaneNode = registerOutput<VmwareControlPlaneNodeConfigResponse>('controlPlaneNode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareControlPlaneNodeConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    dataplaneV2 = registerOutput<VmwareDataplaneV2ConfigResponse>('dataplaneV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareDataplaneV2ConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deleteTime = registerOutput<String>('deleteTime');
+    description = registerOutput<String>('description');
+    disableBundledIngress = registerOutput<bool>('disableBundledIngress');
+    enableControlPlaneV2 = registerOutput<bool>('enableControlPlaneV2');
+    endpoint = registerOutput<String>('endpoint');
+    etag = registerOutput<String>('etag');
+    fleet = registerOutput<FleetResponse>('fleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loadBalancer = registerOutput<VmwareLoadBalancerConfigResponse>('loadBalancer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareLoadBalancerConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localName = registerOutput<String>('localName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkConfig = registerOutput<VmwareNetworkConfigResponse>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareNetworkConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    onPremVersion = registerOutput<String>('onPremVersion');
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    state = registerOutput<String>('state');
+    status = registerOutput<ResourceStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storage = registerOutput<VmwareStorageConfigResponse>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareStorageConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    upgradePolicy = registerOutput<VmwareClusterUpgradePolicyResponse>('upgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareClusterUpgradePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    validationCheck = registerOutput<ValidationCheckResponse>('validationCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidationCheckResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vcenter = registerOutput<VmwareVCenterConfigResponse>('vcenter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareVCenterConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vmTrackingEnabled = registerOutput<bool>('vmTrackingEnabled');
+    vmwareClusterId = registerOutput<String?>('vmwareClusterId');
+  }
+
+  /// Creates a typed reference to an existing [VmwareCluster] resource.
+  VmwareCluster.reference(String urn)
+    : super(
+        'google-native:gkeonprem/v1:VmwareCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    adminClusterMembership = registerOutput<String>('adminClusterMembership');
+    adminClusterName = registerOutput<String>('adminClusterName');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     antiAffinityGroups = registerOutput<VmwareAAGConfigResponse>('antiAffinityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAAGConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authorization = registerOutput<AuthorizationResponse>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorizationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoRepairConfig = registerOutput<VmwareAutoRepairConfigResponse>('autoRepairConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAutoRepairConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

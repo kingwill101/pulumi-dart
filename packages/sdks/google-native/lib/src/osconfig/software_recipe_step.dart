@@ -12,19 +12,19 @@ import 'software_recipe_step_run_script.dart';
 /// An action that can be taken as part of installing or updating a recipe.
 class SoftwareRecipeStep {
   /// Extracts an archive into the specified directory.
-  final pulumi.Input<SoftwareRecipeStepExtractArchive>? archiveExtraction;
+  final pulumi.Input<SoftwareRecipeStepExtractArchive?>? archiveExtraction;
   /// Installs a deb file via dpkg.
-  final pulumi.Input<SoftwareRecipeStepInstallDpkg>? dpkgInstallation;
+  final pulumi.Input<SoftwareRecipeStepInstallDpkg?>? dpkgInstallation;
   /// Copies a file onto the instance.
-  final pulumi.Input<SoftwareRecipeStepCopyFile>? fileCopy;
+  final pulumi.Input<SoftwareRecipeStepCopyFile?>? fileCopy;
   /// Executes an artifact or local file.
-  final pulumi.Input<SoftwareRecipeStepExecFile>? fileExec;
+  final pulumi.Input<SoftwareRecipeStepExecFile?>? fileExec;
   /// Installs an MSI file.
-  final pulumi.Input<SoftwareRecipeStepInstallMsi>? msiInstallation;
+  final pulumi.Input<SoftwareRecipeStepInstallMsi?>? msiInstallation;
   /// Installs an rpm file via the rpm utility.
-  final pulumi.Input<SoftwareRecipeStepInstallRpm>? rpmInstallation;
+  final pulumi.Input<SoftwareRecipeStepInstallRpm?>? rpmInstallation;
   /// Runs commands in a shell.
-  final pulumi.Input<SoftwareRecipeStepRunScript>? scriptRun;
+  final pulumi.Input<SoftwareRecipeStepRunScript?>? scriptRun;
 
   /// Creates a new [SoftwareRecipeStep].
   /// [archiveExtraction] Extracts an archive into the specified directory.

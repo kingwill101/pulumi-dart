@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PacketMirroringNetworkInfoComputeV1 {
   /// URL of the network resource.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [PacketMirroringNetworkInfoComputeV1].
   /// [url] URL of the network resource.

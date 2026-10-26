@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The on prem cluster's type.
-enum OnPremClusterClusterTypeGkehubV1beta1 {
+enum OnPremClusterClusterTypeGkehubV1beta1 implements pulumi.PulumiEnum<String> {
   clustertypeUnspecified("CLUSTERTYPE_UNSPECIFIED"),
   bootstrap("BOOTSTRAP"),
   hybrid("HYBRID"),
@@ -7,6 +9,7 @@ enum OnPremClusterClusterTypeGkehubV1beta1 {
   user("USER");
 
   const OnPremClusterClusterTypeGkehubV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static OnPremClusterClusterTypeGkehubV1beta1 fromValue(String value) {

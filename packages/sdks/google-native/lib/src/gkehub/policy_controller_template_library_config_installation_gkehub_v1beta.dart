@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Configures the manner in which the template library is installed on the cluster.
-enum PolicyControllerTemplateLibraryConfigInstallationGkehubV1beta {
+enum PolicyControllerTemplateLibraryConfigInstallationGkehubV1beta implements pulumi.PulumiEnum<String> {
   installationUnspecified("INSTALLATION_UNSPECIFIED"),
   notInstalled("NOT_INSTALLED"),
   all("ALL");
 
   const PolicyControllerTemplateLibraryConfigInstallationGkehubV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static PolicyControllerTemplateLibraryConfigInstallationGkehubV1beta fromValue(String value) {

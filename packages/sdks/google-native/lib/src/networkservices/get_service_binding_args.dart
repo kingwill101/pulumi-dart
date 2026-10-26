@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkservices_v1_get_service_binding_args_doc}
 class GetServiceBindingArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> serviceBindingId;
 
   /// Creates a new [GetServiceBindingArgs].

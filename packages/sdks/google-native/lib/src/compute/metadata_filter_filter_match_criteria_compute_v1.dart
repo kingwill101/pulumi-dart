@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata.
-enum MetadataFilterFilterMatchCriteriaComputeV1 {
+enum MetadataFilterFilterMatchCriteriaComputeV1 implements pulumi.PulumiEnum<String> {
   matchAll("MATCH_ALL"),
   matchAny("MATCH_ANY"),
   notSet("NOT_SET");
 
   const MetadataFilterFilterMatchCriteriaComputeV1(this.wireValue);
+  @override
   final String wireValue;
 
   static MetadataFilterFilterMatchCriteriaComputeV1 fromValue(String value) {

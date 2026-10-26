@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Evaluates whether each column value matches a specified regex.
 class GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
   /// Optional. A regular expression the column value is expected to match.
-  final pulumi.Input<String>? regex;
+  final pulumi.Input<String?>? regex;
 
   /// Creates a new [GoogleCloudDataplexV1DataQualityRuleRegexExpectation].
   /// [regex] Optional. A regular expression the column value is expected to match.

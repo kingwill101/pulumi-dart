@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
-enum GoogleFirestoreAdminV1beta2IndexFieldOrder {
+enum GoogleFirestoreAdminV1beta2IndexFieldOrder implements pulumi.PulumiEnum<String> {
   orderUnspecified("ORDER_UNSPECIFIED"),
   ascending("ASCENDING"),
   descending("DESCENDING");
 
   const GoogleFirestoreAdminV1beta2IndexFieldOrder(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleFirestoreAdminV1beta2IndexFieldOrder fromValue(String value) {

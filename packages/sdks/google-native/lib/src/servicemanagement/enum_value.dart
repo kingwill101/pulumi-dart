@@ -6,11 +6,11 @@ import 'option.dart';
 /// Enum value definition.
 class EnumValue {
   /// Enum value name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Enum value number.
-  final pulumi.Input<int>? number;
+  final pulumi.Input<int?>? number;
   /// Protocol buffer options.
-  final pulumi.Input<List<Option>>? options;
+  final pulumi.Input<List<Option>?>? options;
 
   /// Creates a new [EnumValue].
   /// [name] Enum value name.
@@ -33,7 +33,7 @@ class EnumValue {
   factory EnumValue.fromMap(Map<String, dynamic> map) {
     return EnumValue(
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      number: (() { final guardedValue = map['number']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      number: (() { final guardedValue = map['number']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       options: (() { final guardedValue = map['options']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Option>(guardedValue, (value) => Option.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

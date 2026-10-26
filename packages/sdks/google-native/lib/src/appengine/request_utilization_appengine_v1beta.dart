@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Target scaling by request utilization. Only applicable in the App Engine flexible environment.
 class RequestUtilizationAppengineV1beta {
   /// Target number of concurrent requests.
-  final pulumi.Input<int>? targetConcurrentRequests;
+  final pulumi.Input<int?>? targetConcurrentRequests;
   /// Target requests per second.
-  final pulumi.Input<int>? targetRequestCountPerSecond;
+  final pulumi.Input<int?>? targetRequestCountPerSecond;
 
   /// Creates a new [RequestUtilizationAppengineV1beta].
   /// [targetConcurrentRequests] Target number of concurrent requests.
@@ -26,8 +26,8 @@ class RequestUtilizationAppengineV1beta {
 
   factory RequestUtilizationAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return RequestUtilizationAppengineV1beta(
-      targetConcurrentRequests: (() { final guardedValue = map['targetConcurrentRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      targetRequestCountPerSecond: (() { final guardedValue = map['targetRequestCountPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetConcurrentRequests: (() { final guardedValue = map['targetConcurrentRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      targetRequestCountPerSecond: (() { final guardedValue = map['targetRequestCountPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

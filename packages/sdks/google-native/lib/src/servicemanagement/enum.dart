@@ -9,17 +9,17 @@ import 'source_context.dart';
 /// Enum type definition.
 class Enum {
   /// The source edition string, only valid when syntax is SYNTAX_EDITIONS.
-  final pulumi.Input<String>? edition;
+  final pulumi.Input<String?>? edition;
   /// Enum value definitions.
-  final pulumi.Input<List<EnumValue>>? enumvalue;
+  final pulumi.Input<List<EnumValue>?>? enumvalue;
   /// Enum type name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Protocol buffer options.
-  final pulumi.Input<List<Option>>? options;
+  final pulumi.Input<List<Option>?>? options;
   /// The source context.
-  final pulumi.Input<SourceContext>? sourceContext;
+  final pulumi.Input<SourceContext?>? sourceContext;
   /// The source syntax.
-  final pulumi.Input<EnumSyntax>? syntax;
+  final pulumi.Input<EnumSyntax?>? syntax;
 
   /// Creates a new [Enum].
   /// [edition] The source edition string, only valid when syntax is SYNTAX_EDITIONS.

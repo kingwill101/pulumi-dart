@@ -66,6 +66,17 @@ Future<GetBackupResult> getBackup(
   return GetBackupResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupResult> getBackupOutput(
+  GetBackupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1:getBackup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupResult.fromMap);
+}
+
 /// Gets the details of a single federation.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1_get_federation_args_doc}
 /// [options] Invoke options controlling this call.
@@ -80,6 +91,17 @@ Future<GetFederationResult> getFederation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFederationResult.fromMap(result);
+}
+
+pulumi.Output<GetFederationResult> getFederationOutput(
+  GetFederationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1:getFederation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFederationResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -98,6 +120,17 @@ Future<GetFederationIamPolicyResult> getFederationIamPolicy(
   return GetFederationIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetFederationIamPolicyResult> getFederationIamPolicyOutput(
+  GetFederationIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1:getFederationIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFederationIamPolicyResult.fromMap);
+}
+
 /// Gets details of a single import.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1_get_metadata_import_args_doc}
 /// [options] Invoke options controlling this call.
@@ -112,6 +145,17 @@ Future<GetMetadataImportResult> getMetadataImport(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMetadataImportResult.fromMap(result);
+}
+
+pulumi.Output<GetMetadataImportResult> getMetadataImportOutput(
+  GetMetadataImportArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1:getMetadataImport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMetadataImportResult.fromMap);
 }
 
 /// Gets the details of a single service.
@@ -130,6 +174,17 @@ Future<GetServiceResult> getService(
   return GetServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1_get_service_backup_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -144,6 +199,17 @@ Future<GetServiceBackupIamPolicyResult> getServiceBackupIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceBackupIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceBackupIamPolicyResult> getServiceBackupIamPolicyOutput(
+  GetServiceBackupIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1:getServiceBackupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceBackupIamPolicyResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -162,6 +228,17 @@ Future<GetServiceIamPolicyResult> getServiceIamPolicy(
   return GetServiceIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceIamPolicyResult> getServiceIamPolicyOutput(
+  GetServiceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1:getServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceIamPolicyResult.fromMap);
+}
+
 /// Gets details of a single backup.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1alpha_get_backup_metastore_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
@@ -176,6 +253,17 @@ Future<GetBackupMetastoreV1alphaResult> getBackupMetastoreV1alpha(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackupMetastoreV1alphaResult.fromMap(result);
+}
+
+pulumi.Output<GetBackupMetastoreV1alphaResult> getBackupMetastoreV1alphaOutput(
+  GetBackupMetastoreV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1alpha:getBackup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupMetastoreV1alphaResult.fromMap);
 }
 
 /// Gets the details of a single federation.
@@ -194,6 +282,17 @@ Future<GetFederationMetastoreV1alphaResult> getFederationMetastoreV1alpha(
   return GetFederationMetastoreV1alphaResult.fromMap(result);
 }
 
+pulumi.Output<GetFederationMetastoreV1alphaResult> getFederationMetastoreV1alphaOutput(
+  GetFederationMetastoreV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1alpha:getFederation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFederationMetastoreV1alphaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1alpha_get_federation_iam_policy_metastore_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
@@ -208,6 +307,17 @@ Future<GetFederationIamPolicyMetastoreV1alphaResult> getFederationIamPolicyMetas
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFederationIamPolicyMetastoreV1alphaResult.fromMap(result);
+}
+
+pulumi.Output<GetFederationIamPolicyMetastoreV1alphaResult> getFederationIamPolicyMetastoreV1alphaOutput(
+  GetFederationIamPolicyMetastoreV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1alpha:getFederationIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFederationIamPolicyMetastoreV1alphaResult.fromMap);
 }
 
 /// Gets details of a single import.
@@ -226,6 +336,17 @@ Future<GetMetadataImportMetastoreV1alphaResult> getMetadataImportMetastoreV1alph
   return GetMetadataImportMetastoreV1alphaResult.fromMap(result);
 }
 
+pulumi.Output<GetMetadataImportMetastoreV1alphaResult> getMetadataImportMetastoreV1alphaOutput(
+  GetMetadataImportMetastoreV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1alpha:getMetadataImport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMetadataImportMetastoreV1alphaResult.fromMap);
+}
+
 /// Gets the details of a single service.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1alpha_get_service_metastore_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
@@ -240,6 +361,17 @@ Future<GetServiceMetastoreV1alphaResult> getServiceMetastoreV1alpha(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceMetastoreV1alphaResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceMetastoreV1alphaResult> getServiceMetastoreV1alphaOutput(
+  GetServiceMetastoreV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1alpha:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceMetastoreV1alphaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -258,6 +390,17 @@ Future<GetServiceBackupIamPolicyMetastoreV1alphaResult> getServiceBackupIamPolic
   return GetServiceBackupIamPolicyMetastoreV1alphaResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceBackupIamPolicyMetastoreV1alphaResult> getServiceBackupIamPolicyMetastoreV1alphaOutput(
+  GetServiceBackupIamPolicyMetastoreV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1alpha:getServiceBackupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceBackupIamPolicyMetastoreV1alphaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1alpha_get_service_database_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -272,6 +415,17 @@ Future<GetServiceDatabaseIamPolicyResult> getServiceDatabaseIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceDatabaseIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceDatabaseIamPolicyResult> getServiceDatabaseIamPolicyOutput(
+  GetServiceDatabaseIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1alpha:getServiceDatabaseIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceDatabaseIamPolicyResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -290,6 +444,17 @@ Future<GetServiceDatabaseTableIamPolicyResult> getServiceDatabaseTableIamPolicy(
   return GetServiceDatabaseTableIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceDatabaseTableIamPolicyResult> getServiceDatabaseTableIamPolicyOutput(
+  GetServiceDatabaseTableIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1alpha:getServiceDatabaseTableIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceDatabaseTableIamPolicyResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1alpha_get_service_iam_policy_metastore_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
@@ -304,6 +469,17 @@ Future<GetServiceIamPolicyMetastoreV1alphaResult> getServiceIamPolicyMetastoreV1
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceIamPolicyMetastoreV1alphaResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceIamPolicyMetastoreV1alphaResult> getServiceIamPolicyMetastoreV1alphaOutput(
+  GetServiceIamPolicyMetastoreV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1alpha:getServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceIamPolicyMetastoreV1alphaResult.fromMap);
 }
 
 /// Gets details of a single backup.
@@ -322,6 +498,17 @@ Future<GetBackupMetastoreV1betaResult> getBackupMetastoreV1beta(
   return GetBackupMetastoreV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupMetastoreV1betaResult> getBackupMetastoreV1betaOutput(
+  GetBackupMetastoreV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1beta:getBackup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupMetastoreV1betaResult.fromMap);
+}
+
 /// Gets the details of a single federation.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1beta_get_federation_metastore_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -336,6 +523,17 @@ Future<GetFederationMetastoreV1betaResult> getFederationMetastoreV1beta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFederationMetastoreV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetFederationMetastoreV1betaResult> getFederationMetastoreV1betaOutput(
+  GetFederationMetastoreV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1beta:getFederation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFederationMetastoreV1betaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -354,6 +552,17 @@ Future<GetFederationIamPolicyMetastoreV1betaResult> getFederationIamPolicyMetast
   return GetFederationIamPolicyMetastoreV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetFederationIamPolicyMetastoreV1betaResult> getFederationIamPolicyMetastoreV1betaOutput(
+  GetFederationIamPolicyMetastoreV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1beta:getFederationIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFederationIamPolicyMetastoreV1betaResult.fromMap);
+}
+
 /// Gets details of a single import.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1beta_get_metadata_import_metastore_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -368,6 +577,17 @@ Future<GetMetadataImportMetastoreV1betaResult> getMetadataImportMetastoreV1beta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMetadataImportMetastoreV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetMetadataImportMetastoreV1betaResult> getMetadataImportMetastoreV1betaOutput(
+  GetMetadataImportMetastoreV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1beta:getMetadataImport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMetadataImportMetastoreV1betaResult.fromMap);
 }
 
 /// Gets the details of a single service.
@@ -386,6 +606,17 @@ Future<GetServiceMetastoreV1betaResult> getServiceMetastoreV1beta(
   return GetServiceMetastoreV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceMetastoreV1betaResult> getServiceMetastoreV1betaOutput(
+  GetServiceMetastoreV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1beta:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceMetastoreV1betaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1beta_get_service_backup_iam_policy_metastore_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -400,6 +631,17 @@ Future<GetServiceBackupIamPolicyMetastoreV1betaResult> getServiceBackupIamPolicy
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceBackupIamPolicyMetastoreV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceBackupIamPolicyMetastoreV1betaResult> getServiceBackupIamPolicyMetastoreV1betaOutput(
+  GetServiceBackupIamPolicyMetastoreV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1beta:getServiceBackupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceBackupIamPolicyMetastoreV1betaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -418,6 +660,17 @@ Future<GetServiceDatabaseIamPolicyMetastoreV1betaResult> getServiceDatabaseIamPo
   return GetServiceDatabaseIamPolicyMetastoreV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceDatabaseIamPolicyMetastoreV1betaResult> getServiceDatabaseIamPolicyMetastoreV1betaOutput(
+  GetServiceDatabaseIamPolicyMetastoreV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1beta:getServiceDatabaseIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceDatabaseIamPolicyMetastoreV1betaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1beta_get_service_database_table_iam_policy_metastore_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -434,6 +687,17 @@ Future<GetServiceDatabaseTableIamPolicyMetastoreV1betaResult> getServiceDatabase
   return GetServiceDatabaseTableIamPolicyMetastoreV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceDatabaseTableIamPolicyMetastoreV1betaResult> getServiceDatabaseTableIamPolicyMetastoreV1betaOutput(
+  GetServiceDatabaseTableIamPolicyMetastoreV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1beta:getServiceDatabaseTableIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceDatabaseTableIamPolicyMetastoreV1betaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_metastore_v1beta_get_service_iam_policy_metastore_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -448,4 +712,15 @@ Future<GetServiceIamPolicyMetastoreV1betaResult> getServiceIamPolicyMetastoreV1b
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceIamPolicyMetastoreV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceIamPolicyMetastoreV1betaResult> getServiceIamPolicyMetastoreV1betaOutput(
+  GetServiceIamPolicyMetastoreV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:metastore/v1beta:getServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceIamPolicyMetastoreV1betaResult.fromMap);
 }

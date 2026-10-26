@@ -13,27 +13,27 @@ import 'router_nat.dart';
 /// {@macro pulumi_compute_alpha_router_args_doc}
 class RouterArgs {
   /// BGP information specific to this router.
-  final pulumi.Input<RouterBgp>? bgp;
+  final pulumi.Input<RouterBgp?>? bgp;
   /// BGP information that must be configured into the routing stack to establish BGP peering. This information must specify the peer ASN and either the interface name, IP address, or peer IP address. Please refer to RFC4273.
-  final pulumi.Input<List<RouterBgpPeer>>? bgpPeers;
+  final pulumi.Input<List<RouterBgpPeer>?>? bgpPeers;
   /// An optional description of this resource. Provide this property when you create the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
-  final pulumi.Input<bool>? encryptedInterconnectRouter;
+  final pulumi.Input<bool?>? encryptedInterconnectRouter;
   /// Router interfaces. To create a BGP peer that uses a router interface, the interface must have one of the following fields specified: - linkedVpnTunnel - linkedInterconnectAttachment - subnetwork You can create a router interface without any of these fields specified. However, you cannot create a BGP peer that uses that interface.
-  final pulumi.Input<List<RouterInterface>>? interfaces;
+  final pulumi.Input<List<RouterInterface>?>? interfaces;
   /// Keys used for MD5 authentication.
-  final pulumi.Input<List<RouterMd5AuthenticationKey>>? md5AuthenticationKeys;
+  final pulumi.Input<List<RouterMd5AuthenticationKey>?>? md5AuthenticationKeys;
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of NAT services created in this router.
-  final pulumi.Input<List<RouterNat>>? nats;
+  final pulumi.Input<List<RouterNat>?>? nats;
   /// URI of the network to which this router belongs.
-  final pulumi.Input<String>? network;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? network;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
 
   /// Creates a new [RouterArgs].
   /// [bgp] BGP information specific to this router.

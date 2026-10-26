@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-enum HTTP2HealthCheckProxyHeaderComputeBeta {
+enum HTTP2HealthCheckProxyHeaderComputeBeta implements pulumi.PulumiEnum<String> {
   none("NONE"),
   proxyV1("PROXY_V1");
 
   const HTTP2HealthCheckProxyHeaderComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static HTTP2HealthCheckProxyHeaderComputeBeta fromValue(String value) {

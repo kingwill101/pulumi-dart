@@ -6,13 +6,13 @@ import 'google_cloud_identitytoolkit_admin_v2_idp_certificate.dart';
 /// The SAML IdP (Identity Provider) configuration when the project acts as the relying party.
 class GoogleCloudIdentitytoolkitAdminV2IdpConfig {
   /// IDP's public keys for verifying signature in the assertions.
-  final pulumi.Input<List<GoogleCloudIdentitytoolkitAdminV2IdpCertificate>>? idpCertificates;
+  final pulumi.Input<List<GoogleCloudIdentitytoolkitAdminV2IdpCertificate>?>? idpCertificates;
   /// Unique identifier for all SAML entities.
-  final pulumi.Input<String>? idpEntityId;
+  final pulumi.Input<String?>? idpEntityId;
   /// Indicates if outbounding SAMLRequest should be signed.
-  final pulumi.Input<bool>? signRequest;
+  final pulumi.Input<bool?>? signRequest;
   /// URL to send Authentication request to.
-  final pulumi.Input<String>? ssoUrl;
+  final pulumi.Input<String?>? ssoUrl;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2IdpConfig].
   /// [idpCertificates] IDP's public keys for verifying signature in the assertions.

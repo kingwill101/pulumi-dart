@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dataproc_v1_get_workflow_template_args_doc}
 class GetWorkflowTemplateArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<int>? version;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<int?>? version;
   final pulumi.Input<String> workflowTemplateId;
 
   /// Creates a new [GetWorkflowTemplateArgs].
@@ -37,7 +37,7 @@ class GetWorkflowTemplateArgs {
     return GetWorkflowTemplateArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       workflowTemplateId: pulumi.Input.fromValue(map['workflowTemplateId'] as String),
     );
   }

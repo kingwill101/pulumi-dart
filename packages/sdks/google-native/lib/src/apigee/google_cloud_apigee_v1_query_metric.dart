@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// More info about Metric: https://docs.apigee.com/api-platform/analytics/analytics-reference#metrics
 class GoogleCloudApigeeV1QueryMetric {
   /// Alias for the metric. Alias will be used to replace metric name in query results.
-  final pulumi.Input<String>? alias;
+  final pulumi.Input<String?>? alias;
   /// Aggregation function: avg, min, max, or sum.
-  final pulumi.Input<String>? function;
+  final pulumi.Input<String?>? function;
   /// Metric name.
   final pulumi.Input<String> name;
   /// One of `+`, `-`, `/`, `%`, `*`.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
   /// Operand value should be provided when operator is set.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [GoogleCloudApigeeV1QueryMetric].
   /// [alias] Alias for the metric. Alias will be used to replace metric name in query results.

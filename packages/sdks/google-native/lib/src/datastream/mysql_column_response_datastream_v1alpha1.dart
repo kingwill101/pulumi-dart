@@ -54,9 +54,9 @@ class MysqlColumnResponseDatastreamV1alpha1 {
       collation: pulumi.Input.fromValue(map['collation'] as String),
       columnName: pulumi.Input.fromValue(map['columnName'] as String),
       dataType: pulumi.Input.fromValue(map['dataType'] as String),
-      length: pulumi.Input.fromValue(map['length'] as int),
+      length: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['length'])),
       nullable: pulumi.Input.fromValue(map['nullable'] as bool),
-      ordinalPosition: pulumi.Input.fromValue(map['ordinalPosition'] as int),
+      ordinalPosition: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ordinalPosition'])),
       primaryKey: pulumi.Input.fromValue(map['primaryKey'] as bool),
     );
   }

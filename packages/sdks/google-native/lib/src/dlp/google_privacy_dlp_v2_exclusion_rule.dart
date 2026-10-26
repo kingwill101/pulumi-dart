@@ -10,15 +10,15 @@ import 'google_privacy_dlp_v2_regex.dart';
 /// The rule that specifies conditions when findings of infoTypes specified in `InspectionRuleSet` are removed from results.
 class GooglePrivacyDlpV2ExclusionRule {
   /// Dictionary which defines the rule.
-  final pulumi.Input<GooglePrivacyDlpV2Dictionary>? dictionary;
+  final pulumi.Input<GooglePrivacyDlpV2Dictionary?>? dictionary;
   /// Drop if the hotword rule is contained in the proximate context. For tabular data, the context includes the column name.
-  final pulumi.Input<GooglePrivacyDlpV2ExcludeByHotword>? excludeByHotword;
+  final pulumi.Input<GooglePrivacyDlpV2ExcludeByHotword?>? excludeByHotword;
   /// Set of infoTypes for which findings would affect this rule.
-  final pulumi.Input<GooglePrivacyDlpV2ExcludeInfoTypes>? excludeInfoTypes;
+  final pulumi.Input<GooglePrivacyDlpV2ExcludeInfoTypes?>? excludeInfoTypes;
   /// How the rule is applied, see MatchingType documentation for details.
-  final pulumi.Input<GooglePrivacyDlpV2ExclusionRuleMatchingType>? matchingType;
+  final pulumi.Input<GooglePrivacyDlpV2ExclusionRuleMatchingType?>? matchingType;
   /// Regular expression which defines the rule.
-  final pulumi.Input<GooglePrivacyDlpV2Regex>? regex;
+  final pulumi.Input<GooglePrivacyDlpV2Regex?>? regex;
 
   /// Creates a new [GooglePrivacyDlpV2ExclusionRule].
   /// [dictionary] Dictionary which defines the rule.

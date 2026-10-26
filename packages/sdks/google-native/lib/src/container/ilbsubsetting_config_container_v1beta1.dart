@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ILBSubsettingConfig contains the desired config of L4 Internal LoadBalancer subsetting on this cluster.
 class ILBSubsettingConfigContainerV1beta1 {
   /// Enables l4 ILB subsetting for this cluster
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ILBSubsettingConfigContainerV1beta1].
   /// [enabled] Enables l4 ILB subsetting for this cluster

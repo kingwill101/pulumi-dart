@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
-enum CryptoKeyVersionTemplateAlgorithm {
+enum CryptoKeyVersionTemplateAlgorithm implements pulumi.PulumiEnum<String> {
   cryptoKeyVersionAlgorithmUnspecified("CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED"),
   googleSymmetricEncryption("GOOGLE_SYMMETRIC_ENCRYPTION"),
   aes128Gcm("AES_128_GCM"),
@@ -37,6 +39,7 @@ enum CryptoKeyVersionTemplateAlgorithm {
   externalSymmetricEncryption("EXTERNAL_SYMMETRIC_ENCRYPTION");
 
   const CryptoKeyVersionTemplateAlgorithm(this.wireValue);
+  @override
   final String wireValue;
 
   static CryptoKeyVersionTemplateAlgorithm fromValue(String value) {

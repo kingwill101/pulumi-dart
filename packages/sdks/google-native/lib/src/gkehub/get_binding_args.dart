@@ -10,7 +10,7 @@ class GetBindingArgs {
   final pulumi.Input<String> bindingId;
   final pulumi.Input<String> location;
   final pulumi.Input<String> membershipId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetBindingArgs].
   /// [bindingId] Required.

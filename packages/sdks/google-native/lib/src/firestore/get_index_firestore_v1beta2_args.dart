@@ -10,7 +10,7 @@ class GetIndexFirestoreV1beta2Args {
   final pulumi.Input<String> collectionGroupId;
   final pulumi.Input<String> databaseId;
   final pulumi.Input<String> indexId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetIndexFirestoreV1beta2Args].
   /// [collectionGroupId] Required.

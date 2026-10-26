@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Type of this accelerator.
-enum AcceleratorConfigTypeNotebooksV2 {
+enum AcceleratorConfigTypeNotebooksV2 implements pulumi.PulumiEnum<String> {
   acceleratorTypeUnspecified("ACCELERATOR_TYPE_UNSPECIFIED"),
   nvidiaTeslaP100("NVIDIA_TESLA_P100"),
   nvidiaTeslaV100("NVIDIA_TESLA_V100"),
@@ -13,6 +15,7 @@ enum AcceleratorConfigTypeNotebooksV2 {
   nvidiaTeslaP4Vws("NVIDIA_TESLA_P4_VWS");
 
   const AcceleratorConfigTypeNotebooksV2(this.wireValue);
+  @override
   final String wireValue;
 
   static AcceleratorConfigTypeNotebooksV2 fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies config to enable/disable auto repair. The cluster-health-controller is deployed only if Enabled is true.
 class VmwareAutoRepairConfig {
   /// Whether auto repair is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [VmwareAutoRepairConfig].
   /// [enabled] Whether auto repair is enabled.

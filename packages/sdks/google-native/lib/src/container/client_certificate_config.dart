@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for client certificates on the cluster.
 class ClientCertificateConfig {
   /// Issue a client certificate.
-  final pulumi.Input<bool>? issueClientCertificate;
+  final pulumi.Input<bool?>? issueClientCertificate;
 
   /// Creates a new [ClientCertificateConfig].
   /// [issueClientCertificate] Issue a client certificate.

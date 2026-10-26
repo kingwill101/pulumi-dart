@@ -9,14 +9,14 @@ import 'external_protection_level_options.dart';
 /// {@endtemplate}
 /// {@macro pulumi_cloudkms_v1_crypto_key_version_args_doc}
 class CryptoKeyVersionArgs {
-  final pulumi.Input<String>? cryptoKeyId;
+  final pulumi.Input<String?>? cryptoKeyId;
   /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
-  final pulumi.Input<ExternalProtectionLevelOptions>? externalProtectionLevelOptions;
+  final pulumi.Input<ExternalProtectionLevelOptions?>? externalProtectionLevelOptions;
   final pulumi.Input<String> keyRingId;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// The current state of the CryptoKeyVersion.
-  final pulumi.Input<CryptoKeyVersionState>? state;
+  final pulumi.Input<CryptoKeyVersionState?>? state;
 
   /// Creates a new [CryptoKeyVersionArgs].
   /// [cryptoKeyId] Optional.

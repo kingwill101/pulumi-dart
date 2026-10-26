@@ -8,12 +8,12 @@ import 'grafeas_v1_slsa_provenance_zero_two_slsa_metadata.dart';
 
 /// See full explanation of fields at slsa.dev/provenance/v0.2.
 class SlsaProvenanceZeroTwo {
-  final pulumi.Input<Map<String, String>>? buildConfig;
-  final pulumi.Input<String>? buildType;
-  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder>? builder;
-  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation>? invocation;
-  final pulumi.Input<List<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial>>? materials;
-  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata>? metadata;
+  final pulumi.Input<Map<String, String>?>? buildConfig;
+  final pulumi.Input<String?>? buildType;
+  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder?>? builder;
+  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation?>? invocation;
+  final pulumi.Input<List<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial>?>? materials;
+  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata?>? metadata;
 
   /// Creates a new [SlsaProvenanceZeroTwo].
   /// [buildConfig] Optional.

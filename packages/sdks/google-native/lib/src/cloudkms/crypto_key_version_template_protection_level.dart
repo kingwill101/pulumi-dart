@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
-enum CryptoKeyVersionTemplateProtectionLevel {
+enum CryptoKeyVersionTemplateProtectionLevel implements pulumi.PulumiEnum<String> {
   protectionLevelUnspecified("PROTECTION_LEVEL_UNSPECIFIED"),
   software("SOFTWARE"),
   hsm("HSM"),
@@ -7,6 +9,7 @@ enum CryptoKeyVersionTemplateProtectionLevel {
   externalVpc("EXTERNAL_VPC");
 
   const CryptoKeyVersionTemplateProtectionLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static CryptoKeyVersionTemplateProtectionLevel fromValue(String value) {

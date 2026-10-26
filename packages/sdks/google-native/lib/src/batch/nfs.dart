@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents an NFS volume.
 class NFS {
   /// Remote source path exported from the NFS, e.g., "/share".
-  final pulumi.Input<String>? remotePath;
+  final pulumi.Input<String?>? remotePath;
   /// The IP address of the NFS.
-  final pulumi.Input<String>? server;
+  final pulumi.Input<String?>? server;
 
   /// Creates a new [NFS].
   /// [remotePath] Remote source path exported from the NFS, e.g., "/share".

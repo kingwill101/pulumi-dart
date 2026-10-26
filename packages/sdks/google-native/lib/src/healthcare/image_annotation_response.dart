@@ -28,7 +28,7 @@ class ImageAnnotationResponse {
   factory ImageAnnotationResponse.fromMap(Map<String, dynamic> map) {
     return ImageAnnotationResponse(
       boundingPolys: pulumi.Input.fromValue(pulumi.Input.decodeList<BoundingPolyResponse>(map['boundingPolys']!, (value) => BoundingPolyResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      frameIndex: pulumi.Input.fromValue(map['frameIndex'] as int),
+      frameIndex: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['frameIndex'])),
     );
   }
 }

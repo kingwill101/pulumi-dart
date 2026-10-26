@@ -39,8 +39,30 @@ class TaskCloudtasksV2beta2 extends pulumi.CustomResource {
           'google-native:cloudtasks/v2beta2:Task',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'queueId']).merge(options),
         ) {
+    appEngineHttpRequest = registerOutput<AppEngineHttpRequestResponseCloudtasksV2beta2>('appEngineHttpRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEngineHttpRequestResponseCloudtasksV2beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    httpRequest = registerOutput<HttpRequestResponseCloudtasksV2beta2>('httpRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpRequestResponseCloudtasksV2beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pullMessage = registerOutput<PullMessageResponse>('pullMessage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PullMessageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    queueId = registerOutput<String>('queueId');
+    scheduleTime = registerOutput<String>('scheduleTime');
+    status = registerOutput<TaskStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    view = registerOutput<String>('view');
+  }
+
+  /// Creates a typed reference to an existing [TaskCloudtasksV2beta2] resource.
+  TaskCloudtasksV2beta2.reference(String urn)
+    : super(
+        'google-native:cloudtasks/v2beta2:Task',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appEngineHttpRequest = registerOutput<AppEngineHttpRequestResponseCloudtasksV2beta2>('appEngineHttpRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEngineHttpRequestResponseCloudtasksV2beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     httpRequest = registerOutput<HttpRequestResponseCloudtasksV2beta2>('httpRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpRequestResponseCloudtasksV2beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });

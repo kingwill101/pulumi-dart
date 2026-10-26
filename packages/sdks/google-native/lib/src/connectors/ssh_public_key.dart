@@ -6,13 +6,13 @@ import 'secret.dart';
 /// Parameters to support Ssh public key Authentication.
 class SshPublicKey {
   /// Format of SSH Client cert.
-  final pulumi.Input<String>? certType;
+  final pulumi.Input<String?>? certType;
   /// SSH Client Cert. It should contain both public and private key.
-  final pulumi.Input<Secret>? sshClientCert;
+  final pulumi.Input<Secret?>? sshClientCert;
   /// Password (passphrase) for ssh client certificate if it has one.
-  final pulumi.Input<Secret>? sshClientCertPass;
+  final pulumi.Input<Secret?>? sshClientCertPass;
   /// The user account used to authenticate.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [SshPublicKey].
   /// [certType] Format of SSH Client cert.

@@ -56,6 +56,17 @@ Future<GetHubResult> getHub(
   return GetHubResult.fromMap(result);
 }
 
+pulumi.Output<GetHubResult> getHubOutput(
+  GetHubArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1:getHub',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHubResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkconnectivity_v1_get_hub_group_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -70,6 +81,17 @@ Future<GetHubGroupIamPolicyResult> getHubGroupIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHubGroupIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetHubGroupIamPolicyResult> getHubGroupIamPolicyOutput(
+  GetHubGroupIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1:getHubGroupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHubGroupIamPolicyResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -88,6 +110,17 @@ Future<GetHubIamPolicyResult> getHubIamPolicy(
   return GetHubIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetHubIamPolicyResult> getHubIamPolicyOutput(
+  GetHubIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1:getHubIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHubIamPolicyResult.fromMap);
+}
+
 /// Gets details of a single internal range.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkconnectivity_v1_get_internal_range_args_doc}
 /// [options] Invoke options controlling this call.
@@ -102,6 +135,17 @@ Future<GetInternalRangeResult> getInternalRange(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInternalRangeResult.fromMap(result);
+}
+
+pulumi.Output<GetInternalRangeResult> getInternalRangeOutput(
+  GetInternalRangeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1:getInternalRange',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInternalRangeResult.fromMap);
 }
 
 /// Gets details of a single policy-based route.
@@ -120,6 +164,17 @@ Future<GetPolicyBasedRouteResult> getPolicyBasedRoute(
   return GetPolicyBasedRouteResult.fromMap(result);
 }
 
+pulumi.Output<GetPolicyBasedRouteResult> getPolicyBasedRouteOutput(
+  GetPolicyBasedRouteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1:getPolicyBasedRoute',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyBasedRouteResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkconnectivity_v1_get_policy_based_route_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -134,6 +189,17 @@ Future<GetPolicyBasedRouteIamPolicyResult> getPolicyBasedRouteIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPolicyBasedRouteIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetPolicyBasedRouteIamPolicyResult> getPolicyBasedRouteIamPolicyOutput(
+  GetPolicyBasedRouteIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1:getPolicyBasedRouteIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyBasedRouteIamPolicyResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -152,6 +218,17 @@ Future<GetServiceClassIamPolicyResult> getServiceClassIamPolicy(
   return GetServiceClassIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceClassIamPolicyResult> getServiceClassIamPolicyOutput(
+  GetServiceClassIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1:getServiceClassIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceClassIamPolicyResult.fromMap);
+}
+
 /// Gets details of a single ServiceConnectionMap.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkconnectivity_v1_get_service_connection_map_args_doc}
 /// [options] Invoke options controlling this call.
@@ -166,6 +243,17 @@ Future<GetServiceConnectionMapResult> getServiceConnectionMap(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceConnectionMapResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceConnectionMapResult> getServiceConnectionMapOutput(
+  GetServiceConnectionMapArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1:getServiceConnectionMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceConnectionMapResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -184,6 +272,17 @@ Future<GetServiceConnectionMapIamPolicyResult> getServiceConnectionMapIamPolicy(
   return GetServiceConnectionMapIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceConnectionMapIamPolicyResult> getServiceConnectionMapIamPolicyOutput(
+  GetServiceConnectionMapIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1:getServiceConnectionMapIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceConnectionMapIamPolicyResult.fromMap);
+}
+
 /// Gets details of a single ServiceConnectionPolicy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkconnectivity_v1_get_service_connection_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -198,6 +297,17 @@ Future<GetServiceConnectionPolicyResult> getServiceConnectionPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceConnectionPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceConnectionPolicyResult> getServiceConnectionPolicyOutput(
+  GetServiceConnectionPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1:getServiceConnectionPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceConnectionPolicyResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -216,6 +326,17 @@ Future<GetServiceConnectionPolicyIamPolicyResult> getServiceConnectionPolicyIamP
   return GetServiceConnectionPolicyIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceConnectionPolicyIamPolicyResult> getServiceConnectionPolicyIamPolicyOutput(
+  GetServiceConnectionPolicyIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1:getServiceConnectionPolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceConnectionPolicyIamPolicyResult.fromMap);
+}
+
 /// Gets details of a single ServiceConnectionToken.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkconnectivity_v1_get_service_connection_token_args_doc}
 /// [options] Invoke options controlling this call.
@@ -230,6 +351,17 @@ Future<GetServiceConnectionTokenResult> getServiceConnectionToken(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceConnectionTokenResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceConnectionTokenResult> getServiceConnectionTokenOutput(
+  GetServiceConnectionTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1:getServiceConnectionToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceConnectionTokenResult.fromMap);
 }
 
 /// Gets details about a Network Connectivity Center spoke.
@@ -248,6 +380,17 @@ Future<GetSpokeResult> getSpoke(
   return GetSpokeResult.fromMap(result);
 }
 
+pulumi.Output<GetSpokeResult> getSpokeOutput(
+  GetSpokeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1:getSpoke',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSpokeResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkconnectivity_v1_get_spoke_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -262,6 +405,17 @@ Future<GetSpokeIamPolicyResult> getSpokeIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSpokeIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetSpokeIamPolicyResult> getSpokeIamPolicyOutput(
+  GetSpokeIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1:getSpokeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSpokeIamPolicyResult.fromMap);
 }
 
 /// Gets details about a Network Connectivity Center hub.
@@ -280,6 +434,17 @@ Future<GetHubNetworkconnectivityV1alpha1Result> getHubNetworkconnectivityV1alpha
   return GetHubNetworkconnectivityV1alpha1Result.fromMap(result);
 }
 
+pulumi.Output<GetHubNetworkconnectivityV1alpha1Result> getHubNetworkconnectivityV1alpha1Output(
+  GetHubNetworkconnectivityV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1alpha1:getHub',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHubNetworkconnectivityV1alpha1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkconnectivity_v1alpha1_get_hub_iam_policy_networkconnectivity_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -294,6 +459,17 @@ Future<GetHubIamPolicyNetworkconnectivityV1alpha1Result> getHubIamPolicyNetworkc
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHubIamPolicyNetworkconnectivityV1alpha1Result.fromMap(result);
+}
+
+pulumi.Output<GetHubIamPolicyNetworkconnectivityV1alpha1Result> getHubIamPolicyNetworkconnectivityV1alpha1Output(
+  GetHubIamPolicyNetworkconnectivityV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1alpha1:getHubIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHubIamPolicyNetworkconnectivityV1alpha1Result.fromMap);
 }
 
 /// Gets details of a single internal range.
@@ -312,6 +488,17 @@ Future<GetInternalRangeNetworkconnectivityV1alpha1Result> getInternalRangeNetwor
   return GetInternalRangeNetworkconnectivityV1alpha1Result.fromMap(result);
 }
 
+pulumi.Output<GetInternalRangeNetworkconnectivityV1alpha1Result> getInternalRangeNetworkconnectivityV1alpha1Output(
+  GetInternalRangeNetworkconnectivityV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1alpha1:getInternalRange',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInternalRangeNetworkconnectivityV1alpha1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkconnectivity_v1alpha1_get_internal_range_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -326,6 +513,17 @@ Future<GetInternalRangeIamPolicyResult> getInternalRangeIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInternalRangeIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetInternalRangeIamPolicyResult> getInternalRangeIamPolicyOutput(
+  GetInternalRangeIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1alpha1:getInternalRangeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInternalRangeIamPolicyResult.fromMap);
 }
 
 /// Gets details about a Network Connectivity Center spoke.
@@ -344,6 +542,17 @@ Future<GetSpokeNetworkconnectivityV1alpha1Result> getSpokeNetworkconnectivityV1a
   return GetSpokeNetworkconnectivityV1alpha1Result.fromMap(result);
 }
 
+pulumi.Output<GetSpokeNetworkconnectivityV1alpha1Result> getSpokeNetworkconnectivityV1alpha1Output(
+  GetSpokeNetworkconnectivityV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1alpha1:getSpoke',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSpokeNetworkconnectivityV1alpha1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkconnectivity_v1alpha1_get_spoke_iam_policy_networkconnectivity_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -358,4 +567,15 @@ Future<GetSpokeIamPolicyNetworkconnectivityV1alpha1Result> getSpokeIamPolicyNetw
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSpokeIamPolicyNetworkconnectivityV1alpha1Result.fromMap(result);
+}
+
+pulumi.Output<GetSpokeIamPolicyNetworkconnectivityV1alpha1Result> getSpokeIamPolicyNetworkconnectivityV1alpha1Output(
+  GetSpokeIamPolicyNetworkconnectivityV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:networkconnectivity/v1alpha1:getSpokeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSpokeIamPolicyNetworkconnectivityV1alpha1Result.fromMap);
 }

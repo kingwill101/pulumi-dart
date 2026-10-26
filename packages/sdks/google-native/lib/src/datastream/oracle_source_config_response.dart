@@ -50,8 +50,8 @@ class OracleSourceConfigResponse {
       dropLargeObjects: pulumi.Input.fromValue((map['dropLargeObjects']! as Map).cast<String, dynamic>()),
       excludeObjects: pulumi.Input.fromValue(OracleRdbmsResponse.fromMap((map['excludeObjects']! as Map).cast<String, dynamic>())),
       includeObjects: pulumi.Input.fromValue(OracleRdbmsResponse.fromMap((map['includeObjects']! as Map).cast<String, dynamic>())),
-      maxConcurrentBackfillTasks: pulumi.Input.fromValue(map['maxConcurrentBackfillTasks'] as int),
-      maxConcurrentCdcTasks: pulumi.Input.fromValue(map['maxConcurrentCdcTasks'] as int),
+      maxConcurrentBackfillTasks: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConcurrentBackfillTasks'])),
+      maxConcurrentCdcTasks: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConcurrentCdcTasks'])),
       streamLargeObjects: pulumi.Input.fromValue((map['streamLargeObjects']! as Map).cast<String, dynamic>()),
     );
   }

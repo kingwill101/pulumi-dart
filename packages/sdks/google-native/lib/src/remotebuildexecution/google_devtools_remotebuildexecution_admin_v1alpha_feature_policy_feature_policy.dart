@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The policy of the feature.
-enum GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy {
+enum GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy implements pulumi.PulumiEnum<String> {
   policyUnspecified("POLICY_UNSPECIFIED"),
   allowed("ALLOWED"),
   forbidden("FORBIDDEN"),
   restricted("RESTRICTED");
 
   const GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy fromValue(String value) {

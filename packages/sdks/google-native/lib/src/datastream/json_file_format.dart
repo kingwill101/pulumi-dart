@@ -7,9 +7,9 @@ import 'json_file_format_schema_file_format.dart';
 /// JSON file format configuration.
 class JsonFileFormat {
   /// Compression of the loaded JSON file.
-  final pulumi.Input<JsonFileFormatCompression>? compression;
+  final pulumi.Input<JsonFileFormatCompression?>? compression;
   /// The schema file format along JSON data files.
-  final pulumi.Input<JsonFileFormatSchemaFileFormat>? schemaFileFormat;
+  final pulumi.Input<JsonFileFormatSchemaFileFormat?>? schemaFileFormat;
 
   /// Creates a new [JsonFileFormat].
   /// [compression] Compression of the loaded JSON file.

@@ -11,7 +11,7 @@ class GoogleCloudAiplatformV1beta1StudySpecMetricSpec {
   /// The ID of the metric. Must not contain whitespaces and must be unique amongst all MetricSpecs.
   final pulumi.Input<String> metricId;
   /// Used for safe search. In the case, the metric will be a safety metric. You must provide a separate metric for objective metric.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfig>? safetyConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpecMetricSpecSafetyMetricConfig?>? safetyConfig;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1StudySpecMetricSpec].
   /// [goal] The optimization goal of the metric.

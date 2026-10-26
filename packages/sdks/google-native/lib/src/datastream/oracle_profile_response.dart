@@ -57,7 +57,7 @@ class OracleProfileResponse {
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
       oracleSslConfig: pulumi.Input.fromValue(OracleSslConfigResponse.fromMap((map['oracleSslConfig']! as Map).cast<String, dynamic>())),
       password: pulumi.Input.fromValue(map['password'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }

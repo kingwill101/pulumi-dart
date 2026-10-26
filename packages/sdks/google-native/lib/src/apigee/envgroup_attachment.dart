@@ -26,8 +26,25 @@ class EnvgroupAttachment extends pulumi.CustomResource {
           'google-native:apigee/v1:EnvgroupAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['envgroupId', 'organizationId']).merge(options),
         ) {
+    createdAt = registerOutput<String>('createdAt');
+    envgroupId = registerOutput<String>('envgroupId');
+    environment = registerOutput<String>('environment');
+    environmentGroupId = registerOutput<String>('environmentGroupId');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+  }
+
+  /// Creates a typed reference to an existing [EnvgroupAttachment] resource.
+  EnvgroupAttachment.reference(String urn)
+    : super(
+        'google-native:apigee/v1:EnvgroupAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createdAt = registerOutput<String>('createdAt');
     envgroupId = registerOutput<String>('envgroupId');
     environment = registerOutput<String>('environment');

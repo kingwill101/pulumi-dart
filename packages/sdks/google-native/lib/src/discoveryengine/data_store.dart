@@ -37,7 +37,7 @@ class DataStore extends pulumi.CustomResource {
           'google-native:discoveryengine/v1alpha:DataStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['collectionId', 'dataStoreId', 'location', 'project']).merge(options),
         ) {
     collectionId = registerOutput<String>('collectionId');
     contentConfig = registerOutput<String>('contentConfig');
@@ -50,6 +50,29 @@ class DataStore extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    solutionTypes = registerOutput<List<String>>('solutionTypes');
+    solutionTypes = registerOutput<List<String>>('solutionTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DataStore] resource.
+  DataStore.reference(String urn)
+    : super(
+        'google-native:discoveryengine/v1alpha:DataStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    collectionId = registerOutput<String>('collectionId');
+    contentConfig = registerOutput<String>('contentConfig');
+    createAdvancedSiteSearch = registerOutput<bool?>('createAdvancedSiteSearch');
+    createTime = registerOutput<String>('createTime');
+    dataStoreId = registerOutput<String>('dataStoreId');
+    defaultSchemaId = registerOutput<String>('defaultSchemaId');
+    displayName = registerOutput<String>('displayName');
+    industryVertical = registerOutput<String>('industryVertical');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    solutionTypes = registerOutput<List<String>>('solutionTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

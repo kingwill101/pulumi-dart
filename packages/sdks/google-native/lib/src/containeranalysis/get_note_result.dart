@@ -18,47 +18,47 @@ import 'vulnerability_note_response.dart';
 /// Result data returned by getNote.
 class GetNoteResult {
   /// A note describing an attestation role.
-  final AttestationNoteResponse attestation;
+  final AttestationNoteResponse? attestation;
   /// A note describing build provenance for a verifiable build.
-  final BuildNoteResponse build;
+  final BuildNoteResponse? build;
   /// A note describing a compliance check.
-  final ComplianceNoteResponse compliance;
+  final ComplianceNoteResponse? compliance;
   /// The time this note was created. This field can be used as a filter in list requests.
-  final String createTime;
+  final String? createTime;
   /// A note describing something that can be deployed.
-  final DeploymentNoteResponse deployment;
+  final DeploymentNoteResponse? deployment;
   /// A note describing the initial analysis of a resource.
-  final DiscoveryNoteResponse discovery;
+  final DiscoveryNoteResponse? discovery;
   /// A note describing a dsse attestation note.
-  final DSSEAttestationNoteResponse dsseAttestation;
+  final DSSEAttestationNoteResponse? dsseAttestation;
   /// Time of expiration for this note. Empty if note does not expire.
-  final String expirationTime;
+  final String? expirationTime;
   /// A note describing a base image.
-  final ImageNoteResponse image;
+  final ImageNoteResponse? image;
   /// The type of analysis. This field can be used as a filter in list requests.
-  final String kind;
+  final String? kind;
   /// A detailed description of this note.
-  final String longDescription;
+  final String? longDescription;
   /// The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
-  final String name;
+  final String? name;
   /// A note describing a package hosted by various package managers.
-  final PackageNoteResponse package;
+  final PackageNoteResponse? package;
   /// Other notes related to this note.
-  final List<String> relatedNoteNames;
+  final List<String>? relatedNoteNames;
   /// URLs associated with this note.
-  final List<RelatedUrlResponse> relatedUrl;
+  final List<RelatedUrlResponse>? relatedUrl;
   /// A note describing an SBOM reference.
-  final SBOMReferenceNoteResponse sbomReference;
+  final SBOMReferenceNoteResponse? sbomReference;
   /// A one sentence description of this note.
-  final String shortDescription;
+  final String? shortDescription;
   /// The time this note was last updated. This field can be used as a filter in list requests.
-  final String updateTime;
+  final String? updateTime;
   /// A note describing available package upgrades.
-  final UpgradeNoteResponse upgrade;
+  final UpgradeNoteResponse? upgrade;
   /// A note describing a package vulnerability.
-  final VulnerabilityNoteResponse vulnerability;
+  final VulnerabilityNoteResponse? vulnerability;
   /// A note describing a vulnerability assessment.
-  final VulnerabilityAssessmentNoteResponse vulnerabilityAssessment;
+  final VulnerabilityAssessmentNoteResponse? vulnerabilityAssessment;
 
   /// Creates a new [GetNoteResult].
   /// [attestation] A note describing an attestation role.
@@ -83,78 +83,78 @@ class GetNoteResult {
   /// [vulnerability] A note describing a package vulnerability.
   /// [vulnerabilityAssessment] A note describing a vulnerability assessment.
   const GetNoteResult({
-    required this.attestation,
-    required this.build,
-    required this.compliance,
-    required this.createTime,
-    required this.deployment,
-    required this.discovery,
-    required this.dsseAttestation,
-    required this.expirationTime,
-    required this.image,
-    required this.kind,
-    required this.longDescription,
-    required this.name,
-    required this.package,
-    required this.relatedNoteNames,
-    required this.relatedUrl,
-    required this.sbomReference,
-    required this.shortDescription,
-    required this.updateTime,
-    required this.upgrade,
-    required this.vulnerability,
-    required this.vulnerabilityAssessment,
+    this.attestation,
+    this.build,
+    this.compliance,
+    this.createTime,
+    this.deployment,
+    this.discovery,
+    this.dsseAttestation,
+    this.expirationTime,
+    this.image,
+    this.kind,
+    this.longDescription,
+    this.name,
+    this.package,
+    this.relatedNoteNames,
+    this.relatedUrl,
+    this.sbomReference,
+    this.shortDescription,
+    this.updateTime,
+    this.upgrade,
+    this.vulnerability,
+    this.vulnerabilityAssessment,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attestation': attestation.toMap(),
-      'build': build.toMap(),
-      'compliance': compliance.toMap(),
-      'createTime': createTime,
-      'deployment': deployment.toMap(),
-      'discovery': discovery.toMap(),
-      'dsseAttestation': dsseAttestation.toMap(),
-      'expirationTime': expirationTime,
-      'image': image.toMap(),
-      'kind': kind,
-      'longDescription': longDescription,
-      'name': name,
-      'package': package.toMap(),
-      'relatedNoteNames': relatedNoteNames,
-      'relatedUrl': pulumi.Input.encodeList<RelatedUrlResponse, Map<String, dynamic>>(relatedUrl, (value) => value.toMap()),
-      'sbomReference': sbomReference.toMap(),
-      'shortDescription': shortDescription,
-      'updateTime': updateTime,
-      'upgrade': upgrade.toMap(),
-      'vulnerability': vulnerability.toMap(),
-      'vulnerabilityAssessment': vulnerabilityAssessment.toMap(),
+      'attestation': ?attestation?.toMap(),
+      'build': ?build?.toMap(),
+      'compliance': ?compliance?.toMap(),
+      'createTime': ?createTime,
+      'deployment': ?deployment?.toMap(),
+      'discovery': ?discovery?.toMap(),
+      'dsseAttestation': ?dsseAttestation?.toMap(),
+      'expirationTime': ?expirationTime,
+      'image': ?image?.toMap(),
+      'kind': ?kind,
+      'longDescription': ?longDescription,
+      'name': ?name,
+      'package': ?package?.toMap(),
+      'relatedNoteNames': ?relatedNoteNames,
+      'relatedUrl': ?(() { final guardedValue = relatedUrl; if (guardedValue == null) return null; return pulumi.Input.encodeList<RelatedUrlResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'sbomReference': ?sbomReference?.toMap(),
+      'shortDescription': ?shortDescription,
+      'updateTime': ?updateTime,
+      'upgrade': ?upgrade?.toMap(),
+      'vulnerability': ?vulnerability?.toMap(),
+      'vulnerabilityAssessment': ?vulnerabilityAssessment?.toMap(),
     };
   }
 
   factory GetNoteResult.fromMap(Map<String, dynamic> map) {
     return GetNoteResult(
-      attestation: AttestationNoteResponse.fromMap((map['attestation']! as Map).cast<String, dynamic>()),
-      build: BuildNoteResponse.fromMap((map['build']! as Map).cast<String, dynamic>()),
-      compliance: ComplianceNoteResponse.fromMap((map['compliance']! as Map).cast<String, dynamic>()),
-      createTime: map['createTime'] as String,
-      deployment: DeploymentNoteResponse.fromMap((map['deployment']! as Map).cast<String, dynamic>()),
-      discovery: DiscoveryNoteResponse.fromMap((map['discovery']! as Map).cast<String, dynamic>()),
-      dsseAttestation: DSSEAttestationNoteResponse.fromMap((map['dsseAttestation']! as Map).cast<String, dynamic>()),
-      expirationTime: map['expirationTime'] as String,
-      image: ImageNoteResponse.fromMap((map['image']! as Map).cast<String, dynamic>()),
-      kind: map['kind'] as String,
-      longDescription: map['longDescription'] as String,
-      name: map['name'] as String,
-      package: PackageNoteResponse.fromMap((map['package']! as Map).cast<String, dynamic>()),
-      relatedNoteNames: (map['relatedNoteNames'] as List).cast<String>(),
-      relatedUrl: pulumi.Input.decodeList<RelatedUrlResponse>(map['relatedUrl']!, (value) => RelatedUrlResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sbomReference: SBOMReferenceNoteResponse.fromMap((map['sbomReference']! as Map).cast<String, dynamic>()),
-      shortDescription: map['shortDescription'] as String,
-      updateTime: map['updateTime'] as String,
-      upgrade: UpgradeNoteResponse.fromMap((map['upgrade']! as Map).cast<String, dynamic>()),
-      vulnerability: VulnerabilityNoteResponse.fromMap((map['vulnerability']! as Map).cast<String, dynamic>()),
-      vulnerabilityAssessment: VulnerabilityAssessmentNoteResponse.fromMap((map['vulnerabilityAssessment']! as Map).cast<String, dynamic>()),
+      attestation: (() { final guardedValue = map['attestation']; if (guardedValue == null) return null; return AttestationNoteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      build: (() { final guardedValue = map['build']; if (guardedValue == null) return null; return BuildNoteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      compliance: (() { final guardedValue = map['compliance']; if (guardedValue == null) return null; return ComplianceNoteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deployment: (() { final guardedValue = map['deployment']; if (guardedValue == null) return null; return DeploymentNoteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      discovery: (() { final guardedValue = map['discovery']; if (guardedValue == null) return null; return DiscoveryNoteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      dsseAttestation: (() { final guardedValue = map['dsseAttestation']; if (guardedValue == null) return null; return DSSEAttestationNoteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      expirationTime: (() { final guardedValue = map['expirationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return ImageNoteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      longDescription: (() { final guardedValue = map['longDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      package: (() { final guardedValue = map['package']; if (guardedValue == null) return null; return PackageNoteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      relatedNoteNames: (() { final guardedValue = map['relatedNoteNames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      relatedUrl: (() { final guardedValue = map['relatedUrl']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RelatedUrlResponse>(guardedValue, (value) => RelatedUrlResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      sbomReference: (() { final guardedValue = map['sbomReference']; if (guardedValue == null) return null; return SBOMReferenceNoteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      shortDescription: (() { final guardedValue = map['shortDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      upgrade: (() { final guardedValue = map['upgrade']; if (guardedValue == null) return null; return UpgradeNoteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      vulnerability: (() { final guardedValue = map['vulnerability']; if (guardedValue == null) return null; return VulnerabilityNoteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      vulnerabilityAssessment: (() { final guardedValue = map['vulnerabilityAssessment']; if (guardedValue == null) return null; return VulnerabilityAssessmentNoteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

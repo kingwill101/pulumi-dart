@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).
-enum EventTriggerRetryPolicyCloudfunctionsV2alpha {
+enum EventTriggerRetryPolicyCloudfunctionsV2alpha implements pulumi.PulumiEnum<String> {
   retryPolicyUnspecified("RETRY_POLICY_UNSPECIFIED"),
   retryPolicyDoNotRetry("RETRY_POLICY_DO_NOT_RETRY"),
   retryPolicyRetry("RETRY_POLICY_RETRY");
 
   const EventTriggerRetryPolicyCloudfunctionsV2alpha(this.wireValue);
+  @override
   final String wireValue;
 
   static EventTriggerRetryPolicyCloudfunctionsV2alpha fromValue(String value) {

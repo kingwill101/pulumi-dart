@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Define behaviors on logging.
 class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
   /// If true, DF Interaction logging is currently enabled.
-  final pulumi.Input<bool>? enableInteractionLogging;
+  final pulumi.Input<bool?>? enableInteractionLogging;
   /// If true, StackDriver logging is currently enabled.
-  final pulumi.Input<bool>? enableStackdriverLogging;
+  final pulumi.Input<bool?>? enableStackdriverLogging;
 
   /// Creates a new [GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings].
   /// [enableInteractionLogging] If true, DF Interaction logging is currently enabled.

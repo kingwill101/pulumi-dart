@@ -31,10 +31,28 @@ class Project extends pulumi.CustomResource {
           'google-native:cloudresourcemanager/v1:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lifecycleState = registerOutput<String>('lifecycleState');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<ResourceIdResponse>('parent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceIdResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    projectId = registerOutput<String>('projectId');
+    projectNumber = registerOutput<String>('projectNumber');
+  }
+
+  /// Creates a typed reference to an existing [Project] resource.
+  Project.reference(String urn)
+    : super(
+        'google-native:cloudresourcemanager/v1:Project',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lifecycleState = registerOutput<String>('lifecycleState');
     this.name = registerOutput<String>('name');
     parent = registerOutput<ResourceIdResponse>('parent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceIdResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

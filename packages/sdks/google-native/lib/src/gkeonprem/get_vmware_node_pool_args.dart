@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_gkeonprem_v1_get_vmware_node_pool_args_doc}
 class GetVmwareNodePoolArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? view;
   final pulumi.Input<String> vmwareClusterId;
   final pulumi.Input<String> vmwareNodePoolId;
 

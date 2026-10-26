@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The entrypoint for the application.
 class Entrypoint {
   /// The format should be a shell command that can be fed to bash -c.
-  final pulumi.Input<String>? shell;
+  final pulumi.Input<String?>? shell;
 
   /// Creates a new [Entrypoint].
   /// [shell] The format should be a shell command that can be fed to bash -c.

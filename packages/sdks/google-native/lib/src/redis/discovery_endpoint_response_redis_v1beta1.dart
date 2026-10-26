@@ -33,7 +33,7 @@ class DiscoveryEndpointResponseRedisV1beta1 {
   factory DiscoveryEndpointResponseRedisV1beta1.fromMap(Map<String, dynamic> map) {
     return DiscoveryEndpointResponseRedisV1beta1(
       address: pulumi.Input.fromValue(map['address'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       pscConfig: pulumi.Input.fromValue(PscConfigResponseRedisV1beta1.fromMap((map['pscConfig']! as Map).cast<String, dynamic>())),
     );
   }

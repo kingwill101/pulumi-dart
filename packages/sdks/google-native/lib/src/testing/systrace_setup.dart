@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SystraceSetup {
   /// Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
-  final pulumi.Input<int>? durationSeconds;
+  final pulumi.Input<int?>? durationSeconds;
 
   /// Creates a new [SystraceSetup].
   /// [durationSeconds] Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
@@ -20,7 +20,7 @@ class SystraceSetup {
 
   factory SystraceSetup.fromMap(Map<String, dynamic> map) {
     return SystraceSetup(
-      durationSeconds: (() { final guardedValue = map['durationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      durationSeconds: (() { final guardedValue = map['durationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

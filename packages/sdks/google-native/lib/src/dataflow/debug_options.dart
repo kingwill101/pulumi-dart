@@ -6,9 +6,9 @@ import 'data_sampling_config.dart';
 /// Describes any options that have an effect on the debugging of pipelines.
 class DebugOptions {
   /// Configuration options for sampling elements from a running pipeline.
-  final pulumi.Input<DataSamplingConfig>? dataSampling;
+  final pulumi.Input<DataSamplingConfig?>? dataSampling;
   /// When true, enables the logging of the literal hot key to the user's Cloud Logging.
-  final pulumi.Input<bool>? enableHotKeyLogging;
+  final pulumi.Input<bool?>? enableHotKeyLogging;
 
   /// Creates a new [DebugOptions].
   /// [dataSampling] Configuration options for sampling elements from a running pipeline.

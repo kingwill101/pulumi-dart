@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Font sizes for both the title and content. The title will still be larger relative to the content.
-enum TextStyleFontSize {
+enum TextStyleFontSize implements pulumi.PulumiEnum<String> {
   fontSizeUnspecified("FONT_SIZE_UNSPECIFIED"),
   fsExtraSmall("FS_EXTRA_SMALL"),
   fsSmall("FS_SMALL"),
@@ -8,6 +10,7 @@ enum TextStyleFontSize {
   fsExtraLarge("FS_EXTRA_LARGE");
 
   const TextStyleFontSize(this.wireValue);
+  @override
   final String wireValue;
 
   static TextStyleFontSize fromValue(String value) {

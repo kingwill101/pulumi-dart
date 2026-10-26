@@ -14,28 +14,28 @@ import 'google_cloud_discoveryengine_v1alpha_engine_search_engine_config.dart';
 /// {@macro pulumi_discoveryengine_v1alpha_engine_args_doc}
 class EngineArgs {
   /// Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.
-  final pulumi.Input<GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig>? chatEngineConfig;
+  final pulumi.Input<GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig?>? chatEngineConfig;
   final pulumi.Input<String> collectionId;
   /// Common config spec that specifies the metadata of the engine.
-  final pulumi.Input<GoogleCloudDiscoveryengineV1alphaEngineCommonConfig>? commonConfig;
+  final pulumi.Input<GoogleCloudDiscoveryengineV1alphaEngineCommonConfig?>? commonConfig;
   /// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary intializations.
-  final pulumi.Input<List<String>>? dataStoreIds;
+  final pulumi.Input<List<String>?>? dataStoreIds;
   /// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
   final pulumi.Input<String> displayName;
   /// Required. The ID to use for the Engine, which will become the final component of the Engine's resource name. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
   final pulumi.Input<String> engineId;
   /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to `GENERIC`. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-  final pulumi.Input<EngineIndustryVertical>? industryVertical;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<EngineIndustryVertical?>? industryVertical;
+  final pulumi.Input<String?>? location;
   /// Configurations for the Media Engine. Only applicable on the data stores with solution_type SOLUTION_TYPE_RECOMMENDATION and IndustryVertical.MEDIA vertical.
-  final pulumi.Input<GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig>? mediaRecommendationEngineConfig;
+  final pulumi.Input<GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig?>? mediaRecommendationEngineConfig;
   /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a length limit of 1024 characters. Format: `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}` engine should be 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.
-  final pulumi.Input<GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig>? searchEngineConfig;
+  final pulumi.Input<GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig?>? searchEngineConfig;
   /// Additional config specs for a `similar-items` engine.
-  final pulumi.Input<Map<String, dynamic>>? similarDocumentsConfig;
+  final pulumi.Input<Map<String, dynamic>?>? similarDocumentsConfig;
   /// The solutions of the engine.
   final pulumi.Input<EngineSolutionType> solutionType;
 

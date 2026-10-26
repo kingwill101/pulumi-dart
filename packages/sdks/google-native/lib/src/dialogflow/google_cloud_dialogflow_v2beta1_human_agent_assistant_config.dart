@@ -8,13 +8,13 @@ import 'google_cloud_dialogflow_v2beta1_notification_config.dart';
 /// Defines the Human Agent Assistant to connect to a conversation.
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig {
   /// Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig>? endUserSuggestionConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig?>? endUserSuggestionConfig;
   /// Configuration for agent assistance of human agent participant.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig>? humanAgentSuggestionConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig?>? humanAgentSuggestionConfig;
   /// Configuration for message analysis.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig>? messageAnalysisConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig?>? messageAnalysisConfig;
   /// Pub/Sub topic on which to publish new agent assistant events.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1NotificationConfig>? notificationConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1NotificationConfig?>? notificationConfig;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig].
   /// [endUserSuggestionConfig] Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.

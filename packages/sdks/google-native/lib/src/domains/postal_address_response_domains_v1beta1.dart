@@ -79,7 +79,7 @@ class PostalAddressResponseDomainsV1beta1 {
       postalCode: pulumi.Input.fromValue(map['postalCode'] as String),
       recipients: pulumi.Input.fromValue((map['recipients'] as List).cast<String>()),
       regionCode: pulumi.Input.fromValue(map['regionCode'] as String),
-      revision: pulumi.Input.fromValue(map['revision'] as int),
+      revision: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['revision'])),
       sortingCode: pulumi.Input.fromValue(map['sortingCode'] as String),
       sublocality: pulumi.Input.fromValue(map['sublocality'] as String),
     );

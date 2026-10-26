@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Pairs a secret environment variable with a SecretVersion in Secret Manager.
 class SecretManagerSecret {
   /// Environment variable name to associate with the secret. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step.
-  final pulumi.Input<String>? env;
+  final pulumi.Input<String?>? env;
   /// Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
-  final pulumi.Input<String>? versionName;
+  final pulumi.Input<String?>? versionName;
 
   /// Creates a new [SecretManagerSecret].
   /// [env] Environment variable name to associate with the secret. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step.

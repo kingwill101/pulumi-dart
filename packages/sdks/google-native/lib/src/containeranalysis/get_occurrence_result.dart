@@ -16,43 +16,43 @@ import 'vulnerability_occurrence_response.dart';
 /// Result data returned by getOccurrence.
 class GetOccurrenceResult {
   /// Describes an attestation of an artifact.
-  final AttestationOccurrenceResponse attestation;
+  final AttestationOccurrenceResponse? attestation;
   /// Describes a verifiable build.
-  final BuildOccurrenceResponse build;
+  final BuildOccurrenceResponse? build;
   /// Describes a compliance violation on a linked resource.
-  final ComplianceOccurrenceResponse compliance;
+  final ComplianceOccurrenceResponse? compliance;
   /// The time this occurrence was created.
-  final String createTime;
+  final String? createTime;
   /// Describes the deployment of an artifact on a runtime.
-  final DeploymentOccurrenceResponse deployment;
+  final DeploymentOccurrenceResponse? deployment;
   /// Describes when a resource was discovered.
-  final DiscoveryOccurrenceResponse discovery;
+  final DiscoveryOccurrenceResponse? discovery;
   /// Describes an attestation of an artifact using dsse.
-  final DSSEAttestationOccurrenceResponse dsseAttestation;
+  final DSSEAttestationOccurrenceResponse? dsseAttestation;
   /// https://github.com/secure-systems-lab/dsse
-  final EnvelopeResponse envelope;
+  final EnvelopeResponse? envelope;
   /// Describes how this resource derives from the basis in the associated note.
-  final ImageOccurrenceResponse image;
+  final ImageOccurrenceResponse? image;
   /// This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
-  final String kind;
+  final String? kind;
   /// The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
-  final String name;
+  final String? name;
   /// Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
-  final String noteName;
+  final String? noteName;
   /// Describes the installation of a package on the linked resource.
-  final PackageOccurrenceResponse package;
+  final PackageOccurrenceResponse? package;
   /// A description of actions that can be taken to remedy the note.
-  final String remediation;
+  final String? remediation;
   /// Immutable. A URI that represents the resource for which the occurrence applies. For example, `https://gcr.io/project/image@sha256:123abc` for a Docker image.
-  final String resourceUri;
+  final String? resourceUri;
   /// Describes a specific SBOM reference occurrences.
-  final SBOMReferenceOccurrenceResponse sbomReference;
+  final SBOMReferenceOccurrenceResponse? sbomReference;
   /// The time this occurrence was last updated.
-  final String updateTime;
+  final String? updateTime;
   /// Describes an available package upgrade on the linked resource.
-  final UpgradeOccurrenceResponse upgrade;
+  final UpgradeOccurrenceResponse? upgrade;
   /// Describes a security vulnerability.
-  final VulnerabilityOccurrenceResponse vulnerability;
+  final VulnerabilityOccurrenceResponse? vulnerability;
 
   /// Creates a new [GetOccurrenceResult].
   /// [attestation] Describes an attestation of an artifact.
@@ -75,72 +75,72 @@ class GetOccurrenceResult {
   /// [upgrade] Describes an available package upgrade on the linked resource.
   /// [vulnerability] Describes a security vulnerability.
   const GetOccurrenceResult({
-    required this.attestation,
-    required this.build,
-    required this.compliance,
-    required this.createTime,
-    required this.deployment,
-    required this.discovery,
-    required this.dsseAttestation,
-    required this.envelope,
-    required this.image,
-    required this.kind,
-    required this.name,
-    required this.noteName,
-    required this.package,
-    required this.remediation,
-    required this.resourceUri,
-    required this.sbomReference,
-    required this.updateTime,
-    required this.upgrade,
-    required this.vulnerability,
+    this.attestation,
+    this.build,
+    this.compliance,
+    this.createTime,
+    this.deployment,
+    this.discovery,
+    this.dsseAttestation,
+    this.envelope,
+    this.image,
+    this.kind,
+    this.name,
+    this.noteName,
+    this.package,
+    this.remediation,
+    this.resourceUri,
+    this.sbomReference,
+    this.updateTime,
+    this.upgrade,
+    this.vulnerability,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attestation': attestation.toMap(),
-      'build': build.toMap(),
-      'compliance': compliance.toMap(),
-      'createTime': createTime,
-      'deployment': deployment.toMap(),
-      'discovery': discovery.toMap(),
-      'dsseAttestation': dsseAttestation.toMap(),
-      'envelope': envelope.toMap(),
-      'image': image.toMap(),
-      'kind': kind,
-      'name': name,
-      'noteName': noteName,
-      'package': package.toMap(),
-      'remediation': remediation,
-      'resourceUri': resourceUri,
-      'sbomReference': sbomReference.toMap(),
-      'updateTime': updateTime,
-      'upgrade': upgrade.toMap(),
-      'vulnerability': vulnerability.toMap(),
+      'attestation': ?attestation?.toMap(),
+      'build': ?build?.toMap(),
+      'compliance': ?compliance?.toMap(),
+      'createTime': ?createTime,
+      'deployment': ?deployment?.toMap(),
+      'discovery': ?discovery?.toMap(),
+      'dsseAttestation': ?dsseAttestation?.toMap(),
+      'envelope': ?envelope?.toMap(),
+      'image': ?image?.toMap(),
+      'kind': ?kind,
+      'name': ?name,
+      'noteName': ?noteName,
+      'package': ?package?.toMap(),
+      'remediation': ?remediation,
+      'resourceUri': ?resourceUri,
+      'sbomReference': ?sbomReference?.toMap(),
+      'updateTime': ?updateTime,
+      'upgrade': ?upgrade?.toMap(),
+      'vulnerability': ?vulnerability?.toMap(),
     };
   }
 
   factory GetOccurrenceResult.fromMap(Map<String, dynamic> map) {
     return GetOccurrenceResult(
-      attestation: AttestationOccurrenceResponse.fromMap((map['attestation']! as Map).cast<String, dynamic>()),
-      build: BuildOccurrenceResponse.fromMap((map['build']! as Map).cast<String, dynamic>()),
-      compliance: ComplianceOccurrenceResponse.fromMap((map['compliance']! as Map).cast<String, dynamic>()),
-      createTime: map['createTime'] as String,
-      deployment: DeploymentOccurrenceResponse.fromMap((map['deployment']! as Map).cast<String, dynamic>()),
-      discovery: DiscoveryOccurrenceResponse.fromMap((map['discovery']! as Map).cast<String, dynamic>()),
-      dsseAttestation: DSSEAttestationOccurrenceResponse.fromMap((map['dsseAttestation']! as Map).cast<String, dynamic>()),
-      envelope: EnvelopeResponse.fromMap((map['envelope']! as Map).cast<String, dynamic>()),
-      image: ImageOccurrenceResponse.fromMap((map['image']! as Map).cast<String, dynamic>()),
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      noteName: map['noteName'] as String,
-      package: PackageOccurrenceResponse.fromMap((map['package']! as Map).cast<String, dynamic>()),
-      remediation: map['remediation'] as String,
-      resourceUri: map['resourceUri'] as String,
-      sbomReference: SBOMReferenceOccurrenceResponse.fromMap((map['sbomReference']! as Map).cast<String, dynamic>()),
-      updateTime: map['updateTime'] as String,
-      upgrade: UpgradeOccurrenceResponse.fromMap((map['upgrade']! as Map).cast<String, dynamic>()),
-      vulnerability: VulnerabilityOccurrenceResponse.fromMap((map['vulnerability']! as Map).cast<String, dynamic>()),
+      attestation: (() { final guardedValue = map['attestation']; if (guardedValue == null) return null; return AttestationOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      build: (() { final guardedValue = map['build']; if (guardedValue == null) return null; return BuildOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      compliance: (() { final guardedValue = map['compliance']; if (guardedValue == null) return null; return ComplianceOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deployment: (() { final guardedValue = map['deployment']; if (guardedValue == null) return null; return DeploymentOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      discovery: (() { final guardedValue = map['discovery']; if (guardedValue == null) return null; return DiscoveryOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      dsseAttestation: (() { final guardedValue = map['dsseAttestation']; if (guardedValue == null) return null; return DSSEAttestationOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      envelope: (() { final guardedValue = map['envelope']; if (guardedValue == null) return null; return EnvelopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return ImageOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      noteName: (() { final guardedValue = map['noteName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      package: (() { final guardedValue = map['package']; if (guardedValue == null) return null; return PackageOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      remediation: (() { final guardedValue = map['remediation']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceUri: (() { final guardedValue = map['resourceUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sbomReference: (() { final guardedValue = map['sbomReference']; if (guardedValue == null) return null; return SBOMReferenceOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      upgrade: (() { final guardedValue = map['upgrade']; if (guardedValue == null) return null; return UpgradeOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      vulnerability: (() { final guardedValue = map['vulnerability']; if (guardedValue == null) return null; return VulnerabilityOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

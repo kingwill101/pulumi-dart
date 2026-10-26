@@ -6,9 +6,9 @@ import 'customer_managed_encryption.dart';
 /// Represents a Replica for this Secret.
 class Replica {
   /// Optional. The customer-managed encryption configuration of the User-Managed Replica. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.
-  final pulumi.Input<CustomerManagedEncryption>? customerManagedEncryption;
+  final pulumi.Input<CustomerManagedEncryption?>? customerManagedEncryption;
   /// The canonical IDs of the location to replicate data. For example: `"us-east1"`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
 
   /// Creates a new [Replica].
   /// [customerManagedEncryption] Optional. The customer-managed encryption configuration of the User-Managed Replica. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.

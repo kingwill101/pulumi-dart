@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The category to which the update belongs.
 class Category {
   /// The identifier of the category.
-  final pulumi.Input<String>? categoryId;
+  final pulumi.Input<String?>? categoryId;
   /// The localized name of the category.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [Category].
   /// [categoryId] The identifier of the category.

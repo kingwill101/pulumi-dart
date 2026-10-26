@@ -1,8 +1,11 @@
-enum SubsettingPolicyComputeBeta {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum SubsettingPolicyComputeBeta implements pulumi.PulumiEnum<String> {
   consistentHashSubsetting("CONSISTENT_HASH_SUBSETTING"),
   none("NONE");
 
   const SubsettingPolicyComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static SubsettingPolicyComputeBeta fromValue(String value) {

@@ -30,8 +30,8 @@ class LocalDiskResponse {
 
   factory LocalDiskResponse.fromMap(Map<String, dynamic> map) {
     return LocalDiskResponse(
-      diskCount: pulumi.Input.fromValue(map['diskCount'] as int),
-      diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as int),
+      diskCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskCount'])),
+      diskSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskSizeGb'])),
       diskType: pulumi.Input.fromValue(map['diskType'] as String),
     );
   }

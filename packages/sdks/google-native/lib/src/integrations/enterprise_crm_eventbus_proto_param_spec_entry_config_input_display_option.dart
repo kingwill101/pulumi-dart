@@ -1,10 +1,13 @@
-enum EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption implements pulumi.PulumiEnum<String> {
   default_("DEFAULT"),
   stringMultiLine("STRING_MULTI_LINE"),
   numberSlider("NUMBER_SLIDER"),
   booleanToggle("BOOLEAN_TOGGLE");
 
   const EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption fromValue(String value) {

@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Type of subscription.
-enum SubscriptionType {
+enum SubscriptionType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   trial("TRIAL"),
   paid("PAID"),
   allowlist("ALLOWLIST");
 
   const SubscriptionType(this.wireValue);
+  @override
   final String wireValue;
 
   static SubscriptionType fromValue(String value) {

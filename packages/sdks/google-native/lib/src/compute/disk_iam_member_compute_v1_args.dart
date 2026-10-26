@@ -9,7 +9,7 @@ import 'condition.dart';
 /// {@macro pulumi_compute_v1_disk_iam_member_compute_v1_args_doc}
 class DiskIamMemberComputeV1Args {
   /// An IAM Condition for a given binding.
-  final pulumi.Input<Condition>? condition;
+  final pulumi.Input<Condition?>? condition;
   /// Identity that will be granted the privilege in role. The entry can have one of the following values:
   ///
   /// * user:{emailid}: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.

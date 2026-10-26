@@ -50,7 +50,7 @@ class Job extends pulumi.CustomResource {
           'google-native:transcoder/v1:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     batchModePriority = registerOutput<int>('batchModePriority');
     config = registerOutput<JobConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -58,7 +58,35 @@ class Job extends pulumi.CustomResource {
     endTime = registerOutput<String>('endTime');
     error = registerOutput<StatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inputUri = registerOutput<String>('inputUri');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    mode = registerOutput<String>('mode');
+    this.name = registerOutput<String>('name');
+    optimization = registerOutput<String>('optimization');
+    outputUri = registerOutput<String>('outputUri');
+    project = registerOutput<String>('project');
+    startTime = registerOutput<String>('startTime');
+    state = registerOutput<String>('state');
+    templateId = registerOutput<String>('templateId');
+    ttlAfterCompletionDays = registerOutput<int>('ttlAfterCompletionDays');
+  }
+
+  /// Creates a typed reference to an existing [Job] resource.
+  Job.reference(String urn)
+    : super(
+        'google-native:transcoder/v1:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    batchModePriority = registerOutput<int>('batchModePriority');
+    config = registerOutput<JobConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    endTime = registerOutput<String>('endTime');
+    error = registerOutput<StatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inputUri = registerOutput<String>('inputUri');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');

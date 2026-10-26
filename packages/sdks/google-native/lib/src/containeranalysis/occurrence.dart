@@ -68,8 +68,39 @@ class Occurrence extends pulumi.CustomResource {
           'google-native:containeranalysis/v1:Occurrence',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    attestation = registerOutput<AttestationOccurrenceResponse>('attestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttestationOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    build = registerOutput<BuildOccurrenceResponse>('build', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    compliance = registerOutput<ComplianceOccurrenceResponse>('compliance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComplianceOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deployment = registerOutput<DeploymentOccurrenceResponse>('deployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    discovery = registerOutput<DiscoveryOccurrenceResponse>('discovery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiscoveryOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dsseAttestation = registerOutput<DSSEAttestationOccurrenceResponse>('dsseAttestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DSSEAttestationOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    envelope = registerOutput<EnvelopeResponse>('envelope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvelopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    image = registerOutput<ImageOccurrenceResponse>('image', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    noteName = registerOutput<String>('noteName');
+    package = registerOutput<PackageOccurrenceResponse>('package', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PackageOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    remediation = registerOutput<String>('remediation');
+    resourceUri = registerOutput<String>('resourceUri');
+    sbomReference = registerOutput<SBOMReferenceOccurrenceResponse>('sbomReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SBOMReferenceOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+    upgrade = registerOutput<UpgradeOccurrenceResponse>('upgrade', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UpgradeOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vulnerability = registerOutput<VulnerabilityOccurrenceResponse>('vulnerability', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VulnerabilityOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Occurrence] resource.
+  Occurrence.reference(String urn)
+    : super(
+        'google-native:containeranalysis/v1:Occurrence',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     attestation = registerOutput<AttestationOccurrenceResponse>('attestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttestationOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     build = registerOutput<BuildOccurrenceResponse>('build', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compliance = registerOutput<ComplianceOccurrenceResponse>('compliance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComplianceOccurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

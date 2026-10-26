@@ -12,27 +12,27 @@ import 'linked_vpn_tunnels.dart';
 /// {@macro pulumi_networkconnectivity_v1_spoke_args_doc}
 class SpokeArgs {
   /// An optional description of the spoke.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. The name of the group that this spoke is associated with.
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// Immutable. The name of the hub that this spoke is attached to.
-  final pulumi.Input<String>? hub;
+  final pulumi.Input<String?>? hub;
   /// Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// VLAN attachments that are associated with the spoke.
-  final pulumi.Input<LinkedInterconnectAttachments>? linkedInterconnectAttachments;
+  final pulumi.Input<LinkedInterconnectAttachments?>? linkedInterconnectAttachments;
   /// Router appliance instances that are associated with the spoke.
-  final pulumi.Input<LinkedRouterApplianceInstances>? linkedRouterApplianceInstances;
+  final pulumi.Input<LinkedRouterApplianceInstances?>? linkedRouterApplianceInstances;
   /// Optional. VPC network that is associated with the spoke.
-  final pulumi.Input<LinkedVpcNetwork>? linkedVpcNetwork;
+  final pulumi.Input<LinkedVpcNetwork?>? linkedVpcNetwork;
   /// VPN tunnels that are associated with the spoke.
-  final pulumi.Input<LinkedVpnTunnels>? linkedVpnTunnels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<LinkedVpnTunnels?>? linkedVpnTunnels;
+  final pulumi.Input<String?>? location;
   /// Immutable. The name of the spoke. Spoke names must be unique. They use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke_id}`
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Required. Unique id for the spoke to create.
   final pulumi.Input<String> spokeId;
 

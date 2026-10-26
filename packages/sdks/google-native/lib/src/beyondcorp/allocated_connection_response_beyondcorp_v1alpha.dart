@@ -26,7 +26,7 @@ class AllocatedConnectionResponseBeyondcorpV1alpha {
 
   factory AllocatedConnectionResponseBeyondcorpV1alpha.fromMap(Map<String, dynamic> map) {
     return AllocatedConnectionResponseBeyondcorpV1alpha(
-      ingressPort: pulumi.Input.fromValue(map['ingressPort'] as int),
+      ingressPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ingressPort'])),
       pscUri: pulumi.Input.fromValue(map['pscUri'] as String),
     );
   }

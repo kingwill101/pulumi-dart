@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These fields have no effect when specified during job creation.
 class RuntimeUpdatableParams {
   /// The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
-  final pulumi.Input<int>? maxNumWorkers;
+  final pulumi.Input<int?>? maxNumWorkers;
   /// The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
-  final pulumi.Input<int>? minNumWorkers;
+  final pulumi.Input<int?>? minNumWorkers;
 
   /// Creates a new [RuntimeUpdatableParams].
   /// [maxNumWorkers] The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
@@ -26,8 +26,8 @@ class RuntimeUpdatableParams {
 
   factory RuntimeUpdatableParams.fromMap(Map<String, dynamic> map) {
     return RuntimeUpdatableParams(
-      maxNumWorkers: (() { final guardedValue = map['maxNumWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minNumWorkers: (() { final guardedValue = map['minNumWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxNumWorkers: (() { final guardedValue = map['maxNumWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minNumWorkers: (() { final guardedValue = map['minNumWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

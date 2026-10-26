@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networksecurity_v1_url_list_args_doc}
 class UrlListArgs {
   /// Optional. Free-text description of the resource.
-  final pulumi.Input<String>? description;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<String?>? location;
   /// Name of the resource provided by the user. Name is of the form projects/{project}/locations/{location}/urlLists/{url_list} url_list should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Required. Short name of the UrlList resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "url_list".
   final pulumi.Input<String> urlListId;
   /// FQDNs and URLs.

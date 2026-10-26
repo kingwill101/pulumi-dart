@@ -6,9 +6,9 @@ import 'basic_yarn_autoscaling_config_dataproc_v1beta2.dart';
 /// Basic algorithm for autoscaling.
 class BasicAutoscalingAlgorithmDataprocV1beta2 {
   /// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
-  final pulumi.Input<String>? cooldownPeriod;
+  final pulumi.Input<String?>? cooldownPeriod;
   /// Optional. YARN autoscaling configuration.
-  final pulumi.Input<BasicYarnAutoscalingConfigDataprocV1beta2>? yarnConfig;
+  final pulumi.Input<BasicYarnAutoscalingConfigDataprocV1beta2?>? yarnConfig;
 
   /// Creates a new [BasicAutoscalingAlgorithmDataprocV1beta2].
   /// [cooldownPeriod] Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.

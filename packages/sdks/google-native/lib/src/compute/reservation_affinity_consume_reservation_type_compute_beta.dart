@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION. See Consuming reserved instances for examples.
-enum ReservationAffinityConsumeReservationTypeComputeBeta {
+enum ReservationAffinityConsumeReservationTypeComputeBeta implements pulumi.PulumiEnum<String> {
   anyReservation("ANY_RESERVATION"),
   noReservation("NO_RESERVATION"),
   specificReservation("SPECIFIC_RESERVATION"),
@@ -8,6 +10,7 @@ enum ReservationAffinityConsumeReservationTypeComputeBeta {
   unspecified("UNSPECIFIED");
 
   const ReservationAffinityConsumeReservationTypeComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static ReservationAffinityConsumeReservationTypeComputeBeta fromValue(String value) {

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The type of accelerator(s) that may be attached to the machine as per accelerator_count.
-enum GoogleCloudAiplatformV1MachineSpecAcceleratorType {
+enum GoogleCloudAiplatformV1MachineSpecAcceleratorType implements pulumi.PulumiEnum<String> {
   acceleratorTypeUnspecified("ACCELERATOR_TYPE_UNSPECIFIED"),
   nvidiaTeslaK80("NVIDIA_TESLA_K80"),
   nvidiaTeslaP100("NVIDIA_TESLA_P100"),
@@ -14,6 +16,7 @@ enum GoogleCloudAiplatformV1MachineSpecAcceleratorType {
   tpuV4Pod("TPU_V4_POD");
 
   const GoogleCloudAiplatformV1MachineSpecAcceleratorType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudAiplatformV1MachineSpecAcceleratorType fromValue(String value) {

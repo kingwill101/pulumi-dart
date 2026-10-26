@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PartitionArgs {
   final pulumi.Input<String> entityId;
   /// Optional. The etag for this partition.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   final pulumi.Input<String> lakeId;
   /// Immutable. The location of the entity data within the partition, for example, gs://bucket/path/to/entity/key1=value1/key2=value2. Or projects//datasets//tables/
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
   final pulumi.Input<List<String>> values;
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [PartitionArgs].
   /// [entityId] Required.

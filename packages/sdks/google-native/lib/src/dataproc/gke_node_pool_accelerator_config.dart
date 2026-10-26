@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request for a node pool.
 class GkeNodePoolAcceleratorConfig {
   /// The number of accelerator cards exposed to an instance.
-  final pulumi.Input<String>? acceleratorCount;
+  final pulumi.Input<String?>? acceleratorCount;
   /// The accelerator type resource namename (see GPUs on Compute Engine).
-  final pulumi.Input<String>? acceleratorType;
+  final pulumi.Input<String?>? acceleratorType;
   /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
-  final pulumi.Input<String>? gpuPartitionSize;
+  final pulumi.Input<String?>? gpuPartitionSize;
 
   /// Creates a new [GkeNodePoolAcceleratorConfig].
   /// [acceleratorCount] The number of accelerator cards exposed to an instance.

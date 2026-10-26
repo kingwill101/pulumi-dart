@@ -15,33 +15,33 @@ import 'postgre_sql_connection_profile.dart';
 /// {@macro pulumi_datamigration_v1_connection_profile_args_doc}
 class ConnectionProfileArgs {
   /// An AlloyDB cluster connection profile.
-  final pulumi.Input<AlloyDbConnectionProfile>? alloydb;
+  final pulumi.Input<AlloyDbConnectionProfile?>? alloydb;
   /// A CloudSQL database connection profile.
-  final pulumi.Input<CloudSqlConnectionProfile>? cloudsql;
+  final pulumi.Input<CloudSqlConnectionProfile?>? cloudsql;
   /// Required. The connection profile identifier.
   final pulumi.Input<String> connectionProfileId;
   /// The connection profile display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// A MySQL database connection profile.
-  final pulumi.Input<MySqlConnectionProfile>? mysql;
+  final pulumi.Input<MySqlConnectionProfile?>? mysql;
   /// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An Oracle database connection profile.
-  final pulumi.Input<OracleConnectionProfile>? oracle;
+  final pulumi.Input<OracleConnectionProfile?>? oracle;
   /// A PostgreSQL database connection profile.
-  final pulumi.Input<PostgreSqlConnectionProfile>? postgresql;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<PostgreSqlConnectionProfile?>? postgresql;
+  final pulumi.Input<String?>? project;
   /// The database provider.
-  final pulumi.Input<ConnectionProfileProvider>? provider;
+  final pulumi.Input<ConnectionProfileProvider?>? provider;
   /// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
-  final pulumi.Input<bool>? skipValidation;
+  final pulumi.Input<bool?>? skipValidation;
   /// The current connection profile state (e.g. DRAFT, READY, or FAILED).
-  final pulumi.Input<ConnectionProfileState>? state;
+  final pulumi.Input<ConnectionProfileState?>? state;
 
   /// Creates a new [ConnectionProfileArgs].
   /// [alloydb] An AlloyDB cluster connection profile.

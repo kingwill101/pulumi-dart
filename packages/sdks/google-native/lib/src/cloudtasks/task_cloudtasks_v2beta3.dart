@@ -47,8 +47,34 @@ class TaskCloudtasksV2beta3 extends pulumi.CustomResource {
           'google-native:cloudtasks/v2beta3:Task',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'queueId']).merge(options),
         ) {
+    appEngineHttpRequest = registerOutput<AppEngineHttpRequestResponseCloudtasksV2beta3>('appEngineHttpRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEngineHttpRequestResponseCloudtasksV2beta3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    dispatchCount = registerOutput<int>('dispatchCount');
+    dispatchDeadline = registerOutput<String>('dispatchDeadline');
+    firstAttempt = registerOutput<AttemptResponseCloudtasksV2beta3>('firstAttempt', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttemptResponseCloudtasksV2beta3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpRequest = registerOutput<HttpRequestResponseCloudtasksV2beta3>('httpRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpRequestResponseCloudtasksV2beta3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastAttempt = registerOutput<AttemptResponseCloudtasksV2beta3>('lastAttempt', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttemptResponseCloudtasksV2beta3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pullMessage = registerOutput<PullMessageResponseCloudtasksV2beta3>('pullMessage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PullMessageResponseCloudtasksV2beta3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    queueId = registerOutput<String>('queueId');
+    responseCount = registerOutput<int>('responseCount');
+    scheduleTime = registerOutput<String>('scheduleTime');
+    view = registerOutput<String>('view');
+  }
+
+  /// Creates a typed reference to an existing [TaskCloudtasksV2beta3] resource.
+  TaskCloudtasksV2beta3.reference(String urn)
+    : super(
+        'google-native:cloudtasks/v2beta3:Task',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appEngineHttpRequest = registerOutput<AppEngineHttpRequestResponseCloudtasksV2beta3>('appEngineHttpRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEngineHttpRequestResponseCloudtasksV2beta3.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dispatchCount = registerOutput<int>('dispatchCount');

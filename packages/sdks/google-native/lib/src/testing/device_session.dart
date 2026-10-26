@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'android_device_response.dart';
 import 'device_session_args.dart';
+import 'session_state_event_response.dart';
 
 /// POST /v1/projects/{project_id}/deviceSessions
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
@@ -24,7 +25,7 @@ class DeviceSession extends pulumi.CustomResource {
   /// Current state of the DeviceSession.
   late final pulumi.Output<String> state;
   /// The historical state transitions of the session_state message including the current session state.
-  late final pulumi.Output<List<Map<String, dynamic>>> stateHistories;
+  late final pulumi.Output<List<SessionStateEventResponse>> stateHistories;
   /// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
   late final pulumi.Output<String> ttl;
 
@@ -40,7 +41,7 @@ class DeviceSession extends pulumi.CustomResource {
           'google-native:testing/v1:DeviceSession',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     activeStartTime = registerOutput<String>('activeStartTime');
     androidDevice = registerOutput<AndroidDeviceResponse>('androidDevice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AndroidDeviceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -51,7 +52,29 @@ class DeviceSession extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');
-    stateHistories = registerOutput<List<Map<String, dynamic>>>('stateHistories');
+    stateHistories = registerOutput<List<SessionStateEventResponse>>('stateHistories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SessionStateEventResponse>(guardedValue, (value) => SessionStateEventResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    ttl = registerOutput<String>('ttl');
+  }
+
+  /// Creates a typed reference to an existing [DeviceSession] resource.
+  DeviceSession.reference(String urn)
+    : super(
+        'google-native:testing/v1:DeviceSession',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activeStartTime = registerOutput<String>('activeStartTime');
+    androidDevice = registerOutput<AndroidDeviceResponse>('androidDevice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AndroidDeviceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    expireTime = registerOutput<String>('expireTime');
+    inactivityTimeout = registerOutput<String>('inactivityTimeout');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    stateHistories = registerOutput<List<SessionStateEventResponse>>('stateHistories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SessionStateEventResponse>(guardedValue, (value) => SessionStateEventResponse.fromMap((value as Map).cast<String, dynamic>())); });
     ttl = registerOutput<String>('ttl');
   }
 }

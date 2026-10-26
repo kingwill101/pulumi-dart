@@ -12,19 +12,19 @@ import 'cvssv3_user_interaction_containeranalysis_v1beta1.dart';
 
 /// Deprecated. Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
 class CVSSv3ContaineranalysisV1beta1 {
-  final pulumi.Input<CVSSv3AttackComplexityContaineranalysisV1beta1>? attackComplexity;
+  final pulumi.Input<CVSSv3AttackComplexityContaineranalysisV1beta1?>? attackComplexity;
   /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
-  final pulumi.Input<CVSSv3AttackVectorContaineranalysisV1beta1>? attackVector;
-  final pulumi.Input<CVSSv3AvailabilityImpactContaineranalysisV1beta1>? availabilityImpact;
+  final pulumi.Input<CVSSv3AttackVectorContaineranalysisV1beta1?>? attackVector;
+  final pulumi.Input<CVSSv3AvailabilityImpactContaineranalysisV1beta1?>? availabilityImpact;
   /// The base score is a function of the base metric scores.
-  final pulumi.Input<double>? baseScore;
-  final pulumi.Input<CVSSv3ConfidentialityImpactContaineranalysisV1beta1>? confidentialityImpact;
-  final pulumi.Input<double>? exploitabilityScore;
-  final pulumi.Input<double>? impactScore;
-  final pulumi.Input<CVSSv3IntegrityImpactContaineranalysisV1beta1>? integrityImpact;
-  final pulumi.Input<CVSSv3PrivilegesRequiredContaineranalysisV1beta1>? privilegesRequired;
-  final pulumi.Input<CVSSv3ScopeContaineranalysisV1beta1>? scope;
-  final pulumi.Input<CVSSv3UserInteractionContaineranalysisV1beta1>? userInteraction;
+  final pulumi.Input<double?>? baseScore;
+  final pulumi.Input<CVSSv3ConfidentialityImpactContaineranalysisV1beta1?>? confidentialityImpact;
+  final pulumi.Input<double?>? exploitabilityScore;
+  final pulumi.Input<double?>? impactScore;
+  final pulumi.Input<CVSSv3IntegrityImpactContaineranalysisV1beta1?>? integrityImpact;
+  final pulumi.Input<CVSSv3PrivilegesRequiredContaineranalysisV1beta1?>? privilegesRequired;
+  final pulumi.Input<CVSSv3ScopeContaineranalysisV1beta1?>? scope;
+  final pulumi.Input<CVSSv3UserInteractionContaineranalysisV1beta1?>? userInteraction;
 
   /// Creates a new [CVSSv3ContaineranalysisV1beta1].
   /// [attackComplexity] Optional.
@@ -73,10 +73,10 @@ class CVSSv3ContaineranalysisV1beta1 {
       attackComplexity: (() { final guardedValue = map['attackComplexity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSv3AttackComplexityContaineranalysisV1beta1.fromValue(guardedValue as String)); })(),
       attackVector: (() { final guardedValue = map['attackVector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSv3AttackVectorContaineranalysisV1beta1.fromValue(guardedValue as String)); })(),
       availabilityImpact: (() { final guardedValue = map['availabilityImpact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSv3AvailabilityImpactContaineranalysisV1beta1.fromValue(guardedValue as String)); })(),
-      baseScore: (() { final guardedValue = map['baseScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      baseScore: (() { final guardedValue = map['baseScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       confidentialityImpact: (() { final guardedValue = map['confidentialityImpact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSv3ConfidentialityImpactContaineranalysisV1beta1.fromValue(guardedValue as String)); })(),
-      exploitabilityScore: (() { final guardedValue = map['exploitabilityScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      impactScore: (() { final guardedValue = map['impactScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      exploitabilityScore: (() { final guardedValue = map['exploitabilityScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      impactScore: (() { final guardedValue = map['impactScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       integrityImpact: (() { final guardedValue = map['integrityImpact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSv3IntegrityImpactContaineranalysisV1beta1.fromValue(guardedValue as String)); })(),
       privilegesRequired: (() { final guardedValue = map['privilegesRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSv3PrivilegesRequiredContaineranalysisV1beta1.fromValue(guardedValue as String)); })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSv3ScopeContaineranalysisV1beta1.fromValue(guardedValue as String)); })(),

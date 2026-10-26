@@ -33,8 +33,28 @@ class WorkloadIdentityPool extends pulumi.CustomResource {
           'google-native:iam/v1:WorkloadIdentityPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'workloadIdentityPoolId']).merge(options),
         ) {
+    description = registerOutput<String>('description');
+    disabled = registerOutput<bool>('disabled');
+    displayName = registerOutput<String>('displayName');
+    expireTime = registerOutput<String>('expireTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
+  }
+
+  /// Creates a typed reference to an existing [WorkloadIdentityPool] resource.
+  WorkloadIdentityPool.reference(String urn)
+    : super(
+        'google-native:iam/v1:WorkloadIdentityPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String>('description');
     disabled = registerOutput<bool>('disabled');
     displayName = registerOutput<String>('displayName');

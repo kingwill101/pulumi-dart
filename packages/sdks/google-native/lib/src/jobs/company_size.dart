@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The employer's company size.
-enum CompanySize {
+enum CompanySize implements pulumi.PulumiEnum<String> {
   companySizeUnspecified("COMPANY_SIZE_UNSPECIFIED"),
   mini("MINI"),
   small("SMALL"),
@@ -10,6 +12,7 @@ enum CompanySize {
   giant("GIANT");
 
   const CompanySize(this.wireValue);
+  @override
   final String wireValue;
 
   static CompanySize fromValue(String value) {

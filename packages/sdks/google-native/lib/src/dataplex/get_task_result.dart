@@ -9,31 +9,31 @@ import 'google_cloud_dataplex_v1_task_trigger_spec_response.dart';
 /// Result data returned by getTask.
 class GetTaskResult {
   /// The time when the task was created.
-  final String createTime;
+  final String? createTime;
   /// Optional. Description of the task.
-  final String description;
+  final String? description;
   /// Optional. User friendly display name.
-  final String displayName;
+  final String? displayName;
   /// Spec related to how a task is executed.
-  final GoogleCloudDataplexV1TaskExecutionSpecResponse executionSpec;
+  final GoogleCloudDataplexV1TaskExecutionSpecResponse? executionSpec;
   /// Status of the latest task executions.
-  final GoogleCloudDataplexV1TaskExecutionStatusResponse executionStatus;
+  final GoogleCloudDataplexV1TaskExecutionStatusResponse? executionStatus;
   /// Optional. User-defined labels for the task.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// The relative resource name of the task, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}.
-  final String name;
+  final String? name;
   /// Config related to running scheduled Notebooks.
-  final GoogleCloudDataplexV1TaskNotebookTaskConfigResponse notebook;
+  final GoogleCloudDataplexV1TaskNotebookTaskConfigResponse? notebook;
   /// Config related to running custom Spark tasks.
-  final GoogleCloudDataplexV1TaskSparkTaskConfigResponse spark;
+  final GoogleCloudDataplexV1TaskSparkTaskConfigResponse? spark;
   /// Current state of the task.
-  final String state;
+  final String? state;
   /// Spec related to how often and when a task should be triggered.
-  final GoogleCloudDataplexV1TaskTriggerSpecResponse triggerSpec;
+  final GoogleCloudDataplexV1TaskTriggerSpecResponse? triggerSpec;
   /// System generated globally unique ID for the task. This ID will be different if the task is deleted and re-created with the same name.
-  final String uid;
+  final String? uid;
   /// The time when the task was last updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetTaskResult].
   /// [createTime] The time when the task was created.
@@ -50,54 +50,54 @@ class GetTaskResult {
   /// [uid] System generated globally unique ID for the task. This ID will be different if the task is deleted and re-created with the same name.
   /// [updateTime] The time when the task was last updated.
   const GetTaskResult({
-    required this.createTime,
-    required this.description,
-    required this.displayName,
-    required this.executionSpec,
-    required this.executionStatus,
-    required this.labels,
-    required this.name,
-    required this.notebook,
-    required this.spark,
-    required this.state,
-    required this.triggerSpec,
-    required this.uid,
-    required this.updateTime,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.executionSpec,
+    this.executionStatus,
+    this.labels,
+    this.name,
+    this.notebook,
+    this.spark,
+    this.state,
+    this.triggerSpec,
+    this.uid,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'displayName': displayName,
-      'executionSpec': executionSpec.toMap(),
-      'executionStatus': executionStatus.toMap(),
-      'labels': labels,
-      'name': name,
-      'notebook': notebook.toMap(),
-      'spark': spark.toMap(),
-      'state': state,
-      'triggerSpec': triggerSpec.toMap(),
-      'uid': uid,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'executionSpec': ?executionSpec?.toMap(),
+      'executionStatus': ?executionStatus?.toMap(),
+      'labels': ?labels,
+      'name': ?name,
+      'notebook': ?notebook?.toMap(),
+      'spark': ?spark?.toMap(),
+      'state': ?state,
+      'triggerSpec': ?triggerSpec?.toMap(),
+      'uid': ?uid,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetTaskResult.fromMap(Map<String, dynamic> map) {
     return GetTaskResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      executionSpec: GoogleCloudDataplexV1TaskExecutionSpecResponse.fromMap((map['executionSpec']! as Map).cast<String, dynamic>()),
-      executionStatus: GoogleCloudDataplexV1TaskExecutionStatusResponse.fromMap((map['executionStatus']! as Map).cast<String, dynamic>()),
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      notebook: GoogleCloudDataplexV1TaskNotebookTaskConfigResponse.fromMap((map['notebook']! as Map).cast<String, dynamic>()),
-      spark: GoogleCloudDataplexV1TaskSparkTaskConfigResponse.fromMap((map['spark']! as Map).cast<String, dynamic>()),
-      state: map['state'] as String,
-      triggerSpec: GoogleCloudDataplexV1TaskTriggerSpecResponse.fromMap((map['triggerSpec']! as Map).cast<String, dynamic>()),
-      uid: map['uid'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      executionSpec: (() { final guardedValue = map['executionSpec']; if (guardedValue == null) return null; return GoogleCloudDataplexV1TaskExecutionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      executionStatus: (() { final guardedValue = map['executionStatus']; if (guardedValue == null) return null; return GoogleCloudDataplexV1TaskExecutionStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      notebook: (() { final guardedValue = map['notebook']; if (guardedValue == null) return null; return GoogleCloudDataplexV1TaskNotebookTaskConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      spark: (() { final guardedValue = map['spark']; if (guardedValue == null) return null; return GoogleCloudDataplexV1TaskSparkTaskConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      triggerSpec: (() { final guardedValue = map['triggerSpec']; if (guardedValue == null) return null; return GoogleCloudDataplexV1TaskTriggerSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

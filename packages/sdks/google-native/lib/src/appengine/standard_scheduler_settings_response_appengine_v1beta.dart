@@ -36,10 +36,10 @@ class StandardSchedulerSettingsResponseAppengineV1beta {
 
   factory StandardSchedulerSettingsResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return StandardSchedulerSettingsResponseAppengineV1beta(
-      maxInstances: pulumi.Input.fromValue(map['maxInstances'] as int),
-      minInstances: pulumi.Input.fromValue(map['minInstances'] as int),
-      targetCpuUtilization: pulumi.Input.fromValue(map['targetCpuUtilization'] as double),
-      targetThroughputUtilization: pulumi.Input.fromValue(map['targetThroughputUtilization'] as double),
+      maxInstances: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxInstances'])),
+      minInstances: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minInstances'])),
+      targetCpuUtilization: pulumi.Input.fromValue((map['targetCpuUtilization'] as num).toDouble()),
+      targetThroughputUtilization: pulumi.Input.fromValue((map['targetThroughputUtilization'] as num).toDouble()),
     );
   }
 }

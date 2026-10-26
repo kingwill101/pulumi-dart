@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// StorageSource describes the location of the source in an archive file in Google Cloud Storage.
 class StorageSource {
   /// Google Cloud Storage bucket containing source (see [Bucket Name Requirements] (https://cloud.google.com/storage/docs/bucket-naming#requirements)).
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Google Cloud Storage generation for the object.
-  final pulumi.Input<String>? generation;
+  final pulumi.Input<String?>? generation;
   /// Google Cloud Storage object containing source.
-  final pulumi.Input<String>? object_;
+  final pulumi.Input<String?>? object_;
 
   /// Creates a new [StorageSource].
   /// [bucket] Google Cloud Storage bucket containing source (see [Bucket Name Requirements] (https://cloud.google.com/storage/docs/bucket-naming#requirements)).

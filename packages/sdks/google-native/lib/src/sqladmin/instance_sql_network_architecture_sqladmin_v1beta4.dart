@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The SQL network architecture for the instance.
-enum InstanceSqlNetworkArchitectureSqladminV1beta4 {
+enum InstanceSqlNetworkArchitectureSqladminV1beta4 implements pulumi.PulumiEnum<String> {
   sqlNetworkArchitectureUnspecified("SQL_NETWORK_ARCHITECTURE_UNSPECIFIED"),
   newNetworkArchitecture("NEW_NETWORK_ARCHITECTURE"),
   oldNetworkArchitecture("OLD_NETWORK_ARCHITECTURE");
 
   const InstanceSqlNetworkArchitectureSqladminV1beta4(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceSqlNetworkArchitectureSqladminV1beta4 fromValue(String value) {

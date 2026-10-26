@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Importance of the source.
-enum SourceScoringConfigSourceImportance {
+enum SourceScoringConfigSourceImportance implements pulumi.PulumiEnum<String> {
   default_("DEFAULT"),
   low("LOW"),
   high("HIGH");
 
   const SourceScoringConfigSourceImportance(this.wireValue);
+  @override
   final String wireValue;
 
   static SourceScoringConfigSourceImportance fromValue(String value) {

@@ -7,8 +7,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_binaryauthorization_v1beta1_get_policy_iam_policy_binaryauthorization_v1beta1_args_doc}
 class GetPolicyIamPolicyBinaryauthorizationV1beta1Args {
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetPolicyIamPolicyBinaryauthorizationV1beta1Args].
   /// [optionsRequestedPolicyVersion] Optional.
@@ -27,7 +27,7 @@ class GetPolicyIamPolicyBinaryauthorizationV1beta1Args {
 
   factory GetPolicyIamPolicyBinaryauthorizationV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetPolicyIamPolicyBinaryauthorizationV1beta1Args(
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

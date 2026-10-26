@@ -7,11 +7,11 @@ import 'google_cloud_documentai_v1_document_text_anchor.dart';
 /// This message is used for text changes aka. OCR corrections.
 class GoogleCloudDocumentaiV1DocumentTextChange {
   /// The text that replaces the text identified in the `text_anchor`.
-  final pulumi.Input<String>? changedText;
+  final pulumi.Input<String?>? changedText;
   /// The history of this annotation.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentProvenance>>? provenance;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentProvenance>?>? provenance;
   /// Provenance of the correction. Text anchor indexing into the Document.text. There can only be a single `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the text change is inserted before that index.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentTextAnchor>? textAnchor;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentTextAnchor?>? textAnchor;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentTextChange].
   /// [changedText] The text that replaces the text identified in the `text_anchor`.

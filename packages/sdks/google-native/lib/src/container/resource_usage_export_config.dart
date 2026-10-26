@@ -7,11 +7,11 @@ import 'consumption_metering_config.dart';
 /// Configuration for exporting cluster resource usages.
 class ResourceUsageExportConfig {
   /// Configuration to use BigQuery as usage export destination.
-  final pulumi.Input<BigQueryDestination>? bigqueryDestination;
+  final pulumi.Input<BigQueryDestination?>? bigqueryDestination;
   /// Configuration to enable resource consumption metering.
-  final pulumi.Input<ConsumptionMeteringConfig>? consumptionMeteringConfig;
+  final pulumi.Input<ConsumptionMeteringConfig?>? consumptionMeteringConfig;
   /// Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created in the cluster to meter network egress traffic.
-  final pulumi.Input<bool>? enableNetworkEgressMetering;
+  final pulumi.Input<bool?>? enableNetworkEgressMetering;
 
   /// Creates a new [ResourceUsageExportConfig].
   /// [bigqueryDestination] Configuration to use BigQuery as usage export destination.

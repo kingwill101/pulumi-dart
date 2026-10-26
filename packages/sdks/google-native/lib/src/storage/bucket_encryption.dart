@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Encryption configuration for a bucket.
 class BucketEncryption {
   /// A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
-  final pulumi.Input<String>? defaultKmsKeyName;
+  final pulumi.Input<String?>? defaultKmsKeyName;
 
   /// Creates a new [BucketEncryption].
   /// [defaultKmsKeyName] A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.

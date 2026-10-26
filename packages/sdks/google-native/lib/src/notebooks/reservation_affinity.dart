@@ -6,11 +6,11 @@ import 'reservation_affinity_consume_reservation_type.dart';
 /// Reservation Affinity for consuming Zonal reservation.
 class ReservationAffinity {
   /// Optional. Type of reservation to consume
-  final pulumi.Input<ReservationAffinityConsumeReservationType>? consumeReservationType;
+  final pulumi.Input<ReservationAffinityConsumeReservationType?>? consumeReservationType;
   /// Optional. Corresponds to the label key of reservation resource.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Optional. Corresponds to the label values of reservation resource.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [ReservationAffinity].
   /// [consumeReservationType] Optional. Type of reservation to consume

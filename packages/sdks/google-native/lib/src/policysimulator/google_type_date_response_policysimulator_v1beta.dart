@@ -31,9 +31,9 @@ class GoogleTypeDateResponsePolicysimulatorV1beta {
 
   factory GoogleTypeDateResponsePolicysimulatorV1beta.fromMap(Map<String, dynamic> map) {
     return GoogleTypeDateResponsePolicysimulatorV1beta(
-      day: pulumi.Input.fromValue(map['day'] as int),
-      month: pulumi.Input.fromValue(map['month'] as int),
-      year: pulumi.Input.fromValue(map['year'] as int),
+      day: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['day'])),
+      month: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['month'])),
+      year: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['year'])),
     );
   }
 }

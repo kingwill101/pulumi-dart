@@ -9,8 +9,8 @@ import 'replication_secretmanager_v1beta1.dart';
 /// {@macro pulumi_secretmanager_v1beta1_secret_secretmanager_v1beta1_args_doc}
 class SecretSecretmanagerV1beta1Args {
   /// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? project;
   /// Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
   final pulumi.Input<ReplicationSecretmanagerV1beta1> replication;
   /// Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.

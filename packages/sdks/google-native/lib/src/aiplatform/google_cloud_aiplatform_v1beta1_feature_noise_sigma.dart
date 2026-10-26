@@ -6,7 +6,7 @@ import 'google_cloud_aiplatform_v1beta1_feature_noise_sigma_noise_sigma_for_feat
 /// Noise sigma by features. Noise sigma represents the standard deviation of the gaussian kernel that will be used to add noise to interpolated inputs prior to computing gradients.
 class GoogleCloudAiplatformV1beta1FeatureNoiseSigma {
   /// Noise sigma per feature. No noise is added to features that are not set.
-  final pulumi.Input<List<GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeature>>? noiseSigma;
+  final pulumi.Input<List<GoogleCloudAiplatformV1beta1FeatureNoiseSigmaNoiseSigmaForFeature>?>? noiseSigma;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1FeatureNoiseSigma].
   /// [noiseSigma] Noise sigma per feature. No noise is added to features that are not set.

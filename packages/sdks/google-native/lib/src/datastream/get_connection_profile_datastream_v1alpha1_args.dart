@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectionProfileDatastreamV1alpha1Args {
   final pulumi.Input<String> connectionProfileId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetConnectionProfileDatastreamV1alpha1Args].
   /// [connectionProfileId] Required.

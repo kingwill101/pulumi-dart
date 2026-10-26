@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_gkehub_v1beta_namespace_gkehub_v1beta_args_doc}
 class NamespaceGkehubV1betaArgs {
   /// Optional. Labels for this Namespace.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// The resource name for the namespace `projects/{project}/locations/{location}/namespaces/{namespace}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Optional. Namespace-level cluster namespace labels. These labels are applied to the related namespace of the member clusters bound to the parent Scope. Scope-level labels (`namespace_labels` in the Fleet Scope resource) take precedence over Namespace-level labels if they share a key. Keys and values must be Kubernetes-conformant.
-  final pulumi.Input<Map<String, String>>? namespaceLabels;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? namespaceLabels;
+  final pulumi.Input<String?>? project;
   /// Scope associated with the namespace
   final pulumi.Input<String> scope;
   final pulumi.Input<String> scopeId;

@@ -47,7 +47,7 @@ class GoogleCloudAiplatformV1beta1ExamplesResponse {
       exampleGcsSource: pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceResponse.fromMap((map['exampleGcsSource']! as Map).cast<String, dynamic>())),
       gcsSource: pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1GcsSourceResponse.fromMap((map['gcsSource']! as Map).cast<String, dynamic>())),
       nearestNeighborSearchConfig: pulumi.Input.fromValue(map['nearestNeighborSearchConfig']),
-      neighborCount: pulumi.Input.fromValue(map['neighborCount'] as int),
+      neighborCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['neighborCount'])),
       presets: pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1PresetsResponse.fromMap((map['presets']! as Map).cast<String, dynamic>())),
     );
   }

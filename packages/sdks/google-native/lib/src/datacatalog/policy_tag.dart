@@ -30,9 +30,28 @@ class PolicyTag extends pulumi.CustomResource {
           'google-native:datacatalog/v1:PolicyTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'taxonomyId']).merge(options),
         ) {
-    childPolicyTags = registerOutput<List<String>>('childPolicyTags');
+    childPolicyTags = registerOutput<List<String>>('childPolicyTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    parentPolicyTag = registerOutput<String>('parentPolicyTag');
+    project = registerOutput<String>('project');
+    taxonomyId = registerOutput<String>('taxonomyId');
+  }
+
+  /// Creates a typed reference to an existing [PolicyTag] resource.
+  PolicyTag.reference(String urn)
+    : super(
+        'google-native:datacatalog/v1:PolicyTag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    childPolicyTags = registerOutput<List<String>>('childPolicyTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     location = registerOutput<String>('location');

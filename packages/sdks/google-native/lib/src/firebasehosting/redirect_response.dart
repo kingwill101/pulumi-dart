@@ -39,7 +39,7 @@ class RedirectResponse {
       glob: pulumi.Input.fromValue(map['glob'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       regex: pulumi.Input.fromValue(map['regex'] as String),
-      statusCode: pulumi.Input.fromValue(map['statusCode'] as int),
+      statusCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['statusCode'])),
     );
   }
 }

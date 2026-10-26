@@ -1,10 +1,13 @@
-enum DataSamplingConfigBehaviorsItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum DataSamplingConfigBehaviorsItem implements pulumi.PulumiEnum<String> {
   dataSamplingBehaviorUnspecified("DATA_SAMPLING_BEHAVIOR_UNSPECIFIED"),
   disabled("DISABLED"),
   alwaysOn("ALWAYS_ON"),
   exceptions("EXCEPTIONS");
 
   const DataSamplingConfigBehaviorsItem(this.wireValue);
+  @override
   final String wireValue;
 
   static DataSamplingConfigBehaviorsItem fromValue(String value) {

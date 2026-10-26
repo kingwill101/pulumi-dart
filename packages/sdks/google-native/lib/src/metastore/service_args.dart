@@ -18,39 +18,39 @@ import 'telemetry_config.dart';
 /// {@macro pulumi_metastore_v1_service_args_doc}
 class ServiceArgs {
   /// Immutable. The database type that the Metastore service stores its data.
-  final pulumi.Input<ServiceDatabaseType>? databaseType;
+  final pulumi.Input<ServiceDatabaseType?>? databaseType;
   /// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
-  final pulumi.Input<EncryptionConfig>? encryptionConfig;
+  final pulumi.Input<EncryptionConfig?>? encryptionConfig;
   /// Configuration information specific to running Hive metastore software as the metastore service.
-  final pulumi.Input<HiveMetastoreConfig>? hiveMetastoreConfig;
+  final pulumi.Input<HiveMetastoreConfig?>? hiveMetastoreConfig;
   /// User-defined labels for the metastore service.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
-  final pulumi.Input<MaintenanceWindow>? maintenanceWindow;
+  final pulumi.Input<MaintenanceWindow?>? maintenanceWindow;
   /// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
-  final pulumi.Input<MetadataIntegration>? metadataIntegration;
+  final pulumi.Input<MetadataIntegration?>? metadataIntegration;
   /// Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The configuration specifying the network settings for the Dataproc Metastore service.
-  final pulumi.Input<NetworkConfig>? networkConfig;
+  final pulumi.Input<NetworkConfig?>? networkConfig;
   /// The TCP port at which the metastore service is reached. Default: 9083.
-  final pulumi.Input<int>? port;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<int?>? port;
+  final pulumi.Input<String?>? project;
   /// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
-  final pulumi.Input<ServiceReleaseChannel>? releaseChannel;
+  final pulumi.Input<ServiceReleaseChannel?>? releaseChannel;
   /// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Scaling configuration of the metastore service.
-  final pulumi.Input<ScalingConfig>? scalingConfig;
+  final pulumi.Input<ScalingConfig?>? scalingConfig;
   /// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
   final pulumi.Input<String> serviceId;
   /// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
-  final pulumi.Input<TelemetryConfig>? telemetryConfig;
+  final pulumi.Input<TelemetryConfig?>? telemetryConfig;
   /// The tier of the service.
-  final pulumi.Input<ServiceTier>? tier;
+  final pulumi.Input<ServiceTier?>? tier;
 
   /// Creates a new [ServiceArgs].
   /// [databaseType] Immutable. The database type that the Metastore service stores its data.
@@ -127,7 +127,7 @@ class ServiceArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkConfig: (() { final guardedValue = map['networkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       releaseChannel: (() { final guardedValue = map['releaseChannel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceReleaseChannel.fromValue(guardedValue as String)); })(),
       requestId: (() { final guardedValue = map['requestId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

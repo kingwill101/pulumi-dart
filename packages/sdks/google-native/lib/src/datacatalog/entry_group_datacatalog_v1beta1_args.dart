@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_datacatalog_v1beta1_entry_group_datacatalog_v1beta1_args_doc}
 class EntryGroupDatacatalogV1beta1Args {
   /// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents. Default value is an empty string.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Required. The id of the entry group to create. The id must begin with a letter or underscore, contain only English letters, numbers and underscores, and be at most 64 characters.
   final pulumi.Input<String> entryGroupId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [EntryGroupDatacatalogV1beta1Args].
   /// [description] Entry group description, which can consist of several sentences or paragraphs that describe entry group contents. Default value is an empty string.

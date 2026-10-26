@@ -6,7 +6,7 @@ import 'google_cloud_dataplex_v1_data_quality_spec_post_scan_actions_big_query_e
 /// The configuration of post scan actions of DataQualityScan.
 class GoogleCloudDataplexV1DataQualitySpecPostScanActions {
   /// Optional. If set, results will be exported to the provided BigQuery table.
-  final pulumi.Input<GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport>? bigqueryExport;
+  final pulumi.Input<GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport?>? bigqueryExport;
 
   /// Creates a new [GoogleCloudDataplexV1DataQualitySpecPostScanActions].
   /// [bigqueryExport] Optional. If set, results will be exported to the provided BigQuery table.

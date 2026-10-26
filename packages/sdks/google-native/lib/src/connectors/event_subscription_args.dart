@@ -11,21 +11,21 @@ import 'jms.dart';
 class EventSubscriptionArgs {
   final pulumi.Input<String> connectionId;
   /// Optional. The destination to hit when we receive an event
-  final pulumi.Input<EventSubscriptionDestination>? destinations;
+  final pulumi.Input<EventSubscriptionDestination?>? destinations;
   /// Required. Identifier to assign to the Event Subscription. Must be unique within scope of the parent resource.
   final pulumi.Input<String> eventSubscriptionId;
   /// Optional. Event type id of the event of current EventSubscription.
-  final pulumi.Input<String>? eventTypeId;
+  final pulumi.Input<String?>? eventTypeId;
   /// Optional. JMS is the source for the event listener.
-  final pulumi.Input<JMS>? jms;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<JMS?>? jms;
+  final pulumi.Input<String?>? location;
   /// Resource name of the EventSubscription. Format: projects/{project}/locations/{location}/connections/{connection}/eventSubscriptions/{event_subscription}
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Optional. name of the Subscriber for the current EventSubscription.
-  final pulumi.Input<String>? subscriber;
+  final pulumi.Input<String?>? subscriber;
   /// Optional. Link for Subscriber of the current EventSubscription.
-  final pulumi.Input<String>? subscriberLink;
+  final pulumi.Input<String?>? subscriberLink;
 
   /// Creates a new [EventSubscriptionArgs].
   /// [connectionId] Required.

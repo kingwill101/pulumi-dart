@@ -44,7 +44,7 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseDnsV1beta2 {
       kind: pulumi.Input.fromValue(map['kind'] as String),
       rrdatas: pulumi.Input.fromValue((map['rrdatas'] as List).cast<String>()),
       signatureRrdatas: pulumi.Input.fromValue((map['signatureRrdatas'] as List).cast<String>()),
-      weight: pulumi.Input.fromValue(map['weight'] as double),
+      weight: pulumi.Input.fromValue((map['weight'] as num).toDouble()),
     );
   }
 }

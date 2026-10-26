@@ -10,27 +10,27 @@ import 'task_group_response.dart';
 /// Result data returned by getJob.
 class GetJobResult {
   /// Compute resource allocation for all TaskGroups in the Job.
-  final AllocationPolicyResponse allocationPolicy;
+  final AllocationPolicyResponse? allocationPolicy;
   /// When the Job was created.
-  final String createTime;
+  final String? createTime;
   /// Labels for the Job. Labels could be user provided or system generated. For example, "labels": { "department": "finance", "environment": "test" } You can assign up to 64 labels. [Google Compute Engine label restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) apply. Label names that start with "goog-" or "google-" are reserved.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Log preservation policy for the Job.
-  final LogsPolicyResponse logsPolicy;
+  final LogsPolicyResponse? logsPolicy;
   /// Job name. For example: "projects/123456/locations/us-central1/jobs/job01".
-  final String name;
+  final String? name;
   /// Notification configurations.
-  final List<JobNotificationResponse> notifications;
+  final List<JobNotificationResponse>? notifications;
   /// Priority of the Job. The valid value range is [0, 100). Default value is 0. Higher value indicates higher priority. A job with higher priority value is more likely to run earlier if all other requirements are satisfied.
-  final String priority;
+  final String? priority;
   /// Job status. It is read only for users.
-  final JobStatusResponse status;
+  final JobStatusResponse? status;
   /// TaskGroups in the Job. Only one TaskGroup is supported now.
-  final List<TaskGroupResponse> taskGroups;
+  final List<TaskGroupResponse>? taskGroups;
   /// A system generated unique ID (in UUID4 format) for the Job.
-  final String uid;
+  final String? uid;
   /// The last time the Job was updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetJobResult].
   /// [allocationPolicy] Compute resource allocation for all TaskGroups in the Job.
@@ -45,48 +45,48 @@ class GetJobResult {
   /// [uid] A system generated unique ID (in UUID4 format) for the Job.
   /// [updateTime] The last time the Job was updated.
   const GetJobResult({
-    required this.allocationPolicy,
-    required this.createTime,
-    required this.labels,
-    required this.logsPolicy,
-    required this.name,
-    required this.notifications,
-    required this.priority,
-    required this.status,
-    required this.taskGroups,
-    required this.uid,
-    required this.updateTime,
+    this.allocationPolicy,
+    this.createTime,
+    this.labels,
+    this.logsPolicy,
+    this.name,
+    this.notifications,
+    this.priority,
+    this.status,
+    this.taskGroups,
+    this.uid,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allocationPolicy': allocationPolicy.toMap(),
-      'createTime': createTime,
-      'labels': labels,
-      'logsPolicy': logsPolicy.toMap(),
-      'name': name,
-      'notifications': pulumi.Input.encodeList<JobNotificationResponse, Map<String, dynamic>>(notifications, (value) => value.toMap()),
-      'priority': priority,
-      'status': status.toMap(),
-      'taskGroups': pulumi.Input.encodeList<TaskGroupResponse, Map<String, dynamic>>(taskGroups, (value) => value.toMap()),
-      'uid': uid,
-      'updateTime': updateTime,
+      'allocationPolicy': ?allocationPolicy?.toMap(),
+      'createTime': ?createTime,
+      'labels': ?labels,
+      'logsPolicy': ?logsPolicy?.toMap(),
+      'name': ?name,
+      'notifications': ?(() { final guardedValue = notifications; if (guardedValue == null) return null; return pulumi.Input.encodeList<JobNotificationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'priority': ?priority,
+      'status': ?status?.toMap(),
+      'taskGroups': ?(() { final guardedValue = taskGroups; if (guardedValue == null) return null; return pulumi.Input.encodeList<TaskGroupResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'uid': ?uid,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetJobResult.fromMap(Map<String, dynamic> map) {
     return GetJobResult(
-      allocationPolicy: AllocationPolicyResponse.fromMap((map['allocationPolicy']! as Map).cast<String, dynamic>()),
-      createTime: map['createTime'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      logsPolicy: LogsPolicyResponse.fromMap((map['logsPolicy']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      notifications: pulumi.Input.decodeList<JobNotificationResponse>(map['notifications']!, (value) => JobNotificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      priority: map['priority'] as String,
-      status: JobStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>()),
-      taskGroups: pulumi.Input.decodeList<TaskGroupResponse>(map['taskGroups']!, (value) => TaskGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
-      uid: map['uid'] as String,
-      updateTime: map['updateTime'] as String,
+      allocationPolicy: (() { final guardedValue = map['allocationPolicy']; if (guardedValue == null) return null; return AllocationPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      logsPolicy: (() { final guardedValue = map['logsPolicy']; if (guardedValue == null) return null; return LogsPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      notifications: (() { final guardedValue = map['notifications']; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobNotificationResponse>(guardedValue, (value) => JobNotificationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return JobStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      taskGroups: (() { final guardedValue = map['taskGroups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskGroupResponse>(guardedValue, (value) => TaskGroupResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

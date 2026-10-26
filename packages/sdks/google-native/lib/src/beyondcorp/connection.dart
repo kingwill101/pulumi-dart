@@ -46,15 +46,41 @@ class Connection extends pulumi.CustomResource {
           'google-native:beyondcorp/v1alpha:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     applicationEndpoint = registerOutput<ApplicationEndpointResponse>('applicationEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionId = registerOutput<String?>('connectionId');
-    connectors = registerOutput<List<String>>('connectors');
+    connectors = registerOutput<List<String>>('connectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     gateway = registerOutput<GatewayResponse>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Connection] resource.
+  Connection.reference(String urn)
+    : super(
+        'google-native:beyondcorp/v1alpha:Connection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationEndpoint = registerOutput<ApplicationEndpointResponse>('applicationEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectionId = registerOutput<String?>('connectionId');
+    connectors = registerOutput<List<String>>('connectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    gateway = registerOutput<GatewayResponse>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

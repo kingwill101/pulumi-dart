@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration and status of a self-managed SSL certificate.
 class SslCertificateSelfManagedSslCertificateComputeV1 {
   /// A local certificate file. The certificate must be in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// A write-only private key in PEM format. Only insert requests will include this field.
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? privateKey;
 
   /// Creates a new [SslCertificateSelfManagedSslCertificateComputeV1].
   /// [certificate] A local certificate file. The certificate must be in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.

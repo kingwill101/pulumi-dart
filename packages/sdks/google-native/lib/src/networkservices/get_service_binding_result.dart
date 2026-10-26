@@ -4,19 +4,19 @@
 /// Result data returned by getServiceBinding.
 class GetServiceBindingResult {
   /// The timestamp when the resource was created.
-  final String createTime;
+  final String? createTime;
   /// Optional. A free-text description of the resource. Max length 1024 characters.
-  final String description;
+  final String? description;
   /// Optional. Set of label tags associated with the ServiceBinding resource.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
-  final String name;
+  final String? name;
   /// The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
-  final String service;
+  final String? service;
   /// The unique identifier of the Service Directory Service against which the Service Binding resource is validated. This is populated when the Service Binding resource is used in another resource (like Backend Service). This is of the UUID4 format.
-  final String serviceId;
+  final String? serviceId;
   /// The timestamp when the resource was updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetServiceBindingResult].
   /// [createTime] The timestamp when the resource was created.
@@ -27,36 +27,36 @@ class GetServiceBindingResult {
   /// [serviceId] The unique identifier of the Service Directory Service against which the Service Binding resource is validated. This is populated when the Service Binding resource is used in another resource (like Backend Service). This is of the UUID4 format.
   /// [updateTime] The timestamp when the resource was updated.
   const GetServiceBindingResult({
-    required this.createTime,
-    required this.description,
-    required this.labels,
-    required this.name,
-    required this.service,
-    required this.serviceId,
-    required this.updateTime,
+    this.createTime,
+    this.description,
+    this.labels,
+    this.name,
+    this.service,
+    this.serviceId,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'labels': labels,
-      'name': name,
-      'service': service,
-      'serviceId': serviceId,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'description': ?description,
+      'labels': ?labels,
+      'name': ?name,
+      'service': ?service,
+      'serviceId': ?serviceId,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetServiceBindingResult.fromMap(Map<String, dynamic> map) {
     return GetServiceBindingResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      service: map['service'] as String,
-      serviceId: map['serviceId'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceId: (() { final guardedValue = map['serviceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

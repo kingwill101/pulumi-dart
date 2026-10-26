@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Allow or deny type.
-enum CustomConstraintActionType {
+enum CustomConstraintActionType implements pulumi.PulumiEnum<String> {
   actionTypeUnspecified("ACTION_TYPE_UNSPECIFIED"),
   allow("ALLOW"),
   deny("DENY");
 
   const CustomConstraintActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static CustomConstraintActionType fromValue(String value) {

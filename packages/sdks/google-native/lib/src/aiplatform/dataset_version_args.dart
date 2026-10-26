@@ -9,9 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatasetVersionArgs {
   final pulumi.Input<String> datasetId;
   /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final pulumi.Input<String>? etag;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? etag;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [DatasetVersionArgs].
   /// [datasetId] Required.

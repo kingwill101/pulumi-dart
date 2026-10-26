@@ -60,7 +60,7 @@ class Subscription extends pulumi.CustomResource {
           'google-native:pubsub/v1:Subscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'subscriptionId']).merge(options),
         ) {
     ackDeadlineSeconds = registerOutput<int>('ackDeadlineSeconds');
     bigqueryConfig = registerOutput<BigQueryConfigResponse>('bigqueryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -71,7 +71,38 @@ class Subscription extends pulumi.CustomResource {
     enableMessageOrdering = registerOutput<bool>('enableMessageOrdering');
     expirationPolicy = registerOutput<ExpirationPolicyResponse>('expirationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpirationPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     filter = registerOutput<String>('filter');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    messageRetentionDuration = registerOutput<String>('messageRetentionDuration');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pushConfig = registerOutput<PushConfigResponse>('pushConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PushConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retainAckedMessages = registerOutput<bool>('retainAckedMessages');
+    retryPolicy = registerOutput<RetryPolicyResponse>('retryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RetryPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    topic = registerOutput<String>('topic');
+    topicMessageRetentionDuration = registerOutput<String>('topicMessageRetentionDuration');
+  }
+
+  /// Creates a typed reference to an existing [Subscription] resource.
+  Subscription.reference(String urn)
+    : super(
+        'google-native:pubsub/v1:Subscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    ackDeadlineSeconds = registerOutput<int>('ackDeadlineSeconds');
+    bigqueryConfig = registerOutput<BigQueryConfigResponse>('bigqueryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudStorageConfig = registerOutput<CloudStorageConfigResponse>('cloudStorageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudStorageConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deadLetterPolicy = registerOutput<DeadLetterPolicyResponse>('deadLetterPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeadLetterPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    detached = registerOutput<bool>('detached');
+    enableExactlyOnceDelivery = registerOutput<bool>('enableExactlyOnceDelivery');
+    enableMessageOrdering = registerOutput<bool>('enableMessageOrdering');
+    expirationPolicy = registerOutput<ExpirationPolicyResponse>('expirationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpirationPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    filter = registerOutput<String>('filter');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     messageRetentionDuration = registerOutput<String>('messageRetentionDuration');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

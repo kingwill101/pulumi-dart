@@ -5,9 +5,9 @@ import 'table_constraints_foreign_keys_item_column_references_item.dart';
 import 'table_constraints_foreign_keys_item_referenced_table.dart';
 
 class TableConstraintsForeignKeysItem {
-  final pulumi.Input<List<TableConstraintsForeignKeysItemColumnReferencesItem>>? columnReferences;
-  final pulumi.Input<String>? name;
-  final pulumi.Input<TableConstraintsForeignKeysItemReferencedTable>? referencedTable;
+  final pulumi.Input<List<TableConstraintsForeignKeysItemColumnReferencesItem>?>? columnReferences;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<TableConstraintsForeignKeysItemReferencedTable?>? referencedTable;
 
   /// Creates a new [TableConstraintsForeignKeysItem].
   /// [columnReferences] Optional.

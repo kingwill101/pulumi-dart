@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of an annotation.
-enum AnnotationType {
+enum AnnotationType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   typeLegacyExportConsent("TYPE_LEGACY_EXPORT_CONSENT"),
   typeQwiklab("TYPE_QWIKLAB");
 
   const AnnotationType(this.wireValue);
+  @override
   final String wireValue;
 
   static AnnotationType fromValue(String value) {

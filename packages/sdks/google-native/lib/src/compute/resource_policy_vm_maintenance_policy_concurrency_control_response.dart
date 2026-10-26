@@ -20,7 +20,7 @@ class ResourcePolicyVmMaintenancePolicyConcurrencyControlResponse {
 
   factory ResourcePolicyVmMaintenancePolicyConcurrencyControlResponse.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyVmMaintenancePolicyConcurrencyControlResponse(
-      concurrencyLimit: pulumi.Input.fromValue(map['concurrencyLimit'] as int),
+      concurrencyLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['concurrencyLimit'])),
     );
   }
 }

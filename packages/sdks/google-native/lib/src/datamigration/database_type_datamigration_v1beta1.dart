@@ -7,9 +7,9 @@ import 'database_type_provider_datamigration_v1beta1.dart';
 /// A message defining the database engine and provider.
 class DatabaseTypeDatamigrationV1beta1 {
   /// The database engine.
-  final pulumi.Input<DatabaseTypeEngineDatamigrationV1beta1>? engine;
+  final pulumi.Input<DatabaseTypeEngineDatamigrationV1beta1?>? engine;
   /// The database provider.
-  final pulumi.Input<DatabaseTypeProviderDatamigrationV1beta1>? provider;
+  final pulumi.Input<DatabaseTypeProviderDatamigrationV1beta1?>? provider;
 
   /// Creates a new [DatabaseTypeDatamigrationV1beta1].
   /// [engine] The database engine.

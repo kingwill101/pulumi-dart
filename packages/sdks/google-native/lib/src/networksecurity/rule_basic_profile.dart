@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Profile which tells what the primitive action should be.
-enum RuleBasicProfile {
+enum RuleBasicProfile implements pulumi.PulumiEnum<String> {
   basicProfileUnspecified("BASIC_PROFILE_UNSPECIFIED"),
   allow("ALLOW"),
   deny("DENY");
 
   const RuleBasicProfile(this.wireValue);
+  @override
   final String wireValue;
 
   static RuleBasicProfile fromValue(String value) {

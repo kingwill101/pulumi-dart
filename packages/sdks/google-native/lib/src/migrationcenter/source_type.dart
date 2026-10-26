@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Data source type.
-enum SourceType {
+enum SourceType implements pulumi.PulumiEnum<String> {
   sourceTypeUnknown("SOURCE_TYPE_UNKNOWN"),
   sourceTypeUpload("SOURCE_TYPE_UPLOAD"),
   sourceTypeGuestOsScan("SOURCE_TYPE_GUEST_OS_SCAN"),
@@ -7,6 +9,7 @@ enum SourceType {
   sourceTypeCustom("SOURCE_TYPE_CUSTOM");
 
   const SourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static SourceType fromValue(String value) {

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// [TrustedTester] [Required] Defines the ranges for range partitioning.
 class RangePartitioningRange {
   /// [TrustedTester] [Required] The end of range partitioning, exclusive.
-  final pulumi.Input<String>? end;
+  final pulumi.Input<String?>? end;
   /// [TrustedTester] [Required] The width of each interval.
-  final pulumi.Input<String>? interval;
+  final pulumi.Input<String?>? interval;
   /// [TrustedTester] [Required] The start of range partitioning, inclusive.
-  final pulumi.Input<String>? start;
+  final pulumi.Input<String?>? start;
 
   /// Creates a new [RangePartitioningRange].
   /// [end] [TrustedTester] [Required] The end of range partitioning, exclusive.

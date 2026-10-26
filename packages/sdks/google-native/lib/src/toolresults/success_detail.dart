@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details for an outcome with a SUCCESS outcome summary. LINT.IfChange
 class SuccessDetail {
   /// If a native process other than the app crashed.
-  final pulumi.Input<bool>? otherNativeCrash;
+  final pulumi.Input<bool?>? otherNativeCrash;
 
   /// Creates a new [SuccessDetail].
   /// [otherNativeCrash] If a native process other than the app crashed.

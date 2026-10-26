@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A starting intent specified by an action, uri, and categories.
 class StartActivityIntent {
   /// Action name. Required for START_ACTIVITY.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// Intent categories to set on the intent.
-  final pulumi.Input<List<String>>? categories;
+  final pulumi.Input<List<String>?>? categories;
   /// URI for the action.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [StartActivityIntent].
   /// [action] Action name. Required for START_ACTIVITY.

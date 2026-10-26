@@ -8,15 +8,15 @@ import 'identity_service_oidc_config.dart';
 /// Configuration of an auth method for a member/cluster. Only one authentication method (e.g., OIDC and LDAP) can be set per AuthMethod.
 class IdentityServiceAuthMethod {
   /// AzureAD specific Configuration.
-  final pulumi.Input<IdentityServiceAzureADConfig>? azureadConfig;
+  final pulumi.Input<IdentityServiceAzureADConfig?>? azureadConfig;
   /// GoogleConfig specific configuration.
-  final pulumi.Input<IdentityServiceGoogleConfig>? googleConfig;
+  final pulumi.Input<IdentityServiceGoogleConfig?>? googleConfig;
   /// Identifier for auth config.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// OIDC specific configuration.
-  final pulumi.Input<IdentityServiceOidcConfig>? oidcConfig;
+  final pulumi.Input<IdentityServiceOidcConfig?>? oidcConfig;
   /// Proxy server address to use for auth method.
-  final pulumi.Input<String>? proxy;
+  final pulumi.Input<String?>? proxy;
 
   /// Creates a new [IdentityServiceAuthMethod].
   /// [azureadConfig] AzureAD specific Configuration.

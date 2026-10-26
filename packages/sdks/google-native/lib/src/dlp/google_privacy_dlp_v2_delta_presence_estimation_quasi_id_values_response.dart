@@ -27,7 +27,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse {
 
   factory GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse(
-      estimatedProbability: pulumi.Input.fromValue(map['estimatedProbability'] as double),
+      estimatedProbability: pulumi.Input.fromValue((map['estimatedProbability'] as num).toDouble()),
       quasiIdsValues: pulumi.Input.fromValue(pulumi.Input.decodeList<GooglePrivacyDlpV2ValueResponse>(map['quasiIdsValues']!, (value) => GooglePrivacyDlpV2ValueResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

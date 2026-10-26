@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'api_response.dart';
 import 'authentication_response.dart';
 import 'backend_response.dart';
 import 'billing_response.dart';
@@ -7,13 +8,19 @@ import 'context_response.dart';
 import 'control_response.dart';
 import 'custom_error_response.dart';
 import 'documentation_response.dart';
+import 'endpoint_response.dart';
+import 'enum_response.dart';
 import 'http_response.dart';
+import 'log_descriptor_response.dart';
 import 'logging_response.dart';
+import 'metric_descriptor_response.dart';
+import 'monitored_resource_descriptor_response.dart';
 import 'monitoring_response.dart';
 import 'publishing_response.dart';
 import 'quota_response.dart';
 import 'source_info_response.dart';
 import 'system_parameters_response.dart';
+import 'type_response.dart';
 import 'usage_response.dart';
 
 /// Creates a new service configuration (version) for a managed service. This method only stores the service configuration. To roll out the service configuration to backend systems please call CreateServiceRollout. Only the 100 most recent service configurations and ones referenced by existing rollouts are kept for each service. The rest will be deleted eventually.
@@ -21,7 +28,7 @@ import 'usage_response.dart';
 /// on Google Cloud even though it will be deleted from Pulumi state.
 class Config extends pulumi.CustomResource {
   /// A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api needs to be provided by the configuration author, as the remaining fields will be derived from the IDL during the normalization process. It is an error to specify an API interface here which cannot be resolved against the associated IDL files.
-  late final pulumi.Output<List<Map<String, dynamic>>> apis;
+  late final pulumi.Output<List<ApiResponse>> apis;
   /// Auth configuration.
   late final pulumi.Output<AuthenticationResponse> authentication;
   /// API backend configuration.
@@ -39,19 +46,19 @@ class Config extends pulumi.CustomResource {
   /// Additional API documentation.
   late final pulumi.Output<DocumentationResponse> documentation;
   /// Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
-  late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
+  late final pulumi.Output<List<EndpointResponse>> endpoints;
   /// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
-  late final pulumi.Output<List<Map<String, dynamic>>> enums;
+  late final pulumi.Output<List<EnumResponse>> enums;
   /// HTTP configuration.
   late final pulumi.Output<HttpResponse> http;
   /// Logging configuration.
   late final pulumi.Output<LoggingResponse> logging;
   /// Defines the logs used by this service.
-  late final pulumi.Output<List<Map<String, dynamic>>> logs;
+  late final pulumi.Output<List<LogDescriptorResponse>> logs;
   /// Defines the metrics used by this service.
-  late final pulumi.Output<List<Map<String, dynamic>>> metrics;
+  late final pulumi.Output<List<MetricDescriptorResponse>> metrics;
   /// Defines the monitored resources used by this service. This is required by the Service.monitoring and Service.logging configurations.
-  late final pulumi.Output<List<Map<String, dynamic>>> monitoredResources;
+  late final pulumi.Output<List<MonitoredResourceDescriptorResponse>> monitoredResources;
   /// Monitoring configuration.
   late final pulumi.Output<MonitoringResponse> monitoring;
   /// The service name, which is a DNS-like logical identifier for the service, such as `calendar.googleapis.com`. The service name typically goes through DNS verification to make sure the owner of the service also owns the DNS name.
@@ -68,11 +75,11 @@ class Config extends pulumi.CustomResource {
   /// System parameter configuration.
   late final pulumi.Output<SystemParametersResponse> systemParameters;
   /// A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
-  late final pulumi.Output<List<Map<String, dynamic>>> systemTypes;
+  late final pulumi.Output<List<TypeResponse>> systemTypes;
   /// The product title for this service, it is the name displayed in Google Cloud Console.
   late final pulumi.Output<String> title;
   /// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
-  late final pulumi.Output<List<Map<String, dynamic>>> types;
+  late final pulumi.Output<List<TypeResponse>> types;
   /// Configuration controlling usage of this service.
   late final pulumi.Output<UsageResponse> usage;
 
@@ -88,9 +95,9 @@ class Config extends pulumi.CustomResource {
           'google-native:servicemanagement/v1:Config',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['serviceName']).merge(options),
         ) {
-    apis = registerOutput<List<Map<String, dynamic>>>('apis');
+    apis = registerOutput<List<ApiResponse>>('apis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiResponse>(guardedValue, (value) => ApiResponse.fromMap((value as Map).cast<String, dynamic>())); });
     authentication = registerOutput<AuthenticationResponse>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthenticationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backend = registerOutput<BackendResponse>('backend', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     billing = registerOutput<BillingResponse>('billing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BillingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -99,13 +106,13 @@ class Config extends pulumi.CustomResource {
     control = registerOutput<ControlResponse>('control', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customError = registerOutput<CustomErrorResponse>('customError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     documentation = registerOutput<DocumentationResponse>('documentation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
-    enums = registerOutput<List<Map<String, dynamic>>>('enums');
+    endpoints = registerOutput<List<EndpointResponse>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointResponse>(guardedValue, (value) => EndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    enums = registerOutput<List<EnumResponse>>('enums', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnumResponse>(guardedValue, (value) => EnumResponse.fromMap((value as Map).cast<String, dynamic>())); });
     http = registerOutput<HttpResponse>('http', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logging = registerOutput<LoggingResponse>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    logs = registerOutput<List<Map<String, dynamic>>>('logs');
-    metrics = registerOutput<List<Map<String, dynamic>>>('metrics');
-    monitoredResources = registerOutput<List<Map<String, dynamic>>>('monitoredResources');
+    logs = registerOutput<List<LogDescriptorResponse>>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogDescriptorResponse>(guardedValue, (value) => LogDescriptorResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    metrics = registerOutput<List<MetricDescriptorResponse>>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetricDescriptorResponse>(guardedValue, (value) => MetricDescriptorResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    monitoredResources = registerOutput<List<MonitoredResourceDescriptorResponse>>('monitoredResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitoredResourceDescriptorResponse>(guardedValue, (value) => MonitoredResourceDescriptorResponse.fromMap((value as Map).cast<String, dynamic>())); });
     monitoring = registerOutput<MonitoringResponse>('monitoring', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitoringResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     producerProjectId = registerOutput<String>('producerProjectId');
@@ -114,9 +121,48 @@ class Config extends pulumi.CustomResource {
     serviceName = registerOutput<String>('serviceName');
     sourceInfo = registerOutput<SourceInfoResponse>('sourceInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemParameters = registerOutput<SystemParametersResponse>('systemParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    systemTypes = registerOutput<List<Map<String, dynamic>>>('systemTypes');
+    systemTypes = registerOutput<List<TypeResponse>>('systemTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TypeResponse>(guardedValue, (value) => TypeResponse.fromMap((value as Map).cast<String, dynamic>())); });
     title = registerOutput<String>('title');
-    types = registerOutput<List<Map<String, dynamic>>>('types');
+    types = registerOutput<List<TypeResponse>>('types', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TypeResponse>(guardedValue, (value) => TypeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    usage = registerOutput<UsageResponse>('usage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UsageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Config] resource.
+  Config.reference(String urn)
+    : super(
+        'google-native:servicemanagement/v1:Config',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apis = registerOutput<List<ApiResponse>>('apis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiResponse>(guardedValue, (value) => ApiResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    authentication = registerOutput<AuthenticationResponse>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthenticationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backend = registerOutput<BackendResponse>('backend', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    billing = registerOutput<BillingResponse>('billing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BillingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configVersion = registerOutput<int>('configVersion');
+    context = registerOutput<ContextResponse>('context', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContextResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    control = registerOutput<ControlResponse>('control', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customError = registerOutput<CustomErrorResponse>('customError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    documentation = registerOutput<DocumentationResponse>('documentation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpoints = registerOutput<List<EndpointResponse>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointResponse>(guardedValue, (value) => EndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    enums = registerOutput<List<EnumResponse>>('enums', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnumResponse>(guardedValue, (value) => EnumResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    http = registerOutput<HttpResponse>('http', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logging = registerOutput<LoggingResponse>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logs = registerOutput<List<LogDescriptorResponse>>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogDescriptorResponse>(guardedValue, (value) => LogDescriptorResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    metrics = registerOutput<List<MetricDescriptorResponse>>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetricDescriptorResponse>(guardedValue, (value) => MetricDescriptorResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    monitoredResources = registerOutput<List<MonitoredResourceDescriptorResponse>>('monitoredResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitoredResourceDescriptorResponse>(guardedValue, (value) => MonitoredResourceDescriptorResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    monitoring = registerOutput<MonitoringResponse>('monitoring', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitoringResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    producerProjectId = registerOutput<String>('producerProjectId');
+    publishing = registerOutput<PublishingResponse>('publishing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PublishingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    quota = registerOutput<QuotaResponse>('quota', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QuotaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceName = registerOutput<String>('serviceName');
+    sourceInfo = registerOutput<SourceInfoResponse>('sourceInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemParameters = registerOutput<SystemParametersResponse>('systemParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemTypes = registerOutput<List<TypeResponse>>('systemTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TypeResponse>(guardedValue, (value) => TypeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    title = registerOutput<String>('title');
+    types = registerOutput<List<TypeResponse>>('types', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TypeResponse>(guardedValue, (value) => TypeResponse.fromMap((value as Map).cast<String, dynamic>())); });
     usage = registerOutput<UsageResponse>('usage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UsageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

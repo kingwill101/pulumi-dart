@@ -28,7 +28,7 @@ class GooglePrivacyDlpV2InfoTypeLimitResponse {
   factory GooglePrivacyDlpV2InfoTypeLimitResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InfoTypeLimitResponse(
       infoType: pulumi.Input.fromValue(GooglePrivacyDlpV2InfoTypeResponse.fromMap((map['infoType']! as Map).cast<String, dynamic>())),
-      maxFindings: pulumi.Input.fromValue(map['maxFindings'] as int),
+      maxFindings: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxFindings'])),
     );
   }
 }

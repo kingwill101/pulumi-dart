@@ -25,7 +25,7 @@ class EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse {
   factory EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse(
       absolute: pulumi.Input.fromValue(map['absolute'] as String),
-      percentage: pulumi.Input.fromValue(map['percentage'] as int),
+      percentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['percentage'])),
     );
   }
 }

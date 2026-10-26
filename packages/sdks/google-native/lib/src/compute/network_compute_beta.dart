@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_compute_beta_args.dart';
+import 'network_peering_response_compute_beta.dart';
 import 'network_routing_config_response_compute_beta.dart';
 
 /// Creates a network in the specified project using the data included in the request.
@@ -29,7 +30,7 @@ class NetworkComputeBeta extends pulumi.CustomResource {
   /// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
   late final pulumi.Output<String> networkFirewallPolicyEnforcementOrder;
   /// A list of network peerings for the resource.
-  late final pulumi.Output<List<Map<String, dynamic>>> peerings;
+  late final pulumi.Output<List<NetworkPeeringResponseComputeBeta>> peerings;
   late final pulumi.Output<String> project;
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   late final pulumi.Output<String?> requestId;
@@ -54,7 +55,7 @@ class NetworkComputeBeta extends pulumi.CustomResource {
           'google-native:compute/beta:Network',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     autoCreateSubnetworks = registerOutput<bool>('autoCreateSubnetworks');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -68,12 +69,42 @@ class NetworkComputeBeta extends pulumi.CustomResource {
     mtu = registerOutput<int>('mtu');
     this.name = registerOutput<String>('name');
     networkFirewallPolicyEnforcementOrder = registerOutput<String>('networkFirewallPolicyEnforcementOrder');
-    peerings = registerOutput<List<Map<String, dynamic>>>('peerings');
+    peerings = registerOutput<List<NetworkPeeringResponseComputeBeta>>('peerings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkPeeringResponseComputeBeta>(guardedValue, (value) => NetworkPeeringResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
     routingConfig = registerOutput<NetworkRoutingConfigResponseComputeBeta>('routingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkRoutingConfigResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
-    subnetworks = registerOutput<List<String>>('subnetworks');
+    subnetworks = registerOutput<List<String>>('subnetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkComputeBeta] resource.
+  NetworkComputeBeta.reference(String urn)
+    : super(
+        'google-native:compute/beta:Network',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoCreateSubnetworks = registerOutput<bool>('autoCreateSubnetworks');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    enableUlaInternalIpv6 = registerOutput<bool>('enableUlaInternalIpv6');
+    firewallPolicy = registerOutput<String>('firewallPolicy');
+    gatewayIPv4 = registerOutput<String>('gatewayIPv4');
+    internalIpv6Range = registerOutput<String>('internalIpv6Range');
+    ipv4Range = registerOutput<String>('ipv4Range');
+    kind = registerOutput<String>('kind');
+    mtu = registerOutput<int>('mtu');
+    this.name = registerOutput<String>('name');
+    networkFirewallPolicyEnforcementOrder = registerOutput<String>('networkFirewallPolicyEnforcementOrder');
+    peerings = registerOutput<List<NetworkPeeringResponseComputeBeta>>('peerings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkPeeringResponseComputeBeta>(guardedValue, (value) => NetworkPeeringResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    routingConfig = registerOutput<NetworkRoutingConfigResponseComputeBeta>('routingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkRoutingConfigResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    subnetworks = registerOutput<List<String>>('subnetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

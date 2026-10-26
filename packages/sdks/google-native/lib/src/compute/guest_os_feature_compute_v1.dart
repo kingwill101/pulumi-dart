@@ -6,7 +6,7 @@ import 'guest_os_feature_type_compute_v1.dart';
 /// Guest OS features.
 class GuestOsFeatureComputeV1 {
   /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
-  final pulumi.Input<GuestOsFeatureTypeComputeV1>? type;
+  final pulumi.Input<GuestOsFeatureTypeComputeV1?>? type;
 
   /// Creates a new [GuestOsFeatureComputeV1].
   /// [type] The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.

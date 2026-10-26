@@ -39,9 +39,9 @@ class JobStatusResponse {
   factory JobStatusResponse.fromMap(Map<String, dynamic> map) {
     return JobStatusResponse(
       conditions: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudRunV1ConditionResponse>(map['conditions']!, (value) => GoogleCloudRunV1ConditionResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      executionCount: pulumi.Input.fromValue(map['executionCount'] as int),
+      executionCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['executionCount'])),
       latestCreatedExecution: pulumi.Input.fromValue(ExecutionReferenceResponse.fromMap((map['latestCreatedExecution']! as Map).cast<String, dynamic>())),
-      observedGeneration: pulumi.Input.fromValue(map['observedGeneration'] as int),
+      observedGeneration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['observedGeneration'])),
     );
   }
 }

@@ -6,9 +6,9 @@ import 'alias_context_kind_containeranalysis_v1beta1.dart';
 /// An alias to a repo revision.
 class AliasContextContaineranalysisV1beta1 {
   /// The alias kind.
-  final pulumi.Input<AliasContextKindContaineranalysisV1beta1>? kind;
+  final pulumi.Input<AliasContextKindContaineranalysisV1beta1?>? kind;
   /// The alias name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AliasContextContaineranalysisV1beta1].
   /// [kind] The alias kind.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Evaluates whether each row passes the specified condition.The SQL expression needs to use BigQuery standard SQL syntax and should produce a boolean value per row as the result.Example: col1 &gt;= 0 AND col2 &lt; 10
 class GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation {
   /// Optional. The SQL expression.
-  final pulumi.Input<String>? sqlExpression;
+  final pulumi.Input<String?>? sqlExpression;
 
   /// Creates a new [GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation].
   /// [sqlExpression] Optional. The SQL expression.

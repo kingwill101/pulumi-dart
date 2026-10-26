@@ -27,7 +27,7 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse {
   factory GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse(
       action: pulumi.Input.fromValue(map['action'] as String),
-      endScore: pulumi.Input.fromValue(map['endScore'] as double),
+      endScore: pulumi.Input.fromValue((map['endScore'] as num).toDouble()),
     );
   }
 }

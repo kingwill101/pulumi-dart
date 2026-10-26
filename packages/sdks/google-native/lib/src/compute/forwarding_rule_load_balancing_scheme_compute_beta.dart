@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts.
-enum ForwardingRuleLoadBalancingSchemeComputeBeta {
+enum ForwardingRuleLoadBalancingSchemeComputeBeta implements pulumi.PulumiEnum<String> {
   external("EXTERNAL"),
   externalManaged("EXTERNAL_MANAGED"),
   internal("INTERNAL"),
@@ -8,6 +10,7 @@ enum ForwardingRuleLoadBalancingSchemeComputeBeta {
   invalid("INVALID");
 
   const ForwardingRuleLoadBalancingSchemeComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static ForwardingRuleLoadBalancingSchemeComputeBeta fromValue(String value) {
