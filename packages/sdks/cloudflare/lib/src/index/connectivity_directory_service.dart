@@ -113,7 +113,7 @@ import 'connectivity_directory_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -121,7 +121,10 @@ import 'connectivity_directory_service_tls_settings.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_connectivitydirectoryservice" "example_connectivity_directory_service" {
+/// resource "cloudflare_connectivity_directory_service" "example_connectivity_directory_service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   host = {
 ///     ipv4 = "10.0.0.1"
@@ -237,7 +240,7 @@ class ConnectivityDirectoryService extends pulumi.CustomResource {
           'cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     appProtocol = registerOutput<String?>('appProtocol');

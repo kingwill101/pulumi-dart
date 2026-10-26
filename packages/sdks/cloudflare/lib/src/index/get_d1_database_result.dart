@@ -24,6 +24,7 @@ class GetD1DatabaseResult {
   final String? jurisdiction;
   /// D1 database name.
   final String? name;
+  /// The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
   final double? numTables;
   /// Configuration for D1 read replication.
   final GetD1DatabaseReadReplication? readReplication;
@@ -41,7 +42,7 @@ class GetD1DatabaseResult {
   /// [id] D1 database identifier (UUID).
   /// [jurisdiction] Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
   /// [name] D1 database name.
-  /// [numTables] Optional.
+  /// [numTables] The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
   /// [readReplication] Configuration for D1 read replication.
   /// [uuid] D1 database identifier (UUID).
   /// [version] Optional.

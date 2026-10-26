@@ -21,7 +21,9 @@ import 'magic_wan_gre_tunnel_state.dart';
 ///     automaticReturnRouting: true,
 ///     bgp: {
 ///         customerAsn: 0,
+///         exportFilterId: "a1b2c3d4e5f647890a1b2c3d4e5f6789",
 ///         extraPrefixes: ["string"],
+///         importFilterId: "a1b2c3d4e5f647890a1b2c3d4e5f6789",
 ///         md5Key: "md5_key",
 ///     },
 ///     description: "Tunnel for ISP X",
@@ -52,7 +54,9 @@ import 'magic_wan_gre_tunnel_state.dart';
 ///     automatic_return_routing=True,
 ///     bgp={
 ///         "customer_asn": 0,
+///         "export_filter_id": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
 ///         "extra_prefixes": ["string"],
+///         "import_filter_id": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
 ///         "md5_key": "md5_key",
 ///     },
 ///     description="Tunnel for ISP X",
@@ -88,10 +92,12 @@ import 'magic_wan_gre_tunnel_state.dart';
 ///         Bgp = new Cloudflare.Inputs.MagicWanGreTunnelBgpArgs
 ///         {
 ///             CustomerAsn = 0,
+///             ExportFilterId = "a1b2c3d4e5f647890a1b2c3d4e5f6789",
 ///             ExtraPrefixes = new[]
 ///             {
 ///                 "string",
 ///             },
+///             ImportFilterId = "a1b2c3d4e5f647890a1b2c3d4e5f6789",
 ///             Md5Key = "md5_key",
 ///         },
 ///         Description = "Tunnel for ISP X",
@@ -131,11 +137,13 @@ import 'magic_wan_gre_tunnel_state.dart';
 /// 			Name:                   pulumi.String("GRE_1"),
 /// 			AutomaticReturnRouting: pulumi.Bool(true),
 /// 			Bgp: &cloudflare.MagicWanGreTunnelBgpArgs{
-/// 				CustomerAsn: pulumi.Int(0),
+/// 				CustomerAsn:    pulumi.Int(0),
+/// 				ExportFilterId: pulumi.String("a1b2c3d4e5f647890a1b2c3d4e5f6789"),
 /// 				ExtraPrefixes: pulumi.StringArray{
 /// 					pulumi.String("string"),
 /// 				},
-/// 				Md5Key: pulumi.String("md5_key"),
+/// 				ImportFilterId: pulumi.String("a1b2c3d4e5f647890a1b2c3d4e5f6789"),
+/// 				Md5Key:         pulumi.String("md5_key"),
 /// 			},
 /// 			Description: pulumi.String("Tunnel for ISP X"),
 /// 			HealthCheck: &cloudflare.MagicWanGreTunnelHealthCheckArgs{
@@ -159,7 +167,7 @@ import 'magic_wan_gre_tunnel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -167,7 +175,10 @@ import 'magic_wan_gre_tunnel_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_magicwangretunnel" "example_magic_wan_gre_tunnel" {
+/// resource "cloudflare_magic_wan_gre_tunnel" "example_magic_wan_gre_tunnel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id               = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   cloudflare_gre_endpoint  = "203.0.113.1"
 ///   customer_gre_endpoint    = "203.0.113.1"
@@ -175,9 +186,11 @@ import 'magic_wan_gre_tunnel_state.dart';
 ///   name                     = "GRE_1"
 ///   automatic_return_routing = true
 ///   bgp = {
-///     customer_asn   = 0
-///     extra_prefixes = ["string"]
-///     md5_key        = "md5_key"
+///     customer_asn     = 0
+///     export_filter_id = "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+///     extra_prefixes   = ["string"]
+///     import_filter_id = "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+///     md5_key          = "md5_key"
 ///   }
 ///   description = "Tunnel for ISP X"
 ///   health_check = {
@@ -227,7 +240,9 @@ import 'magic_wan_gre_tunnel_state.dart';
 ///             .automaticReturnRouting(true)
 ///             .bgp(MagicWanGreTunnelBgpArgs.builder()
 ///                 .customerAsn(0)
+///                 .exportFilterId("a1b2c3d4e5f647890a1b2c3d4e5f6789")
 ///                 .extraPrefixes("string")
+///                 .importFilterId("a1b2c3d4e5f647890a1b2c3d4e5f6789")
 ///                 .md5Key("md5_key")
 ///                 .build())
 ///             .description("Tunnel for ISP X")
@@ -262,8 +277,10 @@ import 'magic_wan_gre_tunnel_state.dart';
 ///       automaticReturnRouting: true
 ///       bgp:
 ///         customerAsn: 0
+///         exportFilterId: a1b2c3d4e5f647890a1b2c3d4e5f6789
 ///         extraPrefixes:
 ///           - string
+///         importFilterId: a1b2c3d4e5f647890a1b2c3d4e5f6789
 ///         md5Key: md5_key
 ///       description: Tunnel for ISP X
 ///       healthCheck:
@@ -325,7 +342,7 @@ class MagicWanGreTunnel extends pulumi.CustomResource {
           'cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     automaticReturnRouting = registerOutput<bool>('automaticReturnRouting');

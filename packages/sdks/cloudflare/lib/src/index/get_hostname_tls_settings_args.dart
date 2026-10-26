@@ -35,7 +35,7 @@ class GetHostnameTlsSettingsArgs {
 
   factory GetHostnameTlsSettingsArgs.fromMap(Map<String, dynamic> map) {
     return GetHostnameTlsSettingsArgs(
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       settingId: pulumi.Input.fromValue(map['settingId'] as String),
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );

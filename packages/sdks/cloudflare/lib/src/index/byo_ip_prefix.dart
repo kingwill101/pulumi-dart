@@ -85,7 +85,7 @@ import 'byo_ip_prefix_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -93,7 +93,10 @@ import 'byo_ip_prefix_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_byoipprefix" "example_byo_ip_prefix" {
+/// resource "cloudflare_byo_ip_prefix" "example_byo_ip_prefix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id            = "258def64c72dae45f3e4c8516e2111f2"
 ///   asn                   = 13335
 ///   cidr                  = "192.0.2.0/24"
@@ -201,7 +204,7 @@ class ByoIpPrefix extends pulumi.CustomResource {
           'cloudflare:index/byoIpPrefix:ByoIpPrefix',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     advertised = registerOutput<bool>('advertised');

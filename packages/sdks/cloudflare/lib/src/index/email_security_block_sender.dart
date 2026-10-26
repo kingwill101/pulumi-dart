@@ -19,7 +19,7 @@ import 'email_security_block_sender_state.dart';
 ///     isRegex: false,
 ///     pattern: "test@example.com",
 ///     patternType: "EMAIL",
-///     comments: "block sender with email test@example.com",
+///     comments: "Block sender with email test@example.com",
 /// });
 /// ```
 /// ```python
@@ -31,7 +31,7 @@ import 'email_security_block_sender_state.dart';
 ///     is_regex=False,
 ///     pattern="test@example.com",
 ///     pattern_type="EMAIL",
-///     comments="block sender with email test@example.com")
+///     comments="Block sender with email test@example.com")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -47,7 +47,7 @@ import 'email_security_block_sender_state.dart';
 ///         IsRegex = false,
 ///         Pattern = "test@example.com",
 ///         PatternType = "EMAIL",
-///         Comments = "block sender with email test@example.com",
+///         Comments = "Block sender with email test@example.com",
 ///     });
 ///
 /// });
@@ -67,7 +67,7 @@ import 'email_security_block_sender_state.dart';
 /// 			IsRegex:     pulumi.Bool(false),
 /// 			Pattern:     pulumi.String("test@example.com"),
 /// 			PatternType: pulumi.String("EMAIL"),
-/// 			Comments:    pulumi.String("block sender with email test@example.com"),
+/// 			Comments:    pulumi.String("Block sender with email test@example.com"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -77,7 +77,7 @@ import 'email_security_block_sender_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -85,12 +85,15 @@ import 'email_security_block_sender_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_emailsecurityblocksender" "example_email_security_block_sender" {
+/// resource "cloudflare_email_security_block_sender" "example_email_security_block_sender" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   is_regex     = false
 ///   pattern      = "test@example.com"
 ///   pattern_type = "EMAIL"
-///   comments     = "block sender with email test@example.com"
+///   comments     = "Block sender with email test@example.com"
 /// }
 /// ```
 /// ```java
@@ -119,7 +122,7 @@ import 'email_security_block_sender_state.dart';
 ///             .isRegex(false)
 ///             .pattern("test@example.com")
 ///             .patternType("EMAIL")
-///             .comments("block sender with email test@example.com")
+///             .comments("Block sender with email test@example.com")
 ///             .build());
 ///
 ///     }
@@ -135,7 +138,7 @@ import 'email_security_block_sender_state.dart';
 ///       isRegex: false
 ///       pattern: test@example.com
 ///       patternType: EMAIL
-///       comments: block sender with email test@example.com
+///       comments: Block sender with email test@example.com
 /// ```
 ///
 ///
@@ -149,20 +152,18 @@ class EmailSecurityBlockSender extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   late final pulumi.Output<String?> comments;
   late final pulumi.Output<String> createdAt;
+  /// Whether `pattern` is a regular expression instead of a literal value.
   late final pulumi.Output<bool> isRegex;
   /// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
   late final pulumi.Output<String> lastModified;
   late final pulumi.Output<String> modifiedAt;
-  /// The pattern value to match against. Format depends on `patternType`:
-  /// - EMAIL: a valid email address, e.g. `user@example.com`
-  /// - DOMAIN: a valid domain name, e.g. `example.com`
-  /// - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+  /// The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
   late final pulumi.Output<String> pattern;
   /// Type of pattern matching.
   /// - EMAIL: matches a full email address (e.g. `user@example.com`)
   /// - DOMAIN: matches a domain name (e.g. `example.com`)
-  /// - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
-  /// - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+  /// - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+  /// - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
   /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
   late final pulumi.Output<String> patternType;
 
@@ -178,7 +179,7 @@ class EmailSecurityBlockSender extends pulumi.CustomResource {
           'cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     comments = registerOutput<String?>('comments');

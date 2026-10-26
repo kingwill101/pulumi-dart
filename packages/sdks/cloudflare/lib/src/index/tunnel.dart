@@ -78,7 +78,7 @@ import 'tunnel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -86,7 +86,10 @@ import 'tunnel_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrusttunnelcloudflared" "example_zero_trust_tunnel_cloudflared" {
+/// resource "cloudflare_zero_trust_tunnel_cloudflared" "example_zero_trust_tunnel_cloudflared" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id    = "699d98642c564d2e855e9661899b7252"
 ///   name          = "blog"
 ///   config_src    = "cloudflare"
@@ -187,7 +190,7 @@ class Tunnel extends pulumi.CustomResource {
           'cloudflare:index/tunnel:Tunnel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
           additionalSecretOutputs: const ['tunnelSecret'],
         ) {
     accountId = registerOutput<String>('accountId');

@@ -85,7 +85,7 @@ import 'stream_watermark_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -93,7 +93,10 @@ import 'stream_watermark_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_streamwatermark" "example_stream_watermark" {
+/// resource "cloudflare_stream_watermark" "example_stream_watermark" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name       = "Marketing Videos"
 ///   opacity    = 0.75
@@ -198,7 +201,7 @@ class StreamWatermarkResource extends pulumi.CustomResource {
           'cloudflare:index/streamWatermark:StreamWatermark',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     created = registerOutput<String>('created');

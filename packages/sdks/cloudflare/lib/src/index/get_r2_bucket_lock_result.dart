@@ -5,14 +5,14 @@ import 'get_r2_bucket_lock_rule.dart';
 
 /// Result data returned by getR2BucketLock.
 class GetR2BucketLockResult {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final String? accountId;
   /// Name of the bucket.
   final String? bucketName;
   final List<GetR2BucketLockRule>? rules;
 
   /// Creates a new [GetR2BucketLockResult].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
   /// [rules] Optional.
   const GetR2BucketLockResult({

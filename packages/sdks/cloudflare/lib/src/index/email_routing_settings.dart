@@ -58,7 +58,7 @@ import 'email_routing_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -66,7 +66,10 @@ import 'email_routing_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_emailroutingsettings" "example_email_routing_settings" {
+/// resource "cloudflare_email_routing_settings" "example_email_routing_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -127,6 +130,8 @@ class EmailRoutingSettings extends pulumi.CustomResource {
   /// Show the state of your account, and the type or configuration error.
   /// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
   late final pulumi.Output<String> status;
+  /// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+  late final pulumi.Output<bool?> supportSubaddress;
   /// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
   late final pulumi.Output<String> tag;
   /// Identifier.
@@ -144,7 +149,7 @@ class EmailRoutingSettings extends pulumi.CustomResource {
           'cloudflare:index/emailRoutingSettings:EmailRoutingSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     created = registerOutput<String>('created');
     enabled = registerOutput<bool>('enabled');
@@ -152,6 +157,7 @@ class EmailRoutingSettings extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     skipWizard = registerOutput<bool>('skipWizard');
     status = registerOutput<String>('status');
+    supportSubaddress = registerOutput<bool?>('supportSubaddress');
     tag = registerOutput<String>('tag');
     zoneId = registerOutput<String>('zoneId');
   }
@@ -186,6 +192,7 @@ class EmailRoutingSettings extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     skipWizard = registerOutput<bool>('skipWizard');
     status = registerOutput<String>('status');
+    supportSubaddress = registerOutput<bool?>('supportSubaddress');
     tag = registerOutput<String>('tag');
     zoneId = registerOutput<String>('zoneId');
   }
@@ -205,6 +212,7 @@ class EmailRoutingSettings extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     skipWizard = registerOutput<bool>('skipWizard');
     status = registerOutput<String>('status');
+    supportSubaddress = registerOutput<bool?>('supportSubaddress');
     tag = registerOutput<String>('tag');
     zoneId = registerOutput<String>('zoneId');
   }

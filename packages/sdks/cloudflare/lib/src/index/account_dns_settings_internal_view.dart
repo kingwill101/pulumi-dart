@@ -74,7 +74,7 @@ import 'account_dns_settings_internal_view_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -82,7 +82,10 @@ import 'account_dns_settings_internal_view_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_accountdnssettingsinternalview" "example_account_dns_settings_internal_view" {
+/// resource "cloudflare_account_dns_settings_internal_view" "example_account_dns_settings_internal_view" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name       = "my view"
 ///   zones      = ["372e67954025e0ba6aaa6d586b9e0b59"]
@@ -160,7 +163,7 @@ class AccountDnsSettingsInternalView extends pulumi.CustomResource {
           'cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdTime = registerOutput<String>('createdTime');

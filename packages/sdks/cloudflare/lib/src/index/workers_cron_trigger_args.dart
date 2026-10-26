@@ -11,13 +11,13 @@ class WorkersCronTriggerArgs {
   /// Identifier.
   final pulumi.Input<String> accountId;
   final pulumi.Input<List<WorkersCronTriggerSchedule>> schedules;
-  /// Name of the script, used in URLs and route configuration.
+  /// Name of the script.
   final pulumi.Input<String> scriptName;
 
   /// Creates a new [WorkersCronTriggerArgs].
   /// [accountId] Identifier.
   /// [schedules] Required.
-  /// [scriptName] Name of the script, used in URLs and route configuration.
+  /// [scriptName] Name of the script.
   const WorkersCronTriggerArgs({
     required this.accountId,
     required this.schedules,

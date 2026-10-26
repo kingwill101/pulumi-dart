@@ -68,7 +68,7 @@ import 'cloudforce_one_request_message_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -76,7 +76,10 @@ import 'cloudforce_one_request_message_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_cloudforceonerequestmessage" "example_cloudforce_one_request_message" {
+/// resource "cloudflare_cloudforce_one_request_message" "example_cloudforce_one_request_message" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   request_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   content    = "Can you elaborate on the type of DoS that occurred?"
@@ -157,7 +160,7 @@ class CloudforceOneRequestMessage extends pulumi.CustomResource {
           'cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     author = registerOutput<String>('author');

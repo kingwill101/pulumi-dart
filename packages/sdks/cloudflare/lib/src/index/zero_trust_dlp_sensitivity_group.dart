@@ -70,7 +70,7 @@ import 'zero_trust_dlp_sensitivity_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -78,7 +78,10 @@ import 'zero_trust_dlp_sensitivity_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdlpsensitivitygroup" "example_zero_trust_dlp_sensitivity_group" {
+/// resource "cloudflare_zero_trust_dlp_sensitivity_group" "example_zero_trust_dlp_sensitivity_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "account_id"
 ///   name        = "name"
 ///   description = "description"
@@ -152,7 +155,7 @@ class ZeroTrustDlpSensitivityGroup extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDlpSensitivityGroup:ZeroTrustDlpSensitivityGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pages_project_args.dart';
 import 'pages_project_build_config.dart';
+import 'pages_project_build_image_auto_upgrade.dart';
 import 'pages_project_canonical_deployment.dart';
 import 'pages_project_deployment_configs.dart';
 import 'pages_project_latest_deployment.dart';
@@ -53,7 +54,7 @@ import 'pages_project_state.dart';
 ///                 BROWSER: {},
 ///             },
 ///             buildImageMajorVersion: 3,
-///             compatibilityDate: "2025-01-01",
+///             compatibilityDate: "2025-01-01T00:00:00Z",
 ///             compatibilityFlags: ["url_standard"],
 ///             d1Databases: {
 ///                 D1_BINDING: {
@@ -135,7 +136,7 @@ import 'pages_project_state.dart';
 ///                 BROWSER: {},
 ///             },
 ///             buildImageMajorVersion: 3,
-///             compatibilityDate: "2025-01-01",
+///             compatibilityDate: "2025-01-01T00:00:00Z",
 ///             compatibilityFlags: ["url_standard"],
 ///             d1Databases: {
 ///                 D1_BINDING: {
@@ -255,7 +256,7 @@ import 'pages_project_state.dart';
 ///                 "BROWSER": {},
 ///             },
 ///             "build_image_major_version": 3,
-///             "compatibility_date": "2025-01-01",
+///             "compatibility_date": "2025-01-01T00:00:00Z",
 ///             "compatibility_flags": ["url_standard"],
 ///             "d1_databases": {
 ///                 "D1_BINDING": {
@@ -337,7 +338,7 @@ import 'pages_project_state.dart';
 ///                 "BROWSER": {},
 ///             },
 ///             "build_image_major_version": 3,
-///             "compatibility_date": "2025-01-01",
+///             "compatibility_date": "2025-01-01T00:00:00Z",
 ///             "compatibility_flags": ["url_standard"],
 ///             "d1_databases": {
 ///                 "D1_BINDING": {
@@ -469,7 +470,7 @@ import 'pages_project_state.dart';
 ///                     { "BROWSER", null },
 ///                 },
 ///                 BuildImageMajorVersion = 3,
-///                 CompatibilityDate = "2025-01-01",
+///                 CompatibilityDate = "2025-01-01T00:00:00Z",
 ///                 CompatibilityFlags = new[]
 ///                 {
 ///                     "url_standard",
@@ -582,7 +583,7 @@ import 'pages_project_state.dart';
 ///                     { "BROWSER", null },
 ///                 },
 ///                 BuildImageMajorVersion = 3,
-///                 CompatibilityDate = "2025-01-01",
+///                 CompatibilityDate = "2025-01-01T00:00:00Z",
 ///                 CompatibilityFlags = new[]
 ///                 {
 ///                     "url_standard",
@@ -749,7 +750,7 @@ import 'pages_project_state.dart';
 /// 						"BROWSER": &cloudflare.PagesProjectDeploymentConfigsPreviewBrowsersArgs{},
 /// 					},
 /// 					BuildImageMajorVersion: pulumi.Int(3),
-/// 					CompatibilityDate:      pulumi.String("2025-01-01"),
+/// 					CompatibilityDate:      pulumi.String("2025-01-01T00:00:00Z"),
 /// 					CompatibilityFlags: pulumi.StringArray{
 /// 						pulumi.String("url_standard"),
 /// 					},
@@ -833,7 +834,7 @@ import 'pages_project_state.dart';
 /// 						"BROWSER": &cloudflare.PagesProjectDeploymentConfigsProductionBrowsersArgs{},
 /// 					},
 /// 					BuildImageMajorVersion: pulumi.Int(3),
-/// 					CompatibilityDate:      pulumi.String("2025-01-01"),
+/// 					CompatibilityDate:      pulumi.String("2025-01-01T00:00:00Z"),
 /// 					CompatibilityFlags: pulumi.StringArray{
 /// 						pulumi.String("url_standard"),
 /// 					},
@@ -937,7 +938,7 @@ import 'pages_project_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -945,7 +946,10 @@ import 'pages_project_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_pagesproject" "example_pages_project" {
+/// resource "cloudflare_pages_project" "example_pages_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id        = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name              = "my-pages-app"
 ///   production_branch = "main"
@@ -974,7 +978,7 @@ import 'pages_project_state.dart';
 ///         "BROWSER" = {}
 ///       }
 ///       build_image_major_version = 3
-///       compatibility_date        = "2025-01-01"
+///       compatibility_date        = "2025-01-01T00:00:00Z"
 ///       compatibility_flags       = ["url_standard"]
 ///       d1_databases = {
 ///         "D1_BINDING" = {
@@ -1056,7 +1060,7 @@ import 'pages_project_state.dart';
 ///         "BROWSER" = {}
 ///       }
 ///       build_image_major_version = 3
-///       compatibility_date        = "2025-01-01"
+///       compatibility_date        = "2025-01-01T00:00:00Z"
 ///       compatibility_flags       = ["url_standard"]
 ///       d1_databases = {
 ///         "D1_BINDING" = {
@@ -1224,7 +1228,7 @@ import 'pages_project_state.dart';
 ///                     .browsers(Map.of("BROWSER", PagesProjectDeploymentConfigsPreviewBrowsersArgs.builder()
 ///                         .build()))
 ///                     .buildImageMajorVersion(3)
-///                     .compatibilityDate("2025-01-01")
+///                     .compatibilityDate("2025-01-01T00:00:00Z")
 ///                     .compatibilityFlags("url_standard")
 ///                     .d1Databases(Map.of("D1_BINDING", PagesProjectDeploymentConfigsPreviewD1DatabasesArgs.builder()
 ///                         .id("445e2955-951a-43f8-a35b-a4d0c8138f63")
@@ -1281,7 +1285,7 @@ import 'pages_project_state.dart';
 ///                     .browsers(Map.of("BROWSER", PagesProjectDeploymentConfigsProductionBrowsersArgs.builder()
 ///                         .build()))
 ///                     .buildImageMajorVersion(3)
-///                     .compatibilityDate("2025-01-01")
+///                     .compatibilityDate("2025-01-01T00:00:00Z")
 ///                     .compatibilityFlags("url_standard")
 ///                     .d1Databases(Map.of("D1_BINDING", PagesProjectDeploymentConfigsProductionD1DatabasesArgs.builder()
 ///                         .id("445e2955-951a-43f8-a35b-a4d0c8138f63")
@@ -1379,7 +1383,7 @@ import 'pages_project_state.dart';
 ///           browsers:
 ///             BROWSER: {}
 ///           buildImageMajorVersion: 3
-///           compatibilityDate: 2025-01-01
+///           compatibilityDate: 2025-01-01T00:00:00Z
 ///           compatibilityFlags:
 ///             - url_standard
 ///           d1Databases:
@@ -1434,7 +1438,7 @@ import 'pages_project_state.dart';
 ///           browsers:
 ///             BROWSER: {}
 ///           buildImageMajorVersion: 3
-///           compatibilityDate: 2025-01-01
+///           compatibilityDate: 2025-01-01T00:00:00Z
 ///           compatibilityFlags:
 ///             - url_standard
 ///           d1Databases:
@@ -1514,6 +1518,8 @@ class PagesProject extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   /// Configs for the project build process.
   late final pulumi.Output<PagesProjectBuildConfig> buildConfig;
+  /// Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+  late final pulumi.Output<PagesProjectBuildImageAutoUpgrade> buildImageAutoUpgrade;
   /// Most recent production deployment of the project.
   late final pulumi.Output<PagesProjectCanonicalDeployment> canonicalDeployment;
   /// When the project was created.
@@ -1528,7 +1534,7 @@ class PagesProject extends pulumi.CustomResource {
   late final pulumi.Output<String> frameworkVersion;
   /// Most recent deployment of the project.
   late final pulumi.Output<PagesProjectLatestDeployment> latestDeployment;
-  /// Name of the project.
+  /// Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   late final pulumi.Output<String> name;
   /// Name of the preview script.
   late final pulumi.Output<String> previewScriptName;
@@ -1555,10 +1561,11 @@ class PagesProject extends pulumi.CustomResource {
           'cloudflare:index/pagesProject:PagesProject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     buildConfig = registerOutput<PagesProjectBuildConfig>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PagesProjectBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    buildImageAutoUpgrade = registerOutput<PagesProjectBuildImageAutoUpgrade>('buildImageAutoUpgrade', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PagesProjectBuildImageAutoUpgrade.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     canonicalDeployment = registerOutput<PagesProjectCanonicalDeployment>('canonicalDeployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PagesProjectCanonicalDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdOn = registerOutput<String>('createdOn');
     deploymentConfigs = registerOutput<PagesProjectDeploymentConfigs>('deploymentConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PagesProjectDeploymentConfigs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1601,6 +1608,7 @@ class PagesProject extends pulumi.CustomResource {
         ) {
     accountId = registerOutput<String>('accountId');
     buildConfig = registerOutput<PagesProjectBuildConfig>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PagesProjectBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    buildImageAutoUpgrade = registerOutput<PagesProjectBuildImageAutoUpgrade>('buildImageAutoUpgrade', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PagesProjectBuildImageAutoUpgrade.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     canonicalDeployment = registerOutput<PagesProjectCanonicalDeployment>('canonicalDeployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PagesProjectCanonicalDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdOn = registerOutput<String>('createdOn');
     deploymentConfigs = registerOutput<PagesProjectDeploymentConfigs>('deploymentConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PagesProjectDeploymentConfigs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1628,6 +1636,7 @@ class PagesProject extends pulumi.CustomResource {
       ) {
     accountId = registerOutput<String>('accountId');
     buildConfig = registerOutput<PagesProjectBuildConfig>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PagesProjectBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    buildImageAutoUpgrade = registerOutput<PagesProjectBuildImageAutoUpgrade>('buildImageAutoUpgrade', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PagesProjectBuildImageAutoUpgrade.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     canonicalDeployment = registerOutput<PagesProjectCanonicalDeployment>('canonicalDeployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PagesProjectCanonicalDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdOn = registerOutput<String>('createdOn');
     deploymentConfigs = registerOutput<PagesProjectDeploymentConfigs>('deploymentConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PagesProjectDeploymentConfigs.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -60,7 +60,7 @@ import 'zero_trust_gateway_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -68,7 +68,10 @@ import 'zero_trust_gateway_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustgatewaycertificate" "example_zero_trust_gateway_certificate" {
+/// resource "cloudflare_zero_trust_gateway_certificate" "example_zero_trust_gateway_certificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id           = "699d98642c564d2e855e9661899b7252"
 ///   validity_period_days = 1826
 /// }
@@ -119,6 +122,7 @@ import 'zero_trust_gateway_certificate_state.dart';
 /// $ pulumi import cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate example '<account_id>/<certificate_id>'
 /// ```
 class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   /// Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
   late final pulumi.Output<bool?> activate;
@@ -137,6 +141,8 @@ class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
   late final pulumi.Output<String> issuerOrg;
   /// Provide the entire issuer field of the certificate (read-only).
   late final pulumi.Output<String> issuerRaw;
+  /// Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
+  late final pulumi.Output<String> region;
   /// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
   /// Available values: "custom", "gatewayManaged".
   late final pulumi.Output<String> type;
@@ -157,7 +163,7 @@ class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     activate = registerOutput<bool?>('activate');
@@ -169,6 +175,7 @@ class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
     inUse = registerOutput<bool>('inUse');
     issuerOrg = registerOutput<String>('issuerOrg');
     issuerRaw = registerOutput<String>('issuerRaw');
+    region = registerOutput<String>('region');
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
     uploadedOn = registerOutput<String>('uploadedOn');
@@ -209,6 +216,7 @@ class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
     inUse = registerOutput<bool>('inUse');
     issuerOrg = registerOutput<String>('issuerOrg');
     issuerRaw = registerOutput<String>('issuerRaw');
+    region = registerOutput<String>('region');
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
     uploadedOn = registerOutput<String>('uploadedOn');
@@ -234,6 +242,7 @@ class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
     inUse = registerOutput<bool>('inUse');
     issuerOrg = registerOutput<String>('issuerOrg');
     issuerRaw = registerOutput<String>('issuerRaw');
+    region = registerOutput<String>('region');
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
     uploadedOn = registerOutput<String>('uploadedOn');

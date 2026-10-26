@@ -73,18 +73,18 @@ class GetMagicTransitSiteLansResult {
 
   factory GetMagicTransitSiteLansResult.fromMap(Map<String, dynamic> map) {
     return GetMagicTransitSiteLansResult(
-      bondId: pulumi.Input.fromValue((map['bondId'] as num).toInt()),
+      bondId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bondId'])),
       haLink: pulumi.Input.fromValue(map['haLink'] as bool),
       id: pulumi.Input.fromValue(map['id'] as String),
       isBreakout: pulumi.Input.fromValue(map['isBreakout'] as bool),
       isPrioritized: pulumi.Input.fromValue(map['isPrioritized'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
       nat: pulumi.Input.fromValue(GetMagicTransitSiteLansResultNat.fromMap((map['nat']! as Map).cast<String, dynamic>())),
-      physport: pulumi.Input.fromValue((map['physport'] as num).toInt()),
+      physport: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['physport'])),
       routedSubnets: pulumi.Input.fromValue(pulumi.Input.decodeList<GetMagicTransitSiteLansResultRoutedSubnet>(map['routedSubnets']!, (value) => GetMagicTransitSiteLansResultRoutedSubnet.fromMap((value as Map).cast<String, dynamic>()))),
       siteId: pulumi.Input.fromValue(map['siteId'] as String),
       staticAddressing: pulumi.Input.fromValue(GetMagicTransitSiteLansResultStaticAddressing.fromMap((map['staticAddressing']! as Map).cast<String, dynamic>())),
-      vlanTag: pulumi.Input.fromValue((map['vlanTag'] as num).toInt()),
+      vlanTag: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vlanTag'])),
     );
   }
 }

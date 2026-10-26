@@ -16,7 +16,7 @@ import 'api_shield_discovery_operation_state.dart';
 ///
 /// const exampleApiShieldDiscoveryOperation = new cloudflare.ApiShieldDiscoveryOperation("example_api_shield_discovery_operation", {
 ///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
-///     operationId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+///     discoveryId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 ///     state: "review",
 /// });
 /// ```
@@ -26,7 +26,7 @@ import 'api_shield_discovery_operation_state.dart';
 ///
 /// example_api_shield_discovery_operation = cloudflare.ApiShieldDiscoveryOperation("example_api_shield_discovery_operation",
 ///     zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     operation_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+///     discovery_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 ///     state="review")
 /// ```
 /// ```csharp
@@ -40,7 +40,7 @@ import 'api_shield_discovery_operation_state.dart';
 ///     var exampleApiShieldDiscoveryOperation = new Cloudflare.ApiShieldDiscoveryOperation("example_api_shield_discovery_operation", new()
 ///     {
 ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-///         OperationId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+///         DiscoveryId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 ///         State = "review",
 ///     });
 ///
@@ -58,7 +58,7 @@ import 'api_shield_discovery_operation_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.NewApiShieldDiscoveryOperation(ctx, "example_api_shield_discovery_operation", &cloudflare.ApiShieldDiscoveryOperationArgs{
 /// 			ZoneId:      pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			OperationId: pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+/// 			DiscoveryId: pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 /// 			State:       pulumi.String("review"),
 /// 		})
 /// 		if err != nil {
@@ -69,7 +69,7 @@ import 'api_shield_discovery_operation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -77,9 +77,12 @@ import 'api_shield_discovery_operation_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_apishielddiscoveryoperation" "example_api_shield_discovery_operation" {
+/// resource "cloudflare_api_shield_discovery_operation" "example_api_shield_discovery_operation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id      = "023e105f4ecef8ad9ca31a8372d0c353"
-///   operation_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+///   discovery_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   state        = "review"
 /// }
 /// ```
@@ -106,7 +109,7 @@ import 'api_shield_discovery_operation_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var exampleApiShieldDiscoveryOperation = new ApiShieldDiscoveryOperation("exampleApiShieldDiscoveryOperation", ApiShieldDiscoveryOperationArgs.builder()
 ///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-///             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+///             .discoveryId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
 ///             .state("review")
 ///             .build());
 ///
@@ -120,7 +123,7 @@ import 'api_shield_discovery_operation_state.dart';
 ///     name: example_api_shield_discovery_operation
 ///     properties:
 ///       zoneId: 023e105f4ecef8ad9ca31a8372d0c353
-///       operationId: f174e90a-fafe-4643-bbbc-4a0ed4fc8415
+///       discoveryId: f174e90a-fafe-4643-bbbc-4a0ed4fc8415
 ///       state: review
 /// ```
 ///
@@ -130,14 +133,14 @@ import 'api_shield_discovery_operation_state.dart';
 /// &gt; This resource does not currently support `pulumi import`.
 class ApiShieldDiscoveryOperation extends pulumi.CustomResource {
   /// UUID.
-  late final pulumi.Output<String> operationId;
+  late final pulumi.Output<String> discoveryId;
   /// Mark state of operation in API Discovery
   /// * `review` - Mark operation as for review
   /// * `ignored` - Mark operation as ignored
   /// Available values: "review", "ignored".
   late final pulumi.Output<String?> state;
   /// Identifier.
-  late final pulumi.Output<String?> zoneId;
+  late final pulumi.Output<String> zoneId;
 
   /// Creates a new [ApiShieldDiscoveryOperation].
   /// [name] The Pulumi resource name.
@@ -151,11 +154,11 @@ class ApiShieldDiscoveryOperation extends pulumi.CustomResource {
           'cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
-    operationId = registerOutput<String>('operationId');
+    discoveryId = registerOutput<String>('discoveryId');
     state = registerOutput<String?>('state');
-    zoneId = registerOutput<String?>('zoneId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [ApiShieldDiscoveryOperation] resource's state with the given [name] and [id].
@@ -182,9 +185,9 @@ class ApiShieldDiscoveryOperation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    operationId = registerOutput<String>('operationId');
+    discoveryId = registerOutput<String>('discoveryId');
     this.state = registerOutput<String?>('state');
-    zoneId = registerOutput<String?>('zoneId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Creates a typed reference to an existing [ApiShieldDiscoveryOperation] resource.
@@ -196,8 +199,8 @@ class ApiShieldDiscoveryOperation extends pulumi.CustomResource {
         pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
         isResourceReference: true,
       ) {
-    operationId = registerOutput<String>('operationId');
+    discoveryId = registerOutput<String>('discoveryId');
     state = registerOutput<String?>('state');
-    zoneId = registerOutput<String?>('zoneId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

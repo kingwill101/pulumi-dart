@@ -3,7 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPipelineSinkFormat {
-  /// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+  /// Specifies the compression applied to JSON sink output.
+  /// Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
   final pulumi.Input<String> compression;
   /// Available values: "number", "string", "bytes".
   final pulumi.Input<String> decimalEncoding;
@@ -15,7 +16,7 @@ class GetPipelineSinkFormat {
   final pulumi.Input<bool> unstructured;
 
   /// Creates a new [GetPipelineSinkFormat].
-  /// [compression] Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+  /// [compression] Specifies the compression applied to JSON sink output.
   /// [decimalEncoding] Available values: "number", "string", "bytes".
   /// [rowGroupBytes] Required.
   /// [timestampFormat] Available values: "rfc3339", "unixMillis".
@@ -45,7 +46,7 @@ class GetPipelineSinkFormat {
     return GetPipelineSinkFormat(
       compression: pulumi.Input.fromValue(map['compression'] as String),
       decimalEncoding: pulumi.Input.fromValue(map['decimalEncoding'] as String),
-      rowGroupBytes: pulumi.Input.fromValue((map['rowGroupBytes'] as num).toInt()),
+      rowGroupBytes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rowGroupBytes'])),
       timestampFormat: pulumi.Input.fromValue(map['timestampFormat'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
       unstructured: pulumi.Input.fromValue(map['unstructured'] as bool),

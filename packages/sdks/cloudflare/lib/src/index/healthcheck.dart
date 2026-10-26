@@ -214,7 +214,7 @@ import 'healthcheck_tcp_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -223,6 +223,9 @@ import 'healthcheck_tcp_config.dart';
 /// }
 ///
 /// resource "cloudflare_healthcheck" "example_healthcheck" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id               = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   address               = "www.example.com"
 ///   name                  = "server-1"
@@ -411,7 +414,7 @@ class Healthcheck extends pulumi.CustomResource {
           'cloudflare:index/healthcheck:Healthcheck',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     address = registerOutput<String>('address');
     checkRegions = registerOutput<List<String>?>('checkRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

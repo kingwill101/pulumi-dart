@@ -6,20 +6,20 @@ import 'get_zero_trust_resource_library_categories_result.dart';
 /// Result data returned by getZeroTrustResourceLibraryCategories.
 class GetZeroTrustResourceLibraryCategoriesInvokeResult {
   final String? accountId;
-  /// Limit of number of results to return.
+  /// Number of results to return. Defaults to 25; values are clamped to 1–250.
   final int? limit;
   /// Max items to fetch, default: 1000
   final int? maxItems;
-  /// Offset of results to return.
+  /// Number of results to skip. Defaults to 0; negative values are clamped to 0.
   final int? offset;
   /// The items returned by the data source
   final List<GetZeroTrustResourceLibraryCategoriesResult>? results;
 
   /// Creates a new [GetZeroTrustResourceLibraryCategoriesInvokeResult].
   /// [accountId] Optional.
-  /// [limit] Limit of number of results to return.
+  /// [limit] Number of results to return. Defaults to 25; values are clamped to 1–250.
   /// [maxItems] Max items to fetch, default: 1000
-  /// [offset] Offset of results to return.
+  /// [offset] Number of results to skip. Defaults to 0; negative values are clamped to 0.
   /// [results] The items returned by the data source
   const GetZeroTrustResourceLibraryCategoriesInvokeResult({
     this.accountId,
@@ -42,9 +42,9 @@ class GetZeroTrustResourceLibraryCategoriesInvokeResult {
   factory GetZeroTrustResourceLibraryCategoriesInvokeResult.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustResourceLibraryCategoriesInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      offset: (() { final guardedValue = map['offset']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      offset: (() { final guardedValue = map['offset']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZeroTrustResourceLibraryCategoriesResult>(guardedValue, (value) => GetZeroTrustResourceLibraryCategoriesResult.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }

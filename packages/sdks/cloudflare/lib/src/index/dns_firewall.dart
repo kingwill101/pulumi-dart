@@ -88,11 +88,11 @@ import 'dns_firewall_state.dart';
 ///         DeprecateAnyRequests = true,
 ///         DnsFirewallIpCount = 2,
 ///         EcsFallback = false,
-///         MaximumCacheTtl = 900,
-///         MinimumCacheTtl = 60,
-///         NegativeCacheTtl = 900,
-///         Ratelimit = 600,
-///         Retries = 2,
+///         MaximumCacheTtl = 900.0,
+///         MinimumCacheTtl = 60.0,
+///         NegativeCacheTtl = 900.0,
+///         Ratelimit = 600.0,
+///         Retries = 2.0,
 ///     });
 ///
 /// });
@@ -136,7 +136,7 @@ import 'dns_firewall_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -144,7 +144,10 @@ import 'dns_firewall_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_dnsfirewall" "example_dns_firewall" {
+/// resource "cloudflare_dns_firewall" "example_dns_firewall" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name         = "My Awesome DNS Firewall cluster"
 ///   upstream_ips = ["192.0.2.1", "198.51.100.1", "2001:DB8:100::CF"]
@@ -299,7 +302,7 @@ class DnsFirewall extends pulumi.CustomResource {
           'cloudflare:index/dnsFirewall:DnsFirewall',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     attackMitigation = registerOutput<DnsFirewallAttackMitigation>('attackMitigation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsFirewallAttackMitigation.fromMap((guardedValue as Map).cast<String, dynamic>()); });

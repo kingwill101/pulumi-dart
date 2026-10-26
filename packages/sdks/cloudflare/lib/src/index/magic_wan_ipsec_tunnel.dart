@@ -22,7 +22,9 @@ import 'magic_wan_ipsec_tunnel_state.dart';
 ///     automaticReturnRouting: true,
 ///     bgp: {
 ///         customerAsn: 0,
+///         exportFilterId: "a1b2c3d4e5f647890a1b2c3d4e5f6789",
 ///         extraPrefixes: ["string"],
+///         importFilterId: "a1b2c3d4e5f647890a1b2c3d4e5f6789",
 ///         md5Key: "md5_key",
 ///     },
 ///     customRemoteIdentities: {
@@ -56,7 +58,9 @@ import 'magic_wan_ipsec_tunnel_state.dart';
 ///     automatic_return_routing=True,
 ///     bgp={
 ///         "customer_asn": 0,
+///         "export_filter_id": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
 ///         "extra_prefixes": ["string"],
+///         "import_filter_id": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
 ///         "md5_key": "md5_key",
 ///     },
 ///     custom_remote_identities={
@@ -95,10 +99,12 @@ import 'magic_wan_ipsec_tunnel_state.dart';
 ///         Bgp = new Cloudflare.Inputs.MagicWanIpsecTunnelBgpArgs
 ///         {
 ///             CustomerAsn = 0,
+///             ExportFilterId = "a1b2c3d4e5f647890a1b2c3d4e5f6789",
 ///             ExtraPrefixes = new[]
 ///             {
 ///                 "string",
 ///             },
+///             ImportFilterId = "a1b2c3d4e5f647890a1b2c3d4e5f6789",
 ///             Md5Key = "md5_key",
 ///         },
 ///         CustomRemoteIdentities = new Cloudflare.Inputs.MagicWanIpsecTunnelCustomRemoteIdentitiesArgs
@@ -142,11 +148,13 @@ import 'magic_wan_ipsec_tunnel_state.dart';
 /// 			Name:                   pulumi.String("IPsec_1"),
 /// 			AutomaticReturnRouting: pulumi.Bool(true),
 /// 			Bgp: &cloudflare.MagicWanIpsecTunnelBgpArgs{
-/// 				CustomerAsn: pulumi.Int(0),
+/// 				CustomerAsn:    pulumi.Int(0),
+/// 				ExportFilterId: pulumi.String("a1b2c3d4e5f647890a1b2c3d4e5f6789"),
 /// 				ExtraPrefixes: pulumi.StringArray{
 /// 					pulumi.String("string"),
 /// 				},
-/// 				Md5Key: pulumi.String("md5_key"),
+/// 				ImportFilterId: pulumi.String("a1b2c3d4e5f647890a1b2c3d4e5f6789"),
+/// 				Md5Key:         pulumi.String("md5_key"),
 /// 			},
 /// 			CustomRemoteIdentities: &cloudflare.MagicWanIpsecTunnelCustomRemoteIdentitiesArgs{
 /// 				FqdnId: pulumi.String("fqdn_id"),
@@ -174,7 +182,7 @@ import 'magic_wan_ipsec_tunnel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -182,16 +190,21 @@ import 'magic_wan_ipsec_tunnel_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_magicwanipsectunnel" "example_magic_wan_ipsec_tunnel" {
+/// resource "cloudflare_magic_wan_ipsec_tunnel" "example_magic_wan_ipsec_tunnel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id               = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   cloudflare_endpoint      = "203.0.113.1"
 ///   interface_address        = "192.0.2.0/31"
 ///   name                     = "IPsec_1"
 ///   automatic_return_routing = true
 ///   bgp = {
-///     customer_asn   = 0
-///     extra_prefixes = ["string"]
-///     md5_key        = "md5_key"
+///     customer_asn     = 0
+///     export_filter_id = "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+///     extra_prefixes   = ["string"]
+///     import_filter_id = "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+///     md5_key          = "md5_key"
 ///   }
 ///   custom_remote_identities = {
 ///     fqdn_id = "fqdn_id"
@@ -245,7 +258,9 @@ import 'magic_wan_ipsec_tunnel_state.dart';
 ///             .automaticReturnRouting(true)
 ///             .bgp(MagicWanIpsecTunnelBgpArgs.builder()
 ///                 .customerAsn(0)
+///                 .exportFilterId("a1b2c3d4e5f647890a1b2c3d4e5f6789")
 ///                 .extraPrefixes("string")
+///                 .importFilterId("a1b2c3d4e5f647890a1b2c3d4e5f6789")
 ///                 .md5Key("md5_key")
 ///                 .build())
 ///             .customRemoteIdentities(MagicWanIpsecTunnelCustomRemoteIdentitiesArgs.builder()
@@ -283,8 +298,10 @@ import 'magic_wan_ipsec_tunnel_state.dart';
 ///       automaticReturnRouting: true
 ///       bgp:
 ///         customerAsn: 0
+///         exportFilterId: a1b2c3d4e5f647890a1b2c3d4e5f6789
 ///         extraPrefixes:
 ///           - string
+///         importFilterId: a1b2c3d4e5f647890a1b2c3d4e5f6789
 ///         md5Key: md5_key
 ///       customRemoteIdentities:
 ///         fqdnId: fqdn_id
@@ -354,7 +371,7 @@ class MagicWanIpsecTunnel extends pulumi.CustomResource {
           'cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
           additionalSecretOutputs: const ['psk'],
         ) {
     accountId = registerOutput<String>('accountId');

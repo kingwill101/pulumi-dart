@@ -51,7 +51,7 @@ import 'dns_zone_transfers_incoming_state.dart';
 ///     var exampleDnsZoneTransfersIncoming = new Cloudflare.DnsZoneTransfersIncoming("example_dns_zone_transfers_incoming", new()
 ///     {
 ///         ZoneId = "269d8f4853475ca241c4e730be286b20",
-///         AutoRefreshSeconds = 86400,
+///         AutoRefreshSeconds = 86400.0,
 ///         Name = "www.example.com.",
 ///         Peers = new[]
 ///         {
@@ -89,7 +89,7 @@ import 'dns_zone_transfers_incoming_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -97,7 +97,10 @@ import 'dns_zone_transfers_incoming_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_dnszonetransfersincoming" "example_dns_zone_transfers_incoming" {
+/// resource "cloudflare_dns_zone_transfers_incoming" "example_dns_zone_transfers_incoming" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id              = "269d8f4853475ca241c4e730be286b20"
 ///   auto_refresh_seconds = 86400
 ///   name                 = "www.example.com."
@@ -187,7 +190,7 @@ class DnsZoneTransfersIncoming extends pulumi.CustomResource {
           'cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     autoRefreshSeconds = registerOutput<double>('autoRefreshSeconds');
     checkedTime = registerOutput<String>('checkedTime');

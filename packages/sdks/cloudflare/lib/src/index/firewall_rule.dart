@@ -80,7 +80,7 @@ import 'firewall_rule_state.dart';
 ///                 Body = "<error>This request has been rate-limited.</error>",
 ///                 ContentType = "text/xml",
 ///             },
-///             Timeout = 86400,
+///             Timeout = 86400.0,
 ///         },
 ///         Filter = new Cloudflare.Inputs.FirewallRuleFilterArgs
 ///         {
@@ -128,7 +128,7 @@ import 'firewall_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -136,7 +136,10 @@ import 'firewall_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_firewallrule" "example_firewall_rule" {
+/// resource "cloudflare_firewall_rule" "example_firewall_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   action = {
 ///     mode = "challenge"
@@ -253,7 +256,7 @@ class FirewallRule extends pulumi.CustomResource {
           'cloudflare:index/firewallRule:FirewallRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     action = registerOutput<FirewallRuleAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');

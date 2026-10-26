@@ -14,6 +14,8 @@ class GetZeroTrustAccessInfrastructureTargetsResult {
   final pulumi.Input<GetZeroTrustAccessInfrastructureTargetsResultIp> ip;
   /// Date and time at which the target was modified
   final pulumi.Input<String> modifiedAt;
+  /// Tags assigned to the target. Empty when no tags are assigned.
+  final pulumi.Input<Map<String, String>> tags;
 
   /// Creates a new [GetZeroTrustAccessInfrastructureTargetsResult].
   /// [createdAt] Date and time at which the target was created
@@ -21,12 +23,14 @@ class GetZeroTrustAccessInfrastructureTargetsResult {
   /// [id] Target identifier
   /// [ip] The IPv4/IPv6 address that identifies where to reach a target
   /// [modifiedAt] Date and time at which the target was modified
+  /// [tags] Tags assigned to the target. Empty when no tags are assigned.
   const GetZeroTrustAccessInfrastructureTargetsResult({
     required this.createdAt,
     required this.hostname,
     required this.id,
     required this.ip,
     required this.modifiedAt,
+    required this.tags,
   });
 
   Map<String, dynamic> toMap() {
@@ -36,6 +40,7 @@ class GetZeroTrustAccessInfrastructureTargetsResult {
       'id': id,
       'ip': pulumi.Input.mapInputValue<GetZeroTrustAccessInfrastructureTargetsResultIp, Map<String, dynamic>>(ip, (value) => value.toMap()),
       'modifiedAt': modifiedAt,
+      'tags': tags,
     };
   }
 
@@ -46,6 +51,7 @@ class GetZeroTrustAccessInfrastructureTargetsResult {
       id: pulumi.Input.fromValue(map['id'] as String),
       ip: pulumi.Input.fromValue(GetZeroTrustAccessInfrastructureTargetsResultIp.fromMap((map['ip']! as Map).cast<String, dynamic>())),
       modifiedAt: pulumi.Input.fromValue(map['modifiedAt'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
     );
   }
 }

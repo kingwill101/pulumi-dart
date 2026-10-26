@@ -17,7 +17,7 @@ class QueueConsumerState {
   /// Name of a Worker
   final pulumi.Input<String?>? scriptName;
   final pulumi.Input<QueueConsumerSettings?>? settings;
-  /// Available values: "worker", "httpPull".
+  /// Available values: "worker", "httpPull", "notification".
   final pulumi.Input<String?>? type;
 
   /// Creates a new [QueueConsumerState].
@@ -29,7 +29,7 @@ class QueueConsumerState {
   /// [queueName] Optional.
   /// [scriptName] Name of a Worker
   /// [settings] Optional.
-  /// [type] Available values: "worker", "httpPull".
+  /// [type] Available values: "worker", "httpPull", "notification".
   const QueueConsumerState({
     this.accountId,
     this.consumerId,

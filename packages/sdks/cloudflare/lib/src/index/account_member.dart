@@ -81,7 +81,7 @@ import 'account_member_user.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -89,7 +89,10 @@ import 'account_member_user.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_accountmember" "example_account_member" {
+/// resource "cloudflare_account_member" "example_account_member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   email      = "user@example.com"
 ///   roles      = ["3536bcfad5faccb999b47003c79917fb"]
@@ -174,7 +177,7 @@ class AccountMember extends pulumi.CustomResource {
           'cloudflare:index/accountMember:AccountMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     email = registerOutput<String>('email');

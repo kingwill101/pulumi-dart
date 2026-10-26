@@ -77,7 +77,7 @@ import 'worker_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -85,7 +85,10 @@ import 'worker_domain_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_workerscustomdomain" "example_workers_custom_domain" {
+/// resource "cloudflare_workers_custom_domain" "example_workers_custom_domain" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   hostname   = "app.example.com"
 ///   service    = "my-worker"
@@ -172,7 +175,7 @@ class WorkerDomain extends pulumi.CustomResource {
           'cloudflare:index/workerDomain:WorkerDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     certId = registerOutput<String>('certId');

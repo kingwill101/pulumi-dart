@@ -90,7 +90,7 @@ import 'access_mutual_tls_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -98,8 +98,17 @@ import 'access_mutual_tls_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustaccessmtlscertificate" "example_zero_trust_access_mtls_certificate" {
-///   certificate          = "  -----BEGIN CERTIFICATE-----\n  MIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10\n  DrUtmu/B\n  -----END CERTIFICATE-----\n"
+/// resource "cloudflare_zero_trust_access_mtls_certificate" "example_zero_trust_access_mtls_certificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate          = <<EOT
+///   -----BEGIN CERTIFICATE-----
+///   MIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10
+///   DrUtmu/B
+///   -----END CERTIFICATE-----
+/// EOT
+///
 ///   name                 = "Allow devs"
 ///   zone_id              = "zone_id"
 ///   associated_hostnames = ["admin.example.com"]
@@ -194,7 +203,7 @@ class AccessMutualTlsCertificate extends pulumi.CustomResource {
           'cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     associatedHostnames = registerOutput<List<String>>('associatedHostnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

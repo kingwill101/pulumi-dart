@@ -12,6 +12,8 @@ import 'get_ai_gateway_stripe.dart';
 class GetAiGatewayResult {
   final String? accountId;
   final bool? authentication;
+  /// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+  final bool? byokOnly;
   final bool? cacheInvalidateOnUpdate;
   final int? cacheTtl;
   final bool? collectLogs;
@@ -19,7 +21,7 @@ class GetAiGatewayResult {
   final GetAiGatewayDlp? dlp;
   final GetAiGatewayFilter? filter;
   final GetAiGatewayGuardrails? guardrails;
-  /// gateway id
+  /// Unique identifier of the AI Gateway within the account.
   final String? id;
   final bool? isDefault;
   final bool? logClassification;
@@ -37,7 +39,7 @@ class GetAiGatewayResult {
   /// Backoff strategy for retry delays
   /// Available values: "constant", "linear", "exponential".
   final String? retryBackoff;
-  /// Delay between retry attempts in milliseconds (0-5000)
+  /// Delay between retry attempts in milliseconds (0-60000)
   final int? retryDelay;
   /// Maximum number of retry attempts for failed requests (1-5)
   final int? retryMaxAttempts;
@@ -52,6 +54,7 @@ class GetAiGatewayResult {
   /// Creates a new [GetAiGatewayResult].
   /// [accountId] Optional.
   /// [authentication] Optional.
+  /// [byokOnly] Requires customer-provided provider credentials and prevents fallback to Unified Billing.
   /// [cacheInvalidateOnUpdate] Optional.
   /// [cacheTtl] Optional.
   /// [collectLogs] Optional.
@@ -59,7 +62,7 @@ class GetAiGatewayResult {
   /// [dlp] Optional.
   /// [filter] Optional.
   /// [guardrails] Optional.
-  /// [id] gateway id
+  /// [id] Unique identifier of the AI Gateway within the account.
   /// [isDefault] Optional.
   /// [logClassification] Optional.
   /// [logManagement] Optional.
@@ -72,7 +75,7 @@ class GetAiGatewayResult {
   /// [rateLimitingLimit] Optional.
   /// [rateLimitingTechnique] Available values: "fixed", "sliding".
   /// [retryBackoff] Backoff strategy for retry delays
-  /// [retryDelay] Delay between retry attempts in milliseconds (0-5000)
+  /// [retryDelay] Delay between retry attempts in milliseconds (0-60000)
   /// [retryMaxAttempts] Maximum number of retry attempts for failed requests (1-5)
   /// [spendLimits] Optional.
   /// [storeId] Optional.
@@ -82,6 +85,7 @@ class GetAiGatewayResult {
   const GetAiGatewayResult({
     this.accountId,
     this.authentication,
+    this.byokOnly,
     this.cacheInvalidateOnUpdate,
     this.cacheTtl,
     this.collectLogs,
@@ -115,6 +119,7 @@ class GetAiGatewayResult {
     return <String, dynamic>{
       'accountId': ?accountId,
       'authentication': ?authentication,
+      'byokOnly': ?byokOnly,
       'cacheInvalidateOnUpdate': ?cacheInvalidateOnUpdate,
       'cacheTtl': ?cacheTtl,
       'collectLogs': ?collectLogs,
@@ -149,8 +154,9 @@ class GetAiGatewayResult {
     return GetAiGatewayResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      byokOnly: (() { final guardedValue = map['byokOnly']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       cacheInvalidateOnUpdate: (() { final guardedValue = map['cacheInvalidateOnUpdate']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      cacheTtl: (() { final guardedValue = map['cacheTtl']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      cacheTtl: (() { final guardedValue = map['cacheTtl']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       collectLogs: (() { final guardedValue = map['collectLogs']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dlp: (() { final guardedValue = map['dlp']; if (guardedValue == null) return null; return GetAiGatewayDlp.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
@@ -159,18 +165,18 @@ class GetAiGatewayResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isDefault: (() { final guardedValue = map['isDefault']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       logClassification: (() { final guardedValue = map['logClassification']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      logManagement: (() { final guardedValue = map['logManagement']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      logManagement: (() { final guardedValue = map['logManagement']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       logManagementStrategy: (() { final guardedValue = map['logManagementStrategy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       logpush: (() { final guardedValue = map['logpush']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       logpushPublicKey: (() { final guardedValue = map['logpushPublicKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
       modifiedAt: (() { final guardedValue = map['modifiedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       otels: (() { final guardedValue = map['otels']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAiGatewayOtel>(guardedValue, (value) => GetAiGatewayOtel.fromMap((value as Map).cast<String, dynamic>())); })(),
-      rateLimitingInterval: (() { final guardedValue = map['rateLimitingInterval']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      rateLimitingLimit: (() { final guardedValue = map['rateLimitingLimit']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      rateLimitingInterval: (() { final guardedValue = map['rateLimitingInterval']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      rateLimitingLimit: (() { final guardedValue = map['rateLimitingLimit']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       rateLimitingTechnique: (() { final guardedValue = map['rateLimitingTechnique']; if (guardedValue == null) return null; return guardedValue as String; })(),
       retryBackoff: (() { final guardedValue = map['retryBackoff']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      retryDelay: (() { final guardedValue = map['retryDelay']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      retryMaxAttempts: (() { final guardedValue = map['retryMaxAttempts']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      retryDelay: (() { final guardedValue = map['retryDelay']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      retryMaxAttempts: (() { final guardedValue = map['retryMaxAttempts']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       spendLimits: (() { final guardedValue = map['spendLimits']; if (guardedValue == null) return null; return GetAiGatewaySpendLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       storeId: (() { final guardedValue = map['storeId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       stripe: (() { final guardedValue = map['stripe']; if (guardedValue == null) return null; return GetAiGatewayStripe.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),

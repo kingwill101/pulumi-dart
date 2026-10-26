@@ -77,7 +77,7 @@ import 'api_shield_operation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -85,7 +85,10 @@ import 'api_shield_operation_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_apishieldoperation" "example_api_shield_operation" {
+/// resource "cloudflare_api_shield_operation" "example_api_shield_operation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   endpoint = "/api/v1/users/{var1}"
 ///   host     = "www.example.com"
@@ -170,7 +173,7 @@ class ApiShieldOperation extends pulumi.CustomResource {
           'cloudflare:index/apiShieldOperation:ApiShieldOperation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     endpoint = registerOutput<String>('endpoint');
     features = registerOutput<ApiShieldOperationFeatures>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiShieldOperationFeatures.fromMap((guardedValue as Map).cast<String, dynamic>()); });

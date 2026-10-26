@@ -6,11 +6,12 @@ class GetEmailRoutingCatchAllAction {
   /// Type of action for catch-all rule.
   /// Available values: "drop", "forward", "worker".
   final pulumi.Input<String> type;
+  /// List of values for the action. Currently limited to a single value.
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetEmailRoutingCatchAllAction].
   /// [type] Type of action for catch-all rule.
-  /// [values] Required.
+  /// [values] List of values for the action. Currently limited to a single value.
   const GetEmailRoutingCatchAllAction({
     required this.type,
     required this.values,

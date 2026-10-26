@@ -87,7 +87,7 @@ import 'zero_trust_dlp_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -95,7 +95,10 @@ import 'zero_trust_dlp_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdlpsettings" "example_zero_trust_dlp_settings" {
+/// resource "cloudflare_zero_trust_dlp_settings" "example_zero_trust_dlp_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id          = "account_id"
 ///   ai_context_analysis = true
 ///   ocr                 = true
@@ -183,7 +186,7 @@ class ZeroTrustDlpSettings extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     aiContextAnalysis = registerOutput<bool>('aiContextAnalysis');

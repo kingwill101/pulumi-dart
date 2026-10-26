@@ -136,7 +136,7 @@ import 'token_validation_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -144,15 +144,18 @@ import 'token_validation_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_tokenvalidationconfig" "example_token_validation_config" {
+/// resource "cloudflare_token_validation_config" "example_token_validation_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   credentials = {
 ///     keys = [{
-///       "alg" = "RS256"
-///       "e"   = "e"
-///       "kid" = "kid"
-///       "kty" = "RSA"
-///       "n"   = "n"
+///       alg = "RS256"
+///       e   = "e"
+///       kid = "kid"
+///       kty = "RSA"
+///       n   = "n"
 ///     }]
 ///   }
 ///   description   = "Long description for Token Validation Configuration"
@@ -259,7 +262,7 @@ class TokenValidationConfig extends pulumi.CustomResource {
           'cloudflare:index/tokenValidationConfig:TokenValidationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     credentials = registerOutput<TokenValidationConfigCredentials>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TokenValidationConfigCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });

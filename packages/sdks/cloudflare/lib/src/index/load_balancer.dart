@@ -490,7 +490,7 @@ import 'load_balancer_state.dart';
 ///                     SessionAffinity = "cookie",
 ///                     SessionAffinityAttributes = new Cloudflare.Inputs.LoadBalancerRuleOverridesSessionAffinityAttributesArgs
 ///                     {
-///                         DrainDuration = 100,
+///                         DrainDuration = 100.0,
 ///                         Headers = new[]
 ///                         {
 ///                             "x",
@@ -500,9 +500,9 @@ import 'load_balancer_state.dart';
 ///                         Secure = "Auto",
 ///                         ZeroDowntimeFailover = "sticky",
 ///                     },
-///                     SessionAffinityTtl = 1800,
+///                     SessionAffinityTtl = 1800.0,
 ///                     SteeringPolicy = "dynamic_latency",
-///                     Ttl = 30,
+///                     Ttl = 30.0,
 ///                 },
 ///                 Priority = 0,
 ///                 Terminates = true,
@@ -511,7 +511,7 @@ import 'load_balancer_state.dart';
 ///         SessionAffinity = "cookie",
 ///         SessionAffinityAttributes = new Cloudflare.Inputs.LoadBalancerSessionAffinityAttributesArgs
 ///         {
-///             DrainDuration = 100,
+///             DrainDuration = 100.0,
 ///             Headers = new[]
 ///             {
 ///                 "x",
@@ -521,9 +521,9 @@ import 'load_balancer_state.dart';
 ///             Secure = "Auto",
 ///             ZeroDowntimeFailover = "sticky",
 ///         },
-///         SessionAffinityTtl = 1800,
+///         SessionAffinityTtl = 1800.0,
 ///         SteeringPolicy = "dynamic_latency",
-///         Ttl = 30,
+///         Ttl = 30.0,
 ///     });
 ///
 /// });
@@ -711,7 +711,7 @@ import 'load_balancer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -719,7 +719,10 @@ import 'load_balancer_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_loadbalancer" "example_load_balancer" {
+/// resource "cloudflare_load_balancer" "example_load_balancer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   default_pools = ["17b5962d775c646f3f9725cbc7a53df4", "9290f38c5d07c2e2f4df57b1f61d4196", "00920f38ce07c2e2f4df50b1f61d4194"]
 ///   fallback_pool = "fallback_pool"
 ///   name          = "www.example.com"
@@ -1133,7 +1136,7 @@ import 'load_balancer_state.dart';
 /// ## Import
 ///
 /// ```sh
-/// $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<{accounts|zones}/{account_id|zone_id}>/<load_balancer_id>'
+/// $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<zone_id>/<load_balancer_id>'
 /// ```
 class LoadBalancer extends pulumi.CustomResource {
   /// Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
@@ -1192,7 +1195,7 @@ class LoadBalancer extends pulumi.CustomResource {
           'cloudflare:index/loadBalancer:LoadBalancer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     adaptiveRouting = registerOutput<LoadBalancerAdaptiveRouting>('adaptiveRouting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAdaptiveRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     countryPools = registerOutput<Map<String, List<String>>>('countryPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });

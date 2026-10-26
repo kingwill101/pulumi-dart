@@ -35,7 +35,7 @@ class GetZeroTrustDlpCustomEntryResult {
   final String? uploadStatus;
   /// A Predefined AI prompt classification topic entry.
   final GetZeroTrustDlpCustomEntryVariant? variant;
-  final String? wordList;
+  final List<String>? wordLists;
 
   /// Creates a new [GetZeroTrustDlpCustomEntryResult].
   /// [accountId] Optional.
@@ -56,7 +56,7 @@ class GetZeroTrustDlpCustomEntryResult {
   /// [updatedAt] Optional.
   /// [uploadStatus] Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
   /// [variant] A Predefined AI prompt classification topic entry.
-  /// [wordList] Optional.
+  /// [wordLists] Optional.
   const GetZeroTrustDlpCustomEntryResult({
     this.accountId,
     this.caseSensitive,
@@ -76,7 +76,7 @@ class GetZeroTrustDlpCustomEntryResult {
     this.updatedAt,
     this.uploadStatus,
     this.variant,
-    this.wordList,
+    this.wordLists,
   });
 
   Map<String, dynamic> toMap() {
@@ -99,7 +99,7 @@ class GetZeroTrustDlpCustomEntryResult {
       'updatedAt': ?updatedAt,
       'uploadStatus': ?uploadStatus,
       'variant': ?variant?.toMap(),
-      'wordList': ?wordList,
+      'wordLists': ?wordLists,
     };
   }
 
@@ -123,7 +123,7 @@ class GetZeroTrustDlpCustomEntryResult {
       updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       uploadStatus: (() { final guardedValue = map['uploadStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       variant: (() { final guardedValue = map['variant']; if (guardedValue == null) return null; return GetZeroTrustDlpCustomEntryVariant.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      wordList: (() { final guardedValue = map['wordList']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      wordLists: (() { final guardedValue = map['wordLists']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

@@ -9,26 +9,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EmailSecurityImpersonationRegistryArgs {
   /// Identifier.
   final pulumi.Input<String> accountId;
+  /// Optional note describing the entry.
   final pulumi.Input<String?>? comments;
+  /// Identifier of the directory the entry was synced from, when directory-synced.
   final pulumi.Input<int?>? directoryId;
+  /// Identifier of the directory node the entry was synced from, when directory-synced.
   final pulumi.Input<int?>? directoryNodeId;
+  /// Email address (or pattern) of the protected identity.
   final pulumi.Input<String> email;
+  /// Deprecated. External identifier of the directory node.
   final pulumi.Input<String?>? externalDirectoryNodeId;
+  /// Whether `email` is a regular expression instead of a literal address.
   final pulumi.Input<bool> isEmailRegex;
+  /// Display name of the protected identity.
   final pulumi.Input<String> name;
+  /// Source the entry was created from.
   /// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
   final pulumi.Input<String?>? provenance;
 
   /// Creates a new [EmailSecurityImpersonationRegistryArgs].
   /// [accountId] Identifier.
-  /// [comments] Optional.
-  /// [directoryId] Optional.
-  /// [directoryNodeId] Optional.
-  /// [email] Required.
-  /// [externalDirectoryNodeId] Optional.
-  /// [isEmailRegex] Required.
-  /// [name] Required.
-  /// [provenance] Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+  /// [comments] Optional note describing the entry.
+  /// [directoryId] Identifier of the directory the entry was synced from, when directory-synced.
+  /// [directoryNodeId] Identifier of the directory node the entry was synced from, when directory-synced.
+  /// [email] Email address (or pattern) of the protected identity.
+  /// [externalDirectoryNodeId] Deprecated. External identifier of the directory node.
+  /// [isEmailRegex] Whether `email` is a regular expression instead of a literal address.
+  /// [name] Display name of the protected identity.
+  /// [provenance] Source the entry was created from.
   const EmailSecurityImpersonationRegistryArgs({
     required this.accountId,
     this.comments,
@@ -59,8 +67,8 @@ class EmailSecurityImpersonationRegistryArgs {
     return EmailSecurityImpersonationRegistryArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
       comments: (() { final guardedValue = map['comments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      directoryId: (() { final guardedValue = map['directoryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      directoryNodeId: (() { final guardedValue = map['directoryNodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      directoryId: (() { final guardedValue = map['directoryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      directoryNodeId: (() { final guardedValue = map['directoryNodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       email: pulumi.Input.fromValue(map['email'] as String),
       externalDirectoryNodeId: (() { final guardedValue = map['externalDirectoryNodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isEmailRegex: pulumi.Input.fromValue(map['isEmailRegex'] as bool),

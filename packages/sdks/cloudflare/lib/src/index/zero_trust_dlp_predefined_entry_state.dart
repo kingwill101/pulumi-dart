@@ -35,7 +35,7 @@ class ZeroTrustDlpPredefinedEntryState {
   final pulumi.Input<String?>? uploadStatus;
   /// A Predefined AI prompt classification topic entry.
   final pulumi.Input<ZeroTrustDlpPredefinedEntryVariant?>? variant;
-  final pulumi.Input<String?>? wordList;
+  final pulumi.Input<List<String>?>? wordLists;
 
   /// Creates a new [ZeroTrustDlpPredefinedEntryState].
   /// [accountId] Optional.
@@ -55,7 +55,7 @@ class ZeroTrustDlpPredefinedEntryState {
   /// [updatedAt] Optional.
   /// [uploadStatus] Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
   /// [variant] A Predefined AI prompt classification topic entry.
-  /// [wordList] Optional.
+  /// [wordLists] Optional.
   const ZeroTrustDlpPredefinedEntryState({
     this.accountId,
     this.caseSensitive,
@@ -74,7 +74,7 @@ class ZeroTrustDlpPredefinedEntryState {
     this.updatedAt,
     this.uploadStatus,
     this.variant,
-    this.wordList,
+    this.wordLists,
   });
 
   Map<String, dynamic> toMap() {
@@ -96,7 +96,7 @@ class ZeroTrustDlpPredefinedEntryState {
       'updatedAt': ?updatedAt,
       'uploadStatus': ?uploadStatus,
       'variant': ?pulumi.Input.mapOptionalInputValue<ZeroTrustDlpPredefinedEntryVariant, Map<String, dynamic>>(variant, (value) => value.toMap()),
-      'wordList': ?wordList,
+      'wordLists': ?wordLists,
     };
   }
 
@@ -119,7 +119,7 @@ class ZeroTrustDlpPredefinedEntryState {
       updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       uploadStatus: (() { final guardedValue = map['uploadStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       variant: (() { final guardedValue = map['variant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustDlpPredefinedEntryVariant.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      wordList: (() { final guardedValue = map['wordList']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      wordLists: (() { final guardedValue = map['wordLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }

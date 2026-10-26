@@ -96,7 +96,7 @@ import 'waiting_room_rules_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -104,7 +104,10 @@ import 'waiting_room_rules_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_waitingroomrules" "example_waiting_room_rules" {
+/// resource "cloudflare_waiting_room_rules" "example_waiting_room_rules" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id         = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   waiting_room_id = "699d98642c564d2e855e9661899b7252"
 ///   rules {
@@ -190,7 +193,7 @@ class WaitingRoomRules extends pulumi.CustomResource {
           'cloudflare:index/waitingRoomRules:WaitingRoomRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     rules = registerOutput<List<WaitingRoomRulesRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WaitingRoomRulesRule>(guardedValue, (value) => WaitingRoomRulesRule.fromMap((value as Map).cast<String, dynamic>())); });
     waitingRoomId = registerOutput<String>('waitingRoomId');

@@ -68,7 +68,7 @@ import 'origin_cloud_region_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -76,7 +76,10 @@ import 'origin_cloud_region_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_origincloudregion" "example_origin_cloud_region" {
+/// resource "cloudflare_origin_cloud_region" "example_origin_cloud_region" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   origin_ip = "192.0.2.1"
 ///   region    = "us-east-1"
@@ -157,7 +160,7 @@ class OriginCloudRegion extends pulumi.CustomResource {
           'cloudflare:index/originCloudRegion:OriginCloudRegion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     modifiedOn = registerOutput<String>('modifiedOn');
     originIp = registerOutput<String>('originIp');

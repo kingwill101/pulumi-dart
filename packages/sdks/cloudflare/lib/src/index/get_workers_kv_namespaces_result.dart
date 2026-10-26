@@ -3,19 +3,29 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWorkersKvNamespacesResult {
-  /// Namespace identifier tag.
+  /// ID of the Workers KV namespace.
   final pulumi.Input<String> id;
+  /// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+  /// Available values: "eu", "fedramp", "us".
+  final pulumi.Input<String> jurisdiction;
+  /// The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+  /// Available values: "instant".
+  final pulumi.Input<String> mode;
   /// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
   final pulumi.Input<bool> supportsUrlEncoding;
-  /// A human-readable string name for a Namespace.
+  /// Human-readable string name for a Workers KV namespace.
   final pulumi.Input<String> title;
 
   /// Creates a new [GetWorkersKvNamespacesResult].
-  /// [id] Namespace identifier tag.
+  /// [id] ID of the Workers KV namespace.
+  /// [jurisdiction] Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+  /// [mode] The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
   /// [supportsUrlEncoding] True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
-  /// [title] A human-readable string name for a Namespace.
+  /// [title] Human-readable string name for a Workers KV namespace.
   const GetWorkersKvNamespacesResult({
     required this.id,
+    required this.jurisdiction,
+    required this.mode,
     required this.supportsUrlEncoding,
     required this.title,
   });
@@ -23,6 +33,8 @@ class GetWorkersKvNamespacesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
+      'jurisdiction': jurisdiction,
+      'mode': mode,
       'supportsUrlEncoding': supportsUrlEncoding,
       'title': title,
     };
@@ -31,6 +43,8 @@ class GetWorkersKvNamespacesResult {
   factory GetWorkersKvNamespacesResult.fromMap(Map<String, dynamic> map) {
     return GetWorkersKvNamespacesResult(
       id: pulumi.Input.fromValue(map['id'] as String),
+      jurisdiction: pulumi.Input.fromValue(map['jurisdiction'] as String),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
       supportsUrlEncoding: pulumi.Input.fromValue(map['supportsUrlEncoding'] as bool),
       title: pulumi.Input.fromValue(map['title'] as String),
     );

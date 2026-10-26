@@ -74,7 +74,7 @@ import 'certificate_authorities_hostname_associations_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -82,7 +82,10 @@ import 'certificate_authorities_hostname_associations_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_certificateauthoritieshostnameassociations" "example_certificate_authorities_hostname_associations" {
+/// resource "cloudflare_certificate_authorities_hostname_associations" "example_certificate_authorities_hostname_associations" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id             = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   hostnames           = ["api.example.com"]
 ///   mtls_certificate_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -155,7 +158,7 @@ class CertificateAuthoritiesHostnameAssociations extends pulumi.CustomResource {
           'cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     hostnames = registerOutput<List<String>?>('hostnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     mtlsCertificateId = registerOutput<String?>('mtlsCertificateId');

@@ -65,7 +65,7 @@ import 'zero_trust_access_short_lived_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -73,7 +73,10 @@ import 'zero_trust_access_short_lived_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustaccessshortlivedcertificate" "example_zero_trust_access_short_lived_certificate" {
+/// resource "cloudflare_zero_trust_access_short_lived_certificate" "example_zero_trust_access_short_lived_certificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id  = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   zone_id = "zone_id"
 /// }
@@ -147,7 +150,7 @@ class ZeroTrustAccessShortLivedCertificate extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     appId = registerOutput<String>('appId');

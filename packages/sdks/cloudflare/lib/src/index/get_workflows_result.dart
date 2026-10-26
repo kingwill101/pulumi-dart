@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'get_workflows_result_instances.dart';
 import 'get_workflows_result_schedule.dart';
 
 class GetWorkflowsResult {
   final pulumi.Input<String> className;
   final pulumi.Input<String> createdOn;
   final pulumi.Input<String> id;
-  final pulumi.Input<GetWorkflowsResultInstances> instances;
+  final pulumi.Input<Map<String, double>> instances;
   final pulumi.Input<String> modifiedOn;
   final pulumi.Input<String> name;
   final pulumi.Input<List<GetWorkflowsResultSchedule>> schedules;
+  /// Whether the bound Worker was deleted, leaving this Workflow inactive.
+  final pulumi.Input<bool> scriptDeleted;
   final pulumi.Input<String> scriptName;
   final pulumi.Input<String> triggeredOn;
 
@@ -23,6 +24,7 @@ class GetWorkflowsResult {
   /// [modifiedOn] Required.
   /// [name] Required.
   /// [schedules] Required.
+  /// [scriptDeleted] Whether the bound Worker was deleted, leaving this Workflow inactive.
   /// [scriptName] Required.
   /// [triggeredOn] Required.
   const GetWorkflowsResult({
@@ -33,6 +35,7 @@ class GetWorkflowsResult {
     required this.modifiedOn,
     required this.name,
     required this.schedules,
+    required this.scriptDeleted,
     required this.scriptName,
     required this.triggeredOn,
   });
@@ -42,10 +45,11 @@ class GetWorkflowsResult {
       'className': className,
       'createdOn': createdOn,
       'id': id,
-      'instances': pulumi.Input.mapInputValue<GetWorkflowsResultInstances, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'instances': instances,
       'modifiedOn': modifiedOn,
       'name': name,
       'schedules': pulumi.Input.mapInputValue<List<GetWorkflowsResultSchedule>, List<Map<String, dynamic>>>(schedules, (value) => pulumi.Input.encodeList<GetWorkflowsResultSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'scriptDeleted': scriptDeleted,
       'scriptName': scriptName,
       'triggeredOn': triggeredOn,
     };
@@ -56,10 +60,11 @@ class GetWorkflowsResult {
       className: pulumi.Input.fromValue(map['className'] as String),
       createdOn: pulumi.Input.fromValue(map['createdOn'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      instances: pulumi.Input.fromValue(GetWorkflowsResultInstances.fromMap((map['instances']! as Map).cast<String, dynamic>())),
+      instances: pulumi.Input.fromValue((map['instances'] as Map).cast<String, double>()),
       modifiedOn: pulumi.Input.fromValue(map['modifiedOn'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       schedules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWorkflowsResultSchedule>(map['schedules']!, (value) => GetWorkflowsResultSchedule.fromMap((value as Map).cast<String, dynamic>()))),
+      scriptDeleted: pulumi.Input.fromValue(map['scriptDeleted'] as bool),
       scriptName: pulumi.Input.fromValue(map['scriptName'] as String),
       triggeredOn: pulumi.Input.fromValue(map['triggeredOn'] as String),
     );

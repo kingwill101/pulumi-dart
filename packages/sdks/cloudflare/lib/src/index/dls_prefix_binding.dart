@@ -74,7 +74,7 @@ import 'dls_prefix_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -82,7 +82,10 @@ import 'dls_prefix_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_dlsprefixbinding" "example_dls_prefix_binding" {
+/// resource "cloudflare_dls_prefix_binding" "example_dls_prefix_binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   cidr       = "10.0.1.0/24"
 ///   prefix_id  = "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
@@ -160,7 +163,7 @@ class DlsPrefixBinding extends pulumi.CustomResource {
           'cloudflare:index/dlsPrefixBinding:DlsPrefixBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     cidr = registerOutput<String>('cidr');

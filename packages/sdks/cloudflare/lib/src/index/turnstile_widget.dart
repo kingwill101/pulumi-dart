@@ -112,7 +112,7 @@ import 'turnstile_widget_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -120,7 +120,10 @@ import 'turnstile_widget_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_turnstilewidget" "example_turnstile_widget" {
+/// resource "cloudflare_turnstile_widget" "example_turnstile_widget" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id      = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   domains         = ["203.0.113.1", "cloudflare.com", "blog.example.com"]
 ///   mode            = "invisible"
@@ -215,9 +218,16 @@ class TurnstileWidget extends pulumi.CustomResource {
   /// before this field existed.
   /// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
   late final pulumi.Output<String> deployedVia;
+  /// Direction to order widgets.
+  /// Available values: "asc", "desc".
+  late final pulumi.Output<String?> direction;
   late final pulumi.Output<List<String>> domains;
   /// Return the Ephemeral ID in /siteverify (ENT only).
   late final pulumi.Output<bool> ephemeralId;
+  /// Filter widgets by field. The `name` field uses case-insensitive
+  /// substring matching; `sitekey` uses exact matching.
+  /// Format: `field:value`
+  late final pulumi.Output<String?> filter;
   /// Origin of the most recent mutation (create, update, delete, or
   /// secret rotation). Server-derived; not client-settable. Omitted for
   /// widgets last mutated before this field existed.
@@ -234,6 +244,13 @@ class TurnstileWidget extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Do not show any Cloudflare branding on the widget (ENT only).
   late final pulumi.Output<bool> offlabel;
+  /// Field to order widgets by.
+  /// Available values: "id", "sitekey", "name", "createdOn", "modifiedOn".
+  late final pulumi.Output<String?> order;
+  /// Page number of paginated results.
+  late final pulumi.Output<double> page;
+  /// Number of items per page.
+  late final pulumi.Output<double> perPage;
   /// Region where this widget can be used. This cannot be changed after creation.
   /// Available values: "world", "china".
   late final pulumi.Output<String> region;
@@ -254,7 +271,7 @@ class TurnstileWidget extends pulumi.CustomResource {
           'cloudflare:index/turnstileWidget:TurnstileWidget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
           additionalSecretOutputs: const ['secret'],
         ) {
     accountId = registerOutput<String>('accountId');
@@ -262,13 +279,18 @@ class TurnstileWidget extends pulumi.CustomResource {
     clearanceLevel = registerOutput<String>('clearanceLevel');
     createdOn = registerOutput<String>('createdOn');
     deployedVia = registerOutput<String>('deployedVia');
+    direction = registerOutput<String?>('direction');
     domains = registerOutput<List<String>>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ephemeralId = registerOutput<bool>('ephemeralId');
+    filter = registerOutput<String?>('filter');
     lastModifiedVia = registerOutput<String>('lastModifiedVia');
     mode = registerOutput<String>('mode');
     modifiedOn = registerOutput<String>('modifiedOn');
     this.name = registerOutput<String>('name');
     offlabel = registerOutput<bool>('offlabel');
+    order = registerOutput<String?>('order');
+    page = registerOutput<double>('page');
+    perPage = registerOutput<double>('perPage');
     region = registerOutput<String>('region');
     secret = registerOutput<String>('secret', isSecret: true);
     sitekey = registerOutput<String>('sitekey');
@@ -303,13 +325,18 @@ class TurnstileWidget extends pulumi.CustomResource {
     clearanceLevel = registerOutput<String>('clearanceLevel');
     createdOn = registerOutput<String>('createdOn');
     deployedVia = registerOutput<String>('deployedVia');
+    direction = registerOutput<String?>('direction');
     domains = registerOutput<List<String>>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ephemeralId = registerOutput<bool>('ephemeralId');
+    filter = registerOutput<String?>('filter');
     lastModifiedVia = registerOutput<String>('lastModifiedVia');
     mode = registerOutput<String>('mode');
     modifiedOn = registerOutput<String>('modifiedOn');
     this.name = registerOutput<String>('name');
     offlabel = registerOutput<bool>('offlabel');
+    order = registerOutput<String?>('order');
+    page = registerOutput<double>('page');
+    perPage = registerOutput<double>('perPage');
     region = registerOutput<String>('region');
     secret = registerOutput<String>('secret', isSecret: true);
     sitekey = registerOutput<String>('sitekey');
@@ -330,13 +357,18 @@ class TurnstileWidget extends pulumi.CustomResource {
     clearanceLevel = registerOutput<String>('clearanceLevel');
     createdOn = registerOutput<String>('createdOn');
     deployedVia = registerOutput<String>('deployedVia');
+    direction = registerOutput<String?>('direction');
     domains = registerOutput<List<String>>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ephemeralId = registerOutput<bool>('ephemeralId');
+    filter = registerOutput<String?>('filter');
     lastModifiedVia = registerOutput<String>('lastModifiedVia');
     mode = registerOutput<String>('mode');
     modifiedOn = registerOutput<String>('modifiedOn');
     this.name = registerOutput<String>('name');
     offlabel = registerOutput<bool>('offlabel');
+    order = registerOutput<String?>('order');
+    page = registerOutput<double>('page');
+    perPage = registerOutput<double>('perPage');
     region = registerOutput<String>('region');
     secret = registerOutput<String>('secret', isSecret: true);
     sitekey = registerOutput<String>('sitekey');

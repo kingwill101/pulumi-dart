@@ -260,7 +260,7 @@ import 'zone_cache_variants_value.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -268,7 +268,10 @@ import 'zone_cache_variants_value.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zonecachevariants" "example_zone_cache_variants" {
+/// resource "cloudflare_zone_cache_variants" "example_zone_cache_variants" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   value = {
 ///     avifs = ["image/webp", "image/jpeg"]
@@ -420,7 +423,7 @@ class ZoneCacheVariants extends pulumi.CustomResource {
           'cloudflare:index/zoneCacheVariants:ZoneCacheVariants',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     editable = registerOutput<bool>('editable');
     modifiedOn = registerOutput<String>('modifiedOn');

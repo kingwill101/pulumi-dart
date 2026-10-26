@@ -74,7 +74,7 @@ import 'api_shield_operation_schema_validation_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -82,7 +82,10 @@ import 'api_shield_operation_schema_validation_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_apishieldoperationschemavalidationsettings" "example_api_shield_operation_schema_validation_settings" {
+/// resource "cloudflare_api_shield_operation_schema_validation_settings" "example_api_shield_operation_schema_validation_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id           = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   operation_id      = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   mitigation_action = "block"
@@ -161,7 +164,7 @@ class ApiShieldOperationSchemaValidationSettings extends pulumi.CustomResource {
           'cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     mitigationAction = registerOutput<String?>('mitigationAction');
     operationId = registerOutput<String>('operationId');

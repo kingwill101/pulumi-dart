@@ -67,7 +67,7 @@ import 'regional_tiered_cache_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -75,7 +75,10 @@ import 'regional_tiered_cache_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_regionaltieredcache" "example_regional_tiered_cache" {
+/// resource "cloudflare_regional_tiered_cache" "example_regional_tiered_cache" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   value   = "on"
 /// }
@@ -148,7 +151,7 @@ class RegionalTieredCache extends pulumi.CustomResource {
           'cloudflare:index/regionalTieredCache:RegionalTieredCache',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     editable = registerOutput<bool>('editable');
     modifiedOn = registerOutput<String>('modifiedOn');

@@ -56,7 +56,7 @@ class GetEmailSecurityImpersonationRegistriesInvokeResult {
     return GetEmailSecurityImpersonationRegistriesInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provenance: (() { final guardedValue = map['provenance']; if (guardedValue == null) return null; return guardedValue as String; })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetEmailSecurityImpersonationRegistriesResult>(guardedValue, (value) => GetEmailSecurityImpersonationRegistriesResult.fromMap((value as Map).cast<String, dynamic>())); })(),

@@ -21,6 +21,8 @@ import 'magic_transit_site_wan_static_addressing.dart';
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     siteId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     physport: 1,
+///     healthCheckRate: "low",
+///     loadBalanceInnerFlows: true,
 ///     name: "name",
 ///     priority: 0,
 ///     staticAddressing: {
@@ -39,6 +41,8 @@ import 'magic_transit_site_wan_static_addressing.dart';
 ///     account_id="023e105f4ecef8ad9ca31a8372d0c353",
 ///     site_id="023e105f4ecef8ad9ca31a8372d0c353",
 ///     physport=1,
+///     health_check_rate="low",
+///     load_balance_inner_flows=True,
 ///     name="name",
 ///     priority=0,
 ///     static_addressing={
@@ -61,6 +65,8 @@ import 'magic_transit_site_wan_static_addressing.dart';
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///         Physport = 1,
+///         HealthCheckRate = "low",
+///         LoadBalanceInnerFlows = true,
 ///         Name = "name",
 ///         Priority = 0,
 ///         StaticAddressing = new Cloudflare.Inputs.MagicTransitSiteWanStaticAddressingArgs
@@ -85,11 +91,13 @@ import 'magic_transit_site_wan_static_addressing.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.NewMagicTransitSiteWan(ctx, "example_magic_transit_site_wan", &cloudflare.MagicTransitSiteWanArgs{
-/// 			AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			SiteId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			Physport:  pulumi.Int(1),
-/// 			Name:      pulumi.String("name"),
-/// 			Priority:  pulumi.Int(0),
+/// 			AccountId:             pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			SiteId:                pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			Physport:              pulumi.Int(1),
+/// 			HealthCheckRate:       pulumi.String("low"),
+/// 			LoadBalanceInnerFlows: pulumi.Bool(true),
+/// 			Name:                  pulumi.String("name"),
+/// 			Priority:              pulumi.Int(0),
 /// 			StaticAddressing: &cloudflare.MagicTransitSiteWanStaticAddressingArgs{
 /// 				Address:          pulumi.String("192.0.2.0/24"),
 /// 				GatewayAddress:   pulumi.String("192.0.2.1"),
@@ -105,7 +113,7 @@ import 'magic_transit_site_wan_static_addressing.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -113,12 +121,17 @@ import 'magic_transit_site_wan_static_addressing.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_magictransitsitewan" "example_magic_transit_site_wan" {
-///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
-///   site_id    = "023e105f4ecef8ad9ca31a8372d0c353"
-///   physport   = 1
-///   name       = "name"
-///   priority   = 0
+/// resource "cloudflare_magic_transit_site_wan" "example_magic_transit_site_wan" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   account_id               = "023e105f4ecef8ad9ca31a8372d0c353"
+///   site_id                  = "023e105f4ecef8ad9ca31a8372d0c353"
+///   physport                 = 1
+///   health_check_rate        = "low"
+///   load_balance_inner_flows = true
+///   name                     = "name"
+///   priority                 = 0
 ///   static_addressing = {
 ///     address           = "192.0.2.0/24"
 ///     gateway_address   = "192.0.2.1"
@@ -153,6 +166,8 @@ import 'magic_transit_site_wan_static_addressing.dart';
 ///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
 ///             .siteId("023e105f4ecef8ad9ca31a8372d0c353")
 ///             .physport(1)
+///             .healthCheckRate("low")
+///             .loadBalanceInnerFlows(true)
 ///             .name("name")
 ///             .priority(0)
 ///             .staticAddressing(MagicTransitSiteWanStaticAddressingArgs.builder()
@@ -175,6 +190,8 @@ import 'magic_transit_site_wan_static_addressing.dart';
 ///       accountId: 023e105f4ecef8ad9ca31a8372d0c353
 ///       siteId: 023e105f4ecef8ad9ca31a8372d0c353
 ///       physport: 1
+///       healthCheckRate: low
+///       loadBalanceInnerFlows: true
 ///       name: name
 ///       priority: 0
 ///       staticAddressing:
@@ -196,6 +213,7 @@ class MagicTransitSiteWan extends pulumi.CustomResource {
   /// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
   /// Available values: "low", "mid", "high".
   late final pulumi.Output<String> healthCheckRate;
+  late final pulumi.Output<bool> loadBalanceInnerFlows;
   late final pulumi.Output<String?> name;
   late final pulumi.Output<int> physport;
   late final pulumi.Output<int?> priority;
@@ -218,10 +236,11 @@ class MagicTransitSiteWan extends pulumi.CustomResource {
           'cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     healthCheckRate = registerOutput<String>('healthCheckRate');
+    loadBalanceInnerFlows = registerOutput<bool>('loadBalanceInnerFlows');
     this.name = registerOutput<String?>('name');
     physport = registerOutput<int>('physport');
     priority = registerOutput<int?>('priority');
@@ -256,6 +275,7 @@ class MagicTransitSiteWan extends pulumi.CustomResource {
         ) {
     accountId = registerOutput<String>('accountId');
     healthCheckRate = registerOutput<String>('healthCheckRate');
+    loadBalanceInnerFlows = registerOutput<bool>('loadBalanceInnerFlows');
     this.name = registerOutput<String?>('name');
     physport = registerOutput<int>('physport');
     priority = registerOutput<int?>('priority');
@@ -275,6 +295,7 @@ class MagicTransitSiteWan extends pulumi.CustomResource {
       ) {
     accountId = registerOutput<String>('accountId');
     healthCheckRate = registerOutput<String>('healthCheckRate');
+    loadBalanceInnerFlows = registerOutput<bool>('loadBalanceInnerFlows');
     this.name = registerOutput<String?>('name');
     physport = registerOutput<int>('physport');
     priority = registerOutput<int?>('priority');

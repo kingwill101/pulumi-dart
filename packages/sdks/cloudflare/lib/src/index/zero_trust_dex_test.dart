@@ -128,7 +128,7 @@ import 'zero_trust_dex_test_target_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -136,7 +136,10 @@ import 'zero_trust_dex_test_target_policy.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdextest" "example_zero_trust_dex_test" {
+/// resource "cloudflare_zero_trust_dex_test" "example_zero_trust_dex_test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "01a7362d577a6c3019a474fd6f485823"
 ///   data = {
 ///     host   = "https://dash.cloudflare.com"
@@ -256,7 +259,7 @@ class ZeroTrustDexTest extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     data = registerOutput<ZeroTrustDexTestData>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDexTestData.fromMap((guardedValue as Map).cast<String, dynamic>()); });

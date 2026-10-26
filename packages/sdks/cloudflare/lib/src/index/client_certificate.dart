@@ -79,7 +79,7 @@ import 'client_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -87,9 +87,17 @@ import 'client_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_clientcertificate" "example_client_certificate" {
+/// resource "cloudflare_client_certificate" "example_client_certificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id       = "023e105f4ecef8ad9ca31a8372d0c353"
-///   csr           = "  -----BEGIN CERTIFICATE REQUEST-----\n  MIICY....\n  -----END CERTIFICATE REQUEST-----\n"
+///   csr           = <<EOT
+///   -----BEGIN CERTIFICATE REQUEST-----
+///   MIICY....
+///   -----END CERTIFICATE REQUEST-----
+/// EOT
+///
 ///   validity_days = 3650
 /// }
 /// ```
@@ -199,7 +207,7 @@ class ClientCertificate extends pulumi.CustomResource {
           'cloudflare:index/clientCertificate:ClientCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     certificate = registerOutput<String>('certificate');
     certificateAuthority = registerOutput<ClientCertificateCertificateAuthority>('certificateAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientCertificateCertificateAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });

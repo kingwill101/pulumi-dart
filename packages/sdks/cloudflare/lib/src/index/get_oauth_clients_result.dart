@@ -22,6 +22,8 @@ class GetOauthClientsResult {
   final pulumi.Input<bool> hasRotatedSecret;
   /// URL of the client's logo.
   final pulumi.Input<String> logoUri;
+  /// Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+  final pulumi.Input<List<String>> optionalScopes;
   /// URL that points to a privacy policy document.
   final pulumi.Input<String> policyUri;
   /// Array of allowed post-logout redirect URIs.
@@ -55,6 +57,7 @@ class GetOauthClientsResult {
   /// [grantTypes] Array of OAuth grant types the client is allowed to use. `authorizationCode` is required; `refreshToken` may be included optionally.
   /// [hasRotatedSecret] Indicates whether the client has a rotated secret that has not yet been deleted.
   /// [logoUri] URL of the client's logo.
+  /// [optionalScopes] Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
   /// [policyUri] URL that points to a privacy policy document.
   /// [postLogoutRedirectUris] Array of allowed post-logout redirect URIs.
   /// [promotedAt] Timestamp when the OAuth client was promoted to public visibility.
@@ -75,6 +78,7 @@ class GetOauthClientsResult {
     required this.grantTypes,
     required this.hasRotatedSecret,
     required this.logoUri,
+    required this.optionalScopes,
     required this.policyUri,
     required this.postLogoutRedirectUris,
     required this.promotedAt,
@@ -98,6 +102,7 @@ class GetOauthClientsResult {
       'grantTypes': grantTypes,
       'hasRotatedSecret': hasRotatedSecret,
       'logoUri': logoUri,
+      'optionalScopes': optionalScopes,
       'policyUri': policyUri,
       'postLogoutRedirectUris': postLogoutRedirectUris,
       'promotedAt': promotedAt,
@@ -122,6 +127,7 @@ class GetOauthClientsResult {
       grantTypes: pulumi.Input.fromValue((map['grantTypes'] as List).cast<String>()),
       hasRotatedSecret: pulumi.Input.fromValue(map['hasRotatedSecret'] as bool),
       logoUri: pulumi.Input.fromValue(map['logoUri'] as String),
+      optionalScopes: pulumi.Input.fromValue((map['optionalScopes'] as List).cast<String>()),
       policyUri: pulumi.Input.fromValue(map['policyUri'] as String),
       postLogoutRedirectUris: pulumi.Input.fromValue((map['postLogoutRedirectUris'] as List).cast<String>()),
       promotedAt: pulumi.Input.fromValue(map['promotedAt'] as String),

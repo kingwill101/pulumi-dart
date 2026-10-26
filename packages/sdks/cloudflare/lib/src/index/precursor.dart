@@ -91,7 +91,7 @@ import 'precursor_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -100,6 +100,9 @@ import 'precursor_state.dart';
 /// }
 ///
 /// resource "cloudflare_precursor" "example_precursor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id      = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   default_mode = "min-friction"
 ///   enforcement_rules {
@@ -189,7 +192,7 @@ class Precursor extends pulumi.CustomResource {
           'cloudflare:index/precursor:Precursor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     defaultMode = registerOutput<String>('defaultMode');
     enforcementRules = registerOutput<List<PrecursorEnforcementRule>>('enforcementRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrecursorEnforcementRule>(guardedValue, (value) => PrecursorEnforcementRule.fromMap((value as Map).cast<String, dynamic>())); });

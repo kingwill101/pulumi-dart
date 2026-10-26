@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rate_limit_action.dart';
 import 'rate_limit_args.dart';
-import 'rate_limit_bypass.dart';
 import 'rate_limit_match.dart';
 import 'rate_limit_state.dart';
 
@@ -116,7 +115,7 @@ import 'rate_limit_state.dart';
 ///                 Body = "<error>This request has been rate-limited.</error>",
 ///                 ContentType = "text/xml",
 ///             },
-///             Timeout = 86400,
+///             Timeout = 86400.0,
 ///         },
 ///         Match = new Cloudflare.Inputs.RateLimitMatchArgs
 ///         {
@@ -148,8 +147,8 @@ import 'rate_limit_state.dart';
 ///                 OriginTraffic = true,
 ///             },
 ///         },
-///         Period = 900,
-///         Threshold = 60,
+///         Period = 900.0,
+///         Threshold = 60.0,
 ///     });
 ///
 /// });
@@ -208,7 +207,7 @@ import 'rate_limit_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -216,7 +215,10 @@ import 'rate_limit_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_ratelimit" "example_rate_limit" {
+/// resource "cloudflare_rate_limit" "example_rate_limit" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   action = {
 ///     mode = "challenge"
@@ -228,9 +230,9 @@ import 'rate_limit_state.dart';
 ///   }
 ///   match = {
 ///     headers = [{
-///       "name"  = "Cf-Cache-Status"
-///       "op"    = "ne"
-///       "value" = "HIT"
+///       name  = "Cf-Cache-Status"
+///       op    = "ne"
+///       value = "HIT"
 ///     }]
 ///     request = {
 ///       methods = ["GET", "POST"]
@@ -349,16 +351,12 @@ import 'rate_limit_state.dart';
 class RateLimit extends pulumi.CustomResource {
   /// The action to perform when the threshold of matched traffic within the configured period is exceeded.
   late final pulumi.Output<RateLimitAction> action;
-  /// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-  late final pulumi.Output<List<RateLimitBypass>> bypasses;
-  /// An informative summary of the rule. This value is sanitized and any tags will be removed.
-  late final pulumi.Output<String> description;
-  /// When true, indicates that the rate limit is currently disabled.
-  late final pulumi.Output<bool> disabled;
   /// Determines which traffic the rate limit counts towards the threshold.
   late final pulumi.Output<RateLimitMatch> match;
   /// The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
   late final pulumi.Output<double> period;
+  /// Defines the unique identifier of the rate limit.
+  late final pulumi.Output<String?> rateLimitId;
   /// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
   late final pulumi.Output<double> threshold;
   /// Defines an identifier.
@@ -376,14 +374,12 @@ class RateLimit extends pulumi.CustomResource {
           'cloudflare:index/rateLimit:RateLimit',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     action = registerOutput<RateLimitAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RateLimitAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    bypasses = registerOutput<List<RateLimitBypass>>('bypasses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RateLimitBypass>(guardedValue, (value) => RateLimitBypass.fromMap((value as Map).cast<String, dynamic>())); });
-    description = registerOutput<String>('description');
-    disabled = registerOutput<bool>('disabled');
     match = registerOutput<RateLimitMatch>('match', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RateLimitMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     period = registerOutput<double>('period');
+    rateLimitId = registerOutput<String?>('rateLimitId');
     threshold = registerOutput<double>('threshold');
     zoneId = registerOutput<String>('zoneId');
   }
@@ -413,11 +409,9 @@ class RateLimit extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     action = registerOutput<RateLimitAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RateLimitAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    bypasses = registerOutput<List<RateLimitBypass>>('bypasses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RateLimitBypass>(guardedValue, (value) => RateLimitBypass.fromMap((value as Map).cast<String, dynamic>())); });
-    description = registerOutput<String>('description');
-    disabled = registerOutput<bool>('disabled');
     match = registerOutput<RateLimitMatch>('match', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RateLimitMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     period = registerOutput<double>('period');
+    rateLimitId = registerOutput<String?>('rateLimitId');
     threshold = registerOutput<double>('threshold');
     zoneId = registerOutput<String>('zoneId');
   }
@@ -432,11 +426,9 @@ class RateLimit extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     action = registerOutput<RateLimitAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RateLimitAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    bypasses = registerOutput<List<RateLimitBypass>>('bypasses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RateLimitBypass>(guardedValue, (value) => RateLimitBypass.fromMap((value as Map).cast<String, dynamic>())); });
-    description = registerOutput<String>('description');
-    disabled = registerOutput<bool>('disabled');
     match = registerOutput<RateLimitMatch>('match', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RateLimitMatch.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     period = registerOutput<double>('period');
+    rateLimitId = registerOutput<String?>('rateLimitId');
     threshold = registerOutput<double>('threshold');
     zoneId = registerOutput<String>('zoneId');
   }

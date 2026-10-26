@@ -5,7 +5,7 @@
 class GetMtlsCertificateAssociationsResult {
   /// Identifier.
   final String? accountId;
-  /// Identifier.
+  /// Certificate identifier tag.
   final String? mtlsCertificateId;
   /// The service using the certificate.
   final String? service;
@@ -14,7 +14,7 @@ class GetMtlsCertificateAssociationsResult {
 
   /// Creates a new [GetMtlsCertificateAssociationsResult].
   /// [accountId] Identifier.
-  /// [mtlsCertificateId] Identifier.
+  /// [mtlsCertificateId] Certificate identifier tag.
   /// [service] The service using the certificate.
   /// [status] Certificate deployment status for the given service.
   const GetMtlsCertificateAssociationsResult({

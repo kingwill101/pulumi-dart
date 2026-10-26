@@ -65,7 +65,7 @@ import 'dns_zone_transfers_peer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -73,7 +73,10 @@ import 'dns_zone_transfers_peer_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_dnszonetransferspeer" "example_dns_zone_transfers_peer" {
+/// resource "cloudflare_dns_zone_transfers_peer" "example_dns_zone_transfers_peer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "01a7362d577a6c3019a474fd6f485823"
 ///   name       = "my-peer-1"
 /// }
@@ -148,7 +151,7 @@ class DnsZoneTransfersPeer extends pulumi.CustomResource {
           'cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     ip = registerOutput<String?>('ip');

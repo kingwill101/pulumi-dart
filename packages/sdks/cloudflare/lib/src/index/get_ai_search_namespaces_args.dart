@@ -34,7 +34,7 @@ class GetAiSearchNamespacesArgs {
   factory GetAiSearchNamespacesArgs.fromMap(Map<String, dynamic> map) {
     return GetAiSearchNamespacesArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       search: (() { final guardedValue = map['search']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

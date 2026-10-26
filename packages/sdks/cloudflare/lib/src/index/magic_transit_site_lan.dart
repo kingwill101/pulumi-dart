@@ -44,6 +44,11 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///             serverAddresses: ["192.0.2.1"],
 ///         },
 ///         dhcpServer: {
+///             dhcpOptions: [{
+///                 code: 66,
+///                 type: "ip",
+///                 value: "10.20.30.40",
+///             }],
 ///             dhcpPoolEnd: "192.0.2.1",
 ///             dhcpPoolStart: "192.0.2.1",
 ///             dnsServer: "192.0.2.1",
@@ -88,6 +93,11 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///             "server_addresses": ["192.0.2.1"],
 ///         },
 ///         "dhcp_server": {
+///             "dhcp_options": [{
+///                 "code": 66,
+///                 "type": "ip",
+///                 "value": "10.20.30.40",
+///             }],
 ///             "dhcp_pool_end": "192.0.2.1",
 ///             "dhcp_pool_start": "192.0.2.1",
 ///             "dns_server": "192.0.2.1",
@@ -148,6 +158,15 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///             },
 ///             DhcpServer = new Cloudflare.Inputs.MagicTransitSiteLanStaticAddressingDhcpServerArgs
 ///             {
+///                 DhcpOptions = new[]
+///                 {
+///                     new Cloudflare.Inputs.MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs
+///                     {
+///                         Code = 66,
+///                         Type = "ip",
+///                         Value = "10.20.30.40",
+///                     },
+///                 },
 ///                 DhcpPoolEnd = "192.0.2.1",
 ///                 DhcpPoolStart = "192.0.2.1",
 ///                 DnsServer = "192.0.2.1",
@@ -208,6 +227,13 @@ import 'magic_transit_site_lan_static_addressing.dart';
 /// 					},
 /// 				},
 /// 				DhcpServer: &cloudflare.MagicTransitSiteLanStaticAddressingDhcpServerArgs{
+/// 					DhcpOptions: cloudflare.MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArray{
+/// 						&cloudflare.MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs{
+/// 							Code:  pulumi.Int(66),
+/// 							Type:  pulumi.String("ip"),
+/// 							Value: pulumi.String("10.20.30.40"),
+/// 						},
+/// 					},
 /// 					DhcpPoolEnd:   pulumi.String("192.0.2.1"),
 /// 					DhcpPoolStart: pulumi.String("192.0.2.1"),
 /// 					DnsServer:     pulumi.String("192.0.2.1"),
@@ -232,7 +258,7 @@ import 'magic_transit_site_lan_static_addressing.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -240,7 +266,10 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_magictransitsitelan" "example_magic_transit_site_lan" {
+/// resource "cloudflare_magic_transit_site_lan" "example_magic_transit_site_lan" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id     = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   site_id        = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   bond_id        = 2
@@ -265,6 +294,11 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///       server_addresses = ["192.0.2.1"]
 ///     }
 ///     dhcp_server = {
+///       dhcp_options = [{
+///         code  = 66
+///         type  = "ip"
+///         value = "10.20.30.40"
+///       }]
 ///       dhcp_pool_end   = "192.0.2.1"
 ///       dhcp_pool_start = "192.0.2.1"
 ///       dns_server      = "192.0.2.1"
@@ -294,6 +328,7 @@ import 'magic_transit_site_lan_static_addressing.dart';
 /// import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingArgs;
 /// import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingDhcpRelayArgs;
 /// import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingDhcpServerArgs;
+/// import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -332,6 +367,11 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///                     .serverAddresses("192.0.2.1")
 ///                     .build())
 ///                 .dhcpServer(MagicTransitSiteLanStaticAddressingDhcpServerArgs.builder()
+///                     .dhcpOptions(MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs.builder()
+///                         .code(66)
+///                         .type("ip")
+///                         .value("10.20.30.40")
+///                         .build())
 ///                     .dhcpPoolEnd("192.0.2.1")
 ///                     .dhcpPoolStart("192.0.2.1")
 ///                     .dnsServer("192.0.2.1")
@@ -377,6 +417,10 @@ import 'magic_transit_site_lan_static_addressing.dart';
 ///           serverAddresses:
 ///             - 192.0.2.1
 ///         dhcpServer:
+///           dhcpOptions:
+///             - code: 66
+///               type: ip
+///               value: 10.20.30.40
 ///           dhcpPoolEnd: 192.0.2.1
 ///           dhcpPoolStart: 192.0.2.1
 ///           dnsServer: 192.0.2.1
@@ -429,7 +473,7 @@ class MagicTransitSiteLan extends pulumi.CustomResource {
           'cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     bondId = registerOutput<int?>('bondId');

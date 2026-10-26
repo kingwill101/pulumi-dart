@@ -75,6 +75,7 @@ import 'notification_policy_state.dart';
 ///         targetHostnames: ["string"],
 ///         targetIps: ["string"],
 ///         targetZoneNames: ["string"],
+///         tokenIds: ["x"],
 ///         trafficExclusions: ["security_events"],
 ///         tunnelIds: ["string"],
 ///         tunnelNames: ["string"],
@@ -144,6 +145,7 @@ import 'notification_policy_state.dart';
 ///         "target_hostnames": ["string"],
 ///         "target_ips": ["string"],
 ///         "target_zone_names": ["string"],
+///         "token_ids": ["x"],
 ///         "traffic_exclusions": ["security_events"],
 ///         "tunnel_ids": ["string"],
 ///         "tunnel_names": ["string"],
@@ -342,6 +344,10 @@ import 'notification_policy_state.dart';
 ///             {
 ///                 "string",
 ///             },
+///             TokenIds = new[]
+///             {
+///                 "x",
+///             },
 ///             TrafficExclusions = new[]
 ///             {
 ///                 "security_events",
@@ -517,6 +523,9 @@ import 'notification_policy_state.dart';
 /// 				TargetZoneNames: pulumi.StringArray{
 /// 					pulumi.String("string"),
 /// 				},
+/// 				TokenIds: pulumi.StringArray{
+/// 					pulumi.String("x"),
+/// 				},
 /// 				TrafficExclusions: pulumi.StringArray{
 /// 					pulumi.String("security_events"),
 /// 				},
@@ -545,7 +554,7 @@ import 'notification_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -553,19 +562,22 @@ import 'notification_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_notificationpolicy" "example_notification_policy" {
+/// resource "cloudflare_notification_policy" "example_notification_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   alert_type = "universal_ssl_event_type"
 ///   enabled    = true
 ///   mechanisms = {
 ///     emails = [{
-///       "id" = "id"
+///       id = "id"
 ///     }]
 ///     pagerduties = [{
-///       "id" = "f174e90afafe4643bbbc4a0ed4fc8415"
+///       id = "f174e90afafe4643bbbc4a0ed4fc8415"
 ///     }]
 ///     webhooks = [{
-///       "id" = "f174e90afafe4643bbbc4a0ed4fc8415"
+///       id = "f174e90afafe4643bbbc4a0ed4fc8415"
 ///     }]
 ///   }
 ///   name           = "SSL Notification Event Policy"
@@ -609,6 +621,7 @@ import 'notification_policy_state.dart';
 ///     target_hostnames                 = ["string"]
 ///     target_ips                       = ["string"]
 ///     target_zone_names                = ["string"]
+///     token_ids                        = ["x"]
 ///     traffic_exclusions               = ["security_events"]
 ///     tunnel_ids                       = ["string"]
 ///     tunnel_names                     = ["string"]
@@ -700,6 +713,7 @@ import 'notification_policy_state.dart';
 ///                 .targetHostnames("string")
 ///                 .targetIps("string")
 ///                 .targetZoneNames("string")
+///                 .tokenIds("x")
 ///                 .trafficExclusions("security_events")
 ///                 .tunnelIds("string")
 ///                 .tunnelNames("string")
@@ -806,6 +820,8 @@ import 'notification_policy_state.dart';
 ///           - string
 ///         targetZoneNames:
 ///           - string
+///         tokenIds:
+///           - x
 ///         trafficExclusions:
 ///           - security_events
 ///         tunnelIds:
@@ -859,7 +875,7 @@ class NotificationPolicy extends pulumi.CustomResource {
           'cloudflare:index/notificationPolicy:NotificationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     alertInterval = registerOutput<String?>('alertInterval');

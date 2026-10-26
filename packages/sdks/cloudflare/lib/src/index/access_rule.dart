@@ -88,7 +88,7 @@ import 'access_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -96,7 +96,10 @@ import 'access_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_accessrule" "example_access_rule" {
+/// resource "cloudflare_access_rule" "example_access_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration = {
 ///     target = "ip"
 ///     value  = "198.51.100.4"
@@ -194,7 +197,7 @@ class AccessRule extends pulumi.CustomResource {
           'cloudflare:index/accessRule:AccessRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     allowedModes = registerOutput<List<String>>('allowedModes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

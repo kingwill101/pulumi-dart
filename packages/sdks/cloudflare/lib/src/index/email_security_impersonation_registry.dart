@@ -16,9 +16,14 @@ import 'email_security_impersonation_registry_state.dart';
 ///
 /// const exampleEmailSecurityImpersonationRegistry = new cloudflare.EmailSecurityImpersonationRegistry("example_email_security_impersonation_registry", {
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
-///     email: "email",
-///     isEmailRegex: true,
-///     name: "name",
+///     email: "john.doe@example.com",
+///     isEmailRegex: false,
+///     name: "John Doe",
+///     comments: "comments",
+///     directoryId: 0,
+///     directoryNodeId: 0,
+///     externalDirectoryNodeId: "external_directory_node_id",
+///     provenance: "A1S_INTERNAL",
 /// });
 /// ```
 /// ```python
@@ -27,9 +32,14 @@ import 'email_security_impersonation_registry_state.dart';
 ///
 /// example_email_security_impersonation_registry = cloudflare.EmailSecurityImpersonationRegistry("example_email_security_impersonation_registry",
 ///     account_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     email="email",
-///     is_email_regex=True,
-///     name="name")
+///     email="john.doe@example.com",
+///     is_email_regex=False,
+///     name="John Doe",
+///     comments="comments",
+///     directory_id=0,
+///     directory_node_id=0,
+///     external_directory_node_id="external_directory_node_id",
+///     provenance="A1S_INTERNAL")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -42,9 +52,14 @@ import 'email_security_impersonation_registry_state.dart';
 ///     var exampleEmailSecurityImpersonationRegistry = new Cloudflare.EmailSecurityImpersonationRegistry("example_email_security_impersonation_registry", new()
 ///     {
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-///         Email = "email",
-///         IsEmailRegex = true,
-///         Name = "name",
+///         Email = "john.doe@example.com",
+///         IsEmailRegex = false,
+///         Name = "John Doe",
+///         Comments = "comments",
+///         DirectoryId = 0,
+///         DirectoryNodeId = 0,
+///         ExternalDirectoryNodeId = "external_directory_node_id",
+///         Provenance = "A1S_INTERNAL",
 ///     });
 ///
 /// });
@@ -60,10 +75,15 @@ import 'email_security_impersonation_registry_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.NewEmailSecurityImpersonationRegistry(ctx, "example_email_security_impersonation_registry", &cloudflare.EmailSecurityImpersonationRegistryArgs{
-/// 			AccountId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			Email:        pulumi.String("email"),
-/// 			IsEmailRegex: pulumi.Bool(true),
-/// 			Name:         pulumi.String("name"),
+/// 			AccountId:               pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			Email:                   pulumi.String("john.doe@example.com"),
+/// 			IsEmailRegex:            pulumi.Bool(false),
+/// 			Name:                    pulumi.String("John Doe"),
+/// 			Comments:                pulumi.String("comments"),
+/// 			DirectoryId:             pulumi.Int(0),
+/// 			DirectoryNodeId:         pulumi.Int(0),
+/// 			ExternalDirectoryNodeId: pulumi.String("external_directory_node_id"),
+/// 			Provenance:              pulumi.String("A1S_INTERNAL"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -73,7 +93,7 @@ import 'email_security_impersonation_registry_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -81,11 +101,19 @@ import 'email_security_impersonation_registry_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_emailsecurityimpersonationregistry" "example_email_security_impersonation_registry" {
-///   account_id     = "023e105f4ecef8ad9ca31a8372d0c353"
-///   email          = "email"
-///   is_email_regex = true
-///   name           = "name"
+/// resource "cloudflare_email_security_impersonation_registry" "example_email_security_impersonation_registry" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   account_id                 = "023e105f4ecef8ad9ca31a8372d0c353"
+///   email                      = "john.doe@example.com"
+///   is_email_regex             = false
+///   name                       = "John Doe"
+///   comments                   = "comments"
+///   directory_id               = 0
+///   directory_node_id          = 0
+///   external_directory_node_id = "external_directory_node_id"
+///   provenance                 = "A1S_INTERNAL"
 /// }
 /// ```
 /// ```java
@@ -111,9 +139,14 @@ import 'email_security_impersonation_registry_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var exampleEmailSecurityImpersonationRegistry = new EmailSecurityImpersonationRegistry("exampleEmailSecurityImpersonationRegistry", EmailSecurityImpersonationRegistryArgs.builder()
 ///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-///             .email("email")
-///             .isEmailRegex(true)
-///             .name("name")
+///             .email("john.doe@example.com")
+///             .isEmailRegex(false)
+///             .name("John Doe")
+///             .comments("comments")
+///             .directoryId(0)
+///             .directoryNodeId(0)
+///             .externalDirectoryNodeId("external_directory_node_id")
+///             .provenance("A1S_INTERNAL")
 ///             .build());
 ///
 ///     }
@@ -126,31 +159,44 @@ import 'email_security_impersonation_registry_state.dart';
 ///     name: example_email_security_impersonation_registry
 ///     properties:
 ///       accountId: 023e105f4ecef8ad9ca31a8372d0c353
-///       email: email
-///       isEmailRegex: true
-///       name: name
+///       email: john.doe@example.com
+///       isEmailRegex: false
+///       name: John Doe
+///       comments: comments
+///       directoryId: 0
+///       directoryNodeId: 0
+///       externalDirectoryNodeId: external_directory_node_id
+///       provenance: A1S_INTERNAL
 /// ```
 ///
 ///
 /// ## Import
 ///
 /// ```sh
-/// $ pulumi import cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry example '<account_id>/<display_name_id>'
+/// $ pulumi import cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry example '<account_id>/<impersonation_registry_id>'
 /// ```
 class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
   /// Identifier.
   late final pulumi.Output<String> accountId;
+  /// Optional note describing the entry.
   late final pulumi.Output<String?> comments;
   late final pulumi.Output<String> createdAt;
+  /// Identifier of the directory the entry was synced from, when directory-synced.
   late final pulumi.Output<int?> directoryId;
+  /// Identifier of the directory node the entry was synced from, when directory-synced.
   late final pulumi.Output<int?> directoryNodeId;
+  /// Email address (or pattern) of the protected identity.
   late final pulumi.Output<String> email;
+  /// Deprecated. External identifier of the directory node.
   late final pulumi.Output<String?> externalDirectoryNodeId;
+  /// Whether `email` is a regular expression instead of a literal address.
   late final pulumi.Output<bool> isEmailRegex;
   /// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
   late final pulumi.Output<String> lastModified;
   late final pulumi.Output<String> modifiedAt;
+  /// Display name of the protected identity.
   late final pulumi.Output<String> name;
+  /// Source the entry was created from.
   /// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
   late final pulumi.Output<String?> provenance;
 
@@ -166,7 +212,7 @@ class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
           'cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     comments = registerOutput<String?>('comments');

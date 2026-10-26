@@ -108,7 +108,7 @@ import 'zone_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -116,7 +116,10 @@ import 'zone_subscription_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zonesubscription" "example_zone_subscription" {
+/// resource "cloudflare_zone_subscription" "example_zone_subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   frequency = "monthly"
 ///   rate_plan = {
@@ -227,7 +230,7 @@ class ZoneSubscription extends pulumi.CustomResource {
           'cloudflare:index/zoneSubscription:ZoneSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     currency = registerOutput<String>('currency');
     currentPeriodEnd = registerOutput<String>('currentPeriodEnd');

@@ -85,7 +85,7 @@ import 'zero_trust_tunnel_warp_connector_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -93,7 +93,10 @@ import 'zero_trust_tunnel_warp_connector_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrusttunnelwarpconnectorconfig" "example_zero_trust_tunnel_warp_connector_config" {
+/// resource "cloudflare_zero_trust_tunnel_warp_connector_config" "example_zero_trust_tunnel_warp_connector_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   tunnel_id  = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 ///   ha_mode    = "aws"
@@ -164,7 +167,7 @@ class ZeroTrustTunnelWarpConnectorConfig extends pulumi.CustomResource {
   late final pulumi.Output<int> configurationVersion;
   /// Timestamp of when the resource was created.
   late final pulumi.Output<String> createdAt;
-  /// High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+  /// High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
   /// Available values: "none", "disabled", "aws", "local".
   late final pulumi.Output<String> haMode;
   /// UUID of the tunnel.
@@ -184,7 +187,7 @@ class ZeroTrustTunnelWarpConnectorConfig extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustTunnelWarpConnectorConfig:ZeroTrustTunnelWarpConnectorConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     config = registerOutput<ZeroTrustTunnelWarpConnectorConfigConfig?>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustTunnelWarpConnectorConfigConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

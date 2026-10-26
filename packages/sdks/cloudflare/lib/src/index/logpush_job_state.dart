@@ -8,7 +8,7 @@ class LogpushJobState {
   /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
   final pulumi.Input<String?>? accountId;
   /// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-  /// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+  /// Available values: "access*requests", "account*abuse*protection*events", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*bgp*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network_sessions".
   final pulumi.Input<String?>? dataset;
   /// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
   final pulumi.Input<String?>? destinationConf;
@@ -18,6 +18,8 @@ class LogpushJobState {
   final pulumi.Input<String?>? errorMessage;
   /// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
   final pulumi.Input<String?>? filter;
+  /// When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+  final pulumi.Input<bool?>? filterAttackTraffic;
   /// This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
   /// Available values: "high", "low".
   final pulumi.Input<String?>? frequency;
@@ -52,6 +54,7 @@ class LogpushJobState {
   /// [enabled] Flag that indicates if the job is enabled.
   /// [errorMessage] If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
   /// [filter] The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+  /// [filterAttackTraffic] When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
   /// [frequency] This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
   /// [kind] The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
   /// [lastComplete] Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
@@ -71,6 +74,7 @@ class LogpushJobState {
     this.enabled,
     this.errorMessage,
     this.filter,
+    this.filterAttackTraffic,
     this.frequency,
     this.kind,
     this.lastComplete,
@@ -93,6 +97,7 @@ class LogpushJobState {
       'enabled': ?enabled,
       'errorMessage': ?errorMessage,
       'filter': ?filter,
+      'filterAttackTraffic': ?filterAttackTraffic,
       'frequency': ?frequency,
       'kind': ?kind,
       'lastComplete': ?lastComplete,
@@ -116,14 +121,15 @@ class LogpushJobState {
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       errorMessage: (() { final guardedValue = map['errorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filterAttackTraffic: (() { final guardedValue = map['filterAttackTraffic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastComplete: (() { final guardedValue = map['lastComplete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastError: (() { final guardedValue = map['lastError']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       logpullOptions: (() { final guardedValue = map['logpullOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxUploadBytes: (() { final guardedValue = map['maxUploadBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxUploadIntervalSeconds: (() { final guardedValue = map['maxUploadIntervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxUploadRecords: (() { final guardedValue = map['maxUploadRecords']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxUploadBytes: (() { final guardedValue = map['maxUploadBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxUploadIntervalSeconds: (() { final guardedValue = map['maxUploadIntervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxUploadRecords: (() { final guardedValue = map['maxUploadRecords']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       outputOptions: (() { final guardedValue = map['outputOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LogpushJobOutputOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ownershipChallenge: (() { final guardedValue = map['ownershipChallenge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

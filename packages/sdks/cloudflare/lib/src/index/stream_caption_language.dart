@@ -69,7 +69,7 @@ import 'stream_caption_language_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -77,7 +77,10 @@ import 'stream_caption_language_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_streamcaptionlanguage" "example_stream_caption_language" {
+/// resource "cloudflare_stream_caption_language" "example_stream_caption_language" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   identifier = "ea95132c15732412d22c1476fa83f27a"
 ///   language   = "tr"
@@ -157,7 +160,7 @@ class StreamCaptionLanguage extends pulumi.CustomResource {
           'cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     file = registerOutput<String?>('file');

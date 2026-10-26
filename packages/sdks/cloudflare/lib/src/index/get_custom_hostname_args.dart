@@ -8,14 +8,14 @@ import 'get_custom_hostname_filter.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_custom_hostname_get_custom_hostname_args_doc}
 class GetCustomHostnameArgs {
-  /// Identifier.
+  /// Custom hostname identifier tag.
   final pulumi.Input<String?>? customHostnameId;
   final pulumi.Input<GetCustomHostnameFilter?>? filter;
   /// Identifier.
   final pulumi.Input<String?>? zoneId;
 
   /// Creates a new [GetCustomHostnameArgs].
-  /// [customHostnameId] Identifier.
+  /// [customHostnameId] Custom hostname identifier tag.
   /// [filter] Optional.
   /// [zoneId] Identifier.
   const GetCustomHostnameArgs({

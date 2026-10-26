@@ -5,7 +5,7 @@ import 'r2_bucket_lock_rule.dart';
 
 /// Input properties used for looking up and filtering R2BucketLock resources.
 class R2BucketLockState {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final pulumi.Input<String?>? accountId;
   /// Name of the bucket.
   final pulumi.Input<String?>? bucketName;
@@ -14,7 +14,7 @@ class R2BucketLockState {
   final pulumi.Input<List<R2BucketLockRule>?>? rules;
 
   /// Creates a new [R2BucketLockState].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
   /// [jurisdiction] Jurisdiction of the bucket
   /// [rules] Optional.

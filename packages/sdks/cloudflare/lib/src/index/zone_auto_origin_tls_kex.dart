@@ -60,7 +60,7 @@ import 'zone_auto_origin_tls_kex_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -68,7 +68,10 @@ import 'zone_auto_origin_tls_kex_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zoneautoorigintlskex" "example_zone_auto_origin_tls_kex" {
+/// resource "cloudflare_zone_auto_origin_tls_kex" "example_zone_auto_origin_tls_kex" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   enabled = true
 /// }
@@ -137,7 +140,7 @@ class ZoneAutoOriginTlsKex extends pulumi.CustomResource {
           'cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
     modifiedOn = registerOutput<String>('modifiedOn');

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering R2ManagedDomain resources.
 class R2ManagedDomainState {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final pulumi.Input<String?>? accountId;
   /// Bucket ID.
   final pulumi.Input<String?>? bucketId;
@@ -18,7 +18,7 @@ class R2ManagedDomainState {
   final pulumi.Input<String?>? jurisdiction;
 
   /// Creates a new [R2ManagedDomainState].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketId] Bucket ID.
   /// [bucketName] Name of the bucket.
   /// [domain] Domain name of the bucket's r2.dev domain.
