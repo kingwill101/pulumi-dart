@@ -8,7 +8,7 @@ class NodeGroupV2 extends pulumi.ComponentResource {
   /// The AutoScalingGroup for the Node group.
   late final pulumi.Output<pulumi_aws_autoscaling.Group?> autoScalingGroup;
   /// The additional security groups for the node group that captures user-specific rules.
-  late final pulumi.Output<List<Map<String, dynamic>>?> extraNodeSecurityGroups;
+  late final pulumi.Output<List<pulumi_aws_ec2.SecurityGroup>?> extraNodeSecurityGroups;
   /// The security group for the node group to communicate with the cluster, or undefined if using `nodeSecurityGroupId`.
   late final pulumi.Output<pulumi_aws_ec2.SecurityGroup?> nodeSecurityGroup;
   /// The ID of the security group for the node group to communicate with the cluster.
@@ -26,11 +26,11 @@ class NodeGroupV2 extends pulumi.ComponentResource {
           'eks:index:NodeGroupV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
+          pulumi.ComponentResourceOptions(version: '4.4.0').merge(options),
           remote: true,
         ) {
     autoScalingGroup = registerOutput<pulumi_aws_autoscaling.Group?>('autoScalingGroup');
-    extraNodeSecurityGroups = registerOutput<List<Map<String, dynamic>>?>('extraNodeSecurityGroups');
+    extraNodeSecurityGroups = registerOutput<List<pulumi_aws_ec2.SecurityGroup>?>('extraNodeSecurityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<pulumi_aws_ec2.SecurityGroup>(); });
     nodeSecurityGroup = registerOutput<pulumi_aws_ec2.SecurityGroup?>('nodeSecurityGroup');
     nodeSecurityGroupId = registerOutput<String?>('nodeSecurityGroupId');
   }
