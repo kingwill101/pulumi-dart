@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionArg {
   /// An expression to be used as default value if the parameter is not specified.
-  final pulumi.Input<String>? default_;
+  final pulumi.Input<String?>? default_;
   /// Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The name of the argument.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of the argument.
   final pulumi.Input<String> type;
 

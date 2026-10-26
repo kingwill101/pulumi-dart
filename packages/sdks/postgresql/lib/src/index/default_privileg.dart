@@ -85,7 +85,7 @@ import 'default_privileg_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -93,7 +93,10 @@ import 'default_privileg_state.dart';
 ///   }
 /// }
 ///
-/// resource "postgresql_defaultprivileges" "read_only_tables" {
+/// resource "postgresql_default_privileges" "read_only_tables" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role        = "test_role"
 ///   database    = "test_db"
 ///   schema      = "public"
@@ -244,7 +247,7 @@ import 'default_privileg_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -252,7 +255,10 @@ import 'default_privileg_state.dart';
 ///   }
 /// }
 ///
-/// resource "postgresql_defaultprivileges" "grant_table_privileges" {
+/// resource "postgresql_default_privileges" "grant_table_privileges" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database    = exampleDb.name
 ///   role        = "current_role"
 ///   owner       = "owner_role"
@@ -283,7 +289,7 @@ import 'default_privileg_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var grantTablePrivileges = new DefaultPrivileges("grantTablePrivileges", DefaultPrivilegesArgs.builder()
-///             .database(exampleDb.name())
+///             .database(exampleDb.get("name"))
 ///             .role("current_role")
 ///             .owner("owner_role")
 ///             .schema("public")
@@ -356,7 +362,7 @@ import 'default_privileg_state.dart';
 ///         Role = "public",
 ///         Owner = "object_owner",
 ///         ObjectType = "function",
-///         Privileges = new[] {},
+///         Privileges = new() {},
 ///     });
 ///
 /// });
@@ -386,7 +392,7 @@ import 'default_privileg_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -394,7 +400,10 @@ import 'default_privileg_state.dart';
 ///   }
 /// }
 ///
-/// resource "postgresql_defaultprivileges" "revoke_public" {
+/// resource "postgresql_default_privileges" "revoke_public" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database    = exampleDb.name
 ///   role        = "public"
 ///   owner       = "object_owner"
@@ -424,7 +433,7 @@ import 'default_privileg_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var revokePublic = new DefaultPrivileges("revokePublic", DefaultPrivilegesArgs.builder()
-///             .database(exampleDb.name())
+///             .database(exampleDb.get("name"))
 ///             .role("public")
 ///             .owner("object_owner")
 ///             .objectType("function")
@@ -474,12 +483,12 @@ class DefaultPrivileg extends pulumi.CustomResource {
           'postgresql:index/defaultPrivileg:DefaultPrivileg',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.18.2').merge(options),
         ) {
     database = registerOutput<String>('database');
     objectType = registerOutput<String>('objectType');
     owner = registerOutput<String>('owner');
-    privileges = registerOutput<List<String>>('privileges');
+    privileges = registerOutput<List<String>>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
     schema = registerOutput<String?>('schema');
     withGrantOption = registerOutput<bool?>('withGrantOption');
@@ -490,11 +499,12 @@ class DefaultPrivileg extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DefaultPrivilegState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DefaultPrivileg._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -511,7 +521,25 @@ class DefaultPrivileg extends pulumi.CustomResource {
     database = registerOutput<String>('database');
     objectType = registerOutput<String>('objectType');
     owner = registerOutput<String>('owner');
-    privileges = registerOutput<List<String>>('privileges');
+    privileges = registerOutput<List<String>>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    role = registerOutput<String>('role');
+    schema = registerOutput<String?>('schema');
+    withGrantOption = registerOutput<bool?>('withGrantOption');
+  }
+
+  /// Creates a typed reference to an existing [DefaultPrivileg] resource.
+  DefaultPrivileg.reference(String urn)
+    : super(
+        'postgresql:index/defaultPrivileg:DefaultPrivileg',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    database = registerOutput<String>('database');
+    objectType = registerOutput<String>('objectType');
+    owner = registerOutput<String>('owner');
+    privileges = registerOutput<List<String>>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
     schema = registerOutput<String?>('schema');
     withGrantOption = registerOutput<bool?>('withGrantOption');

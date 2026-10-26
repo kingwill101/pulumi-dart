@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Grant resources.
 class GrantState {
   /// The columns upon which to grant the privileges. Required when `objectType` is `column`. You cannot specify this option if the `objectType` is not `column`.
-  final pulumi.Input<List<String>>? columns;
+  final pulumi.Input<List<String>?>? columns;
   /// The database to grant privileges on for this role.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server, column).
-  final pulumi.Input<String>? objectType;
+  final pulumi.Input<String?>? objectType;
   /// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`. When `objectType` is `column`, only one value is allowed.
-  final pulumi.Input<List<String>>? objects;
+  final pulumi.Input<List<String>?>? objects;
   /// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
-  final pulumi.Input<List<String>>? privileges;
+  final pulumi.Input<List<String>?>? privileges;
   /// The name of the role to grant privileges on, Set it to "public" for all roles.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// The database schema to grant privileges on for this role (Required except if objectType is "database")
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
   /// Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
-  final pulumi.Input<bool>? withGrantOption;
+  final pulumi.Input<bool?>? withGrantOption;
 
   /// Creates a new [GrantState].
   /// [columns] The columns upon which to grant the privileges. Required when `objectType` is `column`. You cannot specify this option if the `objectType` is not `column`.
