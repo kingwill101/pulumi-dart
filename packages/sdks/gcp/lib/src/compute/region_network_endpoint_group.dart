@@ -139,9 +139,9 @@ import 'region_network_endpoint_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctions"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctions"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -193,7 +193,7 @@ import 'region_network_endpoint_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -202,7 +202,10 @@ import 'region_network_endpoint_group_state.dart';
 /// }
 ///
 /// // Cloud Functions Example
-/// resource "gcp_compute_regionnetworkendpointgroup" "function_neg" {
+/// resource "gcp_compute_region_network_endpoint_group" "function_neg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "function-neg"
 ///   network_endpoint_type = "SERVERLESS"
 ///   region                = "us-central1"
@@ -211,24 +214,33 @@ import 'region_network_endpoint_group_state.dart';
 ///   }
 /// }
 /// resource "gcp_cloudfunctions_function" "function_neg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "function-neg"
 ///   description           = "My function"
 ///   runtime               = "nodejs20"
 ///   available_memory_mb   = 128
 ///   source_archive_bucket = gcp_storage_bucket.bucket.name
-///   source_archive_object = gcp_storage_bucketobject.archive.name
+///   source_archive_object = gcp_storage_bucket_object.archive.name
 ///   trigger_http          = true
 ///   timeout               = 60
 ///   entry_point           = "helloGET"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cloudfunctions-function-example-bucket"
 ///   location = "US"
 /// }
-/// resource "gcp_storage_bucketobject" "archive" {
+/// resource "gcp_storage_bucket_object" "archive" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "index.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("path/to/index.zip")
+///   source = fileasset("path/to/index.zip")
 /// }
 /// ```
 /// ```java
@@ -448,8 +460,8 @@ import 'region_network_endpoint_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -494,7 +506,7 @@ import 'region_network_endpoint_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -503,7 +515,10 @@ import 'region_network_endpoint_group_state.dart';
 /// }
 ///
 /// // Cloud Run Example
-/// resource "gcp_compute_regionnetworkendpointgroup" "cloudrun_neg" {
+/// resource "gcp_compute_region_network_endpoint_group" "cloudrun_neg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "cloudrun-neg"
 ///   network_endpoint_type = "SERVERLESS"
 ///   region                = "us-central1"
@@ -512,12 +527,15 @@ import 'region_network_endpoint_group_state.dart';
 ///   }
 /// }
 /// resource "gcp_cloudrun_service" "cloudrun_neg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cloudrun-neg"
 ///   location = "us-central1"
 ///   template = {
 ///     spec = {
 ///       containers = [{
-///         "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///         image = "us-docker.pkg.dev/cloudrun/container/hello"
 ///       }]
 ///     }
 ///   }
@@ -858,9 +876,9 @@ import 'region_network_endpoint_group_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -952,7 +970,7 @@ import 'region_network_endpoint_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -961,16 +979,22 @@ import 'region_network_endpoint_group_state.dart';
 /// }
 ///
 /// // App Engine Example
-/// resource "gcp_compute_regionnetworkendpointgroup" "appengine_neg" {
+/// resource "gcp_compute_region_network_endpoint_group" "appengine_neg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "appengine-neg"
 ///   network_endpoint_type = "SERVERLESS"
 ///   region                = "us-central1"
 ///   app_engine = {
-///     service = gcp_appengine_flexibleappversion.appengine_neg.service
-///     version = gcp_appengine_flexibleappversion.appengine_neg.version_id
+///     service = gcp_appengine_flexible_app_version.appengine_neg.service
+///     version = gcp_appengine_flexible_app_version.appengine_neg.version_id
 ///   }
 /// }
-/// resource "gcp_appengine_flexibleappversion" "appengine_neg" {
+/// resource "gcp_appengine_flexible_app_version" "appengine_neg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   version_id = "v1"
 ///   service    = "appengine-neg"
 ///   runtime    = "nodejs"
@@ -983,7 +1007,7 @@ import 'region_network_endpoint_group_state.dart';
 ///   }
 ///   deployment = {
 ///     zip = {
-///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.appengine_neg.name}/${gcp_storage_bucketobject.appengine_neg.name}"
+///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.appengine_neg.name}/${gcp_storage_bucket_object.appengine_neg.name}"
 ///     }
 ///   }
 ///   liveness_check = {
@@ -1014,14 +1038,20 @@ import 'region_network_endpoint_group_state.dart';
 ///   delete_service_on_destroy = true
 /// }
 /// resource "gcp_storage_bucket" "appengine_neg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "appengine-neg"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "appengine_neg" {
+/// resource "gcp_storage_bucket_object" "appengine_neg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "hello-world.zip"
 ///   bucket = gcp_storage_bucket.appengine_neg.name
-///   source = fileAsset("./test-fixtures/hello-world.zip")
+///   source = fileasset("./test-fixtures/hello-world.zip")
 /// }
 /// ```
 /// ```java
@@ -1249,7 +1279,7 @@ import 'region_network_endpoint_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1270,7 +1300,7 @@ import 'region_network_endpoint_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1279,7 +1309,10 @@ import 'region_network_endpoint_group_state.dart';
 /// }
 ///
 /// // App Engine Example
-/// resource "gcp_compute_regionnetworkendpointgroup" "appengine_neg" {
+/// resource "gcp_compute_region_network_endpoint_group" "appengine_neg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "appengine-neg"
 ///   network_endpoint_type = "SERVERLESS"
 ///   region                = "us-central1"
@@ -1380,7 +1413,7 @@ import 'region_network_endpoint_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1400,7 +1433,7 @@ import 'region_network_endpoint_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1408,7 +1441,10 @@ import 'region_network_endpoint_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionnetworkendpointgroup" "psc_neg" {
+/// resource "gcp_compute_region_network_endpoint_group" "psc_neg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "psc-neg"
 ///   region                = "asia-northeast3"
 ///   network_endpoint_type = "PRIVATE_SERVICE_CONNECT"
@@ -1680,7 +1716,7 @@ import 'region_network_endpoint_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1696,7 +1732,7 @@ import 'region_network_endpoint_group_state.dart';
 /// 			Name:        pulumi.String("psc-subnetwork"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("europe-west4"),
-/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1706,7 +1742,7 @@ import 'region_network_endpoint_group_state.dart';
 /// 			IpCidrRange: pulumi.String("10.1.0.0/16"),
 /// 			Region:      pulumi.String("europe-west4"),
 /// 			Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
-/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1725,7 +1761,7 @@ import 'region_network_endpoint_group_state.dart';
 /// 		defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 /// 			Name:         pulumi.String("psc-backend"),
 /// 			Region:       pulumi.String("europe-west4"),
-/// 			HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks: defaultHealthCheck.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1734,7 +1770,7 @@ import 'region_network_endpoint_group_state.dart';
 /// 			Name:                pulumi.String("psc-forwarding-rule"),
 /// 			Region:              pulumi.String("europe-west4"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
+/// 			BackendService:      defaultRegionBackendService.ID(),
 /// 			Ports: pulumi.StringArray{
 /// 				pulumi.String("80"),
 /// 				pulumi.String("88"),
@@ -1778,7 +1814,7 @@ import 'region_network_endpoint_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1787,22 +1823,34 @@ import 'region_network_endpoint_group_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "psc-network"
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "psc-subnetwork"
 ///   ip_cidr_range = "10.0.0.0/16"
 ///   region        = "europe-west4"
 ///   network       = gcp_compute_network.default.id
 /// }
 /// resource "gcp_compute_subnetwork" "psc_subnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "psc-subnetwork-nat"
 ///   ip_cidr_range = "10.1.0.0/16"
 ///   region        = "europe-west4"
 ///   purpose       = "PRIVATE_SERVICE_CONNECT"
 ///   network       = gcp_compute_network.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "psc-healthcheck"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
@@ -1810,34 +1858,46 @@ import 'region_network_endpoint_group_state.dart';
 ///     port = "80"
 ///   }
 /// }
-/// resource "gcp_compute_regionbackendservice" "default" {
+/// resource "gcp_compute_region_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "psc-backend"
 ///   region        = "europe-west4"
-///   health_checks = gcp_compute_healthcheck.default.id
+///   health_checks = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_forwardingrule" "default" {
+/// resource "gcp_compute_forwarding_rule" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "psc-forwarding-rule"
 ///   region                = "europe-west4"
 ///   load_balancing_scheme = "INTERNAL"
-///   backend_service       = gcp_compute_regionbackendservice.default.id
+///   backend_service       = gcp_compute_region_backend_service.default.id
 ///   ports                 = ["80", "88", "443"]
 ///   network               = gcp_compute_network.default.name
 ///   subnetwork            = gcp_compute_subnetwork.default.name
 /// }
-/// resource "gcp_compute_serviceattachment" "default" {
+/// resource "gcp_compute_service_attachment" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "psc-service-attachment"
 ///   region                = "europe-west4"
 ///   description           = "A service attachment configured with Terraform"
 ///   enable_proxy_protocol = false
 ///   connection_preference = "ACCEPT_AUTOMATIC"
 ///   nat_subnets           = [gcp_compute_subnetwork.psc_subnetwork.self_link]
-///   target_service        = gcp_compute_forwardingrule.default.self_link
+///   target_service        = gcp_compute_forwarding_rule.default.self_link
 /// }
-/// resource "gcp_compute_regionnetworkendpointgroup" "psc_neg_service_attachment" {
+/// resource "gcp_compute_region_network_endpoint_group" "psc_neg_service_attachment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "psc-neg"
 ///   region                = "europe-west4"
 ///   network_endpoint_type = "PRIVATE_SERVICE_CONNECT"
-///   psc_target_service    = gcp_compute_serviceattachment.default.self_link
+///   psc_target_service    = gcp_compute_service_attachment.default.self_link
 ///   psc_data = {
 ///     producer_port = "88"
 ///   }
@@ -2082,7 +2142,7 @@ import 'region_network_endpoint_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2097,7 +2157,7 @@ import 'region_network_endpoint_group_state.dart';
 /// 		_, err = compute.NewRegionNetworkEndpointGroup(ctx, "region_network_endpoint_group_internet_ip_port", &compute.RegionNetworkEndpointGroupArgs{
 /// 			Name:                pulumi.String("ip-port-neg"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:             _default.ID(),
 /// 			NetworkEndpointType: pulumi.String("INTERNET_IP_PORT"),
 /// 		})
 /// 		if err != nil {
@@ -2108,7 +2168,7 @@ import 'region_network_endpoint_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2116,13 +2176,19 @@ import 'region_network_endpoint_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionnetworkendpointgroup" "region_network_endpoint_group_internet_ip_port" {
+/// resource "gcp_compute_region_network_endpoint_group" "region_network_endpoint_group_internet_ip_port" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "ip-port-neg"
 ///   region                = "us-central1"
 ///   network               = gcp_compute_network.default.id
 ///   network_endpoint_type = "INTERNET_IP_PORT"
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "network"
 /// }
 /// ```
@@ -2233,7 +2299,7 @@ import 'region_network_endpoint_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2248,7 +2314,7 @@ import 'region_network_endpoint_group_state.dart';
 /// 		_, err = compute.NewRegionNetworkEndpointGroup(ctx, "region_network_endpoint_group_internet_fqdn_port", &compute.RegionNetworkEndpointGroupArgs{
 /// 			Name:                pulumi.String("ip-port-neg"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:             _default.ID(),
 /// 			NetworkEndpointType: pulumi.String("INTERNET_FQDN_PORT"),
 /// 		})
 /// 		if err != nil {
@@ -2259,7 +2325,7 @@ import 'region_network_endpoint_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2267,13 +2333,19 @@ import 'region_network_endpoint_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionnetworkendpointgroup" "region_network_endpoint_group_internet_fqdn_port" {
+/// resource "gcp_compute_region_network_endpoint_group" "region_network_endpoint_group_internet_fqdn_port" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "ip-port-neg"
 ///   region                = "us-central1"
 ///   network               = gcp_compute_network.default.id
 ///   network_endpoint_type = "INTERNET_FQDN_PORT"
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "network"
 /// }
 /// ```
@@ -2406,7 +2478,7 @@ import 'region_network_endpoint_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2422,7 +2494,7 @@ import 'region_network_endpoint_group_state.dart';
 /// 			Name:        pulumi.String("subnetwork"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2430,8 +2502,8 @@ import 'region_network_endpoint_group_state.dart';
 /// 		_, err = compute.NewRegionNetworkEndpointGroup(ctx, "region_network_endpoint_group_portmap", &compute.RegionNetworkEndpointGroupArgs{
 /// 			Name:                pulumi.String("portmap-neg"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
-/// 			Subnetwork:          defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:             _default.ID(),
+/// 			Subnetwork:          defaultSubnetwork.ID(),
 /// 			NetworkEndpointType: pulumi.String("GCE_VM_IP_PORTMAP"),
 /// 		})
 /// 		if err != nil {
@@ -2442,7 +2514,7 @@ import 'region_network_endpoint_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2450,7 +2522,10 @@ import 'region_network_endpoint_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionnetworkendpointgroup" "region_network_endpoint_group_portmap" {
+/// resource "gcp_compute_region_network_endpoint_group" "region_network_endpoint_group_portmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "portmap-neg"
 ///   region                = "us-central1"
 ///   network               = gcp_compute_network.default.id
@@ -2458,9 +2533,15 @@ import 'region_network_endpoint_group_state.dart';
 ///   network_endpoint_type = "GCE_VM_IP_PORTMAP"
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "network"
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "subnetwork"
 ///   ip_cidr_range = "10.0.0.0/16"
 ///   region        = "us-central1"
@@ -2632,7 +2713,7 @@ class RegionNetworkEndpointGroup extends pulumi.CustomResource {
           'gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     appEngine = registerOutput<RegionNetworkEndpointGroupAppEngine?>('appEngine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupAppEngine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudFunction = registerOutput<RegionNetworkEndpointGroupCloudFunction?>('cloudFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkEndpointGroupCloudFunction.fromMap((guardedValue as Map).cast<String, dynamic>()); });

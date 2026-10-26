@@ -57,7 +57,7 @@ import 'tenant_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/identityplatform"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/identityplatform"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -75,7 +75,7 @@ import 'tenant_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -84,6 +84,9 @@ import 'tenant_state.dart';
 /// }
 ///
 /// resource "gcp_identityplatform_tenant" "tenant" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "tenant"
 ///   allow_password_signup = true
 /// }
@@ -182,7 +185,7 @@ class Tenant extends pulumi.CustomResource {
           'gcp:identityplatform/tenant:Tenant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     allowPasswordSignup = registerOutput<bool?>('allowPasswordSignup');
     client = registerOutput<TenantClient?>('client', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TenantClient.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -174,7 +174,7 @@ import 'bulk_per_instance_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -241,7 +241,7 @@ import 'bulk_per_instance_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -249,16 +249,19 @@ import 'bulk_per_instance_config_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "myImage" {
+/// data "gcp_compute_image" "myImage" {
 ///   family  = "debian-12"
 ///   project = "debian-cloud"
 /// }
 ///
-/// resource "gcp_compute_instancetemplate" "bulk-igm" {
+/// resource "gcp_compute_instance_template" "bulk-igm" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "bulk-igm-template"
 ///   machine_type = "e2-medium"
 ///   disks {
-///     source_image = data.gcp_compute_getimage.myImage.self_link
+///     source_image = data.gcp_compute_image.myImage.self_link
 ///     auto_delete  = true
 ///     boot         = true
 ///   }
@@ -266,19 +269,25 @@ import 'bulk_per_instance_config_state.dart';
 ///     network = "default"
 ///   }
 /// }
-/// resource "gcp_compute_instancegroupmanager" "bulk-igm" {
+/// resource "gcp_compute_instance_group_manager" "bulk-igm" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description        = "Terraform test bulk instance group manager"
 ///   name               = "bulk-igm"
 ///   zone               = "us-central1-a"
 ///   base_instance_name = "bulk-igm"
 ///   versions {
 ///     name              = "prod"
-///     instance_template = gcp_compute_instancetemplate.bulk-igm.self_link
+///     instance_template = gcp_compute_instance_template.bulk-igm.self_link
 ///   }
 /// }
-/// resource "gcp_compute_bulkperinstanceconfig" "bulk-igm-per-instance-config" {
-///   zone                   = gcp_compute_instancegroupmanager.bulk-igm.zone
-///   instance_group_manager = gcp_compute_instancegroupmanager.bulk-igm.name
+/// resource "gcp_compute_bulk_per_instance_config" "bulk-igm-per-instance-config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   zone                   = gcp_compute_instance_group_manager.bulk-igm.zone
+///   instance_group_manager = gcp_compute_instance_group_manager.bulk-igm.name
 ///   instances {
 ///     name = "per-instance-config-instance-1"
 ///   }
@@ -453,7 +462,7 @@ class BulkPerInstanceConfig extends pulumi.CustomResource {
           'gcp:compute/bulkPerInstanceConfig:BulkPerInstanceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     instanceGroupManager = registerOutput<String>('instanceGroupManager');

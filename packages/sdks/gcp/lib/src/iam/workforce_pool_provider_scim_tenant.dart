@@ -193,7 +193,7 @@ import 'workforce_pool_provider_scim_tenant_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -260,7 +260,7 @@ import 'workforce_pool_provider_scim_tenant_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -268,14 +268,20 @@ import 'workforce_pool_provider_scim_tenant_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workforcepool" "pool" {
+/// resource "gcp_iam_workforce_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workforce_pool_id = "example-pool"
 ///   parent            = "organizations/123456789"
 ///   location          = "global"
 /// }
-/// resource "gcp_iam_workforcepoolprovider" "provider" {
+/// resource "gcp_iam_workforce_pool_provider" "provider" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "global"
-///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
+///   workforce_pool_id = gcp_iam_workforce_pool.pool.workforce_pool_id
 ///   provider_id       = "example-prvdr"
 ///   attribute_mapping = {
 ///     "google.subject" = "assertion.sub"
@@ -299,10 +305,13 @@ import 'workforce_pool_provider_scim_tenant_state.dart';
 ///   disabled            = false
 ///   attribute_condition = "true"
 /// }
-/// resource "gcp_iam_workforcepoolproviderscimtenant" "example" {
+/// resource "gcp_iam_workforce_pool_provider_scim_tenant" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "global"
-///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
-///   provider_id       = gcp_iam_workforcepoolprovider.provider.provider_id
+///   workforce_pool_id = gcp_iam_workforce_pool.pool.workforce_pool_id
+///   provider_id       = gcp_iam_workforce_pool_provider.provider.provider_id
 ///   scim_tenant_id    = "example-scim-tenant"
 ///   display_name      = "Example SCIM Tenant"
 ///   description       = "A basic SCIM tenant for IAM Workforce Pool Provider"
@@ -462,7 +471,7 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
   /// https://iamscim.googleapis.com/{version}/{tenant_id}/
   late final pulumi.Output<String> baseUri;
   /// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
-  late final pulumi.Output<Map<String, String>?> claimMapping;
+  late final pulumi.Output<Map<String, String>> claimMapping;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -510,10 +519,10 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
           'gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     baseUri = registerOutput<String>('baseUri');
-    claimMapping = registerOutput<Map<String, String>?>('claimMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    claimMapping = registerOutput<Map<String, String>>('claimMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -553,7 +562,7 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     baseUri = registerOutput<String>('baseUri');
-    claimMapping = registerOutput<Map<String, String>?>('claimMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    claimMapping = registerOutput<Map<String, String>>('claimMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -578,7 +587,7 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     baseUri = registerOutput<String>('baseUri');
-    claimMapping = registerOutput<Map<String, String>?>('claimMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    claimMapping = registerOutput<Map<String, String>>('claimMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');

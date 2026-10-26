@@ -84,8 +84,8 @@ import 'project_notification_config_streaming_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -101,7 +101,7 @@ import 'project_notification_config_streaming_config.dart';
 /// 			ConfigId:    pulumi.String("my-config"),
 /// 			Project:     pulumi.String("my-project-name"),
 /// 			Description: pulumi.String("My custom Cloud Security Command Center Finding Notification Configuration"),
-/// 			PubsubTopic: sccProjectNotification.ID().ToIDOutput().ToStringOutput(),
+/// 			PubsubTopic: sccProjectNotification.ID(),
 /// 			StreamingConfig: &securitycenter.ProjectNotificationConfigStreamingConfigArgs{
 /// 				Filter: pulumi.String("category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\""),
 /// 			},
@@ -114,7 +114,7 @@ import 'project_notification_config_streaming_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -123,9 +123,15 @@ import 'project_notification_config_streaming_config.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "scc_project_notification" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-topic"
 /// }
-/// resource "gcp_securitycenter_projectnotificationconfig" "custom_notification_config" {
+/// resource "gcp_securitycenter_project_notification_config" "custom_notification_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   config_id    = "my-config"
 ///   project      = "my-project-name"
 ///   description  = "My custom Cloud Security Command Center Finding Notification Configuration"
@@ -248,7 +254,7 @@ class ProjectNotificationConfig extends pulumi.CustomResource {
           'gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     configId = registerOutput<String>('configId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

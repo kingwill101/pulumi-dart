@@ -210,8 +210,8 @@ import 'insights_report_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -284,7 +284,7 @@ import 'insights_report_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -292,11 +292,14 @@ import 'insights_report_config_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_storage_insightsreportconfig" "config" {
-///   depends_on   = [gcp_storage_bucketiammember.admin]
+/// resource "gcp_storage_insights_report_config" "config" {
+///   depends_on = [gcp_storage_bucket_i_a_m_member.admin]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Test Report Config"
 ///   location     = "us-central1"
 ///   frequency_options = {
@@ -329,15 +332,21 @@ import 'insights_report_config_state.dart';
 ///   }
 /// }
 /// resource "gcp_storage_bucket" "report_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my-bucket"
 ///   location                    = "us-central1"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketiammember" "admin" {
+/// resource "gcp_storage_bucket_i_a_m_member" "admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = gcp_storage_bucket.report_bucket.name
 ///   role   = "roles/storage.admin"
-///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com"
+///   member ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -550,7 +559,7 @@ class InsightsReportConfig extends pulumi.CustomResource {
           'gcp:storage/insightsReportConfig:InsightsReportConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     csvOptions = registerOutput<InsightsReportConfigCsvOptions?>('csvOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigCsvOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

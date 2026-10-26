@@ -101,8 +101,8 @@ import 'backend_bucket_signed_url_key_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -144,7 +144,7 @@ import 'backend_bucket_signed_url_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -156,20 +156,32 @@ import 'backend_bucket_signed_url_key_state.dart';
 /// }
 ///
 /// resource "random_id" "url_signature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   byte_length = 16
 /// }
-/// resource "gcp_compute_backendbucketsignedurlkey" "backend_key" {
+/// resource "gcp_compute_backend_bucket_signed_url_key" "backend_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "test-key"
 ///   key_value      = random_id.url_signature.b64Url
-///   backend_bucket = gcp_compute_backendbucket.test_backend.name
+///   backend_bucket = gcp_compute_backend_bucket.test_backend.name
 /// }
-/// resource "gcp_compute_backendbucket" "test_backend" {
+/// resource "gcp_compute_backend_bucket" "test_backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test-signed-backend-bucket"
 ///   description = "Contains beautiful images"
 ///   bucket_name = gcp_storage_bucket.bucket.name
 ///   enable_cdn  = true
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-storage-bucket"
 ///   location = "EU"
 /// }
@@ -291,7 +303,7 @@ class BackendBucketSignedUrlKey extends pulumi.CustomResource {
           'gcp:compute/backendBucketSignedUrlKey:BackendBucketSignedUrlKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['keyValue'],
         ) {
     backendBucket = registerOutput<String>('backendBucket');

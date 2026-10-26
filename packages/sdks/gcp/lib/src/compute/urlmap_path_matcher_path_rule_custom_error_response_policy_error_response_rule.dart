@@ -39,7 +39,7 @@ class URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule {
   factory URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule(
       matchResponseCodes: (() { final guardedValue = map['matchResponseCodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      overrideResponseCode: (() { final guardedValue = map['overrideResponseCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      overrideResponseCode: (() { final guardedValue = map['overrideResponseCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

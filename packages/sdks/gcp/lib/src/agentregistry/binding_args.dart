@@ -33,7 +33,7 @@ class BindingArgs {
   final pulumi.Input<String?>? project;
   /// The source of the Binding.
   /// Structure is documented below.
-  final pulumi.Input<BindingSource> source;
+  final pulumi.Input<BindingSource?>? source;
   /// The target of the Binding.
   /// Structure is documented below.
   final pulumi.Input<BindingTarget> target;
@@ -56,7 +56,7 @@ class BindingArgs {
     this.displayName,
     required this.location,
     this.project,
-    required this.source,
+    this.source,
     required this.target,
   });
 
@@ -69,7 +69,7 @@ class BindingArgs {
       'displayName': ?displayName,
       'location': location,
       'project': ?project,
-      'source': pulumi.Input.mapInputValue<BindingSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source': ?pulumi.Input.mapOptionalInputValue<BindingSource, Map<String, dynamic>>(source, (value) => value.toMap()),
       'target': pulumi.Input.mapInputValue<BindingTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
     };
   }
@@ -83,7 +83,7 @@ class BindingArgs {
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      source: pulumi.Input.fromValue(BindingSource.fromMap((map['source']! as Map).cast<String, dynamic>())),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BindingSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       target: pulumi.Input.fromValue(BindingTarget.fromMap((map['target']! as Map).cast<String, dynamic>())),
     );
   }

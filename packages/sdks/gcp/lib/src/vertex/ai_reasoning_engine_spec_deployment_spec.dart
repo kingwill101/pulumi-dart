@@ -8,7 +8,6 @@ import 'ai_reasoning_engine_spec_deployment_spec_psc_interface_config.dart';
 import 'ai_reasoning_engine_spec_deployment_spec_secret_env.dart';
 
 class AiReasoningEngineSpecDeploymentSpec {
-  /// (Optional, Beta)
   /// Optional. Agent Gateway configuration for a Reasoning Engine deployment.
   /// Structure is documented below.
   final pulumi.Input<AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig?>? agentGatewayConfig;
@@ -62,7 +61,7 @@ class AiReasoningEngineSpecDeploymentSpec {
   final pulumi.Input<List<AiReasoningEngineSpecDeploymentSpecSecretEnv>?>? secretEnvs;
 
   /// Creates a new [AiReasoningEngineSpecDeploymentSpec].
-  /// [agentGatewayConfig] (Optional, Beta)
+  /// [agentGatewayConfig] Optional. Agent Gateway configuration for a Reasoning Engine deployment.
   /// [agentServerMode] (Optional, Beta)
   /// [containerConcurrency] Optional. Concurrency for each container and agent server.
   /// [dedicatedIngressEndpointEnabled] (Optional, Beta)
@@ -107,12 +106,12 @@ class AiReasoningEngineSpecDeploymentSpec {
     return AiReasoningEngineSpecDeploymentSpec(
       agentGatewayConfig: (() { final guardedValue = map['agentGatewayConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       agentServerMode: (() { final guardedValue = map['agentServerMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      containerConcurrency: (() { final guardedValue = map['containerConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      containerConcurrency: (() { final guardedValue = map['containerConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dedicatedIngressEndpointEnabled: (() { final guardedValue = map['dedicatedIngressEndpointEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       envs: (() { final guardedValue = map['envs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AiReasoningEngineSpecDeploymentSpecEnv>(guardedValue, (value) => AiReasoningEngineSpecDeploymentSpecEnv.fromMap((value as Map).cast<String, dynamic>()))); })(),
       keepAliveProbe: (() { final guardedValue = map['keepAliveProbe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiReasoningEngineSpecDeploymentSpecKeepAliveProbe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxInstances: (() { final guardedValue = map['maxInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minInstances: (() { final guardedValue = map['minInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxInstances: (() { final guardedValue = map['maxInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minInstances: (() { final guardedValue = map['minInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       pscInterfaceConfig: (() { final guardedValue = map['pscInterfaceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceLimits: (() { final guardedValue = map['resourceLimits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       secretEnvs: (() { final guardedValue = map['secretEnvs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AiReasoningEngineSpecDeploymentSpecSecretEnv>(guardedValue, (value) => AiReasoningEngineSpecDeploymentSpecSecretEnv.fromMap((value as Map).cast<String, dynamic>()))); })(),

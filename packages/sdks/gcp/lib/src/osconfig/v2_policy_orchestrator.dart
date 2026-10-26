@@ -179,7 +179,7 @@ import 'v2_policy_orchestrator_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/osconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/osconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -239,7 +239,7 @@ import 'v2_policy_orchestrator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -247,7 +247,10 @@ import 'v2_policy_orchestrator_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_osconfig_v2policyorchestrator" "policy_orchestrator" {
+/// resource "gcp_osconfig_v2_policy_orchestrator" "policy_orchestrator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_orchestrator_id = "po"
 ///   state                  = "ACTIVE"
 ///   action                 = "UPSERT"
@@ -255,22 +258,22 @@ import 'v2_policy_orchestrator_state.dart';
 ///     id = "test-orchestrated-resource"
 ///     os_policy_assignment_v1_payload = {
 ///       os_policies = [{
-///         "id"   = "test-os-policy"
-///         "mode" = "VALIDATION"
-///         "resourceGroups" = [{
-///           "resources" = [{
-///             "id" = "resource-tf"
-///             "file" = {
-///               "content" = "file-content-tf"
-///               "path"    = "file-path-tf-1"
-///               "state"   = "PRESENT"
+///         id   = "test-os-policy"
+///         mode = "VALIDATION"
+///         resource_groups = [{
+///           resources = [{
+///             id = "resource-tf"
+///             file = {
+///               content = "file-content-tf"
+///               path    = "file-path-tf-1"
+///               state   = "PRESENT"
 ///             }
 ///           }]
 ///         }]
 ///       }]
 ///       instance_filter = {
 ///         inventories = [{
-///           "osShortName" = "windows-10"
+///           os_short_name = "windows-10"
 ///         }]
 ///       }
 ///       rollout = {
@@ -486,7 +489,7 @@ class V2PolicyOrchestrator extends pulumi.CustomResource {
           'gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     action = registerOutput<String>('action');

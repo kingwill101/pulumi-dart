@@ -3,12 +3,17 @@ import 'parameter_args.dart';
 import 'parameter_policy_member.dart';
 import 'parameter_state.dart';
 
-/// A Parameter resource is a logical parameter.
+/// A Parameter is a configuration value that can be stored and managed
+/// centrally through Parameter Manager. Parameters support labels, encryption
+/// via Cloud KMS, and resource manager tags for fine-grained access control
+/// and organization.
 ///
 ///
 /// To get more information about Parameter, see:
 ///
 /// * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+/// * How-to Guides
+/// * [Work with parameter tags](https://docs.cloud.google.com/secret-manager/parameter-manager/docs/create-and-manage-tags)
 ///
 /// ## Example Usage
 ///
@@ -47,7 +52,7 @@ import 'parameter_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -64,7 +69,7 @@ import 'parameter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -73,6 +78,9 @@ import 'parameter_state.dart';
 /// }
 ///
 /// resource "gcp_parametermanager_parameter" "parameter-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameter_id = "parameter"
 /// }
 /// ```
@@ -153,7 +161,7 @@ import 'parameter_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -171,7 +179,7 @@ import 'parameter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -180,6 +188,9 @@ import 'parameter_state.dart';
 /// }
 ///
 /// resource "gcp_parametermanager_parameter" "parameter-with-format" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameter_id = "parameter"
 ///   format       = "JSON"
 /// }
@@ -282,7 +293,7 @@ import 'parameter_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -306,7 +317,7 @@ import 'parameter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -315,6 +326,9 @@ import 'parameter_state.dart';
 /// }
 ///
 /// resource "gcp_parametermanager_parameter" "parameter-with-labels" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameter_id = "parameter"
 ///   labels = {
 ///     "key1" = "val1"
@@ -419,8 +433,8 @@ import 'parameter_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -442,7 +456,7 @@ import 'parameter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -450,10 +464,13 @@ import 'parameter_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_parametermanager_parameter" "parameter-with-kms-key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameter_id = "parameter"
 ///   kms_key      = "kms-key"
 /// }
@@ -504,6 +521,140 @@ import 'parameter_state.dart';
 ///     fn::invoke:
 ///       function: gcp:organizations:getProject
 ///       arguments: {}
+/// ```
+///
+/// ### Parameter With Tags
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const parameter_with_tags = new gcp.parametermanager.Parameter("parameter-with-tags", {
+///     parameterId: "parameter",
+///     tags: {
+///         "tagKeys/123456": "tagValues/789012",
+///         "tagKeys/345678": "tagValues/901234",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// parameter_with_tags = gcp.parametermanager.Parameter("parameter-with-tags",
+///     parameter_id="parameter",
+///     tags={
+///         "tagKeys/123456": "tagValues/789012",
+///         "tagKeys/345678": "tagValues/901234",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var parameter_with_tags = new Gcp.ParameterManager.Parameter("parameter-with-tags", new()
+///     {
+///         ParameterId = "parameter",
+///         Tags =
+///         {
+///             { "tagKeys/123456", "tagValues/789012" },
+///             { "tagKeys/345678", "tagValues/901234" },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := parametermanager.NewParameter(ctx, "parameter-with-tags", &parametermanager.ParameterArgs{
+/// 			ParameterId: pulumi.String("parameter"),
+/// 			Tags: pulumi.StringMap{
+/// 				"tagKeys/123456": pulumi.String("tagValues/789012"),
+/// 				"tagKeys/345678": pulumi.String("tagValues/901234"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_parametermanager_parameter" "parameter-with-tags" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parameter_id = "parameter"
+///   tags = {
+///     "tagKeys/123456" = "tagValues/789012"
+///     "tagKeys/345678" = "tagValues/901234"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.parametermanager.Parameter;
+/// import com.pulumi.gcp.parametermanager.ParameterArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var parameter_with_tags = new Parameter("parameter-with-tags", ParameterArgs.builder()
+///             .parameterId("parameter")
+///             .tags(Map.ofEntries(
+///                 Map.entry("tagKeys/123456", "tagValues/789012"),
+///                 Map.entry("tagKeys/345678", "tagValues/901234")
+///             ))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   parameter-with-tags:
+///     type: gcp:parametermanager:Parameter
+///     properties:
+///       parameterId: parameter
+///       tags:
+///         tagKeys/123456: tagValues/789012
+///         tagKeys/345678: tagValues/901234
 /// ```
 ///
 ///
@@ -568,6 +719,10 @@ class Parameter extends pulumi.CustomResource {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+  /// A map of resource manager tags.
+  /// Resource manager tag keys and values have the same definition as resource manager tags.
+  /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+  late final pulumi.Output<Map<String, String>?> tags;
   /// The time at which the Parameter was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -583,7 +738,7 @@ class Parameter extends pulumi.CustomResource {
           'gcp:parametermanager/parameter:Parameter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
@@ -597,6 +752,7 @@ class Parameter extends pulumi.CustomResource {
     policyMembers = registerOutput<List<ParameterPolicyMember>>('policyMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParameterPolicyMember>(guardedValue, (value) => ParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -635,6 +791,7 @@ class Parameter extends pulumi.CustomResource {
     policyMembers = registerOutput<List<ParameterPolicyMember>>('policyMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParameterPolicyMember>(guardedValue, (value) => ParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -659,6 +816,7 @@ class Parameter extends pulumi.CustomResource {
     policyMembers = registerOutput<List<ParameterPolicyMember>>('policyMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParameterPolicyMember>(guardedValue, (value) => ParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -32,8 +32,8 @@ class ClusterClusterAutoscalingResourceLimit {
 
   factory ClusterClusterAutoscalingResourceLimit.fromMap(Map<String, dynamic> map) {
     return ClusterClusterAutoscalingResourceLimit(
-      maximum: pulumi.Input.fromValue((map['maximum'] as num).toInt()),
-      minimum: (() { final guardedValue = map['minimum']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximum: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maximum'])),
+      minimum: (() { final guardedValue = map['minimum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }

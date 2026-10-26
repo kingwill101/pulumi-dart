@@ -94,7 +94,7 @@ import 'route_warning.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -121,7 +121,7 @@ import 'route_warning.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -130,6 +130,9 @@ import 'route_warning.dart';
 /// }
 ///
 /// resource "gcp_compute_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "network-route"
 ///   dest_range  = "15.0.0.0/24"
 ///   network     = gcp_compute_network.default.name
@@ -137,6 +140,9 @@ import 'route_warning.dart';
 ///   priority    = 100
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "compute-network"
 /// }
 /// ```
@@ -347,7 +353,7 @@ import 'route_warning.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -364,7 +370,7 @@ import 'route_warning.dart';
 /// 			Name:        pulumi.String("compute-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -383,7 +389,7 @@ import 'route_warning.dart';
 /// 		backend, err := compute.NewRegionBackendService(ctx, "backend", &compute.RegionBackendServiceArgs{
 /// 			Name:         pulumi.String("compute-backend"),
 /// 			Region:       pulumi.String("us-central1"),
-/// 			HealthChecks: hc.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks: hc.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -392,7 +398,7 @@ import 'route_warning.dart';
 /// 			Name:                pulumi.String("compute-forwarding-rule"),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      backend.ID().ToIDOutput().ToStringOutput(),
+/// 			BackendService:      backend.ID(),
 /// 			AllPorts:            pulumi.Bool(true),
 /// 			Network:             _default.Name,
 /// 			Subnetwork:          defaultSubnetwork.Name,
@@ -404,7 +410,7 @@ import 'route_warning.dart';
 /// 			Name:       pulumi.String("route-ilb"),
 /// 			DestRange:  pulumi.String("0.0.0.0/0"),
 /// 			Network:    _default.Name,
-/// 			NextHopIlb: defaultForwardingRule.ID().ToIDOutput().ToStringOutput(),
+/// 			NextHopIlb: defaultForwardingRule.ID(),
 /// 			Priority:   pulumi.Int(2000),
 /// 		})
 /// 		if err != nil {
@@ -415,7 +421,7 @@ import 'route_warning.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -424,16 +430,25 @@ import 'route_warning.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "compute-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "compute-subnet"
 ///   ip_cidr_range = "10.0.1.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "hc" {
+/// resource "gcp_compute_health_check" "hc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "proxy-health-check"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
@@ -441,25 +456,34 @@ import 'route_warning.dart';
 ///     port = "80"
 ///   }
 /// }
-/// resource "gcp_compute_regionbackendservice" "backend" {
+/// resource "gcp_compute_region_backend_service" "backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "compute-backend"
 ///   region        = "us-central1"
-///   health_checks = gcp_compute_healthcheck.hc.id
+///   health_checks = gcp_compute_health_check.hc.id
 /// }
-/// resource "gcp_compute_forwardingrule" "default" {
+/// resource "gcp_compute_forwarding_rule" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "compute-forwarding-rule"
 ///   region                = "us-central1"
 ///   load_balancing_scheme = "INTERNAL"
-///   backend_service       = gcp_compute_regionbackendservice.backend.id
+///   backend_service       = gcp_compute_region_backend_service.backend.id
 ///   all_ports             = true
 ///   network               = gcp_compute_network.default.name
 ///   subnetwork            = gcp_compute_subnetwork.default.name
 /// }
 /// resource "gcp_compute_route" "route-ilb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "route-ilb"
 ///   dest_range   = "0.0.0.0/0"
 ///   network      = gcp_compute_network.default.name
-///   next_hop_ilb = gcp_compute_forwardingrule.default.id
+///   next_hop_ilb = gcp_compute_forwarding_rule.default.id
 ///   priority     = 2000
 /// }
 /// ```
@@ -838,7 +862,7 @@ import 'route_warning.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -855,7 +879,7 @@ import 'route_warning.dart';
 /// 			Name:        pulumi.String("producer-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     producer.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     producer.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -871,23 +895,23 @@ import 'route_warning.dart';
 /// 			Name:        pulumi.String("consumer-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.2.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     consumer.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     consumer.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		peering1, err := compute.NewNetworkPeering(ctx, "peering1", &compute.NetworkPeeringArgs{
 /// 			Name:        pulumi.String("peering-producer-to-consumer"),
-/// 			Network:     consumer.ID().ToIDOutput().ToStringOutput(),
-/// 			PeerNetwork: producer.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     consumer.ID(),
+/// 			PeerNetwork: producer.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		peering2, err := compute.NewNetworkPeering(ctx, "peering2", &compute.NetworkPeeringArgs{
 /// 			Name:        pulumi.String("peering-consumer-to-producer"),
-/// 			Network:     producer.ID().ToIDOutput().ToStringOutput(),
-/// 			PeerNetwork: consumer.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     producer.ID(),
+/// 			PeerNetwork: consumer.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -906,7 +930,7 @@ import 'route_warning.dart';
 /// 		backend, err := compute.NewRegionBackendService(ctx, "backend", &compute.RegionBackendServiceArgs{
 /// 			Name:         pulumi.String("compute-backend"),
 /// 			Region:       pulumi.String("us-central1"),
-/// 			HealthChecks: hc.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks: hc.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -915,7 +939,7 @@ import 'route_warning.dart';
 /// 			Name:                pulumi.String("compute-forwarding-rule"),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      backend.ID().ToIDOutput().ToStringOutput(),
+/// 			BackendService:      backend.ID(),
 /// 			AllPorts:            pulumi.Bool(true),
 /// 			Network:             producer.Name,
 /// 			Subnetwork:          producerSubnetwork.Name,
@@ -945,7 +969,7 @@ import 'route_warning.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -954,36 +978,57 @@ import 'route_warning.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "producer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "producer-vpc"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "producer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "producer-subnet"
 ///   ip_cidr_range = "10.0.1.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.producer.id
 /// }
 /// resource "gcp_compute_network" "consumer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "consumer-vpc"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "consumer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "consumer-subnet"
 ///   ip_cidr_range = "10.0.2.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.consumer.id
 /// }
-/// resource "gcp_compute_networkpeering" "peering1" {
+/// resource "gcp_compute_network_peering" "peering1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "peering-producer-to-consumer"
 ///   network      = gcp_compute_network.consumer.id
 ///   peer_network = gcp_compute_network.producer.id
 /// }
-/// resource "gcp_compute_networkpeering" "peering2" {
+/// resource "gcp_compute_network_peering" "peering2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "peering-consumer-to-producer"
 ///   network      = gcp_compute_network.producer.id
 ///   peer_network = gcp_compute_network.consumer.id
 /// }
-/// resource "gcp_compute_healthcheck" "hc" {
+/// resource "gcp_compute_health_check" "hc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "proxy-health-check"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
@@ -991,26 +1036,35 @@ import 'route_warning.dart';
 ///     port = "80"
 ///   }
 /// }
-/// resource "gcp_compute_regionbackendservice" "backend" {
+/// resource "gcp_compute_region_backend_service" "backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "compute-backend"
 ///   region        = "us-central1"
-///   health_checks = gcp_compute_healthcheck.hc.id
+///   health_checks = gcp_compute_health_check.hc.id
 /// }
-/// resource "gcp_compute_forwardingrule" "default" {
+/// resource "gcp_compute_forwarding_rule" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "compute-forwarding-rule"
 ///   region                = "us-central1"
 ///   load_balancing_scheme = "INTERNAL"
-///   backend_service       = gcp_compute_regionbackendservice.backend.id
+///   backend_service       = gcp_compute_region_backend_service.backend.id
 ///   all_ports             = true
 ///   network               = gcp_compute_network.producer.name
 ///   subnetwork            = gcp_compute_subnetwork.producer.name
 /// }
 /// resource "gcp_compute_route" "route-ilb" {
-///   depends_on   = [gcp_compute_networkpeering.peering1, gcp_compute_networkpeering.peering2]
+///   depends_on = [gcp_compute_network_peering.peering1, gcp_compute_network_peering.peering2]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "route-ilb"
 ///   dest_range   = "0.0.0.0/0"
 ///   network      = gcp_compute_network.consumer.name
-///   next_hop_ilb = gcp_compute_forwardingrule.default.ip_address
+///   next_hop_ilb = gcp_compute_forwarding_rule.default.ip_address
 ///   priority     = 2000
 ///   tags         = ["tag1", "tag2"]
 /// }
@@ -1347,7 +1401,7 @@ class Route extends pulumi.CustomResource {
           'gcp:compute/route:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     asPaths = registerOutput<List<RouteAsPath>>('asPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteAsPath>(guardedValue, (value) => RouteAsPath.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');

@@ -73,7 +73,7 @@ import 'router_peer_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -95,7 +95,7 @@ import 'router_peer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -103,7 +103,10 @@ import 'router_peer_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_routerpeer" "peer" {
+/// resource "gcp_compute_router_peer" "peer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "my-router-peer"
 ///   router                    = "my-router"
 ///   region                    = "us-central1"
@@ -217,7 +220,7 @@ import 'router_peer_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -241,7 +244,7 @@ import 'router_peer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -249,7 +252,10 @@ import 'router_peer_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_routerpeer" "peer" {
+/// resource "gcp_compute_router_peer" "peer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "my-router-peer"
 ///   router                    = "my-router"
 ///   region                    = "us-central1"
@@ -385,7 +391,7 @@ import 'router_peer_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -414,7 +420,7 @@ import 'router_peer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -422,7 +428,10 @@ import 'router_peer_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_routerpeer" "peer" {
+/// resource "gcp_compute_router_peer" "peer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "my-router-peer"
 ///   router                    = "my-router"
 ///   region                    = "us-central1"
@@ -554,7 +563,7 @@ import 'router_peer_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -577,7 +586,7 @@ import 'router_peer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -585,7 +594,10 @@ import 'router_peer_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_routerpeer" "peer" {
+/// resource "gcp_compute_router_peer" "peer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                               = "my-router-peer"
 ///   router                             = "my-router"
 ///   region                             = "us-central1"
@@ -699,7 +711,7 @@ import 'router_peer_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -722,7 +734,7 @@ import 'router_peer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -730,7 +742,10 @@ import 'router_peer_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_routerpeer" "peer" {
+/// resource "gcp_compute_router_peer" "peer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                           = "my-router-peer"
 ///   router                         = "my-router"
 ///   region                         = "us-central1"
@@ -1107,8 +1122,8 @@ import 'router_peer_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1133,7 +1148,7 @@ import 'router_peer_state.dart';
 /// 		addrIntf, err := compute.NewAddress(ctx, "addr_intf", &compute.AddressArgs{
 /// 			Name:        pulumi.String("my-router-addr-intf"),
 /// 			Region:      subnetwork.Region,
-/// 			Subnetwork:  subnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:  subnetwork.ID(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 		})
 /// 		if err != nil {
@@ -1142,7 +1157,7 @@ import 'router_peer_state.dart';
 /// 		addrIntfRedundant, err := compute.NewAddress(ctx, "addr_intf_redundant", &compute.AddressArgs{
 /// 			Name:        pulumi.String("my-router-addr-intf-red"),
 /// 			Region:      subnetwork.Region,
-/// 			Subnetwork:  subnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:  subnetwork.ID(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 		})
 /// 		if err != nil {
@@ -1151,7 +1166,7 @@ import 'router_peer_state.dart';
 /// 		addrPeer, err := compute.NewAddress(ctx, "addr_peer", &compute.AddressArgs{
 /// 			Name:        pulumi.String("my-router-addr-peer"),
 /// 			Region:      subnetwork.Region,
-/// 			Subnetwork:  subnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:  subnetwork.ID(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 		})
 /// 		if err != nil {
@@ -1186,7 +1201,7 @@ import 'router_peer_state.dart';
 /// 		_, err = networkconnectivity.NewSpoke(ctx, "spoke", &networkconnectivity.SpokeArgs{
 /// 			Name:     pulumi.String("my-router-spoke"),
 /// 			Location: subnetwork.Region,
-/// 			Hub:      hub.ID().ToIDOutput().ToStringOutput(),
+/// 			Hub:      hub.ID(),
 /// 			LinkedRouterApplianceInstances: &networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs{
 /// 				Instances: networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArray{
 /// 					&networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs{
@@ -1249,7 +1264,7 @@ import 'router_peer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1258,34 +1273,52 @@ import 'router_peer_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-router-net"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "subnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-router-sub"
 ///   network       = gcp_compute_network.network.self_link
 ///   ip_cidr_range = "10.0.0.0/16"
 ///   region        = "us-central1"
 /// }
 /// resource "gcp_compute_address" "addr_intf" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-router-addr-intf"
 ///   region       = gcp_compute_subnetwork.subnetwork.region
 ///   subnetwork   = gcp_compute_subnetwork.subnetwork.id
 ///   address_type = "INTERNAL"
 /// }
 /// resource "gcp_compute_address" "addr_intf_redundant" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-router-addr-intf-red"
 ///   region       = gcp_compute_subnetwork.subnetwork.region
 ///   subnetwork   = gcp_compute_subnetwork.subnetwork.id
 ///   address_type = "INTERNAL"
 /// }
 /// resource "gcp_compute_address" "addr_peer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-router-addr-peer"
 ///   region       = gcp_compute_subnetwork.subnetwork.region
 ///   subnetwork   = gcp_compute_subnetwork.subnetwork.id
 ///   address_type = "INTERNAL"
 /// }
 /// resource "gcp_compute_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "router-appliance"
 ///   zone           = "us-central1-a"
 ///   machine_type   = "e2-medium"
@@ -1301,21 +1334,30 @@ import 'router_peer_state.dart';
 ///   }
 /// }
 /// resource "gcp_networkconnectivity_hub" "hub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-router-hub"
 /// }
 /// resource "gcp_networkconnectivity_spoke" "spoke" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-router-spoke"
 ///   location = gcp_compute_subnetwork.subnetwork.region
 ///   hub      = gcp_networkconnectivity_hub.hub.id
 ///   linked_router_appliance_instances = {
 ///     instances = [{
-///       "virtualMachine" = gcp_compute_instance.instance.self_link
-///       "ipAddress"      = gcp_compute_address.addr_peer.address
+///       virtual_machine = gcp_compute_instance.instance.self_link
+///       ip_address      = gcp_compute_address.addr_peer.address
 ///     }]
 ///     site_to_site_data_transfer = false
 ///   }
 /// }
 /// resource "gcp_compute_router" "router" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "my-router-router"
 ///   region  = gcp_compute_subnetwork.subnetwork.region
 ///   network = gcp_compute_network.network.self_link
@@ -1323,26 +1365,35 @@ import 'router_peer_state.dart';
 ///     asn = 64514
 ///   }
 /// }
-/// resource "gcp_compute_routerinterface" "interface_redundant" {
+/// resource "gcp_compute_router_interface" "interface_redundant" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-router-intf-red"
 ///   region             = gcp_compute_router.router.region
 ///   router             = gcp_compute_router.router.name
 ///   subnetwork         = gcp_compute_subnetwork.subnetwork.self_link
 ///   private_ip_address = gcp_compute_address.addr_intf_redundant.address
 /// }
-/// resource "gcp_compute_routerinterface" "interface" {
+/// resource "gcp_compute_router_interface" "interface" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "my-router-intf"
 ///   region              = gcp_compute_router.router.region
 ///   router              = gcp_compute_router.router.name
 ///   subnetwork          = gcp_compute_subnetwork.subnetwork.self_link
 ///   private_ip_address  = gcp_compute_address.addr_intf.address
-///   redundant_interface = gcp_compute_routerinterface.interface_redundant.name
+///   redundant_interface = gcp_compute_router_interface.interface_redundant.name
 /// }
-/// resource "gcp_compute_routerpeer" "peer" {
+/// resource "gcp_compute_router_peer" "peer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "my-router-peer"
 ///   router                    = gcp_compute_router.router.name
 ///   region                    = gcp_compute_router.router.region
-///   interface                 = gcp_compute_routerinterface.interface.name
+///   interface                 = gcp_compute_router_interface.interface.name
 ///   router_appliance_instance = gcp_compute_instance.instance.self_link
 ///   peer_asn                  = 65513
 ///   peer_ip_address           = gcp_compute_address.addr_peer.address
@@ -1670,7 +1721,7 @@ import 'router_peer_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1697,7 +1748,7 @@ import 'router_peer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1705,7 +1756,10 @@ import 'router_peer_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_routerpeer" "foobar" {
+/// resource "gcp_compute_router_peer" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "%s-peer"
 ///   router                    = foobarGoogleComputeRouter.name
 ///   region                    = foobarGoogleComputeRouter.region
@@ -2188,7 +2242,7 @@ import 'router_peer_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2253,8 +2307,8 @@ import 'router_peer_state.dart';
 /// 		vpnTunnel, err := compute.NewVPNTunnel(ctx, "vpn_tunnel", &compute.VPNTunnelArgs{
 /// 			Name:                         pulumi.String("my-router"),
 /// 			Region:                       subnetwork.Region,
-/// 			VpnGateway:                   vpnGateway.ID().ToIDOutput().ToStringOutput(),
-/// 			PeerExternalGateway:          externalGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			VpnGateway:                   vpnGateway.ID(),
+/// 			PeerExternalGateway:          externalGateway.ID(),
 /// 			PeerExternalGatewayInterface: pulumi.Int(0),
 /// 			SharedSecret:                 pulumi.String("unguessable"),
 /// 			Router:                       router.Name,
@@ -2355,7 +2409,7 @@ import 'router_peer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2364,25 +2418,40 @@ import 'router_peer_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-router-net"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "subnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-router-subnet"
 ///   network       = gcp_compute_network.network.self_link
 ///   ip_cidr_range = "10.0.0.0/16"
 ///   region        = "us-central1"
 /// }
 /// resource "gcp_compute_address" "address" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "my-router"
 ///   region = gcp_compute_subnetwork.subnetwork.region
 /// }
-/// resource "gcp_compute_havpngateway" "vpn_gateway" {
+/// resource "gcp_compute_ha_vpn_gateway" "vpn_gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "my-router-gateway"
 ///   network = gcp_compute_network.network.self_link
 ///   region  = gcp_compute_subnetwork.subnetwork.region
 /// }
-/// resource "gcp_compute_externalvpngateway" "external_gateway" {
+/// resource "gcp_compute_external_vpn_gateway" "external_gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "my-router-external-gateway"
 ///   redundancy_type = "SINGLE_IP_INTERNALLY_REDUNDANT"
 ///   description     = "An externally managed VPN gateway"
@@ -2392,6 +2461,9 @@ import 'router_peer_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_router" "router" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "my-router"
 ///   region  = gcp_compute_subnetwork.subnetwork.region
 ///   network = gcp_compute_network.network.self_link
@@ -2399,28 +2471,37 @@ import 'router_peer_state.dart';
 ///     asn = 64514
 ///   }
 /// }
-/// resource "gcp_compute_vpntunnel" "vpn_tunnel" {
+/// resource "gcp_compute_v_p_n_tunnel" "vpn_tunnel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "my-router"
 ///   region                          = gcp_compute_subnetwork.subnetwork.region
-///   vpn_gateway                     = gcp_compute_havpngateway.vpn_gateway.id
-///   peer_external_gateway           = gcp_compute_externalvpngateway.external_gateway.id
+///   vpn_gateway                     = gcp_compute_ha_vpn_gateway.vpn_gateway.id
+///   peer_external_gateway           = gcp_compute_external_vpn_gateway.external_gateway.id
 ///   peer_external_gateway_interface = 0
 ///   shared_secret                   = "unguessable"
 ///   router                          = gcp_compute_router.router.name
 ///   vpn_gateway_interface           = 0
 /// }
-/// resource "gcp_compute_routerinterface" "router_interface" {
+/// resource "gcp_compute_router_interface" "router_interface" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "my-router"
 ///   router     = gcp_compute_router.router.name
 ///   region     = gcp_compute_router.router.region
-///   vpn_tunnel = gcp_compute_vpntunnel.vpn_tunnel.name
+///   vpn_tunnel = gcp_compute_v_p_n_tunnel.vpn_tunnel.name
 /// }
-/// resource "gcp_compute_routerroutepolicy" "rp-export" {
-///   depends_on = [gcp_compute_routerinterface.router_interface]
-///   name       = "my-router-rp-export"
-///   router     = gcp_compute_router.router.name
-///   region     = gcp_compute_router.router.region
-///   type       = "ROUTE_POLICY_TYPE_EXPORT"
+/// resource "gcp_compute_router_route_policy" "rp-export" {
+///   depends_on = [gcp_compute_router_interface.router_interface]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name   = "my-router-rp-export"
+///   router = gcp_compute_router.router.name
+///   region = gcp_compute_router.router.region
+///   type   = "ROUTE_POLICY_TYPE_EXPORT"
 ///   terms {
 ///     priority = 2
 ///     match = {
@@ -2433,12 +2514,15 @@ import 'router_peer_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_routerroutepolicy" "rp-import" {
-///   depends_on = [gcp_compute_routerinterface.router_interface, gcp_compute_routerroutepolicy.rp-export]
-///   name       = "my-router-rp-import"
-///   router     = gcp_compute_router.router.name
-///   region     = gcp_compute_router.router.region
-///   type       = "ROUTE_POLICY_TYPE_IMPORT"
+/// resource "gcp_compute_router_route_policy" "rp-import" {
+///   depends_on = [gcp_compute_router_interface.router_interface, gcp_compute_router_route_policy.rp-export]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name   = "my-router-rp-import"
+///   router = gcp_compute_router.router.name
+///   region = gcp_compute_router.router.region
+///   type   = "ROUTE_POLICY_TYPE_IMPORT"
 ///   terms {
 ///     priority = 1
 ///     match = {
@@ -2451,20 +2535,23 @@ import 'router_peer_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_routerpeer" "router_peer" {
-///   depends_on                = [gcp_compute_routerroutepolicy.rp-export, gcp_compute_routerroutepolicy.rp-import, gcp_compute_routerinterface.router_interface]
+/// resource "gcp_compute_router_peer" "router_peer" {
+///   depends_on = [gcp_compute_router_route_policy.rp-export, gcp_compute_router_route_policy.rp-import, gcp_compute_router_interface.router_interface]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "my-router-peer"
 ///   router                    = gcp_compute_router.router.name
 ///   region                    = gcp_compute_router.router.region
 ///   peer_asn                  = 65515
 ///   advertised_route_priority = 100
-///   interface                 = gcp_compute_routerinterface.router_interface.name
+///   interface                 = gcp_compute_router_interface.router_interface.name
 ///   md5_authentication_key = {
 ///     name = "my-router-peer-key"
 ///     key  = "my-router-peer-key-value"
 ///   }
-///   import_policies = [gcp_compute_routerroutepolicy.rp-import.name]
-///   export_policies = [gcp_compute_routerroutepolicy.rp-export.name]
+///   import_policies = [gcp_compute_router_route_policy.rp-import.name]
+///   export_policies = [gcp_compute_router_route_policy.rp-export.name]
 /// }
 /// ```
 /// ```java
@@ -2932,7 +3019,7 @@ class RouterPeer extends pulumi.CustomResource {
           'gcp:compute/routerPeer:RouterPeer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     advertiseMode = registerOutput<String?>('advertiseMode');
     advertisedGroups = registerOutput<List<String>?>('advertisedGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

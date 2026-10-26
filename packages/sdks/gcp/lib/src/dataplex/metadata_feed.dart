@@ -313,9 +313,9 @@ import 'metadata_feed_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -402,7 +402,7 @@ import 'metadata_feed_state.dart';
 /// 			MetadataFeedId: pulumi.String("tf-test-feed"),
 /// 			Location:       pulumi.String("us-central1"),
 /// 			Project:        pulumi.String("my-project-name"),
-/// 			PubsubTopic:    primary.ID().ToIDOutput().ToStringOutput(),
+/// 			PubsubTopic:    primary.ID(),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -440,7 +440,7 @@ import 'metadata_feed_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -448,41 +448,88 @@ import 'metadata_feed_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_pubsub_topic" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "tf-test-feed-topic"
 /// }
-/// resource "gcp_pubsub_topiciammember" "primary_publisher" {
+/// resource "gcp_pubsub_topic_i_a_m_member" "primary_publisher" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   topic  = gcp_pubsub_topic.primary.name
 ///   role   = "roles/pubsub.publisher"
-///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-dataplex.iam.gserviceaccount.com"
+///   member ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-dataplex.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_pubsub_topiciammember" "primary_viewer" {
-///   depends_on = [gcp_pubsub_topiciammember.primary_publisher]
-///   topic      = gcp_pubsub_topic.primary.name
-///   role       = "roles/pubsub.viewer"
-///   member     ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-dataplex.iam.gserviceaccount.com"
+/// resource "gcp_pubsub_topic_i_a_m_member" "primary_viewer" {
+///   depends_on = [gcp_pubsub_topic_i_a_m_member.primary_publisher]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   topic  = gcp_pubsub_topic.primary.name
+///   role   = "roles/pubsub.viewer"
+///   member ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-dataplex.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_dataplex_entrygroup" "group" {
+/// resource "gcp_dataplex_entry_group" "group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   entry_group_id = "tf-test-feed-group"
 ///   project        = "my-project-name"
 ///   location       = "us-central1"
 /// }
-/// resource "gcp_dataplex_entrytype" "type" {
+/// resource "gcp_dataplex_entry_type" "type" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   entry_type_id = "tf-test-feed-type"
 ///   project       = "my-project-name"
 ///   location      = "us-central1"
 /// }
-/// resource "gcp_dataplex_aspecttype" "aspect" {
+/// resource "gcp_dataplex_aspect_type" "aspect" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aspect_type_id    = "tf-test-feed-aspect"
 ///   project           = "my-project-name"
 ///   location          = "us-central1"
-///   metadata_template = "{\n  \\\"name\\\": \\\"tf-test-template\\\",\n  \\\"type\\\": \\\"record\\\",\n  \\\"recordFields\\\": [\n    {\n      \\\"name\\\": \\\"type\\\",\n      \\\"type\\\": \\\"enum\\\",\n      \\\"annotations\\\": {\n        \\\"displayName\\\": \\\"Type\\\",\n        \\\"description\\\": \\\"Specifies the type of view represented by the entry.\\\"\n      },\n      \\\"index\\\": 1,\n      \\\"constraints\\\": {\n        \\\"required\\\": true\n      },\n      \\\"enumValues\\\": [\n        {\n          \\\"name\\\": \\\"VIEW\\\",\n          \\\"index\\\": 1\n        }\n      ]\n    }\n  ]\n}\n"
+///   metadata_template = <<EOF
+/// {
+///   \"name\": \"tf-test-template\",
+///   \"type\": \"record\",
+///   \"recordFields\": [
+///     {
+///       \"name\": \"type\",
+///       \"type\": \"enum\",
+///       \"annotations\": {
+///         \"displayName\": \"Type\",
+///         \"description\": \"Specifies the type of view represented by the entry.\"
+///       },
+///       \"index\": 1,
+///       \"constraints\": {
+///         \"required\": true
+///       },
+///       \"enumValues\": [
+///         {
+///           \"name\": \"VIEW\",
+///           \"index\": 1
+///         }
+///       ]
+///     }
+///   ]
 /// }
-/// resource "gcp_dataplex_metadatafeed" "primary" {
-///   depends_on       = [gcp_pubsub_topiciammember.primary_publisher, gcp_pubsub_topiciammember.primary_viewer]
+/// EOF
+///
+/// }
+/// resource "gcp_dataplex_metadata_feed" "primary" {
+///   depends_on = [gcp_pubsub_topic_i_a_m_member.primary_publisher, gcp_pubsub_topic_i_a_m_member.primary_viewer]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metadata_feed_id = "tf-test-feed"
 ///   location         = "us-central1"
 ///   project          = "my-project-name"
@@ -491,12 +538,12 @@ import 'metadata_feed_state.dart';
 ///     "foo" = "bar"
 ///   }
 ///   filters = {
-///     aspect_types = ["projects/${data.gcp_organizations_getproject.project.number}/locations/us-central1/aspectTypes/${gcp_dataplex_aspecttype.aspect.aspect_type_id}"]
+///     aspect_types = ["projects/${data.gcp_organizations_project.project.number}/locations/us-central1/aspectTypes/${gcp_dataplex_aspect_type.aspect.aspect_type_id}"]
 ///     change_types = ["CREATE"]
-///     entry_types  = ["projects/${data.gcp_organizations_getproject.project.number}/locations/us-central1/entryTypes/${gcp_dataplex_entrytype.type.entry_type_id}"]
+///     entry_types  = ["projects/${data.gcp_organizations_project.project.number}/locations/us-central1/entryTypes/${gcp_dataplex_entry_type.type.entry_type_id}"]
 ///   }
 ///   scope = {
-///     entry_groups = ["projects/${data.gcp_organizations_getproject.project.number}/locations/us-central1/entryGroups/${gcp_dataplex_entrygroup.group.entry_group_id}"]
+///     entry_groups = ["projects/${data.gcp_organizations_project.project.number}/locations/us-central1/entryGroups/${gcp_dataplex_entry_group.group.entry_group_id}"]
 ///   }
 /// }
 /// ```
@@ -791,7 +838,7 @@ class MetadataFeed extends pulumi.CustomResource {
           'gcp:dataplex/metadataFeed:MetadataFeed',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

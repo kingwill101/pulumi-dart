@@ -68,8 +68,8 @@ import 'hmac_key_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -94,7 +94,7 @@ import 'hmac_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -104,10 +104,16 @@ import 'hmac_key_state.dart';
 ///
 /// # Create a new service account
 /// resource "gcp_serviceaccount_account" "service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "my-svc-acc"
 /// }
 /// #Create the HMAC key for the associated service account
-/// resource "gcp_storage_hmackey" "key" {
+/// resource "gcp_storage_hmac_key" "key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_account_email = gcp_serviceaccount_account.service_account.email
 /// }
 /// ```
@@ -218,7 +224,7 @@ class HmacKey extends pulumi.CustomResource {
           'gcp:storage/hmacKey:HmacKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['secret'],
         ) {
     accessId = registerOutput<String>('accessId');

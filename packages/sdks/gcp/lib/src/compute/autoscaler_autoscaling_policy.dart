@@ -105,17 +105,17 @@ class AutoscalerAutoscalingPolicy {
 
   factory AutoscalerAutoscalingPolicy.fromMap(Map<String, dynamic> map) {
     return AutoscalerAutoscalingPolicy(
-      cooldownPeriod: (() { final guardedValue = map['cooldownPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cooldownPeriod: (() { final guardedValue = map['cooldownPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       cpuUtilization: (() { final guardedValue = map['cpuUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoscalerAutoscalingPolicyCpuUtilization.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       loadBalancingUtilization: (() { final guardedValue = map['loadBalancingUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoscalerAutoscalingPolicyLoadBalancingUtilization.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxReplicas: pulumi.Input.fromValue((map['maxReplicas'] as num).toInt()),
+      maxReplicas: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxReplicas'])),
       metrics: (() { final guardedValue = map['metrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AutoscalerAutoscalingPolicyMetric>(guardedValue, (value) => AutoscalerAutoscalingPolicyMetric.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      minReplicas: pulumi.Input.fromValue((map['minReplicas'] as num).toInt()),
+      minReplicas: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minReplicas'])),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scaleDownControl: (() { final guardedValue = map['scaleDownControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoscalerAutoscalingPolicyScaleDownControl.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scaleInControl: (() { final guardedValue = map['scaleInControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoscalerAutoscalingPolicyScaleInControl.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scalingSchedules: (() { final guardedValue = map['scalingSchedules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AutoscalerAutoscalingPolicyScalingSchedule>(guardedValue, (value) => AutoscalerAutoscalingPolicyScalingSchedule.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      stabilizationPeriod: (() { final guardedValue = map['stabilizationPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      stabilizationPeriod: (() { final guardedValue = map['stabilizationPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

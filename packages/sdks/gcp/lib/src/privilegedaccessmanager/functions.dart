@@ -52,7 +52,7 @@ import 'get_entitlement_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/privilegedaccessmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/privilegedaccessmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -71,7 +71,7 @@ import 'get_entitlement_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -79,7 +79,7 @@ import 'get_entitlement_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_privilegedaccessmanager_getentitlement" "my-entitlement" {
+/// data "gcp_privilegedaccessmanager_entitlement" "my-entitlement" {
 ///   parent         = "projects/my-project"
 ///   location       = "global"
 ///   entitlement_id = "my-entitlement"

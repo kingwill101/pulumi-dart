@@ -267,9 +267,9 @@ import 'settings_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -293,7 +293,7 @@ import 'settings_state.dart';
 /// 		_default, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 /// 			Name:                         pulumi.String("iap-settings-tf"),
 /// 			Region:                       pulumi.String("us-central1"),
-/// 			HealthChecks:                 defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:                 defaultHealthCheck.ID(),
 /// 			ConnectionDrainingTimeoutSec: pulumi.Int(10),
 /// 			SessionAffinity:              pulumi.String("CLIENT_IP"),
 /// 		})
@@ -363,7 +363,7 @@ import 'settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -371,17 +371,23 @@ import 'settings_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_compute_regionbackendservice" "default" {
+/// resource "gcp_compute_region_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "iap-settings-tf"
 ///   region                          = "us-central1"
-///   health_checks                   = gcp_compute_healthcheck.default.id
+///   health_checks                   = gcp_compute_health_check.default.id
 ///   connection_draining_timeout_sec = 10
 ///   session_affinity                = "CLIENT_IP"
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "iap-bs-health-check"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
@@ -390,7 +396,10 @@ import 'settings_state.dart';
 ///   }
 /// }
 /// resource "gcp_iap_settings" "iap_settings" {
-///   name ="projects/${data.gcp_organizations_getproject.project.number}/iap_web/compute-us-central1/services/${gcp_compute_regionbackendservice.default.name}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name ="projects/${data.gcp_organizations_project.project.number}/iap_web/compute-us-central1/services/${gcp_compute_region_backend_service.default.name}"
 ///   access_settings = {
 ///     identity_sources = ["WORKFORCE_IDENTITY_FEDERATION"]
 ///     allowed_domains_settings = {
@@ -731,9 +740,9 @@ import 'settings_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -757,7 +766,7 @@ import 'settings_state.dart';
 /// 		_default, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 /// 			Name:                         pulumi.String("iap-settings-oauth"),
 /// 			Region:                       pulumi.String("us-central1"),
-/// 			HealthChecks:                 defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:                 defaultHealthCheck.ID(),
 /// 			ConnectionDrainingTimeoutSec: pulumi.Int(10),
 /// 			SessionAffinity:              pulumi.String("CLIENT_IP"),
 /// 		})
@@ -783,7 +792,7 @@ import 'settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -791,17 +800,23 @@ import 'settings_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_compute_regionbackendservice" "default" {
+/// resource "gcp_compute_region_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "iap-settings-oauth"
 ///   region                          = "us-central1"
-///   health_checks                   = gcp_compute_healthcheck.default.id
+///   health_checks                   = gcp_compute_health_check.default.id
 ///   connection_draining_timeout_sec = 10
 ///   session_affinity                = "CLIENT_IP"
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "iap-bs-health-check-oauth"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
@@ -810,7 +825,10 @@ import 'settings_state.dart';
 ///   }
 /// }
 /// resource "gcp_iap_settings" "iap_settings_oauth" {
-///   name ="projects/${data.gcp_organizations_getproject.project.number}/iap_web/compute-us-central1/services/${gcp_compute_regionbackendservice.default.name}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name ="projects/${data.gcp_organizations_project.project.number}/iap_web/compute-us-central1/services/${gcp_compute_region_backend_service.default.name}"
 ///   access_settings = {
 ///     oauth_settings = {
 ///       client_id     = "test-client-id"
@@ -955,6 +973,10 @@ class Settings extends pulumi.CustomResource {
   /// * projects/{project_id}/iap_web/compute-{region}
   /// * projects/{project_id}/iap_web/compute/services/{service_id}
   /// * projects/{project_id}/iap_web/compute-{region}/services/{service_id}
+  /// * projects/{project_id}/iap_web/forwarding_rule
+  /// * projects/{project_id}/iap_web/forwarding_rule-{region}
+  /// * projects/{project_id}/iap_web/forwarding_rule/services/{service_id}
+  /// * projects/{project_id}/iap_web/forwarding_rule-{region}/services/{service_id}
   /// * projects/{project_id}/iap_web/appengine-{app_id}
   /// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
   /// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
@@ -972,7 +994,7 @@ class Settings extends pulumi.CustomResource {
           'gcp:iap/settings:Settings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     accessSettings = registerOutput<SettingsAccessSettings?>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     applicationSettings = registerOutput<SettingsApplicationSettings?>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsApplicationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

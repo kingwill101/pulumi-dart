@@ -97,8 +97,8 @@ import 'dicom_store_stream_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -119,9 +119,9 @@ import 'dicom_store_stream_config.dart';
 /// 		}
 /// 		_, err = healthcare.NewDicomStore(ctx, "default", &healthcare.DicomStoreArgs{
 /// 			Name:    pulumi.String("example-dicom-store"),
-/// 			Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset: dataset.ID(),
 /// 			NotificationConfig: &healthcare.DicomStoreNotificationConfigArgs{
-/// 				PubsubTopic: topic.ID().ToIDOutput().ToStringOutput(),
+/// 				PubsubTopic: topic.ID(),
 /// 			},
 /// 			Labels: pulumi.StringMap{
 /// 				"label1": pulumi.String("labelvalue1"),
@@ -135,7 +135,7 @@ import 'dicom_store_stream_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -143,7 +143,10 @@ import 'dicom_store_stream_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_dicomstore" "default" {
+/// resource "gcp_healthcare_dicom_store" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example-dicom-store"
 ///   dataset = gcp_healthcare_dataset.dataset.id
 ///   notification_config = {
@@ -154,9 +157,15 @@ import 'dicom_store_stream_config.dart';
 ///   }
 /// }
 /// resource "gcp_pubsub_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "dicom-notifications"
 /// }
 /// resource "gcp_healthcare_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-dataset"
 ///   location = "us-central1"
 /// }
@@ -385,9 +394,9 @@ import 'dicom_store_stream_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -426,9 +435,9 @@ import 'dicom_store_stream_config.dart';
 /// 		}
 /// 		_, err = healthcare.NewDicomStore(ctx, "default", &healthcare.DicomStoreArgs{
 /// 			Name:    pulumi.String("example-dicom-store"),
-/// 			Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset: dataset.ID(),
 /// 			NotificationConfig: &healthcare.DicomStoreNotificationConfigArgs{
-/// 				PubsubTopic:       topic.ID().ToIDOutput().ToStringOutput(),
+/// 				PubsubTopic:       topic.ID(),
 /// 				SendForBulkImport: pulumi.Bool(true),
 /// 			},
 /// 			Labels: pulumi.StringMap{
@@ -455,7 +464,7 @@ import 'dicom_store_stream_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -463,7 +472,10 @@ import 'dicom_store_stream_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_dicomstore" "default" {
+/// resource "gcp_healthcare_dicom_store" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example-dicom-store"
 ///   dataset = gcp_healthcare_dataset.dataset.id
 ///   notification_config = {
@@ -480,13 +492,22 @@ import 'dicom_store_stream_config.dart';
 ///   }
 /// }
 /// resource "gcp_pubsub_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "dicom-notifications"
 /// }
 /// resource "gcp_healthcare_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-dataset"
 ///   location = "us-central1"
 /// }
 /// resource "gcp_bigquery_dataset" "bq_dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id                 = "dicom_bq_ds"
 ///   friendly_name              = "test"
 ///   description                = "This is a test description"
@@ -494,6 +515,9 @@ import 'dicom_store_stream_config.dart';
 ///   delete_contents_on_destroy = true
 /// }
 /// resource "gcp_bigquery_table" "bq_table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
 ///   dataset_id          = gcp_bigquery_dataset.bq_dataset.dataset_id
 ///   table_id            = "dicom_bq_tb"
@@ -684,7 +708,7 @@ class DicomStore extends pulumi.CustomResource {
           'gcp:healthcare/dicomStore:DicomStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     dataset = registerOutput<String>('dataset');

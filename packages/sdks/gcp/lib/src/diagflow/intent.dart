@@ -75,7 +75,7 @@ import 'intent_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -102,7 +102,7 @@ import 'intent_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -111,12 +111,18 @@ import 'intent_state.dart';
 /// }
 ///
 /// resource "gcp_diagflow_agent" "basic_agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "example_agent"
 ///   default_language_code = "en"
 ///   time_zone             = "America/New_York"
 /// }
 /// resource "gcp_diagflow_intent" "basic_intent" {
-///   depends_on   = [gcp_diagflow_agent.basic_agent]
+///   depends_on = [gcp_diagflow_agent.basic_agent]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "basic-intent"
 /// }
 /// ```
@@ -350,10 +356,10 @@ import 'intent_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -433,7 +439,7 @@ import 'intent_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -442,32 +448,50 @@ import 'intent_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "agent_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "my-project"
 ///   name            = "my-project"
 ///   org_id          = "123456789"
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "gcp_projects_service" "agent_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.agent_project.project_id
 ///   service                    = "dialogflow.googleapis.com"
 ///   disable_dependent_services = false
 /// }
 /// resource "gcp_serviceaccount_account" "dialogflow_service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "my-account"
 /// }
-/// resource "gcp_projects_iammember" "agent_create" {
+/// resource "gcp_projects_i_a_m_member" "agent_create" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_projects_service.agent_project.project
 ///   role    = "roles/dialogflow.admin"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.dialogflow_service_account.email}"
 /// }
 /// resource "gcp_diagflow_agent" "basic_agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project               = gcp_organizations_project.agent_project.project_id
 ///   display_name          = "example_agent"
 ///   default_language_code = "en"
 ///   time_zone             = "America/New_York"
 /// }
 /// resource "gcp_diagflow_intent" "full_intent" {
-///   depends_on                 = [gcp_diagflow_agent.basic_agent]
+///   depends_on = [gcp_diagflow_agent.basic_agent]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.agent_project.project_id
 ///   display_name               = "full-intent"
 ///   webhook_state              = "WEBHOOK_STATE_ENABLED"
@@ -711,7 +735,7 @@ class Intent extends pulumi.CustomResource {
           'gcp:diagflow/intent:Intent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     action = registerOutput<String>('action');
     defaultResponsePlatforms = registerOutput<List<String>?>('defaultResponsePlatforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

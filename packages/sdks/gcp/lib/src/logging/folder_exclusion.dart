@@ -69,8 +69,8 @@ import 'folder_exclusion_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -97,7 +97,7 @@ import 'folder_exclusion_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -105,13 +105,19 @@ import 'folder_exclusion_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_folderexclusion" "my-exclusion" {
+/// resource "gcp_logging_folder_exclusion" "my-exclusion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-instance-debug-exclusion"
 ///   folder      = gcp_organizations_folder.my-folder.name
 ///   description = "Exclude GCE instance debug logs"
 ///   filter      = "resource.type = gce_instance AND severity <= DEBUG"
 /// }
 /// resource "gcp_organizations_folder" "my-folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "My folder"
 ///   parent       = "organizations/123456"
 /// }
@@ -211,7 +217,7 @@ class FolderExclusion extends pulumi.CustomResource {
           'gcp:logging/folderExclusion:FolderExclusion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');

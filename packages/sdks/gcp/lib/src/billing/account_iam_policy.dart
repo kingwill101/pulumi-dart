@@ -77,8 +77,8 @@ import 'account_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/billing"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -109,7 +109,7 @@ import 'account_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -117,16 +117,19 @@ import 'account_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/billing.viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_billing_accountiampolicy" "editor" {
+/// resource "gcp_billing_account_iam_policy" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   billing_account_id = "00AA00-000AAA-00AA0A"
-///   policy_data        = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data        = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -233,7 +236,7 @@ import 'account_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/billing"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -254,7 +257,7 @@ import 'account_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -262,7 +265,10 @@ import 'account_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_billing_accountiambinding" "editor" {
+/// resource "gcp_billing_account_iam_binding" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   billing_account_id = "00AA00-000AAA-00AA0A"
 ///   role               = "roles/billing.viewer"
 ///   members            = ["user:jane@example.com"]
@@ -353,7 +359,7 @@ import 'account_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/billing"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -372,7 +378,7 @@ import 'account_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -380,7 +386,10 @@ import 'account_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_billing_accountiammember" "editor" {
+/// resource "gcp_billing_account_iam_member" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   billing_account_id = "00AA00-000AAA-00AA0A"
 ///   role               = "roles/billing.viewer"
 ///   member             = "user:jane@example.com"
@@ -492,8 +501,8 @@ import 'account_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/billing"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -524,7 +533,7 @@ import 'account_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -532,16 +541,19 @@ import 'account_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/billing.viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_billing_accountiampolicy" "editor" {
+/// resource "gcp_billing_account_iam_policy" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   billing_account_id = "00AA00-000AAA-00AA0A"
-///   policy_data        = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data        = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -648,7 +660,7 @@ import 'account_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/billing"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -669,7 +681,7 @@ import 'account_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -677,7 +689,10 @@ import 'account_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_billing_accountiambinding" "editor" {
+/// resource "gcp_billing_account_iam_binding" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   billing_account_id = "00AA00-000AAA-00AA0A"
 ///   role               = "roles/billing.viewer"
 ///   members            = ["user:jane@example.com"]
@@ -768,7 +783,7 @@ import 'account_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/billing"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -787,7 +802,7 @@ import 'account_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -795,7 +810,10 @@ import 'account_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_billing_accountiammember" "editor" {
+/// resource "gcp_billing_account_iam_member" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   billing_account_id = "00AA00-000AAA-00AA0A"
 ///   role               = "roles/billing.viewer"
 ///   member             = "user:jane@example.com"
@@ -870,7 +888,7 @@ class AccountIamPolicy extends pulumi.CustomResource {
           'gcp:billing/accountIamPolicy:AccountIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     billingAccountId = registerOutput<String>('billingAccountId');
     etag = registerOutput<String>('etag');

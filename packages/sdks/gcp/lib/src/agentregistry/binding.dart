@@ -18,18 +18,19 @@ import 'binding_target.dart';
 /// ```typescript
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
-/// import * as google from "@pulumi/google";
 ///
 /// const _default = gcp.agentregistry.getAgent({
-///     location: "global",
+///     location: "us-central1",
 ///     filter: "displayName:Workspace Agent",
 /// });
-/// const defaultIamConnectorsConnector = new google.index.IamConnectorsConnector("default", {
+/// const defaultAuthProvider = new gcp.agentidentity.AuthProvider("default", {
 ///     location: "us-central1",
-///     connectorId: "ar-binding",
-///     connectorTypeParams: [{
-///         connectorVersion: "projects/my-project-name/locations/global/providers/gcp/connectors/pubsub/versions/1",
-///     }],
+///     authProviderId: "ar-binding",
+///     authProviderTypeParams: {
+///         apiKey: {
+///             apiKey: "test-api-key-value",
+///         },
+///     },
 /// });
 /// const defaultBinding = new gcp.agentregistry.Binding("default", {
 ///     location: "us-central1",
@@ -43,27 +44,28 @@ import 'binding_target.dart';
 ///         identifier: _default.then(_default => _default.urn),
 ///     },
 ///     authProviderBinding: {
-///         authProvider: defaultIamConnectorsConnector.id,
+///         authProvider: defaultAuthProvider.id,
 ///         scopes: ["https://www.googleapis.com/auth/cloud-platform"],
 ///         continueUri: "https://example.com/continue",
 ///     },
 /// }, {
-///     dependsOn: [defaultIamConnectorsConnector],
+///     dependsOn: [defaultAuthProvider],
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_gcp as gcp
-/// import pulumi_google as google
 ///
-/// default = gcp.agentregistry.get_agent(location="global",
+/// default = gcp.agentregistry.get_agent(location="us-central1",
 ///     filter="displayName:Workspace Agent")
-/// default_iam_connectors_connector = google.IamConnectorsConnector("default",
-///     location=us-central1,
-///     connector_id=ar-binding,
-///     connector_type_params=[{
-///         connectorVersion: projects/my-project-name/locations/global/providers/gcp/connectors/pubsub/versions/1,
-///     }])
+/// default_auth_provider = gcp.agentidentity.AuthProvider("default",
+///     location="us-central1",
+///     auth_provider_id="ar-binding",
+///     auth_provider_type_params={
+///         "api_key": {
+///             "api_key": "test-api-key-value",
+///         },
+///     })
 /// default_binding = gcp.agentregistry.Binding("default",
 ///     location="us-central1",
 ///     binding_id="ar-binding",
@@ -76,36 +78,35 @@ import 'binding_target.dart';
 ///         "identifier": default.urn,
 ///     },
 ///     auth_provider_binding={
-///         "auth_provider": default_iam_connectors_connector["id"],
+///         "auth_provider": default_auth_provider.id,
 ///         "scopes": ["https://www.googleapis.com/auth/cloud-platform"],
 ///         "continue_uri": "https://example.com/continue",
 ///     },
-///     opts = pulumi.ResourceOptions(depends_on=[default_iam_connectors_connector]))
+///     opts = pulumi.ResourceOptions(depends_on=[default_auth_provider]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
 /// using System.Linq;
 /// using Pulumi;
 /// using Gcp = Pulumi.Gcp;
-/// using Google = Pulumi.Google;
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
 ///     var @default = Gcp.AgentRegistry.GetAgent.Invoke(new()
 ///     {
-///         Location = "global",
+///         Location = "us-central1",
 ///         Filter = "displayName:Workspace Agent",
 ///     });
 ///
-///     var defaultIamConnectorsConnector = new Google.IamConnectorsConnector("default", new()
+///     var defaultAuthProvider = new Gcp.AgentIdentity.AuthProvider("default", new()
 ///     {
 ///         Location = "us-central1",
-///         ConnectorId = "ar-binding",
-///         ConnectorTypeParams = new[]
+///         AuthProviderId = "ar-binding",
+///         AuthProviderTypeParams = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsArgs
 ///         {
-///
+///             ApiKey = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsApiKeyArgs
 ///             {
-///                 { "connectorVersion", "projects/my-project-name/locations/global/providers/gcp/connectors/pubsub/versions/1" },
+///                 ApiKey = "test-api-key-value",
 ///             },
 ///         },
 ///     });
@@ -126,7 +127,7 @@ import 'binding_target.dart';
 ///         },
 ///         AuthProviderBinding = new Gcp.AgentRegistry.Inputs.BindingAuthProviderBindingArgs
 ///         {
-///             AuthProvider = defaultIamConnectorsConnector.Id,
+///             AuthProvider = defaultAuthProvider.Id,
 ///             Scopes = new[]
 ///             {
 ///                 "https://www.googleapis.com/auth/cloud-platform",
@@ -137,7 +138,7 @@ import 'binding_target.dart';
 ///     {
 ///         DependsOn =
 ///         {
-///             defaultIamConnectorsConnector,
+///             defaultAuthProvider,
 ///         },
 ///     });
 ///
@@ -147,26 +148,26 @@ import 'binding_target.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/agentregistry"
-/// 	"github.com/pulumi/pulumi-google/sdk/go/google"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentidentity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_default, err := agentregistry.GetAgent(ctx, &agentregistry.GetAgentArgs{
-/// 			Location: "global",
+/// 			Location: "us-central1",
 /// 			Filter:   pulumi.StringRef("displayName:Workspace Agent"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		defaultIamConnectorsConnector, err := google.NewIamConnectorsConnector(ctx, "default", &google.IamConnectorsConnectorArgs{
-/// 			Location:    "us-central1",
-/// 			ConnectorId: "ar-binding",
-/// 			ConnectorTypeParams: []map[string]string{
-/// 				{
-/// 					"connectorVersion": "projects/my-project-name/locations/global/providers/gcp/connectors/pubsub/versions/1",
+/// 		defaultAuthProvider, err := agentidentity.NewAuthProvider(ctx, "default", &agentidentity.AuthProviderArgs{
+/// 			Location:       pulumi.String("us-central1"),
+/// 			AuthProviderId: pulumi.String("ar-binding"),
+/// 			AuthProviderTypeParams: &agentidentity.AuthProviderAuthProviderTypeParamsArgs{
+/// 				ApiKey: &agentidentity.AuthProviderAuthProviderTypeParamsApiKeyArgs{
+/// 					ApiKey: pulumi.String("test-api-key-value"),
 /// 				},
 /// 			},
 /// 		})
@@ -185,14 +186,14 @@ import 'binding_target.dart';
 /// 				Identifier: pulumi.String(_default.Urn),
 /// 			},
 /// 			AuthProviderBinding: &agentregistry.BindingAuthProviderBindingArgs{
-/// 				AuthProvider: defaultIamConnectorsConnector.Id,
+/// 				AuthProvider: defaultAuthProvider.ID(),
 /// 				Scopes: pulumi.StringArray{
 /// 					pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
 /// 				},
 /// 				ContinueUri: pulumi.String("https://example.com/continue"),
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			defaultIamConnectorsConnector,
+/// 			defaultAuthProvider,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -202,7 +203,7 @@ import 'binding_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -210,35 +211,43 @@ import 'binding_target.dart';
 ///   }
 /// }
 ///
-/// data "gcp_agentregistry_getagent" "default" {
-///   location = "global"
+/// data "gcp_agentregistry_agent" "default" {
+///   location = "us-central1"
 ///   filter   = "displayName:Workspace Agent"
 /// }
 ///
 /// resource "gcp_agentregistry_binding" "default" {
-///   depends_on   = [google_iamconnectorsconnector.default]
+///   depends_on = [gcp_agentidentity_auth_provider.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us-central1"
 ///   binding_id   = "ar-binding"
 ///   display_name = "My Binding"
 ///   description  = "My GA agent registry binding"
 ///   source = {
-///     identifier = data.gcp_agentregistry_getagent.default.urn
+///     identifier = data.gcp_agentregistry_agent.default.urn
 ///   }
 ///   target = {
-///     identifier = data.gcp_agentregistry_getagent.default.urn
+///     identifier = data.gcp_agentregistry_agent.default.urn
 ///   }
 ///   auth_provider_binding = {
-///     auth_provider = google_iamconnectorsconnector.default.id
+///     auth_provider = gcp_agentidentity_auth_provider.default.id
 ///     scopes        = ["https://www.googleapis.com/auth/cloud-platform"]
 ///     continue_uri  = "https://example.com/continue"
 ///   }
 /// }
-/// resource "google_iamconnectorsconnector" "default" {
-///   location     = "us-central1"
-///   connector_id = "ar-binding"
-///   connector_type_params = [{
-///     "connectorVersion" = "projects/my-project-name/locations/global/providers/gcp/connectors/pubsub/versions/1"
-///   }]
+/// resource "gcp_agentidentity_auth_provider" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location         = "us-central1"
+///   auth_provider_id = "ar-binding"
+///   auth_provider_type_params = {
+///     api_key = {
+///       api_key = "test-api-key-value"
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -249,8 +258,10 @@ import 'binding_target.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.agentregistry.AgentregistryFunctions;
 /// import com.pulumi.gcp.agentregistry.inputs.GetAgentArgs;
-/// import com.pulumi.google.IamConnectorsConnector;
-/// import com.pulumi.google.IamConnectorsConnectorArgs;
+/// import com.pulumi.gcp.agentidentity.AuthProvider;
+/// import com.pulumi.gcp.agentidentity.AuthProviderArgs;
+/// import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsArgs;
+/// import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsApiKeyArgs;
 /// import com.pulumi.gcp.agentregistry.Binding;
 /// import com.pulumi.gcp.agentregistry.BindingArgs;
 /// import com.pulumi.gcp.agentregistry.inputs.BindingSourceArgs;
@@ -271,14 +282,18 @@ import 'binding_target.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var default = AgentregistryFunctions.getAgent(GetAgentArgs.builder()
-///             .location("global")
+///             .location("us-central1")
 ///             .filter("displayName:Workspace Agent")
 ///             .build());
 ///
-///         var defaultIamConnectorsConnector = new IamConnectorsConnector("defaultIamConnectorsConnector", IamConnectorsConnectorArgs.builder()
+///         var defaultAuthProvider = new AuthProvider("defaultAuthProvider", AuthProviderArgs.builder()
 ///             .location("us-central1")
-///             .connectorId("ar-binding")
-///             .connectorTypeParams(Arrays.asList(Map.of("connectorVersion", "projects/my-project-name/locations/global/providers/gcp/connectors/pubsub/versions/1")))
+///             .authProviderId("ar-binding")
+///             .authProviderTypeParams(AuthProviderAuthProviderTypeParamsArgs.builder()
+///                 .apiKey(AuthProviderAuthProviderTypeParamsApiKeyArgs.builder()
+///                     .apiKey("test-api-key-value")
+///                     .build())
+///                 .build())
 ///             .build());
 ///
 ///         var defaultBinding = new Binding("defaultBinding", BindingArgs.builder()
@@ -293,12 +308,12 @@ import 'binding_target.dart';
 ///                 .identifier(default_.urn())
 ///                 .build())
 ///             .authProviderBinding(BindingAuthProviderBindingArgs.builder()
-///                 .authProvider(defaultIamConnectorsConnector.get("id"))
+///                 .authProvider(defaultAuthProvider.id())
 ///                 .scopes("https://www.googleapis.com/auth/cloud-platform")
 ///                 .continueUri("https://example.com/continue")
 ///                 .build())
 ///             .build(), CustomResourceOptions.builder()
-///                 .dependsOn(defaultIamConnectorsConnector)
+///                 .dependsOn(defaultAuthProvider)
 ///                 .build());
 ///
 ///     }
@@ -319,27 +334,354 @@ import 'binding_target.dart';
 ///       target:
 ///         identifier: ${default.urn}
 ///       authProviderBinding:
-///         authProvider: ${defaultIamConnectorsConnector.id}
+///         authProvider: ${defaultAuthProvider.id}
 ///         scopes:
 ///           - https://www.googleapis.com/auth/cloud-platform
 ///         continueUri: https://example.com/continue
 ///     options:
 ///       dependsOn:
-///         - ${defaultIamConnectorsConnector}
-///   defaultIamConnectorsConnector:
-///     type: google:IamConnectorsConnector
+///         - ${defaultAuthProvider}
+///   defaultAuthProvider:
+///     type: gcp:agentidentity:AuthProvider
 ///     name: default
 ///     properties:
 ///       location: us-central1
-///       connectorId: ar-binding
-///       connectorTypeParams:
-///         - connectorVersion: projects/my-project-name/locations/global/providers/gcp/connectors/pubsub/versions/1
+///       authProviderId: ar-binding
+///       authProviderTypeParams:
+///         apiKey:
+///           apiKey: test-api-key-value
 /// variables:
 ///   default:
 ///     fn::invoke:
 ///       function: gcp:agentregistry:getAgent
 ///       arguments:
-///         location: global
+///         location: us-central1
+///         filter: displayName:Workspace Agent
+/// ```
+///
+/// ### Agent Registry Binding Target Only
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = gcp.agentregistry.getAgent({
+///     location: "us-central1",
+///     filter: "displayName:Workspace Agent",
+/// });
+/// const defaultAuthProvider = new gcp.agentidentity.AuthProvider("default", {
+///     location: "us-central1",
+///     authProviderId: "ar-binding",
+///     authProviderTypeParams: {
+///         apiKey: {
+///             apiKey: "test-api-key-value",
+///         },
+///     },
+/// });
+/// const defaultBinding = new gcp.agentregistry.Binding("default", {
+///     location: "us-central1",
+///     bindingId: "ar-binding",
+///     displayName: "Target Only Binding",
+///     description: "Agent registry binding without source",
+///     target: {
+///         identifier: _default.then(_default => _default.urn),
+///     },
+///     authProviderBinding: {
+///         authProvider: defaultAuthProvider.id,
+///         scopes: ["https://www.googleapis.com/auth/cloud-platform"],
+///         continueUri: "https://example.com/continue",
+///     },
+/// }, {
+///     dependsOn: [defaultAuthProvider],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.agentregistry.get_agent(location="us-central1",
+///     filter="displayName:Workspace Agent")
+/// default_auth_provider = gcp.agentidentity.AuthProvider("default",
+///     location="us-central1",
+///     auth_provider_id="ar-binding",
+///     auth_provider_type_params={
+///         "api_key": {
+///             "api_key": "test-api-key-value",
+///         },
+///     })
+/// default_binding = gcp.agentregistry.Binding("default",
+///     location="us-central1",
+///     binding_id="ar-binding",
+///     display_name="Target Only Binding",
+///     description="Agent registry binding without source",
+///     target={
+///         "identifier": default.urn,
+///     },
+///     auth_provider_binding={
+///         "auth_provider": default_auth_provider.id,
+///         "scopes": ["https://www.googleapis.com/auth/cloud-platform"],
+///         "continue_uri": "https://example.com/continue",
+///     },
+///     opts = pulumi.ResourceOptions(depends_on=[default_auth_provider]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = Gcp.AgentRegistry.GetAgent.Invoke(new()
+///     {
+///         Location = "us-central1",
+///         Filter = "displayName:Workspace Agent",
+///     });
+///
+///     var defaultAuthProvider = new Gcp.AgentIdentity.AuthProvider("default", new()
+///     {
+///         Location = "us-central1",
+///         AuthProviderId = "ar-binding",
+///         AuthProviderTypeParams = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsArgs
+///         {
+///             ApiKey = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsApiKeyArgs
+///             {
+///                 ApiKey = "test-api-key-value",
+///             },
+///         },
+///     });
+///
+///     var defaultBinding = new Gcp.AgentRegistry.Binding("default", new()
+///     {
+///         Location = "us-central1",
+///         BindingId = "ar-binding",
+///         DisplayName = "Target Only Binding",
+///         Description = "Agent registry binding without source",
+///         Target = new Gcp.AgentRegistry.Inputs.BindingTargetArgs
+///         {
+///             Identifier = @default.Apply(@default => @default.Apply(getAgentResult => getAgentResult.Urn)),
+///         },
+///         AuthProviderBinding = new Gcp.AgentRegistry.Inputs.BindingAuthProviderBindingArgs
+///         {
+///             AuthProvider = defaultAuthProvider.Id,
+///             Scopes = new[]
+///             {
+///                 "https://www.googleapis.com/auth/cloud-platform",
+///             },
+///             ContinueUri = "https://example.com/continue",
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             defaultAuthProvider,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentidentity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentregistry"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_default, err := agentregistry.GetAgent(ctx, &agentregistry.GetAgentArgs{
+/// 			Location: "us-central1",
+/// 			Filter:   pulumi.StringRef("displayName:Workspace Agent"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		defaultAuthProvider, err := agentidentity.NewAuthProvider(ctx, "default", &agentidentity.AuthProviderArgs{
+/// 			Location:       pulumi.String("us-central1"),
+/// 			AuthProviderId: pulumi.String("ar-binding"),
+/// 			AuthProviderTypeParams: &agentidentity.AuthProviderAuthProviderTypeParamsArgs{
+/// 				ApiKey: &agentidentity.AuthProviderAuthProviderTypeParamsApiKeyArgs{
+/// 					ApiKey: pulumi.String("test-api-key-value"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = agentregistry.NewBinding(ctx, "default", &agentregistry.BindingArgs{
+/// 			Location:    pulumi.String("us-central1"),
+/// 			BindingId:   pulumi.String("ar-binding"),
+/// 			DisplayName: pulumi.String("Target Only Binding"),
+/// 			Description: pulumi.String("Agent registry binding without source"),
+/// 			Target: &agentregistry.BindingTargetArgs{
+/// 				Identifier: pulumi.String(_default.Urn),
+/// 			},
+/// 			AuthProviderBinding: &agentregistry.BindingAuthProviderBindingArgs{
+/// 				AuthProvider: defaultAuthProvider.ID(),
+/// 				Scopes: pulumi.StringArray{
+/// 					pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
+/// 				},
+/// 				ContinueUri: pulumi.String("https://example.com/continue"),
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			defaultAuthProvider,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_agentregistry_agent" "default" {
+///   location = "us-central1"
+///   filter   = "displayName:Workspace Agent"
+/// }
+///
+/// resource "gcp_agentregistry_binding" "default" {
+///   depends_on = [gcp_agentidentity_auth_provider.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location     = "us-central1"
+///   binding_id   = "ar-binding"
+///   display_name = "Target Only Binding"
+///   description  = "Agent registry binding without source"
+///   target = {
+///     identifier = data.gcp_agentregistry_agent.default.urn
+///   }
+///   auth_provider_binding = {
+///     auth_provider = gcp_agentidentity_auth_provider.default.id
+///     scopes        = ["https://www.googleapis.com/auth/cloud-platform"]
+///     continue_uri  = "https://example.com/continue"
+///   }
+/// }
+/// resource "gcp_agentidentity_auth_provider" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location         = "us-central1"
+///   auth_provider_id = "ar-binding"
+///   auth_provider_type_params = {
+///     api_key = {
+///       api_key = "test-api-key-value"
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.agentregistry.AgentregistryFunctions;
+/// import com.pulumi.gcp.agentregistry.inputs.GetAgentArgs;
+/// import com.pulumi.gcp.agentidentity.AuthProvider;
+/// import com.pulumi.gcp.agentidentity.AuthProviderArgs;
+/// import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsArgs;
+/// import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsApiKeyArgs;
+/// import com.pulumi.gcp.agentregistry.Binding;
+/// import com.pulumi.gcp.agentregistry.BindingArgs;
+/// import com.pulumi.gcp.agentregistry.inputs.BindingTargetArgs;
+/// import com.pulumi.gcp.agentregistry.inputs.BindingAuthProviderBindingArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var default = AgentregistryFunctions.getAgent(GetAgentArgs.builder()
+///             .location("us-central1")
+///             .filter("displayName:Workspace Agent")
+///             .build());
+///
+///         var defaultAuthProvider = new AuthProvider("defaultAuthProvider", AuthProviderArgs.builder()
+///             .location("us-central1")
+///             .authProviderId("ar-binding")
+///             .authProviderTypeParams(AuthProviderAuthProviderTypeParamsArgs.builder()
+///                 .apiKey(AuthProviderAuthProviderTypeParamsApiKeyArgs.builder()
+///                     .apiKey("test-api-key-value")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///         var defaultBinding = new Binding("defaultBinding", BindingArgs.builder()
+///             .location("us-central1")
+///             .bindingId("ar-binding")
+///             .displayName("Target Only Binding")
+///             .description("Agent registry binding without source")
+///             .target(BindingTargetArgs.builder()
+///                 .identifier(default_.urn())
+///                 .build())
+///             .authProviderBinding(BindingAuthProviderBindingArgs.builder()
+///                 .authProvider(defaultAuthProvider.id())
+///                 .scopes("https://www.googleapis.com/auth/cloud-platform")
+///                 .continueUri("https://example.com/continue")
+///                 .build())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(defaultAuthProvider)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   defaultBinding:
+///     type: gcp:agentregistry:Binding
+///     name: default
+///     properties:
+///       location: us-central1
+///       bindingId: ar-binding
+///       displayName: Target Only Binding
+///       description: Agent registry binding without source
+///       target:
+///         identifier: ${default.urn}
+///       authProviderBinding:
+///         authProvider: ${defaultAuthProvider.id}
+///         scopes:
+///           - https://www.googleapis.com/auth/cloud-platform
+///         continueUri: https://example.com/continue
+///     options:
+///       dependsOn:
+///         - ${defaultAuthProvider}
+///   defaultAuthProvider:
+///     type: gcp:agentidentity:AuthProvider
+///     name: default
+///     properties:
+///       location: us-central1
+///       authProviderId: ar-binding
+///       authProviderTypeParams:
+///         apiKey:
+///           apiKey: test-api-key-value
+/// variables:
+///   default:
+///     fn::invoke:
+///       function: gcp:agentregistry:getAgent
+///       arguments:
+///         location: us-central1
 ///         filter: displayName:Workspace Agent
 /// ```
 ///
@@ -388,7 +730,7 @@ class Binding extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// The source of the Binding.
   /// Structure is documented below.
-  late final pulumi.Output<BindingSource> source;
+  late final pulumi.Output<BindingSource?> source;
   /// The target of the Binding.
   /// Structure is documented below.
   late final pulumi.Output<BindingTarget> target;
@@ -407,7 +749,7 @@ class Binding extends pulumi.CustomResource {
           'gcp:agentregistry/binding:Binding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     authProviderBinding = registerOutput<BindingAuthProviderBinding>('authProviderBinding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BindingAuthProviderBinding.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bindingId = registerOutput<String>('bindingId');
@@ -418,7 +760,7 @@ class Binding extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    source = registerOutput<BindingSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BindingSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    source = registerOutput<BindingSource?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BindingSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     target = registerOutput<BindingTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BindingTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
@@ -456,7 +798,7 @@ class Binding extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    source = registerOutput<BindingSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BindingSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    source = registerOutput<BindingSource?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BindingSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     target = registerOutput<BindingTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BindingTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
@@ -479,7 +821,7 @@ class Binding extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    source = registerOutput<BindingSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BindingSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    source = registerOutput<BindingSource?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BindingSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     target = registerOutput<BindingTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BindingTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }

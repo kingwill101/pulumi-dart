@@ -30,7 +30,7 @@ class ConfigQuotaSignUpQuotaConfig {
 
   factory ConfigQuotaSignUpQuotaConfig.fromMap(Map<String, dynamic> map) {
     return ConfigQuotaSignUpQuotaConfig(
-      quota: (() { final guardedValue = map['quota']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      quota: (() { final guardedValue = map['quota']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       quotaDuration: (() { final guardedValue = map['quotaDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

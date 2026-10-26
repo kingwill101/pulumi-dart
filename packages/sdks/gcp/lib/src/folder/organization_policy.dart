@@ -67,7 +67,7 @@ import 'organization_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/folder"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/folder"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -88,7 +88,7 @@ import 'organization_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -96,7 +96,10 @@ import 'organization_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_folder_organizationpolicy" "serial_port_policy" {
+/// resource "gcp_folder_organization_policy" "serial_port_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   folder     = "folders/123456789"
 ///   constraint = "compute.disableSerialPortAccess"
 ///   boolean_policy = {
@@ -208,7 +211,7 @@ import 'organization_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/folder"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/folder"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -231,7 +234,7 @@ import 'organization_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -239,7 +242,10 @@ import 'organization_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_folder_organizationpolicy" "services_policy" {
+/// resource "gcp_folder_organization_policy" "services_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   folder     = "folders/123456789"
 ///   constraint = "serviceuser.services"
 ///   list_policy = {
@@ -363,7 +369,7 @@ import 'organization_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/folder"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/folder"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -389,7 +395,7 @@ import 'organization_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -397,7 +403,10 @@ import 'organization_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_folder_organizationpolicy" "services_policy" {
+/// resource "gcp_folder_organization_policy" "services_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   folder     = "folders/123456789"
 ///   constraint = "serviceuser.services"
 ///   list_policy = {
@@ -511,7 +520,7 @@ import 'organization_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/folder"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/folder"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -532,7 +541,7 @@ import 'organization_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -540,7 +549,10 @@ import 'organization_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_folder_organizationpolicy" "services_policy" {
+/// resource "gcp_folder_organization_policy" "services_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   folder     = "folders/123456789"
 ///   constraint = "serviceuser.services"
 ///   restore_policy = {
@@ -653,7 +665,7 @@ class OrganizationPolicy extends pulumi.CustomResource {
           'gcp:folder/organizationPolicy:OrganizationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     booleanPolicy = registerOutput<OrganizationPolicyBooleanPolicy?>('booleanPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationPolicyBooleanPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     constraint = registerOutput<String>('constraint');

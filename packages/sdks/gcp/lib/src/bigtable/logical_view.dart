@@ -134,7 +134,7 @@ import 'logical_view_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -183,7 +183,7 @@ import 'logical_view_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -192,6 +192,9 @@ import 'logical_view_state.dart';
 /// }
 ///
 /// resource "gcp_bigtable_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "bt-instance"
 ///   clusters {
 ///     cluster_id   = "cluster-1"
@@ -202,18 +205,28 @@ import 'logical_view_state.dart';
 ///   deletion_protection = false
 /// }
 /// resource "gcp_bigtable_table" "table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "bt-table"
 ///   instance_name = gcp_bigtable_instance.instance.name
 ///   column_families {
 ///     family = "CF"
 ///   }
 /// }
-/// resource "gcp_bigtable_logicalview" "logical_view" {
-///   depends_on          = [gcp_bigtable_table.table]
+/// resource "gcp_bigtable_logical_view" "logical_view" {
+///   depends_on = [gcp_bigtable_table.table]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   logical_view_id     = "bt-logical-view"
 ///   instance            = gcp_bigtable_instance.instance.name
 ///   deletion_protection = false
-///   query               = "SELECT _key, CF\nFROM ` + \\\"`bt-table`\\\" + `\n"
+///   query               = <<EOT
+/// SELECT _key, CF
+/// FROM ` + \"`bt-table`\" + `
+/// EOT
+///
 /// }
 /// ```
 /// ```java
@@ -363,7 +376,7 @@ class LogicalView extends pulumi.CustomResource {
           'gcp:bigtable/logicalView:LogicalView',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');

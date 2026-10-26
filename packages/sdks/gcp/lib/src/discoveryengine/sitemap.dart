@@ -90,7 +90,7 @@ import 'sitemap_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -124,7 +124,7 @@ import 'sitemap_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -133,11 +133,17 @@ import 'sitemap_state.dart';
 /// }
 ///
 /// resource "gcp_discoveryengine_sitemap" "basic" {
-///   location      = gcp_discoveryengine_datastore.advanced.location
-///   data_store_id = gcp_discoveryengine_datastore.advanced.data_store_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location      = gcp_discoveryengine_data_store.advanced.location
+///   data_store_id = gcp_discoveryengine_data_store.advanced.data_store_id
 ///   uri           = "https://www.test.com/sitemap.xml"
 /// }
-/// resource "gcp_discoveryengine_datastore" "advanced" {
+/// resource "gcp_discoveryengine_data_store" "advanced" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                     = "global"
 ///   data_store_id                = "data-store-id"
 ///   display_name                 = "tf-test-advanced-site-search-datastore"
@@ -266,7 +272,7 @@ class Sitemap extends pulumi.CustomResource {
           'gcp:discoveryengine/sitemap:Sitemap',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     dataStoreId = registerOutput<String>('dataStoreId');

@@ -198,7 +198,7 @@ import 'cx_intent_training_phrase.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -226,7 +226,7 @@ import 'cx_intent_training_phrase.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxIntent(ctx, "basic_intent", &diagflow.CxIntentArgs{
-/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      agent.ID(),
 /// 			DisplayName: pulumi.String("Example"),
 /// 			Priority:    pulumi.Int(1),
 /// 			Description: pulumi.String("Intent example"),
@@ -265,7 +265,7 @@ import 'cx_intent_training_phrase.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -273,7 +273,10 @@ import 'cx_intent_training_phrase.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name               = "dialogflowcx-agent"
 ///   location                   = "global"
 ///   default_language_code      = "en"
@@ -287,8 +290,11 @@ import 'cx_intent_training_phrase.dart';
 ///     enable_speech_adaptation = true
 ///   }
 /// }
-/// resource "gcp_diagflow_cxintent" "basic_intent" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_intent" "basic_intent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "Example"
 ///   priority     = 1
 ///   description  = "Intent example"
@@ -517,7 +523,7 @@ class CxIntent extends pulumi.CustomResource {
           'gcp:diagflow/cxIntent:CxIntent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

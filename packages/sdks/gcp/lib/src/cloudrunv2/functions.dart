@@ -55,7 +55,7 @@ import 'get_worker_pool_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -73,7 +73,7 @@ import 'get_worker_pool_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -81,7 +81,7 @@ import 'get_worker_pool_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_cloudrunv2_getjob" "myJob" {
+/// data "gcp_cloudrunv2_job" "myJob" {
 ///   name     = "my-job"
 ///   location = "us-central1"
 /// }
@@ -195,7 +195,7 @@ pulumi.Output<GetJobResult> getJobOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -214,7 +214,7 @@ pulumi.Output<GetJobResult> getJobOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -222,7 +222,7 @@ pulumi.Output<GetJobResult> getJobOutput(
 ///   }
 /// }
 ///
-/// data "gcp_cloudrunv2_getjobiampolicy" "policy" {
+/// data "gcp_cloudrunv2_job_iam_policy" "policy" {
 ///   project  = default.project
 ///   location = default.location
 ///   name     = default.name
@@ -337,7 +337,7 @@ pulumi.Output<GetJobIamPolicyResult> getJobIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -355,7 +355,7 @@ pulumi.Output<GetJobIamPolicyResult> getJobIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -363,7 +363,7 @@ pulumi.Output<GetJobIamPolicyResult> getJobIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_cloudrunv2_getservice" "myService" {
+/// data "gcp_cloudrunv2_service" "myService" {
 ///   name     = "my-service"
 ///   location = "us-central1"
 /// }
@@ -477,7 +477,7 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -496,7 +496,7 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -504,7 +504,7 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 ///   }
 /// }
 ///
-/// data "gcp_cloudrunv2_getserviceiampolicy" "policy" {
+/// data "gcp_cloudrunv2_service_iam_policy" "policy" {
 ///   project  = default.project
 ///   location = default.location
 ///   name     = default.name
@@ -619,7 +619,7 @@ pulumi.Output<GetServiceIamPolicyResult> getServiceIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -637,7 +637,7 @@ pulumi.Output<GetServiceIamPolicyResult> getServiceIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -645,7 +645,7 @@ pulumi.Output<GetServiceIamPolicyResult> getServiceIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_cloudrunv2_getworkerpool" "myWorkerPool" {
+/// data "gcp_cloudrunv2_worker_pool" "myWorkerPool" {
 ///   name     = "my-worker-pool"
 ///   location = "us-central1"
 /// }
@@ -759,7 +759,7 @@ pulumi.Output<GetWorkerPoolResult> getWorkerPoolOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -778,7 +778,7 @@ pulumi.Output<GetWorkerPoolResult> getWorkerPoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -786,7 +786,7 @@ pulumi.Output<GetWorkerPoolResult> getWorkerPoolOutput(
 ///   }
 /// }
 ///
-/// data "gcp_cloudrunv2_getworkerpooliampolicy" "policy" {
+/// data "gcp_cloudrunv2_worker_pool_iam_policy" "policy" {
 ///   project  = default.project
 ///   location = default.location
 ///   name     = default.name

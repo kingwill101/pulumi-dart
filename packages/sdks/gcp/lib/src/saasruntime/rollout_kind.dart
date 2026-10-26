@@ -113,7 +113,7 @@ import 'rollout_kind_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/saasruntime"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/saasruntime"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -134,7 +134,7 @@ import 'rollout_kind_state.dart';
 /// 		exampleUnitkind, err := saasruntime.NewUnitKind(ctx, "example_unitkind", &saasruntime.UnitKindArgs{
 /// 			Location:   pulumi.String("global"),
 /// 			UnitKindId: pulumi.String("example-unitkind"),
-/// 			Saas:       exampleSaas.ID().ToIDOutput().ToStringOutput(),
+/// 			Saas:       exampleSaas.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -142,7 +142,7 @@ import 'rollout_kind_state.dart';
 /// 		_, err = saasruntime.NewRolloutKind(ctx, "example", &saasruntime.RolloutKindArgs{
 /// 			Location:                     pulumi.String("global"),
 /// 			RolloutKindId:                pulumi.String("example-rolloutkind"),
-/// 			UnitKind:                     exampleUnitkind.ID().ToIDOutput().ToStringOutput(),
+/// 			UnitKind:                     exampleUnitkind.ID(),
 /// 			RolloutOrchestrationStrategy: pulumi.String("Google.Cloud.Simple.OneLocationAtATime"),
 /// 			ErrorBudget: &saasruntime.RolloutKindErrorBudgetArgs{
 /// 				AllowedCount: pulumi.Int(1),
@@ -157,7 +157,7 @@ import 'rollout_kind_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -165,22 +165,31 @@ import 'rollout_kind_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_saasruntime_saas" "example_saas" {
+/// resource "gcp_saasruntime_saa_s" "example_saas" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   saas_id  = "example-saas"
 ///   location = "global"
 ///   locations {
 ///     name = "us-central1"
 ///   }
 /// }
-/// resource "gcp_saasruntime_unitkind" "example_unitkind" {
+/// resource "gcp_saasruntime_unit_kind" "example_unitkind" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "global"
 ///   unit_kind_id = "example-unitkind"
-///   saas         = gcp_saasruntime_saas.example_saas.id
+///   saas         = gcp_saasruntime_saa_s.example_saas.id
 /// }
-/// resource "gcp_saasruntime_rolloutkind" "example" {
+/// resource "gcp_saasruntime_rollout_kind" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                       = "global"
 ///   rollout_kind_id                = "example-rolloutkind"
-///   unit_kind                      = gcp_saasruntime_unitkind.example_unitkind.id
+///   unit_kind                      = gcp_saasruntime_unit_kind.example_unitkind.id
 ///   rollout_orchestration_strategy = "Google.Cloud.Simple.OneLocationAtATime"
 ///   error_budget = {
 ///     allowed_count = 1
@@ -378,7 +387,7 @@ class RolloutKind extends pulumi.CustomResource {
           'gcp:saasruntime/rolloutKind:RolloutKind',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

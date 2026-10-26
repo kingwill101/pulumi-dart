@@ -36,7 +36,7 @@ import 'backup_plan_association_state.dart';
 ///     zone: "us-central1-a",
 ///     bootDisk: {
 ///         initializeParams: {
-///             image: "debian-cloud/debian-11",
+///             image: "debian-cloud/debian-13",
 ///             labels: {
 ///                 my_label: "value",
 ///             },
@@ -100,7 +100,7 @@ import 'backup_plan_association_state.dart';
 ///     zone="us-central1-a",
 ///     boot_disk={
 ///         "initialize_params": {
-///             "image": "debian-cloud/debian-11",
+///             "image": "debian-cloud/debian-13",
 ///             "labels": {
 ///                 "my_label": "value",
 ///             },
@@ -177,7 +177,7 @@ import 'backup_plan_association_state.dart';
 ///         {
 ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
 ///             {
-///                 Image = "debian-cloud/debian-11",
+///                 Image = "debian-cloud/debian-13",
 ///                 Labels =
 ///                 {
 ///                     { "my_label", "value" },
@@ -251,9 +251,9 @@ import 'backup_plan_association_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -280,7 +280,7 @@ import 'backup_plan_association_state.dart';
 /// 			Zone:        pulumi.String("us-central1-a"),
 /// 			BootDisk: &compute.InstanceBootDiskArgs{
 /// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-/// 					Image: pulumi.String("debian-cloud/debian-11"),
+/// 					Image: pulumi.String("debian-cloud/debian-13"),
 /// 					Labels: pulumi.StringMap{
 /// 						"my_label": pulumi.String("value"),
 /// 					},
@@ -314,7 +314,7 @@ import 'backup_plan_association_state.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			BackupPlanId: pulumi.String("bp-bpa-test"),
 /// 			ResourceType: pulumi.String("compute.googleapis.com/Instance"),
-/// 			BackupVault:  bv1.ID().ToIDOutput().ToStringOutput(),
+/// 			BackupVault:  bv1.ID(),
 /// 			BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
 /// 				&backupdisasterrecovery.BackupPlanBackupRuleArgs{
 /// 					RuleId:              pulumi.String("rule-1"),
@@ -338,7 +338,7 @@ import 'backup_plan_association_state.dart';
 /// 			Location:                pulumi.String("us-central1"),
 /// 			ResourceType:            pulumi.String("compute.googleapis.com/Instance"),
 /// 			BackupPlanAssociationId: pulumi.String("my-bpa"),
-/// 			Resource:                myinstance.ID().ToIDOutput().ToStringOutput(),
+/// 			Resource:                myinstance.ID(),
 /// 			BackupPlan:              bp1.Name,
 /// 		})
 /// 		if err != nil {
@@ -349,7 +349,7 @@ import 'backup_plan_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -358,10 +358,16 @@ import 'backup_plan_association_state.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "mySA" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "my-custom"
 ///   display_name = "Custom SA for VM Instance"
 /// }
 /// resource "gcp_compute_instance" "myinstance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
@@ -372,7 +378,7 @@ import 'backup_plan_association_state.dart';
 ///   zone         = "us-central1-a"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = "debian-cloud/debian-11"
+///       image = "debian-cloud/debian-13"
 ///       labels = {
 ///         "my_label" = "value"
 ///       }
@@ -386,17 +392,23 @@ import 'backup_plan_association_state.dart';
 ///     scopes = ["cloud-platform"]
 ///   }
 /// }
-/// resource "gcp_backupdisasterrecovery_backupvault" "bv1" {
+/// resource "gcp_backupdisasterrecovery_backup_vault" "bv1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                                   = "us-central1"
 ///   backup_vault_id                            = "bv-bpa"
 ///   backup_minimum_enforced_retention_duration = "100000s"
 ///   force_delete                               = "true"
 /// }
-/// resource "gcp_backupdisasterrecovery_backupplan" "bp1" {
+/// resource "gcp_backupdisasterrecovery_backup_plan" "bp1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
 ///   backup_plan_id = "bp-bpa-test"
 ///   resource_type  = "compute.googleapis.com/Instance"
-///   backup_vault   = gcp_backupdisasterrecovery_backupvault.bv1.id
+///   backup_vault   = gcp_backupdisasterrecovery_backup_vault.bv1.id
 ///   backup_rules {
 ///     rule_id               = "rule-1"
 ///     backup_retention_days = 2
@@ -411,12 +423,15 @@ import 'backup_plan_association_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_backupdisasterrecovery_backupplanassociation" "my-backup-plan-association" {
+/// resource "gcp_backupdisasterrecovery_backup_plan_association" "my-backup-plan-association" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                   = "us-central1"
 ///   resource_type              = "compute.googleapis.com/Instance"
 ///   backup_plan_association_id = "my-bpa"
 ///   resource                   = gcp_compute_instance.myinstance.id
-///   backup_plan                = gcp_backupdisasterrecovery_backupplan.bp1.name
+///   backup_plan                = gcp_backupdisasterrecovery_backup_plan.bp1.name
 /// }
 /// ```
 /// ```java
@@ -473,7 +488,7 @@ import 'backup_plan_association_state.dart';
 ///             .zone("us-central1-a")
 ///             .bootDisk(InstanceBootDiskArgs.builder()
 ///                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-///                     .image("debian-cloud/debian-11")
+///                     .image("debian-cloud/debian-13")
 ///                     .labels(Map.of("my_label", "value"))
 ///                     .build())
 ///                 .build())
@@ -543,7 +558,7 @@ import 'backup_plan_association_state.dart';
 ///       zone: us-central1-a
 ///       bootDisk:
 ///         initializeParams:
-///           image: debian-cloud/debian-11
+///           image: debian-cloud/debian-13
 ///           labels:
 ///             my_label: value
 ///       scratchDisks:
@@ -767,8 +782,8 @@ import 'backup_plan_association_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/filestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -807,7 +822,7 @@ import 'backup_plan_association_state.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			BackupPlanId: pulumi.String("bp-bpa-filestore"),
 /// 			ResourceType: pulumi.String("file.googleapis.com/Instance"),
-/// 			BackupVault:  myBackupVault.ID().ToIDOutput().ToStringOutput(),
+/// 			BackupVault:  myBackupVault.ID(),
 /// 			BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
 /// 				&backupdisasterrecovery.BackupPlanBackupRuleArgs{
 /// 					RuleId:              pulumi.String("rule-1"),
@@ -831,7 +846,7 @@ import 'backup_plan_association_state.dart';
 /// 			Location:                pulumi.String("us-central1"),
 /// 			ResourceType:            pulumi.String("file.googleapis.com/Instance"),
 /// 			BackupPlanAssociationId: pulumi.String("my-bpa-filestore"),
-/// 			Resource:                myFilestoreInstance.ID().ToIDOutput().ToStringOutput(),
+/// 			Resource:                myFilestoreInstance.ID(),
 /// 			BackupPlan:              myBackupPlan.Name,
 /// 		})
 /// 		if err != nil {
@@ -842,7 +857,7 @@ import 'backup_plan_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -851,6 +866,9 @@ import 'backup_plan_association_state.dart';
 /// }
 ///
 /// resource "gcp_filestore_instance" "my_filestore_instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-instance-bpa"
 ///   location = "us-central1"
 ///   tier     = "ENTERPRISE"
@@ -863,17 +881,23 @@ import 'backup_plan_association_state.dart';
 ///     modes   = ["MODE_IPV4"]
 ///   }
 /// }
-/// resource "gcp_backupdisasterrecovery_backupvault" "my_backup_vault" {
+/// resource "gcp_backupdisasterrecovery_backup_vault" "my_backup_vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                                   = "us-central1"
 ///   backup_vault_id                            = "bv-bpa-filestore"
 ///   backup_minimum_enforced_retention_duration = "100000s"
 ///   force_delete                               = true
 /// }
-/// resource "gcp_backupdisasterrecovery_backupplan" "my_backup_plan" {
+/// resource "gcp_backupdisasterrecovery_backup_plan" "my_backup_plan" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
 ///   backup_plan_id = "bp-bpa-filestore"
 ///   resource_type  = "file.googleapis.com/Instance"
-///   backup_vault   = gcp_backupdisasterrecovery_backupvault.my_backup_vault.id
+///   backup_vault   = gcp_backupdisasterrecovery_backup_vault.my_backup_vault.id
 ///   backup_rules {
 ///     rule_id               = "rule-1"
 ///     backup_retention_days = 5
@@ -888,12 +912,15 @@ import 'backup_plan_association_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_backupdisasterrecovery_backupplanassociation" "my-backup-plan-association-filestore" {
+/// resource "gcp_backupdisasterrecovery_backup_plan_association" "my-backup-plan-association-filestore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                   = "us-central1"
 ///   resource_type              = "file.googleapis.com/Instance"
 ///   backup_plan_association_id = "my-bpa-filestore"
 ///   resource                   = gcp_filestore_instance.my_filestore_instance.id
-///   backup_plan                = gcp_backupdisasterrecovery_backupplan.my_backup_plan.name
+///   backup_plan                = gcp_backupdisasterrecovery_backup_plan.my_backup_plan.name
 /// }
 /// ```
 /// ```java
@@ -1100,7 +1127,7 @@ class BackupPlanAssociation extends pulumi.CustomResource {
           'gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     backupPlan = registerOutput<String>('backupPlan');
     backupPlanAssociationId = registerOutput<String>('backupPlanAssociationId');

@@ -84,7 +84,7 @@ import 'instance_user_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/looker"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/looker"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -108,7 +108,7 @@ import 'instance_user_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -117,6 +117,9 @@ import 'instance_user_metadata.dart';
 /// }
 ///
 /// resource "gcp_looker_instance" "looker-instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my-instance"
 ///   platform_edition = "LOOKER_CORE_STANDARD_ANNUAL"
 ///   region           = "us-central1"
@@ -340,7 +343,7 @@ import 'instance_user_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/looker"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/looker"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -397,7 +400,7 @@ import 'instance_user_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -406,6 +409,9 @@ import 'instance_user_metadata.dart';
 /// }
 ///
 /// resource "gcp_looker_instance" "looker-instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "my-instance"
 ///   platform_edition  = "LOOKER_CORE_STANDARD_ANNUAL"
 ///   region            = "us-central1"
@@ -623,7 +629,7 @@ import 'instance_user_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/looker"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/looker"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -648,7 +654,7 @@ import 'instance_user_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -657,6 +663,9 @@ import 'instance_user_metadata.dart';
 /// }
 ///
 /// resource "gcp_looker_instance" "looker-instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "my-instance-fips"
 ///   platform_edition  = "LOOKER_CORE_ENTERPRISE_ANNUAL"
 ///   region            = "us-central1"
@@ -979,11 +988,11 @@ import 'instance_user_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/looker"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/looker"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1000,13 +1009,13 @@ import 'instance_user_metadata.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(20),
-/// 			Network:      lookerNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      lookerNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		lookerVpcConnection, err := servicenetworking.NewConnection(ctx, "looker_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: lookerNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: lookerNetwork.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				lookerRange.Name,
@@ -1023,7 +1032,7 @@ import 'instance_user_metadata.dart';
 /// 			PublicIpEnabled:  pulumi.Bool(false),
 /// 			GeminiEnabled:    pulumi.Bool(true),
 /// 			ReservedRange:    lookerRange.Name,
-/// 			ConsumerNetwork:  lookerNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			ConsumerNetwork:  lookerNetwork.ID(),
 /// 			AdminSettings: &looker.InstanceAdminSettingsArgs{
 /// 				AllowedEmailDomains: pulumi.StringArray{
 /// 					pulumi.String("google.com"),
@@ -1086,7 +1095,7 @@ import 'instance_user_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1094,18 +1103,21 @@ import 'instance_user_metadata.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_looker_instance" "looker-instance" {
-///   depends_on         = [gcp_servicenetworking_connection.looker_vpc_connection]
+///   depends_on = [gcp_servicenetworking_connection.looker_vpc_connection]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-instance"
 ///   platform_edition   = "LOOKER_CORE_ENTERPRISE_ANNUAL"
 ///   region             = "us-central1"
 ///   private_ip_enabled = true
 ///   public_ip_enabled  = false
 ///   gemini_enabled     = true
-///   reserved_range     = gcp_compute_globaladdress.looker_range.name
+///   reserved_range     = gcp_compute_global_address.looker_range.name
 ///   consumer_network   = gcp_compute_network.looker_network.id
 ///   admin_settings = {
 ///     allowed_email_domains = ["google.com"]
@@ -1146,11 +1158,17 @@ import 'instance_user_metadata.dart';
 ///   }
 /// }
 /// resource "gcp_servicenetworking_connection" "looker_vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.looker_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.looker_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.looker_range.name]
 /// }
-/// resource "gcp_compute_globaladdress" "looker_range" {
+/// resource "gcp_compute_global_address" "looker_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "looker-range"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -1158,12 +1176,18 @@ import 'instance_user_metadata.dart';
 ///   network       = gcp_compute_network.looker_network.id
 /// }
 /// resource "gcp_compute_network" "looker_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "looker-network"
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "crypto_key" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "looker-kms-key"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-looker.iam.gserviceaccount.com"
+///   member        ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-looker.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -1435,7 +1459,7 @@ import 'instance_user_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/looker"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/looker"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1461,7 +1485,7 @@ import 'instance_user_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1470,6 +1494,9 @@ import 'instance_user_metadata.dart';
 /// }
 ///
 /// resource "gcp_looker_instance" "looker-instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my-instance"
 ///   platform_edition = "LOOKER_CORE_STANDARD_ANNUAL"
 ///   region           = "us-central1"
@@ -1615,7 +1642,7 @@ import 'instance_user_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/looker"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/looker"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1646,7 +1673,7 @@ import 'instance_user_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1655,6 +1682,9 @@ import 'instance_user_metadata.dart';
 /// }
 ///
 /// resource "gcp_looker_instance" "looker-instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-instance"
 ///   platform_edition   = "LOOKER_CORE_ENTERPRISE_ANNUAL"
 ///   region             = "us-central1"
@@ -1791,7 +1821,7 @@ import 'instance_user_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/looker"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/looker"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1815,7 +1845,7 @@ import 'instance_user_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1824,6 +1854,9 @@ import 'instance_user_metadata.dart';
 /// }
 ///
 /// resource "gcp_looker_instance" "looker-instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my-instance"
 ///   platform_edition = "LOOKER_CORE_STANDARD_ANNUAL"
 ///   region           = "us-central1"
@@ -1884,6 +1917,10 @@ import 'instance_user_metadata.dart';
 ///       deletionPolicy: FORCE
 /// ```
 ///
+///
+/// ## Regional Endpoint Policies
+///
+/// This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
 ///
 /// ## Import
 ///
@@ -2028,7 +2065,7 @@ class Instance extends pulumi.CustomResource {
           'gcp:looker/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     adminSettings = registerOutput<InstanceAdminSettings?>('adminSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAdminSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consumerNetwork = registerOutput<String?>('consumerNetwork');

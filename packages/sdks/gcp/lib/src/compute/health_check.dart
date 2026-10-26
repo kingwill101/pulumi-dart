@@ -89,7 +89,7 @@ import 'health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -111,7 +111,7 @@ import 'health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -119,7 +119,10 @@ import 'health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "tcp-health-check" {
+/// resource "gcp_compute_health_check" "tcp-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "tcp-health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -249,7 +252,7 @@ import 'health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -278,7 +281,7 @@ import 'health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -286,7 +289,10 @@ import 'health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "tcp-health-check" {
+/// resource "gcp_compute_health_check" "tcp-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tcp-health-check"
 ///   description         = "Health check via tcp"
 ///   timeout_sec         = 1
@@ -416,7 +422,7 @@ import 'health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -438,7 +444,7 @@ import 'health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -446,7 +452,10 @@ import 'health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "ssl-health-check" {
+/// resource "gcp_compute_health_check" "ssl-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "ssl-health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -576,7 +585,7 @@ import 'health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -605,7 +614,7 @@ import 'health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -613,7 +622,10 @@ import 'health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "ssl-health-check" {
+/// resource "gcp_compute_health_check" "ssl-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "ssl-health-check"
 ///   description         = "Health check via ssl"
 ///   timeout_sec         = 1
@@ -743,7 +755,7 @@ import 'health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -765,7 +777,7 @@ import 'health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -773,7 +785,10 @@ import 'health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "http-health-check" {
+/// resource "gcp_compute_health_check" "http-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "http-health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -906,7 +921,7 @@ import 'health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -936,7 +951,7 @@ import 'health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -944,7 +959,10 @@ import 'health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "http-health-check" {
+/// resource "gcp_compute_health_check" "http-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "http-health-check"
 ///   description         = "Health check via http"
 ///   timeout_sec         = 1
@@ -1077,7 +1095,7 @@ import 'health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1099,7 +1117,7 @@ import 'health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1107,7 +1125,10 @@ import 'health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "https-health-check" {
+/// resource "gcp_compute_health_check" "https-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "https-health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -1240,7 +1261,7 @@ import 'health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1270,7 +1291,7 @@ import 'health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1278,7 +1299,10 @@ import 'health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "https-health-check" {
+/// resource "gcp_compute_health_check" "https-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "https-health-check"
 ///   description         = "Health check via https"
 ///   timeout_sec         = 1
@@ -1411,7 +1435,7 @@ import 'health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1433,7 +1457,7 @@ import 'health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1441,7 +1465,10 @@ import 'health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "http2-health-check" {
+/// resource "gcp_compute_health_check" "http2-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "http2-health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -1574,7 +1601,7 @@ import 'health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1604,7 +1631,7 @@ import 'health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1612,7 +1639,10 @@ import 'health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "http2-health-check" {
+/// resource "gcp_compute_health_check" "http2-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "http2-health-check"
 ///   description         = "Health check via http2"
 ///   timeout_sec         = 1
@@ -1745,7 +1775,7 @@ import 'health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1767,7 +1797,7 @@ import 'health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1775,7 +1805,10 @@ import 'health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "grpc-health-check" {
+/// resource "gcp_compute_health_check" "grpc-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "grpc-health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -1890,7 +1923,7 @@ import 'health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1914,7 +1947,7 @@ import 'health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1922,7 +1955,10 @@ import 'health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "grpc-health-check" {
+/// resource "gcp_compute_health_check" "grpc-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "grpc-health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -2037,7 +2073,7 @@ import 'health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2059,7 +2095,7 @@ import 'health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2067,7 +2103,10 @@ import 'health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "grpc-with-tls-health-check" {
+/// resource "gcp_compute_health_check" "grpc-with-tls-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "grpc-with-tls-health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -2191,7 +2230,7 @@ import 'health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2218,7 +2257,7 @@ import 'health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2226,7 +2265,10 @@ import 'health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "grpc-with-tls-health-check" {
+/// resource "gcp_compute_health_check" "grpc-with-tls-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "grpc-with-tls-health-check"
 ///   description         = "Health check via grpc with TLS"
 ///   timeout_sec         = 1
@@ -2360,7 +2402,7 @@ import 'health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2385,7 +2427,7 @@ import 'health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2393,7 +2435,10 @@ import 'health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "health-check-with-logging" {
+/// resource "gcp_compute_health_check" "health-check-with-logging" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "tcp-health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -2527,7 +2572,7 @@ import 'health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2554,7 +2599,7 @@ import 'health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2562,7 +2607,10 @@ import 'health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "http-health-check-with-source-regions" {
+/// resource "gcp_compute_health_check" "http-health-check-with-source-regions" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "http-health-check"
 ///   check_interval_sec = 30
 ///   http_health_check = {
@@ -2696,7 +2744,7 @@ import 'health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2723,7 +2771,7 @@ import 'health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2731,7 +2779,10 @@ import 'health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "https-health-check-with-source-regions" {
+/// resource "gcp_compute_health_check" "https-health-check-with-source-regions" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "https-health-check"
 ///   check_interval_sec = 30
 ///   https_health_check = {
@@ -2865,7 +2916,7 @@ import 'health_check_tcp_health_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2892,7 +2943,7 @@ import 'health_check_tcp_health_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2900,7 +2951,10 @@ import 'health_check_tcp_health_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "tcp-health-check-with-source-regions" {
+/// resource "gcp_compute_health_check" "tcp-health-check-with-source-regions" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "tcp-health-check"
 ///   check_interval_sec = 30
 ///   tcp_health_check = {
@@ -3072,7 +3126,7 @@ class HealthCheck extends pulumi.CustomResource {
           'gcp:compute/healthCheck:HealthCheck',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     checkIntervalSec = registerOutput<int?>('checkIntervalSec');
     creationTimestamp = registerOutput<String>('creationTimestamp');

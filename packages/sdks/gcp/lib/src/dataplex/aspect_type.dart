@@ -130,7 +130,7 @@ import 'aspect_type_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -175,7 +175,7 @@ import 'aspect_type_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -183,12 +183,41 @@ import 'aspect_type_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataplex_aspecttype" "test_aspect_type_basic" {
+/// resource "gcp_dataplex_aspect_type" "test_aspect_type_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aspect_type_id      = "aspect-type-basic"
 ///   project             = "my-project-name"
 ///   location            = "us-central1"
 ///   data_classification = "DATA_CLASSIFICATION_UNSPECIFIED"
-///   metadata_template   = "{\n  \\\"name\\\": \\\"tf-test-template\\\",\n  \\\"type\\\": \\\"record\\\",\n  \\\"recordFields\\\": [\n    {\n      \\\"name\\\": \\\"type\\\",\n      \\\"type\\\": \\\"enum\\\",\n      \\\"annotations\\\": {\n        \\\"displayName\\\": \\\"Type\\\",\n        \\\"description\\\": \\\"Specifies the type of view represented by the entry.\\\"\n      },\n      \\\"index\\\": 1,\n      \\\"constraints\\\": {\n        \\\"required\\\": true\n      },\n      \\\"enumValues\\\": [\n        {\n          \\\"name\\\": \\\"VIEW\\\",\n          \\\"index\\\": 1\n        }\n      ]\n    }\n  ]\n}\n"
+///   metadata_template   = <<EOF
+/// {
+///   \"name\": \"tf-test-template\",
+///   \"type\": \"record\",
+///   \"recordFields\": [
+///     {
+///       \"name\": \"type\",
+///       \"type\": \"enum\",
+///       \"annotations\": {
+///         \"displayName\": \"Type\",
+///         \"description\": \"Specifies the type of view represented by the entry.\"
+///       },
+///       \"index\": 1,
+///       \"constraints\": {
+///         \"required\": true
+///       },
+///       \"enumValues\": [
+///         {
+///           \"name\": \"VIEW\",
+///           \"index\": 1
+///         }
+///       ]
+///     }
+///   ]
+/// }
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -735,7 +764,7 @@ import 'aspect_type_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -889,7 +918,7 @@ import 'aspect_type_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -897,7 +926,10 @@ import 'aspect_type_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataplex_aspecttype" "test_aspect_type_full" {
+/// resource "gcp_dataplex_aspect_type" "test_aspect_type_full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aspect_type_id = "aspect-type-full"
 ///   project        = "my-project-name"
 ///   location       = "us-central1"
@@ -907,7 +939,137 @@ import 'aspect_type_state.dart';
 ///   display_name        = "terraform aspect type"
 ///   description         = "data aspect type created by Terraform"
 ///   data_classification = "METADATA_AND_DATA"
-///   metadata_template   = "{\n  \\\"type\\\": \\\"record\\\",\n  \\\"name\\\": \\\"Schema\\\",\n  \\\"recordFields\\\": [\n    {\n      \\\"name\\\": \\\"fields\\\",\n      \\\"type\\\": \\\"array\\\",\n      \\\"index\\\": 1,\n      \\\"arrayItems\\\": {\n        \\\"name\\\": \\\"field\\\",\n        \\\"type\\\": \\\"record\\\",\n        \\\"typeId\\\": \\\"field\\\",\n        \\\"recordFields\\\": [\n          {\n            \\\"name\\\": \\\"name\\\",\n            \\\"type\\\": \\\"string\\\",\n            \\\"index\\\": 1,\n            \\\"constraints\\\": {\n              \\\"required\\\": true\n            }\n          },\n          {\n            \\\"name\\\": \\\"description\\\",\n            \\\"type\\\": \\\"string\\\",\n            \\\"index\\\": 2\n          },\n          {\n            \\\"name\\\": \\\"dataType\\\",\n            \\\"type\\\": \\\"string\\\",\n            \\\"index\\\": 3,\n            \\\"constraints\\\": {\n              \\\"required\\\": true\n            }\n          },\n          {\n            \\\"name\\\": \\\"metadataType\\\",\n            \\\"type\\\": \\\"enum\\\",\n            \\\"index\\\": 4,\n            \\\"constraints\\\": {\n              \\\"required\\\": true\n            },\n            \\\"enumValues\\\": [\n              {\n                \\\"name\\\": \\\"BOOLEAN\\\",\n                \\\"index\\\": 1\n              },\n              {\n                \\\"name\\\": \\\"NUMBER\\\",\n                \\\"index\\\": 2\n              },\n              {\n                \\\"name\\\": \\\"STRING\\\",\n                \\\"index\\\": 3\n              },\n              {\n                \\\"name\\\": \\\"BYTES\\\",\n                \\\"index\\\": 4\n              },\n              {\n                \\\"name\\\": \\\"DATETIME\\\",\n                \\\"index\\\": 5\n              },\n              {\n                \\\"name\\\": \\\"TIMESTAMP\\\",\n                \\\"index\\\": 6\n              },\n              {\n                \\\"name\\\": \\\"GEOSPATIAL\\\",\n                \\\"index\\\": 7\n              },\n              {\n                \\\"name\\\": \\\"STRUCT\\\",\n                \\\"index\\\": 8\n              },\n              {\n                \\\"name\\\": \\\"OTHER\\\",\n                \\\"index\\\": 100\n              }\n            ]\n          },\n          {\n            \\\"name\\\": \\\"mode\\\",\n            \\\"type\\\": \\\"enum\\\",\n            \\\"index\\\": 5,\n            \\\"enumValues\\\": [\n              {\n                \\\"name\\\": \\\"NULLABLE\\\",\n                \\\"index\\\": 1\n              },\n              {\n                \\\"name\\\": \\\"REPEATED\\\",\n                \\\"index\\\": 2\n              },\n              {\n                \\\"name\\\": \\\"REQUIRED\\\",\n                \\\"index\\\": 3\n              }\n            ]\n          },\n          {\n            \\\"name\\\": \\\"defaultValue\\\",\n            \\\"type\\\": \\\"string\\\",\n            \\\"index\\\": 6\n          },\n          {\n            \\\"name\\\": \\\"annotations\\\",\n            \\\"type\\\": \\\"map\\\",\n            \\\"index\\\": 7,\n            \\\"mapItems\\\": {\n              \\\"name\\\": \\\"label\\\",\n              \\\"type\\\": \\\"string\\\"\n            }\n          },\n          {\n            \\\"name\\\": \\\"fields\\\",\n            \\\"type\\\": \\\"array\\\",\n            \\\"index\\\": 20,\n            \\\"arrayItems\\\": {\n              \\\"name\\\": \\\"field\\\",\n              \\\"type\\\": \\\"record\\\",\n              \\\"typeRef\\\": \\\"field\\\"\n            }\n          }\n        ]\n      }\n    }\n  ]\n}\n"
+///   metadata_template   = <<EOF
+/// {
+///   \"type\": \"record\",
+///   \"name\": \"Schema\",
+///   \"recordFields\": [
+///     {
+///       \"name\": \"fields\",
+///       \"type\": \"array\",
+///       \"index\": 1,
+///       \"arrayItems\": {
+///         \"name\": \"field\",
+///         \"type\": \"record\",
+///         \"typeId\": \"field\",
+///         \"recordFields\": [
+///           {
+///             \"name\": \"name\",
+///             \"type\": \"string\",
+///             \"index\": 1,
+///             \"constraints\": {
+///               \"required\": true
+///             }
+///           },
+///           {
+///             \"name\": \"description\",
+///             \"type\": \"string\",
+///             \"index\": 2
+///           },
+///           {
+///             \"name\": \"dataType\",
+///             \"type\": \"string\",
+///             \"index\": 3,
+///             \"constraints\": {
+///               \"required\": true
+///             }
+///           },
+///           {
+///             \"name\": \"metadataType\",
+///             \"type\": \"enum\",
+///             \"index\": 4,
+///             \"constraints\": {
+///               \"required\": true
+///             },
+///             \"enumValues\": [
+///               {
+///                 \"name\": \"BOOLEAN\",
+///                 \"index\": 1
+///               },
+///               {
+///                 \"name\": \"NUMBER\",
+///                 \"index\": 2
+///               },
+///               {
+///                 \"name\": \"STRING\",
+///                 \"index\": 3
+///               },
+///               {
+///                 \"name\": \"BYTES\",
+///                 \"index\": 4
+///               },
+///               {
+///                 \"name\": \"DATETIME\",
+///                 \"index\": 5
+///               },
+///               {
+///                 \"name\": \"TIMESTAMP\",
+///                 \"index\": 6
+///               },
+///               {
+///                 \"name\": \"GEOSPATIAL\",
+///                 \"index\": 7
+///               },
+///               {
+///                 \"name\": \"STRUCT\",
+///                 \"index\": 8
+///               },
+///               {
+///                 \"name\": \"OTHER\",
+///                 \"index\": 100
+///               }
+///             ]
+///           },
+///           {
+///             \"name\": \"mode\",
+///             \"type\": \"enum\",
+///             \"index\": 5,
+///             \"enumValues\": [
+///               {
+///                 \"name\": \"NULLABLE\",
+///                 \"index\": 1
+///               },
+///               {
+///                 \"name\": \"REPEATED\",
+///                 \"index\": 2
+///               },
+///               {
+///                 \"name\": \"REQUIRED\",
+///                 \"index\": 3
+///               }
+///             ]
+///           },
+///           {
+///             \"name\": \"defaultValue\",
+///             \"type\": \"string\",
+///             \"index\": 6
+///           },
+///           {
+///             \"name\": \"annotations\",
+///             \"type\": \"map\",
+///             \"index\": 7,
+///             \"mapItems\": {
+///               \"name\": \"label\",
+///               \"type\": \"string\"
+///             }
+///           },
+///           {
+///             \"name\": \"fields\",
+///             \"type\": \"array\",
+///             \"index\": 20,
+///             \"arrayItems\": {
+///               \"name\": \"field\",
+///               \"type\": \"record\",
+///               \"typeRef\": \"field\"
+///             }
+///           }
+///         ]
+///       }
+///     }
+///   ]
+/// }
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -1297,7 +1459,7 @@ class AspectType extends pulumi.CustomResource {
           'gcp:dataplex/aspectType:AspectType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     aspectTypeId = registerOutput<String?>('aspectTypeId');

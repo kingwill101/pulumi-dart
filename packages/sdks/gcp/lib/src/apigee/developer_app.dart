@@ -187,8 +187,8 @@ import 'developer_app_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigee"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -205,13 +205,13 @@ import 'developer_app_state.dart';
 /// 		apigeeInstance, err := apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
 /// 			Name:     pulumi.String("instance"),
 /// 			Location: pulumi.String("us-central1"),
-/// 			OrgId:    apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+/// 			OrgId:    apigeeOrg.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apiProduct, err := apigee.NewApiProduct(ctx, "api_product", &apigee.ApiProductArgs{
-/// 			OrgId:        apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+/// 			OrgId:        apigeeOrg.ID(),
 /// 			Name:         pulumi.String("sample-api"),
 /// 			DisplayName:  pulumi.String("A sample API Product"),
 /// 			ApprovalType: pulumi.String("auto"),
@@ -230,7 +230,7 @@ import 'developer_app_state.dart';
 /// 			FirstName: pulumi.String("John"),
 /// 			LastName:  pulumi.String("Doe"),
 /// 			UserName:  pulumi.String("john.doe"),
-/// 			OrgId:     apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+/// 			OrgId:     apigeeOrg.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeInstance,
 /// 		}))
@@ -239,7 +239,7 @@ import 'developer_app_state.dart';
 /// 		}
 /// 		_, err = apigee.NewDeveloperApp(ctx, "apigee_developer_app", &apigee.DeveloperAppArgs{
 /// 			Name:           pulumi.String("sample-app"),
-/// 			OrgId:          apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+/// 			OrgId:          apigeeOrg.ID(),
 /// 			DeveloperId:    developer.ID(),
 /// 			DeveloperEmail: developer.Email,
 /// 			CallbackUrl:    pulumi.String("https://example-call.url"),
@@ -260,7 +260,7 @@ import 'developer_app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -268,20 +268,26 @@ import 'developer_app_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_apigee_developerapp" "apigee_developer_app" {
+/// resource "gcp_apigee_developer_app" "apigee_developer_app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "sample-app"
 ///   org_id          = gcp_apigee_organization.apigee_org.id
 ///   developer_id    = gcp_apigee_developer.developer.id
 ///   developer_email = gcp_apigee_developer.developer.email
 ///   callback_url    = "https://example-call.url"
-///   api_products    = [gcp_apigee_apiproduct.api_product.name]
-///   scopes          = gcp_apigee_apiproduct.api_product.scopes
+///   api_products    = [gcp_apigee_api_product.api_product.name]
+///   scopes          = gcp_apigee_api_product.api_product.scopes
 /// }
-/// resource "gcp_apigee_apiproduct" "api_product" {
-///   depends_on    = [gcp_apigee_instance.apigee_instance]
+/// resource "gcp_apigee_api_product" "api_product" {
+///   depends_on = [gcp_apigee_instance.apigee_instance]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id        = gcp_apigee_organization.apigee_org.id
 ///   name          = "sample-api"
 ///   display_name  = "A sample API Product"
@@ -290,6 +296,9 @@ import 'developer_app_state.dart';
 /// }
 /// resource "gcp_apigee_developer" "developer" {
 ///   depends_on = [gcp_apigee_instance.apigee_instance]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   email      = "john.doe@acme.com"
 ///   first_name = "John"
 ///   last_name  = "Doe"
@@ -297,11 +306,17 @@ import 'developer_app_state.dart';
 ///   org_id     = gcp_apigee_organization.apigee_org.id
 /// }
 /// resource "gcp_apigee_instance" "apigee_instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "instance"
 ///   location = "us-central1"
 ///   org_id   = gcp_apigee_organization.apigee_org.id
 /// }
 /// resource "gcp_apigee_organization" "apigee_org" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   analytics_region    = "us-central1"
 ///   project_id          = projectGoogleProject.projectId
 ///   disable_vpc_peering = true
@@ -709,9 +724,9 @@ import 'developer_app_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigee"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -758,14 +773,14 @@ import 'developer_app_state.dart';
 /// 		apigeeInstance, err := apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
 /// 			Name:     pulumi.String("instance"),
 /// 			Location: pulumi.String("us-central1"),
-/// 			OrgId:    apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+/// 			OrgId:    apigeeOrg.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apiProduct, err := apigee.NewApiProduct(ctx, "api_product", &apigee.ApiProductArgs{
 /// 			Name:         pulumi.String("sample-api"),
-/// 			OrgId:        apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+/// 			OrgId:        apigeeOrg.ID(),
 /// 			DisplayName:  pulumi.String("A sample API Product"),
 /// 			ApprovalType: pulumi.String("auto"),
 /// 			Scopes: pulumi.StringArray{
@@ -784,7 +799,7 @@ import 'developer_app_state.dart';
 /// 			FirstName: pulumi.String("John"),
 /// 			LastName:  pulumi.String("Doe"),
 /// 			UserName:  pulumi.String("john.doe"),
-/// 			OrgId:     apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+/// 			OrgId:     apigeeOrg.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeInstance,
 /// 		}))
@@ -795,7 +810,7 @@ import 'developer_app_state.dart';
 /// 			Name:           pulumi.String("sample-app"),
 /// 			AppFamily:      pulumi.String("default"),
 /// 			DeveloperEmail: developer.Email,
-/// 			OrgId:          apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+/// 			OrgId:          apigeeOrg.ID(),
 /// 			CallbackUrl:    pulumi.String("https://example-call.url"),
 /// 			KeyExpiresIn:   pulumi.String("-1"),
 /// 			Status:         pulumi.String("approved"),
@@ -818,7 +833,7 @@ import 'developer_app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -829,7 +844,10 @@ import 'developer_app_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_apigee_developerapp" "apigee_developer_app" {
+/// resource "gcp_apigee_developer_app" "apigee_developer_app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "sample-app"
 ///   app_family      = "default"
 ///   developer_email = gcp_apigee_developer.developer.email
@@ -837,15 +855,18 @@ import 'developer_app_state.dart';
 ///   callback_url    = "https://example-call.url"
 ///   key_expires_in  = "-1"
 ///   status          = "approved"
-///   api_products    = [gcp_apigee_apiproduct.api_product.name]
-///   scopes          = gcp_apigee_apiproduct.api_product.scopes
+///   api_products    = [gcp_apigee_api_product.api_product.name]
+///   scopes          = gcp_apigee_api_product.api_product.scopes
 ///   attributes {
 ///     name  = "sample_name"
 ///     value = "sample_value"
 ///   }
 /// }
-/// resource "gcp_apigee_apiproduct" "api_product" {
-///   depends_on    = [gcp_apigee_instance.apigee_instance]
+/// resource "gcp_apigee_api_product" "api_product" {
+///   depends_on = [gcp_apigee_instance.apigee_instance]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "sample-api"
 ///   org_id        = gcp_apigee_organization.apigee_org.id
 ///   display_name  = "A sample API Product"
@@ -854,6 +875,9 @@ import 'developer_app_state.dart';
 /// }
 /// resource "gcp_apigee_developer" "developer" {
 ///   depends_on = [gcp_apigee_instance.apigee_instance]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   email      = "john.doe@acme.com"
 ///   first_name = "John"
 ///   last_name  = "Doe"
@@ -861,26 +885,41 @@ import 'developer_app_state.dart';
 ///   org_id     = gcp_apigee_organization.apigee_org.id
 /// }
 /// resource "gcp_apigee_instance" "apigee_instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "instance"
 ///   location = "us-central1"
 ///   org_id   = gcp_apigee_organization.apigee_org.id
 /// }
 /// resource "gcp_apigee_organization" "apigee_org" {
-///   depends_on          = [gcp_projects_service.apigee]
+///   depends_on = [gcp_projects_service.apigee]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   analytics_region    = "us-central1"
 ///   project_id          = gcp_organizations_project.project.project_id
 ///   disable_vpc_peering = true
 /// }
 /// resource "gcp_projects_service" "apigee" {
 ///   depends_on = [time_sleep.wait_60_seconds]
-///   project    = gcp_organizations_project.project.project_id
-///   service    = "apigee.googleapis.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.project.project_id
+///   service = "apigee.googleapis.com"
 /// }
 /// resource "time_sleep" "wait_60_seconds" {
-///   depends_on      = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "60s"
 /// }
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "prj"
 ///   name            = "prj"
 ///   org_id          = "123456789"
@@ -1184,7 +1223,7 @@ class DeveloperApp extends pulumi.CustomResource {
           'gcp:apigee/developerApp:DeveloperApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['consumerSecret'],
         ) {
     apiProducts = registerOutput<List<String>?>('apiProducts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

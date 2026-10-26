@@ -93,9 +93,9 @@ import 'billing_account_sink_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -134,7 +134,7 @@ import 'billing_account_sink_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -142,20 +142,29 @@ import 'billing_account_sink_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_billingaccountsink" "my-sink" {
+/// resource "gcp_logging_billing_account_sink" "my-sink" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "my-sink"
 ///   description     = "some explanation on what this is"
 ///   billing_account = "ABCDEF-012345-GHIJKL"
 ///   destination     ="storage.googleapis.com/${gcp_storage_bucket.log-bucket.name}"
 /// }
 /// resource "gcp_storage_bucket" "log-bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "billing-logging-bucket"
 ///   location = "US"
 /// }
-/// resource "gcp_projects_iambinding" "log-writer" {
+/// resource "gcp_projects_i_a_m_binding" "log-writer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "your-project-id"
 ///   role    = "roles/storage.objectCreator"
-///   members = [gcp_logging_billingaccountsink.my-sink.writer_identity]
+///   members = [gcp_logging_billing_account_sink.my-sink.writer_identity]
 /// }
 /// ```
 /// ```java
@@ -290,7 +299,7 @@ class BillingAccountSink extends pulumi.CustomResource {
           'gcp:logging/billingAccountSink:BillingAccountSink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     bigqueryOptions = registerOutput<BillingAccountSinkBigqueryOptions>('bigqueryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BillingAccountSinkBigqueryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     billingAccount = registerOutput<String>('billingAccount');

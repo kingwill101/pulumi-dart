@@ -52,7 +52,7 @@ import 'get_instance_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/filestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -72,7 +72,7 @@ import 'get_instance_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -80,18 +80,18 @@ import 'get_instance_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_filestore_getinstance" "myInstance" {
+/// data "gcp_filestore_instance" "myInstance" {
 ///   name = "my-filestore-instance"
 /// }
 ///
 /// output "instanceIpAddresses" {
-///   value = data.gcp_filestore_getinstance.myInstance.networks.ipAddresses
+///   value = data.gcp_filestore_instance.myInstance.networks.ipAddresses
 /// }
 /// output "instanceConnectMode" {
-///   value = data.gcp_filestore_getinstance.myInstance.networks.connectMode
+///   value = data.gcp_filestore_instance.myInstance.networks.connectMode
 /// }
 /// output "instanceFileShareName" {
-///   value = data.gcp_filestore_getinstance.myInstance.file_shares.name
+///   value = data.gcp_filestore_instance.myInstance.file_shares.name
 /// }
 /// ```
 /// ```java

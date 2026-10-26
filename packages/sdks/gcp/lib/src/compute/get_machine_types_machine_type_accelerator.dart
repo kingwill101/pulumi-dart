@@ -25,7 +25,7 @@ class GetMachineTypesMachineTypeAccelerator {
 
   factory GetMachineTypesMachineTypeAccelerator.fromMap(Map<String, dynamic> map) {
     return GetMachineTypesMachineTypeAccelerator(
-      guestAcceleratorCount: pulumi.Input.fromValue((map['guestAcceleratorCount'] as num).toInt()),
+      guestAcceleratorCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['guestAcceleratorCount'])),
       guestAcceleratorType: pulumi.Input.fromValue(map['guestAcceleratorType'] as String),
     );
   }

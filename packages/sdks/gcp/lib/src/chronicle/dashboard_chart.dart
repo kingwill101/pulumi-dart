@@ -588,7 +588,7 @@ import 'dashboard_chart_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -790,7 +790,7 @@ import 'dashboard_chart_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -799,7 +799,10 @@ import 'dashboard_chart_state.dart';
 /// }
 ///
 /// # A Native Dashboard is required to create a Dashboard Chart.
-/// resource "gcp_chronicle_nativedashboard" "my_dashboard" {
+/// resource "gcp_chronicle_native_dashboard" "my_dashboard" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   instance     = "00000000-0000-0000-0000-000000000000"
 ///   display_name = "dashboard_1"
@@ -818,10 +821,13 @@ import 'dashboard_chart_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_chronicle_dashboardchart" "my_chart" {
-///   location         = gcp_chronicle_nativedashboard.my_dashboard.location
-///   instance         = gcp_chronicle_nativedashboard.my_dashboard.instance
-///   native_dashboard = gcp_chronicle_nativedashboard.my_dashboard.name
+/// resource "gcp_chronicle_dashboard_chart" "my_chart" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location         = gcp_chronicle_native_dashboard.my_dashboard.location
+///   instance         = gcp_chronicle_native_dashboard.my_dashboard.instance
+///   native_dashboard = gcp_chronicle_native_dashboard.my_dashboard.name
 ///   chart_layout = {
 ///     start_x = 0
 ///     span_x  = 50
@@ -837,55 +843,67 @@ import 'dashboard_chart_state.dart';
 ///     }
 ///     visualization = {
 ///       series = [{
-///         "seriesType" = "LINE"
-///         "encode" = {
-///           "x" = "timestamp"
-///           "y" = "total_count"
+///         series_type = "LINE"
+///         encode = {
+///           x = "timestamp"
+///           y = "total_count"
 ///         }
-///         "dataLabel" = {
-///           "show" = true
+///         data_label = {
+///           show = true
 ///         }
 ///       }]
 ///       x_axes = [{
-///         "axisType"    = "CATEGORY"
-///         "displayName" = "Date"
+///         axis_type    = "CATEGORY"
+///         display_name = "Date"
 ///       }]
 ///       y_axes = [{
-///         "axisType"    = "CATEGORY"
-///         "displayName" = "Sources"
+///         axis_type    = "CATEGORY"
+///         display_name = "Sources"
 ///       }]
 ///       legends = [{
-///         "top"          = 12
-///         "legendOrient" = "HORIZONTAL"
-///         "show"         = true
-///         "id"           = "test_map_legend_01"
-///         "bottom"       = 10
-///         "left"         = 10
-///         "right"        = 5
-///         "legendAlign"  = "LEFT"
-///         "paddings"     = [10]
-///         "z"            = 2
-///         "zLevel"       = 1
+///         top           = 12
+///         legend_orient = "HORIZONTAL"
+///         show          = true
+///         id            = "test_map_legend_01"
+///         bottom        = 10
+///         left          = 10
+///         right         = 5
+///         legend_align  = "LEFT"
+///         paddings      = [10]
+///         z             = 2
+///         z_level       = 1
 ///       }]
 ///       series_columns = ["health_status"]
 ///       grouping_type  = "Grouped"
 ///     }
 ///     drill_down_config = {
 ///       left_drill_downs = [{
-///         "id"          = "D89B834D-977A-4E0C-83B0-12AB1D05E76B"
-///         "displayName" = "Link to the google"
-///         "customSettings" = {
-///           "newTab" = true
-///           "externalLink" = {
-///             "description" = "This is an external link"
-///             "link"        = "www.google.com"
+///         id           = "D89B834D-977A-4E0C-83B0-12AB1D05E76B"
+///         display_name = "Link to the google"
+///         custom_settings = {
+///           new_tab = true
+///           external_link = {
+///             description = "This is an external link"
+///             link        = "www.google.com"
 ///           }
 ///         }
 ///       }]
 ///     }
 ///   }
 ///   dashboard_query = {
-///     query = "$IOC_Type = ioc.ioc_type\n      \nmatch:\n  $IOC_Type\n      \noutcome:\n  $IOC_Count = count(ioc.ioc_value) \n      \norder:\n  $IOC_Count desc\n"
+///     query = <<-EOT
+/// $IOC_Type = ioc.ioc_type
+///
+/// match:
+///   $IOC_Type
+///
+/// outcome:
+///   $IOC_Count = count(ioc.ioc_value)
+///
+/// order:
+///   $IOC_Count desc
+/// EOT
+///
 ///     input = {
 ///       relative_time = {
 ///         time_unit      = "DAY"
@@ -894,10 +912,13 @@ import 'dashboard_chart_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_chronicle_dashboardchart" "button_tile" {
-///   location         = gcp_chronicle_nativedashboard.my_dashboard.location
-///   instance         = gcp_chronicle_nativedashboard.my_dashboard.instance
-///   native_dashboard = gcp_chronicle_nativedashboard.my_dashboard.name
+/// resource "gcp_chronicle_dashboard_chart" "button_tile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location         = gcp_chronicle_native_dashboard.my_dashboard.location
+///   instance         = gcp_chronicle_native_dashboard.my_dashboard.instance
+///   native_dashboard = gcp_chronicle_native_dashboard.my_dashboard.name
 ///   chart_layout = {
 ///     start_x = 0
 ///     span_x  = 12
@@ -921,10 +942,13 @@ import 'dashboard_chart_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_chronicle_dashboardchart" "markdown_tile" {
-///   location         = gcp_chronicle_nativedashboard.my_dashboard.location
-///   instance         = gcp_chronicle_nativedashboard.my_dashboard.instance
-///   native_dashboard = gcp_chronicle_nativedashboard.my_dashboard.name
+/// resource "gcp_chronicle_dashboard_chart" "markdown_tile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location         = gcp_chronicle_native_dashboard.my_dashboard.location
+///   instance         = gcp_chronicle_native_dashboard.my_dashboard.instance
+///   native_dashboard = gcp_chronicle_native_dashboard.my_dashboard.name
 ///   chart_layout = {
 ///     start_x = 0
 ///     span_x  = 24
@@ -1355,7 +1379,7 @@ class DashboardChart extends pulumi.CustomResource {
           'gcp:chronicle/dashboardChart:DashboardChart',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     chartId = registerOutput<String>('chartId');
     chartLayout = registerOutput<DashboardChartChartLayout?>('chartLayout', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DashboardChartChartLayout.fromMap((guardedValue as Map).cast<String, dynamic>()); });

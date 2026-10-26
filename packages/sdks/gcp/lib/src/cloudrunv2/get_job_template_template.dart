@@ -5,6 +5,7 @@ import 'get_job_template_template_container.dart';
 import 'get_job_template_template_node_selector.dart';
 import 'get_job_template_template_volume.dart';
 import 'get_job_template_template_vpc_access.dart';
+import 'get_job_template_template_workload_identity_config.dart';
 
 class GetJobTemplateTemplate {
   /// Holds the single container that defines the unit of execution for this task.
@@ -29,6 +30,9 @@ class GetJobTemplateTemplate {
   final pulumi.Input<List<GetJobTemplateTemplateVolume>> volumes;
   /// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
   final pulumi.Input<List<GetJobTemplateTemplateVpcAccess>> vpcAccesses;
+  /// The Task's workload identity settings. Used to assign an
+  /// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+  final pulumi.Input<List<GetJobTemplateTemplateWorkloadIdentityConfig>> workloadIdentityConfigs;
 
   /// Creates a new [GetJobTemplateTemplate].
   /// [containers] Holds the single container that defines the unit of execution for this task.
@@ -41,6 +45,7 @@ class GetJobTemplateTemplate {
   /// [timeout] Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
   /// [volumes] A list of Volumes to make available to containers.
   /// [vpcAccesses] VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+  /// [workloadIdentityConfigs] The Task's workload identity settings. Used to assign an
   const GetJobTemplateTemplate({
     required this.containers,
     required this.encryptionKey,
@@ -52,6 +57,7 @@ class GetJobTemplateTemplate {
     required this.timeout,
     required this.volumes,
     required this.vpcAccesses,
+    required this.workloadIdentityConfigs,
   });
 
   Map<String, dynamic> toMap() {
@@ -66,6 +72,7 @@ class GetJobTemplateTemplate {
       'timeout': timeout,
       'volumes': pulumi.Input.mapInputValue<List<GetJobTemplateTemplateVolume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<GetJobTemplateTemplateVolume, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcAccesses': pulumi.Input.mapInputValue<List<GetJobTemplateTemplateVpcAccess>, List<Map<String, dynamic>>>(vpcAccesses, (value) => pulumi.Input.encodeList<GetJobTemplateTemplateVpcAccess, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'workloadIdentityConfigs': pulumi.Input.mapInputValue<List<GetJobTemplateTemplateWorkloadIdentityConfig>, List<Map<String, dynamic>>>(workloadIdentityConfigs, (value) => pulumi.Input.encodeList<GetJobTemplateTemplateWorkloadIdentityConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -75,12 +82,13 @@ class GetJobTemplateTemplate {
       encryptionKey: pulumi.Input.fromValue(map['encryptionKey'] as String),
       executionEnvironment: pulumi.Input.fromValue(map['executionEnvironment'] as String),
       gpuZonalRedundancyDisabled: pulumi.Input.fromValue(map['gpuZonalRedundancyDisabled'] as bool),
-      maxRetries: pulumi.Input.fromValue((map['maxRetries'] as num).toInt()),
+      maxRetries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRetries'])),
       nodeSelectors: pulumi.Input.fromValue(pulumi.Input.decodeList<GetJobTemplateTemplateNodeSelector>(map['nodeSelectors']!, (value) => GetJobTemplateTemplateNodeSelector.fromMap((value as Map).cast<String, dynamic>()))),
       serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
       timeout: pulumi.Input.fromValue(map['timeout'] as String),
       volumes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetJobTemplateTemplateVolume>(map['volumes']!, (value) => GetJobTemplateTemplateVolume.fromMap((value as Map).cast<String, dynamic>()))),
       vpcAccesses: pulumi.Input.fromValue(pulumi.Input.decodeList<GetJobTemplateTemplateVpcAccess>(map['vpcAccesses']!, (value) => GetJobTemplateTemplateVpcAccess.fromMap((value as Map).cast<String, dynamic>()))),
+      workloadIdentityConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetJobTemplateTemplateWorkloadIdentityConfig>(map['workloadIdentityConfigs']!, (value) => GetJobTemplateTemplateWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }

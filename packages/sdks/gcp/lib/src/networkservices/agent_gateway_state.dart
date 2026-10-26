@@ -8,6 +8,10 @@ import 'agent_gateway_self_managed.dart';
 
 /// Input properties used for looking up and filtering AgentGateway resources.
 class AgentGatewayState {
+  /// The resource name of the AgentConnectivityTemplate.
+  /// Must be of format
+  /// `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+  final pulumi.Input<String?>? agentConnectivityTemplate;
   /// AgentGatewayOutputCard contains informational output-only fields.
   /// Structure is documented below.
   final pulumi.Input<List<AgentGatewayAgentGatewayCard>?>? agentGatewayCards;
@@ -69,6 +73,7 @@ class AgentGatewayState {
   final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AgentGatewayState].
+  /// [agentConnectivityTemplate] The resource name of the AgentConnectivityTemplate.
   /// [agentGatewayCards] AgentGatewayOutputCard contains informational output-only fields.
   /// [createTime] The timestamp when the resource was created.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -87,6 +92,7 @@ class AgentGatewayState {
   /// [selfManaged] Configuration for Self Managed deployment mode.
   /// [updateTime] The timestamp when the resource was updated.
   const AgentGatewayState({
+    this.agentConnectivityTemplate,
     this.agentGatewayCards,
     this.createTime,
     this.deletionPolicy,
@@ -108,6 +114,7 @@ class AgentGatewayState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'agentConnectivityTemplate': ?agentConnectivityTemplate,
       'agentGatewayCards': ?pulumi.Input.mapOptionalInputValue<List<AgentGatewayAgentGatewayCard>, List<Map<String, dynamic>>>(agentGatewayCards, (value) => pulumi.Input.encodeList<AgentGatewayAgentGatewayCard, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': ?createTime,
       'deletionPolicy': ?deletionPolicy,
@@ -130,6 +137,7 @@ class AgentGatewayState {
 
   factory AgentGatewayState.fromMap(Map<String, dynamic> map) {
     return AgentGatewayState(
+      agentConnectivityTemplate: (() { final guardedValue = map['agentConnectivityTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       agentGatewayCards: (() { final guardedValue = map['agentGatewayCards']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentGatewayAgentGatewayCard>(guardedValue, (value) => AgentGatewayAgentGatewayCard.fromMap((value as Map).cast<String, dynamic>()))); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

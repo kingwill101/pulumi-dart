@@ -27,8 +27,8 @@ class BackupExpiryQuantity {
 
   factory BackupExpiryQuantity.fromMap(Map<String, dynamic> map) {
     return BackupExpiryQuantity(
-      retentionCount: (() { final guardedValue = map['retentionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      totalRetentionCount: (() { final guardedValue = map['totalRetentionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retentionCount: (() { final guardedValue = map['retentionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      totalRetentionCount: (() { final guardedValue = map['totalRetentionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

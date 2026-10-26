@@ -224,7 +224,7 @@ import 'authorized_view_subset_view.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -317,7 +317,7 @@ import 'authorized_view_subset_view.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -329,6 +329,9 @@ import 'authorized_view_subset_view.dart';
 /// }
 ///
 /// resource "gcp_bigtable_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "tf-instance"
 ///   clusters {
 ///     cluster_id   = "tf-instance-cluster"
@@ -338,6 +341,9 @@ import 'authorized_view_subset_view.dart';
 ///   }
 /// }
 /// resource "gcp_bigtable_table" "table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "tf-table"
 ///   instance_name = gcp_bigtable_instance.instance.name
 ///   split_keys    = ["a", "b", "c"]
@@ -349,18 +355,21 @@ import 'authorized_view_subset_view.dart';
 ///   }
 ///   change_stream_retention = "24h0m0s"
 /// }
-/// resource "gcp_bigtable_authorizedview" "authorized_view" {
+/// resource "gcp_bigtable_authorized_view" "authorized_view" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "tf-authorized-view"
 ///   instance_name = gcp_bigtable_instance.instance.name
 ///   table_name    = gcp_bigtable_table.table.name
 ///   subset_view = {
 ///     row_prefixes = [base64encode("prefix#")]
 ///     family_subsets = [{
-///       "familyName" = "family-first"
-///       "qualifiers" = [base64encode("qualifier"), base64encode("qualifier-second")]
+///       family_name = "family-first"
+///       qualifiers  = [base64encode("qualifier"), base64encode("qualifier-second")]
 ///       }, {
-///       "familyName"        = "family-second"
-///       "qualifierPrefixes" = [""]
+///       family_name        = "family-second"
+///       qualifier_prefixes = [""]
 ///     }]
 ///   }
 /// }
@@ -562,7 +571,7 @@ class AuthorizedView extends pulumi.CustomResource {
           'gcp:bigtable/authorizedView:AuthorizedView',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<String>('deletionProtection');

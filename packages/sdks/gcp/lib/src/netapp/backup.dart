@@ -159,8 +159,8 @@ import 'backup_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/netapp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -200,7 +200,7 @@ import 'backup_state.dart';
 /// 			},
 /// 			DeletionPolicy: pulumi.String("FORCE"),
 /// 			BackupConfig: &netapp.VolumeBackupConfigArgs{
-/// 				BackupVault: defaultBackupVault.ID().ToIDOutput().ToStringOutput(),
+/// 				BackupVault: defaultBackupVault.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -210,7 +210,7 @@ import 'backup_state.dart';
 /// 			Name:         pulumi.String("test-backup"),
 /// 			Location:     defaultBackupVault.Location,
 /// 			VaultName:    defaultBackupVault.Name,
-/// 			SourceVolume: defaultVolume.ID().ToIDOutput().ToStringOutput(),
+/// 			SourceVolume: defaultVolume.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -220,7 +220,7 @@ import 'backup_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -228,37 +228,49 @@ import 'backup_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "default" {
+/// data "gcp_compute_network" "default" {
 ///   name = "network"
 /// }
 ///
-/// resource "gcp_netapp_storagepool" "default" {
+/// resource "gcp_netapp_storage_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "backup-pool"
 ///   location      = "us-central1"
 ///   service_level = "PREMIUM"
 ///   capacity_gib  = "2048"
-///   network       = data.gcp_compute_getnetwork.default.id
+///   network       = data.gcp_compute_network.default.id
 /// }
 /// resource "gcp_netapp_volume" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "backup-volume"
-///   location        = gcp_netapp_storagepool.default.location
+///   location        = gcp_netapp_storage_pool.default.location
 ///   capacity_gib    = "100"
 ///   share_name      = "backup-volume"
-///   storage_pool    = gcp_netapp_storagepool.default.name
+///   storage_pool    = gcp_netapp_storage_pool.default.name
 ///   protocols       = ["NFSV3"]
 ///   deletion_policy = "FORCE"
 ///   backup_config = {
-///     backup_vault = gcp_netapp_backupvault.default.id
+///     backup_vault = gcp_netapp_backup_vault.default.id
 ///   }
 /// }
-/// resource "gcp_netapp_backupvault" "default" {
+/// resource "gcp_netapp_backup_vault" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "backup-vault"
-///   location = gcp_netapp_storagepool.default.location
+///   location = gcp_netapp_storage_pool.default.location
 /// }
 /// resource "gcp_netapp_backup" "test_backup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "test-backup"
-///   location      = gcp_netapp_backupvault.default.location
-///   vault_name    = gcp_netapp_backupvault.default.name
+///   location      = gcp_netapp_backup_vault.default.location
+///   vault_name    = gcp_netapp_backup_vault.default.name
 ///   source_volume = gcp_netapp_volume.default.id
 /// }
 /// ```
@@ -462,7 +474,7 @@ class Backup extends pulumi.CustomResource {
           'gcp:netapp/backup:Backup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     backupRegion = registerOutput<String>('backupRegion');

@@ -46,7 +46,7 @@ import 'get_instance_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigee"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -64,7 +64,7 @@ import 'get_instance_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -72,7 +72,7 @@ import 'get_instance_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_apigee_getenvironmentiampolicy" "policy" {
+/// data "gcp_apigee_environment_iam_policy" "policy" {
 ///   org_id = apigeeEnvironment.orgId
 ///   env_id = apigeeEnvironment.name
 /// }
@@ -182,7 +182,7 @@ pulumi.Output<GetEnvironmentIamPolicyResult> getEnvironmentIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigee"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -200,7 +200,7 @@ pulumi.Output<GetEnvironmentIamPolicyResult> getEnvironmentIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -208,7 +208,7 @@ pulumi.Output<GetEnvironmentIamPolicyResult> getEnvironmentIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_apigee_getinstance" "myInstance" {
+/// data "gcp_apigee_instance" "myInstance" {
 ///   name   = "my-instance-name"
 ///   org_id = "organizations/my-org-id"
 /// }

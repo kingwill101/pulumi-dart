@@ -86,7 +86,7 @@ import 'oauth_client_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -117,7 +117,7 @@ import 'oauth_client_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -125,7 +125,10 @@ import 'oauth_client_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_oauthclient" "example" {
+/// resource "gcp_iam_oauth_client" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   oauth_client_id       = "example-client-id"
 ///   display_name          = "Display Name of OAuth client"
 ///   description           = "A sample OAuth client"
@@ -284,7 +287,7 @@ class OauthClient extends pulumi.CustomResource {
           'gcp:iam/oauthClient:OauthClient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     allowedGrantTypes = registerOutput<List<String>>('allowedGrantTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     allowedRedirectUris = registerOutput<List<String>>('allowedRedirectUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

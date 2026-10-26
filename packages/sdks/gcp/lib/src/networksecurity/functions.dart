@@ -80,7 +80,7 @@ pulumi.Output<GetAddressGroupIamPolicyResult> getAddressGroupIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -98,7 +98,7 @@ pulumi.Output<GetAddressGroupIamPolicyResult> getAddressGroupIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -106,7 +106,7 @@ pulumi.Output<GetAddressGroupIamPolicyResult> getAddressGroupIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_networksecurity_getaddressgroups" "all" {
+/// data "gcp_networksecurity_address_groups" "all" {
 ///   location = "us-central1"
 ///   project  = "my-project-id"
 /// }
@@ -190,7 +190,7 @@ pulumi.Output<GetAddressGroupIamPolicyResult> getAddressGroupIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -208,7 +208,7 @@ pulumi.Output<GetAddressGroupIamPolicyResult> getAddressGroupIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -216,7 +216,7 @@ pulumi.Output<GetAddressGroupIamPolicyResult> getAddressGroupIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_networksecurity_getaddressgroups" "orgAll" {
+/// data "gcp_networksecurity_address_groups" "orgAll" {
 ///   location = "us-central1"
 ///   parent   = "organizations/123456789"
 /// }

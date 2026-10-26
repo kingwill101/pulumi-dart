@@ -75,7 +75,7 @@ import 'managed_zone_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -97,7 +97,7 @@ import 'managed_zone_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -105,7 +105,10 @@ import 'managed_zone_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dns_managedzone" "example-zone" {
+/// resource "gcp_dns_managed_zone" "example-zone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example-zone"
 ///   dns_name    = "my-domain.com."
 ///   description = "Example DNS zone"
@@ -274,8 +277,8 @@ import 'managed_zone_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -306,10 +309,10 @@ import 'managed_zone_state.dart';
 /// 			PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 /// 				Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
 /// 					&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-/// 						NetworkUrl: network_1.ID().ToIDOutput().ToStringOutput(),
+/// 						NetworkUrl: network_1.ID(),
 /// 					},
 /// 					&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-/// 						NetworkUrl: network_2.ID().ToIDOutput().ToStringOutput(),
+/// 						NetworkUrl: network_2.ID(),
 /// 					},
 /// 				},
 /// 			},
@@ -322,7 +325,7 @@ import 'managed_zone_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -330,7 +333,10 @@ import 'managed_zone_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dns_managedzone" "private-zone" {
+/// resource "gcp_dns_managed_zone" "private-zone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "private-zone"
 ///   dns_name    = "private.example.com."
 ///   description = "Example private DNS zone"
@@ -340,17 +346,23 @@ import 'managed_zone_state.dart';
 ///   visibility = "private"
 ///   private_visibility_config = {
 ///     networks = [{
-///       "networkUrl" = gcp_compute_network.network-1.id
+///       network_url = gcp_compute_network.network-1.id
 ///       }, {
-///       "networkUrl" = gcp_compute_network.network-2.id
+///       network_url = gcp_compute_network.network-2.id
 ///     }]
 ///   }
 /// }
 /// resource "gcp_compute_network" "network-1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network-1"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_network" "network-2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network-2"
 ///   auto_create_subnetworks = false
 /// }
@@ -588,8 +600,8 @@ import 'managed_zone_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -620,10 +632,10 @@ import 'managed_zone_state.dart';
 /// 			PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 /// 				Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
 /// 					&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-/// 						NetworkUrl: network_1.ID().ToIDOutput().ToStringOutput(),
+/// 						NetworkUrl: network_1.ID(),
 /// 					},
 /// 					&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-/// 						NetworkUrl: network_2.ID().ToIDOutput().ToStringOutput(),
+/// 						NetworkUrl: network_2.ID(),
 /// 					},
 /// 				},
 /// 			},
@@ -646,7 +658,7 @@ import 'managed_zone_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -654,7 +666,10 @@ import 'managed_zone_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dns_managedzone" "private-zone" {
+/// resource "gcp_dns_managed_zone" "private-zone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "private-zone"
 ///   dns_name    = "private.example.com."
 ///   description = "Example private DNS zone"
@@ -664,24 +679,30 @@ import 'managed_zone_state.dart';
 ///   visibility = "private"
 ///   private_visibility_config = {
 ///     networks = [{
-///       "networkUrl" = gcp_compute_network.network-1.id
+///       network_url = gcp_compute_network.network-1.id
 ///       }, {
-///       "networkUrl" = gcp_compute_network.network-2.id
+///       network_url = gcp_compute_network.network-2.id
 ///     }]
 ///   }
 ///   forwarding_config = {
 ///     target_name_servers = [{
-///       "ipv4Address" = "172.16.1.10"
+///       ipv4_address = "172.16.1.10"
 ///       }, {
-///       "ipv4Address" = "172.16.1.20"
+///       ipv4_address = "172.16.1.20"
 ///     }]
 ///   }
 /// }
 /// resource "gcp_compute_network" "network-1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network-1"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_network" "network-2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network-2"
 ///   auto_create_subnetworks = false
 /// }
@@ -883,8 +904,8 @@ import 'managed_zone_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -905,7 +926,7 @@ import 'managed_zone_state.dart';
 /// 			PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 /// 				Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
 /// 					&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-/// 						NetworkUrl: network1.ID().ToIDOutput().ToStringOutput(),
+/// 						NetworkUrl: network1.ID(),
 /// 					},
 /// 				},
 /// 			},
@@ -925,7 +946,7 @@ import 'managed_zone_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -933,23 +954,29 @@ import 'managed_zone_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dns_managedzone" "private-zone" {
+/// resource "gcp_dns_managed_zone" "private-zone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "private-zone"
 ///   dns_name    = "private.example.com."
 ///   description = "Example private DNS zone"
 ///   visibility  = "private"
 ///   private_visibility_config = {
 ///     networks = [{
-///       "networkUrl" = gcp_compute_network.network_1.id
+///       network_url = gcp_compute_network.network_1.id
 ///     }]
 ///   }
 ///   forwarding_config = {
 ///     target_name_servers = [{
-///       "ipv6Address" = "fd20:3e9:7a70:680d:0:8::"
+///       ipv6_address = "fd20:3e9:7a70:680d:0:8::"
 ///     }]
 ///   }
 /// }
 /// resource "gcp_compute_network" "network_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network-1"
 ///   auto_create_subnetworks = false
 /// }
@@ -1254,9 +1281,9 @@ import 'managed_zone_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1332,7 +1359,7 @@ import 'managed_zone_state.dart';
 /// 			PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 /// 				GkeClusters: dns.ManagedZonePrivateVisibilityConfigGkeClusterArray{
 /// 					&dns.ManagedZonePrivateVisibilityConfigGkeClusterArgs{
-/// 						GkeClusterName: cluster_1.ID().ToIDOutput().ToStringOutput(),
+/// 						GkeClusterName: cluster_1.ID(),
 /// 					},
 /// 				},
 /// 			},
@@ -1345,7 +1372,7 @@ import 'managed_zone_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1353,7 +1380,10 @@ import 'managed_zone_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dns_managedzone" "private-zone-gke" {
+/// resource "gcp_dns_managed_zone" "private-zone-gke" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "private-zone"
 ///   dns_name    = "private.example.com."
 ///   description = "Example private DNS zone"
@@ -1363,15 +1393,21 @@ import 'managed_zone_state.dart';
 ///   visibility = "private"
 ///   private_visibility_config = {
 ///     gke_clusters = [{
-///       "gkeClusterName" = gcp_container_cluster.cluster-1.id
+///       gke_cluster_name = gcp_container_cluster.cluster-1.id
 ///     }]
 ///   }
 /// }
 /// resource "gcp_compute_network" "network-1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network-1"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "subnetwork-1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = gcp_compute_network.network-1.name
 ///   network                  = gcp_compute_network.network-1.name
 ///   ip_cidr_range            = "10.0.36.0/24"
@@ -1387,6 +1423,9 @@ import 'managed_zone_state.dart';
 ///   }
 /// }
 /// resource "gcp_container_cluster" "cluster-1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "cluster-1"
 ///   location           = "us-central1-c"
 ///   initial_node_count = 1
@@ -1678,8 +1717,8 @@ import 'managed_zone_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1707,13 +1746,13 @@ import 'managed_zone_state.dart';
 /// 			PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 /// 				Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
 /// 					&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-/// 						NetworkUrl: network_source.ID().ToIDOutput().ToStringOutput(),
+/// 						NetworkUrl: network_source.ID(),
 /// 					},
 /// 				},
 /// 			},
 /// 			PeeringConfig: &dns.ManagedZonePeeringConfigArgs{
 /// 				TargetNetwork: &dns.ManagedZonePeeringConfigTargetNetworkArgs{
-/// 					NetworkUrl: network_target.ID().ToIDOutput().ToStringOutput(),
+/// 					NetworkUrl: network_target.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -1725,7 +1764,7 @@ import 'managed_zone_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1733,14 +1772,17 @@ import 'managed_zone_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dns_managedzone" "peering-zone" {
+/// resource "gcp_dns_managed_zone" "peering-zone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "peering-zone"
 ///   dns_name    = "peering.example.com."
 ///   description = "Example private DNS peering zone"
 ///   visibility  = "private"
 ///   private_visibility_config = {
 ///     networks = [{
-///       "networkUrl" = gcp_compute_network.network-source.id
+///       network_url = gcp_compute_network.network-source.id
 ///     }]
 ///   }
 ///   peering_config = {
@@ -1750,10 +1792,16 @@ import 'managed_zone_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "network-source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network-source"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_network" "network-target" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network-target"
 ///   auto_create_subnetworks = false
 /// }
@@ -1932,9 +1980,9 @@ import 'managed_zone_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicedirectory"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicedirectory"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1954,7 +2002,7 @@ import 'managed_zone_state.dart';
 /// 			Visibility:  pulumi.String("private"),
 /// 			ServiceDirectoryConfig: &dns.ManagedZoneServiceDirectoryConfigArgs{
 /// 				Namespace: &dns.ManagedZoneServiceDirectoryConfigNamespaceArgs{
-/// 					NamespaceUrl: example.ID().ToIDOutput().ToStringOutput(),
+/// 					NamespaceUrl: example.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -1973,7 +2021,7 @@ import 'managed_zone_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1981,7 +2029,10 @@ import 'managed_zone_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dns_managedzone" "sd-zone" {
+/// resource "gcp_dns_managed_zone" "sd-zone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "peering-zone"
 ///   dns_name    = "services.example.com."
 ///   description = "Example private DNS Service Directory zone"
@@ -1993,10 +2044,16 @@ import 'managed_zone_state.dart';
 ///   }
 /// }
 /// resource "gcp_servicedirectory_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_id = "example"
 ///   location     = "us-central1"
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network"
 ///   auto_create_subnetworks = false
 /// }
@@ -2141,7 +2198,7 @@ import 'managed_zone_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2166,7 +2223,7 @@ import 'managed_zone_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2174,7 +2231,10 @@ import 'managed_zone_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dns_managedzone" "cloud-logging-enabled-zone" {
+/// resource "gcp_dns_managed_zone" "cloud-logging-enabled-zone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "cloud-logging-enabled-zone"
 ///   dns_name    = "services.example.com."
 ///   description = "Example cloud logging enabled DNS zone"
@@ -2314,7 +2374,7 @@ import 'managed_zone_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2347,7 +2407,7 @@ import 'managed_zone_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2355,14 +2415,20 @@ import 'managed_zone_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dns_managedzone" "default" {
+/// resource "gcp_dns_managed_zone" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example-zone"
 ///   dns_name    = "example.com."
 ///   description = "Example zone for IAM conditions"
 /// }
-/// resource "gcp_dns_dnsmanagedzoneiammember" "condition_test" {
-///   project      = gcp_dns_managedzone.default.project
-///   managed_zone = gcp_dns_managedzone.default.name
+/// resource "gcp_dns_dns_managed_zone_iam_member" "condition_test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project      = gcp_dns_managed_zone.default.project
+///   managed_zone = gcp_dns_managed_zone.default.name
 ///   role         = "roles/dns.admin"
 ///   member       = "user:admin@hashicorptest.com"
 ///   condition = {
@@ -2540,7 +2606,7 @@ class ManagedZone extends pulumi.CustomResource {
           'gcp:dns/managedZone:ManagedZone',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     cloudLoggingConfig = registerOutput<ManagedZoneCloudLoggingConfig>('cloudLoggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedZoneCloudLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

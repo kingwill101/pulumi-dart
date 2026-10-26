@@ -89,8 +89,8 @@ import 'aspect_type_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -123,7 +123,7 @@ import 'aspect_type_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -131,18 +131,21 @@ import 'aspect_type_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_dataplex_aspecttypeiampolicy" "policy" {
+/// resource "gcp_dataplex_aspect_type_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project        = testAspectTypeBasic.project
 ///   location       = testAspectTypeBasic.location
 ///   aspect_type_id = testAspectTypeBasic.aspectTypeId
-///   policy_data    = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data    = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -259,7 +262,7 @@ import 'aspect_type_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -282,7 +285,7 @@ import 'aspect_type_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -290,7 +293,10 @@ import 'aspect_type_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataplex_aspecttypeiambinding" "binding" {
+/// resource "gcp_dataplex_aspect_type_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project        = testAspectTypeBasic.project
 ///   location       = testAspectTypeBasic.location
 ///   aspect_type_id = testAspectTypeBasic.aspectTypeId
@@ -393,7 +399,7 @@ import 'aspect_type_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -414,7 +420,7 @@ import 'aspect_type_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -422,7 +428,10 @@ import 'aspect_type_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataplex_aspecttypeiammember" "member" {
+/// resource "gcp_dataplex_aspect_type_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project        = testAspectTypeBasic.project
 ///   location       = testAspectTypeBasic.location
 ///   aspect_type_id = testAspectTypeBasic.aspectTypeId
@@ -568,8 +577,8 @@ import 'aspect_type_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -602,7 +611,7 @@ import 'aspect_type_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -610,18 +619,21 @@ import 'aspect_type_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_dataplex_aspecttypeiampolicy" "policy" {
+/// resource "gcp_dataplex_aspect_type_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project        = testAspectTypeBasic.project
 ///   location       = testAspectTypeBasic.location
 ///   aspect_type_id = testAspectTypeBasic.aspectTypeId
-///   policy_data    = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data    = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -738,7 +750,7 @@ import 'aspect_type_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -761,7 +773,7 @@ import 'aspect_type_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -769,7 +781,10 @@ import 'aspect_type_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataplex_aspecttypeiambinding" "binding" {
+/// resource "gcp_dataplex_aspect_type_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project        = testAspectTypeBasic.project
 ///   location       = testAspectTypeBasic.location
 ///   aspect_type_id = testAspectTypeBasic.aspectTypeId
@@ -872,7 +887,7 @@ import 'aspect_type_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -893,7 +908,7 @@ import 'aspect_type_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -901,7 +916,10 @@ import 'aspect_type_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataplex_aspecttypeiammember" "member" {
+/// resource "gcp_dataplex_aspect_type_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project        = testAspectTypeBasic.project
 ///   location       = testAspectTypeBasic.location
 ///   aspect_type_id = testAspectTypeBasic.aspectTypeId
@@ -1028,7 +1046,7 @@ class AspectTypeIamBinding extends pulumi.CustomResource {
           'gcp:dataplex/aspectTypeIamBinding:AspectTypeIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     aspectTypeId = registerOutput<String>('aspectTypeId');
     condition = registerOutput<AspectTypeIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AspectTypeIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

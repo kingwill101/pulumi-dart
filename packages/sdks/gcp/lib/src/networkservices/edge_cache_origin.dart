@@ -60,7 +60,7 @@ import 'edge_cache_origin_timeout.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -79,7 +79,7 @@ import 'edge_cache_origin_timeout.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -87,7 +87,10 @@ import 'edge_cache_origin_timeout.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_edgecacheorigin" "default" {
+/// resource "gcp_networkservices_edge_cache_origin" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "my-origin"
 ///   origin_address = "gs://media-edge-default"
 ///   description    = "The default bucket for media edge test"
@@ -338,7 +341,7 @@ import 'edge_cache_origin_timeout.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -393,7 +396,7 @@ import 'edge_cache_origin_timeout.dart';
 /// 		_, err = networkservices.NewEdgeCacheOrigin(ctx, "default", &networkservices.EdgeCacheOriginArgs{
 /// 			Name:           pulumi.String("my-origin"),
 /// 			OriginAddress:  pulumi.String("gs://media-edge-default"),
-/// 			FailoverOrigin: fallback.ID().ToIDOutput().ToStringOutput(),
+/// 			FailoverOrigin: fallback.ID(),
 /// 			Description:    pulumi.String("The default bucket for media edge test"),
 /// 			MaxAttempts:    pulumi.Int(2),
 /// 			Labels: pulumi.StringMap{
@@ -411,7 +414,7 @@ import 'edge_cache_origin_timeout.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -419,7 +422,10 @@ import 'edge_cache_origin_timeout.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_edgecacheorigin" "fallback" {
+/// resource "gcp_networkservices_edge_cache_origin" "fallback" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my-fallback"
 ///   origin_address   = "fallback.example.com"
 ///   description      = "The default bucket for media edge test"
@@ -439,9 +445,9 @@ import 'edge_cache_origin_timeout.dart';
 ///     }
 ///     header_action = {
 ///       request_headers_to_adds = [{
-///         "headerName"  = "x-header"
-///         "headerValue" = "value"
-///         "replace"     = true
+///         header_name  = "x-header"
+///         header_value = "value"
+///         replace      = true
 ///       }]
 ///     }
 ///   }
@@ -449,10 +455,13 @@ import 'edge_cache_origin_timeout.dart';
 ///     redirect_conditions = ["MOVED_PERMANENTLY", "FOUND", "SEE_OTHER", "TEMPORARY_REDIRECT", "PERMANENT_REDIRECT"]
 ///   }
 /// }
-/// resource "gcp_networkservices_edgecacheorigin" "default" {
+/// resource "gcp_networkservices_edge_cache_origin" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "my-origin"
 ///   origin_address  = "gs://media-edge-default"
-///   failover_origin = gcp_networkservices_edgecacheorigin.fallback.id
+///   failover_origin = gcp_networkservices_edge_cache_origin.fallback.id
 ///   description     = "The default bucket for media edge test"
 ///   max_attempts    = 2
 ///   labels = {
@@ -688,8 +697,8 @@ import 'edge_cache_origin_timeout.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -705,7 +714,7 @@ import 'edge_cache_origin_timeout.dart';
 /// 			return err
 /// 		}
 /// 		secret_version_basic, err := secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
-/// 			Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     secret_basic.ID(),
 /// 			SecretData: pulumi.String("secret-data"),
 /// 		})
 /// 		if err != nil {
@@ -717,7 +726,7 @@ import 'edge_cache_origin_timeout.dart';
 /// 			Description:   pulumi.String("The default bucket for V4 authentication"),
 /// 			AwsV4Authentication: &networkservices.EdgeCacheOriginAwsV4AuthenticationArgs{
 /// 				AccessKeyId:            pulumi.String("ACCESSKEYID"),
-/// 				SecretAccessKeyVersion: secret_version_basic.ID().ToIDOutput().ToStringOutput(),
+/// 				SecretAccessKeyVersion: secret_version_basic.ID(),
 /// 				OriginRegion:           pulumi.String("auto"),
 /// 			},
 /// 		})
@@ -729,7 +738,7 @@ import 'edge_cache_origin_timeout.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -738,22 +747,31 @@ import 'edge_cache_origin_timeout.dart';
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "secret-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "secret-name"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "secret-version-basic" {
+/// resource "gcp_secretmanager_secret_version" "secret-version-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.secret-basic.id
 ///   secret_data = "secret-data"
 /// }
-/// resource "gcp_networkservices_edgecacheorigin" "default" {
+/// resource "gcp_networkservices_edge_cache_origin" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "my-origin"
 ///   origin_address = "gs://media-edge-default"
 ///   description    = "The default bucket for V4 authentication"
 ///   aws_v4_authentication = {
 ///     access_key_id             = "ACCESSKEYID"
-///     secret_access_key_version = gcp_secretmanager_secretversion.secret-version-basic.id
+///     secret_access_key_version = gcp_secretmanager_secret_version.secret-version-basic.id
 ///     origin_region             = "auto"
 ///   }
 /// }
@@ -952,7 +970,7 @@ class EdgeCacheOrigin extends pulumi.CustomResource {
           'gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     awsV4Authentication = registerOutput<EdgeCacheOriginAwsV4Authentication?>('awsV4Authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheOriginAwsV4Authentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });

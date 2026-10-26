@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_endpoint_endpoint_settings.dart';
+import 'firewall_endpoint_wildfire_settings.dart';
 
 /// Input properties used for looking up and filtering FirewallEndpoint resources.
 class FirewallEndpointState {
@@ -52,6 +53,10 @@ class FirewallEndpointState {
   final pulumi.Input<String?>? state;
   /// Time the firewall endpoint was updated in UTC.
   final pulumi.Input<String?>? updateTime;
+  /// (Optional, Beta)
+  /// Settings for WildFire analysis on the firewall endpoint.
+  /// Structure is documented below.
+  final pulumi.Input<FirewallEndpointWildfireSettings?>? wildfireSettings;
 
   /// Creates a new [FirewallEndpointState].
   /// [associatedNetworks] List of networks that are associated with this endpoint in the local zone.
@@ -69,6 +74,7 @@ class FirewallEndpointState {
   /// [selfLink] Server-defined URL of this resource.
   /// [state] The current state of the endpoint.
   /// [updateTime] Time the firewall endpoint was updated in UTC.
+  /// [wildfireSettings] (Optional, Beta)
   const FirewallEndpointState({
     this.associatedNetworks,
     this.billingProjectId,
@@ -85,6 +91,7 @@ class FirewallEndpointState {
     this.selfLink,
     this.state,
     this.updateTime,
+    this.wildfireSettings,
   });
 
   Map<String, dynamic> toMap() {
@@ -104,6 +111,7 @@ class FirewallEndpointState {
       'selfLink': ?selfLink,
       'state': ?state,
       'updateTime': ?updateTime,
+      'wildfireSettings': ?pulumi.Input.mapOptionalInputValue<FirewallEndpointWildfireSettings, Map<String, dynamic>>(wildfireSettings, (value) => value.toMap()),
     };
   }
 
@@ -124,6 +132,7 @@ class FirewallEndpointState {
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      wildfireSettings: (() { final guardedValue = map['wildfireSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallEndpointWildfireSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

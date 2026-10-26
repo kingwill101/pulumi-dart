@@ -71,7 +71,7 @@ class ConsumersIamPolicy extends pulumi.CustomResource {
           'gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     consumerProject = registerOutput<String>('consumerProject');
     etag = registerOutput<String>('etag');

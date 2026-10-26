@@ -278,11 +278,11 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -357,8 +357,8 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 /// 			DeployedIndexId:     pulumi.String("deployed_index_id"),
 /// 			DisplayName:         pulumi.String("vertex-deployed-index"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			Index:               index.ID().ToIDOutput().ToStringOutput(),
-/// 			IndexEndpoint:       vertexIndexEndpointDeployed.ID().ToIDOutput().ToStringOutput(),
+/// 			Index:               index.ID(),
+/// 			IndexEndpoint:       vertexIndexEndpointDeployed.ID(),
 /// 			EnableAccessLogging: pulumi.Bool(false),
 /// 			ReservedIpRanges: pulumi.StringArray{
 /// 				pulumi.String("vertex-ai-range"),
@@ -392,7 +392,7 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -400,18 +400,21 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "vertexNetwork" {
+/// data "gcp_compute_network" "vertexNetwork" {
 ///   name = "network-name"
 /// }
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aiindexendpointdeployedindex" "basic_deployed_index" {
+/// resource "gcp_vertex_ai_index_endpoint_deployed_index" "basic_deployed_index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deployed_index_id     = "deployed_index_id"
 ///   display_name          = "vertex-deployed-index"
 ///   region                = "us-central1"
-///   index                 = gcp_vertex_aiindex.index.id
-///   index_endpoint        = gcp_vertex_aiindexendpoint.vertex_index_endpoint_deployed.id
+///   index                 = gcp_vertex_ai_index.index.id
+///   index_endpoint        = gcp_vertex_ai_index_endpoint.vertex_index_endpoint_deployed.id
 ///   enable_access_logging = false
 ///   reserved_ip_ranges    = ["vertex-ai-range"]
 ///   deployed_index_auth_config = {
@@ -421,7 +424,10 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_vertex_aiindex" "index" {
+/// resource "gcp_vertex_ai_index" "index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region              = "us-central1"
 ///   display_name        = "test-index"
 ///   description         = "index for test"
@@ -445,29 +451,45 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_vertex_aiindexendpoint" "vertex_index_endpoint_deployed" {
+/// resource "gcp_vertex_ai_index_endpoint" "vertex_index_endpoint_deployed" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "sample-endpoint"
 ///   description  = "A sample vertex endpoint"
 ///   region       = "us-central1"
-///   network      ="projects/${data.gcp_organizations_getproject.project.number}/global/networks/${data.gcp_compute_getnetwork.vertexNetwork.name}"
+///   network      ="projects/${data.gcp_organizations_project.project.number}/global/networks/${data.gcp_compute_network.vertexNetwork.name}"
 ///   labels = {
 ///     "label-one" = "value-one"
 ///   }
 /// }
 /// resource "gcp_serviceaccount_account" "sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "vertex-sa"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "bucket-name"
 ///   location                    = "us-central1"
 ///   uniform_bucket_level_access = true
 /// }
 /// # The sample data comes from the following link:
 /// # https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
-/// resource "gcp_storage_bucketobject" "data" {
+/// resource "gcp_storage_bucket_object" "data" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "contents/data.json"
 ///   bucket  = gcp_storage_bucket.bucket.name
-///   content = "{\\\"id\\\": \\\"42\\\", \\\"embedding\\\": [0.5, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"cat\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"feline\\\"]}]}\n{\\\"id\\\": \\\"43\\\", \\\"embedding\\\": [0.6, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"dog\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"canine\\\"]}]}\n"
+///   content = <<EOF
+/// {\"id\": \"42\", \"embedding\": [0.5, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"cat\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"feline\"]}]}
+/// {\"id\": \"43\", \"embedding\": [0.6, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"dog\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"canine\"]}]}
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -944,11 +966,11 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1023,8 +1045,8 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 /// 			DeployedIndexId: pulumi.String("deployed_index_id"),
 /// 			DisplayName:     pulumi.String("vertex-deployed-index"),
 /// 			Region:          pulumi.String("us-central1"),
-/// 			Index:           index.ID().ToIDOutput().ToStringOutput(),
-/// 			IndexEndpoint:   vertexIndexEndpointDeployed.ID().ToIDOutput().ToStringOutput(),
+/// 			Index:           index.ID(),
+/// 			IndexEndpoint:   vertexIndexEndpointDeployed.ID(),
 /// 			ReservedIpRanges: pulumi.StringArray{
 /// 				pulumi.String("vertex-ai-range"),
 /// 			},
@@ -1061,7 +1083,7 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1069,18 +1091,21 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "vertexNetwork" {
+/// data "gcp_compute_network" "vertexNetwork" {
 ///   name = "network-name"
 /// }
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aiindexendpointdeployedindex" "basic_deployed_index" {
+/// resource "gcp_vertex_ai_index_endpoint_deployed_index" "basic_deployed_index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deployed_index_id     = "deployed_index_id"
 ///   display_name          = "vertex-deployed-index"
 ///   region                = "us-central1"
-///   index                 = gcp_vertex_aiindex.index.id
-///   index_endpoint        = gcp_vertex_aiindexendpoint.vertex_index_endpoint_deployed.id
+///   index                 = gcp_vertex_ai_index.index.id
+///   index_endpoint        = gcp_vertex_ai_index_endpoint.vertex_index_endpoint_deployed.id
 ///   reserved_ip_ranges    = ["vertex-ai-range"]
 ///   enable_access_logging = false
 ///   deployed_index_auth_config = {
@@ -1094,9 +1119,15 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 ///   }
 /// }
 /// resource "gcp_serviceaccount_account" "sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "vertex-sa"
 /// }
-/// resource "gcp_vertex_aiindex" "index" {
+/// resource "gcp_vertex_ai_index" "index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region              = "us-central1"
 ///   display_name        = "test-index"
 ///   description         = "index for test"
@@ -1120,26 +1151,39 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_vertex_aiindexendpoint" "vertex_index_endpoint_deployed" {
+/// resource "gcp_vertex_ai_index_endpoint" "vertex_index_endpoint_deployed" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "sample-endpoint"
 ///   description  = "A sample vertex endpoint"
 ///   region       = "us-central1"
-///   network      ="projects/${data.gcp_organizations_getproject.project.number}/global/networks/${data.gcp_compute_getnetwork.vertexNetwork.name}"
+///   network      ="projects/${data.gcp_organizations_project.project.number}/global/networks/${data.gcp_compute_network.vertexNetwork.name}"
 ///   labels = {
 ///     "label-one" = "value-one"
 ///   }
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "bucket-name"
 ///   location                    = "us-central1"
 ///   uniform_bucket_level_access = true
 /// }
 /// # The sample data comes from the following link:
 /// # https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
-/// resource "gcp_storage_bucketobject" "data" {
+/// resource "gcp_storage_bucket_object" "data" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "contents/data.json"
 ///   bucket  = gcp_storage_bucket.bucket.name
-///   content = "{\\\"id\\\": \\\"42\\\", \\\"embedding\\\": [0.5, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"cat\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"feline\\\"]}]}\n{\\\"id\\\": \\\"43\\\", \\\"embedding\\\": [0.6, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"dog\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"canine\\\"]}]}\n"
+///   content = <<EOF
+/// {\"id\": \"42\", \"embedding\": [0.5, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"cat\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"feline\"]}]}
+/// {\"id\": \"43\", \"embedding\": [0.6, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"dog\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"canine\"]}]}
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -1434,7 +1478,7 @@ class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
           'gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     automaticResources = registerOutput<AiIndexEndpointDeployedIndexAutomaticResources>('automaticResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEndpointDeployedIndexAutomaticResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

@@ -180,8 +180,8 @@ import 'workflow_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workflows"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workflows"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -198,7 +198,7 @@ import 'workflow_state.dart';
 /// 			Name:           pulumi.String("workflow"),
 /// 			Region:         pulumi.String("us-central1"),
 /// 			Description:    pulumi.String("Magic"),
-/// 			ServiceAccount: testAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			ServiceAccount: testAccount.ID(),
 /// 			CallLogLevel:   pulumi.String("LOG_ERRORS_ONLY"),
 /// 			Labels: pulumi.StringMap{
 /// 				"env": pulumi.String("test"),
@@ -243,7 +243,7 @@ import 'workflow_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -252,10 +252,16 @@ import 'workflow_state.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "test_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "my-account"
 ///   display_name = "Test Service Account"
 /// }
 /// resource "gcp_workflows_workflow" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "workflow"
 ///   region          = "us-central1"
 ///   description     = "Magic"
@@ -268,7 +274,35 @@ import 'workflow_state.dart';
 ///     "url" = "https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam"
 ///   }
 ///   deletion_protection = false
-///   source_contents     = "# This is a sample workflow. You can replace it with your source code.\n#\n# This workflow does the following:\n# - reads current time and date information from an external API and stores\n#   the response in currentTime variable\n# - retrieves a list of Wikipedia articles related to the day of the week\n#   from currentTime\n# - returns the list of articles as an output of the workflow\n#\n# Note: In Terraform you need to escape the $$ or it will cause errors.\n\n- getCurrentTime:\n    call: http.get\n    args:\n        url: $${sys.get_env(\\\"url\\\")}\n    result: currentTime\n- readWikipedia:\n    call: http.get\n    args:\n        url: https://en.wikipedia.org/w/api.php\n        query:\n            action: opensearch\n            search: $${currentTime.body.dayOfWeek}\n    result: wikiResult\n- returnOutput:\n    return: $${wikiResult.body[1]}\n"
+///   source_contents     = <<-EOF
+/// # This is a sample workflow. You can replace it with your source code.
+/// #
+/// # This workflow does the following:
+/// # - reads current time and date information from an external API and stores
+/// #   the response in currentTime variable
+/// # - retrieves a list of Wikipedia articles related to the day of the week
+/// #   from currentTime
+/// # - returns the list of articles as an output of the workflow
+/// #
+/// # Note: In Terraform you need to escape the $$ or it will cause errors.
+///
+/// - getCurrentTime:
+///     call: http.get
+///     args:
+///         url: ${sys.get_env(\"url\")}
+///     result: currentTime
+/// - readWikipedia:
+///     call: http.get
+///     args:
+///         url: https://en.wikipedia.org/w/api.php
+///         query:
+///             action: opensearch
+///             search: ${currentTime.body.dayOfWeek}
+///     result: wikiResult
+/// - returnOutput:
+///     return: ${wikiResult.body[1]}
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -581,62 +615,53 @@ import 'workflow_state.dart';
 ///
 /// });
 /// ```
-/// ```go
-/// package main
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
 ///
-/// import (
-/// 	"fmt"
+/// data "gcp_organizations_project" "project" {
+/// }
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workflows"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// resource "gcp_tags_tag_key" "tag_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent     ="projects/${data.gcp_organizations_project.project.number}"
+///   short_name = "tag_key"
 /// }
-/// tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
-/// Parent: pulumi.Sprintf("projects/%v", project.Number),
-/// ShortName: pulumi.String("tag_key"),
-/// })
-/// if err != nil {
-/// return err
+/// resource "gcp_tags_tag_value" "tag_value" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent     ="tagKeys/${gcp_tags_tag_key.tag_key.name}"
+///   short_name = "tag_value"
 /// }
-/// tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
-/// Parent: tagKey.Name.ApplyT(func(name string) (string, error) {
-/// return fmt.Sprintf("tagKeys/%v", name), nil
-/// }).(pulumi.StringOutput),
-/// ShortName: pulumi.String("tag_value"),
-/// })
-/// if err != nil {
-/// return err
+/// resource "gcp_serviceaccount_account" "test_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   account_id   = "my-account"
+///   display_name = "Test Service Account"
 /// }
-/// testAccount, err := serviceaccount.NewAccount(ctx, "test_account", &serviceaccount.AccountArgs{
-/// AccountId: pulumi.String("my-account"),
-/// DisplayName: pulumi.String("Test Service Account"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = workflows.NewWorkflow(ctx, "example", &workflows.WorkflowArgs{
-/// Name: pulumi.String("workflow"),
-/// Region: pulumi.String("us-central1"),
-/// Description: pulumi.String("Magic"),
-/// ServiceAccount: testAccount.ID().ToIDOutput().ToStringOutput(),
-/// DeletionProtection: pulumi.Bool(false),
-/// Tags: pulumi.All(tagKey.ShortName,tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
-/// tagKeyShortName := _args[0].(string)
-/// tagValueShortName := _args[1].(string)
-/// return map[string]string{
-/// fmt.Sprintf("%v/%v", project.ProjectId, tagKeyShortName): tagValueShortName,
-/// }, nil
-/// }).(pulumi.Map[string]stringOutput),
-/// SourceContents: pulumi.String(`# This is a sample workflow. You can replace it with your source code.
+/// resource "gcp_workflows_workflow" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                = "workflow"
+///   region              = "us-central1"
+///   description         = "Magic"
+///   service_account     = gcp_serviceaccount_account.test_account.id
+///   deletion_protection = false
+///   tags = {
+///     "${data.gcp_organizations_project.project.project_id}/${gcp_tags_tag_key.tag_key.short_name}" = gcp_tags_tag_value.tag_value.short_name
+///   }
+///   source_contents = <<-EOF
+/// # This is a sample workflow. You can replace it with your source code.
 /// #
 /// # This workflow does the following:
 /// # - reads current time and date information from an external API and stores
@@ -662,49 +687,8 @@ import 'workflow_state.dart';
 ///     result: wikiResult
 /// - returnOutput:
 ///     return: ${wikiResult.body[1]}
-/// `),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```hcl
-/// pulumi {
-///   required_providers {
-///     gcp = {
-///       source = "pulumi/gcp"
-///     }
-///   }
-/// }
+/// EOF
 ///
-/// data "gcp_organizations_getproject" "project" {
-/// }
-///
-/// resource "gcp_tags_tagkey" "tag_key" {
-///   parent     ="projects/${data.gcp_organizations_getproject.project.number}"
-///   short_name = "tag_key"
-/// }
-/// resource "gcp_tags_tagvalue" "tag_value" {
-///   parent     ="tagKeys/${gcp_tags_tagkey.tag_key.name}"
-///   short_name = "tag_value"
-/// }
-/// resource "gcp_serviceaccount_account" "test_account" {
-///   account_id   = "my-account"
-///   display_name = "Test Service Account"
-/// }
-/// resource "gcp_workflows_workflow" "example" {
-///   name                = "workflow"
-///   region              = "us-central1"
-///   description         = "Magic"
-///   service_account     = gcp_serviceaccount_account.test_account.id
-///   deletion_protection = false
-///   tags = {
-///     "${data.gcp_organizations_getproject.project.project_id}/${gcp_tags_tagkey.tag_key.short_name}" = gcp_tags_tagvalue.tag_value.short_name
-///   }
-///   source_contents = "# This is a sample workflow. You can replace it with your source code.\n#\n# This workflow does the following:\n# - reads current time and date information from an external API and stores\n#   the response in currentTime variable\n# - retrieves a list of Wikipedia articles related to the day of the week\n#   from currentTime\n# - returns the list of articles as an output of the workflow\n#\n# Note: In Terraform you need to escape the $$ or it will cause errors.\n\n- getCurrentTime:\n    call: http.get\n    args:\n        url: $${sys.get_env(\\\"url\\\")}\n    result: currentTime\n- readWikipedia:\n    call: http.get\n    args:\n        url: https://en.wikipedia.org/w/api.php\n        query:\n            action: opensearch\n            search: $${currentTime.body.dayOfWeek}\n    result: wikiResult\n- returnOutput:\n    return: $${wikiResult.body[1]}\n"
 /// }
 /// ```
 /// ```java
@@ -930,7 +914,7 @@ class Workflow extends pulumi.CustomResource {
   late final pulumi.Output<String> serviceAccount;
   /// Workflow code to be executed. The size limit is 128KB.
   /// &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
-  late final pulumi.Output<String?> sourceContents;
+  late final pulumi.Output<String> sourceContents;
   /// State of the workflow deployment.
   late final pulumi.Output<String> state;
   /// A map of resource manager tags. Resource manager tag keys and values have the same definition
@@ -954,7 +938,7 @@ class Workflow extends pulumi.CustomResource {
           'gcp:workflows/workflow:Workflow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     callLogLevel = registerOutput<String?>('callLogLevel');
@@ -973,7 +957,7 @@ class Workflow extends pulumi.CustomResource {
     region = registerOutput<String?>('region');
     revisionId = registerOutput<String>('revisionId');
     serviceAccount = registerOutput<String>('serviceAccount');
-    sourceContents = registerOutput<String?>('sourceContents');
+    sourceContents = registerOutput<String>('sourceContents');
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
@@ -1020,7 +1004,7 @@ class Workflow extends pulumi.CustomResource {
     region = registerOutput<String?>('region');
     revisionId = registerOutput<String>('revisionId');
     serviceAccount = registerOutput<String>('serviceAccount');
-    sourceContents = registerOutput<String?>('sourceContents');
+    sourceContents = registerOutput<String>('sourceContents');
     this.state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
@@ -1053,7 +1037,7 @@ class Workflow extends pulumi.CustomResource {
     region = registerOutput<String?>('region');
     revisionId = registerOutput<String>('revisionId');
     serviceAccount = registerOutput<String>('serviceAccount');
-    sourceContents = registerOutput<String?>('sourceContents');
+    sourceContents = registerOutput<String>('sourceContents');
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');

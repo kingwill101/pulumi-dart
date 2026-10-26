@@ -91,8 +91,8 @@ import 'key_ring_iambinding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -119,7 +119,7 @@ import 'key_ring_iambinding_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kms.NewKeyRingIAMPolicy(ctx, "key_ring", &kms.KeyRingIAMPolicyArgs{
-/// 			KeyRingId:  keyring.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRingId:  keyring.ID(),
 /// 			PolicyData: pulumi.String(admin.PolicyData),
 /// 		})
 /// 		if err != nil {
@@ -130,7 +130,7 @@ import 'key_ring_iambinding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -138,20 +138,26 @@ import 'key_ring_iambinding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/editor"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_kms_keyring" "keyring" {
+/// resource "gcp_kms_key_ring" "keyring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "keyring-example"
 ///   location = "global"
 /// }
-/// resource "gcp_kms_keyringiampolicy" "key_ring" {
-///   key_ring_id = gcp_kms_keyring.keyring.id
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// resource "gcp_kms_key_ring_i_a_m_policy" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_ring_id = gcp_kms_key_ring.keyring.id
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -319,8 +325,8 @@ import 'key_ring_iambinding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -352,7 +358,7 @@ import 'key_ring_iambinding_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kms.NewKeyRingIAMPolicy(ctx, "key_ring", &kms.KeyRingIAMPolicyArgs{
-/// 			KeyRingId:  keyring.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRingId:  keyring.ID(),
 /// 			PolicyData: pulumi.String(admin.PolicyData),
 /// 		})
 /// 		if err != nil {
@@ -363,7 +369,7 @@ import 'key_ring_iambinding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -371,7 +377,7 @@ import 'key_ring_iambinding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/editor"
 ///     members = ["user:jane@example.com"]
@@ -383,13 +389,19 @@ import 'key_ring_iambinding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_keyring" "keyring" {
+/// resource "gcp_kms_key_ring" "keyring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "keyring-example"
 ///   location = "global"
 /// }
-/// resource "gcp_kms_keyringiampolicy" "key_ring" {
-///   key_ring_id = gcp_kms_keyring.keyring.id
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// resource "gcp_kms_key_ring_i_a_m_policy" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_ring_id = gcp_kms_key_ring.keyring.id
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -519,7 +531,7 @@ import 'key_ring_iambinding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -540,7 +552,7 @@ import 'key_ring_iambinding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -548,7 +560,10 @@ import 'key_ring_iambinding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_keyringiambinding" "key_ring" {
+/// resource "gcp_kms_key_ring_i_a_m_binding" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_ring_id = "your-key-ring-id"
 ///   role        = "roles/cloudkms.admin"
 ///   members     = ["user:jane@example.com"]
@@ -659,7 +674,7 @@ import 'key_ring_iambinding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -685,7 +700,7 @@ import 'key_ring_iambinding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -693,7 +708,10 @@ import 'key_ring_iambinding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_keyringiambinding" "key_ring" {
+/// resource "gcp_kms_key_ring_i_a_m_binding" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_ring_id = "your-key-ring-id"
 ///   role        = "roles/cloudkms.admin"
 ///   members     = ["user:jane@example.com"]
@@ -800,7 +818,7 @@ import 'key_ring_iambinding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -819,7 +837,7 @@ import 'key_ring_iambinding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -827,7 +845,10 @@ import 'key_ring_iambinding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_keyringiammember" "key_ring" {
+/// resource "gcp_kms_key_ring_i_a_m_member" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_ring_id = "your-key-ring-id"
 ///   role        = "roles/cloudkms.admin"
 ///   member      = "user:jane@example.com"
@@ -934,7 +955,7 @@ import 'key_ring_iambinding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -958,7 +979,7 @@ import 'key_ring_iambinding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -966,7 +987,10 @@ import 'key_ring_iambinding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_keyringiammember" "key_ring" {
+/// resource "gcp_kms_key_ring_i_a_m_member" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_ring_id = "your-key-ring-id"
 ///   role        = "roles/cloudkms.admin"
 ///   member      = "user:jane@example.com"
@@ -1075,7 +1099,7 @@ import 'key_ring_iambinding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1096,7 +1120,7 @@ import 'key_ring_iambinding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1104,7 +1128,10 @@ import 'key_ring_iambinding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_keyringiambinding" "key_ring" {
+/// resource "gcp_kms_key_ring_i_a_m_binding" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_ring_id = "your-key-ring-id"
 ///   role        = "roles/cloudkms.admin"
 ///   members     = ["user:jane@example.com"]
@@ -1215,7 +1242,7 @@ import 'key_ring_iambinding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1241,7 +1268,7 @@ import 'key_ring_iambinding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1249,7 +1276,10 @@ import 'key_ring_iambinding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_keyringiambinding" "key_ring" {
+/// resource "gcp_kms_key_ring_i_a_m_binding" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_ring_id = "your-key-ring-id"
 ///   role        = "roles/cloudkms.admin"
 ///   members     = ["user:jane@example.com"]
@@ -1356,7 +1386,7 @@ import 'key_ring_iambinding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1375,7 +1405,7 @@ import 'key_ring_iambinding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1383,7 +1413,10 @@ import 'key_ring_iambinding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_keyringiammember" "key_ring" {
+/// resource "gcp_kms_key_ring_i_a_m_member" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_ring_id = "your-key-ring-id"
 ///   role        = "roles/cloudkms.admin"
 ///   member      = "user:jane@example.com"
@@ -1490,7 +1523,7 @@ import 'key_ring_iambinding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1514,7 +1547,7 @@ import 'key_ring_iambinding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1522,7 +1555,10 @@ import 'key_ring_iambinding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_keyringiammember" "key_ring" {
+/// resource "gcp_kms_key_ring_i_a_m_member" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_ring_id = "your-key-ring-id"
 ///   role        = "roles/cloudkms.admin"
 ///   member      = "user:jane@example.com"
@@ -1623,7 +1659,7 @@ class KeyRingIAMBinding extends pulumi.CustomResource {
           'gcp:kms/keyRingIAMBinding:KeyRingIAMBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     condition = registerOutput<KeyRingIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyRingIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

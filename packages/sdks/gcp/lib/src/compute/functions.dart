@@ -140,6 +140,8 @@ import 'get_security_policy_args.dart';
 import 'get_security_policy_result.dart';
 import 'get_service_attachment_args.dart';
 import 'get_service_attachment_result.dart';
+import 'get_service_attachments_args.dart';
+import 'get_service_attachments_result.dart';
 import 'get_snapshot_args.dart';
 import 'get_snapshot_iam_policy_args.dart';
 import 'get_snapshot_iam_policy_result.dart';
@@ -248,8 +250,8 @@ import 'router_status_result.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -287,7 +289,7 @@ import 'router_status_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -295,18 +297,24 @@ import 'router_status_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getaddress" "myAddress" {
+/// data "gcp_compute_address" "myAddress" {
 ///   name = "foobar"
 /// }
 ///
-/// resource "gcp_dns_recordset" "frontend" {
-///   name         ="frontend.${gcp_dns_managedzone.prod.dns_name}"
+/// resource "gcp_dns_record_set" "frontend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name         ="frontend.${gcp_dns_managed_zone.prod.dns_name}"
 ///   type         = "A"
 ///   ttl          = 300
-///   managed_zone = gcp_dns_managedzone.prod.name
-///   rrdatas      = [data.gcp_compute_getaddress.myAddress.address]
+///   managed_zone = gcp_dns_managed_zone.prod.name
+///   rrdatas      = [data.gcp_compute_address.myAddress.address]
 /// }
-/// resource "gcp_dns_managedzone" "prod" {
+/// resource "gcp_dns_managed_zone" "prod" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "prod-zone"
 ///   dns_name = "prod.mydomain.com."
 /// }
@@ -482,8 +490,8 @@ pulumi.Output<GetAddressResult> getAddressOutput(
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -523,7 +531,7 @@ pulumi.Output<GetAddressResult> getAddressOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -531,18 +539,24 @@ pulumi.Output<GetAddressResult> getAddressOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getaddresses" "test" {
+/// data "gcp_compute_addresses" "test" {
 ///   filter = "name:test-*"
 /// }
 ///
-/// resource "gcp_dns_recordset" "frontend" {
-///   name         ="frontend.${gcp_dns_managedzone.prod.dns_name}"
+/// resource "gcp_dns_record_set" "frontend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name         ="frontend.${gcp_dns_managed_zone.prod.dns_name}"
 ///   type         = "A"
 ///   ttl          = 300
-///   managed_zone = gcp_dns_managedzone.prod.name
-///   rrdatas      = data.gcp_compute_getaddresses.test.addresses[*].address
+///   managed_zone = gcp_dns_managed_zone.prod.name
+///   rrdatas      = data.gcp_compute_addresses.test.addresses[*].address
 /// }
-/// resource "gcp_dns_managedzone" "prod" {
+/// resource "gcp_dns_managed_zone" "prod" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "prod-zone"
 ///   dns_name = "prod.mydomain.com."
 /// }
@@ -656,7 +670,7 @@ pulumi.Output<GetAddressesResult> getAddressesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -673,7 +687,7 @@ pulumi.Output<GetAddressesResult> getAddressesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -681,7 +695,7 @@ pulumi.Output<GetAddressesResult> getAddressesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getbackendbucket" "my-backend-bucket" {
+/// data "gcp_compute_backend_bucket" "my-backend-bucket" {
 ///   name = "my-backend"
 /// }
 /// ```
@@ -791,7 +805,7 @@ pulumi.Output<GetBackendBucketResult> getBackendBucketOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -809,7 +823,7 @@ pulumi.Output<GetBackendBucketResult> getBackendBucketOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -817,7 +831,7 @@ pulumi.Output<GetBackendBucketResult> getBackendBucketOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getbackendbucketiampolicy" "policy" {
+/// data "gcp_compute_backend_bucket_iam_policy" "policy" {
 ///   project = imageBackend.project
 ///   name    = imageBackend.name
 /// }
@@ -939,7 +953,7 @@ pulumi.Output<GetBackendBucketIamPolicyResult> getBackendBucketIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -963,7 +977,7 @@ pulumi.Output<GetBackendBucketIamPolicyResult> getBackendBucketIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -971,13 +985,16 @@ pulumi.Output<GetBackendBucketIamPolicyResult> getBackendBucketIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getbackendservice" "baz" {
+/// data "gcp_compute_backend_service" "baz" {
 ///   name = "foobar"
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "backend-service"
-///   health_checks = data.gcp_compute_getbackendservice.baz.health_checks[0]
+///   health_checks = data.gcp_compute_backend_service.baz.health_checks[0]
 /// }
 /// ```
 /// ```java
@@ -1099,7 +1116,7 @@ pulumi.Output<GetBackendServiceResult> getBackendServiceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1117,7 +1134,7 @@ pulumi.Output<GetBackendServiceResult> getBackendServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1125,7 +1142,7 @@ pulumi.Output<GetBackendServiceResult> getBackendServiceOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getbackendserviceiampolicy" "policy" {
+/// data "gcp_compute_backend_service_iam_policy" "policy" {
 ///   project = default.project
 ///   name    = default.name
 /// }
@@ -1244,7 +1261,7 @@ pulumi.Output<GetBackendServiceIamPolicyResult> getBackendServiceIamPolicyOutput
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1264,7 +1281,7 @@ pulumi.Output<GetBackendServiceIamPolicyResult> getBackendServiceIamPolicyOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1272,18 +1289,18 @@ pulumi.Output<GetBackendServiceIamPolicyResult> getBackendServiceIamPolicyOutput
 ///   }
 /// }
 ///
-/// data "gcp_compute_getcertificate" "myCert" {
+/// data "gcp_compute_certificate" "myCert" {
 ///   name = "my-cert"
 /// }
 ///
 /// output "certificate" {
-///   value = data.gcp_compute_getcertificate.myCert.certificate
+///   value = data.gcp_compute_certificate.myCert.certificate
 /// }
 /// output "certificateId" {
-///   value = data.gcp_compute_getcertificate.myCert.certificate_id
+///   value = data.gcp_compute_certificate.myCert.certificate_id
 /// }
 /// output "selfLink" {
-///   value = data.gcp_compute_getcertificate.myCert.self_link
+///   value = data.gcp_compute_certificate.myCert.self_link
 /// }
 /// ```
 /// ```java
@@ -1394,7 +1411,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1410,7 +1427,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1418,11 +1435,11 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getdefaultserviceaccount" "default" {
+/// data "gcp_compute_default_service_account" "default" {
 /// }
 ///
 /// output "defaultAccount" {
-///   value = data.gcp_compute_getdefaultserviceaccount.default.email
+///   value = data.gcp_compute_default_service_account.default.email
 /// }
 /// ```
 /// ```java
@@ -1548,7 +1565,7 @@ pulumi.Output<GetDefaultServiceAccountResult> getDefaultServiceAccountOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1575,7 +1592,7 @@ pulumi.Output<GetDefaultServiceAccountResult> getDefaultServiceAccountOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1583,14 +1600,17 @@ pulumi.Output<GetDefaultServiceAccountResult> getDefaultServiceAccountOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getdisk" "persistent-boot-disk" {
+/// data "gcp_compute_disk" "persistent-boot-disk" {
 ///   name    = "persistent-boot-disk"
 ///   project = "example"
 /// }
 ///
 /// resource "gcp_compute_instance" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   boot_disk = {
-///     source      = data.gcp_compute_getdisk.persistent-boot-disk.self_link
+///     source      = data.gcp_compute_disk.persistent-boot-disk.self_link
 ///     auto_delete = false
 ///   }
 /// }
@@ -1721,7 +1741,7 @@ pulumi.Output<GetDiskResult> getDiskOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1740,7 +1760,7 @@ pulumi.Output<GetDiskResult> getDiskOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1748,7 +1768,7 @@ pulumi.Output<GetDiskResult> getDiskOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getdiskiampolicy" "policy" {
+/// data "gcp_compute_disk_iam_policy" "policy" {
 ///   project = default.project
 ///   zone    = default.zone
 ///   name    = default.name
@@ -1859,7 +1879,7 @@ pulumi.Output<GetDiskIamPolicyResult> getDiskIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1876,7 +1896,7 @@ pulumi.Output<GetDiskIamPolicyResult> getDiskIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1884,7 +1904,7 @@ pulumi.Output<GetDiskIamPolicyResult> getDiskIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getfirewallpolicyiampolicy" "policy" {
+/// data "gcp_compute_firewall_policy_iam_policy" "policy" {
 ///   name = default.name
 /// }
 /// ```
@@ -1988,7 +2008,7 @@ pulumi.Output<GetFirewallPolicyIamPolicyResult> getFirewallPolicyIamPolicyOutput
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2005,7 +2025,7 @@ pulumi.Output<GetFirewallPolicyIamPolicyResult> getFirewallPolicyIamPolicyOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2013,7 +2033,7 @@ pulumi.Output<GetFirewallPolicyIamPolicyResult> getFirewallPolicyIamPolicyOutput
 ///   }
 /// }
 ///
-/// data "gcp_compute_getforwardingrule" "my-forwarding-rule" {
+/// data "gcp_compute_forwarding_rule" "my-forwarding-rule" {
 ///   name = "forwarding-rule-us-east1"
 /// }
 /// ```
@@ -2120,7 +2140,7 @@ pulumi.Output<GetForwardingRuleResult> getForwardingRuleOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2138,7 +2158,7 @@ pulumi.Output<GetForwardingRuleResult> getForwardingRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2146,7 +2166,7 @@ pulumi.Output<GetForwardingRuleResult> getForwardingRuleOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getforwardingrules" "my-forwarding-rules" {
+/// data "gcp_compute_forwarding_rules" "my-forwarding-rules" {
 ///   project = "my-cloud-project"
 ///   region  = "us-central1"
 /// }
@@ -2294,8 +2314,8 @@ pulumi.Output<GetForwardingRulesResult> getForwardingRulesOutput(
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2333,7 +2353,7 @@ pulumi.Output<GetForwardingRulesResult> getForwardingRulesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2341,18 +2361,24 @@ pulumi.Output<GetForwardingRulesResult> getForwardingRulesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getglobaladdress" "myAddress" {
+/// data "gcp_compute_global_address" "myAddress" {
 ///   name = "foobar"
 /// }
 ///
-/// resource "gcp_dns_recordset" "frontend" {
-///   name         ="lb.${gcp_dns_managedzone.prod.dns_name}"
+/// resource "gcp_dns_record_set" "frontend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name         ="lb.${gcp_dns_managed_zone.prod.dns_name}"
 ///   type         = "A"
 ///   ttl          = 300
-///   managed_zone = gcp_dns_managedzone.prod.name
-///   rrdatas      = [data.gcp_compute_getglobaladdress.myAddress.address]
+///   managed_zone = gcp_dns_managed_zone.prod.name
+///   rrdatas      = [data.gcp_compute_global_address.myAddress.address]
 /// }
-/// resource "gcp_dns_managedzone" "prod" {
+/// resource "gcp_dns_managed_zone" "prod" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "prod-zone"
 ///   dns_name = "prod.mydomain.com."
 /// }
@@ -2489,7 +2515,7 @@ pulumi.Output<GetGlobalAddressResult> getGlobalAddressOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2506,7 +2532,7 @@ pulumi.Output<GetGlobalAddressResult> getGlobalAddressOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2514,7 +2540,7 @@ pulumi.Output<GetGlobalAddressResult> getGlobalAddressOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getglobalforwardingrule" "my-forwarding-rule" {
+/// data "gcp_compute_global_forwarding_rule" "my-forwarding-rule" {
 ///   name = "forwarding-rule-global"
 /// }
 /// ```
@@ -2618,7 +2644,7 @@ pulumi.Output<GetGlobalForwardingRuleResult> getGlobalForwardingRuleOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2635,7 +2661,7 @@ pulumi.Output<GetGlobalForwardingRuleResult> getGlobalForwardingRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2643,7 +2669,7 @@ pulumi.Output<GetGlobalForwardingRuleResult> getGlobalForwardingRuleOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_gethcvpngateway" "gateway" {
+/// data "gcp_compute_hc_vpn_gateway" "gateway" {
 ///   name = "foobar"
 /// }
 /// ```
@@ -2747,7 +2773,7 @@ pulumi.Output<GetHcVpnGatewayResult> getHcVpnGatewayOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2764,7 +2790,7 @@ pulumi.Output<GetHcVpnGatewayResult> getHcVpnGatewayOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2772,7 +2798,7 @@ pulumi.Output<GetHcVpnGatewayResult> getHcVpnGatewayOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_gethealthcheck" "healthCheck" {
+/// data "gcp_compute_health_check" "healthCheck" {
 ///   name = "my-hc"
 /// }
 /// ```
@@ -2901,7 +2927,7 @@ pulumi.Output<GetHealthCheckResult> getHealthCheckOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2929,7 +2955,7 @@ pulumi.Output<GetHealthCheckResult> getHealthCheckOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2937,15 +2963,18 @@ pulumi.Output<GetHealthCheckResult> getHealthCheckOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "myImage" {
+/// data "gcp_compute_image" "myImage" {
 ///   family  = "debian-11"
 ///   project = "debian-cloud"
 /// }
 ///
 /// resource "gcp_compute_instance" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = data.gcp_compute_getimage.myImage.self_link
+///       image = data.gcp_compute_image.myImage.self_link
 ///     }
 ///   }
 /// }
@@ -3075,7 +3104,7 @@ pulumi.Output<GetImageResult> getImageOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3093,7 +3122,7 @@ pulumi.Output<GetImageResult> getImageOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3101,7 +3130,7 @@ pulumi.Output<GetImageResult> getImageOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimageiampolicy" "policy" {
+/// data "gcp_compute_image_iam_policy" "policy" {
 ///   project = example.project
 ///   image   = example.name
 /// }
@@ -3255,7 +3284,7 @@ pulumi.Output<GetImageIamPolicyResult> getImageIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3290,7 +3319,7 @@ pulumi.Output<GetImageIamPolicyResult> getImageIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3298,17 +3327,20 @@ pulumi.Output<GetImageIamPolicyResult> getImageIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimages" "debian" {
+/// data "gcp_compute_images" "debian" {
 ///   filter = "name eq my-image.*"
 /// }
 ///
 /// resource "gcp_compute_instance" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "test"
 ///   machine_type = "f1-micro"
 ///   zone         = "us-central1-a"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = data.gcp_compute_getimages.debian.images[0].self_link
+///       image = data.gcp_compute_images.debian.images[0].self_link
 ///     }
 ///   }
 ///   network_interfaces {
@@ -3454,7 +3486,7 @@ pulumi.Output<GetImagesResult> getImagesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3472,7 +3504,7 @@ pulumi.Output<GetImagesResult> getImagesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3480,7 +3512,7 @@ pulumi.Output<GetImagesResult> getImagesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getinstance" "appserver" {
+/// data "gcp_compute_instance" "appserver" {
 ///   name = "primary-application-server"
 ///   zone = "us-central1-a"
 /// }
@@ -3590,7 +3622,7 @@ pulumi.Output<GetInstanceResult> getInstanceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3608,7 +3640,7 @@ pulumi.Output<GetInstanceResult> getInstanceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3616,7 +3648,7 @@ pulumi.Output<GetInstanceResult> getInstanceOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getinstancegroup" "all" {
+/// data "gcp_compute_instance_group" "all" {
 ///   name = "instance-group-name"
 ///   zone = "us-central1-a"
 /// }
@@ -3737,7 +3769,7 @@ pulumi.Output<GetInstanceGroupResult> getInstanceGroupOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3761,7 +3793,7 @@ pulumi.Output<GetInstanceGroupResult> getInstanceGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3769,11 +3801,11 @@ pulumi.Output<GetInstanceGroupResult> getInstanceGroupOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getinstancegroupmanager" "igm1" {
+/// data "gcp_compute_instance_group_manager" "igm1" {
 ///   name = "my-igm"
 ///   zone = "us-central1-a"
 /// }
-/// data "gcp_compute_getinstancegroupmanager" "igm2" {
+/// data "gcp_compute_instance_group_manager" "igm2" {
 ///   self_link = "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm"
 /// }
 /// ```
@@ -3889,7 +3921,7 @@ pulumi.Output<GetInstanceGroupManagerResult> getInstanceGroupManagerOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3906,7 +3938,7 @@ pulumi.Output<GetInstanceGroupManagerResult> getInstanceGroupManagerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3914,7 +3946,7 @@ pulumi.Output<GetInstanceGroupManagerResult> getInstanceGroupManagerOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getinstancegroups" "all" {
+/// data "gcp_compute_instance_groups" "all" {
 ///   zone = "us-central1-a"
 /// }
 /// ```
@@ -4033,7 +4065,7 @@ pulumi.Output<GetInstanceGroupsResult> getInstanceGroupsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4052,7 +4084,7 @@ pulumi.Output<GetInstanceGroupsResult> getInstanceGroupsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4060,7 +4092,7 @@ pulumi.Output<GetInstanceGroupsResult> getInstanceGroupsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getinstanceguestattributes" "appserverGa" {
+/// data "gcp_compute_instance_guest_attributes" "appserverGa" {
 ///   name       = "primary-application-server"
 ///   zone       = "us-central1-a"
 ///   query_path = "variables/"
@@ -4150,7 +4182,7 @@ pulumi.Output<GetInstanceGroupsResult> getInstanceGroupsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4169,7 +4201,7 @@ pulumi.Output<GetInstanceGroupsResult> getInstanceGroupsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4177,7 +4209,7 @@ pulumi.Output<GetInstanceGroupsResult> getInstanceGroupsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getinstanceguestattributes" "appserverGa" {
+/// data "gcp_compute_instance_guest_attributes" "appserverGa" {
 ///   name         = "primary-application-server"
 ///   zone         = "us-central1-a"
 ///   variable_key = "variables/key1"
@@ -4294,7 +4326,7 @@ pulumi.Output<GetInstanceGuestAttributesResult> getInstanceGuestAttributesOutput
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4313,7 +4345,7 @@ pulumi.Output<GetInstanceGuestAttributesResult> getInstanceGuestAttributesOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4321,7 +4353,7 @@ pulumi.Output<GetInstanceGuestAttributesResult> getInstanceGuestAttributesOutput
 ///   }
 /// }
 ///
-/// data "gcp_compute_getinstanceiampolicy" "policy" {
+/// data "gcp_compute_instance_iam_policy" "policy" {
 ///   project       = default.project
 ///   zone          = default.zone
 ///   instance_name = default.name
@@ -4444,7 +4476,7 @@ pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4464,7 +4496,7 @@ pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4472,14 +4504,14 @@ pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getinstanceserialport" "serial" {
+/// data "gcp_compute_instance_serial_port" "serial" {
 ///   instance = "my-instance"
 ///   zone     = "us-central1-a"
 ///   port     = 1
 /// }
 ///
 /// output "serialOut" {
-///   value = data.gcp_compute_getinstanceserialport.serial.contents
+///   value = data.gcp_compute_instance_serial_port.serial.contents
 /// }
 /// ```
 /// ```java
@@ -4686,7 +4718,7 @@ pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4746,7 +4778,7 @@ pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4754,13 +4786,16 @@ pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getinstanceserialport" "serial" {
+/// data "gcp_compute_instance_serial_port" "serial" {
 ///   instance = gcp_compute_instance.windows.name
 ///   zone     = gcp_compute_instance.windows.zone
 ///   port     = 4
 /// }
 ///
 /// resource "gcp_compute_instance" "windows" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
@@ -4789,7 +4824,7 @@ pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
 ///   }
 /// }
 /// output "serialOut" {
-///   value = data.gcp_compute_getinstanceserialport.serial.contents
+///   value = data.gcp_compute_instance_serial_port.serial.contents
 /// }
 /// ```
 /// ```java
@@ -5004,7 +5039,7 @@ pulumi.Output<GetInstanceTemplateResult> getInstanceTemplateOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5022,7 +5057,7 @@ pulumi.Output<GetInstanceTemplateResult> getInstanceTemplateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -5030,7 +5065,7 @@ pulumi.Output<GetInstanceTemplateResult> getInstanceTemplateOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getinstancetemplateiampolicy" "policy" {
+/// data "gcp_compute_instance_template_iam_policy" "policy" {
 ///   project = default.project
 ///   name    = default.name
 /// }
@@ -5144,7 +5179,7 @@ pulumi.Output<GetInstanceTemplateIamPolicyResult> getInstanceTemplateIamPolicyOu
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5163,7 +5198,7 @@ pulumi.Output<GetInstanceTemplateIamPolicyResult> getInstanceTemplateIamPolicyOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -5171,7 +5206,7 @@ pulumi.Output<GetInstanceTemplateIamPolicyResult> getInstanceTemplateIamPolicyOu
 ///   }
 /// }
 ///
-/// data "gcp_compute_getinstantsnapshotiampolicy" "policy" {
+/// data "gcp_compute_instant_snapshot_iam_policy" "policy" {
 ///   project = default.project
 ///   zone    = default.zone
 ///   name    = default.name
@@ -5298,7 +5333,7 @@ pulumi.Output<GetInstantSnapshotIamPolicyResult> getInstantSnapshotIamPolicyOutp
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5323,7 +5358,7 @@ pulumi.Output<GetInstantSnapshotIamPolicyResult> getInstantSnapshotIamPolicyOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -5331,13 +5366,16 @@ pulumi.Output<GetInstantSnapshotIamPolicyResult> getInstantSnapshotIamPolicyOutp
 ///   }
 /// }
 ///
-/// data "gcp_compute_getinterconnectlocation" "this" {
+/// data "gcp_compute_interconnect_location" "this" {
 ///   name = "iad-zone1-1"
 /// }
 ///
 /// resource "gcp_compute_interconnect" "this" {
-///   project  = data.gcp_compute_getinterconnectlocation.this.project
-///   location = data.gcp_compute_getinterconnectlocation.this.self_link
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project  = data.gcp_compute_interconnect_location.this.project
+///   location = data.gcp_compute_interconnect_location.this.self_link
 ///   name     = "my-dedicated-connection-1"
 /// }
 /// ```
@@ -5459,7 +5497,7 @@ pulumi.Output<GetInterconnectLocationResult> getInterconnectLocationOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5475,7 +5513,7 @@ pulumi.Output<GetInterconnectLocationResult> getInterconnectLocationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -5483,11 +5521,11 @@ pulumi.Output<GetInterconnectLocationResult> getInterconnectLocationOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getinterconnectlocations" "all" {
+/// data "gcp_compute_interconnect_locations" "all" {
 /// }
 ///
 /// output "interconnectLocations" {
-///   value = data.gcp_compute_getinterconnectlocations.all.locations
+///   value = data.gcp_compute_interconnect_locations.all.locations
 /// }
 /// ```
 /// ```java
@@ -5629,7 +5667,7 @@ pulumi.Output<GetInterconnectLocationsResult> getInterconnectLocationsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5670,7 +5708,7 @@ pulumi.Output<GetInterconnectLocationsResult> getInterconnectLocationsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -5678,17 +5716,20 @@ pulumi.Output<GetInterconnectLocationsResult> getInterconnectLocationsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getlbipranges" "ranges" {
+/// data "gcp_compute_l_b_i_p_ranges" "ranges" {
 /// }
 ///
 /// resource "gcp_compute_firewall" "lb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "lb-firewall"
 ///   network = main.name
 ///   allows {
 ///     protocol = "tcp"
 ///     ports    = ["80"]
 ///   }
-///   source_ranges = data.gcp_compute_getlbipranges.ranges.networks
+///   source_ranges = data.gcp_compute_l_b_i_p_ranges.ranges.networks
 ///   target_tags   = ["InstanceBehindLoadBalancer"]
 /// }
 /// ```
@@ -5820,7 +5861,7 @@ pulumi.Output<GetLBIPRangesResult> getLBIPRangesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5838,7 +5879,7 @@ pulumi.Output<GetLBIPRangesResult> getLBIPRangesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -5846,7 +5887,7 @@ pulumi.Output<GetLBIPRangesResult> getLBIPRangesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getmachineimageiampolicy" "policy" {
+/// data "gcp_compute_machine_image_iam_policy" "policy" {
 ///   project       = image.project
 ///   machine_image = image.name
 /// }
@@ -6014,7 +6055,7 @@ pulumi.Output<GetMachineImageIamPolicyResult> getMachineImageIamPolicyOutput(
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -6051,7 +6092,7 @@ pulumi.Output<GetMachineImageIamPolicyResult> getMachineImageIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -6062,13 +6103,19 @@ pulumi.Output<GetMachineImageIamPolicyResult> getMachineImageIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getmachinetypes" "example" {
+/// data "gcp_compute_machine_types" "example" {
 ///   filter = "memoryMb = 16384 AND guestCpus = 8"
 ///   zone   = zone
 /// }
 ///
-/// resource "gcp_compute_instancetemplate" "example" {
-///   for_each     = toset(data.gcp_compute_getmachinetypes.example.machine_types[*].name)
+/// resource "gcp_compute_instance_template" "example" {
+///   for_each = toset(data.gcp_compute_machine_types.example.machine_types[*].name)
+///   pulumi {
+///     name ="example-${each.key}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   machine_type = each.value
 ///   disks {
 ///     source_image = "debian-cloud/debian-11"
@@ -6273,7 +6320,7 @@ pulumi.Output<GetMachineImageIamPolicyResult> getMachineImageIamPolicyOutput(
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -6285,14 +6332,17 @@ pulumi.Output<GetMachineImageIamPolicyResult> getMachineImageIamPolicyOutput(
 /// }
 ///
 /// data "std_coalescelist" "invoke_0" {
-///   input = [[for mt in data.gcp_compute_getmachinetypes.example.machine_types : mt.name if startswith(mt.name, "c3-")], [for mt in data.gcp_compute_getmachinetypes.example.machine_types : mt.name if startswith(mt.name, "c2-")], [for mt in data.gcp_compute_getmachinetypes.example.machine_types : mt.name if startswith(mt.name, "n2-")]]
+///   input = [[for mt in data.gcp_compute_machine_types.example.machine_types : mt.name if startswith(mt.name, "c3-")], [for mt in data.gcp_compute_machine_types.example.machine_types : mt.name if startswith(mt.name, "c2-")], [for mt in data.gcp_compute_machine_types.example.machine_types : mt.name if startswith(mt.name, "n2-")]]
 /// }
-/// data "gcp_compute_getmachinetypes" "example" {
+/// data "gcp_compute_machine_types" "example" {
 ///   filter = "memoryMb = 16384 AND guestCpus = 4"
 ///   zone   = zone
 /// }
 ///
-/// resource "gcp_compute_instancetemplate" "example" {
+/// resource "gcp_compute_instance_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   machine_type = data.std_coalescelist.invoke_0.result[0]
 ///   disks {
 ///     source_image = "debian-cloud/debian-11"
@@ -6374,7 +6424,7 @@ pulumi.Output<GetMachineTypesResult> getMachineTypesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -6392,7 +6442,7 @@ pulumi.Output<GetMachineTypesResult> getMachineTypesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -6400,17 +6450,17 @@ pulumi.Output<GetMachineTypesResult> getMachineTypesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetblockipranges" "netblock" {
+/// data "gcp_compute_netblock_i_p_ranges" "netblock" {
 /// }
 ///
 /// output "cidrBlocks" {
-///   value = data.gcp_compute_getnetblockipranges.netblock.cidr_blocks
+///   value = data.gcp_compute_netblock_i_p_ranges.netblock.cidr_blocks
 /// }
 /// output "cidrBlocksIpv4" {
-///   value = data.gcp_compute_getnetblockipranges.netblock.cidr_blocks_ipv4s
+///   value = data.gcp_compute_netblock_i_p_ranges.netblock.cidr_blocks_ipv4s
 /// }
 /// output "cidrBlocksIpv6" {
-///   value = data.gcp_compute_getnetblockipranges.netblock.cidr_blocks_ipv6s
+///   value = data.gcp_compute_netblock_i_p_ranges.netblock.cidr_blocks_ipv6s
 /// }
 /// ```
 /// ```java
@@ -6534,7 +6584,7 @@ pulumi.Output<GetMachineTypesResult> getMachineTypesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -6580,7 +6630,7 @@ pulumi.Output<GetMachineTypesResult> getMachineTypesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -6588,20 +6638,26 @@ pulumi.Output<GetMachineTypesResult> getMachineTypesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetblockipranges" "legacy-hcs" {
+/// data "gcp_compute_netblock_i_p_ranges" "legacy-hcs" {
 ///   range_type = "legacy-health-checkers"
 /// }
 ///
 /// resource "gcp_compute_firewall" "allow-hcs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "allow-hcs"
 ///   network = gcp_compute_network.default.name
 ///   allows {
 ///     protocol = "tcp"
 ///     ports    = ["80"]
 ///   }
-///   source_ranges = data.gcp_compute_getnetblockipranges.legacy-hcs.cidr_blocks_ipv4s
+///   source_ranges = data.gcp_compute_netblock_i_p_ranges.legacy-hcs.cidr_blocks_ipv4s
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-network"
 /// }
 /// ```
@@ -6739,7 +6795,7 @@ pulumi.Output<GetNetblockIPRangesResult> getNetblockIPRangesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -6756,7 +6812,7 @@ pulumi.Output<GetNetblockIPRangesResult> getNetblockIPRangesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -6764,7 +6820,7 @@ pulumi.Output<GetNetblockIPRangesResult> getNetblockIPRangesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "my-network" {
+/// data "gcp_compute_network" "my-network" {
 ///   name = "default-us-east1"
 /// }
 /// ```
@@ -6876,7 +6932,7 @@ pulumi.Output<GetNetworkResult> getNetworkOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -6895,7 +6951,7 @@ pulumi.Output<GetNetworkResult> getNetworkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -6903,7 +6959,7 @@ pulumi.Output<GetNetworkResult> getNetworkOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetworkattachment" "default" {
+/// data "gcp_compute_network_attachment" "default" {
 ///   project = "my-project"
 ///   name    = "my-network-attachment"
 ///   region  = "europe-west1"
@@ -7027,7 +7083,7 @@ pulumi.Output<GetNetworkAttachmentResult> getNetworkAttachmentOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -7051,7 +7107,7 @@ pulumi.Output<GetNetworkAttachmentResult> getNetworkAttachmentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -7059,11 +7115,11 @@ pulumi.Output<GetNetworkAttachmentResult> getNetworkAttachmentOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetworkendpointgroup" "neg1" {
+/// data "gcp_compute_network_endpoint_group" "neg1" {
 ///   name = "k8s1-abcdef01-myns-mysvc-8080-4b6bac43"
 ///   zone = "us-central1-a"
 /// }
-/// data "gcp_compute_getnetworkendpointgroup" "neg2" {
+/// data "gcp_compute_network_endpoint_group" "neg2" {
 ///   self_link = "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43"
 /// }
 /// ```
@@ -7182,7 +7238,7 @@ pulumi.Output<GetNetworkEndpointGroupResult> getNetworkEndpointGroupOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -7200,7 +7256,7 @@ pulumi.Output<GetNetworkEndpointGroupResult> getNetworkEndpointGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -7208,7 +7264,7 @@ pulumi.Output<GetNetworkEndpointGroupResult> getNetworkEndpointGroupOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetworkendpointgroups" "negs" {
+/// data "gcp_compute_network_endpoint_groups" "negs" {
 ///   zone   = "us-central1-a"
 ///   filter = "networkEdpointType=GCE_VM_IP_PORT"
 /// }
@@ -7319,7 +7375,7 @@ pulumi.Output<GetNetworkEndpointGroupsResult> getNetworkEndpointGroupsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -7337,7 +7393,7 @@ pulumi.Output<GetNetworkEndpointGroupsResult> getNetworkEndpointGroupsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -7345,7 +7401,7 @@ pulumi.Output<GetNetworkEndpointGroupsResult> getNetworkEndpointGroupsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetworkfirewallpolicyiampolicy" "policy" {
+/// data "gcp_compute_network_firewall_policy_iam_policy" "policy" {
 ///   project = policyGoogleComputeNetworkFirewallPolicy.project
 ///   name    = policyGoogleComputeNetworkFirewallPolicy.name
 /// }
@@ -7516,7 +7572,7 @@ pulumi.Output<GetNetworkFirewallPolicyIamPolicyResult> getNetworkFirewallPolicyI
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -7561,7 +7617,7 @@ pulumi.Output<GetNetworkFirewallPolicyIamPolicyResult> getNetworkFirewallPolicyI
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -7569,26 +7625,38 @@ pulumi.Output<GetNetworkFirewallPolicyIamPolicyResult> getNetworkFirewallPolicyI
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetworkpeering" "peering1Ds" {
-///   name    = gcp_compute_networkpeering.peering1.name
-///   network = gcp_compute_networkpeering.peering1.network
+/// data "gcp_compute_network_peering" "peering1Ds" {
+///   name    = gcp_compute_network_peering.peering1.name
+///   network = gcp_compute_network_peering.peering1.network
 /// }
 ///
-/// resource "gcp_compute_networkpeering" "peering1" {
+/// resource "gcp_compute_network_peering" "peering1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "peering1"
 ///   network      = gcp_compute_network.default.self_link
 ///   peer_network = gcp_compute_network.other.self_link
 /// }
-/// resource "gcp_compute_networkpeering" "peering2" {
+/// resource "gcp_compute_network_peering" "peering2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "peering2"
 ///   network      = gcp_compute_network.other.self_link
 ///   peer_network = gcp_compute_network.default.self_link
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "foobar"
 ///   auto_create_subnetworks = "false"
 /// }
 /// resource "gcp_compute_network" "other" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "other"
 ///   auto_create_subnetworks = "false"
 /// }
@@ -7744,7 +7812,7 @@ pulumi.Output<GetNetworkPeeringResult> getNetworkPeeringOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -7761,7 +7829,7 @@ pulumi.Output<GetNetworkPeeringResult> getNetworkPeeringOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -7769,7 +7837,7 @@ pulumi.Output<GetNetworkPeeringResult> getNetworkPeeringOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetworks" "my-networks" {
+/// data "gcp_compute_networks" "my-networks" {
 ///   project = "my-cloud-project"
 /// }
 /// ```
@@ -7890,7 +7958,7 @@ pulumi.Output<GetNetworksResult> getNetworksOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -7915,7 +7983,7 @@ pulumi.Output<GetNetworksResult> getNetworksOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -7923,11 +7991,14 @@ pulumi.Output<GetNetworksResult> getNetworksOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnodetypes" "central1b" {
+/// data "gcp_compute_node_types" "central1b" {
 ///   zone = "us-central1-b"
 /// }
 ///
-/// resource "gcp_compute_nodetemplate" "tmpl" {
+/// resource "gcp_compute_node_template" "tmpl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "test-tmpl"
 ///   region    = "us-central1"
 ///   node_type = types.names[0]
@@ -8057,7 +8128,7 @@ pulumi.Output<GetNodeTypesResult> getNodeTypesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -8076,7 +8147,7 @@ pulumi.Output<GetNodeTypesResult> getNodeTypesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -8084,7 +8155,7 @@ pulumi.Output<GetNodeTypesResult> getNodeTypesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getregionbackendbucketiampolicy" "policy" {
+/// data "gcp_compute_region_backend_bucket_iam_policy" "policy" {
 ///   project = imageBackend.project
 ///   region  = imageBackend.region
 ///   name    = imageBackend.name
@@ -8199,7 +8270,7 @@ pulumi.Output<GetRegionBackendBucketIamPolicyResult> getRegionBackendBucketIamPo
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -8217,7 +8288,7 @@ pulumi.Output<GetRegionBackendBucketIamPolicyResult> getRegionBackendBucketIamPo
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -8225,7 +8296,7 @@ pulumi.Output<GetRegionBackendBucketIamPolicyResult> getRegionBackendBucketIamPo
 ///   }
 /// }
 ///
-/// data "gcp_compute_getregionbackendservice" "myBackend" {
+/// data "gcp_compute_region_backend_service" "myBackend" {
 ///   name   = "my-backend-service"
 ///   region = "us-central1"
 /// }
@@ -8341,7 +8412,7 @@ pulumi.Output<GetRegionBackendServiceResult> getRegionBackendServiceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -8360,7 +8431,7 @@ pulumi.Output<GetRegionBackendServiceResult> getRegionBackendServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -8368,7 +8439,7 @@ pulumi.Output<GetRegionBackendServiceResult> getRegionBackendServiceOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getregionbackendserviceiampolicy" "policy" {
+/// data "gcp_compute_region_backend_service_iam_policy" "policy" {
 ///   project = default.project
 ///   region  = default.region
 ///   name    = default.name
@@ -8447,8 +8518,117 @@ pulumi.Output<GetRegionBackendServiceIamPolicyResult> getRegionBackendServiceIam
 /// ## Example Usage
 ///
 ///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const disk = gcp.compute.getRegionDisk({
+///     name: "persistent-regional-disk",
+///     project: "example",
+///     region: "us-central1",
+///     type: "pd-ssd",
+///     physicalBlockSizeBytes: 4096,
+///     replicaZones: [
+///         "us-central1-a",
+///         "us-central1-f",
+///     ],
+/// });
+/// const _default = new gcp.compute.Instance("default", {attachedDisks: [{
+///     source: diskGoogleComputeDisk.selfLink,
+/// }]});
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// disk = gcp.compute.get_region_disk(name="persistent-regional-disk",
+///     project="example",
+///     region="us-central1",
+///     type="pd-ssd",
+///     physical_block_size_bytes=4096,
+///     replica_zones=[
+///         "us-central1-a",
+///         "us-central1-f",
+///     ])
+/// default = gcp.compute.Instance("default", attached_disks=[{
+///     "source": disk_google_compute_disk["selfLink"],
+/// }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var disk = Gcp.Compute.GetRegionDisk.Invoke(new()
+///     {
+///         Name = "persistent-regional-disk",
+///         Project = "example",
+///         Region = "us-central1",
+///         Type = "pd-ssd",
+///         PhysicalBlockSizeBytes = 4096,
+///         ReplicaZones = new[]
+///         {
+///             "us-central1-a",
+///             "us-central1-f",
+///         },
+///     });
+///
+///     var @default = new Gcp.Compute.Instance("default", new()
+///     {
+///         AttachedDisks = new[]
+///         {
+///             new Gcp.Compute.Inputs.InstanceAttachedDiskArgs
+///             {
+///                 Source = diskGoogleComputeDisk.SelfLink,
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.LookupRegionDisk(ctx, &compute.LookupRegionDiskArgs{
+/// 			Name:                   "persistent-regional-disk",
+/// 			Project:                pulumi.StringRef("example"),
+/// 			Region:                 pulumi.StringRef("us-central1"),
+/// 			Type:                   "pd-ssd",
+/// 			PhysicalBlockSizeBytes: 4096,
+/// 			ReplicaZones: []string{
+/// 				"us-central1-a",
+/// 				"us-central1-f",
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewInstance(ctx, "default", &compute.InstanceArgs{
+/// 			AttachedDisks: compute.InstanceAttachedDiskArray{
+/// 				&compute.InstanceAttachedDiskArgs{
+/// 					Source: pulumi.Any(diskGoogleComputeDisk.SelfLink),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -8456,7 +8636,7 @@ pulumi.Output<GetRegionBackendServiceIamPolicyResult> getRegionBackendServiceIam
 ///   }
 /// }
 ///
-/// data "gcp_compute_getregiondisk" "disk" {
+/// data "gcp_compute_region_disk" "disk" {
 ///   name                      = "persistent-regional-disk"
 ///   project                   = "example"
 ///   region                    = "us-central1"
@@ -8466,9 +8646,56 @@ pulumi.Output<GetRegionBackendServiceIamPolicyResult> getRegionBackendServiceIam
 /// }
 ///
 /// resource "gcp_compute_instance" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attached_disks {
 ///     source = diskGoogleComputeDisk.selfLink
 ///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetRegionDiskArgs;
+/// import com.pulumi.gcp.compute.Instance;
+/// import com.pulumi.gcp.compute.InstanceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceAttachedDiskArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
+///             .name("persistent-regional-disk")
+///             .project("example")
+///             .region("us-central1")
+///             .type("pd-ssd")
+///             .physicalBlockSizeBytes(4096)
+///             .replicaZones(Arrays.asList(
+///                 "us-central1-a",
+///                 "us-central1-f"))
+///             .build());
+///
+///         var default_ = new Instance("default", InstanceArgs.builder()
+///             .attachedDisks(InstanceAttachedDiskArgs.builder()
+///                 .source(diskGoogleComputeDisk.get("selfLink"))
+///                 .build())
+///             .build());
+///
+///     }
 /// }
 /// ```
 /// ```yaml
@@ -8563,7 +8790,7 @@ pulumi.Output<GetRegionDiskResult> getRegionDiskOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -8582,7 +8809,7 @@ pulumi.Output<GetRegionDiskResult> getRegionDiskOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -8590,7 +8817,7 @@ pulumi.Output<GetRegionDiskResult> getRegionDiskOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getregiondiskiampolicy" "policy" {
+/// data "gcp_compute_region_disk_iam_policy" "policy" {
 ///   project = regiondisk.project
 ///   region  = regiondisk.region
 ///   name    = regiondisk.name
@@ -8699,7 +8926,7 @@ pulumi.Output<GetRegionDiskIamPolicyResult> getRegionDiskIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -8716,7 +8943,7 @@ pulumi.Output<GetRegionDiskIamPolicyResult> getRegionDiskIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -8724,7 +8951,7 @@ pulumi.Output<GetRegionDiskIamPolicyResult> getRegionDiskIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getregioninstancegroup" "group" {
+/// data "gcp_compute_region_instance_group" "group" {
 ///   name = "instance-group-name"
 /// }
 /// ```
@@ -8836,7 +9063,7 @@ pulumi.Output<GetRegionInstanceGroupResult> getRegionInstanceGroupOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -8854,7 +9081,7 @@ pulumi.Output<GetRegionInstanceGroupResult> getRegionInstanceGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -8862,7 +9089,7 @@ pulumi.Output<GetRegionInstanceGroupResult> getRegionInstanceGroupOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getregioninstancegroupmanager" "rigm" {
+/// data "gcp_compute_region_instance_group_manager" "rigm" {
 ///   name   = "my-igm"
 ///   region = "us-central1"
 /// }
@@ -8990,7 +9217,7 @@ pulumi.Output<GetRegionInstanceGroupManagerResult> getRegionInstanceGroupManager
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -9016,7 +9243,7 @@ pulumi.Output<GetRegionInstanceGroupManagerResult> getRegionInstanceGroupManager
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -9024,10 +9251,10 @@ pulumi.Output<GetRegionInstanceGroupManagerResult> getRegionInstanceGroupManager
 ///   }
 /// }
 ///
-/// data "gcp_compute_getregioninstancetemplate" "generic" {
+/// data "gcp_compute_region_instance_template" "generic" {
 ///   name = "generic-tpl-20200107"
 /// }
-/// data "gcp_compute_getregioninstancetemplate" "generic-regex" {
+/// data "gcp_compute_region_instance_template" "generic-regex" {
 ///   filter      = "name != generic-tpl-20200107"
 ///   most_recent = true
 /// }
@@ -9157,7 +9384,7 @@ pulumi.Output<GetRegionInstanceTemplateResult> getRegionInstanceTemplateOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -9176,7 +9403,7 @@ pulumi.Output<GetRegionInstanceTemplateResult> getRegionInstanceTemplateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -9184,7 +9411,7 @@ pulumi.Output<GetRegionInstanceTemplateResult> getRegionInstanceTemplateOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getregioninstantsnapshotiampolicy" "policy" {
+/// data "gcp_compute_region_instant_snapshot_iam_policy" "policy" {
 ///   project = default.project
 ///   region  = default.region
 ///   name    = default.name
@@ -9308,7 +9535,7 @@ pulumi.Output<GetRegionInstantSnapshotIamPolicyResult> getRegionInstantSnapshotI
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -9332,7 +9559,7 @@ pulumi.Output<GetRegionInstantSnapshotIamPolicyResult> getRegionInstantSnapshotI
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -9340,11 +9567,11 @@ pulumi.Output<GetRegionInstantSnapshotIamPolicyResult> getRegionInstantSnapshotI
 ///   }
 /// }
 ///
-/// data "gcp_compute_getregionnetworkendpointgroup" "rneg1" {
+/// data "gcp_compute_region_network_endpoint_group" "rneg1" {
 ///   name   = "k8s1-abcdef01-myns-mysvc-8080-4b6bac43"
 ///   region = "us-central1"
 /// }
-/// data "gcp_compute_getregionnetworkendpointgroup" "rneg2" {
+/// data "gcp_compute_region_network_endpoint_group" "rneg2" {
 ///   self_link = "https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43"
 /// }
 /// ```
@@ -9466,7 +9693,7 @@ pulumi.Output<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroup
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -9485,7 +9712,7 @@ pulumi.Output<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroup
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -9493,7 +9720,7 @@ pulumi.Output<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroup
 ///   }
 /// }
 ///
-/// data "gcp_compute_getregionnetworkfirewallpolicyiampolicy" "policy" {
+/// data "gcp_compute_region_network_firewall_policy_iam_policy" "policy" {
 ///   project = policyGoogleComputeRegionNetworkFirewallPolicy.project
 ///   region  = policyGoogleComputeRegionNetworkFirewallPolicy.region
 ///   name    = policyGoogleComputeRegionNetworkFirewallPolicy.name
@@ -9604,7 +9831,7 @@ pulumi.Output<GetRegionNetworkFirewallPolicyIamPolicyResult> getRegionNetworkFir
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -9621,7 +9848,7 @@ pulumi.Output<GetRegionNetworkFirewallPolicyIamPolicyResult> getRegionNetworkFir
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -9629,7 +9856,7 @@ pulumi.Output<GetRegionNetworkFirewallPolicyIamPolicyResult> getRegionNetworkFir
 ///   }
 /// }
 ///
-/// data "gcp_compute_getregionsslpolicy" "my-ssl-policy" {
+/// data "gcp_compute_region_s_s_l_policy" "my-ssl-policy" {
 ///   name = "production-ssl-policy"
 /// }
 /// ```
@@ -9736,7 +9963,7 @@ pulumi.Output<GetRegionSSLPolicyResult> getRegionSSLPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -9754,7 +9981,7 @@ pulumi.Output<GetRegionSSLPolicyResult> getRegionSSLPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -9762,7 +9989,7 @@ pulumi.Output<GetRegionSSLPolicyResult> getRegionSSLPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getregionsecuritypolicy" "default" {
+/// data "gcp_compute_region_security_policy" "default" {
 ///   name   = "my-region-security-policy"
 ///   region = "us-west2"
 /// }
@@ -9881,7 +10108,7 @@ pulumi.Output<GetRegionSecurityPolicyResult> getRegionSecurityPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -9901,7 +10128,7 @@ pulumi.Output<GetRegionSecurityPolicyResult> getRegionSecurityPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -9909,18 +10136,18 @@ pulumi.Output<GetRegionSecurityPolicyResult> getRegionSecurityPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getregionsslcertificate" "myCert" {
+/// data "gcp_compute_region_ssl_certificate" "myCert" {
 ///   name = "my-cert"
 /// }
 ///
 /// output "certificate" {
-///   value = data.gcp_compute_getregionsslcertificate.myCert.certificate
+///   value = data.gcp_compute_region_ssl_certificate.myCert.certificate
 /// }
 /// output "certificateId" {
-///   value = data.gcp_compute_getregionsslcertificate.myCert.certificate_id
+///   value = data.gcp_compute_region_ssl_certificate.myCert.certificate_id
 /// }
 /// output "selfLink" {
-///   value = data.gcp_compute_getregionsslcertificate.myCert.self_link
+///   value = data.gcp_compute_region_ssl_certificate.myCert.self_link
 /// }
 /// ```
 /// ```java
@@ -10034,7 +10261,7 @@ pulumi.Output<GetRegionSslCertificateResult> getRegionSslCertificateOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10051,7 +10278,7 @@ pulumi.Output<GetRegionSslCertificateResult> getRegionSslCertificateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -10059,7 +10286,7 @@ pulumi.Output<GetRegionSslCertificateResult> getRegionSslCertificateOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getregiontargethttpproxy" "default" {
+/// data "gcp_compute_region_target_http_proxy" "default" {
 ///   name = defaultGoogleComputeRegionTargetHttpProxy.name
 /// }
 /// ```
@@ -10167,7 +10394,7 @@ pulumi.Output<GetRegionTargetHttpProxyResult> getRegionTargetHttpProxyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10184,7 +10411,7 @@ pulumi.Output<GetRegionTargetHttpProxyResult> getRegionTargetHttpProxyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -10192,7 +10419,7 @@ pulumi.Output<GetRegionTargetHttpProxyResult> getRegionTargetHttpProxyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getregiontargethttpsproxy" "default" {
+/// data "gcp_compute_region_target_https_proxy" "default" {
 ///   name = defaultGoogleComputeRegionTargetHttpsProxy.name
 /// }
 /// ```
@@ -10266,18 +10493,20 @@ pulumi.Output<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxyOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const available = gcp.compute.getRegions({});
-/// const cluster: gcp.compute.Subnetwork[] = [];
-/// available.then(available => available.names).length.apply(rangeBody => {
-///     for (let range = 0; range < rangeBody; range++) {
-///         cluster.push(new gcp.compute.Subnetwork(`cluster-${range}`, {
-///             name: "my-network",
-///             ipCidrRange: `10.36.${range}.0/24`,
-///             network: "my-network",
-///             region: available.then(available => available.names[range]),
-///         }));
-///     }
-/// });
+/// export = async () => {
+///     const available = await gcp.compute.getRegions({});
+///     const cluster: gcp.compute.Subnetwork[] = [];
+/// available.names.length.apply(rangeBody => {
+///         for (let range = 0; range < rangeBody; range++) {
+///             cluster.push(new gcp.compute.Subnetwork(`cluster-${range}`, {
+///                 name: "my-network",
+///                 ipCidrRange: `10.36.${range}.0/24`,
+///                 network: "my-network",
+///                 region: available.names[range],
+///             }));
+///         }
+///     });
+/// }
 /// ```
 /// ```python
 /// import pulumi
@@ -10299,15 +10528,16 @@ pulumi.Output<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxyOutput(
 /// ```csharp
 /// using System.Collections.Generic;
 /// using System.Linq;
+/// using System.Threading.Tasks;
 /// using Pulumi;
 /// using Gcp = Pulumi.Gcp;
 ///
-/// return await Deployment.RunAsync(() =>
+/// return await Deployment.RunAsync(async() =>
 /// {
-///     var available = Gcp.Compute.GetRegions.Invoke();
+///     var available = await Gcp.Compute.GetRegions.InvokeAsync();
 ///
 ///     var cluster = new List<Gcp.Compute.Subnetwork>();
-///     available.Apply(getRegionsResult => getRegionsResult.Names).Length().Apply(rangeBody =>
+///     available.Names.Length.Apply(rangeBody =>
 ///     {
 ///         for (var rangeIndex = 0; rangeIndex < rangeBody; rangeIndex++)
 ///         {
@@ -10317,7 +10547,7 @@ pulumi.Output<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxyOutput(
 ///                 Name = "my-network",
 ///                 IpCidrRange = $"10.36.{range.Value}.0/24",
 ///                 Network = "my-network",
-///                 Region = available.Apply(getRegionsResult => getRegionsResult.Names)[range.Value],
+///                 Region = available.Names[range.Value],
 ///             }));
 ///         }
 ///         return 0;
@@ -10330,7 +10560,7 @@ pulumi.Output<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxyOutput(
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10360,7 +10590,7 @@ pulumi.Output<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -10368,15 +10598,21 @@ pulumi.Output<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getregions" "available" {
+/// data "gcp_compute_regions" "available" {
 /// }
 ///
 /// resource "gcp_compute_subnetwork" "cluster" {
-///   count         = length(data.gcp_compute_getregions.available.names)
+///   count = length(data.gcp_compute_regions.available.names)
+///   pulumi {
+///     name ="cluster-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-network"
 ///   ip_cidr_range ="10.36.${count.index}.0/24"
 ///   network       = "my-network"
-///   region        = data.gcp_compute_getregions.available.names[count.index]
+///   region        = data.gcp_compute_regions.available.names[count.index]
 /// }
 /// ```
 /// ```java
@@ -10485,7 +10721,7 @@ pulumi.Output<GetRegionsResult> getRegionsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10503,7 +10739,7 @@ pulumi.Output<GetRegionsResult> getRegionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -10511,7 +10747,7 @@ pulumi.Output<GetRegionsResult> getRegionsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getreservation" "reservation" {
+/// data "gcp_compute_reservation" "reservation" {
 ///   name = "gce-reservation"
 ///   zone = "us-central1-a"
 /// }
@@ -10636,7 +10872,7 @@ pulumi.Output<GetReservationResult> getReservationOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10657,7 +10893,7 @@ pulumi.Output<GetReservationResult> getReservationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -10665,17 +10901,17 @@ pulumi.Output<GetReservationResult> getReservationOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getreservationblock" "block" {
+/// data "gcp_compute_reservation_block" "block" {
 ///   name        = "my-reservation-block"
 ///   reservation = "my-reservation"
 ///   zone        = "us-central1-a"
 /// }
 ///
 /// output "blockStatus" {
-///   value = data.gcp_compute_getreservationblock.block.status
+///   value = data.gcp_compute_reservation_block.block.status
 /// }
 /// output "blockInUseCount" {
-///   value = data.gcp_compute_getreservationblock.block.in_use_count
+///   value = data.gcp_compute_reservation_block.block.in_use_count
 /// }
 /// ```
 /// ```java
@@ -10808,7 +11044,7 @@ pulumi.Output<GetReservationBlockResult> getReservationBlockOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10830,7 +11066,7 @@ pulumi.Output<GetReservationBlockResult> getReservationBlockOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -10838,7 +11074,7 @@ pulumi.Output<GetReservationBlockResult> getReservationBlockOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getreservationsubblock" "subBlock" {
+/// data "gcp_compute_reservation_sub_block" "subBlock" {
 ///   name              = "my-reservation-sub-block"
 ///   reservation_block = "my-reservation-block"
 ///   reservation       = "my-reservation"
@@ -10846,10 +11082,10 @@ pulumi.Output<GetReservationBlockResult> getReservationBlockOutput(
 /// }
 ///
 /// output "subBlockStatus" {
-///   value = data.gcp_compute_getreservationsubblock.subBlock.status
+///   value = data.gcp_compute_reservation_sub_block.subBlock.status
 /// }
 /// output "subBlockHealth" {
-///   value = data.gcp_compute_getreservationsubblock.subBlock.health_infos
+///   value = data.gcp_compute_reservation_sub_block.subBlock.health_infos
 /// }
 /// ```
 /// ```java
@@ -10967,7 +11203,7 @@ pulumi.Output<GetReservationSubBlockResult> getReservationSubBlockOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10985,7 +11221,7 @@ pulumi.Output<GetReservationSubBlockResult> getReservationSubBlockOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -10993,7 +11229,7 @@ pulumi.Output<GetReservationSubBlockResult> getReservationSubBlockOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getresourcepolicy" "daily" {
+/// data "gcp_compute_resource_policy" "daily" {
 ///   name   = "daily"
 ///   region = "us-central1"
 /// }
@@ -11103,7 +11339,7 @@ pulumi.Output<GetResourcePolicyResult> getResourcePolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -11121,7 +11357,7 @@ pulumi.Output<GetResourcePolicyResult> getResourcePolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -11129,7 +11365,7 @@ pulumi.Output<GetResourcePolicyResult> getResourcePolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getrouter" "my-router" {
+/// data "gcp_compute_router" "my-router" {
 ///   name    = "myrouter-us-east1"
 ///   network = "my-network"
 /// }
@@ -11243,7 +11479,7 @@ pulumi.Output<GetRouterResult> getRouterOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -11261,7 +11497,7 @@ pulumi.Output<GetRouterResult> getRouterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -11269,7 +11505,7 @@ pulumi.Output<GetRouterResult> getRouterOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getrouternat" "foo" {
+/// data "gcp_compute_router_nat" "foo" {
 ///   name   = "my-nat"
 ///   router = "my-router"
 /// }
@@ -11381,7 +11617,7 @@ pulumi.Output<GetRouterNatResult> getRouterNatOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -11398,7 +11634,7 @@ pulumi.Output<GetRouterNatResult> getRouterNatOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -11406,7 +11642,7 @@ pulumi.Output<GetRouterNatResult> getRouterNatOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getrouterstatus" "my-router" {
+/// data "gcp_compute_router_status" "my-router" {
 ///   name = "myrouter"
 /// }
 /// ```
@@ -11514,7 +11750,7 @@ pulumi.Output<GetRouterStatusResult> getRouterStatusOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -11532,7 +11768,7 @@ pulumi.Output<GetRouterStatusResult> getRouterStatusOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -11540,7 +11776,7 @@ pulumi.Output<GetRouterStatusResult> getRouterStatusOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getrouters" "all" {
+/// data "gcp_compute_routers" "all" {
 ///   project = foobar.project
 ///   region  = foobar.region
 /// }
@@ -11648,7 +11884,7 @@ pulumi.Output<GetRoutersResult> getRoutersOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -11665,7 +11901,7 @@ pulumi.Output<GetRoutersResult> getRoutersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -11673,7 +11909,7 @@ pulumi.Output<GetRoutersResult> getRoutersOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getsslpolicy" "my-ssl-policy" {
+/// data "gcp_compute_s_s_l_policy" "my-ssl-policy" {
 ///   name = "production-ssl-policy"
 /// }
 /// ```
@@ -11793,7 +12029,7 @@ pulumi.Output<GetSSLPolicyResult> getSSLPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -11817,7 +12053,7 @@ pulumi.Output<GetSSLPolicyResult> getSSLPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -11825,11 +12061,11 @@ pulumi.Output<GetSSLPolicyResult> getSSLPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getsecuritypolicy" "sp1" {
+/// data "gcp_compute_security_policy" "sp1" {
 ///   name    = "my-policy"
 ///   project = "my-project"
 /// }
-/// data "gcp_compute_getsecuritypolicy" "sp2" {
+/// data "gcp_compute_security_policy" "sp2" {
 ///   self_link = "https://www.googleapis.com/compute/v1/projects/my-project/global/securityPolicies/my-policy"
 /// }
 /// ```
@@ -11952,7 +12188,7 @@ pulumi.Output<GetSecurityPolicyResult> getSecurityPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -11971,7 +12207,7 @@ pulumi.Output<GetSecurityPolicyResult> getSecurityPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -11979,7 +12215,7 @@ pulumi.Output<GetSecurityPolicyResult> getSecurityPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getserviceattachment" "default" {
+/// data "gcp_compute_service_attachment" "default" {
 ///   project = "my-project"
 ///   name    = "my-service-attachment"
 ///   region  = "us-west2"
@@ -12051,6 +12287,262 @@ pulumi.Output<GetServiceAttachmentResult> getServiceAttachmentOutput(
   ).apply(GetServiceAttachmentResult.fromMap);
 }
 
+/// List all service attachments in a given project and region. For more information see
+/// [the official documentation](https://cloud.google.com/vpc/docs/about-service-attachments)
+/// and
+/// [API reference](https://cloud.google.com/compute/docs/reference/rest/v1/serviceAttachments/list).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const all = gcp.compute.getServiceAttachments({
+///     project: "my-project",
+///     region: "us-central1",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// all = gcp.compute.get_service_attachments(project="my-project",
+///     region="us-central1")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var all = Gcp.Compute.GetServiceAttachments.Invoke(new()
+///     {
+///         Project = "my-project",
+///         Region = "us-central1",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.GetServiceAttachments(ctx, &compute.GetServiceAttachmentsArgs{
+/// 			Project: pulumi.StringRef("my-project"),
+/// 			Region:  pulumi.StringRef("us-central1"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_service_attachments" "all" {
+///   project = "my-project"
+///   region  = "us-central1"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var all = ComputeFunctions.getServiceAttachments(GetServiceAttachmentsArgs.builder()
+///             .project("my-project")
+///             .region("us-central1")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   all:
+///     fn::invoke:
+///       function: gcp:compute:getServiceAttachments
+///       arguments:
+///         project: my-project
+///         region: us-central1
+/// ```
+///
+///
+/// ### With Filter
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const filtered = gcp.compute.getServiceAttachments({
+///     project: "my-project",
+///     region: "us-central1",
+///     filter: "name = my-service-attachment",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// filtered = gcp.compute.get_service_attachments(project="my-project",
+///     region="us-central1",
+///     filter="name = my-service-attachment")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var filtered = Gcp.Compute.GetServiceAttachments.Invoke(new()
+///     {
+///         Project = "my-project",
+///         Region = "us-central1",
+///         Filter = "name = my-service-attachment",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.GetServiceAttachments(ctx, &compute.GetServiceAttachmentsArgs{
+/// 			Project: pulumi.StringRef("my-project"),
+/// 			Region:  pulumi.StringRef("us-central1"),
+/// 			Filter:  pulumi.StringRef("name = my-service-attachment"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_service_attachments" "filtered" {
+///   project = "my-project"
+///   region  = "us-central1"
+///   filter  = "name = my-service-attachment"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var filtered = ComputeFunctions.getServiceAttachments(GetServiceAttachmentsArgs.builder()
+///             .project("my-project")
+///             .region("us-central1")
+///             .filter("name = my-service-attachment")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   filtered:
+///     fn::invoke:
+///       function: gcp:compute:getServiceAttachments
+///       arguments:
+///         project: my-project
+///         region: us-central1
+///         filter: name = my-service-attachment
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_service_attachments_get_service_attachments_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetServiceAttachmentsResult> getServiceAttachments(
+  GetServiceAttachmentsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:compute/getServiceAttachments:getServiceAttachments',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetServiceAttachmentsResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceAttachmentsResult> getServiceAttachmentsOutput(
+  GetServiceAttachmentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getServiceAttachments:getServiceAttachments',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceAttachmentsResult.fromMap);
+}
+
 /// To get more information about Snapshot, see:
 ///
 /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
@@ -12111,7 +12603,7 @@ pulumi.Output<GetServiceAttachmentResult> getServiceAttachmentOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -12137,7 +12629,7 @@ pulumi.Output<GetServiceAttachmentResult> getServiceAttachmentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -12145,10 +12637,10 @@ pulumi.Output<GetServiceAttachmentResult> getServiceAttachmentOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getsnapshot" "snapshot" {
+/// data "gcp_compute_snapshot" "snapshot" {
 ///   name = "my-snapshot"
 /// }
-/// data "gcp_compute_getsnapshot" "latest-snapshot" {
+/// data "gcp_compute_snapshot" "latest-snapshot" {
 ///   filter      = "name != my-snapshot"
 ///   most_recent = true
 /// }
@@ -12275,7 +12767,7 @@ pulumi.Output<GetSnapshotResult> getSnapshotOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -12293,7 +12785,7 @@ pulumi.Output<GetSnapshotResult> getSnapshotOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -12301,7 +12793,7 @@ pulumi.Output<GetSnapshotResult> getSnapshotOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getsnapshotiampolicy" "policy" {
+/// data "gcp_compute_snapshot_iam_policy" "policy" {
 ///   project = snapshot.project
 ///   name    = snapshot.name
 /// }
@@ -12421,7 +12913,7 @@ pulumi.Output<GetSnapshotIamPolicyResult> getSnapshotIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -12441,7 +12933,7 @@ pulumi.Output<GetSnapshotIamPolicyResult> getSnapshotIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -12449,16 +12941,16 @@ pulumi.Output<GetSnapshotIamPolicyResult> getSnapshotIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getstoragepool" "myPool" {
+/// data "gcp_compute_storage_pool" "myPool" {
 ///   name = "my-storage-pool"
 ///   zone = "us-central1-a"
 /// }
 ///
 /// output "poolCapacity" {
-///   value = data.gcp_compute_getstoragepool.myPool.pool_provisioned_capacity_gb
+///   value = data.gcp_compute_storage_pool.myPool.pool_provisioned_capacity_gb
 /// }
 /// output "poolType" {
-///   value = data.gcp_compute_getstoragepool.myPool.storage_pool_type
+///   value = data.gcp_compute_storage_pool.myPool.storage_pool_type
 /// }
 /// ```
 /// ```java
@@ -12580,7 +13072,7 @@ pulumi.Output<GetStoragePoolResult> getStoragePoolOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -12599,7 +13091,7 @@ pulumi.Output<GetStoragePoolResult> getStoragePoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -12607,7 +13099,7 @@ pulumi.Output<GetStoragePoolResult> getStoragePoolOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getstoragepooliampolicy" "policy" {
+/// data "gcp_compute_storage_pool_iam_policy" "policy" {
 ///   project = test-storage-pool-basic.project
 ///   zone    = test-storage-pool-basic.zone
 ///   name    = test-storage-pool-basic.name
@@ -12746,7 +13238,7 @@ pulumi.Output<GetStoragePoolTypesResult> getStoragePoolTypesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -12764,7 +13256,7 @@ pulumi.Output<GetStoragePoolTypesResult> getStoragePoolTypesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -12772,7 +13264,7 @@ pulumi.Output<GetStoragePoolTypesResult> getStoragePoolTypesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getsubnetwork" "my-subnetwork" {
+/// data "gcp_compute_subnetwork" "my-subnetwork" {
 ///   name   = "default-us-east1"
 ///   region = "us-east1"
 /// }
@@ -12886,7 +13378,7 @@ pulumi.Output<GetSubnetworkResult> getSubnetworkOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -12905,7 +13397,7 @@ pulumi.Output<GetSubnetworkResult> getSubnetworkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -12913,7 +13405,7 @@ pulumi.Output<GetSubnetworkResult> getSubnetworkOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getsubnetworkiampolicy" "policy" {
+/// data "gcp_compute_subnetwork_iam_policy" "policy" {
 ///   project    = network-with-private-secondary-ip-ranges.project
 ///   region     = network-with-private-secondary-ip-ranges.region
 ///   subnetwork = network-with-private-secondary-ip-ranges.name
@@ -13031,7 +13523,7 @@ pulumi.Output<GetSubnetworkIamPolicyResult> getSubnetworkIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -13050,7 +13542,7 @@ pulumi.Output<GetSubnetworkIamPolicyResult> getSubnetworkIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -13058,7 +13550,7 @@ pulumi.Output<GetSubnetworkIamPolicyResult> getSubnetworkIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getsubnetworks" "my-subnetworks" {
+/// data "gcp_compute_subnetworks" "my-subnetworks" {
 ///   filter  = "ipCidrRange eq 192.168.178.0/24"
 ///   project = "my-project"
 ///   region  = "us-east1"
@@ -13172,7 +13664,7 @@ pulumi.Output<GetSubnetworksResult> getSubnetworksOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -13189,7 +13681,7 @@ pulumi.Output<GetSubnetworksResult> getSubnetworksOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -13197,7 +13689,7 @@ pulumi.Output<GetSubnetworksResult> getSubnetworksOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_gettargethttpproxy" "default" {
+/// data "gcp_compute_target_http_proxy" "default" {
 ///   name = defaultGoogleComputeTargetHttpProxy.name
 /// }
 /// ```
@@ -13305,7 +13797,7 @@ pulumi.Output<GetTargetHttpProxyResult> getTargetHttpProxyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -13322,7 +13814,7 @@ pulumi.Output<GetTargetHttpProxyResult> getTargetHttpProxyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -13330,7 +13822,7 @@ pulumi.Output<GetTargetHttpProxyResult> getTargetHttpProxyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_gettargethttpsproxy" "default" {
+/// data "gcp_compute_target_https_proxy" "default" {
 ///   name = defaultGoogleComputeTargetHttpsProxy.name
 /// }
 /// ```
@@ -13434,7 +13926,7 @@ pulumi.Output<GetTargetHttpsProxyResult> getTargetHttpsProxyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -13451,7 +13943,7 @@ pulumi.Output<GetTargetHttpsProxyResult> getTargetHttpsProxyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -13459,7 +13951,7 @@ pulumi.Output<GetTargetHttpsProxyResult> getTargetHttpsProxyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getvpngateway" "my-vpn-gateway" {
+/// data "gcp_compute_v_p_n_gateway" "my-vpn-gateway" {
 ///   name = "vpn-gateway-us-east1"
 /// }
 /// ```
@@ -13533,19 +14025,21 @@ pulumi.Output<GetVPNGatewayResult> getVPNGatewayOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const available = gcp.compute.getZones({});
-/// const foo: gcp.compute.InstanceGroupManager[] = [];
-/// available.then(available => available.names).length.apply(rangeBody => {
-///     for (let range = 0; range < rangeBody; range++) {
-///         foo.push(new gcp.compute.InstanceGroupManager(`foo-${range}`, {
-///             name: `test-${range}`,
-///             instanceTemplate: foobar.selfLink,
-///             baseInstanceName: `foobar-${range}`,
-///             zone: available.then(available => available.names[range]),
-///             targetSize: 1,
-///         }));
-///     }
-/// });
+/// export = async () => {
+///     const available = await gcp.compute.getZones({});
+///     const foo: gcp.compute.InstanceGroupManager[] = [];
+/// available.names.length.apply(rangeBody => {
+///         for (let range = 0; range < rangeBody; range++) {
+///             foo.push(new gcp.compute.InstanceGroupManager(`foo-${range}`, {
+///                 name: `test-${range}`,
+///                 instanceTemplate: foobar.selfLink,
+///                 baseInstanceName: `foobar-${range}`,
+///                 zone: available.names[range],
+///                 targetSize: 1,
+///             }));
+///         }
+///     });
+/// }
 /// ```
 /// ```python
 /// import pulumi
@@ -13568,15 +14062,16 @@ pulumi.Output<GetVPNGatewayResult> getVPNGatewayOutput(
 /// ```csharp
 /// using System.Collections.Generic;
 /// using System.Linq;
+/// using System.Threading.Tasks;
 /// using Pulumi;
 /// using Gcp = Pulumi.Gcp;
 ///
-/// return await Deployment.RunAsync(() =>
+/// return await Deployment.RunAsync(async() =>
 /// {
-///     var available = Gcp.Compute.GetZones.Invoke();
+///     var available = await Gcp.Compute.GetZones.InvokeAsync();
 ///
 ///     var foo = new List<Gcp.Compute.InstanceGroupManager>();
-///     available.Apply(getZonesResult => getZonesResult.Names).Length().Apply(rangeBody =>
+///     available.Names.Length.Apply(rangeBody =>
 ///     {
 ///         for (var rangeIndex = 0; rangeIndex < rangeBody; rangeIndex++)
 ///         {
@@ -13586,7 +14081,7 @@ pulumi.Output<GetVPNGatewayResult> getVPNGatewayOutput(
 ///                 Name = $"test-{range.Value}",
 ///                 InstanceTemplate = foobar.SelfLink,
 ///                 BaseInstanceName = $"foobar-{range.Value}",
-///                 Zone = available.Apply(getZonesResult => getZonesResult.Names)[range.Value],
+///                 Zone = available.Names[range.Value],
 ///                 TargetSize = 1,
 ///             }));
 ///         }
@@ -13600,7 +14095,7 @@ pulumi.Output<GetVPNGatewayResult> getVPNGatewayOutput(
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -13631,7 +14126,7 @@ pulumi.Output<GetVPNGatewayResult> getVPNGatewayOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -13639,15 +14134,21 @@ pulumi.Output<GetVPNGatewayResult> getVPNGatewayOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getzones" "available" {
+/// data "gcp_compute_zones" "available" {
 /// }
 ///
-/// resource "gcp_compute_instancegroupmanager" "foo" {
-///   count              = length(data.gcp_compute_getzones.available.names)
+/// resource "gcp_compute_instance_group_manager" "foo" {
+///   count = length(data.gcp_compute_zones.available.names)
+///   pulumi {
+///     name ="foo-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               ="test-${count.index}"
 ///   instance_template  = foobar.selfLink
 ///   base_instance_name ="foobar-${count.index}"
-///   zone               = data.gcp_compute_getzones.available.names[count.index]
+///   zone               = data.gcp_compute_zones.available.names[count.index]
 ///   target_size        = 1
 /// }
 /// ```
@@ -13761,7 +14262,7 @@ pulumi.Output<GetZonesResult> getZonesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -13778,7 +14279,7 @@ pulumi.Output<GetZonesResult> getZonesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -13786,7 +14287,7 @@ pulumi.Output<GetZonesResult> getZonesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_compute_getrouterstatus" "my-router" {
+/// data "gcp_compute_router_status" "my-router" {
 ///   name = "myrouter"
 /// }
 /// ```

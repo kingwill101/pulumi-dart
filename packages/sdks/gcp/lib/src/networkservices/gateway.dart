@@ -64,7 +64,7 @@ import 'gateway_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -86,7 +86,7 @@ import 'gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -95,6 +95,9 @@ import 'gateway_state.dart';
 /// }
 ///
 /// resource "gcp_networkservices_gateway" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "my-gateway"
 ///   scope = "default-scope-basic"
 ///   type  = "OPEN_MESH"
@@ -207,7 +210,7 @@ import 'gateway_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -233,7 +236,7 @@ import 'gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -242,6 +245,9 @@ import 'gateway_state.dart';
 /// }
 ///
 /// resource "gcp_networkservices_gateway" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-gateway"
 ///   labels = {
 ///     "foo" = "bar"
@@ -532,10 +538,10 @@ import 'gateway_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -578,7 +584,7 @@ import 'gateway_state.dart';
 /// 			Purpose:     pulumi.String("PRIVATE"),
 /// 			IpCidrRange: pulumi.String("10.128.0.0/20"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     defaultNetwork.ID(),
 /// 			Role:        pulumi.String("ACTIVE"),
 /// 		})
 /// 		if err != nil {
@@ -589,7 +595,7 @@ import 'gateway_state.dart';
 /// 			Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 /// 			IpCidrRange: pulumi.String("192.168.0.0/23"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     defaultNetwork.ID(),
 /// 			Role:        pulumi.String("ACTIVE"),
 /// 		})
 /// 		if err != nil {
@@ -626,11 +632,11 @@ import 'gateway_state.dart';
 /// 			},
 /// 			Scope: pulumi.String("my-default-scope1"),
 /// 			CertificateUrls: pulumi.StringArray{
-/// 				_default.ID().ToIDOutput().ToStringOutput(),
+/// 				_default.ID(),
 /// 			},
-/// 			GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID().ToIDOutput().ToStringOutput(),
-/// 			Network:                         defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			Subnetwork:                      defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID(),
+/// 			Network:                         defaultNetwork.ID(),
+/// 			Subnetwork:                      defaultSubnetwork.ID(),
 /// 			DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			proxyonlysubnet,
@@ -643,7 +649,7 @@ import 'gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -655,6 +661,9 @@ import 'gateway_state.dart';
 /// }
 ///
 /// resource "gcp_certificatemanager_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-certificate"
 ///   location = "us-central1"
 ///   self_managed = {
@@ -663,11 +672,17 @@ import 'gateway_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   routing_mode            = "REGIONAL"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnetwork-name"
 ///   purpose       = "PRIVATE"
 ///   ip_cidr_range = "10.128.0.0/20"
@@ -676,6 +691,9 @@ import 'gateway_state.dart';
 ///   role          = "ACTIVE"
 /// }
 /// resource "gcp_compute_subnetwork" "proxyonlysubnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-proxy-only-subnetwork"
 ///   purpose       = "REGIONAL_MANAGED_PROXY"
 ///   ip_cidr_range = "192.168.0.0/23"
@@ -683,21 +701,30 @@ import 'gateway_state.dart';
 ///   network       = gcp_compute_network.default.id
 ///   role          = "ACTIVE"
 /// }
-/// resource "gcp_networksecurity_gatewaysecuritypolicy" "default" {
+/// resource "gcp_networksecurity_gateway_security_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-policy-name"
 ///   location = "us-central1"
 /// }
-/// resource "gcp_networksecurity_gatewaysecuritypolicyrule" "default" {
+/// resource "gcp_networksecurity_gateway_security_policy_rule" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-policyrule-name"
 ///   location                = "us-central1"
-///   gateway_security_policy = gcp_networksecurity_gatewaysecuritypolicy.default.name
+///   gateway_security_policy = gcp_networksecurity_gateway_security_policy.default.name
 ///   enabled                 = true
 ///   priority                = 1
 ///   session_matcher         = "host() == 'example.com'"
 ///   basic_profile           = "ALLOW"
 /// }
 /// resource "gcp_networkservices_gateway" "default" {
-///   depends_on                           = [gcp_compute_subnetwork.proxyonlysubnet]
+///   depends_on = [gcp_compute_subnetwork.proxyonlysubnet]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                 = "my-gateway1"
 ///   location                             = "us-central1"
 ///   addresses                            = ["10.128.0.99"]
@@ -705,7 +732,7 @@ import 'gateway_state.dart';
 ///   ports                                = [443]
 ///   scope                                = "my-default-scope1"
 ///   certificate_urls                     = [gcp_certificatemanager_certificate.default.id]
-///   gateway_security_policy              = gcp_networksecurity_gatewaysecuritypolicy.default.id
+///   gateway_security_policy              = gcp_networksecurity_gateway_security_policy.default.id
 ///   network                              = gcp_compute_network.default.id
 ///   subnetwork                           = gcp_compute_subnetwork.default.id
 ///   delete_swg_autogen_router_on_destroy = true
@@ -1193,10 +1220,10 @@ import 'gateway_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1239,7 +1266,7 @@ import 'gateway_state.dart';
 /// 			Purpose:     pulumi.String("PRIVATE"),
 /// 			IpCidrRange: pulumi.String("10.128.0.0/20"),
 /// 			Region:      pulumi.String("us-south1"),
-/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     defaultNetwork.ID(),
 /// 			Role:        pulumi.String("ACTIVE"),
 /// 		})
 /// 		if err != nil {
@@ -1250,7 +1277,7 @@ import 'gateway_state.dart';
 /// 			Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 /// 			IpCidrRange: pulumi.String("192.168.0.0/23"),
 /// 			Region:      pulumi.String("us-south1"),
-/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     defaultNetwork.ID(),
 /// 			Role:        pulumi.String("ACTIVE"),
 /// 		})
 /// 		if err != nil {
@@ -1287,11 +1314,11 @@ import 'gateway_state.dart';
 /// 			},
 /// 			Scope: pulumi.String("my-default-scope1"),
 /// 			CertificateUrls: pulumi.StringArray{
-/// 				_default.ID().ToIDOutput().ToStringOutput(),
+/// 				_default.ID(),
 /// 			},
-/// 			GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID().ToIDOutput().ToStringOutput(),
-/// 			Network:                         defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			Subnetwork:                      defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID(),
+/// 			Network:                         defaultNetwork.ID(),
+/// 			Subnetwork:                      defaultSubnetwork.ID(),
 /// 			DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			proxyonlysubnet,
@@ -1311,11 +1338,11 @@ import 'gateway_state.dart';
 /// 			},
 /// 			Scope: pulumi.String("my-default-scope2"),
 /// 			CertificateUrls: pulumi.StringArray{
-/// 				_default.ID().ToIDOutput().ToStringOutput(),
+/// 				_default.ID(),
 /// 			},
-/// 			GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID().ToIDOutput().ToStringOutput(),
-/// 			Network:                         defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			Subnetwork:                      defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID(),
+/// 			Network:                         defaultNetwork.ID(),
+/// 			Subnetwork:                      defaultSubnetwork.ID(),
 /// 			DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			proxyonlysubnet,
@@ -1328,7 +1355,7 @@ import 'gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1340,6 +1367,9 @@ import 'gateway_state.dart';
 /// }
 ///
 /// resource "gcp_certificatemanager_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-certificate"
 ///   location = "us-south1"
 ///   self_managed = {
@@ -1348,11 +1378,17 @@ import 'gateway_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   routing_mode            = "REGIONAL"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnetwork-name"
 ///   purpose       = "PRIVATE"
 ///   ip_cidr_range = "10.128.0.0/20"
@@ -1361,6 +1397,9 @@ import 'gateway_state.dart';
 ///   role          = "ACTIVE"
 /// }
 /// resource "gcp_compute_subnetwork" "proxyonlysubnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-proxy-only-subnetwork"
 ///   purpose       = "REGIONAL_MANAGED_PROXY"
 ///   ip_cidr_range = "192.168.0.0/23"
@@ -1368,21 +1407,30 @@ import 'gateway_state.dart';
 ///   network       = gcp_compute_network.default.id
 ///   role          = "ACTIVE"
 /// }
-/// resource "gcp_networksecurity_gatewaysecuritypolicy" "default" {
+/// resource "gcp_networksecurity_gateway_security_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-policy-name"
 ///   location = "us-south1"
 /// }
-/// resource "gcp_networksecurity_gatewaysecuritypolicyrule" "default" {
+/// resource "gcp_networksecurity_gateway_security_policy_rule" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-policyrule-name"
 ///   location                = "us-south1"
-///   gateway_security_policy = gcp_networksecurity_gatewaysecuritypolicy.default.name
+///   gateway_security_policy = gcp_networksecurity_gateway_security_policy.default.name
 ///   enabled                 = true
 ///   priority                = 1
 ///   session_matcher         = "host() == 'example.com'"
 ///   basic_profile           = "ALLOW"
 /// }
 /// resource "gcp_networkservices_gateway" "default" {
-///   depends_on                           = [gcp_compute_subnetwork.proxyonlysubnet]
+///   depends_on = [gcp_compute_subnetwork.proxyonlysubnet]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                 = "my-gateway1"
 ///   location                             = "us-south1"
 ///   addresses                            = ["10.128.0.99"]
@@ -1390,13 +1438,16 @@ import 'gateway_state.dart';
 ///   ports                                = [443]
 ///   scope                                = "my-default-scope1"
 ///   certificate_urls                     = [gcp_certificatemanager_certificate.default.id]
-///   gateway_security_policy              = gcp_networksecurity_gatewaysecuritypolicy.default.id
+///   gateway_security_policy              = gcp_networksecurity_gateway_security_policy.default.id
 ///   network                              = gcp_compute_network.default.id
 ///   subnetwork                           = gcp_compute_subnetwork.default.id
 ///   delete_swg_autogen_router_on_destroy = true
 /// }
 /// resource "gcp_networkservices_gateway" "gateway2" {
-///   depends_on                           = [gcp_compute_subnetwork.proxyonlysubnet]
+///   depends_on = [gcp_compute_subnetwork.proxyonlysubnet]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                 = "my-gateway2"
 ///   location                             = "us-south1"
 ///   addresses                            = ["10.128.0.98"]
@@ -1404,7 +1455,7 @@ import 'gateway_state.dart';
 ///   ports                                = [443]
 ///   scope                                = "my-default-scope2"
 ///   certificate_urls                     = [gcp_certificatemanager_certificate.default.id]
-///   gateway_security_policy              = gcp_networksecurity_gatewaysecuritypolicy.default.id
+///   gateway_security_policy              = gcp_networksecurity_gateway_security_policy.default.id
 ///   network                              = gcp_compute_network.default.id
 ///   subnetwork                           = gcp_compute_subnetwork.default.id
 ///   delete_swg_autogen_router_on_destroy = true
@@ -1758,7 +1809,7 @@ class Gateway extends pulumi.CustomResource {
           'gcp:networkservices/gateway:Gateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     addresses = registerOutput<List<String>>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

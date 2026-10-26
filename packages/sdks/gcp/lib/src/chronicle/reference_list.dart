@@ -41,11 +41,11 @@ import 'reference_list_state.dart';
 ///         value: "referencelist-entry-value",
 ///     }],
 ///     syntaxType: "REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING",
-///     scopeInfos: [{
+///     scopeInfo: {
 ///         referenceListScope: {
 ///             scopeNames: [testScope.name],
 ///         },
-///     }],
+///     },
 /// });
 /// ```
 /// ```python
@@ -69,11 +69,11 @@ import 'reference_list_state.dart';
 ///         "value": "referencelist-entry-value",
 ///     }],
 ///     syntax_type="REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING",
-///     scope_infos=[{
+///     scope_info={
 ///         "reference_list_scope": {
 ///             "scope_names": [test_scope.name],
 ///         },
-///     }])
+///     })
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -112,16 +112,13 @@ import 'reference_list_state.dart';
 ///             },
 ///         },
 ///         SyntaxType = "REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING",
-///         ScopeInfos = new[]
+///         ScopeInfo = new Gcp.Chronicle.Inputs.ReferenceListScopeInfoArgs
 ///         {
-///             new Gcp.Chronicle.Inputs.ReferenceListScopeInfoArgs
+///             ReferenceListScope = new Gcp.Chronicle.Inputs.ReferenceListScopeInfoReferenceListScopeArgs
 ///             {
-///                 ReferenceListScope = new Gcp.Chronicle.Inputs.ReferenceListScopeInfoReferenceListScopeArgs
+///                 ScopeNames = new[]
 ///                 {
-///                     ScopeNames = new[]
-///                     {
-///                         testScope.Name,
-///                     },
+///                     testScope.Name,
 ///                 },
 ///             },
 ///         },
@@ -133,7 +130,7 @@ import 'reference_list_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -164,12 +161,10 @@ import 'reference_list_state.dart';
 /// 				},
 /// 			},
 /// 			SyntaxType: pulumi.String("REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING"),
-/// 			ScopeInfos: chronicle.ReferenceListScopeInfoArray{
-/// 				&chronicle.ReferenceListScopeInfoArgs{
-/// 					ReferenceListScope: &chronicle.ReferenceListScopeInfoReferenceListScopeArgs{
-/// 						ScopeNames: pulumi.StringArray{
-/// 							testScope.Name,
-/// 						},
+/// 			ScopeInfo: &chronicle.ReferenceListScopeInfoArgs{
+/// 				ReferenceListScope: &chronicle.ReferenceListScopeInfoReferenceListScopeArgs{
+/// 					ScopeNames: pulumi.StringArray{
+/// 						testScope.Name,
 /// 					},
 /// 				},
 /// 			},
@@ -182,7 +177,7 @@ import 'reference_list_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -190,7 +185,10 @@ import 'reference_list_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_chronicle_dataaccessscope" "test_scope" {
+/// resource "gcp_chronicle_data_access_scope" "test_scope" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "us"
 ///   instance             = "00000000-0000-0000-0000-000000000000"
 ///   data_access_scope_id = "scope-id"
@@ -199,7 +197,10 @@ import 'reference_list_state.dart';
 ///     log_type = "GCP_CLOUDAUDIT"
 ///   }
 /// }
-/// resource "gcp_chronicle_referencelist" "example" {
+/// resource "gcp_chronicle_reference_list" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "us"
 ///   instance          = "00000000-0000-0000-0000-000000000000"
 ///   reference_list_id = "reference_list_id"
@@ -208,9 +209,9 @@ import 'reference_list_state.dart';
 ///     value = "referencelist-entry-value"
 ///   }
 ///   syntax_type = "REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING"
-///   scope_infos {
+///   scope_info = {
 ///     reference_list_scope = {
-///       scope_names = [gcp_chronicle_dataaccessscope.test_scope.name]
+///       scope_names = [gcp_chronicle_data_access_scope.test_scope.name]
 ///     }
 ///   }
 /// }
@@ -261,7 +262,7 @@ import 'reference_list_state.dart';
 ///                 .value("referencelist-entry-value")
 ///                 .build())
 ///             .syntaxType("REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING")
-///             .scopeInfos(ReferenceListScopeInfoArgs.builder()
+///             .scopeInfo(ReferenceListScopeInfoArgs.builder()
 ///                 .referenceListScope(ReferenceListScopeInfoReferenceListScopeArgs.builder()
 ///                     .scopeNames(testScope.name())
 ///                     .build())
@@ -293,10 +294,10 @@ import 'reference_list_state.dart';
 ///       entries:
 ///         - value: referencelist-entry-value
 ///       syntaxType: REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
-///       scopeInfos:
-///         - referenceListScope:
-///             scopeNames:
-///               - ${testScope.name}
+///       scopeInfo:
+///         referenceListScope:
+///           scopeNames:
+///             - ${testScope.name}
 /// ```
 ///
 ///
@@ -356,7 +357,7 @@ class ReferenceList extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> rules;
   /// ScopeInfo specifies the scope info of the reference list.
   /// Structure is documented below.
-  late final pulumi.Output<List<ReferenceListScopeInfo>?> scopeInfos;
+  late final pulumi.Output<ReferenceListScopeInfo?> scopeInfo;
   /// Possible values:
   /// REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
   /// REFERENCE_LIST_SYNTAX_TYPE_REGEX
@@ -375,7 +376,7 @@ class ReferenceList extends pulumi.CustomResource {
           'gcp:chronicle/referenceList:ReferenceList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
@@ -388,7 +389,7 @@ class ReferenceList extends pulumi.CustomResource {
     revisionCreateTime = registerOutput<String>('revisionCreateTime');
     ruleAssociationsCount = registerOutput<int>('ruleAssociationsCount');
     rules = registerOutput<List<String>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
-    scopeInfos = registerOutput<List<ReferenceListScopeInfo>?>('scopeInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReferenceListScopeInfo>(guardedValue, (value) => ReferenceListScopeInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    scopeInfo = registerOutput<ReferenceListScopeInfo?>('scopeInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReferenceListScopeInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     syntaxType = registerOutput<String>('syntaxType');
   }
 
@@ -427,7 +428,7 @@ class ReferenceList extends pulumi.CustomResource {
     revisionCreateTime = registerOutput<String>('revisionCreateTime');
     ruleAssociationsCount = registerOutput<int>('ruleAssociationsCount');
     rules = registerOutput<List<String>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
-    scopeInfos = registerOutput<List<ReferenceListScopeInfo>?>('scopeInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReferenceListScopeInfo>(guardedValue, (value) => ReferenceListScopeInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    scopeInfo = registerOutput<ReferenceListScopeInfo?>('scopeInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReferenceListScopeInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     syntaxType = registerOutput<String>('syntaxType');
   }
 
@@ -451,7 +452,7 @@ class ReferenceList extends pulumi.CustomResource {
     revisionCreateTime = registerOutput<String>('revisionCreateTime');
     ruleAssociationsCount = registerOutput<int>('ruleAssociationsCount');
     rules = registerOutput<List<String>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
-    scopeInfos = registerOutput<List<ReferenceListScopeInfo>?>('scopeInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReferenceListScopeInfo>(guardedValue, (value) => ReferenceListScopeInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    scopeInfo = registerOutput<ReferenceListScopeInfo?>('scopeInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReferenceListScopeInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     syntaxType = registerOutput<String>('syntaxType');
   }
 }

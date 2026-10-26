@@ -153,7 +153,7 @@ import 'delivery_pipeline_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -204,7 +204,7 @@ import 'delivery_pipeline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -212,24 +212,27 @@ import 'delivery_pipeline_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_clouddeploy_deliverypipeline" "primary" {
+/// resource "gcp_clouddeploy_delivery_pipeline" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-west1"
 ///   name        = "pipeline"
 ///   description = "basic description"
 ///   project     = "my-project-name"
 ///   serial_pipeline = {
 ///     stages = [{
-///       "deployParameters" = [{
-///         "values" = {
+///       deploy_parameters = [{
+///         values = {
 ///           "deployParameterKey" = "deployParameterValue"
 ///         }
-///         "matchTargetLabels" = {}
+///         match_target_labels = {}
 ///       }]
-///       "profiles" = ["example-profile-one", "example-profile-two"]
-///       "targetId" = "example-target-one"
+///       profiles  = ["example-profile-one", "example-profile-two"]
+///       target_id = "example-target-one"
 ///       }, {
-///       "profiles" = []
-///       "targetId" = "example-target-two"
+///       profiles  = []
+///       target_id = "example-target-two"
 ///     }]
 ///   }
 ///   annotations = {
@@ -476,7 +479,7 @@ import 'delivery_pipeline_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -527,7 +530,7 @@ import 'delivery_pipeline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -535,24 +538,27 @@ import 'delivery_pipeline_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_clouddeploy_deliverypipeline" "primary" {
+/// resource "gcp_clouddeploy_delivery_pipeline" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-west1"
 ///   name        = "pipeline"
 ///   description = "basic description"
 ///   project     = "my-project-name"
 ///   serial_pipeline = {
 ///     stages = [{
-///       "deployParameters" = [{
-///         "values" = {
+///       deploy_parameters = [{
+///         values = {
 ///           "deployParameterKey" = "deployParameterValue"
 ///         }
-///         "matchTargetLabels" = {}
+///         match_target_labels = {}
 ///       }]
-///       "profiles" = ["example-profile-one", "example-profile-two"]
-///       "targetId" = "example-target-one"
+///       profiles  = ["example-profile-one", "example-profile-two"]
+///       target_id = "example-target-one"
 ///       }, {
-///       "profiles" = []
-///       "targetId" = "example-target-two"
+///       profiles  = []
+///       target_id = "example-target-two"
 ///     }]
 ///   }
 ///   annotations = {
@@ -799,7 +805,7 @@ import 'delivery_pipeline_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -850,7 +856,7 @@ import 'delivery_pipeline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -858,24 +864,27 @@ import 'delivery_pipeline_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_clouddeploy_deliverypipeline" "primary" {
+/// resource "gcp_clouddeploy_delivery_pipeline" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-west1"
 ///   name        = "pipeline"
 ///   description = "basic description"
 ///   project     = "my-project-name"
 ///   serial_pipeline = {
 ///     stages = [{
-///       "deployParameters" = [{
-///         "values" = {
+///       deploy_parameters = [{
+///         values = {
 ///           "deployParameterKey" = "deployParameterValue"
 ///         }
-///         "matchTargetLabels" = {}
+///         match_target_labels = {}
 ///       }]
-///       "profiles" = ["example-profile-one", "example-profile-two"]
-///       "targetId" = "example-target-one"
+///       profiles  = ["example-profile-one", "example-profile-two"]
+///       target_id = "example-target-one"
 ///       }, {
-///       "profiles" = []
-///       "targetId" = "example-target-two"
+///       profiles  = []
+///       target_id = "example-target-two"
 ///     }]
 ///   }
 ///   annotations = {
@@ -1122,7 +1131,7 @@ import 'delivery_pipeline_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1173,7 +1182,7 @@ import 'delivery_pipeline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1181,24 +1190,27 @@ import 'delivery_pipeline_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_clouddeploy_deliverypipeline" "primary" {
+/// resource "gcp_clouddeploy_delivery_pipeline" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-west1"
 ///   name        = "pipeline"
 ///   description = "basic description"
 ///   project     = "my-project-name"
 ///   serial_pipeline = {
 ///     stages = [{
-///       "deployParameters" = [{
-///         "values" = {
+///       deploy_parameters = [{
+///         values = {
 ///           "deployParameterKey" = "deployParameterValue"
 ///         }
-///         "matchTargetLabels" = {}
+///         match_target_labels = {}
 ///       }]
-///       "profiles" = ["example-profile-one", "example-profile-two"]
-///       "targetId" = "example-target-one"
+///       profiles  = ["example-profile-one", "example-profile-two"]
+///       target_id = "example-target-one"
 ///       }, {
-///       "profiles" = []
-///       "targetId" = "example-target-two"
+///       profiles  = []
+///       target_id = "example-target-two"
 ///     }]
 ///   }
 ///   annotations = {
@@ -1445,7 +1457,7 @@ import 'delivery_pipeline_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1496,7 +1508,7 @@ import 'delivery_pipeline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1504,24 +1516,27 @@ import 'delivery_pipeline_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_clouddeploy_deliverypipeline" "primary" {
+/// resource "gcp_clouddeploy_delivery_pipeline" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-west1"
 ///   name        = "pipeline"
 ///   description = "basic description"
 ///   project     = "my-project-name"
 ///   serial_pipeline = {
 ///     stages = [{
-///       "deployParameters" = [{
-///         "values" = {
+///       deploy_parameters = [{
+///         values = {
 ///           "deployParameterKey" = "deployParameterValue"
 ///         }
-///         "matchTargetLabels" = {}
+///         match_target_labels = {}
 ///       }]
-///       "profiles" = ["example-profile-one", "example-profile-two"]
-///       "targetId" = "example-target-one"
+///       profiles  = ["example-profile-one", "example-profile-two"]
+///       target_id = "example-target-one"
 ///       }, {
-///       "profiles" = []
-///       "targetId" = "example-target-two"
+///       profiles  = []
+///       target_id = "example-target-two"
 ///     }]
 ///   }
 ///   annotations = {
@@ -1702,7 +1717,7 @@ class DeliveryPipeline extends pulumi.CustomResource {
           'gcp:clouddeploy/deliveryPipeline:DeliveryPipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

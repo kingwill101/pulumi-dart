@@ -168,7 +168,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -219,7 +219,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -227,7 +227,10 @@ import 'uptime_check_config_tcp_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_uptimecheckconfig" "http" {
+/// resource "gcp_monitoring_uptime_check_config" "http" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name       = "http-uptime-check"
 ///   timeout            = "60s"
 ///   log_check_failures = true
@@ -516,7 +519,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -571,7 +574,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -579,7 +582,10 @@ import 'uptime_check_config_tcp_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_uptimecheckconfig" "http" {
+/// resource "gcp_monitoring_uptime_check_config" "http" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "http-uptime-check"
 ///   timeout      = "60s"
 ///   user_labels = {
@@ -878,7 +884,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -932,7 +938,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -940,7 +946,10 @@ import 'uptime_check_config_tcp_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_uptimecheckconfig" "status_code" {
+/// resource "gcp_monitoring_uptime_check_config" "status_code" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "http-uptime-check"
 ///   timeout      = "60s"
 ///   http_check = {
@@ -950,11 +959,11 @@ import 'uptime_check_config_tcp_check.dart';
 ///     content_type   = "URL_ENCODED"
 ///     body           = "Zm9vJTI1M0RiYXI="
 ///     accepted_response_status_codes = [{
-///       "statusClass" = "STATUS_CLASS_2XX"
+///       status_class = "STATUS_CLASS_2XX"
 ///       }, {
-///       "statusValue" = 301
+///       status_value = 301
 ///       }, {
-///       "statusValue" = 302
+///       status_value = 302
 ///     }]
 ///   }
 ///   monitored_resource = {
@@ -1186,7 +1195,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1227,7 +1236,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1235,7 +1244,10 @@ import 'uptime_check_config_tcp_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_uptimecheckconfig" "https" {
+/// resource "gcp_monitoring_uptime_check_config" "https" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "https-uptime-check"
 ///   timeout      = "60s"
 ///   http_check = {
@@ -1427,7 +1439,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1462,7 +1474,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1470,7 +1482,10 @@ import 'uptime_check_config_tcp_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_uptimecheckconfig" "tcp_group" {
+/// resource "gcp_monitoring_uptime_check_config" "tcp_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "tcp-uptime-check"
 ///   timeout      = "60s"
 ///   tcp_check = {
@@ -1485,6 +1500,9 @@ import 'uptime_check_config_tcp_check.dart';
 ///   }
 /// }
 /// resource "gcp_monitoring_group" "check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "uptime-check-group"
 ///   filter       = "resource.metadata.name=has_substring(\"foo\")"
 /// }
@@ -1569,7 +1587,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: "my-project-name-gcf-source",
+///     name: "gcf-source-my-project-name",
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -1612,7 +1630,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// import pulumi_gcp as gcp
 ///
 /// bucket = gcp.storage.Bucket("bucket",
-///     name="my-project-name-gcf-source",
+///     name="gcf-source-my-project-name",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -1656,7 +1674,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// {
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = "my-project-name-gcf-source",
+///         Name = "gcf-source-my-project-name",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -1712,16 +1730,16 @@ import 'uptime_check_config_tcp_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.String("my-project-name-gcf-source"),
+/// 			Name:                     pulumi.String("gcf-source-my-project-name"),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -1763,7 +1781,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// 			Timeout:     pulumi.String("60s"),
 /// 			SyntheticMonitor: &monitoring.UptimeCheckConfigSyntheticMonitorArgs{
 /// 				CloudFunctionV2: &monitoring.UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args{
-/// 					Name: function.ID().ToIDOutput().ToStringOutput(),
+/// 					Name: function.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -1775,7 +1793,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1784,16 +1802,25 @@ import 'uptime_check_config_tcp_check.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        = "my-project-name-gcf-source"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                        = "gcf-source-my-project-name"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "function-source.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("synthetic-fn-source.zip")
+///   source = fileasset("synthetic-fn-source.zip")
 /// }
 /// resource "gcp_cloudfunctionsv2_function" "function" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "synthetic_function"
 ///   location = "us-central1"
 ///   build_config = {
@@ -1802,7 +1829,7 @@ import 'uptime_check_config_tcp_check.dart';
 ///     source = {
 ///       storage_source = {
 ///         bucket = gcp_storage_bucket.bucket.name
-///         object = gcp_storage_bucketobject.object.name
+///         object = gcp_storage_bucket_object.object.name
 ///       }
 ///     }
 ///   }
@@ -1812,7 +1839,10 @@ import 'uptime_check_config_tcp_check.dart';
 ///     timeout_seconds    = 60
 ///   }
 /// }
-/// resource "gcp_monitoring_uptimecheckconfig" "synthetic_monitor" {
+/// resource "gcp_monitoring_uptime_check_config" "synthetic_monitor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "synthetic_monitor"
 ///   timeout      = "60s"
 ///   synthetic_monitor = {
@@ -1857,7 +1887,7 @@ import 'uptime_check_config_tcp_check.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name("my-project-name-gcf-source")
+///             .name("gcf-source-my-project-name")
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -1906,7 +1936,7 @@ import 'uptime_check_config_tcp_check.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: my-project-name-gcf-source
+///       name: gcf-source-my-project-name
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -2022,7 +2052,7 @@ class UptimeCheckConfig extends pulumi.CustomResource {
           'gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     checkerType = registerOutput<String>('checkerType');
     contentMatchers = registerOutput<List<UptimeCheckConfigContentMatcher>?>('contentMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UptimeCheckConfigContentMatcher>(guardedValue, (value) => UptimeCheckConfigContentMatcher.fromMap((value as Map).cast<String, dynamic>())); });

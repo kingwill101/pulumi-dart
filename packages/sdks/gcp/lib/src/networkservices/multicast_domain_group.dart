@@ -157,8 +157,8 @@ import 'multicast_domain_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -185,11 +185,11 @@ import 'multicast_domain_group_state.dart';
 /// 		_, err = networkservices.NewMulticastDomain(ctx, "multicast_domain_a", &networkservices.MulticastDomainArgs{
 /// 			MulticastDomainId: pulumi.String("test-mdg-domain-a"),
 /// 			Location:          pulumi.String("global"),
-/// 			AdminNetwork:      network.ID().ToIDOutput().ToStringOutput(),
+/// 			AdminNetwork:      network.ID(),
 /// 			ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 /// 				ConnectionType: pulumi.String("SAME_VPC"),
 /// 			},
-/// 			MulticastDomainGroup: mdgTest.ID().ToIDOutput().ToStringOutput(),
+/// 			MulticastDomainGroup: mdgTest.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			network,
 /// 		}))
@@ -199,11 +199,11 @@ import 'multicast_domain_group_state.dart';
 /// 		_, err = networkservices.NewMulticastDomain(ctx, "multicast_domain_b", &networkservices.MulticastDomainArgs{
 /// 			MulticastDomainId: pulumi.String("test-mdg-domain-b"),
 /// 			Location:          pulumi.String("global"),
-/// 			AdminNetwork:      network.ID().ToIDOutput().ToStringOutput(),
+/// 			AdminNetwork:      network.ID(),
 /// 			ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 /// 				ConnectionType: pulumi.String("SAME_VPC"),
 /// 			},
-/// 			MulticastDomainGroup: mdgTest.ID().ToIDOutput().ToStringOutput(),
+/// 			MulticastDomainGroup: mdgTest.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			network,
 /// 		}))
@@ -215,7 +215,7 @@ import 'multicast_domain_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -223,7 +223,10 @@ import 'multicast_domain_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_multicastdomaingroup" "mdg_test" {
+/// resource "gcp_networkservices_multicast_domain_group" "mdg_test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multicast_domain_group_id = "test-mdg-resource"
 ///   location                  = "global"
 ///   description               = "my description"
@@ -232,28 +235,37 @@ import 'multicast_domain_group_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "test-mdg-network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networkservices_multicastdomain" "multicast_domain_a" {
-///   depends_on          = [gcp_compute_network.network]
+/// resource "gcp_networkservices_multicast_domain" "multicast_domain_a" {
+///   depends_on = [gcp_compute_network.network]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multicast_domain_id = "test-mdg-domain-a"
 ///   location            = "global"
 ///   admin_network       = gcp_compute_network.network.id
 ///   connection_config = {
 ///     connection_type = "SAME_VPC"
 ///   }
-///   multicast_domain_group = gcp_networkservices_multicastdomaingroup.mdg_test.id
+///   multicast_domain_group = gcp_networkservices_multicast_domain_group.mdg_test.id
 /// }
-/// resource "gcp_networkservices_multicastdomain" "multicast_domain_b" {
-///   depends_on          = [gcp_compute_network.network]
+/// resource "gcp_networkservices_multicast_domain" "multicast_domain_b" {
+///   depends_on = [gcp_compute_network.network]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multicast_domain_id = "test-mdg-domain-b"
 ///   location            = "global"
 ///   admin_network       = gcp_compute_network.network.id
 ///   connection_config = {
 ///     connection_type = "SAME_VPC"
 ///   }
-///   multicast_domain_group = gcp_networkservices_multicastdomaingroup.mdg_test.id
+///   multicast_domain_group = gcp_networkservices_multicast_domain_group.mdg_test.id
 /// }
 /// ```
 /// ```java
@@ -453,7 +465,7 @@ class MulticastDomainGroup extends pulumi.CustomResource {
           'gcp:networkservices/multicastDomainGroup:MulticastDomainGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

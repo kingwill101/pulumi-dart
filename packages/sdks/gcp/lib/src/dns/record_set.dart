@@ -129,8 +129,8 @@ import 'record_set_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -185,7 +185,7 @@ import 'record_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -193,14 +193,20 @@ import 'record_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dns_recordset" "frontend" {
-///   name         ="frontend.${gcp_dns_managedzone.prod.dns_name}"
+/// resource "gcp_dns_record_set" "frontend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name         ="frontend.${gcp_dns_managed_zone.prod.dns_name}"
 ///   type         = "A"
 ///   ttl          = 300
-///   managed_zone = gcp_dns_managedzone.prod.name
+///   managed_zone = gcp_dns_managed_zone.prod.name
 ///   rrdatas      = [gcp_compute_instance.frontend.network_interfaces[0].access_configs[0].nat_ip]
 /// }
 /// resource "gcp_compute_instance" "frontend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
@@ -215,7 +221,10 @@ import 'record_set_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_dns_managedzone" "prod" {
+/// resource "gcp_dns_managed_zone" "prod" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "prod-zone"
 ///   dns_name = "prod.mydomain.com."
 /// }
@@ -381,7 +390,7 @@ import 'record_set_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -413,7 +422,7 @@ import 'record_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -421,14 +430,20 @@ import 'record_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dns_recordset" "a" {
-///   name         ="backend.${gcp_dns_managedzone.prod.dns_name}"
-///   managed_zone = gcp_dns_managedzone.prod.name
+/// resource "gcp_dns_record_set" "a" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name         ="backend.${gcp_dns_managed_zone.prod.dns_name}"
+///   managed_zone = gcp_dns_managed_zone.prod.name
 ///   type         = "A"
 ///   ttl          = 300
 ///   rrdatas      = ["8.8.8.8"]
 /// }
-/// resource "gcp_dns_managedzone" "prod" {
+/// resource "gcp_dns_managed_zone" "prod" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "prod-zone"
 ///   dns_name = "prod.mydomain.com."
 /// }
@@ -572,7 +587,7 @@ import 'record_set_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -606,7 +621,7 @@ import 'record_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -614,14 +629,20 @@ import 'record_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dns_recordset" "mx" {
-///   name         = gcp_dns_managedzone.prod.dns_name
-///   managed_zone = gcp_dns_managedzone.prod.name
+/// resource "gcp_dns_record_set" "mx" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name         = gcp_dns_managed_zone.prod.dns_name
+///   managed_zone = gcp_dns_managed_zone.prod.name
 ///   type         = "MX"
 ///   ttl          = 3600
 ///   rrdatas      = ["1 aspmx.l.google.com.", "5 alt1.aspmx.l.google.com.", "5 alt2.aspmx.l.google.com.", "10 alt3.aspmx.l.google.com.", "10 alt4.aspmx.l.google.com."]
 /// }
-/// resource "gcp_dns_managedzone" "prod" {
+/// resource "gcp_dns_managed_zone" "prod" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "prod-zone"
 ///   dns_name = "prod.mydomain.com."
 /// }
@@ -762,7 +783,7 @@ import 'record_set_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -794,7 +815,7 @@ import 'record_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -802,14 +823,20 @@ import 'record_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dns_recordset" "spf" {
-///   name         ="frontend.${gcp_dns_managedzone.prod.dns_name}"
-///   managed_zone = gcp_dns_managedzone.prod.name
+/// resource "gcp_dns_record_set" "spf" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name         ="frontend.${gcp_dns_managed_zone.prod.dns_name}"
+///   managed_zone = gcp_dns_managed_zone.prod.name
 ///   type         = "TXT"
 ///   ttl          = 300
 ///   rrdatas      = ["\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\""]
 /// }
-/// resource "gcp_dns_managedzone" "prod" {
+/// resource "gcp_dns_managed_zone" "prod" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "prod-zone"
 ///   dns_name = "prod.mydomain.com."
 /// }
@@ -941,7 +968,7 @@ import 'record_set_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -973,7 +1000,7 @@ import 'record_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -981,14 +1008,20 @@ import 'record_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dns_recordset" "cname" {
-///   name         ="frontend.${gcp_dns_managedzone.prod.dns_name}"
-///   managed_zone = gcp_dns_managedzone.prod.name
+/// resource "gcp_dns_record_set" "cname" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name         ="frontend.${gcp_dns_managed_zone.prod.dns_name}"
+///   managed_zone = gcp_dns_managed_zone.prod.name
 ///   type         = "CNAME"
 ///   ttl          = 300
 ///   rrdatas      = ["frontend.mydomain.com."]
 /// }
-/// resource "gcp_dns_managedzone" "prod" {
+/// resource "gcp_dns_managed_zone" "prod" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "prod-zone"
 ///   dns_name = "prod.mydomain.com."
 /// }
@@ -1144,7 +1177,7 @@ import 'record_set_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1180,7 +1213,7 @@ import 'record_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1188,18 +1221,21 @@ import 'record_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dns_recordset" "geo" {
+/// resource "gcp_dns_record_set" "geo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         ="backend.${prod.dnsName}"
 ///   managed_zone = prod.name
 ///   type         = "A"
 ///   ttl          = 300
 ///   routing_policy = {
 ///     geos = [{
-///       "location" = "asia-east1"
-///       "rrdatas"  = ["10.128.1.1"]
+///       location = "asia-east1"
+///       rrdatas  = ["10.128.1.1"]
 ///       }, {
-///       "location" = "us-central1"
-///       "rrdatas"  = ["10.130.1.1"]
+///       location = "us-central1"
+///       rrdatas  = ["10.130.1.1"]
 ///     }]
 ///   }
 /// }
@@ -1474,8 +1510,8 @@ import 'record_set_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1506,7 +1542,7 @@ import 'record_set_state.dart';
 /// 			Name:                pulumi.String("prod-ilb"),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      prodRegionBackendService.ID().ToIDOutput().ToStringOutput(),
+/// 			BackendService:      prodRegionBackendService.ID(),
 /// 			AllPorts:            pulumi.Bool(true),
 /// 			Network:             prodNetwork.Name,
 /// 			AllowGlobalAccess:   pulumi.Bool(true),
@@ -1531,7 +1567,7 @@ import 'record_set_state.dart';
 /// 								IpAddress:        prodForwardingRule.IpAddress,
 /// 								Port:             pulumi.String("80"),
 /// 								IpProtocol:       pulumi.String("tcp"),
-/// 								NetworkUrl:       prodNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 								NetworkUrl:       prodNetwork.ID(),
 /// 								Project:          prodForwardingRule.Project,
 /// 								Region:           prodForwardingRule.Region,
 /// 							},
@@ -1562,7 +1598,7 @@ import 'record_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1570,9 +1606,12 @@ import 'record_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dns_recordset" "a" {
-///   name         ="backend.${gcp_dns_managedzone.prod.dns_name}"
-///   managed_zone = gcp_dns_managedzone.prod.name
+/// resource "gcp_dns_record_set" "a" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name         ="backend.${gcp_dns_managed_zone.prod.dns_name}"
+///   managed_zone = gcp_dns_managed_zone.prod.name
 ///   type         = "A"
 ///   ttl          = 300
 ///   routing_policy = {
@@ -1580,44 +1619,56 @@ import 'record_set_state.dart';
 ///       trickle_ratio = 0.1
 ///       primary = {
 ///         internal_load_balancers = [{
-///           "loadBalancerType" = "regionalL4ilb"
-///           "ipAddress"        = gcp_compute_forwardingrule.prod.ip_address
-///           "port"             = "80"
-///           "ipProtocol"       = "tcp"
-///           "networkUrl"       = gcp_compute_network.prod.id
-///           "project"          = gcp_compute_forwardingrule.prod.project
-///           "region"           = gcp_compute_forwardingrule.prod.region
+///           load_balancer_type = "regionalL4ilb"
+///           ip_address         = gcp_compute_forwarding_rule.prod.ip_address
+///           port               = "80"
+///           ip_protocol        = "tcp"
+///           network_url        = gcp_compute_network.prod.id
+///           project            = gcp_compute_forwarding_rule.prod.project
+///           region             = gcp_compute_forwarding_rule.prod.region
 ///         }]
 ///       }
 ///       backup_geos = [{
-///         "location" = "asia-east1"
-///         "rrdatas"  = ["10.128.1.1"]
+///         location = "asia-east1"
+///         rrdatas  = ["10.128.1.1"]
 ///         }, {
-///         "location" = "us-west1"
-///         "rrdatas"  = ["10.130.1.1"]
+///         location = "us-west1"
+///         rrdatas  = ["10.130.1.1"]
 ///       }]
 ///     }
 ///   }
 /// }
-/// resource "gcp_dns_managedzone" "prod" {
+/// resource "gcp_dns_managed_zone" "prod" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "prod-zone"
 ///   dns_name   = "prod.mydomain.com."
 ///   visibility = "private"
 /// }
-/// resource "gcp_compute_forwardingrule" "prod" {
+/// resource "gcp_compute_forwarding_rule" "prod" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "prod-ilb"
 ///   region                = "us-central1"
 ///   load_balancing_scheme = "INTERNAL"
-///   backend_service       = gcp_compute_regionbackendservice.prod.id
+///   backend_service       = gcp_compute_region_backend_service.prod.id
 ///   all_ports             = true
 ///   network               = gcp_compute_network.prod.name
 ///   allow_global_access   = true
 /// }
-/// resource "gcp_compute_regionbackendservice" "prod" {
+/// resource "gcp_compute_region_backend_service" "prod" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "prod-backend"
 ///   region = "us-central1"
 /// }
 /// resource "gcp_compute_network" "prod" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "prod-network"
 /// }
 /// ```
@@ -1929,8 +1980,8 @@ import 'record_set_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1965,7 +2016,7 @@ import 'record_set_state.dart';
 /// 			Type:        pulumi.String("A"),
 /// 			Ttl:         pulumi.Int(300),
 /// 			RoutingPolicy: &dns.RecordSetRoutingPolicyArgs{
-/// 				HealthCheck: http_health_check.ID().ToIDOutput().ToStringOutput(),
+/// 				HealthCheck: http_health_check.ID(),
 /// 				PrimaryBackup: &dns.RecordSetRoutingPolicyPrimaryBackupArgs{
 /// 					TrickleRatio: pulumi.Float64(0.1),
 /// 					Primary: &dns.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs{
@@ -1994,7 +2045,7 @@ import 'record_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2002,28 +2053,34 @@ import 'record_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dns_recordset" "a" {
-///   name         ="backend.${gcp_dns_managedzone.prod.dns_name}"
-///   managed_zone = gcp_dns_managedzone.prod.name
+/// resource "gcp_dns_record_set" "a" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name         ="backend.${gcp_dns_managed_zone.prod.dns_name}"
+///   managed_zone = gcp_dns_managed_zone.prod.name
 ///   type         = "A"
 ///   ttl          = 300
 ///   routing_policy = {
-///     health_check = gcp_compute_healthcheck.http-health-check.id
+///     health_check = gcp_compute_health_check.http-health-check.id
 ///     primary_backup = {
 ///       trickle_ratio = 0.1
 ///       primary = {
 ///         external_endpoints = ["10.128.1.1"]
 ///       }
 ///       backup_geos = [{
-///         "location" = "us-west1"
-///         "healthCheckedTargets" = {
-///           "externalEndpoints" = ["10.130.1.1"]
+///         location = "us-west1"
+///         health_checked_targets = {
+///           external_endpoints = ["10.130.1.1"]
 ///         }
 ///       }]
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_healthcheck" "http-health-check" {
+/// resource "gcp_compute_health_check" "http-health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "http-health-check"
 ///   description         = "Health check via http"
 ///   timeout_sec         = 5
@@ -2034,7 +2091,10 @@ import 'record_set_state.dart';
 ///     port_specification = "USE_SERVING_PORT"
 ///   }
 /// }
-/// resource "gcp_dns_managedzone" "prod" {
+/// resource "gcp_dns_managed_zone" "prod" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "prod-zone"
 ///   dns_name = "prod.mydomain.com."
 /// }
@@ -2212,7 +2272,7 @@ class RecordSet extends pulumi.CustomResource {
           'gcp:dns/recordSet:RecordSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     managedZone = registerOutput<String>('managedZone');

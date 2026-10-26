@@ -100,9 +100,9 @@ import 'folder_notification_config_streaming_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -126,7 +126,7 @@ import 'folder_notification_config_streaming_config.dart';
 /// 			Folder:      folder.FolderId,
 /// 			Location:    "global",
 /// 			Description: pulumi.String("My custom Cloud Security Command Center Finding Notification Configuration"),
-/// 			PubsubTopic: sccFolderNotificationConfig.ID().ToIDOutput().ToStringOutput(),
+/// 			PubsubTopic: sccFolderNotificationConfig.ID(),
 /// 			StreamingConfig: &securitycenter.FolderNotificationConfigStreamingConfigArgs{
 /// 				Filter: pulumi.String("category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\""),
 /// 			},
@@ -139,7 +139,7 @@ import 'folder_notification_config_streaming_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -148,13 +148,22 @@ import 'folder_notification_config_streaming_config.dart';
 /// }
 ///
 /// resource "gcp_organizations_folder" "folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "organizations/123456789"
 ///   display_name = "folder-name"
 /// }
 /// resource "gcp_pubsub_topic" "scc_folder_notification_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-topic"
 /// }
-/// resource "gcp_securitycenter_foldernotificationconfig" "custom_notification_config" {
+/// resource "gcp_securitycenter_folder_notification_config" "custom_notification_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   config_id    = "my-config"
 ///   folder       = gcp_organizations_folder.folder.folder_id
 ///   location     = "global"
@@ -293,7 +302,7 @@ class FolderNotificationConfig extends pulumi.CustomResource {
           'gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     configId = registerOutput<String>('configId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

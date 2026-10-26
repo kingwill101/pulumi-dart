@@ -24,7 +24,7 @@ import 'function_state.dart';
 ///
 /// const project = "my-project-name";
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -60,7 +60,7 @@ import 'function_state.dart';
 ///
 /// project = "my-project-name"
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -99,7 +99,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -143,8 +143,8 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -152,7 +152,7 @@ import 'function_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		project := "my-project-name"
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -195,7 +195,7 @@ import 'function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -204,16 +204,25 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "function-source.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("function-source.zip")
+///   source = fileasset("function-source.zip")
 /// }
 /// resource "gcp_cloudfunctionsv2_function" "function" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "function-v2"
 ///   location    = "us-central1"
 ///   description = "a new function"
@@ -223,7 +232,7 @@ import 'function_state.dart';
 ///     source = {
 ///       storage_source = {
 ///         bucket = gcp_storage_bucket.bucket.name
-///         object = gcp_storage_bucketobject.object.name
+///         object = gcp_storage_bucket_object.object.name
 ///       }
 ///     }
 ///   }
@@ -270,7 +279,7 @@ import 'function_state.dart';
 ///         final var project = "my-project-name";
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -310,7 +319,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -356,7 +365,7 @@ import 'function_state.dart';
 /// });
 /// const topic = new gcp.pubsub.Topic("topic", {name: "functions2-topic"});
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -415,7 +424,7 @@ import 'function_state.dart';
 ///     display_name="Test Service Account")
 /// topic = gcp.pubsub.Topic("topic", name="functions2-topic")
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -484,7 +493,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -550,10 +559,10 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -574,7 +583,7 @@ import 'function_state.dart';
 /// 			return err
 /// 		}
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -624,7 +633,7 @@ import 'function_state.dart';
 /// 			EventTrigger: &cloudfunctionsv2.FunctionEventTriggerArgs{
 /// 				TriggerRegion: pulumi.String("us-central1"),
 /// 				EventType:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
-/// 				PubsubTopic:   topic.ID().ToIDOutput().ToStringOutput(),
+/// 				PubsubTopic:   topic.ID(),
 /// 				RetryPolicy:   pulumi.String("RETRY_POLICY_RETRY"),
 /// 			},
 /// 		})
@@ -636,7 +645,7 @@ import 'function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -645,23 +654,38 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "gcf-sa"
 ///   display_name = "Test Service Account"
 /// }
 /// resource "gcp_pubsub_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "functions2-topic"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "function-source.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("function-source.zip")
+///   source = fileasset("function-source.zip")
 /// }
 /// resource "gcp_cloudfunctionsv2_function" "function" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "gcf-function"
 ///   location    = "us-central1"
 ///   description = "a new function"
@@ -674,7 +698,7 @@ import 'function_state.dart';
 ///     source = {
 ///       storage_source = {
 ///         bucket = gcp_storage_bucket.bucket.name
-///         object = gcp_storage_bucketobject.object.name
+///         object = gcp_storage_bucket_object.object.name
 ///       }
 ///     }
 ///   }
@@ -752,7 +776,7 @@ import 'function_state.dart';
 ///             .build());
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -818,7 +842,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -879,7 +903,7 @@ import 'function_state.dart';
 ///     displayName: "Test Service Account",
 /// });
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -948,7 +972,7 @@ import 'function_state.dart';
 ///     account_id="gcf-sa",
 ///     display_name="Test Service Account")
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -1020,7 +1044,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -1104,11 +1128,11 @@ import 'function_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudscheduler"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudscheduler"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1123,7 +1147,7 @@ import 'function_state.dart';
 /// 			return err
 /// 		}
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -1211,7 +1235,7 @@ import 'function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1220,20 +1244,32 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "gcf-sa"
 ///   display_name = "Test Service Account"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "function-source.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("function-source.zip")
+///   source = fileasset("function-source.zip")
 /// }
 /// resource "gcp_cloudfunctionsv2_function" "function" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "gcf-function"
 ///   location    = "us-central1"
 ///   description = "a new function"
@@ -1243,7 +1279,7 @@ import 'function_state.dart';
 ///     source = {
 ///       storage_source = {
 ///         bucket = gcp_storage_bucket.bucket.name
-///         object = gcp_storage_bucketobject.object.name
+///         object = gcp_storage_bucket_object.object.name
 ///       }
 ///     }
 ///   }
@@ -1254,14 +1290,20 @@ import 'function_state.dart';
 ///     service_account_email = gcp_serviceaccount_account.account.email
 ///   }
 /// }
-/// resource "gcp_cloudfunctionsv2_functioniammember" "invoker" {
+/// resource "gcp_cloudfunctionsv2_function_iam_member" "invoker" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project        = gcp_cloudfunctionsv2_function.function.project
 ///   location       = gcp_cloudfunctionsv2_function.function.location
 ///   cloud_function = gcp_cloudfunctionsv2_function.function.name
 ///   role           = "roles/cloudfunctions.invoker"
 ///   member         ="serviceAccount:${gcp_serviceaccount_account.account.email}"
 /// }
-/// resource "gcp_cloudrun_iammember" "cloud_run_invoker" {
+/// resource "gcp_cloudrun_iam_member" "cloud_run_invoker" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project  = gcp_cloudfunctionsv2_function.function.project
 ///   location = gcp_cloudfunctionsv2_function.function.location
 ///   service  = gcp_cloudfunctionsv2_function.function.name
@@ -1269,6 +1311,9 @@ import 'function_state.dart';
 ///   member   ="serviceAccount:${gcp_serviceaccount_account.account.email}"
 /// }
 /// resource "gcp_cloudscheduler_job" "invoke_cloud_function" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "invoke-gcf-function"
 ///   description = "Schedule the HTTPS trigger for cloud function"
 ///   schedule    = "0 0 * * *"
@@ -1335,7 +1380,7 @@ import 'function_state.dart';
 ///             .build());
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -1413,7 +1458,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -1817,10 +1862,10 @@ import 'function_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1960,7 +2005,7 @@ import 'function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1968,56 +2013,83 @@ import 'function_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_storage_getprojectserviceaccount" "gcsAccount" {
+/// data "gcp_storage_project_service_account" "gcsAccount" {
 /// }
 ///
 /// resource "gcp_storage_bucket" "source-bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "gcf-source-bucket"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "function-source.zip"
 ///   bucket = gcp_storage_bucket.source-bucket.name
-///   source = fileAsset("function-source.zip")
+///   source = fileasset("function-source.zip")
 /// }
 /// resource "gcp_storage_bucket" "trigger-bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "gcf-trigger-bucket"
 ///   location                    = "us-central1"
 ///   uniform_bucket_level_access = true
 /// }
 /// # To use GCS CloudEvent triggers, the GCS service account requires the Pub/Sub Publisher(roles/pubsub.publisher) IAM role in the specified project.
 /// # (See https://cloud.google.com/eventarc/docs/run/quickstart-storage#before-you-begin)
-/// resource "gcp_projects_iammember" "gcs-pubsub-publishing" {
+/// resource "gcp_projects_i_a_m_member" "gcs-pubsub-publishing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   role    = "roles/pubsub.publisher"
-///   member  ="serviceAccount:${data.gcp_storage_getprojectserviceaccount.gcsAccount.email_address}"
+///   member  ="serviceAccount:${data.gcp_storage_project_service_account.gcsAccount.email_address}"
 /// }
 /// resource "gcp_serviceaccount_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "gcf-sa"
 ///   display_name = "Test Service Account - used for both the cloud function and eventarc trigger in the test"
 /// }
 /// # Permissions on the service account used by the function and Eventarc trigger
-/// resource "gcp_projects_iammember" "invoking" {
-///   depends_on = [gcp_projects_iammember.gcs-pubsub-publishing]
-///   project    = "my-project-name"
-///   role       = "roles/run.invoker"
-///   member     ="serviceAccount:${gcp_serviceaccount_account.account.email}"
+/// resource "gcp_projects_i_a_m_member" "invoking" {
+///   depends_on = [gcp_projects_i_a_m_member.gcs-pubsub-publishing]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = "my-project-name"
+///   role    = "roles/run.invoker"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.account.email}"
 /// }
-/// resource "gcp_projects_iammember" "event-receiving" {
-///   depends_on = [gcp_projects_iammember.invoking]
-///   project    = "my-project-name"
-///   role       = "roles/eventarc.eventReceiver"
-///   member     ="serviceAccount:${gcp_serviceaccount_account.account.email}"
+/// resource "gcp_projects_i_a_m_member" "event-receiving" {
+///   depends_on = [gcp_projects_i_a_m_member.invoking]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = "my-project-name"
+///   role    = "roles/eventarc.eventReceiver"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.account.email}"
 /// }
-/// resource "gcp_projects_iammember" "artifactregistry-reader" {
-///   depends_on = [gcp_projects_iammember.event-receiving]
-///   project    = "my-project-name"
-///   role       = "roles/artifactregistry.reader"
-///   member     ="serviceAccount:${gcp_serviceaccount_account.account.email}"
+/// resource "gcp_projects_i_a_m_member" "artifactregistry-reader" {
+///   depends_on = [gcp_projects_i_a_m_member.event-receiving]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = "my-project-name"
+///   role    = "roles/artifactregistry.reader"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.account.email}"
 /// }
 /// resource "gcp_cloudfunctionsv2_function" "function" {
-///   depends_on  = [gcp_projects_iammember.event-receiving, gcp_projects_iammember.artifactregistry-reader]
+///   depends_on = [gcp_projects_i_a_m_member.event-receiving, gcp_projects_i_a_m_member.artifactregistry-reader]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "gcf-function"
 ///   location    = "us-central1"
 ///   description = "a new function"
@@ -2030,7 +2102,7 @@ import 'function_state.dart';
 ///     source = {
 ///       storage_source = {
 ///         bucket = gcp_storage_bucket.source-bucket.name
-///         object = gcp_storage_bucketobject.object.name
+///         object = gcp_storage_bucket_object.object.name
 ///       }
 ///     }
 ///   }
@@ -2052,8 +2124,8 @@ import 'function_state.dart';
 ///     retry_policy          = "RETRY_POLICY_RETRY"
 ///     service_account_email = gcp_serviceaccount_account.account.email
 ///     event_filters = [{
-///       "attribute" = "bucket"
-///       "value"     = gcp_storage_bucket.trigger-bucket.name
+///       attribute = "bucket"
+///       value     = gcp_storage_bucket.trigger-bucket.name
 ///     }]
 ///   }
 /// }
@@ -2666,10 +2738,10 @@ import 'function_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2812,7 +2884,7 @@ import 'function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2825,16 +2897,25 @@ import 'function_state.dart';
 /// # and the docs:
 /// # https://cloud.google.com/eventarc/docs/path-patterns
 /// resource "gcp_storage_bucket" "source-bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "gcf-source-bucket"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "function-source.zip"
 ///   bucket = gcp_storage_bucket.source-bucket.name
-///   source = fileAsset("function-source.zip")
+///   source = fileasset("function-source.zip")
 /// }
 /// resource "gcp_serviceaccount_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "gcf-sa"
 ///   display_name = "Test Service Account - used for both the cloud function and eventarc trigger in the test"
 /// }
@@ -2842,30 +2923,45 @@ import 'function_state.dart';
 /// # Here we use Audit Logs to monitor the bucket so path patterns can be used in the example of
 /// # google_cloudfunctions2_function below (Audit Log events have path pattern support)
 /// resource "gcp_storage_bucket" "audit-log-bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "gcf-auditlog-bucket"
 ///   location                    = "us-central1"
 ///   uniform_bucket_level_access = true
 /// }
 /// # Permissions on the service account used by the function and Eventarc trigger
-/// resource "gcp_projects_iammember" "invoking" {
+/// resource "gcp_projects_i_a_m_member" "invoking" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   role    = "roles/run.invoker"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.account.email}"
 /// }
-/// resource "gcp_projects_iammember" "event-receiving" {
-///   depends_on = [gcp_projects_iammember.invoking]
-///   project    = "my-project-name"
-///   role       = "roles/eventarc.eventReceiver"
-///   member     ="serviceAccount:${gcp_serviceaccount_account.account.email}"
+/// resource "gcp_projects_i_a_m_member" "event-receiving" {
+///   depends_on = [gcp_projects_i_a_m_member.invoking]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = "my-project-name"
+///   role    = "roles/eventarc.eventReceiver"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.account.email}"
 /// }
-/// resource "gcp_projects_iammember" "artifactregistry-reader" {
-///   depends_on = [gcp_projects_iammember.event-receiving]
-///   project    = "my-project-name"
-///   role       = "roles/artifactregistry.reader"
-///   member     ="serviceAccount:${gcp_serviceaccount_account.account.email}"
+/// resource "gcp_projects_i_a_m_member" "artifactregistry-reader" {
+///   depends_on = [gcp_projects_i_a_m_member.event-receiving]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = "my-project-name"
+///   role    = "roles/artifactregistry.reader"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.account.email}"
 /// }
 /// resource "gcp_cloudfunctionsv2_function" "function" {
-///   depends_on  = [gcp_projects_iammember.event-receiving, gcp_projects_iammember.artifactregistry-reader]
+///   depends_on = [gcp_projects_i_a_m_member.event-receiving, gcp_projects_i_a_m_member.artifactregistry-reader]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "gcf-function"
 ///   location    = "us-central1"
 ///   description = "a new function"
@@ -2878,7 +2974,7 @@ import 'function_state.dart';
 ///     source = {
 ///       storage_source = {
 ///         bucket = gcp_storage_bucket.source-bucket.name
-///         object = gcp_storage_bucketobject.object.name
+///         object = gcp_storage_bucket_object.object.name
 ///       }
 ///     }
 ///   }
@@ -2901,15 +2997,15 @@ import 'function_state.dart';
 ///     retry_policy          = "RETRY_POLICY_RETRY"
 ///     service_account_email = gcp_serviceaccount_account.account.email
 ///     event_filters = [{
-///       "attribute" = "serviceName"
-///       "value"     = "storage.googleapis.com"
+///       attribute = "serviceName"
+///       value     = "storage.googleapis.com"
 ///       }, {
-///       "attribute" = "methodName"
-///       "value"     = "storage.objects.create"
+///       attribute = "methodName"
+///       value     = "storage.objects.create"
 ///       }, {
-///       "attribute" = "resourceName"
-///       "value"     ="/projects/_/buckets/${gcp_storage_bucket.audit-log-bucket.name}/objects/*.txt"
-///       "operator"  = "match-path-pattern"
+///       attribute = "resourceName"
+///       value     ="/projects/_/buckets/${gcp_storage_bucket.audit-log-bucket.name}/objects/*.txt"
+///       operator  = "match-path-pattern"
 ///     }]
 ///   }
 /// }
@@ -3190,7 +3286,7 @@ import 'function_state.dart';
 ///     member: pulumi.interpolate`serviceAccount:${account.email}`,
 /// });
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -3253,7 +3349,7 @@ import 'function_state.dart';
 ///     role="roles/storage.objectAdmin",
 ///     member=account.email.apply(lambda email: f"serviceAccount:{email}"))
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -3329,7 +3425,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -3396,10 +3492,10 @@ import 'function_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -3445,7 +3541,7 @@ import 'function_state.dart';
 /// 			return err
 /// 		}
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -3484,7 +3580,7 @@ import 'function_state.dart';
 /// 						Object: object.Name,
 /// 					},
 /// 				},
-/// 				ServiceAccount: account.ID().ToIDOutput().ToStringOutput(),
+/// 				ServiceAccount: account.ID(),
 /// 			},
 /// 			ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
 /// 				MaxInstanceCount: pulumi.Int(1),
@@ -3502,7 +3598,7 @@ import 'function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3514,41 +3610,65 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "gcf-sa"
 ///   display_name = "Test Service Account"
 /// }
-/// resource "gcp_projects_iammember" "log_writer" {
+/// resource "gcp_projects_i_a_m_member" "log_writer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_serviceaccount_account.account.project
 ///   role    = "roles/logging.logWriter"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.account.email}"
 /// }
-/// resource "gcp_projects_iammember" "artifact_registry_writer" {
+/// resource "gcp_projects_i_a_m_member" "artifact_registry_writer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_serviceaccount_account.account.project
 ///   role    = "roles/artifactregistry.writer"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.account.email}"
 /// }
-/// resource "gcp_projects_iammember" "storage_object_admin" {
+/// resource "gcp_projects_i_a_m_member" "storage_object_admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_serviceaccount_account.account.project
 ///   role    = "roles/storage.objectAdmin"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.account.email}"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "function-source.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("function-source.zip")
+///   source = fileasset("function-source.zip")
 /// }
 /// # builder permissions need to stablize before it can pull the source zip
 /// resource "time_sleep" "wait_60s" {
-///   depends_on      = [gcp_projects_iammember.log_writer, gcp_projects_iammember.artifact_registry_writer, gcp_projects_iammember.storage_object_admin]
+///   depends_on = [gcp_projects_i_a_m_member.log_writer, gcp_projects_i_a_m_member.artifact_registry_writer, gcp_projects_i_a_m_member.storage_object_admin]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "60s"
 /// }
 /// resource "gcp_cloudfunctionsv2_function" "function" {
-///   depends_on  = [time_sleep.wait_60s]
+///   depends_on = [time_sleep.wait_60s]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "function-v2"
 ///   location    = "us-central1"
 ///   description = "a new function"
@@ -3558,7 +3678,7 @@ import 'function_state.dart';
 ///     source = {
 ///       storage_source = {
 ///         bucket = gcp_storage_bucket.bucket.name
-///         object = gcp_storage_bucketobject.object.name
+///         object = gcp_storage_bucket_object.object.name
 ///       }
 ///     }
 ///     service_account = gcp_serviceaccount_account.account.id
@@ -3636,7 +3756,7 @@ import 'function_state.dart';
 ///             .build());
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -3715,7 +3835,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -3771,7 +3891,7 @@ import 'function_state.dart';
 ///
 /// const project = "my-project-name";
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -3830,7 +3950,7 @@ import 'function_state.dart';
 ///
 /// project = "my-project-name"
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -3889,7 +4009,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -3974,9 +4094,9 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3984,7 +4104,7 @@ import 'function_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		project := "my-project-name"
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -4060,7 +4180,7 @@ import 'function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4069,17 +4189,26 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "function-source.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("function-source.zip")
+///   source = fileasset("function-source.zip")
 /// }
 /// resource "gcp_cloudfunctionsv2_function" "function" {
-///   depends_on  = [gcp_secretmanager_secretversion.secret]
+///   depends_on = [gcp_secretmanager_secret_version.secret]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "function-secret"
 ///   location    = "us-central1"
 ///   description = "a new function"
@@ -4089,7 +4218,7 @@ import 'function_state.dart';
 ///     source = {
 ///       storage_source = {
 ///         bucket = gcp_storage_bucket.bucket.name
-///         object = gcp_storage_bucketobject.object.name
+///         object = gcp_storage_bucket_object.object.name
 ///       }
 ///     }
 ///   }
@@ -4098,24 +4227,30 @@ import 'function_state.dart';
 ///     available_memory   = "256M"
 ///     timeout_seconds    = 60
 ///     secret_environment_variables = [{
-///       "key"       = "TEST"
-///       "projectId" = local.project
-///       "secret"    = gcp_secretmanager_secret.secret.secret_id
-///       "version"   = "latest"
+///       key        = "TEST"
+///       project_id = local.project
+///       secret     = gcp_secretmanager_secret.secret.secret_id
+///       version    = "latest"
 ///     }]
 ///   }
 /// }
 /// resource "gcp_secretmanager_secret" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "secret"
 ///   replication = {
 ///     user_managed = {
 ///       replicas = [{
-///         "location" = "us-central1"
+///         location = "us-central1"
 ///       }]
 ///     }
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "secret" {
+/// resource "gcp_secretmanager_secret_version" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.secret.name
 ///   secret_data = "secret"
 ///   enabled     = true
@@ -4166,7 +4301,7 @@ import 'function_state.dart';
 ///         final var project = "my-project-name";
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -4231,7 +4366,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -4295,7 +4430,7 @@ import 'function_state.dart';
 ///
 /// const project = "my-project-name";
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -4353,7 +4488,7 @@ import 'function_state.dart';
 ///
 /// project = "my-project-name"
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -4411,7 +4546,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -4495,9 +4630,9 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4505,7 +4640,7 @@ import 'function_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		project := "my-project-name"
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -4580,7 +4715,7 @@ import 'function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4589,17 +4724,26 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "function-source.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("function-source.zip")
+///   source = fileasset("function-source.zip")
 /// }
 /// resource "gcp_cloudfunctionsv2_function" "function" {
-///   depends_on  = [gcp_secretmanager_secretversion.secret]
+///   depends_on = [gcp_secretmanager_secret_version.secret]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "function-secret"
 ///   location    = "us-central1"
 ///   description = "a new function"
@@ -4609,7 +4753,7 @@ import 'function_state.dart';
 ///     source = {
 ///       storage_source = {
 ///         bucket = gcp_storage_bucket.bucket.name
-///         object = gcp_storage_bucketobject.object.name
+///         object = gcp_storage_bucket_object.object.name
 ///       }
 ///     }
 ///   }
@@ -4618,23 +4762,29 @@ import 'function_state.dart';
 ///     available_memory   = "256M"
 ///     timeout_seconds    = 60
 ///     secret_volumes = [{
-///       "mountPath" = "/etc/secrets"
-///       "projectId" = local.project
-///       "secret"    = gcp_secretmanager_secret.secret.secret_id
+///       mount_path = "/etc/secrets"
+///       project_id = local.project
+///       secret     = gcp_secretmanager_secret.secret.secret_id
 ///     }]
 ///   }
 /// }
 /// resource "gcp_secretmanager_secret" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "secret"
 ///   replication = {
 ///     user_managed = {
 ///       replicas = [{
-///         "location" = "us-central1"
+///         location = "us-central1"
 ///       }]
 ///     }
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "secret" {
+/// resource "gcp_secretmanager_secret_version" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.secret.name
 ///   secret_data = "secret"
 ///   enabled     = true
@@ -4685,7 +4835,7 @@ import 'function_state.dart';
 ///         final var project = "my-project-name";
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -4749,7 +4899,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -4812,7 +4962,7 @@ import 'function_state.dart';
 ///
 /// const project = "my-project-name";
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -4858,7 +5008,7 @@ import 'function_state.dart';
 ///
 /// project = "my-project-name"
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -4906,7 +5056,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -4963,9 +5113,9 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4973,7 +5123,7 @@ import 'function_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		project := "my-project-name"
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -5013,7 +5163,7 @@ import 'function_state.dart';
 /// 						Object: object.Name,
 /// 					},
 /// 				},
-/// 				WorkerPool: pool.ID().ToIDOutput().ToStringOutput(),
+/// 				WorkerPool: pool.ID(),
 /// 			},
 /// 			ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
 /// 				MaxInstanceCount: pulumi.Int(1),
@@ -5029,7 +5179,7 @@ import 'function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -5038,16 +5188,25 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "function-source.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("function-source.zip")
+///   source = fileasset("function-source.zip")
 /// }
-/// resource "gcp_cloudbuild_workerpool" "pool" {
+/// resource "gcp_cloudbuild_worker_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "workerpool"
 ///   location = "us-central1"
 ///   worker_config = {
@@ -5057,6 +5216,9 @@ import 'function_state.dart';
 ///   }
 /// }
 /// resource "gcp_cloudfunctionsv2_function" "function" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "function-workerpool"
 ///   location    = "us-central1"
 ///   description = "a new function"
@@ -5066,10 +5228,10 @@ import 'function_state.dart';
 ///     source = {
 ///       storage_source = {
 ///         bucket = gcp_storage_bucket.bucket.name
-///         object = gcp_storage_bucketobject.object.name
+///         object = gcp_storage_bucket_object.object.name
 ///       }
 ///     }
-///     worker_pool = gcp_cloudbuild_workerpool.pool.id
+///     worker_pool = gcp_cloudbuild_worker_pool.pool.id
 ///   }
 ///   service_config = {
 ///     max_instance_count = 1
@@ -5117,7 +5279,7 @@ import 'function_state.dart';
 ///         final var project = "my-project-name";
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -5168,7 +5330,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -5220,7 +5382,7 @@ import 'function_state.dart';
 /// const project = "my-project-name";
 /// const projectGetProject = gcp.organizations.getProject({});
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -5297,7 +5459,7 @@ import 'function_state.dart';
 /// project = "my-project-name"
 /// project_get_project = gcp.organizations.get_project()
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -5370,7 +5532,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -5480,12 +5642,12 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5497,7 +5659,7 @@ import 'function_state.dart';
 /// 			return err
 /// 		}
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -5573,7 +5735,7 @@ import 'function_state.dart';
 /// 			BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
 /// 				Runtime:          pulumi.String("nodejs20"),
 /// 				EntryPoint:       pulumi.String("helloHttp"),
-/// 				DockerRepository: encoded_ar_repo.ID().ToIDOutput().ToStringOutput(),
+/// 				DockerRepository: encoded_ar_repo.ID(),
 /// 				Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
 /// 					StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
 /// 						Bucket: bucket.Name,
@@ -5597,7 +5759,7 @@ import 'function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -5605,49 +5767,73 @@ import 'function_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "projectGetProject" {
+/// data "gcp_organizations_project" "projectGetProject" {
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "function-source.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("function-source.zip")
+///   source = fileasset("function-source.zip")
 /// }
-/// resource "gcp_projects_serviceidentity" "ea_sa" {
-///   project = data.gcp_organizations_getproject.projectGetProject.project_id
+/// resource "gcp_projects_service_identity" "ea_sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = data.gcp_organizations_project.projectGetProject.project_id
 ///   service = "eventarc.googleapis.com"
 /// }
 /// resource "gcp_artifactregistry_repository" "unencoded-ar-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository_id = "ar-repo"
 ///   location      = "us-central1"
 ///   format        = "DOCKER"
 /// }
-/// resource "gcp_artifactregistry_repositoryiambinding" "binding" {
+/// resource "gcp_artifactregistry_repository_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location   = gcp_artifactregistry_repository.encoded-ar-repo.location
 ///   repository = gcp_artifactregistry_repository.encoded-ar-repo.name
 ///   role       = "roles/artifactregistry.admin"
-///   members    = ["serviceAccount:service-${data.gcp_organizations_getproject.projectGetProject.number}@gcf-admin-robot.iam.gserviceaccount.com"]
+///   members    = ["serviceAccount:service-${data.gcp_organizations_project.projectGetProject.number}@gcf-admin-robot.iam.gserviceaccount.com"]
 /// }
-/// resource "gcp_kms_cryptokeyiambinding" "gcf_cmek_keyuser" {
-///   depends_on    = [gcp_projects_serviceidentity.ea_sa]
+/// resource "gcp_kms_crypto_key_i_a_m_binding" "gcf_cmek_keyuser" {
+///   depends_on = [gcp_projects_service_identity.ea_sa]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "cmek-key"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   members       = ["serviceAccount:service-${data.gcp_organizations_getproject.projectGetProject.number}@gcf-admin-robot.iam.gserviceaccount.com", "serviceAccount:service-${data.gcp_organizations_getproject.projectGetProject.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com", "serviceAccount:service-${data.gcp_organizations_getproject.projectGetProject.number}@gs-project-accounts.iam.gserviceaccount.com", "serviceAccount:service-${data.gcp_organizations_getproject.projectGetProject.number}@serverless-robot-prod.iam.gserviceaccount.com", gcp_projects_serviceidentity.ea_sa.member]
+///   members       = ["serviceAccount:service-${data.gcp_organizations_project.projectGetProject.number}@gcf-admin-robot.iam.gserviceaccount.com", "serviceAccount:service-${data.gcp_organizations_project.projectGetProject.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com", "serviceAccount:service-${data.gcp_organizations_project.projectGetProject.number}@gs-project-accounts.iam.gserviceaccount.com", "serviceAccount:service-${data.gcp_organizations_project.projectGetProject.number}@serverless-robot-prod.iam.gserviceaccount.com", gcp_projects_service_identity.ea_sa.member]
 /// }
 /// resource "gcp_artifactregistry_repository" "encoded-ar-repo" {
-///   depends_on    = [gcp_kms_cryptokeyiambinding.gcf_cmek_keyuser]
+///   depends_on = [gcp_kms_crypto_key_i_a_m_binding.gcf_cmek_keyuser]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "cmek-repo"
 ///   format        = "DOCKER"
 ///   kms_key_name  = "cmek-key"
 /// }
 /// resource "gcp_cloudfunctionsv2_function" "function" {
-///   depends_on   = [gcp_kms_cryptokeyiambinding.gcf_cmek_keyuser]
+///   depends_on = [gcp_kms_crypto_key_i_a_m_binding.gcf_cmek_keyuser]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "function-cmek"
 ///   location     = "us-central1"
 ///   description  = "CMEK function"
@@ -5659,7 +5845,7 @@ import 'function_state.dart';
 ///     source = {
 ///       storage_source = {
 ///         bucket = gcp_storage_bucket.bucket.name
-///         object = gcp_storage_bucketobject.object.name
+///         object = gcp_storage_bucket_object.object.name
 ///       }
 ///     }
 ///   }
@@ -5721,7 +5907,7 @@ import 'function_state.dart';
 ///             .build());
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -5805,7 +5991,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -5905,7 +6091,7 @@ import 'function_state.dart';
 /// });
 /// const topic = new gcp.pubsub.Topic("topic", {name: "functions2-topic"});
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -5964,7 +6150,7 @@ import 'function_state.dart';
 ///     display_name="Test Service Account")
 /// topic = gcp.pubsub.Topic("topic", name="functions2-topic")
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -6033,7 +6219,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -6099,10 +6285,10 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -6123,7 +6309,7 @@ import 'function_state.dart';
 /// 			return err
 /// 		}
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -6173,7 +6359,7 @@ import 'function_state.dart';
 /// 			EventTrigger: &cloudfunctionsv2.FunctionEventTriggerArgs{
 /// 				TriggerRegion: pulumi.String("us-central1"),
 /// 				EventType:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
-/// 				PubsubTopic:   topic.ID().ToIDOutput().ToStringOutput(),
+/// 				PubsubTopic:   topic.ID(),
 /// 				RetryPolicy:   pulumi.String("RETRY_POLICY_RETRY"),
 /// 			},
 /// 		})
@@ -6185,7 +6371,7 @@ import 'function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -6194,23 +6380,38 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "gcf-sa"
 ///   display_name = "Test Service Account"
 /// }
 /// resource "gcp_pubsub_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "functions2-topic"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "function-source.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("function-source.zip")
+///   source = fileasset("function-source.zip")
 /// }
 /// resource "gcp_cloudfunctionsv2_function" "function" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "gcf-function"
 ///   location    = "europe-west6"
 ///   description = "a new function"
@@ -6223,7 +6424,7 @@ import 'function_state.dart';
 ///     source = {
 ///       storage_source = {
 ///         bucket = gcp_storage_bucket.bucket.name
-///         object = gcp_storage_bucketobject.object.name
+///         object = gcp_storage_bucket_object.object.name
 ///       }
 ///     }
 ///     automatic_update_policy = {}
@@ -6302,7 +6503,7 @@ import 'function_state.dart';
 ///             .build());
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -6367,7 +6568,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -6429,7 +6630,7 @@ import 'function_state.dart';
 /// });
 /// const topic = new gcp.pubsub.Topic("topic", {name: "functions2-topic"});
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -6488,7 +6689,7 @@ import 'function_state.dart';
 ///     display_name="Test Service Account")
 /// topic = gcp.pubsub.Topic("topic", name="functions2-topic")
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -6557,7 +6758,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -6623,10 +6824,10 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -6647,7 +6848,7 @@ import 'function_state.dart';
 /// 			return err
 /// 		}
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -6697,7 +6898,7 @@ import 'function_state.dart';
 /// 			EventTrigger: &cloudfunctionsv2.FunctionEventTriggerArgs{
 /// 				TriggerRegion: pulumi.String("us-central1"),
 /// 				EventType:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
-/// 				PubsubTopic:   topic.ID().ToIDOutput().ToStringOutput(),
+/// 				PubsubTopic:   topic.ID(),
 /// 				RetryPolicy:   pulumi.String("RETRY_POLICY_RETRY"),
 /// 			},
 /// 		})
@@ -6709,7 +6910,7 @@ import 'function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -6718,23 +6919,38 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "gcf-sa"
 ///   display_name = "Test Service Account"
 /// }
 /// resource "gcp_pubsub_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "functions2-topic"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "function-source.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("function-source.zip")
+///   source = fileasset("function-source.zip")
 /// }
 /// resource "gcp_cloudfunctionsv2_function" "function" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "gcf-function"
 ///   location    = "europe-west6"
 ///   description = "a new function"
@@ -6747,7 +6963,7 @@ import 'function_state.dart';
 ///     source = {
 ///       storage_source = {
 ///         bucket = gcp_storage_bucket.bucket.name
-///         object = gcp_storage_bucketobject.object.name
+///         object = gcp_storage_bucket_object.object.name
 ///       }
 ///     }
 ///     on_deploy_update_policy = {}
@@ -6826,7 +7042,7 @@ import 'function_state.dart';
 ///             .build());
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -6891,7 +7107,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -6948,7 +7164,7 @@ import 'function_state.dart';
 ///
 /// const project = "my-project-name";
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -6993,7 +7209,7 @@ import 'function_state.dart';
 ///
 /// project = "my-project-name"
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -7041,7 +7257,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -7099,8 +7315,8 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -7108,7 +7324,7 @@ import 'function_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		project := "my-project-name"
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -7162,7 +7378,7 @@ import 'function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -7171,16 +7387,25 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "function-source.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("function-source.zip")
+///   source = fileasset("function-source.zip")
 /// }
 /// resource "gcp_cloudfunctionsv2_function" "function" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "function-v2"
 ///   location    = "us-central1"
 ///   description = "a new function"
@@ -7190,7 +7415,7 @@ import 'function_state.dart';
 ///     source = {
 ///       storage_source = {
 ///         bucket = gcp_storage_bucket.bucket.name
-///         object = gcp_storage_bucketobject.object.name
+///         object = gcp_storage_bucket_object.object.name
 ///       }
 ///     }
 ///   }
@@ -7199,9 +7424,9 @@ import 'function_state.dart';
 ///     available_memory   = "256M"
 ///     timeout_seconds    = 60
 ///     direct_vpc_network_interfaces = [{
-///       "network"    = "default"
-///       "subnetwork" = "default"
-///       "tags"       = ["tag1", "tag2"]
+///       network    = "default"
+///       subnetwork = "default"
+///       tags       = ["tag1", "tag2"]
 ///     }]
 ///     direct_vpc_egress = "VPC_EGRESS_ALL_TRAFFIC"
 ///   }
@@ -7244,7 +7469,7 @@ import 'function_state.dart';
 ///         final var project = "my-project-name";
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -7292,7 +7517,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -7410,7 +7635,7 @@ class FunctionType extends pulumi.CustomResource {
           'gcp:cloudfunctionsv2/function:Function',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     buildConfig = registerOutput<FunctionBuildConfig?>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

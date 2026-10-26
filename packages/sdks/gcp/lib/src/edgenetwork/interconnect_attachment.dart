@@ -104,7 +104,7 @@ import 'interconnect_attachment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/edgenetwork"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/edgenetwork"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -125,7 +125,7 @@ import 'interconnect_attachment_state.dart';
 /// 			Location:                 pulumi.String("us-west1"),
 /// 			Zone:                     pulumi.String(""),
 /// 			Description:              pulumi.String("Example interconnect attachment."),
-/// 			Network:                  exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:                  exampleNetwork.ID(),
 /// 			Interconnect:             pulumi.String("11111111-2222-3333-4444-555555555555"),
 /// 			VlanId:                   pulumi.Int(55),
 /// 			Mtu:                      pulumi.Int(9000),
@@ -141,7 +141,7 @@ import 'interconnect_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -149,7 +149,10 @@ import 'interconnect_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_edgenetwork_interconnectattachment" "example_interconnect_attachment" {
+/// resource "gcp_edgenetwork_interconnect_attachment" "example_interconnect_attachment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   interconnect_attachment_id = "example-interconnect-attachment"
 ///   location                   = "us-west1"
 ///   zone                       = ""
@@ -163,6 +166,9 @@ import 'interconnect_attachment_state.dart';
 ///   }
 /// }
 /// resource "gcp_edgenetwork_network" "example_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_id  = "example-network"
 ///   location    = "us-west1"
 ///   zone        = ""
@@ -326,7 +332,7 @@ class InterconnectAttachment extends pulumi.CustomResource {
           'gcp:edgenetwork/interconnectAttachment:InterconnectAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

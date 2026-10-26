@@ -152,8 +152,8 @@ import 'instance_group_named_port_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -217,7 +217,7 @@ import 'instance_group_named_port_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -225,29 +225,44 @@ import 'instance_group_named_port_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_instancegroupnamedport" "my_port" {
+/// resource "gcp_compute_instance_group_named_port" "my_port" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group = gcp_container_cluster.my_cluster.node_pools[0].instance_group_urls[0]
 ///   zone  = "us-central1-a"
 ///   name  = "http"
 ///   port  = 8080
 /// }
-/// resource "gcp_compute_instancegroupnamedport" "my_ports" {
+/// resource "gcp_compute_instance_group_named_port" "my_ports" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group = gcp_container_cluster.my_cluster.node_pools[0].instance_group_urls[0]
 ///   zone  = "us-central1-a"
 ///   name  = "https"
 ///   port  = 4443
 /// }
 /// resource "gcp_compute_network" "container_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "container-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "container_subnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "container-subnetwork"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.container_network.name
 ///   ip_cidr_range = "10.0.36.0/24"
 /// }
 /// resource "gcp_container_cluster" "my_cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-cluster"
 ///   location           = "us-central1-a"
 ///   initial_node_count = 1
@@ -429,7 +444,7 @@ class InstanceGroupNamedPortCompute extends pulumi.CustomResource {
           'gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     group = registerOutput<String>('group');

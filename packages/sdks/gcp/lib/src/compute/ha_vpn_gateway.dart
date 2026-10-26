@@ -75,7 +75,7 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -91,7 +91,7 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 /// 		_, err = compute.NewHaVpnGateway(ctx, "ha_gateway1", &compute.HaVpnGatewayArgs{
 /// 			Region:  pulumi.String("us-central1"),
 /// 			Name:    pulumi.String("ha-vpn-1"),
-/// 			Network: network1.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: network1.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -101,7 +101,7 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -109,12 +109,18 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_havpngateway" "ha_gateway1" {
+/// resource "gcp_compute_ha_vpn_gateway" "ha_gateway1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region  = "us-central1"
 ///   name    = "ha-vpn-1"
 ///   network = gcp_compute_network.network1.id
 /// }
 /// resource "gcp_compute_network" "network1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network1"
 ///   auto_create_subnetworks = false
 /// }
@@ -242,7 +248,7 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -258,7 +264,7 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 /// 		_, err = compute.NewHaVpnGateway(ctx, "ha_gateway1", &compute.HaVpnGatewayArgs{
 /// 			Region:    pulumi.String("us-central1"),
 /// 			Name:      pulumi.String("ha-vpn-1"),
-/// 			Network:   network1.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:   network1.ID(),
 /// 			StackType: pulumi.String("IPV4_IPV6"),
 /// 			Labels: pulumi.StringMap{
 /// 				"mykey": pulumi.String("myvalue"),
@@ -272,7 +278,7 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -280,7 +286,10 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_havpngateway" "ha_gateway1" {
+/// resource "gcp_compute_ha_vpn_gateway" "ha_gateway1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region     = "us-central1"
 ///   name       = "ha-vpn-1"
 ///   network    = gcp_compute_network.network1.id
@@ -290,6 +299,9 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "network1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network1"
 ///   auto_create_subnetworks = false
 /// }
@@ -571,7 +583,7 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -610,7 +622,7 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 /// 			Name:                   pulumi.String("test-interconnect-attachment1"),
 /// 			EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 /// 			Type:                   pulumi.String("PARTNER"),
-/// 			Router:                 router.ID().ToIDOutput().ToStringOutput(),
+/// 			Router:                 router.ID(),
 /// 			Encryption:             pulumi.String("IPSEC"),
 /// 			IpsecInternalAddresses: pulumi.StringArray{
 /// 				address1.SelfLink,
@@ -634,7 +646,7 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 /// 			Name:                   pulumi.String("test-interconnect-attachment2"),
 /// 			EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_2"),
 /// 			Type:                   pulumi.String("PARTNER"),
-/// 			Router:                 router.ID().ToIDOutput().ToStringOutput(),
+/// 			Router:                 router.ID(),
 /// 			Encryption:             pulumi.String("IPSEC"),
 /// 			IpsecInternalAddresses: pulumi.StringArray{
 /// 				address2.SelfLink,
@@ -645,7 +657,7 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 /// 		}
 /// 		_, err = compute.NewHaVpnGateway(ctx, "vpn-gateway", &compute.HaVpnGatewayArgs{
 /// 			Name:    pulumi.String("test-ha-vpngw"),
-/// 			Network: network.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: network.ID(),
 /// 			VpnInterfaces: compute.HaVpnGatewayVpnInterfaceArray{
 /// 				&compute.HaVpnGatewayVpnInterfaceArgs{
 /// 					Id:                     pulumi.Int(0),
@@ -665,7 +677,7 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -673,19 +685,25 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_havpngateway" "vpn-gateway" {
+/// resource "gcp_compute_ha_vpn_gateway" "vpn-gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "test-ha-vpngw"
 ///   network = gcp_compute_network.network.id
 ///   vpn_interfaces {
 ///     id                      = 0
-///     interconnect_attachment = gcp_compute_interconnectattachment.attachment1.self_link
+///     interconnect_attachment = gcp_compute_interconnect_attachment.attachment1.self_link
 ///   }
 ///   vpn_interfaces {
 ///     id                      = 1
-///     interconnect_attachment = gcp_compute_interconnectattachment.attachment2.self_link
+///     interconnect_attachment = gcp_compute_interconnect_attachment.attachment2.self_link
 ///   }
 /// }
-/// resource "gcp_compute_interconnectattachment" "attachment1" {
+/// resource "gcp_compute_interconnect_attachment" "attachment1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "test-interconnect-attachment1"
 ///   edge_availability_domain = "AVAILABILITY_DOMAIN_1"
 ///   type                     = "PARTNER"
@@ -693,7 +711,10 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 ///   encryption               = "IPSEC"
 ///   ipsec_internal_addresses = [gcp_compute_address.address1.self_link]
 /// }
-/// resource "gcp_compute_interconnectattachment" "attachment2" {
+/// resource "gcp_compute_interconnect_attachment" "attachment2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "test-interconnect-attachment2"
 ///   edge_availability_domain = "AVAILABILITY_DOMAIN_2"
 ///   type                     = "PARTNER"
@@ -702,6 +723,9 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 ///   ipsec_internal_addresses = [gcp_compute_address.address2.self_link]
 /// }
 /// resource "gcp_compute_address" "address1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "test-address1"
 ///   address_type  = "INTERNAL"
 ///   purpose       = "IPSEC_INTERCONNECT"
@@ -710,6 +734,9 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 ///   network       = gcp_compute_network.network.self_link
 /// }
 /// resource "gcp_compute_address" "address2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "test-address2"
 ///   address_type  = "INTERNAL"
 ///   purpose       = "IPSEC_INTERCONNECT"
@@ -718,6 +745,9 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 ///   network       = gcp_compute_network.network.self_link
 /// }
 /// resource "gcp_compute_router" "router" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "test-router"
 ///   network                       = gcp_compute_network.network.name
 ///   encrypted_interconnect_router = true
@@ -726,6 +756,9 @@ import 'ha_vpn_gateway_vpn_interface.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "test-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -984,7 +1017,7 @@ class HaVpnGateway extends pulumi.CustomResource {
           'gcp:compute/haVpnGateway:HaVpnGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -103,7 +103,7 @@ import 'unit_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/saasruntime"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/saasruntime"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -124,7 +124,7 @@ import 'unit_state.dart';
 /// 		exampleUnitKind, err := saasruntime.NewUnitKind(ctx, "example_unit_kind", &saasruntime.UnitKindArgs{
 /// 			Location:   pulumi.String("us-central1"),
 /// 			UnitKindId: pulumi.String("example-unitkind"),
-/// 			Saas:       exampleSaasRegional.ID().ToIDOutput().ToStringOutput(),
+/// 			Saas:       exampleSaasRegional.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -132,7 +132,7 @@ import 'unit_state.dart';
 /// 		_, err = saasruntime.NewUnit(ctx, "example", &saasruntime.UnitArgs{
 /// 			Location:       pulumi.String("us-central1"),
 /// 			UnitId:         pulumi.String("example-unit"),
-/// 			UnitKind:       exampleUnitKind.ID().ToIDOutput().ToStringOutput(),
+/// 			UnitKind:       exampleUnitKind.ID(),
 /// 			ManagementMode: pulumi.String("MANAGEMENT_MODE_USER"),
 /// 		})
 /// 		if err != nil {
@@ -143,7 +143,7 @@ import 'unit_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -151,22 +151,31 @@ import 'unit_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_saasruntime_saas" "example_saas_regional" {
+/// resource "gcp_saasruntime_saa_s" "example_saas_regional" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   saas_id  = "example-saas"
 ///   location = "us-central1"
 ///   locations {
 ///     name = "us-central1"
 ///   }
 /// }
-/// resource "gcp_saasruntime_unitkind" "example_unit_kind" {
+/// resource "gcp_saasruntime_unit_kind" "example_unit_kind" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us-central1"
 ///   unit_kind_id = "example-unitkind"
-///   saas         = gcp_saasruntime_saas.example_saas_regional.id
+///   saas         = gcp_saasruntime_saa_s.example_saas_regional.id
 /// }
 /// resource "gcp_saasruntime_unit" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   unit_id         = "example-unit"
-///   unit_kind       = gcp_saasruntime_unitkind.example_unit_kind.id
+///   unit_kind       = gcp_saasruntime_unit_kind.example_unit_kind.id
 ///   management_mode = "MANAGEMENT_MODE_USER"
 /// }
 /// ```
@@ -391,7 +400,7 @@ class Unit extends pulumi.CustomResource {
           'gcp:saasruntime/unit:Unit',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

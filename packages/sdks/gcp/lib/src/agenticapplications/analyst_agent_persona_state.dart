@@ -8,6 +8,7 @@ import 'analyst_agent_persona_mcp_data_source.dart';
 import 'analyst_agent_persona_resource.dart';
 import 'analyst_agent_persona_skill.dart';
 import 'analyst_agent_persona_table.dart';
+import 'analyst_agent_persona_web_search_config.dart';
 
 /// Input properties used for looking up and filtering AnalystAgentPersona resources.
 class AnalystAgentPersonaState {
@@ -47,6 +48,11 @@ class AnalystAgentPersonaState {
   final pulumi.Input<String?>? geminiEnterpriseEngine;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String?>? location;
+  /// The math rendering mode selected for this persona.
+  /// Possible values:
+  /// MATH_RENDERING_MODE_LATEX
+  /// MATH_RENDERING_MODE_PLAIN_TEXT
+  final pulumi.Input<String?>? mathRenderingMode;
   /// The MCP data source selections to be used by the agent.
   /// Structure is documented below.
   final pulumi.Input<List<AnalystAgentPersonaMcpDataSource>?>? mcpDataSources;
@@ -101,6 +107,9 @@ class AnalystAgentPersonaState {
   final pulumi.Input<List<AnalystAgentPersonaTable>?>? tables;
   /// Update time stamp.
   final pulumi.Input<String?>? updateTime;
+  /// Configuration for web search grounding for the analyst agent.
+  /// Structure is documented below.
+  final pulumi.Input<AnalystAgentPersonaWebSearchConfig?>? webSearchConfig;
 
   /// Creates a new [AnalystAgentPersonaState].
   /// [analystAgentPersonaId] Id of the requesting object
@@ -114,6 +123,7 @@ class AnalystAgentPersonaState {
   /// [externalDataSources] The external data source selections to be used by the agent.
   /// [geminiEnterpriseEngine] The Gemini Enterprise Engine ID associated with this persona.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// [mathRenderingMode] The math rendering mode selected for this persona.
   /// [mcpDataSources] The MCP data source selections to be used by the agent.
   /// [modelDescription] The description of the persona review, used by the model.
   /// [name] Identifier. The resource name of the analyst agent persona.
@@ -123,6 +133,7 @@ class AnalystAgentPersonaState {
   /// [skills] Skills for the agent.
   /// [tables] Schema overrides for bigquery tables. Used to override the schema of a
   /// [updateTime] Update time stamp.
+  /// [webSearchConfig] Configuration for web search grounding for the analyst agent.
   const AnalystAgentPersonaState({
     this.analystAgentPersonaId,
     this.artifactExamples,
@@ -135,6 +146,7 @@ class AnalystAgentPersonaState {
     this.externalDataSources,
     this.geminiEnterpriseEngine,
     this.location,
+    this.mathRenderingMode,
     this.mcpDataSources,
     this.modelDescription,
     this.name,
@@ -144,6 +156,7 @@ class AnalystAgentPersonaState {
     this.skills,
     this.tables,
     this.updateTime,
+    this.webSearchConfig,
   });
 
   Map<String, dynamic> toMap() {
@@ -159,6 +172,7 @@ class AnalystAgentPersonaState {
       'externalDataSources': ?pulumi.Input.mapOptionalInputValue<List<AnalystAgentPersonaExternalDataSource>, List<Map<String, dynamic>>>(externalDataSources, (value) => pulumi.Input.encodeList<AnalystAgentPersonaExternalDataSource, Map<String, dynamic>>(value, (value) => value.toMap())),
       'geminiEnterpriseEngine': ?geminiEnterpriseEngine,
       'location': ?location,
+      'mathRenderingMode': ?mathRenderingMode,
       'mcpDataSources': ?pulumi.Input.mapOptionalInputValue<List<AnalystAgentPersonaMcpDataSource>, List<Map<String, dynamic>>>(mcpDataSources, (value) => pulumi.Input.encodeList<AnalystAgentPersonaMcpDataSource, Map<String, dynamic>>(value, (value) => value.toMap())),
       'modelDescription': ?modelDescription,
       'name': ?name,
@@ -168,6 +182,7 @@ class AnalystAgentPersonaState {
       'skills': ?pulumi.Input.mapOptionalInputValue<List<AnalystAgentPersonaSkill>, List<Map<String, dynamic>>>(skills, (value) => pulumi.Input.encodeList<AnalystAgentPersonaSkill, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tables': ?pulumi.Input.mapOptionalInputValue<List<AnalystAgentPersonaTable>, List<Map<String, dynamic>>>(tables, (value) => pulumi.Input.encodeList<AnalystAgentPersonaTable, Map<String, dynamic>>(value, (value) => value.toMap())),
       'updateTime': ?updateTime,
+      'webSearchConfig': ?pulumi.Input.mapOptionalInputValue<AnalystAgentPersonaWebSearchConfig, Map<String, dynamic>>(webSearchConfig, (value) => value.toMap()),
     };
   }
 
@@ -184,6 +199,7 @@ class AnalystAgentPersonaState {
       externalDataSources: (() { final guardedValue = map['externalDataSources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AnalystAgentPersonaExternalDataSource>(guardedValue, (value) => AnalystAgentPersonaExternalDataSource.fromMap((value as Map).cast<String, dynamic>()))); })(),
       geminiEnterpriseEngine: (() { final guardedValue = map['geminiEnterpriseEngine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mathRenderingMode: (() { final guardedValue = map['mathRenderingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mcpDataSources: (() { final guardedValue = map['mcpDataSources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AnalystAgentPersonaMcpDataSource>(guardedValue, (value) => AnalystAgentPersonaMcpDataSource.fromMap((value as Map).cast<String, dynamic>()))); })(),
       modelDescription: (() { final guardedValue = map['modelDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -193,6 +209,7 @@ class AnalystAgentPersonaState {
       skills: (() { final guardedValue = map['skills']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AnalystAgentPersonaSkill>(guardedValue, (value) => AnalystAgentPersonaSkill.fromMap((value as Map).cast<String, dynamic>()))); })(),
       tables: (() { final guardedValue = map['tables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AnalystAgentPersonaTable>(guardedValue, (value) => AnalystAgentPersonaTable.fromMap((value as Map).cast<String, dynamic>()))); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      webSearchConfig: (() { final guardedValue = map['webSearchConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnalystAgentPersonaWebSearchConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

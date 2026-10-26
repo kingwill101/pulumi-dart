@@ -59,7 +59,7 @@ import 'network_vpc_network.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -79,7 +79,7 @@ import 'network_vpc_network.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -88,6 +88,9 @@ import 'network_vpc_network.dart';
 /// }
 ///
 /// resource "gcp_vmwareengine_network" "vmw-engine-network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "standard-nw"
 ///   location    = "global"
 ///   type        = "STANDARD"
@@ -255,9 +258,9 @@ import 'network_vpc_network.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -308,7 +311,7 @@ import 'network_vpc_network.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -320,6 +323,9 @@ import 'network_vpc_network.dart';
 /// }
 ///
 /// resource "gcp_vmwareengine_network" "vmw-engine-network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = gcp_projects_service.acceptance.project
 ///   name        = "us-west1-default"
 ///   location    = "us-west1"
@@ -328,12 +334,18 @@ import 'network_vpc_network.dart';
 /// }
 /// resource "gcp_projects_service" "acceptance" {
 ///   depends_on = [time_sleep.wait_60_seconds]
-///   project    = gcp_organizations_project.acceptance.project_id
-///   service    = "vmwareengine.googleapis.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.acceptance.project_id
+///   service = "vmwareengine.googleapis.com"
 /// }
 /// # there can be only 1 Legacy network per region for a given project,
 /// # so creating new project for isolation in CI.
 /// resource "gcp_organizations_project" "acceptance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "vmw-proj"
 ///   project_id      = "vmw-proj"
 ///   org_id          = "123456789"
@@ -341,7 +353,10 @@ import 'network_vpc_network.dart';
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "time_sleep" "wait_60_seconds" {
-///   depends_on      = [gcp_organizations_project.acceptance]
+///   depends_on = [gcp_organizations_project.acceptance]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "60s"
 /// }
 /// ```
@@ -515,7 +530,7 @@ class Network extends pulumi.CustomResource {
           'gcp:vmwareengine/network:Network',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

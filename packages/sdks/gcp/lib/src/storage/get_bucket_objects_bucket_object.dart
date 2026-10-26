@@ -13,6 +13,8 @@ class GetBucketObjectsBucketObject {
   final pulumi.Input<String> selfLink;
   /// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket object.
   final pulumi.Input<String> storageClass;
+  /// The modification time of the object metadata in RFC 3339 format.
+  final pulumi.Input<String> updated;
 
   /// Creates a new [GetBucketObjectsBucketObject].
   /// [contentType] [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data.
@@ -20,12 +22,14 @@ class GetBucketObjectsBucketObject {
   /// [name] The name of the object.
   /// [selfLink] A url reference to this object.
   /// [storageClass] The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket object.
+  /// [updated] The modification time of the object metadata in RFC 3339 format.
   const GetBucketObjectsBucketObject({
     required this.contentType,
     required this.mediaLink,
     required this.name,
     required this.selfLink,
     required this.storageClass,
+    required this.updated,
   });
 
   Map<String, dynamic> toMap() {
@@ -35,6 +39,7 @@ class GetBucketObjectsBucketObject {
       'name': name,
       'selfLink': selfLink,
       'storageClass': storageClass,
+      'updated': updated,
     };
   }
 
@@ -45,6 +50,7 @@ class GetBucketObjectsBucketObject {
       name: pulumi.Input.fromValue(map['name'] as String),
       selfLink: pulumi.Input.fromValue(map['selfLink'] as String),
       storageClass: pulumi.Input.fromValue(map['storageClass'] as String),
+      updated: pulumi.Input.fromValue(map['updated'] as String),
     );
   }
 }

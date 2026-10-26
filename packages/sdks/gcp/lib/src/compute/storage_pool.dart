@@ -94,8 +94,8 @@ import 'storage_pool_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -127,7 +127,7 @@ import 'storage_pool_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -135,10 +135,13 @@ import 'storage_pool_status.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_compute_storagepool" "test-storage-pool-basic" {
+/// resource "gcp_compute_storage_pool" "test-storage-pool-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "storage-pool-basic"
 ///   pool_provisioned_capacity_gb = "10240"
 ///   pool_provisioned_throughput  = 100
@@ -320,8 +323,8 @@ import 'storage_pool_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -364,7 +367,7 @@ import 'storage_pool_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -372,14 +375,17 @@ import 'storage_pool_status.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
-/// data "gcp_compute_getstoragepooltypes" "balanced" {
+/// data "gcp_compute_storage_pool_types" "balanced" {
 ///   zone              = "us-central1-a"
 ///   storage_pool_type = "hyperdisk-balanced"
 /// }
 ///
-/// resource "gcp_compute_storagepool" "test-storage-pool-full" {
+/// resource "gcp_compute_storage_pool" "test-storage-pool-full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "storage-pool-full"
 ///   description                   = "Hyperdisk Balanced storage pool"
 ///   capacity_provisioning_type    = "STANDARD"
@@ -387,7 +393,7 @@ import 'storage_pool_status.dart';
 ///   performance_provisioning_type = "STANDARD"
 ///   pool_provisioned_iops         = "10000"
 ///   pool_provisioned_throughput   = "1024"
-///   storage_pool_type             = data.gcp_compute_getstoragepooltypes.balanced.self_link
+///   storage_pool_type             = data.gcp_compute_storage_pool_types.balanced.self_link
 ///   labels = {
 ///     "environment" = "test"
 ///     "purpose"     = "storage-pool-testing"
@@ -592,7 +598,7 @@ class StoragePool extends pulumi.CustomResource {
           'gcp:compute/storagePool:StoragePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     capacityProvisioningType = registerOutput<String>('capacityProvisioningType');

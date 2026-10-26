@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'widget_config_ui_settings_data_store_ui_config.dart';
 import 'widget_config_ui_settings_generative_answer_config.dart';
+import 'widget_config_ui_settings_search_addon_spec.dart';
 
 class WidgetConfigUiSettings {
   /// Per data store configuration.
@@ -38,6 +39,15 @@ class WidgetConfigUiSettings {
   /// Default to no result if unspecified.
   /// Possible values are: `SNIPPET`, `EXTRACTIVE_ANSWER`.
   final pulumi.Input<String?>? resultDescriptionType;
+  /// SearchAddonSpec is used to disable add-ons for search. By default, if this
+  /// field is not specified, add-ons are enabled wherever applicable.
+  /// This field is only supported for search requests.
+  /// Structure is documented below.
+  final pulumi.Input<WidgetConfigUiSettingsSearchAddonSpec?>? searchAddonSpec;
+  /// Whether to show the admin-configured display name for data connectors in
+  /// the widget sources UI (instead of the connector kind). Opt-in; defaults
+  /// to false.
+  final pulumi.Input<bool?>? sourceAdminDisplayNameEnabled;
 
   /// Creates a new [WidgetConfigUiSettings].
   /// [dataStoreUiConfigs] Per data store configuration.
@@ -53,6 +63,8 @@ class WidgetConfigUiSettings {
   /// [generativeAnswerConfig] Describes generative answer configuration.
   /// [interactionType] Describes widget (or web app) interaction type
   /// [resultDescriptionType] Controls whether result extract is display and how (snippet or extractive answer).
+  /// [searchAddonSpec] SearchAddonSpec is used to disable add-ons for search. By default, if this
+  /// [sourceAdminDisplayNameEnabled] Whether to show the admin-configured display name for data connectors in
   const WidgetConfigUiSettings({
     this.dataStoreUiConfigs,
     this.defaultSearchRequestOrderBy,
@@ -67,6 +79,8 @@ class WidgetConfigUiSettings {
     this.generativeAnswerConfig,
     this.interactionType,
     this.resultDescriptionType,
+    this.searchAddonSpec,
+    this.sourceAdminDisplayNameEnabled,
   });
 
   Map<String, dynamic> toMap() {
@@ -84,6 +98,8 @@ class WidgetConfigUiSettings {
       'generativeAnswerConfig': ?pulumi.Input.mapOptionalInputValue<WidgetConfigUiSettingsGenerativeAnswerConfig, Map<String, dynamic>>(generativeAnswerConfig, (value) => value.toMap()),
       'interactionType': ?interactionType,
       'resultDescriptionType': ?resultDescriptionType,
+      'searchAddonSpec': ?pulumi.Input.mapOptionalInputValue<WidgetConfigUiSettingsSearchAddonSpec, Map<String, dynamic>>(searchAddonSpec, (value) => value.toMap()),
+      'sourceAdminDisplayNameEnabled': ?sourceAdminDisplayNameEnabled,
     };
   }
 
@@ -102,6 +118,8 @@ class WidgetConfigUiSettings {
       generativeAnswerConfig: (() { final guardedValue = map['generativeAnswerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WidgetConfigUiSettingsGenerativeAnswerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       interactionType: (() { final guardedValue = map['interactionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resultDescriptionType: (() { final guardedValue = map['resultDescriptionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      searchAddonSpec: (() { final guardedValue = map['searchAddonSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WidgetConfigUiSettingsSearchAddonSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sourceAdminDisplayNameEnabled: (() { final guardedValue = map['sourceAdminDisplayNameEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }

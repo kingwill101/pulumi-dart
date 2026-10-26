@@ -25,8 +25,8 @@ class GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile {
 
   factory GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile(
-      swapSizeGib: pulumi.Input.fromValue((map['swapSizeGib'] as num).toInt()),
-      swapSizePercent: pulumi.Input.fromValue((map['swapSizePercent'] as num).toInt()),
+      swapSizeGib: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['swapSizeGib'])),
+      swapSizePercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['swapSizePercent'])),
     );
   }
 }

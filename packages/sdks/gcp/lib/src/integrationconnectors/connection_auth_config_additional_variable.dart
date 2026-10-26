@@ -51,7 +51,7 @@ class ConnectionAuthConfigAdditionalVariable {
     return ConnectionAuthConfigAdditionalVariable(
       booleanValue: (() { final guardedValue = map['booleanValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       encryptionKeyValue: (() { final guardedValue = map['encryptionKeyValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionAuthConfigAdditionalVariableEncryptionKeyValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      integerValue: (() { final guardedValue = map['integerValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      integerValue: (() { final guardedValue = map['integerValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       key: pulumi.Input.fromValue(map['key'] as String),
       secretValue: (() { final guardedValue = map['secretValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionAuthConfigAdditionalVariableSecretValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       stringValue: (() { final guardedValue = map['stringValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

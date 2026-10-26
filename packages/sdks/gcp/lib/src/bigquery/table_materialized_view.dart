@@ -41,7 +41,7 @@ class TableMaterializedView {
       allowNonIncrementalDefinition: (() { final guardedValue = map['allowNonIncrementalDefinition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableRefresh: (() { final guardedValue = map['enableRefresh']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       query: pulumi.Input.fromValue(map['query'] as String),
-      refreshIntervalMs: (() { final guardedValue = map['refreshIntervalMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      refreshIntervalMs: (() { final guardedValue = map['refreshIntervalMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

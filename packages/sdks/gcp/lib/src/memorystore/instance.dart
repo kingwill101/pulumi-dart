@@ -45,12 +45,12 @@ import 'instance_zone_distribution_config.dart';
 /// const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
 ///     name: "my-subnet",
 ///     ipCidrRange: "10.0.0.248/29",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     network: producerNet.id,
 /// });
 /// const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
 ///     name: "my-policy",
-///     location: "us-central1",
+///     location: "us-west1",
 ///     serviceClass: "gcp-memorystore",
 ///     description: "my basic service connection policy",
 ///     network: producerNet.id,
@@ -66,7 +66,7 @@ import 'instance_zone_distribution_config.dart';
 ///         network: producerNet.id,
 ///         projectId: project.then(project => project.projectId),
 ///     }],
-///     location: "us-central1",
+///     location: "us-west1",
 ///     deletionProtectionEnabled: false,
 ///     maintenancePolicy: {
 ///         weeklyMaintenanceWindows: [{
@@ -93,11 +93,11 @@ import 'instance_zone_distribution_config.dart';
 /// producer_subnet = gcp.compute.Subnetwork("producer_subnet",
 ///     name="my-subnet",
 ///     ip_cidr_range="10.0.0.248/29",
-///     region="us-central1",
+///     region="us-west1",
 ///     network=producer_net.id)
 /// default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
 ///     name="my-policy",
-///     location="us-central1",
+///     location="us-west1",
 ///     service_class="gcp-memorystore",
 ///     description="my basic service connection policy",
 ///     network=producer_net.id,
@@ -112,7 +112,7 @@ import 'instance_zone_distribution_config.dart';
 ///         "network": producer_net.id,
 ///         "project_id": project.project_id,
 ///     }],
-///     location="us-central1",
+///     location="us-west1",
 ///     deletion_protection_enabled=False,
 ///     maintenance_policy={
 ///         "weekly_maintenance_windows": [{
@@ -145,14 +145,14 @@ import 'instance_zone_distribution_config.dart';
 ///     {
 ///         Name = "my-subnet",
 ///         IpCidrRange = "10.0.0.248/29",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         Network = producerNet.Id,
 ///     });
 ///
 ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
 ///     {
 ///         Name = "my-policy",
-///         Location = "us-central1",
+///         Location = "us-west1",
 ///         ServiceClass = "gcp-memorystore",
 ///         Description = "my basic service connection policy",
 ///         Network = producerNet.Id,
@@ -179,7 +179,7 @@ import 'instance_zone_distribution_config.dart';
 ///                 ProjectId = project.Apply(getProjectResult => getProjectResult.ProjectId),
 ///             },
 ///         },
-///         Location = "us-central1",
+///         Location = "us-west1",
 ///         DeletionProtectionEnabled = false,
 ///         MaintenancePolicy = new Gcp.MemoryStore.Inputs.InstanceMaintenancePolicyArgs
 ///         {
@@ -212,10 +212,10 @@ import 'instance_zone_distribution_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/memorystore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -231,21 +231,21 @@ import 'instance_zone_distribution_config.dart';
 /// 		producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
-/// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     producerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Region:      pulumi.String("us-west1"),
+/// 			Network:     producerNet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 /// 			Name:         pulumi.String("my-policy"),
-/// 			Location:     pulumi.String("us-central1"),
+/// 			Location:     pulumi.String("us-west1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      producerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      producerNet.ID(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					producerSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					producerSubnet.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -261,11 +261,11 @@ import 'instance_zone_distribution_config.dart';
 /// 			ShardCount: pulumi.Int(1),
 /// 			DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
 /// 				&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
-/// 					Network:   producerNet.ID().ToIDOutput().ToStringOutput(),
+/// 					Network:   producerNet.ID(),
 /// 					ProjectId: pulumi.String(project.ProjectId),
 /// 				},
 /// 			},
-/// 			Location:                  pulumi.String("us-central1"),
+/// 			Location:                  pulumi.String("us-west1"),
 /// 			DeletionProtectionEnabled: pulumi.Bool(false),
 /// 			MaintenancePolicy: &memorystore.InstanceMaintenancePolicyArgs{
 /// 				WeeklyMaintenanceWindows: memorystore.InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{
@@ -291,7 +291,7 @@ import 'instance_zone_distribution_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -299,34 +299,40 @@ import 'instance_zone_distribution_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_memorystore_instance" "instance-basic" {
-///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   depends_on = [gcp_networkconnectivity_service_connection_policy.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = "basic-instance"
 ///   shard_count = 1
 ///   desired_auto_created_endpoints {
 ///     network    = gcp_compute_network.producer_net.id
-///     project_id = data.gcp_organizations_getproject.project.project_id
+///     project_id = data.gcp_organizations_project.project.project_id
 ///   }
-///   location                    = "us-central1"
+///   location                    = "us-west1"
 ///   deletion_protection_enabled = false
 ///   maintenance_policy = {
 ///     weekly_maintenance_windows = [{
-///       "day" = "MONDAY"
-///       "startTime" = {
-///         "hours"   = 1
-///         "minutes" = 0
-///         "seconds" = 0
-///         "nanos"   = 0
+///       day = "MONDAY"
+///       start_time = {
+///         hours   = 1
+///         minutes = 0
+///         seconds = 0
+///         nanos   = 0
 ///       }
 ///     }]
 ///   }
 /// }
-/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+/// resource "gcp_networkconnectivity_service_connection_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-policy"
-///   location      = "us-central1"
+///   location      = "us-west1"
 ///   service_class = "gcp-memorystore"
 ///   description   = "my basic service connection policy"
 ///   network       = gcp_compute_network.producer_net.id
@@ -335,12 +341,18 @@ import 'instance_zone_distribution_config.dart';
 ///   }
 /// }
 /// resource "gcp_compute_subnetwork" "producer_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnet"
 ///   ip_cidr_range = "10.0.0.248/29"
-///   region        = "us-central1"
+///   region        = "us-west1"
 ///   network       = gcp_compute_network.producer_net.id
 /// }
 /// resource "gcp_compute_network" "producer_net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -388,13 +400,13 @@ import 'instance_zone_distribution_config.dart';
 ///         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
 ///             .name("my-subnet")
 ///             .ipCidrRange("10.0.0.248/29")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .network(producerNet.id())
 ///             .build());
 ///
 ///         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
 ///             .name("my-policy")
-///             .location("us-central1")
+///             .location("us-west1")
 ///             .serviceClass("gcp-memorystore")
 ///             .description("my basic service connection policy")
 ///             .network(producerNet.id())
@@ -413,7 +425,7 @@ import 'instance_zone_distribution_config.dart';
 ///                 .network(producerNet.id())
 ///                 .projectId(project.projectId())
 ///                 .build())
-///             .location("us-central1")
+///             .location("us-west1")
 ///             .deletionProtectionEnabled(false)
 ///             .maintenancePolicy(InstanceMaintenancePolicyArgs.builder()
 ///                 .weeklyMaintenanceWindows(InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
@@ -443,7 +455,7 @@ import 'instance_zone_distribution_config.dart';
 ///       desiredAutoCreatedEndpoints:
 ///         - network: ${producerNet.id}
 ///           projectId: ${project.projectId}
-///       location: us-central1
+///       location: us-west1
 ///       deletionProtectionEnabled: false
 ///       maintenancePolicy:
 ///         weeklyMaintenanceWindows:
@@ -460,7 +472,7 @@ import 'instance_zone_distribution_config.dart';
 ///     type: gcp:networkconnectivity:ServiceConnectionPolicy
 ///     properties:
 ///       name: my-policy
-///       location: us-central1
+///       location: us-west1
 ///       serviceClass: gcp-memorystore
 ///       description: my basic service connection policy
 ///       network: ${producerNet.id}
@@ -473,7 +485,7 @@ import 'instance_zone_distribution_config.dart';
 ///     properties:
 ///       name: my-subnet
 ///       ipCidrRange: 10.0.0.248/29
-///       region: us-central1
+///       region: us-west1
 ///       network: ${producerNet.id}
 ///   producerNet:
 ///     type: gcp:compute:Network
@@ -503,12 +515,12 @@ import 'instance_zone_distribution_config.dart';
 /// const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
 ///     name: "my-subnet",
 ///     ipCidrRange: "10.0.0.248/29",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     network: producerNet.id,
 /// });
 /// const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
 ///     name: "my-policy",
-///     location: "us-central1",
+///     location: "us-west1",
 ///     serviceClass: "gcp-memorystore",
 ///     description: "my basic service connection policy",
 ///     network: producerNet.id,
@@ -524,7 +536,7 @@ import 'instance_zone_distribution_config.dart';
 ///         network: producerNet.id,
 ///         projectId: project.then(project => project.projectId),
 ///     }],
-///     location: "us-central1",
+///     location: "us-west1",
 ///     replicaCount: 1,
 ///     nodeType: "SHARED_CORE_NANO",
 ///     transitEncryptionMode: "TRANSIT_ENCRYPTION_DISABLED",
@@ -535,7 +547,7 @@ import 'instance_zone_distribution_config.dart';
 ///     },
 ///     zoneDistributionConfig: {
 ///         mode: "SINGLE_ZONE",
-///         zone: "us-central1-b",
+///         zone: "us-west1-b",
 ///     },
 ///     maintenancePolicy: {
 ///         weeklyMaintenanceWindows: [{
@@ -575,11 +587,11 @@ import 'instance_zone_distribution_config.dart';
 /// producer_subnet = gcp.compute.Subnetwork("producer_subnet",
 ///     name="my-subnet",
 ///     ip_cidr_range="10.0.0.248/29",
-///     region="us-central1",
+///     region="us-west1",
 ///     network=producer_net.id)
 /// default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
 ///     name="my-policy",
-///     location="us-central1",
+///     location="us-west1",
 ///     service_class="gcp-memorystore",
 ///     description="my basic service connection policy",
 ///     network=producer_net.id,
@@ -594,7 +606,7 @@ import 'instance_zone_distribution_config.dart';
 ///         "network": producer_net.id,
 ///         "project_id": project.project_id,
 ///     }],
-///     location="us-central1",
+///     location="us-west1",
 ///     replica_count=1,
 ///     node_type="SHARED_CORE_NANO",
 ///     transit_encryption_mode="TRANSIT_ENCRYPTION_DISABLED",
@@ -605,7 +617,7 @@ import 'instance_zone_distribution_config.dart';
 ///     },
 ///     zone_distribution_config={
 ///         "mode": "SINGLE_ZONE",
-///         "zone": "us-central1-b",
+///         "zone": "us-west1-b",
 ///     },
 ///     maintenance_policy={
 ///         "weekly_maintenance_windows": [{
@@ -651,14 +663,14 @@ import 'instance_zone_distribution_config.dart';
 ///     {
 ///         Name = "my-subnet",
 ///         IpCidrRange = "10.0.0.248/29",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         Network = producerNet.Id,
 ///     });
 ///
 ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
 ///     {
 ///         Name = "my-policy",
-///         Location = "us-central1",
+///         Location = "us-west1",
 ///         ServiceClass = "gcp-memorystore",
 ///         Description = "my basic service connection policy",
 ///         Network = producerNet.Id,
@@ -685,7 +697,7 @@ import 'instance_zone_distribution_config.dart';
 ///                 ProjectId = project.Apply(getProjectResult => getProjectResult.ProjectId),
 ///             },
 ///         },
-///         Location = "us-central1",
+///         Location = "us-west1",
 ///         ReplicaCount = 1,
 ///         NodeType = "SHARED_CORE_NANO",
 ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_DISABLED",
@@ -698,7 +710,7 @@ import 'instance_zone_distribution_config.dart';
 ///         ZoneDistributionConfig = new Gcp.MemoryStore.Inputs.InstanceZoneDistributionConfigArgs
 ///         {
 ///             Mode = "SINGLE_ZONE",
-///             Zone = "us-central1-b",
+///             Zone = "us-west1-b",
 ///         },
 ///         MaintenancePolicy = new Gcp.MemoryStore.Inputs.InstanceMaintenancePolicyArgs
 ///         {
@@ -747,10 +759,10 @@ import 'instance_zone_distribution_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/memorystore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -766,21 +778,21 @@ import 'instance_zone_distribution_config.dart';
 /// 		producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
-/// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     producerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Region:      pulumi.String("us-west1"),
+/// 			Network:     producerNet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 /// 			Name:         pulumi.String("my-policy"),
-/// 			Location:     pulumi.String("us-central1"),
+/// 			Location:     pulumi.String("us-west1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      producerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      producerNet.ID(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					producerSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					producerSubnet.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -796,11 +808,11 @@ import 'instance_zone_distribution_config.dart';
 /// 			ShardCount: pulumi.Int(1),
 /// 			DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
 /// 				&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
-/// 					Network:   producerNet.ID().ToIDOutput().ToStringOutput(),
+/// 					Network:   producerNet.ID(),
 /// 					ProjectId: pulumi.String(project.ProjectId),
 /// 				},
 /// 			},
-/// 			Location:              pulumi.String("us-central1"),
+/// 			Location:              pulumi.String("us-west1"),
 /// 			ReplicaCount:          pulumi.Int(1),
 /// 			NodeType:              pulumi.String("SHARED_CORE_NANO"),
 /// 			TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_DISABLED"),
@@ -811,7 +823,7 @@ import 'instance_zone_distribution_config.dart';
 /// 			},
 /// 			ZoneDistributionConfig: &memorystore.InstanceZoneDistributionConfigArgs{
 /// 				Mode: pulumi.String("SINGLE_ZONE"),
-/// 				Zone: pulumi.String("us-central1-b"),
+/// 				Zone: pulumi.String("us-west1-b"),
 /// 			},
 /// 			MaintenancePolicy: &memorystore.InstanceMaintenancePolicyArgs{
 /// 				WeeklyMaintenanceWindows: memorystore.InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{
@@ -850,7 +862,7 @@ import 'instance_zone_distribution_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -858,18 +870,21 @@ import 'instance_zone_distribution_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_memorystore_instance" "instance-full" {
-///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   depends_on = [gcp_networkconnectivity_service_connection_policy.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = "full-instance"
 ///   shard_count = 1
 ///   desired_auto_created_endpoints {
 ///     network    = gcp_compute_network.producer_net.id
-///     project_id = data.gcp_organizations_getproject.project.project_id
+///     project_id = data.gcp_organizations_project.project.project_id
 ///   }
-///   location                = "us-central1"
+///   location                = "us-west1"
 ///   replica_count           = 1
 ///   node_type               = "SHARED_CORE_NANO"
 ///   transit_encryption_mode = "TRANSIT_ENCRYPTION_DISABLED"
@@ -880,16 +895,16 @@ import 'instance_zone_distribution_config.dart';
 ///   }
 ///   zone_distribution_config = {
 ///     mode = "SINGLE_ZONE"
-///     zone = "us-central1-b"
+///     zone = "us-west1-b"
 ///   }
 ///   maintenance_policy = {
 ///     weekly_maintenance_windows = [{
-///       "day" = "MONDAY"
-///       "startTime" = {
-///         "hours"   = 1
-///         "minutes" = 0
-///         "seconds" = 0
-///         "nanos"   = 0
+///       day = "MONDAY"
+///       start_time = {
+///         hours   = 1
+///         minutes = 0
+///         seconds = 0
+///         nanos   = 0
 ///       }
 ///     }]
 ///   }
@@ -907,9 +922,12 @@ import 'instance_zone_distribution_config.dart';
 ///     "abc" = "xyz"
 ///   }
 /// }
-/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+/// resource "gcp_networkconnectivity_service_connection_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-policy"
-///   location      = "us-central1"
+///   location      = "us-west1"
 ///   service_class = "gcp-memorystore"
 ///   description   = "my basic service connection policy"
 ///   network       = gcp_compute_network.producer_net.id
@@ -918,12 +936,18 @@ import 'instance_zone_distribution_config.dart';
 ///   }
 /// }
 /// resource "gcp_compute_subnetwork" "producer_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnet"
 ///   ip_cidr_range = "10.0.0.248/29"
-///   region        = "us-central1"
+///   region        = "us-west1"
 ///   network       = gcp_compute_network.producer_net.id
 /// }
 /// resource "gcp_compute_network" "producer_net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -974,13 +998,13 @@ import 'instance_zone_distribution_config.dart';
 ///         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
 ///             .name("my-subnet")
 ///             .ipCidrRange("10.0.0.248/29")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .network(producerNet.id())
 ///             .build());
 ///
 ///         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
 ///             .name("my-policy")
-///             .location("us-central1")
+///             .location("us-west1")
 ///             .serviceClass("gcp-memorystore")
 ///             .description("my basic service connection policy")
 ///             .network(producerNet.id())
@@ -999,7 +1023,7 @@ import 'instance_zone_distribution_config.dart';
 ///                 .network(producerNet.id())
 ///                 .projectId(project.projectId())
 ///                 .build())
-///             .location("us-central1")
+///             .location("us-west1")
 ///             .replicaCount(1)
 ///             .nodeType("SHARED_CORE_NANO")
 ///             .transitEncryptionMode("TRANSIT_ENCRYPTION_DISABLED")
@@ -1008,7 +1032,7 @@ import 'instance_zone_distribution_config.dart';
 ///             .engineConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
 ///             .zoneDistributionConfig(InstanceZoneDistributionConfigArgs.builder()
 ///                 .mode("SINGLE_ZONE")
-///                 .zone("us-central1-b")
+///                 .zone("us-west1-b")
 ///                 .build())
 ///             .maintenancePolicy(InstanceMaintenancePolicyArgs.builder()
 ///                 .weeklyMaintenanceWindows(InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
@@ -1049,7 +1073,7 @@ import 'instance_zone_distribution_config.dart';
 ///       desiredAutoCreatedEndpoints:
 ///         - network: ${producerNet.id}
 ///           projectId: ${project.projectId}
-///       location: us-central1
+///       location: us-west1
 ///       replicaCount: 1
 ///       nodeType: SHARED_CORE_NANO
 ///       transitEncryptionMode: TRANSIT_ENCRYPTION_DISABLED
@@ -1059,7 +1083,7 @@ import 'instance_zone_distribution_config.dart';
 ///         maxmemory-policy: volatile-ttl
 ///       zoneDistributionConfig:
 ///         mode: SINGLE_ZONE
-///         zone: us-central1-b
+///         zone: us-west1-b
 ///       maintenancePolicy:
 ///         weeklyMaintenanceWindows:
 ///           - day: MONDAY
@@ -1085,7 +1109,7 @@ import 'instance_zone_distribution_config.dart';
 ///     type: gcp:networkconnectivity:ServiceConnectionPolicy
 ///     properties:
 ///       name: my-policy
-///       location: us-central1
+///       location: us-west1
 ///       serviceClass: gcp-memorystore
 ///       description: my basic service connection policy
 ///       network: ${producerNet.id}
@@ -1098,7 +1122,7 @@ import 'instance_zone_distribution_config.dart';
 ///     properties:
 ///       name: my-subnet
 ///       ipCidrRange: 10.0.0.248/29
-///       region: us-central1
+///       region: us-west1
 ///       network: ${producerNet.id}
 ///   producerNet:
 ///     type: gcp:compute:Network
@@ -1128,12 +1152,12 @@ import 'instance_zone_distribution_config.dart';
 /// const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
 ///     name: "my-subnet",
 ///     ipCidrRange: "10.0.0.248/29",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     network: producerNet.id,
 /// });
 /// const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
 ///     name: "my-policy",
-///     location: "us-central1",
+///     location: "us-west1",
 ///     serviceClass: "gcp-memorystore",
 ///     description: "my basic service connection policy",
 ///     network: producerNet.id,
@@ -1149,7 +1173,7 @@ import 'instance_zone_distribution_config.dart';
 ///         network: producerNet.id,
 ///         projectId: project.then(project => project.projectId),
 ///     }],
-///     location: "us-central1",
+///     location: "us-west1",
 ///     persistenceConfig: {
 ///         mode: "AOF",
 ///         aofConfig: {
@@ -1171,11 +1195,11 @@ import 'instance_zone_distribution_config.dart';
 /// producer_subnet = gcp.compute.Subnetwork("producer_subnet",
 ///     name="my-subnet",
 ///     ip_cidr_range="10.0.0.248/29",
-///     region="us-central1",
+///     region="us-west1",
 ///     network=producer_net.id)
 /// default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
 ///     name="my-policy",
-///     location="us-central1",
+///     location="us-west1",
 ///     service_class="gcp-memorystore",
 ///     description="my basic service connection policy",
 ///     network=producer_net.id,
@@ -1190,7 +1214,7 @@ import 'instance_zone_distribution_config.dart';
 ///         "network": producer_net.id,
 ///         "project_id": project.project_id,
 ///     }],
-///     location="us-central1",
+///     location="us-west1",
 ///     persistence_config={
 ///         "mode": "AOF",
 ///         "aof_config": {
@@ -1218,14 +1242,14 @@ import 'instance_zone_distribution_config.dart';
 ///     {
 ///         Name = "my-subnet",
 ///         IpCidrRange = "10.0.0.248/29",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         Network = producerNet.Id,
 ///     });
 ///
 ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
 ///     {
 ///         Name = "my-policy",
-///         Location = "us-central1",
+///         Location = "us-west1",
 ///         ServiceClass = "gcp-memorystore",
 ///         Description = "my basic service connection policy",
 ///         Network = producerNet.Id,
@@ -1252,7 +1276,7 @@ import 'instance_zone_distribution_config.dart';
 ///                 ProjectId = project.Apply(getProjectResult => getProjectResult.ProjectId),
 ///             },
 ///         },
-///         Location = "us-central1",
+///         Location = "us-west1",
 ///         PersistenceConfig = new Gcp.MemoryStore.Inputs.InstancePersistenceConfigArgs
 ///         {
 ///             Mode = "AOF",
@@ -1276,10 +1300,10 @@ import 'instance_zone_distribution_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/memorystore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1295,21 +1319,21 @@ import 'instance_zone_distribution_config.dart';
 /// 		producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
-/// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     producerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Region:      pulumi.String("us-west1"),
+/// 			Network:     producerNet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 /// 			Name:         pulumi.String("my-policy"),
-/// 			Location:     pulumi.String("us-central1"),
+/// 			Location:     pulumi.String("us-west1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      producerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      producerNet.ID(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					producerSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					producerSubnet.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -1325,11 +1349,11 @@ import 'instance_zone_distribution_config.dart';
 /// 			ShardCount: pulumi.Int(1),
 /// 			DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
 /// 				&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
-/// 					Network:   producerNet.ID().ToIDOutput().ToStringOutput(),
+/// 					Network:   producerNet.ID(),
 /// 					ProjectId: pulumi.String(project.ProjectId),
 /// 				},
 /// 			},
-/// 			Location: pulumi.String("us-central1"),
+/// 			Location: pulumi.String("us-west1"),
 /// 			PersistenceConfig: &memorystore.InstancePersistenceConfigArgs{
 /// 				Mode: pulumi.String("AOF"),
 /// 				AofConfig: &memorystore.InstancePersistenceConfigAofConfigArgs{
@@ -1348,7 +1372,7 @@ import 'instance_zone_distribution_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1356,18 +1380,21 @@ import 'instance_zone_distribution_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_memorystore_instance" "instance-persistence-aof" {
-///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   depends_on = [gcp_networkconnectivity_service_connection_policy.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = "aof-instance"
 ///   shard_count = 1
 ///   desired_auto_created_endpoints {
 ///     network    = gcp_compute_network.producer_net.id
-///     project_id = data.gcp_organizations_getproject.project.project_id
+///     project_id = data.gcp_organizations_project.project.project_id
 ///   }
-///   location = "us-central1"
+///   location = "us-west1"
 ///   persistence_config = {
 ///     mode = "AOF"
 ///     aof_config = {
@@ -1376,9 +1403,12 @@ import 'instance_zone_distribution_config.dart';
 ///   }
 ///   deletion_protection_enabled = false
 /// }
-/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+/// resource "gcp_networkconnectivity_service_connection_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-policy"
-///   location      = "us-central1"
+///   location      = "us-west1"
 ///   service_class = "gcp-memorystore"
 ///   description   = "my basic service connection policy"
 ///   network       = gcp_compute_network.producer_net.id
@@ -1387,12 +1417,18 @@ import 'instance_zone_distribution_config.dart';
 ///   }
 /// }
 /// resource "gcp_compute_subnetwork" "producer_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnet"
 ///   ip_cidr_range = "10.0.0.248/29"
-///   region        = "us-central1"
+///   region        = "us-west1"
 ///   network       = gcp_compute_network.producer_net.id
 /// }
 /// resource "gcp_compute_network" "producer_net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -1439,13 +1475,13 @@ import 'instance_zone_distribution_config.dart';
 ///         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
 ///             .name("my-subnet")
 ///             .ipCidrRange("10.0.0.248/29")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .network(producerNet.id())
 ///             .build());
 ///
 ///         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
 ///             .name("my-policy")
-///             .location("us-central1")
+///             .location("us-west1")
 ///             .serviceClass("gcp-memorystore")
 ///             .description("my basic service connection policy")
 ///             .network(producerNet.id())
@@ -1464,7 +1500,7 @@ import 'instance_zone_distribution_config.dart';
 ///                 .network(producerNet.id())
 ///                 .projectId(project.projectId())
 ///                 .build())
-///             .location("us-central1")
+///             .location("us-west1")
 ///             .persistenceConfig(InstancePersistenceConfigArgs.builder()
 ///                 .mode("AOF")
 ///                 .aofConfig(InstancePersistenceConfigAofConfigArgs.builder()
@@ -1489,7 +1525,7 @@ import 'instance_zone_distribution_config.dart';
 ///       desiredAutoCreatedEndpoints:
 ///         - network: ${producerNet.id}
 ///           projectId: ${project.projectId}
-///       location: us-central1
+///       location: us-west1
 ///       persistenceConfig:
 ///         mode: AOF
 ///         aofConfig:
@@ -1502,7 +1538,7 @@ import 'instance_zone_distribution_config.dart';
 ///     type: gcp:networkconnectivity:ServiceConnectionPolicy
 ///     properties:
 ///       name: my-policy
-///       location: us-central1
+///       location: us-west1
 ///       serviceClass: gcp-memorystore
 ///       description: my basic service connection policy
 ///       network: ${producerNet.id}
@@ -1515,7 +1551,7 @@ import 'instance_zone_distribution_config.dart';
 ///     properties:
 ///       name: my-subnet
 ///       ipCidrRange: 10.0.0.248/29
-///       region: us-central1
+///       region: us-west1
 ///       network: ${producerNet.id}
 ///   producerNet:
 ///     type: gcp:compute:Network
@@ -1946,10 +1982,10 @@ import 'instance_zone_distribution_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/memorystore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1966,7 +2002,7 @@ import 'instance_zone_distribution_config.dart';
 /// 			Name:        pulumi.String("my-subnet-primary-instance"),
 /// 			IpCidrRange: pulumi.String("10.0.1.0/29"),
 /// 			Region:      pulumi.String("asia-east1"),
-/// 			Network:     primaryProducerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     primaryProducerNet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1976,10 +2012,10 @@ import 'instance_zone_distribution_config.dart';
 /// 			Location:     pulumi.String("asia-east1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      primaryProducerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      primaryProducerNet.ID(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					primaryProducerSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					primaryProducerSubnet.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -1996,7 +2032,7 @@ import 'instance_zone_distribution_config.dart';
 /// 			ShardCount: pulumi.Int(1),
 /// 			DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
 /// 				&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
-/// 					Network:   primaryProducerNet.ID().ToIDOutput().ToStringOutput(),
+/// 					Network:   primaryProducerNet.ID(),
 /// 					ProjectId: pulumi.String(project.ProjectId),
 /// 				},
 /// 			},
@@ -2040,7 +2076,7 @@ import 'instance_zone_distribution_config.dart';
 /// 			Name:        pulumi.String("my-subnet-secondary-instance"),
 /// 			IpCidrRange: pulumi.String("10.0.2.0/29"),
 /// 			Region:      pulumi.String("europe-north1"),
-/// 			Network:     secondaryProducerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     secondaryProducerNet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2050,10 +2086,10 @@ import 'instance_zone_distribution_config.dart';
 /// 			Location:     pulumi.String("europe-north1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      secondaryProducerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      secondaryProducerNet.ID(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					secondaryProducerSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					secondaryProducerSubnet.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -2066,7 +2102,7 @@ import 'instance_zone_distribution_config.dart';
 /// 			ShardCount: pulumi.Int(1),
 /// 			DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
 /// 				&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
-/// 					Network:   secondaryProducerNet.ID().ToIDOutput().ToStringOutput(),
+/// 					Network:   secondaryProducerNet.ID(),
 /// 					ProjectId: pulumi.String(project.ProjectId),
 /// 				},
 /// 			},
@@ -2086,7 +2122,7 @@ import 'instance_zone_distribution_config.dart';
 /// 			CrossInstanceReplicationConfig: &memorystore.InstanceCrossInstanceReplicationConfigArgs{
 /// 				InstanceRole: pulumi.String("SECONDARY"),
 /// 				PrimaryInstance: &memorystore.InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs{
-/// 					Instance: primaryInstance.ID().ToIDOutput().ToStringOutput(),
+/// 					Instance: primaryInstance.ID(),
 /// 				},
 /// 			},
 /// 			PersistenceConfig: &memorystore.InstancePersistenceConfigArgs{
@@ -2110,7 +2146,7 @@ import 'instance_zone_distribution_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2118,17 +2154,20 @@ import 'instance_zone_distribution_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// // Primary instance
 /// resource "gcp_memorystore_instance" "primary_instance" {
-///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.primary_policy]
+///   depends_on = [gcp_networkconnectivity_service_connection_policy.primary_policy]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = "primary-instance"
 ///   shard_count = 1
 ///   desired_auto_created_endpoints {
 ///     network    = gcp_compute_network.primary_producer_net.id
-///     project_id = data.gcp_organizations_getproject.project.project_id
+///     project_id = data.gcp_organizations_project.project.project_id
 ///   }
 ///   location                = "asia-east1"
 ///   replica_count           = 1
@@ -2154,7 +2193,10 @@ import 'instance_zone_distribution_config.dart';
 ///     "abc" = "xyz"
 ///   }
 /// }
-/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "primary_policy" {
+/// resource "gcp_networkconnectivity_service_connection_policy" "primary_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-policy-primary-instance"
 ///   location      = "asia-east1"
 ///   service_class = "gcp-memorystore"
@@ -2165,23 +2207,32 @@ import 'instance_zone_distribution_config.dart';
 ///   }
 /// }
 /// resource "gcp_compute_subnetwork" "primary_producer_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnet-primary-instance"
 ///   ip_cidr_range = "10.0.1.0/29"
 ///   region        = "asia-east1"
 ///   network       = gcp_compute_network.primary_producer_net.id
 /// }
 /// resource "gcp_compute_network" "primary_producer_net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network-primary-instance"
 ///   auto_create_subnetworks = false
 /// }
 /// // Secondary instance
 /// resource "gcp_memorystore_instance" "secondary_instance" {
-///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.secondary_policy]
+///   depends_on = [gcp_networkconnectivity_service_connection_policy.secondary_policy]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = "secondary-instance"
 ///   shard_count = 1
 ///   desired_auto_created_endpoints {
 ///     network    = gcp_compute_network.secondary_producer_net.id
-///     project_id = data.gcp_organizations_getproject.project.project_id
+///     project_id = data.gcp_organizations_project.project.project_id
 ///   }
 ///   location                = "europe-north1"
 ///   replica_count           = 1
@@ -2214,7 +2265,10 @@ import 'instance_zone_distribution_config.dart';
 ///     "abc" = "xyz"
 ///   }
 /// }
-/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "secondary_policy" {
+/// resource "gcp_networkconnectivity_service_connection_policy" "secondary_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-policy-secondary-instance"
 ///   location      = "europe-north1"
 ///   service_class = "gcp-memorystore"
@@ -2225,12 +2279,18 @@ import 'instance_zone_distribution_config.dart';
 ///   }
 /// }
 /// resource "gcp_compute_subnetwork" "secondary_producer_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnet-secondary-instance"
 ///   ip_cidr_range = "10.0.2.0/29"
 ///   region        = "europe-north1"
 ///   network       = gcp_compute_network.secondary_producer_net.id
 /// }
 /// resource "gcp_compute_network" "secondary_producer_net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network-secondary-instance"
 ///   auto_create_subnetworks = false
 /// }
@@ -2530,7 +2590,7 @@ import 'instance_zone_distribution_config.dart';
 /// const project = gcp.organizations.getProject({});
 /// const _default = new gcp.certificateauthority.CaPool("default", {
 ///     name: "ca-pool",
-///     location: "us-central1",
+///     location: "us-west1",
 ///     tier: "ENTERPRISE",
 /// });
 /// const memorystoreP4saRequester = new gcp.certificateauthority.CaPoolIamMember("memorystore_p4sa_requester", {
@@ -2541,7 +2601,7 @@ import 'instance_zone_distribution_config.dart';
 /// const defaultAuthority = new gcp.certificateauthority.Authority("default", {
 ///     pool: _default.name,
 ///     certificateAuthorityId: "ca-auth",
-///     location: "us-central1",
+///     location: "us-west1",
 ///     config: {
 ///         subjectConfig: {
 ///             subject: {
@@ -2578,12 +2638,12 @@ import 'instance_zone_distribution_config.dart';
 /// const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
 ///     name: "ca-subnet",
 ///     ipCidrRange: "10.0.0.248/29",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     network: producerNet.id,
 /// });
 /// const defaultServiceConnectionPolicy = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
 ///     name: "ca-policy",
-///     location: "us-central1",
+///     location: "us-west1",
 ///     serviceClass: "gcp-memorystore",
 ///     network: producerNet.id,
 ///     pscConfig: {
@@ -2593,7 +2653,7 @@ import 'instance_zone_distribution_config.dart';
 /// const test_instance = new gcp.memorystore.Instance("test-instance", {
 ///     instanceId: "ca-instance",
 ///     shardCount: 3,
-///     location: "us-central1",
+///     location: "us-west1",
 ///     desiredAutoCreatedEndpoints: [{
 ///         network: producerNet.id,
 ///         projectId: project.then(project => project.projectId),
@@ -2617,7 +2677,7 @@ import 'instance_zone_distribution_config.dart';
 /// project = gcp.organizations.get_project()
 /// default = gcp.certificateauthority.CaPool("default",
 ///     name="ca-pool",
-///     location="us-central1",
+///     location="us-west1",
 ///     tier="ENTERPRISE")
 /// memorystore_p4sa_requester = gcp.certificateauthority.CaPoolIamMember("memorystore_p4sa_requester",
 ///     ca_pool=default.id,
@@ -2626,7 +2686,7 @@ import 'instance_zone_distribution_config.dart';
 /// default_authority = gcp.certificateauthority.Authority("default",
 ///     pool=default.name,
 ///     certificate_authority_id="ca-auth",
-///     location="us-central1",
+///     location="us-west1",
 ///     config={
 ///         "subject_config": {
 ///             "subject": {
@@ -2661,11 +2721,11 @@ import 'instance_zone_distribution_config.dart';
 /// producer_subnet = gcp.compute.Subnetwork("producer_subnet",
 ///     name="ca-subnet",
 ///     ip_cidr_range="10.0.0.248/29",
-///     region="us-central1",
+///     region="us-west1",
 ///     network=producer_net.id)
 /// default_service_connection_policy = gcp.networkconnectivity.ServiceConnectionPolicy("default",
 ///     name="ca-policy",
-///     location="us-central1",
+///     location="us-west1",
 ///     service_class="gcp-memorystore",
 ///     network=producer_net.id,
 ///     psc_config={
@@ -2674,7 +2734,7 @@ import 'instance_zone_distribution_config.dart';
 /// test_instance = gcp.memorystore.Instance("test-instance",
 ///     instance_id="ca-instance",
 ///     shard_count=3,
-///     location="us-central1",
+///     location="us-west1",
 ///     desired_auto_created_endpoints=[{
 ///         "network": producer_net.id,
 ///         "project_id": project.project_id,
@@ -2702,7 +2762,7 @@ import 'instance_zone_distribution_config.dart';
 ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
 ///     {
 ///         Name = "ca-pool",
-///         Location = "us-central1",
+///         Location = "us-west1",
 ///         Tier = "ENTERPRISE",
 ///     });
 ///
@@ -2717,7 +2777,7 @@ import 'instance_zone_distribution_config.dart';
 ///     {
 ///         Pool = @default.Name,
 ///         CertificateAuthorityId = "ca-auth",
-///         Location = "us-central1",
+///         Location = "us-west1",
 ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
 ///         {
 ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -2767,14 +2827,14 @@ import 'instance_zone_distribution_config.dart';
 ///     {
 ///         Name = "ca-subnet",
 ///         IpCidrRange = "10.0.0.248/29",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         Network = producerNet.Id,
 ///     });
 ///
 ///     var defaultServiceConnectionPolicy = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
 ///     {
 ///         Name = "ca-policy",
-///         Location = "us-central1",
+///         Location = "us-west1",
 ///         ServiceClass = "gcp-memorystore",
 ///         Network = producerNet.Id,
 ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
@@ -2790,7 +2850,7 @@ import 'instance_zone_distribution_config.dart';
 ///     {
 ///         InstanceId = "ca-instance",
 ///         ShardCount = 3,
-///         Location = "us-central1",
+///         Location = "us-west1",
 ///         DesiredAutoCreatedEndpoints = new[]
 ///         {
 ///             new Gcp.MemoryStore.Inputs.InstanceDesiredAutoCreatedEndpointArgs
@@ -2819,11 +2879,11 @@ import 'instance_zone_distribution_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/memorystore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2835,14 +2895,14 @@ import 'instance_zone_distribution_config.dart';
 /// 		}
 /// 		_default, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
 /// 			Name:     pulumi.String("ca-pool"),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Location: pulumi.String("us-west1"),
 /// 			Tier:     pulumi.String("ENTERPRISE"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		memorystoreP4saRequester, err := certificateauthority.NewCaPoolIamMember(ctx, "memorystore_p4sa_requester", &certificateauthority.CaPoolIamMemberArgs{
-/// 			CaPool: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			CaPool: _default.ID(),
 /// 			Role:   pulumi.String("roles/privateca.certificateRequester"),
 /// 			Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-memorystore.iam.gserviceaccount.com", project.Number),
 /// 		})
@@ -2852,7 +2912,7 @@ import 'instance_zone_distribution_config.dart';
 /// 		defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
 /// 			Pool:                   _default.Name,
 /// 			CertificateAuthorityId: pulumi.String("ca-auth"),
-/// 			Location:               pulumi.String("us-central1"),
+/// 			Location:               pulumi.String("us-west1"),
 /// 			Config: &certificateauthority.AuthorityConfigArgs{
 /// 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 /// 					Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
@@ -2895,20 +2955,20 @@ import 'instance_zone_distribution_config.dart';
 /// 		producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("ca-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
-/// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     producerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Region:      pulumi.String("us-west1"),
+/// 			Network:     producerNet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		defaultServiceConnectionPolicy, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 /// 			Name:         pulumi.String("ca-policy"),
-/// 			Location:     pulumi.String("us-central1"),
+/// 			Location:     pulumi.String("us-west1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore"),
-/// 			Network:      producerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      producerNet.ID(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					producerSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					producerSubnet.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -2918,16 +2978,16 @@ import 'instance_zone_distribution_config.dart';
 /// 		_, err = memorystore.NewInstance(ctx, "test-instance", &memorystore.InstanceArgs{
 /// 			InstanceId: pulumi.String("ca-instance"),
 /// 			ShardCount: pulumi.Int(3),
-/// 			Location:   pulumi.String("us-central1"),
+/// 			Location:   pulumi.String("us-west1"),
 /// 			DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
 /// 				&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
-/// 					Network:   producerNet.ID().ToIDOutput().ToStringOutput(),
+/// 					Network:   producerNet.ID(),
 /// 					ProjectId: pulumi.String(project.ProjectId),
 /// 				},
 /// 			},
 /// 			TransitEncryptionMode:     pulumi.String("SERVER_AUTHENTICATION"),
 /// 			ServerCaMode:              pulumi.String("CUSTOMER_MANAGED_CAS_CA"),
-/// 			ServerCaPool:              _default.ID().ToIDOutput().ToStringOutput(),
+/// 			ServerCaPool:              _default.ID(),
 /// 			DeletionProtectionEnabled: pulumi.Bool(true),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			defaultServiceConnectionPolicy,
@@ -2942,7 +3002,7 @@ import 'instance_zone_distribution_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2950,37 +3010,49 @@ import 'instance_zone_distribution_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_memorystore_instance" "test-instance" {
-///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default, gcp_certificateauthority_authority.default, gcp_certificateauthority_capooliammember.memorystore_p4sa_requester]
+///   depends_on = [gcp_networkconnectivity_service_connection_policy.default, gcp_certificateauthority_authority.default, gcp_certificateauthority_ca_pool_iam_member.memorystore_p4sa_requester]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = "ca-instance"
 ///   shard_count = 3
-///   location    = "us-central1"
+///   location    = "us-west1"
 ///   desired_auto_created_endpoints {
 ///     network    = gcp_compute_network.producer_net.id
-///     project_id = data.gcp_organizations_getproject.project.project_id
+///     project_id = data.gcp_organizations_project.project.project_id
 ///   }
 ///   transit_encryption_mode     = "SERVER_AUTHENTICATION"
 ///   server_ca_mode              = "CUSTOMER_MANAGED_CAS_CA"
-///   server_ca_pool              = gcp_certificateauthority_capool.default.id
+///   server_ca_pool              = gcp_certificateauthority_ca_pool.default.id
 ///   deletion_protection_enabled = true
 /// }
-/// resource "gcp_certificateauthority_capool" "default" {
+/// resource "gcp_certificateauthority_ca_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "ca-pool"
-///   location = "us-central1"
+///   location = "us-west1"
 ///   tier     = "ENTERPRISE"
 /// }
-/// resource "gcp_certificateauthority_capooliammember" "memorystore_p4sa_requester" {
-///   ca_pool = gcp_certificateauthority_capool.default.id
+/// resource "gcp_certificateauthority_ca_pool_iam_member" "memorystore_p4sa_requester" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ca_pool = gcp_certificateauthority_ca_pool.default.id
 ///   role    = "roles/privateca.certificateRequester"
-///   member  ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-memorystore.iam.gserviceaccount.com"
+///   member  ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-memorystore.iam.gserviceaccount.com"
 /// }
 /// resource "gcp_certificateauthority_authority" "default" {
-///   pool                     = gcp_certificateauthority_capool.default.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   pool                     = gcp_certificateauthority_ca_pool.default.name
 ///   certificate_authority_id = "ca-auth"
-///   location                 = "us-central1"
+///   location                 = "us-west1"
 ///   config = {
 ///     subject_config = {
 ///       subject = {
@@ -3010,9 +3082,12 @@ import 'instance_zone_distribution_config.dart';
 ///   deletion_protection                    = false
 ///   skip_grace_period                      = true
 /// }
-/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+/// resource "gcp_networkconnectivity_service_connection_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "ca-policy"
-///   location      = "us-central1"
+///   location      = "us-west1"
 ///   service_class = "gcp-memorystore"
 ///   network       = gcp_compute_network.producer_net.id
 ///   psc_config = {
@@ -3020,12 +3095,18 @@ import 'instance_zone_distribution_config.dart';
 ///   }
 /// }
 /// resource "gcp_compute_subnetwork" "producer_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "ca-subnet"
 ///   ip_cidr_range = "10.0.0.248/29"
-///   region        = "us-central1"
+///   region        = "us-west1"
 ///   network       = gcp_compute_network.producer_net.id
 /// }
 /// resource "gcp_compute_network" "producer_net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "ca-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -3082,7 +3163,7 @@ import 'instance_zone_distribution_config.dart';
 ///
 ///         var default_ = new CaPool("default", CaPoolArgs.builder()
 ///             .name("ca-pool")
-///             .location("us-central1")
+///             .location("us-west1")
 ///             .tier("ENTERPRISE")
 ///             .build());
 ///
@@ -3095,7 +3176,7 @@ import 'instance_zone_distribution_config.dart';
 ///         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()
 ///             .pool(default_.name())
 ///             .certificateAuthorityId("ca-auth")
-///             .location("us-central1")
+///             .location("us-west1")
 ///             .config(AuthorityConfigArgs.builder()
 ///                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
 ///                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
@@ -3134,13 +3215,13 @@ import 'instance_zone_distribution_config.dart';
 ///         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
 ///             .name("ca-subnet")
 ///             .ipCidrRange("10.0.0.248/29")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .network(producerNet.id())
 ///             .build());
 ///
 ///         var defaultServiceConnectionPolicy = new ServiceConnectionPolicy("defaultServiceConnectionPolicy", ServiceConnectionPolicyArgs.builder()
 ///             .name("ca-policy")
-///             .location("us-central1")
+///             .location("us-west1")
 ///             .serviceClass("gcp-memorystore")
 ///             .network(producerNet.id())
 ///             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
@@ -3151,7 +3232,7 @@ import 'instance_zone_distribution_config.dart';
 ///         var test_instance = new Instance("test-instance", InstanceArgs.builder()
 ///             .instanceId("ca-instance")
 ///             .shardCount(3)
-///             .location("us-central1")
+///             .location("us-west1")
 ///             .desiredAutoCreatedEndpoints(InstanceDesiredAutoCreatedEndpointArgs.builder()
 ///                 .network(producerNet.id())
 ///                 .projectId(project.projectId())
@@ -3177,7 +3258,7 @@ import 'instance_zone_distribution_config.dart';
 ///     properties:
 ///       instanceId: ca-instance
 ///       shardCount: 3
-///       location: us-central1
+///       location: us-west1
 ///       desiredAutoCreatedEndpoints:
 ///         - network: ${producerNet.id}
 ///           projectId: ${project.projectId}
@@ -3194,7 +3275,7 @@ import 'instance_zone_distribution_config.dart';
 ///     type: gcp:certificateauthority:CaPool
 ///     properties:
 ///       name: ca-pool
-///       location: us-central1
+///       location: us-west1
 ///       tier: ENTERPRISE
 ///   memorystoreP4saRequester:
 ///     type: gcp:certificateauthority:CaPoolIamMember
@@ -3209,7 +3290,7 @@ import 'instance_zone_distribution_config.dart';
 ///     properties:
 ///       pool: ${default.name}
 ///       certificateAuthorityId: ca-auth
-///       location: us-central1
+///       location: us-west1
 ///       config:
 ///         subjectConfig:
 ///           subject:
@@ -3234,7 +3315,7 @@ import 'instance_zone_distribution_config.dart';
 ///     name: default
 ///     properties:
 ///       name: ca-policy
-///       location: us-central1
+///       location: us-west1
 ///       serviceClass: gcp-memorystore
 ///       network: ${producerNet.id}
 ///       pscConfig:
@@ -3246,7 +3327,7 @@ import 'instance_zone_distribution_config.dart';
 ///     properties:
 ///       name: ca-subnet
 ///       ipCidrRange: 10.0.0.248/29
-///       region: us-central1
+///       region: us-west1
 ///       network: ${producerNet.id}
 ///   producerNet:
 ///     type: gcp:compute:Network
@@ -3453,7 +3534,7 @@ class Instance extends pulumi.CustomResource {
           'gcp:memorystore/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     aclPolicy = registerOutput<String?>('aclPolicy');

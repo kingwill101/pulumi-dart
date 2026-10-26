@@ -8,6 +8,11 @@ class RegionBackendServiceTlsSettings {
   /// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
   /// Can only be specified if authenticationMode is not NONE.
   final pulumi.Input<String?>? authenticationConfig;
+  /// The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //&lt;trust_domain&gt;/ns/&lt;namespace&gt;/sa/&lt;subject&gt;.
+  /// The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+  /// The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+  /// If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+  final pulumi.Input<String?>? identity;
   /// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
   /// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
   /// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
@@ -23,10 +28,12 @@ class RegionBackendServiceTlsSettings {
 
   /// Creates a new [RegionBackendServiceTlsSettings].
   /// [authenticationConfig] Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
+  /// [identity] The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //&lt;trust_domain&gt;/ns/&lt;namespace&gt;/sa/&lt;subject&gt;.
   /// [sni] Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
   /// [subjectAltNames] A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
   const RegionBackendServiceTlsSettings({
     this.authenticationConfig,
+    this.identity,
     this.sni,
     this.subjectAltNames,
   });
@@ -34,6 +41,7 @@ class RegionBackendServiceTlsSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authenticationConfig': ?authenticationConfig,
+      'identity': ?identity,
       'sni': ?sni,
       'subjectAltNames': ?pulumi.Input.mapOptionalInputValue<List<RegionBackendServiceTlsSettingsSubjectAltName>, List<Map<String, dynamic>>>(subjectAltNames, (value) => pulumi.Input.encodeList<RegionBackendServiceTlsSettingsSubjectAltName, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
@@ -42,6 +50,7 @@ class RegionBackendServiceTlsSettings {
   factory RegionBackendServiceTlsSettings.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceTlsSettings(
       authenticationConfig: (() { final guardedValue = map['authenticationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sni: (() { final guardedValue = map['sni']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subjectAltNames: (() { final guardedValue = map['subjectAltNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionBackendServiceTlsSettingsSubjectAltName>(guardedValue, (value) => RegionBackendServiceTlsSettingsSubjectAltName.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

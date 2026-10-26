@@ -20,12 +20,12 @@ import 'index_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// // NOTE: For most workloads we recommend creating the Collection and the Index
-/// // in *separate* Terraform configurations (i.e. create and apply the Collection
+/// // in *separate* Pulumi configurations (i.e. create and apply the Collection
 /// // first, ingest data via importDataObjects, and only then create the Index in a
 /// // second configuration). Once an Index exists on a Collection you can no longer
 /// // run importDataObjects for bulk ingestion of data objects on that Collection --
 /// // you are limited to creating data objects one at a time or in small online
-/// // batches. Defining both resources in the same Terraform file (as shown below)
+/// // batches. Defining both resources in the same Pulumi file (as shown below)
 /// // is convenient for a quick start, but locks you into the online / batched
 /// // create path for any subsequent data ingestion.
 /// const parent = new gcp.vectorsearch.Collection("parent", {
@@ -75,12 +75,12 @@ import 'index_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// # NOTE: For most workloads we recommend creating the Collection and the Index
-/// # in *separate* Terraform configurations (i.e. create and apply the Collection
+/// # in *separate* Pulumi configurations (i.e. create and apply the Collection
 /// # first, ingest data via importDataObjects, and only then create the Index in a
 /// # second configuration). Once an Index exists on a Collection you can no longer
 /// # run importDataObjects for bulk ingestion of data objects on that Collection --
 /// # you are limited to creating data objects one at a time or in small online
-/// # batches. Defining both resources in the same Terraform file (as shown below)
+/// # batches. Defining both resources in the same Pulumi file (as shown below)
 /// # is convenient for a quick start, but locks you into the online / batched
 /// # create path for any subsequent data ingestion.
 /// parent = gcp.vectorsearch.Collection("parent",
@@ -132,12 +132,12 @@ import 'index_state.dart';
 /// return await Deployment.RunAsync(() =>
 /// {
 ///     // NOTE: For most workloads we recommend creating the Collection and the Index
-///     // in *separate* Terraform configurations (i.e. create and apply the Collection
+///     // in *separate* Pulumi configurations (i.e. create and apply the Collection
 ///     // first, ingest data via importDataObjects, and only then create the Index in a
 ///     // second configuration). Once an Index exists on a Collection you can no longer
 ///     // run importDataObjects for bulk ingestion of data objects on that Collection --
 ///     // you are limited to creating data objects one at a time or in small online
-///     // batches. Defining both resources in the same Terraform file (as shown below)
+///     // batches. Defining both resources in the same Pulumi file (as shown below)
 ///     // is convenient for a quick start, but locks you into the online / batched
 ///     // create path for any subsequent data ingestion.
 ///     var parent = new Gcp.VectorSearch.Collection("parent", new()
@@ -198,19 +198,19 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vectorsearch"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vectorsearch"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// NOTE: For most workloads we recommend creating the Collection and the Index
-/// 		// in *separate* Terraform configurations (i.e. create and apply the Collection
+/// 		// in *separate* Pulumi configurations (i.e. create and apply the Collection
 /// 		// first, ingest data via importDataObjects, and only then create the Index in a
 /// 		// second configuration). Once an Index exists on a Collection you can no longer
 /// 		// run importDataObjects for bulk ingestion of data objects on that Collection --
 /// 		// you are limited to creating data objects one at a time or in small online
-/// 		// batches. Defining both resources in the same Terraform file (as shown below)
+/// 		// batches. Defining both resources in the same Pulumi file (as shown below)
 /// 		// is convenient for a quick start, but locks you into the online / batched
 /// 		// create path for any subsequent data ingestion.
 /// 		parent, err := vectorsearch.NewCollection(ctx, "parent", &vectorsearch.CollectionArgs{
@@ -267,7 +267,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -276,20 +276,36 @@ import 'index_state.dart';
 /// }
 ///
 /// # NOTE: For most workloads we recommend creating the Collection and the Index
-/// # in *separate* Terraform configurations (i.e. create and apply the Collection
+/// # in *separate* Pulumi configurations (i.e. create and apply the Collection
 /// # first, ingest data via importDataObjects, and only then create the Index in a
 /// # second configuration). Once an Index exists on a Collection you can no longer
 /// # run importDataObjects for bulk ingestion of data objects on that Collection --
 /// # you are limited to creating data objects one at a time or in small online
-/// # batches. Defining both resources in the same Terraform file (as shown below)
+/// # batches. Defining both resources in the same Pulumi file (as shown below)
 /// # is convenient for a quick start, but locks you into the online / batched
 /// # create path for any subsequent data ingestion.
 /// resource "gcp_vectorsearch_collection" "parent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   collection_id = "example-collection"
 ///   display_name  = "My Awesome Collection"
 ///   description   = "This collection stores important data."
-///   data_schema   = "{\n  \\\"type\\\": \\\"object\\\",\n  \\\"properties\\\": {\n    \\\"title\\\": {\n      \\\"type\\\": \\\"string\\\"\n    },\n    \\\"plot\\\": {\n      \\\"type\\\": \\\"string\\\"\n    }\n  }\n}\n"
+///   data_schema   = <<EOF
+/// {
+///   \"type\": \"object\",
+///   \"properties\": {
+///     \"title\": {
+///       \"type\": \"string\"
+///     },
+///     \"plot\": {
+///       \"type\": \"string\"
+///     }
+///   }
+/// }
+/// EOF
+///
 ///   vector_schemas {
 ///     field_name = "text_embedding"
 ///     dense_vector = {
@@ -303,6 +319,9 @@ import 'index_state.dart';
 ///   }
 /// }
 /// resource "gcp_vectorsearch_index" "example-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   collection_id   = gcp_vectorsearch_collection.parent.collection_id
 ///   index_id        = "example-index"
@@ -343,12 +362,12 @@ import 'index_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         // NOTE: For most workloads we recommend creating the Collection and the Index
-///         // in *separate* Terraform configurations (i.e. create and apply the Collection
+///         // in *separate* Pulumi configurations (i.e. create and apply the Collection
 ///         // first, ingest data via importDataObjects, and only then create the Index in a
 ///         // second configuration). Once an Index exists on a Collection you can no longer
 ///         // run importDataObjects for bulk ingestion of data objects on that Collection --
 ///         // you are limited to creating data objects one at a time or in small online
-///         // batches. Defining both resources in the same Terraform file (as shown below)
+///         // batches. Defining both resources in the same Pulumi file (as shown below)
 ///         // is convenient for a quick start, but locks you into the online / batched
 ///         // create path for any subsequent data ingestion.
 ///         var parent = new Collection("parent", CollectionArgs.builder()
@@ -401,12 +420,12 @@ import 'index_state.dart';
 /// ```yaml
 /// resources:
 ///   # NOTE: For most workloads we recommend creating the Collection and the Index
-///   # in *separate* Terraform configurations (i.e. create and apply the Collection
+///   # in *separate* Pulumi configurations (i.e. create and apply the Collection
 ///   # first, ingest data via importDataObjects, and only then create the Index in a
 ///   # second configuration). Once an Index exists on a Collection you can no longer
 ///   # run importDataObjects for bulk ingestion of data objects on that Collection --
 ///   # you are limited to creating data objects one at a time or in small online
-///   # batches. Defining both resources in the same Terraform file (as shown below)
+///   # batches. Defining both resources in the same Pulumi file (as shown below)
 ///   # is convenient for a quick start, but locks you into the online / batched
 ///   # create path for any subsequent data ingestion.
 ///   parent:
@@ -459,12 +478,12 @@ import 'index_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// // NOTE: For most workloads we recommend creating the Collection and the Index
-/// // in *separate* Terraform configurations (i.e. create and apply the Collection
+/// // in *separate* Pulumi configurations (i.e. create and apply the Collection
 /// // first, ingest data via importDataObjects, and only then create the Index in a
 /// // second configuration). Once an Index exists on a Collection you can no longer
 /// // run importDataObjects for bulk ingestion of data objects on that Collection --
 /// // you are limited to creating data objects one at a time or in small online
-/// // batches. Defining both resources in the same Terraform file (as shown below)
+/// // batches. Defining both resources in the same Pulumi file (as shown below)
 /// // is convenient for a quick start, but locks you into the online / batched
 /// // create path for any subsequent data ingestion.
 /// const parent = new gcp.vectorsearch.Collection("parent", {
@@ -523,12 +542,12 @@ import 'index_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// # NOTE: For most workloads we recommend creating the Collection and the Index
-/// # in *separate* Terraform configurations (i.e. create and apply the Collection
+/// # in *separate* Pulumi configurations (i.e. create and apply the Collection
 /// # first, ingest data via importDataObjects, and only then create the Index in a
 /// # second configuration). Once an Index exists on a Collection you can no longer
 /// # run importDataObjects for bulk ingestion of data objects on that Collection --
 /// # you are limited to creating data objects one at a time or in small online
-/// # batches. Defining both resources in the same Terraform file (as shown below)
+/// # batches. Defining both resources in the same Pulumi file (as shown below)
 /// # is convenient for a quick start, but locks you into the online / batched
 /// # create path for any subsequent data ingestion.
 /// parent = gcp.vectorsearch.Collection("parent",
@@ -589,12 +608,12 @@ import 'index_state.dart';
 /// return await Deployment.RunAsync(() =>
 /// {
 ///     // NOTE: For most workloads we recommend creating the Collection and the Index
-///     // in *separate* Terraform configurations (i.e. create and apply the Collection
+///     // in *separate* Pulumi configurations (i.e. create and apply the Collection
 ///     // first, ingest data via importDataObjects, and only then create the Index in a
 ///     // second configuration). Once an Index exists on a Collection you can no longer
 ///     // run importDataObjects for bulk ingestion of data objects on that Collection --
 ///     // you are limited to creating data objects one at a time or in small online
-///     // batches. Defining both resources in the same Terraform file (as shown below)
+///     // batches. Defining both resources in the same Pulumi file (as shown below)
 ///     // is convenient for a quick start, but locks you into the online / batched
 ///     // create path for any subsequent data ingestion.
 ///     var parent = new Gcp.VectorSearch.Collection("parent", new()
@@ -672,19 +691,19 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vectorsearch"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vectorsearch"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// NOTE: For most workloads we recommend creating the Collection and the Index
-/// 		// in *separate* Terraform configurations (i.e. create and apply the Collection
+/// 		// in *separate* Pulumi configurations (i.e. create and apply the Collection
 /// 		// first, ingest data via importDataObjects, and only then create the Index in a
 /// 		// second configuration). Once an Index exists on a Collection you can no longer
 /// 		// run importDataObjects for bulk ingestion of data objects on that Collection --
 /// 		// you are limited to creating data objects one at a time or in small online
-/// 		// batches. Defining both resources in the same Terraform file (as shown below)
+/// 		// batches. Defining both resources in the same Pulumi file (as shown below)
 /// 		// is convenient for a quick start, but locks you into the online / batched
 /// 		// create path for any subsequent data ingestion.
 /// 		parent, err := vectorsearch.NewCollection(ctx, "parent", &vectorsearch.CollectionArgs{
@@ -754,7 +773,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -763,20 +782,36 @@ import 'index_state.dart';
 /// }
 ///
 /// # NOTE: For most workloads we recommend creating the Collection and the Index
-/// # in *separate* Terraform configurations (i.e. create and apply the Collection
+/// # in *separate* Pulumi configurations (i.e. create and apply the Collection
 /// # first, ingest data via importDataObjects, and only then create the Index in a
 /// # second configuration). Once an Index exists on a Collection you can no longer
 /// # run importDataObjects for bulk ingestion of data objects on that Collection --
 /// # you are limited to creating data objects one at a time or in small online
-/// # batches. Defining both resources in the same Terraform file (as shown below)
+/// # batches. Defining both resources in the same Pulumi file (as shown below)
 /// # is convenient for a quick start, but locks you into the online / batched
 /// # create path for any subsequent data ingestion.
 /// resource "gcp_vectorsearch_collection" "parent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   collection_id = "example-dedicated-collection"
 ///   display_name  = "My Awesome Collection"
 ///   description   = "Parent collection for a dedicated-infrastructure index."
-///   data_schema   = "{\n  \\\"type\\\": \\\"object\\\",\n  \\\"properties\\\": {\n    \\\"title\\\": {\n      \\\"type\\\": \\\"string\\\"\n    },\n    \\\"category\\\": {\n      \\\"type\\\": \\\"string\\\"\n    }\n  }\n}\n"
+///   data_schema   = <<EOF
+/// {
+///   \"type\": \"object\",
+///   \"properties\": {
+///     \"title\": {
+///       \"type\": \"string\"
+///     },
+///     \"category\": {
+///       \"type\": \"string\"
+///     }
+///   }
+/// }
+/// EOF
+///
 ///   vector_schemas {
 ///     field_name = "text_embedding"
 ///     dense_vector = {
@@ -790,6 +825,9 @@ import 'index_state.dart';
 ///   }
 /// }
 /// resource "gcp_vectorsearch_index" "example-dedicated-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   collection_id   = gcp_vectorsearch_collection.parent.collection_id
 ///   index_id        = "example-dedicated-index"
@@ -841,12 +879,12 @@ import 'index_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         // NOTE: For most workloads we recommend creating the Collection and the Index
-///         // in *separate* Terraform configurations (i.e. create and apply the Collection
+///         // in *separate* Pulumi configurations (i.e. create and apply the Collection
 ///         // first, ingest data via importDataObjects, and only then create the Index in a
 ///         // second configuration). Once an Index exists on a Collection you can no longer
 ///         // run importDataObjects for bulk ingestion of data objects on that Collection --
 ///         // you are limited to creating data objects one at a time or in small online
-///         // batches. Defining both resources in the same Terraform file (as shown below)
+///         // batches. Defining both resources in the same Pulumi file (as shown below)
 ///         // is convenient for a quick start, but locks you into the online / batched
 ///         // create path for any subsequent data ingestion.
 ///         var parent = new Collection("parent", CollectionArgs.builder()
@@ -908,12 +946,12 @@ import 'index_state.dart';
 /// ```yaml
 /// resources:
 ///   # NOTE: For most workloads we recommend creating the Collection and the Index
-///   # in *separate* Terraform configurations (i.e. create and apply the Collection
+///   # in *separate* Pulumi configurations (i.e. create and apply the Collection
 ///   # first, ingest data via importDataObjects, and only then create the Index in a
 ///   # second configuration). Once an Index exists on a Collection you can no longer
 ///   # run importDataObjects for bulk ingestion of data objects on that Collection --
 ///   # you are limited to creating data objects one at a time or in small online
-///   # batches. Defining both resources in the same Terraform file (as shown below)
+///   # batches. Defining both resources in the same Pulumi file (as shown below)
 ///   # is convenient for a quick start, but locks you into the online / batched
 ///   # create path for any subsequent data ingestion.
 ///   parent:
@@ -1057,7 +1095,7 @@ class Index extends pulumi.CustomResource {
           'gcp:vectorsearch/index:Index',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     collectionId = registerOutput<String>('collectionId');

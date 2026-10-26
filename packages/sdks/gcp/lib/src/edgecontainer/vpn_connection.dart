@@ -186,9 +186,9 @@ import 'vpn_connection_vpc_project.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/edgecontainer"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/edgecontainer"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -260,7 +260,7 @@ import 'vpn_connection_vpc_project.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -268,10 +268,13 @@ import 'vpn_connection_vpc_project.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_edgecontainer_cluster" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "default"
 ///   location = "us-central1"
 ///   authorization = {
@@ -284,21 +287,27 @@ import 'vpn_connection_vpc_project.dart';
 ///     services_ipv4_cidr_blocks = ["10.1.0.0/16"]
 ///   }
 ///   fleet = {
-///     project ="projects/${data.gcp_organizations_getproject.project.number}"
+///     project ="projects/${data.gcp_organizations_project.project.number}"
 ///   }
 /// }
-/// resource "gcp_edgecontainer_nodepool" "node_pool" {
+/// resource "gcp_edgecontainer_node_pool" "node_pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "nodepool-1"
 ///   cluster       = gcp_edgecontainer_cluster.cluster.name
 ///   location      = "us-central1"
 ///   node_location = "us-central1-edge-example-edgesite"
 ///   node_count    = 3
 /// }
-/// resource "gcp_edgecontainer_vpnconnection" "default" {
-///   depends_on               = [gcp_edgecontainer_nodepool.node_pool]
+/// resource "gcp_edgecontainer_vpn_connection" "default" {
+///   depends_on = [gcp_edgecontainer_node_pool.node_pool]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "vpn-connection-1"
 ///   location                 = "us-central1"
-///   cluster                  ="projects/${data.gcp_organizations_getproject.project.number}/locations/us-east1/clusters/${gcp_edgecontainer_cluster.cluster.name}"
+///   cluster                  ="projects/${data.gcp_organizations_project.project.number}/locations/us-east1/clusters/${gcp_edgecontainer_cluster.cluster.name}"
 ///   vpc                      = gcp_compute_network.vpc.name
 ///   enable_high_availability = true
 ///   labels = {
@@ -307,6 +316,9 @@ import 'vpn_connection_vpc_project.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "vpc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-vpc"
 /// }
 /// ```
@@ -519,7 +531,7 @@ class VpnConnection extends pulumi.CustomResource {
           'gcp:edgecontainer/vpnConnection:VpnConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     cluster = registerOutput<String>('cluster');

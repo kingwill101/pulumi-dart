@@ -292,7 +292,7 @@ import 'cx_tool_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -316,7 +316,7 @@ import 'cx_tool_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxTool(ctx, "open_api_tool", &diagflow.CxToolArgs{
-/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      agent.ID(),
 /// 			DisplayName: pulumi.String("Example Open API Tool"),
 /// 			Description: pulumi.String("Example Description"),
 /// 			OpenApiSpec: &diagflow.CxToolOpenApiSpecArgs{
@@ -394,7 +394,7 @@ import 'cx_tool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -405,15 +405,21 @@ import 'cx_tool_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "dialogflowcx-agent-open-api"
 ///   location              = "global"
 ///   default_language_code = "en"
 ///   time_zone             = "America/New_York"
 ///   description           = "Example description."
 /// }
-/// resource "gcp_diagflow_cxtool" "open_api_tool" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_tool" "open_api_tool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "Example Open API Tool"
 ///   description  = "Example Description"
 ///   open_api_spec = {
@@ -429,14 +435,56 @@ import 'cx_tool_state.dart';
 ///     }
 ///     tls_config = {
 ///       ca_certs = [{
-///         "displayName" = "example ca cert name"
-///         "cert"        = base64encode("example cert")
+///         display_name = "example ca cert name"
+///         cert         = base64encode("example cert")
 ///       }]
 ///     }
 ///     service_directory_config = {
 ///       service = "projects/-/locations/-/namespaces/-/services/-"
 ///     }
-///     text_schema = "    {\n      \\\"openapi\\\": \\\"3.0.0\\\",\n      \\\"info\\\": {\n        \\\"title\\\": \\\"Time API\\\",\n        \\\"version\\\": \\\"1.0.0\\\",\n        \\\"description\\\": \\\"A simple API to get the current time.\\\"\n      },\n      \\\"servers\\\": [\n        {\n          \\\"url\\\": \\\"https://example-api-endpoint.com\\\"\n        }\n      ],\n      \\\"paths\\\": {\n        \\\"/time\\\": {\n          \\\"get\\\": {\n            \\\"operationId\\\": \\\"getCurrentTime\\\",\n            \\\"summary\\\": \\\"Gets the current server time.\\\",\n            \\\"responses\\\": {\n              \\\"200\\\": {\n                \\\"description\\\": \\\"Successful response with the current time.\\\",\n                \\\"content\\\": {\n                  \\\"application/json\\\": {\n                    \\\"schema\\\": {\n                      \\\"type\\\": \\\"object\\\",\n                      \\\"properties\\\": {\n                        \\\"currentTime\\\": {\n                          \\\"type\\\": \\\"string\\\",\n                          \\\"format\\\": \\\"date-time\\\",\n                          \\\"description\\\": \\\"The current time in ISO 8601 format.\\\"\n                        }\n                      }\n                    }\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n"
+///     text_schema = <<EOF
+///     {
+///       \"openapi\": \"3.0.0\",
+///       \"info\": {
+///         \"title\": \"Time API\",
+///         \"version\": \"1.0.0\",
+///         \"description\": \"A simple API to get the current time.\"
+///       },
+///       \"servers\": [
+///         {
+///           \"url\": \"https://example-api-endpoint.com\"
+///         }
+///       ],
+///       \"paths\": {
+///         \"/time\": {
+///           \"get\": {
+///             \"operationId\": \"getCurrentTime\",
+///             \"summary\": \"Gets the current server time.\",
+///             \"responses\": {
+///               \"200\": {
+///                 \"description\": \"Successful response with the current time.\",
+///                 \"content\": {
+///                   \"application/json\": {
+///                     \"schema\": {
+///                       \"type\": \"object\",
+///                       \"properties\": {
+///                         \"currentTime\": {
+///                           \"type\": \"string\",
+///                           \"format\": \"date-time\",
+///                           \"description\": \"The current time in ISO 8601 format.\"
+///                         }
+///                       }
+///                     }
+///                   }
+///                 }
+///               }
+///             }
+///           }
+///         }
+///       }
+///     }
+/// EOF
+///
 ///   }
 /// }
 /// ```
@@ -796,9 +844,9 @@ import 'cx_tool_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -835,7 +883,7 @@ import 'cx_tool_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxTool(ctx, "data_store_tool", &diagflow.CxToolArgs{
-/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      agent.ID(),
 /// 			DisplayName: pulumi.String("Example Data Store Tool"),
 /// 			Description: pulumi.String("Example Description"),
 /// 			DataStoreSpec: &diagflow.CxToolDataStoreSpecArgs{
@@ -862,7 +910,7 @@ import 'cx_tool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -870,11 +918,14 @@ import 'cx_tool_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
-///   depends_on                    = [gcp_discoveryengine_datastore.my_datastore]
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   depends_on = [gcp_discoveryengine_data_store.my_datastore]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name                  = "dialogflowcx-agent-data-store"
 ///   location                      = "global"
 ///   default_language_code         = "en"
@@ -882,21 +933,27 @@ import 'cx_tool_state.dart';
 ///   description                   = "Example description."
 ///   delete_chat_engine_on_destroy = true
 /// }
-/// resource "gcp_diagflow_cxtool" "data_store_tool" {
-///   depends_on   = [gcp_discoveryengine_datastore.my_datastore, gcp_diagflow_cxagent.agent]
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_tool" "data_store_tool" {
+///   depends_on = [gcp_discoveryengine_data_store.my_datastore, gcp_diagflow_cx_agent.agent]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "Example Data Store Tool"
 ///   description  = "Example Description"
 ///   data_store_spec = {
 ///     data_store_connections = [{
-///       "dataStoreType"          = "UNSTRUCTURED"
-///       "dataStore"              ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/collections/default_collection/dataStores/${gcp_discoveryengine_datastore.my_datastore.data_store_id}"
-///       "documentProcessingMode" = "DOCUMENTS"
+///       data_store_type          = "UNSTRUCTURED"
+///       data_store               ="projects/${data.gcp_organizations_project.project.number}/locations/global/collections/default_collection/dataStores/${gcp_discoveryengine_data_store.my_datastore.data_store_id}"
+///       document_processing_mode = "DOCUMENTS"
 ///     }]
 ///     fallback_prompt = {}
 ///   }
 /// }
-/// resource "gcp_discoveryengine_datastore" "my_datastore" {
+/// resource "gcp_discoveryengine_data_store" "my_datastore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "global"
 ///   data_store_id     = "datastore-tool"
 ///   display_name      = "datastore for Tool test"
@@ -1172,7 +1229,7 @@ import 'cx_tool_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1189,7 +1246,7 @@ import 'cx_tool_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxTool(ctx, "function_tool", &diagflow.CxToolArgs{
-/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      agent.ID(),
 /// 			DisplayName: pulumi.String("Example Function Tool"),
 /// 			Description: pulumi.String("Example Description"),
 /// 			FunctionSpec: &diagflow.CxToolFunctionSpecArgs{
@@ -1226,7 +1283,7 @@ import 'cx_tool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1234,20 +1291,51 @@ import 'cx_tool_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "dialogflowcx-agent-fucntion"
 ///   location              = "global"
 ///   default_language_code = "en"
 ///   time_zone             = "America/New_York"
 ///   description           = "Example description."
 /// }
-/// resource "gcp_diagflow_cxtool" "function_tool" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_tool" "function_tool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "Example Function Tool"
 ///   description  = "Example Description"
 ///   function_spec = {
-///     input_schema  = "      {\n        \\\"type\\\": \\\"object\\\",\n        \\\"properties\\\": {\n          \\\"message_to_echo\\\": {\n            \\\"type\\\": \\\"string\\\",\n            \\\"description\\\": \\\"The message that should be echoed back.\\\"\n          }\n        },\n        \\\"required\\\": [\n          \\\"message_to_echo\\\"\n        ]\n      }\n"
-///     output_schema = "      {\n        \\\"type\\\": \\\"object\\\",\n        \\\"properties\\\": {\n          \\\"echoed_message\\\": {\n            \\\"type\\\": \\\"string\\\",\n            \\\"description\\\": \\\"The message that is echoed back.\\\"\n          }\n        }\n      }\n"
+///     input_schema  = <<EOF
+///       {
+///         \"type\": \"object\",
+///         \"properties\": {
+///           \"message_to_echo\": {
+///             \"type\": \"string\",
+///             \"description\": \"The message that should be echoed back.\"
+///           }
+///         },
+///         \"required\": [
+///           \"message_to_echo\"
+///         ]
+///       }
+/// EOF
+///
+///     output_schema = <<EOF
+///       {
+///         \"type\": \"object\",
+///         \"properties\": {
+///           \"echoed_message\": {
+///             \"type\": \"string\",
+///             \"description\": \"The message that is echoed back.\"
+///           }
+///         }
+///       }
+/// EOF
+///
 ///   }
 /// }
 /// ```
@@ -1653,10 +1741,10 @@ import 'cx_tool_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/integrationconnectors"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/integrationconnectors"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1738,7 +1826,7 @@ import 'cx_tool_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxTool(ctx, "connector_tool", &diagflow.CxToolArgs{
-/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      agent.ID(),
 /// 			DisplayName: pulumi.String("Example Connector Tool"),
 /// 			Description: pulumi.String("Example Description"),
 /// 			ConnectorSpec: &diagflow.CxToolConnectorSpecArgs{
@@ -1774,7 +1862,7 @@ import 'cx_tool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1782,10 +1870,13 @@ import 'cx_tool_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "testProject" {
+/// data "gcp_organizations_project" "testProject" {
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name                  = "dialogflowcx-agent-connector"
 ///   location                      = "us-central1"
 ///   default_language_code         = "en"
@@ -1794,9 +1885,12 @@ import 'cx_tool_state.dart';
 ///   delete_chat_engine_on_destroy = true
 /// }
 /// resource "gcp_integrationconnectors_connection" "integration_connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "terraform-df-cx-tool-connection"
 ///   location          = "us-central1"
-///   connector_version ="projects/${gcp_diagflow_cxagent.agent.project}/locations/global/providers/gcp/connectors/bigquery/versions/1"
+///   connector_version ="projects/${gcp_diagflow_cx_agent.agent.project}/locations/global/providers/gcp/connectors/bigquery/versions/1"
 ///   description       = "tf created description"
 ///   config_variables {
 ///     key          = "dataset_id"
@@ -1804,7 +1898,7 @@ import 'cx_tool_state.dart';
 ///   }
 ///   config_variables {
 ///     key          = "project_id"
-///     string_value = gcp_diagflow_cxagent.agent.project
+///     string_value = gcp_diagflow_cx_agent.agent.project
 ///   }
 ///   config_variables {
 ///     key           = "support_native_data_type"
@@ -1814,12 +1908,15 @@ import 'cx_tool_state.dart';
 ///     key           = "proxy_enabled"
 ///     boolean_value = false
 ///   }
-///   service_account ="${data.gcp_organizations_getproject.testProject.number}-compute@developer.gserviceaccount.com"
+///   service_account ="${data.gcp_organizations_project.testProject.number}-compute@developer.gserviceaccount.com"
 ///   auth_config = {
 ///     auth_type = "AUTH_TYPE_UNSPECIFIED"
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "bq_dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id                 = "terraformdatasetdfcxtool"
 ///   friendly_name              = "test"
 ///   description                = "This is a test description"
@@ -1827,30 +1924,39 @@ import 'cx_tool_state.dart';
 ///   delete_contents_on_destroy = true
 /// }
 /// resource "gcp_bigquery_table" "bq_table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
 ///   dataset_id          = gcp_bigquery_dataset.bq_dataset.dataset_id
 ///   table_id            = "terraformdatasetdfcxtooltable"
 /// }
-/// resource "gcp_bigquery_datasetiammember" "connector_sa_dataset_perms" {
-///   project    = data.gcp_organizations_getproject.testProject.project_id
+/// resource "gcp_bigquery_dataset_iam_member" "connector_sa_dataset_perms" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project    = data.gcp_organizations_project.testProject.project_id
 ///   dataset_id = gcp_bigquery_dataset.bq_dataset.dataset_id
 ///   role       = "roles/bigquery.dataEditor"
-///   member     ="serviceAccount:${data.gcp_organizations_getproject.testProject.number}-compute@developer.gserviceaccount.com"
+///   member     ="serviceAccount:${data.gcp_organizations_project.testProject.number}-compute@developer.gserviceaccount.com"
 /// }
-/// resource "gcp_diagflow_cxtool" "connector_tool" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_tool" "connector_tool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "Example Connector Tool"
 ///   description  = "Example Description"
 ///   connector_spec = {
-///     name ="projects/${gcp_diagflow_cxagent.agent.project}/locations/us-central1/connections/${gcp_integrationconnectors_connection.integration_connector.name}"
+///     name ="projects/${gcp_diagflow_cx_agent.agent.project}/locations/us-central1/connections/${gcp_integrationconnectors_connection.integration_connector.name}"
 ///     actions = [{
-///       "connectionActionId" = "ExecuteCustomQuery"
-///       "inputFields"        = ["test1"]
-///       "outputFields"       = ["test1"]
+///       connection_action_id = "ExecuteCustomQuery"
+///       input_fields         = ["test1"]
+///       output_fields        = ["test1"]
 ///       }, {
-///       "entityOperation" = {
-///         "entityId"  = gcp_bigquery_table.bq_table.table_id
-///         "operation" = "LIST"
+///       entity_operation = {
+///         entity_id = gcp_bigquery_table.bq_table.table_id
+///         operation = "LIST"
 ///       }
 ///     }]
 ///   }
@@ -2128,7 +2234,7 @@ class CxTool extends pulumi.CustomResource {
           'gcp:diagflow/cxTool:CxTool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     connectorSpec = registerOutput<CxToolConnectorSpec?>('connectorSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxToolConnectorSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataStoreSpec = registerOutput<CxToolDataStoreSpec?>('dataStoreSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxToolDataStoreSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });

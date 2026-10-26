@@ -73,7 +73,7 @@ import 'network_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/edgenetwork"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/edgenetwork"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -97,7 +97,7 @@ import 'network_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -106,6 +106,9 @@ import 'network_state.dart';
 /// }
 ///
 /// resource "gcp_edgenetwork_network" "example_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_id  = "example-network"
 ///   location    = "us-west1"
 ///   zone        = ""
@@ -240,7 +243,7 @@ class Network extends pulumi.CustomResource {
           'gcp:edgenetwork/network:Network',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

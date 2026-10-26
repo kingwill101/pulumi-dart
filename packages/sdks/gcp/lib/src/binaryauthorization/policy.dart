@@ -149,8 +149,8 @@ import 'policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/binaryauthorization"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/containeranalysis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/binaryauthorization"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/containeranalysis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -205,7 +205,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -214,6 +214,9 @@ import 'policy_state.dart';
 /// }
 ///
 /// resource "gcp_binaryauthorization_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   admission_whitelist_patterns {
 ///     name_pattern = "gcr.io/google_containers/*"
 ///   }
@@ -229,6 +232,9 @@ import 'policy_state.dart';
 ///   }
 /// }
 /// resource "gcp_containeranalysis_note" "note" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-attestor-note"
 ///   attestation_authority = {
 ///     hint = {
@@ -237,6 +243,9 @@ import 'policy_state.dart';
 ///   }
 /// }
 /// resource "gcp_binaryauthorization_attestor" "attestor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-attestor"
 ///   attestation_authority_note = {
 ///     note_reference = gcp_containeranalysis_note.note.name
@@ -444,8 +453,8 @@ import 'policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/binaryauthorization"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/containeranalysis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/binaryauthorization"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/containeranalysis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -489,7 +498,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -498,6 +507,9 @@ import 'policy_state.dart';
 /// }
 ///
 /// resource "gcp_binaryauthorization_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   default_admission_rule = {
 ///     evaluation_mode           = "REQUIRE_ATTESTATION"
 ///     enforcement_mode          = "ENFORCED_BLOCK_AND_AUDIT_LOG"
@@ -506,6 +518,9 @@ import 'policy_state.dart';
 ///   global_policy_evaluation_mode = "ENABLE"
 /// }
 /// resource "gcp_containeranalysis_note" "note" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-attestor-note"
 ///   attestation_authority = {
 ///     hint = {
@@ -514,6 +529,9 @@ import 'policy_state.dart';
 ///   }
 /// }
 /// resource "gcp_binaryauthorization_attestor" "attestor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-attestor"
 ///   attestation_authority_note = {
 ///     note_reference = gcp_containeranalysis_note.note.name
@@ -668,7 +686,7 @@ class Policy extends pulumi.CustomResource {
           'gcp:binaryauthorization/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     admissionWhitelistPatterns = registerOutput<List<PolicyAdmissionWhitelistPattern>?>('admissionWhitelistPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyAdmissionWhitelistPattern>(guardedValue, (value) => PolicyAdmissionWhitelistPattern.fromMap((value as Map).cast<String, dynamic>())); });
     clusterAdmissionRules = registerOutput<List<PolicyClusterAdmissionRule>?>('clusterAdmissionRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyClusterAdmissionRule>(guardedValue, (value) => PolicyClusterAdmissionRule.fromMap((value as Map).cast<String, dynamic>())); });

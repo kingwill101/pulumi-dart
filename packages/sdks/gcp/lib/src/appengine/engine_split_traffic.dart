@@ -240,110 +240,8 @@ import 'engine_split_traffic_state.dart';
 ///
 /// });
 /// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"fmt"
-///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:     pulumi.String("appengine-static-content"),
-/// 			Location: pulumi.String("US"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
-/// 			Name:   pulumi.String("hello-world.zip"),
-/// 			Bucket: bucket.Name,
-/// 			Source: pulumi.NewFileAsset("./test-fixtures/hello-world.zip"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		liveappV1, err := appengine.NewStandardAppVersion(ctx, "liveapp_v1", &appengine.StandardAppVersionArgs{
-/// 			VersionId:              pulumi.String("v1"),
-/// 			Service:                pulumi.String("liveapp"),
-/// 			DeleteServiceOnDestroy: pulumi.Bool(true),
-/// 			Runtime:                pulumi.String("nodejs22"),
-/// 			Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
-/// 				Shell: pulumi.String("node ./app.js"),
-/// 			},
-/// 			Deployment: &appengine.StandardAppVersionDeploymentArgs{
-/// 				Zip: &appengine.StandardAppVersionDeploymentZipArgs{
-/// 					SourceUrl: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
-/// 						bucketName := _args[0].(string)
-/// 						objectName := _args[1].(string)
-/// 						return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, objectName), nil
-/// 					}).(pulumi.StringOutput),
-/// 				},
-/// 			},
-/// 			EnvVariables: pulumi.StringMap{
-/// 				"port": pulumi.String("8080"),
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		liveappV2, err := appengine.NewStandardAppVersion(ctx, "liveapp_v2", &appengine.StandardAppVersionArgs{
-/// 			VersionId:     pulumi.String("v2"),
-/// 			Service:       pulumi.String("liveapp"),
-/// 			NoopOnDestroy: pulumi.Bool(true),
-/// 			Runtime:       pulumi.String("nodejs22"),
-/// 			Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
-/// 				Shell: pulumi.String("node ./app.js"),
-/// 			},
-/// 			Deployment: &appengine.StandardAppVersionDeploymentArgs{
-/// 				Zip: &appengine.StandardAppVersionDeploymentZipArgs{
-/// 					SourceUrl: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
-/// 						bucketName := _args[0].(string)
-/// 						objectName := _args[1].(string)
-/// 						return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, objectName), nil
-/// 					}).(pulumi.StringOutput),
-/// 				},
-/// 			},
-/// 			EnvVariables: pulumi.StringMap{
-/// 				"port": pulumi.String("8080"),
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = appengine.NewEngineSplitTraffic(ctx, "liveapp", &appengine.EngineSplitTrafficArgs{
-/// 			Service:        liveappV2.Service,
-/// 			MigrateTraffic: pulumi.Bool(false),
-/// 			Split: &appengine.EngineSplitTrafficSplitArgs{
-/// 				ShardBy: pulumi.String("IP"),
-/// 				Allocations: pulumi.StringMap(pulumi.All(liveappV1.VersionId, liveappV2.VersionId).ApplyT(func(_args []interface{}) (map[string]float64, error) {
-/// 					liveappV1VersionId := _args[0].(*string)
-/// 					liveappV2VersionId := _args[1].(*string)
-/// 					return map[string]float64(pulumi.All(pulumi.String(liveappV1VersionId), pulumi.String(liveappV2VersionId)).ApplyT(func(_args []interface{}) (map[string]float64, error) {
-/// 						__convert := _args[0].(string)
-/// 						__convert1 := _args[1].(string)
-/// 						return map[string]float64{
-/// 							__convert:  0.75,
-/// 							__convert1: 0.25,
-/// 						}, nil
-/// 					}).(pulumi.MapOutput)), nil
-/// 				}).(pulumi.MapOutput)),
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -352,15 +250,24 @@ import 'engine_split_traffic_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "appengine-static-content"
 ///   location = "US"
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "hello-world.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("./test-fixtures/hello-world.zip")
+///   source = fileasset("./test-fixtures/hello-world.zip")
 /// }
-/// resource "gcp_appengine_standardappversion" "liveapp_v1" {
+/// resource "gcp_appengine_standard_app_version" "liveapp_v1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   version_id                = "v1"
 ///   service                   = "liveapp"
 ///   delete_service_on_destroy = true
@@ -370,14 +277,17 @@ import 'engine_split_traffic_state.dart';
 ///   }
 ///   deployment = {
 ///     zip = {
-///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.object.name}"
+///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucket_object.object.name}"
 ///     }
 ///   }
 ///   env_variables = {
 ///     "port" = "8080"
 ///   }
 /// }
-/// resource "gcp_appengine_standardappversion" "liveapp_v2" {
+/// resource "gcp_appengine_standard_app_version" "liveapp_v2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   version_id      = "v2"
 ///   service         = "liveapp"
 ///   noop_on_destroy = true
@@ -387,129 +297,26 @@ import 'engine_split_traffic_state.dart';
 ///   }
 ///   deployment = {
 ///     zip = {
-///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.object.name}"
+///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucket_object.object.name}"
 ///     }
 ///   }
 ///   env_variables = {
 ///     "port" = "8080"
 ///   }
 /// }
-/// resource "gcp_appengine_enginesplittraffic" "liveapp" {
-///   service         = gcp_appengine_standardappversion.liveapp_v2.service
+/// resource "gcp_appengine_engine_split_traffic" "liveapp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service         = gcp_appengine_standard_app_version.liveapp_v2.service
 ///   migrate_traffic = false
 ///   split = {
 ///     shard_by = "IP"
 ///     allocations = {
-///       gcp_appengine_standardappversion.liveapp_v1.version_id = 0.75
-///       gcp_appengine_standardappversion.liveapp_v2.version_id = 0.25
+///       gcp_appengine_standard_app_version.liveapp_v1.version_id = 0.75
+///       gcp_appengine_standard_app_version.liveapp_v2.version_id = 0.25
 ///     }
 ///   }
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.storage.Bucket;
-/// import com.pulumi.gcp.storage.BucketArgs;
-/// import com.pulumi.gcp.storage.BucketObject;
-/// import com.pulumi.gcp.storage.BucketObjectArgs;
-/// import com.pulumi.gcp.appengine.StandardAppVersion;
-/// import com.pulumi.gcp.appengine.StandardAppVersionArgs;
-/// import com.pulumi.gcp.appengine.inputs.StandardAppVersionEntrypointArgs;
-/// import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentArgs;
-/// import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentZipArgs;
-/// import com.pulumi.gcp.appengine.EngineSplitTraffic;
-/// import com.pulumi.gcp.appengine.EngineSplitTrafficArgs;
-/// import com.pulumi.gcp.appengine.inputs.EngineSplitTrafficSplitArgs;
-/// import com.pulumi.asset.FileAsset;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name("appengine-static-content")
-///             .location("US")
-///             .build());
-///
-///         var object = new BucketObject("object", BucketObjectArgs.builder()
-///             .name("hello-world.zip")
-///             .bucket(bucket.name())
-///             .source(new FileAsset("./test-fixtures/hello-world.zip"))
-///             .build());
-///
-///         var liveappV1 = new StandardAppVersion("liveappV1", StandardAppVersionArgs.builder()
-///             .versionId("v1")
-///             .service("liveapp")
-///             .deleteServiceOnDestroy(true)
-///             .runtime("nodejs22")
-///             .entrypoint(StandardAppVersionEntrypointArgs.builder()
-///                 .shell("node ./app.js")
-///                 .build())
-///             .deployment(StandardAppVersionDeploymentArgs.builder()
-///                 .zip(StandardAppVersionDeploymentZipArgs.builder()
-///                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -> {
-///                         var bucketName = values.t1;
-///                         var objectName = values.t2;
-///                         return String.format("https://storage.googleapis.com/%s/%s", bucketName,objectName);
-///                     }))
-///                     .build())
-///                 .build())
-///             .envVariables(Map.of("port", "8080"))
-///             .build());
-///
-///         var liveappV2 = new StandardAppVersion("liveappV2", StandardAppVersionArgs.builder()
-///             .versionId("v2")
-///             .service("liveapp")
-///             .noopOnDestroy(true)
-///             .runtime("nodejs22")
-///             .entrypoint(StandardAppVersionEntrypointArgs.builder()
-///                 .shell("node ./app.js")
-///                 .build())
-///             .deployment(StandardAppVersionDeploymentArgs.builder()
-///                 .zip(StandardAppVersionDeploymentZipArgs.builder()
-///                     .sourceUrl(Output.tuple(bucket.name(), object.name()).applyValue(values -> {
-///                         var bucketName = values.t1;
-///                         var objectName = values.t2;
-///                         return String.format("https://storage.googleapis.com/%s/%s", bucketName,objectName);
-///                     }))
-///                     .build())
-///                 .build())
-///             .envVariables(Map.of("port", "8080"))
-///             .build());
-///
-///         var liveapp = new EngineSplitTraffic("liveapp", EngineSplitTrafficArgs.builder()
-///             .service(liveappV2.service())
-///             .migrateTraffic(false)
-///             .split(EngineSplitTrafficSplitArgs.builder()
-///                 .shardBy("IP")
-///                 .allocations(Output.tuple(liveappV1.versionId(), liveappV2.versionId()).applyValue(values -> {
-///                     var liveappV1VersionId = values.t1;
-///                     var liveappV2VersionId = values.t2;
-///                     return Output.tuple(liveappV1VersionId, liveappV2VersionId).applyValue(values -> {
-///                         var __convert = values.t1;
-///                         var __convert1 = values.t2;
-///                         return Map.ofEntries(
-///                             Map.entry(__convert, 0.75),
-///                             Map.entry(__convert1, 0.25)
-///                         );
-///                     });
-///                 }))
-///                 .build())
-///             .build());
-///
-///     }
 /// }
 /// ```
 /// ```yaml
@@ -609,7 +416,7 @@ class EngineSplitTraffic extends pulumi.CustomResource {
           'gcp:appengine/engineSplitTraffic:EngineSplitTraffic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     migrateTraffic = registerOutput<bool?>('migrateTraffic');
     project = registerOutput<String>('project');

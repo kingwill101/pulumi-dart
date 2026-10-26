@@ -94,8 +94,8 @@ import 'metastore_table_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -130,7 +130,7 @@ import 'metastore_table_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -138,20 +138,23 @@ import 'metastore_table_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_metastoretableiampolicy" "policy" {
+/// resource "gcp_dataproc_metastore_table_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = dpmsService.project
 ///   location    = dpmsService.location
 ///   service_id  = dpmsService.serviceId
 ///   database_id = hive.hiveConfig[0].properties["database"]
 ///   table       = hive.hiveConfig[0].properties["table"]
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -278,7 +281,7 @@ import 'metastore_table_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -303,7 +306,7 @@ import 'metastore_table_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -311,7 +314,10 @@ import 'metastore_table_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_metastoretableiambinding" "binding" {
+/// resource "gcp_dataproc_metastore_table_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = dpmsService.project
 ///   location    = dpmsService.location
 ///   service_id  = dpmsService.serviceId
@@ -426,7 +432,7 @@ import 'metastore_table_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -449,7 +455,7 @@ import 'metastore_table_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -457,7 +463,10 @@ import 'metastore_table_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_metastoretableiammember" "member" {
+/// resource "gcp_dataproc_metastore_table_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = dpmsService.project
 ///   location    = dpmsService.location
 ///   service_id  = dpmsService.serviceId
@@ -615,8 +624,8 @@ import 'metastore_table_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -651,7 +660,7 @@ import 'metastore_table_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -659,20 +668,23 @@ import 'metastore_table_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_metastoretableiampolicy" "policy" {
+/// resource "gcp_dataproc_metastore_table_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = dpmsService.project
 ///   location    = dpmsService.location
 ///   service_id  = dpmsService.serviceId
 ///   database_id = hive.hiveConfig[0].properties["database"]
 ///   table       = hive.hiveConfig[0].properties["table"]
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -799,7 +811,7 @@ import 'metastore_table_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -824,7 +836,7 @@ import 'metastore_table_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -832,7 +844,10 @@ import 'metastore_table_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_metastoretableiambinding" "binding" {
+/// resource "gcp_dataproc_metastore_table_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = dpmsService.project
 ///   location    = dpmsService.location
 ///   service_id  = dpmsService.serviceId
@@ -947,7 +962,7 @@ import 'metastore_table_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -970,7 +985,7 @@ import 'metastore_table_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -978,7 +993,10 @@ import 'metastore_table_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_metastoretableiammember" "member" {
+/// resource "gcp_dataproc_metastore_table_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = dpmsService.project
 ///   location    = dpmsService.location
 ///   service_id  = dpmsService.serviceId
@@ -1099,7 +1117,7 @@ class MetastoreTableIamPolicy extends pulumi.CustomResource {
           'gcp:dataproc/metastoreTableIamPolicy:MetastoreTableIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     databaseId = registerOutput<String>('databaseId');
     etag = registerOutput<String>('etag');

@@ -121,8 +121,8 @@ import 'dataset_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -162,7 +162,7 @@ import 'dataset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -171,6 +171,9 @@ import 'dataset_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id                  = "example_dataset"
 ///   friendly_name               = "test"
 ///   description                 = "This is a test description"
@@ -189,6 +192,9 @@ import 'dataset_state.dart';
 ///   }
 /// }
 /// resource "gcp_serviceaccount_account" "bqowner" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "bqowner"
 /// }
 /// ```
@@ -350,8 +356,8 @@ import 'dataset_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -366,7 +372,7 @@ import 'dataset_state.dart';
 /// 		}
 /// 		cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("example-key"),
-/// 			KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRing: keyRing.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -378,7 +384,7 @@ import 'dataset_state.dart';
 /// 			Location:                 pulumi.String("US"),
 /// 			DefaultTableExpirationMs: pulumi.Int(3600000),
 /// 			DefaultEncryptionConfiguration: &bigquery.DatasetDefaultEncryptionConfigurationArgs{
-/// 				KmsKeyName: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+/// 				KmsKeyName: cryptoKey.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -389,7 +395,7 @@ import 'dataset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -398,20 +404,29 @@ import 'dataset_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id                  = "example_dataset"
 ///   friendly_name               = "test"
 ///   description                 = "This is a test description"
 ///   location                    = "US"
 ///   default_table_expiration_ms = 3600000
 ///   default_encryption_configuration = {
-///     kms_key_name = gcp_kms_cryptokey.crypto_key.id
+///     kms_key_name = gcp_kms_crypto_key.crypto_key.id
 ///   }
 /// }
-/// resource "gcp_kms_cryptokey" "crypto_key" {
+/// resource "gcp_kms_crypto_key" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-key"
-///   key_ring = gcp_kms_keyring.key_ring.id
+///   key_ring = gcp_kms_key_ring.key_ring.id
 /// }
-/// resource "gcp_kms_keyring" "key_ring" {
+/// resource "gcp_kms_key_ring" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-keyring"
 ///   location = "us"
 /// }
@@ -690,8 +705,8 @@ import 'dataset_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -765,7 +780,7 @@ import 'dataset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -774,6 +789,9 @@ import 'dataset_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "public" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id                  = "public"
 ///   friendly_name               = "test"
 ///   description                 = "This dataset is public"
@@ -792,6 +810,9 @@ import 'dataset_state.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id                  = "private"
 ///   friendly_name               = "test"
 ///   description                 = "This dataset is private"
@@ -819,6 +840,9 @@ import 'dataset_state.dart';
 ///   }
 /// }
 /// resource "gcp_serviceaccount_account" "bqowner" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "bqowner"
 /// }
 /// ```
@@ -1124,7 +1148,7 @@ import 'dataset_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1201,7 +1225,7 @@ import 'dataset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1210,15 +1234,24 @@ import 'dataset_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "public" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id  = "public_dataset"
 ///   description = "This dataset is public"
 /// }
 /// resource "gcp_bigquery_routine" "public" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id      = gcp_bigquery_dataset.public.dataset_id
 ///   routine_id      = "public_routine"
 ///   routine_type    = "TABLE_VALUED_FUNCTION"
 ///   language        = "SQL"
-///   definition_body = "SELECT 1 + value AS value\n"
+///   definition_body = <<-EOS
+/// SELECT 1 + value AS value
+/// EOS
+///
 ///   arguments {
 ///     name          = "value"
 ///     argument_kind = "FIXED_TYPE"
@@ -1236,6 +1269,9 @@ import 'dataset_state.dart';
 ///   })
 /// }
 /// resource "gcp_bigquery_dataset" "private" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id  = "private_dataset"
 ///   description = "This dataset is private"
 ///   accesses {
@@ -1433,7 +1469,7 @@ import 'dataset_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1457,7 +1493,7 @@ import 'dataset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1466,6 +1502,9 @@ import 'dataset_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "example_dataset"
 ///   friendly_name = "test"
 ///   description   = "This is a test description"
@@ -1593,7 +1632,7 @@ import 'dataset_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1619,7 +1658,7 @@ import 'dataset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1628,6 +1667,9 @@ import 'dataset_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "example_dataset"
 ///   friendly_name = "test"
 ///   description   = "This is a test description"
@@ -1728,7 +1770,7 @@ class Dataset extends pulumi.CustomResource {
   /// The following values are supported:
   /// - 'und:ci': undetermined locale, case insensitive.
   /// - '': empty string. Default to case-sensitive behavior.
-  late final pulumi.Output<String> defaultCollation;
+  late final pulumi.Output<String?> defaultCollation;
   /// The default encryption key for all tables in the dataset. Once this property is set,
   /// all newly-created partitioned tables in the dataset will have encryption key set to
   /// this value, unless table creation request (or query) overrides the key.
@@ -1842,13 +1884,13 @@ class Dataset extends pulumi.CustomResource {
           'gcp:bigquery/dataset:Dataset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     accesses = registerOutput<List<DatasetAccess>>('accesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetAccess>(guardedValue, (value) => DatasetAccess.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<int>('creationTime');
     datasetId = registerOutput<String>('datasetId');
-    defaultCollation = registerOutput<String>('defaultCollation');
+    defaultCollation = registerOutput<String?>('defaultCollation');
     defaultEncryptionConfiguration = registerOutput<DatasetDefaultEncryptionConfiguration?>('defaultEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetDefaultEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultPartitionExpirationMs = registerOutput<int?>('defaultPartitionExpirationMs');
     defaultTableExpirationMs = registerOutput<int?>('defaultTableExpirationMs');
@@ -1899,7 +1941,7 @@ class Dataset extends pulumi.CustomResource {
     accesses = registerOutput<List<DatasetAccess>>('accesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetAccess>(guardedValue, (value) => DatasetAccess.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<int>('creationTime');
     datasetId = registerOutput<String>('datasetId');
-    defaultCollation = registerOutput<String>('defaultCollation');
+    defaultCollation = registerOutput<String?>('defaultCollation');
     defaultEncryptionConfiguration = registerOutput<DatasetDefaultEncryptionConfiguration?>('defaultEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetDefaultEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultPartitionExpirationMs = registerOutput<int?>('defaultPartitionExpirationMs');
     defaultTableExpirationMs = registerOutput<int?>('defaultTableExpirationMs');
@@ -1936,7 +1978,7 @@ class Dataset extends pulumi.CustomResource {
     accesses = registerOutput<List<DatasetAccess>>('accesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetAccess>(guardedValue, (value) => DatasetAccess.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<int>('creationTime');
     datasetId = registerOutput<String>('datasetId');
-    defaultCollation = registerOutput<String>('defaultCollation');
+    defaultCollation = registerOutput<String?>('defaultCollation');
     defaultEncryptionConfiguration = registerOutput<DatasetDefaultEncryptionConfiguration?>('defaultEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetDefaultEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultPartitionExpirationMs = registerOutput<int?>('defaultPartitionExpirationMs');
     defaultTableExpirationMs = registerOutput<int?>('defaultTableExpirationMs');

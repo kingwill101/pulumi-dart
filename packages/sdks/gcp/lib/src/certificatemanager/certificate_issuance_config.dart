@@ -241,8 +241,8 @@ import 'certificate_issuance_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -302,7 +302,7 @@ import 'certificate_issuance_config_state.dart';
 /// 			Description: pulumi.String("sample description for the certificate issuanceConfigs"),
 /// 			CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
 /// 				CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
-/// 					CaPool: pool.ID().ToIDOutput().ToStringOutput(),
+/// 					CaPool: pool.ID(),
 /// 				},
 /// 			},
 /// 			Lifetime:                 pulumi.String("1814400s"),
@@ -323,7 +323,7 @@ import 'certificate_issuance_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -331,13 +331,16 @@ import 'certificate_issuance_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_certificatemanager_certificateissuanceconfig" "default" {
-///   depends_on  = [gcp_certificateauthority_authority.ca_authority]
+/// resource "gcp_certificatemanager_certificate_issuance_config" "default" {
+///   depends_on = [gcp_certificateauthority_authority.ca_authority]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "issuance-config"
 ///   description = "sample description for the certificate issuanceConfigs"
 ///   certificate_authority_config = {
 ///     certificate_authority_service_config = {
-///       ca_pool = gcp_certificateauthority_capool.pool.id
+///       ca_pool = gcp_certificateauthority_ca_pool.pool.id
 ///     }
 ///   }
 ///   lifetime                   = "1814400s"
@@ -348,14 +351,20 @@ import 'certificate_issuance_config_state.dart';
 ///     "count" = "3"
 ///   }
 /// }
-/// resource "gcp_certificateauthority_capool" "pool" {
+/// resource "gcp_certificateauthority_ca_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "ca-pool"
 ///   location = "us-central1"
 ///   tier     = "ENTERPRISE"
 /// }
 /// resource "gcp_certificateauthority_authority" "ca_authority" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                 = "us-central1"
-///   pool                     = gcp_certificateauthority_capool.pool.name
+///   pool                     = gcp_certificateauthority_ca_pool.pool.name
 ///   certificate_authority_id = "ca-authority"
 ///   config = {
 ///     subject_config = {
@@ -630,7 +639,7 @@ class CertificateIssuanceConfig extends pulumi.CustomResource {
           'gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     certificateAuthorityConfig = registerOutput<CertificateIssuanceConfigCertificateAuthorityConfig>('certificateAuthorityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateIssuanceConfigCertificateAuthorityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

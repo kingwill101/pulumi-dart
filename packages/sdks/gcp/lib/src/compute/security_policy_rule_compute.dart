@@ -107,7 +107,7 @@ import 'security_policy_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -144,7 +144,7 @@ import 'security_policy_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -152,13 +152,19 @@ import 'security_policy_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_securitypolicy" "default" {
+/// resource "gcp_compute_security_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "policyruletest"
 ///   description = "basic global security policy"
 ///   type        = "CLOUD_ARMOR"
 /// }
-/// resource "gcp_compute_securitypolicyrule" "policy_rule" {
-///   security_policy = gcp_compute_securitypolicy.default.name
+/// resource "gcp_compute_security_policy_rule" "policy_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_policy = gcp_compute_security_policy.default.name
 ///   description     = "new rule"
 ///   priority        = 100
 ///   match = {
@@ -374,7 +380,7 @@ import 'security_policy_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -428,7 +434,7 @@ import 'security_policy_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -436,13 +442,19 @@ import 'security_policy_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_securitypolicy" "default" {
+/// resource "gcp_compute_security_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "policyruletest"
 ///   description = "basic global security policy"
 ///   type        = "CLOUD_ARMOR"
 /// }
-/// resource "gcp_compute_securitypolicyrule" "default_rule" {
-///   security_policy = gcp_compute_securitypolicy.default.name
+/// resource "gcp_compute_security_policy_rule" "default_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_policy = gcp_compute_security_policy.default.name
 ///   description     = "default rule"
 ///   action          = "deny"
 ///   priority        = "2147483647"
@@ -453,8 +465,11 @@ import 'security_policy_rule_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_securitypolicyrule" "policy_rule" {
-///   security_policy = gcp_compute_securitypolicy.default.name
+/// resource "gcp_compute_security_policy_rule" "policy_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_policy = gcp_compute_security_policy.default.name
 ///   description     = "new rule"
 ///   priority        = 100
 ///   match = {
@@ -706,7 +721,7 @@ import 'security_policy_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -762,7 +777,7 @@ import 'security_policy_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -770,13 +785,19 @@ import 'security_policy_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_securitypolicy" "default" {
+/// resource "gcp_compute_security_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "policywithmultiplerules"
 ///   description = "basic global security policy"
 ///   type        = "CLOUD_ARMOR"
 /// }
-/// resource "gcp_compute_securitypolicyrule" "policy_rule_one" {
-///   security_policy = gcp_compute_securitypolicy.default.name
+/// resource "gcp_compute_security_policy_rule" "policy_rule_one" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_policy = gcp_compute_security_policy.default.name
 ///   description     = "new rule one"
 ///   priority        = 100
 ///   match = {
@@ -788,8 +809,11 @@ import 'security_policy_rule_state.dart';
 ///   action  = "allow"
 ///   preview = true
 /// }
-/// resource "gcp_compute_securitypolicyrule" "policy_rule_two" {
-///   security_policy = gcp_compute_securitypolicy.default.name
+/// resource "gcp_compute_security_policy_rule" "policy_rule_two" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_policy = gcp_compute_security_policy.default.name
 ///   description     = "new rule two"
 ///   priority        = 101
 ///   match = {
@@ -1047,7 +1071,7 @@ import 'security_policy_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1103,7 +1127,7 @@ import 'security_policy_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1111,12 +1135,18 @@ import 'security_policy_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_securitypolicy" "policy" {
+/// resource "gcp_compute_security_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "policyruletest"
 ///   description = "Security policy with WAF exclusions, Headers, and Redirect"
 /// }
-/// resource "gcp_compute_securitypolicyrule" "policy" {
-///   security_policy = gcp_compute_securitypolicy.policy.name
+/// resource "gcp_compute_security_policy_rule" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_policy = gcp_compute_security_policy.policy.name
 ///   description     = "Complex rule using advanced features: WAF config, header actions, and redirect options"
 ///   priority        = 100
 ///   action          = "allow"
@@ -1127,18 +1157,18 @@ import 'security_policy_rule_state.dart';
 ///   }
 ///   preconfigured_waf_config = {
 ///     exclusions = [{
-///       "targetRuleSet" = "sqli-v33-stable"
-///       "targetRuleIds" = ["owasp-crs-v030301-id942100-sqli"]
-///       "requestHeaders" = [{
-///         "operator" = "EQUALS"
-///         "value"    = "internal-scan"
+///       target_rule_set = "sqli-v33-stable"
+///       target_rule_ids = ["owasp-crs-v030301-id942100-sqli"]
+///       request_headers = [{
+///         operator = "EQUALS"
+///         value    = "internal-scan"
 ///       }]
 ///     }]
 ///   }
 ///   header_action = {
 ///     request_headers_to_adds = [{
-///       "headerName"  = "X-Added-By-Armor"
-///       "headerValue" = "Verified-Traffic"
+///       header_name  = "X-Added-By-Armor"
+///       header_value = "Verified-Traffic"
 ///     }]
 ///   }
 /// }
@@ -1282,7 +1312,7 @@ import 'security_policy_rule_state.dart';
 ///     name: "backendpolicy",
 ///     machineType: "e2-micro",
 ///     disks: [{
-///         sourceImage: "projects/debian-cloud/global/images/family/debian-11",
+///         sourceImage: "projects/debian-cloud/global/images/family/debian-13",
 ///         autoDelete: true,
 ///         boot: true,
 ///     }],
@@ -1364,7 +1394,7 @@ import 'security_policy_rule_state.dart';
 ///     name="backendpolicy",
 ///     machine_type="e2-micro",
 ///     disks=[{
-///         "source_image": "projects/debian-cloud/global/images/family/debian-11",
+///         "source_image": "projects/debian-cloud/global/images/family/debian-13",
 ///         "auto_delete": True,
 ///         "boot": True,
 ///     }])
@@ -1470,7 +1500,7 @@ import 'security_policy_rule_state.dart';
 ///         {
 ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
 ///             {
-///                 SourceImage = "projects/debian-cloud/global/images/family/debian-11",
+///                 SourceImage = "projects/debian-cloud/global/images/family/debian-13",
 ///                 AutoDelete = true,
 ///                 Boot = true,
 ///             },
@@ -1555,7 +1585,7 @@ import 'security_policy_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1571,7 +1601,7 @@ import 'security_policy_rule_state.dart';
 /// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("test-subnet"),
 /// 			Region:      pulumi.String("us-west2"),
-/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     _default.ID(),
 /// 			IpCidrRange: pulumi.String("10.10.0.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -1604,14 +1634,14 @@ import 'security_policy_rule_state.dart';
 /// 					AccessConfigs: compute.InstanceTemplateNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceTemplateNetworkInterfaceAccessConfigArgs{},
 /// 					},
-/// 					Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 					Subnetwork: defaultSubnetwork.ID(),
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("backendpolicy"),
 /// 			MachineType: pulumi.String("e2-micro"),
 /// 			Disks: compute.InstanceTemplateDiskArray{
 /// 				&compute.InstanceTemplateDiskArgs{
-/// 					SourceImage: pulumi.String("projects/debian-cloud/global/images/family/debian-11"),
+/// 					SourceImage: pulumi.String("projects/debian-cloud/global/images/family/debian-13"),
 /// 					AutoDelete:  pulumi.Bool(true),
 /// 					Boot:        pulumi.Bool(true),
 /// 				},
@@ -1626,7 +1656,7 @@ import 'security_policy_rule_state.dart';
 /// 			Zone:             pulumi.String("us-west2-a"),
 /// 			Versions: compute.InstanceGroupManagerVersionArray{
 /// 				&compute.InstanceGroupManagerVersionArgs{
-/// 					InstanceTemplate: defaultInstanceTemplate.ID().ToIDOutput().ToStringOutput(),
+/// 					InstanceTemplate: defaultInstanceTemplate.ID(),
 /// 				},
 /// 			},
 /// 			TargetSize: pulumi.Int(1),
@@ -1639,13 +1669,13 @@ import 'security_policy_rule_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 /// 			TimeoutSec:          pulumi.Int(30),
-/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:        defaultHealthCheck.ID(),
 /// 			Backends: compute.BackendServiceBackendArray{
 /// 				&compute.BackendServiceBackendArgs{
 /// 					Group: defaultInstanceGroupManager.InstanceGroup,
 /// 				},
 /// 			},
-/// 			SecurityPolicy: defaultSecurityPolicy.ID().ToIDOutput().ToStringOutput(),
+/// 			SecurityPolicy: defaultSecurityPolicy.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1685,7 +1715,7 @@ import 'security_policy_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1694,22 +1724,34 @@ import 'security_policy_rule_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "test-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "test-subnet"
 ///   region        = "us-west2"
 ///   network       = gcp_compute_network.default.id
 ///   ip_cidr_range = "10.10.0.0/24"
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-health-check"
 ///   http_health_check = {
 ///     port = 80
 ///   }
 /// }
-/// resource "gcp_compute_securitypolicy" "default" {
+/// resource "gcp_compute_security_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "policyruletest"
 ///   description = "global security policy with body inspection"
 ///   type        = "CLOUD_ARMOR"
@@ -1718,7 +1760,10 @@ import 'security_policy_rule_state.dart';
 ///     log_level    = "VERBOSE"
 ///   }
 /// }
-/// resource "gcp_compute_instancetemplate" "default" {
+/// resource "gcp_compute_instance_template" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
@@ -1727,34 +1772,43 @@ import 'security_policy_rule_state.dart';
 ///   name         = "backendpolicy"
 ///   machine_type = "e2-micro"
 ///   disks {
-///     source_image = "projects/debian-cloud/global/images/family/debian-11"
+///     source_image = "projects/debian-cloud/global/images/family/debian-13"
 ///     auto_delete  = true
 ///     boot         = true
 ///   }
 /// }
-/// resource "gcp_compute_instancegroupmanager" "default" {
+/// resource "gcp_compute_instance_group_manager" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "backendpolicy"
 ///   base_instance_name = "backend"
 ///   zone               = "us-west2-a"
 ///   versions {
-///     instance_template = gcp_compute_instancetemplate.default.id
+///     instance_template = gcp_compute_instance_template.default.id
 ///   }
 ///   target_size = 1
 /// }
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "backendpolicy"
 ///   protocol              = "HTTP"
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
 ///   timeout_sec           = 30
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 ///   backends {
-///     group = gcp_compute_instancegroupmanager.default.instance_group
+///     group = gcp_compute_instance_group_manager.default.instance_group
 ///   }
-///   security_policy = gcp_compute_securitypolicy.default.id
+///   security_policy = gcp_compute_security_policy.default.id
 /// }
-/// resource "gcp_compute_securitypolicyrule" "policy_rule_one" {
-///   depends_on      = [gcp_compute_backendservice.default]
-///   security_policy = gcp_compute_securitypolicy.default.name
+/// resource "gcp_compute_security_policy_rule" "policy_rule_one" {
+///   depends_on = [gcp_compute_backend_service.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_policy = gcp_compute_security_policy.default.name
 ///   description     = "waf body rule"
 ///   action          = "deny(403)"
 ///   priority        = 100
@@ -1766,10 +1820,10 @@ import 'security_policy_rule_state.dart';
 ///   }
 ///   preconfigured_waf_config = {
 ///     exclusions = [{
-///       "targetRuleSet" = "sqli-v33-stable"
-///       "requestBodies" = [{
-///         "operator" = "EQUALS"
-///         "value"    = "safe-field"
+///       target_rule_set = "sqli-v33-stable"
+///       request_bodies = [{
+///         operator = "EQUALS"
+///         value    = "safe-field"
 ///       }]
 ///     }]
 ///   }
@@ -1861,7 +1915,7 @@ import 'security_policy_rule_state.dart';
 ///             .name("backendpolicy")
 ///             .machineType("e2-micro")
 ///             .disks(InstanceTemplateDiskArgs.builder()
-///                 .sourceImage("projects/debian-cloud/global/images/family/debian-11")
+///                 .sourceImage("projects/debian-cloud/global/images/family/debian-13")
 ///                 .autoDelete(true)
 ///                 .boot(true)
 ///                 .build())
@@ -1959,7 +2013,7 @@ import 'security_policy_rule_state.dart';
 ///       name: backendpolicy
 ///       machineType: e2-micro
 ///       disks:
-///         - sourceImage: projects/debian-cloud/global/images/family/debian-11
+///         - sourceImage: projects/debian-cloud/global/images/family/debian-13
 ///           autoDelete: true
 ///           boot: true
 ///   defaultInstanceGroupManager:
@@ -2005,6 +2059,217 @@ import 'security_policy_rule_state.dart';
 ///     options:
 ///       dependsOn:
 ///         - ${defaultBackendService}
+/// ```
+///
+/// ### Security Policy Rule Request Body Expression
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.compute.SecurityPolicy("default", {
+///     name: "policyruletest",
+///     description: "basic global security policy",
+///     type: "CLOUD_ARMOR",
+/// });
+/// const policyRule = new gcp.compute.SecurityPolicyRule("policy_rule", {
+///     securityPolicy: _default.name,
+///     description: "Deny requests containing specific body string",
+///     action: "deny(403)",
+///     priority: 1000,
+///     match: {
+///         expr: {
+///             expression: "request.body.contains('my-match-string')",
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.compute.SecurityPolicy("default",
+///     name="policyruletest",
+///     description="basic global security policy",
+///     type="CLOUD_ARMOR")
+/// policy_rule = gcp.compute.SecurityPolicyRule("policy_rule",
+///     security_policy=default.name,
+///     description="Deny requests containing specific body string",
+///     action="deny(403)",
+///     priority=1000,
+///     match={
+///         "expr": {
+///             "expression": "request.body.contains('my-match-string')",
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.Compute.SecurityPolicy("default", new()
+///     {
+///         Name = "policyruletest",
+///         Description = "basic global security policy",
+///         Type = "CLOUD_ARMOR",
+///     });
+///
+///     var policyRule = new Gcp.Compute.SecurityPolicyRule("policy_rule", new()
+///     {
+///         SecurityPolicy = @default.Name,
+///         Description = "Deny requests containing specific body string",
+///         Action = "deny(403)",
+///         Priority = 1000,
+///         Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+///         {
+///             Expr = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchExprArgs
+///             {
+///                 Expression = "request.body.contains('my-match-string')",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_default, err := compute.NewSecurityPolicy(ctx, "default", &compute.SecurityPolicyArgs{
+/// 			Name:        pulumi.String("policyruletest"),
+/// 			Description: pulumi.String("basic global security policy"),
+/// 			Type:        pulumi.String("CLOUD_ARMOR"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewSecurityPolicyRule(ctx, "policy_rule", &compute.SecurityPolicyRuleArgs{
+/// 			SecurityPolicy: _default.Name,
+/// 			Description:    pulumi.String("Deny requests containing specific body string"),
+/// 			Action:         pulumi.String("deny(403)"),
+/// 			Priority:       pulumi.Int(1000),
+/// 			Match: &compute.SecurityPolicyRuleMatchArgs{
+/// 				Expr: &compute.SecurityPolicyRuleMatchExprArgs{
+/// 					Expression: pulumi.String("request.body.contains('my-match-string')"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_security_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name        = "policyruletest"
+///   description = "basic global security policy"
+///   type        = "CLOUD_ARMOR"
+/// }
+/// resource "gcp_compute_security_policy_rule" "policy_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_policy = gcp_compute_security_policy.default.name
+///   description     = "Deny requests containing specific body string"
+///   action          = "deny(403)"
+///   priority        = 1000
+///   match = {
+///     expr = {
+///       expression = "request.body.contains('my-match-string')"
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.SecurityPolicy;
+/// import com.pulumi.gcp.compute.SecurityPolicyArgs;
+/// import com.pulumi.gcp.compute.SecurityPolicyRule;
+/// import com.pulumi.gcp.compute.SecurityPolicyRuleArgs;
+/// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchArgs;
+/// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchExprArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new SecurityPolicy("default", SecurityPolicyArgs.builder()
+///             .name("policyruletest")
+///             .description("basic global security policy")
+///             .type("CLOUD_ARMOR")
+///             .build());
+///
+///         var policyRule = new SecurityPolicyRule("policyRule", SecurityPolicyRuleArgs.builder()
+///             .securityPolicy(default_.name())
+///             .description("Deny requests containing specific body string")
+///             .action("deny(403)")
+///             .priority(1000)
+///             .match(SecurityPolicyRuleMatchArgs.builder()
+///                 .expr(SecurityPolicyRuleMatchExprArgs.builder()
+///                     .expression("request.body.contains('my-match-string')")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:compute:SecurityPolicy
+///     properties:
+///       name: policyruletest
+///       description: basic global security policy
+///       type: CLOUD_ARMOR
+///   policyRule:
+///     type: gcp:compute:SecurityPolicyRule
+///     name: policy_rule
+///     properties:
+///       securityPolicy: ${default.name}
+///       description: Deny requests containing specific body string
+///       action: deny(403)
+///       priority: 1000
+///       match:
+///         expr:
+///           expression: request.body.contains('my-match-string')
 /// ```
 ///
 ///
@@ -2082,7 +2347,7 @@ class SecurityPolicyRuleCompute extends pulumi.CustomResource {
           'gcp:compute/securityPolicyRule:SecurityPolicyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     action = registerOutput<String>('action');
     deletionPolicy = registerOutput<String>('deletionPolicy');

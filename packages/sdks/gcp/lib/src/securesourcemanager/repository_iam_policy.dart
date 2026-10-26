@@ -88,8 +88,8 @@ import 'repository_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -122,7 +122,7 @@ import 'repository_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -130,18 +130,21 @@ import 'repository_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/securesourcemanager.repoAdmin"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_securesourcemanager_repositoryiampolicy" "policy" {
+/// resource "gcp_securesourcemanager_repository_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = default.project
 ///   location      = default.location
 ///   repository_id = default.repositoryId
-///   policy_data   = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data   = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -258,7 +261,7 @@ import 'repository_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -281,7 +284,7 @@ import 'repository_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -289,7 +292,10 @@ import 'repository_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_securesourcemanager_repositoryiambinding" "binding" {
+/// resource "gcp_securesourcemanager_repository_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = default.project
 ///   location      = default.location
 ///   repository_id = default.repositoryId
@@ -392,7 +398,7 @@ import 'repository_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -413,7 +419,7 @@ import 'repository_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -421,7 +427,10 @@ import 'repository_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_securesourcemanager_repositoryiammember" "member" {
+/// resource "gcp_securesourcemanager_repository_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = default.project
 ///   location      = default.location
 ///   repository_id = default.repositoryId
@@ -567,8 +576,8 @@ import 'repository_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -601,7 +610,7 @@ import 'repository_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -609,18 +618,21 @@ import 'repository_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/securesourcemanager.repoAdmin"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_securesourcemanager_repositoryiampolicy" "policy" {
+/// resource "gcp_securesourcemanager_repository_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = default.project
 ///   location      = default.location
 ///   repository_id = default.repositoryId
-///   policy_data   = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data   = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -737,7 +749,7 @@ import 'repository_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -760,7 +772,7 @@ import 'repository_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -768,7 +780,10 @@ import 'repository_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_securesourcemanager_repositoryiambinding" "binding" {
+/// resource "gcp_securesourcemanager_repository_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = default.project
 ///   location      = default.location
 ///   repository_id = default.repositoryId
@@ -871,7 +886,7 @@ import 'repository_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -892,7 +907,7 @@ import 'repository_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -900,7 +915,10 @@ import 'repository_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_securesourcemanager_repositoryiammember" "member" {
+/// resource "gcp_securesourcemanager_repository_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = default.project
 ///   location      = default.location
 ///   repository_id = default.repositoryId
@@ -1012,7 +1030,7 @@ class RepositoryIamPolicy extends pulumi.CustomResource {
           'gcp:securesourcemanager/repositoryIamPolicy:RepositoryIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

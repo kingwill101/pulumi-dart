@@ -8,8 +8,10 @@ import 'agent_before_agent_callback.dart';
 import 'agent_before_model_callback.dart';
 import 'agent_before_tool_callback.dart';
 import 'agent_model_settings.dart';
+import 'agent_remote_a2a_agent.dart';
 import 'agent_remote_dialogflow_agent.dart';
 import 'agent_toolset.dart';
+import 'agent_transfer_rule.dart';
 
 /// {@template pulumi_ces_agent_agent_args_doc}
 /// The set of arguments for Agent.
@@ -93,6 +95,10 @@ class AgentArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
+  /// The agent which will transfer execution to a remote
+  /// [A2A](https://github.com/a2aproject/A2A) agent.
+  /// Structure is documented below.
+  final pulumi.Input<AgentRemoteA2aAgent?>? remoteA2aAgent;
   /// The agent which will transfer execution to an existing remote
   /// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
   /// agent flow. The corresponding Dialogflow agent will process subsequent user
@@ -106,6 +112,10 @@ class AgentArgs {
   /// List of toolsets for the agent.
   /// Structure is documented below.
   final pulumi.Input<List<AgentToolset>?>? toolsets;
+  /// List of transfer rules for the agent.
+  /// If multiple rules match, the first one in the list will be used.
+  /// Structure is documented below.
+  final pulumi.Input<List<AgentTransferRule>?>? transferRules;
 
   /// Creates a new [AgentArgs].
   /// [afterAgentCallbacks] The callbacks to execute after the agent is called.
@@ -126,9 +136,11 @@ class AgentArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [modelSettings] Model settings contains various configurations for the LLM model.
   /// [project] The ID of the project in which the resource belongs.
+  /// [remoteA2aAgent] The agent which will transfer execution to a remote
   /// [remoteDialogflowAgent] The agent which will transfer execution to an existing remote
   /// [tools] List of available tools for the agent.
   /// [toolsets] List of toolsets for the agent.
+  /// [transferRules] List of transfer rules for the agent.
   const AgentArgs({
     this.afterAgentCallbacks,
     this.afterModelCallbacks,
@@ -148,9 +160,11 @@ class AgentArgs {
     required this.location,
     this.modelSettings,
     this.project,
+    this.remoteA2aAgent,
     this.remoteDialogflowAgent,
     this.tools,
     this.toolsets,
+    this.transferRules,
   });
 
   Map<String, dynamic> toMap() {
@@ -173,9 +187,11 @@ class AgentArgs {
       'location': location,
       'modelSettings': ?pulumi.Input.mapOptionalInputValue<AgentModelSettings, Map<String, dynamic>>(modelSettings, (value) => value.toMap()),
       'project': ?project,
+      'remoteA2aAgent': ?pulumi.Input.mapOptionalInputValue<AgentRemoteA2aAgent, Map<String, dynamic>>(remoteA2aAgent, (value) => value.toMap()),
       'remoteDialogflowAgent': ?pulumi.Input.mapOptionalInputValue<AgentRemoteDialogflowAgent, Map<String, dynamic>>(remoteDialogflowAgent, (value) => value.toMap()),
       'tools': ?tools,
       'toolsets': ?pulumi.Input.mapOptionalInputValue<List<AgentToolset>, List<Map<String, dynamic>>>(toolsets, (value) => pulumi.Input.encodeList<AgentToolset, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'transferRules': ?pulumi.Input.mapOptionalInputValue<List<AgentTransferRule>, List<Map<String, dynamic>>>(transferRules, (value) => pulumi.Input.encodeList<AgentTransferRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -199,9 +215,11 @@ class AgentArgs {
       location: pulumi.Input.fromValue(map['location'] as String),
       modelSettings: (() { final guardedValue = map['modelSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remoteA2aAgent: (() { final guardedValue = map['remoteA2aAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentRemoteA2aAgent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       remoteDialogflowAgent: (() { final guardedValue = map['remoteDialogflowAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentRemoteDialogflowAgent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tools: (() { final guardedValue = map['tools']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       toolsets: (() { final guardedValue = map['toolsets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentToolset>(guardedValue, (value) => AgentToolset.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      transferRules: (() { final guardedValue = map['transferRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentTransferRule>(guardedValue, (value) => AgentTransferRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }

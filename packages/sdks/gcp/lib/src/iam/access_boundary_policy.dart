@@ -223,9 +223,9 @@ import 'access_boundary_policy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -318,7 +318,7 @@ import 'access_boundary_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -330,33 +330,45 @@ import 'access_boundary_policy_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "my-project"
 ///   name            = "my-project"
 ///   org_id          = "123456789"
 ///   billing_account = "000000-0000000-0000000-000000"
 ///   deletion_policy = "DELETE"
 /// }
-/// resource "gcp_accesscontextmanager_accesslevel" "test-access" {
-///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
-///   name   ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/accessLevels/chromeos_no_lock"
+/// resource "gcp_accesscontextmanager_access_level" "test-access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent ="accessPolicies/${gcp_accesscontextmanager_access_policy.access-policy.name}"
+///   name   ="accessPolicies/${gcp_accesscontextmanager_access_policy.access-policy.name}/accessLevels/chromeos_no_lock"
 ///   title  = "chromeos_no_lock"
 ///   basic = {
 ///     conditions = [{
-///       "devicePolicy" = {
-///         "requireScreenLock" = true
-///         "osConstraints" = [{
-///           "osType" = "DESKTOP_CHROME_OS"
+///       device_policy = {
+///         require_screen_lock = true
+///         os_constraints = [{
+///           os_type = "DESKTOP_CHROME_OS"
 ///         }]
 ///       }
-///       "regions" = ["CH", "IT", "US"]
+///       regions = ["CH", "IT", "US"]
 ///     }]
 ///   }
 /// }
-/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+/// resource "gcp_accesscontextmanager_access_policy" "access-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent ="organizations/${gcp_organizations_project.project.org_id}"
 ///   title  = "my policy"
 /// }
-/// resource "gcp_iam_accessboundarypolicy" "example" {
+/// resource "gcp_iam_access_boundary_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = urlencode("cloudresourcemanager.googleapis.com/projects/${gcp_organizations_project.project.project_id}")
 ///   name         = "my-ab-policy"
 ///   display_name = "My AB policy"
@@ -367,7 +379,7 @@ import 'access_boundary_policy_state.dart';
 ///       available_permissions = ["*"]
 ///       availability_condition = {
 ///         title      = "Access level expr"
-///         expression ="request.matchAccessLevels('${gcp_organizations_project.project.org_id}', ['${gcp_accesscontextmanager_accesslevel.test-access.name}'])"
+///         expression ="request.matchAccessLevels('${gcp_organizations_project.project.org_id}', ['${gcp_accesscontextmanager_access_level.test-access.name}'])"
 ///       }
 ///     }
 ///   }
@@ -566,7 +578,7 @@ class AccessBoundaryPolicy extends pulumi.CustomResource {
           'gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');

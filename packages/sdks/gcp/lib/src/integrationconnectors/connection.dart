@@ -108,8 +108,8 @@ import 'connection_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/integrationconnectors"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/integrationconnectors"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -143,7 +143,7 @@ import 'connection_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -151,13 +151,16 @@ import 'connection_status.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "testProject" {
+/// data "gcp_organizations_project" "testProject" {
 /// }
 ///
 /// resource "gcp_integrationconnectors_connection" "pubsubconnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "test-pubsub"
 ///   location          = "us-central1"
-///   connector_version ="projects/${data.gcp_organizations_getproject.testProject.project_id}/locations/global/providers/gcp/connectors/pubsub/versions/1"
+///   connector_version ="projects/${data.gcp_organizations_project.testProject.project_id}/locations/global/providers/gcp/connectors/pubsub/versions/1"
 ///   description       = "tf created description"
 ///   config_variables {
 ///     key          = "project_id"
@@ -1042,9 +1045,9 @@ import 'connection_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/integrationconnectors"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/integrationconnectors"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1070,14 +1073,14 @@ import 'connection_status.dart';
 /// 			return err
 /// 		}
 /// 		secret_version_basic, err := secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
-/// 			Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     secret_basic.ID(),
 /// 			SecretData: pulumi.String("dummypassword"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret_iam", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: secret_basic.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId: secret_basic.ID(),
 /// 			Role:     pulumi.String("roles/secretmanager.admin"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", testProject.Number),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -1310,7 +1313,7 @@ import 'connection_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1318,35 +1321,47 @@ import 'connection_status.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "testProject" {
+/// data "gcp_organizations_project" "testProject" {
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "secret-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "test-secret"
 ///   replication = {
 ///     user_managed = {
 ///       replicas = [{
-///         "location" = "us-central1"
+///         location = "us-central1"
 ///       }]
 ///     }
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "secret-version-basic" {
+/// resource "gcp_secretmanager_secret_version" "secret-version-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.secret-basic.id
 ///   secret_data = "dummypassword"
 /// }
-/// resource "gcp_secretmanager_secretiammember" "secret_iam" {
-///   depends_on = [gcp_secretmanager_secretversion.secret-version-basic]
-///   secret_id  = gcp_secretmanager_secret.secret-basic.id
-///   role       = "roles/secretmanager.admin"
-///   member     ="serviceAccount:${data.gcp_organizations_getproject.testProject.number}-compute@developer.gserviceaccount.com"
+/// resource "gcp_secretmanager_secret_iam_member" "secret_iam" {
+///   depends_on = [gcp_secretmanager_secret_version.secret-version-basic]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secret_id = gcp_secretmanager_secret.secret-basic.id
+///   role      = "roles/secretmanager.admin"
+///   member    ="serviceAccount:${data.gcp_organizations_project.testProject.number}-compute@developer.gserviceaccount.com"
 /// }
 /// resource "gcp_integrationconnectors_connection" "zendeskconnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "test-zendesk"
 ///   description       = "tf updated description"
 ///   location          = "us-central1"
-///   service_account   ="${data.gcp_organizations_getproject.testProject.number}-compute@developer.gserviceaccount.com"
-///   connector_version ="projects/${data.gcp_organizations_getproject.testProject.project_id}/locations/global/providers/zendesk/connectors/zendesk/versions/1"
+///   service_account   ="${data.gcp_organizations_project.testProject.number}-compute@developer.gserviceaccount.com"
+///   connector_version ="projects/${data.gcp_organizations_project.testProject.project_id}/locations/global/providers/zendesk/connectors/zendesk/versions/1"
 ///   config_variables {
 ///     key           = "proxy_enabled"
 ///     boolean_value = false
@@ -1365,30 +1380,30 @@ import 'connection_status.dart';
 ///   config_variables {
 ///     key = "sample_secret_value"
 ///     secret_value = {
-///       secret_version = gcp_secretmanager_secretversion.secret-version-basic.name
+///       secret_version = gcp_secretmanager_secret_version.secret-version-basic.name
 ///     }
 ///   }
 ///   suspended = false
 ///   auth_config = {
 ///     additional_variables = [{
-///       "key"         = "sample_string"
-///       "stringValue" = "sampleString"
+///       key          = "sample_string"
+///       string_value = "sampleString"
 ///       }, {
-///       "key"          = "sample_boolean"
-///       "booleanValue" = false
+///       key           = "sample_boolean"
+///       boolean_value = false
 ///       }, {
-///       "key"          = "sample_integer"
-///       "integerValue" = 1
+///       key           = "sample_integer"
+///       integer_value = 1
 ///       }, {
-///       "key" = "sample_secret_value"
-///       "secretValue" = {
-///         "secretVersion" = gcp_secretmanager_secretversion.secret-version-basic.name
+///       key = "sample_secret_value"
+///       secret_value = {
+///         secret_version = gcp_secretmanager_secret_version.secret-version-basic.name
 ///       }
 ///       }, {
-///       "key" = "sample_encryption_key_value"
-///       "encryptionKeyValue" = {
-///         "type"       = "GOOGLE_MANAGED"
-///         "kmsKeyName" = "sampleKMSKkey"
+///       key = "sample_encryption_key_value"
+///       encryption_key_value = {
+///         type         = "GOOGLE_MANAGED"
+///         kms_key_name = "sampleKMSKkey"
 ///       }
 ///     }]
 ///     auth_type = "USER_PASSWORD"
@@ -1396,7 +1411,7 @@ import 'connection_status.dart';
 ///     user_password = {
 ///       username = "user@xyz.com"
 ///       password = {
-///         secret_version = gcp_secretmanager_secretversion.secret-version-basic.name
+///         secret_version = gcp_secretmanager_secret_version.secret-version-basic.name
 ///       }
 ///     }
 ///   }
@@ -1423,38 +1438,38 @@ import 'connection_status.dart';
 ///   }
 ///   ssl_config = {
 ///     additional_variables = [{
-///       "key"         = "sample_string"
-///       "stringValue" = "sampleString"
+///       key          = "sample_string"
+///       string_value = "sampleString"
 ///       }, {
-///       "key"          = "sample_boolean"
-///       "booleanValue" = false
+///       key           = "sample_boolean"
+///       boolean_value = false
 ///       }, {
-///       "key"          = "sample_integer"
-///       "integerValue" = 1
+///       key           = "sample_integer"
+///       integer_value = 1
 ///       }, {
-///       "key" = "sample_secret_value"
-///       "secretValue" = {
-///         "secretVersion" = gcp_secretmanager_secretversion.secret-version-basic.name
+///       key = "sample_secret_value"
+///       secret_value = {
+///         secret_version = gcp_secretmanager_secret_version.secret-version-basic.name
 ///       }
 ///       }, {
-///       "key" = "sample_encryption_key_value"
-///       "encryptionKeyValue" = {
-///         "type"       = "GOOGLE_MANAGED"
-///         "kmsKeyName" = "sampleKMSKkey"
+///       key = "sample_encryption_key_value"
+///       encryption_key_value = {
+///         type         = "GOOGLE_MANAGED"
+///         kms_key_name = "sampleKMSKkey"
 ///       }
 ///     }]
 ///     client_cert_type = "PEM"
 ///     client_certificate = {
-///       secret_version = gcp_secretmanager_secretversion.secret-version-basic.name
+///       secret_version = gcp_secretmanager_secret_version.secret-version-basic.name
 ///     }
 ///     client_private_key = {
-///       secret_version = gcp_secretmanager_secretversion.secret-version-basic.name
+///       secret_version = gcp_secretmanager_secret_version.secret-version-basic.name
 ///     }
 ///     client_private_key_pass = {
-///       secret_version = gcp_secretmanager_secretversion.secret-version-basic.name
+///       secret_version = gcp_secretmanager_secret_version.secret-version-basic.name
 ///     }
 ///     private_server_certificate = {
-///       secret_version = gcp_secretmanager_secretversion.secret-version-basic.name
+///       secret_version = gcp_secretmanager_secret_version.secret-version-basic.name
 ///     }
 ///     server_cert_type = "PEM"
 ///     trust_model      = "PRIVATE"
@@ -1464,31 +1479,31 @@ import 'connection_status.dart';
 ///   eventing_enablement_type = "EVENTING_AND_CONNECTION"
 ///   eventing_config = {
 ///     additional_variables = [{
-///       "key"         = "sample_string"
-///       "stringValue" = "sampleString"
+///       key          = "sample_string"
+///       string_value = "sampleString"
 ///       }, {
-///       "key"          = "sample_boolean"
-///       "booleanValue" = false
+///       key           = "sample_boolean"
+///       boolean_value = false
 ///       }, {
-///       "key"          = "sample_integer"
-///       "integerValue" = 1
+///       key           = "sample_integer"
+///       integer_value = 1
 ///       }, {
-///       "key" = "sample_secret_value"
-///       "secretValue" = {
-///         "secretVersion" = gcp_secretmanager_secretversion.secret-version-basic.name
+///       key = "sample_secret_value"
+///       secret_value = {
+///         secret_version = gcp_secretmanager_secret_version.secret-version-basic.name
 ///       }
 ///       }, {
-///       "key" = "sample_encryption_key_value"
-///       "encryptionKeyValue" = {
-///         "type"       = "GOOGLE_MANAGED"
-///         "kmsKeyName" = "sampleKMSKkey"
+///       key = "sample_encryption_key_value"
+///       encryption_key_value = {
+///         type         = "GOOGLE_MANAGED"
+///         kms_key_name = "sampleKMSKkey"
 ///       }
 ///     }]
 ///     registration_destination_config = {
 ///       key = "registration_destination_config"
 ///       destinations = [{
-///         "host" = "https://test.zendesk.com"
-///         "port" = 80
+///         host = "https://test.zendesk.com"
+///         port = 80
 ///       }]
 ///     }
 ///     auth_config = {
@@ -1497,28 +1512,28 @@ import 'connection_status.dart';
 ///       user_password = {
 ///         username = "user@xyz.com"
 ///         password = {
-///           secret_version = gcp_secretmanager_secretversion.secret-version-basic.name
+///           secret_version = gcp_secretmanager_secret_version.secret-version-basic.name
 ///         }
 ///       }
 ///       additional_variables = [{
-///         "key"         = "sample_string"
-///         "stringValue" = "sampleString"
+///         key          = "sample_string"
+///         string_value = "sampleString"
 ///         }, {
-///         "key"          = "sample_boolean"
-///         "booleanValue" = false
+///         key           = "sample_boolean"
+///         boolean_value = false
 ///         }, {
-///         "key"          = "sample_integer"
-///         "integerValue" = 1
+///         key           = "sample_integer"
+///         integer_value = 1
 ///         }, {
-///         "key" = "sample_secret_value"
-///         "secretValue" = {
-///           "secretVersion" = gcp_secretmanager_secretversion.secret-version-basic.name
+///         key = "sample_secret_value"
+///         secret_value = {
+///           secret_version = gcp_secretmanager_secret_version.secret-version-basic.name
 ///         }
 ///         }, {
-///         "key" = "sample_encryption_key_value"
-///         "encryptionKeyValue" = {
-///           "type"       = "GOOGLE_MANAGED"
-///           "kmsKeyName" = "sampleKMSKkey"
+///         key = "sample_encryption_key_value"
+///         encryption_key_value = {
+///           type         = "GOOGLE_MANAGED"
+///           kms_key_name = "sampleKMSKkey"
 ///         }
 ///       }]
 ///     }
@@ -2100,7 +2115,7 @@ class Connection extends pulumi.CustomResource {
           'gcp:integrationconnectors/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     authConfig = registerOutput<ConnectionAuthConfig?>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

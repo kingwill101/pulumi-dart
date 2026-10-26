@@ -102,8 +102,8 @@ import 'pipeline_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/eventarc"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/eventarc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -120,7 +120,7 @@ import 'pipeline_state.dart';
 /// 			PipelineId: pulumi.String("some-pipeline"),
 /// 			Destinations: eventarc.PipelineDestinationArray{
 /// 				&eventarc.PipelineDestinationArgs{
-/// 					Topic: topic.ID().ToIDOutput().ToStringOutput(),
+/// 					Topic: topic.ID(),
 /// 				},
 /// 			},
 /// 			Labels: pulumi.StringMap{
@@ -139,7 +139,7 @@ import 'pipeline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -148,9 +148,15 @@ import 'pipeline_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "some-topic"
 /// }
 /// resource "gcp_eventarc_pipeline" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   pipeline_id = "some-pipeline"
 ///   destinations {
@@ -298,7 +304,7 @@ import 'pipeline_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/eventarc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/eventarc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -326,7 +332,7 @@ import 'pipeline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -335,6 +341,9 @@ import 'pipeline_state.dart';
 /// }
 ///
 /// resource "gcp_eventarc_pipeline" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   pipeline_id = "some-pipeline"
 ///   destinations {
@@ -549,8 +558,8 @@ import 'pipeline_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/eventarc"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workflows"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/eventarc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workflows"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -595,7 +604,7 @@ import 'pipeline_state.dart';
 /// 			PipelineId: pulumi.String("some-pipeline"),
 /// 			Destinations: eventarc.PipelineDestinationArray{
 /// 				&eventarc.PipelineDestinationArgs{
-/// 					Workflow: workflow.ID().ToIDOutput().ToStringOutput(),
+/// 					Workflow: workflow.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -607,7 +616,7 @@ import 'pipeline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -616,12 +625,45 @@ import 'pipeline_state.dart';
 /// }
 ///
 /// resource "gcp_workflows_workflow" "workflow" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "some-workflow"
 ///   deletion_protection = false
 ///   region              = "us-central1"
-///   source_contents     = "# This is a sample workflow, feel free to replace it with your source code\n#\n# This workflow does the following:\n# - reads current time and date information from an external API and stores\n#   the response in CurrentDateTime variable\n# - retrieves a list of Wikipedia articles related to the day of the week\n#   from CurrentDateTime\n# - returns the list of articles as an output of the workflow\n# FYI, In terraform you need to escape the $$ or it will cause errors.\n\n- getCurrentTime:\n    call: http.get\n    args:\n        url: $${sys.get_env(\\\"url\\\")}\n    result: CurrentDateTime\n- readWikipedia:\n    call: http.get\n    args:\n        url: https://en.wikipedia.org/w/api.php\n        query:\n            action: opensearch\n            search: $${CurrentDateTime.body.dayOfTheWeek}\n    result: WikiResult\n- returnOutput:\n    return: $${WikiResult.body[1]}\n"
+///   source_contents     = <<-EOF
+/// # This is a sample workflow, feel free to replace it with your source code
+/// #
+/// # This workflow does the following:
+/// # - reads current time and date information from an external API and stores
+/// #   the response in CurrentDateTime variable
+/// # - retrieves a list of Wikipedia articles related to the day of the week
+/// #   from CurrentDateTime
+/// # - returns the list of articles as an output of the workflow
+/// # FYI, In terraform you need to escape the $$ or it will cause errors.
+///
+/// - getCurrentTime:
+///     call: http.get
+///     args:
+///         url: ${sys.get_env(\"url\")}
+///     result: CurrentDateTime
+/// - readWikipedia:
+///     call: http.get
+///     args:
+///         url: https://en.wikipedia.org/w/api.php
+///         query:
+///             action: opensearch
+///             search: ${CurrentDateTime.body.dayOfTheWeek}
+///     result: WikiResult
+/// - returnOutput:
+///     return: ${WikiResult.body[1]}
+/// EOF
+///
 /// }
 /// resource "gcp_eventarc_pipeline" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   pipeline_id = "some-pipeline"
 ///   destinations {
@@ -915,7 +957,7 @@ import 'pipeline_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/eventarc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/eventarc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -976,7 +1018,7 @@ import 'pipeline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -985,6 +1027,9 @@ import 'pipeline_state.dart';
 /// }
 ///
 /// resource "gcp_eventarc_pipeline" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   pipeline_id = "some-pipeline"
 ///   destinations {
@@ -1015,7 +1060,14 @@ import 'pipeline_state.dart';
 ///   }
 ///   mediations {
 ///     transformation = {
-///       transformation_template = "{\n\\\"id\\\": message.id,\n\\\"datacontenttype\\\": \\\"application/json\\\",\n\\\"data\\\": \\\"{ \\\\\\\"scrubbed\\\\\\\": \\\\\\\"true\\\\\\\" }\\\"\n}\n"
+///       transformation_template = <<-EOF
+/// {
+/// \"id\": message.id,
+/// \"datacontenttype\": \"application/json\",
+/// \"data\": \"{ \\\"scrubbed\\\": \\\"true\\\" }\"
+/// }
+/// EOF
+///
 ///     }
 ///   }
 ///   logging_config = {
@@ -1363,7 +1415,7 @@ import 'pipeline_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/eventarc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/eventarc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1438,7 +1490,7 @@ import 'pipeline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1447,6 +1499,9 @@ import 'pipeline_state.dart';
 /// }
 ///
 /// resource "gcp_eventarc_pipeline" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   pipeline_id = "some-pipeline"
 ///   destinations {
@@ -1465,13 +1520,27 @@ import 'pipeline_state.dart';
 ///     }
 ///     output_payload_format = {
 ///       protobuf = {
-///         schema_definition = "syntax = \\\"proto3\\\";\nmessage schema {\nstring name = 1;\nstring severity = 2;\n}\n"
+///         schema_definition = <<-EOF
+/// syntax = \"proto3\";
+/// message schema {
+/// string name = 1;
+/// string severity = 2;
+/// }
+/// EOF
+///
 ///       }
 ///     }
 ///   }
 ///   input_payload_format = {
 ///     protobuf = {
-///       schema_definition = "syntax = \\\"proto3\\\";\nmessage schema {\nstring name = 1;\nstring severity = 2;\n}\n"
+///       schema_definition = <<-EOF
+/// syntax = \"proto3\";
+/// message schema {
+/// string name = 1;
+/// string severity = 2;
+/// }
+/// EOF
+///
 ///     }
 ///   }
 ///   retry_policy = {
@@ -1481,7 +1550,14 @@ import 'pipeline_state.dart';
 ///   }
 ///   mediations {
 ///     transformation = {
-///       transformation_template = "{\n\\\"id\\\": message.id,\n\\\"datacontenttype\\\": \\\"application/json\\\",\n\\\"data\\\": \\\"{ \\\\\\\"scrubbed\\\\\\\": \\\\\\\"true\\\\\\\" }\\\"\n}\n"
+///       transformation_template = <<-EOF
+/// {
+/// \"id\": message.id,
+/// \"datacontenttype\": \"application/json\",
+/// \"data\": \"{ \\\"scrubbed\\\": \\\"true\\\" }\"
+/// }
+/// EOF
+///
 ///     }
 ///   }
 ///   logging_config = {
@@ -1808,7 +1884,7 @@ import 'pipeline_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/eventarc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/eventarc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1868,7 +1944,7 @@ import 'pipeline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1877,6 +1953,9 @@ import 'pipeline_state.dart';
 /// }
 ///
 /// resource "gcp_eventarc_pipeline" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   pipeline_id     = "some-pipeline"
 ///   crypto_key_name = "some-key"
@@ -1906,7 +1985,14 @@ import 'pipeline_state.dart';
 ///   }
 ///   mediations {
 ///     transformation = {
-///       transformation_template = "{\n\\\"id\\\": message.id,\n\\\"datacontenttype\\\": \\\"application/json\\\",\n\\\"data\\\": \\\"{ \\\\\\\"scrubbed\\\\\\\": \\\\\\\"true\\\\\\\" }\\\"\n}\n"
+///       transformation_template = <<-EOF
+/// {
+/// \"id\": message.id,
+/// \"datacontenttype\": \"application/json\",
+/// \"data\": \"{ \\\"scrubbed\\\": \\\"true\\\" }\"
+/// }
+/// EOF
+///
 ///     }
 ///   }
 ///   logging_config = {
@@ -2146,7 +2232,7 @@ class Pipeline extends pulumi.CustomResource {
           'gcp:eventarc/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

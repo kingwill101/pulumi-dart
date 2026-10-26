@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_endpoint_endpoint_settings.dart';
+import 'firewall_endpoint_wildfire_settings.dart';
 
 /// {@template pulumi_networksecurity_firewall_endpoint_firewall_endpoint_args_doc}
 /// The set of arguments for FirewallEndpoint.
@@ -35,6 +36,10 @@ class FirewallEndpointArgs {
   /// The name of the parent this firewall endpoint belongs to.
   /// Format: `organizations/{organization_id}` or `projects/{project_id}`.
   final pulumi.Input<String> parent;
+  /// (Optional, Beta)
+  /// Settings for WildFire analysis on the firewall endpoint.
+  /// Structure is documented below.
+  final pulumi.Input<FirewallEndpointWildfireSettings?>? wildfireSettings;
 
   /// Creates a new [FirewallEndpointArgs].
   /// [billingProjectId] Project to charge for the deployed firewall endpoint.
@@ -44,6 +49,7 @@ class FirewallEndpointArgs {
   /// [location] The location (zone) of the firewall endpoint.
   /// [name] The name of the firewall endpoint resource.
   /// [parent] The name of the parent this firewall endpoint belongs to.
+  /// [wildfireSettings] (Optional, Beta)
   const FirewallEndpointArgs({
     this.billingProjectId,
     this.deletionPolicy,
@@ -52,6 +58,7 @@ class FirewallEndpointArgs {
     required this.location,
     this.name,
     required this.parent,
+    this.wildfireSettings,
   });
 
   Map<String, dynamic> toMap() {
@@ -63,6 +70,7 @@ class FirewallEndpointArgs {
       'location': location,
       'name': ?name,
       'parent': parent,
+      'wildfireSettings': ?pulumi.Input.mapOptionalInputValue<FirewallEndpointWildfireSettings, Map<String, dynamic>>(wildfireSettings, (value) => value.toMap()),
     };
   }
 
@@ -75,6 +83,7 @@ class FirewallEndpointArgs {
       location: pulumi.Input.fromValue(map['location'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parent: pulumi.Input.fromValue(map['parent'] as String),
+      wildfireSettings: (() { final guardedValue = map['wildfireSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallEndpointWildfireSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

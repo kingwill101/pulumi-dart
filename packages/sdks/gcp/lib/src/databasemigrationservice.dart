@@ -38,5 +38,6 @@ export 'databasemigrationservice/private_connection.dart';
 export 'databasemigrationservice/private_connection_args.dart';
 export 'databasemigrationservice/private_connection_error.dart';
 export 'databasemigrationservice/private_connection_psc_interface_config.dart';
+export 'databasemigrationservice/private_connection_reserved_public_ip_config.dart';
 export 'databasemigrationservice/private_connection_state.dart';
 export 'databasemigrationservice/private_connection_vpc_peering_config.dart';

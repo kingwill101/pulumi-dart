@@ -24,6 +24,7 @@ class GetJobResult {
   final String? etag;
   final int? executionCount;
   final String? expireTime;
+  final String? functionalType;
   final String? generation;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
@@ -61,6 +62,7 @@ class GetJobResult {
   /// [etag] Optional.
   /// [executionCount] Optional.
   /// [expireTime] Optional.
+  /// [functionalType] Optional.
   /// [generation] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [labels] Optional.
@@ -96,6 +98,7 @@ class GetJobResult {
     this.etag,
     this.executionCount,
     this.expireTime,
+    this.functionalType,
     this.generation,
     this.id,
     this.labels,
@@ -134,6 +137,7 @@ class GetJobResult {
       'etag': ?etag,
       'executionCount': ?executionCount,
       'expireTime': ?expireTime,
+      'functionalType': ?functionalType,
       'generation': ?generation,
       'id': ?id,
       'labels': ?labels,
@@ -171,8 +175,9 @@ class GetJobResult {
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      executionCount: (() { final guardedValue = map['executionCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      executionCount: (() { final guardedValue = map['executionCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      functionalType: (() { final guardedValue = map['functionalType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),

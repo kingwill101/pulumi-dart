@@ -71,7 +71,7 @@ import 'hosting_channel_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -96,7 +96,7 @@ import 'hosting_channel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -104,12 +104,18 @@ import 'hosting_channel_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_hostingsite" "default" {
+/// resource "gcp_firebase_hosting_site" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   site_id = "site-with-channel"
 /// }
-/// resource "gcp_firebase_hostingchannel" "default" {
-///   site_id    = gcp_firebase_hostingsite.default.site_id
+/// resource "gcp_firebase_hosting_channel" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id    = gcp_firebase_hosting_site.default.site_id
 ///   channel_id = "channel-basic"
 /// }
 /// ```
@@ -234,7 +240,7 @@ import 'hosting_channel_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -264,7 +270,7 @@ import 'hosting_channel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -272,12 +278,18 @@ import 'hosting_channel_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_hostingsite" "default" {
+/// resource "gcp_firebase_hosting_site" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   site_id = "site-with-channel"
 /// }
-/// resource "gcp_firebase_hostingchannel" "full" {
-///   site_id                = gcp_firebase_hostingsite.default.site_id
+/// resource "gcp_firebase_hosting_channel" "full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id                = gcp_firebase_hosting_site.default.site_id
 ///   channel_id             = "channel-full"
 ///   ttl                    = "86400s"
 ///   retained_release_count = 20
@@ -406,7 +418,7 @@ class HostingChannel extends pulumi.CustomResource {
           'gcp:firebase/hostingChannel:HostingChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     channelId = registerOutput<String>('channelId');

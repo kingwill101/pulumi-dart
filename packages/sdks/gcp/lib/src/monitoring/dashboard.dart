@@ -80,7 +80,7 @@ import 'dashboard_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -108,7 +108,7 @@ import 'dashboard_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -117,7 +117,23 @@ import 'dashboard_state.dart';
 /// }
 ///
 /// resource "gcp_monitoring_dashboard" "dashboard" {
-///   dashboard_json = "{\n  \\\"displayName\\\": \\\"Demo Dashboard\\\",\n  \\\"gridLayout\\\": {\n    \\\"widgets\\\": [\n      {\n        \\\"blank\\\": {}\n      }\n    ]\n  }\n}\n\n"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   dashboard_json = <<EOF
+/// {
+///   \"displayName\": \"Demo Dashboard\",
+///   \"gridLayout\": {
+///     \"widgets\": [
+///       {
+///         \"blank\": {}
+///       }
+///     ]
+///   }
+/// }
+///
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -391,7 +407,7 @@ import 'dashboard_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -467,7 +483,7 @@ import 'dashboard_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -476,7 +492,71 @@ import 'dashboard_state.dart';
 /// }
 ///
 /// resource "gcp_monitoring_dashboard" "dashboard" {
-///   dashboard_json = "{\n  \\\"displayName\\\": \\\"Grid Layout Example\\\",\n  \\\"gridLayout\\\": {\n    \\\"columns\\\": \\\"2\\\",\n    \\\"widgets\\\": [\n      {\n        \\\"title\\\": \\\"Widget 1\\\",\n        \\\"xyChart\\\": {\n          \\\"dataSets\\\": [{\n            \\\"timeSeriesQuery\\\": {\n              \\\"timeSeriesFilter\\\": {\n                \\\"filter\\\": \\\"metric.type=\\\\\\\"agent.googleapis.com/nginx/connections/accepted_count\\\\\\\"\\\",\n                \\\"aggregation\\\": {\n                  \\\"perSeriesAligner\\\": \\\"ALIGN_RATE\\\"\n                }\n              },\n              \\\"unitOverride\\\": \\\"1\\\"\n            },\n            \\\"plotType\\\": \\\"LINE\\\"\n          }],\n          \\\"timeshiftDuration\\\": \\\"0s\\\",\n          \\\"yAxis\\\": {\n            \\\"label\\\": \\\"y1Axis\\\",\n            \\\"scale\\\": \\\"LINEAR\\\"\n          }\n        }\n      },\n      {\n        \\\"text\\\": {\n          \\\"content\\\": \\\"Widget 2\\\",\n          \\\"format\\\": \\\"MARKDOWN\\\"\n        }\n      },\n      {\n        \\\"title\\\": \\\"Widget 3\\\",\n        \\\"xyChart\\\": {\n          \\\"dataSets\\\": [{\n            \\\"timeSeriesQuery\\\": {\n              \\\"timeSeriesFilter\\\": {\n                \\\"filter\\\": \\\"metric.type=\\\\\\\"agent.googleapis.com/nginx/connections/accepted_count\\\\\\\"\\\",\n                \\\"aggregation\\\": {\n                  \\\"perSeriesAligner\\\": \\\"ALIGN_RATE\\\"\n                }\n              },\n              \\\"unitOverride\\\": \\\"1\\\"\n            },\n            \\\"plotType\\\": \\\"STACKED_BAR\\\"\n          }],\n          \\\"timeshiftDuration\\\": \\\"0s\\\",\n          \\\"yAxis\\\": {\n            \\\"label\\\": \\\"y1Axis\\\",\n            \\\"scale\\\": \\\"LINEAR\\\"\n          }\n        }\n      }\n    ]\n  }\n}\n\n"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   dashboard_json = <<EOF
+/// {
+///   \"displayName\": \"Grid Layout Example\",
+///   \"gridLayout\": {
+///     \"columns\": \"2\",
+///     \"widgets\": [
+///       {
+///         \"title\": \"Widget 1\",
+///         \"xyChart\": {
+///           \"dataSets\": [{
+///             \"timeSeriesQuery\": {
+///               \"timeSeriesFilter\": {
+///                 \"filter\": \"metric.type=\\\"agent.googleapis.com/nginx/connections/accepted_count\\\"\",
+///                 \"aggregation\": {
+///                   \"perSeriesAligner\": \"ALIGN_RATE\"
+///                 }
+///               },
+///               \"unitOverride\": \"1\"
+///             },
+///             \"plotType\": \"LINE\"
+///           }],
+///           \"timeshiftDuration\": \"0s\",
+///           \"yAxis\": {
+///             \"label\": \"y1Axis\",
+///             \"scale\": \"LINEAR\"
+///           }
+///         }
+///       },
+///       {
+///         \"text\": {
+///           \"content\": \"Widget 2\",
+///           \"format\": \"MARKDOWN\"
+///         }
+///       },
+///       {
+///         \"title\": \"Widget 3\",
+///         \"xyChart\": {
+///           \"dataSets\": [{
+///             \"timeSeriesQuery\": {
+///               \"timeSeriesFilter\": {
+///                 \"filter\": \"metric.type=\\\"agent.googleapis.com/nginx/connections/accepted_count\\\"\",
+///                 \"aggregation\": {
+///                   \"perSeriesAligner\": \"ALIGN_RATE\"
+///                 }
+///               },
+///               \"unitOverride\": \"1\"
+///             },
+///             \"plotType\": \"STACKED_BAR\"
+///           }],
+///           \"timeshiftDuration\": \"0s\",
+///           \"yAxis\": {
+///             \"label\": \"y1Axis\",
+///             \"scale\": \"LINEAR\"
+///           }
+///         }
+///       }
+///     ]
+///   }
+/// }
+///
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -683,7 +763,7 @@ class Dashboard extends pulumi.CustomResource {
           'gcp:monitoring/dashboard:Dashboard',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     dashboardJson = registerOutput<String>('dashboardJson');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -82,7 +82,7 @@ import 'ssl_cert_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -117,7 +117,7 @@ import 'ssl_cert_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -129,18 +129,27 @@ import 'ssl_cert_state.dart';
 /// }
 ///
 /// resource "random_id" "db_name_suffix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   byte_length = 4
 /// }
-/// resource "gcp_sql_databaseinstance" "main" {
+/// resource "gcp_sql_database_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             ="main-instance-${random_id.db_name_suffix.hex}"
 ///   database_version = "MYSQL_5_7"
 ///   settings = {
 ///     tier = "db-f1-micro"
 ///   }
 /// }
-/// resource "gcp_sql_sslcert" "client_cert" {
+/// resource "gcp_sql_ssl_cert" "client_cert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   common_name = "client-name"
-///   instance    = gcp_sql_databaseinstance.main.name
+///   instance    = gcp_sql_database_instance.main.name
 /// }
 /// ```
 /// ```java
@@ -261,7 +270,7 @@ class SslCert extends pulumi.CustomResource {
           'gcp:sql/sslCert:SslCert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['cert', 'privateKey', 'serverCaCert'],
         ) {
     cert = registerOutput<String>('cert', isSecret: true);

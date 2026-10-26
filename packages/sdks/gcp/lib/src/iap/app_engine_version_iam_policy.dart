@@ -93,8 +93,8 @@ import 'app_engine_version_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -128,7 +128,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -136,19 +136,22 @@ import 'app_engine_version_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/iap.httpsResourceAccessor"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_iap_appengineversioniampolicy" "policy" {
+/// resource "gcp_iap_app_engine_version_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = version.project
 ///   app_id      = version.project
 ///   service     = version.service
 ///   version_id  = version.versionId
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -305,8 +308,8 @@ import 'app_engine_version_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -345,7 +348,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -353,7 +356,7 @@ import 'app_engine_version_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/iap.httpsResourceAccessor"
 ///     members = ["user:jane@example.com"]
@@ -365,12 +368,15 @@ import 'app_engine_version_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iap_appengineversioniampolicy" "policy" {
+/// resource "gcp_iap_app_engine_version_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = version.project
 ///   app_id      = version.project
 ///   service     = version.service
 ///   version_id  = version.versionId
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -501,7 +507,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -525,7 +531,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -533,7 +539,10 @@ import 'app_engine_version_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iap_appengineversioniambinding" "binding" {
+/// resource "gcp_iap_app_engine_version_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = version.project
 ///   app_id     = version.project
 ///   service    = version.service
@@ -661,7 +670,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -690,7 +699,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -698,7 +707,10 @@ import 'app_engine_version_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iap_appengineversioniambinding" "binding" {
+/// resource "gcp_iap_app_engine_version_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = version.project
 ///   app_id     = version.project
 ///   service    = version.service
@@ -821,7 +833,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -843,7 +855,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -851,7 +863,10 @@ import 'app_engine_version_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iap_appengineversioniammember" "member" {
+/// resource "gcp_iap_app_engine_version_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = version.project
 ///   app_id     = version.project
 ///   service    = version.service
@@ -975,7 +990,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1002,7 +1017,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1010,7 +1025,10 @@ import 'app_engine_version_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iap_appengineversioniammember" "member" {
+/// resource "gcp_iap_app_engine_version_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = version.project
 ///   app_id     = version.project
 ///   service    = version.service
@@ -1178,8 +1196,8 @@ import 'app_engine_version_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1213,7 +1231,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1221,19 +1239,22 @@ import 'app_engine_version_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/iap.httpsResourceAccessor"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_iap_appengineversioniampolicy" "policy" {
+/// resource "gcp_iap_app_engine_version_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = version.project
 ///   app_id      = version.project
 ///   service     = version.service
 ///   version_id  = version.versionId
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -1390,8 +1411,8 @@ import 'app_engine_version_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1430,7 +1451,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1438,7 +1459,7 @@ import 'app_engine_version_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/iap.httpsResourceAccessor"
 ///     members = ["user:jane@example.com"]
@@ -1450,12 +1471,15 @@ import 'app_engine_version_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iap_appengineversioniampolicy" "policy" {
+/// resource "gcp_iap_app_engine_version_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = version.project
 ///   app_id      = version.project
 ///   service     = version.service
 ///   version_id  = version.versionId
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -1586,7 +1610,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1610,7 +1634,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1618,7 +1642,10 @@ import 'app_engine_version_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iap_appengineversioniambinding" "binding" {
+/// resource "gcp_iap_app_engine_version_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = version.project
 ///   app_id     = version.project
 ///   service    = version.service
@@ -1746,7 +1773,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1775,7 +1802,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1783,7 +1810,10 @@ import 'app_engine_version_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iap_appengineversioniambinding" "binding" {
+/// resource "gcp_iap_app_engine_version_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = version.project
 ///   app_id     = version.project
 ///   service    = version.service
@@ -1906,7 +1936,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1928,7 +1958,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1936,7 +1966,10 @@ import 'app_engine_version_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iap_appengineversioniammember" "member" {
+/// resource "gcp_iap_app_engine_version_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = version.project
 ///   app_id     = version.project
 ///   service    = version.service
@@ -2060,7 +2093,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2087,7 +2120,7 @@ import 'app_engine_version_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2095,7 +2128,10 @@ import 'app_engine_version_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iap_appengineversioniammember" "member" {
+/// resource "gcp_iap_app_engine_version_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = version.project
 ///   app_id     = version.project
 ///   service    = version.service
@@ -2224,7 +2260,7 @@ class AppEngineVersionIamPolicy extends pulumi.CustomResource {
           'gcp:iap/appEngineVersionIamPolicy:AppEngineVersionIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     etag = registerOutput<String>('etag');

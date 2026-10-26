@@ -20,7 +20,7 @@ import 'global_vm_extension_policy_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const opsAgentPolicy = new gcp.compute.GlobalVmExtensionPolicy("ops_agent_policy", {
-///     name: "global-ops-agent-vme-policy-_74391",
+///     name: "global-ops-agent-policy",
 ///     description: "A basic global VM extension policy",
 ///     priority: 10,
 ///     extensionPolicies: [{
@@ -46,7 +46,7 @@ import 'global_vm_extension_policy_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// ops_agent_policy = gcp.compute.GlobalVmExtensionPolicy("ops_agent_policy",
-///     name="global-ops-agent-vme-policy-_74391",
+///     name="global-ops-agent-policy",
 ///     description="A basic global VM extension policy",
 ///     priority=10,
 ///     extension_policies=[{
@@ -76,7 +76,7 @@ import 'global_vm_extension_policy_state.dart';
 /// {
 ///     var opsAgentPolicy = new Gcp.Compute.GlobalVmExtensionPolicy("ops_agent_policy", new()
 ///     {
-///         Name = "global-ops-agent-vme-policy-_74391",
+///         Name = "global-ops-agent-policy",
 ///         Description = "A basic global VM extension policy",
 ///         Priority = 10,
 ///         ExtensionPolicies = new[]
@@ -115,14 +115,14 @@ import 'global_vm_extension_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := compute.NewGlobalVmExtensionPolicy(ctx, "ops_agent_policy", &compute.GlobalVmExtensionPolicyArgs{
-/// 			Name:        pulumi.String("global-ops-agent-vme-policy-_74391"),
+/// 			Name:        pulumi.String("global-ops-agent-policy"),
 /// 			Description: pulumi.String("A basic global VM extension policy"),
 /// 			Priority:    pulumi.Int(10),
 /// 			ExtensionPolicies: compute.GlobalVmExtensionPolicyExtensionPolicyArray{
@@ -154,7 +154,7 @@ import 'global_vm_extension_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -162,8 +162,11 @@ import 'global_vm_extension_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_globalvmextensionpolicy" "ops_agent_policy" {
-///   name        = "global-ops-agent-vme-policy-_74391"
+/// resource "gcp_compute_global_vm_extension_policy" "ops_agent_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name        = "global-ops-agent-policy"
 ///   description = "A basic global VM extension policy"
 ///   priority    = 10
 ///   extension_policies {
@@ -211,7 +214,7 @@ import 'global_vm_extension_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var opsAgentPolicy = new GlobalVmExtensionPolicy("opsAgentPolicy", GlobalVmExtensionPolicyArgs.builder()
-///             .name("global-ops-agent-vme-policy-_74391")
+///             .name("global-ops-agent-policy")
 ///             .description("A basic global VM extension policy")
 ///             .priority(10)
 ///             .extensionPolicies(GlobalVmExtensionPolicyExtensionPolicyArgs.builder()
@@ -239,7 +242,7 @@ import 'global_vm_extension_policy_state.dart';
 ///     type: gcp:compute:GlobalVmExtensionPolicy
 ///     name: ops_agent_policy
 ///     properties:
-///       name: global-ops-agent-vme-policy-_74391
+///       name: global-ops-agent-policy
 ///       description: A basic global VM extension policy
 ///       priority: 10
 ///       extensionPolicies:
@@ -263,7 +266,7 @@ import 'global_vm_extension_policy_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const opsAgentPolicy = new gcp.compute.GlobalVmExtensionPolicy("ops_agent_policy", {
-///     name: "global-ops-agent-vme-policy-_16511",
+///     name: "global-ops-agent-policy",
 ///     description: "A basic global VM extension policy",
 ///     priority: 10,
 ///     extensionPolicies: [{
@@ -289,7 +292,7 @@ import 'global_vm_extension_policy_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// ops_agent_policy = gcp.compute.GlobalVmExtensionPolicy("ops_agent_policy",
-///     name="global-ops-agent-vme-policy-_16511",
+///     name="global-ops-agent-policy",
 ///     description="A basic global VM extension policy",
 ///     priority=10,
 ///     extension_policies=[{
@@ -319,7 +322,7 @@ import 'global_vm_extension_policy_state.dart';
 /// {
 ///     var opsAgentPolicy = new Gcp.Compute.GlobalVmExtensionPolicy("ops_agent_policy", new()
 ///     {
-///         Name = "global-ops-agent-vme-policy-_16511",
+///         Name = "global-ops-agent-policy",
 ///         Description = "A basic global VM extension policy",
 ///         Priority = 10,
 ///         ExtensionPolicies = new[]
@@ -358,14 +361,14 @@ import 'global_vm_extension_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := compute.NewGlobalVmExtensionPolicy(ctx, "ops_agent_policy", &compute.GlobalVmExtensionPolicyArgs{
-/// 			Name:        pulumi.String("global-ops-agent-vme-policy-_16511"),
+/// 			Name:        pulumi.String("global-ops-agent-policy"),
 /// 			Description: pulumi.String("A basic global VM extension policy"),
 /// 			Priority:    pulumi.Int(10),
 /// 			ExtensionPolicies: compute.GlobalVmExtensionPolicyExtensionPolicyArray{
@@ -397,7 +400,7 @@ import 'global_vm_extension_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -405,8 +408,11 @@ import 'global_vm_extension_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_globalvmextensionpolicy" "ops_agent_policy" {
-///   name        = "global-ops-agent-vme-policy-_16511"
+/// resource "gcp_compute_global_vm_extension_policy" "ops_agent_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name        = "global-ops-agent-policy"
 ///   description = "A basic global VM extension policy"
 ///   priority    = 10
 ///   extension_policies {
@@ -454,7 +460,7 @@ import 'global_vm_extension_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var opsAgentPolicy = new GlobalVmExtensionPolicy("opsAgentPolicy", GlobalVmExtensionPolicyArgs.builder()
-///             .name("global-ops-agent-vme-policy-_16511")
+///             .name("global-ops-agent-policy")
 ///             .description("A basic global VM extension policy")
 ///             .priority(10)
 ///             .extensionPolicies(GlobalVmExtensionPolicyExtensionPolicyArgs.builder()
@@ -482,7 +488,7 @@ import 'global_vm_extension_policy_state.dart';
 ///     type: gcp:compute:GlobalVmExtensionPolicy
 ///     name: ops_agent_policy
 ///     properties:
-///       name: global-ops-agent-vme-policy-_16511
+///       name: global-ops-agent-policy
 ///       description: A basic global VM extension policy
 ///       priority: 10
 ///       extensionPolicies:
@@ -507,7 +513,7 @@ import 'global_vm_extension_policy_state.dart';
 ///
 /// const project = gcp.organizations.getProject({});
 /// const customRollout = new gcp.compute.RolloutPlan("custom_rollout", {
-///     name: "custom-rollout-plan-_9106",
+///     name: "custom-rollout-plan",
 ///     locationScope: "ZONAL",
 ///     waves: [{
 ///         displayName: "wave-1",
@@ -532,7 +538,7 @@ import 'global_vm_extension_policy_state.dart';
 ///     }],
 /// });
 /// const opsAgentPolicy = new gcp.compute.GlobalVmExtensionPolicy("ops_agent_policy", {
-///     name: "global-ops-agent-vme-policy-_8493",
+///     name: "global-ops-agent-policy",
 ///     description: "A global VM extension policy with a custom rollout plan",
 ///     priority: 10,
 ///     extensionPolicies: [{
@@ -559,7 +565,7 @@ import 'global_vm_extension_policy_state.dart';
 ///
 /// project = gcp.organizations.get_project()
 /// custom_rollout = gcp.compute.RolloutPlan("custom_rollout",
-///     name="custom-rollout-plan-_9106",
+///     name="custom-rollout-plan",
 ///     location_scope="ZONAL",
 ///     waves=[{
 ///         "display_name": "wave-1",
@@ -583,7 +589,7 @@ import 'global_vm_extension_policy_state.dart';
 ///         },
 ///     }])
 /// ops_agent_policy = gcp.compute.GlobalVmExtensionPolicy("ops_agent_policy",
-///     name="global-ops-agent-vme-policy-_8493",
+///     name="global-ops-agent-policy",
 ///     description="A global VM extension policy with a custom rollout plan",
 ///     priority=10,
 ///     extension_policies=[{
@@ -615,7 +621,7 @@ import 'global_vm_extension_policy_state.dart';
 ///
 ///     var customRollout = new Gcp.Compute.RolloutPlan("custom_rollout", new()
 ///     {
-///         Name = "custom-rollout-plan-_9106",
+///         Name = "custom-rollout-plan",
 ///         LocationScope = "ZONAL",
 ///         Waves = new[]
 ///         {
@@ -655,7 +661,7 @@ import 'global_vm_extension_policy_state.dart';
 ///
 ///     var opsAgentPolicy = new Gcp.Compute.GlobalVmExtensionPolicy("ops_agent_policy", new()
 ///     {
-///         Name = "global-ops-agent-vme-policy-_8493",
+///         Name = "global-ops-agent-policy",
 ///         Description = "A global VM extension policy with a custom rollout plan",
 ///         Priority = 10,
 ///         ExtensionPolicies = new[]
@@ -701,8 +707,8 @@ import 'global_vm_extension_policy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -713,7 +719,7 @@ import 'global_vm_extension_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		customRollout, err := compute.NewRolloutPlan(ctx, "custom_rollout", &compute.RolloutPlanArgs{
-/// 			Name:          pulumi.String("custom-rollout-plan-_9106"),
+/// 			Name:          pulumi.String("custom-rollout-plan"),
 /// 			LocationScope: pulumi.String("ZONAL"),
 /// 			Waves: compute.RolloutPlanWaveArray{
 /// 				&compute.RolloutPlanWaveArgs{
@@ -745,7 +751,7 @@ import 'global_vm_extension_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewGlobalVmExtensionPolicy(ctx, "ops_agent_policy", &compute.GlobalVmExtensionPolicyArgs{
-/// 			Name:        pulumi.String("global-ops-agent-vme-policy-_8493"),
+/// 			Name:        pulumi.String("global-ops-agent-policy"),
 /// 			Description: pulumi.String("A global VM extension policy with a custom rollout plan"),
 /// 			Priority:    pulumi.Int(10),
 /// 			ExtensionPolicies: compute.GlobalVmExtensionPolicyExtensionPolicyArray{
@@ -779,7 +785,7 @@ import 'global_vm_extension_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -787,11 +793,14 @@ import 'global_vm_extension_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_compute_globalvmextensionpolicy" "ops_agent_policy" {
-///   name        = "global-ops-agent-vme-policy-_8493"
+/// resource "gcp_compute_global_vm_extension_policy" "ops_agent_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name        = "global-ops-agent-policy"
 ///   description = "A global VM extension policy with a custom rollout plan"
 ///   priority    = 10
 ///   extension_policies {
@@ -807,12 +816,15 @@ import 'global_vm_extension_policy_state.dart';
 ///   }
 ///   rollout_operation = {
 ///     rollout_input = {
-///       name ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/rolloutPlans/${gcp_compute_rolloutplan.custom_rollout.name}"
+///       name ="projects/${data.gcp_organizations_project.project.number}/locations/global/rolloutPlans/${gcp_compute_rollout_plan.custom_rollout.name}"
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_rolloutplan" "custom_rollout" {
-///   name           = "custom-rollout-plan-_9106"
+/// resource "gcp_compute_rollout_plan" "custom_rollout" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name           = "custom-rollout-plan"
 ///   location_scope = "ZONAL"
 ///   waves {
 ///     display_name = "wave-1"
@@ -874,7 +886,7 @@ import 'global_vm_extension_policy_state.dart';
 ///             .build());
 ///
 ///         var customRollout = new RolloutPlan("customRollout", RolloutPlanArgs.builder()
-///             .name("custom-rollout-plan-_9106")
+///             .name("custom-rollout-plan")
 ///             .locationScope("ZONAL")
 ///             .waves(RolloutPlanWaveArgs.builder()
 ///                 .displayName("wave-1")
@@ -899,7 +911,7 @@ import 'global_vm_extension_policy_state.dart';
 ///             .build());
 ///
 ///         var opsAgentPolicy = new GlobalVmExtensionPolicy("opsAgentPolicy", GlobalVmExtensionPolicyArgs.builder()
-///             .name("global-ops-agent-vme-policy-_8493")
+///             .name("global-ops-agent-policy")
 ///             .description("A global VM extension policy with a custom rollout plan")
 ///             .priority(10)
 ///             .extensionPolicies(GlobalVmExtensionPolicyExtensionPolicyArgs.builder()
@@ -927,7 +939,7 @@ import 'global_vm_extension_policy_state.dart';
 ///     type: gcp:compute:GlobalVmExtensionPolicy
 ///     name: ops_agent_policy
 ///     properties:
-///       name: global-ops-agent-vme-policy-_8493
+///       name: global-ops-agent-policy
 ///       description: A global VM extension policy with a custom rollout plan
 ///       priority: 10
 ///       extensionPolicies:
@@ -944,7 +956,7 @@ import 'global_vm_extension_policy_state.dart';
 ///     type: gcp:compute:RolloutPlan
 ///     name: custom_rollout
 ///     properties:
-///       name: custom-rollout-plan-_9106
+///       name: custom-rollout-plan
 ///       locationScope: ZONAL
 ///       waves:
 ///         - displayName: wave-1
@@ -1033,7 +1045,7 @@ class GlobalVmExtensionPolicy extends pulumi.CustomResource {
           'gcp:compute/globalVmExtensionPolicy:GlobalVmExtensionPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

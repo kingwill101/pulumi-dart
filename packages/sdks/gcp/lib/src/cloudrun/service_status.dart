@@ -67,7 +67,7 @@ class ServiceStatus {
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceStatusCondition>(guardedValue, (value) => ServiceStatusCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       latestCreatedRevisionName: (() { final guardedValue = map['latestCreatedRevisionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       latestReadyRevisionName: (() { final guardedValue = map['latestReadyRevisionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       traffics: (() { final guardedValue = map['traffics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceStatusTraffic>(guardedValue, (value) => ServiceStatusTraffic.fromMap((value as Map).cast<String, dynamic>()))); })(),
       url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

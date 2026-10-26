@@ -76,7 +76,7 @@ import 'policy_tag_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -93,7 +93,7 @@ import 'policy_tag_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datacatalog.NewPolicyTag(ctx, "basic_policy_tag", &datacatalog.PolicyTagArgs{
-/// 			Taxonomy:    myTaxonomy.ID().ToIDOutput().ToStringOutput(),
+/// 			Taxonomy:    myTaxonomy.ID(),
 /// 			DisplayName: pulumi.String("Low security"),
 /// 			Description: pulumi.String("A policy tag normally associated with low security items"),
 /// 		})
@@ -105,7 +105,7 @@ import 'policy_tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -113,12 +113,18 @@ import 'policy_tag_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datacatalog_policytag" "basic_policy_tag" {
+/// resource "gcp_datacatalog_policy_tag" "basic_policy_tag" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   taxonomy     = gcp_datacatalog_taxonomy.my_taxonomy.id
 ///   display_name = "Low security"
 ///   description  = "A policy tag normally associated with low security items"
 /// }
 /// resource "gcp_datacatalog_taxonomy" "my_taxonomy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name           = "taxonomy_display_name"
 ///   description            = "A collection of policy tags"
 ///   activated_policy_types = ["FINE_GRAINED_ACCESS_CONTROL"]
@@ -291,7 +297,7 @@ import 'policy_tag_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -308,7 +314,7 @@ import 'policy_tag_state.dart';
 /// 			return err
 /// 		}
 /// 		parentPolicy, err := datacatalog.NewPolicyTag(ctx, "parent_policy", &datacatalog.PolicyTagArgs{
-/// 			Taxonomy:    myTaxonomy.ID().ToIDOutput().ToStringOutput(),
+/// 			Taxonomy:    myTaxonomy.ID(),
 /// 			DisplayName: pulumi.String("High"),
 /// 			Description: pulumi.String("A policy tag category used for high security access"),
 /// 		})
@@ -316,19 +322,19 @@ import 'policy_tag_state.dart';
 /// 			return err
 /// 		}
 /// 		childPolicy, err := datacatalog.NewPolicyTag(ctx, "child_policy", &datacatalog.PolicyTagArgs{
-/// 			Taxonomy:        myTaxonomy.ID().ToIDOutput().ToStringOutput(),
+/// 			Taxonomy:        myTaxonomy.ID(),
 /// 			DisplayName:     pulumi.String("ssn"),
 /// 			Description:     pulumi.String("A hash of the users ssn"),
-/// 			ParentPolicyTag: parentPolicy.ID().ToIDOutput().ToStringOutput(),
+/// 			ParentPolicyTag: parentPolicy.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = datacatalog.NewPolicyTag(ctx, "child_policy2", &datacatalog.PolicyTagArgs{
-/// 			Taxonomy:        myTaxonomy.ID().ToIDOutput().ToStringOutput(),
+/// 			Taxonomy:        myTaxonomy.ID(),
 /// 			DisplayName:     pulumi.String("dob"),
 /// 			Description:     pulumi.String("The users date of birth"),
-/// 			ParentPolicyTag: parentPolicy.ID().ToIDOutput().ToStringOutput(),
+/// 			ParentPolicyTag: parentPolicy.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			childPolicy,
 /// 		}))
@@ -340,7 +346,7 @@ import 'policy_tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -348,25 +354,37 @@ import 'policy_tag_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datacatalog_policytag" "parent_policy" {
+/// resource "gcp_datacatalog_policy_tag" "parent_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   taxonomy     = gcp_datacatalog_taxonomy.my_taxonomy.id
 ///   display_name = "High"
 ///   description  = "A policy tag category used for high security access"
 /// }
-/// resource "gcp_datacatalog_policytag" "child_policy" {
+/// resource "gcp_datacatalog_policy_tag" "child_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   taxonomy          = gcp_datacatalog_taxonomy.my_taxonomy.id
 ///   display_name      = "ssn"
 ///   description       = "A hash of the users ssn"
-///   parent_policy_tag = gcp_datacatalog_policytag.parent_policy.id
+///   parent_policy_tag = gcp_datacatalog_policy_tag.parent_policy.id
 /// }
-/// resource "gcp_datacatalog_policytag" "child_policy2" {
-///   depends_on        = [gcp_datacatalog_policytag.child_policy]
+/// resource "gcp_datacatalog_policy_tag" "child_policy2" {
+///   depends_on = [gcp_datacatalog_policy_tag.child_policy]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   taxonomy          = gcp_datacatalog_taxonomy.my_taxonomy.id
 ///   display_name      = "dob"
 ///   description       = "The users date of birth"
-///   parent_policy_tag = gcp_datacatalog_policytag.parent_policy.id
+///   parent_policy_tag = gcp_datacatalog_policy_tag.parent_policy.id
 /// }
 /// resource "gcp_datacatalog_taxonomy" "my_taxonomy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name           = "taxonomy_display_name"
 ///   description            = "A collection of policy tags"
 ///   activated_policy_types = ["FINE_GRAINED_ACCESS_CONTROL"]
@@ -519,7 +537,7 @@ class PolicyTag extends pulumi.CustomResource {
           'gcp:datacatalog/policyTag:PolicyTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     childPolicyTags = registerOutput<List<String>>('childPolicyTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

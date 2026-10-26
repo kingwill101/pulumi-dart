@@ -113,7 +113,7 @@ import 'image_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -138,7 +138,7 @@ import 'image_state.dart';
 /// 		}
 /// 		_, err = compute.NewImage(ctx, "example", &compute.ImageArgs{
 /// 			Name:       pulumi.String("example-image"),
-/// 			SourceDisk: persistent.ID().ToIDOutput().ToStringOutput(),
+/// 			SourceDisk: persistent.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -148,7 +148,7 @@ import 'image_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -156,19 +156,25 @@ import 'image_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "debian" {
+/// data "gcp_compute_image" "debian" {
 ///   family  = "debian-12"
 ///   project = "debian-cloud"
 /// }
 ///
 /// resource "gcp_compute_disk" "persistent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "example-disk"
-///   image = data.gcp_compute_getimage.debian.self_link
+///   image = data.gcp_compute_image.debian.self_link
 ///   size  = 10
 ///   type  = "pd-ssd"
 ///   zone  = "us-central1-a"
 /// }
 /// resource "gcp_compute_image" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example-image"
 ///   source_disk = gcp_compute_disk.persistent.id
 /// }
@@ -375,7 +381,7 @@ import 'image_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -400,7 +406,7 @@ import 'image_state.dart';
 /// 		}
 /// 		_, err = compute.NewImage(ctx, "example", &compute.ImageArgs{
 /// 			Name:       pulumi.String("example-image"),
-/// 			SourceDisk: persistent.ID().ToIDOutput().ToStringOutput(),
+/// 			SourceDisk: persistent.ID(),
 /// 			GuestOsFeatures: compute.ImageGuestOsFeatureArray{
 /// 				&compute.ImageGuestOsFeatureArgs{
 /// 					Type: pulumi.String("UEFI_COMPATIBLE"),
@@ -427,7 +433,7 @@ import 'image_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -435,19 +441,25 @@ import 'image_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "debian" {
+/// data "gcp_compute_image" "debian" {
 ///   family  = "debian-12"
 ///   project = "debian-cloud"
 /// }
 ///
 /// resource "gcp_compute_disk" "persistent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "example-disk"
-///   image = data.gcp_compute_getimage.debian.self_link
+///   image = data.gcp_compute_image.debian.self_link
 ///   size  = 10
 ///   type  = "pd-ssd"
 ///   zone  = "us-central1-a"
 /// }
 /// resource "gcp_compute_image" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example-image"
 ///   source_disk = gcp_compute_disk.persistent.id
 ///   guest_os_features {
@@ -641,7 +653,7 @@ import 'image_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -666,7 +678,7 @@ import 'image_state.dart';
 /// 		}
 /// 		_, err = compute.NewImage(ctx, "example", &compute.ImageArgs{
 /// 			Name:       pulumi.String("example-sl-image"),
-/// 			SourceDisk: persistent.ID().ToIDOutput().ToStringOutput(),
+/// 			SourceDisk: persistent.ID(),
 /// 			StorageLocations: pulumi.StringArray{
 /// 				pulumi.String("us-central1"),
 /// 			},
@@ -679,7 +691,7 @@ import 'image_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -687,19 +699,25 @@ import 'image_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "debian" {
+/// data "gcp_compute_image" "debian" {
 ///   family  = "debian-12"
 ///   project = "debian-cloud"
 /// }
 ///
 /// resource "gcp_compute_disk" "persistent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "example-disk"
-///   image = data.gcp_compute_getimage.debian.self_link
+///   image = data.gcp_compute_image.debian.self_link
 ///   size  = 10
 ///   type  = "pd-ssd"
 ///   zone  = "us-central1-a"
 /// }
 /// resource "gcp_compute_image" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-sl-image"
 ///   source_disk       = gcp_compute_disk.persistent.id
 ///   storage_locations = ["us-central1"]
@@ -913,7 +931,7 @@ class Image extends pulumi.CustomResource {
           'gcp:compute/image:Image',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     archiveSizeBytes = registerOutput<int>('archiveSizeBytes');

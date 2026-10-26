@@ -26,8 +26,8 @@ class GetBackupPlanBackupRuleStandardScheduleBackupWindow {
 
   factory GetBackupPlanBackupRuleStandardScheduleBackupWindow.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanBackupRuleStandardScheduleBackupWindow(
-      endHourOfDay: pulumi.Input.fromValue((map['endHourOfDay'] as num).toInt()),
-      startHourOfDay: pulumi.Input.fromValue((map['startHourOfDay'] as num).toInt()),
+      endHourOfDay: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['endHourOfDay'])),
+      startHourOfDay: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['startHourOfDay'])),
     );
   }
 }

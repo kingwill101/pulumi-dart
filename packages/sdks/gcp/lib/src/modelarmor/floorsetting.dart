@@ -58,7 +58,7 @@ import 'floorsetting_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/modelarmor"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/modelarmor"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -77,7 +77,7 @@ import 'floorsetting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -86,6 +86,9 @@ import 'floorsetting_state.dart';
 /// }
 ///
 /// resource "gcp_modelarmor_floorsetting" "floorsetting-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent        = "projects/my-project-name"
 ///   location      = "global"
 ///   filter_config = {}
@@ -247,7 +250,7 @@ import 'floorsetting_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/modelarmor"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/modelarmor"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -288,7 +291,7 @@ import 'floorsetting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -297,13 +300,16 @@ import 'floorsetting_state.dart';
 /// }
 ///
 /// resource "gcp_modelarmor_floorsetting" "floorsetting-filter-config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "global"
 ///   parent   = "project/my-project-name"
 ///   filter_config = {
 ///     rai_settings = {
 ///       rai_filters = [{
-///         "filterType"      = "DANGEROUS"
-///         "confidenceLevel" = "MEDIUM_AND_ABOVE"
+///         filter_type      = "DANGEROUS"
+///         confidence_level = "MEDIUM_AND_ABOVE"
 ///       }]
 ///     }
 ///     sdp_settings = {
@@ -479,7 +485,7 @@ import 'floorsetting_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/modelarmor"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/modelarmor"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -508,7 +514,7 @@ import 'floorsetting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -517,6 +523,9 @@ import 'floorsetting_state.dart';
 /// }
 ///
 /// resource "gcp_modelarmor_floorsetting" "floorsetting-integrated-metadata" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                         = "global"
 ///   parent                           = "projects/my-project-name"
 ///   filter_config                    = {}
@@ -652,7 +661,7 @@ class Floorsetting extends pulumi.CustomResource {
           'gcp:modelarmor/floorsetting:Floorsetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     aiPlatformFloorSetting = registerOutput<FloorsettingAiPlatformFloorSetting?>('aiPlatformFloorSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FloorsettingAiPlatformFloorSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

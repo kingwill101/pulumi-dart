@@ -9,7 +9,7 @@ import 'security_policy_rule_preconfigured_waf_config_exclusion_request_uri.dart
 
 class SecurityPolicyRulePreconfiguredWafConfigExclusion {
   /// (Optional, Beta)
-  /// A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+  /// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
   /// Structure is documented below.
   final pulumi.Input<List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody>?>? requestBodies;
   /// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.

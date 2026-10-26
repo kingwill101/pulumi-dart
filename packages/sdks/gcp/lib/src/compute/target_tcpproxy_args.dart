@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_target_tcpproxy_target_tcpproxy_args_doc}
 class TargetTCPProxyArgs {
   /// A reference to the BackendService resource. This field is optional when
-  /// the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+  /// the loadBalancingScheme is set to INTERNAL_MANAGED.
   final pulumi.Input<String?>? backendService;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -19,7 +19,6 @@ class TargetTCPProxyArgs {
   final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String?>? description;
-  /// (Optional, Beta)
   /// Specifies the load balancer type. A target TCP proxy created for one type
   /// of load balancer cannot be used with another. For more information, refer
   /// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -49,7 +48,7 @@ class TargetTCPProxyArgs {
   /// [backendService] A reference to the BackendService resource. This field is optional when
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
-  /// [loadBalancingScheme] (Optional, Beta)
+  /// [loadBalancingScheme] Specifies the load balancer type. A target TCP proxy created for one type
   /// [name] Name of the resource. Provided by the client when the resource is
   /// [project] The ID of the project in which the resource belongs.
   /// [proxyBind] This field only applies when the forwarding rule that references

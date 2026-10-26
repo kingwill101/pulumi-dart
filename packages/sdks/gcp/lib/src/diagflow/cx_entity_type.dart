@@ -173,7 +173,7 @@ import 'cx_entity_type_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -201,7 +201,7 @@ import 'cx_entity_type_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxEntityType(ctx, "basic_entity_type", &diagflow.CxEntityTypeArgs{
-/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      agent.ID(),
 /// 			DisplayName: pulumi.String("MyEntity"),
 /// 			Kind:        pulumi.String("KIND_MAP"),
 /// 			Entities: diagflow.CxEntityTypeEntityArray{
@@ -230,7 +230,7 @@ import 'cx_entity_type_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -238,7 +238,10 @@ import 'cx_entity_type_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name               = "dialogflowcx-agent"
 ///   location                   = "global"
 ///   default_language_code      = "en"
@@ -252,8 +255,11 @@ import 'cx_entity_type_state.dart';
 ///     enable_speech_adaptation = true
 ///   }
 /// }
-/// resource "gcp_diagflow_cxentitytype" "basic_entity_type" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_entity_type" "basic_entity_type" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "MyEntity"
 ///   kind         = "KIND_MAP"
 ///   entities {
@@ -443,7 +449,7 @@ class CxEntityType extends pulumi.CustomResource {
           'gcp:diagflow/cxEntityType:CxEntityType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     autoExpansionMode = registerOutput<String?>('autoExpansionMode');
     deletionPolicy = registerOutput<String>('deletionPolicy');

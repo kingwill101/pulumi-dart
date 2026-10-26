@@ -34,7 +34,7 @@ import 'network_endpoint_list_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const myImage = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const _default = new gcp.compute.Network("default", {
@@ -78,12 +78,12 @@ import 'network_endpoint_list_state.dart';
 ///     networkEndpoints: [
 ///         {
 ///             instance: endpoint_instance1.name,
-///             port: Number(neg.defaultPort),
+///             port: neg.defaultPort,
 ///             ipAddress: endpoint_instance1.networkInterfaces[0].networkIp,
 ///         },
 ///         {
 ///             instance: endpoint_instance2.name,
-///             port: Number(neg.defaultPort),
+///             port: neg.defaultPort,
 ///             ipAddress: endpoint_instance2.networkInterfaces[0].networkIp,
 ///         },
 ///     ],
@@ -100,7 +100,7 @@ import 'network_endpoint_list_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// my_image = gcp.compute.get_image(family="debian-11",
+/// my_image = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// default = gcp.compute.Network("default",
 ///     name="neg-network",
@@ -139,12 +139,12 @@ import 'network_endpoint_list_state.dart';
 ///     network_endpoints=[
 ///         {
 ///             "instance": endpoint_instance1.name,
-///             "port": int(neg["defaultPort"]),
+///             "port": neg["defaultPort"],
 ///             "ip_address": endpoint_instance1.network_interfaces[0].network_ip,
 ///         },
 ///         {
 ///             "instance": endpoint_instance2.name,
-///             "port": int(neg["defaultPort"]),
+///             "port": neg["defaultPort"],
 ///             "ip_address": endpoint_instance2.network_interfaces[0].network_ip,
 ///         },
 ///     ])
@@ -165,7 +165,7 @@ import 'network_endpoint_list_state.dart';
 /// {
 ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -239,13 +239,13 @@ import 'network_endpoint_list_state.dart';
 ///             new Gcp.Compute.Inputs.NetworkEndpointListNetworkEndpointArgs
 ///             {
 ///                 Instance = endpoint_instance1.Name,
-///                 Port = int.Parse(neg.DefaultPort, System.Globalization.CultureInfo.InvariantCulture),
+///                 Port = neg.DefaultPort,
 ///                 IpAddress = endpoint_instance1.NetworkInterfaces.Apply(networkInterfaces => networkInterfaces[0].NetworkIp),
 ///             },
 ///             new Gcp.Compute.Inputs.NetworkEndpointListNetworkEndpointArgs
 ///             {
 ///                 Instance = endpoint_instance2.Name,
-///                 Port = int.Parse(neg.DefaultPort, System.Globalization.CultureInfo.InvariantCulture),
+///                 Port = neg.DefaultPort,
 ///                 IpAddress = endpoint_instance2.NetworkInterfaces.Apply(networkInterfaces => networkInterfaces[0].NetworkIp),
 ///             },
 ///         },
@@ -266,14 +266,14 @@ import 'network_endpoint_list_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -290,7 +290,7 @@ import 'network_endpoint_list_state.dart';
 /// 			Name:        pulumi.String("neg-subnetwork"),
 /// 			IpCidrRange: pulumi.String("10.0.0.1/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -301,7 +301,7 @@ import 'network_endpoint_list_state.dart';
 /// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 /// 					},
-/// 					Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 					Subnetwork: defaultSubnetwork.ID(),
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("endpoint-instance1"),
@@ -321,7 +321,7 @@ import 'network_endpoint_list_state.dart';
 /// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 /// 					},
-/// 					Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 					Subnetwork: defaultSubnetwork.ID(),
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("endpoint-instance2"),
@@ -359,8 +359,8 @@ import 'network_endpoint_list_state.dart';
 /// 		}
 /// 		_, err = compute.NewNetworkEndpointGroup(ctx, "group", &compute.NetworkEndpointGroupArgs{
 /// 			Name:        pulumi.String("my-lb-neg"),
-/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
-/// 			Subnetwork:  defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     _default.ID(),
+/// 			Subnetwork:  defaultSubnetwork.ID(),
 /// 			DefaultPort: pulumi.Int(90),
 /// 			Zone:        pulumi.String("us-central1-a"),
 /// 		})
@@ -372,7 +372,7 @@ import 'network_endpoint_list_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -380,12 +380,15 @@ import 'network_endpoint_list_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "myImage" {
-///   family  = "debian-11"
+/// data "gcp_compute_image" "myImage" {
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
-/// resource "gcp_compute_networkendpointlist" "default-endpoints" {
+/// resource "gcp_compute_network_endpoint_list" "default-endpoints" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_endpoint_group = neg.name
 ///   network_endpoints {
 ///     instance   = gcp_compute_instance.endpoint-instance1.name
@@ -399,6 +402,9 @@ import 'network_endpoint_list_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_instance" "endpoint-instance1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
@@ -408,11 +414,14 @@ import 'network_endpoint_list_state.dart';
 ///   machine_type = "e2-medium"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = data.gcp_compute_getimage.myImage.self_link
+///       image = data.gcp_compute_image.myImage.self_link
 ///     }
 ///   }
 /// }
 /// resource "gcp_compute_instance" "endpoint-instance2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
@@ -422,11 +431,14 @@ import 'network_endpoint_list_state.dart';
 ///   machine_type = "e2-medium"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = data.gcp_compute_getimage.myImage.self_link
+///       image = data.gcp_compute_image.myImage.self_link
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_networkendpointgroup" "group" {
+/// resource "gcp_compute_network_endpoint_group" "group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-lb-neg"
 ///   network      = gcp_compute_network.default.id
 ///   subnetwork   = gcp_compute_subnetwork.default.id
@@ -434,10 +446,16 @@ import 'network_endpoint_list_state.dart';
 ///   zone         = "us-central1-a"
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "neg-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "neg-subnetwork"
 ///   ip_cidr_range = "10.0.0.1/16"
 ///   region        = "us-central1"
@@ -481,7 +499,7 @@ import 'network_endpoint_list_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -532,12 +550,12 @@ import 'network_endpoint_list_state.dart';
 ///             .networkEndpoints(
 ///                 NetworkEndpointListNetworkEndpointArgs.builder()
 ///                     .instance(endpoint_instance1.name())
-///                     .port(((Number) neg.get("defaultPort")).intValue())
+///                     .port(neg.get("defaultPort"))
 ///                     .ipAddress(endpoint_instance1.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
 ///                     .build(),
 ///                 NetworkEndpointListNetworkEndpointArgs.builder()
 ///                     .instance(endpoint_instance2.name())
-///                     .port(((Number) neg.get("defaultPort")).intValue())
+///                     .port(neg.get("defaultPort"))
 ///                     .ipAddress(endpoint_instance2.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
 ///                     .build())
 ///             .build());
@@ -616,7 +634,7 @@ import 'network_endpoint_list_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -672,7 +690,7 @@ class NetworkEndpointList extends pulumi.CustomResource {
           'gcp:compute/networkEndpointList:NetworkEndpointList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     networkEndpointGroup = registerOutput<String>('networkEndpointGroup');

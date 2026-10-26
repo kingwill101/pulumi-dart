@@ -52,7 +52,7 @@ import 'get_workstation_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -72,7 +72,7 @@ import 'get_workstation_iam_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -80,7 +80,7 @@ import 'get_workstation_iam_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_workstations_getworkstationconfigiampolicy" "policy" {
+/// data "gcp_workstations_workstation_config_iam_policy" "policy" {
 ///   project                = default.project
 ///   location               = default.location
 ///   workstation_cluster_id = default.workstationClusterId
@@ -206,7 +206,7 @@ pulumi.Output<GetWorkstationConfigIamPolicyResult> getWorkstationConfigIamPolicy
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -227,7 +227,7 @@ pulumi.Output<GetWorkstationConfigIamPolicyResult> getWorkstationConfigIamPolicy
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -235,7 +235,7 @@ pulumi.Output<GetWorkstationConfigIamPolicyResult> getWorkstationConfigIamPolicy
 ///   }
 /// }
 ///
-/// data "gcp_workstations_getworkstationiampolicy" "policy" {
+/// data "gcp_workstations_workstation_iam_policy" "policy" {
 ///   project                = default.project
 ///   location               = default.location
 ///   workstation_cluster_id = default.workstationClusterId

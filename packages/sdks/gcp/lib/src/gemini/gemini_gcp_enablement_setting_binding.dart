@@ -87,7 +87,7 @@ import 'gemini_gcp_enablement_setting_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gemini"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gemini"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -119,7 +119,7 @@ import 'gemini_gcp_enablement_setting_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -127,7 +127,10 @@ import 'gemini_gcp_enablement_setting_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gemini_geminigcpenablementsetting" "basic" {
+/// resource "gcp_gemini_gemini_gcp_enablement_setting" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gemini_gcp_enablement_setting_id = "ls-tf1"
 ///   location                         = "global"
 ///   labels = {
@@ -136,8 +139,11 @@ import 'gemini_gcp_enablement_setting_binding_state.dart';
 ///   enable_customer_data_sharing = true
 ///   web_grounding_type           = "WEB_GROUNDING_FOR_ENTERPRISE"
 /// }
-/// resource "gcp_gemini_geminigcpenablementsettingbinding" "example" {
-///   gemini_gcp_enablement_setting_id = gcp_gemini_geminigcpenablementsetting.basic.gemini_gcp_enablement_setting_id
+/// resource "gcp_gemini_gemini_gcp_enablement_setting_binding" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   gemini_gcp_enablement_setting_id = gcp_gemini_gemini_gcp_enablement_setting.basic.gemini_gcp_enablement_setting_id
 ///   setting_binding_id               = "ls-tf1b1"
 ///   location                         = "global"
 ///   target                           = "projects/980109375338"
@@ -271,7 +277,7 @@ class GeminiGcpEnablementSettingBinding extends pulumi.CustomResource {
           'gcp:gemini/geminiGcpEnablementSettingBinding:GeminiGcpEnablementSettingBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

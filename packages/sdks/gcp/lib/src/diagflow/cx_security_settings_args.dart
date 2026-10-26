@@ -123,7 +123,7 @@ class CxSecuritySettingsArgs {
       redactionScope: (() { final guardedValue = map['redactionScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       redactionStrategy: (() { final guardedValue = map['redactionStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       retentionStrategy: (() { final guardedValue = map['retentionStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      retentionWindowDays: (() { final guardedValue = map['retentionWindowDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retentionWindowDays: (() { final guardedValue = map['retentionWindowDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -181,8 +181,8 @@ import 'asset_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -249,7 +249,7 @@ import 'asset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -258,17 +258,26 @@ import 'asset_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "basic_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "bucket"
 ///   location                    = "us-west1"
 ///   uniform_bucket_level_access = true
 ///   project                     = "my-project-name"
 /// }
 /// resource "gcp_dataplex_lake" "basic_lake" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "lake"
 ///   location = "us-west1"
 ///   project  = "my-project-name"
 /// }
 /// resource "gcp_dataplex_zone" "basic_zone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "zone"
 ///   location = "us-west1"
 ///   lake     = gcp_dataplex_lake.basic_lake.name
@@ -282,7 +291,10 @@ import 'asset_state.dart';
 ///   project = "my-project-name"
 /// }
 /// resource "gcp_dataplex_asset" "primary" {
-///   depends_on    = [gcp_storage_bucket.basic_bucket]
+///   depends_on = [gcp_storage_bucket.basic_bucket]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "asset"
 ///   location      = "us-west1"
 ///   lake          = gcp_dataplex_lake.basic_lake.name
@@ -513,7 +525,7 @@ class Asset extends pulumi.CustomResource {
           'gcp:dataplex/asset:Asset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

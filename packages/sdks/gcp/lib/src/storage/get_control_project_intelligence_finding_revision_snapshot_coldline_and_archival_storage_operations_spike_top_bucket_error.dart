@@ -25,7 +25,7 @@ class GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalSto
 
   factory GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError.fromMap(Map<String, dynamic> map) {
     return GetControlProjectIntelligenceFindingRevisionSnapshotColdlineAndArchivalStorageOperationsSpikeTopBucketError(
-      code: pulumi.Input.fromValue((map['code'] as num).toInt()),
+      code: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['code'])),
       message: pulumi.Input.fromValue(map['message'] as String),
     );
   }

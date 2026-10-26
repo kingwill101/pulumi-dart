@@ -85,8 +85,8 @@ import 'note_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/containeranalysis"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/containeranalysis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -118,7 +118,7 @@ import 'note_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -126,17 +126,20 @@ import 'note_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/containeranalysis.notes.occurrences.viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_containeranalysis_noteiampolicy" "policy" {
+/// resource "gcp_containeranalysis_note_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = note.project
 ///   note        = note.name
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -248,7 +251,7 @@ import 'note_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/containeranalysis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/containeranalysis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -270,7 +273,7 @@ import 'note_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -278,7 +281,10 @@ import 'note_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_containeranalysis_noteiambinding" "binding" {
+/// resource "gcp_containeranalysis_note_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = note.project
 ///   note    = note.name
 ///   role    = "roles/containeranalysis.notes.occurrences.viewer"
@@ -375,7 +381,7 @@ import 'note_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/containeranalysis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/containeranalysis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -395,7 +401,7 @@ import 'note_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -403,7 +409,10 @@ import 'note_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_containeranalysis_noteiammember" "member" {
+/// resource "gcp_containeranalysis_note_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = note.project
 ///   note    = note.name
 ///   role    = "roles/containeranalysis.notes.occurrences.viewer"
@@ -543,8 +552,8 @@ import 'note_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/containeranalysis"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/containeranalysis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -576,7 +585,7 @@ import 'note_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -584,17 +593,20 @@ import 'note_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/containeranalysis.notes.occurrences.viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_containeranalysis_noteiampolicy" "policy" {
+/// resource "gcp_containeranalysis_note_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = note.project
 ///   note        = note.name
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -706,7 +718,7 @@ import 'note_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/containeranalysis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/containeranalysis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -728,7 +740,7 @@ import 'note_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -736,7 +748,10 @@ import 'note_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_containeranalysis_noteiambinding" "binding" {
+/// resource "gcp_containeranalysis_note_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = note.project
 ///   note    = note.name
 ///   role    = "roles/containeranalysis.notes.occurrences.viewer"
@@ -833,7 +848,7 @@ import 'note_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/containeranalysis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/containeranalysis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -853,7 +868,7 @@ import 'note_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -861,7 +876,10 @@ import 'note_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_containeranalysis_noteiammember" "member" {
+/// resource "gcp_containeranalysis_note_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = note.project
 ///   note    = note.name
 ///   role    = "roles/containeranalysis.notes.occurrences.viewer"
@@ -964,7 +982,7 @@ class NoteIamPolicy extends pulumi.CustomResource {
           'gcp:containeranalysis/noteIamPolicy:NoteIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     note = registerOutput<String>('note');

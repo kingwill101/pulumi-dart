@@ -36,6 +36,7 @@ import 'cloud_exadata_infrastructure_exascale_config_state.dart';
 ///     location: "us-east4",
 ///     project: "my-project",
 ///     totalStorageSizeGb: 10240,
+///     totalVmStorageSizeGb: 2048,
 /// });
 /// ```
 /// ```python
@@ -57,7 +58,8 @@ import 'cloud_exadata_infrastructure_exascale_config_state.dart';
 ///     cloud_exadata_infrastructure=infra.cloud_exadata_infrastructure_id,
 ///     location="us-east4",
 ///     project="my-project",
-///     total_storage_size_gb=10240)
+///     total_storage_size_gb=10240,
+///     total_vm_storage_size_gb=2048)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -88,6 +90,7 @@ import 'cloud_exadata_infrastructure_exascale_config_state.dart';
 ///         Location = "us-east4",
 ///         Project = "my-project",
 ///         TotalStorageSizeGb = 10240,
+///         TotalVmStorageSizeGb = 2048,
 ///     });
 ///
 /// });
@@ -96,7 +99,7 @@ import 'cloud_exadata_infrastructure_exascale_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -122,6 +125,7 @@ import 'cloud_exadata_infrastructure_exascale_config_state.dart';
 /// 			Location:                   pulumi.String("us-east4"),
 /// 			Project:                    pulumi.String("my-project"),
 /// 			TotalStorageSizeGb:         pulumi.Int(10240),
+/// 			TotalVmStorageSizeGb:       pulumi.Int(2048),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -131,7 +135,7 @@ import 'cloud_exadata_infrastructure_exascale_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -139,7 +143,10 @@ import 'cloud_exadata_infrastructure_exascale_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_cloudexadatainfrastructure" "infra" {
+/// resource "gcp_oracledatabase_cloud_exadata_infrastructure" "infra" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_exadata_infrastructure_id = "my-infra"
 ///   display_name                    = "my-infra displayname"
 ///   location                        = "us-east4"
@@ -151,11 +158,15 @@ import 'cloud_exadata_infrastructure_exascale_config_state.dart';
 ///   }
 ///   deletion_protection = "true"
 /// }
-/// resource "gcp_oracledatabase_cloudexadatainfrastructureexascaleconfig" "my_exascale_config" {
-///   cloud_exadata_infrastructure = gcp_oracledatabase_cloudexadatainfrastructure.infra.cloud_exadata_infrastructure_id
+/// resource "gcp_oracledatabase_cloud_exadata_infrastructure_exascale_config" "my_exascale_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cloud_exadata_infrastructure = gcp_oracledatabase_cloud_exadata_infrastructure.infra.cloud_exadata_infrastructure_id
 ///   location                     = "us-east4"
 ///   project                      = "my-project"
 ///   total_storage_size_gb        = 10240
+///   total_vm_storage_size_gb     = 2048
 /// }
 /// ```
 /// ```java
@@ -200,6 +211,7 @@ import 'cloud_exadata_infrastructure_exascale_config_state.dart';
 ///             .location("us-east4")
 ///             .project("my-project")
 ///             .totalStorageSizeGb(10240)
+///             .totalVmStorageSizeGb(2048)
 ///             .build());
 ///
 ///     }
@@ -227,6 +239,7 @@ import 'cloud_exadata_infrastructure_exascale_config_state.dart';
 ///       location: us-east4
 ///       project: my-project
 ///       totalStorageSizeGb: 10240
+///       totalVmStorageSizeGb: 2048
 /// ```
 ///
 ///
@@ -263,6 +276,8 @@ class CloudExadataInfrastructureExascaleConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// The total storage to be allocated to Exascale in GBs.
   late final pulumi.Output<int> totalStorageSizeGb;
+  /// Storage size needed for VM storage on Exascale in GBs.
+  late final pulumi.Output<int?> totalVmStorageSizeGb;
 
   /// Creates a new [CloudExadataInfrastructureExascaleConfig].
   /// [name] The Pulumi resource name.
@@ -276,13 +291,14 @@ class CloudExadataInfrastructureExascaleConfig extends pulumi.CustomResource {
           'gcp:oracledatabase/cloudExadataInfrastructureExascaleConfig:CloudExadataInfrastructureExascaleConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     cloudExadataInfrastructure = registerOutput<String>('cloudExadataInfrastructure');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');
     totalStorageSizeGb = registerOutput<int>('totalStorageSizeGb');
+    totalVmStorageSizeGb = registerOutput<int?>('totalVmStorageSizeGb');
   }
 
   /// Gets an existing [CloudExadataInfrastructureExascaleConfig] resource's state with the given [name] and [id].
@@ -314,6 +330,7 @@ class CloudExadataInfrastructureExascaleConfig extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');
     totalStorageSizeGb = registerOutput<int>('totalStorageSizeGb');
+    totalVmStorageSizeGb = registerOutput<int?>('totalVmStorageSizeGb');
   }
 
   /// Creates a typed reference to an existing [CloudExadataInfrastructureExascaleConfig] resource.
@@ -330,5 +347,6 @@ class CloudExadataInfrastructureExascaleConfig extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');
     totalStorageSizeGb = registerOutput<int>('totalStorageSizeGb');
+    totalVmStorageSizeGb = registerOutput<int?>('totalVmStorageSizeGb');
   }
 }

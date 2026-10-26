@@ -135,9 +135,9 @@ import 'host_project_registration_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apihub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apihub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -190,7 +190,7 @@ import 'host_project_registration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -202,6 +202,9 @@ import 'host_project_registration_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "apihub-proj"
 ///   project_id      = "apihub-proj"
 ///   org_id          = "123456789"
@@ -209,17 +212,26 @@ import 'host_project_registration_state.dart';
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "time_sleep" "wait_60_seconds" {
-///   depends_on      = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "60s"
 /// }
 /// # Enable API hub API
 /// resource "gcp_projects_service" "apihub_service" {
 ///   depends_on = [time_sleep.wait_60_seconds]
-///   project    = gcp_organizations_project.project.project_id
-///   service    = "apihub.googleapis.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.project.project_id
+///   service = "apihub.googleapis.com"
 /// }
-/// resource "gcp_apihub_hostprojectregistration" "apihub_host_project" {
-///   depends_on                   = [gcp_projects_service.apihub_service]
+/// resource "gcp_apihub_host_project_registration" "apihub_host_project" {
+///   depends_on = [gcp_projects_service.apihub_service]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                      = gcp_organizations_project.project.project_id
 ///   location                     = "asia-south1"
 ///   host_project_registration_id = gcp_organizations_project.project.project_id
@@ -380,7 +392,7 @@ class HostProjectRegistration extends pulumi.CustomResource {
           'gcp:apihub/hostProjectRegistration:HostProjectRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     gcpProject = registerOutput<String>('gcpProject');

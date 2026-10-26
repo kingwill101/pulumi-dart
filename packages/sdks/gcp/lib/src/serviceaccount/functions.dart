@@ -53,7 +53,7 @@ import 'get_sresult.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -70,7 +70,7 @@ import 'get_sresult.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -78,7 +78,7 @@ import 'get_sresult.dart';
 ///   }
 /// }
 ///
-/// data "gcp_serviceaccount_getaccount" "objectViewer" {
+/// data "gcp_serviceaccount_account" "objectViewer" {
 ///   account_id = "object-viewer"
 /// }
 /// ```
@@ -204,7 +204,7 @@ import 'get_sresult.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -244,7 +244,7 @@ import 'get_sresult.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -258,14 +258,20 @@ import 'get_sresult.dart';
 ///   }
 /// }
 ///
-/// data "gcp_serviceaccount_getaccount" "myaccount" {
+/// data "gcp_serviceaccount_account" "myaccount" {
 ///   account_id = "myaccount-id"
 /// }
 ///
 /// resource "gcp_serviceaccount_key" "mykey" {
-///   service_account_id = data.gcp_serviceaccount_getaccount.myaccount.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service_account_id = data.gcp_serviceaccount_account.myaccount.name
 /// }
 /// resource "kubernetes_secret" "google-application-credentials" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metadata = [{
 ///     "name" = "google-application-credentials"
 ///   }]
@@ -425,7 +431,7 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -446,7 +452,7 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -454,7 +460,10 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 ///   }
 /// }
 ///
-/// resource "gcp_serviceaccount_iambinding" "token-creator-iam" {
+/// resource "gcp_serviceaccount_i_a_m_binding" "token-creator-iam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_account_id = "projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com"
 ///   role               = "roles/iam.serviceAccountTokenCreator"
 ///   members            = ["serviceAccount:service_A@projectA.iam.gserviceaccount.com"]
@@ -574,8 +583,8 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -606,7 +615,7 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -614,18 +623,18 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getclientconfig" "default" {
+/// data "gcp_organizations_client_config" "default" {
 /// }
-/// data "gcp_serviceaccount_getaccountaccesstoken" "defaultGetAccountAccessToken" {
+/// data "gcp_serviceaccount_account_access_token" "defaultGetAccountAccessToken" {
 ///   target_service_account = "service_B@projectB.iam.gserviceaccount.com"
 ///   scopes                 = ["userinfo-email", "cloud-platform"]
 ///   lifetime               = "300s"
 /// }
-/// data "gcp_organizations_getclientopeniduserinfo" "me" {
+/// data "gcp_organizations_client_open_id_user_info" "me" {
 /// }
 ///
 /// output "target-email" {
-///   value = data.gcp_organizations_getclientopeniduserinfo.me.email
+///   value = data.gcp_organizations_client_open_id_user_info.me.email
 /// }
 /// ```
 /// ```java
@@ -767,7 +776,7 @@ pulumi.Output<GetAccountAccessTokenResult> getAccountAccessTokenOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -785,7 +794,7 @@ pulumi.Output<GetAccountAccessTokenResult> getAccountAccessTokenOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -793,12 +802,12 @@ pulumi.Output<GetAccountAccessTokenResult> getAccountAccessTokenOutput(
 ///   }
 /// }
 ///
-/// data "gcp_serviceaccount_getaccountidtoken" "oidc" {
+/// data "gcp_serviceaccount_account_id_token" "oidc" {
 ///   target_audience = "https://foo.bar/"
 /// }
 ///
 /// output "oidcToken" {
-///   value = data.gcp_serviceaccount_getaccountidtoken.oidc.id_token
+///   value = data.gcp_serviceaccount_account_id_token.oidc.id_token
 /// }
 /// ```
 /// ```java
@@ -925,7 +934,7 @@ pulumi.Output<GetAccountAccessTokenResult> getAccountAccessTokenOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -958,7 +967,7 @@ pulumi.Output<GetAccountAccessTokenResult> getAccountAccessTokenOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -966,13 +975,13 @@ pulumi.Output<GetAccountAccessTokenResult> getAccountAccessTokenOutput(
 ///   }
 /// }
 ///
-/// data "gcp_serviceaccount_getaccountaccesstoken" "impersonated" {
+/// data "gcp_serviceaccount_account_access_token" "impersonated" {
 ///   target_service_account = "impersonated-account@project.iam.gserviceaccount.com"
 ///   delegates              = []
 ///   scopes                 = ["userinfo-email", "cloud-platform"]
 ///   lifetime               = "300s"
 /// }
-/// data "gcp_serviceaccount_getaccountidtoken" "oidc" {
+/// data "gcp_serviceaccount_account_id_token" "oidc" {
 ///   target_service_account = "impersonated-account@project.iam.gserviceaccount.com"
 ///   delegates              = []
 ///   include_email          = true
@@ -980,7 +989,7 @@ pulumi.Output<GetAccountAccessTokenResult> getAccountAccessTokenOutput(
 /// }
 ///
 /// output "oidcToken" {
-///   value = data.gcp_serviceaccount_getaccountidtoken.oidc.id_token
+///   value = data.gcp_serviceaccount_account_id_token.oidc.id_token
 /// }
 /// ```
 /// ```java
@@ -1140,7 +1149,7 @@ pulumi.Output<GetAccountIdTokenResult> getAccountIdTokenOutput(
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1168,7 +1177,7 @@ pulumi.Output<GetAccountIdTokenResult> getAccountIdTokenOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1176,7 +1185,7 @@ pulumi.Output<GetAccountIdTokenResult> getAccountIdTokenOutput(
 ///   }
 /// }
 ///
-/// data "gcp_serviceaccount_getaccountjwt" "foo" {
+/// data "gcp_serviceaccount_account_jwt" "foo" {
 ///   target_service_account = "impersonated-account@project.iam.gserviceaccount.com"
 ///   payload = jsonencode({
 ///     "foo" = "bar"
@@ -1186,7 +1195,7 @@ pulumi.Output<GetAccountIdTokenResult> getAccountIdTokenOutput(
 /// }
 ///
 /// output "jwt" {
-///   value = data.gcp_serviceaccount_getaccountjwt.foo.jwt
+///   value = data.gcp_serviceaccount_account_jwt.foo.jwt
 /// }
 /// ```
 /// ```java
@@ -1321,7 +1330,7 @@ pulumi.Output<GetAccountJwtResult> getAccountJwtOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1348,7 +1357,7 @@ pulumi.Output<GetAccountJwtResult> getAccountJwtOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1356,15 +1365,21 @@ pulumi.Output<GetAccountJwtResult> getAccountJwtOutput(
 ///   }
 /// }
 ///
-/// data "gcp_serviceaccount_getaccountkey" "mykey" {
+/// data "gcp_serviceaccount_account_key" "mykey" {
 ///   name            = gcp_serviceaccount_key.mykey.name
 ///   public_key_type = "TYPE_X509_PEM_FILE"
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "myaccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "dev-foo-account"
 /// }
 /// resource "gcp_serviceaccount_key" "mykey" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_account_id = gcp_serviceaccount_account.myaccount.name
 /// }
 /// ```
@@ -1492,7 +1507,7 @@ pulumi.Output<GetAccountKeyResult> getAccountKeyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1509,7 +1524,7 @@ pulumi.Output<GetAccountKeyResult> getAccountKeyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1517,7 +1532,7 @@ pulumi.Output<GetAccountKeyResult> getAccountKeyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_serviceaccount_getiampolicy" "foo" {
+/// data "gcp_serviceaccount_iam_policy" "foo" {
 ///   service_account_id = testAccount.name
 /// }
 /// ```
@@ -1625,7 +1640,7 @@ pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1642,7 +1657,7 @@ pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1650,7 +1665,7 @@ pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_serviceaccount_gets" "example" {
+/// data "gcp_serviceaccount_s" "example" {
 ///   project = "example-project"
 /// }
 /// ```
@@ -1728,7 +1743,7 @@ pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1745,7 +1760,7 @@ pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1753,7 +1768,7 @@ pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_serviceaccount_gets" "foo" {
+/// data "gcp_serviceaccount_s" "foo" {
 ///   prefix = "foo"
 /// }
 /// ```
@@ -1831,7 +1846,7 @@ pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1848,7 +1863,7 @@ pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1856,7 +1871,7 @@ pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_serviceaccount_gets" "bar" {
+/// data "gcp_serviceaccount_s" "bar" {
 ///   regex = ".*bar.*"
 /// }
 /// ```
@@ -1937,7 +1952,7 @@ pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1955,7 +1970,7 @@ pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1963,7 +1978,7 @@ pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_serviceaccount_gets" "fooBar" {
+/// data "gcp_serviceaccount_s" "fooBar" {
 ///   prefix = "foo"
 ///   regex  = ".*bar.*"
 /// }

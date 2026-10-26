@@ -88,8 +88,8 @@ import 'iceberg_namespace_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -122,7 +122,7 @@ import 'iceberg_namespace_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -130,18 +130,21 @@ import 'iceberg_namespace_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/biglake.editor"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_biglake_icebergnamespaceiampolicy" "policy" {
+/// resource "gcp_biglake_iceberg_namespace_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = myIcebergNamespace.project
 ///   catalog      = myIcebergNamespace.catalog
 ///   namespace_id = myIcebergNamespace.id
-///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data  = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -258,7 +261,7 @@ import 'iceberg_namespace_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -281,7 +284,7 @@ import 'iceberg_namespace_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -289,7 +292,10 @@ import 'iceberg_namespace_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_biglake_icebergnamespaceiambinding" "binding" {
+/// resource "gcp_biglake_iceberg_namespace_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = myIcebergNamespace.project
 ///   catalog      = myIcebergNamespace.catalog
 ///   namespace_id = myIcebergNamespace.id
@@ -392,7 +398,7 @@ import 'iceberg_namespace_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -413,7 +419,7 @@ import 'iceberg_namespace_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -421,7 +427,10 @@ import 'iceberg_namespace_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_biglake_icebergnamespaceiammember" "member" {
+/// resource "gcp_biglake_iceberg_namespace_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = myIcebergNamespace.project
 ///   catalog      = myIcebergNamespace.catalog
 ///   namespace_id = myIcebergNamespace.id
@@ -567,8 +576,8 @@ import 'iceberg_namespace_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -601,7 +610,7 @@ import 'iceberg_namespace_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -609,18 +618,21 @@ import 'iceberg_namespace_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/biglake.editor"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_biglake_icebergnamespaceiampolicy" "policy" {
+/// resource "gcp_biglake_iceberg_namespace_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = myIcebergNamespace.project
 ///   catalog      = myIcebergNamespace.catalog
 ///   namespace_id = myIcebergNamespace.id
-///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data  = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -737,7 +749,7 @@ import 'iceberg_namespace_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -760,7 +772,7 @@ import 'iceberg_namespace_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -768,7 +780,10 @@ import 'iceberg_namespace_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_biglake_icebergnamespaceiambinding" "binding" {
+/// resource "gcp_biglake_iceberg_namespace_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = myIcebergNamespace.project
 ///   catalog      = myIcebergNamespace.catalog
 ///   namespace_id = myIcebergNamespace.id
@@ -871,7 +886,7 @@ import 'iceberg_namespace_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -892,7 +907,7 @@ import 'iceberg_namespace_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -900,7 +915,10 @@ import 'iceberg_namespace_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_biglake_icebergnamespaceiammember" "member" {
+/// resource "gcp_biglake_iceberg_namespace_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = myIcebergNamespace.project
 ///   catalog      = myIcebergNamespace.catalog
 ///   namespace_id = myIcebergNamespace.id
@@ -1010,7 +1028,7 @@ class IcebergNamespaceIamPolicy extends pulumi.CustomResource {
           'gcp:biglake/icebergNamespaceIamPolicy:IcebergNamespaceIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     catalog = registerOutput<String>('catalog');
     etag = registerOutput<String>('etag');

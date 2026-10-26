@@ -215,8 +215,8 @@ import 'get_connectivity_tests_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkmanagement"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkmanagement"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -241,7 +241,7 @@ import 'get_connectivity_tests_result.dart';
 /// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 /// 					},
-/// 					Network: vpc.ID().ToIDOutput().ToStringOutput(),
+/// 					Network: vpc.ID(),
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("source-vm"),
@@ -261,7 +261,7 @@ import 'get_connectivity_tests_result.dart';
 /// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 /// 					},
-/// 					Network: vpc.ID().ToIDOutput().ToStringOutput(),
+/// 					Network: vpc.ID(),
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("dest-vm"),
@@ -278,10 +278,10 @@ import 'get_connectivity_tests_result.dart';
 /// 		instance_test, err := networkmanagement.NewConnectivityTest(ctx, "instance-test", &networkmanagement.ConnectivityTestArgs{
 /// 			Name: pulumi.String("conn-test-instances"),
 /// 			Source: &networkmanagement.ConnectivityTestSourceArgs{
-/// 				Instance: source.ID().ToIDOutput().ToStringOutput(),
+/// 				Instance: source.ID(),
 /// 			},
 /// 			Destination: &networkmanagement.ConnectivityTestDestinationArgs{
-/// 				Instance: destination.ID().ToIDOutput().ToStringOutput(),
+/// 				Instance: destination.ID(),
 /// 			},
 /// 			Protocol: pulumi.String("TCP"),
 /// 			Labels: pulumi.StringMap{
@@ -299,7 +299,7 @@ import 'get_connectivity_tests_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -307,15 +307,18 @@ import 'get_connectivity_tests_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_networkmanagement_getconnectivitytestrun" "instance-test-run" {
-///   name = gcp_networkmanagement_connectivitytest.instance-test.name
+/// data "gcp_networkmanagement_connectivity_test_run" "instance-test-run" {
+///   name = gcp_networkmanagement_connectivity_test.instance-test.name
 /// }
-/// data "gcp_compute_getimage" "debian9" {
+/// data "gcp_compute_image" "debian9" {
 ///   family  = "debian-11"
 ///   project = "debian-cloud"
 /// }
 ///
-/// resource "gcp_networkmanagement_connectivitytest" "instance-test" {
+/// resource "gcp_networkmanagement_connectivity_test" "instance-test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "conn-test-instances"
 ///   source = {
 ///     instance = gcp_compute_instance.source.id
@@ -329,6 +332,9 @@ import 'get_connectivity_tests_result.dart';
 ///   }
 /// }
 /// resource "gcp_compute_instance" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
@@ -338,11 +344,14 @@ import 'get_connectivity_tests_result.dart';
 ///   machine_type = "e2-medium"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = data.gcp_compute_getimage.debian9.id
+///       image = data.gcp_compute_image.debian9.id
 ///     }
 ///   }
 /// }
 /// resource "gcp_compute_instance" "destination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
@@ -352,11 +361,14 @@ import 'get_connectivity_tests_result.dart';
 ///   machine_type = "e2-medium"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = data.gcp_compute_getimage.debian9.id
+///       image = data.gcp_compute_image.debian9.id
 ///     }
 ///   }
 /// }
 /// resource "gcp_compute_network" "vpc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "conn-test-net"
 /// }
 /// ```
@@ -580,7 +592,7 @@ pulumi.Output<GetConnectivityTestRunResult> getConnectivityTestRunOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkmanagement"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkmanagement"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -597,7 +609,7 @@ pulumi.Output<GetConnectivityTestRunResult> getConnectivityTestRunOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -605,7 +617,7 @@ pulumi.Output<GetConnectivityTestRunResult> getConnectivityTestRunOutput(
 ///   }
 /// }
 ///
-/// data "gcp_networkmanagement_getconnectivitytests" "tests" {
+/// data "gcp_networkmanagement_connectivity_tests" "tests" {
 ///   filter = "name:projects/project-id/locations/global/connectivityTests/my-tests"
 /// }
 /// ```

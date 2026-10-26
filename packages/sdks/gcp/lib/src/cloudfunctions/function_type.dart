@@ -134,8 +134,8 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctions"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctions"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -185,7 +185,7 @@ import 'function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -194,26 +194,38 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-bucket"
 ///   location = "US"
 /// }
-/// resource "gcp_storage_bucketobject" "archive" {
+/// resource "gcp_storage_bucket_object" "archive" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "index.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("./path/to/zip/file/which/contains/code")
+///   source = fileasset("./path/to/zip/file/which/contains/code")
 /// }
 /// resource "gcp_cloudfunctions_function" "function" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "function-test"
 ///   description           = "My function"
 ///   runtime               = "nodejs20"
 ///   available_memory_mb   = 128
 ///   source_archive_bucket = gcp_storage_bucket.bucket.name
-///   source_archive_object = gcp_storage_bucketobject.archive.name
+///   source_archive_object = gcp_storage_bucket_object.archive.name
 ///   trigger_http          = true
 ///   entry_point           = "helloGET"
 /// }
 /// # IAM entry for all users to invoke the function
-/// resource "gcp_cloudfunctions_functioniammember" "invoker" {
+/// resource "gcp_cloudfunctions_function_iam_member" "invoker" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project        = gcp_cloudfunctions_function.function.project
 ///   region         = gcp_cloudfunctions_function.function.region
 ///   cloud_function = gcp_cloudfunctions_function.function.name
@@ -458,8 +470,8 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctions"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctions"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -517,7 +529,7 @@ import 'function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -526,21 +538,30 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-bucket"
 ///   location = "US"
 /// }
-/// resource "gcp_storage_bucketobject" "archive" {
+/// resource "gcp_storage_bucket_object" "archive" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "index.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("./path/to/zip/file/which/contains/code")
+///   source = fileasset("./path/to/zip/file/which/contains/code")
 /// }
 /// resource "gcp_cloudfunctions_function" "function" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "function-test"
 ///   description                  = "My function"
 ///   runtime                      = "nodejs20"
 ///   available_memory_mb          = 128
 ///   source_archive_bucket        = gcp_storage_bucket.bucket.name
-///   source_archive_object        = gcp_storage_bucketobject.archive.name
+///   source_archive_object        = gcp_storage_bucket_object.archive.name
 ///   trigger_http                 = true
 ///   https_trigger_security_level = "SECURE_ALWAYS"
 ///   timeout                      = 60
@@ -553,7 +574,10 @@ import 'function_state.dart';
 ///   }
 /// }
 /// # IAM entry for a single user to invoke the function
-/// resource "gcp_cloudfunctions_functioniammember" "invoker" {
+/// resource "gcp_cloudfunctions_function_iam_member" "invoker" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project        = gcp_cloudfunctions_function.function.project
 ///   region         = gcp_cloudfunctions_function.function.region
 ///   cloud_function = gcp_cloudfunctions_function.function.name
@@ -790,7 +814,7 @@ class FunctionType extends pulumi.CustomResource {
           'gcp:cloudfunctions/function:Function',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     automaticUpdatePolicy = registerOutput<Map<String, dynamic>>('automaticUpdatePolicy');

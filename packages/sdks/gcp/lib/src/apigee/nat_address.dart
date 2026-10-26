@@ -227,12 +227,12 @@ import 'nat_address_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigee"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -253,13 +253,13 @@ import 'nat_address_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(21),
-/// 			Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      apigeeNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: apigeeNetwork.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				apigeeRange.Name,
@@ -277,7 +277,7 @@ import 'nat_address_state.dart';
 /// 		}
 /// 		apigeeKey, err := kms.NewCryptoKey(ctx, "apigee_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("apigee-key"),
-/// 			KeyRing: apigeeKeyring.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRing: apigeeKeyring.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -290,7 +290,7 @@ import 'nat_address_state.dart';
 /// 			return err
 /// 		}
 /// 		apigeeSaKeyuser, err := kms.NewCryptoKeyIAMMember(ctx, "apigee_sa_keyuser", &kms.CryptoKeyIAMMemberArgs{
-/// 			CryptoKeyId: apigeeKey.ID().ToIDOutput().ToStringOutput(),
+/// 			CryptoKeyId: apigeeKey.ID(),
 /// 			Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 /// 			Member:      apigeeSa.Member,
 /// 		})
@@ -302,8 +302,8 @@ import 'nat_address_state.dart';
 /// 			DisplayName:                      pulumi.String("apigee-org"),
 /// 			Description:                      pulumi.String("Terraform-provisioned Apigee Org."),
 /// 			ProjectId:                        pulumi.String(current.Project),
-/// 			AuthorizedNetwork:                apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			RuntimeDatabaseEncryptionKeyName: apigeeKey.ID().ToIDOutput().ToStringOutput(),
+/// 			AuthorizedNetwork:                apigeeNetwork.ID(),
+/// 			RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeVpcConnection,
 /// 			apigeeSaKeyuser,
@@ -316,15 +316,15 @@ import 'nat_address_state.dart';
 /// 			Location:              pulumi.String("us-central1"),
 /// 			Description:           pulumi.String("Terraform-managed Apigee Runtime Instance"),
 /// 			DisplayName:           pulumi.String("apigee-instance"),
-/// 			OrgId:                 apigeeOrg.ID().ToIDOutput().ToStringOutput(),
-/// 			DiskEncryptionKeyName: apigeeKey.ID().ToIDOutput().ToStringOutput(),
+/// 			OrgId:                 apigeeOrg.ID(),
+/// 			DiskEncryptionKeyName: apigeeKey.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = apigee.NewNatAddress(ctx, "apigee-nat", &apigee.NatAddressArgs{
 /// 			Name:       pulumi.String("my-nat-address"),
-/// 			InstanceId: apigeeInstance.ID().ToIDOutput().ToStringOutput(),
+/// 			InstanceId: apigeeInstance.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -334,7 +334,7 @@ import 'nat_address_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -342,13 +342,19 @@ import 'nat_address_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getclientconfig" "current" {
+/// data "gcp_organizations_client_config" "current" {
 /// }
 ///
 /// resource "gcp_compute_network" "apigee_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "apigee-network"
 /// }
-/// resource "gcp_compute_globaladdress" "apigee_range" {
+/// resource "gcp_compute_global_address" "apigee_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "apigee-range"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -356,45 +362,69 @@ import 'nat_address_state.dart';
 ///   network       = gcp_compute_network.apigee_network.id
 /// }
 /// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.apigee_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.apigee_range.name]
 /// }
-/// resource "gcp_kms_keyring" "apigee_keyring" {
+/// resource "gcp_kms_key_ring" "apigee_keyring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "apigee-keyring"
 ///   location = "us-central1"
 /// }
-/// resource "gcp_kms_cryptokey" "apigee_key" {
+/// resource "gcp_kms_crypto_key" "apigee_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "apigee-key"
-///   key_ring = gcp_kms_keyring.apigee_keyring.id
+///   key_ring = gcp_kms_key_ring.apigee_keyring.id
 /// }
-/// resource "gcp_projects_serviceidentity" "apigee_sa" {
+/// resource "gcp_projects_service_identity" "apigee_sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = project.projectId
 ///   service = apigee.service
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "apigee_sa_keyuser" {
-///   crypto_key_id = gcp_kms_cryptokey.apigee_key.id
+/// resource "gcp_kms_crypto_key_i_a_m_member" "apigee_sa_keyuser" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key_id = gcp_kms_crypto_key.apigee_key.id
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        = gcp_projects_serviceidentity.apigee_sa.member
+///   member        = gcp_projects_service_identity.apigee_sa.member
 /// }
 /// resource "gcp_apigee_organization" "apigee_org" {
-///   depends_on                           = [gcp_servicenetworking_connection.apigee_vpc_connection, gcp_kms_cryptokeyiammember.apigee_sa_keyuser]
+///   depends_on = [gcp_servicenetworking_connection.apigee_vpc_connection, gcp_kms_crypto_key_i_a_m_member.apigee_sa_keyuser]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   analytics_region                     = "us-central1"
 ///   display_name                         = "apigee-org"
 ///   description                          = "Terraform-provisioned Apigee Org."
-///   project_id                           = data.gcp_organizations_getclientconfig.current.project
+///   project_id                           = data.gcp_organizations_client_config.current.project
 ///   authorized_network                   = gcp_compute_network.apigee_network.id
-///   runtime_database_encryption_key_name = gcp_kms_cryptokey.apigee_key.id
+///   runtime_database_encryption_key_name = gcp_kms_crypto_key.apigee_key.id
 /// }
 /// resource "gcp_apigee_instance" "apigee_instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "apigee-instance"
 ///   location                 = "us-central1"
 ///   description              = "Terraform-managed Apigee Runtime Instance"
 ///   display_name             = "apigee-instance"
 ///   org_id                   = gcp_apigee_organization.apigee_org.id
-///   disk_encryption_key_name = gcp_kms_cryptokey.apigee_key.id
+///   disk_encryption_key_name = gcp_kms_crypto_key.apigee_key.id
 /// }
-/// resource "gcp_apigee_nataddress" "apigee-nat" {
+/// resource "gcp_apigee_nat_address" "apigee-nat" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-nat-address"
 ///   instance_id = gcp_apigee_instance.apigee_instance.id
 /// }
@@ -813,12 +843,12 @@ import 'nat_address_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigee"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -839,13 +869,13 @@ import 'nat_address_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(21),
-/// 			Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      apigeeNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: apigeeNetwork.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				apigeeRange.Name,
@@ -863,7 +893,7 @@ import 'nat_address_state.dart';
 /// 		}
 /// 		apigeeKey, err := kms.NewCryptoKey(ctx, "apigee_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("apigee-key"),
-/// 			KeyRing: apigeeKeyring.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRing: apigeeKeyring.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -876,7 +906,7 @@ import 'nat_address_state.dart';
 /// 			return err
 /// 		}
 /// 		apigeeSaKeyuser, err := kms.NewCryptoKeyIAMMember(ctx, "apigee_sa_keyuser", &kms.CryptoKeyIAMMemberArgs{
-/// 			CryptoKeyId: apigeeKey.ID().ToIDOutput().ToStringOutput(),
+/// 			CryptoKeyId: apigeeKey.ID(),
 /// 			Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 /// 			Member:      apigeeSa.Member,
 /// 		})
@@ -888,8 +918,8 @@ import 'nat_address_state.dart';
 /// 			DisplayName:                      pulumi.String("apigee-org"),
 /// 			Description:                      pulumi.String("Terraform-provisioned Apigee Org."),
 /// 			ProjectId:                        pulumi.String(current.Project),
-/// 			AuthorizedNetwork:                apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			RuntimeDatabaseEncryptionKeyName: apigeeKey.ID().ToIDOutput().ToStringOutput(),
+/// 			AuthorizedNetwork:                apigeeNetwork.ID(),
+/// 			RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeVpcConnection,
 /// 			apigeeSaKeyuser,
@@ -902,8 +932,8 @@ import 'nat_address_state.dart';
 /// 			Location:              pulumi.String("us-central1"),
 /// 			Description:           pulumi.String("Terraform-managed Apigee Runtime Instance"),
 /// 			DisplayName:           pulumi.String("apigee-instance"),
-/// 			OrgId:                 apigeeOrg.ID().ToIDOutput().ToStringOutput(),
-/// 			DiskEncryptionKeyName: apigeeKey.ID().ToIDOutput().ToStringOutput(),
+/// 			OrgId:                 apigeeOrg.ID(),
+/// 			DiskEncryptionKeyName: apigeeKey.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -911,7 +941,7 @@ import 'nat_address_state.dart';
 /// 		_, err = apigee.NewNatAddress(ctx, "apigee-nat", &apigee.NatAddressArgs{
 /// 			Name:       pulumi.String("my-nat-address"),
 /// 			Activate:   pulumi.Bool(true),
-/// 			InstanceId: apigeeInstance.ID().ToIDOutput().ToStringOutput(),
+/// 			InstanceId: apigeeInstance.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -921,7 +951,7 @@ import 'nat_address_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -929,13 +959,19 @@ import 'nat_address_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getclientconfig" "current" {
+/// data "gcp_organizations_client_config" "current" {
 /// }
 ///
 /// resource "gcp_compute_network" "apigee_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "apigee-network"
 /// }
-/// resource "gcp_compute_globaladdress" "apigee_range" {
+/// resource "gcp_compute_global_address" "apigee_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "apigee-range"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -943,45 +979,69 @@ import 'nat_address_state.dart';
 ///   network       = gcp_compute_network.apigee_network.id
 /// }
 /// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.apigee_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.apigee_range.name]
 /// }
-/// resource "gcp_kms_keyring" "apigee_keyring" {
+/// resource "gcp_kms_key_ring" "apigee_keyring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "apigee-keyring"
 ///   location = "us-central1"
 /// }
-/// resource "gcp_kms_cryptokey" "apigee_key" {
+/// resource "gcp_kms_crypto_key" "apigee_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "apigee-key"
-///   key_ring = gcp_kms_keyring.apigee_keyring.id
+///   key_ring = gcp_kms_key_ring.apigee_keyring.id
 /// }
-/// resource "gcp_projects_serviceidentity" "apigee_sa" {
+/// resource "gcp_projects_service_identity" "apigee_sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = project.projectId
 ///   service = apigee.service
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "apigee_sa_keyuser" {
-///   crypto_key_id = gcp_kms_cryptokey.apigee_key.id
+/// resource "gcp_kms_crypto_key_i_a_m_member" "apigee_sa_keyuser" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key_id = gcp_kms_crypto_key.apigee_key.id
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        = gcp_projects_serviceidentity.apigee_sa.member
+///   member        = gcp_projects_service_identity.apigee_sa.member
 /// }
 /// resource "gcp_apigee_organization" "apigee_org" {
-///   depends_on                           = [gcp_servicenetworking_connection.apigee_vpc_connection, gcp_kms_cryptokeyiammember.apigee_sa_keyuser]
+///   depends_on = [gcp_servicenetworking_connection.apigee_vpc_connection, gcp_kms_crypto_key_i_a_m_member.apigee_sa_keyuser]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   analytics_region                     = "us-central1"
 ///   display_name                         = "apigee-org"
 ///   description                          = "Terraform-provisioned Apigee Org."
-///   project_id                           = data.gcp_organizations_getclientconfig.current.project
+///   project_id                           = data.gcp_organizations_client_config.current.project
 ///   authorized_network                   = gcp_compute_network.apigee_network.id
-///   runtime_database_encryption_key_name = gcp_kms_cryptokey.apigee_key.id
+///   runtime_database_encryption_key_name = gcp_kms_crypto_key.apigee_key.id
 /// }
 /// resource "gcp_apigee_instance" "apigee_instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "apigee-instance"
 ///   location                 = "us-central1"
 ///   description              = "Terraform-managed Apigee Runtime Instance"
 ///   display_name             = "apigee-instance"
 ///   org_id                   = gcp_apigee_organization.apigee_org.id
-///   disk_encryption_key_name = gcp_kms_cryptokey.apigee_key.id
+///   disk_encryption_key_name = gcp_kms_crypto_key.apigee_key.id
 /// }
-/// resource "gcp_apigee_nataddress" "apigee-nat" {
+/// resource "gcp_apigee_nat_address" "apigee-nat" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-nat-address"
 ///   activate    = "true"
 ///   instance_id = gcp_apigee_instance.apigee_instance.id
@@ -1233,7 +1293,7 @@ class NatAddress extends pulumi.CustomResource {
           'gcp:apigee/natAddress:NatAddress',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     activate = registerOutput<bool?>('activate');
     deletionPolicy = registerOutput<String>('deletionPolicy');

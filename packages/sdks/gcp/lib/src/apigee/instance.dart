@@ -135,10 +135,10 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigee"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -159,13 +159,13 @@ import 'instance_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      apigeeNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: apigeeNetwork.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				apigeeRange.Name,
@@ -177,7 +177,7 @@ import 'instance_state.dart';
 /// 		apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 /// 			AnalyticsRegion:   pulumi.String("us-central1"),
 /// 			ProjectId:         pulumi.String(current.Project),
-/// 			AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			AuthorizedNetwork: apigeeNetwork.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeVpcConnection,
 /// 		}))
@@ -187,7 +187,7 @@ import 'instance_state.dart';
 /// 		_, err = apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
 /// 			Name:     pulumi.String("my-instance-name"),
 /// 			Location: pulumi.String("us-central1"),
-/// 			OrgId:    apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+/// 			OrgId:    apigeeOrg.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -197,7 +197,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -205,13 +205,19 @@ import 'instance_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getclientconfig" "current" {
+/// data "gcp_organizations_client_config" "current" {
 /// }
 ///
 /// resource "gcp_compute_network" "apigee_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "apigee-network"
 /// }
-/// resource "gcp_compute_globaladdress" "apigee_range" {
+/// resource "gcp_compute_global_address" "apigee_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "apigee-range"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -219,17 +225,26 @@ import 'instance_state.dart';
 ///   network       = gcp_compute_network.apigee_network.id
 /// }
 /// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.apigee_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.apigee_range.name]
 /// }
 /// resource "gcp_apigee_organization" "apigee_org" {
-///   depends_on         = [gcp_servicenetworking_connection.apigee_vpc_connection]
+///   depends_on = [gcp_servicenetworking_connection.apigee_vpc_connection]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   analytics_region   = "us-central1"
-///   project_id         = data.gcp_organizations_getclientconfig.current.project
+///   project_id         = data.gcp_organizations_client_config.current.project
 ///   authorized_network = gcp_compute_network.apigee_network.id
 /// }
 /// resource "gcp_apigee_instance" "apigee_instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-instance-name"
 ///   location = "us-central1"
 ///   org_id   = gcp_apigee_organization.apigee_org.id
@@ -475,10 +490,10 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigee"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -499,13 +514,13 @@ import 'instance_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(22),
-/// 			Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      apigeeNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: apigeeNetwork.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				apigeeRange.Name,
@@ -517,7 +532,7 @@ import 'instance_state.dart';
 /// 		apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 /// 			AnalyticsRegion:   pulumi.String("us-central1"),
 /// 			ProjectId:         pulumi.String(current.Project),
-/// 			AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			AuthorizedNetwork: apigeeNetwork.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeVpcConnection,
 /// 		}))
@@ -527,7 +542,7 @@ import 'instance_state.dart';
 /// 		_, err = apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
 /// 			Name:             pulumi.String("my-instance-name"),
 /// 			Location:         pulumi.String("us-central1"),
-/// 			OrgId:            apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+/// 			OrgId:            apigeeOrg.ID(),
 /// 			PeeringCidrRange: pulumi.String("SLASH_22"),
 /// 		})
 /// 		if err != nil {
@@ -538,7 +553,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -546,13 +561,19 @@ import 'instance_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getclientconfig" "current" {
+/// data "gcp_organizations_client_config" "current" {
 /// }
 ///
 /// resource "gcp_compute_network" "apigee_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "apigee-network"
 /// }
-/// resource "gcp_compute_globaladdress" "apigee_range" {
+/// resource "gcp_compute_global_address" "apigee_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "apigee-range"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -560,17 +581,26 @@ import 'instance_state.dart';
 ///   network       = gcp_compute_network.apigee_network.id
 /// }
 /// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.apigee_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.apigee_range.name]
 /// }
 /// resource "gcp_apigee_organization" "apigee_org" {
-///   depends_on         = [gcp_servicenetworking_connection.apigee_vpc_connection]
+///   depends_on = [gcp_servicenetworking_connection.apigee_vpc_connection]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   analytics_region   = "us-central1"
-///   project_id         = data.gcp_organizations_getclientconfig.current.project
+///   project_id         = data.gcp_organizations_client_config.current.project
 ///   authorized_network = gcp_compute_network.apigee_network.id
 /// }
 /// resource "gcp_apigee_instance" "apigee_instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-instance-name"
 ///   location           = "us-central1"
 ///   org_id             = gcp_apigee_organization.apigee_org.id
@@ -819,10 +849,10 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigee"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -843,13 +873,13 @@ import 'instance_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(22),
-/// 			Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      apigeeNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: apigeeNetwork.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				apigeeRange.Name,
@@ -861,7 +891,7 @@ import 'instance_state.dart';
 /// 		apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 /// 			AnalyticsRegion:   pulumi.String("us-central1"),
 /// 			ProjectId:         pulumi.String(current.Project),
-/// 			AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			AuthorizedNetwork: apigeeNetwork.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeVpcConnection,
 /// 		}))
@@ -871,7 +901,7 @@ import 'instance_state.dart';
 /// 		_, err = apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
 /// 			Name:     pulumi.String("my-instance-name"),
 /// 			Location: pulumi.String("us-central1"),
-/// 			OrgId:    apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+/// 			OrgId:    apigeeOrg.ID(),
 /// 			IpRange:  pulumi.String("10.87.8.0/22"),
 /// 		})
 /// 		if err != nil {
@@ -882,7 +912,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -890,13 +920,19 @@ import 'instance_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getclientconfig" "current" {
+/// data "gcp_organizations_client_config" "current" {
 /// }
 ///
 /// resource "gcp_compute_network" "apigee_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "apigee-network"
 /// }
-/// resource "gcp_compute_globaladdress" "apigee_range" {
+/// resource "gcp_compute_global_address" "apigee_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "apigee-range"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -904,17 +940,26 @@ import 'instance_state.dart';
 ///   network       = gcp_compute_network.apigee_network.id
 /// }
 /// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.apigee_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.apigee_range.name]
 /// }
 /// resource "gcp_apigee_organization" "apigee_org" {
-///   depends_on         = [gcp_servicenetworking_connection.apigee_vpc_connection]
+///   depends_on = [gcp_servicenetworking_connection.apigee_vpc_connection]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   analytics_region   = "us-central1"
-///   project_id         = data.gcp_organizations_getclientconfig.current.project
+///   project_id         = data.gcp_organizations_client_config.current.project
 ///   authorized_network = gcp_compute_network.apigee_network.id
 /// }
 /// resource "gcp_apigee_instance" "apigee_instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-instance-name"
 ///   location = "us-central1"
 ///   org_id   = gcp_apigee_organization.apigee_org.id
@@ -1240,12 +1285,12 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigee"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1266,13 +1311,13 @@ import 'instance_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      apigeeNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: apigeeNetwork.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				apigeeRange.Name,
@@ -1290,7 +1335,7 @@ import 'instance_state.dart';
 /// 		}
 /// 		apigeeKey, err := kms.NewCryptoKey(ctx, "apigee_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("apigee-key"),
-/// 			KeyRing: apigeeKeyring.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRing: apigeeKeyring.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1303,7 +1348,7 @@ import 'instance_state.dart';
 /// 			return err
 /// 		}
 /// 		apigeeSaKeyuser, err := kms.NewCryptoKeyIAMMember(ctx, "apigee_sa_keyuser", &kms.CryptoKeyIAMMemberArgs{
-/// 			CryptoKeyId: apigeeKey.ID().ToIDOutput().ToStringOutput(),
+/// 			CryptoKeyId: apigeeKey.ID(),
 /// 			Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 /// 			Member:      apigeeSa.Member,
 /// 		})
@@ -1315,8 +1360,8 @@ import 'instance_state.dart';
 /// 			DisplayName:                      pulumi.String("apigee-org"),
 /// 			Description:                      pulumi.String("Auto-provisioned Apigee Org."),
 /// 			ProjectId:                        pulumi.String(current.Project),
-/// 			AuthorizedNetwork:                apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			RuntimeDatabaseEncryptionKeyName: apigeeKey.ID().ToIDOutput().ToStringOutput(),
+/// 			AuthorizedNetwork:                apigeeNetwork.ID(),
+/// 			RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeVpcConnection,
 /// 			apigeeSaKeyuser,
@@ -1329,8 +1374,8 @@ import 'instance_state.dart';
 /// 			Location:              pulumi.String("us-central1"),
 /// 			Description:           pulumi.String("Auto-managed Apigee Runtime Instance"),
 /// 			DisplayName:           pulumi.String("my-instance-name"),
-/// 			OrgId:                 apigeeOrg.ID().ToIDOutput().ToStringOutput(),
-/// 			DiskEncryptionKeyName: apigeeKey.ID().ToIDOutput().ToStringOutput(),
+/// 			OrgId:                 apigeeOrg.ID(),
+/// 			DiskEncryptionKeyName: apigeeKey.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1340,7 +1385,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1348,13 +1393,19 @@ import 'instance_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getclientconfig" "current" {
+/// data "gcp_organizations_client_config" "current" {
 /// }
 ///
 /// resource "gcp_compute_network" "apigee_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "apigee-network"
 /// }
-/// resource "gcp_compute_globaladdress" "apigee_range" {
+/// resource "gcp_compute_global_address" "apigee_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "apigee-range"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -1362,43 +1413,64 @@ import 'instance_state.dart';
 ///   network       = gcp_compute_network.apigee_network.id
 /// }
 /// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.apigee_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.apigee_range.name]
 /// }
-/// resource "gcp_kms_keyring" "apigee_keyring" {
+/// resource "gcp_kms_key_ring" "apigee_keyring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "apigee-keyring"
 ///   location = "us-central1"
 /// }
-/// resource "gcp_kms_cryptokey" "apigee_key" {
+/// resource "gcp_kms_crypto_key" "apigee_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "apigee-key"
-///   key_ring = gcp_kms_keyring.apigee_keyring.id
+///   key_ring = gcp_kms_key_ring.apigee_keyring.id
 /// }
-/// resource "gcp_projects_serviceidentity" "apigee_sa" {
+/// resource "gcp_projects_service_identity" "apigee_sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = project.projectId
 ///   service = apigee.service
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "apigee_sa_keyuser" {
-///   crypto_key_id = gcp_kms_cryptokey.apigee_key.id
+/// resource "gcp_kms_crypto_key_i_a_m_member" "apigee_sa_keyuser" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key_id = gcp_kms_crypto_key.apigee_key.id
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        = gcp_projects_serviceidentity.apigee_sa.member
+///   member        = gcp_projects_service_identity.apigee_sa.member
 /// }
 /// resource "gcp_apigee_organization" "apigee_org" {
-///   depends_on                           = [gcp_servicenetworking_connection.apigee_vpc_connection, gcp_kms_cryptokeyiammember.apigee_sa_keyuser]
+///   depends_on = [gcp_servicenetworking_connection.apigee_vpc_connection, gcp_kms_crypto_key_i_a_m_member.apigee_sa_keyuser]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   analytics_region                     = "us-central1"
 ///   display_name                         = "apigee-org"
 ///   description                          = "Auto-provisioned Apigee Org."
-///   project_id                           = data.gcp_organizations_getclientconfig.current.project
+///   project_id                           = data.gcp_organizations_client_config.current.project
 ///   authorized_network                   = gcp_compute_network.apigee_network.id
-///   runtime_database_encryption_key_name = gcp_kms_cryptokey.apigee_key.id
+///   runtime_database_encryption_key_name = gcp_kms_crypto_key.apigee_key.id
 /// }
 /// resource "gcp_apigee_instance" "apigee_instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "my-instance-name"
 ///   location                 = "us-central1"
 ///   description              = "Auto-managed Apigee Runtime Instance"
 ///   display_name             = "my-instance-name"
 ///   org_id                   = gcp_apigee_organization.apigee_org.id
-///   disk_encryption_key_name = gcp_kms_cryptokey.apigee_key.id
+///   disk_encryption_key_name = gcp_kms_crypto_key.apigee_key.id
 /// }
 /// ```
 /// ```java
@@ -1664,7 +1736,7 @@ class Instance extends pulumi.CustomResource {
           'gcp:apigee/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     accessLoggingConfig = registerOutput<InstanceAccessLoggingConfig?>('accessLoggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAccessLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consumerAcceptLists = registerOutput<List<String>>('consumerAcceptLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

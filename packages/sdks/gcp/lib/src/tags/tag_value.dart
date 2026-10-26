@@ -73,7 +73,7 @@ import 'tag_value_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -88,7 +88,7 @@ import 'tag_value_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
-/// 			Parent:      key.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      key.ID(),
 /// 			ShortName:   pulumi.String("valuename"),
 /// 			Description: pulumi.String("For valuename resources."),
 /// 		})
@@ -100,7 +100,7 @@ import 'tag_value_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -108,13 +108,19 @@ import 'tag_value_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_tags_tagkey" "key" {
+/// resource "gcp_tags_tag_key" "key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent      = "organizations/123456789"
 ///   short_name  = "keyname"
 ///   description = "For keyname resources."
 /// }
-/// resource "gcp_tags_tagvalue" "value" {
-///   parent      = gcp_tags_tagkey.key.id
+/// resource "gcp_tags_tag_value" "value" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent      = gcp_tags_tag_key.key.id
 ///   short_name  = "valuename"
 ///   description = "For valuename resources."
 /// }
@@ -226,7 +232,7 @@ class TagValue extends pulumi.CustomResource {
           'gcp:tags/tagValue:TagValue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

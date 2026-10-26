@@ -26,8 +26,8 @@ class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
 
   factory AiIndexMetadataConfigAlgorithmConfigTreeAhConfig.fromMap(Map<String, dynamic> map) {
     return AiIndexMetadataConfigAlgorithmConfigTreeAhConfig(
-      leafNodeEmbeddingCount: (() { final guardedValue = map['leafNodeEmbeddingCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      leafNodesToSearchPercent: (() { final guardedValue = map['leafNodesToSearchPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      leafNodeEmbeddingCount: (() { final guardedValue = map['leafNodeEmbeddingCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      leafNodesToSearchPercent: (() { final guardedValue = map['leafNodesToSearchPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

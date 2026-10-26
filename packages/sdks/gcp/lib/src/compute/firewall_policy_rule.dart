@@ -259,10 +259,10 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -291,7 +291,7 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// 			return err
 /// 		}
 /// 		_default, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
-/// 			Parent:      folder.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      folder.ID(),
 /// 			ShortName:   pulumi.String("fw-policy"),
 /// 			Description: pulumi.String("Resource created for Terraform acceptance testing"),
 /// 		})
@@ -322,7 +322,7 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// 				},
 /// 				SrcAddressGroups: pulumi.StringArray{},
 /// 				DestAddressGroups: pulumi.StringArray{
-/// 					basicGlobalNetworksecurityAddressGroup.ID().ToIDOutput().ToStringOutput(),
+/// 					basicGlobalNetworksecurityAddressGroup.ID(),
 /// 				},
 /// 				Layer4Configs: compute.FirewallPolicyRuleMatchLayer4ConfigArray{
 /// 					&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
@@ -357,7 +357,7 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// 		}
 /// 		_, err = tags.NewTagValue(ctx, "basic_value", &tags.TagValueArgs{
 /// 			Description: pulumi.String("For valuename resources."),
-/// 			Parent:      basicKey.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      basicKey.ID(),
 /// 			ShortName:   pulumi.String("tag-value"),
 /// 		})
 /// 		if err != nil {
@@ -368,7 +368,7 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -376,7 +376,10 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_addressgroup" "basic_global_networksecurity_address_group" {
+/// resource "gcp_networksecurity_address_group" "basic_global_networksecurity_address_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "address-group"
 ///   parent      = "organizations/123456789"
 ///   description = "Sample global networksecurity_address_group"
@@ -386,17 +389,26 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 ///   capacity    = 100
 /// }
 /// resource "gcp_organizations_folder" "folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "folder"
 ///   parent              = "organizations/123456789"
 ///   deletion_protection = false
 /// }
-/// resource "gcp_compute_firewallpolicy" "default" {
+/// resource "gcp_compute_firewall_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent      = gcp_organizations_folder.folder.id
 ///   short_name  = "fw-policy"
 ///   description = "Resource created for Terraform acceptance testing"
 /// }
-/// resource "gcp_compute_firewallpolicyrule" "primary" {
-///   firewall_policy         = gcp_compute_firewallpolicy.default.name
+/// resource "gcp_compute_firewall_policy_rule" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy         = gcp_compute_firewall_policy.default.name
 ///   description             = "Resource created for Terraform acceptance testing"
 ///   priority                = 9000
 ///   enable_logging          = true
@@ -410,17 +422,20 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 ///     dest_region_codes         = ["US"]
 ///     dest_threat_intelligences = ["iplist-known-malicious-ips"]
 ///     src_address_groups        = []
-///     dest_address_groups       = [gcp_networksecurity_addressgroup.basic_global_networksecurity_address_group.id]
+///     dest_address_groups       = [gcp_networksecurity_address_group.basic_global_networksecurity_address_group.id]
 ///     layer4_configs = [{
-///       "ipProtocol" = "tcp"
-///       "ports"      = [8080]
+///       ip_protocol = "tcp"
+///       ports       = [8080]
 ///       }, {
-///       "ipProtocol" = "udp"
-///       "ports"      = [22]
+///       ip_protocol = "udp"
+///       ports       = [22]
 ///     }]
 ///   }
 /// }
-/// resource "gcp_tags_tagkey" "basic_key" {
+/// resource "gcp_tags_tag_key" "basic_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "For keyname resources."
 ///   parent      = "organizations/123456789"
 ///   purpose     = "GCE_FIREWALL"
@@ -429,9 +444,12 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 ///     "organization" = "auto"
 ///   }
 /// }
-/// resource "gcp_tags_tagvalue" "basic_value" {
+/// resource "gcp_tags_tag_value" "basic_value" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "For valuename resources."
-///   parent      = gcp_tags_tagkey.basic_key.id
+///   parent      = gcp_tags_tag_key.basic_key.id
 ///   short_name  = "tag-value"
 /// }
 /// ```
@@ -769,8 +787,8 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -785,7 +803,7 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// 			return err
 /// 		}
 /// 		_default, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
-/// 			Parent:      folder.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      folder.ID(),
 /// 			ShortName:   pulumi.String("fw-policy"),
 /// 			Description: pulumi.String("Firewall policy"),
 /// 		})
@@ -812,7 +830,7 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// 				},
 /// 				SrcNetworkScope: pulumi.String("VPC_NETWORKS"),
 /// 				SrcNetworks: pulumi.StringArray{
-/// 					network.ID().ToIDOutput().ToStringOutput(),
+/// 					network.ID(),
 /// 				},
 /// 				Layer4Configs: compute.FirewallPolicyRuleMatchLayer4ConfigArray{
 /// 					&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
@@ -838,7 +856,7 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -847,17 +865,26 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// }
 ///
 /// resource "gcp_organizations_folder" "folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "folder"
 ///   parent              = "organizations/123456789"
 ///   deletion_protection = false
 /// }
-/// resource "gcp_compute_firewallpolicy" "default" {
+/// resource "gcp_compute_firewall_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent      = gcp_organizations_folder.folder.id
 ///   short_name  = "fw-policy"
 ///   description = "Firewall policy"
 /// }
-/// resource "gcp_compute_firewallpolicyrule" "primary" {
-///   firewall_policy = gcp_compute_firewallpolicy.default.name
+/// resource "gcp_compute_firewall_policy_rule" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy = gcp_compute_firewall_policy.default.name
 ///   description     = "Firewall policy rule with network scope"
 ///   priority        = 9000
 ///   action          = "allow"
@@ -868,15 +895,18 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 ///     src_network_scope = "VPC_NETWORKS"
 ///     src_networks      = [gcp_compute_network.network.id]
 ///     layer4_configs = [{
-///       "ipProtocol" = "tcp"
-///       "ports"      = [8080]
+///       ip_protocol = "tcp"
+///       ports       = [8080]
 ///       }, {
-///       "ipProtocol" = "udp"
-///       "ports"      = [22]
+///       ip_protocol = "udp"
+///       ports       = [22]
 ///     }]
 ///   }
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network"
 ///   auto_create_subnetworks = false
 /// }
@@ -1244,8 +1274,8 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1260,7 +1290,7 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// 			return err
 /// 		}
 /// 		_default, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
-/// 			Parent:      folder.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      folder.ID(),
 /// 			ShortName:   pulumi.String("fw-policy"),
 /// 			Description: pulumi.String("Firewall policy"),
 /// 		})
@@ -1347,7 +1377,7 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1356,17 +1386,26 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// }
 ///
 /// resource "gcp_organizations_folder" "folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "folder"
 ///   parent              = "organizations/123456789"
 ///   deletion_protection = false
 /// }
-/// resource "gcp_compute_firewallpolicy" "default" {
+/// resource "gcp_compute_firewall_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent      = gcp_organizations_folder.folder.id
 ///   short_name  = "fw-policy"
 ///   description = "Firewall policy"
 /// }
-/// resource "gcp_compute_firewallpolicyrule" "primary" {
-///   firewall_policy = gcp_compute_firewallpolicy.default.name
+/// resource "gcp_compute_firewall_policy_rule" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy = gcp_compute_firewall_policy.default.name
 ///   description     = "Firewall policy rule with network context"
 ///   priority        = 8000
 ///   action          = "allow"
@@ -1376,16 +1415,19 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 ///     src_ip_ranges       = ["11.100.0.1/32"]
 ///     src_network_context = "INTERNET"
 ///     layer4_configs = [{
-///       "ipProtocol" = "tcp"
-///       "ports"      = [8080]
+///       ip_protocol = "tcp"
+///       ports       = [8080]
 ///       }, {
-///       "ipProtocol" = "udp"
-///       "ports"      = [22]
+///       ip_protocol = "udp"
+///       ports       = [22]
 ///     }]
 ///   }
 /// }
-/// resource "gcp_compute_firewallpolicyrule" "egress-primary" {
-///   firewall_policy = gcp_compute_firewallpolicy.default.name
+/// resource "gcp_compute_firewall_policy_rule" "egress-primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy = gcp_compute_firewall_policy.default.name
 ///   description     = "Firewall policy rule with network context"
 ///   priority        = 9000
 ///   action          = "allow"
@@ -1395,12 +1437,15 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 ///     dest_ip_ranges       = ["11.100.0.1/32"]
 ///     dest_network_context = "NON_INTERNET"
 ///     layer4_configs = [{
-///       "ipProtocol" = "tcp"
+///       ip_protocol = "tcp"
 ///     }]
 ///   }
 /// }
-/// resource "gcp_compute_firewallpolicyrule" "unset-primary" {
-///   firewall_policy = gcp_compute_firewallpolicy.default.name
+/// resource "gcp_compute_firewall_policy_rule" "unset-primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy = gcp_compute_firewall_policy.default.name
 ///   description     = "Firewall policy rule with network context"
 ///   priority        = 10000
 ///   action          = "allow"
@@ -1410,7 +1455,7 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 ///     dest_ip_ranges       = ["11.100.0.1/32"]
 ///     dest_network_context = "UNSPECIFIED"
 ///     layer4_configs = [{
-///       "ipProtocol" = "tcp"
+///       ip_protocol = "tcp"
 ///     }]
 ///   }
 /// }
@@ -1788,9 +1833,9 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1805,7 +1850,7 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// 			return err
 /// 		}
 /// 		_default, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
-/// 			Parent:      folder.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      folder.ID(),
 /// 			ShortName:   pulumi.String("fw-policy"),
 /// 			Description: pulumi.String("Resource created for Terraform acceptance testing"),
 /// 		})
@@ -1826,7 +1871,7 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// 		}
 /// 		basicValue, err := tags.NewTagValue(ctx, "basic_value", &tags.TagValueArgs{
 /// 			Description: pulumi.String("For valuename resources."),
-/// 			Parent:      basicKey.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      basicKey.ID(),
 /// 			ShortName:   pulumi.String("tag-value"),
 /// 		})
 /// 		if err != nil {
@@ -1842,7 +1887,7 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// 			Disabled:       pulumi.Bool(false),
 /// 			TargetSecureTags: compute.FirewallPolicyRuleTargetSecureTagArray{
 /// 				&compute.FirewallPolicyRuleTargetSecureTagArgs{
-/// 					Name: basicValue.ID().ToIDOutput().ToStringOutput(),
+/// 					Name: basicValue.ID(),
 /// 				},
 /// 			},
 /// 			Match: &compute.FirewallPolicyRuleMatchArgs{
@@ -1851,7 +1896,7 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// 				},
 /// 				SrcSecureTags: compute.FirewallPolicyRuleMatchSrcSecureTagArray{
 /// 					&compute.FirewallPolicyRuleMatchSrcSecureTagArgs{
-/// 						Name: basicValue.ID().ToIDOutput().ToStringOutput(),
+/// 						Name: basicValue.ID(),
 /// 					},
 /// 				},
 /// 				Layer4Configs: compute.FirewallPolicyRuleMatchLayer4ConfigArray{
@@ -1878,7 +1923,7 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1887,17 +1932,26 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// }
 ///
 /// resource "gcp_organizations_folder" "folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "folder"
 ///   parent              = "organizations/123456789"
 ///   deletion_protection = false
 /// }
-/// resource "gcp_compute_firewallpolicy" "default" {
+/// resource "gcp_compute_firewall_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent      = gcp_organizations_folder.folder.id
 ///   short_name  = "fw-policy"
 ///   description = "Resource created for Terraform acceptance testing"
 /// }
-/// resource "gcp_compute_firewallpolicyrule" "primary" {
-///   firewall_policy = gcp_compute_firewallpolicy.default.name
+/// resource "gcp_compute_firewall_policy_rule" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   firewall_policy = gcp_compute_firewall_policy.default.name
 ///   description     = "Resource created for Terraform acceptance testing"
 ///   priority        = 9000
 ///   enable_logging  = true
@@ -1905,23 +1959,26 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 ///   direction       = "INGRESS"
 ///   disabled        = false
 ///   target_secure_tags {
-///     name = gcp_tags_tagvalue.basic_value.id
+///     name = gcp_tags_tag_value.basic_value.id
 ///   }
 ///   match = {
 ///     src_ip_ranges = ["11.100.0.1/32"]
 ///     src_secure_tags = [{
-///       "name" = gcp_tags_tagvalue.basic_value.id
+///       name = gcp_tags_tag_value.basic_value.id
 ///     }]
 ///     layer4_configs = [{
-///       "ipProtocol" = "tcp"
-///       "ports"      = [8080]
+///       ip_protocol = "tcp"
+///       ports       = [8080]
 ///       }, {
-///       "ipProtocol" = "udp"
-///       "ports"      = [22]
+///       ip_protocol = "udp"
+///       ports       = [22]
 ///     }]
 ///   }
 /// }
-/// resource "gcp_tags_tagkey" "basic_key" {
+/// resource "gcp_tags_tag_key" "basic_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "For keyname resources."
 ///   parent      = "organizations/123456789"
 ///   purpose     = "GCE_FIREWALL"
@@ -1930,9 +1987,12 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 ///     "organization" = "auto"
 ///   }
 /// }
-/// resource "gcp_tags_tagvalue" "basic_value" {
+/// resource "gcp_tags_tag_value" "basic_value" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "For valuename resources."
-///   parent      = gcp_tags_tagkey.basic_key.id
+///   parent      = gcp_tags_tag_key.basic_key.id
 ///   short_name  = "tag-value"
 /// }
 /// ```
@@ -2168,7 +2228,7 @@ class FirewallPolicyRule extends pulumi.CustomResource {
           'gcp:compute/firewallPolicyRule:FirewallPolicyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     action = registerOutput<String>('action');
     creationTimestamp = registerOutput<String>('creationTimestamp');

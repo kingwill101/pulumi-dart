@@ -151,8 +151,8 @@ import 'policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -189,10 +189,10 @@ import 'policy_state.dart';
 /// 			},
 /// 			Networks: dns.PolicyNetworkArray{
 /// 				&dns.PolicyNetworkArgs{
-/// 					NetworkUrl: network_1.ID().ToIDOutput().ToStringOutput(),
+/// 					NetworkUrl: network_1.ID(),
 /// 				},
 /// 				&dns.PolicyNetworkArgs{
-/// 					NetworkUrl: network_2.ID().ToIDOutput().ToStringOutput(),
+/// 					NetworkUrl: network_2.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -204,7 +204,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -213,15 +213,18 @@ import 'policy_state.dart';
 /// }
 ///
 /// resource "gcp_dns_policy" "example-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "example-policy"
 ///   enable_inbound_forwarding = true
 ///   enable_logging            = true
 ///   alternative_name_server_config = {
 ///     target_name_servers = [{
-///       "ipv4Address"    = "172.16.1.10"
-///       "forwardingPath" = "private"
+///       ipv4_address    = "172.16.1.10"
+///       forwarding_path = "private"
 ///       }, {
-///       "ipv4Address" = "172.16.1.20"
+///       ipv4_address = "172.16.1.20"
 ///     }]
 ///   }
 ///   networks {
@@ -232,10 +235,16 @@ import 'policy_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "network-1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network-1"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_network" "network-2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network-2"
 ///   auto_create_subnetworks = false
 /// }
@@ -394,7 +403,7 @@ class Policy extends pulumi.CustomResource {
           'gcp:dns/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     alternativeNameServerConfig = registerOutput<PolicyAlternativeNameServerConfig?>('alternativeNameServerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyAlternativeNameServerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

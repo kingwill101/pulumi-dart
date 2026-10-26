@@ -205,9 +205,9 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memcache"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/memcache"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -232,13 +232,13 @@ import 'instance_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      memcacheNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      memcacheNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		privateServiceConnection, err := servicenetworking.NewConnection(ctx, "private_service_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: memcacheNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: memcacheNetwork.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				serviceRange.Name,
@@ -283,7 +283,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -300,9 +300,15 @@ import 'instance_state.dart';
 /// // config, add an additional network resource or change
 /// // this from "data"to "resource"
 /// resource "gcp_compute_network" "memcache_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-network"
 /// }
-/// resource "gcp_compute_globaladdress" "service_range" {
+/// resource "gcp_compute_global_address" "service_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "address"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -310,11 +316,17 @@ import 'instance_state.dart';
 ///   network       = gcp_compute_network.memcache_network.id
 /// }
 /// resource "gcp_servicenetworking_connection" "private_service_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.memcache_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.service_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.service_range.name]
 /// }
 /// resource "gcp_memcache_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test-instance"
 ///   authorized_network  = gcp_servicenetworking_connection.private_service_connection.network
 ///   deletion_protection = false
@@ -329,13 +341,13 @@ import 'instance_state.dart';
 ///   memcache_version = "MEMCACHE_1_5"
 ///   maintenance_policy = {
 ///     weekly_maintenance_windows = [{
-///       "day"      = "SATURDAY"
-///       "duration" = "14400s"
-///       "startTime" = {
-///         "hours"   = 0
-///         "minutes" = 30
-///         "seconds" = 0
-///         "nanos"   = 0
+///       day      = "SATURDAY"
+///       duration = "14400s"
+///       start_time = {
+///         hours   = 0
+///         minutes = 30
+///         seconds = 0
+///         nanos   = 0
 ///       }
 ///     }]
 ///   }
@@ -587,7 +599,7 @@ class Instance extends pulumi.CustomResource {
           'gcp:memcache/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     authorizedNetwork = registerOutput<String>('authorizedNetwork');

@@ -141,8 +141,8 @@ import 'settings_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/privilegedaccessmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/privilegedaccessmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -189,7 +189,7 @@ import 'settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -198,14 +198,20 @@ import 'settings_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "your-project-name"
 ///   project_id = "your-project-id"
 ///   org_id     = "1234567"
 /// }
 /// resource "gcp_privilegedaccessmanager_settings" "settings" {
 ///   depends_on = [wait90s]
-///   location   = "global"
-///   parent     ="projects/${gcp_organizations_project.project.project_id}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location = "global"
+///   parent   ="projects/${gcp_organizations_project.project.project_id}"
 ///   service_account_approver_settings = {
 ///     enabled = false
 ///   }
@@ -365,7 +371,7 @@ class Settings extends pulumi.CustomResource {
           'gcp:privilegedaccessmanager/settings:Settings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     emailNotificationSettings = registerOutput<SettingsEmailNotificationSettings?>('emailNotificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsEmailNotificationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

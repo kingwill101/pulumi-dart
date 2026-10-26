@@ -76,7 +76,7 @@ import 'prevention_stored_info_type_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -101,7 +101,7 @@ import 'prevention_stored_info_type_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -109,7 +109,10 @@ import 'prevention_stored_info_type_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventionstoredinfotype" "basic" {
+/// resource "gcp_dataloss_prevention_stored_info_type" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "Description"
 ///   display_name = "Displayname"
@@ -239,7 +242,7 @@ import 'prevention_stored_info_type_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -266,7 +269,7 @@ import 'prevention_stored_info_type_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -274,7 +277,10 @@ import 'prevention_stored_info_type_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventionstoredinfotype" "dictionary" {
+/// resource "gcp_dataloss_prevention_stored_info_type" "dictionary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "Description"
 ///   display_name = "Displayname"
@@ -453,8 +459,8 @@ import 'prevention_stored_info_type_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -503,7 +509,7 @@ import 'prevention_stored_info_type_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -511,13 +517,16 @@ import 'prevention_stored_info_type_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventionstoredinfotype" "large" {
+/// resource "gcp_dataloss_prevention_stored_info_type" "large" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "Description"
 ///   display_name = "Displayname"
 ///   large_custom_dictionary = {
 ///     cloud_storage_file_set = {
-///       url ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.object.name}"
+///       url ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucket_object.object.name}"
 ///     }
 ///     output_path = {
 ///       path ="gs://${gcp_storage_bucket.bucket.name}/output/dictionary.txt"
@@ -525,14 +534,20 @@ import 'prevention_stored_info_type_state.dart';
 ///   }
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "tf-test-bucket"
 ///   location      = "US"
 ///   force_destroy = true
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "tf-test-object"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("./test-fixtures/words.txt")
+///   source = fileasset("./test-fixtures/words.txt")
 /// }
 /// ```
 /// ```java
@@ -688,7 +703,7 @@ import 'prevention_stored_info_type_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -714,7 +729,7 @@ import 'prevention_stored_info_type_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -722,7 +737,10 @@ import 'prevention_stored_info_type_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventionstoredinfotype" "with_stored_info_type_id" {
+/// resource "gcp_dataloss_prevention_stored_info_type" "with_stored_info_type_id" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent              = "projects/my-project-name"
 ///   description         = "Description"
 ///   display_name        = "Displayname"
@@ -846,7 +864,7 @@ class PreventionStoredInfoType extends pulumi.CustomResource {
           'gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

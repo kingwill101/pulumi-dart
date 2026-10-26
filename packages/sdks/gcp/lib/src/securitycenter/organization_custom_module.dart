@@ -101,7 +101,7 @@ import 'organization_custom_module_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -133,7 +133,7 @@ import 'organization_custom_module_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -141,7 +141,10 @@ import 'organization_custom_module_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_securitycenter_organizationcustommodule" "example" {
+/// resource "gcp_securitycenter_organization_custom_module" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization     = "123456789"
 ///   display_name     = "basic_custom_module"
 ///   enablement_state = "ENABLED"
@@ -352,7 +355,7 @@ import 'organization_custom_module_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -400,7 +403,7 @@ import 'organization_custom_module_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -408,7 +411,10 @@ import 'organization_custom_module_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_securitycenter_organizationcustommodule" "example" {
+/// resource "gcp_securitycenter_organization_custom_module" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization     = "123456789"
 ///   display_name     = "full_custom_module"
 ///   enablement_state = "ENABLED"
@@ -421,12 +427,12 @@ import 'organization_custom_module_state.dart';
 ///     }
 ///     custom_output = {
 ///       properties = [{
-///         "name" = "duration"
-///         "valueExpression" = {
-///           "expression"  = "resource.rotationPeriod"
-///           "title"       = "Purpose of the expression"
-///           "description" = "description of the expression"
-///           "location"    = "location of the expression"
+///         name = "duration"
+///         value_expression = {
+///           expression  = "resource.rotationPeriod"
+///           title       = "Purpose of the expression"
+///           description = "description of the expression"
+///           location    = "location of the expression"
 ///         }
 ///       }]
 ///     }
@@ -593,7 +599,7 @@ class OrganizationCustomModule extends pulumi.CustomResource {
           'gcp:securitycenter/organizationCustomModule:OrganizationCustomModule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     ancestorModule = registerOutput<String>('ancestorModule');
     customConfig = registerOutput<OrganizationCustomModuleCustomConfig>('customConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationCustomModuleCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

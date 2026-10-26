@@ -37,7 +37,7 @@ import 'get_v2_runtime_versions_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tpu"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tpu"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -52,7 +52,7 @@ import 'get_v2_runtime_versions_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -60,7 +60,7 @@ import 'get_v2_runtime_versions_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_tpu_getv2acceleratortypes" "available" {
+/// data "gcp_tpu_v2_accelerator_types" "available" {
 /// }
 /// ```
 /// ```java
@@ -154,7 +154,7 @@ import 'get_v2_runtime_versions_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tpu"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tpu"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -182,7 +182,7 @@ import 'get_v2_runtime_versions_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -190,16 +190,19 @@ import 'get_v2_runtime_versions_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_tpu_getv2acceleratortypes" "available" {
+/// data "gcp_tpu_v2_accelerator_types" "available" {
 /// }
-/// data "gcp_tpu_getv2runtimeversions" "availableGetV2RuntimeVersions" {
+/// data "gcp_tpu_v2_runtime_versions" "availableGetV2RuntimeVersions" {
 /// }
 ///
-/// resource "gcp_tpu_v2vm" "tpu" {
+/// resource "gcp_tpu_v2_vm" "tpu" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "test-tpu"
 ///   zone             = "us-central1-b"
-///   runtime_version  = data.gcp_tpu_getv2runtimeversions.availableGetV2RuntimeVersions.versions[0]
-///   accelerator_type = data.gcp_tpu_getv2acceleratortypes.available.types[0]
+///   runtime_version  = data.gcp_tpu_v2_runtime_versions.availableGetV2RuntimeVersions.versions[0]
+///   accelerator_type = data.gcp_tpu_v2_accelerator_types.available.types[0]
 /// }
 /// ```
 /// ```java
@@ -320,7 +323,7 @@ pulumi.Output<GetV2AcceleratorTypesResult> getV2AcceleratorTypesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tpu"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tpu"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -335,7 +338,7 @@ pulumi.Output<GetV2AcceleratorTypesResult> getV2AcceleratorTypesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -343,7 +346,7 @@ pulumi.Output<GetV2AcceleratorTypesResult> getV2AcceleratorTypesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_tpu_getv2runtimeversions" "available" {
+/// data "gcp_tpu_v2_runtime_versions" "available" {
 /// }
 /// ```
 /// ```java
@@ -430,7 +433,7 @@ pulumi.Output<GetV2AcceleratorTypesResult> getV2AcceleratorTypesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tpu"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tpu"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -453,7 +456,7 @@ pulumi.Output<GetV2AcceleratorTypesResult> getV2AcceleratorTypesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -461,13 +464,16 @@ pulumi.Output<GetV2AcceleratorTypesResult> getV2AcceleratorTypesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_tpu_getv2runtimeversions" "available" {
+/// data "gcp_tpu_v2_runtime_versions" "available" {
 /// }
 ///
-/// resource "gcp_tpu_v2vm" "tpu" {
+/// resource "gcp_tpu_v2_vm" "tpu" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "test-tpu"
 ///   zone            = "us-central1-b"
-///   runtime_version = data.gcp_tpu_getv2runtimeversions.available.versions[0]
+///   runtime_version = data.gcp_tpu_v2_runtime_versions.available.versions[0]
 /// }
 /// ```
 /// ```java

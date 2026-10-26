@@ -56,7 +56,7 @@ import 'get_document_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -76,7 +76,7 @@ import 'get_document_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -85,6 +85,9 @@ import 'get_document_result.dart';
 /// }
 ///
 /// resource "gcp_firestore_document" "mydoc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = database.project
 ///   database    = database.name
 ///   collection  = "somenewcollection"

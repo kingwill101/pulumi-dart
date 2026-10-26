@@ -113,7 +113,7 @@ import 'server_tls_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -149,7 +149,7 @@ import 'server_tls_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -157,7 +157,10 @@ import 'server_tls_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_servertlspolicy" "default" {
+/// resource "gcp_networksecurity_server_tls_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-server-tls-policy"
 ///   labels = {
 ///     "foo" = "bar"
@@ -171,8 +174,8 @@ import 'server_tls_policy_state.dart';
 ///   }
 ///   mtls_policy = {
 ///     client_validation_cas = [{
-///       "grpcEndpoint" = {
-///         "targetUri" = "unix:mypath"
+///       grpc_endpoint = {
+///         target_uri = "unix:mypath"
 ///       }
 ///     }]
 ///   }
@@ -312,7 +315,7 @@ import 'server_tls_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -338,7 +341,7 @@ import 'server_tls_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -346,7 +349,10 @@ import 'server_tls_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_servertlspolicy" "default" {
+/// resource "gcp_networksecurity_server_tls_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-server-tls-policy"
 ///   labels = {
 ///     "foo" = "bar"
@@ -484,7 +490,7 @@ import 'server_tls_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -512,7 +518,7 @@ import 'server_tls_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -520,7 +526,10 @@ import 'server_tls_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_servertlspolicy" "default" {
+/// resource "gcp_networksecurity_server_tls_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-server-tls-policy"
 ///   labels = {
 ///     "foo" = "bar"
@@ -746,9 +755,9 @@ import 'server_tls_policy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -819,7 +828,7 @@ import 'server_tls_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -830,23 +839,29 @@ import 'server_tls_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_networksecurity_servertlspolicy" "default" {
+/// resource "gcp_networksecurity_server_tls_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-server-tls-policy"
 ///   description = "my description"
 ///   location    = "global"
 ///   allow_open  = "false"
 ///   mtls_policy = {
 ///     client_validation_mode         = "REJECT_INVALID"
-///     client_validation_trust_config ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/trustConfigs/${gcp_certificatemanager_trustconfig.default.name}"
+///     client_validation_trust_config ="projects/${data.gcp_organizations_project.project.number}/locations/global/trustConfigs/${gcp_certificatemanager_trust_config.default.name}"
 ///   }
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_certificatemanager_trustconfig" "default" {
+/// resource "gcp_certificatemanager_trust_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-trust-config"
 ///   description = "sample trust config description"
 ///   location    = "global"
@@ -1048,7 +1063,7 @@ class ServerTlsPolicy extends pulumi.CustomResource {
           'gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     allowOpen = registerOutput<bool?>('allowOpen');

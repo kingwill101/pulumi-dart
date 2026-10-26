@@ -25,8 +25,8 @@ class GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
 
   factory GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig(
-      dataCacheCount: pulumi.Input.fromValue((map['dataCacheCount'] as num).toInt()),
-      localSsdCount: pulumi.Input.fromValue((map['localSsdCount'] as num).toInt()),
+      dataCacheCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dataCacheCount'])),
+      localSsdCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['localSsdCount'])),
     );
   }
 }

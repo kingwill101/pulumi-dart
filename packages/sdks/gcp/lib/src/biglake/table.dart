@@ -245,8 +245,8 @@ import 'table_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -286,7 +286,7 @@ import 'table_state.dart';
 /// 		}
 /// 		database, err := biglake.NewDatabase(ctx, "database", &biglake.DatabaseArgs{
 /// 			Name:    pulumi.String("my_database"),
-/// 			Catalog: catalog.ID().ToIDOutput().ToStringOutput(),
+/// 			Catalog: catalog.ID(),
 /// 			Type:    pulumi.String("HIVE"),
 /// 			HiveOptions: &biglake.DatabaseHiveOptionsArgs{
 /// 				LocationUri: pulumi.All(bucket.Name, metadataFolder.Name).ApplyT(func(_args []interface{}) (string, error) {
@@ -304,7 +304,7 @@ import 'table_state.dart';
 /// 		}
 /// 		_, err = biglake.NewTable(ctx, "table", &biglake.TableArgs{
 /// 			Name:     pulumi.String("my_table"),
-/// 			Database: database.ID().ToIDOutput().ToStringOutput(),
+/// 			Database: database.ID(),
 /// 			Type:     pulumi.String("HIVE"),
 /// 			HiveOptions: &biglake.TableHiveOptionsArgs{
 /// 				TableType: pulumi.String("MANAGED_TABLE"),
@@ -340,7 +340,7 @@ import 'table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -349,44 +349,62 @@ import 'table_state.dart';
 /// }
 ///
 /// resource "gcp_biglake_catalog" "catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my_catalog"
 ///   location = "US"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my_bucket"
 ///   location                    = "US"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "metadata_folder" {
+/// resource "gcp_storage_bucket_object" "metadata_folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "metadata/"
 ///   content = " "
 ///   bucket  = gcp_storage_bucket.bucket.name
 /// }
-/// resource "gcp_storage_bucketobject" "data_folder" {
+/// resource "gcp_storage_bucket_object" "data_folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "data/"
 ///   content = " "
 ///   bucket  = gcp_storage_bucket.bucket.name
 /// }
 /// resource "gcp_biglake_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "my_database"
 ///   catalog = gcp_biglake_catalog.catalog.id
 ///   type    = "HIVE"
 ///   hive_options = {
-///     location_uri ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.metadata_folder.name}"
+///     location_uri ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucket_object.metadata_folder.name}"
 ///     parameters = {
 ///       "owner" = "Alex"
 ///     }
 ///   }
 /// }
 /// resource "gcp_biglake_table" "table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my_table"
 ///   database = gcp_biglake_database.database.id
 ///   type     = "HIVE"
 ///   hive_options = {
 ///     table_type = "MANAGED_TABLE"
 ///     storage_descriptor = {
-///       location_uri  ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.data_folder.name}"
+///       location_uri  ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucket_object.data_folder.name}"
 ///       input_format  = "org.apache.hadoop.mapred.SequenceFileInputFormat"
 ///       output_format = "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat"
 ///       serde_info = {
@@ -644,7 +662,7 @@ class Table extends pulumi.CustomResource {
           'gcp:biglake/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     database = registerOutput<String?>('database');

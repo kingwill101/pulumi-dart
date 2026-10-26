@@ -22,6 +22,8 @@ class RegionInstanceTemplateNetworkInterface {
   /// array of alias IPv6 ranges for this network interface. Can only be specified for network
   /// interfaces on subnet-mode networks. Structure documented below.
   final pulumi.Input<List<RegionInstanceTemplateNetworkInterfaceAliasIpv6Range>?>? aliasIpv6Ranges;
+  /// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+  final pulumi.Input<bool?>? enableVpcScopedDns;
   /// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
   final pulumi.Input<String?>? igmpQuery;
   /// The prefix length of the primary internal IPv6 range.
@@ -52,6 +54,8 @@ class RegionInstanceTemplateNetworkInterface {
   final pulumi.Input<String?>? parentNicName;
   /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
   final pulumi.Input<int?>? queueCount;
+  /// Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+  final pulumi.Input<String?>? serviceClassId;
   /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
   final pulumi.Input<String?>? stackType;
   /// the name of the subnetwork to attach this interface
@@ -68,6 +72,7 @@ class RegionInstanceTemplateNetworkInterface {
   /// [accessConfigs] Access configurations, i.e. IPs via which this
   /// [aliasIpRanges] An
   /// [aliasIpv6Ranges] [Beta] An
+  /// [enableVpcScopedDns] If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
   /// [igmpQuery] Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
   /// [internalIpv6PrefixLength] The prefix length of the primary internal IPv6 range.
   /// [ipv6AccessConfigs] An array of IPv6 access configurations for this interface.
@@ -80,6 +85,7 @@ class RegionInstanceTemplateNetworkInterface {
   /// [nicType] The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA, IDPF.
   /// [parentNicName] Name of the parent network interface of a dynamic network interface.
   /// [queueCount] The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+  /// [serviceClassId] Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
   /// [stackType] The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
   /// [subnetwork] the name of the subnetwork to attach this interface
   /// [subnetworkProject] The ID of the project in which the subnetwork belongs.
@@ -88,6 +94,7 @@ class RegionInstanceTemplateNetworkInterface {
     this.accessConfigs,
     this.aliasIpRanges,
     this.aliasIpv6Ranges,
+    this.enableVpcScopedDns,
     this.igmpQuery,
     this.internalIpv6PrefixLength,
     this.ipv6AccessConfigs,
@@ -100,6 +107,7 @@ class RegionInstanceTemplateNetworkInterface {
     this.nicType,
     this.parentNicName,
     this.queueCount,
+    this.serviceClassId,
     this.stackType,
     this.subnetwork,
     this.subnetworkProject,
@@ -111,6 +119,7 @@ class RegionInstanceTemplateNetworkInterface {
       'accessConfigs': ?pulumi.Input.mapOptionalInputValue<List<RegionInstanceTemplateNetworkInterfaceAccessConfig>, List<Map<String, dynamic>>>(accessConfigs, (value) => pulumi.Input.encodeList<RegionInstanceTemplateNetworkInterfaceAccessConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'aliasIpRanges': ?pulumi.Input.mapOptionalInputValue<List<RegionInstanceTemplateNetworkInterfaceAliasIpRange>, List<Map<String, dynamic>>>(aliasIpRanges, (value) => pulumi.Input.encodeList<RegionInstanceTemplateNetworkInterfaceAliasIpRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'aliasIpv6Ranges': ?pulumi.Input.mapOptionalInputValue<List<RegionInstanceTemplateNetworkInterfaceAliasIpv6Range>, List<Map<String, dynamic>>>(aliasIpv6Ranges, (value) => pulumi.Input.encodeList<RegionInstanceTemplateNetworkInterfaceAliasIpv6Range, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'enableVpcScopedDns': ?enableVpcScopedDns,
       'igmpQuery': ?igmpQuery,
       'internalIpv6PrefixLength': ?internalIpv6PrefixLength,
       'ipv6AccessConfigs': ?pulumi.Input.mapOptionalInputValue<List<RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig>, List<Map<String, dynamic>>>(ipv6AccessConfigs, (value) => pulumi.Input.encodeList<RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -123,6 +132,7 @@ class RegionInstanceTemplateNetworkInterface {
       'nicType': ?nicType,
       'parentNicName': ?parentNicName,
       'queueCount': ?queueCount,
+      'serviceClassId': ?serviceClassId,
       'stackType': ?stackType,
       'subnetwork': ?subnetwork,
       'subnetworkProject': ?subnetworkProject,
@@ -135,8 +145,9 @@ class RegionInstanceTemplateNetworkInterface {
       accessConfigs: (() { final guardedValue = map['accessConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionInstanceTemplateNetworkInterfaceAccessConfig>(guardedValue, (value) => RegionInstanceTemplateNetworkInterfaceAccessConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       aliasIpRanges: (() { final guardedValue = map['aliasIpRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionInstanceTemplateNetworkInterfaceAliasIpRange>(guardedValue, (value) => RegionInstanceTemplateNetworkInterfaceAliasIpRange.fromMap((value as Map).cast<String, dynamic>()))); })(),
       aliasIpv6Ranges: (() { final guardedValue = map['aliasIpv6Ranges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionInstanceTemplateNetworkInterfaceAliasIpv6Range>(guardedValue, (value) => RegionInstanceTemplateNetworkInterfaceAliasIpv6Range.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      enableVpcScopedDns: (() { final guardedValue = map['enableVpcScopedDns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       igmpQuery: (() { final guardedValue = map['igmpQuery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      internalIpv6PrefixLength: (() { final guardedValue = map['internalIpv6PrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      internalIpv6PrefixLength: (() { final guardedValue = map['internalIpv6PrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipv6AccessConfigs: (() { final guardedValue = map['ipv6AccessConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig>(guardedValue, (value) => RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipv6AccessType: (() { final guardedValue = map['ipv6AccessType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipv6Address: (() { final guardedValue = map['ipv6Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -146,11 +157,12 @@ class RegionInstanceTemplateNetworkInterface {
       networkIp: (() { final guardedValue = map['networkIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nicType: (() { final guardedValue = map['nicType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parentNicName: (() { final guardedValue = map['parentNicName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      queueCount: (() { final guardedValue = map['queueCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      queueCount: (() { final guardedValue = map['queueCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      serviceClassId: (() { final guardedValue = map['serviceClassId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       stackType: (() { final guardedValue = map['stackType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetworkProject: (() { final guardedValue = map['subnetworkProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

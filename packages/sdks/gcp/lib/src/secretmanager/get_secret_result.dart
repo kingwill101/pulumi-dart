@@ -23,6 +23,7 @@ class GetSecretResult {
   final List<GetSecretReplication>? replications;
   final List<GetSecretRotation>? rotations;
   final String? secretId;
+  final String? secretType;
   final Map<String, String>? tags;
   final List<GetSecretTopic>? topics;
   final String? ttl;
@@ -45,6 +46,7 @@ class GetSecretResult {
   /// [replications] Optional.
   /// [rotations] Optional.
   /// [secretId] Optional.
+  /// [secretType] Optional.
   /// [tags] Optional.
   /// [topics] Optional.
   /// [ttl] Optional.
@@ -66,6 +68,7 @@ class GetSecretResult {
     this.replications,
     this.rotations,
     this.secretId,
+    this.secretType,
     this.tags,
     this.topics,
     this.ttl,
@@ -90,6 +93,7 @@ class GetSecretResult {
       'replications': ?(() { final guardedValue = replications; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSecretReplication, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'rotations': ?(() { final guardedValue = rotations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSecretRotation, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'secretId': ?secretId,
+      'secretType': ?secretType,
       'tags': ?tags,
       'topics': ?(() { final guardedValue = topics; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSecretTopic, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'ttl': ?ttl,
@@ -115,6 +119,7 @@ class GetSecretResult {
       replications: (() { final guardedValue = map['replications']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSecretReplication>(guardedValue, (value) => GetSecretReplication.fromMap((value as Map).cast<String, dynamic>())); })(),
       rotations: (() { final guardedValue = map['rotations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSecretRotation>(guardedValue, (value) => GetSecretRotation.fromMap((value as Map).cast<String, dynamic>())); })(),
       secretId: (() { final guardedValue = map['secretId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secretType: (() { final guardedValue = map['secretType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       topics: (() { final guardedValue = map['topics']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSecretTopic>(guardedValue, (value) => GetSecretTopic.fromMap((value as Map).cast<String, dynamic>())); })(),
       ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return guardedValue as String; })(),

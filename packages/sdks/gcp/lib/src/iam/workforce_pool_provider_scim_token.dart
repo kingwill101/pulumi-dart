@@ -220,7 +220,7 @@ import 'workforce_pool_provider_scim_token_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -298,7 +298,7 @@ import 'workforce_pool_provider_scim_token_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -306,14 +306,20 @@ import 'workforce_pool_provider_scim_token_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workforcepool" "pool" {
+/// resource "gcp_iam_workforce_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workforce_pool_id = "example-pool"
 ///   parent            = "organizations/123456789"
 ///   location          = "global"
 /// }
-/// resource "gcp_iam_workforcepoolprovider" "provider" {
+/// resource "gcp_iam_workforce_pool_provider" "provider" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "global"
-///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
+///   workforce_pool_id = gcp_iam_workforce_pool.pool.workforce_pool_id
 ///   provider_id       = "example-prvdr"
 ///   attribute_mapping = {
 ///     "google.subject" = "assertion.sub"
@@ -337,10 +343,13 @@ import 'workforce_pool_provider_scim_token_state.dart';
 ///   disabled            = false
 ///   attribute_condition = "true"
 /// }
-/// resource "gcp_iam_workforcepoolproviderscimtenant" "tenant" {
+/// resource "gcp_iam_workforce_pool_provider_scim_tenant" "tenant" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "global"
-///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
-///   provider_id       = gcp_iam_workforcepoolprovider.provider.provider_id
+///   workforce_pool_id = gcp_iam_workforce_pool.pool.workforce_pool_id
+///   provider_id       = gcp_iam_workforce_pool_provider.provider.provider_id
 ///   scim_tenant_id    = "example-tenant"
 ///   display_name      = "SCIM Tenant display Name"
 ///   description       = "A SCIM Tenant for IAM Workforce Pool Provider"
@@ -350,11 +359,14 @@ import 'workforce_pool_provider_scim_token_state.dart';
 ///   }
 ///   hard_delete = true
 /// }
-/// resource "gcp_iam_workforcepoolproviderscimtoken" "example" {
+/// resource "gcp_iam_workforce_pool_provider_scim_token" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "global"
-///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
-///   provider_id       = gcp_iam_workforcepoolprovider.provider.provider_id
-///   scim_tenant_id    = gcp_iam_workforcepoolproviderscimtenant.tenant.scim_tenant_id
+///   workforce_pool_id = gcp_iam_workforce_pool.pool.workforce_pool_id
+///   provider_id       = gcp_iam_workforce_pool_provider.provider.provider_id
+///   scim_tenant_id    = gcp_iam_workforce_pool_provider_scim_tenant.tenant.scim_tenant_id
 ///   scim_token_id     = "example-scim-token"
 ///   display_name      = "SCIM Token display Name"
 /// }
@@ -563,7 +575,7 @@ class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
           'gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['securityToken'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

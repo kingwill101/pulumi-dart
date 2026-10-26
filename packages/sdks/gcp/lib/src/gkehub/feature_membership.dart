@@ -150,8 +150,8 @@ import 'feature_membership_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -210,7 +210,7 @@ import 'feature_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -219,11 +219,17 @@ import 'feature_membership_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-cluster"
 ///   location           = "us-central1-a"
 ///   initial_node_count = 1
 /// }
 /// resource "gcp_gkehub_membership" "membership" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   membership_id = "my-membership"
 ///   endpoint = {
 ///     gke_cluster = {
@@ -232,13 +238,19 @@ import 'feature_membership_state.dart';
 ///   }
 /// }
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "configmanagement"
 ///   location = "global"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_gkehub_featuremembership" "feature_member" {
+/// resource "gcp_gkehub_feature_membership" "feature_member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location   = "global"
 ///   feature    = gcp_gkehub_feature.feature.name
 ///   membership = gcp_gkehub_membership.membership.membership_id
@@ -515,8 +527,8 @@ import 'feature_membership_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -579,7 +591,7 @@ import 'feature_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -588,11 +600,17 @@ import 'feature_membership_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-cluster"
 ///   location           = "us-central1-a"
 ///   initial_node_count = 1
 /// }
 /// resource "gcp_gkehub_membership" "membership" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   membership_id = "my-membership"
 ///   endpoint = {
 ///     gke_cluster = {
@@ -601,13 +619,19 @@ import 'feature_membership_state.dart';
 ///   }
 /// }
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "configmanagement"
 ///   location = "global"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_gkehub_featuremembership" "feature_member" {
+/// resource "gcp_gkehub_feature_membership" "feature_member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location   = "global"
 ///   feature    = gcp_gkehub_feature.feature.name
 ///   membership = gcp_gkehub_membership.membership.membership_id
@@ -916,8 +940,8 @@ import 'feature_membership_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -988,7 +1012,7 @@ import 'feature_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -997,11 +1021,17 @@ import 'feature_membership_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-cluster"
 ///   location           = "us-central1-a"
 ///   initial_node_count = 1
 /// }
 /// resource "gcp_gkehub_membership" "membership" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   membership_id = "my-membership"
 ///   endpoint = {
 ///     gke_cluster = {
@@ -1010,13 +1040,19 @@ import 'feature_membership_state.dart';
 ///   }
 /// }
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "configmanagement"
 ///   location = "global"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_gkehub_featuremembership" "feature_member" {
+/// resource "gcp_gkehub_feature_membership" "feature_member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location   = "global"
 ///   feature    = gcp_gkehub_feature.feature.name
 ///   membership = gcp_gkehub_membership.membership.membership_id
@@ -1025,14 +1061,14 @@ import 'feature_membership_state.dart';
 ///     config_sync = {
 ///       enabled = true
 ///       deployment_overrides = [{
-///         "deploymentName"      = "reconciler-manager"
-///         "deploymentNamespace" = "config-management-system"
-///         "containers" = [{
-///           "containerName" = "reconciler-manager"
-///           "cpuRequest"    = "100m"
-///           "memoryRequest" = "64Mi"
-///           "cpuLimit"      = "250m"
-///           "memoryLimit"   = "128Mi"
+///         deployment_name      = "reconciler-manager"
+///         deployment_namespace = "config-management-system"
+///         containers = [{
+///           container_name = "reconciler-manager"
+///           cpu_request    = "100m"
+///           memory_request = "64Mi"
+///           cpu_limit      = "250m"
+///           memory_limit   = "128Mi"
 ///         }]
 ///       }]
 ///     }
@@ -1311,8 +1347,8 @@ import 'feature_membership_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1373,7 +1409,7 @@ import 'feature_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1382,11 +1418,17 @@ import 'feature_membership_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-cluster"
 ///   location           = "us-central1-a"
 ///   initial_node_count = 1
 /// }
 /// resource "gcp_gkehub_membership" "membership" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   membership_id = "my-membership"
 ///   location      = "us-central1"
 ///   endpoint = {
@@ -1396,13 +1438,19 @@ import 'feature_membership_state.dart';
 ///   }
 /// }
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "configmanagement"
 ///   location = "global"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_gkehub_featuremembership" "feature_member" {
+/// resource "gcp_gkehub_feature_membership" "feature_member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "global"
 ///   feature             = gcp_gkehub_feature.feature.name
 ///   membership          = gcp_gkehub_membership.membership.membership_id
@@ -1581,7 +1629,7 @@ import 'feature_membership_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1602,7 +1650,7 @@ import 'feature_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1611,6 +1659,9 @@ import 'feature_membership_state.dart';
 /// }
 ///
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "multiclusterservicediscovery"
 ///   location = "global"
 ///   labels = {
@@ -1771,8 +1822,8 @@ import 'feature_membership_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1822,7 +1873,7 @@ import 'feature_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1831,11 +1882,17 @@ import 'feature_membership_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-cluster"
 ///   location           = "us-central1-a"
 ///   initial_node_count = 1
 /// }
 /// resource "gcp_gkehub_membership" "membership" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   membership_id = "my-membership"
 ///   endpoint = {
 ///     gke_cluster = {
@@ -1844,10 +1901,16 @@ import 'feature_membership_state.dart';
 ///   }
 /// }
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "servicemesh"
 ///   location = "global"
 /// }
-/// resource "gcp_gkehub_featuremembership" "feature_member" {
+/// resource "gcp_gkehub_feature_membership" "feature_member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location   = "global"
 ///   feature    = gcp_gkehub_feature.feature.name
 ///   membership = gcp_gkehub_membership.membership.membership_id
@@ -2068,8 +2131,8 @@ import 'feature_membership_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2121,7 +2184,7 @@ import 'feature_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2130,11 +2193,17 @@ import 'feature_membership_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-cluster"
 ///   location           = "us-central1-a"
 ///   initial_node_count = 1
 /// }
 /// resource "gcp_gkehub_membership" "membership" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   membership_id = "my-membership"
 ///   endpoint = {
 ///     gke_cluster = {
@@ -2143,10 +2212,16 @@ import 'feature_membership_state.dart';
 ///   }
 /// }
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "policycontroller"
 ///   location = "global"
 /// }
-/// resource "gcp_gkehub_featuremembership" "feature_member" {
+/// resource "gcp_gkehub_feature_membership" "feature_member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location   = "global"
 ///   feature    = gcp_gkehub_feature.feature.name
 ///   membership = gcp_gkehub_membership.membership.membership_id
@@ -2408,8 +2483,8 @@ import 'feature_membership_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2472,7 +2547,7 @@ import 'feature_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2481,11 +2556,17 @@ import 'feature_membership_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-cluster"
 ///   location           = "us-central1-a"
 ///   initial_node_count = 1
 /// }
 /// resource "gcp_gkehub_membership" "membership" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   membership_id = "my-membership"
 ///   endpoint = {
 ///     gke_cluster = {
@@ -2494,10 +2575,16 @@ import 'feature_membership_state.dart';
 ///   }
 /// }
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "policycontroller"
 ///   location = "global"
 /// }
-/// resource "gcp_gkehub_featuremembership" "feature_member" {
+/// resource "gcp_gkehub_feature_membership" "feature_member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location   = "global"
 ///   feature    = gcp_gkehub_feature.feature.name
 ///   membership = gcp_gkehub_membership.membership.membership_id
@@ -2692,7 +2779,7 @@ class FeatureMembership extends pulumi.CustomResource {
           'gcp:gkehub/featureMembership:FeatureMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     configmanagement = registerOutput<FeatureMembershipConfigmanagement?>('configmanagement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureMembershipConfigmanagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

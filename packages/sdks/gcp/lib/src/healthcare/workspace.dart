@@ -91,7 +91,7 @@ import 'workspace_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -106,7 +106,7 @@ import 'workspace_state.dart';
 /// 		}
 /// 		_, err = healthcare.NewWorkspace(ctx, "default", &healthcare.WorkspaceArgs{
 /// 			Name:    pulumi.String("example-dm-workspace"),
-/// 			Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset: dataset.ID(),
 /// 			Settings: &healthcare.WorkspaceSettingsArgs{
 /// 				DataProjectIds: pulumi.StringArray{
 /// 					pulumi.String("example-data-source-project-id"),
@@ -124,7 +124,7 @@ import 'workspace_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -133,6 +133,9 @@ import 'workspace_state.dart';
 /// }
 ///
 /// resource "gcp_healthcare_workspace" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example-dm-workspace"
 ///   dataset = gcp_healthcare_dataset.dataset.id
 ///   settings = {
@@ -143,6 +146,9 @@ import 'workspace_state.dart';
 ///   }
 /// }
 /// resource "gcp_healthcare_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-dataset"
 ///   location = "us-central1"
 /// }
@@ -259,7 +265,7 @@ class Workspace extends pulumi.CustomResource {
           'gcp:healthcare/workspace:Workspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     dataset = registerOutput<String>('dataset');

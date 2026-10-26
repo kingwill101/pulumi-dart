@@ -38,7 +38,7 @@ import 'instance_group_membership_state.dart';
 ///     machineType: "e2-medium",
 ///     bootDisk: {
 ///         initializeParams: {
-///             image: "debian-cloud/debian-11",
+///             image: "debian-cloud/debian-13",
 ///         },
 ///     },
 ///     networkInterfaces: [{
@@ -61,7 +61,7 @@ import 'instance_group_membership_state.dart';
 ///     machine_type="e2-medium",
 ///     boot_disk={
 ///         "initialize_params": {
-///             "image": "debian-cloud/debian-11",
+///             "image": "debian-cloud/debian-13",
 ///         },
 ///     },
 ///     network_interfaces=[{
@@ -93,7 +93,7 @@ import 'instance_group_membership_state.dart';
 ///         {
 ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
 ///             {
-///                 Image = "debian-cloud/debian-11",
+///                 Image = "debian-cloud/debian-13",
 ///             },
 ///         },
 ///         NetworkInterfaces = new[]
@@ -122,7 +122,7 @@ import 'instance_group_membership_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -139,7 +139,7 @@ import 'instance_group_membership_state.dart';
 /// 			MachineType: pulumi.String("e2-medium"),
 /// 			BootDisk: &compute.InstanceBootDiskArgs{
 /// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-/// 					Image: pulumi.String("debian-cloud/debian-11"),
+/// 					Image: pulumi.String("debian-cloud/debian-13"),
 /// 				},
 /// 			},
 /// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
@@ -169,7 +169,7 @@ import 'instance_group_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -178,26 +178,38 @@ import 'instance_group_membership_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default-network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "network"
 /// }
 /// resource "gcp_compute_instance" "default-instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "instance"
 ///   machine_type = "e2-medium"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = "debian-cloud/debian-11"
+///       image = "debian-cloud/debian-13"
 ///     }
 ///   }
 ///   network_interfaces {
 ///     network = gcp_compute_network.default-network.name
 ///   }
 /// }
-/// resource "gcp_compute_instancegroup" "default-instance-group" {
+/// resource "gcp_compute_instance_group" "default-instance-group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "instance-group"
 /// }
-/// resource "gcp_compute_instancegroupmembership" "default-ig-membership" {
+/// resource "gcp_compute_instance_group_membership" "default-ig-membership" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance       = gcp_compute_instance.default-instance.self_link
-///   instance_group = gcp_compute_instancegroup.default-instance-group.name
+///   instance_group = gcp_compute_instance_group.default-instance-group.name
 /// }
 /// ```
 /// ```java
@@ -239,7 +251,7 @@ import 'instance_group_membership_state.dart';
 ///             .machineType("e2-medium")
 ///             .bootDisk(InstanceBootDiskArgs.builder()
 ///                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-///                     .image("debian-cloud/debian-11")
+///                     .image("debian-cloud/debian-13")
 ///                     .build())
 ///                 .build())
 ///             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
@@ -272,7 +284,7 @@ import 'instance_group_membership_state.dart';
 ///       machineType: e2-medium
 ///       bootDisk:
 ///         initializeParams:
-///           image: debian-cloud/debian-11
+///           image: debian-cloud/debian-13
 ///       networkInterfaces:
 ///         - network: ${["default-network"].name}
 ///   default-instance-group:
@@ -335,7 +347,7 @@ class InstanceGroupMembership extends pulumi.CustomResource {
           'gcp:compute/instanceGroupMembership:InstanceGroupMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     instance = registerOutput<String>('instance');

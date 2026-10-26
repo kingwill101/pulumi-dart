@@ -54,8 +54,8 @@ class GetPrivateCloudManagementClusterAutoscalingSetting {
     return GetPrivateCloudManagementClusterAutoscalingSetting(
       autoscalingPolicies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy>(map['autoscalingPolicies']!, (value) => GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy.fromMap((value as Map).cast<String, dynamic>()))),
       coolDownPeriod: pulumi.Input.fromValue(map['coolDownPeriod'] as String),
-      maxClusterNodeCount: pulumi.Input.fromValue((map['maxClusterNodeCount'] as num).toInt()),
-      minClusterNodeCount: pulumi.Input.fromValue((map['minClusterNodeCount'] as num).toInt()),
+      maxClusterNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxClusterNodeCount'])),
+      minClusterNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minClusterNodeCount'])),
     );
   }
 }

@@ -73,8 +73,8 @@ import 'storage_bucket_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -100,7 +100,7 @@ import 'storage_bucket_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -109,11 +109,17 @@ import 'storage_bucket_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "test_bucket"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_firebase_storagebucket" "default" {
+/// resource "gcp_firebase_storage_bucket" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project   = "my-project-name"
 ///   bucket_id = gcp_storage_bucket.default.name
 /// }
@@ -216,7 +222,7 @@ class StorageBucket extends pulumi.CustomResource {
           'gcp:firebase/storageBucket:StorageBucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     bucketId = registerOutput<String?>('bucketId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -4,8 +4,6 @@ import 'network_edge_security_service_state.dart';
 
 /// Google Cloud Armor network edge security service resource.
 ///
-/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
 ///
 /// To get more information about NetworkEdgeSecurityService, see:
 ///
@@ -59,7 +57,7 @@ import 'network_edge_security_service_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -78,7 +76,7 @@ import 'network_edge_security_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -86,7 +84,10 @@ import 'network_edge_security_service_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_networkedgesecurityservice" "default" {
+/// resource "gcp_compute_network_edge_security_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-edge-security-service"
 ///   region      = "us-east1"
 ///   description = "My basic resource"
@@ -194,7 +195,7 @@ class NetworkEdgeSecurityService extends pulumi.CustomResource {
           'gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

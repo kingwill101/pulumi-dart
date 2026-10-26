@@ -87,7 +87,7 @@ import 'instance_from_machine_image_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -110,7 +110,7 @@ import 'instance_from_machine_image_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -118,7 +118,10 @@ import 'instance_from_machine_image_workload_identity_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_instancefrommachineimage" "tpl" {
+/// resource "gcp_compute_instance_from_machine_image" "tpl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "instance-from-machine-image"
 ///   zone                 = "us-central1-a"
 ///   source_machine_image = "projects/PROJECT-ID/global/machineImages/NAME"
@@ -284,6 +287,10 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
   /// The zone that the machine should be created in. If not
   /// set, the provider zone is used.
   ///
+  /// * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+  ///
+  /// * `network_interface.service_class_id` - (Optional) Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+  ///
   /// In addition to these, most* arguments from `gcp.compute.Instance` are supported
   /// as a way to override the properties in the machine image. All exported attributes
   /// from `gcp.compute.Instance` are likewise exported here.
@@ -303,7 +310,7 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
           'gcp:compute/instanceFromMachineImage:InstanceFromMachineImage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     advancedMachineFeatures = registerOutput<InstanceFromMachineImageAdvancedMachineFeatures>('advancedMachineFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFromMachineImageAdvancedMachineFeatures.fromMap((guardedValue as Map).cast<String, dynamic>()); });

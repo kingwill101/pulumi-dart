@@ -81,7 +81,7 @@ import 'bitbucket_server_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -107,7 +107,7 @@ import 'bitbucket_server_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -115,7 +115,10 @@ import 'bitbucket_server_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudbuild_bitbucketserverconfig" "bbs-config" {
+/// resource "gcp_cloudbuild_bitbucket_server_config" "bbs-config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   config_id = "bbs-config"
 ///   location  = "us-central1"
 ///   host_uri  = "https://bbs.com"
@@ -281,7 +284,7 @@ import 'bitbucket_server_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -317,7 +320,7 @@ import 'bitbucket_server_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -325,7 +328,10 @@ import 'bitbucket_server_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudbuild_bitbucketserverconfig" "bbs-config-with-repos" {
+/// resource "gcp_cloudbuild_bitbucket_server_config" "bbs-config-with-repos" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   config_id = "bbs-config"
 ///   location  = "us-central1"
 ///   host_uri  = "https://bbs.com"
@@ -599,11 +605,11 @@ import 'bitbucket_server_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -633,13 +639,13 @@ import 'bitbucket_server_config_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      vpcNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      vpcNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_default, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
-/// 			Network: vpcNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: vpcNetwork.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAlloc.Name,
@@ -662,7 +668,7 @@ import 'bitbucket_server_config_state.dart';
 /// 			Username: pulumi.String("test"),
 /// 			ApiKey:   pulumi.String("<api-key>"),
 /// 			PeeredNetwork: std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
-/// 				Text:    vpcNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 				Text:    vpcNetwork.ID(),
 /// 				Search:  pulumi.String(project.Name),
 /// 				Replace: pulumi.String(project.Number),
 /// 			}, nil).Result(),
@@ -678,7 +684,7 @@ import 'bitbucket_server_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -689,17 +695,26 @@ import 'bitbucket_server_config_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_projects_service" "servicenetworking" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service = "servicenetworking.googleapis.com"
 /// }
 /// resource "gcp_compute_network" "vpc_network" {
 ///   depends_on = [gcp_projects_service.servicenetworking]
-///   name       = "vpc-network"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name = "vpc-network"
 /// }
-/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+/// resource "gcp_compute_global_address" "private_ip_alloc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "private-ip-alloc"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -707,16 +722,22 @@ import 'bitbucket_server_config_state.dart';
 ///   network       = gcp_compute_network.vpc_network.id
 /// }
 /// resource "gcp_servicenetworking_connection" "default" {
-///   depends_on              = [gcp_projects_service.servicenetworking]
+///   depends_on = [gcp_projects_service.servicenetworking]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.vpc_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.private_ip_alloc.name]
 /// }
-/// resource "gcp_cloudbuild_bitbucketserverconfig" "bbs-config-with-peered-network" {
+/// resource "gcp_cloudbuild_bitbucket_server_config" "bbs-config-with-peered-network" {
 ///   depends_on = [gcp_servicenetworking_connection.default]
-///   config_id  = "bbs-config"
-///   location   = "us-central1"
-///   host_uri   = "https://bbs.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   config_id = "bbs-config"
+///   location  = "us-central1"
+///   host_uri  = "https://bbs.com"
 ///   secrets = {
 ///     admin_access_token_version_name = "projects/myProject/secrets/mybbspat/versions/1"
 ///     read_access_token_version_name  = "projects/myProject/secrets/mybbspat/versions/1"
@@ -724,7 +745,7 @@ import 'bitbucket_server_config_state.dart';
 ///   }
 ///   username       = "test"
 ///   api_key        = "<api-key>"
-///   peered_network = replace(gcp_compute_network.vpc_network.id, data.gcp_organizations_getproject.project.name, data.gcp_organizations_getproject.project.number)
+///   peered_network = replace(gcp_compute_network.vpc_network.id, data.gcp_organizations_project.project.name, data.gcp_organizations_project.project.number)
 ///   ssl_ca         = "-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n"
 /// }
 /// ```
@@ -959,7 +980,7 @@ class BitbucketServerConfig extends pulumi.CustomResource {
           'gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     apiKey = registerOutput<String>('apiKey');
     configId = registerOutput<String>('configId');

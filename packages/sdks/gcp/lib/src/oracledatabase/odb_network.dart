@@ -83,8 +83,8 @@ import 'odb_network_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -115,7 +115,7 @@ import 'odb_network_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -123,16 +123,19 @@ import 'odb_network_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "default" {
+/// data "gcp_compute_network" "default" {
 ///   name    = "new"
 ///   project = "my-project"
 /// }
 ///
-/// resource "gcp_oracledatabase_odbnetwork" "my-odbnetwork" {
+/// resource "gcp_oracledatabase_odb_network" "my-odbnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   odb_network_id = "my-odbnetwork"
 ///   location       = "us-west3"
 ///   project        = "my-project"
-///   network        = data.gcp_compute_getnetwork.default.id
+///   network        = data.gcp_compute_network.default.id
 ///   labels = {
 ///     "terraform_created" = "true"
 ///   }
@@ -275,8 +278,8 @@ import 'odb_network_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -308,7 +311,7 @@ import 'odb_network_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -316,16 +319,19 @@ import 'odb_network_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "default" {
+/// data "gcp_compute_network" "default" {
 ///   name    = "new"
 ///   project = "my-project"
 /// }
 ///
-/// resource "gcp_oracledatabase_odbnetwork" "my-odbnetwork" {
+/// resource "gcp_oracledatabase_odb_network" "my-odbnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   odb_network_id  = "my-odbnetwork"
 ///   location        = "us-west3"
 ///   project         = "my-project"
-///   network         = data.gcp_compute_getnetwork.default.id
+///   network         = data.gcp_compute_network.default.id
 ///   gcp_oracle_zone = "us-west3-a-r1"
 ///   labels = {
 ///     "terraform_created" = "true"
@@ -476,7 +482,7 @@ class OdbNetwork extends pulumi.CustomResource {
           'gcp:oracledatabase/odbNetwork:OdbNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

@@ -128,7 +128,7 @@ import 'backup_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/filestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -159,7 +159,7 @@ import 'backup_state.dart';
 /// 			Name:            pulumi.String("fs-bkup"),
 /// 			Location:        pulumi.String("us-central1"),
 /// 			Description:     pulumi.String("This is a filestore backup for the test instance"),
-/// 			SourceInstance:  instance.ID().ToIDOutput().ToStringOutput(),
+/// 			SourceInstance:  instance.ID(),
 /// 			SourceFileShare: pulumi.String("share1"),
 /// 			Labels: pulumi.StringMap{
 /// 				"files":       pulumi.String("label1"),
@@ -174,7 +174,7 @@ import 'backup_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -183,6 +183,9 @@ import 'backup_state.dart';
 /// }
 ///
 /// resource "gcp_filestore_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "fs-inst"
 ///   location = "us-central1-b"
 ///   tier     = "BASIC_HDD"
@@ -197,6 +200,9 @@ import 'backup_state.dart';
 ///   }
 /// }
 /// resource "gcp_filestore_backup" "backup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "fs-bkup"
 ///   location          = "us-central1"
 ///   description       = "This is a filestore backup for the test instance"
@@ -378,7 +384,7 @@ class Backup extends pulumi.CustomResource {
           'gcp:filestore/backup:Backup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     capacityGb = registerOutput<String>('capacityGb');

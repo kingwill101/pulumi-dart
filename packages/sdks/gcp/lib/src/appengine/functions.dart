@@ -41,7 +41,7 @@ import 'get_default_service_account_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -57,7 +57,7 @@ import 'get_default_service_account_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -65,11 +65,11 @@ import 'get_default_service_account_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_appengine_getdefaultserviceaccount" "default" {
+/// data "gcp_appengine_default_service_account" "default" {
 /// }
 ///
 /// output "defaultAccount" {
-///   value = data.gcp_appengine_getdefaultserviceaccount.default.email
+///   value = data.gcp_appengine_default_service_account.default.email
 /// }
 /// ```
 /// ```java

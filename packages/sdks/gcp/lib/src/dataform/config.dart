@@ -244,10 +244,10 @@ import 'config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataform"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataform"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -315,14 +315,14 @@ import 'config_state.dart';
 /// 		}
 /// 		exampleKey, err := kms.NewCryptoKey(ctx, "example_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("example-crypto-key-name"),
-/// 			KeyRing: keyring.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRing: keyring.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// Grant the Encrypter/Decrypter role to the Dataform service agent on the KMS key
 /// 		cryptoKeyBinding, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key_binding", &kms.CryptoKeyIAMMemberArgs{
-/// 			CryptoKeyId: exampleKey.ID().ToIDOutput().ToStringOutput(),
+/// 			CryptoKeyId: exampleKey.ID(),
 /// 			Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 /// 			Member:      dataformSa.Member,
 /// 		})
@@ -332,7 +332,7 @@ import 'config_state.dart';
 /// 		// Config with KMS key provided
 /// 		_, err = dataform.NewConfig(ctx, "config", &dataform.ConfigArgs{
 /// 			Region:            pulumi.String("us-central1"),
-/// 			DefaultKmsKeyName: exampleKey.ID().ToIDOutput().ToStringOutput(),
+/// 			DefaultKmsKeyName: exampleKey.ID(),
 /// 			Project:           project.ProjectId,
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			cryptoKeyBinding,
@@ -345,7 +345,7 @@ import 'config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -357,6 +357,9 @@ import 'config_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "project-1"
 ///   project_id      = "project-1"
 ///   org_id          = "123456789"
@@ -365,49 +368,73 @@ import 'config_state.dart';
 /// }
 /// # Enable Cloud Key KMS API
 /// resource "gcp_projects_service" "cloudkms_api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project            = gcp_organizations_project.project.project_id
 ///   service            = "cloudkms.googleapis.com"
 ///   disable_on_destroy = false
 /// }
 /// # Enable Dataform API
 /// resource "gcp_projects_service" "dataform_api" {
-///   depends_on         = [gcp_projects_service.cloudkms_api]
+///   depends_on = [gcp_projects_service.cloudkms_api]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project            = gcp_organizations_project.project.project_id
 ///   service            = "dataform.googleapis.com"
 ///   disable_on_destroy = false
 /// }
 /// # Add a sleep to wait for IAM propagation after API enablement
 /// resource "time_sleep" "wait_for_dataform_api" {
-///   depends_on      = [gcp_projects_service.dataform_api]
+///   depends_on = [gcp_projects_service.dataform_api]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "30s"
 /// }
 /// # Retrieve the Dataform service identity
-/// resource "gcp_projects_serviceidentity" "dataform_sa" {
+/// resource "gcp_projects_service_identity" "dataform_sa" {
 ///   depends_on = [time_sleep.wait_for_dataform_api]
-///   project    = gcp_organizations_project.project.project_id
-///   service    = "dataform.googleapis.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.project.project_id
+///   service = "dataform.googleapis.com"
 /// }
-/// resource "gcp_kms_keyring" "keyring" {
+/// resource "gcp_kms_key_ring" "keyring" {
 ///   depends_on = [time_sleep.wait_for_dataform_api]
-///   project    = gcp_organizations_project.project.project_id
-///   name       = "example-key-ring"
-///   location   = "us-central1"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project  = gcp_organizations_project.project.project_id
+///   name     = "example-key-ring"
+///   location = "us-central1"
 /// }
-/// resource "gcp_kms_cryptokey" "example_key" {
+/// resource "gcp_kms_crypto_key" "example_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-crypto-key-name"
-///   key_ring = gcp_kms_keyring.keyring.id
+///   key_ring = gcp_kms_key_ring.keyring.id
 /// }
 /// # Grant the Encrypter/Decrypter role to the Dataform service agent on the KMS key
-/// resource "gcp_kms_cryptokeyiammember" "crypto_key_binding" {
-///   crypto_key_id = gcp_kms_cryptokey.example_key.id
+/// resource "gcp_kms_crypto_key_i_a_m_member" "crypto_key_binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key_id = gcp_kms_crypto_key.example_key.id
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        = gcp_projects_serviceidentity.dataform_sa.member
+///   member        = gcp_projects_service_identity.dataform_sa.member
 /// }
 /// # Config with KMS key provided
 /// resource "gcp_dataform_config" "config" {
-///   depends_on           = [gcp_kms_cryptokeyiammember.crypto_key_binding]
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.crypto_key_binding]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region               = "us-central1"
-///   default_kms_key_name = gcp_kms_cryptokey.example_key.id
+///   default_kms_key_name = gcp_kms_crypto_key.example_key.id
 ///   project              = gcp_organizations_project.project.project_id
 /// }
 /// ```
@@ -717,9 +744,9 @@ import 'config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataform"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataform"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -769,7 +796,7 @@ import 'config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -781,6 +808,9 @@ import 'config_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "project-1"
 ///   project_id      = "project-1"
 ///   org_id          = "123456789"
@@ -789,20 +819,29 @@ import 'config_state.dart';
 /// }
 /// # Enable Dataform API
 /// resource "gcp_projects_service" "dataform_api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project            = gcp_organizations_project.project.project_id
 ///   service            = "dataform.googleapis.com"
 ///   disable_on_destroy = false
 /// }
 /// # Add a sleep to wait for IAM propagation after API enablement
 /// resource "time_sleep" "wait_for_dataform_api" {
-///   depends_on      = [gcp_projects_service.dataform_api]
+///   depends_on = [gcp_projects_service.dataform_api]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "30s"
 /// }
 /// # Config without KMS key provided
 /// resource "gcp_dataform_config" "config" {
 ///   depends_on = [time_sleep.wait_for_dataform_api]
-///   region     = "us-central1"
-///   project    = gcp_organizations_project.project.project_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   region  = "us-central1"
+///   project = gcp_organizations_project.project.project_id
 /// }
 /// ```
 /// ```java
@@ -942,7 +981,7 @@ class Config extends pulumi.CustomResource {
           'gcp:dataform/config:Config',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     defaultKmsKeyName = registerOutput<String?>('defaultKmsKeyName');
     project = registerOutput<String>('project');

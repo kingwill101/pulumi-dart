@@ -51,7 +51,7 @@ import 'secret_ciphertext_state.dart';
 ///     zone: "us-central1-a",
 ///     bootDisk: {
 ///         initializeParams: {
-///             image: "debian-cloud/debian-11",
+///             image: "debian-cloud/debian-13",
 ///         },
 ///     },
 ///     metadata: {
@@ -83,7 +83,7 @@ import 'secret_ciphertext_state.dart';
 ///     zone="us-central1-a",
 ///     boot_disk={
 ///         "initialize_params": {
-///             "image": "debian-cloud/debian-11",
+///             "image": "debian-cloud/debian-13",
 ///         },
 ///     },
 ///     metadata={
@@ -137,7 +137,7 @@ import 'secret_ciphertext_state.dart';
 ///         {
 ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
 ///             {
-///                 Image = "debian-cloud/debian-11",
+///                 Image = "debian-cloud/debian-13",
 ///             },
 ///         },
 ///         Metadata =
@@ -152,8 +152,8 @@ import 'secret_ciphertext_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -168,14 +168,14 @@ import 'secret_ciphertext_state.dart';
 /// 		}
 /// 		cryptokey, err := kms.NewCryptoKey(ctx, "cryptokey", &kms.CryptoKeyArgs{
 /// 			Name:           pulumi.String("crypto-key-example"),
-/// 			KeyRing:        keyring.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRing:        keyring.ID(),
 /// 			RotationPeriod: pulumi.String("7776000s"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		myPassword, err := kms.NewSecretCiphertext(ctx, "my_password", &kms.SecretCiphertextArgs{
-/// 			CryptoKey: cryptokey.ID().ToIDOutput().ToStringOutput(),
+/// 			CryptoKey: cryptokey.ID(),
 /// 			Plaintext: pulumi.String("my-secret-password"),
 /// 		})
 /// 		if err != nil {
@@ -195,7 +195,7 @@ import 'secret_ciphertext_state.dart';
 /// 			Zone:        pulumi.String("us-central1-a"),
 /// 			BootDisk: &compute.InstanceBootDiskArgs{
 /// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-/// 					Image: pulumi.String("debian-cloud/debian-11"),
+/// 					Image: pulumi.String("debian-cloud/debian-13"),
 /// 				},
 /// 			},
 /// 			Metadata: pulumi.StringMap{
@@ -210,7 +210,7 @@ import 'secret_ciphertext_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -218,20 +218,32 @@ import 'secret_ciphertext_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_keyring" "keyring" {
+/// resource "gcp_kms_key_ring" "keyring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "keyring-example"
 ///   location = "global"
 /// }
-/// resource "gcp_kms_cryptokey" "cryptokey" {
+/// resource "gcp_kms_crypto_key" "cryptokey" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "crypto-key-example"
-///   key_ring        = gcp_kms_keyring.keyring.id
+///   key_ring        = gcp_kms_key_ring.keyring.id
 ///   rotation_period = "7776000s"
 /// }
-/// resource "gcp_kms_secretciphertext" "my_password" {
-///   crypto_key = gcp_kms_cryptokey.cryptokey.id
+/// resource "gcp_kms_secret_ciphertext" "my_password" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key = gcp_kms_crypto_key.cryptokey.id
 ///   plaintext  = "my-secret-password"
 /// }
 /// resource "gcp_compute_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
@@ -242,11 +254,11 @@ import 'secret_ciphertext_state.dart';
 ///   zone         = "us-central1-a"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = "debian-cloud/debian-11"
+///       image = "debian-cloud/debian-13"
 ///     }
 ///   }
 ///   metadata = {
-///     "password" = gcp_kms_secretciphertext.my_password.ciphertext
+///     "password" = gcp_kms_secret_ciphertext.my_password.ciphertext
 ///   }
 /// }
 /// ```
@@ -308,7 +320,7 @@ import 'secret_ciphertext_state.dart';
 ///             .zone("us-central1-a")
 ///             .bootDisk(InstanceBootDiskArgs.builder()
 ///                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-///                     .image("debian-cloud/debian-11")
+///                     .image("debian-cloud/debian-13")
 ///                     .build())
 ///                 .build())
 ///             .metadata(Map.of("password", myPassword.ciphertext()))
@@ -348,7 +360,7 @@ import 'secret_ciphertext_state.dart';
 ///       zone: us-central1-a
 ///       bootDisk:
 ///         initializeParams:
-///           image: debian-cloud/debian-11
+///           image: debian-cloud/debian-13
 ///       metadata:
 ///         password: ${myPassword.ciphertext}
 /// ```
@@ -382,7 +394,7 @@ class SecretCiphertext extends pulumi.CustomResource {
           'gcp:kms/secretCiphertext:SecretCiphertext',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['additionalAuthenticatedData', 'plaintext'],
         ) {
     additionalAuthenticatedData = registerOutput<String?>('additionalAuthenticatedData', isSecret: true);

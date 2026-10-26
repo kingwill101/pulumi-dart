@@ -40,7 +40,7 @@ import 'release_state.dart';
 ///     releaseId: "previous-release",
 ///     unitKind: exampleUnitkind.id,
 ///     blueprint: {
-///         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee",
+///         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680",
 ///     },
 /// });
 /// const example = new gcp.saasruntime.Release("example", {
@@ -48,7 +48,7 @@ import 'release_state.dart';
 ///     releaseId: "example-release",
 ///     unitKind: exampleUnitkind.id,
 ///     blueprint: {
-///         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:7bba0fa85b2956df7768f7b32e715b6fe11f4f4193e2a70a35bf3f286a6cdf9e",
+///         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:c28fbfbb6c5d8ee1c1c1a00561df17c8e47d2c5b673c61ce0c189de9a27ae09a",
 ///     },
 ///     inputVariableDefaults: [{
 ///         variable: "name",
@@ -76,14 +76,14 @@ import 'release_state.dart';
 ///     release_id="previous-release",
 ///     unit_kind=example_unitkind.id,
 ///     blueprint={
-///         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee",
+///         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680",
 ///     })
 /// example = gcp.saasruntime.Release("example",
 ///     location="global",
 ///     release_id="example-release",
 ///     unit_kind=example_unitkind.id,
 ///     blueprint={
-///         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:7bba0fa85b2956df7768f7b32e715b6fe11f4f4193e2a70a35bf3f286a6cdf9e",
+///         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:c28fbfbb6c5d8ee1c1c1a00561df17c8e47d2c5b673c61ce0c189de9a27ae09a",
 ///     },
 ///     input_variable_defaults=[{
 ///         "variable": "name",
@@ -126,7 +126,7 @@ import 'release_state.dart';
 ///         UnitKind = exampleUnitkind.Id,
 ///         Blueprint = new Gcp.SaaSRuntime.Inputs.ReleaseBlueprintArgs
 ///         {
-///             Package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee",
+///             Package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680",
 ///         },
 ///     });
 ///
@@ -137,7 +137,7 @@ import 'release_state.dart';
 ///         UnitKind = exampleUnitkind.Id,
 ///         Blueprint = new Gcp.SaaSRuntime.Inputs.ReleaseBlueprintArgs
 ///         {
-///             Package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:7bba0fa85b2956df7768f7b32e715b6fe11f4f4193e2a70a35bf3f286a6cdf9e",
+///             Package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:c28fbfbb6c5d8ee1c1c1a00561df17c8e47d2c5b673c61ce0c189de9a27ae09a",
 ///         },
 ///         InputVariableDefaults = new[]
 ///         {
@@ -156,7 +156,7 @@ import 'release_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/saasruntime"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/saasruntime"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -177,7 +177,7 @@ import 'release_state.dart';
 /// 		exampleUnitkind, err := saasruntime.NewUnitKind(ctx, "example_unitkind", &saasruntime.UnitKindArgs{
 /// 			Location:   pulumi.String("global"),
 /// 			UnitKindId: pulumi.String("example-unitkind"),
-/// 			Saas:       exampleSaas.ID().ToIDOutput().ToStringOutput(),
+/// 			Saas:       exampleSaas.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -185,9 +185,9 @@ import 'release_state.dart';
 /// 		_, err = saasruntime.NewRelease(ctx, "example_previous", &saasruntime.ReleaseArgs{
 /// 			Location:  pulumi.String("global"),
 /// 			ReleaseId: pulumi.String("previous-release"),
-/// 			UnitKind:  exampleUnitkind.ID().ToIDOutput().ToStringOutput(),
+/// 			UnitKind:  exampleUnitkind.ID(),
 /// 			Blueprint: &saasruntime.ReleaseBlueprintArgs{
-/// 				Package: pulumi.String("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee"),
+/// 				Package: pulumi.String("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -196,9 +196,9 @@ import 'release_state.dart';
 /// 		_, err = saasruntime.NewRelease(ctx, "example", &saasruntime.ReleaseArgs{
 /// 			Location:  pulumi.String("global"),
 /// 			ReleaseId: pulumi.String("example-release"),
-/// 			UnitKind:  exampleUnitkind.ID().ToIDOutput().ToStringOutput(),
+/// 			UnitKind:  exampleUnitkind.ID(),
 /// 			Blueprint: &saasruntime.ReleaseBlueprintArgs{
-/// 				Package: pulumi.String("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:7bba0fa85b2956df7768f7b32e715b6fe11f4f4193e2a70a35bf3f286a6cdf9e"),
+/// 				Package: pulumi.String("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:c28fbfbb6c5d8ee1c1c1a00561df17c8e47d2c5b673c61ce0c189de9a27ae09a"),
 /// 			},
 /// 			InputVariableDefaults: saasruntime.ReleaseInputVariableDefaultArray{
 /// 				&saasruntime.ReleaseInputVariableDefaultArgs{
@@ -216,7 +216,7 @@ import 'release_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -224,32 +224,44 @@ import 'release_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_saasruntime_saas" "example_saas" {
+/// resource "gcp_saasruntime_saa_s" "example_saas" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   saas_id  = "example-saas"
 ///   location = "global"
 ///   locations {
 ///     name = "us-central1"
 ///   }
 /// }
-/// resource "gcp_saasruntime_unitkind" "example_unitkind" {
+/// resource "gcp_saasruntime_unit_kind" "example_unitkind" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "global"
 ///   unit_kind_id = "example-unitkind"
-///   saas         = gcp_saasruntime_saas.example_saas.id
+///   saas         = gcp_saasruntime_saa_s.example_saas.id
 /// }
 /// resource "gcp_saasruntime_release" "example_previous" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location   = "global"
 ///   release_id = "previous-release"
-///   unit_kind  = gcp_saasruntime_unitkind.example_unitkind.id
+///   unit_kind  = gcp_saasruntime_unit_kind.example_unitkind.id
 ///   blueprint = {
-///     package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee"
+///     package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680"
 ///   }
 /// }
 /// resource "gcp_saasruntime_release" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location   = "global"
 ///   release_id = "example-release"
-///   unit_kind  = gcp_saasruntime_unitkind.example_unitkind.id
+///   unit_kind  = gcp_saasruntime_unit_kind.example_unitkind.id
 ///   blueprint = {
-///     package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:7bba0fa85b2956df7768f7b32e715b6fe11f4f4193e2a70a35bf3f286a6cdf9e"
+///     package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:c28fbfbb6c5d8ee1c1c1a00561df17c8e47d2c5b673c61ce0c189de9a27ae09a"
 ///   }
 ///   input_variable_defaults {
 ///     variable = "name"
@@ -305,7 +317,7 @@ import 'release_state.dart';
 ///             .releaseId("previous-release")
 ///             .unitKind(exampleUnitkind.id())
 ///             .blueprint(ReleaseBlueprintArgs.builder()
-///                 .package_("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee")
+///                 .package_("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680")
 ///                 .build())
 ///             .build());
 ///
@@ -314,7 +326,7 @@ import 'release_state.dart';
 ///             .releaseId("example-release")
 ///             .unitKind(exampleUnitkind.id())
 ///             .blueprint(ReleaseBlueprintArgs.builder()
-///                 .package_("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:7bba0fa85b2956df7768f7b32e715b6fe11f4f4193e2a70a35bf3f286a6cdf9e")
+///                 .package_("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:c28fbfbb6c5d8ee1c1c1a00561df17c8e47d2c5b673c61ce0c189de9a27ae09a")
 ///                 .build())
 ///             .inputVariableDefaults(ReleaseInputVariableDefaultArgs.builder()
 ///                 .variable("name")
@@ -351,7 +363,7 @@ import 'release_state.dart';
 ///       releaseId: previous-release
 ///       unitKind: ${exampleUnitkind.id}
 ///       blueprint:
-///         package: us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee
+///         package: us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680
 ///   example:
 ///     type: gcp:saasruntime:Release
 ///     properties:
@@ -359,7 +371,7 @@ import 'release_state.dart';
 ///       releaseId: example-release
 ///       unitKind: ${exampleUnitkind.id}
 ///       blueprint:
-///         package: us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:7bba0fa85b2956df7768f7b32e715b6fe11f4f4193e2a70a35bf3f286a6cdf9e
+///         package: us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:c28fbfbb6c5d8ee1c1c1a00561df17c8e47d2c5b673c61ce0c189de9a27ae09a
 ///       inputVariableDefaults:
 ///         - variable: name
 ///           value: test
@@ -474,7 +486,7 @@ class Release extends pulumi.CustomResource {
           'gcp:saasruntime/release:Release',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

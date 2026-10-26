@@ -72,7 +72,7 @@ import 'preview_feature_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -95,7 +95,7 @@ import 'preview_feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -103,7 +103,10 @@ import 'preview_feature_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_previewfeature" "gce_preview_feature" {
+/// resource "gcp_compute_preview_feature" "gce_preview_feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "alpha-api-access"
 ///   activation_status = "ACTIVATION_STATE_UNSPECIFIED"
 ///   rollout_operation = {
@@ -204,7 +207,7 @@ class PreviewFeature extends pulumi.CustomResource {
           'gcp:compute/previewFeature:PreviewFeature',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     activationStatus = registerOutput<String>('activationStatus');
     this.name = registerOutput<String>('name');

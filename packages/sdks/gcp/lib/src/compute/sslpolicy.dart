@@ -100,7 +100,7 @@ import 'sslpolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -138,7 +138,7 @@ import 'sslpolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -146,16 +146,25 @@ import 'sslpolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_sslpolicy" "prod-ssl-policy" {
+/// resource "gcp_compute_s_s_l_policy" "prod-ssl-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "production-ssl-policy"
 ///   profile = "MODERN"
 /// }
-/// resource "gcp_compute_sslpolicy" "nonprod-ssl-policy" {
+/// resource "gcp_compute_s_s_l_policy" "nonprod-ssl-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "nonprod-ssl-policy"
 ///   profile         = "MODERN"
 ///   min_tls_version = "TLS_1_2"
 /// }
-/// resource "gcp_compute_sslpolicy" "custom-ssl-policy" {
+/// resource "gcp_compute_s_s_l_policy" "custom-ssl-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "custom-ssl-policy"
 ///   min_tls_version = "TLS_1_2"
 ///   profile         = "CUSTOM"
@@ -277,7 +286,7 @@ import 'sslpolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -297,7 +306,7 @@ import 'sslpolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -305,7 +314,10 @@ import 'sslpolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_sslpolicy" "post-quantum-ssl-policy" {
+/// resource "gcp_compute_s_s_l_policy" "post-quantum-ssl-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "post-quantum-ssl-policy"
 ///   profile                   = "MODERN"
 ///   min_tls_version           = "TLS_1_2"
@@ -453,7 +465,7 @@ class SSLPolicy extends pulumi.CustomResource {
           'gcp:compute/sSLPolicy:SSLPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     customFeatures = registerOutput<List<String>?>('customFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

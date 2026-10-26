@@ -50,7 +50,7 @@ import 'get_gateway_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigateway"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigateway"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -68,7 +68,7 @@ import 'get_gateway_iam_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -76,7 +76,7 @@ import 'get_gateway_iam_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_apigateway_getapiconfigiampolicy" "policy" {
+/// data "gcp_apigateway_api_config_iam_policy" "policy" {
 ///   api        = apiCfg.api
 ///   api_config = apiCfg.apiConfigId
 /// }
@@ -189,7 +189,7 @@ pulumi.Output<GetApiConfigIamPolicyResult> getApiConfigIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigateway"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigateway"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -207,7 +207,7 @@ pulumi.Output<GetApiConfigIamPolicyResult> getApiConfigIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -215,7 +215,7 @@ pulumi.Output<GetApiConfigIamPolicyResult> getApiConfigIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_apigateway_getapiiampolicy" "policy" {
+/// data "gcp_apigateway_api_iam_policy" "policy" {
 ///   project = api.project
 ///   api     = api.apiId
 /// }
@@ -331,7 +331,7 @@ pulumi.Output<GetApiIamPolicyResult> getApiIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigateway"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigateway"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -350,7 +350,7 @@ pulumi.Output<GetApiIamPolicyResult> getApiIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -358,7 +358,7 @@ pulumi.Output<GetApiIamPolicyResult> getApiIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_apigateway_getgatewayiampolicy" "policy" {
+/// data "gcp_apigateway_gateway_iam_policy" "policy" {
 ///   project = apiGw.project
 ///   region  = apiGw.region
 ///   gateway = apiGw.gatewayId

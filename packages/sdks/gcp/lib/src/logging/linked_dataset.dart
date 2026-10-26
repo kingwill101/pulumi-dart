@@ -77,7 +77,7 @@ import 'linked_dataset_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -94,7 +94,7 @@ import 'linked_dataset_state.dart';
 /// 		}
 /// 		_, err = logging.NewLinkedDataset(ctx, "logging_linked_dataset", &logging.LinkedDatasetArgs{
 /// 			LinkId:      pulumi.String("mylink"),
-/// 			Bucket:      loggingLinkedDataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket:      loggingLinkedDataset.ID(),
 /// 			Description: pulumi.String("Linked dataset test"),
 /// 		})
 /// 		if err != nil {
@@ -105,7 +105,7 @@ import 'linked_dataset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -113,15 +113,21 @@ import 'linked_dataset_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_projectbucketconfig" "logging_linked_dataset" {
+/// resource "gcp_logging_project_bucket_config" "logging_linked_dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "global"
 ///   project          = "my-project-name"
 ///   enable_analytics = true
 ///   bucket_id        = "my-bucket"
 /// }
-/// resource "gcp_logging_linkeddataset" "logging_linked_dataset" {
+/// resource "gcp_logging_linked_dataset" "logging_linked_dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   link_id     = "mylink"
-///   bucket      = gcp_logging_projectbucketconfig.logging_linked_dataset.id
+///   bucket      = gcp_logging_project_bucket_config.logging_linked_dataset.id
 ///   description = "Linked dataset test"
 /// }
 /// ```
@@ -261,7 +267,7 @@ import 'linked_dataset_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -293,7 +299,7 @@ import 'linked_dataset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -301,14 +307,20 @@ import 'linked_dataset_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_projectbucketconfig" "logging_linked_dataset" {
+/// resource "gcp_logging_project_bucket_config" "logging_linked_dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "global"
 ///   project          = "my-project-name"
 ///   enable_analytics = true
 ///   bucket_id        = "my-bucket"
 /// }
-/// resource "gcp_logging_linkeddataset" "logging_linked_dataset" {
-///   depends_on  = [gcp_logging_projectbucketconfig.logging_linked_dataset]
+/// resource "gcp_logging_linked_dataset" "logging_linked_dataset" {
+///   depends_on = [gcp_logging_project_bucket_config.logging_linked_dataset]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   link_id     = "mylink"
 ///   bucket      = "my-bucket"
 ///   parent      = "projects/my-project-name"
@@ -442,7 +454,7 @@ class LinkedDataset extends pulumi.CustomResource {
           'gcp:logging/linkedDataset:LinkedDataset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     bigqueryDatasets = registerOutput<List<LinkedDatasetBigqueryDataset>>('bigqueryDatasets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinkedDatasetBigqueryDataset>(guardedValue, (value) => LinkedDatasetBigqueryDataset.fromMap((value as Map).cast<String, dynamic>())); });
     bucket = registerOutput<String>('bucket');

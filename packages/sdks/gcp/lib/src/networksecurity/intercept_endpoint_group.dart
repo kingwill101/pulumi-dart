@@ -100,8 +100,8 @@ import 'intercept_endpoint_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -117,7 +117,7 @@ import 'intercept_endpoint_group_state.dart';
 /// 		deploymentGroup, err := networksecurity.NewInterceptDeploymentGroup(ctx, "deployment_group", &networksecurity.InterceptDeploymentGroupArgs{
 /// 			InterceptDeploymentGroupId: pulumi.String("example-dg"),
 /// 			Location:                   pulumi.String("global"),
-/// 			Network:                    network.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:                    network.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -125,7 +125,7 @@ import 'intercept_endpoint_group_state.dart';
 /// 		_, err = networksecurity.NewInterceptEndpointGroup(ctx, "default", &networksecurity.InterceptEndpointGroupArgs{
 /// 			InterceptEndpointGroupId: pulumi.String("example-eg"),
 /// 			Location:                 pulumi.String("global"),
-/// 			InterceptDeploymentGroup: deploymentGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			InterceptDeploymentGroup: deploymentGroup.ID(),
 /// 			Description:              pulumi.String("some description"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
@@ -139,7 +139,7 @@ import 'intercept_endpoint_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -148,18 +148,27 @@ import 'intercept_endpoint_group_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networksecurity_interceptdeploymentgroup" "deployment_group" {
+/// resource "gcp_networksecurity_intercept_deployment_group" "deployment_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   intercept_deployment_group_id = "example-dg"
 ///   location                      = "global"
 ///   network                       = gcp_compute_network.network.id
 /// }
-/// resource "gcp_networksecurity_interceptendpointgroup" "default" {
+/// resource "gcp_networksecurity_intercept_endpoint_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   intercept_endpoint_group_id = "example-eg"
 ///   location                    = "global"
-///   intercept_deployment_group  = gcp_networksecurity_interceptdeploymentgroup.deployment_group.id
+///   intercept_deployment_group  = gcp_networksecurity_intercept_deployment_group.deployment_group.id
 ///   description                 = "some description"
 ///   labels = {
 ///     "foo" = "bar"
@@ -329,7 +338,7 @@ class InterceptEndpointGroup extends pulumi.CustomResource {
           'gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     associations = registerOutput<List<InterceptEndpointGroupAssociation>>('associations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterceptEndpointGroupAssociation>(guardedValue, (value) => InterceptEndpointGroupAssociation.fromMap((value as Map).cast<String, dynamic>())); });

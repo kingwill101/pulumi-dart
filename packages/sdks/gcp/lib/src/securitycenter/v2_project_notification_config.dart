@@ -78,8 +78,8 @@ import 'v2_project_notification_config_streaming_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -95,7 +95,7 @@ import 'v2_project_notification_config_streaming_config.dart';
 /// 			ConfigId:    pulumi.String("my-config"),
 /// 			Project:     pulumi.String("my-project-name"),
 /// 			Description: pulumi.String("My custom Cloud Security Command Center Finding Notification Configuration"),
-/// 			PubsubTopic: sccV2ProjectNotification.ID().ToIDOutput().ToStringOutput(),
+/// 			PubsubTopic: sccV2ProjectNotification.ID(),
 /// 			StreamingConfig: &securitycenter.V2ProjectNotificationConfigStreamingConfigArgs{
 /// 				Filter: pulumi.String("category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\""),
 /// 			},
@@ -108,7 +108,7 @@ import 'v2_project_notification_config_streaming_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -117,9 +117,15 @@ import 'v2_project_notification_config_streaming_config.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "scc_v2_project_notification" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-topic"
 /// }
-/// resource "gcp_securitycenter_v2projectnotificationconfig" "custom_notification_config" {
+/// resource "gcp_securitycenter_v2_project_notification_config" "custom_notification_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   config_id    = "my-config"
 ///   project      = "my-project-name"
 ///   description  = "My custom Cloud Security Command Center Finding Notification Configuration"
@@ -248,7 +254,7 @@ class V2ProjectNotificationConfig extends pulumi.CustomResource {
           'gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     configId = registerOutput<String>('configId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

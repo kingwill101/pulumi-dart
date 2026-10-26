@@ -121,14 +121,14 @@ class GetInstanceTemplateScheduling {
   factory GetInstanceTemplateScheduling.fromMap(Map<String, dynamic> map) {
     return GetInstanceTemplateScheduling(
       automaticRestart: pulumi.Input.fromValue(map['automaticRestart'] as bool),
-      availabilityDomain: pulumi.Input.fromValue((map['availabilityDomain'] as num).toInt()),
+      availabilityDomain: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['availabilityDomain'])),
       gracefulShutdowns: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceTemplateSchedulingGracefulShutdown>(map['gracefulShutdowns']!, (value) => GetInstanceTemplateSchedulingGracefulShutdown.fromMap((value as Map).cast<String, dynamic>()))),
-      hostErrorTimeoutSeconds: pulumi.Input.fromValue((map['hostErrorTimeoutSeconds'] as num).toInt()),
+      hostErrorTimeoutSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['hostErrorTimeoutSeconds'])),
       instanceTerminationAction: pulumi.Input.fromValue(map['instanceTerminationAction'] as String),
       localSsdRecoveryTimeouts: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout>(map['localSsdRecoveryTimeouts']!, (value) => GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout.fromMap((value as Map).cast<String, dynamic>()))),
       maintenanceInterval: pulumi.Input.fromValue(map['maintenanceInterval'] as String),
       maxRunDurations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceTemplateSchedulingMaxRunDuration>(map['maxRunDurations']!, (value) => GetInstanceTemplateSchedulingMaxRunDuration.fromMap((value as Map).cast<String, dynamic>()))),
-      minNodeCpus: pulumi.Input.fromValue((map['minNodeCpus'] as num).toInt()),
+      minNodeCpus: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minNodeCpus'])),
       nodeAffinities: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceTemplateSchedulingNodeAffinity>(map['nodeAffinities']!, (value) => GetInstanceTemplateSchedulingNodeAffinity.fromMap((value as Map).cast<String, dynamic>()))),
       onHostMaintenance: pulumi.Input.fromValue(map['onHostMaintenance'] as String),
       onInstanceStopActions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceTemplateSchedulingOnInstanceStopAction>(map['onInstanceStopActions']!, (value) => GetInstanceTemplateSchedulingOnInstanceStopAction.fromMap((value as Map).cast<String, dynamic>()))),

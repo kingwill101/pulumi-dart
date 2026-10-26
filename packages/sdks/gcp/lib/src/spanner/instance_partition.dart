@@ -87,7 +87,7 @@ import 'instance_partition_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/spanner"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/spanner"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -118,7 +118,7 @@ import 'instance_partition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -127,13 +127,19 @@ import 'instance_partition_state.dart';
 /// }
 ///
 /// resource "gcp_spanner_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "test-instance"
 ///   config       = "nam6"
 ///   display_name = "main-instance"
 ///   num_nodes    = 1
 ///   edition      = "ENTERPRISE_PLUS"
 /// }
-/// resource "gcp_spanner_instancepartition" "partition" {
+/// resource "gcp_spanner_instance_partition" "partition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "test-partition"
 ///   instance     = gcp_spanner_instance.main.name
 ///   config       = "nam8"
@@ -305,7 +311,7 @@ import 'instance_partition_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/spanner"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/spanner"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -345,7 +351,7 @@ import 'instance_partition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -354,13 +360,19 @@ import 'instance_partition_state.dart';
 /// }
 ///
 /// resource "gcp_spanner_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "test-instance"
 ///   config       = "nam6"
 ///   display_name = "main-instance"
 ///   num_nodes    = 1
 ///   edition      = "ENTERPRISE_PLUS"
 /// }
-/// resource "gcp_spanner_instancepartition" "partition" {
+/// resource "gcp_spanner_instance_partition" "partition" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "test-partition"
 ///   instance     = gcp_spanner_instance.main.name
 ///   config       = "nam8"
@@ -530,7 +542,7 @@ class InstancePartition extends pulumi.CustomResource {
           'gcp:spanner/instancePartition:InstancePartition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     autoscalingConfig = registerOutput<InstancePartitionAutoscalingConfig?>('autoscalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePartitionAutoscalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     config = registerOutput<String>('config');

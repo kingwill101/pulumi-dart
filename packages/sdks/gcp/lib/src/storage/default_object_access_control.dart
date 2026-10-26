@@ -83,7 +83,7 @@ import 'default_object_access_control_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -109,7 +109,7 @@ import 'default_object_access_control_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -117,12 +117,18 @@ import 'default_object_access_control_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_defaultobjectaccesscontrol" "public_rule" {
+/// resource "gcp_storage_default_object_access_control" "public_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = gcp_storage_bucket.bucket.name
 ///   role   = "READER"
 ///   entity = "allUsers"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "static-content-bucket"
 ///   location = "US"
 /// }
@@ -242,7 +248,7 @@ class DefaultObjectAccessControl extends pulumi.CustomResource {
           'gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     deletionPolicy = registerOutput<String>('deletionPolicy');

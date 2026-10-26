@@ -53,7 +53,7 @@ import 'project_exclusion_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -72,7 +72,7 @@ import 'project_exclusion_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -80,7 +80,10 @@ import 'project_exclusion_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_projectexclusion" "my-exclusion" {
+/// resource "gcp_logging_project_exclusion" "my-exclusion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-instance-debug-exclusion"
 ///   description = "Exclude GCE instance debug logs"
 ///   filter      = "resource.type = gce_instance AND severity <= DEBUG"
@@ -167,7 +170,7 @@ class ProjectExclusion extends pulumi.CustomResource {
           'gcp:logging/projectExclusion:ProjectExclusion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');

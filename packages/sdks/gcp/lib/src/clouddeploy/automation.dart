@@ -236,7 +236,7 @@ import 'automation_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -313,7 +313,7 @@ import 'automation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -322,14 +322,17 @@ import 'automation_state.dart';
 /// }
 ///
 /// resource "gcp_clouddeploy_automation" "b-automation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "cd-automation"
-///   project           = gcp_clouddeploy_deliverypipeline.pipeline.project
-///   location          = gcp_clouddeploy_deliverypipeline.pipeline.location
-///   delivery_pipeline = gcp_clouddeploy_deliverypipeline.pipeline.name
+///   project           = gcp_clouddeploy_delivery_pipeline.pipeline.project
+///   location          = gcp_clouddeploy_delivery_pipeline.pipeline.location
+///   delivery_pipeline = gcp_clouddeploy_delivery_pipeline.pipeline.name
 ///   service_account   = "my@service-account.com"
 ///   selector = {
 ///     targets = [{
-///       "id" = "*"
+///       id = "*"
 ///     }]
 ///   }
 ///   rules {
@@ -346,11 +349,11 @@ import 'automation_state.dart';
 ///     repair_rollout_rule = {
 ///       id = "repair-rollout"
 ///       repair_phases = [{
-///         "retry" = {
-///           "attempts" = "1"
+///         retry = {
+///           attempts = "1"
 ///         }
 ///         }, {
-///         "rollback" = {}
+///         rollback = {}
 ///       }]
 ///     }
 ///   }
@@ -362,13 +365,16 @@ import 'automation_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_clouddeploy_deliverypipeline" "pipeline" {
+/// resource "gcp_clouddeploy_delivery_pipeline" "pipeline" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cd-pipeline"
 ///   location = "us-central1"
 ///   serial_pipeline = {
 ///     stages = [{
-///       "targetId" = "test"
-///       "profiles" = []
+///       target_id = "test"
+///       profiles  = []
 ///     }]
 ///   }
 /// }
@@ -822,7 +828,7 @@ import 'automation_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -933,7 +939,7 @@ import 'automation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -942,9 +948,12 @@ import 'automation_state.dart';
 /// }
 ///
 /// resource "gcp_clouddeploy_automation" "f-automation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "cd-automation"
 ///   location          = "us-central1"
-///   delivery_pipeline = gcp_clouddeploy_deliverypipeline.pipeline.name
+///   delivery_pipeline = gcp_clouddeploy_delivery_pipeline.pipeline.name
 ///   service_account   = "my@service-account.com"
 ///   annotations = {
 ///     "my_first_annotation"  = "example-annotation-1"
@@ -957,8 +966,8 @@ import 'automation_state.dart';
 ///   description = "automation resource"
 ///   selector = {
 ///     targets = [{
-///       "id" = "test"
-///       "labels" = {
+///       id = "test"
+///       labels = {
 ///         "foo" = "bar"
 ///       }
 ///     }]
@@ -985,15 +994,15 @@ import 'automation_state.dart';
 ///       phases = ["stable"]
 ///       jobs   = ["deploy"]
 ///       repair_phases = [{
-///         "retry" = {
-///           "attempts"    = "1"
-///           "wait"        = "200s"
-///           "backoffMode" = "BACKOFF_MODE_LINEAR"
+///         retry = {
+///           attempts     = "1"
+///           wait         = "200s"
+///           backoff_mode = "BACKOFF_MODE_LINEAR"
 ///         }
 ///         }, {
-///         "rollback" = {
-///           "destinationPhase"                = "stable"
-///           "disableRollbackIfRolloutPending" = true
+///         rollback = {
+///           destination_phase                   = "stable"
+///           disable_rollback_if_rollout_pending = true
 ///         }
 ///       }]
 ///     }
@@ -1008,13 +1017,16 @@ import 'automation_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_clouddeploy_deliverypipeline" "pipeline" {
+/// resource "gcp_clouddeploy_delivery_pipeline" "pipeline" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cd-pipeline"
 ///   location = "us-central1"
 ///   serial_pipeline = {
 ///     stages = [{
-///       "targetId" = "test"
-///       "profiles" = ["test-profile"]
+///       target_id = "test"
+///       profiles  = ["test-profile"]
 ///     }]
 ///   }
 /// }
@@ -1284,7 +1296,7 @@ class Automation extends pulumi.CustomResource {
           'gcp:clouddeploy/automation:Automation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

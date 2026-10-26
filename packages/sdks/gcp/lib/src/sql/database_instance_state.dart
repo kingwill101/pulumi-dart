@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'database_instance_blue_green_deployment.dart';
 import 'database_instance_clone.dart';
 import 'database_instance_dns_name.dart';
 import 'database_instance_ip_address.dart';
@@ -20,6 +21,9 @@ class DatabaseInstanceState {
   /// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
   /// block during resource creation/update will trigger the restore action after the resource is created/updated.
   final pulumi.Input<String?>? backupdrBackup;
+  /// The configuration for a Cloud SQL Blue-Green Deployment on this instance. The configuration is detailed below.
+  /// &gt; **WARNING:** Because `blueGreenDeployment` is authoritatively managed by Terraform on the primary instance resource, if a Blue-Green Deployment is created on this instance outside of Terraform (for example, via `gcloud` or the Cloud Console) and the `blueGreenDeployment` block is not present in your Terraform configuration, running `pulumi up` will delete the out-of-band Blue-Green Deployment along with its green target instance.
+  final pulumi.Input<DatabaseInstanceBlueGreenDeployment?>? blueGreenDeployment;
   /// The context needed to create this instance as a clone of another instance. When this field is set during
   /// resource creation, this provider will attempt to clone another instance as indicated in the context. The
   /// configuration is detailed below.
@@ -53,6 +57,8 @@ class DatabaseInstanceState {
   final pulumi.Input<String?>? dnsName;
   /// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
   final pulumi.Input<List<DatabaseInstanceDnsName>?>? dnsNames;
+  /// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+  final pulumi.Input<bool?>? encryptionConfidentialMode;
   /// The full path to the encryption key used for the CMEK disk encryption.  Setting
   /// up disk encryption currently requires manual steps outside of this provider.
   /// The provided key must be in the same region as the SQL instance.  In order
@@ -144,6 +150,7 @@ class DatabaseInstanceState {
   /// Creates a new [DatabaseInstanceState].
   /// [availableMaintenanceVersions] The list of all maintenance versions applicable on the instance.
   /// [backupdrBackup] The backupdrBackup needed to restore the database to a backup run. This field will
+  /// [blueGreenDeployment] The configuration for a Cloud SQL Blue-Green Deployment on this instance. The configuration is detailed below.
   /// [clone] The context needed to create this instance as a clone of another instance. When this field is set during
   /// [connectionName] The connection name of the instance to be used in
   /// [databaseVersion] The MySQL, PostgreSQL or
@@ -151,6 +158,7 @@ class DatabaseInstanceState {
   /// [deletionProtection] Whether or not to allow the provider to destroy the instance. Unless this field is set to false
   /// [dnsName] The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
   /// [dnsNames] The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+  /// [encryptionConfidentialMode] Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
   /// [encryptionKeyName] The full path to the encryption key used for the CMEK disk encryption.  Setting
   /// [enforceNewSqlNetworkArchitecture] Whether to enforce the new SQL network architecture.
   /// [finalBackupDescription] The description of final backup. Only set this field when `final_backup_config.enabled` is true.
@@ -183,6 +191,7 @@ class DatabaseInstanceState {
   const DatabaseInstanceState({
     this.availableMaintenanceVersions,
     this.backupdrBackup,
+    this.blueGreenDeployment,
     this.clone,
     this.connectionName,
     this.databaseVersion,
@@ -190,6 +199,7 @@ class DatabaseInstanceState {
     this.deletionProtection,
     this.dnsName,
     this.dnsNames,
+    this.encryptionConfidentialMode,
     this.encryptionKeyName,
     this.enforceNewSqlNetworkArchitecture,
     this.finalBackupDescription,
@@ -225,6 +235,7 @@ class DatabaseInstanceState {
     return <String, dynamic>{
       'availableMaintenanceVersions': ?availableMaintenanceVersions,
       'backupdrBackup': ?backupdrBackup,
+      'blueGreenDeployment': ?pulumi.Input.mapOptionalInputValue<DatabaseInstanceBlueGreenDeployment, Map<String, dynamic>>(blueGreenDeployment, (value) => value.toMap()),
       'clone': ?pulumi.Input.mapOptionalInputValue<DatabaseInstanceClone, Map<String, dynamic>>(clone, (value) => value.toMap()),
       'connectionName': ?connectionName,
       'databaseVersion': ?databaseVersion,
@@ -232,6 +243,7 @@ class DatabaseInstanceState {
       'deletionProtection': ?deletionProtection,
       'dnsName': ?dnsName,
       'dnsNames': ?pulumi.Input.mapOptionalInputValue<List<DatabaseInstanceDnsName>, List<Map<String, dynamic>>>(dnsNames, (value) => pulumi.Input.encodeList<DatabaseInstanceDnsName, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'encryptionConfidentialMode': ?encryptionConfidentialMode,
       'encryptionKeyName': ?encryptionKeyName,
       'enforceNewSqlNetworkArchitecture': ?enforceNewSqlNetworkArchitecture,
       'finalBackupDescription': ?finalBackupDescription,
@@ -268,6 +280,7 @@ class DatabaseInstanceState {
     return DatabaseInstanceState(
       availableMaintenanceVersions: (() { final guardedValue = map['availableMaintenanceVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       backupdrBackup: (() { final guardedValue = map['backupdrBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      blueGreenDeployment: (() { final guardedValue = map['blueGreenDeployment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseInstanceBlueGreenDeployment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       clone: (() { final guardedValue = map['clone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseInstanceClone.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       connectionName: (() { final guardedValue = map['connectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       databaseVersion: (() { final guardedValue = map['databaseVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -275,6 +288,7 @@ class DatabaseInstanceState {
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dnsName: (() { final guardedValue = map['dnsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dnsNames: (() { final guardedValue = map['dnsNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DatabaseInstanceDnsName>(guardedValue, (value) => DatabaseInstanceDnsName.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      encryptionConfidentialMode: (() { final guardedValue = map['encryptionConfidentialMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       encryptionKeyName: (() { final guardedValue = map['encryptionKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enforceNewSqlNetworkArchitecture: (() { final guardedValue = map['enforceNewSqlNetworkArchitecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       finalBackupDescription: (() { final guardedValue = map['finalBackupDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -285,7 +299,7 @@ class DatabaseInstanceState {
       maintenanceVersion: (() { final guardedValue = map['maintenanceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       masterInstanceName: (() { final guardedValue = map['masterInstanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       pointInTimeRestoreContext: (() { final guardedValue = map['pointInTimeRestoreContext']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseInstancePointInTimeRestoreContext.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       privateIpAddress: (() { final guardedValue = map['privateIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

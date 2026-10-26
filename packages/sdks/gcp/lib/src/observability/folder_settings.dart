@@ -4,8 +4,6 @@ import 'folder_settings_state.dart';
 
 /// Manages Cloud Observability settings for a folder.
 ///
-/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
 ///
 ///
 /// ## Example Usage
@@ -20,7 +18,7 @@ import 'folder_settings_state.dart';
 /// import * as time from "@pulumiverse/time";
 ///
 /// const testFolder = new gcp.organizations.Folder("test_folder", {
-///     displayName: "tf-test-_80411",
+///     displayName: "tf-test-_29506",
 ///     parent: "organizations/123456789",
 ///     deletionProtection: false,
 /// });
@@ -57,7 +55,7 @@ import 'folder_settings_state.dart';
 /// import pulumiverse_time as time
 ///
 /// test_folder = gcp.organizations.Folder("test_folder",
-///     display_name="tf-test-_80411",
+///     display_name="tf-test-_29506",
 ///     parent="organizations/123456789",
 ///     deletion_protection=False)
 /// # Wait for the folder to be created and recognized by the Observability API
@@ -90,7 +88,7 @@ import 'folder_settings_state.dart';
 /// {
 ///     var testFolder = new Gcp.Organizations.Folder("test_folder", new()
 ///     {
-///         DisplayName = "tf-test-_80411",
+///         DisplayName = "tf-test-_29506",
 ///         Parent = "organizations/123456789",
 ///         DeletionProtection = false,
 ///     });
@@ -159,9 +157,9 @@ import 'folder_settings_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/observability"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/observability"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -169,7 +167,7 @@ import 'folder_settings_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		testFolder, err := organizations.NewFolder(ctx, "test_folder", &organizations.FolderArgs{
-/// 			DisplayName:        pulumi.String("tf-test-_80411"),
+/// 			DisplayName:        pulumi.String("tf-test-_29506"),
 /// 			Parent:             pulumi.String("organizations/123456789"),
 /// 			DeletionProtection: pulumi.Bool(false),
 /// 		})
@@ -225,7 +223,7 @@ import 'folder_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -236,34 +234,49 @@ import 'folder_settings_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_observability_getfoldersettings" "settingsData" {
+/// data "gcp_observability_folder_settings" "settingsData" {
 ///   folder   = gcp_organizations_folder.test_folder.folder_id
 ///   location = "us"
 /// }
 ///
 /// resource "gcp_organizations_folder" "test_folder" {
-///   display_name        = "tf-test-_80411"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   display_name        = "tf-test-_29506"
 ///   parent              = "organizations/123456789"
 ///   deletion_protection = false
 /// }
 /// # Wait for the folder to be created and recognized by the Observability API
 /// resource "time_sleep" "wait_for_settings_propagation" {
-///   depends_on      = [gcp_organizations_folder.test_folder]
+///   depends_on = [gcp_organizations_folder.test_folder]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "90s"
 /// }
 /// # Add a delay to allow the service account to propagate
 /// resource "time_sleep" "wait_for_sa_propagation" {
-///   depends_on      = [data.gcp_observability_getfoldersettings.settingsData]
+///   depends_on = [data.gcp_observability_folder_settings.settingsData]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "90s"
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "iam" {
-///   depends_on    = [time_sleep.wait_for_sa_propagation]
+/// resource "gcp_kms_crypto_key_i_a_m_member" "iam" {
+///   depends_on = [time_sleep.wait_for_sa_propagation]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "example-key"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:${data.gcp_observability_getfoldersettings.settingsData.service_account_id}"
+///   member        ="serviceAccount:${data.gcp_observability_folder_settings.settingsData.service_account_id}"
 /// }
-/// resource "gcp_observability_foldersettings" "primary" {
-///   depends_on   = [gcp_kms_cryptokeyiammember.iam]
+/// resource "gcp_observability_folder_settings" "primary" {
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.iam]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   folder       = gcp_organizations_folder.test_folder.folder_id
 ///   kms_key_name = "example-key"
@@ -300,7 +313,7 @@ import 'folder_settings_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testFolder = new Folder("testFolder", FolderArgs.builder()
-///             .displayName("tf-test-_80411")
+///             .displayName("tf-test-_29506")
 ///             .parent("organizations/123456789")
 ///             .deletionProtection(false)
 ///             .build());
@@ -349,7 +362,7 @@ import 'folder_settings_state.dart';
 ///     type: gcp:organizations:Folder
 ///     name: test_folder
 ///     properties:
-///       displayName: tf-test-_80411
+///       displayName: tf-test-_29506
 ///       parent: organizations/123456789
 ///       deletionProtection: false
 ///   # Wait for the folder to be created and recognized by the Observability API
@@ -407,7 +420,7 @@ import 'folder_settings_state.dart';
 /// import * as time from "@pulumiverse/time";
 ///
 /// const testFolder = new gcp.organizations.Folder("test_folder", {
-///     displayName: "tf-test-_44263",
+///     displayName: "tf-test-_86474",
 ///     parent: "organizations/123456789",
 ///     deletionProtection: false,
 /// });
@@ -433,7 +446,7 @@ import 'folder_settings_state.dart';
 /// import pulumiverse_time as time
 ///
 /// test_folder = gcp.organizations.Folder("test_folder",
-///     display_name="tf-test-_44263",
+///     display_name="tf-test-_86474",
 ///     parent="organizations/123456789",
 ///     deletion_protection=False)
 /// # Wait for the folder to be created and recognized by the Observability API
@@ -458,7 +471,7 @@ import 'folder_settings_state.dart';
 /// {
 ///     var testFolder = new Gcp.Organizations.Folder("test_folder", new()
 ///     {
-///         DisplayName = "tf-test-_44263",
+///         DisplayName = "tf-test-_86474",
 ///         Parent = "organizations/123456789",
 ///         DeletionProtection = false,
 ///     });
@@ -500,8 +513,8 @@ import 'folder_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/observability"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/observability"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -509,7 +522,7 @@ import 'folder_settings_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		testFolder, err := organizations.NewFolder(ctx, "test_folder", &organizations.FolderArgs{
-/// 			DisplayName:        pulumi.String("tf-test-_44263"),
+/// 			DisplayName:        pulumi.String("tf-test-_86474"),
 /// 			Parent:             pulumi.String("organizations/123456789"),
 /// 			DeletionProtection: pulumi.Bool(false),
 /// 		})
@@ -544,7 +557,7 @@ import 'folder_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -555,23 +568,32 @@ import 'folder_settings_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_observability_getfoldersettings" "settingsData" {
+/// data "gcp_observability_folder_settings" "settingsData" {
 ///   folder   = gcp_organizations_folder.test_folder.folder_id
 ///   location = "global"
 /// }
 ///
 /// resource "gcp_organizations_folder" "test_folder" {
-///   display_name        = "tf-test-_44263"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   display_name        = "tf-test-_86474"
 ///   parent              = "organizations/123456789"
 ///   deletion_protection = false
 /// }
 /// # Wait for the folder to be created and recognized by the Observability API
 /// resource "time_sleep" "wait_for_folder" {
-///   depends_on      = [gcp_organizations_folder.test_folder]
+///   depends_on = [gcp_organizations_folder.test_folder]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "90s"
 /// }
-/// resource "gcp_observability_foldersettings" "primary_global" {
-///   depends_on               = [data.gcp_observability_getfoldersettings.settingsData]
+/// resource "gcp_observability_folder_settings" "primary_global" {
+///   depends_on = [data.gcp_observability_folder_settings.settingsData]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                 = "global"
 ///   folder                   = gcp_organizations_folder.test_folder.folder_id
 ///   default_storage_location = "us"
@@ -606,7 +628,7 @@ import 'folder_settings_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testFolder = new Folder("testFolder", FolderArgs.builder()
-///             .displayName("tf-test-_44263")
+///             .displayName("tf-test-_86474")
 ///             .parent("organizations/123456789")
 ///             .deletionProtection(false)
 ///             .build());
@@ -640,7 +662,7 @@ import 'folder_settings_state.dart';
 ///     type: gcp:organizations:Folder
 ///     name: test_folder
 ///     properties:
-///       displayName: tf-test-_44263
+///       displayName: tf-test-_86474
 ///       parent: organizations/123456789
 ///       deletionProtection: false
 ///   # Wait for the folder to be created and recognized by the Observability API
@@ -712,7 +734,7 @@ class FolderSettings extends pulumi.CustomResource {
           'gcp:observability/folderSettings:FolderSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     defaultStorageLocation = registerOutput<String?>('defaultStorageLocation');
     folder = registerOutput<String>('folder');

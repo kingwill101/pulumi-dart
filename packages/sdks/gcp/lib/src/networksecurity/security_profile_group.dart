@@ -90,7 +90,7 @@ import 'security_profile_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -109,7 +109,7 @@ import 'security_profile_group_state.dart';
 /// 			Name:                    pulumi.String("sec-profile-group"),
 /// 			Parent:                  pulumi.String("organizations/123456789"),
 /// 			Description:             pulumi.String("my description"),
-/// 			ThreatPreventionProfile: securityProfile.ID().ToIDOutput().ToStringOutput(),
+/// 			ThreatPreventionProfile: securityProfile.ID(),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -122,7 +122,7 @@ import 'security_profile_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -130,16 +130,22 @@ import 'security_profile_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_securityprofilegroup" "default" {
+/// resource "gcp_networksecurity_security_profile_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "sec-profile-group"
 ///   parent                    = "organizations/123456789"
 ///   description               = "my description"
-///   threat_prevention_profile = gcp_networksecurity_securityprofile.security_profile.id
+///   threat_prevention_profile = gcp_networksecurity_security_profile.security_profile.id
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_networksecurity_securityprofile" "security_profile" {
+/// resource "gcp_networksecurity_security_profile" "security_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "sec-profile"
 ///   type     = "THREAT_PREVENTION"
 ///   parent   = "organizations/123456789"
@@ -329,8 +335,8 @@ import 'security_profile_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -346,7 +352,7 @@ import 'security_profile_group_state.dart';
 /// 		defaultMirroringDeploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "default", &networksecurity.MirroringDeploymentGroupArgs{
 /// 			MirroringDeploymentGroupId: pulumi.String("deployment-group"),
 /// 			Location:                   pulumi.String("global"),
-/// 			Network:                    _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:                    _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -354,7 +360,7 @@ import 'security_profile_group_state.dart';
 /// 		defaultMirroringEndpointGroup, err := networksecurity.NewMirroringEndpointGroup(ctx, "default", &networksecurity.MirroringEndpointGroupArgs{
 /// 			MirroringEndpointGroupId: pulumi.String("endpoint-group"),
 /// 			Location:                 pulumi.String("global"),
-/// 			MirroringDeploymentGroup: defaultMirroringDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			MirroringDeploymentGroup: defaultMirroringDeploymentGroup.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -365,7 +371,7 @@ import 'security_profile_group_state.dart';
 /// 			Description: pulumi.String("my description"),
 /// 			Type:        pulumi.String("CUSTOM_MIRRORING"),
 /// 			CustomMirroringProfile: &networksecurity.SecurityProfileCustomMirroringProfileArgs{
-/// 				MirroringEndpointGroup: defaultMirroringEndpointGroup.ID().ToIDOutput().ToStringOutput(),
+/// 				MirroringEndpointGroup: defaultMirroringEndpointGroup.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -375,7 +381,7 @@ import 'security_profile_group_state.dart';
 /// 			Name:                   pulumi.String("sec-profile-group"),
 /// 			Parent:                 pulumi.String("organizations/123456789"),
 /// 			Description:            pulumi.String("my description"),
-/// 			CustomMirroringProfile: defaultSecurityProfile.ID().ToIDOutput().ToStringOutput(),
+/// 			CustomMirroringProfile: defaultSecurityProfile.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -385,7 +391,7 @@ import 'security_profile_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -394,33 +400,48 @@ import 'security_profile_group_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networksecurity_mirroringdeploymentgroup" "default" {
+/// resource "gcp_networksecurity_mirroring_deployment_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_deployment_group_id = "deployment-group"
 ///   location                      = "global"
 ///   network                       = gcp_compute_network.default.id
 /// }
-/// resource "gcp_networksecurity_mirroringendpointgroup" "default" {
+/// resource "gcp_networksecurity_mirroring_endpoint_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_endpoint_group_id = "endpoint-group"
 ///   location                    = "global"
-///   mirroring_deployment_group  = gcp_networksecurity_mirroringdeploymentgroup.default.id
+///   mirroring_deployment_group  = gcp_networksecurity_mirroring_deployment_group.default.id
 /// }
-/// resource "gcp_networksecurity_securityprofile" "default" {
+/// resource "gcp_networksecurity_security_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "sec-profile"
 ///   parent      = "organizations/123456789"
 ///   description = "my description"
 ///   type        = "CUSTOM_MIRRORING"
 ///   custom_mirroring_profile = {
-///     mirroring_endpoint_group = gcp_networksecurity_mirroringendpointgroup.default.id
+///     mirroring_endpoint_group = gcp_networksecurity_mirroring_endpoint_group.default.id
 ///   }
 /// }
-/// resource "gcp_networksecurity_securityprofilegroup" "default" {
+/// resource "gcp_networksecurity_security_profile_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "sec-profile-group"
 ///   parent                   = "organizations/123456789"
 ///   description              = "my description"
-///   custom_mirroring_profile = gcp_networksecurity_securityprofile.default.id
+///   custom_mirroring_profile = gcp_networksecurity_security_profile.default.id
 /// }
 /// ```
 /// ```java
@@ -652,8 +673,8 @@ import 'security_profile_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -669,7 +690,7 @@ import 'security_profile_group_state.dart';
 /// 		defaultInterceptDeploymentGroup, err := networksecurity.NewInterceptDeploymentGroup(ctx, "default", &networksecurity.InterceptDeploymentGroupArgs{
 /// 			InterceptDeploymentGroupId: pulumi.String("deployment-group"),
 /// 			Location:                   pulumi.String("global"),
-/// 			Network:                    _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:                    _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -677,7 +698,7 @@ import 'security_profile_group_state.dart';
 /// 		defaultInterceptEndpointGroup, err := networksecurity.NewInterceptEndpointGroup(ctx, "default", &networksecurity.InterceptEndpointGroupArgs{
 /// 			InterceptEndpointGroupId: pulumi.String("endpoint-group"),
 /// 			Location:                 pulumi.String("global"),
-/// 			InterceptDeploymentGroup: defaultInterceptDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			InterceptDeploymentGroup: defaultInterceptDeploymentGroup.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -688,7 +709,7 @@ import 'security_profile_group_state.dart';
 /// 			Description: pulumi.String("my description"),
 /// 			Type:        pulumi.String("CUSTOM_INTERCEPT"),
 /// 			CustomInterceptProfile: &networksecurity.SecurityProfileCustomInterceptProfileArgs{
-/// 				InterceptEndpointGroup: defaultInterceptEndpointGroup.ID().ToIDOutput().ToStringOutput(),
+/// 				InterceptEndpointGroup: defaultInterceptEndpointGroup.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -698,7 +719,7 @@ import 'security_profile_group_state.dart';
 /// 			Name:                   pulumi.String("sec-profile-group"),
 /// 			Parent:                 pulumi.String("organizations/123456789"),
 /// 			Description:            pulumi.String("my description"),
-/// 			CustomInterceptProfile: defaultSecurityProfile.ID().ToIDOutput().ToStringOutput(),
+/// 			CustomInterceptProfile: defaultSecurityProfile.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -708,7 +729,7 @@ import 'security_profile_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -717,33 +738,48 @@ import 'security_profile_group_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networksecurity_interceptdeploymentgroup" "default" {
+/// resource "gcp_networksecurity_intercept_deployment_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   intercept_deployment_group_id = "deployment-group"
 ///   location                      = "global"
 ///   network                       = gcp_compute_network.default.id
 /// }
-/// resource "gcp_networksecurity_interceptendpointgroup" "default" {
+/// resource "gcp_networksecurity_intercept_endpoint_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   intercept_endpoint_group_id = "endpoint-group"
 ///   location                    = "global"
-///   intercept_deployment_group  = gcp_networksecurity_interceptdeploymentgroup.default.id
+///   intercept_deployment_group  = gcp_networksecurity_intercept_deployment_group.default.id
 /// }
-/// resource "gcp_networksecurity_securityprofile" "default" {
+/// resource "gcp_networksecurity_security_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "sec-profile"
 ///   parent      = "organizations/123456789"
 ///   description = "my description"
 ///   type        = "CUSTOM_INTERCEPT"
 ///   custom_intercept_profile = {
-///     intercept_endpoint_group = gcp_networksecurity_interceptendpointgroup.default.id
+///     intercept_endpoint_group = gcp_networksecurity_intercept_endpoint_group.default.id
 ///   }
 /// }
-/// resource "gcp_networksecurity_securityprofilegroup" "default" {
+/// resource "gcp_networksecurity_security_profile_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "sec-profile-group"
 ///   parent                   = "organizations/123456789"
 ///   description              = "my description"
-///   custom_intercept_profile = gcp_networksecurity_securityprofile.default.id
+///   custom_intercept_profile = gcp_networksecurity_security_profile.default.id
 /// }
 /// ```
 /// ```java
@@ -969,7 +1005,7 @@ import 'security_profile_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1001,7 +1037,7 @@ import 'security_profile_group_state.dart';
 /// 			Name:                pulumi.String("sec-profile-group"),
 /// 			Parent:              pulumi.String("organizations/123456789"),
 /// 			Description:         pulumi.String("my description"),
-/// 			UrlFilteringProfile: securityProfile.ID().ToIDOutput().ToStringOutput(),
+/// 			UrlFilteringProfile: securityProfile.ID(),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -1014,7 +1050,7 @@ import 'security_profile_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1022,24 +1058,30 @@ import 'security_profile_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_securityprofilegroup" "default" {
+/// resource "gcp_networksecurity_security_profile_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "sec-profile-group"
 ///   parent                = "organizations/123456789"
 ///   description           = "my description"
-///   url_filtering_profile = gcp_networksecurity_securityprofile.security_profile.id
+///   url_filtering_profile = gcp_networksecurity_security_profile.security_profile.id
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_networksecurity_securityprofile" "security_profile" {
+/// resource "gcp_networksecurity_security_profile" "security_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "sec-profile"
 ///   location = "global"
 ///   type     = "URL_FILTERING"
 ///   url_filtering_profile = {
 ///     url_filters = [{
-///       "priority"        = 1
-///       "filteringAction" = "ALLOW"
-///       "urls"            = ["*example.com", "*about.example.com", "*help.example.com"]
+///       priority         = 1
+///       filtering_action = "ALLOW"
+///       urls             = ["*example.com", "*about.example.com", "*help.example.com"]
 ///     }]
 ///   }
 ///   parent = "organizations/123456789"
@@ -1127,6 +1169,321 @@ import 'security_profile_group_state.dart';
 ///       parent: organizations/123456789
 /// ```
 ///
+/// ### Network Security Security Profile Group Wildfire
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const threatPreventionProfile = new gcp.networksecurity.SecurityProfile("threat_prevention_profile", {
+///     name: "tp-sec-profile",
+///     type: "THREAT_PREVENTION",
+///     parent: "projects/my-project-name",
+///     location: "global",
+/// });
+/// const wildfireProfile = new gcp.networksecurity.SecurityProfile("wildfire_profile", {
+///     name: "wf-sec-profile",
+///     type: "WILDFIRE_ANALYSIS",
+///     parent: "projects/my-project-name",
+///     location: "global",
+///     wildfireAnalysisProfile: {
+///         wildfireRealtimeLookup: true,
+///         wildfireSubmissionRules: [{
+///             direction: "BOTH",
+///             fileSelectionMode: "ALL_FILE_TYPES",
+///         }],
+///     },
+/// });
+/// const _default = new gcp.networksecurity.SecurityProfileGroup("default", {
+///     name: "sec-profile-group",
+///     parent: "projects/my-project-name",
+///     description: "my description",
+///     threatPreventionProfile: threatPreventionProfile.id,
+///     wildfireAnalysisProfile: wildfireProfile.id,
+///     labels: {
+///         foo: "bar",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// threat_prevention_profile = gcp.networksecurity.SecurityProfile("threat_prevention_profile",
+///     name="tp-sec-profile",
+///     type="THREAT_PREVENTION",
+///     parent="projects/my-project-name",
+///     location="global")
+/// wildfire_profile = gcp.networksecurity.SecurityProfile("wildfire_profile",
+///     name="wf-sec-profile",
+///     type="WILDFIRE_ANALYSIS",
+///     parent="projects/my-project-name",
+///     location="global",
+///     wildfire_analysis_profile={
+///         "wildfire_realtime_lookup": True,
+///         "wildfire_submission_rules": [{
+///             "direction": "BOTH",
+///             "file_selection_mode": "ALL_FILE_TYPES",
+///         }],
+///     })
+/// default = gcp.networksecurity.SecurityProfileGroup("default",
+///     name="sec-profile-group",
+///     parent="projects/my-project-name",
+///     description="my description",
+///     threat_prevention_profile=threat_prevention_profile.id,
+///     wildfire_analysis_profile=wildfire_profile.id,
+///     labels={
+///         "foo": "bar",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var threatPreventionProfile = new Gcp.NetworkSecurity.SecurityProfile("threat_prevention_profile", new()
+///     {
+///         Name = "tp-sec-profile",
+///         Type = "THREAT_PREVENTION",
+///         Parent = "projects/my-project-name",
+///         Location = "global",
+///     });
+///
+///     var wildfireProfile = new Gcp.NetworkSecurity.SecurityProfile("wildfire_profile", new()
+///     {
+///         Name = "wf-sec-profile",
+///         Type = "WILDFIRE_ANALYSIS",
+///         Parent = "projects/my-project-name",
+///         Location = "global",
+///         WildfireAnalysisProfile = new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileArgs
+///         {
+///             WildfireRealtimeLookup = true,
+///             WildfireSubmissionRules = new[]
+///             {
+///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs
+///                 {
+///                     Direction = "BOTH",
+///                     FileSelectionMode = "ALL_FILE_TYPES",
+///                 },
+///             },
+///         },
+///     });
+///
+///     var @default = new Gcp.NetworkSecurity.SecurityProfileGroup("default", new()
+///     {
+///         Name = "sec-profile-group",
+///         Parent = "projects/my-project-name",
+///         Description = "my description",
+///         ThreatPreventionProfile = threatPreventionProfile.Id,
+///         WildfireAnalysisProfile = wildfireProfile.Id,
+///         Labels =
+///         {
+///             { "foo", "bar" },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		threatPreventionProfile, err := networksecurity.NewSecurityProfile(ctx, "threat_prevention_profile", &networksecurity.SecurityProfileArgs{
+/// 			Name:     pulumi.String("tp-sec-profile"),
+/// 			Type:     pulumi.String("THREAT_PREVENTION"),
+/// 			Parent:   pulumi.String("projects/my-project-name"),
+/// 			Location: pulumi.String("global"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		wildfireProfile, err := networksecurity.NewSecurityProfile(ctx, "wildfire_profile", &networksecurity.SecurityProfileArgs{
+/// 			Name:     pulumi.String("wf-sec-profile"),
+/// 			Type:     pulumi.String("WILDFIRE_ANALYSIS"),
+/// 			Parent:   pulumi.String("projects/my-project-name"),
+/// 			Location: pulumi.String("global"),
+/// 			WildfireAnalysisProfile: &networksecurity.SecurityProfileWildfireAnalysisProfileArgs{
+/// 				WildfireRealtimeLookup: pulumi.Bool(true),
+/// 				WildfireSubmissionRules: networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArray{
+/// 					&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs{
+/// 						Direction:         pulumi.String("BOTH"),
+/// 						FileSelectionMode: pulumi.String("ALL_FILE_TYPES"),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = networksecurity.NewSecurityProfileGroup(ctx, "default", &networksecurity.SecurityProfileGroupArgs{
+/// 			Name:                    pulumi.String("sec-profile-group"),
+/// 			Parent:                  pulumi.String("projects/my-project-name"),
+/// 			Description:             pulumi.String("my description"),
+/// 			ThreatPreventionProfile: threatPreventionProfile.ID(),
+/// 			WildfireAnalysisProfile: wildfireProfile.ID(),
+/// 			Labels: pulumi.StringMap{
+/// 				"foo": pulumi.String("bar"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_security_profile_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                      = "sec-profile-group"
+///   parent                    = "projects/my-project-name"
+///   description               = "my description"
+///   threat_prevention_profile = gcp_networksecurity_security_profile.threat_prevention_profile.id
+///   wildfire_analysis_profile = gcp_networksecurity_security_profile.wildfire_profile.id
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "gcp_networksecurity_security_profile" "threat_prevention_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "tp-sec-profile"
+///   type     = "THREAT_PREVENTION"
+///   parent   = "projects/my-project-name"
+///   location = "global"
+/// }
+/// resource "gcp_networksecurity_security_profile" "wildfire_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "wf-sec-profile"
+///   type     = "WILDFIRE_ANALYSIS"
+///   parent   = "projects/my-project-name"
+///   location = "global"
+///   wildfire_analysis_profile = {
+///     wildfire_realtime_lookup = true
+///     wildfire_submission_rules = [{
+///       direction           = "BOTH"
+///       file_selection_mode = "ALL_FILE_TYPES"
+///     }]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.networksecurity.SecurityProfile;
+/// import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs;
+/// import com.pulumi.gcp.networksecurity.SecurityProfileGroup;
+/// import com.pulumi.gcp.networksecurity.SecurityProfileGroupArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var threatPreventionProfile = new SecurityProfile("threatPreventionProfile", SecurityProfileArgs.builder()
+///             .name("tp-sec-profile")
+///             .type("THREAT_PREVENTION")
+///             .parent("projects/my-project-name")
+///             .location("global")
+///             .build());
+///
+///         var wildfireProfile = new SecurityProfile("wildfireProfile", SecurityProfileArgs.builder()
+///             .name("wf-sec-profile")
+///             .type("WILDFIRE_ANALYSIS")
+///             .parent("projects/my-project-name")
+///             .location("global")
+///             .wildfireAnalysisProfile(SecurityProfileWildfireAnalysisProfileArgs.builder()
+///                 .wildfireRealtimeLookup(true)
+///                 .wildfireSubmissionRules(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs.builder()
+///                     .direction("BOTH")
+///                     .fileSelectionMode("ALL_FILE_TYPES")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///         var default_ = new SecurityProfileGroup("default", SecurityProfileGroupArgs.builder()
+///             .name("sec-profile-group")
+///             .parent("projects/my-project-name")
+///             .description("my description")
+///             .threatPreventionProfile(threatPreventionProfile.id())
+///             .wildfireAnalysisProfile(wildfireProfile.id())
+///             .labels(Map.of("foo", "bar"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:networksecurity:SecurityProfileGroup
+///     properties:
+///       name: sec-profile-group
+///       parent: projects/my-project-name
+///       description: my description
+///       threatPreventionProfile: ${threatPreventionProfile.id}
+///       wildfireAnalysisProfile: ${wildfireProfile.id}
+///       labels:
+///         foo: bar
+///   threatPreventionProfile:
+///     type: gcp:networksecurity:SecurityProfile
+///     name: threat_prevention_profile
+///     properties:
+///       name: tp-sec-profile
+///       type: THREAT_PREVENTION
+///       parent: projects/my-project-name
+///       location: global
+///   wildfireProfile:
+///     type: gcp:networksecurity:SecurityProfile
+///     name: wildfire_profile
+///     properties:
+///       name: wf-sec-profile
+///       type: WILDFIRE_ANALYSIS
+///       parent: projects/my-project-name
+///       location: global
+///       wildfireAnalysisProfile:
+///         wildfireRealtimeLookup: true
+///         wildfireSubmissionRules:
+///           - direction: BOTH
+///             fileSelectionMode: ALL_FILE_TYPES
+/// ```
+///
 ///
 /// ## Import
 ///
@@ -1184,6 +1541,9 @@ class SecurityProfileGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> updateTime;
   /// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
   late final pulumi.Output<String?> urlFilteringProfile;
+  /// (Optional, Beta)
+  /// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+  late final pulumi.Output<String?> wildfireAnalysisProfile;
 
   /// Creates a new [SecurityProfileGroup].
   /// [name] The Pulumi resource name.
@@ -1197,7 +1557,7 @@ class SecurityProfileGroup extends pulumi.CustomResource {
           'gcp:networksecurity/securityProfileGroup:SecurityProfileGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
@@ -1215,6 +1575,7 @@ class SecurityProfileGroup extends pulumi.CustomResource {
     threatPreventionProfile = registerOutput<String?>('threatPreventionProfile');
     updateTime = registerOutput<String>('updateTime');
     urlFilteringProfile = registerOutput<String?>('urlFilteringProfile');
+    wildfireAnalysisProfile = registerOutput<String?>('wildfireAnalysisProfile');
   }
 
   /// Gets an existing [SecurityProfileGroup] resource's state with the given [name] and [id].
@@ -1256,6 +1617,7 @@ class SecurityProfileGroup extends pulumi.CustomResource {
     threatPreventionProfile = registerOutput<String?>('threatPreventionProfile');
     updateTime = registerOutput<String>('updateTime');
     urlFilteringProfile = registerOutput<String?>('urlFilteringProfile');
+    wildfireAnalysisProfile = registerOutput<String?>('wildfireAnalysisProfile');
   }
 
   /// Creates a typed reference to an existing [SecurityProfileGroup] resource.
@@ -1283,5 +1645,6 @@ class SecurityProfileGroup extends pulumi.CustomResource {
     threatPreventionProfile = registerOutput<String?>('threatPreventionProfile');
     updateTime = registerOutput<String>('updateTime');
     urlFilteringProfile = registerOutput<String?>('urlFilteringProfile');
+    wildfireAnalysisProfile = registerOutput<String?>('wildfireAnalysisProfile');
   }
 }

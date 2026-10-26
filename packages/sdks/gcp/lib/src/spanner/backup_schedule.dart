@@ -150,7 +150,7 @@ import 'backup_schedule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/spanner"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/spanner"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -201,7 +201,7 @@ import 'backup_schedule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -210,19 +210,28 @@ import 'backup_schedule_state.dart';
 /// }
 ///
 /// resource "gcp_spanner_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "instance-id"
 ///   config       = "regional-europe-west1"
 ///   display_name = "main-instance"
 ///   num_nodes    = 1
 /// }
 /// resource "gcp_spanner_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance                 = gcp_spanner_instance.main.name
 ///   name                     = "database-id"
 ///   version_retention_period = "3d"
 ///   ddls                     = ["CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)", "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)"]
 ///   deletion_protection      = true
 /// }
-/// resource "gcp_spanner_backupschedule" "full-backup" {
+/// resource "gcp_spanner_backup_schedule" "full-backup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance           = gcp_spanner_instance.main.name
 ///   database           = gcp_spanner_database.database.name
 ///   name               = "backup-schedule-id"
@@ -474,7 +483,7 @@ import 'backup_schedule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/spanner"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/spanner"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -526,7 +535,7 @@ import 'backup_schedule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -535,6 +544,9 @@ import 'backup_schedule_state.dart';
 /// }
 ///
 /// resource "gcp_spanner_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "instance-id"
 ///   config       = "regional-europe-west1"
 ///   display_name = "main-instance"
@@ -542,13 +554,19 @@ import 'backup_schedule_state.dart';
 ///   edition      = "ENTERPRISE"
 /// }
 /// resource "gcp_spanner_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance                 = gcp_spanner_instance.main.name
 ///   name                     = "database-id"
 ///   version_retention_period = "3d"
 ///   ddls                     = ["CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)", "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)"]
 ///   deletion_protection      = true
 /// }
-/// resource "gcp_spanner_backupschedule" "incremental-backup" {
+/// resource "gcp_spanner_backup_schedule" "incremental-backup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance           = gcp_spanner_instance.main.name
 ///   database           = gcp_spanner_database.database.name
 ///   name               = "backup-schedule-id"
@@ -733,7 +751,7 @@ class BackupSchedule extends pulumi.CustomResource {
           'gcp:spanner/backupSchedule:BackupSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     database = registerOutput<String>('database');
     deletionPolicy = registerOutput<String>('deletionPolicy');

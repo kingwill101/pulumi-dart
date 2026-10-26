@@ -68,7 +68,7 @@ import 'account_connector_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -92,7 +92,7 @@ import 'account_connector_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -100,7 +100,10 @@ import 'account_connector_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_developerconnect_accountconnector" "my-account-connector" {
+/// resource "gcp_developerconnect_account_connector" "my-account-connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "us-central1"
 ///   account_connector_id = "my-ac"
 ///   provider_oauth_config = {
@@ -213,7 +216,7 @@ import 'account_connector_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -237,7 +240,7 @@ import 'account_connector_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -245,7 +248,10 @@ import 'account_connector_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_developerconnect_accountconnector" "my-account-connector" {
+/// resource "gcp_developerconnect_account_connector" "my-account-connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "us-central1"
 ///   account_connector_id = "my-ac"
 ///   provider_oauth_config = {
@@ -439,8 +445,8 @@ import 'account_connector_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -501,7 +507,7 @@ import 'account_connector_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -510,32 +516,47 @@ import 'account_connector_state.dart';
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "ghe_ac_client_id" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "ghe-ac-id"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "ghe_ac_client_id_version" {
+/// resource "gcp_secretmanager_secret_version" "ghe_ac_client_id_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.ghe_ac_client_id.name
 ///   secret_data = "dummy-client-id"
 /// }
 /// resource "gcp_secretmanager_secret" "ghe_ac_client_secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "ghe-ac-sec"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "ghe_ac_client_secret_version" {
+/// resource "gcp_secretmanager_secret_version" "ghe_ac_client_secret_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.ghe_ac_client_secret.name
 ///   secret_data = "dummy-client-secret"
 /// }
-/// resource "gcp_developerconnect_accountconnector" "my-account-connector" {
+/// resource "gcp_developerconnect_account_connector" "my-account-connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "us-central1"
 ///   account_connector_id = "my-ac"
 ///   custom_oauth_config = {
 ///     auth_uri      = "https://ghe.proctor-staging-test.com/login/oauth/authorize"
-///     client_id     = gcp_secretmanager_secretversion.ghe_ac_client_id_version.secret_data
-///     client_secret = gcp_secretmanager_secretversion.ghe_ac_client_secret_version.secret_data
+///     client_id     = gcp_secretmanager_secret_version.ghe_ac_client_id_version.secret_data
+///     client_secret = gcp_secretmanager_secret_version.ghe_ac_client_secret_version.secret_data
 ///     token_uri     = "https://ghe.proctor-staging-test.com/login/oauth/access_token"
 ///     host_uri      = "https://ghe.proctor-staging-test.com"
 ///     scm_provider  = "GITHUB_ENTERPRISE"
@@ -796,8 +817,8 @@ import 'account_connector_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -858,7 +879,7 @@ import 'account_connector_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -867,32 +888,47 @@ import 'account_connector_state.dart';
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "gle_ac_client_id" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "gle-ac-id"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "gle_ac_client_id_version" {
+/// resource "gcp_secretmanager_secret_version" "gle_ac_client_id_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.gle_ac_client_id.name
 ///   secret_data = "dummy-client-id"
 /// }
 /// resource "gcp_secretmanager_secret" "gle_ac_client_secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "gle-ac-sec"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "gle_ac_client_secret_version" {
+/// resource "gcp_secretmanager_secret_version" "gle_ac_client_secret_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.gle_ac_client_secret.name
 ///   secret_data = "dummy-client-secret"
 /// }
-/// resource "gcp_developerconnect_accountconnector" "my-account-connector" {
+/// resource "gcp_developerconnect_account_connector" "my-account-connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "us-central1"
 ///   account_connector_id = "my-ac"
 ///   custom_oauth_config = {
 ///     auth_uri      = "https://gle-us-central1.gcb-test.com/oauth/authorize"
-///     client_id     = gcp_secretmanager_secretversion.gle_ac_client_id_version.secret_data
-///     client_secret = gcp_secretmanager_secretversion.gle_ac_client_secret_version.secret_data
+///     client_id     = gcp_secretmanager_secret_version.gle_ac_client_id_version.secret_data
+///     client_secret = gcp_secretmanager_secret_version.gle_ac_client_secret_version.secret_data
 ///     token_uri     = "https://gle-us-central1.gcb-test.com/oauth/token"
 ///     host_uri      = "https://gle-us-central1.gcb-test.com"
 ///     scm_provider  = "GITLAB_ENTERPRISE"
@@ -1153,8 +1189,8 @@ import 'account_connector_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1215,7 +1251,7 @@ import 'account_connector_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1224,32 +1260,47 @@ import 'account_connector_state.dart';
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "bbdc_ac_priv_client_id" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "bbdc-ac-id"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "bbdc_ac_priv_client_id_version" {
+/// resource "gcp_secretmanager_secret_version" "bbdc_ac_priv_client_id_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.bbdc_ac_priv_client_id.name
 ///   secret_data = "dummy-client-id"
 /// }
 /// resource "gcp_secretmanager_secret" "bbdc_ac_priv_client_secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "bbdc-ac-sec"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "bbdc_ac_priv_client_secret_version" {
+/// resource "gcp_secretmanager_secret_version" "bbdc_ac_priv_client_secret_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.bbdc_ac_priv_client_secret.name
 ///   secret_data = "dummy-client-secret"
 /// }
-/// resource "gcp_developerconnect_accountconnector" "my-account-connector" {
+/// resource "gcp_developerconnect_account_connector" "my-account-connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "us-central1"
 ///   account_connector_id = "my-ac"
 ///   custom_oauth_config = {
 ///     auth_uri      = "https://bitbucket-us-central.gcb-test.com/rest/oauth2/latest/authorize"
-///     client_id     = gcp_secretmanager_secretversion.bbdc_ac_priv_client_id_version.secret_data
-///     client_secret = gcp_secretmanager_secretversion.bbdc_ac_priv_client_secret_version.secret_data
+///     client_id     = gcp_secretmanager_secret_version.bbdc_ac_priv_client_id_version.secret_data
+///     client_secret = gcp_secretmanager_secret_version.bbdc_ac_priv_client_secret_version.secret_data
 ///     token_uri     = "https://bitbucket-us-central.gcb-test.com/rest/oauth2/latest/token"
 ///     host_uri      = "https://bitbucket-us-central.gcb-test.com"
 ///     scm_provider  = "BITBUCKET_DATA_CENTER"
@@ -1457,7 +1508,7 @@ class AccountConnector extends pulumi.CustomResource {
           'gcp:developerconnect/accountConnector:AccountConnector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     accountConnectorId = registerOutput<String>('accountConnectorId');

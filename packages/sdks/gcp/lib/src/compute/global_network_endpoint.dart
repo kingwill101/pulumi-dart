@@ -75,7 +75,7 @@ import 'global_network_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -102,7 +102,7 @@ import 'global_network_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -110,12 +110,18 @@ import 'global_network_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_globalnetworkendpoint" "default-endpoint" {
-///   global_network_endpoint_group = gcp_compute_globalnetworkendpointgroup.neg.name
+/// resource "gcp_compute_global_network_endpoint" "default-endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   global_network_endpoint_group = gcp_compute_global_network_endpoint_group.neg.name
 ///   fqdn                          = "www.example.com"
 ///   port                          = 90
 /// }
-/// resource "gcp_compute_globalnetworkendpointgroup" "neg" {
+/// resource "gcp_compute_global_network_endpoint_group" "neg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-lb-neg"
 ///   default_port          = "90"
 ///   network_endpoint_type = "INTERNET_FQDN_PORT"
@@ -225,7 +231,7 @@ class GlobalNetworkEndpoint extends pulumi.CustomResource {
           'gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     fqdn = registerOutput<String?>('fqdn');

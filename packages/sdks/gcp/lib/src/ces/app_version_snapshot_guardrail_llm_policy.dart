@@ -58,7 +58,7 @@ class AppVersionSnapshotGuardrailLlmPolicy {
   factory AppVersionSnapshotGuardrailLlmPolicy.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailLlmPolicy(
       failOpen: (() { final guardedValue = map['failOpen']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxConversationMessages: (() { final guardedValue = map['maxConversationMessages']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxConversationMessages: (() { final guardedValue = map['maxConversationMessages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       modelSettings: (() { final guardedValue = map['modelSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotGuardrailLlmPolicyModelSetting>(guardedValue, (value) => AppVersionSnapshotGuardrailLlmPolicyModelSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
       policyScope: (() { final guardedValue = map['policyScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       prompt: (() { final guardedValue = map['prompt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -242,7 +242,7 @@ import 'resize_request_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -327,7 +327,7 @@ import 'resize_request_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -335,7 +335,10 @@ import 'resize_request_status.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regioninstancetemplate" "a3_dws" {
+/// resource "gcp_compute_region_instance_template" "a3_dws" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "a3-dws"
 ///   region               = "us-central1"
 ///   description          = "This template is used to create a mig instance that is compatible with DWS resize requests."
@@ -369,21 +372,27 @@ import 'resize_request_status.dart';
 ///     network = "default"
 ///   }
 /// }
-/// resource "gcp_compute_instancegroupmanager" "a3_dws" {
+/// resource "gcp_compute_instance_group_manager" "a3_dws" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "a3-dws"
 ///   base_instance_name = "a3-dws"
 ///   zone               = "us-central1-a"
 ///   versions {
-///     instance_template = gcp_compute_regioninstancetemplate.a3_dws.self_link
+///     instance_template = gcp_compute_region_instance_template.a3_dws.self_link
 ///   }
 ///   instance_lifecycle_policy = {
 ///     default_action_on_failure = "DO_NOTHING"
 ///   }
 ///   wait_for_instances = false
 /// }
-/// resource "gcp_compute_resizerequest" "a3_resize_request" {
+/// resource "gcp_compute_resize_request" "a3_resize_request" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "a3-dws"
-///   instance_group_manager = gcp_compute_instancegroupmanager.a3_dws.name
+///   instance_group_manager = gcp_compute_instance_group_manager.a3_dws.name
 ///   zone                   = "us-central1-a"
 ///   description            = "Test resize request resource"
 ///   resize_by              = 2
@@ -611,7 +620,7 @@ class ResizeRequest extends pulumi.CustomResource {
           'gcp:compute/resizeRequest:ResizeRequest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

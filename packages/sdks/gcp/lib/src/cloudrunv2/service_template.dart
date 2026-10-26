@@ -8,6 +8,7 @@ import 'service_template_scaling.dart';
 import 'service_template_service_mesh.dart';
 import 'service_template_volume.dart';
 import 'service_template_vpc_access.dart';
+import 'service_template_workload_identity_config.dart';
 
 class ServiceTemplate {
   /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -63,6 +64,10 @@ class ServiceTemplate {
   /// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
   /// Structure is documented below.
   final pulumi.Input<ServiceTemplateVpcAccess?>? vpcAccess;
+  /// The Revision's workload identity settings. Used to assign an
+  /// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+  /// Structure is documented below.
+  final pulumi.Input<ServiceTemplateWorkloadIdentityConfig?>? workloadIdentityConfig;
 
   /// Creates a new [ServiceTemplate].
   /// [annotations] Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -83,6 +88,7 @@ class ServiceTemplate {
   /// [timeout] Max allowed time for an instance to respond to a request.
   /// [volumes] A list of Volumes to make available to containers.
   /// [vpcAccess] VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+  /// [workloadIdentityConfig] The Revision's workload identity settings. Used to assign an
   const ServiceTemplate({
     this.annotations,
     this.containers,
@@ -102,6 +108,7 @@ class ServiceTemplate {
     this.timeout,
     this.volumes,
     this.vpcAccess,
+    this.workloadIdentityConfig,
   });
 
   Map<String, dynamic> toMap() {
@@ -124,6 +131,7 @@ class ServiceTemplate {
       'timeout': ?timeout,
       'volumes': ?pulumi.Input.mapOptionalInputValue<List<ServiceTemplateVolume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<ServiceTemplateVolume, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcAccess': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateVpcAccess, Map<String, dynamic>>(vpcAccess, (value) => value.toMap()),
+      'workloadIdentityConfig': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateWorkloadIdentityConfig, Map<String, dynamic>>(workloadIdentityConfig, (value) => value.toMap()),
     };
   }
 
@@ -136,7 +144,7 @@ class ServiceTemplate {
       gpuZonalRedundancyDisabled: (() { final guardedValue = map['gpuZonalRedundancyDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       healthCheckDisabled: (() { final guardedValue = map['healthCheckDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      maxInstanceRequestConcurrency: (() { final guardedValue = map['maxInstanceRequestConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxInstanceRequestConcurrency: (() { final guardedValue = map['maxInstanceRequestConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nodeSelector: (() { final guardedValue = map['nodeSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateNodeSelector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sandboxes: (() { final guardedValue = map['sandboxes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateSandboxes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -147,6 +155,7 @@ class ServiceTemplate {
       timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTemplateVolume>(guardedValue, (value) => ServiceTemplateVolume.fromMap((value as Map).cast<String, dynamic>()))); })(),
       vpcAccess: (() { final guardedValue = map['vpcAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateVpcAccess.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      workloadIdentityConfig: (() { final guardedValue = map['workloadIdentityConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateWorkloadIdentityConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

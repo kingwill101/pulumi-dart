@@ -37,6 +37,15 @@ class JobArgs {
   /// or `terraform destroy` that would delete the job will fail.
   /// When the field is set to false, deleting the job is allowed.
   final pulumi.Input<bool?>? deletionProtection;
+  /// (Optional, Beta)
+  /// The functional type of the Job. Declares the primary purpose of the workload so that it can be
+  /// registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+  /// Once set, this field cannot be changed or unset.
+  /// Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+  /// A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+  /// `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+  /// Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+  final pulumi.Input<String?>? functionalType;
   /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
   /// environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
   /// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -77,6 +86,7 @@ class JobArgs {
   /// [clientVersion] Arbitrary version identifier for the API client.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deletionProtection] Whether Terraform will be prevented from destroying the job. Defaults to true.
+  /// [functionalType] (Optional, Beta)
   /// [labels] Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
   /// [launchStage] The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
   /// [location] The location of the cloud run job
@@ -93,6 +103,7 @@ class JobArgs {
     this.clientVersion,
     this.deletionPolicy,
     this.deletionProtection,
+    this.functionalType,
     this.labels,
     this.launchStage,
     required this.location,
@@ -112,6 +123,7 @@ class JobArgs {
       'clientVersion': ?clientVersion,
       'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
+      'functionalType': ?functionalType,
       'labels': ?labels,
       'launchStage': ?launchStage,
       'location': location,
@@ -132,6 +144,7 @@ class JobArgs {
       clientVersion: (() { final guardedValue = map['clientVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      functionalType: (() { final guardedValue = map['functionalType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       launchStage: (() { final guardedValue = map['launchStage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),

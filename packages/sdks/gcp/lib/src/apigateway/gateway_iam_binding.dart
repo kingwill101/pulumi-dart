@@ -91,8 +91,8 @@ import 'gateway_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigateway"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigateway"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -125,7 +125,7 @@ import 'gateway_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -133,18 +133,21 @@ import 'gateway_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/apigateway.viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_apigateway_gatewayiampolicy" "policy" {
+/// resource "gcp_apigateway_gateway_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = apiGw.project
 ///   region      = apiGw.region
 ///   gateway     = apiGw.gatewayId
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -261,7 +264,7 @@ import 'gateway_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigateway"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigateway"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -284,7 +287,7 @@ import 'gateway_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -292,7 +295,10 @@ import 'gateway_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_apigateway_gatewayiambinding" "binding" {
+/// resource "gcp_apigateway_gateway_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = apiGw.project
 ///   region  = apiGw.region
 ///   gateway = apiGw.gatewayId
@@ -395,7 +401,7 @@ import 'gateway_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigateway"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigateway"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -416,7 +422,7 @@ import 'gateway_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -424,7 +430,10 @@ import 'gateway_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_apigateway_gatewayiammember" "member" {
+/// resource "gcp_apigateway_gateway_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = apiGw.project
 ///   region  = apiGw.region
 ///   gateway = apiGw.gatewayId
@@ -572,8 +581,8 @@ import 'gateway_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigateway"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigateway"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -606,7 +615,7 @@ import 'gateway_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -614,18 +623,21 @@ import 'gateway_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/apigateway.viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_apigateway_gatewayiampolicy" "policy" {
+/// resource "gcp_apigateway_gateway_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = apiGw.project
 ///   region      = apiGw.region
 ///   gateway     = apiGw.gatewayId
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -742,7 +754,7 @@ import 'gateway_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigateway"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigateway"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -765,7 +777,7 @@ import 'gateway_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -773,7 +785,10 @@ import 'gateway_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_apigateway_gatewayiambinding" "binding" {
+/// resource "gcp_apigateway_gateway_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = apiGw.project
 ///   region  = apiGw.region
 ///   gateway = apiGw.gatewayId
@@ -876,7 +891,7 @@ import 'gateway_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigateway"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigateway"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -897,7 +912,7 @@ import 'gateway_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -905,7 +920,10 @@ import 'gateway_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_apigateway_gatewayiammember" "member" {
+/// resource "gcp_apigateway_gateway_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = apiGw.project
 ///   region  = apiGw.region
 ///   gateway = apiGw.gatewayId
@@ -1032,7 +1050,7 @@ class GatewayIamBinding extends pulumi.CustomResource {
           'gcp:apigateway/gatewayIamBinding:GatewayIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     condition = registerOutput<GatewayIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

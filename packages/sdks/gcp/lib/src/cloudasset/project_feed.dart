@@ -145,9 +145,9 @@ import 'project_feed_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudasset"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudasset"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -172,7 +172,7 @@ import 'project_feed_state.dart';
 /// 			},
 /// 			FeedOutputConfig: &cloudasset.ProjectFeedFeedOutputConfigArgs{
 /// 				PubsubDestination: &cloudasset.ProjectFeedFeedOutputConfigPubsubDestinationArgs{
-/// 					Topic: feedOutput.ID().ToIDOutput().ToStringOutput(),
+/// 					Topic: feedOutput.ID(),
 /// 				},
 /// 			},
 /// 			Condition: &cloudasset.ProjectFeedConditionArgs{
@@ -197,7 +197,7 @@ import 'project_feed_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -205,12 +205,15 @@ import 'project_feed_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 ///   project_id = "my-project-name"
 /// }
 ///
 /// # Create a feed that sends notifications about network resource updates.
-/// resource "gcp_cloudasset_projectfeed" "project_feed" {
+/// resource "gcp_cloudasset_project_feed" "project_feed" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = "my-project-name"
 ///   feed_id      = "network-updates"
 ///   content_type = "RESOURCE"
@@ -221,13 +224,20 @@ import 'project_feed_state.dart';
 ///     }
 ///   }
 ///   condition = {
-///     expression  = "!temporal_asset.deleted &&\ntemporal_asset.prior_asset_state == google.cloud.asset.v1.TemporalAsset.PriorAssetState.DOES_NOT_EXIST\n"
+///     expression  = <<-EOT
+/// !temporal_asset.deleted &&
+/// temporal_asset.prior_asset_state == google.cloud.asset.v1.TemporalAsset.PriorAssetState.DOES_NOT_EXIST
+/// EOT
+///
 ///     title       = "created"
 ///     description = "Send notifications on creation events"
 ///   }
 /// }
 /// # The topic where the resource change notifications will be sent.
 /// resource "gcp_pubsub_topic" "feed_output" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   name    = "network-updates"
 /// }
@@ -413,7 +423,7 @@ class ProjectFeed extends pulumi.CustomResource {
           'gcp:cloudasset/projectFeed:ProjectFeed',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     assetNames = registerOutput<List<String>?>('assetNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     assetTypes = registerOutput<List<String>?>('assetTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

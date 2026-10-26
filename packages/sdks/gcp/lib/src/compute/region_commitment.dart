@@ -94,7 +94,7 @@ import 'region_commitment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -122,7 +122,7 @@ import 'region_commitment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -130,7 +130,10 @@ import 'region_commitment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regioncommitment" "foobar" {
+/// resource "gcp_compute_region_commitment" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-region-commitment"
 ///   plan = "THIRTY_SIX_MONTH"
 ///   resources {
@@ -330,69 +333,8 @@ import 'region_commitment_state.dart';
 ///
 /// });
 /// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
-/// 			Parent:    pulumi.String("organizations/ORG_ID"),
-/// 			ShortName: pulumi.String("tagkey"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
-/// 			Parent:    tagKey.ID().ToIDOutput().ToStringOutput(),
-/// 			ShortName: pulumi.String("tagvalue"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = compute.NewRegionCommitment(ctx, "foobar", &compute.RegionCommitmentArgs{
-/// 			Name:        pulumi.String("my-full-commitment"),
-/// 			Description: pulumi.String("some description"),
-/// 			Plan:        pulumi.String("THIRTY_SIX_MONTH"),
-/// 			Type:        pulumi.String("MEMORY_OPTIMIZED"),
-/// 			Category:    pulumi.String("MACHINE"),
-/// 			AutoRenew:   pulumi.Bool(true),
-/// 			Resources: compute.RegionCommitmentResourceArray{
-/// 				&compute.RegionCommitmentResourceArgs{
-/// 					Type:   pulumi.String("VCPU"),
-/// 					Amount: pulumi.String("4"),
-/// 				},
-/// 				&compute.RegionCommitmentResourceArgs{
-/// 					Type:   pulumi.String("MEMORY"),
-/// 					Amount: pulumi.String("9"),
-/// 				},
-/// 			},
-/// 			Params: &compute.RegionCommitmentParamsArgs{
-/// 				ResourceManagerTags: pulumi.StringMap(pulumi.All(tagKey.ID(), tagValue.ID()).ApplyT(func(_args []interface{}) (map[string]pulumi.ID, error) {
-/// 					tagKeyId := _args[0].(pulumi.ID)
-/// 					tagValueId := _args[1].(pulumi.ID)
-/// 					return map[string]pulumi.ID(pulumi.String(tagKeyId).ApplyT(func(__convert string) (map[string]pulumi.ID, error) {
-/// 						return map[string]pulumi.ID{
-/// 							__convert: tagValueId,
-/// 						}, nil
-/// 					}).(pulumi.IDMapOutput)), nil
-/// 				}).(pulumi.IDMapOutput)),
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -400,7 +342,10 @@ import 'region_commitment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regioncommitment" "foobar" {
+/// resource "gcp_compute_region_commitment" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-full-commitment"
 ///   description = "some description"
 ///   plan        = "THIRTY_SIX_MONTH"
@@ -417,82 +362,23 @@ import 'region_commitment_state.dart';
 ///   }
 ///   params = {
 ///     resource_manager_tags = {
-///       gcp_tags_tagkey.tag_key.id = gcp_tags_tagvalue.tag_value.id
+///       gcp_tags_tag_key.tag_key.id = gcp_tags_tag_value.tag_value.id
 ///     }
 ///   }
 /// }
-/// resource "gcp_tags_tagkey" "tag_key" {
+/// resource "gcp_tags_tag_key" "tag_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent     = "organizations/ORG_ID"
 ///   short_name = "tagkey"
 /// }
-/// resource "gcp_tags_tagvalue" "tag_value" {
-///   parent     = gcp_tags_tagkey.tag_key.id
+/// resource "gcp_tags_tag_value" "tag_value" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent     = gcp_tags_tag_key.tag_key.id
 ///   short_name = "tagvalue"
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.tags.TagKey;
-/// import com.pulumi.gcp.tags.TagKeyArgs;
-/// import com.pulumi.gcp.tags.TagValue;
-/// import com.pulumi.gcp.tags.TagValueArgs;
-/// import com.pulumi.gcp.compute.RegionCommitment;
-/// import com.pulumi.gcp.compute.RegionCommitmentArgs;
-/// import com.pulumi.gcp.compute.inputs.RegionCommitmentResourceArgs;
-/// import com.pulumi.gcp.compute.inputs.RegionCommitmentParamsArgs;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var tagKey = new TagKey("tagKey", TagKeyArgs.builder()
-///             .parent("organizations/ORG_ID")
-///             .shortName("tagkey")
-///             .build());
-///
-///         var tagValue = new TagValue("tagValue", TagValueArgs.builder()
-///             .parent(tagKey.id())
-///             .shortName("tagvalue")
-///             .build());
-///
-///         var foobar = new RegionCommitment("foobar", RegionCommitmentArgs.builder()
-///             .name("my-full-commitment")
-///             .description("some description")
-///             .plan("THIRTY_SIX_MONTH")
-///             .type("MEMORY_OPTIMIZED")
-///             .category("MACHINE")
-///             .autoRenew(true)
-///             .resources(
-///                 RegionCommitmentResourceArgs.builder()
-///                     .type("VCPU")
-///                     .amount("4")
-///                     .build(),
-///                 RegionCommitmentResourceArgs.builder()
-///                     .type("MEMORY")
-///                     .amount("9")
-///                     .build())
-///             .params(RegionCommitmentParamsArgs.builder()
-///                 .resourceManagerTags(Output.tuple(tagKey.id(), tagValue.id()).applyValue(values -> {
-///                     var tagKeyId = values.t1;
-///                     var tagValueId = values.t2;
-///                     return tagKeyId.applyValue(___convert -> Map.of(___convert, tagValueId));
-///                 }))
-///                 .build())
-///             .build());
-///
-///     }
 /// }
 /// ```
 /// ```yaml
@@ -624,7 +510,7 @@ class RegionCommitment extends pulumi.CustomResource {
           'gcp:compute/regionCommitment:RegionCommitment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     autoRenew = registerOutput<bool>('autoRenew');
     category = registerOutput<String>('category');

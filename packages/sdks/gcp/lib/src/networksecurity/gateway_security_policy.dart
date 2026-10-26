@@ -55,7 +55,7 @@ import 'gateway_security_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -74,7 +74,7 @@ import 'gateway_security_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -82,7 +82,10 @@ import 'gateway_security_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_gatewaysecuritypolicy" "default" {
+/// resource "gcp_networksecurity_gateway_security_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-gateway-security-policy"
 ///   location    = "us-central1"
 ///   description = "my description"
@@ -430,9 +433,9 @@ import 'gateway_security_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -507,7 +510,7 @@ import 'gateway_security_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		tlsInspectionPermission, err := certificateauthority.NewCaPoolIamMember(ctx, "tls_inspection_permission", &certificateauthority.CaPoolIamMemberArgs{
-/// 			CaPool: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			CaPool: _default.ID(),
 /// 			Role:   pulumi.String("roles/privateca.certificateManager"),
 /// 			Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-networksecurity.iam.gserviceaccount.com", project.Number),
 /// 		})
@@ -517,7 +520,7 @@ import 'gateway_security_policy_state.dart';
 /// 		defaultTlsInspectionPolicy, err := networksecurity.NewTlsInspectionPolicy(ctx, "default", &networksecurity.TlsInspectionPolicyArgs{
 /// 			Name:     pulumi.String("my-tls-inspection-policy"),
 /// 			Location: pulumi.String("us-central1"),
-/// 			CaPool:   _default.ID().ToIDOutput().ToStringOutput(),
+/// 			CaPool:   _default.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			_default,
 /// 			defaultAuthority,
@@ -530,7 +533,7 @@ import 'gateway_security_policy_state.dart';
 /// 			Name:                pulumi.String("my-gateway-security-policy"),
 /// 			Location:            pulumi.String("us-central1"),
 /// 			Description:         pulumi.String("my description"),
-/// 			TlsInspectionPolicy: defaultTlsInspectionPolicy.ID().ToIDOutput().ToStringOutput(),
+/// 			TlsInspectionPolicy: defaultTlsInspectionPolicy.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			defaultTlsInspectionPolicy,
 /// 		}))
@@ -542,7 +545,7 @@ import 'gateway_security_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -550,10 +553,13 @@ import 'gateway_security_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_certificateauthority_capool" "default" {
+/// resource "gcp_certificateauthority_ca_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-basic-ca-pool"
 ///   location = "us-central1"
 ///   tier     = "DEVOPS"
@@ -577,7 +583,10 @@ import 'gateway_security_policy_state.dart';
 ///   }
 /// }
 /// resource "gcp_certificateauthority_authority" "default" {
-///   pool                                   = gcp_certificateauthority_capool.default.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   pool                                   = gcp_certificateauthority_ca_pool.default.name
 ///   certificate_authority_id               = "my-basic-certificate-authority"
 ///   location                               = "us-central1"
 ///   lifetime                               = "86400s"
@@ -611,23 +620,32 @@ import 'gateway_security_policy_state.dart';
 ///     algorithm = "RSA_PKCS1_4096_SHA256"
 ///   }
 /// }
-/// resource "gcp_certificateauthority_capooliammember" "tls_inspection_permission" {
-///   ca_pool = gcp_certificateauthority_capool.default.id
+/// resource "gcp_certificateauthority_ca_pool_iam_member" "tls_inspection_permission" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ca_pool = gcp_certificateauthority_ca_pool.default.id
 ///   role    = "roles/privateca.certificateManager"
-///   member  ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-networksecurity.iam.gserviceaccount.com"
+///   member  ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-networksecurity.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_networksecurity_tlsinspectionpolicy" "default" {
-///   depends_on = [gcp_certificateauthority_capool.default, gcp_certificateauthority_authority.default, gcp_certificateauthority_capooliammember.tls_inspection_permission]
-///   name       = "my-tls-inspection-policy"
-///   location   = "us-central1"
-///   ca_pool    = gcp_certificateauthority_capool.default.id
+/// resource "gcp_networksecurity_tls_inspection_policy" "default" {
+///   depends_on = [gcp_certificateauthority_ca_pool.default, gcp_certificateauthority_authority.default, gcp_certificateauthority_ca_pool_iam_member.tls_inspection_permission]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "my-tls-inspection-policy"
+///   location = "us-central1"
+///   ca_pool  = gcp_certificateauthority_ca_pool.default.id
 /// }
-/// resource "gcp_networksecurity_gatewaysecuritypolicy" "default" {
-///   depends_on            = [gcp_networksecurity_tlsinspectionpolicy.default]
+/// resource "gcp_networksecurity_gateway_security_policy" "default" {
+///   depends_on = [gcp_networksecurity_tls_inspection_policy.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-gateway-security-policy"
 ///   location              = "us-central1"
 ///   description           = "my description"
-///   tls_inspection_policy = gcp_networksecurity_tlsinspectionpolicy.default.id
+///   tls_inspection_policy = gcp_networksecurity_tls_inspection_policy.default.id
 /// }
 /// ```
 /// ```java
@@ -917,7 +935,7 @@ class GatewaySecurityPolicy extends pulumi.CustomResource {
           'gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

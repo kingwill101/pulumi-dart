@@ -191,7 +191,7 @@ import 'table_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -258,7 +258,7 @@ import 'table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -267,6 +267,9 @@ import 'table_state.dart';
 /// }
 ///
 /// resource "gcp_bigtable_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "tf-instance"
 ///   clusters {
 ///     cluster_id   = "tf-instance-cluster"
@@ -276,6 +279,9 @@ import 'table_state.dart';
 ///   }
 /// }
 /// resource "gcp_bigtable_table" "table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "tf-table"
 ///   instance_name = gcp_bigtable_instance.instance.name
 ///   split_keys    = ["a", "b", "c"]
@@ -288,7 +294,21 @@ import 'table_state.dart';
 ///   }
 ///   column_families {
 ///     family = "family-third"
-///     type   = "        {\n\\t\\t\\t\\t\\t\\\"aggregateType\\\": {\n\\t\\t\\t\\t\\t\\t\\\"max\\\": {},\n\\t\\t\\t\\t\\t\\t\\\"inputType\\\": {\n\\t\\t\\t\\t\\t\\t\\t\\\"int64Type\\\": {\n\\t\\t\\t\\t\\t\\t\\t\\t\\\"encoding\\\": {\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\\"bigEndianBytes\\\": {}\n\\t\\t\\t\\t\\t\\t\\t\\t}\n\\t\\t\\t\\t\\t\\t\\t}\n\\t\\t\\t\\t\\t\\t}\n\\t\\t\\t\\t\\t}\n\\t\\t\\t\\t}\n"
+///     type   = <<EOF
+///         {
+/// \t\t\t\t\t\"aggregateType\": {
+/// \t\t\t\t\t\t\"max\": {},
+/// \t\t\t\t\t\t\"inputType\": {
+/// \t\t\t\t\t\t\t\"int64Type\": {
+/// \t\t\t\t\t\t\t\t\"encoding\": {
+/// \t\t\t\t\t\t\t\t\t\"bigEndianBytes\": {}
+/// \t\t\t\t\t\t\t\t}
+/// \t\t\t\t\t\t\t}
+/// \t\t\t\t\t\t}
+/// \t\t\t\t\t}
+/// \t\t\t\t}
+/// EOF
+///
 ///   }
 ///   change_stream_retention = "24h0m0s"
 ///   automated_backup_policy = {
@@ -487,7 +507,7 @@ class Table extends pulumi.CustomResource {
           'gcp:bigtable/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     automatedBackupPolicy = registerOutput<TableAutomatedBackupPolicy>('automatedBackupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableAutomatedBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     changeStreamRetention = registerOutput<String>('changeStreamRetention');

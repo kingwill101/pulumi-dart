@@ -1,3 +1,12 @@
+export 'backupdisasterrecovery/auto_protection_policy.dart';
+export 'backupdisasterrecovery/auto_protection_policy_args.dart';
+export 'backupdisasterrecovery/auto_protection_policy_backup_plan_detail.dart';
+export 'backupdisasterrecovery/auto_protection_policy_binding_summary.dart';
+export 'backupdisasterrecovery/auto_protection_policy_criteria.dart';
+export 'backupdisasterrecovery/auto_protection_policy_criteria_matching_condition.dart';
+export 'backupdisasterrecovery/auto_protection_policy_criteria_matching_condition_label_condition.dart';
+export 'backupdisasterrecovery/auto_protection_policy_policy_evaluation_summary.dart';
+export 'backupdisasterrecovery/auto_protection_policy_state.dart';
 export 'backupdisasterrecovery/backup_plan.dart';
 export 'backupdisasterrecovery/backup_plan_args.dart';
 export 'backupdisasterrecovery/backup_plan_association.dart';

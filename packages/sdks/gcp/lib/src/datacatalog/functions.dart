@@ -51,7 +51,7 @@ import 'get_taxonomy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -68,7 +68,7 @@ import 'get_taxonomy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -76,7 +76,7 @@ import 'get_taxonomy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_datacatalog_getentrygroupiampolicy" "policy" {
+/// data "gcp_datacatalog_entry_group_iam_policy" "policy" {
 ///   entry_group = basicEntryGroup.name
 /// }
 /// ```
@@ -181,7 +181,7 @@ pulumi.Output<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -198,7 +198,7 @@ pulumi.Output<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -206,7 +206,7 @@ pulumi.Output<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_datacatalog_getpolicytagiampolicy" "policy" {
+/// data "gcp_datacatalog_policy_tag_iam_policy" "policy" {
 ///   policy_tag = basicPolicyTag.name
 /// }
 /// ```
@@ -313,7 +313,7 @@ pulumi.Output<GetPolicyTagIamPolicyResult> getPolicyTagIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -330,7 +330,7 @@ pulumi.Output<GetPolicyTagIamPolicyResult> getPolicyTagIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -338,7 +338,7 @@ pulumi.Output<GetPolicyTagIamPolicyResult> getPolicyTagIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_datacatalog_gettagtemplateiampolicy" "policy" {
+/// data "gcp_datacatalog_tag_template_iam_policy" "policy" {
 ///   tag_template = basicTagTemplate.name
 /// }
 /// ```
@@ -464,7 +464,7 @@ pulumi.Output<GetTagTemplateIamPolicyResult> getTagTemplateIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -490,7 +490,7 @@ pulumi.Output<GetTagTemplateIamPolicyResult> getTagTemplateIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -498,13 +498,16 @@ pulumi.Output<GetTagTemplateIamPolicyResult> getTagTemplateIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_datacatalog_gettaxonomy" "example" {
+/// data "gcp_datacatalog_taxonomy" "example" {
 ///   display_name = "my_taxonomy"
 ///   region       = "us-central1"
 /// }
 ///
-/// resource "gcp_datacatalog_policytag" "example" {
-///   taxonomy     = data.gcp_datacatalog_gettaxonomy.example.id
+/// resource "gcp_datacatalog_policy_tag" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   taxonomy     = data.gcp_datacatalog_taxonomy.example.id
 ///   display_name = "example_policy_tag"
 ///   description  = "A policy tag"
 /// }
@@ -628,7 +631,7 @@ pulumi.Output<GetTaxonomyResult> getTaxonomyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -645,7 +648,7 @@ pulumi.Output<GetTaxonomyResult> getTaxonomyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -653,7 +656,7 @@ pulumi.Output<GetTaxonomyResult> getTaxonomyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_datacatalog_gettaxonomyiampolicy" "policy" {
+/// data "gcp_datacatalog_taxonomy_iam_policy" "policy" {
 ///   taxonomy = basicTaxonomy.name
 /// }
 /// ```
