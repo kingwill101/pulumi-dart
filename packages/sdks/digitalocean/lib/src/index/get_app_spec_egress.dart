@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppSpecEgress {
   /// The type of the environment variable, `GENERAL` or `SECRET`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [GetAppSpecEgress].
   /// [type] The type of the environment variable, `GENERAL` or `SECRET`.

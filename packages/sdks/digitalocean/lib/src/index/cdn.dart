@@ -96,7 +96,7 @@ import 'cdn_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -105,14 +105,20 @@ import 'cdn_state.dart';
 /// }
 ///
 /// # Create a new Spaces Bucket
-/// resource "digitalocean_spacesbucket" "mybucket" {
+/// resource "digitalocean_spaces_bucket" "mybucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example"
 ///   region = "sfo2"
 ///   acl    = "public-read"
 /// }
 /// # Add a CDN endpoint to the Spaces Bucket
 /// resource "digitalocean_cdn" "mycdn" {
-///   origin = digitalocean_spacesbucket.mybucket.bucket_domain_name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   origin = digitalocean_spaces_bucket.mybucket.bucket_domain_name
 /// }
 /// # Output the endpoint for the CDN resource
 /// output "fqdn" {
@@ -305,7 +311,7 @@ import 'cdn_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -314,20 +320,29 @@ import 'cdn_state.dart';
 /// }
 ///
 /// # Create a new Spaces Bucket
-/// resource "digitalocean_spacesbucket" "mybucket" {
+/// resource "digitalocean_spaces_bucket" "mybucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example"
 ///   region = "sfo2"
 ///   acl    = "public-read"
 /// }
 /// # Create a DigitalOcean managed Let's Encrypt Certificate
 /// resource "digitalocean_certificate" "cert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "cdn-cert"
 ///   type    = "lets_encrypt"
 ///   domains = ["static.example.com"]
 /// }
 /// # Add a CDN endpoint with a custom sub-domain to the Spaces Bucket
 /// resource "digitalocean_cdn" "mycdn" {
-///   origin           = digitalocean_spacesbucket.mybucket.bucket_domain_name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   origin           = digitalocean_spaces_bucket.mybucket.bucket_domain_name
 ///   custom_domain    = "static.example.com"
 ///   certificate_name = digitalocean_certificate.cert.name
 /// }
@@ -443,7 +458,7 @@ class Cdn extends pulumi.CustomResource {
           'digitalocean:index/cdn:Cdn',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     certificateId = registerOutput<String>('certificateId');
     certificateName = registerOutput<String>('certificateName');
@@ -459,11 +474,12 @@ class Cdn extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CdnState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cdn._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -477,6 +493,24 @@ class Cdn extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    certificateId = registerOutput<String>('certificateId');
+    certificateName = registerOutput<String>('certificateName');
+    createdAt = registerOutput<String>('createdAt');
+    customDomain = registerOutput<String?>('customDomain');
+    endpoint = registerOutput<String>('endpoint');
+    origin = registerOutput<String>('origin');
+    ttl = registerOutput<int>('ttl');
+  }
+
+  /// Creates a typed reference to an existing [Cdn] resource.
+  Cdn.reference(String urn)
+    : super(
+        'digitalocean:index/cdn:Cdn',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     certificateId = registerOutput<String>('certificateId');
     certificateName = registerOutput<String>('certificateName');
     createdAt = registerOutput<String>('createdAt');

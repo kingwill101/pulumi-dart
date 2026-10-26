@@ -103,7 +103,7 @@ import 'tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -113,10 +113,16 @@ import 'tag_state.dart';
 ///
 /// # Create a new tag
 /// resource "digitalocean_tag" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "foobar"
 /// }
 /// # Create a new Droplet in nyc3 with the foobar tag
 /// resource "digitalocean_droplet" "web" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image  = "ubuntu-18-04-x64"
 ///   name   = "web-1"
 ///   region = "nyc3"
@@ -219,7 +225,7 @@ class Tag extends pulumi.CustomResource {
           'digitalocean:index/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     databasesCount = registerOutput<int>('databasesCount');
     dropletsCount = registerOutput<int>('dropletsCount');
@@ -235,11 +241,12 @@ class Tag extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TagState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Tag._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -253,6 +260,24 @@ class Tag extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    databasesCount = registerOutput<int>('databasesCount');
+    dropletsCount = registerOutput<int>('dropletsCount');
+    imagesCount = registerOutput<int>('imagesCount');
+    this.name = registerOutput<String>('name');
+    totalResourceCount = registerOutput<int>('totalResourceCount');
+    volumeSnapshotsCount = registerOutput<int>('volumeSnapshotsCount');
+    volumesCount = registerOutput<int>('volumesCount');
+  }
+
+  /// Creates a typed reference to an existing [Tag] resource.
+  Tag.reference(String urn)
+    : super(
+        'digitalocean:index/tag:Tag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     databasesCount = registerOutput<int>('databasesCount');
     dropletsCount = registerOutput<int>('dropletsCount');
     imagesCount = registerOutput<int>('imagesCount');

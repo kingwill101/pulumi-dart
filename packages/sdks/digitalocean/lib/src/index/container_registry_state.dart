@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ContainerRegistry resources.
 class ContainerRegistryState {
   /// The date and time when the registry was created
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The name of the container_registry
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The domain of the container registry. Ex: `registry.digitalocean.com`
-  final pulumi.Input<String>? serverUrl;
+  final pulumi.Input<String?>? serverUrl;
   /// The amount of storage used in the registry in bytes.
-  final pulumi.Input<int>? storageUsageBytes;
+  final pulumi.Input<int?>? storageUsageBytes;
   /// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
-  final pulumi.Input<String>? subscriptionTierSlug;
+  final pulumi.Input<String?>? subscriptionTierSlug;
 
   /// Creates a new [ContainerRegistryState].
   /// [createdAt] The date and time when the registry was created
@@ -56,7 +56,7 @@ class ContainerRegistryState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverUrl: (() { final guardedValue = map['serverUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageUsageBytes: (() { final guardedValue = map['storageUsageBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      storageUsageBytes: (() { final guardedValue = map['storageUsageBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       subscriptionTierSlug: (() { final guardedValue = map['subscriptionTierSlug']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

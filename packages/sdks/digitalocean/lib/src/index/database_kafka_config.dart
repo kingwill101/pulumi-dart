@@ -165,7 +165,7 @@ import 'database_kafka_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -173,8 +173,11 @@ import 'database_kafka_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databasekafkaconfig" "example" {
-///   cluster_id                              = digitalocean_databasecluster.example.id
+/// resource "digitalocean_database_kafka_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id                              = digitalocean_database_cluster.example.id
 ///   group_initial_rebalance_delay_ms        = 3000
 ///   group_min_session_timeout_ms            = 6000
 ///   group_max_session_timeout_ms            = 1800000
@@ -193,7 +196,10 @@ import 'database_kafka_config_state.dart';
 ///   log_segment_delete_delay_ms             = 60000
 ///   auto_create_topics_enable               = true
 /// }
-/// resource "digitalocean_databasecluster" "example" {
+/// resource "digitalocean_database_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-kafka-cluster"
 ///   engine     = "kafka"
 ///   version    = "3.7"
@@ -351,7 +357,7 @@ class DatabaseKafkaConfig extends pulumi.CustomResource {
           'digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     autoCreateTopicsEnable = registerOutput<bool>('autoCreateTopicsEnable');
     clusterId = registerOutput<String>('clusterId');
@@ -378,11 +384,12 @@ class DatabaseKafkaConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseKafkaConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseKafkaConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -396,6 +403,35 @@ class DatabaseKafkaConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoCreateTopicsEnable = registerOutput<bool>('autoCreateTopicsEnable');
+    clusterId = registerOutput<String>('clusterId');
+    groupInitialRebalanceDelayMs = registerOutput<int>('groupInitialRebalanceDelayMs');
+    groupMaxSessionTimeoutMs = registerOutput<int>('groupMaxSessionTimeoutMs');
+    groupMinSessionTimeoutMs = registerOutput<int>('groupMinSessionTimeoutMs');
+    logCleanerDeleteRetentionMs = registerOutput<int>('logCleanerDeleteRetentionMs');
+    logCleanerMinCompactionLagMs = registerOutput<String>('logCleanerMinCompactionLagMs');
+    logFlushIntervalMs = registerOutput<String>('logFlushIntervalMs');
+    logIndexIntervalBytes = registerOutput<int>('logIndexIntervalBytes');
+    logMessageDownconversionEnable = registerOutput<bool>('logMessageDownconversionEnable');
+    logMessageTimestampDifferenceMaxMs = registerOutput<String>('logMessageTimestampDifferenceMaxMs');
+    logPreallocate = registerOutput<bool>('logPreallocate');
+    logRetentionBytes = registerOutput<String>('logRetentionBytes');
+    logRetentionHours = registerOutput<int>('logRetentionHours');
+    logRetentionMs = registerOutput<String>('logRetentionMs');
+    logRollJitterMs = registerOutput<String>('logRollJitterMs');
+    logSegmentDeleteDelayMs = registerOutput<int>('logSegmentDeleteDelayMs');
+    messageMaxBytes = registerOutput<int>('messageMaxBytes');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseKafkaConfig] resource.
+  DatabaseKafkaConfig.reference(String urn)
+    : super(
+        'digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoCreateTopicsEnable = registerOutput<bool>('autoCreateTopicsEnable');
     clusterId = registerOutput<String>('clusterId');
     groupInitialRebalanceDelayMs = registerOutput<int>('groupInitialRebalanceDelayMs');

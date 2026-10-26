@@ -78,7 +78,7 @@ import 'vpc_peering_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -86,7 +86,10 @@ import 'vpc_peering_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_vpcpeering" "example" {
+/// resource "digitalocean_vpc_peering" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example-peering"
 ///   vpc_ids = [vpc1.id, vpc2.id]
 /// }
@@ -115,8 +118,8 @@ import 'vpc_peering_state.dart';
 ///         var example = new VpcPeering("example", VpcPeeringArgs.builder()
 ///             .name("example-peering")
 ///             .vpcIds(
-///                 vpc1.id(),
-///                 vpc2.id())
+///                 vpc1.get("id"),
+///                 vpc2.get("id"))
 ///             .build());
 ///
 ///     }
@@ -312,7 +315,7 @@ import 'vpc_peering_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -321,18 +324,30 @@ import 'vpc_peering_state.dart';
 /// }
 ///
 /// resource "digitalocean_vpc" "vpc1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "vpc1"
 ///   region = "nyc3"
 /// }
 /// resource "digitalocean_vpc" "vpc2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "vpc2"
 ///   region = "nyc3"
 /// }
-/// resource "digitalocean_vpcpeering" "example" {
+/// resource "digitalocean_vpc_peering" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example-peering"
 ///   vpc_ids = [digitalocean_vpc.vpc1.id, digitalocean_vpc.vpc2.id]
 /// }
 /// resource "digitalocean_droplet" "example1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example1"
 ///   size     = "s-1vcpu-1gb"
 ///   image    = "ubuntu-18-04-x64"
@@ -340,6 +355,9 @@ import 'vpc_peering_state.dart';
 ///   vpc_uuid = digitalocean_vpc.vpc1.id
 /// }
 /// resource "digitalocean_droplet" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example2"
 ///   size     = "s-1vcpu-1gb"
 ///   image    = "ubuntu-18-04-x64"
@@ -475,12 +493,12 @@ class VpcPeering extends pulumi.CustomResource {
           'digitalocean:index/vpcPeering:VpcPeering',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     this.name = registerOutput<String>('name');
     status = registerOutput<String>('status');
-    vpcIds = registerOutput<List<String>>('vpcIds');
+    vpcIds = registerOutput<List<String>>('vpcIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [VpcPeering] resource's state with the given [name] and [id].
@@ -488,11 +506,12 @@ class VpcPeering extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcPeeringState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcPeering._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -509,6 +528,21 @@ class VpcPeering extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     this.name = registerOutput<String>('name');
     status = registerOutput<String>('status');
-    vpcIds = registerOutput<List<String>>('vpcIds');
+    vpcIds = registerOutput<List<String>>('vpcIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VpcPeering] resource.
+  VpcPeering.reference(String urn)
+    : super(
+        'digitalocean:index/vpcPeering:VpcPeering',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createdAt = registerOutput<String>('createdAt');
+    this.name = registerOutput<String>('name');
+    status = registerOutput<String>('status');
+    vpcIds = registerOutput<List<String>>('vpcIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

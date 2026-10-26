@@ -36,7 +36,7 @@ class GetByoipPrefixResourcesAddress {
   factory GetByoipPrefixResourcesAddress.fromMap(Map<String, dynamic> map) {
     return GetByoipPrefixResourcesAddress(
       assignedAt: pulumi.Input.fromValue(map['assignedAt'] as String),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       region: pulumi.Input.fromValue(map['region'] as String),
     );

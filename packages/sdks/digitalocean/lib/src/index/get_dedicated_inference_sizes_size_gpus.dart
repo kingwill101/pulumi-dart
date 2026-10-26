@@ -30,9 +30,9 @@ class GetDedicatedInferenceSizesSizeGpus {
 
   factory GetDedicatedInferenceSizesSizeGpus.fromMap(Map<String, dynamic> map) {
     return GetDedicatedInferenceSizesSizeGpus(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['count'])),
       slug: pulumi.Input.fromValue(map['slug'] as String),
-      vramGb: pulumi.Input.fromValue(map['vramGb'] as int),
+      vramGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vramGb'])),
     );
   }
 }

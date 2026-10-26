@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DatabaseAdvancedMysqlConfig resources.
 class DatabaseAdvancedMysqlConfigState {
   /// The ID of the target MySQL Advanced Edition cluster.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// A map of MySQL system variable names to their string values. Only parameters included in this map are managed by Terraform.
-  final pulumi.Input<Map<String, String>>? mysqlParameters;
+  final pulumi.Input<Map<String, String>?>? mysqlParameters;
 
   /// Creates a new [DatabaseAdvancedMysqlConfigState].
   /// [clusterId] The ID of the target MySQL Advanced Edition cluster.

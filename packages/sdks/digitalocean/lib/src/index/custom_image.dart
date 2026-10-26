@@ -118,7 +118,7 @@ import 'custom_image_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -126,13 +126,19 @@ import 'custom_image_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_customimage" "flatcar" {
+/// resource "digitalocean_custom_image" "flatcar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "flatcar"
 ///   url     = "https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2"
 ///   regions = ["nyc3"]
 /// }
 /// resource "digitalocean_droplet" "example" {
-///   image    = digitalocean_customimage.flatcar.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   image    = digitalocean_custom_image.flatcar.id
 ///   name     = "example-01"
 ///   region   = "nyc3"
 ///   size     = "s-1vcpu-1gb"
@@ -240,7 +246,7 @@ class CustomImage extends pulumi.CustomResource {
           'digitalocean:index/customImage:CustomImage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
@@ -249,11 +255,11 @@ class CustomImage extends pulumi.CustomResource {
     minDiskSize = registerOutput<int>('minDiskSize');
     this.name = registerOutput<String>('name');
     public = registerOutput<bool>('public');
-    regions = registerOutput<List<String>>('regions');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sizeGigabytes = registerOutput<double>('sizeGigabytes');
     slug = registerOutput<String>('slug');
     status = registerOutput<String>('status');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
     url = registerOutput<String>('url');
   }
@@ -263,11 +269,12 @@ class CustomImage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomImageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomImage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -288,11 +295,36 @@ class CustomImage extends pulumi.CustomResource {
     minDiskSize = registerOutput<int>('minDiskSize');
     this.name = registerOutput<String>('name');
     public = registerOutput<bool>('public');
-    regions = registerOutput<List<String>>('regions');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sizeGigabytes = registerOutput<double>('sizeGigabytes');
     slug = registerOutput<String>('slug');
     status = registerOutput<String>('status');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String>('type');
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [CustomImage] resource.
+  CustomImage.reference(String urn)
+    : super(
+        'digitalocean:index/customImage:CustomImage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    distribution = registerOutput<String?>('distribution');
+    imageId = registerOutput<int>('imageId');
+    minDiskSize = registerOutput<int>('minDiskSize');
+    this.name = registerOutput<String>('name');
+    public = registerOutput<bool>('public');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sizeGigabytes = registerOutput<double>('sizeGigabytes');
+    slug = registerOutput<String>('slug');
+    status = registerOutput<String>('status');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
     url = registerOutput<String>('url');
   }

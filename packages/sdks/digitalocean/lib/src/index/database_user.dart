@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_user_args.dart';
+import 'database_user_setting.dart';
 import 'database_user_state.dart';
 
 /// Provides a DigitalOcean database user resource. When creating a new database cluster, a default admin user with name `doadmin` will be created. Then, this resource can be used to provide additional normal users inside the cluster.
@@ -101,7 +102,7 @@ import 'database_user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -109,11 +110,17 @@ import 'database_user_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databaseuser" "user-example" {
-///   cluster_id = digitalocean_databasecluster.postgres-example.id
+/// resource "digitalocean_database_user" "user-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id = digitalocean_database_cluster.postgres-example.id
 ///   name       = "foobar"
 /// }
-/// resource "digitalocean_databasecluster" "postgres-example" {
+/// resource "digitalocean_database_cluster" "postgres-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-postgres-cluster"
 ///   engine     = "pg"
 ///   version    = "15"
@@ -302,7 +309,7 @@ import 'database_user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -310,7 +317,10 @@ import 'database_user_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databasecluster" "postgres-example" {
+/// resource "digitalocean_database_cluster" "postgres-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-postgres-cluster"
 ///   engine     = "pg"
 ///   version    = "15"
@@ -318,14 +328,20 @@ import 'database_user_state.dart';
 ///   region     = "nyc1"
 ///   node_count = 1
 /// }
-/// resource "digitalocean_databasereplica" "replica-example" {
-///   cluster_id = digitalocean_databasecluster.postgres-example.id
+/// resource "digitalocean_database_replica" "replica-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id = digitalocean_database_cluster.postgres-example.id
 ///   name       = "replica-example"
 ///   size       = "db-s-1vcpu-1gb"
 ///   region     = "nyc1"
 /// }
-/// resource "digitalocean_databaseuser" "user-example" {
-///   cluster_id = digitalocean_databasereplica.replica-example.uuid
+/// resource "digitalocean_database_user" "user-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id = digitalocean_database_replica.replica-example.uuid
 ///   name       = "foobar"
 /// }
 /// ```
@@ -591,7 +607,7 @@ import 'database_user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -599,7 +615,10 @@ import 'database_user_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databasecluster" "kafka-example" {
+/// resource "digitalocean_database_cluster" "kafka-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-kafka-cluster"
 ///   engine     = "kafka"
 ///   version    = "3.5"
@@ -607,11 +626,17 @@ import 'database_user_state.dart';
 ///   region     = "nyc1"
 ///   node_count = 3
 /// }
-/// resource "digitalocean_databasekafkatopic" "foobar_topic" {
+/// resource "digitalocean_database_kafka_topic" "foobar_topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id = foobar.id
 ///   name       = "topic-1"
 /// }
-/// resource "digitalocean_databaseuser" "foobar_user" {
+/// resource "digitalocean_database_user" "foobar_user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id = foobar.id
 ///   name       = "example-user"
 ///   settings {
@@ -667,12 +692,12 @@ import 'database_user_state.dart';
 ///             .build());
 ///
 ///         var foobarTopic = new DatabaseKafkaTopic("foobarTopic", DatabaseKafkaTopicArgs.builder()
-///             .clusterId(foobar.id())
+///             .clusterId(foobar.get("id"))
 ///             .name("topic-1")
 ///             .build());
 ///
 ///         var foobarUser = new DatabaseUser("foobarUser", DatabaseUserArgs.builder()
-///             .clusterId(foobar.id())
+///             .clusterId(foobar.get("id"))
 ///             .name("example-user")
 ///             .settings(DatabaseUserSettingArgs.builder()
 ///                 .acls(
@@ -755,7 +780,7 @@ class DatabaseUser extends pulumi.CustomResource {
   late final pulumi.Output<String> role;
   /// Contains optional settings for the user.
   /// The `settings` block is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> settings;
+  late final pulumi.Output<List<DatabaseUserSetting>?> settings;
 
   /// Creates a new [DatabaseUser].
   /// [name] The Pulumi resource name.
@@ -769,16 +794,17 @@ class DatabaseUser extends pulumi.CustomResource {
           'digitalocean:index/databaseUser:DatabaseUser',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
+          additionalSecretOutputs: const ['accessCert', 'accessKey', 'password'],
         ) {
-    accessCert = registerOutput<String>('accessCert');
-    accessKey = registerOutput<String>('accessKey');
+    accessCert = registerOutput<String>('accessCert', isSecret: true);
+    accessKey = registerOutput<String>('accessKey', isSecret: true);
     clusterId = registerOutput<String>('clusterId');
     mysqlAuthPlugin = registerOutput<String?>('mysqlAuthPlugin');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     role = registerOutput<String>('role');
-    settings = registerOutput<List<Map<String, dynamic>>?>('settings');
+    settings = registerOutput<List<DatabaseUserSetting>?>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseUserSetting>(guardedValue, (value) => DatabaseUserSetting.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [DatabaseUser] resource's state with the given [name] and [id].
@@ -786,11 +812,12 @@ class DatabaseUser extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseUserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseUser._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -804,13 +831,33 @@ class DatabaseUser extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accessCert = registerOutput<String>('accessCert');
-    accessKey = registerOutput<String>('accessKey');
+    accessCert = registerOutput<String>('accessCert', isSecret: true);
+    accessKey = registerOutput<String>('accessKey', isSecret: true);
     clusterId = registerOutput<String>('clusterId');
     mysqlAuthPlugin = registerOutput<String?>('mysqlAuthPlugin');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     role = registerOutput<String>('role');
-    settings = registerOutput<List<Map<String, dynamic>>?>('settings');
+    settings = registerOutput<List<DatabaseUserSetting>?>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseUserSetting>(guardedValue, (value) => DatabaseUserSetting.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DatabaseUser] resource.
+  DatabaseUser.reference(String urn)
+    : super(
+        'digitalocean:index/databaseUser:DatabaseUser',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['accessCert', 'accessKey', 'password'],
+        isResourceReference: true,
+      ) {
+    accessCert = registerOutput<String>('accessCert', isSecret: true);
+    accessKey = registerOutput<String>('accessKey', isSecret: true);
+    clusterId = registerOutput<String>('clusterId');
+    mysqlAuthPlugin = registerOutput<String?>('mysqlAuthPlugin');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String>('password', isSecret: true);
+    role = registerOutput<String>('role');
+    settings = registerOutput<List<DatabaseUserSetting>?>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseUserSetting>(guardedValue, (value) => DatabaseUserSetting.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

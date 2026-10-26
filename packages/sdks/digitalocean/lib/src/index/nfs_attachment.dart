@@ -118,7 +118,7 @@ import 'nfs_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -127,17 +127,26 @@ import 'nfs_attachment_state.dart';
 /// }
 ///
 /// resource "digitalocean_vpc" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example-vpc"
 ///   region = "atl1"
 /// }
 /// resource "digitalocean_nfs" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region           = "atl1"
 ///   name             = "example-nfs"
 ///   size             = 50
 ///   vpc_id           = digitalocean_vpc.foobar.id
 ///   performance_tier = "high"
 /// }
-/// resource "digitalocean_nfsattachment" "foobar" {
+/// resource "digitalocean_nfs_attachment" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   share_id = digitalocean_nfs.foobar.id
 ///   vpc_id   = digitalocean_vpc.foobar.id
 ///   region   = "atl1"
@@ -387,7 +396,7 @@ import 'nfs_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -396,30 +405,45 @@ import 'nfs_attachment_state.dart';
 /// }
 ///
 /// resource "digitalocean_vpc" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "primary-vpc"
 ///   region = "atl1"
 /// }
 /// resource "digitalocean_vpc" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "secondary-vpc"
 ///   region = "atl1"
 /// }
 /// resource "digitalocean_nfs" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region           = "atl1"
 ///   name             = "example-nfs"
 ///   size             = 50
 ///   vpc_id           = digitalocean_vpc.primary.id
 ///   performance_tier = "high"
 /// }
-/// resource "digitalocean_nfsattachment" "primary" {
+/// resource "digitalocean_nfs_attachment" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   share_id = digitalocean_nfs.example.id
 ///   vpc_id   = digitalocean_vpc.primary.id
 ///   region   = "atl1"
 /// }
-/// resource "digitalocean_nfsattachment" "secondary" {
-///   depends_on = [digitalocean_nfsattachment.primary]
-///   share_id   = digitalocean_nfs.example.id
-///   vpc_id     = digitalocean_vpc.secondary.id
-///   region     = "atl1"
+/// resource "digitalocean_nfs_attachment" "secondary" {
+///   depends_on = [digitalocean_nfs_attachment.primary]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   share_id = digitalocean_nfs.example.id
+///   vpc_id   = digitalocean_vpc.secondary.id
+///   region   = "atl1"
 /// }
 /// ```
 /// ```java
@@ -552,7 +576,7 @@ class NfsAttachment extends pulumi.CustomResource {
           'digitalocean:index/nfsAttachment:NfsAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     shareId = registerOutput<String>('shareId');
@@ -564,11 +588,12 @@ class NfsAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NfsAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NfsAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -582,6 +607,20 @@ class NfsAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    shareId = registerOutput<String>('shareId');
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [NfsAttachment] resource.
+  NfsAttachment.reference(String urn)
+    : super(
+        'digitalocean:index/nfsAttachment:NfsAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     shareId = registerOutput<String>('shareId');
     vpcId = registerOutput<String>('vpcId');

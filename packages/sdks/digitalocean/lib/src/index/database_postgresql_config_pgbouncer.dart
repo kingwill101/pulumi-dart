@@ -3,15 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabasePostgresqlConfigPgbouncer {
-  final pulumi.Input<int>? autodbIdleTimeout;
-  final pulumi.Input<int>? autodbMaxDbConnections;
-  final pulumi.Input<String>? autodbPoolMode;
-  final pulumi.Input<int>? autodbPoolSize;
-  final pulumi.Input<List<String>>? ignoreStartupParameters;
-  final pulumi.Input<int>? minPoolSize;
-  final pulumi.Input<int>? serverIdleTimeout;
-  final pulumi.Input<int>? serverLifetime;
-  final pulumi.Input<bool>? serverResetQueryAlways;
+  final pulumi.Input<int?>? autodbIdleTimeout;
+  final pulumi.Input<int?>? autodbMaxDbConnections;
+  final pulumi.Input<String?>? autodbPoolMode;
+  final pulumi.Input<int?>? autodbPoolSize;
+  final pulumi.Input<List<String>?>? ignoreStartupParameters;
+  final pulumi.Input<int?>? minPoolSize;
+  final pulumi.Input<int?>? serverIdleTimeout;
+  final pulumi.Input<int?>? serverLifetime;
+  final pulumi.Input<bool?>? serverResetQueryAlways;
 
   /// Creates a new [DatabasePostgresqlConfigPgbouncer].
   /// [autodbIdleTimeout] Optional.
@@ -51,14 +51,14 @@ class DatabasePostgresqlConfigPgbouncer {
 
   factory DatabasePostgresqlConfigPgbouncer.fromMap(Map<String, dynamic> map) {
     return DatabasePostgresqlConfigPgbouncer(
-      autodbIdleTimeout: (() { final guardedValue = map['autodbIdleTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      autodbMaxDbConnections: (() { final guardedValue = map['autodbMaxDbConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      autodbIdleTimeout: (() { final guardedValue = map['autodbIdleTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      autodbMaxDbConnections: (() { final guardedValue = map['autodbMaxDbConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       autodbPoolMode: (() { final guardedValue = map['autodbPoolMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      autodbPoolSize: (() { final guardedValue = map['autodbPoolSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      autodbPoolSize: (() { final guardedValue = map['autodbPoolSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ignoreStartupParameters: (() { final guardedValue = map['ignoreStartupParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      minPoolSize: (() { final guardedValue = map['minPoolSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      serverIdleTimeout: (() { final guardedValue = map['serverIdleTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      serverLifetime: (() { final guardedValue = map['serverLifetime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minPoolSize: (() { final guardedValue = map['minPoolSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      serverIdleTimeout: (() { final guardedValue = map['serverIdleTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      serverLifetime: (() { final guardedValue = map['serverLifetime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       serverResetQueryAlways: (() { final guardedValue = map['serverResetQueryAlways']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

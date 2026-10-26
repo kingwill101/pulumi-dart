@@ -31,8 +31,8 @@ class GetDatabaseClusterStorageAutoscale {
   factory GetDatabaseClusterStorageAutoscale.fromMap(Map<String, dynamic> map) {
     return GetDatabaseClusterStorageAutoscale(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      incrementGib: pulumi.Input.fromValue(map['incrementGib'] as int),
-      thresholdPercent: pulumi.Input.fromValue(map['thresholdPercent'] as int),
+      incrementGib: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['incrementGib'])),
+      thresholdPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['thresholdPercent'])),
     );
   }
 }

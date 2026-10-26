@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_nfs_access_point_get_nfs_access_point_args_doc}
 class GetNfsAccessPointArgs {
   /// The ID of the NFS access point. Conflicts with `name`, `shareId`, and `vpcId`.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the NFS access point. Must be used with `shareId`. Conflicts with `id`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the NFS share. Must be used with `name`. Conflicts with `id`.
-  final pulumi.Input<String>? shareId;
+  final pulumi.Input<String?>? shareId;
   /// When looking up by `name` and `shareId`, optionally filter to the access point attached to this VPC. Conflicts with `id`.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [GetNfsAccessPointArgs].
   /// [id] The ID of the NFS access point. Conflicts with `name`, `shareId`, and `vpcId`.

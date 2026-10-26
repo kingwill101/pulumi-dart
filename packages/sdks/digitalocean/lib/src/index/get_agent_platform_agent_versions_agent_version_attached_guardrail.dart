@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+class GetAgentPlatformAgentVersionsAgentVersionAttachedGuardrail {
+  /// Whether the guardrail is deleted
+  final pulumi.Input<bool> isDeleted;
+  /// Name of the guardrail
+  final pulumi.Input<String> name;
+  /// Guardrail priority
+  final pulumi.Input<int> priority;
+  /// Guardrail UUID
+  final pulumi.Input<String> uuid;
+
+  /// Creates a new [GetAgentPlatformAgentVersionsAgentVersionAttachedGuardrail].
+  /// [isDeleted] Whether the guardrail is deleted
+  /// [name] Name of the guardrail
+  /// [priority] Guardrail priority
+  /// [uuid] Guardrail UUID
+  const GetAgentPlatformAgentVersionsAgentVersionAttachedGuardrail({
+    required this.isDeleted,
+    required this.name,
+    required this.priority,
+    required this.uuid,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'isDeleted': isDeleted,
+      'name': name,
+      'priority': priority,
+      'uuid': uuid,
+    };
+  }
+
+  factory GetAgentPlatformAgentVersionsAgentVersionAttachedGuardrail.fromMap(Map<String, dynamic> map) {
+    return GetAgentPlatformAgentVersionsAgentVersionAttachedGuardrail(
+      isDeleted: pulumi.Input.fromValue(map['isDeleted'] as bool),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
+      uuid: pulumi.Input.fromValue(map['uuid'] as String),
+    );
+  }
+}

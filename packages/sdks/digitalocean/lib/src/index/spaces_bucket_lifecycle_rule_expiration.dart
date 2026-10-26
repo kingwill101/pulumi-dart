@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpacesBucketLifecycleRuleExpiration {
   /// Specifies the date/time after which you want applicable objects to expire. The argument uses
   /// RFC3339 format, e.g. "2020-03-22T15:03:55Z" or parts thereof e.g. "2019-02-28".
-  final pulumi.Input<String>? date;
+  final pulumi.Input<String?>? date;
   /// Specifies the number of days after object creation when the applicable objects will expire.
-  final pulumi.Input<int>? days;
+  final pulumi.Input<int?>? days;
   /// On a versioned bucket (versioning-enabled or versioning-suspended
   /// bucket), setting this to true directs Spaces to delete expired object delete markers.
-  final pulumi.Input<bool>? expiredObjectDeleteMarker;
+  final pulumi.Input<bool?>? expiredObjectDeleteMarker;
 
   /// Creates a new [SpacesBucketLifecycleRuleExpiration].
   /// [date] Specifies the date/time after which you want applicable objects to expire. The argument uses
@@ -33,7 +33,7 @@ class SpacesBucketLifecycleRuleExpiration {
   factory SpacesBucketLifecycleRuleExpiration.fromMap(Map<String, dynamic> map) {
     return SpacesBucketLifecycleRuleExpiration(
       date: (() { final guardedValue = map['date']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       expiredObjectDeleteMarker: (() { final guardedValue = map['expiredObjectDeleteMarker']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

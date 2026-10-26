@@ -134,7 +134,7 @@ import 'dedicated_inference_token_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -142,7 +142,10 @@ import 'dedicated_inference_token_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_dedicatedinference" "example" {
+/// resource "digitalocean_dedicated_inference" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "my-inference-endpoint"
 ///   region = "tor1"
 ///   model_deployments {
@@ -155,8 +158,11 @@ import 'dedicated_inference_token_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "digitalocean_dedicatedinferencetoken" "example" {
-///   dedicated_inference_id = digitalocean_dedicatedinference.example.id
+/// resource "digitalocean_dedicated_inference_token" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   dedicated_inference_id = digitalocean_dedicated_inference.example.id
 ///   name                   = "my-api-token"
 /// }
 /// ```
@@ -260,12 +266,13 @@ class DedicatedInferenceToken extends pulumi.CustomResource {
           'digitalocean:index/dedicatedInferenceToken:DedicatedInferenceToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
+          additionalSecretOutputs: const ['token'],
         ) {
     createdAt = registerOutput<String>('createdAt');
     dedicatedInferenceId = registerOutput<String>('dedicatedInferenceId');
     this.name = registerOutput<String>('name');
-    token = registerOutput<String>('token');
+    token = registerOutput<String>('token', isSecret: true);
   }
 
   /// Gets an existing [DedicatedInferenceToken] resource's state with the given [name] and [id].
@@ -273,11 +280,12 @@ class DedicatedInferenceToken extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DedicatedInferenceTokenState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DedicatedInferenceToken._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -294,6 +302,22 @@ class DedicatedInferenceToken extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     dedicatedInferenceId = registerOutput<String>('dedicatedInferenceId');
     this.name = registerOutput<String>('name');
-    token = registerOutput<String>('token');
+    token = registerOutput<String>('token', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [DedicatedInferenceToken] resource.
+  DedicatedInferenceToken.reference(String urn)
+    : super(
+        'digitalocean:index/dedicatedInferenceToken:DedicatedInferenceToken',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['token'],
+        isResourceReference: true,
+      ) {
+    createdAt = registerOutput<String>('createdAt');
+    dedicatedInferenceId = registerOutput<String>('dedicatedInferenceId');
+    this.name = registerOutput<String>('name');
+    token = registerOutput<String>('token', isSecret: true);
   }
 }

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_vpc_peering_vpc_peering_args_doc}
 class VpcPeeringArgs {
   /// A name for the VPC Peering. Must be unique and contain alphanumeric characters, dashes, and periods only.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A set of two VPC IDs to be peered.
   final pulumi.Input<List<String>> vpcIds;
 

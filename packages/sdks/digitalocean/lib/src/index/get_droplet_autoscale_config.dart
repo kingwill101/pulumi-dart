@@ -45,12 +45,12 @@ class GetDropletAutoscaleConfig {
 
   factory GetDropletAutoscaleConfig.fromMap(Map<String, dynamic> map) {
     return GetDropletAutoscaleConfig(
-      cooldownMinutes: pulumi.Input.fromValue(map['cooldownMinutes'] as int),
-      maxInstances: pulumi.Input.fromValue(map['maxInstances'] as int),
-      minInstances: pulumi.Input.fromValue(map['minInstances'] as int),
-      targetCpuUtilization: pulumi.Input.fromValue(map['targetCpuUtilization'] as double),
-      targetMemoryUtilization: pulumi.Input.fromValue(map['targetMemoryUtilization'] as double),
-      targetNumberInstances: pulumi.Input.fromValue(map['targetNumberInstances'] as int),
+      cooldownMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cooldownMinutes'])),
+      maxInstances: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxInstances'])),
+      minInstances: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minInstances'])),
+      targetCpuUtilization: pulumi.Input.fromValue((map['targetCpuUtilization'] as num).toDouble()),
+      targetMemoryUtilization: pulumi.Input.fromValue((map['targetMemoryUtilization'] as num).toDouble()),
+      targetNumberInstances: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetNumberInstances'])),
     );
   }
 }

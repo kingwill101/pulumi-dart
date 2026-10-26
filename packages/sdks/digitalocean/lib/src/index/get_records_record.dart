@@ -71,16 +71,16 @@ class GetRecordsRecord {
   factory GetRecordsRecord.fromMap(Map<String, dynamic> map) {
     return GetRecordsRecord(
       domain: pulumi.Input.fromValue(map['domain'] as String),
-      flags: pulumi.Input.fromValue(map['flags'] as int),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      flags: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['flags'])),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       name: pulumi.Input.fromValue(map['name'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       tag: pulumi.Input.fromValue(map['tag'] as String),
-      ttl: pulumi.Input.fromValue(map['ttl'] as int),
+      ttl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ttl'])),
       type: pulumi.Input.fromValue(map['type'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
-      weight: pulumi.Input.fromValue(map['weight'] as int),
+      weight: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['weight'])),
     );
   }
 }

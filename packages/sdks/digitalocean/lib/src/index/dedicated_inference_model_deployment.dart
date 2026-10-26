@@ -7,13 +7,13 @@ class DedicatedInferenceModelDeployment {
   /// The GPU accelerators to allocate for this model deployment. Each `accelerators` block supports:
   final pulumi.Input<List<DedicatedInferenceModelDeploymentAccelerator>> accelerators;
   /// The unique ID of the model.
-  final pulumi.Input<String>? modelId;
+  final pulumi.Input<String?>? modelId;
   /// The provider of the model (e.g. `digitalocean`, `huggingface`).
   final pulumi.Input<String> modelProvider;
   /// The slug identifier for the model to deploy.
   final pulumi.Input<String> modelSlug;
   /// The provider-specific model ID. Required when modelProvider is 'hugging_face', optional for 'modelcatalog'.
-  final pulumi.Input<String>? providerModelId;
+  final pulumi.Input<String?>? providerModelId;
 
   /// Creates a new [DedicatedInferenceModelDeployment].
   /// [accelerators] The GPU accelerators to allocate for this model deployment. Each `accelerators` block supports:
