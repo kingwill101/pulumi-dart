@@ -131,7 +131,7 @@ import 'random_integer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -144,16 +144,22 @@ import 'random_integer_state.dart';
 ///
 /// # The following example shows how to generate a random priority
 /// # between 1 and 50000 for a aws_alb_listener_rule resource:
-/// resource "random_randominteger" "priority" {
+/// resource "random_random_integer" "priority" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   min = 1
 ///   max = 50000
 ///   keepers = {
 ///     "listener_arn" = listenerArn
 ///   }
 /// }
-/// resource "aws_alblistenerrule" "main" {
-///   listener_arn = random_randominteger.priority.keepers.listenerArn
-///   priority     = random_randominteger.priority.result
+/// resource "aws_alb_listener_rule" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   listener_arn = random_random_integer.priority.keepers.listenerArn
+///   priority     = random_random_integer.priority.result
 ///   action = [{
 ///     "type"           = "forward"
 ///     "targetGroupArn" = targetGroupArn
@@ -262,9 +268,9 @@ class RandomInteger extends pulumi.CustomResource {
           'random:index/randomInteger:RandomInteger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.21.4').merge(options),
         ) {
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     max = registerOutput<int>('max');
     min = registerOutput<int>('min');
     result = registerOutput<int>('result');
@@ -276,11 +282,12 @@ class RandomInteger extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RandomIntegerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RandomInteger._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -294,7 +301,23 @@ class RandomInteger extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    max = registerOutput<int>('max');
+    min = registerOutput<int>('min');
+    result = registerOutput<int>('result');
+    seed = registerOutput<String?>('seed');
+  }
+
+  /// Creates a typed reference to an existing [RandomInteger] resource.
+  RandomInteger.reference(String urn)
+    : super(
+        'random:index/randomInteger:RandomInteger',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     max = registerOutput<int>('max');
     min = registerOutput<int>('min');
     result = registerOutput<int>('result');

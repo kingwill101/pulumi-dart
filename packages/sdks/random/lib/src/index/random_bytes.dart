@@ -85,7 +85,7 @@ import 'random_bytes_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     random = {
 ///       source = "pulumi/random"
@@ -93,13 +93,19 @@ import 'random_bytes_state.dart';
 ///   }
 /// }
 ///
-/// resource "random_randombytes" "jwt_secret" {
+/// resource "random_random_bytes" "jwt_secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   length = 64
 /// }
-/// resource "azurerm_keyvaultsecret" "jwt_secret" {
+/// resource "azurerm_key_vault_secret" "jwt_secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_vault_id = "some-azure-key-vault-id"
 ///   name         = "JwtSecret"
-///   value        = random_randombytes.jwt_secret.base64
+///   value        = random_random_bytes.jwt_secret.base64
 /// }
 /// ```
 /// ```java
@@ -186,11 +192,12 @@ class RandomBytes extends pulumi.CustomResource {
           'random:index/randomBytes:RandomBytes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.21.4').merge(options),
+          additionalSecretOutputs: const ['base64', 'hex'],
         ) {
-    base64 = registerOutput<String>('base64');
-    hex = registerOutput<String>('hex');
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    base64 = registerOutput<String>('base64', isSecret: true);
+    hex = registerOutput<String>('hex', isSecret: true);
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     length = registerOutput<int>('length');
   }
 
@@ -199,11 +206,12 @@ class RandomBytes extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RandomBytesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RandomBytes._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -217,9 +225,25 @@ class RandomBytes extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    base64 = registerOutput<String>('base64');
-    hex = registerOutput<String>('hex');
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    base64 = registerOutput<String>('base64', isSecret: true);
+    hex = registerOutput<String>('hex', isSecret: true);
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    length = registerOutput<int>('length');
+  }
+
+  /// Creates a typed reference to an existing [RandomBytes] resource.
+  RandomBytes.reference(String urn)
+    : super(
+        'random:index/randomBytes:RandomBytes',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['base64', 'hex'],
+        isResourceReference: true,
+      ) {
+    base64 = registerOutput<String>('base64', isSecret: true);
+    hex = registerOutput<String>('hex', isSecret: true);
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     length = registerOutput<int>('length');
   }
 }
