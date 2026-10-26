@@ -67,7 +67,7 @@ import 'content_scanning_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -75,7 +75,10 @@ import 'content_scanning_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_contentscanning" "example_content_scanning" {
+/// resource "cloudflare_content_scanning" "example_content_scanning" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   value   = "enabled"
 /// }
@@ -144,7 +147,7 @@ class ContentScanning extends pulumi.CustomResource {
           'cloudflare:index/contentScanning:ContentScanning',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     modified = registerOutput<String>('modified');
     value = registerOutput<String>('value');

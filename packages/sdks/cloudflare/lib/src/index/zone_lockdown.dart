@@ -67,7 +67,7 @@ import 'zone_lockdown_state.dart';
 ///         },
 ///         Description = "Prevent multiple login failures to mitigate brute force attacks",
 ///         Paused = false,
-///         Priority = 5,
+///         Priority = 5.0,
 ///     });
 ///
 /// });
@@ -105,7 +105,7 @@ import 'zone_lockdown_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -113,7 +113,10 @@ import 'zone_lockdown_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zonelockdown" "example_zone_lockdown" {
+/// resource "cloudflare_zone_lockdown" "example_zone_lockdown" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   configurations {
 ///     target = "ip"
@@ -215,7 +218,7 @@ class ZoneLockdown extends pulumi.CustomResource {
           'cloudflare:index/zoneLockdown:ZoneLockdown',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     configurations = registerOutput<List<ZoneLockdownConfiguration>>('configurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZoneLockdownConfiguration>(guardedValue, (value) => ZoneLockdownConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     createdOn = registerOutput<String>('createdOn');

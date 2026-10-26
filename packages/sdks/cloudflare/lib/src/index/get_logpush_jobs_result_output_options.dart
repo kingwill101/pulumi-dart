@@ -26,7 +26,7 @@ class GetLogpushJobsResultOutputOptions {
   final pulumi.Input<String> recordSuffix;
   /// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
   final pulumi.Input<String> recordTemplate;
-  /// Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+  /// Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
   final pulumi.Input<double> sampleRate;
   /// String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
   /// Available values: "unixnano", "unix", "rfc3339", "rfc3339ms", "rfc3339ns".
@@ -44,7 +44,7 @@ class GetLogpushJobsResultOutputOptions {
   /// [recordPrefix] String to be prepended before each record.
   /// [recordSuffix] String to be appended after each record.
   /// [recordTemplate] String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
-  /// [sampleRate] Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+  /// [sampleRate] Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
   /// [timestampFormat] String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
   const GetLogpushJobsResultOutputOptions({
     required this.batchPrefix,

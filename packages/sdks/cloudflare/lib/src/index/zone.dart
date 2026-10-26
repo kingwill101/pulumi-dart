@@ -122,7 +122,7 @@ import 'zone_tenant_unit.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -131,6 +131,9 @@ import 'zone_tenant_unit.dart';
 /// }
 ///
 /// resource "cloudflare_zone" "example_zone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account = {
 ///     id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   }
@@ -256,7 +259,7 @@ class Zone extends pulumi.CustomResource {
           'cloudflare:index/zone:Zone',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     account = registerOutput<ZoneAccount>('account', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneAccount.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     activatedOn = registerOutput<String>('activatedOn');

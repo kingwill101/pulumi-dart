@@ -25,7 +25,7 @@ import 'flagship_flag_state.dart';
 ///         conditions: [{
 ///             attribute: "x",
 ///             operator: "equals",
-///             value: {},
+///             value: "string",
 ///         }],
 ///         priority: 1,
 ///         serveVariation: "x",
@@ -55,7 +55,7 @@ import 'flagship_flag_state.dart';
 ///         "conditions": [{
 ///             "attribute": "x",
 ///             "operator": "equals",
-///             "value": {},
+///             "value": "string",
 ///         }],
 ///         "priority": 1,
 ///         "serve_variation": "x",
@@ -95,14 +95,14 @@ import 'flagship_flag_state.dart';
 ///                     {
 ///                         Attribute = "x",
 ///                         Operator = "equals",
-///                         Value = null,
+///                         Value = "string",
 ///                     },
 ///                 },
 ///                 Priority = 1,
 ///                 ServeVariation = "x",
 ///                 Rollout = new Cloudflare.Inputs.FlagshipFlagRuleRolloutArgs
 ///                 {
-///                     Percentage = 0,
+///                     Percentage = 0.0,
 ///                     Attribute = "x",
 ///                 },
 ///             },
@@ -139,7 +139,7 @@ import 'flagship_flag_state.dart';
 /// 						&cloudflare.FlagshipFlagRuleConditionArgs{
 /// 							Attribute: pulumi.String("x"),
 /// 							Operator:  pulumi.String("equals"),
-/// 							Value:     pulumi.String{},
+/// 							Value:     pulumi.String("string"),
 /// 						},
 /// 					},
 /// 					Priority:       pulumi.Int(1),
@@ -164,7 +164,7 @@ import 'flagship_flag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -172,7 +172,10 @@ import 'flagship_flag_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_flagshipflag" "example_flagship_flag" {
+/// resource "cloudflare_flagship_flag" "example_flagship_flag" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id        = "account_id"
 ///   app_id            = "app_id"
 ///   default_variation = "x"
@@ -182,7 +185,7 @@ import 'flagship_flag_state.dart';
 ///     conditions {
 ///       attribute = "x"
 ///       operator  = "equals"
-///       value     = {}
+///       value     = "string"
 ///     }
 ///     priority        = 1
 ///     serve_variation = "x"
@@ -232,8 +235,7 @@ import 'flagship_flag_state.dart';
 ///                 .conditions(FlagshipFlagRuleConditionArgs.builder()
 ///                     .attribute("x")
 ///                     .operator("equals")
-///                     .value(Map.ofEntries(
-///                     ))
+///                     .value("string")
 ///                     .build())
 ///                 .priority(1)
 ///                 .serveVariation("x")
@@ -265,7 +267,7 @@ import 'flagship_flag_state.dart';
 ///         - conditions:
 ///             - attribute: x
 ///               operator: equals
-///               value: {}
+///               value: string
 ///           priority: 1
 ///           serveVariation: x
 ///           rollout:
@@ -280,26 +282,27 @@ import 'flagship_flag_state.dart';
 ///
 /// ## Import
 ///
-/// &gt; This resource does not currently support `pulumi import`.
+/// ```sh
+/// $ pulumi import cloudflare:index/flagshipFlag:FlagshipFlag example '<account_id>/<app_id>/<flag_key>'
+/// ```
 class FlagshipFlag extends pulumi.CustomResource {
-  /// Cloudflare account ID.
+  /// Cloudflare account ID that owns the Flagship app.
   late final pulumi.Output<String> accountId;
-  /// App identifier.
+  /// Flagship app ID returned when the app was created.
   late final pulumi.Output<String> appId;
   /// Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
   late final pulumi.Output<String> defaultVariation;
+  /// Optional operator-facing description. It does not affect flag evaluation.
   late final pulumi.Output<String?> description;
   /// When false, the flag bypasses all rules and always serves `defaultVariation`.
   late final pulumi.Output<bool> enabled;
-  /// Flag key (slug).
-  late final pulumi.Output<String?> flagKey;
   /// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
   late final pulumi.Output<String> key;
   /// Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
   late final pulumi.Output<List<FlagshipFlagRule>> rules;
-  /// Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+  /// Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
   /// Available values: "boolean", "string", "number", "json".
-  late final pulumi.Output<String?> type;
+  late final pulumi.Output<String> type;
   late final pulumi.Output<String> updatedAt;
   late final pulumi.Output<String> updatedBy;
   /// Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.
@@ -317,17 +320,16 @@ class FlagshipFlag extends pulumi.CustomResource {
           'cloudflare:index/flagshipFlag:FlagshipFlag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     appId = registerOutput<String>('appId');
     defaultVariation = registerOutput<String>('defaultVariation');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool>('enabled');
-    flagKey = registerOutput<String?>('flagKey');
     key = registerOutput<String>('key');
     rules = registerOutput<List<FlagshipFlagRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlagshipFlagRule>(guardedValue, (value) => FlagshipFlagRule.fromMap((value as Map).cast<String, dynamic>())); });
-    type = registerOutput<String?>('type');
+    type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
     updatedBy = registerOutput<String>('updatedBy');
     variations = registerOutput<Map<String, String>>('variations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
@@ -362,10 +364,9 @@ class FlagshipFlag extends pulumi.CustomResource {
     defaultVariation = registerOutput<String>('defaultVariation');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool>('enabled');
-    flagKey = registerOutput<String?>('flagKey');
     key = registerOutput<String>('key');
     rules = registerOutput<List<FlagshipFlagRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlagshipFlagRule>(guardedValue, (value) => FlagshipFlagRule.fromMap((value as Map).cast<String, dynamic>())); });
-    type = registerOutput<String?>('type');
+    type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
     updatedBy = registerOutput<String>('updatedBy');
     variations = registerOutput<Map<String, String>>('variations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
@@ -385,10 +386,9 @@ class FlagshipFlag extends pulumi.CustomResource {
     defaultVariation = registerOutput<String>('defaultVariation');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool>('enabled');
-    flagKey = registerOutput<String?>('flagKey');
     key = registerOutput<String>('key');
     rules = registerOutput<List<FlagshipFlagRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlagshipFlagRule>(guardedValue, (value) => FlagshipFlagRule.fromMap((value as Map).cast<String, dynamic>())); });
-    type = registerOutput<String?>('type');
+    type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
     updatedBy = registerOutput<String>('updatedBy');
     variations = registerOutput<Map<String, String>>('variations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

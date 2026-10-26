@@ -104,7 +104,7 @@ import 'r2_bucket_lock_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -112,7 +112,10 @@ import 'r2_bucket_lock_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_r2bucketlock" "example_r2_bucket_lock" {
+/// resource "cloudflare_r2_bucket_lock" "example_r2_bucket_lock" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   bucket_name = "example-bucket"
 ///   rules {
@@ -188,7 +191,7 @@ import 'r2_bucket_lock_state.dart';
 ///
 /// &gt; This resource does not currently support `pulumi import`.
 class R2BucketLock extends pulumi.CustomResource {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   late final pulumi.Output<String> accountId;
   /// Name of the bucket.
   late final pulumi.Output<String> bucketName;
@@ -208,7 +211,7 @@ class R2BucketLock extends pulumi.CustomResource {
           'cloudflare:index/r2BucketLock:R2BucketLock',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     bucketName = registerOutput<String>('bucketName');

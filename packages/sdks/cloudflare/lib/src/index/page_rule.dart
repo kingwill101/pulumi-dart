@@ -134,7 +134,7 @@ import 'page_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -142,7 +142,10 @@ import 'page_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_pagerule" "example_page_rule" {
+/// resource "cloudflare_page_rule" "example_page_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   target   = "example.com/*"
 ///   priority = 1
@@ -247,7 +250,7 @@ class PageRule extends pulumi.CustomResource {
           'cloudflare:index/pageRule:PageRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     actions = registerOutput<PageRuleActions>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PageRuleActions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdOn = registerOutput<String>('createdOn');

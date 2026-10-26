@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'get_zero_trust_resource_library_application_filter.dart';
 
 /// Result data returned by getZeroTrustResourceLibraryApplication.
 class GetZeroTrustResourceLibraryApplicationResult {
@@ -14,23 +15,24 @@ class GetZeroTrustResourceLibraryApplicationResult {
   final String? applicationType;
   /// Returns the application type description.
   final String? applicationTypeDescription;
-  /// Returns the category ID.
+  /// Numeric identifier for an application category.
   final int? categoryId;
   /// Returns the application creation time.
   final String? createdAt;
+  final GetZeroTrustResourceLibraryApplicationFilter? filter;
   /// GenAI score for the application. Returns -1 when no score is available.
   final double? genAiScore;
   /// Hostnames matched by the application.
   final List<String>? hostnames;
-  /// Returns the human readable ID.
+  /// Human-readable identifier for the application.
   final String? humanId;
-  /// The ID of this resource.
+  /// Numeric identifier for the application.
   final int? id;
-  /// IP subnets matched by the application.
+  /// IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
   final List<String>? ipSubnets;
-  /// Returns the application name.
+  /// Application name.
   final String? name;
-  /// Port and protocol pairs matched by the application.
+  /// Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
   final List<String>? portProtocols;
   /// Support domains matched by the application.
   final List<String>? supportDomains;
@@ -48,15 +50,16 @@ class GetZeroTrustResourceLibraryApplicationResult {
   /// [applicationSource] Returns the application source.
   /// [applicationType] Returns the application type.
   /// [applicationTypeDescription] Returns the application type description.
-  /// [categoryId] Returns the category ID.
+  /// [categoryId] Numeric identifier for an application category.
   /// [createdAt] Returns the application creation time.
+  /// [filter] Optional.
   /// [genAiScore] GenAI score for the application. Returns -1 when no score is available.
   /// [hostnames] Hostnames matched by the application.
-  /// [humanId] Returns the human readable ID.
-  /// [id] The ID of this resource.
-  /// [ipSubnets] IP subnets matched by the application.
-  /// [name] Returns the application name.
-  /// [portProtocols] Port and protocol pairs matched by the application.
+  /// [humanId] Human-readable identifier for the application.
+  /// [id] Numeric identifier for the application.
+  /// [ipSubnets] IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
+  /// [name] Application name.
+  /// [portProtocols] Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
   /// [supportDomains] Support domains matched by the application.
   /// [supporteds] Cloudflare products that support this application.
   /// [updatedAt] Returns the application update time.
@@ -70,6 +73,7 @@ class GetZeroTrustResourceLibraryApplicationResult {
     this.applicationTypeDescription,
     this.categoryId,
     this.createdAt,
+    this.filter,
     this.genAiScore,
     this.hostnames,
     this.humanId,
@@ -93,6 +97,7 @@ class GetZeroTrustResourceLibraryApplicationResult {
       'applicationTypeDescription': ?applicationTypeDescription,
       'categoryId': ?categoryId,
       'createdAt': ?createdAt,
+      'filter': ?filter?.toMap(),
       'genAiScore': ?genAiScore,
       'hostnames': ?hostnames,
       'humanId': ?humanId,
@@ -115,12 +120,13 @@ class GetZeroTrustResourceLibraryApplicationResult {
       applicationSource: (() { final guardedValue = map['applicationSource']; if (guardedValue == null) return null; return guardedValue as String; })(),
       applicationType: (() { final guardedValue = map['applicationType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       applicationTypeDescription: (() { final guardedValue = map['applicationTypeDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      categoryId: (() { final guardedValue = map['categoryId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      categoryId: (() { final guardedValue = map['categoryId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return GetZeroTrustResourceLibraryApplicationFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       genAiScore: (() { final guardedValue = map['genAiScore']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       hostnames: (() { final guardedValue = map['hostnames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       humanId: (() { final guardedValue = map['humanId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       ipSubnets: (() { final guardedValue = map['ipSubnets']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       portProtocols: (() { final guardedValue = map['portProtocols']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),

@@ -7,6 +7,7 @@ import 'worker_version_binding.dart';
 import 'worker_version_cache_options.dart';
 import 'worker_version_container.dart';
 import 'worker_version_exports.dart';
+import 'worker_version_exports_reconciliation.dart';
 import 'worker_version_limits.dart';
 import 'worker_version_migrations.dart';
 import 'worker_version_module.dart';
@@ -21,6 +22,10 @@ class WorkerVersionState {
   final pulumi.Input<WorkerVersionAnnotations?>? annotations;
   /// Configuration for assets within a Worker.
   final pulumi.Input<WorkerVersionAssets?>? assets;
+  /// Email of the user who created the version.
+  final pulumi.Input<String?>? authorEmail;
+  /// Identifier of the user who created the version.
+  final pulumi.Input<String?>? authorId;
   /// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
   final pulumi.Input<List<WorkerVersionBinding>?>? bindings;
   /// Global CacheW configuration for the Worker. When caching is on,
@@ -36,6 +41,8 @@ class WorkerVersionState {
   final pulumi.Input<List<WorkerVersionContainer>?>? containers;
   /// When the version was created.
   final pulumi.Input<String?>? createdOn;
+  /// If true, a deployment will be created that sends 100% of traffic to the new version.
+  final pulumi.Input<bool?>? deploy;
   /// Declarative exports for the version, including Durable Object
   /// classes (with their `storage` backend) and named Worker
   /// entrypoints. On reads, tombstoned lifecycle entries are
@@ -43,6 +50,11 @@ class WorkerVersionState {
   /// `expecting-transfer`) are returned. `exports` and `migrations`
   /// are mutually exclusive on upload.
   final pulumi.Input<Map<String, WorkerVersionExports>?>? exports;
+  /// Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
+  final pulumi.Input<WorkerVersionExportsReconciliation?>? exportsReconciliation;
+  /// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+  /// Available values: "modules".
+  final pulumi.Input<String?>? include;
   /// Resource limits enforced at runtime.
   final pulumi.Input<WorkerVersionLimits?>? limits;
   /// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
@@ -83,13 +95,18 @@ class WorkerVersionState {
   /// [accountId] Identifier.
   /// [annotations] Metadata about the version.
   /// [assets] Configuration for assets within a Worker.
+  /// [authorEmail] Email of the user who created the version.
+  /// [authorId] Identifier of the user who created the version.
   /// [bindings] List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
   /// [cacheOptions] Global CacheW configuration for the Worker. When caching is on,
   /// [compatibilityDate] Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
   /// [compatibilityFlags] Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
   /// [containers] List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
   /// [createdOn] When the version was created.
+  /// [deploy] If true, a deployment will be created that sends 100% of traffic to the new version.
   /// [exports] Declarative exports for the version, including Durable Object
+  /// [exportsReconciliation] Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
+  /// [include] Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
   /// [limits] Resource limits enforced at runtime.
   /// [mainModule] The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
   /// [mainScriptBase64] The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
@@ -108,13 +125,18 @@ class WorkerVersionState {
     this.accountId,
     this.annotations,
     this.assets,
+    this.authorEmail,
+    this.authorId,
     this.bindings,
     this.cacheOptions,
     this.compatibilityDate,
     this.compatibilityFlags,
     this.containers,
     this.createdOn,
+    this.deploy,
     this.exports,
+    this.exportsReconciliation,
+    this.include,
     this.limits,
     this.mainModule,
     this.mainScriptBase64,
@@ -136,13 +158,18 @@ class WorkerVersionState {
       'accountId': ?accountId,
       'annotations': ?pulumi.Input.mapOptionalInputValue<WorkerVersionAnnotations, Map<String, dynamic>>(annotations, (value) => value.toMap()),
       'assets': ?pulumi.Input.mapOptionalInputValue<WorkerVersionAssets, Map<String, dynamic>>(assets, (value) => value.toMap()),
+      'authorEmail': ?authorEmail,
+      'authorId': ?authorId,
       'bindings': ?pulumi.Input.mapOptionalInputValue<List<WorkerVersionBinding>, List<Map<String, dynamic>>>(bindings, (value) => pulumi.Input.encodeList<WorkerVersionBinding, Map<String, dynamic>>(value, (value) => value.toMap())),
       'cacheOptions': ?pulumi.Input.mapOptionalInputValue<WorkerVersionCacheOptions, Map<String, dynamic>>(cacheOptions, (value) => value.toMap()),
       'compatibilityDate': ?compatibilityDate,
       'compatibilityFlags': ?compatibilityFlags,
       'containers': ?pulumi.Input.mapOptionalInputValue<List<WorkerVersionContainer>, List<Map<String, dynamic>>>(containers, (value) => pulumi.Input.encodeList<WorkerVersionContainer, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createdOn': ?createdOn,
+      'deploy': ?deploy,
       'exports': ?pulumi.Input.mapOptionalInputValue<Map<String, WorkerVersionExports>, Map<String, Map<String, dynamic>>>(exports, (value) => pulumi.Input.encodeMapValues<WorkerVersionExports, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'exportsReconciliation': ?pulumi.Input.mapOptionalInputValue<WorkerVersionExportsReconciliation, Map<String, dynamic>>(exportsReconciliation, (value) => value.toMap()),
+      'include': ?include,
       'limits': ?pulumi.Input.mapOptionalInputValue<WorkerVersionLimits, Map<String, dynamic>>(limits, (value) => value.toMap()),
       'mainModule': ?mainModule,
       'mainScriptBase64': ?mainScriptBase64,
@@ -165,24 +192,29 @@ class WorkerVersionState {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerVersionAnnotations.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       assets: (() { final guardedValue = map['assets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerVersionAssets.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      authorEmail: (() { final guardedValue = map['authorEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authorId: (() { final guardedValue = map['authorId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bindings: (() { final guardedValue = map['bindings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkerVersionBinding>(guardedValue, (value) => WorkerVersionBinding.fromMap((value as Map).cast<String, dynamic>()))); })(),
       cacheOptions: (() { final guardedValue = map['cacheOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerVersionCacheOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       compatibilityDate: (() { final guardedValue = map['compatibilityDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       compatibilityFlags: (() { final guardedValue = map['compatibilityFlags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       containers: (() { final guardedValue = map['containers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkerVersionContainer>(guardedValue, (value) => WorkerVersionContainer.fromMap((value as Map).cast<String, dynamic>()))); })(),
       createdOn: (() { final guardedValue = map['createdOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deploy: (() { final guardedValue = map['deploy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       exports: (() { final guardedValue = map['exports']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<WorkerVersionExports>(guardedValue, (value) => WorkerVersionExports.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      exportsReconciliation: (() { final guardedValue = map['exportsReconciliation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerVersionExportsReconciliation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      include: (() { final guardedValue = map['include']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       limits: (() { final guardedValue = map['limits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerVersionLimits.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       mainModule: (() { final guardedValue = map['mainModule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mainScriptBase64: (() { final guardedValue = map['mainScriptBase64']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       migrationTag: (() { final guardedValue = map['migrationTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       migrations: (() { final guardedValue = map['migrations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerVersionMigrations.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       modules: (() { final guardedValue = map['modules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkerVersionModule>(guardedValue, (value) => WorkerVersionModule.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      number: (() { final guardedValue = map['number']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      number: (() { final guardedValue = map['number']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       packageDependencies: (() { final guardedValue = map['packageDependencies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkerVersionPackageDependency>(guardedValue, (value) => WorkerVersionPackageDependency.fromMap((value as Map).cast<String, dynamic>()))); })(),
       placement: (() { final guardedValue = map['placement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerVersionPlacement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      startupTimeMs: (() { final guardedValue = map['startupTimeMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      startupTimeMs: (() { final guardedValue = map['startupTimeMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       urls: (() { final guardedValue = map['urls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       usageModel: (() { final guardedValue = map['usageModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workerId: (() { final guardedValue = map['workerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

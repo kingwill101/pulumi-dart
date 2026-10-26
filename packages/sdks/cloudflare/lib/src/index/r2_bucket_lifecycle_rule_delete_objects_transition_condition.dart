@@ -29,7 +29,7 @@ class R2BucketLifecycleRuleDeleteObjectsTransitionCondition {
   factory R2BucketLifecycleRuleDeleteObjectsTransitionCondition.fromMap(Map<String, dynamic> map) {
     return R2BucketLifecycleRuleDeleteObjectsTransitionCondition(
       date: (() { final guardedValue = map['date']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxAge: (() { final guardedValue = map['maxAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxAge: (() { final guardedValue = map['maxAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

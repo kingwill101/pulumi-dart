@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering ZeroTrustGatewayCertificate resources.
 class ZeroTrustGatewayCertificateState {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String?>? accountId;
   /// Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
   final pulumi.Input<bool?>? activate;
@@ -22,6 +23,8 @@ class ZeroTrustGatewayCertificateState {
   final pulumi.Input<String?>? issuerOrg;
   /// Provide the entire issuer field of the certificate (read-only).
   final pulumi.Input<String?>? issuerRaw;
+  /// Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
+  final pulumi.Input<String?>? region;
   /// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
   /// Available values: "custom", "gatewayManaged".
   final pulumi.Input<String?>? type;
@@ -31,7 +34,7 @@ class ZeroTrustGatewayCertificateState {
   final pulumi.Input<int?>? validityPeriodDays;
 
   /// Creates a new [ZeroTrustGatewayCertificateState].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [activate] Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
   /// [bindingStatus] Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
   /// [certificate] Provide the CA certificate (read-only).
@@ -41,6 +44,7 @@ class ZeroTrustGatewayCertificateState {
   /// [inUse] Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
   /// [issuerOrg] Indicate the organization that issued the certificate (read-only).
   /// [issuerRaw] Provide the entire issuer field of the certificate (read-only).
+  /// [region] Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
   /// [type] Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
   /// [updatedAt] Optional.
   /// [uploadedOn] Optional.
@@ -56,6 +60,7 @@ class ZeroTrustGatewayCertificateState {
     this.inUse,
     this.issuerOrg,
     this.issuerRaw,
+    this.region,
     this.type,
     this.updatedAt,
     this.uploadedOn,
@@ -74,6 +79,7 @@ class ZeroTrustGatewayCertificateState {
       'inUse': ?inUse,
       'issuerOrg': ?issuerOrg,
       'issuerRaw': ?issuerRaw,
+      'region': ?region,
       'type': ?type,
       'updatedAt': ?updatedAt,
       'uploadedOn': ?uploadedOn,
@@ -93,10 +99,11 @@ class ZeroTrustGatewayCertificateState {
       inUse: (() { final guardedValue = map['inUse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       issuerOrg: (() { final guardedValue = map['issuerOrg']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       issuerRaw: (() { final guardedValue = map['issuerRaw']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       uploadedOn: (() { final guardedValue = map['uploadedOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      validityPeriodDays: (() { final guardedValue = map['validityPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      validityPeriodDays: (() { final guardedValue = map['validityPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

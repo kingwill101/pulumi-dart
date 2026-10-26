@@ -81,7 +81,7 @@ class GetZeroTrustAccessApplicationsResult {
   final pulumi.Input<List<String>> selfHostedDomains;
   /// Returns a 401 status code when the request is blocked by a Service Auth policy.
   final pulumi.Input<bool> serviceAuth401Redirect;
-  /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+  /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
   final pulumi.Input<String> sessionDuration;
   /// Determines when to skip the App Launcher landing page.
   final pulumi.Input<bool> skipAppLauncherLoginPage;
@@ -128,7 +128,7 @@ class GetZeroTrustAccessApplicationsResult {
   /// [scimConfig] Configuration for provisioning to this application via SCIM. This is currently in closed beta.
   /// [selfHostedDomains] List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
   /// [serviceAuth401Redirect] Returns a 401 status code when the request is blocked by a Service Auth policy.
-  /// [sessionDuration] The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+  /// [sessionDuration] The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
   /// [skipAppLauncherLoginPage] Determines when to skip the App Launcher landing page.
   /// [skipInterstitial] Enables automatic authentication through cloudflared.
   /// [tags] The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.

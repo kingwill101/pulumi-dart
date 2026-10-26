@@ -76,7 +76,7 @@ import 'zero_trust_dex_rule_targeted_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -84,7 +84,10 @@ import 'zero_trust_dex_rule_targeted_test.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdexrule" "example_zero_trust_dex_rule" {
+/// resource "cloudflare_zero_trust_dex_rule" "example_zero_trust_dex_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "01a7362d577a6c3019a474fd6f485823"
 ///   match       = "match"
 ///   name        = "name"
@@ -164,7 +167,7 @@ class ZeroTrustDexRule extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');

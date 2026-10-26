@@ -27,7 +27,7 @@ class GetZeroTrustDlpPredefinedProfileEntry {
   final pulumi.Input<String> updatedAt;
   /// A Predefined AI prompt classification topic entry.
   final pulumi.Input<GetZeroTrustDlpPredefinedProfileEntryVariant> variant;
-  final pulumi.Input<String> wordList;
+  final pulumi.Input<List<String>> wordLists;
 
   /// Creates a new [GetZeroTrustDlpPredefinedProfileEntry].
   /// [caseSensitive] Only applies to custom word lists.
@@ -44,7 +44,7 @@ class GetZeroTrustDlpPredefinedProfileEntry {
   /// [type] Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
   /// [updatedAt] Required.
   /// [variant] A Predefined AI prompt classification topic entry.
-  /// [wordList] Required.
+  /// [wordLists] Required.
   const GetZeroTrustDlpPredefinedProfileEntry({
     required this.caseSensitive,
     required this.confidence,
@@ -60,7 +60,7 @@ class GetZeroTrustDlpPredefinedProfileEntry {
     required this.type,
     required this.updatedAt,
     required this.variant,
-    required this.wordList,
+    required this.wordLists,
   });
 
   Map<String, dynamic> toMap() {
@@ -79,7 +79,7 @@ class GetZeroTrustDlpPredefinedProfileEntry {
       'type': type,
       'updatedAt': updatedAt,
       'variant': pulumi.Input.mapInputValue<GetZeroTrustDlpPredefinedProfileEntryVariant, Map<String, dynamic>>(variant, (value) => value.toMap()),
-      'wordList': wordList,
+      'wordLists': wordLists,
     };
   }
 
@@ -99,7 +99,7 @@ class GetZeroTrustDlpPredefinedProfileEntry {
       type: pulumi.Input.fromValue(map['type'] as String),
       updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
       variant: pulumi.Input.fromValue(GetZeroTrustDlpPredefinedProfileEntryVariant.fromMap((map['variant']! as Map).cast<String, dynamic>())),
-      wordList: pulumi.Input.fromValue(map['wordList'] as String),
+      wordLists: pulumi.Input.fromValue((map['wordLists'] as List).cast<String>()),
     );
   }
 }

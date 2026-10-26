@@ -69,7 +69,7 @@ import 'dns_zone_transfers_acl_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -77,7 +77,10 @@ import 'dns_zone_transfers_acl_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_dnszonetransfersacl" "example_dns_zone_transfers_acl" {
+/// resource "cloudflare_dns_zone_transfers_acl" "example_dns_zone_transfers_acl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "01a7362d577a6c3019a474fd6f485823"
 ///   ip_range   = "192.0.2.53/28"
 ///   name       = "my-acl-1"
@@ -149,7 +152,7 @@ class DnsZoneTransfersAcl extends pulumi.CustomResource {
           'cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     ipRange = registerOutput<String>('ipRange');

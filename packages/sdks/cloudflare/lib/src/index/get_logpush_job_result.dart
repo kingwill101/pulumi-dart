@@ -7,7 +7,7 @@ class GetLogpushJobResult {
   /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
   final String? accountId;
   /// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-  /// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+  /// Available values: "access*requests", "account*abuse*protection*events", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*bgp*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network_sessions".
   final String? dataset;
   /// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
   final String? destinationConf;
@@ -15,6 +15,8 @@ class GetLogpushJobResult {
   final bool? enabled;
   /// If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
   final String? errorMessage;
+  /// When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+  final bool? filterAttackTraffic;
   /// This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
   /// Available values: "high", "low".
   final String? frequency;
@@ -50,6 +52,7 @@ class GetLogpushJobResult {
   /// [destinationConf] Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
   /// [enabled] Flag that indicates if the job is enabled.
   /// [errorMessage] If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
+  /// [filterAttackTraffic] When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
   /// [frequency] This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
   /// [id] Unique id of the job.
   /// [jobId] Unique id of the job.
@@ -69,6 +72,7 @@ class GetLogpushJobResult {
     this.destinationConf,
     this.enabled,
     this.errorMessage,
+    this.filterAttackTraffic,
     this.frequency,
     this.id,
     this.jobId,
@@ -91,6 +95,7 @@ class GetLogpushJobResult {
       'destinationConf': ?destinationConf,
       'enabled': ?enabled,
       'errorMessage': ?errorMessage,
+      'filterAttackTraffic': ?filterAttackTraffic,
       'frequency': ?frequency,
       'id': ?id,
       'jobId': ?jobId,
@@ -114,16 +119,17 @@ class GetLogpushJobResult {
       destinationConf: (() { final guardedValue = map['destinationConf']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       errorMessage: (() { final guardedValue = map['errorMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      filterAttackTraffic: (() { final guardedValue = map['filterAttackTraffic']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      jobId: (() { final guardedValue = map['jobId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      jobId: (() { final guardedValue = map['jobId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastComplete: (() { final guardedValue = map['lastComplete']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastError: (() { final guardedValue = map['lastError']; if (guardedValue == null) return null; return guardedValue as String; })(),
       logpullOptions: (() { final guardedValue = map['logpullOptions']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxUploadBytes: (() { final guardedValue = map['maxUploadBytes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      maxUploadIntervalSeconds: (() { final guardedValue = map['maxUploadIntervalSeconds']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      maxUploadRecords: (() { final guardedValue = map['maxUploadRecords']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxUploadBytes: (() { final guardedValue = map['maxUploadBytes']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      maxUploadIntervalSeconds: (() { final guardedValue = map['maxUploadIntervalSeconds']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      maxUploadRecords: (() { final guardedValue = map['maxUploadRecords']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       outputOptions: (() { final guardedValue = map['outputOptions']; if (guardedValue == null) return null; return GetLogpushJobOutputOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),

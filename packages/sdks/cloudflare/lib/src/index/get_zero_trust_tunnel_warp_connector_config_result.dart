@@ -12,7 +12,7 @@ class GetZeroTrustTunnelWarpConnectorConfigResult {
   final int? configurationVersion;
   /// Timestamp of when the resource was created.
   final String? createdAt;
-  /// High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+  /// High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
   /// Available values: "none", "disabled", "aws", "local".
   final String? haMode;
   /// UUID of the tunnel.
@@ -25,7 +25,7 @@ class GetZeroTrustTunnelWarpConnectorConfigResult {
   /// [config] Provider-specific configuration. Present for `aws` and `local` modes.
   /// [configurationVersion] Monotonically increasing configuration version, incremented on each PUT.
   /// [createdAt] Timestamp of when the resource was created.
-  /// [haMode] High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+  /// [haMode] High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
   /// [tunnelId] UUID of the tunnel.
   /// [updatedAt] Timestamp of the last update. Null if never updated.
   const GetZeroTrustTunnelWarpConnectorConfigResult({
@@ -54,7 +54,7 @@ class GetZeroTrustTunnelWarpConnectorConfigResult {
     return GetZeroTrustTunnelWarpConnectorConfigResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return GetZeroTrustTunnelWarpConnectorConfigConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      configurationVersion: (() { final guardedValue = map['configurationVersion']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      configurationVersion: (() { final guardedValue = map['configurationVersion']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       haMode: (() { final guardedValue = map['haMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tunnelId: (() { final guardedValue = map['tunnelId']; if (guardedValue == null) return null; return guardedValue as String; })(),

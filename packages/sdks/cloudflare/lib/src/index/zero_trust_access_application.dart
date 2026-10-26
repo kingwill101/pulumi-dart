@@ -92,7 +92,7 @@ class ZeroTrustAccessApplication extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> selfHostedDomains;
   /// Returns a 401 status code when the request is blocked by a Service Auth policy.
   late final pulumi.Output<bool?> serviceAuth401Redirect;
-  /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+  /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
   late final pulumi.Output<String> sessionDuration;
   /// Determines when to skip the App Launcher landing page.
   late final pulumi.Output<bool> skipAppLauncherLoginPage;
@@ -100,6 +100,7 @@ class ZeroTrustAccessApplication extends pulumi.CustomResource {
   late final pulumi.Output<bool?> skipInterstitial;
   /// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
   late final pulumi.Output<List<String>?> tags;
+  /// Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
   late final pulumi.Output<List<ZeroTrustAccessApplicationTargetCriteria>?> targetCriterias;
   /// The application type.
   /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
@@ -119,7 +120,7 @@ class ZeroTrustAccessApplication extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     allowAuthenticateViaWarp = registerOutput<bool?>('allowAuthenticateViaWarp');

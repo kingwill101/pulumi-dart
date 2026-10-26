@@ -65,7 +65,7 @@ import 'waiting_room_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -73,7 +73,10 @@ import 'waiting_room_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_waitingroomsettings" "example_waiting_room_settings" {
+/// resource "cloudflare_waiting_room_settings" "example_waiting_room_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id                      = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   search_engine_crawler_bypass = true
 /// }
@@ -143,7 +146,7 @@ class WaitingRoomSettings extends pulumi.CustomResource {
           'cloudflare:index/waitingRoomSettings:WaitingRoomSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     searchEngineCrawlerBypass = registerOutput<bool>('searchEngineCrawlerBypass');
     zoneId = registerOutput<String>('zoneId');

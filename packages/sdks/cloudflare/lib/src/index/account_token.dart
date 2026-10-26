@@ -202,7 +202,7 @@ import 'account_token_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -210,7 +210,10 @@ import 'account_token_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_accounttoken" "example_account_token" {
+/// resource "cloudflare_account_token" "example_account_token" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "b67e14daa5f8dceeb91fe5449ba496eb"
 ///   name       = "workers read-only token"
 ///   policies {
@@ -333,6 +336,10 @@ class AccountToken extends pulumi.CustomResource {
   /// Account identifier tag.
   late final pulumi.Output<String> accountId;
   late final pulumi.Output<AccountTokenCondition?> condition;
+  /// The email address of the user who created the token at the time of
+  /// creation. Only present for Account Owned API Tokens when a creator email
+  /// was available.
+  late final pulumi.Output<String> creatorEmailAtCreation;
   /// The expiration time on or after which the JWT MUST NOT be accepted for processing.
   late final pulumi.Output<String?> expiresOn;
   /// The time on which the token was created.
@@ -345,8 +352,16 @@ class AccountToken extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The time before which the token MUST NOT be accepted for processing.
   late final pulumi.Output<String?> notBefore;
-  /// Set of access policies assigned to the token.
+  /// List of access policies assigned to the token.
   late final pulumi.Output<List<AccountTokenPolicy>> policies;
+  /// The identifier of the service that provisioned the token. For an
+  /// OAuth-provisioned token, this is the OAuth client identifier. Present
+  /// when `provisionerType` is present and null when the identifier is
+  /// unavailable.
+  late final pulumi.Output<String> provisionerId;
+  /// The type of service that provisioned the token. Only present for
+  /// provisioned Account Owned API Tokens.
+  late final pulumi.Output<String> provisionerType;
   /// Status of the token.
   /// Available values: "active", "disabled", "expired".
   late final pulumi.Output<String> status;
@@ -365,11 +380,12 @@ class AccountToken extends pulumi.CustomResource {
           'cloudflare:index/accountToken:AccountToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
           additionalSecretOutputs: const ['value'],
         ) {
     accountId = registerOutput<String>('accountId');
     condition = registerOutput<AccountTokenCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountTokenCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creatorEmailAtCreation = registerOutput<String>('creatorEmailAtCreation');
     expiresOn = registerOutput<String?>('expiresOn');
     issuedOn = registerOutput<String>('issuedOn');
     lastUsedOn = registerOutput<String>('lastUsedOn');
@@ -377,6 +393,8 @@ class AccountToken extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notBefore = registerOutput<String?>('notBefore');
     policies = registerOutput<List<AccountTokenPolicy>>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountTokenPolicy>(guardedValue, (value) => AccountTokenPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    provisionerId = registerOutput<String>('provisionerId');
+    provisionerType = registerOutput<String>('provisionerType');
     status = registerOutput<String>('status');
     value = registerOutput<String>('value', isSecret: true);
   }
@@ -407,6 +425,7 @@ class AccountToken extends pulumi.CustomResource {
         ) {
     accountId = registerOutput<String>('accountId');
     condition = registerOutput<AccountTokenCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountTokenCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creatorEmailAtCreation = registerOutput<String>('creatorEmailAtCreation');
     expiresOn = registerOutput<String?>('expiresOn');
     issuedOn = registerOutput<String>('issuedOn');
     lastUsedOn = registerOutput<String>('lastUsedOn');
@@ -414,6 +433,8 @@ class AccountToken extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notBefore = registerOutput<String?>('notBefore');
     policies = registerOutput<List<AccountTokenPolicy>>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountTokenPolicy>(guardedValue, (value) => AccountTokenPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    provisionerId = registerOutput<String>('provisionerId');
+    provisionerType = registerOutput<String>('provisionerType');
     status = registerOutput<String>('status');
     value = registerOutput<String>('value', isSecret: true);
   }
@@ -430,6 +451,7 @@ class AccountToken extends pulumi.CustomResource {
       ) {
     accountId = registerOutput<String>('accountId');
     condition = registerOutput<AccountTokenCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountTokenCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creatorEmailAtCreation = registerOutput<String>('creatorEmailAtCreation');
     expiresOn = registerOutput<String?>('expiresOn');
     issuedOn = registerOutput<String>('issuedOn');
     lastUsedOn = registerOutput<String>('lastUsedOn');
@@ -437,6 +459,8 @@ class AccountToken extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notBefore = registerOutput<String?>('notBefore');
     policies = registerOutput<List<AccountTokenPolicy>>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountTokenPolicy>(guardedValue, (value) => AccountTokenPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    provisionerId = registerOutput<String>('provisionerId');
+    provisionerType = registerOutput<String>('provisionerType');
     status = registerOutput<String>('status');
     value = registerOutput<String>('value', isSecret: true);
   }

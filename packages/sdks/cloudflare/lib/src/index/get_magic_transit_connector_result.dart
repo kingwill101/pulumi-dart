@@ -5,7 +5,6 @@ import 'get_magic_transit_connector_filter.dart';
 
 /// Result data returned by getMagicTransitConnector.
 class GetMagicTransitConnectorResult {
-  /// Account identifier
   final String? accountId;
   final bool? activated;
   final String? connectorId;
@@ -27,7 +26,7 @@ class GetMagicTransitConnectorResult {
   final String? timezone;
 
   /// Creates a new [GetMagicTransitConnectorResult].
-  /// [accountId] Account identifier
+  /// [accountId] Optional.
   /// [activated] Optional.
   /// [connectorId] Optional.
   /// [device] Optional.

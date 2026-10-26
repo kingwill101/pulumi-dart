@@ -83,7 +83,7 @@ import 'authenticated_origin_pulls_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -91,7 +91,10 @@ import 'authenticated_origin_pulls_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_authenticatedoriginpulls" "example_authenticated_origin_pulls" {
+/// resource "cloudflare_authenticated_origin_pulls" "example_authenticated_origin_pulls" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   configs {
 ///     cert_id  = "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60"
@@ -202,7 +205,7 @@ class AuthenticatedOriginPulls extends pulumi.CustomResource {
           'cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
           additionalSecretOutputs: const ['privateKey'],
         ) {
     certId = registerOutput<String>('certId');

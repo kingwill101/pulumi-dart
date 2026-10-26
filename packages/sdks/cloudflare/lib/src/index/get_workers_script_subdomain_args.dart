@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkersScriptSubdomainArgs {
   /// Identifier.
   final pulumi.Input<String> accountId;
-  /// Name of the script, used in URLs and route configuration.
+  /// Name of the script.
   final pulumi.Input<String> scriptName;
 
   /// Creates a new [GetWorkersScriptSubdomainArgs].
   /// [accountId] Identifier.
-  /// [scriptName] Name of the script, used in URLs and route configuration.
+  /// [scriptName] Name of the script.
   const GetWorkersScriptSubdomainArgs({
     required this.accountId,
     required this.scriptName,

@@ -84,7 +84,7 @@ import 'api_shield_schema_upload_details.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -92,7 +92,10 @@ import 'api_shield_schema_upload_details.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_apishieldschema" "example_api_shield_schema" {
+/// resource "cloudflare_api_shield_schema" "example_api_shield_schema" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id            = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   file               = "Example data"
 ///   kind               = "openapi_v3"
@@ -153,6 +156,8 @@ class ApiShieldSchema extends pulumi.CustomResource {
   late final pulumi.Output<String> kind;
   /// Name of the schema
   late final pulumi.Output<String?> name;
+  /// Omit the source-files of schemas and only retrieve their meta-data.
+  late final pulumi.Output<bool> omitSource;
   late final pulumi.Output<ApiShieldSchemaSchema> schema;
   late final pulumi.Output<String?> schemaId;
   /// Source of the schema
@@ -176,12 +181,13 @@ class ApiShieldSchema extends pulumi.CustomResource {
           'cloudflare:index/apiShieldSchema:ApiShieldSchema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     file = registerOutput<String>('file');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String?>('name');
+    omitSource = registerOutput<bool>('omitSource');
     schema = registerOutput<ApiShieldSchemaSchema>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiShieldSchemaSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     schemaId = registerOutput<String?>('schemaId');
     source = registerOutput<String>('source');
@@ -218,6 +224,7 @@ class ApiShieldSchema extends pulumi.CustomResource {
     file = registerOutput<String>('file');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String?>('name');
+    omitSource = registerOutput<bool>('omitSource');
     schema = registerOutput<ApiShieldSchemaSchema>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiShieldSchemaSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     schemaId = registerOutput<String?>('schemaId');
     source = registerOutput<String>('source');
@@ -239,6 +246,7 @@ class ApiShieldSchema extends pulumi.CustomResource {
     file = registerOutput<String>('file');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String?>('name');
+    omitSource = registerOutput<bool>('omitSource');
     schema = registerOutput<ApiShieldSchemaSchema>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiShieldSchemaSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     schemaId = registerOutput<String?>('schemaId');
     source = registerOutput<String>('source');

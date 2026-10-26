@@ -3,35 +3,43 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEmailSecurityImpersonationRegistriesResult {
+  /// Optional note describing the entry.
   final pulumi.Input<String> comments;
   final pulumi.Input<String> createdAt;
+  /// Identifier of the directory the entry was synced from, when directory-synced.
   final pulumi.Input<int> directoryId;
+  /// Identifier of the directory node the entry was synced from, when directory-synced.
   final pulumi.Input<int> directoryNodeId;
+  /// Email address (or pattern) of the protected identity.
   final pulumi.Input<String> email;
+  /// Deprecated. External identifier of the directory node.
   final pulumi.Input<String> externalDirectoryNodeId;
   /// Impersonation registry entry identifier
   final pulumi.Input<String> id;
+  /// Whether `email` is a regular expression instead of a literal address.
   final pulumi.Input<bool> isEmailRegex;
   /// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
   final pulumi.Input<String> lastModified;
   final pulumi.Input<String> modifiedAt;
+  /// Display name of the protected identity.
   final pulumi.Input<String> name;
+  /// Source the entry was created from.
   /// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
   final pulumi.Input<String> provenance;
 
   /// Creates a new [GetEmailSecurityImpersonationRegistriesResult].
-  /// [comments] Required.
+  /// [comments] Optional note describing the entry.
   /// [createdAt] Required.
-  /// [directoryId] Required.
-  /// [directoryNodeId] Required.
-  /// [email] Required.
-  /// [externalDirectoryNodeId] Required.
+  /// [directoryId] Identifier of the directory the entry was synced from, when directory-synced.
+  /// [directoryNodeId] Identifier of the directory node the entry was synced from, when directory-synced.
+  /// [email] Email address (or pattern) of the protected identity.
+  /// [externalDirectoryNodeId] Deprecated. External identifier of the directory node.
   /// [id] Impersonation registry entry identifier
-  /// [isEmailRegex] Required.
+  /// [isEmailRegex] Whether `email` is a regular expression instead of a literal address.
   /// [lastModified] Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
   /// [modifiedAt] Required.
-  /// [name] Required.
-  /// [provenance] Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+  /// [name] Display name of the protected identity.
+  /// [provenance] Source the entry was created from.
   const GetEmailSecurityImpersonationRegistriesResult({
     required this.comments,
     required this.createdAt,
@@ -68,8 +76,8 @@ class GetEmailSecurityImpersonationRegistriesResult {
     return GetEmailSecurityImpersonationRegistriesResult(
       comments: pulumi.Input.fromValue(map['comments'] as String),
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
-      directoryId: pulumi.Input.fromValue((map['directoryId'] as num).toInt()),
-      directoryNodeId: pulumi.Input.fromValue((map['directoryNodeId'] as num).toInt()),
+      directoryId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['directoryId'])),
+      directoryNodeId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['directoryNodeId'])),
       email: pulumi.Input.fromValue(map['email'] as String),
       externalDirectoryNodeId: pulumi.Input.fromValue(map['externalDirectoryNodeId'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),

@@ -91,7 +91,7 @@ import 'user_agent_blocking_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -99,7 +99,10 @@ import 'user_agent_blocking_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_useragentblockingrule" "example_user_agent_blocking_rule" {
+/// resource "cloudflare_user_agent_blocking_rule" "example_user_agent_blocking_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   configuration = {
 ///     target = "ua"
@@ -191,7 +194,7 @@ class UserAgentBlockingRule extends pulumi.CustomResource {
           'cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     configuration = registerOutput<UserAgentBlockingRuleConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAgentBlockingRuleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');

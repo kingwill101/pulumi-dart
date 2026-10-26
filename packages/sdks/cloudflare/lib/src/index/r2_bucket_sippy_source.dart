@@ -21,7 +21,7 @@ class R2BucketSippySource {
   final pulumi.Input<String?>? container;
   /// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
   final pulumi.Input<String?>? privateKey;
-  /// Name of the AWS availability zone.
+  /// AWS region containing the source S3 bucket.
   final pulumi.Input<String?>? region;
   /// Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
   final pulumi.Input<String?>? sasToken;
@@ -38,7 +38,7 @@ class R2BucketSippySource {
   /// [cloudProvider] Available values: "aws", "gcs", "s3", "azure".
   /// [container] Name of the Azure Blob Storage container.
   /// [privateKey] Private Key of an IAM credential (ideally scoped to a single GCS bucket).
-  /// [region] Name of the AWS availability zone.
+  /// [region] AWS region containing the source S3 bucket.
   /// [sasToken] Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
   /// [secretAccessKey] Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
   const R2BucketSippySource({

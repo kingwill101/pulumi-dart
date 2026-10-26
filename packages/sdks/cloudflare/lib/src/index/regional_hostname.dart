@@ -73,7 +73,7 @@ import 'regional_hostname_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -81,7 +81,10 @@ import 'regional_hostname_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_regionalhostname" "example_regional_hostname" {
+/// resource "cloudflare_regional_hostname" "example_regional_hostname" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   hostname   = "foo.example.com"
 ///   region_key = "ca"
@@ -161,7 +164,7 @@ class RegionalHostname extends pulumi.CustomResource {
           'cloudflare:index/regionalHostname:RegionalHostname',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     createdOn = registerOutput<String>('createdOn');
     hostname = registerOutput<String>('hostname');

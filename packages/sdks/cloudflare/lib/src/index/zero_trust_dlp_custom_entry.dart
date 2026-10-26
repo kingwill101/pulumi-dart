@@ -98,7 +98,7 @@ import 'zero_trust_dlp_custom_entry_variant.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -106,7 +106,10 @@ import 'zero_trust_dlp_custom_entry_variant.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdlpcustomentry" "example_zero_trust_dlp_custom_entry" {
+/// resource "cloudflare_zero_trust_dlp_custom_entry" "example_zero_trust_dlp_custom_entry" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "account_id"
 ///   enabled    = true
 ///   name       = "name"
@@ -202,7 +205,7 @@ class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
   late final pulumi.Output<String> uploadStatus;
   /// A Predefined AI prompt classification topic entry.
   late final pulumi.Output<ZeroTrustDlpCustomEntryVariant> variant;
-  late final pulumi.Output<String> wordList;
+  late final pulumi.Output<List<String>> wordLists;
 
   /// Creates a new [ZeroTrustDlpCustomEntry].
   /// [name] The Pulumi resource name.
@@ -216,7 +219,7 @@ class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     caseSensitive = registerOutput<bool>('caseSensitive');
@@ -234,7 +237,7 @@ class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
     updatedAt = registerOutput<String>('updatedAt');
     uploadStatus = registerOutput<String>('uploadStatus');
     variant = registerOutput<ZeroTrustDlpCustomEntryVariant>('variant', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDlpCustomEntryVariant.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    wordList = registerOutput<String>('wordList');
+    wordLists = registerOutput<List<String>>('wordLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ZeroTrustDlpCustomEntry] resource's state with the given [name] and [id].
@@ -277,7 +280,7 @@ class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
     updatedAt = registerOutput<String>('updatedAt');
     uploadStatus = registerOutput<String>('uploadStatus');
     variant = registerOutput<ZeroTrustDlpCustomEntryVariant>('variant', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDlpCustomEntryVariant.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    wordList = registerOutput<String>('wordList');
+    wordLists = registerOutput<List<String>>('wordLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Creates a typed reference to an existing [ZeroTrustDlpCustomEntry] resource.
@@ -305,6 +308,6 @@ class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
     updatedAt = registerOutput<String>('updatedAt');
     uploadStatus = registerOutput<String>('uploadStatus');
     variant = registerOutput<ZeroTrustDlpCustomEntryVariant>('variant', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDlpCustomEntryVariant.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    wordList = registerOutput<String>('wordList');
+    wordLists = registerOutput<List<String>>('wordLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'worker_version_binding_outbound.dart';
+import 'worker_version_binding_retry.dart';
 import 'worker_version_binding_simple.dart';
 
 class WorkerVersionBinding {
@@ -36,6 +37,9 @@ class WorkerVersionBinding {
   final pulumi.Input<String?>? format;
   /// Identifier of the D1 database to bind to.
   final pulumi.Input<String?>? id;
+  /// Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+  /// Available values: "runtime-email-alpha".
+  final pulumi.Input<String?>? identity;
   /// Name of the Vectorize index to bind to.
   final pulumi.Input<String?>? indexName;
   /// The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
@@ -43,7 +47,7 @@ class WorkerVersionBinding {
   /// JSON data to use.
   final pulumi.Input<String?>? json;
   /// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-  /// Available values: "eu", "fedramp", "fedramp-high".
+  /// Available values: "eu", "fedramp", "fedramp-high", "us".
   final pulumi.Input<String?>? jurisdiction;
   /// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
   final pulumi.Input<String?>? keyBase64;
@@ -67,6 +71,8 @@ class WorkerVersionBinding {
   final pulumi.Input<String?>? pipeline;
   /// Name of the Queue to bind to.
   final pulumi.Input<String?>? queueName;
+  /// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+  final pulumi.Input<WorkerVersionBindingRetry?>? retry;
   /// The script where the Durable Object is defined, if it is external to this Worker.
   final pulumi.Input<String?>? scriptName;
   /// Name of the secret in the store.
@@ -79,12 +85,14 @@ class WorkerVersionBinding {
   final pulumi.Input<WorkerVersionBindingSimple?>? simple;
   /// ID of the store containing the secret.
   final pulumi.Input<String?>? storeId;
+  /// ID of a K2 stream owned by the account deploying the Worker.
+  final pulumi.Input<String?>? stream;
   /// The text value to use.
   final pulumi.Input<String?>? text;
   /// UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
   final pulumi.Input<String?>? tunnelId;
   /// The kind of resource that the binding provides.
-  /// Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+  /// Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
   final pulumi.Input<String> type;
   /// Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
   final pulumi.Input<List<String>?>? usages;
@@ -109,6 +117,7 @@ class WorkerVersionBinding {
   /// [environment] The environment of the scriptName to bind to.
   /// [format] Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
   /// [id] Identifier of the D1 database to bind to.
+  /// [identity] Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
   /// [indexName] Name of the Vectorize index to bind to.
   /// [instanceName] The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
   /// [json] JSON data to use.
@@ -124,12 +133,14 @@ class WorkerVersionBinding {
   /// [part] The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
   /// [pipeline] Name of the Pipeline to bind to.
   /// [queueName] Name of the Queue to bind to.
+  /// [retry] Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
   /// [scriptName] The script where the Durable Object is defined, if it is external to this Worker.
   /// [secretName] Name of the secret in the store.
   /// [service] Name of Worker to bind to.
   /// [serviceId] Identifier of the VPC service to bind to.
   /// [simple] The rate limit configuration.
   /// [storeId] ID of the store containing the secret.
+  /// [stream] ID of a K2 stream owned by the account deploying the Worker.
   /// [text] The text value to use.
   /// [tunnelId] UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
   /// [type] The kind of resource that the binding provides.
@@ -152,6 +163,7 @@ class WorkerVersionBinding {
     this.environment,
     this.format,
     this.id,
+    this.identity,
     this.indexName,
     this.instanceName,
     this.json,
@@ -167,12 +179,14 @@ class WorkerVersionBinding {
     this.part,
     this.pipeline,
     this.queueName,
+    this.retry,
     this.scriptName,
     this.secretName,
     this.service,
     this.serviceId,
     this.simple,
     this.storeId,
+    this.stream,
     this.text,
     this.tunnelId,
     required this.type,
@@ -198,6 +212,7 @@ class WorkerVersionBinding {
       'environment': ?environment,
       'format': ?format,
       'id': ?id,
+      'identity': ?identity,
       'indexName': ?indexName,
       'instanceName': ?instanceName,
       'json': ?json,
@@ -213,12 +228,14 @@ class WorkerVersionBinding {
       'part': ?part,
       'pipeline': ?pipeline,
       'queueName': ?queueName,
+      'retry': ?pulumi.Input.mapOptionalInputValue<WorkerVersionBindingRetry, Map<String, dynamic>>(retry, (value) => value.toMap()),
       'scriptName': ?scriptName,
       'secretName': ?secretName,
       'service': ?service,
       'serviceId': ?serviceId,
       'simple': ?pulumi.Input.mapOptionalInputValue<WorkerVersionBindingSimple, Map<String, dynamic>>(simple, (value) => value.toMap()),
       'storeId': ?storeId,
+      'stream': ?stream,
       'text': ?text,
       'tunnelId': ?tunnelId,
       'type': type,
@@ -245,6 +262,7 @@ class WorkerVersionBinding {
       environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       indexName: (() { final guardedValue = map['indexName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceName: (() { final guardedValue = map['instanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       json: (() { final guardedValue = map['json']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -260,12 +278,14 @@ class WorkerVersionBinding {
       part: (() { final guardedValue = map['part']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pipeline: (() { final guardedValue = map['pipeline']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       queueName: (() { final guardedValue = map['queueName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      retry: (() { final guardedValue = map['retry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerVersionBindingRetry.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scriptName: (() { final guardedValue = map['scriptName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretName: (() { final guardedValue = map['secretName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceId: (() { final guardedValue = map['serviceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       simple: (() { final guardedValue = map['simple']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerVersionBindingSimple.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       storeId: (() { final guardedValue = map['storeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stream: (() { final guardedValue = map['stream']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       text: (() { final guardedValue = map['text']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tunnelId: (() { final guardedValue = map['tunnelId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),

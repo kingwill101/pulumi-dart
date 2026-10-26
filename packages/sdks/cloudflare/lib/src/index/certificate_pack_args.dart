@@ -63,7 +63,7 @@ class CertificatePackArgs {
       hosts: (() { final guardedValue = map['hosts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       validationMethod: pulumi.Input.fromValue(map['validationMethod'] as String),
-      validityDays: pulumi.Input.fromValue((map['validityDays'] as num).toInt()),
+      validityDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['validityDays'])),
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }

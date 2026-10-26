@@ -17,9 +17,10 @@ import 'logpush_job_state.dart';
 /// const exampleLogpushJob = new cloudflare.LogpushJob("example_logpush_job", {
 ///     destinationConf: "s3://mybucket/logs?region=us-west-2",
 ///     zoneId: "zone_id",
-///     dataset: "gateway_dns",
+///     dataset: "http_requests",
 ///     enabled: false,
 ///     filter: "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+///     filterAttackTraffic: true,
 ///     frequency: "high",
 ///     kind: "",
 ///     logpullOptions: "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
@@ -28,22 +29,20 @@ import 'logpush_job_state.dart';
 ///     maxUploadRecords: 1000,
 ///     name: "example.com",
 ///     outputOptions: {
-///         batchPrefix: "",
-///         batchSuffix: "",
-///         cve202144228: false,
-///         fieldDelimiter: ",",
+///         batchPrefix: "batch_prefix",
+///         batchSuffix: "batch_suffix",
+///         cve202144228: true,
+///         fieldDelimiter: "field_delimiter",
 ///         fieldNames: [
-///             "Datetime",
-///             "DstIP",
-///             "SrcIP",
+///             "ClientIP",
+///             "EdgeStartTimestamp",
+///             "RayID",
 ///         ],
 ///         mergeSubrequests: true,
 ///         outputType: "ndjson",
-///         recordDelimiter: "",
-///         recordPrefix: "{",
-///         recordSuffix: `    }
-///
-/// `,
+///         recordDelimiter: "record_delimiter",
+///         recordPrefix: "record_prefix",
+///         recordSuffix: "record_suffix",
 ///         recordTemplate: "record_template",
 ///         sampleRate: 1,
 ///         timestampFormat: "unixnano",
@@ -58,9 +57,10 @@ import 'logpush_job_state.dart';
 /// example_logpush_job = cloudflare.LogpushJob("example_logpush_job",
 ///     destination_conf="s3://mybucket/logs?region=us-west-2",
 ///     zone_id="zone_id",
-///     dataset="gateway_dns",
+///     dataset="http_requests",
 ///     enabled=False,
 ///     filter="{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+///     filter_attack_traffic=True,
 ///     frequency="high",
 ///     kind="",
 ///     logpull_options="fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
@@ -69,22 +69,20 @@ import 'logpush_job_state.dart';
 ///     max_upload_records=1000,
 ///     name="example.com",
 ///     output_options={
-///         "batch_prefix": "",
-///         "batch_suffix": "",
-///         "cve202144228": False,
-///         "field_delimiter": ",",
+///         "batch_prefix": "batch_prefix",
+///         "batch_suffix": "batch_suffix",
+///         "cve202144228": True,
+///         "field_delimiter": "field_delimiter",
 ///         "field_names": [
-///             "Datetime",
-///             "DstIP",
-///             "SrcIP",
+///             "ClientIP",
+///             "EdgeStartTimestamp",
+///             "RayID",
 ///         ],
 ///         "merge_subrequests": True,
 ///         "output_type": "ndjson",
-///         "record_delimiter": "",
-///         "record_prefix": "{",
-///         "record_suffix": """    }
-///
-/// """,
+///         "record_delimiter": "record_delimiter",
+///         "record_prefix": "record_prefix",
+///         "record_suffix": "record_suffix",
 ///         "record_template": "record_template",
 ///         "sample_rate": float(1),
 ///         "timestamp_format": "unixnano",
@@ -103,9 +101,10 @@ import 'logpush_job_state.dart';
 ///     {
 ///         DestinationConf = "s3://mybucket/logs?region=us-west-2",
 ///         ZoneId = "zone_id",
-///         Dataset = "gateway_dns",
+///         Dataset = "http_requests",
 ///         Enabled = false,
 ///         Filter = "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+///         FilterAttackTraffic = true,
 ///         Frequency = "high",
 ///         Kind = "",
 ///         LogpullOptions = "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
@@ -115,25 +114,23 @@ import 'logpush_job_state.dart';
 ///         Name = "example.com",
 ///         OutputOptions = new Cloudflare.Inputs.LogpushJobOutputOptionsArgs
 ///         {
-///             BatchPrefix = "",
-///             BatchSuffix = "",
-///             Cve202144228 = false,
-///             FieldDelimiter = ",",
+///             BatchPrefix = "batch_prefix",
+///             BatchSuffix = "batch_suffix",
+///             Cve202144228 = true,
+///             FieldDelimiter = "field_delimiter",
 ///             FieldNames = new[]
 ///             {
-///                 "Datetime",
-///                 "DstIP",
-///                 "SrcIP",
+///                 "ClientIP",
+///                 "EdgeStartTimestamp",
+///                 "RayID",
 ///             },
 ///             MergeSubrequests = true,
 ///             OutputType = "ndjson",
-///             RecordDelimiter = "",
-///             RecordPrefix = "{",
-///             RecordSuffix = @"    }
-///
-/// ",
+///             RecordDelimiter = "record_delimiter",
+///             RecordPrefix = "record_prefix",
+///             RecordSuffix = "record_suffix",
 ///             RecordTemplate = "record_template",
-///             SampleRate = 1,
+///             SampleRate = 1.0,
 ///             TimestampFormat = "unixnano",
 ///         },
 ///         OwnershipChallenge = "00000000000000000000",
@@ -154,9 +151,10 @@ import 'logpush_job_state.dart';
 /// 		_, err := cloudflare.NewLogpushJob(ctx, "example_logpush_job", &cloudflare.LogpushJobArgs{
 /// 			DestinationConf:          pulumi.String("s3://mybucket/logs?region=us-west-2"),
 /// 			ZoneId:                   pulumi.String("zone_id"),
-/// 			Dataset:                  pulumi.String("gateway_dns"),
+/// 			Dataset:                  pulumi.String("http_requests"),
 /// 			Enabled:                  pulumi.Bool(false),
 /// 			Filter:                   pulumi.String("{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}"),
+/// 			FilterAttackTraffic:      pulumi.Bool(true),
 /// 			Frequency:                pulumi.String("high"),
 /// 			Kind:                     pulumi.String(""),
 /// 			LogpullOptions:           pulumi.String("fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339"),
@@ -165,20 +163,20 @@ import 'logpush_job_state.dart';
 /// 			MaxUploadRecords:         pulumi.Int(1000),
 /// 			Name:                     pulumi.String("example.com"),
 /// 			OutputOptions: &cloudflare.LogpushJobOutputOptionsArgs{
-/// 				BatchPrefix:    pulumi.String(""),
-/// 				BatchSuffix:    pulumi.String(""),
-/// 				Cve202144228:   pulumi.Bool(false),
-/// 				FieldDelimiter: pulumi.String(","),
+/// 				BatchPrefix:    pulumi.String("batch_prefix"),
+/// 				BatchSuffix:    pulumi.String("batch_suffix"),
+/// 				Cve202144228:   pulumi.Bool(true),
+/// 				FieldDelimiter: pulumi.String("field_delimiter"),
 /// 				FieldNames: pulumi.StringArray{
-/// 					pulumi.String("Datetime"),
-/// 					pulumi.String("DstIP"),
-/// 					pulumi.String("SrcIP"),
+/// 					pulumi.String("ClientIP"),
+/// 					pulumi.String("EdgeStartTimestamp"),
+/// 					pulumi.String("RayID"),
 /// 				},
 /// 				MergeSubrequests: pulumi.Bool(true),
 /// 				OutputType:       pulumi.String("ndjson"),
-/// 				RecordDelimiter:  pulumi.String(""),
-/// 				RecordPrefix:     pulumi.String("{"),
-/// 				RecordSuffix:     pulumi.String("    }\n\n"),
+/// 				RecordDelimiter:  pulumi.String("record_delimiter"),
+/// 				RecordPrefix:     pulumi.String("record_prefix"),
+/// 				RecordSuffix:     pulumi.String("record_suffix"),
 /// 				RecordTemplate:   pulumi.String("record_template"),
 /// 				SampleRate:       pulumi.Float64(1),
 /// 				TimestampFormat:  pulumi.String("unixnano"),
@@ -193,7 +191,7 @@ import 'logpush_job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -201,12 +199,16 @@ import 'logpush_job_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_logpushjob" "example_logpush_job" {
+/// resource "cloudflare_logpush_job" "example_logpush_job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination_conf            = "s3://mybucket/logs?region=us-west-2"
 ///   zone_id                     = "zone_id"
-///   dataset                     = "gateway_dns"
+///   dataset                     = "http_requests"
 ///   enabled                     = false
 ///   filter                      = "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}"
+///   filter_attack_traffic       = true
 ///   frequency                   = "high"
 ///   kind                        = ""
 ///   logpull_options             = "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339"
@@ -215,16 +217,16 @@ import 'logpush_job_state.dart';
 ///   max_upload_records          = 1000
 ///   name                        = "example.com"
 ///   output_options = {
-///     batch_prefix      = ""
-///     batch_suffix      = ""
-///     cve202144228      = false
-///     field_delimiter   = ","
-///     field_names       = ["Datetime", "DstIP", "SrcIP"]
+///     batch_prefix      = "batch_prefix"
+///     batch_suffix      = "batch_suffix"
+///     cve202144228      = true
+///     field_delimiter   = "field_delimiter"
+///     field_names       = ["ClientIP", "EdgeStartTimestamp", "RayID"]
 ///     merge_subrequests = true
 ///     output_type       = "ndjson"
-///     record_delimiter  = ""
-///     record_prefix     = "{"
-///     record_suffix     = "    }\n\n"
+///     record_delimiter  = "record_delimiter"
+///     record_prefix     = "record_prefix"
+///     record_suffix     = "record_suffix"
 ///     record_template   = "record_template"
 ///     sample_rate       = 1
 ///     timestamp_format  = "unixnano"
@@ -257,9 +259,10 @@ import 'logpush_job_state.dart';
 ///         var exampleLogpushJob = new LogpushJob("exampleLogpushJob", LogpushJobArgs.builder()
 ///             .destinationConf("s3://mybucket/logs?region=us-west-2")
 ///             .zoneId("zone_id")
-///             .dataset("gateway_dns")
+///             .dataset("http_requests")
 ///             .enabled(false)
 ///             .filter("{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}")
+///             .filterAttackTraffic(true)
 ///             .frequency("high")
 ///             .kind("")
 ///             .logpullOptions("fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339")
@@ -268,22 +271,19 @@ import 'logpush_job_state.dart';
 ///             .maxUploadRecords(1000)
 ///             .name("example.com")
 ///             .outputOptions(LogpushJobOutputOptionsArgs.builder()
-///                 .batchPrefix("")
-///                 .batchSuffix("")
-///                 .cve202144228(false)
-///                 .fieldDelimiter(",")
+///                 .batchPrefix("batch_prefix")
+///                 .batchSuffix("batch_suffix")
+///                 .cve202144228(true)
+///                 .fieldDelimiter("field_delimiter")
 ///                 .fieldNames(
-///                     "Datetime",
-///                     "DstIP",
-///                     "SrcIP")
+///                     "ClientIP",
+///                     "EdgeStartTimestamp",
+///                     "RayID")
 ///                 .mergeSubrequests(true)
 ///                 .outputType("ndjson")
-///                 .recordDelimiter("")
-///                 .recordPrefix("{")
-///                 .recordSuffix("""
-///     }
-///
-///                 """)
+///                 .recordDelimiter("record_delimiter")
+///                 .recordPrefix("record_prefix")
+///                 .recordSuffix("record_suffix")
 ///                 .recordTemplate("record_template")
 ///                 .sampleRate(1.0)
 ///                 .timestampFormat("unixnano")
@@ -302,9 +302,10 @@ import 'logpush_job_state.dart';
 ///     properties:
 ///       destinationConf: s3://mybucket/logs?region=us-west-2
 ///       zoneId: zone_id
-///       dataset: gateway_dns
+///       dataset: http_requests
 ///       enabled: false
 ///       filter: '{"where":{"and":[{"key":"ClientRequestPath","operator":"contains","value":"/static"},{"key":"ClientRequestHost","operator":"eq","value":"example.com"}]}}'
+///       filterAttackTraffic: true
 ///       frequency: high
 ///       kind: ""
 ///       logpullOptions: fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339
@@ -313,21 +314,19 @@ import 'logpush_job_state.dart';
 ///       maxUploadRecords: 1000
 ///       name: example.com
 ///       outputOptions:
-///         batchPrefix: ""
-///         batchSuffix: ""
-///         cve202144228: false
-///         fieldDelimiter: ','
+///         batchPrefix: batch_prefix
+///         batchSuffix: batch_suffix
+///         cve202144228: true
+///         fieldDelimiter: field_delimiter
 ///         fieldNames:
-///           - Datetime
-///           - DstIP
-///           - SrcIP
+///           - ClientIP
+///           - EdgeStartTimestamp
+///           - RayID
 ///         mergeSubrequests: true
 ///         outputType: ndjson
-///         recordDelimiter: ""
-///         recordPrefix: '{'
-///         recordSuffix: |2+
-///               }
-///
+///         recordDelimiter: record_delimiter
+///         recordPrefix: record_prefix
+///         recordSuffix: record_suffix
 ///         recordTemplate: record_template
 ///         sampleRate: 1
 ///         timestampFormat: unixnano
@@ -344,7 +343,7 @@ class LogpushJob extends pulumi.CustomResource {
   /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
   late final pulumi.Output<String?> accountId;
   /// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-  /// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+  /// Available values: "access*requests", "account*abuse*protection*events", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*bgp*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network_sessions".
   late final pulumi.Output<String> dataset;
   /// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
   late final pulumi.Output<String> destinationConf;
@@ -354,6 +353,8 @@ class LogpushJob extends pulumi.CustomResource {
   late final pulumi.Output<String> errorMessage;
   /// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
   late final pulumi.Output<String> filter;
+  /// When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+  late final pulumi.Output<bool> filterAttackTraffic;
   /// This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
   /// Available values: "high", "low".
   late final pulumi.Output<String> frequency;
@@ -393,7 +394,7 @@ class LogpushJob extends pulumi.CustomResource {
           'cloudflare:index/logpushJob:LogpushJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
           additionalSecretOutputs: const ['destinationConf', 'ownershipChallenge'],
         ) {
     accountId = registerOutput<String?>('accountId');
@@ -402,6 +403,7 @@ class LogpushJob extends pulumi.CustomResource {
     enabled = registerOutput<bool>('enabled');
     errorMessage = registerOutput<String>('errorMessage');
     filter = registerOutput<String>('filter');
+    filterAttackTraffic = registerOutput<bool>('filterAttackTraffic');
     frequency = registerOutput<String>('frequency');
     kind = registerOutput<String>('kind');
     lastComplete = registerOutput<String>('lastComplete');
@@ -446,6 +448,7 @@ class LogpushJob extends pulumi.CustomResource {
     enabled = registerOutput<bool>('enabled');
     errorMessage = registerOutput<String>('errorMessage');
     filter = registerOutput<String>('filter');
+    filterAttackTraffic = registerOutput<bool>('filterAttackTraffic');
     frequency = registerOutput<String>('frequency');
     kind = registerOutput<String>('kind');
     lastComplete = registerOutput<String>('lastComplete');
@@ -476,6 +479,7 @@ class LogpushJob extends pulumi.CustomResource {
     enabled = registerOutput<bool>('enabled');
     errorMessage = registerOutput<String>('errorMessage');
     filter = registerOutput<String>('filter');
+    filterAttackTraffic = registerOutput<bool>('filterAttackTraffic');
     frequency = registerOutput<String>('frequency');
     kind = registerOutput<String>('kind');
     lastComplete = registerOutput<String>('lastComplete');

@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_r2_custom_domain_get_r2_custom_domain_args_doc}
 class GetR2CustomDomainArgs {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final pulumi.Input<String> accountId;
   /// Name of the bucket.
   final pulumi.Input<String> bucketName;
@@ -15,7 +15,7 @@ class GetR2CustomDomainArgs {
   final pulumi.Input<String> domain;
 
   /// Creates a new [GetR2CustomDomainArgs].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
   /// [domain] Name of the custom domain.
   const GetR2CustomDomainArgs({

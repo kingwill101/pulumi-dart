@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'stream_live_input_playback.dart';
 import 'stream_live_input_recording.dart';
 import 'stream_live_input_rtmps.dart';
 import 'stream_live_input_rtmps_playback.dart';
@@ -29,6 +30,8 @@ class StreamLiveInputState {
   final pulumi.Input<String?>? meta;
   /// The date and time the live input was last modified.
   final pulumi.Input<String?>? modified;
+  /// Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+  final pulumi.Input<StreamLiveInputPlayback?>? playback;
   /// When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
   final pulumi.Input<bool?>? preferLowLatency;
   /// Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
@@ -61,6 +64,7 @@ class StreamLiveInputState {
   /// [liveInputIdentifier] A unique identifier for a live input.
   /// [meta] A user modifiable key-value store used to reference other systems of record for managing live inputs.
   /// [modified] The date and time the live input was last modified.
+  /// [playback] Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.
   /// [preferLowLatency] When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
   /// [recording] Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
   /// [rtmps] Details for streaming to an live input using RTMPS.
@@ -81,6 +85,7 @@ class StreamLiveInputState {
     this.liveInputIdentifier,
     this.meta,
     this.modified,
+    this.playback,
     this.preferLowLatency,
     this.recording,
     this.rtmps,
@@ -104,6 +109,7 @@ class StreamLiveInputState {
       'liveInputIdentifier': ?liveInputIdentifier,
       'meta': ?meta,
       'modified': ?modified,
+      'playback': ?pulumi.Input.mapOptionalInputValue<StreamLiveInputPlayback, Map<String, dynamic>>(playback, (value) => value.toMap()),
       'preferLowLatency': ?preferLowLatency,
       'recording': ?pulumi.Input.mapOptionalInputValue<StreamLiveInputRecording, Map<String, dynamic>>(recording, (value) => value.toMap()),
       'rtmps': ?pulumi.Input.mapOptionalInputValue<StreamLiveInputRtmps, Map<String, dynamic>>(rtmps, (value) => value.toMap()),
@@ -128,6 +134,7 @@ class StreamLiveInputState {
       liveInputIdentifier: (() { final guardedValue = map['liveInputIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       meta: (() { final guardedValue = map['meta']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       modified: (() { final guardedValue = map['modified']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      playback: (() { final guardedValue = map['playback']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamLiveInputPlayback.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       preferLowLatency: (() { final guardedValue = map['preferLowLatency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       recording: (() { final guardedValue = map['recording']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamLiveInputRecording.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rtmps: (() { final guardedValue = map['rtmps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamLiveInputRtmps.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

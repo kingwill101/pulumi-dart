@@ -84,7 +84,7 @@ import 'zero_trust_dlp_dataset_upload.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -92,7 +92,10 @@ import 'zero_trust_dlp_dataset_upload.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdlpdataset" "example_zero_trust_dlp_dataset" {
+/// resource "cloudflare_zero_trust_dlp_dataset" "example_zero_trust_dlp_dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id       = "account_id"
 ///   name             = "name"
 ///   case_sensitive   = true
@@ -196,7 +199,7 @@ class ZeroTrustDlpDataset extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     caseSensitive = registerOutput<bool?>('caseSensitive');

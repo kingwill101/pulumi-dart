@@ -65,7 +65,7 @@ import 'stream_webhook_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -73,7 +73,10 @@ import 'stream_webhook_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_streamwebhook" "example_stream_webhook" {
+/// resource "cloudflare_stream_webhook" "example_stream_webhook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id       = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   notification_url = "https://example.com"
 /// }
@@ -143,7 +146,7 @@ class StreamWebhook extends pulumi.CustomResource {
           'cloudflare:index/streamWebhook:StreamWebhook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
           additionalSecretOutputs: const ['secret'],
         ) {
     accountId = registerOutput<String>('accountId');

@@ -5,6 +5,7 @@ import 'teams_account_settings.dart';
 
 /// Input properties used for looking up and filtering TeamsAccount resources.
 class TeamsAccountState {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String?>? accountId;
   final pulumi.Input<String?>? createdAt;
   /// Specify account settings.
@@ -12,7 +13,7 @@ class TeamsAccountState {
   final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [TeamsAccountState].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [createdAt] Optional.
   /// [settings] Specify account settings.
   /// [updatedAt] Optional.

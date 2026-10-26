@@ -6,7 +6,7 @@ import 'r2_bucket_sippy_source.dart';
 
 /// Input properties used for looking up and filtering R2BucketSippy resources.
 class R2BucketSippyState {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final pulumi.Input<String?>? accountId;
   /// Name of the bucket.
   final pulumi.Input<String?>? bucketName;
@@ -20,7 +20,7 @@ class R2BucketSippyState {
   final pulumi.Input<R2BucketSippySource?>? source;
 
   /// Creates a new [R2BucketSippyState].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
   /// [destination] R2 bucket to copy objects to.
   /// [enabled] State of Sippy for this bucket.

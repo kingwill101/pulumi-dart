@@ -92,7 +92,7 @@ import 'zone_hold_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -100,7 +100,10 @@ import 'zone_hold_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zonehold" "example_zone_hold" {
+/// resource "cloudflare_zone_hold" "example_zone_hold" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -175,7 +178,7 @@ class ZoneHold extends pulumi.CustomResource {
           'cloudflare:index/zoneHold:ZoneHold',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     hold = registerOutput<bool>('hold');
     holdAfter = registerOutput<String>('holdAfter');

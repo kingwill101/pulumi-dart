@@ -18,7 +18,7 @@ import 'worker_cron_trigger_state.dart';
 /// const exampleWorkersCronTrigger = new cloudflare.WorkersCronTrigger("example_workers_cron_trigger", {
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     scriptName: "this-is_my_script-01",
-///     body: [{
+///     schedules: [{
 ///         cron: "*/30 * * * *",
 ///     }],
 /// });
@@ -30,7 +30,7 @@ import 'worker_cron_trigger_state.dart';
 /// example_workers_cron_trigger = cloudflare.WorkersCronTrigger("example_workers_cron_trigger",
 ///     account_id="023e105f4ecef8ad9ca31a8372d0c353",
 ///     script_name="this-is_my_script-01",
-///     body=[{
+///     schedules=[{
 ///         "cron": "*/30 * * * *",
 ///     }])
 /// ```
@@ -46,11 +46,11 @@ import 'worker_cron_trigger_state.dart';
 ///     {
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///         ScriptName = "this-is_my_script-01",
-///         Body = new[]
+///         Schedules = new[]
 ///         {
-///
+///             new Cloudflare.Inputs.WorkersCronTriggerScheduleArgs
 ///             {
-///                 { "cron", "*/30 * * * *" },
+///                 Cron = "*/30 * * * *",
 ///             },
 ///         },
 ///     });
@@ -70,9 +70,9 @@ import 'worker_cron_trigger_state.dart';
 /// 		_, err := cloudflare.NewWorkersCronTrigger(ctx, "example_workers_cron_trigger", &cloudflare.WorkersCronTriggerArgs{
 /// 			AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 /// 			ScriptName: pulumi.String("this-is_my_script-01"),
-/// 			Body: []map[string]string{
-/// 				{
-/// 					"cron": "*/30 * * * *",
+/// 			Schedules: cloudflare.WorkersCronTriggerScheduleArray{
+/// 				&cloudflare.WorkersCronTriggerScheduleArgs{
+/// 					Cron: pulumi.String("*/30 * * * *"),
 /// 				},
 /// 			},
 /// 		})
@@ -84,7 +84,7 @@ import 'worker_cron_trigger_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -92,12 +92,15 @@ import 'worker_cron_trigger_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_workerscrontrigger" "example_workers_cron_trigger" {
+/// resource "cloudflare_workers_cron_trigger" "example_workers_cron_trigger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   script_name = "this-is_my_script-01"
-///   body = [{
-///     "cron" = "*/30 * * * *"
-///   }]
+///   schedules {
+///     cron = "*/30 * * * *"
+///   }
 /// }
 /// ```
 /// ```java
@@ -108,6 +111,7 @@ import 'worker_cron_trigger_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.cloudflare.WorkersCronTrigger;
 /// import com.pulumi.cloudflare.WorkersCronTriggerArgs;
+/// import com.pulumi.cloudflare.inputs.WorkersCronTriggerScheduleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -124,7 +128,9 @@ import 'worker_cron_trigger_state.dart';
 ///         var exampleWorkersCronTrigger = new WorkersCronTrigger("exampleWorkersCronTrigger", WorkersCronTriggerArgs.builder()
 ///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
 ///             .scriptName("this-is_my_script-01")
-///             .body(Arrays.asList(Map.of("cron", "*/30 * * * *")))
+///             .schedules(WorkersCronTriggerScheduleArgs.builder()
+///                 .cron("*/30 * * * *")
+///                 .build())
 ///             .build());
 ///
 ///     }
@@ -138,7 +144,7 @@ import 'worker_cron_trigger_state.dart';
 ///     properties:
 ///       accountId: 023e105f4ecef8ad9ca31a8372d0c353
 ///       scriptName: this-is_my_script-01
-///       body:
+///       schedules:
 ///         - cron: '*/30 * * * *'
 /// ```
 ///
@@ -152,7 +158,7 @@ class WorkerCronTrigger extends pulumi.CustomResource {
   /// Identifier.
   late final pulumi.Output<String> accountId;
   late final pulumi.Output<List<WorkerCronTriggerSchedule>> schedules;
-  /// Name of the script, used in URLs and route configuration.
+  /// Name of the script.
   late final pulumi.Output<String> scriptName;
 
   /// Creates a new [WorkerCronTrigger].
@@ -167,7 +173,7 @@ class WorkerCronTrigger extends pulumi.CustomResource {
           'cloudflare:index/workerCronTrigger:WorkerCronTrigger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     schedules = registerOutput<List<WorkerCronTriggerSchedule>>('schedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerCronTriggerSchedule>(guardedValue, (value) => WorkerCronTriggerSchedule.fromMap((value as Map).cast<String, dynamic>())); });

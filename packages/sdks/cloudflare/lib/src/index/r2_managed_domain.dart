@@ -64,7 +64,7 @@ import 'r2_managed_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -72,7 +72,10 @@ import 'r2_managed_domain_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_r2manageddomain" "example_r2_managed_domain" {
+/// resource "cloudflare_r2_managed_domain" "example_r2_managed_domain" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   bucket_name = "example-bucket"
 ///   enabled     = true
@@ -124,7 +127,7 @@ import 'r2_managed_domain_state.dart';
 ///
 /// &gt; This resource does not currently support `pulumi import`.
 class R2ManagedDomain extends pulumi.CustomResource {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   late final pulumi.Output<String> accountId;
   /// Bucket ID.
   late final pulumi.Output<String> bucketId;
@@ -149,7 +152,7 @@ class R2ManagedDomain extends pulumi.CustomResource {
           'cloudflare:index/r2ManagedDomain:R2ManagedDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     bucketId = registerOutput<String>('bucketId');

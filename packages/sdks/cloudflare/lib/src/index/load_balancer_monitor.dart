@@ -148,7 +148,7 @@ import 'load_balancer_monitor_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -156,7 +156,10 @@ import 'load_balancer_monitor_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_loadbalancermonitor" "example_load_balancer_monitor" {
+/// resource "cloudflare_load_balancer_monitor" "example_load_balancer_monitor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id       = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   allow_insecure   = true
 ///   consecutive_down = 0
@@ -312,7 +315,7 @@ class LoadBalancerMonitor extends pulumi.CustomResource {
           'cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     allowInsecure = registerOutput<bool>('allowInsecure');

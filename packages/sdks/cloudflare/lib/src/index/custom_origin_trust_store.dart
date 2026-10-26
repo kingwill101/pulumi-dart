@@ -77,7 +77,7 @@ import 'custom_origin_trust_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -85,9 +85,18 @@ import 'custom_origin_trust_store_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_customorigintruststore" "example_custom_origin_trust_store" {
+/// resource "cloudflare_custom_origin_trust_store" "example_custom_origin_trust_store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id     = "023e105f4ecef8ad9ca31a8372d0c353"
-///   certificate = "  -----BEGIN CERTIFICATE-----\n  MIIDdjCCAl6gAwIBAgIJAPnMg0Fs+/B0MA0GCSqGSIb3DQEBCwUAMFsx...\n  -----END CERTIFICATE-----\n\n"
+///   certificate = <<EOT
+///   -----BEGIN CERTIFICATE-----
+///   MIIDdjCCAl6gAwIBAgIJAPnMg0Fs+/B0MA0GCSqGSIb3DQEBCwUAMFsx...
+///   -----END CERTIFICATE-----
+///
+/// EOT
+///
 /// }
 /// ```
 /// ```java
@@ -174,7 +183,7 @@ class CustomOriginTrustStore extends pulumi.CustomResource {
           'cloudflare:index/customOriginTrustStore:CustomOriginTrustStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     certificate = registerOutput<String>('certificate');
     expiresOn = registerOutput<String>('expiresOn');

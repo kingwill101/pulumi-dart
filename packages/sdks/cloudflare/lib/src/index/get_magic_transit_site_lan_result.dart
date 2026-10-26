@@ -85,7 +85,7 @@ class GetMagicTransitSiteLanResult {
   factory GetMagicTransitSiteLanResult.fromMap(Map<String, dynamic> map) {
     return GetMagicTransitSiteLanResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      bondId: (() { final guardedValue = map['bondId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      bondId: (() { final guardedValue = map['bondId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       haLink: (() { final guardedValue = map['haLink']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isBreakout: (() { final guardedValue = map['isBreakout']; if (guardedValue == null) return null; return guardedValue as bool; })(),
@@ -93,11 +93,11 @@ class GetMagicTransitSiteLanResult {
       lanId: (() { final guardedValue = map['lanId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       nat: (() { final guardedValue = map['nat']; if (guardedValue == null) return null; return GetMagicTransitSiteLanNat.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      physport: (() { final guardedValue = map['physport']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      physport: (() { final guardedValue = map['physport']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       routedSubnets: (() { final guardedValue = map['routedSubnets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetMagicTransitSiteLanRoutedSubnet>(guardedValue, (value) => GetMagicTransitSiteLanRoutedSubnet.fromMap((value as Map).cast<String, dynamic>())); })(),
       siteId: (() { final guardedValue = map['siteId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       staticAddressing: (() { final guardedValue = map['staticAddressing']; if (guardedValue == null) return null; return GetMagicTransitSiteLanStaticAddressing.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      vlanTag: (() { final guardedValue = map['vlanTag']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      vlanTag: (() { final guardedValue = map['vlanTag']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

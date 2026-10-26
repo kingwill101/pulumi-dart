@@ -6,6 +6,7 @@ import 'workers_script_assets.dart';
 import 'workers_script_binding.dart';
 import 'workers_script_cache_options.dart';
 import 'workers_script_exports.dart';
+import 'workers_script_files.dart';
 import 'workers_script_limits.dart';
 import 'workers_script_migrations.dart';
 import 'workers_script_named_handler.dart';
@@ -24,6 +25,9 @@ class WorkersScriptState {
   final pulumi.Input<WorkersScriptAssets?>? assets;
   /// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
   final pulumi.Input<List<WorkersScriptBinding>?>? bindings;
+  /// When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+  /// Available values: "strict".
+  final pulumi.Input<String?>? bindingsInherit;
   /// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
   final pulumi.Input<String?>? bodyPart;
   /// Global CacheW configuration for the Worker. When caching is on,
@@ -49,6 +53,10 @@ class WorkersScriptState {
   final pulumi.Input<String?>? etag;
   /// Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
   final pulumi.Input<Map<String, WorkersScriptExports>?>? exports;
+  /// Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+  final pulumi.Input<Map<String, WorkersScriptFiles>?>? files;
+  /// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+  final pulumi.Input<bool?>? force;
   /// The names of handlers exported as part of the default export.
   final pulumi.Input<List<String>?>? handlers;
   /// Whether a Worker contains assets.
@@ -99,6 +107,7 @@ class WorkersScriptState {
   /// [annotations] Annotations for the version created by this upload.
   /// [assets] Configuration for assets within a Worker.
   /// [bindings] List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+  /// [bindingsInherit] When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
   /// [bodyPart] Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
   /// [cacheOptions] Global CacheW configuration for the Worker. When caching is on,
   /// [compatibilityDate] Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -110,6 +119,8 @@ class WorkersScriptState {
   /// [createdOn] When the script was created.
   /// [etag] Hashed script content, can be used in a If-None-Match header when updating.
   /// [exports] Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+  /// [files] Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+  /// [force] If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
   /// [handlers] The names of handlers exported as part of the default export.
   /// [hasAssets] Whether a Worker contains assets.
   /// [hasModules] Whether a Worker contains modules.
@@ -137,6 +148,7 @@ class WorkersScriptState {
     this.annotations,
     this.assets,
     this.bindings,
+    this.bindingsInherit,
     this.bodyPart,
     this.cacheOptions,
     this.compatibilityDate,
@@ -148,6 +160,8 @@ class WorkersScriptState {
     this.createdOn,
     this.etag,
     this.exports,
+    this.files,
+    this.force,
     this.handlers,
     this.hasAssets,
     this.hasModules,
@@ -178,6 +192,7 @@ class WorkersScriptState {
       'annotations': ?pulumi.Input.mapOptionalInputValue<WorkersScriptAnnotations, Map<String, dynamic>>(annotations, (value) => value.toMap()),
       'assets': ?pulumi.Input.mapOptionalInputValue<WorkersScriptAssets, Map<String, dynamic>>(assets, (value) => value.toMap()),
       'bindings': ?pulumi.Input.mapOptionalInputValue<List<WorkersScriptBinding>, List<Map<String, dynamic>>>(bindings, (value) => pulumi.Input.encodeList<WorkersScriptBinding, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'bindingsInherit': ?bindingsInherit,
       'bodyPart': ?bodyPart,
       'cacheOptions': ?pulumi.Input.mapOptionalInputValue<WorkersScriptCacheOptions, Map<String, dynamic>>(cacheOptions, (value) => value.toMap()),
       'compatibilityDate': ?compatibilityDate,
@@ -189,6 +204,8 @@ class WorkersScriptState {
       'createdOn': ?createdOn,
       'etag': ?etag,
       'exports': ?pulumi.Input.mapOptionalInputValue<Map<String, WorkersScriptExports>, Map<String, Map<String, dynamic>>>(exports, (value) => pulumi.Input.encodeMapValues<WorkersScriptExports, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'files': ?pulumi.Input.mapOptionalInputValue<Map<String, WorkersScriptFiles>, Map<String, Map<String, dynamic>>>(files, (value) => pulumi.Input.encodeMapValues<WorkersScriptFiles, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'force': ?force,
       'handlers': ?handlers,
       'hasAssets': ?hasAssets,
       'hasModules': ?hasModules,
@@ -220,6 +237,7 @@ class WorkersScriptState {
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkersScriptAnnotations.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       assets: (() { final guardedValue = map['assets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkersScriptAssets.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       bindings: (() { final guardedValue = map['bindings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkersScriptBinding>(guardedValue, (value) => WorkersScriptBinding.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      bindingsInherit: (() { final guardedValue = map['bindingsInherit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bodyPart: (() { final guardedValue = map['bodyPart']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cacheOptions: (() { final guardedValue = map['cacheOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkersScriptCacheOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       compatibilityDate: (() { final guardedValue = map['compatibilityDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -231,6 +249,8 @@ class WorkersScriptState {
       createdOn: (() { final guardedValue = map['createdOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exports: (() { final guardedValue = map['exports']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<WorkersScriptExports>(guardedValue, (value) => WorkersScriptExports.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      files: (() { final guardedValue = map['files']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<WorkersScriptFiles>(guardedValue, (value) => WorkersScriptFiles.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      force: (() { final guardedValue = map['force']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       handlers: (() { final guardedValue = map['handlers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       hasAssets: (() { final guardedValue = map['hasAssets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       hasModules: (() { final guardedValue = map['hasModules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -250,7 +270,7 @@ class WorkersScriptState {
       placementMode: (() { final guardedValue = map['placementMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       placementStatus: (() { final guardedValue = map['placementStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scriptName: (() { final guardedValue = map['scriptName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      startupTimeMs: (() { final guardedValue = map['startupTimeMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      startupTimeMs: (() { final guardedValue = map['startupTimeMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tailConsumers: (() { final guardedValue = map['tailConsumers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkersScriptTailConsumer>(guardedValue, (value) => WorkersScriptTailConsumer.fromMap((value as Map).cast<String, dynamic>()))); })(),
       usageModel: (() { final guardedValue = map['usageModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

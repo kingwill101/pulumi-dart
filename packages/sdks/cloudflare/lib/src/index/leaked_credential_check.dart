@@ -67,7 +67,7 @@ import 'leaked_credential_check_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -75,7 +75,10 @@ import 'leaked_credential_check_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_leakedcredentialcheck" "example_leaked_credential_check" {
+/// resource "cloudflare_leaked_credential_check" "example_leaked_credential_check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   enabled = true
 /// }
@@ -122,7 +125,9 @@ import 'leaked_credential_check_state.dart';
 ///
 /// ## Import
 ///
-/// &gt; This resource does not currently support `pulumi import`.
+/// ```sh
+/// $ pulumi import cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck example '<zone_id>'
+/// ```
 class LeakedCredentialCheck extends pulumi.CustomResource {
   /// Determines whether or not Leaked Credential Checks are enabled.
   late final pulumi.Output<bool?> enabled;
@@ -141,7 +146,7 @@ class LeakedCredentialCheck extends pulumi.CustomResource {
           'cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     enabled = registerOutput<bool?>('enabled');
     zoneId = registerOutput<String>('zoneId');

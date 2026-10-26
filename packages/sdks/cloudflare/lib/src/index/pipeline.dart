@@ -70,7 +70,7 @@ import 'pipeline_table.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -79,6 +79,9 @@ import 'pipeline_table.dart';
 /// }
 ///
 /// resource "cloudflare_pipeline" "example_pipeline" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "0123105f4ecef8ad9ca31a8372d0c353"
 ///   name       = "my_pipeline"
 ///   sql        = "insert into sink select * from source;"
@@ -159,7 +162,7 @@ class Pipeline extends pulumi.CustomResource {
           'cloudflare:index/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');

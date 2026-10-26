@@ -18,6 +18,8 @@ class GetZeroTrustAccessInfrastructureTargetResult {
   final GetZeroTrustAccessInfrastructureTargetIp? ip;
   /// Date and time at which the target was modified
   final String? modifiedAt;
+  /// Tags assigned to the target. Empty when no tags are assigned.
+  final Map<String, String>? tags;
   /// Target identifier
   final String? targetId;
 
@@ -29,6 +31,7 @@ class GetZeroTrustAccessInfrastructureTargetResult {
   /// [id] Target identifier
   /// [ip] The IPv4/IPv6 address that identifies where to reach a target
   /// [modifiedAt] Date and time at which the target was modified
+  /// [tags] Tags assigned to the target. Empty when no tags are assigned.
   /// [targetId] Target identifier
   const GetZeroTrustAccessInfrastructureTargetResult({
     this.accountId,
@@ -38,6 +41,7 @@ class GetZeroTrustAccessInfrastructureTargetResult {
     this.id,
     this.ip,
     this.modifiedAt,
+    this.tags,
     this.targetId,
   });
 
@@ -50,6 +54,7 @@ class GetZeroTrustAccessInfrastructureTargetResult {
       'id': ?id,
       'ip': ?ip?.toMap(),
       'modifiedAt': ?modifiedAt,
+      'tags': ?tags,
       'targetId': ?targetId,
     };
   }
@@ -63,6 +68,7 @@ class GetZeroTrustAccessInfrastructureTargetResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ip: (() { final guardedValue = map['ip']; if (guardedValue == null) return null; return GetZeroTrustAccessInfrastructureTargetIp.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       modifiedAt: (() { final guardedValue = map['modifiedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       targetId: (() { final guardedValue = map['targetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

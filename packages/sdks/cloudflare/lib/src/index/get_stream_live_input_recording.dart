@@ -45,7 +45,7 @@ class GetStreamLiveInputRecording {
       hideLiveViewerCount: pulumi.Input.fromValue(map['hideLiveViewerCount'] as bool),
       mode: pulumi.Input.fromValue(map['mode'] as String),
       requireSignedUrls: pulumi.Input.fromValue(map['requireSignedUrls'] as bool),
-      timeoutSeconds: pulumi.Input.fromValue((map['timeoutSeconds'] as num).toInt()),
+      timeoutSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeoutSeconds'])),
     );
   }
 }

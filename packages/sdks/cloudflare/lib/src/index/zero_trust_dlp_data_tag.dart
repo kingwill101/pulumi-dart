@@ -73,7 +73,7 @@ import 'zero_trust_dlp_data_tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -81,7 +81,10 @@ import 'zero_trust_dlp_data_tag_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdlpdatatag" "example_zero_trust_dlp_data_tag" {
+/// resource "cloudflare_zero_trust_dlp_data_tag" "example_zero_trust_dlp_data_tag" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "account_id"
 ///   category_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 ///   name        = "name"
@@ -157,7 +160,7 @@ class ZeroTrustDlpDataTag extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDlpDataTag:ZeroTrustDlpDataTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     categoryId = registerOutput<String>('categoryId');

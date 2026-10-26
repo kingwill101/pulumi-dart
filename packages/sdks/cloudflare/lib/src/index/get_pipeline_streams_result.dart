@@ -10,6 +10,7 @@ class GetPipelineStreamsResult {
   final pulumi.Input<String> createdAt;
   /// Indicates the endpoint URL of this stream.
   final pulumi.Input<String> endpoint;
+  /// Defines the data format of the events.
   final pulumi.Input<GetPipelineStreamsResultFormat> format;
   final pulumi.Input<GetPipelineStreamsResultHttp> http;
   /// Indicates a unique identifier for this stream.
@@ -17,6 +18,7 @@ class GetPipelineStreamsResult {
   final pulumi.Input<String> modifiedAt;
   /// Indicates the name of the Stream.
   final pulumi.Input<String> name;
+  /// Defines the schema of the events in the data stream.
   final pulumi.Input<GetPipelineStreamsResultSchema> schema;
   /// Indicates the current version of this stream.
   final pulumi.Input<int> version;
@@ -25,12 +27,12 @@ class GetPipelineStreamsResult {
   /// Creates a new [GetPipelineStreamsResult].
   /// [createdAt] Required.
   /// [endpoint] Indicates the endpoint URL of this stream.
-  /// [format] Required.
+  /// [format] Defines the data format of the events.
   /// [http] Required.
   /// [id] Indicates a unique identifier for this stream.
   /// [modifiedAt] Required.
   /// [name] Indicates the name of the Stream.
-  /// [schema] Required.
+  /// [schema] Defines the schema of the events in the data stream.
   /// [version] Indicates the current version of this stream.
   /// [workerBinding] Required.
   const GetPipelineStreamsResult({
@@ -71,7 +73,7 @@ class GetPipelineStreamsResult {
       modifiedAt: pulumi.Input.fromValue(map['modifiedAt'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       schema: pulumi.Input.fromValue(GetPipelineStreamsResultSchema.fromMap((map['schema']! as Map).cast<String, dynamic>())),
-      version: pulumi.Input.fromValue((map['version'] as num).toInt()),
+      version: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['version'])),
       workerBinding: pulumi.Input.fromValue(GetPipelineStreamsResultWorkerBinding.fromMap((map['workerBinding']! as Map).cast<String, dynamic>())),
     );
   }

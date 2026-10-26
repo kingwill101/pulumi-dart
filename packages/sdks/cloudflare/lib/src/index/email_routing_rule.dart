@@ -89,7 +89,7 @@ import 'email_routing_rule_state.dart';
 ///         Enabled = true,
 ///         Name = "Send to user@example.net rule.",
 ///         OwnerWorkerTag = "a7e6fb77503c41d8a7f3113c6918f10c",
-///         Priority = 0,
+///         Priority = 0.0,
 ///         Source = "api",
 ///     });
 ///
@@ -136,7 +136,7 @@ import 'email_routing_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -144,7 +144,10 @@ import 'email_routing_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_emailroutingrule" "example_email_routing_rule" {
+/// resource "cloudflare_email_routing_rule" "example_email_routing_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   actions {
 ///     type  = "forward"
@@ -270,7 +273,7 @@ class EmailRoutingRule extends pulumi.CustomResource {
           'cloudflare:index/emailRoutingRule:EmailRoutingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     actions = registerOutput<List<EmailRoutingRuleAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailRoutingRuleAction>(guardedValue, (value) => EmailRoutingRuleAction.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool>('enabled');

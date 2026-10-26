@@ -67,7 +67,7 @@ import 'stream_download_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -75,7 +75,10 @@ import 'stream_download_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_streamdownload" "example_stream_download" {
+/// resource "cloudflare_stream_download" "example_stream_download" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   identifier = "ea95132c15732412d22c1476fa83f27a"
 /// }
@@ -145,7 +148,7 @@ class StreamDownload extends pulumi.CustomResource {
           'cloudflare:index/streamDownload:StreamDownload',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     audio = registerOutput<StreamDownloadAudio>('audio', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamDownloadAudio.fromMap((guardedValue as Map).cast<String, dynamic>()); });

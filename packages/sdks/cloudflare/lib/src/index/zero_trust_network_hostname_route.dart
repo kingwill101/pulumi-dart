@@ -75,7 +75,7 @@ import 'zero_trust_network_hostname_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -83,7 +83,10 @@ import 'zero_trust_network_hostname_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustnetworkhostnameroute" "example_zero_trust_network_hostname_route" {
+/// resource "cloudflare_zero_trust_network_hostname_route" "example_zero_trust_network_hostname_route" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   comment    = "example comment"
 ///   hostname   = "office-1.local"
@@ -170,7 +173,7 @@ class ZeroTrustNetworkHostnameRoute extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     comment = registerOutput<String?>('comment');

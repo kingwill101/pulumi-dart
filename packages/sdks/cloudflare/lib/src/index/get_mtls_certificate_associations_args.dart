@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMtlsCertificateAssociationsArgs {
   /// Identifier.
   final pulumi.Input<String> accountId;
-  /// Identifier.
+  /// Certificate identifier tag.
   final pulumi.Input<String> mtlsCertificateId;
 
   /// Creates a new [GetMtlsCertificateAssociationsArgs].
   /// [accountId] Identifier.
-  /// [mtlsCertificateId] Identifier.
+  /// [mtlsCertificateId] Certificate identifier tag.
   const GetMtlsCertificateAssociationsArgs({
     required this.accountId,
     required this.mtlsCertificateId,

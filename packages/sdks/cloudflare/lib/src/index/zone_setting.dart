@@ -44,7 +44,7 @@ import 'zone_setting_state.dart';
 /// | `imageResizing` | `"on"`, `"off"`, `"open"` | Image Transformations provides on-demand resizing, conversion and optimizatio... |
 /// | `ipGeolocation` | `"on"` / `"off"` | Enable IP Geolocation to have Cloudflare geolocate visitors to your website a... |
 /// | `ipv6` | `"on"` / `"off"` | Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.... |
-/// | `maxUpload` | Number (18 values) | Maximum size of an allowable upload. |
+/// | `maxUpload` | Number (26 values) | Maximum size of an allowable upload. |
 /// | `minTlsVersion` | `"1.0"`, `"1.1"`, `"1.2"`, `"1.3"` | Only accepts HTTPS requests that use at least the TLS protocol version specif... |
 /// | `mirage` | `"on"` / `"off"` | Automatically optimize image loading for website visitors on mobile devices. ... |
 /// | `nel` | Object | Enable Network Error Logging reporting on your zone. (Beta) |
@@ -55,6 +55,7 @@ import 'zone_setting_state.dart';
 /// | `originH2MaxStreams` | Number | Origin H2 Max Streams configures the max number of concurrent requests that C... |
 /// | `originMaxHttpVersion` | `"2"`, `"1"` | Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will... |
 /// | `polish` | `"off"`, `"lossless"`, `"lossy"` | Removes metadata and compresses your images for faster page load times. Basic... |
+/// | `preRender` | `"on"` / `"off"` | When enabled, Cloudflare serves pre-rendered HTML to eligible search and AI c... |
 /// | `prefetchPreload` | `"on"` / `"off"` | Cloudflare will prefetch any URLs that are included in the response headers. ... |
 /// | `privacyPass` | `"on"` / `"off"` | Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to... |
 /// | `proxyReadTimeout` | Number | Maximum time between two read operations from origin. |
@@ -79,6 +80,7 @@ import 'zone_setting_state.dart';
 /// | `trueClientIpHeader` | `"on"` / `"off"` | Allows customer to continue to use True Client IP (Akamai feature) in the hea... |
 /// | `waf` | `"on"` / `"off"` | The WAF examines HTTP requests to your website.  It inspects both GET and POS... |
 /// | `webmcpEnabled` | `"on"` / `"off"` | When enabled, Cloudflare injects the WebMCP bridge (bridge.js) into HTML resp... |
+/// | `webmcpMcpUrl` | String | Optional per-zone path of the site's own MCP server, used by the WebMCP mcp-s... |
 /// | `webmcpPacks` | String | Optional per-zone override of which bundled WebMCP tool packs the injected br... |
 /// | `webp` | `"on"` / `"off"` | When the client requesting the image supports the WebP image codec, and WebP ... |
 /// | `websockets` | `"on"` / `"off"` | WebSockets are open connections sustained between the client and the origin s... |
@@ -338,7 +340,7 @@ import 'zone_setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -347,31 +349,46 @@ import 'zone_setting_state.dart';
 /// }
 ///
 /// # Basic on/off setting
-/// resource "cloudflare_zonesetting" "always_online" {
+/// resource "cloudflare_zone_setting" "always_online" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "always_online"
 ///   value      = "on"
 /// }
 /// # String value with specific choices
-/// resource "cloudflare_zonesetting" "min_tls_version" {
+/// resource "cloudflare_zone_setting" "min_tls_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "min_tls_version"
 ///   value      = "1.2"
 /// }
 /// # Numeric value
-/// resource "cloudflare_zonesetting" "browser_cache_ttl" {
+/// resource "cloudflare_zone_setting" "browser_cache_ttl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "browser_cache_ttl"
 ///   value      = 14400 # 4 hours in seconds
 /// }
 /// # Array/List value
-/// resource "cloudflare_zonesetting" "ciphers" {
+/// resource "cloudflare_zone_setting" "ciphers" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "ciphers"
 ///   value      = ["ECDHE-ECDSA-AES128-GCM-SHA256", "ECDHE-ECDSA-CHACHA20-POLY1305"]
 /// }
 /// # Nested object value
-/// resource "cloudflare_zonesetting" "security_header" {
+/// resource "cloudflare_zone_setting" "security_header" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "security_header"
 ///   value = {
@@ -385,7 +402,10 @@ import 'zone_setting_state.dart';
 ///   }
 /// }
 /// # Special case: ssl_recommender uses 'enabled' instead of 'value'
-/// resource "cloudflare_zonesetting" "ssl_recommender" {
+/// resource "cloudflare_zone_setting" "ssl_recommender" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "ssl_recommender"
 ///   enabled    = true
@@ -676,7 +696,7 @@ import 'zone_setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -685,25 +705,37 @@ import 'zone_setting_state.dart';
 /// }
 ///
 /// # Minimum TLS Version
-/// resource "cloudflare_zonesetting" "min_tls" {
+/// resource "cloudflare_zone_setting" "min_tls" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "min_tls_version"
 ///   value      = "1.2"
 /// }
 /// # SSL/TLS Mode
-/// resource "cloudflare_zonesetting" "ssl" {
+/// resource "cloudflare_zone_setting" "ssl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "ssl"
 ///   value      = "strict"
 /// }
 /// # Security Level
-/// resource "cloudflare_zonesetting" "security_level" {
+/// resource "cloudflare_zone_setting" "security_level" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "security_level"
 ///   value      = "medium"
 /// }
 /// # Cache Level
-/// resource "cloudflare_zonesetting" "cache_level" {
+/// resource "cloudflare_zone_setting" "cache_level" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "cache_level"
 ///   value      = "aggressive"
@@ -918,7 +950,7 @@ import 'zone_setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -927,19 +959,28 @@ import 'zone_setting_state.dart';
 /// }
 ///
 /// # Browser Cache TTL
-/// resource "cloudflare_zonesetting" "browser_cache_ttl" {
+/// resource "cloudflare_zone_setting" "browser_cache_ttl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "browser_cache_ttl"
 ///   value      = 14400 # Seconds (4 hours). Common values: 30, 60, 120, 300, 1200, 1800, 3600, 7200, 10800, 14400, 18000, 28800, 43200, 57600, 72000, 86400, 172800, 259200, 345600, 432000, 691200, 1382400, 2073600, 2678400, 5356800, 16070400, 31536000
 /// }
 /// # Challenge TTL
-/// resource "cloudflare_zonesetting" "challenge_ttl" {
+/// resource "cloudflare_zone_setting" "challenge_ttl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "challenge_ttl"
 ///   value      = 1800 # Seconds (30 minutes). Range: 300-2592000
 /// }
 /// # Max Upload Size
-/// resource "cloudflare_zonesetting" "max_upload" {
+/// resource "cloudflare_zone_setting" "max_upload" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "max_upload"
 ///   value      = 100 # MB. Range: 1-5000 (depending on plan)
@@ -1121,7 +1162,7 @@ import 'zone_setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -1130,13 +1171,19 @@ import 'zone_setting_state.dart';
 /// }
 ///
 /// # 0-RTT (Zero Round Trip Time)
-/// resource "cloudflare_zonesetting" "zero_rtt" {
+/// resource "cloudflare_zone_setting" "zero_rtt" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "0rtt"
 ///   value      = "on"
 /// }
 /// # Network Error Logging (NEL)
-/// resource "cloudflare_zonesetting" "nel" {
+/// resource "cloudflare_zone_setting" "nel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "nel"
 ///   value = {
@@ -1382,7 +1429,7 @@ import 'zone_setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -1391,31 +1438,46 @@ import 'zone_setting_state.dart';
 /// }
 ///
 /// # Enable HTTPS everywhere
-/// resource "cloudflare_zonesetting" "always_use_https" {
+/// resource "cloudflare_zone_setting" "always_use_https" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = zoneId
 ///   setting_id = "always_use_https"
 ///   value      = "on"
 /// }
 /// # Automatic HTTPS Rewrites
-/// resource "cloudflare_zonesetting" "automatic_https_rewrites" {
+/// resource "cloudflare_zone_setting" "automatic_https_rewrites" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = zoneId
 ///   setting_id = "automatic_https_rewrites"
 ///   value      = "on"
 /// }
 /// # Minimum TLS 1.2
-/// resource "cloudflare_zonesetting" "min_tls_version" {
+/// resource "cloudflare_zone_setting" "min_tls_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = zoneId
 ///   setting_id = "min_tls_version"
 ///   value      = "1.2"
 /// }
 /// # Enable TLS 1.3
-/// resource "cloudflare_zonesetting" "tls_1_3" {
+/// resource "cloudflare_zone_setting" "tls_1_3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = zoneId
 ///   setting_id = "tls_1_3"
 ///   value      = "on"
 /// }
 /// # Strict SSL
-/// resource "cloudflare_zonesetting" "ssl" {
+/// resource "cloudflare_zone_setting" "ssl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = zoneId
 ///   setting_id = "ssl"
 ///   value      = "strict"
@@ -1701,7 +1763,7 @@ import 'zone_setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -1710,31 +1772,46 @@ import 'zone_setting_state.dart';
 /// }
 ///
 /// # Enable HTTP/3
-/// resource "cloudflare_zonesetting" "http3" {
+/// resource "cloudflare_zone_setting" "http3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = zoneId
 ///   setting_id = "http3"
 ///   value      = "on"
 /// }
 /// # Enable Brotli Compression
-/// resource "cloudflare_zonesetting" "brotli" {
+/// resource "cloudflare_zone_setting" "brotli" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = zoneId
 ///   setting_id = "brotli"
 ///   value      = "on"
 /// }
 /// # Early Hints
-/// resource "cloudflare_zonesetting" "early_hints" {
+/// resource "cloudflare_zone_setting" "early_hints" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = zoneId
 ///   setting_id = "early_hints"
 ///   value      = "on"
 /// }
 /// # Aggressive Caching
-/// resource "cloudflare_zonesetting" "cache_level" {
+/// resource "cloudflare_zone_setting" "cache_level" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = zoneId
 ///   setting_id = "cache_level"
 ///   value      = "aggressive"
 /// }
 /// # Browser Cache TTL
-/// resource "cloudflare_zonesetting" "browser_cache" {
+/// resource "cloudflare_zone_setting" "browser_cache" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = zoneId
 ///   setting_id = "browser_cache_ttl"
 ///   value      = 14400 # 4 hours
@@ -1876,7 +1953,7 @@ class ZoneSetting extends pulumi.CustomResource {
           'cloudflare:index/zoneSetting:ZoneSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     editable = registerOutput<bool>('editable');
     enabled = registerOutput<bool>('enabled');

@@ -98,7 +98,7 @@ import 'device_posture_integration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -106,7 +106,10 @@ import 'device_posture_integration_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdevicepostureintegration" "example_zero_trust_device_posture_integration" {
+/// resource "cloudflare_zero_trust_device_posture_integration" "example_zero_trust_device_posture_integration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   config = {
 ///     api_url       = "https://as123.awmdm.com/API"
@@ -204,7 +207,7 @@ class DevicePostureIntegration extends pulumi.CustomResource {
           'cloudflare:index/devicePostureIntegration:DevicePostureIntegration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     config = registerOutput<DevicePostureIntegrationConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DevicePostureIntegrationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -36,7 +36,7 @@ class GetZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6 {
   factory GetZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6(
       ip: pulumi.Input.fromValue(map['ip'] as String),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       routeThroughPrivateNetwork: pulumi.Input.fromValue(map['routeThroughPrivateNetwork'] as bool),
       vnetId: pulumi.Input.fromValue(map['vnetId'] as String),
     );

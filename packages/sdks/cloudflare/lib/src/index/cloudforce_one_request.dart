@@ -81,7 +81,7 @@ import 'cloudforce_one_request_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -89,7 +89,10 @@ import 'cloudforce_one_request_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_cloudforceonerequest" "example_cloudforce_one_request" {
+/// resource "cloudflare_cloudforce_one_request" "example_cloudforce_one_request" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   content      = "What regions were most effected by the recent DoS?"
 ///   priority     = "routine"
@@ -192,7 +195,7 @@ class CloudforceOneRequest extends pulumi.CustomResource {
           'cloudflare:index/cloudforceOneRequest:CloudforceOneRequest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     completed = registerOutput<String>('completed');

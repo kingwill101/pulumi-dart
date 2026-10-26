@@ -8,14 +8,14 @@ import 'get_custom_origin_trust_store_filter.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_custom_origin_trust_store_get_custom_origin_trust_store_args_doc}
 class GetCustomOriginTrustStoreArgs {
-  /// Identifier.
+  /// Certificate identifier tag.
   final pulumi.Input<String?>? customOriginTrustStoreId;
   final pulumi.Input<GetCustomOriginTrustStoreFilter?>? filter;
   /// Identifier.
   final pulumi.Input<String?>? zoneId;
 
   /// Creates a new [GetCustomOriginTrustStoreArgs].
-  /// [customOriginTrustStoreId] Identifier.
+  /// [customOriginTrustStoreId] Certificate identifier tag.
   /// [filter] Optional.
   /// [zoneId] Identifier.
   const GetCustomOriginTrustStoreArgs({

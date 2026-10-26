@@ -113,7 +113,7 @@ import 'r2_bucket_event_notification_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -121,7 +121,10 @@ import 'r2_bucket_event_notification_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_r2bucketeventnotification" "example_r2_bucket_event_notification" {
+/// resource "cloudflare_r2_bucket_event_notification" "example_r2_bucket_event_notification" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   bucket_name = "example-bucket"
 ///   queue_id    = "queue_id"
@@ -195,13 +198,13 @@ import 'r2_bucket_event_notification_state.dart';
 ///
 /// &gt; This resource does not currently support `pulumi import`.
 class R2BucketEventNotification extends pulumi.CustomResource {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   late final pulumi.Output<String> accountId;
   /// Name of the bucket.
   late final pulumi.Output<String> bucketName;
   /// Jurisdiction of the bucket
   late final pulumi.Output<String> jurisdiction;
-  /// Queue ID.
+  /// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
   late final pulumi.Output<String> queueId;
   /// Name of the queue.
   late final pulumi.Output<String> queueName;
@@ -220,7 +223,7 @@ class R2BucketEventNotification extends pulumi.CustomResource {
           'cloudflare:index/r2BucketEventNotification:R2BucketEventNotification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     bucketName = registerOutput<String>('bucketName');

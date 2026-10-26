@@ -79,7 +79,7 @@ import 'schema_validation_schemas_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -87,7 +87,10 @@ import 'schema_validation_schemas_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_schemavalidationschemas" "example_schema_validation_schemas" {
+/// resource "cloudflare_schema_validation_schemas" "example_schema_validation_schemas" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id            = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   kind               = "openapi_v3"
 ///   name               = "petstore schema"
@@ -153,6 +156,8 @@ class SchemaValidationSchemas extends pulumi.CustomResource {
   late final pulumi.Output<String> kind;
   /// A human-readable name for the schema
   late final pulumi.Output<String> name;
+  /// Omit the source-files of schemas and only retrieve their meta-data.
+  late final pulumi.Output<bool> omitSource;
   /// A unique identifier of this schema
   late final pulumi.Output<String> schemaId;
   /// The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
@@ -174,11 +179,12 @@ class SchemaValidationSchemas extends pulumi.CustomResource {
           'cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
+    omitSource = registerOutput<bool>('omitSource');
     schemaId = registerOutput<String>('schemaId');
     source = registerOutput<String>('source');
     validationEnabled = registerOutput<bool>('validationEnabled');
@@ -212,6 +218,7 @@ class SchemaValidationSchemas extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
+    omitSource = registerOutput<bool>('omitSource');
     schemaId = registerOutput<String>('schemaId');
     source = registerOutput<String>('source');
     validationEnabled = registerOutput<bool>('validationEnabled');
@@ -230,6 +237,7 @@ class SchemaValidationSchemas extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
+    omitSource = registerOutput<bool>('omitSource');
     schemaId = registerOutput<String>('schemaId');
     source = registerOutput<String>('source');
     validationEnabled = registerOutput<bool>('validationEnabled');

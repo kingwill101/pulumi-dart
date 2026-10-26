@@ -64,9 +64,9 @@ import 'magic_network_monitoring_rule_state.dart';
 ///             "203.0.113.1/32",
 ///         },
 ///         Type = "zscore",
-///         BandwidthThreshold = 1000,
+///         BandwidthThreshold = 1000.0,
 ///         Duration = "1m",
-///         PacketThreshold = 10000,
+///         PacketThreshold = 10000.0,
 ///         PrefixMatch = "exact",
 ///         ZscoreSensitivity = "high",
 ///         ZscoreTarget = "bits",
@@ -107,7 +107,7 @@ import 'magic_network_monitoring_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -115,7 +115,10 @@ import 'magic_network_monitoring_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_magicnetworkmonitoringrule" "example_magic_network_monitoring_rule" {
+/// resource "cloudflare_magic_network_monitoring_rule" "example_magic_network_monitoring_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id              = "6f91088a406011ed95aed352566e8d4c"
 ///   automatic_advertisement = true
 ///   name                    = "my_rule_1"
@@ -232,7 +235,7 @@ class MagicNetworkMonitoringRule extends pulumi.CustomResource {
           'cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     automaticAdvertisement = registerOutput<bool>('automaticAdvertisement');

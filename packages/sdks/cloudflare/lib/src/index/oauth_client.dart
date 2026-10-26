@@ -29,6 +29,7 @@ import 'oauth_client_state.dart';
 ///     allowedCorsOrigins: ["https://example.com"],
 ///     clientUri: "https://example.com",
 ///     logoUri: "https://example.com/logo.png",
+///     optionalScopes: ["account.write"],
 ///     policyUri: "https://example.com/privacy",
 ///     postLogoutRedirectUris: ["https://example.com/logout"],
 ///     tosUri: "https://example.com/tos",
@@ -52,6 +53,7 @@ import 'oauth_client_state.dart';
 ///     allowed_cors_origins=["https://example.com"],
 ///     client_uri="https://example.com",
 ///     logo_uri="https://example.com/logo.png",
+///     optional_scopes=["account.write"],
 ///     policy_uri="https://example.com/privacy",
 ///     post_logout_redirect_uris=["https://example.com/logout"],
 ///     tos_uri="https://example.com/tos")
@@ -92,6 +94,10 @@ import 'oauth_client_state.dart';
 ///         },
 ///         ClientUri = "https://example.com",
 ///         LogoUri = "https://example.com/logo.png",
+///         OptionalScopes = new[]
+///         {
+///             "account.write",
+///         },
 ///         PolicyUri = "https://example.com/privacy",
 ///         PostLogoutRedirectUris = new[]
 ///         {
@@ -134,6 +140,9 @@ import 'oauth_client_state.dart';
 /// 			},
 /// 			ClientUri: pulumi.String("https://example.com"),
 /// 			LogoUri:   pulumi.String("https://example.com/logo.png"),
+/// 			OptionalScopes: pulumi.StringArray{
+/// 				pulumi.String("account.write"),
+/// 			},
 /// 			PolicyUri: pulumi.String("https://example.com/privacy"),
 /// 			PostLogoutRedirectUris: pulumi.StringArray{
 /// 				pulumi.String("https://example.com/logout"),
@@ -148,7 +157,7 @@ import 'oauth_client_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -156,7 +165,10 @@ import 'oauth_client_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_oauthclient" "example_oauth_client" {
+/// resource "cloudflare_oauth_client" "example_oauth_client" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id                 = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   client_name                = "My OAuth App"
 ///   grant_types                = ["authorization_code", "refresh_token"]
@@ -167,6 +179,7 @@ import 'oauth_client_state.dart';
 ///   allowed_cors_origins       = ["https://example.com"]
 ///   client_uri                 = "https://example.com"
 ///   logo_uri                   = "https://example.com/logo.png"
+///   optional_scopes            = ["account.write"]
 ///   policy_uri                 = "https://example.com/privacy"
 ///   post_logout_redirect_uris  = ["https://example.com/logout"]
 ///   tos_uri                    = "https://example.com/tos"
@@ -206,6 +219,7 @@ import 'oauth_client_state.dart';
 ///             .allowedCorsOrigins("https://example.com")
 ///             .clientUri("https://example.com")
 ///             .logoUri("https://example.com/logo.png")
+///             .optionalScopes("account.write")
 ///             .policyUri("https://example.com/privacy")
 ///             .postLogoutRedirectUris("https://example.com/logout")
 ///             .tosUri("https://example.com/tos")
@@ -236,6 +250,8 @@ import 'oauth_client_state.dart';
 ///         - https://example.com
 ///       clientUri: https://example.com
 ///       logoUri: https://example.com/logo.png
+///       optionalScopes:
+///         - account.write
 ///       policyUri: https://example.com/privacy
 ///       postLogoutRedirectUris:
 ///         - https://example.com/logout
@@ -271,6 +287,8 @@ class OauthClient extends pulumi.CustomResource {
   late final pulumi.Output<String?> logoUri;
   /// The unique identifier for an OAuth client.
   late final pulumi.Output<String?> oauthClientId;
+  /// Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+  late final pulumi.Output<List<String>?> optionalScopes;
   /// URL that points to a privacy policy document.
   late final pulumi.Output<String?> policyUri;
   /// Array of allowed post-logout redirect URIs.
@@ -306,7 +324,7 @@ class OauthClient extends pulumi.CustomResource {
           'cloudflare:index/oauthClient:OauthClient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
           additionalSecretOutputs: const ['clientSecret'],
         ) {
     accountId = registerOutput<String>('accountId');
@@ -321,6 +339,7 @@ class OauthClient extends pulumi.CustomResource {
     hasRotatedSecret = registerOutput<bool>('hasRotatedSecret');
     logoUri = registerOutput<String?>('logoUri');
     oauthClientId = registerOutput<String?>('oauthClientId');
+    optionalScopes = registerOutput<List<String>?>('optionalScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     policyUri = registerOutput<String?>('policyUri');
     postLogoutRedirectUris = registerOutput<List<String>?>('postLogoutRedirectUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     promotedAt = registerOutput<String>('promotedAt');
@@ -369,6 +388,7 @@ class OauthClient extends pulumi.CustomResource {
     hasRotatedSecret = registerOutput<bool>('hasRotatedSecret');
     logoUri = registerOutput<String?>('logoUri');
     oauthClientId = registerOutput<String?>('oauthClientId');
+    optionalScopes = registerOutput<List<String>?>('optionalScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     policyUri = registerOutput<String?>('policyUri');
     postLogoutRedirectUris = registerOutput<List<String>?>('postLogoutRedirectUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     promotedAt = registerOutput<String>('promotedAt');
@@ -403,6 +423,7 @@ class OauthClient extends pulumi.CustomResource {
     hasRotatedSecret = registerOutput<bool>('hasRotatedSecret');
     logoUri = registerOutput<String?>('logoUri');
     oauthClientId = registerOutput<String?>('oauthClientId');
+    optionalScopes = registerOutput<List<String>?>('optionalScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     policyUri = registerOutput<String?>('policyUri');
     postLogoutRedirectUris = registerOutput<List<String>?>('postLogoutRedirectUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     promotedAt = registerOutput<String>('promotedAt');

@@ -129,7 +129,7 @@ import 'zero_trust_device_posture_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -137,7 +137,10 @@ import 'zero_trust_device_posture_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdeviceposturerule" "example_zero_trust_device_posture_rule" {
+/// resource "cloudflare_zero_trust_device_posture_rule" "example_zero_trust_device_posture_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "699d98642c564d2e855e9661899b7252"
 ///   name        = "Admin Serial Numbers"
 ///   type        = "file"
@@ -261,7 +264,7 @@ class ZeroTrustDevicePostureRule extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     description = registerOutput<String>('description');

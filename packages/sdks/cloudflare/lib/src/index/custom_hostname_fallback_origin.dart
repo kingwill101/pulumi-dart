@@ -65,7 +65,7 @@ import 'custom_hostname_fallback_origin_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -73,7 +73,10 @@ import 'custom_hostname_fallback_origin_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_customhostnamefallbackorigin" "example_custom_hostname_fallback_origin" {
+/// resource "cloudflare_custom_hostname_fallback_origin" "example_custom_hostname_fallback_origin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   origin  = "fallback.example.com"
 /// }
@@ -150,7 +153,7 @@ class CustomHostnameFallbackOrigin extends pulumi.CustomResource {
           'cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     errors = registerOutput<List<String>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

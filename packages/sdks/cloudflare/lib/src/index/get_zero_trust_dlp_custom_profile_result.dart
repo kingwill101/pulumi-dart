@@ -27,6 +27,7 @@ class GetZeroTrustDlpCustomProfileResult {
   final List<GetZeroTrustDlpCustomProfileEntry>? entries;
   /// The ID of this resource.
   final String? id;
+  final String? integrationId;
   /// The name of the profile.
   final String? name;
   final bool? ocrEnabled;
@@ -53,6 +54,7 @@ class GetZeroTrustDlpCustomProfileResult {
   /// [description] The description of the profile.
   /// [entries] Optional.
   /// [id] The ID of this resource.
+  /// [integrationId] Optional.
   /// [name] The name of the profile.
   /// [ocrEnabled] Optional.
   /// [openAccess] Whether this profile can be accessed by anyone.
@@ -73,6 +75,7 @@ class GetZeroTrustDlpCustomProfileResult {
     this.description,
     this.entries,
     this.id,
+    this.integrationId,
     this.name,
     this.ocrEnabled,
     this.openAccess,
@@ -96,6 +99,7 @@ class GetZeroTrustDlpCustomProfileResult {
       'description': ?description,
       'entries': ?(() { final guardedValue = entries; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetZeroTrustDlpCustomProfileEntry, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': ?id,
+      'integrationId': ?integrationId,
       'name': ?name,
       'ocrEnabled': ?ocrEnabled,
       'openAccess': ?openAccess,
@@ -111,7 +115,7 @@ class GetZeroTrustDlpCustomProfileResult {
     return GetZeroTrustDlpCustomProfileResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       aiContextEnabled: (() { final guardedValue = map['aiContextEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      allowedMatchCount: (() { final guardedValue = map['allowedMatchCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      allowedMatchCount: (() { final guardedValue = map['allowedMatchCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       confidenceThreshold: (() { final guardedValue = map['confidenceThreshold']; if (guardedValue == null) return null; return guardedValue as String; })(),
       contextAwareness: (() { final guardedValue = map['contextAwareness']; if (guardedValue == null) return null; return GetZeroTrustDlpCustomProfileContextAwareness.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -120,6 +124,7 @@ class GetZeroTrustDlpCustomProfileResult {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       entries: (() { final guardedValue = map['entries']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZeroTrustDlpCustomProfileEntry>(guardedValue, (value) => GetZeroTrustDlpCustomProfileEntry.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      integrationId: (() { final guardedValue = map['integrationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ocrEnabled: (() { final guardedValue = map['ocrEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       openAccess: (() { final guardedValue = map['openAccess']; if (guardedValue == null) return null; return guardedValue as bool; })(),

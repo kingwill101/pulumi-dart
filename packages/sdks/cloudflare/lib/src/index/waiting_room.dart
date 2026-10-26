@@ -183,7 +183,7 @@ import 'waiting_room_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -191,7 +191,10 @@ import 'waiting_room_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_waitingroom" "example_waiting_room" {
+/// resource "cloudflare_waiting_room" "example_waiting_room" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id              = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   host                 = "shop.example.com"
 ///   name                 = "production_webinar"
@@ -491,7 +494,7 @@ class WaitingRoom extends pulumi.CustomResource {
           'cloudflare:index/waitingRoom:WaitingRoom',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     additionalRoutes = registerOutput<List<WaitingRoomAdditionalRoute>>('additionalRoutes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WaitingRoomAdditionalRoute>(guardedValue, (value) => WaitingRoomAdditionalRoute.fromMap((value as Map).cast<String, dynamic>())); });
     cookieAttributes = registerOutput<WaitingRoomCookieAttributes>('cookieAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WaitingRoomCookieAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -112,7 +112,7 @@ import 'certificate_pack_validation_record.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -120,7 +120,10 @@ import 'certificate_pack_validation_record.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_certificatepack" "example_certificate_pack" {
+/// resource "cloudflare_certificate_pack" "example_certificate_pack" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id               = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   certificate_authority = "lets_encrypt"
 ///   hosts                 = ["example.com", "*.example.com", "www.example.com"]
@@ -239,7 +242,7 @@ class CertificatePack extends pulumi.CustomResource {
           'cloudflare:index/certificatePack:CertificatePack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.1').merge(options),
         ) {
     certificateAuthority = registerOutput<String>('certificateAuthority');
     certificates = registerOutput<List<CertificatePackCertificate>>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificatePackCertificate>(guardedValue, (value) => CertificatePackCertificate.fromMap((value as Map).cast<String, dynamic>())); });
