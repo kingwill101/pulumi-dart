@@ -27,7 +27,7 @@ class RollingUpdateStatefulSetStrategyPatch {
   factory RollingUpdateStatefulSetStrategyPatch.fromMap(Map<String, dynamic> map) {
     return RollingUpdateStatefulSetStrategyPatch(
       maxUnavailable: (() { final guardedValue = map['maxUnavailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      partition: (() { final guardedValue = map['partition']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      partition: (() { final guardedValue = map['partition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

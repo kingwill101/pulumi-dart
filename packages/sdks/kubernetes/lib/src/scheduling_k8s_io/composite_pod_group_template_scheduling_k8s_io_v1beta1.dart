@@ -70,7 +70,7 @@ class CompositePodGroupTemplateSchedulingK8sIoV1beta1 {
       name: pulumi.Input.fromValue(map['name'] as String),
       podGroupTemplates: (() { final guardedValue = map['podGroupTemplates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PodGroupTemplateSchedulingK8sIoV1beta1>(guardedValue, (value) => PodGroupTemplateSchedulingK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))); })(),
       preemptionPolicy: (() { final guardedValue = map['preemptionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       priorityClassName: (() { final guardedValue = map['priorityClassName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schedulingConstraints: (() { final guardedValue = map['schedulingConstraints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CompositePodGroupSchedulingConstraintsSchedulingK8sIoV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       schedulingPolicy: pulumi.Input.fromValue(CompositePodGroupSchedulingPolicySchedulingK8sIoV1beta1.fromMap((map['schedulingPolicy']! as Map).cast<String, dynamic>())),

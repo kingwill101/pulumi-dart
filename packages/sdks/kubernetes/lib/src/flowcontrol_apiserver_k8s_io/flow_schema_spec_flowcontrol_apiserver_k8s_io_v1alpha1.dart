@@ -40,7 +40,7 @@ class FlowSchemaSpecFlowcontrolApiserverK8sIoV1alpha1 {
   factory FlowSchemaSpecFlowcontrolApiserverK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return FlowSchemaSpecFlowcontrolApiserverK8sIoV1alpha1(
       distinguisherMethod: (() { final guardedValue = map['distinguisherMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FlowDistinguisherMethodFlowcontrolApiserverK8sIoV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      matchingPrecedence: (() { final guardedValue = map['matchingPrecedence']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      matchingPrecedence: (() { final guardedValue = map['matchingPrecedence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       priorityLevelConfiguration: pulumi.Input.fromValue(PriorityLevelConfigurationReferenceFlowcontrolApiserverK8sIoV1alpha1.fromMap((map['priorityLevelConfiguration']! as Map).cast<String, dynamic>())),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyRulesWithSubjectsFlowcontrolApiserverK8sIoV1alpha1>(guardedValue, (value) => PolicyRulesWithSubjectsFlowcontrolApiserverK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

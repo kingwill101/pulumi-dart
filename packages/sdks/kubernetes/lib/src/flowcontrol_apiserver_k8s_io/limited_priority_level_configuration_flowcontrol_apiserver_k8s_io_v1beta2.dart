@@ -49,9 +49,9 @@ class LimitedPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2 {
 
   factory LimitedPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return LimitedPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2(
-      assuredConcurrencyShares: (() { final guardedValue = map['assuredConcurrencyShares']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      borrowingLimitPercent: (() { final guardedValue = map['borrowingLimitPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      lendablePercent: (() { final guardedValue = map['lendablePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      assuredConcurrencyShares: (() { final guardedValue = map['assuredConcurrencyShares']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      borrowingLimitPercent: (() { final guardedValue = map['borrowingLimitPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      lendablePercent: (() { final guardedValue = map['lendablePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       limitResponse: (() { final guardedValue = map['limitResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LimitResponseFlowcontrolApiserverK8sIoV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

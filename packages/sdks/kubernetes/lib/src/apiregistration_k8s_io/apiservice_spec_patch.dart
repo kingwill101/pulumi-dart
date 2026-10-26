@@ -54,11 +54,11 @@ class APIServiceSpecPatch {
     return APIServiceSpecPatch(
       caBundle: (() { final guardedValue = map['caBundle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      groupPriorityMinimum: (() { final guardedValue = map['groupPriorityMinimum']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      groupPriorityMinimum: (() { final guardedValue = map['groupPriorityMinimum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       insecureSkipTLSVerify: (() { final guardedValue = map['insecureSkipTLSVerify']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceReferencePatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      versionPriority: (() { final guardedValue = map['versionPriority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      versionPriority: (() { final guardedValue = map['versionPriority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

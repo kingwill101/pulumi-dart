@@ -32,8 +32,8 @@ class DownwardAPIVolumeSource {
 
   factory DownwardAPIVolumeSource.fromMap(Map<String, dynamic> map) {
     return DownwardAPIVolumeSource(
-      defaultMode: (() { final guardedValue = map['defaultMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      defaultUser: (() { final guardedValue = map['defaultUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      defaultMode: (() { final guardedValue = map['defaultMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      defaultUser: (() { final guardedValue = map['defaultUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       items: (() { final guardedValue = map['items']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DownwardAPIVolumeFile>(guardedValue, (value) => DownwardAPIVolumeFile.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

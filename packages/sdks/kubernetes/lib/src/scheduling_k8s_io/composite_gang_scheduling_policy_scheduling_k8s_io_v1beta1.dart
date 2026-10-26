@@ -21,7 +21,7 @@ class CompositeGangSchedulingPolicySchedulingK8sIoV1beta1 {
 
   factory CompositeGangSchedulingPolicySchedulingK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CompositeGangSchedulingPolicySchedulingK8sIoV1beta1(
-      minGroupCount: pulumi.Input.fromValue((map['minGroupCount'] as num).toInt()),
+      minGroupCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minGroupCount'])),
     );
   }
 }

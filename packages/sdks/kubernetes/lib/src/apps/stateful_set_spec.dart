@@ -77,12 +77,12 @@ class StatefulSetSpec {
 
   factory StatefulSetSpec.fromMap(Map<String, dynamic> map) {
     return StatefulSetSpec(
-      minReadySeconds: (() { final guardedValue = map['minReadySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minReadySeconds: (() { final guardedValue = map['minReadySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ordinals: (() { final guardedValue = map['ordinals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StatefulSetOrdinals.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       persistentVolumeClaimRetentionPolicy: (() { final guardedValue = map['persistentVolumeClaimRetentionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StatefulSetPersistentVolumeClaimRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       podManagementPolicy: (() { final guardedValue = map['podManagementPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      revisionHistoryLimit: (() { final guardedValue = map['revisionHistoryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      revisionHistoryLimit: (() { final guardedValue = map['revisionHistoryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       selector: pulumi.Input.fromValue(LabelSelector.fromMap((map['selector']! as Map).cast<String, dynamic>())),
       serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       template: pulumi.Input.fromValue(PodTemplateSpec.fromMap((map['template']! as Map).cast<String, dynamic>())),

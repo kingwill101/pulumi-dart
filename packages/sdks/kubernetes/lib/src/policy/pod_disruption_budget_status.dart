@@ -61,12 +61,12 @@ class PodDisruptionBudgetStatus {
   factory PodDisruptionBudgetStatus.fromMap(Map<String, dynamic> map) {
     return PodDisruptionBudgetStatus(
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Condition>(guardedValue, (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      currentHealthy: pulumi.Input.fromValue((map['currentHealthy'] as num).toInt()),
-      desiredHealthy: pulumi.Input.fromValue((map['desiredHealthy'] as num).toInt()),
+      currentHealthy: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['currentHealthy'])),
+      desiredHealthy: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['desiredHealthy'])),
       disruptedPods: (() { final guardedValue = map['disruptedPods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      disruptionsAllowed: pulumi.Input.fromValue((map['disruptionsAllowed'] as num).toInt()),
-      expectedPods: pulumi.Input.fromValue((map['expectedPods'] as num).toInt()),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      disruptionsAllowed: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['disruptionsAllowed'])),
+      expectedPods: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['expectedPods'])),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

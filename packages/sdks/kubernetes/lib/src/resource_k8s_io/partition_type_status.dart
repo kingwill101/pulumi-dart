@@ -36,9 +36,9 @@ class PartitionTypeStatus {
 
   factory PartitionTypeStatus.fromMap(Map<String, dynamic> map) {
     return PartitionTypeStatus(
-      allocatable: pulumi.Input.fromValue((map['allocatable'] as num).toInt()),
+      allocatable: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['allocatable'])),
       attribute: pulumi.Input.fromValue(map['attribute'] as String),
-      total: pulumi.Input.fromValue((map['total'] as num).toInt()),
+      total: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['total'])),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

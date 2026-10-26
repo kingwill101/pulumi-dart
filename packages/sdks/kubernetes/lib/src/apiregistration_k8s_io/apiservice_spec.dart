@@ -54,11 +54,11 @@ class APIServiceSpec {
     return APIServiceSpec(
       caBundle: (() { final guardedValue = map['caBundle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      groupPriorityMinimum: pulumi.Input.fromValue((map['groupPriorityMinimum'] as num).toInt()),
+      groupPriorityMinimum: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['groupPriorityMinimum'])),
       insecureSkipTLSVerify: (() { final guardedValue = map['insecureSkipTLSVerify']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      versionPriority: pulumi.Input.fromValue((map['versionPriority'] as num).toInt()),
+      versionPriority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['versionPriority'])),
     );
   }
 }

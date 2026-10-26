@@ -70,8 +70,8 @@ class TopologySpreadConstraint {
     return TopologySpreadConstraint(
       labelSelector: (() { final guardedValue = map['labelSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LabelSelector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       matchLabelKeys: (() { final guardedValue = map['matchLabelKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      maxSkew: pulumi.Input.fromValue((map['maxSkew'] as num).toInt()),
-      minDomains: (() { final guardedValue = map['minDomains']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxSkew: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxSkew'])),
+      minDomains: (() { final guardedValue = map['minDomains']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nodeAffinityPolicy: (() { final guardedValue = map['nodeAffinityPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeTaintsPolicy: (() { final guardedValue = map['nodeTaintsPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       topologyKey: pulumi.Input.fromValue(map['topologyKey'] as String),

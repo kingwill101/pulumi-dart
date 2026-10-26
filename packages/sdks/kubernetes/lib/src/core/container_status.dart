@@ -107,7 +107,7 @@ class ContainerStatus {
       name: pulumi.Input.fromValue(map['name'] as String),
       ready: pulumi.Input.fromValue(map['ready'] as bool),
       resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceRequirements.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      restartCount: pulumi.Input.fromValue((map['restartCount'] as num).toInt()),
+      restartCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['restartCount'])),
       started: (() { final guardedValue = map['started']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerState.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       stopSignal: (() { final guardedValue = map['stopSignal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
