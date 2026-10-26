@@ -84,7 +84,7 @@ import 'gdc_service_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -111,7 +111,7 @@ import 'gdc_service_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -119,7 +119,10 @@ import 'gdc_service_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_gdcserviceinstance" "service-instance" {
+/// resource "gcp_dataproc_gdc_service_instance" "service-instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_instance_id = "tf-e2e-service-instance"
 ///   project             = "my-project"
 ///   location            = "us-west2"
@@ -285,7 +288,7 @@ class GdcServiceInstance extends pulumi.CustomResource {
           'gcp:dataproc/gdcServiceInstance:GdcServiceInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

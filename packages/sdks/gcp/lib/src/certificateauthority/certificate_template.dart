@@ -317,7 +317,7 @@ import 'certificate_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -421,7 +421,7 @@ import 'certificate_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -429,7 +429,10 @@ import 'certificate_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_certificateauthority_certificatetemplate" "default" {
+/// resource "gcp_certificateauthority_certificate_template" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-template"
 ///   location    = "us-central1"
 ///   description = "A sample certificate template"
@@ -446,17 +449,17 @@ import 'certificate_template_state.dart';
 ///   maximum_lifetime = "86400s"
 ///   passthrough_extensions = {
 ///     additional_extensions = [{
-///       "objectIdPaths" = [1, 6]
+///       object_id_paths = [1, 6]
 ///     }]
 ///     known_extensions = ["EXTENDED_KEY_USAGE"]
 ///   }
 ///   predefined_values = {
 ///     additional_extensions = [{
-///       "objectId" = {
-///         "objectIdPaths" = [1, 6]
+///       object_id = {
+///         object_id_paths = [1, 6]
 ///       }
-///       "value"    = "c3RyaW5nCg=="
-///       "critical" = true
+///       value    = "c3RyaW5nCg=="
+///       critical = true
 ///     }]
 ///     aia_ocsp_servers = ["string"]
 ///     ca_options = {
@@ -484,11 +487,11 @@ import 'certificate_template_state.dart';
 ///         time_stamping    = true
 ///       }
 ///       unknown_extended_key_usages = [{
-///         "objectIdPaths" = [1, 6]
+///         object_id_paths = [1, 6]
 ///       }]
 ///     }
 ///     policy_ids = [{
-///       "objectIdPaths" = [1, 6]
+///       object_id_paths = [1, 6]
 ///     }]
 ///   }
 ///   labels = {
@@ -1092,7 +1095,7 @@ import 'certificate_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1233,7 +1236,7 @@ import 'certificate_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1241,7 +1244,10 @@ import 'certificate_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_certificateauthority_certificatetemplate" "default" {
+/// resource "gcp_certificateauthority_certificate_template" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-template"
 ///   location    = "us-central1"
 ///   description = "A sample certificate template"
@@ -1258,17 +1264,17 @@ import 'certificate_template_state.dart';
 ///   maximum_lifetime = "86400s"
 ///   passthrough_extensions = {
 ///     additional_extensions = [{
-///       "objectIdPaths" = [1, 6]
+///       object_id_paths = [1, 6]
 ///     }]
 ///     known_extensions = ["EXTENDED_KEY_USAGE"]
 ///   }
 ///   predefined_values = {
 ///     additional_extensions = [{
-///       "objectId" = {
-///         "objectIdPaths" = [1, 6]
+///       object_id = {
+///         object_id_paths = [1, 6]
 ///       }
-///       "value"    = "c3RyaW5nCg=="
-///       "critical" = true
+///       value    = "c3RyaW5nCg=="
+///       critical = true
 ///     }]
 ///     aia_ocsp_servers = ["string"]
 ///     ca_options = {
@@ -1298,11 +1304,11 @@ import 'certificate_template_state.dart';
 ///         time_stamping    = true
 ///       }
 ///       unknown_extended_key_usages = [{
-///         "objectIdPaths" = [1, 6]
+///         object_id_paths = [1, 6]
 ///       }]
 ///     }
 ///     policy_ids = [{
-///       "objectIdPaths" = [1, 6]
+///       object_id_paths = [1, 6]
 ///     }]
 ///     name_constraints = {
 ///       critical                  = true
@@ -1627,7 +1633,7 @@ class CertificateTemplate extends pulumi.CustomResource {
           'gcp:certificateauthority/certificateTemplate:CertificateTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

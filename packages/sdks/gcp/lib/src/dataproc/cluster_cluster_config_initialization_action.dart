@@ -31,7 +31,7 @@ class ClusterClusterConfigInitializationAction {
   factory ClusterClusterConfigInitializationAction.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigInitializationAction(
       script: pulumi.Input.fromValue(map['script'] as String),
-      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

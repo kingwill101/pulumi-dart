@@ -166,7 +166,7 @@ import 'widget_config_ui_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -226,7 +226,7 @@ import 'widget_config_ui_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -234,7 +234,10 @@ import 'widget_config_ui_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_discoveryengine_datastore" "basic" {
+/// resource "gcp_discoveryengine_data_store" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                    = "global"
 ///   data_store_id               = "data-store-id"
 ///   display_name                = "tf-test-datastore"
@@ -243,19 +246,25 @@ import 'widget_config_ui_settings.dart';
 ///   solution_types              = ["SOLUTION_TYPE_SEARCH"]
 ///   create_advanced_site_search = false
 /// }
-/// resource "gcp_discoveryengine_searchengine" "basic" {
+/// resource "gcp_discoveryengine_search_engine" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   engine_id            = "engine-id"
 ///   collection_id        = "default_collection"
-///   location             = gcp_discoveryengine_datastore.basic.location
+///   location             = gcp_discoveryengine_data_store.basic.location
 ///   display_name         = "tf-test-engine"
-///   data_store_ids       = [gcp_discoveryengine_datastore.basic.data_store_id]
+///   data_store_ids       = [gcp_discoveryengine_data_store.basic.data_store_id]
 ///   industry_vertical    = "GENERIC"
 ///   app_type             = "APP_TYPE_INTRANET"
 ///   search_engine_config = {}
 /// }
-/// resource "gcp_discoveryengine_widgetconfig" "basic" {
-///   location  = gcp_discoveryengine_searchengine.basic.location
-///   engine_id = gcp_discoveryengine_searchengine.basic.engine_id
+/// resource "gcp_discoveryengine_widget_config" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location  = gcp_discoveryengine_search_engine.basic.location
+///   engine_id = gcp_discoveryengine_search_engine.basic.engine_id
 ///   access_settings = {
 ///     enable_web_app                   = true
 ///     workforce_identity_pool_provider = "locations/global/workforcePools/workforce-pool-id/providers/workforce-pool-provider"
@@ -270,7 +279,7 @@ import 'widget_config_ui_settings.dart';
 ///   }
 /// }
 /// output "widgetConfigId" {
-///   value = gcp_discoveryengine_widgetconfig.basic.config_id
+///   value = gcp_discoveryengine_widget_config.basic.config_id
 /// }
 /// ```
 /// ```java
@@ -452,7 +461,7 @@ class WidgetConfig extends pulumi.CustomResource {
           'gcp:discoveryengine/widgetConfig:WidgetConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     accessSettings = registerOutput<WidgetConfigAccessSettings>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WidgetConfigAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     collectionId = registerOutput<String?>('collectionId');

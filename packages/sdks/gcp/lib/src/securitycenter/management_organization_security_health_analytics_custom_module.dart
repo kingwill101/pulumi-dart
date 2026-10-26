@@ -104,7 +104,7 @@ import 'management_organization_security_health_analytics_custom_module_state.da
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -137,7 +137,7 @@ import 'management_organization_security_health_analytics_custom_module_state.da
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -145,7 +145,10 @@ import 'management_organization_security_health_analytics_custom_module_state.da
 ///   }
 /// }
 ///
-/// resource "gcp_securitycenter_managementorganizationsecurityhealthanalyticscustommodule" "example" {
+/// resource "gcp_securitycenter_management_organization_security_health_analytics_custom_module" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization     = "123456789"
 ///   display_name     = "basic_custom_module"
 ///   location         = "global"
@@ -362,7 +365,7 @@ import 'management_organization_security_health_analytics_custom_module_state.da
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -411,7 +414,7 @@ import 'management_organization_security_health_analytics_custom_module_state.da
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -419,7 +422,10 @@ import 'management_organization_security_health_analytics_custom_module_state.da
 ///   }
 /// }
 ///
-/// resource "gcp_securitycenter_managementorganizationsecurityhealthanalyticscustommodule" "example" {
+/// resource "gcp_securitycenter_management_organization_security_health_analytics_custom_module" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization     = "123456789"
 ///   display_name     = "full_custom_module"
 ///   location         = "global"
@@ -433,12 +439,12 @@ import 'management_organization_security_health_analytics_custom_module_state.da
 ///     }
 ///     custom_output = {
 ///       properties = [{
-///         "name" = "duration"
-///         "valueExpression" = {
-///           "expression"  = "resource.rotationPeriod"
-///           "title"       = "Purpose of the expression"
-///           "description" = "description of the expression"
-///           "location"    = "location of the expression"
+///         name = "duration"
+///         value_expression = {
+///           expression  = "resource.rotationPeriod"
+///           title       = "Purpose of the expression"
+///           description = "description of the expression"
+///           location    = "location of the expression"
 ///         }
 ///       }]
 ///     }
@@ -609,7 +615,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule extends pulumi.C
           'gcp:securitycenter/managementOrganizationSecurityHealthAnalyticsCustomModule:ManagementOrganizationSecurityHealthAnalyticsCustomModule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     ancestorModule = registerOutput<String>('ancestorModule');
     customConfig = registerOutput<ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig?>('customConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

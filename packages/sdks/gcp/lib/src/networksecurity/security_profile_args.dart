@@ -5,6 +5,7 @@ import 'security_profile_custom_intercept_profile.dart';
 import 'security_profile_custom_mirroring_profile.dart';
 import 'security_profile_threat_prevention_profile.dart';
 import 'security_profile_url_filtering_profile.dart';
+import 'security_profile_wildfire_analysis_profile.dart';
 
 /// {@template pulumi_networksecurity_security_profile_security_profile_args_doc}
 /// The set of arguments for SecurityProfile.
@@ -44,12 +45,16 @@ class SecurityProfileArgs {
   /// The threat prevention configuration for the security profile.
   /// Structure is documented below.
   final pulumi.Input<SecurityProfileThreatPreventionProfile?>? threatPreventionProfile;
-  /// The type of security profile.
-  /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+  /// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+  /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
   final pulumi.Input<String> type;
   /// The url filtering configuration for the security profile.
   /// Structure is documented below.
   final pulumi.Input<SecurityProfileUrlFilteringProfile?>? urlFilteringProfile;
+  /// (Optional, Beta)
+  /// The wildfire analysis configuration for the security profile.
+  /// Structure is documented below.
+  final pulumi.Input<SecurityProfileWildfireAnalysisProfile?>? wildfireAnalysisProfile;
 
   /// Creates a new [SecurityProfileArgs].
   /// [customInterceptProfile] The configuration for defining the Intercept Endpoint Group used to
@@ -61,8 +66,9 @@ class SecurityProfileArgs {
   /// [name] The name of the security profile resource.
   /// [parent] The name of the parent this security profile belongs to.
   /// [threatPreventionProfile] The threat prevention configuration for the security profile.
-  /// [type] The type of security profile.
+  /// [type] The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
   /// [urlFilteringProfile] The url filtering configuration for the security profile.
+  /// [wildfireAnalysisProfile] (Optional, Beta)
   const SecurityProfileArgs({
     this.customInterceptProfile,
     this.customMirroringProfile,
@@ -75,6 +81,7 @@ class SecurityProfileArgs {
     this.threatPreventionProfile,
     required this.type,
     this.urlFilteringProfile,
+    this.wildfireAnalysisProfile,
   });
 
   Map<String, dynamic> toMap() {
@@ -90,6 +97,7 @@ class SecurityProfileArgs {
       'threatPreventionProfile': ?pulumi.Input.mapOptionalInputValue<SecurityProfileThreatPreventionProfile, Map<String, dynamic>>(threatPreventionProfile, (value) => value.toMap()),
       'type': type,
       'urlFilteringProfile': ?pulumi.Input.mapOptionalInputValue<SecurityProfileUrlFilteringProfile, Map<String, dynamic>>(urlFilteringProfile, (value) => value.toMap()),
+      'wildfireAnalysisProfile': ?pulumi.Input.mapOptionalInputValue<SecurityProfileWildfireAnalysisProfile, Map<String, dynamic>>(wildfireAnalysisProfile, (value) => value.toMap()),
     };
   }
 
@@ -106,6 +114,7 @@ class SecurityProfileArgs {
       threatPreventionProfile: (() { final guardedValue = map['threatPreventionProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityProfileThreatPreventionProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       urlFilteringProfile: (() { final guardedValue = map['urlFilteringProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityProfileUrlFilteringProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      wildfireAnalysisProfile: (() { final guardedValue = map['wildfireAnalysisProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityProfileWildfireAnalysisProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

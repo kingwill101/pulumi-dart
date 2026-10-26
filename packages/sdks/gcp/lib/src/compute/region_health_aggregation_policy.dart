@@ -61,8 +61,8 @@ import 'region_health_aggregation_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -85,7 +85,7 @@ import 'region_health_aggregation_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -93,10 +93,13 @@ import 'region_health_aggregation_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_compute_regionhealthaggregationpolicy" "example_test_health_aggregation_policy" {
+/// resource "gcp_compute_region_health_aggregation_policy" "example_test_health_aggregation_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test-health-aggregation-policy"
 ///   description = "Example health aggregation policy basic"
 ///   region      = "us-central1"
@@ -253,7 +256,7 @@ class RegionHealthAggregationPolicy extends pulumi.CustomResource {
           'gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

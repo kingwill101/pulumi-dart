@@ -146,8 +146,8 @@ import 'cluster_system_addons_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/edgecontainer"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/edgecontainer"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -196,7 +196,7 @@ import 'cluster_system_addons_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -204,10 +204,13 @@ import 'cluster_system_addons_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_edgecontainer_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "local-control-plane-cluster"
 ///   location = "us-central1"
 ///   authorization = {
@@ -220,7 +223,7 @@ import 'cluster_system_addons_config.dart';
 ///     services_ipv4_cidr_blocks = ["10.1.0.0/16"]
 ///   }
 ///   fleet = {
-///     project ="projects/${data.gcp_organizations_getproject.project.number}"
+///     project ="projects/${data.gcp_organizations_project.project.number}"
 ///   }
 ///   external_load_balancer_ipv4_address_pools = ["10.100.0.0-10.100.0.10"]
 ///   control_plane = {
@@ -443,7 +446,7 @@ class Cluster extends pulumi.CustomResource {
           'gcp:edgecontainer/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['clusterCaCertificate', 'effectiveLabels', 'pulumiLabels'],
         ) {
     authorization = registerOutput<ClusterAuthorization>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });

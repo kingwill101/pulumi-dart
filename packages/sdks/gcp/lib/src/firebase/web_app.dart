@@ -170,8 +170,8 @@ import 'web_app_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -246,7 +246,7 @@ import 'web_app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -257,29 +257,38 @@ import 'web_app_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_firebase_getwebappconfig" "basic" {
-///   web_app_id = gcp_firebase_webapp.basic.app_id
+/// data "gcp_firebase_web_app_config" "basic" {
+///   web_app_id = gcp_firebase_web_app.basic.app_id
 /// }
 ///
-/// resource "gcp_firebase_webapp" "basic" {
+/// resource "gcp_firebase_web_app" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = "my-project-name"
 ///   display_name = "Display Name Basic"
 /// }
 /// resource "gcp_storage_bucket" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "fb-webapp-"
 ///   location = "US"
 /// }
-/// resource "gcp_storage_bucketobject" "default" {
+/// resource "gcp_storage_bucket_object" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = gcp_storage_bucket.default.name
 ///   name   = "firebase-config.json"
 ///   content = jsonencode({
-///     "appId"             = gcp_firebase_webapp.basic.app_id
-///     "apiKey"            = data.gcp_firebase_getwebappconfig.basic.api_key
-///     "authDomain"        = data.gcp_firebase_getwebappconfig.basic.auth_domain
-///     "databaseURL"       = lookup(data.gcp_firebase_getwebappconfig.basic, "database_url", "")
-///     "storageBucket"     = lookup(data.gcp_firebase_getwebappconfig.basic, "storage_bucket", "")
-///     "messagingSenderId" = lookup(data.gcp_firebase_getwebappconfig.basic, "messaging_sender_id", "")
-///     "measurementId"     = lookup(data.gcp_firebase_getwebappconfig.basic, "measurement_id", "")
+///     "appId"             = gcp_firebase_web_app.basic.app_id
+///     "apiKey"            = data.gcp_firebase_web_app_config.basic.api_key
+///     "authDomain"        = data.gcp_firebase_web_app_config.basic.auth_domain
+///     "databaseURL"       = lookup(data.gcp_firebase_web_app_config.basic, "database_url", "")
+///     "storageBucket"     = lookup(data.gcp_firebase_web_app_config.basic, "storage_bucket", "")
+///     "messagingSenderId" = lookup(data.gcp_firebase_web_app_config.basic, "messaging_sender_id", "")
+///     "measurementId"     = lookup(data.gcp_firebase_web_app_config.basic, "measurement_id", "")
 ///   })
 /// }
 /// ```
@@ -516,8 +525,8 @@ import 'web_app_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -552,7 +561,7 @@ import 'web_app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -560,13 +569,19 @@ import 'web_app_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_webapp" "default" {
+/// resource "gcp_firebase_web_app" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project         = "my-project-name"
 ///   display_name    = "Display Name"
-///   api_key_id      = gcp_projects_apikey.web.uid
+///   api_key_id      = gcp_projects_api_key.web.uid
 ///   deletion_policy = "DELETE"
 /// }
-/// resource "gcp_projects_apikey" "web" {
+/// resource "gcp_projects_api_key" "web" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = "my-project-name"
 ///   name         = "api-key"
 ///   display_name = "Display Name"
@@ -703,7 +718,7 @@ class WebApp extends pulumi.CustomResource {
           'gcp:firebase/webApp:WebApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     apiKeyId = registerOutput<String>('apiKeyId');
     appId = registerOutput<String>('appId');

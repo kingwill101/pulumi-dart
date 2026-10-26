@@ -206,8 +206,8 @@ import 'mirroring_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -242,7 +242,7 @@ import 'mirroring_deployment_state.dart';
 /// 		backendService, err := compute.NewRegionBackendService(ctx, "backend_service", &compute.RegionBackendServiceArgs{
 /// 			Name:                pulumi.String("example-bs"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:        healthCheck.ID(),
 /// 			Protocol:            pulumi.String("UDP"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
 /// 		})
@@ -254,7 +254,7 @@ import 'mirroring_deployment_state.dart';
 /// 			Region:              pulumi.String("us-central1"),
 /// 			Network:             network.Name,
 /// 			Subnetwork:          subnetwork.Name,
-/// 			BackendService:      backendService.ID().ToIDOutput().ToStringOutput(),
+/// 			BackendService:      backendService.ID(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
 /// 			Ports: pulumi.StringArray{
 /// 				pulumi.String("6081"),
@@ -268,7 +268,7 @@ import 'mirroring_deployment_state.dart';
 /// 		deploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "deployment_group", &networksecurity.MirroringDeploymentGroupArgs{
 /// 			MirroringDeploymentGroupId: pulumi.String("example-dg"),
 /// 			Location:                   pulumi.String("global"),
-/// 			Network:                    network.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:                    network.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -276,8 +276,8 @@ import 'mirroring_deployment_state.dart';
 /// 		_, err = networksecurity.NewMirroringDeployment(ctx, "default", &networksecurity.MirroringDeploymentArgs{
 /// 			MirroringDeploymentId:    pulumi.String("example-deployment"),
 /// 			Location:                 pulumi.String("us-central1-a"),
-/// 			ForwardingRule:           forwardingRule.ID().ToIDOutput().ToStringOutput(),
-/// 			MirroringDeploymentGroup: deploymentGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			ForwardingRule:           forwardingRule.ID(),
+/// 			MirroringDeploymentGroup: deploymentGroup.ID(),
 /// 			Description:              pulumi.String("some description"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
@@ -291,7 +291,7 @@ import 'mirroring_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -300,50 +300,71 @@ import 'mirroring_deployment_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "subnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example-subnet"
 ///   region        = "us-central1"
 ///   ip_cidr_range = "10.1.0.0/16"
 ///   network       = gcp_compute_network.network.name
 /// }
-/// resource "gcp_compute_regionhealthcheck" "health_check" {
+/// resource "gcp_compute_region_health_check" "health_check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example-hc"
 ///   region = "us-central1"
 ///   http_health_check = {
 ///     port = 80
 ///   }
 /// }
-/// resource "gcp_compute_regionbackendservice" "backend_service" {
+/// resource "gcp_compute_region_backend_service" "backend_service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-bs"
 ///   region                = "us-central1"
-///   health_checks         = gcp_compute_regionhealthcheck.health_check.id
+///   health_checks         = gcp_compute_region_health_check.health_check.id
 ///   protocol              = "UDP"
 ///   load_balancing_scheme = "INTERNAL"
 /// }
-/// resource "gcp_compute_forwardingrule" "forwarding_rule" {
+/// resource "gcp_compute_forwarding_rule" "forwarding_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-fwr"
 ///   region                 = "us-central1"
 ///   network                = gcp_compute_network.network.name
 ///   subnetwork             = gcp_compute_subnetwork.subnetwork.name
-///   backend_service        = gcp_compute_regionbackendservice.backend_service.id
+///   backend_service        = gcp_compute_region_backend_service.backend_service.id
 ///   load_balancing_scheme  = "INTERNAL"
 ///   ports                  = [6081]
 ///   ip_protocol            = "UDP"
 ///   is_mirroring_collector = true
 /// }
-/// resource "gcp_networksecurity_mirroringdeploymentgroup" "deployment_group" {
+/// resource "gcp_networksecurity_mirroring_deployment_group" "deployment_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_deployment_group_id = "example-dg"
 ///   location                      = "global"
 ///   network                       = gcp_compute_network.network.id
 /// }
-/// resource "gcp_networksecurity_mirroringdeployment" "default" {
+/// resource "gcp_networksecurity_mirroring_deployment" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_deployment_id    = "example-deployment"
 ///   location                   = "us-central1-a"
-///   forwarding_rule            = gcp_compute_forwardingrule.forwarding_rule.id
-///   mirroring_deployment_group = gcp_networksecurity_mirroringdeploymentgroup.deployment_group.id
+///   forwarding_rule            = gcp_compute_forwarding_rule.forwarding_rule.id
+///   mirroring_deployment_group = gcp_networksecurity_mirroring_deployment_group.deployment_group.id
 ///   description                = "some description"
 ///   labels = {
 ///     "foo" = "bar"
@@ -597,7 +618,7 @@ class MirroringDeployment extends pulumi.CustomResource {
           'gcp:networksecurity/mirroringDeployment:MirroringDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

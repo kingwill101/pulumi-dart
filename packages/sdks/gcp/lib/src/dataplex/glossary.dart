@@ -49,7 +49,7 @@ import 'glossary_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -67,7 +67,7 @@ import 'glossary_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -76,6 +76,9 @@ import 'glossary_state.dart';
 /// }
 ///
 /// resource "gcp_dataplex_glossary" "glossary_test_id" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   glossary_id = "glossary-basic"
 ///   location    = "us-central1"
 /// }
@@ -176,7 +179,7 @@ import 'glossary_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -199,7 +202,7 @@ import 'glossary_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -208,6 +211,9 @@ import 'glossary_state.dart';
 /// }
 ///
 /// resource "gcp_dataplex_glossary" "glossary_test_id_full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   glossary_id = "glossary-full"
 ///   location    = "us-central1"
 ///   labels = {
@@ -334,7 +340,7 @@ class Glossary extends pulumi.CustomResource {
           'gcp:dataplex/glossary:Glossary',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     categoryCount = registerOutput<int>('categoryCount');

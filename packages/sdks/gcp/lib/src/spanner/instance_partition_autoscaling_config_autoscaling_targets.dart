@@ -38,9 +38,9 @@ class InstancePartitionAutoscalingConfigAutoscalingTargets {
 
   factory InstancePartitionAutoscalingConfigAutoscalingTargets.fromMap(Map<String, dynamic> map) {
     return InstancePartitionAutoscalingConfigAutoscalingTargets(
-      highPriorityCpuUtilizationPercent: (() { final guardedValue = map['highPriorityCpuUtilizationPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      storageUtilizationPercent: (() { final guardedValue = map['storageUtilizationPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      totalCpuUtilizationPercent: (() { final guardedValue = map['totalCpuUtilizationPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      highPriorityCpuUtilizationPercent: (() { final guardedValue = map['highPriorityCpuUtilizationPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      storageUtilizationPercent: (() { final guardedValue = map['storageUtilizationPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      totalCpuUtilizationPercent: (() { final guardedValue = map['totalCpuUtilizationPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

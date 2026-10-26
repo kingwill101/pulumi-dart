@@ -142,7 +142,7 @@ import 'deploy_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -189,7 +189,7 @@ import 'deploy_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -197,7 +197,10 @@ import 'deploy_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_clouddeploy_deploypolicy" "b-deploy-policy" {
+/// resource "gcp_clouddeploy_deploy_policy" "b-deploy-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cd-policy"
 ///   location = "us-central1"
 ///   selectors {
@@ -211,13 +214,13 @@ import 'deploy_policy_state.dart';
 ///       time_windows = {
 ///         time_zone = "America/Los_Angeles"
 ///         weekly_windows = [{
-///           "startTime" = {
-///             "hours"   = 0
-///             "minutes" = 0
+///           start_time = {
+///             hours   = 0
+///             minutes = 0
 ///           }
-///           "endTime" = {
-///             "hours"   = "24"
-///             "minutes" = "00"
+///           end_time = {
+///             hours   = "24"
+///             minutes = "00"
 ///           }
 ///         }]
 ///       }
@@ -668,7 +671,7 @@ import 'deploy_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -789,7 +792,7 @@ import 'deploy_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -797,7 +800,10 @@ import 'deploy_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_clouddeploy_deploypolicy" "f-deploy-policy" {
+/// resource "gcp_clouddeploy_deploy_policy" "f-deploy-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cd-policy"
 ///   location = "us-central1"
 ///   annotations = {
@@ -832,13 +838,13 @@ import 'deploy_policy_state.dart';
 ///       time_windows = {
 ///         time_zone = "America/Los_Angeles"
 ///         weekly_windows = [{
-///           "startTime" = {
-///             "hours"   = 0
-///             "minutes" = 0
+///           start_time = {
+///             hours   = 0
+///             minutes = 0
 ///           }
-///           "endTime" = {
-///             "hours"   = "13"
-///             "minutes" = "00"
+///           end_time = {
+///             hours   = "13"
+///             minutes = "00"
 ///           }
 ///         }]
 ///       }
@@ -852,36 +858,36 @@ import 'deploy_policy_state.dart';
 ///       time_windows = {
 ///         time_zone = "America/Los_Angeles"
 ///         weekly_windows = [{
-///           "startTime" = {
-///             "hours"   = "13"
-///             "minutes" = "00"
+///           start_time = {
+///             hours   = "13"
+///             minutes = "00"
 ///           }
-///           "endTime" = {
-///             "hours"   = "14"
-///             "minutes" = "00"
-///             "seconds" = "00"
-///             "nanos"   = "00"
+///           end_time = {
+///             hours   = "14"
+///             minutes = "00"
+///             seconds = "00"
+///             nanos   = "00"
 ///           }
-///           "daysOfWeeks" = ["MONDAY"]
+///           days_of_weeks = ["MONDAY"]
 ///         }]
 ///         one_time_windows = [{
-///           "startTime" = {
-///             "hours"   = "00"
-///             "minutes" = "00"
+///           start_time = {
+///             hours   = "00"
+///             minutes = "00"
 ///           }
-///           "endTime" = {
-///             "hours"   = "16"
-///             "minutes" = "00"
+///           end_time = {
+///             hours   = "16"
+///             minutes = "00"
 ///           }
-///           "startDate" = {
-///             "year"  = "2019"
-///             "month" = "01"
-///             "day"   = "01"
+///           start_date = {
+///             year  = "2019"
+///             month = "01"
+///             day   = "01"
 ///           }
-///           "endDate" = {
-///             "year"  = "2019"
-///             "month" = "12"
-///             "day"   = "31"
+///           end_date = {
+///             year  = "2019"
+///             month = "12"
+///             day   = "31"
 ///           }
 ///         }]
 ///       }
@@ -1167,7 +1173,7 @@ class DeployPolicy extends pulumi.CustomResource {
           'gcp:clouddeploy/deployPolicy:DeployPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

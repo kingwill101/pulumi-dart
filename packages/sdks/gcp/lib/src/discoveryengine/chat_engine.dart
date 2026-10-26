@@ -168,7 +168,7 @@ import 'chat_engine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -229,7 +229,7 @@ import 'chat_engine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -237,7 +237,10 @@ import 'chat_engine_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_discoveryengine_datastore" "test_data_store" {
+/// resource "gcp_discoveryengine_data_store" "test_data_store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "global"
 ///   data_store_id     = "data-store"
 ///   display_name      = "Structured datastore"
@@ -245,21 +248,27 @@ import 'chat_engine_state.dart';
 ///   content_config    = "NO_CONTENT"
 ///   solution_types    = ["SOLUTION_TYPE_CHAT"]
 /// }
-/// resource "gcp_discoveryengine_datastore" "test_data_store_2" {
-///   location          = gcp_discoveryengine_datastore.test_data_store.location
+/// resource "gcp_discoveryengine_data_store" "test_data_store_2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location          = gcp_discoveryengine_data_store.test_data_store.location
 ///   data_store_id     = "data-store-2"
 ///   display_name      = "Structured datastore 2"
 ///   industry_vertical = "GENERIC"
 ///   content_config    = "NO_CONTENT"
 ///   solution_types    = ["SOLUTION_TYPE_CHAT"]
 /// }
-/// resource "gcp_discoveryengine_chatengine" "primary" {
+/// resource "gcp_discoveryengine_chat_engine" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   engine_id         = "chat-engine-id"
 ///   collection_id     = "default_collection"
-///   location          = gcp_discoveryengine_datastore.test_data_store.location
+///   location          = gcp_discoveryengine_data_store.test_data_store.location
 ///   display_name      = "Chat engine"
 ///   industry_vertical = "GENERIC"
-///   data_store_ids    = [gcp_discoveryengine_datastore.test_data_store.data_store_id, gcp_discoveryengine_datastore.test_data_store_2.data_store_id]
+///   data_store_ids    = [gcp_discoveryengine_data_store.test_data_store.data_store_id, gcp_discoveryengine_data_store.test_data_store_2.data_store_id]
 ///   common_config = {
 ///     company_name = "test-company"
 ///   }
@@ -510,8 +519,8 @@ import 'chat_engine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -552,7 +561,7 @@ import 'chat_engine_state.dart';
 /// 				CompanyName: pulumi.String("test-company"),
 /// 			},
 /// 			ChatEngineConfig: &discoveryengine.ChatEngineChatEngineConfigArgs{
-/// 				DialogflowAgentToLink: agent.ID().ToIDOutput().ToStringOutput(),
+/// 				DialogflowAgentToLink: agent.ID(),
 /// 				AllowCrossRegion:      pulumi.Bool(true),
 /// 			},
 /// 		})
@@ -564,7 +573,7 @@ import 'chat_engine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -572,7 +581,10 @@ import 'chat_engine_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_discoveryengine_datastore" "test_data_store" {
+/// resource "gcp_discoveryengine_data_store" "test_data_store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "eu"
 ///   data_store_id     = "data-store"
 ///   display_name      = "Structured datastore"
@@ -580,24 +592,30 @@ import 'chat_engine_state.dart';
 ///   content_config    = "NO_CONTENT"
 ///   solution_types    = ["SOLUTION_TYPE_CHAT"]
 /// }
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "dialogflowcx-agent"
 ///   location              = "europe-west3"
 ///   default_language_code = "en"
 ///   time_zone             = "America/Los_Angeles"
 /// }
-/// resource "gcp_discoveryengine_chatengine" "primary" {
+/// resource "gcp_discoveryengine_chat_engine" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   engine_id         = "chat-engine-id"
 ///   collection_id     = "default_collection"
-///   location          = gcp_discoveryengine_datastore.test_data_store.location
+///   location          = gcp_discoveryengine_data_store.test_data_store.location
 ///   display_name      = "Chat engine"
 ///   industry_vertical = "GENERIC"
-///   data_store_ids    = [gcp_discoveryengine_datastore.test_data_store.data_store_id]
+///   data_store_ids    = [gcp_discoveryengine_data_store.test_data_store.data_store_id]
 ///   common_config = {
 ///     company_name = "test-company"
 ///   }
 ///   chat_engine_config = {
-///     dialogflow_agent_to_link = gcp_diagflow_cxagent.agent.id
+///     dialogflow_agent_to_link = gcp_diagflow_cx_agent.agent.id
 ///     allow_cross_region       = true
 ///   }
 /// }
@@ -774,7 +792,7 @@ class ChatEngine extends pulumi.CustomResource {
           'gcp:discoveryengine/chatEngine:ChatEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     chatEngineConfig = registerOutput<ChatEngineChatEngineConfig>('chatEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChatEngineChatEngineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     chatEngineMetadatas = registerOutput<List<ChatEngineChatEngineMetadata>>('chatEngineMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChatEngineChatEngineMetadata>(guardedValue, (value) => ChatEngineChatEngineMetadata.fromMap((value as Map).cast<String, dynamic>())); });

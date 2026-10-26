@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterTpuConfig {
-  /// Whether Cloud TPU integration is enabled or not
+  /// Whether Cloud TPU integration is enabled or not.
   final pulumi.Input<bool> enabled;
-  /// IPv4 CIDR block reserved for Cloud TPU in the VPC.
+  /// The IPv4 CIDR block reserved for Cloud TPU in the VPC.
   final pulumi.Input<String?>? ipv4CidrBlock;
-  /// Whether to use service networking for Cloud TPU or not
+  /// Whether to use service networking for Cloud TPU or not.
   final pulumi.Input<bool?>? useServiceNetworking;
 
   /// Creates a new [ClusterTpuConfig].
-  /// [enabled] Whether Cloud TPU integration is enabled or not
-  /// [ipv4CidrBlock] IPv4 CIDR block reserved for Cloud TPU in the VPC.
-  /// [useServiceNetworking] Whether to use service networking for Cloud TPU or not
+  /// [enabled] Whether Cloud TPU integration is enabled or not.
+  /// [ipv4CidrBlock] The IPv4 CIDR block reserved for Cloud TPU in the VPC.
+  /// [useServiceNetworking] Whether to use service networking for Cloud TPU or not.
   const ClusterTpuConfig({
     required this.enabled,
     this.ipv4CidrBlock,

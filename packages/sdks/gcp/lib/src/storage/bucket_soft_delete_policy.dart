@@ -26,7 +26,7 @@ class BucketSoftDeletePolicy {
   factory BucketSoftDeletePolicy.fromMap(Map<String, dynamic> map) {
     return BucketSoftDeletePolicy(
       effectiveTime: (() { final guardedValue = map['effectiveTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      retentionDurationSeconds: (() { final guardedValue = map['retentionDurationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retentionDurationSeconds: (() { final guardedValue = map['retentionDurationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

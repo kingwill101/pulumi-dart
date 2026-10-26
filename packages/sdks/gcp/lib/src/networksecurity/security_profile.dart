@@ -5,6 +5,7 @@ import 'security_profile_custom_mirroring_profile.dart';
 import 'security_profile_state.dart';
 import 'security_profile_threat_prevention_profile.dart';
 import 'security_profile_url_filtering_profile.dart';
+import 'security_profile_wildfire_analysis_profile.dart';
 
 /// A security profile defines the behavior associated to a profile type.
 ///
@@ -74,7 +75,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -97,7 +98,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -105,7 +106,10 @@ import 'security_profile_url_filtering_profile.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_securityprofile" "default" {
+/// resource "gcp_networksecurity_security_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-security-profile"
 ///   parent      = "organizations/123456789"
 ///   description = "my description"
@@ -279,7 +283,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -323,7 +327,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -331,26 +335,29 @@ import 'security_profile_url_filtering_profile.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_securityprofile" "default" {
+/// resource "gcp_networksecurity_security_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-security-profile"
 ///   parent      = "organizations/123456789"
 ///   description = "my description"
 ///   type        = "THREAT_PREVENTION"
 ///   threat_prevention_profile = {
 ///     severity_overrides = [{
-///       "action"   = "ALLOW"
-///       "severity" = "INFORMATIONAL"
+///       action   = "ALLOW"
+///       severity = "INFORMATIONAL"
 ///       }, {
-///       "action"   = "DENY"
-///       "severity" = "HIGH"
+///       action   = "DENY"
+///       severity = "HIGH"
 ///     }]
 ///     threat_overrides = [{
-///       "action"   = "ALLOW"
-///       "threatId" = "280647"
+///       action    = "ALLOW"
+///       threat_id = "280647"
 ///     }]
 ///     antivirus_overrides = [{
-///       "protocol" = "SMTP"
-///       "action"   = "ALLOW"
+///       protocol = "SMTP"
+///       action   = "ALLOW"
 ///     }]
 ///   }
 /// }
@@ -534,8 +541,8 @@ import 'security_profile_url_filtering_profile.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -551,7 +558,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// 		defaultMirroringDeploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "default", &networksecurity.MirroringDeploymentGroupArgs{
 /// 			MirroringDeploymentGroupId: pulumi.String("my-dg"),
 /// 			Location:                   pulumi.String("global"),
-/// 			Network:                    _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:                    _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -559,7 +566,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// 		defaultMirroringEndpointGroup, err := networksecurity.NewMirroringEndpointGroup(ctx, "default", &networksecurity.MirroringEndpointGroupArgs{
 /// 			MirroringEndpointGroupId: pulumi.String("my-eg"),
 /// 			Location:                 pulumi.String("global"),
-/// 			MirroringDeploymentGroup: defaultMirroringDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			MirroringDeploymentGroup: defaultMirroringDeploymentGroup.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -570,7 +577,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// 			Description: pulumi.String("my description"),
 /// 			Type:        pulumi.String("CUSTOM_MIRRORING"),
 /// 			CustomMirroringProfile: &networksecurity.SecurityProfileCustomMirroringProfileArgs{
-/// 				MirroringEndpointGroup: defaultMirroringEndpointGroup.ID().ToIDOutput().ToStringOutput(),
+/// 				MirroringEndpointGroup: defaultMirroringEndpointGroup.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -581,7 +588,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -590,26 +597,38 @@ import 'security_profile_url_filtering_profile.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networksecurity_mirroringdeploymentgroup" "default" {
+/// resource "gcp_networksecurity_mirroring_deployment_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_deployment_group_id = "my-dg"
 ///   location                      = "global"
 ///   network                       = gcp_compute_network.default.id
 /// }
-/// resource "gcp_networksecurity_mirroringendpointgroup" "default" {
+/// resource "gcp_networksecurity_mirroring_endpoint_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_endpoint_group_id = "my-eg"
 ///   location                    = "global"
-///   mirroring_deployment_group  = gcp_networksecurity_mirroringdeploymentgroup.default.id
+///   mirroring_deployment_group  = gcp_networksecurity_mirroring_deployment_group.default.id
 /// }
-/// resource "gcp_networksecurity_securityprofile" "default" {
+/// resource "gcp_networksecurity_security_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-security-profile"
 ///   parent      = "organizations/123456789"
 ///   description = "my description"
 ///   type        = "CUSTOM_MIRRORING"
 ///   custom_mirroring_profile = {
-///     mirroring_endpoint_group = gcp_networksecurity_mirroringendpointgroup.default.id
+///     mirroring_endpoint_group = gcp_networksecurity_mirroring_endpoint_group.default.id
 ///   }
 /// }
 /// ```
@@ -806,8 +825,8 @@ import 'security_profile_url_filtering_profile.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -823,7 +842,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// 		defaultInterceptDeploymentGroup, err := networksecurity.NewInterceptDeploymentGroup(ctx, "default", &networksecurity.InterceptDeploymentGroupArgs{
 /// 			InterceptDeploymentGroupId: pulumi.String("my-dg"),
 /// 			Location:                   pulumi.String("global"),
-/// 			Network:                    _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:                    _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -831,7 +850,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// 		defaultInterceptEndpointGroup, err := networksecurity.NewInterceptEndpointGroup(ctx, "default", &networksecurity.InterceptEndpointGroupArgs{
 /// 			InterceptEndpointGroupId: pulumi.String("my-eg"),
 /// 			Location:                 pulumi.String("global"),
-/// 			InterceptDeploymentGroup: defaultInterceptDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			InterceptDeploymentGroup: defaultInterceptDeploymentGroup.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -842,7 +861,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// 			Description: pulumi.String("my description"),
 /// 			Type:        pulumi.String("CUSTOM_INTERCEPT"),
 /// 			CustomInterceptProfile: &networksecurity.SecurityProfileCustomInterceptProfileArgs{
-/// 				InterceptEndpointGroup: defaultInterceptEndpointGroup.ID().ToIDOutput().ToStringOutput(),
+/// 				InterceptEndpointGroup: defaultInterceptEndpointGroup.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -853,7 +872,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -862,26 +881,38 @@ import 'security_profile_url_filtering_profile.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networksecurity_interceptdeploymentgroup" "default" {
+/// resource "gcp_networksecurity_intercept_deployment_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   intercept_deployment_group_id = "my-dg"
 ///   location                      = "global"
 ///   network                       = gcp_compute_network.default.id
 /// }
-/// resource "gcp_networksecurity_interceptendpointgroup" "default" {
+/// resource "gcp_networksecurity_intercept_endpoint_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   intercept_endpoint_group_id = "my-eg"
 ///   location                    = "global"
-///   intercept_deployment_group  = gcp_networksecurity_interceptdeploymentgroup.default.id
+///   intercept_deployment_group  = gcp_networksecurity_intercept_deployment_group.default.id
 /// }
-/// resource "gcp_networksecurity_securityprofile" "default" {
+/// resource "gcp_networksecurity_security_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-security-profile"
 ///   parent      = "organizations/123456789"
 ///   description = "my description"
 ///   type        = "CUSTOM_INTERCEPT"
 ///   custom_intercept_profile = {
-///     intercept_endpoint_group = gcp_networksecurity_interceptendpointgroup.default.id
+///     intercept_endpoint_group = gcp_networksecurity_intercept_endpoint_group.default.id
 ///   }
 /// }
 /// ```
@@ -1095,7 +1126,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1138,7 +1169,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1146,20 +1177,23 @@ import 'security_profile_url_filtering_profile.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_securityprofile" "default" {
+/// resource "gcp_networksecurity_security_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-security-profile"
 ///   parent      = "organizations/123456789"
 ///   description = "my description"
 ///   type        = "URL_FILTERING"
 ///   url_filtering_profile = {
 ///     url_filters = [{
-///       "priority"        = 1
-///       "filteringAction" = "ALLOW"
-///       "urls"            = ["*example.com", "*about.example.com", "*help.example.com"]
+///       priority         = 1
+///       filtering_action = "ALLOW"
+///       urls             = ["*example.com", "*about.example.com", "*help.example.com"]
 ///       }, {
-///       "priority"        = 2
-///       "filteringAction" = "DENY"
-///       "urls"            = ["*restricted.example.com"]
+///       priority         = 2
+///       filtering_action = "DENY"
+///       urls             = ["*restricted.example.com"]
 ///     }]
 ///   }
 ///   labels = {
@@ -1356,8 +1390,8 @@ import 'security_profile_url_filtering_profile.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1373,7 +1407,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// 		defaultMirroringDeploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "default", &networksecurity.MirroringDeploymentGroupArgs{
 /// 			MirroringDeploymentGroupId: pulumi.String("my-dg"),
 /// 			Location:                   pulumi.String("global"),
-/// 			Network:                    _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:                    _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1383,7 +1417,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// 			Location:                 pulumi.String("global"),
 /// 			Type:                     pulumi.String("BROKER"),
 /// 			MirroringDeploymentGroups: pulumi.StringArray{
-/// 				defaultMirroringDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
+/// 				defaultMirroringDeploymentGroup.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1395,9 +1429,9 @@ import 'security_profile_url_filtering_profile.dart';
 /// 			Description: pulumi.String("my description"),
 /// 			Type:        pulumi.String("CUSTOM_MIRRORING"),
 /// 			CustomMirroringProfile: &networksecurity.SecurityProfileCustomMirroringProfileArgs{
-/// 				MirroringEndpointGroup: defaultMirroringEndpointGroup.ID().ToIDOutput().ToStringOutput(),
+/// 				MirroringEndpointGroup: defaultMirroringEndpointGroup.ID(),
 /// 				MirroringDeploymentGroups: pulumi.StringArray{
-/// 					defaultMirroringDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
+/// 					defaultMirroringDeploymentGroup.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -1409,7 +1443,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1418,28 +1452,40 @@ import 'security_profile_url_filtering_profile.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networksecurity_mirroringdeploymentgroup" "default" {
+/// resource "gcp_networksecurity_mirroring_deployment_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_deployment_group_id = "my-dg"
 ///   location                      = "global"
 ///   network                       = gcp_compute_network.default.id
 /// }
-/// resource "gcp_networksecurity_mirroringendpointgroup" "default" {
+/// resource "gcp_networksecurity_mirroring_endpoint_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_endpoint_group_id = "my-eg"
 ///   location                    = "global"
 ///   type                        = "BROKER"
-///   mirroring_deployment_groups = [gcp_networksecurity_mirroringdeploymentgroup.default.id]
+///   mirroring_deployment_groups = [gcp_networksecurity_mirroring_deployment_group.default.id]
 /// }
-/// resource "gcp_networksecurity_securityprofile" "default" {
+/// resource "gcp_networksecurity_security_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-security-profile"
 ///   parent      = "organizations/123456789"
 ///   description = "my description"
 ///   type        = "CUSTOM_MIRRORING"
 ///   custom_mirroring_profile = {
-///     mirroring_endpoint_group    = gcp_networksecurity_mirroringendpointgroup.default.id
-///     mirroring_deployment_groups = [gcp_networksecurity_mirroringdeploymentgroup.default.id]
+///     mirroring_endpoint_group    = gcp_networksecurity_mirroring_endpoint_group.default.id
+///     mirroring_deployment_groups = [gcp_networksecurity_mirroring_deployment_group.default.id]
 ///   }
 /// }
 /// ```
@@ -1540,6 +1586,551 @@ import 'security_profile_url_filtering_profile.dart';
 ///           - ${defaultMirroringDeploymentGroup.id}
 /// ```
 ///
+/// ### Network Security Security Profile Wildfire
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.networksecurity.SecurityProfile("default", {
+///     name: "my-security-profile",
+///     parent: "projects/my-project-name",
+///     description: "my description",
+///     type: "WILDFIRE_ANALYSIS",
+///     wildfireAnalysisProfile: {
+///         wildfireRealtimeLookup: true,
+///         wildfireSubmissionRules: [
+///             {
+///                 direction: "BOTH",
+///                 fileSelectionMode: "ALL_FILE_TYPES",
+///             },
+///             {
+///                 direction: "UPLOAD",
+///                 fileSelectionMode: "CUSTOM_FILE_TYPES",
+///                 customFileTypes: {
+///                     fileTypes: [
+///                         "PDF",
+///                         "SCRIPT",
+///                     ],
+///                 },
+///             },
+///         ],
+///         wildfireInlineCloudAnalysisRules: [
+///             {
+///                 direction: "BOTH",
+///                 action: "ALLOW",
+///                 fileSelectionMode: "ALL_FILE_TYPES",
+///             },
+///             {
+///                 direction: "DOWNLOAD",
+///                 action: "DENY",
+///                 fileSelectionMode: "CUSTOM_FILE_TYPES",
+///                 customFileTypes: {
+///                     fileTypes: ["PE"],
+///                 },
+///             },
+///         ],
+///         wildfireOverrides: [{
+///             protocol: "WILDFIRE_HTTP",
+///             action: "WILDFIRE_DENY",
+///         }],
+///         wildfireInlineMlOverrides: [{
+///             protocol: "WILDFIRE_FTP",
+///             action: "WILDFIRE_ALERT",
+///         }],
+///         wildfireThreatOverrides: [{
+///             threatId: "12345",
+///             action: "WILDFIRE_ALLOW",
+///         }],
+///         wildfireInlineMlSetting: {
+///             inlineMlConfigs: [{
+///                 fileType: "WINDOWS_EXECUTABLE",
+///                 action: "ENABLE",
+///             }],
+///             fileExceptions: [{
+///                 partialHash: "12345abcdef",
+///                 filename: "virus.exe",
+///             }],
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.networksecurity.SecurityProfile("default",
+///     name="my-security-profile",
+///     parent="projects/my-project-name",
+///     description="my description",
+///     type="WILDFIRE_ANALYSIS",
+///     wildfire_analysis_profile={
+///         "wildfire_realtime_lookup": True,
+///         "wildfire_submission_rules": [
+///             {
+///                 "direction": "BOTH",
+///                 "file_selection_mode": "ALL_FILE_TYPES",
+///             },
+///             {
+///                 "direction": "UPLOAD",
+///                 "file_selection_mode": "CUSTOM_FILE_TYPES",
+///                 "custom_file_types": {
+///                     "file_types": [
+///                         "PDF",
+///                         "SCRIPT",
+///                     ],
+///                 },
+///             },
+///         ],
+///         "wildfire_inline_cloud_analysis_rules": [
+///             {
+///                 "direction": "BOTH",
+///                 "action": "ALLOW",
+///                 "file_selection_mode": "ALL_FILE_TYPES",
+///             },
+///             {
+///                 "direction": "DOWNLOAD",
+///                 "action": "DENY",
+///                 "file_selection_mode": "CUSTOM_FILE_TYPES",
+///                 "custom_file_types": {
+///                     "file_types": ["PE"],
+///                 },
+///             },
+///         ],
+///         "wildfire_overrides": [{
+///             "protocol": "WILDFIRE_HTTP",
+///             "action": "WILDFIRE_DENY",
+///         }],
+///         "wildfire_inline_ml_overrides": [{
+///             "protocol": "WILDFIRE_FTP",
+///             "action": "WILDFIRE_ALERT",
+///         }],
+///         "wildfire_threat_overrides": [{
+///             "threat_id": "12345",
+///             "action": "WILDFIRE_ALLOW",
+///         }],
+///         "wildfire_inline_ml_setting": {
+///             "inline_ml_configs": [{
+///                 "file_type": "WINDOWS_EXECUTABLE",
+///                 "action": "ENABLE",
+///             }],
+///             "file_exceptions": [{
+///                 "partial_hash": "12345abcdef",
+///                 "filename": "virus.exe",
+///             }],
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.NetworkSecurity.SecurityProfile("default", new()
+///     {
+///         Name = "my-security-profile",
+///         Parent = "projects/my-project-name",
+///         Description = "my description",
+///         Type = "WILDFIRE_ANALYSIS",
+///         WildfireAnalysisProfile = new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileArgs
+///         {
+///             WildfireRealtimeLookup = true,
+///             WildfireSubmissionRules = new[]
+///             {
+///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs
+///                 {
+///                     Direction = "BOTH",
+///                     FileSelectionMode = "ALL_FILE_TYPES",
+///                 },
+///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs
+///                 {
+///                     Direction = "UPLOAD",
+///                     FileSelectionMode = "CUSTOM_FILE_TYPES",
+///                     CustomFileTypes = new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs
+///                     {
+///                         FileTypes = new[]
+///                         {
+///                             "PDF",
+///                             "SCRIPT",
+///                         },
+///                     },
+///                 },
+///             },
+///             WildfireInlineCloudAnalysisRules = new[]
+///             {
+///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs
+///                 {
+///                     Direction = "BOTH",
+///                     Action = "ALLOW",
+///                     FileSelectionMode = "ALL_FILE_TYPES",
+///                 },
+///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs
+///                 {
+///                     Direction = "DOWNLOAD",
+///                     Action = "DENY",
+///                     FileSelectionMode = "CUSTOM_FILE_TYPES",
+///                     CustomFileTypes = new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs
+///                     {
+///                         FileTypes = new[]
+///                         {
+///                             "PE",
+///                         },
+///                     },
+///                 },
+///             },
+///             WildfireOverrides = new[]
+///             {
+///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireOverrideArgs
+///                 {
+///                     Protocol = "WILDFIRE_HTTP",
+///                     Action = "WILDFIRE_DENY",
+///                 },
+///             },
+///             WildfireInlineMlOverrides = new[]
+///             {
+///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArgs
+///                 {
+///                     Protocol = "WILDFIRE_FTP",
+///                     Action = "WILDFIRE_ALERT",
+///                 },
+///             },
+///             WildfireThreatOverrides = new[]
+///             {
+///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArgs
+///                 {
+///                     ThreatId = "12345",
+///                     Action = "WILDFIRE_ALLOW",
+///                 },
+///             },
+///             WildfireInlineMlSetting = new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs
+///             {
+///                 InlineMlConfigs = new[]
+///                 {
+///                     new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArgs
+///                     {
+///                         FileType = "WINDOWS_EXECUTABLE",
+///                         Action = "ENABLE",
+///                     },
+///                 },
+///                 FileExceptions = new[]
+///                 {
+///                     new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArgs
+///                     {
+///                         PartialHash = "12345abcdef",
+///                         Filename = "virus.exe",
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := networksecurity.NewSecurityProfile(ctx, "default", &networksecurity.SecurityProfileArgs{
+/// 			Name:        pulumi.String("my-security-profile"),
+/// 			Parent:      pulumi.String("projects/my-project-name"),
+/// 			Description: pulumi.String("my description"),
+/// 			Type:        pulumi.String("WILDFIRE_ANALYSIS"),
+/// 			WildfireAnalysisProfile: &networksecurity.SecurityProfileWildfireAnalysisProfileArgs{
+/// 				WildfireRealtimeLookup: pulumi.Bool(true),
+/// 				WildfireSubmissionRules: networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArray{
+/// 					&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs{
+/// 						Direction:         pulumi.String("BOTH"),
+/// 						FileSelectionMode: pulumi.String("ALL_FILE_TYPES"),
+/// 					},
+/// 					&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs{
+/// 						Direction:         pulumi.String("UPLOAD"),
+/// 						FileSelectionMode: pulumi.String("CUSTOM_FILE_TYPES"),
+/// 						CustomFileTypes: &networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs{
+/// 							FileTypes: pulumi.StringArray{
+/// 								pulumi.String("PDF"),
+/// 								pulumi.String("SCRIPT"),
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 				WildfireInlineCloudAnalysisRules: networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArray{
+/// 					&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs{
+/// 						Direction:         pulumi.String("BOTH"),
+/// 						Action:            pulumi.String("ALLOW"),
+/// 						FileSelectionMode: pulumi.String("ALL_FILE_TYPES"),
+/// 					},
+/// 					&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs{
+/// 						Direction:         pulumi.String("DOWNLOAD"),
+/// 						Action:            pulumi.String("DENY"),
+/// 						FileSelectionMode: pulumi.String("CUSTOM_FILE_TYPES"),
+/// 						CustomFileTypes: &networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs{
+/// 							FileTypes: pulumi.StringArray{
+/// 								pulumi.String("PE"),
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 				WildfireOverrides: networksecurity.SecurityProfileWildfireAnalysisProfileWildfireOverrideArray{
+/// 					&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireOverrideArgs{
+/// 						Protocol: pulumi.String("WILDFIRE_HTTP"),
+/// 						Action:   pulumi.String("WILDFIRE_DENY"),
+/// 					},
+/// 				},
+/// 				WildfireInlineMlOverrides: networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArray{
+/// 					&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArgs{
+/// 						Protocol: pulumi.String("WILDFIRE_FTP"),
+/// 						Action:   pulumi.String("WILDFIRE_ALERT"),
+/// 					},
+/// 				},
+/// 				WildfireThreatOverrides: networksecurity.SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArray{
+/// 					&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArgs{
+/// 						ThreatId: pulumi.String("12345"),
+/// 						Action:   pulumi.String("WILDFIRE_ALLOW"),
+/// 					},
+/// 				},
+/// 				WildfireInlineMlSetting: &networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs{
+/// 					InlineMlConfigs: networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArray{
+/// 						&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArgs{
+/// 							FileType: pulumi.String("WINDOWS_EXECUTABLE"),
+/// 							Action:   pulumi.String("ENABLE"),
+/// 						},
+/// 					},
+/// 					FileExceptions: networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArray{
+/// 						&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArgs{
+/// 							PartialHash: pulumi.String("12345abcdef"),
+/// 							Filename:    pulumi.String("virus.exe"),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_security_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name        = "my-security-profile"
+///   parent      = "projects/my-project-name"
+///   description = "my description"
+///   type        = "WILDFIRE_ANALYSIS"
+///   wildfire_analysis_profile = {
+///     wildfire_realtime_lookup = true
+///     wildfire_submission_rules = [{
+///       direction           = "BOTH"
+///       file_selection_mode = "ALL_FILE_TYPES"
+///       }, {
+///       direction           = "UPLOAD"
+///       file_selection_mode = "CUSTOM_FILE_TYPES"
+///       custom_file_types = {
+///         file_types = ["PDF", "SCRIPT"]
+///       }
+///     }]
+///     wildfire_inline_cloud_analysis_rules = [{
+///       direction           = "BOTH"
+///       action              = "ALLOW"
+///       file_selection_mode = "ALL_FILE_TYPES"
+///       }, {
+///       direction           = "DOWNLOAD"
+///       action              = "DENY"
+///       file_selection_mode = "CUSTOM_FILE_TYPES"
+///       custom_file_types = {
+///         file_types = ["PE"]
+///       }
+///     }]
+///     wildfire_overrides = [{
+///       protocol = "WILDFIRE_HTTP"
+///       action   = "WILDFIRE_DENY"
+///     }]
+///     wildfire_inline_ml_overrides = [{
+///       protocol = "WILDFIRE_FTP"
+///       action   = "WILDFIRE_ALERT"
+///     }]
+///     wildfire_threat_overrides = [{
+///       threat_id = "12345"
+///       action    = "WILDFIRE_ALLOW"
+///     }]
+///     wildfire_inline_ml_setting = {
+///       inline_ml_configs = [{
+///         file_type = "WINDOWS_EXECUTABLE"
+///         action    = "ENABLE"
+///       }]
+///       file_exceptions = [{
+///         partial_hash = "12345abcdef"
+///         filename     = "virus.exe"
+///       }]
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.networksecurity.SecurityProfile;
+/// import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireOverrideArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new SecurityProfile("default", SecurityProfileArgs.builder()
+///             .name("my-security-profile")
+///             .parent("projects/my-project-name")
+///             .description("my description")
+///             .type("WILDFIRE_ANALYSIS")
+///             .wildfireAnalysisProfile(SecurityProfileWildfireAnalysisProfileArgs.builder()
+///                 .wildfireRealtimeLookup(true)
+///                 .wildfireSubmissionRules(
+///                     SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs.builder()
+///                         .direction("BOTH")
+///                         .fileSelectionMode("ALL_FILE_TYPES")
+///                         .build(),
+///                     SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs.builder()
+///                         .direction("UPLOAD")
+///                         .fileSelectionMode("CUSTOM_FILE_TYPES")
+///                         .customFileTypes(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs.builder()
+///                             .fileTypes(
+///                                 "PDF",
+///                                 "SCRIPT")
+///                             .build())
+///                         .build())
+///                 .wildfireInlineCloudAnalysisRules(
+///                     SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs.builder()
+///                         .direction("BOTH")
+///                         .action("ALLOW")
+///                         .fileSelectionMode("ALL_FILE_TYPES")
+///                         .build(),
+///                     SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs.builder()
+///                         .direction("DOWNLOAD")
+///                         .action("DENY")
+///                         .fileSelectionMode("CUSTOM_FILE_TYPES")
+///                         .customFileTypes(SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs.builder()
+///                             .fileTypes("PE")
+///                             .build())
+///                         .build())
+///                 .wildfireOverrides(SecurityProfileWildfireAnalysisProfileWildfireOverrideArgs.builder()
+///                     .protocol("WILDFIRE_HTTP")
+///                     .action("WILDFIRE_DENY")
+///                     .build())
+///                 .wildfireInlineMlOverrides(SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArgs.builder()
+///                     .protocol("WILDFIRE_FTP")
+///                     .action("WILDFIRE_ALERT")
+///                     .build())
+///                 .wildfireThreatOverrides(SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArgs.builder()
+///                     .threatId("12345")
+///                     .action("WILDFIRE_ALLOW")
+///                     .build())
+///                 .wildfireInlineMlSetting(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs.builder()
+///                     .inlineMlConfigs(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArgs.builder()
+///                         .fileType("WINDOWS_EXECUTABLE")
+///                         .action("ENABLE")
+///                         .build())
+///                     .fileExceptions(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArgs.builder()
+///                         .partialHash("12345abcdef")
+///                         .filename("virus.exe")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:networksecurity:SecurityProfile
+///     properties:
+///       name: my-security-profile
+///       parent: projects/my-project-name
+///       description: my description
+///       type: WILDFIRE_ANALYSIS
+///       wildfireAnalysisProfile:
+///         wildfireRealtimeLookup: true
+///         wildfireSubmissionRules:
+///           - direction: BOTH
+///             fileSelectionMode: ALL_FILE_TYPES
+///           - direction: UPLOAD
+///             fileSelectionMode: CUSTOM_FILE_TYPES
+///             customFileTypes:
+///               fileTypes:
+///                 - PDF
+///                 - SCRIPT
+///         wildfireInlineCloudAnalysisRules:
+///           - direction: BOTH
+///             action: ALLOW
+///             fileSelectionMode: ALL_FILE_TYPES
+///           - direction: DOWNLOAD
+///             action: DENY
+///             fileSelectionMode: CUSTOM_FILE_TYPES
+///             customFileTypes:
+///               fileTypes:
+///                 - PE
+///         wildfireOverrides:
+///           - protocol: WILDFIRE_HTTP
+///             action: WILDFIRE_DENY
+///         wildfireInlineMlOverrides:
+///           - protocol: WILDFIRE_FTP
+///             action: WILDFIRE_ALERT
+///         wildfireThreatOverrides:
+///           - threatId: '12345'
+///             action: WILDFIRE_ALLOW
+///         wildfireInlineMlSetting:
+///           inlineMlConfigs:
+///             - fileType: WINDOWS_EXECUTABLE
+///               action: ENABLE
+///           fileExceptions:
+///             - partialHash: 12345abcdef
+///               filename: virus.exe
+/// ```
+///
 ///
 /// ## Import
 ///
@@ -1600,14 +2191,18 @@ class SecurityProfile extends pulumi.CustomResource {
   /// The threat prevention configuration for the security profile.
   /// Structure is documented below.
   late final pulumi.Output<SecurityProfileThreatPreventionProfile?> threatPreventionProfile;
-  /// The type of security profile.
-  /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+  /// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+  /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
   late final pulumi.Output<String> type;
   /// Time the security profile was updated in UTC.
   late final pulumi.Output<String> updateTime;
   /// The url filtering configuration for the security profile.
   /// Structure is documented below.
   late final pulumi.Output<SecurityProfileUrlFilteringProfile?> urlFilteringProfile;
+  /// (Optional, Beta)
+  /// The wildfire analysis configuration for the security profile.
+  /// Structure is documented below.
+  late final pulumi.Output<SecurityProfileWildfireAnalysisProfile?> wildfireAnalysisProfile;
 
   /// Creates a new [SecurityProfile].
   /// [name] The Pulumi resource name.
@@ -1621,7 +2216,7 @@ class SecurityProfile extends pulumi.CustomResource {
           'gcp:networksecurity/securityProfile:SecurityProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
@@ -1641,6 +2236,7 @@ class SecurityProfile extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');
     urlFilteringProfile = registerOutput<SecurityProfileUrlFilteringProfile?>('urlFilteringProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileUrlFilteringProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    wildfireAnalysisProfile = registerOutput<SecurityProfileWildfireAnalysisProfile?>('wildfireAnalysisProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileWildfireAnalysisProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [SecurityProfile] resource's state with the given [name] and [id].
@@ -1684,6 +2280,7 @@ class SecurityProfile extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');
     urlFilteringProfile = registerOutput<SecurityProfileUrlFilteringProfile?>('urlFilteringProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileUrlFilteringProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    wildfireAnalysisProfile = registerOutput<SecurityProfileWildfireAnalysisProfile?>('wildfireAnalysisProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileWildfireAnalysisProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Creates a typed reference to an existing [SecurityProfile] resource.
@@ -1713,5 +2310,6 @@ class SecurityProfile extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     updateTime = registerOutput<String>('updateTime');
     urlFilteringProfile = registerOutput<SecurityProfileUrlFilteringProfile?>('urlFilteringProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileUrlFilteringProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    wildfireAnalysisProfile = registerOutput<SecurityProfileWildfireAnalysisProfile?>('wildfireAnalysisProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileWildfireAnalysisProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

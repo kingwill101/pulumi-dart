@@ -112,7 +112,7 @@ import 'deployment_terraform_blueprint.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/configdeployment"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/configdeployment"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -148,7 +148,7 @@ import 'deployment_terraform_blueprint.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -157,6 +157,9 @@ import 'deployment_terraform_blueprint.dart';
 /// }
 ///
 /// resource "gcp_configdeployment_deployment" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "my-deployment"
 ///   location        = "us-central1"
 ///   service_account = "projects/<no value>/serviceAccounts/my-service-account@my-project.iam.gserviceaccount.com"
@@ -167,11 +170,11 @@ import 'deployment_terraform_blueprint.dart';
 ///       ref       = "main"
 ///     }
 ///     input_values = [{
-///       "variableName" = "project_id"
-///       "inputValue"   = "<no value>"
+///       variable_name = "project_id"
+///       input_value   = "<no value>"
 ///       }, {
-///       "variableName" = "network_name"
-///       "inputValue"   = "my-network"
+///       variable_name = "network_name"
+///       input_value   = "my-network"
 ///     }]
 ///   }
 /// }
@@ -268,7 +271,7 @@ class DeploymentType extends pulumi.CustomResource {
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Location for Cloud Build logs and artifacts.
-  late final pulumi.Output<String?> artifactsGcsBucket;
+  late final pulumi.Output<String> artifactsGcsBucket;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -327,11 +330,11 @@ class DeploymentType extends pulumi.CustomResource {
           'gcp:configdeployment/deployment:Deployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
-    artifactsGcsBucket = registerOutput<String?>('artifactsGcsBucket');
+    artifactsGcsBucket = registerOutput<String>('artifactsGcsBucket');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
@@ -376,7 +379,7 @@ class DeploymentType extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
-    artifactsGcsBucket = registerOutput<String?>('artifactsGcsBucket');
+    artifactsGcsBucket = registerOutput<String>('artifactsGcsBucket');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
@@ -407,7 +410,7 @@ class DeploymentType extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
-    artifactsGcsBucket = registerOutput<String?>('artifactsGcsBucket');
+    artifactsGcsBucket = registerOutput<String>('artifactsGcsBucket');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);

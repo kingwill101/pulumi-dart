@@ -203,7 +203,7 @@ import 'cx_webhook_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -231,7 +231,7 @@ import 'cx_webhook_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxWebhook(ctx, "standard_webhook", &diagflow.CxWebhookArgs{
-/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      agent.ID(),
 /// 			DisplayName: pulumi.String("MyFlow"),
 /// 			GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
 /// 				AllowedCaCerts: pulumi.StringArray{
@@ -272,7 +272,7 @@ import 'cx_webhook_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -280,7 +280,10 @@ import 'cx_webhook_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name               = "dialogflowcx-agent"
 ///   location                   = "global"
 ///   default_language_code      = "en"
@@ -294,8 +297,11 @@ import 'cx_webhook_state.dart';
 ///     enable_speech_adaptation = true
 ///   }
 /// }
-/// resource "gcp_diagflow_cxwebhook" "standard_webhook" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_webhook" "standard_webhook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "MyFlow"
 ///   generic_web_service = {
 ///     allowed_ca_certs = ["BQA="]
@@ -313,11 +319,11 @@ import 'cx_webhook_state.dart';
 ///     service_agent_auth                   = "NONE"
 ///     secret_version_for_username_password = "projects/example-proj/secrets/example-secret/versions/example-version"
 ///     secret_versions_for_request_headers = [{
-///       "key"           = "example-key-1"
-///       "secretVersion" = "projects/example-proj/secrets/example-secret/versions/example-version"
+///       key            = "example-key-1"
+///       secret_version = "projects/example-proj/secrets/example-secret/versions/example-version"
 ///       }, {
-///       "key"           = "example-key-2"
-///       "secretVersion" = "projects/example-proj/secrets/example-secret/versions/example-version-2"
+///       key            = "example-key-2"
+///       secret_version = "projects/example-proj/secrets/example-secret/versions/example-version-2"
 ///     }]
 ///   }
 /// }
@@ -601,7 +607,7 @@ import 'cx_webhook_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -629,7 +635,7 @@ import 'cx_webhook_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxWebhook(ctx, "flexible_webhook", &diagflow.CxWebhookArgs{
-/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      agent.ID(),
 /// 			DisplayName: pulumi.String("MyFlow"),
 /// 			GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
 /// 				Uri: pulumi.String("https://example.com"),
@@ -658,7 +664,7 @@ import 'cx_webhook_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -666,7 +672,10 @@ import 'cx_webhook_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name               = "dialogflowcx-agent"
 ///   location                   = "global"
 ///   default_language_code      = "en"
@@ -680,8 +689,11 @@ import 'cx_webhook_state.dart';
 ///     enable_speech_adaptation = true
 ///   }
 /// }
-/// resource "gcp_diagflow_cxwebhook" "flexible_webhook" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_webhook" "flexible_webhook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "MyFlow"
 ///   generic_web_service = {
 ///     uri = "https://example.com"
@@ -1008,7 +1020,7 @@ import 'cx_webhook_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1036,7 +1048,7 @@ import 'cx_webhook_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxWebhook(ctx, "standard_webhook", &diagflow.CxWebhookArgs{
-/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      agent.ID(),
 /// 			DisplayName: pulumi.String("MyFlow"),
 /// 			ServiceDirectory: &diagflow.CxWebhookServiceDirectoryArgs{
 /// 				Service: pulumi.String("projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service"),
@@ -1080,7 +1092,7 @@ import 'cx_webhook_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1088,7 +1100,10 @@ import 'cx_webhook_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name               = "dialogflowcx-agent"
 ///   location                   = "us-central1"
 ///   default_language_code      = "en"
@@ -1102,8 +1117,11 @@ import 'cx_webhook_state.dart';
 ///     enable_speech_adaptation = true
 ///   }
 /// }
-/// resource "gcp_diagflow_cxwebhook" "standard_webhook" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_webhook" "standard_webhook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "MyFlow"
 ///   service_directory = {
 ///     service = "projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service"
@@ -1123,11 +1141,11 @@ import 'cx_webhook_state.dart';
 ///       service_agent_auth                   = "NONE"
 ///       secret_version_for_username_password = "projects/example-proj/secrets/example-secret/versions/example-version"
 ///       secret_versions_for_request_headers = [{
-///         "key"           = "example-key-1"
-///         "secretVersion" = "projects/example-proj/secrets/example-secret/versions/example-version"
+///         key            = "example-key-1"
+///         secret_version = "projects/example-proj/secrets/example-secret/versions/example-version"
 ///         }, {
-///         "key"           = "example-key-2"
-///         "secretVersion" = "projects/example-proj/secrets/example-secret/versions/example-version-2"
+///         key            = "example-key-2"
+///         secret_version = "projects/example-proj/secrets/example-secret/versions/example-version-2"
 ///       }]
 ///     }
 ///   }
@@ -1428,7 +1446,7 @@ import 'cx_webhook_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1456,7 +1474,7 @@ import 'cx_webhook_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxWebhook(ctx, "flexible_webhook", &diagflow.CxWebhookArgs{
-/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      agent.ID(),
 /// 			DisplayName: pulumi.String("MyFlow"),
 /// 			ServiceDirectory: &diagflow.CxWebhookServiceDirectoryArgs{
 /// 				Service: pulumi.String("projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service"),
@@ -1488,7 +1506,7 @@ import 'cx_webhook_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1496,7 +1514,10 @@ import 'cx_webhook_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name               = "dialogflowcx-agent"
 ///   location                   = "us-central1"
 ///   default_language_code      = "en"
@@ -1510,8 +1531,11 @@ import 'cx_webhook_state.dart';
 ///     enable_speech_adaptation = true
 ///   }
 /// }
-/// resource "gcp_diagflow_cxwebhook" "flexible_webhook" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_webhook" "flexible_webhook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "MyFlow"
 ///   service_directory = {
 ///     service = "projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service"
@@ -1770,7 +1794,7 @@ import 'cx_webhook_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1798,7 +1822,7 @@ import 'cx_webhook_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxWebhook(ctx, "webhook_use_service_account", &diagflow.CxWebhookArgs{
-/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      agent.ID(),
 /// 			DisplayName: pulumi.String("MyWebhook"),
 /// 			GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
 /// 				Uri:         pulumi.String("https://example.googleapis.com"),
@@ -1816,7 +1840,7 @@ import 'cx_webhook_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1824,7 +1848,10 @@ import 'cx_webhook_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name               = "dialogflowcx-agent"
 ///   location                   = "global"
 ///   default_language_code      = "en"
@@ -1838,8 +1865,11 @@ import 'cx_webhook_state.dart';
 ///     enable_speech_adaptation = true
 ///   }
 /// }
-/// resource "gcp_diagflow_cxwebhook" "webhook_use_service_account" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_webhook" "webhook_use_service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "MyWebhook"
 ///   generic_web_service = {
 ///     uri          = "https://example.googleapis.com"
@@ -2072,7 +2102,7 @@ import 'cx_webhook_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2100,7 +2130,7 @@ import 'cx_webhook_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxWebhook(ctx, "webhook_use_service_account", &diagflow.CxWebhookArgs{
-/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      agent.ID(),
 /// 			DisplayName: pulumi.String("MyWebhook"),
 /// 			ServiceDirectory: &diagflow.CxWebhookServiceDirectoryArgs{
 /// 				Service: pulumi.String("projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service"),
@@ -2121,7 +2151,7 @@ import 'cx_webhook_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2129,7 +2159,10 @@ import 'cx_webhook_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name               = "dialogflowcx-agent"
 ///   location                   = "us-central1"
 ///   default_language_code      = "en"
@@ -2143,8 +2176,11 @@ import 'cx_webhook_state.dart';
 ///     enable_speech_adaptation = true
 ///   }
 /// }
-/// resource "gcp_diagflow_cxwebhook" "webhook_use_service_account" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_webhook" "webhook_use_service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "MyWebhook"
 ///   service_directory = {
 ///     service = "projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service"
@@ -2317,7 +2353,7 @@ class CxWebhook extends pulumi.CustomResource {
           'gcp:diagflow/cxWebhook:CxWebhook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');

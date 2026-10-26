@@ -648,11 +648,11 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -795,7 +795,7 @@ import 'stream_state.dart';
 /// 				"key": pulumi.String("value"),
 /// 			},
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: sourceConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+/// 				SourceConnectionProfile: sourceConnectionProfile.ID(),
 /// 				MysqlSourceConfig: &datastream.StreamSourceConfigMysqlSourceConfigArgs{
 /// 					IncludeObjects: &datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs{
 /// 						MysqlDatabases: datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArray{
@@ -848,7 +848,7 @@ import 'stream_state.dart';
 /// 				},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destinationConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+/// 				DestinationConnectionProfile: destinationConnectionProfile.ID(),
 /// 				GcsDestinationConfig: &datastream.StreamDestinationConfigGcsDestinationConfigArgs{
 /// 					Path:                 pulumi.String("mydata"),
 /// 					FileRotationMb:       pulumi.Int(200),
@@ -895,7 +895,7 @@ import 'stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -906,10 +906,13 @@ import 'stream_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my-instance"
 ///   database_version = "MYSQL_8_0"
 ///   region           = "us-central1"
@@ -921,70 +924,100 @@ import 'stream_state.dart';
 ///     }
 ///     ip_configuration = {
 ///       authorized_networks = [{
-///         "value" = "34.71.242.81"
+///         value = "34.71.242.81"
 ///         }, {
-///         "value" = "34.72.28.29"
+///         value = "34.72.28.29"
 ///         }, {
-///         "value" = "34.67.6.157"
+///         value = "34.67.6.157"
 ///         }, {
-///         "value" = "34.67.234.134"
+///         value = "34.67.234.134"
 ///         }, {
-///         "value" = "34.72.239.218"
+///         value = "34.72.239.218"
 ///       }]
 ///     }
 ///   }
 ///   deletion_protection = true
 /// }
 /// resource "gcp_sql_database" "db" {
-///   instance = gcp_sql_databaseinstance.instance.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   instance = gcp_sql_database_instance.instance.name
 ///   name     = "db"
 /// }
 /// resource "random_password" "pwd" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   length  = 16
 ///   special = false
 /// }
 /// resource "gcp_sql_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "user"
-///   instance = gcp_sql_databaseinstance.instance.name
+///   instance = gcp_sql_database_instance.instance.name
 ///   host     = "%"
 ///   password = random_password.pwd.result
 /// }
-/// resource "gcp_datastream_connectionprofile" "source_connection_profile" {
+/// resource "gcp_datastream_connection_profile" "source_connection_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Source connection profile"
 ///   location              = "us-central1"
 ///   connection_profile_id = "source-profile"
 ///   mysql_profile = {
-///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     hostname = gcp_sql_database_instance.instance.public_ip_address
 ///     username = gcp_sql_user.user.name
 ///     password = gcp_sql_user.user.password
 ///   }
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my-bucket"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketiammember" "viewer" {
+/// resource "gcp_storage_bucket_i_a_m_member" "viewer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = gcp_storage_bucket.bucket.name
 ///   role   = "roles/storage.objectViewer"
-///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-datastream.iam.gserviceaccount.com"
+///   member ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-datastream.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_storage_bucketiammember" "creator" {
+/// resource "gcp_storage_bucket_i_a_m_member" "creator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = gcp_storage_bucket.bucket.name
 ///   role   = "roles/storage.objectCreator"
-///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-datastream.iam.gserviceaccount.com"
+///   member ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-datastream.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_storage_bucketiammember" "reader" {
+/// resource "gcp_storage_bucket_i_a_m_member" "reader" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = gcp_storage_bucket.bucket.name
 ///   role   = "roles/storage.legacyBucketReader"
-///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-datastream.iam.gserviceaccount.com"
+///   member ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-datastream.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "key_user" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "key_user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "kms-name"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-datastream.iam.gserviceaccount.com"
+///   member        ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-datastream.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_datastream_connectionprofile" "destination_connection_profile" {
+/// resource "gcp_datastream_connection_profile" "destination_connection_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Connection profile"
 ///   location              = "us-central1"
 ///   connection_profile_id = "destination-profile"
@@ -994,7 +1027,10 @@ import 'stream_state.dart';
 ///   }
 /// }
 /// resource "gcp_datastream_stream" "default" {
-///   depends_on    = [gcp_kms_cryptokeyiammember.key_user]
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.key_user]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   stream_id     = "my-stream"
 ///   desired_state = "NOT_STARTED"
 ///   location      = "us-central1"
@@ -1003,38 +1039,38 @@ import 'stream_state.dart';
 ///     "key" = "value"
 ///   }
 ///   source_config = {
-///     source_connection_profile = gcp_datastream_connectionprofile.source_connection_profile.id
+///     source_connection_profile = gcp_datastream_connection_profile.source_connection_profile.id
 ///     mysql_source_config = {
 ///       include_objects = {
 ///         mysql_databases = [{
-///           "database" = "my-database"
-///           "mysqlTables" = [{
-///             "table" = "includedTable"
-///             "mysqlColumns" = [{
-///               "column"          = "includedColumn"
-///               "dataType"        = "VARCHAR"
-///               "collation"       = "utf8mb4"
-///               "primaryKey"      = false
-///               "nullable"        = false
-///               "ordinalPosition" = 0
+///           database = "my-database"
+///           mysql_tables = [{
+///             table = "includedTable"
+///             mysql_columns = [{
+///               column           = "includedColumn"
+///               data_type        = "VARCHAR"
+///               collation        = "utf8mb4"
+///               primary_key      = false
+///               nullable         = false
+///               ordinal_position = 0
 ///             }]
 ///             }, {
-///             "table" = "includedTable_2"
+///             table = "includedTable_2"
 ///           }]
 ///         }]
 ///       }
 ///       exclude_objects = {
 ///         mysql_databases = [{
-///           "database" = "my-database"
-///           "mysqlTables" = [{
-///             "table" = "excludedTable"
-///             "mysqlColumns" = [{
-///               "column"          = "excludedColumn"
-///               "dataType"        = "VARCHAR"
-///               "collation"       = "utf8mb4"
-///               "primaryKey"      = false
-///               "nullable"        = false
-///               "ordinalPosition" = 0
+///           database = "my-database"
+///           mysql_tables = [{
+///             table = "excludedTable"
+///             mysql_columns = [{
+///               column           = "excludedColumn"
+///               data_type        = "VARCHAR"
+///               collation        = "utf8mb4"
+///               primary_key      = false
+///               nullable         = false
+///               ordinal_position = 0
 ///             }]
 ///           }]
 ///         }]
@@ -1043,7 +1079,7 @@ import 'stream_state.dart';
 ///     }
 ///   }
 ///   destination_config = {
-///     destination_connection_profile = gcp_datastream_connectionprofile.destination_connection_profile.id
+///     destination_connection_profile = gcp_datastream_connection_profile.destination_connection_profile.id
 ///     gcs_destination_config = {
 ///       path                   = "mydata"
 ///       file_rotation_mb       = 200
@@ -1057,16 +1093,16 @@ import 'stream_state.dart';
 ///   backfill_all = {
 ///     mysql_excluded_objects = {
 ///       mysql_databases = [{
-///         "database" = "my-database"
-///         "mysqlTables" = [{
-///           "table" = "excludedTable"
-///           "mysqlColumns" = [{
-///             "column"          = "excludedColumn"
-///             "dataType"        = "VARCHAR"
-///             "collation"       = "utf8mb4"
-///             "primaryKey"      = false
-///             "nullable"        = false
-///             "ordinalPosition" = 0
+///         database = "my-database"
+///         mysql_tables = [{
+///           table = "excludedTable"
+///           mysql_columns = [{
+///             column           = "excludedColumn"
+///             data_type        = "VARCHAR"
+///             collation        = "utf8mb4"
+///             primary_key      = false
+///             nullable         = false
+///             ordinal_position = 0
 ///           }]
 ///         }]
 ///       }]
@@ -1801,7 +1837,7 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1837,7 +1873,7 @@ import 'stream_state.dart';
 /// 			StreamId:     pulumi.String("my-stream"),
 /// 			DesiredState: pulumi.String("RUNNING"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: source.ID().ToIDOutput().ToStringOutput(),
+/// 				SourceConnectionProfile: source.ID(),
 /// 				PostgresqlSourceConfig: &datastream.StreamSourceConfigPostgresqlSourceConfigArgs{
 /// 					MaxConcurrentBackfillTasks: pulumi.Int(12),
 /// 					Publication:                pulumi.String("publication"),
@@ -1879,7 +1915,7 @@ import 'stream_state.dart';
 /// 				},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destination.ID().ToIDOutput().ToStringOutput(),
+/// 				DestinationConnectionProfile: destination.ID(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					DataFreshness: pulumi.String("900s"),
 /// 					SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
@@ -1917,7 +1953,7 @@ import 'stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1925,7 +1961,10 @@ import 'stream_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datastream_connectionprofile" "source" {
+/// resource "gcp_datastream_connection_profile" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Postgresql Source"
 ///   location              = "us-central1"
 ///   connection_profile_id = "source-profile"
@@ -1937,41 +1976,47 @@ import 'stream_state.dart';
 ///     database = "postgres"
 ///   }
 /// }
-/// resource "gcp_datastream_connectionprofile" "destination" {
+/// resource "gcp_datastream_connection_profile" "destination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "BigQuery Destination"
 ///   location              = "us-central1"
 ///   connection_profile_id = "destination-profile"
 ///   bigquery_profile      = {}
 /// }
 /// resource "gcp_datastream_stream" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name  = "Postgres to BigQuery"
 ///   location      = "us-central1"
 ///   stream_id     = "my-stream"
 ///   desired_state = "RUNNING"
 ///   source_config = {
-///     source_connection_profile = gcp_datastream_connectionprofile.source.id
+///     source_connection_profile = gcp_datastream_connection_profile.source.id
 ///     postgresql_source_config = {
 ///       max_concurrent_backfill_tasks = 12
 ///       publication                   = "publication"
 ///       replication_slot              = "replication_slot"
 ///       include_objects = {
 ///         postgresql_schemas = [{
-///           "schema" = "schema"
-///           "postgresqlTables" = [{
-///             "table" = "table"
-///             "postgresqlColumns" = [{
-///               "column" = "column"
+///           schema = "schema"
+///           postgresql_tables = [{
+///             table = "table"
+///             postgresql_columns = [{
+///               column = "column"
 ///             }]
 ///           }]
 ///         }]
 ///       }
 ///       exclude_objects = {
 ///         postgresql_schemas = [{
-///           "schema" = "schema"
-///           "postgresqlTables" = [{
-///             "table" = "table"
-///             "postgresqlColumns" = [{
-///               "column" = "column"
+///           schema = "schema"
+///           postgresql_tables = [{
+///             table = "table"
+///             postgresql_columns = [{
+///               column = "column"
 ///             }]
 ///           }]
 ///         }]
@@ -1979,7 +2024,7 @@ import 'stream_state.dart';
 ///     }
 ///   }
 ///   destination_config = {
-///     destination_connection_profile = gcp_datastream_connectionprofile.destination.id
+///     destination_connection_profile = gcp_datastream_connection_profile.destination.id
 ///     bigquery_destination_config = {
 ///       data_freshness = "900s"
 ///       source_hierarchy_datasets = {
@@ -1992,11 +2037,11 @@ import 'stream_state.dart';
 ///   backfill_all = {
 ///     postgresql_excluded_objects = {
 ///       postgresql_schemas = [{
-///         "schema" = "schema"
-///         "postgresqlTables" = [{
-///           "table" = "table"
-///           "postgresqlColumns" = [{
-///             "column" = "column"
+///         schema = "schema"
+///         postgresql_tables = [{
+///           table = "table"
+///           postgresql_columns = [{
+///             column = "column"
 ///           }]
 ///         }]
 ///       }]
@@ -2510,7 +2555,7 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2546,7 +2591,7 @@ import 'stream_state.dart';
 /// 			StreamId:     pulumi.String("my-stream"),
 /// 			DesiredState: pulumi.String("RUNNING"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: source.ID().ToIDOutput().ToStringOutput(),
+/// 				SourceConnectionProfile: source.ID(),
 /// 				OracleSourceConfig: &datastream.StreamSourceConfigOracleSourceConfigArgs{
 /// 					MaxConcurrentCdcTasks:      pulumi.Int(8),
 /// 					MaxConcurrentBackfillTasks: pulumi.Int(12),
@@ -2588,7 +2633,7 @@ import 'stream_state.dart';
 /// 				},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destination.ID().ToIDOutput().ToStringOutput(),
+/// 				DestinationConnectionProfile: destination.ID(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					DataFreshness: pulumi.String("900s"),
 /// 					SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
@@ -2626,7 +2671,7 @@ import 'stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2634,7 +2679,10 @@ import 'stream_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datastream_connectionprofile" "source" {
+/// resource "gcp_datastream_connection_profile" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Oracle Source"
 ///   location              = "us-central1"
 ///   connection_profile_id = "source-profile"
@@ -2646,40 +2694,46 @@ import 'stream_state.dart';
 ///     database_service = "ORCL"
 ///   }
 /// }
-/// resource "gcp_datastream_connectionprofile" "destination" {
+/// resource "gcp_datastream_connection_profile" "destination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "BigQuery Destination"
 ///   location              = "us-central1"
 ///   connection_profile_id = "destination-profile"
 ///   bigquery_profile      = {}
 /// }
 /// resource "gcp_datastream_stream" "stream5" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name  = "Oracle to BigQuery"
 ///   location      = "us-central1"
 ///   stream_id     = "my-stream"
 ///   desired_state = "RUNNING"
 ///   source_config = {
-///     source_connection_profile = gcp_datastream_connectionprofile.source.id
+///     source_connection_profile = gcp_datastream_connection_profile.source.id
 ///     oracle_source_config = {
 ///       max_concurrent_cdc_tasks      = 8
 ///       max_concurrent_backfill_tasks = 12
 ///       include_objects = {
 ///         oracle_schemas = [{
-///           "schema" = "schema"
-///           "oracleTables" = [{
-///             "table" = "table"
-///             "oracleColumns" = [{
-///               "column" = "column"
+///           schema = "schema"
+///           oracle_tables = [{
+///             table = "table"
+///             oracle_columns = [{
+///               column = "column"
 ///             }]
 ///           }]
 ///         }]
 ///       }
 ///       exclude_objects = {
 ///         oracle_schemas = [{
-///           "schema" = "schema"
-///           "oracleTables" = [{
-///             "table" = "table"
-///             "oracleColumns" = [{
-///               "column" = "column"
+///           schema = "schema"
+///           oracle_tables = [{
+///             table = "table"
+///             oracle_columns = [{
+///               column = "column"
 ///             }]
 ///           }]
 ///         }]
@@ -2688,7 +2742,7 @@ import 'stream_state.dart';
 ///     }
 ///   }
 ///   destination_config = {
-///     destination_connection_profile = gcp_datastream_connectionprofile.destination.id
+///     destination_connection_profile = gcp_datastream_connection_profile.destination.id
 ///     bigquery_destination_config = {
 ///       data_freshness = "900s"
 ///       source_hierarchy_datasets = {
@@ -2701,11 +2755,11 @@ import 'stream_state.dart';
 ///   backfill_all = {
 ///     oracle_excluded_objects = {
 ///       oracle_schemas = [{
-///         "schema" = "schema"
-///         "oracleTables" = [{
-///           "table" = "table"
-///           "oracleColumns" = [{
-///             "column" = "column"
+///         schema = "schema"
+///         oracle_tables = [{
+///           table = "table"
+///           oracle_columns = [{
+///             column = "column"
 ///           }]
 ///         }]
 ///       }]
@@ -3237,8 +3291,8 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3322,7 +3376,7 @@ import 'stream_state.dart';
 /// 			Location:    pulumi.String("us-central1"),
 /// 			StreamId:    pulumi.String("stream"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: source.ID().ToIDOutput().ToStringOutput(),
+/// 				SourceConnectionProfile: source.ID(),
 /// 				SqlServerSourceConfig: &datastream.StreamSourceConfigSqlServerSourceConfigArgs{
 /// 					IncludeObjects: &datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs{
 /// 						Schemas: datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArray{
@@ -3340,7 +3394,7 @@ import 'stream_state.dart';
 /// 				},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destination.ID().ToIDOutput().ToStringOutput(),
+/// 				DestinationConnectionProfile: destination.ID(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					DataFreshness: pulumi.String("900s"),
 /// 					SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
@@ -3360,7 +3414,7 @@ import 'stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3368,7 +3422,10 @@ import 'stream_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "sql-server"
 ///   database_version    = "SQLSERVER_2022_STANDARD"
 ///   region              = "us-central1"
@@ -3378,59 +3435,74 @@ import 'stream_state.dart';
 ///     tier = "db-custom-2-4096"
 ///     ip_configuration = {
 ///       authorized_networks = [{
-///         "value" = "34.71.242.81"
+///         value = "34.71.242.81"
 ///         }, {
-///         "value" = "34.72.28.29"
+///         value = "34.72.28.29"
 ///         }, {
-///         "value" = "34.67.6.157"
+///         value = "34.67.6.157"
 ///         }, {
-///         "value" = "34.67.234.134"
+///         value = "34.67.234.134"
 ///         }, {
-///         "value" = "34.72.239.218"
+///         value = "34.72.239.218"
 ///       }]
 ///     }
 ///   }
 /// }
 /// resource "gcp_sql_database" "db" {
 ///   depends_on = [gcp_sql_user.user]
-///   name       = "db"
-///   instance   = gcp_sql_databaseinstance.instance.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "db"
+///   instance = gcp_sql_database_instance.instance.name
 /// }
 /// resource "gcp_sql_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "user"
-///   instance = gcp_sql_databaseinstance.instance.name
+///   instance = gcp_sql_database_instance.instance.name
 ///   password = "password"
 /// }
-/// resource "gcp_datastream_connectionprofile" "source" {
+/// resource "gcp_datastream_connection_profile" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "SQL Server Source"
 ///   location              = "us-central1"
 ///   connection_profile_id = "source-profile"
 ///   sql_server_profile = {
-///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     hostname = gcp_sql_database_instance.instance.public_ip_address
 ///     port     = 1433
 ///     username = gcp_sql_user.user.name
 ///     password = gcp_sql_user.user.password
 ///     database = gcp_sql_database.db.name
 ///   }
 /// }
-/// resource "gcp_datastream_connectionprofile" "destination" {
+/// resource "gcp_datastream_connection_profile" "destination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "BigQuery Destination"
 ///   location              = "us-central1"
 ///   connection_profile_id = "destination-profile"
 ///   bigquery_profile      = {}
 /// }
 /// resource "gcp_datastream_stream" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "SQL Server to BigQuery"
 ///   location     = "us-central1"
 ///   stream_id    = "stream"
 ///   source_config = {
-///     source_connection_profile = gcp_datastream_connectionprofile.source.id
+///     source_connection_profile = gcp_datastream_connection_profile.source.id
 ///     sql_server_source_config = {
 ///       include_objects = {
 ///         schemas = [{
-///           "schema" = "schema"
-///           "tables" = [{
-///             "table" = "table"
+///           schema = "schema"
+///           tables = [{
+///             table = "table"
 ///           }]
 ///         }]
 ///       }
@@ -3438,7 +3510,7 @@ import 'stream_state.dart';
 ///     }
 ///   }
 ///   destination_config = {
-///     destination_connection_profile = gcp_datastream_connectionprofile.destination.id
+///     destination_connection_profile = gcp_datastream_connection_profile.destination.id
 ///     bigquery_destination_config = {
 ///       data_freshness = "900s"
 ///       source_hierarchy_datasets = {
@@ -4002,8 +4074,8 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4087,7 +4159,7 @@ import 'stream_state.dart';
 /// 			Location:    pulumi.String("us-central1"),
 /// 			StreamId:    pulumi.String("stream"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: source.ID().ToIDOutput().ToStringOutput(),
+/// 				SourceConnectionProfile: source.ID(),
 /// 				SqlServerSourceConfig: &datastream.StreamSourceConfigSqlServerSourceConfigArgs{
 /// 					IncludeObjects: &datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs{
 /// 						Schemas: datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArray{
@@ -4105,7 +4177,7 @@ import 'stream_state.dart';
 /// 				},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destination.ID().ToIDOutput().ToStringOutput(),
+/// 				DestinationConnectionProfile: destination.ID(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					DataFreshness: pulumi.String("900s"),
 /// 					SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
@@ -4125,7 +4197,7 @@ import 'stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4133,7 +4205,10 @@ import 'stream_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "sql-server"
 ///   database_version    = "SQLSERVER_2022_STANDARD"
 ///   region              = "us-central1"
@@ -4143,59 +4218,74 @@ import 'stream_state.dart';
 ///     tier = "db-custom-2-4096"
 ///     ip_configuration = {
 ///       authorized_networks = [{
-///         "value" = "34.71.242.81"
+///         value = "34.71.242.81"
 ///         }, {
-///         "value" = "34.72.28.29"
+///         value = "34.72.28.29"
 ///         }, {
-///         "value" = "34.67.6.157"
+///         value = "34.67.6.157"
 ///         }, {
-///         "value" = "34.67.234.134"
+///         value = "34.67.234.134"
 ///         }, {
-///         "value" = "34.72.239.218"
+///         value = "34.72.239.218"
 ///       }]
 ///     }
 ///   }
 /// }
 /// resource "gcp_sql_database" "db" {
 ///   depends_on = [gcp_sql_user.user]
-///   name       = "db"
-///   instance   = gcp_sql_databaseinstance.instance.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "db"
+///   instance = gcp_sql_database_instance.instance.name
 /// }
 /// resource "gcp_sql_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "user"
-///   instance = gcp_sql_databaseinstance.instance.name
+///   instance = gcp_sql_database_instance.instance.name
 ///   password = "password"
 /// }
-/// resource "gcp_datastream_connectionprofile" "source" {
+/// resource "gcp_datastream_connection_profile" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "SQL Server Source"
 ///   location              = "us-central1"
 ///   connection_profile_id = "source-profile"
 ///   sql_server_profile = {
-///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     hostname = gcp_sql_database_instance.instance.public_ip_address
 ///     port     = 1433
 ///     username = gcp_sql_user.user.name
 ///     password = gcp_sql_user.user.password
 ///     database = gcp_sql_database.db.name
 ///   }
 /// }
-/// resource "gcp_datastream_connectionprofile" "destination" {
+/// resource "gcp_datastream_connection_profile" "destination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "BigQuery Destination"
 ///   location              = "us-central1"
 ///   connection_profile_id = "destination-profile"
 ///   bigquery_profile      = {}
 /// }
 /// resource "gcp_datastream_stream" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "SQL Server to BigQuery"
 ///   location     = "us-central1"
 ///   stream_id    = "stream"
 ///   source_config = {
-///     source_connection_profile = gcp_datastream_connectionprofile.source.id
+///     source_connection_profile = gcp_datastream_connection_profile.source.id
 ///     sql_server_source_config = {
 ///       include_objects = {
 ///         schemas = [{
-///           "schema" = "schema"
-///           "tables" = [{
-///             "table" = "table"
+///           schema = "schema"
+///           tables = [{
+///             table = "table"
 ///           }]
 ///         }]
 ///       }
@@ -4203,7 +4293,7 @@ import 'stream_state.dart';
 ///     }
 ///   }
 ///   destination_config = {
-///     destination_connection_profile = gcp_datastream_connectionprofile.destination.id
+///     destination_connection_profile = gcp_datastream_connection_profile.destination.id
 ///     bigquery_destination_config = {
 ///       data_freshness = "900s"
 ///       source_hierarchy_datasets = {
@@ -4767,8 +4857,8 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4852,7 +4942,7 @@ import 'stream_state.dart';
 /// 			Location:    pulumi.String("us-central1"),
 /// 			StreamId:    pulumi.String("<%= ctx[:vars]['stream_id'] %>"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: source.ID().ToIDOutput().ToStringOutput(),
+/// 				SourceConnectionProfile: source.ID(),
 /// 				MysqlSourceConfig: &datastream.StreamSourceConfigMysqlSourceConfigArgs{
 /// 					IncludeObjects: &datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs{
 /// 						Schemas: []map[string]interface{}{
@@ -4870,7 +4960,7 @@ import 'stream_state.dart';
 /// 				},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destination.ID().ToIDOutput().ToStringOutput(),
+/// 				DestinationConnectionProfile: destination.ID(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					DataFreshness: pulumi.String("900s"),
 /// 					SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
@@ -4890,7 +4980,7 @@ import 'stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4898,7 +4988,10 @@ import 'stream_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "<%= ctx[:vars]['mysql_name'] %>"
 ///   database_version    = "MYSQL_8_0"
 ///   region              = "us-central1"
@@ -4908,53 +5001,68 @@ import 'stream_state.dart';
 ///     tier = "db-custom-2-4096"
 ///     ip_configuration = {
 ///       authorized_networks = [{
-///         "value" = "34.71.242.81"
+///         value = "34.71.242.81"
 ///         }, {
-///         "value" = "34.72.28.29"
+///         value = "34.72.28.29"
 ///         }, {
-///         "value" = "34.67.6.157"
+///         value = "34.67.6.157"
 ///         }, {
-///         "value" = "34.67.234.134"
+///         value = "34.67.234.134"
 ///         }, {
-///         "value" = "34.72.239.218"
+///         value = "34.72.239.218"
 ///       }]
 ///     }
 ///   }
 /// }
 /// resource "gcp_sql_database" "db" {
 ///   depends_on = [gcp_sql_user.user]
-///   name       = "<%= ctx[:vars]['database_name'] %>"
-///   instance   = gcp_sql_databaseinstance.instance.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "<%= ctx[:vars]['database_name'] %>"
+///   instance = gcp_sql_database_instance.instance.name
 /// }
 /// resource "gcp_sql_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "<%= ctx[:vars]['database_user'] %>"
-///   instance = gcp_sql_databaseinstance.instance.name
+///   instance = gcp_sql_database_instance.instance.name
 ///   password = "<%= ctx[:vars]['database_password'] %>"
 /// }
-/// resource "gcp_datastream_connectionprofile" "source" {
+/// resource "gcp_datastream_connection_profile" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "MySQL Source"
 ///   location              = "us-central1"
 ///   connection_profile_id = "<%= ctx[:vars]['source_connection_profile_id'] %>"
 ///   mysql_profile = {
-///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     hostname = gcp_sql_database_instance.instance.public_ip_address
 ///     port     = 1433
 ///     username = gcp_sql_user.user.name
 ///     password = gcp_sql_user.user.password
 ///     database = gcp_sql_database.db.name
 ///   }
 /// }
-/// resource "gcp_datastream_connectionprofile" "destination" {
+/// resource "gcp_datastream_connection_profile" "destination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "BigQuery Destination"
 ///   location              = "us-central1"
 ///   connection_profile_id = "<%= ctx[:vars]['destination_connection_profile_id'] %>"
 ///   bigquery_profile      = {}
 /// }
 /// resource "gcp_datastream_stream" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "MySQL to BigQuery"
 ///   location     = "us-central1"
 ///   stream_id    = "<%= ctx[:vars]['stream_id'] %>"
 ///   source_config = {
-///     source_connection_profile = gcp_datastream_connectionprofile.source.id
+///     source_connection_profile = gcp_datastream_connection_profile.source.id
 ///     mysql_source_config = {
 ///       include_objects = {
 ///         schemas = [{
@@ -4968,7 +5076,7 @@ import 'stream_state.dart';
 ///     }
 ///   }
 ///   destination_config = {
-///     destination_connection_profile = gcp_datastream_connectionprofile.destination.id
+///     destination_connection_profile = gcp_datastream_connection_profile.destination.id
 ///     bigquery_destination_config = {
 ///       data_freshness = "900s"
 ///       source_hierarchy_datasets = {
@@ -5210,7 +5318,7 @@ import 'stream_state.dart';
 /// import * as random from "@pulumi/random";
 ///
 /// const postgres = new gcp.bigquery.Dataset("postgres", {
-///     datasetId: "postgres",
+///     datasetId: "postgres_dataset",
 ///     friendlyName: "postgres",
 ///     description: "Database of postgres",
 ///     location: "us-central1",
@@ -5303,7 +5411,7 @@ import 'stream_state.dart';
 /// import pulumi_random as random
 ///
 /// postgres = gcp.bigquery.Dataset("postgres",
-///     dataset_id="postgres",
+///     dataset_id="postgres_dataset",
 ///     friendly_name="postgres",
 ///     description="Database of postgres",
 ///     location="us-central1")
@@ -5393,7 +5501,7 @@ import 'stream_state.dart';
 /// {
 ///     var postgres = new Gcp.BigQuery.Dataset("postgres", new()
 ///     {
-///         DatasetId = "postgres",
+///         DatasetId = "postgres_dataset",
 ///         FriendlyName = "postgres",
 ///         Description = "Database of postgres",
 ///         Location = "us-central1",
@@ -5514,9 +5622,9 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -5524,7 +5632,7 @@ import 'stream_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		postgres, err := bigquery.NewDataset(ctx, "postgres", &bigquery.DatasetArgs{
-/// 			DatasetId:    pulumi.String("postgres"),
+/// 			DatasetId:    pulumi.String("postgres_dataset"),
 /// 			FriendlyName: pulumi.String("postgres"),
 /// 			Description:  pulumi.String("Database of postgres"),
 /// 			Location:     pulumi.String("us-central1"),
@@ -5610,15 +5718,15 @@ import 'stream_state.dart';
 /// 			Location:    pulumi.String("us-central1"),
 /// 			StreamId:    pulumi.String("postgres-bigquery"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: sourceConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+/// 				SourceConnectionProfile: sourceConnectionProfile.ID(),
 /// 				MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destinationConnectionProfile2.ID().ToIDOutput().ToStringOutput(),
+/// 				DestinationConnectionProfile: destinationConnectionProfile2.ID(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					DataFreshness: pulumi.String("900s"),
 /// 					SingleTargetDataset: &datastream.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs{
-/// 						DatasetId: postgres.ID().ToIDOutput().ToStringOutput(),
+/// 						DatasetId: postgres.ID(),
 /// 					},
 /// 				},
 /// 			},
@@ -5639,7 +5747,7 @@ import 'stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -5651,21 +5759,27 @@ import 'stream_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "postgres" {
-///   dataset_id    = "postgres"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   dataset_id    = "postgres_dataset"
 ///   friendly_name = "postgres"
 ///   description   = "Database of postgres"
 ///   location      = "us-central1"
 /// }
 /// resource "gcp_datastream_stream" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "postgres to bigQuery"
 ///   location     = "us-central1"
 ///   stream_id    = "postgres-bigquery"
 ///   source_config = {
-///     source_connection_profile = gcp_datastream_connectionprofile.source_connection_profile.id
+///     source_connection_profile = gcp_datastream_connection_profile.source_connection_profile.id
 ///     mysql_source_config       = {}
 ///   }
 ///   destination_config = {
-///     destination_connection_profile = gcp_datastream_connectionprofile.destination_connection_profile2.id
+///     destination_connection_profile = gcp_datastream_connection_profile.destination_connection_profile2.id
 ///     bigquery_destination_config = {
 ///       data_freshness = "900s"
 ///       single_target_dataset = {
@@ -5675,13 +5789,19 @@ import 'stream_state.dart';
 ///   }
 ///   backfill_all = {}
 /// }
-/// resource "gcp_datastream_connectionprofile" "destination_connection_profile2" {
+/// resource "gcp_datastream_connection_profile" "destination_connection_profile2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Connection profile"
 ///   location              = "us-central1"
 ///   connection_profile_id = "dest-profile"
 ///   bigquery_profile      = {}
 /// }
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "instance-name"
 ///   database_version = "MYSQL_8_0"
 ///   region           = "us-central1"
@@ -5693,40 +5813,52 @@ import 'stream_state.dart';
 ///     }
 ///     ip_configuration = {
 ///       authorized_networks = [{
-///         "value" = "34.71.242.81"
+///         value = "34.71.242.81"
 ///         }, {
-///         "value" = "34.72.28.29"
+///         value = "34.72.28.29"
 ///         }, {
-///         "value" = "34.67.6.157"
+///         value = "34.67.6.157"
 ///         }, {
-///         "value" = "34.67.234.134"
+///         value = "34.67.234.134"
 ///         }, {
-///         "value" = "34.72.239.218"
+///         value = "34.72.239.218"
 ///       }]
 ///     }
 ///   }
 ///   deletion_protection = false
 /// }
 /// resource "gcp_sql_database" "db" {
-///   instance = gcp_sql_databaseinstance.instance.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   instance = gcp_sql_database_instance.instance.name
 ///   name     = "db"
 /// }
 /// resource "random_password" "pwd" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   length  = 16
 ///   special = false
 /// }
 /// resource "gcp_sql_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-user"
-///   instance = gcp_sql_databaseinstance.instance.name
+///   instance = gcp_sql_database_instance.instance.name
 ///   host     = "%"
 ///   password = random_password.pwd.result
 /// }
-/// resource "gcp_datastream_connectionprofile" "source_connection_profile" {
+/// resource "gcp_datastream_connection_profile" "source_connection_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Source connection profile"
 ///   location              = "us-central1"
 ///   connection_profile_id = "source-profile"
 ///   mysql_profile = {
-///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     hostname = gcp_sql_database_instance.instance.public_ip_address
 ///     username = gcp_sql_user.user.name
 ///     password = gcp_sql_user.user.password
 ///   }
@@ -5778,7 +5910,7 @@ import 'stream_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var postgres = new Dataset("postgres", DatasetArgs.builder()
-///             .datasetId("postgres")
+///             .datasetId("postgres_dataset")
 ///             .friendlyName("postgres")
 ///             .description("Database of postgres")
 ///             .location("us-central1")
@@ -5882,7 +6014,7 @@ import 'stream_state.dart';
 ///   postgres:
 ///     type: gcp:bigquery:Dataset
 ///     properties:
-///       datasetId: postgres
+///       datasetId: postgres_dataset
 ///       friendlyName: postgres
 ///       description: Database of postgres
 ///       location: us-central1
@@ -6294,11 +6426,11 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -6406,11 +6538,11 @@ import 'stream_state.dart';
 /// 			Location:    pulumi.String("us-central1"),
 /// 			DisplayName: pulumi.String("my stream"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: sourceConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+/// 				SourceConnectionProfile: sourceConnectionProfile.ID(),
 /// 				MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destinationConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+/// 				DestinationConnectionProfile: destinationConnectionProfile.ID(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
 /// 						DatasetTemplate: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{
@@ -6432,7 +6564,7 @@ import 'stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -6443,12 +6575,15 @@ import 'stream_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
-/// data "gcp_bigquery_getdefaultserviceaccount" "bqSa" {
+/// data "gcp_bigquery_default_service_account" "bqSa" {
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my-instance"
 ///   database_version = "MYSQL_8_0"
 ///   region           = "us-central1"
@@ -6460,66 +6595,87 @@ import 'stream_state.dart';
 ///     }
 ///     ip_configuration = {
 ///       authorized_networks = [{
-///         "value" = "34.71.242.81"
+///         value = "34.71.242.81"
 ///         }, {
-///         "value" = "34.72.28.29"
+///         value = "34.72.28.29"
 ///         }, {
-///         "value" = "34.67.6.157"
+///         value = "34.67.6.157"
 ///         }, {
-///         "value" = "34.67.234.134"
+///         value = "34.67.234.134"
 ///         }, {
-///         "value" = "34.72.239.218"
+///         value = "34.72.239.218"
 ///       }]
 ///     }
 ///   }
 ///   deletion_protection = true
 /// }
 /// resource "gcp_sql_database" "db" {
-///   instance = gcp_sql_databaseinstance.instance.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   instance = gcp_sql_database_instance.instance.name
 ///   name     = "db"
 /// }
 /// resource "random_password" "pwd" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   length  = 16
 ///   special = false
 /// }
 /// resource "gcp_sql_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "user"
-///   instance = gcp_sql_databaseinstance.instance.name
+///   instance = gcp_sql_database_instance.instance.name
 ///   host     = "%"
 ///   password = random_password.pwd.result
 /// }
-/// resource "gcp_datastream_connectionprofile" "source_connection_profile" {
+/// resource "gcp_datastream_connection_profile" "source_connection_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Source connection profile"
 ///   location              = "us-central1"
 ///   connection_profile_id = "source-profile"
 ///   mysql_profile = {
-///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     hostname = gcp_sql_database_instance.instance.public_ip_address
 ///     username = gcp_sql_user.user.name
 ///     password = gcp_sql_user.user.password
 ///   }
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "bigquery_key_user" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "bigquery_key_user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "bigquery-kms-name"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:${data.gcp_bigquery_getdefaultserviceaccount.bqSa.email}"
+///   member        ="serviceAccount:${data.gcp_bigquery_default_service_account.bqSa.email}"
 /// }
-/// resource "gcp_datastream_connectionprofile" "destination_connection_profile" {
+/// resource "gcp_datastream_connection_profile" "destination_connection_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Connection profile"
 ///   location              = "us-central1"
 ///   connection_profile_id = "destination-profile"
 ///   bigquery_profile      = {}
 /// }
 /// resource "gcp_datastream_stream" "default" {
-///   depends_on   = [gcp_kms_cryptokeyiammember.bigquery_key_user]
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.bigquery_key_user]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   stream_id    = "my-stream"
 ///   location     = "us-central1"
 ///   display_name = "my stream"
 ///   source_config = {
-///     source_connection_profile = gcp_datastream_connectionprofile.source_connection_profile.id
+///     source_connection_profile = gcp_datastream_connection_profile.source_connection_profile.id
 ///     mysql_source_config       = {}
 ///   }
 ///   destination_config = {
-///     destination_connection_profile = gcp_datastream_connectionprofile.destination_connection_profile.id
+///     destination_connection_profile = gcp_datastream_connection_profile.destination_connection_profile.id
 ///     bigquery_destination_config = {
 ///       source_hierarchy_datasets = {
 ///         dataset_template = {
@@ -6799,8 +6955,8 @@ import 'stream_state.dart';
 ///
 /// const project = gcp.organizations.getProject({});
 /// const cross_project_dataset = new gcp.organizations.Project("cross-project-dataset", {
-///     projectId: "tf-test_21912",
-///     name: "tf-test_46731",
+///     projectId: "tf-test_2234",
+///     name: "tf-test_29225",
 ///     orgId: "123456789",
 ///     billingAccount: "000000-0000000-0000000-000000",
 ///     deletionPolicy: "DELETE",
@@ -6914,8 +7070,8 @@ import 'stream_state.dart';
 ///
 /// project = gcp.organizations.get_project()
 /// cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
-///     project_id="tf-test_21912",
-///     name="tf-test_46731",
+///     project_id="tf-test_2234",
+///     name="tf-test_29225",
 ///     org_id="123456789",
 ///     billing_account="000000-0000000-0000000-000000",
 ///     deletion_policy="DELETE")
@@ -7022,8 +7178,8 @@ import 'stream_state.dart';
 ///
 ///     var cross_project_dataset = new Gcp.Organizations.Project("cross-project-dataset", new()
 ///     {
-///         ProjectId = "tf-test_21912",
-///         Name = "tf-test_46731",
+///         ProjectId = "tf-test_2234",
+///         Name = "tf-test_29225",
 ///         OrgId = "123456789",
 ///         BillingAccount = "000000-0000000-0000000-000000",
 ///         DeletionPolicy = "DELETE",
@@ -7184,10 +7340,10 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
@@ -7200,8 +7356,8 @@ import 'stream_state.dart';
 /// 			return err
 /// 		}
 /// 		cross_project_dataset, err := organizations.NewProject(ctx, "cross-project-dataset", &organizations.ProjectArgs{
-/// 			ProjectId:      pulumi.String("tf-test_21912"),
-/// 			Name:           pulumi.String("tf-test_46731"),
+/// 			ProjectId:      pulumi.String("tf-test_2234"),
+/// 			Name:           pulumi.String("tf-test_29225"),
 /// 			OrgId:          pulumi.String("123456789"),
 /// 			BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 /// 			DeletionPolicy: pulumi.String("DELETE"),
@@ -7322,11 +7478,11 @@ import 'stream_state.dart';
 /// 			Location:    pulumi.String("us-central1"),
 /// 			DisplayName: pulumi.String("my stream"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: sourceConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+/// 				SourceConnectionProfile: sourceConnectionProfile.ID(),
 /// 				MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destinationConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+/// 				DestinationConnectionProfile: destinationConnectionProfile.ID(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
 /// 						DatasetTemplate: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{
@@ -7346,7 +7502,7 @@ import 'stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -7360,33 +7516,48 @@ import 'stream_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_organizations_project" "cross-project-dataset" {
-///   project_id      = "tf-test_21912"
-///   name            = "tf-test_46731"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project_id      = "tf-test_2234"
+///   name            = "tf-test_29225"
 ///   org_id          = "123456789"
 ///   billing_account = "000000-0000000-0000000-000000"
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "time_sleep" "wait_60_seconds" {
-///   depends_on      = [gcp_organizations_project.cross-project-dataset]
+///   depends_on = [gcp_organizations_project.cross-project-dataset]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "60s"
 /// }
 /// resource "gcp_projects_service" "bigquery" {
-///   depends_on         = [time_sleep.wait_60_seconds]
+///   depends_on = [time_sleep.wait_60_seconds]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project            = gcp_organizations_project.cross-project-dataset.project_id
 ///   service            = "bigquery.googleapis.com"
 ///   disable_on_destroy = false
 /// }
-/// resource "gcp_projects_iammember" "datastream_bigquery_admin" {
+/// resource "gcp_projects_i_a_m_member" "datastream_bigquery_admin" {
 ///   depends_on = [time_sleep.wait_60_seconds]
-///   project    = gcp_organizations_project.cross-project-dataset.project_id
-///   role       = "roles/bigquery.admin"
-///   member     ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-datastream.iam.gserviceaccount.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.cross-project-dataset.project_id
+///   role    = "roles/bigquery.admin"
+///   member  ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-datastream.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my-instance"
 ///   database_version = "MYSQL_8_0"
 ///   region           = "us-central1"
@@ -7398,60 +7569,78 @@ import 'stream_state.dart';
 ///     }
 ///     ip_configuration = {
 ///       authorized_networks = [{
-///         "value" = "34.71.242.81"
+///         value = "34.71.242.81"
 ///         }, {
-///         "value" = "34.72.28.29"
+///         value = "34.72.28.29"
 ///         }, {
-///         "value" = "34.67.6.157"
+///         value = "34.67.6.157"
 ///         }, {
-///         "value" = "34.67.234.134"
+///         value = "34.67.234.134"
 ///         }, {
-///         "value" = "34.72.239.218"
+///         value = "34.72.239.218"
 ///       }]
 ///     }
 ///   }
 ///   deletion_protection = true
 /// }
 /// resource "gcp_sql_database" "db" {
-///   instance = gcp_sql_databaseinstance.instance.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   instance = gcp_sql_database_instance.instance.name
 ///   name     = "db"
 /// }
 /// resource "random_password" "pwd" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   length  = 16
 ///   special = false
 /// }
 /// resource "gcp_sql_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "user"
-///   instance = gcp_sql_databaseinstance.instance.name
+///   instance = gcp_sql_database_instance.instance.name
 ///   host     = "%"
 ///   password = random_password.pwd.result
 /// }
-/// resource "gcp_datastream_connectionprofile" "source_connection_profile" {
+/// resource "gcp_datastream_connection_profile" "source_connection_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Source connection profile"
 ///   location              = "us-central1"
 ///   connection_profile_id = "source-profile"
 ///   mysql_profile = {
-///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     hostname = gcp_sql_database_instance.instance.public_ip_address
 ///     username = gcp_sql_user.user.name
 ///     password = gcp_sql_user.user.password
 ///   }
 /// }
-/// resource "gcp_datastream_connectionprofile" "destination_connection_profile" {
+/// resource "gcp_datastream_connection_profile" "destination_connection_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Connection profile"
 ///   location              = "us-central1"
 ///   connection_profile_id = "destination-profile"
 ///   bigquery_profile      = {}
 /// }
 /// resource "gcp_datastream_stream" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   stream_id    = "my-stream"
 ///   location     = "us-central1"
 ///   display_name = "my stream"
 ///   source_config = {
-///     source_connection_profile = gcp_datastream_connectionprofile.source_connection_profile.id
+///     source_connection_profile = gcp_datastream_connection_profile.source_connection_profile.id
 ///     mysql_source_config       = {}
 ///   }
 ///   destination_config = {
-///     destination_connection_profile = gcp_datastream_connectionprofile.destination_connection_profile.id
+///     destination_connection_profile = gcp_datastream_connection_profile.destination_connection_profile.id
 ///     bigquery_destination_config = {
 ///       source_hierarchy_datasets = {
 ///         dataset_template = {
@@ -7523,8 +7712,8 @@ import 'stream_state.dart';
 ///             .build());
 ///
 ///         var cross_project_dataset = new Project("cross-project-dataset", ProjectArgs.builder()
-///             .projectId("tf-test_21912")
-///             .name("tf-test_46731")
+///             .projectId("tf-test_2234")
+///             .name("tf-test_29225")
 ///             .orgId("123456789")
 ///             .billingAccount("000000-0000000-0000000-000000")
 ///             .deletionPolicy("DELETE")
@@ -7652,8 +7841,8 @@ import 'stream_state.dart';
 ///   cross-project-dataset:
 ///     type: gcp:organizations:Project
 ///     properties:
-///       projectId: tf-test_21912
-///       name: tf-test_46731
+///       projectId: tf-test_2234
+///       name: tf-test_29225
 ///       orgId: '123456789'
 ///       billingAccount: 000000-0000000-0000000-000000
 ///       deletionPolicy: DELETE
@@ -8069,9 +8258,9 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -8167,11 +8356,11 @@ import 'stream_state.dart';
 /// 			Location:    pulumi.String("us-central1"),
 /// 			DisplayName: pulumi.String("my stream"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: sourceConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+/// 				SourceConnectionProfile: sourceConnectionProfile.ID(),
 /// 				MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destinationConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+/// 				DestinationConnectionProfile: destinationConnectionProfile.ID(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
 /// 						DatasetTemplate: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{
@@ -8191,7 +8380,7 @@ import 'stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -8202,10 +8391,13 @@ import 'stream_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my-instance"
 ///   database_version = "MYSQL_8_0"
 ///   region           = "us-central1"
@@ -8217,60 +8409,78 @@ import 'stream_state.dart';
 ///     }
 ///     ip_configuration = {
 ///       authorized_networks = [{
-///         "value" = "34.71.242.81"
+///         value = "34.71.242.81"
 ///         }, {
-///         "value" = "34.72.28.29"
+///         value = "34.72.28.29"
 ///         }, {
-///         "value" = "34.67.6.157"
+///         value = "34.67.6.157"
 ///         }, {
-///         "value" = "34.67.234.134"
+///         value = "34.67.234.134"
 ///         }, {
-///         "value" = "34.72.239.218"
+///         value = "34.72.239.218"
 ///       }]
 ///     }
 ///   }
 ///   deletion_protection = true
 /// }
 /// resource "gcp_sql_database" "db" {
-///   instance = gcp_sql_databaseinstance.instance.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   instance = gcp_sql_database_instance.instance.name
 ///   name     = "db"
 /// }
 /// resource "random_password" "pwd" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   length  = 16
 ///   special = false
 /// }
 /// resource "gcp_sql_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "user"
-///   instance = gcp_sql_databaseinstance.instance.name
+///   instance = gcp_sql_database_instance.instance.name
 ///   host     = "%"
 ///   password = random_password.pwd.result
 /// }
-/// resource "gcp_datastream_connectionprofile" "source_connection_profile" {
+/// resource "gcp_datastream_connection_profile" "source_connection_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Source connection profile"
 ///   location              = "us-central1"
 ///   connection_profile_id = "source-profile"
 ///   mysql_profile = {
-///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     hostname = gcp_sql_database_instance.instance.public_ip_address
 ///     username = gcp_sql_user.user.name
 ///     password = gcp_sql_user.user.password
 ///   }
 /// }
-/// resource "gcp_datastream_connectionprofile" "destination_connection_profile" {
+/// resource "gcp_datastream_connection_profile" "destination_connection_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Connection profile"
 ///   location              = "us-central1"
 ///   connection_profile_id = "destination-profile"
 ///   bigquery_profile      = {}
 /// }
 /// resource "gcp_datastream_stream" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   stream_id    = "my-stream"
 ///   location     = "us-central1"
 ///   display_name = "my stream"
 ///   source_config = {
-///     source_connection_profile = gcp_datastream_connectionprofile.source_connection_profile.id
+///     source_connection_profile = gcp_datastream_connection_profile.source_connection_profile.id
 ///     mysql_source_config       = {}
 ///   }
 ///   destination_config = {
-///     destination_connection_profile = gcp_datastream_connectionprofile.destination_connection_profile.id
+///     destination_connection_profile = gcp_datastream_connection_profile.destination_connection_profile.id
 ///     bigquery_destination_config = {
 ///       source_hierarchy_datasets = {
 ///         dataset_template = {
@@ -8895,11 +9105,11 @@ import 'stream_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -9020,11 +9230,11 @@ import 'stream_state.dart';
 /// 			Location:    pulumi.String("us-central1"),
 /// 			DisplayName: pulumi.String("My BLMT stream"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: sourceConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+/// 				SourceConnectionProfile: sourceConnectionProfile.ID(),
 /// 				MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destinationConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+/// 				DestinationConnectionProfile: destinationConnectionProfile.ID(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
 /// 						DatasetTemplate: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{
@@ -9056,7 +9266,7 @@ import 'stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -9067,10 +9277,13 @@ import 'stream_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "blmt-instance"
 ///   database_version = "MYSQL_8_0"
 ///   region           = "us-central1"
@@ -9078,78 +9291,105 @@ import 'stream_state.dart';
 ///     tier = "db-f1-micro"
 ///     ip_configuration = {
 ///       authorized_networks = [{
-///         "value" = "34.71.242.81"
+///         value = "34.71.242.81"
 ///         }, {
-///         "value" = "34.72.28.29"
+///         value = "34.72.28.29"
 ///         }, {
-///         "value" = "34.67.6.157"
+///         value = "34.67.6.157"
 ///         }, {
-///         "value" = "34.67.234.134"
+///         value = "34.67.234.134"
 ///         }, {
-///         "value" = "34.72.239.218"
+///         value = "34.72.239.218"
 ///       }]
 ///     }
 ///   }
 ///   deletion_protection = true
 /// }
 /// resource "gcp_sql_database" "db" {
-///   instance = gcp_sql_databaseinstance.instance.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   instance = gcp_sql_database_instance.instance.name
 ///   name     = "db"
 /// }
 /// resource "random_password" "pwd" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   length  = 16
 ///   special = false
 /// }
 /// resource "gcp_sql_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "user"
-///   instance = gcp_sql_databaseinstance.instance.name
+///   instance = gcp_sql_database_instance.instance.name
 ///   host     = "%"
 ///   password = random_password.pwd.result
 /// }
 /// resource "gcp_storage_bucket" "blmt_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "blmt-bucket"
 ///   location      = "us-central1"
 ///   force_destroy = true
 /// }
 /// resource "gcp_bigquery_connection" "blmt_connection" {
-///   project        = data.gcp_organizations_getproject.project.project_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project        = data.gcp_organizations_project.project.project_id
 ///   location       = "us-central1"
 ///   connection_id  = "blmt-connection"
 ///   friendly_name  = "Datastream BLMT Test Connection"
 ///   description    = "Connection for Datastream BLMT test"
 ///   cloud_resource = {}
 /// }
-/// resource "gcp_storage_bucketiammember" "blmt_connection_bucket_admin" {
+/// resource "gcp_storage_bucket_i_a_m_member" "blmt_connection_bucket_admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = gcp_storage_bucket.blmt_bucket.name
 ///   role   = "roles/storage.admin"
 ///   member ="serviceAccount:${gcp_bigquery_connection.blmt_connection.cloud_resource.service_account_id}"
 /// }
-/// resource "gcp_datastream_connectionprofile" "source_connection_profile" {
+/// resource "gcp_datastream_connection_profile" "source_connection_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Source connection profile"
 ///   location              = "us-central1"
 ///   connection_profile_id = "blmt-source-profile"
 ///   mysql_profile = {
-///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     hostname = gcp_sql_database_instance.instance.public_ip_address
 ///     username = gcp_sql_user.user.name
 ///     password = gcp_sql_user.user.password
 ///   }
 /// }
-/// resource "gcp_datastream_connectionprofile" "destination_connection_profile" {
+/// resource "gcp_datastream_connection_profile" "destination_connection_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Connection profile"
 ///   location              = "us-central1"
 ///   connection_profile_id = "blmt-destination-profile"
 ///   bigquery_profile      = {}
 /// }
 /// resource "gcp_datastream_stream" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   stream_id    = "blmt-stream"
 ///   location     = "us-central1"
 ///   display_name = "My BLMT stream"
 ///   source_config = {
-///     source_connection_profile = gcp_datastream_connectionprofile.source_connection_profile.id
+///     source_connection_profile = gcp_datastream_connection_profile.source_connection_profile.id
 ///     mysql_source_config       = {}
 ///   }
 ///   destination_config = {
-///     destination_connection_profile = gcp_datastream_connectionprofile.destination_connection_profile.id
+///     destination_connection_profile = gcp_datastream_connection_profile.destination_connection_profile.id
 ///     bigquery_destination_config = {
 ///       source_hierarchy_datasets = {
 ///         dataset_template = {
@@ -9751,8 +9991,8 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -9850,7 +10090,7 @@ import 'stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -9858,10 +10098,13 @@ import 'stream_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_datastream_stream" "stream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   stream_id    = "rules-stream"
 ///   location     = "us-central1"
 ///   display_name = "BigQuery Stream with Rules"
@@ -9870,7 +10113,7 @@ import 'stream_state.dart';
 ///     mysql_source_config = {
 ///       include_objects = {
 ///         mysql_databases = [{
-///           "database" = "my_database"
+///           database = "my_database"
 ///         }]
 ///       }
 ///       binary_log_position = {}
@@ -10299,7 +10542,7 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10368,7 +10611,7 @@ import 'stream_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -10377,6 +10620,9 @@ import 'stream_state.dart';
 /// }
 ///
 /// resource "gcp_datastream_stream" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Mongodb to BigQuery"
 ///   location     = "us-central1"
 ///   stream_id    = "mongodb-stream"
@@ -10385,11 +10631,11 @@ import 'stream_state.dart';
 ///     mongodb_source_config = {
 ///       include_objects = {
 ///         databases = [{
-///           "database" = "mydb"
-///           "collections" = [{
-///             "collection" = "mycollection1"
+///           database = "mydb"
+///           collections = [{
+///             collection = "mycollection1"
 ///             }, {
-///             "collection" = "mycollection2"
+///             collection = "mycollection2"
 ///           }]
 ///         }]
 ///       }
@@ -10610,7 +10856,7 @@ class Stream extends pulumi.CustomResource {
           'gcp:datastream/stream:Stream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     backfillAll = registerOutput<StreamBackfillAll?>('backfillAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamBackfillAll.fromMap((guardedValue as Map).cast<String, dynamic>()); });

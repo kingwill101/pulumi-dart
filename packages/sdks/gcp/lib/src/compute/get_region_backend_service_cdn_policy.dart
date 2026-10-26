@@ -76,13 +76,13 @@ class GetRegionBackendServiceCdnPolicy {
     return GetRegionBackendServiceCdnPolicy(
       cacheKeyPolicies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionBackendServiceCdnPolicyCacheKeyPolicy>(map['cacheKeyPolicies']!, (value) => GetRegionBackendServiceCdnPolicyCacheKeyPolicy.fromMap((value as Map).cast<String, dynamic>()))),
       cacheMode: pulumi.Input.fromValue(map['cacheMode'] as String),
-      clientTtl: pulumi.Input.fromValue((map['clientTtl'] as num).toInt()),
-      defaultTtl: pulumi.Input.fromValue((map['defaultTtl'] as num).toInt()),
-      maxTtl: pulumi.Input.fromValue((map['maxTtl'] as num).toInt()),
+      clientTtl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['clientTtl'])),
+      defaultTtl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['defaultTtl'])),
+      maxTtl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxTtl'])),
       negativeCaching: pulumi.Input.fromValue(map['negativeCaching'] as bool),
       negativeCachingPolicies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionBackendServiceCdnPolicyNegativeCachingPolicy>(map['negativeCachingPolicies']!, (value) => GetRegionBackendServiceCdnPolicyNegativeCachingPolicy.fromMap((value as Map).cast<String, dynamic>()))),
-      serveWhileStale: pulumi.Input.fromValue((map['serveWhileStale'] as num).toInt()),
-      signedUrlCacheMaxAgeSec: pulumi.Input.fromValue((map['signedUrlCacheMaxAgeSec'] as num).toInt()),
+      serveWhileStale: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['serveWhileStale'])),
+      signedUrlCacheMaxAgeSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['signedUrlCacheMaxAgeSec'])),
     );
   }
 }

@@ -115,7 +115,7 @@ class PublicDelegatedPrefixState {
 
   factory PublicDelegatedPrefixState.fromMap(Map<String, dynamic> map) {
     return PublicDelegatedPrefixState(
-      allocatablePrefixLength: (() { final guardedValue = map['allocatablePrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      allocatablePrefixLength: (() { final guardedValue = map['allocatablePrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableEnhancedIpv4Allocation: (() { final guardedValue = map['enableEnhancedIpv4Allocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

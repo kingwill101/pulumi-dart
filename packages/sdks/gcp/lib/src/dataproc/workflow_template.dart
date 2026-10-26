@@ -220,7 +220,7 @@ import 'workflow_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -291,7 +291,7 @@ import 'workflow_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -299,7 +299,10 @@ import 'workflow_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_workflowtemplate" "template" {
+/// resource "gcp_dataproc_workflow_template" "template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "template-example"
 ///   location = "us-central1"
 ///   placement = {
@@ -711,8 +714,8 @@ import 'workflow_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -791,7 +794,7 @@ import 'workflow_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -800,15 +803,21 @@ import 'workflow_template_state.dart';
 /// }
 ///
 /// # Grant Dataproc service account KMS permissions at project level
-/// resource "gcp_projects_iammember" "dataproc_kms_encrypter_decrypter" {
+/// resource "gcp_projects_i_a_m_member" "dataproc_kms_encrypter_decrypter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = project.name
 ///   role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
 ///   member  ="serviceAccount:service-${project.number}@dataproc-accounts.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_dataproc_workflowtemplate" "example" {
-///   depends_on = [gcp_projects_iammember.dataproc_kms_encrypter_decrypter]
-///   name       = workflowTemplateName
-///   location   = region
+/// resource "gcp_dataproc_workflow_template" "example" {
+///   depends_on = [gcp_projects_i_a_m_member.dataproc_kms_encrypter_decrypter]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = workflowTemplateName
+///   location = region
 ///   encryption_config = {
 ///     kms_key = "<<-- uri to desired crypto key for customer management -->>"
 ///   }
@@ -1006,6 +1015,405 @@ import 'workflow_template_state.dart';
 /// ```
 ///
 ///
+/// ### Dataproc Workflow Template Instance Flexibility Policy
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const template = new gcp.dataproc.WorkflowTemplate("template", {
+///     name: "template-flexible-vms",
+///     location: "us-central1",
+///     placement: {
+///         managedCluster: {
+///             clusterName: "my-flexible-cluster",
+///             config: {
+///                 softwareConfig: {
+///                     imageVersion: "2.0.35-debian10",
+///                 },
+///                 masterConfig: {
+///                     numInstances: 1,
+///                     machineType: "e2-standard-2",
+///                 },
+///                 workerConfig: {
+///                     numInstances: 2,
+///                     instanceFlexibilityPolicy: {
+///                         instanceSelectionLists: [{
+///                             machineTypes: ["e2-standard-2"],
+///                             rank: 1,
+///                         }],
+///                     },
+///                 },
+///                 secondaryWorkerConfig: {
+///                     numInstances: 2,
+///                     instanceFlexibilityPolicy: {
+///                         instanceSelectionLists: [{
+///                             machineTypes: ["n1-standard-2"],
+///                             rank: 1,
+///                         }],
+///                         provisioningModelMix: {
+///                             standardCapacityBase: 1,
+///                             standardCapacityPercentAboveBase: 50,
+///                         },
+///                     },
+///                 },
+///             },
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// template = gcp.dataproc.WorkflowTemplate("template",
+///     name="template-flexible-vms",
+///     location="us-central1",
+///     placement={
+///         "managed_cluster": {
+///             "cluster_name": "my-flexible-cluster",
+///             "config": {
+///                 "software_config": {
+///                     "image_version": "2.0.35-debian10",
+///                 },
+///                 "master_config": {
+///                     "num_instances": 1,
+///                     "machine_type": "e2-standard-2",
+///                 },
+///                 "worker_config": {
+///                     "num_instances": 2,
+///                     "instance_flexibility_policy": {
+///                         "instance_selection_lists": [{
+///                             "machine_types": ["e2-standard-2"],
+///                             "rank": 1,
+///                         }],
+///                     },
+///                 },
+///                 "secondary_worker_config": {
+///                     "num_instances": 2,
+///                     "instance_flexibility_policy": {
+///                         "instance_selection_lists": [{
+///                             "machine_types": ["n1-standard-2"],
+///                             "rank": 1,
+///                         }],
+///                         "provisioning_model_mix": {
+///                             "standard_capacity_base": 1,
+///                             "standard_capacity_percent_above_base": 50,
+///                         },
+///                     },
+///                 },
+///             },
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var template = new Gcp.Dataproc.WorkflowTemplate("template", new()
+///     {
+///         Name = "template-flexible-vms",
+///         Location = "us-central1",
+///         Placement = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementArgs
+///         {
+///             ManagedCluster = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterArgs
+///             {
+///                 ClusterName = "my-flexible-cluster",
+///                 Config = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigArgs
+///                 {
+///                     SoftwareConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs
+///                     {
+///                         ImageVersion = "2.0.35-debian10",
+///                     },
+///                     MasterConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
+///                     {
+///                         NumInstances = 1,
+///                         MachineType = "e2-standard-2",
+///                     },
+///                     WorkerConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs
+///                     {
+///                         NumInstances = 2,
+///                         InstanceFlexibilityPolicy = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs
+///                         {
+///                             InstanceSelectionLists = new[]
+///                             {
+///                                 new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs
+///                                 {
+///                                     MachineTypes = new[]
+///                                     {
+///                                         "e2-standard-2",
+///                                     },
+///                                     Rank = 1,
+///                                 },
+///                             },
+///                         },
+///                     },
+///                     SecondaryWorkerConfig = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs
+///                     {
+///                         NumInstances = 2,
+///                         InstanceFlexibilityPolicy = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs
+///                         {
+///                             InstanceSelectionLists = new[]
+///                             {
+///                                 new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs
+///                                 {
+///                                     MachineTypes = new[]
+///                                     {
+///                                         "n1-standard-2",
+///                                     },
+///                                     Rank = 1,
+///                                 },
+///                             },
+///                             ProvisioningModelMix = new Gcp.Dataproc.Inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs
+///                             {
+///                                 StandardCapacityBase = 1,
+///                                 StandardCapacityPercentAboveBase = 50,
+///                             },
+///                         },
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := dataproc.NewWorkflowTemplate(ctx, "template", &dataproc.WorkflowTemplateArgs{
+/// 			Name:     pulumi.String("template-flexible-vms"),
+/// 			Location: pulumi.String("us-central1"),
+/// 			Placement: &dataproc.WorkflowTemplatePlacementArgs{
+/// 				ManagedCluster: &dataproc.WorkflowTemplatePlacementManagedClusterArgs{
+/// 					ClusterName: pulumi.String("my-flexible-cluster"),
+/// 					Config: &dataproc.WorkflowTemplatePlacementManagedClusterConfigArgs{
+/// 						SoftwareConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs{
+/// 							ImageVersion: pulumi.String("2.0.35-debian10"),
+/// 						},
+/// 						MasterConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs{
+/// 							NumInstances: pulumi.Int(1),
+/// 							MachineType:  pulumi.String("e2-standard-2"),
+/// 						},
+/// 						WorkerConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs{
+/// 							NumInstances: pulumi.Int(2),
+/// 							InstanceFlexibilityPolicy: &dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs{
+/// 								InstanceSelectionLists: dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray{
+/// 									&dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{
+/// 										MachineTypes: pulumi.StringArray{
+/// 											pulumi.String("e2-standard-2"),
+/// 										},
+/// 										Rank: pulumi.Int(1),
+/// 									},
+/// 								},
+/// 							},
+/// 						},
+/// 						SecondaryWorkerConfig: &dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs{
+/// 							NumInstances: pulumi.Int(2),
+/// 							InstanceFlexibilityPolicy: &dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs{
+/// 								InstanceSelectionLists: dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray{
+/// 									&dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{
+/// 										MachineTypes: pulumi.StringArray{
+/// 											pulumi.String("n1-standard-2"),
+/// 										},
+/// 										Rank: pulumi.Int(1),
+/// 									},
+/// 								},
+/// 								ProvisioningModelMix: &dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs{
+/// 									StandardCapacityBase:             pulumi.Int(1),
+/// 									StandardCapacityPercentAboveBase: pulumi.Int(50),
+/// 								},
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_workflow_template" "template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "template-flexible-vms"
+///   location = "us-central1"
+///   placement = {
+///     managed_cluster = {
+///       cluster_name = "my-flexible-cluster"
+///       config = {
+///         software_config = {
+///           image_version = "2.0.35-debian10"
+///         }
+///         master_config = {
+///           num_instances = 1
+///           machine_type  = "e2-standard-2"
+///         }
+///         worker_config = {
+///           num_instances = 2
+///           instance_flexibility_policy = {
+///             instance_selection_lists = [{
+///               machine_types = ["e2-standard-2"]
+///               rank          = 1
+///             }]
+///           }
+///         }
+///         secondary_worker_config = {
+///           num_instances = 2
+///           instance_flexibility_policy = {
+///             instance_selection_lists = [{
+///               machine_types = ["n1-standard-2"]
+///               rank          = 1
+///             }]
+///             provisioning_model_mix = {
+///               standard_capacity_base               = 1
+///               standard_capacity_percent_above_base = 50
+///             }
+///           }
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.dataproc.WorkflowTemplate;
+/// import com.pulumi.gcp.dataproc.WorkflowTemplateArgs;
+/// import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementArgs;
+/// import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterArgs;
+/// import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigArgs;
+/// import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs;
+/// import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs;
+/// import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs;
+/// import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs;
+/// import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs;
+/// import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs;
+/// import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs;
+/// import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs;
+/// import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var template = new WorkflowTemplate("template", WorkflowTemplateArgs.builder()
+///             .name("template-flexible-vms")
+///             .location("us-central1")
+///             .placement(WorkflowTemplatePlacementArgs.builder()
+///                 .managedCluster(WorkflowTemplatePlacementManagedClusterArgs.builder()
+///                     .clusterName("my-flexible-cluster")
+///                     .config(WorkflowTemplatePlacementManagedClusterConfigArgs.builder()
+///                         .softwareConfig(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs.builder()
+///                             .imageVersion("2.0.35-debian10")
+///                             .build())
+///                         .masterConfig(WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs.builder()
+///                             .numInstances(1)
+///                             .machineType("e2-standard-2")
+///                             .build())
+///                         .workerConfig(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs.builder()
+///                             .numInstances(2)
+///                             .instanceFlexibilityPolicy(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs.builder()
+///                                 .instanceSelectionLists(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs.builder()
+///                                     .machineTypes("e2-standard-2")
+///                                     .rank(1)
+///                                     .build())
+///                                 .build())
+///                             .build())
+///                         .secondaryWorkerConfig(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs.builder()
+///                             .numInstances(2)
+///                             .instanceFlexibilityPolicy(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs.builder()
+///                                 .instanceSelectionLists(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs.builder()
+///                                     .machineTypes("n1-standard-2")
+///                                     .rank(1)
+///                                     .build())
+///                                 .provisioningModelMix(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs.builder()
+///                                     .standardCapacityBase(1)
+///                                     .standardCapacityPercentAboveBase(50)
+///                                     .build())
+///                                 .build())
+///                             .build())
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   template:
+///     type: gcp:dataproc:WorkflowTemplate
+///     properties:
+///       name: template-flexible-vms
+///       location: us-central1
+///       placement:
+///         managedCluster:
+///           clusterName: my-flexible-cluster
+///           config:
+///             softwareConfig:
+///               imageVersion: 2.0.35-debian10
+///             masterConfig:
+///               numInstances: 1
+///               machineType: e2-standard-2
+///             workerConfig:
+///               numInstances: 2
+///               instanceFlexibilityPolicy:
+///                 instanceSelectionLists:
+///                   - machineTypes:
+///                       - e2-standard-2
+///                     rank: 1
+///             secondaryWorkerConfig:
+///               numInstances: 2
+///               instanceFlexibilityPolicy:
+///                 instanceSelectionLists:
+///                   - machineTypes:
+///                       - n1-standard-2
+///                     rank: 1
+///                 provisioningModelMix:
+///                   standardCapacityBase: 1
+///                   standardCapacityPercentAboveBase: 50
+/// ```
+///
+///
 /// ## Import
 ///
 /// WorkflowTemplate can be imported using any of these accepted formats:
@@ -1051,7 +1459,7 @@ class WorkflowTemplate extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
   late final pulumi.Output<List<WorkflowTemplateParameter>?> parameters;
-  /// (Required) WorkflowTemplate scheduling information.
+  /// WorkflowTemplate scheduling information. Structure is documented below.
   late final pulumi.Output<WorkflowTemplatePlacement> placement;
   /// The project for the resource
   late final pulumi.Output<String> project;
@@ -1074,7 +1482,7 @@ class WorkflowTemplate extends pulumi.CustomResource {
           'gcp:dataproc/workflowTemplate:WorkflowTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

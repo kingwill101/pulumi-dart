@@ -156,8 +156,8 @@ import 'authz_policy_target.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -212,7 +212,7 @@ import 'authz_policy_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -220,28 +220,31 @@ import 'authz_policy_target.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_networksecurity_authzpolicy" "default" {
+/// resource "gcp_networksecurity_authz_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-mcp-policy"
 ///   location = "us-west1"
 ///   target = {
-///     resources = ["projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-west1/agentGateways/gateway1"]
+///     resources = ["projects/${data.gcp_organizations_project.project.project_id}/locations/us-west1/agentGateways/gateway1"]
 ///   }
 ///   policy_profile = "REQUEST_AUTHZ"
 ///   action         = "ALLOW"
 ///   http_rules {
 ///     to = {
 ///       operations = [{
-///         "mcp" = {
-///           "baseProtocolMethodsOption" = "MATCH_BASE_PROTOCOL_METHODS"
-///           "methods" = [{
-///             "name" = "tools"
+///         mcp = {
+///           base_protocol_methods_option = "MATCH_BASE_PROTOCOL_METHODS"
+///           methods = [{
+///             name = "tools"
 ///             }, {
-///             "name" = "tools/call"
-///             "params" = [{
-///               "exact" = "foo"
+///             name = "tools/call"
+///             params = [{
+///               exact = "foo"
 ///             }]
 ///           }]
 ///         }
@@ -438,7 +441,7 @@ class AuthzPolicy extends pulumi.CustomResource {
           'gcp:networksecurity/authzPolicy:AuthzPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     action = registerOutput<String>('action');

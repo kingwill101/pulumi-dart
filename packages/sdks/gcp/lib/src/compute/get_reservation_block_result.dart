@@ -110,19 +110,19 @@ class GetReservationBlockResult {
 
   factory GetReservationBlockResult.fromMap(Map<String, dynamic> map) {
     return GetReservationBlockResult(
-      blockCount: (() { final guardedValue = map['blockCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      blockCount: (() { final guardedValue = map['blockCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
       healthInfos: (() { final guardedValue = map['healthInfos']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetReservationBlockHealthInfo>(guardedValue, (value) => GetReservationBlockHealthInfo.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      inUseCount: (() { final guardedValue = map['inUseCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      inUseCount: (() { final guardedValue = map['inUseCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       physicalTopologies: (() { final guardedValue = map['physicalTopologies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetReservationBlockPhysicalTopology>(guardedValue, (value) => GetReservationBlockPhysicalTopology.fromMap((value as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       reservation: (() { final guardedValue = map['reservation']; if (guardedValue == null) return null; return guardedValue as String; })(),
       reservationMaintenances: (() { final guardedValue = map['reservationMaintenances']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetReservationBlockReservationMaintenance>(guardedValue, (value) => GetReservationBlockReservationMaintenance.fromMap((value as Map).cast<String, dynamic>())); })(),
-      reservationSubBlockCount: (() { final guardedValue = map['reservationSubBlockCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      reservationSubBlockInUseCount: (() { final guardedValue = map['reservationSubBlockInUseCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      reservationSubBlockCount: (() { final guardedValue = map['reservationSubBlockCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      reservationSubBlockInUseCount: (() { final guardedValue = map['reservationSubBlockInUseCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
       selfLinkWithId: (() { final guardedValue = map['selfLinkWithId']; if (guardedValue == null) return null; return guardedValue as String; })(),

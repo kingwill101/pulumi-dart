@@ -98,7 +98,7 @@ import 'evaluation_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -132,7 +132,7 @@ import 'evaluation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -141,6 +141,9 @@ import 'evaluation_state.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   display_name = "my-app"
@@ -152,6 +155,9 @@ import 'evaluation_state.dart';
 ///   }
 /// }
 /// resource "gcp_ces_evaluation" "ces_evaluation_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   evaluation_id = "eval-basic"
 ///   display_name  = "my-evaluation-basic"
 ///   location      = "us"
@@ -1292,7 +1298,7 @@ import 'evaluation_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1647,7 +1653,7 @@ import 'evaluation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1656,6 +1662,9 @@ import 'evaluation_state.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id-full"
 ///   location     = "us"
 ///   display_name = "my-app-full"
@@ -1667,6 +1676,9 @@ import 'evaluation_state.dart';
 ///   }
 /// }
 /// resource "gcp_ces_tool" "tool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us"
 ///   app            = gcp_ces_app.app.app_id
 ///   tool_id        = "tool-id-full"
@@ -1677,6 +1689,9 @@ import 'evaluation_state.dart';
 ///   }
 /// }
 /// resource "gcp_ces_evaluation" "ces_evaluation_full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   evaluation_id = "evaluation-id-full"
 ///   display_name  = "my-evaluation-full"
 ///   location      = "us"
@@ -1686,194 +1701,194 @@ import 'evaluation_state.dart';
 ///   golden = {
 ///     evaluation_expectations = ["projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/evaluationExpectations/dummy-exp"]
 ///     turns = [{
-///       "steps" = [{
-///         "userInput" = {
-///           "text"         = "Hello"
-///           "willContinue" = true
+///       steps = [{
+///         user_input = {
+///           text          = "Hello"
+///           will_continue = true
 ///         }
 ///         }, {
-///         "userInput" = {
-///           "variables" = {
+///         user_input = {
+///           variables = {
 ///             "key" = "value"
 ///           }
 ///         }
 ///         }, {
-///         "expectation" = {
-///           "note" = "Expect tool call"
-///           "toolCall" = {
-///             "id"   = "tool-call-id"
-///             "tool" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
-///             "args" = {
+///         expectation = {
+///           note = "Expect tool call"
+///           tool_call = {
+///             id   = "tool-call-id"
+///             tool ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
+///             args = {
 ///               "param" = "value"
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "expectation" = {
-///           "note" = "Expect agent response"
-///           "agentResponse" = {
-///             "role" = "agent"
-///             "chunks" = [{
-///               "updatedVariables" = {
+///         expectation = {
+///           note = "Expect agent response"
+///           agent_response = {
+///             role = "agent"
+///             chunks = [{
+///               updated_variables = {
 ///                 "key" = "value"
 ///               }
 ///               }, {
-///               "agentTransfer" = {
-///                 "targetAgent" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/agents/dummy-agent"
+///               agent_transfer = {
+///                 target_agent ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/agents/dummy-agent"
 ///               }
 ///               }, {
-///               "toolCall" = {
-///                 "id"   = "tool-call-id-3"
-///                 "tool" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
+///               tool_call = {
+///                 id   = "tool-call-id-3"
+///                 tool ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
 ///               }
 ///               }, {
-///               "toolResponse" = {
-///                 "id" = "tool-call-id-3"
-///                 "response" = {
+///               tool_response = {
+///                 id = "tool-call-id-3"
+///                 response = {
 ///                   "result" = "success"
 ///                 }
-///                 "tool" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
+///                 tool ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
 ///               }
 ///             }]
 ///           }
 ///         }
 ///         }, {
-///         "expectation" = {
-///           "note" = "Expect toolset tool call"
-///           "toolCall" = {
-///             "id" = "tool-call-id-2"
-///             "toolsetTool" = {
-///               "toolset" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/dummy-toolset"
-///               "toolId"  = "dummy-tool"
+///         expectation = {
+///           note = "Expect toolset tool call"
+///           tool_call = {
+///             id = "tool-call-id-2"
+///             toolset_tool = {
+///               toolset ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/dummy-toolset"
+///               tool_id = "dummy-tool"
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "agentTransfer" = {
-///           "targetAgent" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/agents/dummy-agent"
+///         agent_transfer = {
+///           target_agent ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/agents/dummy-agent"
 ///         }
 ///         }, {
-///         "expectation" = {
-///           "agentTransfer" = {
-///             "targetAgent" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/agents/dummy-agent"
-///             "displayName" = "dummy-agent"
+///         expectation = {
+///           agent_transfer = {
+///             target_agent ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/agents/dummy-agent"
+///             display_name = "dummy-agent"
 ///           }
 ///         }
 ///         }, {
-///         "expectation" = {
-///           "note" = "Expect mock tool response"
-///           "mockToolResponse" = {
-///             "id" = "tool-call-id-4"
-///             "response" = {
+///         expectation = {
+///           note = "Expect mock tool response"
+///           mock_tool_response = {
+///             id = "tool-call-id-4"
+///             response = {
 ///               "result" = "mocked"
 ///             }
-///             "tool" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
+///             tool ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
 ///           }
 ///         }
 ///         }, {
-///         "expectation" = {
-///           "note" = "Expect tool response"
-///           "toolResponse" = {
-///             "toolsetTool" = {
-///               "toolset" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/dummy-toolset"
-///               "toolId"  = "dummy-tool"
+///         expectation = {
+///           note = "Expect tool response"
+///           tool_response = {
+///             toolset_tool = {
+///               toolset ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/dummy-toolset"
+///               tool_id = "dummy-tool"
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "expectation" = {
-///           "note" = "Expect updated variables"
-///           "updatedVariables" = {
-///             "notes" = "Some notes"
+///         expectation = {
+///           note = "Expect updated variables"
+///           updated_variables = {
+///             notes = "Some notes"
 ///           }
 ///         }
 ///         }, {
-///         "userInput" = {
-///           "toolResponses" = {
-///             "toolResponses" = [{
-///               "id" = "tool-call-id-5"
-///               "response" = {
+///         user_input = {
+///           tool_responses = {
+///             tool_responses = [{
+///               id = "tool-call-id-5"
+///               response = {
 ///                 "result" = "user-provided"
 ///               }
-///               "tool" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
+///               tool ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
 ///             }]
 ///           }
 ///         }
 ///         }, {
-///         "userInput" = {
-///           "event" = {
-///             "event" = "my-event"
+///         user_input = {
+///           event = {
+///             event = "my-event"
 ///           }
 ///         }
 ///         }, {
-///         "userInput" = {
-///           "dtmf" = "1234"
+///         user_input = {
+///           dtmf = "1234"
 ///         }
 ///         }, {
-///         "userInput" = {
-///           "audio" = "c29tZSBhdWRpbyBkYXRh"
+///         user_input = {
+///           audio = "c29tZSBhdWRpbyBkYXRh"
 ///         }
 ///         }, {
-///         "userInput" = {
-///           "blob" = {
-///             "mimeType" = "text/plain"
-///             "data"     = "c29tZSBibG9iIGRhdGE="
+///         user_input = {
+///           blob = {
+///             mime_type = "text/plain"
+///             data      = "c29tZSBibG9iIGRhdGE="
 ///           }
 ///         }
 ///         }, {
-///         "userInput" = {
-///           "image" = {
-///             "mimeType" = "image/png"
-///             "data"     = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
+///         user_input = {
+///           image = {
+///             mime_type = "image/png"
+///             data      = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
 ///           }
 ///         }
 ///         }, {
-///         "userInput" = {
-///           "toolResponses" = {
-///             "toolResponses" = [{
-///               "id" = "tool-call-id"
-///               "response" = {
+///         user_input = {
+///           tool_responses = {
+///             tool_responses = [{
+///               id = "tool-call-id"
+///               response = {
 ///                 "result" = "success"
 ///               }
-///               "tool" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
+///               tool ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
 ///             }]
 ///           }
 ///         }
 ///         }, {
-///         "expectation" = {
-///           "note" = "Expect tool response"
-///           "toolResponse" = {
-///             "id" = "tool-call-id"
-///             "response" = {
+///         expectation = {
+///           note = "Expect tool response"
+///           tool_response = {
+///             id = "tool-call-id"
+///             response = {
 ///               "result" = "success"
 ///             }
-///             "tool" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
+///             tool ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
 ///           }
 ///         }
 ///         }, {
-///         "expectation" = {
-///           "note" = "Expect agent response with chunks"
-///           "agentResponse" = {
-///             "role" = "agent"
-///             "chunks" = [{
-///               "text" = "Hello again"
+///         expectation = {
+///           note = "Expect agent response with chunks"
+///           agent_response = {
+///             role = "agent"
+///             chunks = [{
+///               text = "Hello again"
 ///               }, {
-///               "text" = "Hello again transcript"
+///               text = "Hello again transcript"
 ///               }, {
-///               "blob" = {
-///                 "mimeType" = "text/plain"
-///                 "data"     = "c29tZSBibG9iIGRhdGE="
+///               blob = {
+///                 mime_type = "text/plain"
+///                 data      = "c29tZSBibG9iIGRhdGE="
 ///               }
 ///               }, {
-///               "image" = {
-///                 "mimeType" = "image/png"
-///                 "data"     = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
+///               image = {
+///                 mime_type = "image/png"
+///                 data      = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
 ///               }
 ///               }, {
-///               "toolCall" = {
-///                 "id"   = "tool-call-id-3"
-///                 "tool" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
-///                 "args" = {
+///               tool_call = {
+///                 id   = "tool-call-id-3"
+///                 tool ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
+///                 args = {
 ///                   "param" = "value"
 ///                 }
 ///               }
@@ -2786,7 +2801,7 @@ import 'evaluation_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2918,7 +2933,7 @@ import 'evaluation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2927,6 +2942,9 @@ import 'evaluation_state.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id-toolset"
 ///   location     = "us"
 ///   display_name = "my-app-toolset"
@@ -2938,72 +2956,75 @@ import 'evaluation_state.dart';
 ///   }
 /// }
 /// resource "gcp_ces_evaluation" "ces_evaluation_toolset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   evaluation_id = "eval-toolset"
 ///   display_name  = "my-evaluation-toolset"
 ///   location      = "us"
 ///   app           = gcp_ces_app.app.app_id
 ///   golden = {
 ///     turns = [{
-///       "steps" = [{
-///         "expectation" = {
-///           "note" = "Expect agent response with toolset tool call"
-///           "agentResponse" = {
-///             "role" = "agent"
-///             "chunks" = [{
-///               "toolCall" = {
-///                 "id" = "tool-call-id"
-///                 "toolsetTool" = {
-///                   "toolset" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/dummy-toolset"
-///                   "toolId"  = "dummy-tool"
+///       steps = [{
+///         expectation = {
+///           note = "Expect agent response with toolset tool call"
+///           agent_response = {
+///             role = "agent"
+///             chunks = [{
+///               tool_call = {
+///                 id = "tool-call-id"
+///                 toolset_tool = {
+///                   toolset ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/dummy-toolset"
+///                   tool_id = "dummy-tool"
 ///                 }
 ///               }
 ///             }]
 ///           }
 ///         }
 ///         }, {
-///         "expectation" = {
-///           "note" = "Expect agent response with toolset tool response"
-///           "agentResponse" = {
-///             "role" = "agent"
-///             "chunks" = [{
-///               "toolResponse" = {
-///                 "id" = "tool-call-id"
-///                 "response" = {
+///         expectation = {
+///           note = "Expect agent response with toolset tool response"
+///           agent_response = {
+///             role = "agent"
+///             chunks = [{
+///               tool_response = {
+///                 id = "tool-call-id"
+///                 response = {
 ///                   "result" = "success"
 ///                 }
-///                 "toolsetTool" = {
-///                   "toolset" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/dummy-toolset"
-///                   "toolId"  = "dummy-tool"
+///                 toolset_tool = {
+///                   toolset ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/dummy-toolset"
+///                   tool_id = "dummy-tool"
 ///                 }
 ///               }
 ///             }]
 ///           }
 ///         }
 ///         }, {
-///         "expectation" = {
-///           "note" = "Expect mock tool response with toolset tool"
-///           "mockToolResponse" = {
-///             "id" = "tool-call-id-2"
-///             "response" = {
+///         expectation = {
+///           note = "Expect mock tool response with toolset tool"
+///           mock_tool_response = {
+///             id = "tool-call-id-2"
+///             response = {
 ///               "result" = "mocked"
 ///             }
-///             "toolsetTool" = {
-///               "toolset" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/dummy-toolset"
-///               "toolId"  = "dummy-tool"
+///             toolset_tool = {
+///               toolset ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/dummy-toolset"
+///               tool_id = "dummy-tool"
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "userInput" = {
-///           "toolResponses" = {
-///             "toolResponses" = [{
-///               "id" = "tool-call-id-3"
-///               "response" = {
+///         user_input = {
+///           tool_responses = {
+///             tool_responses = [{
+///               id = "tool-call-id-3"
+///               response = {
 ///                 "result" = "user-provided"
 ///               }
-///               "toolsetTool" = {
-///                 "toolset" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/dummy-toolset"
-///                 "toolId"  = "dummy-tool"
+///               toolset_tool = {
+///                 toolset ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/dummy-toolset"
+///                 tool_id = "dummy-tool"
 ///               }
 ///             }]
 ///           }
@@ -3723,7 +3744,7 @@ import 'evaluation_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3899,7 +3920,7 @@ import 'evaluation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3908,6 +3929,9 @@ import 'evaluation_state.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id-scenario"
 ///   location     = "us"
 ///   display_name = "my-app-scenario"
@@ -3919,6 +3943,9 @@ import 'evaluation_state.dart';
 ///   }
 /// }
 /// resource "gcp_ces_tool" "tool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us"
 ///   app            = gcp_ces_app.app.app_id
 ///   tool_id        = "tool-id-scenario"
@@ -3929,6 +3956,9 @@ import 'evaluation_state.dart';
 ///   }
 /// }
 /// resource "gcp_ces_evaluation" "ces_evaluation_scenario_full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   evaluation_id = "eval-scenario-full"
 ///   display_name  = "my-evaluation-scenario-full"
 ///   location      = "us"
@@ -3946,64 +3976,64 @@ import 'evaluation_state.dart';
 ///     }
 ///     evaluation_expectations = ["projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/evaluationExpectations/dummy-exp"]
 ///     user_facts = [{
-///       "name"  = "user_name"
-///       "value" = "John Doe"
+///       name  = "user_name"
+///       value = "John Doe"
 ///     }]
 ///     scenario_expectations = [{
-///       "toolExpectation" = {
-///         "expectedToolCall" = {
-///           "id"   = "tool-call-id"
-///           "tool" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
-///           "args" = {
+///       tool_expectation = {
+///         expected_tool_call = {
+///           id   = "tool-call-id"
+///           tool ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
+///           args = {
 ///             "param" = "value"
 ///           }
 ///         }
-///         "mockToolResponse" = {
-///           "id" = "tool-call-id"
-///           "response" = {
+///         mock_tool_response = {
+///           id = "tool-call-id"
+///           response = {
 ///             "result" = "mocked"
 ///           }
-///           "tool" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
+///           tool ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
 ///         }
 ///       }
 ///       }, {
-///       "agentResponse" = {
-///         "role" = "agent"
-///         "chunks" = [{
-///           "text" = "Hello"
+///       agent_response = {
+///         role = "agent"
+///         chunks = [{
+///           text = "Hello"
 ///           }, {
-///           "updatedVariables" = {
+///           updated_variables = {
 ///             "key" = "value"
 ///           }
 ///           }, {
-///           "blob" = {
-///             "mimeType" = "text/plain"
-///             "data"     = "c29tZSBibG9iIGRhdGE="
+///           blob = {
+///             mime_type = "text/plain"
+///             data      = "c29tZSBibG9iIGRhdGE="
 ///           }
 ///           }, {
-///           "image" = {
-///             "mimeType" = "image/png"
-///             "data"     = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
+///           image = {
+///             mime_type = "image/png"
+///             data      = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
 ///           }
 ///           }, {
-///           "toolCall" = {
-///             "id"   = "tool-call-id-3"
-///             "tool" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
-///             "args" = {
+///           tool_call = {
+///             id   = "tool-call-id-3"
+///             tool ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
+///             args = {
 ///               "param" = "value"
 ///             }
 ///           }
 ///           }, {
-///           "toolResponse" = {
-///             "id" = "tool-call-id-3"
-///             "response" = {
+///           tool_response = {
+///             id = "tool-call-id-3"
+///             response = {
 ///               "result" = "success"
 ///             }
-///             "tool" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
+///             tool ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/tools/${gcp_ces_tool.tool.tool_id}"
 ///           }
 ///           }, {
-///           "agentTransfer" = {
-///             "targetAgent" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/agents/dummy-agent"
+///           agent_transfer = {
+///             target_agent ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/agents/dummy-agent"
 ///           }
 ///         }]
 ///       }
@@ -4769,7 +4799,7 @@ import 'evaluation_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4942,7 +4972,7 @@ import 'evaluation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4951,6 +4981,9 @@ import 'evaluation_state.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id-scenario-ts"
 ///   location     = "us"
 ///   display_name = "my-app-scenario-ts"
@@ -4962,6 +4995,9 @@ import 'evaluation_state.dart';
 ///   }
 /// }
 /// resource "gcp_ces_toolset" "toolset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   toolset_id     = "ts-scen"
 ///   location       = "us"
 ///   app            = gcp_ces_app.app.app_id
@@ -4969,11 +5005,24 @@ import 'evaluation_state.dart';
 ///   description    = "Test description"
 ///   execution_type = "SYNCHRONOUS"
 ///   open_api_toolset = {
-///     open_api_schema       = "openapi: 3.0.0\ninfo:\n  title: My Sample API\n  version: 1.0.0\n  description: A simple API example\nservers:\n  - url: https://api.example.com/v1\npaths: {}\n"
+///     open_api_schema       = <<-EOT
+/// openapi: 3.0.0
+/// info:
+///   title: My Sample API
+///   version: 1.0.0
+///   description: A simple API example
+/// servers:
+///   - url: https://api.example.com/v1
+/// paths: {}
+/// EOT
+///
 ///     ignore_unknown_fields = false
 ///   }
 /// }
 /// resource "gcp_ces_evaluation" "ces_evaluation_scenario_toolset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   evaluation_id = "eval-scen-ts"
 ///   display_name  = "my-evaluation-scenario-toolset"
 ///   location      = "us"
@@ -4991,57 +5040,57 @@ import 'evaluation_state.dart';
 ///     }
 ///     evaluation_expectations = ["projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/evaluationExpectations/dummy-exp"]
 ///     user_facts = [{
-///       "name"  = "user_name"
-///       "value" = "John Doe"
+///       name  = "user_name"
+///       value = "John Doe"
 ///     }]
 ///     scenario_expectations = [{
-///       "toolExpectation" = {
-///         "expectedToolCall" = {
-///           "id" = "tool-call-id"
-///           "toolsetTool" = {
-///             "toolset" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/${gcp_ces_toolset.toolset.toolset_id}"
-///             "toolId"  = "dummy-tool"
+///       tool_expectation = {
+///         expected_tool_call = {
+///           id = "tool-call-id"
+///           toolset_tool = {
+///             toolset ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/${gcp_ces_toolset.toolset.toolset_id}"
+///             tool_id = "dummy-tool"
 ///           }
-///           "args" = {
+///           args = {
 ///             "param" = "value"
 ///           }
 ///         }
-///         "mockToolResponse" = {
-///           "id" = "tool-call-id"
-///           "response" = {
+///         mock_tool_response = {
+///           id = "tool-call-id"
+///           response = {
 ///             "result" = "mocked"
 ///           }
-///           "toolsetTool" = {
-///             "toolset" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/${gcp_ces_toolset.toolset.toolset_id}"
-///             "toolId"  = "dummy-tool"
+///           toolset_tool = {
+///             toolset ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/${gcp_ces_toolset.toolset.toolset_id}"
+///             tool_id = "dummy-tool"
 ///           }
 ///         }
 ///       }
 ///       }, {
-///       "agentResponse" = {
-///         "role" = "agent"
-///         "chunks" = [{
-///           "text" = "Hello"
+///       agent_response = {
+///         role = "agent"
+///         chunks = [{
+///           text = "Hello"
 ///           }, {
-///           "toolCall" = {
-///             "id" = "tool-call-id-3"
-///             "toolsetTool" = {
-///               "toolset" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/${gcp_ces_toolset.toolset.toolset_id}"
-///               "toolId"  = "dummy-tool"
+///           tool_call = {
+///             id = "tool-call-id-3"
+///             toolset_tool = {
+///               toolset ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/${gcp_ces_toolset.toolset.toolset_id}"
+///               tool_id = "dummy-tool"
 ///             }
-///             "args" = {
+///             args = {
 ///               "param" = "value"
 ///             }
 ///           }
 ///           }, {
-///           "toolResponse" = {
-///             "id" = "tool-call-id-3"
-///             "response" = {
+///           tool_response = {
+///             id = "tool-call-id-3"
+///             response = {
 ///               "result" = "success"
 ///             }
-///             "toolsetTool" = {
-///               "toolset" ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/${gcp_ces_toolset.toolset.toolset_id}"
-///               "toolId"  = "dummy-tool"
+///             toolset_tool = {
+///               toolset ="projects/${gcp_ces_app.app.project}/locations/us/apps/${gcp_ces_app.app.app_id}/toolsets/${gcp_ces_toolset.toolset.toolset_id}"
+///               tool_id = "dummy-tool"
 ///             }
 ///           }
 ///         }]
@@ -5409,7 +5458,7 @@ class Evaluation extends pulumi.CustomResource {
           'gcp:ces/evaluation:Evaluation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     app = registerOutput<String>('app');
     createTime = registerOutput<String>('createTime');

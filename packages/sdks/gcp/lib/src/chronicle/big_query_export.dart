@@ -72,7 +72,7 @@ import 'big_query_export_udm_events_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -94,7 +94,7 @@ import 'big_query_export_udm_events_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -102,7 +102,10 @@ import 'big_query_export_udm_events_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_chronicle_bigqueryexport" "example" {
+/// resource "gcp_chronicle_big_query_export" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us"
 ///   instance = "00000000-0000-0000-0000-000000000000"
 ///   udm_events_settings = {
@@ -266,7 +269,7 @@ import 'big_query_export_udm_events_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -305,7 +308,7 @@ import 'big_query_export_udm_events_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -313,7 +316,10 @@ import 'big_query_export_udm_events_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_chronicle_bigqueryexport" "example" {
+/// resource "gcp_chronicle_big_query_export" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                 = "us"
 ///   instance                 = "00000000-0000-0000-0000-000000000000"
 ///   big_query_export_package = "BIG_QUERY_EXPORT_PACKAGE_BYOBQ"
@@ -481,7 +487,7 @@ class BigQueryExport extends pulumi.CustomResource {
           'gcp:chronicle/bigQueryExport:BigQueryExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     bigQueryExportPackage = registerOutput<String>('bigQueryExportPackage');
     entityGraphSettings = registerOutput<BigQueryExportEntityGraphSettings>('entityGraphSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryExportEntityGraphSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

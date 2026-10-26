@@ -144,7 +144,7 @@ import 'instance_from_template_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -191,7 +191,7 @@ import 'instance_from_template_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -199,7 +199,10 @@ import 'instance_from_template_workload_identity_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_instancetemplate" "tpl" {
+/// resource "gcp_compute_instance_template" "tpl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "template"
 ///   machine_type = "e2-medium"
 ///   disks {
@@ -216,10 +219,13 @@ import 'instance_from_template_workload_identity_config.dart';
 ///   }
 ///   can_ip_forward = true
 /// }
-/// resource "gcp_compute_instancefromtemplate" "tpl" {
+/// resource "gcp_compute_instance_from_template" "tpl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "instance-from-template"
 ///   zone                     = "us-central1-a"
-///   source_instance_template = gcp_compute_instancetemplate.tpl.self_link_unique
+///   source_instance_template = gcp_compute_instance_template.tpl.self_link_unique
 ///   can_ip_forward           = false
 ///   labels = {
 ///     "my_key" = "my_value"
@@ -444,7 +450,7 @@ class InstanceFromTemplate extends pulumi.CustomResource {
           'gcp:compute/instanceFromTemplate:InstanceFromTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     advancedMachineFeatures = registerOutput<InstanceFromTemplateAdvancedMachineFeatures>('advancedMachineFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFromTemplateAdvancedMachineFeatures.fromMap((guardedValue as Map).cast<String, dynamic>()); });

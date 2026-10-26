@@ -57,7 +57,7 @@ import 'peered_dns_domain_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -78,7 +78,7 @@ import 'peered_dns_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -86,7 +86,10 @@ import 'peered_dns_domain_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_servicenetworking_peereddnsdomain" "name" {
+/// resource "gcp_servicenetworking_peered_dns_domain" "name" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = 10000000
 ///   name       = "example-com"
 ///   network    = "default"
@@ -189,7 +192,7 @@ class PeeredDnsDomain extends pulumi.CustomResource {
           'gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     dnsSuffix = registerOutput<String>('dnsSuffix');

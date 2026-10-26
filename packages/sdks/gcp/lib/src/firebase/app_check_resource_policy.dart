@@ -82,8 +82,8 @@ import 'app_check_resource_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -112,7 +112,7 @@ import 'app_check_resource_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -121,11 +121,17 @@ import 'app_check_resource_policy_state.dart';
 /// }
 ///
 /// resource "gcp_projects_service" "firebaseappcheck" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   service = "firebaseappcheck.googleapis.com"
 /// }
-/// resource "gcp_firebase_appcheckresourcepolicy" "default" {
-///   depends_on       = [gcp_projects_service.firebaseappcheck]
+/// resource "gcp_firebase_app_check_resource_policy" "default" {
+///   depends_on = [gcp_projects_service.firebaseappcheck]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   service_id       = "oauth2.googleapis.com"
 ///   target_resource  = "//oauth2.googleapis.com/projects/my-project-name/oauthClients/example-client-id"
@@ -275,7 +281,7 @@ class AppCheckResourcePolicy extends pulumi.CustomResource {
           'gcp:firebase/appCheckResourcePolicy:AppCheckResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     enforcementMode = registerOutput<String?>('enforcementMode');

@@ -22,7 +22,7 @@ class ExadbVmClusterPropertiesVmFileSystemStorage {
 
   factory ExadbVmClusterPropertiesVmFileSystemStorage.fromMap(Map<String, dynamic> map) {
     return ExadbVmClusterPropertiesVmFileSystemStorage(
-      sizeInGbsPerNode: pulumi.Input.fromValue((map['sizeInGbsPerNode'] as num).toInt()),
+      sizeInGbsPerNode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeInGbsPerNode'])),
     );
   }
 }

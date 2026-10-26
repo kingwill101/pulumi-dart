@@ -40,7 +40,7 @@ class GetAccountJwtArgs {
   factory GetAccountJwtArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountJwtArgs(
       delegates: (() { final guardedValue = map['delegates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      expiresIn: (() { final guardedValue = map['expiresIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      expiresIn: (() { final guardedValue = map['expiresIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       payload: pulumi.Input.fromValue(map['payload'] as String),
       targetServiceAccount: pulumi.Input.fromValue(map['targetServiceAccount'] as String),
     );

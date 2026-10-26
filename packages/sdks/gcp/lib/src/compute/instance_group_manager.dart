@@ -181,7 +181,7 @@ import 'instance_group_manager_version.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -229,7 +229,7 @@ import 'instance_group_manager_version.dart';
 /// 				},
 /// 			},
 /// 			AutoHealingPolicies: &compute.InstanceGroupManagerAutoHealingPoliciesArgs{
-/// 				HealthCheck:     autohealing.ID().ToIDOutput().ToStringOutput(),
+/// 				HealthCheck:     autohealing.ID(),
 /// 				InitialDelaySec: pulumi.Int(300),
 /// 			},
 /// 		})
@@ -241,7 +241,7 @@ import 'instance_group_manager_version.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -249,7 +249,10 @@ import 'instance_group_manager_version.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "autohealing" {
+/// resource "gcp_compute_health_check" "autohealing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "autohealing-health-check"
 ///   check_interval_sec  = 5
 ///   timeout_sec         = 5
@@ -260,7 +263,10 @@ import 'instance_group_manager_version.dart';
 ///     port         = "8080"
 ///   }
 /// }
-/// resource "gcp_compute_instancegroupmanager" "appserver" {
+/// resource "gcp_compute_instance_group_manager" "appserver" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "appserver-igm"
 ///   base_instance_name = "app"
 ///   zone               = "us-central1-a"
@@ -282,7 +288,7 @@ import 'instance_group_manager_version.dart';
 ///     port = 8888
 ///   }
 ///   auto_healing_policies = {
-///     health_check      = gcp_compute_healthcheck.autohealing.id
+///     health_check      = gcp_compute_health_check.autohealing.id
 ///     initial_delay_sec = 300
 ///   }
 /// }
@@ -480,7 +486,7 @@ import 'instance_group_manager_version.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -513,7 +519,7 @@ import 'instance_group_manager_version.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -521,7 +527,10 @@ import 'instance_group_manager_version.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_instancegroupmanager" "appserver" {
+/// resource "gcp_compute_instance_group_manager" "appserver" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "appserver-igm"
 ///   base_instance_name = "app"
 ///   zone               = "us-central1-a"
@@ -684,7 +693,7 @@ import 'instance_group_manager_version.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -716,7 +725,7 @@ import 'instance_group_manager_version.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -724,7 +733,10 @@ import 'instance_group_manager_version.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_instancegroupmanager" "igm-sr" {
+/// resource "gcp_compute_instance_group_manager" "igm-sr" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "tf-sr-igm"
 ///   base_instance_name = "tf-sr-igm-instance"
 ///   zone               = "us-central1-a"
@@ -1001,7 +1013,7 @@ import 'instance_group_manager_version.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1080,7 +1092,7 @@ import 'instance_group_manager_version.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1088,25 +1100,31 @@ import 'instance_group_manager_version.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "myImage" {
+/// data "gcp_compute_image" "myImage" {
 ///   family  = "debian-11"
 ///   project = "debian-cloud"
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "workload_policy" {
+/// resource "gcp_compute_resource_policy" "workload_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "tf-test-gce-policy"
 ///   region = "us-central1"
 ///   workload_policy = {
 ///     type = "HIGH_THROUGHPUT"
 ///   }
 /// }
-/// resource "gcp_compute_instancetemplate" "igm-basic" {
+/// resource "gcp_compute_instance_template" "igm-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "igm-instance-template"
 ///   machine_type   = "a4-highgpu-8g"
 ///   can_ip_forward = false
 ///   tags           = ["foo", "bar"]
 ///   disks {
-///     source_image = data.gcp_compute_getimage.myImage.self_link
+///     source_image = data.gcp_compute_image.myImage.self_link
 ///     auto_delete  = true
 ///     boot         = true
 ///     disk_type    = "hyperdisk-balanced"
@@ -1118,18 +1136,21 @@ import 'instance_group_manager_version.dart';
 ///     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
 ///   }
 /// }
-/// resource "gcp_compute_instancegroupmanager" "igm-workload-policy" {
+/// resource "gcp_compute_instance_group_manager" "igm-workload-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "Terraform test instance group manager"
 ///   name        = "igm-basic-workload-policy"
 ///   versions {
 ///     name              = "prod"
-///     instance_template = gcp_compute_instancetemplate.igm-basic.self_link
+///     instance_template = gcp_compute_instance_template.igm-basic.self_link
 ///   }
 ///   base_instance_name = "tf-test-igm-no-tp"
 ///   zone               = "us-central1-b"
 ///   target_size        = 0
 ///   resource_policies = {
-///     workload_policy = gcp_compute_resourcepolicy.workload_policy.self_link
+///     workload_policy = gcp_compute_resource_policy.workload_policy.self_link
 ///   }
 /// }
 /// ```
@@ -1416,7 +1437,7 @@ class InstanceGroupManager extends pulumi.CustomResource {
           'gcp:compute/instanceGroupManager:InstanceGroupManager',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     allInstancesConfig = registerOutput<InstanceGroupManagerAllInstancesConfig?>('allInstancesConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupManagerAllInstancesConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoHealingPolicies = registerOutput<InstanceGroupManagerAutoHealingPolicies?>('autoHealingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupManagerAutoHealingPolicies.fromMap((guardedValue as Map).cast<String, dynamic>()); });

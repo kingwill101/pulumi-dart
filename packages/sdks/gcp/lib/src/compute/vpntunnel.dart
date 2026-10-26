@@ -209,7 +209,7 @@ import 'vpntunnel_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -223,7 +223,7 @@ import 'vpntunnel_state.dart';
 /// 		}
 /// 		targetGateway, err := compute.NewVPNGateway(ctx, "target_gateway", &compute.VPNGatewayArgs{
 /// 			Name:    pulumi.String("vpn-1"),
-/// 			Network: network1.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: network1.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -238,7 +238,7 @@ import 'vpntunnel_state.dart';
 /// 			Name:       pulumi.String("fr-esp"),
 /// 			IpProtocol: pulumi.String("ESP"),
 /// 			IpAddress:  vpnStaticIp.Address,
-/// 			Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			Target:     targetGateway.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -248,7 +248,7 @@ import 'vpntunnel_state.dart';
 /// 			IpProtocol: pulumi.String("UDP"),
 /// 			PortRange:  pulumi.String("500"),
 /// 			IpAddress:  vpnStaticIp.Address,
-/// 			Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			Target:     targetGateway.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -258,7 +258,7 @@ import 'vpntunnel_state.dart';
 /// 			IpProtocol: pulumi.String("UDP"),
 /// 			PortRange:  pulumi.String("4500"),
 /// 			IpAddress:  vpnStaticIp.Address,
-/// 			Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			Target:     targetGateway.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -267,7 +267,7 @@ import 'vpntunnel_state.dart';
 /// 			Name:             pulumi.String("tunnel-1"),
 /// 			PeerIp:           pulumi.String("15.0.0.120"),
 /// 			SharedSecret:     pulumi.String("a secret message"),
-/// 			TargetVpnGateway: targetGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			TargetVpnGateway: targetGateway.ID(),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -284,7 +284,7 @@ import 'vpntunnel_state.dart';
 /// 			Network:          network1.Name,
 /// 			DestRange:        pulumi.String("15.0.0.0/24"),
 /// 			Priority:         pulumi.Int(1000),
-/// 			NextHopVpnTunnel: tunnel1.ID().ToIDOutput().ToStringOutput(),
+/// 			NextHopVpnTunnel: tunnel1.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -294,7 +294,7 @@ import 'vpntunnel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -302,52 +302,76 @@ import 'vpntunnel_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_vpntunnel" "tunnel1" {
-///   depends_on         = [gcp_compute_forwardingrule.fr_esp, gcp_compute_forwardingrule.fr_udp500, gcp_compute_forwardingrule.fr_udp4500]
+/// resource "gcp_compute_v_p_n_tunnel" "tunnel1" {
+///   depends_on = [gcp_compute_forwarding_rule.fr_esp, gcp_compute_forwarding_rule.fr_udp500, gcp_compute_forwarding_rule.fr_udp4500]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "tunnel-1"
 ///   peer_ip            = "15.0.0.120"
 ///   shared_secret      = "a secret message"
-///   target_vpn_gateway = gcp_compute_vpngateway.target_gateway.id
+///   target_vpn_gateway = gcp_compute_v_p_n_gateway.target_gateway.id
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_compute_vpngateway" "target_gateway" {
+/// resource "gcp_compute_v_p_n_gateway" "target_gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "vpn-1"
 ///   network = gcp_compute_network.network1.id
 /// }
 /// resource "gcp_compute_network" "network1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "network-1"
 /// }
 /// resource "gcp_compute_address" "vpn_static_ip" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "vpn-static-ip"
 /// }
-/// resource "gcp_compute_forwardingrule" "fr_esp" {
+/// resource "gcp_compute_forwarding_rule" "fr_esp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fr-esp"
 ///   ip_protocol = "ESP"
 ///   ip_address  = gcp_compute_address.vpn_static_ip.address
-///   target      = gcp_compute_vpngateway.target_gateway.id
+///   target      = gcp_compute_v_p_n_gateway.target_gateway.id
 /// }
-/// resource "gcp_compute_forwardingrule" "fr_udp500" {
+/// resource "gcp_compute_forwarding_rule" "fr_udp500" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fr-udp500"
 ///   ip_protocol = "UDP"
 ///   port_range  = "500"
 ///   ip_address  = gcp_compute_address.vpn_static_ip.address
-///   target      = gcp_compute_vpngateway.target_gateway.id
+///   target      = gcp_compute_v_p_n_gateway.target_gateway.id
 /// }
-/// resource "gcp_compute_forwardingrule" "fr_udp4500" {
+/// resource "gcp_compute_forwarding_rule" "fr_udp4500" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fr-udp4500"
 ///   ip_protocol = "UDP"
 ///   port_range  = "4500"
 ///   ip_address  = gcp_compute_address.vpn_static_ip.address
-///   target      = gcp_compute_vpngateway.target_gateway.id
+///   target      = gcp_compute_v_p_n_gateway.target_gateway.id
 /// }
 /// resource "gcp_compute_route" "route1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "route1"
 ///   network             = gcp_compute_network.network1.name
 ///   dest_range          = "15.0.0.0/24"
 ///   priority            = 1000
-///   next_hop_vpn_tunnel = gcp_compute_vpntunnel.tunnel1.id
+///   next_hop_vpn_tunnel = gcp_compute_v_p_n_tunnel.tunnel1.id
 /// }
 /// ```
 /// ```java
@@ -760,7 +784,7 @@ import 'vpntunnel_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -774,7 +798,7 @@ import 'vpntunnel_state.dart';
 /// 		}
 /// 		targetGateway, err := compute.NewVPNGateway(ctx, "target_gateway", &compute.VPNGatewayArgs{
 /// 			Name:    pulumi.String("vpn-1"),
-/// 			Network: network1.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: network1.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -789,7 +813,7 @@ import 'vpntunnel_state.dart';
 /// 			Name:       pulumi.String("fr-esp"),
 /// 			IpProtocol: pulumi.String("ESP"),
 /// 			IpAddress:  vpnStaticIp.Address,
-/// 			Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			Target:     targetGateway.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -799,7 +823,7 @@ import 'vpntunnel_state.dart';
 /// 			IpProtocol: pulumi.String("UDP"),
 /// 			PortRange:  pulumi.String("500"),
 /// 			IpAddress:  vpnStaticIp.Address,
-/// 			Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			Target:     targetGateway.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -809,7 +833,7 @@ import 'vpntunnel_state.dart';
 /// 			IpProtocol: pulumi.String("UDP"),
 /// 			PortRange:  pulumi.String("4500"),
 /// 			IpAddress:  vpnStaticIp.Address,
-/// 			Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			Target:     targetGateway.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -818,7 +842,7 @@ import 'vpntunnel_state.dart';
 /// 			Name:             pulumi.String("tunnel-cipher"),
 /// 			PeerIp:           pulumi.String("15.0.0.120"),
 /// 			SharedSecret:     pulumi.String("a secret message"),
-/// 			TargetVpnGateway: targetGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			TargetVpnGateway: targetGateway.ID(),
 /// 			CipherSuite: &compute.VPNTunnelCipherSuiteArgs{
 /// 				Phase1: &compute.VPNTunnelCipherSuitePhase1Args{
 /// 					Encryptions: pulumi.StringArray{
@@ -862,7 +886,7 @@ import 'vpntunnel_state.dart';
 /// 			Network:          network1.Name,
 /// 			DestRange:        pulumi.String("15.0.0.0/24"),
 /// 			Priority:         pulumi.Int(1000),
-/// 			NextHopVpnTunnel: tunnel1.ID().ToIDOutput().ToStringOutput(),
+/// 			NextHopVpnTunnel: tunnel1.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -872,7 +896,7 @@ import 'vpntunnel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -880,12 +904,15 @@ import 'vpntunnel_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_vpntunnel" "tunnel1" {
-///   depends_on         = [gcp_compute_forwardingrule.fr_esp, gcp_compute_forwardingrule.fr_udp500, gcp_compute_forwardingrule.fr_udp4500]
+/// resource "gcp_compute_v_p_n_tunnel" "tunnel1" {
+///   depends_on = [gcp_compute_forwarding_rule.fr_esp, gcp_compute_forwarding_rule.fr_udp500, gcp_compute_forwarding_rule.fr_udp4500]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "tunnel-cipher"
 ///   peer_ip            = "15.0.0.120"
 ///   shared_secret      = "a secret message"
-///   target_vpn_gateway = gcp_compute_vpngateway.target_gateway.id
+///   target_vpn_gateway = gcp_compute_v_p_n_gateway.target_gateway.id
 ///   cipher_suite = {
 ///     phase1 = {
 ///       encryptions = ["AES-CBC-256"]
@@ -903,42 +930,63 @@ import 'vpntunnel_state.dart';
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_compute_vpngateway" "target_gateway" {
+/// resource "gcp_compute_v_p_n_gateway" "target_gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "vpn-1"
 ///   network = gcp_compute_network.network1.id
 /// }
 /// resource "gcp_compute_network" "network1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "network-1"
 /// }
 /// resource "gcp_compute_address" "vpn_static_ip" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "vpn-static-ip"
 /// }
-/// resource "gcp_compute_forwardingrule" "fr_esp" {
+/// resource "gcp_compute_forwarding_rule" "fr_esp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fr-esp"
 ///   ip_protocol = "ESP"
 ///   ip_address  = gcp_compute_address.vpn_static_ip.address
-///   target      = gcp_compute_vpngateway.target_gateway.id
+///   target      = gcp_compute_v_p_n_gateway.target_gateway.id
 /// }
-/// resource "gcp_compute_forwardingrule" "fr_udp500" {
+/// resource "gcp_compute_forwarding_rule" "fr_udp500" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fr-udp500"
 ///   ip_protocol = "UDP"
 ///   port_range  = "500"
 ///   ip_address  = gcp_compute_address.vpn_static_ip.address
-///   target      = gcp_compute_vpngateway.target_gateway.id
+///   target      = gcp_compute_v_p_n_gateway.target_gateway.id
 /// }
-/// resource "gcp_compute_forwardingrule" "fr_udp4500" {
+/// resource "gcp_compute_forwarding_rule" "fr_udp4500" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fr-udp4500"
 ///   ip_protocol = "UDP"
 ///   port_range  = "4500"
 ///   ip_address  = gcp_compute_address.vpn_static_ip.address
-///   target      = gcp_compute_vpngateway.target_gateway.id
+///   target      = gcp_compute_v_p_n_gateway.target_gateway.id
 /// }
 /// resource "gcp_compute_route" "route1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "route1"
 ///   network             = gcp_compute_network.network1.name
 ///   dest_range          = "15.0.0.0/24"
 ///   priority            = 1000
-///   next_hop_vpn_tunnel = gcp_compute_vpntunnel.tunnel1.id
+///   next_hop_vpn_tunnel = gcp_compute_v_p_n_tunnel.tunnel1.id
 /// }
 /// ```
 /// ```java
@@ -1266,7 +1314,7 @@ class VPNTunnel extends pulumi.CustomResource {
           'gcp:compute/vPNTunnel:VPNTunnel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels', 'sharedSecret', 'sharedSecretWo'],
         ) {
     cipherSuite = registerOutput<VPNTunnelCipherSuite?>('cipherSuite', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VPNTunnelCipherSuite.fromMap((guardedValue as Map).cast<String, dynamic>()); });

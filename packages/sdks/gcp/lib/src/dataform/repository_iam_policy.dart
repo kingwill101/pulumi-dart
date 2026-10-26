@@ -21,7 +21,7 @@ class RepositoryIamPolicy extends pulumi.CustomResource {
           'gcp:dataform/repositoryIamPolicy:RepositoryIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');

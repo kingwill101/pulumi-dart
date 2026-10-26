@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'example_message_chunk_agent_transfer.dart';
+import 'example_message_chunk_blob.dart';
 import 'example_message_chunk_image.dart';
 import 'example_message_chunk_tool_call.dart';
 import 'example_message_chunk_tool_response.dart';
@@ -11,6 +12,9 @@ class ExampleMessageChunk {
   /// agent.
   /// Structure is documented below.
   final pulumi.Input<ExampleMessageChunkAgentTransfer?>? agentTransfer;
+  /// Represents a blob input or output in the conversation.
+  /// Structure is documented below.
+  final pulumi.Input<ExampleMessageChunkBlob?>? blob;
   /// Represents an image input or output in the conversation.
   /// Structure is documented below.
   final pulumi.Input<ExampleMessageChunkImage?>? image;
@@ -28,6 +32,7 @@ class ExampleMessageChunk {
 
   /// Creates a new [ExampleMessageChunk].
   /// [agentTransfer] Represents an event indicating the transfer of a conversation to a different
+  /// [blob] Represents a blob input or output in the conversation.
   /// [image] Represents an image input or output in the conversation.
   /// [text] Text data.
   /// [toolCall] Request for the client or the agent to execute the specified tool.
@@ -35,6 +40,7 @@ class ExampleMessageChunk {
   /// [updatedVariables] A struct represents variables that were updated in the conversation,
   const ExampleMessageChunk({
     this.agentTransfer,
+    this.blob,
     this.image,
     this.text,
     this.toolCall,
@@ -45,6 +51,7 @@ class ExampleMessageChunk {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'agentTransfer': ?pulumi.Input.mapOptionalInputValue<ExampleMessageChunkAgentTransfer, Map<String, dynamic>>(agentTransfer, (value) => value.toMap()),
+      'blob': ?pulumi.Input.mapOptionalInputValue<ExampleMessageChunkBlob, Map<String, dynamic>>(blob, (value) => value.toMap()),
       'image': ?pulumi.Input.mapOptionalInputValue<ExampleMessageChunkImage, Map<String, dynamic>>(image, (value) => value.toMap()),
       'text': ?text,
       'toolCall': ?pulumi.Input.mapOptionalInputValue<ExampleMessageChunkToolCall, Map<String, dynamic>>(toolCall, (value) => value.toMap()),
@@ -56,6 +63,7 @@ class ExampleMessageChunk {
   factory ExampleMessageChunk.fromMap(Map<String, dynamic> map) {
     return ExampleMessageChunk(
       agentTransfer: (() { final guardedValue = map['agentTransfer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExampleMessageChunkAgentTransfer.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      blob: (() { final guardedValue = map['blob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExampleMessageChunkBlob.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExampleMessageChunkImage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       text: (() { final guardedValue = map['text']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       toolCall: (() { final guardedValue = map['toolCall']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExampleMessageChunkToolCall.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

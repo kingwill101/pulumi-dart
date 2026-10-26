@@ -69,8 +69,8 @@ import 'iam_member_remove_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -93,7 +93,7 @@ import 'iam_member_remove_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -101,10 +101,13 @@ import 'iam_member_remove_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "targetProject" {
+/// data "gcp_organizations_project" "targetProject" {
 /// }
 ///
-/// resource "gcp_projects_iammemberremove" "foo" {
+/// resource "gcp_projects_iam_member_remove" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role    = "roles/editor"
 ///   project = targetProjectGoogleProject.projectId
 ///   member  ="serviceAccount:${targetProjectGoogleProject.number}-compute@developer.gserviceaccount.com"
@@ -184,7 +187,7 @@ class IamMemberRemove extends pulumi.CustomResource {
           'gcp:projects/iamMemberRemove:IamMemberRemove',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     member = registerOutput<String>('member');
     project = registerOutput<String>('project');

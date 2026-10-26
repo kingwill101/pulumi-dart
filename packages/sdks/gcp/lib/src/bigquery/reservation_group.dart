@@ -52,7 +52,7 @@ import 'reservation_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -70,7 +70,7 @@ import 'reservation_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -78,7 +78,10 @@ import 'reservation_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigquery_reservationgroup" "reservation_group" {
+/// resource "gcp_bigquery_reservation_group" "reservation_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-reservation-group"
 ///   location = "us-west2"
 /// }
@@ -168,7 +171,7 @@ class ReservationGroup extends pulumi.CustomResource {
           'gcp:bigquery/reservationGroup:ReservationGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String?>('location');

@@ -26,8 +26,8 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvis
 
   factory ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix(
-      standardCapacityBase: (() { final guardedValue = map['standardCapacityBase']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      standardCapacityPercentAboveBase: (() { final guardedValue = map['standardCapacityPercentAboveBase']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      standardCapacityBase: (() { final guardedValue = map['standardCapacityBase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      standardCapacityPercentAboveBase: (() { final guardedValue = map['standardCapacityPercentAboveBase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

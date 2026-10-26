@@ -214,9 +214,9 @@ import 'multicast_group_consumer_activation_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -232,7 +232,7 @@ import 'multicast_group_consumer_activation_state.dart';
 /// 		multicastDomain, err := networkservices.NewMulticastDomain(ctx, "multicast_domain", &networkservices.MulticastDomainArgs{
 /// 			MulticastDomainId: pulumi.String("test-domain-mgca"),
 /// 			Location:          pulumi.String("global"),
-/// 			AdminNetwork:      network.ID().ToIDOutput().ToStringOutput(),
+/// 			AdminNetwork:      network.ID(),
 /// 			ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 /// 				ConnectionType: pulumi.String("SAME_VPC"),
 /// 			},
@@ -245,7 +245,7 @@ import 'multicast_group_consumer_activation_state.dart';
 /// 		multicastDomainActivation, err := networkservices.NewMulticastDomainActivation(ctx, "multicast_domain_activation", &networkservices.MulticastDomainActivationArgs{
 /// 			MulticastDomainActivationId: pulumi.String("test-domain-activation-mgca"),
 /// 			Location:                    pulumi.String("us-central1-b"),
-/// 			MulticastDomain:             multicastDomain.ID().ToIDOutput().ToStringOutput(),
+/// 			MulticastDomain:             multicastDomain.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -253,8 +253,8 @@ import 'multicast_group_consumer_activation_state.dart';
 /// 		consumerAssociation, err := networkservices.NewMulticastConsumerAssociation(ctx, "consumer_association", &networkservices.MulticastConsumerAssociationArgs{
 /// 			MulticastConsumerAssociationId: pulumi.String("test-consumer-association-mgca"),
 /// 			Location:                       pulumi.String("us-central1-b"),
-/// 			Network:                        network.ID().ToIDOutput().ToStringOutput(),
-/// 			MulticastDomainActivation:      multicastDomainActivation.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:                        network.ID(),
+/// 			MulticastDomainActivation:      multicastDomainActivation.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			network,
 /// 		}))
@@ -274,8 +274,8 @@ import 'multicast_group_consumer_activation_state.dart';
 /// 		groupRange, err := networkservices.NewMulticastGroupRange(ctx, "group_range", &networkservices.MulticastGroupRangeArgs{
 /// 			MulticastGroupRangeId: pulumi.String("test-group-range-mgca"),
 /// 			Location:              pulumi.String("global"),
-/// 			ReservedInternalRange: internalRange.ID().ToIDOutput().ToStringOutput(),
-/// 			MulticastDomain:       multicastDomain.ID().ToIDOutput().ToStringOutput(),
+/// 			ReservedInternalRange: internalRange.ID(),
+/// 			MulticastDomain:       multicastDomain.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -283,8 +283,8 @@ import 'multicast_group_consumer_activation_state.dart';
 /// 		groupRangeActivation, err := networkservices.NewMulticastGroupRangeActivation(ctx, "group_range_activation", &networkservices.MulticastGroupRangeActivationArgs{
 /// 			MulticastGroupRangeActivationId: pulumi.String("test-mgra-mgca"),
 /// 			Location:                        pulumi.String("us-central1-b"),
-/// 			MulticastGroupRange:             groupRange.ID().ToIDOutput().ToStringOutput(),
-/// 			MulticastDomainActivation:       multicastDomainActivation.ID().ToIDOutput().ToStringOutput(),
+/// 			MulticastGroupRange:             groupRange.ID(),
+/// 			MulticastDomainActivation:       multicastDomainActivation.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -292,8 +292,8 @@ import 'multicast_group_consumer_activation_state.dart';
 /// 		_, err = networkservices.NewMulticastGroupConsumerActivation(ctx, "mgca_test", &networkservices.MulticastGroupConsumerActivationArgs{
 /// 			MulticastGroupConsumerActivationId: pulumi.String("test-mgca-mgca"),
 /// 			Location:                           pulumi.String("us-central1-b"),
-/// 			MulticastGroupRangeActivation:      groupRangeActivation.ID().ToIDOutput().ToStringOutput(),
-/// 			MulticastConsumerAssociation:       consumerAssociation.ID().ToIDOutput().ToStringOutput(),
+/// 			MulticastGroupRangeActivation:      groupRangeActivation.ID(),
+/// 			MulticastConsumerAssociation:       consumerAssociation.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -303,7 +303,7 @@ import 'multicast_group_consumer_activation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -312,11 +312,17 @@ import 'multicast_group_consumer_activation_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "test-network-mgca"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networkservices_multicastdomain" "multicast_domain" {
-///   depends_on          = [gcp_compute_network.network]
+/// resource "gcp_networkservices_multicast_domain" "multicast_domain" {
+///   depends_on = [gcp_compute_network.network]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multicast_domain_id = "test-domain-mgca"
 ///   location            = "global"
 ///   admin_network       = gcp_compute_network.network.id
@@ -324,42 +330,60 @@ import 'multicast_group_consumer_activation_state.dart';
 ///     connection_type = "SAME_VPC"
 ///   }
 /// }
-/// resource "gcp_networkservices_multicastdomainactivation" "multicast_domain_activation" {
+/// resource "gcp_networkservices_multicast_domain_activation" "multicast_domain_activation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multicast_domain_activation_id = "test-domain-activation-mgca"
 ///   location                       = "us-central1-b"
-///   multicast_domain               = gcp_networkservices_multicastdomain.multicast_domain.id
+///   multicast_domain               = gcp_networkservices_multicast_domain.multicast_domain.id
 /// }
-/// resource "gcp_networkservices_multicastconsumerassociation" "consumer_association" {
-///   depends_on                        = [gcp_compute_network.network]
+/// resource "gcp_networkservices_multicast_consumer_association" "consumer_association" {
+///   depends_on = [gcp_compute_network.network]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multicast_consumer_association_id = "test-consumer-association-mgca"
 ///   location                          = "us-central1-b"
 ///   network                           = gcp_compute_network.network.id
-///   multicast_domain_activation       = gcp_networkservices_multicastdomainactivation.multicast_domain_activation.id
+///   multicast_domain_activation       = gcp_networkservices_multicast_domain_activation.multicast_domain_activation.id
 /// }
-/// resource "gcp_networkconnectivity_internalrange" "internal_range" {
+/// resource "gcp_networkconnectivity_internal_range" "internal_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "test-internal-range-mgca"
 ///   network       = gcp_compute_network.network.self_link
 ///   usage         = "FOR_VPC"
 ///   peering       = "FOR_SELF"
 ///   ip_cidr_range = "224.2.0.2/32"
 /// }
-/// resource "gcp_networkservices_multicastgrouprange" "group_range" {
+/// resource "gcp_networkservices_multicast_group_range" "group_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multicast_group_range_id = "test-group-range-mgca"
 ///   location                 = "global"
-///   reserved_internal_range  = gcp_networkconnectivity_internalrange.internal_range.id
-///   multicast_domain         = gcp_networkservices_multicastdomain.multicast_domain.id
+///   reserved_internal_range  = gcp_networkconnectivity_internal_range.internal_range.id
+///   multicast_domain         = gcp_networkservices_multicast_domain.multicast_domain.id
 /// }
-/// resource "gcp_networkservices_multicastgrouprangeactivation" "group_range_activation" {
+/// resource "gcp_networkservices_multicast_group_range_activation" "group_range_activation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multicast_group_range_activation_id = "test-mgra-mgca"
 ///   location                            = "us-central1-b"
-///   multicast_group_range               = gcp_networkservices_multicastgrouprange.group_range.id
-///   multicast_domain_activation         = gcp_networkservices_multicastdomainactivation.multicast_domain_activation.id
+///   multicast_group_range               = gcp_networkservices_multicast_group_range.group_range.id
+///   multicast_domain_activation         = gcp_networkservices_multicast_domain_activation.multicast_domain_activation.id
 /// }
-/// resource "gcp_networkservices_multicastgroupconsumeractivation" "mgca_test" {
+/// resource "gcp_networkservices_multicast_group_consumer_activation" "mgca_test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multicast_group_consumer_activation_id = "test-mgca-mgca"
 ///   location                               = "us-central1-b"
-///   multicast_group_range_activation       = gcp_networkservices_multicastgrouprangeactivation.group_range_activation.id
-///   multicast_consumer_association         = gcp_networkservices_multicastconsumerassociation.consumer_association.id
+///   multicast_group_range_activation       = gcp_networkservices_multicast_group_range_activation.group_range_activation.id
+///   multicast_consumer_association         = gcp_networkservices_multicast_consumer_association.consumer_association.id
 /// }
 /// ```
 /// ```java
@@ -632,7 +656,7 @@ class MulticastGroupConsumerActivation extends pulumi.CustomResource {
           'gcp:networkservices/multicastGroupConsumerActivation:MulticastGroupConsumerActivation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

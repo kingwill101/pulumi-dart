@@ -35,8 +35,8 @@ class GetInstanceQueryInsightsConfig {
 
   factory GetInstanceQueryInsightsConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceQueryInsightsConfig(
-      queryPlansPerMinute: pulumi.Input.fromValue((map['queryPlansPerMinute'] as num).toInt()),
-      queryStringLength: pulumi.Input.fromValue((map['queryStringLength'] as num).toInt()),
+      queryPlansPerMinute: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['queryPlansPerMinute'])),
+      queryStringLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['queryStringLength'])),
       recordApplicationTags: pulumi.Input.fromValue(map['recordApplicationTags'] as bool),
       recordClientAddress: pulumi.Input.fromValue(map['recordClientAddress'] as bool),
     );

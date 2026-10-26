@@ -34,7 +34,7 @@ class VolumeTieringPolicy {
 
   factory VolumeTieringPolicy.fromMap(Map<String, dynamic> map) {
     return VolumeTieringPolicy(
-      coolingThresholdDays: (() { final guardedValue = map['coolingThresholdDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      coolingThresholdDays: (() { final guardedValue = map['coolingThresholdDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       hotTierBypassModeEnabled: (() { final guardedValue = map['hotTierBypassModeEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tierAction: (() { final guardedValue = map['tierAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

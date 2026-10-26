@@ -549,10 +549,10 @@ import 'firewall_policy_with_rules_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -589,7 +589,7 @@ import 'firewall_policy_with_rules_state.dart';
 /// 			Name:                    pulumi.String("spg"),
 /// 			Parent:                  pulumi.String("organizations/123456789"),
 /// 			Description:             pulumi.String("my description"),
-/// 			ThreatPreventionProfile: securityProfile1.ID().ToIDOutput().ToStringOutput(),
+/// 			ThreatPreventionProfile: securityProfile1.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -615,7 +615,7 @@ import 'firewall_policy_with_rules_state.dart';
 /// 		}
 /// 		basicValue, err := tags.NewTagValue(ctx, "basic_value", &tags.TagValueArgs{
 /// 			Description: pulumi.String("For valuename resources."),
-/// 			Parent:      basicKey.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      basicKey.ID(),
 /// 			ShortName:   pulumi.String("tag-value"),
 /// 		})
 /// 		if err != nil {
@@ -652,7 +652,7 @@ import 'firewall_policy_with_rules_state.dart';
 /// 							pulumi.String("iplist-tor-exit-nodes"),
 /// 						},
 /// 						DestAddressGroups: pulumi.StringArray{
-/// 							addressGroup1.ID().ToIDOutput().ToStringOutput(),
+/// 							addressGroup1.ID(),
 /// 						},
 /// 						Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
 /// 							&compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
@@ -689,7 +689,7 @@ import 'firewall_policy_with_rules_state.dart';
 /// 							pulumi.String("iplist-public-clouds"),
 /// 						},
 /// 						SrcAddressGroups: pulumi.StringArray{
-/// 							addressGroup1.ID().ToIDOutput().ToStringOutput(),
+/// 							addressGroup1.ID(),
 /// 						},
 /// 						Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
 /// 							&compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
@@ -732,7 +732,7 @@ import 'firewall_policy_with_rules_state.dart';
 /// 					Direction:     pulumi.String("INGRESS"),
 /// 					TargetSecureTags: compute.FirewallPolicyWithRulesRuleTargetSecureTagArray{
 /// 						&compute.FirewallPolicyWithRulesRuleTargetSecureTagArgs{
-/// 							Name: basicValue.ID().ToIDOutput().ToStringOutput(),
+/// 							Name: basicValue.ID(),
 /// 						},
 /// 					},
 /// 					Match: &compute.FirewallPolicyWithRulesRuleMatchArgs{
@@ -741,7 +741,7 @@ import 'firewall_policy_with_rules_state.dart';
 /// 						},
 /// 						SrcSecureTags: compute.FirewallPolicyWithRulesRuleMatchSrcSecureTagArray{
 /// 							&compute.FirewallPolicyWithRulesRuleMatchSrcSecureTagArgs{
-/// 								Name: basicValue.ID().ToIDOutput().ToStringOutput(),
+/// 								Name: basicValue.ID(),
 /// 							},
 /// 						},
 /// 						Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
@@ -764,7 +764,7 @@ import 'firewall_policy_with_rules_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -772,10 +772,13 @@ import 'firewall_policy_with_rules_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_compute_firewallpolicywithrules" "primary" {
+/// resource "gcp_compute_firewall_policy_with_rules" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   short_name  = "fw-policy"
 ///   description = "Terraform test"
 ///   parent      = "organizations/123456789"
@@ -791,10 +794,10 @@ import 'firewall_policy_with_rules_state.dart';
 ///       dest_fqdns                = ["www.yyy.com", "www.zzz.com"]
 ///       dest_region_codes         = ["HK", "IN"]
 ///       dest_threat_intelligences = ["iplist-search-engines-crawlers", "iplist-tor-exit-nodes"]
-///       dest_address_groups       = [gcp_networksecurity_addressgroup.address_group_1.id]
+///       dest_address_groups       = [gcp_networksecurity_address_group.address_group_1.id]
 ///       layer4_configs = [{
-///         "ipProtocol" = "tcp"
-///         "ports"      = [8080, 7070]
+///         ip_protocol = "tcp"
+///         ports       = [8080, 7070]
 ///       }]
 ///     }
 ///   }
@@ -810,9 +813,9 @@ import 'firewall_policy_with_rules_state.dart';
 ///       src_fqdns                = ["www.abc.com", "www.def.com"]
 ///       src_region_codes         = ["US", "CA"]
 ///       src_threat_intelligences = ["iplist-known-malicious-ips", "iplist-public-clouds"]
-///       src_address_groups       = [gcp_networksecurity_addressgroup.address_group_1.id]
+///       src_address_groups       = [gcp_networksecurity_address_group.address_group_1.id]
 ///       layer4_configs = [{
-///         "ipProtocol" = "udp"
+///         ip_protocol = "udp"
 ///       }]
 ///     }
 ///   }
@@ -824,12 +827,12 @@ import 'firewall_policy_with_rules_state.dart';
 ///     action                  = "apply_security_profile_group"
 ///     direction               = "INGRESS"
 ///     target_service_accounts = ["test@google.com"]
-///     security_profile_group  ="//networksecurity.googleapis.com/${gcp_networksecurity_securityprofilegroup.security_profile_group_1.id}"
+///     security_profile_group  ="//networksecurity.googleapis.com/${gcp_networksecurity_security_profile_group.security_profile_group_1.id}"
 ///     tls_inspect             = true
 ///     match = {
 ///       src_ip_ranges = ["0.0.0.0/0"]
 ///       layer4_configs = [{
-///         "ipProtocol" = "tcp"
+///         ip_protocol = "tcp"
 ///       }]
 ///     }
 ///   }
@@ -841,21 +844,24 @@ import 'firewall_policy_with_rules_state.dart';
 ///     action         = "allow"
 ///     direction      = "INGRESS"
 ///     target_secure_tags {
-///       name = gcp_tags_tagvalue.basic_value.id
+///       name = gcp_tags_tag_value.basic_value.id
 ///     }
 ///     match = {
 ///       src_ip_ranges = ["11.100.0.1/32"]
 ///       src_secure_tags = [{
-///         "name" = gcp_tags_tagvalue.basic_value.id
+///         name = gcp_tags_tag_value.basic_value.id
 ///       }]
 ///       layer4_configs = [{
-///         "ipProtocol" = "tcp"
-///         "ports"      = [8080]
+///         ip_protocol = "tcp"
+///         ports       = [8080]
 ///       }]
 ///     }
 ///   }
 /// }
-/// resource "gcp_networksecurity_addressgroup" "address_group_1" {
+/// resource "gcp_networksecurity_address_group" "address_group_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "address-group"
 ///   parent      = "organizations/123456789"
 ///   description = "Global address group"
@@ -864,23 +870,35 @@ import 'firewall_policy_with_rules_state.dart';
 ///   type        = "IPV4"
 ///   capacity    = 100
 /// }
-/// resource "gcp_networksecurity_securityprofilegroup" "security_profile_group_1" {
+/// resource "gcp_networksecurity_security_profile_group" "security_profile_group_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "spg"
 ///   parent                    = "organizations/123456789"
 ///   description               = "my description"
-///   threat_prevention_profile = gcp_networksecurity_securityprofile.security_profile_1.id
+///   threat_prevention_profile = gcp_networksecurity_security_profile.security_profile_1.id
 /// }
-/// resource "gcp_networksecurity_securityprofile" "security_profile_1" {
+/// resource "gcp_networksecurity_security_profile" "security_profile_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "sp"
 ///   type     = "THREAT_PREVENTION"
 ///   parent   = "organizations/123456789"
 ///   location = "global"
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_tags_tagkey" "basic_key" {
+/// resource "gcp_tags_tag_key" "basic_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "For keyname resources."
 ///   parent      = "organizations/123456789"
 ///   purpose     = "GCE_FIREWALL"
@@ -889,9 +907,12 @@ import 'firewall_policy_with_rules_state.dart';
 ///     "organization" = "auto"
 ///   }
 /// }
-/// resource "gcp_tags_tagvalue" "basic_value" {
+/// resource "gcp_tags_tag_value" "basic_value" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "For valuename resources."
-///   parent      = gcp_tags_tagkey.basic_key.id
+///   parent      = gcp_tags_tag_key.basic_key.id
 ///   short_name  = "tag-value"
 /// }
 /// ```
@@ -1287,7 +1308,7 @@ class FirewallPolicyWithRules extends pulumi.CustomResource {
           'gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

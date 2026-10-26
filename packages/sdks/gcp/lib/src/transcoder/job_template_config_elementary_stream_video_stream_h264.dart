@@ -90,21 +90,21 @@ class JobTemplateConfigElementaryStreamVideoStreamH264 {
 
   factory JobTemplateConfigElementaryStreamVideoStreamH264.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigElementaryStreamVideoStreamH264(
-      bitrateBps: pulumi.Input.fromValue((map['bitrateBps'] as num).toInt()),
-      crfLevel: (() { final guardedValue = map['crfLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bitrateBps: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bitrateBps'])),
+      crfLevel: (() { final guardedValue = map['crfLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       entropyCoder: (() { final guardedValue = map['entropyCoder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      frameRate: pulumi.Input.fromValue((map['frameRate'] as num).toInt()),
+      frameRate: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['frameRate'])),
       gopDuration: (() { final guardedValue = map['gopDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      heightPixels: (() { final guardedValue = map['heightPixels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      heightPixels: (() { final guardedValue = map['heightPixels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       hlg: (() { final guardedValue = map['hlg']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       pixelFormat: (() { final guardedValue = map['pixelFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       preset: (() { final guardedValue = map['preset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       profile: (() { final guardedValue = map['profile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rateControlMode: (() { final guardedValue = map['rateControlMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sdr: (() { final guardedValue = map['sdr']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
-      vbvFullnessBits: (() { final guardedValue = map['vbvFullnessBits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      vbvSizeBits: (() { final guardedValue = map['vbvSizeBits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      widthPixels: (() { final guardedValue = map['widthPixels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      vbvFullnessBits: (() { final guardedValue = map['vbvFullnessBits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      vbvSizeBits: (() { final guardedValue = map['vbvSizeBits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      widthPixels: (() { final guardedValue = map['widthPixels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

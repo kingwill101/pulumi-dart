@@ -67,9 +67,9 @@ class GetInstanceObservabilityConfig {
     return GetInstanceObservabilityConfig(
       assistiveExperiencesEnabled: pulumi.Input.fromValue(map['assistiveExperiencesEnabled'] as bool),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      maxQueryStringLength: pulumi.Input.fromValue((map['maxQueryStringLength'] as num).toInt()),
+      maxQueryStringLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxQueryStringLength'])),
       preserveComments: pulumi.Input.fromValue(map['preserveComments'] as bool),
-      queryPlansPerMinute: pulumi.Input.fromValue((map['queryPlansPerMinute'] as num).toInt()),
+      queryPlansPerMinute: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['queryPlansPerMinute'])),
       recordApplicationTags: pulumi.Input.fromValue(map['recordApplicationTags'] as bool),
       trackActiveQueries: pulumi.Input.fromValue(map['trackActiveQueries'] as bool),
       trackClientAddress: pulumi.Input.fromValue(map['trackClientAddress'] as bool),

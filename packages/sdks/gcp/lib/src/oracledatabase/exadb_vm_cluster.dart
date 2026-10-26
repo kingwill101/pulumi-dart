@@ -169,7 +169,7 @@ import 'exadb_vm_cluster_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -214,7 +214,7 @@ import 'exadb_vm_cluster_state.dart';
 /// 				VmFileSystemStorage: &oracledatabase.ExadbVmClusterPropertiesVmFileSystemStorageArgs{
 /// 					SizeInGbsPerNode: pulumi.Int(220),
 /// 				},
-/// 				ExascaleDbStorageVault: exascaleDbStorageVaults.ID().ToIDOutput().ToStringOutput(),
+/// 				ExascaleDbStorageVault: exascaleDbStorageVaults.ID(),
 /// 				HostnamePrefix:         pulumi.String("hostname6"),
 /// 				ShapeAttribute:         pulumi.String("SMART_STORAGE"),
 /// 			},
@@ -228,7 +228,7 @@ import 'exadb_vm_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -236,7 +236,10 @@ import 'exadb_vm_cluster_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_exadbvmcluster" "my_exadb_vm_cluster" {
+/// resource "gcp_oracledatabase_exadb_vm_cluster" "my_exadb_vm_cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   exadb_vm_cluster_id = "my-instance"
 ///   display_name        = "my-instance displayname"
 ///   location            = "europe-west2"
@@ -258,13 +261,16 @@ import 'exadb_vm_cluster_state.dart';
 ///     vm_file_system_storage = {
 ///       size_in_gbs_per_node = 220
 ///     }
-///     exascale_db_storage_vault = gcp_oracledatabase_exascaledbstoragevault.exascaleDbStorageVaults.id
+///     exascale_db_storage_vault = gcp_oracledatabase_exascale_db_storage_vault.exascaleDbStorageVaults.id
 ///     hostname_prefix           = "hostname6"
 ///     shape_attribute           = "SMART_STORAGE"
 ///   }
 ///   deletion_protection = "true"
 /// }
-/// resource "gcp_oracledatabase_exascaledbstoragevault" "exascaleDbStorageVaults" {
+/// resource "gcp_oracledatabase_exascale_db_storage_vault" "exascaleDbStorageVaults" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   exascale_db_storage_vault_id = "my-storage-vault"
 ///   display_name                 = "my-storage-vault displayname"
 ///   location                     = "europe-west2"
@@ -577,7 +583,7 @@ import 'exadb_vm_cluster_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -622,7 +628,7 @@ import 'exadb_vm_cluster_state.dart';
 /// 				VmFileSystemStorage: &oracledatabase.ExadbVmClusterPropertiesVmFileSystemStorageArgs{
 /// 					SizeInGbsPerNode: pulumi.Int(220),
 /// 				},
-/// 				ExascaleDbStorageVault: exascaleDbStorageVaults.ID().ToIDOutput().ToStringOutput(),
+/// 				ExascaleDbStorageVault: exascaleDbStorageVaults.ID(),
 /// 				HostnamePrefix:         pulumi.String("hostname8"),
 /// 				ShapeAttribute:         pulumi.String("SMART_STORAGE"),
 /// 				DataCollectionOptions: &oracledatabase.ExadbVmClusterPropertiesDataCollectionOptionsArgs{
@@ -645,7 +651,7 @@ import 'exadb_vm_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -653,7 +659,10 @@ import 'exadb_vm_cluster_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_exadbvmcluster" "my_exadb_vm_cluster" {
+/// resource "gcp_oracledatabase_exadb_vm_cluster" "my_exadb_vm_cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   exadb_vm_cluster_id = "my-instance"
 ///   display_name        = "my-instance displayname"
 ///   location            = "europe-west2"
@@ -675,7 +684,7 @@ import 'exadb_vm_cluster_state.dart';
 ///     vm_file_system_storage = {
 ///       size_in_gbs_per_node = 220
 ///     }
-///     exascale_db_storage_vault = gcp_oracledatabase_exascaledbstoragevault.exascaleDbStorageVaults.id
+///     exascale_db_storage_vault = gcp_oracledatabase_exascale_db_storage_vault.exascaleDbStorageVaults.id
 ///     hostname_prefix           = "hostname8"
 ///     shape_attribute           = "SMART_STORAGE"
 ///     data_collection_options = {
@@ -690,7 +699,10 @@ import 'exadb_vm_cluster_state.dart';
 ///   }
 ///   deletion_protection = "true"
 /// }
-/// resource "gcp_oracledatabase_exascaledbstoragevault" "exascaleDbStorageVaults" {
+/// resource "gcp_oracledatabase_exascale_db_storage_vault" "exascaleDbStorageVaults" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   exascale_db_storage_vault_id = "my-storage-vault"
 ///   display_name                 = "my-storage-vault displayname"
 ///   location                     = "europe-west2"
@@ -929,7 +941,7 @@ class ExadbVmCluster extends pulumi.CustomResource {
           'gcp:oracledatabase/exadbVmCluster:ExadbVmCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     backupOdbSubnet = registerOutput<String>('backupOdbSubnet');

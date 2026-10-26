@@ -37,7 +37,7 @@ class SSLCertificateArgs {
   /// Resulting name for a `namePrefix` &lt;= 37 characters:
   /// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
   /// Resulting name for a `namePrefix` 38 - 54 characters:
-  /// `namePrefix` + YYmmdd + 3 digit incremental counter
+  /// `namePrefix` + 9 random lowercase alphanumeric characters
   final pulumi.Input<String?>? namePrefix;
   /// The write-only private key in PEM format.
   /// **Note**: This property is sensitive and will not be displayed in the plan.

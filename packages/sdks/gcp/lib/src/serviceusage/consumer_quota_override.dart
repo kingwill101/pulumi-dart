@@ -101,8 +101,8 @@ import 'consumer_quota_override_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceusage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceusage"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -146,7 +146,7 @@ import 'consumer_quota_override_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -158,12 +158,18 @@ import 'consumer_quota_override_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "my_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "tf-test-project"
 ///   project_id      = "quota"
 ///   org_id          = "123456789"
 ///   deletion_policy = "DELETE"
 /// }
-/// resource "gcp_serviceusage_consumerquotaoverride" "override" {
+/// resource "gcp_serviceusage_consumer_quota_override" "override" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project        = gcp_organizations_project.my_project.project_id
 ///   service        = "servicemanagement.googleapis.com"
 ///   metric         = urlencode("servicemanagement.googleapis.com/default_requests")
@@ -346,8 +352,8 @@ import 'consumer_quota_override_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceusage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceusage"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -394,7 +400,7 @@ import 'consumer_quota_override_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -406,12 +412,18 @@ import 'consumer_quota_override_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "my_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "tf-test-project"
 ///   project_id      = "quota"
 ///   org_id          = "123456789"
 ///   deletion_policy = "DELETE"
 /// }
-/// resource "gcp_serviceusage_consumerquotaoverride" "override" {
+/// resource "gcp_serviceusage_consumer_quota_override" "override" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dimensions = {
 ///     "region" = "us-central1"
 ///   }
@@ -600,8 +612,8 @@ import 'consumer_quota_override_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceusage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceusage"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -648,7 +660,7 @@ import 'consumer_quota_override_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -660,12 +672,18 @@ import 'consumer_quota_override_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "my_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "tf-test-project"
 ///   project_id      = "quota"
 ///   org_id          = "123456789"
 ///   deletion_policy = "DELETE"
 /// }
-/// resource "gcp_serviceusage_consumerquotaoverride" "override" {
+/// resource "gcp_serviceusage_consumer_quota_override" "override" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project        = gcp_organizations_project.my_project.project_id
 ///   service        = "libraryagent.googleapis.com"
 ///   metric         = urlencode("libraryagent.googleapis.com/borrows")
@@ -817,7 +835,7 @@ class ConsumerQuotaOverride extends pulumi.CustomResource {
           'gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     dimensions = registerOutput<Map<String, String>?>('dimensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

@@ -131,8 +131,8 @@ import 'intercept_endpoint_group_association_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -155,7 +155,7 @@ import 'intercept_endpoint_group_association_state.dart';
 /// 		deploymentGroup, err := networksecurity.NewInterceptDeploymentGroup(ctx, "deployment_group", &networksecurity.InterceptDeploymentGroupArgs{
 /// 			InterceptDeploymentGroupId: pulumi.String("example-dg"),
 /// 			Location:                   pulumi.String("global"),
-/// 			Network:                    producerNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:                    producerNetwork.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -163,7 +163,7 @@ import 'intercept_endpoint_group_association_state.dart';
 /// 		endpointGroup, err := networksecurity.NewInterceptEndpointGroup(ctx, "endpoint_group", &networksecurity.InterceptEndpointGroupArgs{
 /// 			InterceptEndpointGroupId: pulumi.String("example-eg"),
 /// 			Location:                 pulumi.String("global"),
-/// 			InterceptDeploymentGroup: deploymentGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			InterceptDeploymentGroup: deploymentGroup.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -171,8 +171,8 @@ import 'intercept_endpoint_group_association_state.dart';
 /// 		_, err = networksecurity.NewInterceptEndpointGroupAssociation(ctx, "default", &networksecurity.InterceptEndpointGroupAssociationArgs{
 /// 			InterceptEndpointGroupAssociationId: pulumi.String("example-ega"),
 /// 			Location:                            pulumi.String("global"),
-/// 			Network:                             consumerNetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			InterceptEndpointGroup:              endpointGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:                             consumerNetwork.ID(),
+/// 			InterceptEndpointGroup:              endpointGroup.ID(),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -185,7 +185,7 @@ import 'intercept_endpoint_group_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -194,28 +194,43 @@ import 'intercept_endpoint_group_association_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "producer_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-prod-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_network" "consumer_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-cons-network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networksecurity_interceptdeploymentgroup" "deployment_group" {
+/// resource "gcp_networksecurity_intercept_deployment_group" "deployment_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   intercept_deployment_group_id = "example-dg"
 ///   location                      = "global"
 ///   network                       = gcp_compute_network.producer_network.id
 /// }
-/// resource "gcp_networksecurity_interceptendpointgroup" "endpoint_group" {
+/// resource "gcp_networksecurity_intercept_endpoint_group" "endpoint_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   intercept_endpoint_group_id = "example-eg"
 ///   location                    = "global"
-///   intercept_deployment_group  = gcp_networksecurity_interceptdeploymentgroup.deployment_group.id
+///   intercept_deployment_group  = gcp_networksecurity_intercept_deployment_group.deployment_group.id
 /// }
-/// resource "gcp_networksecurity_interceptendpointgroupassociation" "default" {
+/// resource "gcp_networksecurity_intercept_endpoint_group_association" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   intercept_endpoint_group_association_id = "example-ega"
 ///   location                                = "global"
 ///   network                                 = gcp_compute_network.consumer_network.id
-///   intercept_endpoint_group                = gcp_networksecurity_interceptendpointgroup.endpoint_group.id
+///   intercept_endpoint_group                = gcp_networksecurity_intercept_endpoint_group.endpoint_group.id
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -416,7 +431,7 @@ class InterceptEndpointGroupAssociationNetworksecurity extends pulumi.CustomReso
           'gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

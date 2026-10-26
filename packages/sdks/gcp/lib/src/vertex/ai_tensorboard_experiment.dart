@@ -94,7 +94,7 @@ import 'ai_tensorboard_experiment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -112,7 +112,7 @@ import 'ai_tensorboard_experiment_state.dart';
 /// 			Location:    pulumi.String("us-central1"),
 /// 			DisplayName: pulumi.String("sample experiment"),
 /// 			Tensorboard: std.BasenameOutput(ctx, std.BasenameOutputArgs{
-/// 				Input: tensorboard.ID().ToIDOutput().ToStringOutput(),
+/// 				Input: tensorboard.ID(),
 /// 			}, nil).Result(),
 /// 			TensorboardExperimentId: pulumi.String("experiment"),
 /// 			Source:                  pulumi.String("a custom training job"),
@@ -128,7 +128,7 @@ import 'ai_tensorboard_experiment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -139,14 +139,20 @@ import 'ai_tensorboard_experiment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aitensorboard" "tensorboard" {
+/// resource "gcp_vertex_ai_tensorboard" "tensorboard" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Tensorboard for Experiment"
 ///   region       = "us-central1"
 /// }
-/// resource "gcp_vertex_aitensorboardexperiment" "tensorboard_experiment" {
+/// resource "gcp_vertex_ai_tensorboard_experiment" "tensorboard_experiment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                  = "us-central1"
 ///   display_name              = "sample experiment"
-///   tensorboard               = basename(gcp_vertex_aitensorboard.tensorboard.id)
+///   tensorboard               = basename(gcp_vertex_ai_tensorboard.tensorboard.id)
 ///   tensorboard_experiment_id = "experiment"
 ///   source                    = "a custom training job"
 ///   labels = {
@@ -307,7 +313,7 @@ class AiTensorboardExperiment extends pulumi.CustomResource {
           'gcp:vertex/aiTensorboardExperiment:AiTensorboardExperiment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

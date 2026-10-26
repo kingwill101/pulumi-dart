@@ -128,7 +128,7 @@ import 'grpc_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -174,7 +174,7 @@ import 'grpc_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -182,7 +182,10 @@ import 'grpc_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_grpcroute" "default" {
+/// resource "gcp_networkservices_grpc_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-grpc-route"
 ///   labels = {
 ///     "foo" = "bar"
@@ -470,7 +473,7 @@ import 'grpc_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -539,7 +542,7 @@ import 'grpc_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -547,7 +550,10 @@ import 'grpc_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_grpcroute" "default" {
+/// resource "gcp_networkservices_grpc_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-grpc-route"
 ///   labels = {
 ///     "foo" = "bar"
@@ -827,7 +833,7 @@ import 'grpc_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -873,7 +879,7 @@ import 'grpc_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -881,7 +887,10 @@ import 'grpc_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_grpcroute" "default" {
+/// resource "gcp_networkservices_grpc_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-grpc-route"
 ///   labels = {
 ///     "foo" = "bar"
@@ -1095,7 +1104,7 @@ import 'grpc_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1138,7 +1147,7 @@ import 'grpc_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1146,7 +1155,10 @@ import 'grpc_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_grpcroute" "default" {
+/// resource "gcp_networkservices_grpc_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "my-grpc-route"
 ///   location  = "global"
 ///   hostnames = ["example"]
@@ -1307,7 +1319,7 @@ class GrpcRoute extends pulumi.CustomResource {
           'gcp:networkservices/grpcRoute:GrpcRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

@@ -234,8 +234,8 @@ import 'cluster_storage_resource.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/hypercomputecluster"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/hypercomputecluster"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -316,7 +316,7 @@ import 'cluster_storage_resource.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -324,10 +324,13 @@ import 'cluster_storage_resource.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_hypercomputecluster_cluster" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id  = "mycluster1"
 ///   location    = "us-central1"
 ///   description = "Cluster Director instance created through Terraform"
@@ -361,26 +364,26 @@ import 'cluster_storage_resource.dart';
 ///         }
 ///       }
 ///       node_sets = [{
-///         "id"              = "nodeset1"
-///         "computeId"       = "compute1"
-///         "staticNodeCount" = 1
-///         "computeInstance" = {
-///           "bootDisk" = {
-///             "sizeGb" = "100"
-///             "type"   = "pd-balanced"
+///         id                = "nodeset1"
+///         compute_id        = "compute1"
+///         static_node_count = 1
+///         compute_instance = {
+///           boot_disk = {
+///             size_gb = "100"
+///             type    = "pd-balanced"
 ///           }
 ///         }
 ///       }]
 ///       partitions = [{
-///         "id"         = "partition1"
-///         "nodeSetIds" = ["nodeset1"]
+///         id           = "partition1"
+///         node_set_ids = ["nodeset1"]
 ///       }]
 ///       default_partition = "partition1"
 ///     }
 ///   }
 /// }
 /// locals {
-///   projectId = data.gcp_organizations_getproject.project.name
+///   projectId = data.gcp_organizations_project.project.name
 /// }
 /// ```
 /// ```java
@@ -625,7 +628,7 @@ class Cluster extends pulumi.CustomResource {
           'gcp:hypercomputecluster/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     clusterId = registerOutput<String>('clusterId');

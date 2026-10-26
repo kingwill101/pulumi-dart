@@ -593,7 +593,7 @@ import 'framework_deployment_target_resource_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsecuritycompliance"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -777,7 +777,7 @@ import 'framework_deployment_target_resource_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -786,6 +786,9 @@ import 'framework_deployment_target_resource_config.dart';
 /// }
 ///
 /// resource "gcp_cloudsecuritycompliance_framework" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "organizations/123456789"
 ///   location     = "global"
 ///   framework_id = "example-framework"
@@ -848,7 +851,10 @@ import 'framework_deployment_target_resource_config.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_cloudsecuritycompliance_frameworkdeployment" "example" {
+/// resource "gcp_cloudsecuritycompliance_framework_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent                  = "organizations/123456789"
 ///   location                = "global"
 ///   framework_deployment_id = "example-deployment"
@@ -866,60 +872,60 @@ import 'framework_deployment_target_resource_config.dart';
 ///       name              = "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"
 ///       major_revision_id = "2"
 ///       parameters = [{
-///         "name" = "enabled"
-///         "parameterValue" = {
-///           "boolValue" = true
+///         name = "enabled"
+///         parameter_value = {
+///           bool_value = true
 ///         }
 ///         }, {
-///         "name" = "regions"
-///         "parameterValue" = {
-///           "stringListValue" = {
-///             "values" = ["us-central1", "us-west1", "us-east1"]
+///         name = "regions"
+///         parameter_value = {
+///           string_list_value = {
+///             values = ["us-central1", "us-west1", "us-east1"]
 ///           }
 ///         }
 ///         }, {
-///         "name" = "location"
-///         "parameterValue" = {
-///           "stringValue" = "us-central1"
+///         name = "location"
+///         parameter_value = {
+///           string_value = "us-central1"
 ///         }
 ///         }, {
-///         "name" = "oneof-parameter"
-///         "parameterValue" = {
-///           "oneofValue" = {
-///             "name" = "test-oneof"
-///             "parameterValue" = {
-///               "stringValue" = "test-value"
+///         name = "oneof-parameter"
+///         parameter_value = {
+///           oneof_value = {
+///             name = "test-oneof"
+///             parameter_value = {
+///               string_value = "test-value"
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "name" = "bool-parameter"
-///         "parameterValue" = {
-///           "oneofValue" = {
-///             "name" = "bool-oneof"
-///             "parameterValue" = {
-///               "boolValue" = true
+///         name = "bool-parameter"
+///         parameter_value = {
+///           oneof_value = {
+///             name = "bool-oneof"
+///             parameter_value = {
+///               bool_value = true
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "name" = "number-parameter"
-///         "parameterValue" = {
-///           "oneofValue" = {
-///             "name" = "number-oneof"
-///             "parameterValue" = {
-///               "numberValue" = 123.45
+///         name = "number-parameter"
+///         parameter_value = {
+///           oneof_value = {
+///             name = "number-oneof"
+///             parameter_value = {
+///               number_value = 123.45
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "name" = "string-list-parameter"
-///         "parameterValue" = {
-///           "oneofValue" = {
-///             "name" = "string-list-oneof"
-///             "parameterValue" = {
-///               "stringListValue" = {
-///                 "values" = ["value1", "value2"]
+///         name = "string-list-parameter"
+///         parameter_value = {
+///           oneof_value = {
+///             name = "string-list-oneof"
+///             parameter_value = {
+///               string_list_value = {
+///                 values = ["value1", "value2"]
 ///               }
 ///             }
 ///           }
@@ -1818,8 +1824,8 @@ import 'framework_deployment_target_resource_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsecuritycompliance"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2007,7 +2013,7 @@ import 'framework_deployment_target_resource_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2015,17 +2021,20 @@ import 'framework_deployment_target_resource_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_cloudsecuritycompliance_framework" "example" {
-///   parent       ="projects/${data.gcp_organizations_getproject.project.number}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       ="projects/${data.gcp_organizations_project.project.number}"
 ///   location     = "global"
 ///   framework_id = "example-framework"
 ///   display_name = "Terraform Framework Name"
 ///   description  = "An Terraform description for the framework"
 ///   cloud_control_details {
-///     name              ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"
+///     name              ="projects/${data.gcp_organizations_project.project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"
 ///     major_revision_id = "2"
 ///     parameters {
 ///       name = "location"
@@ -2081,8 +2090,11 @@ import 'framework_deployment_target_resource_config.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_cloudsecuritycompliance_frameworkdeployment" "example" {
-///   parent                  ="projects/${data.gcp_organizations_getproject.project.number}"
+/// resource "gcp_cloudsecuritycompliance_framework_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent                  ="projects/${data.gcp_organizations_project.project.number}"
 ///   location                = "global"
 ///   framework_deployment_id = "example-deployment"
 ///   description             = "A framework deployment for cloud security compliance"
@@ -2091,68 +2103,68 @@ import 'framework_deployment_target_resource_config.dart';
 ///     major_revision_id = "1"
 ///   }
 ///   target_resource_config = {
-///     existing_target_resource ="projects/${data.gcp_organizations_getproject.project.project_id}"
+///     existing_target_resource ="projects/${data.gcp_organizations_project.project.project_id}"
 ///   }
 ///   cloud_control_metadatas {
 ///     enforcement_mode = "DETECTIVE"
 ///     cloud_control_details = {
-///       name              ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"
+///       name              ="projects/${data.gcp_organizations_project.project.number}/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"
 ///       major_revision_id = "2"
 ///       parameters = [{
-///         "name" = "enabled"
-///         "parameterValue" = {
-///           "boolValue" = true
+///         name = "enabled"
+///         parameter_value = {
+///           bool_value = true
 ///         }
 ///         }, {
-///         "name" = "regions"
-///         "parameterValue" = {
-///           "stringListValue" = {
-///             "values" = ["us-central1", "us-west1", "us-east1"]
+///         name = "regions"
+///         parameter_value = {
+///           string_list_value = {
+///             values = ["us-central1", "us-west1", "us-east1"]
 ///           }
 ///         }
 ///         }, {
-///         "name" = "location"
-///         "parameterValue" = {
-///           "stringValue" = "us-central1"
+///         name = "location"
+///         parameter_value = {
+///           string_value = "us-central1"
 ///         }
 ///         }, {
-///         "name" = "oneof-parameter"
-///         "parameterValue" = {
-///           "oneofValue" = {
-///             "name" = "test-oneof"
-///             "parameterValue" = {
-///               "stringValue" = "test-value"
+///         name = "oneof-parameter"
+///         parameter_value = {
+///           oneof_value = {
+///             name = "test-oneof"
+///             parameter_value = {
+///               string_value = "test-value"
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "name" = "bool-parameter"
-///         "parameterValue" = {
-///           "oneofValue" = {
-///             "name" = "bool-oneof"
-///             "parameterValue" = {
-///               "boolValue" = true
+///         name = "bool-parameter"
+///         parameter_value = {
+///           oneof_value = {
+///             name = "bool-oneof"
+///             parameter_value = {
+///               bool_value = true
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "name" = "number-parameter"
-///         "parameterValue" = {
-///           "oneofValue" = {
-///             "name" = "number-oneof"
-///             "parameterValue" = {
-///               "numberValue" = 123.45
+///         name = "number-parameter"
+///         parameter_value = {
+///           oneof_value = {
+///             name = "number-oneof"
+///             parameter_value = {
+///               number_value = 123.45
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "name" = "string-list-parameter"
-///         "parameterValue" = {
-///           "oneofValue" = {
-///             "name" = "string-list-oneof"
-///             "parameterValue" = {
-///               "stringListValue" = {
-///                 "values" = ["value1", "value2"]
+///         name = "string-list-parameter"
+///         parameter_value = {
+///           oneof_value = {
+///             name = "string-list-oneof"
+///             parameter_value = {
+///               string_list_value = {
+///                 values = ["value1", "value2"]
 ///               }
 ///             }
 ///           }
@@ -2663,8 +2675,8 @@ import 'framework_deployment_target_resource_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsecuritycompliance"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2736,7 +2748,7 @@ import 'framework_deployment_target_resource_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2744,10 +2756,13 @@ import 'framework_deployment_target_resource_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_cloudsecuritycompliance_framework" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "organizations/123456789"
 ///   location     = "global"
 ///   framework_id = "example-framework"
@@ -2764,7 +2779,10 @@ import 'framework_deployment_target_resource_config.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_cloudsecuritycompliance_frameworkdeployment" "example" {
+/// resource "gcp_cloudsecuritycompliance_framework_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent                  = "organizations/123456789"
 ///   location                = "global"
 ///   framework_deployment_id = "example-deployment"
@@ -2774,18 +2792,18 @@ import 'framework_deployment_target_resource_config.dart';
 ///     major_revision_id = "1"
 ///   }
 ///   target_resource_config = {
-///     existing_target_resource ="projects/${data.gcp_organizations_getproject.project.project_id}"
+///     existing_target_resource ="projects/${data.gcp_organizations_project.project.project_id}"
 ///   }
-///   # Using project_id ensures the API's response matches Terraform's state
+///   # Using project_id ensures the API's response matches Pulumi's state
 ///   cloud_control_metadatas {
 ///     enforcement_mode = "DETECTIVE"
 ///     cloud_control_details = {
 ///       name              = "organizations/123456789/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets"
 ///       major_revision_id = "2"
 ///       parameters = [{
-///         "name" = "location"
-///         "parameterValue" = {
-///           "numberValue" = 1
+///         name = "location"
+///         parameter_value = {
+///           number_value = 1
 ///         }
 ///       }]
 ///     }
@@ -3140,9 +3158,9 @@ import 'framework_deployment_target_resource_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apphub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsecuritycompliance"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3227,7 +3245,7 @@ import 'framework_deployment_target_resource_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3235,11 +3253,14 @@ import 'framework_deployment_target_resource_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// # App Hub Application resource to act as the target
 /// resource "gcp_apphub_application" "application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
 ///   application_id = "example-app"
 ///   scope = {
@@ -3247,13 +3268,16 @@ import 'framework_deployment_target_resource_config.dart';
 ///   }
 /// }
 /// resource "gcp_cloudsecuritycompliance_framework" "example" {
-///   parent       ="projects/${data.gcp_organizations_getproject.project.number}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       ="projects/${data.gcp_organizations_project.project.number}"
 ///   location     = "global"
 ///   framework_id = "example-framework"
 ///   display_name = "Terraform Framework Name"
 ///   description  = "A Terraform description for the framework"
 ///   cloud_control_details {
-///     name              ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets"
+///     name              ="projects/${data.gcp_organizations_project.project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets"
 ///     major_revision_id = "2"
 ///     parameters {
 ///       name = "location"
@@ -3263,8 +3287,11 @@ import 'framework_deployment_target_resource_config.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_cloudsecuritycompliance_frameworkdeployment" "example" {
-///   parent                  ="projects/${data.gcp_organizations_getproject.project.number}"
+/// resource "gcp_cloudsecuritycompliance_framework_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent                  ="projects/${data.gcp_organizations_project.project.number}"
 ///   location                = "global"
 ///   framework_deployment_id = "example-deployment"
 ///   description             = "A framework deployment with project parent targeting an application"
@@ -3273,19 +3300,19 @@ import 'framework_deployment_target_resource_config.dart';
 ///     major_revision_id = "1"
 ///   }
 ///   target_resource_config = {
-///     existing_target_resource ="projects/${data.gcp_organizations_getproject.project.number}/locations/us-central1/applications/${gcp_apphub_application.application.application_id}"
+///     existing_target_resource ="projects/${data.gcp_organizations_project.project.number}/locations/us-central1/applications/${gcp_apphub_application.application.application_id}"
 ///   }
 ///   # Target the App Hub Application's fully qualified ID
 ///   # e.g., projects/abc/locations/us-central1/applications/app-name
 ///   cloud_control_metadatas {
 ///     enforcement_mode = "DETECTIVE"
 ///     cloud_control_details = {
-///       name              ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets"
+///       name              ="projects/${data.gcp_organizations_project.project.number}/locations/global/cloudControls/builtin-require-cmek-on-bigquery-datasets"
 ///       major_revision_id = "2"
 ///       parameters = [{
-///         "name" = "location"
-///         "parameterValue" = {
-///           "numberValue" = 1
+///         name = "location"
+///         parameter_value = {
+///           number_value = 1
 ///         }
 ///       }]
 ///     }
@@ -3623,7 +3650,7 @@ import 'framework_deployment_target_resource_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsecuritycompliance"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsecuritycompliance"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3691,7 +3718,7 @@ import 'framework_deployment_target_resource_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3700,6 +3727,9 @@ import 'framework_deployment_target_resource_config.dart';
 /// }
 ///
 /// resource "gcp_cloudsecuritycompliance_framework" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization = "123456789"
 ///   location     = "global"
 ///   framework_id = "example-framework"
@@ -3716,7 +3746,10 @@ import 'framework_deployment_target_resource_config.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_cloudsecuritycompliance_frameworkdeployment" "example" {
+/// resource "gcp_cloudsecuritycompliance_framework_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization            = "123456789"
 ///   location                = "global"
 ///   framework_deployment_id = "example-deployment"
@@ -3734,9 +3767,9 @@ import 'framework_deployment_target_resource_config.dart';
 ///       name              = "organizations/123456789/locations/global/cloudControls/builtin-detective-policy-for-vertex-ai-runtime-template-idle-shutdown"
 ///       major_revision_id = "2"
 ///       parameters = [{
-///         "name" = "enabled"
-///         "parameterValue" = {
-///           "boolValue" = true
+///         name = "enabled"
+///         parameter_value = {
+///           bool_value = true
 ///         }
 ///       }]
 ///     }
@@ -3975,7 +4008,7 @@ class FrameworkDeployment extends pulumi.CustomResource {
           'gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     cloudControlDeploymentReferences = registerOutput<List<FrameworkDeploymentCloudControlDeploymentReference>>('cloudControlDeploymentReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkDeploymentCloudControlDeploymentReference>(guardedValue, (value) => FrameworkDeploymentCloudControlDeploymentReference.fromMap((value as Map).cast<String, dynamic>())); });
     cloudControlMetadatas = registerOutput<List<FrameworkDeploymentCloudControlMetadata>>('cloudControlMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkDeploymentCloudControlMetadata>(guardedValue, (value) => FrameworkDeploymentCloudControlMetadata.fromMap((value as Map).cast<String, dynamic>())); });

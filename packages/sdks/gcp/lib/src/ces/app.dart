@@ -4,6 +4,7 @@ import 'app_audio_processing_config.dart';
 import 'app_client_certificate_settings.dart';
 import 'app_data_store_settings.dart';
 import 'app_default_channel_profile.dart';
+import 'app_error_handling_settings.dart';
 import 'app_evaluation_metrics_thresholds.dart';
 import 'app_language_settings.dart';
 import 'app_logging_settings.dart';
@@ -11,6 +12,7 @@ import 'app_model_settings.dart';
 import 'app_state.dart';
 import 'app_time_zone_settings.dart';
 import 'app_variable_declaration.dart';
+import 'app_vpc_sc_settings.dart';
 
 /// Customer Engagement Suite App
 ///
@@ -107,6 +109,9 @@ import 'app_variable_declaration.dart';
 ///         conversationLoggingSettings: {
 ///             disableConversationLogging: true,
 ///         },
+///         metricAnalysisSettings: {
+///             llmMetricsOptedOut: false,
+///         },
 ///     },
 ///     modelSettings: {
 ///         model: "gemini-3.0-flash-001",
@@ -117,11 +122,17 @@ import 'app_variable_declaration.dart';
 ///             turnLevelMetricsThresholds: {
 ///                 semanticSimilaritySuccessThreshold: 3,
 ///                 overallToolInvocationCorrectnessThreshold: 1,
+///                 semanticSimilarityChannel: "TEXT",
 ///             },
 ///             expectationLevelMetricsThresholds: {
 ///                 toolInvocationParameterCorrectnessThreshold: 1,
 ///             },
+///             toolMatchingSettings: {
+///                 extraToolCallBehavior: "ALLOW",
+///             },
 ///         },
+///         goldenHallucinationMetricBehavior: "ENABLED",
+///         scenarioHallucinationMetricBehavior: "ENABLED",
 ///     },
 ///     variableDeclarations: [{
 ///         name: "test",
@@ -182,6 +193,12 @@ import 'app_variable_declaration.dart';
 ///             modality: "CHAT_ONLY",
 ///             theme: "LIGHT",
 ///             webWidgetTitle: "Help Assistant",
+///             securitySettings: {
+///                 enablePublicAccess: true,
+///                 enableOriginCheck: false,
+///                 enableRecaptcha: false,
+///                 allowedOrigins: ["https://example.com"],
+///             },
 ///         },
 ///     },
 ///     metadata: {
@@ -195,6 +212,21 @@ import 'app_variable_declaration.dart';
 ///             input: "test-fixtures/cert.pem",
 ///         }).then(invoke => invoke.result),
 ///         privateKey: fakeSecretVersion.name,
+///     },
+///     vpcScSettings: {
+///         allowedOrigins: ["https://example.com"],
+///     },
+///     errorHandlingSettings: {
+///         errorHandlingStrategy: "FALLBACK_RESPONSE",
+///         fallbackResponseConfig: {
+///             customFallbackMessages: {
+///                 "en-US": "An error occurred, please try again.",
+///             },
+///             maxFallbackAttempts: 3,
+///         },
+///         endSessionConfig: {
+///             escalateSession: true,
+///         },
 ///     },
 /// });
 /// ```
@@ -276,6 +308,9 @@ import 'app_variable_declaration.dart';
 ///         "conversation_logging_settings": {
 ///             "disable_conversation_logging": True,
 ///         },
+///         "metric_analysis_settings": {
+///             "llm_metrics_opted_out": False,
+///         },
 ///     },
 ///     model_settings={
 ///         "model": "gemini-3.0-flash-001",
@@ -286,11 +321,17 @@ import 'app_variable_declaration.dart';
 ///             "turn_level_metrics_thresholds": {
 ///                 "semantic_similarity_success_threshold": 3,
 ///                 "overall_tool_invocation_correctness_threshold": float(1),
+///                 "semantic_similarity_channel": "TEXT",
 ///             },
 ///             "expectation_level_metrics_thresholds": {
 ///                 "tool_invocation_parameter_correctness_threshold": float(1),
 ///             },
+///             "tool_matching_settings": {
+///                 "extra_tool_call_behavior": "ALLOW",
+///             },
 ///         },
+///         "golden_hallucination_metric_behavior": "ENABLED",
+///         "scenario_hallucination_metric_behavior": "ENABLED",
 ///     },
 ///     variable_declarations=[{
 ///         "name": "test",
@@ -351,6 +392,12 @@ import 'app_variable_declaration.dart';
 ///             "modality": "CHAT_ONLY",
 ///             "theme": "LIGHT",
 ///             "web_widget_title": "Help Assistant",
+///             "security_settings": {
+///                 "enable_public_access": True,
+///                 "enable_origin_check": False,
+///                 "enable_recaptcha": False,
+///                 "allowed_origins": ["https://example.com"],
+///             },
 ///         },
 ///     },
 ///     metadata={
@@ -362,6 +409,21 @@ import 'app_variable_declaration.dart';
 ///     client_certificate_settings={
 ///         "tls_certificate": std.file(input="test-fixtures/cert.pem").result,
 ///         "private_key": fake_secret_version.name,
+///     },
+///     vpc_sc_settings={
+///         "allowed_origins": ["https://example.com"],
+///     },
+///     error_handling_settings={
+///         "error_handling_strategy": "FALLBACK_RESPONSE",
+///         "fallback_response_config": {
+///             "custom_fallback_messages": {
+///                 "en-US": "An error occurred, please try again.",
+///             },
+///             "max_fallback_attempts": 3,
+///         },
+///         "end_session_config": {
+///             "escalate_session": True,
+///         },
 ///     })
 /// ```
 /// ```csharp
@@ -475,6 +537,10 @@ import 'app_variable_declaration.dart';
 ///             {
 ///                 DisableConversationLogging = true,
 ///             },
+///             MetricAnalysisSettings = new Gcp.Ces.Inputs.AppLoggingSettingsMetricAnalysisSettingsArgs
+///             {
+///                 LlmMetricsOptedOut = false,
+///             },
 ///         },
 ///         ModelSettings = new Gcp.Ces.Inputs.AppModelSettingsArgs
 ///         {
@@ -489,12 +555,19 @@ import 'app_variable_declaration.dart';
 ///                 {
 ///                     SemanticSimilaritySuccessThreshold = 3,
 ///                     OverallToolInvocationCorrectnessThreshold = 1.0,
+///                     SemanticSimilarityChannel = "TEXT",
 ///                 },
 ///                 ExpectationLevelMetricsThresholds = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs
 ///                 {
 ///                     ToolInvocationParameterCorrectnessThreshold = 1.0,
 ///                 },
+///                 ToolMatchingSettings = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs
+///                 {
+///                     ExtraToolCallBehavior = "ALLOW",
+///                 },
 ///             },
+///             GoldenHallucinationMetricBehavior = "ENABLED",
+///             ScenarioHallucinationMetricBehavior = "ENABLED",
 ///         },
 ///         VariableDeclarations = new[]
 ///         {
@@ -581,6 +654,16 @@ import 'app_variable_declaration.dart';
 ///                 Modality = "CHAT_ONLY",
 ///                 Theme = "LIGHT",
 ///                 WebWidgetTitle = "Help Assistant",
+///                 SecuritySettings = new Gcp.Ces.Inputs.AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs
+///                 {
+///                     EnablePublicAccess = true,
+///                     EnableOriginCheck = false,
+///                     EnableRecaptcha = false,
+///                     AllowedOrigins = new[]
+///                     {
+///                         "https://example.com",
+///                     },
+///                 },
 ///             },
 ///         },
 ///         Metadata =
@@ -599,6 +682,29 @@ import 'app_variable_declaration.dart';
 ///             }).Apply(invoke => invoke.Result),
 ///             PrivateKey = fakeSecretVersion.Name,
 ///         },
+///         VpcScSettings = new Gcp.Ces.Inputs.AppVpcScSettingsArgs
+///         {
+///             AllowedOrigins = new[]
+///             {
+///                 "https://example.com",
+///             },
+///         },
+///         ErrorHandlingSettings = new Gcp.Ces.Inputs.AppErrorHandlingSettingsArgs
+///         {
+///             ErrorHandlingStrategy = "FALLBACK_RESPONSE",
+///             FallbackResponseConfig = new Gcp.Ces.Inputs.AppErrorHandlingSettingsFallbackResponseConfigArgs
+///             {
+///                 CustomFallbackMessages =
+///                 {
+///                     { "en-US", "An error occurred, please try again." },
+///                 },
+///                 MaxFallbackAttempts = 3,
+///             },
+///             EndSessionConfig = new Gcp.Ces.Inputs.AppErrorHandlingSettingsEndSessionConfigArgs
+///             {
+///                 EscalateSession = true,
+///             },
+///         },
 ///     });
 ///
 /// });
@@ -609,9 +715,9 @@ import 'app_variable_declaration.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -638,7 +744,7 @@ import 'app_variable_declaration.dart';
 /// 			return err
 /// 		}
 /// 		fakeSecretVersion, err := secretmanager.NewSecretVersion(ctx, "fake_secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     fakePrivateKeySecret.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     fakePrivateKeySecret.ID(),
 /// 			SecretData: pulumi.String(invokeFile.Result),
 /// 		})
 /// 		if err != nil {
@@ -777,6 +883,9 @@ import 'app_variable_declaration.dart';
 /// 				ConversationLoggingSettings: &ces.AppLoggingSettingsConversationLoggingSettingsArgs{
 /// 					DisableConversationLogging: pulumi.Bool(true),
 /// 				},
+/// 				MetricAnalysisSettings: &ces.AppLoggingSettingsMetricAnalysisSettingsArgs{
+/// 					LlmMetricsOptedOut: pulumi.Bool(false),
+/// 				},
 /// 			},
 /// 			ModelSettings: &ces.AppModelSettingsArgs{
 /// 				Model:       pulumi.String("gemini-3.0-flash-001"),
@@ -787,11 +896,17 @@ import 'app_variable_declaration.dart';
 /// 					TurnLevelMetricsThresholds: &ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs{
 /// 						SemanticSimilaritySuccessThreshold:        pulumi.Int(3),
 /// 						OverallToolInvocationCorrectnessThreshold: pulumi.Float64(1),
+/// 						SemanticSimilarityChannel:                 pulumi.String("TEXT"),
 /// 					},
 /// 					ExpectationLevelMetricsThresholds: &ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs{
 /// 						ToolInvocationParameterCorrectnessThreshold: pulumi.Float64(1),
 /// 					},
+/// 					ToolMatchingSettings: &ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs{
+/// 						ExtraToolCallBehavior: pulumi.String("ALLOW"),
+/// 					},
 /// 				},
+/// 				GoldenHallucinationMetricBehavior:   pulumi.String("ENABLED"),
+/// 				ScenarioHallucinationMetricBehavior: pulumi.String("ENABLED"),
 /// 			},
 /// 			VariableDeclarations: ces.AppVariableDeclarationArray{
 /// 				&ces.AppVariableDeclarationArgs{
@@ -835,6 +950,14 @@ import 'app_variable_declaration.dart';
 /// 					Modality:       pulumi.String("CHAT_ONLY"),
 /// 					Theme:          pulumi.String("LIGHT"),
 /// 					WebWidgetTitle: pulumi.String("Help Assistant"),
+/// 					SecuritySettings: &ces.AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs{
+/// 						EnablePublicAccess: pulumi.Bool(true),
+/// 						EnableOriginCheck:  pulumi.Bool(false),
+/// 						EnableRecaptcha:    pulumi.Bool(false),
+/// 						AllowedOrigins: pulumi.StringArray{
+/// 							pulumi.String("https://example.com"),
+/// 						},
+/// 					},
 /// 				},
 /// 			},
 /// 			Metadata: pulumi.StringMap{
@@ -847,6 +970,23 @@ import 'app_variable_declaration.dart';
 /// 				TlsCertificate: pulumi.String(invokeFile1.Result),
 /// 				PrivateKey:     fakeSecretVersion.Name,
 /// 			},
+/// 			VpcScSettings: &ces.AppVpcScSettingsArgs{
+/// 				AllowedOrigins: pulumi.StringArray{
+/// 					pulumi.String("https://example.com"),
+/// 				},
+/// 			},
+/// 			ErrorHandlingSettings: &ces.AppErrorHandlingSettingsArgs{
+/// 				ErrorHandlingStrategy: pulumi.String("FALLBACK_RESPONSE"),
+/// 				FallbackResponseConfig: &ces.AppErrorHandlingSettingsFallbackResponseConfigArgs{
+/// 					CustomFallbackMessages: pulumi.StringMap{
+/// 						"en-US": pulumi.String("An error occurred, please try again."),
+/// 					},
+/// 					MaxFallbackAttempts: pulumi.Int(3),
+/// 				},
+/// 				EndSessionConfig: &ces.AppErrorHandlingSettingsEndSessionConfigArgs{
+/// 					EscalateSession: pulumi.Bool(true),
+/// 				},
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -856,7 +996,7 @@ import 'app_variable_declaration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -867,26 +1007,38 @@ import 'app_variable_declaration.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "fake_private_key_secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "fake-pk-secret-app-tf1"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "fake_secret_version" {
+/// resource "gcp_secretmanager_secret_version" "fake_secret_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.fake_private_key_secret.id
 ///   secret_data = file("test-fixtures/test.key")
 /// }
-/// resource "gcp_secretmanager_secretiammember" "private_key_accessor" {
+/// resource "gcp_secretmanager_secret_iam_member" "private_key_accessor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project   = gcp_secretmanager_secret.fake_private_key_secret.project
 ///   secret_id = gcp_secretmanager_secret.fake_private_key_secret.secret_id
 ///   role      = "roles/secretmanager.secretAccessor"
-///   member    ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-ces.iam.gserviceaccount.com"
+///   member    ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-ces.iam.gserviceaccount.com"
 /// }
 /// resource "gcp_ces_app" "ces_app_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "Basic CES App example"
@@ -900,13 +1052,13 @@ import 'app_variable_declaration.dart';
 ///   }
 ///   audio_processing_config = {
 ///     synthesize_speech_configs = [{
-///       "languageCode" = "en-US"
-///       "voice"        = "en-US-Standard-A"
-///       "speakingRate" = 1
+///       language_code = "en-US"
+///       voice         = "en-US-Standard-A"
+///       speaking_rate = 1
 ///       }, {
-///       "languageCode" = "es-ES"
-///       "voice"        = "es-ES-Standard-A"
-///       "speakingRate" = 0.95
+///       language_code = "es-ES"
+///       voice         = "es-ES-Standard-A"
+///       speaking_rate = 0.95
 ///     }]
 ///     barge_in_config = {
 ///       barge_in_awareness = true
@@ -938,6 +1090,9 @@ import 'app_variable_declaration.dart';
 ///     conversation_logging_settings = {
 ///       disable_conversation_logging = true
 ///     }
+///     metric_analysis_settings = {
+///       llm_metrics_opted_out = false
+///     }
 ///   }
 ///   model_settings = {
 ///     model       = "gemini-3.0-flash-001"
@@ -948,11 +1103,17 @@ import 'app_variable_declaration.dart';
 ///       turn_level_metrics_thresholds = {
 ///         semantic_similarity_success_threshold         = 3
 ///         overall_tool_invocation_correctness_threshold = 1
+///         semantic_similarity_channel                   = "TEXT"
 ///       }
 ///       expectation_level_metrics_thresholds = {
 ///         tool_invocation_parameter_correctness_threshold = 1
 ///       }
+///       tool_matching_settings = {
+///         extra_tool_call_behavior = "ALLOW"
+///       }
 ///     }
+///     golden_hallucination_metric_behavior   = "ENABLED"
+///     scenario_hallucination_metric_behavior = "ENABLED"
 ///   }
 ///   variable_declarations {
 ///     name        = "test"
@@ -1010,6 +1171,12 @@ import 'app_variable_declaration.dart';
 ///       modality         = "CHAT_ONLY"
 ///       theme            = "LIGHT"
 ///       web_widget_title = "Help Assistant"
+///       security_settings = {
+///         enable_public_access = true
+///         enable_origin_check  = false
+///         enable_recaptcha     = false
+///         allowed_origins      = ["https://example.com"]
+///       }
 ///     }
 ///   }
 ///   metadata = {
@@ -1020,7 +1187,22 @@ import 'app_variable_declaration.dart';
 ///   }
 ///   client_certificate_settings = {
 ///     tls_certificate = file("test-fixtures/cert.pem")
-///     private_key     = gcp_secretmanager_secretversion.fake_secret_version.name
+///     private_key     = gcp_secretmanager_secret_version.fake_secret_version.name
+///   }
+///   vpc_sc_settings = {
+///     allowed_origins = ["https://example.com"]
+///   }
+///   error_handling_settings = {
+///     error_handling_strategy = "FALLBACK_RESPONSE"
+///     fallback_response_config = {
+///       custom_fallback_messages = {
+///         "en-US" = "An error occurred, please try again."
+///       }
+///       max_fallback_attempts = 3
+///     }
+///     end_session_config = {
+///       escalate_session = true
+///     }
 ///   }
 /// }
 /// ```
@@ -1055,18 +1237,25 @@ import 'app_variable_declaration.dart';
 /// import com.pulumi.gcp.ces.inputs.AppLoggingSettingsBigqueryExportSettingsArgs;
 /// import com.pulumi.gcp.ces.inputs.AppLoggingSettingsCloudLoggingSettingsArgs;
 /// import com.pulumi.gcp.ces.inputs.AppLoggingSettingsConversationLoggingSettingsArgs;
+/// import com.pulumi.gcp.ces.inputs.AppLoggingSettingsMetricAnalysisSettingsArgs;
 /// import com.pulumi.gcp.ces.inputs.AppModelSettingsArgs;
 /// import com.pulumi.gcp.ces.inputs.AppEvaluationMetricsThresholdsArgs;
 /// import com.pulumi.gcp.ces.inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs;
 /// import com.pulumi.gcp.ces.inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs;
 /// import com.pulumi.gcp.ces.inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs;
+/// import com.pulumi.gcp.ces.inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs;
 /// import com.pulumi.gcp.ces.inputs.AppVariableDeclarationArgs;
 /// import com.pulumi.gcp.ces.inputs.AppVariableDeclarationSchemaArgs;
 /// import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfileArgs;
 /// import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfilePersonaPropertyArgs;
 /// import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfileWebWidgetConfigArgs;
+/// import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs;
 /// import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
 /// import com.pulumi.gcp.ces.inputs.AppClientCertificateSettingsArgs;
+/// import com.pulumi.gcp.ces.inputs.AppVpcScSettingsArgs;
+/// import com.pulumi.gcp.ces.inputs.AppErrorHandlingSettingsArgs;
+/// import com.pulumi.gcp.ces.inputs.AppErrorHandlingSettingsFallbackResponseConfigArgs;
+/// import com.pulumi.gcp.ces.inputs.AppErrorHandlingSettingsEndSessionConfigArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1162,6 +1351,9 @@ import 'app_variable_declaration.dart';
 ///                 .conversationLoggingSettings(AppLoggingSettingsConversationLoggingSettingsArgs.builder()
 ///                     .disableConversationLogging(true)
 ///                     .build())
+///                 .metricAnalysisSettings(AppLoggingSettingsMetricAnalysisSettingsArgs.builder()
+///                     .llmMetricsOptedOut(false)
+///                     .build())
 ///                 .build())
 ///             .modelSettings(AppModelSettingsArgs.builder()
 ///                 .model("gemini-3.0-flash-001")
@@ -1172,11 +1364,17 @@ import 'app_variable_declaration.dart';
 ///                     .turnLevelMetricsThresholds(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs.builder()
 ///                         .semanticSimilaritySuccessThreshold(3)
 ///                         .overallToolInvocationCorrectnessThreshold(1.0)
+///                         .semanticSimilarityChannel("TEXT")
 ///                         .build())
 ///                     .expectationLevelMetricsThresholds(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs.builder()
 ///                         .toolInvocationParameterCorrectnessThreshold(1.0)
 ///                         .build())
+///                     .toolMatchingSettings(AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs.builder()
+///                         .extraToolCallBehavior("ALLOW")
+///                         .build())
 ///                     .build())
+///                 .goldenHallucinationMetricBehavior("ENABLED")
+///                 .scenarioHallucinationMetricBehavior("ENABLED")
 ///                 .build())
 ///             .variableDeclarations(AppVariableDeclarationArgs.builder()
 ///                 .name("test")
@@ -1243,6 +1441,12 @@ import 'app_variable_declaration.dart';
 ///                     .modality("CHAT_ONLY")
 ///                     .theme("LIGHT")
 ///                     .webWidgetTitle("Help Assistant")
+///                     .securitySettings(AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs.builder()
+///                         .enablePublicAccess(true)
+///                         .enableOriginCheck(false)
+///                         .enableRecaptcha(false)
+///                         .allowedOrigins("https://example.com")
+///                         .build())
 ///                     .build())
 ///                 .build())
 ///             .metadata(Map.of("deployment_env", "test"))
@@ -1254,6 +1458,19 @@ import 'app_variable_declaration.dart';
 ///                     .input("test-fixtures/cert.pem")
 ///                     .build()).result())
 ///                 .privateKey(fakeSecretVersion.name())
+///                 .build())
+///             .vpcScSettings(AppVpcScSettingsArgs.builder()
+///                 .allowedOrigins("https://example.com")
+///                 .build())
+///             .errorHandlingSettings(AppErrorHandlingSettingsArgs.builder()
+///                 .errorHandlingStrategy("FALLBACK_RESPONSE")
+///                 .fallbackResponseConfig(AppErrorHandlingSettingsFallbackResponseConfigArgs.builder()
+///                     .customFallbackMessages(Map.of("en-US", "An error occurred, please try again."))
+///                     .maxFallbackAttempts(3)
+///                     .build())
+///                 .endSessionConfig(AppErrorHandlingSettingsEndSessionConfigArgs.builder()
+///                     .escalateSession(true)
+///                     .build())
 ///                 .build())
 ///             .build());
 ///
@@ -1334,6 +1551,8 @@ import 'app_variable_declaration.dart';
 ///           enableCloudLogging: true
 ///         conversationLoggingSettings:
 ///           disableConversationLogging: true
+///         metricAnalysisSettings:
+///           llmMetricsOptedOut: false
 ///       modelSettings:
 ///         model: gemini-3.0-flash-001
 ///         temperature: 0.5
@@ -1342,8 +1561,13 @@ import 'app_variable_declaration.dart';
 ///           turnLevelMetricsThresholds:
 ///             semanticSimilaritySuccessThreshold: 3
 ///             overallToolInvocationCorrectnessThreshold: 1
+///             semanticSimilarityChannel: TEXT
 ///           expectationLevelMetricsThresholds:
 ///             toolInvocationParameterCorrectnessThreshold: 1
+///           toolMatchingSettings:
+///             extraToolCallBehavior: ALLOW
+///         goldenHallucinationMetricBehavior: ENABLED
+///         scenarioHallucinationMetricBehavior: ENABLED
 ///       variableDeclarations:
 ///         - name: test
 ///           description: test
@@ -1399,6 +1623,12 @@ import 'app_variable_declaration.dart';
 ///           modality: CHAT_ONLY
 ///           theme: LIGHT
 ///           webWidgetTitle: Help Assistant
+///           securitySettings:
+///             enablePublicAccess: true
+///             enableOriginCheck: false
+///             enableRecaptcha: false
+///             allowedOrigins:
+///               - https://example.com
 ///       metadata:
 ///         deployment_env: test
 ///       timeZoneSettings:
@@ -1411,6 +1641,17 @@ import 'app_variable_declaration.dart';
 ///               input: test-fixtures/cert.pem
 ///             return: result
 ///         privateKey: ${fakeSecretVersion.name}
+///       vpcScSettings:
+///         allowedOrigins:
+///           - https://example.com
+///       errorHandlingSettings:
+///         errorHandlingStrategy: FALLBACK_RESPONSE
+///         fallbackResponseConfig:
+///           customFallbackMessages:
+///             en-US: An error occurred, please try again.
+///           maxFallbackAttempts: 3
+///         endSessionConfig:
+///           escalateSession: true
 /// variables:
 ///   project:
 ///     fn::invoke:
@@ -1918,7 +2159,7 @@ import 'app_variable_declaration.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2115,7 +2356,7 @@ import 'app_variable_declaration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2124,6 +2365,9 @@ import 'app_variable_declaration.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "ces_app_ambient_sound_gcs_uri" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "Basic CES App example"
@@ -2136,13 +2380,13 @@ import 'app_variable_declaration.dart';
 ///   }
 ///   audio_processing_config = {
 ///     synthesize_speech_configs = [{
-///       "languageCode" = "en-US"
-///       "voice"        = "en-US-Standard-A"
-///       "speakingRate" = 1
+///       language_code = "en-US"
+///       voice         = "en-US-Standard-A"
+///       speaking_rate = 1
 ///       }, {
-///       "languageCode" = "es-ES"
-///       "voice"        = "es-ES-Standard-A"
-///       "speakingRate" = 0.95
+///       language_code = "es-ES"
+///       voice         = "es-ES-Standard-A"
+///       speaking_rate = 0.95
 ///     }]
 ///     barge_in_config = {
 ///       barge_in_awareness = true
@@ -2613,6 +2857,9 @@ class App extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// Display name of the app.
   late final pulumi.Output<String> displayName;
+  /// Settings to describe how errors should be handled in the app.
+  /// Structure is documented below.
+  late final pulumi.Output<AppErrorHandlingSettings?> errorHandlingSettings;
   /// Etag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
@@ -2633,6 +2880,9 @@ class App extends pulumi.CustomResource {
   late final pulumi.Output<AppLanguageSettings?> languageSettings;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
+  /// Indicates whether the app is locked for changes. If the app is locked,
+  /// modifications to the app resources will be rejected.
+  late final pulumi.Output<bool?> locked;
   /// Settings to describe the logging behaviors for the app.
   /// Structure is documented below.
   late final pulumi.Output<AppLoggingSettings> loggingSettings;
@@ -2664,6 +2914,9 @@ class App extends pulumi.CustomResource {
   /// The declarations of the variables.
   /// Structure is documented below.
   late final pulumi.Output<List<AppVariableDeclaration>?> variableDeclarations;
+  /// VPC-SC settings for the app.
+  /// Structure is documented below.
+  late final pulumi.Output<AppVpcScSettings?> vpcScSettings;
 
   /// Creates a new [App].
   /// [name] The Pulumi resource name.
@@ -2677,7 +2930,7 @@ class App extends pulumi.CustomResource {
           'gcp:ces/app:App',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     audioProcessingConfig = registerOutput<AppAudioProcessingConfig?>('audioProcessingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAudioProcessingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2689,12 +2942,14 @@ class App extends pulumi.CustomResource {
     deploymentCount = registerOutput<int>('deploymentCount');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
+    errorHandlingSettings = registerOutput<AppErrorHandlingSettings?>('errorHandlingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppErrorHandlingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     evaluationMetricsThresholds = registerOutput<AppEvaluationMetricsThresholds?>('evaluationMetricsThresholds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEvaluationMetricsThresholds.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     globalInstruction = registerOutput<String?>('globalInstruction');
     guardrails = registerOutput<List<String>?>('guardrails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     languageSettings = registerOutput<AppLanguageSettings?>('languageSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLanguageSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
+    locked = registerOutput<bool?>('locked');
     loggingSettings = registerOutput<AppLoggingSettings>('loggingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLoggingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     modelSettings = registerOutput<AppModelSettings?>('modelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2706,6 +2961,7 @@ class App extends pulumi.CustomResource {
     toolExecutionMode = registerOutput<String?>('toolExecutionMode');
     updateTime = registerOutput<String>('updateTime');
     variableDeclarations = registerOutput<List<AppVariableDeclaration>?>('variableDeclarations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppVariableDeclaration>(guardedValue, (value) => AppVariableDeclaration.fromMap((value as Map).cast<String, dynamic>())); });
+    vpcScSettings = registerOutput<AppVpcScSettings?>('vpcScSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppVpcScSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [App] resource's state with the given [name] and [id].
@@ -2742,12 +2998,14 @@ class App extends pulumi.CustomResource {
     deploymentCount = registerOutput<int>('deploymentCount');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
+    errorHandlingSettings = registerOutput<AppErrorHandlingSettings?>('errorHandlingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppErrorHandlingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     evaluationMetricsThresholds = registerOutput<AppEvaluationMetricsThresholds?>('evaluationMetricsThresholds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEvaluationMetricsThresholds.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     globalInstruction = registerOutput<String?>('globalInstruction');
     guardrails = registerOutput<List<String>?>('guardrails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     languageSettings = registerOutput<AppLanguageSettings?>('languageSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLanguageSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
+    locked = registerOutput<bool?>('locked');
     loggingSettings = registerOutput<AppLoggingSettings>('loggingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLoggingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     modelSettings = registerOutput<AppModelSettings?>('modelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2759,6 +3017,7 @@ class App extends pulumi.CustomResource {
     toolExecutionMode = registerOutput<String?>('toolExecutionMode');
     updateTime = registerOutput<String>('updateTime');
     variableDeclarations = registerOutput<List<AppVariableDeclaration>?>('variableDeclarations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppVariableDeclaration>(guardedValue, (value) => AppVariableDeclaration.fromMap((value as Map).cast<String, dynamic>())); });
+    vpcScSettings = registerOutput<AppVpcScSettings?>('vpcScSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppVpcScSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Creates a typed reference to an existing [App] resource.
@@ -2780,12 +3039,14 @@ class App extends pulumi.CustomResource {
     deploymentCount = registerOutput<int>('deploymentCount');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
+    errorHandlingSettings = registerOutput<AppErrorHandlingSettings?>('errorHandlingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppErrorHandlingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     evaluationMetricsThresholds = registerOutput<AppEvaluationMetricsThresholds?>('evaluationMetricsThresholds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEvaluationMetricsThresholds.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     globalInstruction = registerOutput<String?>('globalInstruction');
     guardrails = registerOutput<List<String>?>('guardrails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     languageSettings = registerOutput<AppLanguageSettings?>('languageSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLanguageSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
+    locked = registerOutput<bool?>('locked');
     loggingSettings = registerOutput<AppLoggingSettings>('loggingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLoggingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     modelSettings = registerOutput<AppModelSettings?>('modelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2797,5 +3058,6 @@ class App extends pulumi.CustomResource {
     toolExecutionMode = registerOutput<String?>('toolExecutionMode');
     updateTime = registerOutput<String>('updateTime');
     variableDeclarations = registerOutput<List<AppVariableDeclaration>?>('variableDeclarations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppVariableDeclaration>(guardedValue, (value) => AppVariableDeclaration.fromMap((value as Map).cast<String, dynamic>())); });
+    vpcScSettings = registerOutput<AppVpcScSettings?>('vpcScSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppVpcScSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

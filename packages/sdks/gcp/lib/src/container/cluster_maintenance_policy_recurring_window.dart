@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterMaintenancePolicyRecurringWindow {
+  /// The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
   final pulumi.Input<String> endTime;
   /// Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
   ///
@@ -45,12 +46,13 @@ class ClusterMaintenancePolicyRecurringWindow {
   /// }
   /// ```
   final pulumi.Input<String> recurrence;
+  /// The start time of the exclusion window, in RFC3339 format.
   final pulumi.Input<String> startTime;
 
   /// Creates a new [ClusterMaintenancePolicyRecurringWindow].
-  /// [endTime] Required.
+  /// [endTime] The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
   /// [recurrence] Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
-  /// [startTime] Required.
+  /// [startTime] The start time of the exclusion window, in RFC3339 format.
   const ClusterMaintenancePolicyRecurringWindow({
     required this.endTime,
     required this.recurrence,

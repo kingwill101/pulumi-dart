@@ -97,7 +97,6 @@ import 'package:pulumi_gcp/managedkafka.dart' as module_managedkafka;
 import 'package:pulumi_gcp/memcache.dart' as module_memcache;
 import 'package:pulumi_gcp/memorystore.dart' as module_memorystore;
 import 'package:pulumi_gcp/migrationcenter.dart' as module_migrationcenter;
-import 'package:pulumi_gcp/ml.dart' as module_ml;
 import 'package:pulumi_gcp/modelarmor.dart' as module_modelarmor;
 import 'package:pulumi_gcp/monitoring.dart' as module_monitoring;
 import 'package:pulumi_gcp/netapp.dart' as module_netapp;
@@ -105,7 +104,6 @@ import 'package:pulumi_gcp/networkconnectivity.dart' as module_networkconnectivi
 import 'package:pulumi_gcp/networkmanagement.dart' as module_networkmanagement;
 import 'package:pulumi_gcp/networksecurity.dart' as module_networksecurity;
 import 'package:pulumi_gcp/networkservices.dart' as module_networkservices;
-import 'package:pulumi_gcp/notebooks.dart' as module_notebooks;
 import 'package:pulumi_gcp/observability.dart' as module_observability;
 import 'package:pulumi_gcp/oracledatabase.dart' as module_oracledatabase;
 import 'package:pulumi_gcp/organizations.dart' as module_organizations;
@@ -244,7 +242,6 @@ final managedkafka = _ManagedkafkaModuleNamespace();
 final memcache = _MemcacheModuleNamespace();
 final memorystore = _MemorystoreModuleNamespace();
 final migrationcenter = _MigrationcenterModuleNamespace();
-final ml = _MlModuleNamespace();
 final modelarmor = _ModelarmorModuleNamespace();
 final monitoring = _MonitoringModuleNamespace();
 final netapp = _NetappModuleNamespace();
@@ -252,7 +249,6 @@ final networkconnectivity = _NetworkconnectivityModuleNamespace();
 final networkmanagement = _NetworkmanagementModuleNamespace();
 final networksecurity = _NetworksecurityModuleNamespace();
 final networkservices = _NetworkservicesModuleNamespace();
-final notebooks = _NotebooksModuleNamespace();
 final observability = _ObservabilityModuleNamespace();
 final oracledatabase = _OracledatabaseModuleNamespace();
 final organizations = _OrganizationsModuleNamespace();
@@ -306,8 +302,11 @@ class _AccessapprovalModuleNamespace {
   final GetProjectServiceAccountResult = module_accessapproval.GetProjectServiceAccountResult.new;
   final GetProjectServiceAccountResultArgs = module_accessapproval.GetProjectServiceAccountResult.new;
   final getFolderServiceAccount = module_accessapproval.getFolderServiceAccount;
+  final getFolderServiceAccountOutput = module_accessapproval.getFolderServiceAccountOutput;
   final getOrganizationServiceAccount = module_accessapproval.getOrganizationServiceAccount;
+  final getOrganizationServiceAccountOutput = module_accessapproval.getOrganizationServiceAccountOutput;
   final getProjectServiceAccount = module_accessapproval.getProjectServiceAccount;
+  final getProjectServiceAccountOutput = module_accessapproval.getProjectServiceAccountOutput;
 }
 
 class _AccesscontextmanagerModuleNamespace {
@@ -671,8 +670,12 @@ class _AccesscontextmanagerModuleNamespace {
   final ServicePerimetersStateArgs = module_accesscontextmanager.ServicePerimetersState.new;
   final getAccessPolicy = module_accesscontextmanager.getAccessPolicy;
   final getAccessPolicyIamPolicy = module_accesscontextmanager.getAccessPolicyIamPolicy;
+  final getAccessPolicyIamPolicyOutput = module_accesscontextmanager.getAccessPolicyIamPolicyOutput;
+  final getAccessPolicyOutput = module_accesscontextmanager.getAccessPolicyOutput;
   final getSupportedService = module_accesscontextmanager.getSupportedService;
+  final getSupportedServiceOutput = module_accesscontextmanager.getSupportedServiceOutput;
   final getSupportedServices = module_accesscontextmanager.getSupportedServices;
+  final getSupportedServicesOutput = module_accesscontextmanager.getSupportedServicesOutput;
 }
 
 class _ActivedirectoryModuleNamespace {
@@ -727,6 +730,8 @@ class _AgenticapplicationsModuleNamespace {
   final AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceGoogleDriveResourceArgs = module_agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceGoogleDriveResource.new;
   final AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceRawFileResource = module_agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceRawFileResource.new;
   final AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceRawFileResourceArgs = module_agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceRawFileResource.new;
+  final AnalystAgentPersonaArtifactsConfigMethodologyExportOptions = module_agenticapplications.AnalystAgentPersonaArtifactsConfigMethodologyExportOptions.new;
+  final AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs = module_agenticapplications.AnalystAgentPersonaArtifactsConfigMethodologyExportOptions.new;
   final AnalystAgentPersonaArtifactsConfigSlideGenerationOptions = module_agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptions.new;
   final AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsArgs = module_agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptions.new;
   final AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExample = module_agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExample.new;
@@ -785,6 +790,8 @@ class _AgenticapplicationsModuleNamespace {
   final AnalystAgentPersonaTableArgs = module_agenticapplications.AnalystAgentPersonaTable.new;
   final AnalystAgentPersonaTableColumn = module_agenticapplications.AnalystAgentPersonaTableColumn.new;
   final AnalystAgentPersonaTableColumnArgs = module_agenticapplications.AnalystAgentPersonaTableColumn.new;
+  final AnalystAgentPersonaWebSearchConfig = module_agenticapplications.AnalystAgentPersonaWebSearchConfig.new;
+  final AnalystAgentPersonaWebSearchConfigArgs = module_agenticapplications.AnalystAgentPersonaWebSearchConfig.new;
 }
 
 class _AgentidentityModuleNamespace {
@@ -851,8 +858,11 @@ class _AgentregistryModuleNamespace {
   final ServiceState = module_agentregistry.ServiceState.new;
   final ServiceStateArgs = module_agentregistry.ServiceState.new;
   final getAgent = module_agentregistry.getAgent;
+  final getAgentOutput = module_agentregistry.getAgentOutput;
   final getEndpoint = module_agentregistry.getEndpoint;
+  final getEndpointOutput = module_agentregistry.getEndpointOutput;
   final getMcpServer = module_agentregistry.getMcpServer;
+  final getMcpServerOutput = module_agentregistry.getMcpServerOutput;
 }
 
 class _AlloydbModuleNamespace {
@@ -1060,9 +1070,13 @@ class _AlloydbModuleNamespace {
   final UserState = module_alloydb.UserState.new;
   final UserStateArgs = module_alloydb.UserState.new;
   final getCluster = module_alloydb.getCluster;
+  final getClusterOutput = module_alloydb.getClusterOutput;
   final getInstance = module_alloydb.getInstance;
+  final getInstanceOutput = module_alloydb.getInstanceOutput;
   final getLocations = module_alloydb.getLocations;
+  final getLocationsOutput = module_alloydb.getLocationsOutput;
   final getSupportedDatabaseFlags = module_alloydb.getSupportedDatabaseFlags;
+  final getSupportedDatabaseFlagsOutput = module_alloydb.getSupportedDatabaseFlagsOutput;
 }
 
 class _ApigatewayModuleNamespace {
@@ -1153,8 +1167,11 @@ class _ApigatewayModuleNamespace {
   final GetGatewayIamPolicyResult = module_apigateway.GetGatewayIamPolicyResult.new;
   final GetGatewayIamPolicyResultArgs = module_apigateway.GetGatewayIamPolicyResult.new;
   final getApiConfigIamPolicy = module_apigateway.getApiConfigIamPolicy;
+  final getApiConfigIamPolicyOutput = module_apigateway.getApiConfigIamPolicyOutput;
   final getApiIamPolicy = module_apigateway.getApiIamPolicy;
+  final getApiIamPolicyOutput = module_apigateway.getApiIamPolicyOutput;
   final getGatewayIamPolicy = module_apigateway.getGatewayIamPolicy;
+  final getGatewayIamPolicyOutput = module_apigateway.getGatewayIamPolicyOutput;
 }
 
 class _ApigeeModuleNamespace {
@@ -1450,7 +1467,9 @@ class _ApigeeModuleNamespace {
   final TargetServerState = module_apigee.TargetServerState.new;
   final TargetServerStateArgs = module_apigee.TargetServerState.new;
   final getEnvironmentIamPolicy = module_apigee.getEnvironmentIamPolicy;
+  final getEnvironmentIamPolicyOutput = module_apigee.getEnvironmentIamPolicyOutput;
   final getInstance = module_apigee.getInstance;
+  final getInstanceOutput = module_apigee.getInstanceOutput;
 }
 
 class _ApihubModuleNamespace {
@@ -1658,9 +1677,14 @@ class _AppengineModuleNamespace {
   final StandardAppVersionManualScalingArgs = module_appengine.StandardAppVersionManualScaling.new;
   final StandardAppVersionState = module_appengine.StandardAppVersionState.new;
   final StandardAppVersionStateArgs = module_appengine.StandardAppVersionState.new;
+  final StandardAppVersionVpcAccess = module_appengine.StandardAppVersionVpcAccess.new;
+  final StandardAppVersionVpcAccessArgs = module_appengine.StandardAppVersionVpcAccess.new;
   final StandardAppVersionVpcAccessConnector = module_appengine.StandardAppVersionVpcAccessConnector.new;
   final StandardAppVersionVpcAccessConnectorArgs = module_appengine.StandardAppVersionVpcAccessConnector.new;
+  final StandardAppVersionVpcAccessNetworkInterface = module_appengine.StandardAppVersionVpcAccessNetworkInterface.new;
+  final StandardAppVersionVpcAccessNetworkInterfaceArgs = module_appengine.StandardAppVersionVpcAccessNetworkInterface.new;
   final getDefaultServiceAccount = module_appengine.getDefaultServiceAccount;
+  final getDefaultServiceAccountOutput = module_appengine.getDefaultServiceAccountOutput;
 }
 
 class _ApphubModuleNamespace {
@@ -1781,8 +1805,11 @@ class _ApphubModuleNamespace {
   final WorkloadWorkloadReference = module_apphub.WorkloadWorkloadReference.new;
   final WorkloadWorkloadReferenceArgs = module_apphub.WorkloadWorkloadReference.new;
   final getApplication = module_apphub.getApplication;
+  final getApplicationOutput = module_apphub.getApplicationOutput;
   final getDiscoveredService = module_apphub.getDiscoveredService;
+  final getDiscoveredServiceOutput = module_apphub.getDiscoveredServiceOutput;
   final getDiscoveredWorkload = module_apphub.getDiscoveredWorkload;
+  final getDiscoveredWorkloadOutput = module_apphub.getDiscoveredWorkloadOutput;
 }
 
 class _ApplicationintegrationModuleNamespace {
@@ -2041,24 +2068,43 @@ class _ArtifactregistryModuleNamespace {
   final VpcscConfigState = module_artifactregistry.VpcscConfigState.new;
   final VpcscConfigStateArgs = module_artifactregistry.VpcscConfigState.new;
   final getDockerImage = module_artifactregistry.getDockerImage;
+  final getDockerImageOutput = module_artifactregistry.getDockerImageOutput;
   final getDockerImages = module_artifactregistry.getDockerImages;
+  final getDockerImagesOutput = module_artifactregistry.getDockerImagesOutput;
   final getFile = module_artifactregistry.getFile;
+  final getFileOutput = module_artifactregistry.getFileOutput;
   final getLocations = module_artifactregistry.getLocations;
+  final getLocationsOutput = module_artifactregistry.getLocationsOutput;
   final getMavenArtifact = module_artifactregistry.getMavenArtifact;
+  final getMavenArtifactOutput = module_artifactregistry.getMavenArtifactOutput;
   final getMavenArtifacts = module_artifactregistry.getMavenArtifacts;
+  final getMavenArtifactsOutput = module_artifactregistry.getMavenArtifactsOutput;
   final getNpmPackage = module_artifactregistry.getNpmPackage;
+  final getNpmPackageOutput = module_artifactregistry.getNpmPackageOutput;
   final getNpmPackages = module_artifactregistry.getNpmPackages;
+  final getNpmPackagesOutput = module_artifactregistry.getNpmPackagesOutput;
   final getPackage = module_artifactregistry.getPackage;
+  final getPackageOutput = module_artifactregistry.getPackageOutput;
   final getPackages = module_artifactregistry.getPackages;
+  final getPackagesOutput = module_artifactregistry.getPackagesOutput;
   final getPythonPackage = module_artifactregistry.getPythonPackage;
+  final getPythonPackageOutput = module_artifactregistry.getPythonPackageOutput;
   final getPythonPackages = module_artifactregistry.getPythonPackages;
+  final getPythonPackagesOutput = module_artifactregistry.getPythonPackagesOutput;
   final getRepositories = module_artifactregistry.getRepositories;
+  final getRepositoriesOutput = module_artifactregistry.getRepositoriesOutput;
   final getRepository = module_artifactregistry.getRepository;
   final getRepositoryIamPolicy = module_artifactregistry.getRepositoryIamPolicy;
+  final getRepositoryIamPolicyOutput = module_artifactregistry.getRepositoryIamPolicyOutput;
+  final getRepositoryOutput = module_artifactregistry.getRepositoryOutput;
   final getTag = module_artifactregistry.getTag;
+  final getTagOutput = module_artifactregistry.getTagOutput;
   final getTags = module_artifactregistry.getTags;
+  final getTagsOutput = module_artifactregistry.getTagsOutput;
   final getVersion = module_artifactregistry.getVersion;
+  final getVersionOutput = module_artifactregistry.getVersionOutput;
   final getVersions = module_artifactregistry.getVersions;
+  final getVersionsOutput = module_artifactregistry.getVersionsOutput;
 }
 
 class _AssuredworkloadsModuleNamespace {
@@ -2087,6 +2133,22 @@ class _AssuredworkloadsModuleNamespace {
 
 class _BackupdisasterrecoveryModuleNamespace {
   _BackupdisasterrecoveryModuleNamespace();
+  final AutoProtectionPolicy = module_backupdisasterrecovery.AutoProtectionPolicy.new;
+  final AutoProtectionPolicyArgs = module_backupdisasterrecovery.AutoProtectionPolicyArgs.new;
+  final AutoProtectionPolicyBackupPlanDetail = module_backupdisasterrecovery.AutoProtectionPolicyBackupPlanDetail.new;
+  final AutoProtectionPolicyBackupPlanDetailArgs = module_backupdisasterrecovery.AutoProtectionPolicyBackupPlanDetail.new;
+  final AutoProtectionPolicyBindingSummary = module_backupdisasterrecovery.AutoProtectionPolicyBindingSummary.new;
+  final AutoProtectionPolicyBindingSummaryArgs = module_backupdisasterrecovery.AutoProtectionPolicyBindingSummary.new;
+  final AutoProtectionPolicyCriteria = module_backupdisasterrecovery.AutoProtectionPolicyCriteria.new;
+  final AutoProtectionPolicyCriteriaArgs = module_backupdisasterrecovery.AutoProtectionPolicyCriteria.new;
+  final AutoProtectionPolicyCriteriaMatchingCondition = module_backupdisasterrecovery.AutoProtectionPolicyCriteriaMatchingCondition.new;
+  final AutoProtectionPolicyCriteriaMatchingConditionArgs = module_backupdisasterrecovery.AutoProtectionPolicyCriteriaMatchingCondition.new;
+  final AutoProtectionPolicyCriteriaMatchingConditionLabelCondition = module_backupdisasterrecovery.AutoProtectionPolicyCriteriaMatchingConditionLabelCondition.new;
+  final AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs = module_backupdisasterrecovery.AutoProtectionPolicyCriteriaMatchingConditionLabelCondition.new;
+  final AutoProtectionPolicyPolicyEvaluationSummary = module_backupdisasterrecovery.AutoProtectionPolicyPolicyEvaluationSummary.new;
+  final AutoProtectionPolicyPolicyEvaluationSummaryArgs = module_backupdisasterrecovery.AutoProtectionPolicyPolicyEvaluationSummary.new;
+  final AutoProtectionPolicyState = module_backupdisasterrecovery.AutoProtectionPolicyState.new;
+  final AutoProtectionPolicyStateArgs = module_backupdisasterrecovery.AutoProtectionPolicyState.new;
   final BackupPlan = module_backupdisasterrecovery.BackupPlan.new;
   final BackupPlanArgs = module_backupdisasterrecovery.BackupPlanArgs.new;
   final BackupPlanAssociation = module_backupdisasterrecovery.BackupPlanAssociation.new;
@@ -2302,60 +2364,29 @@ class _BackupdisasterrecoveryModuleNamespace {
   final ServiceConfigState = module_backupdisasterrecovery.ServiceConfigState.new;
   final ServiceConfigStateArgs = module_backupdisasterrecovery.ServiceConfigState.new;
   final getBackup = module_backupdisasterrecovery.getBackup;
+  final getBackupOutput = module_backupdisasterrecovery.getBackupOutput;
   final getBackupPlan = module_backupdisasterrecovery.getBackupPlan;
   final getBackupPlanAssociation = module_backupdisasterrecovery.getBackupPlanAssociation;
+  final getBackupPlanAssociationOutput = module_backupdisasterrecovery.getBackupPlanAssociationOutput;
   final getBackupPlanAssociations = module_backupdisasterrecovery.getBackupPlanAssociations;
+  final getBackupPlanAssociationsOutput = module_backupdisasterrecovery.getBackupPlanAssociationsOutput;
+  final getBackupPlanOutput = module_backupdisasterrecovery.getBackupPlanOutput;
   final getBackupVault = module_backupdisasterrecovery.getBackupVault;
+  final getBackupVaultOutput = module_backupdisasterrecovery.getBackupVaultOutput;
   final getDataSource = module_backupdisasterrecovery.getDataSource;
+  final getDataSourceOutput = module_backupdisasterrecovery.getDataSourceOutput;
   final getDataSourceReference = module_backupdisasterrecovery.getDataSourceReference;
+  final getDataSourceReferenceOutput = module_backupdisasterrecovery.getDataSourceReferenceOutput;
   final getDataSourceReferences = module_backupdisasterrecovery.getDataSourceReferences;
+  final getDataSourceReferencesOutput = module_backupdisasterrecovery.getDataSourceReferencesOutput;
   final getDataSources = module_backupdisasterrecovery.getDataSources;
+  final getDataSourcesOutput = module_backupdisasterrecovery.getDataSourcesOutput;
   final getManagementServer = module_backupdisasterrecovery.getManagementServer;
+  final getManagementServerOutput = module_backupdisasterrecovery.getManagementServerOutput;
 }
 
 class _BeyondcorpModuleNamespace {
   _BeyondcorpModuleNamespace();
-  final AppConnection = module_beyondcorp.AppConnection.new;
-  final AppConnectionApplicationEndpoint = module_beyondcorp.AppConnectionApplicationEndpoint.new;
-  final AppConnectionApplicationEndpointArgs = module_beyondcorp.AppConnectionApplicationEndpoint.new;
-  final AppConnectionArgs = module_beyondcorp.AppConnectionArgs.new;
-  final AppConnectionGateway = module_beyondcorp.AppConnectionGateway.new;
-  final AppConnectionGatewayArgs = module_beyondcorp.AppConnectionGateway.new;
-  final AppConnectionState = module_beyondcorp.AppConnectionState.new;
-  final AppConnectionStateArgs = module_beyondcorp.AppConnectionState.new;
-  final AppConnector = module_beyondcorp.AppConnector.new;
-  final AppConnectorArgs = module_beyondcorp.AppConnectorArgs.new;
-  final AppConnectorPrincipalInfo = module_beyondcorp.AppConnectorPrincipalInfo.new;
-  final AppConnectorPrincipalInfoArgs = module_beyondcorp.AppConnectorPrincipalInfo.new;
-  final AppConnectorPrincipalInfoServiceAccount = module_beyondcorp.AppConnectorPrincipalInfoServiceAccount.new;
-  final AppConnectorPrincipalInfoServiceAccountArgs = module_beyondcorp.AppConnectorPrincipalInfoServiceAccount.new;
-  final AppConnectorState = module_beyondcorp.AppConnectorState.new;
-  final AppConnectorStateArgs = module_beyondcorp.AppConnectorState.new;
-  final AppGateway = module_beyondcorp.AppGateway.new;
-  final AppGatewayAllocatedConnection = module_beyondcorp.AppGatewayAllocatedConnection.new;
-  final AppGatewayAllocatedConnectionArgs = module_beyondcorp.AppGatewayAllocatedConnection.new;
-  final AppGatewayArgs = module_beyondcorp.AppGatewayArgs.new;
-  final AppGatewayState = module_beyondcorp.AppGatewayState.new;
-  final AppGatewayStateArgs = module_beyondcorp.AppGatewayState.new;
-  final GetAppConnectionApplicationEndpoint = module_beyondcorp.GetAppConnectionApplicationEndpoint.new;
-  final GetAppConnectionApplicationEndpointArgs = module_beyondcorp.GetAppConnectionApplicationEndpoint.new;
-  final GetAppConnectionArgs = module_beyondcorp.GetAppConnectionArgs.new;
-  final GetAppConnectionGateway = module_beyondcorp.GetAppConnectionGateway.new;
-  final GetAppConnectionGatewayArgs = module_beyondcorp.GetAppConnectionGateway.new;
-  final GetAppConnectionResult = module_beyondcorp.GetAppConnectionResult.new;
-  final GetAppConnectionResultArgs = module_beyondcorp.GetAppConnectionResult.new;
-  final GetAppConnectorArgs = module_beyondcorp.GetAppConnectorArgs.new;
-  final GetAppConnectorPrincipalInfo = module_beyondcorp.GetAppConnectorPrincipalInfo.new;
-  final GetAppConnectorPrincipalInfoArgs = module_beyondcorp.GetAppConnectorPrincipalInfo.new;
-  final GetAppConnectorPrincipalInfoServiceAccount = module_beyondcorp.GetAppConnectorPrincipalInfoServiceAccount.new;
-  final GetAppConnectorPrincipalInfoServiceAccountArgs = module_beyondcorp.GetAppConnectorPrincipalInfoServiceAccount.new;
-  final GetAppConnectorResult = module_beyondcorp.GetAppConnectorResult.new;
-  final GetAppConnectorResultArgs = module_beyondcorp.GetAppConnectorResult.new;
-  final GetAppGatewayAllocatedConnection = module_beyondcorp.GetAppGatewayAllocatedConnection.new;
-  final GetAppGatewayAllocatedConnectionArgs = module_beyondcorp.GetAppGatewayAllocatedConnection.new;
-  final GetAppGatewayArgs = module_beyondcorp.GetAppGatewayArgs.new;
-  final GetAppGatewayResult = module_beyondcorp.GetAppGatewayResult.new;
-  final GetAppGatewayResultArgs = module_beyondcorp.GetAppGatewayResult.new;
   final GetSecurityGatewayApplicationIamPolicyArgs = module_beyondcorp.GetSecurityGatewayApplicationIamPolicyArgs.new;
   final GetSecurityGatewayApplicationIamPolicyResult = module_beyondcorp.GetSecurityGatewayApplicationIamPolicyResult.new;
   final GetSecurityGatewayApplicationIamPolicyResultArgs = module_beyondcorp.GetSecurityGatewayApplicationIamPolicyResult.new;
@@ -2467,12 +2498,12 @@ class _BeyondcorpModuleNamespace {
   final SecurityGatewayServiceDiscoveryArgs = module_beyondcorp.SecurityGatewayServiceDiscovery.new;
   final SecurityGatewayState = module_beyondcorp.SecurityGatewayState.new;
   final SecurityGatewayStateArgs = module_beyondcorp.SecurityGatewayState.new;
-  final getAppConnection = module_beyondcorp.getAppConnection;
-  final getAppConnector = module_beyondcorp.getAppConnector;
-  final getAppGateway = module_beyondcorp.getAppGateway;
   final getSecurityGateway = module_beyondcorp.getSecurityGateway;
   final getSecurityGatewayApplicationIamPolicy = module_beyondcorp.getSecurityGatewayApplicationIamPolicy;
+  final getSecurityGatewayApplicationIamPolicyOutput = module_beyondcorp.getSecurityGatewayApplicationIamPolicyOutput;
   final getSecurityGatewayIamPolicy = module_beyondcorp.getSecurityGatewayIamPolicy;
+  final getSecurityGatewayIamPolicyOutput = module_beyondcorp.getSecurityGatewayIamPolicyOutput;
+  final getSecurityGatewayOutput = module_beyondcorp.getSecurityGatewayOutput;
 }
 
 class _BiglakeModuleNamespace {
@@ -2686,11 +2717,17 @@ class _BiglakeModuleNamespace {
   final TableState = module_biglake.TableState.new;
   final TableStateArgs = module_biglake.TableState.new;
   final getHiveCatalogIamPolicy = module_biglake.getHiveCatalogIamPolicy;
+  final getHiveCatalogIamPolicyOutput = module_biglake.getHiveCatalogIamPolicyOutput;
   final getHiveDatabaseIamPolicy = module_biglake.getHiveDatabaseIamPolicy;
+  final getHiveDatabaseIamPolicyOutput = module_biglake.getHiveDatabaseIamPolicyOutput;
   final getHiveTableIamPolicy = module_biglake.getHiveTableIamPolicy;
+  final getHiveTableIamPolicyOutput = module_biglake.getHiveTableIamPolicyOutput;
   final getIcebergCatalogIamPolicy = module_biglake.getIcebergCatalogIamPolicy;
+  final getIcebergCatalogIamPolicyOutput = module_biglake.getIcebergCatalogIamPolicyOutput;
   final getIcebergNamespaceIamPolicy = module_biglake.getIcebergNamespaceIamPolicy;
+  final getIcebergNamespaceIamPolicyOutput = module_biglake.getIcebergNamespaceIamPolicyOutput;
   final getIcebergTableIamPolicy = module_biglake.getIcebergTableIamPolicy;
+  final getIcebergTableIamPolicyOutput = module_biglake.getIcebergTableIamPolicyOutput;
 }
 
 class _BigqueryModuleNamespace {
@@ -2783,6 +2820,12 @@ class _BigqueryModuleNamespace {
   final DataTransferConfigSensitiveParamsArgs = module_bigquery.DataTransferConfigSensitiveParams.new;
   final DataTransferConfigState = module_bigquery.DataTransferConfigState.new;
   final DataTransferConfigStateArgs = module_bigquery.DataTransferConfigState.new;
+  final DataTransferDataSourceEnrollment = module_bigquery.DataTransferDataSourceEnrollment.new;
+  final DataTransferDataSourceEnrollmentArgs = module_bigquery.DataTransferDataSourceEnrollmentArgs.new;
+  final DataTransferDataSourceEnrollmentParameter = module_bigquery.DataTransferDataSourceEnrollmentParameter.new;
+  final DataTransferDataSourceEnrollmentParameterArgs = module_bigquery.DataTransferDataSourceEnrollmentParameter.new;
+  final DataTransferDataSourceEnrollmentState = module_bigquery.DataTransferDataSourceEnrollmentState.new;
+  final DataTransferDataSourceEnrollmentStateArgs = module_bigquery.DataTransferDataSourceEnrollmentState.new;
   final Datapolicyv2DataPolicy = module_bigquery.Datapolicyv2DataPolicy.new;
   final Datapolicyv2DataPolicyArgs = module_bigquery.Datapolicyv2DataPolicyArgs.new;
   final Datapolicyv2DataPolicyDataGovernanceTag = module_bigquery.Datapolicyv2DataPolicyDataGovernanceTag.new;
@@ -3136,15 +3179,25 @@ class _BigqueryModuleNamespace {
   final TableView = module_bigquery.TableView.new;
   final TableViewArgs = module_bigquery.TableView.new;
   final getConnectionIamPolicy = module_bigquery.getConnectionIamPolicy;
+  final getConnectionIamPolicyOutput = module_bigquery.getConnectionIamPolicyOutput;
   final getDatapolicyv2DataPolicyIamPolicy = module_bigquery.getDatapolicyv2DataPolicyIamPolicy;
+  final getDatapolicyv2DataPolicyIamPolicyOutput = module_bigquery.getDatapolicyv2DataPolicyIamPolicyOutput;
   final getDataset = module_bigquery.getDataset;
   final getDatasetIamPolicy = module_bigquery.getDatasetIamPolicy;
+  final getDatasetIamPolicyOutput = module_bigquery.getDatasetIamPolicyOutput;
+  final getDatasetOutput = module_bigquery.getDatasetOutput;
   final getDatasets = module_bigquery.getDatasets;
+  final getDatasetsOutput = module_bigquery.getDatasetsOutput;
   final getDefaultServiceAccount = module_bigquery.getDefaultServiceAccount;
+  final getDefaultServiceAccountOutput = module_bigquery.getDefaultServiceAccountOutput;
   final getRoutineIamPolicy = module_bigquery.getRoutineIamPolicy;
+  final getRoutineIamPolicyOutput = module_bigquery.getRoutineIamPolicyOutput;
   final getTable = module_bigquery.getTable;
   final getTableIamPolicy = module_bigquery.getTableIamPolicy;
+  final getTableIamPolicyOutput = module_bigquery.getTableIamPolicyOutput;
+  final getTableOutput = module_bigquery.getTableOutput;
   final getTables = module_bigquery.getTables;
+  final getTablesOutput = module_bigquery.getTablesOutput;
 }
 
 class _BigqueryanalyticshubModuleNamespace {
@@ -3237,6 +3290,28 @@ class _BigqueryanalyticshubModuleNamespace {
   final ListingSubscriptionDestinationDatasetArgs = module_bigqueryanalyticshub.ListingSubscriptionDestinationDataset.new;
   final ListingSubscriptionDestinationDatasetDatasetReference = module_bigqueryanalyticshub.ListingSubscriptionDestinationDatasetDatasetReference.new;
   final ListingSubscriptionDestinationDatasetDatasetReferenceArgs = module_bigqueryanalyticshub.ListingSubscriptionDestinationDatasetDatasetReference.new;
+  final ListingSubscriptionDestinationPubsubSubscription = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscription.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionArgs = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscription.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscription.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfigArgs = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionBigqueryConfig.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigArgs = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfig.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfigArgs = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionCloudStorageConfigAvroConfig.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicyArgs = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionDeadLetterPolicy.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicyArgs = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionExpirationPolicy.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigArgs = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfig.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapperArgs = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigNoWrapper.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcTokenArgs = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionPushConfigOidcToken.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy.new;
+  final ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicyArgs = module_bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy.new;
   final ListingSubscriptionLinkedDatasetMap = module_bigqueryanalyticshub.ListingSubscriptionLinkedDatasetMap.new;
   final ListingSubscriptionLinkedDatasetMapArgs = module_bigqueryanalyticshub.ListingSubscriptionLinkedDatasetMap.new;
   final ListingSubscriptionLinkedResource = module_bigqueryanalyticshub.ListingSubscriptionLinkedResource.new;
@@ -3245,12 +3320,16 @@ class _BigqueryanalyticshubModuleNamespace {
   final ListingSubscriptionStateArgs = module_bigqueryanalyticshub.ListingSubscriptionState.new;
   final QueryTemplate = module_bigqueryanalyticshub.QueryTemplate.new;
   final QueryTemplateArgs = module_bigqueryanalyticshub.QueryTemplateArgs.new;
+  final QueryTemplateEncryptionConfiguration = module_bigqueryanalyticshub.QueryTemplateEncryptionConfiguration.new;
+  final QueryTemplateEncryptionConfigurationArgs = module_bigqueryanalyticshub.QueryTemplateEncryptionConfiguration.new;
   final QueryTemplateRoutine = module_bigqueryanalyticshub.QueryTemplateRoutine.new;
   final QueryTemplateRoutineArgs = module_bigqueryanalyticshub.QueryTemplateRoutine.new;
   final QueryTemplateState = module_bigqueryanalyticshub.QueryTemplateState.new;
   final QueryTemplateStateArgs = module_bigqueryanalyticshub.QueryTemplateState.new;
   final getDataExchangeIamPolicy = module_bigqueryanalyticshub.getDataExchangeIamPolicy;
+  final getDataExchangeIamPolicyOutput = module_bigqueryanalyticshub.getDataExchangeIamPolicyOutput;
   final getListingIamPolicy = module_bigqueryanalyticshub.getListingIamPolicy;
+  final getListingIamPolicyOutput = module_bigqueryanalyticshub.getListingIamPolicyOutput;
 }
 
 class _BigquerydatapolicyModuleNamespace {
@@ -3281,6 +3360,7 @@ class _BigquerydatapolicyModuleNamespace {
   final GetIamPolicyResult = module_bigquerydatapolicy.GetIamPolicyResult.new;
   final GetIamPolicyResultArgs = module_bigquerydatapolicy.GetIamPolicyResult.new;
   final getIamPolicy = module_bigquerydatapolicy.getIamPolicy;
+  final getIamPolicyOutput = module_bigquerydatapolicy.getIamPolicyOutput;
 }
 
 class _BigtableModuleNamespace {
@@ -3380,7 +3460,9 @@ class _BigtableModuleNamespace {
   final TableState = module_bigtable.TableState.new;
   final TableStateArgs = module_bigtable.TableState.new;
   final getInstanceIamPolicy = module_bigtable.getInstanceIamPolicy;
+  final getInstanceIamPolicyOutput = module_bigtable.getInstanceIamPolicyOutput;
   final getTableIamPolicy = module_bigtable.getTableIamPolicy;
+  final getTableIamPolicyOutput = module_bigtable.getTableIamPolicyOutput;
 }
 
 class _BillingModuleNamespace {
@@ -3433,6 +3515,7 @@ class _BillingModuleNamespace {
   final SubAccountState = module_billing.SubAccountState.new;
   final SubAccountStateArgs = module_billing.SubAccountState.new;
   final getAccountIamPolicy = module_billing.getAccountIamPolicy;
+  final getAccountIamPolicyOutput = module_billing.getAccountIamPolicyOutput;
 }
 
 class _BinaryauthorizationModuleNamespace {
@@ -3477,6 +3560,7 @@ class _BinaryauthorizationModuleNamespace {
   final PolicyState = module_binaryauthorization.PolicyState.new;
   final PolicyStateArgs = module_binaryauthorization.PolicyState.new;
   final getAttestorIamPolicy = module_binaryauthorization.getAttestorIamPolicy;
+  final getAttestorIamPolicyOutput = module_binaryauthorization.getAttestorIamPolicyOutput;
 }
 
 class _BlockchainnodeengineModuleNamespace {
@@ -3779,8 +3863,11 @@ class _CertificateauthorityModuleNamespace {
   final GetCertificateTemplateIamPolicyResult = module_certificateauthority.GetCertificateTemplateIamPolicyResult.new;
   final GetCertificateTemplateIamPolicyResultArgs = module_certificateauthority.GetCertificateTemplateIamPolicyResult.new;
   final getAuthority = module_certificateauthority.getAuthority;
+  final getAuthorityOutput = module_certificateauthority.getAuthorityOutput;
   final getCaPoolIamPolicy = module_certificateauthority.getCaPoolIamPolicy;
+  final getCaPoolIamPolicyOutput = module_certificateauthority.getCaPoolIamPolicyOutput;
   final getCertificateTemplateIamPolicy = module_certificateauthority.getCertificateTemplateIamPolicy;
+  final getCertificateTemplateIamPolicyOutput = module_certificateauthority.getCertificateTemplateIamPolicyOutput;
 }
 
 class _CertificatemanagerModuleNamespace {
@@ -3859,8 +3946,11 @@ class _CertificatemanagerModuleNamespace {
   final TrustConfigTrustStoreTrustAnchor = module_certificatemanager.TrustConfigTrustStoreTrustAnchor.new;
   final TrustConfigTrustStoreTrustAnchorArgs = module_certificatemanager.TrustConfigTrustStoreTrustAnchor.new;
   final getCertificateMap = module_certificatemanager.getCertificateMap;
+  final getCertificateMapOutput = module_certificatemanager.getCertificateMapOutput;
   final getCertificates = module_certificatemanager.getCertificates;
+  final getCertificatesOutput = module_certificatemanager.getCertificatesOutput;
   final getDnsAuthorization = module_certificatemanager.getDnsAuthorization;
+  final getDnsAuthorizationOutput = module_certificatemanager.getDnsAuthorizationOutput;
 }
 
 class _CesModuleNamespace {
@@ -3881,12 +3971,44 @@ class _CesModuleNamespace {
   final AgentBeforeToolCallbackArgs = module_ces.AgentBeforeToolCallback.new;
   final AgentModelSettings = module_ces.AgentModelSettings.new;
   final AgentModelSettingsArgs = module_ces.AgentModelSettings.new;
+  final AgentRemoteA2aAgent = module_ces.AgentRemoteA2aAgent.new;
+  final AgentRemoteA2aAgentA2aConfig = module_ces.AgentRemoteA2aAgentA2aConfig.new;
+  final AgentRemoteA2aAgentA2aConfigAgentCard = module_ces.AgentRemoteA2aAgentA2aConfigAgentCard.new;
+  final AgentRemoteA2aAgentA2aConfigAgentCardArgs = module_ces.AgentRemoteA2aAgentA2aConfigAgentCard.new;
+  final AgentRemoteA2aAgentA2aConfigAgentCardSkill = module_ces.AgentRemoteA2aAgentA2aConfigAgentCardSkill.new;
+  final AgentRemoteA2aAgentA2aConfigAgentCardSkillArgs = module_ces.AgentRemoteA2aAgentA2aConfigAgentCardSkill.new;
+  final AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterface = module_ces.AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterface.new;
+  final AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArgs = module_ces.AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterface.new;
+  final AgentRemoteA2aAgentA2aConfigApiAuthentication = module_ces.AgentRemoteA2aAgentA2aConfigApiAuthentication.new;
+  final AgentRemoteA2aAgentA2aConfigApiAuthenticationApiKeyConfig = module_ces.AgentRemoteA2aAgentA2aConfigApiAuthenticationApiKeyConfig.new;
+  final AgentRemoteA2aAgentA2aConfigApiAuthenticationApiKeyConfigArgs = module_ces.AgentRemoteA2aAgentA2aConfigApiAuthenticationApiKeyConfig.new;
+  final AgentRemoteA2aAgentA2aConfigApiAuthenticationArgs = module_ces.AgentRemoteA2aAgentA2aConfigApiAuthentication.new;
+  final AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfig = module_ces.AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfig.new;
+  final AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfigArgs = module_ces.AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfig.new;
+  final AgentRemoteA2aAgentA2aConfigApiAuthenticationOauthConfig = module_ces.AgentRemoteA2aAgentA2aConfigApiAuthenticationOauthConfig.new;
+  final AgentRemoteA2aAgentA2aConfigApiAuthenticationOauthConfigArgs = module_ces.AgentRemoteA2aAgentA2aConfigApiAuthenticationOauthConfig.new;
+  final AgentRemoteA2aAgentA2aConfigApiAuthenticationServiceAccountAuthConfig = module_ces.AgentRemoteA2aAgentA2aConfigApiAuthenticationServiceAccountAuthConfig.new;
+  final AgentRemoteA2aAgentA2aConfigApiAuthenticationServiceAccountAuthConfigArgs = module_ces.AgentRemoteA2aAgentA2aConfigApiAuthenticationServiceAccountAuthConfig.new;
+  final AgentRemoteA2aAgentA2aConfigArgs = module_ces.AgentRemoteA2aAgentA2aConfig.new;
+  final AgentRemoteA2aAgentArgs = module_ces.AgentRemoteA2aAgent.new;
   final AgentRemoteDialogflowAgent = module_ces.AgentRemoteDialogflowAgent.new;
   final AgentRemoteDialogflowAgentArgs = module_ces.AgentRemoteDialogflowAgent.new;
   final AgentState = module_ces.AgentState.new;
   final AgentStateArgs = module_ces.AgentState.new;
   final AgentToolset = module_ces.AgentToolset.new;
   final AgentToolsetArgs = module_ces.AgentToolset.new;
+  final AgentTransferRule = module_ces.AgentTransferRule.new;
+  final AgentTransferRuleArgs = module_ces.AgentTransferRule.new;
+  final AgentTransferRuleDeterministicTransfer = module_ces.AgentTransferRuleDeterministicTransfer.new;
+  final AgentTransferRuleDeterministicTransferArgs = module_ces.AgentTransferRuleDeterministicTransfer.new;
+  final AgentTransferRuleDeterministicTransferExpressionCondition = module_ces.AgentTransferRuleDeterministicTransferExpressionCondition.new;
+  final AgentTransferRuleDeterministicTransferExpressionConditionArgs = module_ces.AgentTransferRuleDeterministicTransferExpressionCondition.new;
+  final AgentTransferRuleDeterministicTransferPythonCodeCondition = module_ces.AgentTransferRuleDeterministicTransferPythonCodeCondition.new;
+  final AgentTransferRuleDeterministicTransferPythonCodeConditionArgs = module_ces.AgentTransferRuleDeterministicTransferPythonCodeCondition.new;
+  final AgentTransferRuleDisablePlannerTransfer = module_ces.AgentTransferRuleDisablePlannerTransfer.new;
+  final AgentTransferRuleDisablePlannerTransferArgs = module_ces.AgentTransferRuleDisablePlannerTransfer.new;
+  final AgentTransferRuleDisablePlannerTransferExpressionCondition = module_ces.AgentTransferRuleDisablePlannerTransferExpressionCondition.new;
+  final AgentTransferRuleDisablePlannerTransferExpressionConditionArgs = module_ces.AgentTransferRuleDisablePlannerTransferExpressionCondition.new;
   final App = module_ces.App.new;
   final AppArgs = module_ces.AppArgs.new;
   final AppAudioProcessingConfig = module_ces.AppAudioProcessingConfig.new;
@@ -3909,12 +4031,24 @@ class _CesModuleNamespace {
   final AppDefaultChannelProfilePersonaPropertyArgs = module_ces.AppDefaultChannelProfilePersonaProperty.new;
   final AppDefaultChannelProfileWebWidgetConfig = module_ces.AppDefaultChannelProfileWebWidgetConfig.new;
   final AppDefaultChannelProfileWebWidgetConfigArgs = module_ces.AppDefaultChannelProfileWebWidgetConfig.new;
+  final AppDefaultChannelProfileWebWidgetConfigSecuritySettings = module_ces.AppDefaultChannelProfileWebWidgetConfigSecuritySettings.new;
+  final AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs = module_ces.AppDefaultChannelProfileWebWidgetConfigSecuritySettings.new;
+  final AppDefaultChannelProfileWhatsappConfig = module_ces.AppDefaultChannelProfileWhatsappConfig.new;
+  final AppDefaultChannelProfileWhatsappConfigArgs = module_ces.AppDefaultChannelProfileWhatsappConfig.new;
+  final AppErrorHandlingSettings = module_ces.AppErrorHandlingSettings.new;
+  final AppErrorHandlingSettingsArgs = module_ces.AppErrorHandlingSettings.new;
+  final AppErrorHandlingSettingsEndSessionConfig = module_ces.AppErrorHandlingSettingsEndSessionConfig.new;
+  final AppErrorHandlingSettingsEndSessionConfigArgs = module_ces.AppErrorHandlingSettingsEndSessionConfig.new;
+  final AppErrorHandlingSettingsFallbackResponseConfig = module_ces.AppErrorHandlingSettingsFallbackResponseConfig.new;
+  final AppErrorHandlingSettingsFallbackResponseConfigArgs = module_ces.AppErrorHandlingSettingsFallbackResponseConfig.new;
   final AppEvaluationMetricsThresholds = module_ces.AppEvaluationMetricsThresholds.new;
   final AppEvaluationMetricsThresholdsArgs = module_ces.AppEvaluationMetricsThresholds.new;
   final AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds = module_ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds.new;
   final AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs = module_ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds.new;
   final AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds = module_ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds.new;
   final AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs = module_ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds.new;
+  final AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings = module_ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings.new;
+  final AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs = module_ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettings.new;
   final AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds = module_ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds.new;
   final AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs = module_ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds.new;
   final AppLanguageSettings = module_ces.AppLanguageSettings.new;
@@ -3929,6 +4063,8 @@ class _CesModuleNamespace {
   final AppLoggingSettingsCloudLoggingSettingsArgs = module_ces.AppLoggingSettingsCloudLoggingSettings.new;
   final AppLoggingSettingsConversationLoggingSettings = module_ces.AppLoggingSettingsConversationLoggingSettings.new;
   final AppLoggingSettingsConversationLoggingSettingsArgs = module_ces.AppLoggingSettingsConversationLoggingSettings.new;
+  final AppLoggingSettingsMetricAnalysisSettings = module_ces.AppLoggingSettingsMetricAnalysisSettings.new;
+  final AppLoggingSettingsMetricAnalysisSettingsArgs = module_ces.AppLoggingSettingsMetricAnalysisSettings.new;
   final AppLoggingSettingsRedactionConfig = module_ces.AppLoggingSettingsRedactionConfig.new;
   final AppLoggingSettingsRedactionConfigArgs = module_ces.AppLoggingSettingsRedactionConfig.new;
   final AppModelSettings = module_ces.AppModelSettings.new;
@@ -3968,6 +4104,18 @@ class _CesModuleNamespace {
   final AppVersionSnapshotAgentRemoteDialogflowAgentArgs = module_ces.AppVersionSnapshotAgentRemoteDialogflowAgent.new;
   final AppVersionSnapshotAgentToolset = module_ces.AppVersionSnapshotAgentToolset.new;
   final AppVersionSnapshotAgentToolsetArgs = module_ces.AppVersionSnapshotAgentToolset.new;
+  final AppVersionSnapshotAgentTransferRule = module_ces.AppVersionSnapshotAgentTransferRule.new;
+  final AppVersionSnapshotAgentTransferRuleArgs = module_ces.AppVersionSnapshotAgentTransferRule.new;
+  final AppVersionSnapshotAgentTransferRuleDeterministicTransfer = module_ces.AppVersionSnapshotAgentTransferRuleDeterministicTransfer.new;
+  final AppVersionSnapshotAgentTransferRuleDeterministicTransferArgs = module_ces.AppVersionSnapshotAgentTransferRuleDeterministicTransfer.new;
+  final AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionCondition = module_ces.AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionCondition.new;
+  final AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArgs = module_ces.AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionCondition.new;
+  final AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeCondition = module_ces.AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeCondition.new;
+  final AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArgs = module_ces.AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeCondition.new;
+  final AppVersionSnapshotAgentTransferRuleDisablePlannerTransfer = module_ces.AppVersionSnapshotAgentTransferRuleDisablePlannerTransfer.new;
+  final AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArgs = module_ces.AppVersionSnapshotAgentTransferRuleDisablePlannerTransfer.new;
+  final AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionCondition = module_ces.AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionCondition.new;
+  final AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArgs = module_ces.AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionCondition.new;
   final AppVersionSnapshotApp = module_ces.AppVersionSnapshotApp.new;
   final AppVersionSnapshotAppArgs = module_ces.AppVersionSnapshotApp.new;
   final AppVersionSnapshotAppAudioProcessingConfig = module_ces.AppVersionSnapshotAppAudioProcessingConfig.new;
@@ -3990,12 +4138,22 @@ class _CesModuleNamespace {
   final AppVersionSnapshotAppDefaultChannelProfilePersonaPropertyArgs = module_ces.AppVersionSnapshotAppDefaultChannelProfilePersonaProperty.new;
   final AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig = module_ces.AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig.new;
   final AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgs = module_ces.AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig.new;
+  final AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig = module_ces.AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig.new;
+  final AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs = module_ces.AppVersionSnapshotAppDefaultChannelProfileWhatsappConfig.new;
+  final AppVersionSnapshotAppErrorHandlingSetting = module_ces.AppVersionSnapshotAppErrorHandlingSetting.new;
+  final AppVersionSnapshotAppErrorHandlingSettingArgs = module_ces.AppVersionSnapshotAppErrorHandlingSetting.new;
+  final AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig = module_ces.AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig.new;
+  final AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArgs = module_ces.AppVersionSnapshotAppErrorHandlingSettingEndSessionConfig.new;
+  final AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig = module_ces.AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig.new;
+  final AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArgs = module_ces.AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfig.new;
   final AppVersionSnapshotAppEvaluationMetricsThreshold = module_ces.AppVersionSnapshotAppEvaluationMetricsThreshold.new;
   final AppVersionSnapshotAppEvaluationMetricsThresholdArgs = module_ces.AppVersionSnapshotAppEvaluationMetricsThreshold.new;
   final AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold = module_ces.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold.new;
   final AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgs = module_ces.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold.new;
   final AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold = module_ces.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold.new;
   final AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArgs = module_ces.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold.new;
+  final AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting = module_ces.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting.new;
+  final AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs = module_ces.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSetting.new;
   final AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold = module_ces.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold.new;
   final AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgs = module_ces.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold.new;
   final AppVersionSnapshotAppLanguageSetting = module_ces.AppVersionSnapshotAppLanguageSetting.new;
@@ -4010,6 +4168,8 @@ class _CesModuleNamespace {
   final AppVersionSnapshotAppLoggingSettingCloudLoggingSettingArgs = module_ces.AppVersionSnapshotAppLoggingSettingCloudLoggingSetting.new;
   final AppVersionSnapshotAppLoggingSettingConversationLoggingSetting = module_ces.AppVersionSnapshotAppLoggingSettingConversationLoggingSetting.new;
   final AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs = module_ces.AppVersionSnapshotAppLoggingSettingConversationLoggingSetting.new;
+  final AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting = module_ces.AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting.new;
+  final AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs = module_ces.AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting.new;
   final AppVersionSnapshotAppLoggingSettingRedactionConfig = module_ces.AppVersionSnapshotAppLoggingSettingRedactionConfig.new;
   final AppVersionSnapshotAppLoggingSettingRedactionConfigArgs = module_ces.AppVersionSnapshotAppLoggingSettingRedactionConfig.new;
   final AppVersionSnapshotAppModelSetting = module_ces.AppVersionSnapshotAppModelSetting.new;
@@ -4020,6 +4180,8 @@ class _CesModuleNamespace {
   final AppVersionSnapshotAppVariableDeclarationArgs = module_ces.AppVersionSnapshotAppVariableDeclaration.new;
   final AppVersionSnapshotAppVariableDeclarationSchema = module_ces.AppVersionSnapshotAppVariableDeclarationSchema.new;
   final AppVersionSnapshotAppVariableDeclarationSchemaArgs = module_ces.AppVersionSnapshotAppVariableDeclarationSchema.new;
+  final AppVersionSnapshotAppVpcScSetting = module_ces.AppVersionSnapshotAppVpcScSetting.new;
+  final AppVersionSnapshotAppVpcScSettingArgs = module_ces.AppVersionSnapshotAppVpcScSetting.new;
   final AppVersionSnapshotArgs = module_ces.AppVersionSnapshot.new;
   final AppVersionSnapshotExample = module_ces.AppVersionSnapshotExample.new;
   final AppVersionSnapshotExampleArgs = module_ces.AppVersionSnapshotExample.new;
@@ -4163,6 +4325,8 @@ class _CesModuleNamespace {
   final AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArgs = module_ces.AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCert.new;
   final AppVersionState = module_ces.AppVersionState.new;
   final AppVersionStateArgs = module_ces.AppVersionState.new;
+  final AppVpcScSettings = module_ces.AppVpcScSettings.new;
+  final AppVpcScSettingsArgs = module_ces.AppVpcScSettings.new;
   final DeploymentArgs = module_ces.DeploymentArgs.new;
   final DeploymentChannelProfile = module_ces.DeploymentChannelProfile.new;
   final DeploymentChannelProfileArgs = module_ces.DeploymentChannelProfile.new;
@@ -4172,9 +4336,15 @@ class _CesModuleNamespace {
   final DeploymentChannelProfileWebWidgetConfigArgs = module_ces.DeploymentChannelProfileWebWidgetConfig.new;
   final DeploymentChannelProfileWebWidgetConfigSecuritySettings = module_ces.DeploymentChannelProfileWebWidgetConfigSecuritySettings.new;
   final DeploymentChannelProfileWebWidgetConfigSecuritySettingsArgs = module_ces.DeploymentChannelProfileWebWidgetConfigSecuritySettings.new;
+  final DeploymentChannelProfileWhatsappConfig = module_ces.DeploymentChannelProfileWhatsappConfig.new;
+  final DeploymentChannelProfileWhatsappConfigArgs = module_ces.DeploymentChannelProfileWhatsappConfig.new;
+  final DeploymentInstagramCredentials = module_ces.DeploymentInstagramCredentials.new;
+  final DeploymentInstagramCredentialsArgs = module_ces.DeploymentInstagramCredentials.new;
   final DeploymentState = module_ces.DeploymentState.new;
   final DeploymentStateArgs = module_ces.DeploymentState.new;
   final DeploymentType = module_ces.DeploymentType.new;
+  final DeploymentWhatsappCredentials = module_ces.DeploymentWhatsappCredentials.new;
+  final DeploymentWhatsappCredentialsArgs = module_ces.DeploymentWhatsappCredentials.new;
   final Evaluation = module_ces.Evaluation.new;
   final EvaluationArgs = module_ces.EvaluationArgs.new;
   final EvaluationGolden = module_ces.EvaluationGolden.new;
@@ -4281,6 +4451,8 @@ class _CesModuleNamespace {
   final ExampleMessageChunkAgentTransfer = module_ces.ExampleMessageChunkAgentTransfer.new;
   final ExampleMessageChunkAgentTransferArgs = module_ces.ExampleMessageChunkAgentTransfer.new;
   final ExampleMessageChunkArgs = module_ces.ExampleMessageChunk.new;
+  final ExampleMessageChunkBlob = module_ces.ExampleMessageChunkBlob.new;
+  final ExampleMessageChunkBlobArgs = module_ces.ExampleMessageChunkBlob.new;
   final ExampleMessageChunkImage = module_ces.ExampleMessageChunkImage.new;
   final ExampleMessageChunkImageArgs = module_ces.ExampleMessageChunkImage.new;
   final ExampleMessageChunkToolCall = module_ces.ExampleMessageChunkToolCall.new;
@@ -4450,6 +4622,16 @@ class _CesModuleNamespace {
   final ToolRemoteAgentToolAgentCardSkillArgs = module_ces.ToolRemoteAgentToolAgentCardSkill.new;
   final ToolRemoteAgentToolAgentCardSupportedInterface = module_ces.ToolRemoteAgentToolAgentCardSupportedInterface.new;
   final ToolRemoteAgentToolAgentCardSupportedInterfaceArgs = module_ces.ToolRemoteAgentToolAgentCardSupportedInterface.new;
+  final ToolRemoteAgentToolApiAuthentication = module_ces.ToolRemoteAgentToolApiAuthentication.new;
+  final ToolRemoteAgentToolApiAuthenticationApiKeyConfig = module_ces.ToolRemoteAgentToolApiAuthenticationApiKeyConfig.new;
+  final ToolRemoteAgentToolApiAuthenticationApiKeyConfigArgs = module_ces.ToolRemoteAgentToolApiAuthenticationApiKeyConfig.new;
+  final ToolRemoteAgentToolApiAuthenticationArgs = module_ces.ToolRemoteAgentToolApiAuthentication.new;
+  final ToolRemoteAgentToolApiAuthenticationBearerTokenConfig = module_ces.ToolRemoteAgentToolApiAuthenticationBearerTokenConfig.new;
+  final ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArgs = module_ces.ToolRemoteAgentToolApiAuthenticationBearerTokenConfig.new;
+  final ToolRemoteAgentToolApiAuthenticationOauthConfig = module_ces.ToolRemoteAgentToolApiAuthenticationOauthConfig.new;
+  final ToolRemoteAgentToolApiAuthenticationOauthConfigArgs = module_ces.ToolRemoteAgentToolApiAuthenticationOauthConfig.new;
+  final ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig = module_ces.ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig.new;
+  final ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArgs = module_ces.ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfig.new;
   final ToolRemoteAgentToolArgs = module_ces.ToolRemoteAgentTool.new;
   final ToolState = module_ces.ToolState.new;
   final ToolStateArgs = module_ces.ToolState.new;
@@ -4501,6 +4683,8 @@ class _CesModuleNamespace {
   final ToolsetMcpToolsetTlsConfigArgs = module_ces.ToolsetMcpToolsetTlsConfig.new;
   final ToolsetMcpToolsetTlsConfigCaCert = module_ces.ToolsetMcpToolsetTlsConfigCaCert.new;
   final ToolsetMcpToolsetTlsConfigCaCertArgs = module_ces.ToolsetMcpToolsetTlsConfigCaCert.new;
+  final ToolsetMcpToolsetToolOverride = module_ces.ToolsetMcpToolsetToolOverride.new;
+  final ToolsetMcpToolsetToolOverrideArgs = module_ces.ToolsetMcpToolsetToolOverride.new;
   final ToolsetOpenApiToolset = module_ces.ToolsetOpenApiToolset.new;
   final ToolsetOpenApiToolsetApiAuthentication = module_ces.ToolsetOpenApiToolsetApiAuthentication.new;
   final ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig = module_ces.ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig.new;
@@ -4543,6 +4727,18 @@ class _ChronicleModuleNamespace {
   final BigQueryExportUdmEventsAggregatesSettingsArgs = module_chronicle.BigQueryExportUdmEventsAggregatesSettings.new;
   final BigQueryExportUdmEventsSettings = module_chronicle.BigQueryExportUdmEventsSettings.new;
   final BigQueryExportUdmEventsSettingsArgs = module_chronicle.BigQueryExportUdmEventsSettings.new;
+  final CaseCloseDefinition = module_chronicle.CaseCloseDefinition.new;
+  final CaseCloseDefinitionArgs = module_chronicle.CaseCloseDefinitionArgs.new;
+  final CaseCloseDefinitionState = module_chronicle.CaseCloseDefinitionState.new;
+  final CaseCloseDefinitionStateArgs = module_chronicle.CaseCloseDefinitionState.new;
+  final CaseStageDefinition = module_chronicle.CaseStageDefinition.new;
+  final CaseStageDefinitionArgs = module_chronicle.CaseStageDefinitionArgs.new;
+  final CaseStageDefinitionState = module_chronicle.CaseStageDefinitionState.new;
+  final CaseStageDefinitionStateArgs = module_chronicle.CaseStageDefinitionState.new;
+  final CaseTagDefinition = module_chronicle.CaseTagDefinition.new;
+  final CaseTagDefinitionArgs = module_chronicle.CaseTagDefinitionArgs.new;
+  final CaseTagDefinitionState = module_chronicle.CaseTagDefinitionState.new;
+  final CaseTagDefinitionStateArgs = module_chronicle.CaseTagDefinitionState.new;
   final CustomList = module_chronicle.CustomList.new;
   final CustomListArgs = module_chronicle.CustomListArgs.new;
   final CustomListState = module_chronicle.CustomListState.new;
@@ -4701,6 +4897,8 @@ class _ChronicleModuleNamespace {
   final DataTableStateArgs = module_chronicle.DataTableState.new;
   final Environment = module_chronicle.Environment.new;
   final EnvironmentArgs = module_chronicle.EnvironmentArgs.new;
+  final EnvironmentDynamicParameter = module_chronicle.EnvironmentDynamicParameter.new;
+  final EnvironmentDynamicParameterArgs = module_chronicle.EnvironmentDynamicParameter.new;
   final EnvironmentGroup = module_chronicle.EnvironmentGroup.new;
   final EnvironmentGroupArgs = module_chronicle.EnvironmentGroupArgs.new;
   final EnvironmentGroupState = module_chronicle.EnvironmentGroupState.new;
@@ -5240,7 +5438,9 @@ class _CloudassetModuleNamespace {
   final ProjectFeedState = module_cloudasset.ProjectFeedState.new;
   final ProjectFeedStateArgs = module_cloudasset.ProjectFeedState.new;
   final getResourcesSearchAll = module_cloudasset.getResourcesSearchAll;
+  final getResourcesSearchAllOutput = module_cloudasset.getResourcesSearchAllOutput;
   final getSearchAllResources = module_cloudasset.getSearchAllResources;
+  final getSearchAllResourcesOutput = module_cloudasset.getSearchAllResourcesOutput;
 }
 
 class _CloudbuildModuleNamespace {
@@ -5326,6 +5526,15 @@ class _CloudbuildModuleNamespace {
   final GetTriggerTriggerTemplateArgs = module_cloudbuild.GetTriggerTriggerTemplate.new;
   final GetTriggerWebhookConfig = module_cloudbuild.GetTriggerWebhookConfig.new;
   final GetTriggerWebhookConfigArgs = module_cloudbuild.GetTriggerWebhookConfig.new;
+  final GetWorkerPoolArgs = module_cloudbuild.GetWorkerPoolArgs.new;
+  final GetWorkerPoolNetworkConfig = module_cloudbuild.GetWorkerPoolNetworkConfig.new;
+  final GetWorkerPoolNetworkConfigArgs = module_cloudbuild.GetWorkerPoolNetworkConfig.new;
+  final GetWorkerPoolPrivateServiceConnect = module_cloudbuild.GetWorkerPoolPrivateServiceConnect.new;
+  final GetWorkerPoolPrivateServiceConnectArgs = module_cloudbuild.GetWorkerPoolPrivateServiceConnect.new;
+  final GetWorkerPoolResult = module_cloudbuild.GetWorkerPoolResult.new;
+  final GetWorkerPoolResultArgs = module_cloudbuild.GetWorkerPoolResult.new;
+  final GetWorkerPoolWorkerConfig = module_cloudbuild.GetWorkerPoolWorkerConfig.new;
+  final GetWorkerPoolWorkerConfigArgs = module_cloudbuild.GetWorkerPoolWorkerConfig.new;
   final Trigger = module_cloudbuild.Trigger.new;
   final TriggerApprovalConfig = module_cloudbuild.TriggerApprovalConfig.new;
   final TriggerApprovalConfigArgs = module_cloudbuild.TriggerApprovalConfig.new;
@@ -5411,6 +5620,9 @@ class _CloudbuildModuleNamespace {
   final WorkerPoolWorkerConfig = module_cloudbuild.WorkerPoolWorkerConfig.new;
   final WorkerPoolWorkerConfigArgs = module_cloudbuild.WorkerPoolWorkerConfig.new;
   final getTrigger = module_cloudbuild.getTrigger;
+  final getTriggerOutput = module_cloudbuild.getTriggerOutput;
+  final getWorkerPool = module_cloudbuild.getWorkerPool;
+  final getWorkerPoolOutput = module_cloudbuild.getWorkerPoolOutput;
 }
 
 class _Cloudbuildv2ModuleNamespace {
@@ -5475,6 +5687,7 @@ class _Cloudbuildv2ModuleNamespace {
   final RepositoryState = module_cloudbuildv2.RepositoryState.new;
   final RepositoryStateArgs = module_cloudbuildv2.RepositoryState.new;
   final getConnectionIamPolicy = module_cloudbuildv2.getConnectionIamPolicy;
+  final getConnectionIamPolicyOutput = module_cloudbuildv2.getConnectionIamPolicyOutput;
 }
 
 class _ClouddeployModuleNamespace {
@@ -5759,8 +5972,11 @@ class _ClouddeployModuleNamespace {
   final TargetState = module_clouddeploy.TargetState.new;
   final TargetStateArgs = module_clouddeploy.TargetState.new;
   final getCustomTargetTypeIamPolicy = module_clouddeploy.getCustomTargetTypeIamPolicy;
+  final getCustomTargetTypeIamPolicyOutput = module_clouddeploy.getCustomTargetTypeIamPolicyOutput;
   final getDeliveryPipelineIamPolicy = module_clouddeploy.getDeliveryPipelineIamPolicy;
+  final getDeliveryPipelineIamPolicyOutput = module_clouddeploy.getDeliveryPipelineIamPolicyOutput;
   final getTargetIamPolicy = module_clouddeploy.getTargetIamPolicy;
+  final getTargetIamPolicyOutput = module_clouddeploy.getTargetIamPolicyOutput;
 }
 
 class _ClouddomainsModuleNamespace {
@@ -5855,6 +6071,8 @@ class _CloudfunctionsModuleNamespace {
   final GetFunctionSourceRepositoryArgs = module_cloudfunctions.GetFunctionSourceRepository.new;
   final getFunction = module_cloudfunctions.getFunction;
   final getFunctionIamPolicy = module_cloudfunctions.getFunctionIamPolicy;
+  final getFunctionIamPolicyOutput = module_cloudfunctions.getFunctionIamPolicyOutput;
+  final getFunctionOutput = module_cloudfunctions.getFunctionOutput;
 }
 
 class _Cloudfunctionsv2ModuleNamespace {
@@ -5935,6 +6153,8 @@ class _Cloudfunctionsv2ModuleNamespace {
   final GetFunctionServiceConfigSecretVolumeVersionArgs = module_cloudfunctionsv2.GetFunctionServiceConfigSecretVolumeVersion.new;
   final getFunction = module_cloudfunctionsv2.getFunction;
   final getFunctionIamPolicy = module_cloudfunctionsv2.getFunctionIamPolicy;
+  final getFunctionIamPolicyOutput = module_cloudfunctionsv2.getFunctionIamPolicyOutput;
+  final getFunctionOutput = module_cloudfunctionsv2.getFunctionOutput;
 }
 
 class _CloudidentityModuleNamespace {
@@ -6016,11 +6236,17 @@ class _CloudidentityModuleNamespace {
   final PolicyState = module_cloudidentity.PolicyState.new;
   final PolicyStateArgs = module_cloudidentity.PolicyState.new;
   final getGroupLookup = module_cloudidentity.getGroupLookup;
+  final getGroupLookupOutput = module_cloudidentity.getGroupLookupOutput;
   final getGroupMemberships = module_cloudidentity.getGroupMemberships;
+  final getGroupMembershipsOutput = module_cloudidentity.getGroupMembershipsOutput;
   final getGroupTransitiveMemberships = module_cloudidentity.getGroupTransitiveMemberships;
+  final getGroupTransitiveMembershipsOutput = module_cloudidentity.getGroupTransitiveMembershipsOutput;
   final getGroups = module_cloudidentity.getGroups;
+  final getGroupsOutput = module_cloudidentity.getGroupsOutput;
   final getPolicies = module_cloudidentity.getPolicies;
+  final getPoliciesOutput = module_cloudidentity.getPoliciesOutput;
   final getPolicy = module_cloudidentity.getPolicy;
+  final getPolicyOutput = module_cloudidentity.getPolicyOutput;
 }
 
 class _CloudidsModuleNamespace {
@@ -6064,7 +6290,9 @@ class _CloudquotaModuleNamespace {
   final SQuotaPreferenceState = module_cloudquota.SQuotaPreferenceState.new;
   final SQuotaPreferenceStateArgs = module_cloudquota.SQuotaPreferenceState.new;
   final getSQuotaInfo = module_cloudquota.getSQuotaInfo;
+  final getSQuotaInfoOutput = module_cloudquota.getSQuotaInfoOutput;
   final getSQuotaInfos = module_cloudquota.getSQuotaInfos;
+  final getSQuotaInfosOutput = module_cloudquota.getSQuotaInfosOutput;
 }
 
 class _CloudrunModuleNamespace {
@@ -6265,8 +6493,11 @@ class _CloudrunModuleNamespace {
   final ServiceTraffic = module_cloudrun.ServiceTraffic.new;
   final ServiceTrafficArgs = module_cloudrun.ServiceTraffic.new;
   final getLocations = module_cloudrun.getLocations;
+  final getLocationsOutput = module_cloudrun.getLocationsOutput;
   final getService = module_cloudrun.getService;
   final getServiceIamPolicy = module_cloudrun.getServiceIamPolicy;
+  final getServiceIamPolicyOutput = module_cloudrun.getServiceIamPolicyOutput;
+  final getServiceOutput = module_cloudrun.getServiceOutput;
 }
 
 class _Cloudrunv2ModuleNamespace {
@@ -6331,6 +6562,8 @@ class _Cloudrunv2ModuleNamespace {
   final GetJobTemplateTemplateVpcAccessArgs = module_cloudrunv2.GetJobTemplateTemplateVpcAccess.new;
   final GetJobTemplateTemplateVpcAccessNetworkInterface = module_cloudrunv2.GetJobTemplateTemplateVpcAccessNetworkInterface.new;
   final GetJobTemplateTemplateVpcAccessNetworkInterfaceArgs = module_cloudrunv2.GetJobTemplateTemplateVpcAccessNetworkInterface.new;
+  final GetJobTemplateTemplateWorkloadIdentityConfig = module_cloudrunv2.GetJobTemplateTemplateWorkloadIdentityConfig.new;
+  final GetJobTemplateTemplateWorkloadIdentityConfigArgs = module_cloudrunv2.GetJobTemplateTemplateWorkloadIdentityConfig.new;
   final GetJobTerminalCondition = module_cloudrunv2.GetJobTerminalCondition.new;
   final GetJobTerminalConditionArgs = module_cloudrunv2.GetJobTerminalCondition.new;
   final GetServiceArgs = module_cloudrunv2.GetServiceArgs.new;
@@ -6429,6 +6662,8 @@ class _Cloudrunv2ModuleNamespace {
   final GetServiceTemplateVpcAccessArgs = module_cloudrunv2.GetServiceTemplateVpcAccess.new;
   final GetServiceTemplateVpcAccessNetworkInterface = module_cloudrunv2.GetServiceTemplateVpcAccessNetworkInterface.new;
   final GetServiceTemplateVpcAccessNetworkInterfaceArgs = module_cloudrunv2.GetServiceTemplateVpcAccessNetworkInterface.new;
+  final GetServiceTemplateWorkloadIdentityConfig = module_cloudrunv2.GetServiceTemplateWorkloadIdentityConfig.new;
+  final GetServiceTemplateWorkloadIdentityConfigArgs = module_cloudrunv2.GetServiceTemplateWorkloadIdentityConfig.new;
   final GetServiceTerminalCondition = module_cloudrunv2.GetServiceTerminalCondition.new;
   final GetServiceTerminalConditionArgs = module_cloudrunv2.GetServiceTerminalCondition.new;
   final GetServiceTraffic = module_cloudrunv2.GetServiceTraffic.new;
@@ -6581,6 +6816,8 @@ class _Cloudrunv2ModuleNamespace {
   final JobTemplateTemplateVpcAccessArgs = module_cloudrunv2.JobTemplateTemplateVpcAccess.new;
   final JobTemplateTemplateVpcAccessNetworkInterface = module_cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterface.new;
   final JobTemplateTemplateVpcAccessNetworkInterfaceArgs = module_cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterface.new;
+  final JobTemplateTemplateWorkloadIdentityConfig = module_cloudrunv2.JobTemplateTemplateWorkloadIdentityConfig.new;
+  final JobTemplateTemplateWorkloadIdentityConfigArgs = module_cloudrunv2.JobTemplateTemplateWorkloadIdentityConfig.new;
   final JobTerminalCondition = module_cloudrunv2.JobTerminalCondition.new;
   final JobTerminalConditionArgs = module_cloudrunv2.JobTerminalCondition.new;
   final Service = module_cloudrunv2.Service.new;
@@ -6693,6 +6930,8 @@ class _Cloudrunv2ModuleNamespace {
   final ServiceTemplateVpcAccessArgs = module_cloudrunv2.ServiceTemplateVpcAccess.new;
   final ServiceTemplateVpcAccessNetworkInterface = module_cloudrunv2.ServiceTemplateVpcAccessNetworkInterface.new;
   final ServiceTemplateVpcAccessNetworkInterfaceArgs = module_cloudrunv2.ServiceTemplateVpcAccessNetworkInterface.new;
+  final ServiceTemplateWorkloadIdentityConfig = module_cloudrunv2.ServiceTemplateWorkloadIdentityConfig.new;
+  final ServiceTemplateWorkloadIdentityConfigArgs = module_cloudrunv2.ServiceTemplateWorkloadIdentityConfig.new;
   final ServiceTerminalCondition = module_cloudrunv2.ServiceTerminalCondition.new;
   final ServiceTerminalConditionArgs = module_cloudrunv2.ServiceTerminalCondition.new;
   final ServiceTraffic = module_cloudrunv2.ServiceTraffic.new;
@@ -6745,8 +6984,8 @@ class _Cloudrunv2ModuleNamespace {
   final WorkerPoolTemplateContainerLivenessProbeGrpcArgs = module_cloudrunv2.WorkerPoolTemplateContainerLivenessProbeGrpc.new;
   final WorkerPoolTemplateContainerLivenessProbeHttpGet = module_cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGet.new;
   final WorkerPoolTemplateContainerLivenessProbeHttpGetArgs = module_cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGet.new;
-  final WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders = module_cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders.new;
-  final WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs = module_cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders.new;
+  final WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader = module_cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader.new;
+  final WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs = module_cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader.new;
   final WorkerPoolTemplateContainerLivenessProbeTcpSocket = module_cloudrunv2.WorkerPoolTemplateContainerLivenessProbeTcpSocket.new;
   final WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs = module_cloudrunv2.WorkerPoolTemplateContainerLivenessProbeTcpSocket.new;
   final WorkerPoolTemplateContainerResources = module_cloudrunv2.WorkerPoolTemplateContainerResources.new;
@@ -6757,8 +6996,8 @@ class _Cloudrunv2ModuleNamespace {
   final WorkerPoolTemplateContainerStartupProbeGrpcArgs = module_cloudrunv2.WorkerPoolTemplateContainerStartupProbeGrpc.new;
   final WorkerPoolTemplateContainerStartupProbeHttpGet = module_cloudrunv2.WorkerPoolTemplateContainerStartupProbeHttpGet.new;
   final WorkerPoolTemplateContainerStartupProbeHttpGetArgs = module_cloudrunv2.WorkerPoolTemplateContainerStartupProbeHttpGet.new;
-  final WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders = module_cloudrunv2.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders.new;
-  final WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs = module_cloudrunv2.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders.new;
+  final WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader = module_cloudrunv2.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader.new;
+  final WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs = module_cloudrunv2.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader.new;
   final WorkerPoolTemplateContainerStartupProbeTcpSocket = module_cloudrunv2.WorkerPoolTemplateContainerStartupProbeTcpSocket.new;
   final WorkerPoolTemplateContainerStartupProbeTcpSocketArgs = module_cloudrunv2.WorkerPoolTemplateContainerStartupProbeTcpSocket.new;
   final WorkerPoolTemplateContainerVolumeMount = module_cloudrunv2.WorkerPoolTemplateContainerVolumeMount.new;
@@ -6787,10 +7026,16 @@ class _Cloudrunv2ModuleNamespace {
   final WorkerPoolTerminalConditionArgs = module_cloudrunv2.WorkerPoolTerminalCondition.new;
   final getJob = module_cloudrunv2.getJob;
   final getJobIamPolicy = module_cloudrunv2.getJobIamPolicy;
+  final getJobIamPolicyOutput = module_cloudrunv2.getJobIamPolicyOutput;
+  final getJobOutput = module_cloudrunv2.getJobOutput;
   final getService = module_cloudrunv2.getService;
   final getServiceIamPolicy = module_cloudrunv2.getServiceIamPolicy;
+  final getServiceIamPolicyOutput = module_cloudrunv2.getServiceIamPolicyOutput;
+  final getServiceOutput = module_cloudrunv2.getServiceOutput;
   final getWorkerPool = module_cloudrunv2.getWorkerPool;
   final getWorkerPoolIamPolicy = module_cloudrunv2.getWorkerPoolIamPolicy;
+  final getWorkerPoolIamPolicyOutput = module_cloudrunv2.getWorkerPoolIamPolicyOutput;
+  final getWorkerPoolOutput = module_cloudrunv2.getWorkerPoolOutput;
 }
 
 class _CloudschedulerModuleNamespace {
@@ -6827,6 +7072,12 @@ class _CloudsecuritycomplianceModuleNamespace {
   final CloudControlParameterSpecDefaultValueOneofValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecDefaultValueOneofValue.new;
   final CloudControlParameterSpecDefaultValueOneofValueParameterValue = module_cloudsecuritycompliance.CloudControlParameterSpecDefaultValueOneofValueParameterValue.new;
   final CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecDefaultValueOneofValueParameterValue.new;
+  final CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValue = module_cloudsecuritycompliance.CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValue.new;
+  final CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValue.new;
+  final CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValue = module_cloudsecuritycompliance.CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValue.new;
+  final CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValue.new;
+  final CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValue = module_cloudsecuritycompliance.CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValue.new;
+  final CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValue.new;
   final CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue = module_cloudsecuritycompliance.CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue.new;
   final CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue.new;
   final CloudControlParameterSpecDefaultValueStringListValue = module_cloudsecuritycompliance.CloudControlParameterSpecDefaultValueStringListValue.new;
@@ -6839,10 +7090,52 @@ class _CloudsecuritycomplianceModuleNamespace {
   final CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueOneofValue.new;
   final CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue.new;
   final CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue.new;
+  final CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValue.new;
+  final CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValue.new;
+  final CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValue.new;
+  final CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValue.new;
+  final CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValue.new;
+  final CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValue.new;
   final CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue.new;
   final CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue.new;
   final CloudControlParameterSpecSubParameterDefaultValueStringListValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueStringListValue.new;
   final CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueStringListValue.new;
+  final CloudControlParameterSpecSubParameterSubParameter = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameter.new;
+  final CloudControlParameterSpecSubParameterSubParameterArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameter.new;
+  final CloudControlParameterSpecSubParameterSubParameterDefaultValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterDefaultValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValueStringListValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValueStringListValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValueStringListValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValueStringListValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterDefaultValueStringListValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValueStringListValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterDefaultValueStringListValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterDefaultValueStringListValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterSubstitutionRule = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterSubstitutionRule.new;
+  final CloudControlParameterSpecSubParameterSubParameterSubstitutionRuleArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterSubstitutionRule.new;
+  final CloudControlParameterSpecSubParameterSubParameterSubstitutionRuleAttributeSubstitutionRule = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterSubstitutionRuleAttributeSubstitutionRule.new;
+  final CloudControlParameterSpecSubParameterSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterSubstitutionRuleAttributeSubstitutionRule.new;
+  final CloudControlParameterSpecSubParameterSubParameterSubstitutionRulePlaceholderSubstitutionRule = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterSubstitutionRulePlaceholderSubstitutionRule.new;
+  final CloudControlParameterSpecSubParameterSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterSubstitutionRulePlaceholderSubstitutionRule.new;
+  final CloudControlParameterSpecSubParameterSubParameterValidation = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidation.new;
+  final CloudControlParameterSpecSubParameterSubParameterValidationAllowedValues = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValues.new;
+  final CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValues.new;
+  final CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueStringListValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueStringListValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueStringListValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueStringListValue.new;
+  final CloudControlParameterSpecSubParameterSubParameterValidationArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidation.new;
+  final CloudControlParameterSpecSubParameterSubParameterValidationIntRange = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationIntRange.new;
+  final CloudControlParameterSpecSubParameterSubParameterValidationIntRangeArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationIntRange.new;
+  final CloudControlParameterSpecSubParameterSubParameterValidationRegexpPattern = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationRegexpPattern.new;
+  final CloudControlParameterSpecSubParameterSubParameterValidationRegexpPatternArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameterValidationRegexpPattern.new;
   final CloudControlParameterSpecSubParameterSubstitutionRule = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubstitutionRule.new;
   final CloudControlParameterSpecSubParameterSubstitutionRuleArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubstitutionRule.new;
   final CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule.new;
@@ -6858,6 +7151,12 @@ class _CloudsecuritycomplianceModuleNamespace {
   final CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue.new;
   final CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue.new;
   final CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue.new;
+  final CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValue.new;
+  final CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValue.new;
+  final CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue.new;
+  final CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue.new;
+  final CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValue.new;
+  final CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValue.new;
   final CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue.new;
   final CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue.new;
   final CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValue = module_cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValue.new;
@@ -6882,6 +7181,12 @@ class _CloudsecuritycomplianceModuleNamespace {
   final CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueOneofValue.new;
   final CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue = module_cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue.new;
   final CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue.new;
+  final CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValue = module_cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValue.new;
+  final CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValue.new;
+  final CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue = module_cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue.new;
+  final CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue.new;
+  final CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValue = module_cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValue.new;
+  final CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValue.new;
   final CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue = module_cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue.new;
   final CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs = module_cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue.new;
   final CloudControlParameterSpecValidationAllowedValuesValueStringListValue = module_cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueStringListValue.new;
@@ -7009,6 +7314,7 @@ class _CloudtasksModuleNamespace {
   final QueueState = module_cloudtasks.QueueState.new;
   final QueueStateArgs = module_cloudtasks.QueueState.new;
   final getQueueIamPolicy = module_cloudtasks.getQueueIamPolicy;
+  final getQueueIamPolicyOutput = module_cloudtasks.getQueueIamPolicyOutput;
 }
 
 class _ColabModuleNamespace {
@@ -7129,6 +7435,7 @@ class _ColabModuleNamespace {
   final ScheduleState = module_colab.ScheduleState.new;
   final ScheduleStateArgs = module_colab.ScheduleState.new;
   final getRuntimeTemplateIamPolicy = module_colab.getRuntimeTemplateIamPolicy;
+  final getRuntimeTemplateIamPolicyOutput = module_colab.getRuntimeTemplateIamPolicyOutput;
 }
 
 class _ComposerModuleNamespace {
@@ -7268,9 +7575,13 @@ class _ComposerModuleNamespace {
   final UserWorkloadsSecretState = module_composer.UserWorkloadsSecretState.new;
   final UserWorkloadsSecretStateArgs = module_composer.UserWorkloadsSecretState.new;
   final getEnvironment = module_composer.getEnvironment;
+  final getEnvironmentOutput = module_composer.getEnvironmentOutput;
   final getImageVersions = module_composer.getImageVersions;
+  final getImageVersionsOutput = module_composer.getImageVersionsOutput;
   final getUserWorkloadsConfigMap = module_composer.getUserWorkloadsConfigMap;
+  final getUserWorkloadsConfigMapOutput = module_composer.getUserWorkloadsConfigMapOutput;
   final getUserWorkloadsSecret = module_composer.getUserWorkloadsSecret;
+  final getUserWorkloadsSecretOutput = module_composer.getUserWorkloadsSecretOutput;
 }
 
 class _ComputeModuleNamespace {
@@ -7367,6 +7678,8 @@ class _ComputeModuleNamespace {
   final BackendServiceCustomMetricArgs = module_compute.BackendServiceCustomMetric.new;
   final BackendServiceDynamicForwarding = module_compute.BackendServiceDynamicForwarding.new;
   final BackendServiceDynamicForwardingArgs = module_compute.BackendServiceDynamicForwarding.new;
+  final BackendServiceDynamicForwardingForwardProxy = module_compute.BackendServiceDynamicForwardingForwardProxy.new;
+  final BackendServiceDynamicForwardingForwardProxyArgs = module_compute.BackendServiceDynamicForwardingForwardProxy.new;
   final BackendServiceDynamicForwardingIpPortSelection = module_compute.BackendServiceDynamicForwardingIpPortSelection.new;
   final BackendServiceDynamicForwardingIpPortSelectionArgs = module_compute.BackendServiceDynamicForwardingIpPortSelection.new;
   final BackendServiceIamBinding = module_compute.BackendServiceIamBinding.new;
@@ -7682,6 +7995,8 @@ class _ComputeModuleNamespace {
   final GetBackendServiceCustomMetricArgs = module_compute.GetBackendServiceCustomMetric.new;
   final GetBackendServiceDynamicForwarding = module_compute.GetBackendServiceDynamicForwarding.new;
   final GetBackendServiceDynamicForwardingArgs = module_compute.GetBackendServiceDynamicForwarding.new;
+  final GetBackendServiceDynamicForwardingForwardProxy = module_compute.GetBackendServiceDynamicForwardingForwardProxy.new;
+  final GetBackendServiceDynamicForwardingForwardProxyArgs = module_compute.GetBackendServiceDynamicForwardingForwardProxy.new;
   final GetBackendServiceDynamicForwardingIpPortSelection = module_compute.GetBackendServiceDynamicForwardingIpPortSelection.new;
   final GetBackendServiceDynamicForwardingIpPortSelectionArgs = module_compute.GetBackendServiceDynamicForwardingIpPortSelection.new;
   final GetBackendServiceIamPolicyArgs = module_compute.GetBackendServiceIamPolicyArgs.new;
@@ -8323,6 +8638,8 @@ class _ComputeModuleNamespace {
   final GetRegionSecurityPolicyRulePreconfiguredWafConfigArgs = module_compute.GetRegionSecurityPolicyRulePreconfiguredWafConfig.new;
   final GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion = module_compute.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion.new;
   final GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs = module_compute.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion.new;
+  final GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody = module_compute.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody.new;
+  final GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs = module_compute.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody.new;
   final GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky = module_compute.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky.new;
   final GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs = module_compute.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky.new;
   final GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader = module_compute.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader.new;
@@ -8539,6 +8856,8 @@ class _ComputeModuleNamespace {
   final GetSecurityPolicyRulePreconfiguredWafConfigArgs = module_compute.GetSecurityPolicyRulePreconfiguredWafConfig.new;
   final GetSecurityPolicyRulePreconfiguredWafConfigExclusion = module_compute.GetSecurityPolicyRulePreconfiguredWafConfigExclusion.new;
   final GetSecurityPolicyRulePreconfiguredWafConfigExclusionArgs = module_compute.GetSecurityPolicyRulePreconfiguredWafConfigExclusion.new;
+  final GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody = module_compute.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody.new;
+  final GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs = module_compute.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody.new;
   final GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky = module_compute.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky.new;
   final GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs = module_compute.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky.new;
   final GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader = module_compute.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader.new;
@@ -8570,6 +8889,19 @@ class _ComputeModuleNamespace {
   final GetServiceAttachmentResultArgs = module_compute.GetServiceAttachmentResult.new;
   final GetServiceAttachmentTunnelingConfig = module_compute.GetServiceAttachmentTunnelingConfig.new;
   final GetServiceAttachmentTunnelingConfigArgs = module_compute.GetServiceAttachmentTunnelingConfig.new;
+  final GetServiceAttachmentsArgs = module_compute.GetServiceAttachmentsArgs.new;
+  final GetServiceAttachmentsResult = module_compute.GetServiceAttachmentsResult.new;
+  final GetServiceAttachmentsResultArgs = module_compute.GetServiceAttachmentsResult.new;
+  final GetServiceAttachmentsServiceAttachment = module_compute.GetServiceAttachmentsServiceAttachment.new;
+  final GetServiceAttachmentsServiceAttachmentArgs = module_compute.GetServiceAttachmentsServiceAttachment.new;
+  final GetServiceAttachmentsServiceAttachmentConnectedEndpoint = module_compute.GetServiceAttachmentsServiceAttachmentConnectedEndpoint.new;
+  final GetServiceAttachmentsServiceAttachmentConnectedEndpointArgs = module_compute.GetServiceAttachmentsServiceAttachmentConnectedEndpoint.new;
+  final GetServiceAttachmentsServiceAttachmentConsumerAcceptList = module_compute.GetServiceAttachmentsServiceAttachmentConsumerAcceptList.new;
+  final GetServiceAttachmentsServiceAttachmentConsumerAcceptListArgs = module_compute.GetServiceAttachmentsServiceAttachmentConsumerAcceptList.new;
+  final GetServiceAttachmentsServiceAttachmentPscServiceAttachmentId = module_compute.GetServiceAttachmentsServiceAttachmentPscServiceAttachmentId.new;
+  final GetServiceAttachmentsServiceAttachmentPscServiceAttachmentIdArgs = module_compute.GetServiceAttachmentsServiceAttachmentPscServiceAttachmentId.new;
+  final GetServiceAttachmentsServiceAttachmentTunnelingConfig = module_compute.GetServiceAttachmentsServiceAttachmentTunnelingConfig.new;
+  final GetServiceAttachmentsServiceAttachmentTunnelingConfigArgs = module_compute.GetServiceAttachmentsServiceAttachmentTunnelingConfig.new;
   final GetSnapshotArgs = module_compute.GetSnapshotArgs.new;
   final GetSnapshotIamPolicyArgs = module_compute.GetSnapshotIamPolicyArgs.new;
   final GetSnapshotIamPolicyResult = module_compute.GetSnapshotIamPolicyResult.new;
@@ -9410,6 +9742,18 @@ class _ComputeModuleNamespace {
   final OrganizationSecurityPolicyRuleStateArgs = module_compute.OrganizationSecurityPolicyRuleState.new;
   final OrganizationSecurityPolicyState = module_compute.OrganizationSecurityPolicyState.new;
   final OrganizationSecurityPolicyStateArgs = module_compute.OrganizationSecurityPolicyState.new;
+  final OrganizationSnapshotRecycleBinPolicy = module_compute.OrganizationSnapshotRecycleBinPolicy.new;
+  final OrganizationSnapshotRecycleBinPolicyArgs = module_compute.OrganizationSnapshotRecycleBinPolicyArgs.new;
+  final OrganizationSnapshotRecycleBinPolicyRule = module_compute.OrganizationSnapshotRecycleBinPolicyRule.new;
+  final OrganizationSnapshotRecycleBinPolicyRuleArgs = module_compute.OrganizationSnapshotRecycleBinPolicyRule.new;
+  final OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots = module_compute.OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots.new;
+  final OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs = module_compute.OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots.new;
+  final OrganizationSnapshotRecycleBinPolicyState = module_compute.OrganizationSnapshotRecycleBinPolicyState.new;
+  final OrganizationSnapshotRecycleBinPolicyStateArgs = module_compute.OrganizationSnapshotRecycleBinPolicyState.new;
+  final OrganizationSnapshotRecycleBinPolicySystemRule = module_compute.OrganizationSnapshotRecycleBinPolicySystemRule.new;
+  final OrganizationSnapshotRecycleBinPolicySystemRuleArgs = module_compute.OrganizationSnapshotRecycleBinPolicySystemRule.new;
+  final OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshot = module_compute.OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshot.new;
+  final OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs = module_compute.OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshot.new;
   final PacketMirroring = module_compute.PacketMirroring.new;
   final PacketMirroringArgs = module_compute.PacketMirroringArgs.new;
   final PacketMirroringCollectorIlb = module_compute.PacketMirroringCollectorIlb.new;
@@ -10000,6 +10344,8 @@ class _ComputeModuleNamespace {
   final RegionSecurityPolicyRulePreconfiguredWafConfigArgs = module_compute.RegionSecurityPolicyRulePreconfiguredWafConfig.new;
   final RegionSecurityPolicyRulePreconfiguredWafConfigExclusion = module_compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusion.new;
   final RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs = module_compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusion.new;
+  final RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody = module_compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody.new;
+  final RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs = module_compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody.new;
   final RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky = module_compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky.new;
   final RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs = module_compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky.new;
   final RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader = module_compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader.new;
@@ -10202,6 +10548,8 @@ class _ComputeModuleNamespace {
   final RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgs = module_compute.RegionUrlMapPathMatcherRouteRuleRouteActionTimeout.new;
   final RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite = module_compute.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite.new;
   final RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs = module_compute.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite.new;
+  final RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite = module_compute.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite.new;
+  final RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs = module_compute.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite.new;
   final RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService = module_compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService.new;
   final RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs = module_compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService.new;
   final RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction = module_compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction.new;
@@ -10567,6 +10915,18 @@ class _ComputeModuleNamespace {
   final SnapshotIamPolicyStateArgs = module_compute.SnapshotIamPolicyState.new;
   final SnapshotParams = module_compute.SnapshotParams.new;
   final SnapshotParamsArgs = module_compute.SnapshotParams.new;
+  final SnapshotRecycleBinPolicy = module_compute.SnapshotRecycleBinPolicy.new;
+  final SnapshotRecycleBinPolicyArgs = module_compute.SnapshotRecycleBinPolicyArgs.new;
+  final SnapshotRecycleBinPolicyRule = module_compute.SnapshotRecycleBinPolicyRule.new;
+  final SnapshotRecycleBinPolicyRuleArgs = module_compute.SnapshotRecycleBinPolicyRule.new;
+  final SnapshotRecycleBinPolicyRuleStandardSnapshots = module_compute.SnapshotRecycleBinPolicyRuleStandardSnapshots.new;
+  final SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs = module_compute.SnapshotRecycleBinPolicyRuleStandardSnapshots.new;
+  final SnapshotRecycleBinPolicyState = module_compute.SnapshotRecycleBinPolicyState.new;
+  final SnapshotRecycleBinPolicyStateArgs = module_compute.SnapshotRecycleBinPolicyState.new;
+  final SnapshotRecycleBinPolicySystemRule = module_compute.SnapshotRecycleBinPolicySystemRule.new;
+  final SnapshotRecycleBinPolicySystemRuleArgs = module_compute.SnapshotRecycleBinPolicySystemRule.new;
+  final SnapshotRecycleBinPolicySystemRuleStandardSnapshot = module_compute.SnapshotRecycleBinPolicySystemRuleStandardSnapshot.new;
+  final SnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs = module_compute.SnapshotRecycleBinPolicySystemRuleStandardSnapshot.new;
   final SnapshotSettings = module_compute.SnapshotSettings.new;
   final SnapshotSettingsArgs = module_compute.SnapshotSettingsArgs.new;
   final SnapshotSettingsState = module_compute.SnapshotSettingsState.new;
@@ -10687,6 +11047,8 @@ class _ComputeModuleNamespace {
   final URLMapDefaultRouteActionCachePolicyServeWhileStaleArgs = module_compute.URLMapDefaultRouteActionCachePolicyServeWhileStale.new;
   final URLMapDefaultRouteActionCorsPolicy = module_compute.URLMapDefaultRouteActionCorsPolicy.new;
   final URLMapDefaultRouteActionCorsPolicyArgs = module_compute.URLMapDefaultRouteActionCorsPolicy.new;
+  final URLMapDefaultRouteActionDynamicCompressionPolicy = module_compute.URLMapDefaultRouteActionDynamicCompressionPolicy.new;
+  final URLMapDefaultRouteActionDynamicCompressionPolicyArgs = module_compute.URLMapDefaultRouteActionDynamicCompressionPolicy.new;
   final URLMapDefaultRouteActionFaultInjectionPolicy = module_compute.URLMapDefaultRouteActionFaultInjectionPolicy.new;
   final URLMapDefaultRouteActionFaultInjectionPolicyAbort = module_compute.URLMapDefaultRouteActionFaultInjectionPolicyAbort.new;
   final URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs = module_compute.URLMapDefaultRouteActionFaultInjectionPolicyAbort.new;
@@ -10695,6 +11057,8 @@ class _ComputeModuleNamespace {
   final URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs = module_compute.URLMapDefaultRouteActionFaultInjectionPolicyDelay.new;
   final URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay = module_compute.URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay.new;
   final URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs = module_compute.URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay.new;
+  final URLMapDefaultRouteActionImageOptimizationPolicy = module_compute.URLMapDefaultRouteActionImageOptimizationPolicy.new;
+  final URLMapDefaultRouteActionImageOptimizationPolicyArgs = module_compute.URLMapDefaultRouteActionImageOptimizationPolicy.new;
   final URLMapDefaultRouteActionMaxStreamDuration = module_compute.URLMapDefaultRouteActionMaxStreamDuration.new;
   final URLMapDefaultRouteActionMaxStreamDurationArgs = module_compute.URLMapDefaultRouteActionMaxStreamDuration.new;
   final URLMapDefaultRouteActionRequestMirrorPolicy = module_compute.URLMapDefaultRouteActionRequestMirrorPolicy.new;
@@ -10751,6 +11115,8 @@ class _ComputeModuleNamespace {
   final URLMapPathMatcherDefaultRouteActionCachePolicyServeWhileStaleArgs = module_compute.URLMapPathMatcherDefaultRouteActionCachePolicyServeWhileStale.new;
   final URLMapPathMatcherDefaultRouteActionCorsPolicy = module_compute.URLMapPathMatcherDefaultRouteActionCorsPolicy.new;
   final URLMapPathMatcherDefaultRouteActionCorsPolicyArgs = module_compute.URLMapPathMatcherDefaultRouteActionCorsPolicy.new;
+  final URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy = module_compute.URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy.new;
+  final URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs = module_compute.URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy.new;
   final URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy = module_compute.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy.new;
   final URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort = module_compute.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort.new;
   final URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs = module_compute.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort.new;
@@ -10759,6 +11125,8 @@ class _ComputeModuleNamespace {
   final URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs = module_compute.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay.new;
   final URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay = module_compute.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay.new;
   final URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs = module_compute.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay.new;
+  final URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy = module_compute.URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy.new;
+  final URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs = module_compute.URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy.new;
   final URLMapPathMatcherDefaultRouteActionMaxStreamDuration = module_compute.URLMapPathMatcherDefaultRouteActionMaxStreamDuration.new;
   final URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs = module_compute.URLMapPathMatcherDefaultRouteActionMaxStreamDuration.new;
   final URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy = module_compute.URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy.new;
@@ -10813,6 +11181,8 @@ class _ComputeModuleNamespace {
   final URLMapPathMatcherPathRuleRouteActionCachePolicyServeWhileStaleArgs = module_compute.URLMapPathMatcherPathRuleRouteActionCachePolicyServeWhileStale.new;
   final URLMapPathMatcherPathRuleRouteActionCorsPolicy = module_compute.URLMapPathMatcherPathRuleRouteActionCorsPolicy.new;
   final URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs = module_compute.URLMapPathMatcherPathRuleRouteActionCorsPolicy.new;
+  final URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy = module_compute.URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy.new;
+  final URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs = module_compute.URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy.new;
   final URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy = module_compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy.new;
   final URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort = module_compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort.new;
   final URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs = module_compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort.new;
@@ -10821,6 +11191,8 @@ class _ComputeModuleNamespace {
   final URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs = module_compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay.new;
   final URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay = module_compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay.new;
   final URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs = module_compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay.new;
+  final URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy = module_compute.URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy.new;
+  final URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs = module_compute.URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy.new;
   final URLMapPathMatcherPathRuleRouteActionMaxStreamDuration = module_compute.URLMapPathMatcherPathRuleRouteActionMaxStreamDuration.new;
   final URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs = module_compute.URLMapPathMatcherPathRuleRouteActionMaxStreamDuration.new;
   final URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy = module_compute.URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy.new;
@@ -10891,6 +11263,8 @@ class _ComputeModuleNamespace {
   final URLMapPathMatcherRouteRuleRouteActionCachePolicyServeWhileStaleArgs = module_compute.URLMapPathMatcherRouteRuleRouteActionCachePolicyServeWhileStale.new;
   final URLMapPathMatcherRouteRuleRouteActionCorsPolicy = module_compute.URLMapPathMatcherRouteRuleRouteActionCorsPolicy.new;
   final URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs = module_compute.URLMapPathMatcherRouteRuleRouteActionCorsPolicy.new;
+  final URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy = module_compute.URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy.new;
+  final URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs = module_compute.URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy.new;
   final URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy = module_compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy.new;
   final URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort = module_compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort.new;
   final URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs = module_compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort.new;
@@ -10899,6 +11273,8 @@ class _ComputeModuleNamespace {
   final URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs = module_compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay.new;
   final URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay = module_compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay.new;
   final URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs = module_compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay.new;
+  final URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy = module_compute.URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy.new;
+  final URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs = module_compute.URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy.new;
   final URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration = module_compute.URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration.new;
   final URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs = module_compute.URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration.new;
   final URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy = module_compute.URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy.new;
@@ -10911,6 +11287,8 @@ class _ComputeModuleNamespace {
   final URLMapPathMatcherRouteRuleRouteActionTimeoutArgs = module_compute.URLMapPathMatcherRouteRuleRouteActionTimeout.new;
   final URLMapPathMatcherRouteRuleRouteActionUrlRewrite = module_compute.URLMapPathMatcherRouteRuleRouteActionUrlRewrite.new;
   final URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs = module_compute.URLMapPathMatcherRouteRuleRouteActionUrlRewrite.new;
+  final URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite = module_compute.URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite.new;
+  final URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs = module_compute.URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite.new;
   final URLMapPathMatcherRouteRuleRouteActionWeightedBackendService = module_compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendService.new;
   final URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs = module_compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendService.new;
   final URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction = module_compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction.new;
@@ -10978,90 +11356,177 @@ class _ComputeModuleNamespace {
   final ZoneVmExtensionPolicyState = module_compute.ZoneVmExtensionPolicyState.new;
   final ZoneVmExtensionPolicyStateArgs = module_compute.ZoneVmExtensionPolicyState.new;
   final getAddress = module_compute.getAddress;
+  final getAddressOutput = module_compute.getAddressOutput;
   final getAddresses = module_compute.getAddresses;
+  final getAddressesOutput = module_compute.getAddressesOutput;
   final getBackendBucket = module_compute.getBackendBucket;
   final getBackendBucketIamPolicy = module_compute.getBackendBucketIamPolicy;
+  final getBackendBucketIamPolicyOutput = module_compute.getBackendBucketIamPolicyOutput;
+  final getBackendBucketOutput = module_compute.getBackendBucketOutput;
   final getBackendService = module_compute.getBackendService;
   final getBackendServiceIamPolicy = module_compute.getBackendServiceIamPolicy;
+  final getBackendServiceIamPolicyOutput = module_compute.getBackendServiceIamPolicyOutput;
+  final getBackendServiceOutput = module_compute.getBackendServiceOutput;
   final getCertificate = module_compute.getCertificate;
+  final getCertificateOutput = module_compute.getCertificateOutput;
   final getDefaultServiceAccount = module_compute.getDefaultServiceAccount;
+  final getDefaultServiceAccountOutput = module_compute.getDefaultServiceAccountOutput;
   final getDisk = module_compute.getDisk;
   final getDiskIamPolicy = module_compute.getDiskIamPolicy;
+  final getDiskIamPolicyOutput = module_compute.getDiskIamPolicyOutput;
+  final getDiskOutput = module_compute.getDiskOutput;
   final getFirewallPolicyIamPolicy = module_compute.getFirewallPolicyIamPolicy;
+  final getFirewallPolicyIamPolicyOutput = module_compute.getFirewallPolicyIamPolicyOutput;
   final getForwardingRule = module_compute.getForwardingRule;
+  final getForwardingRuleOutput = module_compute.getForwardingRuleOutput;
   final getForwardingRules = module_compute.getForwardingRules;
+  final getForwardingRulesOutput = module_compute.getForwardingRulesOutput;
   final getGlobalAddress = module_compute.getGlobalAddress;
+  final getGlobalAddressOutput = module_compute.getGlobalAddressOutput;
   final getGlobalForwardingRule = module_compute.getGlobalForwardingRule;
+  final getGlobalForwardingRuleOutput = module_compute.getGlobalForwardingRuleOutput;
   final getHcVpnGateway = module_compute.getHcVpnGateway;
+  final getHcVpnGatewayOutput = module_compute.getHcVpnGatewayOutput;
   final getHealthCheck = module_compute.getHealthCheck;
+  final getHealthCheckOutput = module_compute.getHealthCheckOutput;
   final getImage = module_compute.getImage;
   final getImageIamPolicy = module_compute.getImageIamPolicy;
+  final getImageIamPolicyOutput = module_compute.getImageIamPolicyOutput;
+  final getImageOutput = module_compute.getImageOutput;
   final getImages = module_compute.getImages;
+  final getImagesOutput = module_compute.getImagesOutput;
   final getInstance = module_compute.getInstance;
   final getInstanceGroup = module_compute.getInstanceGroup;
   final getInstanceGroupManager = module_compute.getInstanceGroupManager;
+  final getInstanceGroupManagerOutput = module_compute.getInstanceGroupManagerOutput;
+  final getInstanceGroupOutput = module_compute.getInstanceGroupOutput;
   final getInstanceGroups = module_compute.getInstanceGroups;
+  final getInstanceGroupsOutput = module_compute.getInstanceGroupsOutput;
   final getInstanceGuestAttributes = module_compute.getInstanceGuestAttributes;
+  final getInstanceGuestAttributesOutput = module_compute.getInstanceGuestAttributesOutput;
   final getInstanceIamPolicy = module_compute.getInstanceIamPolicy;
+  final getInstanceIamPolicyOutput = module_compute.getInstanceIamPolicyOutput;
+  final getInstanceOutput = module_compute.getInstanceOutput;
   final getInstanceSerialPort = module_compute.getInstanceSerialPort;
+  final getInstanceSerialPortOutput = module_compute.getInstanceSerialPortOutput;
   final getInstanceTemplate = module_compute.getInstanceTemplate;
   final getInstanceTemplateIamPolicy = module_compute.getInstanceTemplateIamPolicy;
+  final getInstanceTemplateIamPolicyOutput = module_compute.getInstanceTemplateIamPolicyOutput;
+  final getInstanceTemplateOutput = module_compute.getInstanceTemplateOutput;
   final getInstantSnapshotIamPolicy = module_compute.getInstantSnapshotIamPolicy;
+  final getInstantSnapshotIamPolicyOutput = module_compute.getInstantSnapshotIamPolicyOutput;
   final getInterconnectLocation = module_compute.getInterconnectLocation;
+  final getInterconnectLocationOutput = module_compute.getInterconnectLocationOutput;
   final getInterconnectLocations = module_compute.getInterconnectLocations;
+  final getInterconnectLocationsOutput = module_compute.getInterconnectLocationsOutput;
   final getLBIPRanges = module_compute.getLBIPRanges;
+  final getLBIPRangesOutput = module_compute.getLBIPRangesOutput;
   final getMachineImageIamPolicy = module_compute.getMachineImageIamPolicy;
+  final getMachineImageIamPolicyOutput = module_compute.getMachineImageIamPolicyOutput;
   final getMachineTypes = module_compute.getMachineTypes;
+  final getMachineTypesOutput = module_compute.getMachineTypesOutput;
   final getNetblockIPRanges = module_compute.getNetblockIPRanges;
+  final getNetblockIPRangesOutput = module_compute.getNetblockIPRangesOutput;
   final getNetwork = module_compute.getNetwork;
   final getNetworkAttachment = module_compute.getNetworkAttachment;
+  final getNetworkAttachmentOutput = module_compute.getNetworkAttachmentOutput;
   final getNetworkEndpointGroup = module_compute.getNetworkEndpointGroup;
+  final getNetworkEndpointGroupOutput = module_compute.getNetworkEndpointGroupOutput;
   final getNetworkEndpointGroups = module_compute.getNetworkEndpointGroups;
+  final getNetworkEndpointGroupsOutput = module_compute.getNetworkEndpointGroupsOutput;
   final getNetworkFirewallPolicyIamPolicy = module_compute.getNetworkFirewallPolicyIamPolicy;
+  final getNetworkFirewallPolicyIamPolicyOutput = module_compute.getNetworkFirewallPolicyIamPolicyOutput;
+  final getNetworkOutput = module_compute.getNetworkOutput;
   final getNetworkPeering = module_compute.getNetworkPeering;
+  final getNetworkPeeringOutput = module_compute.getNetworkPeeringOutput;
   final getNetworks = module_compute.getNetworks;
+  final getNetworksOutput = module_compute.getNetworksOutput;
   final getNodeTypes = module_compute.getNodeTypes;
+  final getNodeTypesOutput = module_compute.getNodeTypesOutput;
   final getRegionBackendBucketIamPolicy = module_compute.getRegionBackendBucketIamPolicy;
+  final getRegionBackendBucketIamPolicyOutput = module_compute.getRegionBackendBucketIamPolicyOutput;
   final getRegionBackendService = module_compute.getRegionBackendService;
   final getRegionBackendServiceIamPolicy = module_compute.getRegionBackendServiceIamPolicy;
+  final getRegionBackendServiceIamPolicyOutput = module_compute.getRegionBackendServiceIamPolicyOutput;
+  final getRegionBackendServiceOutput = module_compute.getRegionBackendServiceOutput;
   final getRegionDisk = module_compute.getRegionDisk;
   final getRegionDiskIamPolicy = module_compute.getRegionDiskIamPolicy;
+  final getRegionDiskIamPolicyOutput = module_compute.getRegionDiskIamPolicyOutput;
+  final getRegionDiskOutput = module_compute.getRegionDiskOutput;
   final getRegionInstanceGroup = module_compute.getRegionInstanceGroup;
   final getRegionInstanceGroupManager = module_compute.getRegionInstanceGroupManager;
+  final getRegionInstanceGroupManagerOutput = module_compute.getRegionInstanceGroupManagerOutput;
+  final getRegionInstanceGroupOutput = module_compute.getRegionInstanceGroupOutput;
   final getRegionInstanceTemplate = module_compute.getRegionInstanceTemplate;
+  final getRegionInstanceTemplateOutput = module_compute.getRegionInstanceTemplateOutput;
   final getRegionInstantSnapshotIamPolicy = module_compute.getRegionInstantSnapshotIamPolicy;
+  final getRegionInstantSnapshotIamPolicyOutput = module_compute.getRegionInstantSnapshotIamPolicyOutput;
   final getRegionNetworkEndpointGroup = module_compute.getRegionNetworkEndpointGroup;
+  final getRegionNetworkEndpointGroupOutput = module_compute.getRegionNetworkEndpointGroupOutput;
   final getRegionNetworkFirewallPolicyIamPolicy = module_compute.getRegionNetworkFirewallPolicyIamPolicy;
+  final getRegionNetworkFirewallPolicyIamPolicyOutput = module_compute.getRegionNetworkFirewallPolicyIamPolicyOutput;
   final getRegionSSLPolicy = module_compute.getRegionSSLPolicy;
+  final getRegionSSLPolicyOutput = module_compute.getRegionSSLPolicyOutput;
   final getRegionSecurityPolicy = module_compute.getRegionSecurityPolicy;
+  final getRegionSecurityPolicyOutput = module_compute.getRegionSecurityPolicyOutput;
   final getRegionSslCertificate = module_compute.getRegionSslCertificate;
+  final getRegionSslCertificateOutput = module_compute.getRegionSslCertificateOutput;
   final getRegionTargetHttpProxy = module_compute.getRegionTargetHttpProxy;
+  final getRegionTargetHttpProxyOutput = module_compute.getRegionTargetHttpProxyOutput;
   final getRegionTargetHttpsProxy = module_compute.getRegionTargetHttpsProxy;
+  final getRegionTargetHttpsProxyOutput = module_compute.getRegionTargetHttpsProxyOutput;
   final getRegions = module_compute.getRegions;
+  final getRegionsOutput = module_compute.getRegionsOutput;
   final getReservation = module_compute.getReservation;
   final getReservationBlock = module_compute.getReservationBlock;
+  final getReservationBlockOutput = module_compute.getReservationBlockOutput;
+  final getReservationOutput = module_compute.getReservationOutput;
   final getReservationSubBlock = module_compute.getReservationSubBlock;
+  final getReservationSubBlockOutput = module_compute.getReservationSubBlockOutput;
   final getResourcePolicy = module_compute.getResourcePolicy;
+  final getResourcePolicyOutput = module_compute.getResourcePolicyOutput;
   final getRouter = module_compute.getRouter;
   final getRouterNat = module_compute.getRouterNat;
+  final getRouterNatOutput = module_compute.getRouterNatOutput;
+  final getRouterOutput = module_compute.getRouterOutput;
   final getRouterStatus = module_compute.getRouterStatus;
+  final getRouterStatusOutput = module_compute.getRouterStatusOutput;
   final getRouters = module_compute.getRouters;
+  final getRoutersOutput = module_compute.getRoutersOutput;
   final getSSLPolicy = module_compute.getSSLPolicy;
+  final getSSLPolicyOutput = module_compute.getSSLPolicyOutput;
   final getSecurityPolicy = module_compute.getSecurityPolicy;
+  final getSecurityPolicyOutput = module_compute.getSecurityPolicyOutput;
   final getServiceAttachment = module_compute.getServiceAttachment;
+  final getServiceAttachmentOutput = module_compute.getServiceAttachmentOutput;
+  final getServiceAttachments = module_compute.getServiceAttachments;
+  final getServiceAttachmentsOutput = module_compute.getServiceAttachmentsOutput;
   final getSnapshot = module_compute.getSnapshot;
   final getSnapshotIamPolicy = module_compute.getSnapshotIamPolicy;
+  final getSnapshotIamPolicyOutput = module_compute.getSnapshotIamPolicyOutput;
+  final getSnapshotOutput = module_compute.getSnapshotOutput;
   final getStoragePool = module_compute.getStoragePool;
   final getStoragePoolIamPolicy = module_compute.getStoragePoolIamPolicy;
+  final getStoragePoolIamPolicyOutput = module_compute.getStoragePoolIamPolicyOutput;
+  final getStoragePoolOutput = module_compute.getStoragePoolOutput;
   final getStoragePoolTypes = module_compute.getStoragePoolTypes;
+  final getStoragePoolTypesOutput = module_compute.getStoragePoolTypesOutput;
   final getSubnetwork = module_compute.getSubnetwork;
   final getSubnetworkIamPolicy = module_compute.getSubnetworkIamPolicy;
+  final getSubnetworkIamPolicyOutput = module_compute.getSubnetworkIamPolicyOutput;
+  final getSubnetworkOutput = module_compute.getSubnetworkOutput;
   final getSubnetworks = module_compute.getSubnetworks;
+  final getSubnetworksOutput = module_compute.getSubnetworksOutput;
   final getTargetHttpProxy = module_compute.getTargetHttpProxy;
+  final getTargetHttpProxyOutput = module_compute.getTargetHttpProxyOutput;
   final getTargetHttpsProxy = module_compute.getTargetHttpsProxy;
+  final getTargetHttpsProxyOutput = module_compute.getTargetHttpsProxyOutput;
   final getVPNGateway = module_compute.getVPNGateway;
+  final getVPNGatewayOutput = module_compute.getVPNGatewayOutput;
   final getZones = module_compute.getZones;
+  final getZonesOutput = module_compute.getZonesOutput;
   final routerStatus = module_compute.routerStatus;
+  final routerStatusOutput = module_compute.routerStatusOutput;
 }
 
 class _ContactcenterinsightsModuleNamespace {
@@ -11588,6 +12053,8 @@ class _ContainerModuleNamespace {
   final ClusterNodePoolAutoConfigNodeKubeletConfigArgs = module_container.ClusterNodePoolAutoConfigNodeKubeletConfig.new;
   final ClusterNodePoolAutoscaling = module_container.ClusterNodePoolAutoscaling.new;
   final ClusterNodePoolAutoscalingArgs = module_container.ClusterNodePoolAutoscaling.new;
+  final ClusterNodePoolBestEffortProvisioning = module_container.ClusterNodePoolBestEffortProvisioning.new;
+  final ClusterNodePoolBestEffortProvisioningArgs = module_container.ClusterNodePoolBestEffortProvisioning.new;
   final ClusterNodePoolDefaults = module_container.ClusterNodePoolDefaults.new;
   final ClusterNodePoolDefaultsArgs = module_container.ClusterNodePoolDefaults.new;
   final ClusterNodePoolDefaultsNodeConfigDefaults = module_container.ClusterNodePoolDefaultsNodeConfigDefaults.new;
@@ -12121,6 +12588,8 @@ class _ContainerModuleNamespace {
   final GetClusterNodePoolAutoConfigNodeKubeletConfigArgs = module_container.GetClusterNodePoolAutoConfigNodeKubeletConfig.new;
   final GetClusterNodePoolAutoscaling = module_container.GetClusterNodePoolAutoscaling.new;
   final GetClusterNodePoolAutoscalingArgs = module_container.GetClusterNodePoolAutoscaling.new;
+  final GetClusterNodePoolBestEffortProvisioning = module_container.GetClusterNodePoolBestEffortProvisioning.new;
+  final GetClusterNodePoolBestEffortProvisioningArgs = module_container.GetClusterNodePoolBestEffortProvisioning.new;
   final GetClusterNodePoolDefault = module_container.GetClusterNodePoolDefault.new;
   final GetClusterNodePoolDefaultArgs = module_container.GetClusterNodePoolDefault.new;
   final GetClusterNodePoolDefaultNodeConfigDefault = module_container.GetClusterNodePoolDefaultNodeConfigDefault.new;
@@ -12360,6 +12829,8 @@ class _ContainerModuleNamespace {
   final NodePoolArgs = module_container.NodePoolArgs.new;
   final NodePoolAutoscaling = module_container.NodePoolAutoscaling.new;
   final NodePoolAutoscalingArgs = module_container.NodePoolAutoscaling.new;
+  final NodePoolBestEffortProvisioning = module_container.NodePoolBestEffortProvisioning.new;
+  final NodePoolBestEffortProvisioningArgs = module_container.NodePoolBestEffortProvisioning.new;
   final NodePoolMaintenancePolicy = module_container.NodePoolMaintenancePolicy.new;
   final NodePoolMaintenancePolicyArgs = module_container.NodePoolMaintenancePolicy.new;
   final NodePoolMaintenancePolicyExclusionUntilEndOfSupport = module_container.NodePoolMaintenancePolicyExclusionUntilEndOfSupport.new;
@@ -12511,13 +12982,21 @@ class _ContainerModuleNamespace {
   final RegistryState = module_container.RegistryState.new;
   final RegistryStateArgs = module_container.RegistryState.new;
   final getAttachedInstallManifest = module_container.getAttachedInstallManifest;
+  final getAttachedInstallManifestOutput = module_container.getAttachedInstallManifestOutput;
   final getAttachedVersions = module_container.getAttachedVersions;
+  final getAttachedVersionsOutput = module_container.getAttachedVersionsOutput;
   final getAwsVersions = module_container.getAwsVersions;
+  final getAwsVersionsOutput = module_container.getAwsVersionsOutput;
   final getAzureVersions = module_container.getAzureVersions;
+  final getAzureVersionsOutput = module_container.getAzureVersionsOutput;
   final getCluster = module_container.getCluster;
+  final getClusterOutput = module_container.getClusterOutput;
   final getEngineVersions = module_container.getEngineVersions;
+  final getEngineVersionsOutput = module_container.getEngineVersionsOutput;
   final getRegistryImage = module_container.getRegistryImage;
+  final getRegistryImageOutput = module_container.getRegistryImageOutput;
   final getRegistryRepository = module_container.getRegistryRepository;
+  final getRegistryRepositoryOutput = module_container.getRegistryRepositoryOutput;
 }
 
 class _ContaineranalysisModuleNamespace {
@@ -12560,6 +13039,7 @@ class _ContaineranalysisModuleNamespace {
   final OccurenceState = module_containeranalysis.OccurenceState.new;
   final OccurenceStateArgs = module_containeranalysis.OccurenceState.new;
   final getNoteIamPolicy = module_containeranalysis.getNoteIamPolicy;
+  final getNoteIamPolicyOutput = module_containeranalysis.getNoteIamPolicyOutput;
 }
 
 class _DatabasemigrationserviceModuleNamespace {
@@ -12638,6 +13118,8 @@ class _DatabasemigrationserviceModuleNamespace {
   final PrivateConnectionErrorArgs = module_databasemigrationservice.PrivateConnectionError.new;
   final PrivateConnectionPscInterfaceConfig = module_databasemigrationservice.PrivateConnectionPscInterfaceConfig.new;
   final PrivateConnectionPscInterfaceConfigArgs = module_databasemigrationservice.PrivateConnectionPscInterfaceConfig.new;
+  final PrivateConnectionReservedPublicIpConfig = module_databasemigrationservice.PrivateConnectionReservedPublicIpConfig.new;
+  final PrivateConnectionReservedPublicIpConfigArgs = module_databasemigrationservice.PrivateConnectionReservedPublicIpConfig.new;
   final PrivateConnectionState = module_databasemigrationservice.PrivateConnectionState.new;
   final PrivateConnectionStateArgs = module_databasemigrationservice.PrivateConnectionState.new;
   final PrivateConnectionVpcPeeringConfig = module_databasemigrationservice.PrivateConnectionVpcPeeringConfig.new;
@@ -12772,10 +13254,15 @@ class _DatacatalogModuleNamespace {
   final TaxonomyState = module_datacatalog.TaxonomyState.new;
   final TaxonomyStateArgs = module_datacatalog.TaxonomyState.new;
   final getEntryGroupIamPolicy = module_datacatalog.getEntryGroupIamPolicy;
+  final getEntryGroupIamPolicyOutput = module_datacatalog.getEntryGroupIamPolicyOutput;
   final getPolicyTagIamPolicy = module_datacatalog.getPolicyTagIamPolicy;
+  final getPolicyTagIamPolicyOutput = module_datacatalog.getPolicyTagIamPolicyOutput;
   final getTagTemplateIamPolicy = module_datacatalog.getTagTemplateIamPolicy;
+  final getTagTemplateIamPolicyOutput = module_datacatalog.getTagTemplateIamPolicyOutput;
   final getTaxonomy = module_datacatalog.getTaxonomy;
   final getTaxonomyIamPolicy = module_datacatalog.getTaxonomyIamPolicy;
+  final getTaxonomyIamPolicyOutput = module_datacatalog.getTaxonomyIamPolicyOutput;
+  final getTaxonomyOutput = module_datacatalog.getTaxonomyOutput;
 }
 
 class _DataflowModuleNamespace {
@@ -12876,6 +13363,7 @@ class _DataformModuleNamespace {
   final TeamFolderState = module_dataform.TeamFolderState.new;
   final TeamFolderStateArgs = module_dataform.TeamFolderState.new;
   final getRepositoryIamPolicy = module_dataform.getRepositoryIamPolicy;
+  final getRepositoryIamPolicyOutput = module_dataform.getRepositoryIamPolicyOutput;
 }
 
 class _DatafusionModuleNamespace {
@@ -12908,6 +13396,7 @@ class _DatafusionModuleNamespace {
   final InstanceState = module_datafusion.InstanceState.new;
   final InstanceStateArgs = module_datafusion.InstanceState.new;
   final getInstanceIamPolicy = module_datafusion.getInstanceIamPolicy;
+  final getInstanceIamPolicyOutput = module_datafusion.getInstanceIamPolicyOutput;
 }
 
 class _DatalineageModuleNamespace {
@@ -12936,10 +13425,163 @@ class _DatalineageModuleNamespace {
   final GetConfigResult = module_datalineage.GetConfigResult.new;
   final GetConfigResultArgs = module_datalineage.GetConfigResult.new;
   final getConfig = module_datalineage.getConfig;
+  final getConfigOutput = module_datalineage.getConfigOutput;
 }
 
 class _DatalossModuleNamespace {
   _DatalossModuleNamespace();
+  final PreventionContentPolicy = module_dataloss.PreventionContentPolicy.new;
+  final PreventionContentPolicyArgs = module_dataloss.PreventionContentPolicyArgs.new;
+  final PreventionContentPolicyDefaultAction = module_dataloss.PreventionContentPolicyDefaultAction.new;
+  final PreventionContentPolicyDefaultActionArgs = module_dataloss.PreventionContentPolicyDefaultAction.new;
+  final PreventionContentPolicyError = module_dataloss.PreventionContentPolicyError.new;
+  final PreventionContentPolicyErrorArgs = module_dataloss.PreventionContentPolicyError.new;
+  final PreventionContentPolicyErrorDetail = module_dataloss.PreventionContentPolicyErrorDetail.new;
+  final PreventionContentPolicyErrorDetailArgs = module_dataloss.PreventionContentPolicyErrorDetail.new;
+  final PreventionContentPolicyFailedToScanSupportedFileType = module_dataloss.PreventionContentPolicyFailedToScanSupportedFileType.new;
+  final PreventionContentPolicyFailedToScanSupportedFileTypeArgs = module_dataloss.PreventionContentPolicyFailedToScanSupportedFileType.new;
+  final PreventionContentPolicyInputTooLarge = module_dataloss.PreventionContentPolicyInputTooLarge.new;
+  final PreventionContentPolicyInputTooLargeArgs = module_dataloss.PreventionContentPolicyInputTooLarge.new;
+  final PreventionContentPolicyInspectConfig = module_dataloss.PreventionContentPolicyInspectConfig.new;
+  final PreventionContentPolicyInspectConfigArgs = module_dataloss.PreventionContentPolicyInspectConfig.new;
+  final PreventionContentPolicyInspectConfigCustomInfoType = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoType.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoType.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRule = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRule.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRule.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRule = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRule.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRule.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleHotwordRegex = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleHotwordRegex.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleHotwordRegexArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleHotwordRegex.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleLikelihoodAdjustment = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleLikelihoodAdjustment.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleLikelihoodAdjustmentArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleLikelihoodAdjustment.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleProximity = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleProximity.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleProximityArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleProximity.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeDictionary = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDictionary.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDictionary.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePath.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordList.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoType = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoType.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoType.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabel = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabel.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabel.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelLabelFieldsToMatch = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelLabelFieldsToMatch.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelLabelFieldsToMatchArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelLabelFieldsToMatch.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeSensitivityLabel = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeSensitivityLabel.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeSensitivityLabelArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeSensitivityLabel.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeInfoType = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeInfoType.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeInfoType.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeMetadataKeyValueExpression = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeMetadataKeyValueExpression.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeMetadataKeyValueExpression.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeRegex = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeRegex.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeRegex.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeStoredType = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeStoredType.new;
+  final PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs = module_dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeStoredType.new;
+  final PreventionContentPolicyInspectConfigInfoType = module_dataloss.PreventionContentPolicyInspectConfigInfoType.new;
+  final PreventionContentPolicyInspectConfigInfoTypeArgs = module_dataloss.PreventionContentPolicyInspectConfigInfoType.new;
+  final PreventionContentPolicyInspectConfigInfoTypeSensitivityScore = module_dataloss.PreventionContentPolicyInspectConfigInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs = module_dataloss.PreventionContentPolicyInspectConfigInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigLimits = module_dataloss.PreventionContentPolicyInspectConfigLimits.new;
+  final PreventionContentPolicyInspectConfigLimitsArgs = module_dataloss.PreventionContentPolicyInspectConfigLimits.new;
+  final PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType = module_dataloss.PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType.new;
+  final PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArgs = module_dataloss.PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoType.new;
+  final PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType = module_dataloss.PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType.new;
+  final PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs = module_dataloss.PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoType.new;
+  final PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore = module_dataloss.PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs = module_dataloss.PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType = module_dataloss.PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType.new;
+  final PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArgs = module_dataloss.PreventionContentPolicyInspectConfigMinLikelihoodPerInfoType.new;
+  final PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType = module_dataloss.PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType.new;
+  final PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs = module_dataloss.PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoType.new;
+  final PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeSensitivityScore = module_dataloss.PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeSensitivityScoreArgs = module_dataloss.PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigRuleSet = module_dataloss.PreventionContentPolicyInspectConfigRuleSet.new;
+  final PreventionContentPolicyInspectConfigRuleSetArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSet.new;
+  final PreventionContentPolicyInspectConfigRuleSetInfoType = module_dataloss.PreventionContentPolicyInspectConfigRuleSetInfoType.new;
+  final PreventionContentPolicyInspectConfigRuleSetInfoTypeArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetInfoType.new;
+  final PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore = module_dataloss.PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigRuleSetRule = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRule.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRule = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRule.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindings = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindings.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindings.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentType = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentType.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentType.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoType = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoType.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoType.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeSensitivityScore = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeSensitivityScoreArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypes = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypes.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypes.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoType = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoType.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoType.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeSensitivityScore = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeSensitivityScoreArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRule.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleLikelihoodAdjustment = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleLikelihoodAdjustment.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleLikelihoodAdjustmentArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleLikelihoodAdjustment.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRule.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRule.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionary.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordList.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotword.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindings.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentType = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentType.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentType.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoType = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoType.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoType.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScore = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegex.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleHotwordRule.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegex.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity.new;
+  final PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs = module_dataloss.PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximity.new;
+  final PreventionContentPolicyLoggingConfig = module_dataloss.PreventionContentPolicyLoggingConfig.new;
+  final PreventionContentPolicyLoggingConfigArgs = module_dataloss.PreventionContentPolicyLoggingConfig.new;
+  final PreventionContentPolicyLoggingConfigLogToBigQuery = module_dataloss.PreventionContentPolicyLoggingConfigLogToBigQuery.new;
+  final PreventionContentPolicyLoggingConfigLogToBigQueryArgs = module_dataloss.PreventionContentPolicyLoggingConfigLogToBigQuery.new;
+  final PreventionContentPolicyRule = module_dataloss.PreventionContentPolicyRule.new;
+  final PreventionContentPolicyRuleAction = module_dataloss.PreventionContentPolicyRuleAction.new;
+  final PreventionContentPolicyRuleActionArgs = module_dataloss.PreventionContentPolicyRuleAction.new;
+  final PreventionContentPolicyRuleArgs = module_dataloss.PreventionContentPolicyRule.new;
+  final PreventionContentPolicyRuleCondition = module_dataloss.PreventionContentPolicyRuleCondition.new;
+  final PreventionContentPolicyRuleConditionArgs = module_dataloss.PreventionContentPolicyRuleCondition.new;
+  final PreventionContentPolicyRuleConditionInfoTypeCondition = module_dataloss.PreventionContentPolicyRuleConditionInfoTypeCondition.new;
+  final PreventionContentPolicyRuleConditionInfoTypeConditionArgs = module_dataloss.PreventionContentPolicyRuleConditionInfoTypeCondition.new;
+  final PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes = module_dataloss.PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes.new;
+  final PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs = module_dataloss.PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypes.new;
+  final PreventionContentPolicyState = module_dataloss.PreventionContentPolicyState.new;
+  final PreventionContentPolicyStateArgs = module_dataloss.PreventionContentPolicyState.new;
+  final PreventionContentPolicyUnsupportedFileType = module_dataloss.PreventionContentPolicyUnsupportedFileType.new;
+  final PreventionContentPolicyUnsupportedFileTypeArgs = module_dataloss.PreventionContentPolicyUnsupportedFileType.new;
   final PreventionDeidentifyTemplate = module_dataloss.PreventionDeidentifyTemplate.new;
   final PreventionDeidentifyTemplateArgs = module_dataloss.PreventionDeidentifyTemplateArgs.new;
   final PreventionDeidentifyTemplateDeidentifyConfig = module_dataloss.PreventionDeidentifyTemplateDeidentifyConfig.new;
@@ -14150,16 +14792,27 @@ class _DataplexModuleNamespace {
   final ZoneState = module_dataplex.ZoneState.new;
   final ZoneStateArgs = module_dataplex.ZoneState.new;
   final getAspectTypeIamPolicy = module_dataplex.getAspectTypeIamPolicy;
+  final getAspectTypeIamPolicyOutput = module_dataplex.getAspectTypeIamPolicyOutput;
   final getAssetIamPolicy = module_dataplex.getAssetIamPolicy;
+  final getAssetIamPolicyOutput = module_dataplex.getAssetIamPolicyOutput;
   final getDataProductIamPolicy = module_dataplex.getDataProductIamPolicy;
+  final getDataProductIamPolicyOutput = module_dataplex.getDataProductIamPolicyOutput;
   final getDataQualityRules = module_dataplex.getDataQualityRules;
+  final getDataQualityRulesOutput = module_dataplex.getDataQualityRulesOutput;
   final getDatascanIamPolicy = module_dataplex.getDatascanIamPolicy;
+  final getDatascanIamPolicyOutput = module_dataplex.getDatascanIamPolicyOutput;
   final getEntryGroupIamPolicy = module_dataplex.getEntryGroupIamPolicy;
+  final getEntryGroupIamPolicyOutput = module_dataplex.getEntryGroupIamPolicyOutput;
   final getEntryTypeIamPolicy = module_dataplex.getEntryTypeIamPolicy;
+  final getEntryTypeIamPolicyOutput = module_dataplex.getEntryTypeIamPolicyOutput;
   final getGlossaryIamPolicy = module_dataplex.getGlossaryIamPolicy;
+  final getGlossaryIamPolicyOutput = module_dataplex.getGlossaryIamPolicyOutput;
   final getLakeIamPolicy = module_dataplex.getLakeIamPolicy;
+  final getLakeIamPolicyOutput = module_dataplex.getLakeIamPolicyOutput;
   final getTaskIamPolicy = module_dataplex.getTaskIamPolicy;
+  final getTaskIamPolicyOutput = module_dataplex.getTaskIamPolicyOutput;
   final getZoneIamPolicy = module_dataplex.getZoneIamPolicy;
+  final getZoneIamPolicyOutput = module_dataplex.getZoneIamPolicyOutput;
 }
 
 class _DataprocModuleNamespace {
@@ -14714,6 +15367,18 @@ class _DataprocModuleNamespace {
   final WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfig.new;
   final WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig.new;
   final WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy.new;
+  final WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy.new;
+  final WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList.new;
+  final WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList.new;
+  final WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult.new;
+  final WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult.new;
   final WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig.new;
   final WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig.new;
   final WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig.new;
@@ -14724,6 +15389,20 @@ class _DataprocModuleNamespace {
   final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig.new;
   final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig.new;
   final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy.new;
+  final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy.new;
+  final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList.new;
+  final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList.new;
+  final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult.new;
+  final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult.new;
+  final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix.new;
+  final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix.new;
   final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig.new;
   final WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig.new;
   final WorkflowTemplatePlacementManagedClusterConfigSecurityConfig = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigSecurityConfig.new;
@@ -14738,18 +15417,38 @@ class _DataprocModuleNamespace {
   final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig.new;
   final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig.new;
   final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy.new;
+  final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy.new;
+  final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList.new;
+  final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList.new;
+  final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig.new;
+  final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult.new;
+  final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult.new;
   final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig.new;
   final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs = module_dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig.new;
   final WorkflowTemplateState = module_dataproc.WorkflowTemplateState.new;
   final WorkflowTemplateStateArgs = module_dataproc.WorkflowTemplateState.new;
   final getAutoscalingPolicyIamPolicy = module_dataproc.getAutoscalingPolicyIamPolicy;
+  final getAutoscalingPolicyIamPolicyOutput = module_dataproc.getAutoscalingPolicyIamPolicyOutput;
   final getClusterIamPolicy = module_dataproc.getClusterIamPolicy;
+  final getClusterIamPolicyOutput = module_dataproc.getClusterIamPolicyOutput;
   final getJobIamPolicy = module_dataproc.getJobIamPolicy;
+  final getJobIamPolicyOutput = module_dataproc.getJobIamPolicyOutput;
   final getMetastoreDatabaseIamPolicy = module_dataproc.getMetastoreDatabaseIamPolicy;
+  final getMetastoreDatabaseIamPolicyOutput = module_dataproc.getMetastoreDatabaseIamPolicyOutput;
   final getMetastoreFederationIamPolicy = module_dataproc.getMetastoreFederationIamPolicy;
+  final getMetastoreFederationIamPolicyOutput = module_dataproc.getMetastoreFederationIamPolicyOutput;
   final getMetastoreService = module_dataproc.getMetastoreService;
   final getMetastoreServiceIamPolicy = module_dataproc.getMetastoreServiceIamPolicy;
+  final getMetastoreServiceIamPolicyOutput = module_dataproc.getMetastoreServiceIamPolicyOutput;
+  final getMetastoreServiceOutput = module_dataproc.getMetastoreServiceOutput;
   final getMetastoreTableIamPolicy = module_dataproc.getMetastoreTableIamPolicy;
+  final getMetastoreTableIamPolicyOutput = module_dataproc.getMetastoreTableIamPolicyOutput;
 }
 
 class _DatastreamModuleNamespace {
@@ -15042,6 +15741,7 @@ class _DatastreamModuleNamespace {
   final StreamState = module_datastream.StreamState.new;
   final StreamStateArgs = module_datastream.StreamState.new;
   final getStaticIps = module_datastream.getStaticIps;
+  final getStaticIpsOutput = module_datastream.getStaticIpsOutput;
 }
 
 class _DeploymentmanagerModuleNamespace {
@@ -15795,7 +16495,13 @@ class _DiagflowModuleNamespace {
   final FulfillmentState = module_diagflow.FulfillmentState.new;
   final FulfillmentStateArgs = module_diagflow.FulfillmentState.new;
   final Generator = module_diagflow.Generator.new;
+  final GeneratorAgentCoachingContext = module_diagflow.GeneratorAgentCoachingContext.new;
+  final GeneratorAgentCoachingContextArgs = module_diagflow.GeneratorAgentCoachingContext.new;
+  final GeneratorAgentCoachingContextInstruction = module_diagflow.GeneratorAgentCoachingContextInstruction.new;
+  final GeneratorAgentCoachingContextInstructionArgs = module_diagflow.GeneratorAgentCoachingContextInstruction.new;
   final GeneratorArgs = module_diagflow.GeneratorArgs.new;
+  final GeneratorFreeFormContext = module_diagflow.GeneratorFreeFormContext.new;
+  final GeneratorFreeFormContextArgs = module_diagflow.GeneratorFreeFormContext.new;
   final GeneratorInferenceParameter = module_diagflow.GeneratorInferenceParameter.new;
   final GeneratorInferenceParameterArgs = module_diagflow.GeneratorInferenceParameter.new;
   final GeneratorState = module_diagflow.GeneratorState.new;
@@ -15814,6 +16520,14 @@ class _DiagflowModuleNamespace {
   final GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs = module_diagflow.GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion.new;
   final GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection = module_diagflow.GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection.new;
   final GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs = module_diagflow.GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection.new;
+  final GeneratorSummarizationContextFewShotExampleOutputToolCallInfo = module_diagflow.GeneratorSummarizationContextFewShotExampleOutputToolCallInfo.new;
+  final GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs = module_diagflow.GeneratorSummarizationContextFewShotExampleOutputToolCallInfo.new;
+  final GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCall = module_diagflow.GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCall.new;
+  final GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallArgs = module_diagflow.GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCall.new;
+  final GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResult = module_diagflow.GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResult.new;
+  final GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultArgs = module_diagflow.GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResult.new;
+  final GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError = module_diagflow.GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError.new;
+  final GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs = module_diagflow.GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError.new;
   final GeneratorSummarizationContextFewShotExampleSummarizationSectionList = module_diagflow.GeneratorSummarizationContextFewShotExampleSummarizationSectionList.new;
   final GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs = module_diagflow.GeneratorSummarizationContextFewShotExampleSummarizationSectionList.new;
   final GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection = module_diagflow.GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection.new;
@@ -15834,6 +16548,36 @@ class _DiagflowModuleNamespace {
   final SipTrunkConnectionErrorDetailArgs = module_diagflow.SipTrunkConnectionErrorDetail.new;
   final SipTrunkState = module_diagflow.SipTrunkState.new;
   final SipTrunkStateArgs = module_diagflow.SipTrunkState.new;
+  final Tool = module_diagflow.Tool.new;
+  final ToolArgs = module_diagflow.ToolArgs.new;
+  final ToolConnectorSpec = module_diagflow.ToolConnectorSpec.new;
+  final ToolConnectorSpecAction = module_diagflow.ToolConnectorSpecAction.new;
+  final ToolConnectorSpecActionArgs = module_diagflow.ToolConnectorSpecAction.new;
+  final ToolConnectorSpecActionEntityOperation = module_diagflow.ToolConnectorSpecActionEntityOperation.new;
+  final ToolConnectorSpecActionEntityOperationArgs = module_diagflow.ToolConnectorSpecActionEntityOperation.new;
+  final ToolConnectorSpecArgs = module_diagflow.ToolConnectorSpec.new;
+  final ToolFunctionSpec = module_diagflow.ToolFunctionSpec.new;
+  final ToolFunctionSpecArgs = module_diagflow.ToolFunctionSpec.new;
+  final ToolOpenApiSpec = module_diagflow.ToolOpenApiSpec.new;
+  final ToolOpenApiSpecArgs = module_diagflow.ToolOpenApiSpec.new;
+  final ToolOpenApiSpecAuthentication = module_diagflow.ToolOpenApiSpecAuthentication.new;
+  final ToolOpenApiSpecAuthenticationApiKeyConfig = module_diagflow.ToolOpenApiSpecAuthenticationApiKeyConfig.new;
+  final ToolOpenApiSpecAuthenticationApiKeyConfigArgs = module_diagflow.ToolOpenApiSpecAuthenticationApiKeyConfig.new;
+  final ToolOpenApiSpecAuthenticationArgs = module_diagflow.ToolOpenApiSpecAuthentication.new;
+  final ToolOpenApiSpecAuthenticationBearerTokenConfig = module_diagflow.ToolOpenApiSpecAuthenticationBearerTokenConfig.new;
+  final ToolOpenApiSpecAuthenticationBearerTokenConfigArgs = module_diagflow.ToolOpenApiSpecAuthenticationBearerTokenConfig.new;
+  final ToolOpenApiSpecAuthenticationOauthConfig = module_diagflow.ToolOpenApiSpecAuthenticationOauthConfig.new;
+  final ToolOpenApiSpecAuthenticationOauthConfigArgs = module_diagflow.ToolOpenApiSpecAuthenticationOauthConfig.new;
+  final ToolOpenApiSpecAuthenticationServiceAgentAuthConfig = module_diagflow.ToolOpenApiSpecAuthenticationServiceAgentAuthConfig.new;
+  final ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs = module_diagflow.ToolOpenApiSpecAuthenticationServiceAgentAuthConfig.new;
+  final ToolOpenApiSpecServiceDirectoryConfig = module_diagflow.ToolOpenApiSpecServiceDirectoryConfig.new;
+  final ToolOpenApiSpecServiceDirectoryConfigArgs = module_diagflow.ToolOpenApiSpecServiceDirectoryConfig.new;
+  final ToolOpenApiSpecTlsConfig = module_diagflow.ToolOpenApiSpecTlsConfig.new;
+  final ToolOpenApiSpecTlsConfigArgs = module_diagflow.ToolOpenApiSpecTlsConfig.new;
+  final ToolOpenApiSpecTlsConfigCaCert = module_diagflow.ToolOpenApiSpecTlsConfigCaCert.new;
+  final ToolOpenApiSpecTlsConfigCaCertArgs = module_diagflow.ToolOpenApiSpecTlsConfigCaCert.new;
+  final ToolState = module_diagflow.ToolState.new;
+  final ToolStateArgs = module_diagflow.ToolState.new;
   final Version = module_diagflow.Version.new;
   final VersionArgs = module_diagflow.VersionArgs.new;
   final VersionState = module_diagflow.VersionState.new;
@@ -15922,6 +16666,8 @@ class _DiscoveryengineModuleNamespace {
   final DataConnectorEntityArgs = module_discoveryengine.DataConnectorEntity.new;
   final DataConnectorError = module_discoveryengine.DataConnectorError.new;
   final DataConnectorErrorArgs = module_discoveryengine.DataConnectorError.new;
+  final DataConnectorMetadata = module_discoveryengine.DataConnectorMetadata.new;
+  final DataConnectorMetadataArgs = module_discoveryengine.DataConnectorMetadata.new;
   final DataConnectorState = module_discoveryengine.DataConnectorState.new;
   final DataConnectorStateArgs = module_discoveryengine.DataConnectorState.new;
   final DataStore = module_discoveryengine.DataStore.new;
@@ -16083,9 +16829,14 @@ class _DiscoveryengineModuleNamespace {
   final WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgs = module_discoveryengine.WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap.new;
   final WidgetConfigUiSettingsGenerativeAnswerConfig = module_discoveryengine.WidgetConfigUiSettingsGenerativeAnswerConfig.new;
   final WidgetConfigUiSettingsGenerativeAnswerConfigArgs = module_discoveryengine.WidgetConfigUiSettingsGenerativeAnswerConfig.new;
+  final WidgetConfigUiSettingsSearchAddonSpec = module_discoveryengine.WidgetConfigUiSettingsSearchAddonSpec.new;
+  final WidgetConfigUiSettingsSearchAddonSpecArgs = module_discoveryengine.WidgetConfigUiSettingsSearchAddonSpec.new;
   final getDataStore = module_discoveryengine.getDataStore;
+  final getDataStoreOutput = module_discoveryengine.getDataStoreOutput;
   final getDataStores = module_discoveryengine.getDataStores;
+  final getDataStoresOutput = module_discoveryengine.getDataStoresOutput;
   final getSearchEngineIamPolicy = module_discoveryengine.getSearchEngineIamPolicy;
+  final getSearchEngineIamPolicyOutput = module_discoveryengine.getSearchEngineIamPolicyOutput;
 }
 
 class _DnsModuleNamespace {
@@ -16225,11 +16976,17 @@ class _DnsModuleNamespace {
   final ResponsePolicyState = module_dns.ResponsePolicyState.new;
   final ResponsePolicyStateArgs = module_dns.ResponsePolicyState.new;
   final getKeys = module_dns.getKeys;
+  final getKeysOutput = module_dns.getKeysOutput;
   final getManagedZone = module_dns.getManagedZone;
   final getManagedZoneIamPolicy = module_dns.getManagedZoneIamPolicy;
+  final getManagedZoneIamPolicyOutput = module_dns.getManagedZoneIamPolicyOutput;
+  final getManagedZoneOutput = module_dns.getManagedZoneOutput;
   final getManagedZones = module_dns.getManagedZones;
+  final getManagedZonesOutput = module_dns.getManagedZonesOutput;
   final getRecordSet = module_dns.getRecordSet;
+  final getRecordSetOutput = module_dns.getRecordSetOutput;
   final getRecordSets = module_dns.getRecordSets;
+  final getRecordSetsOutput = module_dns.getRecordSetsOutput;
 }
 
 class _DocumentaiModuleNamespace {
@@ -16371,7 +17128,9 @@ class _EndpointsModuleNamespace {
   final ServiceState = module_endpoints.ServiceState.new;
   final ServiceStateArgs = module_endpoints.ServiceState.new;
   final getServiceConsumersIamPolicy = module_endpoints.getServiceConsumersIamPolicy;
+  final getServiceConsumersIamPolicyOutput = module_endpoints.getServiceConsumersIamPolicyOutput;
   final getServiceIamPolicy = module_endpoints.getServiceIamPolicy;
+  final getServiceIamPolicyOutput = module_endpoints.getServiceIamPolicyOutput;
 }
 
 class _EssentialcontactsModuleNamespace {
@@ -16422,6 +17181,9 @@ class _EventarcModuleNamespace {
   final EnrollmentArgs = module_eventarc.EnrollmentArgs.new;
   final EnrollmentState = module_eventarc.EnrollmentState.new;
   final EnrollmentStateArgs = module_eventarc.EnrollmentState.new;
+  final GetPipelineIamPolicyArgs = module_eventarc.GetPipelineIamPolicyArgs.new;
+  final GetPipelineIamPolicyResult = module_eventarc.GetPipelineIamPolicyResult.new;
+  final GetPipelineIamPolicyResultArgs = module_eventarc.GetPipelineIamPolicyResult.new;
   final GoogleApiSource = module_eventarc.GoogleApiSource.new;
   final GoogleApiSourceArgs = module_eventarc.GoogleApiSourceArgs.new;
   final GoogleApiSourceLoggingConfig = module_eventarc.GoogleApiSourceLoggingConfig.new;
@@ -16458,6 +17220,22 @@ class _EventarcModuleNamespace {
   final PipelineDestinationOutputPayloadFormatAvroArgs = module_eventarc.PipelineDestinationOutputPayloadFormatAvro.new;
   final PipelineDestinationOutputPayloadFormatProtobuf = module_eventarc.PipelineDestinationOutputPayloadFormatProtobuf.new;
   final PipelineDestinationOutputPayloadFormatProtobufArgs = module_eventarc.PipelineDestinationOutputPayloadFormatProtobuf.new;
+  final PipelineIamBinding = module_eventarc.PipelineIamBinding.new;
+  final PipelineIamBindingArgs = module_eventarc.PipelineIamBindingArgs.new;
+  final PipelineIamBindingCondition = module_eventarc.PipelineIamBindingCondition.new;
+  final PipelineIamBindingConditionArgs = module_eventarc.PipelineIamBindingCondition.new;
+  final PipelineIamBindingState = module_eventarc.PipelineIamBindingState.new;
+  final PipelineIamBindingStateArgs = module_eventarc.PipelineIamBindingState.new;
+  final PipelineIamMember = module_eventarc.PipelineIamMember.new;
+  final PipelineIamMemberArgs = module_eventarc.PipelineIamMemberArgs.new;
+  final PipelineIamMemberCondition = module_eventarc.PipelineIamMemberCondition.new;
+  final PipelineIamMemberConditionArgs = module_eventarc.PipelineIamMemberCondition.new;
+  final PipelineIamMemberState = module_eventarc.PipelineIamMemberState.new;
+  final PipelineIamMemberStateArgs = module_eventarc.PipelineIamMemberState.new;
+  final PipelineIamPolicy = module_eventarc.PipelineIamPolicy.new;
+  final PipelineIamPolicyArgs = module_eventarc.PipelineIamPolicyArgs.new;
+  final PipelineIamPolicyState = module_eventarc.PipelineIamPolicyState.new;
+  final PipelineIamPolicyStateArgs = module_eventarc.PipelineIamPolicyState.new;
   final PipelineInputPayloadFormat = module_eventarc.PipelineInputPayloadFormat.new;
   final PipelineInputPayloadFormatArgs = module_eventarc.PipelineInputPayloadFormat.new;
   final PipelineInputPayloadFormatAvro = module_eventarc.PipelineInputPayloadFormatAvro.new;
@@ -16496,6 +17274,8 @@ class _EventarcModuleNamespace {
   final TriggerTransportArgs = module_eventarc.TriggerTransport.new;
   final TriggerTransportPubsub = module_eventarc.TriggerTransportPubsub.new;
   final TriggerTransportPubsubArgs = module_eventarc.TriggerTransportPubsub.new;
+  final getPipelineIamPolicy = module_eventarc.getPipelineIamPolicy;
+  final getPipelineIamPolicyOutput = module_eventarc.getPipelineIamPolicyOutput;
 }
 
 class _FilestoreModuleNamespace {
@@ -16568,6 +17348,7 @@ class _FilestoreModuleNamespace {
   final SnapshotState = module_filestore.SnapshotState.new;
   final SnapshotStateArgs = module_filestore.SnapshotState.new;
   final getInstance = module_filestore.getInstance;
+  final getInstanceOutput = module_filestore.getInstanceOutput;
 }
 
 class _FirebaseModuleNamespace {
@@ -16845,13 +17626,21 @@ class _FirebaseModuleNamespace {
   final WebAppState = module_firebase.WebAppState.new;
   final WebAppStateArgs = module_firebase.WebAppState.new;
   final getAdminSdkConfig = module_firebase.getAdminSdkConfig;
+  final getAdminSdkConfigOutput = module_firebase.getAdminSdkConfigOutput;
   final getAndroidApp = module_firebase.getAndroidApp;
   final getAndroidAppConfig = module_firebase.getAndroidAppConfig;
+  final getAndroidAppConfigOutput = module_firebase.getAndroidAppConfigOutput;
+  final getAndroidAppOutput = module_firebase.getAndroidAppOutput;
   final getAppleApp = module_firebase.getAppleApp;
   final getAppleAppConfig = module_firebase.getAppleAppConfig;
+  final getAppleAppConfigOutput = module_firebase.getAppleAppConfigOutput;
+  final getAppleAppOutput = module_firebase.getAppleAppOutput;
   final getHostingChannel = module_firebase.getHostingChannel;
+  final getHostingChannelOutput = module_firebase.getHostingChannelOutput;
   final getWebApp = module_firebase.getWebApp;
   final getWebAppConfig = module_firebase.getWebAppConfig;
+  final getWebAppConfigOutput = module_firebase.getWebAppConfigOutput;
+  final getWebAppOutput = module_firebase.getWebAppOutput;
 }
 
 class _FirebaserulesModuleNamespace {
@@ -16932,6 +17721,7 @@ class _FirestoreModuleNamespace {
   final UserCredsState = module_firestore.UserCredsState.new;
   final UserCredsStateArgs = module_firestore.UserCredsState.new;
   final getDocument = module_firestore.getDocument;
+  final getDocumentOutput = module_firestore.getDocumentOutput;
 }
 
 class _FolderModuleNamespace {
@@ -16999,7 +17789,9 @@ class _FolderModuleNamespace {
   final ServiceIdentityState = module_folder.ServiceIdentityState.new;
   final ServiceIdentityStateArgs = module_folder.ServiceIdentityState.new;
   final getIamPolicy = module_folder.getIamPolicy;
+  final getIamPolicyOutput = module_folder.getIamPolicyOutput;
   final getOrganizationPolicy = module_folder.getOrganizationPolicy;
+  final getOrganizationPolicyOutput = module_folder.getOrganizationPolicyOutput;
 }
 
 class _GeminiModuleNamespace {
@@ -17020,6 +17812,88 @@ class _GeminiModuleNamespace {
   final CodeToolsSettingEnabledToolConfigArgs = module_gemini.CodeToolsSettingEnabledToolConfig.new;
   final CodeToolsSettingState = module_gemini.CodeToolsSettingState.new;
   final CodeToolsSettingStateArgs = module_gemini.CodeToolsSettingState.new;
+  final DataAnalyticsDataAgent = module_gemini.DataAnalyticsDataAgent.new;
+  final DataAnalyticsDataAgentArgs = module_gemini.DataAnalyticsDataAgentArgs.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgent = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgent.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgent.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContext = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContext.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContext.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths.new;
+  final DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsArgs = module_gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths.new;
+  final DataAnalyticsDataAgentIamBinding = module_gemini.DataAnalyticsDataAgentIamBinding.new;
+  final DataAnalyticsDataAgentIamBindingArgs = module_gemini.DataAnalyticsDataAgentIamBindingArgs.new;
+  final DataAnalyticsDataAgentIamBindingCondition = module_gemini.DataAnalyticsDataAgentIamBindingCondition.new;
+  final DataAnalyticsDataAgentIamBindingConditionArgs = module_gemini.DataAnalyticsDataAgentIamBindingCondition.new;
+  final DataAnalyticsDataAgentIamBindingState = module_gemini.DataAnalyticsDataAgentIamBindingState.new;
+  final DataAnalyticsDataAgentIamBindingStateArgs = module_gemini.DataAnalyticsDataAgentIamBindingState.new;
+  final DataAnalyticsDataAgentIamMember = module_gemini.DataAnalyticsDataAgentIamMember.new;
+  final DataAnalyticsDataAgentIamMemberArgs = module_gemini.DataAnalyticsDataAgentIamMemberArgs.new;
+  final DataAnalyticsDataAgentIamMemberCondition = module_gemini.DataAnalyticsDataAgentIamMemberCondition.new;
+  final DataAnalyticsDataAgentIamMemberConditionArgs = module_gemini.DataAnalyticsDataAgentIamMemberCondition.new;
+  final DataAnalyticsDataAgentIamMemberState = module_gemini.DataAnalyticsDataAgentIamMemberState.new;
+  final DataAnalyticsDataAgentIamMemberStateArgs = module_gemini.DataAnalyticsDataAgentIamMemberState.new;
+  final DataAnalyticsDataAgentIamPolicy = module_gemini.DataAnalyticsDataAgentIamPolicy.new;
+  final DataAnalyticsDataAgentIamPolicyArgs = module_gemini.DataAnalyticsDataAgentIamPolicyArgs.new;
+  final DataAnalyticsDataAgentIamPolicyState = module_gemini.DataAnalyticsDataAgentIamPolicyState.new;
+  final DataAnalyticsDataAgentIamPolicyStateArgs = module_gemini.DataAnalyticsDataAgentIamPolicyState.new;
+  final DataAnalyticsDataAgentState = module_gemini.DataAnalyticsDataAgentState.new;
+  final DataAnalyticsDataAgentStateArgs = module_gemini.DataAnalyticsDataAgentState.new;
   final DataSharingWithGoogleSetting = module_gemini.DataSharingWithGoogleSetting.new;
   final DataSharingWithGoogleSettingArgs = module_gemini.DataSharingWithGoogleSettingArgs.new;
   final DataSharingWithGoogleSettingBinding = module_gemini.DataSharingWithGoogleSettingBinding.new;
@@ -17028,6 +17902,16 @@ class _GeminiModuleNamespace {
   final DataSharingWithGoogleSettingBindingStateArgs = module_gemini.DataSharingWithGoogleSettingBindingState.new;
   final DataSharingWithGoogleSettingState = module_gemini.DataSharingWithGoogleSettingState.new;
   final DataSharingWithGoogleSettingStateArgs = module_gemini.DataSharingWithGoogleSettingState.new;
+  final GdaObservabilitySetting = module_gemini.GdaObservabilitySetting.new;
+  final GdaObservabilitySettingArgs = module_gemini.GdaObservabilitySettingArgs.new;
+  final GdaObservabilitySettingBinding = module_gemini.GdaObservabilitySettingBinding.new;
+  final GdaObservabilitySettingBindingArgs = module_gemini.GdaObservabilitySettingBindingArgs.new;
+  final GdaObservabilitySettingBindingState = module_gemini.GdaObservabilitySettingBindingState.new;
+  final GdaObservabilitySettingBindingStateArgs = module_gemini.GdaObservabilitySettingBindingState.new;
+  final GdaObservabilitySettingConversationalAnalyticsSetting = module_gemini.GdaObservabilitySettingConversationalAnalyticsSetting.new;
+  final GdaObservabilitySettingConversationalAnalyticsSettingArgs = module_gemini.GdaObservabilitySettingConversationalAnalyticsSetting.new;
+  final GdaObservabilitySettingState = module_gemini.GdaObservabilitySettingState.new;
+  final GdaObservabilitySettingStateArgs = module_gemini.GdaObservabilitySettingState.new;
   final GeminiGcpEnablementSetting = module_gemini.GeminiGcpEnablementSetting.new;
   final GeminiGcpEnablementSettingArgs = module_gemini.GeminiGcpEnablementSettingArgs.new;
   final GeminiGcpEnablementSettingBinding = module_gemini.GeminiGcpEnablementSettingBinding.new;
@@ -17036,9 +17920,22 @@ class _GeminiModuleNamespace {
   final GeminiGcpEnablementSettingBindingStateArgs = module_gemini.GeminiGcpEnablementSettingBindingState.new;
   final GeminiGcpEnablementSettingState = module_gemini.GeminiGcpEnablementSettingState.new;
   final GeminiGcpEnablementSettingStateArgs = module_gemini.GeminiGcpEnablementSettingState.new;
+  final GetDataAnalyticsDataAgentIamPolicyArgs = module_gemini.GetDataAnalyticsDataAgentIamPolicyArgs.new;
+  final GetDataAnalyticsDataAgentIamPolicyResult = module_gemini.GetDataAnalyticsDataAgentIamPolicyResult.new;
+  final GetDataAnalyticsDataAgentIamPolicyResultArgs = module_gemini.GetDataAnalyticsDataAgentIamPolicyResult.new;
   final GetRepositoryGroupIamPolicyArgs = module_gemini.GetRepositoryGroupIamPolicyArgs.new;
   final GetRepositoryGroupIamPolicyResult = module_gemini.GetRepositoryGroupIamPolicyResult.new;
   final GetRepositoryGroupIamPolicyResultArgs = module_gemini.GetRepositoryGroupIamPolicyResult.new;
+  final GibqObservabilitySetting = module_gemini.GibqObservabilitySetting.new;
+  final GibqObservabilitySettingArgs = module_gemini.GibqObservabilitySettingArgs.new;
+  final GibqObservabilitySettingBinding = module_gemini.GibqObservabilitySettingBinding.new;
+  final GibqObservabilitySettingBindingArgs = module_gemini.GibqObservabilitySettingBindingArgs.new;
+  final GibqObservabilitySettingBindingState = module_gemini.GibqObservabilitySettingBindingState.new;
+  final GibqObservabilitySettingBindingStateArgs = module_gemini.GibqObservabilitySettingBindingState.new;
+  final GibqObservabilitySettingConversationalAnalyticsSetting = module_gemini.GibqObservabilitySettingConversationalAnalyticsSetting.new;
+  final GibqObservabilitySettingConversationalAnalyticsSettingArgs = module_gemini.GibqObservabilitySettingConversationalAnalyticsSetting.new;
+  final GibqObservabilitySettingState = module_gemini.GibqObservabilitySettingState.new;
+  final GibqObservabilitySettingStateArgs = module_gemini.GibqObservabilitySettingState.new;
   final LoggingSetting = module_gemini.LoggingSetting.new;
   final LoggingSettingArgs = module_gemini.LoggingSettingArgs.new;
   final LoggingSettingBinding = module_gemini.LoggingSettingBinding.new;
@@ -17077,7 +17974,10 @@ class _GeminiModuleNamespace {
   final RepositoryGroupRepositoryArgs = module_gemini.RepositoryGroupRepository.new;
   final RepositoryGroupState = module_gemini.RepositoryGroupState.new;
   final RepositoryGroupStateArgs = module_gemini.RepositoryGroupState.new;
+  final getDataAnalyticsDataAgentIamPolicy = module_gemini.getDataAnalyticsDataAgentIamPolicy;
+  final getDataAnalyticsDataAgentIamPolicyOutput = module_gemini.getDataAnalyticsDataAgentIamPolicyOutput;
   final getRepositoryGroupIamPolicy = module_gemini.getRepositoryGroupIamPolicy;
+  final getRepositoryGroupIamPolicyOutput = module_gemini.getRepositoryGroupIamPolicyOutput;
 }
 
 class _GkebackupModuleNamespace {
@@ -17199,7 +18099,9 @@ class _GkebackupModuleNamespace {
   final RestorePlanState = module_gkebackup.RestorePlanState.new;
   final RestorePlanStateArgs = module_gkebackup.RestorePlanState.new;
   final getBackupPlanIamPolicy = module_gkebackup.getBackupPlanIamPolicy;
+  final getBackupPlanIamPolicyOutput = module_gkebackup.getBackupPlanIamPolicyOutput;
   final getRestorePlanIamPolicy = module_gkebackup.getRestorePlanIamPolicy;
+  final getRestorePlanIamPolicyOutput = module_gkebackup.getRestorePlanIamPolicyOutput;
 }
 
 class _GkehubModuleNamespace {
@@ -17342,6 +18244,10 @@ class _GkehubModuleNamespace {
   final FleetDefaultClusterConfigBinaryAuthorizationConfigArgs = module_gkehub.FleetDefaultClusterConfigBinaryAuthorizationConfig.new;
   final FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding = module_gkehub.FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding.new;
   final FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs = module_gkehub.FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding.new;
+  final FleetDefaultClusterConfigCompliancePostureConfig = module_gkehub.FleetDefaultClusterConfigCompliancePostureConfig.new;
+  final FleetDefaultClusterConfigCompliancePostureConfigArgs = module_gkehub.FleetDefaultClusterConfigCompliancePostureConfig.new;
+  final FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard = module_gkehub.FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard.new;
+  final FleetDefaultClusterConfigCompliancePostureConfigComplianceStandardArgs = module_gkehub.FleetDefaultClusterConfigCompliancePostureConfigComplianceStandard.new;
   final FleetDefaultClusterConfigSecurityPostureConfig = module_gkehub.FleetDefaultClusterConfigSecurityPostureConfig.new;
   final FleetDefaultClusterConfigSecurityPostureConfigArgs = module_gkehub.FleetDefaultClusterConfigSecurityPostureConfig.new;
   final FleetState = module_gkehub.FleetGkehubState.new;
@@ -17522,10 +18428,16 @@ class _GkehubModuleNamespace {
   final ScopeStateArgs = module_gkehub.ScopeGkehubState.new;
   final getFeature = module_gkehub.getFeature;
   final getFeatureIamPolicy = module_gkehub.getFeatureIamPolicy;
+  final getFeatureIamPolicyOutput = module_gkehub.getFeatureIamPolicyOutput;
+  final getFeatureOutput = module_gkehub.getFeatureOutput;
   final getMembership = module_gkehub.getMembership;
   final getMembershipBinding = module_gkehub.getMembershipBinding;
+  final getMembershipBindingOutput = module_gkehub.getMembershipBindingOutput;
   final getMembershipIamPolicy = module_gkehub.getMembershipIamPolicy;
+  final getMembershipIamPolicyOutput = module_gkehub.getMembershipIamPolicyOutput;
+  final getMembershipOutput = module_gkehub.getMembershipOutput;
   final getScopeIamPolicy = module_gkehub.getScopeIamPolicy;
+  final getScopeIamPolicyOutput = module_gkehub.getScopeIamPolicyOutput;
 }
 
 class _GkeonpremModuleNamespace {
@@ -18062,10 +18974,15 @@ class _HealthcareModuleNamespace {
   final WorkspaceState = module_healthcare.WorkspaceState.new;
   final WorkspaceStateArgs = module_healthcare.WorkspaceState.new;
   final getConsentStoreIamPolicy = module_healthcare.getConsentStoreIamPolicy;
+  final getConsentStoreIamPolicyOutput = module_healthcare.getConsentStoreIamPolicyOutput;
   final getDatasetIamPolicy = module_healthcare.getDatasetIamPolicy;
+  final getDatasetIamPolicyOutput = module_healthcare.getDatasetIamPolicyOutput;
   final getDicomStoreIamPolicy = module_healthcare.getDicomStoreIamPolicy;
+  final getDicomStoreIamPolicyOutput = module_healthcare.getDicomStoreIamPolicyOutput;
   final getFhirStoreIamPolicy = module_healthcare.getFhirStoreIamPolicy;
+  final getFhirStoreIamPolicyOutput = module_healthcare.getFhirStoreIamPolicyOutput;
   final getHl7V2StoreIamPolicy = module_healthcare.getHl7V2StoreIamPolicy;
+  final getHl7V2StoreIamPolicyOutput = module_healthcare.getHl7V2StoreIamPolicyOutput;
 }
 
 class _HypercomputeclusterModuleNamespace {
@@ -18215,6 +19132,11 @@ class _IamModuleNamespace {
   final GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor = module_iam.GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor.new;
   final GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs = module_iam.GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor.new;
   final GetWorkloadIdentityPoolInlineTrustConfigArgs = module_iam.GetWorkloadIdentityPoolInlineTrustConfig.new;
+  final GetWorkloadIdentityPoolJwksArgs = module_iam.GetWorkloadIdentityPoolJwksArgs.new;
+  final GetWorkloadIdentityPoolJwksKey = module_iam.GetWorkloadIdentityPoolJwksKey.new;
+  final GetWorkloadIdentityPoolJwksKeyArgs = module_iam.GetWorkloadIdentityPoolJwksKey.new;
+  final GetWorkloadIdentityPoolJwksResult = module_iam.GetWorkloadIdentityPoolJwksResult.new;
+  final GetWorkloadIdentityPoolJwksResultArgs = module_iam.GetWorkloadIdentityPoolJwksResult.new;
   final GetWorkloadIdentityPoolOpenidConfigArgs = module_iam.GetWorkloadIdentityPoolOpenidConfigArgs.new;
   final GetWorkloadIdentityPoolOpenidConfigResult = module_iam.GetWorkloadIdentityPoolOpenidConfigResult.new;
   final GetWorkloadIdentityPoolOpenidConfigResultArgs = module_iam.GetWorkloadIdentityPoolOpenidConfigResult.new;
@@ -18428,12 +19350,21 @@ class _IamModuleNamespace {
   final WorkloadIdentityServiceAgentState = module_iam.WorkloadIdentityServiceAgentState.new;
   final WorkloadIdentityServiceAgentStateArgs = module_iam.WorkloadIdentityServiceAgentState.new;
   final getRule = module_iam.getRule;
+  final getRuleOutput = module_iam.getRuleOutput;
   final getTestablePermissions = module_iam.getTestablePermissions;
+  final getTestablePermissionsOutput = module_iam.getTestablePermissionsOutput;
   final getWorkforcePoolIamPolicy = module_iam.getWorkforcePoolIamPolicy;
+  final getWorkforcePoolIamPolicyOutput = module_iam.getWorkforcePoolIamPolicyOutput;
   final getWorkloadIdentityPool = module_iam.getWorkloadIdentityPool;
   final getWorkloadIdentityPoolIamPolicy = module_iam.getWorkloadIdentityPoolIamPolicy;
+  final getWorkloadIdentityPoolIamPolicyOutput = module_iam.getWorkloadIdentityPoolIamPolicyOutput;
+  final getWorkloadIdentityPoolJwks = module_iam.getWorkloadIdentityPoolJwks;
+  final getWorkloadIdentityPoolJwksOutput = module_iam.getWorkloadIdentityPoolJwksOutput;
   final getWorkloadIdentityPoolOpenidConfig = module_iam.getWorkloadIdentityPoolOpenidConfig;
+  final getWorkloadIdentityPoolOpenidConfigOutput = module_iam.getWorkloadIdentityPoolOpenidConfigOutput;
+  final getWorkloadIdentityPoolOutput = module_iam.getWorkloadIdentityPoolOutput;
   final getWorkloadIdentityPoolProvider = module_iam.getWorkloadIdentityPoolProvider;
+  final getWorkloadIdentityPoolProviderOutput = module_iam.getWorkloadIdentityPoolProviderOutput;
 }
 
 class _IapModuleNamespace {
@@ -18534,14 +19465,6 @@ class _IapModuleNamespace {
   final AppEngineVersionIamPolicyArgs = module_iap.AppEngineVersionIamPolicyArgs.new;
   final AppEngineVersionIamPolicyState = module_iap.AppEngineVersionIamPolicyState.new;
   final AppEngineVersionIamPolicyStateArgs = module_iap.AppEngineVersionIamPolicyState.new;
-  final Brand = module_iap.Brand.new;
-  final BrandArgs = module_iap.BrandArgs.new;
-  final BrandState = module_iap.BrandState.new;
-  final BrandStateArgs = module_iap.BrandState.new;
-  final Client = module_iap.Client.new;
-  final ClientArgs = module_iap.ClientArgs.new;
-  final ClientState = module_iap.ClientState.new;
-  final ClientStateArgs = module_iap.ClientState.new;
   final GetAgentRegistryAgentIamPolicyArgs = module_iap.GetAgentRegistryAgentIamPolicyArgs.new;
   final GetAgentRegistryAgentIamPolicyResult = module_iap.GetAgentRegistryAgentIamPolicyResult.new;
   final GetAgentRegistryAgentIamPolicyResultArgs = module_iap.GetAgentRegistryAgentIamPolicyResult.new;
@@ -18560,9 +19483,6 @@ class _IapModuleNamespace {
   final GetAppEngineVersionIamPolicyArgs = module_iap.GetAppEngineVersionIamPolicyArgs.new;
   final GetAppEngineVersionIamPolicyResult = module_iap.GetAppEngineVersionIamPolicyResult.new;
   final GetAppEngineVersionIamPolicyResultArgs = module_iap.GetAppEngineVersionIamPolicyResult.new;
-  final GetClientArgs = module_iap.GetClientArgs.new;
-  final GetClientResult = module_iap.GetClientResult.new;
-  final GetClientResultArgs = module_iap.GetClientResult.new;
   final GetLocationWebIamPolicyArgs = module_iap.GetLocationWebIamPolicyArgs.new;
   final GetLocationWebIamPolicyResult = module_iap.GetLocationWebIamPolicyResult.new;
   final GetLocationWebIamPolicyResultArgs = module_iap.GetLocationWebIamPolicyResult.new;
@@ -18824,24 +19744,41 @@ class _IapModuleNamespace {
   final WebTypeComputeIamPolicyState = module_iap.WebTypeComputeIamPolicyState.new;
   final WebTypeComputeIamPolicyStateArgs = module_iap.WebTypeComputeIamPolicyState.new;
   final getAgentRegistryAgentIamPolicy = module_iap.getAgentRegistryAgentIamPolicy;
+  final getAgentRegistryAgentIamPolicyOutput = module_iap.getAgentRegistryAgentIamPolicyOutput;
   final getAgentRegistryEndpointIamPolicy = module_iap.getAgentRegistryEndpointIamPolicy;
+  final getAgentRegistryEndpointIamPolicyOutput = module_iap.getAgentRegistryEndpointIamPolicyOutput;
   final getAgentRegistryIamPolicy = module_iap.getAgentRegistryIamPolicy;
+  final getAgentRegistryIamPolicyOutput = module_iap.getAgentRegistryIamPolicyOutput;
   final getAgentRegistryMcpServerIamPolicy = module_iap.getAgentRegistryMcpServerIamPolicy;
+  final getAgentRegistryMcpServerIamPolicyOutput = module_iap.getAgentRegistryMcpServerIamPolicyOutput;
   final getAppEngineServiceIamPolicy = module_iap.getAppEngineServiceIamPolicy;
+  final getAppEngineServiceIamPolicyOutput = module_iap.getAppEngineServiceIamPolicyOutput;
   final getAppEngineVersionIamPolicy = module_iap.getAppEngineVersionIamPolicy;
-  final getClient = module_iap.getClient;
+  final getAppEngineVersionIamPolicyOutput = module_iap.getAppEngineVersionIamPolicyOutput;
   final getLocationWebIamPolicy = module_iap.getLocationWebIamPolicy;
+  final getLocationWebIamPolicyOutput = module_iap.getLocationWebIamPolicyOutput;
   final getTunnelDestGroupIamPolicy = module_iap.getTunnelDestGroupIamPolicy;
+  final getTunnelDestGroupIamPolicyOutput = module_iap.getTunnelDestGroupIamPolicyOutput;
   final getTunnelIamPolicy = module_iap.getTunnelIamPolicy;
+  final getTunnelIamPolicyOutput = module_iap.getTunnelIamPolicyOutput;
   final getTunnelInstanceIamPolicy = module_iap.getTunnelInstanceIamPolicy;
+  final getTunnelInstanceIamPolicyOutput = module_iap.getTunnelInstanceIamPolicyOutput;
   final getWebBackendServiceIamPolicy = module_iap.getWebBackendServiceIamPolicy;
+  final getWebBackendServiceIamPolicyOutput = module_iap.getWebBackendServiceIamPolicyOutput;
   final getWebCloudRunServiceIamPolicy = module_iap.getWebCloudRunServiceIamPolicy;
+  final getWebCloudRunServiceIamPolicyOutput = module_iap.getWebCloudRunServiceIamPolicyOutput;
   final getWebForwardingRuleServiceIamPolicy = module_iap.getWebForwardingRuleServiceIamPolicy;
+  final getWebForwardingRuleServiceIamPolicyOutput = module_iap.getWebForwardingRuleServiceIamPolicyOutput;
   final getWebIamPolicy = module_iap.getWebIamPolicy;
+  final getWebIamPolicyOutput = module_iap.getWebIamPolicyOutput;
   final getWebRegionBackendServiceIamPolicy = module_iap.getWebRegionBackendServiceIamPolicy;
+  final getWebRegionBackendServiceIamPolicyOutput = module_iap.getWebRegionBackendServiceIamPolicyOutput;
   final getWebRegionForwardingRuleServiceIamPolicy = module_iap.getWebRegionForwardingRuleServiceIamPolicy;
+  final getWebRegionForwardingRuleServiceIamPolicyOutput = module_iap.getWebRegionForwardingRuleServiceIamPolicyOutput;
   final getWebTypeAppEngineIamPolicy = module_iap.getWebTypeAppEngineIamPolicy;
+  final getWebTypeAppEngineIamPolicyOutput = module_iap.getWebTypeAppEngineIamPolicyOutput;
   final getWebTypeComputeIamPolicy = module_iap.getWebTypeComputeIamPolicy;
+  final getWebTypeComputeIamPolicyOutput = module_iap.getWebTypeComputeIamPolicyOutput;
 }
 
 class _IdentityplatformModuleNamespace {
@@ -18957,11 +19894,17 @@ class _IndexModuleNamespace {
   final RegionFromZoneArgs = module_index.RegionFromZoneArgs.new;
   final ZoneFromIdArgs = module_index.ZoneFromIdArgs.new;
   final locationFromId = module_index.locationFromId;
+  final locationFromIdOutput = module_index.locationFromIdOutput;
   final nameFromId = module_index.nameFromId;
+  final nameFromIdOutput = module_index.nameFromIdOutput;
   final projectFromId = module_index.projectFromId;
+  final projectFromIdOutput = module_index.projectFromIdOutput;
   final regionFromId = module_index.regionFromId;
+  final regionFromIdOutput = module_index.regionFromIdOutput;
   final regionFromZone = module_index.regionFromZone;
+  final regionFromZoneOutput = module_index.regionFromZoneOutput;
   final zoneFromId = module_index.zoneFromId;
+  final zoneFromIdOutput = module_index.zoneFromIdOutput;
 }
 
 class _IntegrationconnectorsModuleNamespace {
@@ -19279,21 +20222,37 @@ class _KmsModuleNamespace {
   final SecretCiphertextState = module_kms.SecretCiphertextState.new;
   final SecretCiphertextStateArgs = module_kms.SecretCiphertextState.new;
   final getAutokeyConfig = module_kms.getAutokeyConfig;
+  final getAutokeyConfigOutput = module_kms.getAutokeyConfigOutput;
   final getCryptoKeyIamPolicy = module_kms.getCryptoKeyIamPolicy;
+  final getCryptoKeyIamPolicyOutput = module_kms.getCryptoKeyIamPolicyOutput;
   final getCryptoKeyLatestVersion = module_kms.getCryptoKeyLatestVersion;
+  final getCryptoKeyLatestVersionOutput = module_kms.getCryptoKeyLatestVersionOutput;
   final getCryptoKeyVersions = module_kms.getCryptoKeyVersions;
+  final getCryptoKeyVersionsOutput = module_kms.getCryptoKeyVersionsOutput;
   final getCryptoKeys = module_kms.getCryptoKeys;
+  final getCryptoKeysOutput = module_kms.getCryptoKeysOutput;
   final getEkmConnectionIamPolicy = module_kms.getEkmConnectionIamPolicy;
+  final getEkmConnectionIamPolicyOutput = module_kms.getEkmConnectionIamPolicyOutput;
   final getKMSCryptoKey = module_kms.getKMSCryptoKey;
+  final getKMSCryptoKeyOutput = module_kms.getKMSCryptoKeyOutput;
   final getKMSCryptoKeyVersion = module_kms.getKMSCryptoKeyVersion;
+  final getKMSCryptoKeyVersionOutput = module_kms.getKMSCryptoKeyVersionOutput;
   final getKMSKeyRing = module_kms.getKMSKeyRing;
+  final getKMSKeyRingOutput = module_kms.getKMSKeyRingOutput;
   final getKMSSecret = module_kms.getKMSSecret;
   final getKMSSecretAsymmetric = module_kms.getKMSSecretAsymmetric;
+  final getKMSSecretAsymmetricOutput = module_kms.getKMSSecretAsymmetricOutput;
   final getKMSSecretCiphertext = module_kms.getKMSSecretCiphertext;
+  final getKMSSecretCiphertextOutput = module_kms.getKMSSecretCiphertextOutput;
+  final getKMSSecretOutput = module_kms.getKMSSecretOutput;
   final getKeyHandle = module_kms.getKeyHandle;
+  final getKeyHandleOutput = module_kms.getKeyHandleOutput;
   final getKeyHandles = module_kms.getKeyHandles;
+  final getKeyHandlesOutput = module_kms.getKeyHandlesOutput;
   final getKeyRingIamPolicy = module_kms.getKeyRingIamPolicy;
+  final getKeyRingIamPolicyOutput = module_kms.getKeyRingIamPolicyOutput;
   final getKeyRings = module_kms.getKeyRings;
+  final getKeyRingsOutput = module_kms.getKeyRingsOutput;
 }
 
 class _LicensemanagerModuleNamespace {
@@ -19476,12 +20435,19 @@ class _LoggingModuleNamespace {
   final SavedQueryState = module_logging.SavedQueryState.new;
   final SavedQueryStateArgs = module_logging.SavedQueryState.new;
   final getFolderSettings = module_logging.getFolderSettings;
+  final getFolderSettingsOutput = module_logging.getFolderSettingsOutput;
   final getLogView = module_logging.getLogView;
   final getLogViewIamPolicy = module_logging.getLogViewIamPolicy;
+  final getLogViewIamPolicyOutput = module_logging.getLogViewIamPolicyOutput;
+  final getLogViewOutput = module_logging.getLogViewOutput;
   final getOrganizationSettings = module_logging.getOrganizationSettings;
+  final getOrganizationSettingsOutput = module_logging.getOrganizationSettingsOutput;
   final getProjectCmekSettings = module_logging.getProjectCmekSettings;
+  final getProjectCmekSettingsOutput = module_logging.getProjectCmekSettingsOutput;
   final getProjectSettings = module_logging.getProjectSettings;
+  final getProjectSettingsOutput = module_logging.getProjectSettingsOutput;
   final getSink = module_logging.getSink;
+  final getSinkOutput = module_logging.getSinkOutput;
 }
 
 class _LookerModuleNamespace {
@@ -19578,6 +20544,7 @@ class _LustreModuleNamespace {
   final InstanceUpcomingMaintenanceSchedule = module_lustre.InstanceUpcomingMaintenanceSchedule.new;
   final InstanceUpcomingMaintenanceScheduleArgs = module_lustre.InstanceUpcomingMaintenanceSchedule.new;
   final getInstance = module_lustre.getInstance;
+  final getInstanceOutput = module_lustre.getInstanceOutput;
 }
 
 class _ManagedkafkaModuleNamespace {
@@ -19599,7 +20566,11 @@ class _ManagedkafkaModuleNamespace {
   final ClusterGcpConfigAccessConfigArgs = module_managedkafka.ClusterGcpConfigAccessConfig.new;
   final ClusterGcpConfigAccessConfigNetworkConfig = module_managedkafka.ClusterGcpConfigAccessConfigNetworkConfig.new;
   final ClusterGcpConfigAccessConfigNetworkConfigArgs = module_managedkafka.ClusterGcpConfigAccessConfigNetworkConfig.new;
+  final ClusterGcpConfigAccessConfigPublicClusterConfig = module_managedkafka.ClusterGcpConfigAccessConfigPublicClusterConfig.new;
+  final ClusterGcpConfigAccessConfigPublicClusterConfigArgs = module_managedkafka.ClusterGcpConfigAccessConfigPublicClusterConfig.new;
   final ClusterGcpConfigArgs = module_managedkafka.ClusterGcpConfig.new;
+  final ClusterPublicClusterDetail = module_managedkafka.ClusterPublicClusterDetail.new;
+  final ClusterPublicClusterDetailArgs = module_managedkafka.ClusterPublicClusterDetail.new;
   final ClusterRebalanceConfig = module_managedkafka.ClusterRebalanceConfig.new;
   final ClusterRebalanceConfigArgs = module_managedkafka.ClusterRebalanceConfig.new;
   final ClusterState = module_managedkafka.ClusterState.new;
@@ -19672,6 +20643,7 @@ class _MemcacheModuleNamespace {
   final InstanceState = module_memcache.InstanceState.new;
   final InstanceStateArgs = module_memcache.InstanceState.new;
   final getInstance = module_memcache.getInstance;
+  final getInstanceOutput = module_memcache.getInstanceOutput;
 }
 
 class _MemorystoreModuleNamespace {
@@ -19833,7 +20805,9 @@ class _MemorystoreModuleNamespace {
   final InstanceZoneDistributionConfig = module_memorystore.InstanceZoneDistributionConfig.new;
   final InstanceZoneDistributionConfigArgs = module_memorystore.InstanceZoneDistributionConfig.new;
   final getAclPolicy = module_memorystore.getAclPolicy;
+  final getAclPolicyOutput = module_memorystore.getAclPolicyOutput;
   final getInstance = module_memorystore.getInstance;
+  final getInstanceOutput = module_memorystore.getInstanceOutput;
 }
 
 class _MigrationcenterModuleNamespace {
@@ -20076,16 +21050,6 @@ class _MigrationcenterModuleNamespace {
   final SourceStateArgs = module_migrationcenter.SourceState.new;
 }
 
-class _MlModuleNamespace {
-  _MlModuleNamespace();
-  final EngineModel = module_ml.EngineModel.new;
-  final EngineModelArgs = module_ml.EngineModelArgs.new;
-  final EngineModelDefaultVersion = module_ml.EngineModelDefaultVersion.new;
-  final EngineModelDefaultVersionArgs = module_ml.EngineModelDefaultVersion.new;
-  final EngineModelState = module_ml.EngineModelState.new;
-  final EngineModelStateArgs = module_ml.EngineModelState.new;
-}
-
 class _ModelarmorModuleNamespace {
   _ModelarmorModuleNamespace();
   final Floorsetting = module_modelarmor.Floorsetting.new;
@@ -20318,6 +21282,14 @@ class _MonitoringModuleNamespace {
   final SloWindowsBasedSliMetricSumInRangeArgs = module_monitoring.SloWindowsBasedSliMetricSumInRange.new;
   final SloWindowsBasedSliMetricSumInRangeRange = module_monitoring.SloWindowsBasedSliMetricSumInRangeRange.new;
   final SloWindowsBasedSliMetricSumInRangeRangeArgs = module_monitoring.SloWindowsBasedSliMetricSumInRangeRange.new;
+  final Snooze = module_monitoring.Snooze.new;
+  final SnoozeArgs = module_monitoring.SnoozeArgs.new;
+  final SnoozeCriteria = module_monitoring.SnoozeCriteria.new;
+  final SnoozeCriteriaArgs = module_monitoring.SnoozeCriteria.new;
+  final SnoozeInterval = module_monitoring.SnoozeInterval.new;
+  final SnoozeIntervalArgs = module_monitoring.SnoozeInterval.new;
+  final SnoozeState = module_monitoring.SnoozeState.new;
+  final SnoozeStateArgs = module_monitoring.SnoozeState.new;
   final UptimeCheckConfig = module_monitoring.UptimeCheckConfig.new;
   final UptimeCheckConfigArgs = module_monitoring.UptimeCheckConfigArgs.new;
   final UptimeCheckConfigContentMatcher = module_monitoring.UptimeCheckConfigContentMatcher.new;
@@ -20349,12 +21321,19 @@ class _MonitoringModuleNamespace {
   final UptimeCheckConfigTcpCheckPingConfig = module_monitoring.UptimeCheckConfigTcpCheckPingConfig.new;
   final UptimeCheckConfigTcpCheckPingConfigArgs = module_monitoring.UptimeCheckConfigTcpCheckPingConfig.new;
   final getAppEngineService = module_monitoring.getAppEngineService;
+  final getAppEngineServiceOutput = module_monitoring.getAppEngineServiceOutput;
   final getClusterIstioService = module_monitoring.getClusterIstioService;
+  final getClusterIstioServiceOutput = module_monitoring.getClusterIstioServiceOutput;
   final getIstioCanonicalService = module_monitoring.getIstioCanonicalService;
+  final getIstioCanonicalServiceOutput = module_monitoring.getIstioCanonicalServiceOutput;
   final getMeshIstioService = module_monitoring.getMeshIstioService;
+  final getMeshIstioServiceOutput = module_monitoring.getMeshIstioServiceOutput;
   final getNotificationChannel = module_monitoring.getNotificationChannel;
+  final getNotificationChannelOutput = module_monitoring.getNotificationChannelOutput;
   final getSecretVersion = module_monitoring.getSecretVersion;
+  final getSecretVersionOutput = module_monitoring.getSecretVersionOutput;
   final getUptimeCheckIPs = module_monitoring.getUptimeCheckIPs;
+  final getUptimeCheckIPsOutput = module_monitoring.getUptimeCheckIPsOutput;
 }
 
 class _NetappModuleNamespace {
@@ -20478,6 +21457,8 @@ class _NetworkconnectivityModuleNamespace {
   final GroupStateArgs = module_networkconnectivity.GroupState.new;
   final Hub = module_networkconnectivity.Hub.new;
   final HubArgs = module_networkconnectivity.HubArgs.new;
+  final HubExportPscConfig = module_networkconnectivity.HubExportPscConfig.new;
+  final HubExportPscConfigArgs = module_networkconnectivity.HubExportPscConfig.new;
   final HubIamBinding = module_networkconnectivity.HubIamBinding.new;
   final HubIamBindingArgs = module_networkconnectivity.HubIamBindingArgs.new;
   final HubIamBindingCondition = module_networkconnectivity.HubIamBindingCondition.new;
@@ -20569,6 +21550,7 @@ class _NetworkconnectivityModuleNamespace {
   final TransportState = module_networkconnectivity.TransportState.new;
   final TransportStateArgs = module_networkconnectivity.TransportState.new;
   final getHubIamPolicy = module_networkconnectivity.getHubIamPolicy;
+  final getHubIamPolicyOutput = module_networkconnectivity.getHubIamPolicyOutput;
 }
 
 class _NetworkmanagementModuleNamespace {
@@ -20613,6 +21595,10 @@ class _NetworkmanagementModuleNamespace {
   final GetConnectivityTestsConnectivityTestSourceCloudRunRevisionArgs = module_networkmanagement.GetConnectivityTestsConnectivityTestSourceCloudRunRevision.new;
   final GetConnectivityTestsResult = module_networkmanagement.GetConnectivityTestsResult.new;
   final GetConnectivityTestsResultArgs = module_networkmanagement.GetConnectivityTestsResult.new;
+  final NetworkMonitoringProvider = module_networkmanagement.NetworkMonitoringProvider.new;
+  final NetworkMonitoringProviderArgs = module_networkmanagement.NetworkMonitoringProviderArgs.new;
+  final NetworkMonitoringProviderState = module_networkmanagement.NetworkMonitoringProviderState.new;
+  final NetworkMonitoringProviderStateArgs = module_networkmanagement.NetworkMonitoringProviderState.new;
   final OrganizationVpcFlowLogsConfig = module_networkmanagement.OrganizationVpcFlowLogsConfig.new;
   final OrganizationVpcFlowLogsConfigArgs = module_networkmanagement.OrganizationVpcFlowLogsConfigArgs.new;
   final OrganizationVpcFlowLogsConfigState = module_networkmanagement.OrganizationVpcFlowLogsConfigState.new;
@@ -20622,7 +21608,9 @@ class _NetworkmanagementModuleNamespace {
   final VpcFlowLogsConfigState = module_networkmanagement.VpcFlowLogsConfigState.new;
   final VpcFlowLogsConfigStateArgs = module_networkmanagement.VpcFlowLogsConfigState.new;
   final getConnectivityTestRun = module_networkmanagement.getConnectivityTestRun;
+  final getConnectivityTestRunOutput = module_networkmanagement.getConnectivityTestRunOutput;
   final getConnectivityTests = module_networkmanagement.getConnectivityTests;
+  final getConnectivityTestsOutput = module_networkmanagement.getConnectivityTestsOutput;
 }
 
 class _NetworksecurityModuleNamespace {
@@ -20743,6 +21731,12 @@ class _NetworksecurityModuleNamespace {
   final AuthzPolicyNetworkRuleFromNotSourcePrincipalArgs = module_networksecurity.AuthzPolicyNetworkRuleFromNotSourcePrincipal.new;
   final AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal = module_networksecurity.AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal.new;
   final AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs = module_networksecurity.AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal.new;
+  final AuthzPolicyNetworkRuleFromNotSourceResource = module_networksecurity.AuthzPolicyNetworkRuleFromNotSourceResource.new;
+  final AuthzPolicyNetworkRuleFromNotSourceResourceArgs = module_networksecurity.AuthzPolicyNetworkRuleFromNotSourceResource.new;
+  final AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount = module_networksecurity.AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount.new;
+  final AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountArgs = module_networksecurity.AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount.new;
+  final AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet = module_networksecurity.AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet.new;
+  final AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetArgs = module_networksecurity.AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet.new;
   final AuthzPolicyNetworkRuleFromSource = module_networksecurity.AuthzPolicyNetworkRuleFromSource.new;
   final AuthzPolicyNetworkRuleFromSourceArgs = module_networksecurity.AuthzPolicyNetworkRuleFromSource.new;
   final AuthzPolicyNetworkRuleFromSourceIpBlock = module_networksecurity.AuthzPolicyNetworkRuleFromSourceIpBlock.new;
@@ -20751,8 +21745,18 @@ class _NetworksecurityModuleNamespace {
   final AuthzPolicyNetworkRuleFromSourcePrincipalArgs = module_networksecurity.AuthzPolicyNetworkRuleFromSourcePrincipal.new;
   final AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal = module_networksecurity.AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal.new;
   final AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs = module_networksecurity.AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal.new;
+  final AuthzPolicyNetworkRuleFromSourceResource = module_networksecurity.AuthzPolicyNetworkRuleFromSourceResource.new;
+  final AuthzPolicyNetworkRuleFromSourceResourceArgs = module_networksecurity.AuthzPolicyNetworkRuleFromSourceResource.new;
+  final AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount = module_networksecurity.AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount.new;
+  final AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountArgs = module_networksecurity.AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount.new;
+  final AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet = module_networksecurity.AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet.new;
+  final AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetArgs = module_networksecurity.AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet.new;
   final AuthzPolicyNetworkRuleTo = module_networksecurity.AuthzPolicyNetworkRuleTo.new;
   final AuthzPolicyNetworkRuleToArgs = module_networksecurity.AuthzPolicyNetworkRuleTo.new;
+  final AuthzPolicyNetworkRuleToNotOperation = module_networksecurity.AuthzPolicyNetworkRuleToNotOperation.new;
+  final AuthzPolicyNetworkRuleToNotOperationArgs = module_networksecurity.AuthzPolicyNetworkRuleToNotOperation.new;
+  final AuthzPolicyNetworkRuleToNotOperationSni = module_networksecurity.AuthzPolicyNetworkRuleToNotOperationSni.new;
+  final AuthzPolicyNetworkRuleToNotOperationSniArgs = module_networksecurity.AuthzPolicyNetworkRuleToNotOperationSni.new;
   final AuthzPolicyNetworkRuleToOperation = module_networksecurity.AuthzPolicyNetworkRuleToOperation.new;
   final AuthzPolicyNetworkRuleToOperationArgs = module_networksecurity.AuthzPolicyNetworkRuleToOperation.new;
   final AuthzPolicyNetworkRuleToOperationSni = module_networksecurity.AuthzPolicyNetworkRuleToOperationSni.new;
@@ -20795,6 +21799,10 @@ class _NetworksecurityModuleNamespace {
   final FirewallEndpointEndpointSettingsArgs = module_networksecurity.FirewallEndpointEndpointSettings.new;
   final FirewallEndpointState = module_networksecurity.FirewallEndpointState.new;
   final FirewallEndpointStateArgs = module_networksecurity.FirewallEndpointState.new;
+  final FirewallEndpointWildfireSettings = module_networksecurity.FirewallEndpointWildfireSettings.new;
+  final FirewallEndpointWildfireSettingsArgs = module_networksecurity.FirewallEndpointWildfireSettings.new;
+  final FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings = module_networksecurity.FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings.new;
+  final FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsArgs = module_networksecurity.FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings.new;
   final GatewaySecurityPolicy = module_networksecurity.GatewaySecurityPolicy.new;
   final GatewaySecurityPolicyArgs = module_networksecurity.GatewaySecurityPolicyArgs.new;
   final GatewaySecurityPolicyRule = module_networksecurity.GatewaySecurityPolicyRule.new;
@@ -20909,6 +21917,28 @@ class _NetworksecurityModuleNamespace {
   final SecurityProfileUrlFilteringProfileArgs = module_networksecurity.SecurityProfileUrlFilteringProfile.new;
   final SecurityProfileUrlFilteringProfileUrlFilter = module_networksecurity.SecurityProfileUrlFilteringProfileUrlFilter.new;
   final SecurityProfileUrlFilteringProfileUrlFilterArgs = module_networksecurity.SecurityProfileUrlFilteringProfileUrlFilter.new;
+  final SecurityProfileWildfireAnalysisProfile = module_networksecurity.SecurityProfileWildfireAnalysisProfile.new;
+  final SecurityProfileWildfireAnalysisProfileArgs = module_networksecurity.SecurityProfileWildfireAnalysisProfile.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArgs = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArgs = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArgs = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireOverride = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireOverride.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireOverrideArgs = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireOverride.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireThreatOverride = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireThreatOverride.new;
+  final SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArgs = module_networksecurity.SecurityProfileWildfireAnalysisProfileWildfireThreatOverride.new;
   final ServerTlsPolicy = module_networksecurity.ServerTlsPolicy.new;
   final ServerTlsPolicyArgs = module_networksecurity.ServerTlsPolicyArgs.new;
   final ServerTlsPolicyMtlsPolicy = module_networksecurity.ServerTlsPolicyMtlsPolicy.new;
@@ -20950,11 +21980,23 @@ class _NetworksecurityModuleNamespace {
   final UrlListState = module_networksecurity.UrlListState.new;
   final UrlListStateArgs = module_networksecurity.UrlListState.new;
   final getAddressGroupIamPolicy = module_networksecurity.getAddressGroupIamPolicy;
+  final getAddressGroupIamPolicyOutput = module_networksecurity.getAddressGroupIamPolicyOutput;
   final getAddressGroups = module_networksecurity.getAddressGroups;
+  final getAddressGroupsOutput = module_networksecurity.getAddressGroupsOutput;
 }
 
 class _NetworkservicesModuleNamespace {
   _NetworkservicesModuleNamespace();
+  final AgentConnectivityTemplate = module_networkservices.AgentConnectivityTemplate.new;
+  final AgentConnectivityTemplateArgs = module_networkservices.AgentConnectivityTemplateArgs.new;
+  final AgentConnectivityTemplateEgressNetworkConfig = module_networkservices.AgentConnectivityTemplateEgressNetworkConfig.new;
+  final AgentConnectivityTemplateEgressNetworkConfigArgs = module_networkservices.AgentConnectivityTemplateEgressNetworkConfig.new;
+  final AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig = module_networkservices.AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig.new;
+  final AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs = module_networkservices.AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig.new;
+  final AgentConnectivityTemplateEgressNetworkConfigTlsConfig = module_networkservices.AgentConnectivityTemplateEgressNetworkConfigTlsConfig.new;
+  final AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs = module_networkservices.AgentConnectivityTemplateEgressNetworkConfigTlsConfig.new;
+  final AgentConnectivityTemplateState = module_networkservices.AgentConnectivityTemplateState.new;
+  final AgentConnectivityTemplateStateArgs = module_networkservices.AgentConnectivityTemplateState.new;
   final AgentGateway = module_networkservices.AgentGateway.new;
   final AgentGatewayAgentGatewayCard = module_networkservices.AgentGatewayAgentGatewayCard.new;
   final AgentGatewayAgentGatewayCardArgs = module_networkservices.AgentGatewayAgentGatewayCard.new;
@@ -21067,6 +22109,9 @@ class _NetworkservicesModuleNamespace {
   final GatewayArgs = module_networkservices.GatewayArgs.new;
   final GatewayState = module_networkservices.GatewayState.new;
   final GatewayStateArgs = module_networkservices.GatewayState.new;
+  final GetGatewayArgs = module_networkservices.GetGatewayArgs.new;
+  final GetGatewayResult = module_networkservices.GetGatewayResult.new;
+  final GetGatewayResultArgs = module_networkservices.GetGatewayResult.new;
   final GrpcRoute = module_networkservices.GrpcRoute.new;
   final GrpcRouteArgs = module_networkservices.GrpcRouteArgs.new;
   final GrpcRouteRule = module_networkservices.GrpcRouteRule.new;
@@ -21261,104 +22306,18 @@ class _NetworkservicesModuleNamespace {
   final WasmPluginUsedByArgs = module_networkservices.WasmPluginUsedBy.new;
   final WasmPluginVersion = module_networkservices.WasmPluginVersion.new;
   final WasmPluginVersionArgs = module_networkservices.WasmPluginVersion.new;
-}
-
-class _NotebooksModuleNamespace {
-  _NotebooksModuleNamespace();
-  final Environment = module_notebooks.Environment.new;
-  final EnvironmentArgs = module_notebooks.EnvironmentArgs.new;
-  final EnvironmentContainerImage = module_notebooks.EnvironmentContainerImage.new;
-  final EnvironmentContainerImageArgs = module_notebooks.EnvironmentContainerImage.new;
-  final EnvironmentState = module_notebooks.EnvironmentState.new;
-  final EnvironmentStateArgs = module_notebooks.EnvironmentState.new;
-  final EnvironmentVmImage = module_notebooks.EnvironmentVmImage.new;
-  final EnvironmentVmImageArgs = module_notebooks.EnvironmentVmImage.new;
-  final GetInstanceIamPolicyArgs = module_notebooks.GetInstanceIamPolicyArgs.new;
-  final GetInstanceIamPolicyResult = module_notebooks.GetInstanceIamPolicyResult.new;
-  final GetInstanceIamPolicyResultArgs = module_notebooks.GetInstanceIamPolicyResult.new;
-  final GetRuntimeIamPolicyArgs = module_notebooks.GetRuntimeIamPolicyArgs.new;
-  final GetRuntimeIamPolicyResult = module_notebooks.GetRuntimeIamPolicyResult.new;
-  final GetRuntimeIamPolicyResultArgs = module_notebooks.GetRuntimeIamPolicyResult.new;
-  final Instance = module_notebooks.Instance.new;
-  final InstanceAcceleratorConfig = module_notebooks.InstanceAcceleratorConfig.new;
-  final InstanceAcceleratorConfigArgs = module_notebooks.InstanceAcceleratorConfig.new;
-  final InstanceArgs = module_notebooks.InstanceArgs.new;
-  final InstanceContainerImage = module_notebooks.InstanceContainerImage.new;
-  final InstanceContainerImageArgs = module_notebooks.InstanceContainerImage.new;
-  final InstanceIamBinding = module_notebooks.InstanceIamBinding.new;
-  final InstanceIamBindingArgs = module_notebooks.InstanceIamBindingArgs.new;
-  final InstanceIamBindingCondition = module_notebooks.InstanceIamBindingCondition.new;
-  final InstanceIamBindingConditionArgs = module_notebooks.InstanceIamBindingCondition.new;
-  final InstanceIamBindingState = module_notebooks.InstanceIamBindingState.new;
-  final InstanceIamBindingStateArgs = module_notebooks.InstanceIamBindingState.new;
-  final InstanceIamMember = module_notebooks.InstanceIamMember.new;
-  final InstanceIamMemberArgs = module_notebooks.InstanceIamMemberArgs.new;
-  final InstanceIamMemberCondition = module_notebooks.InstanceIamMemberCondition.new;
-  final InstanceIamMemberConditionArgs = module_notebooks.InstanceIamMemberCondition.new;
-  final InstanceIamMemberState = module_notebooks.InstanceIamMemberState.new;
-  final InstanceIamMemberStateArgs = module_notebooks.InstanceIamMemberState.new;
-  final InstanceIamPolicy = module_notebooks.InstanceIamPolicy.new;
-  final InstanceIamPolicyArgs = module_notebooks.InstanceIamPolicyArgs.new;
-  final InstanceIamPolicyState = module_notebooks.InstanceIamPolicyState.new;
-  final InstanceIamPolicyStateArgs = module_notebooks.InstanceIamPolicyState.new;
-  final InstanceReservationAffinity = module_notebooks.InstanceReservationAffinity.new;
-  final InstanceReservationAffinityArgs = module_notebooks.InstanceReservationAffinity.new;
-  final InstanceShieldedInstanceConfig = module_notebooks.InstanceShieldedInstanceConfig.new;
-  final InstanceShieldedInstanceConfigArgs = module_notebooks.InstanceShieldedInstanceConfig.new;
-  final InstanceState = module_notebooks.InstanceState.new;
-  final InstanceStateArgs = module_notebooks.InstanceState.new;
-  final InstanceVmImage = module_notebooks.InstanceVmImage.new;
-  final InstanceVmImageArgs = module_notebooks.InstanceVmImage.new;
-  final Runtime = module_notebooks.Runtime.new;
-  final RuntimeAccessConfig = module_notebooks.RuntimeAccessConfig.new;
-  final RuntimeAccessConfigArgs = module_notebooks.RuntimeAccessConfig.new;
-  final RuntimeArgs = module_notebooks.RuntimeArgs.new;
-  final RuntimeIamBinding = module_notebooks.RuntimeIamBinding.new;
-  final RuntimeIamBindingArgs = module_notebooks.RuntimeIamBindingArgs.new;
-  final RuntimeIamBindingCondition = module_notebooks.RuntimeIamBindingCondition.new;
-  final RuntimeIamBindingConditionArgs = module_notebooks.RuntimeIamBindingCondition.new;
-  final RuntimeIamBindingState = module_notebooks.RuntimeIamBindingState.new;
-  final RuntimeIamBindingStateArgs = module_notebooks.RuntimeIamBindingState.new;
-  final RuntimeIamMember = module_notebooks.RuntimeIamMember.new;
-  final RuntimeIamMemberArgs = module_notebooks.RuntimeIamMemberArgs.new;
-  final RuntimeIamMemberCondition = module_notebooks.RuntimeIamMemberCondition.new;
-  final RuntimeIamMemberConditionArgs = module_notebooks.RuntimeIamMemberCondition.new;
-  final RuntimeIamMemberState = module_notebooks.RuntimeIamMemberState.new;
-  final RuntimeIamMemberStateArgs = module_notebooks.RuntimeIamMemberState.new;
-  final RuntimeIamPolicy = module_notebooks.RuntimeIamPolicy.new;
-  final RuntimeIamPolicyArgs = module_notebooks.RuntimeIamPolicyArgs.new;
-  final RuntimeIamPolicyState = module_notebooks.RuntimeIamPolicyState.new;
-  final RuntimeIamPolicyStateArgs = module_notebooks.RuntimeIamPolicyState.new;
-  final RuntimeMetric = module_notebooks.RuntimeMetric.new;
-  final RuntimeMetricArgs = module_notebooks.RuntimeMetric.new;
-  final RuntimeSoftwareConfig = module_notebooks.RuntimeSoftwareConfig.new;
-  final RuntimeSoftwareConfigArgs = module_notebooks.RuntimeSoftwareConfig.new;
-  final RuntimeSoftwareConfigKernel = module_notebooks.RuntimeSoftwareConfigKernel.new;
-  final RuntimeSoftwareConfigKernelArgs = module_notebooks.RuntimeSoftwareConfigKernel.new;
-  final RuntimeState = module_notebooks.RuntimeState.new;
-  final RuntimeStateArgs = module_notebooks.RuntimeState.new;
-  final RuntimeVirtualMachine = module_notebooks.RuntimeVirtualMachine.new;
-  final RuntimeVirtualMachineArgs = module_notebooks.RuntimeVirtualMachine.new;
-  final RuntimeVirtualMachineVirtualMachineConfig = module_notebooks.RuntimeVirtualMachineVirtualMachineConfig.new;
-  final RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig = module_notebooks.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig.new;
-  final RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs = module_notebooks.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig.new;
-  final RuntimeVirtualMachineVirtualMachineConfigArgs = module_notebooks.RuntimeVirtualMachineVirtualMachineConfig.new;
-  final RuntimeVirtualMachineVirtualMachineConfigContainerImage = module_notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImage.new;
-  final RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs = module_notebooks.RuntimeVirtualMachineVirtualMachineConfigContainerImage.new;
-  final RuntimeVirtualMachineVirtualMachineConfigDataDisk = module_notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDisk.new;
-  final RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs = module_notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDisk.new;
-  final RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams = module_notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams.new;
-  final RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs = module_notebooks.RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams.new;
-  final RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig = module_notebooks.RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig.new;
-  final RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs = module_notebooks.RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig.new;
-  final RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig = module_notebooks.RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig.new;
-  final RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs = module_notebooks.RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig.new;
-  final getInstanceIamPolicy = module_notebooks.getInstanceIamPolicy;
-  final getRuntimeIamPolicy = module_notebooks.getRuntimeIamPolicy;
+  final getGateway = module_networkservices.getGateway;
+  final getGatewayOutput = module_networkservices.getGatewayOutput;
 }
 
 class _ObservabilityModuleNamespace {
   _ObservabilityModuleNamespace();
+  final Bucket = module_observability.Bucket.new;
+  final BucketArgs = module_observability.BucketArgs.new;
+  final BucketCmekSettings = module_observability.BucketCmekSettings.new;
+  final BucketCmekSettingsArgs = module_observability.BucketCmekSettings.new;
+  final BucketState = module_observability.BucketState.new;
+  final BucketStateArgs = module_observability.BucketState.new;
   final FolderSettings = module_observability.FolderSettings.new;
   final FolderSettingsArgs = module_observability.FolderSettingsArgs.new;
   final FolderSettingsState = module_observability.FolderSettingsState.new;
@@ -21372,6 +22331,10 @@ class _ObservabilityModuleNamespace {
   final GetProjectSettingsArgs = module_observability.GetProjectSettingsArgs.new;
   final GetProjectSettingsResult = module_observability.GetProjectSettingsResult.new;
   final GetProjectSettingsResultArgs = module_observability.GetProjectSettingsResult.new;
+  final Link = module_observability.Link.new;
+  final LinkArgs = module_observability.LinkArgs.new;
+  final LinkState = module_observability.LinkState.new;
+  final LinkStateArgs = module_observability.LinkState.new;
   final OrganizationSettings = module_observability.OrganizationSettings.new;
   final OrganizationSettingsArgs = module_observability.OrganizationSettingsArgs.new;
   final OrganizationSettingsState = module_observability.OrganizationSettingsState.new;
@@ -21385,8 +22348,11 @@ class _ObservabilityModuleNamespace {
   final TraceScopeState = module_observability.TraceScopeState.new;
   final TraceScopeStateArgs = module_observability.TraceScopeState.new;
   final getFolderSettings = module_observability.getFolderSettings;
+  final getFolderSettingsOutput = module_observability.getFolderSettingsOutput;
   final getOrganizationSettings = module_observability.getOrganizationSettings;
+  final getOrganizationSettingsOutput = module_observability.getOrganizationSettingsOutput;
   final getProjectSettings = module_observability.getProjectSettings;
+  final getProjectSettingsOutput = module_observability.getProjectSettingsOutput;
 }
 
 class _OracledatabaseModuleNamespace {
@@ -21429,6 +22395,8 @@ class _OracledatabaseModuleNamespace {
   final CloudExadataInfrastructurePropertiesArgs = module_oracledatabase.CloudExadataInfrastructureProperties.new;
   final CloudExadataInfrastructurePropertiesCustomerContact = module_oracledatabase.CloudExadataInfrastructurePropertiesCustomerContact.new;
   final CloudExadataInfrastructurePropertiesCustomerContactArgs = module_oracledatabase.CloudExadataInfrastructurePropertiesCustomerContact.new;
+  final CloudExadataInfrastructurePropertiesExascaleConfig = module_oracledatabase.CloudExadataInfrastructurePropertiesExascaleConfig.new;
+  final CloudExadataInfrastructurePropertiesExascaleConfigArgs = module_oracledatabase.CloudExadataInfrastructurePropertiesExascaleConfig.new;
   final CloudExadataInfrastructurePropertiesMaintenanceWindow = module_oracledatabase.CloudExadataInfrastructurePropertiesMaintenanceWindow.new;
   final CloudExadataInfrastructurePropertiesMaintenanceWindowArgs = module_oracledatabase.CloudExadataInfrastructurePropertiesMaintenanceWindow.new;
   final CloudExadataInfrastructureState = module_oracledatabase.CloudExadataInfrastructureState.new;
@@ -21554,6 +22522,8 @@ class _OracledatabaseModuleNamespace {
   final GetCloudExadataInfrastructurePropertyArgs = module_oracledatabase.GetCloudExadataInfrastructureProperty.new;
   final GetCloudExadataInfrastructurePropertyCustomerContact = module_oracledatabase.GetCloudExadataInfrastructurePropertyCustomerContact.new;
   final GetCloudExadataInfrastructurePropertyCustomerContactArgs = module_oracledatabase.GetCloudExadataInfrastructurePropertyCustomerContact.new;
+  final GetCloudExadataInfrastructurePropertyExascaleConfig = module_oracledatabase.GetCloudExadataInfrastructurePropertyExascaleConfig.new;
+  final GetCloudExadataInfrastructurePropertyExascaleConfigArgs = module_oracledatabase.GetCloudExadataInfrastructurePropertyExascaleConfig.new;
   final GetCloudExadataInfrastructurePropertyMaintenanceWindow = module_oracledatabase.GetCloudExadataInfrastructurePropertyMaintenanceWindow.new;
   final GetCloudExadataInfrastructurePropertyMaintenanceWindowArgs = module_oracledatabase.GetCloudExadataInfrastructurePropertyMaintenanceWindow.new;
   final GetCloudExadataInfrastructureResult = module_oracledatabase.GetCloudExadataInfrastructureResult.new;
@@ -21565,6 +22535,8 @@ class _OracledatabaseModuleNamespace {
   final GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyArgs = module_oracledatabase.GetCloudExadataInfrastructuresCloudExadataInfrastructureProperty.new;
   final GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContact = module_oracledatabase.GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContact.new;
   final GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContactArgs = module_oracledatabase.GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContact.new;
+  final GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig = module_oracledatabase.GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig.new;
+  final GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArgs = module_oracledatabase.GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig.new;
   final GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindow = module_oracledatabase.GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindow.new;
   final GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindowArgs = module_oracledatabase.GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindow.new;
   final GetCloudExadataInfrastructuresResult = module_oracledatabase.GetCloudExadataInfrastructuresResult.new;
@@ -21786,21 +22758,37 @@ class _OracledatabaseModuleNamespace {
   final OdbSubnetState = module_oracledatabase.OdbSubnetState.new;
   final OdbSubnetStateArgs = module_oracledatabase.OdbSubnetState.new;
   final getAutonomousDatabase = module_oracledatabase.getAutonomousDatabase;
+  final getAutonomousDatabaseOutput = module_oracledatabase.getAutonomousDatabaseOutput;
   final getAutonomousDatabases = module_oracledatabase.getAutonomousDatabases;
+  final getAutonomousDatabasesOutput = module_oracledatabase.getAutonomousDatabasesOutput;
   final getCloudExadataInfrastructure = module_oracledatabase.getCloudExadataInfrastructure;
+  final getCloudExadataInfrastructureOutput = module_oracledatabase.getCloudExadataInfrastructureOutput;
   final getCloudExadataInfrastructures = module_oracledatabase.getCloudExadataInfrastructures;
+  final getCloudExadataInfrastructuresOutput = module_oracledatabase.getCloudExadataInfrastructuresOutput;
   final getCloudVmCluster = module_oracledatabase.getCloudVmCluster;
+  final getCloudVmClusterOutput = module_oracledatabase.getCloudVmClusterOutput;
   final getCloudVmClusters = module_oracledatabase.getCloudVmClusters;
+  final getCloudVmClustersOutput = module_oracledatabase.getCloudVmClustersOutput;
   final getDbNodes = module_oracledatabase.getDbNodes;
+  final getDbNodesOutput = module_oracledatabase.getDbNodesOutput;
   final getDbServers = module_oracledatabase.getDbServers;
+  final getDbServersOutput = module_oracledatabase.getDbServersOutput;
   final getExascaleDbStorageVault = module_oracledatabase.getExascaleDbStorageVault;
+  final getExascaleDbStorageVaultOutput = module_oracledatabase.getExascaleDbStorageVaultOutput;
   final getExascaleDbStorageVaults = module_oracledatabase.getExascaleDbStorageVaults;
+  final getExascaleDbStorageVaultsOutput = module_oracledatabase.getExascaleDbStorageVaultsOutput;
   final getGoldengateConnectionTypes = module_oracledatabase.getGoldengateConnectionTypes;
+  final getGoldengateConnectionTypesOutput = module_oracledatabase.getGoldengateConnectionTypesOutput;
   final getGoldengateDeploymentEnvironments = module_oracledatabase.getGoldengateDeploymentEnvironments;
+  final getGoldengateDeploymentEnvironmentsOutput = module_oracledatabase.getGoldengateDeploymentEnvironmentsOutput;
   final getGoldengateDeploymentTypes = module_oracledatabase.getGoldengateDeploymentTypes;
+  final getGoldengateDeploymentTypesOutput = module_oracledatabase.getGoldengateDeploymentTypesOutput;
   final getGoldengateDeploymentVersions = module_oracledatabase.getGoldengateDeploymentVersions;
+  final getGoldengateDeploymentVersionsOutput = module_oracledatabase.getGoldengateDeploymentVersionsOutput;
   final getOdbNetwork = module_oracledatabase.getOdbNetwork;
+  final getOdbNetworkOutput = module_oracledatabase.getOdbNetworkOutput;
   final getOdbSubnet = module_oracledatabase.getOdbSubnet;
+  final getOdbSubnetOutput = module_oracledatabase.getOdbSubnetOutput;
 }
 
 class _OrganizationsModuleNamespace {
@@ -21912,17 +22900,29 @@ class _OrganizationsModuleNamespace {
   final ServiceIdentityState = module_organizations.ServiceIdentityState.new;
   final ServiceIdentityStateArgs = module_organizations.ServiceIdentityState.new;
   final getActiveFolder = module_organizations.getActiveFolder;
+  final getActiveFolderOutput = module_organizations.getActiveFolderOutput;
   final getBillingAccount = module_organizations.getBillingAccount;
+  final getBillingAccountOutput = module_organizations.getBillingAccountOutput;
   final getClientConfig = module_organizations.getClientConfig;
+  final getClientConfigOutput = module_organizations.getClientConfigOutput;
   final getClientOpenIdUserInfo = module_organizations.getClientOpenIdUserInfo;
+  final getClientOpenIdUserInfoOutput = module_organizations.getClientOpenIdUserInfoOutput;
   final getFolder = module_organizations.getFolder;
+  final getFolderOutput = module_organizations.getFolderOutput;
   final getFolders = module_organizations.getFolders;
+  final getFoldersOutput = module_organizations.getFoldersOutput;
   final getIAMPolicy = module_organizations.getIAMPolicy;
+  final getIAMPolicyOutput = module_organizations.getIAMPolicyOutput;
   final getIamCustomRole = module_organizations.getIamCustomRole;
+  final getIamCustomRoleOutput = module_organizations.getIamCustomRoleOutput;
   final getIamCustomRoles = module_organizations.getIamCustomRoles;
+  final getIamCustomRolesOutput = module_organizations.getIamCustomRolesOutput;
   final getOrganization = module_organizations.getOrganization;
+  final getOrganizationOutput = module_organizations.getOrganizationOutput;
   final getProject = module_organizations.getProject;
+  final getProjectOutput = module_organizations.getProjectOutput;
   final getS = module_organizations.getS;
+  final getSOutput = module_organizations.getSOutput;
 }
 
 class _OrgpolicyModuleNamespace {
@@ -22605,14 +23605,26 @@ class _ParametermanagerModuleNamespace {
   final RegionalParameterVersionArgs = module_parametermanager.RegionalParameterVersionArgs.new;
   final RegionalParameterVersionState = module_parametermanager.RegionalParameterVersionState.new;
   final RegionalParameterVersionStateArgs = module_parametermanager.RegionalParameterVersionState.new;
+  final Template = module_parametermanager.Template.new;
+  final TemplateArgs = module_parametermanager.TemplateArgs.new;
+  final TemplateState = module_parametermanager.TemplateState.new;
+  final TemplateStateArgs = module_parametermanager.TemplateState.new;
   final getParameter = module_parametermanager.getParameter;
+  final getParameterOutput = module_parametermanager.getParameterOutput;
   final getParameterVersion = module_parametermanager.getParameterVersion;
+  final getParameterVersionOutput = module_parametermanager.getParameterVersionOutput;
   final getParameterVersionRender = module_parametermanager.getParameterVersionRender;
+  final getParameterVersionRenderOutput = module_parametermanager.getParameterVersionRenderOutput;
   final getParameters = module_parametermanager.getParameters;
+  final getParametersOutput = module_parametermanager.getParametersOutput;
   final getRegionalParameter = module_parametermanager.getRegionalParameter;
+  final getRegionalParameterOutput = module_parametermanager.getRegionalParameterOutput;
   final getRegionalParameterVersion = module_parametermanager.getRegionalParameterVersion;
+  final getRegionalParameterVersionOutput = module_parametermanager.getRegionalParameterVersionOutput;
   final getRegionalParameterVersionRender = module_parametermanager.getRegionalParameterVersionRender;
+  final getRegionalParameterVersionRenderOutput = module_parametermanager.getRegionalParameterVersionRenderOutput;
   final getRegionalParameters = module_parametermanager.getRegionalParameters;
+  final getRegionalParametersOutput = module_parametermanager.getRegionalParametersOutput;
 }
 
 class _PrivilegedaccessmanagerModuleNamespace {
@@ -22681,6 +23693,7 @@ class _PrivilegedaccessmanagerModuleNamespace {
   final SettingsState = module_privilegedaccessmanager.SettingsState.new;
   final SettingsStateArgs = module_privilegedaccessmanager.SettingsState.new;
   final getEntitlement = module_privilegedaccessmanager.getEntitlement;
+  final getEntitlementOutput = module_privilegedaccessmanager.getEntitlementOutput;
 }
 
 class _ProjectsModuleNamespace {
@@ -22807,12 +23820,19 @@ class _ProjectsModuleNamespace {
   final UsageExportBucketState = module_projects.UsageExportBucketState.new;
   final UsageExportBucketStateArgs = module_projects.UsageExportBucketState.new;
   final getAncestry = module_projects.getAncestry;
+  final getAncestryOutput = module_projects.getAncestryOutput;
   final getIamCustomRole = module_projects.getIamCustomRole;
+  final getIamCustomRoleOutput = module_projects.getIamCustomRoleOutput;
   final getIamCustomRoles = module_projects.getIamCustomRoles;
+  final getIamCustomRolesOutput = module_projects.getIamCustomRolesOutput;
   final getIamPolicy = module_projects.getIamPolicy;
+  final getIamPolicyOutput = module_projects.getIamPolicyOutput;
   final getOrganizationPolicy = module_projects.getOrganizationPolicy;
+  final getOrganizationPolicyOutput = module_projects.getOrganizationPolicyOutput;
   final getProject = module_projects.getProject;
+  final getProjectOutput = module_projects.getProjectOutput;
   final getProjectService = module_projects.getProjectService;
+  final getProjectServiceOutput = module_projects.getProjectServiceOutput;
 }
 
 class _ProvidersModuleNamespace {
@@ -22826,6 +23846,7 @@ class _ProvidersModuleNamespace {
   final TerraformConfigResult = module_providers.TerraformConfigResult.new;
   final TerraformConfigResultArgs = module_providers.TerraformConfigResult.new;
   final terraformConfig = module_providers.terraformConfig;
+  final terraformConfigOutput = module_providers.terraformConfigOutput;
 }
 
 class _PubsubModuleNamespace {
@@ -23040,10 +24061,15 @@ class _PubsubModuleNamespace {
   final TopicState = module_pubsub.TopicState.new;
   final TopicStateArgs = module_pubsub.TopicState.new;
   final getSchemaIamPolicy = module_pubsub.getSchemaIamPolicy;
+  final getSchemaIamPolicyOutput = module_pubsub.getSchemaIamPolicyOutput;
   final getSubscription = module_pubsub.getSubscription;
   final getSubscriptionIamPolicy = module_pubsub.getSubscriptionIamPolicy;
+  final getSubscriptionIamPolicyOutput = module_pubsub.getSubscriptionIamPolicyOutput;
+  final getSubscriptionOutput = module_pubsub.getSubscriptionOutput;
   final getTopic = module_pubsub.getTopic;
   final getTopicIamPolicy = module_pubsub.getTopicIamPolicy;
+  final getTopicIamPolicyOutput = module_pubsub.getTopicIamPolicyOutput;
+  final getTopicOutput = module_pubsub.getTopicOutput;
 }
 
 class _RecaptchaModuleNamespace {
@@ -23249,13 +24275,20 @@ class _RedisModuleNamespace {
   final InstanceStateArgs = module_redis.InstanceState.new;
   final getCluster = module_redis.getCluster;
   final getClusterAclPolicy = module_redis.getClusterAclPolicy;
+  final getClusterAclPolicyOutput = module_redis.getClusterAclPolicyOutput;
+  final getClusterOutput = module_redis.getClusterOutput;
   final getInstance = module_redis.getInstance;
+  final getInstanceOutput = module_redis.getInstanceOutput;
 }
 
 class _ResourcemanagerModuleNamespace {
   _ResourcemanagerModuleNamespace();
   final Capability = module_resourcemanager.Capability.new;
   final CapabilityArgs = module_resourcemanager.CapabilityArgs.new;
+  final CapabilityConfig = module_resourcemanager.CapabilityConfig.new;
+  final CapabilityConfigArgs = module_resourcemanager.CapabilityConfigArgs.new;
+  final CapabilityConfigState = module_resourcemanager.CapabilityConfigState.new;
+  final CapabilityConfigStateArgs = module_resourcemanager.CapabilityConfigState.new;
   final CapabilityState = module_resourcemanager.CapabilityState.new;
   final CapabilityStateArgs = module_resourcemanager.CapabilityState.new;
   final Lien = module_resourcemanager.Lien.new;
@@ -23301,7 +24334,10 @@ class _RuntimeconfigModuleNamespace {
   final VariableStateArgs = module_runtimeconfig.VariableState.new;
   final getConfig = module_runtimeconfig.getConfig;
   final getConfigIamPolicy = module_runtimeconfig.getConfigIamPolicy;
+  final getConfigIamPolicyOutput = module_runtimeconfig.getConfigIamPolicyOutput;
+  final getConfigOutput = module_runtimeconfig.getConfigOutput;
   final getVariable = module_runtimeconfig.getVariable;
+  final getVariableOutput = module_runtimeconfig.getVariableOutput;
 }
 
 class _SaasruntimeModuleNamespace {
@@ -23542,14 +24578,24 @@ class _SecretmanagerModuleNamespace {
   final SecretVersionStateArgs = module_secretmanager.SecretVersionState.new;
   final getRegionalSecret = module_secretmanager.getRegionalSecret;
   final getRegionalSecretIamPolicy = module_secretmanager.getRegionalSecretIamPolicy;
+  final getRegionalSecretIamPolicyOutput = module_secretmanager.getRegionalSecretIamPolicyOutput;
+  final getRegionalSecretOutput = module_secretmanager.getRegionalSecretOutput;
   final getRegionalSecretVersion = module_secretmanager.getRegionalSecretVersion;
   final getRegionalSecretVersionAccess = module_secretmanager.getRegionalSecretVersionAccess;
+  final getRegionalSecretVersionAccessOutput = module_secretmanager.getRegionalSecretVersionAccessOutput;
+  final getRegionalSecretVersionOutput = module_secretmanager.getRegionalSecretVersionOutput;
   final getRegionalSecrets = module_secretmanager.getRegionalSecrets;
+  final getRegionalSecretsOutput = module_secretmanager.getRegionalSecretsOutput;
   final getSecret = module_secretmanager.getSecret;
   final getSecretIamPolicy = module_secretmanager.getSecretIamPolicy;
+  final getSecretIamPolicyOutput = module_secretmanager.getSecretIamPolicyOutput;
+  final getSecretOutput = module_secretmanager.getSecretOutput;
   final getSecretVersion = module_secretmanager.getSecretVersion;
   final getSecretVersionAccess = module_secretmanager.getSecretVersionAccess;
+  final getSecretVersionAccessOutput = module_secretmanager.getSecretVersionAccessOutput;
+  final getSecretVersionOutput = module_secretmanager.getSecretVersionOutput;
   final getSecrets = module_secretmanager.getSecrets;
+  final getSecretsOutput = module_secretmanager.getSecretsOutput;
 }
 
 class _SecuresourcemanagerModuleNamespace {
@@ -23627,7 +24673,9 @@ class _SecuresourcemanagerModuleNamespace {
   final RepositoryUri = module_securesourcemanager.RepositoryUri.new;
   final RepositoryUriArgs = module_securesourcemanager.RepositoryUri.new;
   final getInstanceIamPolicy = module_securesourcemanager.getInstanceIamPolicy;
+  final getInstanceIamPolicyOutput = module_securesourcemanager.getInstanceIamPolicyOutput;
   final getRepositoryIamPolicy = module_securesourcemanager.getRepositoryIamPolicy;
+  final getRepositoryIamPolicyOutput = module_securesourcemanager.getRepositoryIamPolicyOutput;
 }
 
 class _SecuritycenterModuleNamespace {
@@ -23746,6 +24794,10 @@ class _SecuritycenterModuleNamespace {
   final NotificationConfigStateArgs = module_securitycenter.NotificationConfigState.new;
   final NotificationConfigStreamingConfig = module_securitycenter.NotificationConfigStreamingConfig.new;
   final NotificationConfigStreamingConfigArgs = module_securitycenter.NotificationConfigStreamingConfig.new;
+  final NotificationServiceAccount = module_securitycenter.NotificationServiceAccount.new;
+  final NotificationServiceAccountArgs = module_securitycenter.NotificationServiceAccountArgs.new;
+  final NotificationServiceAccountState = module_securitycenter.NotificationServiceAccountState.new;
+  final NotificationServiceAccountStateArgs = module_securitycenter.NotificationServiceAccountState.new;
   final OrganizationCustomModule = module_securitycenter.OrganizationCustomModule.new;
   final OrganizationCustomModuleArgs = module_securitycenter.OrganizationCustomModuleArgs.new;
   final OrganizationCustomModuleCustomConfig = module_securitycenter.OrganizationCustomModuleCustomConfig.new;
@@ -23879,7 +24931,9 @@ class _SecuritycenterModuleNamespace {
   final V2ProjectSccBigQueryExportState = module_securitycenter.V2ProjectSccBigQueryExportState.new;
   final V2ProjectSccBigQueryExportStateArgs = module_securitycenter.V2ProjectSccBigQueryExportState.new;
   final getSourceIamPolicy = module_securitycenter.getSourceIamPolicy;
+  final getSourceIamPolicyOutput = module_securitycenter.getSourceIamPolicyOutput;
   final getV2OrganizationSourceIamPolicy = module_securitycenter.getV2OrganizationSourceIamPolicy;
+  final getV2OrganizationSourceIamPolicyOutput = module_securitycenter.getV2OrganizationSourceIamPolicyOutput;
 }
 
 class _SecuritypostureModuleNamespace {
@@ -23987,11 +25041,18 @@ class _ServiceaccountModuleNamespace {
   final KeyStateArgs = module_serviceaccount.KeyState.new;
   final getAccount = module_serviceaccount.getAccount;
   final getAccountAccessToken = module_serviceaccount.getAccountAccessToken;
+  final getAccountAccessTokenOutput = module_serviceaccount.getAccountAccessTokenOutput;
   final getAccountIdToken = module_serviceaccount.getAccountIdToken;
+  final getAccountIdTokenOutput = module_serviceaccount.getAccountIdTokenOutput;
   final getAccountJwt = module_serviceaccount.getAccountJwt;
+  final getAccountJwtOutput = module_serviceaccount.getAccountJwtOutput;
   final getAccountKey = module_serviceaccount.getAccountKey;
+  final getAccountKeyOutput = module_serviceaccount.getAccountKeyOutput;
+  final getAccountOutput = module_serviceaccount.getAccountOutput;
   final getIamPolicy = module_serviceaccount.getIamPolicy;
+  final getIamPolicyOutput = module_serviceaccount.getIamPolicyOutput;
   final getS = module_serviceaccount.getS;
+  final getSOutput = module_serviceaccount.getSOutput;
 }
 
 class _ServicedirectoryModuleNamespace {
@@ -24047,7 +25108,9 @@ class _ServicedirectoryModuleNamespace {
   final ServiceState = module_servicedirectory.ServiceState.new;
   final ServiceStateArgs = module_servicedirectory.ServiceState.new;
   final getNamespaceIamPolicy = module_servicedirectory.getNamespaceIamPolicy;
+  final getNamespaceIamPolicyOutput = module_servicedirectory.getNamespaceIamPolicyOutput;
   final getServiceIamPolicy = module_servicedirectory.getServiceIamPolicy;
+  final getServiceIamPolicyOutput = module_servicedirectory.getServiceIamPolicyOutput;
 }
 
 class _ServicenetworkingModuleNamespace {
@@ -24068,6 +25131,7 @@ class _ServicenetworkingModuleNamespace {
   final VpcServiceControlsState = module_servicenetworking.VpcServiceControlsState.new;
   final VpcServiceControlsStateArgs = module_servicenetworking.VpcServiceControlsState.new;
   final getPeeredDnsDomain = module_servicenetworking.getPeeredDnsDomain;
+  final getPeeredDnsDomainOutput = module_servicenetworking.getPeeredDnsDomainOutput;
 }
 
 class _ServiceusageModuleNamespace {
@@ -24076,6 +25140,12 @@ class _ServiceusageModuleNamespace {
   final ConsumerQuotaOverrideArgs = module_serviceusage.ConsumerQuotaOverrideArgs.new;
   final ConsumerQuotaOverrideState = module_serviceusage.ConsumerQuotaOverrideState.new;
   final ConsumerQuotaOverrideStateArgs = module_serviceusage.ConsumerQuotaOverrideState.new;
+  final V2ConsumerPolicy = module_serviceusage.V2ConsumerPolicy.new;
+  final V2ConsumerPolicyArgs = module_serviceusage.V2ConsumerPolicyArgs.new;
+  final V2ConsumerPolicyEnableRule = module_serviceusage.V2ConsumerPolicyEnableRule.new;
+  final V2ConsumerPolicyEnableRuleArgs = module_serviceusage.V2ConsumerPolicyEnableRule.new;
+  final V2ConsumerPolicyState = module_serviceusage.V2ConsumerPolicyState.new;
+  final V2ConsumerPolicyStateArgs = module_serviceusage.V2ConsumerPolicyState.new;
 }
 
 class _SiteverificationModuleNamespace {
@@ -24094,6 +25164,7 @@ class _SiteverificationModuleNamespace {
   final WebResourceState = module_siteverification.WebResourceState.new;
   final WebResourceStateArgs = module_siteverification.WebResourceState.new;
   final getToken = module_siteverification.getToken;
+  final getTokenOutput = module_siteverification.getTokenOutput;
 }
 
 class _SourcerepoModuleNamespace {
@@ -24130,6 +25201,8 @@ class _SourcerepoModuleNamespace {
   final RepositoryStateArgs = module_sourcerepo.RepositoryState.new;
   final getRepository = module_sourcerepo.getRepository;
   final getRepositoryIamPolicy = module_sourcerepo.getRepositoryIamPolicy;
+  final getRepositoryIamPolicyOutput = module_sourcerepo.getRepositoryIamPolicyOutput;
+  final getRepositoryOutput = module_sourcerepo.getRepositoryOutput;
 }
 
 class _SpannerModuleNamespace {
@@ -24246,8 +25319,12 @@ class _SpannerModuleNamespace {
   final InstanceStateArgs = module_spanner.InstanceState.new;
   final getDatabase = module_spanner.getDatabase;
   final getDatabaseIamPolicy = module_spanner.getDatabaseIamPolicy;
+  final getDatabaseIamPolicyOutput = module_spanner.getDatabaseIamPolicyOutput;
+  final getDatabaseOutput = module_spanner.getDatabaseOutput;
   final getInstance = module_spanner.getInstance;
   final getInstanceIamPolicy = module_spanner.getInstanceIamPolicy;
+  final getInstanceIamPolicyOutput = module_spanner.getInstanceIamPolicyOutput;
+  final getInstanceOutput = module_spanner.getInstanceOutput;
 }
 
 class _SqlModuleNamespace {
@@ -24256,6 +25333,10 @@ class _SqlModuleNamespace {
   final DatabaseArgs = module_sql.DatabaseArgs.new;
   final DatabaseInstance = module_sql.DatabaseInstance.new;
   final DatabaseInstanceArgs = module_sql.DatabaseInstanceArgs.new;
+  final DatabaseInstanceBlueGreenDeployment = module_sql.DatabaseInstanceBlueGreenDeployment.new;
+  final DatabaseInstanceBlueGreenDeploymentArgs = module_sql.DatabaseInstanceBlueGreenDeployment.new;
+  final DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress = module_sql.DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress.new;
+  final DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs = module_sql.DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress.new;
   final DatabaseInstanceClone = module_sql.DatabaseInstanceClone.new;
   final DatabaseInstanceCloneArgs = module_sql.DatabaseInstanceClone.new;
   final DatabaseInstanceDnsName = module_sql.DatabaseInstanceDnsName.new;
@@ -24334,6 +25415,10 @@ class _SqlModuleNamespace {
   final GetCaCertsResultArgs = module_sql.GetCaCertsResult.new;
   final GetDatabaseArgs = module_sql.GetDatabaseArgs.new;
   final GetDatabaseInstanceArgs = module_sql.GetDatabaseInstanceArgs.new;
+  final GetDatabaseInstanceBlueGreenDeployment = module_sql.GetDatabaseInstanceBlueGreenDeployment.new;
+  final GetDatabaseInstanceBlueGreenDeploymentArgs = module_sql.GetDatabaseInstanceBlueGreenDeployment.new;
+  final GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress = module_sql.GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress.new;
+  final GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs = module_sql.GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress.new;
   final GetDatabaseInstanceClone = module_sql.GetDatabaseInstanceClone.new;
   final GetDatabaseInstanceCloneArgs = module_sql.GetDatabaseInstanceClone.new;
   final GetDatabaseInstanceDnsName = module_sql.GetDatabaseInstanceDnsName.new;
@@ -24406,6 +25491,10 @@ class _SqlModuleNamespace {
   final GetDatabaseInstancesArgs = module_sql.GetDatabaseInstancesArgs.new;
   final GetDatabaseInstancesInstance = module_sql.GetDatabaseInstancesInstance.new;
   final GetDatabaseInstancesInstanceArgs = module_sql.GetDatabaseInstancesInstance.new;
+  final GetDatabaseInstancesInstanceBlueGreenDeployment = module_sql.GetDatabaseInstancesInstanceBlueGreenDeployment.new;
+  final GetDatabaseInstancesInstanceBlueGreenDeploymentArgs = module_sql.GetDatabaseInstancesInstanceBlueGreenDeployment.new;
+  final GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddress = module_sql.GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddress.new;
+  final GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs = module_sql.GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddress.new;
   final GetDatabaseInstancesInstanceClone = module_sql.GetDatabaseInstancesInstanceClone.new;
   final GetDatabaseInstancesInstanceCloneArgs = module_sql.GetDatabaseInstancesInstanceClone.new;
   final GetDatabaseInstancesInstanceDnsName = module_sql.GetDatabaseInstancesInstanceDnsName.new;
@@ -24507,13 +25596,21 @@ class _SqlModuleNamespace {
   final UserState = module_sql.UserState.new;
   final UserStateArgs = module_sql.UserState.new;
   final getBackupRun = module_sql.getBackupRun;
+  final getBackupRunOutput = module_sql.getBackupRunOutput;
   final getCaCerts = module_sql.getCaCerts;
+  final getCaCertsOutput = module_sql.getCaCertsOutput;
   final getDatabase = module_sql.getDatabase;
   final getDatabaseInstance = module_sql.getDatabaseInstance;
   final getDatabaseInstanceLatestRecoveryTime = module_sql.getDatabaseInstanceLatestRecoveryTime;
+  final getDatabaseInstanceLatestRecoveryTimeOutput = module_sql.getDatabaseInstanceLatestRecoveryTimeOutput;
+  final getDatabaseInstanceOutput = module_sql.getDatabaseInstanceOutput;
   final getDatabaseInstances = module_sql.getDatabaseInstances;
+  final getDatabaseInstancesOutput = module_sql.getDatabaseInstancesOutput;
+  final getDatabaseOutput = module_sql.getDatabaseOutput;
   final getDatabases = module_sql.getDatabases;
+  final getDatabasesOutput = module_sql.getDatabasesOutput;
   final getTiers = module_sql.getTiers;
+  final getTiersOutput = module_sql.getTiersOutput;
 }
 
 class _StorageModuleNamespace {
@@ -24688,6 +25785,26 @@ class _StorageModuleNamespace {
   final FolderArgs = module_storage.FolderArgs.new;
   final FolderState = module_storage.FolderState.new;
   final FolderStateArgs = module_storage.FolderState.new;
+  final FtpServer = module_storage.FtpServer.new;
+  final FtpServerArgs = module_storage.FtpServerArgs.new;
+  final FtpServerExternalConfig = module_storage.FtpServerExternalConfig.new;
+  final FtpServerExternalConfigArgs = module_storage.FtpServerExternalConfig.new;
+  final FtpServerInternalConfig = module_storage.FtpServerInternalConfig.new;
+  final FtpServerInternalConfigArgs = module_storage.FtpServerInternalConfig.new;
+  final FtpServerInternalConfigConsumerAcceptList = module_storage.FtpServerInternalConfigConsumerAcceptList.new;
+  final FtpServerInternalConfigConsumerAcceptListArgs = module_storage.FtpServerInternalConfigConsumerAcceptList.new;
+  final FtpServerInternalConfigConsumerRejectList = module_storage.FtpServerInternalConfigConsumerRejectList.new;
+  final FtpServerInternalConfigConsumerRejectListArgs = module_storage.FtpServerInternalConfigConsumerRejectList.new;
+  final FtpServerState = module_storage.FtpServerState.new;
+  final FtpServerStateArgs = module_storage.FtpServerState.new;
+  final FtpUser = module_storage.FtpUser.new;
+  final FtpUserArgs = module_storage.FtpUserArgs.new;
+  final FtpUserState = module_storage.FtpUserState.new;
+  final FtpUserStateArgs = module_storage.FtpUserState.new;
+  final FtpUserStorageDirectoryMapping = module_storage.FtpUserStorageDirectoryMapping.new;
+  final FtpUserStorageDirectoryMappingArgs = module_storage.FtpUserStorageDirectoryMapping.new;
+  final FtpUserUserCredential = module_storage.FtpUserUserCredential.new;
+  final FtpUserUserCredentialArgs = module_storage.FtpUserUserCredential.new;
   final GetBucketArgs = module_storage.GetBucketArgs.new;
   final GetBucketAutoclass = module_storage.GetBucketAutoclass.new;
   final GetBucketAutoclassArgs = module_storage.GetBucketAutoclass.new;
@@ -25221,27 +26338,50 @@ class _StorageModuleNamespace {
   final TransferJobTransferSpecTransferOptionsMetadataOptionsArgs = module_storage.TransferJobTransferSpecTransferOptionsMetadataOptions.new;
   final getBucket = module_storage.getBucket;
   final getBucketIamPolicy = module_storage.getBucketIamPolicy;
+  final getBucketIamPolicyOutput = module_storage.getBucketIamPolicyOutput;
   final getBucketObject = module_storage.getBucketObject;
   final getBucketObjectContent = module_storage.getBucketObjectContent;
+  final getBucketObjectContentOutput = module_storage.getBucketObjectContentOutput;
   final getBucketObjectContents = module_storage.getBucketObjectContents;
+  final getBucketObjectContentsOutput = module_storage.getBucketObjectContentsOutput;
+  final getBucketObjectOutput = module_storage.getBucketObjectOutput;
   final getBucketObjects = module_storage.getBucketObjects;
+  final getBucketObjectsOutput = module_storage.getBucketObjectsOutput;
+  final getBucketOutput = module_storage.getBucketOutput;
   final getBuckets = module_storage.getBuckets;
+  final getBucketsOutput = module_storage.getBucketsOutput;
   final getControlFolderIntelligenceConfig = module_storage.getControlFolderIntelligenceConfig;
+  final getControlFolderIntelligenceConfigOutput = module_storage.getControlFolderIntelligenceConfigOutput;
   final getControlFolderIntelligenceFindingsSummary = module_storage.getControlFolderIntelligenceFindingsSummary;
+  final getControlFolderIntelligenceFindingsSummaryOutput = module_storage.getControlFolderIntelligenceFindingsSummaryOutput;
   final getControlOrganizationIntelligenceConfig = module_storage.getControlOrganizationIntelligenceConfig;
+  final getControlOrganizationIntelligenceConfigOutput = module_storage.getControlOrganizationIntelligenceConfigOutput;
   final getControlOrganizationIntelligenceFindingsSummary = module_storage.getControlOrganizationIntelligenceFindingsSummary;
+  final getControlOrganizationIntelligenceFindingsSummaryOutput = module_storage.getControlOrganizationIntelligenceFindingsSummaryOutput;
   final getControlProjectIntelligenceConfig = module_storage.getControlProjectIntelligenceConfig;
+  final getControlProjectIntelligenceConfigOutput = module_storage.getControlProjectIntelligenceConfigOutput;
   final getControlProjectIntelligenceFinding = module_storage.getControlProjectIntelligenceFinding;
+  final getControlProjectIntelligenceFindingOutput = module_storage.getControlProjectIntelligenceFindingOutput;
   final getControlProjectIntelligenceFindingRevision = module_storage.getControlProjectIntelligenceFindingRevision;
+  final getControlProjectIntelligenceFindingRevisionOutput = module_storage.getControlProjectIntelligenceFindingRevisionOutput;
   final getControlProjectIntelligenceFindingRevisions = module_storage.getControlProjectIntelligenceFindingRevisions;
+  final getControlProjectIntelligenceFindingRevisionsOutput = module_storage.getControlProjectIntelligenceFindingRevisionsOutput;
   final getControlProjectIntelligenceFindings = module_storage.getControlProjectIntelligenceFindings;
+  final getControlProjectIntelligenceFindingsOutput = module_storage.getControlProjectIntelligenceFindingsOutput;
   final getControlProjectIntelligenceFindingsSummary = module_storage.getControlProjectIntelligenceFindingsSummary;
+  final getControlProjectIntelligenceFindingsSummaryOutput = module_storage.getControlProjectIntelligenceFindingsSummaryOutput;
   final getInsightsDatasetConfig = module_storage.getInsightsDatasetConfig;
+  final getInsightsDatasetConfigOutput = module_storage.getInsightsDatasetConfigOutput;
   final getManagedFolderIamPolicy = module_storage.getManagedFolderIamPolicy;
+  final getManagedFolderIamPolicyOutput = module_storage.getManagedFolderIamPolicyOutput;
   final getObjectSignedUrl = module_storage.getObjectSignedUrl;
+  final getObjectSignedUrlOutput = module_storage.getObjectSignedUrlOutput;
   final getProjectServiceAccount = module_storage.getProjectServiceAccount;
+  final getProjectServiceAccountOutput = module_storage.getProjectServiceAccountOutput;
   final getTransferProjectServiceAccount = module_storage.getTransferProjectServiceAccount;
+  final getTransferProjectServiceAccountOutput = module_storage.getTransferProjectServiceAccountOutput;
   final getTransferProjectServieAccount = module_storage.getTransferProjectServieAccount;
+  final getTransferProjectServieAccountOutput = module_storage.getTransferProjectServieAccountOutput;
 }
 
 class _TagsModuleNamespace {
@@ -25322,10 +26462,16 @@ class _TagsModuleNamespace {
   final TagValueStateArgs = module_tags.TagValueState.new;
   final getTagKey = module_tags.getTagKey;
   final getTagKeyIamPolicy = module_tags.getTagKeyIamPolicy;
+  final getTagKeyIamPolicyOutput = module_tags.getTagKeyIamPolicyOutput;
+  final getTagKeyOutput = module_tags.getTagKeyOutput;
   final getTagKeys = module_tags.getTagKeys;
+  final getTagKeysOutput = module_tags.getTagKeysOutput;
   final getTagValue = module_tags.getTagValue;
   final getTagValueIamPolicy = module_tags.getTagValueIamPolicy;
+  final getTagValueIamPolicyOutput = module_tags.getTagValueIamPolicyOutput;
+  final getTagValueOutput = module_tags.getTagValueOutput;
   final getTagValues = module_tags.getTagValues;
+  final getTagValuesOutput = module_tags.getTagValuesOutput;
 }
 
 class _TpuModuleNamespace {
@@ -25371,7 +26517,9 @@ class _TpuModuleNamespace {
   final V2VmSymptom = module_tpu.V2VmSymptom.new;
   final V2VmSymptomArgs = module_tpu.V2VmSymptom.new;
   final getV2AcceleratorTypes = module_tpu.getV2AcceleratorTypes;
+  final getV2AcceleratorTypesOutput = module_tpu.getV2AcceleratorTypesOutput;
   final getV2RuntimeVersions = module_tpu.getV2RuntimeVersions;
+  final getV2RuntimeVersionsOutput = module_tpu.getV2RuntimeVersionsOutput;
 }
 
 class _TranscoderModuleNamespace {
@@ -25858,6 +27006,50 @@ class _VertexModuleNamespace {
   final AiModelGardenEnableModelArgs = module_vertex.AiModelGardenEnableModelArgs.new;
   final AiModelGardenEnableModelState = module_vertex.AiModelGardenEnableModelState.new;
   final AiModelGardenEnableModelStateArgs = module_vertex.AiModelGardenEnableModelState.new;
+  final AiOnlineEvaluator = module_vertex.AiOnlineEvaluator.new;
+  final AiOnlineEvaluatorArgs = module_vertex.AiOnlineEvaluatorArgs.new;
+  final AiOnlineEvaluatorCloudObservability = module_vertex.AiOnlineEvaluatorCloudObservability.new;
+  final AiOnlineEvaluatorCloudObservabilityArgs = module_vertex.AiOnlineEvaluatorCloudObservability.new;
+  final AiOnlineEvaluatorCloudObservabilityOpenTelemetry = module_vertex.AiOnlineEvaluatorCloudObservabilityOpenTelemetry.new;
+  final AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs = module_vertex.AiOnlineEvaluatorCloudObservabilityOpenTelemetry.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScope = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScope.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeArgs = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScope.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeFilter = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilter.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgs = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilter.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger.new;
+  final AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs = module_vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger.new;
+  final AiOnlineEvaluatorCloudObservabilityTraceScope = module_vertex.AiOnlineEvaluatorCloudObservabilityTraceScope.new;
+  final AiOnlineEvaluatorCloudObservabilityTraceScopeArgs = module_vertex.AiOnlineEvaluatorCloudObservabilityTraceScope.new;
+  final AiOnlineEvaluatorCloudObservabilityTraceScopeFilter = module_vertex.AiOnlineEvaluatorCloudObservabilityTraceScopeFilter.new;
+  final AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgs = module_vertex.AiOnlineEvaluatorCloudObservabilityTraceScopeFilter.new;
+  final AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration = module_vertex.AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration.new;
+  final AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs = module_vertex.AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration.new;
+  final AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage = module_vertex.AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage.new;
+  final AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs = module_vertex.AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage.new;
+  final AiOnlineEvaluatorConfig = module_vertex.AiOnlineEvaluatorConfig.new;
+  final AiOnlineEvaluatorConfigArgs = module_vertex.AiOnlineEvaluatorConfig.new;
+  final AiOnlineEvaluatorConfigRandomSampling = module_vertex.AiOnlineEvaluatorConfigRandomSampling.new;
+  final AiOnlineEvaluatorConfigRandomSamplingArgs = module_vertex.AiOnlineEvaluatorConfigRandomSampling.new;
+  final AiOnlineEvaluatorMetricSource = module_vertex.AiOnlineEvaluatorMetricSource.new;
+  final AiOnlineEvaluatorMetricSourceArgs = module_vertex.AiOnlineEvaluatorMetricSource.new;
+  final AiOnlineEvaluatorState = module_vertex.AiOnlineEvaluatorState.new;
+  final AiOnlineEvaluatorStateArgs = module_vertex.AiOnlineEvaluatorState.new;
+  final AiOnlineEvaluatorStateDetail = module_vertex.AiOnlineEvaluatorStateDetail.new;
+  final AiOnlineEvaluatorStateDetailArgs = module_vertex.AiOnlineEvaluatorStateDetail.new;
   final AiPersistentResource = module_vertex.AiPersistentResource.new;
   final AiPersistentResourceArgs = module_vertex.AiPersistentResourceArgs.new;
   final AiPersistentResourceEncryptionSpec = module_vertex.AiPersistentResourceEncryptionSpec.new;
@@ -25884,6 +27076,34 @@ class _VertexModuleNamespace {
   final AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs = module_vertex.AiPersistentResourceResourceRuntimeSpecServiceAccountSpec.new;
   final AiPersistentResourceState = module_vertex.AiPersistentResourceState.new;
   final AiPersistentResourceStateArgs = module_vertex.AiPersistentResourceState.new;
+  final AiRagCorpus = module_vertex.AiRagCorpus.new;
+  final AiRagCorpusArgs = module_vertex.AiRagCorpusArgs.new;
+  final AiRagCorpusCorpusStatus = module_vertex.AiRagCorpusCorpusStatus.new;
+  final AiRagCorpusCorpusStatusArgs = module_vertex.AiRagCorpusCorpusStatus.new;
+  final AiRagCorpusEncryptionSpec = module_vertex.AiRagCorpusEncryptionSpec.new;
+  final AiRagCorpusEncryptionSpecArgs = module_vertex.AiRagCorpusEncryptionSpec.new;
+  final AiRagCorpusState = module_vertex.AiRagCorpusState.new;
+  final AiRagCorpusStateArgs = module_vertex.AiRagCorpusState.new;
+  final AiRagCorpusVectorDbConfig = module_vertex.AiRagCorpusVectorDbConfig.new;
+  final AiRagCorpusVectorDbConfigApiAuth = module_vertex.AiRagCorpusVectorDbConfigApiAuth.new;
+  final AiRagCorpusVectorDbConfigApiAuthApiKeyConfig = module_vertex.AiRagCorpusVectorDbConfigApiAuthApiKeyConfig.new;
+  final AiRagCorpusVectorDbConfigApiAuthApiKeyConfigArgs = module_vertex.AiRagCorpusVectorDbConfigApiAuthApiKeyConfig.new;
+  final AiRagCorpusVectorDbConfigApiAuthArgs = module_vertex.AiRagCorpusVectorDbConfigApiAuth.new;
+  final AiRagCorpusVectorDbConfigArgs = module_vertex.AiRagCorpusVectorDbConfig.new;
+  final AiRagCorpusVectorDbConfigPinecone = module_vertex.AiRagCorpusVectorDbConfigPinecone.new;
+  final AiRagCorpusVectorDbConfigPineconeArgs = module_vertex.AiRagCorpusVectorDbConfigPinecone.new;
+  final AiRagCorpusVectorDbConfigRagEmbeddingModelConfig = module_vertex.AiRagCorpusVectorDbConfigRagEmbeddingModelConfig.new;
+  final AiRagCorpusVectorDbConfigRagEmbeddingModelConfigArgs = module_vertex.AiRagCorpusVectorDbConfigRagEmbeddingModelConfig.new;
+  final AiRagCorpusVectorDbConfigRagEmbeddingModelConfigVertexPredictionEndpoint = module_vertex.AiRagCorpusVectorDbConfigRagEmbeddingModelConfigVertexPredictionEndpoint.new;
+  final AiRagCorpusVectorDbConfigRagEmbeddingModelConfigVertexPredictionEndpointArgs = module_vertex.AiRagCorpusVectorDbConfigRagEmbeddingModelConfigVertexPredictionEndpoint.new;
+  final AiRagCorpusVectorDbConfigRagManagedDb = module_vertex.AiRagCorpusVectorDbConfigRagManagedDb.new;
+  final AiRagCorpusVectorDbConfigRagManagedDbAnn = module_vertex.AiRagCorpusVectorDbConfigRagManagedDbAnn.new;
+  final AiRagCorpusVectorDbConfigRagManagedDbAnnArgs = module_vertex.AiRagCorpusVectorDbConfigRagManagedDbAnn.new;
+  final AiRagCorpusVectorDbConfigRagManagedDbArgs = module_vertex.AiRagCorpusVectorDbConfigRagManagedDb.new;
+  final AiRagCorpusVectorDbConfigVertexVectorSearch = module_vertex.AiRagCorpusVectorDbConfigVertexVectorSearch.new;
+  final AiRagCorpusVectorDbConfigVertexVectorSearchArgs = module_vertex.AiRagCorpusVectorDbConfigVertexVectorSearch.new;
+  final AiRagCorpusVertexAiSearchConfig = module_vertex.AiRagCorpusVertexAiSearchConfig.new;
+  final AiRagCorpusVertexAiSearchConfigArgs = module_vertex.AiRagCorpusVertexAiSearchConfig.new;
   final AiRagEngineConfig = module_vertex.AiRagEngineConfig.new;
   final AiRagEngineConfigArgs = module_vertex.AiRagEngineConfigArgs.new;
   final AiRagEngineConfigRagManagedDbConfig = module_vertex.AiRagEngineConfigRagManagedDbConfig.new;
@@ -25914,6 +27134,10 @@ class _VertexModuleNamespace {
   final AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentArgs = module_vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContent.new;
   final AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart = module_vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart.new;
   final AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs = module_vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPart.new;
+  final AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscription = module_vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscription.new;
+  final AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionArgs = module_vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscription.new;
+  final AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWord = module_vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWord.new;
+  final AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWordArgs = module_vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWord.new;
   final AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResult = module_vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResult.new;
   final AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResultArgs = module_vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResult.new;
   final AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCode = module_vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCode.new;
@@ -26028,52 +27252,20 @@ class _VertexModuleNamespace {
   final AiReasoningEngineTrafficConfigTrafficSplitManualArgs = module_vertex.AiReasoningEngineTrafficConfigTrafficSplitManual.new;
   final AiReasoningEngineTrafficConfigTrafficSplitManualTarget = module_vertex.AiReasoningEngineTrafficConfigTrafficSplitManualTarget.new;
   final AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs = module_vertex.AiReasoningEngineTrafficConfigTrafficSplitManualTarget.new;
-  final AiSchedule = module_vertex.AiSchedule.new;
-  final AiScheduleArgs = module_vertex.AiScheduleArgs.new;
-  final AiScheduleCreateNotebookExecutionJobRequest = module_vertex.AiScheduleCreateNotebookExecutionJobRequest.new;
-  final AiScheduleCreateNotebookExecutionJobRequestArgs = module_vertex.AiScheduleCreateNotebookExecutionJobRequest.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinityArgs = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSourceArgs = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource.new;
-  final AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs = module_vertex.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource.new;
-  final AiScheduleCreatePipelineJobRequest = module_vertex.AiScheduleCreatePipelineJobRequest.new;
-  final AiScheduleCreatePipelineJobRequestArgs = module_vertex.AiScheduleCreatePipelineJobRequest.new;
-  final AiScheduleCreatePipelineJobRequestPipelineJob = module_vertex.AiScheduleCreatePipelineJobRequestPipelineJob.new;
-  final AiScheduleCreatePipelineJobRequestPipelineJobArgs = module_vertex.AiScheduleCreatePipelineJobRequestPipelineJob.new;
-  final AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec = module_vertex.AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec.new;
-  final AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs = module_vertex.AiScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec.new;
-  final AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig = module_vertex.AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig.new;
-  final AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs = module_vertex.AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig.new;
-  final AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig = module_vertex.AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig.new;
-  final AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs = module_vertex.AiScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig.new;
-  final AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig = module_vertex.AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig.new;
-  final AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs = module_vertex.AiScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig.new;
-  final AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata = module_vertex.AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata.new;
-  final AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadataArgs = module_vertex.AiScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata.new;
-  final AiScheduleLastScheduledRunResponse = module_vertex.AiScheduleLastScheduledRunResponse.new;
-  final AiScheduleLastScheduledRunResponseArgs = module_vertex.AiScheduleLastScheduledRunResponse.new;
-  final AiScheduleState = module_vertex.AiScheduleState.new;
-  final AiScheduleStateArgs = module_vertex.AiScheduleState.new;
+  final AiSemanticGovernancePolicy = module_vertex.AiSemanticGovernancePolicy.new;
+  final AiSemanticGovernancePolicyAgentResponseCustomization = module_vertex.AiSemanticGovernancePolicyAgentResponseCustomization.new;
+  final AiSemanticGovernancePolicyAgentResponseCustomizationArgs = module_vertex.AiSemanticGovernancePolicyAgentResponseCustomization.new;
+  final AiSemanticGovernancePolicyArgs = module_vertex.AiSemanticGovernancePolicyArgs.new;
   final AiSemanticGovernancePolicyEngine = module_vertex.AiSemanticGovernancePolicyEngine.new;
   final AiSemanticGovernancePolicyEngineArgs = module_vertex.AiSemanticGovernancePolicyEngineArgs.new;
+  final AiSemanticGovernancePolicyEngineGatewayConfig = module_vertex.AiSemanticGovernancePolicyEngineGatewayConfig.new;
+  final AiSemanticGovernancePolicyEngineGatewayConfigArgs = module_vertex.AiSemanticGovernancePolicyEngineGatewayConfig.new;
   final AiSemanticGovernancePolicyEngineState = module_vertex.AiSemanticGovernancePolicyEngineState.new;
   final AiSemanticGovernancePolicyEngineStateArgs = module_vertex.AiSemanticGovernancePolicyEngineState.new;
+  final AiSemanticGovernancePolicyMcpTools = module_vertex.AiSemanticGovernancePolicyMcpTools.new;
+  final AiSemanticGovernancePolicyMcpToolsArgs = module_vertex.AiSemanticGovernancePolicyMcpTools.new;
+  final AiSemanticGovernancePolicyState = module_vertex.AiSemanticGovernancePolicyState.new;
+  final AiSemanticGovernancePolicyStateArgs = module_vertex.AiSemanticGovernancePolicyState.new;
   final AiTensorboard = module_vertex.AiTensorboard.new;
   final AiTensorboardArgs = module_vertex.AiTensorboardArgs.new;
   final AiTensorboardEncryptionSpec = module_vertex.AiTensorboardEncryptionSpec.new;
@@ -26130,14 +27322,23 @@ class _VertexModuleNamespace {
   final GetAiReasoningEngineQueryResult = module_vertex.GetAiReasoningEngineQueryResult.new;
   final GetAiReasoningEngineQueryResultArgs = module_vertex.GetAiReasoningEngineQueryResult.new;
   final getAiEndpointIamPolicy = module_vertex.getAiEndpointIamPolicy;
+  final getAiEndpointIamPolicyOutput = module_vertex.getAiEndpointIamPolicyOutput;
   final getAiFeatureGroupIamPolicy = module_vertex.getAiFeatureGroupIamPolicy;
+  final getAiFeatureGroupIamPolicyOutput = module_vertex.getAiFeatureGroupIamPolicyOutput;
   final getAiFeatureOnlineStoreFeatureviewIamPolicy = module_vertex.getAiFeatureOnlineStoreFeatureviewIamPolicy;
+  final getAiFeatureOnlineStoreFeatureviewIamPolicyOutput = module_vertex.getAiFeatureOnlineStoreFeatureviewIamPolicyOutput;
   final getAiFeatureOnlineStoreIamPolicy = module_vertex.getAiFeatureOnlineStoreIamPolicy;
+  final getAiFeatureOnlineStoreIamPolicyOutput = module_vertex.getAiFeatureOnlineStoreIamPolicyOutput;
   final getAiFeaturestoreEntitytypeIamPolicy = module_vertex.getAiFeaturestoreEntitytypeIamPolicy;
+  final getAiFeaturestoreEntitytypeIamPolicyOutput = module_vertex.getAiFeaturestoreEntitytypeIamPolicyOutput;
   final getAiFeaturestoreIamPolicy = module_vertex.getAiFeaturestoreIamPolicy;
+  final getAiFeaturestoreIamPolicyOutput = module_vertex.getAiFeaturestoreIamPolicyOutput;
   final getAiIndex = module_vertex.getAiIndex;
+  final getAiIndexOutput = module_vertex.getAiIndexOutput;
   final getAiReasoningEngineIamPolicy = module_vertex.getAiReasoningEngineIamPolicy;
+  final getAiReasoningEngineIamPolicyOutput = module_vertex.getAiReasoningEngineIamPolicyOutput;
   final getAiReasoningEngineQuery = module_vertex.getAiReasoningEngineQuery;
+  final getAiReasoningEngineQueryOutput = module_vertex.getAiReasoningEngineQueryOutput;
 }
 
 class _VmwareengineModuleNamespace {
@@ -26358,18 +27559,31 @@ class _VmwareengineModuleNamespace {
   final SubnetState = module_vmwareengine.SubnetState.new;
   final SubnetStateArgs = module_vmwareengine.SubnetState.new;
   final getAnnouncements = module_vmwareengine.getAnnouncements;
+  final getAnnouncementsOutput = module_vmwareengine.getAnnouncementsOutput;
   final getCluster = module_vmwareengine.getCluster;
+  final getClusterOutput = module_vmwareengine.getClusterOutput;
   final getDatastore = module_vmwareengine.getDatastore;
+  final getDatastoreOutput = module_vmwareengine.getDatastoreOutput;
   final getExternalAccessRule = module_vmwareengine.getExternalAccessRule;
+  final getExternalAccessRuleOutput = module_vmwareengine.getExternalAccessRuleOutput;
   final getExternalAddress = module_vmwareengine.getExternalAddress;
+  final getExternalAddressOutput = module_vmwareengine.getExternalAddressOutput;
   final getNetwork = module_vmwareengine.getNetwork;
+  final getNetworkOutput = module_vmwareengine.getNetworkOutput;
   final getNetworkPeering = module_vmwareengine.getNetworkPeering;
+  final getNetworkPeeringOutput = module_vmwareengine.getNetworkPeeringOutput;
   final getNetworkPolicy = module_vmwareengine.getNetworkPolicy;
+  final getNetworkPolicyOutput = module_vmwareengine.getNetworkPolicyOutput;
   final getNsxCredentials = module_vmwareengine.getNsxCredentials;
+  final getNsxCredentialsOutput = module_vmwareengine.getNsxCredentialsOutput;
   final getPrivateCloud = module_vmwareengine.getPrivateCloud;
+  final getPrivateCloudOutput = module_vmwareengine.getPrivateCloudOutput;
   final getSubnet = module_vmwareengine.getSubnet;
+  final getSubnetOutput = module_vmwareengine.getSubnetOutput;
   final getUpgrades = module_vmwareengine.getUpgrades;
+  final getUpgradesOutput = module_vmwareengine.getUpgradesOutput;
   final getVcenterCredentials = module_vmwareengine.getVcenterCredentials;
+  final getVcenterCredentialsOutput = module_vmwareengine.getVcenterCredentialsOutput;
 }
 
 class _VpcaccessModuleNamespace {
@@ -26386,6 +27600,7 @@ class _VpcaccessModuleNamespace {
   final GetConnectorSubnet = module_vpcaccess.GetConnectorSubnet.new;
   final GetConnectorSubnetArgs = module_vpcaccess.GetConnectorSubnet.new;
   final getConnector = module_vpcaccess.getConnector;
+  final getConnectorOutput = module_vpcaccess.getConnectorOutput;
 }
 
 class _WorkbenchModuleNamespace {
@@ -26440,6 +27655,7 @@ class _WorkbenchModuleNamespace {
   final InstanceUpgradeHistory = module_workbench.InstanceUpgradeHistory.new;
   final InstanceUpgradeHistoryArgs = module_workbench.InstanceUpgradeHistory.new;
   final getInstanceIamPolicy = module_workbench.getInstanceIamPolicy;
+  final getInstanceIamPolicyOutput = module_workbench.getInstanceIamPolicyOutput;
 }
 
 class _WorkflowsModuleNamespace {
@@ -26543,5 +27759,7 @@ class _WorkstationsModuleNamespace {
   final WorkstationState = module_workstations.WorkstationState.new;
   final WorkstationStateArgs = module_workstations.WorkstationState.new;
   final getWorkstationConfigIamPolicy = module_workstations.getWorkstationConfigIamPolicy;
+  final getWorkstationConfigIamPolicyOutput = module_workstations.getWorkstationConfigIamPolicyOutput;
   final getWorkstationIamPolicy = module_workstations.getWorkstationIamPolicy;
+  final getWorkstationIamPolicyOutput = module_workstations.getWorkstationIamPolicyOutput;
 }

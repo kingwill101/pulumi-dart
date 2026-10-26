@@ -163,7 +163,7 @@ class InsightsDatasetConfigState {
 
   factory InsightsDatasetConfigState.fromMap(Map<String, dynamic> map) {
     return InsightsDatasetConfigState(
-      activityDataRetentionPeriodDays: (() { final guardedValue = map['activityDataRetentionPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      activityDataRetentionPeriodDays: (() { final guardedValue = map['activityDataRetentionPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       datasetConfigId: (() { final guardedValue = map['datasetConfigId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       datasetConfigState: (() { final guardedValue = map['datasetConfigState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -182,7 +182,7 @@ class InsightsDatasetConfigState {
       organizationNumber: (() { final guardedValue = map['organizationNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       organizationScope: (() { final guardedValue = map['organizationScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      retentionPeriodDays: (() { final guardedValue = map['retentionPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retentionPeriodDays: (() { final guardedValue = map['retentionPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sourceFolders: (() { final guardedValue = map['sourceFolders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InsightsDatasetConfigSourceFolders.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sourceProjects: (() { final guardedValue = map['sourceProjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InsightsDatasetConfigSourceProjects.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

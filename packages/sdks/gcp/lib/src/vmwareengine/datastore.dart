@@ -130,8 +130,8 @@ import 'datastore_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -178,7 +178,7 @@ import 'datastore_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -186,7 +186,7 @@ import 'datastore_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "default" {
+/// data "gcp_compute_network" "default" {
 ///   name = "default"
 /// }
 ///
@@ -203,13 +203,16 @@ import 'datastore_state.dart';
 /// #    }
 /// #  }
 /// resource "gcp_vmwareengine_datastore" "example_thirdparty" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "thirdparty-datastore"
 ///   location    = "us-west1-a"
 ///   description = "example thirdparty datastore."
 ///   nfs_datastore = {
 ///     third_party_file_service = {
 ///       file_share = "/share1"
-///       network    = data.gcp_compute_getnetwork.default.id
+///       network    = data.gcp_compute_network.default.id
 ///       servers    = ["10.0.0.4"]
 ///     }
 ///   }
@@ -422,8 +425,8 @@ import 'datastore_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/filestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -467,7 +470,7 @@ import 'datastore_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -475,7 +478,7 @@ import 'datastore_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_filestore_getinstance" "testInstance" {
+/// data "gcp_filestore_instance" "testInstance" {
 ///   name     = "fs-instance"
 ///   location = ""
 /// }
@@ -493,6 +496,9 @@ import 'datastore_state.dart';
 /// #    }
 /// #  }
 /// resource "gcp_vmwareengine_datastore" "example_filestore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "filestore-datastore"
 ///   location    = ""
 ///   description = "example google_file_service.filestore datastore."
@@ -708,8 +714,8 @@ import 'datastore_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/netapp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -741,7 +747,7 @@ import 'datastore_state.dart';
 /// 			Description: pulumi.String("example google_file_service.netapp datastore."),
 /// 			NfsDatastore: &vmwareengine.DatastoreNfsDatastoreArgs{
 /// 				GoogleFileService: &vmwareengine.DatastoreNfsDatastoreGoogleFileServiceArgs{
-/// 					NetappVolume: testVolume.ID().ToIDOutput().ToStringOutput(),
+/// 					NetappVolume: testVolume.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -753,7 +759,7 @@ import 'datastore_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -763,6 +769,9 @@ import 'datastore_state.dart';
 ///
 /// # Use existing netapp volume
 /// resource "gcp_netapp_volume" "test_volume" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "netapp-volume"
 ///   location = "us-west1"
 /// }
@@ -779,6 +788,9 @@ import 'datastore_state.dart';
 /// #    }
 /// #  }
 /// resource "gcp_vmwareengine_datastore" "example_netapp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "netapp-datastore"
 ///   location    = "us-west1"
 ///   description = "example google_file_service.netapp datastore."
@@ -955,7 +967,7 @@ class Datastore extends pulumi.CustomResource {
           'gcp:vmwareengine/datastore:Datastore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     clusters = registerOutput<List<String>>('clusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');

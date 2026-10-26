@@ -8,21 +8,31 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
   /// a float between 0 and 1. Default is 1.0.
   final pulumi.Input<double?>? overallToolInvocationCorrectnessThreshold;
   /// (Output)
+  /// The semantic similarity channel to use for evaluation.
+  /// Possible values:
+  /// SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+  /// TEXT
+  /// AUDIO
+  final pulumi.Input<String?>? semanticSimilarityChannel;
+  /// (Output)
   /// The success threshold for semantic similarity. Must be an integer
   /// between 0 and 4. Default is &gt;= 3.
   final pulumi.Input<int?>? semanticSimilaritySuccessThreshold;
 
   /// Creates a new [AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold].
   /// [overallToolInvocationCorrectnessThreshold] (Output)
+  /// [semanticSimilarityChannel] (Output)
   /// [semanticSimilaritySuccessThreshold] (Output)
   const AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold({
     this.overallToolInvocationCorrectnessThreshold,
+    this.semanticSimilarityChannel,
     this.semanticSimilaritySuccessThreshold,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'overallToolInvocationCorrectnessThreshold': ?overallToolInvocationCorrectnessThreshold,
+      'semanticSimilarityChannel': ?semanticSimilarityChannel,
       'semanticSimilaritySuccessThreshold': ?semanticSimilaritySuccessThreshold,
     };
   }
@@ -30,7 +40,8 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
   factory AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold(
       overallToolInvocationCorrectnessThreshold: (() { final guardedValue = map['overallToolInvocationCorrectnessThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
-      semanticSimilaritySuccessThreshold: (() { final guardedValue = map['semanticSimilaritySuccessThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      semanticSimilarityChannel: (() { final guardedValue = map['semanticSimilarityChannel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      semanticSimilaritySuccessThreshold: (() { final guardedValue = map['semanticSimilaritySuccessThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

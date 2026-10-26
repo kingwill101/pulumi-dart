@@ -49,7 +49,7 @@ import 'repository_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sourcerepo"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sourcerepo"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -66,7 +66,7 @@ import 'repository_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -75,6 +75,9 @@ import 'repository_state.dart';
 /// }
 ///
 /// resource "gcp_sourcerepo_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my/repository"
 /// }
 /// ```
@@ -191,9 +194,9 @@ import 'repository_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sourcerepo"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sourcerepo"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -216,7 +219,7 @@ import 'repository_state.dart';
 /// 			Name: pulumi.String("my-repository"),
 /// 			PubsubConfigs: sourcerepo.RepositoryPubsubConfigArray{
 /// 				&sourcerepo.RepositoryPubsubConfigArgs{
-/// 					Topic:               topic.ID().ToIDOutput().ToStringOutput(),
+/// 					Topic:               topic.ID(),
 /// 					MessageFormat:       pulumi.String("JSON"),
 /// 					ServiceAccountEmail: testAccount.Email,
 /// 				},
@@ -230,7 +233,7 @@ import 'repository_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -239,13 +242,22 @@ import 'repository_state.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "test_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "my-account"
 ///   display_name = "Test Service Account"
 /// }
 /// resource "gcp_pubsub_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-topic"
 /// }
 /// resource "gcp_sourcerepo_repository" "my-repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-repository"
 ///   pubsub_configs {
 ///     topic                 = gcp_pubsub_topic.topic.id
@@ -375,7 +387,7 @@ class Repository extends pulumi.CustomResource {
           'gcp:sourcerepo/repository:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
     deletionPolicy = registerOutput<String>('deletionPolicy');

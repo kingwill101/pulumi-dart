@@ -82,7 +82,7 @@ import 'repository_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gemini"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gemini"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -110,7 +110,7 @@ import 'repository_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -118,7 +118,10 @@ import 'repository_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gemini_repositorygroup" "example" {
+/// resource "gcp_gemini_repository_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-central1"
 ///   code_repository_index = "example-cri"
 ///   repository_group_id   = "example-repository-group"
@@ -247,7 +250,7 @@ class RepositoryGroup extends pulumi.CustomResource {
           'gcp:gemini/repositoryGroup:RepositoryGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     codeRepositoryIndex = registerOutput<String>('codeRepositoryIndex');

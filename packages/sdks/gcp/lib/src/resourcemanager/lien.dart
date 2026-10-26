@@ -81,8 +81,8 @@ import 'lien_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/resourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/resourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -114,7 +114,7 @@ import 'lien_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -123,12 +123,18 @@ import 'lien_state.dart';
 /// }
 ///
 /// resource "gcp_resourcemanager_lien" "lien" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       ="projects/${gcp_organizations_project.project.number}"
 ///   restrictions = ["resourcemanager.projects.delete"]
 ///   origin       = "machine-readable-explanation"
 ///   reason       = "This project is an important environment"
 /// }
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "staging-project"
 ///   name            = "A very important project!"
 ///   deletion_policy = "DELETE"
@@ -247,7 +253,7 @@ class Lien extends pulumi.CustomResource {
           'gcp:resourcemanager/lien:Lien',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

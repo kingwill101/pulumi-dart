@@ -206,10 +206,10 @@ import 'service_traffic.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -297,7 +297,7 @@ import 'service_traffic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -306,12 +306,15 @@ import 'service_traffic.dart';
 /// }
 ///
 /// resource "gcp_cloudrun_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cloud_run_service_name"
 ///   location = "us-central1"
 ///   template = {
 ///     spec = {
 ///       containers = [{
-///         "image" = "gcr.io/cloudrun/hello"
+///         image = "gcr.io/cloudrun/hello"
 ///       }]
 ///     }
 ///   }
@@ -321,23 +324,38 @@ import 'service_traffic.dart';
 ///   }
 /// }
 /// resource "gcp_serviceaccount_account" "sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "cloud-run-pubsub-invoker"
 ///   display_name = "Cloud Run Pub/Sub Invoker"
 /// }
-/// resource "gcp_cloudrun_iambinding" "binding" {
+/// resource "gcp_cloudrun_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = gcp_cloudrun_service.default.location
 ///   service  = gcp_cloudrun_service.default.name
 ///   role     = "roles/run.invoker"
 ///   members  = ["serviceAccount:${gcp_serviceaccount_account.sa.email}"]
 /// }
-/// resource "gcp_projects_iambinding" "project" {
+/// resource "gcp_projects_i_a_m_binding" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role    = "roles/iam.serviceAccountTokenCreator"
 ///   members = ["serviceAccount:${gcp_serviceaccount_account.sa.email}"]
 /// }
 /// resource "gcp_pubsub_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "pubsub_topic"
 /// }
 /// resource "gcp_pubsub_subscription" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "pubsub_subscription"
 ///   topic = gcp_pubsub_topic.topic.name
 ///   push_config = {
@@ -575,7 +593,7 @@ import 'service_traffic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -608,7 +626,7 @@ import 'service_traffic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -617,12 +635,15 @@ import 'service_traffic.dart';
 /// }
 ///
 /// resource "gcp_cloudrun_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cloudrun-srv"
 ///   location = "us-central1"
 ///   template = {
 ///     spec = {
 ///       containers = [{
-///         "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///         image = "us-docker.pkg.dev/cloudrun/container/hello"
 ///       }]
 ///     }
 ///   }
@@ -816,7 +837,7 @@ import 'service_traffic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -860,7 +881,7 @@ import 'service_traffic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -869,6 +890,9 @@ import 'service_traffic.dart';
 /// }
 ///
 /// resource "gcp_cloudrun_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cloudrun-srv"
 ///   location = "us-central1"
 ///   template = {
@@ -881,9 +905,9 @@ import 'service_traffic.dart';
 ///     }
 ///     spec = {
 ///       containers = [{
-///         "image" = "gcr.io/cloudrun/hello"
-///         "resources" = {
-///           "limits" = {
+///         image = "gcr.io/cloudrun/hello"
+///         resources = {
+///           limits = {
 ///             "cpu"            = "4"
 ///             "memory"         = "16Gi"
 ///             "nvidia.com/gpu" = "1"
@@ -1101,8 +1125,8 @@ import 'service_traffic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1149,7 +1173,7 @@ import 'service_traffic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1158,25 +1182,31 @@ import 'service_traffic.dart';
 /// }
 ///
 /// resource "gcp_cloudrun_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cloudrun-srv"
 ///   location = "us-central1"
 ///   template = {
 ///     spec = {
 ///       containers = [{
-///         "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///         image = "us-docker.pkg.dev/cloudrun/container/hello"
 ///       }]
 ///     }
 ///     metadata = {
 ///       annotations = {
 ///         "autoscaling.knative.dev/maxScale"      = "1000"
-///         "run.googleapis.com/cloudsql-instances" = gcp_sql_databaseinstance.instance.connection_name
+///         "run.googleapis.com/cloudsql-instances" = gcp_sql_database_instance.instance.connection_name
 ///         "run.googleapis.com/client-name"        = "demo"
 ///       }
 ///     }
 ///   }
 ///   autogenerate_revision_name = true
 /// }
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "cloudrun-sql"
 ///   region           = "us-east1"
 ///   database_version = "MYSQL_5_7"
@@ -1387,8 +1417,8 @@ import 'service_traffic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1437,7 +1467,7 @@ import 'service_traffic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1445,7 +1475,7 @@ import 'service_traffic.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "noauth" {
+/// data "gcp_organizations_i_a_m_policy" "noauth" {
 ///   bindings {
 ///     role    = "roles/run.invoker"
 ///     members = ["allUsers"]
@@ -1453,21 +1483,27 @@ import 'service_traffic.dart';
 /// }
 ///
 /// resource "gcp_cloudrun_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cloudrun-srv"
 ///   location = "us-central1"
 ///   template = {
 ///     spec = {
 ///       containers = [{
-///         "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///         image = "us-docker.pkg.dev/cloudrun/container/hello"
 ///       }]
 ///     }
 ///   }
 /// }
-/// resource "gcp_cloudrun_iampolicy" "noauth" {
+/// resource "gcp_cloudrun_iam_policy" "noauth" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = gcp_cloudrun_service.default.location
 ///   project     = gcp_cloudrun_service.default.project
 ///   service     = gcp_cloudrun_service.default.name
-///   policy_data = data.gcp_organizations_getiampolicy.noauth.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.noauth.policy_data
 /// }
 /// ```
 /// ```java
@@ -1688,7 +1724,7 @@ import 'service_traffic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1735,7 +1771,7 @@ import 'service_traffic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1744,24 +1780,27 @@ import 'service_traffic.dart';
 /// }
 ///
 /// resource "gcp_cloudrun_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cloudrun-srv"
 ///   location = "us-central1"
 ///   template = {
 ///     spec = {
 ///       containers = [{
-///         "image" = "us-docker.pkg.dev/cloudrun/container/hello"
-///         "startupProbe" = {
-///           "initialDelaySeconds" = 0
-///           "timeoutSeconds"      = 1
-///           "periodSeconds"       = 3
-///           "failureThreshold"    = 1
-///           "tcpSocket" = {
-///             "port" = 8080
+///         image = "us-docker.pkg.dev/cloudrun/container/hello"
+///         startup_probe = {
+///           initial_delay_seconds = 0
+///           timeout_seconds       = 1
+///           period_seconds        = 3
+///           failure_threshold     = 1
+///           tcp_socket = {
+///             port = 8080
 ///           }
 ///         }
-///         "livenessProbe" = {
-///           "httpGet" = {
-///             "path" = "/"
+///         liveness_probe = {
+///           http_get = {
+///             path = "/"
 ///           }
 ///         }
 ///       }]
@@ -1974,7 +2013,7 @@ import 'service_traffic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2016,7 +2055,7 @@ import 'service_traffic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2025,19 +2064,22 @@ import 'service_traffic.dart';
 /// }
 ///
 /// resource "gcp_cloudrun_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cloudrun-srv-rp"
 ///   location = "us-central1"
 ///   template = {
 ///     spec = {
 ///       containers = [{
-///         "image" = "us-docker.pkg.dev/cloudrun/container/hello"
-///         "readinessProbe" = {
-///           "timeoutSeconds"   = 20
-///           "periodSeconds"    = 30
-///           "successThreshold" = 3
-///           "failureThreshold" = 2
-///           "grpc" = {
-///             "port" = 8080
+///         image = "us-docker.pkg.dev/cloudrun/container/hello"
+///         readiness_probe = {
+///           timeout_seconds   = 20
+///           period_seconds    = 30
+///           success_threshold = 3
+///           failure_threshold = 2
+///           grpc = {
+///             port = 8080
 ///           }
 ///         }
 ///       }]
@@ -2350,7 +2392,7 @@ import 'service_traffic.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2433,7 +2475,7 @@ import 'service_traffic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2442,6 +2484,9 @@ import 'service_traffic.dart';
 /// }
 ///
 /// resource "gcp_cloudrun_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cloudrun-srv"
 ///   location = "us-central1"
 ///   template = {
@@ -2454,37 +2499,37 @@ import 'service_traffic.dart';
 ///     }
 ///     spec = {
 ///       containers = [{
-///         "name" = "hello-1"
-///         "ports" = [{
-///           "containerPort" = 8080
+///         name = "hello-1"
+///         ports = [{
+///           container_port = 8080
 ///         }]
-///         "image" = "us-docker.pkg.dev/cloudrun/container/hello"
-///         "volumeMounts" = [{
-///           "name"      = "shared-volume"
-///           "mountPath" = "/mnt/shared"
+///         image = "us-docker.pkg.dev/cloudrun/container/hello"
+///         volume_mounts = [{
+///           name       = "shared-volume"
+///           mount_path = "/mnt/shared"
 ///         }]
 ///         }, {
-///         "name"  = "hello-2"
-///         "image" = "us-docker.pkg.dev/cloudrun/container/hello"
-///         "envs" = [{
-///           "name"  = "PORT"
-///           "value" = "8081"
+///         name  = "hello-2"
+///         image = "us-docker.pkg.dev/cloudrun/container/hello"
+///         envs = [{
+///           name  = "PORT"
+///           value = "8081"
 ///         }]
-///         "startupProbe" = {
-///           "httpGet" = {
-///             "port" = 8081
+///         startup_probe = {
+///           http_get = {
+///             port = 8081
 ///           }
 ///         }
-///         "volumeMounts" = [{
-///           "name"      = "shared-volume"
-///           "mountPath" = "/mnt/shared"
+///         volume_mounts = [{
+///           name       = "shared-volume"
+///           mount_path = "/mnt/shared"
 ///         }]
 ///       }]
 ///       volumes = [{
-///         "name" = "shared-volume"
-///         "emptyDir" = {
-///           "medium"    = "Memory"
-///           "sizeLimit" = "128Mi"
+///         name = "shared-volume"
+///         empty_dir = {
+///           medium     = "Memory"
+///           size_limit = "128Mi"
 ///         }
 ///       }]
 ///     }
@@ -2704,7 +2749,7 @@ import 'service_traffic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2736,7 +2781,7 @@ import 'service_traffic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2745,6 +2790,9 @@ import 'service_traffic.dart';
 /// }
 ///
 /// resource "gcp_cloudrun_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cloudrun-srv"
 ///   location = "us-central1"
 ///   metadata = {
@@ -2755,7 +2803,7 @@ import 'service_traffic.dart';
 ///   template = {
 ///     spec = {
 ///       containers = [{
-///         "image" = "gcr.io/cloudrun/hello"
+///         image = "gcr.io/cloudrun/hello"
 ///       }]
 ///     }
 ///   }
@@ -2908,7 +2956,7 @@ import 'service_traffic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2941,7 +2989,7 @@ import 'service_traffic.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2950,6 +2998,9 @@ import 'service_traffic.dart';
 /// }
 ///
 /// resource "gcp_cloudrun_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cloudrun-srv"
 ///   location = "us-central1"
 ///   metadata = {
@@ -2960,8 +3011,8 @@ import 'service_traffic.dart';
 ///   template = {
 ///     spec = {
 ///       containers = [{
-///         "image"           = "gcr.io/cloudrun/hello"
-///         "sandboxLauncher" = true
+///         image            = "gcr.io/cloudrun/hello"
+///         sandbox_launcher = true
 ///       }]
 ///     }
 ///   }
@@ -3104,7 +3155,7 @@ class Service extends pulumi.CustomResource {
           'gcp:cloudrun/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     autogenerateRevisionName = registerOutput<bool?>('autogenerateRevisionName');
     deletionPolicy = registerOutput<String>('deletionPolicy');

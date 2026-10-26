@@ -111,7 +111,7 @@ import 'row_access_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -156,7 +156,7 @@ import 'row_access_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -165,16 +165,33 @@ import 'row_access_policy_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "dataset_id"
 ///   location   = "US"
 /// }
 /// resource "gcp_bigquery_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
-///   schema              = "[\n  {\n    \\\"name\\\": \\\"nullable_field\\\",\n    \\\"type\\\": \\\"STRING\\\"\n  }\n]\n"
+///   schema              = <<EOF
+/// [
+///   {
+///     \"name\": \"nullable_field\",
+///     \"type\": \"STRING\"
+///   }
+/// ]
+/// EOF
+///
 ///   dataset_id          = gcp_bigquery_dataset.example.dataset_id
 ///   table_id            = "table_id"
 /// }
-/// resource "gcp_bigquery_rowaccesspolicy" "example" {
+/// resource "gcp_bigquery_row_access_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id       = gcp_bigquery_dataset.example.dataset_id
 ///   table_id         = gcp_bigquery_table.example.table_id
 ///   policy_id        = "policy_id"
@@ -357,7 +374,7 @@ class RowAccessPolicy extends pulumi.CustomResource {
           'gcp:bigquery/rowAccessPolicy:RowAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     datasetId = registerOutput<String>('datasetId');

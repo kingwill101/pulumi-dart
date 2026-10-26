@@ -138,7 +138,7 @@ class DataTableState {
 
   factory DataTableState.fromMap(Map<String, dynamic> map) {
     return DataTableState(
-      approximateRowCount: (() { final guardedValue = map['approximateRowCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      approximateRowCount: (() { final guardedValue = map['approximateRowCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       columnInfos: (() { final guardedValue = map['columnInfos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataTableColumnInfo>(guardedValue, (value) => DataTableColumnInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataTableId: (() { final guardedValue = map['dataTableId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -152,7 +152,7 @@ class DataTableState {
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rowTimeToLive: (() { final guardedValue = map['rowTimeToLive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rowTimeToLiveUpdateTime: (() { final guardedValue = map['rowTimeToLiveUpdateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ruleAssociationsCount: (() { final guardedValue = map['ruleAssociationsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ruleAssociationsCount: (() { final guardedValue = map['ruleAssociationsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       scopeInfo: (() { final guardedValue = map['scopeInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataTableScopeInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       updateSource: (() { final guardedValue = map['updateSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

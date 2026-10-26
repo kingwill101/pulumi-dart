@@ -85,8 +85,8 @@ import 'tag_template_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -117,7 +117,7 @@ import 'tag_template_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -125,16 +125,19 @@ import 'tag_template_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_datacatalog_tagtemplateiampolicy" "policy" {
+/// resource "gcp_datacatalog_tag_template_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tag_template = basicTagTemplate.name
-///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data  = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -241,7 +244,7 @@ import 'tag_template_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -262,7 +265,7 @@ import 'tag_template_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -270,7 +273,10 @@ import 'tag_template_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datacatalog_tagtemplateiambinding" "binding" {
+/// resource "gcp_datacatalog_tag_template_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tag_template = basicTagTemplate.name
 ///   role         = "roles/viewer"
 ///   members      = ["user:jane@example.com"]
@@ -361,7 +367,7 @@ import 'tag_template_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -380,7 +386,7 @@ import 'tag_template_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -388,7 +394,10 @@ import 'tag_template_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datacatalog_tagtemplateiammember" "member" {
+/// resource "gcp_datacatalog_tag_template_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tag_template = basicTagTemplate.name
 ///   role         = "roles/viewer"
 ///   member       = "user:jane@example.com"
@@ -523,8 +532,8 @@ import 'tag_template_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -555,7 +564,7 @@ import 'tag_template_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -563,16 +572,19 @@ import 'tag_template_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_datacatalog_tagtemplateiampolicy" "policy" {
+/// resource "gcp_datacatalog_tag_template_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tag_template = basicTagTemplate.name
-///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data  = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -679,7 +691,7 @@ import 'tag_template_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -700,7 +712,7 @@ import 'tag_template_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -708,7 +720,10 @@ import 'tag_template_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datacatalog_tagtemplateiambinding" "binding" {
+/// resource "gcp_datacatalog_tag_template_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tag_template = basicTagTemplate.name
 ///   role         = "roles/viewer"
 ///   members      = ["user:jane@example.com"]
@@ -799,7 +814,7 @@ import 'tag_template_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -818,7 +833,7 @@ import 'tag_template_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -826,7 +841,10 @@ import 'tag_template_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datacatalog_tagtemplateiammember" "member" {
+/// resource "gcp_datacatalog_tag_template_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tag_template = basicTagTemplate.name
 ///   role         = "roles/viewer"
 ///   member       = "user:jane@example.com"
@@ -947,7 +965,7 @@ class TagTemplateIamBinding extends pulumi.CustomResource {
           'gcp:datacatalog/tagTemplateIamBinding:TagTemplateIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     condition = registerOutput<TagTemplateIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TagTemplateIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

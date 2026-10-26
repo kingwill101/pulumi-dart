@@ -156,8 +156,8 @@ import 'vpc_service_controls_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -176,14 +176,14 @@ import 'vpc_service_controls_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// Create a private connection
 /// 		defaultConnection, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
-/// 			Network: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: _default.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				defaultGlobalAddress.Name,
@@ -208,7 +208,7 @@ import 'vpc_service_controls_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -218,10 +218,16 @@ import 'vpc_service_controls_state.dart';
 ///
 /// # Create a VPC
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-network"
 /// }
 /// # Create an IP address
-/// resource "gcp_compute_globaladdress" "default" {
+/// resource "gcp_compute_global_address" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "psa-range"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -230,16 +236,22 @@ import 'vpc_service_controls_state.dart';
 /// }
 /// # Create a private connection
 /// resource "gcp_servicenetworking_connection" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.default.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.default.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.default.name]
 /// }
 /// # Enable VPC-SC on the producer network
-/// resource "gcp_servicenetworking_vpcservicecontrols" "default" {
+/// resource "gcp_servicenetworking_vpc_service_controls" "default" {
 ///   depends_on = [gcp_servicenetworking_connection.default]
-///   network    = gcp_compute_network.default.name
-///   service    = "servicenetworking.googleapis.com"
-///   enabled    = true
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   network = gcp_compute_network.default.name
+///   service = "servicenetworking.googleapis.com"
+///   enabled = true
 /// }
 /// ```
 /// ```java
@@ -384,7 +396,7 @@ class VpcServiceControls extends pulumi.CustomResource {
           'gcp:servicenetworking/vpcServiceControls:VpcServiceControls',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
     network = registerOutput<String>('network');

@@ -145,7 +145,7 @@ import 'workload_workload_options.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/assuredworkloads"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/assuredworkloads"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -191,7 +191,7 @@ import 'workload_workload_options.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -200,6 +200,9 @@ import 'workload_workload_options.dart';
 /// }
 ///
 /// resource "gcp_assuredworkloads_workload" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compliance_regime = "FEDRAMP_MODERATE"
 ///   display_name      = "{{display}}"
 ///   location          = "us-west1"
@@ -429,7 +432,7 @@ import 'workload_workload_options.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/assuredworkloads"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/assuredworkloads"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -470,7 +473,7 @@ import 'workload_workload_options.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -479,6 +482,9 @@ import 'workload_workload_options.dart';
 /// }
 ///
 /// resource "gcp_assuredworkloads_workload" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compliance_regime         = "EU_REGIONS_AND_SUPPORT"
 ///   display_name              = "display"
 ///   location                  = "europe-west9"
@@ -702,7 +708,7 @@ import 'workload_workload_options.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/assuredworkloads"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/assuredworkloads"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -746,7 +752,7 @@ import 'workload_workload_options.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -755,6 +761,9 @@ import 'workload_workload_options.dart';
 /// }
 ///
 /// resource "gcp_assuredworkloads_workload" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compliance_regime = "ASSURED_WORKLOADS_FOR_PARTNERS"
 ///   display_name      = "display"
 ///   location          = "europe-west8"
@@ -955,7 +964,7 @@ class Workload extends pulumi.CustomResource {
           'gcp:assuredworkloads/workload:Workload',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     billingAccount = registerOutput<String?>('billingAccount');

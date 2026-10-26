@@ -74,6 +74,7 @@ import 'ull_mirroring_collector_rule_state.dart';
 ///         ipProtocols: ["tcp"],
 ///         srcIpRanges: ["10.0.0.0/8"],
 ///         dstIpRanges: ["192.168.0.0/16"],
+///         primaryIpRanges: ["10.1.0.0/16"],
 ///     },
 /// });
 /// ```
@@ -131,6 +132,7 @@ import 'ull_mirroring_collector_rule_state.dart';
 ///         "ip_protocols": ["tcp"],
 ///         "src_ip_ranges": ["10.0.0.0/8"],
 ///         "dst_ip_ranges": ["192.168.0.0/16"],
+///         "primary_ip_ranges": ["10.1.0.0/16"],
 ///     })
 /// ```
 /// ```csharp
@@ -228,6 +230,10 @@ import 'ull_mirroring_collector_rule_state.dart';
 ///             {
 ///                 "192.168.0.0/16",
 ///             },
+///             PrimaryIpRanges = new[]
+///             {
+///                 "10.1.0.0/16",
+///             },
 ///         },
 ///     });
 ///
@@ -237,8 +243,8 @@ import 'ull_mirroring_collector_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -273,7 +279,7 @@ import 'ull_mirroring_collector_rule_state.dart';
 /// 		backendService, err := compute.NewRegionBackendService(ctx, "backend_service", &compute.RegionBackendServiceArgs{
 /// 			Name:                pulumi.String("example-bs"),
 /// 			Region:              pulumi.String("us-south1"),
-/// 			HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:        healthCheck.ID(),
 /// 			Protocol:            pulumi.String("UDP"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
 /// 		})
@@ -285,7 +291,7 @@ import 'ull_mirroring_collector_rule_state.dart';
 /// 			Region:              pulumi.String("us-south1"),
 /// 			Network:             network.Name,
 /// 			Subnetwork:          subnetwork.Name,
-/// 			BackendService:      backendService.ID().ToIDOutput().ToStringOutput(),
+/// 			BackendService:      backendService.ID(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
 /// 			Ports: pulumi.StringArray{
 /// 				pulumi.String("6081"),
@@ -306,8 +312,8 @@ import 'ull_mirroring_collector_rule_state.dart';
 /// 		collector, err := networksecurity.NewUllMirroringCollector(ctx, "collector", &networksecurity.UllMirroringCollectorArgs{
 /// 			UllMirroringCollectorId: pulumi.String("example-ull-col"),
 /// 			Location:                pulumi.String("us-south1-d"),
-/// 			ForwardingRule:          forwardingRule.ID().ToIDOutput().ToStringOutput(),
-/// 			Engine:                  ullMirroringEngine.ID().ToIDOutput().ToStringOutput(),
+/// 			ForwardingRule:          forwardingRule.ID(),
+/// 			Engine:                  ullMirroringEngine.ID(),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -330,6 +336,9 @@ import 'ull_mirroring_collector_rule_state.dart';
 /// 				DstIpRanges: pulumi.StringArray{
 /// 					pulumi.String("192.168.0.0/16"),
 /// 				},
+/// 				PrimaryIpRanges: pulumi.StringArray{
+/// 					pulumi.String("10.1.0.0/16"),
+/// 				},
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -340,7 +349,7 @@ import 'ull_mirroring_collector_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -349,62 +358,87 @@ import 'ull_mirroring_collector_rule_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "subnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example-subnet"
 ///   region        = "us-south1"
 ///   ip_cidr_range = "10.1.0.0/16"
 ///   network       = gcp_compute_network.network.name
 /// }
-/// resource "gcp_compute_regionhealthcheck" "health_check" {
+/// resource "gcp_compute_region_health_check" "health_check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example-hc"
 ///   region = "us-south1"
 ///   http_health_check = {
 ///     port = 80
 ///   }
 /// }
-/// resource "gcp_compute_regionbackendservice" "backend_service" {
+/// resource "gcp_compute_region_backend_service" "backend_service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-bs"
 ///   region                = "us-south1"
-///   health_checks         = gcp_compute_regionhealthcheck.health_check.id
+///   health_checks         = gcp_compute_region_health_check.health_check.id
 ///   protocol              = "UDP"
 ///   load_balancing_scheme = "INTERNAL"
 /// }
-/// resource "gcp_compute_forwardingrule" "forwarding_rule" {
+/// resource "gcp_compute_forwarding_rule" "forwarding_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-fwr"
 ///   region                 = "us-south1"
 ///   network                = gcp_compute_network.network.name
 ///   subnetwork             = gcp_compute_subnetwork.subnetwork.name
-///   backend_service        = gcp_compute_regionbackendservice.backend_service.id
+///   backend_service        = gcp_compute_region_backend_service.backend_service.id
 ///   load_balancing_scheme  = "INTERNAL"
 ///   ports                  = [6081]
 ///   ip_protocol            = "UDP"
 ///   is_mirroring_collector = true
 /// }
-/// resource "gcp_networksecurity_ullmirroringengine" "ull_mirroring_engine" {
+/// resource "gcp_networksecurity_ull_mirroring_engine" "ull_mirroring_engine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ull_mirroring_engine_id = "example-ull-eng"
 ///   location                = "us-south1-d"
 /// }
-/// resource "gcp_networksecurity_ullmirroringcollector" "collector" {
+/// resource "gcp_networksecurity_ull_mirroring_collector" "collector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ull_mirroring_collector_id = "example-ull-col"
 ///   location                   = "us-south1-d"
-///   forwarding_rule            = gcp_compute_forwardingrule.forwarding_rule.id
-///   engine                     = gcp_networksecurity_ullmirroringengine.ull_mirroring_engine.id
+///   forwarding_rule            = gcp_compute_forwarding_rule.forwarding_rule.id
+///   engine                     = gcp_networksecurity_ull_mirroring_engine.ull_mirroring_engine.id
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_networksecurity_ullmirroringcollectorrule" "default" {
+/// resource "gcp_networksecurity_ull_mirroring_collector_rule" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ull_mirroring_collector_rule_id = "example-ull-rule"
 ///   location                        = "us-south1-d"
-///   ull_mirroring_collector         = gcp_networksecurity_ullmirroringcollector.collector.ull_mirroring_collector_id
+///   ull_mirroring_collector         = gcp_networksecurity_ull_mirroring_collector.collector.ull_mirroring_collector_id
 ///   match = {
-///     direction     = "INGRESS"
-///     ip_protocols  = ["tcp"]
-///     src_ip_ranges = ["10.0.0.0/8"]
-///     dst_ip_ranges = ["192.168.0.0/16"]
+///     direction         = "INGRESS"
+///     ip_protocols      = ["tcp"]
+///     src_ip_ranges     = ["10.0.0.0/8"]
+///     dst_ip_ranges     = ["192.168.0.0/16"]
+///     primary_ip_ranges = ["10.1.0.0/16"]
 ///   }
 /// }
 /// ```
@@ -507,6 +541,7 @@ import 'ull_mirroring_collector_rule_state.dart';
 ///                 .ipProtocols("tcp")
 ///                 .srcIpRanges("10.0.0.0/8")
 ///                 .dstIpRanges("192.168.0.0/16")
+///                 .primaryIpRanges("10.1.0.0/16")
 ///                 .build())
 ///             .build());
 ///
@@ -587,6 +622,8 @@ import 'ull_mirroring_collector_rule_state.dart';
 ///           - 10.0.0.0/8
 ///         dstIpRanges:
 ///           - 192.168.0.0/16
+///         primaryIpRanges:
+///           - 10.1.0.0/16
 /// ```
 ///
 ///
@@ -657,7 +694,7 @@ class UllMirroringCollectorRule extends pulumi.CustomResource {
           'gcp:networksecurity/ullMirroringCollectorRule:UllMirroringCollectorRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

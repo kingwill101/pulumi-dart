@@ -14,6 +14,9 @@ import 'application_url_dispatch_rule.dart';
 ///
 ///
 ///
+/// &gt; **Note:** All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_secret_wo`.
+/// Read more about Write-only Arguments.
+///
 /// ## Example Usage
 ///
 ///
@@ -70,8 +73,8 @@ import 'application_url_dispatch_rule.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -97,7 +100,7 @@ import 'application_url_dispatch_rule.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -106,11 +109,17 @@ import 'application_url_dispatch_rule.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "my_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "My Project"
 ///   project_id = "your-project-id"
 ///   org_id     = "1234567"
 /// }
 /// resource "gcp_appengine_application" "app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = gcp_organizations_project.my_project.project_id
 ///   location_id = "us-central"
 /// }
@@ -204,7 +213,7 @@ class Application extends pulumi.CustomResource {
   /// The GCR domain used for storing managed Docker images for this app.
   late final pulumi.Output<String> gcrDomain;
   /// Settings for enabling Cloud Identity Aware Proxy
-  late final pulumi.Output<ApplicationIap> iap;
+  late final pulumi.Output<ApplicationIap?> iap;
   /// The [location](https://cloud.google.com/appengine/docs/locations)
   /// to serve the app from.
   late final pulumi.Output<String> locationId;
@@ -233,7 +242,7 @@ class Application extends pulumi.CustomResource {
           'gcp:appengine/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     authDomain = registerOutput<String>('authDomain');
@@ -243,7 +252,7 @@ class Application extends pulumi.CustomResource {
     defaultHostname = registerOutput<String>('defaultHostname');
     featureSettings = registerOutput<ApplicationFeatureSettings>('featureSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationFeatureSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gcrDomain = registerOutput<String>('gcrDomain');
-    iap = registerOutput<ApplicationIap>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationIap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    iap = registerOutput<ApplicationIap?>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationIap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     locationId = registerOutput<String>('locationId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -284,7 +293,7 @@ class Application extends pulumi.CustomResource {
     defaultHostname = registerOutput<String>('defaultHostname');
     featureSettings = registerOutput<ApplicationFeatureSettings>('featureSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationFeatureSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gcrDomain = registerOutput<String>('gcrDomain');
-    iap = registerOutput<ApplicationIap>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationIap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    iap = registerOutput<ApplicationIap?>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationIap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     locationId = registerOutput<String>('locationId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -310,7 +319,7 @@ class Application extends pulumi.CustomResource {
     defaultHostname = registerOutput<String>('defaultHostname');
     featureSettings = registerOutput<ApplicationFeatureSettings>('featureSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationFeatureSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gcrDomain = registerOutput<String>('gcrDomain');
-    iap = registerOutput<ApplicationIap>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationIap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    iap = registerOutput<ApplicationIap?>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationIap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     locationId = registerOutput<String>('locationId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

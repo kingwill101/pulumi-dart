@@ -405,7 +405,7 @@ import 'certificate_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi-tls/sdk/v5/go/tls"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -554,7 +554,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -568,14 +568,20 @@ import 'certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_certificateauthority_capool" "default" {
+/// resource "gcp_certificateauthority_ca_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   name     = "default"
 ///   tier     = "ENTERPRISE"
 /// }
 /// resource "gcp_certificateauthority_authority" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                 = "us-central1"
-///   pool                     = gcp_certificateauthority_capool.default.name
+///   pool                     = gcp_certificateauthority_ca_pool.default.name
 ///   certificate_authority_id = "my-authority"
 ///   config = {
 ///     subject_config = {
@@ -609,12 +615,18 @@ import 'certificate_state.dart';
 ///   skip_grace_period                      = true
 ///   ignore_active_certificates_on_deletion = true
 /// }
-/// resource "tls_privatekey" "cert_key" {
+/// resource "tls_private_key" "cert_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   algorithm = "RSA"
 /// }
 /// resource "gcp_certificateauthority_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-central1"
-///   pool                  = gcp_certificateauthority_capool.default.name
+///   pool                  = gcp_certificateauthority_ca_pool.default.name
 ///   certificate_authority = gcp_certificateauthority_authority.default.certificate_authority_id
 ///   lifetime              = "86000s"
 ///   name                  = "cert-1"
@@ -662,7 +674,7 @@ import 'certificate_state.dart';
 ///     }
 ///     public_key = {
 ///       format = "PEM"
-///       key    = base64encode(tls_privatekey.cert_key.public_key_pem)
+///       key    = base64encode(tls_private_key.cert_key.public_key_pem)
 ///     }
 ///   }
 /// }
@@ -1389,7 +1401,7 @@ import 'certificate_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1547,7 +1559,7 @@ import 'certificate_state.dart';
 /// 			Name:                 pulumi.String("my-certificate"),
 /// 			Lifetime:             pulumi.String("860s"),
 /// 			PemCsr:               pulumi.String(invokeFile.Result),
-/// 			CertificateTemplate:  defaultCertificateTemplate.ID().ToIDOutput().ToStringOutput(),
+/// 			CertificateTemplate:  defaultCertificateTemplate.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1557,7 +1569,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1568,12 +1580,18 @@ import 'certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_certificateauthority_capool" "default" {
+/// resource "gcp_certificateauthority_ca_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   name     = "my-pool"
 ///   tier     = "ENTERPRISE"
 /// }
-/// resource "gcp_certificateauthority_certificatetemplate" "default" {
+/// resource "gcp_certificateauthority_certificate_template" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   name        = "my-certificate-template"
 ///   description = "An updated sample certificate template"
@@ -1589,17 +1607,17 @@ import 'certificate_state.dart';
 ///   }
 ///   passthrough_extensions = {
 ///     additional_extensions = [{
-///       "objectIdPaths" = [1, 6]
+///       object_id_paths = [1, 6]
 ///     }]
 ///     known_extensions = ["EXTENDED_KEY_USAGE"]
 ///   }
 ///   predefined_values = {
 ///     additional_extensions = [{
-///       "objectId" = {
-///         "objectIdPaths" = [1, 6]
+///       object_id = {
+///         object_id_paths = [1, 6]
 ///       }
-///       "value"    = "c3RyaW5nCg=="
-///       "critical" = true
+///       value    = "c3RyaW5nCg=="
+///       critical = true
 ///     }]
 ///     aia_ocsp_servers = ["string"]
 ///     ca_options = {
@@ -1627,17 +1645,20 @@ import 'certificate_state.dart';
 ///         time_stamping    = true
 ///       }
 ///       unknown_extended_key_usages = [{
-///         "objectIdPaths" = [1, 6]
+///         object_id_paths = [1, 6]
 ///       }]
 ///     }
 ///     policy_ids = [{
-///       "objectIdPaths" = [1, 6]
+///       object_id_paths = [1, 6]
 ///     }]
 ///   }
 /// }
 /// resource "gcp_certificateauthority_authority" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                 = "us-central1"
-///   pool                     = gcp_certificateauthority_capool.default.name
+///   pool                     = gcp_certificateauthority_ca_pool.default.name
 ///   certificate_authority_id = "my-authority"
 ///   config = {
 ///     subject_config = {
@@ -1674,13 +1695,16 @@ import 'certificate_state.dart';
 ///   ignore_active_certificates_on_deletion = true
 /// }
 /// resource "gcp_certificateauthority_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-central1"
-///   pool                  = gcp_certificateauthority_capool.default.name
+///   pool                  = gcp_certificateauthority_ca_pool.default.name
 ///   certificate_authority = gcp_certificateauthority_authority.default.certificate_authority_id
 ///   name                  = "my-certificate"
 ///   lifetime              = "860s"
 ///   pem_csr               = file("test-fixtures/rsa_csr.pem")
-///   certificate_template  = gcp_certificateauthority_certificatetemplate.default.id
+///   certificate_template  = gcp_certificateauthority_certificate_template.default.id
 /// }
 /// ```
 /// ```java
@@ -2179,7 +2203,7 @@ import 'certificate_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -2257,7 +2281,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2268,14 +2292,20 @@ import 'certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_certificateauthority_capool" "default" {
+/// resource "gcp_certificateauthority_ca_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   name     = "my-pool"
 ///   tier     = "ENTERPRISE"
 /// }
 /// resource "gcp_certificateauthority_authority" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                 = "us-central1"
-///   pool                     = gcp_certificateauthority_capool.default.name
+///   pool                     = gcp_certificateauthority_ca_pool.default.name
 ///   certificate_authority_id = "my-authority"
 ///   config = {
 ///     subject_config = {
@@ -2312,8 +2342,11 @@ import 'certificate_state.dart';
 ///   ignore_active_certificates_on_deletion = true
 /// }
 /// resource "gcp_certificateauthority_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-central1"
-///   pool                  = gcp_certificateauthority_capool.default.name
+///   pool                  = gcp_certificateauthority_ca_pool.default.name
 ///   certificate_authority = gcp_certificateauthority_authority.default.certificate_authority_id
 ///   name                  = "my-certificate"
 ///   lifetime              = "860s"
@@ -2778,7 +2811,7 @@ import 'certificate_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -2889,7 +2922,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2900,14 +2933,20 @@ import 'certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_certificateauthority_capool" "default" {
+/// resource "gcp_certificateauthority_ca_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   name     = "my-pool"
 ///   tier     = "ENTERPRISE"
 /// }
 /// resource "gcp_certificateauthority_authority" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                 = "us-central1"
-///   pool                     = gcp_certificateauthority_capool.default.name
+///   pool                     = gcp_certificateauthority_ca_pool.default.name
 ///   certificate_authority_id = "my-authority"
 ///   config = {
 ///     subject_config = {
@@ -2945,10 +2984,13 @@ import 'certificate_state.dart';
 /// }
 /// resource "gcp_certificateauthority_certificate" "default" {
 ///   depends_on = [gcp_certificateauthority_authority.default]
-///   location   = "us-central1"
-///   pool       = gcp_certificateauthority_capool.default.name
-///   name       = "my-certificate"
-///   lifetime   = "860s"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location = "us-central1"
+///   pool     = gcp_certificateauthority_ca_pool.default.name
+///   name     = "my-certificate"
+///   lifetime = "860s"
 ///   config = {
 ///     subject_config = {
 ///       subject = {
@@ -3518,7 +3560,7 @@ import 'certificate_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -3632,7 +3674,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3643,14 +3685,20 @@ import 'certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_certificateauthority_capool" "default" {
+/// resource "gcp_certificateauthority_ca_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   name     = "my-pool"
 ///   tier     = "ENTERPRISE"
 /// }
 /// resource "gcp_certificateauthority_authority" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                 = "us-central1"
-///   pool                     = gcp_certificateauthority_capool.default.name
+///   pool                     = gcp_certificateauthority_ca_pool.default.name
 ///   certificate_authority_id = "my-authority"
 ///   config = {
 ///     subject_config = {
@@ -3688,10 +3736,13 @@ import 'certificate_state.dart';
 /// }
 /// resource "gcp_certificateauthority_certificate" "default" {
 ///   depends_on = [gcp_certificateauthority_authority.default]
-///   location   = "us-central1"
-///   pool       = gcp_certificateauthority_capool.default.name
-///   name       = "my-certificate"
-///   lifetime   = "860s"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location = "us-central1"
+///   pool     = gcp_certificateauthority_ca_pool.default.name
+///   name     = "my-certificate"
+///   lifetime = "860s"
 ///   config = {
 ///     subject_config = {
 ///       subject = {
@@ -4236,7 +4287,7 @@ import 'certificate_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -4339,7 +4390,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4350,14 +4401,20 @@ import 'certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_certificateauthority_capool" "default" {
+/// resource "gcp_certificateauthority_ca_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   name     = "my-pool"
 ///   tier     = "ENTERPRISE"
 /// }
 /// resource "gcp_certificateauthority_authority" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                 = "us-central1"
-///   pool                     = gcp_certificateauthority_capool.default.name
+///   pool                     = gcp_certificateauthority_ca_pool.default.name
 ///   certificate_authority_id = "my-authority"
 ///   config = {
 ///     subject_config = {
@@ -4394,10 +4451,13 @@ import 'certificate_state.dart';
 /// }
 /// resource "gcp_certificateauthority_certificate" "default" {
 ///   depends_on = [gcp_certificateauthority_authority.default]
-///   location   = "us-central1"
-///   pool       = gcp_certificateauthority_capool.default.name
-///   name       = "my-certificate"
-///   lifetime   = "860s"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location = "us-central1"
+///   pool     = gcp_certificateauthority_ca_pool.default.name
+///   name     = "my-certificate"
+///   lifetime = "860s"
 ///   config = {
 ///     subject_config = {
 ///       subject = {
@@ -4721,7 +4781,7 @@ class Certificate extends pulumi.CustomResource {
           'gcp:certificateauthority/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     certificateAuthority = registerOutput<String?>('certificateAuthority');

@@ -35,8 +35,8 @@ class GetTiersTier {
 
   factory GetTiersTier.fromMap(Map<String, dynamic> map) {
     return GetTiersTier(
-      diskQuota: pulumi.Input.fromValue((map['diskQuota'] as num).toInt()),
-      ram: pulumi.Input.fromValue((map['ram'] as num).toInt()),
+      diskQuota: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskQuota'])),
+      ram: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ram'])),
       regions: pulumi.Input.fromValue((map['regions'] as List).cast<String>()),
       tier: pulumi.Input.fromValue(map['tier'] as String),
     );

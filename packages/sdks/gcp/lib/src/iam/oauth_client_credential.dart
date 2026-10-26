@@ -101,7 +101,7 @@ import 'oauth_client_credential_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -139,7 +139,7 @@ import 'oauth_client_credential_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -147,7 +147,10 @@ import 'oauth_client_credential_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_oauthclient" "oauth_client" {
+/// resource "gcp_iam_oauth_client" "oauth_client" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   oauth_client_id       = "example-client-id"
 ///   location              = "global"
 ///   allowed_grant_types   = ["AUTHORIZATION_CODE_GRANT"]
@@ -155,9 +158,12 @@ import 'oauth_client_credential_state.dart';
 ///   allowed_scopes        = ["https://www.googleapis.com/auth/cloud-platform"]
 ///   client_type           = "CONFIDENTIAL_CLIENT"
 /// }
-/// resource "gcp_iam_oauthclientcredential" "example" {
-///   oauthclient                = gcp_iam_oauthclient.oauth_client.oauth_client_id
-///   location                   = gcp_iam_oauthclient.oauth_client.location
+/// resource "gcp_iam_oauth_client_credential" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   oauthclient                = gcp_iam_oauth_client.oauth_client.oauth_client_id
+///   location                   = gcp_iam_oauth_client.oauth_client.location
 ///   oauth_client_credential_id = "cred-id"
 ///   disabled                   = true
 ///   display_name               = "Display Name of credential"
@@ -298,7 +304,7 @@ class OauthClientCredential extends pulumi.CustomResource {
           'gcp:iam/oauthClientCredential:OauthClientCredential',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['clientSecret'],
         ) {
     clientSecret = registerOutput<String>('clientSecret', isSecret: true);

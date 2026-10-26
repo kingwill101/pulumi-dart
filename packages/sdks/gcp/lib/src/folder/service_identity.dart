@@ -89,8 +89,8 @@ import 'service_identity_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/folder"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/folder"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -123,7 +123,7 @@ import 'service_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -132,17 +132,26 @@ import 'service_identity_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_folder" "my_folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "organizations/1234567"
 ///   display_name = "my-folder"
 /// }
-/// resource "gcp_folder_serviceidentity" "osconfig_sa" {
+/// resource "gcp_folder_service_identity" "osconfig_sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   folder  = gcp_organizations_folder.my_folder.folder_id
 ///   service = "osconfig.googleapis.com"
 /// }
-/// resource "gcp_folder_iammember" "admin" {
+/// resource "gcp_folder_i_a_m_member" "admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   folder = gcp_organizations_folder.my_folder.name
 ///   role   = "roles/osconfig.serviceAgent"
-///   member = gcp_folder_serviceidentity.osconfig_sa.member
+///   member = gcp_folder_service_identity.osconfig_sa.member
 /// }
 /// ```
 /// ```java
@@ -239,7 +248,7 @@ class ServiceIdentity extends pulumi.CustomResource {
           'gcp:folder/serviceIdentity:ServiceIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     email = registerOutput<String>('email');
     folder = registerOutput<String>('folder');

@@ -360,7 +360,7 @@ import 'job_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/transcoder"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/transcoder"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -477,7 +477,7 @@ import 'job_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -485,79 +485,82 @@ import 'job_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_transcoder_jobtemplate" "default" {
+/// resource "gcp_transcoder_job_template" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_template_id = "example-job-template"
 ///   location        = "us-central1"
 ///   config = {
 ///     inputs = [{
-///       "key" = "input0"
+///       key = "input0"
 ///     }]
 ///     edit_lists = [{
-///       "key"             = "atom0"
-///       "inputs"          = ["input0"]
-///       "startTimeOffset" = "0s"
+///       key               = "atom0"
+///       inputs            = ["input0"]
+///       start_time_offset = "0s"
 ///     }]
 ///     ad_breaks = [{
-///       "startTimeOffset" = "3.500s"
+///       start_time_offset = "3.500s"
 ///     }]
 ///     elementary_streams = [{
-///       "key" = "video-stream0"
-///       "videoStream" = {
-///         "h264" = {
-///           "widthPixels"     = 640
-///           "heightPixels"    = 360
-///           "bitrateBps"      = 550000
-///           "frameRate"       = 60
-///           "pixelFormat"     = "yuv420p"
-///           "rateControlMode" = "vbr"
-///           "crfLevel"        = 21
-///           "gopDuration"     = "3s"
-///           "vbvSizeBits"     = 550000
-///           "vbvFullnessBits" = 495000
-///           "entropyCoder"    = "cabac"
-///           "profile"         = "high"
-///           "preset"          = "veryfast"
+///       key = "video-stream0"
+///       video_stream = {
+///         h264 = {
+///           width_pixels      = 640
+///           height_pixels     = 360
+///           bitrate_bps       = 550000
+///           frame_rate        = 60
+///           pixel_format      = "yuv420p"
+///           rate_control_mode = "vbr"
+///           crf_level         = 21
+///           gop_duration      = "3s"
+///           vbv_size_bits     = 550000
+///           vbv_fullness_bits = 495000
+///           entropy_coder     = "cabac"
+///           profile           = "high"
+///           preset            = "veryfast"
 ///         }
 ///       }
 ///       }, {
-///       "key" = "video-stream1"
-///       "videoStream" = {
-///         "h264" = {
-///           "widthPixels"     = 1280
-///           "heightPixels"    = 720
-///           "bitrateBps"      = 550000
-///           "frameRate"       = 60
-///           "pixelFormat"     = "yuv420p"
-///           "rateControlMode" = "vbr"
-///           "crfLevel"        = 21
-///           "gopDuration"     = "3s"
-///           "vbvSizeBits"     = 2500000
-///           "vbvFullnessBits" = 2250000
-///           "entropyCoder"    = "cabac"
-///           "profile"         = "high"
-///           "preset"          = "veryfast"
+///       key = "video-stream1"
+///       video_stream = {
+///         h264 = {
+///           width_pixels      = 1280
+///           height_pixels     = 720
+///           bitrate_bps       = 550000
+///           frame_rate        = 60
+///           pixel_format      = "yuv420p"
+///           rate_control_mode = "vbr"
+///           crf_level         = 21
+///           gop_duration      = "3s"
+///           vbv_size_bits     = 2500000
+///           vbv_fullness_bits = 2250000
+///           entropy_coder     = "cabac"
+///           profile           = "high"
+///           preset            = "veryfast"
 ///         }
 ///       }
 ///       }, {
-///       "key" = "audio-stream0"
-///       "audioStream" = {
-///         "codec"           = "aac"
-///         "bitrateBps"      = 64000
-///         "channelCount"    = 2
-///         "channelLayouts"  = ["fl", "fr"]
-///         "sampleRateHertz" = 48000
+///       key = "audio-stream0"
+///       audio_stream = {
+///         codec             = "aac"
+///         bitrate_bps       = 64000
+///         channel_count     = 2
+///         channel_layouts   = ["fl", "fr"]
+///         sample_rate_hertz = 48000
 ///       }
 ///     }]
 ///     mux_streams = [{
-///       "key"               = "sd"
-///       "fileName"          = "sd.mp4"
-///       "container"         = "mp4"
-///       "elementaryStreams" = ["video-stream0", "audio-stream0"]
+///       key                = "sd"
+///       file_name          = "sd.mp4"
+///       container          = "mp4"
+///       elementary_streams = ["video-stream0", "audio-stream0"]
 ///       }, {
-///       "key"               = "hd"
-///       "fileName"          = "hd.mp4"
-///       "container"         = "mp4"
-///       "elementaryStreams" = ["video-stream1", "audio-stream0"]
+///       key                = "hd"
+///       file_name          = "hd.mp4"
+///       container          = "mp4"
+///       elementary_streams = ["video-stream1", "audio-stream0"]
 ///     }]
 ///   }
 ///   labels = {
@@ -1181,7 +1184,7 @@ import 'job_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/transcoder"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/transcoder"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1322,7 +1325,7 @@ import 'job_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1330,99 +1333,102 @@ import 'job_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_transcoder_jobtemplate" "default" {
+/// resource "gcp_transcoder_job_template" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_template_id = "example-job-template"
 ///   location        = "us-central1"
 ///   config = {
 ///     inputs = [{
-///       "key" = "input0"
-///       "uri" = "gs://example/example.mp4"
+///       key = "input0"
+///       uri = "gs://example/example.mp4"
 ///     }]
 ///     output = {
 ///       uri = "gs://example/outputs/"
 ///     }
 ///     edit_lists = [{
-///       "key"             = "atom0"
-///       "inputs"          = ["input0"]
-///       "startTimeOffset" = "0s"
+///       key               = "atom0"
+///       inputs            = ["input0"]
+///       start_time_offset = "0s"
 ///     }]
 ///     ad_breaks = [{
-///       "startTimeOffset" = "3.500s"
+///       start_time_offset = "3.500s"
 ///     }]
 ///     overlays = [{
-///       "animations" = [{
-///         "animationFade" = {
-///           "fadeType"        = "FADE_IN"
-///           "startTimeOffset" = "1.500s"
-///           "endTimeOffset"   = "3.500s"
-///           "xy" = {
-///             "x" = 1
-///             "y" = 0.5
+///       animations = [{
+///         animation_fade = {
+///           fade_type         = "FADE_IN"
+///           start_time_offset = "1.500s"
+///           end_time_offset   = "3.500s"
+///           xy = {
+///             x = 1
+///             y = 0.5
 ///           }
 ///         }
 ///       }]
-///       "image" = {
-///         "uri" = "gs://example/overlay.png"
+///       image = {
+///         uri = "gs://example/overlay.png"
 ///       }
 ///     }]
 ///     elementary_streams = [{
-///       "key" = "video-stream0"
-///       "videoStream" = {
-///         "h264" = {
-///           "widthPixels"     = 640
-///           "heightPixels"    = 360
-///           "bitrateBps"      = 550000
-///           "frameRate"       = 60
-///           "pixelFormat"     = "yuv420p"
-///           "rateControlMode" = "vbr"
-///           "crfLevel"        = 21
-///           "gopDuration"     = "3s"
-///           "vbvSizeBits"     = 550000
-///           "vbvFullnessBits" = 495000
-///           "entropyCoder"    = "cabac"
-///           "profile"         = "high"
-///           "preset"          = "veryfast"
+///       key = "video-stream0"
+///       video_stream = {
+///         h264 = {
+///           width_pixels      = 640
+///           height_pixels     = 360
+///           bitrate_bps       = 550000
+///           frame_rate        = 60
+///           pixel_format      = "yuv420p"
+///           rate_control_mode = "vbr"
+///           crf_level         = 21
+///           gop_duration      = "3s"
+///           vbv_size_bits     = 550000
+///           vbv_fullness_bits = 495000
+///           entropy_coder     = "cabac"
+///           profile           = "high"
+///           preset            = "veryfast"
 ///         }
 ///       }
 ///       }, {
-///       "key" = "video-stream1"
-///       "videoStream" = {
-///         "h264" = {
-///           "widthPixels"     = 1280
-///           "heightPixels"    = 720
-///           "bitrateBps"      = 550000
-///           "frameRate"       = 60
-///           "pixelFormat"     = "yuv420p"
-///           "rateControlMode" = "vbr"
-///           "crfLevel"        = 21
-///           "gopDuration"     = "3s"
-///           "vbvSizeBits"     = 2500000
-///           "vbvFullnessBits" = 2250000
-///           "entropyCoder"    = "cabac"
-///           "profile"         = "high"
-///           "preset"          = "veryfast"
+///       key = "video-stream1"
+///       video_stream = {
+///         h264 = {
+///           width_pixels      = 1280
+///           height_pixels     = 720
+///           bitrate_bps       = 550000
+///           frame_rate        = 60
+///           pixel_format      = "yuv420p"
+///           rate_control_mode = "vbr"
+///           crf_level         = 21
+///           gop_duration      = "3s"
+///           vbv_size_bits     = 2500000
+///           vbv_fullness_bits = 2250000
+///           entropy_coder     = "cabac"
+///           profile           = "high"
+///           preset            = "veryfast"
 ///         }
 ///       }
 ///       }, {
-///       "key" = "audio-stream0"
-///       "audioStream" = {
-///         "codec"           = "aac"
-///         "bitrateBps"      = 64000
-///         "channelCount"    = 2
-///         "channelLayouts"  = ["fl", "fr"]
-///         "sampleRateHertz" = 48000
+///       key = "audio-stream0"
+///       audio_stream = {
+///         codec             = "aac"
+///         bitrate_bps       = 64000
+///         channel_count     = 2
+///         channel_layouts   = ["fl", "fr"]
+///         sample_rate_hertz = 48000
 ///       }
 ///     }]
 ///     mux_streams = [{
-///       "key"               = "sd"
-///       "fileName"          = "sd.mp4"
-///       "container"         = "mp4"
-///       "elementaryStreams" = ["video-stream0", "audio-stream0"]
+///       key                = "sd"
+///       file_name          = "sd.mp4"
+///       container          = "mp4"
+///       elementary_streams = ["video-stream0", "audio-stream0"]
 ///       }, {
-///       "key"               = "hd"
-///       "fileName"          = "hd.mp4"
-///       "container"         = "mp4"
-///       "elementaryStreams" = ["video-stream1", "audio-stream0"]
+///       key                = "hd"
+///       file_name          = "hd.mp4"
+///       container          = "mp4"
+///       elementary_streams = ["video-stream1", "audio-stream0"]
 ///     }]
 ///   }
 ///   labels = {
@@ -2203,8 +2209,8 @@ import 'job_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/transcoder"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/transcoder"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2384,7 +2390,7 @@ import 'job_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2393,123 +2399,132 @@ import 'job_template_state.dart';
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "encryption_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "transcoder-encryption-key"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "encryption_key" {
+/// resource "gcp_secretmanager_secret_version" "encryption_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.encryption_key.name
 ///   secret_data = "4A67F2C1B8E93A4F6D3E7890A1BC23DF"
 /// }
-/// resource "gcp_transcoder_jobtemplate" "default" {
+/// resource "gcp_transcoder_job_template" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_template_id = "example-job-template"
 ///   location        = "us-central1"
 ///   config = {
 ///     elementary_streams = [{
-///       "key" = "es_video"
-///       "videoStream" = {
-///         "h264" = {
-///           "profile"      = "main"
-///           "heightPixels" = 600
-///           "widthPixels"  = 800
-///           "bitrateBps"   = 1000000
-///           "frameRate"    = 60
+///       key = "es_video"
+///       video_stream = {
+///         h264 = {
+///           profile       = "main"
+///           height_pixels = 600
+///           width_pixels  = 800
+///           bitrate_bps   = 1000000
+///           frame_rate    = 60
 ///         }
 ///       }
 ///       }, {
-///       "key" = "es_audio"
-///       "audioStream" = {
-///         "codec"        = "aac"
-///         "channelCount" = 2
-///         "bitrateBps"   = 160000
+///       key = "es_audio"
+///       audio_stream = {
+///         codec         = "aac"
+///         channel_count = 2
+///         bitrate_bps   = 160000
 ///       }
 ///     }]
 ///     encryptions = [{
-///       "id" = "aes-128"
-///       "secretManagerKeySource" = {
-///         "secretVersion" = gcp_secretmanager_secretversion.encryption_key.name
+///       id = "aes-128"
+///       secret_manager_key_source = {
+///         secret_version = gcp_secretmanager_secret_version.encryption_key.name
 ///       }
-///       "drmSystems" = {
-///         "clearkey" = {}
+///       drm_systems = {
+///         clearkey = {}
 ///       }
-///       "aes128" = {}
+///       aes128 = {}
 ///       }, {
-///       "id" = "cenc"
-///       "secretManagerKeySource" = {
-///         "secretVersion" = gcp_secretmanager_secretversion.encryption_key.name
+///       id = "cenc"
+///       secret_manager_key_source = {
+///         secret_version = gcp_secretmanager_secret_version.encryption_key.name
 ///       }
-///       "drmSystems" = {
-///         "widevine" = {}
+///       drm_systems = {
+///         widevine = {}
 ///       }
-///       "mpegCenc" = {
-///         "scheme" = "cenc"
+///       mpeg_cenc = {
+///         scheme = "cenc"
 ///       }
 ///       }, {
-///       "id" = "cbcs"
-///       "secretManagerKeySource" = {
-///         "secretVersion" = gcp_secretmanager_secretversion.encryption_key.name
+///       id = "cbcs"
+///       secret_manager_key_source = {
+///         secret_version = gcp_secretmanager_secret_version.encryption_key.name
 ///       }
-///       "drmSystems" = {
-///         "widevine" = {}
+///       drm_systems = {
+///         widevine = {}
 ///       }
-///       "mpegCenc" = {
-///         "scheme" = "cbcs"
+///       mpeg_cenc = {
+///         scheme = "cbcs"
 ///       }
 ///     }]
 ///     mux_streams = [{
-///       "key"               = "ts_aes128"
-///       "container"         = "ts"
-///       "elementaryStreams" = ["es_video", "es_audio"]
-///       "segmentSettings" = {
-///         "segmentDuration" = "6s"
+///       key                = "ts_aes128"
+///       container          = "ts"
+///       elementary_streams = ["es_video", "es_audio"]
+///       segment_settings = {
+///         segment_duration = "6s"
 ///       }
-///       "encryptionId" = "aes-128"
+///       encryption_id = "aes-128"
 ///       }, {
-///       "key"               = "fmp4_cenc_video"
-///       "container"         = "fmp4"
-///       "elementaryStreams" = ["es_video"]
-///       "segmentSettings" = {
-///         "segmentDuration" = "6s"
+///       key                = "fmp4_cenc_video"
+///       container          = "fmp4"
+///       elementary_streams = ["es_video"]
+///       segment_settings = {
+///         segment_duration = "6s"
 ///       }
-///       "encryptionId" = "cenc"
+///       encryption_id = "cenc"
 ///       }, {
-///       "key"               = "fmp4_cenc_audio"
-///       "container"         = "fmp4"
-///       "elementaryStreams" = ["es_audio"]
-///       "segmentSettings" = {
-///         "segmentDuration" = "6s"
+///       key                = "fmp4_cenc_audio"
+///       container          = "fmp4"
+///       elementary_streams = ["es_audio"]
+///       segment_settings = {
+///         segment_duration = "6s"
 ///       }
-///       "encryptionId" = "cenc"
+///       encryption_id = "cenc"
 ///       }, {
-///       "key"               = "fmp4_cbcs_video"
-///       "container"         = "fmp4"
-///       "elementaryStreams" = ["es_video"]
-///       "segmentSettings" = {
-///         "segmentDuration" = "6s"
+///       key                = "fmp4_cbcs_video"
+///       container          = "fmp4"
+///       elementary_streams = ["es_video"]
+///       segment_settings = {
+///         segment_duration = "6s"
 ///       }
-///       "encryptionId" = "cbcs"
+///       encryption_id = "cbcs"
 ///       }, {
-///       "key"               = "fmp4_cbcs_audio"
-///       "container"         = "fmp4"
-///       "elementaryStreams" = ["es_audio"]
-///       "segmentSettings" = {
-///         "segmentDuration" = "6s"
+///       key                = "fmp4_cbcs_audio"
+///       container          = "fmp4"
+///       elementary_streams = ["es_audio"]
+///       segment_settings = {
+///         segment_duration = "6s"
 ///       }
-///       "encryptionId" = "cbcs"
+///       encryption_id = "cbcs"
 ///     }]
 ///     manifests = [{
-///       "fileName"   = "manifest_aes128.m3u8"
-///       "type"       = "HLS"
-///       "muxStreams" = ["ts_aes128"]
+///       file_name   = "manifest_aes128.m3u8"
+///       type        = "HLS"
+///       mux_streams = ["ts_aes128"]
 ///       }, {
-///       "fileName"   = "manifest_cenc.mpd"
-///       "type"       = "DASH"
-///       "muxStreams" = ["fmp4_cenc_video", "fmp4_cenc_audio"]
+///       file_name   = "manifest_cenc.mpd"
+///       type        = "DASH"
+///       mux_streams = ["fmp4_cenc_video", "fmp4_cenc_audio"]
 ///       }, {
-///       "fileName"   = "manifest_cbcs.mpd"
-///       "type"       = "DASH"
-///       "muxStreams" = ["fmp4_cbcs_video", "fmp4_cbcs_audio"]
+///       file_name   = "manifest_cbcs.mpd"
+///       type        = "DASH"
+///       mux_streams = ["fmp4_cbcs_video", "fmp4_cbcs_audio"]
 ///     }]
 ///   }
 ///   labels = {
@@ -3199,8 +3214,8 @@ import 'job_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/transcoder"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/transcoder"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3315,7 +3330,7 @@ import 'job_template_state.dart';
 /// 					},
 /// 				},
 /// 				PubsubDestination: &transcoder.JobTemplateConfigPubsubDestinationArgs{
-/// 					Topic: transcoderNotifications.ID().ToIDOutput().ToStringOutput(),
+/// 					Topic: transcoderNotifications.ID(),
 /// 				},
 /// 			},
 /// 			Labels: pulumi.StringMap{
@@ -3330,7 +3345,7 @@ import 'job_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3339,85 +3354,91 @@ import 'job_template_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "transcoder_notifications" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "transcoder-notifications"
 /// }
-/// resource "gcp_transcoder_jobtemplate" "default" {
+/// resource "gcp_transcoder_job_template" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_template_id = "example-job-template"
 ///   location        = "us-central1"
 ///   config = {
 ///     inputs = [{
-///       "key" = "input0"
-///       "uri" = "gs://example/example.mp4"
+///       key = "input0"
+///       uri = "gs://example/example.mp4"
 ///     }]
 ///     output = {
 ///       uri = "gs://example/outputs/"
 ///     }
 ///     edit_lists = [{
-///       "key"             = "atom0"
-///       "inputs"          = ["input0"]
-///       "startTimeOffset" = "0s"
+///       key               = "atom0"
+///       inputs            = ["input0"]
+///       start_time_offset = "0s"
 ///     }]
 ///     ad_breaks = [{
-///       "startTimeOffset" = "3.500s"
+///       start_time_offset = "3.500s"
 ///     }]
 ///     elementary_streams = [{
-///       "key" = "video-stream0"
-///       "videoStream" = {
-///         "h264" = {
-///           "widthPixels"     = 640
-///           "heightPixels"    = 360
-///           "bitrateBps"      = 550000
-///           "frameRate"       = 60
-///           "pixelFormat"     = "yuv420p"
-///           "rateControlMode" = "vbr"
-///           "crfLevel"        = 21
-///           "gopDuration"     = "3s"
-///           "vbvSizeBits"     = 550000
-///           "vbvFullnessBits" = 495000
-///           "entropyCoder"    = "cabac"
-///           "profile"         = "high"
-///           "preset"          = "veryfast"
+///       key = "video-stream0"
+///       video_stream = {
+///         h264 = {
+///           width_pixels      = 640
+///           height_pixels     = 360
+///           bitrate_bps       = 550000
+///           frame_rate        = 60
+///           pixel_format      = "yuv420p"
+///           rate_control_mode = "vbr"
+///           crf_level         = 21
+///           gop_duration      = "3s"
+///           vbv_size_bits     = 550000
+///           vbv_fullness_bits = 495000
+///           entropy_coder     = "cabac"
+///           profile           = "high"
+///           preset            = "veryfast"
 ///         }
 ///       }
 ///       }, {
-///       "key" = "video-stream1"
-///       "videoStream" = {
-///         "h264" = {
-///           "widthPixels"     = 1280
-///           "heightPixels"    = 720
-///           "bitrateBps"      = 550000
-///           "frameRate"       = 60
-///           "pixelFormat"     = "yuv420p"
-///           "rateControlMode" = "vbr"
-///           "crfLevel"        = 21
-///           "gopDuration"     = "3s"
-///           "vbvSizeBits"     = 2500000
-///           "vbvFullnessBits" = 2250000
-///           "entropyCoder"    = "cabac"
-///           "profile"         = "high"
-///           "preset"          = "veryfast"
+///       key = "video-stream1"
+///       video_stream = {
+///         h264 = {
+///           width_pixels      = 1280
+///           height_pixels     = 720
+///           bitrate_bps       = 550000
+///           frame_rate        = 60
+///           pixel_format      = "yuv420p"
+///           rate_control_mode = "vbr"
+///           crf_level         = 21
+///           gop_duration      = "3s"
+///           vbv_size_bits     = 2500000
+///           vbv_fullness_bits = 2250000
+///           entropy_coder     = "cabac"
+///           profile           = "high"
+///           preset            = "veryfast"
 ///         }
 ///       }
 ///       }, {
-///       "key" = "audio-stream0"
-///       "audioStream" = {
-///         "codec"           = "aac"
-///         "bitrateBps"      = 64000
-///         "channelCount"    = 2
-///         "channelLayouts"  = ["fl", "fr"]
-///         "sampleRateHertz" = 48000
+///       key = "audio-stream0"
+///       audio_stream = {
+///         codec             = "aac"
+///         bitrate_bps       = 64000
+///         channel_count     = 2
+///         channel_layouts   = ["fl", "fr"]
+///         sample_rate_hertz = 48000
 ///       }
 ///     }]
 ///     mux_streams = [{
-///       "key"               = "sd"
-///       "fileName"          = "sd.mp4"
-///       "container"         = "mp4"
-///       "elementaryStreams" = ["video-stream0", "audio-stream0"]
+///       key                = "sd"
+///       file_name          = "sd.mp4"
+///       container          = "mp4"
+///       elementary_streams = ["video-stream0", "audio-stream0"]
 ///       }, {
-///       "key"               = "hd"
-///       "fileName"          = "hd.mp4"
-///       "container"         = "mp4"
-///       "elementaryStreams" = ["video-stream1", "audio-stream0"]
+///       key                = "hd"
+///       file_name          = "hd.mp4"
+///       container          = "mp4"
+///       elementary_streams = ["video-stream1", "audio-stream0"]
 ///     }]
 ///     pubsub_destination = {
 ///       topic = gcp_pubsub_topic.transcoder_notifications.id
@@ -3711,7 +3732,7 @@ class JobTemplate extends pulumi.CustomResource {
           'gcp:transcoder/jobTemplate:JobTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     config = registerOutput<JobTemplateConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobTemplateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

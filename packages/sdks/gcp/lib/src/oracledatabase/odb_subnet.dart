@@ -77,7 +77,7 @@ import 'odb_subnet_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -103,7 +103,7 @@ import 'odb_subnet_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -111,7 +111,10 @@ import 'odb_subnet_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_odbsubnet" "my-odbsubnet" {
+/// resource "gcp_oracledatabase_odb_subnet" "my-odbsubnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   odb_subnet_id = "my-odbsubnet"
 ///   location      = "europe-west2"
 ///   project       = "my-project"
@@ -255,7 +258,7 @@ class OdbSubnet extends pulumi.CustomResource {
           'gcp:oracledatabase/odbSubnet:OdbSubnet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     cidrRange = registerOutput<String>('cidrRange');

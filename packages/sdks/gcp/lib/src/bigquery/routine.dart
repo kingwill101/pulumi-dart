@@ -78,7 +78,7 @@ import 'routine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -106,7 +106,7 @@ import 'routine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -115,9 +115,15 @@ import 'routine_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "dataset_id"
 /// }
 /// resource "gcp_bigquery_routine" "sproc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id      = gcp_bigquery_dataset.test.dataset_id
 ///   routine_id      = "routine_id"
 ///   routine_type    = "PROCEDURE"
@@ -275,7 +281,7 @@ import 'routine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -313,7 +319,7 @@ import 'routine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -322,9 +328,15 @@ import 'routine_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "dataset_id"
 /// }
 /// resource "gcp_bigquery_routine" "sproc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id      = gcp_bigquery_dataset.test.dataset_id
 ///   routine_id      = "routine_id"
 ///   routine_type    = "SCALAR_FUNCTION"
@@ -530,7 +542,7 @@ import 'routine_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -586,7 +598,7 @@ import 'routine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -595,14 +607,23 @@ import 'routine_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "dataset_id"
 /// }
 /// resource "gcp_bigquery_routine" "sproc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id      = gcp_bigquery_dataset.test.dataset_id
 ///   routine_id      = "routine_id"
 ///   routine_type    = "TABLE_VALUED_FUNCTION"
 ///   language        = "SQL"
-///   definition_body = "SELECT 1 + value AS value\n"
+///   definition_body = <<-EOS
+/// SELECT 1 + value AS value
+/// EOS
+///
 ///   arguments {
 ///     name          = "value"
 ///     argument_kind = "FIXED_TYPE"
@@ -818,7 +839,7 @@ import 'routine_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -867,7 +888,7 @@ import 'routine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -876,9 +897,15 @@ import 'routine_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "dataset_id"
 /// }
 /// resource "gcp_bigquery_routine" "sproc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id      = gcp_bigquery_dataset.test.dataset_id
 ///   routine_id      = "routine_id"
 ///   routine_type    = "TABLE_VALUED_FUNCTION"
@@ -890,8 +917,8 @@ import 'routine_state.dart';
 ///     argument_kind = "FIXED_TABLE"
 ///     table_type = {
 ///       columns = [{
-///         "name" = "year"
-///         "type" = jsonencode({
+///         name = "year"
+///         type = jsonencode({
 ///           "typeKind" = "INT64"
 ///         })
 ///       }]
@@ -1124,7 +1151,7 @@ import 'routine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1182,7 +1209,7 @@ import 'routine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1191,19 +1218,49 @@ import 'routine_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "dataset_id"
 /// }
 /// resource "gcp_bigquery_connection" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_id = "connection_id"
 ///   location      = "US"
 ///   spark         = {}
 /// }
 /// resource "gcp_bigquery_routine" "pyspark" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id      = gcp_bigquery_dataset.test.dataset_id
 ///   routine_id      = "routine_id"
 ///   routine_type    = "PROCEDURE"
 ///   language        = "PYTHON"
-///   definition_body = "from pyspark.sql import SparkSession\n\nspark = SparkSession.builder.appName(\\\"spark-bigquery-demo\\\").getOrCreate()\n    \n# Load data from BigQuery.\nwords = spark.read.format(\\\"bigquery\\\") \\\\\n  .option(\\\"table\\\", \\\"bigquery-public-data:samples.shakespeare\\\") \\\\\n  .load()\nwords.createOrReplaceTempView(\\\"words\\\")\n    \n# Perform word count.\nword_count = words.select('word', 'word_count').groupBy('word').sum('word_count').withColumnRenamed(\\\"sum(word_count)\\\", \\\"sum_word_count\\\")\nword_count.show()\nword_count.printSchema()\n    \n# Saving the data to BigQuery\nword_count.write.format(\\\"bigquery\\\") \\\\\n  .option(\\\"writeMethod\\\", \\\"direct\\\") \\\\\n  .save(\\\"wordcount_dataset.wordcount_output\\\")\n"
+///   definition_body = <<-EOS
+/// from pyspark.sql import SparkSession
+///
+/// spark = SparkSession.builder.appName(\"spark-bigquery-demo\").getOrCreate()
+///
+/// # Load data from BigQuery.
+/// words = spark.read.format(\"bigquery\") \\
+///   .option(\"table\", \"bigquery-public-data:samples.shakespeare\") \\
+///   .load()
+/// words.createOrReplaceTempView(\"words\")
+///
+/// # Perform word count.
+/// word_count = words.select('word', 'word_count').groupBy('word').sum('word_count').withColumnRenamed(\"sum(word_count)\", \"sum_word_count\")
+/// word_count.show()
+/// word_count.printSchema()
+///
+/// # Saving the data to BigQuery
+/// word_count.write.format(\"bigquery\") \\
+///   .option(\"writeMethod\", \"direct\") \\
+///   .save(\"wordcount_dataset.wordcount_output\")
+/// EOS
+///
 ///   spark_options = {
 ///     connection      = gcp_bigquery_connection.test.name
 ///     runtime_version = "2.1"
@@ -1416,7 +1473,7 @@ import 'routine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1465,7 +1522,7 @@ import 'routine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1474,14 +1531,23 @@ import 'routine_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "dataset_id"
 /// }
 /// resource "gcp_bigquery_connection" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_id = "connection_id"
 ///   location      = "US"
 ///   spark         = {}
 /// }
 /// resource "gcp_bigquery_routine" "pyspark_mainfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id      = gcp_bigquery_dataset.test.dataset_id
 ///   routine_id      = "routine_id"
 ///   routine_type    = "PROCEDURE"
@@ -1699,7 +1765,7 @@ import 'routine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1747,7 +1813,7 @@ import 'routine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1756,14 +1822,23 @@ import 'routine_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "dataset_id"
 /// }
 /// resource "gcp_bigquery_connection" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_id = "connection_id"
 ///   location      = "US"
 ///   spark         = {}
 /// }
 /// resource "gcp_bigquery_routine" "spark_jar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id      = gcp_bigquery_dataset.test.dataset_id
 ///   routine_id      = "routine_id"
 ///   routine_type    = "PROCEDURE"
@@ -1884,7 +1959,7 @@ import 'routine_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const test = new gcp.bigquery.Dataset("test", {datasetId: "tf_test_dataset_id_60302"});
+/// const test = new gcp.bigquery.Dataset("test", {datasetId: "tf_test_dataset_id_22811"});
 /// const customMaskingRoutine = new gcp.bigquery.Routine("custom_masking_routine", {
 ///     datasetId: test.datasetId,
 ///     routineId: "custom_masking_routine",
@@ -1903,7 +1978,7 @@ import 'routine_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// test = gcp.bigquery.Dataset("test", dataset_id="tf_test_dataset_id_60302")
+/// test = gcp.bigquery.Dataset("test", dataset_id="tf_test_dataset_id_22811")
 /// custom_masking_routine = gcp.bigquery.Routine("custom_masking_routine",
 ///     dataset_id=test.dataset_id,
 ///     routine_id="custom_masking_routine",
@@ -1927,7 +2002,7 @@ import 'routine_state.dart';
 /// {
 ///     var test = new Gcp.BigQuery.Dataset("test", new()
 ///     {
-///         DatasetId = "tf_test_dataset_id_60302",
+///         DatasetId = "tf_test_dataset_id_22811",
 ///     });
 ///
 ///     var customMaskingRoutine = new Gcp.BigQuery.Routine("custom_masking_routine", new()
@@ -1955,14 +2030,14 @@ import 'routine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
-/// 			DatasetId: pulumi.String("tf_test_dataset_id_60302"),
+/// 			DatasetId: pulumi.String("tf_test_dataset_id_22811"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1990,7 +2065,7 @@ import 'routine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1999,9 +2074,15 @@ import 'routine_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "test" {
-///   dataset_id = "tf_test_dataset_id_60302"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   dataset_id = "tf_test_dataset_id_22811"
 /// }
 /// resource "gcp_bigquery_routine" "custom_masking_routine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id           = gcp_bigquery_dataset.test.dataset_id
 ///   routine_id           = "custom_masking_routine"
 ///   routine_type         = "SCALAR_FUNCTION"
@@ -2040,7 +2121,7 @@ import 'routine_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Dataset("test", DatasetArgs.builder()
-///             .datasetId("tf_test_dataset_id_60302")
+///             .datasetId("tf_test_dataset_id_22811")
 ///             .build());
 ///
 ///         var customMaskingRoutine = new Routine("customMaskingRoutine", RoutineArgs.builder()
@@ -2065,7 +2146,7 @@ import 'routine_state.dart';
 ///   test:
 ///     type: gcp:bigquery:Dataset
 ///     properties:
-///       datasetId: tf_test_dataset_id_60302
+///       datasetId: tf_test_dataset_id_22811
 ///   customMaskingRoutine:
 ///     type: gcp:bigquery:Routine
 ///     name: custom_masking_routine
@@ -2181,7 +2262,7 @@ import 'routine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2224,7 +2305,7 @@ import 'routine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2233,14 +2314,23 @@ import 'routine_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "dataset_id"
 /// }
 /// resource "gcp_bigquery_connection" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_id  = "connection_id"
 ///   location       = "US"
 ///   cloud_resource = {}
 /// }
 /// resource "gcp_bigquery_routine" "remote_function" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id      = gcp_bigquery_dataset.test.dataset_id
 ///   routine_id      = "routine_id"
 ///   routine_type    = "SCALAR_FUNCTION"
@@ -2469,7 +2559,7 @@ import 'routine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2516,7 +2606,7 @@ import 'routine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2525,9 +2615,15 @@ import 'routine_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "dataset_id"
 /// }
 /// resource "gcp_bigquery_routine" "python_function" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id   = gcp_bigquery_dataset.test.dataset_id
 ///   routine_id   = "routine_id"
 ///   routine_type = "SCALAR_FUNCTION"
@@ -2540,7 +2636,11 @@ import 'routine_state.dart';
 ///     name      = "y"
 ///     data_type = "{\"typeKind\" :  \"FLOAT64\"}"
 ///   }
-///   definition_body = "def multiply(x, y):\n  return x * y\n"
+///   definition_body = <<-EOS
+/// def multiply(x, y):
+///   return x * y
+/// EOS
+///
 ///   return_type     = "{\"typeKind\" :  \"FLOAT64\"}"
 ///   python_options = {
 ///     entry_point = "multiply"
@@ -2755,7 +2855,7 @@ class Routine extends pulumi.CustomResource {
           'gcp:bigquery/routine:Routine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     arguments = registerOutput<List<RoutineArgument>?>('arguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutineArgument>(guardedValue, (value) => RoutineArgument.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<int>('creationTime');

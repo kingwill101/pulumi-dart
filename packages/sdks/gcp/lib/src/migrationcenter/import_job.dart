@@ -86,7 +86,7 @@ import 'import_job_validation_report.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/migrationcenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/migrationcenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -103,7 +103,7 @@ import 'import_job_validation_report.dart';
 /// 		_, err = migrationcenter.NewImportJob(ctx, "default", &migrationcenter.ImportJobArgs{
 /// 			Location:    pulumi.String("us-central1"),
 /// 			ImportJobId: pulumi.String("import-job-test"),
-/// 			AssetSource: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			AssetSource: _default.ID(),
 /// 			DisplayName: pulumi.String("Terraform integration test display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"my_key":     pulumi.String("value"),
@@ -118,7 +118,7 @@ import 'import_job_validation_report.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -127,11 +127,17 @@ import 'import_job_validation_report.dart';
 /// }
 ///
 /// resource "gcp_migrationcenter_source" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location  = "us-central1"
 ///   source_id = "source-test"
 ///   type      = "SOURCE_TYPE_CUSTOM"
 /// }
-/// resource "gcp_migrationcenter_importjob" "default" {
+/// resource "gcp_migrationcenter_import_job" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   import_job_id = "import-job-test"
 ///   asset_source  = gcp_migrationcenter_source.default.id
@@ -288,7 +294,7 @@ class ImportJob extends pulumi.CustomResource {
           'gcp:migrationcenter/importJob:ImportJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     assetSource = registerOutput<String>('assetSource');

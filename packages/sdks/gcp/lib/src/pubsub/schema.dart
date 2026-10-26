@@ -100,7 +100,7 @@ import 'schema_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -133,7 +133,7 @@ import 'schema_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -142,6 +142,9 @@ import 'schema_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_schema" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-schema"
 ///   type       = "AVRO"
 ///   definition = "{\n  \"type\" : \"record\",\n  \"name\" : \"Avro\",\n  \"fields\" : [\n    {\n      \"name\" : \"StringField\",\n      \"type\" : \"string\"\n    },\n    {\n      \"name\" : \"IntField\",\n      \"type\" : \"int\"\n    }\n  ]\n}\n"
@@ -310,7 +313,7 @@ import 'schema_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -347,7 +350,7 @@ import 'schema_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -356,13 +359,19 @@ import 'schema_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_schema" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example"
 ///   type       = "PROTOCOL_BUFFER"
 ///   definition = "syntax = \"proto3\";\nmessage Results {\nstring message_request = 1;\nstring message_response = 2;\nstring timestamp_request = 3;\nstring timestamp_response = 4;\n}"
 /// }
 /// resource "gcp_pubsub_topic" "example" {
 ///   depends_on = [gcp_pubsub_schema.example]
-///   name       = "example-topic"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name = "example-topic"
 ///   schema_settings = {
 ///     schema   = "projects/my-project-name/schemas/example"
 ///     encoding = "JSON"
@@ -505,7 +514,7 @@ class Schema extends pulumi.CustomResource {
           'gcp:pubsub/schema:Schema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     definition = registerOutput<String?>('definition');
     deletionPolicy = registerOutput<String>('deletionPolicy');

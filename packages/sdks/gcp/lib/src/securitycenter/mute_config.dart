@@ -67,7 +67,7 @@ import 'mute_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -89,7 +89,7 @@ import 'mute_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -97,7 +97,10 @@ import 'mute_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_securitycenter_muteconfig" "default" {
+/// resource "gcp_securitycenter_mute_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mute_config_id = "my-config"
 ///   parent         = "organizations/123456789"
 ///   filter         = "category: \"OS_VULNERABILITY\""
@@ -225,7 +228,7 @@ class MuteConfig extends pulumi.CustomResource {
           'gcp:securitycenter/muteConfig:MuteConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

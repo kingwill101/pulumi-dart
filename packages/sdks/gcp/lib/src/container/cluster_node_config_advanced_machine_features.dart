@@ -6,6 +6,8 @@ class ClusterNodeConfigAdvancedMachineFeatures {
   /// Defines whether the instance should have nested virtualization enabled. Defaults to false.
   final pulumi.Input<bool?>? enableNestedVirtualization;
   /// Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+  ///
+  /// &gt; **Note:** Early 8.x provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected node pools the diff stays suppressed and this field cannot be updated in place, so enabling `STANDARD` requires recreating the node pool.
   final pulumi.Input<String?>? performanceMonitoringUnit;
   /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
   final pulumi.Input<int> threadsPerCore;
@@ -32,7 +34,7 @@ class ClusterNodeConfigAdvancedMachineFeatures {
     return ClusterNodeConfigAdvancedMachineFeatures(
       enableNestedVirtualization: (() { final guardedValue = map['enableNestedVirtualization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       performanceMonitoringUnit: (() { final guardedValue = map['performanceMonitoringUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      threadsPerCore: pulumi.Input.fromValue((map['threadsPerCore'] as num).toInt()),
+      threadsPerCore: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['threadsPerCore'])),
     );
   }
 }

@@ -20,6 +20,9 @@ import 'regional_secret_version_state.dart';
 ///
 ///
 ///
+/// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `secretDataWo`.
+/// Read more about Write-only Arguments.
+///
 /// ## Example Usage
 ///
 /// ### Regional Secret Version Basic
@@ -76,7 +79,7 @@ import 'regional_secret_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -90,7 +93,7 @@ import 'regional_secret_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional_secret_version_basic", &secretmanager.RegionalSecretVersionArgs{
-/// 			Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     secret_basic.ID(),
 /// 			SecretData: pulumi.String("secret-data"),
 /// 		})
 /// 		if err != nil {
@@ -101,7 +104,7 @@ import 'regional_secret_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -109,12 +112,18 @@ import 'regional_secret_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_secretmanager_regionalsecret" "secret-basic" {
+/// resource "gcp_secretmanager_regional_secret" "secret-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "secret-version"
 ///   location  = "us-central1"
 /// }
-/// resource "gcp_secretmanager_regionalsecretversion" "regional_secret_version_basic" {
-///   secret      = gcp_secretmanager_regionalsecret.secret-basic.id
+/// resource "gcp_secretmanager_regional_secret_version" "regional_secret_version_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secret      = gcp_secretmanager_regional_secret.secret-basic.id
 ///   secret_data = "secret-data"
 /// }
 /// ```
@@ -167,6 +176,377 @@ import 'regional_secret_version_state.dart';
 ///     properties:
 ///       secret: ${["secret-basic"].id}
 ///       secretData: secret-data
+/// ```
+///
+/// ### Regional Secret Version Basic Write Only
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const secret_basic_write_only = new gcp.secretmanager.RegionalSecret("secret-basic-write-only", {
+///     secretId: "regional-secret-version-write-only",
+///     location: "us-central1",
+///     labels: {
+///         label: "my-label",
+///     },
+/// });
+/// const regional_secret_version_basic_write_only = new gcp.secretmanager.RegionalSecretVersion("regional-secret-version-basic-write-only", {
+///     secret: secret_basic_write_only.id,
+///     secretDataWoVersion: "1",
+///     secretDataWo: "regional-secret-data-write-only",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// secret_basic_write_only = gcp.secretmanager.RegionalSecret("secret-basic-write-only",
+///     secret_id="regional-secret-version-write-only",
+///     location="us-central1",
+///     labels={
+///         "label": "my-label",
+///     })
+/// regional_secret_version_basic_write_only = gcp.secretmanager.RegionalSecretVersion("regional-secret-version-basic-write-only",
+///     secret=secret_basic_write_only.id,
+///     secret_data_wo_version="1",
+///     secret_data_wo="regional-secret-data-write-only")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var secret_basic_write_only = new Gcp.SecretManager.RegionalSecret("secret-basic-write-only", new()
+///     {
+///         SecretId = "regional-secret-version-write-only",
+///         Location = "us-central1",
+///         Labels =
+///         {
+///             { "label", "my-label" },
+///         },
+///     });
+///
+///     var regional_secret_version_basic_write_only = new Gcp.SecretManager.RegionalSecretVersion("regional-secret-version-basic-write-only", new()
+///     {
+///         Secret = secret_basic_write_only.Id,
+///         SecretDataWoVersion = "1",
+///         SecretDataWo = "regional-secret-data-write-only",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		secret_basic_write_only, err := secretmanager.NewRegionalSecret(ctx, "secret-basic-write-only", &secretmanager.RegionalSecretArgs{
+/// 			SecretId: pulumi.String("regional-secret-version-write-only"),
+/// 			Location: pulumi.String("us-central1"),
+/// 			Labels: pulumi.StringMap{
+/// 				"label": pulumi.String("my-label"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional-secret-version-basic-write-only", &secretmanager.RegionalSecretVersionArgs{
+/// 			Secret:              secret_basic_write_only.ID(),
+/// 			SecretDataWoVersion: pulumi.String("1"),
+/// 			SecretDataWo:        pulumi.String("regional-secret-data-write-only"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_regional_secret" "secret-basic-write-only" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secret_id = "regional-secret-version-write-only"
+///   location  = "us-central1"
+///   labels = {
+///     "label" = "my-label"
+///   }
+/// }
+/// resource "gcp_secretmanager_regional_secret_version" "regional-secret-version-basic-write-only" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secret                 = gcp_secretmanager_regional_secret.secret-basic-write-only.id
+///   secret_data_wo_version = 1
+///   secret_data_wo         = "regional-secret-data-write-only"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.secretmanager.RegionalSecret;
+/// import com.pulumi.gcp.secretmanager.RegionalSecretArgs;
+/// import com.pulumi.gcp.secretmanager.RegionalSecretVersion;
+/// import com.pulumi.gcp.secretmanager.RegionalSecretVersionArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var secret_basic_write_only = new RegionalSecret("secret-basic-write-only", RegionalSecretArgs.builder()
+///             .secretId("regional-secret-version-write-only")
+///             .location("us-central1")
+///             .labels(Map.of("label", "my-label"))
+///             .build());
+///
+///         var regional_secret_version_basic_write_only = new RegionalSecretVersion("regional-secret-version-basic-write-only", RegionalSecretVersionArgs.builder()
+///             .secret(secret_basic_write_only.id())
+///             .secretDataWoVersion("1")
+///             .secretDataWo("regional-secret-data-write-only")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   secret-basic-write-only:
+///     type: gcp:secretmanager:RegionalSecret
+///     properties:
+///       secretId: regional-secret-version-write-only
+///       location: us-central1
+///       labels:
+///         label: my-label
+///   regional-secret-version-basic-write-only:
+///     type: gcp:secretmanager:RegionalSecretVersion
+///     properties:
+///       secret: ${["secret-basic-write-only"].id}
+///       secretDataWoVersion: 1
+///       secretDataWo: regional-secret-data-write-only
+/// ```
+///
+/// ### Regional Secret Version With Base64 String Secret Data Write Only
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as std from "@pulumi/std";
+///
+/// const secret_basic = new gcp.secretmanager.RegionalSecret("secret-basic", {
+///     secretId: "regional-secret-version-base64-write-only",
+///     location: "us-central1",
+/// });
+/// const regional_secret_version_base64_write_only = new gcp.secretmanager.RegionalSecretVersion("regional-secret-version-base64-write-only", {
+///     secret: secret_basic.id,
+///     isSecretDataBase64: true,
+///     secretDataWoVersion: "1",
+///     secretDataWo: std.filebase64({
+///         input: "regional-secret-data-base64-write-only.pfx",
+///     }).then(invoke => invoke.result),
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumi_std as std
+///
+/// secret_basic = gcp.secretmanager.RegionalSecret("secret-basic",
+///     secret_id="regional-secret-version-base64-write-only",
+///     location="us-central1")
+/// regional_secret_version_base64_write_only = gcp.secretmanager.RegionalSecretVersion("regional-secret-version-base64-write-only",
+///     secret=secret_basic.id,
+///     is_secret_data_base64=True,
+///     secret_data_wo_version="1",
+///     secret_data_wo=std.filebase64(input="regional-secret-data-base64-write-only.pfx").result)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Std = Pulumi.Std;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var secret_basic = new Gcp.SecretManager.RegionalSecret("secret-basic", new()
+///     {
+///         SecretId = "regional-secret-version-base64-write-only",
+///         Location = "us-central1",
+///     });
+///
+///     var regional_secret_version_base64_write_only = new Gcp.SecretManager.RegionalSecretVersion("regional-secret-version-base64-write-only", new()
+///     {
+///         Secret = secret_basic.Id,
+///         IsSecretDataBase64 = true,
+///         SecretDataWoVersion = "1",
+///         SecretDataWo = Std.Filebase64.Invoke(new()
+///         {
+///             Input = "regional-secret-data-base64-write-only.pfx",
+///         }).Apply(invoke => invoke.Result),
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-std/sdk/go/std"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		secret_basic, err := secretmanager.NewRegionalSecret(ctx, "secret-basic", &secretmanager.RegionalSecretArgs{
+/// 			SecretId: pulumi.String("regional-secret-version-base64-write-only"),
+/// 			Location: pulumi.String("us-central1"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+/// 			Input: "regional-secret-data-base64-write-only.pfx",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional-secret-version-base64-write-only", &secretmanager.RegionalSecretVersionArgs{
+/// 			Secret:              secret_basic.ID(),
+/// 			IsSecretDataBase64:  pulumi.Bool(true),
+/// 			SecretDataWoVersion: pulumi.String("1"),
+/// 			SecretDataWo:        pulumi.String(invokeFilebase64.Result),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_regional_secret" "secret-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secret_id = "regional-secret-version-base64-write-only"
+///   location  = "us-central1"
+/// }
+/// resource "gcp_secretmanager_regional_secret_version" "regional-secret-version-base64-write-only" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secret                 = gcp_secretmanager_regional_secret.secret-basic.id
+///   is_secret_data_base64  = true
+///   secret_data_wo_version = 1
+///   secret_data_wo         = filebase64("regional-secret-data-base64-write-only.pfx")
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.secretmanager.RegionalSecret;
+/// import com.pulumi.gcp.secretmanager.RegionalSecretArgs;
+/// import com.pulumi.gcp.secretmanager.RegionalSecretVersion;
+/// import com.pulumi.gcp.secretmanager.RegionalSecretVersionArgs;
+/// import com.pulumi.std.StdFunctions;
+/// import com.pulumi.std.inputs.Filebase64Args;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var secret_basic = new RegionalSecret("secret-basic", RegionalSecretArgs.builder()
+///             .secretId("regional-secret-version-base64-write-only")
+///             .location("us-central1")
+///             .build());
+///
+///         var regional_secret_version_base64_write_only = new RegionalSecretVersion("regional-secret-version-base64-write-only", RegionalSecretVersionArgs.builder()
+///             .secret(secret_basic.id())
+///             .isSecretDataBase64(true)
+///             .secretDataWoVersion("1")
+///             .secretDataWo(StdFunctions.filebase64(Filebase64Args.builder()
+///                 .input("regional-secret-data-base64-write-only.pfx")
+///                 .build()).result())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   secret-basic:
+///     type: gcp:secretmanager:RegionalSecret
+///     properties:
+///       secretId: regional-secret-version-base64-write-only
+///       location: us-central1
+///   regional-secret-version-base64-write-only:
+///     type: gcp:secretmanager:RegionalSecretVersion
+///     properties:
+///       secret: ${["secret-basic"].id}
+///       isSecretDataBase64: true
+///       secretDataWoVersion: 1
+///       secretDataWo:
+///         fn::invoke:
+///           function: std:filebase64
+///           arguments:
+///             input: regional-secret-data-base64-write-only.pfx
+///           return: result
 /// ```
 ///
 /// ### Regional Secret Version With Base64 Data
@@ -234,7 +614,7 @@ import 'regional_secret_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -255,7 +635,7 @@ import 'regional_secret_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional_secret_version_base64", &secretmanager.RegionalSecretVersionArgs{
-/// 			Secret:             secret_basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:             secret_basic.ID(),
 /// 			SecretData:         pulumi.String(invokeFilebase64.Result),
 /// 			IsSecretDataBase64: pulumi.Bool(true),
 /// 		})
@@ -267,7 +647,7 @@ import 'regional_secret_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -278,12 +658,18 @@ import 'regional_secret_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_secretmanager_regionalsecret" "secret-basic" {
+/// resource "gcp_secretmanager_regional_secret" "secret-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "secret-version"
 ///   location  = "us-central1"
 /// }
-/// resource "gcp_secretmanager_regionalsecretversion" "regional_secret_version_base64" {
-///   secret                = gcp_secretmanager_regionalsecret.secret-basic.id
+/// resource "gcp_secretmanager_regional_secret_version" "regional_secret_version_base64" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secret                = gcp_secretmanager_regional_secret.secret-basic.id
 ///   secret_data           = filebase64("secret-data.pfx")
 ///   is_secret_data_base64 = true
 /// }
@@ -407,7 +793,7 @@ import 'regional_secret_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -421,7 +807,7 @@ import 'regional_secret_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional_secret_version_disabled", &secretmanager.RegionalSecretVersionArgs{
-/// 			Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     secret_basic.ID(),
 /// 			SecretData: pulumi.String("secret-data"),
 /// 			Enabled:    pulumi.Bool(false),
 /// 		})
@@ -433,7 +819,7 @@ import 'regional_secret_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -441,12 +827,18 @@ import 'regional_secret_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_secretmanager_regionalsecret" "secret-basic" {
+/// resource "gcp_secretmanager_regional_secret" "secret-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "secret-version"
 ///   location  = "us-central1"
 /// }
-/// resource "gcp_secretmanager_regionalsecretversion" "regional_secret_version_disabled" {
-///   secret      = gcp_secretmanager_regionalsecret.secret-basic.id
+/// resource "gcp_secretmanager_regional_secret_version" "regional_secret_version_disabled" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secret      = gcp_secretmanager_regional_secret.secret-basic.id
 ///   secret_data = "secret-data"
 ///   enabled     = false
 /// }
@@ -561,7 +953,7 @@ import 'regional_secret_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -575,7 +967,7 @@ import 'regional_secret_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional_secret_version_deletion_policy", &secretmanager.RegionalSecretVersionArgs{
-/// 			Secret:         secret_basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:         secret_basic.ID(),
 /// 			SecretData:     pulumi.String("secret-data"),
 /// 			DeletionPolicy: pulumi.String("ABANDON"),
 /// 		})
@@ -587,7 +979,7 @@ import 'regional_secret_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -595,12 +987,18 @@ import 'regional_secret_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_secretmanager_regionalsecret" "secret-basic" {
+/// resource "gcp_secretmanager_regional_secret" "secret-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "secret-version"
 ///   location  = "us-central1"
 /// }
-/// resource "gcp_secretmanager_regionalsecretversion" "regional_secret_version_deletion_policy" {
-///   secret          = gcp_secretmanager_regionalsecret.secret-basic.id
+/// resource "gcp_secretmanager_regional_secret_version" "regional_secret_version_deletion_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secret          = gcp_secretmanager_regional_secret.secret-basic.id
 ///   secret_data     = "secret-data"
 ///   deletion_policy = "ABANDON"
 /// }
@@ -715,7 +1113,7 @@ import 'regional_secret_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -729,7 +1127,7 @@ import 'regional_secret_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional_secret_version_deletion_policy", &secretmanager.RegionalSecretVersionArgs{
-/// 			Secret:         secret_basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:         secret_basic.ID(),
 /// 			SecretData:     pulumi.String("secret-data"),
 /// 			DeletionPolicy: pulumi.String("DISABLE"),
 /// 		})
@@ -741,7 +1139,7 @@ import 'regional_secret_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -749,12 +1147,18 @@ import 'regional_secret_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_secretmanager_regionalsecret" "secret-basic" {
+/// resource "gcp_secretmanager_regional_secret" "secret-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "secret-version"
 ///   location  = "us-central1"
 /// }
-/// resource "gcp_secretmanager_regionalsecretversion" "regional_secret_version_deletion_policy" {
-///   secret          = gcp_secretmanager_regionalsecret.secret-basic.id
+/// resource "gcp_secretmanager_regional_secret_version" "regional_secret_version_deletion_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secret          = gcp_secretmanager_regional_secret.secret-basic.id
 ///   secret_data     = "secret-data"
 ///   deletion_policy = "DISABLE"
 /// }
@@ -859,7 +1263,16 @@ class RegionalSecretVersion extends pulumi.CustomResource {
   late final pulumi.Output<String> secret;
   /// The secret data. Must be no larger than 64KiB.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  late final pulumi.Output<String> secretData;
+  late final pulumi.Output<String?> secretData;
+  /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+  /// (Optional, Write-Only)
+  /// The secret data. Must be no larger than 64KiB.
+  /// **Note**: This property is write-only and will not be read from the API.
+  ///
+  /// &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
+  late final pulumi.Output<String?> secretDataWo;
+  /// Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+  late final pulumi.Output<String?> secretDataWoVersion;
   /// The version of the Regional Secret.
   late final pulumi.Output<String> version;
 
@@ -875,8 +1288,8 @@ class RegionalSecretVersion extends pulumi.CustomResource {
           'gcp:secretmanager/regionalSecretVersion:RegionalSecretVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
-          additionalSecretOutputs: const ['secretData'],
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
+          additionalSecretOutputs: const ['secretData', 'secretDataWo'],
         ) {
     createTime = registerOutput<String>('createTime');
     customerManagedEncryptions = registerOutput<List<RegionalSecretVersionCustomerManagedEncryption>>('customerManagedEncryptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionalSecretVersionCustomerManagedEncryption>(guardedValue, (value) => RegionalSecretVersionCustomerManagedEncryption.fromMap((value as Map).cast<String, dynamic>())); });
@@ -887,7 +1300,9 @@ class RegionalSecretVersion extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     secret = registerOutput<String>('secret');
-    secretData = registerOutput<String>('secretData', isSecret: true);
+    secretData = registerOutput<String?>('secretData', isSecret: true);
+    secretDataWo = registerOutput<String?>('secretDataWo', isSecret: true);
+    secretDataWoVersion = registerOutput<String?>('secretDataWoVersion');
     version = registerOutput<String>('version');
   }
 
@@ -924,7 +1339,9 @@ class RegionalSecretVersion extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     secret = registerOutput<String>('secret');
-    secretData = registerOutput<String>('secretData', isSecret: true);
+    secretData = registerOutput<String?>('secretData', isSecret: true);
+    secretDataWo = registerOutput<String?>('secretDataWo', isSecret: true);
+    secretDataWoVersion = registerOutput<String?>('secretDataWoVersion');
     version = registerOutput<String>('version');
   }
 
@@ -935,7 +1352,7 @@ class RegionalSecretVersion extends pulumi.CustomResource {
         pulumi.parseUrn(urn).urnName,
         const <String, pulumi.Input<dynamic>>{},
         pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
-          additionalSecretOutputs: const ['secretData'],
+          additionalSecretOutputs: const ['secretData', 'secretDataWo'],
         isResourceReference: true,
       ) {
     createTime = registerOutput<String>('createTime');
@@ -947,7 +1364,9 @@ class RegionalSecretVersion extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     secret = registerOutput<String>('secret');
-    secretData = registerOutput<String>('secretData', isSecret: true);
+    secretData = registerOutput<String?>('secretData', isSecret: true);
+    secretDataWo = registerOutput<String?>('secretDataWo', isSecret: true);
+    secretDataWoVersion = registerOutput<String?>('secretDataWoVersion');
     version = registerOutput<String>('version');
   }
 }

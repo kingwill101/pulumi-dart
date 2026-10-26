@@ -71,7 +71,7 @@ import 'get_connector_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vpcaccess"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vpcaccess"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -99,7 +99,7 @@ import 'get_connector_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -107,11 +107,14 @@ import 'get_connector_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_vpcaccess_getconnector" "sample" {
+/// data "gcp_vpcaccess_connector" "sample" {
 ///   name = "vpc-con"
 /// }
 ///
 /// resource "gcp_vpcaccess_connector" "connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "vpc-con"
 ///   ip_cidr_range = "10.8.0.0/28"
 ///   network       = "default"

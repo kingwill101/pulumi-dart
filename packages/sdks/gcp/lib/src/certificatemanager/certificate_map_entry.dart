@@ -182,7 +182,7 @@ import 'certificate_map_entry_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -225,8 +225,8 @@ import 'certificate_map_entry_state.dart';
 /// 					instance2.Domain,
 /// 				},
 /// 				DnsAuthorizations: pulumi.StringArray{
-/// 					instance.ID().ToIDOutput().ToStringOutput(),
-/// 					instance2.ID().ToIDOutput().ToStringOutput(),
+/// 					instance.ID(),
+/// 					instance2.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -242,7 +242,7 @@ import 'certificate_map_entry_state.dart';
 /// 				"acc-test":  pulumi.String("true"),
 /// 			},
 /// 			Certificates: pulumi.StringArray{
-/// 				certificate.ID().ToIDOutput().ToStringOutput(),
+/// 				certificate.ID(),
 /// 			},
 /// 			Matcher: pulumi.String("PRIMARY"),
 /// 		})
@@ -254,7 +254,7 @@ import 'certificate_map_entry_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -262,7 +262,10 @@ import 'certificate_map_entry_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_certificatemanager_certificatemap" "certificate_map" {
+/// resource "gcp_certificatemanager_certificate_map" "certificate_map" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "cert-map-entry"
 ///   description = "My acceptance test certificate map"
 ///   labels = {
@@ -270,10 +273,13 @@ import 'certificate_map_entry_state.dart';
 ///     "acc-test"  = true
 ///   }
 /// }
-/// resource "gcp_certificatemanager_certificatemapentry" "default" {
+/// resource "gcp_certificatemanager_certificate_map_entry" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "cert-map-entry"
 ///   description = "My acceptance test certificate map entry"
-///   map         = gcp_certificatemanager_certificatemap.certificate_map.name
+///   map         = gcp_certificatemanager_certificate_map.certificate_map.name
 ///   labels = {
 ///     "terraform" = true
 ///     "acc-test"  = true
@@ -282,20 +288,29 @@ import 'certificate_map_entry_state.dart';
 ///   matcher      = "PRIMARY"
 /// }
 /// resource "gcp_certificatemanager_certificate" "certificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "cert-map-entry"
 ///   description = "The default cert"
 ///   scope       = "DEFAULT"
 ///   managed = {
-///     domains            = [gcp_certificatemanager_dnsauthorization.instance.domain, gcp_certificatemanager_dnsauthorization.instance2.domain]
-///     dns_authorizations = [gcp_certificatemanager_dnsauthorization.instance.id, gcp_certificatemanager_dnsauthorization.instance2.id]
+///     domains            = [gcp_certificatemanager_dns_authorization.instance.domain, gcp_certificatemanager_dns_authorization.instance2.domain]
+///     dns_authorizations = [gcp_certificatemanager_dns_authorization.instance.id, gcp_certificatemanager_dns_authorization.instance2.id]
 ///   }
 /// }
-/// resource "gcp_certificatemanager_dnsauthorization" "instance" {
+/// resource "gcp_certificatemanager_dns_authorization" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "dns-auth"
 ///   description = "The default dnss"
 ///   domain      = "subdomain.hashicorptest.com"
 /// }
-/// resource "gcp_certificatemanager_dnsauthorization" "instance2" {
+/// resource "gcp_certificatemanager_dns_authorization" "instance2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "dns-auth2"
 ///   description = "The default dnss"
 ///   domain      = "subdomain2.hashicorptest.com"
@@ -510,7 +525,7 @@ class CertificateMapEntry extends pulumi.CustomResource {
           'gcp:certificatemanager/certificateMapEntry:CertificateMapEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     certificates = registerOutput<List<String>>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

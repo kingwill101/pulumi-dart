@@ -275,7 +275,7 @@ import 'plugin_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apihub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apihub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -363,7 +363,7 @@ import 'plugin_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -372,6 +372,9 @@ import 'plugin_state.dart';
 /// }
 ///
 /// resource "gcp_apihub_plugin" "apihub_plugin_full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   display_name    = "Test Plugin"
 ///   description     = "Test description"
@@ -397,38 +400,38 @@ import 'plugin_state.dart';
 ///       }
 ///     }
 ///     additional_config_templates = [{
-///       "id"              = "string-val"
-///       "description"     = "API key for the service."
-///       "valueType"       = "STRING"
-///       "required"        = false
-///       "validationRegex" = "^[a-zA-Z0-9]{5,20}$"
+///       id               = "string-val"
+///       description      = "API key for the service."
+///       value_type       = "STRING"
+///       required         = false
+///       validation_regex = "^[a-zA-Z0-9]{5,20}$"
 ///       }, {
-///       "id"              = "integer-val"
-///       "description"     = "API key for the service."
-///       "valueType"       = "INT"
-///       "required"        = true
-///       "validationRegex" = ""
+///       id               = "integer-val"
+///       description      = "API key for the service."
+///       value_type       = "INT"
+///       required         = true
+///       validation_regex = ""
 ///       }, {
-///       "id"              = "bool-val"
-///       "description"     = "API key for the service."
-///       "valueType"       = "BOOL"
-///       "required"        = false
-///       "validationRegex" = ""
+///       id               = "bool-val"
+///       description      = "API key for the service."
+///       value_type       = "BOOL"
+///       required         = false
+///       validation_regex = ""
 ///       }, {
-///       "id"          = "enum-val"
-///       "description" = "API key for the service."
-///       "valueType"   = "ENUM"
-///       "enumOptions" = [{
-///         "id"          = "Option1"
-///         "displayName" = "Option1"
-///         "description" = "Description for Option1"
+///       id          = "enum-val"
+///       description = "API key for the service."
+///       value_type  = "ENUM"
+///       enum_options = [{
+///         id           = "Option1"
+///         display_name = "Option1"
+///         description  = "Description for Option1"
 ///         }, {
-///         "id"          = "Option2"
-///         "displayName" = "Option2"
-///         "description" = "Description for Option2"
+///         id           = "Option2"
+///         display_name = "Option2"
+///         description  = "Description for Option2"
 ///       }]
-///       "required"        = false
-///       "validationRegex" = ""
+///       required         = false
+///       validation_regex = ""
 ///     }]
 ///   }
 /// }
@@ -693,7 +696,7 @@ class Plugin extends pulumi.CustomResource {
           'gcp:apihub/plugin:Plugin',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     actionsConfigs = registerOutput<List<PluginActionsConfig>?>('actionsConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PluginActionsConfig>(guardedValue, (value) => PluginActionsConfig.fromMap((value as Map).cast<String, dynamic>())); });
     configTemplate = registerOutput<PluginConfigTemplate>('configTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginConfigTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });

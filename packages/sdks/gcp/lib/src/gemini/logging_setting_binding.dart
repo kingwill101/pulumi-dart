@@ -84,7 +84,7 @@ import 'logging_setting_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gemini"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gemini"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -115,7 +115,7 @@ import 'logging_setting_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -123,7 +123,10 @@ import 'logging_setting_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gemini_loggingsetting" "basic" {
+/// resource "gcp_gemini_logging_setting" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   logging_setting_id = "ls-tf1"
 ///   location           = "global"
 ///   labels = {
@@ -131,8 +134,11 @@ import 'logging_setting_binding_state.dart';
 ///   }
 ///   log_prompts_and_responses = true
 /// }
-/// resource "gcp_gemini_loggingsettingbinding" "example" {
-///   logging_setting_id = gcp_gemini_loggingsetting.basic.logging_setting_id
+/// resource "gcp_gemini_logging_setting_binding" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   logging_setting_id = gcp_gemini_logging_setting.basic.logging_setting_id
 ///   setting_binding_id = "ls-tf1b1"
 ///   location           = "global"
 ///   target             = "projects/980109375338"
@@ -265,7 +271,7 @@ class LoggingSettingBinding extends pulumi.CustomResource {
           'gcp:gemini/loggingSettingBinding:LoggingSettingBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

@@ -50,29 +50,35 @@ import 'backend_service_tls_settings.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+/// const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
 ///     name: "health-check",
-///     requestPath: "/",
 ///     checkIntervalSec: 1,
 ///     timeoutSec: 1,
+///     httpHealthCheck: {
+///         port: 80,
+///         requestPath: "/",
+///     },
 /// });
 /// const _default = new gcp.compute.BackendService("default", {
 ///     name: "backend-service",
-///     healthChecks: defaultHttpHealthCheck.id,
+///     healthChecks: defaultHealthCheck.id,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// default_http_health_check = gcp.compute.HttpHealthCheck("default",
+/// default_health_check = gcp.compute.HealthCheck("default",
 ///     name="health-check",
-///     request_path="/",
 ///     check_interval_sec=1,
-///     timeout_sec=1)
+///     timeout_sec=1,
+///     http_health_check={
+///         "port": 80,
+///         "request_path": "/",
+///     })
 /// default = gcp.compute.BackendService("default",
 ///     name="backend-service",
-///     health_checks=default_http_health_check.id)
+///     health_checks=default_health_check.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -82,18 +88,22 @@ import 'backend_service_tls_settings.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
 ///     {
 ///         Name = "health-check",
-///         RequestPath = "/",
 ///         CheckIntervalSec = 1,
 ///         TimeoutSec = 1,
+///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+///         {
+///             Port = 80,
+///             RequestPath = "/",
+///         },
 ///     });
 ///
 ///     var @default = new Gcp.Compute.BackendService("default", new()
 ///     {
 ///         Name = "backend-service",
-///         HealthChecks = defaultHttpHealthCheck.Id,
+///         HealthChecks = defaultHealthCheck.Id,
 ///     });
 ///
 /// });
@@ -102,24 +112,27 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+/// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 /// 			Name:             pulumi.String("health-check"),
-/// 			RequestPath:      pulumi.String("/"),
 /// 			CheckIntervalSec: pulumi.Int(1),
 /// 			TimeoutSec:       pulumi.Int(1),
+/// 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+/// 				Port:        pulumi.Int(80),
+/// 				RequestPath: pulumi.String("/"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:         pulumi.String("backend-service"),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks: defaultHealthCheck.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -129,7 +142,7 @@ import 'backend_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -137,15 +150,24 @@ import 'backend_service_tls_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "backend-service"
-///   health_checks = gcp_compute_httphealthcheck.default.id
+///   health_checks = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "health-check"
-///   request_path       = "/"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
+///   http_health_check = {
+///     port         = 80
+///     request_path = "/"
+///   }
 /// }
 /// ```
 /// ```java
@@ -154,8 +176,9 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.HttpHealthCheck;
-/// import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.HealthCheck;
+/// import com.pulumi.gcp.compute.HealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import java.util.ArrayList;
@@ -171,16 +194,19 @@ import 'backend_service_tls_settings.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+///         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
 ///             .name("health-check")
-///             .requestPath("/")
 ///             .checkIntervalSec(1)
 ///             .timeoutSec(1)
+///             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .requestPath("/")
+///                 .build())
 ///             .build());
 ///
 ///         var default_ = new BackendService("default", BackendServiceArgs.builder()
 ///             .name("backend-service")
-///             .healthChecks(defaultHttpHealthCheck.id())
+///             .healthChecks(defaultHealthCheck.id())
 ///             .build());
 ///
 ///     }
@@ -192,15 +218,17 @@ import 'backend_service_tls_settings.dart';
 ///     type: gcp:compute:BackendService
 ///     properties:
 ///       name: backend-service
-///       healthChecks: ${defaultHttpHealthCheck.id}
-///   defaultHttpHealthCheck:
-///     type: gcp:compute:HttpHealthCheck
+///       healthChecks: ${defaultHealthCheck.id}
+///   defaultHealthCheck:
+///     type: gcp:compute:HealthCheck
 ///     name: default
 ///     properties:
 ///       name: health-check
-///       requestPath: /
 ///       checkIntervalSec: 1
 ///       timeoutSec: 1
+///       httpHealthCheck:
+///         port: 80
+///         requestPath: /
 /// ```
 ///
 /// ### Backend Service External Iap
@@ -263,7 +291,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -287,7 +315,7 @@ import 'backend_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -295,7 +323,10 @@ import 'backend_service_tls_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "tf-test-backend-service-external"
 ///   protocol              = "HTTP"
 ///   load_balancing_scheme = "EXTERNAL"
@@ -364,15 +395,18 @@ import 'backend_service_tls_settings.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+/// const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
 ///     name: "health-check",
-///     requestPath: "/",
 ///     checkIntervalSec: 1,
 ///     timeoutSec: 1,
+///     httpHealthCheck: {
+///         port: 80,
+///         requestPath: "/",
+///     },
 /// });
 /// const _default = new gcp.compute.BackendService("default", {
 ///     name: "backend-service",
-///     healthChecks: defaultHttpHealthCheck.id,
+///     healthChecks: defaultHealthCheck.id,
 ///     enableCdn: true,
 ///     cdnPolicy: {
 ///         signedUrlCacheMaxAgeSec: 7200,
@@ -383,14 +417,17 @@ import 'backend_service_tls_settings.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// default_http_health_check = gcp.compute.HttpHealthCheck("default",
+/// default_health_check = gcp.compute.HealthCheck("default",
 ///     name="health-check",
-///     request_path="/",
 ///     check_interval_sec=1,
-///     timeout_sec=1)
+///     timeout_sec=1,
+///     http_health_check={
+///         "port": 80,
+///         "request_path": "/",
+///     })
 /// default = gcp.compute.BackendService("default",
 ///     name="backend-service",
-///     health_checks=default_http_health_check.id,
+///     health_checks=default_health_check.id,
 ///     enable_cdn=True,
 ///     cdn_policy={
 ///         "signed_url_cache_max_age_sec": 7200,
@@ -404,18 +441,22 @@ import 'backend_service_tls_settings.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
 ///     {
 ///         Name = "health-check",
-///         RequestPath = "/",
 ///         CheckIntervalSec = 1,
 ///         TimeoutSec = 1,
+///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+///         {
+///             Port = 80,
+///             RequestPath = "/",
+///         },
 ///     });
 ///
 ///     var @default = new Gcp.Compute.BackendService("default", new()
 ///     {
 ///         Name = "backend-service",
-///         HealthChecks = defaultHttpHealthCheck.Id,
+///         HealthChecks = defaultHealthCheck.Id,
 ///         EnableCdn = true,
 ///         CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
 ///         {
@@ -429,24 +470,27 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+/// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 /// 			Name:             pulumi.String("health-check"),
-/// 			RequestPath:      pulumi.String("/"),
 /// 			CheckIntervalSec: pulumi.Int(1),
 /// 			TimeoutSec:       pulumi.Int(1),
+/// 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+/// 				Port:        pulumi.Int(80),
+/// 				RequestPath: pulumi.String("/"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:         pulumi.String("backend-service"),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks: defaultHealthCheck.ID(),
 /// 			EnableCdn:    pulumi.Bool(true),
 /// 			CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
 /// 				SignedUrlCacheMaxAgeSec: pulumi.Int(7200),
@@ -460,7 +504,7 @@ import 'backend_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -468,19 +512,28 @@ import 'backend_service_tls_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "backend-service"
-///   health_checks = gcp_compute_httphealthcheck.default.id
+///   health_checks = gcp_compute_health_check.default.id
 ///   enable_cdn    = true
 ///   cdn_policy = {
 ///     signed_url_cache_max_age_sec = 7200
 ///   }
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "health-check"
-///   request_path       = "/"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
+///   http_health_check = {
+///     port         = 80
+///     request_path = "/"
+///   }
 /// }
 /// ```
 /// ```java
@@ -489,8 +542,9 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.HttpHealthCheck;
-/// import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.HealthCheck;
+/// import com.pulumi.gcp.compute.HealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
@@ -507,16 +561,19 @@ import 'backend_service_tls_settings.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+///         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
 ///             .name("health-check")
-///             .requestPath("/")
 ///             .checkIntervalSec(1)
 ///             .timeoutSec(1)
+///             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .requestPath("/")
+///                 .build())
 ///             .build());
 ///
 ///         var default_ = new BackendService("default", BackendServiceArgs.builder()
 ///             .name("backend-service")
-///             .healthChecks(defaultHttpHealthCheck.id())
+///             .healthChecks(defaultHealthCheck.id())
 ///             .enableCdn(true)
 ///             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
 ///                 .signedUrlCacheMaxAgeSec(7200)
@@ -532,18 +589,20 @@ import 'backend_service_tls_settings.dart';
 ///     type: gcp:compute:BackendService
 ///     properties:
 ///       name: backend-service
-///       healthChecks: ${defaultHttpHealthCheck.id}
+///       healthChecks: ${defaultHealthCheck.id}
 ///       enableCdn: true
 ///       cdnPolicy:
 ///         signedUrlCacheMaxAgeSec: 7200
-///   defaultHttpHealthCheck:
-///     type: gcp:compute:HttpHealthCheck
+///   defaultHealthCheck:
+///     type: gcp:compute:HealthCheck
 ///     name: default
 ///     properties:
 ///       name: health-check
-///       requestPath: /
 ///       checkIntervalSec: 1
 ///       timeoutSec: 1
+///       httpHealthCheck:
+///         port: 80
+///         requestPath: /
 /// ```
 ///
 /// ### Backend Service Cache Include Http Headers
@@ -619,7 +678,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -648,7 +707,7 @@ import 'backend_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -656,7 +715,10 @@ import 'backend_service_tls_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "backend-service"
 ///   enable_cdn = true
 ///   cdn_policy = {
@@ -816,7 +878,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -849,7 +911,7 @@ import 'backend_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -857,7 +919,10 @@ import 'backend_service_tls_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "backend-service"
 ///   enable_cdn = true
 ///   cdn_policy = {
@@ -948,15 +1013,18 @@ import 'backend_service_tls_settings.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+/// const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
 ///     name: "health-check",
-///     requestPath: "/",
 ///     checkIntervalSec: 1,
 ///     timeoutSec: 1,
+///     httpHealthCheck: {
+///         port: 80,
+///         requestPath: "/",
+///     },
 /// });
 /// const _default = new gcp.compute.BackendService("default", {
 ///     name: "backend-service",
-///     healthChecks: defaultHttpHealthCheck.id,
+///     healthChecks: defaultHealthCheck.id,
 ///     enableCdn: true,
 ///     cdnPolicy: {
 ///         cacheMode: "CACHE_ALL_STATIC",
@@ -972,14 +1040,17 @@ import 'backend_service_tls_settings.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// default_http_health_check = gcp.compute.HttpHealthCheck("default",
+/// default_health_check = gcp.compute.HealthCheck("default",
 ///     name="health-check",
-///     request_path="/",
 ///     check_interval_sec=1,
-///     timeout_sec=1)
+///     timeout_sec=1,
+///     http_health_check={
+///         "port": 80,
+///         "request_path": "/",
+///     })
 /// default = gcp.compute.BackendService("default",
 ///     name="backend-service",
-///     health_checks=default_http_health_check.id,
+///     health_checks=default_health_check.id,
 ///     enable_cdn=True,
 ///     cdn_policy={
 ///         "cache_mode": "CACHE_ALL_STATIC",
@@ -998,18 +1069,22 @@ import 'backend_service_tls_settings.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
 ///     {
 ///         Name = "health-check",
-///         RequestPath = "/",
 ///         CheckIntervalSec = 1,
 ///         TimeoutSec = 1,
+///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+///         {
+///             Port = 80,
+///             RequestPath = "/",
+///         },
 ///     });
 ///
 ///     var @default = new Gcp.Compute.BackendService("default", new()
 ///     {
 ///         Name = "backend-service",
-///         HealthChecks = defaultHttpHealthCheck.Id,
+///         HealthChecks = defaultHealthCheck.Id,
 ///         EnableCdn = true,
 ///         CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
 ///         {
@@ -1028,24 +1103,27 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+/// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 /// 			Name:             pulumi.String("health-check"),
-/// 			RequestPath:      pulumi.String("/"),
 /// 			CheckIntervalSec: pulumi.Int(1),
 /// 			TimeoutSec:       pulumi.Int(1),
+/// 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+/// 				Port:        pulumi.Int(80),
+/// 				RequestPath: pulumi.String("/"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:         pulumi.String("backend-service"),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks: defaultHealthCheck.ID(),
 /// 			EnableCdn:    pulumi.Bool(true),
 /// 			CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
 /// 				CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
@@ -1064,7 +1142,7 @@ import 'backend_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1072,9 +1150,12 @@ import 'backend_service_tls_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "backend-service"
-///   health_checks = gcp_compute_httphealthcheck.default.id
+///   health_checks = gcp_compute_health_check.default.id
 ///   enable_cdn    = true
 ///   cdn_policy = {
 ///     cache_mode                   = "CACHE_ALL_STATIC"
@@ -1085,11 +1166,17 @@ import 'backend_service_tls_settings.dart';
 ///     signed_url_cache_max_age_sec = 7200
 ///   }
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "health-check"
-///   request_path       = "/"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
+///   http_health_check = {
+///     port         = 80
+///     request_path = "/"
+///   }
 /// }
 /// ```
 /// ```java
@@ -1098,8 +1185,9 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.HttpHealthCheck;
-/// import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.HealthCheck;
+/// import com.pulumi.gcp.compute.HealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
@@ -1116,16 +1204,19 @@ import 'backend_service_tls_settings.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+///         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
 ///             .name("health-check")
-///             .requestPath("/")
 ///             .checkIntervalSec(1)
 ///             .timeoutSec(1)
+///             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .requestPath("/")
+///                 .build())
 ///             .build());
 ///
 ///         var default_ = new BackendService("default", BackendServiceArgs.builder()
 ///             .name("backend-service")
-///             .healthChecks(defaultHttpHealthCheck.id())
+///             .healthChecks(defaultHealthCheck.id())
 ///             .enableCdn(true)
 ///             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
 ///                 .cacheMode("CACHE_ALL_STATIC")
@@ -1146,7 +1237,7 @@ import 'backend_service_tls_settings.dart';
 ///     type: gcp:compute:BackendService
 ///     properties:
 ///       name: backend-service
-///       healthChecks: ${defaultHttpHealthCheck.id}
+///       healthChecks: ${defaultHealthCheck.id}
 ///       enableCdn: true
 ///       cdnPolicy:
 ///         cacheMode: CACHE_ALL_STATIC
@@ -1155,14 +1246,16 @@ import 'backend_service_tls_settings.dart';
 ///         maxTtl: 10800
 ///         negativeCaching: true
 ///         signedUrlCacheMaxAgeSec: 7200
-///   defaultHttpHealthCheck:
-///     type: gcp:compute:HttpHealthCheck
+///   defaultHealthCheck:
+///     type: gcp:compute:HealthCheck
 ///     name: default
 ///     properties:
 ///       name: health-check
-///       requestPath: /
 ///       checkIntervalSec: 1
 ///       timeoutSec: 1
+///       httpHealthCheck:
+///         port: 80
+///         requestPath: /
 /// ```
 ///
 /// ### Backend Service Cache Bypass Cache On Request Headers
@@ -1173,15 +1266,18 @@ import 'backend_service_tls_settings.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+/// const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
 ///     name: "health-check",
-///     requestPath: "/",
 ///     checkIntervalSec: 1,
 ///     timeoutSec: 1,
+///     httpHealthCheck: {
+///         port: 80,
+///         requestPath: "/",
+///     },
 /// });
 /// const _default = new gcp.compute.BackendService("default", {
 ///     name: "backend-service",
-///     healthChecks: defaultHttpHealthCheck.id,
+///     healthChecks: defaultHealthCheck.id,
 ///     enableCdn: true,
 ///     cdnPolicy: {
 ///         cacheMode: "CACHE_ALL_STATIC",
@@ -1205,14 +1301,17 @@ import 'backend_service_tls_settings.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// default_http_health_check = gcp.compute.HttpHealthCheck("default",
+/// default_health_check = gcp.compute.HealthCheck("default",
 ///     name="health-check",
-///     request_path="/",
 ///     check_interval_sec=1,
-///     timeout_sec=1)
+///     timeout_sec=1,
+///     http_health_check={
+///         "port": 80,
+///         "request_path": "/",
+///     })
 /// default = gcp.compute.BackendService("default",
 ///     name="backend-service",
-///     health_checks=default_http_health_check.id,
+///     health_checks=default_health_check.id,
 ///     enable_cdn=True,
 ///     cdn_policy={
 ///         "cache_mode": "CACHE_ALL_STATIC",
@@ -1239,18 +1338,22 @@ import 'backend_service_tls_settings.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
 ///     {
 ///         Name = "health-check",
-///         RequestPath = "/",
 ///         CheckIntervalSec = 1,
 ///         TimeoutSec = 1,
+///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+///         {
+///             Port = 80,
+///             RequestPath = "/",
+///         },
 ///     });
 ///
 ///     var @default = new Gcp.Compute.BackendService("default", new()
 ///     {
 ///         Name = "backend-service",
-///         HealthChecks = defaultHttpHealthCheck.Id,
+///         HealthChecks = defaultHealthCheck.Id,
 ///         EnableCdn = true,
 ///         CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
 ///         {
@@ -1280,24 +1383,27 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+/// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 /// 			Name:             pulumi.String("health-check"),
-/// 			RequestPath:      pulumi.String("/"),
 /// 			CheckIntervalSec: pulumi.Int(1),
 /// 			TimeoutSec:       pulumi.Int(1),
+/// 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+/// 				Port:        pulumi.Int(80),
+/// 				RequestPath: pulumi.String("/"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:         pulumi.String("backend-service"),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks: defaultHealthCheck.ID(),
 /// 			EnableCdn:    pulumi.Bool(true),
 /// 			CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
 /// 				CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
@@ -1324,7 +1430,7 @@ import 'backend_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1332,9 +1438,12 @@ import 'backend_service_tls_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "backend-service"
-///   health_checks = gcp_compute_httphealthcheck.default.id
+///   health_checks = gcp_compute_health_check.default.id
 ///   enable_cdn    = true
 ///   cdn_policy = {
 ///     cache_mode                   = "CACHE_ALL_STATIC"
@@ -1344,17 +1453,23 @@ import 'backend_service_tls_settings.dart';
 ///     negative_caching             = true
 ///     signed_url_cache_max_age_sec = 7200
 ///     bypass_cache_on_request_headers = [{
-///       "headerName" = "Authorization"
+///       header_name = "Authorization"
 ///       }, {
-///       "headerName" = "Proxy-Authorization"
+///       header_name = "Proxy-Authorization"
 ///     }]
 ///   }
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "health-check"
-///   request_path       = "/"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
+///   http_health_check = {
+///     port         = 80
+///     request_path = "/"
+///   }
 /// }
 /// ```
 /// ```java
@@ -1363,8 +1478,9 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.HttpHealthCheck;
-/// import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.HealthCheck;
+/// import com.pulumi.gcp.compute.HealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
@@ -1382,16 +1498,19 @@ import 'backend_service_tls_settings.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+///         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
 ///             .name("health-check")
-///             .requestPath("/")
 ///             .checkIntervalSec(1)
 ///             .timeoutSec(1)
+///             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .requestPath("/")
+///                 .build())
 ///             .build());
 ///
 ///         var default_ = new BackendService("default", BackendServiceArgs.builder()
 ///             .name("backend-service")
-///             .healthChecks(defaultHttpHealthCheck.id())
+///             .healthChecks(defaultHealthCheck.id())
 ///             .enableCdn(true)
 ///             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
 ///                 .cacheMode("CACHE_ALL_STATIC")
@@ -1419,7 +1538,7 @@ import 'backend_service_tls_settings.dart';
 ///     type: gcp:compute:BackendService
 ///     properties:
 ///       name: backend-service
-///       healthChecks: ${defaultHttpHealthCheck.id}
+///       healthChecks: ${defaultHealthCheck.id}
 ///       enableCdn: true
 ///       cdnPolicy:
 ///         cacheMode: CACHE_ALL_STATIC
@@ -1431,14 +1550,16 @@ import 'backend_service_tls_settings.dart';
 ///         bypassCacheOnRequestHeaders:
 ///           - headerName: Authorization
 ///           - headerName: Proxy-Authorization
-///   defaultHttpHealthCheck:
-///     type: gcp:compute:HttpHealthCheck
+///   defaultHealthCheck:
+///     type: gcp:compute:HealthCheck
 ///     name: default
 ///     properties:
 ///       name: health-check
-///       requestPath: /
 ///       checkIntervalSec: 1
 ///       timeoutSec: 1
+///       httpHealthCheck:
+///         port: 80
+///         requestPath: /
 /// ```
 ///
 /// ### Backend Service Traffic Director Round Robin
@@ -1508,7 +1629,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1525,7 +1646,7 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:                pulumi.String("backend-service"),
-/// 			HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:        healthCheck.ID(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 /// 			LocalityLbPolicy:    pulumi.String("ROUND_ROBIN"),
 /// 		})
@@ -1537,7 +1658,7 @@ import 'backend_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1545,13 +1666,19 @@ import 'backend_service_tls_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "backend-service"
-///   health_checks         = gcp_compute_healthcheck.health_check.id
+///   health_checks         = gcp_compute_health_check.health_check.id
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
 ///   locality_lb_policy    = "ROUND_ROBIN"
 /// }
-/// resource "gcp_compute_healthcheck" "health_check" {
+/// resource "gcp_compute_health_check" "health_check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
@@ -1761,7 +1888,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1778,7 +1905,7 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:                pulumi.String("backend-service"),
-/// 			HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:        healthCheck.ID(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 /// 			LocalityLbPolicy:    pulumi.String("RING_HASH"),
 /// 			SessionAffinity:     pulumi.String("HTTP_COOKIE"),
@@ -1814,7 +1941,7 @@ import 'backend_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1822,9 +1949,12 @@ import 'backend_service_tls_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "backend-service"
-///   health_checks         = gcp_compute_healthcheck.health_check.id
+///   health_checks         = gcp_compute_health_check.health_check.id
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
 ///   locality_lb_policy    = "RING_HASH"
 ///   session_affinity      = "HTTP_COOKIE"
@@ -1852,7 +1982,10 @@ import 'backend_service_tls_settings.dart';
 ///     success_rate_stdev_factor             = 1900
 ///   }
 /// }
-/// resource "gcp_compute_healthcheck" "health_check" {
+/// resource "gcp_compute_health_check" "health_check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
@@ -2059,7 +2192,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2076,7 +2209,7 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:                pulumi.String("backend-service"),
-/// 			HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:        healthCheck.ID(),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 /// 			LocalityLbPolicy:    pulumi.String("RING_HASH"),
 /// 			SessionAffinity:     pulumi.String("STRONG_COOKIE_AFFINITY"),
@@ -2096,7 +2229,7 @@ import 'backend_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2104,9 +2237,12 @@ import 'backend_service_tls_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "backend-service"
-///   health_checks         = gcp_compute_healthcheck.health_check.id
+///   health_checks         = gcp_compute_health_check.health_check.id
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
 ///   locality_lb_policy    = "RING_HASH"
 ///   session_affinity      = "STRONG_COOKIE_AFFINITY"
@@ -2118,7 +2254,10 @@ import 'backend_service_tls_settings.dart';
 ///     name = "mycookie"
 ///   }
 /// }
-/// resource "gcp_compute_healthcheck" "health_check" {
+/// resource "gcp_compute_health_check" "health_check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
@@ -2306,7 +2445,7 @@ import 'backend_service_tls_settings.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2321,7 +2460,7 @@ import 'backend_service_tls_settings.dart';
 /// 			return err
 /// 		}
 /// 		proxy, err := compute.NewGlobalNetworkEndpoint(ctx, "proxy", &compute.GlobalNetworkEndpointArgs{
-/// 			GlobalNetworkEndpointGroup: externalProxy.ID().ToIDOutput().ToStringOutput(),
+/// 			GlobalNetworkEndpointGroup: externalProxy.ID(),
 /// 			Fqdn:                       pulumi.String("test.example.com"),
 /// 			Port:                       externalProxy.DefaultPort,
 /// 		})
@@ -2343,7 +2482,7 @@ import 'backend_service_tls_settings.dart';
 /// 			},
 /// 			Backends: compute.BackendServiceBackendArray{
 /// 				&compute.BackendServiceBackendArgs{
-/// 					Group: externalProxy.ID().ToIDOutput().ToStringOutput(),
+/// 					Group: externalProxy.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -2355,7 +2494,7 @@ import 'backend_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2363,25 +2502,34 @@ import 'backend_service_tls_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_globalnetworkendpointgroup" "external_proxy" {
+/// resource "gcp_compute_global_network_endpoint_group" "external_proxy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "network-endpoint"
 ///   network_endpoint_type = "INTERNET_FQDN_PORT"
 ///   default_port          = "443"
 /// }
-/// resource "gcp_compute_globalnetworkendpoint" "proxy" {
-///   global_network_endpoint_group = gcp_compute_globalnetworkendpointgroup.external_proxy.id
+/// resource "gcp_compute_global_network_endpoint" "proxy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   global_network_endpoint_group = gcp_compute_global_network_endpoint_group.external_proxy.id
 ///   fqdn                          = "test.example.com"
-///   port                          = gcp_compute_globalnetworkendpointgroup.external_proxy.default_port
+///   port                          = gcp_compute_global_network_endpoint_group.external_proxy.default_port
 /// }
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "backend-service"
 ///   enable_cdn                      = true
 ///   timeout_sec                     = 10
 ///   connection_draining_timeout_sec = 10
-///   custom_request_headers          = ["host: ${gcp_compute_globalnetworkendpoint.proxy.fqdn}"]
+///   custom_request_headers          = ["host: ${gcp_compute_global_network_endpoint.proxy.fqdn}"]
 ///   custom_response_headers         = ["X-Cache-Hit: {cdn_cache_status}"]
 ///   backends {
-///     group = gcp_compute_globalnetworkendpointgroup.external_proxy.id
+///     group = gcp_compute_global_network_endpoint_group.external_proxy.id
 ///   }
 /// }
 /// ```
@@ -2490,7 +2638,7 @@ import 'backend_service_tls_settings.dart';
 ///     name: "instance-template",
 ///     machineType: "e2-micro",
 ///     disks: [{
-///         sourceImage: "debian-cloud/debian-11",
+///         sourceImage: "debian-cloud/debian-13",
 ///         autoDelete: true,
 ///         boot: true,
 ///     }],
@@ -2553,7 +2701,7 @@ import 'backend_service_tls_settings.dart';
 ///     name="instance-template",
 ///     machine_type="e2-micro",
 ///     disks=[{
-///         "source_image": "debian-cloud/debian-11",
+///         "source_image": "debian-cloud/debian-13",
 ///         "auto_delete": True,
 ///         "boot": True,
 ///     }],
@@ -2626,7 +2774,7 @@ import 'backend_service_tls_settings.dart';
 ///         {
 ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
 ///             {
-///                 SourceImage = "debian-cloud/debian-11",
+///                 SourceImage = "debian-cloud/debian-13",
 ///                 AutoDelete = true,
 ///                 Boot = true,
 ///             },
@@ -2700,7 +2848,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2717,7 +2865,7 @@ import 'backend_service_tls_settings.dart';
 /// 			Name:        pulumi.String("custom-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     custom.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     custom.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2727,15 +2875,15 @@ import 'backend_service_tls_settings.dart';
 /// 			MachineType: pulumi.String("e2-micro"),
 /// 			Disks: compute.InstanceTemplateDiskArray{
 /// 				&compute.InstanceTemplateDiskArgs{
-/// 					SourceImage: pulumi.String("debian-cloud/debian-11"),
+/// 					SourceImage: pulumi.String("debian-cloud/debian-13"),
 /// 					AutoDelete:  pulumi.Bool(true),
 /// 					Boot:        pulumi.Bool(true),
 /// 				},
 /// 			},
 /// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
 /// 				&compute.InstanceTemplateNetworkInterfaceArgs{
-/// 					Network:    custom.ID().ToIDOutput().ToStringOutput(),
-/// 					Subnetwork: _default.ID().ToIDOutput().ToStringOutput(),
+/// 					Network:    custom.ID(),
+/// 					Subnetwork: _default.ID(),
 /// 				},
 /// 			},
 /// 			Metadata: pulumi.StringMap{
@@ -2756,7 +2904,7 @@ import 'backend_service_tls_settings.dart';
 /// 			Region:           pulumi.String("us-central1"),
 /// 			Versions: compute.RegionInstanceGroupManagerVersionArray{
 /// 				&compute.RegionInstanceGroupManagerVersionArgs{
-/// 					InstanceTemplate: defaultInstanceTemplate.ID().ToIDOutput().ToStringOutput(),
+/// 					InstanceTemplate: defaultInstanceTemplate.ID(),
 /// 				},
 /// 			},
 /// 			TargetSize: pulumi.Int(1),
@@ -2797,7 +2945,7 @@ import 'backend_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2806,20 +2954,29 @@ import 'backend_service_tls_settings.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "custom" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "custom-vpc"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "custom-subnet"
 ///   ip_cidr_range = "10.0.0.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.custom.id
 /// }
-/// resource "gcp_compute_instancetemplate" "default" {
+/// resource "gcp_compute_instance_template" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "instance-template"
 ///   machine_type = "e2-micro"
 ///   disks {
-///     source_image = "debian-cloud/debian-11"
+///     source_image = "debian-cloud/debian-13"
 ///     auto_delete  = true
 ///     boot         = true
 ///   }
@@ -2828,33 +2985,49 @@ import 'backend_service_tls_settings.dart';
 ///     subnetwork = gcp_compute_subnetwork.default.id
 ///   }
 ///   metadata = {
-///     "startup-script" = "#!/bin/bash\necho \\\"Hello World from MIG VM\\\" > /var/www/html/index.html\napt-get update -y\napt-get install -y apache2\nsystemctl start apache2\n"
+///     "startup-script" = <<-EOT
+/// #!/bin/bash
+/// echo \"Hello World from MIG VM\" > /var/www/html/index.html
+/// apt-get update -y
+/// apt-get install -y apache2
+/// systemctl start apache2
+/// EOT
+///
 ///   }
 /// }
-/// resource "gcp_compute_regioninstancegroupmanager" "foobar" {
+/// resource "gcp_compute_region_instance_group_manager" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "instance-group-manager"
 ///   base_instance_name = "vm"
 ///   region             = "us-central1"
 ///   versions {
-///     instance_template = gcp_compute_instancetemplate.default.id
+///     instance_template = gcp_compute_instance_template.default.id
 ///   }
 ///   target_size = 1
 /// }
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "backend-service"
 ///   description           = "Hello World 1234"
 ///   port_name             = "http"
 ///   protocol              = "TCP"
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
 ///   backends {
-///     group                  = gcp_compute_regioninstancegroupmanager.foobar.instance_group
+///     group                  = gcp_compute_region_instance_group_manager.foobar.instance_group
 ///     balancing_mode         = "IN_FLIGHT"
 ///     max_in_flight_requests = 1000
 ///     traffic_duration       = "LONG"
 ///   }
-///   health_checks = gcp_compute_healthcheck.default.self_link
+///   health_checks = gcp_compute_health_check.default.self_link
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
@@ -2913,7 +3086,7 @@ import 'backend_service_tls_settings.dart';
 ///             .name("instance-template")
 ///             .machineType("e2-micro")
 ///             .disks(InstanceTemplateDiskArgs.builder()
-///                 .sourceImage("debian-cloud/debian-11")
+///                 .sourceImage("debian-cloud/debian-13")
 ///                 .autoDelete(true)
 ///                 .boot(true)
 ///                 .build())
@@ -2986,7 +3159,7 @@ import 'backend_service_tls_settings.dart';
 ///       name: instance-template
 ///       machineType: e2-micro
 ///       disks:
-///         - sourceImage: debian-cloud/debian-11
+///         - sourceImage: debian-cloud/debian-13
 ///           autoDelete: true
 ///           boot: true
 ///       networkInterfaces:
@@ -3099,7 +3272,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3116,7 +3289,7 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:                pulumi.String("backend-service"),
-/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:        defaultHealthCheck.ID(),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 /// 			Protocol:            pulumi.String("H2C"),
 /// 		})
@@ -3128,7 +3301,7 @@ import 'backend_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3136,13 +3309,19 @@ import 'backend_service_tls_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "backend-service"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
 ///   protocol              = "H2C"
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
@@ -3252,7 +3431,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3271,7 +3450,7 @@ import 'backend_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3279,7 +3458,10 @@ import 'backend_service_tls_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "backend-service"
 ///   load_balancing_scheme       = "EXTERNAL_MANAGED"
 ///   ip_address_selection_policy = "IPV6_ONLY"
@@ -3524,7 +3706,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3539,7 +3721,7 @@ import 'backend_service_tls_settings.dart';
 /// 		// Zonal NEG with GCE_VM_IP_PORT
 /// 		defaultNetworkEndpointGroup, err := compute.NewNetworkEndpointGroup(ctx, "default", &compute.NetworkEndpointGroupArgs{
 /// 			Name:                pulumi.String("network-endpoint"),
-/// 			Network:             _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:             _default.ID(),
 /// 			DefaultPort:         pulumi.Int(90),
 /// 			Zone:                pulumi.String("us-central1-a"),
 /// 			NetworkEndpointType: pulumi.String("GCE_VM_IP_PORT"),
@@ -3560,7 +3742,7 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:                pulumi.String("backend-service"),
-/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:        defaultHealthCheck.ID(),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 /// 			LocalityLbPolicy:    pulumi.String("WEIGHTED_ROUND_ROBIN"),
 /// 			CustomMetrics: compute.BackendServiceCustomMetricArray{
@@ -3571,7 +3753,7 @@ import 'backend_service_tls_settings.dart';
 /// 			},
 /// 			Backends: compute.BackendServiceBackendArray{
 /// 				&compute.BackendServiceBackendArgs{
-/// 					Group:         defaultNetworkEndpointGroup.ID().ToIDOutput().ToStringOutput(),
+/// 					Group:         defaultNetworkEndpointGroup.ID(),
 /// 					BalancingMode: pulumi.String("CUSTOM_METRICS"),
 /// 					CustomMetrics: compute.BackendServiceBackendCustomMetricArray{
 /// 						&compute.BackendServiceBackendCustomMetricArgs{
@@ -3603,7 +3785,7 @@ import 'backend_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3612,19 +3794,28 @@ import 'backend_service_tls_settings.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "network"
 /// }
 /// // Zonal NEG with GCE_VM_IP_PORT
-/// resource "gcp_compute_networkendpointgroup" "default" {
+/// resource "gcp_compute_network_endpoint_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "network-endpoint"
 ///   network               = gcp_compute_network.default.id
 ///   default_port          = "90"
 ///   zone                  = "us-central1-a"
 ///   network_endpoint_type = "GCE_VM_IP_PORT"
 /// }
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "backend-service"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
 ///   locality_lb_policy    = "WEIGHTED_ROUND_ROBIN"
 ///   custom_metrics {
@@ -3633,7 +3824,7 @@ import 'backend_service_tls_settings.dart';
 ///   }
 ///   # At least one metric should be not dry_run.
 ///   backends {
-///     group          = gcp_compute_networkendpointgroup.default.id
+///     group          = gcp_compute_network_endpoint_group.default.id
 ///     balancing_mode = "CUSTOM_METRICS"
 ///     custom_metrics {
 ///       name            = "orca.cpu_utilization"
@@ -3652,7 +3843,10 @@ import 'backend_service_tls_settings.dart';
 ///     optional_fields = ["orca_load_report", "tls.protocol"]
 ///   }
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -3925,8 +4119,8 @@ import 'backend_service_tls_settings.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3950,7 +4144,7 @@ import 'backend_service_tls_settings.dart';
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:                pulumi.String("backend-service"),
-/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:        defaultHealthCheck.ID(),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 /// 			Protocol:            pulumi.String("HTTPS"),
 /// 			TlsSettings: &compute.BackendServiceTlsSettingsArgs{
@@ -3976,7 +4170,7 @@ import 'backend_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3984,28 +4178,37 @@ import 'backend_service_tls_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "backend-service"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
 ///   protocol              = "HTTPS"
 ///   tls_settings = {
 ///     sni = "example.com"
 ///     subject_alt_names = [{
-///       "dnsName" = "example.com"
+///       dns_name = "example.com"
 ///       }, {
-///       "uniformResourceIdentifier" = "https://example.com"
+///       uniform_resource_identifier = "https://example.com"
 ///     }]
-///     authentication_config ="//networksecurity.googleapis.com/${gcp_networksecurity_backendauthenticationconfig.default.id}"
+///     authentication_config ="//networksecurity.googleapis.com/${gcp_networksecurity_backend_authentication_config.default.id}"
 ///   }
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
 ///   }
 /// }
-/// resource "gcp_networksecurity_backendauthenticationconfig" "default" {
+/// resource "gcp_networksecurity_backend_authentication_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "authentication"
 ///   well_known_roots = "PUBLIC_ROOTS"
 /// }
@@ -4101,6 +4304,217 @@ import 'backend_service_tls_settings.dart';
 ///       wellKnownRoots: PUBLIC_ROOTS
 /// ```
 ///
+/// ### Backend Service Identity
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+///     name: "health-check",
+///     httpHealthCheck: {
+///         port: 80,
+///     },
+/// });
+/// const _default = new gcp.compute.BackendService("default", {
+///     name: "backend-service",
+///     healthChecks: defaultHealthCheck.id,
+///     loadBalancingScheme: "EXTERNAL_MANAGED",
+///     protocol: "HTTPS",
+///     tlsSettings: {
+///         identity: "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id",
+///     },
+///     description: "description",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default_health_check = gcp.compute.HealthCheck("default",
+///     name="health-check",
+///     http_health_check={
+///         "port": 80,
+///     })
+/// default = gcp.compute.BackendService("default",
+///     name="backend-service",
+///     health_checks=default_health_check.id,
+///     load_balancing_scheme="EXTERNAL_MANAGED",
+///     protocol="HTTPS",
+///     tls_settings={
+///         "identity": "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id",
+///     },
+///     description="description")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+///     {
+///         Name = "health-check",
+///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+///         {
+///             Port = 80,
+///         },
+///     });
+///
+///     var @default = new Gcp.Compute.BackendService("default", new()
+///     {
+///         Name = "backend-service",
+///         HealthChecks = defaultHealthCheck.Id,
+///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+///         Protocol = "HTTPS",
+///         TlsSettings = new Gcp.Compute.Inputs.BackendServiceTlsSettingsArgs
+///         {
+///             Identity = "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id",
+///         },
+///         Description = "description",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+/// 			Name: pulumi.String("health-check"),
+/// 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+/// 				Port: pulumi.Int(80),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+/// 			Name:                pulumi.String("backend-service"),
+/// 			HealthChecks:        defaultHealthCheck.ID(),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+/// 			Protocol:            pulumi.String("HTTPS"),
+/// 			TlsSettings: &compute.BackendServiceTlsSettingsArgs{
+/// 				Identity: pulumi.String("//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id"),
+/// 			},
+/// 			Description: pulumi.String("description"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                  = "backend-service"
+///   health_checks         = gcp_compute_health_check.default.id
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   protocol              = "HTTPS"
+///   tls_settings = {
+///     identity = "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id"
+///   }
+///   description = "description"
+/// }
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name = "health-check"
+///   http_health_check = {
+///     port = 80
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.HealthCheck;
+/// import com.pulumi.gcp.compute.HealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.BackendService;
+/// import com.pulumi.gcp.compute.BackendServiceArgs;
+/// import com.pulumi.gcp.compute.inputs.BackendServiceTlsSettingsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+///             .name("health-check")
+///             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .build())
+///             .build());
+///
+///         var default_ = new BackendService("default", BackendServiceArgs.builder()
+///             .name("backend-service")
+///             .healthChecks(defaultHealthCheck.id())
+///             .loadBalancingScheme("EXTERNAL_MANAGED")
+///             .protocol("HTTPS")
+///             .tlsSettings(BackendServiceTlsSettingsArgs.builder()
+///                 .identity("//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id")
+///                 .build())
+///             .description("description")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:compute:BackendService
+///     properties:
+///       name: backend-service
+///       healthChecks: ${defaultHealthCheck.id}
+///       loadBalancingScheme: EXTERNAL_MANAGED
+///       protocol: HTTPS
+///       tlsSettings:
+///         identity: //test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id
+///       description: description
+///   defaultHealthCheck:
+///     type: gcp:compute:HealthCheck
+///     name: default
+///     properties:
+///       name: health-check
+///       httpHealthCheck:
+///         port: 80
+/// ```
+///
 /// ### Backend Service Dynamic Forwarding
 ///
 ///
@@ -4159,7 +4573,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4182,7 +4596,7 @@ import 'backend_service_tls_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4190,7 +4604,10 @@ import 'backend_service_tls_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "backend-service"
 ///   load_balancing_scheme = "INTERNAL_MANAGED"
 ///   dynamic_forwarding = {
@@ -4246,6 +4663,334 @@ import 'backend_service_tls_settings.dart';
 ///       dynamicForwarding:
 ///         ipPortSelection:
 ///           enabled: true
+/// ```
+///
+/// ### Backend Service Dynamic Forwarding Forward Proxy Cloud Run
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.compute.BackendService("default", {
+///     name: "backend-service",
+///     loadBalancingScheme: "INTERNAL_MANAGED",
+///     protocol: "HTTP2",
+///     dynamicForwarding: {
+///         forwardProxy: {
+///             enabled: true,
+///             proxyMode: "CLOUD_RUN",
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.compute.BackendService("default",
+///     name="backend-service",
+///     load_balancing_scheme="INTERNAL_MANAGED",
+///     protocol="HTTP2",
+///     dynamic_forwarding={
+///         "forward_proxy": {
+///             "enabled": True,
+///             "proxy_mode": "CLOUD_RUN",
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.Compute.BackendService("default", new()
+///     {
+///         Name = "backend-service",
+///         LoadBalancingScheme = "INTERNAL_MANAGED",
+///         Protocol = "HTTP2",
+///         DynamicForwarding = new Gcp.Compute.Inputs.BackendServiceDynamicForwardingArgs
+///         {
+///             ForwardProxy = new Gcp.Compute.Inputs.BackendServiceDynamicForwardingForwardProxyArgs
+///             {
+///                 Enabled = true,
+///                 ProxyMode = "CLOUD_RUN",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+/// 			Name:                pulumi.String("backend-service"),
+/// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+/// 			Protocol:            pulumi.String("HTTP2"),
+/// 			DynamicForwarding: &compute.BackendServiceDynamicForwardingArgs{
+/// 				ForwardProxy: &compute.BackendServiceDynamicForwardingForwardProxyArgs{
+/// 					Enabled:   pulumi.Bool(true),
+/// 					ProxyMode: pulumi.String("CLOUD_RUN"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                  = "backend-service"
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   protocol              = "HTTP2"
+///   dynamic_forwarding = {
+///     forward_proxy = {
+///       enabled    = true
+///       proxy_mode = "CLOUD_RUN"
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.BackendService;
+/// import com.pulumi.gcp.compute.BackendServiceArgs;
+/// import com.pulumi.gcp.compute.inputs.BackendServiceDynamicForwardingArgs;
+/// import com.pulumi.gcp.compute.inputs.BackendServiceDynamicForwardingForwardProxyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new BackendService("default", BackendServiceArgs.builder()
+///             .name("backend-service")
+///             .loadBalancingScheme("INTERNAL_MANAGED")
+///             .protocol("HTTP2")
+///             .dynamicForwarding(BackendServiceDynamicForwardingArgs.builder()
+///                 .forwardProxy(BackendServiceDynamicForwardingForwardProxyArgs.builder()
+///                     .enabled(true)
+///                     .proxyMode("CLOUD_RUN")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:compute:BackendService
+///     properties:
+///       name: backend-service
+///       loadBalancingScheme: INTERNAL_MANAGED
+///       protocol: HTTP2
+///       dynamicForwarding:
+///         forwardProxy:
+///           enabled: true
+///           proxyMode: CLOUD_RUN
+/// ```
+///
+/// ### Backend Service Dynamic Forwarding Forward Proxy Direct Forwarding
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.compute.BackendService("default", {
+///     name: "backend-service",
+///     loadBalancingScheme: "INTERNAL_MANAGED",
+///     protocol: "HTTP2",
+///     dynamicForwarding: {
+///         forwardProxy: {
+///             enabled: true,
+///             proxyMode: "DIRECT_FORWARDING",
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.compute.BackendService("default",
+///     name="backend-service",
+///     load_balancing_scheme="INTERNAL_MANAGED",
+///     protocol="HTTP2",
+///     dynamic_forwarding={
+///         "forward_proxy": {
+///             "enabled": True,
+///             "proxy_mode": "DIRECT_FORWARDING",
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.Compute.BackendService("default", new()
+///     {
+///         Name = "backend-service",
+///         LoadBalancingScheme = "INTERNAL_MANAGED",
+///         Protocol = "HTTP2",
+///         DynamicForwarding = new Gcp.Compute.Inputs.BackendServiceDynamicForwardingArgs
+///         {
+///             ForwardProxy = new Gcp.Compute.Inputs.BackendServiceDynamicForwardingForwardProxyArgs
+///             {
+///                 Enabled = true,
+///                 ProxyMode = "DIRECT_FORWARDING",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+/// 			Name:                pulumi.String("backend-service"),
+/// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+/// 			Protocol:            pulumi.String("HTTP2"),
+/// 			DynamicForwarding: &compute.BackendServiceDynamicForwardingArgs{
+/// 				ForwardProxy: &compute.BackendServiceDynamicForwardingForwardProxyArgs{
+/// 					Enabled:   pulumi.Bool(true),
+/// 					ProxyMode: pulumi.String("DIRECT_FORWARDING"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                  = "backend-service"
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   protocol              = "HTTP2"
+///   dynamic_forwarding = {
+///     forward_proxy = {
+///       enabled    = true
+///       proxy_mode = "DIRECT_FORWARDING"
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.BackendService;
+/// import com.pulumi.gcp.compute.BackendServiceArgs;
+/// import com.pulumi.gcp.compute.inputs.BackendServiceDynamicForwardingArgs;
+/// import com.pulumi.gcp.compute.inputs.BackendServiceDynamicForwardingForwardProxyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new BackendService("default", BackendServiceArgs.builder()
+///             .name("backend-service")
+///             .loadBalancingScheme("INTERNAL_MANAGED")
+///             .protocol("HTTP2")
+///             .dynamicForwarding(BackendServiceDynamicForwardingArgs.builder()
+///                 .forwardProxy(BackendServiceDynamicForwardingForwardProxyArgs.builder()
+///                     .enabled(true)
+///                     .proxyMode("DIRECT_FORWARDING")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:compute:BackendService
+///     properties:
+///       name: backend-service
+///       loadBalancingScheme: INTERNAL_MANAGED
+///       protocol: HTTP2
+///       dynamicForwarding:
+///         forwardProxy:
+///           enabled: true
+///           proxyMode: DIRECT_FORWARDING
 /// ```
 ///
 ///
@@ -4370,7 +5115,7 @@ class BackendService extends pulumi.CustomResource {
   /// external load balancing. A backend service created for one type of
   /// load balancing cannot be used with the other. For more information, refer to
   /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-  /// Default value is `EXTERNAL`.
+  /// Default value is `EXTERNAL_MANAGED`.
   /// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
   late final pulumi.Output<String?> loadBalancingScheme;
   /// A list of locality load balancing policies to be used in order of
@@ -4491,7 +5236,7 @@ class BackendService extends pulumi.CustomResource {
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
   /// URL to networkservices.ServiceLbPolicy resource.
-  /// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+  /// Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
   late final pulumi.Output<String?> serviceLbPolicy;
   /// Type of session affinity to use. The default is NONE. Session affinity is
   /// not applicable if the protocol is UDP.
@@ -4521,7 +5266,7 @@ class BackendService extends pulumi.CustomResource {
           'gcp:compute/backendService:BackendService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     affinityCookieTtlSec = registerOutput<int?>('affinityCookieTtlSec');
     backends = registerOutput<List<BackendServiceBackend>?>('backends', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendServiceBackend>(guardedValue, (value) => BackendServiceBackend.fromMap((value as Map).cast<String, dynamic>())); });

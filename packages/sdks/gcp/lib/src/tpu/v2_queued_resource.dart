@@ -99,7 +99,7 @@ import 'v2_queued_resource_tpu.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tpu"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tpu"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -131,7 +131,7 @@ import 'v2_queued_resource_tpu.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -139,18 +139,21 @@ import 'v2_queued_resource_tpu.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_tpu_v2queuedresource" "qr" {
+/// resource "gcp_tpu_v2_queued_resource" "qr" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "test-qr"
 ///   zone    = "us-central1-c"
 ///   project = "my-project-name"
 ///   tpu = {
 ///     node_specs = [{
-///       "parent" = "projects/my-project-name/locations/us-central1-c"
-///       "nodeId" = "test-tpu"
-///       "node" = {
-///         "runtimeVersion"  = "tpu-vm-tf-2.13.0"
-///         "acceleratorType" = "v2-8"
-///         "description"     = "Text description of the TPU."
+///       parent  = "projects/my-project-name/locations/us-central1-c"
+///       node_id = "test-tpu"
+///       node = {
+///         runtime_version  = "tpu-vm-tf-2.13.0"
+///         accelerator_type = "v2-8"
+///         description      = "Text description of the TPU."
 ///       }
 ///     }]
 ///   }
@@ -355,8 +358,8 @@ import 'v2_queued_resource_tpu.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tpu"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tpu"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -373,7 +376,7 @@ import 'v2_queued_resource_tpu.dart';
 /// 			Name:        pulumi.String("tpu-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     network.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     network.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -394,8 +397,8 @@ import 'v2_queued_resource_tpu.dart';
 /// 							NetworkConfig: &tpu.V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs{
 /// 								CanIpForward:      pulumi.Bool(true),
 /// 								EnableExternalIps: pulumi.Bool(true),
-/// 								Network:           network.ID().ToIDOutput().ToStringOutput(),
-/// 								Subnetwork:        subnet.ID().ToIDOutput().ToStringOutput(),
+/// 								Network:           network.ID(),
+/// 								Subnetwork:        subnet.ID(),
 /// 								QueueCount:        pulumi.Int(32),
 /// 							},
 /// 						},
@@ -411,7 +414,7 @@ import 'v2_queued_resource_tpu.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -419,36 +422,45 @@ import 'v2_queued_resource_tpu.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_tpu_v2queuedresource" "qr" {
+/// resource "gcp_tpu_v2_queued_resource" "qr" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "test-qr"
 ///   zone    = "us-central1-c"
 ///   project = "my-project-name"
 ///   tpu = {
 ///     node_specs = [{
-///       "parent" = "projects/my-project-name/locations/us-central1-c"
-///       "nodeId" = "test-tpu"
-///       "node" = {
-///         "runtimeVersion"  = "tpu-vm-tf-2.13.0"
-///         "acceleratorType" = "v2-8"
-///         "description"     = "Text description of the TPU."
-///         "networkConfig" = {
-///           "canIpForward"      = true
-///           "enableExternalIps" = true
-///           "network"           = gcp_compute_network.network.id
-///           "subnetwork"        = gcp_compute_subnetwork.subnet.id
-///           "queueCount"        = 32
+///       parent  = "projects/my-project-name/locations/us-central1-c"
+///       node_id = "test-tpu"
+///       node = {
+///         runtime_version  = "tpu-vm-tf-2.13.0"
+///         accelerator_type = "v2-8"
+///         description      = "Text description of the TPU."
+///         network_config = {
+///           can_ip_forward      = true
+///           enable_external_ips = true
+///           network             = gcp_compute_network.network.id
+///           subnetwork          = gcp_compute_subnetwork.subnet.id
+///           queue_count         = 32
 ///         }
 ///       }
 ///     }]
 ///   }
 /// }
 /// resource "gcp_compute_subnetwork" "subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "tpu-subnet"
 ///   ip_cidr_range = "10.0.0.0/16"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.network.id
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "tpu-net"
 ///   auto_create_subnetworks = false
 /// }
@@ -607,7 +619,7 @@ class V2QueuedResource extends pulumi.CustomResource {
           'gcp:tpu/v2QueuedResource:V2QueuedResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');

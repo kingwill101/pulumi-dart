@@ -50,7 +50,7 @@ class RolloutPlanWave {
   factory RolloutPlanWave.fromMap(Map<String, dynamic> map) {
     return RolloutPlanWave(
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      number: (() { final guardedValue = map['number']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      number: (() { final guardedValue = map['number']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       orchestrationOptions: (() { final guardedValue = map['orchestrationOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RolloutPlanWaveOrchestrationOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       selectors: pulumi.Input.fromValue(pulumi.Input.decodeList<RolloutPlanWaveSelector>(map['selectors']!, (value) => RolloutPlanWaveSelector.fromMap((value as Map).cast<String, dynamic>()))),
       validation: pulumi.Input.fromValue(RolloutPlanWaveValidation.fromMap((map['validation']! as Map).cast<String, dynamic>())),

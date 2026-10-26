@@ -78,8 +78,8 @@ import 'subscription_iammember_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -110,7 +110,7 @@ import 'subscription_iammember_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -118,16 +118,19 @@ import 'subscription_iammember_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/editor"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_pubsub_subscriptioniampolicy" "editor" {
+/// resource "gcp_pubsub_subscription_i_a_m_policy" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subscription = "your-subscription-name"
-///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data  = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -234,7 +237,7 @@ import 'subscription_iammember_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -255,7 +258,7 @@ import 'subscription_iammember_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -263,7 +266,10 @@ import 'subscription_iammember_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_pubsub_subscriptioniambinding" "editor" {
+/// resource "gcp_pubsub_subscription_i_a_m_binding" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subscription = "your-subscription-name"
 ///   role         = "roles/editor"
 ///   members      = ["user:jane@example.com"]
@@ -354,7 +360,7 @@ import 'subscription_iammember_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -373,7 +379,7 @@ import 'subscription_iammember_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -381,7 +387,10 @@ import 'subscription_iammember_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_pubsub_subscriptioniammember" "editor" {
+/// resource "gcp_pubsub_subscription_i_a_m_member" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subscription = "your-subscription-name"
 ///   role         = "roles/editor"
 ///   member       = "user:jane@example.com"
@@ -493,8 +502,8 @@ import 'subscription_iammember_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -525,7 +534,7 @@ import 'subscription_iammember_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -533,16 +542,19 @@ import 'subscription_iammember_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/editor"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_pubsub_subscriptioniampolicy" "editor" {
+/// resource "gcp_pubsub_subscription_i_a_m_policy" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subscription = "your-subscription-name"
-///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data  = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -649,7 +661,7 @@ import 'subscription_iammember_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -670,7 +682,7 @@ import 'subscription_iammember_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -678,7 +690,10 @@ import 'subscription_iammember_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_pubsub_subscriptioniambinding" "editor" {
+/// resource "gcp_pubsub_subscription_i_a_m_binding" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subscription = "your-subscription-name"
 ///   role         = "roles/editor"
 ///   members      = ["user:jane@example.com"]
@@ -769,7 +784,7 @@ import 'subscription_iammember_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -788,7 +803,7 @@ import 'subscription_iammember_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -796,7 +811,10 @@ import 'subscription_iammember_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_pubsub_subscriptioniammember" "editor" {
+/// resource "gcp_pubsub_subscription_i_a_m_member" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subscription = "your-subscription-name"
 ///   role         = "roles/editor"
 ///   member       = "user:jane@example.com"
@@ -882,7 +900,7 @@ class SubscriptionIAMMember extends pulumi.CustomResource {
           'gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     condition = registerOutput<SubscriptionIAMMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionIAMMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

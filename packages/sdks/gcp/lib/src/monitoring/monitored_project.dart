@@ -73,8 +73,8 @@ import 'monitored_project_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -101,7 +101,7 @@ import 'monitored_project_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -109,11 +109,17 @@ import 'monitored_project_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_monitoredproject" "primary" {
+/// resource "gcp_monitoring_monitored_project" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metrics_scope = "my-project-name"
 ///   name          = gcp_organizations_project.basic.project_id
 /// }
 /// resource "gcp_organizations_project" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "m-id"
 ///   name            = "m-id-display"
 ///   org_id          = "123456789"
@@ -216,7 +222,7 @@ class MonitoredProject extends pulumi.CustomResource {
           'gcp:monitoring/monitoredProject:MonitoredProject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

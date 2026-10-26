@@ -94,8 +94,8 @@ import 'iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -133,7 +133,7 @@ import 'iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -141,7 +141,7 @@ import 'iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/iam.serviceAccountUser"
 ///     members = ["user:jane@example.com"]
@@ -149,12 +149,18 @@ import 'iampolicy_state.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "my-service-account"
 ///   display_name = "A service account that only Jane can interact with"
 /// }
-/// resource "gcp_serviceaccount_iampolicy" "admin-account-iam" {
+/// resource "gcp_serviceaccount_i_a_m_policy" "admin-account-iam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_account_id = gcp_serviceaccount_account.sa.name
-///   policy_data        = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data        = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -286,7 +292,7 @@ import 'iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -314,7 +320,7 @@ import 'iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -323,10 +329,16 @@ import 'iampolicy_state.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "my-service-account"
 ///   display_name = "A service account that only Jane can use"
 /// }
-/// resource "gcp_serviceaccount_iambinding" "admin-account-iam" {
+/// resource "gcp_serviceaccount_i_a_m_binding" "admin-account-iam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_account_id = gcp_serviceaccount_account.sa.name
 ///   role               = "roles/iam.serviceAccountUser"
 ///   members            = ["user:jane@example.com"]
@@ -461,7 +473,7 @@ import 'iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -494,7 +506,7 @@ import 'iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -503,10 +515,16 @@ import 'iampolicy_state.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "my-service-account"
 ///   display_name = "A service account that only Jane can use"
 /// }
-/// resource "gcp_serviceaccount_iambinding" "admin-account-iam" {
+/// resource "gcp_serviceaccount_i_a_m_binding" "admin-account-iam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_account_id = gcp_serviceaccount_account.sa.name
 ///   role               = "roles/iam.serviceAccountUser"
 ///   members            = ["user:jane@example.com"]
@@ -662,8 +680,8 @@ import 'iampolicy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -704,7 +722,7 @@ import 'iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -712,21 +730,30 @@ import 'iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getdefaultserviceaccount" "default" {
+/// data "gcp_compute_default_service_account" "default" {
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "my-service-account"
 ///   display_name = "A service account that Jane can use"
 /// }
-/// resource "gcp_serviceaccount_iammember" "admin-account-iam" {
+/// resource "gcp_serviceaccount_i_a_m_member" "admin-account-iam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_account_id = gcp_serviceaccount_account.sa.name
 ///   role               = "roles/iam.serviceAccountUser"
 ///   member             = "user:jane@example.com"
 /// }
 /// # Allow SA service account use the default GCE account
-/// resource "gcp_serviceaccount_iammember" "gce-default-account-iam" {
-///   service_account_id = data.gcp_compute_getdefaultserviceaccount.default.name
+/// resource "gcp_serviceaccount_i_a_m_member" "gce-default-account-iam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service_account_id = data.gcp_compute_default_service_account.default.name
 ///   role               = "roles/iam.serviceAccountUser"
 ///   member             ="serviceAccount:${gcp_serviceaccount_account.sa.email}"
 /// }
@@ -880,7 +907,7 @@ import 'iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -911,7 +938,7 @@ import 'iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -920,10 +947,16 @@ import 'iampolicy_state.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "my-service-account"
 ///   display_name = "A service account that Jane can use"
 /// }
-/// resource "gcp_serviceaccount_iammember" "admin-account-iam" {
+/// resource "gcp_serviceaccount_i_a_m_member" "admin-account-iam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_account_id = gcp_serviceaccount_account.sa.name
 ///   role               = "roles/iam.serviceAccountUser"
 ///   member             = "user:jane@example.com"
@@ -1032,7 +1065,7 @@ class IAMPolicy extends pulumi.CustomResource {
           'gcp:serviceaccount/iAMPolicy:IAMPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');

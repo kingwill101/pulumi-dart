@@ -3,7 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'urlmap_default_route_action_cache_policy.dart';
 import 'urlmap_default_route_action_cors_policy.dart';
+import 'urlmap_default_route_action_dynamic_compression_policy.dart';
 import 'urlmap_default_route_action_fault_injection_policy.dart';
+import 'urlmap_default_route_action_image_optimization_policy.dart';
 import 'urlmap_default_route_action_max_stream_duration.dart';
 import 'urlmap_default_route_action_request_mirror_policy.dart';
 import 'urlmap_default_route_action_retry_policy.dart';
@@ -22,6 +24,11 @@ class URLMapDefaultRouteAction {
   /// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
   /// Structure is documented below.
   final pulumi.Input<URLMapDefaultRouteActionCorsPolicy?>? corsPolicy;
+  /// (Optional, Beta)
+  /// Dynamic compression policy for this URL Map's route. Available only for
+  /// Global EXTERNAL_MANAGED load balancer schemes.
+  /// Structure is documented below.
+  final pulumi.Input<URLMapDefaultRouteActionDynamicCompressionPolicy?>? dynamicCompressionPolicy;
   /// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
   /// As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
   /// percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
@@ -29,6 +36,10 @@ class URLMapDefaultRouteAction {
   /// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
   /// Structure is documented below.
   final pulumi.Input<URLMapDefaultRouteActionFaultInjectionPolicy?>? faultInjectionPolicy;
+  /// (Optional, Beta)
+  /// Specifies the policy for optimizing images returned in the HTTP response.
+  /// Structure is documented below.
+  final pulumi.Input<URLMapDefaultRouteActionImageOptimizationPolicy?>? imageOptimizationPolicy;
   /// Specifies the maximum duration (timeout) for streams on the selected route.
   /// Unlike the `Timeout` field where the timeout duration starts from the time the request
   /// has been fully processed (known as end-of-stream), the duration in this field
@@ -65,7 +76,9 @@ class URLMapDefaultRouteAction {
   /// Creates a new [URLMapDefaultRouteAction].
   /// [cachePolicy] Specifies the cache policy configuration for matched traffic. Available
   /// [corsPolicy] The specification for allowing client side cross-origin requests. Please see
+  /// [dynamicCompressionPolicy] (Optional, Beta)
   /// [faultInjectionPolicy] The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+  /// [imageOptimizationPolicy] (Optional, Beta)
   /// [maxStreamDuration] Specifies the maximum duration (timeout) for streams on the selected route.
   /// [requestMirrorPolicy] Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
   /// [retryPolicy] Specifies the retry policy associated with this route.
@@ -75,7 +88,9 @@ class URLMapDefaultRouteAction {
   const URLMapDefaultRouteAction({
     this.cachePolicy,
     this.corsPolicy,
+    this.dynamicCompressionPolicy,
     this.faultInjectionPolicy,
+    this.imageOptimizationPolicy,
     this.maxStreamDuration,
     this.requestMirrorPolicy,
     this.retryPolicy,
@@ -88,7 +103,9 @@ class URLMapDefaultRouteAction {
     return <String, dynamic>{
       'cachePolicy': ?pulumi.Input.mapOptionalInputValue<URLMapDefaultRouteActionCachePolicy, Map<String, dynamic>>(cachePolicy, (value) => value.toMap()),
       'corsPolicy': ?pulumi.Input.mapOptionalInputValue<URLMapDefaultRouteActionCorsPolicy, Map<String, dynamic>>(corsPolicy, (value) => value.toMap()),
+      'dynamicCompressionPolicy': ?pulumi.Input.mapOptionalInputValue<URLMapDefaultRouteActionDynamicCompressionPolicy, Map<String, dynamic>>(dynamicCompressionPolicy, (value) => value.toMap()),
       'faultInjectionPolicy': ?pulumi.Input.mapOptionalInputValue<URLMapDefaultRouteActionFaultInjectionPolicy, Map<String, dynamic>>(faultInjectionPolicy, (value) => value.toMap()),
+      'imageOptimizationPolicy': ?pulumi.Input.mapOptionalInputValue<URLMapDefaultRouteActionImageOptimizationPolicy, Map<String, dynamic>>(imageOptimizationPolicy, (value) => value.toMap()),
       'maxStreamDuration': ?pulumi.Input.mapOptionalInputValue<URLMapDefaultRouteActionMaxStreamDuration, Map<String, dynamic>>(maxStreamDuration, (value) => value.toMap()),
       'requestMirrorPolicy': ?pulumi.Input.mapOptionalInputValue<URLMapDefaultRouteActionRequestMirrorPolicy, Map<String, dynamic>>(requestMirrorPolicy, (value) => value.toMap()),
       'retryPolicy': ?pulumi.Input.mapOptionalInputValue<URLMapDefaultRouteActionRetryPolicy, Map<String, dynamic>>(retryPolicy, (value) => value.toMap()),
@@ -102,7 +119,9 @@ class URLMapDefaultRouteAction {
     return URLMapDefaultRouteAction(
       cachePolicy: (() { final guardedValue = map['cachePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapDefaultRouteActionCachePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       corsPolicy: (() { final guardedValue = map['corsPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapDefaultRouteActionCorsPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      dynamicCompressionPolicy: (() { final guardedValue = map['dynamicCompressionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapDefaultRouteActionDynamicCompressionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       faultInjectionPolicy: (() { final guardedValue = map['faultInjectionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapDefaultRouteActionFaultInjectionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      imageOptimizationPolicy: (() { final guardedValue = map['imageOptimizationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapDefaultRouteActionImageOptimizationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       maxStreamDuration: (() { final guardedValue = map['maxStreamDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapDefaultRouteActionMaxStreamDuration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       requestMirrorPolicy: (() { final guardedValue = map['requestMirrorPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapDefaultRouteActionRequestMirrorPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       retryPolicy: (() { final guardedValue = map['retryPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapDefaultRouteActionRetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

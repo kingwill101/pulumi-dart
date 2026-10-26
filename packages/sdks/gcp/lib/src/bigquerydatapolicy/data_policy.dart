@@ -99,8 +99,8 @@ import 'data_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquerydatapolicy"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquerydatapolicy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -118,7 +118,7 @@ import 'data_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		policyTag, err := datacatalog.NewPolicyTag(ctx, "policy_tag", &datacatalog.PolicyTagArgs{
-/// 			Taxonomy:    taxonomy.ID().ToIDOutput().ToStringOutput(),
+/// 			Taxonomy:    taxonomy.ID(),
 /// 			DisplayName: pulumi.String("Low security"),
 /// 			Description: pulumi.String("A policy tag normally associated with low security items"),
 /// 		})
@@ -139,7 +139,7 @@ import 'data_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -147,18 +147,27 @@ import 'data_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigquerydatapolicy_datapolicy" "data_policy" {
+/// resource "gcp_bigquerydatapolicy_data_policy" "data_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us-central1"
 ///   data_policy_id   = "data_policy"
-///   policy_tag       = gcp_datacatalog_policytag.policy_tag.name
+///   policy_tag       = gcp_datacatalog_policy_tag.policy_tag.name
 ///   data_policy_type = "COLUMN_LEVEL_SECURITY_POLICY"
 /// }
-/// resource "gcp_datacatalog_policytag" "policy_tag" {
+/// resource "gcp_datacatalog_policy_tag" "policy_tag" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   taxonomy     = gcp_datacatalog_taxonomy.taxonomy.id
 ///   display_name = "Low security"
 ///   description  = "A policy tag normally associated with low security items"
 /// }
 /// resource "gcp_datacatalog_taxonomy" "taxonomy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region                 = "us-central1"
 ///   display_name           = "taxonomy"
 ///   description            = "A collection of policy tags"
@@ -392,9 +401,9 @@ import 'data_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquerydatapolicy"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquerydatapolicy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -412,7 +421,7 @@ import 'data_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		policyTag, err := datacatalog.NewPolicyTag(ctx, "policy_tag", &datacatalog.PolicyTagArgs{
-/// 			Taxonomy:    taxonomy.ID().ToIDOutput().ToStringOutput(),
+/// 			Taxonomy:    taxonomy.ID(),
 /// 			DisplayName: pulumi.String("Low security"),
 /// 			Description: pulumi.String("A policy tag normally associated with low security items"),
 /// 		})
@@ -450,7 +459,7 @@ import 'data_policy_state.dart';
 /// 			PolicyTag:      policyTag.Name,
 /// 			DataPolicyType: pulumi.String("DATA_MASKING_POLICY"),
 /// 			DataMaskingPolicy: &bigquerydatapolicy.DataPolicyDataMaskingPolicyArgs{
-/// 				Routine: customMaskingRoutine.ID().ToIDOutput().ToStringOutput(),
+/// 				Routine: customMaskingRoutine.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -461,7 +470,7 @@ import 'data_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -469,31 +478,46 @@ import 'data_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigquerydatapolicy_datapolicy" "data_policy" {
+/// resource "gcp_bigquerydatapolicy_data_policy" "data_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us-central1"
 ///   data_policy_id   = "data_policy"
-///   policy_tag       = gcp_datacatalog_policytag.policy_tag.name
+///   policy_tag       = gcp_datacatalog_policy_tag.policy_tag.name
 ///   data_policy_type = "DATA_MASKING_POLICY"
 ///   data_masking_policy = {
 ///     routine = gcp_bigquery_routine.custom_masking_routine.id
 ///   }
 /// }
-/// resource "gcp_datacatalog_policytag" "policy_tag" {
+/// resource "gcp_datacatalog_policy_tag" "policy_tag" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   taxonomy     = gcp_datacatalog_taxonomy.taxonomy.id
 ///   display_name = "Low security"
 ///   description  = "A policy tag normally associated with low security items"
 /// }
 /// resource "gcp_datacatalog_taxonomy" "taxonomy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region                 = "us-central1"
 ///   display_name           = "taxonomy"
 ///   description            = "A collection of policy tags"
 ///   activated_policy_types = ["FINE_GRAINED_ACCESS_CONTROL"]
 /// }
 /// resource "gcp_bigquery_dataset" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "dataset_id"
 ///   location   = "us-central1"
 /// }
 /// resource "gcp_bigquery_routine" "custom_masking_routine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id           = gcp_bigquery_dataset.test.dataset_id
 ///   routine_id           = "custom_masking_routine"
 ///   routine_type         = "SCALAR_FUNCTION"
@@ -686,7 +710,7 @@ class DataPolicy extends pulumi.CustomResource {
           'gcp:bigquerydatapolicy/dataPolicy:DataPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     dataMaskingPolicy = registerOutput<DataPolicyDataMaskingPolicy?>('dataMaskingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataPolicyDataMaskingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataPolicyId = registerOutput<String>('dataPolicyId');

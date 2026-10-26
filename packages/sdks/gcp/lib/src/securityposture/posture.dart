@@ -462,7 +462,7 @@ import 'posture_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securityposture"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securityposture"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -611,7 +611,7 @@ import 'posture_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -620,6 +620,9 @@ import 'posture_state.dart';
 /// }
 ///
 /// resource "gcp_securityposture_posture" "posture1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   posture_id  = "posture_example"
 ///   parent      = "organizations/123456789"
 ///   location    = "global"
@@ -634,8 +637,8 @@ import 'posture_state.dart';
 ///         org_policy_constraint = {
 ///           canned_constraint_id = "gcp.resourceLocations"
 ///           policy_rules = [{
-///             "values" = {
-///               "allowedValues" = ["in:us-locations"]
+///             values = {
+///               allowed_values = ["in:us-locations"]
 ///             }
 ///           }]
 ///         }
@@ -651,11 +654,11 @@ import 'posture_state.dart';
 ///         org_policy_constraint = {
 ///           canned_constraint_id = "storage.uniformBucketLevelAccess"
 ///           policy_rules = [{
-///             "enforce" = true
-///             "condition" = {
-///               "description" = "condition description"
-///               "expression"  = "resource.matchTag('org_id/tag_key_short_name,'tag_value_short_name')"
-///               "title"       = "a CEL condition"
+///             enforce = true
+///             condition = {
+///               description = "condition description"
+///               expression  = "resource.matchTag('org_id/tag_key_short_name,'tag_value_short_name')"
+///               title       = "a CEL condition"
 ///             }
 ///           }]
 ///         }
@@ -675,11 +678,11 @@ import 'posture_state.dart';
 ///             resource_types = ["container.googleapis.com/NodePool"]
 ///           }
 ///           policy_rules = [{
-///             "enforce" = true
-///             "condition" = {
-///               "description" = "condition description"
-///               "expression"  = "resource.matchTagId('tagKeys/key_id','tagValues/value_id')"
-///               "title"       = "a CEL condition"
+///             enforce = true
+///             condition = {
+///               description = "condition description"
+///               expression  = "resource.matchTagId('tagKeys/key_id','tagValues/value_id')"
+///               title       = "a CEL condition"
 ///             }
 ///           }]
 ///         }
@@ -710,9 +713,9 @@ import 'posture_state.dart';
 ///             }
 ///             custom_output = {
 ///               properties = [{
-///                 "name" = "duration"
-///                 "valueExpression" = {
-///                   "expression" = "resource.rotationPeriod"
+///                 name = "duration"
+///                 value_expression = {
+///                   expression = "resource.rotationPeriod"
 ///                 }
 ///               }]
 ///             }
@@ -1035,7 +1038,7 @@ class Posture extends pulumi.CustomResource {
           'gcp:securityposture/posture:Posture',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

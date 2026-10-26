@@ -27,7 +27,7 @@ import 'data_export_state.dart';
 ///     projectId: "my-project-name",
 /// });
 /// const testBucket = new gcp.storage.Bucket("test_bucket", {
-///     name: "chronicle-test-bucket-my-project-name-_56730",
+///     name: "chronicle-test-bucket-my-project-name-_64336",
 ///     project: "my-project-name",
 ///     location: "us",
 ///     forceDestroy: true,
@@ -46,7 +46,7 @@ import 'data_export_state.dart';
 ///
 /// project = gcp.organizations.get_project(project_id="my-project-name")
 /// test_bucket = gcp.storage.Bucket("test_bucket",
-///     name="chronicle-test-bucket-my-project-name-_56730",
+///     name="chronicle-test-bucket-my-project-name-_64336",
 ///     project="my-project-name",
 ///     location="us",
 ///     force_destroy=True)
@@ -72,7 +72,7 @@ import 'data_export_state.dart';
 ///
 ///     var testBucket = new Gcp.Storage.Bucket("test_bucket", new()
 ///     {
-///         Name = "chronicle-test-bucket-my-project-name-_56730",
+///         Name = "chronicle-test-bucket-my-project-name-_64336",
 ///         Project = "my-project-name",
 ///         Location = "us",
 ///         ForceDestroy = true,
@@ -100,9 +100,9 @@ import 'data_export_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -115,7 +115,7 @@ import 'data_export_state.dart';
 /// 			return err
 /// 		}
 /// 		testBucket, err := storage.NewBucket(ctx, "test_bucket", &storage.BucketArgs{
-/// 			Name:         pulumi.String("chronicle-test-bucket-my-project-name-_56730"),
+/// 			Name:         pulumi.String("chronicle-test-bucket-my-project-name-_64336"),
 /// 			Project:      pulumi.String("my-project-name"),
 /// 			Location:     pulumi.String("us"),
 /// 			ForceDestroy: pulumi.Bool(true),
@@ -140,7 +140,7 @@ import 'data_export_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -148,20 +148,26 @@ import 'data_export_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 ///   project_id = "my-project-name"
 /// }
 ///
 /// resource "gcp_storage_bucket" "test_bucket" {
-///   name          = "chronicle-test-bucket-my-project-name-_56730"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name          = "chronicle-test-bucket-my-project-name-_64336"
 ///   project       = "my-project-name"
 ///   location      = "us"
 ///   force_destroy = true
 /// }
-/// resource "gcp_chronicle_dataexport" "example" {
+/// resource "gcp_chronicle_data_export" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location   = "us"
 ///   instance   = "00000000-0000-0000-0000-000000000000"
-///   gcs_bucket ="projects/${data.gcp_organizations_getproject.project.number}/buckets/${gcp_storage_bucket.test_bucket.name}"
+///   gcs_bucket ="projects/${data.gcp_organizations_project.project.number}/buckets/${gcp_storage_bucket.test_bucket.name}"
 ///   start_time = "2025-01-01T00:00:00Z"
 ///   end_time   = "2025-01-01T12:00:00Z"
 /// }
@@ -196,7 +202,7 @@ import 'data_export_state.dart';
 ///             .build());
 ///
 ///         var testBucket = new Bucket("testBucket", BucketArgs.builder()
-///             .name("chronicle-test-bucket-my-project-name-_56730")
+///             .name("chronicle-test-bucket-my-project-name-_64336")
 ///             .project("my-project-name")
 ///             .location("us")
 ///             .forceDestroy(true)
@@ -219,7 +225,7 @@ import 'data_export_state.dart';
 ///     type: gcp:storage:Bucket
 ///     name: test_bucket
 ///     properties:
-///       name: chronicle-test-bucket-my-project-name-_56730
+///       name: chronicle-test-bucket-my-project-name-_64336
 ///       project: my-project-name
 ///       location: us
 ///       forceDestroy: true
@@ -251,7 +257,7 @@ import 'data_export_state.dart';
 ///     projectId: "my-project-name",
 /// });
 /// const testBucket = new gcp.storage.Bucket("test_bucket", {
-///     name: "chronicle-test-bucket-my-project-name-_95154",
+///     name: "chronicle-test-bucket-my-project-name-_34962",
 ///     project: "my-project-name",
 ///     location: "us",
 ///     forceDestroy: true,
@@ -276,7 +282,7 @@ import 'data_export_state.dart';
 ///
 /// project = gcp.organizations.get_project(project_id="my-project-name")
 /// test_bucket = gcp.storage.Bucket("test_bucket",
-///     name="chronicle-test-bucket-my-project-name-_95154",
+///     name="chronicle-test-bucket-my-project-name-_34962",
 ///     project="my-project-name",
 ///     location="us",
 ///     force_destroy=True)
@@ -308,7 +314,7 @@ import 'data_export_state.dart';
 ///
 ///     var testBucket = new Gcp.Storage.Bucket("test_bucket", new()
 ///     {
-///         Name = "chronicle-test-bucket-my-project-name-_95154",
+///         Name = "chronicle-test-bucket-my-project-name-_34962",
 ///         Project = "my-project-name",
 ///         Location = "us",
 ///         ForceDestroy = true,
@@ -352,9 +358,9 @@ import 'data_export_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -367,7 +373,7 @@ import 'data_export_state.dart';
 /// 			return err
 /// 		}
 /// 		testBucket, err := storage.NewBucket(ctx, "test_bucket", &storage.BucketArgs{
-/// 			Name:         pulumi.String("chronicle-test-bucket-my-project-name-_95154"),
+/// 			Name:         pulumi.String("chronicle-test-bucket-my-project-name-_34962"),
 /// 			Project:      pulumi.String("my-project-name"),
 /// 			Location:     pulumi.String("us"),
 /// 			ForceDestroy: pulumi.Bool(true),
@@ -404,7 +410,7 @@ import 'data_export_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -412,20 +418,26 @@ import 'data_export_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 ///   project_id = "my-project-name"
 /// }
 ///
 /// resource "gcp_storage_bucket" "test_bucket" {
-///   name          = "chronicle-test-bucket-my-project-name-_95154"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name          = "chronicle-test-bucket-my-project-name-_34962"
 ///   project       = "my-project-name"
 ///   location      = "us"
 ///   force_destroy = true
 /// }
-/// resource "gcp_chronicle_dataexport" "example" {
+/// resource "gcp_chronicle_data_export" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "us"
 ///   instance          = "00000000-0000-0000-0000-000000000000"
-///   gcs_bucket        ="projects/${data.gcp_organizations_getproject.project.number}/buckets/${gcp_storage_bucket.test_bucket.name}"
+///   gcs_bucket        ="projects/${data.gcp_organizations_project.project.number}/buckets/${gcp_storage_bucket.test_bucket.name}"
 ///   start_time        = "2025-01-01T00:00:00Z"
 ///   end_time          = "2025-01-01T12:00:00Z"
 ///   include_log_types = ["projects/my-project-name/locations/us/instances/00000000-0000-0000-0000-000000000000/logTypes/GCP_CLOUDAUDIT"]
@@ -467,7 +479,7 @@ import 'data_export_state.dart';
 ///             .build());
 ///
 ///         var testBucket = new Bucket("testBucket", BucketArgs.builder()
-///             .name("chronicle-test-bucket-my-project-name-_95154")
+///             .name("chronicle-test-bucket-my-project-name-_34962")
 ///             .project("my-project-name")
 ///             .location("us")
 ///             .forceDestroy(true)
@@ -496,7 +508,7 @@ import 'data_export_state.dart';
 ///     type: gcp:storage:Bucket
 ///     name: test_bucket
 ///     properties:
-///       name: chronicle-test-bucket-my-project-name-_95154
+///       name: chronicle-test-bucket-my-project-name-_34962
 ///       project: my-project-name
 ///       location: us
 ///       forceDestroy: true
@@ -589,7 +601,7 @@ class DataExport extends pulumi.CustomResource {
           'gcp:chronicle/dataExport:DataExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     dataExportId = registerOutput<String>('dataExportId');

@@ -103,7 +103,7 @@ import 'metric_descriptor_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -137,7 +137,7 @@ import 'metric_descriptor_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -145,7 +145,10 @@ import 'metric_descriptor_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_metricdescriptor" "basic" {
+/// resource "gcp_monitoring_metric_descriptor" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description  = "Daily sales records from all branch stores."
 ///   display_name = "metric-descriptor"
 ///   type         = "custom.googleapis.com/stores/daily_sales"
@@ -327,7 +330,7 @@ import 'metric_descriptor_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -368,7 +371,7 @@ import 'metric_descriptor_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -376,7 +379,10 @@ import 'metric_descriptor_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_metricdescriptor" "with_alert" {
+/// resource "gcp_monitoring_metric_descriptor" "with_alert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description  = "Daily sales records from all branch stores."
 ///   display_name = "metric-descriptor"
 ///   type         = "custom.googleapis.com/stores/daily_sales"
@@ -384,13 +390,16 @@ import 'metric_descriptor_state.dart';
 ///   value_type   = "DOUBLE"
 ///   unit         = "{USD}"
 /// }
-/// resource "gcp_monitoring_alertpolicy" "alert_policy" {
+/// resource "gcp_monitoring_alert_policy" "alert_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "metric-descriptor"
 ///   combiner     = "OR"
 ///   conditions {
 ///     display_name = "test condition"
 ///     condition_threshold = {
-///       filter     ="metric.type="${gcp_monitoring_metricdescriptor.with_alert.type}" AND resource.type="gce_instance""
+///       filter     ="metric.type="${gcp_monitoring_metric_descriptor.with_alert.type}" AND resource.type="gce_instance""
 ///       duration   = "60s"
 ///       comparison = "COMPARISON_GT"
 ///     }
@@ -557,7 +566,7 @@ class MetricDescriptor extends pulumi.CustomResource {
           'gcp:monitoring/metricDescriptor:MetricDescriptor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

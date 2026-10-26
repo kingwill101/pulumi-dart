@@ -151,7 +151,7 @@ class QaQuestionState {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metrics: (() { final guardedValue = map['metrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QaQuestionMetrics.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       predefinedQuestionConfig: (() { final guardedValue = map['predefinedQuestionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QaQuestionPredefinedQuestionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       qaQuestionDataOptions: (() { final guardedValue = map['qaQuestionDataOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QaQuestionQaQuestionDataOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

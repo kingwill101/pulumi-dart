@@ -2,6 +2,8 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_channel_profile.dart';
+import 'deployment_instagram_credentials.dart';
+import 'deployment_whatsapp_credentials.dart';
 
 /// Input properties used for looking up and filtering Deployment resources.
 class DeploymentState {
@@ -30,6 +32,9 @@ class DeploymentState {
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
   final pulumi.Input<String?>? etag;
+  /// Ephemeral Meta credentials required when configuring an Instagram channel profile.
+  /// Structure is documented below.
+  final pulumi.Input<DeploymentInstagramCredentials?>? instagramCredentials;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String?>? location;
   /// Identifier. The resource name of the deployment.
@@ -41,6 +46,9 @@ class DeploymentState {
   final pulumi.Input<String?>? project;
   /// Timestamp when this deployment was last updated.
   final pulumi.Input<String?>? updateTime;
+  /// Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+  /// Structure is documented below.
+  final pulumi.Input<DeploymentWhatsappCredentials?>? whatsappCredentials;
 
   /// Creates a new [DeploymentState].
   /// [app] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -50,10 +58,12 @@ class DeploymentState {
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Display name of the deployment.
   /// [etag] Etag used to ensure the object hasn't changed during a read-modify-write
+  /// [instagramCredentials] Ephemeral Meta credentials required when configuring an Instagram channel profile.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [name] Identifier. The resource name of the deployment.
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] Timestamp when this deployment was last updated.
+  /// [whatsappCredentials] Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
   const DeploymentState({
     this.app,
     this.appVersion,
@@ -62,10 +72,12 @@ class DeploymentState {
     this.deletionPolicy,
     this.displayName,
     this.etag,
+    this.instagramCredentials,
     this.location,
     this.name,
     this.project,
     this.updateTime,
+    this.whatsappCredentials,
   });
 
   Map<String, dynamic> toMap() {
@@ -77,10 +89,12 @@ class DeploymentState {
       'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'etag': ?etag,
+      'instagramCredentials': ?pulumi.Input.mapOptionalInputValue<DeploymentInstagramCredentials, Map<String, dynamic>>(instagramCredentials, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'project': ?project,
       'updateTime': ?updateTime,
+      'whatsappCredentials': ?pulumi.Input.mapOptionalInputValue<DeploymentWhatsappCredentials, Map<String, dynamic>>(whatsappCredentials, (value) => value.toMap()),
     };
   }
 
@@ -93,10 +107,12 @@ class DeploymentState {
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instagramCredentials: (() { final guardedValue = map['instagramCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentInstagramCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      whatsappCredentials: (() { final guardedValue = map['whatsappCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentWhatsappCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

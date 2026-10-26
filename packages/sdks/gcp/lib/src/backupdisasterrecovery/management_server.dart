@@ -116,9 +116,9 @@ import 'management_server_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -135,13 +135,13 @@ import 'management_server_state.dart';
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			PrefixLength: pulumi.Int(20),
-/// 			Network:      _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		defaultConnection, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
-/// 			Network: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: _default.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAddress.Name,
@@ -165,7 +165,7 @@ import 'management_server_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -174,9 +174,15 @@ import 'management_server_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "vpc-network"
 /// }
-/// resource "gcp_compute_globaladdress" "private_ip_address" {
+/// resource "gcp_compute_global_address" "private_ip_address" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "vpc-network"
 ///   address_type  = "INTERNAL"
 ///   purpose       = "VPC_PEERING"
@@ -184,15 +190,21 @@ import 'management_server_state.dart';
 ///   network       = gcp_compute_network.default.id
 /// }
 /// resource "gcp_servicenetworking_connection" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.default.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_address.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.private_ip_address.name]
 /// }
-/// resource "gcp_backupdisasterrecovery_managementserver" "ms-console" {
+/// resource "gcp_backupdisasterrecovery_management_server" "ms-console" {
 ///   depends_on = [gcp_servicenetworking_connection.default]
-///   location   = "us-central1"
-///   name       = "ms-console"
-///   type       = "BACKUP_RESTORE"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location = "us-central1"
+///   name     = "ms-console"
+///   type     = "BACKUP_RESTORE"
 /// }
 /// ```
 /// ```java
@@ -343,7 +355,7 @@ class ManagementServer extends pulumi.CustomResource {
           'gcp:backupdisasterrecovery/managementServer:ManagementServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');

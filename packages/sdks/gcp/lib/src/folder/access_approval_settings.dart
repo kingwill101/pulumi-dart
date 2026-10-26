@@ -92,8 +92,8 @@ import 'access_approval_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/folder"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/folder"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -127,7 +127,7 @@ import 'access_approval_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -136,11 +136,17 @@ import 'access_approval_settings_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_folder" "my_folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "folder-faaf"
 ///   parent              = "organizations/123456789"
 ///   deletion_protection = false
 /// }
-/// resource "gcp_folder_accessapprovalsettings" "folder_access_approval" {
+/// resource "gcp_folder_access_approval_settings" "folder_access_approval" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   folder_id           = gcp_organizations_folder.my_folder.folder_id
 ///   notification_emails = ["testuser@example.com", "example.user@example.com"]
 ///   enrolled_services {
@@ -388,10 +394,10 @@ import 'access_approval_settings_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accessapproval"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/folder"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accessapproval"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/folder"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -424,7 +430,7 @@ import 'access_approval_settings_state.dart';
 /// 		}
 /// 		cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("crypto-key"),
-/// 			KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRing: keyRing.ID(),
 /// 			Purpose: pulumi.String("ASYMMETRIC_SIGN"),
 /// 			VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
 /// 				Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),
@@ -437,7 +443,7 @@ import 'access_approval_settings_state.dart';
 /// 			FolderId: myFolder.FolderId,
 /// 		}, nil)
 /// 		iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
-/// 			CryptoKeyId: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+/// 			CryptoKeyId: cryptoKey.ID(),
 /// 			Role:        pulumi.String("roles/cloudkms.signerVerifier"),
 /// 			Member: serviceAccount.ApplyT(func(serviceAccount accessapproval.GetFolderServiceAccountResult) (string, error) {
 /// 				return fmt.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail), nil
@@ -447,7 +453,7 @@ import 'access_approval_settings_state.dart';
 /// 			return err
 /// 		}
 /// 		cryptoKeyVersion := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
-/// 			CryptoKey: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+/// 			CryptoKey: cryptoKey.ID(),
 /// 		}, nil)
 /// 		_, err = folder.NewAccessApprovalSettings(ctx, "folder_access_approval", &folder.AccessApprovalSettingsArgs{
 /// 			FolderId:         myFolder.FolderId,
@@ -468,7 +474,7 @@ import 'access_approval_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -476,46 +482,64 @@ import 'access_approval_settings_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_accessapproval_getfolderserviceaccount" "serviceAccount" {
+/// data "gcp_accessapproval_folder_service_account" "serviceAccount" {
 ///   folder_id = gcp_organizations_folder.my_folder.folder_id
 /// }
-/// data "gcp_kms_getkmscryptokeyversion" "cryptoKeyVersion" {
-///   crypto_key = gcp_kms_cryptokey.crypto_key.id
+/// data "gcp_kms_k_m_s_crypto_key_version" "cryptoKeyVersion" {
+///   crypto_key = gcp_kms_crypto_key.crypto_key.id
 /// }
 ///
 /// resource "gcp_organizations_folder" "my_folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "folder-faak"
 ///   parent              = "organizations/123456789"
 ///   deletion_protection = false
 /// }
 /// resource "gcp_organizations_project" "my_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "My Project"
 ///   project_id      = "your-project-id"
 ///   folder_id       = gcp_organizations_folder.my_folder.name
 ///   deletion_policy = "DELETE"
 /// }
-/// resource "gcp_kms_keyring" "key_ring" {
+/// resource "gcp_kms_key_ring" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "key-ring"
 ///   location = "global"
 ///   project  = gcp_organizations_project.my_project.project_id
 /// }
-/// resource "gcp_kms_cryptokey" "crypto_key" {
+/// resource "gcp_kms_crypto_key" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "crypto-key"
-///   key_ring = gcp_kms_keyring.key_ring.id
+///   key_ring = gcp_kms_key_ring.key_ring.id
 ///   purpose  = "ASYMMETRIC_SIGN"
 ///   version_template = {
 ///     algorithm = "EC_SIGN_P384_SHA384"
 ///   }
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "iam" {
-///   crypto_key_id = gcp_kms_cryptokey.crypto_key.id
+/// resource "gcp_kms_crypto_key_i_a_m_member" "iam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key_id = gcp_kms_crypto_key.crypto_key.id
 ///   role          = "roles/cloudkms.signerVerifier"
-///   member        ="serviceAccount:${data.gcp_accessapproval_getfolderserviceaccount.serviceAccount.account_email}"
+///   member        ="serviceAccount:${data.gcp_accessapproval_folder_service_account.serviceAccount.account_email}"
 /// }
-/// resource "gcp_folder_accessapprovalsettings" "folder_access_approval" {
-///   depends_on         = [gcp_kms_cryptokeyiammember.iam]
+/// resource "gcp_folder_access_approval_settings" "folder_access_approval" {
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.iam]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   folder_id          = gcp_organizations_folder.my_folder.folder_id
-///   active_key_version = data.gcp_kms_getkmscryptokeyversion.cryptoKeyVersion.name
+///   active_key_version = data.gcp_kms_k_m_s_crypto_key_version.cryptoKeyVersion.name
 ///   enrolled_services {
 ///     cloud_product = "all"
 ///   }
@@ -740,7 +764,7 @@ class AccessApprovalSettings extends pulumi.CustomResource {
           'gcp:folder/accessApprovalSettings:AccessApprovalSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     activeKeyVersion = registerOutput<String?>('activeKeyVersion');
     ancestorHasActiveKeyVersion = registerOutput<bool>('ancestorHasActiveKeyVersion');

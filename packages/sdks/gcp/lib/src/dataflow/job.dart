@@ -62,7 +62,7 @@ import 'job_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -85,7 +85,7 @@ import 'job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -94,6 +94,9 @@ import 'job_state.dart';
 /// }
 ///
 /// resource "gcp_dataflow_job" "big_data_job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "dataflow-job"
 ///   template_gcs_path = "gs://my-bucket/templates/template_file"
 ///   temp_gcs_location = "gs://my-bucket/tmp_dir"
@@ -266,9 +269,9 @@ import 'job_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataflow"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -305,7 +308,7 @@ import 'job_state.dart';
 /// 				"inputFilePattern": bucket1.Url.ApplyT(func(url string) (string, error) {
 /// 					return fmt.Sprintf("%v/*.json", url), nil
 /// 				}).(pulumi.StringOutput),
-/// 				"outputTopic": topic.ID().ToIDOutput().ToStringOutput(),
+/// 				"outputTopic": topic.ID(),
 /// 			},
 /// 			TransformNameMapping: pulumi.StringMap{
 /// 				"name": pulumi.String("test_job"),
@@ -321,7 +324,7 @@ import 'job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -330,19 +333,31 @@ import 'job_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "dataflow-job1"
 /// }
 /// resource "gcp_storage_bucket" "bucket1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "tf-test-bucket1"
 ///   location      = "US"
 ///   force_destroy = true
 /// }
 /// resource "gcp_storage_bucket" "bucket2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "tf-test-bucket2"
 ///   location      = "US"
 ///   force_destroy = true
 /// }
 /// resource "gcp_dataflow_job" "pubsub_stream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "tf-test-dataflow-job1"
 ///   template_gcs_path       = "gs://my-bucket/templates/template_file"
 ///   temp_gcs_location       = "gs://my-bucket/tmp_dir"
@@ -552,7 +567,7 @@ import 'job_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataflow"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -592,7 +607,7 @@ import 'job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -604,13 +619,19 @@ import 'job_state.dart';
 /// }
 ///
 /// resource "random_id" "big_data_job_name_suffix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   byte_length = 4
 ///   keepers = {
 ///     "region"         = region
 ///     "subscriptionId" = var.bigDataJobSubscriptionId
 ///   }
 /// }
-/// resource "gcp_dataflow_flextemplatejob" "big_data_job" {
+/// resource "gcp_dataflow_flex_template_job" "big_data_job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         ="dataflow-flextemplates-job-${random_id.big_data_job_name_suffix.dec}"
 ///   region                       = region
 ///   container_spec_gcs_path      = "gs://my-bucket/templates/template.json"
@@ -784,7 +805,7 @@ class Job extends pulumi.CustomResource {
           'gcp:dataflow/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     additionalExperiments = registerOutput<List<String>>('additionalExperiments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

@@ -29,6 +29,7 @@ import 'instance_state.dart';
 /// const cache = new gcp.redis.Instance("cache", {
 ///     name: "memory-cache",
 ///     memorySizeGb: 1,
+///     region: "us-west1",
 ///     deletionProtection: false,
 /// });
 /// ```
@@ -39,6 +40,7 @@ import 'instance_state.dart';
 /// cache = gcp.redis.Instance("cache",
 ///     name="memory-cache",
 ///     memory_size_gb=1,
+///     region="us-west1",
 ///     deletion_protection=False)
 /// ```
 /// ```csharp
@@ -53,6 +55,7 @@ import 'instance_state.dart';
 ///     {
 ///         Name = "memory-cache",
 ///         MemorySizeGb = 1,
+///         Region = "us-west1",
 ///         DeletionProtection = false,
 ///     });
 ///
@@ -62,7 +65,7 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -71,6 +74,7 @@ import 'instance_state.dart';
 /// 		_, err := redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
 /// 			Name:               pulumi.String("memory-cache"),
 /// 			MemorySizeGb:       pulumi.Int(1),
+/// 			Region:             pulumi.String("us-west1"),
 /// 			DeletionProtection: pulumi.Bool(false),
 /// 		})
 /// 		if err != nil {
@@ -81,7 +85,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -90,8 +94,12 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "gcp_redis_instance" "cache" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "memory-cache"
 ///   memory_size_gb      = 1
+///   region              = "us-west1"
 ///   deletion_protection = false
 /// }
 /// ```
@@ -119,6 +127,7 @@ import 'instance_state.dart';
 ///         var cache = new Instance("cache", InstanceArgs.builder()
 ///             .name("memory-cache")
 ///             .memorySizeGb(1)
+///             .region("us-west1")
 ///             .deletionProtection(false)
 ///             .build());
 ///
@@ -132,6 +141,7 @@ import 'instance_state.dart';
 ///     properties:
 ///       name: memory-cache
 ///       memorySizeGb: 1
+///       region: us-west1
 ///       deletionProtection: false
 /// ```
 ///
@@ -158,8 +168,9 @@ import 'instance_state.dart';
 ///     name: "ha-memory-cache",
 ///     tier: "STANDARD_HA",
 ///     memorySizeGb: 1,
-///     locationId: "us-central1-a",
-///     alternativeLocationId: "us-central1-f",
+///     region: "us-west1",
+///     locationId: "us-west1-a",
+///     alternativeLocationId: "us-west1-b",
 ///     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
 ///     redisVersion: "REDIS_7_2",
 ///     displayName: "Test Instance",
@@ -198,8 +209,9 @@ import 'instance_state.dart';
 ///     name="ha-memory-cache",
 ///     tier="STANDARD_HA",
 ///     memory_size_gb=1,
-///     location_id="us-central1-a",
-///     alternative_location_id="us-central1-f",
+///     region="us-west1",
+///     location_id="us-west1-a",
+///     alternative_location_id="us-west1-b",
 ///     authorized_network=redis_network.id,
 ///     redis_version="REDIS_7_2",
 ///     display_name="Test Instance",
@@ -246,8 +258,9 @@ import 'instance_state.dart';
 ///         Name = "ha-memory-cache",
 ///         Tier = "STANDARD_HA",
 ///         MemorySizeGb = 1,
-///         LocationId = "us-central1-a",
-///         AlternativeLocationId = "us-central1-f",
+///         Region = "us-west1",
+///         LocationId = "us-west1-a",
+///         AlternativeLocationId = "us-west1-b",
 ///         AuthorizedNetwork = redis_network.Apply(redis_network => redis_network.Apply(getNetworkResult => getNetworkResult.Id)),
 ///         RedisVersion = "REDIS_7_2",
 ///         DisplayName = "Test Instance",
@@ -282,8 +295,8 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -307,8 +320,9 @@ import 'instance_state.dart';
 /// 			Name:                  pulumi.String("ha-memory-cache"),
 /// 			Tier:                  pulumi.String("STANDARD_HA"),
 /// 			MemorySizeGb:          pulumi.Int(1),
-/// 			LocationId:            pulumi.String("us-central1-a"),
-/// 			AlternativeLocationId: pulumi.String("us-central1-f"),
+/// 			Region:                pulumi.String("us-west1"),
+/// 			LocationId:            pulumi.String("us-west1-a"),
+/// 			AlternativeLocationId: pulumi.String("us-west1-b"),
 /// 			AuthorizedNetwork:     pulumi.String(redis_network.Id),
 /// 			RedisVersion:          pulumi.String("REDIS_7_2"),
 /// 			DisplayName:           pulumi.String("Test Instance"),
@@ -339,7 +353,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -347,17 +361,21 @@ import 'instance_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "redis-network" {
+/// data "gcp_compute_network" "redis-network" {
 ///   name = "redis-test-network"
 /// }
 ///
 /// resource "gcp_redis_instance" "cache" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "ha-memory-cache"
 ///   tier                    = "STANDARD_HA"
 ///   memory_size_gb          = 1
-///   location_id             = "us-central1-a"
-///   alternative_location_id = "us-central1-f"
-///   authorized_network      = data.gcp_compute_getnetwork.redis-network.id
+///   region                  = "us-west1"
+///   location_id             = "us-west1-a"
+///   alternative_location_id = "us-west1-b"
+///   authorized_network      = data.gcp_compute_network.redis-network.id
 ///   redis_version           = "REDIS_7_2"
 ///   display_name            = "Test Instance"
 ///   reserved_ip_range       = "192.168.0.0/29"
@@ -367,12 +385,12 @@ import 'instance_state.dart';
 ///   }
 ///   maintenance_policy = {
 ///     weekly_maintenance_windows = [{
-///       "day" = "TUESDAY"
-///       "startTime" = {
-///         "hours"   = 0
-///         "minutes" = 30
-///         "seconds" = 0
-///         "nanos"   = 0
+///       day = "TUESDAY"
+///       start_time = {
+///         hours   = 0
+///         minutes = 30
+///         seconds = 0
+///         nanos   = 0
 ///       }
 ///     }]
 ///   }
@@ -428,8 +446,9 @@ import 'instance_state.dart';
 ///             .name("ha-memory-cache")
 ///             .tier("STANDARD_HA")
 ///             .memorySizeGb(1)
-///             .locationId("us-central1-a")
-///             .alternativeLocationId("us-central1-f")
+///             .region("us-west1")
+///             .locationId("us-west1-a")
+///             .alternativeLocationId("us-west1-b")
 ///             .authorizedNetwork(redis_network.id())
 ///             .redisVersion("REDIS_7_2")
 ///             .displayName("Test Instance")
@@ -462,8 +481,9 @@ import 'instance_state.dart';
 ///       name: ha-memory-cache
 ///       tier: STANDARD_HA
 ///       memorySizeGb: 1
-///       locationId: us-central1-a
-///       alternativeLocationId: us-central1-f
+///       region: us-west1
+///       locationId: us-west1-a
+///       alternativeLocationId: us-west1-b
 ///       authorizedNetwork: ${["redis-network"].id}
 ///       redisVersion: REDIS_7_2
 ///       displayName: Test Instance
@@ -507,8 +527,9 @@ import 'instance_state.dart';
 ///     name: "ha-memory-cache-persis",
 ///     tier: "STANDARD_HA",
 ///     memorySizeGb: 1,
-///     locationId: "us-central1-a",
-///     alternativeLocationId: "us-central1-f",
+///     region: "us-west1",
+///     locationId: "us-west1-a",
+///     alternativeLocationId: "us-west1-b",
 ///     persistenceConfig: {
 ///         persistenceMode: "RDB",
 ///         rdbSnapshotPeriod: "TWELVE_HOURS",
@@ -523,8 +544,9 @@ import 'instance_state.dart';
 ///     name="ha-memory-cache-persis",
 ///     tier="STANDARD_HA",
 ///     memory_size_gb=1,
-///     location_id="us-central1-a",
-///     alternative_location_id="us-central1-f",
+///     region="us-west1",
+///     location_id="us-west1-a",
+///     alternative_location_id="us-west1-b",
 ///     persistence_config={
 ///         "persistence_mode": "RDB",
 ///         "rdb_snapshot_period": "TWELVE_HOURS",
@@ -543,8 +565,9 @@ import 'instance_state.dart';
 ///         Name = "ha-memory-cache-persis",
 ///         Tier = "STANDARD_HA",
 ///         MemorySizeGb = 1,
-///         LocationId = "us-central1-a",
-///         AlternativeLocationId = "us-central1-f",
+///         Region = "us-west1",
+///         LocationId = "us-west1-a",
+///         AlternativeLocationId = "us-west1-b",
 ///         PersistenceConfig = new Gcp.Redis.Inputs.InstancePersistenceConfigArgs
 ///         {
 ///             PersistenceMode = "RDB",
@@ -558,7 +581,7 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -568,8 +591,9 @@ import 'instance_state.dart';
 /// 			Name:                  pulumi.String("ha-memory-cache-persis"),
 /// 			Tier:                  pulumi.String("STANDARD_HA"),
 /// 			MemorySizeGb:          pulumi.Int(1),
-/// 			LocationId:            pulumi.String("us-central1-a"),
-/// 			AlternativeLocationId: pulumi.String("us-central1-f"),
+/// 			Region:                pulumi.String("us-west1"),
+/// 			LocationId:            pulumi.String("us-west1-a"),
+/// 			AlternativeLocationId: pulumi.String("us-west1-b"),
 /// 			PersistenceConfig: &redis.InstancePersistenceConfigArgs{
 /// 				PersistenceMode:   pulumi.String("RDB"),
 /// 				RdbSnapshotPeriod: pulumi.String("TWELVE_HOURS"),
@@ -583,7 +607,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -592,11 +616,15 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "gcp_redis_instance" "cache-persis" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "ha-memory-cache-persis"
 ///   tier                    = "STANDARD_HA"
 ///   memory_size_gb          = 1
-///   location_id             = "us-central1-a"
-///   alternative_location_id = "us-central1-f"
+///   region                  = "us-west1"
+///   location_id             = "us-west1-a"
+///   alternative_location_id = "us-west1-b"
 ///   persistence_config = {
 ///     persistence_mode    = "RDB"
 ///     rdb_snapshot_period = "TWELVE_HOURS"
@@ -629,8 +657,9 @@ import 'instance_state.dart';
 ///             .name("ha-memory-cache-persis")
 ///             .tier("STANDARD_HA")
 ///             .memorySizeGb(1)
-///             .locationId("us-central1-a")
-///             .alternativeLocationId("us-central1-f")
+///             .region("us-west1")
+///             .locationId("us-west1-a")
+///             .alternativeLocationId("us-west1-b")
 ///             .persistenceConfig(InstancePersistenceConfigArgs.builder()
 ///                 .persistenceMode("RDB")
 ///                 .rdbSnapshotPeriod("TWELVE_HOURS")
@@ -648,8 +677,9 @@ import 'instance_state.dart';
 ///       name: ha-memory-cache-persis
 ///       tier: STANDARD_HA
 ///       memorySizeGb: 1
-///       locationId: us-central1-a
-///       alternativeLocationId: us-central1-f
+///       region: us-west1
+///       locationId: us-west1-a
+///       alternativeLocationId: us-west1-b
 ///       persistenceConfig:
 ///         persistenceMode: RDB
 ///         rdbSnapshotPeriod: TWELVE_HOURS
@@ -688,8 +718,9 @@ import 'instance_state.dart';
 ///     name: "private-cache",
 ///     tier: "STANDARD_HA",
 ///     memorySizeGb: 1,
-///     locationId: "us-central1-a",
-///     alternativeLocationId: "us-central1-f",
+///     region: "us-west1",
+///     locationId: "us-west1-a",
+///     alternativeLocationId: "us-west1-b",
 ///     authorizedNetwork: redis_network.id,
 ///     connectMode: "PRIVATE_SERVICE_ACCESS",
 ///     redisVersion: "REDIS_7_2",
@@ -725,8 +756,9 @@ import 'instance_state.dart';
 ///     name="private-cache",
 ///     tier="STANDARD_HA",
 ///     memory_size_gb=1,
-///     location_id="us-central1-a",
-///     alternative_location_id="us-central1-f",
+///     region="us-west1",
+///     location_id="us-west1-a",
+///     alternative_location_id="us-west1-b",
 ///     authorized_network=redis_network.id,
 ///     connect_mode="PRIVATE_SERVICE_ACCESS",
 ///     redis_version="REDIS_7_2",
@@ -778,8 +810,9 @@ import 'instance_state.dart';
 ///         Name = "private-cache",
 ///         Tier = "STANDARD_HA",
 ///         MemorySizeGb = 1,
-///         LocationId = "us-central1-a",
-///         AlternativeLocationId = "us-central1-f",
+///         Region = "us-west1",
+///         LocationId = "us-west1-a",
+///         AlternativeLocationId = "us-west1-b",
 ///         AuthorizedNetwork = redis_network.Id,
 ///         ConnectMode = "PRIVATE_SERVICE_ACCESS",
 ///         RedisVersion = "REDIS_7_2",
@@ -798,9 +831,9 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -825,13 +858,13 @@ import 'instance_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      redis_network.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      redis_network.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		privateServiceConnection, err := servicenetworking.NewConnection(ctx, "private_service_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: redis_network.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: redis_network.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				serviceRange.Name,
@@ -844,9 +877,10 @@ import 'instance_state.dart';
 /// 			Name:                  pulumi.String("private-cache"),
 /// 			Tier:                  pulumi.String("STANDARD_HA"),
 /// 			MemorySizeGb:          pulumi.Int(1),
-/// 			LocationId:            pulumi.String("us-central1-a"),
-/// 			AlternativeLocationId: pulumi.String("us-central1-f"),
-/// 			AuthorizedNetwork:     redis_network.ID().ToIDOutput().ToStringOutput(),
+/// 			Region:                pulumi.String("us-west1"),
+/// 			LocationId:            pulumi.String("us-west1-a"),
+/// 			AlternativeLocationId: pulumi.String("us-west1-b"),
+/// 			AuthorizedNetwork:     redis_network.ID(),
 /// 			ConnectMode:           pulumi.String("PRIVATE_SERVICE_ACCESS"),
 /// 			RedisVersion:          pulumi.String("REDIS_7_2"),
 /// 			DisplayName:           pulumi.String("Test Instance"),
@@ -861,7 +895,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -878,9 +912,15 @@ import 'instance_state.dart';
 /// // config, add an additional network resource or change
 /// // this from "data"to "resource"
 /// resource "gcp_compute_network" "redis-network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "redis-test-network"
 /// }
-/// resource "gcp_compute_globaladdress" "service_range" {
+/// resource "gcp_compute_global_address" "service_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "address"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -888,17 +928,24 @@ import 'instance_state.dart';
 ///   network       = gcp_compute_network.redis-network.id
 /// }
 /// resource "gcp_servicenetworking_connection" "private_service_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.redis-network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.service_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.service_range.name]
 /// }
 /// resource "gcp_redis_instance" "cache" {
-///   depends_on              = [gcp_servicenetworking_connection.private_service_connection]
+///   depends_on = [gcp_servicenetworking_connection.private_service_connection]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "private-cache"
 ///   tier                    = "STANDARD_HA"
 ///   memory_size_gb          = 1
-///   location_id             = "us-central1-a"
-///   alternative_location_id = "us-central1-f"
+///   region                  = "us-west1"
+///   location_id             = "us-west1-a"
+///   alternative_location_id = "us-west1-b"
 ///   authorized_network      = gcp_compute_network.redis-network.id
 ///   connect_mode            = "PRIVATE_SERVICE_ACCESS"
 ///   redis_version           = "REDIS_7_2"
@@ -963,8 +1010,9 @@ import 'instance_state.dart';
 ///             .name("private-cache")
 ///             .tier("STANDARD_HA")
 ///             .memorySizeGb(1)
-///             .locationId("us-central1-a")
-///             .alternativeLocationId("us-central1-f")
+///             .region("us-west1")
+///             .locationId("us-west1-a")
+///             .alternativeLocationId("us-west1-b")
 ///             .authorizedNetwork(redis_network.id())
 ///             .connectMode("PRIVATE_SERVICE_ACCESS")
 ///             .redisVersion("REDIS_7_2")
@@ -1013,8 +1061,9 @@ import 'instance_state.dart';
 ///       name: private-cache
 ///       tier: STANDARD_HA
 ///       memorySizeGb: 1
-///       locationId: us-central1-a
-///       alternativeLocationId: us-central1-f
+///       region: us-west1
+///       locationId: us-west1-a
+///       alternativeLocationId: us-west1-b
 ///       authorizedNetwork: ${["redis-network"].id}
 ///       connectMode: PRIVATE_SERVICE_ACCESS
 ///       redisVersion: REDIS_7_2
@@ -1047,8 +1096,9 @@ import 'instance_state.dart';
 ///     name: "mrr-memory-cache",
 ///     tier: "STANDARD_HA",
 ///     memorySizeGb: 5,
-///     locationId: "us-central1-a",
-///     alternativeLocationId: "us-central1-f",
+///     region: "us-west1",
+///     locationId: "us-west1-a",
+///     alternativeLocationId: "us-west1-b",
 ///     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
 ///     redisVersion: "REDIS_7_2",
 ///     displayName: "Test Instance",
@@ -1077,8 +1127,9 @@ import 'instance_state.dart';
 ///     name="mrr-memory-cache",
 ///     tier="STANDARD_HA",
 ///     memory_size_gb=5,
-///     location_id="us-central1-a",
-///     alternative_location_id="us-central1-f",
+///     region="us-west1",
+///     location_id="us-west1-a",
+///     alternative_location_id="us-west1-b",
 ///     authorized_network=redis_network.id,
 ///     redis_version="REDIS_7_2",
 ///     display_name="Test Instance",
@@ -1115,8 +1166,9 @@ import 'instance_state.dart';
 ///         Name = "mrr-memory-cache",
 ///         Tier = "STANDARD_HA",
 ///         MemorySizeGb = 5,
-///         LocationId = "us-central1-a",
-///         AlternativeLocationId = "us-central1-f",
+///         Region = "us-west1",
+///         LocationId = "us-west1-a",
+///         AlternativeLocationId = "us-west1-b",
 ///         AuthorizedNetwork = redis_network.Apply(redis_network => redis_network.Apply(getNetworkResult => getNetworkResult.Id)),
 ///         RedisVersion = "REDIS_7_2",
 ///         DisplayName = "Test Instance",
@@ -1135,8 +1187,8 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1160,8 +1212,9 @@ import 'instance_state.dart';
 /// 			Name:                  pulumi.String("mrr-memory-cache"),
 /// 			Tier:                  pulumi.String("STANDARD_HA"),
 /// 			MemorySizeGb:          pulumi.Int(5),
-/// 			LocationId:            pulumi.String("us-central1-a"),
-/// 			AlternativeLocationId: pulumi.String("us-central1-f"),
+/// 			Region:                pulumi.String("us-west1"),
+/// 			LocationId:            pulumi.String("us-west1-a"),
+/// 			AlternativeLocationId: pulumi.String("us-west1-b"),
 /// 			AuthorizedNetwork:     pulumi.String(redis_network.Id),
 /// 			RedisVersion:          pulumi.String("REDIS_7_2"),
 /// 			DisplayName:           pulumi.String("Test Instance"),
@@ -1180,7 +1233,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1188,17 +1241,21 @@ import 'instance_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "redis-network" {
+/// data "gcp_compute_network" "redis-network" {
 ///   name = "redis-test-network"
 /// }
 ///
 /// resource "gcp_redis_instance" "cache" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "mrr-memory-cache"
 ///   tier                    = "STANDARD_HA"
 ///   memory_size_gb          = 5
-///   location_id             = "us-central1-a"
-///   alternative_location_id = "us-central1-f"
-///   authorized_network      = data.gcp_compute_getnetwork.redis-network.id
+///   region                  = "us-west1"
+///   location_id             = "us-west1-a"
+///   alternative_location_id = "us-west1-b"
+///   authorized_network      = data.gcp_compute_network.redis-network.id
 ///   redis_version           = "REDIS_7_2"
 ///   display_name            = "Test Instance"
 ///   replica_count           = 5
@@ -1256,8 +1313,9 @@ import 'instance_state.dart';
 ///             .name("mrr-memory-cache")
 ///             .tier("STANDARD_HA")
 ///             .memorySizeGb(5)
-///             .locationId("us-central1-a")
-///             .alternativeLocationId("us-central1-f")
+///             .region("us-west1")
+///             .locationId("us-west1-a")
+///             .alternativeLocationId("us-west1-b")
 ///             .authorizedNetwork(redis_network.id())
 ///             .redisVersion("REDIS_7_2")
 ///             .displayName("Test Instance")
@@ -1280,8 +1338,9 @@ import 'instance_state.dart';
 ///       name: mrr-memory-cache
 ///       tier: STANDARD_HA
 ///       memorySizeGb: 5
-///       locationId: us-central1-a
-///       alternativeLocationId: us-central1-f
+///       region: us-west1
+///       locationId: us-west1-a
+///       alternativeLocationId: us-west1-b
 ///       authorizedNetwork: ${["redis-network"].id}
 ///       redisVersion: REDIS_7_2
 ///       displayName: Test Instance
@@ -1316,7 +1375,7 @@ import 'instance_state.dart';
 ///
 /// const redisKeyring = new gcp.kms.KeyRing("redis_keyring", {
 ///     name: "redis-keyring",
-///     location: "us-central1",
+///     location: "us-west1",
 /// });
 /// const redisKey = new gcp.kms.CryptoKey("redis_key", {
 ///     name: "redis-key",
@@ -1337,8 +1396,9 @@ import 'instance_state.dart';
 ///     name: "cmek-memory-cache",
 ///     tier: "STANDARD_HA",
 ///     memorySizeGb: 1,
-///     locationId: "us-central1-a",
-///     alternativeLocationId: "us-central1-f",
+///     region: "us-west1",
+///     locationId: "us-west1-a",
+///     alternativeLocationId: "us-west1-b",
 ///     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
 ///     redisVersion: "REDIS_7_2",
 ///     displayName: "Test Instance",
@@ -1355,7 +1415,7 @@ import 'instance_state.dart';
 ///
 /// redis_keyring = gcp.kms.KeyRing("redis_keyring",
 ///     name="redis-keyring",
-///     location="us-central1")
+///     location="us-west1")
 /// redis_key = gcp.kms.CryptoKey("redis_key",
 ///     name="redis-key",
 ///     key_ring=redis_keyring.id)
@@ -1372,8 +1432,9 @@ import 'instance_state.dart';
 ///     name="cmek-memory-cache",
 ///     tier="STANDARD_HA",
 ///     memory_size_gb=1,
-///     location_id="us-central1-a",
-///     alternative_location_id="us-central1-f",
+///     region="us-west1",
+///     location_id="us-west1-a",
+///     alternative_location_id="us-west1-b",
 ///     authorized_network=redis_network.id,
 ///     redis_version="REDIS_7_2",
 ///     display_name="Test Instance",
@@ -1394,7 +1455,7 @@ import 'instance_state.dart';
 ///     var redisKeyring = new Gcp.Kms.KeyRing("redis_keyring", new()
 ///     {
 ///         Name = "redis-keyring",
-///         Location = "us-central1",
+///         Location = "us-west1",
 ///     });
 ///
 ///     var redisKey = new Gcp.Kms.CryptoKey("redis_key", new()
@@ -1421,8 +1482,9 @@ import 'instance_state.dart';
 ///         Name = "cmek-memory-cache",
 ///         Tier = "STANDARD_HA",
 ///         MemorySizeGb = 1,
-///         LocationId = "us-central1-a",
-///         AlternativeLocationId = "us-central1-f",
+///         Region = "us-west1",
+///         LocationId = "us-west1-a",
+///         AlternativeLocationId = "us-west1-b",
 ///         AuthorizedNetwork = redis_network.Apply(redis_network => redis_network.Apply(getNetworkResult => getNetworkResult.Id)),
 ///         RedisVersion = "REDIS_7_2",
 ///         DisplayName = "Test Instance",
@@ -1440,9 +1502,9 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1450,14 +1512,14 @@ import 'instance_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		redisKeyring, err := kms.NewKeyRing(ctx, "redis_keyring", &kms.KeyRingArgs{
 /// 			Name:     pulumi.String("redis-keyring"),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Location: pulumi.String("us-west1"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		redisKey, err := kms.NewCryptoKey(ctx, "redis_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("redis-key"),
-/// 			KeyRing: redisKeyring.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRing: redisKeyring.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1480,8 +1542,9 @@ import 'instance_state.dart';
 /// 			Name:                  pulumi.String("cmek-memory-cache"),
 /// 			Tier:                  pulumi.String("STANDARD_HA"),
 /// 			MemorySizeGb:          pulumi.Int(1),
-/// 			LocationId:            pulumi.String("us-central1-a"),
-/// 			AlternativeLocationId: pulumi.String("us-central1-f"),
+/// 			Region:                pulumi.String("us-west1"),
+/// 			LocationId:            pulumi.String("us-west1-a"),
+/// 			AlternativeLocationId: pulumi.String("us-west1-b"),
 /// 			AuthorizedNetwork:     pulumi.String(redis_network.Id),
 /// 			RedisVersion:          pulumi.String("REDIS_7_2"),
 /// 			DisplayName:           pulumi.String("Test Instance"),
@@ -1489,7 +1552,7 @@ import 'instance_state.dart';
 /// 				"my_key":    pulumi.String("my_val"),
 /// 				"other_key": pulumi.String("other_val"),
 /// 			},
-/// 			CustomerManagedKey: redisKey.ID().ToIDOutput().ToStringOutput(),
+/// 			CustomerManagedKey: redisKey.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1499,7 +1562,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1507,32 +1570,42 @@ import 'instance_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "redis-network" {
+/// data "gcp_compute_network" "redis-network" {
 ///   name = "redis-test-network"
 /// }
 ///
 /// resource "gcp_redis_instance" "cache" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "cmek-memory-cache"
 ///   tier                    = "STANDARD_HA"
 ///   memory_size_gb          = 1
-///   location_id             = "us-central1-a"
-///   alternative_location_id = "us-central1-f"
-///   authorized_network      = data.gcp_compute_getnetwork.redis-network.id
+///   region                  = "us-west1"
+///   location_id             = "us-west1-a"
+///   alternative_location_id = "us-west1-b"
+///   authorized_network      = data.gcp_compute_network.redis-network.id
 ///   redis_version           = "REDIS_7_2"
 ///   display_name            = "Test Instance"
 ///   labels = {
 ///     "my_key"    = "my_val"
 ///     "other_key" = "other_val"
 ///   }
-///   customer_managed_key = gcp_kms_cryptokey.redis_key.id
+///   customer_managed_key = gcp_kms_crypto_key.redis_key.id
 /// }
-/// resource "gcp_kms_keyring" "redis_keyring" {
+/// resource "gcp_kms_key_ring" "redis_keyring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "redis-keyring"
-///   location = "us-central1"
+///   location = "us-west1"
 /// }
-/// resource "gcp_kms_cryptokey" "redis_key" {
+/// resource "gcp_kms_crypto_key" "redis_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "redis-key"
-///   key_ring = gcp_kms_keyring.redis_keyring.id
+///   key_ring = gcp_kms_key_ring.redis_keyring.id
 /// }
 /// // This example assumes this network already exists.
 /// // The API creates a tenant network per network authorized for a
@@ -1572,7 +1645,7 @@ import 'instance_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var redisKeyring = new KeyRing("redisKeyring", KeyRingArgs.builder()
 ///             .name("redis-keyring")
-///             .location("us-central1")
+///             .location("us-west1")
 ///             .build());
 ///
 ///         var redisKey = new CryptoKey("redisKey", CryptoKeyArgs.builder()
@@ -1596,8 +1669,9 @@ import 'instance_state.dart';
 ///             .name("cmek-memory-cache")
 ///             .tier("STANDARD_HA")
 ///             .memorySizeGb(1)
-///             .locationId("us-central1-a")
-///             .alternativeLocationId("us-central1-f")
+///             .region("us-west1")
+///             .locationId("us-west1-a")
+///             .alternativeLocationId("us-west1-b")
 ///             .authorizedNetwork(redis_network.id())
 ///             .redisVersion("REDIS_7_2")
 ///             .displayName("Test Instance")
@@ -1619,8 +1693,9 @@ import 'instance_state.dart';
 ///       name: cmek-memory-cache
 ///       tier: STANDARD_HA
 ///       memorySizeGb: 1
-///       locationId: us-central1-a
-///       alternativeLocationId: us-central1-f
+///       region: us-west1
+///       locationId: us-west1-a
+///       alternativeLocationId: us-west1-b
 ///       authorizedNetwork: ${["redis-network"].id}
 ///       redisVersion: REDIS_7_2
 ///       displayName: Test Instance
@@ -1633,7 +1708,7 @@ import 'instance_state.dart';
 ///     name: redis_keyring
 ///     properties:
 ///       name: redis-keyring
-///       location: us-central1
+///       location: us-west1
 ///   redisKey:
 ///     type: gcp:kms:CryptoKey
 ///     name: redis_key
@@ -1843,7 +1918,7 @@ class Instance extends pulumi.CustomResource {
           'gcp:redis/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['authString', 'effectiveLabels', 'pulumiLabels'],
         ) {
     alternativeLocationId = registerOutput<String>('alternativeLocationId');

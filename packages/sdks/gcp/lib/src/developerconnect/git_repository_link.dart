@@ -175,9 +175,9 @@ import 'git_repository_link_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -200,7 +200,7 @@ import 'git_repository_link_state.dart';
 /// 			return err
 /// 		}
 /// 		github_token_secret_version, err := secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     github_token_secret.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     github_token_secret.ID(),
 /// 			SecretData: pulumi.String(invokeFile.Result),
 /// 		})
 /// 		if err != nil {
@@ -233,7 +233,7 @@ import 'git_repository_link_state.dart';
 /// 				GithubApp:         pulumi.String("DEVELOPER_CONNECT"),
 /// 				AppInstallationId: pulumi.String("123123"),
 /// 				AuthorizerCredential: &developerconnect.ConnectionGithubConfigAuthorizerCredentialArgs{
-/// 					OauthTokenSecretVersion: github_token_secret_version.ID().ToIDOutput().ToStringOutput(),
+/// 					OauthTokenSecretVersion: github_token_secret_version.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -254,7 +254,7 @@ import 'git_repository_link_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -265,7 +265,7 @@ import 'git_repository_link_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "p4sa-secretAccessor" {
+/// data "gcp_organizations_i_a_m_policy" "p4sa-secretAccessor" {
 ///   bindings {
 ///     role    = "roles/secretmanager.secretAccessor"
 ///     members = ["serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com"]
@@ -273,32 +273,47 @@ import 'git_repository_link_state.dart';
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "github-token-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "github-token-secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "github-token-secret-version" {
+/// resource "gcp_secretmanager_secret_version" "github-token-secret-version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.github-token-secret.id
 ///   secret_data = file("my-github-token.txt")
 /// }
 /// // Here, 123456789 is the Google Cloud project number for the project that contains the connection.
-/// resource "gcp_secretmanager_secretiampolicy" "policy" {
+/// resource "gcp_secretmanager_secret_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id   = gcp_secretmanager_secret.github-token-secret.secret_id
-///   policy_data = data.gcp_organizations_getiampolicy.p4sa-secretAccessor.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.p4sa-secretAccessor.policy_data
 /// }
 /// resource "gcp_developerconnect_connection" "my-connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   connection_id = "my-connection"
 ///   github_config = {
 ///     github_app          = "DEVELOPER_CONNECT"
 ///     app_installation_id = 123123
 ///     authorizer_credential = {
-///       oauth_token_secret_version = gcp_secretmanager_secretversion.github-token-secret-version.id
+///       oauth_token_secret_version = gcp_secretmanager_secret_version.github-token-secret-version.id
 ///     }
 ///   }
 /// }
-/// resource "gcp_developerconnect_gitrepositorylink" "my-repository" {
+/// resource "gcp_developerconnect_git_repository_link" "my-repository" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location               = "us-central1"
 ///   git_repository_link_id = "my-repo"
 ///   parent_connection      = gcp_developerconnect_connection.my-connection.connection_id
@@ -527,7 +542,7 @@ class GitRepositoryLink extends pulumi.CustomResource {
           'gcp:developerconnect/gitRepositoryLink:GitRepositoryLink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

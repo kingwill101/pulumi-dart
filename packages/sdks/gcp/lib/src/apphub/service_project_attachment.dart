@@ -90,8 +90,8 @@ import 'service_project_attachment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apphub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -128,7 +128,7 @@ import 'service_project_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -139,18 +139,27 @@ import 'service_project_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_apphub_serviceprojectattachment" "example" {
-///   depends_on                    = [time_sleep.wait_120s]
+/// resource "gcp_apphub_service_project_attachment" "example" {
+///   depends_on = [time_sleep.wait_120s]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_project_attachment_id = gcp_organizations_project.service_project.project_id
 /// }
 /// resource "gcp_organizations_project" "service_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "project-1"
 ///   name            = "Service Project"
 ///   org_id          = "123456789"
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "time_sleep" "wait_120s" {
-///   depends_on      = [gcp_organizations_project.service_project]
+///   depends_on = [gcp_organizations_project.service_project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "120s"
 /// }
 /// ```
@@ -317,8 +326,8 @@ import 'service_project_attachment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apphub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apphub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -356,7 +365,7 @@ import 'service_project_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -367,19 +376,28 @@ import 'service_project_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_apphub_serviceprojectattachment" "example2" {
-///   depends_on                    = [time_sleep.wait_120s]
+/// resource "gcp_apphub_service_project_attachment" "example2" {
+///   depends_on = [time_sleep.wait_120s]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_project_attachment_id = gcp_organizations_project.service_project_full.project_id
 ///   service_project               = gcp_organizations_project.service_project_full.project_id
 /// }
 /// resource "gcp_organizations_project" "service_project_full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "project-1"
 ///   name            = "Service Project Full"
 ///   org_id          = "123456789"
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "time_sleep" "wait_120s" {
-///   depends_on      = [gcp_organizations_project.service_project_full]
+///   depends_on = [gcp_organizations_project.service_project_full]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "120s"
 /// }
 /// ```
@@ -515,7 +533,7 @@ class ServiceProjectAttachment extends pulumi.CustomResource {
           'gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

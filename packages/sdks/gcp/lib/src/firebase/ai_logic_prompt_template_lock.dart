@@ -81,7 +81,7 @@ import 'ai_logic_prompt_template_lock_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -107,7 +107,7 @@ import 'ai_logic_prompt_template_lock_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -115,14 +115,26 @@ import 'ai_logic_prompt_template_lock_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_ailogicprompttemplate" "basic" {
+/// resource "gcp_firebase_ai_logic_prompt_template" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "global"
 ///   template_id     = "lock-template"
-///   template_string = "---\nmodel: googleai/gemini-1.5-flash\n---\nHello World\n"
+///   template_string = <<EOF
+/// ---
+/// model: googleai/gemini-1.5-flash
+/// ---
+/// Hello World
+/// EOF
+///
 /// }
-/// resource "gcp_firebase_ailogicprompttemplatelock" "basic_lock" {
-///   location    = gcp_firebase_ailogicprompttemplate.basic.location
-///   template_id = gcp_firebase_ailogicprompttemplate.basic.template_id
+/// resource "gcp_firebase_ai_logic_prompt_template_lock" "basic_lock" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location    = gcp_firebase_ai_logic_prompt_template.basic.location
+///   template_id = gcp_firebase_ai_logic_prompt_template.basic.template_id
 /// }
 /// ```
 /// ```java
@@ -259,7 +271,7 @@ import 'ai_logic_prompt_template_lock_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -286,7 +298,7 @@ import 'ai_logic_prompt_template_lock_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -294,14 +306,26 @@ import 'ai_logic_prompt_template_lock_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_ailogicprompttemplate" "global_only" {
+/// resource "gcp_firebase_ai_logic_prompt_template" "global_only" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "global"
 ///   template_id     = "global-only-lock-template"
-///   template_string = "---\nmodel: googleai/gemini-1.5-flash\n---\nHello World\n"
+///   template_string = <<EOF
+/// ---
+/// model: googleai/gemini-1.5-flash
+/// ---
+/// Hello World
+/// EOF
+///
 /// }
-/// resource "gcp_firebase_ailogicprompttemplatelock" "global_only_lock" {
-///   location                      = gcp_firebase_ailogicprompttemplate.global_only.location
-///   template_id                   = gcp_firebase_ailogicprompttemplate.global_only.template_id
+/// resource "gcp_firebase_ai_logic_prompt_template_lock" "global_only_lock" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location                      = gcp_firebase_ai_logic_prompt_template.global_only.location
+///   template_id                   = gcp_firebase_ai_logic_prompt_template.global_only.template_id
 ///   regional_propagation_disabled = true
 /// }
 /// ```
@@ -424,7 +448,7 @@ class AiLogicPromptTemplateLock extends pulumi.CustomResource {
           'gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');

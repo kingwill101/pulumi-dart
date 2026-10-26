@@ -273,9 +273,9 @@ import 'config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/identityplatform"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/identityplatform"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -362,7 +362,7 @@ import 'config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -371,6 +371,9 @@ import 'config_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "my-project"
 ///   name            = "my-project"
 ///   org_id          = "123456789"
@@ -381,10 +384,16 @@ import 'config_state.dart';
 ///   }
 /// }
 /// resource "gcp_projects_service" "identitytoolkit" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.default.project_id
 ///   service = "identitytoolkit.googleapis.com"
 /// }
 /// resource "gcp_identityplatform_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.default.project_id
 ///   autodelete_anonymous_users = true
 ///   sign_in = {
@@ -410,8 +419,8 @@ import 'config_state.dart';
 ///   }
 ///   blocking_functions = {
 ///     triggers = [{
-///       "eventType"   = "beforeSignIn"
-///       "functionUri" = "https://us-east1-my-project.cloudfunctions.net/before-sign-in"
+///       event_type   = "beforeSignIn"
+///       function_uri = "https://us-east1-my-project.cloudfunctions.net/before-sign-in"
 ///     }]
 ///     forward_inbound_credentials = {
 ///       refresh_token = true
@@ -652,7 +661,7 @@ class Config extends pulumi.CustomResource {
           'gcp:identityplatform/config:Config',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     authorizedDomains = registerOutput<List<String>>('authorizedDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     autodeleteAnonymousUsers = registerOutput<bool?>('autodeleteAnonymousUsers');

@@ -60,7 +60,7 @@ class RegionBackendServiceConnectionTrackingPolicy {
     return RegionBackendServiceConnectionTrackingPolicy(
       connectionPersistenceOnUnhealthyBackends: (() { final guardedValue = map['connectionPersistenceOnUnhealthyBackends']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableStrongAffinity: (() { final guardedValue = map['enableStrongAffinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      idleTimeoutSec: (() { final guardedValue = map['idleTimeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      idleTimeoutSec: (() { final guardedValue = map['idleTimeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       trackingMode: (() { final guardedValue = map['trackingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

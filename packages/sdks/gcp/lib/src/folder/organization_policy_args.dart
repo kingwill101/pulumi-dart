@@ -76,7 +76,7 @@ class OrganizationPolicyArgs {
       folder: pulumi.Input.fromValue(map['folder'] as String),
       listPolicy: (() { final guardedValue = map['listPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OrganizationPolicyListPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       restorePolicy: (() { final guardedValue = map['restorePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OrganizationPolicyRestorePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

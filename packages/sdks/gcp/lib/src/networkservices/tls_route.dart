@@ -144,8 +144,8 @@ import 'tls_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -163,7 +163,7 @@ import 'tls_route_state.dart';
 /// 		_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:                pulumi.String("my-backend-service"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
-/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:        defaultHealthCheck.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -186,7 +186,7 @@ import 'tls_route_state.dart';
 /// 					Action: &networkservices.TlsRouteRuleActionArgs{
 /// 						Destinations: networkservices.TlsRouteRuleActionDestinationArray{
 /// 							&networkservices.TlsRouteRuleActionDestinationArgs{
-/// 								ServiceName: _default.ID().ToIDOutput().ToStringOutput(),
+/// 								ServiceName: _default.ID(),
 /// 								Weight:      pulumi.Int(1),
 /// 							},
 /// 						},
@@ -202,7 +202,7 @@ import 'tls_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -210,18 +210,27 @@ import 'tls_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-backend-service"
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "backend-service-health-check"
 ///   https_health_check = {
 ///     port = 443
 ///   }
 /// }
-/// resource "gcp_networkservices_tlsroute" "default" {
+/// resource "gcp_networkservices_tls_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-tls-route"
 ///   description = "my description"
 ///   rules {
@@ -231,8 +240,8 @@ import 'tls_route_state.dart';
 ///     }
 ///     action = {
 ///       destinations = [{
-///         "serviceName" = gcp_compute_backendservice.default.id
-///         "weight"      = 1
+///         service_name = gcp_compute_backend_service.default.id
+///         weight       = 1
 ///       }]
 ///     }
 ///   }
@@ -475,8 +484,8 @@ import 'tls_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -499,7 +508,7 @@ import 'tls_route_state.dart';
 /// 			Protocol:            pulumi.String("TCP"),
 /// 			TimeoutSec:          pulumi.Int(10),
 /// 			Region:              pulumi.String("europe-west4"),
-/// 			HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:        defaultRegionHealthCheck.ID(),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 /// 		})
 /// 		if err != nil {
@@ -535,7 +544,7 @@ import 'tls_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -543,15 +552,21 @@ import 'tls_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionbackendservice" "default" {
+/// resource "gcp_compute_region_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-backend-service"
 ///   protocol              = "TCP"
 ///   timeout_sec           = 10
 ///   region                = "europe-west4"
-///   health_checks         = gcp_compute_regionhealthcheck.default.id
+///   health_checks         = gcp_compute_region_health_check.default.id
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
 /// }
-/// resource "gcp_compute_regionhealthcheck" "default" {
+/// resource "gcp_compute_region_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "backend-service-health-check"
 ///   region             = "europe-west4"
 ///   timeout_sec        = 1
@@ -560,7 +575,10 @@ import 'tls_route_state.dart';
 ///     port = "80"
 ///   }
 /// }
-/// resource "gcp_networkservices_tlsroute" "default" {
+/// resource "gcp_networkservices_tls_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-tls-route"
 ///   location = "europe-west4"
 ///   rules {
@@ -569,7 +587,7 @@ import 'tls_route_state.dart';
 ///     }
 ///     action = {
 ///       destinations = [{
-///         "serviceName" = gcp_compute_regionbackendservice.default.self_link
+///         service_name = gcp_compute_region_backend_service.default.self_link
 ///       }]
 ///     }
 ///   }
@@ -839,8 +857,8 @@ import 'tls_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -858,7 +876,7 @@ import 'tls_route_state.dart';
 /// 		_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:                pulumi.String("my-backend-service"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
-/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:        defaultHealthCheck.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -877,7 +895,7 @@ import 'tls_route_state.dart';
 /// 			Name:        pulumi.String("my-tls-route"),
 /// 			Description: pulumi.String("my description"),
 /// 			Meshes: pulumi.StringArray{
-/// 				defaultMesh.ID().ToIDOutput().ToStringOutput(),
+/// 				defaultMesh.ID(),
 /// 			},
 /// 			Rules: networkservices.TlsRouteRuleArray{
 /// 				&networkservices.TlsRouteRuleArgs{
@@ -894,7 +912,7 @@ import 'tls_route_state.dart';
 /// 					Action: &networkservices.TlsRouteRuleActionArgs{
 /// 						Destinations: networkservices.TlsRouteRuleActionDestinationArray{
 /// 							&networkservices.TlsRouteRuleActionDestinationArgs{
-/// 								ServiceName: _default.ID().ToIDOutput().ToStringOutput(),
+/// 								ServiceName: _default.ID(),
 /// 								Weight:      pulumi.Int(1),
 /// 							},
 /// 						},
@@ -910,7 +928,7 @@ import 'tls_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -918,25 +936,37 @@ import 'tls_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-backend-service"
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "backend-service-health-check"
 ///   https_health_check = {
 ///     port = 443
 ///   }
 /// }
 /// resource "gcp_networkservices_mesh" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-tls-route"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 ///   description = "my description"
 /// }
-/// resource "gcp_networkservices_tlsroute" "default" {
+/// resource "gcp_networkservices_tls_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-tls-route"
 ///   description = "my description"
 ///   meshes      = [gcp_networkservices_mesh.default.id]
@@ -947,8 +977,8 @@ import 'tls_route_state.dart';
 ///     }
 ///     action = {
 ///       destinations = [{
-///         "serviceName" = gcp_compute_backendservice.default.id
-///         "weight"      = 1
+///         service_name = gcp_compute_backend_service.default.id
+///         weight       = 1
 ///       }]
 ///     }
 ///   }
@@ -1242,8 +1272,8 @@ import 'tls_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1261,7 +1291,7 @@ import 'tls_route_state.dart';
 /// 		_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:                pulumi.String("my-backend-service"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
-/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:        defaultHealthCheck.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1285,7 +1315,7 @@ import 'tls_route_state.dart';
 /// 			Name:        pulumi.String("my-tls-route"),
 /// 			Description: pulumi.String("my description"),
 /// 			Gateways: pulumi.StringArray{
-/// 				defaultGateway.ID().ToIDOutput().ToStringOutput(),
+/// 				defaultGateway.ID(),
 /// 			},
 /// 			Rules: networkservices.TlsRouteRuleArray{
 /// 				&networkservices.TlsRouteRuleArgs{
@@ -1302,7 +1332,7 @@ import 'tls_route_state.dart';
 /// 					Action: &networkservices.TlsRouteRuleActionArgs{
 /// 						Destinations: networkservices.TlsRouteRuleActionDestinationArray{
 /// 							&networkservices.TlsRouteRuleActionDestinationArgs{
-/// 								ServiceName: _default.ID().ToIDOutput().ToStringOutput(),
+/// 								ServiceName: _default.ID(),
 /// 								Weight:      pulumi.Int(1),
 /// 							},
 /// 						},
@@ -1318,7 +1348,7 @@ import 'tls_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1326,18 +1356,27 @@ import 'tls_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-backend-service"
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "backend-service-health-check"
 ///   https_health_check = {
 ///     port = 443
 ///   }
 /// }
 /// resource "gcp_networkservices_gateway" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-tls-route"
 ///   labels = {
 ///     "foo" = "bar"
@@ -1347,7 +1386,10 @@ import 'tls_route_state.dart';
 ///   type        = "OPEN_MESH"
 ///   ports       = [443]
 /// }
-/// resource "gcp_networkservices_tlsroute" "default" {
+/// resource "gcp_networkservices_tls_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-tls-route"
 ///   description = "my description"
 ///   gateways    = [gcp_networkservices_gateway.default.id]
@@ -1358,8 +1400,8 @@ import 'tls_route_state.dart';
 ///     }
 ///     action = {
 ///       destinations = [{
-///         "serviceName" = gcp_compute_backendservice.default.id
-///         "weight"      = 1
+///         service_name = gcp_compute_backend_service.default.id
+///         weight       = 1
 ///       }]
 ///     }
 ///   }
@@ -1629,8 +1671,8 @@ import 'tls_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1649,7 +1691,7 @@ import 'tls_route_state.dart';
 /// 			Name:                pulumi.String("my-backend-service"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 /// 			Protocol:            pulumi.String("TCP"),
-/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:        defaultHealthCheck.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1664,7 +1706,7 @@ import 'tls_route_state.dart';
 /// 		_, err = networkservices.NewTlsRoute(ctx, "default", &networkservices.TlsRouteArgs{
 /// 			Name: pulumi.String("my-tls-route"),
 /// 			TargetProxies: pulumi.StringArray{
-/// 				defaultTargetTCPProxy.ID().ToIDOutput().ToStringOutput(),
+/// 				defaultTargetTCPProxy.ID(),
 /// 			},
 /// 			Rules: networkservices.TlsRouteRuleArray{
 /// 				&networkservices.TlsRouteRuleArgs{
@@ -1678,7 +1720,7 @@ import 'tls_route_state.dart';
 /// 					Action: &networkservices.TlsRouteRuleActionArgs{
 /// 						Destinations: networkservices.TlsRouteRuleActionDestinationArray{
 /// 							&networkservices.TlsRouteRuleActionDestinationArgs{
-/// 								ServiceName: _default.ID().ToIDOutput().ToStringOutput(),
+/// 								ServiceName: _default.ID(),
 /// 							},
 /// 						},
 /// 					},
@@ -1693,7 +1735,7 @@ import 'tls_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1701,32 +1743,44 @@ import 'tls_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-backend-service"
 ///   load_balancing_scheme = "INTERNAL_MANAGED"
 ///   protocol              = "TCP"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-health-check"
 ///   https_health_check = {
 ///     port = 443
 ///   }
 /// }
-/// resource "gcp_compute_targettcpproxy" "default" {
+/// resource "gcp_compute_target_t_c_p_proxy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-target-tcp-proxy"
 ///   load_balancing_scheme = "INTERNAL_MANAGED"
 /// }
-/// resource "gcp_networkservices_tlsroute" "default" {
+/// resource "gcp_networkservices_tls_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "my-tls-route"
-///   target_proxies = [gcp_compute_targettcpproxy.default.id]
+///   target_proxies = [gcp_compute_target_t_c_p_proxy.default.id]
 ///   rules {
 ///     matches {
 ///       sni_hosts = ["example.com"]
 ///     }
 ///     action = {
 ///       destinations = [{
-///         "serviceName" = gcp_compute_backendservice.default.id
+///         service_name = gcp_compute_backend_service.default.id
 ///       }]
 ///     }
 ///   }
@@ -2002,8 +2056,8 @@ import 'tls_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2026,7 +2080,7 @@ import 'tls_route_state.dart';
 /// 			Protocol:            pulumi.String("TCP"),
 /// 			TimeoutSec:          pulumi.Int(10),
 /// 			Region:              pulumi.String("europe-west4"),
-/// 			HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:        defaultRegionHealthCheck.ID(),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 /// 		})
 /// 		if err != nil {
@@ -2073,7 +2127,7 @@ import 'tls_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2081,15 +2135,21 @@ import 'tls_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionbackendservice" "default" {
+/// resource "gcp_compute_region_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-backend-service"
 ///   protocol              = "TCP"
 ///   timeout_sec           = 10
 ///   region                = "europe-west4"
-///   health_checks         = gcp_compute_regionhealthcheck.default.id
+///   health_checks         = gcp_compute_region_health_check.default.id
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
 /// }
-/// resource "gcp_compute_regionhealthcheck" "default" {
+/// resource "gcp_compute_region_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-health-check"
 ///   region             = "europe-west4"
 ///   timeout_sec        = 1
@@ -2098,22 +2158,28 @@ import 'tls_route_state.dart';
 ///     port = "80"
 ///   }
 /// }
-/// resource "gcp_compute_regiontargettcpproxy" "default" {
+/// resource "gcp_compute_region_target_tcp_proxy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-target-tcp-proxy"
 ///   region                = "europe-west4"
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
 /// }
-/// resource "gcp_networkservices_tlsroute" "default" {
+/// resource "gcp_networkservices_tls_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "my-tls-route"
 ///   location       = "europe-west4"
-///   target_proxies = [gcp_compute_regiontargettcpproxy.default.self_link]
+///   target_proxies = [gcp_compute_region_target_tcp_proxy.default.self_link]
 ///   rules {
 ///     matches {
 ///       sni_hosts = ["example.com"]
 ///     }
 ///     action = {
 ///       destinations = [{
-///         "serviceName" = gcp_compute_regionbackendservice.default.self_link
+///         service_name = gcp_compute_region_backend_service.default.self_link
 ///       }]
 ///     }
 ///   }
@@ -2308,7 +2374,7 @@ class TlsRoute extends pulumi.CustomResource {
           'gcp:networkservices/tlsRoute:TlsRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

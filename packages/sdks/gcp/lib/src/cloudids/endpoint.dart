@@ -115,9 +115,9 @@ import 'endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudids"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudids"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -134,13 +134,13 @@ import 'endpoint_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		privateServiceConnection, err := servicenetworking.NewConnection(ctx, "private_service_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: _default.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				serviceRange.Name,
@@ -152,7 +152,7 @@ import 'endpoint_state.dart';
 /// 		_, err = cloudids.NewEndpoint(ctx, "example-endpoint", &cloudids.EndpointArgs{
 /// 			Name:     pulumi.String("test"),
 /// 			Location: pulumi.String("us-central1-f"),
-/// 			Network:  _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:  _default.ID(),
 /// 			Severity: pulumi.String("INFORMATIONAL"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			privateServiceConnection,
@@ -165,7 +165,7 @@ import 'endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -174,9 +174,15 @@ import 'endpoint_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "tf-test-my-network"
 /// }
-/// resource "gcp_compute_globaladdress" "service_range" {
+/// resource "gcp_compute_global_address" "service_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "address"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -184,16 +190,22 @@ import 'endpoint_state.dart';
 ///   network       = gcp_compute_network.default.id
 /// }
 /// resource "gcp_servicenetworking_connection" "private_service_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.default.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.service_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.service_range.name]
 /// }
 /// resource "gcp_cloudids_endpoint" "example-endpoint" {
 ///   depends_on = [gcp_servicenetworking_connection.private_service_connection]
-///   name       = "test"
-///   location   = "us-central1-f"
-///   network    = gcp_compute_network.default.id
-///   severity   = "INFORMATIONAL"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "test"
+///   location = "us-central1-f"
+///   network  = gcp_compute_network.default.id
+///   severity = "INFORMATIONAL"
 /// }
 /// ```
 /// ```java
@@ -351,7 +363,7 @@ class Endpoint extends pulumi.CustomResource {
           'gcp:cloudids/endpoint:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

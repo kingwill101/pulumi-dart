@@ -108,7 +108,7 @@ import 'management_organization_event_threat_detection_custom_module_state.dart'
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -146,7 +146,7 @@ import 'management_organization_event_threat_detection_custom_module_state.dart'
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -154,7 +154,10 @@ import 'management_organization_event_threat_detection_custom_module_state.dart'
 ///   }
 /// }
 ///
-/// resource "gcp_securitycenter_managementorganizationeventthreatdetectioncustommodule" "example" {
+/// resource "gcp_securitycenter_management_organization_event_threat_detection_custom_module" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization     = "123456789"
 ///   location         = "global"
 ///   display_name     = "basic_custom_module"
@@ -298,7 +301,7 @@ class ManagementOrganizationEventThreatDetectionCustomModule extends pulumi.Cust
           'gcp:securitycenter/managementOrganizationEventThreatDetectionCustomModule:ManagementOrganizationEventThreatDetectionCustomModule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     config = registerOutput<String?>('config');
     deletionPolicy = registerOutput<String>('deletionPolicy');

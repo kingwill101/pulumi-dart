@@ -137,7 +137,7 @@ import 'access_level_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -186,7 +186,7 @@ import 'access_level_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -194,23 +194,29 @@ import 'access_level_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_accesscontextmanager_accesslevel" "access-level" {
-///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
-///   name   ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/accessLevels/chromeos_no_lock"
+/// resource "gcp_accesscontextmanager_access_level" "access-level" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent ="accessPolicies/${gcp_accesscontextmanager_access_policy.access-policy.name}"
+///   name   ="accessPolicies/${gcp_accesscontextmanager_access_policy.access-policy.name}/accessLevels/chromeos_no_lock"
 ///   title  = "chromeos_no_lock"
 ///   basic = {
 ///     conditions = [{
-///       "devicePolicy" = {
-///         "requireScreenLock" = true
-///         "osConstraints" = [{
-///           "osType" = "DESKTOP_CHROME_OS"
+///       device_policy = {
+///         require_screen_lock = true
+///         os_constraints = [{
+///           os_type = "DESKTOP_CHROME_OS"
 ///         }]
 ///       }
-///       "regions" = ["CH", "IT", "US"]
+///       regions = ["CH", "IT", "US"]
 ///     }]
 ///   }
 /// }
-/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+/// resource "gcp_accesscontextmanager_access_policy" "access-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent = "organizations/123456789"
 ///   title  = "my policy"
 /// }
@@ -347,7 +353,7 @@ class AccessLevel extends pulumi.CustomResource {
           'gcp:accesscontextmanager/accessLevel:AccessLevel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     basic = registerOutput<AccessLevelBasic?>('basic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelBasic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     custom = registerOutput<AccessLevelCustom?>('custom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelCustom.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -101,8 +101,8 @@ import 'capability_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/resourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/resourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -140,7 +140,7 @@ import 'capability_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -152,16 +152,25 @@ import 'capability_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_folder" "folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "folder-cap"
 ///   parent              = "organizations/123456789"
 ///   deletion_protection = false
 /// }
 /// resource "time_sleep" "wait_60s" {
-///   depends_on      = [gcp_organizations_folder.folder]
+///   depends_on = [gcp_organizations_folder.folder]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "60s"
 /// }
 /// resource "gcp_resourcemanager_capability" "capability" {
-///   depends_on      = [time_sleep.wait_60s]
+///   depends_on = [time_sleep.wait_60s]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   value           = true
 ///   parent          = gcp_organizations_folder.folder.name
 ///   capability_name = "app-management"
@@ -278,7 +287,7 @@ class Capability extends pulumi.CustomResource {
           'gcp:resourcemanager/capability:Capability',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     capabilityName = registerOutput<String>('capabilityName');
     parent = registerOutput<String>('parent');

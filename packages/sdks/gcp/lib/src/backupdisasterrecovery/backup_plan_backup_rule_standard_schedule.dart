@@ -67,7 +67,7 @@ class BackupPlanBackupRuleStandardSchedule {
       backupWindow: (() { final guardedValue = map['backupWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackupPlanBackupRuleStandardScheduleBackupWindow.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       daysOfMonths: (() { final guardedValue = map['daysOfMonths']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
       daysOfWeeks: (() { final guardedValue = map['daysOfWeeks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      hourlyFrequency: (() { final guardedValue = map['hourlyFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      hourlyFrequency: (() { final guardedValue = map['hourlyFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       months: (() { final guardedValue = map['months']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       recurrenceType: pulumi.Input.fromValue(map['recurrenceType'] as String),
       timeZone: pulumi.Input.fromValue(map['timeZone'] as String),

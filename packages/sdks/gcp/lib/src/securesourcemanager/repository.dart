@@ -79,7 +79,7 @@ import 'repository_uri.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -107,7 +107,7 @@ import 'repository_uri.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -116,11 +116,17 @@ import 'repository_uri.dart';
 /// }
 ///
 /// resource "gcp_securesourcemanager_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   instance_id     = "my-instance"
 ///   deletion_policy = "PREVENT"
 /// }
 /// resource "gcp_securesourcemanager_repository" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   repository_id   = "my-repository"
 ///   instance        = gcp_securesourcemanager_instance.instance.name
@@ -271,7 +277,7 @@ import 'repository_uri.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -308,7 +314,7 @@ import 'repository_uri.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -317,11 +323,17 @@ import 'repository_uri.dart';
 /// }
 ///
 /// resource "gcp_securesourcemanager_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   instance_id     = "my-instance"
 ///   deletion_policy = "PREVENT"
 /// }
 /// resource "gcp_securesourcemanager_repository" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "my-repository"
 ///   instance      = gcp_securesourcemanager_instance.instance.name
@@ -485,8 +497,8 @@ import 'repository_uri.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -522,7 +534,7 @@ import 'repository_uri.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -531,15 +543,24 @@ import 'repository_uri.dart';
 /// }
 ///
 /// resource "gcp_securesourcemanager_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   instance_id     = "my-instance"
 ///   deletion_policy = "PREVENT"
 /// }
 /// resource "gcp_serviceaccount_account" "sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "my-sa"
 ///   display_name = "Test Service Account"
 /// }
 /// resource "gcp_securesourcemanager_repository" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   repository_id   = "my-repository"
 ///   instance        = gcp_securesourcemanager_instance.instance.name
@@ -762,10 +783,10 @@ import 'repository_uri.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -813,7 +834,7 @@ import 'repository_uri.dart';
 /// 			ScanConfig: &securesourcemanager.RepositoryScanConfigArgs{
 /// 				SecretScanConfig: &securesourcemanager.RepositoryScanConfigSecretScanConfigArgs{
 /// 					Enabled:         pulumi.Bool(true),
-/// 					InspectTemplate: template.ID().ToIDOutput().ToStringOutput(),
+/// 					InspectTemplate: template.ID(),
 /// 				},
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -827,7 +848,7 @@ import 'repository_uri.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -835,30 +856,42 @@ import 'repository_uri.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_securesourcemanager_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   instance_id     = "my-instance"
 ///   deletion_policy = "PREVENT"
 /// }
-/// resource "gcp_dataloss_preventioninspecttemplate" "template" {
+/// resource "gcp_dataloss_prevention_inspect_template" "template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name/locations/us-central1"
 ///   display_name = "Test Inspect Template"
 ///   inspect_config = {
 ///     info_types = [{
-///       "name" = "EMAIL_ADDRESS"
+///       name = "EMAIL_ADDRESS"
 ///     }]
 ///   }
 /// }
-/// resource "gcp_projects_iammember" "ssm_p4sa_dlp_reader" {
-///   project = data.gcp_organizations_getproject.project.project_id
+/// resource "gcp_projects_i_a_m_member" "ssm_p4sa_dlp_reader" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = data.gcp_organizations_project.project.project_id
 ///   role    = "roles/dlp.inspectTemplatesReader"
-///   member  ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"
+///   member  ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"
 /// }
 /// resource "gcp_securesourcemanager_repository" "default" {
-///   depends_on      = [gcp_projects_iammember.ssm_p4sa_dlp_reader]
+///   depends_on = [gcp_projects_i_a_m_member.ssm_p4sa_dlp_reader]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   repository_id   = "my-repository"
 ///   instance        = gcp_securesourcemanager_instance.instance.name
@@ -866,7 +899,7 @@ import 'repository_uri.dart';
 ///   scan_config = {
 ///     secret_scan_config = {
 ///       enabled          = true
-///       inspect_template = gcp_dataloss_preventioninspecttemplate.template.id
+///       inspect_template = gcp_dataloss_prevention_inspect_template.template.id
 ///     }
 ///   }
 /// }
@@ -1072,7 +1105,7 @@ import 'repository_uri.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1105,7 +1138,7 @@ import 'repository_uri.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1114,11 +1147,17 @@ import 'repository_uri.dart';
 /// }
 ///
 /// resource "gcp_securesourcemanager_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   instance_id     = "my-instance"
 ///   deletion_policy = "PREVENT"
 /// }
 /// resource "gcp_securesourcemanager_repository" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   repository_id   = "my-repository"
 ///   instance        = gcp_securesourcemanager_instance.instance.name
@@ -1266,7 +1305,7 @@ class Repository extends pulumi.CustomResource {
           'gcp:securesourcemanager/repository:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

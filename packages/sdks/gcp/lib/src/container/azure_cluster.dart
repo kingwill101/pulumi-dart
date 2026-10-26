@@ -191,7 +191,7 @@ import 'azure_cluster_workload_identity_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -263,7 +263,7 @@ import 'azure_cluster_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -271,28 +271,31 @@ import 'azure_cluster_workload_identity_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_container_getazureversions" "versions" {
+/// data "gcp_container_azure_versions" "versions" {
 ///   project  = "my-project-name"
 ///   location = "us-west1"
 /// }
 ///
-/// resource "gcp_container_azurecluster" "primary" {
+/// resource "gcp_container_azure_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization = {
 ///     admin_users = [{
-///       "username" = "mmv2@google.com"
+///       username = "mmv2@google.com"
 ///     }]
 ///     admin_groups = [{
-///       "group" = "group@domain.com"
+///       group = "group@domain.com"
 ///     }]
 ///   }
 ///   azure_region = "westus2"
-///   client       ="projects/my-project-number/locations/us-west1/azureClients/${gcp_container_azureclient.basic.name}"
+///   client       ="projects/my-project-number/locations/us-west1/azureClients/${gcp_container_azure_client.basic.name}"
 ///   control_plane = {
 ///     ssh_config = {
 ///       authorized_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers"
 ///     }
 ///     subnet_id = "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default"
-///     version   = data.gcp_container_getazureversions.versions.valid_versions[0]
+///     version   = data.gcp_container_azure_versions.versions.valid_versions[0]
 ///   }
 ///   fleet = {
 ///     project = "my-project-number"
@@ -307,7 +310,10 @@ import 'azure_cluster_workload_identity_config.dart';
 ///   resource_group_id = "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster"
 ///   project           = "my-project-name"
 /// }
-/// resource "gcp_container_azureclient" "basic" {
+/// resource "gcp_container_azure_client" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id = "12345678-1234-1234-1234-123456789111"
 ///   location       = "us-west1"
 ///   name           = "client-name"
@@ -631,7 +637,7 @@ import 'azure_cluster_workload_identity_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -706,7 +712,7 @@ import 'azure_cluster_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -714,25 +720,28 @@ import 'azure_cluster_workload_identity_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_container_getazureversions" "versions" {
+/// data "gcp_container_azure_versions" "versions" {
 ///   project  = "my-project-name"
 ///   location = "us-west1"
 /// }
 ///
-/// resource "gcp_container_azurecluster" "primary" {
+/// resource "gcp_container_azure_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization = {
 ///     admin_users = [{
-///       "username" = "mmv2@google.com"
+///       username = "mmv2@google.com"
 ///     }]
 ///   }
 ///   azure_region = "westus2"
-///   client       ="projects/my-project-number/locations/us-west1/azureClients/${gcp_container_azureclient.basic.name}"
+///   client       ="projects/my-project-number/locations/us-west1/azureClients/${gcp_container_azure_client.basic.name}"
 ///   control_plane = {
 ///     ssh_config = {
 ///       authorized_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers"
 ///     }
 ///     subnet_id = "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default"
-///     version   = data.gcp_container_getazureversions.versions.valid_versions[0]
+///     version   = data.gcp_container_azure_versions.versions.valid_versions[0]
 ///   }
 ///   fleet = {
 ///     project = "my-project-number"
@@ -752,7 +761,10 @@ import 'azure_cluster_workload_identity_config.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_container_azureclient" "basic" {
+/// resource "gcp_container_azure_client" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id = "12345678-1234-1234-1234-123456789111"
 ///   location       = "us-west1"
 ///   name           = "client-name"
@@ -980,7 +992,7 @@ class AzureCluster extends pulumi.CustomResource {
           'gcp:container/azureCluster:AzureCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authorization = registerOutput<AzureClusterAuthorization>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });

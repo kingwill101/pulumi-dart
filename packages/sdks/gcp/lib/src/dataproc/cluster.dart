@@ -57,7 +57,7 @@ import 'cluster_virtual_cluster_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -75,7 +75,7 @@ import 'cluster_virtual_cluster_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -84,6 +84,9 @@ import 'cluster_virtual_cluster_config.dart';
 /// }
 ///
 /// resource "gcp_dataproc_cluster" "simplecluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "simplecluster"
 ///   region = "us-central1"
 /// }
@@ -336,8 +339,8 @@ import 'cluster_virtual_cluster_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -412,7 +415,7 @@ import 'cluster_virtual_cluster_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -421,10 +424,16 @@ import 'cluster_virtual_cluster_config.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "service-account-id"
 ///   display_name = "Service Account"
 /// }
 /// resource "gcp_dataproc_cluster" "mycluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "mycluster"
 ///   region                        = "us-central1"
 ///   graceful_decommission_timeout = "120s"
@@ -466,8 +475,8 @@ import 'cluster_virtual_cluster_config.dart';
 ///       service_account_scopes = ["cloud-platform"]
 ///     }
 ///     initialization_actions = [{
-///       "script"     = "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh"
-///       "timeoutSec" = 500
+///       script      = "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh"
+///       timeout_sec = 500
 ///     }]
 ///   }
 /// }
@@ -688,7 +697,7 @@ import 'cluster_virtual_cluster_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -719,7 +728,7 @@ import 'cluster_virtual_cluster_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -728,6 +737,9 @@ import 'cluster_virtual_cluster_config.dart';
 /// }
 ///
 /// resource "gcp_dataproc_cluster" "accelerated_cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "my-cluster-with-gpu"
 ///   region = "us-central1"
 ///   cluster_config = {
@@ -736,8 +748,8 @@ import 'cluster_virtual_cluster_config.dart';
 ///     }
 ///     master_config = {
 ///       accelerators = [{
-///         "acceleratorType"  = "nvidia-tesla-k80"
-///         "acceleratorCount" = "1"
+///         accelerator_type  = "nvidia-tesla-k80"
+///         accelerator_count = "1"
 ///       }]
 ///     }
 ///   }
@@ -867,7 +879,7 @@ class Cluster extends pulumi.CustomResource {
           'gcp:dataproc/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     clusterConfig = registerOutput<ClusterClusterConfig>('clusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -17,8 +17,6 @@ import 'hive_database_iam_binding_state.dart';
 ///
 /// &gt; **Note:** `gcp.biglake.HiveDatabaseIamBinding` resources **can be** used in conjunction with `gcp.biglake.HiveDatabaseIamMember` resources **only if** they do not grant privilege to the same role.
 ///
-/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
 ///
 /// ## gcp.biglake.HiveDatabaseIamPolicy
 ///
@@ -91,8 +89,8 @@ import 'hive_database_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -125,7 +123,7 @@ import 'hive_database_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -133,18 +131,21 @@ import 'hive_database_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/biglake.editor"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_biglake_hivedatabaseiampolicy" "policy" {
+/// resource "gcp_biglake_hive_database_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = myHiveDatabase.project
 ///   catalog     = myHiveDatabase.catalog
 ///   name        = myHiveDatabase.name
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -261,7 +262,7 @@ import 'hive_database_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -284,7 +285,7 @@ import 'hive_database_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -292,7 +293,10 @@ import 'hive_database_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_biglake_hivedatabaseiambinding" "binding" {
+/// resource "gcp_biglake_hive_database_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = myHiveDatabase.project
 ///   catalog = myHiveDatabase.catalog
 ///   name    = myHiveDatabase.name
@@ -395,7 +399,7 @@ import 'hive_database_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -416,7 +420,7 @@ import 'hive_database_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -424,7 +428,10 @@ import 'hive_database_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_biglake_hivedatabaseiammember" "member" {
+/// resource "gcp_biglake_hive_database_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = myHiveDatabase.project
 ///   catalog = myHiveDatabase.catalog
 ///   name    = myHiveDatabase.name
@@ -498,8 +505,6 @@ import 'hive_database_iam_binding_state.dart';
 ///
 /// &gt; **Note:** `gcp.biglake.HiveDatabaseIamBinding` resources **can be** used in conjunction with `gcp.biglake.HiveDatabaseIamMember` resources **only if** they do not grant privilege to the same role.
 ///
-/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
 ///
 /// ## gcp.biglake.HiveDatabaseIamPolicy
 ///
@@ -572,8 +577,8 @@ import 'hive_database_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -606,7 +611,7 @@ import 'hive_database_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -614,18 +619,21 @@ import 'hive_database_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/biglake.editor"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_biglake_hivedatabaseiampolicy" "policy" {
+/// resource "gcp_biglake_hive_database_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = myHiveDatabase.project
 ///   catalog     = myHiveDatabase.catalog
 ///   name        = myHiveDatabase.name
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -742,7 +750,7 @@ import 'hive_database_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -765,7 +773,7 @@ import 'hive_database_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -773,7 +781,10 @@ import 'hive_database_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_biglake_hivedatabaseiambinding" "binding" {
+/// resource "gcp_biglake_hive_database_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = myHiveDatabase.project
 ///   catalog = myHiveDatabase.catalog
 ///   name    = myHiveDatabase.name
@@ -876,7 +887,7 @@ import 'hive_database_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -897,7 +908,7 @@ import 'hive_database_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -905,7 +916,10 @@ import 'hive_database_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_biglake_hivedatabaseiammember" "member" {
+/// resource "gcp_biglake_hive_database_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = myHiveDatabase.project
 ///   catalog = myHiveDatabase.catalog
 ///   name    = myHiveDatabase.name
@@ -1030,7 +1044,7 @@ class HiveDatabaseIamBinding extends pulumi.CustomResource {
           'gcp:biglake/hiveDatabaseIamBinding:HiveDatabaseIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     catalog = registerOutput<String>('catalog');
     condition = registerOutput<HiveDatabaseIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HiveDatabaseIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -63,7 +63,7 @@ import 'cx_security_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -83,7 +83,7 @@ import 'cx_security_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -91,7 +91,10 @@ import 'cx_security_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_cxsecuritysettings" "basic_security_settings" {
+/// resource "gcp_diagflow_cx_security_settings" "basic_security_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "dialogflowcx-security-settings"
 ///   location              = "global"
 ///   purge_data_types      = []
@@ -342,9 +345,9 @@ import 'cx_security_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -399,13 +402,13 @@ import 'cx_security_settings_state.dart';
 /// 			Location:           pulumi.String("global"),
 /// 			RedactionStrategy:  pulumi.String("REDACT_WITH_SERVICE"),
 /// 			RedactionScope:     pulumi.String("REDACT_DISK_STORAGE"),
-/// 			InspectTemplate:    inspect.ID().ToIDOutput().ToStringOutput(),
-/// 			DeidentifyTemplate: deidentify.ID().ToIDOutput().ToStringOutput(),
+/// 			InspectTemplate:    inspect.ID(),
+/// 			DeidentifyTemplate: deidentify.ID(),
 /// 			PurgeDataTypes: pulumi.StringArray{
 /// 				pulumi.String("DIALOGFLOW_HISTORY"),
 /// 			},
 /// 			AudioExportSettings: &diagflow.CxSecuritySettingsAudioExportSettingsArgs{
-/// 				GcsBucket:            bucket.ID().ToIDOutput().ToStringOutput(),
+/// 				GcsBucket:            bucket.ID(),
 /// 				AudioExportPattern:   pulumi.String("export"),
 /// 				EnableAudioRedaction: pulumi.Bool(true),
 /// 				AudioFormat:          pulumi.String("OGG"),
@@ -423,7 +426,7 @@ import 'cx_security_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -431,25 +434,31 @@ import 'cx_security_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventioninspecttemplate" "inspect" {
+/// resource "gcp_dataloss_prevention_inspect_template" "inspect" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name/locations/global"
 ///   display_name = "dialogflowcx-inspect-template"
 ///   inspect_config = {
 ///     info_types = [{
-///       "name" = "EMAIL_ADDRESS"
+///       name = "EMAIL_ADDRESS"
 ///     }]
 ///   }
 /// }
-/// resource "gcp_dataloss_preventiondeidentifytemplate" "deidentify" {
+/// resource "gcp_dataloss_prevention_deidentify_template" "deidentify" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name/locations/global"
 ///   display_name = "dialogflowcx-deidentify-template"
 ///   deidentify_config = {
 ///     info_type_transformations = {
 ///       transformations = [{
-///         "primitiveTransformation" = {
-///           "replaceConfig" = {
-///             "newValue" = {
-///               "stringValue" = "[REDACTED]"
+///         primitive_transformation = {
+///           replace_config = {
+///             new_value = {
+///               string_value = "[REDACTED]"
 ///             }
 ///           }
 ///         }
@@ -458,17 +467,23 @@ import 'cx_security_settings_state.dart';
 ///   }
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "dialogflowcx-bucket"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_diagflow_cxsecuritysettings" "basic_security_settings" {
+/// resource "gcp_diagflow_cx_security_settings" "basic_security_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "dialogflowcx-security-settings"
 ///   location            = "global"
 ///   redaction_strategy  = "REDACT_WITH_SERVICE"
 ///   redaction_scope     = "REDACT_DISK_STORAGE"
-///   inspect_template    = gcp_dataloss_preventioninspecttemplate.inspect.id
-///   deidentify_template = gcp_dataloss_preventiondeidentifytemplate.deidentify.id
+///   inspect_template    = gcp_dataloss_prevention_inspect_template.inspect.id
+///   deidentify_template = gcp_dataloss_prevention_deidentify_template.deidentify.id
 ///   purge_data_types    = ["DIALOGFLOW_HISTORY"]
 ///   audio_export_settings = {
 ///     gcs_bucket             = gcp_storage_bucket.bucket.id
@@ -711,7 +726,7 @@ class CxSecuritySettings extends pulumi.CustomResource {
           'gcp:diagflow/cxSecuritySettings:CxSecuritySettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     audioExportSettings = registerOutput<CxSecuritySettingsAudioExportSettings?>('audioExportSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxSecuritySettingsAudioExportSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deidentifyTemplate = registerOutput<String?>('deidentifyTemplate');

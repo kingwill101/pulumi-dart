@@ -71,7 +71,7 @@ import 'android_app_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -96,7 +96,7 @@ import 'android_app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -104,7 +104,10 @@ import 'android_app_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_androidapp" "basic" {
+/// resource "gcp_firebase_android_app" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = "my-project-name"
 ///   display_name  = "Display Name Basic"
 ///   package_name  = "android.package.app"
@@ -263,8 +266,8 @@ import 'android_app_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -308,7 +311,7 @@ import 'android_app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -316,23 +319,29 @@ import 'android_app_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_androidapp" "default" {
+/// resource "gcp_firebase_android_app" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = "my-project-name"
 ///   display_name  = "Display Name"
 ///   package_name  = "android.package.app"
 ///   sha1_hashes   = ["2145bdf698b8715039bd0e83f2069bed435ac21c"]
 ///   sha256_hashes = ["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"]
-///   api_key_id    = gcp_projects_apikey.android.uid
+///   api_key_id    = gcp_projects_api_key.android.uid
 /// }
-/// resource "gcp_projects_apikey" "android" {
+/// resource "gcp_projects_api_key" "android" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "api-key"
 ///   display_name = "Display Name"
 ///   project      = "my-project-name"
 ///   restrictions = {
 ///     android_key_restrictions = {
 ///       allowed_applications = [{
-///         "packageName"     = "android.package.app"
-///         "sha1Fingerprint" = "2145bdf698b8715039bd0e83f2069bed435ac21c"
+///         package_name     = "android.package.app"
+///         sha1_fingerprint = "2145bdf698b8715039bd0e83f2069bed435ac21c"
 ///       }]
 ///     }
 ///   }
@@ -483,7 +492,7 @@ class AndroidApp extends pulumi.CustomResource {
           'gcp:firebase/androidApp:AndroidApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     apiKeyId = registerOutput<String>('apiKeyId');
     appId = registerOutput<String>('appId');

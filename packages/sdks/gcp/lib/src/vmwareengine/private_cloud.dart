@@ -118,7 +118,7 @@ import 'private_cloud_vcenter.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -139,7 +139,7 @@ import 'private_cloud_vcenter.dart';
 /// 			Description: pulumi.String("Sample test PC."),
 /// 			NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 /// 				ManagementCidr:      pulumi.String("192.168.30.0/24"),
-/// 				VmwareEngineNetwork: pc_nw.ID().ToIDOutput().ToStringOutput(),
+/// 				VmwareEngineNetwork: pc_nw.ID(),
 /// 			},
 /// 			ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 /// 				ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -159,7 +159,7 @@ import 'private_cloud_vcenter.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -167,7 +167,10 @@ import 'private_cloud_vcenter.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vmwareengine_privatecloud" "vmw-engine-pc" {
+/// resource "gcp_vmwareengine_private_cloud" "vmw-engine-pc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-west1-a"
 ///   name        = "sample-pc"
 ///   description = "Sample test PC."
@@ -178,12 +181,15 @@ import 'private_cloud_vcenter.dart';
 ///   management_cluster = {
 ///     cluster_id = "sample-mgmt-cluster"
 ///     node_type_configs = [{
-///       "nodeTypeId" = "standard-72"
-///       "nodeCount"  = 3
+///       node_type_id = "standard-72"
+///       node_count   = 3
 ///     }]
 ///   }
 /// }
 /// resource "gcp_vmwareengine_network" "pc-nw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "pc-nw"
 ///   location    = "global"
 ///   type        = "STANDARD"
@@ -456,7 +462,7 @@ import 'private_cloud_vcenter.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -478,7 +484,7 @@ import 'private_cloud_vcenter.dart';
 /// 			Type:        pulumi.String("TIME_LIMITED"),
 /// 			NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 /// 				ManagementCidr:      pulumi.String("192.168.30.0/24"),
-/// 				VmwareEngineNetwork: pc_nw.ID().ToIDOutput().ToStringOutput(),
+/// 				VmwareEngineNetwork: pc_nw.ID(),
 /// 			},
 /// 			ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 /// 				ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -525,7 +531,7 @@ import 'private_cloud_vcenter.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -533,7 +539,10 @@ import 'private_cloud_vcenter.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vmwareengine_privatecloud" "vmw-engine-pc" {
+/// resource "gcp_vmwareengine_private_cloud" "vmw-engine-pc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-west1-a"
 ///   name        = "sample-pc"
 ///   description = "Sample test PC."
@@ -545,26 +554,26 @@ import 'private_cloud_vcenter.dart';
 ///   management_cluster = {
 ///     cluster_id = "sample-mgmt-cluster"
 ///     node_type_configs = [{
-///       "nodeTypeId"      = "standard-72"
-///       "nodeCount"       = 1
-///       "customCoreCount" = 32
+///       node_type_id      = "standard-72"
+///       node_count        = 1
+///       custom_core_count = 32
 ///     }]
 ///     autoscaling_settings = {
 ///       autoscaling_policies = [{
-///         "autoscalePolicyId" = "autoscaling-policy"
-///         "nodeTypeId"        = "standard-72"
-///         "scaleOutSize"      = 1
-///         "cpuThresholds" = {
-///           "scaleOut" = 80
-///           "scaleIn"  = 15
+///         autoscale_policy_id = "autoscaling-policy"
+///         node_type_id        = "standard-72"
+///         scale_out_size      = 1
+///         cpu_thresholds = {
+///           scale_out = 80
+///           scale_in  = 15
 ///         }
-///         "consumedMemoryThresholds" = {
-///           "scaleOut" = 75
-///           "scaleIn"  = 20
+///         consumed_memory_thresholds = {
+///           scale_out = 75
+///           scale_in  = 20
 ///         }
-///         "storageThresholds" = {
-///           "scaleOut" = 80
-///           "scaleIn"  = 20
+///         storage_thresholds = {
+///           scale_out = 80
+///           scale_in  = 20
 ///         }
 ///       }]
 ///       min_cluster_node_count = 3
@@ -576,6 +585,9 @@ import 'private_cloud_vcenter.dart';
 ///   send_deletion_delay_hours_if_zero = true
 /// }
 /// resource "gcp_vmwareengine_network" "pc-nw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "pc-nw"
 ///   location    = "global"
 ///   type        = "STANDARD"
@@ -802,7 +814,7 @@ class PrivateCloud extends pulumi.CustomResource {
           'gcp:vmwareengine/privateCloud:PrivateCloud',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');

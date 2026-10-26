@@ -87,7 +87,7 @@ import 'network_firewall_policy_association_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -111,8 +111,8 @@ import 'network_firewall_policy_association_state.dart';
 /// 		_, err = compute.NewNetworkFirewallPolicyAssociation(ctx, "default", &compute.NetworkFirewallPolicyAssociationArgs{
 /// 			Name:             pulumi.String("my-association"),
 /// 			Project:          pulumi.String("my-project-name"),
-/// 			AttachmentTarget: network.ID().ToIDOutput().ToStringOutput(),
-/// 			FirewallPolicy:   policy.ID().ToIDOutput().ToStringOutput(),
+/// 			AttachmentTarget: network.ID(),
+/// 			FirewallPolicy:   policy.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -122,7 +122,7 @@ import 'network_firewall_policy_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -130,20 +130,29 @@ import 'network_firewall_policy_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_networkfirewallpolicy" "policy" {
+/// resource "gcp_compute_network_firewall_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-policy"
 ///   project     = "my-project-name"
 ///   description = "Sample global network firewall policy"
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_compute_networkfirewallpolicyassociation" "default" {
+/// resource "gcp_compute_network_firewall_policy_association" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "my-association"
 ///   project           = "my-project-name"
 ///   attachment_target = gcp_compute_network.network.id
-///   firewall_policy   = gcp_compute_networkfirewallpolicy.policy.id
+///   firewall_policy   = gcp_compute_network_firewall_policy.policy.id
 /// }
 /// ```
 /// ```java
@@ -263,7 +272,7 @@ class NetworkFirewallPolicyAssociation extends pulumi.CustomResource {
           'gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     attachmentTarget = registerOutput<String>('attachmentTarget');
     deletionPolicy = registerOutput<String>('deletionPolicy');

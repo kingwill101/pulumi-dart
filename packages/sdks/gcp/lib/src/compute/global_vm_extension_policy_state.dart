@@ -100,7 +100,7 @@ class GlobalVmExtensionPolicyState {
       instanceSelectors: (() { final guardedValue = map['instanceSelectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GlobalVmExtensionPolicyInstanceSelector>(guardedValue, (value) => GlobalVmExtensionPolicyInstanceSelector.fromMap((value as Map).cast<String, dynamic>()))); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rolloutOperation: (() { final guardedValue = map['rolloutOperation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GlobalVmExtensionPolicyRolloutOperation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scopedResourceStatus: (() { final guardedValue = map['scopedResourceStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

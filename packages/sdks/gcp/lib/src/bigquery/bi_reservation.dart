@@ -55,7 +55,7 @@ import 'bi_reservation_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -73,7 +73,7 @@ import 'bi_reservation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -81,7 +81,10 @@ import 'bi_reservation_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigquery_bireservation" "reservation" {
+/// resource "gcp_bigquery_bi_reservation" "reservation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-west2"
 ///   size     = "3000000000"
 /// }
@@ -177,7 +180,7 @@ class BiReservation extends pulumi.CustomResource {
           'gcp:bigquery/biReservation:BiReservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');

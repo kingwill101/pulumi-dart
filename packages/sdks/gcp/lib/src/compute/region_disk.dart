@@ -32,6 +32,9 @@ import 'region_disk_state.dart';
 ///
 ///
 ///
+/// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `disk_encryption_key.raw_key_wo`, `disk_encryption_key.rsa_encrypted_key_wo`.
+/// Read more about Write-only Arguments.
+///
 /// ## Example Usage
 ///
 /// ### Region Disk Basic
@@ -44,7 +47,7 @@ import 'region_disk_state.dart';
 ///
 /// const disk = new gcp.compute.Disk("disk", {
 ///     name: "my-disk",
-///     image: "debian-cloud/debian-11",
+///     image: "debian-cloud/debian-13",
 ///     size: 50,
 ///     type: "pd-ssd",
 ///     zone: "us-central1-a",
@@ -72,7 +75,7 @@ import 'region_disk_state.dart';
 ///
 /// disk = gcp.compute.Disk("disk",
 ///     name="my-disk",
-///     image="debian-cloud/debian-11",
+///     image="debian-cloud/debian-13",
 ///     size=50,
 ///     type="pd-ssd",
 ///     zone="us-central1-a")
@@ -102,7 +105,7 @@ import 'region_disk_state.dart';
 ///     var disk = new Gcp.Compute.Disk("disk", new()
 ///     {
 ///         Name = "my-disk",
-///         Image = "debian-cloud/debian-11",
+///         Image = "debian-cloud/debian-13",
 ///         Size = 50,
 ///         Type = "pd-ssd",
 ///         Zone = "us-central1-a",
@@ -135,7 +138,7 @@ import 'region_disk_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -143,7 +146,7 @@ import 'region_disk_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
 /// 			Name:  pulumi.String("my-disk"),
-/// 			Image: pulumi.String("debian-cloud/debian-11"),
+/// 			Image: pulumi.String("debian-cloud/debian-13"),
 /// 			Size:  pulumi.Int(50),
 /// 			Type:  pulumi.String("pd-ssd"),
 /// 			Zone:  pulumi.String("us-central1-a"),
@@ -161,7 +164,7 @@ import 'region_disk_state.dart';
 /// 		}
 /// 		_, err = compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
 /// 			Name:                   pulumi.String("my-region-disk"),
-/// 			Snapshot:               snapdisk.ID().ToIDOutput().ToStringOutput(),
+/// 			Snapshot:               snapdisk.ID(),
 /// 			Type:                   pulumi.String("pd-ssd"),
 /// 			Region:                 pulumi.String("us-central1"),
 /// 			PhysicalBlockSizeBytes: pulumi.Int(4096),
@@ -178,7 +181,7 @@ import 'region_disk_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -186,7 +189,10 @@ import 'region_disk_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regiondisk" "regiondisk" {
+/// resource "gcp_compute_region_disk" "regiondisk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "my-region-disk"
 ///   snapshot                  = gcp_compute_snapshot.snapdisk.id
 ///   type                      = "pd-ssd"
@@ -195,13 +201,19 @@ import 'region_disk_state.dart';
 ///   replica_zones             = ["us-central1-a", "us-central1-f"]
 /// }
 /// resource "gcp_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "my-disk"
-///   image = "debian-cloud/debian-11"
+///   image = "debian-cloud/debian-13"
 ///   size  = 50
 ///   type  = "pd-ssd"
 ///   zone  = "us-central1-a"
 /// }
 /// resource "gcp_compute_snapshot" "snapdisk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-snapshot"
 ///   source_disk = gcp_compute_disk.disk.name
 ///   zone        = "us-central1-a"
@@ -234,7 +246,7 @@ import 'region_disk_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var disk = new Disk("disk", DiskArgs.builder()
 ///             .name("my-disk")
-///             .image("debian-cloud/debian-11")
+///             .image("debian-cloud/debian-13")
 ///             .size(50)
 ///             .type("pd-ssd")
 ///             .zone("us-central1-a")
@@ -277,7 +289,593 @@ import 'region_disk_state.dart';
 ///     type: gcp:compute:Disk
 ///     properties:
 ///       name: my-disk
-///       image: debian-cloud/debian-11
+///       image: debian-cloud/debian-13
+///       size: 50
+///       type: pd-ssd
+///       zone: us-central1-a
+///   snapdisk:
+///     type: gcp:compute:Snapshot
+///     properties:
+///       name: my-snapshot
+///       sourceDisk: ${disk.name}
+///       zone: us-central1-a
+/// ```
+///
+/// ### Region Disk Disk Encryption Key Wo
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const disk = new gcp.compute.Disk("disk", {
+///     name: "my-disk",
+///     image: "debian-cloud/debian-13",
+///     size: 50,
+///     type: "pd-ssd",
+///     zone: "us-central1-a",
+/// });
+/// const snapdisk = new gcp.compute.Snapshot("snapdisk", {
+///     name: "my-snapshot",
+///     sourceDisk: disk.name,
+///     zone: "us-central1-a",
+/// });
+/// const regiondisk = new gcp.compute.RegionDisk("regiondisk", {
+///     name: "my-region-disk",
+///     snapshot: snapdisk.id,
+///     type: "pd-ssd",
+///     region: "us-central1",
+///     physicalBlockSizeBytes: 4096,
+///     diskEncryptionKey: {
+///         rawKeyWo: "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=",
+///         rawKeyWoVersion: "1",
+///     },
+///     replicaZones: [
+///         "us-central1-a",
+///         "us-central1-f",
+///     ],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// disk = gcp.compute.Disk("disk",
+///     name="my-disk",
+///     image="debian-cloud/debian-13",
+///     size=50,
+///     type="pd-ssd",
+///     zone="us-central1-a")
+/// snapdisk = gcp.compute.Snapshot("snapdisk",
+///     name="my-snapshot",
+///     source_disk=disk.name,
+///     zone="us-central1-a")
+/// regiondisk = gcp.compute.RegionDisk("regiondisk",
+///     name="my-region-disk",
+///     snapshot=snapdisk.id,
+///     type="pd-ssd",
+///     region="us-central1",
+///     physical_block_size_bytes=4096,
+///     disk_encryption_key={
+///         "raw_key_wo": "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=",
+///         "raw_key_wo_version": "1",
+///     },
+///     replica_zones=[
+///         "us-central1-a",
+///         "us-central1-f",
+///     ])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var disk = new Gcp.Compute.Disk("disk", new()
+///     {
+///         Name = "my-disk",
+///         Image = "debian-cloud/debian-13",
+///         Size = 50,
+///         Type = "pd-ssd",
+///         Zone = "us-central1-a",
+///     });
+///
+///     var snapdisk = new Gcp.Compute.Snapshot("snapdisk", new()
+///     {
+///         Name = "my-snapshot",
+///         SourceDisk = disk.Name,
+///         Zone = "us-central1-a",
+///     });
+///
+///     var regiondisk = new Gcp.Compute.RegionDisk("regiondisk", new()
+///     {
+///         Name = "my-region-disk",
+///         Snapshot = snapdisk.Id,
+///         Type = "pd-ssd",
+///         Region = "us-central1",
+///         PhysicalBlockSizeBytes = 4096,
+///         DiskEncryptionKey = new Gcp.Compute.Inputs.RegionDiskDiskEncryptionKeyArgs
+///         {
+///             RawKeyWo = "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=",
+///             RawKeyWoVersion = "1",
+///         },
+///         ReplicaZones = new[]
+///         {
+///             "us-central1-a",
+///             "us-central1-f",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
+/// 			Name:  pulumi.String("my-disk"),
+/// 			Image: pulumi.String("debian-cloud/debian-13"),
+/// 			Size:  pulumi.Int(50),
+/// 			Type:  pulumi.String("pd-ssd"),
+/// 			Zone:  pulumi.String("us-central1-a"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		snapdisk, err := compute.NewSnapshot(ctx, "snapdisk", &compute.SnapshotArgs{
+/// 			Name:       pulumi.String("my-snapshot"),
+/// 			SourceDisk: disk.Name,
+/// 			Zone:       pulumi.String("us-central1-a"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
+/// 			Name:                   pulumi.String("my-region-disk"),
+/// 			Snapshot:               snapdisk.ID(),
+/// 			Type:                   pulumi.String("pd-ssd"),
+/// 			Region:                 pulumi.String("us-central1"),
+/// 			PhysicalBlockSizeBytes: pulumi.Int(4096),
+/// 			DiskEncryptionKey: &compute.RegionDiskDiskEncryptionKeyArgs{
+/// 				RawKeyWo:        pulumi.String("SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="),
+/// 				RawKeyWoVersion: pulumi.String("1"),
+/// 			},
+/// 			ReplicaZones: pulumi.StringArray{
+/// 				pulumi.String("us-central1-a"),
+/// 				pulumi.String("us-central1-f"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_region_disk" "regiondisk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                      = "my-region-disk"
+///   snapshot                  = gcp_compute_snapshot.snapdisk.id
+///   type                      = "pd-ssd"
+///   region                    = "us-central1"
+///   physical_block_size_bytes = 4096
+///   disk_encryption_key = {
+///     raw_key_wo         = "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="
+///     raw_key_wo_version = 1
+///   }
+///   replica_zones = ["us-central1-a", "us-central1-f"]
+/// }
+/// resource "gcp_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name  = "my-disk"
+///   image = "debian-cloud/debian-13"
+///   size  = 50
+///   type  = "pd-ssd"
+///   zone  = "us-central1-a"
+/// }
+/// resource "gcp_compute_snapshot" "snapdisk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name        = "my-snapshot"
+///   source_disk = gcp_compute_disk.disk.name
+///   zone        = "us-central1-a"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.Disk;
+/// import com.pulumi.gcp.compute.DiskArgs;
+/// import com.pulumi.gcp.compute.Snapshot;
+/// import com.pulumi.gcp.compute.SnapshotArgs;
+/// import com.pulumi.gcp.compute.RegionDisk;
+/// import com.pulumi.gcp.compute.RegionDiskArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionDiskDiskEncryptionKeyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var disk = new Disk("disk", DiskArgs.builder()
+///             .name("my-disk")
+///             .image("debian-cloud/debian-13")
+///             .size(50)
+///             .type("pd-ssd")
+///             .zone("us-central1-a")
+///             .build());
+///
+///         var snapdisk = new Snapshot("snapdisk", SnapshotArgs.builder()
+///             .name("my-snapshot")
+///             .sourceDisk(disk.name())
+///             .zone("us-central1-a")
+///             .build());
+///
+///         var regiondisk = new RegionDisk("regiondisk", RegionDiskArgs.builder()
+///             .name("my-region-disk")
+///             .snapshot(snapdisk.id())
+///             .type("pd-ssd")
+///             .region("us-central1")
+///             .physicalBlockSizeBytes(4096)
+///             .diskEncryptionKey(RegionDiskDiskEncryptionKeyArgs.builder()
+///                 .rawKeyWo("SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=")
+///                 .rawKeyWoVersion("1")
+///                 .build())
+///             .replicaZones(
+///                 "us-central1-a",
+///                 "us-central1-f")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   regiondisk:
+///     type: gcp:compute:RegionDisk
+///     properties:
+///       name: my-region-disk
+///       snapshot: ${snapdisk.id}
+///       type: pd-ssd
+///       region: us-central1
+///       physicalBlockSizeBytes: 4096
+///       diskEncryptionKey:
+///         rawKeyWo: SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=
+///         rawKeyWoVersion: 1
+///       replicaZones:
+///         - us-central1-a
+///         - us-central1-f
+///   disk:
+///     type: gcp:compute:Disk
+///     properties:
+///       name: my-disk
+///       image: debian-cloud/debian-13
+///       size: 50
+///       type: pd-ssd
+///       zone: us-central1-a
+///   snapdisk:
+///     type: gcp:compute:Snapshot
+///     properties:
+///       name: my-snapshot
+///       sourceDisk: ${disk.name}
+///       zone: us-central1-a
+/// ```
+///
+/// ### Region Disk Rsa Encrypted Key Wo
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const disk = new gcp.compute.Disk("disk", {
+///     name: "my-disk",
+///     image: "debian-cloud/debian-13",
+///     size: 50,
+///     type: "pd-ssd",
+///     zone: "us-central1-a",
+/// });
+/// const snapdisk = new gcp.compute.Snapshot("snapdisk", {
+///     name: "my-snapshot",
+///     sourceDisk: disk.name,
+///     zone: "us-central1-a",
+/// });
+/// const regiondisk = new gcp.compute.RegionDisk("regiondisk", {
+///     name: "my-region-disk",
+///     snapshot: snapdisk.id,
+///     type: "pd-ssd",
+///     region: "us-central1",
+///     physicalBlockSizeBytes: 4096,
+///     diskEncryptionKey: {
+///         rsaEncryptedKeyWo: "fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg==",
+///         rsaEncryptedKeyWoVersion: "1",
+///     },
+///     replicaZones: [
+///         "us-central1-a",
+///         "us-central1-f",
+///     ],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// disk = gcp.compute.Disk("disk",
+///     name="my-disk",
+///     image="debian-cloud/debian-13",
+///     size=50,
+///     type="pd-ssd",
+///     zone="us-central1-a")
+/// snapdisk = gcp.compute.Snapshot("snapdisk",
+///     name="my-snapshot",
+///     source_disk=disk.name,
+///     zone="us-central1-a")
+/// regiondisk = gcp.compute.RegionDisk("regiondisk",
+///     name="my-region-disk",
+///     snapshot=snapdisk.id,
+///     type="pd-ssd",
+///     region="us-central1",
+///     physical_block_size_bytes=4096,
+///     disk_encryption_key={
+///         "rsa_encrypted_key_wo": "fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg==",
+///         "rsa_encrypted_key_wo_version": "1",
+///     },
+///     replica_zones=[
+///         "us-central1-a",
+///         "us-central1-f",
+///     ])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var disk = new Gcp.Compute.Disk("disk", new()
+///     {
+///         Name = "my-disk",
+///         Image = "debian-cloud/debian-13",
+///         Size = 50,
+///         Type = "pd-ssd",
+///         Zone = "us-central1-a",
+///     });
+///
+///     var snapdisk = new Gcp.Compute.Snapshot("snapdisk", new()
+///     {
+///         Name = "my-snapshot",
+///         SourceDisk = disk.Name,
+///         Zone = "us-central1-a",
+///     });
+///
+///     var regiondisk = new Gcp.Compute.RegionDisk("regiondisk", new()
+///     {
+///         Name = "my-region-disk",
+///         Snapshot = snapdisk.Id,
+///         Type = "pd-ssd",
+///         Region = "us-central1",
+///         PhysicalBlockSizeBytes = 4096,
+///         DiskEncryptionKey = new Gcp.Compute.Inputs.RegionDiskDiskEncryptionKeyArgs
+///         {
+///             RsaEncryptedKeyWo = "fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg==",
+///             RsaEncryptedKeyWoVersion = "1",
+///         },
+///         ReplicaZones = new[]
+///         {
+///             "us-central1-a",
+///             "us-central1-f",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
+/// 			Name:  pulumi.String("my-disk"),
+/// 			Image: pulumi.String("debian-cloud/debian-13"),
+/// 			Size:  pulumi.Int(50),
+/// 			Type:  pulumi.String("pd-ssd"),
+/// 			Zone:  pulumi.String("us-central1-a"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		snapdisk, err := compute.NewSnapshot(ctx, "snapdisk", &compute.SnapshotArgs{
+/// 			Name:       pulumi.String("my-snapshot"),
+/// 			SourceDisk: disk.Name,
+/// 			Zone:       pulumi.String("us-central1-a"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
+/// 			Name:                   pulumi.String("my-region-disk"),
+/// 			Snapshot:               snapdisk.ID(),
+/// 			Type:                   pulumi.String("pd-ssd"),
+/// 			Region:                 pulumi.String("us-central1"),
+/// 			PhysicalBlockSizeBytes: pulumi.Int(4096),
+/// 			DiskEncryptionKey: &compute.RegionDiskDiskEncryptionKeyArgs{
+/// 				RsaEncryptedKeyWo:        pulumi.String("fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg=="),
+/// 				RsaEncryptedKeyWoVersion: pulumi.String("1"),
+/// 			},
+/// 			ReplicaZones: pulumi.StringArray{
+/// 				pulumi.String("us-central1-a"),
+/// 				pulumi.String("us-central1-f"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_region_disk" "regiondisk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                      = "my-region-disk"
+///   snapshot                  = gcp_compute_snapshot.snapdisk.id
+///   type                      = "pd-ssd"
+///   region                    = "us-central1"
+///   physical_block_size_bytes = 4096
+///   disk_encryption_key = {
+///     rsa_encrypted_key_wo         = "fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg=="
+///     rsa_encrypted_key_wo_version = 1
+///   }
+///   replica_zones = ["us-central1-a", "us-central1-f"]
+/// }
+/// resource "gcp_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name  = "my-disk"
+///   image = "debian-cloud/debian-13"
+///   size  = 50
+///   type  = "pd-ssd"
+///   zone  = "us-central1-a"
+/// }
+/// resource "gcp_compute_snapshot" "snapdisk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name        = "my-snapshot"
+///   source_disk = gcp_compute_disk.disk.name
+///   zone        = "us-central1-a"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.Disk;
+/// import com.pulumi.gcp.compute.DiskArgs;
+/// import com.pulumi.gcp.compute.Snapshot;
+/// import com.pulumi.gcp.compute.SnapshotArgs;
+/// import com.pulumi.gcp.compute.RegionDisk;
+/// import com.pulumi.gcp.compute.RegionDiskArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionDiskDiskEncryptionKeyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var disk = new Disk("disk", DiskArgs.builder()
+///             .name("my-disk")
+///             .image("debian-cloud/debian-13")
+///             .size(50)
+///             .type("pd-ssd")
+///             .zone("us-central1-a")
+///             .build());
+///
+///         var snapdisk = new Snapshot("snapdisk", SnapshotArgs.builder()
+///             .name("my-snapshot")
+///             .sourceDisk(disk.name())
+///             .zone("us-central1-a")
+///             .build());
+///
+///         var regiondisk = new RegionDisk("regiondisk", RegionDiskArgs.builder()
+///             .name("my-region-disk")
+///             .snapshot(snapdisk.id())
+///             .type("pd-ssd")
+///             .region("us-central1")
+///             .physicalBlockSizeBytes(4096)
+///             .diskEncryptionKey(RegionDiskDiskEncryptionKeyArgs.builder()
+///                 .rsaEncryptedKeyWo("fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg==")
+///                 .rsaEncryptedKeyWoVersion("1")
+///                 .build())
+///             .replicaZones(
+///                 "us-central1-a",
+///                 "us-central1-f")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   regiondisk:
+///     type: gcp:compute:RegionDisk
+///     properties:
+///       name: my-region-disk
+///       snapshot: ${snapdisk.id}
+///       type: pd-ssd
+///       region: us-central1
+///       physicalBlockSizeBytes: 4096
+///       diskEncryptionKey:
+///         rsaEncryptedKeyWo: fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg==
+///         rsaEncryptedKeyWoVersion: 1
+///       replicaZones:
+///         - us-central1-a
+///         - us-central1-f
+///   disk:
+///     type: gcp:compute:Disk
+///     properties:
+///       name: my-disk
+///       image: debian-cloud/debian-13
 ///       size: 50
 ///       type: pd-ssd
 ///       zone: us-central1-a
@@ -391,7 +989,7 @@ import 'region_disk_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -416,7 +1014,7 @@ import 'region_disk_state.dart';
 /// 			Region:                 pulumi.String("us-east1"),
 /// 			PhysicalBlockSizeBytes: pulumi.Int(4096),
 /// 			AsyncPrimaryDisk: &compute.RegionDiskAsyncPrimaryDiskArgs{
-/// 				Disk: primary.ID().ToIDOutput().ToStringOutput(),
+/// 				Disk: primary.ID(),
 /// 			},
 /// 			ReplicaZones: pulumi.StringArray{
 /// 				pulumi.String("us-east1-b"),
@@ -431,7 +1029,7 @@ import 'region_disk_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -439,20 +1037,26 @@ import 'region_disk_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regiondisk" "primary" {
+/// resource "gcp_compute_region_disk" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "primary-region-disk"
 ///   type                      = "pd-ssd"
 ///   region                    = "us-central1"
 ///   physical_block_size_bytes = 4096
 ///   replica_zones             = ["us-central1-a", "us-central1-f"]
 /// }
-/// resource "gcp_compute_regiondisk" "secondary" {
+/// resource "gcp_compute_region_disk" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "secondary-region-disk"
 ///   type                      = "pd-ssd"
 ///   region                    = "us-east1"
 ///   physical_block_size_bytes = 4096
 ///   async_primary_disk = {
-///     disk = gcp_compute_regiondisk.primary.id
+///     disk = gcp_compute_region_disk.primary.id
 ///   }
 ///   replica_zones = ["us-east1-b", "us-east1-c"]
 /// }
@@ -634,7 +1238,7 @@ import 'region_disk_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -672,7 +1276,7 @@ import 'region_disk_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -680,7 +1284,10 @@ import 'region_disk_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regiondisk" "regiondisk" {
+/// resource "gcp_compute_region_disk" "regiondisk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "my-region-features-disk"
 ///   type                      = "pd-ssd"
 ///   region                    = "us-central1"
@@ -824,7 +1431,7 @@ import 'region_disk_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -848,7 +1455,7 @@ import 'region_disk_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -856,7 +1463,10 @@ import 'region_disk_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regiondisk" "primary" {
+/// resource "gcp_compute_region_disk" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-region-hyperdisk"
 ///   type          = "hyperdisk-balanced-high-availability"
 ///   region        = "us-central1"
@@ -969,6 +1579,8 @@ class RegionDisk extends pulumi.CustomResource {
   /// If you do not provide an encryption key when creating the disk, then
   /// the disk will be encrypted using an automatically generated key and
   /// you do not need to provide a key to use the disk later.
+  /// ~&gt;**NOTE** Only changing `kmsKeyName` between Cloud KMS keys is done
+  /// in place; other changes to this block recreate the disk.
   /// Structure is documented below.
   late final pulumi.Output<RegionDiskDiskEncryptionKey?> diskEncryptionKey;
   /// The unique identifier for the resource. This identifier is defined by the server.
@@ -1113,7 +1725,7 @@ class RegionDisk extends pulumi.CustomResource {
           'gcp:compute/regionDisk:RegionDisk',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     accessMode = registerOutput<String>('accessMode');

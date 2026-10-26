@@ -61,7 +61,7 @@ import 'ai_metadata_store_vertex_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -80,7 +80,7 @@ import 'ai_metadata_store_vertex_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -88,7 +88,10 @@ import 'ai_metadata_store_vertex_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aimetadatastore" "store" {
+/// resource "gcp_vertex_ai_metadata_store" "store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test-store"
 ///   description = "Store to test the terraform module"
 ///   region      = "us-central1"
@@ -193,7 +196,7 @@ class AiMetadataStore extends pulumi.CustomResource {
           'gcp:vertex/aiMetadataStore:AiMetadataStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

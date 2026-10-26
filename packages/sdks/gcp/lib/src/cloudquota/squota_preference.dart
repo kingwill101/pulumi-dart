@@ -84,7 +84,7 @@ import 'squota_preference_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudquota"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudquota"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -111,7 +111,7 @@ import 'squota_preference_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -119,7 +119,10 @@ import 'squota_preference_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudquota_squotapreference" "preference" {
+/// resource "gcp_cloudquota_s_quota_preference" "preference" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent = "projects/my-project-name"
 ///   name   = "compute_googleapis_com-CPUS-per-project_us-east1"
 ///   dimensions = {
@@ -248,7 +251,7 @@ class SQuotaPreference extends pulumi.CustomResource {
           'gcp:cloudquota/sQuotaPreference:SQuotaPreference',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     contactEmail = registerOutput<String?>('contactEmail');
     createTime = registerOutput<String>('createTime');

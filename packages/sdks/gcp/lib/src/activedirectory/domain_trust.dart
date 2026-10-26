@@ -74,7 +74,7 @@ import 'domain_trust_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/activedirectory"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/activedirectory"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -99,7 +99,7 @@ import 'domain_trust_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -107,7 +107,10 @@ import 'domain_trust_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_activedirectory_domaintrust" "ad-domain-trust" {
+/// resource "gcp_activedirectory_domain_trust" "ad-domain-trust" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain                  = "test-managed-ad.com"
 ///   target_domain_name      = "example-gcp.com"
 ///   target_dns_ip_addresses = ["10.1.0.100"]
@@ -225,7 +228,7 @@ class DomainTrust extends pulumi.CustomResource {
           'gcp:activedirectory/domainTrust:DomainTrust',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['trustHandshakeSecret'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

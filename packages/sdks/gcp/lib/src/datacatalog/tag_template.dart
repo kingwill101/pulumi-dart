@@ -184,7 +184,7 @@ import 'tag_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -240,7 +240,7 @@ import 'tag_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -248,7 +248,10 @@ import 'tag_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datacatalog_tagtemplate" "basic_tag_template" {
+/// resource "gcp_datacatalog_tag_template" "basic_tag_template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tag_template_id = "my_template"
 ///   region          = "us-central1"
 ///   display_name    = "Demo Tag Template"
@@ -273,11 +276,11 @@ import 'tag_template_state.dart';
 ///     type = {
 ///       enum_type = {
 ///         allowed_values = [{
-///           "displayName" = "EMAIL"
+///           display_name = "EMAIL"
 ///           }, {
-///           "displayName" = "SOCIAL SECURITY NUMBER"
+///           display_name = "SOCIAL SECURITY NUMBER"
 ///           }, {
-///           "displayName" = "NONE"
+///           display_name = "NONE"
 ///         }]
 ///       }
 ///     }
@@ -434,7 +437,7 @@ class TagTemplate extends pulumi.CustomResource {
           'gcp:datacatalog/tagTemplate:TagTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');

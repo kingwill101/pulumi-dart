@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering RegionTargetTcpProxy resources.
 class RegionTargetTcpProxyState {
   /// A reference to the BackendService resource. This field is optional when
-  /// the loadBalancingScheme (available in beta) is specified.
+  /// the loadBalancingScheme is specified.
   final pulumi.Input<String?>? backendService;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String?>? creationTimestamp;
@@ -18,7 +18,6 @@ class RegionTargetTcpProxyState {
   final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String?>? description;
-  /// (Optional, Beta)
   /// Specifies the load balancer type. A target TCP proxy created for one type
   /// of load balancer cannot be used with another. For more information, refer
   /// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -56,7 +55,7 @@ class RegionTargetTcpProxyState {
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
-  /// [loadBalancingScheme] (Optional, Beta)
+  /// [loadBalancingScheme] Specifies the load balancer type. A target TCP proxy created for one type
   /// [name] Name of the resource. Provided by the client when the resource is
   /// [project] The ID of the project in which the resource belongs.
   /// [proxyBind] This field only applies when the forwarding rule that references
@@ -107,7 +106,7 @@ class RegionTargetTcpProxyState {
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       proxyBind: (() { final guardedValue = map['proxyBind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       proxyHeader: (() { final guardedValue = map['proxyHeader']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      proxyId: (() { final guardedValue = map['proxyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      proxyId: (() { final guardedValue = map['proxyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

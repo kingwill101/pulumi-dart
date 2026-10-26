@@ -19,7 +19,7 @@ import 'disk_resource_policy_attachment_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const myImage = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const ssd = new gcp.compute.Disk("ssd", {
@@ -51,7 +51,7 @@ import 'disk_resource_policy_attachment_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// my_image = gcp.compute.get_image(family="debian-11",
+/// my_image = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// ssd = gcp.compute.Disk("ssd",
 ///     name="my-disk",
@@ -85,7 +85,7 @@ import 'disk_resource_policy_attachment_state.dart';
 /// {
 ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -128,14 +128,14 @@ import 'disk_resource_policy_attachment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -179,7 +179,7 @@ import 'disk_resource_policy_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -187,24 +187,33 @@ import 'disk_resource_policy_attachment_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "myImage" {
-///   family  = "debian-11"
+/// data "gcp_compute_image" "myImage" {
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
-/// resource "gcp_compute_diskresourcepolicyattachment" "attachment" {
-///   name = gcp_compute_resourcepolicy.policy.name
+/// resource "gcp_compute_disk_resource_policy_attachment" "attachment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name = gcp_compute_resource_policy.policy.name
 ///   disk = gcp_compute_disk.ssd.name
 ///   zone = "us-central1-a"
 /// }
 /// resource "gcp_compute_disk" "ssd" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "my-disk"
-///   image = data.gcp_compute_getimage.myImage.self_link
+///   image = data.gcp_compute_image.myImage.self_link
 ///   size  = 50
 ///   type  = "pd-ssd"
 ///   zone  = "us-central1-a"
 /// }
-/// resource "gcp_compute_resourcepolicy" "policy" {
+/// resource "gcp_compute_resource_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "my-resource-policy"
 ///   region = "us-central1"
 ///   snapshot_schedule_policy = {
@@ -248,7 +257,7 @@ import 'disk_resource_policy_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -313,7 +322,7 @@ import 'disk_resource_policy_attachment_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -367,7 +376,7 @@ class DiskResourcePolicyAttachment extends pulumi.CustomResource {
           'gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disk = registerOutput<String>('disk');

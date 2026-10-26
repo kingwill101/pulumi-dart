@@ -106,8 +106,8 @@ import 'budget_threshold_rule.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/billing"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -142,7 +142,7 @@ import 'budget_threshold_rule.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -150,12 +150,15 @@ import 'budget_threshold_rule.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getbillingaccount" "account" {
+/// data "gcp_organizations_billing_account" "account" {
 ///   billing_account = "000000-0000000-0000000-000000"
 /// }
 ///
 /// resource "gcp_billing_budget" "budget" {
-///   billing_account = data.gcp_organizations_getbillingaccount.account.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   billing_account = data.gcp_organizations_billing_account.account.id
 ///   display_name    = "Example Billing Budget"
 ///   amount = {
 ///     specified_amount = {
@@ -326,8 +329,8 @@ import 'budget_threshold_rule.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/billing"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -368,7 +371,7 @@ import 'budget_threshold_rule.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -376,17 +379,20 @@ import 'budget_threshold_rule.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getbillingaccount" "account" {
+/// data "gcp_organizations_billing_account" "account" {
 ///   billing_account = "000000-0000000-0000000-000000"
 /// }
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_billing_budget" "budget" {
-///   billing_account = data.gcp_organizations_getbillingaccount.account.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   billing_account = data.gcp_organizations_billing_account.account.id
 ///   display_name    = "Example Billing Budget"
 ///   budget_filter = {
-///     projects = ["projects/${data.gcp_organizations_getproject.project.number}"]
+///     projects = ["projects/${data.gcp_organizations_project.project.number}"]
 ///   }
 ///   amount = {
 ///     last_period_amount = true
@@ -618,8 +624,8 @@ import 'budget_threshold_rule.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/billing"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -678,7 +684,7 @@ import 'budget_threshold_rule.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -686,17 +692,20 @@ import 'budget_threshold_rule.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getbillingaccount" "account" {
+/// data "gcp_organizations_billing_account" "account" {
 ///   billing_account = "000000-0000000-0000000-000000"
 /// }
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_billing_budget" "budget" {
-///   billing_account = data.gcp_organizations_getbillingaccount.account.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   billing_account = data.gcp_organizations_billing_account.account.id
 ///   display_name    = "Example Billing Budget"
 ///   budget_filter = {
-///     projects               = ["projects/${data.gcp_organizations_getproject.project.number}"]
+///     projects               = ["projects/${data.gcp_organizations_project.project.number}"]
 ///     credit_types_treatment = "INCLUDE_SPECIFIED_CREDITS"
 ///     services               = ["services/24E6-581D-38E5"]
 ///     credit_types           = ["PROMOTION", "FREE_TIER"]
@@ -979,9 +988,9 @@ import 'budget_threshold_rule.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/billing"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1032,7 +1041,7 @@ import 'budget_threshold_rule.dart';
 /// 			},
 /// 			AllUpdatesRule: &billing.BudgetAllUpdatesRuleArgs{
 /// 				MonitoringNotificationChannels: pulumi.StringArray{
-/// 					notificationChannel.ID().ToIDOutput().ToStringOutput(),
+/// 					notificationChannel.ID(),
 /// 				},
 /// 				DisableDefaultIamRecipients: pulumi.Bool(true),
 /// 			},
@@ -1045,7 +1054,7 @@ import 'budget_threshold_rule.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1053,17 +1062,20 @@ import 'budget_threshold_rule.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getbillingaccount" "account" {
+/// data "gcp_organizations_billing_account" "account" {
 ///   billing_account = "000000-0000000-0000000-000000"
 /// }
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_billing_budget" "budget" {
-///   billing_account = data.gcp_organizations_getbillingaccount.account.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   billing_account = data.gcp_organizations_billing_account.account.id
 ///   display_name    = "Example Billing Budget"
 ///   budget_filter = {
-///     projects = ["projects/${data.gcp_organizations_getproject.project.number}"]
+///     projects = ["projects/${data.gcp_organizations_project.project.number}"]
 ///   }
 ///   amount = {
 ///     specified_amount = {
@@ -1079,11 +1091,14 @@ import 'budget_threshold_rule.dart';
 ///     spend_basis       = "FORECASTED_SPEND"
 ///   }
 ///   all_updates_rule = {
-///     monitoring_notification_channels = [gcp_monitoring_notificationchannel.notification_channel.id]
+///     monitoring_notification_channels = [gcp_monitoring_notification_channel.notification_channel.id]
 ///     disable_default_iam_recipients   = true
 ///   }
 /// }
-/// resource "gcp_monitoring_notificationchannel" "notification_channel" {
+/// resource "gcp_monitoring_notification_channel" "notification_channel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Example Notification Channel"
 ///   type         = "email"
 ///   labels = {
@@ -1306,8 +1321,8 @@ import 'budget_threshold_rule.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/billing"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1350,7 +1365,7 @@ import 'budget_threshold_rule.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1358,17 +1373,20 @@ import 'budget_threshold_rule.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getbillingaccount" "account" {
+/// data "gcp_organizations_billing_account" "account" {
 ///   billing_account = "000000-0000000-0000000-000000"
 /// }
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_billing_budget" "budget" {
-///   billing_account = data.gcp_organizations_getbillingaccount.account.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   billing_account = data.gcp_organizations_billing_account.account.id
 ///   display_name    = "Example Billing Budget"
 ///   budget_filter = {
-///     projects = ["projects/${data.gcp_organizations_getproject.project.number}"]
+///     projects = ["projects/${data.gcp_organizations_project.project.number}"]
 ///   }
 ///   amount = {
 ///     specified_amount = {
@@ -1629,8 +1647,8 @@ import 'budget_threshold_rule.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/billing"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1693,7 +1711,7 @@ import 'budget_threshold_rule.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1701,17 +1719,20 @@ import 'budget_threshold_rule.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getbillingaccount" "account" {
+/// data "gcp_organizations_billing_account" "account" {
 ///   billing_account = "000000-0000000-0000000-000000"
 /// }
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_billing_budget" "budget" {
-///   billing_account = data.gcp_organizations_getbillingaccount.account.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   billing_account = data.gcp_organizations_billing_account.account.id
 ///   display_name    = "Example Billing Budget"
 ///   budget_filter = {
-///     projects               = ["projects/${data.gcp_organizations_getproject.project.number}"]
+///     projects               = ["projects/${data.gcp_organizations_project.project.number}"]
 ///     credit_types_treatment = "EXCLUDE_ALL_CREDITS"
 ///     services               = ["services/24E6-581D-38E5"]
 ///     custom_period = {
@@ -1926,7 +1947,7 @@ class Budget extends pulumi.CustomResource {
           'gcp:billing/budget:Budget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     allUpdatesRule = registerOutput<BudgetAllUpdatesRule?>('allUpdatesRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetAllUpdatesRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     amount = registerOutput<BudgetAmount>('amount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BudgetAmount.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -27,8 +27,8 @@ class GetExascaleDbStorageVaultPropertyExascaleDbStorageDetail {
 
   factory GetExascaleDbStorageVaultPropertyExascaleDbStorageDetail.fromMap(Map<String, dynamic> map) {
     return GetExascaleDbStorageVaultPropertyExascaleDbStorageDetail(
-      availableSizeGbs: pulumi.Input.fromValue((map['availableSizeGbs'] as num).toInt()),
-      totalSizeGbs: pulumi.Input.fromValue((map['totalSizeGbs'] as num).toInt()),
+      availableSizeGbs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['availableSizeGbs'])),
+      totalSizeGbs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalSizeGbs'])),
     );
   }
 }

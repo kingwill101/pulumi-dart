@@ -303,7 +303,7 @@ import 'bare_metal_cluster_validation_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkeonprem"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkeonprem"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -398,7 +398,7 @@ import 'bare_metal_cluster_validation_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -406,7 +406,10 @@ import 'bare_metal_cluster_validation_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gkeonprem_baremetalcluster" "cluster-basic" {
+/// resource "gcp_gkeonprem_bare_metal_cluster" "cluster-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "my-cluster"
 ///   location                 = "us-west1"
 ///   admin_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
@@ -423,8 +426,8 @@ import 'bare_metal_cluster_validation_check.dart';
 ///         labels           = {}
 ///         operating_system = "LINUX"
 ///         node_configs = [{
-///           "labels" = {}
-///           "nodeIp" = "10.200.0.9"
+///           labels  = {}
+///           node_ip = "10.200.0.9"
 ///         }]
 ///       }
 ///     }
@@ -439,10 +442,10 @@ import 'bare_metal_cluster_validation_check.dart';
 ///     }
 ///     metal_lb_config = {
 ///       address_pools = [{
-///         "pool"          = "pool1"
-///         "addresses"     = ["10.200.0.14/32", "10.200.0.15/32", "10.200.0.16/32", "10.200.0.17/32", "10.200.0.18/32", "fd00:1::f/128", "fd00:1::10/128", "fd00:1::11/128", "fd00:1::12/128"]
-///         "avoidBuggyIps" = true
-///         "manualAssign"  = true
+///         pool            = "pool1"
+///         addresses       = ["10.200.0.14/32", "10.200.0.15/32", "10.200.0.16/32", "10.200.0.17/32", "10.200.0.18/32", "fd00:1::f/128", "fd00:1::10/128", "fd00:1::11/128", "fd00:1::12/128"]
+///         avoid_buggy_ips = true
+///         manual_assign   = true
 ///       }]
 ///     }
 ///   }
@@ -462,7 +465,7 @@ import 'bare_metal_cluster_validation_check.dart';
 ///   security_config = {
 ///     authorization = {
 ///       admin_users = [{
-///         "username" = "admin@hashicorptest.com"
+///         username = "admin@hashicorptest.com"
 ///       }]
 ///     }
 ///   }
@@ -888,7 +891,7 @@ import 'bare_metal_cluster_validation_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkeonprem"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkeonprem"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -972,7 +975,7 @@ import 'bare_metal_cluster_validation_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -980,7 +983,10 @@ import 'bare_metal_cluster_validation_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gkeonprem_baremetalcluster" "cluster-manuallb" {
+/// resource "gcp_gkeonprem_bare_metal_cluster" "cluster-manuallb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "cluster-manuallb"
 ///   location                 = "us-west1"
 ///   admin_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
@@ -997,8 +1003,8 @@ import 'bare_metal_cluster_validation_check.dart';
 ///         labels           = {}
 ///         operating_system = "LINUX"
 ///         node_configs = [{
-///           "labels" = {}
-///           "nodeIp" = "10.200.0.9"
+///           labels  = {}
+///           node_ip = "10.200.0.9"
 ///         }]
 ///       }
 ///     }
@@ -1031,7 +1037,7 @@ import 'bare_metal_cluster_validation_check.dart';
 ///   security_config = {
 ///     authorization = {
 ///       admin_users = [{
-///         "username" = "admin@hashicorptest.com"
+///         username = "admin@hashicorptest.com"
 ///       }]
 ///     }
 ///   }
@@ -1697,7 +1703,7 @@ import 'bare_metal_cluster_validation_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkeonprem"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkeonprem"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1868,7 +1874,7 @@ import 'bare_metal_cluster_validation_check.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1876,7 +1882,10 @@ import 'bare_metal_cluster_validation_check.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gkeonprem_baremetalcluster" "cluster-bgplb" {
+/// resource "gcp_gkeonprem_bare_metal_cluster" "cluster-bgplb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "cluster-bgplb"
 ///   location                 = "us-west1"
 ///   admin_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
@@ -1900,19 +1909,19 @@ import 'bare_metal_cluster_validation_check.dart';
 ///         labels           = {}
 ///         operating_system = "LINUX"
 ///         node_configs = [{
-///           "labels" = {}
-///           "nodeIp" = "10.200.0.9"
+///           labels  = {}
+///           node_ip = "10.200.0.9"
 ///         }]
 ///         taints = [{
-///           "key"    = "test-key"
-///           "value"  = "test-value"
-///           "effect" = "NO_EXECUTE"
+///           key    = "test-key"
+///           value  = "test-value"
+///           effect = "NO_EXECUTE"
 ///         }]
 ///       }
 ///     }
 ///     api_server_args = [{
-///       "argument" = "test-argument"
-///       "value"    = "test-value"
+///       argument = "test-argument"
+///       value    = "test-value"
 ///     }]
 ///   }
 ///   load_balancer = {
@@ -1926,26 +1935,26 @@ import 'bare_metal_cluster_validation_check.dart';
 ///     bgp_lb_config = {
 ///       asn = 123456
 ///       bgp_peer_configs = [{
-///         "asn"               = 123457
-///         "ipAddress"         = "10.0.0.1"
-///         "controlPlaneNodes" = ["test-node"]
+///         asn                 = 123457
+///         ip_address          = "10.0.0.1"
+///         control_plane_nodes = ["test-node"]
 ///       }]
 ///       address_pools = [{
-///         "pool"      = "pool1"
-///         "addresses" = ["10.200.0.14/32", "10.200.0.15/32", "10.200.0.16/32", "10.200.0.17/32", "10.200.0.18/32", "fd00:1::f/128", "fd00:1::10/128", "fd00:1::11/128", "fd00:1::12/128"]
+///         pool      = "pool1"
+///         addresses = ["10.200.0.14/32", "10.200.0.15/32", "10.200.0.16/32", "10.200.0.17/32", "10.200.0.18/32", "fd00:1::f/128", "fd00:1::10/128", "fd00:1::11/128", "fd00:1::12/128"]
 ///       }]
 ///       load_balancer_node_pool_config = {
 ///         node_pool_config = {
 ///           labels           = {}
 ///           operating_system = "LINUX"
 ///           node_configs = [{
-///             "labels" = {}
-///             "nodeIp" = "10.200.0.9"
+///             labels  = {}
+///             node_ip = "10.200.0.9"
 ///           }]
 ///           taints = [{
-///             "key"    = "test-key"
-///             "value"  = "test-value"
-///             "effect" = "NO_EXECUTE"
+///             key    = "test-key"
+///             value  = "test-value"
+///             effect = "NO_EXECUTE"
 ///           }]
 ///           kubelet_config = {
 ///             registry_pull_qps              = 10
@@ -1972,7 +1981,7 @@ import 'bare_metal_cluster_validation_check.dart';
 ///   security_config = {
 ///     authorization = {
 ///       admin_users = [{
-///         "username" = "admin@hashicorptest.com"
+///         username = "admin@hashicorptest.com"
 ///       }]
 ///     }
 ///   }
@@ -2449,7 +2458,7 @@ class BareMetalCluster extends pulumi.CustomResource {
           'gcp:gkeonprem/bareMetalCluster:BareMetalCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     adminClusterMembership = registerOutput<String>('adminClusterMembership');
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

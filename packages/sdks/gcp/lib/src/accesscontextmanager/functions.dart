@@ -60,7 +60,7 @@ import 'get_supported_services_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -86,7 +86,7 @@ import 'get_supported_services_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -94,10 +94,10 @@ import 'get_supported_services_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_accesscontextmanager_getaccesspolicy" "policy-org" {
+/// data "gcp_accesscontextmanager_access_policy" "policy-org" {
 ///   parent = "organizations/1234567"
 /// }
-/// data "gcp_accesscontextmanager_getaccesspolicy" "policy-scoped" {
+/// data "gcp_accesscontextmanager_access_policy" "policy-scoped" {
 ///   parent = "organizations/1234567"
 ///   scopes = ["projects/1234567"]
 /// }
@@ -215,7 +215,7 @@ pulumi.Output<GetAccessPolicyResult> getAccessPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -232,7 +232,7 @@ pulumi.Output<GetAccessPolicyResult> getAccessPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -240,7 +240,7 @@ pulumi.Output<GetAccessPolicyResult> getAccessPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_accesscontextmanager_getaccesspolicyiampolicy" "policy" {
+/// data "gcp_accesscontextmanager_access_policy_iam_policy" "policy" {
 ///   name = access-policy.name
 /// }
 /// ```
@@ -344,7 +344,7 @@ pulumi.Output<GetAccessPolicyIamPolicyResult> getAccessPolicyIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -361,7 +361,7 @@ pulumi.Output<GetAccessPolicyIamPolicyResult> getAccessPolicyIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -369,7 +369,7 @@ pulumi.Output<GetAccessPolicyIamPolicyResult> getAccessPolicyIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_accesscontextmanager_getsupportedservice" "storage" {
+/// data "gcp_accesscontextmanager_supported_service" "storage" {
 ///   service_name = "storage.googleapis.com"
 /// }
 /// ```
@@ -453,7 +453,7 @@ pulumi.Output<GetAccessPolicyIamPolicyResult> getAccessPolicyIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -471,7 +471,7 @@ pulumi.Output<GetAccessPolicyIamPolicyResult> getAccessPolicyIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -479,12 +479,12 @@ pulumi.Output<GetAccessPolicyIamPolicyResult> getAccessPolicyIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_accesscontextmanager_getsupportedservice" "storage" {
+/// data "gcp_accesscontextmanager_supported_service" "storage" {
 ///   service_name = "storage.googleapis.com"
 /// }
 ///
 /// output "storageMethods" {
-///   value = data.gcp_accesscontextmanager_getsupportedservice.storage.supported_methods
+///   value = data.gcp_accesscontextmanager_supported_service.storage.supported_methods
 /// }
 /// ```
 /// ```java
@@ -585,7 +585,7 @@ pulumi.Output<GetSupportedServiceResult> getSupportedServiceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -600,7 +600,7 @@ pulumi.Output<GetSupportedServiceResult> getSupportedServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -608,7 +608,7 @@ pulumi.Output<GetSupportedServiceResult> getSupportedServiceOutput(
 ///   }
 /// }
 ///
-/// data "gcp_accesscontextmanager_getsupportedservices" "all" {
+/// data "gcp_accesscontextmanager_supported_services" "all" {
 /// }
 /// ```
 /// ```java
@@ -690,7 +690,7 @@ pulumi.Output<GetSupportedServiceResult> getSupportedServiceOutput(
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -698,11 +698,11 @@ pulumi.Output<GetSupportedServiceResult> getSupportedServiceOutput(
 ///   }
 /// }
 ///
-/// data "gcp_accesscontextmanager_getsupportedservices" "all" {
+/// data "gcp_accesscontextmanager_supported_services" "all" {
 /// }
 ///
 /// locals {
-///   gaRestrictedServices = [for s in data.gcp_accesscontextmanager_getsupportedservices.all.supported_services : s.name if s.serviceSupportStage == "GA" && s.availableOnRestrictedVip]
+///   gaRestrictedServices = [for s in data.gcp_accesscontextmanager_supported_services.all.supported_services : s.name if s.serviceSupportStage == "GA" && s.availableOnRestrictedVip]
 /// }
 /// output "gaRestrictedServices" {
 ///   value = local.gaRestrictedServices

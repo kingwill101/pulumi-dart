@@ -215,8 +215,8 @@ import 'edge_cache_service_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -296,7 +296,7 @@ import 'edge_cache_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -305,11 +305,17 @@ import 'edge_cache_service_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "dest" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-bucket"
 ///   location      = "US"
 ///   force_destroy = true
 /// }
-/// resource "gcp_networkservices_edgecacheorigin" "instance" {
+/// resource "gcp_networkservices_edge_cache_origin" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "my-origin"
 ///   origin_address = gcp_storage_bucket.dest.url
 ///   description    = "The default bucket for media edge test"
@@ -318,34 +324,37 @@ import 'edge_cache_service_state.dart';
 ///     connect_timeout = "10s"
 ///   }
 /// }
-/// resource "gcp_networkservices_edgecacheservice" "instance" {
+/// resource "gcp_networkservices_edge_cache_service" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-service"
 ///   description = "some description"
 ///   routing = {
 ///     host_rules = [{
-///       "description" = "host rule description"
-///       "hosts"       = ["sslcert.tf-test.club"]
-///       "pathMatcher" = "routes"
+///       description  = "host rule description"
+///       hosts        = ["sslcert.tf-test.club"]
+///       path_matcher = "routes"
 ///     }]
 ///     path_matchers = [{
-///       "name" = "routes"
-///       "routeRules" = [{
-///         "description" = "a route rule to match against"
-///         "priority"    = 1
-///         "matchRules" = [{
-///           "prefixMatch" = "/"
+///       name = "routes"
+///       route_rules = [{
+///         description = "a route rule to match against"
+///         priority    = 1
+///         match_rules = [{
+///           prefix_match = "/"
 ///         }]
-///         "origin" = gcp_networkservices_edgecacheorigin.instance.name
-///         "routeAction" = {
-///           "cdnPolicy" = {
-///             "cacheMode"  = "CACHE_ALL_STATIC"
-///             "defaultTtl" = "3600s"
+///         origin = gcp_networkservices_edge_cache_origin.instance.name
+///         route_action = {
+///           cdn_policy = {
+///             cache_mode  = "CACHE_ALL_STATIC"
+///             default_ttl = "3600s"
 ///           }
 ///         }
-///         "headerAction" = {
-///           "responseHeaderToAdds" = [{
-///             "headerName"  = "x-cache-status"
-///             "headerValue" = "{cdn_cache_status}"
+///         header_action = {
+///           response_header_to_adds = [{
+///             header_name  = "x-cache-status"
+///             header_value = "{cdn_cache_status}"
 ///           }]
 ///         }
 ///       }]
@@ -1197,8 +1206,8 @@ import 'edge_cache_service_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1449,7 +1458,7 @@ import 'edge_cache_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1458,11 +1467,17 @@ import 'edge_cache_service_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "dest" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-bucket"
 ///   location      = "US"
 ///   force_destroy = true
 /// }
-/// resource "gcp_networkservices_edgecacheorigin" "google" {
+/// resource "gcp_networkservices_edge_cache_origin" "google" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "origin-google"
 ///   origin_address = "google.com"
 ///   description    = "The default bucket for media edge test"
@@ -1471,7 +1486,10 @@ import 'edge_cache_service_state.dart';
 ///     connect_timeout = "10s"
 ///   }
 /// }
-/// resource "gcp_networkservices_edgecacheorigin" "instance" {
+/// resource "gcp_networkservices_edge_cache_origin" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "my-origin"
 ///   origin_address = gcp_storage_bucket.dest.url
 ///   description    = "The default bucket for media edge test"
@@ -1480,7 +1498,10 @@ import 'edge_cache_service_state.dart';
 ///     connect_timeout = "10s"
 ///   }
 /// }
-/// resource "gcp_networkservices_edgecacheservice" "instance" {
+/// resource "gcp_networkservices_edge_cache_service" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-service"
 ///   description   = "some description"
 ///   disable_quic  = true
@@ -1490,131 +1511,131 @@ import 'edge_cache_service_state.dart';
 ///   }
 ///   routing = {
 ///     host_rules = [{
-///       "description" = "host rule description"
-///       "hosts"       = ["sslcert.tf-test.club"]
-///       "pathMatcher" = "routes"
+///       description  = "host rule description"
+///       hosts        = ["sslcert.tf-test.club"]
+///       path_matcher = "routes"
 ///       }, {
-///       "description" = "host rule2"
-///       "hosts"       = ["sslcert.tf-test2.club"]
-///       "pathMatcher" = "routes"
+///       description  = "host rule2"
+///       hosts        = ["sslcert.tf-test2.club"]
+///       path_matcher = "routes"
 ///       }, {
-///       "description" = "host rule3"
-///       "hosts"       = ["sslcert.tf-test3.club"]
-///       "pathMatcher" = "routesAdvanced"
+///       description  = "host rule3"
+///       hosts        = ["sslcert.tf-test3.club"]
+///       path_matcher = "routesAdvanced"
 ///     }]
 ///     path_matchers = [{
-///       "name" = "routes"
-///       "routeRules" = [{
-///         "description" = "a route rule to match against"
-///         "priority"    = 1
-///         "matchRules" = [{
-///           "prefixMatch" = "/"
+///       name = "routes"
+///       route_rules = [{
+///         description = "a route rule to match against"
+///         priority    = 1
+///         match_rules = [{
+///           prefix_match = "/"
 ///         }]
-///         "origin" = gcp_networkservices_edgecacheorigin.instance.name
-///         "routeAction" = {
-///           "cdnPolicy" = {
-///             "cacheMode"  = "CACHE_ALL_STATIC"
-///             "defaultTtl" = "3600s"
+///         origin = gcp_networkservices_edge_cache_origin.instance.name
+///         route_action = {
+///           cdn_policy = {
+///             cache_mode  = "CACHE_ALL_STATIC"
+///             default_ttl = "3600s"
 ///           }
 ///         }
-///         "headerAction" = {
-///           "responseHeaderToAdds" = [{
-///             "headerName"  = "x-cache-status"
-///             "headerValue" = "{cdn_cache_status}"
+///         header_action = {
+///           response_header_to_adds = [{
+///             header_name  = "x-cache-status"
+///             header_value = "{cdn_cache_status}"
 ///           }]
 ///         }
 ///       }]
 ///       }, {
-///       "name"        = "routesAdvanced"
-///       "description" = "an advanced ruleset"
-///       "routeRules" = [{
-///         "description" = "an advanced route rule to match against"
-///         "priority"    = 1
-///         "matchRules" = [{
-///           "prefixMatch" = "/potato/"
-///           "queryParameterMatches" = [{
-///             "name"         = "debug"
-///             "presentMatch" = true
+///       name        = "routesAdvanced"
+///       description = "an advanced ruleset"
+///       route_rules = [{
+///         description = "an advanced route rule to match against"
+///         priority    = 1
+///         match_rules = [{
+///           prefix_match = "/potato/"
+///           query_parameter_matches = [{
+///             name          = "debug"
+///             present_match = true
 ///             }, {
-///             "name"       = "state"
-///             "exactMatch" = "debug"
+///             name        = "state"
+///             exact_match = "debug"
 ///           }]
 ///           }, {
-///           "fullPathMatch" = "/apple"
+///           full_path_match = "/apple"
 ///         }]
-///         "headerAction" = {
-///           "requestHeaderToAdds" = [{
-///             "headerName"  = "debug"
-///             "headerValue" = "true"
-///             "replace"     = true
+///         header_action = {
+///           request_header_to_adds = [{
+///             header_name  = "debug"
+///             header_value = "true"
+///             replace      = true
 ///             }, {
-///             "headerName"  = "potato"
-///             "headerValue" = "plant"
+///             header_name  = "potato"
+///             header_value = "plant"
 ///           }]
-///           "responseHeaderToAdds" = [{
-///             "headerName"  = "potato"
-///             "headerValue" = "plant"
-///             "replace"     = true
+///           response_header_to_adds = [{
+///             header_name  = "potato"
+///             header_value = "plant"
+///             replace      = true
 ///           }]
-///           "requestHeaderToRemoves" = [{
-///             "headerName" = "prod"
+///           request_header_to_removes = [{
+///             header_name = "prod"
 ///           }]
-///           "responseHeaderToRemoves" = [{
-///             "headerName" = "prod"
+///           response_header_to_removes = [{
+///             header_name = "prod"
 ///           }]
 ///         }
-///         "origin" = gcp_networkservices_edgecacheorigin.instance.name
-///         "routeAction" = {
-///           "cdnPolicy" = {
-///             "cacheMode"  = "CACHE_ALL_STATIC"
-///             "defaultTtl" = "3800s"
-///             "clientTtl"  = "3600s"
-///             "maxTtl"     = "9000s"
-///             "cacheKeyPolicy" = {
-///               "includeProtocol"         = true
-///               "excludeHost"             = true
-///               "includedQueryParameters" = ["apple", "dev", "santa", "claus"]
-///               "includedHeaderNames"     = ["banana"]
-///               "includedCookieNames"     = ["orange"]
+///         origin = gcp_networkservices_edge_cache_origin.instance.name
+///         route_action = {
+///           cdn_policy = {
+///             cache_mode  = "CACHE_ALL_STATIC"
+///             default_ttl = "3800s"
+///             client_ttl  = "3600s"
+///             max_ttl     = "9000s"
+///             cache_key_policy = {
+///               include_protocol          = true
+///               exclude_host              = true
+///               included_query_parameters = ["apple", "dev", "santa", "claus"]
+///               included_header_names     = ["banana"]
+///               included_cookie_names     = ["orange"]
 ///             }
-///             "negativeCaching"   = true
-///             "signedRequestMode" = "DISABLED"
-///             "negativeCachingPolicy" = {
+///             negative_caching    = true
+///             signed_request_mode = "DISABLED"
+///             negative_caching_policy = {
 ///               "500" = "3000s"
 ///             }
 ///           }
-///           "urlRewrite" = {
-///             "pathPrefixRewrite" = "/dev"
-///             "hostRewrite"       = "dev.club"
+///           url_rewrite = {
+///             path_prefix_rewrite = "/dev"
+///             host_rewrite        = "dev.club"
 ///           }
-///           "corsPolicy" = {
-///             "maxAge"           = "2500s"
-///             "allowCredentials" = true
-///             "allowOrigins"     = ["*"]
-///             "allowMethods"     = ["GET"]
-///             "allowHeaders"     = ["dev"]
-///             "exposeHeaders"    = ["prod"]
+///           cors_policy = {
+///             max_age           = "2500s"
+///             allow_credentials = true
+///             allow_origins     = ["*"]
+///             allow_methods     = ["GET"]
+///             allow_headers     = ["dev"]
+///             expose_headers    = ["prod"]
 ///           }
 ///         }
 ///         }, {
-///         "description" = "a second route rule to match against"
-///         "priority"    = 2
-///         "matchRules" = [{
-///           "fullPathMatch" = "/yay"
+///         description = "a second route rule to match against"
+///         priority    = 2
+///         match_rules = [{
+///           full_path_match = "/yay"
 ///         }]
-///         "origin" = gcp_networkservices_edgecacheorigin.instance.name
-///         "routeAction" = {
-///           "cdnPolicy" = {
-///             "cacheMode"  = "CACHE_ALL_STATIC"
-///             "defaultTtl" = "3600s"
-///             "cacheKeyPolicy" = {
-///               "excludedQueryParameters" = ["dev"]
+///         origin = gcp_networkservices_edge_cache_origin.instance.name
+///         route_action = {
+///           cdn_policy = {
+///             cache_mode  = "CACHE_ALL_STATIC"
+///             default_ttl = "3600s"
+///             cache_key_policy = {
+///               excluded_query_parameters = ["dev"]
 ///             }
 ///           }
-///           "corsPolicy" = {
-///             "maxAge"       = "3000s"
-///             "allowHeaders" = ["dev"]
-///             "disabled"     = true
+///           cors_policy = {
+///             max_age       = "3000s"
+///             allow_headers = ["dev"]
+///             disabled      = true
 ///           }
 ///         }
 ///       }]
@@ -2451,8 +2472,8 @@ import 'edge_cache_service_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2468,7 +2489,7 @@ import 'edge_cache_service_state.dart';
 /// 			return err
 /// 		}
 /// 		secret_version_basic, err := secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
-/// 			Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Secret:     secret_basic.ID(),
 /// 			SecretData: pulumi.String("secret-data"),
 /// 		})
 /// 		if err != nil {
@@ -2485,7 +2506,7 @@ import 'edge_cache_service_state.dart';
 /// 			},
 /// 			ValidationSharedKeys: networkservices.EdgeCacheKeysetValidationSharedKeyArray{
 /// 				&networkservices.EdgeCacheKeysetValidationSharedKeyArgs{
-/// 					SecretVersion: secret_version_basic.ID().ToIDOutput().ToStringOutput(),
+/// 					SecretVersion: secret_version_basic.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -2529,14 +2550,14 @@ import 'edge_cache_service_state.dart';
 /// 								RouteAction: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{
 /// 									CdnPolicy: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{
 /// 										SignedRequestMode:   pulumi.String("REQUIRE_TOKENS"),
-/// 										SignedRequestKeyset: keyset.ID().ToIDOutput().ToStringOutput(),
+/// 										SignedRequestKeyset: keyset.ID(),
 /// 										SignedTokenOptions: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs{
 /// 											TokenQueryParameter: pulumi.String("edge-cache-token"),
 /// 										},
 /// 										SignedRequestMaximumExpirationTtl: pulumi.String("600s"),
 /// 										AddSignatures: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs{
 /// 											Actions: pulumi.String("GENERATE_COOKIE"),
-/// 											Keyset:  keyset.ID().ToIDOutput().ToStringOutput(),
+/// 											Keyset:  keyset.ID(),
 /// 											CopiedParameters: pulumi.StringArray{
 /// 												pulumi.String("PathGlobs"),
 /// 												pulumi.String("SessionID"),
@@ -2557,7 +2578,7 @@ import 'edge_cache_service_state.dart';
 /// 								RouteAction: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{
 /// 									CdnPolicy: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{
 /// 										SignedRequestMode:   pulumi.String("REQUIRE_TOKENS"),
-/// 										SignedRequestKeyset: keyset.ID().ToIDOutput().ToStringOutput(),
+/// 										SignedRequestKeyset: keyset.ID(),
 /// 										SignedTokenOptions: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs{
 /// 											TokenQueryParameter: pulumi.String("hdnts"),
 /// 											AllowedSignatureAlgorithms: pulumi.StringArray{
@@ -2568,7 +2589,7 @@ import 'edge_cache_service_state.dart';
 /// 										},
 /// 										AddSignatures: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs{
 /// 											Actions:             pulumi.String("GENERATE_TOKEN_HLS_COOKIELESS"),
-/// 											Keyset:              keyset.ID().ToIDOutput().ToStringOutput(),
+/// 											Keyset:              keyset.ID(),
 /// 											TokenTtl:            pulumi.String("1200s"),
 /// 											TokenQueryParameter: pulumi.String("hdntl"),
 /// 											CopiedParameters: pulumi.StringArray{
@@ -2590,7 +2611,7 @@ import 'edge_cache_service_state.dart';
 /// 								RouteAction: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{
 /// 									CdnPolicy: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{
 /// 										SignedRequestMode:   pulumi.String("REQUIRE_TOKENS"),
-/// 										SignedRequestKeyset: keyset.ID().ToIDOutput().ToStringOutput(),
+/// 										SignedRequestKeyset: keyset.ID(),
 /// 										SignedTokenOptions: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs{
 /// 											TokenQueryParameter: pulumi.String("hdntl"),
 /// 										},
@@ -2614,7 +2635,7 @@ import 'edge_cache_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2623,16 +2644,25 @@ import 'edge_cache_service_state.dart';
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "secret-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "secret-name"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "secret-version-basic" {
+/// resource "gcp_secretmanager_secret_version" "secret-version-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.secret-basic.id
 ///   secret_data = "secret-data"
 /// }
-/// resource "gcp_networkservices_edgecachekeyset" "keyset" {
+/// resource "gcp_networkservices_edge_cache_keyset" "keyset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "keyset-name"
 ///   description = "The default keyset"
 ///   public_keys {
@@ -2640,88 +2670,94 @@ import 'edge_cache_service_state.dart';
 ///     managed = true
 ///   }
 ///   validation_shared_keys {
-///     secret_version = gcp_secretmanager_secretversion.secret-version-basic.id
+///     secret_version = gcp_secretmanager_secret_version.secret-version-basic.id
 ///   }
 /// }
-/// resource "gcp_networkservices_edgecacheorigin" "instance" {
+/// resource "gcp_networkservices_edge_cache_origin" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "my-origin"
 ///   origin_address = "gs://media-edge-default"
 ///   description    = "The default bucket for media edge test"
 /// }
-/// resource "gcp_networkservices_edgecacheservice" "instance" {
+/// resource "gcp_networkservices_edge_cache_service" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-service"
 ///   description = "some description"
 ///   routing = {
 ///     host_rules = [{
-///       "description" = "host rule description"
-///       "hosts"       = ["sslcert.tf-test.club"]
-///       "pathMatcher" = "routes"
+///       description  = "host rule description"
+///       hosts        = ["sslcert.tf-test.club"]
+///       path_matcher = "routes"
 ///     }]
 ///     path_matchers = [{
-///       "name" = "routes"
-///       "routeRules" = [{
-///         "description" = "a route rule to match against master playlist"
-///         "priority"    = 1
-///         "matchRules" = [{
-///           "pathTemplateMatch" = "/master.m3u8"
+///       name = "routes"
+///       route_rules = [{
+///         description = "a route rule to match against master playlist"
+///         priority    = 1
+///         match_rules = [{
+///           path_template_match = "/master.m3u8"
 ///         }]
-///         "origin" = gcp_networkservices_edgecacheorigin.instance.name
-///         "routeAction" = {
-///           "cdnPolicy" = {
-///             "signedRequestMode"   = "REQUIRE_TOKENS"
-///             "signedRequestKeyset" = gcp_networkservices_edgecachekeyset.keyset.id
-///             "signedTokenOptions" = {
-///               "tokenQueryParameter" = "edge-cache-token"
+///         origin = gcp_networkservices_edge_cache_origin.instance.name
+///         route_action = {
+///           cdn_policy = {
+///             signed_request_mode   = "REQUIRE_TOKENS"
+///             signed_request_keyset = gcp_networkservices_edge_cache_keyset.keyset.id
+///             signed_token_options = {
+///               token_query_parameter = "edge-cache-token"
 ///             }
-///             "signedRequestMaximumExpirationTtl" = "600s"
-///             "addSignatures" = {
-///               "actions"          = "GENERATE_COOKIE"
-///               "keyset"           = gcp_networkservices_edgecachekeyset.keyset.id
-///               "copiedParameters" = ["PathGlobs", "SessionID"]
+///             signed_request_maximum_expiration_ttl = "600s"
+///             add_signatures = {
+///               actions           = "GENERATE_COOKIE"
+///               keyset            = gcp_networkservices_edge_cache_keyset.keyset.id
+///               copied_parameters = ["PathGlobs", "SessionID"]
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "description" = "a route rule to match against all playlists"
-///         "priority"    = 2
-///         "matchRules" = [{
-///           "pathTemplateMatch" = "/*.m3u8"
+///         description = "a route rule to match against all playlists"
+///         priority    = 2
+///         match_rules = [{
+///           path_template_match = "/*.m3u8"
 ///         }]
-///         "origin" = gcp_networkservices_edgecacheorigin.instance.name
-///         "routeAction" = {
-///           "cdnPolicy" = {
-///             "signedRequestMode"   = "REQUIRE_TOKENS"
-///             "signedRequestKeyset" = gcp_networkservices_edgecachekeyset.keyset.id
-///             "signedTokenOptions" = {
-///               "tokenQueryParameter"        = "hdnts"
-///               "allowedSignatureAlgorithms" = ["ED25519", "HMAC_SHA_256", "HMAC_SHA1"]
+///         origin = gcp_networkservices_edge_cache_origin.instance.name
+///         route_action = {
+///           cdn_policy = {
+///             signed_request_mode   = "REQUIRE_TOKENS"
+///             signed_request_keyset = gcp_networkservices_edge_cache_keyset.keyset.id
+///             signed_token_options = {
+///               token_query_parameter        = "hdnts"
+///               allowed_signature_algorithms = ["ED25519", "HMAC_SHA_256", "HMAC_SHA1"]
 ///             }
-///             "addSignatures" = {
-///               "actions"             = "GENERATE_TOKEN_HLS_COOKIELESS"
-///               "keyset"              = gcp_networkservices_edgecachekeyset.keyset.id
-///               "tokenTtl"            = "1200s"
-///               "tokenQueryParameter" = "hdntl"
-///               "copiedParameters"    = ["URLPrefix"]
+///             add_signatures = {
+///               actions               = "GENERATE_TOKEN_HLS_COOKIELESS"
+///               keyset                = gcp_networkservices_edge_cache_keyset.keyset.id
+///               token_ttl             = "1200s"
+///               token_query_parameter = "hdntl"
+///               copied_parameters     = ["URLPrefix"]
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "description" = "a route rule to match against"
-///         "priority"    = 3
-///         "matchRules" = [{
-///           "pathTemplateMatch" = "/**.m3u8"
+///         description = "a route rule to match against"
+///         priority    = 3
+///         match_rules = [{
+///           path_template_match = "/**.m3u8"
 ///         }]
-///         "origin" = gcp_networkservices_edgecacheorigin.instance.name
-///         "routeAction" = {
-///           "cdnPolicy" = {
-///             "signedRequestMode"   = "REQUIRE_TOKENS"
-///             "signedRequestKeyset" = gcp_networkservices_edgecachekeyset.keyset.id
-///             "signedTokenOptions" = {
-///               "tokenQueryParameter" = "hdntl"
+///         origin = gcp_networkservices_edge_cache_origin.instance.name
+///         route_action = {
+///           cdn_policy = {
+///             signed_request_mode   = "REQUIRE_TOKENS"
+///             signed_request_keyset = gcp_networkservices_edge_cache_keyset.keyset.id
+///             signed_token_options = {
+///               token_query_parameter = "hdntl"
 ///             }
-///             "addSignatures" = {
-///               "actions"             = "PROPAGATE_TOKEN_HLS_COOKIELESS"
-///               "tokenQueryParameter" = "hdntl"
+///             add_signatures = {
+///               actions               = "PROPAGATE_TOKEN_HLS_COOKIELESS"
+///               token_query_parameter = "hdntl"
 ///             }
 ///           }
 ///         }
@@ -3080,7 +3116,7 @@ class EdgeCacheService extends pulumi.CustomResource {
           'gcp:networkservices/edgeCacheService:EdgeCacheService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -100,8 +100,8 @@ class BackupPlanArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskBackupPlanProperties: (() { final guardedValue = map['diskBackupPlanProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackupPlanDiskBackupPlanProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      logRetentionDays: (() { final guardedValue = map['logRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxCustomOnDemandRetentionDays: (() { final guardedValue = map['maxCustomOnDemandRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      logRetentionDays: (() { final guardedValue = map['logRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxCustomOnDemandRetentionDays: (() { final guardedValue = map['maxCustomOnDemandRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );

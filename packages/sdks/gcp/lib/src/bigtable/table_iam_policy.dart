@@ -83,8 +83,8 @@ import 'table_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -117,7 +117,7 @@ import 'table_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -125,18 +125,21 @@ import 'table_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/bigtable.user"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_bigtable_tableiampolicy" "editor" {
+/// resource "gcp_bigtable_table_iam_policy" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = "your-project"
 ///   instance_name = "your-bigtable-instance"
 ///   table         = "your-bigtable-table"
-///   policy_data   = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data   = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -250,7 +253,7 @@ import 'table_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -272,7 +275,7 @@ import 'table_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -280,7 +283,10 @@ import 'table_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigtable_tableiambinding" "editor" {
+/// resource "gcp_bigtable_table_iam_binding" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   table         = "your-bigtable-table"
 ///   instance_name = "your-bigtable-instance"
 ///   role          = "roles/bigtable.user"
@@ -377,7 +383,7 @@ import 'table_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -397,7 +403,7 @@ import 'table_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -405,7 +411,10 @@ import 'table_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigtable_tableiammember" "editor" {
+/// resource "gcp_bigtable_table_iam_member" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   table         = "your-bigtable-table"
 ///   instance_name = "your-bigtable-instance"
 ///   role          = "roles/bigtable.user"
@@ -526,8 +535,8 @@ import 'table_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -560,7 +569,7 @@ import 'table_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -568,18 +577,21 @@ import 'table_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/bigtable.user"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_bigtable_tableiampolicy" "editor" {
+/// resource "gcp_bigtable_table_iam_policy" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = "your-project"
 ///   instance_name = "your-bigtable-instance"
 ///   table         = "your-bigtable-table"
-///   policy_data   = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data   = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -693,7 +705,7 @@ import 'table_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -715,7 +727,7 @@ import 'table_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -723,7 +735,10 @@ import 'table_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigtable_tableiambinding" "editor" {
+/// resource "gcp_bigtable_table_iam_binding" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   table         = "your-bigtable-table"
 ///   instance_name = "your-bigtable-instance"
 ///   role          = "roles/bigtable.user"
@@ -820,7 +835,7 @@ import 'table_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -840,7 +855,7 @@ import 'table_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -848,7 +863,10 @@ import 'table_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigtable_tableiammember" "editor" {
+/// resource "gcp_bigtable_table_iam_member" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   table         = "your-bigtable-table"
 ///   instance_name = "your-bigtable-instance"
 ///   role          = "roles/bigtable.user"
@@ -931,7 +949,7 @@ class TableIamPolicy extends pulumi.CustomResource {
           'gcp:bigtable/tableIamPolicy:TableIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     instanceName = registerOutput<String>('instanceName');

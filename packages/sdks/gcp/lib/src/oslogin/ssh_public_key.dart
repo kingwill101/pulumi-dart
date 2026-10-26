@@ -66,8 +66,8 @@ import 'ssh_public_key_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oslogin"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oslogin"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -96,7 +96,7 @@ import 'ssh_public_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -107,11 +107,14 @@ import 'ssh_public_key_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getclientopeniduserinfo" "me" {
+/// data "gcp_organizations_client_open_id_user_info" "me" {
 /// }
 ///
-/// resource "gcp_oslogin_sshpublickey" "cache" {
-///   user = data.gcp_organizations_getclientopeniduserinfo.me.email
+/// resource "gcp_oslogin_ssh_public_key" "cache" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   user = data.gcp_organizations_client_open_id_user_info.me.email
 ///   key  = file("path/to/id_rsa.pub")
 /// }
 /// ```
@@ -216,7 +219,7 @@ class SshPublicKey extends pulumi.CustomResource {
           'gcp:oslogin/sshPublicKey:SshPublicKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     expirationTimeUsec = registerOutput<String?>('expirationTimeUsec');

@@ -80,7 +80,7 @@ import 'crypto_key_version_template.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -95,7 +95,7 @@ import 'crypto_key_version_template.dart';
 /// 		}
 /// 		_, err = kms.NewCryptoKey(ctx, "example-key", &kms.CryptoKeyArgs{
 /// 			Name:           pulumi.String("crypto-key-example"),
-/// 			KeyRing:        keyring.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRing:        keyring.ID(),
 /// 			RotationPeriod: pulumi.String("7776000s"),
 /// 		})
 /// 		if err != nil {
@@ -106,7 +106,7 @@ import 'crypto_key_version_template.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -114,13 +114,19 @@ import 'crypto_key_version_template.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_keyring" "keyring" {
+/// resource "gcp_kms_key_ring" "keyring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "keyring-example"
 ///   location = "global"
 /// }
-/// resource "gcp_kms_cryptokey" "example-key" {
+/// resource "gcp_kms_crypto_key" "example-key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "crypto-key-example"
-///   key_ring        = gcp_kms_keyring.keyring.id
+///   key_ring        = gcp_kms_key_ring.keyring.id
 ///   rotation_period = "7776000s"
 /// }
 /// ```
@@ -243,7 +249,7 @@ import 'crypto_key_version_template.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -258,7 +264,7 @@ import 'crypto_key_version_template.dart';
 /// 		}
 /// 		_, err = kms.NewCryptoKey(ctx, "example-asymmetric-sign-key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("crypto-key-example"),
-/// 			KeyRing: keyring.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyRing: keyring.ID(),
 /// 			Purpose: pulumi.String("ASYMMETRIC_SIGN"),
 /// 			VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
 /// 				Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),
@@ -272,7 +278,7 @@ import 'crypto_key_version_template.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -280,13 +286,19 @@ import 'crypto_key_version_template.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_keyring" "keyring" {
+/// resource "gcp_kms_key_ring" "keyring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "keyring-example"
 ///   location = "global"
 /// }
-/// resource "gcp_kms_cryptokey" "example-asymmetric-sign-key" {
+/// resource "gcp_kms_crypto_key" "example-asymmetric-sign-key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "crypto-key-example"
-///   key_ring = gcp_kms_keyring.keyring.id
+///   key_ring = gcp_kms_key_ring.keyring.id
 ///   purpose  = "ASYMMETRIC_SIGN"
 ///   version_template = {
 ///     algorithm = "EC_SIGN_P384_SHA384"
@@ -443,7 +455,7 @@ class CryptoKey extends pulumi.CustomResource {
           'gcp:kms/cryptoKey:CryptoKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     cryptoKeyBackend = registerOutput<String>('cryptoKeyBackend');

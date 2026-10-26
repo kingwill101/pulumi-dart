@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_endpoint_args.dart';
 import 'firewall_endpoint_endpoint_settings.dart';
 import 'firewall_endpoint_state.dart';
+import 'firewall_endpoint_wildfire_settings.dart';
 
 /// A Firewall endpoint is a Cloud Firewall resource that enables
 /// layer 7 advanced protection capabilities, such as intrusion prevention,
@@ -80,7 +81,7 @@ import 'firewall_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -103,7 +104,7 @@ import 'firewall_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -111,7 +112,10 @@ import 'firewall_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_firewallendpoint" "default" {
+/// resource "gcp_networksecurity_firewall_endpoint" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-firewall-endpoint"
 ///   parent             = "organizations/123456789"
 ///   location           = "us-central1-a"
@@ -220,7 +224,7 @@ import 'firewall_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -242,7 +246,7 @@ import 'firewall_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -250,7 +254,10 @@ import 'firewall_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_firewallendpoint" "default" {
+/// resource "gcp_networksecurity_firewall_endpoint" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-firewall-endpoint"
 ///   parent   = "projects/my-project-name"
 ///   location = "us-central1-a"
@@ -339,7 +346,7 @@ class FirewallEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Settings for the endpoint.
   /// Structure is documented below.
-  late final pulumi.Output<FirewallEndpointEndpointSettings?> endpointSettings;
+  late final pulumi.Output<FirewallEndpointEndpointSettings> endpointSettings;
   /// A map of key/value label pairs to assign to the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -363,6 +370,10 @@ class FirewallEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> state;
   /// Time the firewall endpoint was updated in UTC.
   late final pulumi.Output<String> updateTime;
+  /// (Optional, Beta)
+  /// Settings for WildFire analysis on the firewall endpoint.
+  /// Structure is documented below.
+  late final pulumi.Output<FirewallEndpointWildfireSettings> wildfireSettings;
 
   /// Creates a new [FirewallEndpoint].
   /// [name] The Pulumi resource name.
@@ -376,7 +387,7 @@ class FirewallEndpoint extends pulumi.CustomResource {
           'gcp:networksecurity/firewallEndpoint:FirewallEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     associatedNetworks = registerOutput<List<String>>('associatedNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
@@ -384,7 +395,7 @@ class FirewallEndpoint extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
-    endpointSettings = registerOutput<FirewallEndpointEndpointSettings?>('endpointSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallEndpointEndpointSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpointSettings = registerOutput<FirewallEndpointEndpointSettings>('endpointSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallEndpointEndpointSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -394,6 +405,7 @@ class FirewallEndpoint extends pulumi.CustomResource {
     selfLink = registerOutput<String>('selfLink');
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
+    wildfireSettings = registerOutput<FirewallEndpointWildfireSettings>('wildfireSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallEndpointWildfireSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [FirewallEndpoint] resource's state with the given [name] and [id].
@@ -425,7 +437,7 @@ class FirewallEndpoint extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
-    endpointSettings = registerOutput<FirewallEndpointEndpointSettings?>('endpointSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallEndpointEndpointSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpointSettings = registerOutput<FirewallEndpointEndpointSettings>('endpointSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallEndpointEndpointSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -435,6 +447,7 @@ class FirewallEndpoint extends pulumi.CustomResource {
     selfLink = registerOutput<String>('selfLink');
     this.state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
+    wildfireSettings = registerOutput<FirewallEndpointWildfireSettings>('wildfireSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallEndpointWildfireSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Creates a typed reference to an existing [FirewallEndpoint] resource.
@@ -452,7 +465,7 @@ class FirewallEndpoint extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
-    endpointSettings = registerOutput<FirewallEndpointEndpointSettings?>('endpointSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallEndpointEndpointSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpointSettings = registerOutput<FirewallEndpointEndpointSettings>('endpointSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallEndpointEndpointSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -462,5 +475,6 @@ class FirewallEndpoint extends pulumi.CustomResource {
     selfLink = registerOutput<String>('selfLink');
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
+    wildfireSettings = registerOutput<FirewallEndpointWildfireSettings>('wildfireSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallEndpointWildfireSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

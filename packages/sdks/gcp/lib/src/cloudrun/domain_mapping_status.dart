@@ -48,7 +48,7 @@ class DomainMappingStatus {
     return DomainMappingStatus(
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainMappingStatusCondition>(guardedValue, (value) => DomainMappingStatusCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       mappedRouteName: (() { final guardedValue = map['mappedRouteName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceRecords: (() { final guardedValue = map['resourceRecords']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainMappingStatusResourceRecord>(guardedValue, (value) => DomainMappingStatusResourceRecord.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

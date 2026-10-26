@@ -119,8 +119,8 @@ import 'mirroring_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -136,7 +136,7 @@ import 'mirroring_endpoint_state.dart';
 /// 		deploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "deployment_group", &networksecurity.MirroringDeploymentGroupArgs{
 /// 			MirroringDeploymentGroupId: pulumi.String("example-dg"),
 /// 			Location:                   pulumi.String("global"),
-/// 			Network:                    network.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:                    network.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -146,7 +146,7 @@ import 'mirroring_endpoint_state.dart';
 /// 			Location:                 pulumi.String("global"),
 /// 			Type:                     pulumi.String("BROKER"),
 /// 			MirroringDeploymentGroups: pulumi.StringArray{
-/// 				deploymentGroup.ID().ToIDOutput().ToStringOutput(),
+/// 				deploymentGroup.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -155,7 +155,7 @@ import 'mirroring_endpoint_state.dart';
 /// 		_, err = networksecurity.NewMirroringEndpoint(ctx, "default", &networksecurity.MirroringEndpointArgs{
 /// 			MirroringEndpointId:    pulumi.String("example-endpoint"),
 /// 			Location:               pulumi.String("us-west2-a"),
-/// 			MirroringEndpointGroup: endpointGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			MirroringEndpointGroup: endpointGroup.ID(),
 /// 			Description:            pulumi.String("some description"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
@@ -169,7 +169,7 @@ import 'mirroring_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -178,24 +178,36 @@ import 'mirroring_endpoint_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networksecurity_mirroringdeploymentgroup" "deployment_group" {
+/// resource "gcp_networksecurity_mirroring_deployment_group" "deployment_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_deployment_group_id = "example-dg"
 ///   location                      = "global"
 ///   network                       = gcp_compute_network.network.id
 /// }
-/// resource "gcp_networksecurity_mirroringendpointgroup" "endpoint_group" {
+/// resource "gcp_networksecurity_mirroring_endpoint_group" "endpoint_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_endpoint_group_id = "example-eg"
 ///   location                    = "global"
 ///   type                        = "BROKER"
-///   mirroring_deployment_groups = [gcp_networksecurity_mirroringdeploymentgroup.deployment_group.id]
+///   mirroring_deployment_groups = [gcp_networksecurity_mirroring_deployment_group.deployment_group.id]
 /// }
-/// resource "gcp_networksecurity_mirroringendpoint" "default" {
+/// resource "gcp_networksecurity_mirroring_endpoint" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_endpoint_id    = "example-endpoint"
 ///   location                 = "us-west2-a"
-///   mirroring_endpoint_group = gcp_networksecurity_mirroringendpointgroup.endpoint_group.id
+///   mirroring_endpoint_group = gcp_networksecurity_mirroring_endpoint_group.endpoint_group.id
 ///   description              = "some description"
 ///   labels = {
 ///     "foo" = "bar"
@@ -379,7 +391,7 @@ class MirroringEndpoint extends pulumi.CustomResource {
           'gcp:networksecurity/mirroringEndpoint:MirroringEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

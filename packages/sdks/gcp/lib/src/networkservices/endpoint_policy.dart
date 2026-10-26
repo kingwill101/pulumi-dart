@@ -113,7 +113,7 @@ import 'endpoint_policy_traffic_port_selector.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -151,7 +151,7 @@ import 'endpoint_policy_traffic_port_selector.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -159,7 +159,10 @@ import 'endpoint_policy_traffic_port_selector.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_endpointpolicy" "default" {
+/// resource "gcp_networkservices_endpoint_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-endpoint-policy"
 ///   labels = {
 ///     "foo" = "bar"
@@ -173,8 +176,8 @@ import 'endpoint_policy_traffic_port_selector.dart';
 ///     metadata_label_matcher = {
 ///       metadata_label_match_criteria = "MATCH_ANY"
 ///       metadata_labels = [{
-///         "labelName"  = "foo"
-///         "labelValue" = "bar"
+///         label_name  = "foo"
+///         label_value = "bar"
 ///       }]
 ///     }
 ///   }
@@ -332,7 +335,7 @@ import 'endpoint_policy_traffic_port_selector.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -364,7 +367,7 @@ import 'endpoint_policy_traffic_port_selector.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -372,7 +375,10 @@ import 'endpoint_policy_traffic_port_selector.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_endpointpolicy" "default" {
+/// resource "gcp_networkservices_endpoint_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-endpoint-policy"
 ///   labels = {
 ///     "foo" = "bar"
@@ -522,7 +528,7 @@ class EndpointPolicy extends pulumi.CustomResource {
           'gcp:networkservices/endpointPolicy:EndpointPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     authorizationPolicy = registerOutput<String?>('authorizationPolicy');

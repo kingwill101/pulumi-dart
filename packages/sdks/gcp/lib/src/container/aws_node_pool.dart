@@ -466,7 +466,7 @@ import 'aws_node_pool_update_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -625,7 +625,7 @@ import 'aws_node_pool_update_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -633,15 +633,18 @@ import 'aws_node_pool_update_settings.dart';
 ///   }
 /// }
 ///
-/// data "gcp_container_getawsversions" "versions" {
+/// data "gcp_container_aws_versions" "versions" {
 ///   project  = "my-project-name"
 ///   location = "us-west1"
 /// }
 ///
-/// resource "gcp_container_awscluster" "primary" {
+/// resource "gcp_container_aws_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization = {
 ///     admin_users = [{
-///       "username" = "my@service-account.com"
+///       username = "my@service-account.com"
 ///     }]
 ///   }
 ///   aws_region = "my-aws-region"
@@ -658,7 +661,7 @@ import 'aws_node_pool_update_settings.dart';
 ///     }
 ///     iam_instance_profile = "my--1p-dev-controlplane"
 ///     subnet_ids           = ["subnet-00000000000000000"]
-///     version              = data.gcp_container_getawsversions.versions.valid_versions[0]
+///     version              = data.gcp_container_aws_versions.versions.valid_versions[0]
 ///     instance_type        = "t3.medium"
 ///     main_volume = {
 ///       iops        = 3000
@@ -700,12 +703,15 @@ import 'aws_node_pool_update_settings.dart';
 ///   description = "A sample aws cluster"
 ///   project     = "my-project-name"
 /// }
-/// resource "gcp_container_awsnodepool" "primary" {
+/// resource "gcp_container_aws_node_pool" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   autoscaling = {
 ///     max_node_count = 5
 ///     min_node_count = 1
 ///   }
-///   cluster = gcp_container_awscluster.primary.name
+///   cluster = gcp_container_aws_cluster.primary.name
 ///   config = {
 ///     config_encryption = {
 ///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
@@ -733,9 +739,9 @@ import 'aws_node_pool_update_settings.dart';
 ///       "tag-one" = "value-one"
 ///     }
 ///     taints = [{
-///       "effect" = "PREFER_NO_SCHEDULE"
-///       "key"    = "taint-key"
-///       "value"  = "taint-value"
+///       effect = "PREFER_NO_SCHEDULE"
+///       key    = "taint-key"
+///       value  = "taint-value"
 ///     }]
 ///   }
 ///   location = "us-west1"
@@ -744,7 +750,7 @@ import 'aws_node_pool_update_settings.dart';
 ///   }
 ///   name      = "node-pool-name"
 ///   subnet_id = "subnet-00000000000000000"
-///   version   = data.gcp_container_getawsversions.versions.valid_versions[0]
+///   version   = data.gcp_container_aws_versions.versions.valid_versions[0]
 ///   annotations = {
 ///     "label-one" = "value-one"
 ///   }
@@ -1464,7 +1470,7 @@ import 'aws_node_pool_update_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1614,7 +1620,7 @@ import 'aws_node_pool_update_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1622,15 +1628,18 @@ import 'aws_node_pool_update_settings.dart';
 ///   }
 /// }
 ///
-/// data "gcp_container_getawsversions" "versions" {
+/// data "gcp_container_aws_versions" "versions" {
 ///   project  = "my-project-name"
 ///   location = "us-west1"
 /// }
 ///
-/// resource "gcp_container_awscluster" "primary" {
+/// resource "gcp_container_aws_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization = {
 ///     admin_users = [{
-///       "username" = "my@service-account.com"
+///       username = "my@service-account.com"
 ///     }]
 ///   }
 ///   aws_region = "my-aws-region"
@@ -1647,7 +1656,7 @@ import 'aws_node_pool_update_settings.dart';
 ///     }
 ///     iam_instance_profile = "my--1p-dev-controlplane"
 ///     subnet_ids           = ["subnet-00000000000000000"]
-///     version              = data.gcp_container_getawsversions.versions.valid_versions[0]
+///     version              = data.gcp_container_aws_versions.versions.valid_versions[0]
 ///     instance_type        = "t3.medium"
 ///     main_volume = {
 ///       iops        = 3000
@@ -1689,12 +1698,15 @@ import 'aws_node_pool_update_settings.dart';
 ///   description = "A sample aws cluster"
 ///   project     = "my-project-name"
 /// }
-/// resource "gcp_container_awsnodepool" "primary" {
+/// resource "gcp_container_aws_node_pool" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   autoscaling = {
 ///     max_node_count = 5
 ///     min_node_count = 1
 ///   }
-///   cluster = gcp_container_awscluster.primary.name
+///   cluster = gcp_container_aws_cluster.primary.name
 ///   config = {
 ///     config_encryption = {
 ///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
@@ -1722,9 +1734,9 @@ import 'aws_node_pool_update_settings.dart';
 ///       "tag-one" = "value-one"
 ///     }
 ///     taints = [{
-///       "effect" = "prefer_no_schedule"
-///       "key"    = "taint-key"
-///       "value"  = "taint-value"
+///       effect = "prefer_no_schedule"
+///       key    = "taint-key"
+///       value  = "taint-value"
 ///     }]
 ///   }
 ///   location = "us-west1"
@@ -1733,7 +1745,7 @@ import 'aws_node_pool_update_settings.dart';
 ///   }
 ///   name      = "node-pool-name"
 ///   subnet_id = "subnet-00000000000000000"
-///   version   = data.gcp_container_getawsversions.versions.valid_versions[0]
+///   version   = data.gcp_container_aws_versions.versions.valid_versions[0]
 ///   annotations = {
 ///     "label-one" = "value-one"
 ///   }
@@ -2439,7 +2451,7 @@ import 'aws_node_pool_update_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2593,7 +2605,7 @@ import 'aws_node_pool_update_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2601,15 +2613,18 @@ import 'aws_node_pool_update_settings.dart';
 ///   }
 /// }
 ///
-/// data "gcp_container_getawsversions" "versions" {
+/// data "gcp_container_aws_versions" "versions" {
 ///   project  = "my-project-name"
 ///   location = "us-west1"
 /// }
 ///
-/// resource "gcp_container_awscluster" "primary" {
+/// resource "gcp_container_aws_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authorization = {
 ///     admin_users = [{
-///       "username" = "my@service-account.com"
+///       username = "my@service-account.com"
 ///     }]
 ///   }
 ///   aws_region = "my-aws-region"
@@ -2626,7 +2641,7 @@ import 'aws_node_pool_update_settings.dart';
 ///     }
 ///     iam_instance_profile = "my--1p-dev-controlplane"
 ///     subnet_ids           = ["subnet-00000000000000000"]
-///     version              = data.gcp_container_getawsversions.versions.valid_versions[0]
+///     version              = data.gcp_container_aws_versions.versions.valid_versions[0]
 ///     instance_type        = "t3.medium"
 ///     main_volume = {
 ///       iops        = 3000
@@ -2668,12 +2683,15 @@ import 'aws_node_pool_update_settings.dart';
 ///   description = "A sample aws cluster"
 ///   project     = "my-project-name"
 /// }
-/// resource "gcp_container_awsnodepool" "primary" {
+/// resource "gcp_container_aws_node_pool" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   autoscaling = {
 ///     max_node_count = 5
 ///     min_node_count = 1
 ///   }
-///   cluster = gcp_container_awscluster.primary.name
+///   cluster = gcp_container_aws_cluster.primary.name
 ///   config = {
 ///     config_encryption = {
 ///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
@@ -2701,9 +2719,9 @@ import 'aws_node_pool_update_settings.dart';
 ///       "tag-one" = "value-one"
 ///     }
 ///     taints = [{
-///       "effect" = "prefer_no_schedule"
-///       "key"    = "taint-key"
-///       "value"  = "taint-value"
+///       effect = "prefer_no_schedule"
+///       key    = "taint-key"
+///       value  = "taint-value"
 ///     }]
 ///     instance_placement = {
 ///       tenancy = "dedicated"
@@ -2716,7 +2734,7 @@ import 'aws_node_pool_update_settings.dart';
 ///   }
 ///   name      = "node-pool-name"
 ///   subnet_id = "subnet-00000000000000000"
-///   version   = data.gcp_container_getawsversions.versions.valid_versions[0]
+///   version   = data.gcp_container_aws_versions.versions.valid_versions[0]
 ///   annotations = {
 ///     "label-one" = "value-one"
 ///   }
@@ -3074,7 +3092,7 @@ class AwsNodePool extends pulumi.CustomResource {
           'gcp:container/awsNodePool:AwsNodePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     autoscaling = registerOutput<AwsNodePoolAutoscaling>('autoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });

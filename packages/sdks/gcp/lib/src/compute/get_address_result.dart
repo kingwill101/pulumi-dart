@@ -81,7 +81,7 @@ class GetAddressResult {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkTier: (() { final guardedValue = map['networkTier']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      prefixLength: (() { final guardedValue = map['prefixLength']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      prefixLength: (() { final guardedValue = map['prefixLength']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       purpose: (() { final guardedValue = map['purpose']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),

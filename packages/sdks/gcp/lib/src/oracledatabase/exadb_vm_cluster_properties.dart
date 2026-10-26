@@ -151,10 +151,10 @@ class ExadbVmClusterProperties {
 
   factory ExadbVmClusterProperties.fromMap(Map<String, dynamic> map) {
     return ExadbVmClusterProperties(
-      additionalEcpuCountPerNode: (() { final guardedValue = map['additionalEcpuCountPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      additionalEcpuCountPerNode: (() { final guardedValue = map['additionalEcpuCountPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       clusterName: (() { final guardedValue = map['clusterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataCollectionOptions: (() { final guardedValue = map['dataCollectionOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExadbVmClusterPropertiesDataCollectionOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      enabledEcpuCountPerNode: pulumi.Input.fromValue((map['enabledEcpuCountPerNode'] as num).toInt()),
+      enabledEcpuCountPerNode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['enabledEcpuCountPerNode'])),
       exascaleDbStorageVault: pulumi.Input.fromValue(map['exascaleDbStorageVault'] as String),
       giVersion: (() { final guardedValue = map['giVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gridImageId: pulumi.Input.fromValue(map['gridImageId'] as String),
@@ -162,10 +162,10 @@ class ExadbVmClusterProperties {
       hostnamePrefix: pulumi.Input.fromValue(map['hostnamePrefix'] as String),
       licenseModel: (() { final guardedValue = map['licenseModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lifecycleState: (() { final guardedValue = map['lifecycleState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      memorySizeGb: (() { final guardedValue = map['memorySizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
+      memorySizeGb: (() { final guardedValue = map['memorySizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      nodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nodeCount'])),
       ociUri: (() { final guardedValue = map['ociUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      scanListenerPortTcp: (() { final guardedValue = map['scanListenerPortTcp']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      scanListenerPortTcp: (() { final guardedValue = map['scanListenerPortTcp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       shapeAttribute: pulumi.Input.fromValue(map['shapeAttribute'] as String),
       sshPublicKeys: pulumi.Input.fromValue((map['sshPublicKeys'] as List).cast<String>()),
       timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExadbVmClusterPropertiesTimeZone.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

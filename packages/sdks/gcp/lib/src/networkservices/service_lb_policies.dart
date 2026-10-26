@@ -57,7 +57,7 @@ import 'service_lb_policies_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -75,7 +75,7 @@ import 'service_lb_policies_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -83,7 +83,10 @@ import 'service_lb_policies_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_servicelbpolicies" "default" {
+/// resource "gcp_networkservices_service_lb_policies" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-lb-policy"
 ///   location = "global"
 /// }
@@ -227,8 +230,8 @@ import 'service_lb_policies_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -269,7 +272,7 @@ import 'service_lb_policies_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -277,7 +280,10 @@ import 'service_lb_policies_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_servicelbpolicies" "default" {
+/// resource "gcp_networkservices_service_lb_policies" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "my-lb-policy"
 ///   location                 = "global"
 ///   description              = "my description"
@@ -292,12 +298,15 @@ import 'service_lb_policies_state.dart';
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-lb-backend"
 ///   description           = "my description"
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
 ///   protocol              = "HTTP"
-///   service_lb_policy     ="//networkservices.googleapis.com/${gcp_networkservices_servicelbpolicies.default.id}"
+///   service_lb_policy     ="//networkservices.googleapis.com/${gcp_networkservices_service_lb_policies.default.id}"
 /// }
 /// ```
 /// ```java
@@ -490,8 +499,8 @@ import 'service_lb_policies_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -536,7 +545,7 @@ import 'service_lb_policies_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -544,7 +553,10 @@ import 'service_lb_policies_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networkservices_servicelbpolicies" "default" {
+/// resource "gcp_networkservices_service_lb_policies" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "my-lb-policy"
 ///   location                 = "global"
 ///   description              = "my description"
@@ -563,12 +575,15 @@ import 'service_lb_policies_state.dart';
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-lb-backend"
 ///   description           = "my description"
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
 ///   protocol              = "HTTP"
-///   service_lb_policy     ="//networkservices.googleapis.com/${gcp_networkservices_servicelbpolicies.default.id}"
+///   service_lb_policy     ="//networkservices.googleapis.com/${gcp_networkservices_service_lb_policies.default.id}"
 /// }
 /// ```
 /// ```java
@@ -655,6 +670,269 @@ import 'service_lb_policies_state.dart';
 ///       serviceLbPolicy: //networkservices.googleapis.com/${default.id}
 /// ```
 ///
+/// ### Network Services Service Lb Policies Regional
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.networkservices.ServiceLbPolicies("default", {
+///     name: "my-regional-lb-policy",
+///     location: "us-central1",
+///     description: "my regional service lb policy",
+///     loadBalancingAlgorithm: "SPRAY_TO_REGION",
+///     autoCapacityDrain: {
+///         enable: true,
+///     },
+///     failoverConfig: {
+///         failoverHealthThreshold: 70,
+///     },
+///     labels: {
+///         foo: "bar",
+///     },
+/// });
+/// const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+///     name: "my-regional-lb-backend",
+///     region: "us-central1",
+///     description: "my regional backend service",
+///     loadBalancingScheme: "INTERNAL_MANAGED",
+///     protocol: "HTTP",
+///     serviceLbPolicy: pulumi.interpolate`//networkservices.googleapis.com/${_default.id}`,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.networkservices.ServiceLbPolicies("default",
+///     name="my-regional-lb-policy",
+///     location="us-central1",
+///     description="my regional service lb policy",
+///     load_balancing_algorithm="SPRAY_TO_REGION",
+///     auto_capacity_drain={
+///         "enable": True,
+///     },
+///     failover_config={
+///         "failover_health_threshold": 70,
+///     },
+///     labels={
+///         "foo": "bar",
+///     })
+/// default_region_backend_service = gcp.compute.RegionBackendService("default",
+///     name="my-regional-lb-backend",
+///     region="us-central1",
+///     description="my regional backend service",
+///     load_balancing_scheme="INTERNAL_MANAGED",
+///     protocol="HTTP",
+///     service_lb_policy=default.id.apply(lambda id: f"//networkservices.googleapis.com/{id}"))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.NetworkServices.ServiceLbPolicies("default", new()
+///     {
+///         Name = "my-regional-lb-policy",
+///         Location = "us-central1",
+///         Description = "my regional service lb policy",
+///         LoadBalancingAlgorithm = "SPRAY_TO_REGION",
+///         AutoCapacityDrain = new Gcp.NetworkServices.Inputs.ServiceLbPoliciesAutoCapacityDrainArgs
+///         {
+///             Enable = true,
+///         },
+///         FailoverConfig = new Gcp.NetworkServices.Inputs.ServiceLbPoliciesFailoverConfigArgs
+///         {
+///             FailoverHealthThreshold = 70,
+///         },
+///         Labels =
+///         {
+///             { "foo", "bar" },
+///         },
+///     });
+///
+///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+///     {
+///         Name = "my-regional-lb-backend",
+///         Region = "us-central1",
+///         Description = "my regional backend service",
+///         LoadBalancingScheme = "INTERNAL_MANAGED",
+///         Protocol = "HTTP",
+///         ServiceLbPolicy = @default.Id.Apply(id => $"//networkservices.googleapis.com/{id}"),
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_default, err := networkservices.NewServiceLbPolicies(ctx, "default", &networkservices.ServiceLbPoliciesArgs{
+/// 			Name:                   pulumi.String("my-regional-lb-policy"),
+/// 			Location:               pulumi.String("us-central1"),
+/// 			Description:            pulumi.String("my regional service lb policy"),
+/// 			LoadBalancingAlgorithm: pulumi.String("SPRAY_TO_REGION"),
+/// 			AutoCapacityDrain: &networkservices.ServiceLbPoliciesAutoCapacityDrainArgs{
+/// 				Enable: pulumi.Bool(true),
+/// 			},
+/// 			FailoverConfig: &networkservices.ServiceLbPoliciesFailoverConfigArgs{
+/// 				FailoverHealthThreshold: pulumi.Int(70),
+/// 			},
+/// 			Labels: pulumi.StringMap{
+/// 				"foo": pulumi.String("bar"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+/// 			Name:                pulumi.String("my-regional-lb-backend"),
+/// 			Region:              pulumi.String("us-central1"),
+/// 			Description:         pulumi.String("my regional backend service"),
+/// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+/// 			Protocol:            pulumi.String("HTTP"),
+/// 			ServiceLbPolicy: _default.ID().ApplyT(func(id pulumi.ID) (string, error) {
+/// 				return fmt.Sprintf("//networkservices.googleapis.com/%v", id), nil
+/// 			}).(pulumi.StringOutput),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_service_lb_policies" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                     = "my-regional-lb-policy"
+///   location                 = "us-central1"
+///   description              = "my regional service lb policy"
+///   load_balancing_algorithm = "SPRAY_TO_REGION"
+///   auto_capacity_drain = {
+///     enable = true
+///   }
+///   failover_config = {
+///     failover_health_threshold = 70
+///   }
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "gcp_compute_region_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                  = "my-regional-lb-backend"
+///   region                = "us-central1"
+///   description           = "my regional backend service"
+///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   protocol              = "HTTP"
+///   service_lb_policy     ="//networkservices.googleapis.com/${gcp_networkservices_service_lb_policies.default.id}"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.networkservices.ServiceLbPolicies;
+/// import com.pulumi.gcp.networkservices.ServiceLbPoliciesArgs;
+/// import com.pulumi.gcp.networkservices.inputs.ServiceLbPoliciesAutoCapacityDrainArgs;
+/// import com.pulumi.gcp.networkservices.inputs.ServiceLbPoliciesFailoverConfigArgs;
+/// import com.pulumi.gcp.compute.RegionBackendService;
+/// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new ServiceLbPolicies("default", ServiceLbPoliciesArgs.builder()
+///             .name("my-regional-lb-policy")
+///             .location("us-central1")
+///             .description("my regional service lb policy")
+///             .loadBalancingAlgorithm("SPRAY_TO_REGION")
+///             .autoCapacityDrain(ServiceLbPoliciesAutoCapacityDrainArgs.builder()
+///                 .enable(true)
+///                 .build())
+///             .failoverConfig(ServiceLbPoliciesFailoverConfigArgs.builder()
+///                 .failoverHealthThreshold(70)
+///                 .build())
+///             .labels(Map.of("foo", "bar"))
+///             .build());
+///
+///         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
+///             .name("my-regional-lb-backend")
+///             .region("us-central1")
+///             .description("my regional backend service")
+///             .loadBalancingScheme("INTERNAL_MANAGED")
+///             .protocol("HTTP")
+///             .serviceLbPolicy(default_.id().applyValue(_id -> String.format("//networkservices.googleapis.com/%s", _id)))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:networkservices:ServiceLbPolicies
+///     properties:
+///       name: my-regional-lb-policy
+///       location: us-central1
+///       description: my regional service lb policy
+///       loadBalancingAlgorithm: SPRAY_TO_REGION
+///       autoCapacityDrain:
+///         enable: true
+///       failoverConfig:
+///         failoverHealthThreshold: 70
+///       labels:
+///         foo: bar
+///   defaultRegionBackendService:
+///     type: gcp:compute:RegionBackendService
+///     name: default
+///     properties:
+///       name: my-regional-lb-backend
+///       region: us-central1
+///       description: my regional backend service
+///       loadBalancingScheme: INTERNAL_MANAGED
+///       protocol: HTTP
+///       serviceLbPolicy: //networkservices.googleapis.com/${default.id}
+/// ```
+///
 ///
 /// ## Import
 ///
@@ -727,7 +1005,7 @@ class ServiceLbPolicies extends pulumi.CustomResource {
           'gcp:networkservices/serviceLbPolicies:ServiceLbPolicies',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     autoCapacityDrain = registerOutput<ServiceLbPoliciesAutoCapacityDrain?>('autoCapacityDrain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceLbPoliciesAutoCapacityDrain.fromMap((guardedValue as Map).cast<String, dynamic>()); });

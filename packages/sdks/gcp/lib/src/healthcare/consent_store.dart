@@ -67,7 +67,7 @@ import 'consent_store_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -81,7 +81,7 @@ import 'consent_store_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = healthcare.NewConsentStore(ctx, "my-consent", &healthcare.ConsentStoreArgs{
-/// 			Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset: dataset.ID(),
 /// 			Name:    pulumi.String("my-consent-store"),
 /// 		})
 /// 		if err != nil {
@@ -92,7 +92,7 @@ import 'consent_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -101,10 +101,16 @@ import 'consent_store_state.dart';
 /// }
 ///
 /// resource "gcp_healthcare_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   name     = "my-dataset"
 /// }
-/// resource "gcp_healthcare_consentstore" "my-consent" {
+/// resource "gcp_healthcare_consent_store" "my-consent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset = gcp_healthcare_dataset.dataset.id
 ///   name    = "my-consent-store"
 /// }
@@ -229,7 +235,7 @@ import 'consent_store_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -243,7 +249,7 @@ import 'consent_store_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = healthcare.NewConsentStore(ctx, "my-consent", &healthcare.ConsentStoreArgs{
-/// 			Dataset:                     dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset:                     dataset.ID(),
 /// 			Name:                        pulumi.String("my-consent-store"),
 /// 			EnableConsentCreateOnUpdate: pulumi.Bool(true),
 /// 			DefaultConsentTtl:           pulumi.String("90000s"),
@@ -259,7 +265,7 @@ import 'consent_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -268,10 +274,16 @@ import 'consent_store_state.dart';
 /// }
 ///
 /// resource "gcp_healthcare_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   name     = "my-dataset"
 /// }
-/// resource "gcp_healthcare_consentstore" "my-consent" {
+/// resource "gcp_healthcare_consent_store" "my-consent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset                         = gcp_healthcare_dataset.dataset.id
 ///   name                            = "my-consent-store"
 ///   enable_consent_create_on_update = true
@@ -426,8 +438,8 @@ import 'consent_store_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -441,7 +453,7 @@ import 'consent_store_state.dart';
 /// 			return err
 /// 		}
 /// 		my_consent, err := healthcare.NewConsentStore(ctx, "my-consent", &healthcare.ConsentStoreArgs{
-/// 			Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset: dataset.ID(),
 /// 			Name:    pulumi.String("my-consent-store"),
 /// 		})
 /// 		if err != nil {
@@ -455,7 +467,7 @@ import 'consent_store_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = healthcare.NewConsentStoreIamMember(ctx, "test-iam", &healthcare.ConsentStoreIamMemberArgs{
-/// 			Dataset:        dataset.ID().ToIDOutput().ToStringOutput(),
+/// 			Dataset:        dataset.ID(),
 /// 			ConsentStoreId: my_consent.Name,
 /// 			Role:           pulumi.String("roles/editor"),
 /// 			Member: test_account.Email.ApplyT(func(email string) (string, error) {
@@ -470,7 +482,7 @@ import 'consent_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -479,20 +491,32 @@ import 'consent_store_state.dart';
 /// }
 ///
 /// resource "gcp_healthcare_dataset" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   name     = "my-dataset"
 /// }
-/// resource "gcp_healthcare_consentstore" "my-consent" {
+/// resource "gcp_healthcare_consent_store" "my-consent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset = gcp_healthcare_dataset.dataset.id
 ///   name    = "my-consent-store"
 /// }
 /// resource "gcp_serviceaccount_account" "test-account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "my-account"
 ///   display_name = "Test Service Account"
 /// }
-/// resource "gcp_healthcare_consentstoreiammember" "test-iam" {
+/// resource "gcp_healthcare_consent_store_iam_member" "test-iam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset          = gcp_healthcare_dataset.dataset.id
-///   consent_store_id = gcp_healthcare_consentstore.my-consent.name
+///   consent_store_id = gcp_healthcare_consent_store.my-consent.name
 ///   role             = "roles/editor"
 ///   member           ="serviceAccount:${gcp_serviceaccount_account.test-account.email}"
 /// }
@@ -637,7 +661,7 @@ class ConsentStore extends pulumi.CustomResource {
           'gcp:healthcare/consentStore:ConsentStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     dataset = registerOutput<String>('dataset');

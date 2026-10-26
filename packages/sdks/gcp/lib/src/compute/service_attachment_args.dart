@@ -44,6 +44,8 @@ class ServiceAttachmentArgs {
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
   final pulumi.Input<String?>? name;
+  /// The number of NAT IPs allocated per connected endpoint.
+  final pulumi.Input<int?>? natIpsPerEndpoint;
   /// An array of subnets that is provided for NAT in this service attachment.
   final pulumi.Input<List<String>> natSubnets;
   /// The ID of the project in which the resource belongs.
@@ -86,6 +88,7 @@ class ServiceAttachmentArgs {
   /// [domainNames] If specified, the domain name will be used during the integration between
   /// [enableProxyProtocol] If true, enable the proxy protocol which is for supplying client TCP/IP
   /// [name] Name of the resource. The name must be 1-63 characters long, and
+  /// [natIpsPerEndpoint] The number of NAT IPs allocated per connected endpoint.
   /// [natSubnets] An array of subnets that is provided for NAT in this service attachment.
   /// [project] The ID of the project in which the resource belongs.
   /// [propagatedConnectionLimit] The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
@@ -104,6 +107,7 @@ class ServiceAttachmentArgs {
     this.domainNames,
     required this.enableProxyProtocol,
     this.name,
+    this.natIpsPerEndpoint,
     required this.natSubnets,
     this.project,
     this.propagatedConnectionLimit,
@@ -125,6 +129,7 @@ class ServiceAttachmentArgs {
       'domainNames': ?domainNames,
       'enableProxyProtocol': enableProxyProtocol,
       'name': ?name,
+      'natIpsPerEndpoint': ?natIpsPerEndpoint,
       'natSubnets': natSubnets,
       'project': ?project,
       'propagatedConnectionLimit': ?propagatedConnectionLimit,
@@ -147,9 +152,10 @@ class ServiceAttachmentArgs {
       domainNames: (() { final guardedValue = map['domainNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       enableProxyProtocol: pulumi.Input.fromValue(map['enableProxyProtocol'] as bool),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      natIpsPerEndpoint: (() { final guardedValue = map['natIpsPerEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       natSubnets: pulumi.Input.fromValue((map['natSubnets'] as List).cast<String>()),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      propagatedConnectionLimit: (() { final guardedValue = map['propagatedConnectionLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      propagatedConnectionLimit: (() { final guardedValue = map['propagatedConnectionLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       reconcileConnections: (() { final guardedValue = map['reconcileConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sendPropagatedConnectionLimitIfZero: (() { final guardedValue = map['sendPropagatedConnectionLimitIfZero']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

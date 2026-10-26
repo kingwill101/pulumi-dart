@@ -52,7 +52,7 @@ import 'get_hl7_v2_store_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -70,7 +70,7 @@ import 'get_hl7_v2_store_iam_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -78,7 +78,7 @@ import 'get_hl7_v2_store_iam_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_healthcare_getconsentstoreiampolicy" "policy" {
+/// data "gcp_healthcare_consent_store_iam_policy" "policy" {
 ///   dataset          = my-consent.dataset
 ///   consent_store_id = my-consent.name
 /// }
@@ -185,7 +185,7 @@ pulumi.Output<GetConsentStoreIamPolicyResult> getConsentStoreIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -202,7 +202,7 @@ pulumi.Output<GetConsentStoreIamPolicyResult> getConsentStoreIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -210,7 +210,7 @@ pulumi.Output<GetConsentStoreIamPolicyResult> getConsentStoreIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_healthcare_getdatasetiampolicy" "foo" {
+/// data "gcp_healthcare_dataset_iam_policy" "foo" {
 ///   dataset_id = dataset.id
 /// }
 /// ```
@@ -314,7 +314,7 @@ pulumi.Output<GetDatasetIamPolicyResult> getDatasetIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -331,7 +331,7 @@ pulumi.Output<GetDatasetIamPolicyResult> getDatasetIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -339,7 +339,7 @@ pulumi.Output<GetDatasetIamPolicyResult> getDatasetIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_healthcare_getdicomstoreiampolicy" "foo" {
+/// data "gcp_healthcare_dicom_store_iam_policy" "foo" {
 ///   dicom_store_id = dicomStore.id
 /// }
 /// ```
@@ -443,7 +443,7 @@ pulumi.Output<GetDicomStoreIamPolicyResult> getDicomStoreIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -460,7 +460,7 @@ pulumi.Output<GetDicomStoreIamPolicyResult> getDicomStoreIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -468,7 +468,7 @@ pulumi.Output<GetDicomStoreIamPolicyResult> getDicomStoreIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_healthcare_getfhirstoreiampolicy" "foo" {
+/// data "gcp_healthcare_fhir_store_iam_policy" "foo" {
 ///   fhir_store_id = fhirStore.id
 /// }
 /// ```
@@ -572,7 +572,7 @@ pulumi.Output<GetFhirStoreIamPolicyResult> getFhirStoreIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -589,7 +589,7 @@ pulumi.Output<GetFhirStoreIamPolicyResult> getFhirStoreIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -597,7 +597,7 @@ pulumi.Output<GetFhirStoreIamPolicyResult> getFhirStoreIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_healthcare_gethl7v2storeiampolicy" "foo" {
+/// data "gcp_healthcare_hl7_v2_store_iam_policy" "foo" {
 ///   hl7_v2_store_id = hl7V2Store.id
 /// }
 /// ```

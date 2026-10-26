@@ -35,7 +35,7 @@ class WorkerPoolWorkerConfig {
 
   factory WorkerPoolWorkerConfig.fromMap(Map<String, dynamic> map) {
     return WorkerPoolWorkerConfig(
-      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       enableNestedVirtualization: (() { final guardedValue = map['enableNestedVirtualization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       noExternalIp: (() { final guardedValue = map['noExternalIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

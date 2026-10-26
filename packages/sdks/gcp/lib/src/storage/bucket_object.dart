@@ -62,7 +62,7 @@ import 'bucket_object_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -81,7 +81,7 @@ import 'bucket_object_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -89,9 +89,12 @@ import 'bucket_object_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_bucketobject" "picture" {
+/// resource "gcp_storage_bucket_object" "picture" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "butterfly01"
-///   source = fileAsset("/images/nature/garden-tiger-moth.jpg")
+///   source = fileasset("/images/nature/garden-tiger-moth.jpg")
 ///   bucket = "image-store"
 /// }
 /// ```
@@ -181,7 +184,7 @@ import 'bucket_object_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -200,7 +203,7 @@ import 'bucket_object_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -208,7 +211,10 @@ import 'bucket_object_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_bucketobject" "empty_folder" {
+/// resource "gcp_storage_bucket_object" "empty_folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "empty_folder/"
 ///   content = " "
 ///   bucket  = "image-store"
@@ -339,7 +345,7 @@ import 'bucket_object_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -370,7 +376,7 @@ import 'bucket_object_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -378,17 +384,20 @@ import 'bucket_object_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_bucketobject" "bucket_object" {
+/// resource "gcp_storage_bucket_object" "bucket_object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket  = "test-bucket"
 ///   name    = "test-object"
 ///   content = "test-content"
 ///   contexts = {
 ///     customs = [{
-///       "key"   = "testKey"
-///       "value" = "test"
+///       key   = "testKey"
+///       value = "test"
 ///       }, {
-///       "key"   = "testKeyTwo"
-///       "value" = "test"
+///       key   = "testKeyTwo"
+///       value = "test"
 ///     }]
 ///   }
 /// }
@@ -544,7 +553,7 @@ class BucketObject extends pulumi.CustomResource {
           'gcp:storage/bucketObject:BucketObject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['content', 'customerEncryption'],
         ) {
     bucket = registerOutput<String>('bucket');

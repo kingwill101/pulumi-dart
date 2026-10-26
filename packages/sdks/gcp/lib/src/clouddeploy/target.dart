@@ -137,7 +137,7 @@ import 'target_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -182,7 +182,7 @@ import 'target_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -191,6 +191,9 @@ import 'target_state.dart';
 /// }
 ///
 /// resource "gcp_clouddeploy_target" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "us-west1"
 ///   name              = "target"
 ///   deploy_parameters = {}
@@ -411,7 +414,7 @@ import 'target_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -453,7 +456,7 @@ import 'target_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -462,6 +465,9 @@ import 'target_state.dart';
 /// }
 ///
 /// resource "gcp_clouddeploy_target" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "us-west1"
 ///   name              = "target"
 ///   deploy_parameters = {}
@@ -659,7 +665,7 @@ import 'target_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddeploy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddeploy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -694,7 +700,7 @@ import 'target_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -703,6 +709,9 @@ import 'target_state.dart';
 /// }
 ///
 /// resource "gcp_clouddeploy_target" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-west1"
 ///   name     = "target"
 ///   deploy_parameters = {
@@ -884,7 +893,7 @@ class Target extends pulumi.CustomResource {
           'gcp:clouddeploy/target:Target',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

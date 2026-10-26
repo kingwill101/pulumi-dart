@@ -84,7 +84,7 @@ import 'scope_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -111,7 +111,7 @@ import 'scope_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -120,6 +120,9 @@ import 'scope_state.dart';
 /// }
 ///
 /// resource "gcp_gkehub_scope" "scope" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   scope_id = "my-scope"
 ///   namespace_labels = {
 ///     "keyb" = "valueb"
@@ -259,7 +262,7 @@ class Scope extends pulumi.CustomResource {
           'gcp:gkehub/scope:Scope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

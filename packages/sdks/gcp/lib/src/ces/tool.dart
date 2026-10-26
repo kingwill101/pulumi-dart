@@ -23,7 +23,7 @@ import 'tool_widget_tool.dart';
 ///
 /// Individual tools of type `openApiTool`, `mcpTool`, `connectorTool`, and `remoteAgentTool` **cannot** be created, updated, or managed directly using the `gcp.ces.Tool` resource.
 ///
-/// `openApiTool`, `mcpTool`, and `connectorTool` are dynamically generated at runtime based on their corresponding **toolsets** (configured via the `gcp.ces.Toolset` resource). `remoteAgentTool` represents A2A connections configured externally, and `systemTool` represents pre-defined platform tools managed entirely by Google Cloud.
+/// `openApiTool`, `mcpTool`, and `connectorTool` are dynamically generated at runtime based on their corresponding **toolsets** (configured via the `gcp.ces.Toolset` resource), `remoteAgentTool` represents A2A connections configured externally, and `systemTool` represents pre-defined platform tools managed entirely by Google Cloud.
 ///
 /// Consequently, blocks like `openApiTool`, `mcpTool`, `connectorTool`, `remoteAgentTool`, and `systemTool` are marked as **read-only (output-only)** in this resource. They are populated by the server for reference purposes only (e.g., after importing an existing tool into your state) and **cannot** be configured in your Terraform HCL configuration.
 ///
@@ -427,7 +427,7 @@ import 'tool_widget_tool.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -634,7 +634,7 @@ import 'tool_widget_tool.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -643,6 +643,9 @@ import 'tool_widget_tool.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "my-app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   display_name = "my-app"
 ///   app_id       = "app-id"
@@ -651,6 +654,9 @@ import 'tool_widget_tool.dart';
 ///   }
 /// }
 /// resource "gcp_ces_tool" "ces_tool_client_function_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us"
 ///   app            = gcp_ces_app.my-app.name
 ///   tool_id        = "ces_tool_basic1"
@@ -1340,8 +1346,8 @@ import 'tool_widget_tool.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1468,7 +1474,7 @@ import 'tool_widget_tool.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1476,7 +1482,10 @@ import 'tool_widget_tool.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_discoveryengine_datastore" "basic" {
+/// resource "gcp_discoveryengine_data_store" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                    = "global"
 ///   data_store_id               = "tool_data_store_id"
 ///   display_name                = "tf-test-structured-datastore"
@@ -1485,15 +1494,21 @@ import 'tool_widget_tool.dart';
 ///   solution_types              = ["SOLUTION_TYPE_SEARCH"]
 ///   create_advanced_site_search = false
 /// }
-/// resource "gcp_discoveryengine_searchengine" "basic" {
+/// resource "gcp_discoveryengine_search_engine" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   engine_id            = "tool_engine_id"
 ///   collection_id        = "default_collection"
-///   location             = gcp_discoveryengine_datastore.basic.location
+///   location             = gcp_discoveryengine_data_store.basic.location
 ///   display_name         = "Example Display Name"
-///   data_store_ids       = [gcp_discoveryengine_datastore.basic.data_store_id]
+///   data_store_ids       = [gcp_discoveryengine_data_store.basic.data_store_id]
 ///   search_engine_config = {}
 /// }
 /// resource "gcp_ces_app" "my-app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   display_name = "my-app"
 ///   app_id       = "app-id"
@@ -1502,6 +1517,9 @@ import 'tool_widget_tool.dart';
 ///   }
 /// }
 /// resource "gcp_ces_tool" "ces_tool_data_store_tool_engine_source_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us"
 ///   app            = gcp_ces_app.my-app.name
 ///   tool_id        = "ces_tool_basic2"
@@ -1510,52 +1528,52 @@ import 'tool_widget_tool.dart';
 ///     name        = "example-tool"
 ///     description = "example-description"
 ///     boost_specs = [{
-///       "dataStores" = [gcp_discoveryengine_datastore.basic.name]
-///       "specs" = [{
-///         "conditionBoostSpecs" = [{
-///           "condition" = "(lang_code: ANY(\"en\", \"fr\"))"
-///           "boost"     = 1
-///           "boostControlSpec" = {
-///             "fieldName"         = "example-field"
-///             "attributeType"     = "NUMERICAL"
-///             "interpolationType" = "LINEAR"
-///             "controlPoints" = [{
-///               "attributeValue" = 1
-///               "boostAmount"    = 1
+///       data_stores = [gcp_discoveryengine_data_store.basic.name]
+///       specs = [{
+///         condition_boost_specs = [{
+///           condition = "(lang_code: ANY(\"en\", \"fr\"))"
+///           boost     = 1
+///           boost_control_spec = {
+///             field_name         = "example-field"
+///             attribute_type     = "NUMERICAL"
+///             interpolation_type = "LINEAR"
+///             control_points = [{
+///               attribute_value = 1
+///               boost_amount    = 1
 ///             }]
 ///           }
 ///         }]
 ///       }]
 ///     }]
 ///     modality_configs = [{
-///       "modalityType" = "TEXT"
-///       "rewriterConfig" = {
-///         "modelSettings" = {
-///           "model"       = "gemini-3.0-flash-001"
-///           "temperature" = 1
+///       modality_type = "TEXT"
+///       rewriter_config = {
+///         model_settings = {
+///           model       = "gemini-3.0-flash-001"
+///           temperature = 1
 ///         }
-///         "prompt"   = "example-prompt"
-///         "disabled" = false
+///         prompt   = "example-prompt"
+///         disabled = false
 ///       }
-///       "summarizationConfig" = {
-///         "modelSettings" = {
-///           "model"       = "gemini-3.0-flash-001"
-///           "temperature" = 1
+///       summarization_config = {
+///         model_settings = {
+///           model       = "gemini-3.0-flash-001"
+///           temperature = 1
 ///         }
-///         "prompt"   = "example-prompt"
-///         "disabled" = false
+///         prompt   = "example-prompt"
+///         disabled = false
 ///       }
-///       "groundingConfig" = {
-///         "groundingLevel" = 3
-///         "disabled"       = false
+///       grounding_config = {
+///         grounding_level = 3
+///         disabled        = false
 ///       }
 ///     }]
 ///     engine_source = {
-///       engine = gcp_discoveryengine_searchengine.basic.name
+///       engine = gcp_discoveryengine_search_engine.basic.name
 ///       data_store_sources = [{
-///         "filter" = "example_field: ANY(\"specific_example\")"
-///         "dataStore" = {
-///           "name" = gcp_discoveryengine_datastore.basic.name
+///         filter = "example_field: ANY(\"specific_example\")"
+///         data_store = {
+///           name = gcp_discoveryengine_data_store.basic.name
 ///         }
 ///       }]
 ///       filter = "example_field: ANY(\"specific_example\")"
@@ -1909,7 +1927,7 @@ import 'tool_widget_tool.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1956,7 +1974,7 @@ import 'tool_widget_tool.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1965,6 +1983,9 @@ import 'tool_widget_tool.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "my-app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   display_name = "my-app"
 ///   app_id       = "app-id"
@@ -1973,6 +1994,9 @@ import 'tool_widget_tool.dart';
 ///   }
 /// }
 /// resource "gcp_ces_tool" "ces_tool_google_search_tool_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us"
 ///   app            = gcp_ces_app.my-app.name
 ///   tool_id        = "ces_tool_basic3"
@@ -2161,7 +2185,7 @@ import 'tool_widget_tool.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2196,7 +2220,7 @@ import 'tool_widget_tool.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2205,6 +2229,9 @@ import 'tool_widget_tool.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "my-app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   display_name = "my-app"
 ///   app_id       = "app-id"
@@ -2213,6 +2240,9 @@ import 'tool_widget_tool.dart';
 ///   }
 /// }
 /// resource "gcp_ces_tool" "ces_tool_python_function_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us"
 ///   app            = gcp_ces_app.my-app.name
 ///   tool_id        = "ces_tool_basic4"
@@ -2421,7 +2451,7 @@ import 'tool_widget_tool.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2473,7 +2503,7 @@ import 'tool_widget_tool.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2482,6 +2512,9 @@ import 'tool_widget_tool.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "my-app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   display_name = "my-app"
 ///   app_id       = "app-id"
@@ -2490,6 +2523,9 @@ import 'tool_widget_tool.dart';
 ///   }
 /// }
 /// resource "gcp_ces_agent" "target_agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_id     = "target-agent"
 ///   location     = "us"
 ///   app          = gcp_ces_app.my-app.app_id
@@ -2498,6 +2534,9 @@ import 'tool_widget_tool.dart';
 ///   llm_agent    = {}
 /// }
 /// resource "gcp_ces_tool" "ces_tool_agent_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us"
 ///   app            = gcp_ces_app.my-app.name
 ///   tool_id        = "ces_tool_basic5"
@@ -2704,7 +2743,7 @@ import 'tool_widget_tool.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2743,7 +2782,7 @@ import 'tool_widget_tool.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2752,6 +2791,9 @@ import 'tool_widget_tool.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "my-app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   display_name = "my-app"
 ///   app_id       = "app-id"
@@ -2760,6 +2802,9 @@ import 'tool_widget_tool.dart';
 ///   }
 /// }
 /// resource "gcp_ces_tool" "ces_tool_file_search_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us"
 ///   app            = gcp_ces_app.my-app.name
 ///   tool_id        = "ces_tool_basic6"
@@ -3020,7 +3065,7 @@ import 'tool_widget_tool.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3090,7 +3135,7 @@ import 'tool_widget_tool.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3099,6 +3144,9 @@ import 'tool_widget_tool.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "my-app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   display_name = "my-app"
 ///   app_id       = "app-id"
@@ -3107,6 +3155,9 @@ import 'tool_widget_tool.dart';
 ///   }
 /// }
 /// resource "gcp_ces_tool" "ces_tool_widget_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us"
 ///   app            = gcp_ces_app.my-app.name
 ///   tool_id        = "ces_tool_basic7"
@@ -3385,7 +3436,7 @@ class Tool extends pulumi.CustomResource {
           'gcp:ces/tool:Tool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     agentTool = registerOutput<ToolAgentTool?>('agentTool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolAgentTool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     app = registerOutput<String>('app');

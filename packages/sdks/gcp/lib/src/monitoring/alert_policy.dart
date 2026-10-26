@@ -115,7 +115,7 @@ import 'alert_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -152,7 +152,7 @@ import 'alert_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -160,7 +160,10 @@ import 'alert_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_alertpolicy" "alert_policy" {
+/// resource "gcp_monitoring_alert_policy" "alert_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "My Alert Policy"
 ///   combiner     = "OR"
 ///   conditions {
@@ -170,8 +173,8 @@ import 'alert_policy_state.dart';
 ///       duration   = "60s"
 ///       comparison = "COMPARISON_GT"
 ///       aggregations = [{
-///         "alignmentPeriod"  = "60s"
-///         "perSeriesAligner" = "ALIGN_RATE"
+///         alignment_period   = "60s"
+///         per_series_aligner = "ALIGN_RATE"
 ///       }]
 ///     }
 ///   }
@@ -345,7 +348,7 @@ import 'alert_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -383,7 +386,7 @@ import 'alert_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -391,7 +394,10 @@ import 'alert_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_alertpolicy" "alert_policy" {
+/// resource "gcp_monitoring_alert_policy" "alert_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "My Alert Policy"
 ///   combiner     = "OR"
 ///   conditions {
@@ -401,8 +407,8 @@ import 'alert_policy_state.dart';
 ///       duration   = "60s"
 ///       comparison = "COMPARISON_GT"
 ///       aggregations = [{
-///         "alignmentPeriod"  = "60s"
-///         "perSeriesAligner" = "ALIGN_RATE"
+///         alignment_period   = "60s"
+///         per_series_aligner = "ALIGN_RATE"
 ///       }]
 ///       evaluation_missing_data = "EVALUATION_MISSING_DATA_INACTIVE"
 ///     }
@@ -586,7 +592,7 @@ import 'alert_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -626,7 +632,7 @@ import 'alert_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -634,7 +640,10 @@ import 'alert_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_alertpolicy" "alert_policy" {
+/// resource "gcp_monitoring_alert_policy" "alert_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "My Alert Policy"
 ///   combiner     = "OR"
 ///   conditions {
@@ -647,8 +656,8 @@ import 'alert_policy_state.dart';
 ///       }
 ///       comparison = "COMPARISON_GT"
 ///       aggregations = [{
-///         "alignmentPeriod"  = "60s"
-///         "perSeriesAligner" = "ALIGN_RATE"
+///         alignment_period   = "60s"
+///         per_series_aligner = "ALIGN_RATE"
 ///       }]
 ///     }
 ///   }
@@ -815,7 +824,7 @@ import 'alert_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -848,7 +857,7 @@ import 'alert_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -856,7 +865,10 @@ import 'alert_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_alertpolicy" "alert_policy" {
+/// resource "gcp_monitoring_alert_policy" "alert_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "My Alert Policy"
 ///   combiner     = "OR"
 ///   conditions {
@@ -1026,7 +1038,7 @@ import 'alert_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1059,7 +1071,7 @@ import 'alert_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1067,7 +1079,10 @@ import 'alert_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_alertpolicy" "alert_policy" {
+/// resource "gcp_monitoring_alert_policy" "alert_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "My Alert Policy"
 ///   combiner     = "OR"
 ///   conditions {
@@ -1245,7 +1260,7 @@ class AlertPolicy extends pulumi.CustomResource {
           'gcp:monitoring/alertPolicy:AlertPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     alertStrategy = registerOutput<AlertPolicyAlertStrategy?>('alertStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertPolicyAlertStrategy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     combiner = registerOutput<String>('combiner');

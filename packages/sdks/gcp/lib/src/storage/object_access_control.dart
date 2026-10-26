@@ -101,7 +101,7 @@ import 'object_access_control_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -136,7 +136,7 @@ import 'object_access_control_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -144,20 +144,29 @@ import 'object_access_control_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_objectaccesscontrol" "public_rule" {
-///   object = gcp_storage_bucketobject.object.output_name
+/// resource "gcp_storage_object_access_control" "public_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   object = gcp_storage_bucket_object.object.output_name
 ///   bucket = gcp_storage_bucket.bucket.name
 ///   role   = "READER"
 ///   entity = "allUsers"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "static-content-bucket"
 ///   location = "US"
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "public-object"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("../static/img/header-logo.png")
+///   source = fileasset("../static/img/header-logo.png")
 /// }
 /// ```
 /// ```java
@@ -293,7 +302,7 @@ class ObjectAccessControl extends pulumi.CustomResource {
           'gcp:storage/objectAccessControl:ObjectAccessControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     deletionPolicy = registerOutput<String>('deletionPolicy');

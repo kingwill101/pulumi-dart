@@ -119,8 +119,8 @@ import 'wasm_plugin_version.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -161,7 +161,7 @@ import 'wasm_plugin_version.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -169,10 +169,13 @@ import 'wasm_plugin_version.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_networkservices_wasmplugin" "wasm_plugin" {
+/// resource "gcp_networkservices_wasm_plugin" "wasm_plugin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "my-wasm-plugin"
 ///   description     = "my wasm plugin from a docker repository"
 ///   main_version_id = "v1"
@@ -187,7 +190,7 @@ import 'wasm_plugin_version.dart';
 ///   versions {
 ///     version_name = "v1"
 ///     description  = "v1 version of my wasm plugin"
-///     image_uri    ="us-central1-docker.pkg.dev/${data.gcp_organizations_getproject.project.name}/my-artifact-registry-docker-repository/my-wasm-plugin-data:prod"
+///     image_uri    ="us-central1-docker.pkg.dev/${data.gcp_organizations_project.project.name}/my-artifact-registry-docker-repository/my-wasm-plugin-data:prod"
 ///     labels = {
 ///       "test_label" = "test_value"
 ///     }
@@ -374,8 +377,8 @@ import 'wasm_plugin_version.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -416,7 +419,7 @@ import 'wasm_plugin_version.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -424,10 +427,13 @@ import 'wasm_plugin_version.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_networkservices_wasmplugin" "wasm_plugin" {
+/// resource "gcp_networkservices_wasm_plugin" "wasm_plugin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "my-wasm-plugin"
 ///   description     = "my wasm plugin from a generic repository"
 ///   main_version_id = "v1"
@@ -442,7 +448,7 @@ import 'wasm_plugin_version.dart';
 ///   versions {
 ///     version_name = "v1"
 ///     description  = "v1 version of my wasm plugin"
-///     image_uri    ="projects/${data.gcp_organizations_getproject.project.name}/locations/us-central1/repositories/my-artifact-registry-generic-repository/genericArtifacts/my-wasm-plugin-data:v1"
+///     image_uri    ="projects/${data.gcp_organizations_project.project.name}/locations/us-central1/repositories/my-artifact-registry-generic-repository/genericArtifacts/my-wasm-plugin-data:v1"
 ///     labels = {
 ///       "test_label" = "test_value"
 ///     }
@@ -598,7 +604,7 @@ class WasmPlugin extends pulumi.CustomResource {
           'gcp:networkservices/wasmPlugin:WasmPlugin',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

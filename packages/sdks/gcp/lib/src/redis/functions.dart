@@ -47,7 +47,7 @@ import 'get_instance_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -65,7 +65,7 @@ import 'get_instance_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -73,7 +73,7 @@ import 'get_instance_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_redis_getcluster" "default" {
+/// data "gcp_redis_cluster" "default" {
 ///   name   = "my-redis-cluster"
 ///   region = "us-central1"
 /// }
@@ -183,7 +183,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -201,7 +201,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -209,7 +209,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 ///   }
 /// }
 ///
-/// data "gcp_redis_getclusteraclpolicy" "qa" {
+/// data "gcp_redis_cluster_acl_policy" "qa" {
 ///   acl_policy_id = "my-acl-policy"
 ///   location      = "us-central1"
 /// }
@@ -328,7 +328,7 @@ pulumi.Output<GetClusterAclPolicyResult> getClusterAclPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -348,7 +348,7 @@ pulumi.Output<GetClusterAclPolicyResult> getClusterAclPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -356,18 +356,18 @@ pulumi.Output<GetClusterAclPolicyResult> getClusterAclPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_redis_getinstance" "myInstance" {
+/// data "gcp_redis_instance" "myInstance" {
 ///   name = "my-redis-instance"
 /// }
 ///
 /// output "instanceMemorySizeGb" {
-///   value = data.gcp_redis_getinstance.myInstance.memory_size_gb
+///   value = data.gcp_redis_instance.myInstance.memory_size_gb
 /// }
 /// output "instanceConnectMode" {
-///   value = data.gcp_redis_getinstance.myInstance.connect_mode
+///   value = data.gcp_redis_instance.myInstance.connect_mode
 /// }
 /// output "instanceAuthorizedNetwork" {
-///   value = data.gcp_redis_getinstance.myInstance.authorized_network
+///   value = data.gcp_redis_instance.myInstance.authorized_network
 /// }
 /// ```
 /// ```java

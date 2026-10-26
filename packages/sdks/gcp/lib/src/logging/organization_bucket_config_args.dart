@@ -73,7 +73,7 @@ class OrganizationBucketConfigArgs {
       indexConfigs: (() { final guardedValue = map['indexConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<OrganizationBucketConfigIndexConfig>(guardedValue, (value) => OrganizationBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       organization: pulumi.Input.fromValue(map['organization'] as String),
-      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -114,7 +114,7 @@ import 'subnetwork_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -131,7 +131,7 @@ import 'subnetwork_state.dart';
 /// 			Name:        pulumi.String("test-subnetwork"),
 /// 			IpCidrRange: pulumi.String("10.2.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     custom_test.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     custom_test.ID(),
 /// 			SecondaryIpRanges: compute.SubnetworkSecondaryIpRangeArray{
 /// 				&compute.SubnetworkSecondaryIpRangeArgs{
 /// 					RangeName:   pulumi.String("tf-test-secondary-range-update1"),
@@ -147,7 +147,7 @@ import 'subnetwork_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -156,6 +156,9 @@ import 'subnetwork_state.dart';
 /// }
 ///
 /// resource "gcp_compute_subnetwork" "network-with-private-secondary-ip-ranges" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "test-subnetwork"
 ///   ip_cidr_range = "10.2.0.0/16"
 ///   region        = "us-central1"
@@ -166,6 +169,9 @@ import 'subnetwork_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "custom-test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "test-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -308,7 +314,7 @@ import 'subnetwork_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -325,7 +331,7 @@ import 'subnetwork_state.dart';
 /// 			Name:        pulumi.String("log-test-subnetwork"),
 /// 			IpCidrRange: pulumi.String("10.2.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     custom_test.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     custom_test.ID(),
 /// 			LogConfig: &compute.SubnetworkLogConfigArgs{
 /// 				AggregationInterval: pulumi.String("INTERVAL_10_MIN"),
 /// 				FlowSampling:        pulumi.Float64(0.5),
@@ -340,7 +346,7 @@ import 'subnetwork_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -349,6 +355,9 @@ import 'subnetwork_state.dart';
 /// }
 ///
 /// resource "gcp_compute_subnetwork" "subnet-with-logging" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "log-test-subnetwork"
 ///   ip_cidr_range = "10.2.0.0/16"
 ///   region        = "us-central1"
@@ -360,6 +369,9 @@ import 'subnetwork_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "custom-test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "log-test-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -494,7 +506,7 @@ import 'subnetwork_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -513,7 +525,7 @@ import 'subnetwork_state.dart';
 /// 			Region:      pulumi.String("us-central1"),
 /// 			Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 /// 			Role:        pulumi.String("ACTIVE"),
-/// 			Network:     custom_test.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     custom_test.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -523,7 +535,7 @@ import 'subnetwork_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -532,6 +544,9 @@ import 'subnetwork_state.dart';
 /// }
 ///
 /// resource "gcp_compute_subnetwork" "network-for-l7lb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "l7lb-test-subnetwork"
 ///   ip_cidr_range = "10.0.0.0/22"
 ///   region        = "us-central1"
@@ -540,6 +555,9 @@ import 'subnetwork_state.dart';
 ///   network       = gcp_compute_network.custom-test.id
 /// }
 /// resource "gcp_compute_network" "custom-test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "l7lb-test-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -668,7 +686,7 @@ import 'subnetwork_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -687,7 +705,7 @@ import 'subnetwork_state.dart';
 /// 			Region:         pulumi.String("us-west2"),
 /// 			StackType:      pulumi.String("IPV4_IPV6"),
 /// 			Ipv6AccessType: pulumi.String("EXTERNAL"),
-/// 			Network:        custom_test.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:        custom_test.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -697,7 +715,7 @@ import 'subnetwork_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -706,6 +724,9 @@ import 'subnetwork_state.dart';
 /// }
 ///
 /// resource "gcp_compute_subnetwork" "subnetwork-ipv6" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "ipv6-test-subnetwork"
 ///   ip_cidr_range    = "10.0.0.0/22"
 ///   region           = "us-west2"
@@ -714,6 +735,9 @@ import 'subnetwork_state.dart';
 ///   network          = gcp_compute_network.custom-test.id
 /// }
 /// resource "gcp_compute_network" "custom-test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "ipv6-test-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -845,7 +869,7 @@ import 'subnetwork_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -865,7 +889,7 @@ import 'subnetwork_state.dart';
 /// 			Region:         pulumi.String("us-west2"),
 /// 			StackType:      pulumi.String("IPV4_IPV6"),
 /// 			Ipv6AccessType: pulumi.String("INTERNAL"),
-/// 			Network:        custom_test.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:        custom_test.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -875,7 +899,7 @@ import 'subnetwork_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -884,6 +908,9 @@ import 'subnetwork_state.dart';
 /// }
 ///
 /// resource "gcp_compute_subnetwork" "subnetwork-internal-ipv6" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "internal-ipv6-test-subnetwork"
 ///   ip_cidr_range    = "10.0.0.0/22"
 ///   region           = "us-west2"
@@ -892,6 +919,9 @@ import 'subnetwork_state.dart';
 ///   network          = gcp_compute_network.custom-test.id
 /// }
 /// resource "gcp_compute_network" "custom-test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "internal-ipv6-test-network"
 ///   auto_create_subnetworks  = false
 ///   enable_ula_internal_ipv6 = true
@@ -1020,7 +1050,7 @@ import 'subnetwork_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1038,7 +1068,7 @@ import 'subnetwork_state.dart';
 /// 			Region:      pulumi.String("us-west2"),
 /// 			IpCidrRange: pulumi.String("192.168.1.0/24"),
 /// 			Purpose:     pulumi.String("PRIVATE_NAT"),
-/// 			Network:     custom_test.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     custom_test.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1048,7 +1078,7 @@ import 'subnetwork_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1057,6 +1087,9 @@ import 'subnetwork_state.dart';
 /// }
 ///
 /// resource "gcp_compute_subnetwork" "subnetwork-purpose-private-nat" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "subnet-purpose-test-subnetwork"
 ///   region        = "us-west2"
 ///   ip_cidr_range = "192.168.1.0/24"
@@ -1064,6 +1097,9 @@ import 'subnetwork_state.dart';
 ///   network       = gcp_compute_network.custom-test.id
 /// }
 /// resource "gcp_compute_network" "custom-test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "subnet-purpose-test-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -1190,7 +1226,7 @@ import 'subnetwork_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1209,7 +1245,7 @@ import 'subnetwork_state.dart';
 /// 			IpCidrRange:       pulumi.String("10.10.0.0/24"),
 /// 			Purpose:           pulumi.String("PRIVATE"),
 /// 			ResolveSubnetMask: pulumi.String("ARP_PRIMARY_RANGE"),
-/// 			Network:           custom_test.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:           custom_test.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1219,7 +1255,7 @@ import 'subnetwork_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1228,6 +1264,9 @@ import 'subnetwork_state.dart';
 /// }
 ///
 /// resource "gcp_compute_subnetwork" "subnetwork-resolve-subnet-mask" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "subnet-resolve-subnet-mask-test-subnetwork"
 ///   region              = "us-west2"
 ///   ip_cidr_range       = "10.10.0.0/24"
@@ -1236,6 +1275,9 @@ import 'subnetwork_state.dart';
 ///   network             = gcp_compute_network.custom-test.id
 /// }
 /// resource "gcp_compute_network" "custom-test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "subnet-resolve-subnet-mask-test-network"
 ///   auto_create_subnetworks = false
 /// }
@@ -1361,7 +1403,7 @@ import 'subnetwork_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1379,7 +1421,7 @@ import 'subnetwork_state.dart';
 /// 			Region:                       pulumi.String("us-west2"),
 /// 			IpCidrRange:                  pulumi.String("192.168.1.0/24"),
 /// 			AllowSubnetCidrRoutesOverlap: pulumi.Bool(true),
-/// 			Network:                      net_cidr_overlap.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:                      net_cidr_overlap.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1389,7 +1431,7 @@ import 'subnetwork_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1398,6 +1440,9 @@ import 'subnetwork_state.dart';
 /// }
 ///
 /// resource "gcp_compute_subnetwork" "subnetwork-cidr-overlap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                             = "subnet-cidr-overlap"
 ///   region                           = "us-west2"
 ///   ip_cidr_range                    = "192.168.1.0/24"
@@ -1405,6 +1450,9 @@ import 'subnetwork_state.dart';
 ///   network                          = gcp_compute_network.net-cidr-overlap.id
 /// }
 /// resource "gcp_compute_network" "net-cidr-overlap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "net-cidr-overlap"
 ///   auto_create_subnetworks = false
 /// }
@@ -1555,8 +1603,8 @@ import 'subnetwork_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1571,7 +1619,7 @@ import 'subnetwork_state.dart';
 /// 		}
 /// 		reserved, err := networkconnectivity.NewInternalRange(ctx, "reserved", &networkconnectivity.InternalRangeArgs{
 /// 			Name:         pulumi.String("reserved"),
-/// 			Network:      _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      _default.ID(),
 /// 			Usage:        pulumi.String("FOR_VPC"),
 /// 			Peering:      pulumi.String("FOR_SELF"),
 /// 			PrefixLength: pulumi.Int(24),
@@ -1585,7 +1633,7 @@ import 'subnetwork_state.dart';
 /// 		_, err = compute.NewSubnetwork(ctx, "subnetwork-reserved-internal-range", &compute.SubnetworkArgs{
 /// 			Name:    pulumi.String("subnetwork-reserved-internal-range"),
 /// 			Region:  pulumi.String("us-central1"),
-/// 			Network: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: _default.ID(),
 /// 			ReservedInternalRange: reserved.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("networkconnectivity.googleapis.com/%v", id), nil
 /// 			}).(pulumi.StringOutput),
@@ -1598,7 +1646,7 @@ import 'subnetwork_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1607,16 +1655,25 @@ import 'subnetwork_state.dart';
 /// }
 ///
 /// resource "gcp_compute_subnetwork" "subnetwork-reserved-internal-range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "subnetwork-reserved-internal-range"
 ///   region                  = "us-central1"
 ///   network                 = gcp_compute_network.default.id
-///   reserved_internal_range ="networkconnectivity.googleapis.com/${gcp_networkconnectivity_internalrange.reserved.id}"
+///   reserved_internal_range ="networkconnectivity.googleapis.com/${gcp_networkconnectivity_internal_range.reserved.id}"
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network-reserved-internal-range"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networkconnectivity_internalrange" "reserved" {
+/// resource "gcp_networkconnectivity_internal_range" "reserved" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "reserved"
 ///   network            = gcp_compute_network.default.id
 ///   usage              = "FOR_VPC"
@@ -1834,8 +1891,8 @@ import 'subnetwork_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1850,7 +1907,7 @@ import 'subnetwork_state.dart';
 /// 		}
 /// 		reserved, err := networkconnectivity.NewInternalRange(ctx, "reserved", &networkconnectivity.InternalRangeArgs{
 /// 			Name:         pulumi.String("reserved-primary"),
-/// 			Network:      _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      _default.ID(),
 /// 			Usage:        pulumi.String("FOR_VPC"),
 /// 			Peering:      pulumi.String("FOR_SELF"),
 /// 			PrefixLength: pulumi.Int(24),
@@ -1863,7 +1920,7 @@ import 'subnetwork_state.dart';
 /// 		}
 /// 		reservedSecondary, err := networkconnectivity.NewInternalRange(ctx, "reserved_secondary", &networkconnectivity.InternalRangeArgs{
 /// 			Name:         pulumi.String("reserved-secondary"),
-/// 			Network:      _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      _default.ID(),
 /// 			Usage:        pulumi.String("FOR_VPC"),
 /// 			Peering:      pulumi.String("FOR_SELF"),
 /// 			PrefixLength: pulumi.Int(16),
@@ -1877,7 +1934,7 @@ import 'subnetwork_state.dart';
 /// 		_, err = compute.NewSubnetwork(ctx, "subnetwork-reserved-secondary-range", &compute.SubnetworkArgs{
 /// 			Name:    pulumi.String("subnetwork-reserved-secondary-range"),
 /// 			Region:  pulumi.String("us-central1"),
-/// 			Network: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: _default.ID(),
 /// 			ReservedInternalRange: reserved.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("networkconnectivity.googleapis.com/%v", id), nil
 /// 			}).(pulumi.StringOutput),
@@ -1898,7 +1955,7 @@ import 'subnetwork_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1907,20 +1964,29 @@ import 'subnetwork_state.dart';
 /// }
 ///
 /// resource "gcp_compute_subnetwork" "subnetwork-reserved-secondary-range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "subnetwork-reserved-secondary-range"
 ///   region                  = "us-central1"
 ///   network                 = gcp_compute_network.default.id
-///   reserved_internal_range ="networkconnectivity.googleapis.com/${gcp_networkconnectivity_internalrange.reserved.id}"
+///   reserved_internal_range ="networkconnectivity.googleapis.com/${gcp_networkconnectivity_internal_range.reserved.id}"
 ///   secondary_ip_ranges {
 ///     range_name              = "secondary"
-///     reserved_internal_range ="networkconnectivity.googleapis.com/${gcp_networkconnectivity_internalrange.reserved_secondary.id}"
+///     reserved_internal_range ="networkconnectivity.googleapis.com/${gcp_networkconnectivity_internal_range.reserved_secondary.id}"
 ///   }
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network-reserved-secondary-range"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networkconnectivity_internalrange" "reserved" {
+/// resource "gcp_networkconnectivity_internal_range" "reserved" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "reserved-primary"
 ///   network            = gcp_compute_network.default.id
 ///   usage              = "FOR_VPC"
@@ -1928,7 +1994,10 @@ import 'subnetwork_state.dart';
 ///   prefix_length      = 24
 ///   target_cidr_ranges = ["10.0.0.0/8"]
 /// }
-/// resource "gcp_networkconnectivity_internalrange" "reserved_secondary" {
+/// resource "gcp_networkconnectivity_internal_range" "reserved_secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "reserved-secondary"
 ///   network            = gcp_compute_network.default.id
 ///   usage              = "FOR_VPC"
@@ -2230,7 +2299,7 @@ import 'subnetwork_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2259,7 +2328,7 @@ import 'subnetwork_state.dart';
 /// 			Region:       pulumi.String("us-central1"),
 /// 			Description:  pulumi.String("PDP in internal subnet mode"),
 /// 			IpCidrRange:  pulumi.String("2001:db8::/48"),
-/// 			ParentPrefix: ipv6Pap.ID().ToIDOutput().ToStringOutput(),
+/// 			ParentPrefix: ipv6Pap.ID(),
 /// 			Mode:         pulumi.String("DELEGATION"),
 /// 		})
 /// 		if err != nil {
@@ -2269,7 +2338,7 @@ import 'subnetwork_state.dart';
 /// 			Name:         pulumi.String("sub-pdp-for-secondary-ranges"),
 /// 			Region:       pulumi.String("us-central1"),
 /// 			IpCidrRange:  pulumi.String("2001:db8::/56"),
-/// 			ParentPrefix: ipv6Pdp.ID().ToIDOutput().ToStringOutput(),
+/// 			ParentPrefix: ipv6Pdp.ID(),
 /// 			Mode:         pulumi.String("INTERNAL_IPV6_SUBNETWORK_CREATION"),
 /// 		})
 /// 		if err != nil {
@@ -2278,7 +2347,7 @@ import 'subnetwork_state.dart';
 /// 		_, err = compute.NewSubnetwork(ctx, "subnetwork_with_secondary_ipv6_range", &compute.SubnetworkArgs{
 /// 			Name:           pulumi.String("subnet-with-secondary-ranges"),
 /// 			Region:         pulumi.String("us-central1"),
-/// 			Network:        custom_test.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:        custom_test.ID(),
 /// 			StackType:      pulumi.String("IPV6_ONLY"),
 /// 			Ipv6AccessType: pulumi.String("INTERNAL"),
 /// 			SecondaryIpRanges: compute.SubnetworkSecondaryIpRangeArray{
@@ -2307,7 +2376,7 @@ import 'subnetwork_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2316,6 +2385,9 @@ import 'subnetwork_state.dart';
 /// }
 ///
 /// resource "gcp_compute_subnetwork" "subnetwork_with_secondary_ipv6_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "subnet-with-secondary-ranges"
 ///   region           = "us-central1"
 ///   network          = gcp_compute_network.custom-test.id
@@ -2328,40 +2400,52 @@ import 'subnetwork_state.dart';
 ///   secondary_ip_ranges {
 ///     range_name    = "v6-byogua-auto"
 ///     ip_version    = "IPV6"
-///     ip_collection = gcp_compute_publicdelegatedprefix.ipv6_sub_pdp.self_link
+///     ip_collection = gcp_compute_public_delegated_prefix.ipv6_sub_pdp.self_link
 ///   }
 ///   secondary_ip_ranges {
 ///     range_name    = "v6-byogua-manual"
 ///     ip_version    = "IPV6"
-///     ip_collection = gcp_compute_publicdelegatedprefix.ipv6_sub_pdp.self_link
+///     ip_collection = gcp_compute_public_delegated_prefix.ipv6_sub_pdp.self_link
 ///     ip_cidr_range = "2001:db8:0:2::/64"
 ///   }
 /// }
 /// resource "gcp_compute_network" "custom-test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "network-with-secondary-ranges"
 ///   auto_create_subnetworks  = false
 ///   enable_ula_internal_ipv6 = true
 /// }
-/// resource "gcp_compute_publicadvertisedprefix" "ipv6_pap" {
+/// resource "gcp_compute_public_advertised_prefix" "ipv6_pap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "pap-for-secondary-ranges"
 ///   ip_cidr_range    = "2001:db8::/40"
 ///   pdp_scope        = "REGIONAL"
 ///   ipv6_access_type = "INTERNAL"
 ///   description      = "GOOGLE_INTERNAL_TEST_PREFIX"
 /// }
-/// resource "gcp_compute_publicdelegatedprefix" "ipv6_pdp" {
+/// resource "gcp_compute_public_delegated_prefix" "ipv6_pdp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "pdp-for-secondary-ranges"
 ///   region        = "us-central1"
 ///   description   = "PDP in internal subnet mode"
 ///   ip_cidr_range = "2001:db8::/48"
-///   parent_prefix = gcp_compute_publicadvertisedprefix.ipv6_pap.id
+///   parent_prefix = gcp_compute_public_advertised_prefix.ipv6_pap.id
 ///   mode          = "DELEGATION"
 /// }
-/// resource "gcp_compute_publicdelegatedprefix" "ipv6_sub_pdp" {
+/// resource "gcp_compute_public_delegated_prefix" "ipv6_sub_pdp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "sub-pdp-for-secondary-ranges"
 ///   region        = "us-central1"
 ///   ip_cidr_range = "2001:db8::/56"
-///   parent_prefix = gcp_compute_publicdelegatedprefix.ipv6_pdp.id
+///   parent_prefix = gcp_compute_public_delegated_prefix.ipv6_pdp.id
 ///   mode          = "INTERNAL_IPV6_SUBNETWORK_CREATION"
 /// }
 /// ```
@@ -2546,7 +2630,9 @@ class Subnetwork extends pulumi.CustomResource {
   /// you create the resource. This field can be set only at resource
   /// creation time.
   late final pulumi.Output<String?> description;
-  /// The range of external IPv6 addresses that are owned by this subnetwork.
+  /// The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
+  /// specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+  /// field at any other time forces recreation of the subnetwork.
   late final pulumi.Output<String> externalIpv6Prefix;
   /// Fingerprint of this resource. This field is used internally during updates of this resource.
   late final pulumi.Output<String> fingerprint;
@@ -2563,7 +2649,10 @@ class Subnetwork extends pulumi.CustomResource {
   late final pulumi.Output<String> ipCidrRange;
   /// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
   /// in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-  /// mode. Use one of the following formats to specify a sub-PDP when creating
+  /// mode. It's immutable and can only be specified during creation or the first
+  /// time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+  /// any other time forces recreation of the subnetwork.
+  /// Use one of the following formats to specify a sub-PDP when creating
   /// a dual stack or IPv6-only subnetwork using BYOIP:
   /// Full resource URL, as in:
   /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -2573,7 +2662,7 @@ class Subnetwork extends pulumi.CustomResource {
   late final pulumi.Output<String?> ipCollection;
   /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
   /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
-  /// cannot enable direct path.
+  /// cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
   /// Possible values are: `EXTERNAL`, `INTERNAL`.
   late final pulumi.Output<String?> ipv6AccessType;
   /// The range of internal IPv6 addresses that are owned by this subnetwork.
@@ -2675,7 +2764,7 @@ class Subnetwork extends pulumi.CustomResource {
           'gcp:compute/subnetwork:Subnetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     allowSubnetCidrRoutesOverlap = registerOutput<bool>('allowSubnetCidrRoutesOverlap');
     creationTimestamp = registerOutput<String>('creationTimestamp');

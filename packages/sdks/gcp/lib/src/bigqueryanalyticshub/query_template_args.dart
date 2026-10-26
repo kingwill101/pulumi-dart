@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'query_template_encryption_configuration.dart';
 import 'query_template_routine.dart';
 
 /// {@template pulumi_bigqueryanalyticshub_query_template_query_template_args_doc}
@@ -28,6 +29,11 @@ class QueryTemplateArgs {
   final pulumi.Input<String> displayName;
   /// Documentation describing the QueryTemplate.
   final pulumi.Input<String?>? documentation;
+  /// Encryption configuration for the query template.
+  /// If set, the customer-managed KMS key is used to encrypt the query
+  /// template definition body.
+  /// Structure is documented below.
+  final pulumi.Input<QueryTemplateEncryptionConfiguration?>? encryptionConfiguration;
   /// The name of the location this data exchange query template.
   final pulumi.Input<String> location;
   /// Email or URL of the primary point of contact of the QueryTemplate.
@@ -49,6 +55,7 @@ class QueryTemplateArgs {
   /// [description] Short description of the QueryTemplate. The description must not contain
   /// [displayName] Human-readable display name of the QueryTemplate. The display name must
   /// [documentation] Documentation describing the QueryTemplate.
+  /// [encryptionConfiguration] Encryption configuration for the query template.
   /// [location] The name of the location this data exchange query template.
   /// [primaryContact] Email or URL of the primary point of contact of the QueryTemplate.
   /// [project] The ID of the project in which the resource belongs.
@@ -61,6 +68,7 @@ class QueryTemplateArgs {
     this.description,
     required this.displayName,
     this.documentation,
+    this.encryptionConfiguration,
     required this.location,
     this.primaryContact,
     this.project,
@@ -76,6 +84,7 @@ class QueryTemplateArgs {
       'description': ?description,
       'displayName': displayName,
       'documentation': ?documentation,
+      'encryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<QueryTemplateEncryptionConfiguration, Map<String, dynamic>>(encryptionConfiguration, (value) => value.toMap()),
       'location': location,
       'primaryContact': ?primaryContact,
       'project': ?project,
@@ -92,6 +101,7 @@ class QueryTemplateArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       documentation: (() { final guardedValue = map['documentation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encryptionConfiguration: (() { final guardedValue = map['encryptionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QueryTemplateEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       primaryContact: (() { final guardedValue = map['primaryContact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

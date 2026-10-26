@@ -28,8 +28,8 @@ class ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails {
 
   factory ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails.fromMap(Map<String, dynamic> map) {
     return ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails(
-      availableSizeGbs: (() { final guardedValue = map['availableSizeGbs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      totalSizeGbs: pulumi.Input.fromValue((map['totalSizeGbs'] as num).toInt()),
+      availableSizeGbs: (() { final guardedValue = map['availableSizeGbs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      totalSizeGbs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalSizeGbs'])),
     );
   }
 }

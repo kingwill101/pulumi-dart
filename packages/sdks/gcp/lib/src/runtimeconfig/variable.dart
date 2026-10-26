@@ -68,7 +68,7 @@ import 'variable_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/runtimeconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/runtimeconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -94,7 +94,7 @@ import 'variable_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -103,10 +103,16 @@ import 'variable_state.dart';
 /// }
 ///
 /// resource "gcp_runtimeconfig_config" "my-runtime-config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-service-runtime-config"
 ///   description = "Runtime configuration values for my service"
 /// }
 /// resource "gcp_runtimeconfig_variable" "environment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent = gcp_runtimeconfig_config.my-runtime-config.name
 ///   name   = "prod-variables/hostname"
 ///   text   = "example.com"
@@ -232,7 +238,7 @@ import 'variable_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/runtimeconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/runtimeconfig"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -265,7 +271,7 @@ import 'variable_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -277,10 +283,16 @@ import 'variable_state.dart';
 /// }
 ///
 /// resource "gcp_runtimeconfig_config" "my-runtime-config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-service-runtime-config"
 ///   description = "Runtime configuration values for my service"
 /// }
 /// resource "gcp_runtimeconfig_variable" "my-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent = gcp_runtimeconfig_config.my-runtime-config.name
 ///   name   = "secret"
 ///   value  = filebase64("my-encrypted-secret.dat")
@@ -405,7 +417,7 @@ class Variable extends pulumi.CustomResource {
           'gcp:runtimeconfig/variable:Variable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['text', 'value'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

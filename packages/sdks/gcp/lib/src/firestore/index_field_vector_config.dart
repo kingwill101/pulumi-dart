@@ -26,7 +26,7 @@ class IndexFieldVectorConfig {
 
   factory IndexFieldVectorConfig.fromMap(Map<String, dynamic> map) {
     return IndexFieldVectorConfig(
-      dimension: (() { final guardedValue = map['dimension']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      dimension: (() { final guardedValue = map['dimension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       flat: (() { final guardedValue = map['flat']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }

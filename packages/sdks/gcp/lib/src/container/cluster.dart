@@ -172,8 +172,8 @@ import 'cluster_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -217,7 +217,7 @@ import 'cluster_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -226,16 +226,25 @@ import 'cluster_workload_identity_config.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "service-account-id"
 ///   display_name = "Service Account"
 /// }
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "my-gke-cluster"
 ///   location                 = "us-central1"
 ///   remove_default_node_pool = true
 ///   initial_node_count       = 1
 /// }
-/// resource "gcp_container_nodepool" "primary_preemptible_nodes" {
+/// resource "gcp_container_node_pool" "primary_preemptible_nodes" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "my-node-pool"
 ///   location   = "us-central1"
 ///   cluster    = gcp_container_cluster.primary.name
@@ -432,8 +441,8 @@ import 'cluster_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -472,7 +481,7 @@ import 'cluster_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -481,10 +490,16 @@ import 'cluster_workload_identity_config.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "service-account-id"
 ///   display_name = "Service Account"
 /// }
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "marcellus-wallace"
 ///   location           = "us-central1-a"
 ///   initial_node_count = 3
@@ -627,7 +642,7 @@ import 'cluster_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -650,7 +665,7 @@ import 'cluster_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -659,6 +674,9 @@ import 'cluster_workload_identity_config.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-gke-cluster"
 ///   location           = "us-central1"
 ///   initial_node_count = 1
@@ -776,7 +794,7 @@ import 'cluster_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -800,7 +818,7 @@ import 'cluster_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -809,6 +827,9 @@ import 'cluster_workload_identity_config.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-gke-cluster"
 ///   location           = "us-central1"
 ///   initial_node_count = 1
@@ -928,8 +949,8 @@ import 'cluster_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -955,7 +976,7 @@ import 'cluster_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -964,10 +985,16 @@ import 'cluster_workload_identity_config.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "service-account-id"
 ///   display_name = "Service Account"
 /// }
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "marcellus-wallace"
 ///   location         = "us-central1-a"
 ///   enable_autopilot = true
@@ -1402,13 +1429,14 @@ class Cluster extends pulumi.CustomResource {
   /// The name or selfLink of the Google Compute Engine
   /// subnetwork in which the cluster's instances are launched.
   late final pulumi.Output<String> subnetwork;
-  /// TPU configuration for the cluster.
+  /// ) Configuration for Cloud TPU in this cluster.
+  /// Structure is documented below.
   late final pulumi.Output<ClusterTpuConfig> tpuConfig;
   /// The IP address range of the Cloud TPUs in this cluster, in
   /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
   /// notation (e.g. `1.2.3.4/29`).
   late final pulumi.Output<String> tpuIpv4CidrBlock;
-  /// The custom keys configuration of the cluster Structure is documented below.
+  /// The custom keys configuration of the cluster. Structure is documented below.
   late final pulumi.Output<ClusterUserManagedKeysConfig?> userManagedKeysConfig;
   /// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
   /// Structure is documented below.
@@ -1433,7 +1461,7 @@ class Cluster extends pulumi.CustomResource {
           'gcp:container/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     addonsConfig = registerOutput<ClusterAddonsConfig>('addonsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAddonsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

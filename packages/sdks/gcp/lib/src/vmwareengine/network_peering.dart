@@ -105,7 +105,7 @@ import 'network_peering_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -130,8 +130,8 @@ import 'network_peering_state.dart';
 /// 		_, err = vmwareengine.NewNetworkPeering(ctx, "vmw-engine-network-peering", &vmwareengine.NetworkPeeringArgs{
 /// 			Name:                           pulumi.String("sample-network-peering"),
 /// 			Description:                    pulumi.String("Sample description"),
-/// 			VmwareEngineNetwork:            network_peering_nw.ID().ToIDOutput().ToStringOutput(),
-/// 			PeerNetwork:                    network_peering_peer_nw.ID().ToIDOutput().ToStringOutput(),
+/// 			VmwareEngineNetwork:            network_peering_nw.ID(),
+/// 			PeerNetwork:                    network_peering_peer_nw.ID(),
 /// 			PeerNetworkType:                pulumi.String("VMWARE_ENGINE_NETWORK"),
 /// 			ExportCustomRoutes:             pulumi.Bool(false),
 /// 			ImportCustomRoutes:             pulumi.Bool(false),
@@ -146,7 +146,7 @@ import 'network_peering_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -155,16 +155,25 @@ import 'network_peering_state.dart';
 /// }
 ///
 /// resource "gcp_vmwareengine_network" "network-peering-nw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "default-np-nw"
 ///   location = "global"
 ///   type     = "STANDARD"
 /// }
 /// resource "gcp_vmwareengine_network" "network-peering-peer-nw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "peer-np-nw"
 ///   location = "global"
 ///   type     = "STANDARD"
 /// }
-/// resource "gcp_vmwareengine_networkpeering" "vmw-engine-network-peering" {
+/// resource "gcp_vmwareengine_network_peering" "vmw-engine-network-peering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                = "sample-network-peering"
 ///   description                         = "Sample description"
 ///   vmware_engine_network               = gcp_vmwareengine_network.network-peering-nw.id
@@ -327,8 +336,8 @@ import 'network_peering_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -351,9 +360,9 @@ import 'network_peering_state.dart';
 /// 		_, err = vmwareengine.NewNetworkPeering(ctx, "vmw-engine-network-peering", &vmwareengine.NetworkPeeringArgs{
 /// 			Name:                pulumi.String("sample-network-peering"),
 /// 			Description:         pulumi.String("Sample description"),
-/// 			PeerNetwork:         network_peering_vpc.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerNetwork:         network_peering_vpc.ID(),
 /// 			PeerNetworkType:     pulumi.String("STANDARD"),
-/// 			VmwareEngineNetwork: network_peering_standard_nw.ID().ToIDOutput().ToStringOutput(),
+/// 			VmwareEngineNetwork: network_peering_standard_nw.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -363,7 +372,7 @@ import 'network_peering_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -372,14 +381,23 @@ import 'network_peering_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network-peering-vpc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "default-vpc"
 /// }
 /// resource "gcp_vmwareengine_network" "network-peering-standard-nw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "default-standard-nw-np"
 ///   location = "global"
 ///   type     = "STANDARD"
 /// }
-/// resource "gcp_vmwareengine_networkpeering" "vmw-engine-network-peering" {
+/// resource "gcp_vmwareengine_network_peering" "vmw-engine-network-peering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "sample-network-peering"
 ///   description           = "Sample description"
 ///   peer_network          = gcp_compute_network.network-peering-vpc.id
@@ -533,7 +551,7 @@ class NetworkPeering extends pulumi.CustomResource {
           'gcp:vmwareengine/networkPeering:NetworkPeering',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

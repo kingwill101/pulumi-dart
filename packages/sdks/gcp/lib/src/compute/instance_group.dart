@@ -56,7 +56,7 @@ import 'instance_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -76,7 +76,7 @@ import 'instance_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -84,7 +84,10 @@ import 'instance_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_instancegroup" "test" {
+/// resource "gcp_compute_instance_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test"
 ///   description = "Test instance group"
 ///   zone        = "us-central1-a"
@@ -223,7 +226,7 @@ import 'instance_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -256,7 +259,7 @@ import 'instance_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -264,7 +267,10 @@ import 'instance_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_instancegroup" "webservers" {
+/// resource "gcp_compute_instance_group" "webservers" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "webservers"
 ///   description = "Test instance group"
 ///   instances   = [test.id, test2.id]
@@ -408,7 +414,7 @@ class InstanceGroup extends pulumi.CustomResource {
           'gcp:compute/instanceGroup:InstanceGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

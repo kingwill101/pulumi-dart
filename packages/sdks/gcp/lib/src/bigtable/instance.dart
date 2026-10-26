@@ -77,7 +77,7 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -104,7 +104,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -113,6 +113,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "gcp_bigtable_instance" "production-instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "tf-instance"
 ///   clusters {
 ///     cluster_id   = "tf-instance-cluster"
@@ -279,7 +282,7 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -317,7 +320,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -326,6 +329,9 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "gcp_bigtable_instance" "production-instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "tf-instance"
 ///   clusters {
 ///     cluster_id   = "tf-instance-cluster1"
@@ -495,7 +501,7 @@ class Instance extends pulumi.CustomResource {
           'gcp:bigtable/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     clusters = registerOutput<List<InstanceCluster>>('clusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceCluster>(guardedValue, (value) => InstanceCluster.fromMap((value as Map).cast<String, dynamic>())); });

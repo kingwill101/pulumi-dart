@@ -87,7 +87,7 @@ import 'gateway_security_policy_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -119,7 +119,7 @@ import 'gateway_security_policy_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -127,15 +127,21 @@ import 'gateway_security_policy_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_gatewaysecuritypolicy" "default" {
+/// resource "gcp_networksecurity_gateway_security_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-gateway-security-policy"
 ///   location    = "us-central1"
 ///   description = "gateway security policy created to be used as reference by the rule."
 /// }
-/// resource "gcp_networksecurity_gatewaysecuritypolicyrule" "default" {
+/// resource "gcp_networksecurity_gateway_security_policy_rule" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-gateway-security-policy-rule"
 ///   location                = "us-central1"
-///   gateway_security_policy = gcp_networksecurity_gatewaysecuritypolicy.default.name
+///   gateway_security_policy = gcp_networksecurity_gateway_security_policy.default.name
 ///   enabled                 = true
 ///   description             = "my description"
 ///   priority                = 0
@@ -289,7 +295,7 @@ import 'gateway_security_policy_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -323,7 +329,7 @@ import 'gateway_security_policy_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -331,15 +337,21 @@ import 'gateway_security_policy_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_gatewaysecuritypolicy" "default" {
+/// resource "gcp_networksecurity_gateway_security_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-gateway-security-policy"
 ///   location    = "us-central1"
 ///   description = "gateway security policy created to be used as reference by the rule."
 /// }
-/// resource "gcp_networksecurity_gatewaysecuritypolicyrule" "default" {
+/// resource "gcp_networksecurity_gateway_security_policy_rule" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-gateway-security-policy-rule"
 ///   location                = "us-central1"
-///   gateway_security_policy = gcp_networksecurity_gatewaysecuritypolicy.default.name
+///   gateway_security_policy = gcp_networksecurity_gateway_security_policy.default.name
 ///   enabled                 = true
 ///   description             = "my description"
 ///   priority                = 0
@@ -492,7 +504,7 @@ class GatewaySecurityPolicyRule extends pulumi.CustomResource {
           'gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     applicationMatcher = registerOutput<String?>('applicationMatcher');
     basicProfile = registerOutput<String>('basicProfile');

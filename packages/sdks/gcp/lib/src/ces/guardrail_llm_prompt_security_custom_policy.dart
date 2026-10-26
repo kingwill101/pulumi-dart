@@ -61,7 +61,7 @@ class GuardrailLlmPromptSecurityCustomPolicy {
     return GuardrailLlmPromptSecurityCustomPolicy(
       allowShortUtterance: (() { final guardedValue = map['allowShortUtterance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       failOpen: (() { final guardedValue = map['failOpen']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxConversationMessages: (() { final guardedValue = map['maxConversationMessages']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxConversationMessages: (() { final guardedValue = map['maxConversationMessages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       modelSettings: (() { final guardedValue = map['modelSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GuardrailLlmPromptSecurityCustomPolicyModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       policyScope: pulumi.Input.fromValue(map['policyScope'] as String),
       prompt: pulumi.Input.fromValue(map['prompt'] as String),

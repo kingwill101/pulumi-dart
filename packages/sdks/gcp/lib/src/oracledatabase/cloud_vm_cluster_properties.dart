@@ -115,6 +115,18 @@ class CloudVmClusterProperties {
   /// [IANA Time Zone Database](https://www.iana.org/time-zones).
   /// Structure is documented below.
   final pulumi.Input<CloudVmClusterPropertiesTimeZone?>? timeZone;
+  /// Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+  /// Possible values:
+  /// VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+  /// VM_BACKUP_STORAGE_TYPE_LOCAL
+  /// VM_BACKUP_STORAGE_TYPE_EXASCALE
+  final pulumi.Input<String?>? vmBackupStorageType;
+  /// Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+  /// Possible values:
+  /// VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+  /// VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+  /// VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+  final pulumi.Input<String?>? vmFileSystemStorageType;
 
   /// Creates a new [CloudVmClusterProperties].
   /// [clusterName] OCI Cluster name.
@@ -150,6 +162,8 @@ class CloudVmClusterProperties {
   /// [storageSizeGb] (Output)
   /// [systemVersion] (Output)
   /// [timeZone] Represents a time zone from the
+  /// [vmBackupStorageType] Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+  /// [vmFileSystemStorageType] Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
   const CloudVmClusterProperties({
     this.clusterName,
     this.compartmentId,
@@ -184,6 +198,8 @@ class CloudVmClusterProperties {
     this.storageSizeGb,
     this.systemVersion,
     this.timeZone,
+    this.vmBackupStorageType,
+    this.vmFileSystemStorageType,
   });
 
   Map<String, dynamic> toMap() {
@@ -221,6 +237,8 @@ class CloudVmClusterProperties {
       'storageSizeGb': ?storageSizeGb,
       'systemVersion': ?systemVersion,
       'timeZone': ?pulumi.Input.mapOptionalInputValue<CloudVmClusterPropertiesTimeZone, Map<String, dynamic>>(timeZone, (value) => value.toMap()),
+      'vmBackupStorageType': ?vmBackupStorageType,
+      'vmFileSystemStorageType': ?vmFileSystemStorageType,
     };
   }
 
@@ -228,9 +246,9 @@ class CloudVmClusterProperties {
     return CloudVmClusterProperties(
       clusterName: (() { final guardedValue = map['clusterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       compartmentId: (() { final guardedValue = map['compartmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cpuCoreCount: pulumi.Input.fromValue((map['cpuCoreCount'] as num).toInt()),
+      cpuCoreCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cpuCoreCount'])),
       dataStorageSizeTb: (() { final guardedValue = map['dataStorageSizeTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
-      dbNodeStorageSizeGb: (() { final guardedValue = map['dbNodeStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      dbNodeStorageSizeGb: (() { final guardedValue = map['dbNodeStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dbServerOcids: (() { final guardedValue = map['dbServerOcids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       diagnosticsDataCollectionOptions: (() { final guardedValue = map['diagnosticsDataCollectionOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CloudVmClusterPropertiesDiagnosticsDataCollectionOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       diskRedundancy: (() { final guardedValue = map['diskRedundancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -241,24 +259,26 @@ class CloudVmClusterProperties {
       hostnamePrefix: (() { final guardedValue = map['hostnamePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       licenseType: pulumi.Input.fromValue(map['licenseType'] as String),
       localBackupEnabled: (() { final guardedValue = map['localBackupEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      memorySizeGb: (() { final guardedValue = map['memorySizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      memorySizeGb: (() { final guardedValue = map['memorySizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ociUrl: (() { final guardedValue = map['ociUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ocid: (() { final guardedValue = map['ocid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ocpuCount: (() { final guardedValue = map['ocpuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       scanDns: (() { final guardedValue = map['scanDns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scanDnsRecordId: (() { final guardedValue = map['scanDnsRecordId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scanIpIds: (() { final guardedValue = map['scanIpIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      scanListenerPortTcp: (() { final guardedValue = map['scanListenerPortTcp']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      scanListenerPortTcpSsl: (() { final guardedValue = map['scanListenerPortTcpSsl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      scanListenerPortTcp: (() { final guardedValue = map['scanListenerPortTcp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      scanListenerPortTcpSsl: (() { final guardedValue = map['scanListenerPortTcpSsl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       shape: (() { final guardedValue = map['shape']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sparseDiskgroupEnabled: (() { final guardedValue = map['sparseDiskgroupEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sshPublicKeys: (() { final guardedValue = map['sshPublicKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageManagementType: (() { final guardedValue = map['storageManagementType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageSizeGb: (() { final guardedValue = map['storageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      storageSizeGb: (() { final guardedValue = map['storageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       systemVersion: (() { final guardedValue = map['systemVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CloudVmClusterPropertiesTimeZone.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      vmBackupStorageType: (() { final guardedValue = map['vmBackupStorageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vmFileSystemStorageType: (() { final guardedValue = map['vmFileSystemStorageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

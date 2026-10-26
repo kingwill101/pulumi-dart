@@ -250,9 +250,9 @@ import 'response_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -328,15 +328,15 @@ import 'response_policy_state.dart';
 /// 			ResponsePolicyName: pulumi.String("example-response-policy"),
 /// 			Networks: dns.ResponsePolicyNetworkArray{
 /// 				&dns.ResponsePolicyNetworkArgs{
-/// 					NetworkUrl: network_1.ID().ToIDOutput().ToStringOutput(),
+/// 					NetworkUrl: network_1.ID(),
 /// 				},
 /// 				&dns.ResponsePolicyNetworkArgs{
-/// 					NetworkUrl: network_2.ID().ToIDOutput().ToStringOutput(),
+/// 					NetworkUrl: network_2.ID(),
 /// 				},
 /// 			},
 /// 			GkeClusters: dns.ResponsePolicyGkeClusterArray{
 /// 				&dns.ResponsePolicyGkeClusterArgs{
-/// 					GkeClusterName: cluster_1.ID().ToIDOutput().ToStringOutput(),
+/// 					GkeClusterName: cluster_1.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -348,7 +348,7 @@ import 'response_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -357,14 +357,23 @@ import 'response_policy_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network-1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network-1"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_network" "network-2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network-2"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "subnetwork-1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = gcp_compute_network.network-1.name
 ///   network                  = gcp_compute_network.network-1.name
 ///   ip_cidr_range            = "10.0.36.0/24"
@@ -380,6 +389,9 @@ import 'response_policy_state.dart';
 ///   }
 /// }
 /// resource "gcp_container_cluster" "cluster-1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "cluster-1"
 ///   location           = "us-central1-c"
 ///   initial_node_count = 1
@@ -404,7 +416,10 @@ import 'response_policy_state.dart';
 ///   }
 ///   deletion_protection = true
 /// }
-/// resource "gcp_dns_responsepolicy" "example-response-policy" {
+/// resource "gcp_dns_response_policy" "example-response-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   response_policy_name = "example-response-policy"
 ///   networks {
 ///     network_url = gcp_compute_network.network-1.id
@@ -632,7 +647,7 @@ class ResponsePolicy extends pulumi.CustomResource {
           'gcp:dns/responsePolicy:ResponsePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

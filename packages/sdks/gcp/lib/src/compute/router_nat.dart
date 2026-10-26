@@ -135,7 +135,7 @@ import 'router_nat_subnetwork.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -149,7 +149,7 @@ import 'router_nat_subnetwork.dart';
 /// 		}
 /// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnetwork"),
-/// 			Network:     net.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     net.ID(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 		})
@@ -159,7 +159,7 @@ import 'router_nat_subnetwork.dart';
 /// 		router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
 /// 			Name:    pulumi.String("my-router"),
 /// 			Region:  subnet.Region,
-/// 			Network: net.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: net.ID(),
 /// 			Bgp: &compute.RouterBgpArgs{
 /// 				Asn: pulumi.Int(64514),
 /// 			},
@@ -186,7 +186,7 @@ import 'router_nat_subnetwork.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -195,15 +195,24 @@ import 'router_nat_subnetwork.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-network"
 /// }
 /// resource "gcp_compute_subnetwork" "subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnetwork"
 ///   network       = gcp_compute_network.net.id
 ///   ip_cidr_range = "10.0.0.0/16"
 ///   region        = "us-central1"
 /// }
 /// resource "gcp_compute_router" "router" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "my-router"
 ///   region  = gcp_compute_subnetwork.subnet.region
 ///   network = gcp_compute_network.net.id
@@ -211,7 +220,10 @@ import 'router_nat_subnetwork.dart';
 ///     asn = 64514
 ///   }
 /// }
-/// resource "gcp_compute_routernat" "nat" {
+/// resource "gcp_compute_router_nat" "nat" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                               = "my-router-nat"
 ///   router                             = gcp_compute_router.router.name
 ///   region                             = gcp_compute_router.router.region
@@ -525,7 +537,7 @@ import 'router_nat_subnetwork.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -540,7 +552,7 @@ import 'router_nat_subnetwork.dart';
 /// 		}
 /// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnetwork"),
-/// 			Network:     net.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     net.ID(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 		})
@@ -550,7 +562,7 @@ import 'router_nat_subnetwork.dart';
 /// 		router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
 /// 			Name:    pulumi.String("my-router"),
 /// 			Region:  subnet.Region,
-/// 			Network: net.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: net.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -587,7 +599,7 @@ import 'router_nat_subnetwork.dart';
 /// 			SourceSubnetworkIpRangesToNat: pulumi.String("LIST_OF_SUBNETWORKS"),
 /// 			Subnetworks: compute.RouterNatSubnetworkArray{
 /// 				&compute.RouterNatSubnetworkArgs{
-/// 					Name: subnet.ID().ToIDOutput().ToStringOutput(),
+/// 					Name: subnet.ID(),
 /// 					SourceIpRangesToNats: pulumi.StringArray{
 /// 						pulumi.String("ALL_IP_RANGES"),
 /// 					},
@@ -616,7 +628,7 @@ import 'router_nat_subnetwork.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -625,33 +637,54 @@ import 'router_nat_subnetwork.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnetwork"
 ///   network       = gcp_compute_network.net.id
 ///   ip_cidr_range = "10.0.0.0/16"
 ///   region        = "us-central1"
 /// }
 /// resource "gcp_compute_router" "router" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "my-router"
 ///   region  = gcp_compute_subnetwork.subnet.region
 ///   network = gcp_compute_network.net.id
 /// }
 /// resource "gcp_compute_address" "addr1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "nat-address1"
 ///   region = gcp_compute_subnetwork.subnet.region
 /// }
 /// resource "gcp_compute_address" "addr2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "nat-address2"
 ///   region = gcp_compute_subnetwork.subnet.region
 /// }
 /// resource "gcp_compute_address" "addr3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "nat-address3"
 ///   region = gcp_compute_subnetwork.subnet.region
 /// }
-/// resource "gcp_compute_routernat" "nat_rules" {
+/// resource "gcp_compute_router_nat" "nat_rules" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                               = "my-router-nat"
 ///   router                             = gcp_compute_router.router.name
 ///   region                             = gcp_compute_router.router.region
@@ -1036,8 +1069,8 @@ import 'router_nat_subnetwork.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1051,7 +1084,7 @@ import 'router_nat_subnetwork.dart';
 /// 		}
 /// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnetwork"),
-/// 			Network:     net.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:     net.ID(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 			Purpose:     pulumi.String("PRIVATE_NAT"),
@@ -1062,7 +1095,7 @@ import 'router_nat_subnetwork.dart';
 /// 		router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
 /// 			Name:    pulumi.String("my-router"),
 /// 			Region:  subnet.Region,
-/// 			Network: net.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: net.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1078,7 +1111,7 @@ import 'router_nat_subnetwork.dart';
 /// 			Name:        pulumi.String("my-spoke"),
 /// 			Location:    pulumi.String("global"),
 /// 			Description: pulumi.String("vpc spoke for inter vpc nat"),
-/// 			Hub:         hub.ID().ToIDOutput().ToStringOutput(),
+/// 			Hub:         hub.ID(),
 /// 			LinkedVpcNetwork: &networkconnectivity.SpokeLinkedVpcNetworkArgs{
 /// 				ExcludeExportRanges: pulumi.StringArray{
 /// 					pulumi.String("198.51.100.0/24"),
@@ -1101,7 +1134,7 @@ import 'router_nat_subnetwork.dart';
 /// 			Type:                             pulumi.String("PRIVATE"),
 /// 			Subnetworks: compute.RouterNatSubnetworkArray{
 /// 				&compute.RouterNatSubnetworkArgs{
-/// 					Name: subnet.ID().ToIDOutput().ToStringOutput(),
+/// 					Name: subnet.ID(),
 /// 					SourceIpRangesToNats: pulumi.StringArray{
 /// 						pulumi.String("ALL_IP_RANGES"),
 /// 					},
@@ -1128,7 +1161,7 @@ import 'router_nat_subnetwork.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1137,9 +1170,15 @@ import 'router_nat_subnetwork.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-network"
 /// }
 /// resource "gcp_compute_subnetwork" "subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnetwork"
 ///   network       = gcp_compute_network.net.id
 ///   ip_cidr_range = "10.0.0.0/16"
@@ -1147,15 +1186,24 @@ import 'router_nat_subnetwork.dart';
 ///   purpose       = "PRIVATE_NAT"
 /// }
 /// resource "gcp_compute_router" "router" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "my-router"
 ///   region  = gcp_compute_subnetwork.subnet.region
 ///   network = gcp_compute_network.net.id
 /// }
 /// resource "gcp_networkconnectivity_hub" "hub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-hub"
 ///   description = "vpc hub for inter vpc nat"
 /// }
 /// resource "gcp_networkconnectivity_spoke" "spoke" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-spoke"
 ///   location    = "global"
 ///   description = "vpc spoke for inter vpc nat"
@@ -1165,7 +1213,10 @@ import 'router_nat_subnetwork.dart';
 ///     uri                   = gcp_compute_network.net.self_link
 ///   }
 /// }
-/// resource "gcp_compute_routernat" "nat_type" {
+/// resource "gcp_compute_router_nat" "nat_type" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                = "my-router-nat"
 ///   router                              = gcp_compute_router.router.name
 ///   region                              = gcp_compute_router.router.region
@@ -1492,7 +1543,7 @@ class RouterNat extends pulumi.CustomResource {
           'gcp:compute/routerNat:RouterNat',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     autoNetworkTier = registerOutput<String>('autoNetworkTier');
     deletionPolicy = registerOutput<String>('deletionPolicy');

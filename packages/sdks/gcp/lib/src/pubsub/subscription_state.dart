@@ -209,7 +209,7 @@ class SubscriptionState {
 
   factory SubscriptionState.fromMap(Map<String, dynamic> map) {
     return SubscriptionState(
-      ackDeadlineSeconds: (() { final guardedValue = map['ackDeadlineSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ackDeadlineSeconds: (() { final guardedValue = map['ackDeadlineSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       bigqueryConfig: (() { final guardedValue = map['bigqueryConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubscriptionBigqueryConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cloudStorageConfig: (() { final guardedValue = map['cloudStorageConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubscriptionCloudStorageConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deadLetterPolicy: (() { final guardedValue = map['deadLetterPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubscriptionDeadLetterPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

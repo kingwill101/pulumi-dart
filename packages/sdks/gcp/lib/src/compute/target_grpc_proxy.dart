@@ -359,7 +359,7 @@ import 'target_grpc_proxy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -383,7 +383,7 @@ import 'target_grpc_proxy_state.dart';
 /// 			PortName:            pulumi.String("grpc"),
 /// 			Protocol:            pulumi.String("GRPC"),
 /// 			TimeoutSec:          pulumi.Int(10),
-/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks:        defaultHealthCheck.ID(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 /// 		})
 /// 		if err != nil {
@@ -392,7 +392,7 @@ import 'target_grpc_proxy_state.dart';
 /// 		urlmap, err := compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
 /// 			Name:           pulumi.String("urlmap"),
 /// 			Description:    pulumi.String("a description"),
-/// 			DefaultService: home.ID().ToIDOutput().ToStringOutput(),
+/// 			DefaultService: home.ID(),
 /// 			HostRules: compute.URLMapHostRuleArray{
 /// 				&compute.URLMapHostRuleArgs{
 /// 					Hosts: pulumi.StringArray{
@@ -404,7 +404,7 @@ import 'target_grpc_proxy_state.dart';
 /// 			PathMatchers: compute.URLMapPathMatcherArray{
 /// 				&compute.URLMapPathMatcherArgs{
 /// 					Name:           pulumi.String("allpaths"),
-/// 					DefaultService: home.ID().ToIDOutput().ToStringOutput(),
+/// 					DefaultService: home.ID(),
 /// 					RouteRules: compute.URLMapPathMatcherRouteRuleArray{
 /// 						&compute.URLMapPathMatcherRouteRuleArgs{
 /// 							Priority: pulumi.Int(1),
@@ -473,7 +473,7 @@ import 'target_grpc_proxy_state.dart';
 /// 			},
 /// 			Tests: compute.URLMapTestArray{
 /// 				&compute.URLMapTestArgs{
-/// 					Service: home.ID().ToIDOutput().ToStringOutput(),
+/// 					Service: home.ID(),
 /// 					Host:    pulumi.String("hi.com"),
 /// 					Path:    pulumi.String("/home"),
 /// 				},
@@ -484,7 +484,7 @@ import 'target_grpc_proxy_state.dart';
 /// 		}
 /// 		_, err = compute.NewTargetGrpcProxy(ctx, "default", &compute.TargetGrpcProxyArgs{
 /// 			Name:                 pulumi.String("proxy"),
-/// 			UrlMap:               urlmap.ID().ToIDOutput().ToStringOutput(),
+/// 			UrlMap:               urlmap.ID(),
 /// 			ValidateForProxyless: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -495,7 +495,7 @@ import 'target_grpc_proxy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -503,36 +503,42 @@ import 'target_grpc_proxy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_targetgrpcproxy" "default" {
+/// resource "gcp_compute_target_grpc_proxy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "proxy"
-///   url_map                = gcp_compute_urlmap.urlmap.id
+///   url_map                = gcp_compute_u_r_l_map.urlmap.id
 ///   validate_for_proxyless = true
 /// }
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "a description"
-///   default_service = gcp_compute_backendservice.home.id
+///   default_service = gcp_compute_backend_service.home.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.home.id
+///     default_service = gcp_compute_backend_service.home.id
 ///     route_rules {
 ///       priority = 1
 ///       header_action = {
 ///         request_headers_to_removes = ["RemoveMe2"]
 ///         request_headers_to_adds = [{
-///           "headerName"  = "AddSomethingElse"
-///           "headerValue" = "MyOtherValue"
-///           "replace"     = true
+///           header_name  = "AddSomethingElse"
+///           header_value = "MyOtherValue"
+///           replace      = true
 ///         }]
 ///         response_headers_to_removes = ["RemoveMe3"]
 ///         response_headers_to_adds = [{
-///           "headerName"  = "AddMe"
-///           "headerValue" = "MyValue"
-///           "replace"     = false
+///           header_name  = "AddMe"
+///           header_value = "MyValue"
+///           replace      = false
 ///         }]
 ///       }
 ///       match_rules {
@@ -565,20 +571,26 @@ import 'target_grpc_proxy_state.dart';
 ///     }
 ///   }
 ///   tests {
-///     service = gcp_compute_backendservice.home.id
+///     service = gcp_compute_backend_service.home.id
 ///     host    = "hi.com"
 ///     path    = "/home"
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "home" {
+/// resource "gcp_compute_backend_service" "home" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "backend"
 ///   port_name             = "grpc"
 ///   protocol              = "GRPC"
 ///   timeout_sec           = 10
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "healthcheck"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -885,7 +897,7 @@ class TargetGrpcProxy extends pulumi.CustomResource {
           'gcp:compute/targetGrpcProxy:TargetGrpcProxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

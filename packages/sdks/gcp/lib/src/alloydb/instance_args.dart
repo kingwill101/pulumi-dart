@@ -29,11 +29,11 @@ class InstanceArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>?>? annotations;
-  /// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
-  /// Note that primary and read instances can have different availability types.
-  /// Primary instances can be either ZONAL or REGIONAL. Read Pool instances can also be either ZONAL or REGIONAL.
-  /// Read pools of size 1 can only have zonal availability. Read pools with a node count of 2 or more
-  /// can have regional availability (nodes are present in 2 or more zones in a region).
+  /// 'Availability type of a primary Instance. Defaults to REGIONAL.
+  /// Primary instances can be either ZONAL or REGIONAL. Read Pool instances
+  /// derive their availability from `read_pool_config.node_count`: a pool
+  /// with one node is ZONAL, while a pool with two or more nodes is REGIONAL.
+  /// Read Pool instances do not support setting this field directly.
   /// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.'
   /// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
   final pulumi.Input<String?>? availabilityType;
@@ -97,7 +97,7 @@ class InstanceArgs {
   /// Creates a new [InstanceArgs].
   /// [activationPolicy] 'Specifies whether an instance needs to spin up. Once the instance is
   /// [annotations] Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
-  /// [availabilityType] 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
+  /// [availabilityType] 'Availability type of a primary Instance. Defaults to REGIONAL.
   /// [clientConnectionConfig] Client connection specific configurations.
   /// [cluster] Identifies the alloydb cluster. Must be in the format
   /// [connectionPoolConfig] Configuration for Managed Connection Pool.

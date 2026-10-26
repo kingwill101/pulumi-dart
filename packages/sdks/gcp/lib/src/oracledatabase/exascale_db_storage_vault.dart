@@ -76,7 +76,7 @@ import 'exascale_db_storage_vault_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -102,7 +102,7 @@ import 'exascale_db_storage_vault_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -110,7 +110,10 @@ import 'exascale_db_storage_vault_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_exascaledbstoragevault" "my_storage_vault" {
+/// resource "gcp_oracledatabase_exascale_db_storage_vault" "my_storage_vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   exascale_db_storage_vault_id = "my-instance"
 ///   display_name                 = "my-instance displayname"
 ///   location                     = "us-east4"
@@ -271,7 +274,7 @@ import 'exascale_db_storage_vault_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -305,7 +308,7 @@ import 'exascale_db_storage_vault_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -313,7 +316,10 @@ import 'exascale_db_storage_vault_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_exascaledbstoragevault" "my_storage_vault" {
+/// resource "gcp_oracledatabase_exascale_db_storage_vault" "my_storage_vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   exascale_db_storage_vault_id = "my-instance"
 ///   display_name                 = "my-instance displayname"
 ///   location                     = "us-east4"
@@ -538,7 +544,7 @@ import 'exascale_db_storage_vault_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -591,7 +597,7 @@ import 'exascale_db_storage_vault_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -599,7 +605,10 @@ import 'exascale_db_storage_vault_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_cloudexadatainfrastructure" "infra" {
+/// resource "gcp_oracledatabase_cloud_exadata_infrastructure" "infra" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_exadata_infrastructure_id = "my-infra"
 ///   display_name                    = "my-infra displayname"
 ///   location                        = "us-east4"
@@ -611,19 +620,25 @@ import 'exascale_db_storage_vault_state.dart';
 ///   }
 ///   deletion_protection = "true"
 /// }
-/// resource "gcp_oracledatabase_cloudexadatainfrastructureexascaleconfig" "exascale_config" {
-///   cloud_exadata_infrastructure = gcp_oracledatabase_cloudexadatainfrastructure.infra.cloud_exadata_infrastructure_id
+/// resource "gcp_oracledatabase_cloud_exadata_infrastructure_exascale_config" "exascale_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cloud_exadata_infrastructure = gcp_oracledatabase_cloud_exadata_infrastructure.infra.cloud_exadata_infrastructure_id
 ///   location                     = "us-east4"
 ///   project                      = "my-project"
 ///   total_storage_size_gb        = 10240
 /// }
-/// resource "gcp_oracledatabase_exascaledbstoragevault" "my_storage_vault" {
-///   depends_on                   = [gcp_oracledatabase_cloudexadatainfrastructureexascaleconfig.exascale_config]
+/// resource "gcp_oracledatabase_exascale_db_storage_vault" "my_storage_vault" {
+///   depends_on = [gcp_oracledatabase_cloud_exadata_infrastructure_exascale_config.exascale_config]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   exascale_db_storage_vault_id = "my-instance"
 ///   display_name                 = "my-instance displayname"
 ///   location                     = "us-east4"
 ///   project                      = "my-project"
-///   exadata_infrastructure       = gcp_oracledatabase_cloudexadatainfrastructure.infra.name
+///   exadata_infrastructure       = gcp_oracledatabase_cloud_exadata_infrastructure.infra.name
 ///   properties = {
 ///     exascale_db_storage_details = {
 ///       total_size_gbs = 2048
@@ -823,7 +838,7 @@ class ExascaleDbStorageVault extends pulumi.CustomResource {
           'gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

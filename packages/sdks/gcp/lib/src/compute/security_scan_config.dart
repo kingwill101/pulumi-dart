@@ -78,7 +78,7 @@ import 'security_scan_config_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -109,7 +109,7 @@ import 'security_scan_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -118,9 +118,15 @@ import 'security_scan_config_state.dart';
 /// }
 ///
 /// resource "gcp_compute_address" "scanner_static_ip" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "scan-basic-static-ip"
 /// }
-/// resource "gcp_compute_securityscanconfig" "scan-config" {
+/// resource "gcp_compute_security_scan_config" "scan-config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name     = "scan-config"
 ///   starting_urls    = ["http://${gcp_compute_address.scanner_static_ip.address}"]
 ///   target_platforms = ["COMPUTE"]
@@ -269,7 +275,7 @@ import 'security_scan_config_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -312,7 +318,7 @@ import 'security_scan_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -324,14 +330,23 @@ import 'security_scan_config_state.dart';
 /// }
 ///
 /// resource "gcp_compute_address" "scanner_static_ip" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "scan-ignore-http-ip"
 /// }
 /// resource "time_sleep" "wait_15_seconds" {
-///   depends_on      = [gcp_compute_address.scanner_static_ip]
+///   depends_on = [gcp_compute_address.scanner_static_ip]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "15s"
 /// }
-/// resource "gcp_compute_securityscanconfig" "scan-config" {
-///   depends_on                = [time_sleep.wait_15_seconds]
+/// resource "gcp_compute_security_scan_config" "scan-config" {
+///   depends_on = [time_sleep.wait_15_seconds]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name              = "terraform-scan-config"
 ///   starting_urls             = ["http://${gcp_compute_address.scanner_static_ip.address}"]
 ///   target_platforms          = ["COMPUTE"]
@@ -477,7 +492,7 @@ import 'security_scan_config_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -509,7 +524,7 @@ import 'security_scan_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -518,9 +533,15 @@ import 'security_scan_config_state.dart';
 /// }
 ///
 /// resource "gcp_compute_address" "scanner_static_ip" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "scan-static-ip"
 /// }
-/// resource "gcp_compute_securityscanconfig" "scan-config" {
+/// resource "gcp_compute_security_scan_config" "scan-config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name     = "scan-config"
 ///   starting_urls    = ["http://${gcp_compute_address.scanner_static_ip.address}"]
 ///   target_platforms = ["COMPUTE"]
@@ -659,7 +680,7 @@ class SecurityScanConfig extends pulumi.CustomResource {
           'gcp:compute/securityScanConfig:SecurityScanConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     authentication = registerOutput<SecurityScanConfigAuthentication?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityScanConfigAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     blacklistPatterns = registerOutput<List<String>?>('blacklistPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

@@ -126,7 +126,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -166,7 +166,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -175,6 +175,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id"
 ///   location_id             = "nam5"
@@ -183,6 +186,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = "my-project-name"
 ///   database   = gcp_firestore_database.database.name
 ///   collection = "atestcollection"
@@ -382,7 +388,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -425,7 +431,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -434,6 +440,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id-dm"
 ///   location_id             = "nam5"
@@ -442,6 +451,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   database    = gcp_firestore_database.database.name
 ///   collection  = "atestcollection"
@@ -664,7 +676,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -711,7 +723,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -720,6 +732,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id-vector"
 ///   location_id             = "nam5"
@@ -728,6 +743,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = "my-project-name"
 ///   database   = gcp_firestore_database.database.name
 ///   collection = "atestcollection"
@@ -922,7 +940,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -958,7 +976,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -967,6 +985,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id"
 ///   location_id             = "nam5"
@@ -975,6 +996,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = "my-project-name"
 ///   database   = gcp_firestore_database.database.name
 ///   collection = "atestcollection"
@@ -1169,7 +1193,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1214,7 +1238,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1223,6 +1247,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id-mongodb-compatible"
 ///   location_id             = "nam5"
@@ -1232,6 +1259,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   database    = gcp_firestore_database.database.name
 ///   collection  = "atestcollection"
@@ -1451,7 +1481,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1496,7 +1526,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1505,6 +1535,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id-sparse-any"
 ///   location_id             = "nam5"
@@ -1514,6 +1547,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   database    = gcp_firestore_database.database.name
 ///   collection  = "atestcollection"
@@ -1736,7 +1772,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1782,7 +1818,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1791,6 +1827,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id-unique"
 ///   location_id             = "nam5"
@@ -1800,6 +1839,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   database    = gcp_firestore_database.database.name
 ///   collection  = "atestcollection"
@@ -2010,7 +2052,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2051,7 +2093,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2060,6 +2102,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id-skip-wait"
 ///   location_id             = "nam5"
@@ -2068,6 +2113,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = "my-project-name"
 ///   database   = gcp_firestore_database.database.name
 ///   collection = "atestcollection"
@@ -2283,7 +2331,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2332,7 +2380,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2341,6 +2389,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "text-search-database-id"
 ///   location_id             = "nam5"
@@ -2350,6 +2401,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   database    = gcp_firestore_database.database.name
 ///   collection  = "atestcollection"
@@ -2361,8 +2415,8 @@ import 'index_state.dart';
 ///     search_config = {
 ///       text_spec = {
 ///         index_specs = [{
-///           "indexType" = "TOKENIZED"
-///           "matchType" = "MATCH_GLOBALLY"
+///           index_type = "TOKENIZED"
+///           match_type = "MATCH_GLOBALLY"
 ///         }]
 ///       }
 ///     }
@@ -2567,7 +2621,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2610,7 +2664,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2619,6 +2673,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "suppress-geojson-indexing-database-id"
 ///   location_id             = "nam5"
@@ -2628,6 +2685,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   database    = gcp_firestore_database.database.name
 ///   collection  = "atestcollection"
@@ -2836,7 +2896,7 @@ import 'index_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2880,7 +2940,7 @@ import 'index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2889,6 +2949,9 @@ import 'index_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "geo-search-database-id"
 ///   location_id             = "nam5"
@@ -2898,6 +2961,9 @@ import 'index_state.dart';
 ///   deletion_policy         = "DELETE"
 /// }
 /// resource "gcp_firestore_index" "my-index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   database    = gcp_firestore_database.database.name
 ///   collection  = "atestcollection"
@@ -3068,7 +3134,7 @@ class Index extends pulumi.CustomResource {
           'gcp:firestore/index:Index',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     apiScope = registerOutput<String?>('apiScope');
     collection = registerOutput<String>('collection');

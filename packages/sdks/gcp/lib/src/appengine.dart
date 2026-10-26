@@ -69,4 +69,6 @@ export 'appengine/standard_app_version_handler_static_files.dart';
 export 'appengine/standard_app_version_library.dart';
 export 'appengine/standard_app_version_manual_scaling.dart';
 export 'appengine/standard_app_version_state.dart';
+export 'appengine/standard_app_version_vpc_access.dart';
 export 'appengine/standard_app_version_vpc_access_connector.dart';
+export 'appengine/standard_app_version_vpc_access_network_interface.dart';

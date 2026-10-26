@@ -145,7 +145,7 @@ import 'cluster_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -166,7 +166,7 @@ import 'cluster_state.dart';
 /// 			Description: pulumi.String("Sample test PC."),
 /// 			NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 /// 				ManagementCidr:      pulumi.String("192.168.30.0/24"),
-/// 				VmwareEngineNetwork: cluster_nw.ID().ToIDOutput().ToStringOutput(),
+/// 				VmwareEngineNetwork: cluster_nw.ID(),
 /// 			},
 /// 			ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 /// 				ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -183,7 +183,7 @@ import 'cluster_state.dart';
 /// 		}
 /// 		_, err = vmwareengine.NewCluster(ctx, "vmw-engine-ext-cluster", &vmwareengine.ClusterArgs{
 /// 			Name:   pulumi.String("ext-cluster"),
-/// 			Parent: cluster_pc.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent: cluster_pc.ID(),
 /// 			NodeTypeConfigs: vmwareengine.ClusterNodeTypeConfigArray{
 /// 				&vmwareengine.ClusterNodeTypeConfigArgs{
 /// 					NodeTypeId: pulumi.String("standard-72"),
@@ -199,7 +199,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -208,14 +208,20 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "gcp_vmwareengine_cluster" "vmw-engine-ext-cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "ext-cluster"
-///   parent = gcp_vmwareengine_privatecloud.cluster-pc.id
+///   parent = gcp_vmwareengine_private_cloud.cluster-pc.id
 ///   node_type_configs {
 ///     node_type_id = "standard-72"
 ///     node_count   = 3
 ///   }
 /// }
-/// resource "gcp_vmwareengine_privatecloud" "cluster-pc" {
+/// resource "gcp_vmwareengine_private_cloud" "cluster-pc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-west1-a"
 ///   name        = "sample-pc"
 ///   description = "Sample test PC."
@@ -226,12 +232,15 @@ import 'cluster_state.dart';
 ///   management_cluster = {
 ///     cluster_id = "sample-mgmt-cluster"
 ///     node_type_configs = [{
-///       "nodeTypeId" = "standard-72"
-///       "nodeCount"  = 3
+///       node_type_id = "standard-72"
+///       node_count   = 3
 ///     }]
 ///   }
 /// }
 /// resource "gcp_vmwareengine_network" "cluster-nw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "pc-nw"
 ///   type        = "STANDARD"
 ///   location    = "global"
@@ -547,7 +556,7 @@ import 'cluster_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -568,7 +577,7 @@ import 'cluster_state.dart';
 /// 			Description: pulumi.String("Sample test PC."),
 /// 			NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 /// 				ManagementCidr:      pulumi.String("192.168.30.0/24"),
-/// 				VmwareEngineNetwork: cluster_nw.ID().ToIDOutput().ToStringOutput(),
+/// 				VmwareEngineNetwork: cluster_nw.ID(),
 /// 			},
 /// 			ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 /// 				ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -586,7 +595,7 @@ import 'cluster_state.dart';
 /// 		}
 /// 		_, err = vmwareengine.NewCluster(ctx, "vmw-ext-cluster", &vmwareengine.ClusterArgs{
 /// 			Name:   pulumi.String("ext-cluster"),
-/// 			Parent: cluster_pc.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent: cluster_pc.ID(),
 /// 			NodeTypeConfigs: vmwareengine.ClusterNodeTypeConfigArray{
 /// 				&vmwareengine.ClusterNodeTypeConfigArgs{
 /// 					NodeTypeId:      pulumi.String("standard-72"),
@@ -627,7 +636,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -636,8 +645,11 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "gcp_vmwareengine_cluster" "vmw-ext-cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "ext-cluster"
-///   parent = gcp_vmwareengine_privatecloud.cluster-pc.id
+///   parent = gcp_vmwareengine_private_cloud.cluster-pc.id
 ///   node_type_configs {
 ///     node_type_id      = "standard-72"
 ///     node_count        = 3
@@ -645,20 +657,20 @@ import 'cluster_state.dart';
 ///   }
 ///   autoscaling_settings = {
 ///     autoscaling_policies = [{
-///       "autoscalePolicyId" = "autoscaling-policy"
-///       "nodeTypeId"        = "standard-72"
-///       "scaleOutSize"      = 1
-///       "cpuThresholds" = {
-///         "scaleOut" = 80
-///         "scaleIn"  = 15
+///       autoscale_policy_id = "autoscaling-policy"
+///       node_type_id        = "standard-72"
+///       scale_out_size      = 1
+///       cpu_thresholds = {
+///         scale_out = 80
+///         scale_in  = 15
 ///       }
-///       "consumedMemoryThresholds" = {
-///         "scaleOut" = 75
-///         "scaleIn"  = 20
+///       consumed_memory_thresholds = {
+///         scale_out = 75
+///         scale_in  = 20
 ///       }
-///       "storageThresholds" = {
-///         "scaleOut" = 80
-///         "scaleIn"  = 20
+///       storage_thresholds = {
+///         scale_out = 80
+///         scale_in  = 20
 ///       }
 ///     }]
 ///     min_cluster_node_count = 3
@@ -666,7 +678,10 @@ import 'cluster_state.dart';
 ///     cool_down_period       = "1800s"
 ///   }
 /// }
-/// resource "gcp_vmwareengine_privatecloud" "cluster-pc" {
+/// resource "gcp_vmwareengine_private_cloud" "cluster-pc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-west1-a"
 ///   name        = "sample-pc"
 ///   description = "Sample test PC."
@@ -677,13 +692,16 @@ import 'cluster_state.dart';
 ///   management_cluster = {
 ///     cluster_id = "sample-mgmt-cluster"
 ///     node_type_configs = [{
-///       "nodeTypeId"      = "standard-72"
-///       "nodeCount"       = 3
-///       "customCoreCount" = 32
+///       node_type_id      = "standard-72"
+///       node_count        = 3
+///       custom_core_count = 32
 ///     }]
 ///   }
 /// }
 /// resource "gcp_vmwareengine_network" "cluster-nw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "pc-nw"
 ///   type        = "STANDARD"
 ///   location    = "global"
@@ -1226,9 +1244,9 @@ import 'cluster_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/filestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1288,7 +1306,7 @@ import 'cluster_state.dart';
 /// 			Description: pulumi.String("Sample test PC."),
 /// 			NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 /// 				ManagementCidr:      pulumi.String("192.168.30.0/24"),
-/// 				VmwareEngineNetwork: cluster_nw.ID().ToIDOutput().ToStringOutput(),
+/// 				VmwareEngineNetwork: cluster_nw.ID(),
 /// 			},
 /// 			ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 /// 				ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -1309,7 +1327,7 @@ import 'cluster_state.dart';
 /// 		// ### ip_cidr_range configured on subnet must also be allowed in filestore instance's 'nfs_export_options'
 /// 		cluster_pc_subnet, err := vmwareengine.NewSubnet(ctx, "cluster-pc-subnet", &vmwareengine.SubnetArgs{
 /// 			Name:        pulumi.String("service-1"),
-/// 			Parent:      cluster_pc.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      cluster_pc.ID(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -1336,7 +1354,7 @@ import 'cluster_state.dart';
 /// 		psaNetworkPeering, err := vmwareengine.NewNetworkPeering(ctx, "psa_network_peering", &vmwareengine.NetworkPeeringArgs{
 /// 			Name:                pulumi.String("tf-test-psa-network-peering"),
 /// 			Description:         pulumi.String("test description"),
-/// 			VmwareEngineNetwork: cluster_nw.ID().ToIDOutput().ToStringOutput(),
+/// 			VmwareEngineNetwork: cluster_nw.ID(),
 /// 			PeerNetwork:         pulumi.String(invokeTrimprefix.Result),
 /// 			PeerNetworkType:     pulumi.String("PRIVATE_SERVICES_ACCESS"),
 /// 		})
@@ -1349,7 +1367,7 @@ import 'cluster_state.dart';
 /// 			Description: pulumi.String("test description"),
 /// 			NfsDatastore: &vmwareengine.DatastoreNfsDatastoreArgs{
 /// 				GoogleFileService: &vmwareengine.DatastoreNfsDatastoreGoogleFileServiceArgs{
-/// 					FilestoreInstance: testInstance.ID().ToIDOutput().ToStringOutput(),
+/// 					FilestoreInstance: testInstance.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -1360,7 +1378,7 @@ import 'cluster_state.dart';
 /// 		// This code block is required to mount the datastore on ESXi hosts
 /// 		_, err = vmwareengine.NewCluster(ctx, "vmw-ext-cluster", &vmwareengine.ClusterArgs{
 /// 			Name:   pulumi.String("ext-cluster"),
-/// 			Parent: cluster_pc.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent: cluster_pc.ID(),
 /// 			NodeTypeConfigs: vmwareengine.ClusterNodeTypeConfigArray{
 /// 				&vmwareengine.ClusterNodeTypeConfigArgs{
 /// 					NodeTypeId: pulumi.String("standard-72"),
@@ -1369,9 +1387,9 @@ import 'cluster_state.dart';
 /// 			},
 /// 			DatastoreMountConfigs: vmwareengine.ClusterDatastoreMountConfigArray{
 /// 				&vmwareengine.ClusterDatastoreMountConfigArgs{
-/// 					Datastore: testFsDatastore.ID().ToIDOutput().ToStringOutput(),
+/// 					Datastore: testFsDatastore.ID(),
 /// 					DatastoreNetwork: &vmwareengine.ClusterDatastoreMountConfigDatastoreNetworkArgs{
-/// 						Subnet:          cluster_pc_subnet.ID().ToIDOutput().ToStringOutput(),
+/// 						Subnet:          cluster_pc_subnet.ID(),
 /// 						ConnectionCount: pulumi.Int(4),
 /// 						Mtu:             pulumi.Int(1500),
 /// 					},
@@ -1391,7 +1409,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1402,17 +1420,20 @@ import 'cluster_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "fsNetwork" {
+/// data "gcp_compute_network" "fsNetwork" {
 ///   name = "filestore_nw"
 /// }
-/// data "gcp_compute_getnetworkpeering" "snPeering" {
+/// data "gcp_compute_network_peering" "snPeering" {
 ///   name    = "servicenetworking-googleapis-com"
-///   network = data.gcp_compute_getnetwork.fsNetwork.id
+///   network = data.gcp_compute_network.fsNetwork.id
 /// }
 ///
 /// # Create a filestore instance with delete protection enabled
 /// #### Use ip range of private cloud service subnet in the 'nfs_export_options'
 /// resource "gcp_filestore_instance" "test_instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "test-fs-filestore"
 ///   location                    = ""
 ///   tier                        = "ZONAL"
@@ -1421,22 +1442,28 @@ import 'cluster_state.dart';
 ///     capacity_gb = 1024
 ///     name        = "share101"
 ///     nfs_export_options = [{
-///       "ipRanges" = ["10.0.0.0/24"]
+///       ip_ranges = ["10.0.0.0/24"]
 ///     }]
 ///   }
 ///   networks {
-///     network      = data.gcp_compute_getnetwork.fsNetwork.id
+///     network      = data.gcp_compute_network.fsNetwork.id
 ///     modes        = ["MODE_IPV4"]
 ///     connect_mode = "PRIVATE_SERVICE_ACCESS"
 ///   }
 /// }
 /// resource "gcp_vmwareengine_network" "cluster-nw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "pc-nw"
 ///   type        = "STANDARD"
 ///   location    = "global"
 ///   description = "PC network description."
 /// }
-/// resource "gcp_vmwareengine_privatecloud" "cluster-pc" {
+/// resource "gcp_vmwareengine_private_cloud" "cluster-pc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = ""
 ///   name        = "sample-pc"
 ///   description = "Sample test PC."
@@ -1447,9 +1474,9 @@ import 'cluster_state.dart';
 ///   management_cluster = {
 ///     cluster_id = "sample-mgmt-cluster"
 ///     node_type_configs = [{
-///       "nodeTypeId"      = "standard-72"
-///       "nodeCount"       = 3
-///       "customCoreCount" = 32
+///       node_type_id      = "standard-72"
+///       node_count        = 3
+///       custom_core_count = 32
 ///     }]
 ///   }
 /// }
@@ -1457,20 +1484,29 @@ import 'cluster_state.dart';
 /// ####  Service subnet is used by nfs datastore mounts
 /// #### ip_cidr_range configured on subnet must also be allowed in filestore instance's 'nfs_export_options'
 /// resource "gcp_vmwareengine_subnet" "cluster-pc-subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "service-1"
-///   parent        = gcp_vmwareengine_privatecloud.cluster-pc.id
+///   parent        = gcp_vmwareengine_private_cloud.cluster-pc.id
 ///   ip_cidr_range = "10.0.0.0/24"
 /// }
 /// # Create vmware engine network peering
 /// ### vmware network peering is required for filestore mount on cluster
-/// resource "gcp_vmwareengine_networkpeering" "psa_network_peering" {
+/// resource "gcp_vmwareengine_network_peering" "psa_network_peering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "tf-test-psa-network-peering"
 ///   description           = "test description"
 ///   vmware_engine_network = gcp_vmwareengine_network.cluster-nw.id
-///   peer_network          = trimprefix(data.gcp_compute_getnetworkpeering.snPeering.peer_network, "https://www.googleapis.com/compute/v1")
+///   peer_network          = trimprefix(data.gcp_compute_network_peering.snPeering.peer_network, "https://www.googleapis.com/compute/v1")
 ///   peer_network_type     = "PRIVATE_SERVICES_ACCESS"
 /// }
 /// resource "gcp_vmwareengine_datastore" "test_fs_datastore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "ext-fs-datastore"
 ///   location    = ""
 ///   description = "test description"
@@ -1483,9 +1519,12 @@ import 'cluster_state.dart';
 /// # Mount NFS datastore on vSphere cluster
 /// # This code block is required to mount the datastore on ESXi hosts
 /// resource "gcp_vmwareengine_cluster" "vmw-ext-cluster" {
-///   depends_on = [gcp_vmwareengine_networkpeering.psa_network_peering]
-///   name       = "ext-cluster"
-///   parent     = gcp_vmwareengine_privatecloud.cluster-pc.id
+///   depends_on = [gcp_vmwareengine_network_peering.psa_network_peering]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name   = "ext-cluster"
+///   parent = gcp_vmwareengine_private_cloud.cluster-pc.id
 ///   node_type_configs {
 ///     node_type_id = "standard-72"
 ///     node_count   = 3
@@ -2220,9 +2259,9 @@ import 'cluster_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/netapp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -2266,7 +2305,7 @@ import 'cluster_state.dart';
 /// 		gcnvNetworkPeering, err := vmwareengine.NewNetworkPeering(ctx, "gcnv_network_peering", &vmwareengine.NetworkPeeringArgs{
 /// 			Name:                pulumi.String("tf-test-gcnv-network-peering"),
 /// 			Description:         pulumi.String("test description"),
-/// 			VmwareEngineNetwork: cluster_nw.ID().ToIDOutput().ToStringOutput(),
+/// 			VmwareEngineNetwork: cluster_nw.ID(),
 /// 			PeerNetwork:         pulumi.String(invokeTrimprefix.Result),
 /// 			PeerNetworkType:     pulumi.String("GOOGLE_CLOUD_NETAPP_VOLUMES"),
 /// 		})
@@ -2279,7 +2318,7 @@ import 'cluster_state.dart';
 /// 			Description: pulumi.String("Sample test PC."),
 /// 			NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 /// 				ManagementCidr:      pulumi.String("192.168.30.0/24"),
-/// 				VmwareEngineNetwork: cluster_nw.ID().ToIDOutput().ToStringOutput(),
+/// 				VmwareEngineNetwork: cluster_nw.ID(),
 /// 			},
 /// 			ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 /// 				ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -2300,7 +2339,7 @@ import 'cluster_state.dart';
 /// 		// ### ip_cidr_range configured on subnet must also be allowed in in netapp volumes's 'export_policy'
 /// 		cluster_pc_subnet, err := vmwareengine.NewSubnet(ctx, "cluster-pc-subnet", &vmwareengine.SubnetArgs{
 /// 			Name:        pulumi.String("service-1"),
-/// 			Parent:      cluster_pc.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent:      cluster_pc.ID(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -2357,7 +2396,7 @@ import 'cluster_state.dart';
 /// 			Description: pulumi.String("example google_file_service.netapp datastore."),
 /// 			NfsDatastore: &vmwareengine.DatastoreNfsDatastoreArgs{
 /// 				GoogleFileService: &vmwareengine.DatastoreNfsDatastoreGoogleFileServiceArgs{
-/// 					NetappVolume: testVolume.ID().ToIDOutput().ToStringOutput(),
+/// 					NetappVolume: testVolume.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -2368,7 +2407,7 @@ import 'cluster_state.dart';
 /// 		// This code block is required to mount the datastore on ESXi hosts
 /// 		_, err = vmwareengine.NewCluster(ctx, "vmw-ext-cluster", &vmwareengine.ClusterArgs{
 /// 			Name:   pulumi.String("ext-cluster"),
-/// 			Parent: cluster_pc.ID().ToIDOutput().ToStringOutput(),
+/// 			Parent: cluster_pc.ID(),
 /// 			NodeTypeConfigs: vmwareengine.ClusterNodeTypeConfigArray{
 /// 				&vmwareengine.ClusterNodeTypeConfigArgs{
 /// 					NodeTypeId: pulumi.String("standard-72"),
@@ -2377,9 +2416,9 @@ import 'cluster_state.dart';
 /// 			},
 /// 			DatastoreMountConfigs: vmwareengine.ClusterDatastoreMountConfigArray{
 /// 				&vmwareengine.ClusterDatastoreMountConfigArgs{
-/// 					Datastore: testFsDatastore.ID().ToIDOutput().ToStringOutput(),
+/// 					Datastore: testFsDatastore.ID(),
 /// 					DatastoreNetwork: &vmwareengine.ClusterDatastoreMountConfigDatastoreNetworkArgs{
-/// 						Subnet:          cluster_pc_subnet.ID().ToIDOutput().ToStringOutput(),
+/// 						Subnet:          cluster_pc_subnet.ID(),
 /// 						ConnectionCount: pulumi.Int(4),
 /// 						Mtu:             pulumi.Int(1500),
 /// 					},
@@ -2399,7 +2438,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2410,15 +2449,18 @@ import 'cluster_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "npNetwork" {
+/// data "gcp_compute_network" "npNetwork" {
 ///   name = "netapp_nw"
 /// }
-/// data "gcp_compute_getnetworkpeering" "snPeering" {
+/// data "gcp_compute_network_peering" "snPeering" {
 ///   name    = "sn-netapp-prod"
-///   network = data.gcp_compute_getnetwork.npNetwork.id
+///   network = data.gcp_compute_network.npNetwork.id
 /// }
 ///
 /// resource "gcp_vmwareengine_network" "cluster-nw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "pc-nw"
 ///   type        = "STANDARD"
 ///   location    = "global"
@@ -2426,14 +2468,20 @@ import 'cluster_state.dart';
 /// }
 /// # Create vmware engine network peering
 /// #### vmware network peering is required for netapp mount on cluster
-/// resource "gcp_vmwareengine_networkpeering" "gcnv_network_peering" {
+/// resource "gcp_vmwareengine_network_peering" "gcnv_network_peering" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "tf-test-gcnv-network-peering"
 ///   description           = "test description"
 ///   vmware_engine_network = gcp_vmwareengine_network.cluster-nw.id
-///   peer_network          = trimprefix(data.gcp_compute_getnetworkpeering.snPeering.peer_network, "https://www.googleapis.com/compute/v1")
+///   peer_network          = trimprefix(data.gcp_compute_network_peering.snPeering.peer_network, "https://www.googleapis.com/compute/v1")
 ///   peer_network_type     = "GOOGLE_CLOUD_NETAPP_VOLUMES"
 /// }
-/// resource "gcp_vmwareengine_privatecloud" "cluster-pc" {
+/// resource "gcp_vmwareengine_private_cloud" "cluster-pc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = ""
 ///   name        = "sample-pc"
 ///   description = "Sample test PC."
@@ -2444,9 +2492,9 @@ import 'cluster_state.dart';
 ///   management_cluster = {
 ///     cluster_id = "sample-mgmt-cluster"
 ///     node_type_configs = [{
-///       "nodeTypeId"      = "standard-72"
-///       "nodeCount"       = 3
-///       "customCoreCount" = 32
+///       node_type_id      = "standard-72"
+///       node_count        = 3
+///       custom_core_count = 32
 ///     }]
 ///   }
 /// }
@@ -2454,44 +2502,56 @@ import 'cluster_state.dart';
 /// ####  Service subnet is used by nfs datastore mounts
 /// #### ip_cidr_range configured on subnet must also be allowed in in netapp volumes's 'export_policy'
 /// resource "gcp_vmwareengine_subnet" "cluster-pc-subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "service-1"
-///   parent        = gcp_vmwareengine_privatecloud.cluster-pc.id
+///   parent        = gcp_vmwareengine_private_cloud.cluster-pc.id
 ///   ip_cidr_range = "10.0.0.0/24"
 /// }
-/// resource "gcp_netapp_storagepool" "default" {
+/// resource "gcp_netapp_storage_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "tf-test-test-pool"
 ///   location      = "us-west1"
 ///   service_level = "PREMIUM"
 ///   capacity_gib  = "2048"
-///   network       = data.gcp_compute_getnetwork.npNetwork.id
+///   network       = data.gcp_compute_network.npNetwork.id
 /// }
 /// # Create a netapp volume with delete protection enabled
 /// ### Use ip range of private cloud service subnet in the 'export_policy'
 /// resource "gcp_netapp_volume" "test_volume" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us-west1"
 ///   name         = "tf-test-test-volume"
 ///   capacity_gib = "100"
 ///   share_name   = "tf-test-test-volume"
-///   storage_pool = gcp_netapp_storagepool.default.name
+///   storage_pool = gcp_netapp_storage_pool.default.name
 ///   protocols    = ["NFSV3"]
 ///   export_policy = {
 ///     rules = [{
-///       "accessType"          = "READ_WRITE"
-///       "allowedClients"      = "10.0.0.0/24"
-///       "hasRootAccess"       = "true"
-///       "kerberos5ReadOnly"   = false
-///       "kerberos5ReadWrite"  = false
-///       "kerberos5iReadOnly"  = false
-///       "kerberos5iReadWrite" = false
-///       "kerberos5pReadOnly"  = false
-///       "kerberos5pReadWrite" = false
-///       "nfsv3"               = true
-///       "nfsv4"               = false
+///       access_type           = "READ_WRITE"
+///       allowed_clients       = "10.0.0.0/24"
+///       has_root_access       = "true"
+///       kerberos5_read_only   = false
+///       kerberos5_read_write  = false
+///       kerberos5i_read_only  = false
+///       kerberos5i_read_write = false
+///       kerberos5p_read_only  = false
+///       kerberos5p_read_write = false
+///       nfsv3                 = true
+///       nfsv4                 = false
 ///     }]
 ///   }
 ///   restricted_actions = ["DELETE"]
 /// }
 /// resource "gcp_vmwareengine_datastore" "test_fs_datastore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "ext-fs-datastore"
 ///   location    = "us-west1"
 ///   description = "example google_file_service.netapp datastore."
@@ -2504,9 +2564,12 @@ import 'cluster_state.dart';
 /// # Mount NFS datastore on vSphere cluster
 /// # This code block is required to mount the datastore on ESXi hosts
 /// resource "gcp_vmwareengine_cluster" "vmw-ext-cluster" {
-///   depends_on = [gcp_vmwareengine_networkpeering.gcnv_network_peering]
-///   name       = "ext-cluster"
-///   parent     = gcp_vmwareengine_privatecloud.cluster-pc.id
+///   depends_on = [gcp_vmwareengine_network_peering.gcnv_network_peering]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name   = "ext-cluster"
+///   parent = gcp_vmwareengine_private_cloud.cluster-pc.id
 ///   node_type_configs {
 ///     node_type_id = "standard-72"
 ///     node_count   = 3
@@ -2913,7 +2976,7 @@ class Cluster extends pulumi.CustomResource {
           'gcp:vmwareengine/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     autoscalingSettings = registerOutput<ClusterAutoscalingSettings?>('autoscalingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutoscalingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

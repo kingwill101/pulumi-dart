@@ -89,9 +89,9 @@ import 'organization_sink_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -129,7 +129,7 @@ import 'organization_sink_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -137,7 +137,10 @@ import 'organization_sink_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_organizationsink" "my-sink" {
+/// resource "gcp_logging_organization_sink" "my-sink" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-sink"
 ///   description = "some explanation on what this is"
 ///   org_id      = "123456789"
@@ -145,13 +148,19 @@ import 'organization_sink_state.dart';
 ///   filter      = "resource.type = gce_instance AND severity >= WARNING"
 /// }
 /// resource "gcp_storage_bucket" "log-bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "organization-logging-bucket"
 ///   location = "US"
 /// }
-/// resource "gcp_projects_iammember" "log-writer" {
+/// resource "gcp_projects_i_a_m_member" "log-writer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "your-project-id"
 ///   role    = "roles/storage.objectCreator"
-///   member  = gcp_logging_organizationsink.my-sink.writer_identity
+///   member  = gcp_logging_organization_sink.my-sink.writer_identity
 /// }
 /// ```
 /// ```java
@@ -293,7 +302,7 @@ class OrganizationSink extends pulumi.CustomResource {
           'gcp:logging/organizationSink:OrganizationSink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     bigqueryOptions = registerOutput<OrganizationSinkBigqueryOptions>('bigqueryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationSinkBigqueryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

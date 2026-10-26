@@ -127,7 +127,7 @@ import 'backup_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -145,7 +145,7 @@ import 'backup_plan_state.dart';
 /// 			Location:                       pulumi.String("us-central1"),
 /// 			BackupPlanId:                   pulumi.String("backup-plan-simple-test"),
 /// 			ResourceType:                   pulumi.String("compute.googleapis.com/Instance"),
-/// 			BackupVault:                    myBackupVault.ID().ToIDOutput().ToStringOutput(),
+/// 			BackupVault:                    myBackupVault.ID(),
 /// 			MaxCustomOnDemandRetentionDays: pulumi.Int(30),
 /// 			BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
 /// 				&backupdisasterrecovery.BackupPlanBackupRuleArgs{
@@ -171,7 +171,7 @@ import 'backup_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -179,16 +179,22 @@ import 'backup_plan_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_backupdisasterrecovery_backupvault" "my_backup_vault" {
+/// resource "gcp_backupdisasterrecovery_backup_vault" "my_backup_vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                                   = "us-central1"
 ///   backup_vault_id                            = "backup-vault-simple-test"
 ///   backup_minimum_enforced_retention_duration = "100000s"
 /// }
-/// resource "gcp_backupdisasterrecovery_backupplan" "my-backup-plan-1" {
+/// resource "gcp_backupdisasterrecovery_backup_plan" "my-backup-plan-1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                            = "us-central1"
 ///   backup_plan_id                      = "backup-plan-simple-test"
 ///   resource_type                       = "compute.googleapis.com/Instance"
-///   backup_vault                        = gcp_backupdisasterrecovery_backupvault.my_backup_vault.id
+///   backup_vault                        = gcp_backupdisasterrecovery_backup_vault.my_backup_vault.id
 ///   max_custom_on_demand_retention_days = 30
 ///   backup_rules {
 ///     rule_id               = "rule-1"
@@ -411,7 +417,7 @@ import 'backup_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -429,7 +435,7 @@ import 'backup_plan_state.dart';
 /// 			Location:                       pulumi.String("us-central1"),
 /// 			BackupPlanId:                   pulumi.String("backup-plan-disk-test"),
 /// 			ResourceType:                   pulumi.String("compute.googleapis.com/Disk"),
-/// 			BackupVault:                    myBackupVault.ID().ToIDOutput().ToStringOutput(),
+/// 			BackupVault:                    myBackupVault.ID(),
 /// 			MaxCustomOnDemandRetentionDays: pulumi.Int(30),
 /// 			BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
 /// 				&backupdisasterrecovery.BackupPlanBackupRuleArgs{
@@ -458,7 +464,7 @@ import 'backup_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -466,16 +472,22 @@ import 'backup_plan_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_backupdisasterrecovery_backupvault" "my_backup_vault" {
+/// resource "gcp_backupdisasterrecovery_backup_vault" "my_backup_vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                                   = "us-central1"
 ///   backup_vault_id                            = "backup-vault-disk-test"
 ///   backup_minimum_enforced_retention_duration = "100000s"
 /// }
-/// resource "gcp_backupdisasterrecovery_backupplan" "my-disk-backup-plan-1" {
+/// resource "gcp_backupdisasterrecovery_backup_plan" "my-disk-backup-plan-1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                            = "us-central1"
 ///   backup_plan_id                      = "backup-plan-disk-test"
 ///   resource_type                       = "compute.googleapis.com/Disk"
-///   backup_vault                        = gcp_backupdisasterrecovery_backupvault.my_backup_vault.id
+///   backup_vault                        = gcp_backupdisasterrecovery_backup_vault.my_backup_vault.id
 ///   max_custom_on_demand_retention_days = 30
 ///   backup_rules {
 ///     rule_id               = "rule-1"
@@ -700,7 +712,7 @@ import 'backup_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -718,7 +730,7 @@ import 'backup_plan_state.dart';
 /// 			Location:                       pulumi.String("us-central1"),
 /// 			BackupPlanId:                   pulumi.String("backup-plan-csql-test"),
 /// 			ResourceType:                   pulumi.String("sqladmin.googleapis.com/Instance"),
-/// 			BackupVault:                    myBackupVault.ID().ToIDOutput().ToStringOutput(),
+/// 			BackupVault:                    myBackupVault.ID(),
 /// 			MaxCustomOnDemandRetentionDays: pulumi.Int(30),
 /// 			BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
 /// 				&backupdisasterrecovery.BackupPlanBackupRuleArgs{
@@ -745,7 +757,7 @@ import 'backup_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -753,16 +765,22 @@ import 'backup_plan_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_backupdisasterrecovery_backupvault" "my_backup_vault" {
+/// resource "gcp_backupdisasterrecovery_backup_vault" "my_backup_vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                                   = "us-central1"
 ///   backup_vault_id                            = "backup-vault-csql-test"
 ///   backup_minimum_enforced_retention_duration = "100000s"
 /// }
-/// resource "gcp_backupdisasterrecovery_backupplan" "my-csql-backup-plan-1" {
+/// resource "gcp_backupdisasterrecovery_backup_plan" "my-csql-backup-plan-1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                            = "us-central1"
 ///   backup_plan_id                      = "backup-plan-csql-test"
 ///   resource_type                       = "sqladmin.googleapis.com/Instance"
-///   backup_vault                        = gcp_backupdisasterrecovery_backupvault.my_backup_vault.id
+///   backup_vault                        = gcp_backupdisasterrecovery_backup_vault.my_backup_vault.id
 ///   max_custom_on_demand_retention_days = 30
 ///   backup_rules {
 ///     rule_id               = "rule-1"
@@ -975,7 +993,7 @@ import 'backup_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -993,7 +1011,7 @@ import 'backup_plan_state.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			BackupPlanId: pulumi.String("backup-plan-filestore-test"),
 /// 			ResourceType: pulumi.String("file.googleapis.com/Instance"),
-/// 			BackupVault:  myBackupVault.ID().ToIDOutput().ToStringOutput(),
+/// 			BackupVault:  myBackupVault.ID(),
 /// 			BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
 /// 				&backupdisasterrecovery.BackupPlanBackupRuleArgs{
 /// 					RuleId:              pulumi.String("rule-1"),
@@ -1018,7 +1036,7 @@ import 'backup_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1026,16 +1044,22 @@ import 'backup_plan_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_backupdisasterrecovery_backupvault" "my_backup_vault" {
+/// resource "gcp_backupdisasterrecovery_backup_vault" "my_backup_vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                                   = "us-central1"
 ///   backup_vault_id                            = "backup-vault-filestore-test"
 ///   backup_minimum_enforced_retention_duration = "100000s"
 /// }
-/// resource "gcp_backupdisasterrecovery_backupplan" "my-filestore-backup-plan-1" {
+/// resource "gcp_backupdisasterrecovery_backup_plan" "my-filestore-backup-plan-1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
 ///   backup_plan_id = "backup-plan-filestore-test"
 ///   resource_type  = "file.googleapis.com/Instance"
-///   backup_vault   = gcp_backupdisasterrecovery_backupvault.my_backup_vault.id
+///   backup_vault   = gcp_backupdisasterrecovery_backup_vault.my_backup_vault.id
 ///   backup_rules {
 ///     rule_id               = "rule-1"
 ///     backup_retention_days = 5
@@ -1209,7 +1233,7 @@ class BackupPlan extends pulumi.CustomResource {
           'gcp:backupdisasterrecovery/backupPlan:BackupPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     backupPlanId = registerOutput<String>('backupPlanId');
     backupRules = registerOutput<List<BackupPlanBackupRule>?>('backupRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackupPlanBackupRule>(guardedValue, (value) => BackupPlanBackupRule.fromMap((value as Map).cast<String, dynamic>())); });

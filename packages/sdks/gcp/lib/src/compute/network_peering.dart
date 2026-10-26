@@ -97,7 +97,7 @@ import 'network_peering_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -138,7 +138,7 @@ import 'network_peering_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -146,21 +146,33 @@ import 'network_peering_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_networkpeering" "peering1" {
+/// resource "gcp_compute_network_peering" "peering1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "peering1"
 ///   network      = gcp_compute_network.default.self_link
 ///   peer_network = gcp_compute_network.other.self_link
 /// }
-/// resource "gcp_compute_networkpeering" "peering2" {
+/// resource "gcp_compute_network_peering" "peering2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "peering2"
 ///   network      = gcp_compute_network.other.self_link
 ///   peer_network = gcp_compute_network.default.self_link
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "foobar"
 ///   auto_create_subnetworks = "false"
 /// }
 /// resource "gcp_compute_network" "other" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "other"
 ///   auto_create_subnetworks = "false"
 /// }
@@ -297,7 +309,7 @@ class NetworkPeering extends pulumi.CustomResource {
           'gcp:compute/networkPeering:NetworkPeering',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     exportCustomRoutes = registerOutput<bool?>('exportCustomRoutes');

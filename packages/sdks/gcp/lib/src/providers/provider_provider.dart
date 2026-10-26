@@ -114,6 +114,7 @@ class ProviderProvider extends pulumi.ProviderResource {
   late final pulumi.Output<String?> firebaserulesCustomEndpoint;
   late final pulumi.Output<String?> firestoreCustomEndpoint;
   late final pulumi.Output<String?> geminiCustomEndpoint;
+  late final pulumi.Output<String?> geminiDataAnalyticsCustomEndpoint;
   late final pulumi.Output<String?> gkeBackupCustomEndpoint;
   late final pulumi.Output<String?> gkeHub2CustomEndpoint;
   late final pulumi.Output<String?> gkeHubCustomEndpoint;
@@ -141,7 +142,6 @@ class ProviderProvider extends pulumi.ProviderResource {
   late final pulumi.Output<String?> memcacheCustomEndpoint;
   late final pulumi.Output<String?> memorystoreCustomEndpoint;
   late final pulumi.Output<String?> migrationCenterCustomEndpoint;
-  late final pulumi.Output<String?> mlEngineCustomEndpoint;
   late final pulumi.Output<String?> modelArmorCustomEndpoint;
   late final pulumi.Output<String?> modelArmorGlobalCustomEndpoint;
   late final pulumi.Output<String?> monitoringCustomEndpoint;
@@ -149,9 +149,9 @@ class ProviderProvider extends pulumi.ProviderResource {
   late final pulumi.Output<String?> networkConnectivityCustomEndpoint;
   late final pulumi.Output<String?> networkConnectivityv1CustomEndpoint;
   late final pulumi.Output<String?> networkManagementCustomEndpoint;
+  late final pulumi.Output<String?> networkManagementv1CustomEndpoint;
   late final pulumi.Output<String?> networkSecurityCustomEndpoint;
   late final pulumi.Output<String?> networkServicesCustomEndpoint;
-  late final pulumi.Output<String?> notebooksCustomEndpoint;
   late final pulumi.Output<String?> observabilityCustomEndpoint;
   late final pulumi.Output<String?> oracleDatabaseCustomEndpoint;
   late final pulumi.Output<String?> orgPolicyCustomEndpoint;
@@ -192,6 +192,7 @@ class ProviderProvider extends pulumi.ProviderResource {
   late final pulumi.Output<String?> serviceManagementCustomEndpoint;
   late final pulumi.Output<String?> serviceNetworkingCustomEndpoint;
   late final pulumi.Output<String?> serviceUsageCustomEndpoint;
+  late final pulumi.Output<String?> serviceUsageV2CustomEndpoint;
   late final pulumi.Output<String?> siteVerificationCustomEndpoint;
   late final pulumi.Output<String?> sourceRepoCustomEndpoint;
   late final pulumi.Output<String?> spannerCustomEndpoint;
@@ -199,6 +200,7 @@ class ProviderProvider extends pulumi.ProviderResource {
   late final pulumi.Output<String?> storageBatchOperationsCustomEndpoint;
   late final pulumi.Output<String?> storageControlCustomEndpoint;
   late final pulumi.Output<String?> storageCustomEndpoint;
+  late final pulumi.Output<String?> storageFtpCustomEndpoint;
   late final pulumi.Output<String?> storageInsightsCustomEndpoint;
   late final pulumi.Output<String?> storageTransferCustomEndpoint;
   late final pulumi.Output<String?> tagsCustomEndpoint;
@@ -229,7 +231,7 @@ class ProviderProvider extends pulumi.ProviderResource {
           'gcp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['accessToken'],
         ) {
     accessApprovalCustomEndpoint = registerOutput<String?>('accessApprovalCustomEndpoint');
@@ -339,6 +341,7 @@ class ProviderProvider extends pulumi.ProviderResource {
     firebaserulesCustomEndpoint = registerOutput<String?>('firebaserulesCustomEndpoint');
     firestoreCustomEndpoint = registerOutput<String?>('firestoreCustomEndpoint');
     geminiCustomEndpoint = registerOutput<String?>('geminiCustomEndpoint');
+    geminiDataAnalyticsCustomEndpoint = registerOutput<String?>('geminiDataAnalyticsCustomEndpoint');
     gkeBackupCustomEndpoint = registerOutput<String?>('gkeBackupCustomEndpoint');
     gkeHub2CustomEndpoint = registerOutput<String?>('gkeHub2CustomEndpoint');
     gkeHubCustomEndpoint = registerOutput<String?>('gkeHubCustomEndpoint');
@@ -366,7 +369,6 @@ class ProviderProvider extends pulumi.ProviderResource {
     memcacheCustomEndpoint = registerOutput<String?>('memcacheCustomEndpoint');
     memorystoreCustomEndpoint = registerOutput<String?>('memorystoreCustomEndpoint');
     migrationCenterCustomEndpoint = registerOutput<String?>('migrationCenterCustomEndpoint');
-    mlEngineCustomEndpoint = registerOutput<String?>('mlEngineCustomEndpoint');
     modelArmorCustomEndpoint = registerOutput<String?>('modelArmorCustomEndpoint');
     modelArmorGlobalCustomEndpoint = registerOutput<String?>('modelArmorGlobalCustomEndpoint');
     monitoringCustomEndpoint = registerOutput<String?>('monitoringCustomEndpoint');
@@ -374,9 +376,9 @@ class ProviderProvider extends pulumi.ProviderResource {
     networkConnectivityCustomEndpoint = registerOutput<String?>('networkConnectivityCustomEndpoint');
     networkConnectivityv1CustomEndpoint = registerOutput<String?>('networkConnectivityv1CustomEndpoint');
     networkManagementCustomEndpoint = registerOutput<String?>('networkManagementCustomEndpoint');
+    networkManagementv1CustomEndpoint = registerOutput<String?>('networkManagementv1CustomEndpoint');
     networkSecurityCustomEndpoint = registerOutput<String?>('networkSecurityCustomEndpoint');
     networkServicesCustomEndpoint = registerOutput<String?>('networkServicesCustomEndpoint');
-    notebooksCustomEndpoint = registerOutput<String?>('notebooksCustomEndpoint');
     observabilityCustomEndpoint = registerOutput<String?>('observabilityCustomEndpoint');
     oracleDatabaseCustomEndpoint = registerOutput<String?>('oracleDatabaseCustomEndpoint');
     orgPolicyCustomEndpoint = registerOutput<String?>('orgPolicyCustomEndpoint');
@@ -417,6 +419,7 @@ class ProviderProvider extends pulumi.ProviderResource {
     serviceManagementCustomEndpoint = registerOutput<String?>('serviceManagementCustomEndpoint');
     serviceNetworkingCustomEndpoint = registerOutput<String?>('serviceNetworkingCustomEndpoint');
     serviceUsageCustomEndpoint = registerOutput<String?>('serviceUsageCustomEndpoint');
+    serviceUsageV2CustomEndpoint = registerOutput<String?>('serviceUsageV2CustomEndpoint');
     siteVerificationCustomEndpoint = registerOutput<String?>('siteVerificationCustomEndpoint');
     sourceRepoCustomEndpoint = registerOutput<String?>('sourceRepoCustomEndpoint');
     spannerCustomEndpoint = registerOutput<String?>('spannerCustomEndpoint');
@@ -424,6 +427,7 @@ class ProviderProvider extends pulumi.ProviderResource {
     storageBatchOperationsCustomEndpoint = registerOutput<String?>('storageBatchOperationsCustomEndpoint');
     storageControlCustomEndpoint = registerOutput<String?>('storageControlCustomEndpoint');
     storageCustomEndpoint = registerOutput<String?>('storageCustomEndpoint');
+    storageFtpCustomEndpoint = registerOutput<String?>('storageFtpCustomEndpoint');
     storageInsightsCustomEndpoint = registerOutput<String?>('storageInsightsCustomEndpoint');
     storageTransferCustomEndpoint = registerOutput<String?>('storageTransferCustomEndpoint');
     tagsCustomEndpoint = registerOutput<String?>('tagsCustomEndpoint');

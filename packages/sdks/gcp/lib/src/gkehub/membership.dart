@@ -100,8 +100,8 @@ import 'membership_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -137,7 +137,7 @@ import 'membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -146,6 +146,9 @@ import 'membership_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "basic-cluster"
 ///   location            = "us-central1-a"
 ///   initial_node_count  = 1
@@ -154,6 +157,9 @@ import 'membership_state.dart';
 ///   subnetwork          = "default"
 /// }
 /// resource "gcp_gkehub_membership" "membership" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   membership_id = "basic"
 ///   location      = "us-west1"
 ///   endpoint = {
@@ -323,8 +329,8 @@ import 'membership_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -362,7 +368,7 @@ import 'membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -371,6 +377,9 @@ import 'membership_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "basic-cluster"
 ///   location            = "us-central1-a"
 ///   initial_node_count  = 1
@@ -379,6 +388,9 @@ import 'membership_state.dart';
 ///   subnetwork          = "default"
 /// }
 /// resource "gcp_gkehub_membership" "membership" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   membership_id = "basic"
 ///   endpoint = {
 ///     gke_cluster = {
@@ -561,8 +573,8 @@ import 'membership_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -586,7 +598,7 @@ import 'membership_state.dart';
 /// 			MembershipId: pulumi.String("basic"),
 /// 			Endpoint: &gkehub.MembershipEndpointArgs{
 /// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-/// 					ResourceLink: primary.ID().ToIDOutput().ToStringOutput(),
+/// 					ResourceLink: primary.ID(),
 /// 				},
 /// 			},
 /// 			Authority: &gkehub.MembershipAuthorityArgs{
@@ -603,7 +615,7 @@ import 'membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -612,6 +624,9 @@ import 'membership_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "basic-cluster"
 ///   location           = "us-central1-a"
 ///   initial_node_count = 1
@@ -623,6 +638,9 @@ import 'membership_state.dart';
 ///   subnetwork          = "default"
 /// }
 /// resource "gcp_gkehub_membership" "membership" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   membership_id = "basic"
 ///   endpoint = {
 ///     gke_cluster = {
@@ -778,7 +796,7 @@ class Membership extends pulumi.CustomResource {
           'gcp:gkehub/membership:Membership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     authority = registerOutput<MembershipAuthority?>('authority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MembershipAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });

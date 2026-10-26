@@ -59,7 +59,7 @@ import 'project_metadata_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -80,7 +80,7 @@ import 'project_metadata_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -88,7 +88,10 @@ import 'project_metadata_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_projectmetadata" "default" {
+/// resource "gcp_compute_project_metadata" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metadata = {
 ///     "foo"  = "bar"
 ///     "fizz" = "buzz"
@@ -196,7 +199,7 @@ import 'project_metadata_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -218,7 +221,7 @@ import 'project_metadata_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -231,9 +234,16 @@ import 'project_metadata_state.dart';
 /// This resource configuration is prone to causing frequent diffs as Google adds SSH Keys when the SSH Button is pressed in the console.
 /// It is better to use OS Login instead.
 /// */
-/// resource "gcp_compute_projectmetadata" "my_ssh_key" {
+/// resource "gcp_compute_project_metadata" "my_ssh_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metadata = {
-///     "ssh-keys" = "      dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev\n      foo:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT bar\n"
+///     "ssh-keys" = <<EOF
+///       dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev
+///       foo:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT bar
+/// EOF
+///
 ///   }
 /// }
 /// ```
@@ -329,7 +339,7 @@ class ProjectMetadata extends pulumi.CustomResource {
           'gcp:compute/projectMetadata:ProjectMetadata',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

@@ -119,7 +119,7 @@ import 'data_table_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -156,7 +156,7 @@ import 'data_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -164,7 +164,10 @@ import 'data_table_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_chronicle_datatable" "example" {
+/// resource "gcp_chronicle_data_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us"
 ///   instance      = "00000000-0000-0000-0000-000000000000"
 ///   data_table_id = "terraform_test"
@@ -181,19 +184,19 @@ import 'data_table_state.dart';
 ///   }
 /// }
 /// output "dataTableName" {
-///   value = gcp_chronicle_datatable.example.name
+///   value = gcp_chronicle_data_table.example.name
 /// }
 /// output "dataTableId" {
-///   value = gcp_chronicle_datatable.example.data_table_id
+///   value = gcp_chronicle_data_table.example.data_table_id
 /// }
 /// output "dataTableUuid" {
-///   value = gcp_chronicle_datatable.example.data_table_uuid
+///   value = gcp_chronicle_data_table.example.data_table_uuid
 /// }
 /// output "dataTableDescription" {
-///   value = gcp_chronicle_datatable.example.description
+///   value = gcp_chronicle_data_table.example.description
 /// }
 /// output "dataTableCreateTime" {
-///   value = gcp_chronicle_datatable.example.create_time
+///   value = gcp_chronicle_data_table.example.create_time
 /// }
 /// ```
 /// ```java
@@ -423,7 +426,7 @@ import 'data_table_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -481,7 +484,7 @@ import 'data_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -489,7 +492,10 @@ import 'data_table_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_chronicle_dataaccessscope" "test_scope_allow_everyone" {
+/// resource "gcp_chronicle_data_access_scope" "test_scope_allow_everyone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "us"
 ///   instance             = "00000000-0000-0000-0000-000000000000"
 ///   data_access_scope_id = "tf-scope-opt"
@@ -498,8 +504,11 @@ import 'data_table_state.dart';
 ///     log_type = "GCP_CLOUDAUDIT"
 ///   }
 /// }
-/// resource "gcp_chronicle_datatable" "example_dt" {
-///   depends_on       = [gcp_chronicle_dataaccessscope.test_scope_allow_everyone]
+/// resource "gcp_chronicle_data_table" "example_dt" {
+///   depends_on = [gcp_chronicle_data_access_scope.test_scope_allow_everyone]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us"
 ///   instance         = "00000000-0000-0000-0000-000000000000"
 ///   data_table_id    = "tf_test_full"
@@ -520,7 +529,7 @@ import 'data_table_state.dart';
 ///     repeated_values = false
 ///   }
 ///   scope_info = {
-///     data_access_scopes = [gcp_chronicle_dataaccessscope.test_scope_allow_everyone.name]
+///     data_access_scopes = [gcp_chronicle_data_access_scope.test_scope_allow_everyone.name]
 ///   }
 /// }
 /// ```
@@ -726,7 +735,7 @@ class DataTable extends pulumi.CustomResource {
           'gcp:chronicle/dataTable:DataTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     approximateRowCount = registerOutput<int>('approximateRowCount');
     columnInfos = registerOutput<List<DataTableColumnInfo>?>('columnInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataTableColumnInfo>(guardedValue, (value) => DataTableColumnInfo.fromMap((value as Map).cast<String, dynamic>())); });

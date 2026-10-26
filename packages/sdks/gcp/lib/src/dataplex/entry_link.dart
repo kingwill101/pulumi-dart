@@ -25,25 +25,25 @@ import 'entry_link_state.dart';
 ///
 /// const entry_group_basic = new gcp.dataplex.EntryGroup("entry-group-basic", {
 ///     location: "us-central1",
-///     entryGroupId: "tf-test-entry-group_12125",
+///     entryGroupId: "tf-test-entry-group_32270",
 ///     project: "1111111111111",
 /// });
 /// const entry_type_basic = new gcp.dataplex.EntryType("entry-type-basic", {
-///     entryTypeId: "tf-test-entry-type_15022",
+///     entryTypeId: "tf-test-entry-type_9329",
 ///     location: "us-central1",
 ///     project: "1111111111111",
 /// });
 /// const source = new gcp.dataplex.Entry("source", {
 ///     location: "us-central1",
 ///     entryGroupId: entry_group_basic.entryGroupId,
-///     entryId: "tf-test-source-entry_82749",
+///     entryId: "tf-test-source-entry_44703",
 ///     entryType: entry_type_basic.name,
 ///     project: "1111111111111",
 /// });
 /// const target = new gcp.dataplex.Entry("target", {
 ///     location: "us-central1",
 ///     entryGroupId: entry_group_basic.entryGroupId,
-///     entryId: "tf-test-target-entry_89648",
+///     entryId: "tf-test-target-entry_37135",
 ///     entryType: entry_type_basic.name,
 ///     project: "1111111111111",
 /// });
@@ -51,7 +51,7 @@ import 'entry_link_state.dart';
 ///     project: "1111111111111",
 ///     location: "us-central1",
 ///     entryGroupId: entry_group_basic.entryGroupId,
-///     entryLinkId: "tf-test-entry-link_64612",
+///     entryLinkId: "tf-test-entry-link_42503",
 ///     entryLinkType: "projects/655216118709/locations/global/entryLinkTypes/related",
 ///     entryReferences: [
 ///         {
@@ -69,29 +69,29 @@ import 'entry_link_state.dart';
 ///
 /// entry_group_basic = gcp.dataplex.EntryGroup("entry-group-basic",
 ///     location="us-central1",
-///     entry_group_id="tf-test-entry-group_12125",
+///     entry_group_id="tf-test-entry-group_32270",
 ///     project="1111111111111")
 /// entry_type_basic = gcp.dataplex.EntryType("entry-type-basic",
-///     entry_type_id="tf-test-entry-type_15022",
+///     entry_type_id="tf-test-entry-type_9329",
 ///     location="us-central1",
 ///     project="1111111111111")
 /// source = gcp.dataplex.Entry("source",
 ///     location="us-central1",
 ///     entry_group_id=entry_group_basic.entry_group_id,
-///     entry_id="tf-test-source-entry_82749",
+///     entry_id="tf-test-source-entry_44703",
 ///     entry_type=entry_type_basic.name,
 ///     project="1111111111111")
 /// target = gcp.dataplex.Entry("target",
 ///     location="us-central1",
 ///     entry_group_id=entry_group_basic.entry_group_id,
-///     entry_id="tf-test-target-entry_89648",
+///     entry_id="tf-test-target-entry_37135",
 ///     entry_type=entry_type_basic.name,
 ///     project="1111111111111")
 /// basic_entry_link = gcp.dataplex.EntryLink("basic_entry_link",
 ///     project="1111111111111",
 ///     location="us-central1",
 ///     entry_group_id=entry_group_basic.entry_group_id,
-///     entry_link_id="tf-test-entry-link_64612",
+///     entry_link_id="tf-test-entry-link_42503",
 ///     entry_link_type="projects/655216118709/locations/global/entryLinkTypes/related",
 ///     entry_references=[
 ///         {
@@ -113,13 +113,13 @@ import 'entry_link_state.dart';
 ///     var entry_group_basic = new Gcp.DataPlex.EntryGroup("entry-group-basic", new()
 ///     {
 ///         Location = "us-central1",
-///         EntryGroupId = "tf-test-entry-group_12125",
+///         EntryGroupId = "tf-test-entry-group_32270",
 ///         Project = "1111111111111",
 ///     });
 ///
 ///     var entry_type_basic = new Gcp.DataPlex.EntryType("entry-type-basic", new()
 ///     {
-///         EntryTypeId = "tf-test-entry-type_15022",
+///         EntryTypeId = "tf-test-entry-type_9329",
 ///         Location = "us-central1",
 ///         Project = "1111111111111",
 ///     });
@@ -128,7 +128,7 @@ import 'entry_link_state.dart';
 ///     {
 ///         Location = "us-central1",
 ///         EntryGroupId = entry_group_basic.EntryGroupId,
-///         EntryId = "tf-test-source-entry_82749",
+///         EntryId = "tf-test-source-entry_44703",
 ///         EntryType = entry_type_basic.Name,
 ///         Project = "1111111111111",
 ///     });
@@ -137,7 +137,7 @@ import 'entry_link_state.dart';
 ///     {
 ///         Location = "us-central1",
 ///         EntryGroupId = entry_group_basic.EntryGroupId,
-///         EntryId = "tf-test-target-entry_89648",
+///         EntryId = "tf-test-target-entry_37135",
 ///         EntryType = entry_type_basic.Name,
 ///         Project = "1111111111111",
 ///     });
@@ -147,7 +147,7 @@ import 'entry_link_state.dart';
 ///         Project = "1111111111111",
 ///         Location = "us-central1",
 ///         EntryGroupId = entry_group_basic.EntryGroupId,
-///         EntryLinkId = "tf-test-entry-link_64612",
+///         EntryLinkId = "tf-test-entry-link_42503",
 ///         EntryLinkType = "projects/655216118709/locations/global/entryLinkTypes/related",
 ///         EntryReferences = new[]
 ///         {
@@ -168,7 +168,7 @@ import 'entry_link_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -176,14 +176,14 @@ import 'entry_link_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		entry_group_basic, err := dataplex.NewEntryGroup(ctx, "entry-group-basic", &dataplex.EntryGroupArgs{
 /// 			Location:     pulumi.String("us-central1"),
-/// 			EntryGroupId: pulumi.String("tf-test-entry-group_12125"),
+/// 			EntryGroupId: pulumi.String("tf-test-entry-group_32270"),
 /// 			Project:      pulumi.String("1111111111111"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		entry_type_basic, err := dataplex.NewEntryType(ctx, "entry-type-basic", &dataplex.EntryTypeArgs{
-/// 			EntryTypeId: pulumi.String("tf-test-entry-type_15022"),
+/// 			EntryTypeId: pulumi.String("tf-test-entry-type_9329"),
 /// 			Location:    pulumi.String("us-central1"),
 /// 			Project:     pulumi.String("1111111111111"),
 /// 		})
@@ -193,7 +193,7 @@ import 'entry_link_state.dart';
 /// 		source, err := dataplex.NewEntry(ctx, "source", &dataplex.EntryArgs{
 /// 			Location:     pulumi.String("us-central1"),
 /// 			EntryGroupId: entry_group_basic.EntryGroupId,
-/// 			EntryId:      pulumi.String("tf-test-source-entry_82749"),
+/// 			EntryId:      pulumi.String("tf-test-source-entry_44703"),
 /// 			EntryType:    entry_type_basic.Name,
 /// 			Project:      pulumi.String("1111111111111"),
 /// 		})
@@ -203,7 +203,7 @@ import 'entry_link_state.dart';
 /// 		target, err := dataplex.NewEntry(ctx, "target", &dataplex.EntryArgs{
 /// 			Location:     pulumi.String("us-central1"),
 /// 			EntryGroupId: entry_group_basic.EntryGroupId,
-/// 			EntryId:      pulumi.String("tf-test-target-entry_89648"),
+/// 			EntryId:      pulumi.String("tf-test-target-entry_37135"),
 /// 			EntryType:    entry_type_basic.Name,
 /// 			Project:      pulumi.String("1111111111111"),
 /// 		})
@@ -214,7 +214,7 @@ import 'entry_link_state.dart';
 /// 			Project:       pulumi.String("1111111111111"),
 /// 			Location:      pulumi.String("us-central1"),
 /// 			EntryGroupId:  entry_group_basic.EntryGroupId,
-/// 			EntryLinkId:   pulumi.String("tf-test-entry-link_64612"),
+/// 			EntryLinkId:   pulumi.String("tf-test-entry-link_42503"),
 /// 			EntryLinkType: pulumi.String("projects/655216118709/locations/global/entryLinkTypes/related"),
 /// 			EntryReferences: dataplex.EntryLinkEntryReferenceArray{
 /// 				&dataplex.EntryLinkEntryReferenceArgs{
@@ -233,7 +233,7 @@ import 'entry_link_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -241,35 +241,50 @@ import 'entry_link_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataplex_entrygroup" "entry-group-basic" {
+/// resource "gcp_dataplex_entry_group" "entry-group-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
-///   entry_group_id = "tf-test-entry-group_12125"
+///   entry_group_id = "tf-test-entry-group_32270"
 ///   project        = "1111111111111"
 /// }
 /// resource "gcp_dataplex_entry" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
-///   entry_group_id = gcp_dataplex_entrygroup.entry-group-basic.entry_group_id
-///   entry_id       = "tf-test-source-entry_82749"
-///   entry_type     = gcp_dataplex_entrytype.entry-type-basic.name
+///   entry_group_id = gcp_dataplex_entry_group.entry-group-basic.entry_group_id
+///   entry_id       = "tf-test-source-entry_44703"
+///   entry_type     = gcp_dataplex_entry_type.entry-type-basic.name
 ///   project        = "1111111111111"
 /// }
-/// resource "gcp_dataplex_entrytype" "entry-type-basic" {
-///   entry_type_id = "tf-test-entry-type_15022"
+/// resource "gcp_dataplex_entry_type" "entry-type-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   entry_type_id = "tf-test-entry-type_9329"
 ///   location      = "us-central1"
 ///   project       = "1111111111111"
 /// }
 /// resource "gcp_dataplex_entry" "target" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
-///   entry_group_id = gcp_dataplex_entrygroup.entry-group-basic.entry_group_id
-///   entry_id       = "tf-test-target-entry_89648"
-///   entry_type     = gcp_dataplex_entrytype.entry-type-basic.name
+///   entry_group_id = gcp_dataplex_entry_group.entry-group-basic.entry_group_id
+///   entry_id       = "tf-test-target-entry_37135"
+///   entry_type     = gcp_dataplex_entry_type.entry-type-basic.name
 ///   project        = "1111111111111"
 /// }
-/// resource "gcp_dataplex_entrylink" "basic_entry_link" {
+/// resource "gcp_dataplex_entry_link" "basic_entry_link" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project         = "1111111111111"
 ///   location        = "us-central1"
-///   entry_group_id  = gcp_dataplex_entrygroup.entry-group-basic.entry_group_id
-///   entry_link_id   = "tf-test-entry-link_64612"
+///   entry_group_id  = gcp_dataplex_entry_group.entry-group-basic.entry_group_id
+///   entry_link_id   = "tf-test-entry-link_42503"
 ///   entry_link_type = "projects/655216118709/locations/global/entryLinkTypes/related"
 ///   entry_references {
 ///     name = gcp_dataplex_entry.source.name
@@ -309,12 +324,12 @@ import 'entry_link_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var entry_group_basic = new EntryGroup("entry-group-basic", EntryGroupArgs.builder()
 ///             .location("us-central1")
-///             .entryGroupId("tf-test-entry-group_12125")
+///             .entryGroupId("tf-test-entry-group_32270")
 ///             .project("1111111111111")
 ///             .build());
 ///
 ///         var entry_type_basic = new EntryType("entry-type-basic", EntryTypeArgs.builder()
-///             .entryTypeId("tf-test-entry-type_15022")
+///             .entryTypeId("tf-test-entry-type_9329")
 ///             .location("us-central1")
 ///             .project("1111111111111")
 ///             .build());
@@ -322,7 +337,7 @@ import 'entry_link_state.dart';
 ///         var source = new Entry("source", EntryArgs.builder()
 ///             .location("us-central1")
 ///             .entryGroupId(entry_group_basic.entryGroupId())
-///             .entryId("tf-test-source-entry_82749")
+///             .entryId("tf-test-source-entry_44703")
 ///             .entryType(entry_type_basic.name())
 ///             .project("1111111111111")
 ///             .build());
@@ -330,7 +345,7 @@ import 'entry_link_state.dart';
 ///         var target = new Entry("target", EntryArgs.builder()
 ///             .location("us-central1")
 ///             .entryGroupId(entry_group_basic.entryGroupId())
-///             .entryId("tf-test-target-entry_89648")
+///             .entryId("tf-test-target-entry_37135")
 ///             .entryType(entry_type_basic.name())
 ///             .project("1111111111111")
 ///             .build());
@@ -339,7 +354,7 @@ import 'entry_link_state.dart';
 ///             .project("1111111111111")
 ///             .location("us-central1")
 ///             .entryGroupId(entry_group_basic.entryGroupId())
-///             .entryLinkId("tf-test-entry-link_64612")
+///             .entryLinkId("tf-test-entry-link_42503")
 ///             .entryLinkType("projects/655216118709/locations/global/entryLinkTypes/related")
 ///             .entryReferences(
 ///                 EntryLinkEntryReferenceArgs.builder()
@@ -359,20 +374,20 @@ import 'entry_link_state.dart';
 ///     type: gcp:dataplex:EntryGroup
 ///     properties:
 ///       location: us-central1
-///       entryGroupId: tf-test-entry-group_12125
+///       entryGroupId: tf-test-entry-group_32270
 ///       project: '1111111111111'
 ///   source:
 ///     type: gcp:dataplex:Entry
 ///     properties:
 ///       location: us-central1
 ///       entryGroupId: ${["entry-group-basic"].entryGroupId}
-///       entryId: tf-test-source-entry_82749
+///       entryId: tf-test-source-entry_44703
 ///       entryType: ${["entry-type-basic"].name}
 ///       project: '1111111111111'
 ///   entry-type-basic:
 ///     type: gcp:dataplex:EntryType
 ///     properties:
-///       entryTypeId: tf-test-entry-type_15022
+///       entryTypeId: tf-test-entry-type_9329
 ///       location: us-central1
 ///       project: '1111111111111'
 ///   target:
@@ -380,7 +395,7 @@ import 'entry_link_state.dart';
 ///     properties:
 ///       location: us-central1
 ///       entryGroupId: ${["entry-group-basic"].entryGroupId}
-///       entryId: tf-test-target-entry_89648
+///       entryId: tf-test-target-entry_37135
 ///       entryType: ${["entry-type-basic"].name}
 ///       project: '1111111111111'
 ///   basicEntryLink:
@@ -390,7 +405,7 @@ import 'entry_link_state.dart';
 ///       project: '1111111111111'
 ///       location: us-central1
 ///       entryGroupId: ${["entry-group-basic"].entryGroupId}
-///       entryLinkId: tf-test-entry-link_64612
+///       entryLinkId: tf-test-entry-link_42503
 ///       entryLinkType: projects/655216118709/locations/global/entryLinkTypes/related
 ///       entryReferences:
 ///         - name: ${source.name}
@@ -408,30 +423,30 @@ import 'entry_link_state.dart';
 ///
 /// const entry_group_full = new gcp.dataplex.EntryGroup("entry-group-full", {
 ///     location: "us-central1",
-///     entryGroupId: "tf-test-entry-group_34242",
+///     entryGroupId: "tf-test-entry-group_9991",
 ///     project: "1111111111111",
 /// });
 /// const entry_type_full = new gcp.dataplex.EntryType("entry-type-full", {
-///     entryTypeId: "tf-test-entry-type_22061",
+///     entryTypeId: "tf-test-entry-type_82749",
 ///     location: "us-central1",
 ///     project: "1111111111111",
 /// });
 /// const source = new gcp.dataplex.Entry("source", {
 ///     location: "us-central1",
 ///     entryGroupId: entry_group_full.entryGroupId,
-///     entryId: "tf-test-source-entry_9723",
+///     entryId: "tf-test-source-entry_12125",
 ///     entryType: entry_type_full.name,
 ///     project: "1111111111111",
 /// });
 /// const termTestIdFull = new gcp.dataplex.Glossary("term_test_id_full", {
-///     glossaryId: "tf-test-glossary_60461",
+///     glossaryId: "tf-test-glossary_15022",
 ///     location: "us-central1",
 /// });
 /// const termTestIdFullGlossaryTerm = new gcp.dataplex.GlossaryTerm("term_test_id_full", {
 ///     parent: pulumi.interpolate`projects/${termTestIdFull.project}/locations/us-central1/glossaries/${termTestIdFull.glossaryId}`,
 ///     glossaryId: termTestIdFull.glossaryId,
 ///     location: "us-central1",
-///     termId: "tf-test-term-full_45397",
+///     termId: "tf-test-term-full_89648",
 ///     labels: {
 ///         tag: "test-tf",
 ///     },
@@ -446,7 +461,7 @@ import 'entry_link_state.dart';
 ///     project: "1111111111111",
 ///     location: "us-central1",
 ///     entryGroupId: entry_group_full.entryGroupId,
-///     entryLinkId: "tf-test-entry-link_16451",
+///     entryLinkId: "tf-test-entry-link_64612",
 ///     entryLinkType: "projects/655216118709/locations/global/entryLinkTypes/definition",
 ///     entryReferences: [
 ///         {
@@ -470,20 +485,20 @@ import 'entry_link_state.dart';
 ///
 /// entry_group_full = gcp.dataplex.EntryGroup("entry-group-full",
 ///     location="us-central1",
-///     entry_group_id="tf-test-entry-group_34242",
+///     entry_group_id="tf-test-entry-group_9991",
 ///     project="1111111111111")
 /// entry_type_full = gcp.dataplex.EntryType("entry-type-full",
-///     entry_type_id="tf-test-entry-type_22061",
+///     entry_type_id="tf-test-entry-type_82749",
 ///     location="us-central1",
 ///     project="1111111111111")
 /// source = gcp.dataplex.Entry("source",
 ///     location="us-central1",
 ///     entry_group_id=entry_group_full.entry_group_id,
-///     entry_id="tf-test-source-entry_9723",
+///     entry_id="tf-test-source-entry_12125",
 ///     entry_type=entry_type_full.name,
 ///     project="1111111111111")
 /// term_test_id_full = gcp.dataplex.Glossary("term_test_id_full",
-///     glossary_id="tf-test-glossary_60461",
+///     glossary_id="tf-test-glossary_15022",
 ///     location="us-central1")
 /// term_test_id_full_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id_full",
 ///     parent=pulumi.Output.all(
@@ -493,7 +508,7 @@ import 'entry_link_state.dart';
 /// ,
 ///     glossary_id=term_test_id_full.glossary_id,
 ///     location="us-central1",
-///     term_id="tf-test-term-full_45397",
+///     term_id="tf-test-term-full_89648",
 ///     labels={
 ///         "tag": "test-tf",
 ///     },
@@ -506,7 +521,7 @@ import 'entry_link_state.dart';
 ///     project="1111111111111",
 ///     location="us-central1",
 ///     entry_group_id=entry_group_full.entry_group_id,
-///     entry_link_id="tf-test-entry-link_16451",
+///     entry_link_id="tf-test-entry-link_64612",
 ///     entry_link_type="projects/655216118709/locations/global/entryLinkTypes/definition",
 ///     entry_references=[
 ///         {
@@ -538,13 +553,13 @@ import 'entry_link_state.dart';
 ///     var entry_group_full = new Gcp.DataPlex.EntryGroup("entry-group-full", new()
 ///     {
 ///         Location = "us-central1",
-///         EntryGroupId = "tf-test-entry-group_34242",
+///         EntryGroupId = "tf-test-entry-group_9991",
 ///         Project = "1111111111111",
 ///     });
 ///
 ///     var entry_type_full = new Gcp.DataPlex.EntryType("entry-type-full", new()
 ///     {
-///         EntryTypeId = "tf-test-entry-type_22061",
+///         EntryTypeId = "tf-test-entry-type_82749",
 ///         Location = "us-central1",
 ///         Project = "1111111111111",
 ///     });
@@ -553,14 +568,14 @@ import 'entry_link_state.dart';
 ///     {
 ///         Location = "us-central1",
 ///         EntryGroupId = entry_group_full.EntryGroupId,
-///         EntryId = "tf-test-source-entry_9723",
+///         EntryId = "tf-test-source-entry_12125",
 ///         EntryType = entry_type_full.Name,
 ///         Project = "1111111111111",
 ///     });
 ///
 ///     var termTestIdFull = new Gcp.DataPlex.Glossary("term_test_id_full", new()
 ///     {
-///         GlossaryId = "tf-test-glossary_60461",
+///         GlossaryId = "tf-test-glossary_15022",
 ///         Location = "us-central1",
 ///     });
 ///
@@ -574,7 +589,7 @@ import 'entry_link_state.dart';
 ///         }),
 ///         GlossaryId = termTestIdFull.GlossaryId,
 ///         Location = "us-central1",
-///         TermId = "tf-test-term-full_45397",
+///         TermId = "tf-test-term-full_89648",
 ///         Labels =
 ///         {
 ///             { "tag", "test-tf" },
@@ -600,7 +615,7 @@ import 'entry_link_state.dart';
 ///         Project = "1111111111111",
 ///         Location = "us-central1",
 ///         EntryGroupId = entry_group_full.EntryGroupId,
-///         EntryLinkId = "tf-test-entry-link_16451",
+///         EntryLinkId = "tf-test-entry-link_64612",
 ///         EntryLinkType = "projects/655216118709/locations/global/entryLinkTypes/definition",
 ///         EntryReferences = new[]
 ///         {
@@ -638,7 +653,7 @@ import 'entry_link_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -647,14 +662,14 @@ import 'entry_link_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		entry_group_full, err := dataplex.NewEntryGroup(ctx, "entry-group-full", &dataplex.EntryGroupArgs{
 /// 			Location:     pulumi.String("us-central1"),
-/// 			EntryGroupId: pulumi.String("tf-test-entry-group_34242"),
+/// 			EntryGroupId: pulumi.String("tf-test-entry-group_9991"),
 /// 			Project:      pulumi.String("1111111111111"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		entry_type_full, err := dataplex.NewEntryType(ctx, "entry-type-full", &dataplex.EntryTypeArgs{
-/// 			EntryTypeId: pulumi.String("tf-test-entry-type_22061"),
+/// 			EntryTypeId: pulumi.String("tf-test-entry-type_82749"),
 /// 			Location:    pulumi.String("us-central1"),
 /// 			Project:     pulumi.String("1111111111111"),
 /// 		})
@@ -664,7 +679,7 @@ import 'entry_link_state.dart';
 /// 		source, err := dataplex.NewEntry(ctx, "source", &dataplex.EntryArgs{
 /// 			Location:     pulumi.String("us-central1"),
 /// 			EntryGroupId: entry_group_full.EntryGroupId,
-/// 			EntryId:      pulumi.String("tf-test-source-entry_9723"),
+/// 			EntryId:      pulumi.String("tf-test-source-entry_12125"),
 /// 			EntryType:    entry_type_full.Name,
 /// 			Project:      pulumi.String("1111111111111"),
 /// 		})
@@ -672,7 +687,7 @@ import 'entry_link_state.dart';
 /// 			return err
 /// 		}
 /// 		termTestIdFull, err := dataplex.NewGlossary(ctx, "term_test_id_full", &dataplex.GlossaryArgs{
-/// 			GlossaryId: pulumi.String("tf-test-glossary_60461"),
+/// 			GlossaryId: pulumi.String("tf-test-glossary_15022"),
 /// 			Location:   pulumi.String("us-central1"),
 /// 		})
 /// 		if err != nil {
@@ -686,7 +701,7 @@ import 'entry_link_state.dart';
 /// 			}).(pulumi.StringOutput),
 /// 			GlossaryId: termTestIdFull.GlossaryId,
 /// 			Location:   pulumi.String("us-central1"),
-/// 			TermId:     pulumi.String("tf-test-term-full_45397"),
+/// 			TermId:     pulumi.String("tf-test-term-full_89648"),
 /// 			Labels: pulumi.StringMap{
 /// 				"tag": pulumi.String("test-tf"),
 /// 			},
@@ -709,7 +724,7 @@ import 'entry_link_state.dart';
 /// 			Project:       pulumi.String("1111111111111"),
 /// 			Location:      pulumi.String("us-central1"),
 /// 			EntryGroupId:  entry_group_full.EntryGroupId,
-/// 			EntryLinkId:   pulumi.String("tf-test-entry-link_16451"),
+/// 			EntryLinkId:   pulumi.String("tf-test-entry-link_64612"),
 /// 			EntryLinkType: pulumi.String("projects/655216118709/locations/global/entryLinkTypes/definition"),
 /// 			EntryReferences: dataplex.EntryLinkEntryReferenceArray{
 /// 				&dataplex.EntryLinkEntryReferenceArgs{
@@ -738,7 +753,7 @@ import 'entry_link_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -749,32 +764,47 @@ import 'entry_link_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataplex_entrygroup" "entry-group-full" {
+/// resource "gcp_dataplex_entry_group" "entry-group-full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
-///   entry_group_id = "tf-test-entry-group_34242"
+///   entry_group_id = "tf-test-entry-group_9991"
 ///   project        = "1111111111111"
 /// }
 /// resource "gcp_dataplex_entry" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
-///   entry_group_id = gcp_dataplex_entrygroup.entry-group-full.entry_group_id
-///   entry_id       = "tf-test-source-entry_9723"
-///   entry_type     = gcp_dataplex_entrytype.entry-type-full.name
+///   entry_group_id = gcp_dataplex_entry_group.entry-group-full.entry_group_id
+///   entry_id       = "tf-test-source-entry_12125"
+///   entry_type     = gcp_dataplex_entry_type.entry-type-full.name
 ///   project        = "1111111111111"
 /// }
-/// resource "gcp_dataplex_entrytype" "entry-type-full" {
-///   entry_type_id = "tf-test-entry-type_22061"
+/// resource "gcp_dataplex_entry_type" "entry-type-full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   entry_type_id = "tf-test-entry-type_82749"
 ///   location      = "us-central1"
 ///   project       = "1111111111111"
 /// }
 /// resource "gcp_dataplex_glossary" "term_test_id_full" {
-///   glossary_id = "tf-test-glossary_60461"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   glossary_id = "tf-test-glossary_15022"
 ///   location    = "us-central1"
 /// }
-/// resource "gcp_dataplex_glossaryterm" "term_test_id_full" {
+/// resource "gcp_dataplex_glossary_term" "term_test_id_full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent      ="projects/${gcp_dataplex_glossary.term_test_id_full.project}/locations/us-central1/glossaries/${gcp_dataplex_glossary.term_test_id_full.glossary_id}"
 ///   glossary_id = gcp_dataplex_glossary.term_test_id_full.glossary_id
 ///   location    = "us-central1"
-///   term_id     = "tf-test-term-full_45397"
+///   term_id     = "tf-test-term-full_89648"
 ///   labels = {
 ///     "tag" = "test-tf"
 ///   }
@@ -783,15 +813,21 @@ import 'entry_link_state.dart';
 /// }
 /// # Introduce a 45-second wait after the glossary resource creation
 /// resource "time_sleep" "wait-for-sync" {
-///   depends_on      = [gcp_dataplex_glossaryterm.term_test_id_full]
+///   depends_on = [gcp_dataplex_glossary_term.term_test_id_full]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "45s"
 /// }
-/// resource "gcp_dataplex_entrylink" "full_entry_link" {
-///   depends_on      = [time_sleep.wait-for-sync]
+/// resource "gcp_dataplex_entry_link" "full_entry_link" {
+///   depends_on = [time_sleep.wait-for-sync]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project         = "1111111111111"
 ///   location        = "us-central1"
-///   entry_group_id  = gcp_dataplex_entrygroup.entry-group-full.entry_group_id
-///   entry_link_id   = "tf-test-entry-link_16451"
+///   entry_group_id  = gcp_dataplex_entry_group.entry-group-full.entry_group_id
+///   entry_link_id   = "tf-test-entry-link_64612"
 ///   entry_link_type = "projects/655216118709/locations/global/entryLinkTypes/definition"
 ///   entry_references {
 ///     name = gcp_dataplex_entry.source.name
@@ -799,7 +835,7 @@ import 'entry_link_state.dart';
 ///     path = ""
 ///   }
 ///   entry_references {
-///     name ="projects/${gcp_dataplex_entrygroup.entry-group-full.project}/locations/us-central1/entryGroups/@dataplex/entries/projects/${gcp_dataplex_entrygroup.entry-group-full.project}/locations/us-central1/glossaries/${gcp_dataplex_glossary.term_test_id_full.glossary_id}/terms/${gcp_dataplex_glossaryterm.term_test_id_full.term_id}"
+///     name ="projects/${gcp_dataplex_entry_group.entry-group-full.project}/locations/us-central1/entryGroups/@dataplex/entries/projects/${gcp_dataplex_entry_group.entry-group-full.project}/locations/us-central1/glossaries/${gcp_dataplex_glossary.term_test_id_full.glossary_id}/terms/${gcp_dataplex_glossary_term.term_test_id_full.term_id}"
 ///     type = "TARGET"
 ///   }
 /// }
@@ -841,12 +877,12 @@ import 'entry_link_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var entry_group_full = new EntryGroup("entry-group-full", EntryGroupArgs.builder()
 ///             .location("us-central1")
-///             .entryGroupId("tf-test-entry-group_34242")
+///             .entryGroupId("tf-test-entry-group_9991")
 ///             .project("1111111111111")
 ///             .build());
 ///
 ///         var entry_type_full = new EntryType("entry-type-full", EntryTypeArgs.builder()
-///             .entryTypeId("tf-test-entry-type_22061")
+///             .entryTypeId("tf-test-entry-type_82749")
 ///             .location("us-central1")
 ///             .project("1111111111111")
 ///             .build());
@@ -854,13 +890,13 @@ import 'entry_link_state.dart';
 ///         var source = new Entry("source", EntryArgs.builder()
 ///             .location("us-central1")
 ///             .entryGroupId(entry_group_full.entryGroupId())
-///             .entryId("tf-test-source-entry_9723")
+///             .entryId("tf-test-source-entry_12125")
 ///             .entryType(entry_type_full.name())
 ///             .project("1111111111111")
 ///             .build());
 ///
 ///         var termTestIdFull = new Glossary("termTestIdFull", GlossaryArgs.builder()
-///             .glossaryId("tf-test-glossary_60461")
+///             .glossaryId("tf-test-glossary_15022")
 ///             .location("us-central1")
 ///             .build());
 ///
@@ -872,7 +908,7 @@ import 'entry_link_state.dart';
 ///             }))
 ///             .glossaryId(termTestIdFull.glossaryId())
 ///             .location("us-central1")
-///             .termId("tf-test-term-full_45397")
+///             .termId("tf-test-term-full_89648")
 ///             .labels(Map.of("tag", "test-tf"))
 ///             .displayName("terraform term")
 ///             .description("term created by Terraform")
@@ -889,7 +925,7 @@ import 'entry_link_state.dart';
 ///             .project("1111111111111")
 ///             .location("us-central1")
 ///             .entryGroupId(entry_group_full.entryGroupId())
-///             .entryLinkId("tf-test-entry-link_16451")
+///             .entryLinkId("tf-test-entry-link_64612")
 ///             .entryLinkType("projects/655216118709/locations/global/entryLinkTypes/definition")
 ///             .entryReferences(
 ///                 EntryLinkEntryReferenceArgs.builder()
@@ -919,27 +955,27 @@ import 'entry_link_state.dart';
 ///     type: gcp:dataplex:EntryGroup
 ///     properties:
 ///       location: us-central1
-///       entryGroupId: tf-test-entry-group_34242
+///       entryGroupId: tf-test-entry-group_9991
 ///       project: '1111111111111'
 ///   source:
 ///     type: gcp:dataplex:Entry
 ///     properties:
 ///       location: us-central1
 ///       entryGroupId: ${["entry-group-full"].entryGroupId}
-///       entryId: tf-test-source-entry_9723
+///       entryId: tf-test-source-entry_12125
 ///       entryType: ${["entry-type-full"].name}
 ///       project: '1111111111111'
 ///   entry-type-full:
 ///     type: gcp:dataplex:EntryType
 ///     properties:
-///       entryTypeId: tf-test-entry-type_22061
+///       entryTypeId: tf-test-entry-type_82749
 ///       location: us-central1
 ///       project: '1111111111111'
 ///   termTestIdFull:
 ///     type: gcp:dataplex:Glossary
 ///     name: term_test_id_full
 ///     properties:
-///       glossaryId: tf-test-glossary_60461
+///       glossaryId: tf-test-glossary_15022
 ///       location: us-central1
 ///   termTestIdFullGlossaryTerm:
 ///     type: gcp:dataplex:GlossaryTerm
@@ -948,7 +984,7 @@ import 'entry_link_state.dart';
 ///       parent: projects/${termTestIdFull.project}/locations/us-central1/glossaries/${termTestIdFull.glossaryId}
 ///       glossaryId: ${termTestIdFull.glossaryId}
 ///       location: us-central1
-///       termId: tf-test-term-full_45397
+///       termId: tf-test-term-full_89648
 ///       labels:
 ///         tag: test-tf
 ///       displayName: terraform term
@@ -968,7 +1004,7 @@ import 'entry_link_state.dart';
 ///       project: '1111111111111'
 ///       location: us-central1
 ///       entryGroupId: ${["entry-group-full"].entryGroupId}
-///       entryLinkId: tf-test-entry-link_16451
+///       entryLinkId: tf-test-entry-link_64612
 ///       entryLinkType: projects/655216118709/locations/global/entryLinkTypes/definition
 ///       entryReferences:
 ///         - name: ${source.name}
@@ -1043,7 +1079,7 @@ class EntryLink extends pulumi.CustomResource {
           'gcp:dataplex/entryLink:EntryLink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     aspects = registerOutput<List<EntryLinkAspect>?>('aspects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryLinkAspect>(guardedValue, (value) => EntryLinkAspect.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');

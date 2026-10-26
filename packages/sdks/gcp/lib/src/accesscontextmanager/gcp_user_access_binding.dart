@@ -179,8 +179,8 @@ import 'gcp_user_access_binding_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudidentity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudidentity"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -239,7 +239,7 @@ import 'gcp_user_access_binding_state.dart';
 /// 		_, err = accesscontextmanager.NewGcpUserAccessBinding(ctx, "gcp_user_access_binding", &accesscontextmanager.GcpUserAccessBindingArgs{
 /// 			OrganizationId: pulumi.String("123456789"),
 /// 			GroupKey: std.TrimprefixOutput(ctx, std.TrimprefixOutputArgs{
-/// 				Input:  group.ID().ToIDOutput().ToStringOutput(),
+/// 				Input:  group.ID(),
 /// 				Prefix: pulumi.String("groups/"),
 /// 			}, nil).Result(),
 /// 			AccessLevels: accessLevelIdForUserAccessBinding.Name,
@@ -252,7 +252,7 @@ import 'gcp_user_access_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -264,6 +264,9 @@ import 'gcp_user_access_binding_state.dart';
 /// }
 ///
 /// resource "gcp_cloudidentity_group" "group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "my-identity-group"
 ///   parent       = "customers/A01b123xz"
 ///   group_key = {
@@ -273,30 +276,39 @@ import 'gcp_user_access_binding_state.dart';
 ///     "cloudidentity.googleapis.com/groups.discussion_forum" = ""
 ///   }
 /// }
-/// resource "gcp_accesscontextmanager_accesslevel" "access_level_id_for_user_access_binding" {
-///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
-///   name   ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/accessLevels/chromeos_no_lock"
+/// resource "gcp_accesscontextmanager_access_level" "access_level_id_for_user_access_binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent ="accessPolicies/${gcp_accesscontextmanager_access_policy.access-policy.name}"
+///   name   ="accessPolicies/${gcp_accesscontextmanager_access_policy.access-policy.name}/accessLevels/chromeos_no_lock"
 ///   title  = "chromeos_no_lock"
 ///   basic = {
 ///     conditions = [{
-///       "devicePolicy" = {
-///         "requireScreenLock" = true
-///         "osConstraints" = [{
-///           "osType" = "DESKTOP_CHROME_OS"
+///       device_policy = {
+///         require_screen_lock = true
+///         os_constraints = [{
+///           os_type = "DESKTOP_CHROME_OS"
 ///         }]
 ///       }
-///       "regions" = ["US"]
+///       regions = ["US"]
 ///     }]
 ///   }
 /// }
-/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+/// resource "gcp_accesscontextmanager_access_policy" "access-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent = "organizations/123456789"
 ///   title  = "my policy"
 /// }
-/// resource "gcp_accesscontextmanager_gcpuseraccessbinding" "gcp_user_access_binding" {
+/// resource "gcp_accesscontextmanager_gcp_user_access_binding" "gcp_user_access_binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization_id = "123456789"
 ///   group_key       = trimprefix(gcp_cloudidentity_group.group.id, "groups/")
-///   access_levels   = gcp_accesscontextmanager_accesslevel.access_level_id_for_user_access_binding.name
+///   access_levels   = gcp_accesscontextmanager_access_level.access_level_id_for_user_access_binding.name
 /// }
 /// ```
 /// ```java
@@ -482,7 +494,7 @@ class GcpUserAccessBinding extends pulumi.CustomResource {
           'gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     accessLevels = registerOutput<String?>('accessLevels');
     deletionPolicy = registerOutput<String>('deletionPolicy');

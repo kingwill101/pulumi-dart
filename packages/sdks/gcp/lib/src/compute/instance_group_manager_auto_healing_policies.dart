@@ -27,7 +27,7 @@ class InstanceGroupManagerAutoHealingPolicies {
   factory InstanceGroupManagerAutoHealingPolicies.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerAutoHealingPolicies(
       healthCheck: pulumi.Input.fromValue(map['healthCheck'] as String),
-      initialDelaySec: pulumi.Input.fromValue((map['initialDelaySec'] as num).toInt()),
+      initialDelaySec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['initialDelaySec'])),
     );
   }
 }

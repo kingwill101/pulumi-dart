@@ -331,11 +331,11 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigee"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -399,14 +399,14 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:      apigeeNetwork.ID(),
 /// 			Project:      project.ProjectId,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Network: apigeeNetwork.ID(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				apigeeRange.Name,
@@ -420,7 +420,7 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 /// 		apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 /// 			AnalyticsRegion:   pulumi.String("us-central1"),
 /// 			ProjectId:         project.ProjectId,
-/// 			AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			AuthorizedNetwork: apigeeNetwork.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeVpcConnection,
 /// 			apigee2,
@@ -429,7 +429,7 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 /// 			return err
 /// 		}
 /// 		apigeeEnvironmentKeystoreSsAlias, err := apigee.NewEnvironment(ctx, "apigee_environment_keystore_ss_alias", &apigee.EnvironmentArgs{
-/// 			OrgId:       apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+/// 			OrgId:       apigeeOrg.ID(),
 /// 			Name:        pulumi.String("env-name"),
 /// 			Description: pulumi.String("Apigee Environment"),
 /// 			DisplayName: pulumi.String("environment-1"),
@@ -439,7 +439,7 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 /// 		}
 /// 		apigeeEnvironmentKeystoreAlias, err := apigee.NewEnvKeystore(ctx, "apigee_environment_keystore_alias", &apigee.EnvKeystoreArgs{
 /// 			Name:  pulumi.String("env-keystore"),
-/// 			EnvId: apigeeEnvironmentKeystoreSsAlias.ID().ToIDOutput().ToStringOutput(),
+/// 			EnvId: apigeeEnvironmentKeystoreSsAlias.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -468,7 +468,7 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -480,6 +480,9 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "my-project"
 ///   name            = "my-project"
 ///   org_id          = "123456789"
@@ -487,29 +490,47 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "gcp_projects_service" "apigee" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.project.project_id
 ///   service = "apigee.googleapis.com"
 /// }
 /// resource "gcp_projects_service" "servicenetworking" {
 ///   depends_on = [gcp_projects_service.apigee]
-///   project    = gcp_organizations_project.project.project_id
-///   service    = "servicenetworking.googleapis.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.project.project_id
+///   service = "servicenetworking.googleapis.com"
 /// }
 /// resource "gcp_projects_service" "compute" {
 ///   depends_on = [gcp_projects_service.servicenetworking]
-///   project    = gcp_organizations_project.project.project_id
-///   service    = "compute.googleapis.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.project.project_id
+///   service = "compute.googleapis.com"
 /// }
 /// resource "time_sleep" "wait_300_seconds" {
-///   depends_on      = [gcp_projects_service.compute]
+///   depends_on = [gcp_projects_service.compute]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "300s"
 /// }
 /// resource "gcp_compute_network" "apigee_network" {
 ///   depends_on = [time_sleep.wait_300_seconds]
-///   name       = "apigee-network"
-///   project    = gcp_organizations_project.project.project_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name    = "apigee-network"
+///   project = gcp_organizations_project.project.project_id
 /// }
-/// resource "gcp_compute_globaladdress" "apigee_range" {
+/// resource "gcp_compute_global_address" "apigee_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "apigee-range"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -518,31 +539,46 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 ///   project       = gcp_organizations_project.project.project_id
 /// }
 /// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
-///   depends_on              = [gcp_projects_service.servicenetworking]
+///   depends_on = [gcp_projects_service.servicenetworking]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.apigee_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.apigee_range.name]
 /// }
 /// resource "gcp_apigee_organization" "apigee_org" {
-///   depends_on         = [gcp_servicenetworking_connection.apigee_vpc_connection, gcp_projects_service.apigee]
+///   depends_on = [gcp_servicenetworking_connection.apigee_vpc_connection, gcp_projects_service.apigee]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   analytics_region   = "us-central1"
 ///   project_id         = gcp_organizations_project.project.project_id
 ///   authorized_network = gcp_compute_network.apigee_network.id
 /// }
 /// resource "gcp_apigee_environment" "apigee_environment_keystore_ss_alias" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id       = gcp_apigee_organization.apigee_org.id
 ///   name         = "env-name"
 ///   description  = "Apigee Environment"
 ///   display_name = "environment-1"
 /// }
-/// resource "gcp_apigee_envkeystore" "apigee_environment_keystore_alias" {
+/// resource "gcp_apigee_env_keystore" "apigee_environment_keystore_alias" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "env-keystore"
 ///   env_id = gcp_apigee_environment.apigee_environment_keystore_ss_alias.id
 /// }
-/// resource "gcp_apigee_keystoresaliasesselfsignedcert" "apigee_environment_keystore_ss_alias" {
+/// resource "gcp_apigee_keystores_aliases_self_signed_cert" "apigee_environment_keystore_ss_alias" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   environment           = gcp_apigee_environment.apigee_environment_keystore_ss_alias.name
 ///   org_id                = gcp_apigee_organization.apigee_org.name
-///   keystore              = gcp_apigee_envkeystore.apigee_environment_keystore_alias.name
+///   keystore              = gcp_apigee_env_keystore.apigee_environment_keystore_alias.name
 ///   alias                 = "alias"
 ///   key_size              = 1024
 ///   sig_alg               = "SHA512withRSA"
@@ -872,7 +908,7 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
           'gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     alias = registerOutput<String>('alias');
     certValidityInDays = registerOutput<int?>('certValidityInDays');

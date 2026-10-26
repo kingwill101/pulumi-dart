@@ -234,6 +234,7 @@ export 'container/cluster_node_pool_auto_config_linux_node_config_node_kernel_mo
 export 'container/cluster_node_pool_auto_config_network_tags.dart';
 export 'container/cluster_node_pool_auto_config_node_kubelet_config.dart';
 export 'container/cluster_node_pool_autoscaling.dart';
+export 'container/cluster_node_pool_best_effort_provisioning.dart';
 export 'container/cluster_node_pool_defaults.dart';
 export 'container/cluster_node_pool_defaults_node_config_defaults.dart';
 export 'container/cluster_node_pool_defaults_node_config_defaults_containerd_config.dart';
@@ -504,6 +505,7 @@ export 'container/get_cluster_node_pool_auto_config_linux_node_config_node_kerne
 export 'container/get_cluster_node_pool_auto_config_network_tag.dart';
 export 'container/get_cluster_node_pool_auto_config_node_kubelet_config.dart';
 export 'container/get_cluster_node_pool_autoscaling.dart';
+export 'container/get_cluster_node_pool_best_effort_provisioning.dart';
 export 'container/get_cluster_node_pool_default.dart';
 export 'container/get_cluster_node_pool_default_node_config_default.dart';
 export 'container/get_cluster_node_pool_default_node_config_default_containerd_config.dart';
@@ -626,6 +628,7 @@ export 'container/get_registry_repository_result.dart';
 export 'container/node_pool.dart';
 export 'container/node_pool_args.dart';
 export 'container/node_pool_autoscaling.dart';
+export 'container/node_pool_best_effort_provisioning.dart';
 export 'container/node_pool_maintenance_policy.dart';
 export 'container/node_pool_maintenance_policy_exclusion_until_end_of_support.dart';
 export 'container/node_pool_management.dart';

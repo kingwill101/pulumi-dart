@@ -77,7 +77,7 @@ class GetRegionSslCertificateResult {
   factory GetRegionSslCertificateResult.fromMap(Map<String, dynamic> map) {
     return GetRegionSslCertificateResult(
       certificate: (() { final guardedValue = map['certificate']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      certificateId: (() { final guardedValue = map['certificateId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      certificateId: (() { final guardedValue = map['certificateId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),

@@ -7,7 +7,7 @@ import 'tool_mcp_tool_tls_config.dart';
 
 class ToolMcpTool {
   /// (Output)
-  /// Authentication information required for API calls.
+  /// Authentication information required for calling the remote agent.
   /// Structure is documented below.
   final pulumi.Input<List<ToolMcpToolApiAuthentication>?>? apiAuthentications;
   /// (Output)

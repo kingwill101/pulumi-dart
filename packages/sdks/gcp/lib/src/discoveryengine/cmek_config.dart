@@ -86,9 +86,9 @@ import 'cmek_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -121,7 +121,7 @@ import 'cmek_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -129,19 +129,25 @@ import 'cmek_config_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_discoveryengine_cmekconfig" "default" {
-///   depends_on     = [gcp_kms_cryptokeyiammember.crypto_key]
+/// resource "gcp_discoveryengine_cmek_config" "default" {
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.crypto_key]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us"
 ///   cmek_config_id = "cmek-config-id"
 ///   kms_key        = "kms-key-name"
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "crypto_key" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "kms-key-name"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-discoveryengine.iam.gserviceaccount.com"
+///   member        ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-discoveryengine.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -286,7 +292,7 @@ class CmekConfig extends pulumi.CustomResource {
           'gcp:discoveryengine/cmekConfig:CmekConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     cmekConfigId = registerOutput<String>('cmekConfigId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

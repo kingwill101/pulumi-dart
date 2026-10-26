@@ -89,8 +89,8 @@ import 'organization_security_policy_association_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -115,7 +115,7 @@ import 'organization_security_policy_association_state.dart';
 /// 		_, err = compute.NewOrganizationSecurityPolicyAssociation(ctx, "policy", &compute.OrganizationSecurityPolicyAssociationArgs{
 /// 			Name:         pulumi.String("tf-test"),
 /// 			AttachmentId: policy.Parent,
-/// 			PolicyId:     policy.ID().ToIDOutput().ToStringOutput(),
+/// 			PolicyId:     policy.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -125,7 +125,7 @@ import 'organization_security_policy_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -134,19 +134,28 @@ import 'organization_security_policy_association_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_folder" "security_policy_target" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "tf-test-secpol"
 ///   parent              = "organizations/123456789"
 ///   deletion_protection = false
 /// }
-/// resource "gcp_compute_organizationsecuritypolicy" "policy" {
+/// resource "gcp_compute_organization_security_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "tf-test"
 ///   parent       = gcp_organizations_folder.security_policy_target.name
 ///   type         = "CLOUD_ARMOR"
 /// }
-/// resource "gcp_compute_organizationsecuritypolicyassociation" "policy" {
+/// resource "gcp_compute_organization_security_policy_association" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "tf-test"
-///   attachment_id = gcp_compute_organizationsecuritypolicy.policy.parent
-///   policy_id     = gcp_compute_organizationsecuritypolicy.policy.id
+///   attachment_id = gcp_compute_organization_security_policy.policy.parent
+///   policy_id     = gcp_compute_organization_security_policy.policy.id
 /// }
 /// ```
 /// ```java
@@ -228,12 +237,12 @@ import 'organization_security_policy_association_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const securityPolicyTarget = new gcp.organizations.Folder("security_policy_target", {
-///     displayName: "tf-test-secpol-_75223",
+///     displayName: "tf-test-secpol-_74391",
 ///     parent: "organizations/123456789",
 ///     deletionProtection: false,
 /// });
 /// const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
-///     shortName: "tf-test_41819",
+///     shortName: "tf-test_16511",
 ///     parent: securityPolicyTarget.name,
 ///     type: "CLOUD_ARMOR",
 /// });
@@ -256,11 +265,11 @@ import 'organization_security_policy_association_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// security_policy_target = gcp.organizations.Folder("security_policy_target",
-///     display_name="tf-test-secpol-_75223",
+///     display_name="tf-test-secpol-_74391",
 ///     parent="organizations/123456789",
 ///     deletion_protection=False)
 /// policy = gcp.compute.OrganizationSecurityPolicy("policy",
-///     short_name="tf-test_41819",
+///     short_name="tf-test_16511",
 ///     parent=security_policy_target.name,
 ///     type="CLOUD_ARMOR")
 /// policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policy",
@@ -286,14 +295,14 @@ import 'organization_security_policy_association_state.dart';
 /// {
 ///     var securityPolicyTarget = new Gcp.Organizations.Folder("security_policy_target", new()
 ///     {
-///         DisplayName = "tf-test-secpol-_75223",
+///         DisplayName = "tf-test-secpol-_74391",
 ///         Parent = "organizations/123456789",
 ///         DeletionProtection = false,
 ///     });
 ///
 ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
 ///     {
-///         ShortName = "tf-test_41819",
+///         ShortName = "tf-test_16511",
 ///         Parent = securityPolicyTarget.Name,
 ///         Type = "CLOUD_ARMOR",
 ///     });
@@ -321,15 +330,15 @@ import 'organization_security_policy_association_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		securityPolicyTarget, err := organizations.NewFolder(ctx, "security_policy_target", &organizations.FolderArgs{
-/// 			DisplayName:        pulumi.String("tf-test-secpol-_75223"),
+/// 			DisplayName:        pulumi.String("tf-test-secpol-_74391"),
 /// 			Parent:             pulumi.String("organizations/123456789"),
 /// 			DeletionProtection: pulumi.Bool(false),
 /// 		})
@@ -337,7 +346,7 @@ import 'organization_security_policy_association_state.dart';
 /// 			return err
 /// 		}
 /// 		policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-/// 			ShortName: pulumi.String("tf-test_41819"),
+/// 			ShortName: pulumi.String("tf-test_16511"),
 /// 			Parent:    securityPolicyTarget.Name,
 /// 			Type:      pulumi.String("CLOUD_ARMOR"),
 /// 		})
@@ -347,7 +356,7 @@ import 'organization_security_policy_association_state.dart';
 /// 		_, err = compute.NewOrganizationSecurityPolicyAssociation(ctx, "policy", &compute.OrganizationSecurityPolicyAssociationArgs{
 /// 			Name:         pulumi.String("tf-test"),
 /// 			AttachmentId: pulumi.String("organizations/123456789"),
-/// 			PolicyId:     policy.ID().ToIDOutput().ToStringOutput(),
+/// 			PolicyId:     policy.ID(),
 /// 			ExcludedProjects: pulumi.StringArray{
 /// 				pulumi.String("projects/2000000002"),
 /// 				pulumi.String("projects/3000000003"),
@@ -365,7 +374,7 @@ import 'organization_security_policy_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -374,19 +383,28 @@ import 'organization_security_policy_association_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_folder" "security_policy_target" {
-///   display_name        = "tf-test-secpol-_75223"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   display_name        = "tf-test-secpol-_74391"
 ///   parent              = "organizations/123456789"
 ///   deletion_protection = false
 /// }
-/// resource "gcp_compute_organizationsecuritypolicy" "policy" {
-///   short_name = "tf-test_41819"
+/// resource "gcp_compute_organization_security_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   short_name = "tf-test_16511"
 ///   parent     = gcp_organizations_folder.security_policy_target.name
 ///   type       = "CLOUD_ARMOR"
 /// }
-/// resource "gcp_compute_organizationsecuritypolicyassociation" "policy" {
+/// resource "gcp_compute_organization_security_policy_association" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "tf-test"
 ///   attachment_id     = "organizations/123456789"
-///   policy_id         = gcp_compute_organizationsecuritypolicy.policy.id
+///   policy_id         = gcp_compute_organization_security_policy.policy.id
 ///   excluded_projects = ["projects/2000000002", "projects/3000000003"]
 ///   excluded_folders  = ["folders/4000000004", "folders/5000000005"]
 /// }
@@ -417,13 +435,13 @@ import 'organization_security_policy_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var securityPolicyTarget = new Folder("securityPolicyTarget", FolderArgs.builder()
-///             .displayName("tf-test-secpol-_75223")
+///             .displayName("tf-test-secpol-_74391")
 ///             .parent("organizations/123456789")
 ///             .deletionProtection(false)
 ///             .build());
 ///
 ///         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
-///             .shortName("tf-test_41819")
+///             .shortName("tf-test_16511")
 ///             .parent(securityPolicyTarget.name())
 ///             .type("CLOUD_ARMOR")
 ///             .build());
@@ -449,13 +467,13 @@ import 'organization_security_policy_association_state.dart';
 ///     type: gcp:organizations:Folder
 ///     name: security_policy_target
 ///     properties:
-///       displayName: tf-test-secpol-_75223
+///       displayName: tf-test-secpol-_74391
 ///       parent: organizations/123456789
 ///       deletionProtection: false
 ///   policy:
 ///     type: gcp:compute:OrganizationSecurityPolicy
 ///     properties:
-///       shortName: tf-test_41819
+///       shortName: tf-test_16511
 ///       parent: ${securityPolicyTarget.name}
 ///       type: CLOUD_ARMOR
 ///   policyOrganizationSecurityPolicyAssociation:
@@ -519,7 +537,7 @@ class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource {
           'gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     attachmentId = registerOutput<String>('attachmentId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

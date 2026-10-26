@@ -96,7 +96,7 @@ import 'policy_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudidentity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudidentity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -129,7 +129,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -138,6 +138,9 @@ import 'policy_state.dart';
 /// }
 ///
 /// resource "gcp_cloudidentity_policy" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   customer = "customers/C01234567"
 ///   policy_query = {
 ///     org_unit = "orgUnits/03abcxyz"
@@ -258,7 +261,7 @@ class Policy extends pulumi.CustomResource {
           'gcp:cloudidentity/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     customer = registerOutput<String>('customer');
     deletionPolicy = registerOutput<String>('deletionPolicy');

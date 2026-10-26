@@ -71,7 +71,7 @@ import 'ai_tensorboard_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -94,7 +94,7 @@ import 'ai_tensorboard_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -102,7 +102,10 @@ import 'ai_tensorboard_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aitensorboard" "tensorboard" {
+/// resource "gcp_vertex_ai_tensorboard" "tensorboard" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "terraform"
 ///   description  = "sample description"
 ///   labels = {
@@ -255,9 +258,9 @@ import 'ai_tensorboard_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -297,7 +300,7 @@ import 'ai_tensorboard_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -305,11 +308,14 @@ import 'ai_tensorboard_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aitensorboard" "tensorboard" {
-///   depends_on   = [gcp_kms_cryptokeyiammember.crypto_key]
+/// resource "gcp_vertex_ai_tensorboard" "tensorboard" {
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.crypto_key]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "terraform"
 ///   description  = "sample description"
 ///   labels = {
@@ -321,10 +327,13 @@ import 'ai_tensorboard_state.dart';
 ///     kms_key_name = "kms-name"
 ///   }
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "crypto_key" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "kms-name"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com"
+///   member        ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -483,7 +492,7 @@ class AiTensorboard extends pulumi.CustomResource {
           'gcp:vertex/aiTensorboard:AiTensorboard',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     blobStoragePathPrefix = registerOutput<String>('blobStoragePathPrefix');

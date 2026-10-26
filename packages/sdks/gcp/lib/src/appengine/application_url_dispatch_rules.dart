@@ -179,8 +179,8 @@ import 'application_url_dispatch_rules_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -247,7 +247,7 @@ import 'application_url_dispatch_rules_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -255,7 +255,10 @@ import 'application_url_dispatch_rules_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_appengine_applicationurldispatchrules" "web_service" {
+/// resource "gcp_appengine_application_url_dispatch_rules" "web_service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dispatch_rules {
 ///     domain  = "*"
 ///     path    = "/*"
@@ -264,10 +267,13 @@ import 'application_url_dispatch_rules_state.dart';
 ///   dispatch_rules {
 ///     domain  = "*"
 ///     path    = "/admin/*"
-///     service = gcp_appengine_standardappversion.admin_v3.service
+///     service = gcp_appengine_standard_app_version.admin_v3.service
 ///   }
 /// }
-/// resource "gcp_appengine_standardappversion" "admin_v3" {
+/// resource "gcp_appengine_standard_app_version" "admin_v3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   version_id = "v3"
 ///   service    = "admin"
 ///   runtime    = "nodejs22"
@@ -276,7 +282,7 @@ import 'application_url_dispatch_rules_state.dart';
 ///   }
 ///   deployment = {
 ///     zip = {
-///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.object.name}"
+///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucket_object.object.name}"
 ///     }
 ///   }
 ///   env_variables = {
@@ -285,13 +291,19 @@ import 'application_url_dispatch_rules_state.dart';
 ///   delete_service_on_destroy = true
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "appengine-test-bucket"
 ///   location = "US"
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "hello-world.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("./test-fixtures/hello-world.zip")
+///   source = fileasset("./test-fixtures/hello-world.zip")
 /// }
 /// ```
 /// ```java
@@ -456,7 +468,7 @@ class ApplicationUrlDispatchRules extends pulumi.CustomResource {
           'gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     dispatchRules = registerOutput<List<ApplicationUrlDispatchRulesDispatchRule>>('dispatchRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationUrlDispatchRulesDispatchRule>(guardedValue, (value) => ApplicationUrlDispatchRulesDispatchRule.fromMap((value as Map).cast<String, dynamic>())); });

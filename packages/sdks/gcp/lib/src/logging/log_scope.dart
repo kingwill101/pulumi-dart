@@ -76,7 +76,7 @@ import 'log_scope_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -101,7 +101,7 @@ import 'log_scope_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -109,7 +109,10 @@ import 'log_scope_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_logscope" "logging_log_scope" {
+/// resource "gcp_logging_log_scope" "logging_log_scope" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent         = "projects/my-project-name"
 ///   location       = "global"
 ///   name           = "projects/my-project-name/locations/global/logScopes/my-log-scope"
@@ -216,7 +219,7 @@ class LogScope extends pulumi.CustomResource {
           'gcp:logging/logScope:LogScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

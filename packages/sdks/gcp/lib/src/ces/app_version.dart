@@ -85,7 +85,7 @@ import 'app_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -117,7 +117,7 @@ import 'app_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -126,6 +126,9 @@ import 'app_version_state.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "my-app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   display_name = "my-app"
 ///   app_id       = "app-id"
@@ -133,7 +136,10 @@ import 'app_version_state.dart';
 ///     time_zone = "America/Los_Angeles"
 ///   }
 /// }
-/// resource "gcp_ces_appversion" "my-app-version" {
+/// resource "gcp_ces_app_version" "my-app-version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us"
 ///   display_name   = "my-app-version"
 ///   app            = gcp_ces_app.my-app.name
@@ -276,7 +282,7 @@ class AppVersion extends pulumi.CustomResource {
           'gcp:ces/appVersion:AppVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.2.0').merge(options),
         ) {
     app = registerOutput<String>('app');
     appVersionId = registerOutput<String>('appVersionId');

@@ -9,6 +9,8 @@ class JobTemplate {
   /// All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
   /// This field follows Kubernetes annotations' namespacing, limits, and rules.
   final pulumi.Input<Map<String, String>?>? annotations;
+  /// If true, the system will start the execution within the next 12 hours depending on available capacity.
+  final pulumi.Input<bool?>? delayExecution;
   /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
   /// or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
   /// https://cloud.google.com/run/docs/configuring/labels.
@@ -25,12 +27,14 @@ class JobTemplate {
 
   /// Creates a new [JobTemplate].
   /// [annotations] Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+  /// [delayExecution] If true, the system will start the execution within the next 12 hours depending on available capacity.
   /// [labels] Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
   /// [parallelism] Specifies the maximum desired number of tasks the execution should run at given time. Must be &lt;= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
   /// [taskCount] Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
   /// [template] Describes the task(s) that will be created when executing an execution
   const JobTemplate({
     this.annotations,
+    this.delayExecution,
     this.labels,
     this.parallelism,
     this.taskCount,
@@ -40,6 +44,7 @@ class JobTemplate {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
+      'delayExecution': ?delayExecution,
       'labels': ?labels,
       'parallelism': ?parallelism,
       'taskCount': ?taskCount,
@@ -50,9 +55,10 @@ class JobTemplate {
   factory JobTemplate.fromMap(Map<String, dynamic> map) {
     return JobTemplate(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      delayExecution: (() { final guardedValue = map['delayExecution']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      parallelism: (() { final guardedValue = map['parallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      taskCount: (() { final guardedValue = map['taskCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      parallelism: (() { final guardedValue = map['parallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      taskCount: (() { final guardedValue = map['taskCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       template: pulumi.Input.fromValue(JobTemplateTemplate.fromMap((map['template']! as Map).cast<String, dynamic>())),
     );
   }
