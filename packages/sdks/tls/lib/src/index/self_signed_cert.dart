@@ -122,7 +122,7 @@ import 'self_signed_cert_subject.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     std = {
 ///       source = "pulumi/std"
@@ -133,7 +133,10 @@ import 'self_signed_cert_subject.dart';
 ///   }
 /// }
 ///
-/// resource "tls_selfsignedcert" "example" {
+/// resource "tls_self_signed_cert" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   private_key_pem = file("private_key.pem")
 ///   subject = {
 ///     common_name  = "example.com"
@@ -276,7 +279,7 @@ class SelfSignedCert extends pulumi.CustomResource {
           'tls:index/selfSignedCert:SelfSignedCert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '5.6.0').merge(options),
+          pulumi.CustomResourceOptions(version: '5.6.2').merge(options),
           additionalSecretOutputs: const ['privateKeyPem', 'privateKeyPemWo'],
         ) {
     allowedUses = registerOutput<List<String>>('allowedUses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

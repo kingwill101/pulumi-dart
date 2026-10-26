@@ -132,7 +132,7 @@ import 'locally_signed_cert_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     std = {
 ///       source = "pulumi/std"
@@ -143,7 +143,10 @@ import 'locally_signed_cert_state.dart';
 ///   }
 /// }
 ///
-/// resource "tls_locallysignedcert" "example" {
+/// resource "tls_locally_signed_cert" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cert_request_pem      = file("cert_request.pem")
 ///   ca_private_key_pem    = file("ca_private_key.pem")
 ///   ca_cert_pem           = file("ca_cert.pem")
@@ -288,7 +291,7 @@ class LocallySignedCert extends pulumi.CustomResource {
           'tls:index/locallySignedCert:LocallySignedCert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '5.6.0').merge(options),
+          pulumi.CustomResourceOptions(version: '5.6.2').merge(options),
           additionalSecretOutputs: const ['caPrivateKeyPem', 'caPrivateKeyPemWo'],
         ) {
     allowedUses = registerOutput<List<String>>('allowedUses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

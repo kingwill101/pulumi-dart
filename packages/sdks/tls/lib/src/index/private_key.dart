@@ -121,7 +121,7 @@ import 'private_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     tls = {
 ///       source = "pulumi/tls"
@@ -130,17 +130,26 @@ import 'private_key_state.dart';
 /// }
 ///
 /// # ECDSA key with P384 elliptic curve
-/// resource "tls_privatekey" "ecdsa-p384-example" {
+/// resource "tls_private_key" "ecdsa-p384-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   algorithm   = "ECDSA"
 ///   ecdsa_curve = "P384"
 /// }
 /// # RSA key of size 4096 bits
-/// resource "tls_privatekey" "rsa-4096-example" {
+/// resource "tls_private_key" "rsa-4096-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   algorithm = "RSA"
 ///   rsa_bits  = 4096
 /// }
 /// # ED25519 key
-/// resource "tls_privatekey" "ed25519-example" {
+/// resource "tls_private_key" "ed25519-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   algorithm = "ED25519"
 /// }
 /// ```
@@ -255,7 +264,7 @@ class PrivateKey extends pulumi.CustomResource {
           'tls:index/privateKey:PrivateKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '5.6.0').merge(options),
+          pulumi.CustomResourceOptions(version: '5.6.2').merge(options),
           additionalSecretOutputs: const ['privateKeyOpenssh', 'privateKeyPem', 'privateKeyPemPkcs8'],
         ) {
     algorithm = registerOutput<String>('algorithm');
