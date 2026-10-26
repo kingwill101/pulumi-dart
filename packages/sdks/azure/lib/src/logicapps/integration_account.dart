@@ -104,7 +104,7 @@ import 'integration_account_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -112,14 +112,20 @@ import 'integration_account_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_logicapps_integrationaccount" "example" {
+/// resource "azure_logicapps_integration_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ia"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku_name            = "Standard"
 ///   tags = {
 ///     "foo" = "bar"
@@ -225,7 +231,7 @@ class IntegrationAccount extends pulumi.CustomResource {
           'azure:logicapps/integrationAccount:IntegrationAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     integrationServiceEnvironmentId = registerOutput<String?>('integrationServiceEnvironmentId');
     location = registerOutput<String>('location');

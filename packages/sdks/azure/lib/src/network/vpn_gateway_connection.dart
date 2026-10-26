@@ -292,7 +292,7 @@ import 'vpn_gateway_connection_vpn_link.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -300,33 +300,48 @@ import 'vpn_gateway_connection_vpn_link.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualwan" "example" {
+/// resource "azure_network_virtual_wan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vwan"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_network_virtualhub" "example" {
+/// resource "azure_network_virtual_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-hub"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
+///   virtual_wan_id      = azure_network_virtual_wan.example.id
 ///   address_prefix      = "10.0.0.0/24"
 /// }
-/// resource "azure_network_vpngateway" "example" {
+/// resource "azure_network_vpn_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vpng"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   virtual_hub_id      = azure_network_virtualhub.example.id
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   virtual_hub_id      = azure_network_virtual_hub.example.id
 /// }
-/// resource "azure_network_vpnsite" "example" {
+/// resource "azure_network_vpn_site" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vpn-site"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   virtual_wan_id      = azure_network_virtual_wan.example.id
 ///   links {
 ///     name       = "link1"
 ///     ip_address = "10.1.0.0"
@@ -336,17 +351,20 @@ import 'vpn_gateway_connection_vpn_link.dart';
 ///     ip_address = "10.2.0.0"
 ///   }
 /// }
-/// resource "azure_network_vpngatewayconnection" "example" {
+/// resource "azure_network_vpn_gateway_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
-///   vpn_gateway_id     = azure_network_vpngateway.example.id
-///   remote_vpn_site_id = azure_network_vpnsite.example.id
+///   vpn_gateway_id     = azure_network_vpn_gateway.example.id
+///   remote_vpn_site_id = azure_network_vpn_site.example.id
 ///   vpn_links {
 ///     name             = "link1"
-///     vpn_site_link_id = azure_network_vpnsite.example.links[0].id
+///     vpn_site_link_id = azure_network_vpn_site.example.links[0].id
 ///   }
 ///   vpn_links {
 ///     name             = "link2"
-///     vpn_site_link_id = azure_network_vpnsite.example.links[1].id
+///     vpn_site_link_id = azure_network_vpn_site.example.links[1].id
 ///   }
 /// }
 /// ```
@@ -432,11 +450,11 @@ import 'vpn_gateway_connection_vpn_link.dart';
 ///             .vpnLinks(
 ///                 VpnGatewayConnectionVpnLinkArgs.builder()
 ///                     .name("link1")
-///                     .vpnSiteLinkId(exampleVpnSite.links().applyValue(_links -> _links[0].id()))
+///                     .vpnSiteLinkId(exampleVpnSite.links().applyValue(_links -> _links.get(0).id()))
 ///                     .build(),
 ///                 VpnGatewayConnectionVpnLinkArgs.builder()
 ///                     .name("link2")
-///                     .vpnSiteLinkId(exampleVpnSite.links().applyValue(_links -> _links[1].id()))
+///                     .vpnSiteLinkId(exampleVpnSite.links().applyValue(_links -> _links.get(1).id()))
 ///                     .build())
 ///             .build());
 ///
@@ -544,7 +562,7 @@ class VpnGatewayConnection extends pulumi.CustomResource {
           'azure:network/vpnGatewayConnection:VpnGatewayConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     internetSecurityEnabled = registerOutput<bool?>('internetSecurityEnabled');
     this.name = registerOutput<String>('name');

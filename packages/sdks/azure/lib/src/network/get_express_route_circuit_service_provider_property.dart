@@ -30,7 +30,7 @@ class GetExpressRouteCircuitServiceProviderProperty {
 
   factory GetExpressRouteCircuitServiceProviderProperty.fromMap(Map<String, dynamic> map) {
     return GetExpressRouteCircuitServiceProviderProperty(
-      bandwidthInMbps: pulumi.Input.fromValue((map['bandwidthInMbps'] as num).toInt()),
+      bandwidthInMbps: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bandwidthInMbps'])),
       peeringLocation: pulumi.Input.fromValue(map['peeringLocation'] as String),
       serviceProviderName: pulumi.Input.fromValue(map['serviceProviderName'] as String),
     );

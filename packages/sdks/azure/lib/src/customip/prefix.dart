@@ -138,7 +138,7 @@ import 'prefix_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -146,14 +146,20 @@ import 'prefix_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_customip_prefix" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "example-CustomIPPrefix"
-///   location                      = azure_core_resourcegroup.example.location
-///   resource_group_name           = azure_core_resourcegroup.example.name
+///   location                      = azure_core_resource_group.example.location
+///   resource_group_name           = azure_core_resource_group.example.name
 ///   cidr                          = "1.2.3.4/22"
 ///   zones                         = ["1", "2", "3"]
 ///   commissioning_enabled         = true
@@ -391,7 +397,7 @@ import 'prefix_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -402,11 +408,17 @@ import 'prefix_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_customip_prefix" "global" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "example-Global-CustomIPPrefix"
 ///   location                      = test.location
 ///   resource_group_name           = test.name
@@ -415,6 +427,9 @@ import 'prefix_state.dart';
 ///   wan_validation_signed_message = "signed message for WAN validation"
 /// }
 /// resource "azure_customip_prefix" "regional" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-Regional-CustomIPPrefix"
 ///   location                   = test.location
 ///   resource_group_name        = test.name
@@ -455,8 +470,8 @@ import 'prefix_state.dart';
 ///
 ///         var global = new Prefix("global", PrefixArgs.builder()
 ///             .name("example-Global-CustomIPPrefix")
-///             .location(test.location())
-///             .resourceGroupName(test.name())
+///             .location(test.get("location"))
+///             .resourceGroupName(test.get("name"))
 ///             .cidr("2001:db8:1::/48")
 ///             .roaValidityEndDate("2199-12-12")
 ///             .wanValidationSignedMessage("signed message for WAN validation")
@@ -464,8 +479,8 @@ import 'prefix_state.dart';
 ///
 ///         var regional = new Prefix("regional", PrefixArgs.builder()
 ///             .name("example-Regional-CustomIPPrefix")
-///             .location(test.location())
-///             .resourceGroupName(test.name())
+///             .location(test.get("location"))
+///             .resourceGroupName(test.get("name"))
 ///             .parentCustomIpPrefixId(global.id())
 ///             .cidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
 ///                 .input(global.cidr())
@@ -563,7 +578,7 @@ class Prefix extends pulumi.CustomResource {
           'azure:customip/prefix:Prefix',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     cidr = registerOutput<String>('cidr');
     commissioningEnabled = registerOutput<bool?>('commissioningEnabled');

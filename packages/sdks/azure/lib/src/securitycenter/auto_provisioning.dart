@@ -59,7 +59,7 @@ import 'auto_provisioning_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -67,7 +67,10 @@ import 'auto_provisioning_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_securitycenter_autoprovisioning" "example" {
+/// resource "azure_securitycenter_auto_provisioning" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auto_provision = "On"
 /// }
 /// ```
@@ -131,7 +134,7 @@ class AutoProvisioning extends pulumi.CustomResource {
           'azure:securitycenter/autoProvisioning:AutoProvisioning',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     autoProvision = registerOutput<String>('autoProvision');
   }

@@ -26,7 +26,7 @@ class ScheduleMonthlyOccurrence {
   factory ScheduleMonthlyOccurrence.fromMap(Map<String, dynamic> map) {
     return ScheduleMonthlyOccurrence(
       day: pulumi.Input.fromValue(map['day'] as String),
-      occurrence: pulumi.Input.fromValue((map['occurrence'] as num).toInt()),
+      occurrence: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['occurrence'])),
     );
   }
 }

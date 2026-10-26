@@ -179,7 +179,7 @@ import 'resource_deployment_script_azure_cli_storage_account.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -187,18 +187,27 @@ import 'resource_deployment_script_azure_cli_storage_account.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-uai"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_core_resourcedeploymentscriptazurecli" "example" {
+/// resource "azure_core_resource_deployment_script_azure_cli" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-rdsac"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   location            = "West Europe"
 ///   version             = "2.40.0"
 ///   retention_interval  = "P1D"
@@ -206,10 +215,13 @@ import 'resource_deployment_script_azure_cli_storage_account.dart';
 ///   cleanup_preference  = "OnSuccess"
 ///   force_update_tag    = "1"
 ///   timeout             = "PT30M"
-///   script_content      = "            echo \\\"{\\\\\\\"name\\\\\\\":{\\\\\\\"displayName\\\\\\\":\\\\\\\"$1 $2\\\\\\\"}}\\\" > $AZ_SCRIPTS_OUTPUT_PATH\n"
+///   script_content      = <<EOF
+///             echo \"{\\\"name\\\":{\\\"displayName\\\":\\\"$1 $2\\\"}}\" > $AZ_SCRIPTS_OUTPUT_PATH
+/// EOF
+///
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
 ///   tags = {
 ///     "key" = "value"
@@ -378,7 +390,7 @@ class ResourceDeploymentScriptAzureCli extends pulumi.CustomResource {
           'azure:core/resourceDeploymentScriptAzureCli:ResourceDeploymentScriptAzureCli',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     cleanupPreference = registerOutput<String?>('cleanupPreference');
     commandLine = registerOutput<String?>('commandLine');

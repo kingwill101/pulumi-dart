@@ -320,7 +320,7 @@ import 'flexible_server_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -328,20 +328,29 @@ import 'flexible_server_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vn"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.0.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-sn"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 ///   service_endpoints    = ["Microsoft.Storage"]
 ///   delegations {
@@ -353,21 +362,30 @@ import 'flexible_server_state.dart';
 ///   }
 /// }
 /// resource "azure_privatedns_zone" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example.postgres.database.azure.com"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_privatedns_zonevirtualnetworklink" "example" {
-///   depends_on            = [azure_network_subnet.example]
+/// resource "azure_privatedns_zone_virtual_network_link" "example" {
+///   depends_on = [azure_network_subnet.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "exampleVnetZone.com"
 ///   private_dns_zone_name = azure_privatedns_zone.example.name
-///   virtual_network_id    = azure_network_virtualnetwork.example.id
-///   resource_group_name   = azure_core_resourcegroup.example.name
+///   virtual_network_id    = azure_network_virtual_network.example.id
+///   resource_group_name   = azure_core_resource_group.example.name
 /// }
-/// resource "azure_postgresql_flexibleserver" "example" {
-///   depends_on                    = [azure_privatedns_zonevirtualnetworklink.example]
+/// resource "azure_postgresql_flexible_server" "example" {
+///   depends_on = [azure_privatedns_zone_virtual_network_link.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "example-psqlflexibleserver"
-///   resource_group_name           = azure_core_resourcegroup.example.name
-///   location                      = azure_core_resourcegroup.example.location
+///   resource_group_name           = azure_core_resource_group.example.name
+///   location                      = azure_core_resource_group.example.location
 ///   version                       = "12"
 ///   delegated_subnet_id           = azure_network_subnet.example.id
 ///   private_dns_zone_id           = azure_privatedns_zone.example.id
@@ -686,7 +704,7 @@ class FlexibleServer extends pulumi.CustomResource {
           'azure:postgresql/flexibleServer:FlexibleServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['administratorPassword'],
         ) {
     administratorLogin = registerOutput<String>('administratorLogin');

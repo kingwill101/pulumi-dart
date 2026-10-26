@@ -68,7 +68,7 @@ import 'get_job_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -76,13 +76,13 @@ import 'get_job_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_streamanalytics_getjob" "example" {
+/// data "azure_streamanalytics_job" "example" {
 ///   name                = "example-job"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "jobId" {
-///   value = data.azure_streamanalytics_getjob.example.job_id
+///   value = data.azure_streamanalytics_job.example.job_id
 /// }
 /// ```
 /// ```java

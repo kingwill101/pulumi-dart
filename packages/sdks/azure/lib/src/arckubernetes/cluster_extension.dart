@@ -157,7 +157,7 @@ import 'cluster_extension_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -168,13 +168,19 @@ import 'cluster_extension_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_arckubernetes_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-akcc"
-///   resource_group_name          = azure_core_resourcegroup.example.name
+///   resource_group_name          = azure_core_resource_group.example.name
 ///   location                     = "West Europe"
 ///   agent_public_key_certificate = filebase64("testdata/public.cer")
 ///   identity = {
@@ -184,7 +190,10 @@ import 'cluster_extension_state.dart';
 ///     "ENV" = "Test"
 ///   }
 /// }
-/// resource "azure_arckubernetes_clusterextension" "example" {
+/// resource "azure_arckubernetes_cluster_extension" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example-ext"
 ///   cluster_id     = azure_arckubernetes_cluster.example.id
 ///   extension_type = "microsoft.flux"
@@ -329,7 +338,7 @@ class ClusterExtension extends pulumi.CustomResource {
           'azure:arckubernetes/clusterExtension:ClusterExtension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
     configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

@@ -179,7 +179,7 @@ import 'mover_target_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -187,29 +187,44 @@ import 'mover_target_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "examplestr"
-///   resource_group_name             = azure_core_resourcegroup.example.name
-///   location                        = azure_core_resourcegroup.example.location
+///   resource_group_name             = azure_core_resource_group.example.name
+///   location                        = azure_core_resource_group.example.location
 ///   account_tier                    = "Standard"
 ///   account_replication_type        = "LRS"
 ///   allow_nested_items_to_be_public = true
 /// }
 /// resource "azure_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-sc"
 ///   storage_account_name  = azure_storage_account.example.name
 ///   container_access_type = "blob"
 /// }
 /// resource "azure_storage_mover" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ssm"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   location            = "West Europe"
 /// }
-/// resource "azure_storage_movertargetendpoint" "example" {
+/// resource "azure_storage_mover_target_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-se"
 ///   storage_mover_id       = azure_storage_mover.example.id
 ///   storage_account_id     = azure_storage_account.example.id
@@ -364,7 +379,7 @@ class MoverTargetEndpoint extends pulumi.CustomResource {
           'azure:storage/moverTargetEndpoint:MoverTargetEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

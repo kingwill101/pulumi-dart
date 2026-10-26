@@ -40,11 +40,11 @@ class VirtualMachineManagerVirtualMachineInstanceHardware {
 
   factory VirtualMachineManagerVirtualMachineInstanceHardware.fromMap(Map<String, dynamic> map) {
     return VirtualMachineManagerVirtualMachineInstanceHardware(
-      cpuCount: (() { final guardedValue = map['cpuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      dynamicMemoryMaxInMb: (() { final guardedValue = map['dynamicMemoryMaxInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      dynamicMemoryMinInMb: (() { final guardedValue = map['dynamicMemoryMinInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cpuCount: (() { final guardedValue = map['cpuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      dynamicMemoryMaxInMb: (() { final guardedValue = map['dynamicMemoryMaxInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      dynamicMemoryMinInMb: (() { final guardedValue = map['dynamicMemoryMinInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       limitCpuForMigrationEnabled: (() { final guardedValue = map['limitCpuForMigrationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      memoryInMb: (() { final guardedValue = map['memoryInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      memoryInMb: (() { final guardedValue = map['memoryInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

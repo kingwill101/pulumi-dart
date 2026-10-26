@@ -76,7 +76,7 @@ import 'get_virtual_machine_configuration_assignment_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -84,13 +84,13 @@ import 'get_virtual_machine_configuration_assignment_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_policy_getpolicyassignment" "example" {
+/// data "azure_policy_policy_assignment" "example" {
 ///   name     = "existing"
 ///   scope_id = exampleAzurermResourceGroup.id
 /// }
 ///
 /// output "id" {
-///   value = data.azure_policy_getpolicyassignment.example.id
+///   value = data.azure_policy_policy_assignment.example.id
 /// }
 /// ```
 /// ```java
@@ -116,7 +116,7 @@ import 'get_virtual_machine_configuration_assignment_result.dart';
 ///     public static void stack(Context ctx) {
 ///         final var example = PolicyFunctions.getPolicyAssignment(GetPolicyAssignmentArgs.builder()
 ///             .name("existing")
-///             .scopeId(exampleAzurermResourceGroup.id())
+///             .scopeId(exampleAzurermResourceGroup.get("id"))
 ///             .build());
 ///
 ///         ctx.export("id", example.id());
@@ -230,7 +230,7 @@ pulumi.Output<GetPolicyAssignmentResult> getPolicyAssignmentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -238,12 +238,12 @@ pulumi.Output<GetPolicyAssignmentResult> getPolicyAssignmentOutput(
 ///   }
 /// }
 ///
-/// data "azure_policy_getpolicydefintion" "example" {
+/// data "azure_policy_policy_defintion" "example" {
 ///   display_name = "Allowed resource types"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_policy_getpolicydefintion.example.id
+///   value = data.azure_policy_policy_defintion.example.id
 /// }
 /// ```
 /// ```java
@@ -373,7 +373,7 @@ pulumi.Output<GetPolicyDefintionResult> getPolicyDefintionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -381,12 +381,12 @@ pulumi.Output<GetPolicyDefintionResult> getPolicyDefintionOutput(
 ///   }
 /// }
 ///
-/// data "azure_policy_getpolicydefintionbuiltin" "example" {
+/// data "azure_policy_policy_defintion_built_in" "example" {
 ///   display_name = "Allowed resource types"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_policy_getpolicydefintionbuiltin.example.id
+///   value = data.azure_policy_policy_defintion_built_in.example.id
 /// }
 /// ```
 /// ```java
@@ -516,7 +516,7 @@ pulumi.Output<GetPolicyDefintionBuiltInResult> getPolicyDefintionBuiltInOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -524,12 +524,12 @@ pulumi.Output<GetPolicyDefintionBuiltInResult> getPolicyDefintionBuiltInOutput(
 ///   }
 /// }
 ///
-/// data "azure_policy_getpolicysetdefinition" "example" {
+/// data "azure_policy_policy_set_definition" "example" {
 ///   display_name = "Policy Set Definition Example"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_policy_getpolicysetdefinition.example.id
+///   value = data.azure_policy_policy_set_definition.example.id
 /// }
 /// ```
 /// ```java
@@ -667,7 +667,7 @@ pulumi.Output<GetPolicySetDefinitionResult> getPolicySetDefinitionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -675,14 +675,14 @@ pulumi.Output<GetPolicySetDefinitionResult> getPolicySetDefinitionOutput(
 ///   }
 /// }
 ///
-/// data "azure_policy_getvirtualmachineconfigurationassignment" "example" {
+/// data "azure_policy_virtual_machine_configuration_assignment" "example" {
 ///   name                 = "AzureWindowsBaseline"
 ///   resource_group_name  = "example-RG"
 ///   virtual_machine_name = "example-vm"
 /// }
 ///
 /// output "complianceStatus" {
-///   value = data.azure_policy_getvirtualmachineconfigurationassignment.example.compliance_status
+///   value = data.azure_policy_virtual_machine_configuration_assignment.example.compliance_status
 /// }
 /// ```
 /// ```java

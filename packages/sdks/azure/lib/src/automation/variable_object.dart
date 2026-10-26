@@ -141,7 +141,7 @@ import 'variable_object_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -149,19 +149,28 @@ import 'variable_object_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tfex-example-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_automation_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-example-account"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Basic"
 /// }
-/// resource "azure_automation_variableobject" "example" {
+/// resource "azure_automation_variable_object" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "tfex-example-var"
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   automation_account_name = azure_automation_account.example.name
 ///   value = jsonencode({
 ///     "greeting" = "Hello, Terraform Basic Test."
@@ -283,7 +292,7 @@ class VariableObject extends pulumi.CustomResource {
           'azure:automation/variableObject:VariableObject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     description = registerOutput<String?>('description');

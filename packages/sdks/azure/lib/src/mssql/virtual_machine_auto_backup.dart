@@ -53,7 +53,7 @@ class VirtualMachineAutoBackup {
       encryptionEnabled: (() { final guardedValue = map['encryptionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       encryptionPassword: (() { final guardedValue = map['encryptionPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       manualSchedule: (() { final guardedValue = map['manualSchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineAutoBackupManualSchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      retentionPeriodInDays: pulumi.Input.fromValue((map['retentionPeriodInDays'] as num).toInt()),
+      retentionPeriodInDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retentionPeriodInDays'])),
       storageAccountAccessKey: pulumi.Input.fromValue(map['storageAccountAccessKey'] as String),
       storageBlobEndpoint: pulumi.Input.fromValue(map['storageBlobEndpoint'] as String),
       systemDatabasesBackupEnabled: (() { final guardedValue = map['systemDatabasesBackupEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

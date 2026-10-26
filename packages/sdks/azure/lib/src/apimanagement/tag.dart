@@ -119,7 +119,7 @@ import 'tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -127,19 +127,28 @@ import 'tag_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "My Company"
 ///   publisher_email     = "company@terraform.io"
 ///   sku_name            = "Consumption_0"
 /// }
 /// resource "azure_apimanagement_tag" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_management_id = azure_apimanagement_service.example.id
 ///   name              = "example-Tag"
 /// }
@@ -251,7 +260,7 @@ class Tag extends pulumi.CustomResource {
           'azure:apimanagement/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     displayName = registerOutput<String>('displayName');

@@ -91,7 +91,7 @@ import 'dedicated_host_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -99,14 +99,20 @@ import 'dedicated_host_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg-compute"
 ///   location = "West Europe"
 /// }
-/// resource "azure_compute_dedicatedhostgroup" "example" {
+/// resource "azure_compute_dedicated_host_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example-dedicated-host-group"
-///   resource_group_name         = azure_core_resourcegroup.example.name
-///   location                    = azure_core_resourcegroup.example.location
+///   resource_group_name         = azure_core_resource_group.example.name
+///   location                    = azure_core_resource_group.example.location
 ///   platform_fault_domain_count = 1
 /// }
 /// ```
@@ -208,7 +214,7 @@ class DedicatedHostGroup extends pulumi.CustomResource {
           'azure:compute/dedicatedHostGroup:DedicatedHostGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     automaticPlacementEnabled = registerOutput<bool?>('automaticPlacementEnabled');
     location = registerOutput<String>('location');

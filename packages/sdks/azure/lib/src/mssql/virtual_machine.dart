@@ -132,7 +132,7 @@ import 'virtual_machine_wsfc_domain_credential.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -140,13 +140,16 @@ import 'virtual_machine_wsfc_domain_credential.dart';
 ///   }
 /// }
 ///
-/// data "azure_compute_getvirtualmachine" "example" {
+/// data "azure_compute_virtual_machine" "example" {
 ///   name                = "example-vm"
 ///   resource_group_name = "example-resources"
 /// }
 ///
-/// resource "azure_mssql_virtualmachine" "example" {
-///   virtual_machine_id               = data.azure_compute_getvirtualmachine.example.id
+/// resource "azure_mssql_virtual_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   virtual_machine_id               = data.azure_compute_virtual_machine.example.id
 ///   sql_license_type                 = "PAYG"
 ///   r_services_enabled               = true
 ///   sql_connectivity_port            = 1433
@@ -296,7 +299,7 @@ class VirtualMachine extends pulumi.CustomResource {
           'azure:mssql/virtualMachine:VirtualMachine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['sqlConnectivityUpdatePassword', 'sqlConnectivityUpdateUsername'],
         ) {
     assessment = registerOutput<VirtualMachineAssessment?>('assessment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineAssessment.fromMap((guardedValue as Map).cast<String, dynamic>()); });

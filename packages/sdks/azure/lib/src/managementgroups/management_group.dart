@@ -107,7 +107,7 @@ import 'management_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -115,17 +115,23 @@ import 'management_group_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
 ///
 /// resource "azure_management_group" "example_parent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name     = "ParentGroup"
-///   subscription_ids = [data.azure_core_getsubscription.current.subscription_id]
+///   subscription_ids = [data.azure_core_subscription.current.subscription_id]
 /// }
 /// resource "azure_management_group" "example_child" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name               = "ChildGroup"
 ///   parent_management_group_id = azure_management_group.example_parent.id
-///   subscription_ids           = [data.azure_core_getsubscription.current.subscription_id]
+///   subscription_ids           = [data.azure_core_subscription.current.subscription_id]
 /// }
 /// ```
 /// ```java
@@ -233,7 +239,7 @@ class ManagementGroup extends pulumi.CustomResource {
           'azure:managementgroups/managementGroup:ManagementGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');

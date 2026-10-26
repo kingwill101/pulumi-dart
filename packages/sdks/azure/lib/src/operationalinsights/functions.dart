@@ -68,7 +68,7 @@ import 'get_analytics_workspace_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -76,13 +76,13 @@ import 'get_analytics_workspace_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_operationalinsights_getanalyticsworkspace" "example" {
+/// data "azure_operationalinsights_analytics_workspace" "example" {
 ///   name                = "acctest-01"
 ///   resource_group_name = "acctest"
 /// }
 ///
 /// output "logAnalyticsWorkspaceId" {
-///   value = data.azure_operationalinsights_getanalyticsworkspace.example.workspace_id
+///   value = data.azure_operationalinsights_analytics_workspace.example.workspace_id
 /// }
 /// ```
 /// ```java

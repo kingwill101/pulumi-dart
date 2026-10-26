@@ -280,7 +280,7 @@ import 'managed_private_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -288,28 +288,40 @@ import 'managed_private_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestorageacc"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 ///   account_kind             = "StorageV2"
 ///   is_hns_enabled           = "true"
 /// }
-/// resource "azure_storage_datalakegen2filesystem" "example" {
+/// resource "azure_storage_data_lake_gen2_filesystem" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   storage_account_id = azure_storage_account.example.id
 /// }
 /// resource "azure_synapse_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                 = "example"
-///   resource_group_name                  = azure_core_resourcegroup.example.name
-///   location                             = azure_core_resourcegroup.example.location
-///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   resource_group_name                  = azure_core_resource_group.example.name
+///   location                             = azure_core_resource_group.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_data_lake_gen2_filesystem.example.id
 ///   sql_administrator_login              = "sqladminuser"
 ///   sql_administrator_login_password     = "H@Sh1CoR3!"
 ///   managed_virtual_network_enabled      = true
@@ -317,22 +329,31 @@ import 'managed_private_endpoint_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_synapse_firewallrule" "example" {
+/// resource "azure_synapse_firewall_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "AllowAll"
 ///   synapse_workspace_id = azure_synapse_workspace.example.id
 ///   start_ip_address     = "0.0.0.0"
 ///   end_ip_address       = "255.255.255.255"
 /// }
 /// resource "azure_storage_account" "example_connect" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestorage2"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 ///   account_kind             = "BlobStorage"
 /// }
-/// resource "azure_synapse_managedprivateendpoint" "example" {
-///   depends_on           = [azure_synapse_firewallrule.example]
+/// resource "azure_synapse_managed_private_endpoint" "example" {
+///   depends_on = [azure_synapse_firewall_rule.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-endpoint"
 ///   synapse_workspace_id = azure_synapse_workspace.example.id
 ///   target_resource_id   = azure_storage_account.example_connect.id
@@ -546,7 +567,7 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
           'azure:synapse/managedPrivateEndpoint:ManagedPrivateEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     fullyQualifiedDomainNames = registerOutput<List<String>?>('fullyQualifiedDomainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');

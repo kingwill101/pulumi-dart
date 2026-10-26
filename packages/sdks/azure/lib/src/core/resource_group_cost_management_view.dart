@@ -200,7 +200,7 @@ import 'resource_group_cost_management_view_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -208,23 +208,29 @@ import 'resource_group_cost_management_view_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_core_resourcegroupcostmanagementview" "example" {
+/// resource "azure_core_resource_group_cost_management_view" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example"
 ///   display_name      = "Cost View per Month"
 ///   chart_type        = "StackedColumn"
 ///   accumulated       = false
-///   resource_group_id = azure_core_resourcegroup.example.id
+///   resource_group_id = azure_core_resource_group.example.id
 ///   report_type       = "Usage"
 ///   timeframe         = "MonthToDate"
 ///   dataset = {
 ///     granularity = "Monthly"
 ///     aggregations = [{
-///       "name"       = "totalCost"
-///       "columnName" = "Cost"
+///       name        = "totalCost"
+///       column_name = "Cost"
 ///     }]
 ///   }
 ///   pivots {
@@ -386,7 +392,7 @@ class ResourceGroupCostManagementView extends pulumi.CustomResource {
           'azure:core/resourceGroupCostManagementView:ResourceGroupCostManagementView',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accumulated = registerOutput<bool>('accumulated');
     chartType = registerOutput<String>('chartType');

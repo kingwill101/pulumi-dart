@@ -46,7 +46,7 @@ class GalleryApplicationAssignmentArgs {
     return GalleryApplicationAssignmentArgs(
       configurationBlobUri: (() { final guardedValue = map['configurationBlobUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       galleryApplicationVersionId: pulumi.Input.fromValue(map['galleryApplicationVersionId'] as String),
-      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       virtualMachineId: pulumi.Input.fromValue(map['virtualMachineId'] as String),
     );

@@ -165,7 +165,7 @@ import 'static_site_custom_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -173,25 +173,37 @@ import 'static_site_custom_domain_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appservice_staticsite" "example" {
+/// resource "azure_appservice_static_site" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_dns_cnamerecord" "example" {
+/// resource "azure_dns_c_name_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "my-domain"
 ///   zone_name           = "contoso.com"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ttl                 = 300
-///   record              = azure_appservice_staticsite.example.default_host_name
+///   record              = azure_appservice_static_site.example.default_host_name
 /// }
-/// resource "azure_appservice_staticsitecustomdomain" "example" {
-///   static_site_id  = azure_appservice_staticsite.example.id
-///   domain_name     ="${azure_dns_cnamerecord.example.name}.${azure_dns_cnamerecord.example.zone_name}"
+/// resource "azure_appservice_static_site_custom_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   static_site_id  = azure_appservice_static_site.example.id
+///   domain_name     ="${azure_dns_c_name_record.example.name}.${azure_dns_c_name_record.example.zone_name}"
 ///   validation_type = "cname-delegation"
 /// }
 /// ```
@@ -441,7 +453,7 @@ import 'static_site_custom_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -449,27 +461,39 @@ import 'static_site_custom_domain_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appservice_staticsite" "example" {
+/// resource "azure_appservice_static_site" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_appservice_staticsitecustomdomain" "example" {
-///   static_site_id  = azure_appservice_staticsite.example.id
+/// resource "azure_appservice_static_site_custom_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   static_site_id  = azure_appservice_static_site.example.id
 ///   domain_name     = "my-domain.contoso.com"
 ///   validation_type = "dns-txt-token"
 /// }
-/// resource "azure_dns_txtrecord" "example" {
+/// resource "azure_dns_txt_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "_dnsauth.my-domain"
 ///   zone_name           = "contoso.com"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ttl                 = 300
 ///   records {
-///     value = azure_appservice_staticsitecustomdomain.example.validation_token
+///     value = azure_appservice_static_site_custom_domain.example.validation_token
 ///   }
 /// }
 /// ```
@@ -594,7 +618,7 @@ class StaticSiteCustomDomain extends pulumi.CustomResource {
           'azure:appservice/staticSiteCustomDomain:StaticSiteCustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['validationToken'],
         ) {
     domainName = registerOutput<String>('domainName');

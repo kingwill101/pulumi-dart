@@ -109,7 +109,7 @@ import 'elastic_san_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -117,14 +117,20 @@ import 'elastic_san_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_elasticsan_elasticsan" "example" {
+/// resource "azure_elasticsan_elastic_san" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   location             = azure_core_resourcegroup.example.location
+///   resource_group_name  = azure_core_resource_group.example.name
+///   location             = azure_core_resource_group.example.location
 ///   base_size_in_tib     = 1
 ///   extended_size_in_tib = 2
 ///   sku = {
@@ -256,7 +262,7 @@ class ElasticSan extends pulumi.CustomResource {
           'azure:elasticsan/elasticSan:ElasticSan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     baseSizeInTib = registerOutput<int>('baseSizeInTib');
     extendedSizeInTib = registerOutput<int?>('extendedSizeInTib');

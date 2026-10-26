@@ -80,7 +80,7 @@ class GetNamespaceResult {
 
   factory GetNamespaceResult.fromMap(Map<String, dynamic> map) {
     return GetNamespaceResult(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       defaultPrimaryConnectionString: (() { final guardedValue = map['defaultPrimaryConnectionString']; if (guardedValue == null) return null; return guardedValue as String; })(),
       defaultPrimaryKey: (() { final guardedValue = map['defaultPrimaryKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
       defaultSecondaryConnectionString: (() { final guardedValue = map['defaultSecondaryConnectionString']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -89,7 +89,7 @@ class GetNamespaceResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      premiumMessagingPartitions: (() { final guardedValue = map['premiumMessagingPartitions']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      premiumMessagingPartitions: (() { final guardedValue = map['premiumMessagingPartitions']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),

@@ -112,7 +112,7 @@ import 'role_definition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -120,18 +120,21 @@ import 'role_definition_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "primary" {
+/// data "azure_core_subscription" "primary" {
 /// }
 ///
-/// resource "azure_authorization_roledefinition" "example" {
+/// resource "azure_authorization_role_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-custom-role"
-///   scope       = data.azure_core_getsubscription.primary.id
+///   scope       = data.azure_core_subscription.primary.id
 ///   description = "This is a custom role created"
 ///   permissions {
 ///     actions     = ["*"]
 ///     not_actions = []
 ///   }
-///   assignable_scopes = [data.azure_core_getsubscription.primary.id]
+///   assignable_scopes = [data.azure_core_subscription.primary.id]
 /// }
 /// ```
 /// ```java
@@ -330,7 +333,7 @@ import 'role_definition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -338,14 +341,20 @@ import 'role_definition_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
 ///
 /// resource "azure_management_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name     = "ParentGroup"
-///   subscription_ids = [data.azure_core_getsubscription.current.subscription_id]
+///   subscription_ids = [data.azure_core_subscription.current.subscription_id]
 /// }
-/// resource "azure_authorization_roledefinition" "example" {
+/// resource "azure_authorization_role_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example-mg-role"
 ///   scope       = azure_management_group.example.id
 ///   description = "Example custom role scoped to a management group."
@@ -479,7 +488,7 @@ class RoleDefinition extends pulumi.CustomResource {
           'azure:authorization/roleDefinition:RoleDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     assignableScopes = registerOutput<List<String>>('assignableScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');

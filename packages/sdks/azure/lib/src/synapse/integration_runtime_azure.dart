@@ -245,7 +245,7 @@ import 'integration_runtime_azure_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -253,31 +253,46 @@ import 'integration_runtime_azure_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resource_group.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "content"
 ///   storage_account_name  = azure_storage_account.example.name
 ///   container_access_type = "private"
 /// }
-/// resource "azure_storage_datalakegen2filesystem" "example" {
+/// resource "azure_storage_data_lake_gen2_filesystem" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   storage_account_id = azure_storage_account.example.id
 /// }
 /// resource "azure_synapse_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                 = "example"
-///   location                             = azure_core_resourcegroup.example.location
-///   resource_group_name                  = azure_core_resourcegroup.example.name
-///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   location                             = azure_core_resource_group.example.location
+///   resource_group_name                  = azure_core_resource_group.example.name
+///   storage_data_lake_gen2_filesystem_id = azure_storage_data_lake_gen2_filesystem.example.id
 ///   sql_administrator_login              = "sqladminuser"
 ///   sql_administrator_login_password     = "H@Sh1CoR3!"
 ///   managed_virtual_network_enabled      = true
@@ -285,16 +300,22 @@ import 'integration_runtime_azure_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_synapse_firewallrule" "example" {
+/// resource "azure_synapse_firewall_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "AllowAll"
 ///   synapse_workspace_id = azure_synapse_workspace.example.id
 ///   start_ip_address     = "0.0.0.0"
 ///   end_ip_address       = "255.255.255.255"
 /// }
-/// resource "azure_synapse_integrationruntimeazure" "example" {
+/// resource "azure_synapse_integration_runtime_azure" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
 ///   synapse_workspace_id = azure_synapse_workspace.example.id
-///   location             = azure_core_resourcegroup.example.location
+///   location             = azure_core_resource_group.example.location
 /// }
 /// ```
 /// ```java
@@ -479,7 +500,7 @@ class IntegrationRuntimeAzure extends pulumi.CustomResource {
           'azure:synapse/integrationRuntimeAzure:IntegrationRuntimeAzure',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     computeType = registerOutput<String?>('computeType');
     coreCount = registerOutput<int?>('coreCount');

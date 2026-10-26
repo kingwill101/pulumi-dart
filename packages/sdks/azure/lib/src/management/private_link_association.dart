@@ -150,7 +150,7 @@ import 'private_link_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -161,27 +161,39 @@ import 'private_link_association_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "example" {
+/// data "azure_core_client_config" "example" {
 /// }
-/// data "azure_management_getgroup" "exampleGetGroup" {
-///   name = data.azure_core_getclientconfig.example.tenant_id
+/// data "azure_management_group" "exampleGetGroup" {
+///   name = data.azure_core_client_config.example.tenant_id
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "West Europe"
 /// }
-/// resource "azure_management_privatelink" "example" {
+/// resource "azure_management_private_link" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
 /// resource "random_uuid" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "azure_management_privatelinkassociation" "example" {
+/// resource "azure_management_private_link_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                = random_uuid.example.result
 ///   management_group_id                 = exampleAzurermManagementGroup.id
-///   resource_management_private_link_id = azure_management_privatelink.example.id
+///   resource_management_private_link_id = azure_management_private_link.example.id
 ///   public_network_access_enabled       = true
 /// }
 /// ```
@@ -234,8 +246,8 @@ import 'private_link_association_state.dart';
 ///         var exampleUuid = new Uuid("exampleUuid");
 ///
 ///         var examplePrivateLinkAssociation = new PrivateLinkAssociation("examplePrivateLinkAssociation", PrivateLinkAssociationArgs.builder()
-///             .name(exampleUuid.result())
-///             .managementGroupId(exampleAzurermManagementGroup.id())
+///             .name(exampleUuid.get("result"))
+///             .managementGroupId(exampleAzurermManagementGroup.get("id"))
 ///             .resourceManagementPrivateLinkId(examplePrivateLink.id())
 ///             .publicNetworkAccessEnabled(true)
 ///             .build());
@@ -322,7 +334,7 @@ class PrivateLinkAssociation extends pulumi.CustomResource {
           'azure:management/privateLinkAssociation:PrivateLinkAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');

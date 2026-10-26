@@ -68,7 +68,7 @@ import 'get_account_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -76,13 +76,13 @@ import 'get_account_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_trustedsigning_getaccount" "example" {
+/// data "azure_trustedsigning_account" "example" {
 ///   name                = "example-account"
 ///   resource_group_name = "example-resource-group"
 /// }
 ///
 /// output "trustedSigningAccountId" {
-///   value = data.azure_trustedsigning_getaccount.example.id
+///   value = data.azure_trustedsigning_account.example.id
 /// }
 /// ```
 /// ```java

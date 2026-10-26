@@ -45,11 +45,11 @@ class GetWindowsWebAppBackupSchedule {
 
   factory GetWindowsWebAppBackupSchedule.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppBackupSchedule(
-      frequencyInterval: pulumi.Input.fromValue((map['frequencyInterval'] as num).toInt()),
+      frequencyInterval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['frequencyInterval'])),
       frequencyUnit: pulumi.Input.fromValue(map['frequencyUnit'] as String),
       keepAtLeastOneBackup: pulumi.Input.fromValue(map['keepAtLeastOneBackup'] as bool),
       lastExecutionTime: pulumi.Input.fromValue(map['lastExecutionTime'] as String),
-      retentionPeriodDays: pulumi.Input.fromValue((map['retentionPeriodDays'] as num).toInt()),
+      retentionPeriodDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retentionPeriodDays'])),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }

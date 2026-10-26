@@ -180,7 +180,7 @@ import 'output_mssql_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -188,31 +188,43 @@ import 'output_mssql_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_streamanalytics_getjob" "example" {
+/// data "azure_streamanalytics_job" "example" {
 ///   name                = "example-job"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "rg-example"
 ///   location = "West Europe"
 /// }
 /// resource "azure_mssql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-server"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   version                      = "12.0"
 ///   administrator_login          = "dbadmin"
 ///   administrator_login_password = "example-password"
 /// }
 /// resource "azure_mssql_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "exampledb"
 ///   server_id = test.id
 /// }
-/// resource "azure_streamanalytics_outputmssql" "example" {
+/// resource "azure_streamanalytics_output_mssql" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "example-output-sql"
-///   stream_analytics_job_name = data.azure_streamanalytics_getjob.example.name
-///   resource_group_name       = data.azure_streamanalytics_getjob.example.resource_group_name
+///   stream_analytics_job_name = data.azure_streamanalytics_job.example.name
+///   resource_group_name       = data.azure_streamanalytics_job.example.resource_group_name
 ///   server                    = azure_mssql_server.example.fully_qualified_domain_name
 ///   user                      = azure_mssql_server.example.administrator_login
 ///   password                  = azure_mssql_server.example.administrator_login_password
@@ -270,7 +282,7 @@ import 'output_mssql_state.dart';
 ///
 ///         var exampleDatabase = new Database("exampleDatabase", DatabaseArgs.builder()
 ///             .name("exampledb")
-///             .serverId(test.id())
+///             .serverId(test.get("id"))
 ///             .build());
 ///
 ///         var exampleOutputMssql = new OutputMssql("exampleOutputMssql", OutputMssqlArgs.builder()
@@ -383,7 +395,7 @@ class OutputMssql extends pulumi.CustomResource {
           'azure:streamanalytics/outputMssql:OutputMssql',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     authenticationMode = registerOutput<String?>('authenticationMode');

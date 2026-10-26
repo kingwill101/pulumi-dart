@@ -33,7 +33,7 @@ class ScalingPlanHostPoolAssociation extends pulumi.CustomResource {
           'azure:desktopvirtualization/scalingPlanHostPoolAssociation:ScalingPlanHostPoolAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
     hostPoolId = registerOutput<String>('hostPoolId');

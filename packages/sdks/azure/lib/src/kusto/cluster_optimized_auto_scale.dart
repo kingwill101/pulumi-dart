@@ -25,8 +25,8 @@ class ClusterOptimizedAutoScale {
 
   factory ClusterOptimizedAutoScale.fromMap(Map<String, dynamic> map) {
     return ClusterOptimizedAutoScale(
-      maximumInstances: pulumi.Input.fromValue((map['maximumInstances'] as num).toInt()),
-      minimumInstances: pulumi.Input.fromValue((map['minimumInstances'] as num).toInt()),
+      maximumInstances: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maximumInstances'])),
+      minimumInstances: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minimumInstances'])),
     );
   }
 }

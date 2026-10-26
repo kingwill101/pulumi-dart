@@ -197,7 +197,7 @@ import 'webhook_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -205,20 +205,29 @@ import 'webhook_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_automation_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "account1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Basic"
 /// }
-/// resource "azure_automation_runbook" "example" {
+/// resource "azure_automation_run_book" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "Get-AzureVMTutorial"
-///   location                = azure_core_resourcegroup.example.location
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   location                = azure_core_resource_group.example.location
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   automation_account_name = azure_automation_account.example.name
 ///   log_verbose             = "true"
 ///   log_progress            = "true"
@@ -229,12 +238,15 @@ import 'webhook_state.dart';
 ///   }
 /// }
 /// resource "azure_automation_webhook" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "TestRunbook_webhook"
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   automation_account_name = azure_automation_account.example.name
 ///   expiry_time             = "2021-12-31T00:00:00Z"
 ///   enabled                 = true
-///   runbook_name            = azure_automation_runbook.example.name
+///   runbook_name            = azure_automation_run_book.example.name
 ///   parameters = {
 ///     "input" = "parameter"
 ///   }
@@ -397,7 +409,7 @@ class Webhook extends pulumi.CustomResource {
           'azure:automation/webhook:Webhook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['uri'],
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');

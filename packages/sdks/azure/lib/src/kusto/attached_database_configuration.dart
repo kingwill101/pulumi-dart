@@ -319,7 +319,7 @@ import 'attached_database_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -327,44 +327,62 @@ import 'attached_database_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-kusto-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_kusto_cluster" "follower_cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cluster1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     name     = "Dev(No SLA)_Standard_D11_v2"
 ///     capacity = 1
 ///   }
 /// }
 /// resource "azure_kusto_cluster" "followed_cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cluster2"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     name     = "Dev(No SLA)_Standard_D11_v2"
 ///     capacity = 1
 ///   }
 /// }
 /// resource "azure_kusto_database" "followed_database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "my-followed-database"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   cluster_name        = azure_kusto_cluster.follower_cluster.name
 /// }
 /// resource "azure_kusto_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   cluster_name        = azure_kusto_cluster.follower_cluster.name
 /// }
-/// resource "azure_kusto_attacheddatabaseconfiguration" "example" {
+/// resource "azure_kusto_attached_database_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "configuration1"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   cluster_name        = azure_kusto_cluster.follower_cluster.name
 ///   cluster_id          = azure_kusto_cluster.followed_cluster.id
 ///   database_name       = azure_kusto_database.example.name
@@ -596,7 +614,7 @@ class AttachedDatabaseConfiguration extends pulumi.CustomResource {
           'azure:kusto/attachedDatabaseConfiguration:AttachedDatabaseConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     attachedDatabaseNames = registerOutput<List<String>>('attachedDatabaseNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clusterId = registerOutput<String>('clusterId');

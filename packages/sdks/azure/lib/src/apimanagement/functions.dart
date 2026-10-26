@@ -94,7 +94,7 @@ import 'get_workspace_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -102,7 +102,7 @@ import 'get_workspace_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getapi" "example" {
+/// data "azure_apimanagement_api" "example" {
 ///   name                = "search-api"
 ///   api_management_name = "search-api-management"
 ///   resource_group_name = "search-service"
@@ -110,7 +110,7 @@ import 'get_workspace_result.dart';
 /// }
 ///
 /// output "apiManagementApiId" {
-///   value = data.azure_apimanagement_getapi.example.id
+///   value = data.azure_apimanagement_api.example.id
 /// }
 /// ```
 /// ```java
@@ -262,7 +262,7 @@ pulumi.Output<GetApiResult> getApiOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -270,14 +270,14 @@ pulumi.Output<GetApiResult> getApiOutput(
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getapiversionset" "example" {
+/// data "azure_apimanagement_api_version_set" "example" {
 ///   resource_group_name = "example-resources"
 ///   api_management_name = "example-api"
 ///   name                = "example-api-version-set"
 /// }
 ///
 /// output "apiManagementApiVersionSetId" {
-///   value = data.azure_apimanagement_getapiversionset.example.id
+///   value = data.azure_apimanagement_api_version_set.example.id
 /// }
 /// ```
 /// ```java
@@ -435,7 +435,7 @@ pulumi.Output<GetApiVersionSetResult> getApiVersionSetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -443,13 +443,13 @@ pulumi.Output<GetApiVersionSetResult> getApiVersionSetOutput(
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getservice" "example" {
+/// data "azure_apimanagement_service" "example" {
 ///   name                = "example-apim"
 ///   resource_group_name = "example-rg"
 /// }
-/// data "azure_apimanagement_getgateway" "exampleGetGateway" {
+/// data "azure_apimanagement_gateway" "exampleGetGateway" {
 ///   name              = "example-api-gateway"
-///   api_management_id = data.azure_apimanagement_getservice.example.id
+///   api_management_id = data.azure_apimanagement_service.example.id
 /// }
 /// ```
 /// ```java
@@ -644,7 +644,7 @@ pulumi.Output<GetGatewayResult> getGatewayOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -652,22 +652,22 @@ pulumi.Output<GetGatewayResult> getGatewayOutput(
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getservice" "example" {
+/// data "azure_apimanagement_service" "example" {
 ///   name                = "example-apim"
 ///   resource_group_name = "example-resources"
 /// }
-/// data "azure_apimanagement_getgateway" "exampleGetGateway" {
+/// data "azure_apimanagement_gateway" "exampleGetGateway" {
 ///   name              = "example-gateway"
 ///   api_management_id = main.id
 /// }
-/// data "azure_apimanagement_getgatewayhostnameconfiguration" "exampleGetGatewayHostNameConfiguration" {
+/// data "azure_apimanagement_gateway_host_name_configuration" "exampleGetGatewayHostNameConfiguration" {
 ///   name              = "example-host-configuration"
-///   api_management_id = data.azure_apimanagement_getservice.example.id
-///   gateway_name      = data.azure_apimanagement_getgateway.exampleGetGateway.name
+///   api_management_id = data.azure_apimanagement_service.example.id
+///   gateway_name      = data.azure_apimanagement_gateway.exampleGetGateway.name
 /// }
 ///
 /// output "hostName" {
-///   value = data.azure_apimanagement_getgatewayhostnameconfiguration.exampleGetGatewayHostNameConfiguration.host_name
+///   value = data.azure_apimanagement_gateway_host_name_configuration.exampleGetGatewayHostNameConfiguration.host_name
 /// }
 /// ```
 /// ```java
@@ -700,7 +700,7 @@ pulumi.Output<GetGatewayResult> getGatewayOutput(
 ///
 ///         final var exampleGetGateway = ApimanagementFunctions.getGateway(GetGatewayArgs.builder()
 ///             .name("example-gateway")
-///             .apiManagementId(main.id())
+///             .apiManagementId(main.get("id"))
 ///             .build());
 ///
 ///         final var exampleGetGatewayHostNameConfiguration = ApimanagementFunctions.getGatewayHostNameConfiguration(GetGatewayHostNameConfigurationArgs.builder()
@@ -841,7 +841,7 @@ pulumi.Output<GetGatewayHostNameConfigurationResult> getGatewayHostNameConfigura
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -849,14 +849,14 @@ pulumi.Output<GetGatewayHostNameConfigurationResult> getGatewayHostNameConfigura
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getgroup" "example" {
+/// data "azure_apimanagement_group" "example" {
 ///   name                = "my-group"
 ///   api_management_name = "example-apim"
 ///   resource_group_name = "search-service"
 /// }
 ///
 /// output "groupType" {
-///   value = data.azure_apimanagement_getgroup.example.type
+///   value = data.azure_apimanagement_group.example.type
 /// }
 /// ```
 /// ```java
@@ -1006,7 +1006,7 @@ pulumi.Output<GetGroupResult> getGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1014,14 +1014,14 @@ pulumi.Output<GetGroupResult> getGroupOutput(
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getproduct" "example" {
+/// data "azure_apimanagement_product" "example" {
 ///   product_id          = "my-product"
 ///   api_management_name = "example-apim"
 ///   resource_group_name = "search-service"
 /// }
 ///
 /// output "productTerms" {
-///   value = data.azure_apimanagement_getproduct.example.terms
+///   value = data.azure_apimanagement_product.example.terms
 /// }
 /// ```
 /// ```java
@@ -1167,7 +1167,7 @@ pulumi.Output<GetProductResult> getProductOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1175,13 +1175,13 @@ pulumi.Output<GetProductResult> getProductOutput(
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getservice" "example" {
+/// data "azure_apimanagement_service" "example" {
 ///   name                = "search-api"
 ///   resource_group_name = "search-service"
 /// }
 ///
 /// output "apiManagementId" {
-///   value = data.azure_apimanagement_getservice.example.id
+///   value = data.azure_apimanagement_service.example.id
 /// }
 /// ```
 /// ```java
@@ -1325,7 +1325,7 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1333,13 +1333,13 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getsubscription" "example" {
+/// data "azure_apimanagement_subscription" "example" {
 ///   api_management_id = "example-apim"
 ///   subscription_id   = "example-subscription-id"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_apimanagement_getsubscription.example.subscription_id
+///   value = data.azure_apimanagement_subscription.example.subscription_id
 /// }
 /// ```
 /// ```java
@@ -1487,7 +1487,7 @@ pulumi.Output<GetSubscriptionResult> getSubscriptionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1495,14 +1495,14 @@ pulumi.Output<GetSubscriptionResult> getSubscriptionOutput(
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getuser" "example" {
+/// data "azure_apimanagement_user" "example" {
 ///   user_id             = "my-user"
 ///   api_management_name = "example-apim"
 ///   resource_group_name = "search-service"
 /// }
 ///
 /// output "notes" {
-///   value = data.azure_apimanagement_getuser.example.notes
+///   value = data.azure_apimanagement_user.example.notes
 /// }
 /// ```
 /// ```java
@@ -1702,7 +1702,7 @@ pulumi.Output<GetUserResult> getUserOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1710,25 +1710,31 @@ pulumi.Output<GetUserResult> getUserOutput(
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getworkspace" "example" {
+/// data "azure_apimanagement_workspace" "example" {
 ///   name              = "existing"
 ///   api_management_id = azure_apimanagement_service.example.id
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apimanagement"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "pub1"
 ///   publisher_email     = "pub1@email.com"
 ///   sku_name            = "Premium_1"
 /// }
 /// output "id" {
-///   value = data.azure_apimanagement_getworkspace.example.id
+///   value = data.azure_apimanagement_workspace.example.id
 /// }
 /// ```
 /// ```java

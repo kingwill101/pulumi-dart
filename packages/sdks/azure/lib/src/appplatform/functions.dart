@@ -76,7 +76,7 @@ import 'get_spring_cloud_service_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -84,14 +84,14 @@ import 'get_spring_cloud_service_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_appplatform_getspringcloudapp" "example" {
+/// data "azure_appplatform_spring_cloud_app" "example" {
 ///   name                = exampleAzurermSpringCloudApp.name
 ///   resource_group_name = exampleAzurermSpringCloudApp.resourceGroupName
 ///   service_name        = exampleAzurermSpringCloudApp.serviceName
 /// }
 ///
 /// output "springCloudAppId" {
-///   value = data.azure_appplatform_getspringcloudapp.example.id
+///   value = data.azure_appplatform_spring_cloud_app.example.id
 /// }
 /// ```
 /// ```java
@@ -116,9 +116,9 @@ import 'get_spring_cloud_service_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = AppplatformFunctions.getSpringCloudApp(GetSpringCloudAppArgs.builder()
-///             .name(exampleAzurermSpringCloudApp.name())
-///             .resourceGroupName(exampleAzurermSpringCloudApp.resourceGroupName())
-///             .serviceName(exampleAzurermSpringCloudApp.serviceName())
+///             .name(exampleAzurermSpringCloudApp.get("name"))
+///             .resourceGroupName(exampleAzurermSpringCloudApp.get("resourceGroupName"))
+///             .serviceName(exampleAzurermSpringCloudApp.get("serviceName"))
 ///             .build());
 ///
 ///         ctx.export("springCloudAppId", example.id());
@@ -231,7 +231,7 @@ pulumi.Output<GetSpringCloudAppResult> getSpringCloudAppOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -239,13 +239,13 @@ pulumi.Output<GetSpringCloudAppResult> getSpringCloudAppOutput(
 ///   }
 /// }
 ///
-/// data "azure_appplatform_getspringcloudservice" "example" {
+/// data "azure_appplatform_spring_cloud_service" "example" {
 ///   name                = exampleAzurermSpringCloudService.name
 ///   resource_group_name = exampleAzurermSpringCloudService.resourceGroupName
 /// }
 ///
 /// output "springCloudServiceId" {
-///   value = data.azure_appplatform_getspringcloudservice.example.id
+///   value = data.azure_appplatform_spring_cloud_service.example.id
 /// }
 /// ```
 /// ```java
@@ -270,8 +270,8 @@ pulumi.Output<GetSpringCloudAppResult> getSpringCloudAppOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = AppplatformFunctions.getSpringCloudService(GetSpringCloudServiceArgs.builder()
-///             .name(exampleAzurermSpringCloudService.name())
-///             .resourceGroupName(exampleAzurermSpringCloudService.resourceGroupName())
+///             .name(exampleAzurermSpringCloudService.get("name"))
+///             .resourceGroupName(exampleAzurermSpringCloudService.get("resourceGroupName"))
 ///             .build());
 ///
 ///         ctx.export("springCloudServiceId", example.id());

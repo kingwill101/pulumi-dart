@@ -150,7 +150,7 @@ import 'network_manager_subscription_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -158,26 +158,35 @@ import 'network_manager_subscription_connection_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networkmanager" "example" {
+/// resource "azure_network_network_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-networkmanager"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   scope = {
-///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///     subscription_ids = [data.azure_core_subscription.current.id]
 ///   }
 ///   scope_accesses = ["SecurityAdmin"]
 /// }
-/// resource "azure_network_networkmanagersubscriptionconnection" "example" {
+/// resource "azure_network_network_manager_subscription_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-nsnmc"
-///   subscription_id    = data.azure_core_getsubscription.current.id
-///   network_manager_id = azure_network_networkmanager.example.id
+///   subscription_id    = data.azure_core_subscription.current.id
+///   network_manager_id = azure_network_network_manager.example.id
 ///   description        = "example"
 /// }
 /// ```
@@ -310,7 +319,7 @@ class NetworkManagerSubscriptionConnection extends pulumi.CustomResource {
           'azure:network/networkManagerSubscriptionConnection:NetworkManagerSubscriptionConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     connectionState = registerOutput<String>('connectionState');
     description = registerOutput<String?>('description');

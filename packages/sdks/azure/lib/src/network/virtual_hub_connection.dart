@@ -177,7 +177,7 @@ import 'virtual_hub_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -185,32 +185,47 @@ import 'virtual_hub_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network"
 ///   address_spaces      = ["172.16.0.0/12"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_network_virtualwan" "example" {
+/// resource "azure_network_virtual_wan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vwan"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_network_virtualhub" "example" {
+/// resource "azure_network_virtual_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-hub"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
+///   virtual_wan_id      = azure_network_virtual_wan.example.id
 ///   address_prefix      = "10.0.1.0/24"
 /// }
-/// resource "azure_network_virtualhubconnection" "example" {
+/// resource "azure_network_virtual_hub_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "example-vhub"
-///   virtual_hub_id            = azure_network_virtualhub.example.id
-///   remote_virtual_network_id = azure_network_virtualnetwork.example.id
+///   virtual_hub_id            = azure_network_virtual_hub.example.id
+///   remote_virtual_network_id = azure_network_virtual_network.example.id
 /// }
 /// ```
 /// ```java
@@ -357,7 +372,7 @@ class VirtualHubConnection extends pulumi.CustomResource {
           'azure:network/virtualHubConnection:VirtualHubConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     internetSecurityEnabled = registerOutput<bool?>('internetSecurityEnabled');
     this.name = registerOutput<String>('name');

@@ -136,7 +136,7 @@ import 'managed_hardware_security_module_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -144,22 +144,28 @@ import 'managed_hardware_security_module_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_keyvault_managedhardwaresecuritymodule" "example" {
+/// resource "azure_keyvault_managed_hardware_security_module" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "exampleKVHsm"
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
+///   location                   = azure_core_resource_group.example.location
 ///   sku_name                   = "Standard_B1"
 ///   purge_protection_enabled   = false
 ///   soft_delete_retention_days = 90
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
-///   admin_object_ids           = [data.azure_core_getclientconfig.current.object_id]
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
+///   admin_object_ids           = [data.azure_core_client_config.current.object_id]
 ///   tags = {
 ///     "Env" = "Test"
 ///   }
@@ -299,7 +305,7 @@ class ManagedHardwareSecurityModule extends pulumi.CustomResource {
           'azure:keyvault/managedHardwareSecurityModule:ManagedHardwareSecurityModule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['securityDomainEncryptedData'],
         ) {
     adminObjectIds = registerOutput<List<String>>('adminObjectIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

@@ -143,7 +143,7 @@ import 'creator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -151,22 +151,31 @@ import 'creator_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_maps_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-maps-account"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "G2"
 ///   tags = {
 ///     "environment" = "Test"
 ///   }
 /// }
 /// resource "azure_maps_creator" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example-maps-creator"
 ///   maps_account_id = azure_maps_account.example.id
-///   location        = azure_core_resourcegroup.example.location
+///   location        = azure_core_resource_group.example.location
 ///   storage_units   = 1
 ///   tags = {
 ///     "environment" = "Test"
@@ -288,7 +297,7 @@ class Creator extends pulumi.CustomResource {
           'azure:maps/creator:Creator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     mapsAccountId = registerOutput<String>('mapsAccountId');

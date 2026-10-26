@@ -127,7 +127,7 @@ import 'flexible_server_backup_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -135,23 +135,32 @@ import 'flexible_server_backup_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_postgresql_flexibleserver" "example" {
+/// resource "azure_postgresql_flexible_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-fs"
-///   resource_group_name    = azure_core_resourcegroup.example.name
-///   location               = azure_core_resourcegroup.example.location
+///   resource_group_name    = azure_core_resource_group.example.name
+///   location               = azure_core_resource_group.example.location
 ///   administrator_login    = "adminTerraform"
 ///   administrator_password = "QAZwsx123"
 ///   version                = "12"
 ///   sku_name               = "GP_Standard_D2s_v3"
 ///   zone                   = "2"
 /// }
-/// resource "azure_postgresql_flexibleserverbackup" "example" {
+/// resource "azure_postgresql_flexible_server_backup" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "example-pfsb"
-///   server_id = azure_postgresql_flexibleserver.example.id
+///   server_id = azure_postgresql_flexible_server.example.id
 /// }
 /// ```
 /// ```java
@@ -265,7 +274,7 @@ class FlexibleServerBackup extends pulumi.CustomResource {
           'azure:postgresql/flexibleServerBackup:FlexibleServerBackup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     completedTime = registerOutput<String>('completedTime');
     this.name = registerOutput<String>('name');

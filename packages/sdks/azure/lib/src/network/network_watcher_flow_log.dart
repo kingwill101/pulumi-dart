@@ -267,7 +267,7 @@ import 'network_watcher_flow_log_traffic_analytics.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -275,40 +275,58 @@ import 'network_watcher_flow_log_traffic_analytics.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networksecuritygroup" "test" {
+/// resource "azure_network_network_security_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acctestnsg"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_network_networkwatcher" "test" {
+/// resource "azure_network_network_watcher" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acctestnw"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_storage_account" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "acctestsa"
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
+///   location                   = azure_core_resource_group.example.location
 ///   account_tier               = "Standard"
 ///   account_kind               = "StorageV2"
 ///   account_replication_type   = "LRS"
 ///   https_traffic_only_enabled = true
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "test" {
+/// resource "azure_operationalinsights_analytics_workspace" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acctestlaw"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 /// }
-/// resource "azure_network_networkwatcherflowlog" "test" {
-///   network_watcher_name = azure_network_networkwatcher.test.name
-///   resource_group_name  = azure_core_resourcegroup.example.name
+/// resource "azure_network_network_watcher_flow_log" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   network_watcher_name = azure_network_network_watcher.test.name
+///   resource_group_name  = azure_core_resource_group.example.name
 ///   name                 = "example-log"
-///   target_resource_id   = azure_network_networksecuritygroup.test.id
+///   target_resource_id   = azure_network_network_security_group.test.id
 ///   storage_account_id   = azure_storage_account.test.id
 ///   enabled              = true
 ///   retention_policy = {
@@ -317,9 +335,9 @@ import 'network_watcher_flow_log_traffic_analytics.dart';
 ///   }
 ///   traffic_analytics = {
 ///     enabled               = true
-///     workspace_id          = azure_operationalinsights_analyticsworkspace.test.workspace_id
-///     workspace_region      = azure_operationalinsights_analyticsworkspace.test.location
-///     workspace_resource_id = azure_operationalinsights_analyticsworkspace.test.id
+///     workspace_id          = azure_operationalinsights_analytics_workspace.test.workspace_id
+///     workspace_region      = azure_operationalinsights_analytics_workspace.test.location
+///     workspace_resource_id = azure_operationalinsights_analytics_workspace.test.id
 ///     interval_in_minutes   = 10
 ///   }
 /// }
@@ -528,7 +546,7 @@ class NetworkWatcherFlowLog extends pulumi.CustomResource {
           'azure:network/networkWatcherFlowLog:NetworkWatcherFlowLog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
     location = registerOutput<String>('location');

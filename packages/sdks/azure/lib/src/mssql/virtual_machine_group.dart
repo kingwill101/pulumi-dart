@@ -113,7 +113,7 @@ import 'virtual_machine_group_wsfc_domain_profile.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -121,14 +121,20 @@ import 'virtual_machine_group_wsfc_domain_profile.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_mssql_virtualmachinegroup" "example" {
+/// resource "azure_mssql_virtual_machine_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplegroup"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sql_image_offer     = "SQL2017-WS2016"
 ///   sql_image_sku       = "Developer"
 ///   wsfc_domain_profile = {
@@ -245,7 +251,7 @@ class VirtualMachineGroup extends pulumi.CustomResource {
           'azure:mssql/virtualMachineGroup:VirtualMachineGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

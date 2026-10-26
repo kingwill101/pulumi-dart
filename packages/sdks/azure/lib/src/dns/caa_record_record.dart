@@ -30,7 +30,7 @@ class CaaRecordRecord {
 
   factory CaaRecordRecord.fromMap(Map<String, dynamic> map) {
     return CaaRecordRecord(
-      flags: pulumi.Input.fromValue((map['flags'] as num).toInt()),
+      flags: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['flags'])),
       tag: pulumi.Input.fromValue(map['tag'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );

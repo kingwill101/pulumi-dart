@@ -210,7 +210,7 @@ import 'spring_cloud_custom_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -221,35 +221,50 @@ import 'spring_cloud_custom_domain_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_dns_getzone" "example" {
+/// data "azure_dns_zone" "example" {
 ///   name                = "mydomain.com"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "rg-example"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appplatform_springcloudservice" "example" {
+/// resource "azure_appplatform_spring_cloud_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-springcloud"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_appplatform_springcloudapp" "example" {
+/// resource "azure_appplatform_spring_cloud_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-springcloudapp"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   service_name        = azure_appplatform_springcloudservice.example.name
+///   resource_group_name = azure_core_resource_group.example.name
+///   service_name        = azure_appplatform_spring_cloud_service.example.name
 /// }
-/// resource "azure_dns_cnamerecord" "example" {
+/// resource "azure_dns_c_name_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "record1"
-///   zone_name           = data.azure_dns_getzone.example.name
-///   resource_group_name = data.azure_dns_getzone.example.resource_group_name
+///   zone_name           = data.azure_dns_zone.example.name
+///   resource_group_name = data.azure_dns_zone.example.resource_group_name
 ///   ttl                 = 300
-///   record              = azure_appplatform_springcloudapp.example.fqdn
+///   record              = azure_appplatform_spring_cloud_app.example.fqdn
 /// }
-/// resource "azure_appplatform_springcloudcustomdomain" "example" {
-///   name                = join(".", [azure_dns_cnamerecord.example.name, azure_dns_cnamerecord.example.zone_name])
-///   spring_cloud_app_id = azure_appplatform_springcloudapp.example.id
+/// resource "azure_appplatform_spring_cloud_custom_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                = join(".", [azure_dns_c_name_record.example.name, azure_dns_c_name_record.example.zone_name])
+///   spring_cloud_app_id = azure_appplatform_spring_cloud_app.example.id
 /// }
 /// ```
 /// ```java
@@ -412,7 +427,7 @@ class SpringCloudCustomDomain extends pulumi.CustomResource {
           'azure:appplatform/springCloudCustomDomain:SpringCloudCustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     certificateName = registerOutput<String?>('certificateName');
     this.name = registerOutput<String>('name');

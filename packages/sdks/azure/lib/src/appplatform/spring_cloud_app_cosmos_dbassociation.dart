@@ -213,7 +213,7 @@ import 'spring_cloud_app_cosmos_dbassociation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -221,37 +221,52 @@ import 'spring_cloud_app_cosmos_dbassociation_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appplatform_springcloudservice" "example" {
+/// resource "azure_appplatform_spring_cloud_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-springcloud"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_appplatform_springcloudapp" "example" {
+/// resource "azure_appplatform_spring_cloud_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-springcloudapp"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   service_name        = azure_appplatform_springcloudservice.example.name
+///   resource_group_name = azure_core_resource_group.example.name
+///   service_name        = azure_appplatform_spring_cloud_service.example.name
 /// }
 /// resource "azure_cosmosdb_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-cosmosdb-account"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   offer_type          = "Standard"
 ///   kind                = "GlobalDocumentDB"
 ///   consistency_policy = {
 ///     consistency_level = "Strong"
 ///   }
 ///   geo_locations {
-///     location          = azure_core_resourcegroup.example.location
+///     location          = azure_core_resource_group.example.location
 ///     failover_priority = 0
 ///   }
 /// }
-/// resource "azure_appplatform_springcloudappcosmosdbassociation" "example" {
+/// resource "azure_appplatform_spring_cloud_app_cosmos_d_b_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-bind"
-///   spring_cloud_app_id = azure_appplatform_springcloudapp.example.id
+///   spring_cloud_app_id = azure_appplatform_spring_cloud_app.example.id
 ///   cosmosdb_account_id = azure_cosmosdb_account.example.id
 ///   api_type            = "table"
 ///   cosmosdb_access_key = azure_cosmosdb_account.example.primary_key
@@ -419,7 +434,7 @@ class SpringCloudAppCosmosDBAssociation extends pulumi.CustomResource {
           'azure:appplatform/springCloudAppCosmosDBAssociation:SpringCloudAppCosmosDBAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiType = registerOutput<String>('apiType');
     cosmosdbAccessKey = registerOutput<String>('cosmosdbAccessKey');

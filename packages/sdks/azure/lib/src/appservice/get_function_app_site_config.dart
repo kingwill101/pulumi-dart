@@ -122,11 +122,11 @@ class GetFunctionAppSiteConfig {
   factory GetFunctionAppSiteConfig.fromMap(Map<String, dynamic> map) {
     return GetFunctionAppSiteConfig(
       alwaysOn: pulumi.Input.fromValue(map['alwaysOn'] as bool),
-      appScaleLimit: pulumi.Input.fromValue((map['appScaleLimit'] as num).toInt()),
+      appScaleLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['appScaleLimit'])),
       autoSwapSlotName: pulumi.Input.fromValue(map['autoSwapSlotName'] as String),
       cors: pulumi.Input.fromValue(GetFunctionAppSiteConfigCors.fromMap((map['cors']! as Map).cast<String, dynamic>())),
       dotnetFrameworkVersion: pulumi.Input.fromValue(map['dotnetFrameworkVersion'] as String),
-      elasticInstanceMinimum: pulumi.Input.fromValue((map['elasticInstanceMinimum'] as num).toInt()),
+      elasticInstanceMinimum: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['elasticInstanceMinimum'])),
       ftpsState: pulumi.Input.fromValue(map['ftpsState'] as String),
       healthCheckPath: pulumi.Input.fromValue(map['healthCheckPath'] as String),
       http2Enabled: pulumi.Input.fromValue(map['http2Enabled'] as bool),
@@ -134,7 +134,7 @@ class GetFunctionAppSiteConfig {
       javaVersion: pulumi.Input.fromValue(map['javaVersion'] as String),
       linuxFxVersion: pulumi.Input.fromValue(map['linuxFxVersion'] as String),
       minTlsVersion: pulumi.Input.fromValue(map['minTlsVersion'] as String),
-      preWarmedInstanceCount: pulumi.Input.fromValue((map['preWarmedInstanceCount'] as num).toInt()),
+      preWarmedInstanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['preWarmedInstanceCount'])),
       runtimeScaleMonitoringEnabled: pulumi.Input.fromValue(map['runtimeScaleMonitoringEnabled'] as bool),
       scmIpRestrictions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFunctionAppSiteConfigScmIpRestriction>(map['scmIpRestrictions']!, (value) => GetFunctionAppSiteConfigScmIpRestriction.fromMap((value as Map).cast<String, dynamic>()))),
       scmType: pulumi.Input.fromValue(map['scmType'] as String),

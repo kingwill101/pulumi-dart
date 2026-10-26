@@ -80,7 +80,7 @@ class EnvironmentV3Args {
     return EnvironmentV3Args(
       allowNewPrivateEndpointConnections: (() { final guardedValue = map['allowNewPrivateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       clusterSettings: (() { final guardedValue = map['clusterSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EnvironmentV3ClusterSetting>(guardedValue, (value) => EnvironmentV3ClusterSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      dedicatedHostCount: (() { final guardedValue = map['dedicatedHostCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      dedicatedHostCount: (() { final guardedValue = map['dedicatedHostCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       internalLoadBalancingMode: (() { final guardedValue = map['internalLoadBalancingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       remoteDebuggingEnabled: (() { final guardedValue = map['remoteDebuggingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

@@ -189,7 +189,7 @@ import 'namespace_disaster_recovery_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -197,36 +197,51 @@ import 'namespace_disaster_recovery_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "servicebus-replication"
 ///   location = "West Europe"
 /// }
 /// resource "azure_servicebus_namespace" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "servicebus-primary"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Premium"
 ///   capacity            = "1"
 /// }
 /// resource "azure_servicebus_namespace" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "servicebus-secondary"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Premium"
 ///   capacity            = "1"
 /// }
-/// resource "azure_servicebus_namespaceauthorizationrule" "example" {
+/// resource "azure_servicebus_namespace_authorization_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "examplerule"
 ///   namespace_id = exampleAzurermServicebusNamespace.id
 ///   listen       = true
 ///   send         = true
 ///   manage       = false
 /// }
-/// resource "azure_servicebus_namespacedisasterrecoveryconfig" "example" {
+/// resource "azure_servicebus_namespace_disaster_recovery_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "servicebus-alias-name"
 ///   primary_namespace_id        = azure_servicebus_namespace.primary.id
 ///   partner_namespace_id        = azure_servicebus_namespace.secondary.id
-///   alias_authorization_rule_id = azure_servicebus_namespaceauthorizationrule.example.id
+///   alias_authorization_rule_id = azure_servicebus_namespace_authorization_rule.example.id
 /// }
 /// ```
 /// ```java
@@ -279,7 +294,7 @@ import 'namespace_disaster_recovery_config_state.dart';
 ///
 ///         var exampleNamespaceAuthorizationRule = new NamespaceAuthorizationRule("exampleNamespaceAuthorizationRule", NamespaceAuthorizationRuleArgs.builder()
 ///             .name("examplerule")
-///             .namespaceId(exampleAzurermServicebusNamespace.id())
+///             .namespaceId(exampleAzurermServicebusNamespace.get("id"))
 ///             .listen(true)
 ///             .send(true)
 ///             .manage(false)
@@ -382,7 +397,7 @@ class NamespaceDisasterRecoveryConfig extends pulumi.CustomResource {
           'azure:servicebus/namespaceDisasterRecoveryConfig:NamespaceDisasterRecoveryConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['defaultPrimaryKey', 'defaultSecondaryKey', 'primaryConnectionStringAlias', 'secondaryConnectionStringAlias'],
         ) {
     aliasAuthorizationRuleId = registerOutput<String?>('aliasAuthorizationRuleId');

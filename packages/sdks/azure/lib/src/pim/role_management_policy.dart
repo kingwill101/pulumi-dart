@@ -186,7 +186,7 @@ import 'role_management_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -194,17 +194,23 @@ import 'role_management_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_authorization_getroledefinition" "mgContributor" {
+/// data "azure_authorization_role_definition" "mgContributor" {
 ///   name  = "Contributor"
 ///   scope = azure_management_group.example.id
 /// }
 ///
 /// resource "azure_management_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-group"
 /// }
-/// resource "azure_pim_rolemanagementpolicy" "example" {
+/// resource "azure_pim_role_management_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   scope              = azure_management_group.example.id
-///   role_definition_id = data.azure_authorization_getroledefinition.mgContributor.id
+///   role_definition_id = data.azure_authorization_role_definition.mgContributor.id
 ///   eligible_assignment_rules = {
 ///     expiration_required = false
 ///   }
@@ -373,7 +379,7 @@ class RoleManagementPolicy extends pulumi.CustomResource {
           'azure:pim/roleManagementPolicy:RoleManagementPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     activationRules = registerOutput<RoleManagementPolicyActivationRules>('activationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleManagementPolicyActivationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     activeAssignmentRules = registerOutput<RoleManagementPolicyActiveAssignmentRules>('activeAssignmentRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleManagementPolicyActiveAssignmentRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });

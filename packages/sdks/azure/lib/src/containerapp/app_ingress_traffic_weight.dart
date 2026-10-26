@@ -41,7 +41,7 @@ class AppIngressTrafficWeight {
     return AppIngressTrafficWeight(
       label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       latestRevision: (() { final guardedValue = map['latestRevision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      percentage: pulumi.Input.fromValue((map['percentage'] as num).toInt()),
+      percentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['percentage'])),
       revisionSuffix: (() { final guardedValue = map['revisionSuffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

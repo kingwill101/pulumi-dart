@@ -102,7 +102,7 @@ import 'express_route_port_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -110,14 +110,20 @@ import 'express_route_port_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West US"
 /// }
-/// resource "azure_network_expressrouteport" "example" {
+/// resource "azure_network_express_route_port" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "port1"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   peering_location    = "Airtel-Chennai-CLS"
 ///   bandwidth_in_gbps   = 10
 ///   encapsulation       = "Dot1Q"
@@ -239,7 +245,7 @@ class ExpressRoutePort extends pulumi.CustomResource {
           'azure:network/expressRoutePort:ExpressRoutePort',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     bandwidthInGbps = registerOutput<int>('bandwidthInGbps');
     billingType = registerOutput<String?>('billingType');

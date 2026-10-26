@@ -149,7 +149,7 @@ import 'active_directory_administrator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -157,29 +157,38 @@ import 'active_directory_administrator_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_postgresql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-psqlserver"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   version                      = "9.6"
 ///   administrator_login          = "4dm1n157r470r"
 ///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
 ///   sku_name                     = "GP_Gen5_2"
 ///   ssl_enforcement_enabled      = true
 /// }
-/// resource "azure_postgresql_activedirectoryadministrator" "example" {
+/// resource "azure_postgresql_active_directory_administrator" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   server_name         = azure_postgresql_server.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   login               = "sqladmin"
-///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
-///   object_id           = data.azure_core_getclientconfig.current.object_id
+///   tenant_id           = data.azure_core_client_config.current.tenant_id
+///   object_id           = data.azure_core_client_config.current.object_id
 /// }
 /// ```
 /// ```java
@@ -311,7 +320,7 @@ class ActiveDirectoryAdministrator extends pulumi.CustomResource {
           'azure:postgresql/activeDirectoryAdministrator:ActiveDirectoryAdministrator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     login = registerOutput<String>('login');
     objectId = registerOutput<String>('objectId');

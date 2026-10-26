@@ -129,7 +129,7 @@ import 'managed_disk_sas_token_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -137,20 +137,29 @@ import 'managed_disk_sas_token_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "test" {
+/// resource "azure_core_resource_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "testrg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_compute_manageddisk" "test" {
+/// resource "azure_compute_managed_disk" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "tst-disk-export"
-///   location             = azure_core_resourcegroup.test.location
-///   resource_group_name  = azure_core_resourcegroup.test.name
+///   location             = azure_core_resource_group.test.location
+///   resource_group_name  = azure_core_resource_group.test.name
 ///   storage_account_type = "Standard_LRS"
 ///   create_option        = "Empty"
 ///   disk_size_gb         = "1"
 /// }
-/// resource "azure_compute_manageddisksastoken" "test" {
-///   managed_disk_id     = azure_compute_manageddisk.test.id
+/// resource "azure_compute_managed_disk_sas_token" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   managed_disk_id     = azure_compute_managed_disk.test.id
 ///   duration_in_seconds = 300
 ///   access_level        = "Read"
 /// }
@@ -269,7 +278,7 @@ class ManagedDiskSasToken extends pulumi.CustomResource {
           'azure:compute/managedDiskSasToken:ManagedDiskSasToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['sasUrl'],
         ) {
     accessLevel = registerOutput<String>('accessLevel');

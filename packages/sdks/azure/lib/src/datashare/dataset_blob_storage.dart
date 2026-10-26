@@ -40,7 +40,7 @@ class DatasetBlobStorage extends pulumi.CustomResource {
           'azure:datashare/datasetBlobStorage:DatasetBlobStorage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     containerName = registerOutput<String>('containerName');
     dataShareId = registerOutput<String>('dataShareId');

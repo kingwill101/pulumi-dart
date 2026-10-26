@@ -44,7 +44,7 @@ class WindowsWebAppSiteConfigAutoHealSettingTrigger {
 
   factory WindowsWebAppSiteConfigAutoHealSettingTrigger.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSiteConfigAutoHealSettingTrigger(
-      privateMemoryKb: (() { final guardedValue = map['privateMemoryKb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      privateMemoryKb: (() { final guardedValue = map['privateMemoryKb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       requests: (() { final guardedValue = map['requests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsWebAppSiteConfigAutoHealSettingTriggerRequests.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       slowRequest: (() { final guardedValue = map['slowRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       slowRequestWithPaths: (() { final guardedValue = map['slowRequestWithPaths']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath>(guardedValue, (value) => WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath.fromMap((value as Map).cast<String, dynamic>()))); })(),

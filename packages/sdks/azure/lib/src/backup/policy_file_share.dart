@@ -280,7 +280,7 @@ import 'policy_file_share_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -288,19 +288,28 @@ import 'policy_file_share_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tfex-recovery_vault"
 ///   location = "West Europe"
 /// }
 /// resource "azure_recoveryservices_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-recovery-vault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_backup_policyfileshare" "policy" {
+/// resource "azure_backup_policy_file_share" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-recovery-vault-policy"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   recovery_vault_name = azure_recoveryservices_vault.example.name
 ///   timezone            = "UTC"
 ///   backup = {
@@ -509,7 +518,7 @@ class PolicyFileShare extends pulumi.CustomResource {
           'azure:backup/policyFileShare:PolicyFileShare',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     backup = registerOutput<PolicyFileShareBackup>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyFileShareBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backupTier = registerOutput<String?>('backupTier');

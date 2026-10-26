@@ -158,7 +158,7 @@ import 'subscription_policy_remediation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -166,26 +166,32 @@ import 'subscription_policy_remediation_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "example" {
+/// data "azure_core_subscription" "example" {
 /// }
-/// data "azure_policy_getpolicydefintion" "exampleGetPolicyDefintion" {
+/// data "azure_policy_policy_defintion" "exampleGetPolicyDefintion" {
 ///   display_name = "Allowed resource types"
 /// }
 ///
-/// resource "azure_core_subscriptionpolicyassignment" "example" {
+/// resource "azure_core_subscription_policy_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "exampleAssignment"
-///   subscription_id      = data.azure_core_getsubscription.example.id
-///   policy_definition_id = data.azure_policy_getpolicydefintion.exampleGetPolicyDefintion.id
+///   subscription_id      = data.azure_core_subscription.example.id
+///   policy_definition_id = data.azure_policy_policy_defintion.exampleGetPolicyDefintion.id
 ///   parameters = jsonencode({
 ///     "listOfAllowedLocations" = {
 ///       "value" = ["West Europe", "East US"]
 ///     }
 ///   })
 /// }
-/// resource "azure_core_subscriptionpolicyremediation" "example" {
+/// resource "azure_core_subscription_policy_remediation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
-///   subscription_id      = data.azure_core_getsubscription.example.id
-///   policy_assignment_id = azure_core_subscriptionpolicyassignment.example.id
+///   subscription_id      = data.azure_core_subscription.example.id
+///   policy_assignment_id = azure_core_subscription_policy_assignment.example.id
 /// }
 /// ```
 /// ```java
@@ -328,7 +334,7 @@ class SubscriptionPolicyRemediation extends pulumi.CustomResource {
           'azure:core/subscriptionPolicyRemediation:SubscriptionPolicyRemediation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     failurePercentage = registerOutput<double?>('failurePercentage');
     locationFilters = registerOutput<List<String>?>('locationFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

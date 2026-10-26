@@ -171,7 +171,7 @@ import 'logger_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -179,28 +179,40 @@ import 'logger_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appinsights_insights" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-appinsights"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   application_type    = "other"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "My Company"
 ///   publisher_email     = "company@exmaple.com"
 ///   sku_name            = "Developer_1"
 /// }
 /// resource "azure_apimanagement_logger" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-logger"
 ///   api_management_name = azure_apimanagement_service.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   resource_id         = azure_appinsights_insights.example.id
 ///   application_insights = {
 ///     instrumentation_key = azure_appinsights_insights.example.instrumentation_key
@@ -351,7 +363,7 @@ class Logger extends pulumi.CustomResource {
           'azure:apimanagement/logger:Logger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     applicationInsights = registerOutput<LoggerApplicationInsights?>('applicationInsights', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggerApplicationInsights.fromMap((guardedValue as Map).cast<String, dynamic>()); });

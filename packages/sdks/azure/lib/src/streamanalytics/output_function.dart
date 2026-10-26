@@ -267,7 +267,7 @@ import 'output_function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -275,21 +275,30 @@ import 'output_function_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestorageaccount"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_appservice_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleappserviceplan"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   kind                = "FunctionApp"
 ///   reserved            = true
 ///   sku = {
@@ -297,10 +306,13 @@ import 'output_function_state.dart';
 ///     size = "Y1"
 ///   }
 /// }
-/// resource "azure_appservice_functionapp" "example" {
+/// resource "azure_appservice_function_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "examplefunctionapp"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   app_service_plan_id        = azure_appservice_plan.example.id
 ///   storage_account_name       = azure_storage_account.example.name
 ///   storage_account_access_key = azure_storage_account.example.primary_access_key
@@ -308,17 +320,28 @@ import 'output_function_state.dart';
 ///   version                    = "~3"
 /// }
 /// resource "azure_streamanalytics_job" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "examplestreamanalyticsjob"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   location             = azure_core_resourcegroup.example.location
+///   resource_group_name  = azure_core_resource_group.example.name
+///   location             = azure_core_resource_group.example.location
 ///   streaming_units      = 3
-///   transformation_query = "    SELECT *\n    INTO [YourOutputAlias]\n    FROM [YourInputAlias]\n"
+///   transformation_query = <<QUERY
+///     SELECT *
+///     INTO [YourOutputAlias]
+///     FROM [YourInputAlias]
+/// QUERY
+///
 /// }
-/// resource "azure_streamanalytics_outputfunction" "example" {
+/// resource "azure_streamanalytics_output_function" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "exampleoutput"
 ///   resource_group_name       = azure_streamanalytics_job.example.resource_group_name
 ///   stream_analytics_job_name = azure_streamanalytics_job.example.name
-///   function_app              = azure_appservice_functionapp.example.name
+///   function_app              = azure_appservice_function_app.example.name
 ///   function_name             = "examplefunctionname"
 ///   api_key                   = "exampleapikey"
 /// }
@@ -524,7 +547,7 @@ class OutputFunction extends pulumi.CustomResource {
           'azure:streamanalytics/outputFunction:OutputFunction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['apiKey'],
         ) {
     apiKey = registerOutput<String>('apiKey', isSecret: true);

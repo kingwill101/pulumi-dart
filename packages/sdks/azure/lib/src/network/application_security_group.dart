@@ -100,7 +100,7 @@ import 'application_security_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -108,14 +108,20 @@ import 'application_security_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tf-test"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_applicationsecuritygroup" "example" {
+/// resource "azure_network_application_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tf-appsecuritygroup"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   tags = {
 ///     "Hello" = "World"
 ///   }
@@ -214,7 +220,7 @@ class ApplicationSecurityGroup extends pulumi.CustomResource {
           'azure:network/applicationSecurityGroup:ApplicationSecurityGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

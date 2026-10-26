@@ -384,7 +384,7 @@ import 'backup_policy_postgresql_flexible_server_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -392,29 +392,38 @@ import 'backup_policy_postgresql_flexible_server_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_dataprotection_backupvault" "example" {
+/// resource "azure_dataprotection_backup_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-backup-vault"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   datastore_type      = "VaultStore"
 ///   redundancy          = "LocallyRedundant"
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_dataprotection_backuppolicypostgresqlflexibleserver" "example" {
+/// resource "azure_dataprotection_backup_policy_postgresql_flexible_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "example-backup-policy"
-///   vault_id                        = azure_dataprotection_backupvault.example.id
+///   vault_id                        = azure_dataprotection_backup_vault.example.id
 ///   backup_repeating_time_intervals = ["R/2021-05-23T02:30:00+00:00/P1W"]
 ///   time_zone                       = "India Standard Time"
 ///   default_retention_rule = {
 ///     life_cycles = [{
-///       "duration"      = "P4M"
-///       "dataStoreType" = "VaultStore"
+///       duration        = "P4M"
+///       data_store_type = "VaultStore"
 ///     }]
 ///   }
 ///   retention_rules {
@@ -662,7 +671,7 @@ class BackupPolicyPostgresqlFlexibleServer extends pulumi.CustomResource {
           'azure:dataprotection/backupPolicyPostgresqlFlexibleServer:BackupPolicyPostgresqlFlexibleServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     backupRepeatingTimeIntervals = registerOutput<List<String>>('backupRepeatingTimeIntervals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     defaultRetentionRule = registerOutput<BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule>('defaultRetentionRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });

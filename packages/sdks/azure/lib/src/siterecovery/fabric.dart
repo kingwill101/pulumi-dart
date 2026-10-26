@@ -140,7 +140,7 @@ import 'fabric_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -148,25 +148,37 @@ import 'fabric_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "primary" {
+/// resource "azure_core_resource_group" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tfex-network-mapping-primary"
 ///   location = "West US"
 /// }
-/// resource "azure_core_resourcegroup" "secondary" {
+/// resource "azure_core_resource_group" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tfex-network-mapping-secondary"
 ///   location = "East US"
 /// }
 /// resource "azure_recoveryservices_vault" "vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-recovery-vault"
-///   location            = azure_core_resourcegroup.secondary.location
-///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   location            = azure_core_resource_group.secondary.location
+///   resource_group_name = azure_core_resource_group.secondary.name
 ///   sku                 = "Standard"
 /// }
 /// resource "azure_siterecovery_fabric" "fabric" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "primary-fabric"
-///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   resource_group_name = azure_core_resource_group.secondary.name
 ///   recovery_vault_name = azure_recoveryservices_vault.vault.name
-///   location            = azure_core_resourcegroup.primary.location
+///   location            = azure_core_resource_group.primary.location
 /// }
 /// ```
 /// ```java
@@ -286,7 +298,7 @@ class Fabric extends pulumi.CustomResource {
           'azure:siterecovery/fabric:Fabric',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

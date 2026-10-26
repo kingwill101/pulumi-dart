@@ -36,7 +36,7 @@ class GetManagedDevOpsPoolVirtualMachineScaleSetFabricStorage {
   factory GetManagedDevOpsPoolVirtualMachineScaleSetFabricStorage.fromMap(Map<String, dynamic> map) {
     return GetManagedDevOpsPoolVirtualMachineScaleSetFabricStorage(
       caching: pulumi.Input.fromValue(map['caching'] as String),
-      diskSizeInGb: pulumi.Input.fromValue((map['diskSizeInGb'] as num).toInt()),
+      diskSizeInGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskSizeInGb'])),
       driveLetter: pulumi.Input.fromValue(map['driveLetter'] as String),
       storageAccountType: pulumi.Input.fromValue(map['storageAccountType'] as String),
     );

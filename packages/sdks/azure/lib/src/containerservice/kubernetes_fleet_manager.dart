@@ -88,7 +88,7 @@ import 'kubernetes_fleet_manager_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -96,14 +96,20 @@ import 'kubernetes_fleet_manager_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_containerservice_kubernetesfleetmanager" "example" {
-///   location            = azure_core_resourcegroup.example.location
+/// resource "azure_containerservice_kubernetes_fleet_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location            = azure_core_resource_group.example.location
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// ```
 /// ```java
@@ -201,7 +207,7 @@ class KubernetesFleetManager extends pulumi.CustomResource {
           'azure:containerservice/kubernetesFleetManager:KubernetesFleetManager',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     hubProfile = registerOutput<KubernetesFleetManagerHubProfile?>('hubProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesFleetManagerHubProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');

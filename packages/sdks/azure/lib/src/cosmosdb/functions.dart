@@ -76,7 +76,7 @@ import 'get_sql_role_definition_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -84,13 +84,13 @@ import 'get_sql_role_definition_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_cosmosdb_getaccount" "example" {
+/// data "azure_cosmosdb_account" "example" {
 ///   name                = "tfex-cosmosdb-account"
 ///   resource_group_name = "tfex-cosmosdb-account-rg"
 /// }
 ///
 /// output "cosmosdbAccountEndpoint" {
-///   value = data.azure_cosmosdb_getaccount.example.endpoint
+///   value = data.azure_cosmosdb_account.example.endpoint
 /// }
 /// ```
 /// ```java
@@ -238,7 +238,7 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -246,14 +246,14 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 ///   }
 /// }
 ///
-/// data "azure_cosmosdb_getmongodatabase" "example" {
+/// data "azure_cosmosdb_mongo_database" "example" {
 ///   name                = "test-cosmosdb-mongo-db"
 ///   resource_group_name = "test-cosmosdb-account-rg"
 ///   account_name        = "test-cosmosdb-account"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_cosmosdb_getmongodatabase.example.id
+///   value = data.azure_cosmosdb_mongo_database.example.id
 /// }
 /// ```
 /// ```java
@@ -399,7 +399,7 @@ pulumi.Output<GetMongoDatabaseResult> getMongoDatabaseOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -407,13 +407,13 @@ pulumi.Output<GetMongoDatabaseResult> getMongoDatabaseOutput(
 ///   }
 /// }
 ///
-/// data "azure_cosmosdb_getrestorabledatabaseaccounts" "example" {
+/// data "azure_cosmosdb_restorable_database_accounts" "example" {
 ///   name     = "example-ca"
 ///   location = "West Europe"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_cosmosdb_getrestorabledatabaseaccounts.example.id
+///   value = data.azure_cosmosdb_restorable_database_accounts.example.id
 /// }
 /// ```
 /// ```java
@@ -554,7 +554,7 @@ pulumi.Output<GetRestorableDatabaseAccountsResult> getRestorableDatabaseAccounts
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -562,7 +562,7 @@ pulumi.Output<GetRestorableDatabaseAccountsResult> getRestorableDatabaseAccounts
 ///   }
 /// }
 ///
-/// data "azure_cosmosdb_getsqldatabase" "example" {
+/// data "azure_cosmosdb_sql_database" "example" {
 ///   name                = "tfex-cosmosdb-sql-database"
 ///   resource_group_name = "tfex-cosmosdb-sql-database-rg"
 ///   account_name        = "tfex-cosmosdb-sql-database-account-name"
@@ -705,7 +705,7 @@ pulumi.Output<GetSqlDatabaseResult> getSqlDatabaseOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -713,7 +713,7 @@ pulumi.Output<GetSqlDatabaseResult> getSqlDatabaseOutput(
 ///   }
 /// }
 ///
-/// data "azure_cosmosdb_getsqlroledefinition" "example" {
+/// data "azure_cosmosdb_sql_role_definition" "example" {
 ///   resource_group_name = "tfex-cosmosdb-sql-role-definition-rg"
 ///   account_name        = "tfex-cosmosdb-sql-role-definition-account-name"
 ///   role_definition_id  = "00000000-0000-0000-0000-000000000000"

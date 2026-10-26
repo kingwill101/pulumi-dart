@@ -429,7 +429,7 @@ import 'medtech_service_fhir_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -437,40 +437,58 @@ import 'medtech_service_fhir_destination_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_healthcare_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleworkspace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_eventhub_eventhubnamespace" "example" {
+/// resource "azure_eventhub_event_hub_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ehn"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_eventhub_eventhub" "example" {
+/// resource "azure_eventhub_event_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-eh"
-///   namespace_id      = azure_eventhub_eventhubnamespace.example.id
+///   namespace_id      = azure_eventhub_event_hub_namespace.example.id
 ///   partition_count   = 1
 ///   message_retention = 1
 /// }
-/// resource "azure_eventhub_consumergroup" "example" {
+/// resource "azure_eventhub_consumer_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "$default"
-///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
-///   eventhub_name       = azure_eventhub_eventhub.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   namespace_name      = azure_eventhub_event_hub_namespace.example.name
+///   eventhub_name       = azure_eventhub_event_hub.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_healthcare_fhirservice" "example" {
+/// resource "azure_healthcare_fhir_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplefhir"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   workspace_id        = azure_healthcare_workspace.example.id
 ///   kind                = "fhir-R4"
 ///   authentication = {
@@ -478,23 +496,29 @@ import 'medtech_service_fhir_destination_state.dart';
 ///     audience  = "https://examplefhir.fhir.azurehealthcareapis.com"
 ///   }
 /// }
-/// resource "azure_healthcare_medtechservice" "example" {
+/// resource "azure_healthcare_medtech_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "examplemt"
 ///   workspace_id                 = azure_healthcare_workspace.example.id
-///   location                     = azure_core_resourcegroup.example.location
-///   eventhub_namespace_name      = azure_eventhub_eventhubnamespace.example.name
-///   eventhub_name                = azure_eventhub_eventhub.example.name
-///   eventhub_consumer_group_name = azure_eventhub_consumergroup.example.name
+///   location                     = azure_core_resource_group.example.location
+///   eventhub_namespace_name      = azure_eventhub_event_hub_namespace.example.name
+///   eventhub_name                = azure_eventhub_event_hub.example.name
+///   eventhub_consumer_group_name = azure_eventhub_consumer_group.example.name
 ///   device_mapping_json = jsonencode({
 ///     "templateType" = "CollectionContent"
 ///     "template"     = []
 ///   })
 /// }
-/// resource "azure_healthcare_medtechservicefhirdestination" "example" {
+/// resource "azure_healthcare_medtech_service_fhir_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                 = "examplemtdes"
 ///   location                             = "east us"
-///   medtech_service_id                   = azure_healthcare_medtechservice.example.id
-///   destination_fhir_service_id          = azure_healthcare_fhirservice.example.id
+///   medtech_service_id                   = azure_healthcare_medtech_service.example.id
+///   destination_fhir_service_id          = azure_healthcare_fhir_service.example.id
 ///   destination_identity_resolution_type = "Create"
 ///   destination_fhir_mapping_json = jsonencode({
 ///     "templateType" = "CollectionFhirTemplate"
@@ -789,7 +813,7 @@ class MedtechServiceFhirDestination extends pulumi.CustomResource {
           'azure:healthcare/medtechServiceFhirDestination:MedtechServiceFhirDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     destinationFhirMappingJson = registerOutput<String>('destinationFhirMappingJson');
     destinationFhirServiceId = registerOutput<String>('destinationFhirServiceId');

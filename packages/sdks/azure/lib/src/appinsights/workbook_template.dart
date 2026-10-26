@@ -348,7 +348,7 @@ import 'workbook_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -356,13 +356,19 @@ import 'workbook_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appinsights_workbooktemplate" "example" {
+/// resource "azure_appinsights_workbook_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-aiwt"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   location            = "West Europe"
 ///   author              = "test author"
 ///   priority            = 1
@@ -620,7 +626,7 @@ class WorkbookTemplate extends pulumi.CustomResource {
           'azure:appinsights/workbookTemplate:WorkbookTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     author = registerOutput<String?>('author');
     galleries = registerOutput<List<WorkbookTemplateGallery>>('galleries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkbookTemplateGallery>(guardedValue, (value) => WorkbookTemplateGallery.fromMap((value as Map).cast<String, dynamic>())); });

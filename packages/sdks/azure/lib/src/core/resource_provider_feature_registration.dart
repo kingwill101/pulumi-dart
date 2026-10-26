@@ -66,7 +66,7 @@ import 'resource_provider_feature_registration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -74,7 +74,10 @@ import 'resource_provider_feature_registration_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourceproviderfeatureregistration" "example" {
+/// resource "azure_core_resource_provider_feature_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "EncryptionAtHost"
 ///   provider_name = "Microsoft.Compute"
 /// }
@@ -150,7 +153,7 @@ class ResourceProviderFeatureRegistration extends pulumi.CustomResource {
           'azure:core/resourceProviderFeatureRegistration:ResourceProviderFeatureRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     providerName = registerOutput<String>('providerName');

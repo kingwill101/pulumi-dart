@@ -72,7 +72,7 @@ import 'get_cluster_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -80,16 +80,16 @@ import 'get_cluster_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_hdinsight_getcluster" "example" {
+/// data "azure_hdinsight_cluster" "example" {
 ///   name                = "example"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "httpsEndpoint" {
-///   value = data.azure_hdinsight_getcluster.example.https_endpoint
+///   value = data.azure_hdinsight_cluster.example.https_endpoint
 /// }
 /// output "clusterId" {
-///   value = data.azure_hdinsight_getcluster.example.cluster_id
+///   value = data.azure_hdinsight_cluster.example.cluster_id
 /// }
 /// ```
 /// ```java

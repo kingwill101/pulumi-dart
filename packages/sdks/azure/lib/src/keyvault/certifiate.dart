@@ -359,7 +359,7 @@ import 'certifiate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -370,31 +370,40 @@ import 'certifiate_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "examplekeyvault"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "premium"
 ///   access_policies {
-///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
-///     object_id               = data.azure_core_getclientconfig.current.object_id
+///     tenant_id               = data.azure_core_client_config.current.tenant_id
+///     object_id               = data.azure_core_client_config.current.object_id
 ///     certificate_permissions = ["Create", "Delete", "DeleteIssuers", "Get", "GetIssuers", "Import", "List", "ListIssuers", "ManageContacts", "ManageIssuers", "SetIssuers", "Update"]
 ///     key_permissions         = ["Backup", "Create", "Decrypt", "Delete", "Encrypt", "Get", "Import", "List", "Purge", "Recover", "Restore", "Sign", "UnwrapKey", "Update", "Verify", "WrapKey"]
 ///     secret_permissions      = ["Backup", "Delete", "Get", "List", "Purge", "Recover", "Restore", "Set"]
 ///   }
 /// }
 /// resource "azure_keyvault_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "imported-cert"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   certificate = {
 ///     contents = filebase64("certificate-to-import.pfx")
 ///     password = ""
@@ -1094,7 +1103,7 @@ import 'certifiate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1102,32 +1111,41 @@ import 'certifiate_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "examplekeyvault"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "standard"
 ///   soft_delete_retention_days = 7
 ///   access_policies {
-///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
-///     object_id               = data.azure_core_getclientconfig.current.object_id
+///     tenant_id               = data.azure_core_client_config.current.tenant_id
+///     object_id               = data.azure_core_client_config.current.object_id
 ///     certificate_permissions = ["Create", "Delete", "DeleteIssuers", "Get", "GetIssuers", "Import", "List", "ListIssuers", "ManageContacts", "ManageIssuers", "Purge", "SetIssuers", "Update"]
 ///     key_permissions         = ["Backup", "Create", "Decrypt", "Delete", "Encrypt", "Get", "Import", "List", "Purge", "Recover", "Restore", "Sign", "UnwrapKey", "Update", "Verify", "WrapKey"]
 ///     secret_permissions      = ["Backup", "Delete", "Get", "List", "Purge", "Recover", "Restore", "Set"]
 ///   }
 /// }
 /// resource "azure_keyvault_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "generated-cert"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   certificate_policy = {
 ///     issuer_parameters = {
 ///       name = "Self"
@@ -1139,11 +1157,11 @@ import 'certifiate_state.dart';
 ///       reuse_key  = true
 ///     }
 ///     lifetime_actions = [{
-///       "action" = {
-///         "actionType" = "AutoRenew"
+///       action = {
+///         action_type = "AutoRenew"
 ///       }
-///       "trigger" = {
-///         "daysBeforeExpiry" = 30
+///       trigger = {
+///         days_before_expiry = 30
 ///       }
 ///     }]
 ///     secret_properties = {
@@ -1464,7 +1482,7 @@ class Certifiate extends pulumi.CustomResource {
           'azure:keyvault/certifiate:Certifiate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     certificate = registerOutput<CertifiateCertificate?>('certificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertifiateCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     certificateAttributes = registerOutput<List<CertifiateCertificateAttribute>>('certificateAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertifiateCertificateAttribute>(guardedValue, (value) => CertifiateCertificateAttribute.fromMap((value as Map).cast<String, dynamic>())); });

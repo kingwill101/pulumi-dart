@@ -39,7 +39,7 @@ class DatasetDataLakeGen2 extends pulumi.CustomResource {
           'azure:datashare/datasetDataLakeGen2:DatasetDataLakeGen2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
     filePath = registerOutput<String?>('filePath');

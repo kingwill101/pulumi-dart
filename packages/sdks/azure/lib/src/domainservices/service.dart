@@ -608,7 +608,7 @@ import 'service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -619,26 +619,38 @@ import 'service_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "deploy" {
+/// resource "azure_core_resource_group" "deploy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "deploy" {
+/// resource "azure_network_virtual_network" "deploy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "deploy-vnet"
-///   location            = azure_core_resourcegroup.deploy.location
-///   resource_group_name = azure_core_resourcegroup.deploy.name
+///   location            = azure_core_resource_group.deploy.location
+///   resource_group_name = azure_core_resource_group.deploy.name
 ///   address_spaces      = ["10.0.1.0/16"]
 /// }
 /// resource "azure_network_subnet" "deploy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "deploy-subnet"
-///   resource_group_name  = azure_core_resourcegroup.deploy.name
-///   virtual_network_name = azure_network_virtualnetwork.deploy.name
+///   resource_group_name  = azure_core_resource_group.deploy.name
+///   virtual_network_name = azure_network_virtual_network.deploy.name
 ///   address_prefixes     = ["10.0.1.0/24"]
 /// }
-/// resource "azure_network_networksecuritygroup" "deploy" {
+/// resource "azure_network_network_security_group" "deploy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "deploy-nsg"
-///   location            = azure_core_resourcegroup.deploy.location
-///   resource_group_name = azure_core_resourcegroup.deploy.name
+///   location            = azure_core_resource_group.deploy.location
+///   resource_group_name = azure_core_resource_group.deploy.name
 ///   security_rules {
 ///     name                       = "AllowSyncWithAzureAD"
 ///     priority                   = 101
@@ -684,35 +696,56 @@ import 'service_state.dart';
 ///     destination_address_prefix = "*"
 ///   }
 /// }
-/// resource "azure_network_subnetnetworksecuritygroupassociation" "deploy" {
+/// resource "azure_network_subnet_network_security_group_association" "deploy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id                 = azure_network_subnet.deploy.id
-///   network_security_group_id = azure_network_networksecuritygroup.deploy.id
+///   network_security_group_id = azure_network_network_security_group.deploy.id
 /// }
 /// resource "azuread_group" "dc_admins" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name     = "AAD DC Administrators"
 ///   security_enabled = true
 /// }
 /// resource "azuread_user" "admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_principal_name = "dc-admin@hashicorp-example.com"
 ///   display_name        = "DC Administrator"
 ///   password            = "Pa55w0Rd!!1"
 /// }
-/// resource "azuread_groupmember" "admin" {
+/// resource "azuread_group_member" "admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_object_id  = azuread_group.dc_admins.object_id
 ///   member_object_id = azuread_user.admin.object_id
 /// }
-/// resource "azuread_serviceprincipal" "example" {
+/// resource "azuread_service_principal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id = "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 /// }
-/// resource "azure_core_resourcegroup" "aadds" {
+/// resource "azure_core_resource_group" "aadds" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "aadds-rg"
 ///   location = "westeurope"
 /// }
 /// resource "azure_domainservices_service" "example" {
-///   depends_on            = [azuread_serviceprincipal.example, azure_network_subnetnetworksecuritygroupassociation.deploy]
+///   depends_on = [azuread_service_principal.example, azure_network_subnet_network_security_group_association.deploy]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-aadds"
-///   location              = azure_core_resourcegroup.aadds.location
-///   resource_group_name   = azure_core_resourcegroup.aadds.name
+///   location              = azure_core_resource_group.aadds.location
+///   resource_group_name   = azure_core_resource_group.aadds.name
 ///   domain_name           = "widgetslogin.net"
 ///   sku                   = "Enterprise"
 ///   filtered_sync_enabled = false
@@ -1102,7 +1135,7 @@ class Service extends pulumi.CustomResource {
           'azure:domainservices/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     deploymentId = registerOutput<String>('deploymentId');
     domainConfigurationType = registerOutput<String?>('domainConfigurationType');

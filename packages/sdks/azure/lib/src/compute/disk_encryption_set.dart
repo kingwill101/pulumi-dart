@@ -399,7 +399,7 @@ import 'disk_encryption_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -407,56 +407,77 @@ import 'disk_encryption_set_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "des-example-keyvault"
-///   location                    = azure_core_resourcegroup.example.location
-///   resource_group_name         = azure_core_resourcegroup.example.name
+///   location                    = azure_core_resource_group.example.location
+///   resource_group_name         = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled  = false
-///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                   = data.azure_core_client_config.current.tenant_id
 ///   sku_name                    = "premium"
 ///   enabled_for_disk_encryption = true
 ///   purge_protection_enabled    = true
 /// }
 /// resource "azure_keyvault_key" "example" {
-///   depends_on   = [azure_keyvault_accesspolicy.example-user]
+///   depends_on = [azure_keyvault_access_policy.example-user]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "des-example-key"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
 /// }
-/// resource "azure_compute_diskencryptionset" "example" {
+/// resource "azure_compute_disk_encryption_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "des"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   key_vault_key_id    = azure_keyvault_key.example.id
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_keyvault_accesspolicy" "example-disk" {
-///   key_vault_id    = azure_keyvault_keyvault.example.id
-///   tenant_id       = azure_compute_diskencryptionset.example.identity.tenant_id
-///   object_id       = azure_compute_diskencryptionset.example.identity.principal_id
+/// resource "azure_keyvault_access_policy" "example-disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id    = azure_keyvault_key_vault.example.id
+///   tenant_id       = azure_compute_disk_encryption_set.example.identity.tenant_id
+///   object_id       = azure_compute_disk_encryption_set.example.identity.principal_id
 ///   key_permissions = ["Create", "Delete", "Get", "Purge", "Recover", "Update", "List", "Decrypt", "Sign"]
 /// }
-/// resource "azure_keyvault_accesspolicy" "example-user" {
-///   key_vault_id    = azure_keyvault_keyvault.example.id
-///   tenant_id       = data.azure_core_getclientconfig.current.tenant_id
-///   object_id       = data.azure_core_getclientconfig.current.object_id
+/// resource "azure_keyvault_access_policy" "example-user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id    = azure_keyvault_key_vault.example.id
+///   tenant_id       = data.azure_core_client_config.current.tenant_id
+///   object_id       = data.azure_core_client_config.current.object_id
 ///   key_permissions = ["Create", "Delete", "Get", "Purge", "Recover", "Update", "List", "Decrypt", "Sign", "GetRotationPolicy"]
 /// }
 /// resource "azure_authorization_assignment" "example-disk" {
-///   scope                = azure_keyvault_keyvault.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope                = azure_keyvault_key_vault.example.id
 ///   role_definition_name = "Key Vault Crypto Service Encryption User"
-///   principal_id         = azure_compute_diskencryptionset.example.identity.principal_id
+///   principal_id         = azure_compute_disk_encryption_set.example.identity.principal_id
 /// }
 /// ```
 /// ```java
@@ -1071,7 +1092,7 @@ import 'disk_encryption_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1079,57 +1100,78 @@ import 'disk_encryption_set_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "des-example-keyvault"
-///   location                    = azure_core_resourcegroup.example.location
-///   resource_group_name         = azure_core_resourcegroup.example.name
+///   location                    = azure_core_resource_group.example.location
+///   resource_group_name         = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled  = false
-///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                   = data.azure_core_client_config.current.tenant_id
 ///   sku_name                    = "premium"
 ///   enabled_for_disk_encryption = true
 ///   purge_protection_enabled    = true
 /// }
 /// resource "azure_keyvault_key" "example" {
-///   depends_on   = [azure_keyvault_accesspolicy.example-user]
+///   depends_on = [azure_keyvault_access_policy.example-user]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "des-example-key"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
 /// }
-/// resource "azure_compute_diskencryptionset" "example" {
+/// resource "azure_compute_disk_encryption_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "des"
-///   resource_group_name       = azure_core_resourcegroup.example.name
-///   location                  = azure_core_resourcegroup.example.location
+///   resource_group_name       = azure_core_resource_group.example.name
+///   location                  = azure_core_resource_group.example.location
 ///   key_vault_key_id          = azure_keyvault_key.example.versionless_id
 ///   auto_key_rotation_enabled = true
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_keyvault_accesspolicy" "example-disk" {
-///   key_vault_id    = azure_keyvault_keyvault.example.id
-///   tenant_id       = azure_compute_diskencryptionset.example.identity.tenant_id
-///   object_id       = azure_compute_diskencryptionset.example.identity.principal_id
+/// resource "azure_keyvault_access_policy" "example-disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id    = azure_keyvault_key_vault.example.id
+///   tenant_id       = azure_compute_disk_encryption_set.example.identity.tenant_id
+///   object_id       = azure_compute_disk_encryption_set.example.identity.principal_id
 ///   key_permissions = ["Create", "Delete", "Get", "Purge", "Recover", "Update", "List", "Decrypt", "Sign"]
 /// }
-/// resource "azure_keyvault_accesspolicy" "example-user" {
-///   key_vault_id    = azure_keyvault_keyvault.example.id
-///   tenant_id       = data.azure_core_getclientconfig.current.tenant_id
-///   object_id       = data.azure_core_getclientconfig.current.object_id
+/// resource "azure_keyvault_access_policy" "example-user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id    = azure_keyvault_key_vault.example.id
+///   tenant_id       = data.azure_core_client_config.current.tenant_id
+///   object_id       = data.azure_core_client_config.current.object_id
 ///   key_permissions = ["Create", "Delete", "Get", "Purge", "Recover", "Update", "List", "Decrypt", "Sign", "GetRotationPolicy"]
 /// }
 /// resource "azure_authorization_assignment" "example-disk" {
-///   scope                = azure_keyvault_keyvault.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope                = azure_keyvault_key_vault.example.id
 ///   role_definition_name = "Key Vault Crypto Service Encryption User"
-///   principal_id         = azure_compute_diskencryptionset.example.identity.principal_id
+///   principal_id         = azure_compute_disk_encryption_set.example.identity.principal_id
 /// }
 /// ```
 /// ```java
@@ -1410,7 +1452,7 @@ class DiskEncryptionSet extends pulumi.CustomResource {
           'azure:compute/diskEncryptionSet:DiskEncryptionSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     autoKeyRotationEnabled = registerOutput<bool?>('autoKeyRotationEnabled');
     encryptionType = registerOutput<String?>('encryptionType');

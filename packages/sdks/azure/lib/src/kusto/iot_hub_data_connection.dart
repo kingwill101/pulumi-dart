@@ -319,7 +319,7 @@ import 'iot_hub_data_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -327,57 +327,78 @@ import 'iot_hub_data_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_kusto_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplekustocluster"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     name     = "Standard_D13_v2"
 ///     capacity = 2
 ///   }
 /// }
 /// resource "azure_kusto_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-kusto-database"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   cluster_name        = azure_kusto_cluster.example.name
 ///   hot_cache_period    = "P7D"
 ///   soft_delete_period  = "P31D"
 /// }
-/// resource "azure_iot_iothub" "example" {
+/// resource "azure_iot_io_t_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleIoTHub"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku = {
 ///     name     = "B1"
 ///     capacity = "1"
 ///   }
 /// }
-/// resource "azure_iot_sharedaccesspolicy" "example" {
+/// resource "azure_iot_shared_access_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-shared-access-policy"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   iothub_name         = azure_iot_iothub.example.name
+///   resource_group_name = azure_core_resource_group.example.name
+///   iothub_name         = azure_iot_io_t_hub.example.name
 ///   registry_read       = true
 /// }
-/// resource "azure_iot_consumergroup" "example" {
+/// resource "azure_iot_consumer_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-consumer-group"
-///   resource_group_name    = azure_core_resourcegroup.example.name
-///   iothub_name            = azure_iot_iothub.example.name
+///   resource_group_name    = azure_core_resource_group.example.name
+///   iothub_name            = azure_iot_io_t_hub.example.name
 ///   eventhub_endpoint_name = "events"
 /// }
-/// resource "azure_kusto_iothubdataconnection" "example" {
+/// resource "azure_kusto_iot_hub_data_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "my-kusto-iothub-data-connection"
-///   resource_group_name       = azure_core_resourcegroup.example.name
-///   location                  = azure_core_resourcegroup.example.location
+///   resource_group_name       = azure_core_resource_group.example.name
+///   location                  = azure_core_resource_group.example.location
 ///   cluster_name              = azure_kusto_cluster.example.name
 ///   database_name             = azure_kusto_database.example.name
-///   iothub_id                 = azure_iot_iothub.example.id
-///   consumer_group            = azure_iot_consumergroup.example.name
-///   shared_access_policy_name = azure_iot_sharedaccesspolicy.example.name
+///   iothub_id                 = azure_iot_io_t_hub.example.id
+///   consumer_group            = azure_iot_consumer_group.example.name
+///   shared_access_policy_name = azure_iot_shared_access_policy.example.name
 ///   event_system_properties   = ["message-id", "sequence-number", "to"]
 ///   table_name                = "my-table"
 ///   mapping_rule_name         = "my-table-mapping"
@@ -622,7 +643,7 @@ class IotHubDataConnection extends pulumi.CustomResource {
           'azure:kusto/iotHubDataConnection:IotHubDataConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     clusterName = registerOutput<String>('clusterName');
     consumerGroup = registerOutput<String>('consumerGroup');

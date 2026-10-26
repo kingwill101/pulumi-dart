@@ -107,7 +107,7 @@ import 'virtual_machine_manager_server_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -115,14 +115,20 @@ import 'virtual_machine_manager_server_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_systemcenter_virtualmachinemanagerserver" "example" {
+/// resource "azure_systemcenter_virtual_machine_manager_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-scvmmms"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   custom_location_id  = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/resGroup1/providers/Microsoft.ExtendedLocation/customLocations/customLocation1"
 ///   fqdn                = "example.labtest"
 ///   username            = "testUser"
@@ -237,7 +243,7 @@ class VirtualMachineManagerServer extends pulumi.CustomResource {
           'azure:systemcenter/virtualMachineManagerServer:VirtualMachineManagerServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     customLocationId = registerOutput<String>('customLocationId');

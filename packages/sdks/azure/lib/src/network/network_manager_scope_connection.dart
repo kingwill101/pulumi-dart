@@ -177,7 +177,7 @@ import 'network_manager_scope_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -185,32 +185,41 @@ import 'network_manager_scope_connection_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
-/// data "azure_core_getsubscription" "currentGetSubscription" {
+/// data "azure_core_subscription" "currentGetSubscription" {
 /// }
-/// data "azure_core_getsubscription" "alt" {
+/// data "azure_core_subscription" "alt" {
 ///   subscription_id = "00000000-0000-0000-0000-000000000000"
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networkmanager" "example" {
+/// resource "azure_network_network_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-networkmanager"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   scope = {
-///     subscription_ids = [data.azure_core_getsubscription.currentGetSubscription.id]
+///     subscription_ids = [data.azure_core_subscription.currentGetSubscription.id]
 ///   }
 ///   scope_accesses = ["SecurityAdmin"]
 /// }
-/// resource "azure_network_networkmanagerscopeconnection" "example" {
+/// resource "azure_network_network_manager_scope_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-nsc"
-///   network_manager_id = azure_network_networkmanager.example.id
-///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
-///   target_scope_id    = data.azure_core_getsubscription.alt.id
+///   network_manager_id = azure_network_network_manager.example.id
+///   tenant_id          = data.azure_core_client_config.current.tenant_id
+///   target_scope_id    = data.azure_core_subscription.alt.id
 ///   description        = "example"
 /// }
 /// ```
@@ -362,7 +371,7 @@ class NetworkManagerScopeConnection extends pulumi.CustomResource {
           'azure:network/networkManagerScopeConnection:NetworkManagerScopeConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     connectionState = registerOutput<String>('connectionState');
     description = registerOutput<String?>('description');

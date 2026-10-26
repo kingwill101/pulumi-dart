@@ -120,7 +120,7 @@ import 'ptrrecord_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -128,18 +128,27 @@ import 'ptrrecord_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_privatedns_zone" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "2.0.192.in-addr.arpa"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_privatedns_ptrrecord" "example" {
+/// resource "azure_privatedns_p_t_r_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "15"
 ///   zone_name           = azure_privatedns_zone.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ttl                 = 300
 ///   records             = ["test.example.com"]
 /// }
@@ -258,7 +267,7 @@ class PTRRecord extends pulumi.CustomResource {
           'azure:privatedns/pTRRecord:PTRRecord',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');

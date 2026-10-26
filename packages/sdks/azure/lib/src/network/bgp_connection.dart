@@ -264,7 +264,7 @@ import 'bgp_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -272,47 +272,68 @@ import 'bgp_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualhub" "example" {
+/// resource "azure_network_virtual_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vhub"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-pip"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Static"
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
 ///   address_spaces      = ["10.5.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "RouteServerSubnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.5.1.0/24"]
 /// }
-/// resource "azure_network_virtualhubip" "example" {
+/// resource "azure_network_virtual_hub_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-vhubip"
-///   virtual_hub_id               = azure_network_virtualhub.example.id
+///   virtual_hub_id               = azure_network_virtual_hub.example.id
 ///   private_ip_address           = "10.5.1.18"
 ///   private_ip_allocation_method = "Static"
-///   public_ip_address_id         = azure_network_publicip.example.id
+///   public_ip_address_id         = azure_network_public_ip.example.id
 ///   subnet_id                    = azure_network_subnet.example.id
 /// }
-/// resource "azure_network_bgpconnection" "example" {
-///   depends_on     = [azure_network_virtualhubip.example]
+/// resource "azure_network_bgp_connection" "example" {
+///   depends_on = [azure_network_virtual_hub_ip.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example-vhub-bgpconnection"
-///   virtual_hub_id = azure_network_virtualhub.example.id
+///   virtual_hub_id = azure_network_virtual_hub.example.id
 ///   peer_asn       = 65514
 ///   peer_ip        = "169.254.21.5"
 /// }
@@ -510,7 +531,7 @@ class BgpConnection extends pulumi.CustomResource {
           'azure:network/bgpConnection:BgpConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     peerAsn = registerOutput<int>('peerAsn');

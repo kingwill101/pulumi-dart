@@ -41,7 +41,7 @@ class SpringCloudCertificate extends pulumi.CustomResource {
           'azure:appplatform/springCloudCertificate:SpringCloudCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     certificateContent = registerOutput<String?>('certificateContent');
     excludePrivateKey = registerOutput<bool?>('excludePrivateKey');

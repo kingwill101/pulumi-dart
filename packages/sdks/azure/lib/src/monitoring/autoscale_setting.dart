@@ -363,7 +363,7 @@ import 'autoscale_setting_state.dart';
 ///                             TimeWindow = "PT5M",
 ///                             TimeAggregation = "Average",
 ///                             Operator = "GreaterThan",
-///                             Threshold = 75,
+///                             Threshold = 75.0,
 ///                             MetricNamespace = "microsoft.compute/virtualmachinescalesets",
 ///                             Dimensions = new[]
 ///                             {
@@ -397,7 +397,7 @@ import 'autoscale_setting_state.dart';
 ///                             TimeWindow = "PT5M",
 ///                             TimeAggregation = "Average",
 ///                             Operator = "LessThan",
-///                             Threshold = 25,
+///                             Threshold = 25.0,
 ///                         },
 ///                         ScaleAction = new Azure.Monitoring.Inputs.AutoscaleSettingProfileRuleScaleActionArgs
 ///                         {
@@ -599,7 +599,7 @@ import 'autoscale_setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -607,26 +607,38 @@ import 'autoscale_setting_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "autoscalingTest"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acctvn"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "acctsub"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_compute_linuxvirtualmachinescaleset" "example" {
+/// resource "azure_compute_linux_virtual_machine_scale_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleset"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   upgrade_mode        = "Manual"
 ///   sku                 = "Standard_F2"
 ///   instances           = 2
@@ -655,11 +667,14 @@ import 'autoscale_setting_state.dart';
 ///     version   = "latest"
 ///   }
 /// }
-/// resource "azure_monitoring_autoscalesetting" "example" {
+/// resource "azure_monitoring_autoscale_setting" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "myAutoscaleSetting"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   target_resource_id  = azure_compute_linuxvirtualmachinescaleset.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
+///   target_resource_id  = azure_compute_linux_virtual_machine_scale_set.example.id
 ///   profiles {
 ///     name = "defaultProfile"
 ///     capacity = {
@@ -670,7 +685,7 @@ import 'autoscale_setting_state.dart';
 ///     rules {
 ///       metric_trigger = {
 ///         metric_name        = "Percentage CPU"
-///         metric_resource_id = azure_compute_linuxvirtualmachinescaleset.example.id
+///         metric_resource_id = azure_compute_linux_virtual_machine_scale_set.example.id
 ///         time_grain         = "PT1M"
 ///         statistic          = "Average"
 ///         time_window        = "PT5M"
@@ -679,9 +694,9 @@ import 'autoscale_setting_state.dart';
 ///         threshold          = 75
 ///         metric_namespace   = "microsoft.compute/virtualmachinescalesets"
 ///         dimensions = [{
-///           "name"     = "AppName"
-///           "operator" = "Equals"
-///           "values"   = ["App1"]
+///           name     = "AppName"
+///           operator = "Equals"
+///           values   = ["App1"]
 ///         }]
 ///       }
 ///       scale_action = {
@@ -694,7 +709,7 @@ import 'autoscale_setting_state.dart';
 ///     rules {
 ///       metric_trigger = {
 ///         metric_name        = "Percentage CPU"
-///         metric_resource_id = azure_compute_linuxvirtualmachinescaleset.example.id
+///         metric_resource_id = azure_compute_linux_virtual_machine_scale_set.example.id
 ///         time_grain         = "PT1M"
 ///         statistic          = "Average"
 ///         time_window        = "PT5M"
@@ -1360,7 +1375,7 @@ import 'autoscale_setting_state.dart';
 ///                             TimeWindow = "PT5M",
 ///                             TimeAggregation = "Average",
 ///                             Operator = "GreaterThan",
-///                             Threshold = 90,
+///                             Threshold = 90.0,
 ///                         },
 ///                         ScaleAction = new Azure.Monitoring.Inputs.AutoscaleSettingProfileRuleScaleActionArgs
 ///                         {
@@ -1381,7 +1396,7 @@ import 'autoscale_setting_state.dart';
 ///                             TimeWindow = "PT5M",
 ///                             TimeAggregation = "Average",
 ///                             Operator = "LessThan",
-///                             Threshold = 10,
+///                             Threshold = 10.0,
 ///                         },
 ///                         ScaleAction = new Azure.Monitoring.Inputs.AutoscaleSettingProfileRuleScaleActionArgs
 ///                         {
@@ -1584,7 +1599,7 @@ import 'autoscale_setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1592,26 +1607,38 @@ import 'autoscale_setting_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "autoscalingTest"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acctvn"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "acctsub"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_compute_linuxvirtualmachinescaleset" "example" {
+/// resource "azure_compute_linux_virtual_machine_scale_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleset"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   upgrade_mode        = "Manual"
 ///   sku                 = "Standard_F2"
 ///   instances           = 2
@@ -1640,11 +1667,14 @@ import 'autoscale_setting_state.dart';
 ///     version   = "latest"
 ///   }
 /// }
-/// resource "azure_monitoring_autoscalesetting" "example" {
+/// resource "azure_monitoring_autoscale_setting" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "myAutoscaleSetting"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   target_resource_id  = azure_compute_linuxvirtualmachinescaleset.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
+///   target_resource_id  = azure_compute_linux_virtual_machine_scale_set.example.id
 ///   profiles {
 ///     name = "Weekends"
 ///     capacity = {
@@ -1655,7 +1685,7 @@ import 'autoscale_setting_state.dart';
 ///     rules {
 ///       metric_trigger = {
 ///         metric_name        = "Percentage CPU"
-///         metric_resource_id = azure_compute_linuxvirtualmachinescaleset.example.id
+///         metric_resource_id = azure_compute_linux_virtual_machine_scale_set.example.id
 ///         time_grain         = "PT1M"
 ///         statistic          = "Average"
 ///         time_window        = "PT5M"
@@ -1673,7 +1703,7 @@ import 'autoscale_setting_state.dart';
 ///     rules {
 ///       metric_trigger = {
 ///         metric_name        = "Percentage CPU"
-///         metric_resource_id = azure_compute_linuxvirtualmachinescaleset.example.id
+///         metric_resource_id = azure_compute_linux_virtual_machine_scale_set.example.id
 ///         time_grain         = "PT1M"
 ///         statistic          = "Average"
 ///         time_window        = "PT5M"
@@ -2331,7 +2361,7 @@ import 'autoscale_setting_state.dart';
 ///                             TimeWindow = "PT5M",
 ///                             TimeAggregation = "Average",
 ///                             Operator = "GreaterThan",
-///                             Threshold = 90,
+///                             Threshold = 90.0,
 ///                         },
 ///                         ScaleAction = new Azure.Monitoring.Inputs.AutoscaleSettingProfileRuleScaleActionArgs
 ///                         {
@@ -2352,7 +2382,7 @@ import 'autoscale_setting_state.dart';
 ///                             TimeWindow = "PT5M",
 ///                             TimeAggregation = "Average",
 ///                             Operator = "LessThan",
-///                             Threshold = 10,
+///                             Threshold = 10.0,
 ///                         },
 ///                         ScaleAction = new Azure.Monitoring.Inputs.AutoscaleSettingProfileRuleScaleActionArgs
 ///                         {
@@ -2547,7 +2577,7 @@ import 'autoscale_setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2555,26 +2585,38 @@ import 'autoscale_setting_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "autoscalingTest"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acctvn"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "acctsub"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_compute_linuxvirtualmachinescaleset" "example" {
+/// resource "azure_compute_linux_virtual_machine_scale_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleset"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   upgrade_mode        = "Manual"
 ///   sku                 = "Standard_F2"
 ///   instances           = 2
@@ -2603,12 +2645,15 @@ import 'autoscale_setting_state.dart';
 ///     version   = "latest"
 ///   }
 /// }
-/// resource "azure_monitoring_autoscalesetting" "example" {
+/// resource "azure_monitoring_autoscale_setting" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "myAutoscaleSetting"
 ///   enabled             = true
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   target_resource_id  = azure_compute_linuxvirtualmachinescaleset.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
+///   target_resource_id  = azure_compute_linux_virtual_machine_scale_set.example.id
 ///   profiles {
 ///     name = "forJuly"
 ///     capacity = {
@@ -2619,7 +2664,7 @@ import 'autoscale_setting_state.dart';
 ///     rules {
 ///       metric_trigger = {
 ///         metric_name        = "Percentage CPU"
-///         metric_resource_id = azure_compute_linuxvirtualmachinescaleset.example.id
+///         metric_resource_id = azure_compute_linux_virtual_machine_scale_set.example.id
 ///         time_grain         = "PT1M"
 ///         statistic          = "Average"
 ///         time_window        = "PT5M"
@@ -2637,7 +2682,7 @@ import 'autoscale_setting_state.dart';
 ///     rules {
 ///       metric_trigger = {
 ///         metric_name        = "Percentage CPU"
-///         metric_resource_id = azure_compute_linuxvirtualmachinescaleset.example.id
+///         metric_resource_id = azure_compute_linux_virtual_machine_scale_set.example.id
 ///         time_grain         = "PT1M"
 ///         statistic          = "Average"
 ///         time_window        = "PT5M"
@@ -2986,7 +3031,7 @@ class AutoscaleSetting extends pulumi.CustomResource {
           'azure:monitoring/autoscaleSetting:AutoscaleSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String>('location');

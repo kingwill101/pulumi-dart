@@ -231,7 +231,7 @@ import 'sql_container_unique_key.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -239,33 +239,39 @@ import 'sql_container_unique_key.dart';
 ///   }
 /// }
 ///
-/// data "azure_cosmosdb_getaccount" "example" {
+/// data "azure_cosmosdb_account" "example" {
 ///   name                = "tfex-cosmosdb-account"
 ///   resource_group_name = "tfex-cosmosdb-account-rg"
 /// }
 ///
-/// resource "azure_cosmosdb_sqldatabase" "example" {
+/// resource "azure_cosmosdb_sql_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-acsd"
-///   resource_group_name = data.azure_cosmosdb_getaccount.example.resource_group_name
-///   account_name        = data.azure_cosmosdb_getaccount.example.name
+///   resource_group_name = data.azure_cosmosdb_account.example.resource_group_name
+///   account_name        = data.azure_cosmosdb_account.example.name
 /// }
-/// resource "azure_cosmosdb_sqlcontainer" "example" {
+/// resource "azure_cosmosdb_sql_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-container"
-///   resource_group_name   = data.azure_cosmosdb_getaccount.example.resource_group_name
-///   account_name          = data.azure_cosmosdb_getaccount.example.name
-///   database_name         = azure_cosmosdb_sqldatabase.example.name
+///   resource_group_name   = data.azure_cosmosdb_account.example.resource_group_name
+///   account_name          = data.azure_cosmosdb_account.example.name
+///   database_name         = azure_cosmosdb_sql_database.example.name
 ///   partition_key_paths   = ["/definition/id"]
 ///   partition_key_version = 1
 ///   throughput            = 400
 ///   indexing_policy = {
 ///     indexing_mode = "consistent"
 ///     included_paths = [{
-///       "path" = "/*"
+///       path = "/*"
 ///       }, {
-///       "path" = "/included/?"
+///       path = "/included/?"
 ///     }]
 ///     excluded_paths = [{
-///       "path" = "/excluded/?"
+///       path = "/excluded/?"
 ///     }]
 ///   }
 ///   unique_keys {
@@ -446,7 +452,7 @@ class SqlContainer extends pulumi.CustomResource {
           'azure:cosmosdb/sqlContainer:SqlContainer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');

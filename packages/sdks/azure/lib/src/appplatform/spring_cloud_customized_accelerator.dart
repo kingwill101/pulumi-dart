@@ -184,7 +184,7 @@ import 'spring_cloud_customized_accelerator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -192,23 +192,35 @@ import 'spring_cloud_customized_accelerator_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "west europe"
 /// }
-/// resource "azure_appplatform_springcloudservice" "example" {
+/// resource "azure_appplatform_spring_cloud_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "E0"
 /// }
-/// resource "azure_appplatform_springcloudaccelerator" "example" {
+/// resource "azure_appplatform_spring_cloud_accelerator" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "default"
-///   spring_cloud_service_id = azure_appplatform_springcloudservice.example.id
+///   spring_cloud_service_id = azure_appplatform_spring_cloud_service.example.id
 /// }
-/// resource "azure_appplatform_springcloudcustomizedaccelerator" "example" {
+/// resource "azure_appplatform_spring_cloud_customized_accelerator" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example"
-///   spring_cloud_accelerator_id = azure_appplatform_springcloudaccelerator.example.id
+///   spring_cloud_accelerator_id = azure_appplatform_spring_cloud_accelerator.example.id
 ///   git_repository = {
 ///     url                 = "https://github.com/Azure-Samples/piggymetrics"
 ///     git_tag             = "spring.version.2.0.3"
@@ -368,7 +380,7 @@ class SpringCloudCustomizedAccelerator extends pulumi.CustomResource {
           'azure:appplatform/springCloudCustomizedAccelerator:SpringCloudCustomizedAccelerator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     acceleratorTags = registerOutput<List<String>?>('acceleratorTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     acceleratorType = registerOutput<String?>('acceleratorType');

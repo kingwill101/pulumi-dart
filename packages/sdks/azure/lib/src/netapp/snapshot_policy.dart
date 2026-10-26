@@ -245,7 +245,7 @@ import 'snapshot_policy_weekly_schedule.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -253,19 +253,28 @@ import 'snapshot_policy_weekly_schedule.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "resource-group-01"
 ///   location = "East US"
 /// }
 /// resource "azure_netapp_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "netappaccount-01"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_netapp_snapshotpolicy" "example" {
+/// resource "azure_netapp_snapshot_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "snapshotpolicy-01"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_netapp_account.example.name
 ///   enabled             = true
 ///   hourly_schedule = {
@@ -466,7 +475,7 @@ class SnapshotPolicy extends pulumi.CustomResource {
           'azure:netapp/snapshotPolicy:SnapshotPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     dailySchedule = registerOutput<SnapshotPolicyDailySchedule?>('dailySchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotPolicyDailySchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });

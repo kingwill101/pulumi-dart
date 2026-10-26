@@ -361,7 +361,7 @@ import 'hub_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -369,24 +369,36 @@ import 'hub_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "terraform-webpubsub"
 ///   location = "east us"
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-uai"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
 /// resource "azure_webpubsub_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-webpubsub"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard_S1"
 ///   capacity            = 1
 /// }
 /// resource "azure_webpubsub_hub" "example" {
-///   depends_on    = [azure_webpubsub_service.example]
+///   depends_on = [azure_webpubsub_service.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "tfex_wpsh"
 ///   web_pubsub_id = azure_webpubsub_service.example.id
 ///   event_handlers {
@@ -399,7 +411,7 @@ import 'hub_state.dart';
 ///     user_event_pattern = "event1, event2"
 ///     system_events      = ["connected"]
 ///     auth = {
-///       managed_identity_id = azure_authorization_userassignedidentity.example.id
+///       managed_identity_id = azure_authorization_user_assigned_identity.example.id
 ///     }
 ///   }
 ///   event_listeners {
@@ -498,20 +510,20 @@ import 'hub_state.dart';
 ///                     .userEventNameFilters(
 ///                         "event1",
 ///                         "event2")
-///                     .eventhubNamespaceName(test.name())
-///                     .eventhubName(test1.name())
+///                     .eventhubNamespaceName(test.get("name"))
+///                     .eventhubName(test1.get("name"))
 ///                     .build(),
 ///                 HubEventListenerArgs.builder()
 ///                     .systemEventNameFilters("connected")
 ///                     .userEventNameFilters("*")
-///                     .eventhubNamespaceName(test.name())
-///                     .eventhubName(test1.name())
+///                     .eventhubNamespaceName(test.get("name"))
+///                     .eventhubName(test1.get("name"))
 ///                     .build(),
 ///                 HubEventListenerArgs.builder()
 ///                     .systemEventNameFilters("connected")
 ///                     .userEventNameFilters("event1")
-///                     .eventhubNamespaceName(test.name())
-///                     .eventhubName(test1.name())
+///                     .eventhubNamespaceName(test.get("name"))
+///                     .eventhubName(test1.get("name"))
 ///                     .build())
 ///             .anonymousConnectionsEnabled(true)
 ///             .build(), CustomResourceOptions.builder()
@@ -632,7 +644,7 @@ class Hub extends pulumi.CustomResource {
           'azure:webpubsub/hub:Hub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     anonymousConnectionsEnabled = registerOutput<bool?>('anonymousConnectionsEnabled');
     eventHandlers = registerOutput<List<HubEventHandler>?>('eventHandlers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HubEventHandler>(guardedValue, (value) => HubEventHandler.fromMap((value as Map).cast<String, dynamic>())); });

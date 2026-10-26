@@ -229,7 +229,7 @@ import 'profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -237,20 +237,29 @@ import 'profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "examplegroup"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplevnet"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.1.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "examplesubnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.1.0.0/24"]
 ///   delegations {
 ///     name = "delegation"
@@ -261,14 +270,17 @@ import 'profile_state.dart';
 ///   }
 /// }
 /// resource "azure_network_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplenetprofile"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   container_network_interface = {
 ///     name = "examplecnic"
 ///     ip_configurations = [{
-///       "name"     = "exampleipconfig"
-///       "subnetId" = azure_network_subnet.example.id
+///       name      = "exampleipconfig"
+///       subnet_id = azure_network_subnet.example.id
 ///     }]
 ///   }
 /// }
@@ -432,7 +444,7 @@ class Profile extends pulumi.CustomResource {
           'azure:network/profile:Profile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     containerNetworkInterface = registerOutput<ProfileContainerNetworkInterface>('containerNetworkInterface', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfileContainerNetworkInterface.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     containerNetworkInterfaceIds = registerOutput<List<String>>('containerNetworkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

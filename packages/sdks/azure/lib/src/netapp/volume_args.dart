@@ -231,7 +231,7 @@ class VolumeArgs {
       smbContinuousAvailabilityEnabled: (() { final guardedValue = map['smbContinuousAvailabilityEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       smbNonBrowsableEnabled: (() { final guardedValue = map['smbNonBrowsableEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       snapshotDirectoryVisible: (() { final guardedValue = map['snapshotDirectoryVisible']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      storageQuotaInGb: pulumi.Input.fromValue((map['storageQuotaInGb'] as num).toInt()),
+      storageQuotaInGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['storageQuotaInGb'])),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       throughputInMibps: (() { final guardedValue = map['throughputInMibps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),

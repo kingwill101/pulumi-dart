@@ -36,8 +36,8 @@ class AutoscaleSettingProfileRecurrence {
   factory AutoscaleSettingProfileRecurrence.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingProfileRecurrence(
       days: pulumi.Input.fromValue((map['days'] as List).cast<String>()),
-      hours: pulumi.Input.fromValue((map['hours'] as num).toInt()),
-      minutes: pulumi.Input.fromValue((map['minutes'] as num).toInt()),
+      hours: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['hours'])),
+      minutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minutes'])),
       timezone: (() { final guardedValue = map['timezone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

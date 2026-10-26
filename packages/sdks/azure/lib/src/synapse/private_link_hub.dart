@@ -66,7 +66,7 @@ import 'private_link_hub_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -74,7 +74,10 @@ import 'private_link_hub_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_synapse_privatelinkhub" "example" {
+/// resource "azure_synapse_private_link_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
 ///   resource_group_name = "example-rg"
 ///   location            = "West Europe"
@@ -150,7 +153,7 @@ class PrivateLinkHub extends pulumi.CustomResource {
           'azure:synapse/privateLinkHub:PrivateLinkHub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

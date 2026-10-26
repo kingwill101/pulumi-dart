@@ -76,7 +76,7 @@ import 'contact_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -85,6 +85,9 @@ import 'contact_state.dart';
 /// }
 ///
 /// resource "azure_securitycenter_contact" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "contact"
 ///   email               = "contact@example.com"
 ///   phone               = "+1-555-555-5555"
@@ -168,7 +171,7 @@ class Contact extends pulumi.CustomResource {
           'azure:securitycenter/contact:Contact',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     alertNotifications = registerOutput<bool>('alertNotifications');
     alertsToAdmins = registerOutput<bool>('alertsToAdmins');

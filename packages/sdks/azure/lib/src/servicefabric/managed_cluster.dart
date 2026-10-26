@@ -170,7 +170,7 @@ import 'managed_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -178,7 +178,10 @@ import 'managed_cluster_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_servicefabric_managedcluster" "example" {
+/// resource "azure_servicefabric_managed_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
 ///   resource_group_name = "example"
 ///   location            = "West Europe"
@@ -355,7 +358,7 @@ class ManagedCluster extends pulumi.CustomResource {
           'azure:servicefabric/managedCluster:ManagedCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     authentication = registerOutput<ManagedClusterAuthentication?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });

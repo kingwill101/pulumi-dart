@@ -48,7 +48,7 @@ class FrontdoorBatchRuleSetRule {
       behaviourOnMatch: (() { final guardedValue = map['behaviourOnMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FrontdoorBatchRuleSetRuleConditions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      order: pulumi.Input.fromValue((map['order'] as num).toInt()),
+      order: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['order'])),
     );
   }
 }

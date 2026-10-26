@@ -73,7 +73,7 @@ import 'role_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -81,12 +81,15 @@ import 'role_assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "example" {
+/// data "azure_core_client_config" "example" {
 /// }
 ///
-/// resource "azure_marketplace_roleassignment" "example" {
+/// resource "azure_marketplace_role_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role_definition_name = "Marketplace Admin"
-///   principal_id         = data.azure_core_getclientconfig.example.object_id
+///   principal_id         = data.azure_core_client_config.example.object_id
 /// }
 /// ```
 /// ```java
@@ -221,7 +224,7 @@ import 'role_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -229,15 +232,18 @@ import 'role_assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "example" {
+/// data "azure_core_client_config" "example" {
 /// }
-/// data "azure_authorization_getroledefinition" "exampleGetRoleDefinition" {
+/// data "azure_authorization_role_definition" "exampleGetRoleDefinition" {
 ///   name = "Log Analytics Reader"
 /// }
 ///
-/// resource "azure_marketplace_roleassignment" "example" {
-///   role_definition_id = data.azure_authorization_getroledefinition.exampleGetRoleDefinition.id
-///   principal_id       = data.azure_core_getclientconfig.example.object_id
+/// resource "azure_marketplace_role_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   role_definition_id = data.azure_authorization_role_definition.exampleGetRoleDefinition.id
+///   principal_id       = data.azure_core_client_config.example.object_id
 /// }
 /// ```
 /// ```java
@@ -361,7 +367,7 @@ class RoleAssignment extends pulumi.CustomResource {
           'azure:marketplace/roleAssignment:RoleAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     condition = registerOutput<String?>('condition');
     conditionVersion = registerOutput<String?>('conditionVersion');

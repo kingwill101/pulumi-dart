@@ -251,7 +251,7 @@ import 'software_update_configuration_windows.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -259,31 +259,47 @@ import 'software_update_configuration_windows.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "East US"
 /// }
 /// resource "azure_automation_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Basic"
 /// }
-/// resource "azure_automation_runbook" "example" {
+/// resource "azure_automation_run_book" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "Get-AzureVMTutorial"
-///   location                = azure_core_resourcegroup.example.location
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   location                = azure_core_resource_group.example.location
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   automation_account_name = azure_automation_account.example.name
 ///   log_verbose             = "true"
 ///   log_progress            = "true"
 ///   description             = "This is a example runbook for terraform acceptance example"
 ///   runbook_type            = "Python3"
-///   content                 = "# Some example content\n# for Terraform acceptance example\n"
+///   content                 = <<CONTENT
+/// # Some example content
+/// # for Terraform acceptance example
+/// CONTENT
+///
 ///   tags = {
 ///     "ENV" = "runbook_test"
 ///   }
 /// }
-/// resource "azure_automation_softwareupdateconfiguration" "example" {
+/// resource "azure_automation_software_update_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example"
 ///   automation_account_id = azure_automation_account.example.id
 ///   linux = {
@@ -293,7 +309,7 @@ import 'software_update_configuration_windows.dart';
 ///     reboot                    = "IfRequired"
 ///   }
 ///   pre_task = {
-///     source = azure_automation_runbook.example.name
+///     source = azure_automation_run_book.example.name
 ///     parameters = {
 ///       "COMPUTER_NAME" = "Foo"
 ///     }
@@ -486,7 +502,7 @@ class SoftwareUpdateConfiguration extends pulumi.CustomResource {
           'azure:automation/softwareUpdateConfiguration:SoftwareUpdateConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     automationAccountId = registerOutput<String>('automationAccountId');
     duration = registerOutput<String?>('duration');

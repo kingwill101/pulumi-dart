@@ -31,8 +31,8 @@ class EventHubRetentionDescription {
   factory EventHubRetentionDescription.fromMap(Map<String, dynamic> map) {
     return EventHubRetentionDescription(
       cleanupPolicy: pulumi.Input.fromValue(map['cleanupPolicy'] as String),
-      retentionTimeInHours: (() { final guardedValue = map['retentionTimeInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      tombstoneRetentionTimeInHours: (() { final guardedValue = map['tombstoneRetentionTimeInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retentionTimeInHours: (() { final guardedValue = map['retentionTimeInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      tombstoneRetentionTimeInHours: (() { final guardedValue = map['tombstoneRetentionTimeInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

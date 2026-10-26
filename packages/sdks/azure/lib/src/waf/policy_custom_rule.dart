@@ -68,9 +68,9 @@ class PolicyCustomRule {
       groupRateLimitBy: (() { final guardedValue = map['groupRateLimitBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       matchConditions: pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyCustomRuleMatchCondition>(map['matchConditions']!, (value) => PolicyCustomRuleMatchCondition.fromMap((value as Map).cast<String, dynamic>()))),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       rateLimitDuration: (() { final guardedValue = map['rateLimitDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rateLimitThreshold: (() { final guardedValue = map['rateLimitThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      rateLimitThreshold: (() { final guardedValue = map['rateLimitThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
     );
   }

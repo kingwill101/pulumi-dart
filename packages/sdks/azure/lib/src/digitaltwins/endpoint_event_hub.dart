@@ -212,7 +212,7 @@ import 'endpoint_event_hub_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -220,41 +220,59 @@ import 'endpoint_event_hub_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example_resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_digitaltwins_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-DT"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_eventhub_eventhubnamespace" "example" {
+/// resource "azure_eventhub_event_hub_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-eh-ns"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_eventhub_eventhub" "example" {
+/// resource "azure_eventhub_event_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-eh"
-///   namespace_id      = azure_eventhub_eventhubnamespace.example.id
+///   namespace_id      = azure_eventhub_event_hub_namespace.example.id
 ///   partition_count   = 2
 ///   message_retention = 1
 /// }
-/// resource "azure_eventhub_authorizationrule" "example" {
+/// resource "azure_eventhub_authorization_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ar"
-///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
-///   eventhub_name       = azure_eventhub_eventhub.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   namespace_name      = azure_eventhub_event_hub_namespace.example.name
+///   eventhub_name       = azure_eventhub_event_hub.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   listen              = false
 ///   send                = true
 ///   manage              = false
 /// }
-/// resource "azure_digitaltwins_endpointeventhub" "example" {
+/// resource "azure_digitaltwins_endpoint_event_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                 = "example-EH"
 ///   digital_twins_id                     = azure_digitaltwins_instance.example.id
-///   eventhub_primary_connection_string   = azure_eventhub_authorizationrule.example.primary_connection_string
-///   eventhub_secondary_connection_string = azure_eventhub_authorizationrule.example.secondary_connection_string
+///   eventhub_primary_connection_string   = azure_eventhub_authorization_rule.example.primary_connection_string
+///   eventhub_secondary_connection_string = azure_eventhub_authorization_rule.example.secondary_connection_string
 /// }
 /// ```
 /// ```java
@@ -423,7 +441,7 @@ class EndpointEventHub extends pulumi.CustomResource {
           'azure:digitaltwins/endpointEventHub:EndpointEventHub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['deadLetterStorageSecret', 'eventhubPrimaryConnectionString', 'eventhubSecondaryConnectionString'],
         ) {
     deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret', isSecret: true);

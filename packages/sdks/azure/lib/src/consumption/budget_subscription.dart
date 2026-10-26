@@ -156,7 +156,7 @@ import 'budget_subscription_time_period.dart';
 ///     {
 ///         Name = "example",
 ///         SubscriptionId = current.Apply(getSubscriptionResult => getSubscriptionResult.Id),
-///         Amount = 1000,
+///         Amount = 1000.0,
 ///         TimeGrain = "Monthly",
 ///         TimePeriod = new Azure.Consumption.Inputs.BudgetSubscriptionTimePeriodArgs
 ///         {
@@ -322,7 +322,7 @@ import 'budget_subscription_time_period.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -330,21 +330,30 @@ import 'budget_subscription_time_period.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "eastus"
 /// }
-/// resource "azure_monitoring_actiongroup" "example" {
+/// resource "azure_monitoring_action_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   short_name          = "example"
 /// }
-/// resource "azure_consumption_budgetsubscription" "example" {
+/// resource "azure_consumption_budget_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
-///   subscription_id = data.azure_core_getsubscription.current.id
+///   subscription_id = data.azure_core_subscription.current.id
 ///   amount          = 1000
 ///   time_grain      = "Monthly"
 ///   time_period = {
@@ -353,12 +362,12 @@ import 'budget_subscription_time_period.dart';
 ///   }
 ///   filter = {
 ///     dimensions = [{
-///       "name"   = "ResourceGroupName"
-///       "values" = [azure_core_resourcegroup.example.name]
+///       name   = "ResourceGroupName"
+///       values = [azure_core_resource_group.example.name]
 ///     }]
 ///     tags = [{
-///       "name"   = "foo"
-///       "values" = ["bar", "baz"]
+///       name   = "foo"
+///       values = ["bar", "baz"]
 ///     }]
 ///   }
 ///   notifications {
@@ -366,7 +375,7 @@ import 'budget_subscription_time_period.dart';
 ///     threshold      = 90
 ///     operator       = "EqualTo"
 ///     contact_emails = ["foo@example.com", "bar@example.com"]
-///     contact_groups = [azure_monitoring_actiongroup.example.id]
+///     contact_groups = [azure_monitoring_action_group.example.id]
 ///     contact_roles  = ["Owner"]
 ///   }
 ///   notifications {
@@ -577,7 +586,7 @@ class BudgetSubscription extends pulumi.CustomResource {
           'azure:consumption/budgetSubscription:BudgetSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     amount = registerOutput<double>('amount');
     etag = registerOutput<String>('etag');

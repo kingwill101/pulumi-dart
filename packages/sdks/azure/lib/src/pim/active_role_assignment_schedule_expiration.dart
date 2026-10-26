@@ -32,8 +32,8 @@ class ActiveRoleAssignmentScheduleExpiration {
 
   factory ActiveRoleAssignmentScheduleExpiration.fromMap(Map<String, dynamic> map) {
     return ActiveRoleAssignmentScheduleExpiration(
-      durationDays: (() { final guardedValue = map['durationDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      durationHours: (() { final guardedValue = map['durationHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      durationDays: (() { final guardedValue = map['durationDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      durationHours: (() { final guardedValue = map['durationHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       endDateTime: (() { final guardedValue = map['endDateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

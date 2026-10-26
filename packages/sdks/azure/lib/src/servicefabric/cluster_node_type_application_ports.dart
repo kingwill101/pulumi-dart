@@ -25,8 +25,8 @@ class ClusterNodeTypeApplicationPorts {
 
   factory ClusterNodeTypeApplicationPorts.fromMap(Map<String, dynamic> map) {
     return ClusterNodeTypeApplicationPorts(
-      endPort: pulumi.Input.fromValue((map['endPort'] as num).toInt()),
-      startPort: pulumi.Input.fromValue((map['startPort'] as num).toInt()),
+      endPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['endPort'])),
+      startPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['startPort'])),
     );
   }
 }

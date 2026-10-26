@@ -168,7 +168,7 @@ import 'protection_container_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -176,29 +176,44 @@ import 'protection_container_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "primary" {
+/// resource "azure_core_resource_group" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tfex-network-mapping-primary"
 ///   location = "West US"
 /// }
-/// resource "azure_core_resourcegroup" "secondary" {
+/// resource "azure_core_resource_group" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tfex-network-mapping-secondary"
 ///   location = "East US"
 /// }
 /// resource "azure_recoveryservices_vault" "vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-recovery-vault"
-///   location            = azure_core_resourcegroup.secondary.location
-///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   location            = azure_core_resource_group.secondary.location
+///   resource_group_name = azure_core_resource_group.secondary.name
 ///   sku                 = "Standard"
 /// }
 /// resource "azure_siterecovery_fabric" "fabric" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "primary-fabric"
-///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   resource_group_name = azure_core_resource_group.secondary.name
 ///   recovery_vault_name = azure_recoveryservices_vault.vault.name
-///   location            = azure_core_resourcegroup.primary.location
+///   location            = azure_core_resource_group.primary.location
 /// }
-/// resource "azure_siterecovery_protectioncontainer" "protection-container" {
+/// resource "azure_siterecovery_protection_container" "protection-container" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "protection-container"
-///   resource_group_name  = azure_core_resourcegroup.secondary.name
+///   resource_group_name  = azure_core_resource_group.secondary.name
 ///   recovery_vault_name  = azure_recoveryservices_vault.vault.name
 ///   recovery_fabric_name = azure_siterecovery_fabric.fabric.name
 /// }
@@ -336,7 +351,7 @@ class ProtectionContainer extends pulumi.CustomResource {
           'azure:siterecovery/protectionContainer:ProtectionContainer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     recoveryFabricName = registerOutput<String>('recoveryFabricName');

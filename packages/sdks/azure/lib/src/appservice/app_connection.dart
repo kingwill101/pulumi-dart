@@ -339,7 +339,7 @@ import 'app_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -347,14 +347,20 @@ import 'app_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_cosmosdb_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-cosmosdb-account"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   offer_type          = "Standard"
 ///   kind                = "GlobalDocumentDB"
 ///   consistency_policy = {
@@ -363,38 +369,53 @@ import 'app_connection_state.dart';
 ///     max_staleness_prefix    = 200
 ///   }
 ///   geo_locations {
-///     location          = azure_core_resourcegroup.example.location
+///     location          = azure_core_resource_group.example.location
 ///     failover_priority = 0
 ///   }
 /// }
-/// resource "azure_cosmosdb_sqldatabase" "example" {
+/// resource "azure_cosmosdb_sql_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cosmos-sql-db"
 ///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
 ///   account_name        = azure_cosmosdb_account.example.name
 ///   throughput          = 400
 /// }
-/// resource "azure_cosmosdb_sqlcontainer" "example" {
+/// resource "azure_cosmosdb_sql_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-container"
 ///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
 ///   account_name        = azure_cosmosdb_account.example.name
-///   database_name       = azure_cosmosdb_sqldatabase.example.name
+///   database_name       = azure_cosmosdb_sql_database.example.name
 ///   partition_key_path  = "/definition"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestorageaccount"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_appservice_serviceplan" "example" {
-///   location            = azure_core_resourcegroup.example.location
+/// resource "azure_appservice_service_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location            = azure_core_resource_group.example.location
 ///   name                = "example-serviceplan"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "P1v2"
 ///   os_type             = "Linux"
 /// }
-/// resource "azure_appservice_functionapp" "test" {
+/// resource "azure_appservice_function_app" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-function-app"
 ///   location                   = testAzurermResourceGroup.location
 ///   resource_group_name        = testAzurermResourceGroup.name
@@ -402,7 +423,10 @@ import 'app_connection_state.dart';
 ///   storage_account_name       = testAzurermStorageAccount.name
 ///   storage_account_access_key = testAzurermStorageAccount.primaryAccessKey
 /// }
-/// resource "azure_appservice_appconnection" "example" {
+/// resource "azure_appservice_app_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-serviceconnector"
 ///   function_app_id    = exampleAzurermFunctionApp.id
 ///   target_resource_id = testAzurermCosmosdbAccount.id
@@ -500,17 +524,17 @@ import 'app_connection_state.dart';
 ///
 ///         var test = new FunctionApp("test", FunctionAppArgs.builder()
 ///             .name("example-function-app")
-///             .location(testAzurermResourceGroup.location())
-///             .resourceGroupName(testAzurermResourceGroup.name())
-///             .appServicePlanId(testAzurermAppServicePlan.id())
-///             .storageAccountName(testAzurermStorageAccount.name())
-///             .storageAccountAccessKey(testAzurermStorageAccount.primaryAccessKey())
+///             .location(testAzurermResourceGroup.get("location"))
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
+///             .appServicePlanId(testAzurermAppServicePlan.get("id"))
+///             .storageAccountName(testAzurermStorageAccount.get("name"))
+///             .storageAccountAccessKey(testAzurermStorageAccount.get("primaryAccessKey"))
 ///             .build());
 ///
 ///         var exampleAppConnection = new AppConnection("exampleAppConnection", AppConnectionArgs.builder()
 ///             .name("example-serviceconnector")
-///             .functionAppId(exampleAzurermFunctionApp.id())
-///             .targetResourceId(testAzurermCosmosdbAccount.id())
+///             .functionAppId(exampleAzurermFunctionApp.get("id"))
+///             .targetResourceId(testAzurermCosmosdbAccount.get("id"))
 ///             .authentication(AppConnectionAuthenticationArgs.builder()
 ///                 .type("systemAssignedIdentity")
 ///                 .build())
@@ -639,7 +663,7 @@ class AppConnection extends pulumi.CustomResource {
           'azure:appservice/appConnection:AppConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     authentication = registerOutput<AppConnectionAuthentication>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppConnectionAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientType = registerOutput<String?>('clientType');

@@ -342,7 +342,7 @@ import 'assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -350,56 +350,85 @@ import 'assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
-/// data "azure_core_getsubscription" "example" {
+/// data "azure_core_subscription" "example" {
 /// }
-/// data "azure_blueprint_getdefinition" "exampleGetDefinition" {
+/// data "azure_blueprint_definition" "exampleGetDefinition" {
 ///   name     = "exampleBlueprint"
-///   scope_id = data.azure_core_getsubscription.example.id
+///   scope_id = data.azure_core_subscription.example.id
 /// }
-/// data "azure_blueprint_getpublishedversion" "exampleGetPublishedVersion" {
-///   scope_id       = data.azure_blueprint_getdefinition.exampleGetDefinition.scope_id
-///   blueprint_name = data.azure_blueprint_getdefinition.exampleGetDefinition.name
+/// data "azure_blueprint_published_version" "exampleGetPublishedVersion" {
+///   scope_id       = data.azure_blueprint_definition.exampleGetDefinition.scope_id
+///   blueprint_name = data.azure_blueprint_definition.exampleGetDefinition.name
 ///   version        = "v1.0.0"
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "exampleRG-bp"
 ///   location = "West Europe"
 ///   tags = {
 ///     "Environment" = "example"
 ///   }
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   name                = "bp-user-example"
 /// }
 /// resource "azure_authorization_assignment" "operator" {
-///   scope                = data.azure_core_getsubscription.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope                = data.azure_core_subscription.example.id
 ///   role_definition_name = "Blueprint Operator"
-///   principal_id         = azure_authorization_userassignedidentity.example.principal_id
+///   principal_id         = azure_authorization_user_assigned_identity.example.principal_id
 /// }
 /// resource "azure_authorization_assignment" "owner" {
-///   scope                = data.azure_core_getsubscription.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope                = data.azure_core_subscription.example.id
 ///   role_definition_name = "Owner"
-///   principal_id         = azure_authorization_userassignedidentity.example.principal_id
+///   principal_id         = azure_authorization_user_assigned_identity.example.principal_id
 /// }
 /// resource "azure_blueprint_assignment" "example" {
-///   depends_on              = [azure_authorization_assignment.operator, azure_authorization_assignment.owner]
+///   depends_on = [azure_authorization_assignment.operator, azure_authorization_assignment.owner]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "testAccBPAssignment"
-///   target_subscription_id  = data.azure_core_getsubscription.example.id
-///   version_id              = data.azure_blueprint_getpublishedversion.exampleGetPublishedVersion.id
-///   location                = azure_core_resourcegroup.example.location
+///   target_subscription_id  = data.azure_core_subscription.example.id
+///   version_id              = data.azure_blueprint_published_version.exampleGetPublishedVersion.id
+///   location                = azure_core_resource_group.example.location
 ///   lock_mode               = "AllResourcesDoNotDelete"
-///   lock_exclude_principals = [data.azure_core_getclientconfig.current.object_id]
+///   lock_exclude_principals = [data.azure_core_client_config.current.object_id]
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
-///   resource_groups  = "    {\n      \\\"ResourceGroup\\\": {\n        \\\"name\\\": \\\"exampleRG-bp\\\"\n      }\n    }\n"
-///   parameter_values = "    {\n      \\\"allowedlocationsforresourcegroups_listOfAllowedLocations\\\": {\n        \\\"value\\\": [\\\"westus\\\", \\\"westus2\\\", \\\"eastus\\\", \\\"centralus\\\", \\\"centraluseuap\\\", \\\"southcentralus\\\", \\\"northcentralus\\\", \\\"westcentralus\\\", \\\"eastus2\\\", \\\"eastus2euap\\\", \\\"brazilsouth\\\", \\\"brazilus\\\", \\\"northeurope\\\", \\\"westeurope\\\", \\\"eastasia\\\", \\\"southeastasia\\\", \\\"japanwest\\\", \\\"japaneast\\\", \\\"koreacentral\\\", \\\"koreasouth\\\", \\\"indiasouth\\\", \\\"indiawest\\\", \\\"indiacentral\\\", \\\"australiaeast\\\", \\\"australiasoutheast\\\", \\\"canadacentral\\\", \\\"canadaeast\\\", \\\"uknorth\\\", \\\"uksouth2\\\", \\\"uksouth\\\", \\\"ukwest\\\", \\\"francecentral\\\", \\\"francesouth\\\", \\\"australiacentral\\\", \\\"australiacentral2\\\", \\\"uaecentral\\\", \\\"uaenorth\\\", \\\"southafricanorth\\\", \\\"southafricawest\\\", \\\"switzerlandnorth\\\", \\\"switzerlandwest\\\", \\\"germanynorth\\\", \\\"germanywestcentral\\\", \\\"norwayeast\\\", \\\"norwaywest\\\"]\n      }\n    }\n"
+///   resource_groups  = <<GROUPS
+///     {
+///       \"ResourceGroup\": {
+///         \"name\": \"exampleRG-bp\"
+///       }
+///     }
+/// GROUPS
+///
+///   parameter_values = <<VALUES
+///     {
+///       \"allowedlocationsforresourcegroups_listOfAllowedLocations\": {
+///         \"value\": [\"westus\", \"westus2\", \"eastus\", \"centralus\", \"centraluseuap\", \"southcentralus\", \"northcentralus\", \"westcentralus\", \"eastus2\", \"eastus2euap\", \"brazilsouth\", \"brazilus\", \"northeurope\", \"westeurope\", \"eastasia\", \"southeastasia\", \"japanwest\", \"japaneast\", \"koreacentral\", \"koreasouth\", \"indiasouth\", \"indiawest\", \"indiacentral\", \"australiaeast\", \"australiasoutheast\", \"canadacentral\", \"canadaeast\", \"uknorth\", \"uksouth2\", \"uksouth\", \"ukwest\", \"francecentral\", \"francesouth\", \"australiacentral\", \"australiacentral2\", \"uaecentral\", \"uaenorth\", \"southafricanorth\", \"southafricawest\", \"switzerlandnorth\", \"switzerlandwest\", \"germanynorth\", \"germanywestcentral\", \"norwayeast\", \"norwaywest\"]
+///       }
+///     }
+/// VALUES
+///
 /// }
 /// ```
 /// ```java
@@ -650,7 +679,7 @@ class Assignment extends pulumi.CustomResource {
           'azure:blueprint/assignment:Assignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     blueprintName = registerOutput<String>('blueprintName');
     description = registerOutput<String>('description');

@@ -67,7 +67,7 @@ class SpringCloudCustomizedAcceleratorGitRepository {
       caCertificateId: (() { final guardedValue = map['caCertificateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       commit: (() { final guardedValue = map['commit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gitTag: (() { final guardedValue = map['gitTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      intervalInSeconds: (() { final guardedValue = map['intervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      intervalInSeconds: (() { final guardedValue = map['intervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sshAuth: (() { final guardedValue = map['sshAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SpringCloudCustomizedAcceleratorGitRepositorySshAuth.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       url: pulumi.Input.fromValue(map['url'] as String),

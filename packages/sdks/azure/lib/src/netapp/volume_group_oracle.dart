@@ -315,7 +315,7 @@ import 'volume_group_oracle_volume.dart';
 ///                 Zone = "1",
 ///                 VolumeSpecName = "ora-data1",
 ///                 StorageQuotaInGb = 1024,
-///                 ThroughputInMibps = 24,
+///                 ThroughputInMibps = 24.0,
 ///                 Protocols = "NFSv4.1",
 ///                 SecurityStyle = "unix",
 ///                 SnapshotDirectoryVisible = false,
@@ -343,7 +343,7 @@ import 'volume_group_oracle_volume.dart';
 ///                 Zone = "1",
 ///                 VolumeSpecName = "ora-log",
 ///                 StorageQuotaInGb = 1024,
-///                 ThroughputInMibps = 24,
+///                 ThroughputInMibps = 24.0,
 ///                 Protocols = "NFSv4.1",
 ///                 SecurityStyle = "unix",
 ///                 SnapshotDirectoryVisible = false,
@@ -512,7 +512,7 @@ import 'volume_group_oracle_volume.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -520,23 +520,32 @@ import 'volume_group_oracle_volume.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     ="${prefix}-resources"
 ///   location = location
 ///   tags = {
 ///     "SkipNRMSNSG" = "true"
 ///   }
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${prefix}-vnet"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.88.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 ="${prefix}-delegated-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.88.2.0/24"]
 ///   delegations {
 ///     name = "exampledelegation"
@@ -547,24 +556,33 @@ import 'volume_group_oracle_volume.dart';
 ///   }
 /// }
 /// resource "azure_netapp_account" "example" {
-///   depends_on          = [azure_network_subnet.example]
+///   depends_on = [azure_network_subnet.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${prefix}-netapp-account"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_netapp_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${prefix}-netapp-pool"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_netapp_account.example.name
 ///   service_level       = "Standard"
 ///   size_in_tb          = 4
 ///   qos_type            = "Manual"
 /// }
-/// resource "azure_netapp_volumegrouporacle" "example" {
+/// resource "azure_netapp_volume_group_oracle" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   ="${prefix}-NetAppVolumeGroupOracle"
-///   location               = azure_core_resourcegroup.example.location
-///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resource_group.example.location
+///   resource_group_name    = azure_core_resource_group.example.name
 ///   account_name           = azure_netapp_account.example.name
 ///   group_description      = "Example volume group for Oracle"
 ///   application_identifier = "TST"
@@ -1346,7 +1364,7 @@ import 'volume_group_oracle_volume.dart';
 ///                 SubnetId = examplePrimarySubnet.Id,
 ///                 VolumeSpecName = "ora-data1",
 ///                 StorageQuotaInGb = 1024,
-///                 ThroughputInMibps = 24,
+///                 ThroughputInMibps = 24.0,
 ///                 Protocols = "NFSv4.1",
 ///                 SecurityStyle = "unix",
 ///                 SnapshotDirectoryVisible = false,
@@ -1387,7 +1405,7 @@ import 'volume_group_oracle_volume.dart';
 ///                 SubnetId = exampleSecondarySubnet.Id,
 ///                 VolumeSpecName = "ora-data1",
 ///                 StorageQuotaInGb = 1024,
-///                 ThroughputInMibps = 24,
+///                 ThroughputInMibps = 24.0,
 ///                 Protocols = "NFSv4.1",
 ///                 SecurityStyle = "unix",
 ///                 SnapshotDirectoryVisible = false,
@@ -1652,7 +1670,7 @@ import 'volume_group_oracle_volume.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1660,7 +1678,10 @@ import 'volume_group_oracle_volume.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     ="${prefix}-resources"
 ///   location = location
 ///   tags = {
@@ -1668,16 +1689,22 @@ import 'volume_group_oracle_volume.dart';
 ///   }
 /// }
 /// # Primary region networking
-/// resource "azure_network_virtualnetwork" "example_primary" {
+/// resource "azure_network_virtual_network" "example_primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${prefix}-vnet-primary"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.47.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example_primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 ="${prefix}-delegated-subnet-primary"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example_primary.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example_primary.name
 ///   address_prefixes     = ["10.47.2.0/24"]
 ///   delegations {
 ///     name = "exampledelegation"
@@ -1688,16 +1715,22 @@ import 'volume_group_oracle_volume.dart';
 ///   }
 /// }
 /// # Secondary region networking
-/// resource "azure_network_virtualnetwork" "example_secondary" {
+/// resource "azure_network_virtual_network" "example_secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${prefix}-vnet-secondary"
 ///   location            = altLocation
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.48.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example_secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 ="${prefix}-delegated-subnet-secondary"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example_secondary.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example_secondary.name
 ///   address_prefixes     = ["10.48.2.0/24"]
 ///   delegations {
 ///     name = "exampledelegation"
@@ -1709,15 +1742,21 @@ import 'volume_group_oracle_volume.dart';
 /// }
 /// # Primary region NetApp infrastructure
 /// resource "azure_netapp_account" "example_primary" {
-///   depends_on          = [azure_network_subnet.example_primary]
+///   depends_on = [azure_network_subnet.example_primary]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${prefix}-netapp-account-primary"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_netapp_pool" "example_primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${prefix}-netapp-pool-primary"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_netapp_account.example_primary.name
 ///   service_level       = "Standard"
 ///   size_in_tb          = 4
@@ -1725,25 +1764,34 @@ import 'volume_group_oracle_volume.dart';
 /// }
 /// # Secondary region NetApp infrastructure
 /// resource "azure_netapp_account" "example_secondary" {
-///   depends_on          = [azure_network_subnet.example_secondary]
+///   depends_on = [azure_network_subnet.example_secondary]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${prefix}-netapp-account-secondary"
 ///   location            = altLocation
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_netapp_pool" "example_secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${prefix}-netapp-pool-secondary"
 ///   location            = altLocation
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_netapp_account.example_secondary.name
 ///   service_level       = "Standard"
 ///   size_in_tb          = 4
 ///   qos_type            = "Manual"
 /// }
 /// # Primary Oracle volume group
-/// resource "azure_netapp_volumegrouporacle" "example_primary" {
+/// resource "azure_netapp_volume_group_oracle" "example_primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   ="${prefix}-NetAppVolumeGroupOracle-primary"
-///   location               = azure_core_resourcegroup.example.location
-///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resource_group.example.location
+///   resource_group_name    = azure_core_resource_group.example.name
 ///   account_name           = azure_netapp_account.example_primary.name
 ///   group_description      = "Primary Oracle volume group for CRR"
 ///   application_identifier = "TST"
@@ -1771,11 +1819,14 @@ import 'volume_group_oracle_volume.dart';
 ///   }
 /// }
 /// # Secondary Oracle volume group with CRR
-/// resource "azure_netapp_volumegrouporacle" "example_secondary" {
-///   depends_on             = [azure_netapp_volumegrouporacle.example_primary]
+/// resource "azure_netapp_volume_group_oracle" "example_secondary" {
+///   depends_on = [azure_netapp_volume_group_oracle.example_primary]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   ="${prefix}-NetAppVolumeGroupOracle-secondary"
 ///   location               = altLocation
-///   resource_group_name    = azure_core_resourcegroup.example.name
+///   resource_group_name    = azure_core_resource_group.example.name
 ///   account_name           = azure_netapp_account.example_secondary.name
 ///   group_description      = "Secondary Oracle volume group for CRR"
 ///   application_identifier = "TST"
@@ -1802,8 +1853,8 @@ import 'volume_group_oracle_volume.dart';
 ///     }
 ///     data_protection_replication = {
 ///       endpoint_type             = "dst"
-///       remote_volume_location    = azure_core_resourcegroup.example.location
-///       remote_volume_resource_id = azure_netapp_volumegrouporacle.example_primary.volumes[0].id
+///       remote_volume_location    = azure_core_resource_group.example.location
+///       remote_volume_resource_id = azure_netapp_volume_group_oracle.example_primary.volumes[0].id
 ///       replication_frequency     = "10minutes"
 ///     }
 ///   }
@@ -2002,7 +2053,7 @@ import 'volume_group_oracle_volume.dart';
 ///                 .dataProtectionReplication(VolumeGroupOracleVolumeDataProtectionReplicationArgs.builder()
 ///                     .endpointType("dst")
 ///                     .remoteVolumeLocation(example.location())
-///                     .remoteVolumeResourceId(examplePrimaryVolumeGroupOracle.volumes().applyValue(_volumes -> _volumes[0].id()))
+///                     .remoteVolumeResourceId(examplePrimaryVolumeGroupOracle.volumes().applyValue(_volumes -> _volumes.get(0).id()))
 ///                     .replicationFrequency("10minutes")
 ///                     .build())
 ///                 .build())
@@ -2233,7 +2284,7 @@ class VolumeGroupOracle extends pulumi.CustomResource {
           'azure:netapp/volumeGroupOracle:VolumeGroupOracle',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     applicationIdentifier = registerOutput<String>('applicationIdentifier');

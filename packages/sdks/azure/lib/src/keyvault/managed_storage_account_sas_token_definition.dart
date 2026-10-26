@@ -407,7 +407,7 @@ import 'managed_storage_account_sas_token_definition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -415,9 +415,9 @@ import 'managed_storage_account_sas_token_definition_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "example" {
+/// data "azure_core_client_config" "example" {
 /// }
-/// data "azure_storage_getaccountsas" "exampleGetAccountSAS" {
+/// data "azure_storage_account_s_a_s" "exampleGetAccountSAS" {
 ///   connection_string = azure_storage_account.example.primary_connection_string
 ///   https_only        = true
 ///   resource_types = {
@@ -447,44 +447,59 @@ import 'managed_storage_account_sas_token_definition_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "storageaccountname"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-keyvault"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.example.tenant_id
+///   tenant_id                  = data.azure_core_client_config.example.tenant_id
 ///   sku_name                   = "standard"
 ///   access_policies {
-///     tenant_id           = data.azure_core_getclientconfig.example.tenant_id
-///     object_id           = data.azure_core_getclientconfig.example.object_id
+///     tenant_id           = data.azure_core_client_config.example.tenant_id
+///     object_id           = data.azure_core_client_config.example.object_id
 ///     secret_permissions  = ["Get", "Delete"]
 ///     storage_permissions = ["Get", "List", "Set", "SetSAS", "GetSAS", "DeleteSAS", "Update", "RegenerateKey"]
 ///   }
 /// }
-/// resource "azure_keyvault_managedstorageaccount" "example" {
+/// resource "azure_keyvault_managed_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "examplemanagedstorage"
-///   key_vault_id                 = azure_keyvault_keyvault.example.id
+///   key_vault_id                 = azure_keyvault_key_vault.example.id
 ///   storage_account_id           = azure_storage_account.example.id
 ///   storage_account_key          = "key1"
 ///   regenerate_key_automatically = false
 ///   regeneration_period          = "P1D"
 /// }
-/// resource "azure_keyvault_managedstorageaccountsastokendefinition" "example" {
+/// resource "azure_keyvault_managed_storage_account_sas_token_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "examplesasdefinition"
 ///   validity_period            = "P1D"
-///   managed_storage_account_id = azure_keyvault_managedstorageaccount.example.id
-///   sas_template_uri           = data.azure_storage_getaccountsas.exampleGetAccountSAS.sas
+///   managed_storage_account_id = azure_keyvault_managed_storage_account.example.id
+///   sas_template_uri           = data.azure_storage_account_s_a_s.exampleGetAccountSAS.sas
 ///   sas_type                   = "account"
 /// }
 /// ```
@@ -746,7 +761,7 @@ class ManagedStorageAccountSasTokenDefinition extends pulumi.CustomResource {
           'azure:keyvault/managedStorageAccountSasTokenDefinition:ManagedStorageAccountSasTokenDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     managedStorageAccountId = registerOutput<String>('managedStorageAccountId');
     this.name = registerOutput<String>('name');

@@ -58,7 +58,7 @@ class Cluster extends pulumi.CustomResource {
           'azure:redhatopenshift/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiServerProfile = registerOutput<ClusterApiServerProfile>('apiServerProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterApiServerProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterProfile = registerOutput<ClusterClusterProfile>('clusterProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterClusterProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });

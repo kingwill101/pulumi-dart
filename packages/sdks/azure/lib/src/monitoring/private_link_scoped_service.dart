@@ -140,7 +140,7 @@ import 'private_link_scoped_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -148,24 +148,36 @@ import 'private_link_scoped_service_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appinsights_insights" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-appinsights"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   application_type    = "web"
 /// }
-/// resource "azure_monitoring_privatelinkscope" "example" {
+/// resource "azure_monitoring_private_link_scope" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ampls"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_monitoring_privatelinkscopedservice" "example" {
+/// resource "azure_monitoring_private_link_scoped_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-amplsservice"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   scope_name          = azure_monitoring_privatelinkscope.example.name
+///   resource_group_name = azure_core_resource_group.example.name
+///   scope_name          = azure_monitoring_private_link_scope.example.name
 ///   linked_resource_id  = azure_appinsights_insights.example.id
 /// }
 /// ```
@@ -291,7 +303,7 @@ class PrivateLinkScopedService extends pulumi.CustomResource {
           'azure:monitoring/privateLinkScopedService:PrivateLinkScopedService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     linkedResourceId = registerOutput<String>('linkedResourceId');
     this.name = registerOutput<String>('name');

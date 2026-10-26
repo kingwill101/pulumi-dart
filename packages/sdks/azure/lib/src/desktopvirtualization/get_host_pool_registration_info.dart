@@ -119,7 +119,7 @@ import 'get_host_pool_registration_info_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -127,20 +127,29 @@ import 'get_host_pool_registration_info_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-hostpool"
 ///   location = "westeurope"
 /// }
-/// resource "azure_desktopvirtualization_hostpool" "example" {
+/// resource "azure_desktopvirtualization_host_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-HP"
-///   location             = azure_core_resourcegroup.example.location
-///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resource_group.example.location
+///   resource_group_name  = azure_core_resource_group.example.name
 ///   type                 = "Pooled"
 ///   validate_environment = true
 ///   load_balancer_type   = "BreadthFirst"
 /// }
-/// resource "azure_desktopvirtualization_gethostpoolregistrationinfo" "example" {
-///   hostpool_id     = azure_desktopvirtualization_hostpool.example.id
+/// resource "azure_desktopvirtualization_get_host_pool_registration_info" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   hostpool_id     = azure_desktopvirtualization_host_pool.example.id
 ///   expiration_date = "2022-01-01T23:40:52Z"
 /// }
 /// ```
@@ -154,8 +163,8 @@ import 'get_host_pool_registration_info_state.dart';
 /// import com.pulumi.azure.core.ResourceGroupArgs;
 /// import com.pulumi.azure.desktopvirtualization.HostPool;
 /// import com.pulumi.azure.desktopvirtualization.HostPoolArgs;
-/// import com.pulumi.azure.desktopvirtualization.getHostPoolRegistrationInfo;
-/// import com.pulumi.azure.desktopvirtualization.getHostPoolRegistrationInfoArgs;
+/// import com.pulumi.azure.desktopvirtualization.GetHostPoolRegistrationInfo;
+/// import com.pulumi.azure.desktopvirtualization.GetHostPoolRegistrationInfoArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -251,7 +260,7 @@ class GetHostPoolRegistrationInfo extends pulumi.CustomResource {
           'azure:desktopvirtualization/getHostPoolRegistrationInfo:getHostPoolRegistrationInfo',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['token'],
         ) {
     expirationDate = registerOutput<String>('expirationDate');

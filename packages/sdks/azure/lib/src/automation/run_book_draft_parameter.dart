@@ -43,7 +43,7 @@ class RunBookDraftParameter {
       defaultValue: (() { final guardedValue = map['defaultValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       key: pulumi.Input.fromValue(map['key'] as String),
       mandatory: (() { final guardedValue = map['mandatory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      position: (() { final guardedValue = map['position']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      position: (() { final guardedValue = map['position']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

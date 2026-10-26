@@ -447,7 +447,7 @@ import 'volume_quota_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -455,20 +455,29 @@ import 'volume_quota_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-virtualnetwork"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.0.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 ///   delegations {
 ///     name = "netapp"
@@ -479,23 +488,32 @@ import 'volume_quota_rule_state.dart';
 ///   }
 /// }
 /// resource "azure_netapp_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-netappaccount"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_netapp_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-netapppool"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_netapp_account.example.name
 ///   service_level       = "Premium"
 ///   size_in_tb          = 4
 /// }
 /// resource "azure_netapp_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-netappvolume"
-///   location                   = azure_core_resourcegroup.example.location
+///   location                   = azure_core_resource_group.example.location
 ///   zone                       = "1"
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   account_name               = azure_netapp_account.example.name
 ///   pool_name                  = azure_netapp_pool.example.name
 ///   volume_path                = "my-unique-file-path"
@@ -507,32 +525,44 @@ import 'volume_quota_rule_state.dart';
 ///   storage_quota_in_gb        = 100
 ///   snapshot_directory_visible = false
 /// }
-/// resource "azure_netapp_volumequotarule" "quota1" {
+/// resource "azure_netapp_volume_quota_rule" "quota1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-quota-rule-1"
-///   location          = azure_core_resourcegroup.example.location
+///   location          = azure_core_resource_group.example.location
 ///   volume_id         = azure_netapp_volume.example.id
 ///   quota_target      = "3001"
 ///   quota_size_in_kib = 1024
 ///   quota_type        = "IndividualGroupQuota"
 /// }
-/// resource "azure_netapp_volumequotarule" "quota2" {
+/// resource "azure_netapp_volume_quota_rule" "quota2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-quota-rule-2"
-///   location          = azure_core_resourcegroup.example.location
+///   location          = azure_core_resource_group.example.location
 ///   volume_id         = azure_netapp_volume.example.id
 ///   quota_target      = "2001"
 ///   quota_size_in_kib = 1024
 ///   quota_type        = "IndividualUserQuota"
 /// }
-/// resource "azure_netapp_volumequotarule" "quota3" {
+/// resource "azure_netapp_volume_quota_rule" "quota3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-quota-rule-3"
-///   location          = azure_core_resourcegroup.example.location
+///   location          = azure_core_resource_group.example.location
 ///   volume_id         = azure_netapp_volume.example.id
 ///   quota_size_in_kib = 1024
 ///   quota_type        = "DefaultUserQuota"
 /// }
-/// resource "azure_netapp_volumequotarule" "quota4" {
+/// resource "azure_netapp_volume_quota_rule" "quota4" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-quota-rule-4"
-///   location          = azure_core_resourcegroup.example.location
+///   location          = azure_core_resource_group.example.location
 ///   volume_id         = azure_netapp_volume.example.id
 ///   quota_size_in_kib = 1024
 ///   quota_type        = "DefaultGroupQuota"
@@ -819,7 +849,7 @@ class VolumeQuotaRule extends pulumi.CustomResource {
           'azure:netapp/volumeQuotaRule:VolumeQuotaRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

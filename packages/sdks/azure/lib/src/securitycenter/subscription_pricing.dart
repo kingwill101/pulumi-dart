@@ -67,7 +67,7 @@ import 'subscription_pricing_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -75,7 +75,10 @@ import 'subscription_pricing_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_securitycenter_subscriptionpricing" "example" {
+/// resource "azure_securitycenter_subscription_pricing" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tier          = "Standard"
 ///   resource_type = "VirtualMachines"
 /// }
@@ -251,7 +254,7 @@ import 'subscription_pricing_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -259,7 +262,10 @@ import 'subscription_pricing_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_securitycenter_subscriptionpricing" "example1" {
+/// resource "azure_securitycenter_subscription_pricing" "example1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tier          = "Standard"
 ///   resource_type = "CloudPosture"
 ///   extensions {
@@ -376,7 +382,7 @@ class SubscriptionPricing extends pulumi.CustomResource {
           'azure:securitycenter/subscriptionPricing:SubscriptionPricing',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     extensions = registerOutput<List<SubscriptionPricingExtension>?>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubscriptionPricingExtension>(guardedValue, (value) => SubscriptionPricingExtension.fromMap((value as Map).cast<String, dynamic>())); });
     resourceType = registerOutput<String?>('resourceType');

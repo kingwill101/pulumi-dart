@@ -228,7 +228,7 @@ import 'medtech_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -236,16 +236,25 @@ import 'medtech_service_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "east us"
 /// }
 /// resource "azure_healthcare_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplewkspace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_healthcare_medtechservice" "example" {
+/// resource "azure_healthcare_medtech_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "examplemed"
 ///   workspace_id = azure_healthcare_workspace.example.id
 ///   location     = "east us"
@@ -434,7 +443,7 @@ class MedtechService extends pulumi.CustomResource {
           'azure:healthcare/medtechService:MedtechService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     deviceMappingJson = registerOutput<String>('deviceMappingJson');
     eventhubConsumerGroupName = registerOutput<String>('eventhubConsumerGroupName');

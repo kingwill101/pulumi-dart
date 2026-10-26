@@ -72,7 +72,7 @@ import 'get_backup_vault_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -80,7 +80,7 @@ import 'get_backup_vault_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_dataprotection_getbackupvault" "example" {
+/// data "azure_dataprotection_backup_vault" "example" {
 ///   name                = "existing-backup-vault"
 ///   resource_group_name = "existing-resource-group"
 /// }
@@ -89,7 +89,7 @@ import 'get_backup_vault_result.dart';
 ///   value = exampleAzurermVpnGateway.id
 /// }
 /// output "azurermDataProtectionBackupVaultPrincipalId" {
-///   value = data.azure_dataprotection_getbackupvault.example.identities[0].principal_id
+///   value = data.azure_dataprotection_backup_vault.example.identities[0].principal_id
 /// }
 /// ```
 /// ```java
@@ -118,7 +118,7 @@ import 'get_backup_vault_result.dart';
 ///             .resourceGroupName("existing-resource-group")
 ///             .build());
 ///
-///         ctx.export("azurermDataProtectionBackupVaultId", exampleAzurermVpnGateway.id());
+///         ctx.export("azurermDataProtectionBackupVaultId", exampleAzurermVpnGateway.get("id"));
 ///         ctx.export("azurermDataProtectionBackupVaultPrincipalId", example.identities()[0].principalId());
 ///     }
 /// }

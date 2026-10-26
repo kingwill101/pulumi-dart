@@ -132,7 +132,7 @@ import 'snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -140,24 +140,33 @@ import 'snapshot_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "snapshot-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_compute_manageddisk" "example" {
+/// resource "azure_compute_managed_disk" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "managed-disk"
-///   location             = azure_core_resourcegroup.example.location
-///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resource_group.example.location
+///   resource_group_name  = azure_core_resource_group.example.name
 ///   storage_account_type = "Standard_LRS"
 ///   create_option        = "Empty"
 ///   disk_size_gb         = "10"
 /// }
 /// resource "azure_compute_snapshot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "snapshot"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   create_option       = "Copy"
-///   source_uri          = azure_compute_manageddisk.example.id
+///   source_uri          = azure_compute_managed_disk.example.id
 /// }
 /// ```
 /// ```java
@@ -301,7 +310,7 @@ class Snapshot extends pulumi.CustomResource {
           'azure:compute/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     createOption = registerOutput<String>('createOption');
     diskAccessId = registerOutput<String?>('diskAccessId');

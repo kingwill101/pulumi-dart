@@ -423,7 +423,7 @@ import 'next_generation_firewall_virtual_network_strata_cloud_manager_state.dart
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -431,35 +431,50 @@ import 'next_generation_firewall_virtual_network_strata_cloud_manager_state.dart
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resource-group"
 ///   location = "westeurope"
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-public-ip"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Static"
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_network_networksecuritygroup" "example" {
+/// resource "azure_network_network_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-nsg"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   tags = {
 ///     "environment" = "Production"
 ///   }
 /// }
 /// resource "azure_network_subnet" "trust" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-trust-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.1.0/24"]
 ///   delegations {
 ///     name = "trusted"
@@ -469,14 +484,20 @@ import 'next_generation_firewall_virtual_network_strata_cloud_manager_state.dart
 ///     }
 ///   }
 /// }
-/// resource "azure_network_subnetnetworksecuritygroupassociation" "trust" {
+/// resource "azure_network_subnet_network_security_group_association" "trust" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id                 = azure_network_subnet.trust.id
-///   network_security_group_id = azure_network_networksecuritygroup.example.id
+///   network_security_group_id = azure_network_network_security_group.example.id
 /// }
 /// resource "azure_network_subnet" "untrust" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-untrust-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 ///   delegations {
 ///     name = "untrusted"
@@ -486,19 +507,25 @@ import 'next_generation_firewall_virtual_network_strata_cloud_manager_state.dart
 ///     }
 ///   }
 /// }
-/// resource "azure_network_subnetnetworksecuritygroupassociation" "untrust" {
+/// resource "azure_network_subnet_network_security_group_association" "untrust" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id                 = azure_network_subnet.untrust.id
-///   network_security_group_id = azure_network_networksecuritygroup.example.id
+///   network_security_group_id = azure_network_network_security_group.example.id
 /// }
-/// resource "azure_paloalto_nextgenerationfirewallvirtualnetworkstratacloudmanager" "example" {
+/// resource "azure_paloalto_next_generation_firewall_virtual_network_strata_cloud_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                             = "example-ngfwvh"
-///   resource_group_name              = azure_core_resourcegroup.example.name
-///   location                         = azure_core_resourcegroup.example.location
+///   resource_group_name              = azure_core_resource_group.example.name
+///   location                         = azure_core_resource_group.example.location
 ///   strata_cloud_manager_tenant_name = "example-scm-tenant"
 ///   network_profile = {
-///     public_ip_address_ids = [azure_network_publicip.example.id]
+///     public_ip_address_ids = [azure_network_public_ip.example.id]
 ///     vnet_configuration = {
-///       virtual_network_id  = azure_network_virtualnetwork.example.id
+///       virtual_network_id  = azure_network_virtual_network.example.id
 ///       trusted_subnet_id   = azure_network_subnet.trust.id
 ///       untrusted_subnet_id = azure_network_subnet.untrust.id
 ///     }
@@ -767,7 +794,7 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManager extends pulumi.Cust
           'azure:paloalto/nextGenerationFirewallVirtualNetworkStrataCloudManager:NextGenerationFirewallVirtualNetworkStrataCloudManager',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     destinationNats = registerOutput<List<NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNat>?>('destinationNats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNat>(guardedValue, (value) => NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNat.fromMap((value as Map).cast<String, dynamic>())); });
     dnsSettings = registerOutput<NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualNetworkStrataCloudManagerDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -139,7 +139,7 @@ import 'load_balancer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -147,23 +147,32 @@ import 'load_balancer_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "LoadBalancerRG"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "PublicIPForLB"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Static"
 /// }
-/// resource "azure_lb_loadbalancer" "example" {
+/// resource "azure_lb_load_balancer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "TestLoadBalancer"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   frontend_ip_configurations {
 ///     name                 = "PublicIPAddress"
-///     public_ip_address_id = azure_network_publicip.example.id
+///     public_ip_address_id = azure_network_public_ip.example.id
 ///   }
 /// }
 /// ```
@@ -302,7 +311,7 @@ class LoadBalancer extends pulumi.CustomResource {
           'azure:lb/loadBalancer:LoadBalancer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     edgeZone = registerOutput<String?>('edgeZone');
     frontendIpConfigurations = registerOutput<List<LoadBalancerFrontendIpConfiguration>?>('frontendIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerFrontendIpConfiguration>(guardedValue, (value) => LoadBalancerFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });

@@ -35,9 +35,9 @@ class ScaleSetRollingUpgradePolicy {
 
   factory ScaleSetRollingUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return ScaleSetRollingUpgradePolicy(
-      maxBatchInstancePercent: (() { final guardedValue = map['maxBatchInstancePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxUnhealthyInstancePercent: (() { final guardedValue = map['maxUnhealthyInstancePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxUnhealthyUpgradedInstancePercent: (() { final guardedValue = map['maxUnhealthyUpgradedInstancePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxBatchInstancePercent: (() { final guardedValue = map['maxBatchInstancePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxUnhealthyInstancePercent: (() { final guardedValue = map['maxUnhealthyInstancePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxUnhealthyUpgradedInstancePercent: (() { final guardedValue = map['maxUnhealthyUpgradedInstancePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       pauseTimeBetweenBatches: (() { final guardedValue = map['pauseTimeBetweenBatches']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

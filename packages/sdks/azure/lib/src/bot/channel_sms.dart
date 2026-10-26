@@ -141,7 +141,7 @@ import 'channel_sms_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -149,24 +149,33 @@ import 'channel_sms_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_bot_channelsregistration" "example" {
+/// resource "azure_bot_channels_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-bcr"
 ///   location            = "global"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "F0"
-///   microsoft_app_id    = data.azure_core_getclientconfig.current.client_id
+///   microsoft_app_id    = data.azure_core_client_config.current.client_id
 /// }
-/// resource "azure_bot_channelsms" "example" {
-///   bot_name                        = azure_bot_channelsregistration.example.name
-///   location                        = azure_bot_channelsregistration.example.location
-///   resource_group_name             = azure_core_resourcegroup.example.name
+/// resource "azure_bot_channel_sms" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   bot_name                        = azure_bot_channels_registration.example.name
+///   location                        = azure_bot_channels_registration.example.location
+///   resource_group_name             = azure_core_resource_group.example.name
 ///   sms_channel_account_security_id = "BG61f7cf5157f439b084e98256409c2815"
 ///   sms_channel_auth_token          = "jh8980432610052ed4e29565c5e232f"
 ///   phone_number                    = "+12313803556"
@@ -292,7 +301,7 @@ class ChannelSms extends pulumi.CustomResource {
           'azure:bot/channelSms:ChannelSms',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['smsChannelAuthToken'],
         ) {
     botName = registerOutput<String>('botName');

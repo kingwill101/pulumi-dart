@@ -321,7 +321,7 @@ import 'function_app_function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -329,29 +329,41 @@ import 'function_app_function_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-group"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplesa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_appservice_serviceplan" "example" {
+/// resource "azure_appservice_service_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-service-plan"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   os_type             = "Linux"
 ///   sku_name            = "S1"
 /// }
-/// resource "azure_appservice_linuxfunctionapp" "example" {
+/// resource "azure_appservice_linux_function_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-function-app"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   service_plan_id            = azure_appservice_serviceplan.example.id
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
+///   service_plan_id            = azure_appservice_service_plan.example.id
 ///   storage_account_name       = azure_storage_account.example.name
 ///   storage_account_access_key = azure_storage_account.example.primary_access_key
 ///   site_config = {
@@ -360,9 +372,12 @@ import 'function_app_function_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "azure_appservice_functionappfunction" "example" {
+/// resource "azure_appservice_function_app_function" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example-function-app-function"
-///   function_app_id = azure_appservice_linuxfunctionapp.example.id
+///   function_app_id = azure_appservice_linux_function_app.example.id
 ///   language        = "Python"
 ///   test_data = jsonencode({
 ///     "name" = "Azure"
@@ -897,7 +912,7 @@ import 'function_app_function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -908,29 +923,41 @@ import 'function_app_function_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-group"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplesa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_appservice_serviceplan" "example" {
+/// resource "azure_appservice_service_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-service-plan"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   os_type             = "Windows"
 ///   sku_name            = "S1"
 /// }
-/// resource "azure_appservice_windowsfunctionapp" "example" {
+/// resource "azure_appservice_windows_function_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-function-app"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   service_plan_id            = azure_appservice_serviceplan.example.id
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
+///   service_plan_id            = azure_appservice_service_plan.example.id
 ///   storage_account_name       = azure_storage_account.example.name
 ///   storage_account_access_key = azure_storage_account.example.primary_access_key
 ///   site_config = {
@@ -939,9 +966,12 @@ import 'function_app_function_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "azure_appservice_functionappfunction" "example" {
+/// resource "azure_appservice_function_app_function" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example-function-app-function"
-///   function_app_id = azure_appservice_windowsfunctionapp.example.id
+///   function_app_id = azure_appservice_windows_function_app.example.id
 ///   language        = "CSharp"
 ///   files {
 ///     name    = "run.csx"
@@ -1204,7 +1234,7 @@ class FunctionAppFunction extends pulumi.CustomResource {
           'azure:appservice/functionAppFunction:FunctionAppFunction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     configJson = registerOutput<String>('configJson');
     configUrl = registerOutput<String>('configUrl');

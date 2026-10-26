@@ -407,7 +407,7 @@ import 'job_schedule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -415,33 +415,48 @@ import 'job_schedule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example"
 ///   storage_account_name  = azure_storage_account.example.name
 ///   container_access_type = "private"
 /// }
 /// resource "azure_storage_blob" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example"
 ///   storage_account_name   = azure_storage_account.example.name
 ///   storage_container_name = azure_storage_container.example.name
 ///   type                   = "Block"
-///   source                 = fileAsset("example.csv")
+///   source                 = fileasset("example.csv")
 /// }
 /// resource "azure_streamanalytics_job" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                     = "example-job"
-///   resource_group_name                      = azure_core_resourcegroup.example.name
-///   location                                 = azure_core_resourcegroup.example.location
+///   resource_group_name                      = azure_core_resource_group.example.name
+///   location                                 = azure_core_resource_group.example.location
 ///   compatibility_level                      = "1.2"
 ///   data_locale                              = "en-GB"
 ///   events_late_arrival_max_delay_in_seconds = 60
@@ -452,9 +467,17 @@ import 'job_schedule_state.dart';
 ///   tags = {
 ///     "environment" = "Example"
 ///   }
-///   transformation_query = "    SELECT *\n    INTO [exampleoutput]\n    FROM [exampleinput]\n"
+///   transformation_query = <<QUERY
+///     SELECT *
+///     INTO [exampleoutput]
+///     FROM [exampleinput]
+/// QUERY
+///
 /// }
-/// resource "azure_streamanalytics_streaminputblob" "example" {
+/// resource "azure_streamanalytics_stream_input_blob" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "exampleinput"
 ///   stream_analytics_job_name = azure_streamanalytics_job.example.name
 ///   resource_group_name       = azure_streamanalytics_job.example.resource_group_name
@@ -470,7 +493,10 @@ import 'job_schedule_state.dart';
 ///     field_delimiter = ","
 ///   }
 /// }
-/// resource "azure_streamanalytics_outputblob" "example" {
+/// resource "azure_streamanalytics_output_blob" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "exampleoutput"
 ///   stream_analytics_job_name = azure_streamanalytics_job.example.name
 ///   resource_group_name       = azure_streamanalytics_job.example.resource_group_name
@@ -484,8 +510,11 @@ import 'job_schedule_state.dart';
 ///     type = "Avro"
 ///   }
 /// }
-/// resource "azure_streamanalytics_jobschedule" "example" {
-///   depends_on              = [azure_streamanalytics_job.example, azure_streamanalytics_streaminputblob.example, azure_streamanalytics_outputblob.example]
+/// resource "azure_streamanalytics_job_schedule" "example" {
+///   depends_on = [azure_streamanalytics_job.example, azure_streamanalytics_stream_input_blob.example, azure_streamanalytics_output_blob.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   stream_analytics_job_id = azure_streamanalytics_job.example.id
 ///   start_mode              = "CustomTime"
 ///   start_time              = "2022-09-21T00:00:00Z"
@@ -760,7 +789,7 @@ class JobSchedule extends pulumi.CustomResource {
           'azure:streamanalytics/jobSchedule:JobSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     lastOutputTime = registerOutput<String>('lastOutputTime');
     startMode = registerOutput<String>('startMode');

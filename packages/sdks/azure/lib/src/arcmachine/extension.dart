@@ -111,7 +111,7 @@ import 'extension_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -121,14 +121,20 @@ import 'extension_state.dart';
 ///
 /// data "azure_arcmachine_get" "example" {
 ///   name                = "existing-hcmachine"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "West Europe"
 /// }
 /// resource "azure_arcmachine_extension" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example"
 ///   location       = "West Europe"
 ///   arc_machine_id = data.azure_arcmachine_get.example.id
@@ -265,7 +271,7 @@ class Extension extends pulumi.CustomResource {
           'azure:arcmachine/extension:Extension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['protectedSettings'],
         ) {
     arcMachineId = registerOutput<String>('arcMachineId');

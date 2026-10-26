@@ -195,7 +195,7 @@ import 'identity_provider_aadb2c_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -206,28 +206,43 @@ import 'identity_provider_aadb2c_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "My Company"
 ///   publisher_email     = "company@terraform.io"
 ///   sku_name            = "Developer_1"
 /// }
 /// resource "azuread_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "acctestam-example"
 /// }
-/// resource "azuread_applicationpassword" "example" {
+/// resource "azuread_application_password" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_object_id = azuread_application.example.object_id
 ///   end_date_relative     = "36h"
 /// }
-/// resource "azure_apimanagement_identityprovideraadb2c" "example" {
-///   depends_on          = [azuread_applicationpassword.example]
-///   resource_group_name = azure_core_resourcegroup.example.name
+/// resource "azure_apimanagement_identity_provider_aadb2c" "example" {
+///   depends_on = [azuread_application_password.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name = azure_core_resource_group.example.name
 ///   api_management_name = azure_apimanagement_service.example.name
 ///   client_id           = azuread_application.example.applicationId
 ///   client_secret       = "P@55w0rD!"
@@ -407,7 +422,7 @@ class IdentityProviderAadb2c extends pulumi.CustomResource {
           'azure:apimanagement/identityProviderAadb2c:IdentityProviderAadb2c',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['clientSecret'],
         ) {
     allowedTenant = registerOutput<String>('allowedTenant');

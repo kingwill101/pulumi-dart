@@ -30,7 +30,7 @@ class PolicyVMTieringPolicyArchivedRestorePoint {
 
   factory PolicyVMTieringPolicyArchivedRestorePoint.fromMap(Map<String, dynamic> map) {
     return PolicyVMTieringPolicyArchivedRestorePoint(
-      duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       durationType: (() { final guardedValue = map['durationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );

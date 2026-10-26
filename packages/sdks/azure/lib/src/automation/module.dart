@@ -129,7 +129,7 @@ import 'module_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -137,19 +137,28 @@ import 'module_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_automation_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "account1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Basic"
 /// }
 /// resource "azure_automation_module" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "xActiveDirectory"
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   automation_account_name = azure_automation_account.example.name
 ///   module_link = {
 ///     uri = "https://devopsgallerystorage.blob.core.windows.net/packages/xactivedirectory.2.19.0.nupkg"
@@ -269,7 +278,7 @@ class Module extends pulumi.CustomResource {
           'azure:automation/module:Module',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     moduleLink = registerOutput<ModuleModuleLink>('moduleLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModuleModuleLink.fromMap((guardedValue as Map).cast<String, dynamic>()); });

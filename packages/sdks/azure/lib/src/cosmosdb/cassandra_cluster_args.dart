@@ -98,7 +98,7 @@ class CassandraClusterArgs {
       delegatedManagementSubnetId: pulumi.Input.fromValue(map['delegatedManagementSubnetId'] as String),
       externalGossipCertificatePems: (() { final guardedValue = map['externalGossipCertificatePems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       externalSeedNodeIpAddresses: (() { final guardedValue = map['externalSeedNodeIpAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      hoursBetweenBackups: (() { final guardedValue = map['hoursBetweenBackups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      hoursBetweenBackups: (() { final guardedValue = map['hoursBetweenBackups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CassandraClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

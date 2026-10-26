@@ -36,7 +36,7 @@ class AssignmentDynamicScope extends pulumi.CustomResource {
           'azure:maintenance/assignmentDynamicScope:AssignmentDynamicScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     filter = registerOutput<AssignmentDynamicScopeFilter>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignmentDynamicScopeFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maintenanceConfigurationId = registerOutput<String>('maintenanceConfigurationId');

@@ -61,7 +61,7 @@ class AccessPolicy extends pulumi.CustomResource {
           'azure:keyvault/accessPolicy:AccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     applicationId = registerOutput<String?>('applicationId');
     certificatePermissions = registerOutput<List<String>?>('certificatePermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

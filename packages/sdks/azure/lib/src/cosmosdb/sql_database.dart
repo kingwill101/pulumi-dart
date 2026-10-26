@@ -90,7 +90,7 @@ import 'sql_database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -98,15 +98,18 @@ import 'sql_database_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_cosmosdb_getaccount" "example" {
+/// data "azure_cosmosdb_account" "example" {
 ///   name                = "tfex-cosmosdb-account"
 ///   resource_group_name = "tfex-cosmosdb-account-rg"
 /// }
 ///
-/// resource "azure_cosmosdb_sqldatabase" "example" {
+/// resource "azure_cosmosdb_sql_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-cosmos-sql-db"
-///   resource_group_name = data.azure_cosmosdb_getaccount.example.resource_group_name
-///   account_name        = data.azure_cosmosdb_getaccount.example.name
+///   resource_group_name = data.azure_cosmosdb_account.example.resource_group_name
+///   account_name        = data.azure_cosmosdb_account.example.name
 ///   throughput          = 400
 /// }
 /// ```
@@ -210,7 +213,7 @@ class SqlDatabase extends pulumi.CustomResource {
           'azure:cosmosdb/sqlDatabase:SqlDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     autoscaleSettings = registerOutput<SqlDatabaseAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlDatabaseAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

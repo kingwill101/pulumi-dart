@@ -323,7 +323,7 @@ import 'credential_service_principal_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -331,51 +331,69 @@ import 'credential_service_principal_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "westeurope"
 /// }
 /// resource "azure_datafactory_factory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "premium"
 ///   soft_delete_retention_days = 7
 ///   access_policies {
-///     tenant_id          = data.azure_core_getclientconfig.current.tenant_id
-///     object_id          = data.azure_core_getclientconfig.current.object_id
+///     tenant_id          = data.azure_core_client_config.current.tenant_id
+///     object_id          = data.azure_core_client_config.current.object_id
 ///     key_permissions    = ["Create", "Get"]
 ///     secret_permissions = ["Set", "Get", "Delete", "Purge", "Recover"]
 ///   }
 /// }
 /// resource "azure_keyvault_secret" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example"
 ///   value        = "example-secret"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 /// }
-/// resource "azure_datafactory_linkedservicekeyvault" "example" {
+/// resource "azure_datafactory_linked_service_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   data_factory_id = azure_datafactory_factory.example.id
-///   key_vault_id    = azure_keyvault_keyvault.example.id
+///   key_vault_id    = azure_keyvault_key_vault.example.id
 /// }
-/// resource "azure_datafactory_credentialserviceprincipal" "example" {
+/// resource "azure_datafactory_credential_service_principal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
 ///   description          = "example description"
 ///   data_factory_id      = azure_datafactory_factory.example.id
-///   tenant_id            = data.azure_core_getclientconfig.current.tenant_id
-///   service_principal_id = data.azure_core_getclientconfig.current.client_id
+///   tenant_id            = data.azure_core_client_config.current.tenant_id
+///   service_principal_id = data.azure_core_client_config.current.client_id
 ///   service_principal_key = {
-///     linked_service_name = azure_datafactory_linkedservicekeyvault.example.name
+///     linked_service_name = azure_datafactory_linked_service_key_vault.example.name
 ///     secret_name         = azure_keyvault_secret.example.name
 ///     secret_version      = azure_keyvault_secret.example.version
 ///   }
@@ -600,7 +618,7 @@ class CredentialServicePrincipal extends pulumi.CustomResource {
           'azure:datafactory/credentialServicePrincipal:CredentialServicePrincipal',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');

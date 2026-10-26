@@ -127,7 +127,7 @@ import 'gateway_api_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -135,24 +135,27 @@ import 'gateway_api_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getservice" "example" {
+/// data "azure_apimanagement_service" "example" {
 ///   name                = "example-api"
 ///   resource_group_name = "example-resources"
 /// }
-/// data "azure_apimanagement_getapi" "exampleGetApi" {
+/// data "azure_apimanagement_api" "exampleGetApi" {
 ///   name                = "search-api"
-///   api_management_name = data.azure_apimanagement_getservice.example.name
-///   resource_group_name = data.azure_apimanagement_getservice.example.resource_group_name
+///   api_management_name = data.azure_apimanagement_service.example.name
+///   resource_group_name = data.azure_apimanagement_service.example.resource_group_name
 ///   revision            = "2"
 /// }
-/// data "azure_apimanagement_getgateway" "exampleGetGateway" {
+/// data "azure_apimanagement_gateway" "exampleGetGateway" {
 ///   name              = "example-gateway"
-///   api_management_id = data.azure_apimanagement_getservice.example.id
+///   api_management_id = data.azure_apimanagement_service.example.id
 /// }
 ///
-/// resource "azure_apimanagement_gatewayapi" "example" {
-///   gateway_id = data.azure_apimanagement_getgateway.exampleGetGateway.id
-///   api_id     = data.azure_apimanagement_getapi.exampleGetApi.id
+/// resource "azure_apimanagement_gateway_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   gateway_id = data.azure_apimanagement_gateway.exampleGetGateway.id
+///   api_id     = data.azure_apimanagement_api.exampleGetApi.id
 /// }
 /// ```
 /// ```java
@@ -269,7 +272,7 @@ class GatewayApi extends pulumi.CustomResource {
           'azure:apimanagement/gatewayApi:GatewayApi',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     gatewayId = registerOutput<String>('gatewayId');

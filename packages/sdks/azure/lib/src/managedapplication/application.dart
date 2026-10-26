@@ -31,13 +31,13 @@ import 'application_state.dart';
 ///     description: "Test Managed App Definition",
 ///     authorizations: [{
 ///         servicePrincipalId: current.then(current => current.objectId),
-///         roleDefinitionId: pulumi.all([builtin.then(builtin => std.split({
+///         roleDefinitionId: Promise.all([builtin.then(builtin => std.split({
 ///             separator: "/",
 ///             text: builtin.id,
 ///         })), builtin.then(builtin => std.split({
 ///             separator: "/",
 ///             text: builtin.id,
-///         })).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]),
+///         })).then(invoke => invoke.result.length)]).then(([invoke, length]) => invoke.result[length - 1]),
 ///     }],
 /// });
 /// const exampleApplication = new azure.managedapplication.Application("example", {
@@ -81,9 +81,9 @@ import 'application_state.dart';
 ///     description="Test Managed App Definition",
 ///     authorizations=[{
 ///         "service_principal_id": current.object_id,
-///         "role_definition_id": len(std.split(separator="/",
-///             text=builtin.id).result).apply(lambda length: std.split(separator="/",
-///             text=builtin.id).result[int(length - 1)]),
+///         "role_definition_id": std.split(separator="/",
+///             text=builtin.id).result[len(std.split(separator="/",
+///             text=builtin.id).result) - 1.apply(lambda x: int(x))],
 ///     }])
 /// example_application = azure.managedapplication.Application("example",
 ///     name="example-managedapplication",
@@ -149,11 +149,11 @@ import 'application_state.dart';
 ///                 {
 ///                     Separator = "/",
 ///                     Text = builtin.Apply(getRoleDefinitionResult => getRoleDefinitionResult.Id),
-///                 }).Apply(invoke => invoke.Result).Length()).Apply(values =>
+///                 }).Apply(invoke => invoke.Result.Length)).Apply(values =>
 ///                 {
 ///                     var invoke = values.Item1;
 ///                     var length = values.Item2;
-///                     return invoke.Result[length - 1];
+///                     return invoke.Result[(int)(length - 1)];
 ///                 }),
 ///             },
 ///         },
@@ -198,95 +198,94 @@ import 'application_state.dart';
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// current, err := core.GetClientConfig(ctx, map[string]interface{}{
-/// }, nil);
-/// if err != nil {
-/// return err
-/// }
-/// builtin, err := authorization.LookupRoleDefinition(ctx, &authorization.LookupRoleDefinitionArgs{
-/// Name: pulumi.StringRef("Contributor"),
-/// }, nil);
-/// if err != nil {
-/// return err
-/// }
-/// example, err := core.NewResourceGroup(ctx, "example", &core.ResourceGroupArgs{
-/// Name: pulumi.String("example-resources"),
-/// Location: pulumi.String("West Europe"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// invokeSplit, err := std.Split(ctx, &std.SplitArgs{
-/// Separator: "/",
-/// Text: builtin.Id,
-/// }, nil)
-/// if err != nil {
-/// return err
-/// }
-/// invokeSplit1, err := std.Split(ctx, &std.SplitArgs{
-/// Separator: "/",
-/// Text: builtin.Id,
-/// }, nil)
-/// if err != nil {
-/// return err
-/// }
-/// exampleDefinition, err := managedapplication.NewDefinition(ctx, "example", &managedapplication.DefinitionArgs{
-/// Name: pulumi.String("examplemanagedapplicationdefinition"),
-/// Location: example.Location,
-/// ResourceGroupName: example.Name,
-/// LockLevel: pulumi.String("ReadOnly"),
-/// PackageFileUri: pulumi.String("https://github.com/Azure/azure-managedapp-samples/raw/master/Managed Application Sample Packages/201-managed-storage-account/managedstorage.zip"),
-/// DisplayName: pulumi.String("TestManagedAppDefinition"),
-/// Description: pulumi.String("Test Managed App Definition"),
-/// Authorizations: managedapplication.DefinitionAuthorizationArray{
-/// &managedapplication.DefinitionAuthorizationArgs{
-/// ServicePrincipalId: pulumi.String(current.ObjectId),
-/// RoleDefinitionId: len(invokeSplit.Result).ApplyT(func(length int) (string, error) {
-/// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(pulumi.StringOutput),
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = managedapplication.NewApplication(ctx, "example", &managedapplication.ApplicationArgs{
-/// Name: pulumi.String("example-managedapplication"),
-/// Location: example.Location,
-/// ResourceGroupName: example.Name,
-/// Kind: pulumi.String("ServiceCatalog"),
-/// ManagedResourceGroupName: pulumi.String("infrastructureGroup"),
-/// ApplicationDefinitionId: exampleDefinition.ID().ToIDOutput().ToStringOutput(),
-/// ParameterValues: example.Location.ApplyT(func(location string) (pulumi.String, error) {
-/// var _zero pulumi.String
-/// tmpJSON0, err := json.Marshal(map[string]map[string]string{
-/// "location": map[string]string{
-/// "value": location,
-/// },
-/// "storageAccountNamePrefix": map[string]string{
-/// "value": "storeNamePrefix",
-/// },
-/// "storageAccountType": map[string]string{
-/// "value": "Standard_LRS",
-/// },
-/// })
-/// if err != nil {
-/// return _zero, err
-/// }
-/// json0 := string(tmpJSON0)
-/// return pulumi.String(json0), nil
-/// }).(pulumi.StringOutput),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		current, err := core.GetClientConfig(ctx, map[string]interface{}{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		builtin, err := authorization.LookupRoleDefinition(ctx, &authorization.LookupRoleDefinitionArgs{
+/// 			Name: pulumi.StringRef("Contributor"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example, err := core.NewResourceGroup(ctx, "example", &core.ResourceGroupArgs{
+/// 			Name:     pulumi.String("example-resources"),
+/// 			Location: pulumi.String("West Europe"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeSplit, err := std.Split(ctx, &std.SplitArgs{
+/// 			Separator: "/",
+/// 			Text:      builtin.Id,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeSplit1, err := std.Split(ctx, &std.SplitArgs{
+/// 			Separator: "/",
+/// 			Text:      builtin.Id,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleDefinition, err := managedapplication.NewDefinition(ctx, "example", &managedapplication.DefinitionArgs{
+/// 			Name:              pulumi.String("examplemanagedapplicationdefinition"),
+/// 			Location:          example.Location,
+/// 			ResourceGroupName: example.Name,
+/// 			LockLevel:         pulumi.String("ReadOnly"),
+/// 			PackageFileUri:    pulumi.String("https://github.com/Azure/azure-managedapp-samples/raw/master/Managed Application Sample Packages/201-managed-storage-account/managedstorage.zip"),
+/// 			DisplayName:       pulumi.String("TestManagedAppDefinition"),
+/// 			Description:       pulumi.String("Test Managed App Definition"),
+/// 			Authorizations: managedapplication.DefinitionAuthorizationArray{
+/// 				&managedapplication.DefinitionAuthorizationArgs{
+/// 					ServicePrincipalId: pulumi.String(current.ObjectId),
+/// 					RoleDefinitionId:   invokeSplit.Result[int(len(invokeSplit1.Result)-1)],
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = managedapplication.NewApplication(ctx, "example", &managedapplication.ApplicationArgs{
+/// 			Name:                     pulumi.String("example-managedapplication"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			Kind:                     pulumi.String("ServiceCatalog"),
+/// 			ManagedResourceGroupName: pulumi.String("infrastructureGroup"),
+/// 			ApplicationDefinitionId:  exampleDefinition.ID().ToIDOutput().ToStringOutput(),
+/// 			ParameterValues: example.Location.ApplyT(func(location string) (pulumi.String, error) {
+/// 				var _zero pulumi.String
+/// 				tmpJSON0, err := json.Marshal(map[string]map[string]string{
+/// 					"location": map[string]string{
+/// 						"value": location,
+/// 					},
+/// 					"storageAccountNamePrefix": map[string]string{
+/// 						"value": "storeNamePrefix",
+/// 					},
+/// 					"storageAccountType": map[string]string{
+/// 						"value": "Standard_LRS",
+/// 					},
+/// 				})
+/// 				if err != nil {
+/// 					return _zero, err
+/// 				}
+/// 				json0 := string(tmpJSON0)
+/// 				return pulumi.String(json0), nil
+/// 			}).(pulumi.StringOutput),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -297,39 +296,48 @@ import 'application_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
-/// data "azure_authorization_getroledefinition" "builtin" {
+/// data "azure_authorization_role_definition" "builtin" {
 ///   name = "Contributor"
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_managedapplication_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplemanagedapplicationdefinition"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   lock_level          = "ReadOnly"
 ///   package_file_uri    = "https://github.com/Azure/azure-managedapp-samples/raw/master/Managed Application Sample Packages/201-managed-storage-account/managedstorage.zip"
 ///   display_name        = "TestManagedAppDefinition"
 ///   description         = "Test Managed App Definition"
 ///   authorizations {
-///     service_principal_id = data.azure_core_getclientconfig.current.object_id
-///     role_definition_id   = split("/", data.azure_authorization_getroledefinition.builtin.id)[length(split("/", data.azure_authorization_getroledefinition.builtin.id)) - 1]
+///     service_principal_id = data.azure_core_client_config.current.object_id
+///     role_definition_id   = split("/", data.azure_authorization_role_definition.builtin.id)[length(split("/", data.azure_authorization_role_definition.builtin.id)) - 1]
 ///   }
 /// }
 /// resource "azure_managedapplication_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example-managedapplication"
-///   location                    = azure_core_resourcegroup.example.location
-///   resource_group_name         = azure_core_resourcegroup.example.name
+///   location                    = azure_core_resource_group.example.location
+///   resource_group_name         = azure_core_resource_group.example.name
 ///   kind                        = "ServiceCatalog"
 ///   managed_resource_group_name = "infrastructureGroup"
 ///   application_definition_id   = azure_managedapplication_definition.example.id
 ///   parameter_values = jsonencode({
 ///     "location" = {
-///       "value" = azure_core_resourcegroup.example.location
+///       "value" = azure_core_resource_group.example.location
 ///     }
 ///     "storageAccountNamePrefix" = {
 ///       "value" = "storeNamePrefix"
@@ -396,10 +404,10 @@ import 'application_state.dart';
 ///                 .roleDefinitionId(StdFunctions.split(SplitArgs.builder()
 ///                     .separator("/")
 ///                     .text(builtin.id())
-///                     .build()).result().size().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
+///                     .build()).result()[StdFunctions.split(SplitArgs.builder()
 ///                     .separator("/")
 ///                     .text(builtin.id())
-///                     .build()).result()[_length - 1]))
+///                     .build()).result().size() - 1])
 ///                 .build())
 ///             .build());
 ///
@@ -477,7 +485,7 @@ class Application extends pulumi.CustomResource {
           'azure:managedapplication/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     applicationDefinitionId = registerOutput<String?>('applicationDefinitionId');
     kind = registerOutput<String>('kind');

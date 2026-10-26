@@ -522,7 +522,7 @@ import 'cache_nfs_target_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -533,53 +533,74 @@ import 'cache_nfs_target_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplevn"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example_hpc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "examplesubnethpc"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.1.0/24"]
 /// }
 /// resource "azure_hpc_cache" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplehpccache"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   cache_size_in_gb    = 3072
 ///   subnet_id           = azure_network_subnet.example_hpc.id
 ///   sku_name            = "Standard_2G"
 /// }
 /// resource "azure_network_subnet" "example_vm" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "examplesubnetvm"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_network_networkinterface" "example" {
+/// resource "azure_network_network_interface" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplenic"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ip_configurations {
 ///     name                          = "internal"
 ///     subnet_id                     = azure_network_subnet.example_vm.id
 ///     private_ip_address_allocation = "Dynamic"
 ///   }
 /// }
-/// resource "azure_compute_linuxvirtualmachine" "example" {
+/// resource "azure_compute_linux_virtual_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "examplevm"
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   location              = azure_core_resource_group.example.location
 ///   size                  = "Standard_F2"
 ///   admin_username        = "adminuser"
-///   network_interface_ids = [azure_network_networkinterface.example.id]
+///   network_interface_ids = [azure_network_network_interface.example.id]
 ///   admin_ssh_keys {
 ///     username   = "adminuser"
 ///     public_key = file("~/.ssh/id_rsa.pub")
@@ -596,11 +617,14 @@ import 'cache_nfs_target_state.dart';
 ///   }
 ///   custom_data = base64encode(local.customData)
 /// }
-/// resource "azure_hpc_cachenfstarget" "example" {
+/// resource "azure_hpc_cache_nfs_target" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplehpcnfstarget"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   cache_name          = azure_hpc_cache.example.name
-///   target_host_name    = azure_compute_linuxvirtualmachine.example.private_ip_address
+///   target_host_name    = azure_compute_linux_virtual_machine.example.private_ip_address
 ///   usage_model         = "READ_HEAVY_INFREQ"
 ///   namespace_junctions {
 ///     namespace_path = "/nfs/a1"
@@ -919,7 +943,7 @@ class CacheNfsTarget extends pulumi.CustomResource {
           'azure:hpc/cacheNfsTarget:CacheNfsTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     cacheName = registerOutput<String>('cacheName');
     this.name = registerOutput<String>('name');

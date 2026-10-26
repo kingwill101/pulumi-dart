@@ -104,7 +104,7 @@ import 'nat_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -112,14 +112,20 @@ import 'nat_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "nat-gateway-example-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_natgateway" "example" {
+/// resource "azure_network_nat_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "nat-gateway"
-///   location                = azure_core_resourcegroup.example.location
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   location                = azure_core_resource_group.example.location
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   sku_name                = "Standard"
 ///   idle_timeout_in_minutes = 10
 ///   zones                   = ["1"]
@@ -236,7 +242,7 @@ class NatGateway extends pulumi.CustomResource {
           'azure:network/natGateway:NatGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
     location = registerOutput<String>('location');

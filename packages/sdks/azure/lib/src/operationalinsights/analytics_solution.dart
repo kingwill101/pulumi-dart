@@ -174,7 +174,7 @@ import 'analytics_solution_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -185,28 +185,40 @@ import 'analytics_solution_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "k8s-log-analytics-test"
 ///   location = "West Europe"
 /// }
 /// resource "random_id" "workspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   keepers = {
-///     "groupName" = azure_core_resourcegroup.example.name
+///     "groupName" = azure_core_resource_group.example.name
 ///   }
 ///   byte_length = 8
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="k8s-workspace-${random_id.workspace.hex}"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 /// }
-/// resource "azure_operationalinsights_analyticssolution" "example" {
+/// resource "azure_operationalinsights_analytics_solution" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   solution_name         = "ContainerInsights"
-///   location              = azure_core_resourcegroup.example.location
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   workspace_resource_id = azure_operationalinsights_analyticsworkspace.example.id
-///   workspace_name        = azure_operationalinsights_analyticsworkspace.example.name
+///   location              = azure_core_resource_group.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   workspace_resource_id = azure_operationalinsights_analytics_workspace.example.id
+///   workspace_name        = azure_operationalinsights_analytics_workspace.example.name
 ///   plan = {
 ///     publisher = "Microsoft"
 ///     product   = "OMSGallery/ContainerInsights"
@@ -252,7 +264,7 @@ import 'analytics_solution_state.dart';
 ///             .build());
 ///
 ///         var exampleAnalyticsWorkspace = new AnalyticsWorkspace("exampleAnalyticsWorkspace", AnalyticsWorkspaceArgs.builder()
-///             .name(String.format("k8s-workspace-%s", workspace.hex()))
+///             .name(String.format("k8s-workspace-%s", workspace.get("hex")))
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
 ///             .sku("PerGB2018")
@@ -351,7 +363,7 @@ class AnalyticsSolution extends pulumi.CustomResource {
           'azure:operationalinsights/analyticsSolution:AnalyticsSolution',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     plan = registerOutput<AnalyticsSolutionPlan>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsSolutionPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });

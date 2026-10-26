@@ -278,7 +278,7 @@ import 'fleet_update_run_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -286,19 +286,28 @@ import 'fleet_update_run_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "westeurope"
 /// }
-/// resource "azure_containerservice_kubernetesfleetmanager" "example" {
-///   location            = azure_core_resourcegroup.example.location
+/// resource "azure_containerservice_kubernetes_fleet_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location            = azure_core_resource_group.example.location
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_containerservice_kubernetescluster" "example" {
+/// resource "azure_containerservice_kubernetes_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   dns_prefix          = "example"
 ///   default_node_pool = {
 ///     name       = "default"
@@ -309,15 +318,21 @@ import 'fleet_update_run_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_containerservice_fleetmember" "example" {
+/// resource "azure_containerservice_fleet_member" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example"
-///   kubernetes_fleet_id   = azure_containerservice_kubernetesfleetmanager.example.id
-///   kubernetes_cluster_id = azure_containerservice_kubernetescluster.example.id
+///   kubernetes_fleet_id   = azure_containerservice_kubernetes_fleet_manager.example.id
+///   kubernetes_cluster_id = azure_containerservice_kubernetes_cluster.example.id
 ///   group                 = "example-group"
 /// }
-/// resource "azure_containerservice_fleetupdaterun" "example" {
+/// resource "azure_containerservice_fleet_update_run" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example"
-///   kubernetes_fleet_manager_id = azure_containerservice_kubernetesfleetmanager.example.id
+///   kubernetes_fleet_manager_id = azure_containerservice_kubernetes_fleet_manager.example.id
 ///   managed_cluster_update = {
 ///     upgrade = {
 ///       type               = "Full"
@@ -523,7 +538,7 @@ class FleetUpdateRun extends pulumi.CustomResource {
           'azure:containerservice/fleetUpdateRun:FleetUpdateRun',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     fleetUpdateStrategyId = registerOutput<String?>('fleetUpdateStrategyId');
     kubernetesFleetManagerId = registerOutput<String>('kubernetesFleetManagerId');

@@ -222,7 +222,7 @@ import 'job_target_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -230,41 +230,59 @@ import 'job_target_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "westeurope"
 /// }
 /// resource "azure_mssql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-server"
-///   location                     = azure_core_resourcegroup.example.location
-///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resource_group.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
 ///   version                      = "12.0"
 ///   administrator_login          = "4dm1n157r470r"
 ///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
 /// }
 /// resource "azure_mssql_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "example-db"
 ///   server_id = azure_mssql_server.example.id
 ///   collation = "SQL_Latin1_General_CP1_CI_AS"
 ///   sku_name  = "S1"
 /// }
-/// resource "azure_mssql_jobagent" "example" {
+/// resource "azure_mssql_job_agent" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example-job-agent"
-///   location    = azure_core_resourcegroup.example.location
+///   location    = azure_core_resource_group.example.location
 ///   database_id = azure_mssql_database.example.id
 /// }
-/// resource "azure_mssql_jobcredential" "example" {
+/// resource "azure_mssql_job_credential" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-job-credential"
-///   job_agent_id = azure_mssql_jobagent.example.id
+///   job_agent_id = azure_mssql_job_agent.example.id
 ///   username     = "testusername"
 ///   password     = "testpassword"
 /// }
-/// resource "azure_mssql_jobtargetgroup" "example" {
+/// resource "azure_mssql_job_target_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-target-group"
-///   job_agent_id = azure_mssql_jobagent.example.id
+///   job_agent_id = azure_mssql_job_agent.example.id
 ///   job_targets {
 ///     server_name       = azure_mssql_server.example.name
-///     job_credential_id = azure_mssql_jobcredential.example.id
+///     job_credential_id = azure_mssql_job_credential.example.id
 ///   }
 /// }
 /// ```
@@ -432,7 +450,7 @@ class JobTargetGroup extends pulumi.CustomResource {
           'azure:mssql/jobTargetGroup:JobTargetGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     jobAgentId = registerOutput<String>('jobAgentId');
     jobTargets = registerOutput<List<JobTargetGroupJobTarget>?>('jobTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobTargetGroupJobTarget>(guardedValue, (value) => JobTargetGroupJobTarget.fromMap((value as Map).cast<String, dynamic>())); });

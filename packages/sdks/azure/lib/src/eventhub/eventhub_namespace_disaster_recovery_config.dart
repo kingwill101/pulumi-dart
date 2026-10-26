@@ -147,7 +147,7 @@ import 'eventhub_namespace_disaster_recovery_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -155,27 +155,39 @@ import 'eventhub_namespace_disaster_recovery_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "eventhub-replication"
 ///   location = "West Europe"
 /// }
-/// resource "azure_eventhub_eventhubnamespace" "primary" {
+/// resource "azure_eventhub_event_hub_namespace" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "eventhub-primary"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_eventhub_eventhubnamespace" "secondary" {
+/// resource "azure_eventhub_event_hub_namespace" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "eventhub-secondary"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_eventhub_eventhubnamespacedisasterrecoveryconfig" "example" {
+/// resource "azure_eventhub_eventhub_namespace_disaster_recovery_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "replicate-eventhub"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   namespace_name       = azure_eventhub_eventhubnamespace.primary.name
-///   partner_namespace_id = azure_eventhub_eventhubnamespace.secondary.id
+///   resource_group_name  = azure_core_resource_group.example.name
+///   namespace_name       = azure_eventhub_event_hub_namespace.primary.name
+///   partner_namespace_id = azure_eventhub_event_hub_namespace.secondary.id
 /// }
 /// ```
 /// ```java
@@ -300,7 +312,7 @@ class EventhubNamespaceDisasterRecoveryConfig extends pulumi.CustomResource {
           'azure:eventhub/eventhubNamespaceDisasterRecoveryConfig:EventhubNamespaceDisasterRecoveryConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     namespaceName = registerOutput<String>('namespaceName');

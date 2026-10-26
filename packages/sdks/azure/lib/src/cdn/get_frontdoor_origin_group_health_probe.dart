@@ -35,7 +35,7 @@ class GetFrontdoorOriginGroupHealthProbe {
 
   factory GetFrontdoorOriginGroupHealthProbe.fromMap(Map<String, dynamic> map) {
     return GetFrontdoorOriginGroupHealthProbe(
-      intervalInSeconds: pulumi.Input.fromValue((map['intervalInSeconds'] as num).toInt()),
+      intervalInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['intervalInSeconds'])),
       path: pulumi.Input.fromValue(map['path'] as String),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       requestType: pulumi.Input.fromValue(map['requestType'] as String),

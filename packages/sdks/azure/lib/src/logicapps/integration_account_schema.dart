@@ -134,7 +134,7 @@ import 'integration_account_schema_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -145,20 +145,29 @@ import 'integration_account_schema_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_logicapps_integrationaccount" "example" {
+/// resource "azure_logicapps_integration_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ia"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Basic"
 /// }
-/// resource "azure_logicapps_integrationaccountschema" "example" {
+/// resource "azure_logicapps_integration_account_schema" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-ias"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   integration_account_name = azure_logicapps_integrationaccount.example.name
+///   resource_group_name      = azure_core_resource_group.example.name
+///   integration_account_name = azure_logicapps_integration_account.example.name
 ///   content                  = file("testdata/integration_account_schema_content.xsd")
 /// }
 /// ```
@@ -284,7 +293,7 @@ class IntegrationAccountSchema extends pulumi.CustomResource {
           'azure:logicapps/integrationAccountSchema:IntegrationAccountSchema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     content = registerOutput<String>('content');
     fileName = registerOutput<String?>('fileName');

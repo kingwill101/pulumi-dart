@@ -39,8 +39,8 @@ class EnvironmentWorkloadProfile {
 
   factory EnvironmentWorkloadProfile.fromMap(Map<String, dynamic> map) {
     return EnvironmentWorkloadProfile(
-      maximumCount: (() { final guardedValue = map['maximumCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minimumCount: (() { final guardedValue = map['minimumCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximumCount: (() { final guardedValue = map['maximumCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minimumCount: (() { final guardedValue = map['minimumCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       workloadProfileType: pulumi.Input.fromValue(map['workloadProfileType'] as String),
     );

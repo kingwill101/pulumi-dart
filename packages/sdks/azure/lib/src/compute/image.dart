@@ -93,7 +93,7 @@ import 'image_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -101,16 +101,19 @@ import 'image_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_compute_getvirtualmachine" "example" {
+/// data "azure_compute_virtual_machine" "example" {
 ///   name                = "examplevm"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// resource "azure_compute_image" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "exampleimage"
-///   location                  = data.azure_compute_getvirtualmachine.example.location
-///   resource_group_name       = data.azure_compute_getvirtualmachine.example.name
-///   source_virtual_machine_id = data.azure_compute_getvirtualmachine.example.id
+///   location                  = data.azure_compute_virtual_machine.example.location
+///   resource_group_name       = data.azure_compute_virtual_machine.example.name
+///   source_virtual_machine_id = data.azure_compute_virtual_machine.example.id
 /// }
 /// ```
 /// ```java
@@ -225,7 +228,7 @@ class Image extends pulumi.CustomResource {
           'azure:compute/image:Image',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     dataDisks = registerOutput<List<ImageDataDisk>?>('dataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageDataDisk>(guardedValue, (value) => ImageDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
     hyperVGeneration = registerOutput<String?>('hyperVGeneration');

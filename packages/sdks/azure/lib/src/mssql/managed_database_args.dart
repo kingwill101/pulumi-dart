@@ -55,7 +55,7 @@ class ManagedDatabaseArgs {
       managedInstanceId: pulumi.Input.fromValue(map['managedInstanceId'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pointInTimeRestore: (() { final guardedValue = map['pointInTimeRestore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedDatabasePointInTimeRestore.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      shortTermRetentionDays: (() { final guardedValue = map['shortTermRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      shortTermRetentionDays: (() { final guardedValue = map['shortTermRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

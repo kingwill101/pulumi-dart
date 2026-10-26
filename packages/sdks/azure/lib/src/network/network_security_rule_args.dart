@@ -123,7 +123,7 @@ class NetworkSecurityRuleArgs {
       direction: pulumi.Input.fromValue(map['direction'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkSecurityGroupName: pulumi.Input.fromValue(map['networkSecurityGroupName'] as String),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sourceAddressPrefix: (() { final guardedValue = map['sourceAddressPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

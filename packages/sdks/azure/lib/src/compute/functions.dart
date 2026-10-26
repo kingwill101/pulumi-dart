@@ -108,7 +108,7 @@ import 'get_virtual_machine_scale_set_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -116,13 +116,13 @@ import 'get_virtual_machine_scale_set_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_compute_getavailabilityset" "example" {
+/// data "azure_compute_availability_set" "example" {
 ///   name                = "tf-appsecuritygroup"
 ///   resource_group_name = "my-resource-group"
 /// }
 ///
 /// output "availabilitySetId" {
-///   value = data.azure_compute_getavailabilityset.example.id
+///   value = data.azure_compute_availability_set.example.id
 /// }
 /// ```
 /// ```java
@@ -266,7 +266,7 @@ pulumi.Output<GetAvailabilitySetResult> getAvailabilitySetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -274,13 +274,13 @@ pulumi.Output<GetAvailabilitySetResult> getAvailabilitySetOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getbastionhost" "example" {
+/// data "azure_compute_bastion_host" "example" {
 ///   name                = "existing-bastion"
 ///   resource_group_name = "existing-resources"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_compute_getbastionhost.example.id
+///   value = data.azure_compute_bastion_host.example.id
 /// }
 /// ```
 /// ```java
@@ -424,7 +424,7 @@ pulumi.Output<GetBastionHostResult> getBastionHostOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -432,13 +432,13 @@ pulumi.Output<GetBastionHostResult> getBastionHostOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getconfidentialledger" "current" {
+/// data "azure_compute_confidential_ledger" "current" {
 ///   name                = "example-ledger"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "ledgerEndpoint" {
-///   value = data.azure_compute_getconfidentialledger.current.ledger_endpoint
+///   value = data.azure_compute_confidential_ledger.current.ledger_endpoint
 /// }
 /// ```
 /// ```java
@@ -586,7 +586,7 @@ pulumi.Output<GetConfidentialLedgerResult> getConfidentialLedgerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -594,14 +594,14 @@ pulumi.Output<GetConfidentialLedgerResult> getConfidentialLedgerOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getdedicatedhost" "example" {
+/// data "azure_compute_dedicated_host" "example" {
 ///   name                      = "example-host"
 ///   dedicated_host_group_name = "example-host-group"
 ///   resource_group_name       = "example-resources"
 /// }
 ///
 /// output "dedicatedHostId" {
-///   value = data.azure_compute_getdedicatedhost.example.id
+///   value = data.azure_compute_dedicated_host.example.id
 /// }
 /// ```
 /// ```java
@@ -747,7 +747,7 @@ pulumi.Output<GetDedicatedHostResult> getDedicatedHostOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -755,13 +755,13 @@ pulumi.Output<GetDedicatedHostResult> getDedicatedHostOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getdedicatedhostgroup" "example" {
+/// data "azure_compute_dedicated_host_group" "example" {
 ///   name                = "example-dedicated-host-group"
 ///   resource_group_name = "example-rg"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_compute_getdedicatedhostgroup.example.id
+///   value = data.azure_compute_dedicated_host_group.example.id
 /// }
 /// ```
 /// ```java
@@ -905,7 +905,7 @@ pulumi.Output<GetDedicatedHostGroupResult> getDedicatedHostGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -913,13 +913,13 @@ pulumi.Output<GetDedicatedHostGroupResult> getDedicatedHostGroupOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getdiskaccess" "example" {
+/// data "azure_compute_disk_access" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_compute_getdiskaccess.example.id
+///   value = data.azure_compute_disk_access.example.id
 /// }
 /// ```
 /// ```java
@@ -1063,7 +1063,7 @@ pulumi.Output<GetDiskAccessResult> getDiskAccessOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1071,13 +1071,13 @@ pulumi.Output<GetDiskAccessResult> getDiskAccessOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getdiskencryptionset" "existing" {
+/// data "azure_compute_disk_encryption_set" "existing" {
 ///   name                = "example-des"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_compute_getdiskencryptionset.existing.id
+///   value = data.azure_compute_disk_encryption_set.existing.id
 /// }
 /// ```
 /// ```java
@@ -1221,7 +1221,7 @@ pulumi.Output<GetDiskEncryptionSetResult> getDiskEncryptionSetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1229,13 +1229,13 @@ pulumi.Output<GetDiskEncryptionSetResult> getDiskEncryptionSetOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getimage" "search" {
+/// data "azure_compute_image" "search" {
 ///   name                = "search-api"
 ///   resource_group_name = "packerimages"
 /// }
 ///
 /// output "imageId" {
-///   value = data.azure_compute_getimage.search.id
+///   value = data.azure_compute_image.search.id
 /// }
 /// ```
 /// ```java
@@ -1368,7 +1368,7 @@ pulumi.Output<GetImageResult> getImageOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1376,7 +1376,7 @@ pulumi.Output<GetImageResult> getImageOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getimages" "example" {
+/// data "azure_compute_images" "example" {
 ///   resource_group_name = "example-resources"
 /// }
 /// ```
@@ -1516,7 +1516,7 @@ pulumi.Output<GetImagesResult> getImagesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1524,13 +1524,13 @@ pulumi.Output<GetImagesResult> getImagesOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getmanageddisk" "existing" {
+/// data "azure_compute_managed_disk" "existing" {
 ///   name                = "example-datadisk"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_compute_getmanageddisk.existing.id
+///   value = data.azure_compute_managed_disk.existing.id
 /// }
 /// ```
 /// ```java
@@ -1670,7 +1670,7 @@ pulumi.Output<GetManagedDiskResult> getManagedDiskOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1678,7 +1678,7 @@ pulumi.Output<GetManagedDiskResult> getManagedDiskOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getmanageddisks" "existing" {
+/// data "azure_compute_managed_disks" "existing" {
 ///   resource_group_name = "example-resources"
 /// }
 ///
@@ -1711,7 +1711,7 @@ pulumi.Output<GetManagedDiskResult> getManagedDiskOutput(
 ///             .resourceGroupName("example-resources")
 ///             .build());
 ///
-///         ctx.export("firstDiskId", existingAzurermManagedDisk.disk()[0].id());
+///         ctx.export("firstDiskId", existingAzurermManagedDisk.get("disk")[0].get("id"));
 ///     }
 /// }
 /// ```
@@ -1825,7 +1825,7 @@ pulumi.Output<GetManagedDisksResult> getManagedDisksOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1833,13 +1833,13 @@ pulumi.Output<GetManagedDisksResult> getManagedDisksOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getorchestratedvirtualmachinescaleset" "example" {
+/// data "azure_compute_orchestrated_virtual_machine_scale_set" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_compute_getorchestratedvirtualmachinescaleset.example.id
+///   value = data.azure_compute_orchestrated_virtual_machine_scale_set.example.id
 /// }
 /// ```
 /// ```java
@@ -1991,7 +1991,7 @@ pulumi.Output<GetOrchestratedVirtualMachineScaleSetResult> getOrchestratedVirtua
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1999,7 +1999,7 @@ pulumi.Output<GetOrchestratedVirtualMachineScaleSetResult> getOrchestratedVirtua
 ///   }
 /// }
 ///
-/// data "azure_compute_getplatformimage" "example" {
+/// data "azure_compute_platform_image" "example" {
 ///   location  = "West Europe"
 ///   publisher = "Canonical"
 ///   offer     = "0001-com-ubuntu-server-focal"
@@ -2007,7 +2007,7 @@ pulumi.Output<GetOrchestratedVirtualMachineScaleSetResult> getOrchestratedVirtua
 /// }
 ///
 /// output "id" {
-///   value = data.azure_compute_getplatformimage.example.id
+///   value = data.azure_compute_platform_image.example.id
 /// }
 /// ```
 /// ```java
@@ -2152,7 +2152,7 @@ pulumi.Output<GetPlatformImageResult> getPlatformImageOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2160,7 +2160,7 @@ pulumi.Output<GetPlatformImageResult> getPlatformImageOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getsharedimage" "example" {
+/// data "azure_compute_shared_image" "example" {
 ///   name                = "my-image"
 ///   gallery_name        = "my-image-gallery"
 ///   resource_group_name = "example-resources"
@@ -2299,7 +2299,7 @@ pulumi.Output<GetSharedImageResult> getSharedImageOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2307,7 +2307,7 @@ pulumi.Output<GetSharedImageResult> getSharedImageOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getsharedimagegallery" "example" {
+/// data "azure_compute_shared_image_gallery" "example" {
 ///   name                = "my-image-gallery"
 ///   resource_group_name = "example-resources"
 /// }
@@ -2451,7 +2451,7 @@ pulumi.Output<GetSharedImageGalleryResult> getSharedImageGalleryOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2459,7 +2459,7 @@ pulumi.Output<GetSharedImageGalleryResult> getSharedImageGalleryOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getsharedimageversion" "example" {
+/// data "azure_compute_shared_image_version" "example" {
 ///   name                = "1.0.0"
 ///   image_name          = "my-image"
 ///   gallery_name        = "my-image-gallery"
@@ -2605,7 +2605,7 @@ pulumi.Output<GetSharedImageVersionResult> getSharedImageVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2613,7 +2613,7 @@ pulumi.Output<GetSharedImageVersionResult> getSharedImageVersionOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getsharedimageversions" "example" {
+/// data "azure_compute_shared_image_versions" "example" {
 ///   image_name          = "my-image"
 ///   gallery_name        = "my-image-gallery"
 ///   resource_group_name = "example-resources"
@@ -2752,7 +2752,7 @@ pulumi.Output<GetSharedImageVersionsResult> getSharedImageVersionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2760,7 +2760,7 @@ pulumi.Output<GetSharedImageVersionsResult> getSharedImageVersionsOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getsnapshot" "example" {
+/// data "azure_compute_snapshot" "example" {
 ///   name                = "my-snapshot"
 ///   resource_group_name = "my-resource-group"
 /// }
@@ -2903,7 +2903,7 @@ pulumi.Output<GetSnapshotResult> getSnapshotOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2911,13 +2911,13 @@ pulumi.Output<GetSnapshotResult> getSnapshotOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getsshpublickey" "example" {
+/// data "azure_compute_ssh_public_key" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_compute_getsshpublickey.example.id
+///   value = data.azure_compute_ssh_public_key.example.id
 /// }
 /// ```
 /// ```java
@@ -3061,7 +3061,7 @@ pulumi.Output<GetSshPublicKeyResult> getSshPublicKeyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -3069,13 +3069,13 @@ pulumi.Output<GetSshPublicKeyResult> getSshPublicKeyOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getvirtualmachine" "example" {
+/// data "azure_compute_virtual_machine" "example" {
 ///   name                = "production"
 ///   resource_group_name = "networking"
 /// }
 ///
 /// output "virtualMachineId" {
-///   value = data.azure_compute_getvirtualmachine.example.id
+///   value = data.azure_compute_virtual_machine.example.id
 /// }
 /// ```
 /// ```java
@@ -3219,7 +3219,7 @@ pulumi.Output<GetVirtualMachineResult> getVirtualMachineOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -3227,13 +3227,13 @@ pulumi.Output<GetVirtualMachineResult> getVirtualMachineOutput(
 ///   }
 /// }
 ///
-/// data "azure_compute_getvirtualmachinescaleset" "example" {
+/// data "azure_compute_virtual_machine_scale_set" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_compute_getvirtualmachinescaleset.example.id
+///   value = data.azure_compute_virtual_machine_scale_set.example.id
 /// }
 /// ```
 /// ```java

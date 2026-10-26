@@ -138,7 +138,7 @@ import 'event_hub_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -146,23 +146,32 @@ import 'event_hub_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_eventhub_eventhubnamespace" "example" {
+/// resource "azure_eventhub_event_hub_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acceptanceTestEventHubNamespace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 ///   capacity            = 1
 ///   tags = {
 ///     "environment" = "Production"
 ///   }
 /// }
-/// resource "azure_eventhub_eventhub" "example" {
+/// resource "azure_eventhub_event_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "acceptanceTestEventHub"
-///   namespace_id      = azure_eventhub_eventhubnamespace.example.id
+///   namespace_id      = azure_eventhub_event_hub_namespace.example.id
 ///   partition_count   = 2
 ///   message_retention = 1
 /// }
@@ -297,7 +306,7 @@ class EventHub extends pulumi.CustomResource {
           'azure:eventhub/eventHub:EventHub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     captureDescription = registerOutput<EventHubCaptureDescription?>('captureDescription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventHubCaptureDescription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     messageRetention = registerOutput<int>('messageRetention');

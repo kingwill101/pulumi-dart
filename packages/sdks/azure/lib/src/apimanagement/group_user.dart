@@ -93,7 +93,7 @@ import 'group_user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -101,17 +101,20 @@ import 'group_user_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getuser" "example" {
+/// data "azure_apimanagement_user" "example" {
 ///   user_id             = "my-user"
 ///   api_management_name = "example-apim"
 ///   resource_group_name = "search-service"
 /// }
 ///
-/// resource "azure_apimanagement_groupuser" "example" {
-///   user_id             = data.azure_apimanagement_getuser.example.id
+/// resource "azure_apimanagement_group_user" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   user_id             = data.azure_apimanagement_user.example.id
 ///   group_name          = "example-group"
-///   resource_group_name = data.azure_apimanagement_getuser.example.resource_group_name
-///   api_management_name = data.azure_apimanagement_getuser.example.api_management_name
+///   resource_group_name = data.azure_apimanagement_user.example.resource_group_name
+///   api_management_name = data.azure_apimanagement_user.example.api_management_name
 /// }
 /// ```
 /// ```java
@@ -210,7 +213,7 @@ class GroupUser extends pulumi.CustomResource {
           'azure:apimanagement/groupUser:GroupUser',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     groupName = registerOutput<String>('groupName');

@@ -35,7 +35,7 @@ class GetSharedImageVersionTargetRegion {
   factory GetSharedImageVersionTargetRegion.fromMap(Map<String, dynamic> map) {
     return GetSharedImageVersionTargetRegion(
       name: pulumi.Input.fromValue(map['name'] as String),
-      regionalReplicaCount: pulumi.Input.fromValue((map['regionalReplicaCount'] as num).toInt()),
+      regionalReplicaCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['regionalReplicaCount'])),
       storageAccountType: pulumi.Input.fromValue(map['storageAccountType'] as String),
     );
   }

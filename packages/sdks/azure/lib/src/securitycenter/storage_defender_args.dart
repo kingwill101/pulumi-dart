@@ -49,7 +49,7 @@ class StorageDefenderArgs {
 
   factory StorageDefenderArgs.fromMap(Map<String, dynamic> map) {
     return StorageDefenderArgs(
-      malwareScanningOnUploadCapGbPerMonth: (() { final guardedValue = map['malwareScanningOnUploadCapGbPerMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      malwareScanningOnUploadCapGbPerMonth: (() { final guardedValue = map['malwareScanningOnUploadCapGbPerMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       malwareScanningOnUploadEnabled: (() { final guardedValue = map['malwareScanningOnUploadEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       overrideSubscriptionSettingsEnabled: (() { final guardedValue = map['overrideSubscriptionSettingsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       scanResultsEventGridTopicId: (() { final guardedValue = map['scanResultsEventGridTopicId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

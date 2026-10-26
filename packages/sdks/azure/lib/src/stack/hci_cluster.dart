@@ -50,7 +50,7 @@ class HciCluster extends pulumi.CustomResource {
           'azure:stack/hciCluster:HciCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     automanageConfigurationId = registerOutput<String?>('automanageConfigurationId');
     clientId = registerOutput<String?>('clientId');

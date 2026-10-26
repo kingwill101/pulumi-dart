@@ -158,7 +158,7 @@ import 'virtual_network_dns_servers_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -166,22 +166,31 @@ import 'virtual_network_dns_servers_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   subnets {
 ///     name           = "subnet1"
 ///     address_prefix = "10.0.1.0/24"
 ///   }
 /// }
-/// resource "azure_network_virtualnetworkdnsservers" "example" {
-///   virtual_network_id = azure_network_virtualnetwork.example.id
+/// resource "azure_network_virtual_network_dns_servers" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   virtual_network_id = azure_network_virtual_network.example.id
 ///   dns_servers        = ["10.7.7.2", "10.7.7.7", "10.7.7.1"]
 /// }
 /// ```
@@ -301,7 +310,7 @@ class VirtualNetworkDnsServers extends pulumi.CustomResource {
           'azure:network/virtualNetworkDnsServers:VirtualNetworkDnsServers',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     virtualNetworkId = registerOutput<String>('virtualNetworkId');

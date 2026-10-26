@@ -63,12 +63,12 @@ class KubernetesClusterNetworkProfileLoadBalancerProfile {
     return KubernetesClusterNetworkProfileLoadBalancerProfile(
       backendPoolType: (() { final guardedValue = map['backendPoolType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveOutboundIps: (() { final guardedValue = map['effectiveOutboundIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      managedOutboundIpCount: (() { final guardedValue = map['managedOutboundIpCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      managedOutboundIpv6Count: (() { final guardedValue = map['managedOutboundIpv6Count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      managedOutboundIpCount: (() { final guardedValue = map['managedOutboundIpCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      managedOutboundIpv6Count: (() { final guardedValue = map['managedOutboundIpv6Count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       outboundIpAddressIds: (() { final guardedValue = map['outboundIpAddressIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       outboundIpPrefixIds: (() { final guardedValue = map['outboundIpPrefixIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      outboundPortsAllocated: (() { final guardedValue = map['outboundPortsAllocated']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      outboundPortsAllocated: (() { final guardedValue = map['outboundPortsAllocated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

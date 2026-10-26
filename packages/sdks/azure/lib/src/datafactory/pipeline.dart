@@ -107,7 +107,7 @@ import 'pipeline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -115,16 +115,25 @@ import 'pipeline_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_datafactory_factory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_datafactory_pipeline" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   data_factory_id = azure_datafactory_factory.example.id
 /// }
@@ -320,7 +329,7 @@ import 'pipeline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -329,12 +338,29 @@ import 'pipeline_state.dart';
 /// }
 ///
 /// resource "azure_datafactory_pipeline" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   data_factory_id = testAzurermDataFactory.id
 ///   variables = {
 ///     "bob" = "item1"
 ///   }
-///   activities_json = "[\n    {\n        \\\"name\\\": \\\"Append variable1\\\",\n        \\\"type\\\": \\\"AppendVariable\\\",\n        \\\"dependsOn\\\": [],\n        \\\"userProperties\\\": [],\n        \\\"typeProperties\\\": {\n          \\\"variableName\\\": \\\"bob\\\",\n          \\\"value\\\": \\\"something\\\"\n        }\n    }\n]\n"
+///   activities_json = <<JSON
+/// [
+///     {
+///         \"name\": \"Append variable1\",
+///         \"type\": \"AppendVariable\",
+///         \"dependsOn\": [],
+///         \"userProperties\": [],
+///         \"typeProperties\": {
+///           \"variableName\": \"bob\",
+///           \"value\": \"something\"
+///         }
+///     }
+/// ]
+/// JSON
+///
 /// }
 /// ```
 /// ```java
@@ -360,7 +386,7 @@ import 'pipeline_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var test = new Pipeline("test", PipelineArgs.builder()
 ///             .name("example")
-///             .dataFactoryId(testAzurermDataFactory.id())
+///             .dataFactoryId(testAzurermDataFactory.get("id"))
 ///             .variables(Map.of("bob", "item1"))
 ///             .activitiesJson("""
 /// [
@@ -454,7 +480,7 @@ class Pipeline extends pulumi.CustomResource {
           'azure:datafactory/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     activitiesJson = registerOutput<String?>('activitiesJson');
     annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

@@ -111,7 +111,7 @@ import 'iot_hub_dps_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -119,14 +119,20 @@ import 'iot_hub_dps_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_iot_iothubdps" "example" {
+/// resource "azure_iot_iot_hub_dps" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   allocation_policy   = "Hashed"
 ///   sku = {
 ///     name     = "S1"
@@ -252,7 +258,7 @@ class IotHubDps extends pulumi.CustomResource {
           'azure:iot/iotHubDps:IotHubDps',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     allocationPolicy = registerOutput<String?>('allocationPolicy');
     dataResidencyEnabled = registerOutput<bool?>('dataResidencyEnabled');

@@ -166,7 +166,7 @@ import 'monitor_user.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -174,13 +174,19 @@ import 'monitor_user.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_dynatrace_monitor" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "exmpledynatracemonitor"
-///   resource_group_name             = azure_core_resourcegroup.example.name
+///   resource_group_name             = azure_core_resource_group.example.name
 ///   location                        = test.location
 ///   monitoring_enabled              = true
 ///   marketplace_subscription_status = "Active"
@@ -236,7 +242,7 @@ import 'monitor_user.dart';
 ///         var exampleMonitor = new Monitor("exampleMonitor", MonitorArgs.builder()
 ///             .name("exmpledynatracemonitor")
 ///             .resourceGroupName(example.name())
-///             .location(test.location())
+///             .location(test.get("location"))
 ///             .monitoringEnabled(true)
 ///             .marketplaceSubscriptionStatus("Active")
 ///             .identity(MonitorIdentityArgs.builder()
@@ -340,7 +346,7 @@ class Monitor extends pulumi.CustomResource {
           'azure:dynatrace/monitor:Monitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     environmentProperties = registerOutput<List<MonitorEnvironmentProperty>?>('environmentProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorEnvironmentProperty>(guardedValue, (value) => MonitorEnvironmentProperty.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<MonitorIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });

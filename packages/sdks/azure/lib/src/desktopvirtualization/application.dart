@@ -223,7 +223,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -231,37 +231,52 @@ import 'application_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "rg-example-virtualdesktop"
 ///   location = "West Europe"
 /// }
-/// resource "azure_desktopvirtualization_hostpool" "pooledbreadthfirst" {
+/// resource "azure_desktopvirtualization_host_pool" "pooledbreadthfirst" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "pooledbreadthfirst"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   type                = "Pooled"
 ///   load_balancer_type  = "BreadthFirst"
 /// }
-/// resource "azure_desktopvirtualization_hostpool" "personalautomatic" {
+/// resource "azure_desktopvirtualization_host_pool" "personalautomatic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                             = "personalautomatic"
-///   location                         = azure_core_resourcegroup.example.location
-///   resource_group_name              = azure_core_resourcegroup.example.name
+///   location                         = azure_core_resource_group.example.location
+///   resource_group_name              = azure_core_resource_group.example.name
 ///   type                             = "Personal"
 ///   personal_desktop_assignment_type = "Automatic"
 ///   load_balancer_type               = "BreadthFirst"
 /// }
-/// resource "azure_desktopvirtualization_applicationgroup" "remoteapp" {
+/// resource "azure_desktopvirtualization_application_group" "remoteapp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acctag"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   type                = "RemoteApp"
-///   host_pool_id        = azure_desktopvirtualization_hostpool.pooledbreadthfirst.id
+///   host_pool_id        = azure_desktopvirtualization_host_pool.pooledbreadthfirst.id
 ///   friendly_name       = "TestAppGroup"
 ///   description         = "Acceptance Test: An application group"
 /// }
 /// resource "azure_desktopvirtualization_application" "chrome" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "googlechrome"
-///   application_group_id         = azure_desktopvirtualization_applicationgroup.remoteapp.id
+///   application_group_id         = azure_desktopvirtualization_application_group.remoteapp.id
 ///   friendly_name                = "Google Chrome"
 ///   description                  = "Chromium based web browser"
 ///   path                         = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
@@ -445,7 +460,7 @@ class Application extends pulumi.CustomResource {
           'azure:desktopvirtualization/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     applicationGroupId = registerOutput<String>('applicationGroupId');
     commandLineArgumentPolicy = registerOutput<String>('commandLineArgumentPolicy');

@@ -123,7 +123,7 @@ import 'route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -131,19 +131,28 @@ import 'route_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_routetable" "example" {
+/// resource "azure_network_route_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acceptanceTestRouteTable1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_route" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acceptanceTestRoute1"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   route_table_name    = azure_network_routetable.example.name
+///   resource_group_name = azure_core_resource_group.example.name
+///   route_table_name    = azure_network_route_table.example.name
 ///   address_prefix      = "10.1.0.0/16"
 ///   next_hop_type       = "VnetLocal"
 /// }
@@ -261,7 +270,7 @@ class Route extends pulumi.CustomResource {
           'azure:network/route:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     addressPrefix = registerOutput<String>('addressPrefix');
     this.name = registerOutput<String>('name');

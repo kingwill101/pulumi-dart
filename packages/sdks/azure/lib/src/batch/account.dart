@@ -149,7 +149,7 @@ import 'account_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -157,21 +157,30 @@ import 'account_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "testbatch"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "teststorage"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_batch_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                = "testbatchaccount"
-///   resource_group_name                 = azure_core_resourcegroup.example.name
-///   location                            = azure_core_resourcegroup.example.location
+///   resource_group_name                 = azure_core_resource_group.example.name
+///   location                            = azure_core_resource_group.example.location
 ///   pool_allocation_mode                = "BatchService"
 ///   storage_account_id                  = azure_storage_account.example.id
 ///   storage_account_authentication_mode = "StorageKeys"
@@ -330,7 +339,7 @@ class Account extends pulumi.CustomResource {
           'azure:batch/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['primaryAccessKey', 'secondaryAccessKey'],
         ) {
     accountEndpoint = registerOutput<String>('accountEndpoint');

@@ -25,8 +25,8 @@ class OrchestratedVirtualMachineScaleSetPriorityMix {
 
   factory OrchestratedVirtualMachineScaleSetPriorityMix.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetPriorityMix(
-      baseRegularCount: (() { final guardedValue = map['baseRegularCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      regularPercentageAboveBase: (() { final guardedValue = map['regularPercentageAboveBase']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      baseRegularCount: (() { final guardedValue = map['baseRegularCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      regularPercentageAboveBase: (() { final guardedValue = map['regularPercentageAboveBase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

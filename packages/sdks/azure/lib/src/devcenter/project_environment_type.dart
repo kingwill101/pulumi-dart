@@ -210,7 +210,7 @@ import 'project_environment_type_user_role_assignment.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -218,37 +218,52 @@ import 'project_environment_type_user_role_assignment.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_devcenter_devcenter" "example" {
+/// resource "azure_devcenter_dev_center" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-dc"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_devcenter_environmenttype" "example" {
+/// resource "azure_devcenter_environment_type" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example-et"
-///   dev_center_id = azure_devcenter_devcenter.example.id
+///   dev_center_id = azure_devcenter_dev_center.example.id
 /// }
 /// resource "azure_devcenter_project" "example" {
-///   depends_on          = [azure_devcenter_environmenttype.example]
+///   depends_on = [azure_devcenter_environment_type.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-dcp"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   dev_center_id       = azure_devcenter_devcenter.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
+///   dev_center_id       = azure_devcenter_dev_center.example.id
 /// }
-/// resource "azure_devcenter_projectenvironmenttype" "example" {
+/// resource "azure_devcenter_project_environment_type" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-et"
-///   location              = azure_core_resourcegroup.example.location
+///   location              = azure_core_resource_group.example.location
 ///   dev_center_project_id = azure_devcenter_project.example.id
-///   deployment_target_id  ="/subscriptions/${data.azure_core_getclientconfig.current.subscription_id}"
+///   deployment_target_id  ="/subscriptions/${data.azure_core_client_config.current.subscription_id}"
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
@@ -425,7 +440,7 @@ class ProjectEnvironmentType extends pulumi.CustomResource {
           'azure:devcenter/projectEnvironmentType:ProjectEnvironmentType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     creatorRoleAssignmentRoles = registerOutput<List<String>?>('creatorRoleAssignmentRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deploymentTargetId = registerOutput<String>('deploymentTargetId');

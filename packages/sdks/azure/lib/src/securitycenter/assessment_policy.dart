@@ -66,7 +66,7 @@ import 'assessment_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -74,7 +74,10 @@ import 'assessment_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_securitycenter_assessmentpolicy" "example" {
+/// resource "azure_securitycenter_assessment_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Test Display Name"
 ///   severity     = "Medium"
 ///   description  = "Test Description"
@@ -167,7 +170,7 @@ class AssessmentPolicy extends pulumi.CustomResource {
           'azure:securitycenter/assessmentPolicy:AssessmentPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     categories = registerOutput<List<String>>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String>('description');

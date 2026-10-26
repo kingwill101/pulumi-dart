@@ -99,7 +99,7 @@ import 'database_threat_detection_policy.dart';
 ///         ServerId = exampleServer.Id,
 ///         Collation = "SQL_Latin1_General_CP1_CI_AS",
 ///         LicenseType = "LicenseIncluded",
-///         MaxSizeGb = 2,
+///         MaxSizeGb = 2.0,
 ///         SkuName = "S0",
 ///         EnclaveType = "VBS",
 ///         Tags =
@@ -159,7 +159,7 @@ import 'database_threat_detection_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -167,19 +167,28 @@ import 'database_threat_detection_policy.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_mssql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-sqlserver"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   version                      = "12.0"
 ///   administrator_login          = "4dm1n157r470r"
 ///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
 /// }
 /// resource "azure_mssql_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-db"
 ///   server_id    = azure_mssql_server.example.id
 ///   collation    = "SQL_Latin1_General_CP1_CI_AS"
@@ -576,7 +585,7 @@ import 'database_threat_detection_policy.dart';
 ///         ServerId = exampleServer.Id,
 ///         Collation = "SQL_Latin1_General_CP1_CI_AS",
 ///         LicenseType = "LicenseIncluded",
-///         MaxSizeGb = 4,
+///         MaxSizeGb = 4.0,
 ///         ReadScale = true,
 ///         SkuName = "S0",
 ///         ZoneRedundant = true,
@@ -732,7 +741,7 @@ import 'database_threat_detection_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -740,31 +749,46 @@ import 'database_threat_detection_policy.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-admin"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplesa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_mssql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-sqlserver"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   version                      = "12.0"
 ///   administrator_login          = "4dm1n157r470r"
 ///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
 /// }
 /// resource "azure_mssql_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example-db"
 ///   server_id      = azure_mssql_server.example.id
 ///   collation      = "SQL_Latin1_General_CP1_CI_AS"
@@ -779,18 +803,21 @@ import 'database_threat_detection_policy.dart';
 ///   }
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
 ///   transparent_data_encryption_key_vault_key_id = azure_keyvault_key.example.id
 /// }
 /// # Create a key vault with access policies which allow for the current user to get, list, create, delete, update, recover, purge and getRotationPolicy for the key vault key and also add a key vault access policy for the Microsoft Sql Server instance User Managed Identity to get, wrap, and unwrap key(s)
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "mssqltdeexample"
-///   location                    = azure_core_resourcegroup.example.location
-///   resource_group_name         = azure_core_resourcegroup.example.name
+///   location                    = azure_core_resource_group.example.location
+///   resource_group_name         = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled  = false
 ///   enabled_for_disk_encryption = true
-///   tenant_id                   = azure_authorization_userassignedidentity.example.tenant_id
+///   tenant_id                   = azure_authorization_user_assigned_identity.example.tenant_id
 ///   soft_delete_retention_days  = 7
 ///   purge_protection_enabled    = true
 ///   sku_name                    = "standard"
@@ -800,15 +827,18 @@ import 'database_threat_detection_policy.dart';
 ///     key_permissions = ["Get", "List", "Create", "Delete", "Update", "Recover", "Purge", "GetRotationPolicy"]
 ///   }
 ///   access_policies {
-///     tenant_id       = azure_authorization_userassignedidentity.example.tenant_id
-///     object_id       = azure_authorization_userassignedidentity.example.principal_id
+///     tenant_id       = azure_authorization_user_assigned_identity.example.tenant_id
+///     object_id       = azure_authorization_user_assigned_identity.example.principal_id
 ///     key_permissions = ["Get", "WrapKey", "UnwrapKey"]
 ///   }
 /// }
 /// resource "azure_keyvault_key" "example" {
-///   depends_on   = [azure_keyvault_keyvault.example]
+///   depends_on = [azure_keyvault_key_vault.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-key"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["unwrapKey", "wrapKey"]
@@ -891,8 +921,8 @@ import 'database_threat_detection_policy.dart';
 ///             .skuName("standard")
 ///             .accessPolicies(
 ///                 KeyVaultAccessPolicyArgs.builder()
-///                     .tenantId(current.tenantId())
-///                     .objectId(current.objectId())
+///                     .tenantId(current.get("tenantId"))
+///                     .objectId(current.get("objectId"))
 ///                     .keyPermissions(
 ///                         "Get",
 ///                         "List",
@@ -1173,7 +1203,7 @@ class Database extends pulumi.CustomResource {
           'azure:mssql/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     autoPauseDelayInMinutes = registerOutput<int>('autoPauseDelayInMinutes');
     collation = registerOutput<String>('collation');

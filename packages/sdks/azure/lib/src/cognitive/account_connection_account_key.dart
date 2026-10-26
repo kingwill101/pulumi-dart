@@ -204,7 +204,7 @@ import 'account_connection_account_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -212,14 +212,20 @@ import 'account_connection_account_key_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_cognitive_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-aiservices"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   kind                       = "AIServices"
 ///   sku_name                   = "S0"
 ///   project_management_enabled = true
@@ -229,13 +235,19 @@ import 'account_connection_account_key_state.dart';
 ///   }
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestorageacct"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_cognitive_accountconnectionaccountkey" "example" {
+/// resource "azure_cognitive_account_connection_account_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-connection"
 ///   cognitive_account_id = azure_cognitive_account.example.id
 ///   category             = "AzureStorageAccount"
@@ -403,7 +415,7 @@ class AccountConnectionAccountKey extends pulumi.CustomResource {
           'azure:cognitive/accountConnectionAccountKey:AccountConnectionAccountKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['accountKey'],
         ) {
     accountKey = registerOutput<String>('accountKey', isSecret: true);

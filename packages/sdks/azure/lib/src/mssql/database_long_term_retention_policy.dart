@@ -42,7 +42,7 @@ class DatabaseLongTermRetentionPolicy {
     return DatabaseLongTermRetentionPolicy(
       immutableBackupsEnabled: (() { final guardedValue = map['immutableBackupsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       monthlyRetention: (() { final guardedValue = map['monthlyRetention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      weekOfYear: (() { final guardedValue = map['weekOfYear']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      weekOfYear: (() { final guardedValue = map['weekOfYear']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       weeklyRetention: (() { final guardedValue = map['weeklyRetention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       yearlyRetention: (() { final guardedValue = map['yearlyRetention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -31,7 +31,7 @@ class GetLinuxWebAppLogApplicationLogAzureBlobStorage {
   factory GetLinuxWebAppLogApplicationLogAzureBlobStorage.fromMap(Map<String, dynamic> map) {
     return GetLinuxWebAppLogApplicationLogAzureBlobStorage(
       level: pulumi.Input.fromValue(map['level'] as String),
-      retentionInDays: pulumi.Input.fromValue((map['retentionInDays'] as num).toInt()),
+      retentionInDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retentionInDays'])),
       sasUrl: pulumi.Input.fromValue(map['sasUrl'] as String),
     );
   }

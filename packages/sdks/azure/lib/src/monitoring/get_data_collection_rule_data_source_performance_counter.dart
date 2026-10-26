@@ -37,7 +37,7 @@ class GetDataCollectionRuleDataSourcePerformanceCounter {
     return GetDataCollectionRuleDataSourcePerformanceCounter(
       counterSpecifiers: pulumi.Input.fromValue((map['counterSpecifiers'] as List).cast<String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
-      samplingFrequencyInSeconds: pulumi.Input.fromValue((map['samplingFrequencyInSeconds'] as num).toInt()),
+      samplingFrequencyInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['samplingFrequencyInSeconds'])),
       streams: pulumi.Input.fromValue((map['streams'] as List).cast<String>()),
     );
   }

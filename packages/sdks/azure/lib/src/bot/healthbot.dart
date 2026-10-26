@@ -91,7 +91,7 @@ import 'healthbot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -99,14 +99,20 @@ import 'healthbot_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-healthbot"
 ///   location = "West Europe"
 /// }
 /// resource "azure_bot_healthbot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-bot"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku_name            = "F0"
 /// }
 /// ```
@@ -208,7 +214,7 @@ class Healthbot extends pulumi.CustomResource {
           'azure:bot/healthbot:Healthbot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     botManagementPortalUrl = registerOutput<String>('botManagementPortalUrl');
     location = registerOutput<String>('location');

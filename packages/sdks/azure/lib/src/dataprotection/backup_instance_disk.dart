@@ -263,7 +263,7 @@ import 'backup_instance_disk_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -271,22 +271,31 @@ import 'backup_instance_disk_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_compute_manageddisk" "example" {
+/// resource "azure_compute_managed_disk" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-disk"
-///   location             = azure_core_resourcegroup.example.location
-///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resource_group.example.location
+///   resource_group_name  = azure_core_resource_group.example.name
 ///   storage_account_type = "Standard_LRS"
 ///   create_option        = "Empty"
 ///   disk_size_gb         = "1"
 /// }
-/// resource "azure_dataprotection_backupvault" "example" {
+/// resource "azure_dataprotection_backup_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-backup-vault"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   datastore_type      = "VaultStore"
 ///   redundancy          = "LocallyRedundant"
 ///   identity = {
@@ -294,28 +303,40 @@ import 'backup_instance_disk_state.dart';
 ///   }
 /// }
 /// resource "azure_authorization_assignment" "example1" {
-///   scope                = azure_core_resourcegroup.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope                = azure_core_resource_group.example.id
 ///   role_definition_name = "Disk Snapshot Contributor"
-///   principal_id         = azure_dataprotection_backupvault.example.identity.principal_id
+///   principal_id         = azure_dataprotection_backup_vault.example.identity.principal_id
 /// }
 /// resource "azure_authorization_assignment" "example2" {
-///   scope                = azure_compute_manageddisk.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope                = azure_compute_managed_disk.example.id
 ///   role_definition_name = "Disk Backup Reader"
-///   principal_id         = azure_dataprotection_backupvault.example.identity.principal_id
+///   principal_id         = azure_dataprotection_backup_vault.example.identity.principal_id
 /// }
-/// resource "azure_dataprotection_backuppolicydisk" "example" {
+/// resource "azure_dataprotection_backup_policy_disk" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "example-backup-policy"
-///   vault_id                        = azure_dataprotection_backupvault.example.id
+///   vault_id                        = azure_dataprotection_backup_vault.example.id
 ///   backup_repeating_time_intervals = ["R/2021-05-19T06:33:16+00:00/PT4H"]
 ///   default_retention_duration      = "P7D"
 /// }
-/// resource "azure_dataprotection_backupinstancedisk" "example" {
+/// resource "azure_dataprotection_backup_instance_disk" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-backup-instance"
-///   location                     = azure_dataprotection_backupvault.example.location
-///   vault_id                     = azure_dataprotection_backupvault.example.id
-///   disk_id                      = azure_compute_manageddisk.example.id
-///   snapshot_resource_group_name = azure_core_resourcegroup.example.name
-///   backup_policy_id             = azure_dataprotection_backuppolicydisk.example.id
+///   location                     = azure_dataprotection_backup_vault.example.location
+///   vault_id                     = azure_dataprotection_backup_vault.example.id
+///   disk_id                      = azure_compute_managed_disk.example.id
+///   snapshot_resource_group_name = azure_core_resource_group.example.name
+///   backup_policy_id             = azure_dataprotection_backup_policy_disk.example.id
 /// }
 /// ```
 /// ```java
@@ -512,7 +533,7 @@ class BackupInstanceDisk extends pulumi.CustomResource {
           'azure:dataprotection/backupInstanceDisk:BackupInstanceDisk',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     diskId = registerOutput<String>('diskId');

@@ -70,7 +70,7 @@ import 'get_account_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -78,13 +78,13 @@ import 'get_account_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_cognitive_getaccount" "test" {
+/// data "azure_cognitive_account" "test" {
 ///   name                = "example-account"
 ///   resource_group_name = "cognitive_account_rg"
 /// }
 ///
 /// output "primaryAccessKey" {
-///   value = data.azure_cognitive_getaccount.test.primary_access_key
+///   value = data.azure_cognitive_account.test.primary_access_key
 /// }
 /// ```
 /// ```java
@@ -236,7 +236,7 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -244,17 +244,17 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 ///   }
 /// }
 ///
-/// data "azure_cognitive_getaccountproject" "example" {
+/// data "azure_cognitive_account_project" "example" {
 ///   name                   = "example-project"
 ///   cognitive_account_name = "example-account"
 ///   resource_group_name    = "example-resources"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_cognitive_getaccountproject.example.id
+///   value = data.azure_cognitive_account_project.example.id
 /// }
 /// output "location" {
-///   value = data.azure_cognitive_getaccountproject.example.location
+///   value = data.azure_cognitive_account_project.example.location
 /// }
 /// ```
 /// ```java

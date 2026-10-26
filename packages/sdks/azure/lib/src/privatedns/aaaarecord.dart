@@ -128,7 +128,7 @@ import 'aaaarecord_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -136,18 +136,27 @@ import 'aaaarecord_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_privatedns_zone" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "mydomain.com"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_privatedns_aaaarecord" "test" {
+/// resource "azure_privatedns_a_a_a_a_record" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test"
 ///   zone_name           = azure_privatedns_zone.test.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ttl                 = 300
 ///   records             = ["fd5d:70bc:930e:d008:0000:0000:0000:7334", "fd5d:70bc:930e:d008::7335"]
 /// }
@@ -268,7 +277,7 @@ class AAAARecord extends pulumi.CustomResource {
           'azure:privatedns/aAAARecord:AAAARecord',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');

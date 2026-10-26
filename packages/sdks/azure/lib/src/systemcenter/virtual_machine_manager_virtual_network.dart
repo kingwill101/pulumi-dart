@@ -153,7 +153,7 @@ import 'virtual_machine_manager_virtual_network_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -161,30 +161,39 @@ import 'virtual_machine_manager_virtual_network_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_systemcenter_getvirtualmachinemanagerinventoryitems" "example" {
+/// data "azure_systemcenter_virtual_machine_manager_inventory_items" "example" {
 ///   inventory_type                                  = "VirtualNetwork"
-///   system_center_virtual_machine_manager_server_id = azure_systemcenter_virtualmachinemanagerserver.example.id
+///   system_center_virtual_machine_manager_server_id = azure_systemcenter_virtual_machine_manager_server.example.id
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_systemcenter_virtualmachinemanagerserver" "example" {
+/// resource "azure_systemcenter_virtual_machine_manager_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-scvmmms"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   custom_location_id  = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/resGroup1/providers/Microsoft.ExtendedLocation/customLocations/customLocation1"
 ///   fqdn                = "example.labtest"
 ///   username            = "testUser"
 ///   password            = "H@Sh1CoR3!"
 /// }
-/// resource "azure_systemcenter_virtualmachinemanagervirtualnetwork" "example" {
+/// resource "azure_systemcenter_virtual_machine_manager_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                                           = "example-scvmmvnet"
-///   resource_group_name                                            = azure_core_resourcegroup.example.name
-///   location                                                       = azure_core_resourcegroup.example.location
-///   custom_location_id                                             = azure_systemcenter_virtualmachinemanagerserver.example.custom_location_id
-///   system_center_virtual_machine_manager_server_inventory_item_id = data.azure_systemcenter_getvirtualmachinemanagerinventoryitems.example.inventory_items[0].id
+///   resource_group_name                                            = azure_core_resource_group.example.name
+///   location                                                       = azure_core_resource_group.example.location
+///   custom_location_id                                             = azure_systemcenter_virtual_machine_manager_server.example.custom_location_id
+///   system_center_virtual_machine_manager_server_inventory_item_id = data.azure_systemcenter_virtual_machine_manager_inventory_items.example.inventory_items[0].id
 /// }
 /// ```
 /// ```java
@@ -239,7 +248,7 @@ import 'virtual_machine_manager_virtual_network_state.dart';
 ///             .resourceGroupName(exampleResourceGroup.name())
 ///             .location(exampleResourceGroup.location())
 ///             .customLocationId(exampleVirtualMachineManagerServer.customLocationId())
-///             .systemCenterVirtualMachineManagerServerInventoryItemId(example.applyValue(_example -> _example.inventoryItems()[0].id()))
+///             .systemCenterVirtualMachineManagerServerInventoryItemId(example.applyValue(_example -> _example.inventoryItems().get(0).id()))
 ///             .build());
 ///
 ///     }
@@ -323,7 +332,7 @@ class VirtualMachineManagerVirtualNetwork extends pulumi.CustomResource {
           'azure:systemcenter/virtualMachineManagerVirtualNetwork:VirtualMachineManagerVirtualNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     customLocationId = registerOutput<String>('customLocationId');
     location = registerOutput<String>('location');

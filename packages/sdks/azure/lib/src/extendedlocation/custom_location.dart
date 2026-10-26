@@ -46,7 +46,7 @@ class CustomLocation extends pulumi.CustomResource {
           'azure:extendedlocation/customLocation:CustomLocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     authentication = registerOutput<CustomLocationAuthentication?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomLocationAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterExtensionIds = registerOutput<List<String>>('clusterExtensionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

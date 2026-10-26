@@ -221,7 +221,7 @@ import 'metadata_support.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -229,40 +229,61 @@ import 'metadata_support.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-workspace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "pergb2018"
 /// }
-/// resource "azure_operationalinsights_analyticssolution" "example" {
+/// resource "azure_operationalinsights_analytics_solution" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   solution_name         = "SecurityInsights"
-///   location              = azure_core_resourcegroup.example.location
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   workspace_resource_id = azure_operationalinsights_analyticsworkspace.example.id
-///   workspace_name        = azure_operationalinsights_analyticsworkspace.example.name
+///   location              = azure_core_resource_group.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   workspace_resource_id = azure_operationalinsights_analytics_workspace.example.id
+///   workspace_name        = azure_operationalinsights_analytics_workspace.example.name
 ///   plan = {
 ///     publisher = "Microsoft"
 ///     product   = "OMSGallery/SecurityInsights"
 ///   }
 /// }
-/// resource "azure_sentinel_alertrulenrt" "example" {
+/// resource "azure_sentinel_alert_rule_nrt" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example"
-///   log_analytics_workspace_id = azure_operationalinsights_analyticssolution.example.workspace_resource_id
+///   log_analytics_workspace_id = azure_operationalinsights_analytics_solution.example.workspace_resource_id
 ///   display_name               = "example"
 ///   severity                   = "High"
-///   query                      = "AzureActivity |\n  where OperationName == \\\"Create or Update Virtual Machine\\\" or OperationName ==\\\"Create Deployment\\\" |\n  where ActivityStatus == \\\"Succeeded\\\" |\n  make-series dcount(ResourceId) default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller\n"
+///   query                      = <<QUERY
+/// AzureActivity |
+///   where OperationName == \"Create or Update Virtual Machine\" or OperationName ==\"Create Deployment\" |
+///   where ActivityStatus == \"Succeeded\" |
+///   make-series dcount(ResourceId) default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller
+/// QUERY
+///
 /// }
 /// resource "azure_sentinel_metadata" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "exampl"
-///   workspace_id = azure_operationalinsights_analyticssolution.example.workspace_resource_id
-///   content_id   = azure_sentinel_alertrulenrt.example.name
+///   workspace_id = azure_operationalinsights_analytics_solution.example.workspace_resource_id
+///   content_id   = azure_sentinel_alert_rule_nrt.example.name
 ///   kind         = "AnalyticsRule"
-///   parent_id    = azure_sentinel_alertrulenrt.example.id
+///   parent_id    = azure_sentinel_alert_rule_nrt.example.id
 /// }
 /// ```
 /// ```java
@@ -465,7 +486,7 @@ class Metadata extends pulumi.CustomResource {
           'azure:sentinel/metadata:Metadata',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     author = registerOutput<MetadataAuthor?>('author', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataAuthor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     category = registerOutput<MetadataCategory?>('category', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataCategory.fromMap((guardedValue as Map).cast<String, dynamic>()); });

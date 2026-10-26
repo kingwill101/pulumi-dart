@@ -122,7 +122,7 @@ import 'arecord_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -130,18 +130,27 @@ import 'arecord_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_dns_zone" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "mydomain.com"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_dns_arecord" "example" {
+/// resource "azure_dns_a_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test"
 ///   zone_name           = azure_dns_zone.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ttl                 = 300
 ///   records             = ["10.0.180.17"]
 /// }
@@ -363,7 +372,7 @@ import 'arecord_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -371,27 +380,39 @@ import 'arecord_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_dns_zone" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "mydomain.com"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "mypublicip"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Dynamic"
 ///   ip_version          = "IPv4"
 /// }
-/// resource "azure_dns_arecord" "example" {
+/// resource "azure_dns_a_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test"
 ///   zone_name           = azure_dns_zone.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ttl                 = 300
-///   target_resource_id  = azure_network_publicip.example.id
+///   target_resource_id  = azure_network_public_ip.example.id
 /// }
 /// ```
 /// ```java
@@ -532,7 +553,7 @@ class ARecord extends pulumi.CustomResource {
           'azure:dns/aRecord:ARecord',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');

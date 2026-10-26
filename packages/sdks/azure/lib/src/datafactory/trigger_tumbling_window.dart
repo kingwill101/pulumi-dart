@@ -257,7 +257,7 @@ import 'trigger_tumbling_window_trigger_dependency.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -265,20 +265,32 @@ import 'trigger_tumbling_window_trigger_dependency.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_datafactory_factory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_datafactory_pipeline" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   data_factory_id = azure_datafactory_factory.example.id
 /// }
-/// resource "azure_datafactory_triggertumblingwindow" "example" {
+/// resource "azure_datafactory_trigger_tumbling_window" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   data_factory_id = azure_datafactory_factory.example.id
 ///   start_time      = "2022-09-21T00:00:00Z"
@@ -491,7 +503,7 @@ class TriggerTumblingWindow extends pulumi.CustomResource {
           'azure:datafactory/triggerTumblingWindow:TriggerTumblingWindow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     activated = registerOutput<bool?>('activated');
     additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

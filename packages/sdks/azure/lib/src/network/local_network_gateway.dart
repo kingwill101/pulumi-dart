@@ -101,7 +101,7 @@ import 'local_network_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -109,14 +109,20 @@ import 'local_network_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "localNetworkGWTest"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_localnetworkgateway" "home" {
+/// resource "azure_network_local_network_gateway" "home" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "backHome"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   gateway_address     = "12.13.14.15"
 ///   address_spaces      = ["10.0.0.0/16"]
 /// }
@@ -225,7 +231,7 @@ class LocalNetworkGateway extends pulumi.CustomResource {
           'azure:network/localNetworkGateway:LocalNetworkGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     addressSpaces = registerOutput<List<String>?>('addressSpaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     bgpSettings = registerOutput<LocalNetworkGatewayBgpSettings?>('bgpSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalNetworkGatewayBgpSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

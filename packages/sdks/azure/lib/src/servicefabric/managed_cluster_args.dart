@@ -115,11 +115,11 @@ class ManagedClusterArgs {
     return ManagedClusterArgs(
       authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedClusterAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       backupServiceEnabled: (() { final guardedValue = map['backupServiceEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      clientConnectionPort: pulumi.Input.fromValue((map['clientConnectionPort'] as num).toInt()),
+      clientConnectionPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['clientConnectionPort'])),
       customFabricSettings: (() { final guardedValue = map['customFabricSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedClusterCustomFabricSetting>(guardedValue, (value) => ManagedClusterCustomFabricSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
       dnsName: (() { final guardedValue = map['dnsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dnsServiceEnabled: (() { final guardedValue = map['dnsServiceEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      httpGatewayPort: pulumi.Input.fromValue((map['httpGatewayPort'] as num).toInt()),
+      httpGatewayPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['httpGatewayPort'])),
       lbRules: pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedClusterLbRule>(map['lbRules']!, (value) => ManagedClusterLbRule.fromMap((value as Map).cast<String, dynamic>()))),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

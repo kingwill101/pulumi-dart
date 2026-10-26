@@ -78,7 +78,7 @@ import 'get_topic_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -86,13 +86,13 @@ import 'get_topic_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_eventgrid_getdomain" "example" {
+/// data "azure_eventgrid_domain" "example" {
 ///   name                = "my-eventgrid-domain"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "eventgridDomainMappingTopic" {
-///   value = data.azure_eventgrid_getdomain.example.input_mapping_fields[0].topic
+///   value = data.azure_eventgrid_domain.example.input_mapping_fields[0].topic
 /// }
 /// ```
 /// ```java
@@ -229,7 +229,7 @@ pulumi.Output<GetDomainResult> getDomainOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -237,7 +237,7 @@ pulumi.Output<GetDomainResult> getDomainOutput(
 ///   }
 /// }
 ///
-/// data "azure_eventgrid_getdomaintopic" "example" {
+/// data "azure_eventgrid_domain_topic" "example" {
 ///   name                = "my-eventgrid-domain-topic"
 ///   resource_group_name = "example-resources"
 /// }
@@ -380,7 +380,7 @@ pulumi.Output<GetDomainTopicResult> getDomainTopicOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -388,13 +388,13 @@ pulumi.Output<GetDomainTopicResult> getDomainTopicOutput(
 ///   }
 /// }
 ///
-/// data "azure_eventgrid_getpartnernamespace" "example" {
+/// data "azure_eventgrid_partner_namespace" "example" {
 ///   name                = "my-eventgrid-partner-namespace"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "eventgridPartnerNamespaceEndpoint" {
-///   value = data.azure_eventgrid_getpartnernamespace.example.endpoint
+///   value = data.azure_eventgrid_partner_namespace.example.endpoint
 /// }
 /// ```
 /// ```java
@@ -538,7 +538,7 @@ pulumi.Output<GetPartnerNamespaceResult> getPartnerNamespaceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -546,13 +546,13 @@ pulumi.Output<GetPartnerNamespaceResult> getPartnerNamespaceOutput(
 ///   }
 /// }
 ///
-/// data "azure_eventgrid_getpartnerregistration" "example" {
+/// data "azure_eventgrid_partner_registration" "example" {
 ///   name                = "my-eventgrid-partner-registration"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "eventgridPartnerRegistrationId" {
-///   value = data.azure_eventgrid_getpartnerregistration.example.partner_registration_id
+///   value = data.azure_eventgrid_partner_registration.example.partner_registration_id
 /// }
 /// ```
 /// ```java
@@ -689,7 +689,7 @@ pulumi.Output<GetPartnerRegistrationResult> getPartnerRegistrationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -697,7 +697,7 @@ pulumi.Output<GetPartnerRegistrationResult> getPartnerRegistrationOutput(
 ///   }
 /// }
 ///
-/// data "azure_eventgrid_getsystemtopic" "example" {
+/// data "azure_eventgrid_system_topic" "example" {
 ///   name                = "eventgrid-system-topic"
 ///   resource_group_name = "example-resources"
 /// }
@@ -833,7 +833,7 @@ pulumi.Output<GetSystemTopicResult> getSystemTopicOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -841,7 +841,7 @@ pulumi.Output<GetSystemTopicResult> getSystemTopicOutput(
 ///   }
 /// }
 ///
-/// data "azure_eventgrid_gettopic" "example" {
+/// data "azure_eventgrid_topic" "example" {
 ///   name                = "my-eventgrid-topic"
 ///   resource_group_name = "example-resources"
 /// }

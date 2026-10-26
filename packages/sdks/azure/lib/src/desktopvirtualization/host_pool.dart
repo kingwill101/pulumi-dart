@@ -155,7 +155,7 @@ import 'host_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -163,13 +163,19 @@ import 'host_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_desktopvirtualization_hostpool" "example" {
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
+/// resource "azure_desktopvirtualization_host_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location                 = azure_core_resource_group.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
 ///   name                     = "pooleddepthfirst"
 ///   friendly_name            = "pooleddepthfirst"
 ///   validate_environment     = true
@@ -182,8 +188,8 @@ import 'host_pool_state.dart';
 ///   scheduled_agent_updates = {
 ///     enabled = true
 ///     schedules = [{
-///       "dayOfWeek" = "Saturday"
-///       "hourOfDay" = 2
+///       day_of_week = "Saturday"
+///       hour_of_day = 2
 ///     }]
 ///   }
 /// }
@@ -339,7 +345,7 @@ class HostPool extends pulumi.CustomResource {
           'azure:desktopvirtualization/hostPool:HostPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     customRdpProperties = registerOutput<String?>('customRdpProperties');
     description = registerOutput<String?>('description');

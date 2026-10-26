@@ -77,7 +77,7 @@ class GetRunbookResult {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      logActivityTraceLevel: (() { final guardedValue = map['logActivityTraceLevel']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      logActivityTraceLevel: (() { final guardedValue = map['logActivityTraceLevel']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       logProgress: (() { final guardedValue = map['logProgress']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       logVerbose: (() { final guardedValue = map['logVerbose']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),

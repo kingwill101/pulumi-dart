@@ -136,7 +136,7 @@ import 'identity_provider_aad_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -144,20 +144,29 @@ import 'identity_provider_aad_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "My Company"
 ///   publisher_email     = "company@mycompany.io"
 ///   sku_name            = "Developer_1"
 /// }
-/// resource "azure_apimanagement_identityprovideraad" "example" {
-///   resource_group_name = azure_core_resourcegroup.example.name
+/// resource "azure_apimanagement_identity_provider_aad" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name = azure_core_resource_group.example.name
 ///   api_management_name = azure_apimanagement_service.example.name
 ///   client_id           = "00000000-0000-0000-0000-000000000000"
 ///   client_secret       = "00000000000000000000000000000000"
@@ -286,7 +295,7 @@ class IdentityProviderAad extends pulumi.CustomResource {
           'azure:apimanagement/identityProviderAad:IdentityProviderAad',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['clientSecret'],
         ) {
     allowedTenants = registerOutput<List<String>>('allowedTenants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

@@ -97,7 +97,7 @@ import 'route_filter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -105,7 +105,10 @@ import 'route_filter_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_network_routefilter" "example" {
+/// resource "azure_network_route_filter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
 ///   resource_group_name = "example"
 ///   location            = "East US"
@@ -209,7 +212,7 @@ class RouteFilter extends pulumi.CustomResource {
           'azure:network/routeFilter:RouteFilter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

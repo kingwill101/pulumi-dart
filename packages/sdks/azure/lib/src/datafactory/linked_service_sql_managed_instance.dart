@@ -115,7 +115,7 @@ import 'linked_service_sql_managed_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -123,16 +123,25 @@ import 'linked_service_sql_managed_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_datafactory_factory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_datafactory_linkedservicesqlmanagedinstance" "example" {
+/// resource "azure_datafactory_linked_service_sql_managed_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example"
 ///   data_factory_id   = azure_datafactory_factory.example.id
 ///   connection_string = "Server=myserver.database.windows.net;Database=mydatabase;User ID=myuser;Password=mypassword;"
@@ -261,7 +270,7 @@ class LinkedServiceSqlManagedInstance extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceSqlManagedInstance:LinkedServiceSqlManagedInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['connectionString', 'servicePrincipalKey'],
         ) {
     annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

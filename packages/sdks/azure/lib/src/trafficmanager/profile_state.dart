@@ -78,7 +78,7 @@ class ProfileState {
     return ProfileState(
       dnsConfig: (() { final guardedValue = map['dnsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProfileDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxReturn: (() { final guardedValue = map['maxReturn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxReturn: (() { final guardedValue = map['maxReturn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       monitorConfig: (() { final guardedValue = map['monitorConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProfileMonitorConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       profileStatus: (() { final guardedValue = map['profileStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -172,7 +172,7 @@ import 'application_network_rule_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -180,14 +180,20 @@ import 'application_network_rule_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resource"
 ///   location = "West Europe"
 /// }
 /// resource "azure_iotcentral_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-iotcentral-app"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sub_domain          = "example-iotcentral-app-subdomain"
 ///   display_name        = "example-iotcentral-app-display-name"
 ///   sku                 = "ST1"
@@ -195,7 +201,10 @@ import 'application_network_rule_set_state.dart';
 ///     "Foo" = "Bar"
 ///   }
 /// }
-/// resource "azure_iotcentral_applicationnetworkruleset" "example" {
+/// resource "azure_iotcentral_application_network_rule_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iotcentral_application_id = azure_iotcentral_application.example.id
 ///   ip_rules {
 ///     name    = "rule1"
@@ -332,7 +341,7 @@ class ApplicationNetworkRuleSet extends pulumi.CustomResource {
           'azure:iotcentral/applicationNetworkRuleSet:ApplicationNetworkRuleSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     applyToDevice = registerOutput<bool?>('applyToDevice');
     defaultAction = registerOutput<String?>('defaultAction');

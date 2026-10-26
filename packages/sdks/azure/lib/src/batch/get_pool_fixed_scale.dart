@@ -31,8 +31,8 @@ class GetPoolFixedScale {
   factory GetPoolFixedScale.fromMap(Map<String, dynamic> map) {
     return GetPoolFixedScale(
       resizeTimeout: pulumi.Input.fromValue(map['resizeTimeout'] as String),
-      targetDedicatedNodes: pulumi.Input.fromValue((map['targetDedicatedNodes'] as num).toInt()),
-      targetLowPriorityNodes: pulumi.Input.fromValue((map['targetLowPriorityNodes'] as num).toInt()),
+      targetDedicatedNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetDedicatedNodes'])),
+      targetLowPriorityNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetLowPriorityNodes'])),
     );
   }
 }

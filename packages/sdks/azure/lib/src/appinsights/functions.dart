@@ -68,7 +68,7 @@ import 'get_insights_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -76,13 +76,13 @@ import 'get_insights_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_appinsights_getinsights" "example" {
+/// data "azure_appinsights_insights" "example" {
 ///   name                = "production"
 ///   resource_group_name = "networking"
 /// }
 ///
 /// output "applicationInsightsInstrumentationKey" {
-///   value = data.azure_appinsights_getinsights.example.instrumentation_key
+///   value = data.azure_appinsights_insights.example.instrumentation_key
 /// }
 /// ```
 /// ```java

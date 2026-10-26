@@ -176,7 +176,7 @@ import 'event_subscription_webhook_endpoint.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -184,14 +184,20 @@ import 'event_subscription_webhook_endpoint.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "exampleasa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 ///   tags = {
@@ -199,12 +205,18 @@ import 'event_subscription_webhook_endpoint.dart';
 ///   }
 /// }
 /// resource "azure_storage_queue" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-astq"
 ///   storage_account_name = azure_storage_account.example.name
 /// }
-/// resource "azure_eventgrid_eventsubscription" "example" {
+/// resource "azure_eventgrid_event_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "example-aees"
-///   scope = azure_core_resourcegroup.example.id
+///   scope = azure_core_resource_group.example.id
 ///   storage_queue_endpoint = {
 ///     storage_account_id = azure_storage_account.example.id
 ///     queue_name         = azure_storage_queue.example.name
@@ -380,7 +392,7 @@ class EventSubscription extends pulumi.CustomResource {
           'azure:eventgrid/eventSubscription:EventSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     advancedFilter = registerOutput<EventSubscriptionAdvancedFilter?>('advancedFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionAdvancedFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     advancedFilteringOnArraysEnabled = registerOutput<bool?>('advancedFilteringOnArraysEnabled');

@@ -362,7 +362,7 @@ import 'management_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -370,19 +370,28 @@ import 'management_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "resourceGroupName"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "storageaccountname"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 ///   account_kind             = "BlobStorage"
 /// }
-/// resource "azure_storage_managementpolicy" "example" {
+/// resource "azure_storage_management_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   storage_account_id = azure_storage_account.example.id
 ///   rules {
 ///     name    = "rule1"
@@ -391,9 +400,9 @@ import 'management_policy_state.dart';
 ///       prefix_matches = ["container1/prefix1"]
 ///       blob_types     = ["blockBlob"]
 ///       match_blob_index_tags = [{
-///         "name"      = "tag1"
-///         "operation" = "=="
-///         "value"     = "val1"
+///         name      = "tag1"
+///         operation = "=="
+///         value     = "val1"
 ///       }]
 ///     }
 ///     actions = {
@@ -635,7 +644,7 @@ class ManagementPolicy extends pulumi.CustomResource {
           'azure:storage/managementPolicy:ManagementPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     rules = registerOutput<List<ManagementPolicyRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagementPolicyRule>(guardedValue, (value) => ManagementPolicyRule.fromMap((value as Map).cast<String, dynamic>())); });
     storageAccountId = registerOutput<String>('storageAccountId');

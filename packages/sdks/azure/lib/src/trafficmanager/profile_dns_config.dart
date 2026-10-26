@@ -26,7 +26,7 @@ class ProfileDnsConfig {
   factory ProfileDnsConfig.fromMap(Map<String, dynamic> map) {
     return ProfileDnsConfig(
       relativeName: pulumi.Input.fromValue(map['relativeName'] as String),
-      ttl: pulumi.Input.fromValue((map['ttl'] as num).toInt()),
+      ttl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ttl'])),
     );
   }
 }

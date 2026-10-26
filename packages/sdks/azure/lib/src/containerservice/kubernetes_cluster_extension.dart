@@ -151,7 +151,7 @@ import 'kubernetes_cluster_extension_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -159,14 +159,20 @@ import 'kubernetes_cluster_extension_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_containerservice_kubernetescluster" "example" {
+/// resource "azure_containerservice_kubernetes_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-aks"
 ///   location            = "West Europe"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   dns_prefix          = "example-aks"
 ///   default_node_pool = {
 ///     name       = "default"
@@ -177,9 +183,12 @@ import 'kubernetes_cluster_extension_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_containerservice_kubernetesclusterextension" "example" {
+/// resource "azure_containerservice_kubernetes_cluster_extension" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example-ext"
-///   cluster_id     = azure_containerservice_kubernetescluster.example.id
+///   cluster_id     = azure_containerservice_kubernetes_cluster.example.id
 ///   extension_type = "microsoft.flux"
 /// }
 /// ```
@@ -322,7 +331,7 @@ class KubernetesClusterExtension extends pulumi.CustomResource {
           'azure:containerservice/kubernetesClusterExtension:KubernetesClusterExtension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     aksAssignedIdentities = registerOutput<List<KubernetesClusterExtensionAksAssignedIdentity>>('aksAssignedIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesClusterExtensionAksAssignedIdentity>(guardedValue, (value) => KubernetesClusterExtensionAksAssignedIdentity.fromMap((value as Map).cast<String, dynamic>())); });
     clusterId = registerOutput<String>('clusterId');

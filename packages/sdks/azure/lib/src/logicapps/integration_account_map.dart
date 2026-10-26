@@ -138,7 +138,7 @@ import 'integration_account_map_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -149,20 +149,29 @@ import 'integration_account_map_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_logicapps_integrationaccount" "example" {
+/// resource "azure_logicapps_integration_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ia"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Standard"
 /// }
-/// resource "azure_logicapps_integrationaccountmap" "example" {
+/// resource "azure_logicapps_integration_account_map" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-iamap"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   integration_account_name = azure_logicapps_integrationaccount.example.name
+///   resource_group_name      = azure_core_resource_group.example.name
+///   integration_account_name = azure_logicapps_integration_account.example.name
 ///   map_type                 = "Xslt"
 ///   content                  = file("testdata/integration_account_map_content.xsd")
 /// }
@@ -291,7 +300,7 @@ class IntegrationAccountMap extends pulumi.CustomResource {
           'azure:logicapps/integrationAccountMap:IntegrationAccountMap',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     content = registerOutput<String>('content');
     integrationAccountName = registerOutput<String>('integrationAccountName');

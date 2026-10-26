@@ -87,7 +87,7 @@ import 'resource_guard_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -95,14 +95,20 @@ import 'resource_guard_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_dataprotection_resourceguard" "example" {
+/// resource "azure_dataprotection_resource_guard" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-resourceguard"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
 /// ```
 /// ```java
@@ -197,7 +203,7 @@ class ResourceGuard extends pulumi.CustomResource {
           'azure:dataprotection/resourceGuard:ResourceGuard',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
