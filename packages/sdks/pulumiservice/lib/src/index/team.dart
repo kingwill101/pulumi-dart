@@ -30,12 +30,30 @@ class Team extends pulumi.CustomResource {
           'pulumiservice:index:Team',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['name', 'organizationName', 'teamType']).merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     githubTeamId = registerOutput<double?>('githubTeamId');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String?>('name');
+    organizationName = registerOutput<String>('organizationName');
+    teamType = registerOutput<String>('teamType');
+  }
+
+  /// Creates a typed reference to an existing [Team] resource.
+  Team.reference(String urn)
+    : super(
+        'pulumiservice:index:Team',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    githubTeamId = registerOutput<double?>('githubTeamId');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String?>('name');
     organizationName = registerOutput<String>('organizationName');
     teamType = registerOutput<String>('teamType');

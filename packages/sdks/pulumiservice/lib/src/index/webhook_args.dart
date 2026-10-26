@@ -15,23 +15,23 @@ class WebhookArgs {
   /// The friendly name displayed in the Pulumi Cloud.
   final pulumi.Input<String> displayName;
   /// Name of the environment. Only specified if this is an environment webhook.
-  final pulumi.Input<String>? environmentName;
+  final pulumi.Input<String?>? environmentName;
   /// Optional set of filters to apply to the webhook. See [webhook docs](https://www.pulumi.com/docs/intro/pulumi-service/webhooks/#filters) for more information.
-  final pulumi.Input<List<WebhookFilters>>? filters;
+  final pulumi.Input<List<WebhookFilters>?>? filters;
   /// Format of the webhook payload. Can be either `raw`, `slack`, `ms_teams` or `pulumi_deployments`. Defaults to `raw`.
-  final pulumi.Input<WebhookFormat>? format;
+  final pulumi.Input<WebhookFormat?>? format;
   /// Optional set of filter groups to apply to the webhook. See [webhook docs](https://www.pulumi.com/docs/intro/pulumi-service/webhooks/#groups) for more information.
-  final pulumi.Input<List<WebhookGroup>>? groups;
+  final pulumi.Input<List<WebhookGroup>?>? groups;
   /// Name of the organization.
   final pulumi.Input<String> organizationName;
   /// URL to send request to.
   final pulumi.Input<String> payloadUrl;
   /// Name of the project. Only specified if this is a stack or environment webhook.
-  final pulumi.Input<String>? projectName;
+  final pulumi.Input<String?>? projectName;
   /// Optional. secret used as the HMAC key. See [webhook docs](https://www.pulumi.com/docs/intro/pulumi-service/webhooks/#headers) for more information.
-  final pulumi.Input<String>? secret;
+  final pulumi.Input<String?>? secret;
   /// Name of the stack. Only needed if this is a stack webhook.
-  final pulumi.Input<String>? stackName;
+  final pulumi.Input<String?>? stackName;
 
   /// Creates a new [WebhookArgs].
   /// [active] Indicates whether this webhook is enabled or not.
@@ -45,19 +45,19 @@ class WebhookArgs {
   /// [projectName] Name of the project. Only specified if this is a stack or environment webhook.
   /// [secret] Optional. secret used as the HMAC key. See [webhook docs](https://www.pulumi.com/docs/intro/pulumi-service/webhooks/#headers) for more information.
   /// [stackName] Name of the stack. Only needed if this is a stack webhook.
-  const WebhookArgs({
+  WebhookArgs({
     required this.active,
     required this.displayName,
     this.environmentName,
     this.filters,
-    this.format,
+    pulumi.Input<WebhookFormat?>? format,
     this.groups,
     required this.organizationName,
     required this.payloadUrl,
     this.projectName,
     this.secret,
     this.stackName,
-  });
+  }) : format = format ?? pulumi.Input.fromValue(WebhookFormat.fromValue('raw'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

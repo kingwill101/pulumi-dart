@@ -29,8 +29,24 @@ class ApprovalRule extends pulumi.CustomResource {
           'pulumiservice:index:ApprovalRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['environmentIdentifier.name', 'environmentIdentifier.organization', 'environmentIdentifier.project', 'name']).merge(options),
         ) {
+    approvalRuleConfig = registerOutput<ApprovalRuleConfig>('approvalRuleConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApprovalRuleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enabled = registerOutput<bool>('enabled');
+    environmentIdentifier = registerOutput<EnvironmentIdentifier>('environmentIdentifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentIdentifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    targetActionTypes = registerOutput<List<TargetActionType>>('targetActionTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetActionType>(guardedValue, (value) => TargetActionType.fromValue(value as String)); });
+  }
+
+  /// Creates a typed reference to an existing [ApprovalRule] resource.
+  ApprovalRule.reference(String urn)
+    : super(
+        'pulumiservice:index:ApprovalRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     approvalRuleConfig = registerOutput<ApprovalRuleConfig>('approvalRuleConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApprovalRuleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enabled = registerOutput<bool>('enabled');
     environmentIdentifier = registerOutput<EnvironmentIdentifier>('environmentIdentifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentIdentifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });

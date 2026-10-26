@@ -84,6 +84,8 @@ export 'api/team.dart';
 export 'api/team_args.dart';
 export 'api/team_token.dart';
 export 'api/team_token_args.dart';
+export 'api/usage_cap.dart';
+export 'api/usage_cap_args.dart';
 export 'api/webhook.dart';
 export 'api/webhook_api_stacks.dart';
 export 'api/webhook_api_stacks_args.dart';

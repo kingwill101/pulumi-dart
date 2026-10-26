@@ -23,9 +23,25 @@ class EnvironmentDraft extends pulumi.CustomResource {
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
+          additionalSecretOutputs: const ['yaml'],
         ) {
     changeRequestId = registerOutput<String?>('changeRequestId');
     latestRevisionNumber = registerOutput<int?>('latestRevisionNumber');
-    yaml = registerOutput<String?>('yaml');
+    yaml = registerOutput<String?>('yaml', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentDraft] resource.
+  EnvironmentDraft.reference(String urn)
+    : super(
+        'pulumiservice:api/esc:EnvironmentDraft',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['yaml'],
+        isResourceReference: true,
+      ) {
+    changeRequestId = registerOutput<String?>('changeRequestId');
+    latestRevisionNumber = registerOutput<int?>('latestRevisionNumber');
+    yaml = registerOutput<String?>('yaml', isSecret: true);
   }
 }

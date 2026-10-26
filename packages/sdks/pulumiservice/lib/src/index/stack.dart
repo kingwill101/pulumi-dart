@@ -24,8 +24,23 @@ class Stack extends pulumi.CustomResource {
           'pulumiservice:index:Stack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['organizationName', 'projectName', 'stackName']).merge(options),
         ) {
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    organizationName = registerOutput<String>('organizationName');
+    projectName = registerOutput<String>('projectName');
+    stackName = registerOutput<String>('stackName');
+  }
+
+  /// Creates a typed reference to an existing [Stack] resource.
+  Stack.reference(String urn)
+    : super(
+        'pulumiservice:index:Stack',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     forceDestroy = registerOutput<bool?>('forceDestroy');
     organizationName = registerOutput<String>('organizationName');
     projectName = registerOutput<String>('projectName');

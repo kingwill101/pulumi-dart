@@ -1,7 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'role_api_args.dart';
 
-/// Creates a new custom role for an organization. Custom roles define fine-grained permission sets that can be assigned to organization members and teams, enabling precise access control beyond the built-in admin and member roles. Optionally, an associated policy and role binding can be created alongside the role. Role definitions are subject to two limits: a permission descriptor group may contain at most 500 entries (each directly-specified entity counts as one entry), and the total serialized size of the role definition may not exceed 1 MB. Exceeding either limit returns a 400 error. If you need to grant access to more than 500 individually listed resources, use tag-based (ABAC) rules instead.
+/// Creates a new custom role for an organization. Custom roles define fine-grained permission sets that can be assigned to organization members and teams, enabling precise access control beyond the built-in admin and member roles. Optionally, an associated policy and role binding can be created alongside the role. Role definitions are subject to two limits: a permission descriptor group may contain at most 2000 entries (each directly-specified entity counts as one entry), and the total serialized size of the role definition may not exceed 1 MB. Exceeding either limit returns a 400 error. If you need to grant access to more than 2000 individually listed resources, use tag-based (ABAC) rules instead.
 class RoleApi extends pulumi.CustomResource {
   /// When the role was created.
   late final pulumi.Output<String> created;
@@ -42,6 +42,29 @@ class RoleApi extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    created = registerOutput<String>('created');
+    defaultIdentifier = registerOutput<String?>('defaultIdentifier');
+    description = registerOutput<String?>('description');
+    details = registerOutput<dynamic>('details');
+    isOrgDefault = registerOutput<bool>('isOrgDefault');
+    modified = registerOutput<String>('modified');
+    this.name = registerOutput<String?>('name');
+    orgId = registerOutput<String>('orgId');
+    resourceType = registerOutput<String?>('resourceType');
+    roleID = registerOutput<String>('roleID');
+    uxPurpose = registerOutput<String?>('uxPurpose');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [RoleApi] resource.
+  RoleApi.reference(String urn)
+    : super(
+        'pulumiservice:api:Role',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     created = registerOutput<String>('created');
     defaultIdentifier = registerOutput<String?>('defaultIdentifier');
     description = registerOutput<String?>('description');

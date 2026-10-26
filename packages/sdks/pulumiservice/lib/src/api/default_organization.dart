@@ -10,7 +10,7 @@ class DefaultOrganization extends pulumi.CustomResource {
   /// service is on an expiring trial and not free tier, with possible recommendations
   /// on how to configure their default org locally.
   /// Can be possibly empty.
-  late final pulumi.Output<List<Map<String, dynamic>>> messages;
+  late final pulumi.Output<List<dynamic>> messages;
 
   /// Creates a new [DefaultOrganization].
   /// [name] The Pulumi resource name.
@@ -27,6 +27,19 @@ class DefaultOrganization extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     gitHubLogin = registerOutput<String>('GitHubLogin');
-    messages = registerOutput<List<Map<String, dynamic>>>('Messages');
+    messages = registerOutput<List<dynamic>>('Messages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+  }
+
+  /// Creates a typed reference to an existing [DefaultOrganization] resource.
+  DefaultOrganization.reference(String urn)
+    : super(
+        'pulumiservice:api:DefaultOrganization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    gitHubLogin = registerOutput<String>('GitHubLogin');
+    messages = registerOutput<List<dynamic>>('Messages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
   }
 }

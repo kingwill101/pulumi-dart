@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_agent_pool_args_doc}
 class AgentPoolArgs {
   /// Description of the agent pool.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Flag indicating whether to delete the agent pool even if stacks are configured to use it.
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// Name of the agent pool.
   final pulumi.Input<String> name;
   /// The organization's name.

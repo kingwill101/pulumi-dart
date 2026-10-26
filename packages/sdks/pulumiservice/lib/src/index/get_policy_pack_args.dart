@@ -12,7 +12,7 @@ class GetPolicyPackArgs {
   /// The name of the policy pack.
   final pulumi.Input<String> policyPackName;
   /// The version number of the policy pack. If not specified, returns the latest version.
-  final pulumi.Input<int>? version;
+  final pulumi.Input<int?>? version;
 
   /// Creates a new [GetPolicyPackArgs].
   /// [organizationName] The name of the Pulumi organization.
@@ -36,7 +36,7 @@ class GetPolicyPackArgs {
     return GetPolicyPackArgs(
       organizationName: pulumi.Input.fromValue(map['organizationName'] as String),
       policyPackName: pulumi.Input.fromValue(map['policyPackName'] as String),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

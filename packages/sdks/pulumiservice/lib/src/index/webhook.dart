@@ -51,7 +51,8 @@ class Webhook extends pulumi.CustomResource {
           'pulumiservice:index:Webhook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['environmentName', 'organizationName', 'projectName', 'stackName']).merge(options),
+          additionalSecretOutputs: const ['secret'],
         ) {
     active = registerOutput<bool>('active');
     displayName = registerOutput<String>('displayName');
@@ -63,7 +64,31 @@ class Webhook extends pulumi.CustomResource {
     organizationName = registerOutput<String>('organizationName');
     payloadUrl = registerOutput<String>('payloadUrl');
     projectName = registerOutput<String?>('projectName');
-    secret = registerOutput<String?>('secret');
+    secret = registerOutput<String?>('secret', isSecret: true);
+    stackName = registerOutput<String?>('stackName');
+  }
+
+  /// Creates a typed reference to an existing [Webhook] resource.
+  Webhook.reference(String urn)
+    : super(
+        'pulumiservice:index:Webhook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['secret'],
+        isResourceReference: true,
+      ) {
+    active = registerOutput<bool>('active');
+    displayName = registerOutput<String>('displayName');
+    environmentName = registerOutput<String?>('environmentName');
+    filters = registerOutput<List<WebhookFilters>?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebhookFilters>(guardedValue, (value) => WebhookFilters.fromValue(value as String)); });
+    format = registerOutput<WebhookFormat>('format', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebhookFormat.fromValue(guardedValue as String); });
+    groups = registerOutput<List<WebhookGroup>?>('groups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebhookGroup>(guardedValue, (value) => WebhookGroup.fromValue(value as String)); });
+    this.name = registerOutput<String>('name');
+    organizationName = registerOutput<String>('organizationName');
+    payloadUrl = registerOutput<String>('payloadUrl');
+    projectName = registerOutput<String?>('projectName');
+    secret = registerOutput<String?>('secret', isSecret: true);
     stackName = registerOutput<String?>('stackName');
   }
 }

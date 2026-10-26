@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_group_args.dart';
+import 'policy_group_policy_pack_reference.dart';
+import 'policy_group_stack_reference.dart';
 
 /// A Policy Group allows you to apply policy packs to a set of stacks in your organization.
 class PolicyGroup extends pulumi.CustomResource {
@@ -14,9 +16,9 @@ class PolicyGroup extends pulumi.CustomResource {
   /// The name of the Pulumi organization the policy group belongs to.
   late final pulumi.Output<String> organizationName;
   /// List of policy packs applied to this policy group.
-  late final pulumi.Output<List<Map<String, dynamic>>?> policyPacks;
+  late final pulumi.Output<List<PolicyGroupPolicyPackReference>?> policyPacks;
   /// List of stack references that belong to this policy group.
-  late final pulumi.Output<List<Map<String, dynamic>>?> stacks;
+  late final pulumi.Output<List<PolicyGroupStackReference>?> stacks;
 
   /// Creates a new [PolicyGroup].
   /// [name] The Pulumi resource name.
@@ -32,12 +34,30 @@ class PolicyGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accounts = registerOutput<List<String>?>('accounts');
+    accounts = registerOutput<List<String>?>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     entityType = registerOutput<String>('entityType');
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
     organizationName = registerOutput<String>('organizationName');
-    policyPacks = registerOutput<List<Map<String, dynamic>>?>('policyPacks');
-    stacks = registerOutput<List<Map<String, dynamic>>?>('stacks');
+    policyPacks = registerOutput<List<PolicyGroupPolicyPackReference>?>('policyPacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyGroupPolicyPackReference>(guardedValue, (value) => PolicyGroupPolicyPackReference.fromMap((value as Map).cast<String, dynamic>())); });
+    stacks = registerOutput<List<PolicyGroupStackReference>?>('stacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyGroupStackReference>(guardedValue, (value) => PolicyGroupStackReference.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [PolicyGroup] resource.
+  PolicyGroup.reference(String urn)
+    : super(
+        'pulumiservice:index:PolicyGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accounts = registerOutput<List<String>?>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    entityType = registerOutput<String>('entityType');
+    mode = registerOutput<String>('mode');
+    this.name = registerOutput<String>('name');
+    organizationName = registerOutput<String>('organizationName');
+    policyPacks = registerOutput<List<PolicyGroupPolicyPackReference>?>('policyPacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyGroupPolicyPackReference>(guardedValue, (value) => PolicyGroupPolicyPackReference.fromMap((value as Map).cast<String, dynamic>())); });
+    stacks = registerOutput<List<PolicyGroupStackReference>?>('stacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyGroupStackReference>(guardedValue, (value) => PolicyGroupStackReference.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

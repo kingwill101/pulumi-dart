@@ -28,8 +28,25 @@ class EnvironmentRotationSchedule extends pulumi.CustomResource {
           'pulumiservice:index:EnvironmentRotationSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['environment', 'organization', 'project', 'timestamp']).merge(options),
         ) {
+    environment = registerOutput<String>('environment');
+    organization = registerOutput<String>('organization');
+    project = registerOutput<String>('project');
+    scheduleCron = registerOutput<String?>('scheduleCron');
+    scheduleId = registerOutput<String>('scheduleId');
+    timestamp = registerOutput<String?>('timestamp');
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentRotationSchedule] resource.
+  EnvironmentRotationSchedule.reference(String urn)
+    : super(
+        'pulumiservice:index:EnvironmentRotationSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     environment = registerOutput<String>('environment');
     organization = registerOutput<String>('organization');
     project = registerOutput<String>('project');

@@ -6,21 +6,21 @@ import 'scan_schedule.dart';
 /// Result data returned by getInsightsAccount.
 class GetInsightsAccountResult {
   /// Name of the insights account.
-  final String accountName;
+  final String? accountName;
   /// The ESC environment used for provider credentials. Format: 'project/environment' with optional '@version' suffix (e.g., 'my-project/prod-env' or 'my-project/prod-env@v1.0').
-  final String environment;
+  final String? environment;
   /// The insights account identifier.
-  final String insightsAccountId;
+  final String? insightsAccountId;
   /// The organization's name.
-  final String organizationName;
+  final String? organizationName;
   /// The cloud provider for scanning.
-  final CloudProvider provider;
+  final CloudProvider? provider;
   /// Provider-specific configuration as a JSON object. For AWS, specify regions to scan: {"regions": ["us-west-1", "us-west-2"]}.
   final Map<String, dynamic>? providerConfig;
   /// Schedule for automated scanning. Use 'daily' for daily scans, '12h' for scans every twelve hours, or 'none' to disable scheduled scanning. Defaults to 'none'.
-  final ScanSchedule scanSchedule;
+  final ScanSchedule? scanSchedule;
   /// Whether scheduled scanning is enabled.
-  final bool scheduledScanEnabled;
+  final bool? scheduledScanEnabled;
   /// Key-value tags to associate with the insights account.
   final Map<String, String>? tags;
 
@@ -34,42 +34,42 @@ class GetInsightsAccountResult {
   /// [scanSchedule] Schedule for automated scanning. Use 'daily' for daily scans, '12h' for scans every twelve hours, or 'none' to disable scheduled scanning. Defaults to 'none'.
   /// [scheduledScanEnabled] Whether scheduled scanning is enabled.
   /// [tags] Key-value tags to associate with the insights account.
-  const GetInsightsAccountResult({
-    required this.accountName,
-    required this.environment,
-    required this.insightsAccountId,
-    required this.organizationName,
-    required this.provider,
+  GetInsightsAccountResult({
+    this.accountName,
+    this.environment,
+    this.insightsAccountId,
+    this.organizationName,
+    this.provider,
     this.providerConfig,
-    required this.scanSchedule,
-    required this.scheduledScanEnabled,
+    ScanSchedule? scanSchedule,
+    this.scheduledScanEnabled,
     this.tags,
-  });
+  }) : scanSchedule = scanSchedule ?? ScanSchedule.fromValue('none');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountName': accountName,
-      'environment': environment,
-      'insightsAccountId': insightsAccountId,
-      'organizationName': organizationName,
-      'provider': provider.wireValue,
+      'accountName': ?accountName,
+      'environment': ?environment,
+      'insightsAccountId': ?insightsAccountId,
+      'organizationName': ?organizationName,
+      'provider': ?provider?.wireValue,
       'providerConfig': ?providerConfig,
-      'scanSchedule': scanSchedule.wireValue,
-      'scheduledScanEnabled': scheduledScanEnabled,
+      'scanSchedule': ?scanSchedule?.wireValue,
+      'scheduledScanEnabled': ?scheduledScanEnabled,
       'tags': ?tags,
     };
   }
 
   factory GetInsightsAccountResult.fromMap(Map<String, dynamic> map) {
     return GetInsightsAccountResult(
-      accountName: map['accountName'] as String,
-      environment: map['environment'] as String,
-      insightsAccountId: map['insightsAccountId'] as String,
-      organizationName: map['organizationName'] as String,
-      provider: CloudProvider.fromValue(map['provider']! as String),
+      accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      insightsAccountId: (() { final guardedValue = map['insightsAccountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      organizationName: (() { final guardedValue = map['organizationName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provider: (() { final guardedValue = map['provider']; if (guardedValue == null) return null; return CloudProvider.fromValue(guardedValue as String); })(),
       providerConfig: (() { final guardedValue = map['providerConfig']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); })(),
-      scanSchedule: ScanSchedule.fromValue(map['scanSchedule']! as String),
-      scheduledScanEnabled: map['scheduledScanEnabled'] as bool,
+      scanSchedule: (() { final guardedValue = map['scanSchedule']; if (guardedValue == null) return null; return ScanSchedule.fromValue(guardedValue as String); })(),
+      scheduledScanEnabled: (() { final guardedValue = map['scheduledScanEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }

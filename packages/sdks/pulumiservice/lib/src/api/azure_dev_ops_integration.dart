@@ -43,4 +43,23 @@ class AzureDevOpsIntegration extends pulumi.CustomResource {
     project = registerOutput<dynamic>('project');
     valid = registerOutput<bool>('valid');
   }
+
+  /// Creates a typed reference to an existing [AzureDevOpsIntegration] resource.
+  AzureDevOpsIntegration.reference(String urn)
+    : super(
+        'pulumiservice:api/integrations:AzureDevOpsIntegration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authUser = registerOutput<dynamic>('authUser');
+    disableDetailedDiff = registerOutput<bool?>('disableDetailedDiff');
+    disableNeoSummaries = registerOutput<bool?>('disableNeoSummaries');
+    disablePRComments = registerOutput<bool?>('disablePRComments');
+    installed = registerOutput<bool>('installed');
+    organization = registerOutput<dynamic>('organization');
+    project = registerOutput<dynamic>('project');
+    valid = registerOutput<bool>('valid');
+  }
 }

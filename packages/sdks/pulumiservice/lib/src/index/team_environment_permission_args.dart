@@ -11,13 +11,13 @@ class TeamEnvironmentPermissionArgs {
   /// Environment name.
   final pulumi.Input<String> environment;
   /// The maximum duration for which members of this team may open the environment.
-  final pulumi.Input<String>? maxOpenDuration;
+  final pulumi.Input<String?>? maxOpenDuration;
   /// Organization name.
   final pulumi.Input<String> organization;
   /// Which permission level to grant to the specified team.
   final pulumi.Input<EnvironmentPermission> permission;
   /// Project name.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Team name.
   final pulumi.Input<String> team;
 
@@ -28,14 +28,14 @@ class TeamEnvironmentPermissionArgs {
   /// [permission] Which permission level to grant to the specified team.
   /// [project] Project name.
   /// [team] Team name.
-  const TeamEnvironmentPermissionArgs({
+  TeamEnvironmentPermissionArgs({
     required this.environment,
     this.maxOpenDuration,
     required this.organization,
     required this.permission,
-    this.project,
+    pulumi.Input<String?>? project,
     required this.team,
-  });
+  }) : project = project ?? pulumi.Input.fromValue('default');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

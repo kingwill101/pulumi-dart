@@ -12,15 +12,15 @@ class WebhookApiStacksArgs {
   /// The human-readable display name shown in the UI.
   final pulumi.Input<String> displayName;
   /// The environment name. Set when the webhook is scoped to a specific environment.
-  final pulumi.Input<String>? envName;
+  final pulumi.Input<String?>? envName;
   /// Specific event types this webhook subscribes to. If empty, all events are delivered.
-  final pulumi.Input<List<String>>? filters;
+  final pulumi.Input<List<String>?>? filters;
   /// The format of the webhook payload (e.g., 'raw', 'slack', 'ms_teams').
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// Event groups this webhook subscribes to (e.g., 'stacks', 'deployments').
-  final pulumi.Input<List<String>>? groups;
+  final pulumi.Input<List<String>?>? groups;
   /// The unique identifier name for the webhook within its scope. Optional on creation; if omitted, the service generates a short random name. Always populated in responses.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The organization that owns this webhook.
   final pulumi.Input<String> organizationName;
   /// The URL to which webhook payloads are delivered.
@@ -28,7 +28,7 @@ class WebhookApiStacksArgs {
   /// The project name. Set when the webhook is scoped to a specific stack.
   final pulumi.Input<String> projectName;
   /// Secret will be omitted when returned from the service.
-  final pulumi.Input<String>? secret;
+  final pulumi.Input<String?>? secret;
   /// The stack name. Set when the webhook is scoped to a specific stack.
   final pulumi.Input<String> stackName;
 

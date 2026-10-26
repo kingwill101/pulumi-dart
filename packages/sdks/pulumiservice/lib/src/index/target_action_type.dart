@@ -1,7 +1,10 @@
-enum TargetActionType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum TargetActionType implements pulumi.PulumiEnum<String> {
   update("update");
 
   const TargetActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static TargetActionType fromValue(String value) {

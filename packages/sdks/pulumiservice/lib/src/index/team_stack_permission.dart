@@ -27,8 +27,24 @@ class TeamStackPermission extends pulumi.CustomResource {
           'pulumiservice:index:TeamStackPermission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['organization', 'permission', 'project', 'stack', 'team']).merge(options),
         ) {
+    organization = registerOutput<String>('organization');
+    permission = registerOutput<TeamStackPermissionScope>('permission', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TeamStackPermissionScope.fromValue(guardedValue as int); });
+    project = registerOutput<String>('project');
+    stack = registerOutput<String>('stack');
+    team = registerOutput<String>('team');
+  }
+
+  /// Creates a typed reference to an existing [TeamStackPermission] resource.
+  TeamStackPermission.reference(String urn)
+    : super(
+        'pulumiservice:index:TeamStackPermission',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     organization = registerOutput<String>('organization');
     permission = registerOutput<TeamStackPermissionScope>('permission', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TeamStackPermissionScope.fromValue(guardedValue as int); });
     project = registerOutput<String>('project');

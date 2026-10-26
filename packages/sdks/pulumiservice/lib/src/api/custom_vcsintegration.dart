@@ -16,7 +16,7 @@ class CustomVCSIntegration extends pulumi.CustomResource {
   /// Human-readable name for the integration
   late final pulumi.Output<String> name;
   /// List of repositories configured on this integration
-  late final pulumi.Output<List<Map<String, dynamic>>?> repositories;
+  late final pulumi.Output<List<dynamic>?> repositories;
   /// Version control system type
   late final pulumi.Output<String> vcsType;
   /// HMAC secret for webhook signature verification. Only returned on integration creation; subsequent GET requests omit this field.
@@ -37,6 +37,7 @@ class CustomVCSIntegration extends pulumi.CustomResource {
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
+          additionalSecretOutputs: const ['webhookSecret'],
         ) {
     baseUrl = registerOutput<String>('baseUrl');
     created = registerOutput<String>('created');
@@ -44,9 +45,31 @@ class CustomVCSIntegration extends pulumi.CustomResource {
     integrationId = registerOutput<String>('integrationId');
     modified = registerOutput<String>('modified');
     this.name = registerOutput<String>('name');
-    repositories = registerOutput<List<Map<String, dynamic>>?>('repositories');
+    repositories = registerOutput<List<dynamic>?>('repositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     vcsType = registerOutput<String>('vcsType');
-    webhookSecret = registerOutput<String?>('webhookSecret');
+    webhookSecret = registerOutput<String?>('webhookSecret', isSecret: true);
+    webhookUrl = registerOutput<String?>('webhookUrl');
+  }
+
+  /// Creates a typed reference to an existing [CustomVCSIntegration] resource.
+  CustomVCSIntegration.reference(String urn)
+    : super(
+        'pulumiservice:api/integrations:CustomVCSIntegration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['webhookSecret'],
+        isResourceReference: true,
+      ) {
+    baseUrl = registerOutput<String>('baseUrl');
+    created = registerOutput<String>('created');
+    environment = registerOutput<String>('environment');
+    integrationId = registerOutput<String>('integrationId');
+    modified = registerOutput<String>('modified');
+    this.name = registerOutput<String>('name');
+    repositories = registerOutput<List<dynamic>?>('repositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    vcsType = registerOutput<String>('vcsType');
+    webhookSecret = registerOutput<String?>('webhookSecret', isSecret: true);
     webhookUrl = registerOutput<String?>('webhookUrl');
   }
 }
