@@ -6,20 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ByoipPrefixState {
   /// A boolean indicating whether the prefix should be advertised.
   /// Defaults to `false`.
-  final pulumi.Input<bool>? advertised;
+  final pulumi.Input<bool?>? advertised;
   /// The reason for failure if the status is "failed".
-  final pulumi.Input<String>? failureReason;
+  final pulumi.Input<String?>? failureReason;
   /// The CIDR notation of the prefix (e.g., "192.0.2.0/24").
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// The DigitalOcean region where the prefix will be deployed.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The cryptographic signature proving ownership of the prefix.
   /// This is required during creation but can be omitted in subsequent updates.
-  final pulumi.Input<String>? signature;
+  final pulumi.Input<String?>? signature;
   /// The current status of the BYOIP prefix (e.g., "verified", "pending", "failed").
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The UUID of the BYOIP prefix.
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [ByoipPrefixState].
   /// [advertised] A boolean indicating whether the prefix should be advertised.

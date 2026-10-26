@@ -11,10 +11,10 @@ import 'get_ssh_keys_sort.dart';
 class GetSshKeysArgs {
   /// Filter the results.
   /// The `filter` block is documented below.
-  final pulumi.Input<List<GetSshKeysFilter>>? filters;
+  final pulumi.Input<List<GetSshKeysFilter>?>? filters;
   /// Sort the results.
   /// The `sort` block is documented below.
-  final pulumi.Input<List<GetSshKeysSort>>? sorts;
+  final pulumi.Input<List<GetSshKeysSort>?>? sorts;
 
   /// Creates a new [GetSshKeysArgs].
   /// [filters] Filter the results.

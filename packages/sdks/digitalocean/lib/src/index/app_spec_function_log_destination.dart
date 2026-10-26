@@ -8,15 +8,15 @@ import 'app_spec_function_log_destination_papertrail.dart';
 
 class AppSpecFunctionLogDestination {
   /// Datadog configuration.
-  final pulumi.Input<AppSpecFunctionLogDestinationDatadog>? datadog;
+  final pulumi.Input<AppSpecFunctionLogDestinationDatadog?>? datadog;
   /// Logtail configuration.
-  final pulumi.Input<AppSpecFunctionLogDestinationLogtail>? logtail;
+  final pulumi.Input<AppSpecFunctionLogDestinationLogtail?>? logtail;
   /// Name of the log destination. Minimum length: 2. Maximum length: 42.
   final pulumi.Input<String> name;
   /// OpenSearch configuration.
-  final pulumi.Input<AppSpecFunctionLogDestinationOpenSearch>? openSearch;
+  final pulumi.Input<AppSpecFunctionLogDestinationOpenSearch?>? openSearch;
   /// Papertrail configuration.
-  final pulumi.Input<AppSpecFunctionLogDestinationPapertrail>? papertrail;
+  final pulumi.Input<AppSpecFunctionLogDestinationPapertrail?>? papertrail;
 
   /// Creates a new [AppSpecFunctionLogDestination].
   /// [datadog] Datadog configuration.

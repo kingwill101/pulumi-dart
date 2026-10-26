@@ -63,12 +63,12 @@ class GetDedicatedInferenceSizesSize {
 
   factory GetDedicatedInferenceSizesSize.fromMap(Map<String, dynamic> map) {
     return GetDedicatedInferenceSizesSize(
-      cpu: pulumi.Input.fromValue(map['cpu'] as int),
+      cpu: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cpu'])),
       currency: pulumi.Input.fromValue(map['currency'] as String),
       disks: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDedicatedInferenceSizesSizeDisk>(map['disks']!, (value) => GetDedicatedInferenceSizesSizeDisk.fromMap((value as Map).cast<String, dynamic>()))),
       gpuSlug: pulumi.Input.fromValue(map['gpuSlug'] as String),
       gpus: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDedicatedInferenceSizesSizeGpus>(map['gpus']!, (value) => GetDedicatedInferenceSizesSizeGpus.fromMap((value as Map).cast<String, dynamic>()))),
-      memory: pulumi.Input.fromValue(map['memory'] as int),
+      memory: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memory'])),
       pricePerHour: pulumi.Input.fromValue(map['pricePerHour'] as String),
       regions: pulumi.Input.fromValue((map['regions'] as List).cast<String>()),
       sizeCategories: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDedicatedInferenceSizesSizeSizeCategory>(map['sizeCategories']!, (value) => GetDedicatedInferenceSizesSizeSizeCategory.fromMap((value as Map).cast<String, dynamic>()))),

@@ -134,7 +134,7 @@ import 'dns_record_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -143,17 +143,26 @@ import 'dns_record_state.dart';
 /// }
 ///
 /// resource "digitalocean_domain" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example.com"
 /// }
 /// # Add an A record to the domain for www.example.com.
-/// resource "digitalocean_dnsrecord" "www" {
+/// resource "digitalocean_dns_record" "www" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain = digitalocean_domain.default.id
 ///   type   = "A"
 ///   name   = "www"
 ///   value  = "192.168.0.11"
 /// }
 /// # Add a MX record for the example.com domain itself.
-/// resource "digitalocean_dnsrecord" "mx" {
+/// resource "digitalocean_dns_record" "mx" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain   = digitalocean_domain.default.id
 ///   type     = "MX"
 ///   name     = "@"
@@ -162,11 +171,11 @@ import 'dns_record_state.dart';
 /// }
 /// # Output the FQDN for the www A record.
 /// output "wwwFqdn" {
-///   value = digitalocean_dnsrecord.www.fqdn
+///   value = digitalocean_dns_record.www.fqdn
 /// }
 /// # Output the FQDN for the MX record.
 /// output "mxFqdn" {
-///   value = digitalocean_dnsrecord.mx.fqdn
+///   value = digitalocean_dns_record.mx.fqdn
 /// }
 /// ```
 /// ```java
@@ -294,7 +303,7 @@ class DnsRecord extends pulumi.CustomResource {
           'digitalocean:index/dnsRecord:DnsRecord',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     domain = registerOutput<String>('domain');
     flags = registerOutput<int?>('flags');
@@ -314,11 +323,12 @@ class DnsRecord extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DnsRecordState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DnsRecord._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -332,6 +342,28 @@ class DnsRecord extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    domain = registerOutput<String>('domain');
+    flags = registerOutput<int?>('flags');
+    fqdn = registerOutput<String>('fqdn');
+    this.name = registerOutput<String>('name');
+    port = registerOutput<int?>('port');
+    priority = registerOutput<int?>('priority');
+    tag = registerOutput<String?>('tag');
+    ttl = registerOutput<int>('ttl');
+    type = registerOutput<String>('type');
+    value = registerOutput<String>('value');
+    weight = registerOutput<int?>('weight');
+  }
+
+  /// Creates a typed reference to an existing [DnsRecord] resource.
+  DnsRecord.reference(String urn)
+    : super(
+        'digitalocean:index/dnsRecord:DnsRecord',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     domain = registerOutput<String>('domain');
     flags = registerOutput<int?>('flags');
     fqdn = registerOutput<String>('fqdn');

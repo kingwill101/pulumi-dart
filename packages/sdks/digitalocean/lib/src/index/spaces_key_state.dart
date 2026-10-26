@@ -6,15 +6,15 @@ import 'spaces_key_grant.dart';
 /// Input properties used for looking up and filtering SpacesKey resources.
 class SpacesKeyState {
   /// The access key ID of the key
-  final pulumi.Input<String>? accessKey;
+  final pulumi.Input<String?>? accessKey;
   /// The creation time of the key
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// A grant for the key (documented below).
-  final pulumi.Input<List<SpacesKeyGrant>>? grants;
+  final pulumi.Input<List<SpacesKeyGrant>?>? grants;
   /// The name of the key
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The access key secret of the key
-  final pulumi.Input<String>? secretKey;
+  final pulumi.Input<String?>? secretKey;
 
   /// Creates a new [SpacesKeyState].
   /// [accessKey] The access key ID of the key

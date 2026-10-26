@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_cluster_args.dart';
 import 'database_cluster_backup_restore.dart';
+import 'database_cluster_maintenance_window.dart';
 import 'database_cluster_state.dart';
 import 'database_cluster_storage_autoscale.dart';
 
@@ -81,7 +82,7 @@ import 'database_cluster_storage_autoscale.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -89,7 +90,10 @@ import 'database_cluster_storage_autoscale.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databasecluster" "postgres-example" {
+/// resource "digitalocean_database_cluster" "postgres-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-postgres-cluster"
 ///   engine     = "pg"
 ///   version    = "15"
@@ -218,7 +222,7 @@ import 'database_cluster_storage_autoscale.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -226,7 +230,10 @@ import 'database_cluster_storage_autoscale.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databasecluster" "mysql-example" {
+/// resource "digitalocean_database_cluster" "mysql-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-mysql-cluster"
 ///   engine     = "mysql"
 ///   version    = "8"
@@ -355,7 +362,7 @@ import 'database_cluster_storage_autoscale.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -363,7 +370,10 @@ import 'database_cluster_storage_autoscale.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databasecluster" "valkey-example" {
+/// resource "digitalocean_database_cluster" "valkey-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-valkey-cluster"
 ///   engine     = "valkey"
 ///   version    = "8"
@@ -492,7 +502,7 @@ import 'database_cluster_storage_autoscale.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -500,7 +510,10 @@ import 'database_cluster_storage_autoscale.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databasecluster" "kafka-example" {
+/// resource "digitalocean_database_cluster" "kafka-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-kafka-cluster"
 ///   engine     = "kafka"
 ///   version    = "3.5"
@@ -629,7 +642,7 @@ import 'database_cluster_storage_autoscale.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -637,7 +650,10 @@ import 'database_cluster_storage_autoscale.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databasecluster" "mongodb-example" {
+/// resource "digitalocean_database_cluster" "mongodb-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-mongo-cluster"
 ///   engine     = "mongodb"
 ///   version    = "6"
@@ -766,7 +782,7 @@ import 'database_cluster_storage_autoscale.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -774,7 +790,10 @@ import 'database_cluster_storage_autoscale.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databasecluster" "opensearch-example" {
+/// resource "digitalocean_database_cluster" "opensearch-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-opensearch-cluster"
 ///   engine     = "opensearch"
 ///   version    = "2"
@@ -982,7 +1001,7 @@ import 'database_cluster_storage_autoscale.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -990,7 +1009,10 @@ import 'database_cluster_storage_autoscale.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databasecluster" "doby" {
+/// resource "digitalocean_database_cluster" "doby" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "dobydb"
 ///   engine     = "pg"
 ///   version    = "15"
@@ -999,8 +1021,11 @@ import 'database_cluster_storage_autoscale.dart';
 ///   node_count = 1
 ///   tags       = ["production"]
 /// }
-/// resource "digitalocean_databasecluster" "doby_backup" {
-///   depends_on = [digitalocean_databasecluster.doby]
+/// resource "digitalocean_database_cluster" "doby_backup" {
+///   depends_on = [digitalocean_database_cluster.doby]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "dobydupe"
 ///   engine     = "pg"
 ///   version    = "15"
@@ -1117,7 +1142,7 @@ class DatabaseCluster extends pulumi.CustomResource {
   /// Database cluster's hostname.
   late final pulumi.Output<String> host;
   /// Defines when the automatic maintenance should be performed for the database cluster.
-  late final pulumi.Output<List<Map<String, dynamic>>?> maintenanceWindows;
+  late final pulumi.Output<List<DatabaseClusterMaintenanceWindow>?> maintenanceWindows;
   /// A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
   late final pulumi.Output<List<String>> metricsEndpoints;
   /// The name of the database cluster.
@@ -1180,7 +1205,8 @@ class DatabaseCluster extends pulumi.CustomResource {
           'digitalocean:index/databaseCluster:DatabaseCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
+          additionalSecretOutputs: const ['password', 'privateUri', 'uiPassword', 'uiUri', 'uri'],
         ) {
     backupRestore = registerOutput<DatabaseClusterBackupRestore?>('backupRestore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseClusterBackupRestore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterUrn = registerOutput<String>('clusterUrn');
@@ -1188,29 +1214,29 @@ class DatabaseCluster extends pulumi.CustomResource {
     engine = registerOutput<String>('engine');
     evictionPolicy = registerOutput<String?>('evictionPolicy');
     host = registerOutput<String>('host');
-    maintenanceWindows = registerOutput<List<Map<String, dynamic>>?>('maintenanceWindows');
-    metricsEndpoints = registerOutput<List<String>>('metricsEndpoints');
+    maintenanceWindows = registerOutput<List<DatabaseClusterMaintenanceWindow>?>('maintenanceWindows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseClusterMaintenanceWindow>(guardedValue, (value) => DatabaseClusterMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>())); });
+    metricsEndpoints = registerOutput<List<String>>('metricsEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int>('nodeCount');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     port = registerOutput<int>('port');
     privateHost = registerOutput<String>('privateHost');
     privateNetworkUuid = registerOutput<String>('privateNetworkUuid');
-    privateUri = registerOutput<String>('privateUri');
+    privateUri = registerOutput<String>('privateUri', isSecret: true);
     projectId = registerOutput<String>('projectId');
     region = registerOutput<String>('region');
     size = registerOutput<String>('size');
     sqlMode = registerOutput<String?>('sqlMode');
     storageAutoscale = registerOutput<DatabaseClusterStorageAutoscale?>('storageAutoscale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseClusterStorageAutoscale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageSizeMib = registerOutput<String>('storageSizeMib');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     uiDatabase = registerOutput<String>('uiDatabase');
     uiHost = registerOutput<String>('uiHost');
-    uiPassword = registerOutput<String>('uiPassword');
+    uiPassword = registerOutput<String>('uiPassword', isSecret: true);
     uiPort = registerOutput<int>('uiPort');
-    uiUri = registerOutput<String>('uiUri');
+    uiUri = registerOutput<String>('uiUri', isSecret: true);
     uiUser = registerOutput<String>('uiUser');
-    uri = registerOutput<String>('uri');
+    uri = registerOutput<String>('uri', isSecret: true);
     user = registerOutput<String>('user');
     version = registerOutput<String?>('version');
   }
@@ -1220,11 +1246,12 @@ class DatabaseCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1244,29 +1271,72 @@ class DatabaseCluster extends pulumi.CustomResource {
     engine = registerOutput<String>('engine');
     evictionPolicy = registerOutput<String?>('evictionPolicy');
     host = registerOutput<String>('host');
-    maintenanceWindows = registerOutput<List<Map<String, dynamic>>?>('maintenanceWindows');
-    metricsEndpoints = registerOutput<List<String>>('metricsEndpoints');
+    maintenanceWindows = registerOutput<List<DatabaseClusterMaintenanceWindow>?>('maintenanceWindows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseClusterMaintenanceWindow>(guardedValue, (value) => DatabaseClusterMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>())); });
+    metricsEndpoints = registerOutput<List<String>>('metricsEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int>('nodeCount');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     port = registerOutput<int>('port');
     privateHost = registerOutput<String>('privateHost');
     privateNetworkUuid = registerOutput<String>('privateNetworkUuid');
-    privateUri = registerOutput<String>('privateUri');
+    privateUri = registerOutput<String>('privateUri', isSecret: true);
     projectId = registerOutput<String>('projectId');
     region = registerOutput<String>('region');
     size = registerOutput<String>('size');
     sqlMode = registerOutput<String?>('sqlMode');
     storageAutoscale = registerOutput<DatabaseClusterStorageAutoscale?>('storageAutoscale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseClusterStorageAutoscale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageSizeMib = registerOutput<String>('storageSizeMib');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     uiDatabase = registerOutput<String>('uiDatabase');
     uiHost = registerOutput<String>('uiHost');
-    uiPassword = registerOutput<String>('uiPassword');
+    uiPassword = registerOutput<String>('uiPassword', isSecret: true);
     uiPort = registerOutput<int>('uiPort');
-    uiUri = registerOutput<String>('uiUri');
+    uiUri = registerOutput<String>('uiUri', isSecret: true);
     uiUser = registerOutput<String>('uiUser');
-    uri = registerOutput<String>('uri');
+    uri = registerOutput<String>('uri', isSecret: true);
+    user = registerOutput<String>('user');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseCluster] resource.
+  DatabaseCluster.reference(String urn)
+    : super(
+        'digitalocean:index/databaseCluster:DatabaseCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password', 'privateUri', 'uiPassword', 'uiUri', 'uri'],
+        isResourceReference: true,
+      ) {
+    backupRestore = registerOutput<DatabaseClusterBackupRestore?>('backupRestore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseClusterBackupRestore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterUrn = registerOutput<String>('clusterUrn');
+    database = registerOutput<String>('database');
+    engine = registerOutput<String>('engine');
+    evictionPolicy = registerOutput<String?>('evictionPolicy');
+    host = registerOutput<String>('host');
+    maintenanceWindows = registerOutput<List<DatabaseClusterMaintenanceWindow>?>('maintenanceWindows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseClusterMaintenanceWindow>(guardedValue, (value) => DatabaseClusterMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>())); });
+    metricsEndpoints = registerOutput<List<String>>('metricsEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    nodeCount = registerOutput<int>('nodeCount');
+    password = registerOutput<String>('password', isSecret: true);
+    port = registerOutput<int>('port');
+    privateHost = registerOutput<String>('privateHost');
+    privateNetworkUuid = registerOutput<String>('privateNetworkUuid');
+    privateUri = registerOutput<String>('privateUri', isSecret: true);
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    size = registerOutput<String>('size');
+    sqlMode = registerOutput<String?>('sqlMode');
+    storageAutoscale = registerOutput<DatabaseClusterStorageAutoscale?>('storageAutoscale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseClusterStorageAutoscale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageSizeMib = registerOutput<String>('storageSizeMib');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    uiDatabase = registerOutput<String>('uiDatabase');
+    uiHost = registerOutput<String>('uiHost');
+    uiPassword = registerOutput<String>('uiPassword', isSecret: true);
+    uiPort = registerOutput<int>('uiPort');
+    uiUri = registerOutput<String>('uiUri', isSecret: true);
+    uiUser = registerOutput<String>('uiUser');
+    uri = registerOutput<String>('uri', isSecret: true);
     user = registerOutput<String>('user');
     version = registerOutput<String?>('version');
   }

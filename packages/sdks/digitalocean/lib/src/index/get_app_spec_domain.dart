@@ -10,7 +10,7 @@ class GetAppSpecDomain {
   /// Indicates whether the domain includes all sub-domains, in addition to the given domain.
   final pulumi.Input<bool> wildcard;
   /// If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [GetAppSpecDomain].
   /// [name] The name of the component.

@@ -10,8 +10,8 @@ import 'get_gradientai_agent_versions_sort.dart';
 /// {@macro pulumi_index_get_gradientai_agent_versions_get_gradientai_agent_versions_args_doc}
 class GetGradientaiAgentVersionsArgs {
   final pulumi.Input<String> agentId;
-  final pulumi.Input<List<GetGradientaiAgentVersionsFilter>>? filters;
-  final pulumi.Input<List<GetGradientaiAgentVersionsSort>>? sorts;
+  final pulumi.Input<List<GetGradientaiAgentVersionsFilter>?>? filters;
+  final pulumi.Input<List<GetGradientaiAgentVersionsSort>?>? sorts;
 
   /// Creates a new [GetGradientaiAgentVersionsArgs].
   /// [agentId] Required.

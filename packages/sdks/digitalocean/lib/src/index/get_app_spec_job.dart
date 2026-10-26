@@ -13,45 +13,45 @@ import 'get_app_spec_job_termination.dart';
 
 class GetAppSpecJob {
   /// Describes an alert policy for the component.
-  final pulumi.Input<List<GetAppSpecJobAlert>>? alerts;
+  final pulumi.Input<List<GetAppSpecJobAlert>?>? alerts;
   /// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
-  final pulumi.Input<GetAppSpecJobBitbucket>? bitbucket;
+  final pulumi.Input<GetAppSpecJobBitbucket?>? bitbucket;
   /// An optional build command to run while building this component from source.
-  final pulumi.Input<String>? buildCommand;
+  final pulumi.Input<String?>? buildCommand;
   /// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
-  final pulumi.Input<String>? dockerfilePath;
+  final pulumi.Input<String?>? dockerfilePath;
   /// An environment slug describing the type of this app.
-  final pulumi.Input<String>? environmentSlug;
+  final pulumi.Input<String?>? environmentSlug;
   /// Describes an environment variable made available to an app competent.
-  final pulumi.Input<List<GetAppSpecJobEnv>>? envs;
+  final pulumi.Input<List<GetAppSpecJobEnv>?>? envs;
   /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
-  final pulumi.Input<GetAppSpecJobGit>? git;
+  final pulumi.Input<GetAppSpecJobGit?>? git;
   /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-  final pulumi.Input<GetAppSpecJobGithub>? github;
+  final pulumi.Input<GetAppSpecJobGithub?>? github;
   /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-  final pulumi.Input<GetAppSpecJobGitlab>? gitlab;
+  final pulumi.Input<GetAppSpecJobGitlab?>? gitlab;
   /// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-  final pulumi.Input<GetAppSpecJobImage>? image;
+  final pulumi.Input<GetAppSpecJobImage?>? image;
   /// The amount of instances that this component should be scaled to.
-  final pulumi.Input<int>? instanceCount;
+  final pulumi.Input<int?>? instanceCount;
   /// The instance size to use for this component.
-  final pulumi.Input<String>? instanceSizeSlug;
+  final pulumi.Input<String?>? instanceSizeSlug;
   /// The type of job and when it will be run during the deployment process. It may be one of:
   /// - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
   /// - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
   /// - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
   /// - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Describes a log forwarding destination.
-  final pulumi.Input<List<GetAppSpecJobLogDestination>>? logDestinations;
+  final pulumi.Input<List<GetAppSpecJobLogDestination>?>? logDestinations;
   /// The name of the component.
   final pulumi.Input<String> name;
   /// An optional run command to override the component's default.
-  final pulumi.Input<String>? runCommand;
+  final pulumi.Input<String?>? runCommand;
   /// An optional path to the working directory to use for the build.
-  final pulumi.Input<String>? sourceDir;
+  final pulumi.Input<String?>? sourceDir;
   /// Contains a component's termination parameters.
-  final pulumi.Input<GetAppSpecJobTermination>? termination;
+  final pulumi.Input<GetAppSpecJobTermination?>? termination;
 
   /// Creates a new [GetAppSpecJob].
   /// [alerts] Describes an alert policy for the component.
@@ -128,7 +128,7 @@ class GetAppSpecJob {
       github: (() { final guardedValue = map['github']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetAppSpecJobGithub.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       gitlab: (() { final guardedValue = map['gitlab']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetAppSpecJobGitlab.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetAppSpecJobImage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceSizeSlug: (() { final guardedValue = map['instanceSizeSlug']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       logDestinations: (() { final guardedValue = map['logDestinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppSpecJobLogDestination>(guardedValue, (value) => GetAppSpecJobLogDestination.fromMap((value as Map).cast<String, dynamic>()))); })(),

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_kafka_topic_args.dart';
+import 'database_kafka_topic_config.dart';
 import 'database_kafka_topic_state.dart';
 
 /// Provides a DigitalOcean Kafka topic for Kafka clusters.
@@ -222,7 +223,7 @@ import 'database_kafka_topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -230,8 +231,11 @@ import 'database_kafka_topic_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databasekafkatopic" "topic-01" {
-///   cluster_id         = digitalocean_databasecluster.kafka-example.id
+/// resource "digitalocean_database_kafka_topic" "topic-01" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id         = digitalocean_database_cluster.kafka-example.id
 ///   name               = "topic-01"
 ///   partition_count    = 3
 ///   replication_factor = 2
@@ -261,7 +265,10 @@ import 'database_kafka_topic_state.dart';
 ///     segment_ms                          = 604800000
 ///   }
 /// }
-/// resource "digitalocean_databasecluster" "kafka-example" {
+/// resource "digitalocean_database_cluster" "kafka-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-kafka-cluster"
 ///   engine     = "kafka"
 ///   version    = "3.5"
@@ -399,7 +406,7 @@ class DatabaseKafkaTopic extends pulumi.CustomResource {
   late final pulumi.Output<String> clusterId;
   /// A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
   /// The `config` block is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> configs;
+  late final pulumi.Output<List<DatabaseKafkaTopicConfig>> configs;
   /// The name for the topic.
   late final pulumi.Output<String> name;
   /// The number of partitions for the topic. Default and minimum set at 3, maximum is 2048.
@@ -421,10 +428,10 @@ class DatabaseKafkaTopic extends pulumi.CustomResource {
           'digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
-    configs = registerOutput<List<Map<String, dynamic>>>('configs');
+    configs = registerOutput<List<DatabaseKafkaTopicConfig>>('configs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseKafkaTopicConfig>(guardedValue, (value) => DatabaseKafkaTopicConfig.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     partitionCount = registerOutput<int?>('partitionCount');
     replicationFactor = registerOutput<int?>('replicationFactor');
@@ -436,11 +443,12 @@ class DatabaseKafkaTopic extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseKafkaTopicState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseKafkaTopic._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -455,10 +463,27 @@ class DatabaseKafkaTopic extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     clusterId = registerOutput<String>('clusterId');
-    configs = registerOutput<List<Map<String, dynamic>>>('configs');
+    configs = registerOutput<List<DatabaseKafkaTopicConfig>>('configs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseKafkaTopicConfig>(guardedValue, (value) => DatabaseKafkaTopicConfig.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     partitionCount = registerOutput<int?>('partitionCount');
     replicationFactor = registerOutput<int?>('replicationFactor');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseKafkaTopic] resource.
+  DatabaseKafkaTopic.reference(String urn)
+    : super(
+        'digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterId = registerOutput<String>('clusterId');
+    configs = registerOutput<List<DatabaseKafkaTopicConfig>>('configs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseKafkaTopicConfig>(guardedValue, (value) => DatabaseKafkaTopicConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    partitionCount = registerOutput<int?>('partitionCount');
+    replicationFactor = registerOutput<int?>('replicationFactor');
+    state = registerOutput<String>('state');
   }
 }

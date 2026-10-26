@@ -102,7 +102,7 @@ import 'droplet_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -112,6 +112,9 @@ import 'droplet_state.dart';
 ///
 /// # Create a new Web Droplet in the nyc2 region
 /// resource "digitalocean_droplet" "web" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image   = "ubuntu-20-04-x64"
 ///   name    = "web-1"
 ///   region  = "nyc2"
@@ -294,7 +297,7 @@ class Droplet extends pulumi.CustomResource {
           'digitalocean:index/droplet:Droplet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     backupPolicy = registerOutput<DropletBackupPolicy?>('backupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DropletBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backups = registerOutput<bool?>('backups');
@@ -320,12 +323,12 @@ class Droplet extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resizeDisk = registerOutput<bool?>('resizeDisk');
     size = registerOutput<String>('size');
-    sshKeys = registerOutput<List<String>?>('sshKeys');
+    sshKeys = registerOutput<List<String>?>('sshKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String>('status');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     userData = registerOutput<String?>('userData');
     vcpus = registerOutput<int>('vcpus');
-    volumeIds = registerOutput<List<String>>('volumeIds');
+    volumeIds = registerOutput<List<String>>('volumeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     vpcUuid = registerOutput<String>('vpcUuid');
   }
 
@@ -334,11 +337,12 @@ class Droplet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DropletState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Droplet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -376,12 +380,54 @@ class Droplet extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resizeDisk = registerOutput<bool?>('resizeDisk');
     size = registerOutput<String>('size');
-    sshKeys = registerOutput<List<String>?>('sshKeys');
+    sshKeys = registerOutput<List<String>?>('sshKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String>('status');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     userData = registerOutput<String?>('userData');
     vcpus = registerOutput<int>('vcpus');
-    volumeIds = registerOutput<List<String>>('volumeIds');
+    volumeIds = registerOutput<List<String>>('volumeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcUuid = registerOutput<String>('vpcUuid');
+  }
+
+  /// Creates a typed reference to an existing [Droplet] resource.
+  Droplet.reference(String urn)
+    : super(
+        'digitalocean:index/droplet:Droplet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backupPolicy = registerOutput<DropletBackupPolicy?>('backupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DropletBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backups = registerOutput<bool?>('backups');
+    createdAt = registerOutput<String>('createdAt');
+    disk = registerOutput<int>('disk');
+    dropletAgent = registerOutput<bool?>('dropletAgent');
+    dropletUrn = registerOutput<String>('dropletUrn');
+    gpuPartitionMode = registerOutput<String?>('gpuPartitionMode');
+    gracefulShutdown = registerOutput<bool?>('gracefulShutdown');
+    image = registerOutput<String>('image');
+    ipv4Address = registerOutput<String>('ipv4Address');
+    ipv4AddressPrivate = registerOutput<String>('ipv4AddressPrivate');
+    ipv6 = registerOutput<bool?>('ipv6');
+    ipv6Address = registerOutput<String>('ipv6Address');
+    locked = registerOutput<bool>('locked');
+    memory = registerOutput<int>('memory');
+    monitoring = registerOutput<bool?>('monitoring');
+    this.name = registerOutput<String>('name');
+    priceHourly = registerOutput<double>('priceHourly');
+    priceMonthly = registerOutput<double>('priceMonthly');
+    privateNetworking = registerOutput<bool>('privateNetworking');
+    publicNetworking = registerOutput<bool>('publicNetworking');
+    region = registerOutput<String>('region');
+    resizeDisk = registerOutput<bool?>('resizeDisk');
+    size = registerOutput<String>('size');
+    sshKeys = registerOutput<List<String>?>('sshKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    status = registerOutput<String>('status');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    userData = registerOutput<String?>('userData');
+    vcpus = registerOutput<int>('vcpus');
+    volumeIds = registerOutput<List<String>>('volumeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     vpcUuid = registerOutput<String>('vpcUuid');
   }
 }

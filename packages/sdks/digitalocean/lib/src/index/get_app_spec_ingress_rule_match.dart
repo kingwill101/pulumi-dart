@@ -5,9 +5,9 @@ import 'get_app_spec_ingress_rule_match_authority.dart';
 import 'get_app_spec_ingress_rule_match_path.dart';
 
 class GetAppSpecIngressRuleMatch {
-  final pulumi.Input<GetAppSpecIngressRuleMatchAuthority>? authority;
+  final pulumi.Input<GetAppSpecIngressRuleMatchAuthority?>? authority;
   /// Paths must start with `/` and must be unique within the app.
-  final pulumi.Input<GetAppSpecIngressRuleMatchPath>? path;
+  final pulumi.Input<GetAppSpecIngressRuleMatchPath?>? path;
 
   /// Creates a new [GetAppSpecIngressRuleMatch].
   /// [authority] Optional.

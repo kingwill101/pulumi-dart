@@ -11,10 +11,10 @@ import 'get_regions_sort.dart';
 class GetRegionsArgs {
   /// Filter the results.
   /// The `filter` block is documented below.
-  final pulumi.Input<List<GetRegionsFilter>>? filters;
+  final pulumi.Input<List<GetRegionsFilter>?>? filters;
   /// Sort the results.
   /// The `sort` block is documented below.
-  final pulumi.Input<List<GetRegionsSort>>? sorts;
+  final pulumi.Input<List<GetRegionsSort>?>? sorts;
 
   /// Creates a new [GetRegionsArgs].
   /// [filters] Filter the results.

@@ -125,7 +125,7 @@ import 'ssh_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -137,17 +137,23 @@ import 'ssh_key_state.dart';
 /// }
 ///
 /// # Create a new SSH key
-/// resource "digitalocean_sshkey" "default" {
+/// resource "digitalocean_ssh_key" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "Terraform Example"
 ///   public_key = file("/Users/terraform/.ssh/id_rsa.pub")
 /// }
 /// # Create a new Droplet using the SSH key
 /// resource "digitalocean_droplet" "web" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image    = "ubuntu-18-04-x64"
 ///   name     = "web-1"
 ///   region   = "nyc3"
 ///   size     = "s-1vcpu-1gb"
-///   ssh_keys = [digitalocean_sshkey.default.fingerprint]
+///   ssh_keys = [digitalocean_ssh_key.default.fingerprint]
 /// }
 /// ```
 /// ```java
@@ -249,7 +255,7 @@ class SshKey extends pulumi.CustomResource {
           'digitalocean:index/sshKey:SshKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
@@ -261,11 +267,12 @@ class SshKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SshKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SshKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -279,6 +286,20 @@ class SshKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    fingerprint = registerOutput<String>('fingerprint');
+    this.name = registerOutput<String>('name');
+    publicKey = registerOutput<String>('publicKey');
+  }
+
+  /// Creates a typed reference to an existing [SshKey] resource.
+  SshKey.reference(String urn)
+    : super(
+        'digitalocean:index/sshKey:SshKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
     publicKey = registerOutput<String>('publicKey');

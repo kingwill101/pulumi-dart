@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerGlbSettingsCdn {
   /// Control flag to specify if caching is enabled.
-  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<bool?>? isEnabled;
 
   /// Creates a new [LoadBalancerGlbSettingsCdn].
   /// [isEnabled] Control flag to specify if caching is enabled.

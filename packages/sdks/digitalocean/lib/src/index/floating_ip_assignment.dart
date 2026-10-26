@@ -71,7 +71,7 @@ import 'floating_ip_assignment_state.dart';
 ///     var foobarFloatingIpAssignment = new DigitalOcean.FloatingIpAssignment("foobar", new()
 ///     {
 ///         IpAddress = foobar.IpAddress,
-///         DropletId = foobarDroplet.Id,
+///         DropletId = foobarDroplet.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///     });
 ///
 /// });
@@ -117,7 +117,7 @@ import 'floating_ip_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -125,10 +125,16 @@ import 'floating_ip_assignment_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_floatingip" "foobar" {
+/// resource "digitalocean_floating_ip" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region = "sgp1"
 /// }
 /// resource "digitalocean_droplet" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "baz"
 ///   size               = "s-1vcpu-1gb"
 ///   image              = "ubuntu-18-04-x64"
@@ -136,8 +142,11 @@ import 'floating_ip_assignment_state.dart';
 ///   ipv6               = true
 ///   private_networking = true
 /// }
-/// resource "digitalocean_floatingipassignment" "foobar" {
-///   ip_address = digitalocean_floatingip.foobar.ip_address
+/// resource "digitalocean_floating_ip_assignment" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ip_address = digitalocean_floating_ip.foobar.ip_address
 ///   droplet_id = digitalocean_droplet.foobar.id
 /// }
 /// ```
@@ -238,7 +247,7 @@ class FloatingIpAssignment extends pulumi.CustomResource {
           'digitalocean:index/floatingIpAssignment:FloatingIpAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     dropletId = registerOutput<int>('dropletId');
     ipAddress = registerOutput<String>('ipAddress');
@@ -249,11 +258,12 @@ class FloatingIpAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FloatingIpAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FloatingIpAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -267,6 +277,19 @@ class FloatingIpAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dropletId = registerOutput<int>('dropletId');
+    ipAddress = registerOutput<String>('ipAddress');
+  }
+
+  /// Creates a typed reference to an existing [FloatingIpAssignment] resource.
+  FloatingIpAssignment.reference(String urn)
+    : super(
+        'digitalocean:index/floatingIpAssignment:FloatingIpAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dropletId = registerOutput<int>('dropletId');
     ipAddress = registerOutput<String>('ipAddress');
   }

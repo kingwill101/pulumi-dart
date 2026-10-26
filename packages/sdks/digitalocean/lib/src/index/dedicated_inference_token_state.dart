@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DedicatedInferenceToken resources.
 class DedicatedInferenceTokenState {
   /// The date and time when the token was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// The ID of the dedicated inference endpoint this token belongs to. Changing this forces a new resource.
-  final pulumi.Input<String>? dedicatedInferenceId;
+  final pulumi.Input<String?>? dedicatedInferenceId;
   /// A human-readable name for the token. Changing this forces a new resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (Sensitive) The token value. Only available immediately after creation and not retrievable afterwards.
-  final pulumi.Input<String>? token;
+  final pulumi.Input<String?>? token;
 
   /// Creates a new [DedicatedInferenceTokenState].
   /// [createdAt] The date and time when the token was created.
