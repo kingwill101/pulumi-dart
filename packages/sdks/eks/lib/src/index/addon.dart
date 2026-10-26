@@ -16,7 +16,7 @@ class Addon extends pulumi.ComponentResource {
           'eks:index:Addon',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
+          pulumi.ComponentResourceOptions(version: '4.4.0').merge(options),
           remote: true,
         );
 }

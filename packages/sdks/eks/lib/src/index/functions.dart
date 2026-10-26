@@ -24,3 +24,14 @@ Future<GetKubeconfigResult> getKubeconfig(
   );
   return GetKubeconfigResult.fromMap(result);
 }
+
+pulumi.Output<GetKubeconfigResult> getKubeconfigOutput(
+  GetKubeconfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'eks:index:Cluster/getKubeconfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKubeconfigResult.fromMap);
+}

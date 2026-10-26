@@ -18,7 +18,7 @@ class ClusterCreationRoleProvider extends pulumi.ComponentResource {
           'eks:index:ClusterCreationRoleProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
+          pulumi.ComponentResourceOptions(version: '4.4.0').merge(options),
           remote: true,
         ) {
     role = registerOutput<pulumi_aws_iam.Role?>('role');

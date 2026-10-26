@@ -4,23 +4,23 @@
 /// Result data returned by getKubeconfig.
 class GetKubeconfigResult {
   /// The kubeconfig for the cluster.
-  final String result;
+  final String? result;
 
   /// Creates a new [GetKubeconfigResult].
   /// [result] The kubeconfig for the cluster.
   const GetKubeconfigResult({
-    required this.result,
+    this.result,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'result': result,
+      'result': ?result,
     };
   }
 
   factory GetKubeconfigResult.fromMap(Map<String, dynamic> map) {
     return GetKubeconfigResult(
-      result: map['result'] as String,
+      result: (() { final guardedValue = map['result']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

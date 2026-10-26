@@ -8,9 +8,9 @@ import 'cluster_compute_config.dart';
 /// For more information, see: https://docs.aws.amazon.com/eks/latest/userguide/automode.html
 class AutoModeOptions {
   /// Compute configuration for EKS Auto Mode.
-  final pulumi.Input<ClusterComputeConfig>? computeConfig;
+  final pulumi.Input<ClusterComputeConfig?>? computeConfig;
   /// Whether to create an IAM role for the EKS Auto Mode node group if none is provided in `computeConfig`.
-  final pulumi.Input<bool>? createNodeRole;
+  final pulumi.Input<bool?>? createNodeRole;
   /// Whether to enable EKS Auto Mode. If enabled, EKS will manage node pools, EBS volumes and Load Balancers for you.
   /// When enabled, the vpc-cni and kube-proxy will not be enabled by default because EKS Auto Mode includes pod networking capabilities.
   final pulumi.Input<bool> enabled;
@@ -19,11 +19,11 @@ class AutoModeOptions {
   /// [computeConfig] Compute configuration for EKS Auto Mode.
   /// [createNodeRole] Whether to create an IAM role for the EKS Auto Mode node group if none is provided in `computeConfig`.
   /// [enabled] Whether to enable EKS Auto Mode. If enabled, EKS will manage node pools, EBS volumes and Load Balancers for you.
-  const AutoModeOptions({
+  AutoModeOptions({
     this.computeConfig,
-    this.createNodeRole,
+    pulumi.Input<bool?>? createNodeRole,
     required this.enabled,
-  });
+  }) : createNodeRole = createNodeRole ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

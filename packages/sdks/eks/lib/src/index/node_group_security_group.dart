@@ -21,7 +21,7 @@ class NodeGroupSecurityGroup extends pulumi.ComponentResource {
           'eks:index:NodeGroupSecurityGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
+          pulumi.ComponentResourceOptions(version: '4.4.0').merge(options),
           remote: true,
         ) {
     securityGroup = registerOutput<pulumi_aws_ec2.SecurityGroup?>('securityGroup');
