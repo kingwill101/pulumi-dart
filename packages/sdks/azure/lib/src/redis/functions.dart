@@ -74,7 +74,7 @@ import 'get_enterprise_database_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -82,16 +82,16 @@ import 'get_enterprise_database_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_redis_getcache" "example" {
+/// data "azure_redis_cache" "example" {
 ///   name                = "myrediscache"
 ///   resource_group_name = "redis-cache"
 /// }
 ///
 /// output "primaryAccessKey" {
-///   value = data.azure_redis_getcache.example.primary_access_key
+///   value = data.azure_redis_cache.example.primary_access_key
 /// }
 /// output "hostname" {
-///   value = data.azure_redis_getcache.example.hostname
+///   value = data.azure_redis_cache.example.hostname
 /// }
 /// ```
 /// ```java
@@ -178,8 +178,76 @@ pulumi.Output<GetCacheResult> getCacheOutput(
 /// ## Example Usage
 ///
 ///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure from "@pulumi/azure";
+///
+/// const example = azure.redis.getEnterpriseDatabase({
+///     name: "default",
+///     resourceGroupName: exampleAzurermResourceGroup.name,
+///     clusterId: exampleAzurermRedisEnterpriseCluster.id,
+/// });
+/// export const redisEnterpriseDatabasePrimaryKey = example.then(example => example.primaryAccessKey);
+/// export const redisEnterpriseDatabaseSecondaryKey = example.then(example => example.secondaryAccessKey);
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_azure as azure
+///
+/// example = azure.redis.get_enterprise_database(name="default",
+///     resource_group_name=example_azurerm_resource_group["name"],
+///     cluster_id=example_azurerm_redis_enterprise_cluster["id"])
+/// pulumi.export("redisEnterpriseDatabasePrimaryKey", example.primary_access_key)
+/// pulumi.export("redisEnterpriseDatabaseSecondaryKey", example.secondary_access_key)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Azure = Pulumi.Azure;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Azure.Redis.GetEnterpriseDatabase.Invoke(new()
+///     {
+///         Name = "default",
+///         ResourceGroupName = exampleAzurermResourceGroup.Name,
+///         ClusterId = exampleAzurermRedisEnterpriseCluster.Id,
+///     });
+///
+///     return new Dictionary<string, object?>
+///     {
+///         ["redisEnterpriseDatabasePrimaryKey"] = example.Apply(getEnterpriseDatabaseResult => getEnterpriseDatabaseResult.PrimaryAccessKey),
+///         ["redisEnterpriseDatabaseSecondaryKey"] = example.Apply(getEnterpriseDatabaseResult => getEnterpriseDatabaseResult.SecondaryAccessKey),
+///     };
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/redis"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := redis.LookupEnterpriseDatabase(ctx, &redis.LookupEnterpriseDatabaseArgs{
+/// 			Name:              "default",
+/// 			ResourceGroupName: exampleAzurermResourceGroup.Name,
+/// 			ClusterId:         exampleAzurermRedisEnterpriseCluster.Id,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ctx.Export("redisEnterpriseDatabasePrimaryKey", example.PrimaryAccessKey)
+/// 		ctx.Export("redisEnterpriseDatabaseSecondaryKey", example.SecondaryAccessKey)
+/// 		return nil
+/// 	})
+/// }
+/// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -187,17 +255,49 @@ pulumi.Output<GetCacheResult> getCacheOutput(
 ///   }
 /// }
 ///
-/// data "azure_redis_getenterprisedatabase" "example" {
+/// data "azure_redis_enterprise_database" "example" {
 ///   name                = "default"
 ///   resource_group_name = exampleAzurermResourceGroup.name
 ///   cluster_id          = exampleAzurermRedisEnterpriseCluster.id
 /// }
 ///
 /// output "redisEnterpriseDatabasePrimaryKey" {
-///   value = data.azure_redis_getenterprisedatabase.example.primary_access_key
+///   value = data.azure_redis_enterprise_database.example.primary_access_key
 /// }
 /// output "redisEnterpriseDatabaseSecondaryKey" {
-///   value = data.azure_redis_getenterprisedatabase.example.secondary_access_key
+///   value = data.azure_redis_enterprise_database.example.secondary_access_key
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azure.redis.RedisFunctions;
+/// import com.pulumi.azure.redis.inputs.GetEnterpriseDatabaseArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = RedisFunctions.getEnterpriseDatabase(GetEnterpriseDatabaseArgs.builder()
+///             .name("default")
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
+///             .clusterId(exampleAzurermRedisEnterpriseCluster.get("id"))
+///             .build());
+///
+///         ctx.export("redisEnterpriseDatabasePrimaryKey", example.primaryAccessKey());
+///         ctx.export("redisEnterpriseDatabaseSecondaryKey", example.secondaryAccessKey());
+///     }
 /// }
 /// ```
 /// ```yaml

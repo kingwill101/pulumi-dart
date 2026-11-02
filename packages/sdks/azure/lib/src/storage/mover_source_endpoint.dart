@@ -106,7 +106,7 @@ import 'mover_source_endpoint_state.dart';
 /// 		}
 /// 		_, err = storage.NewMoverSourceEndpoint(ctx, "example", &storage.MoverSourceEndpointArgs{
 /// 			Name:           pulumi.String("example-se"),
-/// 			StorageMoverId: exampleMover.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageMoverId: exampleMover.ID(),
 /// 			Export:         pulumi.String("/"),
 /// 			Host:           pulumi.String("192.168.0.1"),
 /// 			NfsVersion:     pulumi.String("NFSv3"),
@@ -119,7 +119,7 @@ import 'mover_source_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -127,16 +127,25 @@ import 'mover_source_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_mover" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ssm"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   location            = "West Europe"
 /// }
-/// resource "azure_storage_moversourceendpoint" "example" {
+/// resource "azure_storage_mover_source_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "example-se"
 ///   storage_mover_id = azure_storage_mover.example.id
 ///   export           = "/"
@@ -257,7 +266,7 @@ class MoverSourceEndpoint extends pulumi.CustomResource {
           'azure:storage/moverSourceEndpoint:MoverSourceEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     description = registerOutput<String?>('description');
     export = registerOutput<String?>('export');

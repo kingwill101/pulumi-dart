@@ -25,7 +25,7 @@ class ConfigurationBackupRetentionPolicyDailyScheduleRetentionDuration {
 
   factory ConfigurationBackupRetentionPolicyDailyScheduleRetentionDuration.fromMap(Map<String, dynamic> map) {
     return ConfigurationBackupRetentionPolicyDailyScheduleRetentionDuration(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       durationType: (() { final guardedValue = map['durationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

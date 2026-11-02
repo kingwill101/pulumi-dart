@@ -11,7 +11,7 @@ import 'get_provider_result.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as azurerm from "@pulumi/azurerm";
 ///
-/// const example = azurerm.Attestation({
+/// const example = azurerm.attestation({
 ///     name: "example-attestationprovider",
 ///     resourceGroupName: "example-resource-group",
 /// });
@@ -102,7 +102,7 @@ import 'get_provider_result.dart';
 ///             Map.entry("resourceGroupName", "example-resource-group")
 ///         ));
 ///
-///         ctx.export("id", example.id());
+///         ctx.export("id", example.get("id"));
 ///     }
 /// }
 /// ```

@@ -31,7 +31,7 @@ class AuthomationRuleActionPlaybook {
   factory AuthomationRuleActionPlaybook.fromMap(Map<String, dynamic> map) {
     return AuthomationRuleActionPlaybook(
       logicAppId: pulumi.Input.fromValue(map['logicAppId'] as String),
-      order: pulumi.Input.fromValue((map['order'] as num).toInt()),
+      order: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['order'])),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

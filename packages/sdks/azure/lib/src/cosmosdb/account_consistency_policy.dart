@@ -33,8 +33,8 @@ class AccountConsistencyPolicy {
   factory AccountConsistencyPolicy.fromMap(Map<String, dynamic> map) {
     return AccountConsistencyPolicy(
       consistencyLevel: pulumi.Input.fromValue(map['consistencyLevel'] as String),
-      maxIntervalInSeconds: (() { final guardedValue = map['maxIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxStalenessPrefix: (() { final guardedValue = map['maxStalenessPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxIntervalInSeconds: (() { final guardedValue = map['maxIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxStalenessPrefix: (() { final guardedValue = map['maxStalenessPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

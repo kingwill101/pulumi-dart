@@ -483,7 +483,7 @@ import 'network_connection_monitor_test_group.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("testconfiguration1"),
-/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					SubnetId:                   exampleSubnet.ID(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -496,7 +496,7 @@ import 'network_connection_monitor_test_group.dart';
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleNetworkInterface.ID(),
 /// 			},
 /// 			VmSize: pulumi.String("Standard_D2s_v3"),
 /// 			StorageImageReference: &compute.VirtualMachineStorageImageReferenceArgs{
@@ -525,7 +525,7 @@ import 'network_connection_monitor_test_group.dart';
 /// 		}
 /// 		exampleExtension, err := compute.NewExtension(ctx, "example", &compute.ExtensionArgs{
 /// 			Name:                    pulumi.String("example-VMExtension"),
-/// 			VirtualMachineId:        exampleVirtualMachine.ID().ToIDOutput().ToStringOutput(),
+/// 			VirtualMachineId:        exampleVirtualMachine.ID(),
 /// 			Publisher:               pulumi.String("Microsoft.Azure.NetworkWatcher"),
 /// 			Type:                    pulumi.String("NetworkWatcherAgentLinux"),
 /// 			TypeHandlerVersion:      pulumi.String("1.4"),
@@ -545,16 +545,16 @@ import 'network_connection_monitor_test_group.dart';
 /// 		}
 /// 		_, err = network.NewNetworkConnectionMonitor(ctx, "example", &network.NetworkConnectionMonitorArgs{
 /// 			Name:             pulumi.String("example-Monitor"),
-/// 			NetworkWatcherId: exampleNetworkWatcher.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkWatcherId: exampleNetworkWatcher.ID(),
 /// 			Location:         exampleNetworkWatcher.Location,
 /// 			Endpoints: network.NetworkConnectionMonitorEndpointArray{
 /// 				&network.NetworkConnectionMonitorEndpointArgs{
 /// 					Name:             pulumi.String("source"),
-/// 					TargetResourceId: exampleVirtualMachine.ID().ToIDOutput().ToStringOutput(),
+/// 					TargetResourceId: exampleVirtualMachine.ID(),
 /// 					Filter: &network.NetworkConnectionMonitorEndpointFilterArgs{
 /// 						Items: network.NetworkConnectionMonitorEndpointFilterItemArray{
 /// 							&network.NetworkConnectionMonitorEndpointFilterItemArgs{
-/// 								Address: exampleVirtualMachine.ID().ToIDOutput().ToStringOutput(),
+/// 								Address: exampleVirtualMachine.ID(),
 /// 								Type:    pulumi.String("AgentAddress"),
 /// 							},
 /// 						},
@@ -592,7 +592,7 @@ import 'network_connection_monitor_test_group.dart';
 /// 			},
 /// 			Notes: pulumi.String("examplenote"),
 /// 			OutputWorkspaceResourceIds: pulumi.StringArray{
-/// 				exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleAnalyticsWorkspace.ID(),
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleExtension,
@@ -605,7 +605,7 @@ import 'network_connection_monitor_test_group.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -613,42 +613,60 @@ import 'network_connection_monitor_test_group.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-Watcher-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networkwatcher" "example" {
+/// resource "azure_network_network_watcher" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-Watcher"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-Vnet"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-Subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_network_networkinterface" "example" {
+/// resource "azure_network_network_interface" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-Nic"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ip_configurations {
 ///     name                          = "testconfiguration1"
 ///     subnet_id                     = azure_network_subnet.example.id
 ///     private_ip_address_allocation = "Dynamic"
 ///   }
 /// }
-/// resource "azure_compute_virtualmachine" "example" {
+/// resource "azure_compute_virtual_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-VM"
-///   location              = azure_core_resourcegroup.example.location
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   network_interface_ids = [azure_network_networkinterface.example.id]
+///   location              = azure_core_resource_group.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   network_interface_ids = [azure_network_network_interface.example.id]
 ///   vm_size               = "Standard_D2s_v3"
 ///   storage_image_reference = {
 ///     publisher = "Canonical"
@@ -672,31 +690,40 @@ import 'network_connection_monitor_test_group.dart';
 ///   }
 /// }
 /// resource "azure_compute_extension" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-VMExtension"
-///   virtual_machine_id         = azure_compute_virtualmachine.example.id
+///   virtual_machine_id         = azure_compute_virtual_machine.example.id
 ///   publisher                  = "Microsoft.Azure.NetworkWatcher"
 ///   type                       = "NetworkWatcherAgentLinux"
 ///   type_handler_version       = "1.4"
 ///   auto_upgrade_minor_version = true
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-Workspace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 /// }
-/// resource "azure_network_networkconnectionmonitor" "example" {
-///   depends_on         = [azure_compute_extension.example]
+/// resource "azure_network_network_connection_monitor" "example" {
+///   depends_on = [azure_compute_extension.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-Monitor"
-///   network_watcher_id = azure_network_networkwatcher.example.id
-///   location           = azure_network_networkwatcher.example.location
+///   network_watcher_id = azure_network_network_watcher.example.id
+///   location           = azure_network_network_watcher.example.location
 ///   endpoints {
 ///     name               = "source"
-///     target_resource_id = azure_compute_virtualmachine.example.id
+///     target_resource_id = azure_compute_virtual_machine.example.id
 ///     filter = {
 ///       items = [{
-///         "address" = azure_compute_virtualmachine.example.id
-///         "type"    = "AgentAddress"
+///         address = azure_compute_virtual_machine.example.id
+///         type    = "AgentAddress"
 ///       }]
 ///       type = "Include"
 ///     }
@@ -720,7 +747,7 @@ import 'network_connection_monitor_test_group.dart';
 ///     test_configuration_names = ["tcpName"]
 ///   }
 ///   notes                         = "examplenote"
-///   output_workspace_resource_ids = [azure_operationalinsights_analyticsworkspace.example.id]
+///   output_workspace_resource_ids = [azure_operationalinsights_analytics_workspace.example.id]
 /// }
 /// ```
 /// ```java
@@ -1068,7 +1095,7 @@ class NetworkConnectionMonitor extends pulumi.CustomResource {
           'azure:network/networkConnectionMonitor:NetworkConnectionMonitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     endpoints = registerOutput<List<NetworkConnectionMonitorEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkConnectionMonitorEndpoint>(guardedValue, (value) => NetworkConnectionMonitorEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');

@@ -157,7 +157,7 @@ import 'resource_policy_exemption_state.dart';
 /// 		}
 /// 		exampleResourcePolicyAssignment, err := core.NewResourcePolicyAssignment(ctx, "example", &core.ResourcePolicyAssignmentArgs{
 /// 			Name:               pulumi.String("assignment1"),
-/// 			ResourceId:         exampleVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId:         exampleVirtualNetwork.ID(),
 /// 			PolicyDefinitionId: pulumi.String(example.Id),
 /// 			Location:           exampleResourceGroup.Location,
 /// 			Identity: &core.ResourcePolicyAssignmentIdentityArgs{
@@ -170,7 +170,7 @@ import 'resource_policy_exemption_state.dart';
 /// 		_, err = core.NewResourcePolicyExemption(ctx, "example", &core.ResourcePolicyExemptionArgs{
 /// 			Name:               pulumi.String("exemption1"),
 /// 			ResourceId:         exampleResourcePolicyAssignment.ResourceId,
-/// 			PolicyAssignmentId: exampleResourcePolicyAssignment.ID().ToIDOutput().ToStringOutput(),
+/// 			PolicyAssignmentId: exampleResourcePolicyAssignment.ID(),
 /// 			ExemptionCategory:  pulumi.String("Mitigated"),
 /// 		})
 /// 		if err != nil {
@@ -181,7 +181,7 @@ import 'resource_policy_exemption_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -189,33 +189,45 @@ import 'resource_policy_exemption_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_policy_getpolicysetdefinition" "example" {
+/// data "azure_policy_policy_set_definition" "example" {
 ///   display_name = "Audit machines with insecure password security settings"
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "group1"
 ///   location = "westus"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "network1"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   address_spaces      = ["10.0.0.0/16"]
 /// }
-/// resource "azure_core_resourcepolicyassignment" "example" {
+/// resource "azure_core_resource_policy_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "assignment1"
-///   resource_id          = azure_network_virtualnetwork.example.id
-///   policy_definition_id = data.azure_policy_getpolicysetdefinition.example.id
-///   location             = azure_core_resourcegroup.example.location
+///   resource_id          = azure_network_virtual_network.example.id
+///   policy_definition_id = data.azure_policy_policy_set_definition.example.id
+///   location             = azure_core_resource_group.example.location
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_core_resourcepolicyexemption" "example" {
+/// resource "azure_core_resource_policy_exemption" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "exemption1"
-///   resource_id          = azure_core_resourcepolicyassignment.example.resource_id
-///   policy_assignment_id = azure_core_resourcepolicyassignment.example.id
+///   resource_id          = azure_core_resource_policy_assignment.example.resource_id
+///   policy_assignment_id = azure_core_resource_policy_assignment.example.id
 ///   exemption_category   = "Mitigated"
 /// }
 /// ```
@@ -368,7 +380,7 @@ class ResourcePolicyExemption extends pulumi.CustomResource {
           'azure:core/resourcePolicyExemption:ResourcePolicyExemption',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');

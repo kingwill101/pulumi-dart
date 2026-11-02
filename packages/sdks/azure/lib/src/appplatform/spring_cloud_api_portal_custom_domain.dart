@@ -137,16 +137,16 @@ import 'spring_cloud_api_portal_custom_domain_state.dart';
 /// 		}
 /// 		exampleSpringCloudGateway, err := appplatform.NewSpringCloudGateway(ctx, "example", &appplatform.SpringCloudGatewayArgs{
 /// 			Name:                 pulumi.String("default"),
-/// 			SpringCloudServiceId: exampleSpringCloudService.ID().ToIDOutput().ToStringOutput(),
+/// 			SpringCloudServiceId: exampleSpringCloudService.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleSpringCloudApiPortal, err := appplatform.NewSpringCloudApiPortal(ctx, "example", &appplatform.SpringCloudApiPortalArgs{
 /// 			Name:                 pulumi.String("default"),
-/// 			SpringCloudServiceId: exampleSpringCloudService.ID().ToIDOutput().ToStringOutput(),
+/// 			SpringCloudServiceId: exampleSpringCloudService.ID(),
 /// 			GatewayIds: pulumi.StringArray{
-/// 				exampleSpringCloudGateway.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleSpringCloudGateway.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -154,7 +154,7 @@ import 'spring_cloud_api_portal_custom_domain_state.dart';
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudApiPortalCustomDomain(ctx, "example", &appplatform.SpringCloudApiPortalCustomDomainArgs{
 /// 			Name:                   pulumi.String("example.com"),
-/// 			SpringCloudApiPortalId: exampleSpringCloudApiPortal.ID().ToIDOutput().ToStringOutput(),
+/// 			SpringCloudApiPortalId: exampleSpringCloudApiPortal.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -164,7 +164,7 @@ import 'spring_cloud_api_portal_custom_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -172,28 +172,43 @@ import 'spring_cloud_api_portal_custom_domain_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appplatform_springcloudservice" "example" {
+/// resource "azure_appplatform_spring_cloud_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "E0"
 /// }
-/// resource "azure_appplatform_springcloudgateway" "example" {
+/// resource "azure_appplatform_spring_cloud_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "default"
-///   spring_cloud_service_id = azure_appplatform_springcloudservice.example.id
+///   spring_cloud_service_id = azure_appplatform_spring_cloud_service.example.id
 /// }
-/// resource "azure_appplatform_springcloudapiportal" "example" {
+/// resource "azure_appplatform_spring_cloud_api_portal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "default"
-///   spring_cloud_service_id = azure_appplatform_springcloudservice.example.id
-///   gateway_ids             = [azure_appplatform_springcloudgateway.example.id]
+///   spring_cloud_service_id = azure_appplatform_spring_cloud_service.example.id
+///   gateway_ids             = [azure_appplatform_spring_cloud_gateway.example.id]
 /// }
-/// resource "azure_appplatform_springcloudapiportalcustomdomain" "example" {
+/// resource "azure_appplatform_spring_cloud_api_portal_custom_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example.com"
-///   spring_cloud_api_portal_id = azure_appplatform_springcloudapiportal.example.id
+///   spring_cloud_api_portal_id = azure_appplatform_spring_cloud_api_portal.example.id
 /// }
 /// ```
 /// ```java
@@ -321,7 +336,7 @@ class SpringCloudApiPortalCustomDomain extends pulumi.CustomResource {
           'azure:appplatform/springCloudApiPortalCustomDomain:SpringCloudApiPortalCustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     springCloudApiPortalId = registerOutput<String>('springCloudApiPortalId');

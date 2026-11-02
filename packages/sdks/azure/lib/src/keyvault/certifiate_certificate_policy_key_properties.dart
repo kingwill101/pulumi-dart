@@ -42,7 +42,7 @@ class CertifiateCertificatePolicyKeyProperties {
     return CertifiateCertificatePolicyKeyProperties(
       curve: (() { final guardedValue = map['curve']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exportable: pulumi.Input.fromValue(map['exportable'] as bool),
-      keySize: (() { final guardedValue = map['keySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      keySize: (() { final guardedValue = map['keySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       keyType: pulumi.Input.fromValue(map['keyType'] as String),
       reuseKey: pulumi.Input.fromValue(map['reuseKey'] as bool),
     );

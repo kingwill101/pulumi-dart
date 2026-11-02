@@ -44,9 +44,9 @@ class VirtualMachineAutoBackupManualSchedule {
     return VirtualMachineAutoBackupManualSchedule(
       daysOfWeeks: (() { final guardedValue = map['daysOfWeeks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       fullBackupFrequency: pulumi.Input.fromValue(map['fullBackupFrequency'] as String),
-      fullBackupStartHour: pulumi.Input.fromValue((map['fullBackupStartHour'] as num).toInt()),
-      fullBackupWindowInHours: pulumi.Input.fromValue((map['fullBackupWindowInHours'] as num).toInt()),
-      logBackupFrequencyInMinutes: pulumi.Input.fromValue((map['logBackupFrequencyInMinutes'] as num).toInt()),
+      fullBackupStartHour: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['fullBackupStartHour'])),
+      fullBackupWindowInHours: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['fullBackupWindowInHours'])),
+      logBackupFrequencyInMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['logBackupFrequencyInMinutes'])),
     );
   }
 }

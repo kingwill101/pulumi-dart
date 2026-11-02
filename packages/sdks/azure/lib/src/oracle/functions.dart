@@ -98,7 +98,7 @@ import 'get_resource_anchor_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -106,12 +106,12 @@ import 'get_resource_anchor_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_oracle_getadbscharactersets" "example" {
+/// data "azure_oracle_adbs_character_sets" "example" {
 ///   location = "West Europe"
 /// }
 ///
 /// output "example" {
-///   value = data.azure_oracle_getadbscharactersets.example
+///   value = data.azure_oracle_adbs_character_sets.example
 /// }
 /// ```
 /// ```java
@@ -253,7 +253,7 @@ pulumi.Output<GetAdbsCharacterSetsResult> getAdbsCharacterSetsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -261,7 +261,7 @@ pulumi.Output<GetAdbsCharacterSetsResult> getAdbsCharacterSetsOutput(
 ///   }
 /// }
 ///
-/// data "azure_oracle_getadbscharactersets" "example" {
+/// data "azure_oracle_adbs_character_sets" "example" {
 ///   location = "West Europe"
 /// }
 ///
@@ -408,7 +408,7 @@ pulumi.Output<GetAdbsNationalCharacterSetsResult> getAdbsNationalCharacterSetsOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -416,13 +416,13 @@ pulumi.Output<GetAdbsNationalCharacterSetsResult> getAdbsNationalCharacterSetsOu
 ///   }
 /// }
 ///
-/// data "azure_oracle_getautonomousdatabase" "example" {
+/// data "azure_oracle_autonomous_database" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_oracle_getautonomousdatabase.example.id
+///   value = data.azure_oracle_autonomous_database.example.id
 /// }
 /// ```
 /// ```java
@@ -555,7 +555,7 @@ pulumi.Output<GetAutonomousDatabaseResult> getAutonomousDatabaseOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -563,7 +563,7 @@ pulumi.Output<GetAutonomousDatabaseResult> getAutonomousDatabaseOutput(
 ///   }
 /// }
 ///
-/// data "azure_oracle_getautonomousdatabasebackup" "example" {
+/// data "azure_oracle_autonomous_database_backup" "example" {
 ///   autonomous_database_id = exampleAzurermOracleAutonomousDatabase.id
 /// }
 /// ```
@@ -589,7 +589,7 @@ pulumi.Output<GetAutonomousDatabaseResult> getAutonomousDatabaseOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = OracleFunctions.getAutonomousDatabaseBackup(GetAutonomousDatabaseBackupArgs.builder()
-///             .autonomousDatabaseId(exampleAzurermOracleAutonomousDatabase.id())
+///             .autonomousDatabaseId(exampleAzurermOracleAutonomousDatabase.get("id"))
 ///             .build());
 ///
 ///     }
@@ -692,7 +692,7 @@ pulumi.Output<GetAutonomousDatabaseBackupResult> getAutonomousDatabaseBackupOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -700,7 +700,7 @@ pulumi.Output<GetAutonomousDatabaseBackupResult> getAutonomousDatabaseBackupOutp
 ///   }
 /// }
 ///
-/// data "azure_oracle_getautonomousdatabasebackups" "example" {
+/// data "azure_oracle_autonomous_database_backups" "example" {
 ///   autonomous_database_id = exampleAzurermOracleAutonomousDatabase.id
 /// }
 /// ```
@@ -726,7 +726,7 @@ pulumi.Output<GetAutonomousDatabaseBackupResult> getAutonomousDatabaseBackupOutp
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = OracleFunctions.getAutonomousDatabaseBackups(GetAutonomousDatabaseBackupsArgs.builder()
-///             .autonomousDatabaseId(exampleAzurermOracleAutonomousDatabase.id())
+///             .autonomousDatabaseId(exampleAzurermOracleAutonomousDatabase.get("id"))
 ///             .build());
 ///
 ///     }
@@ -840,7 +840,7 @@ pulumi.Output<GetAutonomousDatabaseBackupsResult> getAutonomousDatabaseBackupsOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -848,13 +848,13 @@ pulumi.Output<GetAutonomousDatabaseBackupsResult> getAutonomousDatabaseBackupsOu
 ///   }
 /// }
 ///
-/// data "azure_oracle_getautonomousdatabaseclonefrombackup" "example" {
+/// data "azure_oracle_autonomous_database_clone_from_backup" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_oracle_getautonomousdatabaseclonefrombackup.example.id
+///   value = data.azure_oracle_autonomous_database_clone_from_backup.example.id
 /// }
 /// ```
 /// ```java
@@ -998,7 +998,7 @@ pulumi.Output<GetAutonomousDatabaseCloneFromBackupResult> getAutonomousDatabaseC
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1006,13 +1006,13 @@ pulumi.Output<GetAutonomousDatabaseCloneFromBackupResult> getAutonomousDatabaseC
 ///   }
 /// }
 ///
-/// data "azure_oracle_getautonomousdatabaseclonefromdatabase" "example" {
+/// data "azure_oracle_autonomous_database_clone_from_database" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_oracle_getautonomousdatabaseclonefromdatabase.example.id
+///   value = data.azure_oracle_autonomous_database_clone_from_database.example.id
 /// }
 /// ```
 /// ```java
@@ -1156,7 +1156,7 @@ pulumi.Output<GetAutonomousDatabaseCloneFromDatabaseResult> getAutonomousDatabas
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1164,13 +1164,13 @@ pulumi.Output<GetAutonomousDatabaseCloneFromDatabaseResult> getAutonomousDatabas
 ///   }
 /// }
 ///
-/// data "azure_oracle_getcloudvmcluster" "example" {
+/// data "azure_oracle_cloud_vm_cluster" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_oracle_getcloudvmcluster.example.id
+///   value = data.azure_oracle_cloud_vm_cluster.example.id
 /// }
 /// ```
 /// ```java
@@ -1310,7 +1310,7 @@ pulumi.Output<GetCloudVmClusterResult> getCloudVmClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1318,12 +1318,12 @@ pulumi.Output<GetCloudVmClusterResult> getCloudVmClusterOutput(
 ///   }
 /// }
 ///
-/// data "azure_oracle_getdatabasesystemversions" "example" {
+/// data "azure_oracle_database_system_versions" "example" {
 ///   location = "eastus"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_oracle_getdatabasesystemversions.example.id
+///   value = data.azure_oracle_database_system_versions.example.id
 /// }
 /// ```
 /// ```java
@@ -1465,7 +1465,7 @@ pulumi.Output<GetDatabaseSystemVersionsResult> getDatabaseSystemVersionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1473,12 +1473,12 @@ pulumi.Output<GetDatabaseSystemVersionsResult> getDatabaseSystemVersionsOutput(
 ///   }
 /// }
 ///
-/// data "azure_oracle_getdbnodes" "example" {
+/// data "azure_oracle_db_nodes" "example" {
 ///   cloud_vm_cluster_id = "existing"
 /// }
 ///
 /// output "example" {
-///   value = data.azure_oracle_getdbnodes.example
+///   value = data.azure_oracle_db_nodes.example
 /// }
 /// ```
 /// ```java
@@ -1620,7 +1620,7 @@ pulumi.Output<GetDbNodesResult> getDbNodesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1628,13 +1628,13 @@ pulumi.Output<GetDbNodesResult> getDbNodesOutput(
 ///   }
 /// }
 ///
-/// data "azure_oracle_getdbservers" "example" {
+/// data "azure_oracle_db_servers" "example" {
 ///   resource_group_name               = "existing"
 ///   cloud_exadata_infrastructure_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_oracle_getdbservers.example.id
+///   value = data.azure_oracle_db_servers.example.id
 /// }
 /// ```
 /// ```java
@@ -1784,7 +1784,7 @@ pulumi.Output<GetDbServersResult> getDbServersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1792,13 +1792,13 @@ pulumi.Output<GetDbServersResult> getDbServersOutput(
 ///   }
 /// }
 ///
-/// data "azure_oracle_getdbsystemshapes" "example" {
+/// data "azure_oracle_db_system_shapes" "example" {
 ///   location = "eastus"
 ///   zone     = "2"
 /// }
 ///
 /// output "example" {
-///   value = data.azure_oracle_getdbsystemshapes.example
+///   value = data.azure_oracle_db_system_shapes.example
 /// }
 /// ```
 /// ```java
@@ -1942,7 +1942,7 @@ pulumi.Output<GetDbSystemShapesResult> getDbSystemShapesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1950,13 +1950,13 @@ pulumi.Output<GetDbSystemShapesResult> getDbSystemShapesOutput(
 ///   }
 /// }
 ///
-/// data "azure_oracle_getexadatainfrastructure" "example" {
+/// data "azure_oracle_exadata_infrastructure" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_oracle_getexadatainfrastructure.example.id
+///   value = data.azure_oracle_exadata_infrastructure.example.id
 /// }
 /// ```
 /// ```java
@@ -2100,7 +2100,7 @@ pulumi.Output<GetExadataInfrastructureResult> getExadataInfrastructureOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2108,13 +2108,13 @@ pulumi.Output<GetExadataInfrastructureResult> getExadataInfrastructureOutput(
 ///   }
 /// }
 ///
-/// data "azure_oracle_getexascaledatabasestoragevault" "example" {
+/// data "azure_oracle_exascale_database_storage_vault" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_oracle_getexascaledatabasestoragevault.example.id
+///   value = data.azure_oracle_exascale_database_storage_vault.example.id
 /// }
 /// ```
 /// ```java
@@ -2268,7 +2268,7 @@ pulumi.Output<GetExascaleDatabaseStorageVaultResult> getExascaleDatabaseStorageV
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2276,14 +2276,14 @@ pulumi.Output<GetExascaleDatabaseStorageVaultResult> getExascaleDatabaseStorageV
 ///   }
 /// }
 ///
-/// data "azure_oracle_getgiversions" "example" {
+/// data "azure_oracle_gi_versions" "example" {
 ///   location = "eastus"
 ///   zone     = "2"
 ///   shape    = "Exadata.X9M"
 /// }
 ///
 /// output "example" {
-///   value = data.azure_oracle_getgiversions.example
+///   value = data.azure_oracle_gi_versions.example
 /// }
 /// ```
 /// ```java
@@ -2429,7 +2429,7 @@ pulumi.Output<GetGiVersionsResult> getGiVersionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2437,13 +2437,13 @@ pulumi.Output<GetGiVersionsResult> getGiVersionsOutput(
 ///   }
 /// }
 ///
-/// data "azure_oracle_getresourceanchor" "example" {
+/// data "azure_oracle_resource_anchor" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_oracle_getresourceanchor.example.id
+///   value = data.azure_oracle_resource_anchor.example.id
 /// }
 /// ```
 /// ```java

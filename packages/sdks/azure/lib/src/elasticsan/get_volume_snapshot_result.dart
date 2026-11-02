@@ -46,7 +46,7 @@ class GetVolumeSnapshotResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sourceId: (() { final guardedValue = map['sourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      sourceVolumeSizeInGib: (() { final guardedValue = map['sourceVolumeSizeInGib']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      sourceVolumeSizeInGib: (() { final guardedValue = map['sourceVolumeSizeInGib']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       volumeGroupId: (() { final guardedValue = map['volumeGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       volumeName: (() { final guardedValue = map['volumeName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

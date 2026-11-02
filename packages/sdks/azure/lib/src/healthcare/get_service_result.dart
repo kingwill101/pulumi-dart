@@ -74,7 +74,7 @@ class GetServiceResult {
       authenticationConfigurations: (() { final guardedValue = map['authenticationConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceAuthenticationConfiguration>(guardedValue, (value) => GetServiceAuthenticationConfiguration.fromMap((value as Map).cast<String, dynamic>())); })(),
       corsConfigurations: (() { final guardedValue = map['corsConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceCorsConfiguration>(guardedValue, (value) => GetServiceCorsConfiguration.fromMap((value as Map).cast<String, dynamic>())); })(),
       cosmosdbKeyVaultKeyVersionlessId: (() { final guardedValue = map['cosmosdbKeyVaultKeyVersionlessId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      cosmosdbThroughput: (() { final guardedValue = map['cosmosdbThroughput']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      cosmosdbThroughput: (() { final guardedValue = map['cosmosdbThroughput']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),

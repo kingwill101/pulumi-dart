@@ -68,7 +68,7 @@ import 'get_service_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -76,13 +76,13 @@ import 'get_service_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_communication_getservice" "example" {
+/// data "azure_communication_service" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_communication_getservice.example.id
+///   value = data.azure_communication_service.example.id
 /// }
 /// ```
 /// ```java

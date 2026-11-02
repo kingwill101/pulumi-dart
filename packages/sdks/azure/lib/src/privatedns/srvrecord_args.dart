@@ -54,7 +54,7 @@ class SRVRecordArgs {
       records: pulumi.Input.fromValue(pulumi.Input.decodeList<SRVRecordRecord>(map['records']!, (value) => SRVRecordRecord.fromMap((value as Map).cast<String, dynamic>()))),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      ttl: pulumi.Input.fromValue((map['ttl'] as num).toInt()),
+      ttl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ttl'])),
       zoneName: pulumi.Input.fromValue(map['zoneName'] as String),
     );
   }

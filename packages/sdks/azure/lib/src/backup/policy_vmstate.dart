@@ -100,7 +100,7 @@ class PolicyVMState {
       backup: (() { final guardedValue = map['backup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyVMBackup.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       consistencyType: (() { final guardedValue = map['consistencyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instantRestoreResourceGroup: (() { final guardedValue = map['instantRestoreResourceGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyVMInstantRestoreResourceGroup.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      instantRestoreRetentionDays: (() { final guardedValue = map['instantRestoreRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      instantRestoreRetentionDays: (() { final guardedValue = map['instantRestoreRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyType: (() { final guardedValue = map['policyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recoveryVaultName: (() { final guardedValue = map['recoveryVaultName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

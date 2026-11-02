@@ -25,8 +25,8 @@ class SparkPoolAutoScale {
 
   factory SparkPoolAutoScale.fromMap(Map<String, dynamic> map) {
     return SparkPoolAutoScale(
-      maxNodeCount: pulumi.Input.fromValue((map['maxNodeCount'] as num).toInt()),
-      minNodeCount: pulumi.Input.fromValue((map['minNodeCount'] as num).toInt()),
+      maxNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNodeCount'])),
+      minNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minNodeCount'])),
     );
   }
 }

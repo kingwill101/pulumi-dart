@@ -40,7 +40,7 @@ class RouteServerBgpConnectionArgs {
   factory RouteServerBgpConnectionArgs.fromMap(Map<String, dynamic> map) {
     return RouteServerBgpConnectionArgs(
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      peerAsn: pulumi.Input.fromValue((map['peerAsn'] as num).toInt()),
+      peerAsn: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['peerAsn'])),
       peerIp: pulumi.Input.fromValue(map['peerIp'] as String),
       routeServerId: pulumi.Input.fromValue(map['routeServerId'] as String),
     );

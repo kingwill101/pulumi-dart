@@ -100,7 +100,7 @@ class FileSystemArgs {
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       rootSquash: (() { final guardedValue = map['rootSquash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FileSystemRootSquash.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       skuName: pulumi.Input.fromValue(map['skuName'] as String),
-      storageCapacityInTb: pulumi.Input.fromValue((map['storageCapacityInTb'] as num).toInt()),
+      storageCapacityInTb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['storageCapacityInTb'])),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       zones: pulumi.Input.fromValue((map['zones'] as List).cast<String>()),

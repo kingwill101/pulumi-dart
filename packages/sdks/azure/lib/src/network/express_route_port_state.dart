@@ -89,7 +89,7 @@ class ExpressRoutePortState {
 
   factory ExpressRoutePortState.fromMap(Map<String, dynamic> map) {
     return ExpressRoutePortState(
-      bandwidthInGbps: (() { final guardedValue = map['bandwidthInGbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bandwidthInGbps: (() { final guardedValue = map['bandwidthInGbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       billingType: (() { final guardedValue = map['billingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encapsulation: (() { final guardedValue = map['encapsulation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ethertype: (() { final guardedValue = map['ethertype']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

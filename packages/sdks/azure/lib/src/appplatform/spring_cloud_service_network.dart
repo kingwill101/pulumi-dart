@@ -54,7 +54,7 @@ class SpringCloudServiceNetwork {
       appSubnetId: pulumi.Input.fromValue(map['appSubnetId'] as String),
       cidrRanges: pulumi.Input.fromValue((map['cidrRanges'] as List).cast<String>()),
       outboundType: (() { final guardedValue = map['outboundType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      readTimeoutSeconds: (() { final guardedValue = map['readTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      readTimeoutSeconds: (() { final guardedValue = map['readTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       serviceRuntimeNetworkResourceGroup: (() { final guardedValue = map['serviceRuntimeNetworkResourceGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceRuntimeSubnetId: pulumi.Input.fromValue(map['serviceRuntimeSubnetId'] as String),
     );

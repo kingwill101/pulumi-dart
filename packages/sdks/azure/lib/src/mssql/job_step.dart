@@ -239,7 +239,7 @@ import 'job_step_state.dart';
 /// 		}
 /// 		exampleDatabase, err := mssql.NewDatabase(ctx, "example", &mssql.DatabaseArgs{
 /// 			Name:      pulumi.String("example-db"),
-/// 			ServerId:  exampleServer.ID().ToIDOutput().ToStringOutput(),
+/// 			ServerId:  exampleServer.ID(),
 /// 			Collation: pulumi.String("SQL_Latin1_General_CP1_CI_AS"),
 /// 			SkuName:   pulumi.String("S1"),
 /// 		})
@@ -249,14 +249,14 @@ import 'job_step_state.dart';
 /// 		exampleJobAgent, err := mssql.NewJobAgent(ctx, "example", &mssql.JobAgentArgs{
 /// 			Name:       pulumi.String("example-job-agent"),
 /// 			Location:   example.Location,
-/// 			DatabaseId: exampleDatabase.ID().ToIDOutput().ToStringOutput(),
+/// 			DatabaseId: exampleDatabase.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleJobCredential, err := mssql.NewJobCredential(ctx, "example", &mssql.JobCredentialArgs{
 /// 			Name:       pulumi.String("example-job-credential"),
-/// 			JobAgentId: exampleJobAgent.ID().ToIDOutput().ToStringOutput(),
+/// 			JobAgentId: exampleJobAgent.ID(),
 /// 			Username:   pulumi.String("exampleusername"),
 /// 			Password:   pulumi.String("examplepassword"),
 /// 		})
@@ -265,12 +265,12 @@ import 'job_step_state.dart';
 /// 		}
 /// 		exampleJobTargetGroup, err := mssql.NewJobTargetGroup(ctx, "example", &mssql.JobTargetGroupArgs{
 /// 			Name:       pulumi.String("example-target-group"),
-/// 			JobAgentId: exampleJobAgent.ID().ToIDOutput().ToStringOutput(),
+/// 			JobAgentId: exampleJobAgent.ID(),
 /// 			JobTargets: mssql.JobTargetGroupJobTargetArray{
 /// 				&mssql.JobTargetGroupJobTargetArgs{
 /// 					ServerName:      exampleServer.Name,
 /// 					DatabaseName:    exampleDatabase.Name,
-/// 					JobCredentialId: exampleJobCredential.ID().ToIDOutput().ToStringOutput(),
+/// 					JobCredentialId: exampleJobCredential.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -279,7 +279,7 @@ import 'job_step_state.dart';
 /// 		}
 /// 		exampleJob, err := mssql.NewJob(ctx, "example", &mssql.JobArgs{
 /// 			Name:        pulumi.String("example-job"),
-/// 			JobAgentId:  exampleJobAgent.ID().ToIDOutput().ToStringOutput(),
+/// 			JobAgentId:  exampleJobAgent.ID(),
 /// 			Description: pulumi.String("example description"),
 /// 		})
 /// 		if err != nil {
@@ -287,9 +287,9 @@ import 'job_step_state.dart';
 /// 		}
 /// 		_, err = mssql.NewJobStep(ctx, "test", &mssql.JobStepArgs{
 /// 			Name:             pulumi.String("example-job-step"),
-/// 			JobId:            exampleJob.ID().ToIDOutput().ToStringOutput(),
-/// 			JobCredentialId:  exampleJobCredential.ID().ToIDOutput().ToStringOutput(),
-/// 			JobTargetGroupId: exampleJobTargetGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			JobId:            exampleJob.ID(),
+/// 			JobCredentialId:  exampleJobCredential.ID(),
+/// 			JobTargetGroupId: exampleJobTargetGroup.ID(),
 /// 			JobStepIndex:     pulumi.Int(1),
 /// 			SqlScript: pulumi.String(`IF NOT EXISTS (SELECT * FROM sys.objects WHERE [name] = N'Pets')
 ///   CREATE TABLE Pets (
@@ -306,7 +306,7 @@ import 'job_step_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -314,56 +314,87 @@ import 'job_step_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "westeurope"
 /// }
 /// resource "azure_mssql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-server"
-///   location                     = azure_core_resourcegroup.example.location
-///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resource_group.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
 ///   version                      = "12.0"
 ///   administrator_login          = "4dm1n157r470r"
 ///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
 /// }
 /// resource "azure_mssql_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "example-db"
 ///   server_id = azure_mssql_server.example.id
 ///   collation = "SQL_Latin1_General_CP1_CI_AS"
 ///   sku_name  = "S1"
 /// }
-/// resource "azure_mssql_jobagent" "example" {
+/// resource "azure_mssql_job_agent" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example-job-agent"
-///   location    = azure_core_resourcegroup.example.location
+///   location    = azure_core_resource_group.example.location
 ///   database_id = azure_mssql_database.example.id
 /// }
-/// resource "azure_mssql_jobcredential" "example" {
+/// resource "azure_mssql_job_credential" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-job-credential"
-///   job_agent_id = azure_mssql_jobagent.example.id
+///   job_agent_id = azure_mssql_job_agent.example.id
 ///   username     = "exampleusername"
 ///   password     = "examplepassword"
 /// }
-/// resource "azure_mssql_jobtargetgroup" "example" {
+/// resource "azure_mssql_job_target_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-target-group"
-///   job_agent_id = azure_mssql_jobagent.example.id
+///   job_agent_id = azure_mssql_job_agent.example.id
 ///   job_targets {
 ///     server_name       = azure_mssql_server.example.name
 ///     database_name     = azure_mssql_database.example.name
-///     job_credential_id = azure_mssql_jobcredential.example.id
+///     job_credential_id = azure_mssql_job_credential.example.id
 ///   }
 /// }
 /// resource "azure_mssql_job" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-job"
-///   job_agent_id = azure_mssql_jobagent.example.id
+///   job_agent_id = azure_mssql_job_agent.example.id
 ///   description  = "example description"
 /// }
-/// resource "azure_mssql_jobstep" "test" {
+/// resource "azure_mssql_job_step" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-job-step"
 ///   job_id              = azure_mssql_job.example.id
-///   job_credential_id   = azure_mssql_jobcredential.example.id
-///   job_target_group_id = azure_mssql_jobtargetgroup.example.id
+///   job_credential_id   = azure_mssql_job_credential.example.id
+///   job_target_group_id = azure_mssql_job_target_group.example.id
 ///   job_step_index      = 1
-///   sql_script          = "IF NOT EXISTS (SELECT * FROM sys.objects WHERE [name] = N'Pets')\n  CREATE TABLE Pets (\n    Animal NVARCHAR(50),\n    Name NVARCHAR(50),\n  );\n"
+///   sql_script          = <<EOT
+/// IF NOT EXISTS (SELECT * FROM sys.objects WHERE [name] = N'Pets')
+///   CREATE TABLE Pets (
+///     Animal NVARCHAR(50),
+///     Name NVARCHAR(50),
+///   );
+/// EOT
+///
 /// }
 /// ```
 /// ```java
@@ -604,7 +635,7 @@ class JobStep extends pulumi.CustomResource {
           'azure:mssql/jobStep:JobStep',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     initialRetryIntervalSeconds = registerOutput<int?>('initialRetryIntervalSeconds');
     jobCredentialId = registerOutput<String?>('jobCredentialId');

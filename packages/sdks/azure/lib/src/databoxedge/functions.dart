@@ -61,7 +61,7 @@ import 'get_device_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -69,7 +69,7 @@ import 'get_device_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_databoxedge_getdevice" "example" {
+/// data "azure_databoxedge_device" "example" {
 ///   name                = "example-device"
 ///   resource_group_name = "example-rg"
 /// }

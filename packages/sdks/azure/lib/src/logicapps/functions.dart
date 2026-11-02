@@ -72,7 +72,7 @@ import 'get_workflow_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -80,13 +80,13 @@ import 'get_workflow_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_logicapps_getintegrationaccount" "example" {
+/// data "azure_logicapps_integration_account" "example" {
 ///   name                = "example-account"
 ///   resource_group_name = "example-resource-group"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_logicapps_getintegrationaccount.example.id
+///   value = data.azure_logicapps_integration_account.example.id
 /// }
 /// ```
 /// ```java
@@ -230,7 +230,7 @@ pulumi.Output<GetIntegrationAccountResult> getIntegrationAccountOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -238,13 +238,13 @@ pulumi.Output<GetIntegrationAccountResult> getIntegrationAccountOutput(
 ///   }
 /// }
 ///
-/// data "azure_logicapps_getstandard" "example" {
+/// data "azure_logicapps_standard" "example" {
 ///   name                = "example-logic-app"
 ///   resource_group_name = "example-rg"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_logicapps_getstandard.example.id
+///   value = data.azure_logicapps_standard.example.id
 /// }
 /// ```
 /// ```java
@@ -388,7 +388,7 @@ pulumi.Output<GetStandardResult> getStandardOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -396,13 +396,13 @@ pulumi.Output<GetStandardResult> getStandardOutput(
 ///   }
 /// }
 ///
-/// data "azure_logicapps_getworkflow" "example" {
+/// data "azure_logicapps_workflow" "example" {
 ///   name                = "workflow1"
 ///   resource_group_name = "my-resource-group"
 /// }
 ///
 /// output "accessEndpoint" {
-///   value = data.azure_logicapps_getworkflow.example.access_endpoint
+///   value = data.azure_logicapps_workflow.example.access_endpoint
 /// }
 /// ```
 /// ```java

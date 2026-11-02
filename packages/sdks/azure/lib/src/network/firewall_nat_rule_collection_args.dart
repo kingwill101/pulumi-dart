@@ -53,7 +53,7 @@ class FirewallNatRuleCollectionArgs {
       action: pulumi.Input.fromValue(map['action'] as String),
       azureFirewallName: pulumi.Input.fromValue(map['azureFirewallName'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       rules: pulumi.Input.fromValue(pulumi.Input.decodeList<FirewallNatRuleCollectionRule>(map['rules']!, (value) => FirewallNatRuleCollectionRule.fromMap((value as Map).cast<String, dynamic>()))),
     );

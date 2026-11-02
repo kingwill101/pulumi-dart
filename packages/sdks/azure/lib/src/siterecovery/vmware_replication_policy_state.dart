@@ -36,9 +36,9 @@ class VMWareReplicationPolicyState {
 
   factory VMWareReplicationPolicyState.fromMap(Map<String, dynamic> map) {
     return VMWareReplicationPolicyState(
-      applicationConsistentSnapshotFrequencyInMinutes: (() { final guardedValue = map['applicationConsistentSnapshotFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      applicationConsistentSnapshotFrequencyInMinutes: (() { final guardedValue = map['applicationConsistentSnapshotFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      recoveryPointRetentionInMinutes: (() { final guardedValue = map['recoveryPointRetentionInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      recoveryPointRetentionInMinutes: (() { final guardedValue = map['recoveryPointRetentionInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       recoveryVaultId: (() { final guardedValue = map['recoveryVaultId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

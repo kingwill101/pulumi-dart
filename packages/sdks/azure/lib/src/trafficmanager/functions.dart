@@ -66,7 +66,7 @@ import 'get_geographical_location_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -74,12 +74,12 @@ import 'get_geographical_location_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_network_gettrafficmanager" "example" {
+/// data "azure_network_traffic_manager" "example" {
 ///   name = "World"
 /// }
 ///
 /// output "locationCode" {
-///   value = data.azure_network_gettrafficmanager.example.id
+///   value = data.azure_network_traffic_manager.example.id
 /// }
 /// ```
 /// ```java

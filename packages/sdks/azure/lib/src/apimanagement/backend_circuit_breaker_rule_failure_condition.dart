@@ -45,10 +45,10 @@ class BackendCircuitBreakerRuleFailureCondition {
 
   factory BackendCircuitBreakerRuleFailureCondition.fromMap(Map<String, dynamic> map) {
     return BackendCircuitBreakerRuleFailureCondition(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       errorReasons: (() { final guardedValue = map['errorReasons']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       intervalDuration: pulumi.Input.fromValue(map['intervalDuration'] as String),
-      percentage: (() { final guardedValue = map['percentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      percentage: (() { final guardedValue = map['percentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       statusCodeRanges: (() { final guardedValue = map['statusCodeRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BackendCircuitBreakerRuleFailureConditionStatusCodeRange>(guardedValue, (value) => BackendCircuitBreakerRuleFailureConditionStatusCodeRange.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

@@ -53,9 +53,9 @@ class WindowsVirtualMachineScaleSetRollingUpgradePolicy {
   factory WindowsVirtualMachineScaleSetRollingUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineScaleSetRollingUpgradePolicy(
       crossZoneUpgradesEnabled: (() { final guardedValue = map['crossZoneUpgradesEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxBatchInstancePercent: pulumi.Input.fromValue((map['maxBatchInstancePercent'] as num).toInt()),
-      maxUnhealthyInstancePercent: pulumi.Input.fromValue((map['maxUnhealthyInstancePercent'] as num).toInt()),
-      maxUnhealthyUpgradedInstancePercent: pulumi.Input.fromValue((map['maxUnhealthyUpgradedInstancePercent'] as num).toInt()),
+      maxBatchInstancePercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxBatchInstancePercent'])),
+      maxUnhealthyInstancePercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxUnhealthyInstancePercent'])),
+      maxUnhealthyUpgradedInstancePercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxUnhealthyUpgradedInstancePercent'])),
       maximumSurgeInstancesEnabled: (() { final guardedValue = map['maximumSurgeInstancesEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       pauseTimeBetweenBatches: pulumi.Input.fromValue(map['pauseTimeBetweenBatches'] as String),
       prioritizeUnhealthyInstancesEnabled: (() { final guardedValue = map['prioritizeUnhealthyInstancesEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

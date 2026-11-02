@@ -60,8 +60,8 @@ class OutputFunctionArgs {
   factory OutputFunctionArgs.fromMap(Map<String, dynamic> map) {
     return OutputFunctionArgs(
       apiKey: pulumi.Input.fromValue(map['apiKey'] as String),
-      batchMaxCount: (() { final guardedValue = map['batchMaxCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      batchMaxInBytes: (() { final guardedValue = map['batchMaxInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      batchMaxCount: (() { final guardedValue = map['batchMaxCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      batchMaxInBytes: (() { final guardedValue = map['batchMaxInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       functionApp: pulumi.Input.fromValue(map['functionApp'] as String),
       functionName: pulumi.Input.fromValue(map['functionName'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

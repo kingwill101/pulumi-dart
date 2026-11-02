@@ -450,7 +450,7 @@ import 'frontdoor_route_state.dart';
 /// 		}
 /// 		exampleFrontdoorOriginGroup, err := cdn.NewFrontdoorOriginGroup(ctx, "example", &cdn.FrontdoorOriginGroupArgs{
 /// 			Name:                  pulumi.String("example-originGroup"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
 /// 			LoadBalancing: &cdn.FrontdoorOriginGroupLoadBalancingArgs{
 /// 				AdditionalLatencyInMilliseconds: pulumi.Int(0),
 /// 				SampleSize:                      pulumi.Int(16),
@@ -462,7 +462,7 @@ import 'frontdoor_route_state.dart';
 /// 		}
 /// 		exampleFrontdoorOrigin, err := cdn.NewFrontdoorOrigin(ctx, "example", &cdn.FrontdoorOriginArgs{
 /// 			Name:                        pulumi.String("example-origin"),
-/// 			CdnFrontdoorOriginGroupId:   exampleFrontdoorOriginGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			CdnFrontdoorOriginGroupId:   exampleFrontdoorOriginGroup.ID(),
 /// 			Enabled:                     pulumi.Bool(true),
 /// 			CertificateNameCheckEnabled: pulumi.Bool(false),
 /// 			HostName:                    pulumi.String("contoso.com"),
@@ -477,22 +477,22 @@ import 'frontdoor_route_state.dart';
 /// 		}
 /// 		exampleFrontdoorEndpoint, err := cdn.NewFrontdoorEndpoint(ctx, "example", &cdn.FrontdoorEndpointArgs{
 /// 			Name:                  pulumi.String("example-endpoint"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleFrontdoorRuleSet, err := cdn.NewFrontdoorRuleSet(ctx, "example", &cdn.FrontdoorRuleSetArgs{
 /// 			Name:                  pulumi.String("ExampleRuleSet"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		contoso, err := cdn.NewFrontdoorCustomDomain(ctx, "contoso", &cdn.FrontdoorCustomDomainArgs{
 /// 			Name:                  pulumi.String("contoso-custom-domain"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
-/// 			DnsZoneId:             exampleZone.ID().ToIDOutput().ToStringOutput(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
+/// 			DnsZoneId:             exampleZone.ID(),
 /// 			HostName: std.JoinOutput(ctx, std.JoinOutputArgs{
 /// 				Separator: pulumi.String("."),
 /// 				Input: pulumi.StringArray{
@@ -510,8 +510,8 @@ import 'frontdoor_route_state.dart';
 /// 		}
 /// 		fabrikam, err := cdn.NewFrontdoorCustomDomain(ctx, "fabrikam", &cdn.FrontdoorCustomDomainArgs{
 /// 			Name:                  pulumi.String("fabrikam-custom-domain"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
-/// 			DnsZoneId:             exampleZone.ID().ToIDOutput().ToStringOutput(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
+/// 			DnsZoneId:             exampleZone.ID(),
 /// 			HostName: std.JoinOutput(ctx, std.JoinOutputArgs{
 /// 				Separator: pulumi.String("."),
 /// 				Input: pulumi.StringArray{
@@ -529,13 +529,13 @@ import 'frontdoor_route_state.dart';
 /// 		}
 /// 		exampleFrontdoorRoute, err := cdn.NewFrontdoorRoute(ctx, "example", &cdn.FrontdoorRouteArgs{
 /// 			Name:                      pulumi.String("example-route"),
-/// 			CdnFrontdoorEndpointId:    exampleFrontdoorEndpoint.ID().ToIDOutput().ToStringOutput(),
-/// 			CdnFrontdoorOriginGroupId: exampleFrontdoorOriginGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			CdnFrontdoorEndpointId:    exampleFrontdoorEndpoint.ID(),
+/// 			CdnFrontdoorOriginGroupId: exampleFrontdoorOriginGroup.ID(),
 /// 			CdnFrontdoorOriginIds: pulumi.StringArray{
-/// 				exampleFrontdoorOrigin.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleFrontdoorOrigin.ID(),
 /// 			},
 /// 			CdnFrontdoorRuleSetIds: pulumi.StringArray{
-/// 				exampleFrontdoorRuleSet.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleFrontdoorRuleSet.ID(),
 /// 			},
 /// 			Enabled:              pulumi.Bool(true),
 /// 			ForwardingProtocol:   pulumi.String("HttpsOnly"),
@@ -548,8 +548,8 @@ import 'frontdoor_route_state.dart';
 /// 				pulumi.String("Https"),
 /// 			},
 /// 			CdnFrontdoorCustomDomainIds: pulumi.StringArray{
-/// 				contoso.ID().ToIDOutput().ToStringOutput(),
-/// 				fabrikam.ID().ToIDOutput().ToStringOutput(),
+/// 				contoso.ID(),
+/// 				fabrikam.ID(),
 /// 			},
 /// 			LinkToDefaultDomain: pulumi.Bool(false),
 /// 			Cache: &cdn.FrontdoorRouteCacheArgs{
@@ -570,18 +570,18 @@ import 'frontdoor_route_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cdn.NewFrontdoorCustomDomainAssociation(ctx, "contoso", &cdn.FrontdoorCustomDomainAssociationArgs{
-/// 			CdnFrontdoorCustomDomainId: contoso.ID().ToIDOutput().ToStringOutput(),
+/// 			CdnFrontdoorCustomDomainId: contoso.ID(),
 /// 			CdnFrontdoorRouteIds: pulumi.StringArray{
-/// 				exampleFrontdoorRoute.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleFrontdoorRoute.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = cdn.NewFrontdoorCustomDomainAssociation(ctx, "fabrikam", &cdn.FrontdoorCustomDomainAssociationArgs{
-/// 			CdnFrontdoorCustomDomainId: fabrikam.ID().ToIDOutput().ToStringOutput(),
+/// 			CdnFrontdoorCustomDomainId: fabrikam.ID(),
 /// 			CdnFrontdoorRouteIds: pulumi.StringArray{
-/// 				exampleFrontdoorRoute.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleFrontdoorRoute.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -592,7 +592,7 @@ import 'frontdoor_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -603,31 +603,46 @@ import 'frontdoor_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-cdn-frontdoor"
 ///   location = "West Europe"
 /// }
 /// resource "azure_dns_zone" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example.com"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_cdn_frontdoorprofile" "example" {
+/// resource "azure_cdn_frontdoor_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-profile"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Standard_AzureFrontDoor"
 /// }
-/// resource "azure_cdn_frontdoororigingroup" "example" {
+/// resource "azure_cdn_frontdoor_origin_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-originGroup"
-///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoor_profile.example.id
 ///   load_balancing = {
 ///     additional_latency_in_milliseconds = 0
 ///     sample_size                        = 16
 ///     successful_samples_required        = 3
 ///   }
 /// }
-/// resource "azure_cdn_frontdoororigin" "example" {
+/// resource "azure_cdn_frontdoor_origin" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                           = "example-origin"
-///   cdn_frontdoor_origin_group_id  = azure_cdn_frontdoororigingroup.example.id
+///   cdn_frontdoor_origin_group_id  = azure_cdn_frontdoor_origin_group.example.id
 ///   enabled                        = true
 ///   certificate_name_check_enabled = false
 ///   host_name                      = "contoso.com"
@@ -637,17 +652,26 @@ import 'frontdoor_route_state.dart';
 ///   priority                       = 1
 ///   weight                         = 1
 /// }
-/// resource "azure_cdn_frontdoorendpoint" "example" {
+/// resource "azure_cdn_frontdoor_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-endpoint"
-///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoor_profile.example.id
 /// }
-/// resource "azure_cdn_frontdoorruleset" "example" {
+/// resource "azure_cdn_frontdoor_rule_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "ExampleRuleSet"
-///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoor_profile.example.id
 /// }
-/// resource "azure_cdn_frontdoorcustomdomain" "contoso" {
+/// resource "azure_cdn_frontdoor_custom_domain" "contoso" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "contoso-custom-domain"
-///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoor_profile.example.id
 ///   dns_zone_id              = azure_dns_zone.example.id
 ///   host_name                = join(".", ["contoso", azure_dns_zone.example.name])
 ///   tls = {
@@ -655,9 +679,12 @@ import 'frontdoor_route_state.dart';
 ///     minimum_tls_version = "TLS12"
 ///   }
 /// }
-/// resource "azure_cdn_frontdoorcustomdomain" "fabrikam" {
+/// resource "azure_cdn_frontdoor_custom_domain" "fabrikam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "fabrikam-custom-domain"
-///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoor_profile.example.id
 ///   dns_zone_id              = azure_dns_zone.example.id
 ///   host_name                = join(".", ["fabrikam", azure_dns_zone.example.name])
 ///   tls = {
@@ -665,18 +692,21 @@ import 'frontdoor_route_state.dart';
 ///     minimum_tls_version = "TLS12"
 ///   }
 /// }
-/// resource "azure_cdn_frontdoorroute" "example" {
+/// resource "azure_cdn_frontdoor_route" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "example-route"
-///   cdn_frontdoor_endpoint_id       = azure_cdn_frontdoorendpoint.example.id
-///   cdn_frontdoor_origin_group_id   = azure_cdn_frontdoororigingroup.example.id
-///   cdn_frontdoor_origin_ids        = [azure_cdn_frontdoororigin.example.id]
-///   cdn_frontdoor_rule_set_ids      = [azure_cdn_frontdoorruleset.example.id]
+///   cdn_frontdoor_endpoint_id       = azure_cdn_frontdoor_endpoint.example.id
+///   cdn_frontdoor_origin_group_id   = azure_cdn_frontdoor_origin_group.example.id
+///   cdn_frontdoor_origin_ids        = [azure_cdn_frontdoor_origin.example.id]
+///   cdn_frontdoor_rule_set_ids      = [azure_cdn_frontdoor_rule_set.example.id]
 ///   enabled                         = true
 ///   forwarding_protocol             = "HttpsOnly"
 ///   https_redirect_enabled          = true
 ///   patterns_to_matches             = ["/*"]
 ///   supported_protocols             = ["Http", "Https"]
-///   cdn_frontdoor_custom_domain_ids = [azure_cdn_frontdoorcustomdomain.contoso.id, azure_cdn_frontdoorcustomdomain.fabrikam.id]
+///   cdn_frontdoor_custom_domain_ids = [azure_cdn_frontdoor_custom_domain.contoso.id, azure_cdn_frontdoor_custom_domain.fabrikam.id]
 ///   link_to_default_domain          = false
 ///   cache = {
 ///     query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
@@ -685,13 +715,19 @@ import 'frontdoor_route_state.dart';
 ///     content_types_to_compresses   = ["text/html", "text/javascript", "text/xml"]
 ///   }
 /// }
-/// resource "azure_cdn_frontdoorcustomdomainassociation" "contoso" {
-///   cdn_frontdoor_custom_domain_id = azure_cdn_frontdoorcustomdomain.contoso.id
-///   cdn_frontdoor_route_ids        = [azure_cdn_frontdoorroute.example.id]
+/// resource "azure_cdn_frontdoor_custom_domain_association" "contoso" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cdn_frontdoor_custom_domain_id = azure_cdn_frontdoor_custom_domain.contoso.id
+///   cdn_frontdoor_route_ids        = [azure_cdn_frontdoor_route.example.id]
 /// }
-/// resource "azure_cdn_frontdoorcustomdomainassociation" "fabrikam" {
-///   cdn_frontdoor_custom_domain_id = azure_cdn_frontdoorcustomdomain.fabrikam.id
-///   cdn_frontdoor_route_ids        = [azure_cdn_frontdoorroute.example.id]
+/// resource "azure_cdn_frontdoor_custom_domain_association" "fabrikam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cdn_frontdoor_custom_domain_id = azure_cdn_frontdoor_custom_domain.fabrikam.id
+///   cdn_frontdoor_route_ids        = [azure_cdn_frontdoor_route.example.id]
 /// }
 /// ```
 /// ```java
@@ -1061,7 +1097,7 @@ class FrontdoorRoute extends pulumi.CustomResource {
           'azure:cdn/frontdoorRoute:FrontdoorRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     cache = registerOutput<FrontdoorRouteCache?>('cache', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorRouteCache.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cdnFrontdoorCustomDomainIds = registerOutput<List<String>?>('cdnFrontdoorCustomDomainIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

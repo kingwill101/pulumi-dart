@@ -74,7 +74,7 @@ import 'get_service_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -82,14 +82,14 @@ import 'get_service_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_databasemigration_getproject" "example" {
+/// data "azure_databasemigration_project" "example" {
 ///   name                = "example-dbms-project"
 ///   resource_group_name = "example-rg"
 ///   service_name        = "example-dbms"
 /// }
 ///
 /// output "name" {
-///   value = data.azure_databasemigration_getproject.example.name
+///   value = data.azure_databasemigration_project.example.name
 /// }
 /// ```
 /// ```java
@@ -235,7 +235,7 @@ pulumi.Output<GetProjectResult> getProjectOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -243,13 +243,13 @@ pulumi.Output<GetProjectResult> getProjectOutput(
 ///   }
 /// }
 ///
-/// data "azure_databasemigration_getservice" "example" {
+/// data "azure_databasemigration_service" "example" {
 ///   name                = "example-dms"
 ///   resource_group_name = "example-rg"
 /// }
 ///
 /// output "azurermDmsId" {
-///   value = data.azure_databasemigration_getservice.example.id
+///   value = data.azure_databasemigration_service.example.id
 /// }
 /// ```
 /// ```java

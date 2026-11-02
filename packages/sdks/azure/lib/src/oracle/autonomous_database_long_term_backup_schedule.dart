@@ -33,7 +33,7 @@ class AutonomousDatabaseLongTermBackupSchedule {
     return AutonomousDatabaseLongTermBackupSchedule(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       repeatCadence: pulumi.Input.fromValue(map['repeatCadence'] as String),
-      retentionPeriodInDays: pulumi.Input.fromValue((map['retentionPeriodInDays'] as num).toInt()),
+      retentionPeriodInDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retentionPeriodInDays'])),
       timeOfBackup: pulumi.Input.fromValue(map['timeOfBackup'] as String),
     );
   }

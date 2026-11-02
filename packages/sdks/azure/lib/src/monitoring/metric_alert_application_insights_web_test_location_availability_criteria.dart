@@ -31,7 +31,7 @@ class MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria {
   factory MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria.fromMap(Map<String, dynamic> map) {
     return MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria(
       componentId: pulumi.Input.fromValue(map['componentId'] as String),
-      failedLocationCount: pulumi.Input.fromValue((map['failedLocationCount'] as num).toInt()),
+      failedLocationCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['failedLocationCount'])),
       webTestId: pulumi.Input.fromValue(map['webTestId'] as String),
     );
   }

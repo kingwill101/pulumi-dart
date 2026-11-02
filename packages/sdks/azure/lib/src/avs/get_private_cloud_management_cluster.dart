@@ -31,8 +31,8 @@ class GetPrivateCloudManagementCluster {
   factory GetPrivateCloudManagementCluster.fromMap(Map<String, dynamic> map) {
     return GetPrivateCloudManagementCluster(
       hosts: pulumi.Input.fromValue((map['hosts'] as List).cast<String>()),
-      id: pulumi.Input.fromValue((map['id'] as num).toInt()),
-      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
+      size: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['size'])),
     );
   }
 }

@@ -70,7 +70,7 @@ import 'get_grafana_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -113,7 +113,7 @@ import 'get_grafana_result.dart';
 ///             .resourceGroupName("dashboard-rg")
 ///             .build());
 ///
-///         ctx.export("id", exampleAzurermDashboard.id());
+///         ctx.export("id", exampleAzurermDashboard.get("id"));
 ///     }
 /// }
 /// ```
@@ -228,7 +228,7 @@ pulumi.Output<AzurermPortalDashboardResult> azurermPortalDashboardOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -236,13 +236,13 @@ pulumi.Output<AzurermPortalDashboardResult> azurermPortalDashboardOutput(
 ///   }
 /// }
 ///
-/// data "azure_dashboard_getgrafana" "example" {
+/// data "azure_dashboard_grafana" "example" {
 ///   name                = "example-grafana-dashboard"
 ///   resource_group_name = "example-rg"
 /// }
 ///
 /// output "name" {
-///   value = data.azure_dashboard_getgrafana.example.name
+///   value = data.azure_dashboard_grafana.example.name
 /// }
 /// ```
 /// ```java

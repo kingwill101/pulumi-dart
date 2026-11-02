@@ -145,7 +145,7 @@ class GetConfigurationStoreResult {
       secondaryReadKeys: (() { final guardedValue = map['secondaryReadKeys']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetConfigurationStoreSecondaryReadKey>(guardedValue, (value) => GetConfigurationStoreSecondaryReadKey.fromMap((value as Map).cast<String, dynamic>())); })(),
       secondaryWriteKeys: (() { final guardedValue = map['secondaryWriteKeys']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetConfigurationStoreSecondaryWriteKey>(guardedValue, (value) => GetConfigurationStoreSecondaryWriteKey.fromMap((value as Map).cast<String, dynamic>())); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      softDeleteRetentionDays: (() { final guardedValue = map['softDeleteRetentionDays']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      softDeleteRetentionDays: (() { final guardedValue = map['softDeleteRetentionDays']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }

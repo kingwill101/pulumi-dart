@@ -168,7 +168,7 @@ import 'security_partner_provider_state.dart';
 /// 			Name:              pulumi.String("example-vhub"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualWanId:      exampleVirtualWan.ID().ToIDOutput().ToStringOutput(),
+/// 			VirtualWanId:      exampleVirtualWan.ID(),
 /// 			AddressPrefix:     pulumi.String("10.0.2.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -178,7 +178,7 @@ import 'security_partner_provider_state.dart';
 /// 			Name:              pulumi.String("example-vpngw"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			VirtualHubId:      exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
+/// 			VirtualHubId:      exampleVirtualHub.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -187,7 +187,7 @@ import 'security_partner_provider_state.dart';
 /// 			Name:                 pulumi.String("example-spp"),
 /// 			ResourceGroupName:    example.Name,
 /// 			Location:             example.Location,
-/// 			VirtualHubId:         exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
+/// 			VirtualHubId:         exampleVirtualHub.ID(),
 /// 			SecurityProviderName: pulumi.String("IBoss"),
 /// 			Tags: pulumi.StringMap{
 /// 				"ENV": pulumi.String("Prod"),
@@ -203,7 +203,7 @@ import 'security_partner_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -211,34 +211,49 @@ import 'security_partner_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualwan" "example" {
+/// resource "azure_network_virtual_wan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vwan"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_network_virtualhub" "example" {
+/// resource "azure_network_virtual_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vhub"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
+///   virtual_wan_id      = azure_network_virtual_wan.example.id
 ///   address_prefix      = "10.0.2.0/24"
 /// }
-/// resource "azure_network_vpngateway" "example" {
+/// resource "azure_network_vpn_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vpngw"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   virtual_hub_id      = azure_network_virtualhub.example.id
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   virtual_hub_id      = azure_network_virtual_hub.example.id
 /// }
-/// resource "azure_network_securitypartnerprovider" "example" {
-///   depends_on             = [azure_network_vpngateway.example]
+/// resource "azure_network_security_partner_provider" "example" {
+///   depends_on = [azure_network_vpn_gateway.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-spp"
-///   resource_group_name    = azure_core_resourcegroup.example.name
-///   location               = azure_core_resourcegroup.example.location
-///   virtual_hub_id         = azure_network_virtualhub.example.id
+///   resource_group_name    = azure_core_resource_group.example.name
+///   location               = azure_core_resource_group.example.location
+///   virtual_hub_id         = azure_network_virtual_hub.example.id
 ///   security_provider_name = "IBoss"
 ///   tags = {
 ///     "ENV" = "Prod"
@@ -403,7 +418,7 @@ class SecurityPartnerProvider extends pulumi.CustomResource {
           'azure:network/securityPartnerProvider:SecurityPartnerProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

@@ -235,7 +235,7 @@ import 'environment_managed_certificate_state.dart';
 /// 			Name:                    pulumi.String("example-environment"),
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
-/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -243,7 +243,7 @@ import 'environment_managed_certificate_state.dart';
 /// 		exampleApp, err := containerapp.NewApp(ctx, "example", &containerapp.AppArgs{
 /// 			Name:                      pulumi.String("example-app"),
 /// 			ResourceGroupName:         example.Name,
-/// 			ContainerAppEnvironmentId: exampleEnvironment.ID().ToIDOutput().ToStringOutput(),
+/// 			ContainerAppEnvironmentId: exampleEnvironment.ID(),
 /// 			RevisionMode:              pulumi.String("Single"),
 /// 			Template: &containerapp.AppTemplateArgs{
 /// 				Containers: containerapp.AppTemplateContainerArray{
@@ -272,14 +272,14 @@ import 'environment_managed_certificate_state.dart';
 /// 		}
 /// 		exampleCustomDomain, err := containerapp.NewCustomDomain(ctx, "example", &containerapp.CustomDomainArgs{
 /// 			Name:           pulumi.String("example.com"),
-/// 			ContainerAppId: exampleApp.ID().ToIDOutput().ToStringOutput(),
+/// 			ContainerAppId: exampleApp.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = containerapp.NewEnvironmentManagedCertificate(ctx, "example", &containerapp.EnvironmentManagedCertificateArgs{
 /// 			Name:                      pulumi.String("example-managed-cert"),
-/// 			ContainerAppEnvironmentId: exampleEnvironment.ID().ToIDOutput().ToStringOutput(),
+/// 			ContainerAppEnvironmentId: exampleEnvironment.ID(),
 /// 			SubjectName:               pulumi.String("example.com"),
 /// 			DomainControlValidation:   pulumi.String("HTTP"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -293,7 +293,7 @@ import 'environment_managed_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -301,34 +301,46 @@ import 'environment_managed_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-workspace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 ///   retention_in_days   = 30
 /// }
 /// resource "azure_containerapp_environment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-environment"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   log_analytics_workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
+///   log_analytics_workspace_id = azure_operationalinsights_analytics_workspace.example.id
 /// }
 /// resource "azure_containerapp_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-app"
-///   resource_group_name          = azure_core_resourcegroup.example.name
+///   resource_group_name          = azure_core_resource_group.example.name
 ///   container_app_environment_id = azure_containerapp_environment.example.id
 ///   revision_mode                = "Single"
 ///   template = {
 ///     containers = [{
-///       "name"   = "example-container"
-///       "image"  = "mcr.microsoft.com/k8se/quickstart:latest"
-///       "cpu"    = 0.25
-///       "memory" = "0.5Gi"
+///       name   = "example-container"
+///       image  = "mcr.microsoft.com/k8se/quickstart:latest"
+///       cpu    = 0.25
+///       memory = "0.5Gi"
 ///     }]
 ///   }
 ///   ingress = {
@@ -336,17 +348,23 @@ import 'environment_managed_certificate_state.dart';
 ///     target_port      = 80
 ///     transport        = "http"
 ///     traffic_weights = [{
-///       "latestRevision" = true
-///       "percentage"     = 100
+///       latest_revision = true
+///       percentage      = 100
 ///     }]
 ///   }
 /// }
-/// resource "azure_containerapp_customdomain" "example" {
+/// resource "azure_containerapp_custom_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "example.com"
 ///   container_app_id = azure_containerapp_app.example.id
 /// }
-/// resource "azure_containerapp_environmentmanagedcertificate" "example" {
-///   depends_on                   = [azure_containerapp_customdomain.example]
+/// resource "azure_containerapp_environment_managed_certificate" "example" {
+///   depends_on = [azure_containerapp_custom_domain.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-managed-cert"
 ///   container_app_environment_id = azure_containerapp_environment.example.id
 ///   subject_name                 = "example.com"
@@ -557,7 +575,7 @@ class EnvironmentManagedCertificate extends pulumi.CustomResource {
           'azure:containerapp/environmentManagedCertificate:EnvironmentManagedCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
     domainControlValidation = registerOutput<String?>('domainControlValidation');

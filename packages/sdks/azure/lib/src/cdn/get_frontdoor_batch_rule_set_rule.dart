@@ -46,7 +46,7 @@ class GetFrontdoorBatchRuleSetRule {
       behaviourOnMatch: pulumi.Input.fromValue(map['behaviourOnMatch'] as String),
       conditions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFrontdoorBatchRuleSetRuleCondition>(map['conditions']!, (value) => GetFrontdoorBatchRuleSetRuleCondition.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
-      order: pulumi.Input.fromValue((map['order'] as num).toInt()),
+      order: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['order'])),
     );
   }
 }

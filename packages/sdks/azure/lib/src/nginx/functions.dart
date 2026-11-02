@@ -74,7 +74,7 @@ import 'get_deployment_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -82,13 +82,13 @@ import 'get_deployment_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_nginx_getapikey" "example" {
+/// data "azure_nginx_api_key" "example" {
 ///   name                = "existing"
 ///   nginx_deployment_id = exampleAzurermNginxDeployment.id
 /// }
 ///
 /// output "id" {
-///   value = data.azure_nginx_getapikey.example.id
+///   value = data.azure_nginx_api_key.example.id
 /// }
 /// ```
 /// ```java
@@ -114,7 +114,7 @@ import 'get_deployment_result.dart';
 ///     public static void stack(Context ctx) {
 ///         final var example = NginxFunctions.getApiKey(GetApiKeyArgs.builder()
 ///             .name("existing")
-///             .nginxDeploymentId(exampleAzurermNginxDeployment.id())
+///             .nginxDeploymentId(exampleAzurermNginxDeployment.get("id"))
 ///             .build());
 ///
 ///         ctx.export("id", example.id());
@@ -232,7 +232,7 @@ pulumi.Output<GetApiKeyResult> getApiKeyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -240,13 +240,13 @@ pulumi.Output<GetApiKeyResult> getApiKeyOutput(
 ///   }
 /// }
 ///
-/// data "azure_nginx_getcertificate" "example" {
+/// data "azure_nginx_certificate" "example" {
 ///   name                = "existing"
 ///   nginx_deployment_id = exampleAzurermNginxDeployment.id
 /// }
 ///
 /// output "id" {
-///   value = data.azure_nginx_getcertificate.example.id
+///   value = data.azure_nginx_certificate.example.id
 /// }
 /// ```
 /// ```java
@@ -272,7 +272,7 @@ pulumi.Output<GetApiKeyResult> getApiKeyOutput(
 ///     public static void stack(Context ctx) {
 ///         final var example = NginxFunctions.getCertificate(GetCertificateArgs.builder()
 ///             .name("existing")
-///             .nginxDeploymentId(exampleAzurermNginxDeployment.id())
+///             .nginxDeploymentId(exampleAzurermNginxDeployment.get("id"))
 ///             .build());
 ///
 ///         ctx.export("id", example.id());
@@ -386,7 +386,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -394,12 +394,12 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 ///   }
 /// }
 ///
-/// data "azure_nginx_getconfiguration" "example" {
+/// data "azure_nginx_configuration" "example" {
 ///   nginx_deployment_id = exampleAzurermNginxDeployment.id
 /// }
 ///
 /// output "id" {
-///   value = data.azure_nginx_getconfiguration.example.id
+///   value = data.azure_nginx_configuration.example.id
 /// }
 /// ```
 /// ```java
@@ -424,7 +424,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = NginxFunctions.getConfiguration(GetConfigurationArgs.builder()
-///             .nginxDeploymentId(exampleAzurermNginxDeployment.id())
+///             .nginxDeploymentId(exampleAzurermNginxDeployment.get("id"))
 ///             .build());
 ///
 ///         ctx.export("id", example.id());
@@ -541,7 +541,7 @@ pulumi.Output<GetConfigurationResult> getConfigurationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -549,13 +549,13 @@ pulumi.Output<GetConfigurationResult> getConfigurationOutput(
 ///   }
 /// }
 ///
-/// data "azure_nginx_getdeployment" "example" {
+/// data "azure_nginx_deployment" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_nginx_getdeployment.example.id
+///   value = data.azure_nginx_deployment.example.id
 /// }
 /// ```
 /// ```java

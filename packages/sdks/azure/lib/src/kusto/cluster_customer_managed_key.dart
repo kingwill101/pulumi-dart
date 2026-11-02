@@ -314,7 +314,7 @@ import 'cluster_customer_managed_key_state.dart';
 /// 			return err
 /// 		}
 /// 		cluster, err := keyvault.NewAccessPolicy(ctx, "cluster", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultId: exampleKeyVault.ID(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId:   exampleCluster.Identity.PrincipalId(),
 /// 			KeyPermissions: pulumi.StringArray{
@@ -327,7 +327,7 @@ import 'cluster_customer_managed_key_state.dart';
 /// 			return err
 /// 		}
 /// 		client, err := keyvault.NewAccessPolicy(ctx, "client", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultId: exampleKeyVault.ID(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId:   pulumi.String(current.ObjectId),
 /// 			KeyPermissions: pulumi.StringArray{
@@ -344,7 +344,7 @@ import 'cluster_customer_managed_key_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("tfex-key"),
-/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultId: exampleKeyVault.ID(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -363,8 +363,8 @@ import 'cluster_customer_managed_key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kusto.NewClusterCustomerManagedKey(ctx, "example", &kusto.ClusterCustomerManagedKeyArgs{
-/// 			ClusterId:  exampleCluster.ID().ToIDOutput().ToStringOutput(),
-/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterId:  exampleCluster.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID(),
 /// 			KeyName:    exampleKey.Name,
 /// 			KeyVersion: exampleKey.Version,
 /// 		})
@@ -376,7 +376,7 @@ import 'cluster_customer_managed_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -384,46 +384,64 @@ import 'cluster_customer_managed_key_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "examplekv"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "standard"
 ///   purge_protection_enabled   = true
 /// }
-/// resource "azure_keyvault_accesspolicy" "cluster" {
-///   key_vault_id    = azure_keyvault_keyvault.example.id
-///   tenant_id       = data.azure_core_getclientconfig.current.tenant_id
+/// resource "azure_keyvault_access_policy" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id    = azure_keyvault_key_vault.example.id
+///   tenant_id       = data.azure_core_client_config.current.tenant_id
 ///   object_id       = azure_kusto_cluster.example.identity.principal_id
 ///   key_permissions = ["Get", "UnwrapKey", "WrapKey"]
 /// }
-/// resource "azure_keyvault_accesspolicy" "client" {
-///   key_vault_id    = azure_keyvault_keyvault.example.id
-///   tenant_id       = data.azure_core_getclientconfig.current.tenant_id
-///   object_id       = data.azure_core_getclientconfig.current.object_id
+/// resource "azure_keyvault_access_policy" "client" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id    = azure_keyvault_key_vault.example.id
+///   tenant_id       = data.azure_core_client_config.current.tenant_id
+///   object_id       = data.azure_core_client_config.current.object_id
 ///   key_permissions = ["Get", "List", "Create", "Delete", "Recover", "GetRotationPolicy"]
 /// }
 /// resource "azure_keyvault_key" "example" {
-///   depends_on   = [azure_keyvault_accesspolicy.client, azure_keyvault_accesspolicy.cluster]
+///   depends_on = [azure_keyvault_access_policy.client, azure_keyvault_access_policy.cluster]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "tfex-key"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
 /// }
 /// resource "azure_kusto_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "kustocluster"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     name     = "Standard_D13_v2"
 ///     capacity = 2
@@ -432,9 +450,12 @@ import 'cluster_customer_managed_key_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_kusto_clustercustomermanagedkey" "example" {
+/// resource "azure_kusto_cluster_customer_managed_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id   = azure_kusto_cluster.example.id
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_name     = azure_keyvault_key.example.name
 ///   key_version  = azure_keyvault_key.example.version
 /// }
@@ -685,7 +706,7 @@ class ClusterCustomerManagedKey extends pulumi.CustomResource {
           'azure:kusto/clusterCustomerManagedKey:ClusterCustomerManagedKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
     keyName = registerOutput<String?>('keyName');

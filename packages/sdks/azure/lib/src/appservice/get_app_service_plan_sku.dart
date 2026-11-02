@@ -30,7 +30,7 @@ class GetAppServicePlanSku {
 
   factory GetAppServicePlanSku.fromMap(Map<String, dynamic> map) {
     return GetAppServicePlanSku(
-      capacity: pulumi.Input.fromValue((map['capacity'] as num).toInt()),
+      capacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['capacity'])),
       size: pulumi.Input.fromValue(map['size'] as String),
       tier: pulumi.Input.fromValue(map['tier'] as String),
     );

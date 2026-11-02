@@ -517,7 +517,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 			FrontendIpConfigurations: lb.LoadBalancerFrontendIpConfigurationArray{
 /// 				&lb.LoadBalancerFrontendIpConfigurationArgs{
 /// 					Name:              pulumi.String("PublicIPAddress"),
-/// 					PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
+/// 					PublicIpAddressId: examplePublicIp.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -525,7 +525,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 			return err
 /// 		}
 /// 		bpepool, err := lb.NewBackendAddressPool(ctx, "bpepool", &lb.BackendAddressPoolArgs{
-/// 			LoadbalancerId: exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+/// 			LoadbalancerId: exampleLoadBalancer.ID(),
 /// 			Name:           pulumi.String("BackEndAddressPool"),
 /// 		})
 /// 		if err != nil {
@@ -534,7 +534,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 		lbnatpool, err := lb.NewNatPool(ctx, "lbnatpool", &lb.NatPoolArgs{
 /// 			ResourceGroupName:           example.Name,
 /// 			Name:                        pulumi.String("ssh"),
-/// 			LoadbalancerId:              exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+/// 			LoadbalancerId:              exampleLoadBalancer.ID(),
 /// 			Protocol:                    pulumi.String("Tcp"),
 /// 			FrontendPortStart:           pulumi.Int(50000),
 /// 			FrontendPortEnd:             pulumi.Int(50119),
@@ -545,7 +545,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 			return err
 /// 		}
 /// 		exampleProbe, err := lb.NewProbe(ctx, "example", &lb.ProbeArgs{
-/// 			LoadbalancerId: exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+/// 			LoadbalancerId: exampleLoadBalancer.ID(),
 /// 			Name:           pulumi.String("http-probe"),
 /// 			Protocol:       pulumi.String("Http"),
 /// 			RequestPath:    pulumi.String("/health"),
@@ -572,7 +572,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 				MaxUnhealthyUpgradedInstancePercent: pulumi.Int(5),
 /// 				PauseTimeBetweenBatches:             pulumi.String("PT0S"),
 /// 			},
-/// 			HealthProbeId: exampleProbe.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthProbeId: exampleProbe.ID(),
 /// 			Sku: &compute.ScaleSetSkuArgs{
 /// 				Name:     pulumi.String("Standard_D4_v5"),
 /// 				Tier:     pulumi.String("Standard"),
@@ -619,12 +619,12 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 						&compute.ScaleSetNetworkProfileIpConfigurationArgs{
 /// 							Name:     pulumi.String("TestIPConfiguration"),
 /// 							Primary:  pulumi.Bool(true),
-/// 							SubnetId: exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 							SubnetId: exampleSubnet.ID(),
 /// 							LoadBalancerBackendAddressPoolIds: pulumi.StringArray{
-/// 								bpepool.ID().ToIDOutput().ToStringOutput(),
+/// 								bpepool.ID(),
 /// 							},
 /// 							LoadBalancerInboundNatRulesIds: pulumi.StringArray{
-/// 								lbnatpool.ID().ToIDOutput().ToStringOutput(),
+/// 								lbnatpool.ID(),
 /// 							},
 /// 						},
 /// 					},
@@ -642,7 +642,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -653,49 +653,70 @@ import 'scale_set_storage_profile_os_disk.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acctvn"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "acctsub"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Static"
-///   domain_name_label   = azure_core_resourcegroup.example.name
+///   domain_name_label   = azure_core_resource_group.example.name
 ///   tags = {
 ///     "environment" = "staging"
 ///   }
 /// }
-/// resource "azure_lb_loadbalancer" "example" {
+/// resource "azure_lb_load_balancer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   frontend_ip_configurations {
 ///     name                 = "PublicIPAddress"
-///     public_ip_address_id = azure_network_publicip.example.id
+///     public_ip_address_id = azure_network_public_ip.example.id
 ///   }
 /// }
-/// resource "azure_lb_backendaddresspool" "bpepool" {
-///   loadbalancer_id = azure_lb_loadbalancer.example.id
+/// resource "azure_lb_backend_address_pool" "bpepool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   loadbalancer_id = azure_lb_load_balancer.example.id
 ///   name            = "BackEndAddressPool"
 /// }
-/// resource "azure_lb_natpool" "lbnatpool" {
-///   resource_group_name            = azure_core_resourcegroup.example.name
+/// resource "azure_lb_nat_pool" "lbnatpool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name            = azure_core_resource_group.example.name
 ///   name                           = "ssh"
-///   loadbalancer_id                = azure_lb_loadbalancer.example.id
+///   loadbalancer_id                = azure_lb_load_balancer.example.id
 ///   protocol                       = "Tcp"
 ///   frontend_port_start            = 50000
 ///   frontend_port_end              = 50119
@@ -703,16 +724,22 @@ import 'scale_set_storage_profile_os_disk.dart';
 ///   frontend_ip_configuration_name = "PublicIPAddress"
 /// }
 /// resource "azure_lb_probe" "example" {
-///   loadbalancer_id = azure_lb_loadbalancer.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   loadbalancer_id = azure_lb_load_balancer.example.id
 ///   name            = "http-probe"
 ///   protocol        = "Http"
 ///   request_path    = "/health"
 ///   port            = 8080
 /// }
-/// resource "azure_compute_scaleset" "example" {
+/// resource "azure_compute_scale_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "mytestscaleset-1"
-///   location             = azure_core_resourcegroup.example.location
-///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resource_group.example.location
+///   resource_group_name  = azure_core_resource_group.example.name
 ///   automatic_os_upgrade = true
 ///   upgrade_policy_mode  = "Rolling"
 ///   rolling_upgrade_policy = {
@@ -752,8 +779,8 @@ import 'scale_set_storage_profile_os_disk.dart';
 ///   os_profile_linux_config = {
 ///     disable_password_authentication = true
 ///     ssh_keys = [{
-///       "path"    = "/home/myadmin/.ssh/authorized_keys"
-///       "keyData" = file("~/.ssh/demo_key.pub")
+///       path     = "/home/myadmin/.ssh/authorized_keys"
+///       key_data = file("~/.ssh/demo_key.pub")
 ///     }]
 ///   }
 ///   network_profiles {
@@ -763,8 +790,8 @@ import 'scale_set_storage_profile_os_disk.dart';
 ///       name                                   = "TestIPConfiguration"
 ///       primary                                = true
 ///       subnet_id                              = azure_network_subnet.example.id
-///       load_balancer_backend_address_pool_ids = [azure_lb_backendaddresspool.bpepool.id]
-///       load_balancer_inbound_nat_rules_ids    = [azure_lb_natpool.lbnatpool.id]
+///       load_balancer_backend_address_pool_ids = [azure_lb_backend_address_pool.bpepool.id]
+///       load_balancer_inbound_nat_rules_ids    = [azure_lb_nat_pool.lbnatpool.id]
 ///     }
 ///   }
 ///   tags = {
@@ -1483,7 +1510,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 						&compute.ScaleSetNetworkProfileIpConfigurationArgs{
 /// 							Name:     pulumi.String("TestIPConfiguration"),
 /// 							Primary:  pulumi.Bool(true),
-/// 							SubnetId: exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 							SubnetId: exampleSubnet.ID(),
 /// 						},
 /// 					},
 /// 				},
@@ -1515,7 +1542,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1526,26 +1553,38 @@ import 'scale_set_storage_profile_os_disk.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acctvn"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "acctsub"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "accsa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 ///   tags = {
@@ -1553,14 +1592,20 @@ import 'scale_set_storage_profile_os_disk.dart';
 ///   }
 /// }
 /// resource "azure_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "vhds"
 ///   storage_account_name  = azure_storage_account.example.name
 ///   container_access_type = "private"
 /// }
-/// resource "azure_compute_scaleset" "example" {
+/// resource "azure_compute_scale_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "mytestscaleset-1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   upgrade_policy_mode = "Manual"
 ///   sku = {
 ///     name     = "Standard_D4_v5"
@@ -1574,8 +1619,8 @@ import 'scale_set_storage_profile_os_disk.dart';
 ///   os_profile_linux_config = {
 ///     disable_password_authentication = true
 ///     ssh_keys = [{
-///       "path"    = "/home/myadmin/.ssh/authorized_keys"
-///       "keyData" = file("~/.ssh/demo_key.pub")
+///       path     = "/home/myadmin/.ssh/authorized_keys"
+///       key_data = file("~/.ssh/demo_key.pub")
 ///     }]
 ///   }
 ///   network_profiles {
@@ -1887,7 +1932,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 		_, err = compute.NewScaleSet(ctx, "example", &compute.ScaleSetArgs{
 /// 			Name: pulumi.String("test"),
 /// 			StorageProfileImageReference: &compute.ScaleSetStorageProfileImageReferenceArgs{
-/// 				Id: example.ID().ToIDOutput().ToStringOutput(),
+/// 				Id: example.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1898,7 +1943,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1907,9 +1952,15 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// }
 ///
 /// resource "azure_compute_image" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test"
 /// }
-/// resource "azure_compute_scaleset" "example" {
+/// resource "azure_compute_scale_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test"
 ///   storage_profile_image_reference = {
 ///     id = azure_compute_image.example.id
@@ -2058,7 +2109,7 @@ class ScaleSet extends pulumi.CustomResource {
           'azure:compute/scaleSet:ScaleSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     automaticOsUpgrade = registerOutput<bool?>('automaticOsUpgrade');
     bootDiagnostics = registerOutput<ScaleSetBootDiagnostics?>('bootDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetBootDiagnostics.fromMap((guardedValue as Map).cast<String, dynamic>()); });

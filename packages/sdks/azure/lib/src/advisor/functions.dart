@@ -86,7 +86,7 @@ import 'get_recommendations_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -94,13 +94,13 @@ import 'get_recommendations_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_advisor_getrecommendations" "example" {
+/// data "azure_advisor_recommendations" "example" {
 ///   filter_by_categories      = ["security", "cost"]
 ///   filter_by_resource_groups = ["example-resgroups"]
 /// }
 ///
 /// output "recommendations" {
-///   value = data.azure_advisor_getrecommendations.example.recommendations
+///   value = data.azure_advisor_recommendations.example.recommendations
 /// }
 /// ```
 /// ```java

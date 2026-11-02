@@ -20,7 +20,7 @@ class SparkPoolAutoPause {
 
   factory SparkPoolAutoPause.fromMap(Map<String, dynamic> map) {
     return SparkPoolAutoPause(
-      delayInMinutes: pulumi.Input.fromValue((map['delayInMinutes'] as num).toInt()),
+      delayInMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['delayInMinutes'])),
     );
   }
 }

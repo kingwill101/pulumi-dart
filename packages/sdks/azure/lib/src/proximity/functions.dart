@@ -68,7 +68,7 @@ import 'get_placement_group_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -76,13 +76,13 @@ import 'get_placement_group_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_proximity_getplacementgroup" "example" {
+/// data "azure_proximity_placement_group" "example" {
 ///   name                = "tf-appsecuritygroup"
 ///   resource_group_name = "my-resource-group"
 /// }
 ///
 /// output "proximityPlacementGroupId" {
-///   value = data.azure_proximity_getplacementgroup.example.id
+///   value = data.azure_proximity_placement_group.example.id
 /// }
 /// ```
 /// ```java

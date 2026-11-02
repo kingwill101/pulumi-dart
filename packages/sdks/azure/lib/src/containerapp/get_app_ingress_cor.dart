@@ -50,7 +50,7 @@ class GetAppIngressCor {
       allowedMethods: pulumi.Input.fromValue((map['allowedMethods'] as List).cast<String>()),
       allowedOrigins: pulumi.Input.fromValue((map['allowedOrigins'] as List).cast<String>()),
       exposedHeaders: pulumi.Input.fromValue((map['exposedHeaders'] as List).cast<String>()),
-      maxAgeInSeconds: pulumi.Input.fromValue((map['maxAgeInSeconds'] as num).toInt()),
+      maxAgeInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxAgeInSeconds'])),
     );
   }
 }

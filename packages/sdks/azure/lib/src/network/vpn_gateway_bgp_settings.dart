@@ -42,11 +42,11 @@ class VpnGatewayBgpSettings {
 
   factory VpnGatewayBgpSettings.fromMap(Map<String, dynamic> map) {
     return VpnGatewayBgpSettings(
-      asn: pulumi.Input.fromValue((map['asn'] as num).toInt()),
+      asn: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['asn'])),
       bgpPeeringAddress: (() { final guardedValue = map['bgpPeeringAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instance0BgpPeeringAddress: (() { final guardedValue = map['instance0BgpPeeringAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VpnGatewayBgpSettingsInstance0BgpPeeringAddress.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       instance1BgpPeeringAddress: (() { final guardedValue = map['instance1BgpPeeringAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VpnGatewayBgpSettingsInstance1BgpPeeringAddress.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      peerWeight: pulumi.Input.fromValue((map['peerWeight'] as num).toInt()),
+      peerWeight: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['peerWeight'])),
     );
   }
 }

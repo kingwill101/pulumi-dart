@@ -61,8 +61,8 @@ class GetVpnServerConfigurationIpsecPolicy {
       ipsecEncryption: pulumi.Input.fromValue(map['ipsecEncryption'] as String),
       ipsecIntegrity: pulumi.Input.fromValue(map['ipsecIntegrity'] as String),
       pfsGroup: pulumi.Input.fromValue(map['pfsGroup'] as String),
-      saDataSizeKilobytes: pulumi.Input.fromValue((map['saDataSizeKilobytes'] as num).toInt()),
-      saLifetimeSeconds: pulumi.Input.fromValue((map['saLifetimeSeconds'] as num).toInt()),
+      saDataSizeKilobytes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['saDataSizeKilobytes'])),
+      saLifetimeSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['saLifetimeSeconds'])),
     );
   }
 }

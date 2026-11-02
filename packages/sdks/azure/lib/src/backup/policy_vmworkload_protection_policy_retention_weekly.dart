@@ -25,7 +25,7 @@ class PolicyVMWorkloadProtectionPolicyRetentionWeekly {
 
   factory PolicyVMWorkloadProtectionPolicyRetentionWeekly.fromMap(Map<String, dynamic> map) {
     return PolicyVMWorkloadProtectionPolicyRetentionWeekly(
-      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
+      count: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['count'])),
       weekdays: pulumi.Input.fromValue((map['weekdays'] as List).cast<String>()),
     );
   }

@@ -265,14 +265,14 @@ import 'virtual_network_swift_connection_state.dart';
 /// 			Name:              pulumi.String("example-app-service"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			AppServicePlanId:  examplePlan.ID().ToIDOutput().ToStringOutput(),
+/// 			AppServicePlanId:  examplePlan.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = appservice.NewVirtualNetworkSwiftConnection(ctx, "example", &appservice.VirtualNetworkSwiftConnectionArgs{
-/// 			AppServiceId: exampleAppService.ID().ToIDOutput().ToStringOutput(),
-/// 			SubnetId:     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			AppServiceId: exampleAppService.ID(),
+/// 			SubnetId:     exampleSubnet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -282,7 +282,7 @@ import 'virtual_network_swift_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -290,20 +290,29 @@ import 'virtual_network_swift_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-virtual-network"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.1.0/24"]
 ///   delegations {
 ///     name = "example-delegation"
@@ -314,22 +323,31 @@ import 'virtual_network_swift_connection_state.dart';
 ///   }
 /// }
 /// resource "azure_appservice_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-app-service-plan"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     tier = "Standard"
 ///     size = "S1"
 ///   }
 /// }
-/// resource "azure_appservice_appservice" "example" {
+/// resource "azure_appservice_app_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-app-service"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   app_service_plan_id = azure_appservice_plan.example.id
 /// }
-/// resource "azure_appservice_virtualnetworkswiftconnection" "example" {
-///   app_service_id = azure_appservice_appservice.example.id
+/// resource "azure_appservice_virtual_network_swift_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   app_service_id = azure_appservice_app_service.example.id
 ///   subnet_id      = azure_network_subnet.example.id
 /// }
 /// ```
@@ -754,7 +772,7 @@ import 'virtual_network_swift_connection_state.dart';
 /// 			Name:                    pulumi.String("example-function-app"),
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
-/// 			AppServicePlanId:        examplePlan.ID().ToIDOutput().ToStringOutput(),
+/// 			AppServicePlanId:        examplePlan.ID(),
 /// 			StorageAccountName:      exampleAccount.Name,
 /// 			StorageAccountAccessKey: exampleAccount.PrimaryAccessKey,
 /// 		})
@@ -762,8 +780,8 @@ import 'virtual_network_swift_connection_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appservice.NewVirtualNetworkSwiftConnection(ctx, "example", &appservice.VirtualNetworkSwiftConnectionArgs{
-/// 			AppServiceId: exampleFunctionApp.ID().ToIDOutput().ToStringOutput(),
-/// 			SubnetId:     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			AppServiceId: exampleFunctionApp.ID(),
+/// 			SubnetId:     exampleSubnet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -773,7 +791,7 @@ import 'virtual_network_swift_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -781,20 +799,29 @@ import 'virtual_network_swift_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-virtual-network"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.1.0/24"]
 ///   delegations {
 ///     name = "example-delegation"
@@ -805,31 +832,43 @@ import 'virtual_network_swift_connection_state.dart';
 ///   }
 /// }
 /// resource "azure_appservice_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-app-service-plan"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     tier = "Standard"
 ///     size = "S1"
 ///   }
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "functionsappexamplesa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_appservice_functionapp" "example" {
+/// resource "azure_appservice_function_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-function-app"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   app_service_plan_id        = azure_appservice_plan.example.id
 ///   storage_account_name       = azure_storage_account.example.name
 ///   storage_account_access_key = azure_storage_account.example.primary_access_key
 /// }
-/// resource "azure_appservice_virtualnetworkswiftconnection" "example" {
-///   app_service_id = azure_appservice_functionapp.example.id
+/// resource "azure_appservice_virtual_network_swift_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   app_service_id = azure_appservice_function_app.example.id
 ///   subnet_id      = azure_network_subnet.example.id
 /// }
 /// ```
@@ -1031,7 +1070,7 @@ class VirtualNetworkSwiftConnection extends pulumi.CustomResource {
           'azure:appservice/virtualNetworkSwiftConnection:VirtualNetworkSwiftConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     appServiceId = registerOutput<String>('appServiceId');
     subnetId = registerOutput<String>('subnetId');

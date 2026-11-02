@@ -70,12 +70,12 @@ class GetDeviceDeviceProperty {
 
   factory GetDeviceDeviceProperty.fromMap(Map<String, dynamic> map) {
     return GetDeviceDeviceProperty(
-      capacity: pulumi.Input.fromValue((map['capacity'] as num).toInt()),
+      capacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['capacity'])),
       configuredRoleTypes: pulumi.Input.fromValue((map['configuredRoleTypes'] as List).cast<String>()),
       culture: pulumi.Input.fromValue(map['culture'] as String),
       hcsVersion: pulumi.Input.fromValue(map['hcsVersion'] as String),
       model: pulumi.Input.fromValue(map['model'] as String),
-      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
+      nodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nodeCount'])),
       serialNumber: pulumi.Input.fromValue(map['serialNumber'] as String),
       softwareVersion: pulumi.Input.fromValue(map['softwareVersion'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),

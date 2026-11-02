@@ -25,7 +25,7 @@ class TriggerScheduleScheduleMonthly {
 
   factory TriggerScheduleScheduleMonthly.fromMap(Map<String, dynamic> map) {
     return TriggerScheduleScheduleMonthly(
-      week: (() { final guardedValue = map['week']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      week: (() { final guardedValue = map['week']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       weekday: pulumi.Input.fromValue(map['weekday'] as String),
     );
   }

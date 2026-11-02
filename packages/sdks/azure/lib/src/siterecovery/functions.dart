@@ -71,7 +71,7 @@ import 'get_replication_recovery_plan_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -79,7 +79,7 @@ import 'get_replication_recovery_plan_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_siterecovery_getfabric" "fabric" {
+/// data "azure_siterecovery_fabric" "fabric" {
 ///   name                = "primary-fabric"
 ///   recovery_vault_name = "tfex-recovery_vault"
 ///   resource_group_name = "tfex-resource_group"
@@ -226,7 +226,7 @@ pulumi.Output<GetFabricResult> getFabricOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -234,7 +234,7 @@ pulumi.Output<GetFabricResult> getFabricOutput(
 ///   }
 /// }
 ///
-/// data "azure_siterecovery_getprotectioncontainer" "container" {
+/// data "azure_siterecovery_protection_container" "container" {
 ///   name                 = "primary-container"
 ///   recovery_vault_name  = "tfex-recovery_vault"
 ///   resource_group_name  = "tfex-resource_group"
@@ -380,7 +380,7 @@ pulumi.Output<GetProtectionContainerResult> getProtectionContainerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -388,7 +388,7 @@ pulumi.Output<GetProtectionContainerResult> getProtectionContainerOutput(
 ///   }
 /// }
 ///
-/// data "azure_siterecovery_getreplicationpolicy" "policy" {
+/// data "azure_siterecovery_replication_policy" "policy" {
 ///   name                = "replication-policy"
 ///   recovery_vault_name = "tfex-recovery_vault"
 ///   resource_group_name = "tfex-resource_group"
@@ -547,7 +547,7 @@ pulumi.Output<GetReplicationPolicyResult> getReplicationPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -555,13 +555,13 @@ pulumi.Output<GetReplicationPolicyResult> getReplicationPolicyOutput(
 ///   }
 /// }
 ///
-/// data "azure_recoveryservices_getvault" "vault" {
+/// data "azure_recoveryservices_vault" "vault" {
 ///   name                = "tfex-recovery_vault"
 ///   resource_group_name = "tfex-resource_group"
 /// }
-/// data "azure_siterecovery_getreplicationrecoveryplan" "example" {
+/// data "azure_siterecovery_replication_recovery_plan" "example" {
 ///   name              = "example-recovery-plan"
-///   recovery_vault_id = data.azure_recoveryservices_getvault.vault.id
+///   recovery_vault_id = data.azure_recoveryservices_vault.vault.id
 /// }
 /// ```
 /// ```java

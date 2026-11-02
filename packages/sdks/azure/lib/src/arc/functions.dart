@@ -68,7 +68,7 @@ import 'get_resource_bridge_appliance_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -76,13 +76,13 @@ import 'get_resource_bridge_appliance_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_arc_getresourcebridgeappliance" "example" {
+/// data "azure_arc_resource_bridge_appliance" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_arc_getresourcebridgeappliance.example.id
+///   value = data.azure_arc_resource_bridge_appliance.example.id
 /// }
 /// ```
 /// ```java

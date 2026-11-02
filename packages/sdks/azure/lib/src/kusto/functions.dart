@@ -63,7 +63,7 @@ import 'get_database_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -71,7 +71,7 @@ import 'get_database_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_kusto_getcluster" "example" {
+/// data "azure_kusto_cluster" "example" {
 ///   name                = "kustocluster"
 ///   resource_group_name = "test_resource_group"
 /// }
@@ -211,7 +211,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -219,7 +219,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 ///   }
 /// }
 ///
-/// data "azure_kusto_getdatabase" "example" {
+/// data "azure_kusto_database" "example" {
 ///   name                = "my-kusto-database"
 ///   resource_group_name = "test_resource_group"
 ///   cluster_name        = "test_cluster"

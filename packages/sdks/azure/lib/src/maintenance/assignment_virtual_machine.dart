@@ -288,7 +288,7 @@ import 'assignment_virtual_machine_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("internal"),
-/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					SubnetId:                   exampleSubnet.ID(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -309,7 +309,7 @@ import 'assignment_virtual_machine_state.dart';
 /// 			Size:              pulumi.String("Standard_D4_v5"),
 /// 			AdminUsername:     pulumi.String("adminuser"),
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleNetworkInterface.ID(),
 /// 			},
 /// 			AdminSshKeys: compute.LinuxVirtualMachineAdminSshKeyArray{
 /// 				&compute.LinuxVirtualMachineAdminSshKeyArgs{
@@ -342,8 +342,8 @@ import 'assignment_virtual_machine_state.dart';
 /// 		}
 /// 		_, err = maintenance.NewAssignmentVirtualMachine(ctx, "example", &maintenance.AssignmentVirtualMachineArgs{
 /// 			Location:                   example.Location,
-/// 			MaintenanceConfigurationId: exampleConfiguration.ID().ToIDOutput().ToStringOutput(),
-/// 			VirtualMachineId:           exampleLinuxVirtualMachine.ID().ToIDOutput().ToStringOutput(),
+/// 			MaintenanceConfigurationId: exampleConfiguration.ID(),
+/// 			VirtualMachineId:           exampleLinuxVirtualMachine.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -353,7 +353,7 @@ import 'assignment_virtual_machine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -364,39 +364,54 @@ import 'assignment_virtual_machine_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "internal"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_network_networkinterface" "example" {
+/// resource "azure_network_network_interface" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-nic"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ip_configurations {
 ///     name                          = "internal"
 ///     subnet_id                     = azure_network_subnet.example.id
 ///     private_ip_address_allocation = "Dynamic"
 ///   }
 /// }
-/// resource "azure_compute_linuxvirtualmachine" "example" {
+/// resource "azure_compute_linux_virtual_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-machine"
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   location              = azure_core_resource_group.example.location
 ///   size                  = "Standard_D4_v5"
 ///   admin_username        = "adminuser"
-///   network_interface_ids = [azure_network_networkinterface.example.id]
+///   network_interface_ids = [azure_network_network_interface.example.id]
 ///   admin_ssh_keys {
 ///     username   = "adminuser"
 ///     public_key = file("~/.ssh/id_rsa.pub")
@@ -413,15 +428,21 @@ import 'assignment_virtual_machine_state.dart';
 ///   }
 /// }
 /// resource "azure_maintenance_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-mc"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   scope               = "All"
 /// }
-/// resource "azure_maintenance_assignmentvirtualmachine" "example" {
-///   location                     = azure_core_resourcegroup.example.location
+/// resource "azure_maintenance_assignment_virtual_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location                     = azure_core_resource_group.example.location
 ///   maintenance_configuration_id = azure_maintenance_configuration.example.id
-///   virtual_machine_id           = azure_compute_linuxvirtualmachine.example.id
+///   virtual_machine_id           = azure_compute_linux_virtual_machine.example.id
 /// }
 /// ```
 /// ```java
@@ -649,7 +670,7 @@ class AssignmentVirtualMachine extends pulumi.CustomResource {
           'azure:maintenance/assignmentVirtualMachine:AssignmentVirtualMachine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     location = registerOutput<String>('location');
     maintenanceConfigurationId = registerOutput<String>('maintenanceConfigurationId');

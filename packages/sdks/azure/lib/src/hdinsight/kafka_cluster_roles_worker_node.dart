@@ -65,12 +65,12 @@ class KafkaClusterRolesWorkerNode {
 
   factory KafkaClusterRolesWorkerNode.fromMap(Map<String, dynamic> map) {
     return KafkaClusterRolesWorkerNode(
-      numberOfDisksPerNode: pulumi.Input.fromValue((map['numberOfDisksPerNode'] as num).toInt()),
+      numberOfDisksPerNode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfDisksPerNode'])),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scriptActions: (() { final guardedValue = map['scriptActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<KafkaClusterRolesWorkerNodeScriptAction>(guardedValue, (value) => KafkaClusterRolesWorkerNodeScriptAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       sshKeys: (() { final guardedValue = map['sshKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      targetInstanceCount: pulumi.Input.fromValue((map['targetInstanceCount'] as num).toInt()),
+      targetInstanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetInstanceCount'])),
       username: pulumi.Input.fromValue(map['username'] as String),
       virtualNetworkId: (() { final guardedValue = map['virtualNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vmSize: pulumi.Input.fromValue(map['vmSize'] as String),

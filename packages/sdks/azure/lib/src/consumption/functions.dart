@@ -70,7 +70,7 @@ import 'get_budget_subscription_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -78,13 +78,13 @@ import 'get_budget_subscription_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_consumption_getbudgetresourcegroup" "example" {
+/// data "azure_consumption_budget_resource_group" "example" {
 ///   name              = "existing"
 ///   resource_group_id = exampleAzurermResourceGroup.id
 /// }
 ///
 /// output "id" {
-///   value = data.azure_consumption_getbudgetresourcegroup.example.id
+///   value = data.azure_consumption_budget_resource_group.example.id
 /// }
 /// ```
 /// ```java
@@ -110,7 +110,7 @@ import 'get_budget_subscription_result.dart';
 ///     public static void stack(Context ctx) {
 ///         final var example = ConsumptionFunctions.getBudgetResourceGroup(GetBudgetResourceGroupArgs.builder()
 ///             .name("existing")
-///             .resourceGroupId(exampleAzurermResourceGroup.id())
+///             .resourceGroupId(exampleAzurermResourceGroup.get("id"))
 ///             .build());
 ///
 ///         ctx.export("id", example.id());
@@ -228,7 +228,7 @@ pulumi.Output<GetBudgetResourceGroupResult> getBudgetResourceGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -236,7 +236,7 @@ pulumi.Output<GetBudgetResourceGroupResult> getBudgetResourceGroupOutput(
 ///   }
 /// }
 ///
-/// data "azure_consumption_getbudgetsubscription" "example" {
+/// data "azure_consumption_budget_subscription" "example" {
 ///   name            = "existing"
 ///   subscription_id = "/subscriptions/00000000-0000-0000-0000-000000000000/"
 /// }
@@ -271,7 +271,7 @@ pulumi.Output<GetBudgetResourceGroupResult> getBudgetResourceGroupOutput(
 ///             .subscriptionId("/subscriptions/00000000-0000-0000-0000-000000000000/")
 ///             .build());
 ///
-///         ctx.export("id", exampleAzurermConsumptionBudget.id());
+///         ctx.export("id", exampleAzurermConsumptionBudget.get("id"));
 ///     }
 /// }
 /// ```

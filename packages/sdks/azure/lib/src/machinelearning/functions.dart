@@ -68,7 +68,7 @@ import 'get_workspace_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -76,13 +76,13 @@ import 'get_workspace_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_machinelearning_getworkspace" "existing" {
+/// data "azure_machinelearning_workspace" "existing" {
 ///   name                = "example-workspace"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_machinelearning_getworkspace.existing.id
+///   value = data.azure_machinelearning_workspace.existing.id
 /// }
 /// ```
 /// ```java

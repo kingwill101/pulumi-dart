@@ -77,7 +77,7 @@ class AccountBlobProperties {
   factory AccountBlobProperties.fromMap(Map<String, dynamic> map) {
     return AccountBlobProperties(
       changeFeedEnabled: (() { final guardedValue = map['changeFeedEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      changeFeedRetentionInDays: (() { final guardedValue = map['changeFeedRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      changeFeedRetentionInDays: (() { final guardedValue = map['changeFeedRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       containerDeleteRetentionPolicy: (() { final guardedValue = map['containerDeleteRetentionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccountBlobPropertiesContainerDeleteRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       corsRules: (() { final guardedValue = map['corsRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccountBlobPropertiesCorsRule>(guardedValue, (value) => AccountBlobPropertiesCorsRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       defaultServiceVersion: (() { final guardedValue = map['defaultServiceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

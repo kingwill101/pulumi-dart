@@ -78,7 +78,7 @@ import 'get_hci_storage_path_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -86,19 +86,19 @@ import 'get_hci_storage_path_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_stack_gethcicluster" "example" {
+/// data "azure_stack_hci_cluster" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_stack_gethcicluster.example.id
+///   value = data.azure_stack_hci_cluster.example.id
 /// }
 /// output "location" {
-///   value = data.azure_stack_gethcicluster.example.location
+///   value = data.azure_stack_hci_cluster.example.location
 /// }
 /// output "clientId" {
-///   value = data.azure_stack_gethcicluster.example.client_id
+///   value = data.azure_stack_hci_cluster.example.client_id
 /// }
 /// ```
 /// ```java
@@ -246,7 +246,7 @@ pulumi.Output<GetHciClusterResult> getHciClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -254,13 +254,13 @@ pulumi.Output<GetHciClusterResult> getHciClusterOutput(
 ///   }
 /// }
 ///
-/// data "azure_stack_gethcistoragepath" "example" {
+/// data "azure_stack_hci_storage_path" "example" {
 ///   name                = "example-hci-storage-path-name"
 ///   resource_group_name = "example-rg"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_stack_gethcistoragepath.example.id
+///   value = data.azure_stack_hci_storage_path.example.id
 /// }
 /// ```
 /// ```java

@@ -105,7 +105,7 @@ import 'get_zone_virtual_network_link_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -113,7 +113,10 @@ import 'get_zone_virtual_network_link_result.dart';
 ///   }
 /// }
 ///
-/// resource "azure_privatedns_aaaarecord" "example" {
+/// resource "azure_privatedns_a_a_a_a_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test"
 ///   zone_name           = "test-zone"
 ///   resource_group_name = "test-rg"
@@ -149,7 +152,7 @@ import 'get_zone_virtual_network_link_result.dart';
 ///             .resourceGroupName("test-rg")
 ///             .build());
 ///
-///         ctx.export("privateDnsAaaaRecordId", exampleAzurermPrivateDnsAaaaRecord.id());
+///         ctx.export("privateDnsAaaaRecordId", exampleAzurermPrivateDnsAaaaRecord.get("id"));
 ///     }
 /// }
 /// ```
@@ -270,7 +273,7 @@ pulumi.Output<GetAAAARecordResult> getAAAARecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -278,14 +281,14 @@ pulumi.Output<GetAAAARecordResult> getAAAARecordOutput(
 ///   }
 /// }
 ///
-/// data "azure_privatedns_getarecord" "example" {
+/// data "azure_privatedns_a_record" "example" {
 ///   name                = "test"
 ///   zone_name           = "test-zone"
 ///   resource_group_name = "test-rg"
 /// }
 ///
 /// output "privateDnsARecordId" {
-///   value = data.azure_privatedns_getarecord.example.id
+///   value = data.azure_privatedns_a_record.example.id
 /// }
 /// ```
 /// ```java
@@ -438,7 +441,7 @@ pulumi.Output<GetARecordResult> getARecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -446,7 +449,10 @@ pulumi.Output<GetARecordResult> getARecordOutput(
 ///   }
 /// }
 ///
-/// resource "azure_privatedns_cnamerecord" "example" {
+/// resource "azure_privatedns_cname_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test"
 ///   zone_name           = "test-zone"
 ///   resource_group_name = "test-rg"
@@ -482,7 +488,7 @@ pulumi.Output<GetARecordResult> getARecordOutput(
 ///             .resourceGroupName("test-rg")
 ///             .build());
 ///
-///         ctx.export("privateDnsCnameRecordId", exampleAzurermPrivateDnsCnameRecord.id());
+///         ctx.export("privateDnsCnameRecordId", exampleAzurermPrivateDnsCnameRecord.get("id"));
 ///     }
 /// }
 /// ```
@@ -597,7 +603,7 @@ pulumi.Output<GetCnameRecordResult> getCnameRecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -605,13 +611,13 @@ pulumi.Output<GetCnameRecordResult> getCnameRecordOutput(
 ///   }
 /// }
 ///
-/// data "azure_privatedns_getdnszone" "example" {
+/// data "azure_privatedns_dns_zone" "example" {
 ///   name                = "contoso.internal"
 ///   resource_group_name = "contoso-dns"
 /// }
 ///
 /// output "privateDnsZoneId" {
-///   value = data.azure_privatedns_getdnszone.example.id
+///   value = data.azure_privatedns_dns_zone.example.id
 /// }
 /// ```
 /// ```java
@@ -754,7 +760,7 @@ pulumi.Output<GetDnsZoneResult> getDnsZoneOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -762,7 +768,10 @@ pulumi.Output<GetDnsZoneResult> getDnsZoneOutput(
 ///   }
 /// }
 ///
-/// resource "azure_privatedns_mxrecord" "example" {
+/// resource "azure_privatedns_mx_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test"
 ///   zone_name           = "test-zone"
 ///   resource_group_name = "test-rg"
@@ -798,7 +807,7 @@ pulumi.Output<GetDnsZoneResult> getDnsZoneOutput(
 ///             .resourceGroupName("test-rg")
 ///             .build());
 ///
-///         ctx.export("privateDnsMxRecordId", exampleAzurermPrivateDnsMxRecord.id());
+///         ctx.export("privateDnsMxRecordId", exampleAzurermPrivateDnsMxRecord.get("id"));
 ///     }
 /// }
 /// ```
@@ -920,7 +929,7 @@ pulumi.Output<GetMxRecordResult> getMxRecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -928,7 +937,10 @@ pulumi.Output<GetMxRecordResult> getMxRecordOutput(
 ///   }
 /// }
 ///
-/// resource "azure_privatedns_ptrrecord" "example" {
+/// resource "azure_privatedns_p_t_r_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test"
 ///   zone_name           = "test-zone"
 ///   resource_group_name = "test-rg"
@@ -964,7 +976,7 @@ pulumi.Output<GetMxRecordResult> getMxRecordOutput(
 ///             .resourceGroupName("test-rg")
 ///             .build());
 ///
-///         ctx.export("privateDnsPtrRecordId", exampleAzurermPrivateDnsPtrRecord.id());
+///         ctx.export("privateDnsPtrRecordId", exampleAzurermPrivateDnsPtrRecord.get("id"));
 ///     }
 /// }
 /// ```
@@ -1072,7 +1084,7 @@ pulumi.Output<GetPtrRecordResult> getPtrRecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1080,7 +1092,7 @@ pulumi.Output<GetPtrRecordResult> getPtrRecordOutput(
 ///   }
 /// }
 ///
-/// data "azure_privatedns_getresolver" "test" {
+/// data "azure_privatedns_resolver" "test" {
 ///   name                = "example"
 ///   resource_group_name = "example-resourcegroup-name"
 /// }
@@ -1216,7 +1228,7 @@ pulumi.Output<GetResolverResult> getResolverOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1224,7 +1236,7 @@ pulumi.Output<GetResolverResult> getResolverOutput(
 ///   }
 /// }
 ///
-/// data "azure_privatedns_getresolverdnsforwardingruleset" "example" {
+/// data "azure_privatedns_resolver_dns_forwarding_ruleset" "example" {
 ///   name                = "example-ruleset"
 ///   resource_group_name = "example-ruleset-resourcegroup"
 /// }
@@ -1360,7 +1372,7 @@ pulumi.Output<GetResolverDnsForwardingRulesetResult> getResolverDnsForwardingRul
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1368,7 +1380,7 @@ pulumi.Output<GetResolverDnsForwardingRulesetResult> getResolverDnsForwardingRul
 ///   }
 /// }
 ///
-/// data "azure_privatedns_getresolverforwardingrule" "example" {
+/// data "azure_privatedns_resolver_forwarding_rule" "example" {
 ///   name                      = "example-rule"
 ///   dns_forwarding_ruleset_id = "example-forwarding-rulset-id"
 /// }
@@ -1504,7 +1516,7 @@ pulumi.Output<GetResolverForwardingRuleResult> getResolverForwardingRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1512,7 +1524,7 @@ pulumi.Output<GetResolverForwardingRuleResult> getResolverForwardingRuleOutput(
 ///   }
 /// }
 ///
-/// data "azure_privatedns_getresolverinboundendpoint" "example" {
+/// data "azure_privatedns_resolver_inbound_endpoint" "example" {
 ///   name                    = "example-drie"
 ///   private_dns_resolver_id = "example-private-dns-resolver-id"
 /// }
@@ -1648,7 +1660,7 @@ pulumi.Output<GetResolverInboundEndpointResult> getResolverInboundEndpointOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1656,7 +1668,7 @@ pulumi.Output<GetResolverInboundEndpointResult> getResolverInboundEndpointOutput
 ///   }
 /// }
 ///
-/// data "azure_privatedns_getresolveroutboundendpoint" "example" {
+/// data "azure_privatedns_resolver_outbound_endpoint" "example" {
 ///   name                    = "example-endpoint"
 ///   private_dns_resolver_id = "example-private-dns-resolver-id"
 /// }
@@ -1792,7 +1804,7 @@ pulumi.Output<GetResolverOutboundEndpointResult> getResolverOutboundEndpointOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1800,7 +1812,7 @@ pulumi.Output<GetResolverOutboundEndpointResult> getResolverOutboundEndpointOutp
 ///   }
 /// }
 ///
-/// data "azure_privatedns_getresolvervirtualnetworklink" "example" {
+/// data "azure_privatedns_resolver_virtual_network_link" "example" {
 ///   name                      = "example-link"
 ///   dns_forwarding_ruleset_id = "example-dns-forwarding-ruleset-id"
 /// }
@@ -1946,7 +1958,10 @@ pulumi.Output<GetResolverVirtualNetworkLinkResult> getResolverVirtualNetworkLink
 /// }
 /// ```
 /// ```hcl
-/// resource "azurerm_privatednssoarecord" "example" {
+/// resource "azurerm_private_dns_soa_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_name           = "test-zone"
 ///   resource_group_name = "test-rg"
 /// }
@@ -1980,7 +1995,7 @@ pulumi.Output<GetResolverVirtualNetworkLinkResult> getResolverVirtualNetworkLink
 ///             .resourceGroupName("test-rg")
 ///             .build());
 ///
-///         ctx.export("privateDnsSoaRecordId", exampleAzurermPrivateDnsSoaRecord.id());
+///         ctx.export("privateDnsSoaRecordId", exampleAzurermPrivateDnsSoaRecord.get("id"));
 ///     }
 /// }
 /// ```
@@ -2101,7 +2116,7 @@ pulumi.Output<GetSoaRecordResult> getSoaRecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2109,7 +2124,10 @@ pulumi.Output<GetSoaRecordResult> getSoaRecordOutput(
 ///   }
 /// }
 ///
-/// resource "azure_privatedns_srvrecord" "example" {
+/// resource "azure_privatedns_s_r_v_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test"
 ///   zone_name           = "test-zone"
 ///   resource_group_name = "test-rg"
@@ -2145,7 +2163,7 @@ pulumi.Output<GetSoaRecordResult> getSoaRecordOutput(
 ///             .resourceGroupName("test-rg")
 ///             .build());
 ///
-///         ctx.export("privateDnsSrvRecordId", exampleAzurermPrivateDnsSrvRecord.id());
+///         ctx.export("privateDnsSrvRecordId", exampleAzurermPrivateDnsSrvRecord.get("id"));
 ///     }
 /// }
 /// ```
@@ -2267,7 +2285,7 @@ pulumi.Output<GetSrvRecordResult> getSrvRecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2275,7 +2293,10 @@ pulumi.Output<GetSrvRecordResult> getSrvRecordOutput(
 ///   }
 /// }
 ///
-/// resource "azure_privatedns_txtrecord" "example" {
+/// resource "azure_privatedns_txt_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test"
 ///   zone_name           = "test-zone"
 ///   resource_group_name = "test-rg"
@@ -2311,7 +2332,7 @@ pulumi.Output<GetSrvRecordResult> getSrvRecordOutput(
 ///             .resourceGroupName("test-rg")
 ///             .build());
 ///
-///         ctx.export("privateDnsTxtRecordId", exampleAzurermPrivateDnsTxtRecord.id());
+///         ctx.export("privateDnsTxtRecordId", exampleAzurermPrivateDnsTxtRecord.get("id"));
 ///     }
 /// }
 /// ```
@@ -2430,7 +2451,7 @@ pulumi.Output<GetTxtRecordResult> getTxtRecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2438,14 +2459,14 @@ pulumi.Output<GetTxtRecordResult> getTxtRecordOutput(
 ///   }
 /// }
 ///
-/// data "azure_privatedns_getzonevirtualnetworklink" "example" {
+/// data "azure_privatedns_zone_virtual_network_link" "example" {
 ///   name                  = "test"
 ///   resource_group_name   = "test-rg"
 ///   private_dns_zone_name = "test-zone"
 /// }
 ///
 /// output "privateDnsARecordId" {
-///   value = data.azure_privatedns_getzonevirtualnetworklink.example.id
+///   value = data.azure_privatedns_zone_virtual_network_link.example.id
 /// }
 /// ```
 /// ```java

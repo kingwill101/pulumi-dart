@@ -144,7 +144,7 @@ class ScheduledQueryRulesAlertV2Args {
       queryTimeRangeOverride: (() { final guardedValue = map['queryTimeRangeOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       scopes: pulumi.Input.fromValue(map['scopes'] as String),
-      severity: pulumi.Input.fromValue((map['severity'] as num).toInt()),
+      severity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['severity'])),
       skipQueryValidation: (() { final guardedValue = map['skipQueryValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       targetResourceTypes: (() { final guardedValue = map['targetResourceTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

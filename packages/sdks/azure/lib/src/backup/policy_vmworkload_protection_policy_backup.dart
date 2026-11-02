@@ -36,7 +36,7 @@ class PolicyVMWorkloadProtectionPolicyBackup {
   factory PolicyVMWorkloadProtectionPolicyBackup.fromMap(Map<String, dynamic> map) {
     return PolicyVMWorkloadProtectionPolicyBackup(
       frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      frequencyInMinutes: (() { final guardedValue = map['frequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      frequencyInMinutes: (() { final guardedValue = map['frequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       time: (() { final guardedValue = map['time']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       weekdays: (() { final guardedValue = map['weekdays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

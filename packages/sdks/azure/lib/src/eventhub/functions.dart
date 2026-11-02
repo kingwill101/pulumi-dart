@@ -85,7 +85,7 @@ import 'get_service_bus_namespace_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -93,7 +93,7 @@ import 'get_service_bus_namespace_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_eventhub_getauthorizationrule" "test" {
+/// data "azure_eventhub_authorization_rule" "test" {
 ///   name                = "test"
 ///   namespace_name      = testAzurermEventhubNamespace.name
 ///   eventhub_name       = testAzurermEventhub.name
@@ -123,9 +123,9 @@ import 'get_service_bus_namespace_result.dart';
 ///     public static void stack(Context ctx) {
 ///         final var test = EventhubFunctions.getAuthorizationRule(GetAuthorizationRuleArgs.builder()
 ///             .name("test")
-///             .namespaceName(testAzurermEventhubNamespace.name())
-///             .eventhubName(testAzurermEventhub.name())
-///             .resourceGroupName(testAzurermResourceGroup.name())
+///             .namespaceName(testAzurermEventhubNamespace.get("name"))
+///             .eventhubName(testAzurermEventhub.get("name"))
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
 ///             .build());
 ///
 ///     }
@@ -242,7 +242,7 @@ pulumi.Output<GetAuthorizationRuleResult> getAuthorizationRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -250,13 +250,13 @@ pulumi.Output<GetAuthorizationRuleResult> getAuthorizationRuleOutput(
 ///   }
 /// }
 ///
-/// data "azure_eventhub_getcluster" "example" {
+/// data "azure_eventhub_cluster" "example" {
 ///   name                = "search-eventhub"
 ///   resource_group_name = "search-service"
 /// }
 ///
 /// output "eventhubId" {
-///   value = data.azure_eventhub_getcluster.example.id
+///   value = data.azure_eventhub_cluster.example.id
 /// }
 /// ```
 /// ```java
@@ -401,7 +401,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -409,7 +409,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 ///   }
 /// }
 ///
-/// data "azure_eventhub_getconsumegroup" "test" {
+/// data "azure_eventhub_consume_group" "test" {
 ///   name                = testAzurermEventhubConsumerGroup.name
 ///   namespace_name      = testAzurermEventhubNamespace.name
 ///   eventhub_name       = testAzurermEventhub.name
@@ -438,10 +438,10 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = EventhubFunctions.getConsumeGroup(GetConsumeGroupArgs.builder()
-///             .name(testAzurermEventhubConsumerGroup.name())
-///             .namespaceName(testAzurermEventhubNamespace.name())
-///             .eventhubName(testAzurermEventhub.name())
-///             .resourceGroupName(testAzurermResourceGroup.name())
+///             .name(testAzurermEventhubConsumerGroup.get("name"))
+///             .namespaceName(testAzurermEventhubNamespace.get("name"))
+///             .eventhubName(testAzurermEventhub.get("name"))
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
 ///             .build());
 ///
 ///     }
@@ -562,7 +562,7 @@ pulumi.Output<GetConsumeGroupResult> getConsumeGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -570,14 +570,14 @@ pulumi.Output<GetConsumeGroupResult> getConsumeGroupOutput(
 ///   }
 /// }
 ///
-/// data "azure_eventhub_geteventhub" "example" {
+/// data "azure_eventhub_event_hub" "example" {
 ///   name                = "search-eventhub"
 ///   resource_group_name = "search-service"
 ///   namespace_name      = "search-eventhubns"
 /// }
 ///
 /// output "eventhubId" {
-///   value = data.azure_eventhub_geteventhub.example.id
+///   value = data.azure_eventhub_event_hub.example.id
 /// }
 /// ```
 /// ```java
@@ -723,7 +723,7 @@ pulumi.Output<GetEventHubResult> getEventHubOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -731,13 +731,13 @@ pulumi.Output<GetEventHubResult> getEventHubOutput(
 ///   }
 /// }
 ///
-/// data "azure_eventhub_getnamespace" "example" {
+/// data "azure_eventhub_namespace" "example" {
 ///   name                = "search-eventhubns"
 ///   resource_group_name = "search-service"
 /// }
 ///
 /// output "eventhubNamespaceId" {
-///   value = data.azure_eventhub_getnamespace.example.id
+///   value = data.azure_eventhub_namespace.example.id
 /// }
 /// ```
 /// ```java
@@ -881,7 +881,7 @@ pulumi.Output<GetEventhubNamespaceResult> getEventhubNamespaceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -889,13 +889,13 @@ pulumi.Output<GetEventhubNamespaceResult> getEventhubNamespaceOutput(
 ///   }
 /// }
 ///
-/// data "azure_eventhub_getnamespace" "example" {
+/// data "azure_eventhub_namespace" "example" {
 ///   name                = "search-eventhubns"
 ///   resource_group_name = "search-service"
 /// }
 ///
 /// output "eventhubNamespaceId" {
-///   value = data.azure_eventhub_getnamespace.example.id
+///   value = data.azure_eventhub_namespace.example.id
 /// }
 /// ```
 /// ```java
@@ -1043,7 +1043,7 @@ pulumi.Output<GetNamespaceResult> getNamespaceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1051,14 +1051,14 @@ pulumi.Output<GetNamespaceResult> getNamespaceOutput(
 ///   }
 /// }
 ///
-/// data "azure_eventhub_getnamespaceauthorizationrule" "example" {
+/// data "azure_eventhub_namespace_authorization_rule" "example" {
 ///   name                = "navi"
 ///   resource_group_name = "example-resources"
 ///   namespace_name      = "example-ns"
 /// }
 ///
 /// output "eventhubAuthorizationRuleId" {
-///   value = data.azure_eventhub_getnamespaceauthorizationrule.example.id
+///   value = data.azure_eventhub_namespace_authorization_rule.example.id
 /// }
 /// ```
 /// ```java
@@ -1339,7 +1339,7 @@ pulumi.Output<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1347,39 +1347,51 @@ pulumi.Output<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule
 ///   }
 /// }
 ///
-/// data "azure_eventhub_getauthorizationrule" "example" {
-///   name                = azure_eventhub_authorizationrule.example.name
-///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
-///   eventhub_name       = azure_eventhub_eventhub.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+/// data "azure_eventhub_authorization_rule" "example" {
+///   name                = azure_eventhub_authorization_rule.example.name
+///   namespace_name      = azure_eventhub_event_hub_namespace.example.name
+///   eventhub_name       = azure_eventhub_event_hub.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// data "azure_eventhub_getsas" "exampleGetSas" {
-///   connection_string = data.azure_eventhub_getauthorizationrule.example.primary_connection_string
+/// data "azure_eventhub_sas" "exampleGetSas" {
+///   connection_string = data.azure_eventhub_authorization_rule.example.primary_connection_string
 ///   expiry            = "2023-06-23T00:00:00Z"
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_eventhub_eventhubnamespace" "example" {
+/// resource "azure_eventhub_event_hub_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ehn"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Basic"
 /// }
-/// resource "azure_eventhub_eventhub" "example" {
+/// resource "azure_eventhub_event_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-eh"
-///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   namespace_name      = azure_eventhub_event_hub_namespace.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   partition_count     = 1
 ///   message_retention   = 1
 /// }
-/// resource "azure_eventhub_authorizationrule" "example" {
+/// resource "azure_eventhub_authorization_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ehar"
-///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
-///   eventhub_name       = azure_eventhub_eventhub.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   namespace_name      = azure_eventhub_event_hub_namespace.example.name
+///   eventhub_name       = azure_eventhub_event_hub.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   listen              = true
 ///   send                = true
 ///   manage              = true
@@ -1604,7 +1616,7 @@ pulumi.Output<GetSasResult> getSasOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1612,13 +1624,13 @@ pulumi.Output<GetSasResult> getSasOutput(
 ///   }
 /// }
 ///
-/// data "azure_servicebus_getnamespace" "example" {
+/// data "azure_servicebus_namespace" "example" {
 ///   name                = "examplenamespace"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "location" {
-///   value = data.azure_servicebus_getnamespace.example.location
+///   value = data.azure_servicebus_namespace.example.location
 /// }
 /// ```
 /// ```java

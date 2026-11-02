@@ -72,7 +72,7 @@ import 'get_mpa_account_scope_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -80,13 +80,13 @@ import 'get_mpa_account_scope_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_billing_getenrollmentaccountscope" "example" {
+/// data "azure_billing_enrollment_account_scope" "example" {
 ///   billing_account_name    = "existing"
 ///   enrollment_account_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_billing_getenrollmentaccountscope.example.id
+///   value = data.azure_billing_enrollment_account_scope.example.id
 /// }
 /// ```
 /// ```java
@@ -226,7 +226,7 @@ pulumi.Output<GetEnrollmentAccountScopeResult> getEnrollmentAccountScopeOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -234,14 +234,14 @@ pulumi.Output<GetEnrollmentAccountScopeResult> getEnrollmentAccountScopeOutput(
 ///   }
 /// }
 ///
-/// data "azure_billing_getmcaaccountscope" "example" {
+/// data "azure_billing_mca_account_scope" "example" {
 ///   billing_account_name = "e879cf0f-2b4d-5431-109a-f72fc9868693:024cabf4-7321-4cf9-be59-df0c77ca51de_2019-05-31"
 ///   billing_profile_name = "PE2Q-NOIT-BG7-TGB"
 ///   invoice_section_name = "MTT4-OBS7-PJA-TGB"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_billing_getmcaaccountscope.example.id
+///   value = data.azure_billing_mca_account_scope.example.id
 /// }
 /// ```
 /// ```java
@@ -379,7 +379,7 @@ pulumi.Output<GetMcaAccountScopeResult> getMcaAccountScopeOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -387,13 +387,13 @@ pulumi.Output<GetMcaAccountScopeResult> getMcaAccountScopeOutput(
 ///   }
 /// }
 ///
-/// data "azure_billing_getmpaaccountscope" "example" {
+/// data "azure_billing_mpa_account_scope" "example" {
 ///   billing_account_name = "e879cf0f-2b4d-5431-109a-f72fc9868693:024cabf4-7321-4cf9-be59-df0c77ca51de_2019-05-31"
 ///   customer_name        = "2281f543-7321-4cf9-1e23-edb4Oc31a31c"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_billing_getmpaaccountscope.example.id
+///   value = data.azure_billing_mpa_account_scope.example.id
 /// }
 /// ```
 /// ```java

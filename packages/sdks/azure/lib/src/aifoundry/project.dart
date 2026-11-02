@@ -221,7 +221,7 @@ import 'project_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = keyvault.NewAccessPolicy(ctx, "example", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultId: exampleKeyVault.ID(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId:   pulumi.String(current.ObjectId),
 /// 			KeyPermissions: pulumi.StringArray{
@@ -249,8 +249,8 @@ import 'project_state.dart';
 /// 			Name:              pulumi.String("exampleaihub"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			StorageAccountId:  exampleAccount.ID().ToIDOutput().ToStringOutput(),
-/// 			KeyVaultId:        exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId:  exampleAccount.ID(),
+/// 			KeyVaultId:        exampleKeyVault.ID(),
 /// 			Identity: &aifoundry.HubIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
 /// 			},
@@ -261,7 +261,7 @@ import 'project_state.dart';
 /// 		_, err = aifoundry.NewProject(ctx, "example", &aifoundry.ProjectArgs{
 /// 			Name:            pulumi.String("example"),
 /// 			Location:        exampleHub.Location,
-/// 			AiServicesHubId: exampleHub.ID().ToIDOutput().ToStringOutput(),
+/// 			AiServicesHubId: exampleHub.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -271,7 +271,7 @@ import 'project_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -279,46 +279,64 @@ import 'project_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "westeurope"
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "examplekv"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "standard"
 ///   purge_protection_enabled   = true
 /// }
-/// resource "azure_keyvault_accesspolicy" "example" {
-///   key_vault_id    = azure_keyvault_keyvault.example.id
-///   tenant_id       = data.azure_core_getclientconfig.current.tenant_id
-///   object_id       = data.azure_core_getclientconfig.current.object_id
+/// resource "azure_keyvault_access_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id    = azure_keyvault_key_vault.example.id
+///   tenant_id       = data.azure_core_client_config.current.tenant_id
+///   object_id       = data.azure_core_client_config.current.object_id
 ///   key_permissions = ["Create", "Get", "Delete", "Purge", "GetRotationPolicy"]
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplesa"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resource_group.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_aifoundry_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleaihub"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   storage_account_id  = azure_storage_account.example.id
-///   key_vault_id        = azure_keyvault_keyvault.example.id
+///   key_vault_id        = azure_keyvault_key_vault.example.id
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
 /// resource "azure_aifoundry_project" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   location           = azure_aifoundry_hub.example.location
 ///   ai_services_hub_id = azure_aifoundry_hub.example.id
@@ -528,7 +546,7 @@ class Project extends pulumi.CustomResource {
           'azure:aifoundry/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     aiServicesHubId = registerOutput<String>('aiServicesHubId');
     description = registerOutput<String?>('description');

@@ -133,7 +133,7 @@ import 'get_role_definition_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -141,30 +141,33 @@ import 'get_role_definition_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "primary" {
+/// data "azure_core_subscription" "primary" {
 /// }
-/// data "azure_authorization_getroledefinition" "custom" {
-///   role_definition_id = azure_authorization_roledefinition.custom.role_definition_id
-///   scope              = data.azure_core_getsubscription.primary.id
+/// data "azure_authorization_role_definition" "custom" {
+///   role_definition_id = azure_authorization_role_definition.custom.role_definition_id
+///   scope              = data.azure_core_subscription.primary.id
 /// }
-/// data "azure_authorization_getroledefinition" "custom-byname" {
-///   name  = azure_authorization_roledefinition.custom.name
-///   scope = data.azure_core_getsubscription.primary.id
+/// data "azure_authorization_role_definition" "custom-byname" {
+///   name  = azure_authorization_role_definition.custom.name
+///   scope = data.azure_core_subscription.primary.id
 /// }
-/// data "azure_authorization_getroledefinition" "builtin" {
+/// data "azure_authorization_role_definition" "builtin" {
 ///   name = "Contributor"
 /// }
 ///
-/// resource "azure_authorization_roledefinition" "custom" {
+/// resource "azure_authorization_role_definition" "custom" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role_definition_id = "00000000-0000-0000-0000-000000000000"
 ///   name               = "CustomRoleDef"
-///   scope              = data.azure_core_getsubscription.primary.id
+///   scope              = data.azure_core_subscription.primary.id
 /// }
 /// output "customRoleDefinitionId" {
-///   value = data.azure_authorization_getroledefinition.custom.id
+///   value = data.azure_authorization_role_definition.custom.id
 /// }
 /// output "contributorRoleDefinitionId" {
-///   value = data.azure_authorization_getroledefinition.builtin.id
+///   value = data.azure_authorization_role_definition.builtin.id
 /// }
 /// ```
 /// ```java

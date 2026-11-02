@@ -84,18 +84,18 @@ class GetSoaRecordResult {
   factory GetSoaRecordResult.fromMap(Map<String, dynamic> map) {
     return GetSoaRecordResult(
       email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hostName: (() { final guardedValue = map['hostName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      minimumTtl: (() { final guardedValue = map['minimumTtl']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      minimumTtl: (() { final guardedValue = map['minimumTtl']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      refreshTime: (() { final guardedValue = map['refreshTime']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      refreshTime: (() { final guardedValue = map['refreshTime']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      retryTime: (() { final guardedValue = map['retryTime']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      serialNumber: (() { final guardedValue = map['serialNumber']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      retryTime: (() { final guardedValue = map['retryTime']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      serialNumber: (() { final guardedValue = map['serialNumber']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       zoneName: (() { final guardedValue = map['zoneName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

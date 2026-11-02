@@ -72,7 +72,7 @@ class WatcherArgs {
       automationAccountId: pulumi.Input.fromValue(map['automationAccountId'] as String),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      executionFrequencyInSeconds: pulumi.Input.fromValue((map['executionFrequencyInSeconds'] as num).toInt()),
+      executionFrequencyInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['executionFrequencyInSeconds'])),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scriptName: pulumi.Input.fromValue(map['scriptName'] as String),

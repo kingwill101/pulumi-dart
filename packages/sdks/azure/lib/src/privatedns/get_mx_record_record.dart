@@ -26,7 +26,7 @@ class GetMxRecordRecord {
   factory GetMxRecordRecord.fromMap(Map<String, dynamic> map) {
     return GetMxRecordRecord(
       exchange: pulumi.Input.fromValue(map['exchange'] as String),
-      preference: pulumi.Input.fromValue((map['preference'] as num).toInt()),
+      preference: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['preference'])),
     );
   }
 }

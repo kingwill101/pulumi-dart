@@ -70,7 +70,7 @@ class ExascaleDatabaseStorageVaultArgs {
 
   factory ExascaleDatabaseStorageVaultArgs.fromMap(Map<String, dynamic> map) {
     return ExascaleDatabaseStorageVaultArgs(
-      additionalFlashCachePercentage: pulumi.Input.fromValue((map['additionalFlashCachePercentage'] as num).toInt()),
+      additionalFlashCachePercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['additionalFlashCachePercentage'])),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       highCapacityDatabaseStorage: pulumi.Input.fromValue(ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap((map['highCapacityDatabaseStorage']! as Map).cast<String, dynamic>())),

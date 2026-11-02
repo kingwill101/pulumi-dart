@@ -68,7 +68,7 @@ import 'get_instance_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -76,13 +76,13 @@ import 'get_instance_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_digitaltwins_getinstance" "example" {
+/// data "azure_digitaltwins_instance" "example" {
 ///   name                = "existing-digital-twins"
 ///   resource_group_name = "existing-resgroup"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_digitaltwins_getinstance.example.id
+///   value = data.azure_digitaltwins_instance.example.id
 /// }
 /// ```
 /// ```java

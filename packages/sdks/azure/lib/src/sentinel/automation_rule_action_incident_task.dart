@@ -31,7 +31,7 @@ class AutomationRuleActionIncidentTask {
   factory AutomationRuleActionIncidentTask.fromMap(Map<String, dynamic> map) {
     return AutomationRuleActionIncidentTask(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      order: pulumi.Input.fromValue((map['order'] as num).toInt()),
+      order: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['order'])),
       title: pulumi.Input.fromValue(map['title'] as String),
     );
   }

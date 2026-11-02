@@ -148,7 +148,7 @@ import 'workspace_named_value_value_from_key_vault.dart';
 /// 		}
 /// 		exampleWorkspace, err := apimanagement.NewWorkspace(ctx, "example", &apimanagement.WorkspaceArgs{
 /// 			Name:            pulumi.String("example-workspace"),
-/// 			ApiManagementId: exampleService.ID().ToIDOutput().ToStringOutput(),
+/// 			ApiManagementId: exampleService.ID(),
 /// 			DisplayName:     pulumi.String("ExampleWorkspace"),
 /// 		})
 /// 		if err != nil {
@@ -156,7 +156,7 @@ import 'workspace_named_value_value_from_key_vault.dart';
 /// 		}
 /// 		_, err = apimanagement.NewWorkspaceNamedValue(ctx, "example", &apimanagement.WorkspaceNamedValueArgs{
 /// 			Name:                     pulumi.String("example-named-value"),
-/// 			ApiManagementWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			ApiManagementWorkspaceId: exampleWorkspace.ID(),
 /// 			DisplayName:              pulumi.String("ExampleProperty"),
 /// 			Value:                    pulumi.String("Example Value"),
 /// 			Tags: pulumi.StringArray{
@@ -173,7 +173,7 @@ import 'workspace_named_value_value_from_key_vault.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -181,24 +181,36 @@ import 'workspace_named_value_value_from_key_vault.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "My Company"
 ///   publisher_email     = "company@terraform.io"
 ///   sku_name            = "Premium_1"
 /// }
 /// resource "azure_apimanagement_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-workspace"
 ///   api_management_id = azure_apimanagement_service.example.id
 ///   display_name      = "ExampleWorkspace"
 /// }
-/// resource "azure_apimanagement_workspacenamedvalue" "example" {
+/// resource "azure_apimanagement_workspace_named_value" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example-named-value"
 ///   api_management_workspace_id = azure_apimanagement_workspace.example.id
 ///   display_name                = "ExampleProperty"
@@ -354,7 +366,7 @@ class WorkspaceNamedValue extends pulumi.CustomResource {
           'azure:apimanagement/workspaceNamedValue:WorkspaceNamedValue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
           additionalSecretOutputs: const ['value'],
         ) {
     apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');

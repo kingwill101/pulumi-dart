@@ -90,7 +90,7 @@ class AuthomationRuleState {
       expiration: (() { final guardedValue = map['expiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       logAnalyticsWorkspaceId: (() { final guardedValue = map['logAnalyticsWorkspaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       triggersOn: (() { final guardedValue = map['triggersOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       triggersWhen: (() { final guardedValue = map['triggersWhen']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

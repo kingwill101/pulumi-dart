@@ -80,7 +80,7 @@ import 'get_workspace_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -88,13 +88,13 @@ import 'get_workspace_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_monitoring_getactiongroup" "example" {
+/// data "azure_monitoring_action_group" "example" {
 ///   resource_group_name = "example-rg"
 ///   name                = "tfex-actiongroup"
 /// }
 ///
 /// output "actionGroupId" {
-///   value = data.azure_monitoring_getactiongroup.example.id
+///   value = data.azure_monitoring_action_group.example.id
 /// }
 /// ```
 /// ```java
@@ -238,7 +238,7 @@ pulumi.Output<GetActionGroupResult> getActionGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -246,13 +246,13 @@ pulumi.Output<GetActionGroupResult> getActionGroupOutput(
 ///   }
 /// }
 ///
-/// data "azure_monitoring_getdatacollectionendpoint" "example" {
+/// data "azure_monitoring_data_collection_endpoint" "example" {
 ///   name                = "example-mdce"
 ///   resource_group_name = exampleAzurermResourceGroup.name
 /// }
 ///
 /// output "endpointId" {
-///   value = data.azure_monitoring_getdatacollectionendpoint.example.id
+///   value = data.azure_monitoring_data_collection_endpoint.example.id
 /// }
 /// ```
 /// ```java
@@ -278,7 +278,7 @@ pulumi.Output<GetActionGroupResult> getActionGroupOutput(
 ///     public static void stack(Context ctx) {
 ///         final var example = MonitoringFunctions.getDataCollectionEndpoint(GetDataCollectionEndpointArgs.builder()
 ///             .name("example-mdce")
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
 ///             .build());
 ///
 ///         ctx.export("endpointId", example.id());
@@ -396,7 +396,7 @@ pulumi.Output<GetDataCollectionEndpointResult> getDataCollectionEndpointOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -404,13 +404,13 @@ pulumi.Output<GetDataCollectionEndpointResult> getDataCollectionEndpointOutput(
 ///   }
 /// }
 ///
-/// data "azure_monitoring_getdatacollectionrule" "example" {
+/// data "azure_monitoring_data_collection_rule" "example" {
 ///   name                = "example-rule"
 ///   resource_group_name = exampleAzurermResourceGroup.name
 /// }
 ///
 /// output "ruleId" {
-///   value = data.azure_monitoring_getdatacollectionrule.example.id
+///   value = data.azure_monitoring_data_collection_rule.example.id
 /// }
 /// ```
 /// ```java
@@ -436,7 +436,7 @@ pulumi.Output<GetDataCollectionEndpointResult> getDataCollectionEndpointOutput(
 ///     public static void stack(Context ctx) {
 ///         final var example = MonitoringFunctions.getDataCollectionRule(GetDataCollectionRuleArgs.builder()
 ///             .name("example-rule")
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
 ///             .build());
 ///
 ///         ctx.export("ruleId", example.id());
@@ -563,7 +563,7 @@ pulumi.Output<GetDataCollectionRuleResult> getDataCollectionRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -571,12 +571,12 @@ pulumi.Output<GetDataCollectionRuleResult> getDataCollectionRuleOutput(
 ///   }
 /// }
 ///
-/// data "azure_keyvault_getkeyvault" "example" {
+/// data "azure_keyvault_key_vault" "example" {
 ///   name                = exampleAzurermKeyVault.name
 ///   resource_group_name = exampleAzurermKeyVault.resourceGroupName
 /// }
-/// data "azure_monitoring_getdiagnosticcategories" "exampleGetDiagnosticCategories" {
-///   resource_id = data.azure_keyvault_getkeyvault.example.id
+/// data "azure_monitoring_diagnostic_categories" "exampleGetDiagnosticCategories" {
+///   resource_id = data.azure_keyvault_key_vault.example.id
 /// }
 /// ```
 /// ```java
@@ -603,8 +603,8 @@ pulumi.Output<GetDataCollectionRuleResult> getDataCollectionRuleOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = KeyvaultFunctions.getKeyVault(GetKeyVaultArgs.builder()
-///             .name(exampleAzurermKeyVault.name())
-///             .resourceGroupName(exampleAzurermKeyVault.resourceGroupName())
+///             .name(exampleAzurermKeyVault.get("name"))
+///             .resourceGroupName(exampleAzurermKeyVault.get("resourceGroupName"))
 ///             .build());
 ///
 ///         final var exampleGetDiagnosticCategories = MonitoringFunctions.getDiagnosticCategories(GetDiagnosticCategoriesArgs.builder()
@@ -728,7 +728,7 @@ pulumi.Output<GetDiagnosticCategoriesResult> getDiagnosticCategoriesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -736,13 +736,13 @@ pulumi.Output<GetDiagnosticCategoriesResult> getDiagnosticCategoriesOutput(
 ///   }
 /// }
 ///
-/// data "azure_monitoring_getscheduledqueryrulesalert" "example" {
+/// data "azure_monitoring_scheduled_query_rules_alert" "example" {
 ///   resource_group_name = "example-rg"
 ///   name                = "tfex-queryrule"
 /// }
 ///
 /// output "queryRuleId" {
-///   value = data.azure_monitoring_getscheduledqueryrulesalert.example.id
+///   value = data.azure_monitoring_scheduled_query_rules_alert.example.id
 /// }
 /// ```
 /// ```java
@@ -886,7 +886,7 @@ pulumi.Output<GetScheduledQueryRulesAlertResult> getScheduledQueryRulesAlertOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -894,13 +894,13 @@ pulumi.Output<GetScheduledQueryRulesAlertResult> getScheduledQueryRulesAlertOutp
 ///   }
 /// }
 ///
-/// data "azure_monitoring_getscheduledqueryruleslog" "example" {
+/// data "azure_monitoring_scheduled_query_rules_log" "example" {
 ///   resource_group_name = "example-rg"
 ///   name                = "tfex-queryrule"
 /// }
 ///
 /// output "queryRuleId" {
-///   value = data.azure_monitoring_getscheduledqueryruleslog.example.id
+///   value = data.azure_monitoring_scheduled_query_rules_log.example.id
 /// }
 /// ```
 /// ```java
@@ -1044,7 +1044,7 @@ pulumi.Output<GetScheduledQueryRulesLogResult> getScheduledQueryRulesLogOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1052,13 +1052,13 @@ pulumi.Output<GetScheduledQueryRulesLogResult> getScheduledQueryRulesLogOutput(
 ///   }
 /// }
 ///
-/// data "azure_monitoring_getworkspace" "example" {
+/// data "azure_monitoring_workspace" "example" {
 ///   name                = "example-workspace"
 ///   resource_group_name = exampleAzurermResourceGroup.name
 /// }
 ///
 /// output "queryEndpoint" {
-///   value = data.azure_monitoring_getworkspace.example.query_endpoint
+///   value = data.azure_monitoring_workspace.example.query_endpoint
 /// }
 /// ```
 /// ```java
@@ -1084,7 +1084,7 @@ pulumi.Output<GetScheduledQueryRulesLogResult> getScheduledQueryRulesLogOutput(
 ///     public static void stack(Context ctx) {
 ///         final var example = MonitoringFunctions.getWorkspace(GetWorkspaceArgs.builder()
 ///             .name("example-workspace")
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
 ///             .build());
 ///
 ///         ctx.export("queryEndpoint", example.queryEndpoint());

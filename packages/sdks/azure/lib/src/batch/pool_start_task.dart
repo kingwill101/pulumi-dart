@@ -57,7 +57,7 @@ class PoolStartTask {
       commonEnvironmentProperties: (() { final guardedValue = map['commonEnvironmentProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       containers: (() { final guardedValue = map['containers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PoolStartTaskContainer>(guardedValue, (value) => PoolStartTaskContainer.fromMap((value as Map).cast<String, dynamic>()))); })(),
       resourceFiles: (() { final guardedValue = map['resourceFiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PoolStartTaskResourceFile>(guardedValue, (value) => PoolStartTaskResourceFile.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      taskRetryMaximum: (() { final guardedValue = map['taskRetryMaximum']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      taskRetryMaximum: (() { final guardedValue = map['taskRetryMaximum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       userIdentity: pulumi.Input.fromValue(PoolStartTaskUserIdentity.fromMap((map['userIdentity']! as Map).cast<String, dynamic>())),
       waitForSuccess: (() { final guardedValue = map['waitForSuccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

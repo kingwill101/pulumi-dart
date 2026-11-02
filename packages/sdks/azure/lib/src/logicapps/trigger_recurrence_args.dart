@@ -58,7 +58,7 @@ class TriggerRecurrenceArgs {
   factory TriggerRecurrenceArgs.fromMap(Map<String, dynamic> map) {
     return TriggerRecurrenceArgs(
       frequency: pulumi.Input.fromValue(map['frequency'] as String),
-      interval: pulumi.Input.fromValue((map['interval'] as num).toInt()),
+      interval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['interval'])),
       logicAppId: pulumi.Input.fromValue(map['logicAppId'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TriggerRecurrenceSchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

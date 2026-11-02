@@ -189,14 +189,14 @@ import 'api_tag_description_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleTag, err := apimanagement.NewTag(ctx, "example", &apimanagement.TagArgs{
-/// 			ApiManagementId: exampleService.ID().ToIDOutput().ToStringOutput(),
+/// 			ApiManagementId: exampleService.ID(),
 /// 			Name:            pulumi.String("example-Tag"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = apimanagement.NewApiTagDescription(ctx, "example", &apimanagement.ApiTagDescriptionArgs{
-/// 			ApiTagId:                exampleTag.ID().ToIDOutput().ToStringOutput(),
+/// 			ApiTagId:                exampleTag.ID(),
 /// 			Description:             pulumi.String("This is an example description"),
 /// 			ExternalDocsUrl:         "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs",
 /// 			ExternalDocsDescription: "This is an example external docs description",
@@ -209,7 +209,7 @@ import 'api_tag_description_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -217,21 +217,30 @@ import 'api_tag_description_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "My Company"
 ///   publisher_email     = "company@terraform.io"
 ///   sku_name            = "Developer_1"
 /// }
 /// resource "azure_apimanagement_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-api"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   api_management_name = azure_apimanagement_service.example.name
 ///   revision            = "1"
 ///   display_name        = "Example API"
@@ -243,10 +252,16 @@ import 'api_tag_description_state.dart';
 ///   }
 /// }
 /// resource "azure_apimanagement_tag" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_management_id = azure_apimanagement_service.example.id
 ///   name              = "example-Tag"
 /// }
-/// resource "azure_apimanagement_apitagdescription" "example" {
+/// resource "azure_apimanagement_api_tag_description" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_tag_id                = azure_apimanagement_tag.example.id
 ///   description               = "This is an example description"
 ///   external_docs_url         = "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs"
@@ -411,7 +426,7 @@ class ApiTagDescription extends pulumi.CustomResource {
           'azure:apimanagement/apiTagDescription:ApiTagDescription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     apiTagId = registerOutput<String>('apiTagId');
     description = registerOutput<String?>('description');

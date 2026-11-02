@@ -493,7 +493,7 @@ import 'frontdoor_batch_rule_set_state.dart';
 /// 		}
 /// 		exampleFrontdoorEndpoint, err := cdn.NewFrontdoorEndpoint(ctx, "example", &cdn.FrontdoorEndpointArgs{
 /// 			Name:                  pulumi.String("example-endpoint"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
 /// 			Tags: pulumi.StringMap{
 /// 				"endpoint": pulumi.String("contoso.com"),
 /// 			},
@@ -503,7 +503,7 @@ import 'frontdoor_batch_rule_set_state.dart';
 /// 		}
 /// 		exampleFrontdoorOriginGroup, err := cdn.NewFrontdoorOriginGroup(ctx, "example", &cdn.FrontdoorOriginGroupArgs{
 /// 			Name:                   pulumi.String("example-originGroup"),
-/// 			CdnFrontdoorProfileId:  exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
+/// 			CdnFrontdoorProfileId:  exampleFrontdoorProfile.ID(),
 /// 			SessionAffinityEnabled: pulumi.Bool(true),
 /// 			RestoreTrafficTimeToHealedOrNewEndpointInMinutes: pulumi.Int(10),
 /// 			HealthProbe: &cdn.FrontdoorOriginGroupHealthProbeArgs{
@@ -523,7 +523,7 @@ import 'frontdoor_batch_rule_set_state.dart';
 /// 		}
 /// 		exampleFrontdoorOrigin, err := cdn.NewFrontdoorOrigin(ctx, "example", &cdn.FrontdoorOriginArgs{
 /// 			Name:                        pulumi.String("example-origin"),
-/// 			CdnFrontdoorOriginGroupId:   exampleFrontdoorOriginGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			CdnFrontdoorOriginGroupId:   exampleFrontdoorOriginGroup.ID(),
 /// 			Enabled:                     pulumi.Bool(true),
 /// 			CertificateNameCheckEnabled: pulumi.Bool(false),
 /// 			HostName:                    exampleFrontdoorEndpoint.HostName,
@@ -538,7 +538,7 @@ import 'frontdoor_batch_rule_set_state.dart';
 /// 		}
 /// 		exampleFrontdoorBatchRuleSet, err := cdn.NewFrontdoorBatchRuleSet(ctx, "example", &cdn.FrontdoorBatchRuleSetArgs{
 /// 			Name:                  pulumi.String("examplebatchruleset"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
 /// 			Rules: cdn.FrontdoorBatchRuleSetRuleArray{
 /// 				&cdn.FrontdoorBatchRuleSetRuleArgs{
 /// 					Name:             pulumi.String("examplebatchrule"),
@@ -547,7 +547,7 @@ import 'frontdoor_batch_rule_set_state.dart';
 /// 					Actions: &cdn.FrontdoorBatchRuleSetRuleActionsArgs{
 /// 						RouteConfigurationOverride: &cdn.FrontdoorBatchRuleSetRuleActionsRouteConfigurationOverrideArgs{
 /// 							OriginGroup: &cdn.FrontdoorBatchRuleSetRuleActionsRouteConfigurationOverrideOriginGroupArgs{
-/// 								CdnFrontdoorOriginGroupId: exampleFrontdoorOriginGroup.ID().ToIDOutput().ToStringOutput(),
+/// 								CdnFrontdoorOriginGroupId: exampleFrontdoorOriginGroup.ID(),
 /// 								ForwardingProtocol:        pulumi.String("HttpsOnly"),
 /// 							},
 /// 							Caching: &cdn.FrontdoorBatchRuleSetRuleActionsRouteConfigurationOverrideCachingArgs{
@@ -626,13 +626,13 @@ import 'frontdoor_batch_rule_set_state.dart';
 /// 		}
 /// 		_, err = cdn.NewFrontdoorRoute(ctx, "example", &cdn.FrontdoorRouteArgs{
 /// 			Name:                      pulumi.String("example-cdn-frontdoor-route"),
-/// 			CdnFrontdoorEndpointId:    exampleFrontdoorEndpoint.ID().ToIDOutput().ToStringOutput(),
-/// 			CdnFrontdoorOriginGroupId: exampleFrontdoorOriginGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			CdnFrontdoorEndpointId:    exampleFrontdoorEndpoint.ID(),
+/// 			CdnFrontdoorOriginGroupId: exampleFrontdoorOriginGroup.ID(),
 /// 			CdnFrontdoorOriginIds: pulumi.StringArray{
-/// 				exampleFrontdoorOrigin.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleFrontdoorOrigin.ID(),
 /// 			},
 /// 			CdnFrontdoorRuleSetIds: pulumi.StringArray{
-/// 				exampleFrontdoorBatchRuleSet.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleFrontdoorBatchRuleSet.ID(),
 /// 			},
 /// 			PatternsToMatches: pulumi.StringArray{
 /// 				pulumi.String("/*"),
@@ -650,7 +650,7 @@ import 'frontdoor_batch_rule_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -658,25 +658,37 @@ import 'frontdoor_batch_rule_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-cdn-frontdoor"
 ///   location = "West Europe"
 /// }
-/// resource "azure_cdn_frontdoorprofile" "example" {
+/// resource "azure_cdn_frontdoor_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-profile"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Premium_AzureFrontDoor"
 /// }
-/// resource "azure_cdn_frontdoorendpoint" "example" {
+/// resource "azure_cdn_frontdoor_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-endpoint"
-///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoor_profile.example.id
 ///   tags = {
 ///     "endpoint" = "contoso.com"
 ///   }
 /// }
-/// resource "azure_cdn_frontdoororigingroup" "example" {
+/// resource "azure_cdn_frontdoor_origin_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                                      = "example-originGroup"
-///   cdn_frontdoor_profile_id                                  = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id                                  = azure_cdn_frontdoor_profile.example.id
 ///   session_affinity_enabled                                  = true
 ///   restore_traffic_time_to_healed_or_new_endpoint_in_minutes = 10
 ///   health_probe = {
@@ -691,21 +703,27 @@ import 'frontdoor_batch_rule_set_state.dart';
 ///     successful_samples_required        = 3
 ///   }
 /// }
-/// resource "azure_cdn_frontdoororigin" "example" {
+/// resource "azure_cdn_frontdoor_origin" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                           = "example-origin"
-///   cdn_frontdoor_origin_group_id  = azure_cdn_frontdoororigingroup.example.id
+///   cdn_frontdoor_origin_group_id  = azure_cdn_frontdoor_origin_group.example.id
 ///   enabled                        = true
 ///   certificate_name_check_enabled = false
-///   host_name                      = azure_cdn_frontdoorendpoint.example.host_name
+///   host_name                      = azure_cdn_frontdoor_endpoint.example.host_name
 ///   http_port                      = 80
 ///   https_port                     = 443
 ///   origin_host_header             = "contoso.com"
 ///   priority                       = 1
 ///   weight                         = 500
 /// }
-/// resource "azure_cdn_frontdoorbatchruleset" "example" {
+/// resource "azure_cdn_frontdoor_batch_rule_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplebatchruleset"
-///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoor_profile.example.id
 ///   rules {
 ///     name               = "examplebatchrule"
 ///     order              = 1
@@ -713,7 +731,7 @@ import 'frontdoor_batch_rule_set_state.dart';
 ///     actions = {
 ///       route_configuration_override = {
 ///         origin_group = {
-///           cdn_frontdoor_origin_group_id = azure_cdn_frontdoororigingroup.example.id
+///           cdn_frontdoor_origin_group_id = azure_cdn_frontdoor_origin_group.example.id
 ///           forwarding_protocol           = "HttpsOnly"
 ///         }
 ///         caching = {
@@ -727,38 +745,41 @@ import 'frontdoor_batch_rule_set_state.dart';
 ///     }
 ///     conditions = {
 ///       host_names = [{
-///         "operator"   = "Equal"
-///         "values"     = ["www.contoso.com", "images.contoso.com", "video.contoso.com"]
-///         "transforms" = ["Lowercase", "Trim"]
+///         operator   = "Equal"
+///         values     = ["www.contoso.com", "images.contoso.com", "video.contoso.com"]
+///         transforms = ["Lowercase", "Trim"]
 ///       }]
 ///       device_types = [{
-///         "operator" = "Equal"
-///         "values"   = "Mobile"
+///         operator = "Equal"
+///         values   = "Mobile"
 ///       }]
 ///       post_arguments = [{
-///         "name"       = "customerName"
-///         "operator"   = "BeginsWith"
-///         "values"     = ["J", "K"]
-///         "transforms" = ["Uppercase"]
+///         name       = "customerName"
+///         operator   = "BeginsWith"
+///         values     = ["J", "K"]
+///         transforms = ["Uppercase"]
 ///       }]
 ///       request_methods = [{
-///         "operator" = "Equal"
-///         "values"   = ["DELETE"]
+///         operator = "Equal"
+///         values   = ["DELETE"]
 ///       }]
 ///       request_filenames = [{
-///         "operator"   = "Equal"
-///         "values"     = ["media.mp4"]
-///         "transforms" = ["Lowercase", "RemoveNulls", "Trim"]
+///         operator   = "Equal"
+///         values     = ["media.mp4"]
+///         transforms = ["Lowercase", "RemoveNulls", "Trim"]
 ///       }]
 ///     }
 ///   }
 /// }
-/// resource "azure_cdn_frontdoorroute" "example" {
+/// resource "azure_cdn_frontdoor_route" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "example-cdn-frontdoor-route"
-///   cdn_frontdoor_endpoint_id     = azure_cdn_frontdoorendpoint.example.id
-///   cdn_frontdoor_origin_group_id = azure_cdn_frontdoororigingroup.example.id
-///   cdn_frontdoor_origin_ids      = [azure_cdn_frontdoororigin.example.id]
-///   cdn_frontdoor_rule_set_ids    = [azure_cdn_frontdoorbatchruleset.example.id]
+///   cdn_frontdoor_endpoint_id     = azure_cdn_frontdoor_endpoint.example.id
+///   cdn_frontdoor_origin_group_id = azure_cdn_frontdoor_origin_group.example.id
+///   cdn_frontdoor_origin_ids      = [azure_cdn_frontdoor_origin.example.id]
+///   cdn_frontdoor_rule_set_ids    = [azure_cdn_frontdoor_batch_rule_set.example.id]
 ///   patterns_to_matches           = ["/*"]
 ///   supported_protocols           = ["Http", "Https"]
 /// }
@@ -1105,7 +1126,7 @@ class FrontdoorBatchRuleSet extends pulumi.CustomResource {
           'azure:cdn/frontdoorBatchRuleSet:FrontdoorBatchRuleSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     this.name = registerOutput<String>('name');

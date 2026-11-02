@@ -46,7 +46,7 @@ class FunctionAppHybridConnectionArgs {
     return FunctionAppHybridConnectionArgs(
       functionAppId: pulumi.Input.fromValue(map['functionAppId'] as String),
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       relayId: pulumi.Input.fromValue(map['relayId'] as String),
       sendKeyName: (() { final guardedValue = map['sendKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

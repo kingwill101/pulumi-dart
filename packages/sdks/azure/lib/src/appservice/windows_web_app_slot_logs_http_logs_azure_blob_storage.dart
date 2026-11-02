@@ -27,7 +27,7 @@ class WindowsWebAppSlotLogsHttpLogsAzureBlobStorage {
 
   factory WindowsWebAppSlotLogsHttpLogsAzureBlobStorage.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSlotLogsHttpLogsAzureBlobStorage(
-      retentionInDays: (() { final guardedValue = map['retentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retentionInDays: (() { final guardedValue = map['retentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sasUrl: pulumi.Input.fromValue(map['sasUrl'] as String),
     );
   }

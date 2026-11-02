@@ -51,7 +51,7 @@ class GetVolumeQuotaRuleResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      quotaSizeInKib: (() { final guardedValue = map['quotaSizeInKib']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      quotaSizeInKib: (() { final guardedValue = map['quotaSizeInKib']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       quotaTarget: (() { final guardedValue = map['quotaTarget']; if (guardedValue == null) return null; return guardedValue as String; })(),
       quotaType: (() { final guardedValue = map['quotaType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       volumeId: (() { final guardedValue = map['volumeId']; if (guardedValue == null) return null; return guardedValue as String; })(),

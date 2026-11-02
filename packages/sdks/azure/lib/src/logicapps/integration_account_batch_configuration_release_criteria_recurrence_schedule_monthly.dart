@@ -25,7 +25,7 @@ class IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonth
 
   factory IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly(
-      week: pulumi.Input.fromValue((map['week'] as num).toInt()),
+      week: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['week'])),
       weekday: pulumi.Input.fromValue(map['weekday'] as String),
     );
   }

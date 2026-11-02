@@ -36,7 +36,7 @@ class ManagedDevOpsPoolVirtualMachineScaleSetFabricStorage {
   factory ManagedDevOpsPoolVirtualMachineScaleSetFabricStorage.fromMap(Map<String, dynamic> map) {
     return ManagedDevOpsPoolVirtualMachineScaleSetFabricStorage(
       caching: (() { final guardedValue = map['caching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskSizeInGb: pulumi.Input.fromValue((map['diskSizeInGb'] as num).toInt()),
+      diskSizeInGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskSizeInGb'])),
       driveLetter: (() { final guardedValue = map['driveLetter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

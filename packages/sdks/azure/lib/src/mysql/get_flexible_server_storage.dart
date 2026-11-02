@@ -37,8 +37,8 @@ class GetFlexibleServerStorage {
     return GetFlexibleServerStorage(
       autoGrowEnabled: pulumi.Input.fromValue(map['autoGrowEnabled'] as bool),
       ioScalingEnabled: pulumi.Input.fromValue(map['ioScalingEnabled'] as bool),
-      iops: pulumi.Input.fromValue((map['iops'] as num).toInt()),
-      sizeGb: pulumi.Input.fromValue((map['sizeGb'] as num).toInt()),
+      iops: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['iops'])),
+      sizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeGb'])),
     );
   }
 }

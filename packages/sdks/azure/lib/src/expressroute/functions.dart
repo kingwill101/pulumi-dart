@@ -65,7 +65,7 @@ import 'get_circuit_peering_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -73,7 +73,7 @@ import 'get_circuit_peering_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_expressroute_getcircuitpeering" "example" {
+/// data "azure_expressroute_circuit_peering" "example" {
 ///   peering_type               = "example-peering"
 ///   express_route_circuit_name = "example-expressroute"
 ///   resource_group_name        = "example-resources"

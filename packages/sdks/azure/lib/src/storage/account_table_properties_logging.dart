@@ -42,7 +42,7 @@ class AccountTablePropertiesLogging {
     return AccountTablePropertiesLogging(
       delete: pulumi.Input.fromValue(map['delete'] as bool),
       read: pulumi.Input.fromValue(map['read'] as bool),
-      retentionPolicyDays: (() { final guardedValue = map['retentionPolicyDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retentionPolicyDays: (() { final guardedValue = map['retentionPolicyDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       version: pulumi.Input.fromValue(map['version'] as String),
       write: pulumi.Input.fromValue(map['write'] as bool),
     );

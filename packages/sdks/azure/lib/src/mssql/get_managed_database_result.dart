@@ -63,7 +63,7 @@ class GetManagedDatabaseResult {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pointInTimeRestores: (() { final guardedValue = map['pointInTimeRestores']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetManagedDatabasePointInTimeRestore>(guardedValue, (value) => GetManagedDatabasePointInTimeRestore.fromMap((value as Map).cast<String, dynamic>())); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      shortTermRetentionDays: (() { final guardedValue = map['shortTermRetentionDays']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      shortTermRetentionDays: (() { final guardedValue = map['shortTermRetentionDays']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

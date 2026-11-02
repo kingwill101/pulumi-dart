@@ -275,7 +275,7 @@ import 'project_pool_state.dart';
 /// 			Name:              pulumi.String("example-dcnc"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			SubnetId:          exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:          exampleSubnet.ID(),
 /// 			DomainJoinType:    pulumi.String("AzureADJoin"),
 /// 		})
 /// 		if err != nil {
@@ -283,8 +283,8 @@ import 'project_pool_state.dart';
 /// 		}
 /// 		exampleAttachedNetwork, err := devcenter.NewAttachedNetwork(ctx, "example", &devcenter.AttachedNetworkArgs{
 /// 			Name:                pulumi.String("example-dcet"),
-/// 			DevCenterId:         exampleDevCenter.ID().ToIDOutput().ToStringOutput(),
-/// 			NetworkConnectionId: exampleNetworkConnection.ID().ToIDOutput().ToStringOutput(),
+/// 			DevCenterId:         exampleDevCenter.ID(),
+/// 			NetworkConnectionId: exampleNetworkConnection.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -293,7 +293,7 @@ import 'project_pool_state.dart';
 /// 			Name:              pulumi.String("example-dcp"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			DevCenterId:       exampleDevCenter.ID().ToIDOutput().ToStringOutput(),
+/// 			DevCenterId:       exampleDevCenter.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -301,7 +301,7 @@ import 'project_pool_state.dart';
 /// 		exampleDevBoxDefinition, err := devcenter.NewDevBoxDefinition(ctx, "example", &devcenter.DevBoxDefinitionArgs{
 /// 			Name:        pulumi.String("example-dcet"),
 /// 			Location:    example.Location,
-/// 			DevCenterId: exampleDevCenter.ID().ToIDOutput().ToStringOutput(),
+/// 			DevCenterId: exampleDevCenter.ID(),
 /// 			ImageReferenceId: exampleDevCenter.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("%v/galleries/default/images/microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win10-m365-gen2", id), nil
 /// 			}).(pulumi.StringOutput),
@@ -313,7 +313,7 @@ import 'project_pool_state.dart';
 /// 		_, err = devcenter.NewProjectPool(ctx, "example", &devcenter.ProjectPoolArgs{
 /// 			Name:                               pulumi.String("example-dcpl"),
 /// 			Location:                           example.Location,
-/// 			DevCenterProjectId:                 exampleProject.ID().ToIDOutput().ToStringOutput(),
+/// 			DevCenterProjectId:                 exampleProject.ID(),
 /// 			DevBoxDefinitionName:               exampleDevBoxDefinition.Name,
 /// 			LocalAdministratorEnabled:          pulumi.Bool(true),
 /// 			DevCenterAttachedNetworkName:       exampleAttachedNetwork.Name,
@@ -327,7 +327,7 @@ import 'project_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -335,62 +335,89 @@ import 'project_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_devcenter_devcenter" "example" {
+/// resource "azure_devcenter_dev_center" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-dc"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "internal"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_devcenter_networkconnection" "example" {
+/// resource "azure_devcenter_network_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-dcnc"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   subnet_id           = azure_network_subnet.example.id
 ///   domain_join_type    = "AzureADJoin"
 /// }
-/// resource "azure_devcenter_attachednetwork" "example" {
+/// resource "azure_devcenter_attached_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-dcet"
-///   dev_center_id         = azure_devcenter_devcenter.example.id
-///   network_connection_id = azure_devcenter_networkconnection.example.id
+///   dev_center_id         = azure_devcenter_dev_center.example.id
+///   network_connection_id = azure_devcenter_network_connection.example.id
 /// }
 /// resource "azure_devcenter_project" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-dcp"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   dev_center_id       = azure_devcenter_devcenter.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
+///   dev_center_id       = azure_devcenter_dev_center.example.id
 /// }
-/// resource "azure_devcenter_devboxdefinition" "example" {
+/// resource "azure_devcenter_dev_box_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-dcet"
-///   location           = azure_core_resourcegroup.example.location
-///   dev_center_id      = azure_devcenter_devcenter.example.id
-///   image_reference_id ="${azure_devcenter_devcenter.example.id}/galleries/default/images/microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win10-m365-gen2"
+///   location           = azure_core_resource_group.example.location
+///   dev_center_id      = azure_devcenter_dev_center.example.id
+///   image_reference_id ="${azure_devcenter_dev_center.example.id}/galleries/default/images/microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win10-m365-gen2"
 ///   sku_name           = "general_i_8c32gb256ssd_v2"
 /// }
-/// resource "azure_devcenter_projectpool" "example" {
+/// resource "azure_devcenter_project_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                    = "example-dcpl"
-///   location                                = azure_core_resourcegroup.example.location
+///   location                                = azure_core_resource_group.example.location
 ///   dev_center_project_id                   = azure_devcenter_project.example.id
-///   dev_box_definition_name                 = azure_devcenter_devboxdefinition.example.name
+///   dev_box_definition_name                 = azure_devcenter_dev_box_definition.example.name
 ///   local_administrator_enabled             = true
-///   dev_center_attached_network_name        = azure_devcenter_attachednetwork.example.name
+///   dev_center_attached_network_name        = azure_devcenter_attached_network.example.name
 ///   stop_on_disconnect_grace_period_minutes = 60
 /// }
 /// ```
@@ -633,7 +660,7 @@ class ProjectPool extends pulumi.CustomResource {
           'azure:devcenter/projectPool:ProjectPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     devBoxDefinitionName = registerOutput<String>('devBoxDefinitionName');
     devCenterAttachedNetworkName = registerOutput<String>('devCenterAttachedNetworkName');

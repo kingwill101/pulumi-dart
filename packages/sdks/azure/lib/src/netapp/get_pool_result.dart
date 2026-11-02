@@ -64,14 +64,14 @@ class GetPoolResult {
     return GetPoolResult(
       accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       coolAccessEnabled: (() { final guardedValue = map['coolAccessEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      customThroughputMibps: (() { final guardedValue = map['customThroughputMibps']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      customThroughputMibps: (() { final guardedValue = map['customThroughputMibps']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       encryptionType: (() { final guardedValue = map['encryptionType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serviceLevel: (() { final guardedValue = map['serviceLevel']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      sizeInTb: (() { final guardedValue = map['sizeInTb']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      sizeInTb: (() { final guardedValue = map['sizeInTb']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

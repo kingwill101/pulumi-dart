@@ -113,7 +113,7 @@ import 'email_service_domain_sender_username_state.dart';
 /// 		}
 /// 		exampleEmailServiceDomain, err := communication.NewEmailServiceDomain(ctx, "example", &communication.EmailServiceDomainArgs{
 /// 			Name:             pulumi.String("AzureManagedDomain"),
-/// 			EmailServiceId:   exampleEmailService.ID().ToIDOutput().ToStringOutput(),
+/// 			EmailServiceId:   exampleEmailService.ID(),
 /// 			DomainManagement: pulumi.String("AzureManaged"),
 /// 		})
 /// 		if err != nil {
@@ -121,7 +121,7 @@ import 'email_service_domain_sender_username_state.dart';
 /// 		}
 /// 		_, err = communication.NewEmailServiceDomainSenderUsername(ctx, "example", &communication.EmailServiceDomainSenderUsernameArgs{
 /// 			Name:                 pulumi.String("example-su"),
-/// 			EmailServiceDomainId: exampleEmailServiceDomain.ID().ToIDOutput().ToStringOutput(),
+/// 			EmailServiceDomainId: exampleEmailServiceDomain.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -131,7 +131,7 @@ import 'email_service_domain_sender_username_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -139,23 +139,35 @@ import 'email_service_domain_sender_username_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_communication_emailservice" "example" {
+/// resource "azure_communication_email_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-emailcommunicationservice"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   data_location       = "United States"
 /// }
-/// resource "azure_communication_emailservicedomain" "example" {
+/// resource "azure_communication_email_service_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "AzureManagedDomain"
-///   email_service_id  = azure_communication_emailservice.example.id
+///   email_service_id  = azure_communication_email_service.example.id
 ///   domain_management = "AzureManaged"
 /// }
-/// resource "azure_communication_emailservicedomainsenderusername" "example" {
+/// resource "azure_communication_email_service_domain_sender_username" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-su"
-///   email_service_domain_id = azure_communication_emailservicedomain.example.id
+///   email_service_domain_id = azure_communication_email_service_domain.example.id
 /// }
 /// ```
 /// ```java
@@ -274,7 +286,7 @@ class EmailServiceDomainSenderUsername extends pulumi.CustomResource {
           'azure:communication/emailServiceDomainSenderUsername:EmailServiceDomainSenderUsername',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     displayName = registerOutput<String?>('displayName');
     emailServiceDomainId = registerOutput<String>('emailServiceDomainId');

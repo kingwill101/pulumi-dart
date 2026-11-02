@@ -37,8 +37,8 @@ class StandardWebTestValidationRules {
   factory StandardWebTestValidationRules.fromMap(Map<String, dynamic> map) {
     return StandardWebTestValidationRules(
       content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StandardWebTestValidationRulesContent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      expectedStatusCode: (() { final guardedValue = map['expectedStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      sslCertRemainingLifetime: (() { final guardedValue = map['sslCertRemainingLifetime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      expectedStatusCode: (() { final guardedValue = map['expectedStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      sslCertRemainingLifetime: (() { final guardedValue = map['sslCertRemainingLifetime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sslCheckEnabled: (() { final guardedValue = map['sslCheckEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

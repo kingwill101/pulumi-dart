@@ -78,7 +78,7 @@ import 'get_share_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -86,13 +86,13 @@ import 'get_share_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_datashare_getaccount" "example" {
+/// data "azure_datashare_account" "example" {
 ///   name                = "example-account"
 ///   resource_group_name = "example-resource-group"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_datashare_getaccount.example.id
+///   value = data.azure_datashare_account.example.id
 /// }
 /// ```
 /// ```java
@@ -236,7 +236,7 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -244,13 +244,13 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 ///   }
 /// }
 ///
-/// data "azure_datashare_getdatasetblobstorage" "example" {
+/// data "azure_datashare_dataset_blob_storage" "example" {
 ///   name          = "example-dsbsds"
 ///   data_share_id = "example-share-id"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_datashare_getdatasetblobstorage.example.id
+///   value = data.azure_datashare_dataset_blob_storage.example.id
 /// }
 /// ```
 /// ```java
@@ -394,7 +394,7 @@ pulumi.Output<GetDatasetBlobStorageResult> getDatasetBlobStorageOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -402,13 +402,13 @@ pulumi.Output<GetDatasetBlobStorageResult> getDatasetBlobStorageOutput(
 ///   }
 /// }
 ///
-/// data "azure_datashare_getdatasetdatalakegen2" "example" {
+/// data "azure_datashare_dataset_data_lake_gen2" "example" {
 ///   name     = "example-dsdlg2ds"
 ///   share_id = "example-share-id"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_datashare_getdatasetdatalakegen2.example.id
+///   value = data.azure_datashare_dataset_data_lake_gen2.example.id
 /// }
 /// ```
 /// ```java
@@ -552,7 +552,7 @@ pulumi.Output<GetDatasetDataLakeGen2Result> getDatasetDataLakeGen2Output(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -560,13 +560,13 @@ pulumi.Output<GetDatasetDataLakeGen2Result> getDatasetDataLakeGen2Output(
 ///   }
 /// }
 ///
-/// data "azure_datashare_getdatasetkustocluster" "example" {
+/// data "azure_datashare_dataset_kusto_cluster" "example" {
 ///   name     = "example-dskc"
 ///   share_id = "example-share-id"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_datashare_getdatasetkustocluster.example.id
+///   value = data.azure_datashare_dataset_kusto_cluster.example.id
 /// }
 /// ```
 /// ```java
@@ -710,7 +710,7 @@ pulumi.Output<GetDatasetKustoClusterResult> getDatasetKustoClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -718,13 +718,13 @@ pulumi.Output<GetDatasetKustoClusterResult> getDatasetKustoClusterOutput(
 ///   }
 /// }
 ///
-/// data "azure_datashare_getdatasetkustodatabase" "example" {
+/// data "azure_datashare_dataset_kusto_database" "example" {
 ///   name     = "example-dskdds"
 ///   share_id = "example-share-id"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_datashare_getdatasetkustodatabase.example.id
+///   value = data.azure_datashare_dataset_kusto_database.example.id
 /// }
 /// ```
 /// ```java
@@ -887,7 +887,7 @@ pulumi.Output<GetDatasetKustoDatabaseResult> getDatasetKustoDatabaseOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -895,17 +895,17 @@ pulumi.Output<GetDatasetKustoDatabaseResult> getDatasetKustoDatabaseOutput(
 ///   }
 /// }
 ///
-/// data "azure_datashare_getaccount" "example" {
+/// data "azure_datashare_account" "example" {
 ///   name                = "example-account"
 ///   resource_group_name = "example-resource-group"
 /// }
-/// data "azure_datashare_getshare" "exampleGetShare" {
+/// data "azure_datashare_share" "exampleGetShare" {
 ///   name       = "existing"
-///   account_id = data.azure_datashare_getaccount.example.id
+///   account_id = data.azure_datashare_account.example.id
 /// }
 ///
 /// output "id" {
-///   value = data.azure_datashare_getshare.exampleGetShare.id
+///   value = data.azure_datashare_share.exampleGetShare.id
 /// }
 /// ```
 /// ```java

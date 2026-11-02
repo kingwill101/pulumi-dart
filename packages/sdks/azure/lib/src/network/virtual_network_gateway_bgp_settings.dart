@@ -31,8 +31,8 @@ class VirtualNetworkGatewayBgpSettings {
 
   factory VirtualNetworkGatewayBgpSettings.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayBgpSettings(
-      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      peerWeight: (() { final guardedValue = map['peerWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      peerWeight: (() { final guardedValue = map['peerWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       peeringAddresses: (() { final guardedValue = map['peeringAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualNetworkGatewayBgpSettingsPeeringAddress>(guardedValue, (value) => VirtualNetworkGatewayBgpSettingsPeeringAddress.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

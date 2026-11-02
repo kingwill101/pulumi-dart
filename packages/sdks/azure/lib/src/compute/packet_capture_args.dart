@@ -62,9 +62,9 @@ class PacketCaptureArgs {
   factory PacketCaptureArgs.fromMap(Map<String, dynamic> map) {
     return PacketCaptureArgs(
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PacketCaptureFilter>(guardedValue, (value) => PacketCaptureFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      maximumBytesPerPacket: (() { final guardedValue = map['maximumBytesPerPacket']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maximumBytesPerSession: (() { final guardedValue = map['maximumBytesPerSession']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maximumCaptureDurationInSeconds: (() { final guardedValue = map['maximumCaptureDurationInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximumBytesPerPacket: (() { final guardedValue = map['maximumBytesPerPacket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maximumBytesPerSession: (() { final guardedValue = map['maximumBytesPerSession']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maximumCaptureDurationInSeconds: (() { final guardedValue = map['maximumCaptureDurationInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkWatcherId: pulumi.Input.fromValue(map['networkWatcherId'] as String),
       storageLocation: pulumi.Input.fromValue(PacketCaptureStorageLocation.fromMap((map['storageLocation']! as Map).cast<String, dynamic>())),

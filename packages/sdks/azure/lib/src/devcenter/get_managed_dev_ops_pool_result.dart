@@ -89,7 +89,7 @@ class GetManagedDevOpsPoolResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetManagedDevOpsPoolIdentity>(guardedValue, (value) => GetManagedDevOpsPoolIdentity.fromMap((value as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maximumConcurrency: (() { final guardedValue = map['maximumConcurrency']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maximumConcurrency: (() { final guardedValue = map['maximumConcurrency']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       statefulAgents: (() { final guardedValue = map['statefulAgents']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetManagedDevOpsPoolStatefulAgent>(guardedValue, (value) => GetManagedDevOpsPoolStatefulAgent.fromMap((value as Map).cast<String, dynamic>())); })(),

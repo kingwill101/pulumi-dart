@@ -43,8 +43,8 @@ class PolicyVMBackup {
   factory PolicyVMBackup.fromMap(Map<String, dynamic> map) {
     return PolicyVMBackup(
       frequency: pulumi.Input.fromValue(map['frequency'] as String),
-      hourDuration: (() { final guardedValue = map['hourDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      hourInterval: (() { final guardedValue = map['hourInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      hourDuration: (() { final guardedValue = map['hourDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      hourInterval: (() { final guardedValue = map['hourInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       time: pulumi.Input.fromValue(map['time'] as String),
       weekdays: (() { final guardedValue = map['weekdays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
