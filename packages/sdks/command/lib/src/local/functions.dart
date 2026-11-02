@@ -18,3 +18,14 @@ Future<RunResult> run(
   );
   return RunResult.fromMap(result);
 }
+
+pulumi.Output<RunResult> runOutput(
+  RunArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'command:local:run',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(RunResult.fromMap);
+}

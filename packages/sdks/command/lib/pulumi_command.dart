@@ -4,12 +4,12 @@ import 'package:pulumi_command/local.dart' as module_local;
 import 'package:pulumi_command/providers.dart' as module_providers;
 import 'package:pulumi_command/remote.dart' as module_remote;
 
-final local = const _LocalModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
-final remote = const _RemoteModuleNamespace();
+final local = _LocalModuleNamespace();
+final providers = _ProvidersModuleNamespace();
+final remote = _RemoteModuleNamespace();
 
 class _LocalModuleNamespace {
-  const _LocalModuleNamespace();
+  _LocalModuleNamespace();
   final Command = module_local.Command.new;
   final CommandArgs = module_local.CommandArgs.new;
   final Logging = module_local.Logging.values;
@@ -17,15 +17,16 @@ class _LocalModuleNamespace {
   final RunResult = module_local.RunResult.new;
   final RunResultArgs = module_local.RunResult.new;
   final run = module_local.run;
+  final runOutput = module_local.runOutput;
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Command = module_providers.ProviderProvider.new;
 }
 
 class _RemoteModuleNamespace {
-  const _RemoteModuleNamespace();
+  _RemoteModuleNamespace();
   final Command = module_remote.Command.new;
   final CommandArgs = module_remote.CommandArgs.new;
   final Connection = module_remote.Connection.new;

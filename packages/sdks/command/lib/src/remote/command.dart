@@ -420,7 +420,7 @@ class Command extends pulumi.CustomResource {
   ///
   /// Use `local.runOutput` if you need to run a command on every execution of your program.
   late final pulumi.Output<String?> create;
-  /// The command to run on resource delettion.
+  /// The command to run on resource deletion.
   ///
   /// The environment variables `PULUMI_COMMAND_STDOUT` and `PULUMI_COMMAND_STDERR` are set to the stdout and stderr properties of the Command resource from previous create or update steps.
   late final pulumi.Output<String?> delete;
@@ -446,7 +446,7 @@ class Command extends pulumi.CustomResource {
   /// If the `update` command was provided the resource will be updated, otherwise it will be replaced using the `create` command.
   ///
   /// Please see the resource documentation for examples.
-  late final pulumi.Output<List<Map<String, dynamic>>?> triggers;
+  late final pulumi.Output<List<dynamic>?> triggers;
   /// The command to run when the resource is updated.
   ///
   /// If empty, the create command will be executed instead.
@@ -470,18 +470,42 @@ class Command extends pulumi.CustomResource {
           'command:remote:Command',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['triggers[*]']).merge(options),
+          additionalSecretOutputs: const ['connection'],
         ) {
     addPreviousOutputInEnv = registerOutput<bool?>('addPreviousOutputInEnv');
-    connection = registerOutput<Connection>('connection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Connection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connection = registerOutput<Connection>('connection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Connection.fromMap((guardedValue as Map).cast<String, dynamic>()); }, isSecret: true);
     create = registerOutput<String?>('create');
     delete = registerOutput<String?>('delete');
-    environment = registerOutput<Map<String, String>?>('environment');
+    environment = registerOutput<Map<String, String>?>('environment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     logging = registerOutput<Logging?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Logging.fromValue(guardedValue as String); });
     stderr = registerOutput<String>('stderr');
     stdin = registerOutput<String?>('stdin');
     stdout = registerOutput<String>('stdout');
-    triggers = registerOutput<List<Map<String, dynamic>>?>('triggers');
+    triggers = registerOutput<List<dynamic>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    update = registerOutput<String?>('update');
+  }
+
+  /// Creates a typed reference to an existing [Command] resource.
+  Command.reference(String urn)
+    : super(
+        'command:remote:Command',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['connection'],
+        isResourceReference: true,
+      ) {
+    addPreviousOutputInEnv = registerOutput<bool?>('addPreviousOutputInEnv');
+    connection = registerOutput<Connection>('connection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Connection.fromMap((guardedValue as Map).cast<String, dynamic>()); }, isSecret: true);
+    create = registerOutput<String?>('create');
+    delete = registerOutput<String?>('delete');
+    environment = registerOutput<Map<String, String>?>('environment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    logging = registerOutput<Logging?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Logging.fromValue(guardedValue as String); });
+    stderr = registerOutput<String>('stderr');
+    stdin = registerOutput<String?>('stdin');
+    stdout = registerOutput<String>('stdout');
+    triggers = registerOutput<List<dynamic>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     update = registerOutput<String?>('update');
   }
 }
