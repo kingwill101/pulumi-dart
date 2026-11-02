@@ -14,7 +14,7 @@ class NodeGroupSecurityGroupArgs {
   /// The EKS cluster associated with the worker node group
   final pulumi.Input<pulumi_aws_eks.Cluster> eksCluster;
   /// Key-value mapping of tags to apply to this security group.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The VPC in which to create the worker node group.
   final pulumi.Input<String> vpcId;
 
