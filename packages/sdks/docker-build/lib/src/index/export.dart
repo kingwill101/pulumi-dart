@@ -11,24 +11,24 @@ import 'export_tar.dart';
 class Export {
   /// A no-op export. Helpful for silencing the 'no exports' warning if you
   /// just want to populate caches.
-  final pulumi.Input<Map<String, dynamic>>? cacheonly;
+  final pulumi.Input<Map<String, dynamic>?>? cacheonly;
   /// When `true` this entry will be excluded. Defaults to `false`.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Export as a Docker image layout.
-  final pulumi.Input<ExportDocker>? docker;
+  final pulumi.Input<ExportDocker?>? docker;
   /// Outputs the build result into a container image format.
-  final pulumi.Input<ExportImage>? image;
+  final pulumi.Input<ExportImage?>? image;
   /// Export to a local directory as files and directories.
-  final pulumi.Input<ExportLocal>? local;
+  final pulumi.Input<ExportLocal?>? local;
   /// Identical to the Docker exporter but uses OCI media types by default.
-  final pulumi.Input<ExportOCI>? oci;
+  final pulumi.Input<ExportOCI?>? oci;
   /// A raw string as you would provide it to the Docker CLI (e.g.,
   /// `type=docker`)
-  final pulumi.Input<String>? raw;
+  final pulumi.Input<String?>? raw;
   /// Identical to the Image exporter, but pushes by default.
-  final pulumi.Input<ExportRegistry>? registry;
+  final pulumi.Input<ExportRegistry?>? registry;
   /// Export to a local directory as a tarball.
-  final pulumi.Input<ExportTar>? tar;
+  final pulumi.Input<ExportTar?>? tar;
 
   /// Creates a new [Export].
   /// [cacheonly] A no-op export. Helpful for silencing the 'no exports' warning if you

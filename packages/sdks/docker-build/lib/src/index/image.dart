@@ -1,10 +1,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'build_context.dart';
 import 'builder_config.dart';
+import 'cache_from.dart';
+import 'cache_to.dart';
 import 'dockerfile.dart';
+import 'export.dart';
 import 'image_args.dart';
 import 'network_mode.dart';
 import 'platform.dart';
+import 'registry.dart';
+import 'ssh.dart';
 
 /// A Docker image built using buildx -- Docker's interface to the improved
 /// BuildKit backend.
@@ -2411,17 +2416,17 @@ class Image extends pulumi.CustomResource {
   ///
   /// Defaults to `true` as a safeguard against broken images merging as part
   /// of CI pipelines.
-  late final pulumi.Output<bool?> buildOnPreview;
+  late final pulumi.Output<bool> buildOnPreview;
   /// Builder configuration.
   late final pulumi.Output<BuilderConfig?> builder;
   /// Cache export configuration.
   ///
   /// Equivalent to Docker's `--cache-from` flag.
-  late final pulumi.Output<List<Map<String, dynamic>>?> cacheFrom;
+  late final pulumi.Output<List<CacheFrom>?> cacheFrom;
   /// Cache import configuration.
   ///
   /// Equivalent to Docker's `--cache-to` flag.
-  late final pulumi.Output<List<Map<String, dynamic>>?> cacheTo;
+  late final pulumi.Output<List<CacheTo>?> cacheTo;
   /// Build context settings. Defaults to the current directory.
   ///
   /// Equivalent to Docker's `PATH | URL | -` positional argument.
@@ -2472,7 +2477,7 @@ class Image extends pulumi.CustomResource {
   /// 0.13 or later.
   ///
   /// Equivalent to Docker's `--output` flag.
-  late final pulumi.Output<List<Map<String, dynamic>>?> exports;
+  late final pulumi.Output<List<Export>?> exports;
   /// A list of secret names to ignore when calculating diffs.
   ///
   /// These secrets will not be considered when calculating diffs, even if they
@@ -2495,7 +2500,7 @@ class Image extends pulumi.CustomResource {
   /// For custom networks, configure your builder with `--driver-opt network=...`.
   ///
   /// Equivalent to Docker's `--network` flag.
-  late final pulumi.Output<NetworkMode?> network;
+  late final pulumi.Output<NetworkMode> network;
   /// Do not import cache manifests when building the image.
   ///
   /// Equivalent to Docker's `--no-cache` flag.
@@ -2536,7 +2541,7 @@ class Image extends pulumi.CustomResource {
   /// credentials on the host.
   ///
   /// Similar to `docker login`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> registries;
+  late final pulumi.Output<List<Registry>?> registries;
   /// A mapping of secret names to their corresponding values.
   ///
   /// Unlike the Docker CLI, these can be passed by value and do not need to
@@ -2550,7 +2555,7 @@ class Image extends pulumi.CustomResource {
   /// SSH agent socket or keys to expose to the build.
   ///
   /// Equivalent to Docker's `--ssh` flag.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ssh;
+  late final pulumi.Output<List<SSH>?> ssh;
   /// Name and optionally a tag (format: `name:tag`).
   ///
   /// If exporting to a registry, the name should include the fully qualified
@@ -2578,32 +2583,71 @@ class Image extends pulumi.CustomResource {
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
+          additionalSecretOutputs: const ['secrets'],
         ) {
-    addHosts = registerOutput<List<String>?>('addHosts');
-    buildArgs = registerOutput<Map<String, String>?>('buildArgs');
-    buildOnPreview = registerOutput<bool?>('buildOnPreview');
+    addHosts = registerOutput<List<String>?>('addHosts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    buildArgs = registerOutput<Map<String, String>?>('buildArgs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    buildOnPreview = registerOutput<bool>('buildOnPreview');
     builder = registerOutput<BuilderConfig?>('builder', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuilderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    cacheFrom = registerOutput<List<Map<String, dynamic>>?>('cacheFrom');
-    cacheTo = registerOutput<List<Map<String, dynamic>>?>('cacheTo');
+    cacheFrom = registerOutput<List<CacheFrom>?>('cacheFrom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CacheFrom>(guardedValue, (value) => CacheFrom.fromMap((value as Map).cast<String, dynamic>())); });
+    cacheTo = registerOutput<List<CacheTo>?>('cacheTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CacheTo>(guardedValue, (value) => CacheTo.fromMap((value as Map).cast<String, dynamic>())); });
     context = registerOutput<BuildContext?>('context', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildContext.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     contextHash = registerOutput<String>('contextHash');
     digest = registerOutput<String>('digest');
     dockerfile = registerOutput<Dockerfile?>('dockerfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Dockerfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     exec = registerOutput<bool?>('exec');
-    exports = registerOutput<List<Map<String, dynamic>>?>('exports');
-    ignoreSecretsInDiffCalculation = registerOutput<List<String>?>('ignoreSecretsInDiffCalculation');
-    labels = registerOutput<Map<String, String>?>('labels');
+    exports = registerOutput<List<Export>?>('exports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Export>(guardedValue, (value) => Export.fromMap((value as Map).cast<String, dynamic>())); });
+    ignoreSecretsInDiffCalculation = registerOutput<List<String>?>('ignoreSecretsInDiffCalculation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     load = registerOutput<bool?>('load');
-    network = registerOutput<NetworkMode?>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkMode.fromValue(guardedValue as String); });
+    network = registerOutput<NetworkMode>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkMode.fromValue(guardedValue as String); });
     noCache = registerOutput<bool?>('noCache');
     platforms = registerOutput<List<Platform>?>('platforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Platform>(guardedValue, (value) => Platform.fromValue(value as String)); });
     pull = registerOutput<bool?>('pull');
     push = registerOutput<bool>('push');
     ref = registerOutput<String>('ref');
-    registries = registerOutput<List<Map<String, dynamic>>?>('registries');
-    secrets = registerOutput<Map<String, String>?>('secrets');
-    ssh = registerOutput<List<Map<String, dynamic>>?>('ssh');
-    tags = registerOutput<List<String>?>('tags');
+    registries = registerOutput<List<Registry>?>('registries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Registry>(guardedValue, (value) => Registry.fromMap((value as Map).cast<String, dynamic>())); });
+    secrets = registerOutput<Map<String, String>?>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    ssh = registerOutput<List<SSH>?>('ssh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SSH>(guardedValue, (value) => SSH.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    target = registerOutput<String?>('target');
+  }
+
+  /// Creates a typed reference to an existing [Image] resource.
+  Image.reference(String urn)
+    : super(
+        'docker-build:index:Image',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['secrets'],
+        isResourceReference: true,
+      ) {
+    addHosts = registerOutput<List<String>?>('addHosts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    buildArgs = registerOutput<Map<String, String>?>('buildArgs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    buildOnPreview = registerOutput<bool>('buildOnPreview');
+    builder = registerOutput<BuilderConfig?>('builder', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuilderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cacheFrom = registerOutput<List<CacheFrom>?>('cacheFrom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CacheFrom>(guardedValue, (value) => CacheFrom.fromMap((value as Map).cast<String, dynamic>())); });
+    cacheTo = registerOutput<List<CacheTo>?>('cacheTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CacheTo>(guardedValue, (value) => CacheTo.fromMap((value as Map).cast<String, dynamic>())); });
+    context = registerOutput<BuildContext?>('context', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildContext.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contextHash = registerOutput<String>('contextHash');
+    digest = registerOutput<String>('digest');
+    dockerfile = registerOutput<Dockerfile?>('dockerfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Dockerfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    exec = registerOutput<bool?>('exec');
+    exports = registerOutput<List<Export>?>('exports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Export>(guardedValue, (value) => Export.fromMap((value as Map).cast<String, dynamic>())); });
+    ignoreSecretsInDiffCalculation = registerOutput<List<String>?>('ignoreSecretsInDiffCalculation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    load = registerOutput<bool?>('load');
+    network = registerOutput<NetworkMode>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkMode.fromValue(guardedValue as String); });
+    noCache = registerOutput<bool?>('noCache');
+    platforms = registerOutput<List<Platform>?>('platforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Platform>(guardedValue, (value) => Platform.fromValue(value as String)); });
+    pull = registerOutput<bool?>('pull');
+    push = registerOutput<bool>('push');
+    ref = registerOutput<String>('ref');
+    registries = registerOutput<List<Registry>?>('registries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Registry>(guardedValue, (value) => Registry.fromMap((value as Map).cast<String, dynamic>())); });
+    secrets = registerOutput<Map<String, String>?>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    ssh = registerOutput<List<SSH>?>('ssh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SSH>(guardedValue, (value) => SSH.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     target = registerOutput<String?>('target');
   }
 }

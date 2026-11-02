@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CacheFromAzureBlob {
   /// Base URL of the storage account.
-  final pulumi.Input<String>? accountUrl;
+  final pulumi.Input<String?>? accountUrl;
   /// The name of the cache image.
   final pulumi.Input<String> name;
   /// Blob storage account key.
-  final pulumi.Input<String>? secretAccessKey;
+  final pulumi.Input<String?>? secretAccessKey;
 
   /// Creates a new [CacheFromAzureBlob].
   /// [accountUrl] Base URL of the storage account.

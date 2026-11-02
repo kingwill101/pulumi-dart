@@ -16,7 +16,7 @@ class SSH {
   /// Note that your keys are **not** automatically added when using an
   /// agent. Run `ssh-add -l` locally to confirm which public keys are
   /// visible to the agent; these will be exposed to your build.
-  final pulumi.Input<List<String>>? paths;
+  final pulumi.Input<List<String>?>? paths;
 
   /// Creates a new [SSH].
   /// [id] Useful for distinguishing different servers that are part of the same

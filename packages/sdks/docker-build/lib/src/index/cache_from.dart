@@ -9,24 +9,24 @@ import 'cache_from_s3.dart';
 
 class CacheFrom {
   /// Upload build caches to Azure's blob storage service.
-  final pulumi.Input<CacheFromAzureBlob>? azblob;
+  final pulumi.Input<CacheFromAzureBlob?>? azblob;
   /// When `true` this entry will be excluded. Defaults to `false`.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Recommended for use with GitHub Actions workflows.
   ///
   /// An action like `crazy-max/ghaction-github-runtime` is recommended to
   /// expose appropriate credentials to your GitHub workflow.
-  final pulumi.Input<CacheFromGitHubActions>? gha;
+  final pulumi.Input<CacheFromGitHubActions?>? gha;
   /// A simple backend which caches images on your local filesystem.
-  final pulumi.Input<CacheFromLocal>? local;
+  final pulumi.Input<CacheFromLocal?>? local;
   /// A raw string as you would provide it to the Docker CLI (e.g.,
   /// `type=inline`).
-  final pulumi.Input<String>? raw;
+  final pulumi.Input<String?>? raw;
   /// Upload build caches to remote registries.
-  final pulumi.Input<CacheFromRegistry>? registry;
+  final pulumi.Input<CacheFromRegistry?>? registry;
   /// Upload build caches to AWS S3 or an S3-compatible services such as
   /// MinIO.
-  final pulumi.Input<CacheFromS3>? s3;
+  final pulumi.Input<CacheFromS3?>? s3;
 
   /// Creates a new [CacheFrom].
   /// [azblob] Upload build caches to Azure's blob storage service.

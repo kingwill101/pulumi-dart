@@ -6,9 +6,9 @@ class Registry {
   /// The registry's address (e.g. "docker.io").
   final pulumi.Input<String> address;
   /// Password or token for the registry.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Username for the registry.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [Registry].
   /// [address] The registry's address (e.g. "docker.io").

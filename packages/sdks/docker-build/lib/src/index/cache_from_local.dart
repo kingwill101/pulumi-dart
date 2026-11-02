@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CacheFromLocal {
   /// Digest of manifest to import.
-  final pulumi.Input<String>? digest;
+  final pulumi.Input<String?>? digest;
   /// Path of the local directory where cache gets imported from.
   final pulumi.Input<String> src;
 

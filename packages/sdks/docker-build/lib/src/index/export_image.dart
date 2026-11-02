@@ -5,27 +5,27 @@ import 'compression_type.dart';
 
 class ExportImage {
   /// Attach an arbitrary key/value annotation to the image.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// The compression type to use.
-  final pulumi.Input<CompressionType>? compression;
+  final pulumi.Input<CompressionType?>? compression;
   /// Compression level from 0 to 22.
-  final pulumi.Input<int>? compressionLevel;
+  final pulumi.Input<int?>? compressionLevel;
   /// Name image with `prefix@&lt;digest&gt;`, used for anonymous images.
-  final pulumi.Input<String>? danglingNamePrefix;
+  final pulumi.Input<String?>? danglingNamePrefix;
   /// Forcefully apply compression.
-  final pulumi.Input<bool>? forceCompression;
+  final pulumi.Input<bool?>? forceCompression;
   /// Allow pushing to an insecure registry.
-  final pulumi.Input<bool>? insecure;
+  final pulumi.Input<bool?>? insecure;
   /// Add additional canonical name (`name@&lt;digest&gt;`).
-  final pulumi.Input<bool>? nameCanonical;
+  final pulumi.Input<bool?>? nameCanonical;
   /// Specify images names to export. This is overridden if tags are already specified.
-  final pulumi.Input<List<String>>? names;
+  final pulumi.Input<List<String>?>? names;
   /// Use OCI media types in exporter manifests.
-  final pulumi.Input<bool>? ociMediaTypes;
+  final pulumi.Input<bool?>? ociMediaTypes;
   /// Push after creating the image. Defaults to `false`.
-  final pulumi.Input<bool>? push;
+  final pulumi.Input<bool?>? push;
   /// Push image without name.
-  final pulumi.Input<bool>? pushByDigest;
+  final pulumi.Input<bool?>? pushByDigest;
   /// Store resulting images to the worker's image store and ensure all of
   /// its blobs are in the content store.
   ///
@@ -33,10 +33,10 @@ class ExportImage {
   ///
   /// Ignored if the worker doesn't have image store (when using OCI workers,
   /// for example).
-  final pulumi.Input<bool>? store;
+  final pulumi.Input<bool?>? store;
   /// Unpack image after creation (for use with containerd). Defaults to
   /// `false`.
-  final pulumi.Input<bool>? unpack;
+  final pulumi.Input<bool?>? unpack;
 
   /// Creates a new [ExportImage].
   /// [annotations] Attach an arbitrary key/value annotation to the image.
@@ -52,21 +52,21 @@ class ExportImage {
   /// [pushByDigest] Push image without name.
   /// [store] Store resulting images to the worker's image store and ensure all of
   /// [unpack] Unpack image after creation (for use with containerd). Defaults to
-  const ExportImage({
+  ExportImage({
     this.annotations,
-    this.compression,
-    this.compressionLevel,
+    pulumi.Input<CompressionType?>? compression,
+    pulumi.Input<int?>? compressionLevel,
     this.danglingNamePrefix,
-    this.forceCompression,
+    pulumi.Input<bool?>? forceCompression,
     this.insecure,
     this.nameCanonical,
     this.names,
-    this.ociMediaTypes,
+    pulumi.Input<bool?>? ociMediaTypes,
     this.push,
     this.pushByDigest,
-    this.store,
+    pulumi.Input<bool?>? store,
     this.unpack,
-  });
+  }) : compression = compression ?? pulumi.Input.fromValue(CompressionType.fromValue('gzip')), compressionLevel = compressionLevel ?? pulumi.Input.fromValue(0), forceCompression = forceCompression ?? pulumi.Input.fromValue(false), ociMediaTypes = ociMediaTypes ?? pulumi.Input.fromValue(false), store = store ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,7 +90,7 @@ class ExportImage {
     return ExportImage(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       compression: (() { final guardedValue = map['compression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CompressionType.fromValue(guardedValue as String)); })(),
-      compressionLevel: (() { final guardedValue = map['compressionLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      compressionLevel: (() { final guardedValue = map['compressionLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       danglingNamePrefix: (() { final guardedValue = map['danglingNamePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       forceCompression: (() { final guardedValue = map['forceCompression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       insecure: (() { final guardedValue = map['insecure']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

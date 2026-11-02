@@ -5,29 +5,29 @@ import 'cache_mode.dart';
 
 class CacheToS3 {
   /// Defaults to `$AWS_ACCESS_KEY_ID`.
-  final pulumi.Input<String>? accessKeyId;
+  final pulumi.Input<String?>? accessKeyId;
   /// Prefix to prepend to blob filenames.
-  final pulumi.Input<String>? blobsPrefix;
+  final pulumi.Input<String?>? blobsPrefix;
   /// Name of the S3 bucket.
   final pulumi.Input<String> bucket;
   /// Endpoint of the S3 bucket.
-  final pulumi.Input<String>? endpointUrl;
+  final pulumi.Input<String?>? endpointUrl;
   /// Ignore errors caused by failed cache exports.
-  final pulumi.Input<bool>? ignoreError;
+  final pulumi.Input<bool?>? ignoreError;
   /// Prefix to prepend on manifest filenames.
-  final pulumi.Input<String>? manifestsPrefix;
+  final pulumi.Input<String?>? manifestsPrefix;
   /// The cache mode to use. Defaults to `min`.
-  final pulumi.Input<CacheMode>? mode;
+  final pulumi.Input<CacheMode?>? mode;
   /// Name of the cache image.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The geographic location of the bucket. Defaults to `$AWS_REGION`.
   final pulumi.Input<String> region;
   /// Defaults to `$AWS_SECRET_ACCESS_KEY`.
-  final pulumi.Input<String>? secretAccessKey;
+  final pulumi.Input<String?>? secretAccessKey;
   /// Defaults to `$AWS_SESSION_TOKEN`.
-  final pulumi.Input<String>? sessionToken;
+  final pulumi.Input<String?>? sessionToken;
   /// Uses `bucket` in the URL instead of hostname when `true`.
-  final pulumi.Input<bool>? usePathStyle;
+  final pulumi.Input<bool?>? usePathStyle;
 
   /// Creates a new [CacheToS3].
   /// [accessKeyId] Defaults to `$AWS_ACCESS_KEY_ID`.
@@ -42,20 +42,20 @@ class CacheToS3 {
   /// [secretAccessKey] Defaults to `$AWS_SECRET_ACCESS_KEY`.
   /// [sessionToken] Defaults to `$AWS_SESSION_TOKEN`.
   /// [usePathStyle] Uses `bucket` in the URL instead of hostname when `true`.
-  const CacheToS3({
-    this.accessKeyId,
+  CacheToS3({
+    pulumi.Input<String?>? accessKeyId,
     this.blobsPrefix,
     required this.bucket,
     this.endpointUrl,
-    this.ignoreError,
+    pulumi.Input<bool?>? ignoreError,
     this.manifestsPrefix,
-    this.mode,
+    pulumi.Input<CacheMode?>? mode,
     this.name,
-    required this.region,
-    this.secretAccessKey,
-    this.sessionToken,
+    pulumi.Input<String>? region,
+    pulumi.Input<String?>? secretAccessKey,
+    pulumi.Input<String?>? sessionToken,
     this.usePathStyle,
-  });
+  }) : accessKeyId = accessKeyId ?? pulumi.Input.fromValue(''), ignoreError = ignoreError ?? pulumi.Input.fromValue(false), mode = mode ?? pulumi.Input.fromValue(CacheMode.fromValue('min')), region = region ?? pulumi.Input.fromValue(''), secretAccessKey = secretAccessKey ?? pulumi.Input.fromValue(''), sessionToken = sessionToken ?? pulumi.Input.fromValue('');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

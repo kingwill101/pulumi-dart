@@ -11,13 +11,13 @@ class CacheFromGitHubActions {
   ///
   /// This should be set if building and caching multiple images in one
   /// workflow, otherwise caches will overwrite each other.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [CacheFromGitHubActions].
   /// [scope] The scope to use for cache keys. Defaults to `buildkit`.
-  const CacheFromGitHubActions({
-    this.scope,
-  });
+  CacheFromGitHubActions({
+    pulumi.Input<String?>? scope,
+  }) : scope = scope ?? pulumi.Input.fromValue('buildkit');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

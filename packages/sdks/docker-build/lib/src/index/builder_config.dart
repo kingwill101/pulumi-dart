@@ -9,7 +9,7 @@ class BuilderConfig {
   /// supported. The legacy `docker` driver is not supported.
   ///
   /// Equivalent to Docker's `--builder` flag.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [BuilderConfig].
   /// [name] Name of an existing buildx builder to use.

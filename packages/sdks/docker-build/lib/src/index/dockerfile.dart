@@ -8,7 +8,7 @@ class Dockerfile {
   /// Conflicts with `location`.
   ///
   /// Equivalent to invoking Docker with `-f -`.
-  final pulumi.Input<String>? inline;
+  final pulumi.Input<String?>? inline;
   /// Location of the Dockerfile to use.
   ///
   /// Can be a relative or absolute path to a local file, or a remote URL.
@@ -16,7 +16,7 @@ class Dockerfile {
   /// Defaults to `${context.location}/Dockerfile` if context is on-disk.
   ///
   /// Conflicts with `inline`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
 
   /// Creates a new [Dockerfile].
   /// [inline] Raw Dockerfile contents.

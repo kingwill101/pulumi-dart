@@ -1,9 +1,12 @@
-enum NetworkMode {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum NetworkMode implements pulumi.PulumiEnum<String> {
   valueDefault("default"),
   valueHost("host"),
   valueNone("none");
 
   const NetworkMode(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkMode fromValue(String value) {

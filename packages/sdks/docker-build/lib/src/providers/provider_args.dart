@@ -9,16 +9,16 @@ import '../index/registry.dart';
 /// {@macro pulumi_providers_provider_args_doc}
 class ProviderArgs {
   /// The build daemon's address.
-  final pulumi.Input<String>? host;
-  final pulumi.Input<List<Registry>>? registries;
+  final pulumi.Input<String?>? host;
+  final pulumi.Input<List<Registry>?>? registries;
 
   /// Creates a new [ProviderArgs].
   /// [host] The build daemon's address.
   /// [registries] Optional.
-  const ProviderArgs({
-    this.host,
+  ProviderArgs({
+    pulumi.Input<String?>? host,
     this.registries,
-  });
+  }) : host = host ?? pulumi.Input.fromValue('');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

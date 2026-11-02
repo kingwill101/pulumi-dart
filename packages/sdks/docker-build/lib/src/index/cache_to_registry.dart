@@ -6,13 +6,13 @@ import 'compression_type.dart';
 
 class CacheToRegistry {
   /// The compression type to use.
-  final pulumi.Input<CompressionType>? compression;
+  final pulumi.Input<CompressionType?>? compression;
   /// Compression level from 0 to 22.
-  final pulumi.Input<int>? compressionLevel;
+  final pulumi.Input<int?>? compressionLevel;
   /// Forcefully apply compression.
-  final pulumi.Input<bool>? forceCompression;
+  final pulumi.Input<bool?>? forceCompression;
   /// Ignore errors caused by failed cache exports.
-  final pulumi.Input<bool>? ignoreError;
+  final pulumi.Input<bool?>? ignoreError;
   /// Export cache manifest as an OCI-compatible image manifest instead of a
   /// manifest list. Requires `ociMediaTypes` to also be `true`.
   ///
@@ -20,12 +20,12 @@ class CacheToRegistry {
   /// `false`.
   ///
   /// Defaults to `false` to match Docker's default behavior.
-  final pulumi.Input<bool>? imageManifest;
+  final pulumi.Input<bool?>? imageManifest;
   /// The cache mode to use. Defaults to `min`.
-  final pulumi.Input<CacheMode>? mode;
+  final pulumi.Input<CacheMode?>? mode;
   /// Whether to use OCI media types in exported manifests. Defaults to
   /// `true`.
-  final pulumi.Input<bool>? ociMediaTypes;
+  final pulumi.Input<bool?>? ociMediaTypes;
   /// Fully qualified name of the cache image to import.
   final pulumi.Input<String> ref;
 
@@ -38,16 +38,16 @@ class CacheToRegistry {
   /// [mode] The cache mode to use. Defaults to `min`.
   /// [ociMediaTypes] Whether to use OCI media types in exported manifests. Defaults to
   /// [ref] Fully qualified name of the cache image to import.
-  const CacheToRegistry({
-    this.compression,
-    this.compressionLevel,
-    this.forceCompression,
-    this.ignoreError,
-    this.imageManifest,
-    this.mode,
-    this.ociMediaTypes,
+  CacheToRegistry({
+    pulumi.Input<CompressionType?>? compression,
+    pulumi.Input<int?>? compressionLevel,
+    pulumi.Input<bool?>? forceCompression,
+    pulumi.Input<bool?>? ignoreError,
+    pulumi.Input<bool?>? imageManifest,
+    pulumi.Input<CacheMode?>? mode,
+    pulumi.Input<bool?>? ociMediaTypes,
     required this.ref,
-  });
+  }) : compression = compression ?? pulumi.Input.fromValue(CompressionType.fromValue('gzip')), compressionLevel = compressionLevel ?? pulumi.Input.fromValue(0), forceCompression = forceCompression ?? pulumi.Input.fromValue(false), ignoreError = ignoreError ?? pulumi.Input.fromValue(false), imageManifest = imageManifest ?? pulumi.Input.fromValue(false), mode = mode ?? pulumi.Input.fromValue(CacheMode.fromValue('min')), ociMediaTypes = ociMediaTypes ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,7 +65,7 @@ class CacheToRegistry {
   factory CacheToRegistry.fromMap(Map<String, dynamic> map) {
     return CacheToRegistry(
       compression: (() { final guardedValue = map['compression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CompressionType.fromValue(guardedValue as String)); })(),
-      compressionLevel: (() { final guardedValue = map['compressionLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      compressionLevel: (() { final guardedValue = map['compressionLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       forceCompression: (() { final guardedValue = map['forceCompression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ignoreError: (() { final guardedValue = map['ignoreError']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       imageManifest: (() { final guardedValue = map['imageManifest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

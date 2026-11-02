@@ -1,9 +1,12 @@
-enum CompressionType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum CompressionType implements pulumi.PulumiEnum<String> {
   valueGzip("gzip"),
   valueEstargz("estargz"),
   valueZstd("zstd");
 
   const CompressionType(this.wireValue);
+  @override
   final String wireValue;
 
   static CompressionType fromValue(String value) {

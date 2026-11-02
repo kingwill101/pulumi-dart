@@ -5,21 +5,21 @@ import 'compression_type.dart';
 
 class ExportDocker {
   /// Attach an arbitrary key/value annotation to the image.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// The compression type to use.
-  final pulumi.Input<CompressionType>? compression;
+  final pulumi.Input<CompressionType?>? compression;
   /// Compression level from 0 to 22.
-  final pulumi.Input<int>? compressionLevel;
+  final pulumi.Input<int?>? compressionLevel;
   /// The local export path.
-  final pulumi.Input<String>? dest;
+  final pulumi.Input<String?>? dest;
   /// Forcefully apply compression.
-  final pulumi.Input<bool>? forceCompression;
+  final pulumi.Input<bool?>? forceCompression;
   /// Specify images names to export. This is overridden if tags are already specified.
-  final pulumi.Input<List<String>>? names;
+  final pulumi.Input<List<String>?>? names;
   /// Use OCI media types in exporter manifests.
-  final pulumi.Input<bool>? ociMediaTypes;
+  final pulumi.Input<bool?>? ociMediaTypes;
   /// Bundle the output into a tarball layout.
-  final pulumi.Input<bool>? tar;
+  final pulumi.Input<bool?>? tar;
 
   /// Creates a new [ExportDocker].
   /// [annotations] Attach an arbitrary key/value annotation to the image.
@@ -30,16 +30,16 @@ class ExportDocker {
   /// [names] Specify images names to export. This is overridden if tags are already specified.
   /// [ociMediaTypes] Use OCI media types in exporter manifests.
   /// [tar] Bundle the output into a tarball layout.
-  const ExportDocker({
+  ExportDocker({
     this.annotations,
-    this.compression,
-    this.compressionLevel,
+    pulumi.Input<CompressionType?>? compression,
+    pulumi.Input<int?>? compressionLevel,
     this.dest,
-    this.forceCompression,
+    pulumi.Input<bool?>? forceCompression,
     this.names,
-    this.ociMediaTypes,
-    this.tar,
-  });
+    pulumi.Input<bool?>? ociMediaTypes,
+    pulumi.Input<bool?>? tar,
+  }) : compression = compression ?? pulumi.Input.fromValue(CompressionType.fromValue('gzip')), compressionLevel = compressionLevel ?? pulumi.Input.fromValue(0), forceCompression = forceCompression ?? pulumi.Input.fromValue(false), ociMediaTypes = ociMediaTypes ?? pulumi.Input.fromValue(false), tar = tar ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,7 +58,7 @@ class ExportDocker {
     return ExportDocker(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       compression: (() { final guardedValue = map['compression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CompressionType.fromValue(guardedValue as String)); })(),
-      compressionLevel: (() { final guardedValue = map['compressionLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      compressionLevel: (() { final guardedValue = map['compressionLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dest: (() { final guardedValue = map['dest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       forceCompression: (() { final guardedValue = map['forceCompression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       names: (() { final guardedValue = map['names']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

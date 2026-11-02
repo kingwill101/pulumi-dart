@@ -3,7 +3,7 @@ import 'provider_args.dart';
 
 class ProviderProvider extends pulumi.ProviderResource {
   /// The build daemon's address.
-  late final pulumi.Output<String?> host;
+  late final pulumi.Output<String> host;
 
   /// Creates a new [ProviderProvider].
   /// [name] The Pulumi resource name.
@@ -16,9 +16,9 @@ class ProviderProvider extends pulumi.ProviderResource {
   }) : super(
           'docker-build',
           name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          pulumi.Input.mapToInputs((args ?? ProviderArgs()).toMap()),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    host = registerOutput<String?>('host');
+    host = registerOutput<String>('host');
   }
 }
