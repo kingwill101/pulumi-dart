@@ -95,7 +95,7 @@ import 'data_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -103,9 +103,12 @@ import 'data_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dms_dataprovider" "example" {
-///   settings = {
-///     postgresql_settings = {
+/// resource "aws_dms_data_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   settings {
+///     postgresql_settings {
 ///       server_name   = "example.com"
 ///       port          = 5432
 ///       database_name = "example"
@@ -273,7 +276,7 @@ import 'data_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -281,9 +284,12 @@ import 'data_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dms_dataprovider" "example" {
-///   settings = {
-///     mysql_settings = {
+/// resource "aws_dms_data_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   settings {
+///     mysql_settings {
 ///       server_name = "mysql.example.com"
 ///       port        = 3306
 ///       ssl_mode    = "require"
@@ -405,7 +411,7 @@ class DataProvider extends pulumi.CustomResource {
           'aws:dms/dataProvider:DataProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');

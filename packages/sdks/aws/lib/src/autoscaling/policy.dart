@@ -135,7 +135,7 @@ import 'policy_target_tracking_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -144,6 +144,9 @@ import 'policy_target_tracking_configuration.dart';
 /// }
 ///
 /// resource "aws_autoscaling_policy" "bat" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "foobar3-test"
 ///   scaling_adjustment     = 4
 ///   adjustment_type        = "ChangeInCapacity"
@@ -151,6 +154,9 @@ import 'policy_target_tracking_configuration.dart';
 ///   autoscaling_group_name = aws_autoscaling_group.bar.name
 /// }
 /// resource "aws_autoscaling_group" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_zones        = ["us-east-1a"]
 ///   name                      = "foobar3-test"
 ///   max_size                  = 5
@@ -192,7 +198,7 @@ import 'policy_target_tracking_configuration.dart';
 ///             .healthCheckGracePeriod(300)
 ///             .healthCheckType("ELB")
 ///             .forceDelete(true)
-///             .launchConfiguration(foo.name())
+///             .launchConfiguration(foo.get("name"))
 ///             .build());
 ///
 ///         var bat = new Policy("bat", PolicyArgs.builder()
@@ -420,7 +426,7 @@ import 'policy_target_tracking_configuration.dart';
 ///                     },
 ///                 },
 ///             },
-///             TargetValue = 100,
+///             TargetValue = 100.0,
 ///         },
 ///         AutoscalingGroupName = "my-test-asg",
 ///         Name = "foo",
@@ -503,7 +509,7 @@ import 'policy_target_tracking_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -512,46 +518,51 @@ import 'policy_target_tracking_configuration.dart';
 /// }
 ///
 /// resource "aws_autoscaling_policy" "example" {
-///   target_tracking_configuration = {
-///     customized_metric_specification = {
-///       metrics = [{
-///         "metricStat" = {
-///           "metric" = {
-///             "dimensions" = [{
-///               "name"  = "QueueName"
-///               "value" = "my-queue"
-///             }]
-///             "namespace"  = "AWS/SQS"
-///             "metricName" = "ApproximateNumberOfMessagesVisible"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target_tracking_configuration {
+///     customized_metric_specification {
+///       metrics {
+///         metric_stat {
+///           metric {
+///             dimensions {
+///               name  = "QueueName"
+///               value = "my-queue"
+///             }
+///             namespace   = "AWS/SQS"
+///             metric_name = "ApproximateNumberOfMessagesVisible"
 ///           }
-///           "stat"   = "Sum"
-///           "period" = 10
+///           stat   = "Sum"
+///           period = 10
 ///         }
-///         "label"      = "Get the queue size (the number of messages waiting to be processed)"
-///         "id"         = "m1"
-///         "returnData" = false
-///         }, {
-///         "metricStat" = {
-///           "metric" = {
-///             "dimensions" = [{
-///               "name"  = "AutoScalingGroupName"
-///               "value" = "my-asg"
-///             }]
-///             "namespace"  = "AWS/AutoScaling"
-///             "metricName" = "GroupInServiceInstances"
+///         label       = "Get the queue size (the number of messages waiting to be processed)"
+///         id          = "m1"
+///         return_data = false
+///       }
+///       metrics {
+///         metric_stat {
+///           metric {
+///             dimensions {
+///               name  = "AutoScalingGroupName"
+///               value = "my-asg"
+///             }
+///             namespace   = "AWS/AutoScaling"
+///             metric_name = "GroupInServiceInstances"
 ///           }
-///           "stat"   = "Average"
-///           "period" = 10
+///           stat   = "Average"
+///           period = 10
 ///         }
-///         "label"      = "Get the group size (the number of InService instances)"
-///         "id"         = "m2"
-///         "returnData" = false
-///         }, {
-///         "label"      = "Calculate the backlog per instance"
-///         "id"         = "e1"
-///         "expression" = "m1 / m2"
-///         "returnData" = true
-///       }]
+///         label       = "Get the group size (the number of InService instances)"
+///         id          = "m2"
+///         return_data = false
+///       }
+///       metrics {
+///         label       = "Calculate the backlog per instance"
+///         id          = "e1"
+///         expression  = "m1 / m2"
+///         return_data = true
+///       }
 ///     }
 ///     target_value = 100
 ///   }
@@ -836,7 +847,7 @@ import 'policy_target_tracking_configuration.dart';
 ///                         },
 ///                     },
 ///                 },
-///                 TargetValue = 10,
+///                 TargetValue = 10.0,
 ///             },
 ///         },
 ///         AutoscalingGroupName = "my-test-asg",
@@ -908,7 +919,7 @@ import 'policy_target_tracking_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -917,33 +928,38 @@ import 'policy_target_tracking_configuration.dart';
 /// }
 ///
 /// resource "aws_autoscaling_policy" "example" {
-///   predictive_scaling_configuration = {
-///     metric_specification = {
-///       customized_load_metric_specification = {
-///         metric_data_queries = [{
-///           "id"         = "load_sum"
-///           "expression" = "SUM(SEARCH('{AWS/EC2,AutoScalingGroupName} MetricName=\"CPUUtilization\" my-test-asg', 'Sum', 3600))"
-///         }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   predictive_scaling_configuration {
+///     metric_specification {
+///       customized_load_metric_specification {
+///         metric_data_queries {
+///           id         = "load_sum"
+///           expression = "SUM(SEARCH('{AWS/EC2,AutoScalingGroupName} MetricName=\"CPUUtilization\" my-test-asg', 'Sum', 3600))"
+///         }
 ///       }
-///       customized_capacity_metric_specification = {
-///         metric_data_queries = [{
-///           "id"         = "capacity_sum"
-///           "expression" = "SUM(SEARCH('{AWS/AutoScaling,AutoScalingGroupName} MetricName=\"GroupInServiceIntances\" my-test-asg', 'Average', 300))"
-///         }]
+///       customized_capacity_metric_specification {
+///         metric_data_queries {
+///           id         = "capacity_sum"
+///           expression = "SUM(SEARCH('{AWS/AutoScaling,AutoScalingGroupName} MetricName=\"GroupInServiceIntances\" my-test-asg', 'Average', 300))"
+///         }
 ///       }
-///       customized_scaling_metric_specification = {
-///         metric_data_queries = [{
-///           "id"         = "capacity_sum"
-///           "expression" = "SUM(SEARCH('{AWS/AutoScaling,AutoScalingGroupName} MetricName=\"GroupInServiceIntances\" my-test-asg', 'Average', 300))"
-///           "returnData" = false
-///           }, {
-///           "id"         = "load_sum"
-///           "expression" = "SUM(SEARCH('{AWS/EC2,AutoScalingGroupName} MetricName=\"CPUUtilization\" my-test-asg', 'Sum', 300))"
-///           "returnData" = false
-///           }, {
-///           "id"         = "weighted_average"
-///           "expression" = "load_sum / (capacity_sum * PERIOD(capacity_sum) / 60)"
-///         }]
+///       customized_scaling_metric_specification {
+///         metric_data_queries {
+///           id          = "capacity_sum"
+///           expression  = "SUM(SEARCH('{AWS/AutoScaling,AutoScalingGroupName} MetricName=\"GroupInServiceIntances\" my-test-asg', 'Average', 300))"
+///           return_data = false
+///         }
+///         metric_data_queries {
+///           id          = "load_sum"
+///           expression  = "SUM(SEARCH('{AWS/EC2,AutoScalingGroupName} MetricName=\"CPUUtilization\" my-test-asg', 'Sum', 300))"
+///           return_data = false
+///         }
+///         metric_data_queries {
+///           id         = "weighted_average"
+///           expression = "load_sum / (capacity_sum * PERIOD(capacity_sum) / 60)"
+///         }
 ///       }
 ///       target_value = 10
 ///     }
@@ -1175,7 +1191,7 @@ import 'policy_target_tracking_configuration.dart';
 ///                         },
 ///                     },
 ///                 },
-///                 TargetValue = 10,
+///                 TargetValue = 10.0,
 ///             },
 ///         },
 ///         AutoscalingGroupName = "my-test-asg",
@@ -1237,7 +1253,7 @@ import 'policy_target_tracking_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1246,27 +1262,30 @@ import 'policy_target_tracking_configuration.dart';
 /// }
 ///
 /// resource "aws_autoscaling_policy" "example" {
-///   predictive_scaling_configuration = {
-///     metric_specification = {
-///       predefined_load_metric_specification = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   predictive_scaling_configuration {
+///     metric_specification {
+///       predefined_load_metric_specification {
 ///         predefined_metric_type = "ASGTotalCPUUtilization"
 ///         resource_label         = "app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff"
 ///       }
-///       customized_scaling_metric_specification = {
-///         metric_data_queries = [{
-///           "metricStat" = {
-///             "metric" = {
-///               "dimensions" = [{
-///                 "name"  = "AutoScalingGroupName"
-///                 "value" = "my-test-asg"
-///               }]
-///               "metricName" = "CPUUtilization"
-///               "namespace"  = "AWS/EC2"
+///       customized_scaling_metric_specification {
+///         metric_data_queries {
+///           metric_stat {
+///             metric {
+///               dimensions {
+///                 name  = "AutoScalingGroupName"
+///                 value = "my-test-asg"
+///               }
+///               metric_name = "CPUUtilization"
+///               namespace   = "AWS/EC2"
 ///             }
-///             "stat" = "Average"
+///             stat = "Average"
 ///           }
-///           "id" = "scaling"
-///         }]
+///           id = "scaling"
+///         }
 ///       }
 ///       target_value = 10
 ///     }
@@ -1519,7 +1538,7 @@ class Policy extends pulumi.CustomResource {
   /// }
   /// ```
   /// ```hcl
-  /// pulumi {
+  /// terraform {
   ///   required_providers {
   ///     aws = {
   ///       source = "pulumi/aws"
@@ -1528,12 +1547,15 @@ class Policy extends pulumi.CustomResource {
   /// }
   ///
   /// resource "aws_autoscaling_policy" "example" {
-  ///   step_adjustments {
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
+  ///   step_adjustment {
   ///     scaling_adjustment          = -1
   ///     metric_interval_lower_bound = 1
   ///     metric_interval_upper_bound = 2
   ///   }
-  ///   step_adjustments {
+  ///   step_adjustment {
   ///     scaling_adjustment          = 1
   ///     metric_interval_lower_bound = 2
   ///     metric_interval_upper_bound = 3
@@ -1637,7 +1659,7 @@ class Policy extends pulumi.CustomResource {
   ///             {
   ///                 PredefinedMetricType = "ASGAverageCPUUtilization",
   ///             },
-  ///             TargetValue = 40,
+  ///             TargetValue = 40.0,
   ///         },
   ///     });
   ///
@@ -1669,7 +1691,7 @@ class Policy extends pulumi.CustomResource {
   /// }
   /// ```
   /// ```hcl
-  /// pulumi {
+  /// terraform {
   ///   required_providers {
   ///     aws = {
   ///       source = "pulumi/aws"
@@ -1678,8 +1700,11 @@ class Policy extends pulumi.CustomResource {
   /// }
   ///
   /// resource "aws_autoscaling_policy" "example" {
-  ///   target_tracking_configuration = {
-  ///     predefined_metric_specification = {
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
+  ///   target_tracking_configuration {
+  ///     predefined_metric_specification {
   ///       predefined_metric_type = "ASGAverageCPUUtilization"
   ///     }
   ///     target_value = 40
@@ -1748,7 +1773,7 @@ class Policy extends pulumi.CustomResource {
           'aws:autoscaling/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     adjustmentType = registerOutput<String?>('adjustmentType');
     arn = registerOutput<String>('arn');

@@ -113,7 +113,7 @@ import 'standards_control_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -122,13 +122,22 @@ import 'standards_control_state.dart';
 /// }
 ///
 /// resource "aws_securityhub_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_securityhub_standardssubscription" "cis_aws_foundations_benchmark" {
-///   depends_on    = [aws_securityhub_account.example]
+/// resource "aws_securityhub_standards_subscription" "cis_aws_foundations_benchmark" {
+///   depends_on = [aws_securityhub_account.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   standards_arn = "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"
 /// }
-/// resource "aws_securityhub_standardscontrol" "ensure_iam_password_policy_prevents_password_reuse" {
-///   depends_on            = [aws_securityhub_standardssubscription.cis_aws_foundations_benchmark]
+/// resource "aws_securityhub_standards_control" "ensure_iam_password_policy_prevents_password_reuse" {
+///   depends_on = [aws_securityhub_standards_subscription.cis_aws_foundations_benchmark]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   standards_control_arn = "arn:aws:securityhub:us-east-1:111111111111:control/cis-aws-foundations-benchmark/v/1.2.0/1.10"
 ///   control_status        = "DISABLED"
 ///   disabled_reason       = "We handle password policies within Okta"
@@ -253,7 +262,7 @@ class StandardsControl extends pulumi.CustomResource {
           'aws:securityhub/standardsControl:StandardsControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     controlId = registerOutput<String>('controlId');
     controlStatus = registerOutput<String>('controlStatus');

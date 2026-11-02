@@ -100,7 +100,7 @@ import 'platform_application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -111,7 +111,10 @@ import 'platform_application_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sns_platformapplication" "apns_application" {
+/// resource "aws_sns_platform_application" "apns_application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "apns_application"
 ///   platform            = "APNS"
 ///   platform_credential = file("apns-private-key.pem")
@@ -252,7 +255,7 @@ import 'platform_application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -260,7 +263,10 @@ import 'platform_application_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sns_platformapplication" "apns_application" {
+/// resource "aws_sns_platform_application" "apns_application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "apns_application"
 ///   platform                 = "APNS"
 ///   platform_credential      = "<APNS SIGNING KEY>"
@@ -379,7 +385,7 @@ import 'platform_application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -387,7 +393,10 @@ import 'platform_application_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sns_platformapplication" "gcm_application" {
+/// resource "aws_sns_platform_application" "gcm_application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "gcm_application"
 ///   platform            = "GCM"
 ///   platform_credential = "<GCM API KEY>"
@@ -488,7 +497,7 @@ class PlatformApplication extends pulumi.CustomResource {
           'aws:sns/platformApplication:PlatformApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['platformCredential', 'platformPrincipal'],
         ) {
     applePlatformBundleId = registerOutput<String?>('applePlatformBundleId');

@@ -58,7 +58,7 @@ import 'block_public_access_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -66,7 +66,10 @@ import 'block_public_access_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_emr_blockpublicaccessconfiguration" "example" {
+/// resource "aws_emr_block_public_access_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   block_public_security_group_rules = true
 /// }
 /// ```
@@ -185,7 +188,7 @@ import 'block_public_access_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -193,8 +196,11 @@ import 'block_public_access_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_emr_blockpublicaccessconfiguration" "example" {
-///   permitted_public_security_group_rule_ranges {
+/// resource "aws_emr_block_public_access_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   permitted_public_security_group_rule_range {
 ///     min_range = 22
 ///     max_range = 22
 ///   }
@@ -347,7 +353,7 @@ import 'block_public_access_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -355,12 +361,15 @@ import 'block_public_access_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_emr_blockpublicaccessconfiguration" "example" {
-///   permitted_public_security_group_rule_ranges {
+/// resource "aws_emr_block_public_access_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   permitted_public_security_group_rule_range {
 ///     min_range = 22
 ///     max_range = 22
 ///   }
-///   permitted_public_security_group_rule_ranges {
+///   permitted_public_security_group_rule_range {
 ///     min_range = 100
 ///     max_range = 101
 ///   }
@@ -472,7 +481,7 @@ import 'block_public_access_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -480,7 +489,10 @@ import 'block_public_access_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_emr_blockpublicaccessconfiguration" "example" {
+/// resource "aws_emr_block_public_access_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   block_public_security_group_rules = false
 /// }
 /// ```
@@ -550,7 +562,7 @@ class BlockPublicAccessConfiguration extends pulumi.CustomResource {
           'aws:emr/blockPublicAccessConfiguration:BlockPublicAccessConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     blockPublicSecurityGroupRules = registerOutput<bool>('blockPublicSecurityGroupRules');
     permittedPublicSecurityGroupRuleRanges = registerOutput<List<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>?>('permittedPublicSecurityGroupRuleRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>(guardedValue, (value) => BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange.fromMap((value as Map).cast<String, dynamic>())); });

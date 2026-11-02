@@ -272,7 +272,7 @@ import 'delivery_channel_state.dart';
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "p", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("awsconfig-example"),
-/// 			Role:   r.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   r.ID(),
 /// 			Policy: p.Json(),
 /// 		})
 /// 		if err != nil {
@@ -283,7 +283,7 @@ import 'delivery_channel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -291,8 +291,8 @@ import 'delivery_channel_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["config.amazonaws.com"]
@@ -301,35 +301,50 @@ import 'delivery_channel_state.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "p" {
-///   statements {
+/// data "aws_iam_policy_document" "p" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["s3:*"]
 ///     resources = [aws_s3_bucket.b.arn, "${aws_s3_bucket.b.arn}/*"]
 ///   }
 /// }
 ///
-/// resource "aws_cfg_deliverychannel" "foo" {
-///   depends_on     = [aws_cfg_recorder.foo]
+/// resource "aws_cfg_delivery_channel" "foo" {
+///   depends_on = [aws_cfg_recorder.foo]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example"
 ///   s3_bucket_name = aws_s3_bucket.b.bucket
 /// }
 /// resource "aws_s3_bucket" "b" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "example-awsconfig"
 ///   force_destroy = true
 /// }
 /// resource "aws_cfg_recorder" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   role_arn = aws_iam_role.r.arn
 /// }
 /// resource "aws_iam_role" "r" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "awsconfig-example"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "p" {
+/// resource "aws_iam_role_policy" "p" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "awsconfig-example"
 ///   role   = aws_iam_role.r.id
-///   policy = data.aws_iam_getpolicydocument.p.json
+///   policy = data.aws_iam_policy_document.p.json
 /// }
 /// ```
 /// ```java
@@ -525,7 +540,7 @@ class DeliveryChannel extends pulumi.CustomResource {
           'aws:cfg/deliveryChannel:DeliveryChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

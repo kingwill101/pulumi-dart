@@ -131,7 +131,7 @@ import 'instance_fleet_state.dart';
 ///                         VolumesPerInstance = 1,
 ///                     },
 ///                 },
-///                 BidPriceAsPercentageOfOnDemandPrice = 100,
+///                 BidPriceAsPercentageOfOnDemandPrice = 100.0,
 ///                 InstanceType = "m4.xlarge",
 ///                 WeightedCapacity = 1,
 ///             },
@@ -146,7 +146,7 @@ import 'instance_fleet_state.dart';
 ///                         VolumesPerInstance = 1,
 ///                     },
 ///                 },
-///                 BidPriceAsPercentageOfOnDemandPrice = 100,
+///                 BidPriceAsPercentageOfOnDemandPrice = 100.0,
 ///                 InstanceType = "m4.2xlarge",
 ///                 WeightedCapacity = 2,
 ///             },
@@ -219,7 +219,7 @@ import 'instance_fleet_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -227,17 +227,20 @@ import 'instance_fleet_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_emr_instancefleet" "task" {
-///   launch_specifications = {
-///     spot_specifications = [{
-///       "allocationStrategy"     = "capacity-optimized"
-///       "blockDurationMinutes"   = 0
-///       "timeoutAction"          = "TERMINATE_CLUSTER"
-///       "timeoutDurationMinutes" = 10
-///     }]
+/// resource "aws_emr_instance_fleet" "task" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   launch_specifications {
+///     spot_specification {
+///       allocation_strategy      = "capacity-optimized"
+///       block_duration_minutes   = 0
+///       timeout_action           = "TERMINATE_CLUSTER"
+///       timeout_duration_minutes = 10
+///     }
 ///   }
 ///   instance_type_configs {
-///     ebs_configs {
+///     ebs_config {
 ///       size                 = 100
 ///       type                 = "gp2"
 ///       volumes_per_instance = 1
@@ -247,7 +250,7 @@ import 'instance_fleet_state.dart';
 ///     weighted_capacity                          = 1
 ///   }
 ///   instance_type_configs {
-///     ebs_configs {
+///     ebs_config {
 ///       size                 = 100
 ///       type                 = "gp2"
 ///       volumes_per_instance = 1
@@ -317,7 +320,7 @@ import 'instance_fleet_state.dart';
 ///                     .instanceType("m4.2xlarge")
 ///                     .weightedCapacity(2)
 ///                     .build())
-///             .clusterId(cluster.id())
+///             .clusterId(cluster.get("id"))
 ///             .name("task fleet")
 ///             .targetOnDemandCapacity(1)
 ///             .targetSpotCapacity(1)
@@ -400,7 +403,7 @@ class InstanceFleet extends pulumi.CustomResource {
           'aws:emr/instanceFleet:InstanceFleet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
     instanceTypeConfigs = registerOutput<List<InstanceFleetInstanceTypeConfig>?>('instanceTypeConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceFleetInstanceTypeConfig>(guardedValue, (value) => InstanceFleetInstanceTypeConfig.fromMap((value as Map).cast<String, dynamic>())); });

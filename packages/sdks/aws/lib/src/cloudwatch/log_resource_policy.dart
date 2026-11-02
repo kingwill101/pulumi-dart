@@ -147,7 +147,7 @@ import 'log_resource_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -155,8 +155,8 @@ import 'log_resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "elasticsearch-log-publishing-policy" {
-///   statements {
+/// data "aws_iam_policy_document" "elasticsearch-log-publishing-policy" {
+///   statement {
 ///     principals {
 ///       identifiers = ["es.amazonaws.com"]
 ///       type        = "Service"
@@ -166,8 +166,11 @@ import 'log_resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_logresourcepolicy" "elasticsearch-log-publishing-policy" {
-///   policy_document = data.aws_iam_getpolicydocument.elasticsearch-log-publishing-policy.json
+/// resource "aws_cloudwatch_log_resource_policy" "elasticsearch-log-publishing-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy_document = data.aws_iam_policy_document.elasticsearch-log-publishing-policy.json
 ///   policy_name     = "elasticsearch-log-publishing-policy"
 /// }
 /// ```
@@ -382,7 +385,7 @@ import 'log_resource_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -390,8 +393,8 @@ import 'log_resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "route53-query-logging-policy" {
-///   statements {
+/// data "aws_iam_policy_document" "route53-query-logging-policy" {
+///   statement {
 ///     principals {
 ///       identifiers = ["route53.amazonaws.com"]
 ///       type        = "Service"
@@ -401,8 +404,11 @@ import 'log_resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_logresourcepolicy" "route53-query-logging-policy" {
-///   policy_document = data.aws_iam_getpolicydocument.route53-query-logging-policy.json
+/// resource "aws_cloudwatch_log_resource_policy" "route53-query-logging-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy_document = data.aws_iam_policy_document.route53-query-logging-policy.json
 ///   policy_name     = "route53-query-logging-policy"
 /// }
 /// ```
@@ -528,7 +534,7 @@ class LogResourcePolicy extends pulumi.CustomResource {
           'aws:cloudwatch/logResourcePolicy:LogResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     policyDocument = registerOutput<String>('policyDocument');
     policyName = registerOutput<String?>('policyName');

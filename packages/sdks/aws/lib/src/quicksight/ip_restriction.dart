@@ -86,7 +86,7 @@ import 'ip_restriction_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -94,7 +94,10 @@ import 'ip_restriction_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_iprestriction" "example" {
+/// resource "aws_quicksight_ip_restriction" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enabled = true
 ///   ip_restriction_rule_map = {
 ///     "108.56.166.202/32" = "Allow self"
@@ -128,7 +131,7 @@ import 'ip_restriction_state.dart';
 ///         var example = new IpRestriction("example", IpRestrictionArgs.builder()
 ///             .enabled(true)
 ///             .ipRestrictionRuleMap(Map.of("108.56.166.202/32", "Allow self"))
-///             .vpcIdRestrictionRuleMap(Map.of(exampleAwsVpc.id(), "Main VPC"))
+///             .vpcIdRestrictionRuleMap(Map.of(exampleAwsVpc.get("id"), "Main VPC"))
 ///             .build());
 ///
 ///     }
@@ -180,7 +183,7 @@ class IpRestriction extends pulumi.CustomResource {
           'aws:quicksight/ipRestriction:IpRestriction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     enabled = registerOutput<bool>('enabled');

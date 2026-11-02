@@ -136,7 +136,7 @@ import 'insight_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -145,17 +145,24 @@ import 'insight_state.dart';
 /// }
 ///
 /// resource "aws_securityhub_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_securityhub_insight" "example" {
 ///   depends_on = [aws_securityhub_account.example]
-///   filters = {
-///     aws_account_ids = [{
-///       "comparison" = "EQUALS"
-///       "value"      = "1234567890"
-///       }, {
-///       "comparison" = "EQUALS"
-///       "value"      = "09876543210"
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filters {
+///     aws_account_id {
+///       comparison = "EQUALS"
+///       value      = "1234567890"
+///     }
+///     aws_account_id {
+///       comparison = "EQUALS"
+///       value      = "09876543210"
+///     }
 ///   }
 ///   group_by_attribute = "AwsAccountId"
 ///   name               = "example-insight"
@@ -348,7 +355,7 @@ import 'insight_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -357,16 +364,22 @@ import 'insight_state.dart';
 /// }
 ///
 /// resource "aws_securityhub_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_securityhub_insight" "example" {
 ///   depends_on = [aws_securityhub_account.example]
-///   filters = {
-///     created_ats = [{
-///       "dateRange" = {
-///         "unit"  = "DAYS"
-///         "value" = 5
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filters {
+///     created_at {
+///       date_range {
+///         unit  = "DAYS"
+///         value = 5
 ///       }
-///     }]
+///     }
 ///   }
 ///   group_by_attribute = "CreatedAt"
 ///   name               = "example-insight"
@@ -543,7 +556,7 @@ import 'insight_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -552,13 +565,19 @@ import 'insight_state.dart';
 /// }
 ///
 /// resource "aws_securityhub_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_securityhub_insight" "example" {
 ///   depends_on = [aws_securityhub_account.example]
-///   filters = {
-///     network_destination_ipv4s = [{
-///       "cidr" = "10.0.0.0/16"
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filters {
+///     network_destination_ipv4 {
+///       cidr = "10.0.0.0/16"
+///     }
 ///   }
 ///   group_by_attribute = "NetworkDestinationIpV4"
 ///   name               = "example-insight"
@@ -729,7 +748,7 @@ import 'insight_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -738,13 +757,19 @@ import 'insight_state.dart';
 /// }
 ///
 /// resource "aws_securityhub_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_securityhub_insight" "example" {
 ///   depends_on = [aws_securityhub_account.example]
-///   filters = {
-///     confidences = [{
-///       "gte" = "80"
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filters {
+///     confidence {
+///       gte = "80"
+///     }
 ///   }
 ///   group_by_attribute = "Confidence"
 ///   name               = "example-insight"
@@ -923,7 +948,7 @@ import 'insight_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -932,15 +957,21 @@ import 'insight_state.dart';
 /// }
 ///
 /// resource "aws_securityhub_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_securityhub_insight" "example" {
 ///   depends_on = [aws_securityhub_account.example]
-///   filters = {
-///     resource_tags = [{
-///       "comparison" = "EQUALS"
-///       "key"        = "Environment"
-///       "value"      = "Production"
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filters {
+///     resource_tags {
+///       comparison = "EQUALS"
+///       key        = "Environment"
+///       value      = "Production"
+///     }
 ///   }
 ///   group_by_attribute = "ResourceTags"
 ///   name               = "example-insight"
@@ -1049,7 +1080,7 @@ class Insight extends pulumi.CustomResource {
           'aws:securityhub/insight:Insight',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     filters = registerOutput<InsightFilters>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightFilters.fromMap((guardedValue as Map).cast<String, dynamic>()); });

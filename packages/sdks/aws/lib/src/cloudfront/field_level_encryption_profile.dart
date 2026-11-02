@@ -135,7 +135,7 @@ import 'field_level_encryption_profile_state.dart';
 /// 								pulumi.String("DateOfBirth"),
 /// 							},
 /// 						},
-/// 						PublicKeyId: example.ID().ToIDOutput().ToStringOutput(),
+/// 						PublicKeyId: example.ID(),
 /// 						ProviderId:  pulumi.String("test provider"),
 /// 					},
 /// 				},
@@ -151,7 +151,7 @@ import 'field_level_encryption_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -162,20 +162,26 @@ import 'field_level_encryption_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_publickey" "example" {
+/// resource "aws_cloudfront_public_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   comment     = "test public key"
 ///   encoded_key = file("public_key.pem")
 ///   name        = "test_key"
 /// }
-/// resource "aws_cloudfront_fieldlevelencryptionprofile" "test" {
-///   encryption_entities = {
-///     items = [{
-///       "fieldPatterns" = {
-///         "items" = ["DateOfBirth"]
+/// resource "aws_cloudfront_field_level_encryption_profile" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   encryption_entities {
+///     items {
+///       field_patterns {
+///         items = ["DateOfBirth"]
 ///       }
-///       "publicKeyId" = aws_cloudfront_publickey.example.id
-///       "providerId"  = "test provider"
-///     }]
+///       public_key_id = aws_cloudfront_public_key.example.id
+///       provider_id   = "test provider"
+///     }
 ///   }
 ///   comment = "test comment"
 ///   name    = "test profile"
@@ -295,7 +301,7 @@ class FieldLevelEncryptionProfile extends pulumi.CustomResource {
           'aws:cloudfront/fieldLevelEncryptionProfile:FieldLevelEncryptionProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     callerReference = registerOutput<String>('callerReference');

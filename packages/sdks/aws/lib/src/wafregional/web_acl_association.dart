@@ -245,7 +245,7 @@ import 'web_acl_association_state.dart';
 /// 		foo, err := wafregional.NewRule(ctx, "foo", &wafregional.RuleArgs{
 /// 			Predicates: wafregional.RulePredicateArray{
 /// 				&wafregional.RulePredicateArgs{
-/// 					DataId:  ipset.ID().ToIDOutput().ToStringOutput(),
+/// 					DataId:  ipset.ID(),
 /// 					Negated: pulumi.Bool(false),
 /// 					Type:    pulumi.String("IPMatch"),
 /// 				},
@@ -266,7 +266,7 @@ import 'web_acl_association_state.dart';
 /// 						Type: pulumi.String("BLOCK"),
 /// 					},
 /// 					Priority: pulumi.Int(1),
-/// 					RuleId:   foo.ID().ToIDOutput().ToStringOutput(),
+/// 					RuleId:   foo.ID(),
 /// 				},
 /// 			},
 /// 			Name:       pulumi.String("foo"),
@@ -286,7 +286,7 @@ import 'web_acl_association_state.dart';
 /// 			return err
 /// 		}
 /// 		fooSubnet, err := ec2.NewSubnet(ctx, "foo", &ec2.SubnetArgs{
-/// 			VpcId:            fooVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            fooVpc.ID(),
 /// 			CidrBlock:        pulumi.String("10.1.1.0/24"),
 /// 			AvailabilityZone: pulumi.String(available.Names[0]),
 /// 		})
@@ -294,7 +294,7 @@ import 'web_acl_association_state.dart';
 /// 			return err
 /// 		}
 /// 		bar, err := ec2.NewSubnet(ctx, "bar", &ec2.SubnetArgs{
-/// 			VpcId:            fooVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            fooVpc.ID(),
 /// 			CidrBlock:        pulumi.String("10.1.2.0/24"),
 /// 			AvailabilityZone: pulumi.String(available.Names[1]),
 /// 		})
@@ -304,8 +304,8 @@ import 'web_acl_association_state.dart';
 /// 		fooLoadBalancer, err := alb.NewLoadBalancer(ctx, "foo", &alb.LoadBalancerArgs{
 /// 			Internal: pulumi.Bool(true),
 /// 			Subnets: pulumi.StringArray{
-/// 				fooSubnet.ID().ToIDOutput().ToStringOutput(),
-/// 				bar.ID().ToIDOutput().ToStringOutput(),
+/// 				fooSubnet.ID(),
+/// 				bar.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -313,7 +313,7 @@ import 'web_acl_association_state.dart';
 /// 		}
 /// 		_, err = wafregional.NewWebAclAssociation(ctx, "foo", &wafregional.WebAclAssociationArgs{
 /// 			ResourceArn: fooLoadBalancer.Arn,
-/// 			WebAclId:    fooWebAcl.ID().ToIDOutput().ToStringOutput(),
+/// 			WebAclId:    fooWebAcl.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -323,7 +323,7 @@ import 'web_acl_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -331,10 +331,13 @@ import 'web_acl_association_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
+/// data "aws_availability_zones" "available" {
 /// }
 ///
-/// resource "aws_wafregional_ipset" "ipset" {
+/// resource "aws_wafregional_ip_set" "ipset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ip_set_descriptors {
 ///     type  = "IPV4"
 ///     value = "192.0.7.0/24"
@@ -342,20 +345,26 @@ import 'web_acl_association_state.dart';
 ///   name = "tfIPSet"
 /// }
 /// resource "aws_wafregional_rule" "foo" {
-///   predicates {
-///     data_id = aws_wafregional_ipset.ipset.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   predicate {
+///     data_id = aws_wafregional_ip_set.ipset.id
 ///     negated = false
 ///     type    = "IPMatch"
 ///   }
 ///   name        = "tfWAFRule"
 ///   metric_name = "tfWAFRule"
 /// }
-/// resource "aws_wafregional_webacl" "foo" {
-///   default_action = {
+/// resource "aws_wafregional_web_acl" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_action {
 ///     type = "ALLOW"
 ///   }
-///   rules {
-///     action = {
+///   rule {
+///     action {
 ///       type = "BLOCK"
 ///     }
 ///     priority = 1
@@ -365,25 +374,40 @@ import 'web_acl_association_state.dart';
 ///   metric_name = "foo"
 /// }
 /// resource "aws_ec2_vpc" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.foo.id
 ///   cidr_block        = "10.1.1.0/24"
-///   availability_zone = data.aws_getavailabilityzones.available.names[0]
+///   availability_zone = data.aws_availability_zones.available.names[0]
 /// }
 /// resource "aws_ec2_subnet" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.foo.id
 ///   cidr_block        = "10.1.2.0/24"
-///   availability_zone = data.aws_getavailabilityzones.available.names[1]
+///   availability_zone = data.aws_availability_zones.available.names[1]
 /// }
-/// resource "aws_alb_loadbalancer" "foo" {
+/// resource "aws_alb_load_balancer" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   internal = true
 ///   subnets  = [aws_ec2_subnet.foo.id, aws_ec2_subnet.bar.id]
 /// }
-/// resource "aws_wafregional_webaclassociation" "foo" {
-///   resource_arn = aws_alb_loadbalancer.foo.arn
-///   web_acl_id   = aws_wafregional_webacl.foo.id
+/// resource "aws_wafregional_web_acl_association" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_arn = aws_alb_load_balancer.foo.arn
+///   web_acl_id   = aws_wafregional_web_acl.foo.id
 /// }
 /// ```
 /// ```java
@@ -591,7 +615,7 @@ class WebAclAssociation extends pulumi.CustomResource {
           'aws:wafregional/webAclAssociation:WebAclAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');

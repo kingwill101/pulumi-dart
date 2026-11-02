@@ -71,7 +71,7 @@ import 'get_secrets_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,7 +79,7 @@ import 'get_secrets_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_secretsmanager_getrandompassword" "test" {
+/// data "aws_secretsmanager_random_password" "test" {
 ///   password_length = 50
 ///   exclude_numbers = true
 /// }
@@ -205,7 +205,7 @@ pulumi.Output<GetRandomPasswordResult> getRandomPasswordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -213,7 +213,7 @@ pulumi.Output<GetRandomPasswordResult> getRandomPasswordOutput(
 ///   }
 /// }
 ///
-/// data "aws_secretsmanager_getsecret" "by-arn" {
+/// data "aws_secretsmanager_secret" "by-arn" {
 ///   arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:example-123456"
 /// }
 /// ```
@@ -308,7 +308,7 @@ pulumi.Output<GetRandomPasswordResult> getRandomPasswordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -316,7 +316,7 @@ pulumi.Output<GetRandomPasswordResult> getRandomPasswordOutput(
 ///   }
 /// }
 ///
-/// data "aws_secretsmanager_getsecret" "by-name" {
+/// data "aws_secretsmanager_secret" "by-name" {
 ///   name = "example"
 /// }
 /// ```
@@ -439,7 +439,7 @@ pulumi.Output<GetSecretResult> getSecretOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -447,7 +447,7 @@ pulumi.Output<GetSecretResult> getSecretOutput(
 ///   }
 /// }
 ///
-/// data "aws_secretsmanager_getsecretrotation" "example" {
+/// data "aws_secretsmanager_secret_rotation" "example" {
 ///   secret_id = exampleAwsSecretsmanagerSecret.id
 /// }
 /// ```
@@ -473,7 +473,7 @@ pulumi.Output<GetSecretResult> getSecretOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = SecretsmanagerFunctions.getSecretRotation(GetSecretRotationArgs.builder()
-///             .secretId(exampleAwsSecretsmanagerSecret.id())
+///             .secretId(exampleAwsSecretsmanagerSecret.get("id"))
 ///             .build());
 ///
 ///     }
@@ -572,7 +572,7 @@ pulumi.Output<GetSecretRotationResult> getSecretRotationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -580,7 +580,7 @@ pulumi.Output<GetSecretRotationResult> getSecretRotationOutput(
 ///   }
 /// }
 ///
-/// data "aws_secretsmanager_getsecretversion" "secret-version" {
+/// data "aws_secretsmanager_secret_version" "secret-version" {
 ///   secret_id = example.id
 /// }
 /// ```
@@ -606,7 +606,7 @@ pulumi.Output<GetSecretRotationResult> getSecretRotationOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var secret-version = SecretsmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
-///             .secretId(example.id())
+///             .secretId(example.get("id"))
 ///             .build());
 ///
 ///     }
@@ -679,7 +679,7 @@ pulumi.Output<GetSecretRotationResult> getSecretRotationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -687,7 +687,7 @@ pulumi.Output<GetSecretRotationResult> getSecretRotationOutput(
 ///   }
 /// }
 ///
-/// data "aws_secretsmanager_getsecretversion" "by-version-stage" {
+/// data "aws_secretsmanager_secret_version" "by-version-stage" {
 ///   secret_id     = example.id
 ///   version_stage = "example"
 /// }
@@ -714,7 +714,7 @@ pulumi.Output<GetSecretRotationResult> getSecretRotationOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var by-version-stage = SecretsmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
-///             .secretId(example.id())
+///             .secretId(example.get("id"))
 ///             .versionStage("example")
 ///             .build());
 ///
@@ -786,7 +786,7 @@ pulumi.Output<GetSecretRotationResult> getSecretRotationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     std = {
 ///       source = "pulumi/std"
@@ -820,7 +820,7 @@ pulumi.Output<GetSecretRotationResult> getSecretRotationOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         ctx.export("example", StdFunctions.jsondecode(JsondecodeArgs.builder()
-///             .input(exampleAwsSecretsmanagerSecretVersion.secretString())
+///             .input(exampleAwsSecretsmanagerSecretVersion.get("secretString"))
 ///             .build()).result().key1());
 ///     }
 /// }
@@ -919,7 +919,7 @@ pulumi.Output<GetSecretVersionResult> getSecretVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -927,7 +927,7 @@ pulumi.Output<GetSecretVersionResult> getSecretVersionOutput(
 ///   }
 /// }
 ///
-/// data "aws_secretsmanager_getsecretversions" "secret-versions" {
+/// data "aws_secretsmanager_secret_versions" "secret-versions" {
 ///   secret_id = example.id
 /// }
 /// ```
@@ -953,7 +953,7 @@ pulumi.Output<GetSecretVersionResult> getSecretVersionOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var secret-versions = SecretsmanagerFunctions.getSecretVersions(GetSecretVersionsArgs.builder()
-///             .secretId(example.id())
+///             .secretId(example.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1026,7 +1026,7 @@ pulumi.Output<GetSecretVersionResult> getSecretVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1034,7 +1034,7 @@ pulumi.Output<GetSecretVersionResult> getSecretVersionOutput(
 ///   }
 /// }
 ///
-/// data "aws_secretsmanager_getsecretversion" "by-version-stage" {
+/// data "aws_secretsmanager_secret_version" "by-version-stage" {
 ///   secret_id     = example.id
 ///   version_stage = "example"
 /// }
@@ -1061,7 +1061,7 @@ pulumi.Output<GetSecretVersionResult> getSecretVersionOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var by-version-stage = SecretsmanagerFunctions.getSecretVersion(GetSecretVersionArgs.builder()
-///             .secretId(example.id())
+///             .secretId(example.get("id"))
 ///             .versionStage("example")
 ///             .build());
 ///
@@ -1133,7 +1133,7 @@ pulumi.Output<GetSecretVersionResult> getSecretVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     std = {
 ///       source = "pulumi/std"
@@ -1167,7 +1167,7 @@ pulumi.Output<GetSecretVersionResult> getSecretVersionOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         ctx.export("example", StdFunctions.jsondecode(JsondecodeArgs.builder()
-///             .input(exampleAwsSecretsmanagerSecretVersion.secretString())
+///             .input(exampleAwsSecretsmanagerSecretVersion.get("secretString"))
 ///             .build()).result().key1());
 ///     }
 /// }
@@ -1285,7 +1285,7 @@ pulumi.Output<GetSecretVersionsResult> getSecretVersionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1293,8 +1293,8 @@ pulumi.Output<GetSecretVersionsResult> getSecretVersionsOutput(
 ///   }
 /// }
 ///
-/// data "aws_secretsmanager_getsecrets" "example" {
-///   filters {
+/// data "aws_secretsmanager_secrets" "example" {
+///   filter {
 ///     name   = "name"
 ///     values = ["example"]
 ///   }

@@ -10,7 +10,7 @@ import 'table_policy_state.dart';
 ///
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -18,28 +18,40 @@ import 'table_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///   }
 /// }
 ///
-/// resource "aws_s3tables_tablepolicy" "example" {
-///   resource_policy  = data.aws_iam_getpolicydocument.example.json
+/// resource "aws_s3tables_table_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_policy  = data.aws_iam_policy_document.example.json
 ///   name             = test.name
 ///   namespace        = test.namespace
 ///   table_bucket_arn = test.tableBucketArn
 /// }
 /// resource "aws_s3tables_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "example_table"
 ///   namespace        = aws_s3tables_namespace.example
 ///   table_bucket_arn = aws_s3tables_namespace.example.table_bucket_arn
 ///   format           = "ICEBERG"
 /// }
 /// resource "aws_s3tables_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace        = ["example-namespace"]
-///   table_bucket_arn = aws_s3tables_tablebucket.example.arn
+///   table_bucket_arn = aws_s3tables_table_bucket.example.arn
 /// }
-/// resource "aws_s3tables_tablebucket" "example" {
+/// resource "aws_s3tables_table_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-bucket"
 /// }
 /// ```
@@ -114,7 +126,7 @@ class TablePolicy extends pulumi.CustomResource {
           'aws:s3tables/tablePolicy:TablePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String>('namespace');

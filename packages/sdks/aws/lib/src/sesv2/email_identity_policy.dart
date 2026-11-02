@@ -169,7 +169,7 @@ import 'email_identity_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -177,20 +177,27 @@ import 'email_identity_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_emailidentity" "example" {
+/// resource "aws_sesv2_email_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   email_identity = "testing@example.com"
 /// }
-/// resource "aws_sesv2_emailidentitypolicy" "example" {
-///   email_identity = aws_sesv2_emailidentity.example.email_identity
+/// resource "aws_sesv2_email_identity_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   email_identity = aws_sesv2_email_identity.example.email_identity
 ///   policy_name    = "example"
-///   policy         ="{
+///   policy         = <<EOF
+/// {
 ///   \"Id\":\"ExampleAuthorizationPolicy\",
 ///   \"Version\":\"2012-10-17\",
 ///   \"Statement\":[
 ///     {
 ///       \"Sid\":\"AuthorizeIAMUser\",
 ///       \"Effect\":\"Allow\",
-///       \"Resource\":\"${aws_sesv2_emailidentity.example.arn}\",
+///       \"Resource\":\"${aws_sesv2_email_identity.example.arn}\",
 ///       \"Principal\":{
 ///         \"AWS\":[
 ///           \"arn:aws:iam::123456789012:user/John\",
@@ -204,7 +211,8 @@ import 'email_identity_policy_state.dart';
 ///     }
 ///   ]
 /// }
-/// "
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -331,7 +339,7 @@ class EmailIdentityPolicy extends pulumi.CustomResource {
           'aws:sesv2/emailIdentityPolicy:EmailIdentityPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     emailIdentity = registerOutput<String>('emailIdentity');
     policy = registerOutput<String>('policy');

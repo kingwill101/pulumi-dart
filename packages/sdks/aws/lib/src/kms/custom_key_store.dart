@@ -88,7 +88,7 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -99,7 +99,10 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kms_customkeystore" "test" {
+/// resource "aws_kms_custom_key_store" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_hsm_cluster_id     = cloudHsmClusterId
 ///   custom_key_store_name    = "kms-custom-key-store-test"
 ///   key_store_password       = "noplaintextpasswords1"
@@ -249,7 +252,7 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -257,8 +260,11 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kms_customkeystore" "example" {
-///   xks_proxy_authentication_credential = {
+/// resource "aws_kms_custom_key_store" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   xks_proxy_authentication_credential {
 ///     access_key_id         = ephemeralAccessKeyId
 ///     raw_secret_access_key = ephemeralSecretAccessKey
 ///   }
@@ -412,7 +418,7 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -420,8 +426,11 @@ import 'custom_key_store_xks_proxy_authentication_credential.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kms_customkeystore" "example" {
-///   xks_proxy_authentication_credential = {
+/// resource "aws_kms_custom_key_store" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   xks_proxy_authentication_credential {
 ///     access_key_id         = ephemeralAccessKeyId
 ///     raw_secret_access_key = ephemeralSecretAccessKey
 ///   }
@@ -530,7 +539,7 @@ class CustomKeyStore extends pulumi.CustomResource {
           'aws:kms/customKeyStore:CustomKeyStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     cloudHsmClusterId = registerOutput<String?>('cloudHsmClusterId');
     customKeyStoreName = registerOutput<String>('customKeyStoreName');

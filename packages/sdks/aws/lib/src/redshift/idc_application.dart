@@ -76,7 +76,7 @@ import 'idc_application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -84,7 +84,10 @@ import 'idc_application_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshift_idcapplication" "example" {
+/// resource "aws_redshift_idc_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iam_role_arn                  = exampleAwsIamRole.arn
 ///   idc_display_name              = "example"
 ///   idc_instance_arn              = exampleAwsSsoadminInstances.arns[0]
@@ -114,9 +117,9 @@ import 'idc_application_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new IdcApplication("example", IdcApplicationArgs.builder()
-///             .iamRoleArn(exampleAwsIamRole.arn())
+///             .iamRoleArn(exampleAwsIamRole.get("arn"))
 ///             .idcDisplayName("example")
-///             .idcInstanceArn(exampleAwsSsoadminInstances.arns()[0])
+///             .idcInstanceArn(exampleAwsSsoadminInstances.get("arns")[0])
 ///             .identityNamespace("example")
 ///             .redshiftIdcApplicationName("example")
 ///             .build());
@@ -182,7 +185,7 @@ class IdcApplication extends pulumi.CustomResource {
           'aws:redshift/idcApplication:IdcApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     applicationType = registerOutput<String>('applicationType');
     authorizedTokenIssuer = registerOutput<IdcApplicationAuthorizedTokenIssuer?>('authorizedTokenIssuer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdcApplicationAuthorizedTokenIssuer.fromMap((guardedValue as Map).cast<String, dynamic>()); });

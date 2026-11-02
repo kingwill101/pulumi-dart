@@ -64,7 +64,7 @@ import 'log_delivery_destination_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'log_delivery_destination_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_logdeliverydestinationpolicy" "example" {
+/// resource "aws_cloudwatch_log_delivery_destination_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   delivery_destination_name   = exampleAwsCloudwatchLogDeliveryDestination.name
 ///   delivery_destination_policy = exampleAwsIamPolicyDocument.json
 /// }
@@ -99,8 +102,8 @@ import 'log_delivery_destination_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LogDeliveryDestinationPolicy("example", LogDeliveryDestinationPolicyArgs.builder()
-///             .deliveryDestinationName(exampleAwsCloudwatchLogDeliveryDestination.name())
-///             .deliveryDestinationPolicy(exampleAwsIamPolicyDocument.json())
+///             .deliveryDestinationName(exampleAwsCloudwatchLogDeliveryDestination.get("name"))
+///             .deliveryDestinationPolicy(exampleAwsIamPolicyDocument.get("json"))
 ///             .build());
 ///
 ///     }
@@ -155,7 +158,7 @@ class LogDeliveryDestinationPolicy extends pulumi.CustomResource {
           'aws:cloudwatch/logDeliveryDestinationPolicy:LogDeliveryDestinationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     deliveryDestinationName = registerOutput<String>('deliveryDestinationName');
     deliveryDestinationPolicy = registerOutput<String>('deliveryDestinationPolicy');

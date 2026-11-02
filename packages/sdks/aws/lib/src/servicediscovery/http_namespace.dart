@@ -60,7 +60,7 @@ import 'http_namespace_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -68,7 +68,10 @@ import 'http_namespace_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicediscovery_httpnamespace" "example" {
+/// resource "aws_servicediscovery_http_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "development"
 ///   description = "example"
 /// }
@@ -147,7 +150,7 @@ class HttpNamespace extends pulumi.CustomResource {
           'aws:servicediscovery/httpNamespace:HttpNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

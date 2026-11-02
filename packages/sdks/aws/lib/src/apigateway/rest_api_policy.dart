@@ -175,7 +175,7 @@ import 'rest_api_policy_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = apigateway.NewRestApiPolicy(ctx, "test", &apigateway.RestApiPolicyArgs{
-/// 			RestApiId: testRestApi.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApiId: testRestApi.ID(),
 /// 			Policy:    test.Json(),
 /// 		})
 /// 		if err != nil {
@@ -186,7 +186,7 @@ import 'rest_api_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -194,9 +194,9 @@ import 'rest_api_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "test" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "test" {
+///   statement {
+///     condition {
 ///       test     = "IpAddress"
 ///       variable = "aws:SourceIp"
 ///       values   = ["123.123.123.123/32"]
@@ -207,16 +207,22 @@ import 'rest_api_policy_state.dart';
 ///     }
 ///     effect    = "Allow"
 ///     actions   = ["execute-api:Invoke"]
-///     resources = ["${aws_apigateway_restapi.test.execution_arn}/*"]
+///     resources = ["${aws_apigateway_rest_api.test.execution_arn}/*"]
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_restapi" "test" {
+/// resource "aws_apigateway_rest_api" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-rest-api"
 /// }
-/// resource "aws_apigateway_restapipolicy" "test" {
-///   rest_api_id = aws_apigateway_restapi.test.id
-///   policy      = data.aws_iam_getpolicydocument.test.json
+/// resource "aws_apigateway_rest_api_policy" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api_id = aws_apigateway_rest_api.test.id
+///   policy      = data.aws_iam_policy_document.test.json
 /// }
 /// ```
 /// ```java
@@ -339,7 +345,7 @@ class RestApiPolicy extends pulumi.CustomResource {
           'aws:apigateway/restApiPolicy:RestApiPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

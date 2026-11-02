@@ -64,7 +64,7 @@ import 'tag_option_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'tag_option_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicecatalog_tagoption" "example" {
+/// resource "aws_servicecatalog_tag_option" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key   = "nyckel"
 ///   value = "värde"
 /// }
@@ -148,7 +151,7 @@ class TagOption extends pulumi.CustomResource {
           'aws:servicecatalog/tagOption:TagOption',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     active = registerOutput<bool?>('active');
     key = registerOutput<String>('key');

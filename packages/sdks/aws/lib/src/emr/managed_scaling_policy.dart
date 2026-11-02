@@ -129,7 +129,7 @@ import 'managed_scaling_policy_state.dart';
 /// 					MaximumCoreCapacityUnits:     pulumi.Int(10),
 /// 				},
 /// 			},
-/// 			ClusterId: sample.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterId: sample.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -139,7 +139,7 @@ import 'managed_scaling_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -148,16 +148,22 @@ import 'managed_scaling_policy_state.dart';
 /// }
 ///
 /// resource "aws_emr_cluster" "sample" {
-///   master_instance_group = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   master_instance_group {
 ///     instance_type = "m4.large"
 ///   }
-///   core_instance_group = {
+///   core_instance_group {
 ///     instance_type = "c4.large"
 ///   }
 ///   name          = "emr-sample-cluster"
 ///   release_label = "emr-5.30.0"
 /// }
-/// resource "aws_emr_managedscalingpolicy" "samplepolicy" {
+/// resource "aws_emr_managed_scaling_policy" "samplepolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_limits {
 ///     unit_type                       = "Instances"
 ///     minimum_capacity_units          = 2
@@ -274,7 +280,7 @@ class ManagedScalingPolicy extends pulumi.CustomResource {
           'aws:emr/managedScalingPolicy:ManagedScalingPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
     computeLimits = registerOutput<List<ManagedScalingPolicyComputeLimit>>('computeLimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedScalingPolicyComputeLimit>(guardedValue, (value) => ManagedScalingPolicyComputeLimit.fromMap((value as Map).cast<String, dynamic>())); });

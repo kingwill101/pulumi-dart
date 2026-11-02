@@ -54,7 +54,7 @@ import 'account_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,6 +63,9 @@ import 'account_state.dart';
 /// }
 ///
 /// resource "aws_securityhub_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -128,7 +131,7 @@ class Account extends pulumi.CustomResource {
           'aws:securityhub/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoEnableControls = registerOutput<bool?>('autoEnableControls');

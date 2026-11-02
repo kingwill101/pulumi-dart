@@ -158,8 +158,8 @@ import 'identity_pool_provider_principal_tag_state.dart';
 /// 		}
 /// 		exampleUserPoolClient, err := cognito.NewUserPoolClient(ctx, "example", &cognito.UserPoolClientArgs{
 /// 			Name:                       pulumi.String("client"),
-/// 			UserPoolId:                 example.ID().ToIDOutput().ToStringOutput(),
-/// 			SupportedIdentityProviders: pulumi.StringArray(invokeCompact.Result),
+/// 			UserPoolId:                 example.ID(),
+/// 			SupportedIdentityProviders: pulumi.ToStringArray(invokeCompact.Result),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -167,7 +167,7 @@ import 'identity_pool_provider_principal_tag_state.dart';
 /// 		exampleIdentityPool, err := cognito.NewIdentityPool(ctx, "example", &cognito.IdentityPoolArgs{
 /// 			CognitoIdentityProviders: cognito.IdentityPoolCognitoIdentityProviderArray{
 /// 				&cognito.IdentityPoolCognitoIdentityProviderArgs{
-/// 					ClientId:             exampleUserPoolClient.ID().ToIDOutput().ToStringOutput(),
+/// 					ClientId:             exampleUserPoolClient.ID(),
 /// 					ProviderName:         example.Endpoint,
 /// 					ServerSideTokenCheck: pulumi.Bool(false),
 /// 				},
@@ -179,7 +179,7 @@ import 'identity_pool_provider_principal_tag_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewIdentityPoolProviderPrincipalTag(ctx, "example", &cognito.IdentityPoolProviderPrincipalTagArgs{
-/// 			IdentityPoolId:       exampleIdentityPool.ID().ToIDOutput().ToStringOutput(),
+/// 			IdentityPoolId:       exampleIdentityPool.ID(),
 /// 			IdentityProviderName: example.Endpoint,
 /// 			UseDefaults:          pulumi.Bool(false),
 /// 			PrincipalTags: pulumi.StringMap{
@@ -194,7 +194,7 @@ import 'identity_pool_provider_principal_tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -205,27 +205,39 @@ import 'identity_pool_provider_principal_tag_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpool" "example" {
+/// resource "aws_cognito_user_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "user pool"
 ///   auto_verified_attributes = ["email"]
 /// }
-/// resource "aws_cognito_userpoolclient" "example" {
+/// resource "aws_cognito_user_pool_client" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "client"
-///   user_pool_id                 = aws_cognito_userpool.example.id
+///   user_pool_id                 = aws_cognito_user_pool.example.id
 ///   supported_identity_providers = compact(["COGNITO"])
 /// }
-/// resource "aws_cognito_identitypool" "example" {
+/// resource "aws_cognito_identity_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cognito_identity_providers {
-///     client_id               = aws_cognito_userpoolclient.example.id
-///     provider_name           = aws_cognito_userpool.example.endpoint
+///     client_id               = aws_cognito_user_pool_client.example.id
+///     provider_name           = aws_cognito_user_pool.example.endpoint
 ///     server_side_token_check = false
 ///   }
 ///   identity_pool_name               = "identity pool"
 ///   allow_unauthenticated_identities = false
 /// }
-/// resource "aws_cognito_identitypoolproviderprincipaltag" "example" {
-///   identity_pool_id       = aws_cognito_identitypool.example.id
-///   identity_provider_name = aws_cognito_userpool.example.endpoint
+/// resource "aws_cognito_identity_pool_provider_principal_tag" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   identity_pool_id       = aws_cognito_identity_pool.example.id
+///   identity_provider_name = aws_cognito_user_pool.example.endpoint
 ///   use_defaults           = false
 ///   principal_tags = {
 ///     "test" = "value"
@@ -369,7 +381,7 @@ class IdentityPoolProviderPrincipalTag extends pulumi.CustomResource {
           'aws:cognito/identityPoolProviderPrincipalTag:IdentityPoolProviderPrincipalTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     identityPoolId = registerOutput<String>('identityPoolId');
     identityProviderName = registerOutput<String>('identityProviderName');

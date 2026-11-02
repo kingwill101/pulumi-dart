@@ -168,7 +168,7 @@ import 'domain_permissions_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -176,8 +176,8 @@ import 'domain_permissions_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "test" {
-///   statements {
+/// data "aws_iam_policy_document" "test" {
+///   statement {
 ///     principals {
 ///       type        = "*"
 ///       identifiers = ["*"]
@@ -189,15 +189,24 @@ import 'domain_permissions_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "domain key"
 /// }
 /// resource "aws_codeartifact_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain         = "example"
 ///   encryption_key = aws_kms_key.example.arn
 /// }
-/// resource "aws_codeartifact_domainpermissions" "test" {
+/// resource "aws_codeartifact_domain_permissions" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain          = aws_codeartifact_domain.example.domain
-///   policy_document = data.aws_iam_getpolicydocument.test.json
+///   policy_document = data.aws_iam_policy_document.test.json
 /// }
 /// ```
 /// ```java
@@ -334,7 +343,7 @@ class DomainPermissions extends pulumi.CustomResource {
           'aws:codeartifact/domainPermissions:DomainPermissions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     domain = registerOutput<String>('domain');
     domainOwner = registerOutput<String>('domainOwner');

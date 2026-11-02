@@ -67,7 +67,7 @@ import 'user_pool_domain_state.dart';
 /// 		}
 /// 		_, err = cognito.NewUserPoolDomain(ctx, "main", &cognito.UserPoolDomainArgs{
 /// 			Domain:     pulumi.String("example-domain"),
-/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -77,7 +77,7 @@ import 'user_pool_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -85,11 +85,17 @@ import 'user_pool_domain_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpooldomain" "main" {
+/// resource "aws_cognito_user_pool_domain" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain       = "example-domain"
-///   user_pool_id = aws_cognito_userpool.example.id
+///   user_pool_id = aws_cognito_user_pool.example.id
 /// }
-/// resource "aws_cognito_userpool" "example" {
+/// resource "aws_cognito_user_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-pool"
 /// }
 /// ```
@@ -252,7 +258,7 @@ import 'user_pool_domain_state.dart';
 /// 		main, err := cognito.NewUserPoolDomain(ctx, "main", &cognito.UserPoolDomainArgs{
 /// 			Domain:         pulumi.String("auth.example.com"),
 /// 			CertificateArn: pulumi.Any(cert.Arn),
-/// 			UserPoolId:     exampleUserPool.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId:     exampleUserPool.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -283,7 +289,7 @@ import 'user_pool_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -291,27 +297,36 @@ import 'user_pool_domain_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_route53_getzone" "example" {
+/// data "aws_route53_zone" "example" {
 ///   name = "example.com"
 /// }
 ///
-/// resource "aws_cognito_userpooldomain" "main" {
+/// resource "aws_cognito_user_pool_domain" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain          = "auth.example.com"
 ///   certificate_arn = cert.arn
-///   user_pool_id    = aws_cognito_userpool.example.id
+///   user_pool_id    = aws_cognito_user_pool.example.id
 /// }
-/// resource "aws_cognito_userpool" "example" {
+/// resource "aws_cognito_user_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-pool"
 /// }
 /// resource "aws_route53_record" "auth-cognito-A" {
-///   aliases {
-///     evaluate_target_health = false
-///     name                   = aws_cognito_userpooldomain.main.cloudfront_distribution
-///     zone_id                = aws_cognito_userpooldomain.main.cloudfront_distribution_zone_id
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   name    = aws_cognito_userpooldomain.main.domain
+///   alias {
+///     evaluate_target_health = false
+///     name                   = aws_cognito_user_pool_domain.main.cloudfront_distribution
+///     zone_id                = aws_cognito_user_pool_domain.main.cloudfront_distribution_zone_id
+///   }
+///   name    = aws_cognito_user_pool_domain.main.domain
 ///   type    = "A"
-///   zone_id = data.aws_route53_getzone.example.zone_id
+///   zone_id = data.aws_route53_zone.example.zone_id
 /// }
 /// ```
 /// ```java
@@ -348,7 +363,7 @@ import 'user_pool_domain_state.dart';
 ///
 ///         var main = new UserPoolDomain("main", UserPoolDomainArgs.builder()
 ///             .domain("auth.example.com")
-///             .certificateArn(cert.arn())
+///             .certificateArn(cert.get("arn"))
 ///             .userPoolId(exampleUserPool.id())
 ///             .build());
 ///
@@ -445,7 +460,7 @@ class UserPoolDomain extends pulumi.CustomResource {
           'aws:cognito/userPoolDomain:UserPoolDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     certificateArn = registerOutput<String?>('certificateArn');

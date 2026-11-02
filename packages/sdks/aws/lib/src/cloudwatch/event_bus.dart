@@ -61,7 +61,7 @@ import 'event_bus_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -69,7 +69,10 @@ import 'event_bus_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_eventbus" "messenger" {
+/// resource "aws_cloudwatch_event_bus" "messenger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "chat-messages"
 /// }
 /// ```
@@ -185,7 +188,7 @@ import 'event_bus_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -193,14 +196,17 @@ import 'event_bus_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_cloudwatch_geteventsource" "examplepartner" {
+/// data "aws_cloudwatch_event_source" "examplepartner" {
 ///   name_prefix = "aws.partner/example.com"
 /// }
 ///
-/// resource "aws_cloudwatch_eventbus" "examplepartner" {
-///   name              = data.aws_cloudwatch_geteventsource.examplepartner.name
+/// resource "aws_cloudwatch_event_bus" "examplepartner" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name              = data.aws_cloudwatch_event_source.examplepartner.name
 ///   description       = "Event bus for example partner events"
-///   event_source_name = data.aws_cloudwatch_geteventsource.examplepartner.name
+///   event_source_name = data.aws_cloudwatch_event_source.examplepartner.name
 /// }
 /// ```
 /// ```java
@@ -1274,7 +1280,7 @@ import 'event_bus_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1282,24 +1288,24 @@ import 'event_bus_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_iam_getpolicydocument" "bucket" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "bucket" {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "s3:x-amz-acl"
 ///       values   = ["bucket-owner-full-control"]
 ///     }
-///     conditions {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "aws:SourceAccount"
-///       values   = [data.aws_getcalleridentity.current.account_id]
+///       values   = [data.aws_caller_identity.current.account_id]
 ///     }
-///     conditions {
+///     condition {
 ///       test     = "ArnLike"
 ///       variable = "aws:SourceArn"
-///       values   = [aws_cloudwatch_logdeliverysource.info_logs.arn, aws_cloudwatch_logdeliverysource.error_logs.arn, aws_cloudwatch_logdeliverysource.trace_logs.arn]
+///       values   = [aws_cloudwatch_log_delivery_source.info_logs.arn, aws_cloudwatch_log_delivery_source.error_logs.arn, aws_cloudwatch_log_delivery_source.trace_logs.arn]
 ///     }
 ///     principals {
 ///       type        = "Service"
@@ -1307,20 +1313,20 @@ import 'event_bus_state.dart';
 ///     }
 ///     effect    = "Allow"
 ///     actions   = ["s3:PutObject"]
-///     resources = ["${aws_s3_bucket.example.arn}/AWSLogs/${data.aws_getcalleridentity.current.account_id}/EventBusLogs/*"]
+///     resources = ["${aws_s3_bucket.example.arn}/AWSLogs/${data.aws_caller_identity.current.account_id}/EventBusLogs/*"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "cwlogs" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "cwlogs" {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "aws:SourceAccount"
-///       values   = [data.aws_getcalleridentity.current.account_id]
+///       values   = [data.aws_caller_identity.current.account_id]
 ///     }
-///     conditions {
+///     condition {
 ///       test     = "ArnLike"
 ///       variable = "aws:SourceArn"
-///       values   = [aws_cloudwatch_logdeliverysource.info_logs.arn, aws_cloudwatch_logdeliverysource.error_logs.arn, aws_cloudwatch_logdeliverysource.trace_logs.arn]
+///       values   = [aws_cloudwatch_log_delivery_source.info_logs.arn, aws_cloudwatch_log_delivery_source.error_logs.arn, aws_cloudwatch_log_delivery_source.trace_logs.arn]
 ///     }
 ///     principals {
 ///       type        = "Service"
@@ -1328,116 +1334,179 @@ import 'event_bus_state.dart';
 ///     }
 ///     effect    = "Allow"
 ///     actions   = ["logs:CreateLogStream", "logs:PutLogEvents"]
-///     resources = ["${aws_cloudwatch_loggroup.event_bus_logs.arn}:log-stream:*"]
+///     resources = ["${aws_cloudwatch_log_group.event_bus_logs.arn}:log-stream:*"]
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_eventbus" "example" {
-///   log_config = {
+/// resource "aws_cloudwatch_event_bus" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   log_config {
 ///     include_detail = "FULL"
 ///     level          = "TRACE"
 ///   }
 ///   name = "example-event-bus"
 /// }
 /// # CloudWatch Log Delivery Sources for INFO, ERROR, and TRACE logs
-/// resource "aws_cloudwatch_logdeliverysource" "info_logs" {
-///   name         ="EventBusSource-${aws_cloudwatch_eventbus.example.name}-INFO_LOGS"
+/// resource "aws_cloudwatch_log_delivery_source" "info_logs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name         ="EventBusSource-${aws_cloudwatch_event_bus.example.name}-INFO_LOGS"
 ///   log_type     = "INFO_LOGS"
-///   resource_arn = aws_cloudwatch_eventbus.example.arn
+///   resource_arn = aws_cloudwatch_event_bus.example.arn
 /// }
-/// resource "aws_cloudwatch_logdeliverysource" "error_logs" {
-///   name         ="EventBusSource-${aws_cloudwatch_eventbus.example.name}-ERROR_LOGS"
+/// resource "aws_cloudwatch_log_delivery_source" "error_logs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name         ="EventBusSource-${aws_cloudwatch_event_bus.example.name}-ERROR_LOGS"
 ///   log_type     = "ERROR_LOGS"
-///   resource_arn = aws_cloudwatch_eventbus.example.arn
+///   resource_arn = aws_cloudwatch_event_bus.example.arn
 /// }
-/// resource "aws_cloudwatch_logdeliverysource" "trace_logs" {
-///   name         ="EventBusSource-${aws_cloudwatch_eventbus.example.name}-TRACE_LOGS"
+/// resource "aws_cloudwatch_log_delivery_source" "trace_logs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name         ="EventBusSource-${aws_cloudwatch_event_bus.example.name}-TRACE_LOGS"
 ///   log_type     = "TRACE_LOGS"
-///   resource_arn = aws_cloudwatch_eventbus.example.arn
+///   resource_arn = aws_cloudwatch_event_bus.example.arn
 /// }
 /// # Logging to S3 Bucket
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example-event-bus-logs"
 /// }
-/// resource "aws_s3_bucketpolicy" "example" {
+/// resource "aws_s3_bucket_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.bucket
-///   policy = data.aws_iam_getpolicydocument.bucket.json
+///   policy = data.aws_iam_policy_document.bucket.json
 /// }
-/// resource "aws_cloudwatch_logdeliverydestination" "s3" {
-///   delivery_destination_configuration = {
+/// resource "aws_cloudwatch_log_delivery_destination" "s3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_destination_configuration {
 ///     destination_resource_arn = aws_s3_bucket.example.arn
 ///   }
-///   name ="EventsDeliveryDestination-${aws_cloudwatch_eventbus.example.name}-S3"
+///   name ="EventsDeliveryDestination-${aws_cloudwatch_event_bus.example.name}-S3"
 /// }
-/// resource "aws_cloudwatch_logdelivery" "s3_info_logs" {
-///   delivery_destination_arn = aws_cloudwatch_logdeliverydestination.s3.arn
-///   delivery_source_name     = aws_cloudwatch_logdeliverysource.info_logs.name
+/// resource "aws_cloudwatch_log_delivery" "s3_info_logs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_destination_arn = aws_cloudwatch_log_delivery_destination.s3.arn
+///   delivery_source_name     = aws_cloudwatch_log_delivery_source.info_logs.name
 /// }
-/// resource "aws_cloudwatch_logdelivery" "s3_error_logs" {
-///   depends_on               = [aws_cloudwatch_logdelivery.s3_info_logs]
-///   delivery_destination_arn = aws_cloudwatch_logdeliverydestination.s3.arn
-///   delivery_source_name     = aws_cloudwatch_logdeliverysource.error_logs.name
+/// resource "aws_cloudwatch_log_delivery" "s3_error_logs" {
+///   depends_on = [aws_cloudwatch_log_delivery.s3_info_logs]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_destination_arn = aws_cloudwatch_log_delivery_destination.s3.arn
+///   delivery_source_name     = aws_cloudwatch_log_delivery_source.error_logs.name
 /// }
-/// resource "aws_cloudwatch_logdelivery" "s3_trace_logs" {
-///   depends_on               = [aws_cloudwatch_logdelivery.s3_error_logs]
-///   delivery_destination_arn = aws_cloudwatch_logdeliverydestination.s3.arn
-///   delivery_source_name     = aws_cloudwatch_logdeliverysource.trace_logs.name
+/// resource "aws_cloudwatch_log_delivery" "s3_trace_logs" {
+///   depends_on = [aws_cloudwatch_log_delivery.s3_error_logs]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_destination_arn = aws_cloudwatch_log_delivery_destination.s3.arn
+///   delivery_source_name     = aws_cloudwatch_log_delivery_source.trace_logs.name
 /// }
 /// # Logging to CloudWatch Log Group
-/// resource "aws_cloudwatch_loggroup" "event_bus_logs" {
-///   name ="/aws/vendedlogs/events/event-bus/${aws_cloudwatch_eventbus.example.name}"
-/// }
-/// resource "aws_cloudwatch_logresourcepolicy" "example" {
-///   policy_document = data.aws_iam_getpolicydocument.cwlogs.json
-///   policy_name     ="AWSLogDeliveryWrite-${aws_cloudwatch_eventbus.example.name}"
-/// }
-/// resource "aws_cloudwatch_logdeliverydestination" "cwlogs" {
-///   delivery_destination_configuration = {
-///     destination_resource_arn = aws_cloudwatch_loggroup.event_bus_logs.arn
+/// resource "aws_cloudwatch_log_group" "event_bus_logs" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   name ="EventsDeliveryDestination-${aws_cloudwatch_eventbus.example.name}-CWLogs"
+///   name ="/aws/vendedlogs/events/event-bus/${aws_cloudwatch_event_bus.example.name}"
 /// }
-/// resource "aws_cloudwatch_logdelivery" "cwlogs_info_logs" {
-///   depends_on               = [aws_cloudwatch_logdelivery.s3_info_logs]
-///   delivery_destination_arn = aws_cloudwatch_logdeliverydestination.cwlogs.arn
-///   delivery_source_name     = aws_cloudwatch_logdeliverysource.info_logs.name
+/// resource "aws_cloudwatch_log_resource_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy_document = data.aws_iam_policy_document.cwlogs.json
+///   policy_name     ="AWSLogDeliveryWrite-${aws_cloudwatch_event_bus.example.name}"
 /// }
-/// resource "aws_cloudwatch_logdelivery" "cwlogs_error_logs" {
-///   depends_on               = [aws_cloudwatch_logdelivery.s3_error_logs, aws_cloudwatch_logdelivery.cwlogs_info_logs]
-///   delivery_destination_arn = aws_cloudwatch_logdeliverydestination.cwlogs.arn
-///   delivery_source_name     = aws_cloudwatch_logdeliverysource.error_logs.name
+/// resource "aws_cloudwatch_log_delivery_destination" "cwlogs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_destination_configuration {
+///     destination_resource_arn = aws_cloudwatch_log_group.event_bus_logs.arn
+///   }
+///   name ="EventsDeliveryDestination-${aws_cloudwatch_event_bus.example.name}-CWLogs"
 /// }
-/// resource "aws_cloudwatch_logdelivery" "cwlogs_trace_logs" {
-///   depends_on               = [aws_cloudwatch_logdelivery.s3_trace_logs, aws_cloudwatch_logdelivery.cwlogs_error_logs]
-///   delivery_destination_arn = aws_cloudwatch_logdeliverydestination.cwlogs.arn
-///   delivery_source_name     = aws_cloudwatch_logdeliverysource.trace_logs.name
+/// resource "aws_cloudwatch_log_delivery" "cwlogs_info_logs" {
+///   depends_on = [aws_cloudwatch_log_delivery.s3_info_logs]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_destination_arn = aws_cloudwatch_log_delivery_destination.cwlogs.arn
+///   delivery_source_name     = aws_cloudwatch_log_delivery_source.info_logs.name
+/// }
+/// resource "aws_cloudwatch_log_delivery" "cwlogs_error_logs" {
+///   depends_on = [aws_cloudwatch_log_delivery.s3_error_logs, aws_cloudwatch_log_delivery.cwlogs_info_logs]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_destination_arn = aws_cloudwatch_log_delivery_destination.cwlogs.arn
+///   delivery_source_name     = aws_cloudwatch_log_delivery_source.error_logs.name
+/// }
+/// resource "aws_cloudwatch_log_delivery" "cwlogs_trace_logs" {
+///   depends_on = [aws_cloudwatch_log_delivery.s3_trace_logs, aws_cloudwatch_log_delivery.cwlogs_error_logs]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_destination_arn = aws_cloudwatch_log_delivery_destination.cwlogs.arn
+///   delivery_source_name     = aws_cloudwatch_log_delivery_source.trace_logs.name
 /// }
 /// # Logging to Data Firehose
-/// resource "aws_kinesis_firehosedeliverystream" "cloudfront_logs" {
+/// resource "aws_kinesis_firehose_delivery_stream" "cloudfront_logs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tags = {
 ///     "LogDeliveryEnabled" = "true"
 ///   }
 /// }
-/// resource "aws_cloudwatch_logdeliverydestination" "firehose" {
-///   delivery_destination_configuration = {
-///     destination_resource_arn = aws_kinesis_firehosedeliverystream.cloudfront_logs.arn
+/// resource "aws_cloudwatch_log_delivery_destination" "firehose" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   name ="EventsDeliveryDestination-${aws_cloudwatch_eventbus.example.name}-Firehose"
+///   delivery_destination_configuration {
+///     destination_resource_arn = aws_kinesis_firehose_delivery_stream.cloudfront_logs.arn
+///   }
+///   name ="EventsDeliveryDestination-${aws_cloudwatch_event_bus.example.name}-Firehose"
 /// }
-/// resource "aws_cloudwatch_logdelivery" "firehose_info_logs" {
-///   depends_on               = [aws_cloudwatch_logdelivery.cwlogs_info_logs]
-///   delivery_destination_arn = aws_cloudwatch_logdeliverydestination.firehose.arn
-///   delivery_source_name     = aws_cloudwatch_logdeliverysource.info_logs.name
+/// resource "aws_cloudwatch_log_delivery" "firehose_info_logs" {
+///   depends_on = [aws_cloudwatch_log_delivery.cwlogs_info_logs]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_destination_arn = aws_cloudwatch_log_delivery_destination.firehose.arn
+///   delivery_source_name     = aws_cloudwatch_log_delivery_source.info_logs.name
 /// }
-/// resource "aws_cloudwatch_logdelivery" "firehose_error_logs" {
-///   depends_on               = [aws_cloudwatch_logdelivery.cwlogs_error_logs, aws_cloudwatch_logdelivery.firehose_info_logs]
-///   delivery_destination_arn = aws_cloudwatch_logdeliverydestination.firehose.arn
-///   delivery_source_name     = aws_cloudwatch_logdeliverysource.error_logs.name
+/// resource "aws_cloudwatch_log_delivery" "firehose_error_logs" {
+///   depends_on = [aws_cloudwatch_log_delivery.cwlogs_error_logs, aws_cloudwatch_log_delivery.firehose_info_logs]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_destination_arn = aws_cloudwatch_log_delivery_destination.firehose.arn
+///   delivery_source_name     = aws_cloudwatch_log_delivery_source.error_logs.name
 /// }
-/// resource "aws_cloudwatch_logdelivery" "firehose_trace_logs" {
-///   depends_on               = [aws_cloudwatch_logdelivery.cwlogs_trace_logs, aws_cloudwatch_logdelivery.firehose_error_logs]
-///   delivery_destination_arn = aws_cloudwatch_logdeliverydestination.firehose.arn
-///   delivery_source_name     = aws_cloudwatch_logdeliverysource.trace_logs.name
+/// resource "aws_cloudwatch_log_delivery" "firehose_trace_logs" {
+///   depends_on = [aws_cloudwatch_log_delivery.cwlogs_trace_logs, aws_cloudwatch_log_delivery.firehose_error_logs]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_destination_arn = aws_cloudwatch_log_delivery_destination.firehose.arn
+///   delivery_source_name     = aws_cloudwatch_log_delivery_source.trace_logs.name
 /// }
 /// ```
 /// ```java
@@ -1975,7 +2044,7 @@ class EventBus extends pulumi.CustomResource {
           'aws:cloudwatch/eventBus:EventBus',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deadLetterConfig = registerOutput<EventBusDeadLetterConfig?>('deadLetterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventBusDeadLetterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -101,7 +101,7 @@ import 'filter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -110,8 +110,11 @@ import 'filter_state.dart';
 /// }
 ///
 /// resource "aws_inspector2_filter" "example" {
-///   filter_criterias {
-///     aws_account_ids {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filter_criteria {
+///     aws_account_id {
 ///       comparison = "EQUALS"
 ///       value      = "111222333444"
 ///     }
@@ -219,7 +222,7 @@ class Filter extends pulumi.CustomResource {
           'aws:inspector2/filter:Filter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     arn = registerOutput<String>('arn');

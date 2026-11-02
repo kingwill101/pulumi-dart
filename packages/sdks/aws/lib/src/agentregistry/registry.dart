@@ -80,7 +80,7 @@ import 'registry_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,7 +89,10 @@ import 'registry_timeouts.dart';
 /// }
 ///
 /// resource "aws_agentregistry_registry" "example" {
-///   discovery_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   discovery_configuration {
 ///     authorizer_type = "AWS_IAM"
 ///   }
 ///   name = "example-registry"
@@ -209,7 +212,7 @@ import 'registry_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -218,7 +221,10 @@ import 'registry_timeouts.dart';
 /// }
 ///
 /// resource "aws_agentregistry_registry" "example" {
-///   discovery_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   discovery_configuration {
 ///     authorizer_type = "AWS_IAM"
 ///   }
 ///   name        = "example-registry"
@@ -355,7 +361,7 @@ import 'registry_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -364,10 +370,13 @@ import 'registry_timeouts.dart';
 /// }
 ///
 /// resource "aws_agentregistry_registry" "example" {
-///   approval_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   approval_configuration {
 ///     auto_approval_rules = ["APPROVE_ALL"]
 ///   }
-///   discovery_configuration = {
+///   discovery_configuration {
 ///     authorizer_type = "AWS_IAM"
 ///   }
 ///   name = "example-registry"
@@ -595,7 +604,7 @@ import 'registry_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -604,23 +613,26 @@ import 'registry_timeouts.dart';
 /// }
 ///
 /// resource "aws_agentregistry_registry" "example" {
-///   discovery_configuration = {
-///     authorizer_configuration = {
-///       custom_jwt_authorizer = {
-///         custom_claims = [{
-///           "authorizingClaimMatchValue" = {
-///             "claimMatchValue" = {
-///               "matchValueString" = "authorized-user"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   discovery_configuration {
+///     authorizer_configuration {
+///       custom_jwt_authorizer {
+///         custom_claim {
+///           authorizing_claim_match_value {
+///             claim_match_value {
+///               match_value_string = "authorized-user"
 ///             }
-///             "claimMatchOperator" = "EQUALS"
+///             claim_match_operator = "EQUALS"
 ///           }
-///           "inboundTokenClaimName"      = "sub"
-///           "inboundTokenClaimValueType" = "STRING"
-///         }]
-///         discovery_url     = "https://example.com/.well-known/openid-configuration"
-///         allowed_audiences = ["https://api.example.com"]
-///         allowed_clients   = ["client-id-1"]
-///         allowed_scopes    = ["read", "write"]
+///           inbound_token_claim_name       = "sub"
+///           inbound_token_claim_value_type = "STRING"
+///         }
+///         discovery_url    = "https://example.com/.well-known/openid-configuration"
+///         allowed_audience = ["https://api.example.com"]
+///         allowed_clients  = ["client-id-1"]
+///         allowed_scopes   = ["read", "write"]
 ///       }
 ///     }
 ///     authorizer_type = "CUSTOM_JWT"
@@ -771,7 +783,7 @@ class Registry extends pulumi.CustomResource {
           'aws:agentregistry/registry:Registry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     approvalConfiguration = registerOutput<RegistryApprovalConfiguration?>('approvalConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryApprovalConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoDetectionConfiguration = registerOutput<RegistryAutoDetectionConfiguration?>('autoDetectionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryAutoDetectionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

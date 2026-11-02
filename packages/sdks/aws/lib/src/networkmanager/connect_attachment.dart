@@ -100,7 +100,7 @@ import 'connect_attachment_state.dart';
 /// Protocol: pulumi.String("GRE"),
 /// },
 /// CoreNetworkId: pulumi.Any(exampleAwsccNetworkmanagerCoreNetwork.Id),
-/// TransportAttachmentId: example.ID().ToIDOutput().ToStringOutput(),
+/// TransportAttachmentId: example.ID(),
 /// EdgeLocation: example.EdgeLocation,
 /// })
 /// if err != nil {
@@ -118,7 +118,7 @@ import 'connect_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -126,18 +126,24 @@ import 'connect_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_vpcattachment" "example" {
+/// resource "aws_networkmanager_vpc_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_arns     = exampleAwsSubnet[*].arn
 ///   core_network_id = exampleAwsccNetworkmanagerCoreNetwork.id
 ///   vpc_arn         = exampleAwsVpc.arn
 /// }
-/// resource "aws_networkmanager_connectattachment" "example" {
-///   options = {
+/// resource "aws_networkmanager_connect_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   options {
 ///     protocol = "GRE"
 ///   }
 ///   core_network_id         = exampleAwsccNetworkmanagerCoreNetwork.id
-///   transport_attachment_id = aws_networkmanager_vpcattachment.example.id
-///   edge_location           = aws_networkmanager_vpcattachment.example.edge_location
+///   transport_attachment_id = aws_networkmanager_vpc_attachment.example.id
+///   edge_location           = aws_networkmanager_vpc_attachment.example.edge_location
 /// }
 /// ```
 /// ```java
@@ -165,16 +171,16 @@ import 'connect_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcAttachment("example", VpcAttachmentArgs.builder()
-///             .subnetArns(exampleAwsSubnet.stream().map(element -> element.arn()).collect(toList()))
-///             .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.id())
-///             .vpcArn(exampleAwsVpc.arn())
+///             .subnetArns(exampleAwsSubnet.stream().map(element -> element.get("arn")).collect(toList()))
+///             .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.get("id"))
+///             .vpcArn(exampleAwsVpc.get("arn"))
 ///             .build());
 ///
 ///         var exampleConnectAttachment = new ConnectAttachment("exampleConnectAttachment", ConnectAttachmentArgs.builder()
 ///             .options(ConnectAttachmentOptionsArgs.builder()
 ///                 .protocol("GRE")
 ///                 .build())
-///             .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.id())
+///             .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.get("id"))
 ///             .transportAttachmentId(example.id())
 ///             .edgeLocation(example.edgeLocation())
 ///             .build());
@@ -306,7 +312,7 @@ import 'connect_attachment_state.dart';
 /// return err
 /// }
 /// exampleAttachmentAccepter, err := networkmanager.NewAttachmentAccepter(ctx, "example", &networkmanager.AttachmentAccepterArgs{
-/// AttachmentId: example.ID().ToIDOutput().ToStringOutput(),
+/// AttachmentId: example.ID(),
 /// AttachmentType: example.AttachmentType,
 /// })
 /// if err != nil {
@@ -317,7 +323,7 @@ import 'connect_attachment_state.dart';
 /// Protocol: pulumi.String("GRE"),
 /// },
 /// CoreNetworkId: pulumi.Any(exampleAwsccNetworkmanagerCoreNetwork.Id),
-/// TransportAttachmentId: example.ID().ToIDOutput().ToStringOutput(),
+/// TransportAttachmentId: example.ID(),
 /// EdgeLocation: example.EdgeLocation,
 /// }, pulumi.DependsOn([]pulumi.Resource{
 /// exampleAttachmentAccepter,
@@ -326,7 +332,7 @@ import 'connect_attachment_state.dart';
 /// return err
 /// }
 /// _, err = networkmanager.NewAttachmentAccepter(ctx, "example2", &networkmanager.AttachmentAccepterArgs{
-/// AttachmentId: exampleConnectAttachment.ID().ToIDOutput().ToStringOutput(),
+/// AttachmentId: exampleConnectAttachment.ID(),
 /// AttachmentType: exampleConnectAttachment.AttachmentType,
 /// })
 /// if err != nil {
@@ -344,7 +350,7 @@ import 'connect_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -352,27 +358,39 @@ import 'connect_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_vpcattachment" "example" {
+/// resource "aws_networkmanager_vpc_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_arns     = exampleAwsSubnet[*].arn
 ///   core_network_id = exampleAwsccNetworkmanagerCoreNetwork.id
 ///   vpc_arn         = exampleAwsVpc.arn
 /// }
-/// resource "aws_networkmanager_attachmentaccepter" "example" {
-///   attachment_id   = aws_networkmanager_vpcattachment.example.id
-///   attachment_type = aws_networkmanager_vpcattachment.example.attachment_type
+/// resource "aws_networkmanager_attachment_accepter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   attachment_id   = aws_networkmanager_vpc_attachment.example.id
+///   attachment_type = aws_networkmanager_vpc_attachment.example.attachment_type
 /// }
-/// resource "aws_networkmanager_connectattachment" "example" {
-///   depends_on = [aws_networkmanager_attachmentaccepter.example]
-///   options = {
+/// resource "aws_networkmanager_connect_attachment" "example" {
+///   depends_on = [aws_networkmanager_attachment_accepter.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   options {
 ///     protocol = "GRE"
 ///   }
 ///   core_network_id         = exampleAwsccNetworkmanagerCoreNetwork.id
-///   transport_attachment_id = aws_networkmanager_vpcattachment.example.id
-///   edge_location           = aws_networkmanager_vpcattachment.example.edge_location
+///   transport_attachment_id = aws_networkmanager_vpc_attachment.example.id
+///   edge_location           = aws_networkmanager_vpc_attachment.example.edge_location
 /// }
-/// resource "aws_networkmanager_attachmentaccepter" "example2" {
-///   attachment_id   = aws_networkmanager_connectattachment.example.id
-///   attachment_type = aws_networkmanager_connectattachment.example.attachment_type
+/// resource "aws_networkmanager_attachment_accepter" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   attachment_id   = aws_networkmanager_connect_attachment.example.id
+///   attachment_type = aws_networkmanager_connect_attachment.example.attachment_type
 /// }
 /// ```
 /// ```java
@@ -403,9 +421,9 @@ import 'connect_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcAttachment("example", VpcAttachmentArgs.builder()
-///             .subnetArns(exampleAwsSubnet.stream().map(element -> element.arn()).collect(toList()))
-///             .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.id())
-///             .vpcArn(exampleAwsVpc.arn())
+///             .subnetArns(exampleAwsSubnet.stream().map(element -> element.get("arn")).collect(toList()))
+///             .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.get("id"))
+///             .vpcArn(exampleAwsVpc.get("arn"))
 ///             .build());
 ///
 ///         var exampleAttachmentAccepter = new AttachmentAccepter("exampleAttachmentAccepter", AttachmentAccepterArgs.builder()
@@ -417,7 +435,7 @@ import 'connect_attachment_state.dart';
 ///             .options(ConnectAttachmentOptionsArgs.builder()
 ///                 .protocol("GRE")
 ///                 .build())
-///             .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.id())
+///             .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.get("id"))
 ///             .transportAttachmentId(example.id())
 ///             .edgeLocation(example.edgeLocation())
 ///             .build(), CustomResourceOptions.builder()
@@ -489,7 +507,7 @@ class ConnectAttachment extends pulumi.CustomResource {
           'aws:networkmanager/connectAttachment:ConnectAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachmentId = registerOutput<String>('attachmentId');

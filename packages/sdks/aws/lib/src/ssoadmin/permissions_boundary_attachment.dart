@@ -195,7 +195,7 @@ import 'permissions_boundary_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -203,14 +203,20 @@ import 'permissions_boundary_attachment_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
 ///
-/// resource "aws_ssoadmin_permissionset" "example" {
+/// resource "aws_ssoadmin_permission_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "Example"
-///   instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+///   instance_arn = data.aws_ssoadmin_instances.example.arns[0]
 /// }
 /// resource "aws_iam_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "TestPolicy"
 ///   description = "My test policy"
 ///   policy = jsonencode({
@@ -222,15 +228,18 @@ import 'permissions_boundary_attachment_state.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_ssoadmin_permissionsboundaryattachment" "example" {
-///   permissions_boundary = {
-///     customer_managed_policy_reference = {
+/// resource "aws_ssoadmin_permissions_boundary_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   permissions_boundary {
+///     customer_managed_policy_reference {
 ///       name = aws_iam_policy.example.name
 ///       path = "/"
 ///     }
 ///   }
-///   instance_arn       = aws_ssoadmin_permissionset.example.instance_arn
-///   permission_set_arn = aws_ssoadmin_permissionset.example.arn
+///   instance_arn       = aws_ssoadmin_permission_set.example.instance_arn
+///   permission_set_arn = aws_ssoadmin_permission_set.example.arn
 /// }
 /// ```
 /// ```java
@@ -410,7 +419,7 @@ import 'permissions_boundary_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -418,8 +427,11 @@ import 'permissions_boundary_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssoadmin_permissionsboundaryattachment" "example" {
-///   permissions_boundary = {
+/// resource "aws_ssoadmin_permissions_boundary_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   permissions_boundary {
 ///     managed_policy_arn = "arn:aws:iam::aws:policy/ReadOnlyAccess"
 ///   }
 ///   instance_arn       = exampleAwsSsoadminPermissionSet.instanceArn
@@ -452,8 +464,8 @@ import 'permissions_boundary_attachment_state.dart';
 ///             .permissionsBoundary(PermissionsBoundaryAttachmentPermissionsBoundaryArgs.builder()
 ///                 .managedPolicyArn("arn:aws:iam::aws:policy/ReadOnlyAccess")
 ///                 .build())
-///             .instanceArn(exampleAwsSsoadminPermissionSet.instanceArn())
-///             .permissionSetArn(exampleAwsSsoadminPermissionSet.arn())
+///             .instanceArn(exampleAwsSsoadminPermissionSet.get("instanceArn"))
+///             .permissionSetArn(exampleAwsSsoadminPermissionSet.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -500,7 +512,7 @@ class PermissionsBoundaryAttachment extends pulumi.CustomResource {
           'aws:ssoadmin/permissionsBoundaryAttachment:PermissionsBoundaryAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     instanceArn = registerOutput<String>('instanceArn');
     permissionSetArn = registerOutput<String>('permissionSetArn');

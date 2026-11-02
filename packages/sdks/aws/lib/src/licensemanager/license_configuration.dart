@@ -98,7 +98,7 @@ import 'license_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -106,7 +106,10 @@ import 'license_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_licensemanager_licenseconfiguration" "example" {
+/// resource "aws_licensemanager_license_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "Example"
 ///   description              = "Example"
 ///   license_count            = 10
@@ -212,7 +215,7 @@ class LicenseConfiguration extends pulumi.CustomResource {
           'aws:licensemanager/licenseConfiguration:LicenseConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

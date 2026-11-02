@@ -88,7 +88,7 @@ import 'account_vdm_attributes_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,11 +96,14 @@ import 'account_vdm_attributes_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_accountvdmattributes" "example" {
-///   dashboard_attributes = {
+/// resource "aws_sesv2_account_vdm_attributes" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   dashboard_attributes {
 ///     engagement_metrics = "ENABLED"
 ///   }
-///   guardian_attributes = {
+///   guardian_attributes {
 ///     optimized_shared_delivery = "ENABLED"
 ///   }
 ///   vdm_enabled = "ENABLED"
@@ -186,7 +189,7 @@ class AccountVdmAttributes extends pulumi.CustomResource {
           'aws:sesv2/accountVdmAttributes:AccountVdmAttributes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     dashboardAttributes = registerOutput<AccountVdmAttributesDashboardAttributes>('dashboardAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountVdmAttributesDashboardAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     guardianAttributes = registerOutput<AccountVdmAttributesGuardianAttributes>('guardianAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountVdmAttributesGuardianAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });

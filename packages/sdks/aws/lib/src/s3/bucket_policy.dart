@@ -156,7 +156,7 @@ import 'bucket_policy_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = s3.NewBucketPolicy(ctx, "allow_access_from_another_account", &s3.BucketPolicyArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Policy: allowAccessFromAnotherAccount.Json(),
 /// 		})
 /// 		if err != nil {
@@ -167,7 +167,7 @@ import 'bucket_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -175,8 +175,8 @@ import 'bucket_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "allowAccessFromAnotherAccount" {
-///   statements {
+/// data "aws_iam_policy_document" "allowAccessFromAnotherAccount" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["123456789012"]
@@ -187,11 +187,17 @@ import 'bucket_policy_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-tf-test-bucket"
 /// }
-/// resource "aws_s3_bucketpolicy" "allow_access_from_another_account" {
+/// resource "aws_s3_bucket_policy" "allow_access_from_another_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
-///   policy = data.aws_iam_getpolicydocument.allowAccessFromAnotherAccount.json
+///   policy = data.aws_iam_policy_document.allowAccessFromAnotherAccount.json
 /// }
 /// ```
 /// ```java
@@ -320,7 +326,7 @@ class BucketPolicy extends pulumi.CustomResource {
           'aws:s3/bucketPolicy:BucketPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     policy = registerOutput<String>('policy');

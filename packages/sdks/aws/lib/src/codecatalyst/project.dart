@@ -68,7 +68,7 @@ import 'project_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,6 +77,9 @@ import 'project_state.dart';
 /// }
 ///
 /// resource "aws_codecatalyst_project" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   space_name   = "myproject"
 ///   display_name = "MyProject"
 ///   description  = "My CodeCatalyst Project created using Pulumi"
@@ -156,7 +159,7 @@ class Project extends pulumi.CustomResource {
           'aws:codecatalyst/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

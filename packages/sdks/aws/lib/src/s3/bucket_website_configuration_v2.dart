@@ -132,7 +132,7 @@ import 'bucket_website_configuration_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -140,18 +140,21 @@ import 'bucket_website_configuration_v2_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketwebsiteconfiguration" "example" {
-///   index_document = {
+/// resource "aws_s3_bucket_website_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   index_document {
 ///     suffix = "index.html"
 ///   }
-///   error_document = {
+///   error_document {
 ///     key = "error.html"
 ///   }
-///   routing_rules {
-///     condition = {
+///   routing_rule {
+///     condition {
 ///       key_prefix_equals = "docs/"
 ///     }
-///     redirect = {
+///     redirect {
 ///       replace_key_prefix_with = "documents/"
 ///     }
 ///   }
@@ -199,7 +202,7 @@ import 'bucket_website_configuration_v2_state.dart';
 ///                     .replaceKeyPrefixWith("documents/")
 ///                     .build())
 ///                 .build())
-///             .bucket(exampleAwsS3Bucket.id())
+///             .bucket(exampleAwsS3Bucket.get("id"))
 ///             .build());
 ///
 ///     }
@@ -339,7 +342,7 @@ import 'bucket_website_configuration_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -347,15 +350,28 @@ import 'bucket_website_configuration_v2_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketwebsiteconfiguration" "example" {
-///   index_document = {
+/// resource "aws_s3_bucket_website_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   index_document {
 ///     suffix = "index.html"
 ///   }
-///   error_document = {
+///   error_document {
 ///     key = "error.html"
 ///   }
-///   bucket               = exampleAwsS3Bucket.id
-///   routing_rule_details = "[{\n    \\\"Condition\\\": {\n        \\\"KeyPrefixEquals\\\": \\\"docs/\\\"\n    },\n    \\\"Redirect\\\": {\n        \\\"ReplaceKeyPrefixWith\\\": \\\"\\\"\n    }\n}]\n"
+///   bucket        = exampleAwsS3Bucket.id
+///   routing_rules = <<EOF
+/// [{
+///     \"Condition\": {
+///         \"KeyPrefixEquals\": \"docs/\"
+///     },
+///     \"Redirect\": {
+///         \"ReplaceKeyPrefixWith\": \"\"
+///     }
+/// }]
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -388,7 +404,7 @@ import 'bucket_website_configuration_v2_state.dart';
 ///             .errorDocument(BucketWebsiteConfigurationErrorDocumentArgs.builder()
 ///                 .key("error.html")
 ///                 .build())
-///             .bucket(exampleAwsS3Bucket.id())
+///             .bucket(exampleAwsS3Bucket.get("id"))
 ///             .routingRuleDetails("""
 /// [{
 ///     \"Condition\": {
@@ -490,7 +506,7 @@ class BucketWebsiteConfigurationV2 extends pulumi.CustomResource {
           'aws:s3/bucketWebsiteConfigurationV2:BucketWebsiteConfigurationV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     errorDocument = registerOutput<BucketWebsiteConfigurationV2ErrorDocument?>('errorDocument', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteConfigurationV2ErrorDocument.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -104,7 +104,7 @@ import 'ip_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -112,7 +112,10 @@ import 'ip_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_ipset" "example" {
+/// resource "aws_wafv2_ip_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   description        = "Example IP set"
 ///   scope              = "REGIONAL"
@@ -236,7 +239,7 @@ class IpSet extends pulumi.CustomResource {
           'aws:wafv2/ipSet:IpSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     addresses = registerOutput<List<String>?>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');

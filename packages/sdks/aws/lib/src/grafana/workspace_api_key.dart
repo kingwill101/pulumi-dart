@@ -72,7 +72,7 @@ import 'workspace_api_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -80,7 +80,10 @@ import 'workspace_api_key_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_grafana_workspaceapikey" "key" {
+/// resource "aws_grafana_workspace_api_key" "key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_name        = "test-key"
 ///   key_role        = "VIEWER"
 ///   seconds_to_live = 3600
@@ -112,7 +115,7 @@ import 'workspace_api_key_state.dart';
 ///             .keyName("test-key")
 ///             .keyRole("VIEWER")
 ///             .secondsToLive(3600)
-///             .workspaceId(test.id())
+///             .workspaceId(test.get("id"))
 ///             .build());
 ///
 ///     }
@@ -154,7 +157,7 @@ class WorkspaceApiKey extends pulumi.CustomResource {
           'aws:grafana/workspaceApiKey:WorkspaceApiKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['key'],
         ) {
     key = registerOutput<String>('key', isSecret: true);

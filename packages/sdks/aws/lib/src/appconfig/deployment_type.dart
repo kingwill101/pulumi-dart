@@ -95,7 +95,7 @@ import 'deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -104,6 +104,9 @@ import 'deployment_state.dart';
 /// }
 ///
 /// resource "aws_appconfig_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id           = exampleAwsAppconfigApplication.id
 ///   configuration_profile_id = exampleAwsAppconfigConfigurationProfile.configurationProfileId
 ///   configuration_version    = exampleAwsAppconfigHostedConfigurationVersion.versionNumber
@@ -138,13 +141,13 @@ import 'deployment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Deployment("example", DeploymentArgs.builder()
-///             .applicationId(exampleAwsAppconfigApplication.id())
-///             .configurationProfileId(exampleAwsAppconfigConfigurationProfile.configurationProfileId())
-///             .configurationVersion(exampleAwsAppconfigHostedConfigurationVersion.versionNumber())
-///             .deploymentStrategyId(exampleAwsAppconfigDeploymentStrategy.id())
+///             .applicationId(exampleAwsAppconfigApplication.get("id"))
+///             .configurationProfileId(exampleAwsAppconfigConfigurationProfile.get("configurationProfileId"))
+///             .configurationVersion(exampleAwsAppconfigHostedConfigurationVersion.get("versionNumber"))
+///             .deploymentStrategyId(exampleAwsAppconfigDeploymentStrategy.get("id"))
 ///             .description("My example deployment")
-///             .environmentId(exampleAwsAppconfigEnvironment.environmentId())
-///             .kmsKeyIdentifier(exampleAwsKmsKey.arn())
+///             .environmentId(exampleAwsAppconfigEnvironment.get("environmentId"))
+///             .kmsKeyIdentifier(exampleAwsKmsKey.get("arn"))
 ///             .tags(Map.of("Type", "AppConfig Deployment"))
 ///             .build());
 ///
@@ -217,7 +220,7 @@ class DeploymentType extends pulumi.CustomResource {
           'aws:appconfig/deployment:Deployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     arn = registerOutput<String>('arn');

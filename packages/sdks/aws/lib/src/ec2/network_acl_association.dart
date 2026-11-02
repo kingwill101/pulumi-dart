@@ -66,7 +66,7 @@ import 'network_acl_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'network_acl_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_networkaclassociation" "main" {
+/// resource "aws_ec2_network_acl_association" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_acl_id = mainAwsNetworkAcl.id
 ///   subnet_id      = mainAwsSubnet.id
 /// }
@@ -101,8 +104,8 @@ import 'network_acl_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var main = new NetworkAclAssociation("main", NetworkAclAssociationArgs.builder()
-///             .networkAclId(mainAwsNetworkAcl.id())
-///             .subnetId(mainAwsSubnet.id())
+///             .networkAclId(mainAwsNetworkAcl.get("id"))
+///             .subnetId(mainAwsSubnet.get("id"))
 ///             .build());
 ///
 ///     }
@@ -145,7 +148,7 @@ class NetworkAclAssociation extends pulumi.CustomResource {
           'aws:ec2/networkAclAssociation:NetworkAclAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     networkAclId = registerOutput<String>('networkAclId');
     region = registerOutput<String>('region');

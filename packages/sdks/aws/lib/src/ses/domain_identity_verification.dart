@@ -127,7 +127,7 @@ import 'domain_identity_verification_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -135,19 +135,28 @@ import 'domain_identity_verification_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ses_domainidentity" "example" {
+/// resource "aws_ses_domain_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain = "example.com"
 /// }
 /// resource "aws_route53_record" "example_amazonses_verification_record" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = exampleAwsRoute53Zone.zoneId
-///   name    ="_amazonses.${aws_ses_domainidentity.example.domain}"
+///   name    ="_amazonses.${aws_ses_domain_identity.example.domain}"
 ///   type    = "TXT"
 ///   ttl     = "600"
-///   records = [aws_ses_domainidentity.example.verification_token]
+///   records = [aws_ses_domain_identity.example.verification_token]
 /// }
-/// resource "aws_ses_domainidentityverification" "example_verification" {
+/// resource "aws_ses_domain_identity_verification" "example_verification" {
 ///   depends_on = [aws_route53_record.example_amazonses_verification_record]
-///   domain     = aws_ses_domainidentity.example.domain
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   domain = aws_ses_domain_identity.example.domain
 /// }
 /// ```
 /// ```java
@@ -181,7 +190,7 @@ import 'domain_identity_verification_state.dart';
 ///             .build());
 ///
 ///         var exampleAmazonsesVerificationRecord = new Record("exampleAmazonsesVerificationRecord", RecordArgs.builder()
-///             .zoneId(exampleAwsRoute53Zone.zoneId())
+///             .zoneId(exampleAwsRoute53Zone.get("zoneId"))
 ///             .name(example.domain().applyValue(_domain -> String.format("_amazonses.%s", _domain)))
 ///             .type("TXT")
 ///             .ttl(600)
@@ -242,7 +251,7 @@ class DomainIdentityVerification extends pulumi.CustomResource {
           'aws:ses/domainIdentityVerification:DomainIdentityVerification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     domain = registerOutput<String>('domain');

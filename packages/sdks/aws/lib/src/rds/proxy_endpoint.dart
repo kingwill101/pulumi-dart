@@ -80,7 +80,7 @@ import 'proxy_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,7 +88,10 @@ import 'proxy_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rds_proxyendpoint" "example" {
+/// resource "aws_rds_proxy_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   db_proxy_name          = test.name
 ///   db_proxy_endpoint_name = "example"
 ///   vpc_subnet_ids         = testAwsSubnet[*].id
@@ -117,9 +120,9 @@ import 'proxy_endpoint_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ProxyEndpoint("example", ProxyEndpointArgs.builder()
-///             .dbProxyName(test.name())
+///             .dbProxyName(test.get("name"))
 ///             .dbProxyEndpointName("example")
-///             .vpcSubnetIds(testAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///             .vpcSubnetIds(testAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
 ///             .targetRole("READ_ONLY")
 ///             .build());
 ///
@@ -172,7 +175,7 @@ class ProxyEndpoint extends pulumi.CustomResource {
           'aws:rds/proxyEndpoint:ProxyEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dbProxyEndpointName = registerOutput<String>('dbProxyEndpointName');

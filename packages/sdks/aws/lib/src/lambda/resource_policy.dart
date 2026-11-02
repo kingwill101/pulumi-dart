@@ -146,7 +146,7 @@ import 'resource_policy_state.dart';
 /// 						{
 /// 							Test:     "StringEquals",
 /// 							Variable: "aws:SourceAccount",
-/// 							Values: pulumi.StringArray{
+/// 							Values: []string{
 /// 								current.AccountId,
 /// 							},
 /// 						},
@@ -164,7 +164,7 @@ import 'resource_policy_state.dart';
 /// 					Actions: []string{
 /// 						"lambda:InvokeFunction",
 /// 					},
-/// 					Resources: pulumi.StringArray{
+/// 					Resources: []string{
 /// 						exampleAwsLambdaFunction.Arn,
 /// 					},
 /// 				},
@@ -185,7 +185,7 @@ import 'resource_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -193,12 +193,12 @@ import 'resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "aws:SourceAccount"
-///       values   = [data.aws_getcalleridentity.current.account_id]
+///       values   = [data.aws_caller_identity.current.account_id]
 ///     }
 ///     principals {
 ///       type        = "Service"
@@ -210,12 +210,15 @@ import 'resource_policy_state.dart';
 ///     resources = [exampleAwsLambdaFunction.arn]
 ///   }
 /// }
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
-/// resource "aws_lambda_resourcepolicy" "example" {
+/// resource "aws_lambda_resource_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_arn = exampleAwsLambdaFunction.arn
-///   policy       = data.aws_iam_getpolicydocument.example.json
+///   policy       = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -263,12 +266,12 @@ import 'resource_policy_state.dart';
 ///                 .sid("AllowInvokeFromS3")
 ///                 .effect("Allow")
 ///                 .actions("lambda:InvokeFunction")
-///                 .resources(exampleAwsLambdaFunction.arn())
+///                 .resources(exampleAwsLambdaFunction.get("arn"))
 ///                 .build())
 ///             .build());
 ///
 ///         var exampleResourcePolicy = new ResourcePolicy("exampleResourcePolicy", ResourcePolicyArgs.builder()
-///             .resourceArn(exampleAwsLambdaFunction.arn())
+///             .resourceArn(exampleAwsLambdaFunction.get("arn"))
 ///             .policy(example.json())
 ///             .build());
 ///
@@ -505,7 +508,7 @@ import 'resource_policy_state.dart';
 /// 					Actions: []string{
 /// 						"lambda:InvokeFunction",
 /// 					},
-/// 					Resources: pulumi.StringArray{
+/// 					Resources: []string{
 /// 						exampleAwsLambdaFunction.Arn,
 /// 					},
 /// 				},
@@ -532,7 +535,7 @@ import 'resource_policy_state.dart';
 /// 					Actions: []string{
 /// 						"lambda:InvokeFunction",
 /// 					},
-/// 					Resources: pulumi.StringArray{
+/// 					Resources: []string{
 /// 						exampleAwsLambdaFunction.Arn,
 /// 					},
 /// 				},
@@ -553,7 +556,7 @@ import 'resource_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -561,8 +564,8 @@ import 'resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["123456789012", "210987654321"]
@@ -572,8 +575,8 @@ import 'resource_policy_state.dart';
 ///     actions   = ["lambda:InvokeFunction"]
 ///     resources = [exampleAwsLambdaFunction.arn]
 ///   }
-///   statements {
-///     conditions {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "aws:PrincipalOrgID"
 ///       values   = ["o-1234567890"]
@@ -589,9 +592,12 @@ import 'resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_resourcepolicy" "example" {
+/// resource "aws_lambda_resource_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_arn = exampleAwsLambdaFunction.arn
-///   policy       = data.aws_iam_getpolicydocument.example.json
+///   policy       = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -632,7 +638,7 @@ import 'resource_policy_state.dart';
 ///                     .sid("AllowCrossAccountInvoke")
 ///                     .effect("Allow")
 ///                     .actions("lambda:InvokeFunction")
-///                     .resources(exampleAwsLambdaFunction.arn())
+///                     .resources(exampleAwsLambdaFunction.get("arn"))
 ///                     .build(),
 ///                 GetPolicyDocumentStatementArgs.builder()
 ///                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
@@ -647,12 +653,12 @@ import 'resource_policy_state.dart';
 ///                     .sid("AllowOrganizationInvoke")
 ///                     .effect("Allow")
 ///                     .actions("lambda:InvokeFunction")
-///                     .resources(exampleAwsLambdaFunction.arn())
+///                     .resources(exampleAwsLambdaFunction.get("arn"))
 ///                     .build())
 ///             .build());
 ///
 ///         var exampleResourcePolicy = new ResourcePolicy("exampleResourcePolicy", ResourcePolicyArgs.builder()
-///             .resourceArn(exampleAwsLambdaFunction.arn())
+///             .resourceArn(exampleAwsLambdaFunction.get("arn"))
 ///             .policy(example.json())
 ///             .build());
 ///
@@ -738,7 +744,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:lambda/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

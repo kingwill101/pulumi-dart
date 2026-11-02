@@ -101,7 +101,7 @@ import 'group_policy_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -110,14 +110,23 @@ import 'group_policy_attachment_state.dart';
 /// }
 ///
 /// resource "aws_iam_group" "group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-group"
 /// }
 /// resource "aws_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test-policy"
 ///   description = "A test policy"
 ///   policy      = "{ ... policy JSON ... }"
 /// }
-/// resource "aws_iam_grouppolicyattachment" "test-attach" {
+/// resource "aws_iam_group_policy_attachment" "test-attach" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group      = aws_iam_group.group.name
 ///   policy_arn = aws_iam_policy.policy.arn
 /// }
@@ -222,7 +231,7 @@ class GroupPolicyAttachment extends pulumi.CustomResource {
           'aws:iam/groupPolicyAttachment:GroupPolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     group = registerOutput<String>('group');
     policyArn = registerOutput<String>('policyArn');

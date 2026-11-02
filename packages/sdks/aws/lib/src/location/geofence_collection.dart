@@ -55,7 +55,7 @@ import 'geofence_collection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,7 +63,10 @@ import 'geofence_collection_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_location_geofencecollection" "example" {
+/// resource "aws_location_geofence_collection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   collection_name = "example"
 /// }
 /// ```
@@ -144,7 +147,7 @@ class GeofenceCollection extends pulumi.CustomResource {
           'aws:location/geofenceCollection:GeofenceCollection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     collectionArn = registerOutput<String>('collectionArn');
     collectionName = registerOutput<String>('collectionName');

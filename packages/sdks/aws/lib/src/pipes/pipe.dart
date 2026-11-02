@@ -291,7 +291,7 @@ import 'pipe_target_parameters.dart';
 /// 			return err
 /// 		}
 /// 		source, err := iam.NewRolePolicy(ctx, "source", &iam.RolePolicyArgs{
-/// 			Role: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Role: example.ID(),
 /// 			Policy: sourceQueue.Arn.ApplyT(func(arn string) (pulumi.String, error) {
 /// 				var _zero pulumi.String
 /// 				tmpJSON1, err := json.Marshal(map[string]interface{}{
@@ -325,7 +325,7 @@ import 'pipe_target_parameters.dart';
 /// 			return err
 /// 		}
 /// 		target, err := iam.NewRolePolicy(ctx, "target", &iam.RolePolicyArgs{
-/// 			Role: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Role: example.ID(),
 /// 			Policy: targetQueue.Arn.ApplyT(func(arn string) (pulumi.String, error) {
 /// 				var _zero pulumi.String
 /// 				tmpJSON2, err := json.Marshal(map[string]interface{}{
@@ -369,7 +369,7 @@ import 'pipe_target_parameters.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -377,10 +377,13 @@ import 'pipe_target_parameters.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "main" {
+/// data "aws_caller_identity" "main" {
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
 ///     "Statement" = {
@@ -391,13 +394,16 @@ import 'pipe_target_parameters.dart';
 ///       }
 ///       "Condition" = {
 ///         "StringEquals" = {
-///           "aws:SourceAccount" = data.aws_getcalleridentity.main.account_id
+///           "aws:SourceAccount" = data.aws_caller_identity.main.account_id
 ///         }
 ///       }
 ///     }
 ///   })
 /// }
-/// resource "aws_iam_rolepolicy" "source" {
+/// resource "aws_iam_role_policy" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role = aws_iam_role.example.id
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -409,8 +415,14 @@ import 'pipe_target_parameters.dart';
 ///   })
 /// }
 /// resource "aws_sqs_queue" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_iam_rolepolicy" "target" {
+/// resource "aws_iam_role_policy" "target" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role = aws_iam_role.example.id
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -422,13 +434,19 @@ import 'pipe_target_parameters.dart';
 ///   })
 /// }
 /// resource "aws_sqs_queue" "target" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_pipes_pipe" "example" {
-///   depends_on = [aws_iam_rolepolicy.source, aws_iam_rolepolicy.target]
-///   name       = "example-pipe"
-///   role_arn   = aws_iam_role.example.arn
-///   source     = aws_sqs_queue.source.arn
-///   target     = aws_sqs_queue.target.arn
+///   depends_on = [aws_iam_role_policy.source, aws_iam_role_policy.target]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "example-pipe"
+///   role_arn = aws_iam_role.example.arn
+///   source   = aws_sqs_queue.source.arn
+///   target   = aws_sqs_queue.target.arn
 /// }
 /// ```
 /// ```java
@@ -727,7 +745,7 @@ import 'pipe_target_parameters.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -736,8 +754,11 @@ import 'pipe_target_parameters.dart';
 /// }
 ///
 /// resource "aws_pipes_pipe" "example" {
-///   enrichment_parameters = {
-///     http_parameters = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   enrichment_parameters {
+///     http_parameters {
 ///       path_parameter_values = "example-path-param"
 ///       header_parameters = {
 ///         "example-header"        = "example-value"
@@ -794,10 +815,10 @@ import 'pipe_target_parameters.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("example-pipe")
-///             .roleArn(exampleAwsIamRole.arn())
-///             .source(source.arn())
-///             .target(target.arn())
-///             .enrichment(exampleAwsCloudwatchEventApiDestination.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
+///             .source(source.get("arn"))
+///             .target(target.get("arn"))
+///             .enrichment(exampleAwsCloudwatchEventApiDestination.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -950,7 +971,7 @@ import 'pipe_target_parameters.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -959,13 +980,16 @@ import 'pipe_target_parameters.dart';
 /// }
 ///
 /// resource "aws_pipes_pipe" "example" {
-///   source_parameters = {
-///     filter_criteria = {
-///       filters = [{
-///         "pattern" = jsonencode({
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   source_parameters {
+///     filter_criteria {
+///       filter {
+///         pattern = jsonencode({
 ///           "source" = ["event-source"]
 ///         })
-///       }]
+///       }
 ///     }
 ///   }
 ///   name     = "example-pipe"
@@ -1011,9 +1035,9 @@ import 'pipe_target_parameters.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("example-pipe")
-///             .roleArn(exampleAwsIamRole.arn())
-///             .source(source.arn())
-///             .target(target.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
+///             .source(source.get("arn"))
+///             .target(target.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1172,7 +1196,7 @@ import 'pipe_target_parameters.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1180,17 +1204,23 @@ import 'pipe_target_parameters.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-pipe-target"
 /// }
 /// resource "aws_pipes_pipe" "example" {
 ///   depends_on = [source, target]
-///   log_configuration = {
-///     cloudwatch_logs_log_destination = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   log_configuration {
+///     cloudwatch_logs_log_destination {
 ///       log_group_arn = targetAwsCloudwatchLogGroup.arn
 ///     }
-///     include_execution_datas = ["ALL"]
-///     level                   = "INFO"
+///     include_execution_data = ["ALL"]
+///     level                  = "INFO"
 ///   }
 ///   name     = "example-pipe"
 ///   role_arn = exampleAwsIamRole.arn
@@ -1231,15 +1261,15 @@ import 'pipe_target_parameters.dart';
 ///         var examplePipe = new Pipe("examplePipe", PipeArgs.builder()
 ///             .logConfiguration(PipeLogConfigurationArgs.builder()
 ///                 .cloudwatchLogsLogDestination(PipeLogConfigurationCloudwatchLogsLogDestinationArgs.builder()
-///                     .logGroupArn(targetAwsCloudwatchLogGroup.arn())
+///                     .logGroupArn(targetAwsCloudwatchLogGroup.get("arn"))
 ///                     .build())
 ///                 .includeExecutionDatas("ALL")
 ///                 .level("INFO")
 ///                 .build())
 ///             .name("example-pipe")
-///             .roleArn(exampleAwsIamRole.arn())
-///             .source(sourceAwsSqsQueue.arn())
-///             .target(targetAwsSqsQueue.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
+///             .source(sourceAwsSqsQueue.get("arn"))
+///             .target(targetAwsSqsQueue.get("arn"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(
 ///                     source,
@@ -1394,7 +1424,7 @@ import 'pipe_target_parameters.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1403,14 +1433,17 @@ import 'pipe_target_parameters.dart';
 /// }
 ///
 /// resource "aws_pipes_pipe" "example" {
-///   source_parameters = {
-///     sqs_queue_parameters = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   source_parameters {
+///     sqs_queue_parameters {
 ///       batch_size                         = 1
 ///       maximum_batching_window_in_seconds = 2
 ///     }
 ///   }
-///   target_parameters = {
-///     sqs_queue_parameters = {
+///   target_parameters {
+///     sqs_queue_parameters {
 ///       message_deduplication_id = "example-dedupe"
 ///       message_group_id         = "example-group"
 ///     }
@@ -1460,9 +1493,9 @@ import 'pipe_target_parameters.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("example-pipe")
-///             .roleArn(exampleAwsIamRole.arn())
-///             .source(source.arn())
-///             .target(target.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
+///             .source(source.get("arn"))
+///             .target(target.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1545,7 +1578,7 @@ class Pipe extends pulumi.CustomResource {
           'aws:pipes/pipe:Pipe',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

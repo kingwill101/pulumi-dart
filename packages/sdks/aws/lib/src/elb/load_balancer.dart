@@ -246,7 +246,7 @@ import 'load_balancer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -255,7 +255,10 @@ import 'load_balancer_state.dart';
 /// }
 ///
 /// # Create a new load balancer
-/// resource "aws_elb_loadbalancer" "bar" {
+/// resource "aws_elb_load_balancer" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   access_logs = {
 ///     bucket        = "foo"
 ///     bucket_prefix = "bar"
@@ -350,7 +353,7 @@ import 'load_balancer_state.dart';
 ///                 "us-west-2a",
 ///                 "us-west-2b",
 ///                 "us-west-2c")
-///             .instances(foo.id())
+///             .instances(foo.get("id"))
 ///             .crossZoneLoadBalancing(true)
 ///             .idleTimeout(400)
 ///             .connectionDraining(true)
@@ -491,7 +494,7 @@ class LoadBalancer extends pulumi.CustomResource {
           'aws:elb/loadBalancer:LoadBalancer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accessLogs = registerOutput<LoadBalancerAccessLogs?>('accessLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAccessLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

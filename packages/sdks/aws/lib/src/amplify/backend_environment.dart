@@ -70,7 +70,7 @@ import 'backend_environment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = amplify.NewBackendEnvironment(ctx, "example", &amplify.BackendEnvironmentArgs{
-/// 			AppId:               example.ID().ToIDOutput().ToStringOutput(),
+/// 			AppId:               example.ID(),
 /// 			EnvironmentName:     pulumi.String("example"),
 /// 			DeploymentArtifacts: pulumi.String("app-example-deployment"),
 /// 			StackName:           pulumi.String("amplify-app-example"),
@@ -83,7 +83,7 @@ import 'backend_environment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,9 +92,15 @@ import 'backend_environment_state.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_amplify_backendenvironment" "example" {
+/// resource "aws_amplify_backend_environment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id               = aws_amplify_app.example.id
 ///   environment_name     = "example"
 ///   deployment_artifacts = "app-example-deployment"
@@ -188,7 +194,7 @@ class BackendEnvironment extends pulumi.CustomResource {
           'aws:amplify/backendEnvironment:BackendEnvironment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     arn = registerOutput<String>('arn');

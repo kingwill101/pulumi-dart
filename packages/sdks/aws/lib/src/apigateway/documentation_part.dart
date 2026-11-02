@@ -87,7 +87,7 @@ import 'documentation_part_state.dart';
 /// 				Path:   pulumi.String("/example"),
 /// 			},
 /// 			Properties: pulumi.String("{\"description\":\"Example description\"}"),
-/// 			RestApiId:  exampleRestApi.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApiId:  exampleRestApi.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -97,7 +97,7 @@ import 'documentation_part_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -105,16 +105,22 @@ import 'documentation_part_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_documentationpart" "example" {
+/// resource "aws_apigateway_documentation_part" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = {
 ///     type   = "METHOD"
 ///     method = "GET"
 ///     path   = "/example"
 ///   }
 ///   properties  = "{\"description\":\"Example description\"}"
-///   rest_api_id = aws_apigateway_restapi.example.id
+///   rest_api_id = aws_apigateway_rest_api.example.id
 /// }
-/// resource "aws_apigateway_restapi" "example" {
+/// resource "aws_apigateway_rest_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example_api"
 /// }
 /// ```
@@ -209,7 +215,7 @@ class DocumentationPart extends pulumi.CustomResource {
           'aws:apigateway/documentationPart:DocumentationPart',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     documentationPartId = registerOutput<String>('documentationPartId');
     location = registerOutput<DocumentationPartLocation>('location', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentationPartLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });

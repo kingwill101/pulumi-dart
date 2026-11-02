@@ -55,7 +55,7 @@ import 'hsm_client_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,7 +63,10 @@ import 'hsm_client_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshift_hsmclientcertificate" "example" {
+/// resource "aws_redshift_hsm_client_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hsm_client_certificate_identifier = "example"
 /// }
 /// ```
@@ -137,7 +140,7 @@ class HsmClientCertificate extends pulumi.CustomResource {
           'aws:redshift/hsmClientCertificate:HsmClientCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     hsmClientCertificateIdentifier = registerOutput<String>('hsmClientCertificateIdentifier');

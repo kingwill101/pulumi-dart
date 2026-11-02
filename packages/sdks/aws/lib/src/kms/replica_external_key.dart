@@ -103,7 +103,7 @@ import 'replica_external_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -111,17 +111,23 @@ import 'replica_external_key_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kms_externalkey" "primary" {
+/// resource "aws_kms_external_key" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "Multi-Region primary key"
 ///   deletion_window_in_days = 30
 ///   multi_region            = true
 ///   enabled                 = true
 ///   key_material_base64     = "..."
 /// }
-/// resource "aws_kms_replicaexternalkey" "replica" {
+/// resource "aws_kms_replica_external_key" "replica" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "Multi-Region replica key"
 ///   deletion_window_in_days = 7
-///   primary_key_arn         = aws_kms_externalkey.primary.arn
+///   primary_key_arn         = aws_kms_external_key.primary.arn
 ///   key_material_base64     = "..."
 /// }
 /// ```
@@ -239,7 +245,7 @@ class ReplicaExternalKey extends pulumi.CustomResource {
           'aws:kms/replicaExternalKey:ReplicaExternalKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['keyMaterialBase64'],
         ) {
     arn = registerOutput<String>('arn');

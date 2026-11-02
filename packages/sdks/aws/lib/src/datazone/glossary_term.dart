@@ -300,7 +300,7 @@ import 'glossary_term_timeouts.dart';
 /// 		json0 := string(tmpJSON0)
 /// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
 /// 			"Version": "2012-10-17",
-/// 			"Statement": []map[string]interface{}{
+/// 			"Statement": []interface{}{
 /// 				map[string]interface{}{
 /// 					"Action": []string{
 /// 						"sts:AssumeRole",
@@ -354,7 +354,7 @@ import 'glossary_term_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		exampleProject, err := datazone.NewProject(ctx, "example", &datazone.ProjectArgs{
-/// 			DomainIdentifier: exampleDomain.ID().ToIDOutput().ToStringOutput(),
+/// 			DomainIdentifier: exampleDomain.ID(),
 /// 			GlossaryTerms: pulumi.StringArray{
 /// 				pulumi.String("2N8w6XJCwZf"),
 /// 			},
@@ -367,7 +367,7 @@ import 'glossary_term_timeouts.dart';
 /// 		exampleGlossary, err := datazone.NewGlossary(ctx, "example", &datazone.GlossaryArgs{
 /// 			Description:             pulumi.String("description"),
 /// 			Name:                    pulumi.String("example"),
-/// 			OwningProjectIdentifier: exampleProject.ID().ToIDOutput().ToStringOutput(),
+/// 			OwningProjectIdentifier: exampleProject.ID(),
 /// 			Status:                  pulumi.String("ENABLED"),
 /// 			DomainIdentifier:        exampleProject.DomainIdentifier,
 /// 		})
@@ -375,8 +375,8 @@ import 'glossary_term_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datazone.NewGlossaryTerm(ctx, "example", &datazone.GlossaryTermArgs{
-/// 			DomainIdentifier:   exampleDomain.ID().ToIDOutput().ToStringOutput(),
-/// 			GlossaryIdentifier: exampleGlossary.ID().ToIDOutput().ToStringOutput(),
+/// 			DomainIdentifier:   exampleDomain.ID(),
+/// 			GlossaryIdentifier: exampleGlossary.ID(),
 /// 			Name:               pulumi.String("example"),
 /// 			Status:             pulumi.String("ENABLED"),
 /// 		})
@@ -388,7 +388,7 @@ import 'glossary_term_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -397,7 +397,10 @@ import 'glossary_term_timeouts.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
-///   inline_policies {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   inline_policy {
 ///     name = "example"
 ///     policy = jsonencode({
 ///       "Version" = "2012-10-17"
@@ -427,26 +430,41 @@ import 'glossary_term_timeouts.dart';
 ///   })
 /// }
 /// resource "aws_datazone_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example_name"
 ///   domain_execution_role = aws_iam_role.example.arn
 /// }
-/// resource "aws_ec2_securitygroup" "example" {
+/// resource "aws_ec2_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example_name"
 /// }
 /// resource "aws_datazone_project" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_identifier   = aws_datazone_domain.example.id
 ///   glossary_terms      = ["2N8w6XJCwZf"]
 ///   name                = "example"
 ///   skip_deletion_check = true
 /// }
 /// resource "aws_datazone_glossary" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description               = "description"
 ///   name                      = "example"
 ///   owning_project_identifier = aws_datazone_project.example.id
 ///   status                    = "ENABLED"
 ///   domain_identifier         = aws_datazone_project.example.domain_identifier
 /// }
-/// resource "aws_datazone_glossaryterm" "example" {
+/// resource "aws_datazone_glossary_term" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_identifier   = aws_datazone_domain.example.id
 ///   glossary_identifier = aws_datazone_glossary.example.id
 ///   name                = "example"
@@ -699,7 +717,7 @@ class GlossaryTerm extends pulumi.CustomResource {
           'aws:datazone/glossaryTerm:GlossaryTerm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');

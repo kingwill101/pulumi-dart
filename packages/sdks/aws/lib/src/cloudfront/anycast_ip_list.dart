@@ -65,7 +65,7 @@ import 'anycast_ip_list_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,10 @@ import 'anycast_ip_list_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_anycastiplist" "example" {
+/// resource "aws_cloudfront_anycast_ip_list" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-list"
 ///   ip_count = 21
 /// }
@@ -155,7 +158,7 @@ class AnycastIpList extends pulumi.CustomResource {
           'aws:cloudfront/anycastIpList:AnycastIpList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     anycastIps = registerOutput<List<String>>('anycastIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');

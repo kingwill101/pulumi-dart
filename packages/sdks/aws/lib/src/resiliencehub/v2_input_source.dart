@@ -78,7 +78,7 @@ import 'v2_input_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,7 +86,10 @@ import 'v2_input_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_v2inputsource" "example" {
+/// resource "aws_resiliencehub_v2_input_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_configuration = {
 ///     cfn_stack_arn = "arn:aws:cloudformation:us-west-2:123456789012:stack/my-stack/abc123"
 ///   }
@@ -119,7 +122,7 @@ import 'v2_input_source_state.dart';
 ///             .resourceConfiguration(V2InputSourceResourceConfigurationArgs.builder()
 ///                 .cfnStackArn("arn:aws:cloudformation:us-west-2:123456789012:stack/my-stack/abc123")
 ///                 .build())
-///             .serviceArn(exampleAwsResiliencehubv2Service.arn())
+///             .serviceArn(exampleAwsResiliencehubv2Service.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -203,7 +206,7 @@ import 'v2_input_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -211,7 +214,10 @@ import 'v2_input_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_v2inputsource" "example" {
+/// resource "aws_resiliencehub_v2_input_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_configuration = {
 ///     tf_state_file_url = "s3://my-bucket/terraform.tfstate"
 ///   }
@@ -244,7 +250,7 @@ import 'v2_input_source_state.dart';
 ///             .resourceConfiguration(V2InputSourceResourceConfigurationArgs.builder()
 ///                 .tfStateFileUrl("s3://my-bucket/terraform.tfstate")
 ///                 .build())
-///             .serviceArn(exampleAwsResiliencehubv2Service.arn())
+///             .serviceArn(exampleAwsResiliencehubv2Service.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -354,7 +360,7 @@ import 'v2_input_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -362,7 +368,10 @@ import 'v2_input_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_v2inputsource" "example" {
+/// resource "aws_resiliencehub_v2_input_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_configuration = {
 ///     eks = {
 ///       cluster_arn = "arn:aws:eks:us-west-2:123456789012:cluster/my-cluster"
@@ -404,7 +413,7 @@ import 'v2_input_source_state.dart';
 ///                         "production")
 ///                     .build())
 ///                 .build())
-///             .serviceArn(exampleAwsResiliencehubv2Service.arn())
+///             .serviceArn(exampleAwsResiliencehubv2Service.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -554,7 +563,7 @@ import 'v2_input_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -562,13 +571,16 @@ import 'v2_input_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_resiliencehub_v2inputsource" "example" {
+/// resource "aws_resiliencehub_v2_input_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_configuration = {
 ///     eks = {
 ///       label_selector = {
 ///         match_expressions = [{
-///           "key"      = "deprecated"
-///           "operator" = "DOES_NOT_EXIST"
+///           key      = "deprecated"
+///           operator = "DOES_NOT_EXIST"
 ///         }]
 ///         match_labels = {
 ///           "app" = "payments"
@@ -620,7 +632,7 @@ import 'v2_input_source_state.dart';
 ///                     .namespaces("default")
 ///                     .build())
 ///                 .build())
-///             .serviceArn(exampleAwsResiliencehubv2Service.arn())
+///             .serviceArn(exampleAwsResiliencehubv2Service.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -690,7 +702,7 @@ class V2InputSource extends pulumi.CustomResource {
           'aws:resiliencehub/v2InputSource:V2InputSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     inputSourceId = registerOutput<String>('inputSourceId');
     region = registerOutput<String>('region');

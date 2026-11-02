@@ -75,7 +75,7 @@ import 'location_fsx_windows_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,7 +83,10 @@ import 'location_fsx_windows_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_datasync_locationfsxwindows" "example" {
+/// resource "aws_datasync_location_fsx_windows" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fsx_filesystem_arn  = exampleAwsFsxWindowsFileSystem.arn
 ///   user                = "SomeUser"
 ///   password            = "SuperSecretPassw0rd"
@@ -112,10 +115,10 @@ import 'location_fsx_windows_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LocationFsxWindows("example", LocationFsxWindowsArgs.builder()
-///             .fsxFilesystemArn(exampleAwsFsxWindowsFileSystem.arn())
+///             .fsxFilesystemArn(exampleAwsFsxWindowsFileSystem.get("arn"))
 ///             .user("SomeUser")
 ///             .password("SuperSecretPassw0rd")
-///             .securityGroupArns(exampleAwsSecurityGroup.arn())
+///             .securityGroupArns(exampleAwsSecurityGroup.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -179,7 +182,7 @@ class LocationFsxWindows extends pulumi.CustomResource {
           'aws:datasync/locationFsxWindows:LocationFsxWindows',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     arn = registerOutput<String>('arn');

@@ -87,7 +87,7 @@ import 'vpc_link_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,7 +95,10 @@ import 'vpc_link_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigatewayv2_vpclink" "example" {
+/// resource "aws_apigatewayv2_vpc_link" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   security_group_ids = [exampleAwsSecurityGroup.id]
 ///   subnet_ids         = exampleAwsSubnets.ids
@@ -127,8 +130,8 @@ import 'vpc_link_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcLink("example", VpcLinkArgs.builder()
 ///             .name("example")
-///             .securityGroupIds(exampleAwsSecurityGroup.id())
-///             .subnetIds(exampleAwsSubnets.ids())
+///             .securityGroupIds(exampleAwsSecurityGroup.get("id"))
+///             .subnetIds(exampleAwsSubnets.get("ids"))
 ///             .tags(Map.of("Usage", "example"))
 ///             .build());
 ///
@@ -184,7 +187,7 @@ class VpcLink extends pulumi.CustomResource {
           'aws:apigatewayv2/vpcLink:VpcLink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

@@ -159,13 +159,13 @@ import 'network_settings_state.dart';
 /// 			key0 := index
 /// 			val0 := index
 /// 			__res, err := ec2.NewSubnet(ctx, fmt.Sprintf("example-%v", key0), &ec2.SubnetArgs{
-/// 				VpcId: example.ID().ToIDOutput().ToStringOutput(),
+/// 				VpcId: example.ID(),
 /// 				CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
 /// 					Input:   example.CidrBlock,
 /// 					Newbits: pulumi.Int(8),
 /// 					Netnum:  pulumi.Int(val0),
 /// 				}, nil).Result(),
-/// 				AvailabilityZone: available.Names[val0],
+/// 				AvailabilityZone: available.Names[val0].(pulumi.String),
 /// 			})
 /// 			if err != nil {
 /// 				return err
@@ -177,7 +177,7 @@ import 'network_settings_state.dart';
 /// 			key0 := index
 /// 			val0 := index
 /// 			__res, err := ec2.NewSecurityGroup(ctx, fmt.Sprintf("example1-%v", key0), &ec2.SecurityGroupArgs{
-/// 				VpcId: example.ID().ToIDOutput().ToStringOutput(),
+/// 				VpcId: example.ID(),
 /// 				Name:  pulumi.Sprintf("example-sg-%v$", val0),
 /// 			})
 /// 			if err != nil {
@@ -186,10 +186,10 @@ import 'network_settings_state.dart';
 /// 			example1 = append(example1, __res)
 /// 		}
 /// 		_, err = workspacesweb.NewNetworkSettings(ctx, "example", &workspacesweb.NetworkSettingsArgs{
-/// 			VpcId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: example.ID(),
 /// 			SubnetIds: pulumi.StringArray{
-/// 				exampleSubnet[0].ID().ToIDOutput().ToStringOutput(),
-/// 				exampleSubnet[1].ID().ToIDOutput().ToStringOutput(),
+/// 				exampleSubnet[0].ID(),
+/// 				exampleSubnet[1].ID(),
 /// 			},
 /// 			SecurityGroupIds: pulumi.StringArray{
 /// 				exampleAwsSecurityGroup[0].Id,
@@ -204,7 +204,7 @@ import 'network_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -216,20 +216,38 @@ import 'network_settings_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "example" {
-///   count             = 2
+///   count = 2
+///   pulumi {
+///     name ="example-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.example.id
 ///   cidr_block        = cidrsubnet(aws_ec2_vpc.example.cidr_block, 8, count.index)
 ///   availability_zone = available.names[count.index]
 /// }
-/// resource "aws_ec2_securitygroup" "example1" {
-///   count  = 2
+/// resource "aws_ec2_security_group" "example1" {
+///   count = 2
+///   pulumi {
+///     name ="example1-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = aws_ec2_vpc.example.id
 ///   name   ="example-sg-${count.index}$"
 /// }
-/// resource "aws_workspacesweb_networksettings" "example" {
+/// resource "aws_workspacesweb_network_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id             = aws_ec2_vpc.example.id
 ///   subnet_ids         = [aws_ec2_subnet.example[0].id, aws_ec2_subnet.example[1].id]
 ///   security_group_ids = [exampleAwsSecurityGroup[0].id, exampleAwsSecurityGroup[1].id]
@@ -277,7 +295,7 @@ import 'network_settings_state.dart';
 ///                     .newbits(8)
 ///                     .netnum(range.value())
 ///                     .build()).applyValue(_invoke -> _invoke.result()))
-///                 .availabilityZone(available.names()[range.value()])
+///                 .availabilityZone(available.get("names").get(range.value()))
 ///                 .build());
 ///
 ///
@@ -293,11 +311,11 @@ import 'network_settings_state.dart';
 ///         var exampleNetworkSettings = new NetworkSettings("exampleNetworkSettings", NetworkSettingsArgs.builder()
 ///             .vpcId(example.id())
 ///             .subnetIds(
-///                 exampleSubnet[0].id(),
-///                 exampleSubnet[1].id())
+///                 exampleSubnet.get(0).id(),
+///                 exampleSubnet.get(1).id())
 ///             .securityGroupIds(
-///                 exampleAwsSecurityGroup[0].id(),
-///                 exampleAwsSecurityGroup[1].id())
+///                 exampleAwsSecurityGroup[0].get("id"),
+///                 exampleAwsSecurityGroup[1].get("id"))
 ///             .build());
 ///
 ///     }
@@ -344,7 +362,7 @@ class NetworkSettings extends pulumi.CustomResource {
           'aws:workspacesweb/networkSettings:NetworkSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     networkSettingsArn = registerOutput<String>('networkSettingsArn');

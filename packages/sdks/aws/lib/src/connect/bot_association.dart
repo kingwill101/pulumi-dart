@@ -81,7 +81,7 @@ import 'bot_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,8 +89,11 @@ import 'bot_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_botassociation" "example" {
-///   lex_bot = {
+/// resource "aws_connect_bot_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   lex_bot {
 ///     lex_region = "us-west-2"
 ///     name       = "Test"
 ///   }
@@ -124,7 +127,7 @@ import 'bot_association_state.dart';
 ///                 .lexRegion("us-west-2")
 ///                 .name("Test")
 ///                 .build())
-///             .instanceId(exampleAwsConnectInstance.id())
+///             .instanceId(exampleAwsConnectInstance.get("id"))
 ///             .build());
 ///
 ///     }
@@ -377,7 +380,7 @@ import 'bot_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -385,11 +388,14 @@ import 'bot_association_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
 ///
 /// resource "aws_lex_intent" "example" {
-///   fulfillment_activity = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   fulfillment_activity {
 ///     type = "ReturnIntent"
 ///   }
 ///   create_version    = true
@@ -397,20 +403,23 @@ import 'bot_association_state.dart';
 ///   sample_utterances = ["I would like to pick up flowers."]
 /// }
 /// resource "aws_lex_bot" "example" {
-///   abort_statement = {
-///     messages = [{
-///       "content"     = "Sorry, I am not able to assist at this time."
-///       "contentType" = "PlainText"
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   clarification_prompt = {
-///     messages = [{
-///       "content"     = "I didn't understand you, what would you like to do?"
-///       "contentType" = "PlainText"
-///     }]
+///   abort_statement {
+///     message {
+///       content      = "Sorry, I am not able to assist at this time."
+///       content_type = "PlainText"
+///     }
+///   }
+///   clarification_prompt {
+///     message {
+///       content      = "I didn't understand you, what would you like to do?"
+///       content_type = "PlainText"
+///     }
 ///     max_attempts = 2
 ///   }
-///   intents {
+///   intent {
 ///     intent_name    = aws_lex_intent.example.name
 ///     intent_version = "1"
 ///   }
@@ -418,9 +427,12 @@ import 'bot_association_state.dart';
 ///   name             = "connect_lex_bot"
 ///   process_behavior = "BUILD"
 /// }
-/// resource "aws_connect_botassociation" "example" {
-///   lex_bot = {
-///     lex_region = data.aws_getregion.current.region
+/// resource "aws_connect_bot_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   lex_bot {
+///     lex_region = data.aws_region.current.region
 ///     name       = aws_lex_bot.example.name
 ///   }
 ///   instance_id = exampleAwsConnectInstance.id
@@ -500,7 +512,7 @@ import 'bot_association_state.dart';
 ///                 .lexRegion(current.region())
 ///                 .name(exampleBot.name())
 ///                 .build())
-///             .instanceId(exampleAwsConnectInstance.id())
+///             .instanceId(exampleAwsConnectInstance.get("id"))
 ///             .build());
 ///
 ///     }
@@ -579,7 +591,7 @@ class BotAssociation extends pulumi.CustomResource {
           'aws:connect/botAssociation:BotAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     instanceId = registerOutput<String>('instanceId');
     lexBot = registerOutput<BotAssociationLexBot>('lexBot', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BotAssociationLexBot.fromMap((guardedValue as Map).cast<String, dynamic>()); });

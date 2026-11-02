@@ -120,7 +120,7 @@ import 'model_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -129,6 +129,9 @@ import 'model_state.dart';
 /// }
 ///
 /// resource "aws_apigatewayv2_model" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id       = exampleAwsApigatewayv2Api.id
 ///   content_type = "application/json"
 ///   name         = "example"
@@ -167,7 +170,7 @@ import 'model_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Model("example", ModelArgs.builder()
-///             .apiId(exampleAwsApigatewayv2Api.id())
+///             .apiId(exampleAwsApigatewayv2Api.get("id"))
 ///             .contentType("application/json")
 ///             .name("example")
 ///             .schema(serializeJson(
@@ -238,7 +241,7 @@ class Model extends pulumi.CustomResource {
           'aws:apigatewayv2/model:Model',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     contentType = registerOutput<String>('contentType');

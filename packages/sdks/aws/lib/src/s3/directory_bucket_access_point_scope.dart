@@ -152,7 +152,7 @@ import 'directory_bucket_access_point_scope_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewAccessPoint(ctx, "example", &s3.AccessPointArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Name:   pulumi.String("example--zoneId--xa-s3"),
 /// 		})
 /// 		if err != nil {
@@ -180,7 +180,7 @@ import 'directory_bucket_access_point_scope_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -188,22 +188,31 @@ import 'directory_bucket_access_point_scope_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
+/// data "aws_availability_zones" "available" {
 ///   state = "available"
 /// }
 ///
-/// resource "aws_s3_directorybucket" "example" {
-///   location = {
-///     name = data.aws_getavailabilityzones.available.zone_ids[0]
+/// resource "aws_s3_directory_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location {
+///     name = data.aws_availability_zones.available.zone_ids[0]
 ///   }
 ///   bucket = "example--zoneId--x-s3"
 /// }
-/// resource "aws_s3_accesspoint" "example" {
-///   bucket = aws_s3_directorybucket.example.id
+/// resource "aws_s3_access_point" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   bucket = aws_s3_directory_bucket.example.id
 ///   name   = "example--zoneId--xa-s3"
 /// }
-/// resource "aws_s3control_directorybucketaccesspointscope" "example" {
-///   scope = {
+/// resource "aws_s3control_directory_bucket_access_point_scope" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope {
 ///     permissions = ["GetObject", "ListBucket"]
 ///     prefixes    = ["myobject1.csv", "myobject2*"]
 ///   }
@@ -337,7 +346,7 @@ class DirectoryBucketAccessPointScope extends pulumi.CustomResource {
           'aws:s3control/directoryBucketAccessPointScope:DirectoryBucketAccessPointScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     this.name = registerOutput<String>('name');

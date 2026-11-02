@@ -74,7 +74,7 @@ import 'vpc_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,7 +82,10 @@ import 'vpc_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_vpcattachment" "example" {
+/// resource "aws_networkmanager_vpc_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_arns     = [exampleAwsSubnet.arn]
 ///   core_network_id = exampleAwsccNetworkmanagerCoreNetwork.id
 ///   vpc_arn         = exampleAwsVpc.arn
@@ -110,9 +113,9 @@ import 'vpc_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcAttachment("example", VpcAttachmentArgs.builder()
-///             .subnetArns(exampleAwsSubnet.arn())
-///             .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.id())
-///             .vpcArn(exampleAwsVpc.arn())
+///             .subnetArns(exampleAwsSubnet.get("arn"))
+///             .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.get("id"))
+///             .vpcArn(exampleAwsVpc.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -222,7 +225,7 @@ import 'vpc_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -230,8 +233,11 @@ import 'vpc_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_vpcattachment" "example" {
-///   options = {
+/// resource "aws_networkmanager_vpc_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   options {
 ///     appliance_mode_support             = false
 ///     dns_support                        = true
 ///     ipv6_support                       = false
@@ -271,9 +277,9 @@ import 'vpc_attachment_state.dart';
 ///                 .ipv6Support(false)
 ///                 .securityGroupReferencingSupport(true)
 ///                 .build())
-///             .subnetArns(exampleAwsSubnet.arn())
-///             .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.id())
-///             .vpcArn(exampleAwsVpc.arn())
+///             .subnetArns(exampleAwsSubnet.get("arn"))
+///             .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.get("id"))
+///             .vpcArn(exampleAwsVpc.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -351,7 +357,7 @@ class VpcAttachment extends pulumi.CustomResource {
           'aws:networkmanager/vpcAttachment:VpcAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachmentPolicyRuleNumber = registerOutput<int>('attachmentPolicyRuleNumber');

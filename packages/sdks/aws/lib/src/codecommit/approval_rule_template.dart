@@ -124,7 +124,7 @@ import 'approval_rule_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -132,7 +132,10 @@ import 'approval_rule_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_codecommit_approvalruletemplate" "example" {
+/// resource "aws_codecommit_approval_rule_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "MyExampleApprovalRuleTemplate"
 ///   description = "This is an example approval rule template"
 ///   content = jsonencode({
@@ -245,7 +248,7 @@ class ApprovalRuleTemplate extends pulumi.CustomResource {
           'aws:codecommit/approvalRuleTemplate:ApprovalRuleTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     approvalRuleTemplateId = registerOutput<String>('approvalRuleTemplateId');
     content = registerOutput<String>('content');

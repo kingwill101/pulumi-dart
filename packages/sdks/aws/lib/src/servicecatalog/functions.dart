@@ -75,7 +75,7 @@ import 'get_provisioning_artifacts_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,7 +83,7 @@ import 'get_provisioning_artifacts_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_servicecatalog_getappregistryapplication" "example" {
+/// data "aws_servicecatalog_appregistry_application" "example" {
 ///   id = "application-1234"
 /// }
 /// ```
@@ -206,7 +206,7 @@ pulumi.Output<GetAppregistryApplicationResult> getAppregistryApplicationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -214,7 +214,7 @@ pulumi.Output<GetAppregistryApplicationResult> getAppregistryApplicationOutput(
 ///   }
 /// }
 ///
-/// data "aws_servicecatalog_getappregistryattributegroup" "example" {
+/// data "aws_servicecatalog_appregistry_attribute_group" "example" {
 ///   name = "example_attribute_group"
 /// }
 /// ```
@@ -337,7 +337,7 @@ pulumi.Output<GetAppregistryAttributeGroupResult> getAppregistryAttributeGroupOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -345,7 +345,7 @@ pulumi.Output<GetAppregistryAttributeGroupResult> getAppregistryAttributeGroupOu
 ///   }
 /// }
 ///
-/// data "aws_servicecatalog_getappregistryattributegroupassociations" "example" {
+/// data "aws_servicecatalog_appregistry_attribute_group_associations" "example" {
 ///   id = "12456778723424sdffsdfsdq34,12234t3564dsfsdf34asff4ww3"
 /// }
 /// ```
@@ -472,7 +472,7 @@ pulumi.Output<GetAppregistryAttributeGroupAssociationsResult> getAppregistryAttr
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -480,7 +480,7 @@ pulumi.Output<GetAppregistryAttributeGroupAssociationsResult> getAppregistryAttr
 ///   }
 /// }
 ///
-/// data "aws_servicecatalog_getconstraint" "example" {
+/// data "aws_servicecatalog_constraint" "example" {
 ///   accept_language = "en"
 ///   id              = "cons-hrvy0335"
 /// }
@@ -606,7 +606,7 @@ pulumi.Output<GetConstraintResult> getConstraintOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -614,7 +614,7 @@ pulumi.Output<GetConstraintResult> getConstraintOutput(
 ///   }
 /// }
 ///
-/// data "aws_servicecatalog_getlaunchpaths" "example" {
+/// data "aws_servicecatalog_launch_paths" "example" {
 ///   product_id = "prod-yakog5pdriver"
 /// }
 /// ```
@@ -735,7 +735,7 @@ pulumi.Output<GetLaunchPathsResult> getLaunchPathsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -743,7 +743,7 @@ pulumi.Output<GetLaunchPathsResult> getLaunchPathsOutput(
 ///   }
 /// }
 ///
-/// data "aws_servicecatalog_getportfolio" "portfolio" {
+/// data "aws_servicecatalog_portfolio" "portfolio" {
 ///   id = "port-07052002"
 /// }
 /// ```
@@ -866,7 +866,7 @@ pulumi.Output<GetPortfolioResult> getPortfolioOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -874,7 +874,7 @@ pulumi.Output<GetPortfolioResult> getPortfolioOutput(
 ///   }
 /// }
 ///
-/// data "aws_servicecatalog_getportfolioconstraints" "example" {
+/// data "aws_servicecatalog_portfolio_constraints" "example" {
 ///   portfolio_id = "port-3lli3b3an"
 /// }
 /// ```
@@ -999,7 +999,7 @@ pulumi.Output<GetPortfolioConstraintsResult> getPortfolioConstraintsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1007,7 +1007,7 @@ pulumi.Output<GetPortfolioConstraintsResult> getPortfolioConstraintsOutput(
 ///   }
 /// }
 ///
-/// data "aws_servicecatalog_getproduct" "example" {
+/// data "aws_servicecatalog_product" "example" {
 ///   id = "prod-dnigbtea24ste"
 /// }
 /// ```
@@ -1130,7 +1130,7 @@ pulumi.Output<GetProductResult> getProductOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1138,7 +1138,7 @@ pulumi.Output<GetProductResult> getProductOutput(
 ///   }
 /// }
 ///
-/// data "aws_servicecatalog_getprovisioningartifacts" "example" {
+/// data "aws_servicecatalog_provisioning_artifacts" "example" {
 ///   product_id = "prod-yakog5pdriver"
 /// }
 /// ```

@@ -99,7 +99,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -108,6 +108,9 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_elasticache_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id           = "cluster-example"
 ///   engine               = "memcached"
 ///   node_type            = "cache.m4.large"
@@ -241,7 +244,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -250,6 +253,9 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_elasticache_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id           = "cluster-example"
 ///   engine               = "redis"
 ///   node_type            = "cache.m4.large"
@@ -368,7 +374,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -377,6 +383,9 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_elasticache_cluster" "replica" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id           = "cluster-example"
 ///   replication_group_id = example.id
 /// }
@@ -404,7 +413,7 @@ import 'cluster_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var replica = new Cluster("replica", ClusterArgs.builder()
 ///             .clusterId("cluster-example")
-///             .replicationGroupId(example.id())
+///             .replicationGroupId(example.get("id"))
 ///             .build());
 ///
 ///     }
@@ -553,7 +562,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -562,13 +571,16 @@ import 'cluster_state.dart';
 /// }
 ///
 /// resource "aws_elasticache_cluster" "test" {
-///   log_delivery_configurations {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   log_delivery_configuration {
 ///     destination      = example.name
 ///     destination_type = "cloudwatch-logs"
 ///     log_format       = "text"
 ///     log_type         = "slow-log"
 ///   }
-///   log_delivery_configurations {
+///   log_delivery_configuration {
 ///     destination      = exampleAwsKinesisFirehoseDeliveryStream.name
 ///     destination_type = "kinesis-firehose"
 ///     log_format       = "json"
@@ -607,13 +619,13 @@ import 'cluster_state.dart';
 ///         var test = new Cluster("test", ClusterArgs.builder()
 ///             .logDeliveryConfigurations(
 ///                 ClusterLogDeliveryConfigurationArgs.builder()
-///                     .destination(example.name())
+///                     .destination(example.get("name"))
 ///                     .destinationType("cloudwatch-logs")
 ///                     .logFormat("text")
 ///                     .logType("slow-log")
 ///                     .build(),
 ///                 ClusterLogDeliveryConfigurationArgs.builder()
-///                     .destination(exampleAwsKinesisFirehoseDeliveryStream.name())
+///                     .destination(exampleAwsKinesisFirehoseDeliveryStream.get("name"))
 ///                     .destinationType("kinesis-firehose")
 ///                     .logFormat("json")
 ///                     .logType("engine-log")
@@ -797,7 +809,7 @@ import 'cluster_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnet, err := ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
-/// 			VpcId:     exampleVpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:     exampleVpc.ID(),
 /// 			CidrBlock: pulumi.String("10.0.1.0/24"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("my-subnet"),
@@ -809,7 +821,7 @@ import 'cluster_state.dart';
 /// 		exampleSubnetGroup, err := elasticache.NewSubnetGroup(ctx, "example", &elasticache.SubnetGroupArgs{
 /// 			Name: pulumi.String("my-cache-subnet"),
 /// 			SubnetIds: pulumi.StringArray{
-/// 				exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleSubnet.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -834,7 +846,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -842,36 +854,48 @@ import 'cluster_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_outposts_getoutposts" "example" {
+/// data "aws_outposts_outposts" "example" {
 /// }
-/// data "aws_outposts_getoutpost" "exampleGetOutpost" {
-///   id = data.aws_outposts_getoutposts.example.ids[0]
+/// data "aws_outposts_outpost" "exampleGetOutpost" {
+///   id = data.aws_outposts_outposts.example.ids[0]
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id     = aws_ec2_vpc.example.id
 ///   cidr_block = "10.0.1.0/24"
 ///   tags = {
 ///     "Name" = "my-subnet"
 ///   }
 /// }
-/// resource "aws_elasticache_subnetgroup" "example" {
+/// resource "aws_elasticache_subnet_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "my-cache-subnet"
 ///   subnet_ids = [aws_ec2_subnet.example.id]
 /// }
 /// resource "aws_elasticache_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id            = "cluster-example"
 ///   outpost_mode          = "single-outpost"
-///   preferred_outpost_arn = data.aws_outposts_getoutpost.exampleGetOutpost.arn
+///   preferred_outpost_arn = data.aws_outposts_outpost.exampleGetOutpost.arn
 ///   engine                = "memcached"
 ///   node_type             = "cache.r5.large"
 ///   num_cache_nodes       = 2
 ///   parameter_group_name  = "default.memcached1.4"
 ///   port                  = 11211
-///   subnet_group_name     = aws_elasticache_subnetgroup.example.name
+///   subnet_group_name     = aws_elasticache_subnet_group.example.name
 /// }
 /// ```
 /// ```java
@@ -1096,7 +1120,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:elasticache/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     applyImmediately = registerOutput<bool>('applyImmediately');
     arn = registerOutput<String>('arn');

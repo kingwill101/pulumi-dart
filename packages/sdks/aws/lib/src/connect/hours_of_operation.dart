@@ -188,7 +188,7 @@ import 'hours_of_operation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -196,24 +196,27 @@ import 'hours_of_operation_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_hoursofoperation" "test" {
-///   configs {
-///     end_time = {
+/// resource "aws_connect_hours_of_operation" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   config {
+///     end_time {
 ///       hours   = 23
 ///       minutes = 8
 ///     }
-///     start_time = {
+///     start_time {
 ///       hours   = 8
 ///       minutes = 0
 ///     }
 ///     day = "MONDAY"
 ///   }
-///   configs {
-///     end_time = {
+///   config {
+///     end_time {
 ///       hours   = 21
 ///       minutes = 0
 ///     }
-///     start_time = {
+///     start_time {
 ///       hours   = 9
 ///       minutes = 0
 ///     }
@@ -356,7 +359,7 @@ class HoursOfOperation extends pulumi.CustomResource {
           'aws:connect/hoursOfOperation:HoursOfOperation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configs = registerOutput<List<HoursOfOperationConfig>>('configs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HoursOfOperationConfig>(guardedValue, (value) => HoursOfOperationConfig.fromMap((value as Map).cast<String, dynamic>())); });

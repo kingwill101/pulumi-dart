@@ -74,7 +74,7 @@ import 'global_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,7 +82,10 @@ import 'global_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_backup_globalsettings" "test" {
+/// resource "aws_backup_global_settings" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_settings = {
 ///     "isCrossAccountBackupEnabled"     = "true"
 ///     "isMpaEnabled"                    = "false"
@@ -157,7 +160,7 @@ class GlobalSettings extends pulumi.CustomResource {
           'aws:backup/globalSettings:GlobalSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     globalSettings = registerOutput<Map<String, String>>('globalSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }

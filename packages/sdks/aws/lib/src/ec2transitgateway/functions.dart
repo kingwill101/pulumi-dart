@@ -116,7 +116,7 @@ import 'get_vpn_attachment_result.dart';
 /// 			Filters: []ec2transitgateway.GetAttachmentFilter{
 /// 				{
 /// 					Name: "transit-gateway-id",
-/// 					Values: pulumi.StringArray{
+/// 					Values: []string{
 /// 						exampleAwsEc2TransitGateway.Id,
 /// 					},
 /// 				},
@@ -136,7 +136,7 @@ import 'get_vpn_attachment_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -144,7 +144,7 @@ import 'get_vpn_attachment_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getattachment" "example" {
+/// data "aws_ec2transitgateway_attachment" "example" {
 ///   filters {
 ///     name   = "transit-gateway-id"
 ///     values = [exampleAwsEc2TransitGateway.id]
@@ -181,7 +181,7 @@ import 'get_vpn_attachment_result.dart';
 ///             .filters(
 ///                 GetAttachmentFilterArgs.builder()
 ///                     .name("transit-gateway-id")
-///                     .values(exampleAwsEc2TransitGateway.id())
+///                     .values(exampleAwsEc2TransitGateway.get("id"))
 ///                     .build(),
 ///                 GetAttachmentFilterArgs.builder()
 ///                     .name("resource-type")
@@ -255,9 +255,7 @@ pulumi.Output<GetAttachmentResult> getAttachmentOutput(
 ///         },
 ///     ],
 /// });
-/// const unit = .map(__index => (aws.ec2transitgateway.getAttachment({
-///     transitGatewayAttachmentId: _arg0_.ids[__index],
-/// })));
+/// const unit = _arg1_;
 /// ```
 /// ```python
 /// import pulumi
@@ -273,7 +271,7 @@ pulumi.Output<GetAttachmentResult> getAttachmentOutput(
 ///         "values": ["vpc"],
 ///     },
 /// ])
-/// unit = [aws.ec2transitgateway.get_attachment(transit_gateway_attachment_id=filtered.ids[__index]) for __index in len(filtered.ids).apply(lambda length: range(length))]
+/// unit = range(len(filtered.ids)).apply(lambda range: [aws.ec2transitgateway.get_attachment(transit_gateway_attachment_id=filtered.ids[__index]) for __index in range])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -306,12 +304,12 @@ pulumi.Output<GetAttachmentResult> getAttachmentOutput(
 ///         },
 ///     });
 ///
-///     var unit = ;
+///     var unit = _arg1_;
 ///
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -319,7 +317,7 @@ pulumi.Output<GetAttachmentResult> getAttachmentOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getattachments" "filtered" {
+/// data "aws_ec2transitgateway_attachments" "filtered" {
 ///   filters {
 ///     name   = "state"
 ///     values = ["pendingAcceptance"]
@@ -329,13 +327,13 @@ pulumi.Output<GetAttachmentResult> getAttachmentOutput(
 ///     values = ["vpc"]
 ///   }
 /// }
-/// data "aws_ec2transitgateway_getattachment" "invoke_1" {
-///   for_each                      = toset(range(length(data.aws_ec2transitgateway_getattachments.filtered.ids)))
-///   transit_gateway_attachment_id = data.aws_ec2transitgateway_getattachments.filtered.ids[each.value]
+/// data "aws_ec2transitgateway_attachment" "invoke_1" {
+///   for_each                      = toset(range(length(data.aws_ec2transitgateway_attachments.filtered.ids)))
+///   transit_gateway_attachment_id = data.aws_ec2transitgateway_attachments.filtered.ids[each.value]
 /// }
 ///
 /// locals {
-///   unit = [for __index in range(length(data.aws_ec2transitgateway_getattachments.filtered.ids)) : data.aws_ec2transitgateway_getattachment.invoke_1[__index]]
+///   unit = [for __index in range(length(data.aws_ec2transitgateway_attachments.filtered.ids)) : data.aws_ec2transitgateway_attachment.invoke_1[__index]]
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2transitgateway_get_attachments_get_attachments_args_doc}
@@ -444,7 +442,7 @@ pulumi.Output<GetAttachmentsResult> getAttachmentsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -452,7 +450,7 @@ pulumi.Output<GetAttachmentsResult> getAttachmentsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getconnect" "example" {
+/// data "aws_ec2transitgateway_connect" "example" {
 ///   filters {
 ///     name   = "transport-transit-gateway-attachment-id"
 ///     values = ["tgw-attach-12345678"]
@@ -557,7 +555,7 @@ pulumi.Output<GetAttachmentsResult> getAttachmentsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -565,7 +563,7 @@ pulumi.Output<GetAttachmentsResult> getAttachmentsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getconnect" "example" {
+/// data "aws_ec2transitgateway_connect" "example" {
 ///   transit_gateway_connect_id = "tgw-attach-12345678"
 /// }
 /// ```
@@ -711,7 +709,7 @@ pulumi.Output<GetConnectResult> getConnectOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -719,7 +717,7 @@ pulumi.Output<GetConnectResult> getConnectOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getconnectpeer" "example" {
+/// data "aws_ec2transitgateway_connect_peer" "example" {
 ///   filters {
 ///     name   = "transit-gateway-attachment-id"
 ///     values = ["tgw-attach-12345678"]
@@ -824,7 +822,7 @@ pulumi.Output<GetConnectResult> getConnectOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -832,7 +830,7 @@ pulumi.Output<GetConnectResult> getConnectOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getconnectpeer" "example" {
+/// data "aws_ec2transitgateway_connect_peer" "example" {
 ///   transit_gateway_connect_peer_id = "tgw-connect-peer-12345678"
 /// }
 /// ```
@@ -961,7 +959,7 @@ pulumi.Output<GetConnectPeerResult> getConnectPeerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -969,7 +967,7 @@ pulumi.Output<GetConnectPeerResult> getConnectPeerOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getdirectconnectgatewayattachment" "example" {
+/// data "aws_ec2transitgateway_direct_connect_gateway_attachment" "example" {
 ///   transit_gateway_id = exampleAwsEc2TransitGateway.id
 ///   dx_gateway_id      = exampleAwsDxGateway.id
 /// }
@@ -996,8 +994,8 @@ pulumi.Output<GetConnectPeerResult> getConnectPeerOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = Ec2transitgatewayFunctions.getDirectConnectGatewayAttachment(GetDirectConnectGatewayAttachmentArgs.builder()
-///             .transitGatewayId(exampleAwsEc2TransitGateway.id())
-///             .dxGatewayId(exampleAwsDxGateway.id())
+///             .transitGatewayId(exampleAwsEc2TransitGateway.get("id"))
+///             .dxGatewayId(exampleAwsDxGateway.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1118,7 +1116,7 @@ pulumi.Output<GetDirectConnectGatewayAttachmentResult> getDirectConnectGatewayAt
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1126,7 +1124,7 @@ pulumi.Output<GetDirectConnectGatewayAttachmentResult> getDirectConnectGatewayAt
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getmulticastdomain" "example" {
+/// data "aws_ec2transitgateway_multicast_domain" "example" {
 ///   filters {
 ///     name   = "transit-gateway-multicast-domain-id"
 ///     values = ["tgw-mcast-domain-12345678"]
@@ -1231,7 +1229,7 @@ pulumi.Output<GetDirectConnectGatewayAttachmentResult> getDirectConnectGatewayAt
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1239,7 +1237,7 @@ pulumi.Output<GetDirectConnectGatewayAttachmentResult> getDirectConnectGatewayAt
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getmulticastdomain" "example" {
+/// data "aws_ec2transitgateway_multicast_domain" "example" {
 ///   transit_gateway_multicast_domain_id = "tgw-mcast-domain-12345678"
 /// }
 /// ```
@@ -1385,7 +1383,7 @@ pulumi.Output<GetMulticastDomainResult> getMulticastDomainOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1393,7 +1391,7 @@ pulumi.Output<GetMulticastDomainResult> getMulticastDomainOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getpeeringattachment" "example" {
+/// data "aws_ec2transitgateway_peering_attachment" "example" {
 ///   filters {
 ///     name   = "transit-gateway-attachment-id"
 ///     values = ["tgw-attach-12345678"]
@@ -1498,7 +1496,7 @@ pulumi.Output<GetMulticastDomainResult> getMulticastDomainOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1506,7 +1504,7 @@ pulumi.Output<GetMulticastDomainResult> getMulticastDomainOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getpeeringattachment" "attachment" {
+/// data "aws_ec2transitgateway_peering_attachment" "attachment" {
 ///   id = "tgw-attach-12345678"
 /// }
 /// ```
@@ -1622,7 +1620,7 @@ pulumi.Output<GetPeeringAttachmentResult> getPeeringAttachmentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1630,7 +1628,7 @@ pulumi.Output<GetPeeringAttachmentResult> getPeeringAttachmentOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getpeeringattachments" "test" {
+/// data "aws_ec2transitgateway_peering_attachments" "test" {
 /// }
 /// ```
 /// ```java
@@ -1682,9 +1680,7 @@ pulumi.Output<GetPeeringAttachmentResult> getPeeringAttachmentOutput(
 ///         values: ["pendingAcceptance"],
 ///     }],
 /// });
-/// const unit = .map(__index => (aws.ec2transitgateway.getPeeringAttachment({
-///     id: _arg0_.ids[__index],
-/// })));
+/// const unit = _arg1_;
 /// ```
 /// ```python
 /// import pulumi
@@ -1694,7 +1690,7 @@ pulumi.Output<GetPeeringAttachmentResult> getPeeringAttachmentOutput(
 ///     "name": "state",
 ///     "values": ["pendingAcceptance"],
 /// }])
-/// unit = [aws.ec2transitgateway.get_peering_attachment(id=filtered.ids[__index]) for __index in len(filtered.ids).apply(lambda length: range(length))]
+/// unit = range(len(filtered.ids)).apply(lambda range: [aws.ec2transitgateway.get_peering_attachment(id=filtered.ids[__index]) for __index in range])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1719,12 +1715,12 @@ pulumi.Output<GetPeeringAttachmentResult> getPeeringAttachmentOutput(
 ///         },
 ///     });
 ///
-///     var unit = ;
+///     var unit = _arg1_;
 ///
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1732,19 +1728,19 @@ pulumi.Output<GetPeeringAttachmentResult> getPeeringAttachmentOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getpeeringattachments" "filtered" {
+/// data "aws_ec2transitgateway_peering_attachments" "filtered" {
 ///   filters {
 ///     name   = "state"
 ///     values = ["pendingAcceptance"]
 ///   }
 /// }
-/// data "aws_ec2transitgateway_getpeeringattachment" "invoke_1" {
-///   for_each = toset(range(length(data.aws_ec2transitgateway_getpeeringattachments.filtered.ids)))
-///   id       = data.aws_ec2transitgateway_getpeeringattachments.filtered.ids[each.value]
+/// data "aws_ec2transitgateway_peering_attachment" "invoke_1" {
+///   for_each = toset(range(length(data.aws_ec2transitgateway_peering_attachments.filtered.ids)))
+///   id       = data.aws_ec2transitgateway_peering_attachments.filtered.ids[each.value]
 /// }
 ///
 /// locals {
-///   unit = [for __index in range(length(data.aws_ec2transitgateway_getpeeringattachments.filtered.ids)) : data.aws_ec2transitgateway_getpeeringattachment.invoke_1[__index]]
+///   unit = [for __index in range(length(data.aws_ec2transitgateway_peering_attachments.filtered.ids)) : data.aws_ec2transitgateway_peering_attachment.invoke_1[__index]]
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2transitgateway_get_peering_attachments_get_peering_attachments_args_doc}
@@ -1879,7 +1875,7 @@ pulumi.Output<GetPeeringAttachmentsResult> getPeeringAttachmentsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1887,7 +1883,7 @@ pulumi.Output<GetPeeringAttachmentsResult> getPeeringAttachmentsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getroutetable" "example" {
+/// data "aws_ec2transitgateway_route_table" "example" {
 ///   filters {
 ///     name   = "default-association-route-table"
 ///     values = ["true"]
@@ -2004,7 +2000,7 @@ pulumi.Output<GetPeeringAttachmentsResult> getPeeringAttachmentsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2012,7 +2008,7 @@ pulumi.Output<GetPeeringAttachmentsResult> getPeeringAttachmentsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getroutetable" "example" {
+/// data "aws_ec2transitgateway_route_table" "example" {
 ///   id = "tgw-rtb-12345678"
 /// }
 /// ```
@@ -2135,7 +2131,7 @@ pulumi.Output<GetRouteTableResult> getRouteTableOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2143,7 +2139,7 @@ pulumi.Output<GetRouteTableResult> getRouteTableOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getroutetableassociations" "example" {
+/// data "aws_ec2transitgateway_route_table_associations" "example" {
 ///   transit_gateway_route_table_id = exampleAwsEc2TransitGatewayRouteTable.id
 /// }
 /// ```
@@ -2169,7 +2165,7 @@ pulumi.Output<GetRouteTableResult> getRouteTableOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = Ec2transitgatewayFunctions.getRouteTableAssociations(GetRouteTableAssociationsArgs.builder()
-///             .transitGatewayRouteTableId(exampleAwsEc2TransitGatewayRouteTable.id())
+///             .transitGatewayRouteTableId(exampleAwsEc2TransitGatewayRouteTable.get("id"))
 ///             .build());
 ///
 ///     }
@@ -2266,7 +2262,7 @@ pulumi.Output<GetRouteTableAssociationsResult> getRouteTableAssociationsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2274,7 +2270,7 @@ pulumi.Output<GetRouteTableAssociationsResult> getRouteTableAssociationsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getroutetablepropagations" "example" {
+/// data "aws_ec2transitgateway_route_table_propagations" "example" {
 ///   transit_gateway_route_table_id = exampleAwsEc2TransitGatewayRouteTable.id
 /// }
 /// ```
@@ -2300,7 +2296,7 @@ pulumi.Output<GetRouteTableAssociationsResult> getRouteTableAssociationsOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = Ec2transitgatewayFunctions.getRouteTablePropagations(GetRouteTablePropagationsArgs.builder()
-///             .transitGatewayRouteTableId(exampleAwsEc2TransitGatewayRouteTable.id())
+///             .transitGatewayRouteTableId(exampleAwsEc2TransitGatewayRouteTable.get("id"))
 ///             .build());
 ///
 ///     }
@@ -2422,7 +2418,7 @@ pulumi.Output<GetRouteTablePropagationsResult> getRouteTablePropagationsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2430,7 +2426,7 @@ pulumi.Output<GetRouteTablePropagationsResult> getRouteTablePropagationsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getroutetableroutes" "test" {
+/// data "aws_ec2transitgateway_route_table_routes" "test" {
 ///   filters {
 ///     name   = "type"
 ///     values = ["propagated"]
@@ -2465,7 +2461,7 @@ pulumi.Output<GetRouteTablePropagationsResult> getRouteTablePropagationsOutput(
 ///                 .name("type")
 ///                 .values("propagated")
 ///                 .build())
-///             .transitGatewayRouteTableId(example.id())
+///             .transitGatewayRouteTableId(example.get("id"))
 ///             .build());
 ///
 ///     }
@@ -2589,7 +2585,7 @@ pulumi.Output<GetRouteTableRoutesResult> getRouteTableRoutesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2597,7 +2593,7 @@ pulumi.Output<GetRouteTableRoutesResult> getRouteTableRoutesOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_gettransitgateway" "example" {
+/// data "aws_ec2transitgateway_transit_gateway" "example" {
 ///   filters {
 ///     name   = "options.amazon-side-asn"
 ///     values = ["64512"]
@@ -2702,7 +2698,7 @@ pulumi.Output<GetRouteTableRoutesResult> getRouteTableRoutesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2710,7 +2706,7 @@ pulumi.Output<GetRouteTableRoutesResult> getRouteTableRoutesOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_gettransitgateway" "example" {
+/// data "aws_ec2transitgateway_transit_gateway" "example" {
 ///   id = "tgw-12345678"
 /// }
 /// ```
@@ -2858,7 +2854,7 @@ pulumi.Output<GetTransitGatewayResult> getTransitGatewayOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2866,7 +2862,7 @@ pulumi.Output<GetTransitGatewayResult> getTransitGatewayOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getvpcattachment" "example" {
+/// data "aws_ec2transitgateway_vpc_attachment" "example" {
 ///   filters {
 ///     name   = "vpc-id"
 ///     values = ["vpc-12345678"]
@@ -2971,7 +2967,7 @@ pulumi.Output<GetTransitGatewayResult> getTransitGatewayOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2979,7 +2975,7 @@ pulumi.Output<GetTransitGatewayResult> getTransitGatewayOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getvpcattachment" "example" {
+/// data "aws_ec2transitgateway_vpc_attachment" "example" {
 ///   id = "tgw-attach-12345678"
 /// }
 /// ```
@@ -3062,9 +3058,7 @@ pulumi.Output<GetVpcAttachmentResult> getVpcAttachmentOutput(
 ///         values: ["pendingAcceptance"],
 ///     }],
 /// });
-/// const unit = .map(__index => (aws.ec2transitgateway.getVpcAttachment({
-///     id: _arg0_.ids[__index],
-/// })));
+/// const unit = _arg1_;
 /// ```
 /// ```python
 /// import pulumi
@@ -3074,7 +3068,7 @@ pulumi.Output<GetVpcAttachmentResult> getVpcAttachmentOutput(
 ///     "name": "state",
 ///     "values": ["pendingAcceptance"],
 /// }])
-/// unit = [aws.ec2transitgateway.get_vpc_attachment(id=filtered.ids[__index]) for __index in len(filtered.ids).apply(lambda length: range(length))]
+/// unit = range(len(filtered.ids)).apply(lambda range: [aws.ec2transitgateway.get_vpc_attachment(id=filtered.ids[__index]) for __index in range])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -3099,12 +3093,12 @@ pulumi.Output<GetVpcAttachmentResult> getVpcAttachmentOutput(
 ///         },
 ///     });
 ///
-///     var unit = ;
+///     var unit = _arg1_;
 ///
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3112,19 +3106,19 @@ pulumi.Output<GetVpcAttachmentResult> getVpcAttachmentOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getvpcattachments" "filtered" {
+/// data "aws_ec2transitgateway_vpc_attachments" "filtered" {
 ///   filters {
 ///     name   = "state"
 ///     values = ["pendingAcceptance"]
 ///   }
 /// }
-/// data "aws_ec2transitgateway_getvpcattachment" "invoke_1" {
-///   for_each = toset(range(length(data.aws_ec2transitgateway_getvpcattachments.filtered.ids)))
-///   id       = data.aws_ec2transitgateway_getvpcattachments.filtered.ids[each.value]
+/// data "aws_ec2transitgateway_vpc_attachment" "invoke_1" {
+///   for_each = toset(range(length(data.aws_ec2transitgateway_vpc_attachments.filtered.ids)))
+///   id       = data.aws_ec2transitgateway_vpc_attachments.filtered.ids[each.value]
 /// }
 ///
 /// locals {
-///   unit = [for __index in range(length(data.aws_ec2transitgateway_getvpcattachments.filtered.ids)) : data.aws_ec2transitgateway_getvpcattachment.invoke_1[__index]]
+///   unit = [for __index in range(length(data.aws_ec2transitgateway_vpc_attachments.filtered.ids)) : data.aws_ec2transitgateway_vpc_attachment.invoke_1[__index]]
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2transitgateway_get_vpc_attachments_get_vpc_attachments_args_doc}
@@ -3216,7 +3210,7 @@ pulumi.Output<GetVpcAttachmentsResult> getVpcAttachmentsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3224,7 +3218,7 @@ pulumi.Output<GetVpcAttachmentsResult> getVpcAttachmentsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getvpnattachment" "example" {
+/// data "aws_ec2transitgateway_vpn_attachment" "example" {
 ///   transit_gateway_id = exampleAwsEc2TransitGateway.id
 ///   vpn_connection_id  = exampleAwsVpnConnection.id
 /// }
@@ -3251,8 +3245,8 @@ pulumi.Output<GetVpcAttachmentsResult> getVpcAttachmentsOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = Ec2transitgatewayFunctions.getVpnAttachment(GetVpnAttachmentArgs.builder()
-///             .transitGatewayId(exampleAwsEc2TransitGateway.id())
-///             .vpnConnectionId(exampleAwsVpnConnection.id())
+///             .transitGatewayId(exampleAwsEc2TransitGateway.get("id"))
+///             .vpnConnectionId(exampleAwsVpnConnection.get("id"))
 ///             .build());
 ///
 ///     }
@@ -3345,7 +3339,7 @@ pulumi.Output<GetVpcAttachmentsResult> getVpcAttachmentsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3353,7 +3347,7 @@ pulumi.Output<GetVpcAttachmentsResult> getVpcAttachmentsOutput(
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getvpnattachment" "test" {
+/// data "aws_ec2transitgateway_vpn_attachment" "test" {
 ///   filters {
 ///     name   = "resource-id"
 ///     values = ["some-resource"]

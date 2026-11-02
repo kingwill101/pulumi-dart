@@ -136,7 +136,7 @@ import 'access_grants_instance_resource_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -144,10 +144,17 @@ import 'access_grants_instance_resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3control_accessgrantsinstance" "example" {
+/// resource "aws_s3control_access_grants_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_s3control_accessgrantsinstanceresourcepolicy" "example" {
-///   policy ="{
+/// resource "aws_s3control_access_grants_instance_resource_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy = <<EOF
+/// {
 ///   \"Version\": \"2012-10-17\",
 ///   \"Id\": \"S3AccessGrantsPolicy\",
 ///   \"Statement\": [{
@@ -161,10 +168,11 @@ import 'access_grants_instance_resource_policy_state.dart';
 ///       \"s3:ListAccessGrantsLocations\",
 ///       \"s3:GetDataAccess\"
 ///     ],
-///     \"Resource\": \"${aws_s3control_accessgrantsinstance.example.access_grants_instance_arn}\"
+///     \"Resource\": \"${aws_s3control_access_grants_instance.example.access_grants_instance_arn}\"
 ///   }]
 /// }
-/// "
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -272,7 +280,7 @@ class AccessGrantsInstanceResourcePolicy extends pulumi.CustomResource {
           'aws:s3control/accessGrantsInstanceResourcePolicy:AccessGrantsInstanceResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     policy = registerOutput<String>('policy');

@@ -119,7 +119,7 @@ import 'input_vpc.dart';
 /// 		_, err = medialive.NewInput(ctx, "example", &medialive.InputArgs{
 /// 			Name: pulumi.String("example-input"),
 /// 			InputSecurityGroups: pulumi.StringArray{
-/// 				example.ID().ToIDOutput().ToStringOutput(),
+/// 				example.ID(),
 /// 			},
 /// 			Type: pulumi.String("UDP_PUSH"),
 /// 			Tags: pulumi.StringMap{
@@ -134,7 +134,7 @@ import 'input_vpc.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -142,7 +142,10 @@ import 'input_vpc.dart';
 ///   }
 /// }
 ///
-/// resource "aws_medialive_inputsecuritygroup" "example" {
+/// resource "aws_medialive_input_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   whitelist_rules {
 ///     cidr = "10.0.0.8/32"
 ///   }
@@ -151,8 +154,11 @@ import 'input_vpc.dart';
 ///   }
 /// }
 /// resource "aws_medialive_input" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-input"
-///   input_security_groups = [aws_medialive_inputsecuritygroup.example.id]
+///   input_security_groups = [aws_medialive_input_security_group.example.id]
 ///   type                  = "UDP_PUSH"
 ///   tags = {
 ///     "ENVIRONMENT" = "prod"
@@ -290,7 +296,7 @@ class InputType extends pulumi.CustomResource {
           'aws:medialive/input:Input',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachedChannels = registerOutput<List<String>>('attachedChannels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

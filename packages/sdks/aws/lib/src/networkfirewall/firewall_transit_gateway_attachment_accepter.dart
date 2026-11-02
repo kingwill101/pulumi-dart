@@ -63,7 +63,7 @@ import 'firewall_transit_gateway_attachment_accepter_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,10 @@ import 'firewall_transit_gateway_attachment_accepter_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_firewalltransitgatewayattachmentaccepter" "example" {
+/// resource "aws_networkfirewall_firewall_transit_gateway_attachment_accepter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   transit_gateway_attachment_id = exampleAwsNetworkfirewallFirewall.firewallStatus[0].transitGatewayAttachmentSyncState[0].attachmentId
 /// }
 /// ```
@@ -97,7 +100,7 @@ import 'firewall_transit_gateway_attachment_accepter_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FirewallTransitGatewayAttachmentAccepter("example", FirewallTransitGatewayAttachmentAccepterArgs.builder()
-///             .transitGatewayAttachmentId(exampleAwsNetworkfirewallFirewall.firewallStatus()[0].transitGatewayAttachmentSyncState()[0].attachmentId())
+///             .transitGatewayAttachmentId(exampleAwsNetworkfirewallFirewall.get("firewallStatus")[0].get("transitGatewayAttachmentSyncState")[0].get("attachmentId"))
 ///             .build());
 ///
 ///     }
@@ -140,7 +143,7 @@ class FirewallTransitGatewayAttachmentAccepter extends pulumi.CustomResource {
           'aws:networkfirewall/firewallTransitGatewayAttachmentAccepter:FirewallTransitGatewayAttachmentAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     timeouts = registerOutput<FirewallTransitGatewayAttachmentAccepterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallTransitGatewayAttachmentAccepterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

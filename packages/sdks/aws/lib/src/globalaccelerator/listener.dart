@@ -134,7 +134,7 @@ import 'listener_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -143,7 +143,10 @@ import 'listener_state.dart';
 /// }
 ///
 /// resource "aws_globalaccelerator_accelerator" "example" {
-///   attributes = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   attributes {
 ///     flow_logs_enabled   = true
 ///     flow_logs_s3_bucket = "example-bucket"
 ///     flow_logs_s3_prefix = "flow-logs/"
@@ -153,7 +156,10 @@ import 'listener_state.dart';
 ///   enabled         = true
 /// }
 /// resource "aws_globalaccelerator_listener" "example" {
-///   port_ranges {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   port_range {
 ///     from_port = 80
 ///     to_port   = 80
 ///   }
@@ -274,7 +280,7 @@ class Listener extends pulumi.CustomResource {
           'aws:globalaccelerator/listener:Listener',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     acceleratorArn = registerOutput<String>('acceleratorArn');
     arn = registerOutput<String>('arn');

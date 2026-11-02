@@ -129,7 +129,7 @@ import 'bucket_policy_s3_control_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -137,7 +137,10 @@ import 'bucket_policy_s3_control_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3control_bucketpolicy" "example" {
+/// resource "aws_s3control_bucket_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = exampleAwsS3controlBucket.arn
 ///   policy = jsonencode({
 ///     "Id" = "testBucketPolicy"
@@ -177,7 +180,7 @@ import 'bucket_policy_s3_control_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BucketPolicy("example", BucketPolicyArgs.builder()
-///             .bucket(exampleAwsS3controlBucket.arn())
+///             .bucket(exampleAwsS3controlBucket.get("arn"))
 ///             .policy(serializeJson(
 ///                 jsonObject(
 ///                     jsonProperty("Id", "testBucketPolicy"),
@@ -187,7 +190,7 @@ import 'bucket_policy_s3_control_state.dart';
 ///                         jsonProperty("Principal", jsonObject(
 ///                             jsonProperty("AWS", "*")
 ///                         )),
-///                         jsonProperty("Resource", exampleAwsS3controlBucket.arn()),
+///                         jsonProperty("Resource", exampleAwsS3controlBucket.get("arn")),
 ///                         jsonProperty("Sid", "statement1")
 ///                     ))),
 ///                     jsonProperty("Version", "2012-10-17")
@@ -244,7 +247,7 @@ class BucketPolicyS3Control extends pulumi.CustomResource {
           'aws:s3control/bucketPolicy:BucketPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     policy = registerOutput<String>('policy');

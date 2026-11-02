@@ -74,7 +74,7 @@ import 'route_server_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,7 +82,10 @@ import 'route_server_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpc_routeserver" "test" {
+/// resource "aws_vpc_route_server" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   amazon_side_asn = 65534
 ///   tags = {
 ///     "Name" = "Test"
@@ -208,7 +211,7 @@ import 'route_server_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -216,7 +219,10 @@ import 'route_server_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpc_routeserver" "test" {
+/// resource "aws_vpc_route_server" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   amazon_side_asn           = 65534
 ///   persist_routes            = "enable"
 ///   persist_routes_duration   = 2
@@ -316,7 +322,7 @@ class RouteServer extends pulumi.CustomResource {
           'aws:vpc/routeServer:RouteServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     amazonSideAsn = registerOutput<int>('amazonSideAsn');
     arn = registerOutput<String>('arn');

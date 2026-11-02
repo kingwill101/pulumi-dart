@@ -80,7 +80,7 @@ import 'group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,7 +89,10 @@ import 'group_state.dart';
 /// }
 ///
 /// resource "aws_xray_group" "example" {
-///   insights_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   insights_configuration {
 ///     insights_enabled      = true
 ///     notifications_enabled = true
 ///   }
@@ -186,7 +189,7 @@ class Group extends pulumi.CustomResource {
           'aws:xray/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     filterExpression = registerOutput<String>('filterExpression');

@@ -67,7 +67,7 @@ import 'get_dev_environment_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,7 @@ import 'get_dev_environment_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_codecatalyst_getdevenvironment" "example" {
+/// data "aws_codecatalyst_dev_environment" "example" {
 ///   space_name   = "myspace"
 ///   project_name = "myproject"
 ///   env_id       = exampleAwsCodecatalystDevEnvironment.id
@@ -105,7 +105,7 @@ import 'get_dev_environment_result.dart';
 ///         final var example = CodecatalystFunctions.getDevEnvironment(GetDevEnvironmentArgs.builder()
 ///             .spaceName("myspace")
 ///             .projectName("myproject")
-///             .envId(exampleAwsCodecatalystDevEnvironment.id())
+///             .envId(exampleAwsCodecatalystDevEnvironment.get("id"))
 ///             .build());
 ///
 ///     }

@@ -68,7 +68,7 @@ import 'agentcore_api_key_credential_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,10 @@ import 'agentcore_api_key_credential_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreapikeycredentialprovider" "example" {
+/// resource "aws_bedrock_agentcore_api_key_credential_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example-api-key-provider"
 ///   api_key = "your-api-key-here"
 /// }
@@ -182,7 +185,7 @@ import 'agentcore_api_key_credential_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -190,7 +193,10 @@ import 'agentcore_api_key_credential_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreapikeycredentialprovider" "example" {
+/// resource "aws_bedrock_agentcore_api_key_credential_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-api-key-provider"
 ///   api_key_wo         = "your-api-key-here"
 ///   api_key_wo_version = 1
@@ -314,7 +320,7 @@ import 'agentcore_api_key_credential_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -322,7 +328,10 @@ import 'agentcore_api_key_credential_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreapikeycredentialprovider" "example" {
+/// resource "aws_bedrock_agentcore_api_key_credential_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_key_secret_config = {
 ///     secret_id = exampleAwsSecretsmanagerSecret.id
 ///     json_key  = "apiKey"
@@ -355,7 +364,7 @@ import 'agentcore_api_key_credential_provider_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentcoreApiKeyCredentialProvider("example", AgentcoreApiKeyCredentialProviderArgs.builder()
 ///             .apiKeySecretConfig(AgentcoreApiKeyCredentialProviderApiKeySecretConfigArgs.builder()
-///                 .secretId(exampleAwsSecretsmanagerSecret.id())
+///                 .secretId(exampleAwsSecretsmanagerSecret.get("id"))
 ///                 .jsonKey("apiKey")
 ///                 .build())
 ///             .name("example-api-key-provider")
@@ -436,7 +445,7 @@ class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
           'aws:bedrock/agentcoreApiKeyCredentialProvider:AgentcoreApiKeyCredentialProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['apiKey', 'apiKeyWo'],
         ) {
     apiKey = registerOutput<String?>('apiKey', isSecret: true);

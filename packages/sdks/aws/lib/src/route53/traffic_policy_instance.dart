@@ -74,7 +74,7 @@ import 'traffic_policy_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,7 +82,10 @@ import 'traffic_policy_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_trafficpolicyinstance" "test" {
+/// resource "aws_route53_traffic_policy_instance" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "test.example.com"
 ///   traffic_policy_id      = "b3gb108f-ea6f-45a5-baab-9d112d8b4037"
 ///   traffic_policy_version = 1
@@ -168,7 +171,7 @@ class TrafficPolicyInstance extends pulumi.CustomResource {
           'aws:route53/trafficPolicyInstance:TrafficPolicyInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     hostedZoneId = registerOutput<String>('hostedZoneId');

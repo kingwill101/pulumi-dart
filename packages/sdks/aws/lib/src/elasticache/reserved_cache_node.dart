@@ -99,7 +99,7 @@ import 'reserved_cache_node_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -107,17 +107,20 @@ import 'reserved_cache_node_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_elasticache_getreservedcachenodeoffering" "example" {
+/// data "aws_elasticache_reserved_cache_node_offering" "example" {
 ///   cache_node_type     = "cache.t4g.small"
 ///   duration            = "P1Y"
 ///   offering_type       = "No Upfront"
 ///   product_description = "redis"
 /// }
 ///
-/// resource "aws_elasticache_reservedcachenode" "example" {
-///   reserved_cache_nodes_offering_id   = data.aws_elasticache_getreservedcachenodeoffering.example.offering_id
-///   elasticache_reserved_cache_node_id = "optionalCustomReservationID"
-///   cache_node_count                   = 3
+/// resource "aws_elasticache_reserved_cache_node" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   reserved_cache_nodes_offering_id = data.aws_elasticache_reserved_cache_node_offering.example.offering_id
+///   id                               = "optionalCustomReservationID"
+///   cache_node_count                 = 3
 /// }
 /// ```
 /// ```java
@@ -239,7 +242,7 @@ class ReservedCacheNode extends pulumi.CustomResource {
           'aws:elasticache/reservedCacheNode:ReservedCacheNode',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cacheNodeCount = registerOutput<int>('cacheNodeCount');

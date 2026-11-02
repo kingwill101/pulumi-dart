@@ -105,7 +105,7 @@ import 'virtual_router_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -113,14 +113,17 @@ import 'virtual_router_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_appmesh_virtualrouter" "serviceb" {
-///   spec = {
-///     listeners = [{
-///       "portMapping" = {
-///         "port"     = 8080
-///         "protocol" = "http"
+/// resource "aws_appmesh_virtual_router" "serviceb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
+///     listener {
+///       port_mapping {
+///         port     = 8080
+///         protocol = "http"
 ///       }
-///     }]
+///     }
 ///   }
 ///   name      = "serviceB"
 ///   mesh_name = simple.id
@@ -160,7 +163,7 @@ import 'virtual_router_state.dart';
 ///                     .build())
 ///                 .build())
 ///             .name("serviceB")
-///             .meshName(simple.id())
+///             .meshName(simple.get("id"))
 ///             .build());
 ///
 ///     }
@@ -224,7 +227,7 @@ class VirtualRouter extends pulumi.CustomResource {
           'aws:appmesh/virtualRouter:VirtualRouter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');

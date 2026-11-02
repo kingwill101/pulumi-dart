@@ -106,7 +106,7 @@ import 'event_configurations_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -114,7 +114,10 @@ import 'event_configurations_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iot_eventconfigurations" "example" {
+/// resource "aws_iot_event_configurations" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   event_configurations = {
 ///     "THING"                  = true
 ///     "THING_GROUP"            = false
@@ -223,7 +226,7 @@ class EventConfigurations extends pulumi.CustomResource {
           'aws:iot/eventConfigurations:EventConfigurations',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     eventConfigurations = registerOutput<Map<String, bool>>('eventConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); });
     region = registerOutput<String>('region');

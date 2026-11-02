@@ -90,7 +90,7 @@ import 'application_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -98,13 +98,16 @@ import 'application_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
 ///
 /// resource "aws_accountaccess_application" "example" {
-///   identity_source = {
-///     identity_center = {
-///       instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   identity_source {
+///     identity_center {
+///       instance_arn = data.aws_ssoadmin_instances.example.arns[0]
 ///     }
 ///   }
 /// }
@@ -254,7 +257,7 @@ import 'application_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -263,8 +266,11 @@ import 'application_timeouts.dart';
 /// }
 ///
 /// resource "aws_accountaccess_application" "example" {
-///   identity_source = {
-///     identity_center = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   identity_source {
+///     identity_center {
 ///       instance_arn = exampleAwsSsoadminInstances.arns[0]
 ///     }
 ///   }
@@ -300,7 +306,7 @@ import 'application_timeouts.dart';
 ///         var example = new Application("example", ApplicationArgs.builder()
 ///             .identitySource(ApplicationIdentitySourceArgs.builder()
 ///                 .identityCenter(ApplicationIdentitySourceIdentityCenterArgs.builder()
-///                     .instanceArn(exampleAwsSsoadminInstances.arns()[0])
+///                     .instanceArn(exampleAwsSsoadminInstances.get("arns")[0])
 ///                     .build())
 ///                 .build())
 ///             .tags(Map.ofEntries(
@@ -369,7 +375,7 @@ class Application extends pulumi.CustomResource {
           'aws:accountaccess/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     identitySource = registerOutput<ApplicationIdentitySource>('identitySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationIdentitySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });

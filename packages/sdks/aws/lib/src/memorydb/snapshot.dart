@@ -65,7 +65,7 @@ import 'snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,6 +74,9 @@ import 'snapshot_state.dart';
 /// }
 ///
 /// resource "aws_memorydb_snapshot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name = exampleAwsMemorydbCluster.name
 ///   name         = "my-snapshot"
 /// }
@@ -100,7 +103,7 @@ import 'snapshot_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Snapshot("example", SnapshotArgs.builder()
-///             .clusterName(exampleAwsMemorydbCluster.name())
+///             .clusterName(exampleAwsMemorydbCluster.get("name"))
 ///             .name("my-snapshot")
 ///             .build());
 ///
@@ -158,7 +161,7 @@ class Snapshot extends pulumi.CustomResource {
           'aws:memorydb/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clusterConfigurations = registerOutput<List<SnapshotClusterConfiguration>>('clusterConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SnapshotClusterConfiguration>(guardedValue, (value) => SnapshotClusterConfiguration.fromMap((value as Map).cast<String, dynamic>())); });

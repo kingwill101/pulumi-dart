@@ -55,7 +55,7 @@ import 'recovery_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,7 +63,10 @@ import 'recovery_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53recoveryreadiness_recoverygroup" "example" {
+/// resource "aws_route53recoveryreadiness_recovery_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   recovery_group_name = "my-high-availability-app"
 /// }
 /// ```
@@ -137,7 +140,7 @@ class RecoveryGroup extends pulumi.CustomResource {
           'aws:route53recoveryreadiness/recoveryGroup:RecoveryGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cells = registerOutput<List<String>?>('cells', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

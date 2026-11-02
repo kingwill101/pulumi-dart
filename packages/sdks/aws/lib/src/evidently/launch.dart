@@ -136,7 +136,7 @@ import 'launch_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -145,13 +145,16 @@ import 'launch_state.dart';
 /// }
 ///
 /// resource "aws_evidently_launch" "example" {
-///   scheduled_splits_config = {
-///     steps = [{
-///       "groupWeights" = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scheduled_splits_config {
+///     steps {
+///       group_weights = {
 ///         "Variation1" = 0
 ///       }
-///       "startTime" = "2024-01-07 01:43:59+00:00"
-///     }]
+///       start_time = "2024-01-07 01:43:59+00:00"
+///     }
 ///   }
 ///   groups {
 ///     feature   = exampleAwsEvidentlyFeature.name
@@ -194,12 +197,12 @@ import 'launch_state.dart';
 ///                     .build())
 ///                 .build())
 ///             .groups(LaunchGroupArgs.builder()
-///                 .feature(exampleAwsEvidentlyFeature.name())
+///                 .feature(exampleAwsEvidentlyFeature.get("name"))
 ///                 .name("Variation1")
 ///                 .variation("Variation1")
 ///                 .build())
 ///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
+///             .project(exampleAwsEvidentlyProject.get("name"))
 ///             .build());
 ///
 ///     }
@@ -352,7 +355,7 @@ import 'launch_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -361,13 +364,16 @@ import 'launch_state.dart';
 /// }
 ///
 /// resource "aws_evidently_launch" "example" {
-///   scheduled_splits_config = {
-///     steps = [{
-///       "groupWeights" = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scheduled_splits_config {
+///     steps {
+///       group_weights = {
 ///         "Variation1" = 0
 ///       }
-///       "startTime" = "2024-01-07 01:43:59+00:00"
-///     }]
+///       start_time = "2024-01-07 01:43:59+00:00"
+///     }
 ///   }
 ///   groups {
 ///     feature   = exampleAwsEvidentlyFeature.name
@@ -411,12 +417,12 @@ import 'launch_state.dart';
 ///                     .build())
 ///                 .build())
 ///             .groups(LaunchGroupArgs.builder()
-///                 .feature(exampleAwsEvidentlyFeature.name())
+///                 .feature(exampleAwsEvidentlyFeature.get("name"))
 ///                 .name("Variation1")
 ///                 .variation("Variation1")
 ///                 .build())
 ///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
+///             .project(exampleAwsEvidentlyProject.get("name"))
 ///             .description("example description")
 ///             .build());
 ///
@@ -604,7 +610,7 @@ import 'launch_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -613,14 +619,17 @@ import 'launch_state.dart';
 /// }
 ///
 /// resource "aws_evidently_launch" "example" {
-///   scheduled_splits_config = {
-///     steps = [{
-///       "groupWeights" = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scheduled_splits_config {
+///     steps {
+///       group_weights = {
 ///         "Variation1" = 0
 ///         "Variation2" = 0
 ///       }
-///       "startTime" = "2024-01-07 01:43:59+00:00"
-///     }]
+///       start_time = "2024-01-07 01:43:59+00:00"
+///     }
 ///   }
 ///   groups {
 ///     feature     = exampleAwsEvidentlyFeature.name
@@ -674,19 +683,19 @@ import 'launch_state.dart';
 ///                 .build())
 ///             .groups(
 ///                 LaunchGroupArgs.builder()
-///                     .feature(exampleAwsEvidentlyFeature.name())
+///                     .feature(exampleAwsEvidentlyFeature.get("name"))
 ///                     .name("Variation1")
 ///                     .variation("Variation1")
 ///                     .description("first-group")
 ///                     .build(),
 ///                 LaunchGroupArgs.builder()
-///                     .feature(exampleAwsEvidentlyFeature.name())
+///                     .feature(exampleAwsEvidentlyFeature.get("name"))
 ///                     .name("Variation2")
 ///                     .variation("Variation2")
 ///                     .description("second-group")
 ///                     .build())
 ///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
+///             .project(exampleAwsEvidentlyProject.get("name"))
 ///             .build());
 ///
 ///     }
@@ -926,7 +935,7 @@ import 'launch_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -935,13 +944,16 @@ import 'launch_state.dart';
 /// }
 ///
 /// resource "aws_evidently_launch" "example" {
-///   scheduled_splits_config = {
-///     steps = [{
-///       "groupWeights" = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scheduled_splits_config {
+///     steps {
+///       group_weights = {
 ///         "Variation1" = 0
 ///       }
-///       "startTime" = "2024-01-07 01:43:59+00:00"
-///     }]
+///       start_time = "2024-01-07 01:43:59+00:00"
+///     }
 ///   }
 ///   groups {
 ///     feature   = exampleAwsEvidentlyFeature.name
@@ -949,7 +961,7 @@ import 'launch_state.dart';
 ///     variation = "Variation1"
 ///   }
 ///   metric_monitors {
-///     metric_definition = {
+///     metric_definition {
 ///       entity_id_key = "entity_id_key1"
 ///       event_pattern = "{\"Price\":[{\"numeric\":[\">\",11,\"<=\",22]}]}"
 ///       name          = "name1"
@@ -958,7 +970,7 @@ import 'launch_state.dart';
 ///     }
 ///   }
 ///   metric_monitors {
-///     metric_definition = {
+///     metric_definition {
 ///       entity_id_key = "entity_id_key2"
 ///       event_pattern = "{\"Price\":[{\"numeric\":[\">\",9,\"<=\",19]}]}"
 ///       name          = "name2"
@@ -1004,7 +1016,7 @@ import 'launch_state.dart';
 ///                     .build())
 ///                 .build())
 ///             .groups(LaunchGroupArgs.builder()
-///                 .feature(exampleAwsEvidentlyFeature.name())
+///                 .feature(exampleAwsEvidentlyFeature.get("name"))
 ///                 .name("Variation1")
 ///                 .variation("Variation1")
 ///                 .build())
@@ -1028,7 +1040,7 @@ import 'launch_state.dart';
 ///                         .build())
 ///                     .build())
 ///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
+///             .project(exampleAwsEvidentlyProject.get("name"))
 ///             .build());
 ///
 ///     }
@@ -1194,7 +1206,7 @@ import 'launch_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1203,13 +1215,16 @@ import 'launch_state.dart';
 /// }
 ///
 /// resource "aws_evidently_launch" "example" {
-///   scheduled_splits_config = {
-///     steps = [{
-///       "groupWeights" = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scheduled_splits_config {
+///     steps {
+///       group_weights = {
 ///         "Variation1" = 0
 ///       }
-///       "startTime" = "2024-01-07 01:43:59+00:00"
-///     }]
+///       start_time = "2024-01-07 01:43:59+00:00"
+///     }
 ///   }
 ///   groups {
 ///     feature   = exampleAwsEvidentlyFeature.name
@@ -1253,12 +1268,12 @@ import 'launch_state.dart';
 ///                     .build())
 ///                 .build())
 ///             .groups(LaunchGroupArgs.builder()
-///                 .feature(exampleAwsEvidentlyFeature.name())
+///                 .feature(exampleAwsEvidentlyFeature.get("name"))
 ///                 .name("Variation1")
 ///                 .variation("Variation1")
 ///                 .build())
 ///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
+///             .project(exampleAwsEvidentlyProject.get("name"))
 ///             .randomizationSalt("example randomization salt")
 ///             .build());
 ///
@@ -1472,7 +1487,7 @@ import 'launch_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1481,20 +1496,24 @@ import 'launch_state.dart';
 /// }
 ///
 /// resource "aws_evidently_launch" "example" {
-///   scheduled_splits_config = {
-///     steps = [{
-///       "groupWeights" = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scheduled_splits_config {
+///     steps {
+///       group_weights = {
 ///         "Variation1" = 15
 ///         "Variation2" = 10
 ///       }
-///       "startTime" = "2024-01-07 01:43:59+00:00"
-///       }, {
-///       "groupWeights" = {
+///       start_time = "2024-01-07 01:43:59+00:00"
+///     }
+///     steps {
+///       group_weights = {
 ///         "Variation1" = 20
 ///         "Variation2" = 25
 ///       }
-///       "startTime" = "2024-01-08 01:43:59+00:00"
-///     }]
+///       start_time = "2024-01-08 01:43:59+00:00"
+///     }
 ///   }
 ///   groups {
 ///     feature   = exampleAwsEvidentlyFeature.name
@@ -1554,17 +1573,17 @@ import 'launch_state.dart';
 ///                 .build())
 ///             .groups(
 ///                 LaunchGroupArgs.builder()
-///                     .feature(exampleAwsEvidentlyFeature.name())
+///                     .feature(exampleAwsEvidentlyFeature.get("name"))
 ///                     .name("Variation1")
 ///                     .variation("Variation1")
 ///                     .build(),
 ///                 LaunchGroupArgs.builder()
-///                     .feature(exampleAwsEvidentlyFeature.name())
+///                     .feature(exampleAwsEvidentlyFeature.get("name"))
 ///                     .name("Variation2")
 ///                     .variation("Variation2")
 ///                     .build())
 ///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
+///             .project(exampleAwsEvidentlyProject.get("name"))
 ///             .build());
 ///
 ///     }
@@ -1823,7 +1842,7 @@ import 'launch_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1832,28 +1851,32 @@ import 'launch_state.dart';
 /// }
 ///
 /// resource "aws_evidently_launch" "example" {
-///   scheduled_splits_config = {
-///     steps = [{
-///       "segmentOverrides" = [{
-///         "evaluationOrder" = 1
-///         "segment"         = exampleAwsEvidentlySegment.name
-///         "weights" = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scheduled_splits_config {
+///     steps {
+///       segment_overrides {
+///         evaluation_order = 1
+///         segment          = exampleAwsEvidentlySegment.name
+///         weights = {
 ///           "Variation2" = 10000
 ///         }
-///         }, {
-///         "evaluationOrder" = 2
-///         "segment"         = exampleAwsEvidentlySegment.name
-///         "weights" = {
+///       }
+///       segment_overrides {
+///         evaluation_order = 2
+///         segment          = exampleAwsEvidentlySegment.name
+///         weights = {
 ///           "Variation1" = 40000
 ///           "Variation2" = 30000
 ///         }
-///       }]
-///       "groupWeights" = {
+///       }
+///       group_weights = {
 ///         "Variation1" = 0
 ///         "Variation2" = 0
 ///       }
-///       "startTime" = "2024-01-08 01:43:59+00:00"
-///     }]
+///       start_time = "2024-01-08 01:43:59+00:00"
+///     }
 ///   }
 ///   groups {
 ///     feature   = exampleAwsEvidentlyFeature.name
@@ -1900,12 +1923,12 @@ import 'launch_state.dart';
 ///                     .segmentOverrides(
 ///                         LaunchScheduledSplitsConfigStepSegmentOverrideArgs.builder()
 ///                             .evaluationOrder(1)
-///                             .segment(exampleAwsEvidentlySegment.name())
+///                             .segment(exampleAwsEvidentlySegment.get("name"))
 ///                             .weights(Map.of("Variation2", 10000))
 ///                             .build(),
 ///                         LaunchScheduledSplitsConfigStepSegmentOverrideArgs.builder()
 ///                             .evaluationOrder(2)
-///                             .segment(exampleAwsEvidentlySegment.name())
+///                             .segment(exampleAwsEvidentlySegment.get("name"))
 ///                             .weights(Map.ofEntries(
 ///                                 Map.entry("Variation1", 40000),
 ///                                 Map.entry("Variation2", 30000)
@@ -1920,17 +1943,17 @@ import 'launch_state.dart';
 ///                 .build())
 ///             .groups(
 ///                 LaunchGroupArgs.builder()
-///                     .feature(exampleAwsEvidentlyFeature.name())
+///                     .feature(exampleAwsEvidentlyFeature.get("name"))
 ///                     .name("Variation1")
 ///                     .variation("Variation1")
 ///                     .build(),
 ///                 LaunchGroupArgs.builder()
-///                     .feature(exampleAwsEvidentlyFeature.name())
+///                     .feature(exampleAwsEvidentlyFeature.get("name"))
 ///                     .name("Variation2")
 ///                     .variation("Variation2")
 ///                     .build())
 ///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
+///             .project(exampleAwsEvidentlyProject.get("name"))
 ///             .build());
 ///
 ///     }
@@ -2035,7 +2058,7 @@ class Launch extends pulumi.CustomResource {
           'aws:evidently/launch:Launch',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');

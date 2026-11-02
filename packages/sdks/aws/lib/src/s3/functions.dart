@@ -96,7 +96,7 @@ import 'get_objects_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -104,7 +104,7 @@ import 'get_objects_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_s3_getaccesspoint" "example" {
+/// data "aws_s3_access_point" "example" {
 ///   name = "example-access-point"
 /// }
 /// ```
@@ -218,7 +218,7 @@ pulumi.Output<GetAccessPointResult> getAccessPointOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -226,7 +226,7 @@ pulumi.Output<GetAccessPointResult> getAccessPointOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3_getaccountpublicaccessblock" "example" {
+/// data "aws_s3_account_public_access_block" "example" {
 /// }
 /// ```
 /// ```java
@@ -411,7 +411,7 @@ pulumi.Output<GetAccountPublicAccessBlockResult> getAccountPublicAccessBlockOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -419,19 +419,22 @@ pulumi.Output<GetAccountPublicAccessBlockResult> getAccountPublicAccessBlockOutp
 ///   }
 /// }
 ///
-/// data "aws_s3_getbucket" "selected" {
+/// data "aws_s3_bucket" "selected" {
 ///   bucket = "bucket.test.com"
 /// }
-/// data "aws_route53_getzone" "testZone" {
+/// data "aws_route53_zone" "testZone" {
 ///   name = "test.com."
 /// }
 ///
 /// resource "aws_route53_record" "example" {
-///   aliases {
-///     name    = data.aws_s3_getbucket.selected.website_domain
-///     zone_id = data.aws_s3_getbucket.selected.hosted_zone_id
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   zone_id = data.aws_route53_getzone.testZone.id
+///   alias {
+///     name    = data.aws_s3_bucket.selected.website_domain
+///     zone_id = data.aws_s3_bucket.selected.hosted_zone_id
+///   }
+///   zone_id = data.aws_route53_zone.testZone.id
 ///   name    = "bucket"
 ///   type    = "A"
 /// }
@@ -593,7 +596,7 @@ pulumi.Output<GetAccountPublicAccessBlockResult> getAccountPublicAccessBlockOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -601,13 +604,16 @@ pulumi.Output<GetAccountPublicAccessBlockResult> getAccountPublicAccessBlockOutp
 ///   }
 /// }
 ///
-/// data "aws_s3_getbucket" "selected" {
+/// data "aws_s3_bucket" "selected" {
 ///   bucket = "a-test-bucket"
 /// }
 ///
 /// resource "aws_cloudfront_distribution" "test" {
-///   origins {
-///     domain_name = data.aws_s3_getbucket.selected.bucket_domain_name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   origin {
+///     domain_name = data.aws_s3_bucket.selected.bucket_domain_name
 ///     origin_id   = "s3-selected-bucket"
 ///   }
 /// }
@@ -750,7 +756,7 @@ pulumi.Output<GetBucketResult> getBucketOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -758,7 +764,7 @@ pulumi.Output<GetBucketResult> getBucketOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3_getbucketnotification" "example" {
+/// data "aws_s3_bucket_notification" "example" {
 ///   bucket = "example-bucket"
 /// }
 /// ```
@@ -869,7 +875,7 @@ pulumi.Output<GetBucketResult> getBucketOutput(
 ///     });
 ///
 ///     var s3ObjectCreated = new List<Aws.CloudWatch.EventRule>();
-///     for (var rangeIndex = 0; rangeIndex < shared.Eventbridge ? 1 : 0; rangeIndex++)
+///     for (var rangeIndex = 0; rangeIndex < (shared.Eventbridge ? 1 : 0); rangeIndex++)
 ///     {
 ///         var range = new { Value = rangeIndex };
 ///         s3ObjectCreated.Add(new Aws.CloudWatch.EventRule($"s3_object_created-{range.Value}", new()
@@ -941,7 +947,7 @@ pulumi.Output<GetBucketResult> getBucketOutput(
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		var tmp0 int
-/// 		if pulumi.Bool(shared.Eventbridge) {
+/// 		if shared.Eventbridge {
 /// 			tmp0 = 1
 /// 		} else {
 /// 			tmp0 = 0
@@ -964,7 +970,7 @@ pulumi.Output<GetBucketResult> getBucketOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -972,12 +978,18 @@ pulumi.Output<GetBucketResult> getBucketOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3_getbucketnotification" "shared" {
+/// data "aws_s3_bucket_notification" "shared" {
 ///   bucket = "shared-bucket"
 /// }
 ///
-/// resource "aws_cloudwatch_eventrule" "s3_object_created" {
-///   count       = data.aws_s3_getbucketnotification.shared.eventbridge ? 1 : 0
+/// resource "aws_cloudwatch_event_rule" "s3_object_created" {
+///   count = data.aws_s3_bucket_notification.shared.eventbridge ? 1 : 0
+///   pulumi {
+///     name ="s3_object_created-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "shared-bucket-object-created"
 ///   description = "S3 object-created events from the shared bucket."
 ///   event_pattern = jsonencode({
@@ -985,7 +997,7 @@ pulumi.Output<GetBucketResult> getBucketOutput(
 ///     "detail-type" = ["Object Created"]
 ///     "detail" = {
 ///       "bucket" = {
-///         "name" = [data.aws_s3_getbucketnotification.shared.bucket]
+///         "name" = [data.aws_s3_bucket_notification.shared.bucket]
 ///       }
 ///     }
 ///   })
@@ -1192,7 +1204,7 @@ pulumi.Output<GetBucketResult> getBucketOutput(
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1200,43 +1212,46 @@ pulumi.Output<GetBucketResult> getBucketOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3_getbucketnotification" "existing" {
+/// data "aws_s3_bucket_notification" "existing" {
 ///   bucket = exampleAwsS3Bucket.id
 /// }
 ///
-/// resource "aws_s3_bucketnotification" "example" {
-///   dynamic "lambda_functions" {
-///     for_each = data.aws_s3_getbucketnotification.existing.lambda_functions
+/// resource "aws_s3_bucket_notification" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   dynamic "lambda_function" {
+///     for_each = data.aws_s3_bucket_notification.existing.lambda_function
 ///     content {
-///       id                  = lambda_functions.value.id
-///       lambda_function_arn = lambda_functions.value.lambdaFunctionArn
-///       events              = lambda_functions.value.events
-///       filter_prefix       = lambda_functions.value.filterPrefix
-///       filter_suffix       = lambda_functions.value.filterSuffix
+///       id                  = lambda_function.value.id
+///       lambda_function_arn = lambda_function.value.lambdaFunctionArn
+///       events              = lambda_function.value.events
+///       filter_prefix       = lambda_function.value.filterPrefix
+///       filter_suffix       = lambda_function.value.filterSuffix
 ///     }
 ///   }
-///   dynamic "queues" {
-///     for_each = data.aws_s3_getbucketnotification.existing.queues
+///   dynamic "queue" {
+///     for_each = data.aws_s3_bucket_notification.existing.queue
 ///     content {
-///       id            = queues.value.id
-///       queue_arn     = queues.value.queueArn
-///       events        = queues.value.events
-///       filter_prefix = queues.value.filterPrefix
-///       filter_suffix = queues.value.filterSuffix
+///       id            = queue.value.id
+///       queue_arn     = queue.value.queueArn
+///       events        = queue.value.events
+///       filter_prefix = queue.value.filterPrefix
+///       filter_suffix = queue.value.filterSuffix
 ///     }
 ///   }
-///   dynamic "topics" {
-///     for_each = data.aws_s3_getbucketnotification.existing.topics
+///   dynamic "topic" {
+///     for_each = data.aws_s3_bucket_notification.existing.topic
 ///     content {
-///       id            = topics.value.id
-///       topic_arn     = topics.value.topicArn
-///       events        = topics.value.events
-///       filter_prefix = topics.value.filterPrefix
-///       filter_suffix = topics.value.filterSuffix
+///       id            = topic.value.id
+///       topic_arn     = topic.value.topicArn
+///       events        = topic.value.events
+///       filter_prefix = topic.value.filterPrefix
+///       filter_suffix = topic.value.filterSuffix
 ///     }
 ///   }
 ///   bucket      = exampleAwsS3Bucket.id
-///   eventbridge = data.aws_s3_getbucketnotification.existing.eventbridge
+///   eventbridge = data.aws_s3_bucket_notification.existing.eventbridge
 /// }
 /// ```
 ///
@@ -1326,7 +1341,7 @@ pulumi.Output<GetBucketResult> getBucketOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1334,8 +1349,11 @@ pulumi.Output<GetBucketResult> getBucketOutput(
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketnotification" "example" {
-///   lambda_functions {
+/// resource "aws_s3_bucket_notification" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   lambda_function {
 ///     id                  = "my-team-rule"
 ///     lambda_function_arn = mine.arn
 ///     events              = ["s3:ObjectRemoved:*"]
@@ -1368,10 +1386,10 @@ pulumi.Output<GetBucketResult> getBucketOutput(
 ///         var example = new BucketNotification("example", BucketNotificationArgs.builder()
 ///             .lambdaFunctions(BucketNotificationLambdaFunctionArgs.builder()
 ///                 .id("my-team-rule")
-///                 .lambdaFunctionArn(mine.arn())
+///                 .lambdaFunctionArn(mine.get("arn"))
 ///                 .events("s3:ObjectRemoved:*")
 ///                 .build())
-///             .bucket(exampleAwsS3Bucket.id())
+///             .bucket(exampleAwsS3Bucket.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1523,7 +1541,7 @@ pulumi.Output<GetBucketNotificationResult> getBucketNotificationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1531,15 +1549,18 @@ pulumi.Output<GetBucketNotificationResult> getBucketNotificationOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3_getbucketobject" "bootstrapScript" {
+/// data "aws_s3_bucket_object" "bootstrapScript" {
 ///   bucket = "ourcorp-deploy-config"
 ///   key    = "ec2-bootstrap-script.sh"
 /// }
 ///
 /// resource "aws_ec2_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_type = "t2.micro"
 ///   ami           = "ami-2757f631"
-///   user_data     = data.aws_s3_getbucketobject.bootstrapScript.body
+///   user_data     = data.aws_s3_bucket_object.bootstrapScript.body
 /// }
 /// ```
 /// ```java
@@ -1695,7 +1716,7 @@ pulumi.Output<GetBucketNotificationResult> getBucketNotificationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1703,16 +1724,19 @@ pulumi.Output<GetBucketNotificationResult> getBucketNotificationOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3_getbucketobject" "lambda" {
+/// data "aws_s3_bucket_object" "lambda" {
 ///   bucket = "ourcorp-lambda-functions"
 ///   key    = "hello-world.zip"
 /// }
 ///
 /// resource "aws_lambda_function" "test_lambda" {
-///   s3_bucket         = data.aws_s3_getbucketobject.lambda.id
-///   s3_key            = data.aws_s3_getbucketobject.lambda.key
-///   s3_object_version = data.aws_s3_getbucketobject.lambda.version_id
-///   name              = "lambda_function_name"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   s3_bucket         = data.aws_s3_bucket_object.lambda.id
+///   s3_key            = data.aws_s3_bucket_object.lambda.key
+///   s3_object_version = data.aws_s3_bucket_object.lambda.version_id
+///   function_name     = "lambda_function_name"
 ///   role              = iamForLambda.arn
 ///   handler           = "exports.test"
 /// }
@@ -1750,7 +1774,7 @@ pulumi.Output<GetBucketNotificationResult> getBucketNotificationOutput(
 ///             .s3Key(lambda.key())
 ///             .s3ObjectVersion(lambda.versionId())
 ///             .name("lambda_function_name")
-///             .role(iamForLambda.arn())
+///             .role(iamForLambda.get("arn"))
 ///             .handler("exports.test")
 ///             .build());
 ///
@@ -1860,7 +1884,7 @@ pulumi.Output<GetBucketObjectResult> getBucketObjectOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1868,7 +1892,7 @@ pulumi.Output<GetBucketObjectResult> getBucketObjectOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3_getbucketobjectlockconfiguration" "example" {
+/// data "aws_s3_bucket_object_lock_configuration" "example" {
 ///   bucket = "example-bucket"
 /// }
 /// ```
@@ -2029,7 +2053,7 @@ pulumi.Output<GetBucketObjectsResult> getBucketObjectsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2037,12 +2061,12 @@ pulumi.Output<GetBucketObjectsResult> getBucketObjectsOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3_getbucketpolicy" "example" {
+/// data "aws_s3_bucket_policy" "example" {
 ///   bucket = "example-bucket-name"
 /// }
 ///
 /// output "foo" {
-///   value = data.aws_s3_getbucketpolicy.example.policy
+///   value = data.aws_s3_bucket_policy.example.policy
 /// }
 /// ```
 /// ```java
@@ -2167,7 +2191,7 @@ pulumi.Output<GetBucketPolicyResult> getBucketPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2175,7 +2199,7 @@ pulumi.Output<GetBucketPolicyResult> getBucketPolicyOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3_getbucketreplicationconfiguration" "example" {
+/// data "aws_s3_bucket_replication_configuration" "example" {
 ///   bucket = "example-bucket"
 /// }
 /// ```
@@ -2291,7 +2315,7 @@ pulumi.Output<GetBucketReplicationConfigurationResult> getBucketReplicationConfi
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2299,7 +2323,7 @@ pulumi.Output<GetBucketReplicationConfigurationResult> getBucketReplicationConfi
 ///   }
 /// }
 ///
-/// data "aws_s3_getbuckets" "example" {
+/// data "aws_s3_buckets" "example" {
 /// }
 /// ```
 /// ```java
@@ -2399,7 +2423,7 @@ pulumi.Output<GetBucketReplicationConfigurationResult> getBucketReplicationConfi
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2407,7 +2431,7 @@ pulumi.Output<GetBucketReplicationConfigurationResult> getBucketReplicationConfi
 ///   }
 /// }
 ///
-/// data "aws_s3_getbuckets" "example" {
+/// data "aws_s3_buckets" "example" {
 ///   bucket_region = "us-west-2"
 ///   max_buckets   = 3
 ///   prefix        = "tf-"
@@ -2537,7 +2561,7 @@ pulumi.Output<GetBucketsResult> getBucketsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2545,11 +2569,11 @@ pulumi.Output<GetBucketsResult> getBucketsOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3_getcanonicaluserid" "current" {
+/// data "aws_s3_canonical_user_id" "current" {
 /// }
 ///
 /// output "canonicalUserId" {
-///   value = data.aws_s3_getcanonicaluserid.current.id
+///   value = data.aws_s3_canonical_user_id.current.id
 /// }
 /// ```
 /// ```java
@@ -2660,7 +2684,7 @@ pulumi.Output<GetCanonicalUserIdResult> getCanonicalUserIdOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2668,7 +2692,7 @@ pulumi.Output<GetCanonicalUserIdResult> getCanonicalUserIdOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3_getdirectorybuckets" "example" {
+/// data "aws_s3_directory_buckets" "example" {
 /// }
 /// ```
 /// ```java
@@ -2786,7 +2810,7 @@ pulumi.Output<GetDirectoryBucketsResult> getDirectoryBucketsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2794,7 +2818,7 @@ pulumi.Output<GetDirectoryBucketsResult> getDirectoryBucketsOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3_getfilesaccesspoint" "example" {
+/// data "aws_s3_files_access_point" "example" {
 ///   id = "fsap-1234567890abcdef0"
 /// }
 /// ```
@@ -2915,7 +2939,7 @@ pulumi.Output<GetFilesAccessPointResult> getFilesAccessPointOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2923,7 +2947,7 @@ pulumi.Output<GetFilesAccessPointResult> getFilesAccessPointOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3_getfilesfilesystem" "example" {
+/// data "aws_s3_files_file_system" "example" {
 ///   id = "fs-1234567890abcdef0"
 /// }
 /// ```
@@ -3037,7 +3061,7 @@ pulumi.Output<GetFilesFileSystemResult> getFilesFileSystemOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3045,7 +3069,7 @@ pulumi.Output<GetFilesFileSystemResult> getFilesFileSystemOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3_getfilesfilesystems" "example" {
+/// data "aws_s3_files_file_systems" "example" {
 /// }
 /// ```
 /// ```java
@@ -3163,7 +3187,7 @@ pulumi.Output<GetFilesFileSystemsResult> getFilesFileSystemsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3171,7 +3195,7 @@ pulumi.Output<GetFilesFileSystemsResult> getFilesFileSystemsOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3_getfilesmounttarget" "example" {
+/// data "aws_s3_files_mount_target" "example" {
 ///   id = "fsmt-1234567890abcdef0"
 /// }
 /// ```
@@ -3341,7 +3365,7 @@ pulumi.Output<GetFilesMountTargetResult> getFilesMountTargetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3349,15 +3373,18 @@ pulumi.Output<GetFilesMountTargetResult> getFilesMountTargetOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3_getobject" "bootstrapScript" {
+/// data "aws_s3_object" "bootstrapScript" {
 ///   bucket = "ourcorp-deploy-config"
 ///   key    = "ec2-bootstrap-script.sh"
 /// }
 ///
 /// resource "aws_ec2_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_type = "t2.micro"
 ///   ami           = "ami-2757f631"
-///   user_data     = data.aws_s3_getobject.bootstrapScript.body
+///   user_data     = data.aws_s3_object.bootstrapScript.body
 /// }
 /// ```
 /// ```java
@@ -3513,7 +3540,7 @@ pulumi.Output<GetFilesMountTargetResult> getFilesMountTargetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3521,16 +3548,19 @@ pulumi.Output<GetFilesMountTargetResult> getFilesMountTargetOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3_getobject" "lambda" {
+/// data "aws_s3_object" "lambda" {
 ///   bucket = "ourcorp-lambda-functions"
 ///   key    = "hello-world.zip"
 /// }
 ///
 /// resource "aws_lambda_function" "test_lambda" {
-///   s3_bucket         = data.aws_s3_getobject.lambda.bucket
-///   s3_key            = data.aws_s3_getobject.lambda.key
-///   s3_object_version = data.aws_s3_getobject.lambda.version_id
-///   name              = "lambda_function_name"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   s3_bucket         = data.aws_s3_object.lambda.bucket
+///   s3_key            = data.aws_s3_object.lambda.key
+///   s3_object_version = data.aws_s3_object.lambda.version_id
+///   function_name     = "lambda_function_name"
 ///   role              = iamForLambda.arn
 ///   handler           = "exports.test"
 /// }
@@ -3568,7 +3598,7 @@ pulumi.Output<GetFilesMountTargetResult> getFilesMountTargetOutput(
 ///             .s3Key(lambda.key())
 ///             .s3ObjectVersion(lambda.versionId())
 ///             .name("lambda_function_name")
-///             .role(iamForLambda.arn())
+///             .role(iamForLambda.get("arn"))
 ///             .handler("exports.test")
 ///             .build());
 ///
@@ -3700,7 +3730,7 @@ pulumi.Output<GetObjectsResult> getObjectsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3708,7 +3738,7 @@ pulumi.Output<GetObjectsResult> getObjectsOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3control_getaccesspoints" "example" {
+/// data "aws_s3control_access_points" "example" {
 /// }
 /// ```
 /// ```java
@@ -3800,7 +3830,7 @@ pulumi.Output<GetObjectsResult> getObjectsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3808,7 +3838,7 @@ pulumi.Output<GetObjectsResult> getObjectsOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3control_getaccesspoints" "example" {
+/// data "aws_s3control_access_points" "example" {
 ///   bucket = exampleAwsS3Bucket.bucket
 /// }
 /// ```
@@ -3834,7 +3864,7 @@ pulumi.Output<GetObjectsResult> getObjectsOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = S3controlFunctions.getAccessPoints(GetAccessPointsArgs.builder()
-///             .bucket(exampleAwsS3Bucket.bucket())
+///             .bucket(exampleAwsS3Bucket.get("bucket"))
 ///             .build());
 ///
 ///     }
@@ -3929,7 +3959,7 @@ pulumi.Output<GetAccessPointsResult> getAccessPointsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -3937,7 +3967,7 @@ pulumi.Output<GetAccessPointsResult> getAccessPointsOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3control_getmultiregionaccesspoint" "example" {
+/// data "aws_s3control_multi_region_access_point" "example" {
 ///   name = "example"
 /// }
 /// ```
@@ -4053,7 +4083,7 @@ pulumi.Output<GetMultiRegionAccessPointResult> getMultiRegionAccessPointOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -4061,7 +4091,7 @@ pulumi.Output<GetMultiRegionAccessPointResult> getMultiRegionAccessPointOutput(
 ///   }
 /// }
 ///
-/// data "aws_s3control_getmultiregionaccesspoints" "example" {
+/// data "aws_s3control_multi_region_access_points" "example" {
 /// }
 /// ```
 /// ```java

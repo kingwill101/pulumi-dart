@@ -98,7 +98,7 @@ import 'size_constraint_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -106,9 +106,12 @@ import 'size_constraint_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_waf_sizeconstraintset" "size_constraint_set" {
+/// resource "aws_waf_size_constraint_set" "size_constraint_set" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   size_constraints {
-///     field_to_match = {
+///     field_to_match {
 ///       type = "BODY"
 ///     }
 ///     text_transformation = "NONE"
@@ -199,7 +202,7 @@ class SizeConstraintSet extends pulumi.CustomResource {
           'aws:waf/sizeConstraintSet:SizeConstraintSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

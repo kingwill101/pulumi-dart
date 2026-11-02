@@ -104,7 +104,7 @@ import 'vpc_endpoint_vpc_options.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -112,8 +112,11 @@ import 'vpc_endpoint_vpc_options.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticsearch_vpcendpoint" "foo" {
-///   vpc_options = {
+/// resource "aws_elasticsearch_vpc_endpoint" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc_options {
 ///     security_group_ids = [test.id, test2.id]
 ///     subnet_ids         = [testAwsSubnet.id, test2AwsSubnet.id]
 ///   }
@@ -145,13 +148,13 @@ import 'vpc_endpoint_vpc_options.dart';
 ///         var foo = new VpcEndpoint("foo", VpcEndpointArgs.builder()
 ///             .vpcOptions(VpcEndpointVpcOptionsArgs.builder()
 ///                 .securityGroupIds(
-///                     test.id(),
-///                     test2.id())
+///                     test.get("id"),
+///                     test2.get("id"))
 ///                 .subnetIds(
-///                     testAwsSubnet.id(),
-///                     test2AwsSubnet.id())
+///                     testAwsSubnet.get("id"),
+///                     test2AwsSubnet.get("id"))
 ///                 .build())
-///             .domainArn(domain1.arn())
+///             .domainArn(domain1.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -202,7 +205,7 @@ class VpcEndpoint extends pulumi.CustomResource {
           'aws:elasticsearch/vpcEndpoint:VpcEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     domainArn = registerOutput<String>('domainArn');
     endpoint = registerOutput<String>('endpoint');

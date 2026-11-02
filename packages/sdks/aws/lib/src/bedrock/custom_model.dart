@@ -157,7 +157,7 @@ import 'custom_model_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -165,20 +165,23 @@ import 'custom_model_vpc_config.dart';
 ///   }
 /// }
 ///
-/// data "aws_bedrockfoundation_getmodel" "example" {
+/// data "aws_bedrockfoundation_model" "example" {
 ///   model_id = "amazon.titan-text-express-v1"
 /// }
 ///
-/// resource "aws_bedrock_custommodel" "example" {
-///   output_data_config = {
+/// resource "aws_bedrock_custom_model" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   output_data_config {
 ///     s3_uri ="s3://${output.id}/data/"
 ///   }
-///   training_data_config = {
+///   training_data_config {
 ///     s3_uri ="s3://${training.id}/data/train.jsonl"
 ///   }
 ///   custom_model_name     = "example-model"
 ///   job_name              = "example-job-1"
-///   base_model_identifier = data.aws_bedrockfoundation_getmodel.example.model_arn
+///   base_model_identifier = data.aws_bedrockfoundation_model.example.model_arn
 ///   role_arn              = exampleAwsIamRole.arn
 ///   hyperparameters = {
 ///     "epochCount"              = "1"
@@ -219,15 +222,15 @@ import 'custom_model_vpc_config.dart';
 ///
 ///         var exampleCustomModel = new CustomModel("exampleCustomModel", CustomModelArgs.builder()
 ///             .outputDataConfig(CustomModelOutputDataConfigArgs.builder()
-///                 .s3Uri(String.format("s3://%s/data/", output.id()))
+///                 .s3Uri(String.format("s3://%s/data/", output.get("id")))
 ///                 .build())
 ///             .trainingDataConfig(CustomModelTrainingDataConfigArgs.builder()
-///                 .s3Uri(String.format("s3://%s/data/train.jsonl", training.id()))
+///                 .s3Uri(String.format("s3://%s/data/train.jsonl", training.get("id")))
 ///                 .build())
 ///             .customModelName("example-model")
 ///             .jobName("example-job-1")
 ///             .baseModelIdentifier(example.modelArn())
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .hyperparameters(Map.ofEntries(
 ///                 Map.entry("epochCount", "1"),
 ///                 Map.entry("batchSize", "1"),
@@ -334,7 +337,7 @@ class CustomModel extends pulumi.CustomResource {
           'aws:bedrock/customModel:CustomModel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     baseModelIdentifier = registerOutput<String>('baseModelIdentifier');
     customModelArn = registerOutput<String>('customModelArn');

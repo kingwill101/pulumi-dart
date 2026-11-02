@@ -90,7 +90,7 @@ import 'sql_injection_match_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -98,9 +98,12 @@ import 'sql_injection_match_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafregional_sqlinjectionmatchset" "sql_injection_match_set" {
-///   sql_injection_match_tuples {
-///     field_to_match = {
+/// resource "aws_wafregional_sql_injection_match_set" "sql_injection_match_set" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   sql_injection_match_tuple {
+///     field_to_match {
 ///       type = "QUERY_STRING"
 ///     }
 ///     text_transformation = "URL_DECODE"
@@ -185,7 +188,7 @@ class SqlInjectionMatchSet extends pulumi.CustomResource {
           'aws:wafregional/sqlInjectionMatchSet:SqlInjectionMatchSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

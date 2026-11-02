@@ -145,7 +145,7 @@ import 'node_group_warm_pool_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -153,14 +153,17 @@ import 'node_group_warm_pool_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_eks_nodegroup" "example" {
+/// resource "aws_eks_node_group" "example" {
 ///   depends_on = [example-AmazonEKSWorkerNodePolicy, example-AmazonEKSCNIPolicy, example-AmazonEC2ContainerRegistryReadOnly]
-///   scaling_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scaling_config {
 ///     desired_size = 1
 ///     max_size     = 2
 ///     min_size     = 1
 ///   }
-///   update_config = {
+///   update_config {
 ///     max_unavailable = 1
 ///   }
 ///   cluster_name    = exampleAwsEksCluster.name
@@ -202,10 +205,10 @@ import 'node_group_warm_pool_config.dart';
 ///             .updateConfig(NodeGroupUpdateConfigArgs.builder()
 ///                 .maxUnavailable(1)
 ///                 .build())
-///             .clusterName(exampleAwsEksCluster.name())
+///             .clusterName(exampleAwsEksCluster.get("name"))
 ///             .nodeGroupName("example")
-///             .nodeRoleArn(exampleAwsIamRole.arn())
-///             .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///             .nodeRoleArn(exampleAwsIamRole.get("arn"))
+///             .subnetIds(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(
 ///                     example_AmazonEKSWorkerNodePolicy,
@@ -291,7 +294,7 @@ import 'node_group_warm_pool_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -299,11 +302,12 @@ import 'node_group_warm_pool_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_eks_nodegroup" "example" {
+/// resource "aws_eks_node_group" "example" {
 ///   lifecycle {
-///     ignore_changes = [scalingConfig.desiredSize]
+///     ignore_changes        = [scalingConfig.desiredSize]
+///     create_before_destroy = true
 ///   }
-///   scaling_config = {
+///   scaling_config {
 ///     desired_size = 2
 ///   }
 /// }
@@ -459,7 +463,7 @@ import 'node_group_warm_pool_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -467,15 +471,18 @@ import 'node_group_warm_pool_config.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssm_getparameter" "eksAmiReleaseVersion" {
+/// data "aws_ssm_parameter" "eksAmiReleaseVersion" {
 ///   name ="/aws/service/eks/optimized-ami/${exampleAwsEksCluster.version}/amazon-linux-2023/x86_64/standard/recommended/release_version"
 /// }
 ///
-/// resource "aws_eks_nodegroup" "example" {
+/// resource "aws_eks_node_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_name    = exampleAwsEksCluster.name
 ///   node_group_name = "example"
 ///   version         = exampleAwsEksCluster.version
-///   release_version = nonsensitive(data.aws_ssm_getparameter.eksAmiReleaseVersion.value)
+///   release_version = nonsensitive(data.aws_ssm_parameter.eksAmiReleaseVersion.value)
 ///   node_role_arn   = exampleAwsIamRole.arn
 ///   subnet_ids      = exampleAwsSubnet[*].id
 /// }
@@ -504,16 +511,16 @@ import 'node_group_warm_pool_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var eksAmiReleaseVersion = SsmFunctions.getParameter(GetParameterArgs.builder()
-///             .name(String.format("/aws/service/eks/optimized-ami/%s/amazon-linux-2023/x86_64/standard/recommended/release_version", exampleAwsEksCluster.version()))
+///             .name(String.format("/aws/service/eks/optimized-ami/%s/amazon-linux-2023/x86_64/standard/recommended/release_version", exampleAwsEksCluster.get("version")))
 ///             .build());
 ///
 ///         var example = new NodeGroup("example", NodeGroupArgs.builder()
-///             .clusterName(exampleAwsEksCluster.name())
+///             .clusterName(exampleAwsEksCluster.get("name"))
 ///             .nodeGroupName("example")
-///             .version(exampleAwsEksCluster.version())
+///             .version(exampleAwsEksCluster.get("version"))
 ///             .releaseVersion(eksAmiReleaseVersion.value().asPlaintext())
-///             .nodeRoleArn(exampleAwsIamRole.arn())
-///             .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///             .nodeRoleArn(exampleAwsIamRole.get("arn"))
+///             .subnetIds(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
 ///             .build());
 ///
 ///     }
@@ -692,7 +699,7 @@ import 'node_group_warm_pool_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -701,6 +708,9 @@ import 'node_group_warm_pool_config.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "eks-node-group-example"
 ///   assume_role_policy = jsonencode({
 ///     "Statement" = [{
@@ -713,15 +723,24 @@ import 'node_group_warm_pool_config.dart';
 ///     "Version" = "2012-10-17"
 ///   })
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example-AmazonEKSWorkerNodePolicy" {
+/// resource "aws_iam_role_policy_attachment" "example-AmazonEKSWorkerNodePolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
 ///   role       = aws_iam_role.example.name
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example-AmazonEKS_CNI_Policy" {
+/// resource "aws_iam_role_policy_attachment" "example-AmazonEKS_CNI_Policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
 ///   role       = aws_iam_role.example.name
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example-AmazonEC2ContainerRegistryReadOnly" {
+/// resource "aws_iam_role_policy_attachment" "example-AmazonEC2ContainerRegistryReadOnly" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
 ///   role       = aws_iam_role.example.name
 /// }
@@ -935,7 +954,7 @@ import 'node_group_warm_pool_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -946,13 +965,19 @@ import 'node_group_warm_pool_config.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
+/// data "aws_availability_zones" "available" {
 ///   state = "available"
 /// }
 ///
 /// resource "aws_ec2_subnet" "example" {
-///   count             = 2
-///   availability_zone = data.aws_getavailabilityzones.available.names[count.index]
+///   count = 2
+///   pulumi {
+///     name ="example-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   availability_zone = data.aws_availability_zones.available.names[count.index]
 ///   cidr_block        = cidrsubnet(exampleAwsVpc.cidrBlock, 8, count.index)
 ///   vpc_id            = exampleAwsVpc.id
 /// }
@@ -991,11 +1016,11 @@ import 'node_group_warm_pool_config.dart';
 ///             new Subnet("example-" + i, SubnetArgs.builder()
 ///                 .availabilityZone(available.names()[range.value()])
 ///                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
-///                     .input(exampleAwsVpc.cidrBlock())
+///                     .input(exampleAwsVpc.get("cidrBlock"))
 ///                     .newbits(8)
 ///                     .netnum(range.value())
 ///                     .build()).result())
-///                 .vpcId(exampleAwsVpc.id())
+///                 .vpcId(exampleAwsVpc.get("id"))
 ///                 .build());
 ///
 ///
@@ -1093,7 +1118,7 @@ class NodeGroup extends pulumi.CustomResource {
           'aws:eks/nodeGroup:NodeGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     amiType = registerOutput<String>('amiType');
     arn = registerOutput<String>('arn');

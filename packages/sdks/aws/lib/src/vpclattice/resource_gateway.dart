@@ -87,7 +87,7 @@ import 'resource_gateway_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,7 +95,10 @@ import 'resource_gateway_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_resourcegateway" "example" {
+/// resource "aws_vpclattice_resource_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "Example"
 ///   vpc_id     = exampleAwsVpc.id
 ///   subnet_ids = [exampleAwsSubnet.id]
@@ -127,8 +130,8 @@ import 'resource_gateway_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourceGateway("example", ResourceGatewayArgs.builder()
 ///             .name("Example")
-///             .vpcId(exampleAwsVpc.id())
-///             .subnetIds(exampleAwsSubnet.id())
+///             .vpcId(exampleAwsVpc.get("id"))
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .tags(Map.of("Environment", "Example"))
 ///             .build());
 ///
@@ -233,7 +236,7 @@ import 'resource_gateway_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -241,7 +244,10 @@ import 'resource_gateway_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_resourcegateway" "example" {
+/// resource "aws_vpclattice_resource_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "Example"
 ///   vpc_id          = exampleAwsVpc.id
 ///   subnet_ids      = [exampleAwsSubnet.id]
@@ -274,8 +280,8 @@ import 'resource_gateway_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourceGateway("example", ResourceGatewayArgs.builder()
 ///             .name("Example")
-///             .vpcId(exampleAwsVpc.id())
-///             .subnetIds(exampleAwsSubnet.id())
+///             .vpcId(exampleAwsVpc.get("id"))
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .ipAddressType("DUALSTACK")
 ///             .tags(Map.of("Environment", "Example"))
 ///             .build());
@@ -374,7 +380,7 @@ import 'resource_gateway_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -382,7 +388,10 @@ import 'resource_gateway_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_resourcegateway" "example" {
+/// resource "aws_vpclattice_resource_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "Example"
 ///   vpc_id             = exampleAwsVpc.id
 ///   security_group_ids = [test.id]
@@ -412,9 +421,9 @@ import 'resource_gateway_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourceGateway("example", ResourceGatewayArgs.builder()
 ///             .name("Example")
-///             .vpcId(exampleAwsVpc.id())
-///             .securityGroupIds(test.id())
-///             .subnetIds(exampleAwsSubnet.id())
+///             .vpcId(exampleAwsVpc.get("id"))
+///             .securityGroupIds(test.get("id"))
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .build());
 ///
 ///     }
@@ -482,7 +491,7 @@ class ResourceGateway extends pulumi.CustomResource {
           'aws:vpclattice/resourceGateway:ResourceGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     ipAddressType = registerOutput<String>('ipAddressType');

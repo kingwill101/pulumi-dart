@@ -308,7 +308,7 @@ import 'core_network_connector_timeouts.dart';
 /// json1 := string(tmpJSON1)
 /// _, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
 /// Name: pulumi.String("example-network-connector-operator"),
-/// Role: exampleRole.ID().ToIDOutput().ToStringOutput(),
+/// Role: exampleRole.ID(),
 /// Policy: pulumi.String(json1),
 /// })
 /// if err != nil {
@@ -319,7 +319,7 @@ import 'core_network_connector_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -327,7 +327,10 @@ import 'core_network_connector_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_corenetworkconnector" "example" {
+/// resource "aws_lambda_core_network_connector" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration = {
 ///     vpc_egress_configuration = {
 ///       associated_compute_resource_types = ["MicroVm"]
@@ -340,6 +343,9 @@ import 'core_network_connector_timeouts.dart';
 ///   operator_role = aws_iam_role.example.arn
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-network-connector-operator"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -352,7 +358,10 @@ import 'core_network_connector_timeouts.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_iam_rolepolicy" "example" {
+/// resource "aws_iam_role_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-network-connector-operator"
 ///   role = aws_iam_role.example.id
 ///   policy = jsonencode({
@@ -424,8 +433,8 @@ import 'core_network_connector_timeouts.dart';
 ///                 .vpcEgressConfiguration(CoreNetworkConnectorConfigurationVpcEgressConfigurationArgs.builder()
 ///                     .associatedComputeResourceTypes("MicroVm")
 ///                     .networkProtocol("IPv4")
-///                     .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
-///                     .securityGroupIds(exampleAwsSecurityGroup.id())
+///                     .subnetIds(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
+///                     .securityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///                     .build())
 ///                 .build())
 ///             .name("example")
@@ -511,7 +520,7 @@ class CoreNetworkConnector extends pulumi.CustomResource {
           'aws:lambda/coreNetworkConnector:CoreNetworkConnector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<CoreNetworkConnectorConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CoreNetworkConnectorConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

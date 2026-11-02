@@ -81,7 +81,7 @@ import 'target_suspended_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,6 +90,9 @@ import 'target_suspended_state.dart';
 /// }
 ///
 /// resource "aws_appautoscaling_target" "dynamodb_table_read_target" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   max_capacity       = 100
 ///   min_capacity       = 5
 ///   resource_id        ="table/${example.name}"
@@ -121,7 +124,7 @@ import 'target_suspended_state.dart';
 ///         var dynamodbTableReadTarget = new Target("dynamodbTableReadTarget", TargetArgs.builder()
 ///             .maxCapacity(100)
 ///             .minCapacity(5)
-///             .resourceId(String.format("table/%s", example.name()))
+///             .resourceId(String.format("table/%s", example.get("name")))
 ///             .scalableDimension("dynamodb:table:ReadCapacityUnits")
 ///             .serviceNamespace("dynamodb")
 ///             .build());
@@ -213,7 +216,7 @@ import 'target_suspended_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -222,6 +225,9 @@ import 'target_suspended_state.dart';
 /// }
 ///
 /// resource "aws_appautoscaling_target" "dynamodb_index_read_target" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   max_capacity       = 100
 ///   min_capacity       = 5
 ///   resource_id        ="table/${example.name}/index/${indexName}"
@@ -253,7 +259,7 @@ import 'target_suspended_state.dart';
 ///         var dynamodbIndexReadTarget = new Target("dynamodbIndexReadTarget", TargetArgs.builder()
 ///             .maxCapacity(100)
 ///             .minCapacity(5)
-///             .resourceId(String.format("table/%s/index/%s", example.name(),indexName))
+///             .resourceId(String.format("table/%s/index/%s", example.get("name"),indexName))
 ///             .scalableDimension("dynamodb:index:ReadCapacityUnits")
 ///             .serviceNamespace("dynamodb")
 ///             .build());
@@ -345,7 +351,7 @@ import 'target_suspended_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -354,6 +360,9 @@ import 'target_suspended_state.dart';
 /// }
 ///
 /// resource "aws_appautoscaling_target" "ecs_target" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   max_capacity       = 4
 ///   min_capacity       = 1
 ///   resource_id        ="service/${example.name}/${exampleAwsEcsService.name}"
@@ -385,7 +394,7 @@ import 'target_suspended_state.dart';
 ///         var ecsTarget = new Target("ecsTarget", TargetArgs.builder()
 ///             .maxCapacity(4)
 ///             .minCapacity(1)
-///             .resourceId(String.format("service/%s/%s", example.name(),exampleAwsEcsService.name()))
+///             .resourceId(String.format("service/%s/%s", example.get("name"),exampleAwsEcsService.get("name")))
 ///             .scalableDimension("ecs:service:DesiredCount")
 ///             .serviceNamespace("ecs")
 ///             .build());
@@ -477,7 +486,7 @@ import 'target_suspended_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -486,6 +495,9 @@ import 'target_suspended_state.dart';
 /// }
 ///
 /// resource "aws_appautoscaling_target" "replicas" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_namespace  = "rds"
 ///   scalable_dimension = "rds:cluster:ReadReplicaCount"
 ///   resource_id        ="cluster:${example.id}"
@@ -517,7 +529,7 @@ import 'target_suspended_state.dart';
 ///         var replicas = new Target("replicas", TargetArgs.builder()
 ///             .serviceNamespace("rds")
 ///             .scalableDimension("rds:cluster:ReadReplicaCount")
-///             .resourceId(String.format("cluster:%s", example.id()))
+///             .resourceId(String.format("cluster:%s", example.get("id")))
 ///             .minCapacity(1)
 ///             .maxCapacity(15)
 ///             .build());
@@ -619,7 +631,7 @@ import 'target_suspended_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -629,7 +641,8 @@ import 'target_suspended_state.dart';
 ///
 /// resource "aws_appautoscaling_target" "ecs_target" {
 ///   lifecycle {
-///     ignore_changes = [tagsAll]
+///     ignore_changes        = [tagsAll]
+///     create_before_destroy = true
 ///   }
 ///   max_capacity       = 4
 ///   min_capacity       = 1
@@ -663,7 +676,7 @@ import 'target_suspended_state.dart';
 ///         var ecsTarget = new Target("ecsTarget", TargetArgs.builder()
 ///             .maxCapacity(4)
 ///             .minCapacity(1)
-///             .resourceId(String.format("service/%s/%s", example.name(),exampleAwsEcsService.name()))
+///             .resourceId(String.format("service/%s/%s", example.get("name"),exampleAwsEcsService.get("name")))
 ///             .scalableDimension("ecs:service:DesiredCount")
 ///             .serviceNamespace("ecs")
 ///             .build(), CustomResourceOptions.builder()
@@ -760,7 +773,7 @@ import 'target_suspended_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -769,6 +782,9 @@ import 'target_suspended_state.dart';
 /// }
 ///
 /// resource "aws_appautoscaling_target" "msk_target" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_namespace  = "kafka"
 ///   scalable_dimension = "kafka:broker-storage:VolumeSize"
 ///   resource_id        = example.arn
@@ -800,7 +816,7 @@ import 'target_suspended_state.dart';
 ///         var mskTarget = new Target("mskTarget", TargetArgs.builder()
 ///             .serviceNamespace("kafka")
 ///             .scalableDimension("kafka:broker-storage:VolumeSize")
-///             .resourceId(example.arn())
+///             .resourceId(example.get("arn"))
 ///             .minCapacity(1)
 ///             .maxCapacity(8)
 ///             .build());
@@ -879,7 +895,7 @@ class Target extends pulumi.CustomResource {
           'aws:appautoscaling/target:Target',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     maxCapacity = registerOutput<int>('maxCapacity');

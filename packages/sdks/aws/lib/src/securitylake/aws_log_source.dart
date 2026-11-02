@@ -100,7 +100,7 @@ import 'aws_log_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -108,9 +108,12 @@ import 'aws_log_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securitylake_awslogsource" "example" {
+/// resource "aws_securitylake_aws_log_source" "example" {
 ///   depends_on = [exampleAwsSecuritylakeDataLake]
-///   source = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   source {
 ///     accounts    = ["123456789012"]
 ///     regions     = ["eu-west-1"]
 ///     source_name = "ROUTE53"
@@ -195,7 +198,7 @@ class AwsLogSource extends pulumi.CustomResource {
           'aws:securitylake/awsLogSource:AwsLogSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     source = registerOutput<AwsLogSourceSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsLogSourceSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });

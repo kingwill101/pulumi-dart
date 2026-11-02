@@ -189,7 +189,7 @@ import 'model_package_group_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -200,26 +200,32 @@ import 'model_package_group_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
-///       identifiers = [data.aws_getcalleridentity.current.account_id]
+///       identifiers = [data.aws_caller_identity.current.account_id]
 ///       type        = "AWS"
 ///     }
 ///     sid       = "AddPermModelPackageGroup"
 ///     actions   = ["sagemaker:DescribeModelPackage", "sagemaker:ListModelPackages"]
-///     resources = [aws_sagemaker_modelpackagegroup.example.arn]
+///     resources = [aws_sagemaker_model_package_group.example.arn]
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_modelpackagegroup" "example" {
+/// resource "aws_sagemaker_model_package_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   model_package_group_name = "example"
 /// }
-/// resource "aws_sagemaker_modelpackagegrouppolicy" "example" {
-///   model_package_group_name = aws_sagemaker_modelpackagegroup.example.model_package_group_name
-///   resource_policy          = jsonencode(jsondecode(data.aws_iam_getpolicydocument.example.json))
+/// resource "aws_sagemaker_model_package_group_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   model_package_group_name = aws_sagemaker_model_package_group.example.model_package_group_name
+///   resource_policy          = jsonencode(jsondecode(data.aws_iam_policy_document.example.json))
 /// }
 /// ```
 /// ```java
@@ -354,7 +360,7 @@ class ModelPackageGroupPolicy extends pulumi.CustomResource {
           'aws:sagemaker/modelPackageGroupPolicy:ModelPackageGroupPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     modelPackageGroupName = registerOutput<String>('modelPackageGroupName');
     region = registerOutput<String>('region');

@@ -107,7 +107,7 @@ import 'tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -116,14 +116,23 @@ import 'tag_state.dart';
 /// }
 ///
 /// resource "aws_transfer_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identity_provider_type = "SERVICE_MANAGED"
 /// }
 /// resource "aws_transfer_tag" "zone_id" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_arn = aws_transfer_server.example.arn
 ///   key          = "transfer:route53HostedZoneId"
 ///   value        = "/hostedzone/MyHostedZoneId"
 /// }
 /// resource "aws_transfer_tag" "hostname" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_arn = aws_transfer_server.example.arn
 ///   key          = "transfer:customHostname"
 ///   value        = "example.com"
@@ -222,7 +231,7 @@ class Tag extends pulumi.CustomResource {
           'aws:transfer/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     key = registerOutput<String>('key');
     region = registerOutput<String>('region');

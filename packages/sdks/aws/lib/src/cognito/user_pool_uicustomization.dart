@@ -110,14 +110,14 @@ import 'user_pool_uicustomization_state.dart';
 /// 		}
 /// 		exampleUserPoolDomain, err := cognito.NewUserPoolDomain(ctx, "example", &cognito.UserPoolDomainArgs{
 /// 			Domain:     pulumi.String("example"),
-/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleUserPoolClient, err := cognito.NewUserPoolClient(ctx, "example", &cognito.UserPoolClientArgs{
 /// 			Name:       pulumi.String("example"),
-/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -129,7 +129,7 @@ import 'user_pool_uicustomization_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewUserPoolUICustomization(ctx, "example", &cognito.UserPoolUICustomizationArgs{
-/// 			ClientId:   exampleUserPoolClient.ID().ToIDOutput().ToStringOutput(),
+/// 			ClientId:   exampleUserPoolClient.ID(),
 /// 			Css:        pulumi.String(".label-customizable {font-weight: 400;}"),
 /// 			ImageFile:  pulumi.String(invokeFilebase64.Result),
 /// 			UserPoolId: exampleUserPoolDomain.UserPoolId,
@@ -142,7 +142,7 @@ import 'user_pool_uicustomization_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -153,22 +153,34 @@ import 'user_pool_uicustomization_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpool" "example" {
+/// resource "aws_cognito_user_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_cognito_userpooldomain" "example" {
+/// resource "aws_cognito_user_pool_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain       = "example"
-///   user_pool_id = aws_cognito_userpool.example.id
+///   user_pool_id = aws_cognito_user_pool.example.id
 /// }
-/// resource "aws_cognito_userpoolclient" "example" {
+/// resource "aws_cognito_user_pool_client" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example"
-///   user_pool_id = aws_cognito_userpool.example.id
+///   user_pool_id = aws_cognito_user_pool.example.id
 /// }
-/// resource "aws_cognito_userpooluicustomization" "example" {
-///   client_id    = aws_cognito_userpoolclient.example.id
+/// resource "aws_cognito_user_pool_u_i_customization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   client_id    = aws_cognito_user_pool_client.example.id
 ///   css          = ".label-customizable {font-weight: 400;}"
 ///   image_file   = filebase64("logo.png")
-///   user_pool_id = aws_cognito_userpooldomain.example.user_pool_id
+///   user_pool_id = aws_cognito_user_pool_domain.example.user_pool_id
 /// }
 /// ```
 /// ```java
@@ -346,7 +358,7 @@ import 'user_pool_uicustomization_state.dart';
 /// 		}
 /// 		exampleUserPoolDomain, err := cognito.NewUserPoolDomain(ctx, "example", &cognito.UserPoolDomainArgs{
 /// 			Domain:     pulumi.String("example"),
-/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -370,7 +382,7 @@ import 'user_pool_uicustomization_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -381,17 +393,26 @@ import 'user_pool_uicustomization_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpool" "example" {
+/// resource "aws_cognito_user_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_cognito_userpooldomain" "example" {
+/// resource "aws_cognito_user_pool_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain       = "example"
-///   user_pool_id = aws_cognito_userpool.example.id
+///   user_pool_id = aws_cognito_user_pool.example.id
 /// }
-/// resource "aws_cognito_userpooluicustomization" "example" {
+/// resource "aws_cognito_user_pool_u_i_customization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   css          = ".label-customizable {font-weight: 400;}"
 ///   image_file   = filebase64("logo.png")
-///   user_pool_id = aws_cognito_userpooldomain.example.user_pool_id
+///   user_pool_id = aws_cognito_user_pool_domain.example.user_pool_id
 /// }
 /// ```
 /// ```java
@@ -507,7 +528,7 @@ class UserPoolUICustomization extends pulumi.CustomResource {
           'aws:cognito/userPoolUICustomization:UserPoolUICustomization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     clientId = registerOutput<String?>('clientId');
     creationDate = registerOutput<String>('creationDate');

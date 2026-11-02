@@ -233,7 +233,7 @@ import 'global_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -242,7 +242,10 @@ import 'global_table_state.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "us-east-1" {
-///   attributes {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   attribute {
 ///     name = "myAttribute"
 ///     type = "S"
 ///   }
@@ -254,7 +257,10 @@ import 'global_table_state.dart';
 ///   write_capacity   = 1
 /// }
 /// resource "aws_dynamodb_table" "us-west-2" {
-///   attributes {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   attribute {
 ///     name = "myAttribute"
 ///     type = "S"
 ///   }
@@ -265,12 +271,15 @@ import 'global_table_state.dart';
 ///   read_capacity    = 1
 ///   write_capacity   = 1
 /// }
-/// resource "aws_dynamodb_globaltable" "myTable" {
+/// resource "aws_dynamodb_global_table" "myTable" {
 ///   depends_on = [aws_dynamodb_table.us-east-1, aws_dynamodb_table.us-west-2]
-///   replicas {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   replica {
 ///     region_name = "us-east-1"
 ///   }
-///   replicas {
+///   replica {
 ///     region_name = "us-west-2"
 ///   }
 ///   name = "myTable"
@@ -415,7 +424,7 @@ class GlobalTable extends pulumi.CustomResource {
           'aws:dynamodb/globalTable:GlobalTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

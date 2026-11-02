@@ -60,7 +60,7 @@ import 'account_suppression_attributes_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -68,7 +68,10 @@ import 'account_suppression_attributes_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_accountsuppressionattributes" "example" {
+/// resource "aws_sesv2_account_suppression_attributes" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   suppressed_reasons = ["COMPLAINT"]
 /// }
 /// ```
@@ -135,7 +138,7 @@ class AccountSuppressionAttributes extends pulumi.CustomResource {
           'aws:sesv2/accountSuppressionAttributes:AccountSuppressionAttributes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     suppressedReasons = registerOutput<List<String>>('suppressedReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

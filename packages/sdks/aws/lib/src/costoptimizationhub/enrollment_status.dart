@@ -54,7 +54,7 @@ import 'enrollment_status_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -62,7 +62,10 @@ import 'enrollment_status_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_costoptimizationhub_enrollmentstatus" "example" {
+/// resource "aws_costoptimizationhub_enrollment_status" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -148,7 +151,7 @@ import 'enrollment_status_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -156,7 +159,10 @@ import 'enrollment_status_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_costoptimizationhub_enrollmentstatus" "example" {
+/// resource "aws_costoptimizationhub_enrollment_status" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   include_member_accounts = true
 /// }
 /// ```
@@ -222,7 +228,7 @@ class EnrollmentStatus extends pulumi.CustomResource {
           'aws:costoptimizationhub/enrollmentStatus:EnrollmentStatus',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     includeMemberAccounts = registerOutput<bool>('includeMemberAccounts');
     status = registerOutput<String>('status');

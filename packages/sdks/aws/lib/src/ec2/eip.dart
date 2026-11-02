@@ -68,7 +68,7 @@ import 'eip_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,6 +77,9 @@ import 'eip_state.dart';
 /// }
 ///
 /// resource "aws_ec2_eip" "lb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance = web.id
 ///   domain   = "vpc"
 /// }
@@ -103,7 +106,7 @@ import 'eip_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var lb = new Eip("lb", EipArgs.builder()
-///             .instance(web.id())
+///             .instance(web.get("id"))
 ///             .domain("vpc")
 ///             .build());
 ///
@@ -220,7 +223,7 @@ import 'eip_state.dart';
 /// 		}
 /// 		_, err = ec2.NewEip(ctx, "one", &ec2.EipArgs{
 /// 			Domain:                 pulumi.String("vpc"),
-/// 			NetworkInterface:       multi_ip.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkInterface:       multi_ip.ID(),
 /// 			AssociateWithPrivateIp: pulumi.String("10.0.0.10"),
 /// 		})
 /// 		if err != nil {
@@ -228,7 +231,7 @@ import 'eip_state.dart';
 /// 		}
 /// 		_, err = ec2.NewEip(ctx, "two", &ec2.EipArgs{
 /// 			Domain:                 pulumi.String("vpc"),
-/// 			NetworkInterface:       multi_ip.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkInterface:       multi_ip.ID(),
 /// 			AssociateWithPrivateIp: pulumi.String("10.0.0.11"),
 /// 		})
 /// 		if err != nil {
@@ -239,7 +242,7 @@ import 'eip_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -247,18 +250,27 @@ import 'eip_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_networkinterface" "multi-ip" {
+/// resource "aws_ec2_network_interface" "multi-ip" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id   = main.id
 ///   private_ips = ["10.0.0.10", "10.0.0.11"]
 /// }
 /// resource "aws_ec2_eip" "one" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain                    = "vpc"
-///   network_interface         = aws_ec2_networkinterface.multi-ip.id
+///   network_interface         = aws_ec2_network_interface.multi-ip.id
 ///   associate_with_private_ip = "10.0.0.10"
 /// }
 /// resource "aws_ec2_eip" "two" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain                    = "vpc"
-///   network_interface         = aws_ec2_networkinterface.multi-ip.id
+///   network_interface         = aws_ec2_network_interface.multi-ip.id
 ///   associate_with_private_ip = "10.0.0.11"
 /// }
 /// ```
@@ -286,7 +298,7 @@ import 'eip_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var multi_ip = new NetworkInterface("multi-ip", NetworkInterfaceArgs.builder()
-///             .subnetId(main.id())
+///             .subnetId(main.get("id"))
 ///             .privateIps(
 ///                 "10.0.0.10",
 ///                 "10.0.0.11")
@@ -461,13 +473,13 @@ import 'eip_state.dart';
 /// 			return err
 /// 		}
 /// 		gw, err := ec2.NewInternetGateway(ctx, "gw", &ec2.InternetGatewayArgs{
-/// 			VpcId: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		myTestSubnet, err := ec2.NewSubnet(ctx, "my_test_subnet", &ec2.SubnetArgs{
-/// 			VpcId:               _default.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:               _default.ID(),
 /// 			CidrBlock:           pulumi.String("10.0.0.0/24"),
 /// 			MapPublicIpOnLaunch: pulumi.Bool(true),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -480,14 +492,14 @@ import 'eip_state.dart';
 /// 			Ami:          pulumi.String("ami-5189a661"),
 /// 			InstanceType: pulumi.String(ec2.InstanceType_T2_Micro),
 /// 			PrivateIp:    pulumi.String("10.0.0.12"),
-/// 			SubnetId:     myTestSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:     myTestSubnet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewEip(ctx, "bar", &ec2.EipArgs{
 /// 			Domain:                 pulumi.String("vpc"),
-/// 			Instance:               foo.ID().ToIDOutput().ToStringOutput(),
+/// 			Instance:               foo.ID(),
 /// 			AssociateWithPrivateIp: pulumi.String("10.0.0.12"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			gw,
@@ -500,7 +512,7 @@ import 'eip_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -509,26 +521,41 @@ import 'eip_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block           = "10.0.0.0/16"
 ///   enable_dns_hostnames = true
 /// }
-/// resource "aws_ec2_internetgateway" "gw" {
+/// resource "aws_ec2_internet_gateway" "gw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = aws_ec2_vpc.default.id
 /// }
 /// resource "aws_ec2_subnet" "my_test_subnet" {
-///   depends_on              = [aws_ec2_internetgateway.gw]
+///   depends_on = [aws_ec2_internet_gateway.gw]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id                  = aws_ec2_vpc.default.id
 ///   cidr_block              = "10.0.0.0/24"
 ///   map_public_ip_on_launch = true
 /// }
 /// resource "aws_ec2_instance" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ami           = "ami-5189a661"
 ///   instance_type = "t2.micro"
 ///   private_ip    = "10.0.0.12"
 ///   subnet_id     = aws_ec2_subnet.my_test_subnet.id
 /// }
 /// resource "aws_ec2_eip" "bar" {
-///   depends_on                = [aws_ec2_internetgateway.gw]
+///   depends_on = [aws_ec2_internet_gateway.gw]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain                    = "vpc"
 ///   instance                  = aws_ec2_instance.foo.id
 ///   associate_with_private_ip = "10.0.0.12"
@@ -697,7 +724,7 @@ import 'eip_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -706,6 +733,9 @@ import 'eip_state.dart';
 /// }
 ///
 /// resource "aws_ec2_eip" "byoip-ip" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain           = "vpc"
 ///   public_ipv4_pool = "ipv4pool-ec2-012345"
 /// }
@@ -807,7 +837,7 @@ import 'eip_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -816,6 +846,9 @@ import 'eip_state.dart';
 /// }
 ///
 /// resource "aws_ec2_eip" "ipam-ip" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain       = "vpc"
 ///   ipam_pool_id = "ipam-pool-07ccc86aa41bef7ce"
 /// }
@@ -942,7 +975,7 @@ class Eip extends pulumi.CustomResource {
           'aws:ec2/eip:Eip',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     address = registerOutput<String?>('address');
     allocationId = registerOutput<String>('allocationId');

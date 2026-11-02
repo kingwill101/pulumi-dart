@@ -61,7 +61,7 @@ import 'get_resource_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -69,7 +69,7 @@ import 'get_resource_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_cloudcontrol_getresource" "example" {
+/// data "aws_cloudcontrol_resource" "example" {
 ///   identifier = "example"
 ///   type_name  = "AWS::ECS::Cluster"
 /// }

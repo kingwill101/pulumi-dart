@@ -67,7 +67,7 @@ import 'authorization_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,10 @@ import 'authorization_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2clientvpn_authorizationrule" "example" {
+/// resource "aws_ec2clientvpn_authorization_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_vpn_endpoint_id = exampleAwsEc2ClientVpnEndpoint.id
 ///   target_network_cidr    = exampleAwsSubnet.cidrBlock
 ///   authorize_all_groups   = true
@@ -103,8 +106,8 @@ import 'authorization_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AuthorizationRule("example", AuthorizationRuleArgs.builder()
-///             .clientVpnEndpointId(exampleAwsEc2ClientVpnEndpoint.id())
-///             .targetNetworkCidr(exampleAwsSubnet.cidrBlock())
+///             .clientVpnEndpointId(exampleAwsEc2ClientVpnEndpoint.get("id"))
+///             .targetNetworkCidr(exampleAwsSubnet.get("cidrBlock"))
 ///             .authorizeAllGroups(true)
 ///             .build());
 ///
@@ -166,7 +169,7 @@ class AuthorizationRule extends pulumi.CustomResource {
           'aws:ec2clientvpn/authorizationRule:AuthorizationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accessGroupId = registerOutput<String?>('accessGroupId');
     authorizeAllGroups = registerOutput<bool?>('authorizeAllGroups');

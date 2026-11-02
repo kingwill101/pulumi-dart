@@ -154,7 +154,7 @@ import 'workspace_workspace_properties.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -162,15 +162,18 @@ import 'workspace_workspace_properties.dart';
 ///   }
 /// }
 ///
-/// data "aws_workspaces_getbundle" "valueWindows10" {
+/// data "aws_workspaces_bundle" "valueWindows10" {
 ///   bundle_id = "wsb-bh8rsxt14"
 /// }
-/// data "aws_kms_getkey" "workspaces" {
+/// data "aws_kms_key" "workspaces" {
 ///   key_id = "alias/aws/workspaces"
 /// }
 ///
 /// resource "aws_workspaces_workspace" "example" {
-///   workspace_properties = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workspace_properties {
 ///     compute_type_name                         = "VALUE"
 ///     user_volume_size_gib                      = 10
 ///     root_volume_size_gib                      = 80
@@ -178,11 +181,11 @@ import 'workspace_workspace_properties.dart';
 ///     running_mode_auto_stop_timeout_in_minutes = 60
 ///   }
 ///   directory_id                   = exampleAwsWorkspacesDirectory.id
-///   bundle_id                      = data.aws_workspaces_getbundle.valueWindows10.id
+///   bundle_id                      = data.aws_workspaces_bundle.valueWindows10.id
 ///   user_name                      = "john.doe"
 ///   root_volume_encryption_enabled = true
 ///   user_volume_encryption_enabled = true
-///   volume_encryption_key          = data.aws_kms_getkey.workspaces.arn
+///   volume_encryption_key          = data.aws_kms_key.workspaces.arn
 ///   tags = {
 ///     "Department" = "IT"
 ///   }
@@ -230,7 +233,7 @@ import 'workspace_workspace_properties.dart';
 ///                 .runningMode("AUTO_STOP")
 ///                 .runningModeAutoStopTimeoutInMinutes(60)
 ///                 .build())
-///             .directoryId(exampleAwsWorkspacesDirectory.id())
+///             .directoryId(exampleAwsWorkspacesDirectory.get("id"))
 ///             .bundleId(valueWindows10.id())
 ///             .userName("john.doe")
 ///             .rootVolumeEncryptionEnabled(true)
@@ -322,7 +325,7 @@ class Workspace extends pulumi.CustomResource {
           'aws:workspaces/workspace:Workspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     bundleId = registerOutput<String>('bundleId');
     computerName = registerOutput<String>('computerName');

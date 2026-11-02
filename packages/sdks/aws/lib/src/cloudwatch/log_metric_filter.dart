@@ -101,7 +101,7 @@ import 'log_metric_filter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -109,17 +109,23 @@ import 'log_metric_filter_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_logmetricfilter" "yada" {
-///   metric_transformation = {
+/// resource "aws_cloudwatch_log_metric_filter" "yada" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   metric_transformation {
 ///     name      = "EventCount"
 ///     namespace = "YourNamespace"
 ///     value     = "1"
 ///   }
 ///   name           = "MyAppAccessCount"
 ///   pattern        = ""
-///   log_group_name = aws_cloudwatch_loggroup.dada.name
+///   log_group_name = aws_cloudwatch_log_group.dada.name
 /// }
-/// resource "aws_cloudwatch_loggroup" "dada" {
+/// resource "aws_cloudwatch_log_group" "dada" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "MyApp/access.log"
 /// }
 /// ```
@@ -231,7 +237,7 @@ class LogMetricFilter extends pulumi.CustomResource {
           'aws:cloudwatch/logMetricFilter:LogMetricFilter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     applyOnTransformedLogs = registerOutput<bool>('applyOnTransformedLogs');
     logGroupName = registerOutput<String>('logGroupName');

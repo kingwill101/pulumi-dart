@@ -71,7 +71,7 @@ import 'agentcore_token_vault_cmk_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,7 +79,10 @@ import 'agentcore_token_vault_cmk_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoretokenvaultcmk" "example" {
+/// resource "aws_bedrock_agentcore_token_vault_cmk" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   kms_configuration = {
 ///     key_type    = "CustomerManagedKey"
 ///     kms_key_arn = exampleAwsKmsKey.arn
@@ -111,7 +114,7 @@ import 'agentcore_token_vault_cmk_state.dart';
 ///         var example = new AgentcoreTokenVaultCmk("example", AgentcoreTokenVaultCmkArgs.builder()
 ///             .kmsConfiguration(AgentcoreTokenVaultCmkKmsConfigurationArgs.builder()
 ///                 .keyType("CustomerManagedKey")
-///                 .kmsKeyArn(exampleAwsKmsKey.arn())
+///                 .kmsKeyArn(exampleAwsKmsKey.get("arn"))
 ///                 .build())
 ///             .build());
 ///
@@ -156,7 +159,7 @@ class AgentcoreTokenVaultCmk extends pulumi.CustomResource {
           'aws:bedrock/agentcoreTokenVaultCmk:AgentcoreTokenVaultCmk',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     kmsConfiguration = registerOutput<AgentcoreTokenVaultCmkKmsConfiguration>('kmsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreTokenVaultCmkKmsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

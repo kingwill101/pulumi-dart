@@ -136,13 +136,13 @@ import 'vpc_security_group_rules_exclusive_state.dart';
 /// 		}
 /// 		exampleSecurityGroup, err := ec2.NewSecurityGroup(ctx, "example", &ec2.SecurityGroupArgs{
 /// 			Name:  pulumi.String("example"),
-/// 			VpcId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleSecurityGroupIngressRule, err := vpc.NewSecurityGroupIngressRule(ctx, "example", &vpc.SecurityGroupIngressRuleArgs{
-/// 			SecurityGroupId: exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			SecurityGroupId: exampleSecurityGroup.ID(),
 /// 			CidrIpv4:        pulumi.String("10.0.0.0/8"),
 /// 			FromPort:        pulumi.Int(80),
 /// 			ToPort:          pulumi.Int(80),
@@ -152,7 +152,7 @@ import 'vpc_security_group_rules_exclusive_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSecurityGroupEgressRule, err := vpc.NewSecurityGroupEgressRule(ctx, "example", &vpc.SecurityGroupEgressRuleArgs{
-/// 			SecurityGroupId: exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			SecurityGroupId: exampleSecurityGroup.ID(),
 /// 			CidrIpv4:        pulumi.String("0.0.0.0/0"),
 /// 			IpProtocol:      pulumi.String("-1"),
 /// 		})
@@ -160,12 +160,12 @@ import 'vpc_security_group_rules_exclusive_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcSecurityGroupRulesExclusive(ctx, "example", &ec2.VpcSecurityGroupRulesExclusiveArgs{
-/// 			SecurityGroupId: exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			SecurityGroupId: exampleSecurityGroup.ID(),
 /// 			IngressRuleIds: pulumi.StringArray{
-/// 				exampleSecurityGroupIngressRule.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleSecurityGroupIngressRule.ID(),
 /// 			},
 /// 			EgressRuleIds: pulumi.StringArray{
-/// 				exampleSecurityGroupEgressRule.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleSecurityGroupEgressRule.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -176,7 +176,7 @@ import 'vpc_security_group_rules_exclusive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -185,28 +185,43 @@ import 'vpc_security_group_rules_exclusive_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
-/// resource "aws_ec2_securitygroup" "example" {
+/// resource "aws_ec2_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example"
 ///   vpc_id = aws_ec2_vpc.example.id
 /// }
-/// resource "aws_vpc_securitygroupingressrule" "example" {
-///   security_group_id = aws_ec2_securitygroup.example.id
+/// resource "aws_vpc_security_group_ingress_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_group_id = aws_ec2_security_group.example.id
 ///   cidr_ipv4         = "10.0.0.0/8"
 ///   from_port         = 80
 ///   to_port           = 80
 ///   ip_protocol       = "tcp"
 /// }
-/// resource "aws_vpc_securitygroupegressrule" "example" {
-///   security_group_id = aws_ec2_securitygroup.example.id
+/// resource "aws_vpc_security_group_egress_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_group_id = aws_ec2_security_group.example.id
 ///   cidr_ipv4         = "0.0.0.0/0"
 ///   ip_protocol       = "-1"
 /// }
-/// resource "aws_ec2_vpcsecuritygrouprulesexclusive" "example" {
-///   security_group_id = aws_ec2_securitygroup.example.id
-///   ingress_rule_ids  = [aws_vpc_securitygroupingressrule.example.id]
-///   egress_rule_ids   = [aws_vpc_securitygroupegressrule.example.id]
+/// resource "aws_ec2_vpc_security_group_rules_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_group_id = aws_ec2_security_group.example.id
+///   ingress_rule_ids  = [aws_vpc_security_group_ingress_rule.example.id]
+///   egress_rule_ids   = [aws_vpc_security_group_egress_rule.example.id]
 /// }
 /// ```
 /// ```java
@@ -347,8 +362,8 @@ import 'vpc_security_group_rules_exclusive_state.dart';
 ///     var example = new Aws.Ec2.VpcSecurityGroupRulesExclusive("example", new()
 ///     {
 ///         SecurityGroupId = exampleAwsSecurityGroup.Id,
-///         IngressRuleIds = new[] {},
-///         EgressRuleIds = new[] {},
+///         IngressRuleIds = new() {},
+///         EgressRuleIds = new() {},
 ///     });
 ///
 /// });
@@ -376,7 +391,7 @@ import 'vpc_security_group_rules_exclusive_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -384,7 +399,10 @@ import 'vpc_security_group_rules_exclusive_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcsecuritygrouprulesexclusive" "example" {
+/// resource "aws_ec2_vpc_security_group_rules_exclusive" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   security_group_id = exampleAwsSecurityGroup.id
 ///   ingress_rule_ids  = []
 ///   egress_rule_ids   = []
@@ -412,7 +430,7 @@ import 'vpc_security_group_rules_exclusive_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcSecurityGroupRulesExclusive("example", VpcSecurityGroupRulesExclusiveArgs.builder()
-///             .securityGroupId(exampleAwsSecurityGroup.id())
+///             .securityGroupId(exampleAwsSecurityGroup.get("id"))
 ///             .ingressRuleIds()
 ///             .egressRuleIds()
 ///             .build());
@@ -460,7 +478,7 @@ class VpcSecurityGroupRulesExclusive extends pulumi.CustomResource {
           'aws:ec2/vpcSecurityGroupRulesExclusive:VpcSecurityGroupRulesExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     egressRuleIds = registerOutput<List<String>>('egressRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ingressRuleIds = registerOutput<List<String>>('ingressRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

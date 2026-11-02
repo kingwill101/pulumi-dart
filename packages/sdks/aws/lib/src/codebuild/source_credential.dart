@@ -71,7 +71,7 @@ import 'source_credential_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,7 +79,10 @@ import 'source_credential_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_codebuild_sourcecredential" "example" {
+/// resource "aws_codebuild_source_credential" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auth_type   = "PERSONAL_ACCESS_TOKEN"
 ///   server_type = "GITHUB"
 ///   token       = "example"
@@ -192,7 +195,7 @@ import 'source_credential_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -200,7 +203,10 @@ import 'source_credential_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_codebuild_sourcecredential" "example" {
+/// resource "aws_codebuild_source_credential" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auth_type   = "BASIC_AUTH"
 ///   server_type = "BITBUCKET"
 ///   token       = "example"
@@ -312,7 +318,7 @@ import 'source_credential_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -320,7 +326,10 @@ import 'source_credential_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_codebuild_sourcecredential" "example" {
+/// resource "aws_codebuild_source_credential" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   auth_type   = "CODECONNECTIONS"
 ///   server_type = "GITHUB"
 ///   token       = "arn:aws:codestar-connections:us-east-1:123456789012:connection/guid-string"
@@ -412,7 +421,7 @@ class SourceCredential extends pulumi.CustomResource {
           'aws:codebuild/sourceCredential:SourceCredential',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['token'],
         ) {
     arn = registerOutput<String>('arn');

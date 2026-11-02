@@ -99,7 +99,7 @@ import 'object_copy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -107,8 +107,11 @@ import 'object_copy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_objectcopy" "test" {
-///   grants {
+/// resource "aws_s3_object_copy" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   grant {
 ///     uri         = "http://acs.amazonaws.com/groups/global/AllUsers"
 ///     type        = "Group"
 ///     permissions = ["READ"]
@@ -257,7 +260,7 @@ import 'object_copy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -265,9 +268,12 @@ import 'object_copy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_objectcopy" "test" {
-///   override_provider = {
-///     default_tags = {
+/// resource "aws_s3_object_copy" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   override_provider {
+///     default_tags {
 ///       tags = {}
 ///     }
 ///   }
@@ -449,7 +455,7 @@ class ObjectCopy extends pulumi.CustomResource {
           'aws:s3/objectCopy:ObjectCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['customerKey', 'kmsEncryptionContext', 'kmsKeyId', 'sourceCustomerKey'],
         ) {
     acl = registerOutput<String>('acl');

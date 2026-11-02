@@ -92,7 +92,7 @@ import 'organization_admin_account_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -101,11 +101,17 @@ import 'organization_admin_account_state.dart';
 /// }
 ///
 /// resource "aws_organizations_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aws_service_access_principals = ["detective.amazonaws.com"]
 ///   feature_set                   = "ALL"
 /// }
-/// resource "aws_detective_organizationadminaccount" "example" {
+/// resource "aws_detective_organization_admin_account" "example" {
 ///   depends_on = [aws_organizations_organization.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "123456789012"
 /// }
 /// ```
@@ -191,7 +197,7 @@ class OrganizationAdminAccount extends pulumi.CustomResource {
           'aws:detective/organizationAdminAccount:OrganizationAdminAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     region = registerOutput<String>('region');

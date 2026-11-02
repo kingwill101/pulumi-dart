@@ -140,7 +140,7 @@ import 'group_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -148,25 +148,34 @@ import 'group_membership_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
 ///
 /// resource "aws_identitystore_user" "example" {
-///   name = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name {
 ///     family_name = "Doe"
 ///     given_name  = "John"
 ///   }
-///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   identity_store_id = data.aws_ssoadmin_instances.example.identity_store_ids[0]
 ///   display_name      = "John Doe"
 ///   user_name         = "john.doe@example.com"
 /// }
 /// resource "aws_identitystore_group" "example" {
-///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   identity_store_id = data.aws_ssoadmin_instances.example.identity_store_ids[0]
 ///   display_name      = "MyGroup"
 ///   description       = "Some group name"
 /// }
-/// resource "aws_identitystore_groupmembership" "example" {
-///   identity_store_id = data.aws_ssoadmin_getinstances.example.identity_store_ids[0]
+/// resource "aws_identitystore_group_membership" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   identity_store_id = data.aws_ssoadmin_instances.example.identity_store_ids[0]
 ///   group_id          = aws_identitystore_group.example.group_id
 ///   member_id         = aws_identitystore_user.example.user_id
 /// }
@@ -292,7 +301,7 @@ class GroupMembership extends pulumi.CustomResource {
           'aws:identitystore/groupMembership:GroupMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     groupId = registerOutput<String>('groupId');
     identityStoreId = registerOutput<String>('identityStoreId');

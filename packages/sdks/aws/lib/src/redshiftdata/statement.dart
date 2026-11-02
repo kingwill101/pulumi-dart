@@ -73,7 +73,7 @@ import 'statement_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,6 +82,9 @@ import 'statement_state.dart';
 /// }
 ///
 /// resource "aws_redshiftdata_statement" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier = exampleAwsRedshiftCluster.clusterIdentifier
 ///   database           = exampleAwsRedshiftCluster.databaseName
 ///   db_user            = exampleAwsRedshiftCluster.masterUsername
@@ -110,9 +113,9 @@ import 'statement_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Statement("example", StatementArgs.builder()
-///             .clusterIdentifier(exampleAwsRedshiftCluster.clusterIdentifier())
-///             .database(exampleAwsRedshiftCluster.databaseName())
-///             .dbUser(exampleAwsRedshiftCluster.masterUsername())
+///             .clusterIdentifier(exampleAwsRedshiftCluster.get("clusterIdentifier"))
+///             .database(exampleAwsRedshiftCluster.get("databaseName"))
+///             .dbUser(exampleAwsRedshiftCluster.get("masterUsername"))
 ///             .sql("CREATE GROUP group_name;")
 ///             .build());
 ///
@@ -193,7 +196,7 @@ import 'statement_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -202,6 +205,9 @@ import 'statement_state.dart';
 /// }
 ///
 /// resource "aws_redshiftdata_statement" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workgroup_name = exampleAwsRedshiftserverlessWorkgroup.workgroupName
 ///   database       = "dev"
 ///   sql            = "CREATE GROUP group_name;"
@@ -229,7 +235,7 @@ import 'statement_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Statement("example", StatementArgs.builder()
-///             .workgroupName(exampleAwsRedshiftserverlessWorkgroup.workgroupName())
+///             .workgroupName(exampleAwsRedshiftserverlessWorkgroup.get("workgroupName"))
 ///             .database("dev")
 ///             .sql("CREATE GROUP group_name;")
 ///             .build());
@@ -290,7 +296,7 @@ class Statement extends pulumi.CustomResource {
           'aws:redshiftdata/statement:Statement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     clusterIdentifier = registerOutput<String?>('clusterIdentifier');
     database = registerOutput<String>('database');

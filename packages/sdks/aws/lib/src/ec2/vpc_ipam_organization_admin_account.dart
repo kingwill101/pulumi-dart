@@ -66,7 +66,7 @@ import 'vpc_ipam_organization_admin_account_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,11 +74,14 @@ import 'vpc_ipam_organization_admin_account_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "delegated" {
+/// data "aws_caller_identity" "delegated" {
 /// }
 ///
-/// resource "aws_ec2_vpcipamorganizationadminaccount" "example" {
-///   delegated_admin_account_id = data.aws_getcalleridentity.delegated.account_id
+/// resource "aws_ec2_vpc_ipam_organization_admin_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delegated_admin_account_id = data.aws_caller_identity.delegated.account_id
 /// }
 /// ```
 /// ```java
@@ -158,7 +161,7 @@ class VpcIpamOrganizationAdminAccount extends pulumi.CustomResource {
           'aws:ec2/vpcIpamOrganizationAdminAccount:VpcIpamOrganizationAdminAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     delegatedAdminAccountId = registerOutput<String>('delegatedAdminAccountId');

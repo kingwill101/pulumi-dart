@@ -63,7 +63,7 @@ import 'search_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -99,7 +99,7 @@ import 'search_result.dart';
 ///     public static void stack(Context ctx) {
 ///         final var example = ResourceexplorerFunctions.Search(SearchArgs.builder()
 ///             .queryString("region:us-west-2")
-///             .viewArn(test.arn())
+///             .viewArn(test.get("arn"))
 ///             .build());
 ///
 ///     }

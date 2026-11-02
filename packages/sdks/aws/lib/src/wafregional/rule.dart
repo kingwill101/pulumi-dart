@@ -112,7 +112,7 @@ import 'rule_state.dart';
 /// 			Predicates: wafregional.RulePredicateArray{
 /// 				&wafregional.RulePredicateArgs{
 /// 					Type:    pulumi.String("IPMatch"),
-/// 					DataId:  ipset.ID().ToIDOutput().ToStringOutput(),
+/// 					DataId:  ipset.ID(),
 /// 					Negated: pulumi.Bool(false),
 /// 				},
 /// 			},
@@ -127,7 +127,7 @@ import 'rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -135,7 +135,10 @@ import 'rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafregional_ipset" "ipset" {
+/// resource "aws_wafregional_ip_set" "ipset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ip_set_descriptors {
 ///     type  = "IPV4"
 ///     value = "192.0.7.0/24"
@@ -143,9 +146,12 @@ import 'rule_state.dart';
 ///   name = "tfIPSet"
 /// }
 /// resource "aws_wafregional_rule" "wafrule" {
-///   predicates {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   predicate {
 ///     type    = "IPMatch"
-///     data_id = aws_wafregional_ipset.ipset.id
+///     data_id = aws_wafregional_ip_set.ipset.id
 ///     negated = false
 ///   }
 ///   name        = "tfWAFRule"
@@ -254,7 +260,7 @@ class Rule extends pulumi.CustomResource {
           'aws:wafregional/rule:Rule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     metricName = registerOutput<String>('metricName');

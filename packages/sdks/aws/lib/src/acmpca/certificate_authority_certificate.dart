@@ -168,7 +168,7 @@ import 'certificate_authority_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -176,27 +176,36 @@ import 'certificate_authority_certificate_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getpartition" "current" {
+/// data "aws_partition" "current" {
 /// }
 ///
-/// resource "aws_acmpca_certificateauthoritycertificate" "example" {
-///   certificate_authority_arn = aws_acmpca_certificateauthority.example.arn
+/// resource "aws_acmpca_certificate_authority_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate_authority_arn = aws_acmpca_certificate_authority.example.arn
 ///   certificate               = aws_acmpca_certificate.example.certificate
 ///   certificate_chain         = aws_acmpca_certificate.example.certificate_chain
 /// }
 /// resource "aws_acmpca_certificate" "example" {
-///   validity = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   validity {
 ///     type  = "YEARS"
 ///     value = 1
 ///   }
-///   certificate_authority_arn   = aws_acmpca_certificateauthority.example.arn
-///   certificate_signing_request = aws_acmpca_certificateauthority.example.certificate_signing_request
+///   certificate_authority_arn   = aws_acmpca_certificate_authority.example.arn
+///   certificate_signing_request = aws_acmpca_certificate_authority.example.certificate_signing_request
 ///   signing_algorithm           = "SHA512WITHRSA"
-///   template_arn                ="arn:${data.aws_getpartition.current.partition}:acm-pca:::template/RootCACertificate/V1"
+///   template_arn                ="arn:${data.aws_partition.current.partition}:acm-pca:::template/RootCACertificate/V1"
 /// }
-/// resource "aws_acmpca_certificateauthority" "example" {
-///   certificate_authority_configuration = {
-///     subject = {
+/// resource "aws_acmpca_certificate_authority" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate_authority_configuration {
+///     subject {
 ///       common_name = "example.com"
 ///     }
 ///     key_algorithm     = "RSA_4096"
@@ -494,7 +503,7 @@ import 'certificate_authority_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -502,27 +511,36 @@ import 'certificate_authority_certificate_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getpartition" "current" {
+/// data "aws_partition" "current" {
 /// }
 ///
-/// resource "aws_acmpca_certificateauthoritycertificate" "subordinate" {
-///   certificate_authority_arn = aws_acmpca_certificateauthority.subordinate.arn
+/// resource "aws_acmpca_certificate_authority_certificate" "subordinate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate_authority_arn = aws_acmpca_certificate_authority.subordinate.arn
 ///   certificate               = aws_acmpca_certificate.subordinate.certificate
 ///   certificate_chain         = aws_acmpca_certificate.subordinate.certificate_chain
 /// }
 /// resource "aws_acmpca_certificate" "subordinate" {
-///   validity = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   validity {
 ///     type  = "YEARS"
 ///     value = 1
 ///   }
-///   certificate_authority_arn   = aws_acmpca_certificateauthority.root.arn
-///   certificate_signing_request = aws_acmpca_certificateauthority.subordinate.certificate_signing_request
+///   certificate_authority_arn   = aws_acmpca_certificate_authority.root.arn
+///   certificate_signing_request = aws_acmpca_certificate_authority.subordinate.certificate_signing_request
 ///   signing_algorithm           = "SHA512WITHRSA"
-///   template_arn                ="arn:${data.aws_getpartition.current.partition}:acm-pca:::template/SubordinateCACertificate_PathLen0/V1"
+///   template_arn                ="arn:${data.aws_partition.current.partition}:acm-pca:::template/SubordinateCACertificate_PathLen0/V1"
 /// }
-/// resource "aws_acmpca_certificateauthority" "subordinate" {
-///   certificate_authority_configuration = {
-///     subject = {
+/// resource "aws_acmpca_certificate_authority" "subordinate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate_authority_configuration {
+///     subject {
 ///       common_name = "sub.example.com"
 ///     }
 ///     key_algorithm     = "RSA_2048"
@@ -530,11 +548,20 @@ import 'certificate_authority_certificate_state.dart';
 ///   }
 ///   type = "SUBORDINATE"
 /// }
-/// resource "aws_acmpca_certificateauthority" "root" {
+/// resource "aws_acmpca_certificate_authority" "root" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_acmpca_certificateauthoritycertificate" "root" {
+/// resource "aws_acmpca_certificate_authority_certificate" "root" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_acmpca_certificate" "root" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -672,7 +699,7 @@ class CertificateAuthorityCertificate extends pulumi.CustomResource {
           'aws:acmpca/certificateAuthorityCertificate:CertificateAuthorityCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     certificate = registerOutput<String>('certificate');
     certificateAuthorityArn = registerOutput<String>('certificateAuthorityArn');

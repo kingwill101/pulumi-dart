@@ -87,7 +87,7 @@ import 'principal_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,12 +95,18 @@ import 'principal_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ram_resourceshare" "example" {
+/// resource "aws_ram_resource_share" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allow_external_principals = true
 /// }
-/// resource "aws_ram_principalassociation" "example" {
+/// resource "aws_ram_principal_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   principal          = "111111111111"
-///   resource_share_arn = aws_ram_resourceshare.example.arn
+///   resource_share_arn = aws_ram_resource_share.example.arn
 /// }
 /// ```
 /// ```java
@@ -211,7 +217,7 @@ import 'principal_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -219,7 +225,10 @@ import 'principal_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ram_principalassociation" "example" {
+/// resource "aws_ram_principal_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   principal          = exampleAwsOrganizationsOrganization.arn
 ///   resource_share_arn = exampleAwsRamResourceShare.arn
 /// }
@@ -246,8 +255,8 @@ import 'principal_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new PrincipalAssociation("example", PrincipalAssociationArgs.builder()
-///             .principal(exampleAwsOrganizationsOrganization.arn())
-///             .resourceShareArn(exampleAwsRamResourceShare.arn())
+///             .principal(exampleAwsOrganizationsOrganization.get("arn"))
+///             .resourceShareArn(exampleAwsRamResourceShare.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -303,7 +312,7 @@ class PrincipalAssociation extends pulumi.CustomResource {
           'aws:ram/principalAssociation:PrincipalAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     principal = registerOutput<String>('principal');
     region = registerOutput<String>('region');

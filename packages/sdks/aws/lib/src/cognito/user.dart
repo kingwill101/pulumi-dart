@@ -66,7 +66,7 @@ import 'user_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewUser(ctx, "example", &cognito.UserArgs{
-/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: example.ID(),
 /// 			Username:   pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
@@ -77,7 +77,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -85,11 +85,17 @@ import 'user_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpool" "example" {
+/// resource "aws_cognito_user_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "MyExamplePool"
 /// }
 /// resource "aws_cognito_user" "example" {
-///   user_pool_id = aws_cognito_userpool.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   user_pool_id = aws_cognito_user_pool.example.id
 ///   username     = "example"
 /// }
 /// ```
@@ -296,7 +302,7 @@ import 'user_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewUser(ctx, "example", &cognito.UserArgs{
-/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: example.ID(),
 /// 			Username:   pulumi.String("example"),
 /// 			Attributes: pulumi.StringMap{
 /// 				"example":        pulumi.String("true"),
@@ -313,7 +319,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -321,26 +327,33 @@ import 'user_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpool" "example" {
-///   schemas {
+/// resource "aws_cognito_user_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   schema {
 ///     name                     = "example"
 ///     attribute_data_type      = "Boolean"
 ///     mutable                  = false
 ///     required                 = false
 ///     developer_only_attribute = false
 ///   }
-///   schemas {
-///     string_attribute_constraints = {}
-///     name                         = "foo"
-///     attribute_data_type          = "String"
-///     mutable                      = false
-///     required                     = false
-///     developer_only_attribute     = false
+///   schema {
+///     string_attribute_constraints {
+///     }
+///     name                     = "foo"
+///     attribute_data_type      = "String"
+///     mutable                  = false
+///     required                 = false
+///     developer_only_attribute = false
 ///   }
 ///   name = "mypool"
 /// }
 /// resource "aws_cognito_user" "example" {
-///   user_pool_id = aws_cognito_userpool.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   user_pool_id = aws_cognito_user_pool.example.id
 ///   username     = "example"
 ///   attributes = {
 ///     "example"        = true
@@ -499,7 +512,7 @@ class User extends pulumi.CustomResource {
           'aws:cognito/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['password', 'temporaryPassword'],
         ) {
     attributes = registerOutput<Map<String, String>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

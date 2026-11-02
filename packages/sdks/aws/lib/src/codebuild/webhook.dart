@@ -130,7 +130,7 @@ import 'webhook_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -139,12 +139,15 @@ import 'webhook_state.dart';
 /// }
 ///
 /// resource "aws_codebuild_webhook" "example" {
-///   filter_groups {
-///     filters {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filter_group {
+///     filter {
 ///       type    = "EVENT"
 ///       pattern = "PUSH"
 ///     }
-///     filters {
+///     filter {
 ///       type    = "BASE_REF"
 ///       pattern = "master"
 ///     }
@@ -188,7 +191,7 @@ import 'webhook_state.dart';
 ///                         .pattern("master")
 ///                         .build())
 ///                 .build())
-///             .projectName(exampleAwsCodebuildProject.name())
+///             .projectName(exampleAwsCodebuildProject.get("name"))
 ///             .buildType("BUILD")
 ///             .build());
 ///
@@ -333,7 +336,7 @@ import 'webhook_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -345,15 +348,21 @@ import 'webhook_state.dart';
 /// }
 ///
 /// resource "aws_codebuild_webhook" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_name = exampleAwsCodebuildProject.name
 /// }
-/// resource "github_repositorywebhook" "example" {
-///   configuration = [{
-///     "url"         = aws_codebuild_webhook.example.payload_url
-///     "secret"      = aws_codebuild_webhook.example.secret
-///     "contentType" = "json"
-///     "insecureSsl" = false
-///   }]
+/// resource "github_repository_webhook" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration {
+///     url          = aws_codebuild_webhook.example.payload_url
+///     secret       = aws_codebuild_webhook.example.secret
+///     content_type = "json"
+///     insecure_ssl = false
+///   }
 ///   active     = true
 ///   events     = ["push"]
 ///   name       = "example"
@@ -384,7 +393,7 @@ import 'webhook_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Webhook("example", WebhookArgs.builder()
-///             .projectName(exampleAwsCodebuildProject.name())
+///             .projectName(exampleAwsCodebuildProject.get("name"))
 ///             .build());
 ///
 ///         var exampleRepositoryWebhook = new RepositoryWebhook("exampleRepositoryWebhook", RepositoryWebhookArgs.builder()
@@ -397,7 +406,7 @@ import 'webhook_state.dart';
 ///             .active(true)
 ///             .events("push")
 ///             .name("example")
-///             .repository(exampleGithubRepository.name())
+///             .repository(exampleGithubRepository.get("name"))
 ///             .build());
 ///
 ///     }
@@ -523,7 +532,7 @@ import 'webhook_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -532,8 +541,11 @@ import 'webhook_state.dart';
 /// }
 ///
 /// resource "aws_codebuild_webhook" "example" {
-///   filter_groups {
-///     filters {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filter_group {
+///     filter {
 ///       type    = "EVENT"
 ///       pattern = "WORKFLOW_JOB_QUEUED"
 ///     }
@@ -572,7 +584,7 @@ import 'webhook_state.dart';
 ///                     .pattern("WORKFLOW_JOB_QUEUED")
 ///                     .build())
 ///                 .build())
-///             .projectName(exampleAwsCodebuildProject.name())
+///             .projectName(exampleAwsCodebuildProject.get("name"))
 ///             .buildType("BUILD")
 ///             .build());
 ///
@@ -636,7 +648,7 @@ class Webhook extends pulumi.CustomResource {
           'aws:codebuild/webhook:Webhook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['secret'],
         ) {
     branchFilter = registerOutput<String?>('branchFilter');

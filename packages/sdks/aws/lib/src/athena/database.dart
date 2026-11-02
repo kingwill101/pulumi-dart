@@ -68,7 +68,7 @@ import 'database_state.dart';
 /// 		}
 /// 		_, err = athena.NewDatabase(ctx, "example", &athena.DatabaseArgs{
 /// 			Name:   pulumi.String("database_name"),
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -78,7 +78,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,9 +87,15 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
 /// resource "aws_athena_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "database_name"
 ///   bucket = aws_s3_bucket.example.id
 /// }
@@ -221,7 +227,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -231,7 +237,8 @@ import 'database_state.dart';
 ///
 /// resource "aws_athena_database" "example" {
 ///   lifecycle {
-///     ignore_changes = [bucket]
+///     ignore_changes        = [bucket]
+///     create_before_destroy = true
 ///   }
 ///   name   = "database_name"
 ///   bucket = exampleAwsS3Bucket.id
@@ -261,7 +268,7 @@ import 'database_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Database("example", DatabaseArgs.builder()
 ///             .name("database_name")
-///             .bucket(exampleAwsS3Bucket.id())
+///             .bucket(exampleAwsS3Bucket.get("id"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .ignoreChanges("bucket")
 ///                 .build());
@@ -314,7 +321,7 @@ class Database extends pulumi.CustomResource {
           'aws:athena/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     aclConfiguration = registerOutput<DatabaseAclConfiguration?>('aclConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseAclConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bucket = registerOutput<String?>('bucket');

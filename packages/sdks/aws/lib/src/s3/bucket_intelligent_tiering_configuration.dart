@@ -113,7 +113,7 @@ import 'bucket_intelligent_tiering_configuration_tiering.dart';
 /// 					Days:       pulumi.Int(125),
 /// 				},
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Name:   pulumi.String("EntireBucket"),
 /// 		})
 /// 		if err != nil {
@@ -124,7 +124,7 @@ import 'bucket_intelligent_tiering_configuration_tiering.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -132,12 +132,15 @@ import 'bucket_intelligent_tiering_configuration_tiering.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketintelligenttieringconfiguration" "example-entire-bucket" {
-///   tierings {
+/// resource "aws_s3_bucket_intelligent_tiering_configuration" "example-entire-bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   tiering {
 ///     access_tier = "DEEP_ARCHIVE_ACCESS"
 ///     days        = 180
 ///   }
-///   tierings {
+///   tiering {
 ///     access_tier = "ARCHIVE_ACCESS"
 ///     days        = 125
 ///   }
@@ -145,6 +148,9 @@ import 'bucket_intelligent_tiering_configuration_tiering.dart';
 ///   name   = "EntireBucket"
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
 /// ```
@@ -327,7 +333,7 @@ import 'bucket_intelligent_tiering_configuration_tiering.dart';
 /// 					Days:       pulumi.Int(125),
 /// 				},
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Name:   pulumi.String("ImportantBlueDocuments"),
 /// 			Status: pulumi.String("Disabled"),
 /// 		})
@@ -339,7 +345,7 @@ import 'bucket_intelligent_tiering_configuration_tiering.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -347,15 +353,18 @@ import 'bucket_intelligent_tiering_configuration_tiering.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketintelligenttieringconfiguration" "example-filtered" {
-///   filter = {
+/// resource "aws_s3_bucket_intelligent_tiering_configuration" "example-filtered" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filter {
 ///     prefix = "documents/"
 ///     tags = {
 ///       "priority" = "high"
 ///       "class"    = "blue"
 ///     }
 ///   }
-///   tierings {
+///   tiering {
 ///     access_tier = "ARCHIVE_ACCESS"
 ///     days        = 125
 ///   }
@@ -364,6 +373,9 @@ import 'bucket_intelligent_tiering_configuration_tiering.dart';
 ///   status = "Disabled"
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
 /// ```
@@ -472,7 +484,7 @@ class BucketIntelligentTieringConfiguration extends pulumi.CustomResource {
           'aws:s3/bucketIntelligentTieringConfiguration:BucketIntelligentTieringConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     filter = registerOutput<BucketIntelligentTieringConfigurationFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketIntelligentTieringConfigurationFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });

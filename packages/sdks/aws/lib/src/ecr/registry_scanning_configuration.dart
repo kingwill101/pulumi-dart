@@ -101,7 +101,7 @@ import 'registry_scanning_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -109,9 +109,12 @@ import 'registry_scanning_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecr_registryscanningconfiguration" "configuration" {
-///   rules {
-///     repository_filters {
+/// resource "aws_ecr_registry_scanning_configuration" "configuration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     repository_filter {
 ///       filter      = "example"
 ///       filter_type = "WILDCARD"
 ///     }
@@ -304,7 +307,7 @@ import 'registry_scanning_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -312,16 +315,19 @@ import 'registry_scanning_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecr_registryscanningconfiguration" "test" {
-///   rules {
-///     repository_filters {
+/// resource "aws_ecr_registry_scanning_configuration" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     repository_filter {
 ///       filter      = "*"
 ///       filter_type = "WILDCARD"
 ///     }
 ///     scan_frequency = "SCAN_ON_PUSH"
 ///   }
-///   rules {
-///     repository_filters {
+///   rule {
+///     repository_filter {
 ///       filter      = "example"
 ///       filter_type = "WILDCARD"
 ///     }
@@ -422,7 +428,7 @@ class RegistryScanningConfiguration extends pulumi.CustomResource {
           'aws:ecr/registryScanningConfiguration:RegistryScanningConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     registryId = registerOutput<String>('registryId');

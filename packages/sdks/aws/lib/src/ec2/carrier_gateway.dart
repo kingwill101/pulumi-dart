@@ -71,7 +71,7 @@ import 'carrier_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,7 +79,10 @@ import 'carrier_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_carriergateway" "example" {
+/// resource "aws_ec2_carrier_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = exampleAwsVpc.id
 ///   tags = {
 ///     "Name" = "example-carrier-gateway"
@@ -108,7 +111,7 @@ import 'carrier_gateway_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CarrierGateway("example", CarrierGatewayArgs.builder()
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .tags(Map.of("Name", "example-carrier-gateway"))
 ///             .build());
 ///
@@ -159,7 +162,7 @@ class CarrierGateway extends pulumi.CustomResource {
           'aws:ec2/carrierGateway:CarrierGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     ownerId = registerOutput<String>('ownerId');

@@ -55,7 +55,7 @@ import 'route_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,7 +63,10 @@ import 'route_table_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_routetable" "example" {
+/// resource "aws_ec2transitgateway_route_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   transit_gateway_id = exampleAwsEc2TransitGateway.id
 /// }
 /// ```
@@ -89,7 +92,7 @@ import 'route_table_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RouteTable("example", RouteTableArgs.builder()
-///             .transitGatewayId(exampleAwsEc2TransitGateway.id())
+///             .transitGatewayId(exampleAwsEc2TransitGateway.get("id"))
 ///             .build());
 ///
 ///     }
@@ -139,7 +142,7 @@ class RouteTable extends pulumi.CustomResource {
           'aws:ec2transitgateway/routeTable:RouteTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultAssociationRouteTable = registerOutput<bool>('defaultAssociationRouteTable');

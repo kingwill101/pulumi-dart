@@ -83,7 +83,7 @@ import 'indexing_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,9 +91,12 @@ import 'indexing_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_xray_indexingrule" "example" {
-///   rule = {
-///     probabilistic = {
+/// resource "aws_xray_indexing_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     probabilistic {
 ///       desired_sampling_percentage = 0.66
 ///     }
 ///   }
@@ -186,7 +189,7 @@ class IndexingRule extends pulumi.CustomResource {
           'aws:xray/indexingRule:IndexingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

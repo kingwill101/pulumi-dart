@@ -77,7 +77,7 @@ import 'file_system_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -85,7 +85,10 @@ import 'file_system_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_storagegateway_filesystemassociation" "example" {
+/// resource "aws_storagegateway_file_system_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gateway_arn           = exampleAwsStoragegatewayGateway.arn
 ///   location_arn          = exampleAwsFsxWindowsFileSystem.arn
 ///   username              = "Admin"
@@ -115,11 +118,11 @@ import 'file_system_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FileSystemAssociation("example", FileSystemAssociationArgs.builder()
-///             .gatewayArn(exampleAwsStoragegatewayGateway.arn())
-///             .locationArn(exampleAwsFsxWindowsFileSystem.arn())
+///             .gatewayArn(exampleAwsStoragegatewayGateway.get("arn"))
+///             .locationArn(exampleAwsFsxWindowsFileSystem.get("arn"))
 ///             .username("Admin")
 ///             .password("avoid-plaintext-passwords")
-///             .auditDestinationArn(exampleAwsS3Bucket.arn())
+///             .auditDestinationArn(exampleAwsS3Bucket.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -151,7 +154,7 @@ import 'file_system_association_state.dart';
 /// const test = new aws.ec2.Instance("test", {
 ///     ami: awsServiceStoragegatewayAmiFILES3Latest.then(awsServiceStoragegatewayAmiFILES3Latest => awsServiceStoragegatewayAmiFILES3Latest.value),
 ///     associatePublicIpAddress: true,
-///     instanceType: aws.ec2.InstanceType[available.instanceType],
+///     instanceType: available.instanceType,
 ///     vpcSecurityGroupIds: [testAwsSecurityGroup.id],
 ///     subnetId: testAwsSubnet[0].id,
 /// }, {
@@ -198,7 +201,7 @@ import 'file_system_association_state.dart';
 /// test = aws.ec2.Instance("test",
 ///     ami=aws_service_storagegateway_ami_files3_latest.value,
 ///     associate_public_ip_address=True,
-///     instance_type=aws.ec2.InstanceType(available["instanceType"]),
+///     instance_type=available["instanceType"],
 ///     vpc_security_group_ids=[test_aws_security_group["id"]],
 ///     subnet_id=test_aws_subnet[0]["id"],
 ///     opts = pulumi.ResourceOptions(depends_on=[
@@ -249,7 +252,7 @@ import 'file_system_association_state.dart';
 ///     {
 ///         Ami = awsServiceStoragegatewayAmiFILES3Latest.Apply(getParameterResult => getParameterResult.Value),
 ///         AssociatePublicIpAddress = true,
-///         InstanceType = System.Enum.Parse<Aws.Ec2.InstanceType>(available.InstanceType),
+///         InstanceType = available.InstanceType,
 ///         VpcSecurityGroupIds = new[]
 ///         {
 ///             testAwsSecurityGroup.Id,
@@ -331,7 +334,7 @@ import 'file_system_association_state.dart';
 /// 		test, err := ec2.NewInstance(ctx, "test", &ec2.InstanceArgs{
 /// 			Ami:                      pulumi.String(awsServiceStoragegatewayAmiFILES3Latest.Value),
 /// 			AssociatePublicIpAddress: pulumi.Bool(true),
-/// 			InstanceType:             ec2.InstanceType(available.InstanceType),
+/// 			InstanceType:             pulumi.Any(available.InstanceType),
 /// 			VpcSecurityGroupIds: pulumi.StringArray{
 /// 				testAwsSecurityGroup.Id,
 /// 			},
@@ -390,7 +393,7 @@ import 'file_system_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -398,20 +401,26 @@ import 'file_system_association_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssm_getparameter" "awsServiceStoragegatewayAmiFILES3Latest" {
+/// data "aws_ssm_parameter" "awsServiceStoragegatewayAmiFILES3Latest" {
 ///   name = "/aws/service/storagegateway/ami/FILE_S3/latest"
 /// }
 ///
 /// resource "aws_ec2_instance" "test" {
-///   depends_on                  = [testAwsRoute, testAwsVpcDhcpOptionsAssociation]
-///   ami                         = data.aws_ssm_getparameter.awsServiceStoragegatewayAmiFILES3Latest.value
+///   depends_on = [testAwsRoute, testAwsVpcDhcpOptionsAssociation]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ami                         = data.aws_ssm_parameter.awsServiceStoragegatewayAmiFILES3Latest.value
 ///   associate_public_ip_address = true
 ///   instance_type               = available.instanceType
 ///   vpc_security_group_ids      = [testAwsSecurityGroup.id]
 ///   subnet_id                   = testAwsSubnet[0].id
 /// }
 /// resource "aws_storagegateway_gateway" "test" {
-///   smb_active_directory_settings = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   smb_active_directory_settings {
 ///     domain_name = testAwsDirectoryServiceDirectory.name
 ///     password    = testAwsDirectoryServiceDirectory.password
 ///     username    = "Admin"
@@ -421,7 +430,10 @@ import 'file_system_association_state.dart';
 ///   gateway_timezone   = "GMT"
 ///   gateway_type       = "FILE_FSX_SMB"
 /// }
-/// resource "aws_fsx_windowsfilesystem" "test" {
+/// resource "aws_fsx_windows_file_system" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   active_directory_id = testAwsDirectoryServiceDirectory.id
 ///   security_group_ids  = [testAwsSecurityGroup.id]
 ///   skip_final_backup   = true
@@ -429,12 +441,15 @@ import 'file_system_association_state.dart';
 ///   subnet_ids          = [testAwsSubnet[0].id]
 ///   throughput_capacity = 8
 /// }
-/// resource "aws_storagegateway_filesystemassociation" "fsx" {
-///   cache_attributes = {
+/// resource "aws_storagegateway_file_system_association" "fsx" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cache_attributes {
 ///     cache_stale_timeout_in_seconds = 400
 ///   }
 ///   gateway_arn           = aws_storagegateway_gateway.test.arn
-///   location_arn          = aws_fsx_windowsfilesystem.test.arn
+///   location_arn          = aws_fsx_windows_file_system.test.arn
 ///   username              = "Admin"
 ///   password              = testAwsDirectoryServiceDirectory.password
 ///   audit_destination_arn = testAwsCloudwatchLogGroup.arn
@@ -479,9 +494,9 @@ import 'file_system_association_state.dart';
 ///         var test = new Instance("test", InstanceArgs.builder()
 ///             .ami(awsServiceStoragegatewayAmiFILES3Latest.value())
 ///             .associatePublicIpAddress(true)
-///             .instanceType(available.instanceType())
-///             .vpcSecurityGroupIds(testAwsSecurityGroup.id())
-///             .subnetId(testAwsSubnet[0].id())
+///             .instanceType(available.get("instanceType"))
+///             .vpcSecurityGroupIds(testAwsSecurityGroup.get("id"))
+///             .subnetId(testAwsSubnet[0].get("id"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(
 ///                     testAwsRoute,
@@ -490,8 +505,8 @@ import 'file_system_association_state.dart';
 ///
 ///         var testGateway = new Gateway("testGateway", GatewayArgs.builder()
 ///             .smbActiveDirectorySettings(GatewaySmbActiveDirectorySettingsArgs.builder()
-///                 .domainName(testAwsDirectoryServiceDirectory.name())
-///                 .password(testAwsDirectoryServiceDirectory.password())
+///                 .domainName(testAwsDirectoryServiceDirectory.get("name"))
+///                 .password(testAwsDirectoryServiceDirectory.get("password"))
 ///                 .username("Admin")
 ///                 .build())
 ///             .gatewayIpAddress(test.publicIp())
@@ -501,11 +516,11 @@ import 'file_system_association_state.dart';
 ///             .build());
 ///
 ///         var testWindowsFileSystem = new WindowsFileSystem("testWindowsFileSystem", WindowsFileSystemArgs.builder()
-///             .activeDirectoryId(testAwsDirectoryServiceDirectory.id())
-///             .securityGroupIds(testAwsSecurityGroup.id())
+///             .activeDirectoryId(testAwsDirectoryServiceDirectory.get("id"))
+///             .securityGroupIds(testAwsSecurityGroup.get("id"))
 ///             .skipFinalBackup(true)
 ///             .storageCapacity(32)
-///             .subnetIds(testAwsSubnet[0].id())
+///             .subnetIds(testAwsSubnet[0].get("id"))
 ///             .throughputCapacity(8)
 ///             .build());
 ///
@@ -516,8 +531,8 @@ import 'file_system_association_state.dart';
 ///             .gatewayArn(testGateway.arn())
 ///             .locationArn(testWindowsFileSystem.arn())
 ///             .username("Admin")
-///             .password(testAwsDirectoryServiceDirectory.password())
-///             .auditDestinationArn(testAwsCloudwatchLogGroup.arn())
+///             .password(testAwsDirectoryServiceDirectory.get("password"))
+///             .auditDestinationArn(testAwsCloudwatchLogGroup.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -622,7 +637,7 @@ class FileSystemAssociation extends pulumi.CustomResource {
           'aws:storagegateway/fileSystemAssociation:FileSystemAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     arn = registerOutput<String>('arn');

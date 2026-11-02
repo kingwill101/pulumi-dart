@@ -147,7 +147,7 @@ import 'table_item_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -155,13 +155,28 @@ import 'table_item_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dynamodb_tableitem" "example" {
+/// resource "aws_dynamodb_table_item" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   table_name = aws_dynamodb_table.example.name
 ///   hash_key   = aws_dynamodb_table.example.hash_key
-///   item       = "{\n  \\\"exampleHashKey\\\": {\\\"S\\\": \\\"something\\\"},\n  \\\"one\\\": {\\\"N\\\": \\\"11111\\\"},\n  \\\"two\\\": {\\\"N\\\": \\\"22222\\\"},\n  \\\"three\\\": {\\\"N\\\": \\\"33333\\\"},\n  \\\"four\\\": {\\\"N\\\": \\\"44444\\\"}\n}\n"
+///   item       = <<ITEM
+/// {
+///   \"exampleHashKey\": {\"S\": \"something\"},
+///   \"one\": {\"N\": \"11111\"},
+///   \"two\": {\"N\": \"22222\"},
+///   \"three\": {\"N\": \"33333\"},
+///   \"four\": {\"N\": \"44444\"}
+/// }
+/// ITEM
+///
 /// }
 /// resource "aws_dynamodb_table" "example" {
-///   attributes {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   attribute {
 ///     name = "exampleHashKey"
 ///     type = "S"
 ///   }
@@ -312,7 +327,7 @@ class TableItem extends pulumi.CustomResource {
           'aws:dynamodb/tableItem:TableItem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     hashKey = registerOutput<String>('hashKey');
     hashKeyValue = registerOutput<String>('hashKeyValue');

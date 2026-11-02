@@ -129,7 +129,7 @@ import 'thing_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -137,12 +137,18 @@ import 'thing_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iot_thinggroup" "parent" {
+/// resource "aws_iot_thing_group" "parent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "parent"
 /// }
-/// resource "aws_iot_thinggroup" "example" {
-///   properties = {
-///     attribute_payload = {
+/// resource "aws_iot_thing_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   properties {
+///     attribute_payload {
 ///       attributes = {
 ///         "One" = "11111"
 ///         "Two" = "TwoTwo"
@@ -151,7 +157,7 @@ import 'thing_group_state.dart';
 ///     description = "This is my thing group"
 ///   }
 ///   name              = "example"
-///   parent_group_name = aws_iot_thinggroup.parent.name
+///   parent_group_name = aws_iot_thing_group.parent.name
 ///   tags = {
 ///     "managed" = "true"
 ///   }
@@ -261,7 +267,7 @@ class ThingGroup extends pulumi.CustomResource {
           'aws:iot/thingGroup:ThingGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     metadatas = registerOutput<List<ThingGroupMetadata>>('metadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThingGroupMetadata>(guardedValue, (value) => ThingGroupMetadata.fromMap((value as Map).cast<String, dynamic>())); });

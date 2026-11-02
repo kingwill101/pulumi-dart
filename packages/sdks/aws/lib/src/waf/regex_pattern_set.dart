@@ -75,7 +75,7 @@ import 'regex_pattern_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,7 +83,10 @@ import 'regex_pattern_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_waf_regexpatternset" "example" {
+/// resource "aws_waf_regex_pattern_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my_waf_regex_pattern_set"
 ///   regex_pattern_strings = ["one", "two"]
 /// }
@@ -158,7 +161,7 @@ class RegexPatternSet extends pulumi.CustomResource {
           'aws:waf/regexPatternSet:RegexPatternSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

@@ -332,7 +332,7 @@ import 'guardrail_word_policy_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -341,54 +341,57 @@ import 'guardrail_word_policy_config.dart';
 /// }
 ///
 /// resource "aws_bedrock_guardrail" "example" {
-///   content_policy_config = {
-///     filters_configs = [{
-///       "inputStrength"  = "MEDIUM"
-///       "outputStrength" = "MEDIUM"
-///       "type"           = "HATE"
-///     }]
-///     tier_configs = [{
-///       "tierName" = "CLASSIC"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   content_policy_config {
+///     filters_config {
+///       input_strength  = "MEDIUM"
+///       output_strength = "MEDIUM"
+///       type            = "HATE"
+///     }
+///     tier_config = [{
+///       tier_name = "CLASSIC"
 ///     }]
 ///   }
-///   sensitive_information_policy_config = {
-///     pii_entities_configs = [{
-///       "action"        = "BLOCK"
-///       "inputAction"   = "BLOCK"
-///       "outputAction"  = "ANONYMIZE"
-///       "inputEnabled"  = true
-///       "outputEnabled" = true
-///       "type"          = "NAME"
-///     }]
-///     regexes_configs = [{
-///       "action"        = "BLOCK"
-///       "inputAction"   = "BLOCK"
-///       "outputAction"  = "BLOCK"
-///       "inputEnabled"  = true
-///       "outputEnabled" = false
-///       "description"   = "example regex"
-///       "name"          = "regex_example"
-///       "pattern"       = "^\\d{3}-\\d{2}-\\d{4}$"
-///     }]
+///   sensitive_information_policy_config {
+///     pii_entities_config {
+///       action         = "BLOCK"
+///       input_action   = "BLOCK"
+///       output_action  = "ANONYMIZE"
+///       input_enabled  = true
+///       output_enabled = true
+///       type           = "NAME"
+///     }
+///     regexes_config {
+///       action         = "BLOCK"
+///       input_action   = "BLOCK"
+///       output_action  = "BLOCK"
+///       input_enabled  = true
+///       output_enabled = false
+///       description    = "example regex"
+///       name           = "regex_example"
+///       pattern        = "^\\d{3}-\\d{2}-\\d{4}$"
+///     }
 ///   }
-///   topic_policy_config = {
-///     tier_configs = [{
-///       "tierName" = "CLASSIC"
+///   topic_policy_config {
+///     tier_config = [{
+///       tier_name = "CLASSIC"
 ///     }]
-///     topics_configs = [{
-///       "name"       = "investment_topic"
-///       "examples"   = ["Where should I invest my money ?"]
-///       "type"       = "DENY"
-///       "definition" = "Investment advice refers to inquiries, guidance, or recommendations regarding the management or allocation of funds or assets with the goal of generating returns ."
-///     }]
+///     topics_config {
+///       name       = "investment_topic"
+///       examples   = ["Where should I invest my money ?"]
+///       type       = "DENY"
+///       definition = "Investment advice refers to inquiries, guidance, or recommendations regarding the management or allocation of funds or assets with the goal of generating returns ."
+///     }
 ///   }
-///   word_policy_config = {
-///     managed_word_lists_configs = [{
-///       "type" = "PROFANITY"
-///     }]
-///     words_configs = [{
-///       "text" = "HATE"
-///     }]
+///   word_policy_config {
+///     managed_word_lists_config {
+///       type = "PROFANITY"
+///     }
+///     words_config {
+///       text = "HATE"
+///     }
 ///   }
 ///   name                      = "example"
 ///   blocked_input_messaging   = "example"
@@ -602,7 +605,7 @@ class Guardrail extends pulumi.CustomResource {
           'aws:bedrock/guardrail:Guardrail',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     blockedInputMessaging = registerOutput<String>('blockedInputMessaging');
     blockedOutputsMessaging = registerOutput<String>('blockedOutputsMessaging');

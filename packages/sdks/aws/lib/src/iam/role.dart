@@ -141,7 +141,7 @@ import 'role_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -150,6 +150,9 @@ import 'role_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "test_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test_role"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -353,7 +356,7 @@ import 'role_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -361,8 +364,8 @@ import 'role_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "instanceAssumeRolePolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "instanceAssumeRolePolicy" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["ec2.amazonaws.com"]
@@ -372,9 +375,12 @@ import 'role_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "instance_role"
 ///   path               = "/system/"
-///   assume_role_policy = data.aws_iam_getpolicydocument.instanceAssumeRolePolicy.json
+///   assume_role_policy = data.aws_iam_policy_document.instanceAssumeRolePolicy.json
 /// }
 /// ```
 /// ```java
@@ -641,7 +647,7 @@ import 'role_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -649,15 +655,18 @@ import 'role_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "inlinePolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "inlinePolicy" {
+///   statement {
 ///     actions   = ["ec2:DescribeAccountAttributes"]
 ///     resources = ["*"]
 ///   }
 /// }
 ///
 /// resource "aws_iam_role" "example" {
-///   inline_policies {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   inline_policy {
 ///     name = "my_inline_policy"
 ///     policy = jsonencode({
 ///       "Version" = "2012-10-17"
@@ -668,9 +677,9 @@ import 'role_state.dart';
 ///       }]
 ///     })
 ///   }
-///   inline_policies {
+///   inline_policy {
 ///     name   = "policy-8675309"
-///     policy = data.aws_iam_getpolicydocument.inlinePolicy.json
+///     policy = data.aws_iam_policy_document.inlinePolicy.json
 ///   }
 ///   name               = "yak_role"
 ///   assume_role_policy = instanceAssumeRolePolicy.json
@@ -728,7 +737,7 @@ import 'role_state.dart';
 ///                     .policy(inlinePolicy.json())
 ///                     .build())
 ///             .name("yak_role")
-///             .assumeRolePolicy(instanceAssumeRolePolicy.json())
+///             .assumeRolePolicy(instanceAssumeRolePolicy.get("json"))
 ///             .build());
 ///
 ///     }
@@ -837,7 +846,7 @@ import 'role_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -846,7 +855,10 @@ import 'role_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
-///   inline_policies {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   inline_policy {
 ///   }
 ///   name               = "yak_role"
 ///   assume_role_policy = instanceAssumeRolePolicy.json
@@ -878,7 +890,7 @@ import 'role_state.dart';
 ///             .inlinePolicies(RoleInlinePolicyArgs.builder()
 ///                 .build())
 ///             .name("yak_role")
-///             .assumeRolePolicy(instanceAssumeRolePolicy.json())
+///             .assumeRolePolicy(instanceAssumeRolePolicy.get("json"))
 ///             .build());
 ///
 ///     }
@@ -1121,7 +1133,7 @@ import 'role_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1130,11 +1142,17 @@ import 'role_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "yak_role"
 ///   assume_role_policy  = instanceAssumeRolePolicy.json
 ///   managed_policy_arns = [aws_iam_policy.policy_one.arn, aws_iam_policy.policy_two.arn]
 /// }
 /// resource "aws_iam_policy" "policy_one" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "policy-618033"
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -1146,6 +1164,9 @@ import 'role_state.dart';
 ///   })
 /// }
 /// resource "aws_iam_policy" "policy_two" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "policy-381966"
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -1213,7 +1234,7 @@ import 'role_state.dart';
 ///
 ///         var example = new Role("example", RoleArgs.builder()
 ///             .name("yak_role")
-///             .assumeRolePolicy(instanceAssumeRolePolicy.json())
+///             .assumeRolePolicy(instanceAssumeRolePolicy.get("json"))
 ///             .managedPolicyArns(
 ///                 policyOne.arn(),
 ///                 policyTwo.arn())
@@ -1301,7 +1322,7 @@ import 'role_state.dart';
 ///     {
 ///         Name = "yak_role",
 ///         AssumeRolePolicy = instanceAssumeRolePolicy.Json,
-///         ManagedPolicyArns = new[] {},
+///         ManagedPolicyArns = new() {},
 ///     });
 ///
 /// });
@@ -1329,7 +1350,7 @@ import 'role_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1338,6 +1359,9 @@ import 'role_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "yak_role"
 ///   assume_role_policy  = instanceAssumeRolePolicy.json
 ///   managed_policy_arns = []
@@ -1366,7 +1390,7 @@ import 'role_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Role("example", RoleArgs.builder()
 ///             .name("yak_role")
-///             .assumeRolePolicy(instanceAssumeRolePolicy.json())
+///             .assumeRolePolicy(instanceAssumeRolePolicy.get("json"))
 ///             .managedPolicyArns()
 ///             .build());
 ///
@@ -1450,7 +1474,7 @@ class Role extends pulumi.CustomResource {
           'aws:iam/role:Role',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     assumeRolePolicy = registerOutput<String>('assumeRolePolicy');

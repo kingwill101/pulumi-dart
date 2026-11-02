@@ -91,7 +91,7 @@ import 'volume_copy_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ebs.NewVolumeCopy(ctx, "example", &ebs.VolumeCopyArgs{
-/// 			SourceVolumeId: source.ID().ToIDOutput().ToStringOutput(),
+/// 			SourceVolumeId: source.ID(),
 /// 			VolumeType:     pulumi.String("gp3"),
 /// 			Size:           pulumi.Int(20),
 /// 			Iops:           pulumi.Int(3000),
@@ -108,7 +108,7 @@ import 'volume_copy_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,10 +117,16 @@ import 'volume_copy_timeouts.dart';
 /// }
 ///
 /// resource "aws_ebs_volume" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_zone = "us-west-2a"
 ///   size              = 8
 /// }
-/// resource "aws_ebs_volumecopy" "example" {
+/// resource "aws_ebs_volume_copy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source_volume_id = aws_ebs_volume.source.id
 ///   volume_type      = "gp3"
 ///   size             = 20
@@ -247,7 +253,7 @@ class VolumeCopy extends pulumi.CustomResource {
           'aws:ebs/volumeCopy:VolumeCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');

@@ -176,7 +176,7 @@ import 'kx_user_state.dart';
 /// 		}
 /// 		_, err = finspace.NewKxUser(ctx, "example", &finspace.KxUserArgs{
 /// 			Name:          pulumi.String("my-tf-kx-user"),
-/// 			EnvironmentId: exampleKxEnvironment.ID().ToIDOutput().ToStringOutput(),
+/// 			EnvironmentId: exampleKxEnvironment.ID(),
 /// 			IamRole:       exampleRole.Arn,
 /// 		})
 /// 		if err != nil {
@@ -187,7 +187,7 @@ import 'kx_user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -196,14 +196,23 @@ import 'kx_user_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "Example KMS Key"
 ///   deletion_window_in_days = 7
 /// }
-/// resource "aws_finspace_kxenvironment" "example" {
+/// resource "aws_finspace_kx_environment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "my-tf-kx-environment"
 ///   kms_key_id = aws_kms_key.example.arn
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-role"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -217,9 +226,12 @@ import 'kx_user_state.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_finspace_kxuser" "example" {
+/// resource "aws_finspace_kx_user" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "my-tf-kx-user"
-///   environment_id = aws_finspace_kxenvironment.example.id
+///   environment_id = aws_finspace_kx_environment.example.id
 ///   iam_role       = aws_iam_role.example.arn
 /// }
 /// ```
@@ -360,7 +372,7 @@ class KxUser extends pulumi.CustomResource {
           'aws:finspace/kxUser:KxUser',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     environmentId = registerOutput<String>('environmentId');

@@ -68,7 +68,7 @@ import 'mlflow_tracking_server_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -76,7 +76,10 @@ import 'mlflow_tracking_server_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_mlflowtrackingserver" "example" {
+/// resource "aws_sagemaker_mlflow_tracking_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tracking_server_name = "example"
 ///   role_arn             = exampleAwsIamRole.arn
 ///   artifact_store_uri   ="s3://${exampleAwsS3Bucket.bucket}/path"
@@ -105,8 +108,8 @@ import 'mlflow_tracking_server_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new MlflowTrackingServer("example", MlflowTrackingServerArgs.builder()
 ///             .trackingServerName("example")
-///             .roleArn(exampleAwsIamRole.arn())
-///             .artifactStoreUri(String.format("s3://%s/path", exampleAwsS3Bucket.bucket()))
+///             .roleArn(exampleAwsIamRole.get("arn"))
+///             .artifactStoreUri(String.format("s3://%s/path", exampleAwsS3Bucket.get("bucket")))
 ///             .build());
 ///
 ///     }
@@ -168,7 +171,7 @@ class MlflowTrackingServer extends pulumi.CustomResource {
           'aws:sagemaker/mlflowTrackingServer:MlflowTrackingServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     artifactStoreUri = registerOutput<String>('artifactStoreUri');

@@ -260,7 +260,7 @@ import 'replicator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -269,37 +269,40 @@ import 'replicator_state.dart';
 /// }
 ///
 /// resource "aws_msk_replicator" "test" {
-///   replication_info_list = {
-///     consumer_group_replications = [{
-///       "consumerGroupsToReplicates" = [".*"]
-///     }]
-///     topic_replications = [{
-///       "topicNameConfiguration" = {
-///         "type" = "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   replication_info_list {
+///     consumer_group_replication {
+///       consumer_groups_to_replicate = [".*"]
+///     }
+///     topic_replication {
+///       topic_name_configuration {
+///         type = "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS"
 ///       }
-///       "startingPosition" = {
-///         "type" = "LATEST"
+///       starting_position {
+///         type = "LATEST"
 ///       }
-///       "topicsToReplicates" = [".*"]
-///     }]
+///       topics_to_replicate = [".*"]
+///     }
 ///     source_kafka_cluster_arn = source.arn
 ///     target_kafka_cluster_arn = target.arn
 ///     target_compression_type  = "NONE"
 ///   }
-///   kafka_clusters {
-///     amazon_msk_cluster = {
+///   kafka_cluster {
+///     amazon_msk_cluster {
 ///       msk_cluster_arn = source.arn
 ///     }
-///     vpc_config = {
+///     vpc_config {
 ///       subnet_ids          = sourceAwsSubnet[*].id
 ///       security_groups_ids = [sourceAwsSecurityGroup.id]
 ///     }
 ///   }
-///   kafka_clusters {
-///     amazon_msk_cluster = {
+///   kafka_cluster {
+///     amazon_msk_cluster {
 ///       msk_cluster_arn = target.arn
 ///     }
-///     vpc_config = {
+///     vpc_config {
 ///       subnet_ids          = targetAwsSubnet[*].id
 ///       security_groups_ids = [targetAwsSecurityGroup.id]
 ///     }
@@ -352,32 +355,32 @@ import 'replicator_state.dart';
 ///                         .build())
 ///                     .topicsToReplicates(".*")
 ///                     .build())
-///                 .sourceKafkaClusterArn(source.arn())
-///                 .targetKafkaClusterArn(target.arn())
+///                 .sourceKafkaClusterArn(source.get("arn"))
+///                 .targetKafkaClusterArn(target.get("arn"))
 ///                 .targetCompressionType("NONE")
 ///                 .build())
 ///             .kafkaClusters(
 ///                 ReplicatorKafkaClusterArgs.builder()
 ///                     .amazonMskCluster(ReplicatorKafkaClusterAmazonMskClusterArgs.builder()
-///                         .mskClusterArn(source.arn())
+///                         .mskClusterArn(source.get("arn"))
 ///                         .build())
 ///                     .vpcConfig(ReplicatorKafkaClusterVpcConfigArgs.builder()
-///                         .subnetIds(sourceAwsSubnet.stream().map(element -> element.id()).collect(toList()))
-///                         .securityGroupsIds(sourceAwsSecurityGroup.id())
+///                         .subnetIds(sourceAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
+///                         .securityGroupsIds(sourceAwsSecurityGroup.get("id"))
 ///                         .build())
 ///                     .build(),
 ///                 ReplicatorKafkaClusterArgs.builder()
 ///                     .amazonMskCluster(ReplicatorKafkaClusterAmazonMskClusterArgs.builder()
-///                         .mskClusterArn(target.arn())
+///                         .mskClusterArn(target.get("arn"))
 ///                         .build())
 ///                     .vpcConfig(ReplicatorKafkaClusterVpcConfigArgs.builder()
-///                         .subnetIds(targetAwsSubnet.stream().map(element -> element.id()).collect(toList()))
-///                         .securityGroupsIds(targetAwsSecurityGroup.id())
+///                         .subnetIds(targetAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
+///                         .securityGroupsIds(targetAwsSecurityGroup.get("id"))
 ///                         .build())
 ///                     .build())
 ///             .replicatorName("test-name")
 ///             .description("test-description")
-///             .serviceExecutionRoleArn(sourceAwsIamRole.arn())
+///             .serviceExecutionRoleArn(sourceAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -659,7 +662,7 @@ import 'replicator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -668,44 +671,47 @@ import 'replicator_state.dart';
 /// }
 ///
 /// resource "aws_msk_replicator" "test" {
-///   replication_info_list = {
-///     consumer_group_replications = [{
-///       "consumerGroupsToReplicates" = [".*"]
-///     }]
-///     topic_replications = [{
-///       "topicNameConfiguration" = {
-///         "type" = "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   replication_info_list {
+///     consumer_group_replication {
+///       consumer_groups_to_replicate = [".*"]
+///     }
+///     topic_replication {
+///       topic_name_configuration {
+///         type = "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS"
 ///       }
-///       "startingPosition" = {
-///         "type" = "LATEST"
+///       starting_position {
+///         type = "LATEST"
 ///       }
-///       "topicsToReplicates" = [".*"]
-///     }]
+///       topics_to_replicate = [".*"]
+///     }
 ///     source_kafka_cluster_arn = source.arn
 ///     target_kafka_cluster_id  = "target-apache-kafka-cluster"
 ///     target_compression_type  = "NONE"
 ///   }
-///   kafka_clusters {
-///     amazon_msk_cluster = {
+///   kafka_cluster {
+///     amazon_msk_cluster {
 ///       msk_cluster_arn = source.arn
 ///     }
-///     vpc_config = {
+///     vpc_config {
 ///       subnet_ids          = sourceAwsSubnet[*].id
 ///       security_groups_ids = [sourceAwsSecurityGroup.id]
 ///     }
 ///   }
-///   kafka_clusters {
-///     apache_kafka_cluster = {
+///   kafka_cluster {
+///     apache_kafka_cluster {
 ///       apache_kafka_cluster_id = "target-apache-kafka-cluster"
 ///       bootstrap_broker_string = "b-1.example.com:9096,b-2.example.com:9096"
 ///     }
-///     client_authentication = {
-///       sasl_scram = {
+///     client_authentication {
+///       sasl_scram {
 ///         mechanism  = "SHA512"
 ///         secret_arn = target.arn
 ///       }
 ///     }
-///     encryption_in_transit = {
+///     encryption_in_transit {
 ///       root_ca_certificate = rootCa.arn
 ///     }
 ///   }
@@ -761,18 +767,18 @@ import 'replicator_state.dart';
 ///                         .build())
 ///                     .topicsToReplicates(".*")
 ///                     .build())
-///                 .sourceKafkaClusterArn(source.arn())
+///                 .sourceKafkaClusterArn(source.get("arn"))
 ///                 .targetKafkaClusterId("target-apache-kafka-cluster")
 ///                 .targetCompressionType("NONE")
 ///                 .build())
 ///             .kafkaClusters(
 ///                 ReplicatorKafkaClusterArgs.builder()
 ///                     .amazonMskCluster(ReplicatorKafkaClusterAmazonMskClusterArgs.builder()
-///                         .mskClusterArn(source.arn())
+///                         .mskClusterArn(source.get("arn"))
 ///                         .build())
 ///                     .vpcConfig(ReplicatorKafkaClusterVpcConfigArgs.builder()
-///                         .subnetIds(sourceAwsSubnet.stream().map(element -> element.id()).collect(toList()))
-///                         .securityGroupsIds(sourceAwsSecurityGroup.id())
+///                         .subnetIds(sourceAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
+///                         .securityGroupsIds(sourceAwsSecurityGroup.get("id"))
 ///                         .build())
 ///                     .build(),
 ///                 ReplicatorKafkaClusterArgs.builder()
@@ -783,16 +789,16 @@ import 'replicator_state.dart';
 ///                     .clientAuthentication(ReplicatorKafkaClusterClientAuthenticationArgs.builder()
 ///                         .saslScram(ReplicatorKafkaClusterClientAuthenticationSaslScramArgs.builder()
 ///                             .mechanism("SHA512")
-///                             .secretArn(target.arn())
+///                             .secretArn(target.get("arn"))
 ///                             .build())
 ///                         .build())
 ///                     .encryptionInTransit(ReplicatorKafkaClusterEncryptionInTransitArgs.builder()
-///                         .rootCaCertificate(rootCa.arn())
+///                         .rootCaCertificate(rootCa.get("arn"))
 ///                         .build())
 ///                     .build())
 ///             .replicatorName("test-name")
 ///             .description("test-description")
-///             .serviceExecutionRoleArn(sourceAwsIamRole.arn())
+///             .serviceExecutionRoleArn(sourceAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1096,7 +1102,7 @@ import 'replicator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1105,48 +1111,51 @@ import 'replicator_state.dart';
 /// }
 ///
 /// resource "aws_msk_replicator" "test" {
-///   replication_info_list = {
-///     consumer_group_replications = [{
-///       "consumerGroupsToReplicates" = [".*"]
-///     }]
-///     topic_replications = [{
-///       "topicsToReplicates" = [".*"]
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   replication_info_list {
+///     consumer_group_replication {
+///       consumer_groups_to_replicate = [".*"]
+///     }
+///     topic_replication {
+///       topics_to_replicate = [".*"]
+///     }
 ///     source_kafka_cluster_arn = source.arn
 ///     target_kafka_cluster_arn = target.arn
 ///     target_compression_type  = "NONE"
 ///   }
-///   log_delivery = {
-///     replicator_log_delivery = {
-///       cloudwatch_logs = {
+///   log_delivery {
+///     replicator_log_delivery {
+///       cloudwatch_logs {
 ///         enabled   = true
 ///         log_group = testAwsCloudwatchLogGroup.name
 ///       }
-///       firehose = {
+///       firehose {
 ///         enabled         = true
 ///         delivery_stream = testAwsKinesisFirehoseDeliveryStream.name
 ///       }
-///       s3 = {
+///       s3 {
 ///         enabled = true
 ///         bucket  = testAwsS3Bucket.bucket
 ///         prefix  = "replicator-logs"
 ///       }
 ///     }
 ///   }
-///   kafka_clusters {
-///     amazon_msk_cluster = {
+///   kafka_cluster {
+///     amazon_msk_cluster {
 ///       msk_cluster_arn = source.arn
 ///     }
-///     vpc_config = {
+///     vpc_config {
 ///       subnet_ids          = sourceAwsSubnet[*].id
 ///       security_groups_ids = [sourceAwsSecurityGroup.id]
 ///     }
 ///   }
-///   kafka_clusters {
-///     amazon_msk_cluster = {
+///   kafka_cluster {
+///     amazon_msk_cluster {
 ///       msk_cluster_arn = target.arn
 ///     }
-///     vpc_config = {
+///     vpc_config {
 ///       subnet_ids          = targetAwsSubnet[*].id
 ///       security_groups_ids = [targetAwsSecurityGroup.id]
 ///     }
@@ -1195,23 +1204,23 @@ import 'replicator_state.dart';
 ///                 .topicReplications(ReplicatorReplicationInfoListTopicReplicationArgs.builder()
 ///                     .topicsToReplicates(".*")
 ///                     .build())
-///                 .sourceKafkaClusterArn(source.arn())
-///                 .targetKafkaClusterArn(target.arn())
+///                 .sourceKafkaClusterArn(source.get("arn"))
+///                 .targetKafkaClusterArn(target.get("arn"))
 ///                 .targetCompressionType("NONE")
 ///                 .build())
 ///             .logDelivery(ReplicatorLogDeliveryArgs.builder()
 ///                 .replicatorLogDelivery(ReplicatorLogDeliveryReplicatorLogDeliveryArgs.builder()
 ///                     .cloudwatchLogs(ReplicatorLogDeliveryReplicatorLogDeliveryCloudwatchLogsArgs.builder()
 ///                         .enabled(true)
-///                         .logGroup(testAwsCloudwatchLogGroup.name())
+///                         .logGroup(testAwsCloudwatchLogGroup.get("name"))
 ///                         .build())
 ///                     .firehose(ReplicatorLogDeliveryReplicatorLogDeliveryFirehoseArgs.builder()
 ///                         .enabled(true)
-///                         .deliveryStream(testAwsKinesisFirehoseDeliveryStream.name())
+///                         .deliveryStream(testAwsKinesisFirehoseDeliveryStream.get("name"))
 ///                         .build())
 ///                     .s3(ReplicatorLogDeliveryReplicatorLogDeliveryS3Args.builder()
 ///                         .enabled(true)
-///                         .bucket(testAwsS3Bucket.bucket())
+///                         .bucket(testAwsS3Bucket.get("bucket"))
 ///                         .prefix("replicator-logs")
 ///                         .build())
 ///                     .build())
@@ -1219,24 +1228,24 @@ import 'replicator_state.dart';
 ///             .kafkaClusters(
 ///                 ReplicatorKafkaClusterArgs.builder()
 ///                     .amazonMskCluster(ReplicatorKafkaClusterAmazonMskClusterArgs.builder()
-///                         .mskClusterArn(source.arn())
+///                         .mskClusterArn(source.get("arn"))
 ///                         .build())
 ///                     .vpcConfig(ReplicatorKafkaClusterVpcConfigArgs.builder()
-///                         .subnetIds(sourceAwsSubnet.stream().map(element -> element.id()).collect(toList()))
-///                         .securityGroupsIds(sourceAwsSecurityGroup.id())
+///                         .subnetIds(sourceAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
+///                         .securityGroupsIds(sourceAwsSecurityGroup.get("id"))
 ///                         .build())
 ///                     .build(),
 ///                 ReplicatorKafkaClusterArgs.builder()
 ///                     .amazonMskCluster(ReplicatorKafkaClusterAmazonMskClusterArgs.builder()
-///                         .mskClusterArn(target.arn())
+///                         .mskClusterArn(target.get("arn"))
 ///                         .build())
 ///                     .vpcConfig(ReplicatorKafkaClusterVpcConfigArgs.builder()
-///                         .subnetIds(targetAwsSubnet.stream().map(element -> element.id()).collect(toList()))
-///                         .securityGroupsIds(targetAwsSecurityGroup.id())
+///                         .subnetIds(targetAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
+///                         .securityGroupsIds(targetAwsSecurityGroup.get("id"))
 ///                         .build())
 ///                     .build())
 ///             .replicatorName("test-name")
-///             .serviceExecutionRoleArn(sourceAwsIamRole.arn())
+///             .serviceExecutionRoleArn(sourceAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1294,7 +1303,7 @@ class Replicator extends pulumi.CustomResource {
           'aws:msk/replicator:Replicator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     currentVersion = registerOutput<String>('currentVersion');

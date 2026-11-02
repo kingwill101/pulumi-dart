@@ -59,7 +59,7 @@ import 'schedule_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,10 @@ import 'schedule_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_scheduler_schedulegroup" "example" {
+/// resource "aws_scheduler_schedule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-schedule-group"
 /// }
 /// ```
@@ -147,7 +150,7 @@ class ScheduleGroup extends pulumi.CustomResource {
           'aws:scheduler/scheduleGroup:ScheduleGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationDate = registerOutput<String>('creationDate');

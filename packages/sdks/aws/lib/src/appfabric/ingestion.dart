@@ -85,7 +85,7 @@ import 'ingestion_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -94,6 +94,9 @@ import 'ingestion_state.dart';
 /// }
 ///
 /// resource "aws_appfabric_ingestion" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app            = "OKTA"
 ///   app_bundle_arn = exampleAwsAppfabricAppBundle.arn
 ///   tenant_id      = "example.okta.com"
@@ -126,7 +129,7 @@ import 'ingestion_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Ingestion("example", IngestionArgs.builder()
 ///             .app("OKTA")
-///             .appBundleArn(exampleAwsAppfabricAppBundle.arn())
+///             .appBundleArn(exampleAwsAppfabricAppBundle.get("arn"))
 ///             .tenantId("example.okta.com")
 ///             .ingestionType("auditLog")
 ///             .tags(Map.of("Environment", "test"))
@@ -186,7 +189,7 @@ class Ingestion extends pulumi.CustomResource {
           'aws:appfabric/ingestion:Ingestion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     app = registerOutput<String>('app');
     appBundleArn = registerOutput<String>('appBundleArn');

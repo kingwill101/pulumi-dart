@@ -99,7 +99,7 @@ import 'workspace_service_account_token_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -107,14 +107,20 @@ import 'workspace_service_account_token_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_grafana_workspaceserviceaccount" "example" {
+/// resource "aws_grafana_workspace_service_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-admin"
 ///   grafana_role = "ADMIN"
 ///   workspace_id = exampleAwsGrafanaWorkspace.id
 /// }
-/// resource "aws_grafana_workspaceserviceaccounttoken" "example" {
+/// resource "aws_grafana_workspace_service_account_token" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-key"
-///   service_account_id = aws_grafana_workspaceserviceaccount.example.service_account_id
+///   service_account_id = aws_grafana_workspace_service_account.example.service_account_id
 ///   seconds_to_live    = 3600
 ///   workspace_id       = exampleAwsGrafanaWorkspace.id
 /// }
@@ -145,14 +151,14 @@ import 'workspace_service_account_token_state.dart';
 ///         var example = new WorkspaceServiceAccount("example", WorkspaceServiceAccountArgs.builder()
 ///             .name("example-admin")
 ///             .grafanaRole("ADMIN")
-///             .workspaceId(exampleAwsGrafanaWorkspace.id())
+///             .workspaceId(exampleAwsGrafanaWorkspace.get("id"))
 ///             .build());
 ///
 ///         var exampleWorkspaceServiceAccountToken = new WorkspaceServiceAccountToken("exampleWorkspaceServiceAccountToken", WorkspaceServiceAccountTokenArgs.builder()
 ///             .name("example-key")
 ///             .serviceAccountId(example.serviceAccountId())
 ///             .secondsToLive(3600)
-///             .workspaceId(exampleAwsGrafanaWorkspace.id())
+///             .workspaceId(exampleAwsGrafanaWorkspace.get("id"))
 ///             .build());
 ///
 ///     }
@@ -207,7 +213,7 @@ class WorkspaceServiceAccountToken extends pulumi.CustomResource {
           'aws:grafana/workspaceServiceAccountToken:WorkspaceServiceAccountToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['key'],
         ) {
     createdAt = registerOutput<String>('createdAt');

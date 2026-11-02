@@ -355,7 +355,7 @@ import 'deployment_group_trigger_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -363,8 +363,8 @@ import 'deployment_group_trigger_configuration.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["codedeploy.amazonaws.com"]
@@ -375,41 +375,56 @@ import 'deployment_group_trigger_configuration.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "AWSCodeDeployRole" {
+/// resource "aws_iam_role_policy_attachment" "AWSCodeDeployRole" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSCodeDeployRole"
 ///   role       = aws_iam_role.example.name
 /// }
 /// resource "aws_codedeploy_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-app"
 /// }
 /// resource "aws_sns_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 /// }
-/// resource "aws_codedeploy_deploymentgroup" "example" {
-///   auto_rollback_configuration = {
+/// resource "aws_codedeploy_deployment_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   auto_rollback_configuration {
 ///     enabled = true
 ///     events  = ["DEPLOYMENT_FAILURE"]
 ///   }
-///   alarm_configuration = {
+///   alarm_configuration {
 ///     alarms  = ["my-alarm-name"]
 ///     enabled = true
 ///   }
-///   ec2_tag_sets {
-///     ec2_tag_filters {
+///   ec2_tag_set {
+///     ec2_tag_filter {
 ///       key   = "filterkey1"
 ///       type  = "KEY_AND_VALUE"
 ///       value = "filtervalue"
 ///     }
-///     ec2_tag_filters {
+///     ec2_tag_filter {
 ///       key   = "filterkey2"
 ///       type  = "KEY_AND_VALUE"
 ///       value = "filtervalue"
 ///     }
 ///   }
-///   trigger_configurations {
+///   trigger_configuration {
 ///     trigger_events     = ["DeploymentFailure"]
 ///     trigger_name       = "example-trigger"
 ///     trigger_target_arn = aws_sns_topic.example.arn
@@ -843,7 +858,7 @@ import 'deployment_group_trigger_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -852,41 +867,48 @@ import 'deployment_group_trigger_configuration.dart';
 /// }
 ///
 /// resource "aws_codedeploy_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   compute_platform = "ECS"
 ///   name             = "example"
 /// }
-/// resource "aws_codedeploy_deploymentgroup" "example" {
-///   auto_rollback_configuration = {
+/// resource "aws_codedeploy_deployment_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   auto_rollback_configuration {
 ///     enabled = true
 ///     events  = ["DEPLOYMENT_FAILURE"]
 ///   }
-///   blue_green_deployment_config = {
-///     deployment_ready_option = {
+///   blue_green_deployment_config {
+///     deployment_ready_option {
 ///       action_on_timeout = "CONTINUE_DEPLOYMENT"
 ///     }
-///     terminate_blue_instances_on_deployment_success = {
+///     terminate_blue_instances_on_deployment_success {
 ///       action                           = "TERMINATE"
 ///       termination_wait_time_in_minutes = 5
 ///     }
 ///   }
-///   deployment_style = {
+///   deployment_style {
 ///     deployment_option = "WITH_TRAFFIC_CONTROL"
 ///     deployment_type   = "BLUE_GREEN"
 ///   }
-///   ecs_service = {
+///   ecs_service {
 ///     cluster_name = exampleAwsEcsCluster.name
 ///     service_name = exampleAwsEcsService.name
 ///   }
-///   load_balancer_info = {
-///     target_group_pair_info = {
-///       prod_traffic_route = {
+///   load_balancer_info {
+///     target_group_pair_info {
+///       prod_traffic_route {
 ///         listener_arns = [exampleAwsLbListener.arn]
 ///       }
-///       target_groups = [{
-///         "name" = blue.name
-///         }, {
-///         "name" = green.name
-///       }]
+///       target_group {
+///         name = blue.name
+///       }
+///       target_group {
+///         name = green.name
+///       }
 ///     }
 ///   }
 ///   app_name               = aws_codedeploy_application.example.name
@@ -952,27 +974,27 @@ import 'deployment_group_trigger_configuration.dart';
 ///                 .deploymentType("BLUE_GREEN")
 ///                 .build())
 ///             .ecsService(DeploymentGroupEcsServiceArgs.builder()
-///                 .clusterName(exampleAwsEcsCluster.name())
-///                 .serviceName(exampleAwsEcsService.name())
+///                 .clusterName(exampleAwsEcsCluster.get("name"))
+///                 .serviceName(exampleAwsEcsService.get("name"))
 ///                 .build())
 ///             .loadBalancerInfo(DeploymentGroupLoadBalancerInfoArgs.builder()
 ///                 .targetGroupPairInfo(DeploymentGroupLoadBalancerInfoTargetGroupPairInfoArgs.builder()
 ///                     .prodTrafficRoute(DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRouteArgs.builder()
-///                         .listenerArns(exampleAwsLbListener.arn())
+///                         .listenerArns(exampleAwsLbListener.get("arn"))
 ///                         .build())
 ///                     .targetGroups(
 ///                         DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroupArgs.builder()
-///                             .name(blue.name())
+///                             .name(blue.get("name"))
 ///                             .build(),
 ///                         DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroupArgs.builder()
-///                             .name(green.name())
+///                             .name(green.get("name"))
 ///                             .build())
 ///                     .build())
 ///                 .build())
 ///             .appName(example.name())
 ///             .deploymentConfigName("CodeDeployDefault.ECSAllAtOnce")
 ///             .deploymentGroupName("example")
-///             .serviceRoleArn(exampleAwsIamRole.arn())
+///             .serviceRoleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1191,7 +1213,7 @@ import 'deployment_group_trigger_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1200,27 +1222,33 @@ import 'deployment_group_trigger_configuration.dart';
 /// }
 ///
 /// resource "aws_codedeploy_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-app"
 /// }
-/// resource "aws_codedeploy_deploymentgroup" "example" {
-///   deployment_style = {
+/// resource "aws_codedeploy_deployment_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   deployment_style {
 ///     deployment_option = "WITH_TRAFFIC_CONTROL"
 ///     deployment_type   = "BLUE_GREEN"
 ///   }
-///   load_balancer_info = {
-///     elb_infos = [{
-///       "name" = exampleAwsElb.name
-///     }]
+///   load_balancer_info {
+///     elb_info {
+///       name = exampleAwsElb.name
+///     }
 ///   }
-///   blue_green_deployment_config = {
-///     deployment_ready_option = {
+///   blue_green_deployment_config {
+///     deployment_ready_option {
 ///       action_on_timeout    = "STOP_DEPLOYMENT"
 ///       wait_time_in_minutes = 60
 ///     }
-///     green_fleet_provisioning_option = {
+///     green_fleet_provisioning_option {
 ///       action = "DISCOVER_EXISTING"
 ///     }
-///     terminate_blue_instances_on_deployment_success = {
+///     terminate_blue_instances_on_deployment_success {
 ///       action = "KEEP_ALIVE"
 ///     }
 ///   }
@@ -1270,7 +1298,7 @@ import 'deployment_group_trigger_configuration.dart';
 ///                 .build())
 ///             .loadBalancerInfo(DeploymentGroupLoadBalancerInfoArgs.builder()
 ///                 .elbInfos(DeploymentGroupLoadBalancerInfoElbInfoArgs.builder()
-///                     .name(exampleAwsElb.name())
+///                     .name(exampleAwsElb.get("name"))
 ///                     .build())
 ///                 .build())
 ///             .blueGreenDeploymentConfig(DeploymentGroupBlueGreenDeploymentConfigArgs.builder()
@@ -1287,7 +1315,7 @@ import 'deployment_group_trigger_configuration.dart';
 ///                 .build())
 ///             .appName(example.name())
 ///             .deploymentGroupName("example-group")
-///             .serviceRoleArn(exampleAwsIamRole.arn())
+///             .serviceRoleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1390,7 +1418,7 @@ class DeploymentGroup extends pulumi.CustomResource {
           'aws:codedeploy/deploymentGroup:DeploymentGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     alarmConfiguration = registerOutput<DeploymentGroupAlarmConfiguration?>('alarmConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupAlarmConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     appName = registerOutput<String>('appName');

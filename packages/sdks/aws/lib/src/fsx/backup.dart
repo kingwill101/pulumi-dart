@@ -75,7 +75,7 @@ import 'backup_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = fsx.NewBackup(ctx, "example", &fsx.BackupArgs{
-/// 			FileSystemId: exampleLustreFileSystem.ID().ToIDOutput().ToStringOutput(),
+/// 			FileSystemId: exampleLustreFileSystem.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -85,7 +85,7 @@ import 'backup_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -94,9 +94,15 @@ import 'backup_state.dart';
 /// }
 ///
 /// resource "aws_fsx_backup" "example" {
-///   file_system_id = aws_fsx_lustrefilesystem.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   file_system_id = aws_fsx_lustre_file_system.example.id
 /// }
-/// resource "aws_fsx_lustrefilesystem" "example" {
+/// resource "aws_fsx_lustre_file_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   storage_capacity            = 1200
 ///   subnet_ids                  = exampleAwsSubnet.id
 ///   deployment_type             = "PERSISTENT_1"
@@ -128,7 +134,7 @@ import 'backup_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var exampleLustreFileSystem = new LustreFileSystem("exampleLustreFileSystem", LustreFileSystemArgs.builder()
 ///             .storageCapacity(1200)
-///             .subnetIds(exampleAwsSubnet.id())
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .deploymentType("PERSISTENT_1")
 ///             .perUnitStorageThroughput(50)
 ///             .build());
@@ -235,7 +241,7 @@ import 'backup_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = fsx.NewBackup(ctx, "example", &fsx.BackupArgs{
-/// 			FileSystemId: exampleWindowsFileSystem.ID().ToIDOutput().ToStringOutput(),
+/// 			FileSystemId: exampleWindowsFileSystem.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -245,7 +251,7 @@ import 'backup_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -254,9 +260,15 @@ import 'backup_state.dart';
 /// }
 ///
 /// resource "aws_fsx_backup" "example" {
-///   file_system_id = aws_fsx_windowsfilesystem.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   file_system_id = aws_fsx_windows_file_system.example.id
 /// }
-/// resource "aws_fsx_windowsfilesystem" "example" {
+/// resource "aws_fsx_windows_file_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   active_directory_id = exampleAwsDirectoryServiceDirectory.id
 ///   skip_final_backup   = true
 ///   storage_capacity    = 32
@@ -288,10 +300,10 @@ import 'backup_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleWindowsFileSystem = new WindowsFileSystem("exampleWindowsFileSystem", WindowsFileSystemArgs.builder()
-///             .activeDirectoryId(exampleAwsDirectoryServiceDirectory.id())
+///             .activeDirectoryId(exampleAwsDirectoryServiceDirectory.get("id"))
 ///             .skipFinalBackup(true)
 ///             .storageCapacity(32)
-///             .subnetIds(example1.id())
+///             .subnetIds(example1.get("id"))
 ///             .throughputCapacity(8)
 ///             .build());
 ///
@@ -394,7 +406,7 @@ import 'backup_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = fsx.NewBackup(ctx, "example", &fsx.BackupArgs{
-/// 			VolumeId: exampleOntapVolume.ID().ToIDOutput().ToStringOutput(),
+/// 			VolumeId: exampleOntapVolume.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -404,7 +416,7 @@ import 'backup_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -413,9 +425,15 @@ import 'backup_state.dart';
 /// }
 ///
 /// resource "aws_fsx_backup" "example" {
-///   volume_id = aws_fsx_ontapvolume.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   volume_id = aws_fsx_ontap_volume.example.id
 /// }
-/// resource "aws_fsx_ontapvolume" "example" {
+/// resource "aws_fsx_ontap_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example"
 ///   junction_path              = "/example"
 ///   size_in_megabytes          = 1024
@@ -451,7 +469,7 @@ import 'backup_state.dart';
 ///             .junctionPath("/example")
 ///             .sizeInMegabytes(1024)
 ///             .storageEfficiencyEnabled(true)
-///             .storageVirtualMachineId(test.id())
+///             .storageVirtualMachineId(test.get("id"))
 ///             .build());
 ///
 ///         var example = new Backup("example", BackupArgs.builder()
@@ -553,7 +571,7 @@ import 'backup_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = fsx.NewBackup(ctx, "example", &fsx.BackupArgs{
-/// 			FileSystemId: exampleOpenZfsFileSystem.ID().ToIDOutput().ToStringOutput(),
+/// 			FileSystemId: exampleOpenZfsFileSystem.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -563,7 +581,7 @@ import 'backup_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -572,9 +590,15 @@ import 'backup_state.dart';
 /// }
 ///
 /// resource "aws_fsx_backup" "example" {
-///   file_system_id = aws_fsx_openzfsfilesystem.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   file_system_id = aws_fsx_open_zfs_file_system.example.id
 /// }
-/// resource "aws_fsx_openzfsfilesystem" "example" {
+/// resource "aws_fsx_open_zfs_file_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   storage_capacity    = 64
 ///   subnet_ids          = [exampleAwsSubnet.id]
 ///   deployment_type     = "SINGLE_AZ_1"
@@ -606,7 +630,7 @@ import 'backup_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var exampleOpenZfsFileSystem = new OpenZfsFileSystem("exampleOpenZfsFileSystem", OpenZfsFileSystemArgs.builder()
 ///             .storageCapacity(64)
-///             .subnetIds(exampleAwsSubnet.id())
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .deploymentType("SINGLE_AZ_1")
 ///             .throughputCapacity(64)
 ///             .build());
@@ -675,7 +699,7 @@ class Backup extends pulumi.CustomResource {
           'aws:fsx/backup:Backup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     fileSystemId = registerOutput<String?>('fileSystemId');

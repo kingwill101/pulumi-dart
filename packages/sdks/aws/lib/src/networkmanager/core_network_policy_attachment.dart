@@ -70,7 +70,7 @@ import 'core_network_policy_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = networkmanager.NewCoreNetworkPolicyAttachment(ctx, "example", &networkmanager.CoreNetworkPolicyAttachmentArgs{
-/// 			CoreNetworkId:  example.ID().ToIDOutput().ToStringOutput(),
+/// 			CoreNetworkId:  example.ID(),
 /// 			PolicyDocument: pulumi.Any(exampleAwsNetworkmanagerCoreNetworkPolicyDocument.Json),
 /// 		})
 /// 		if err != nil {
@@ -81,7 +81,7 @@ import 'core_network_policy_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,11 +89,17 @@ import 'core_network_policy_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_corenetwork" "example" {
+/// resource "aws_networkmanager_core_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_network_id = exampleAwsNetworkmanagerGlobalNetwork.id
 /// }
-/// resource "aws_networkmanager_corenetworkpolicyattachment" "example" {
-///   core_network_id = aws_networkmanager_corenetwork.example.id
+/// resource "aws_networkmanager_core_network_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   core_network_id = aws_networkmanager_core_network.example.id
 ///   policy_document = exampleAwsNetworkmanagerCoreNetworkPolicyDocument.json
 /// }
 /// ```
@@ -121,12 +127,12 @@ import 'core_network_policy_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CoreNetwork("example", CoreNetworkArgs.builder()
-///             .globalNetworkId(exampleAwsNetworkmanagerGlobalNetwork.id())
+///             .globalNetworkId(exampleAwsNetworkmanagerGlobalNetwork.get("id"))
 ///             .build());
 ///
 ///         var exampleCoreNetworkPolicyAttachment = new CoreNetworkPolicyAttachment("exampleCoreNetworkPolicyAttachment", CoreNetworkPolicyAttachmentArgs.builder()
 ///             .coreNetworkId(example.id())
-///             .policyDocument(exampleAwsNetworkmanagerCoreNetworkPolicyDocument.json())
+///             .policyDocument(exampleAwsNetworkmanagerCoreNetworkPolicyDocument.get("json"))
 ///             .build());
 ///
 ///     }
@@ -393,7 +399,7 @@ import 'core_network_policy_attachment_state.dart';
 /// return err
 /// }
 /// exampleCoreNetwork, err := networkmanager.NewCoreNetwork(ctx, "example", &networkmanager.CoreNetworkArgs{
-/// GlobalNetworkId: exampleGlobalNetwork.ID().ToIDOutput().ToStringOutput(),
+/// GlobalNetworkId: exampleGlobalNetwork.ID(),
 /// BasePolicyDocument: pulumi.String(base.Json),
 /// CreateBasePolicy: pulumi.Bool(true),
 /// })
@@ -405,7 +411,7 @@ import 'core_network_policy_attachment_state.dart';
 /// splat0 = append(splat0, val0.(map[string]interface{})["arn"])
 /// }
 /// exampleVpcAttachment, err := networkmanager.NewVpcAttachment(ctx, "example", &networkmanager.VpcAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
+/// CoreNetworkId: exampleCoreNetwork.ID(),
 /// SubnetArns: toPulumiArray(splat0),
 /// VpcArn: pulumi.Any(exampleAwsVpc.Arn),
 /// })
@@ -434,7 +440,7 @@ import 'core_network_policy_attachment_state.dart';
 /// pulumi.String("0.0.0.0/0"),
 /// },
 /// Destinations: pulumi.StringArray{
-/// exampleVpcAttachment.ID().ToIDOutput().ToStringOutput(),
+/// exampleVpcAttachment.ID(),
 /// },
 /// },
 /// },
@@ -445,7 +451,7 @@ import 'core_network_policy_attachment_state.dart';
 /// },
 /// }, nil);
 /// _, err = networkmanager.NewCoreNetworkPolicyAttachment(ctx, "example", &networkmanager.CoreNetworkPolicyAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
+/// CoreNetworkId: exampleCoreNetwork.ID(),
 /// PolicyDocument: example.Json(),
 /// })
 /// if err != nil {
@@ -463,7 +469,7 @@ import 'core_network_policy_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -471,8 +477,8 @@ import 'core_network_policy_attachment_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_networkmanager_getcorenetworkpolicydocument" "base" {
-///   core_network_configurations {
+/// data "aws_networkmanager_core_network_policy_document" "base" {
+///   core_network_configuration {
 ///     edge_locations {
 ///       location = "us-west-2"
 ///       asn      = "65500"
@@ -483,8 +489,8 @@ import 'core_network_policy_attachment_state.dart';
 ///     name = "segment"
 ///   }
 /// }
-/// data "aws_networkmanager_getcorenetworkpolicydocument" "example" {
-///   core_network_configurations {
+/// data "aws_networkmanager_core_network_policy_document" "example" {
+///   core_network_configuration {
 ///     edge_locations {
 ///       location = "us-west-2"
 ///       asn      = "65500"
@@ -495,26 +501,38 @@ import 'core_network_policy_attachment_state.dart';
 ///     action                  = "create-route"
 ///     segment                 = "segment"
 ///     destination_cidr_blocks = ["0.0.0.0/0"]
-///     destinations            = [aws_networkmanager_vpcattachment.example.id]
+///     destinations            = [aws_networkmanager_vpc_attachment.example.id]
 ///   }
 ///   segments {
 ///     name = "segment"
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_globalnetwork" "example" {
+/// resource "aws_networkmanager_global_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_networkmanager_corenetwork" "example" {
-///   global_network_id    = aws_networkmanager_globalnetwork.example.id
-///   base_policy_document = data.aws_networkmanager_getcorenetworkpolicydocument.base.json
+/// resource "aws_networkmanager_core_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   global_network_id    = aws_networkmanager_global_network.example.id
+///   base_policy_document = data.aws_networkmanager_core_network_policy_document.base.json
 ///   create_base_policy   = true
 /// }
-/// resource "aws_networkmanager_corenetworkpolicyattachment" "example" {
-///   core_network_id = aws_networkmanager_corenetwork.example.id
-///   policy_document = data.aws_networkmanager_getcorenetworkpolicydocument.example.json
+/// resource "aws_networkmanager_core_network_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   core_network_id = aws_networkmanager_core_network.example.id
+///   policy_document = data.aws_networkmanager_core_network_policy_document.example.json
 /// }
-/// resource "aws_networkmanager_vpcattachment" "example" {
-///   core_network_id = aws_networkmanager_corenetwork.example.id
+/// resource "aws_networkmanager_vpc_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   core_network_id = aws_networkmanager_core_network.example.id
 ///   subnet_arns     = exampleAwsSubnet[*].arn
 ///   vpc_arn         = exampleAwsVpc.arn
 /// }
@@ -574,8 +592,8 @@ import 'core_network_policy_attachment_state.dart';
 ///
 ///         var exampleVpcAttachment = new VpcAttachment("exampleVpcAttachment", VpcAttachmentArgs.builder()
 ///             .coreNetworkId(exampleCoreNetwork.id())
-///             .subnetArns(exampleAwsSubnet.stream().map(element -> element.arn()).collect(toList()))
-///             .vpcArn(exampleAwsVpc.arn())
+///             .subnetArns(exampleAwsSubnet.stream().map(element -> element.get("arn")).collect(toList()))
+///             .vpcArn(exampleAwsVpc.get("arn"))
 ///             .build());
 ///
 ///         final var example = NetworkmanagerFunctions.getCoreNetworkPolicyDocument(GetCoreNetworkPolicyDocumentArgs.builder()
@@ -766,7 +784,7 @@ import 'core_network_policy_attachment_state.dart';
 /// return err
 /// }
 /// exampleCoreNetwork, err := networkmanager.NewCoreNetwork(ctx, "example", &networkmanager.CoreNetworkArgs{
-/// GlobalNetworkId: exampleGlobalNetwork.ID().ToIDOutput().ToStringOutput(),
+/// GlobalNetworkId: exampleGlobalNetwork.ID(),
 /// CreateBasePolicy: pulumi.Bool(true),
 /// })
 /// if err != nil {
@@ -777,7 +795,7 @@ import 'core_network_policy_attachment_state.dart';
 /// splat0 = append(splat0, val0.(map[string]interface{})["arn"])
 /// }
 /// exampleVpcAttachment, err := networkmanager.NewVpcAttachment(ctx, "example", &networkmanager.VpcAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
+/// CoreNetworkId: exampleCoreNetwork.ID(),
 /// SubnetArns: toPulumiArray(splat0),
 /// VpcArn: pulumi.Any(exampleAwsVpc.Arn),
 /// })
@@ -805,7 +823,7 @@ import 'core_network_policy_attachment_state.dart';
 /// pulumi.String("0.0.0.0/0"),
 /// },
 /// Destinations: pulumi.StringArray{
-/// exampleVpcAttachment.ID().ToIDOutput().ToStringOutput(),
+/// exampleVpcAttachment.ID(),
 /// },
 /// },
 /// },
@@ -816,7 +834,7 @@ import 'core_network_policy_attachment_state.dart';
 /// },
 /// }, nil);
 /// _, err = networkmanager.NewCoreNetworkPolicyAttachment(ctx, "example", &networkmanager.CoreNetworkPolicyAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
+/// CoreNetworkId: exampleCoreNetwork.ID(),
 /// PolicyDocument: example.Json(),
 /// })
 /// if err != nil {
@@ -834,7 +852,7 @@ import 'core_network_policy_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -842,8 +860,8 @@ import 'core_network_policy_attachment_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_networkmanager_getcorenetworkpolicydocument" "example" {
-///   core_network_configurations {
+/// data "aws_networkmanager_core_network_policy_document" "example" {
+///   core_network_configuration {
 ///     edge_locations {
 ///       location = "us-west-2"
 ///     }
@@ -853,25 +871,37 @@ import 'core_network_policy_attachment_state.dart';
 ///     action                  = "create-route"
 ///     segment                 = "segment"
 ///     destination_cidr_blocks = ["0.0.0.0/0"]
-///     destinations            = [aws_networkmanager_vpcattachment.example.id]
+///     destinations            = [aws_networkmanager_vpc_attachment.example.id]
 ///   }
 ///   segments {
 ///     name = "segment"
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_globalnetwork" "example" {
+/// resource "aws_networkmanager_global_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_networkmanager_corenetwork" "example" {
-///   global_network_id  = aws_networkmanager_globalnetwork.example.id
+/// resource "aws_networkmanager_core_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   global_network_id  = aws_networkmanager_global_network.example.id
 ///   create_base_policy = true
 /// }
-/// resource "aws_networkmanager_corenetworkpolicyattachment" "example" {
-///   core_network_id = aws_networkmanager_corenetwork.example.id
-///   policy_document = data.aws_networkmanager_getcorenetworkpolicydocument.example.json
+/// resource "aws_networkmanager_core_network_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   core_network_id = aws_networkmanager_core_network.example.id
+///   policy_document = data.aws_networkmanager_core_network_policy_document.example.json
 /// }
-/// resource "aws_networkmanager_vpcattachment" "example" {
-///   core_network_id = aws_networkmanager_corenetwork.example.id
+/// resource "aws_networkmanager_vpc_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   core_network_id = aws_networkmanager_core_network.example.id
 ///   subnet_arns     = exampleAwsSubnet[*].arn
 ///   vpc_arn         = exampleAwsVpc.arn
 /// }
@@ -917,8 +947,8 @@ import 'core_network_policy_attachment_state.dart';
 ///
 ///         var exampleVpcAttachment = new VpcAttachment("exampleVpcAttachment", VpcAttachmentArgs.builder()
 ///             .coreNetworkId(exampleCoreNetwork.id())
-///             .subnetArns(exampleAwsSubnet.stream().map(element -> element.arn()).collect(toList()))
-///             .vpcArn(exampleAwsVpc.arn())
+///             .subnetArns(exampleAwsSubnet.stream().map(element -> element.get("arn")).collect(toList()))
+///             .vpcArn(exampleAwsVpc.get("arn"))
 ///             .build());
 ///
 ///         final var example = NetworkmanagerFunctions.getCoreNetworkPolicyDocument(GetCoreNetworkPolicyDocumentArgs.builder()
@@ -1292,7 +1322,7 @@ import 'core_network_policy_attachment_state.dart';
 /// return err
 /// }
 /// exampleCoreNetwork, err := networkmanager.NewCoreNetwork(ctx, "example", &networkmanager.CoreNetworkArgs{
-/// GlobalNetworkId: exampleGlobalNetwork.ID().ToIDOutput().ToStringOutput(),
+/// GlobalNetworkId: exampleGlobalNetwork.ID(),
 /// BasePolicyDocument: pulumi.String(base.Json),
 /// CreateBasePolicy: pulumi.Bool(true),
 /// })
@@ -1304,7 +1334,7 @@ import 'core_network_policy_attachment_state.dart';
 /// splat0 = append(splat0, val0.(map[string]interface{})["arn"])
 /// }
 /// exampleUsWest2, err := networkmanager.NewVpcAttachment(ctx, "example_us_west_2", &networkmanager.VpcAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
+/// CoreNetworkId: exampleCoreNetwork.ID(),
 /// SubnetArns: toPulumiArray(splat0),
 /// VpcArn: pulumi.Any(exampleUsWest2AwsVpc.Arn),
 /// })
@@ -1316,7 +1346,7 @@ import 'core_network_policy_attachment_state.dart';
 /// splat1 = append(splat1, val0.(map[string]interface{})["arn"])
 /// }
 /// exampleUsEast1, err := networkmanager.NewVpcAttachment(ctx, "example_us_east_1", &networkmanager.VpcAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
+/// CoreNetworkId: exampleCoreNetwork.ID(),
 /// SubnetArns: toPulumiArray(splat1),
 /// VpcArn: pulumi.Any(exampleUsEast1AwsVpc.Arn),
 /// })
@@ -1349,7 +1379,7 @@ import 'core_network_policy_attachment_state.dart';
 /// pulumi.String("10.0.0.0/16"),
 /// },
 /// Destinations: pulumi.StringArray{
-/// exampleUsWest2.ID().ToIDOutput().ToStringOutput(),
+/// exampleUsWest2.ID(),
 /// },
 /// },
 /// &networkmanager.GetCoreNetworkPolicyDocumentSegmentActionArgs{
@@ -1359,7 +1389,7 @@ import 'core_network_policy_attachment_state.dart';
 /// pulumi.String("10.1.0.0/16"),
 /// },
 /// Destinations: pulumi.StringArray{
-/// exampleUsEast1.ID().ToIDOutput().ToStringOutput(),
+/// exampleUsEast1.ID(),
 /// },
 /// },
 /// },
@@ -1373,7 +1403,7 @@ import 'core_network_policy_attachment_state.dart';
 /// },
 /// }, nil);
 /// _, err = networkmanager.NewCoreNetworkPolicyAttachment(ctx, "example", &networkmanager.CoreNetworkPolicyAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
+/// CoreNetworkId: exampleCoreNetwork.ID(),
 /// PolicyDocument: example.Json(),
 /// })
 /// if err != nil {
@@ -1391,7 +1421,7 @@ import 'core_network_policy_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1399,8 +1429,8 @@ import 'core_network_policy_attachment_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_networkmanager_getcorenetworkpolicydocument" "base" {
-///   core_network_configurations {
+/// data "aws_networkmanager_core_network_policy_document" "base" {
+///   core_network_configuration {
 ///     edge_locations {
 ///       location = "us-west-2"
 ///       asn      = "65500"
@@ -1415,8 +1445,8 @@ import 'core_network_policy_attachment_state.dart';
 ///     name = "segment"
 ///   }
 /// }
-/// data "aws_networkmanager_getcorenetworkpolicydocument" "example" {
-///   core_network_configurations {
+/// data "aws_networkmanager_core_network_policy_document" "example" {
+///   core_network_configuration {
 ///     edge_locations {
 ///       location = "us-west-2"
 ///       asn      = "65500"
@@ -1431,13 +1461,13 @@ import 'core_network_policy_attachment_state.dart';
 ///     action                  = "create-route"
 ///     segment                 = "segment"
 ///     destination_cidr_blocks = ["10.0.0.0/16"]
-///     destinations            = [aws_networkmanager_vpcattachment.example_us_west_2.id]
+///     destinations            = [aws_networkmanager_vpc_attachment.example_us_west_2.id]
 ///   }
 ///   segment_actions {
 ///     action                  = "create-route"
 ///     segment                 = "segment"
 ///     destination_cidr_blocks = ["10.1.0.0/16"]
-///     destinations            = [aws_networkmanager_vpcattachment.example_us_east_1.id]
+///     destinations            = [aws_networkmanager_vpc_attachment.example_us_east_1.id]
 ///   }
 ///   segments {
 ///     name = "segment"
@@ -1447,24 +1477,39 @@ import 'core_network_policy_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_globalnetwork" "example" {
+/// resource "aws_networkmanager_global_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_networkmanager_corenetwork" "example" {
-///   global_network_id    = aws_networkmanager_globalnetwork.example.id
-///   base_policy_document = data.aws_networkmanager_getcorenetworkpolicydocument.base.json
+/// resource "aws_networkmanager_core_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   global_network_id    = aws_networkmanager_global_network.example.id
+///   base_policy_document = data.aws_networkmanager_core_network_policy_document.base.json
 ///   create_base_policy   = true
 /// }
-/// resource "aws_networkmanager_corenetworkpolicyattachment" "example" {
-///   core_network_id = aws_networkmanager_corenetwork.example.id
-///   policy_document = data.aws_networkmanager_getcorenetworkpolicydocument.example.json
+/// resource "aws_networkmanager_core_network_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   core_network_id = aws_networkmanager_core_network.example.id
+///   policy_document = data.aws_networkmanager_core_network_policy_document.example.json
 /// }
-/// resource "aws_networkmanager_vpcattachment" "example_us_west_2" {
-///   core_network_id = aws_networkmanager_corenetwork.example.id
+/// resource "aws_networkmanager_vpc_attachment" "example_us_west_2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   core_network_id = aws_networkmanager_core_network.example.id
 ///   subnet_arns     = exampleUsWest2AwsSubnet[*].arn
 ///   vpc_arn         = exampleUsWest2AwsVpc.arn
 /// }
-/// resource "aws_networkmanager_vpcattachment" "example_us_east_1" {
-///   core_network_id = aws_networkmanager_corenetwork.example.id
+/// resource "aws_networkmanager_vpc_attachment" "example_us_east_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   core_network_id = aws_networkmanager_core_network.example.id
 ///   subnet_arns     = exampleUsEast1AwsSubnet[*].arn
 ///   vpc_arn         = exampleUsEast1AwsVpc.arn
 /// }
@@ -1529,14 +1574,14 @@ import 'core_network_policy_attachment_state.dart';
 ///
 ///         var exampleUsWest2 = new VpcAttachment("exampleUsWest2", VpcAttachmentArgs.builder()
 ///             .coreNetworkId(exampleCoreNetwork.id())
-///             .subnetArns(exampleUsWest2AwsSubnet.stream().map(element -> element.arn()).collect(toList()))
-///             .vpcArn(exampleUsWest2AwsVpc.arn())
+///             .subnetArns(exampleUsWest2AwsSubnet.stream().map(element -> element.get("arn")).collect(toList()))
+///             .vpcArn(exampleUsWest2AwsVpc.get("arn"))
 ///             .build());
 ///
 ///         var exampleUsEast1 = new VpcAttachment("exampleUsEast1", VpcAttachmentArgs.builder()
 ///             .coreNetworkId(exampleCoreNetwork.id())
-///             .subnetArns(exampleUsEast1AwsSubnet.stream().map(element -> element.arn()).collect(toList()))
-///             .vpcArn(exampleUsEast1AwsVpc.arn())
+///             .subnetArns(exampleUsEast1AwsSubnet.stream().map(element -> element.get("arn")).collect(toList()))
+///             .vpcArn(exampleUsEast1AwsVpc.get("arn"))
 ///             .build());
 ///
 ///         final var example = NetworkmanagerFunctions.getCoreNetworkPolicyDocument(GetCoreNetworkPolicyDocumentArgs.builder()
@@ -1829,7 +1874,7 @@ import 'core_network_policy_attachment_state.dart';
 /// return err
 /// }
 /// exampleCoreNetwork, err := networkmanager.NewCoreNetwork(ctx, "example", &networkmanager.CoreNetworkArgs{
-/// GlobalNetworkId: exampleGlobalNetwork.ID().ToIDOutput().ToStringOutput(),
+/// GlobalNetworkId: exampleGlobalNetwork.ID(),
 /// BasePolicyRegions: pulumi.StringArray{
 /// pulumi.String("us-west-2"),
 /// pulumi.String("us-east-1"),
@@ -1844,7 +1889,7 @@ import 'core_network_policy_attachment_state.dart';
 /// splat0 = append(splat0, val0.(map[string]interface{})["arn"])
 /// }
 /// exampleUsWest2, err := networkmanager.NewVpcAttachment(ctx, "example_us_west_2", &networkmanager.VpcAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
+/// CoreNetworkId: exampleCoreNetwork.ID(),
 /// SubnetArns: toPulumiArray(splat0),
 /// VpcArn: pulumi.Any(exampleUsWest2AwsVpc.Arn),
 /// })
@@ -1856,7 +1901,7 @@ import 'core_network_policy_attachment_state.dart';
 /// splat1 = append(splat1, val0.(map[string]interface{})["arn"])
 /// }
 /// exampleUsEast1, err := networkmanager.NewVpcAttachment(ctx, "example_us_east_1", &networkmanager.VpcAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
+/// CoreNetworkId: exampleCoreNetwork.ID(),
 /// SubnetArns: toPulumiArray(splat1),
 /// VpcArn: pulumi.Any(exampleUsEast1AwsVpc.Arn),
 /// })
@@ -1887,7 +1932,7 @@ import 'core_network_policy_attachment_state.dart';
 /// pulumi.String("10.0.0.0/16"),
 /// },
 /// Destinations: pulumi.StringArray{
-/// exampleUsWest2.ID().ToIDOutput().ToStringOutput(),
+/// exampleUsWest2.ID(),
 /// },
 /// },
 /// &networkmanager.GetCoreNetworkPolicyDocumentSegmentActionArgs{
@@ -1897,7 +1942,7 @@ import 'core_network_policy_attachment_state.dart';
 /// pulumi.String("10.1.0.0/16"),
 /// },
 /// Destinations: pulumi.StringArray{
-/// exampleUsEast1.ID().ToIDOutput().ToStringOutput(),
+/// exampleUsEast1.ID(),
 /// },
 /// },
 /// },
@@ -1911,7 +1956,7 @@ import 'core_network_policy_attachment_state.dart';
 /// },
 /// }, nil);
 /// _, err = networkmanager.NewCoreNetworkPolicyAttachment(ctx, "example", &networkmanager.CoreNetworkPolicyAttachmentArgs{
-/// CoreNetworkId: exampleCoreNetwork.ID().ToIDOutput().ToStringOutput(),
+/// CoreNetworkId: exampleCoreNetwork.ID(),
 /// PolicyDocument: example.Json(),
 /// })
 /// if err != nil {
@@ -1929,7 +1974,7 @@ import 'core_network_policy_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1937,8 +1982,8 @@ import 'core_network_policy_attachment_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_networkmanager_getcorenetworkpolicydocument" "example" {
-///   core_network_configurations {
+/// data "aws_networkmanager_core_network_policy_document" "example" {
+///   core_network_configuration {
 ///     edge_locations {
 ///       location = "us-west-2"
 ///     }
@@ -1951,13 +1996,13 @@ import 'core_network_policy_attachment_state.dart';
 ///     action                  = "create-route"
 ///     segment                 = "segment"
 ///     destination_cidr_blocks = ["10.0.0.0/16"]
-///     destinations            = [aws_networkmanager_vpcattachment.example_us_west_2.id]
+///     destinations            = [aws_networkmanager_vpc_attachment.example_us_west_2.id]
 ///   }
 ///   segment_actions {
 ///     action                  = "create-route"
 ///     segment                 = "segment"
 ///     destination_cidr_blocks = ["10.1.0.0/16"]
-///     destinations            = [aws_networkmanager_vpcattachment.example_us_east_1.id]
+///     destinations            = [aws_networkmanager_vpc_attachment.example_us_east_1.id]
 ///   }
 ///   segments {
 ///     name = "segment"
@@ -1967,24 +2012,39 @@ import 'core_network_policy_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_globalnetwork" "example" {
+/// resource "aws_networkmanager_global_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_networkmanager_corenetwork" "example" {
-///   global_network_id   = aws_networkmanager_globalnetwork.example.id
+/// resource "aws_networkmanager_core_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   global_network_id   = aws_networkmanager_global_network.example.id
 ///   base_policy_regions = ["us-west-2", "us-east-1"]
 ///   create_base_policy  = true
 /// }
-/// resource "aws_networkmanager_corenetworkpolicyattachment" "example" {
-///   core_network_id = aws_networkmanager_corenetwork.example.id
-///   policy_document = data.aws_networkmanager_getcorenetworkpolicydocument.example.json
+/// resource "aws_networkmanager_core_network_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   core_network_id = aws_networkmanager_core_network.example.id
+///   policy_document = data.aws_networkmanager_core_network_policy_document.example.json
 /// }
-/// resource "aws_networkmanager_vpcattachment" "example_us_west_2" {
-///   core_network_id = aws_networkmanager_corenetwork.example.id
+/// resource "aws_networkmanager_vpc_attachment" "example_us_west_2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   core_network_id = aws_networkmanager_core_network.example.id
 ///   subnet_arns     = exampleUsWest2AwsSubnet[*].arn
 ///   vpc_arn         = exampleUsWest2AwsVpc.arn
 /// }
-/// resource "aws_networkmanager_vpcattachment" "example_us_east_1" {
-///   core_network_id = aws_networkmanager_corenetwork.example.id
+/// resource "aws_networkmanager_vpc_attachment" "example_us_east_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   core_network_id = aws_networkmanager_core_network.example.id
 ///   subnet_arns     = exampleUsEast1AwsSubnet[*].arn
 ///   vpc_arn         = exampleUsEast1AwsVpc.arn
 /// }
@@ -2033,14 +2093,14 @@ import 'core_network_policy_attachment_state.dart';
 ///
 ///         var exampleUsWest2 = new VpcAttachment("exampleUsWest2", VpcAttachmentArgs.builder()
 ///             .coreNetworkId(exampleCoreNetwork.id())
-///             .subnetArns(exampleUsWest2AwsSubnet.stream().map(element -> element.arn()).collect(toList()))
-///             .vpcArn(exampleUsWest2AwsVpc.arn())
+///             .subnetArns(exampleUsWest2AwsSubnet.stream().map(element -> element.get("arn")).collect(toList()))
+///             .vpcArn(exampleUsWest2AwsVpc.get("arn"))
 ///             .build());
 ///
 ///         var exampleUsEast1 = new VpcAttachment("exampleUsEast1", VpcAttachmentArgs.builder()
 ///             .coreNetworkId(exampleCoreNetwork.id())
-///             .subnetArns(exampleUsEast1AwsSubnet.stream().map(element -> element.arn()).collect(toList()))
-///             .vpcArn(exampleUsEast1AwsVpc.arn())
+///             .subnetArns(exampleUsEast1AwsSubnet.stream().map(element -> element.get("arn")).collect(toList()))
+///             .vpcArn(exampleUsEast1AwsVpc.get("arn"))
 ///             .build());
 ///
 ///         final var example = NetworkmanagerFunctions.getCoreNetworkPolicyDocument(GetCoreNetworkPolicyDocumentArgs.builder()
@@ -2113,7 +2173,7 @@ class CoreNetworkPolicyAttachment extends pulumi.CustomResource {
           'aws:networkmanager/coreNetworkPolicyAttachment:CoreNetworkPolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     coreNetworkId = registerOutput<String>('coreNetworkId');
     policyDocument = registerOutput<String>('policyDocument');

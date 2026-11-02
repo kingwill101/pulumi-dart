@@ -62,7 +62,7 @@ import 'public_dns_namespace_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'public_dns_namespace_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicediscovery_publicdnsnamespace" "example" {
+/// resource "aws_servicediscovery_public_dns_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "hoge.example.com"
 ///   description = "example"
 /// }
@@ -149,7 +152,7 @@ class PublicDnsNamespace extends pulumi.CustomResource {
           'aws:servicediscovery/publicDnsNamespace:PublicDnsNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

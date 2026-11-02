@@ -84,7 +84,7 @@ import 'v2models_bot_version_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,7 +92,10 @@ import 'v2models_bot_version_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lex_v2modelsbotversion" "test" {
+/// resource "aws_lex_v2models_bot_version" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bot_id = testAwsLexv2modelsBot.id
 ///   locale_specification = {
 ///     "en_US" = {
@@ -124,7 +127,7 @@ import 'v2models_bot_version_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new V2modelsBotVersion("test", V2modelsBotVersionArgs.builder()
-///             .botId(testAwsLexv2modelsBot.id())
+///             .botId(testAwsLexv2modelsBot.get("id"))
 ///             .localeSpecification(Map.of("en_US", V2modelsBotVersionLocaleSpecificationArgs.builder()
 ///                 .sourceBotVersion("DRAFT")
 ///                 .build()))
@@ -178,7 +181,7 @@ class V2modelsBotVersion extends pulumi.CustomResource {
           'aws:lex/v2modelsBotVersion:V2modelsBotVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     botId = registerOutput<String>('botId');
     botVersion = registerOutput<String>('botVersion');

@@ -274,7 +274,7 @@ import 'scheduled_action_target_action.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -282,8 +282,8 @@ import 'scheduled_action_target_action.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["scheduler.redshift.amazonaws.com"]
@@ -292,8 +292,8 @@ import 'scheduled_action_target_action.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["redshift:PauseCluster", "redshift:ResumeCluster", "redshift:ResizeCluster"]
 ///     resources = ["*"]
@@ -301,20 +301,32 @@ import 'scheduled_action_target_action.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "redshift_scheduled_action"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
 /// resource "aws_iam_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "redshift_scheduled_action"
-///   policy = data.aws_iam_getpolicydocument.example.json
+///   policy = data.aws_iam_policy_document.example.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example" {
+/// resource "aws_iam_role_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = aws_iam_policy.example.arn
 ///   role       = aws_iam_role.example.name
 /// }
-/// resource "aws_redshift_scheduledaction" "example" {
-///   target_action = {
-///     pause_cluster = {
+/// resource "aws_redshift_scheduled_action" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target_action {
+///     pause_cluster {
 ///       cluster_identifier = "tf-redshift001"
 ///     }
 ///   }
@@ -561,7 +573,7 @@ import 'scheduled_action_target_action.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -569,9 +581,12 @@ import 'scheduled_action_target_action.dart';
 ///   }
 /// }
 ///
-/// resource "aws_redshift_scheduledaction" "example" {
-///   target_action = {
-///     resize_cluster = {
+/// resource "aws_redshift_scheduled_action" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target_action {
+///     resize_cluster {
 ///       cluster_identifier = "tf-redshift001"
 ///       cluster_type       = "multi-node"
 ///       node_type          = "dc1.large"
@@ -617,7 +632,7 @@ import 'scheduled_action_target_action.dart';
 ///                 .build())
 ///             .name("tf-redshift-scheduled-action")
 ///             .schedule("cron(00 23 * * ? *)")
-///             .iamRole(exampleAwsIamRole.arn())
+///             .iamRole(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -679,7 +694,7 @@ class ScheduledAction extends pulumi.CustomResource {
           'aws:redshift/scheduledAction:ScheduledAction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     enable = registerOutput<bool?>('enable');

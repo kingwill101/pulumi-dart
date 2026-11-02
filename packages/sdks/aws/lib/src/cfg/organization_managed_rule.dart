@@ -103,7 +103,7 @@ import 'organization_managed_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -112,11 +112,17 @@ import 'organization_managed_rule_state.dart';
 /// }
 ///
 /// resource "aws_organizations_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aws_service_access_principals = ["config-multiaccountsetup.amazonaws.com"]
 ///   feature_set                   = "ALL"
 /// }
-/// resource "aws_cfg_organizationmanagedrule" "example" {
-///   depends_on      = [aws_organizations_organization.example]
+/// resource "aws_cfg_organization_managed_rule" "example" {
+///   depends_on = [aws_organizations_organization.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   rule_identifier = "IAM_PASSWORD_POLICY"
 /// }
@@ -237,7 +243,7 @@ class OrganizationManagedRule extends pulumi.CustomResource {
           'aws:cfg/organizationManagedRule:OrganizationManagedRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

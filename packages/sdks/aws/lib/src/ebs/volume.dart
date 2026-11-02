@@ -75,7 +75,7 @@ import 'volume_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -84,6 +84,9 @@ import 'volume_state.dart';
 /// }
 ///
 /// resource "aws_ebs_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   availability_zone = "us-west-2a"
 ///   size              = 40
 ///   tags = {
@@ -203,7 +206,7 @@ class Volume extends pulumi.CustomResource {
           'aws:ebs/volume:Volume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');

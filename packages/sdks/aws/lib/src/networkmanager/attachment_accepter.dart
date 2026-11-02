@@ -66,7 +66,7 @@ import 'attachment_accepter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'attachment_accepter_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_attachmentaccepter" "example" {
+/// resource "aws_networkmanager_attachment_accepter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attachment_id   = exampleAwsNetworkmanagerVpcAttachment.id
 ///   attachment_type = exampleAwsNetworkmanagerVpcAttachment.attachmentType
 /// }
@@ -101,8 +104,8 @@ import 'attachment_accepter_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AttachmentAccepter("example", AttachmentAccepterArgs.builder()
-///             .attachmentId(exampleAwsNetworkmanagerVpcAttachment.id())
-///             .attachmentType(exampleAwsNetworkmanagerVpcAttachment.attachmentType())
+///             .attachmentId(exampleAwsNetworkmanagerVpcAttachment.get("id"))
+///             .attachmentType(exampleAwsNetworkmanagerVpcAttachment.get("attachmentType"))
 ///             .build());
 ///
 ///     }
@@ -176,7 +179,7 @@ import 'attachment_accepter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -184,7 +187,10 @@ import 'attachment_accepter_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_attachmentaccepter" "example" {
+/// resource "aws_networkmanager_attachment_accepter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attachment_id   = exampleAwsNetworkmanagerSiteToSiteVpnAttachment.id
 ///   attachment_type = exampleAwsNetworkmanagerSiteToSiteVpnAttachment.attachmentType
 /// }
@@ -211,8 +217,8 @@ import 'attachment_accepter_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AttachmentAccepter("example", AttachmentAccepterArgs.builder()
-///             .attachmentId(exampleAwsNetworkmanagerSiteToSiteVpnAttachment.id())
-///             .attachmentType(exampleAwsNetworkmanagerSiteToSiteVpnAttachment.attachmentType())
+///             .attachmentId(exampleAwsNetworkmanagerSiteToSiteVpnAttachment.get("id"))
+///             .attachmentType(exampleAwsNetworkmanagerSiteToSiteVpnAttachment.get("attachmentType"))
 ///             .build());
 ///
 ///     }
@@ -286,7 +292,7 @@ import 'attachment_accepter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -294,7 +300,10 @@ import 'attachment_accepter_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_attachmentaccepter" "example" {
+/// resource "aws_networkmanager_attachment_accepter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attachment_id   = exampleAwsNetworkmanagerConnectAttachment.id
 ///   attachment_type = exampleAwsNetworkmanagerConnectAttachment.attachmentType
 /// }
@@ -321,8 +330,8 @@ import 'attachment_accepter_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AttachmentAccepter("example", AttachmentAccepterArgs.builder()
-///             .attachmentId(exampleAwsNetworkmanagerConnectAttachment.id())
-///             .attachmentType(exampleAwsNetworkmanagerConnectAttachment.attachmentType())
+///             .attachmentId(exampleAwsNetworkmanagerConnectAttachment.get("id"))
+///             .attachmentType(exampleAwsNetworkmanagerConnectAttachment.get("attachmentType"))
 ///             .build());
 ///
 ///     }
@@ -396,7 +405,7 @@ import 'attachment_accepter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -404,7 +413,10 @@ import 'attachment_accepter_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_attachmentaccepter" "example" {
+/// resource "aws_networkmanager_attachment_accepter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attachment_id   = exampleAwsNetworkmanagerTransitGatewayRouteTableAttachment.id
 ///   attachment_type = exampleAwsNetworkmanagerTransitGatewayRouteTableAttachment.attachmentType
 /// }
@@ -431,8 +443,8 @@ import 'attachment_accepter_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AttachmentAccepter("example", AttachmentAccepterArgs.builder()
-///             .attachmentId(exampleAwsNetworkmanagerTransitGatewayRouteTableAttachment.id())
-///             .attachmentType(exampleAwsNetworkmanagerTransitGatewayRouteTableAttachment.attachmentType())
+///             .attachmentId(exampleAwsNetworkmanagerTransitGatewayRouteTableAttachment.get("id"))
+///             .attachmentType(exampleAwsNetworkmanagerTransitGatewayRouteTableAttachment.get("attachmentType"))
 ///             .build());
 ///
 ///     }
@@ -506,7 +518,7 @@ import 'attachment_accepter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -514,7 +526,10 @@ import 'attachment_accepter_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_attachmentaccepter" "example" {
+/// resource "aws_networkmanager_attachment_accepter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attachment_id   = exampleAwsNetworkmanagerDxGatewayAttachment.id
 ///   attachment_type = exampleAwsNetworkmanagerDxGatewayAttachment.attachmentType
 /// }
@@ -541,8 +556,8 @@ import 'attachment_accepter_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AttachmentAccepter("example", AttachmentAccepterArgs.builder()
-///             .attachmentId(exampleAwsNetworkmanagerDxGatewayAttachment.id())
-///             .attachmentType(exampleAwsNetworkmanagerDxGatewayAttachment.attachmentType())
+///             .attachmentId(exampleAwsNetworkmanagerDxGatewayAttachment.get("id"))
+///             .attachmentType(exampleAwsNetworkmanagerDxGatewayAttachment.get("attachmentType"))
 ///             .build());
 ///
 ///     }
@@ -592,7 +607,7 @@ class AttachmentAccepter extends pulumi.CustomResource {
           'aws:networkmanager/attachmentAccepter:AttachmentAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     attachmentId = registerOutput<String>('attachmentId');
     attachmentPolicyRuleNumber = registerOutput<int>('attachmentPolicyRuleNumber');

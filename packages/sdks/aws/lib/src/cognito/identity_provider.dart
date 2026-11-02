@@ -108,7 +108,7 @@ import 'identity_provider_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewIdentityProvider(ctx, "example_provider", &cognito.IdentityProviderArgs{
-/// 			UserPoolId:   example.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId:   example.ID(),
 /// 			ProviderName: pulumi.String("Google"),
 /// 			ProviderType: pulumi.String("Google"),
 /// 			ProviderDetails: pulumi.StringMap{
@@ -129,7 +129,7 @@ import 'identity_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -137,12 +137,18 @@ import 'identity_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpool" "example" {
+/// resource "aws_cognito_user_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-pool"
 ///   auto_verified_attributes = ["email"]
 /// }
-/// resource "aws_cognito_identityprovider" "example_provider" {
-///   user_pool_id  = aws_cognito_userpool.example.id
+/// resource "aws_cognito_identity_provider" "example_provider" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   user_pool_id  = aws_cognito_user_pool.example.id
 ///   provider_name = "Google"
 ///   provider_type = "Google"
 ///   provider_details = {
@@ -262,7 +268,7 @@ class IdentityProvider extends pulumi.CustomResource {
           'aws:cognito/identityProvider:IdentityProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     attributeMapping = registerOutput<Map<String, String>>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     idpIdentifiers = registerOutput<List<String>?>('idpIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

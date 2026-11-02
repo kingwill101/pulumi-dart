@@ -66,7 +66,7 @@ import 'bgp_peer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'bgp_peer_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_directconnect_bgppeer" "peer" {
+/// resource "aws_directconnect_bgp_peer" "peer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   virtual_interface_id = foo.id
 ///   address_family       = "ipv6"
 ///   bgp_asn              = 65351
@@ -102,7 +105,7 @@ import 'bgp_peer_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var peer = new BgpPeer("peer", BgpPeerArgs.builder()
-///             .virtualInterfaceId(foo.id())
+///             .virtualInterfaceId(foo.get("id"))
 ///             .addressFamily("ipv6")
 ///             .bgpAsn(65351)
 ///             .build());
@@ -157,7 +160,7 @@ class BgpPeer extends pulumi.CustomResource {
           'aws:directconnect/bgpPeer:BgpPeer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     amazonAddress = registerOutput<String>('amazonAddress');

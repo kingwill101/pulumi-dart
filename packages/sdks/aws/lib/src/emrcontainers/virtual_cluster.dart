@@ -100,7 +100,7 @@ import 'virtual_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -108,10 +108,13 @@ import 'virtual_cluster_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_emrcontainers_virtualcluster" "example" {
-///   container_provider = {
-///     info = {
-///       eks_info = {
+/// resource "aws_emrcontainers_virtual_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   container_provider {
+///     info {
+///       eks_info {
 ///         namespace = "default"
 ///       }
 ///     }
@@ -152,7 +155,7 @@ import 'virtual_cluster_state.dart';
 ///                         .namespace("default")
 ///                         .build())
 ///                     .build())
-///                 .id(exampleAwsEksCluster.name())
+///                 .id(exampleAwsEksCluster.get("name"))
 ///                 .type("EKS")
 ///                 .build())
 ///             .name("example")
@@ -209,7 +212,7 @@ class VirtualCluster extends pulumi.CustomResource {
           'aws:emrcontainers/virtualCluster:VirtualCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     containerProvider = registerOutput<VirtualClusterContainerProvider>('containerProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualClusterContainerProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });

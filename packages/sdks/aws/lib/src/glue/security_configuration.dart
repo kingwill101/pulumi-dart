@@ -111,7 +111,7 @@ import 'security_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -119,15 +119,18 @@ import 'security_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_securityconfiguration" "example" {
-///   encryption_configuration = {
-///     cloudwatch_encryption = {
+/// resource "aws_glue_security_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   encryption_configuration {
+///     cloudwatch_encryption {
 ///       cloudwatch_encryption_mode = "DISABLED"
 ///     }
-///     job_bookmarks_encryption = {
+///     job_bookmarks_encryption {
 ///       job_bookmarks_encryption_mode = "DISABLED"
 ///     }
-///     s3_encryption = {
+///     s3_encryption {
 ///       kms_key_arn        = exampleAwsKmsKey.arn
 ///       s3_encryption_mode = "SSE-KMS"
 ///     }
@@ -169,7 +172,7 @@ import 'security_configuration_state.dart';
 ///                     .jobBookmarksEncryptionMode("DISABLED")
 ///                     .build())
 ///                 .s3Encryption(SecurityConfigurationEncryptionConfigurationS3EncryptionArgs.builder()
-///                     .kmsKeyArn(exampleAwsKmsKey.arn())
+///                     .kmsKeyArn(exampleAwsKmsKey.get("arn"))
 ///                     .s3EncryptionMode("SSE-KMS")
 ///                     .build())
 ///                 .build())
@@ -223,7 +226,7 @@ class SecurityConfiguration extends pulumi.CustomResource {
           'aws:glue/securityConfiguration:SecurityConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     encryptionConfiguration = registerOutput<SecurityConfigurationEncryptionConfiguration>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityConfigurationEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

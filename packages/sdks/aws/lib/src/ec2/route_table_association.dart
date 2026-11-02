@@ -63,7 +63,7 @@ import 'route_table_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,10 @@ import 'route_table_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_routetableassociation" "example" {
+/// resource "aws_ec2_route_table_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id      = exampleAwsSubnet.id
 ///   route_table_id = exampleAwsRouteTable.id
 /// }
@@ -98,8 +101,8 @@ import 'route_table_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RouteTableAssociation("example", RouteTableAssociationArgs.builder()
-///             .subnetId(exampleAwsSubnet.id())
-///             .routeTableId(exampleAwsRouteTable.id())
+///             .subnetId(exampleAwsSubnet.get("id"))
+///             .routeTableId(exampleAwsRouteTable.get("id"))
 ///             .build());
 ///
 ///     }
@@ -171,7 +174,7 @@ import 'route_table_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -179,7 +182,10 @@ import 'route_table_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_routetableassociation" "example" {
+/// resource "aws_ec2_route_table_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gateway_id     = exampleAwsInternetGateway.id
 ///   route_table_id = exampleAwsRouteTable.id
 /// }
@@ -206,8 +212,8 @@ import 'route_table_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RouteTableAssociation("example", RouteTableAssociationArgs.builder()
-///             .gatewayId(exampleAwsInternetGateway.id())
-///             .routeTableId(exampleAwsRouteTable.id())
+///             .gatewayId(exampleAwsInternetGateway.get("id"))
+///             .routeTableId(exampleAwsRouteTable.get("id"))
 ///             .build());
 ///
 ///     }
@@ -277,7 +283,7 @@ class RouteTableAssociation extends pulumi.CustomResource {
           'aws:ec2/routeTableAssociation:RouteTableAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     gatewayId = registerOutput<String?>('gatewayId');
     region = registerOutput<String>('region');

@@ -250,7 +250,7 @@ import 'hosted_zone_dns_sec_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeySigningKey, err := route53.NewKeySigningKey(ctx, "example", &route53.KeySigningKeyArgs{
-/// 			HostedZoneId:            exampleZone.ID().ToIDOutput().ToStringOutput(),
+/// 			HostedZoneId:            exampleZone.ID(),
 /// 			KeyManagementServiceArn: example.Arn,
 /// 			Name:                    pulumi.String("example"),
 /// 		})
@@ -270,7 +270,7 @@ import 'hosted_zone_dns_sec_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -278,10 +278,13 @@ import 'hosted_zone_dns_sec_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   customer_master_key_spec = "ECC_NIST_P256"
 ///   deletion_window_in_days  = 7
 ///   key_usage                = "SIGN_VERIFY"
@@ -298,7 +301,7 @@ import 'hosted_zone_dns_sec_state.dart';
 ///       "Action" = "kms:*"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
 ///       }
 ///       "Resource" = "*"
 ///       "Sid"      = "Enable IAM User Permissions"
@@ -307,16 +310,25 @@ import 'hosted_zone_dns_sec_state.dart';
 ///   })
 /// }
 /// resource "aws_route53_zone" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example.com"
 /// }
-/// resource "aws_route53_keysigningkey" "example" {
+/// resource "aws_route53_key_signing_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hosted_zone_id             = aws_route53_zone.example.id
 ///   key_management_service_arn = aws_kms_key.example.arn
 ///   name                       = "example"
 /// }
-/// resource "aws_route53_hostedzonednssec" "example" {
-///   depends_on     = [aws_route53_keysigningkey.example]
-///   hosted_zone_id = aws_route53_keysigningkey.example.hosted_zone_id
+/// resource "aws_route53_hosted_zone_dns_sec" "example" {
+///   depends_on = [aws_route53_key_signing_key.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   hosted_zone_id = aws_route53_key_signing_key.example.hosted_zone_id
 /// }
 /// ```
 /// ```java
@@ -490,7 +502,7 @@ class HostedZoneDnsSec extends pulumi.CustomResource {
           'aws:route53/hostedZoneDnsSec:HostedZoneDnsSec',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     hostedZoneId = registerOutput<String>('hostedZoneId');
     signingStatus = registerOutput<String?>('signingStatus');

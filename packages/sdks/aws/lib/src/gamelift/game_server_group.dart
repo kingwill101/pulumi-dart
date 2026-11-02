@@ -132,7 +132,7 @@ import 'game_server_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -140,15 +140,18 @@ import 'game_server_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_gamelift_gameservergroup" "example" {
+/// resource "aws_gamelift_game_server_group" "example" {
 ///   depends_on = [exampleAwsIamRolePolicyAttachment]
-///   launch_template = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   launch_template {
 ///     id = exampleAwsLaunchTemplate.id
 ///   }
-///   instance_definitions {
+///   instance_definition {
 ///     instance_type = "c5.large"
 ///   }
-///   instance_definitions {
+///   instance_definition {
 ///     instance_type = "c5a.large"
 ///   }
 ///   game_server_group_name = "example"
@@ -183,7 +186,7 @@ import 'game_server_group_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new GameServerGroup("example", GameServerGroupArgs.builder()
 ///             .launchTemplate(GameServerGroupLaunchTemplateArgs.builder()
-///                 .id(exampleAwsLaunchTemplate.id())
+///                 .id(exampleAwsLaunchTemplate.get("id"))
 ///                 .build())
 ///             .instanceDefinitions(
 ///                 GameServerGroupInstanceDefinitionArgs.builder()
@@ -195,7 +198,7 @@ import 'game_server_group_state.dart';
 ///             .gameServerGroupName("example")
 ///             .maxSize(1)
 ///             .minSize(1)
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAwsIamRolePolicyAttachment)
 ///                 .build());
@@ -322,7 +325,7 @@ import 'game_server_group_state.dart';
 ///         {
 ///             TargetTrackingConfiguration = new Aws.GameLift.Inputs.GameServerGroupAutoScalingPolicyTargetTrackingConfigurationArgs
 ///             {
-///                 TargetValue = 75,
+///                 TargetValue = 75.0,
 ///             },
 ///             EstimatedInstanceWarmup = 60,
 ///         },
@@ -424,7 +427,7 @@ import 'game_server_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -432,23 +435,26 @@ import 'game_server_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_gamelift_gameservergroup" "example" {
+/// resource "aws_gamelift_game_server_group" "example" {
 ///   depends_on = [exampleAwsIamRolePolicyAttachment]
-///   auto_scaling_policy = {
-///     target_tracking_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   auto_scaling_policy {
+///     target_tracking_configuration {
 ///       target_value = 75
 ///     }
 ///     estimated_instance_warmup = 60
 ///   }
-///   launch_template = {
+///   launch_template {
 ///     id      = exampleAwsLaunchTemplate.id
 ///     version = "1"
 ///   }
-///   instance_definitions {
+///   instance_definition {
 ///     instance_type     = "c5.large"
 ///     weighted_capacity = "1"
 ///   }
-///   instance_definitions {
+///   instance_definition {
 ///     instance_type     = "c5.2xlarge"
 ///     weighted_capacity = "2"
 ///   }
@@ -498,7 +504,7 @@ import 'game_server_group_state.dart';
 ///                 .estimatedInstanceWarmup(60)
 ///                 .build())
 ///             .launchTemplate(GameServerGroupLaunchTemplateArgs.builder()
-///                 .id(exampleAwsLaunchTemplate.id())
+///                 .id(exampleAwsLaunchTemplate.get("id"))
 ///                 .version("1")
 ///                 .build())
 ///             .instanceDefinitions(
@@ -515,7 +521,7 @@ import 'game_server_group_state.dart';
 ///             .gameServerProtectionPolicy("FULL_PROTECTION")
 ///             .maxSize(1)
 ///             .minSize(1)
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .tags(Map.of("Name", "example"))
 ///             .vpcSubnets(
 ///                 "subnet-12345678",
@@ -721,7 +727,7 @@ import 'game_server_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -729,10 +735,10 @@ import 'game_server_group_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getpartition" "current" {
+/// data "aws_partition" "current" {
 /// }
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["autoscaling.amazonaws.com", "gamelift.amazonaws.com"]
@@ -743,11 +749,17 @@ import 'game_server_group_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 ///   name               = "gamelift-game-server-group-example"
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example" {
-///   policy_arn ="arn:${data.aws_getpartition.current.partition}:iam::aws:policy/GameLiftGameServerGroupPolicy"
+/// resource "aws_iam_role_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy_arn ="arn:${data.aws_partition.current.partition}:iam::aws:policy/GameLiftGameServerGroupPolicy"
 ///   role       = aws_iam_role.example.name
 /// }
 /// ```
@@ -890,7 +902,7 @@ class GameServerGroup extends pulumi.CustomResource {
           'aws:gamelift/gameServerGroup:GameServerGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoScalingGroupArn = registerOutput<String>('autoScalingGroupArn');

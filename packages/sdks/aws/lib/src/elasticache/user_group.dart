@@ -108,7 +108,7 @@ import 'user_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,13 +117,19 @@ import 'user_group_state.dart';
 /// }
 ///
 /// resource "aws_elasticache_user" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_id       = "testUserId"
 ///   user_name     = "default"
 ///   access_string = "on ~app::* -@all +@read +@hash +@bitmap +@geo -setbit -bitfield -hset -hsetnx -hmset -hincrby -hincrbyfloat -hdel -bitop -geoadd -georadius -georadiusbymember"
 ///   engine        = "redis"
 ///   passwords     = ["password123456789"]
 /// }
-/// resource "aws_elasticache_usergroup" "test" {
+/// resource "aws_elasticache_user_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   engine        = "redis"
 ///   user_group_id = "userGroupId"
 ///   user_ids      = [aws_elasticache_user.test.user_id]
@@ -228,7 +234,7 @@ class UserGroup extends pulumi.CustomResource {
           'aws:elasticache/userGroup:UserGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     engine = registerOutput<String>('engine');

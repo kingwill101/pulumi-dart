@@ -62,7 +62,7 @@ import 'tape_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'tape_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_storagegateway_tapepool" "example" {
+/// resource "aws_storagegateway_tape_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   pool_name     = "example"
 ///   storage_class = "GLACIER"
 /// }
@@ -151,7 +154,7 @@ class TapePool extends pulumi.CustomResource {
           'aws:storagegateway/tapePool:TapePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     poolName = registerOutput<String>('poolName');

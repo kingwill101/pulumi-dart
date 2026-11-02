@@ -66,7 +66,7 @@ import 'dedicated_ip_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'dedicated_ip_assignment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_dedicatedipassignment" "example" {
+/// resource "aws_sesv2_dedicated_ip_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ip                    = "0.0.0.0"
 ///   destination_pool_name = "my-pool"
 /// }
@@ -145,7 +148,7 @@ class DedicatedIpAssignment extends pulumi.CustomResource {
           'aws:sesv2/dedicatedIpAssignment:DedicatedIpAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     destinationPoolName = registerOutput<String>('destinationPoolName');
     ip = registerOutput<String>('ip');

@@ -56,7 +56,7 @@ import 'retention_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -64,7 +64,10 @@ import 'retention_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cfg_retentionconfiguration" "example" {
+/// resource "aws_cfg_retention_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   retention_period_in_days = 90
 /// }
 /// ```
@@ -144,7 +147,7 @@ class RetentionConfiguration extends pulumi.CustomResource {
           'aws:cfg/retentionConfiguration:RetentionConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

@@ -59,7 +59,7 @@ import 'telemetry_evaluation_for_organization_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,10 @@ import 'telemetry_evaluation_for_organization_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_observabilityadmin_telemetryevaluationfororganization" "example" {
+/// resource "aws_observabilityadmin_telemetry_evaluation_for_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -153,7 +156,7 @@ import 'telemetry_evaluation_for_organization_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -161,7 +164,10 @@ import 'telemetry_evaluation_for_organization_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_observabilityadmin_telemetryevaluationfororganization" "example" {
+/// resource "aws_observabilityadmin_telemetry_evaluation_for_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   all_regions = true
 /// }
 /// ```
@@ -266,7 +272,7 @@ import 'telemetry_evaluation_for_organization_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -274,7 +280,10 @@ import 'telemetry_evaluation_for_organization_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_observabilityadmin_telemetryevaluationfororganization" "example" {
+/// resource "aws_observabilityadmin_telemetry_evaluation_for_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   regions = ["us-east-1", "eu-west-1"]
 /// }
 /// ```
@@ -361,7 +370,7 @@ class TelemetryEvaluationForOrganization extends pulumi.CustomResource {
           'aws:observabilityadmin/telemetryEvaluationForOrganization:TelemetryEvaluationForOrganization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     allRegions = registerOutput<bool?>('allRegions');
     failureReason = registerOutput<String>('failureReason');

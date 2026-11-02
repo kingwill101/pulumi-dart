@@ -152,7 +152,7 @@ import 'resource_lf_tags_table_with_columns.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -160,16 +160,22 @@ import 'resource_lf_tags_table_with_columns.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lakeformation_lftag" "example" {
+/// resource "aws_lakeformation_lf_tag" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key    = "right"
 ///   values = ["abbey", "village", "luffield", "woodcote", "copse", "chapel", "stowe", "club"]
 /// }
-/// resource "aws_lakeformation_resourcelftags" "example" {
-///   database = {
+/// resource "aws_lakeformation_resource_lf_tags" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   database {
 ///     name = exampleAwsGlueCatalogDatabase.name
 ///   }
-///   lf_tags {
-///     key   = aws_lakeformation_lftag.example.key
+///   lf_tag {
+///     key   = aws_lakeformation_lf_tag.example.key
 ///     value = "stowe"
 ///   }
 /// }
@@ -214,7 +220,7 @@ import 'resource_lf_tags_table_with_columns.dart';
 ///
 ///         var exampleResourceLfTags = new ResourceLfTags("exampleResourceLfTags", ResourceLfTagsArgs.builder()
 ///             .database(ResourceLfTagsDatabaseArgs.builder()
-///                 .name(exampleAwsGlueCatalogDatabase.name())
+///                 .name(exampleAwsGlueCatalogDatabase.get("name"))
 ///                 .build())
 ///             .lfTags(ResourceLfTagsLfTagArgs.builder()
 ///                 .key(example.key())
@@ -468,7 +474,7 @@ import 'resource_lf_tags_table_with_columns.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -476,23 +482,32 @@ import 'resource_lf_tags_table_with_columns.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lakeformation_lftag" "example" {
+/// resource "aws_lakeformation_lf_tag" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key    = "right"
 ///   values = ["abbey", "village", "luffield", "woodcote", "copse", "chapel", "stowe", "club"]
 /// }
-/// resource "aws_lakeformation_lftag" "example2" {
+/// resource "aws_lakeformation_lf_tag" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key    = "left"
 ///   values = ["farm", "theloop", "aintree", "brooklands", "maggotts", "becketts", "vale"]
 /// }
-/// resource "aws_lakeformation_resourcelftags" "example" {
-///   database = {
+/// resource "aws_lakeformation_resource_lf_tags" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   database {
 ///     name = exampleAwsGlueCatalogDatabase.name
 ///   }
-///   lf_tags {
+///   lf_tag {
 ///     key   = "right"
 ///     value = "luffield"
 ///   }
-///   lf_tags {
+///   lf_tag {
 ///     key   = "left"
 ///     value = "aintree"
 ///   }
@@ -550,7 +565,7 @@ import 'resource_lf_tags_table_with_columns.dart';
 ///
 ///         var exampleResourceLfTags = new ResourceLfTags("exampleResourceLfTags", ResourceLfTagsArgs.builder()
 ///             .database(ResourceLfTagsDatabaseArgs.builder()
-///                 .name(exampleAwsGlueCatalogDatabase.name())
+///                 .name(exampleAwsGlueCatalogDatabase.get("name"))
 ///                 .build())
 ///             .lfTags(
 ///                 ResourceLfTagsLfTagArgs.builder()
@@ -635,7 +650,7 @@ class ResourceLfTags extends pulumi.CustomResource {
           'aws:lakeformation/resourceLfTags:ResourceLfTags',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     database = registerOutput<ResourceLfTagsDatabase>('database', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLfTagsDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });

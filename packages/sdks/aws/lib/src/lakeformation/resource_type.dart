@@ -76,7 +76,7 @@ import 'resource_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -84,12 +84,15 @@ import 'resource_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_s3_getbucket" "example" {
+/// data "aws_s3_bucket" "example" {
 ///   bucket = "an-example-bucket"
 /// }
 ///
 /// resource "aws_lakeformation_resource" "example" {
-///   arn = data.aws_s3_getbucket.example.arn
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   arn = data.aws_s3_bucket.example.arn
 /// }
 /// ```
 /// ```java
@@ -174,7 +177,7 @@ class ResourceType extends pulumi.CustomResource {
           'aws:lakeformation/resource:Resource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     hybridAccessEnabled = registerOutput<bool>('hybridAccessEnabled');

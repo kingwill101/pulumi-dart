@@ -121,7 +121,7 @@ import 'invitation_accepter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -130,18 +130,30 @@ import 'invitation_accepter_state.dart';
 /// }
 ///
 /// resource "aws_macie2_account" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_macie2_account" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_macie2_member" "primary" {
-///   depends_on         = [aws_macie2_account.primary]
+///   depends_on = [aws_macie2_account.primary]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id         = "ACCOUNT ID"
 ///   email              = "EMAIL"
 ///   invite             = true
 ///   invitation_message = "Message of the invite"
 /// }
-/// resource "aws_macie2_invitationaccepter" "member" {
-///   depends_on               = [aws_macie2_member.primary]
+/// resource "aws_macie2_invitation_accepter" "member" {
+///   depends_on = [aws_macie2_member.primary]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   administrator_account_id = "ADMINISTRATOR ACCOUNT ID"
 /// }
 /// ```
@@ -247,7 +259,7 @@ class InvitationAccepter extends pulumi.CustomResource {
           'aws:macie2/invitationAccepter:InvitationAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     administratorAccountId = registerOutput<String>('administratorAccountId');
     invitationId = registerOutput<String>('invitationId');

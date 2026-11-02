@@ -57,7 +57,7 @@ import 'get_named_query_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,7 @@ import 'get_named_query_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_athena_getnamedquery" "example" {
+/// data "aws_athena_named_query" "example" {
 ///   name = "athenaQueryName"
 /// }
 /// ```

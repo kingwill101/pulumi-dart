@@ -198,12 +198,12 @@ import 'job_definition_timeout.dart';
 /// 				"-la",
 /// 			},
 /// 			"image": "busybox",
-/// 			"resourceRequirements": []map[string]string{
-/// 				{
+/// 			"resourceRequirements": []interface{}{
+/// 				map[string]string{
 /// 					"type":  "VCPU",
 /// 					"value": "0.25",
 /// 				},
-/// 				{
+/// 				map[string]string{
 /// 					"type":  "MEMORY",
 /// 					"value": "512",
 /// 				},
@@ -254,7 +254,7 @@ import 'job_definition_timeout.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -262,7 +262,10 @@ import 'job_definition_timeout.dart';
 ///   }
 /// }
 ///
-/// resource "aws_batch_jobdefinition" "test" {
+/// resource "aws_batch_job_definition" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my_test_batch_job_definition"
 ///   type = "container"
 ///   container_properties = jsonencode({
@@ -552,7 +555,7 @@ import 'job_definition_timeout.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
 /// 			"mainNode": 0,
-/// 			"nodeRangeProperties": []map[string]interface{}{
+/// 			"nodeRangeProperties": []interface{}{
 /// 				map[string]interface{}{
 /// 					"container": map[string]interface{}{
 /// 						"command": []string{
@@ -597,7 +600,7 @@ import 'job_definition_timeout.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -605,7 +608,10 @@ import 'job_definition_timeout.dart';
 ///   }
 /// }
 ///
-/// resource "aws_batch_jobdefinition" "test" {
+/// resource "aws_batch_job_definition" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "tf_test_batch_job_definition_multinode"
 ///   type = "multinode"
 ///   node_properties = jsonencode({
@@ -886,7 +892,7 @@ import 'job_definition_timeout.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -894,24 +900,27 @@ import 'job_definition_timeout.dart';
 ///   }
 /// }
 ///
-/// resource "aws_batch_jobdefinition" "test" {
-///   eks_properties = {
-///     pod_properties = {
-///       metadata = {
+/// resource "aws_batch_job_definition" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   eks_properties {
+///     pod_properties {
+///       metadata {
 ///         labels = {
 ///           "environment" = "test"
 ///         }
 ///       }
-///       containers = [{
-///         "resources" = {
-///           "limits" = {
+///       containers {
+///         resources {
+///           limits = {
 ///             "cpu"    = "1"
 ///             "memory" = "1024Mi"
 ///           }
 ///         }
-///         "image"    = "public.ecr.aws/amazonlinux/amazonlinux:1"
-///         "commands" = ["sleep", "60"]
-///       }]
+///         image   = "public.ecr.aws/amazonlinux/amazonlinux:1"
+///         command = ["sleep", "60"]
+///       }
 ///       host_network = true
 ///     }
 ///   }
@@ -1246,12 +1255,12 @@ import 'job_definition_timeout.dart';
 /// 					"fargatePlatformConfiguration": map[string]string{
 /// 						"platformVersion": "LATEST",
 /// 					},
-/// 					"resourceRequirements": []map[string]string{
-/// 						{
+/// 					"resourceRequirements": []interface{}{
+/// 						map[string]string{
 /// 							"type":  "VCPU",
 /// 							"value": "0.25",
 /// 						},
-/// 						{
+/// 						map[string]string{
 /// 							"type":  "MEMORY",
 /// 							"value": "512",
 /// 						},
@@ -1273,7 +1282,7 @@ import 'job_definition_timeout.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1281,8 +1290,8 @@ import 'job_definition_timeout.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRolePolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRolePolicy" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["ecs-tasks.amazonaws.com"]
@@ -1292,14 +1301,23 @@ import 'job_definition_timeout.dart';
 /// }
 ///
 /// resource "aws_iam_role" "ecs_task_execution_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my_test_batch_exec_role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRolePolicy.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRolePolicy.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "ecs_task_execution_role_policy" {
+/// resource "aws_iam_role_policy_attachment" "ecs_task_execution_role_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.ecs_task_execution_role.name
 ///   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 /// }
-/// resource "aws_batch_jobdefinition" "test" {
+/// resource "aws_batch_job_definition" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my_test_batch_job_definition"
 ///   type                  = "container"
 ///   platform_capabilities = ["FARGATE"]
@@ -1782,12 +1800,12 @@ import 'job_definition_timeout.dart';
 /// 							"name":                   "container_a",
 /// 							"privileged":             false,
 /// 							"readonlyRootFilesystem": false,
-/// 							"resourceRequirements": []map[string]string{
-/// 								{
+/// 							"resourceRequirements": []interface{}{
+/// 								map[string]string{
 /// 									"value": "1.0",
 /// 									"type":  "VCPU",
 /// 								},
-/// 								{
+/// 								map[string]string{
 /// 									"value": "2048",
 /// 									"type":  "MEMORY",
 /// 								},
@@ -1801,12 +1819,12 @@ import 'job_definition_timeout.dart';
 /// 							},
 /// 							"name":      "container_b",
 /// 							"essential": false,
-/// 							"resourceRequirements": []map[string]string{
-/// 								{
+/// 							"resourceRequirements": []interface{}{
+/// 								map[string]string{
 /// 									"value": "1.0",
 /// 									"type":  "VCPU",
 /// 								},
-/// 								{
+/// 								map[string]string{
 /// 									"value": "2048",
 /// 									"type":  "MEMORY",
 /// 								},
@@ -1836,7 +1854,7 @@ import 'job_definition_timeout.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1844,7 +1862,10 @@ import 'job_definition_timeout.dart';
 ///   }
 /// }
 ///
-/// resource "aws_batch_jobdefinition" "test" {
+/// resource "aws_batch_job_definition" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my_test_batch_job_definition"
 ///   type                  = "container"
 ///   platform_capabilities = ["FARGATE"]
@@ -1931,7 +1952,7 @@ import 'job_definition_timeout.dart';
 ///             .ecsProperties(serializeJson(
 ///                 jsonObject(
 ///                     jsonProperty("taskProperties", jsonArray(jsonObject(
-///                         jsonProperty("executionRoleArn", ecsTaskExecutionRole.arn()),
+///                         jsonProperty("executionRoleArn", ecsTaskExecutionRole.get("arn")),
 ///                         jsonProperty("containers", jsonArray(
 ///                             jsonObject(
 ///                                 jsonProperty("image", "public.ecr.aws/amazonlinux/amazonlinux:1"),
@@ -2125,7 +2146,7 @@ class JobDefinition extends pulumi.CustomResource {
           'aws:batch/jobDefinition:JobDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     arnPrefix = registerOutput<String>('arnPrefix');

@@ -97,7 +97,7 @@ import 'tag_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = organizations.NewTag(ctx, "example", &organizations.TagArgs{
-/// 			ResourceId: exampleOrganizationalUnit.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceId: exampleOrganizationalUnit.ID(),
 /// 			Key:        pulumi.String("ExampleKey"),
 /// 			Value:      pulumi.String("ExampleValue"),
 /// 		})
@@ -109,7 +109,7 @@ import 'tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,18 +117,22 @@ import 'tag_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_organizations_getorganization" "example" {
+/// data "aws_organizations_organization" "example" {
 /// }
 ///
-/// resource "aws_organizations_organizationalunit" "example" {
+/// resource "aws_organizations_organizational_unit" "example" {
 ///   lifecycle {
-///     ignore_changes = [tags]
+///     ignore_changes        = [tags]
+///     create_before_destroy = true
 ///   }
 ///   name      = "ExampleOU"
-///   parent_id = data.aws_organizations_getorganization.example.roots[0].id
+///   parent_id = data.aws_organizations_organization.example.roots[0].id
 /// }
 /// resource "aws_organizations_tag" "example" {
-///   resource_id = aws_organizations_organizationalunit.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_id = aws_organizations_organizational_unit.example.id
 ///   key         = "ExampleKey"
 ///   value       = "ExampleValue"
 /// }
@@ -231,7 +235,7 @@ class Tag extends pulumi.CustomResource {
           'aws:organizations/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     key = registerOutput<String>('key');
     resourceId = registerOutput<String>('resourceId');

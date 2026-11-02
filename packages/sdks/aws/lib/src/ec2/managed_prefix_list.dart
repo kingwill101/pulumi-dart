@@ -137,7 +137,7 @@ import 'managed_prefix_list_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -145,12 +145,15 @@ import 'managed_prefix_list_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_managedprefixlist" "example" {
-///   entries {
+/// resource "aws_ec2_managed_prefix_list" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   entry {
 ///     cidr        = exampleAwsVpc.cidrBlock
 ///     description = "Primary"
 ///   }
-///   entries {
+///   entry {
 ///     cidr        = exampleAwsVpcIpv4CidrBlockAssociation.cidrBlock
 ///     description = "Secondary"
 ///   }
@@ -187,11 +190,11 @@ import 'managed_prefix_list_state.dart';
 ///         var example = new ManagedPrefixList("example", ManagedPrefixListArgs.builder()
 ///             .entries(
 ///                 ManagedPrefixListEntryArgs.builder()
-///                     .cidr(exampleAwsVpc.cidrBlock())
+///                     .cidr(exampleAwsVpc.get("cidrBlock"))
 ///                     .description("Primary")
 ///                     .build(),
 ///                 ManagedPrefixListEntryArgs.builder()
-///                     .cidr(exampleAwsVpcIpv4CidrBlockAssociation.cidrBlock())
+///                     .cidr(exampleAwsVpcIpv4CidrBlockAssociation.get("cidrBlock"))
 ///                     .description("Secondary")
 ///                     .build())
 ///             .name("All VPC CIDR-s")
@@ -262,7 +265,7 @@ class ManagedPrefixList extends pulumi.CustomResource {
           'aws:ec2/managedPrefixList:ManagedPrefixList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     arn = registerOutput<String>('arn');

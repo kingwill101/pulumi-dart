@@ -57,7 +57,7 @@ import 'servicecatalog_portfolio_status_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,10 @@ import 'servicecatalog_portfolio_status_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_servicecatalogportfoliostatus" "example" {
+/// resource "aws_sagemaker_servicecatalog_portfolio_status" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   status = "Enabled"
 /// }
 /// ```
@@ -139,7 +142,7 @@ class ServicecatalogPortfolioStatus extends pulumi.CustomResource {
           'aws:sagemaker/servicecatalogPortfolioStatus:ServicecatalogPortfolioStatus',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');

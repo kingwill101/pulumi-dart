@@ -67,7 +67,7 @@ import 'capacity_reservation_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,7 +75,10 @@ import 'capacity_reservation_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_athena_capacityreservation" "example" {
+/// resource "aws_athena_capacity_reservation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example-reservation"
 ///   target_dpus = 24
 /// }
@@ -159,7 +162,7 @@ class CapacityReservation extends pulumi.CustomResource {
           'aws:athena/capacityReservation:CapacityReservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     allocatedDpus = registerOutput<int>('allocatedDpus');
     arn = registerOutput<String>('arn');

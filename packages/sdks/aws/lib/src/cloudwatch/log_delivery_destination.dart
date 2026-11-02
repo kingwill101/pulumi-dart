@@ -74,7 +74,7 @@ import 'log_delivery_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,8 +82,11 @@ import 'log_delivery_destination_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_logdeliverydestination" "example" {
-///   delivery_destination_configuration = {
+/// resource "aws_cloudwatch_log_delivery_destination" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   delivery_destination_configuration {
 ///     destination_resource_arn = exampleAwsCloudwatchLogGroup.arn
 ///   }
 ///   name = "example"
@@ -113,7 +116,7 @@ import 'log_delivery_destination_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new LogDeliveryDestination("example", LogDeliveryDestinationArgs.builder()
 ///             .deliveryDestinationConfiguration(LogDeliveryDestinationDeliveryDestinationConfigurationArgs.builder()
-///                 .destinationResourceArn(exampleAwsCloudwatchLogGroup.arn())
+///                 .destinationResourceArn(exampleAwsCloudwatchLogGroup.get("arn"))
 ///                 .build())
 ///             .name("example")
 ///             .build());
@@ -190,7 +193,7 @@ import 'log_delivery_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -198,7 +201,10 @@ import 'log_delivery_destination_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_logdeliverydestination" "xray" {
+/// resource "aws_cloudwatch_log_delivery_destination" "xray" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "xray-traces"
 ///   delivery_destination_type = "XRAY"
 /// }
@@ -291,7 +297,7 @@ class LogDeliveryDestination extends pulumi.CustomResource {
           'aws:cloudwatch/logDeliveryDestination:LogDeliveryDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deliveryDestinationConfiguration = registerOutput<LogDeliveryDestinationDeliveryDestinationConfiguration?>('deliveryDestinationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogDeliveryDestinationDeliveryDestinationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

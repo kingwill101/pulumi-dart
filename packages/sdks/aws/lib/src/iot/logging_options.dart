@@ -62,7 +62,7 @@ import 'logging_options_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'logging_options_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iot_loggingoptions" "example" {
+/// resource "aws_iot_logging_options" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   default_log_level = "WARN"
 ///   role_arn          = exampleAwsIamRole.arn
 /// }
@@ -98,7 +101,7 @@ import 'logging_options_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new LoggingOptions("example", LoggingOptionsArgs.builder()
 ///             .defaultLogLevel("WARN")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -134,7 +137,7 @@ class LoggingOptions extends pulumi.CustomResource {
           'aws:iot/loggingOptions:LoggingOptions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     defaultLogLevel = registerOutput<String>('defaultLogLevel');
     disableAllLogs = registerOutput<bool?>('disableAllLogs');

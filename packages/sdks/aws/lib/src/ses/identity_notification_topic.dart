@@ -70,7 +70,7 @@ import 'identity_notification_topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,7 +78,10 @@ import 'identity_notification_topic_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ses_identitynotificationtopic" "test" {
+/// resource "aws_ses_identity_notification_topic" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   topic_arn                = example.arn
 ///   notification_type        = "Bounce"
 ///   identity                 = exampleAwsSesDomainIdentity.domain
@@ -107,9 +110,9 @@ import 'identity_notification_topic_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new IdentityNotificationTopic("test", IdentityNotificationTopicArgs.builder()
-///             .topicArn(example.arn())
+///             .topicArn(example.get("arn"))
 ///             .notificationType("Bounce")
-///             .identity(exampleAwsSesDomainIdentity.domain())
+///             .identity(exampleAwsSesDomainIdentity.get("domain"))
 ///             .includeOriginalHeaders(true)
 ///             .build());
 ///
@@ -159,7 +162,7 @@ class IdentityNotificationTopic extends pulumi.CustomResource {
           'aws:ses/identityNotificationTopic:IdentityNotificationTopic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     identity = registerOutput<String>('identity');
     includeOriginalHeaders = registerOutput<bool?>('includeOriginalHeaders');

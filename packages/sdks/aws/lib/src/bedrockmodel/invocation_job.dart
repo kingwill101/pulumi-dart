@@ -120,7 +120,7 @@ import 'invocation_job_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -128,7 +128,10 @@ import 'invocation_job_vpc_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrockmodel_invocationjob" "example" {
+/// resource "aws_bedrockmodel_invocation_job" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   input_data_config = {
 ///     s3_input_data_config = {
 ///       s3_uri ="s3://${exampleAwsS3Bucket.id}/input/"
@@ -172,17 +175,17 @@ import 'invocation_job_vpc_config.dart';
 ///         var example = new InvocationJob("example", InvocationJobArgs.builder()
 ///             .inputDataConfig(InvocationJobInputDataConfigArgs.builder()
 ///                 .s3InputDataConfig(InvocationJobInputDataConfigS3InputDataConfigArgs.builder()
-///                     .s3Uri(String.format("s3://%s/input/", exampleAwsS3Bucket.id()))
+///                     .s3Uri(String.format("s3://%s/input/", exampleAwsS3Bucket.get("id")))
 ///                     .build())
 ///                 .build())
 ///             .outputDataConfig(InvocationJobOutputDataConfigArgs.builder()
 ///                 .s3OutputDataConfig(InvocationJobOutputDataConfigS3OutputDataConfigArgs.builder()
-///                     .s3Uri(String.format("s3://%s/output/", exampleAwsS3Bucket.id()))
+///                     .s3Uri(String.format("s3://%s/output/", exampleAwsS3Bucket.get("id")))
 ///                     .build())
 ///                 .build())
 ///             .jobName("example-job")
 ///             .modelId("us.amazon.nova-2-lite-v1:0")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -274,7 +277,7 @@ class InvocationJob extends pulumi.CustomResource {
           'aws:bedrockmodel/invocationJob:InvocationJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     endTime = registerOutput<String>('endTime');
     errorRecordCount = registerOutput<int>('errorRecordCount');

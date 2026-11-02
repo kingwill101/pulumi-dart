@@ -78,7 +78,7 @@ import 'patch_baseline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,7 +86,10 @@ import 'patch_baseline_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssm_patchbaseline" "production" {
+/// resource "aws_ssm_patch_baseline" "production" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "patch-baseline"
 ///   approved_patches = ["KB123456"]
 /// }
@@ -455,7 +458,7 @@ import 'patch_baseline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -463,39 +466,42 @@ import 'patch_baseline_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssm_patchbaseline" "production" {
-///   approval_rules {
-///     patch_filters {
+/// resource "aws_ssm_patch_baseline" "production" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   approval_rule {
+///     patch_filter {
 ///       key    = "PRODUCT"
 ///       values = ["WindowsServer2016"]
 ///     }
-///     patch_filters {
+///     patch_filter {
 ///       key    = "CLASSIFICATION"
 ///       values = ["CriticalUpdates", "SecurityUpdates", "Updates"]
 ///     }
-///     patch_filters {
+///     patch_filter {
 ///       key    = "MSRC_SEVERITY"
 ///       values = ["Critical", "Important", "Moderate"]
 ///     }
 ///     approve_after_days = 7
 ///     compliance_level   = "HIGH"
 ///   }
-///   approval_rules {
-///     patch_filters {
+///   approval_rule {
+///     patch_filter {
 ///       key    = "PRODUCT"
 ///       values = ["WindowsServer2012"]
 ///     }
 ///     approve_after_days = 7
 ///   }
-///   global_filters {
+///   global_filter {
 ///     key    = "PRODUCT"
 ///     values = ["WindowsServer2008"]
 ///   }
-///   global_filters {
+///   global_filter {
 ///     key    = "CLASSIFICATION"
 ///     values = ["ServicePacks"]
 ///   }
-///   global_filters {
+///   global_filter {
 ///     key    = "MSRC_SEVERITY"
 ///     values = ["Low"]
 ///   }
@@ -859,7 +865,7 @@ import 'patch_baseline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -867,24 +873,27 @@ import 'patch_baseline_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssm_patchbaseline" "windows_os_apps" {
-///   approval_rules {
-///     patch_filters {
+/// resource "aws_ssm_patch_baseline" "windows_os_apps" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   approval_rule {
+///     patch_filter {
 ///       key    = "CLASSIFICATION"
 ///       values = ["CriticalUpdates", "SecurityUpdates"]
 ///     }
-///     patch_filters {
+///     patch_filter {
 ///       key    = "MSRC_SEVERITY"
 ///       values = ["Critical", "Important"]
 ///     }
 ///     approve_after_days = 7
 ///   }
-///   approval_rules {
-///     patch_filters {
+///   approval_rule {
+///     patch_filter {
 ///       key    = "PATCH_SET"
 ///       values = ["APPLICATION"]
 ///     }
-///     patch_filters {
+///     patch_filter {
 ///       key    = "PRODUCT"
 ///       values = ["Office 2013", "Office 2016"]
 ///     }
@@ -1148,7 +1157,7 @@ import 'patch_baseline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1156,13 +1165,32 @@ import 'patch_baseline_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssm_patchbaseline" "al_2017_09" {
-///   approval_rules {
+/// resource "aws_ssm_patch_baseline" "al_2017_09" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   sources {
+///   approval_rule {
+///   }
+///   source {
 ///     name          = "My-AL2017.09"
 ///     products      = ["AmazonLinux2017.09"]
-///     configuration = "[amzn-main]\nname=amzn-main-Base\nmirrorlist=http://repo./$awsregion./$awsdomain//$releasever/main/mirror.list\nmirrorlist_expire=300\nmetadata_expire=300\npriority=10\nfailovermethod=priority\nfastestmirror_enabled=0\ngpgcheck=1\ngpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-amazon-ga\nenabled=1\nretries=3\ntimeout=5\nreport_instanceid=yes\n"
+///     configuration = <<EOF
+/// [amzn-main]
+/// name=amzn-main-Base
+/// mirrorlist=http://repo./$awsregion./$awsdomain//$releasever/main/mirror.list
+/// mirrorlist_expire=300
+/// metadata_expire=300
+/// priority=10
+/// failovermethod=priority
+/// fastestmirror_enabled=0
+/// gpgcheck=1
+/// gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-amazon-ga
+/// enabled=1
+/// retries=3
+/// timeout=5
+/// report_instanceid=yes
+/// EOF
+///
 ///   }
 ///   name             = "Amazon-Linux-2017.09"
 ///   description      = "My patch repository for Amazon Linux 2017.09"
@@ -1325,7 +1353,7 @@ class PatchBaseline extends pulumi.CustomResource {
           'aws:ssm/patchBaseline:PatchBaseline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     approvalRules = registerOutput<List<PatchBaselineApprovalRule>?>('approvalRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PatchBaselineApprovalRule>(guardedValue, (value) => PatchBaselineApprovalRule.fromMap((value as Map).cast<String, dynamic>())); });
     approvedPatches = registerOutput<List<String>?>('approvedPatches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

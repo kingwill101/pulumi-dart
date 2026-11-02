@@ -234,7 +234,7 @@ import 'export_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -242,18 +242,21 @@ import 'export_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
 ///
 /// resource "aws_bcmdata_export" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   export = {
 ///     data_queries = [{
-///       "queryStatement" = "SELECT identity_line_item_id, identity_time_interval, line_item_product_code,line_item_unblended_cost FROM COST_AND_USAGE_REPORT"
-///       "tableConfigurations" = {
+///       query_statement = "SELECT identity_line_item_id, identity_time_interval, line_item_product_code,line_item_unblended_cost FROM COST_AND_USAGE_REPORT"
+///       table_configurations = {
 ///         "COST_AND_USAGE_REPORT" = {
-///           "BILLING_VIEW_ARN"                      ="arn:${data.aws_getpartition.currentGetPartition.partition}:billing::${data.aws_getcalleridentity.current.account_id}:billingview/primary"
+///           "BILLING_VIEW_ARN"                      ="arn:${data.aws_partition.currentGetPartition.partition}:billing::${data.aws_caller_identity.current.account_id}:billingview/primary"
 ///           "TIME_GRANULARITY"                      = "HOURLY"
 ///           "INCLUDE_RESOURCES"                     = "FALSE"
 ///           "INCLUDE_MANUAL_DISCOUNT_COMPATIBILITY" = "FALSE"
@@ -262,20 +265,20 @@ import 'export_timeouts.dart';
 ///       }
 ///     }]
 ///     destination_configurations = [{
-///       "s3Destinations" = [{
-///         "s3OutputConfigurations" = [{
-///           "overwrite"   = "OVERWRITE_REPORT"
-///           "format"      = "TEXT_OR_CSV"
-///           "compression" = "GZIP"
-///           "outputType"  = "CUSTOM"
+///       s3_destinations = [{
+///         s3_output_configurations = [{
+///           overwrite   = "OVERWRITE_REPORT"
+///           format      = "TEXT_OR_CSV"
+///           compression = "GZIP"
+///           output_type = "CUSTOM"
 ///         }]
-///         "s3Bucket" = testAwsS3Bucket.bucket
-///         "s3Prefix" = testAwsS3Bucket.bucketPrefix
-///         "s3Region" = testAwsS3Bucket.region
+///         s3_bucket = testAwsS3Bucket.bucket
+///         s3_prefix = testAwsS3Bucket.bucketPrefix
+///         s3_region = testAwsS3Bucket.region
 ///       }]
 ///     }]
 ///     refresh_cadences = [{
-///       "frequency" = "SYNCHRONOUS"
+///       frequency = "SYNCHRONOUS"
 ///     }]
 ///     name = "testexample"
 ///   }
@@ -337,9 +340,9 @@ import 'export_timeouts.dart';
 ///                             .compression("GZIP")
 ///                             .outputType("CUSTOM")
 ///                             .build())
-///                         .s3Bucket(testAwsS3Bucket.bucket())
-///                         .s3Prefix(testAwsS3Bucket.bucketPrefix())
-///                         .s3Region(testAwsS3Bucket.region())
+///                         .s3Bucket(testAwsS3Bucket.get("bucket"))
+///                         .s3Prefix(testAwsS3Bucket.get("bucketPrefix"))
+///                         .s3Region(testAwsS3Bucket.get("region"))
 ///                         .build())
 ///                     .build())
 ///                 .refreshCadences(ExportExportRefreshCadenceArgs.builder()
@@ -429,7 +432,7 @@ class Export extends pulumi.CustomResource {
           'aws:bcmdata/export:Export',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     export = registerOutput<ExportExport?>('export', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportExport.fromMap((guardedValue as Map).cast<String, dynamic>()); });

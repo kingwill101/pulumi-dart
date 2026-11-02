@@ -75,7 +75,7 @@ import 'resolver_query_log_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,7 +83,10 @@ import 'resolver_query_log_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_resolverquerylogconfig" "example" {
+/// resource "aws_route53_resolver_query_log_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   destination_arn = exampleAwsS3Bucket.arn
 ///   tags = {
@@ -114,7 +117,7 @@ import 'resolver_query_log_config_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ResolverQueryLogConfig("example", ResolverQueryLogConfigArgs.builder()
 ///             .name("example")
-///             .destinationArn(exampleAwsS3Bucket.arn())
+///             .destinationArn(exampleAwsS3Bucket.get("arn"))
 ///             .tags(Map.of("Environment", "Prod"))
 ///             .build());
 ///
@@ -173,7 +176,7 @@ class ResolverQueryLogConfig extends pulumi.CustomResource {
           'aws:route53/resolverQueryLogConfig:ResolverQueryLogConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destinationArn = registerOutput<String>('destinationArn');

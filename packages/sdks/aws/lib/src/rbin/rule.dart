@@ -120,7 +120,7 @@ import 'rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -129,7 +129,10 @@ import 'rule_state.dart';
 /// }
 ///
 /// resource "aws_rbin_rule" "example" {
-///   retention_period = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   retention_period {
 ///     retention_period_value = 10
 ///     retention_period_unit  = "DAYS"
 ///   }
@@ -312,7 +315,7 @@ import 'rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -321,7 +324,10 @@ import 'rule_state.dart';
 /// }
 ///
 /// resource "aws_rbin_rule" "example" {
-///   retention_period = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   retention_period {
 ///     retention_period_value = 10
 ///     retention_period_unit  = "DAYS"
 ///   }
@@ -440,7 +446,7 @@ class Rule extends pulumi.CustomResource {
           'aws:rbin/rule:Rule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');

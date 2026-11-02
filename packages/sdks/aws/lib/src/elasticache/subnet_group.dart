@@ -110,7 +110,7 @@ import 'subnet_group_state.dart';
 /// 			return err
 /// 		}
 /// 		fooSubnet, err := ec2.NewSubnet(ctx, "foo", &ec2.SubnetArgs{
-/// 			VpcId:            foo.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            foo.ID(),
 /// 			CidrBlock:        pulumi.String("10.0.0.0/24"),
 /// 			AvailabilityZone: pulumi.String("us-west-2a"),
 /// 			Tags: pulumi.StringMap{
@@ -123,7 +123,7 @@ import 'subnet_group_state.dart';
 /// 		_, err = elasticache.NewSubnetGroup(ctx, "bar", &elasticache.SubnetGroupArgs{
 /// 			Name: pulumi.String("tf-test-cache-subnet"),
 /// 			SubnetIds: pulumi.StringArray{
-/// 				fooSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 				fooSubnet.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -134,7 +134,7 @@ import 'subnet_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -143,12 +143,18 @@ import 'subnet_group_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 ///   tags = {
 ///     "Name" = "tf-test"
 ///   }
 /// }
 /// resource "aws_ec2_subnet" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = aws_ec2_vpc.foo.id
 ///   cidr_block        = "10.0.0.0/24"
 ///   availability_zone = "us-west-2a"
@@ -156,7 +162,10 @@ import 'subnet_group_state.dart';
 ///     "Name" = "tf-test"
 ///   }
 /// }
-/// resource "aws_elasticache_subnetgroup" "bar" {
+/// resource "aws_elasticache_subnet_group" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "tf-test-cache-subnet"
 ///   subnet_ids = [aws_ec2_subnet.foo.id]
 /// }
@@ -268,7 +277,7 @@ class SubnetGroup extends pulumi.CustomResource {
           'aws:elasticache/subnetGroup:SubnetGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');

@@ -99,7 +99,7 @@ import 'managed_prefix_list_entry_state.dart';
 /// 		_, err = ec2.NewManagedPrefixListEntry(ctx, "entry_1", &ec2.ManagedPrefixListEntryArgs{
 /// 			Cidr:         pulumi.Any(exampleAwsVpc.CidrBlock),
 /// 			Description:  pulumi.String("Primary"),
-/// 			PrefixListId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			PrefixListId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -109,7 +109,7 @@ import 'managed_prefix_list_entry_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,7 +117,10 @@ import 'managed_prefix_list_entry_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_managedprefixlist" "example" {
+/// resource "aws_ec2_managed_prefix_list" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "All VPC CIDR-s"
 ///   address_family = "IPv4"
 ///   max_entries    = 5
@@ -125,10 +128,13 @@ import 'managed_prefix_list_entry_state.dart';
 ///     "Env" = "live"
 ///   }
 /// }
-/// resource "aws_ec2_managedprefixlistentry" "entry_1" {
+/// resource "aws_ec2_managed_prefix_list_entry" "entry_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr           = exampleAwsVpc.cidrBlock
 ///   description    = "Primary"
-///   prefix_list_id = aws_ec2_managedprefixlist.example.id
+///   prefix_list_id = aws_ec2_managed_prefix_list.example.id
 /// }
 /// ```
 /// ```java
@@ -162,7 +168,7 @@ import 'managed_prefix_list_entry_state.dart';
 ///             .build());
 ///
 ///         var entry1 = new ManagedPrefixListEntry("entry1", ManagedPrefixListEntryArgs.builder()
-///             .cidr(exampleAwsVpc.cidrBlock())
+///             .cidr(exampleAwsVpc.get("cidrBlock"))
 ///             .description("Primary")
 ///             .prefixListId(example.id())
 ///             .build());
@@ -219,7 +225,7 @@ class ManagedPrefixListEntryEc2 extends pulumi.CustomResource {
           'aws:ec2/managedPrefixListEntry:ManagedPrefixListEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     cidr = registerOutput<String>('cidr');
     description = registerOutput<String?>('description');

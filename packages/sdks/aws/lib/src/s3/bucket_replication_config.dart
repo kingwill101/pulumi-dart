@@ -464,13 +464,13 @@ import 'bucket_replication_config_state.dart';
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
-/// 			Bucket: destination.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: destination.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "source_bucket_acl", &s3.BucketAclArgs{
-/// 			Bucket: source.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: source.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -480,7 +480,7 @@ import 'bucket_replication_config_state.dart';
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
-/// 			Bucket: source.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: source.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -500,7 +500,7 @@ import 'bucket_replication_config_state.dart';
 /// 				},
 /// 			},
 /// 			Role:   replicationRole.Arn,
-/// 			Bucket: source.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: source.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			sourceBucketVersioning,
 /// 		}))
@@ -512,7 +512,7 @@ import 'bucket_replication_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -520,8 +520,8 @@ import 'bucket_replication_config_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["s3.amazonaws.com"]
@@ -530,18 +530,18 @@ import 'bucket_replication_config_state.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "replication" {
-///   statements {
+/// data "aws_iam_policy_document" "replication" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["s3:GetReplicationConfiguration", "s3:ListBucket"]
 ///     resources = [aws_s3_bucket.source.arn]
 ///   }
-///   statements {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["s3:GetObjectVersionForReplication", "s3:GetObjectVersionAcl", "s3:GetObjectVersionTagging"]
 ///     resources = ["${aws_s3_bucket.source.arn}/*"]
 ///   }
-///   statements {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["s3:ReplicateObject", "s3:ReplicateDelete", "s3:ReplicateTags"]
 ///     resources = ["${aws_s3_bucket.destination.arn}/*"]
@@ -549,41 +549,68 @@ import 'bucket_replication_config_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "replication" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "tf-iam-role-replication-12345"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
 /// resource "aws_iam_policy" "replication" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "tf-iam-role-policy-replication-12345"
-///   policy = data.aws_iam_getpolicydocument.replication.json
+///   policy = data.aws_iam_policy_document.replication.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "replication" {
+/// resource "aws_iam_role_policy_attachment" "replication" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.replication.name
 ///   policy_arn = aws_iam_policy.replication.arn
 /// }
 /// resource "aws_s3_bucket" "destination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "tf-test-bucket-destination-12345"
 /// }
-/// resource "aws_s3_bucketversioning" "destination" {
-///   versioning_configuration = {
+/// resource "aws_s3_bucket_versioning" "destination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   versioning_configuration {
 ///     status = "Enabled"
 ///   }
 ///   bucket = aws_s3_bucket.destination.id
 /// }
 /// resource "aws_s3_bucket" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "tf-test-bucket-source-12345"
 /// }
-/// resource "aws_s3_bucketacl" "source_bucket_acl" {
+/// resource "aws_s3_bucket_acl" "source_bucket_acl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.source.id
 ///   acl    = "private"
 /// }
-/// resource "aws_s3_bucketversioning" "source" {
-///   versioning_configuration = {
+/// resource "aws_s3_bucket_versioning" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   versioning_configuration {
 ///     status = "Enabled"
 ///   }
 ///   bucket = aws_s3_bucket.source.id
 /// }
-/// resource "aws_s3_bucketreplicationconfig" "replication" {
-///   depends_on = [aws_s3_bucketversioning.source]
+/// resource "aws_s3_bucket_replication_config" "replication" {
+///   depends_on = [aws_s3_bucket_versioning.source]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   rules {
 ///     filter = {
 ///       prefix = "example"
@@ -1315,14 +1342,14 @@ import 'bucket_replication_config_state.dart';
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
-/// 			Bucket: destination.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: destination.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "source_bucket_acl", &s3.BucketAclArgs{
 /// 			Region: pulumi.String("eu-central-1"),
-/// 			Bucket: source.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: source.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -1333,7 +1360,7 @@ import 'bucket_replication_config_state.dart';
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
 /// 			Region: pulumi.String("eu-central-1"),
-/// 			Bucket: source.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: source.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1354,7 +1381,7 @@ import 'bucket_replication_config_state.dart';
 /// 			},
 /// 			Region: pulumi.String("eu-central-1"),
 /// 			Role:   replicationRole.Arn,
-/// 			Bucket: source.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: source.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			sourceBucketVersioning,
 /// 		}))
@@ -1366,7 +1393,7 @@ import 'bucket_replication_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1374,8 +1401,8 @@ import 'bucket_replication_config_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["s3.amazonaws.com"]
@@ -1384,18 +1411,18 @@ import 'bucket_replication_config_state.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "replication" {
-///   statements {
+/// data "aws_iam_policy_document" "replication" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["s3:GetReplicationConfiguration", "s3:ListBucket"]
 ///     resources = [aws_s3_bucket.source.arn]
 ///   }
-///   statements {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["s3:GetObjectVersionForReplication", "s3:GetObjectVersionAcl", "s3:GetObjectVersionTagging"]
 ///     resources = ["${aws_s3_bucket.source.arn}/*"]
 ///   }
-///   statements {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["s3:ReplicateObject", "s3:ReplicateDelete", "s3:ReplicateTags"]
 ///     resources = ["${aws_s3_bucket.destination.arn}/*"]
@@ -1403,44 +1430,71 @@ import 'bucket_replication_config_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "replication" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "tf-iam-role-replication-12345"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
 /// resource "aws_iam_policy" "replication" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "tf-iam-role-policy-replication-12345"
-///   policy = data.aws_iam_getpolicydocument.replication.json
+///   policy = data.aws_iam_policy_document.replication.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "replication" {
+/// resource "aws_iam_role_policy_attachment" "replication" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.replication.name
 ///   policy_arn = aws_iam_policy.replication.arn
 /// }
 /// resource "aws_s3_bucket" "destination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "tf-test-bucket-destination-12345"
 /// }
-/// resource "aws_s3_bucketversioning" "destination" {
-///   versioning_configuration = {
+/// resource "aws_s3_bucket_versioning" "destination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   versioning_configuration {
 ///     status = "Enabled"
 ///   }
 ///   bucket = aws_s3_bucket.destination.id
 /// }
 /// resource "aws_s3_bucket" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region = "eu-central-1"
 ///   bucket = "tf-test-bucket-source-12345"
 /// }
-/// resource "aws_s3_bucketacl" "source_bucket_acl" {
+/// resource "aws_s3_bucket_acl" "source_bucket_acl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region = "eu-central-1"
 ///   bucket = aws_s3_bucket.source.id
 ///   acl    = "private"
 /// }
-/// resource "aws_s3_bucketversioning" "source" {
-///   versioning_configuration = {
+/// resource "aws_s3_bucket_versioning" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   versioning_configuration {
 ///     status = "Enabled"
 ///   }
 ///   region = "eu-central-1"
 ///   bucket = aws_s3_bucket.source.id
 /// }
-/// resource "aws_s3_bucketreplicationconfig" "replication" {
-///   depends_on = [aws_s3_bucketversioning.source]
+/// resource "aws_s3_bucket_replication_config" "replication" {
+///   depends_on = [aws_s3_bucket_versioning.source]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   rules {
 ///     filter = {
 ///       prefix = "example"
@@ -1937,7 +1991,7 @@ import 'bucket_replication_config_state.dart';
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
-/// 			Bucket: east.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: east.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1952,7 +2006,7 @@ import 'bucket_replication_config_state.dart';
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
-/// 			Bucket: west.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: west.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1972,7 +2026,7 @@ import 'bucket_replication_config_state.dart';
 /// 				},
 /// 			},
 /// 			Role:   pulumi.Any(eastReplication.Arn),
-/// 			Bucket: east.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: east.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			eastBucketVersioning,
 /// 		}))
@@ -1994,7 +2048,7 @@ import 'bucket_replication_config_state.dart';
 /// 				},
 /// 			},
 /// 			Role:   pulumi.Any(westReplication.Arn),
-/// 			Bucket: west.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: west.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			westBucketVersioning,
 /// 		}))
@@ -2006,7 +2060,7 @@ import 'bucket_replication_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2016,25 +2070,40 @@ import 'bucket_replication_config_state.dart';
 ///
 /// # ... other configuration ...
 /// resource "aws_s3_bucket" "east" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "tf-test-bucket-east-12345"
 /// }
-/// resource "aws_s3_bucketversioning" "east" {
-///   versioning_configuration = {
+/// resource "aws_s3_bucket_versioning" "east" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   versioning_configuration {
 ///     status = "Enabled"
 ///   }
 ///   bucket = aws_s3_bucket.east.id
 /// }
 /// resource "aws_s3_bucket" "west" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "tf-test-bucket-west-12345"
 /// }
-/// resource "aws_s3_bucketversioning" "west" {
-///   versioning_configuration = {
+/// resource "aws_s3_bucket_versioning" "west" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   versioning_configuration {
 ///     status = "Enabled"
 ///   }
 ///   bucket = aws_s3_bucket.west.id
 /// }
-/// resource "aws_s3_bucketreplicationconfig" "east_to_west" {
-///   depends_on = [aws_s3_bucketversioning.east]
+/// resource "aws_s3_bucket_replication_config" "east_to_west" {
+///   depends_on = [aws_s3_bucket_versioning.east]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   rules {
 ///     filter = {
 ///       prefix = "foo"
@@ -2049,8 +2118,11 @@ import 'bucket_replication_config_state.dart';
 ///   role   = eastReplication.arn
 ///   bucket = aws_s3_bucket.east.id
 /// }
-/// resource "aws_s3_bucketreplicationconfig" "west_to_east" {
-///   depends_on = [aws_s3_bucketversioning.west]
+/// resource "aws_s3_bucket_replication_config" "west_to_east" {
+///   depends_on = [aws_s3_bucket_versioning.west]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   rules {
 ///     filter = {
 ///       prefix = "foo"
@@ -2131,7 +2203,7 @@ import 'bucket_replication_config_state.dart';
 ///                 .id("foobar")
 ///                 .status("Enabled")
 ///                 .build())
-///             .role(eastReplication.arn())
+///             .role(eastReplication.get("arn"))
 ///             .bucket(east.id())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(eastBucketVersioning)
@@ -2149,7 +2221,7 @@ import 'bucket_replication_config_state.dart';
 ///                 .id("foobar")
 ///                 .status("Enabled")
 ///                 .build())
-///             .role(westReplication.arn())
+///             .role(westReplication.get("arn"))
 ///             .bucket(west.id())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(westBucketVersioning)
@@ -2251,7 +2323,7 @@ class BucketReplicationConfig extends pulumi.CustomResource {
           'aws:s3/bucketReplicationConfig:BucketReplicationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['token'],
         ) {
     bucket = registerOutput<String>('bucket');

@@ -7,7 +7,7 @@ import 'member_detector_feature_additional_configuration.dart';
 class MemberDetectorFeatureState {
   /// Member account ID to be updated.
   final pulumi.Input<String?>? accountId;
-  /// Additional feature configuration block. See below.
+  /// Additional feature configuration block. If omitted, Terraform does not track changes to additional configurations that AWS manages for the feature. Removing a previously declared `additionalConfiguration` block leaves the setting unchanged in AWS; to change a setting, update its `status` instead. See below.
   final pulumi.Input<List<MemberDetectorFeatureAdditionalConfiguration>?>? additionalConfigurations;
   /// Amazon GuardDuty detector ID.
   final pulumi.Input<String?>? detectorId;
@@ -20,7 +20,7 @@ class MemberDetectorFeatureState {
 
   /// Creates a new [MemberDetectorFeatureState].
   /// [accountId] Member account ID to be updated.
-  /// [additionalConfigurations] Additional feature configuration block. See below.
+  /// [additionalConfigurations] Additional feature configuration block. If omitted, Terraform does not track changes to additional configurations that AWS manages for the feature. Removing a previously declared `additionalConfiguration` block leaves the setting unchanged in AWS; to change a setting, update its `status` instead. See below.
   /// [detectorId] Amazon GuardDuty detector ID.
   /// [name] Name of the detector feature. Valid values: `S3_DATA_EVENTS`, `EKS_AUDIT_LOGS`, `EBS_MALWARE_PROTECTION`, `RDS_LOGIN_EVENTS`, `EKS_RUNTIME_MONITORING`,`RUNTIME_MONITORING`, `LAMBDA_NETWORK_LOGS`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

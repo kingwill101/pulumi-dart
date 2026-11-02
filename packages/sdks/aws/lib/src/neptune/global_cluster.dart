@@ -173,7 +173,7 @@ import 'global_cluster_state.dart';
 /// 			Engine:                  example.Engine,
 /// 			EngineVersion:           example.EngineVersion,
 /// 			ClusterIdentifier:       pulumi.String("test-primary-cluster"),
-/// 			GlobalClusterIdentifier: example.ID().ToIDOutput().ToStringOutput(),
+/// 			GlobalClusterIdentifier: example.ID(),
 /// 			NeptuneSubnetGroupName:  pulumi.String("default"),
 /// 		})
 /// 		if err != nil {
@@ -183,7 +183,7 @@ import 'global_cluster_state.dart';
 /// 			Engine:                 example.Engine,
 /// 			EngineVersion:          example.EngineVersion,
 /// 			Identifier:             pulumi.String("test-primary-cluster-instance"),
-/// 			ClusterIdentifier:      primary.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier:      primary.ID(),
 /// 			InstanceClass:          pulumi.String("db.r5.large"),
 /// 			NeptuneSubnetGroupName: pulumi.String("default"),
 /// 		})
@@ -194,7 +194,7 @@ import 'global_cluster_state.dart';
 /// 			Engine:                  example.Engine,
 /// 			EngineVersion:           example.EngineVersion,
 /// 			ClusterIdentifier:       pulumi.String("test-secondary-cluster"),
-/// 			GlobalClusterIdentifier: example.ID().ToIDOutput().ToStringOutput(),
+/// 			GlobalClusterIdentifier: example.ID(),
 /// 			NeptuneSubnetGroupName:  pulumi.String("default"),
 /// 		})
 /// 		if err != nil {
@@ -204,7 +204,7 @@ import 'global_cluster_state.dart';
 /// 			Engine:                 example.Engine,
 /// 			EngineVersion:          example.EngineVersion,
 /// 			Identifier:             pulumi.String("test-secondary-cluster-instance"),
-/// 			ClusterIdentifier:      secondary.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterIdentifier:      secondary.ID(),
 /// 			InstanceClass:          pulumi.String("db.r5.large"),
 /// 			NeptuneSubnetGroupName: pulumi.String("default"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -218,7 +218,7 @@ import 'global_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -226,37 +226,52 @@ import 'global_cluster_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_neptune_globalcluster" "example" {
+/// resource "aws_neptune_global_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_cluster_identifier = "global-test"
 ///   engine                    = "neptune"
 ///   engine_version            = "1.2.0.0"
 /// }
 /// resource "aws_neptune_cluster" "primary" {
-///   engine                    = aws_neptune_globalcluster.example.engine
-///   engine_version            = aws_neptune_globalcluster.example.engine_version
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   engine                    = aws_neptune_global_cluster.example.engine
+///   engine_version            = aws_neptune_global_cluster.example.engine_version
 ///   cluster_identifier        = "test-primary-cluster"
-///   global_cluster_identifier = aws_neptune_globalcluster.example.id
+///   global_cluster_identifier = aws_neptune_global_cluster.example.id
 ///   neptune_subnet_group_name = "default"
 /// }
-/// resource "aws_neptune_clusterinstance" "primary" {
-///   engine                    = aws_neptune_globalcluster.example.engine
-///   engine_version            = aws_neptune_globalcluster.example.engine_version
+/// resource "aws_neptune_cluster_instance" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   engine                    = aws_neptune_global_cluster.example.engine
+///   engine_version            = aws_neptune_global_cluster.example.engine_version
 ///   identifier                = "test-primary-cluster-instance"
 ///   cluster_identifier        = aws_neptune_cluster.primary.id
 ///   instance_class            = "db.r5.large"
 ///   neptune_subnet_group_name = "default"
 /// }
 /// resource "aws_neptune_cluster" "secondary" {
-///   engine                    = aws_neptune_globalcluster.example.engine
-///   engine_version            = aws_neptune_globalcluster.example.engine_version
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   engine                    = aws_neptune_global_cluster.example.engine
+///   engine_version            = aws_neptune_global_cluster.example.engine_version
 ///   cluster_identifier        = "test-secondary-cluster"
-///   global_cluster_identifier = aws_neptune_globalcluster.example.id
+///   global_cluster_identifier = aws_neptune_global_cluster.example.id
 ///   neptune_subnet_group_name = "default"
 /// }
-/// resource "aws_neptune_clusterinstance" "secondary" {
-///   depends_on                = [aws_neptune_clusterinstance.primary]
-///   engine                    = aws_neptune_globalcluster.example.engine
-///   engine_version            = aws_neptune_globalcluster.example.engine_version
+/// resource "aws_neptune_cluster_instance" "secondary" {
+///   depends_on = [aws_neptune_cluster_instance.primary]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   engine                    = aws_neptune_global_cluster.example.engine
+///   engine_version            = aws_neptune_global_cluster.example.engine_version
 ///   identifier                = "test-secondary-cluster-instance"
 ///   cluster_identifier        = aws_neptune_cluster.secondary.id
 ///   instance_class            = "db.r5.large"
@@ -462,7 +477,7 @@ import 'global_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -472,10 +487,14 @@ import 'global_cluster_state.dart';
 ///
 /// resource "aws_neptune_cluster" "example" {
 ///   lifecycle {
-///     ignore_changes = [globalClusterIdentifier]
+///     ignore_changes        = [globalClusterIdentifier]
+///     create_before_destroy = true
 ///   }
 /// }
-/// resource "aws_neptune_globalcluster" "example" {
+/// resource "aws_neptune_global_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_cluster_identifier    = "example"
 ///   source_db_cluster_identifier = aws_neptune_cluster.example.arn
 /// }
@@ -598,7 +617,7 @@ import 'global_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -606,9 +625,10 @@ import 'global_cluster_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_neptune_globalcluster" "example" {
+/// resource "aws_neptune_global_cluster" "example" {
 ///   lifecycle {
-///     ignore_changes = [sourceDbClusterIdentifier]
+///     ignore_changes        = [sourceDbClusterIdentifier]
+///     create_before_destroy = true
 ///   }
 /// }
 /// ```
@@ -684,7 +704,7 @@ class GlobalCluster extends pulumi.CustomResource {
           'aws:neptune/globalCluster:GlobalCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtection = registerOutput<bool?>('deletionProtection');

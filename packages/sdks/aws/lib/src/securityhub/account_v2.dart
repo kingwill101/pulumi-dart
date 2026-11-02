@@ -56,7 +56,7 @@ import 'account_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -64,7 +64,10 @@ import 'account_v2_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securityhub_accountv2" "example" {
+/// resource "aws_securityhub_account_v2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -159,7 +162,7 @@ import 'account_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -167,7 +170,10 @@ import 'account_v2_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securityhub_accountv2" "example" {
+/// resource "aws_securityhub_account_v2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tags = {
 ///     "Environment" = "production"
 ///   }
@@ -247,7 +253,7 @@ class AccountV2 extends pulumi.CustomResource {
           'aws:securityhub/accountV2:AccountV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');

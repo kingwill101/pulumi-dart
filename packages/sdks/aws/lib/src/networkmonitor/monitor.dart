@@ -64,7 +64,7 @@ import 'monitor_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,6 +73,9 @@ import 'monitor_state.dart';
 /// }
 ///
 /// resource "aws_networkmonitor_monitor" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aggregation_period = 30
 ///   monitor_name       = "example"
 /// }
@@ -151,7 +154,7 @@ class Monitor extends pulumi.CustomResource {
           'aws:networkmonitor/monitor:Monitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     aggregationPeriod = registerOutput<int>('aggregationPeriod');
     arn = registerOutput<String>('arn');

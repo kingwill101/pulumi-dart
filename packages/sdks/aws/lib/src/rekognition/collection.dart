@@ -72,7 +72,7 @@ import 'collection_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,6 +81,9 @@ import 'collection_timeouts.dart';
 /// }
 ///
 /// resource "aws_rekognition_collection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   collection_id = "my-collection"
 ///   tags = {
 ///     "example" = 1
@@ -175,7 +178,7 @@ class Collection extends pulumi.CustomResource {
           'aws:rekognition/collection:Collection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     collectionId = registerOutput<String>('collectionId');

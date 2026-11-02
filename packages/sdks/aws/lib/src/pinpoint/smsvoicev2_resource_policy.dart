@@ -169,7 +169,7 @@ import 'smsvoicev2_resource_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -177,27 +177,33 @@ import 'smsvoicev2_resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["123456789012"]
 ///     }
 ///     effect    = "Allow"
 ///     actions   = ["sms-voice:SendTextMessage"]
-///     resources = [aws_pinpoint_smsvoicev2phonenumber.example.arn]
+///     resources = [aws_pinpoint_smsvoicev2_phone_number.example.arn]
 ///   }
 /// }
 ///
-/// resource "aws_pinpoint_smsvoicev2phonenumber" "example" {
+/// resource "aws_pinpoint_smsvoicev2_phone_number" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iso_country_code    = "US"
 ///   message_type        = "TRANSACTIONAL"
 ///   number_type         = "SIMULATOR"
 ///   number_capabilities = ["SMS"]
 /// }
-/// resource "aws_pinpoint_smsvoicev2resourcepolicy" "example" {
-///   resource_arn = aws_pinpoint_smsvoicev2phonenumber.example.arn
-///   policy       = data.aws_iam_getpolicydocument.example.json
+/// resource "aws_pinpoint_smsvoicev2_resource_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_arn = aws_pinpoint_smsvoicev2_phone_number.example.arn
+///   policy       = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -325,7 +331,7 @@ class Smsvoicev2ResourcePolicy extends pulumi.CustomResource {
           'aws:pinpoint/smsvoicev2ResourcePolicy:Smsvoicev2ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

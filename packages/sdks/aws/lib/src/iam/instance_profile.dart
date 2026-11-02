@@ -153,7 +153,7 @@ import 'instance_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -161,8 +161,8 @@ import 'instance_profile_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["ec2.amazonaws.com"]
@@ -172,14 +172,20 @@ import 'instance_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_iam_instanceprofile" "test_profile" {
+/// resource "aws_iam_instance_profile" "test_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test_profile"
 ///   role = aws_iam_role.role.name
 /// }
 /// resource "aws_iam_role" "role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "test_role"
 ///   path               = "/"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
 /// ```
 /// ```java
@@ -314,7 +320,7 @@ class InstanceProfile extends pulumi.CustomResource {
           'aws:iam/instanceProfile:InstanceProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createDate = registerOutput<String>('createDate');

@@ -62,7 +62,7 @@ import 'default_kms_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'default_kms_key_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ebs_defaultkmskey" "example" {
+/// resource "aws_ebs_default_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   key_arn = exampleAwsKmsKey.arn
 /// }
 /// ```
@@ -96,7 +99,7 @@ import 'default_kms_key_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DefaultKmsKey("example", DefaultKmsKeyArgs.builder()
-///             .keyArn(exampleAwsKmsKey.arn())
+///             .keyArn(exampleAwsKmsKey.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -136,7 +139,7 @@ class DefaultKmsKey extends pulumi.CustomResource {
           'aws:ebs/defaultKmsKey:DefaultKmsKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     keyArn = registerOutput<String>('keyArn');
     region = registerOutput<String>('region');

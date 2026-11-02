@@ -83,7 +83,7 @@ import 'get_sites_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,7 +91,7 @@ import 'get_sites_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_networkmanager_getconnection" "example" {
+/// data "aws_networkmanager_connection" "example" {
 ///   global_network_id = globalNetworkId
 ///   connection_id     = connectionId
 /// }
@@ -228,7 +228,7 @@ pulumi.Output<GetConnectionResult> getConnectionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -236,7 +236,7 @@ pulumi.Output<GetConnectionResult> getConnectionOutput(
 ///   }
 /// }
 ///
-/// data "aws_networkmanager_getconnections" "example" {
+/// data "aws_networkmanager_connections" "example" {
 ///   global_network_id = globalNetworkId
 ///   tags = {
 ///     "Env" = "test"
@@ -365,7 +365,7 @@ pulumi.Output<GetConnectionsResult> getConnectionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -373,7 +373,7 @@ pulumi.Output<GetConnectionsResult> getConnectionsOutput(
 ///   }
 /// }
 ///
-/// data "aws_networkmanager_getcorenetwork" "example" {
+/// data "aws_networkmanager_core_network" "example" {
 ///   core_network_id = "core-network-0123456789abcdef0"
 /// }
 /// ```
@@ -789,7 +789,7 @@ pulumi.Output<GetCoreNetworkResult> getCoreNetworkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -797,9 +797,9 @@ pulumi.Output<GetCoreNetworkResult> getCoreNetworkOutput(
 ///   }
 /// }
 ///
-/// data "aws_networkmanager_getcorenetworkpolicydocument" "test" {
+/// data "aws_networkmanager_core_network_policy_document" "test" {
 ///   attachment_policies {
-///     action = {
+///     action {
 ///       association_method = "constant"
 ///       segment            = "shared"
 ///     }
@@ -813,7 +813,7 @@ pulumi.Output<GetCoreNetworkResult> getCoreNetworkOutput(
 ///     condition_logic = "or"
 ///   }
 ///   attachment_policies {
-///     action = {
+///     action {
 ///       association_method = "constant"
 ///       segment            = "prod"
 ///     }
@@ -826,7 +826,7 @@ pulumi.Output<GetCoreNetworkResult> getCoreNetworkOutput(
 ///     rule_number     = 200
 ///     condition_logic = "or"
 ///   }
-///   core_network_configurations {
+///   core_network_configuration {
 ///     edge_locations {
 ///       location = "us-east-1"
 ///       asn      = 64512
@@ -839,10 +839,10 @@ pulumi.Output<GetCoreNetworkResult> getCoreNetworkOutput(
 ///     asn_ranges       = ["64512-64555"]
 ///   }
 ///   segment_actions {
-///     action      = "share"
-///     mode        = "attachment-route"
-///     segment     = "shared"
-///     share_withs = ["*"]
+///     action     = "share"
+///     mode       = "attachment-route"
+///     segment    = "shared"
+///     share_with = ["*"]
 ///   }
 ///   segments {
 ///     name                          = "shared"
@@ -1163,7 +1163,7 @@ pulumi.Output<GetCoreNetworkPolicyDocumentResult> getCoreNetworkPolicyDocumentOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1171,7 +1171,7 @@ pulumi.Output<GetCoreNetworkPolicyDocumentResult> getCoreNetworkPolicyDocumentOu
 ///   }
 /// }
 ///
-/// data "aws_networkmanager_getdevice" "example" {
+/// data "aws_networkmanager_device" "example" {
 ///   global_network_id = globalNetworkId
 ///   device_id         = deviceId
 /// }
@@ -1308,7 +1308,7 @@ pulumi.Output<GetDeviceResult> getDeviceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1316,7 +1316,7 @@ pulumi.Output<GetDeviceResult> getDeviceOutput(
 ///   }
 /// }
 ///
-/// data "aws_networkmanager_getdevices" "example" {
+/// data "aws_networkmanager_devices" "example" {
 ///   global_network_id = globalNetworkId
 ///   tags = {
 ///     "Env" = "test"
@@ -1443,7 +1443,7 @@ pulumi.Output<GetDevicesResult> getDevicesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1451,7 +1451,7 @@ pulumi.Output<GetDevicesResult> getDevicesOutput(
 ///   }
 /// }
 ///
-/// data "aws_networkmanager_getglobalnetwork" "example" {
+/// data "aws_networkmanager_global_network" "example" {
 ///   global_network_id = globalNetworkId
 /// }
 /// ```
@@ -1581,7 +1581,7 @@ pulumi.Output<GetGlobalNetworkResult> getGlobalNetworkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1589,7 +1589,7 @@ pulumi.Output<GetGlobalNetworkResult> getGlobalNetworkOutput(
 ///   }
 /// }
 ///
-/// data "aws_networkmanager_getglobalnetworks" "example" {
+/// data "aws_networkmanager_global_networks" "example" {
 ///   tags = {
 ///     "Env" = "test"
 ///   }
@@ -1717,7 +1717,7 @@ pulumi.Output<GetGlobalNetworksResult> getGlobalNetworksOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1725,7 +1725,7 @@ pulumi.Output<GetGlobalNetworksResult> getGlobalNetworksOutput(
 ///   }
 /// }
 ///
-/// data "aws_networkmanager_getlink" "example" {
+/// data "aws_networkmanager_link" "example" {
 ///   global_network_id = globalNetworkId
 ///   link_id           = linkId
 /// }
@@ -1862,7 +1862,7 @@ pulumi.Output<GetLinkResult> getLinkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1870,7 +1870,7 @@ pulumi.Output<GetLinkResult> getLinkOutput(
 ///   }
 /// }
 ///
-/// data "aws_networkmanager_getlinks" "example" {
+/// data "aws_networkmanager_links" "example" {
 ///   global_network_id = globalNetworkId
 ///   tags = {
 ///     "Env" = "test"
@@ -2001,7 +2001,7 @@ pulumi.Output<GetLinksResult> getLinksOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2009,7 +2009,7 @@ pulumi.Output<GetLinksResult> getLinksOutput(
 ///   }
 /// }
 ///
-/// data "aws_networkmanager_getsite" "example" {
+/// data "aws_networkmanager_site" "example" {
 ///   global_network_id = globalNetworkId
 ///   site_id           = siteId
 /// }
@@ -2146,7 +2146,7 @@ pulumi.Output<GetSiteResult> getSiteOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2154,7 +2154,7 @@ pulumi.Output<GetSiteResult> getSiteOutput(
 ///   }
 /// }
 ///
-/// data "aws_networkmanager_getsites" "example" {
+/// data "aws_networkmanager_sites" "example" {
 ///   global_network_id = globalNetworkId
 ///   tags = {
 ///     "Env" = "test"

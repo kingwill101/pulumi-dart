@@ -110,7 +110,7 @@ import 'eip_domain_name_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -119,15 +119,24 @@ import 'eip_domain_name_timeouts.dart';
 /// }
 ///
 /// resource "aws_ec2_eip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain = "vpc"
 /// }
 /// resource "aws_route53_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = main.zoneId
 ///   name    = "reverse"
 ///   type    = "A"
 ///   records = [aws_ec2_eip.example.public_ip]
 /// }
-/// resource "aws_ec2_eipdomainname" "example" {
+/// resource "aws_ec2_eip_domain_name" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocation_id = aws_ec2_eip.example.allocation_id
 ///   domain_name   = aws_route53_record.example.fqdn
 /// }
@@ -162,7 +171,7 @@ import 'eip_domain_name_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
-///             .zoneId(main.zoneId())
+///             .zoneId(main.get("zoneId"))
 ///             .name("reverse")
 ///             .type("A")
 ///             .records(example.publicIp())
@@ -230,7 +239,7 @@ class EipDomainName extends pulumi.CustomResource {
           'aws:ec2/eipDomainName:EipDomainName',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     allocationId = registerOutput<String>('allocationId');
     domainName = registerOutput<String>('domainName');

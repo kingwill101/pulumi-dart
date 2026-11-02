@@ -110,7 +110,7 @@ import 'traffic_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -118,10 +118,26 @@ import 'traffic_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_trafficpolicy" "example" {
+/// resource "aws_route53_traffic_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   comment  = "example comment"
-///   document = "{\n  \\\"AWSPolicyFormatVersion\\\": \\\"2015-10-01\\\",\n  \\\"RecordType\\\": \\\"A\\\",\n  \\\"Endpoints\\\": {\n    \\\"endpoint-start-NkPh\\\": {\n      \\\"Type\\\": \\\"value\\\",\n      \\\"Value\\\": \\\"10.0.0.2\\\"\n    }\n  },\n  \\\"StartEndpoint\\\": \\\"endpoint-start-NkPh\\\"\n}\n"
+///   document = <<EOF
+/// {
+///   \"AWSPolicyFormatVersion\": \"2015-10-01\",
+///   \"RecordType\": \"A\",
+///   \"Endpoints\": {
+///     \"endpoint-start-NkPh\": {
+///       \"Type\": \"value\",
+///       \"Value\": \"10.0.0.2\"
+///     }
+///   },
+///   \"StartEndpoint\": \"endpoint-start-NkPh\"
+/// }
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -223,7 +239,7 @@ class TrafficPolicy extends pulumi.CustomResource {
           'aws:route53/trafficPolicy:TrafficPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');

@@ -81,7 +81,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,13 +89,16 @@ import 'application_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
 ///
 /// resource "aws_ssoadmin_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example"
 ///   application_provider_arn = "arn:aws:sso::aws:applicationProvider/custom"
-///   instance_arn             = data.aws_ssoadmin_getinstances.example.arns[0]
+///   instance_arn             = data.aws_ssoadmin_instances.example.arns[0]
 /// }
 /// ```
 /// ```java
@@ -250,7 +253,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -258,12 +261,15 @@ import 'application_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
 ///
 /// resource "aws_ssoadmin_application" "example" {
-///   portal_options = {
-///     sign_in_options = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   portal_options {
+///     sign_in_options {
 ///       application_url = "http://example.com"
 ///       origin          = "APPLICATION"
 ///     }
@@ -271,7 +277,7 @@ import 'application_state.dart';
 ///   }
 ///   name                     = "example"
 ///   application_provider_arn = "arn:aws:sso::aws:applicationProvider/custom"
-///   instance_arn             = data.aws_ssoadmin_getinstances.example.arns[0]
+///   instance_arn             = data.aws_ssoadmin_instances.example.arns[0]
 /// }
 /// ```
 /// ```java
@@ -400,7 +406,7 @@ class Application extends pulumi.CustomResource {
           'aws:ssoadmin/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     applicationAccount = registerOutput<String>('applicationAccount');
     applicationArn = registerOutput<String>('applicationArn');

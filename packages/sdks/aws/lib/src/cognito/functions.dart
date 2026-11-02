@@ -73,7 +73,7 @@ import 'get_user_pools_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,7 +81,7 @@ import 'get_user_pools_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_cognito_getidentitypool" "example" {
+/// data "aws_cognito_identity_pool" "example" {
 ///   identity_pool_name = "test pool"
 /// }
 /// ```
@@ -208,7 +208,7 @@ pulumi.Output<GetIdentityPoolResult> getIdentityPoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -216,7 +216,7 @@ pulumi.Output<GetIdentityPoolResult> getIdentityPoolOutput(
 ///   }
 /// }
 ///
-/// data "aws_cognito_getusergroup" "example" {
+/// data "aws_cognito_user_group" "example" {
 ///   user_pool_id = "us-west-2_aaaaaaaaa"
 ///   name         = "example"
 /// }
@@ -342,7 +342,7 @@ pulumi.Output<GetUserGroupResult> getUserGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -350,7 +350,7 @@ pulumi.Output<GetUserGroupResult> getUserGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_cognito_getusergroups" "example" {
+/// data "aws_cognito_user_groups" "example" {
 ///   user_pool_id = "us-west-2_aaaaaaaaa"
 /// }
 /// ```
@@ -473,7 +473,7 @@ pulumi.Output<GetUserGroupsResult> getUserGroupsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -481,7 +481,7 @@ pulumi.Output<GetUserGroupsResult> getUserGroupsOutput(
 ///   }
 /// }
 ///
-/// data "aws_cognito_getuserpool" "example" {
+/// data "aws_cognito_user_pool" "example" {
 ///   user_pool_id = "us-west-2_aaaaaaaaa"
 /// }
 /// ```
@@ -606,7 +606,7 @@ pulumi.Output<GetUserPoolResult> getUserPoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -614,7 +614,7 @@ pulumi.Output<GetUserPoolResult> getUserPoolOutput(
 ///   }
 /// }
 ///
-/// data "aws_cognito_getuserpoolclient" "client" {
+/// data "aws_cognito_user_pool_client" "client" {
 ///   client_id    = "38fjsnc484p94kpqsnet7mpld0"
 ///   user_pool_id = "us-west-2_aaaaaaaaa"
 /// }
@@ -738,7 +738,7 @@ pulumi.Output<GetUserPoolClientResult> getUserPoolClientOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -746,7 +746,7 @@ pulumi.Output<GetUserPoolClientResult> getUserPoolClientOutput(
 ///   }
 /// }
 ///
-/// data "aws_cognito_getuserpoolclients" "main" {
+/// data "aws_cognito_user_pool_clients" "main" {
 ///   user_pool_id = mainAwsCognitoUserPool.id
 /// }
 /// ```
@@ -772,7 +772,7 @@ pulumi.Output<GetUserPoolClientResult> getUserPoolClientOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var main = CognitoFunctions.getUserPoolClients(GetUserPoolClientsArgs.builder()
-///             .userPoolId(mainAwsCognitoUserPool.id())
+///             .userPoolId(mainAwsCognitoUserPool.get("id"))
 ///             .build());
 ///
 ///     }
@@ -867,7 +867,7 @@ pulumi.Output<GetUserPoolClientsResult> getUserPoolClientsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -875,7 +875,7 @@ pulumi.Output<GetUserPoolClientsResult> getUserPoolClientsOutput(
 ///   }
 /// }
 ///
-/// data "aws_cognito_getuserpoolsigningcertificate" "sc" {
+/// data "aws_cognito_user_pool_signing_certificate" "sc" {
 ///   user_pool_id = myPool.id
 /// }
 /// ```
@@ -901,7 +901,7 @@ pulumi.Output<GetUserPoolClientsResult> getUserPoolClientsOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var sc = CognitoFunctions.getUserPoolSigningCertificate(GetUserPoolSigningCertificateArgs.builder()
-///             .userPoolId(myPool.id())
+///             .userPoolId(myPool.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1047,7 +1047,7 @@ pulumi.Output<GetUserPoolSigningCertificateResult> getUserPoolSigningCertificate
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1055,18 +1055,21 @@ pulumi.Output<GetUserPoolSigningCertificateResult> getUserPoolSigningCertificate
 ///   }
 /// }
 ///
-/// data "aws_apigateway_getrestapi" "selected" {
+/// data "aws_apigateway_rest_api" "selected" {
 ///   name = apiGatewayName
 /// }
-/// data "aws_cognito_getuserpools" "selectedGetUserPools" {
+/// data "aws_cognito_user_pools" "selectedGetUserPools" {
 ///   name = cognitoUserPoolName
 /// }
 ///
 /// resource "aws_apigateway_authorizer" "cognito" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "cognito"
 ///   type          = "COGNITO_USER_POOLS"
-///   rest_api      = data.aws_apigateway_getrestapi.selected.id
-///   provider_arns = data.aws_cognito_getuserpools.selectedGetUserPools.arns
+///   rest_api      = data.aws_apigateway_rest_api.selected.id
+///   provider_arns = data.aws_cognito_user_pools.selectedGetUserPools.arns
 /// }
 /// ```
 /// ```java

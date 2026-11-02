@@ -124,7 +124,7 @@ import 'replication_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -132,7 +132,10 @@ import 'replication_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticache_replicationgroup" "example" {
+/// resource "aws_elasticache_replication_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   automatic_failover_enabled  = true
 ///   preferred_cache_cluster_azs = ["us-west-2a", "us-west-2b"]
 ///   replication_group_id        = "tf-rep-group-1"
@@ -333,7 +336,7 @@ import 'replication_group_state.dart';
 /// 			val0 := index
 /// 			__res, err := elasticache.NewCluster(ctx, fmt.Sprintf("replica-%v", key0), &elasticache.ClusterArgs{
 /// 				ClusterId:          pulumi.Sprintf("tf-rep-group-1-%v", val0),
-/// 				ReplicationGroupId: example.ID().ToIDOutput().ToStringOutput(),
+/// 				ReplicationGroupId: example.ID(),
 /// 			})
 /// 			if err != nil {
 /// 				return err
@@ -345,7 +348,7 @@ import 'replication_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -353,9 +356,10 @@ import 'replication_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticache_replicationgroup" "example" {
+/// resource "aws_elasticache_replication_group" "example" {
 ///   lifecycle {
-///     ignore_changes = [numCacheClusters]
+///     ignore_changes        = [numCacheClusters]
+///     create_before_destroy = true
 ///   }
 ///   automatic_failover_enabled  = true
 ///   preferred_cache_cluster_azs = ["us-west-2a", "us-west-2b"]
@@ -367,9 +371,15 @@ import 'replication_group_state.dart';
 ///   port                        = 6379
 /// }
 /// resource "aws_elasticache_cluster" "replica" {
-///   count                = 1
+///   count = 1
+///   pulumi {
+///     name ="replica-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id           ="tf-rep-group-1-${count.index}"
-///   replication_group_id = aws_elasticache_replicationgroup.example.id
+///   replication_group_id = aws_elasticache_replication_group.example.id
 /// }
 /// ```
 /// ```java
@@ -534,7 +544,7 @@ import 'replication_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -542,7 +552,10 @@ import 'replication_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticache_replicationgroup" "baz" {
+/// resource "aws_elasticache_replication_group" "baz" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   replication_group_id       = "tf-redis-cluster"
 ///   description                = "example description"
 ///   node_type                  = "cache.t2.small"
@@ -761,7 +774,7 @@ import 'replication_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -769,15 +782,18 @@ import 'replication_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticache_replicationgroup" "example" {
-///   node_group_configurations {
+/// resource "aws_elasticache_replication_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   node_group_configuration {
 ///     node_group_id              = "0001"
 ///     primary_availability_zone  = "us-west-2a"
 ///     replica_availability_zones = ["us-west-2b"]
 ///     replica_count              = 1
 ///     slots                      = "0-8191"
 ///   }
-///   node_group_configurations {
+///   node_group_configuration {
 ///     node_group_id              = "0002"
 ///     primary_availability_zone  = "us-west-2b"
 ///     replica_availability_zones = ["us-west-2a"]
@@ -1012,7 +1028,7 @@ import 'replication_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1020,14 +1036,17 @@ import 'replication_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticache_replicationgroup" "test" {
-///   log_delivery_configurations {
+/// resource "aws_elasticache_replication_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   log_delivery_configuration {
 ///     destination      = example.name
 ///     destination_type = "cloudwatch-logs"
 ///     log_format       = "text"
 ///     log_type         = "slow-log"
 ///   }
-///   log_delivery_configurations {
+///   log_delivery_configuration {
 ///     destination      = exampleAwsKinesisFirehoseDeliveryStream.name
 ///     destination_type = "kinesis-firehose"
 ///     log_format       = "json"
@@ -1068,13 +1087,13 @@ import 'replication_group_state.dart';
 ///         var test = new ReplicationGroup("test", ReplicationGroupArgs.builder()
 ///             .logDeliveryConfigurations(
 ///                 ReplicationGroupLogDeliveryConfigurationArgs.builder()
-///                     .destination(example.name())
+///                     .destination(example.get("name"))
 ///                     .destinationType("cloudwatch-logs")
 ///                     .logFormat("text")
 ///                     .logType("slow-log")
 ///                     .build(),
 ///                 ReplicationGroupLogDeliveryConfigurationArgs.builder()
-///                     .destination(exampleAwsKinesisFirehoseDeliveryStream.name())
+///                     .destination(exampleAwsKinesisFirehoseDeliveryStream.get("name"))
 ///                     .destinationType("kinesis-firehose")
 ///                     .logFormat("json")
 ///                     .logType("engine-log")
@@ -1228,7 +1247,7 @@ import 'replication_group_state.dart';
 /// 		}
 /// 		example, err := elasticache.NewGlobalReplicationGroup(ctx, "example", &elasticache.GlobalReplicationGroupArgs{
 /// 			GlobalReplicationGroupIdSuffix: pulumi.String("example"),
-/// 			PrimaryReplicationGroupId:      primary.ID().ToIDOutput().ToStringOutput(),
+/// 			PrimaryReplicationGroupId:      primary.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1247,7 +1266,7 @@ import 'replication_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1255,17 +1274,26 @@ import 'replication_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticache_replicationgroup" "secondary" {
+/// resource "aws_elasticache_replication_group" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   replication_group_id        = "example-secondary"
 ///   description                 = "secondary replication group"
-///   global_replication_group_id = aws_elasticache_globalreplicationgroup.example.global_replication_group_id
+///   global_replication_group_id = aws_elasticache_global_replication_group.example.global_replication_group_id
 ///   num_cache_clusters          = 1
 /// }
-/// resource "aws_elasticache_globalreplicationgroup" "example" {
+/// resource "aws_elasticache_global_replication_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_replication_group_id_suffix = "example"
-///   primary_replication_group_id       = aws_elasticache_replicationgroup.primary.id
+///   primary_replication_group_id       = aws_elasticache_replication_group.primary.id
 /// }
-/// resource "aws_elasticache_replicationgroup" "primary" {
+/// resource "aws_elasticache_replication_group" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   replication_group_id = "example-primary"
 ///   description          = "primary replication group"
 ///   engine               = "redis"
@@ -1450,7 +1478,7 @@ import 'replication_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1458,7 +1486,10 @@ import 'replication_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elasticache_replicationgroup" "example" {
+/// resource "aws_elasticache_replication_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   replication_group_id       = "example"
 ///   description                = "example with authentication"
 ///   node_type                  = "cache.t2.micro"
@@ -1500,8 +1531,8 @@ import 'replication_group_state.dart';
 ///             .nodeType("cache.t2.micro")
 ///             .numCacheClusters(1)
 ///             .port(6379)
-///             .subnetGroupName(exampleAwsElasticacheSubnetGroup.name())
-///             .securityGroupIds(exampleAwsSecurityGroup.id())
+///             .subnetGroupName(exampleAwsElasticacheSubnetGroup.get("name"))
+///             .securityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///             .parameterGroupName("default.redis5.0")
 ///             .engineVersion("5.0.6")
 ///             .transitEncryptionEnabled(true)
@@ -1694,7 +1725,7 @@ class ReplicationGroup extends pulumi.CustomResource {
           'aws:elasticache/replicationGroup:ReplicationGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['authToken', 'authTokenWo'],
         ) {
     applyImmediately = registerOutput<bool>('applyImmediately');

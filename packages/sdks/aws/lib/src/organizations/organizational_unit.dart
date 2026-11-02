@@ -63,7 +63,7 @@ import 'organizational_unit_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,10 @@ import 'organizational_unit_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_organizations_organizationalunit" "example" {
+/// resource "aws_organizations_organizational_unit" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "example"
 ///   parent_id = exampleAwsOrganizationsOrganization.roots[0].id
 /// }
@@ -99,7 +102,7 @@ import 'organizational_unit_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new OrganizationalUnit("example", OrganizationalUnitArgs.builder()
 ///             .name("example")
-///             .parentId(exampleAwsOrganizationsOrganization.roots()[0].id())
+///             .parentId(exampleAwsOrganizationsOrganization.get("roots")[0].get("id"))
 ///             .build());
 ///
 ///     }
@@ -159,7 +162,7 @@ class OrganizationalUnit extends pulumi.CustomResource {
           'aws:organizations/organizationalUnit:OrganizationalUnit',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accounts = registerOutput<List<OrganizationalUnitAccount>>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationalUnitAccount>(guardedValue, (value) => OrganizationalUnitAccount.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

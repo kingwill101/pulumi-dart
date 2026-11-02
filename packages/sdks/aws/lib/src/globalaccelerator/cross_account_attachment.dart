@@ -58,7 +58,7 @@ import 'cross_account_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -66,7 +66,10 @@ import 'cross_account_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_globalaccelerator_crossaccountattachment" "example" {
+/// resource "aws_globalaccelerator_cross_account_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-cross-account-attachment"
 /// }
 /// ```
@@ -192,7 +195,7 @@ import 'cross_account_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -200,8 +203,11 @@ import 'cross_account_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_globalaccelerator_crossaccountattachment" "example" {
-///   resources {
+/// resource "aws_globalaccelerator_cross_account_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource {
 ///     endpoint_id = "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188"
 ///     region      = "us-west-2"
 ///   }
@@ -303,7 +309,7 @@ class CrossAccountAttachment extends pulumi.CustomResource {
           'aws:globalaccelerator/crossAccountAttachment:CrossAccountAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');

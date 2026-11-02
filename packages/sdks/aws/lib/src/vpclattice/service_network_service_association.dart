@@ -65,7 +65,7 @@ import 'service_network_service_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,10 @@ import 'service_network_service_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpclattice_servicenetworkserviceassociation" "example" {
+/// resource "aws_vpclattice_service_network_service_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_identifier         = exampleAwsVpclatticeService.id
 ///   service_network_identifier = exampleAwsVpclatticeServiceNetwork.id
 /// }
@@ -100,8 +103,8 @@ import 'service_network_service_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ServiceNetworkServiceAssociation("example", ServiceNetworkServiceAssociationArgs.builder()
-///             .serviceIdentifier(exampleAwsVpclatticeService.id())
-///             .serviceNetworkIdentifier(exampleAwsVpclatticeServiceNetwork.id())
+///             .serviceIdentifier(exampleAwsVpclatticeService.get("id"))
+///             .serviceNetworkIdentifier(exampleAwsVpclatticeServiceNetwork.get("id"))
 ///             .build());
 ///
 ///     }
@@ -158,7 +161,7 @@ class ServiceNetworkServiceAssociation extends pulumi.CustomResource {
           'aws:vpclattice/serviceNetworkServiceAssociation:ServiceNetworkServiceAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdBy = registerOutput<String>('createdBy');

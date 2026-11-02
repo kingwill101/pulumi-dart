@@ -55,7 +55,7 @@ import 'resolver_firewall_rule_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -63,7 +63,10 @@ import 'resolver_firewall_rule_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_resolverfirewallrulegroup" "example" {
+/// resource "aws_route53_resolver_firewall_rule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// ```
@@ -139,7 +142,7 @@ class ResolverFirewallRuleGroup extends pulumi.CustomResource {
           'aws:route53/resolverFirewallRuleGroup:ResolverFirewallRuleGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

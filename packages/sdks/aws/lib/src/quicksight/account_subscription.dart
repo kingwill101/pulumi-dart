@@ -72,7 +72,7 @@ import 'account_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -80,7 +80,10 @@ import 'account_subscription_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_accountsubscription" "subscription" {
+/// resource "aws_quicksight_account_subscription" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_name          = "quicksight-pulumi"
 ///   authentication_method = "IAM_AND_QUICKSIGHT"
 ///   edition               = "ENTERPRISE"
@@ -195,7 +198,7 @@ class AccountSubscription extends pulumi.CustomResource {
           'aws:quicksight/accountSubscription:AccountSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     accountSubscriptionStatus = registerOutput<String>('accountSubscriptionStatus');

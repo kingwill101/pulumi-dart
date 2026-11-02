@@ -127,7 +127,7 @@ import 'protection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -135,19 +135,25 @@ import 'protection_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
+/// data "aws_availability_zones" "available" {
 /// }
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
-/// data "aws_getcalleridentity" "currentGetCallerIdentity" {
+/// data "aws_caller_identity" "currentGetCallerIdentity" {
 /// }
 ///
 /// resource "aws_ec2_eip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain = "vpc"
 /// }
 /// resource "aws_shield_protection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example"
-///   resource_arn ="arn:aws:ec2:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:eip-allocation/${aws_ec2_eip.example.id}"
+///   resource_arn ="arn:aws:ec2:${data.aws_region.current.region}:${data.aws_caller_identity.currentGetCallerIdentity.account_id}:eip-allocation/${aws_ec2_eip.example.id}"
 ///   tags = {
 ///     "Environment" = "Dev"
 ///   }
@@ -263,7 +269,7 @@ class Protection extends pulumi.CustomResource {
           'aws:shield/protection:Protection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

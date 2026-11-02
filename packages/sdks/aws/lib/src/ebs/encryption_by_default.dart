@@ -57,7 +57,7 @@ import 'encryption_by_default_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,10 @@ import 'encryption_by_default_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ebs_encryptionbydefault" "example" {
+/// resource "aws_ebs_encryption_by_default" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enabled = true
 /// }
 /// ```
@@ -131,7 +134,7 @@ class EncryptionByDefault extends pulumi.CustomResource {
           'aws:ebs/encryptionByDefault:EncryptionByDefault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     enabled = registerOutput<bool?>('enabled');
     region = registerOutput<String>('region');

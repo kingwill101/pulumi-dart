@@ -261,7 +261,7 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 /// 						"ecr:GetDownloadUrlForLayer",
 /// 					},
 /// 					Effect: pulumi.StringRef("Allow"),
-/// 					Resources: pulumi.StringArray{
+/// 					Resources: []string{
 /// 						exampleAwsEcrRepository.Arn,
 /// 					},
 /// 				},
@@ -278,7 +278,7 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 /// 			return err
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
-/// 			Role:   example.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   example.ID(),
 /// 			Policy: pulumi.String(ecrPermissions.Json),
 /// 		})
 /// 		if err != nil {
@@ -304,7 +304,7 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -312,8 +312,8 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["bedrock-agentcore.amazonaws.com"]
@@ -322,13 +322,13 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "ecrPermissions" {
-///   statements {
+/// data "aws_iam_policy_document" "ecrPermissions" {
+///   statement {
 ///     actions   = ["ecr:GetAuthorizationToken"]
 ///     effect    = "Allow"
 ///     resources = ["*"]
 ///   }
-///   statements {
+///   statement {
 ///     actions   = ["ecr:BatchGetImage", "ecr:GetDownloadUrlForLayer"]
 ///     effect    = "Allow"
 ///     resources = [exampleAwsEcrRepository.arn]
@@ -336,14 +336,23 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "bedrock-agentcore-runtime-role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "example" {
+/// resource "aws_iam_role_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role   = aws_iam_role.example.id
-///   policy = data.aws_iam_getpolicydocument.ecrPermissions.json
+///   policy = data.aws_iam_policy_document.ecrPermissions.json
 /// }
-/// resource "aws_bedrock_agentcoreagentruntime" "example" {
+/// resource "aws_bedrock_agentcore_agent_runtime" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_runtime_artifact = {
 ///     container_configuration = {
 ///       container_uri ="${exampleAwsEcrRepository.repositoryUrl}:latest"
@@ -411,7 +420,7 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 ///                         "ecr:BatchGetImage",
 ///                         "ecr:GetDownloadUrlForLayer")
 ///                     .effect("Allow")
-///                     .resources(exampleAwsEcrRepository.arn())
+///                     .resources(exampleAwsEcrRepository.get("arn"))
 ///                     .build())
 ///             .build());
 ///
@@ -428,7 +437,7 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 ///         var exampleAgentcoreAgentRuntime = new AgentcoreAgentRuntime("exampleAgentcoreAgentRuntime", AgentcoreAgentRuntimeArgs.builder()
 ///             .agentRuntimeArtifact(AgentcoreAgentRuntimeAgentRuntimeArtifactArgs.builder()
 ///                 .containerConfiguration(AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs.builder()
-///                     .containerUri(String.format("%s:latest", exampleAwsEcrRepository.repositoryUrl()))
+///                     .containerUri(String.format("%s:latest", exampleAwsEcrRepository.get("repositoryUrl")))
 ///                     .build())
 ///                 .build())
 ///             .networkConfiguration(AgentcoreAgentRuntimeNetworkConfigurationArgs.builder()
@@ -697,7 +706,7 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -705,7 +714,10 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreagentruntime" "example" {
+/// resource "aws_bedrock_agentcore_agent_runtime" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_runtime_artifact = {
 ///     container_configuration = {
 ///       container_uri ="${exampleAwsEcrRepository.repositoryUrl}:v1.0"
@@ -764,7 +776,7 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 ///         var example = new AgentcoreAgentRuntime("example", AgentcoreAgentRuntimeArgs.builder()
 ///             .agentRuntimeArtifact(AgentcoreAgentRuntimeAgentRuntimeArtifactArgs.builder()
 ///                 .containerConfiguration(AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs.builder()
-///                     .containerUri(String.format("%s:v1.0", exampleAwsEcrRepository.repositoryUrl()))
+///                     .containerUri(String.format("%s:v1.0", exampleAwsEcrRepository.get("repositoryUrl")))
 ///                     .build())
 ///                 .build())
 ///             .authorizerConfiguration(AgentcoreAgentRuntimeAuthorizerConfigurationArgs.builder()
@@ -789,7 +801,7 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 ///                 .build())
 ///             .agentRuntimeName("example_agent_runtime")
 ///             .description("Agent runtime with JWT authorization")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .environmentVariables(Map.ofEntries(
 ///                 Map.entry("LOG_LEVEL", "INFO"),
 ///                 Map.entry("ENV", "production")
@@ -942,7 +954,7 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -950,7 +962,10 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreagentruntime" "example" {
+/// resource "aws_bedrock_agentcore_agent_runtime" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_runtime_artifact = {
 ///     container_configuration = {
 ///       container_uri ="${exampleAwsEcrRepository.repositoryUrl}:latest"
@@ -995,7 +1010,7 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 ///         var example = new AgentcoreAgentRuntime("example", AgentcoreAgentRuntimeArgs.builder()
 ///             .agentRuntimeArtifact(AgentcoreAgentRuntimeAgentRuntimeArtifactArgs.builder()
 ///                 .containerConfiguration(AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs.builder()
-///                     .containerUri(String.format("%s:latest", exampleAwsEcrRepository.repositoryUrl()))
+///                     .containerUri(String.format("%s:latest", exampleAwsEcrRepository.get("repositoryUrl")))
 ///                     .build())
 ///                 .build())
 ///             .networkConfiguration(AgentcoreAgentRuntimeNetworkConfigurationArgs.builder()
@@ -1006,7 +1021,7 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 ///                 .build())
 ///             .agentRuntimeName("example_agui_runtime")
 ///             .description("Agent runtime with AG-UI protocol")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1158,7 +1173,7 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1166,7 +1181,10 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcoreagentruntime" "example" {
+/// resource "aws_bedrock_agentcore_agent_runtime" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_runtime_artifact = {
 ///     code_configuration = {
 ///       code = {
@@ -1229,7 +1247,7 @@ import 'agentcore_agent_runtime_workload_identity_detail.dart';
 ///                 .networkMode("PUBLIC")
 ///                 .build())
 ///             .agentRuntimeName("example_agent_runtime")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1318,7 +1336,7 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
           'aws:bedrock/agentcoreAgentRuntime:AgentcoreAgentRuntime',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     agentRuntimeArn = registerOutput<String>('agentRuntimeArn');
     agentRuntimeArtifact = registerOutput<AgentcoreAgentRuntimeAgentRuntimeArtifact>('agentRuntimeArtifact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeAgentRuntimeArtifact.fromMap((guardedValue as Map).cast<String, dynamic>()); });

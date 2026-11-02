@@ -81,7 +81,7 @@ import 'test_grid_project_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,8 +89,11 @@ import 'test_grid_project_vpc_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_devicefarm_testgridproject" "example" {
-///   vpc_config = {
+/// resource "aws_devicefarm_test_grid_project" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpc_config {
 ///     vpc_id             = exampleAwsVpc.id
 ///     subnet_ids         = exampleAwsSubnet[*].id
 ///     security_group_ids = exampleAwsSecurityGroup[*].id
@@ -122,9 +125,9 @@ import 'test_grid_project_vpc_config.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new TestGridProject("example", TestGridProjectArgs.builder()
 ///             .vpcConfig(TestGridProjectVpcConfigArgs.builder()
-///                 .vpcId(exampleAwsVpc.id())
-///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
-///                 .securityGroupIds(exampleAwsSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+///                 .vpcId(exampleAwsVpc.get("id"))
+///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
+///                 .securityGroupIds(exampleAwsSecurityGroup.stream().map(element -> element.get("id")).collect(toList()))
 ///                 .build())
 ///             .name("example")
 ///             .build());
@@ -176,7 +179,7 @@ class TestGridProject extends pulumi.CustomResource {
           'aws:devicefarm/testGridProject:TestGridProject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

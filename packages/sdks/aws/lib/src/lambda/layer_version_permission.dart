@@ -82,7 +82,7 @@ import 'layer_version_permission_state.dart';
 ///     var exampleLayerVersionPermission = new Aws.Lambda.LayerVersionPermission("example", new()
 ///     {
 ///         LayerName = example.LayerName,
-///         VersionNumber = example.Version,
+///         VersionNumber = example.Version.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         Principal = "123456789012",
 ///         Action = "lambda:GetLayerVersion",
 ///         StatementId = "dev-account-access",
@@ -129,7 +129,7 @@ import 'layer_version_permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -138,16 +138,22 @@ import 'layer_version_permission_state.dart';
 /// }
 ///
 /// # Lambda layer to share
-/// resource "aws_lambda_layerversion" "example" {
-///   code                = fileArchive("layer.zip")
+/// resource "aws_lambda_layer_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename            = filearchive("layer.zip")
 ///   layer_name          = "shared_utilities"
 ///   description         = "Common utilities for Lambda functions"
 ///   compatible_runtimes = ["nodejs24.x", "python3.12"]
 /// }
 /// # Grant permission to specific AWS account
-/// resource "aws_lambda_layerversionpermission" "example" {
-///   layer_name     = aws_lambda_layerversion.example.layer_name
-///   version_number = aws_lambda_layerversion.example.version
+/// resource "aws_lambda_layer_version_permission" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   layer_name     = aws_lambda_layer_version.example.layer_name
+///   version_number = aws_lambda_layer_version.example.version
 ///   principal      = "123456789012"
 ///   action         = "lambda:GetLayerVersion"
 ///   statement_id   = "dev-account-access"
@@ -234,7 +240,7 @@ import 'layer_version_permission_state.dart';
 ///
 /// const example = new aws.lambda.LayerVersionPermission("example", {
 ///     layerName: exampleAwsLambdaLayerVersion.layerName,
-///     versionNumber: Number(exampleAwsLambdaLayerVersion.version),
+///     versionNumber: exampleAwsLambdaLayerVersion.version,
 ///     principal: "*",
 ///     organizationId: "o-1234567890",
 ///     action: "lambda:GetLayerVersion",
@@ -247,7 +253,7 @@ import 'layer_version_permission_state.dart';
 ///
 /// example = aws.lambda_.LayerVersionPermission("example",
 ///     layer_name=example_aws_lambda_layer_version["layerName"],
-///     version_number=int(example_aws_lambda_layer_version["version"]),
+///     version_number=example_aws_lambda_layer_version["version"],
 ///     principal="*",
 ///     organization_id="o-1234567890",
 ///     action="lambda:GetLayerVersion",
@@ -299,7 +305,7 @@ import 'layer_version_permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -307,7 +313,10 @@ import 'layer_version_permission_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_layerversionpermission" "example" {
+/// resource "aws_lambda_layer_version_permission" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   layer_name      = exampleAwsLambdaLayerVersion.layerName
 ///   version_number  = exampleAwsLambdaLayerVersion.version
 ///   principal       = "*"
@@ -338,8 +347,8 @@ import 'layer_version_permission_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LayerVersionPermission("example", LayerVersionPermissionArgs.builder()
-///             .layerName(exampleAwsLambdaLayerVersion.layerName())
-///             .versionNumber(exampleAwsLambdaLayerVersion.version())
+///             .layerName(exampleAwsLambdaLayerVersion.get("layerName"))
+///             .versionNumber(exampleAwsLambdaLayerVersion.get("version"))
 ///             .principal("*")
 ///             .organizationId("o-1234567890")
 ///             .action("lambda:GetLayerVersion")
@@ -372,7 +381,7 @@ import 'layer_version_permission_state.dart';
 ///
 /// const example = new aws.lambda.LayerVersionPermission("example", {
 ///     layerName: exampleAwsLambdaLayerVersion.layerName,
-///     versionNumber: Number(exampleAwsLambdaLayerVersion.version),
+///     versionNumber: exampleAwsLambdaLayerVersion.version,
 ///     principal: "*",
 ///     action: "lambda:GetLayerVersion",
 ///     statementId: "public-access",
@@ -384,7 +393,7 @@ import 'layer_version_permission_state.dart';
 ///
 /// example = aws.lambda_.LayerVersionPermission("example",
 ///     layer_name=example_aws_lambda_layer_version["layerName"],
-///     version_number=int(example_aws_lambda_layer_version["version"]),
+///     version_number=example_aws_lambda_layer_version["version"],
 ///     principal="*",
 ///     action="lambda:GetLayerVersion",
 ///     statement_id="public-access")
@@ -433,7 +442,7 @@ import 'layer_version_permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -441,7 +450,10 @@ import 'layer_version_permission_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_layerversionpermission" "example" {
+/// resource "aws_lambda_layer_version_permission" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   layer_name     = exampleAwsLambdaLayerVersion.layerName
 ///   version_number = exampleAwsLambdaLayerVersion.version
 ///   principal      = "*"
@@ -471,8 +483,8 @@ import 'layer_version_permission_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LayerVersionPermission("example", LayerVersionPermissionArgs.builder()
-///             .layerName(exampleAwsLambdaLayerVersion.layerName())
-///             .versionNumber(exampleAwsLambdaLayerVersion.version())
+///             .layerName(exampleAwsLambdaLayerVersion.get("layerName"))
+///             .versionNumber(exampleAwsLambdaLayerVersion.get("version"))
 ///             .principal("*")
 ///             .action("lambda:GetLayerVersion")
 ///             .statementId("public-access")
@@ -504,21 +516,21 @@ import 'layer_version_permission_state.dart';
 /// // Share with multiple specific accounts
 /// const devAccount = new aws.lambda.LayerVersionPermission("dev_account", {
 ///     layerName: example.layerName,
-///     versionNumber: Number(example.version),
+///     versionNumber: example.version,
 ///     principal: "111111111111",
 ///     action: "lambda:GetLayerVersion",
 ///     statementId: "dev-account",
 /// });
 /// const stagingAccount = new aws.lambda.LayerVersionPermission("staging_account", {
 ///     layerName: example.layerName,
-///     versionNumber: Number(example.version),
+///     versionNumber: example.version,
 ///     principal: "222222222222",
 ///     action: "lambda:GetLayerVersion",
 ///     statementId: "staging-account",
 /// });
 /// const prodAccount = new aws.lambda.LayerVersionPermission("prod_account", {
 ///     layerName: example.layerName,
-///     versionNumber: Number(example.version),
+///     versionNumber: example.version,
 ///     principal: "333333333333",
 ///     action: "lambda:GetLayerVersion",
 ///     statementId: "prod-account",
@@ -531,19 +543,19 @@ import 'layer_version_permission_state.dart';
 /// # Share with multiple specific accounts
 /// dev_account = aws.lambda_.LayerVersionPermission("dev_account",
 ///     layer_name=example["layerName"],
-///     version_number=int(example["version"]),
+///     version_number=example["version"],
 ///     principal="111111111111",
 ///     action="lambda:GetLayerVersion",
 ///     statement_id="dev-account")
 /// staging_account = aws.lambda_.LayerVersionPermission("staging_account",
 ///     layer_name=example["layerName"],
-///     version_number=int(example["version"]),
+///     version_number=example["version"],
 ///     principal="222222222222",
 ///     action="lambda:GetLayerVersion",
 ///     statement_id="staging-account")
 /// prod_account = aws.lambda_.LayerVersionPermission("prod_account",
 ///     layer_name=example["layerName"],
-///     version_number=int(example["version"]),
+///     version_number=example["version"],
 ///     principal="333333333333",
 ///     action="lambda:GetLayerVersion",
 ///     statement_id="prod-account")
@@ -632,7 +644,7 @@ import 'layer_version_permission_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -641,21 +653,30 @@ import 'layer_version_permission_state.dart';
 /// }
 ///
 /// # Share with multiple specific accounts
-/// resource "aws_lambda_layerversionpermission" "dev_account" {
+/// resource "aws_lambda_layer_version_permission" "dev_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   layer_name     = example.layerName
 ///   version_number = example.version
 ///   principal      = "111111111111"
 ///   action         = "lambda:GetLayerVersion"
 ///   statement_id   = "dev-account"
 /// }
-/// resource "aws_lambda_layerversionpermission" "staging_account" {
+/// resource "aws_lambda_layer_version_permission" "staging_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   layer_name     = example.layerName
 ///   version_number = example.version
 ///   principal      = "222222222222"
 ///   action         = "lambda:GetLayerVersion"
 ///   statement_id   = "staging-account"
 /// }
-/// resource "aws_lambda_layerversionpermission" "prod_account" {
+/// resource "aws_lambda_layer_version_permission" "prod_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   layer_name     = example.layerName
 ///   version_number = example.version
 ///   principal      = "333333333333"
@@ -686,24 +707,24 @@ import 'layer_version_permission_state.dart';
 ///     public static void stack(Context ctx) {
 ///         // Share with multiple specific accounts
 ///         var devAccount = new LayerVersionPermission("devAccount", LayerVersionPermissionArgs.builder()
-///             .layerName(example.layerName())
-///             .versionNumber(example.version())
+///             .layerName(example.get("layerName"))
+///             .versionNumber(example.get("version"))
 ///             .principal("111111111111")
 ///             .action("lambda:GetLayerVersion")
 ///             .statementId("dev-account")
 ///             .build());
 ///
 ///         var stagingAccount = new LayerVersionPermission("stagingAccount", LayerVersionPermissionArgs.builder()
-///             .layerName(example.layerName())
-///             .versionNumber(example.version())
+///             .layerName(example.get("layerName"))
+///             .versionNumber(example.get("version"))
 ///             .principal("222222222222")
 ///             .action("lambda:GetLayerVersion")
 ///             .statementId("staging-account")
 ///             .build());
 ///
 ///         var prodAccount = new LayerVersionPermission("prodAccount", LayerVersionPermissionArgs.builder()
-///             .layerName(example.layerName())
-///             .versionNumber(example.version())
+///             .layerName(example.get("layerName"))
+///             .versionNumber(example.get("version"))
 ///             .principal("333333333333")
 ///             .action("lambda:GetLayerVersion")
 ///             .statementId("prod-account")
@@ -788,7 +809,7 @@ class LayerVersionPermission extends pulumi.CustomResource {
           'aws:lambda/layerVersionPermission:LayerVersionPermission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     layerName = registerOutput<String>('layerName');

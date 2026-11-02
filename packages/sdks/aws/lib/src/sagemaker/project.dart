@@ -74,7 +74,7 @@ import 'project_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,7 +83,10 @@ import 'project_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_project" "example" {
-///   service_catalog_provisioning_details = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service_catalog_provisioning_details {
 ///     product_id = exampleAwsServicecatalogProduct.id
 ///   }
 ///   project_name = "example"
@@ -113,7 +116,7 @@ import 'project_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Project("example", ProjectArgs.builder()
 ///             .serviceCatalogProvisioningDetails(ProjectServiceCatalogProvisioningDetailsArgs.builder()
-///                 .productId(exampleAwsServicecatalogProduct.id())
+///                 .productId(exampleAwsServicecatalogProduct.get("id"))
 ///                 .build())
 ///             .projectName("example")
 ///             .build());
@@ -169,7 +172,7 @@ class Project extends pulumi.CustomResource {
           'aws:sagemaker/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     projectDescription = registerOutput<String?>('projectDescription');

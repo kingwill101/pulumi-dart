@@ -104,7 +104,7 @@ import 'security_group_ingress_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vpc.NewSecurityGroupIngressRule(ctx, "example", &vpc.SecurityGroupIngressRuleArgs{
-/// 			SecurityGroupId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			SecurityGroupId: example.ID(),
 /// 			CidrIpv4:        pulumi.String("10.0.0.0/8"),
 /// 			FromPort:        pulumi.Int(80),
 /// 			IpProtocol:      pulumi.String("tcp"),
@@ -118,7 +118,7 @@ import 'security_group_ingress_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -126,7 +126,10 @@ import 'security_group_ingress_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_securitygroup" "example" {
+/// resource "aws_ec2_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   description = "example"
 ///   vpc_id      = main.id
@@ -134,8 +137,11 @@ import 'security_group_ingress_rule_state.dart';
 ///     "Name" = "example"
 ///   }
 /// }
-/// resource "aws_vpc_securitygroupingressrule" "example" {
-///   security_group_id = aws_ec2_securitygroup.example.id
+/// resource "aws_vpc_security_group_ingress_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_group_id = aws_ec2_security_group.example.id
 ///   cidr_ipv4         = "10.0.0.0/8"
 ///   from_port         = 80
 ///   ip_protocol       = "tcp"
@@ -168,7 +174,7 @@ import 'security_group_ingress_rule_state.dart';
 ///         var example = new SecurityGroup("example", SecurityGroupArgs.builder()
 ///             .name("example")
 ///             .description("example")
-///             .vpcId(main.id())
+///             .vpcId(main.get("id"))
 ///             .tags(Map.of("Name", "example"))
 ///             .build());
 ///
@@ -268,7 +274,7 @@ class SecurityGroupIngressRule extends pulumi.CustomResource {
           'aws:vpc/securityGroupIngressRule:SecurityGroupIngressRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cidrIpv4 = registerOutput<String?>('cidrIpv4');

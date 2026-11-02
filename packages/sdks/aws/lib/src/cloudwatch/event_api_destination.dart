@@ -80,7 +80,7 @@ import 'event_api_destination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,7 +88,10 @@ import 'event_api_destination_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_eventapidestination" "test" {
+/// resource "aws_cloudwatch_event_api_destination" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                             = "api-destination"
 ///   description                      = "An API Destination"
 ///   invocation_endpoint              = "https://api.destination.com/endpoint"
@@ -124,7 +127,7 @@ import 'event_api_destination_state.dart';
 ///             .invocationEndpoint("https://api.destination.com/endpoint")
 ///             .httpMethod("POST")
 ///             .invocationRateLimitPerSecond(20)
-///             .connectionArn(testAwsCloudwatchEventConnection.arn())
+///             .connectionArn(testAwsCloudwatchEventConnection.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -193,7 +196,7 @@ class EventApiDestination extends pulumi.CustomResource {
           'aws:cloudwatch/eventApiDestination:EventApiDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionArn = registerOutput<String>('connectionArn');

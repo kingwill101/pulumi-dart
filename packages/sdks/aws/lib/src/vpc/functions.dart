@@ -63,7 +63,7 @@ import 'get_security_group_rules_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,7 @@ import 'get_security_group_rules_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_vpc_getendpointassociations" "example" {
+/// data "aws_vpc_endpoint_associations" "example" {
 ///   vpc_endpoint_id = exampleAwsVpcEndpoint.id
 /// }
 /// ```
@@ -97,7 +97,7 @@ import 'get_security_group_rules_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = VpcFunctions.getEndpointAssociations(GetEndpointAssociationsArgs.builder()
-///             .vpcEndpointId(exampleAwsVpcEndpoint.id())
+///             .vpcEndpointId(exampleAwsVpcEndpoint.get("id"))
 ///             .build());
 ///
 ///     }
@@ -194,7 +194,7 @@ pulumi.Output<GetEndpointAssociationsResult> getEndpointAssociationsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -202,7 +202,7 @@ pulumi.Output<GetEndpointAssociationsResult> getEndpointAssociationsOutput(
 ///   }
 /// }
 ///
-/// data "aws_vpc_getsecuritygrouprule" "example" {
+/// data "aws_vpc_security_group_rule" "example" {
 ///   security_group_rule_id = securityGroupRuleId
 /// }
 /// ```
@@ -332,7 +332,7 @@ pulumi.Output<GetSecurityGroupRuleResult> getSecurityGroupRuleOutput(
 /// 			Filters: []vpc.GetSecurityGroupRulesFilter{
 /// 				{
 /// 					Name: "group-id",
-/// 					Values: pulumi.StringArray{
+/// 					Values: []string{
 /// 						securityGroupId,
 /// 					},
 /// 				},
@@ -346,7 +346,7 @@ pulumi.Output<GetSecurityGroupRuleResult> getSecurityGroupRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -354,8 +354,8 @@ pulumi.Output<GetSecurityGroupRuleResult> getSecurityGroupRuleOutput(
 ///   }
 /// }
 ///
-/// data "aws_vpc_getsecuritygrouprules" "example" {
-///   filters {
+/// data "aws_vpc_security_group_rules" "example" {
+///   filter {
 ///     name   = "group-id"
 ///     values = [securityGroupId]
 ///   }

@@ -154,7 +154,7 @@ import 'traffic_mirror_filter_rule_state.dart';
 /// 		}
 /// 		_, err = ec2.NewTrafficMirrorFilterRule(ctx, "ruleout", &ec2.TrafficMirrorFilterRuleArgs{
 /// 			Description:           pulumi.String("test rule"),
-/// 			TrafficMirrorFilterId: filter.ID().ToIDOutput().ToStringOutput(),
+/// 			TrafficMirrorFilterId: filter.ID(),
 /// 			DestinationCidrBlock:  pulumi.String("10.0.0.0/8"),
 /// 			SourceCidrBlock:       pulumi.String("10.0.0.0/8"),
 /// 			RuleNumber:            pulumi.Int(1),
@@ -174,7 +174,7 @@ import 'traffic_mirror_filter_rule_state.dart';
 /// 				ToPort:   pulumi.Int(10),
 /// 			},
 /// 			Description:           pulumi.String("test rule"),
-/// 			TrafficMirrorFilterId: filter.ID().ToIDOutput().ToStringOutput(),
+/// 			TrafficMirrorFilterId: filter.ID(),
 /// 			DestinationCidrBlock:  pulumi.String("10.0.0.0/8"),
 /// 			SourceCidrBlock:       pulumi.String("10.0.0.0/8"),
 /// 			RuleNumber:            pulumi.Int(1),
@@ -190,7 +190,7 @@ import 'traffic_mirror_filter_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -198,30 +198,39 @@ import 'traffic_mirror_filter_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_trafficmirrorfilter" "filter" {
+/// resource "aws_ec2_traffic_mirror_filter" "filter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description      = "traffic mirror filter - example"
 ///   network_services = ["amazon-dns"]
 /// }
-/// resource "aws_ec2_trafficmirrorfilterrule" "ruleout" {
+/// resource "aws_ec2_traffic_mirror_filter_rule" "ruleout" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description              = "test rule"
-///   traffic_mirror_filter_id = aws_ec2_trafficmirrorfilter.filter.id
+///   traffic_mirror_filter_id = aws_ec2_traffic_mirror_filter.filter.id
 ///   destination_cidr_block   = "10.0.0.0/8"
 ///   source_cidr_block        = "10.0.0.0/8"
 ///   rule_number              = 1
 ///   rule_action              = "accept"
 ///   traffic_direction        = "egress"
 /// }
-/// resource "aws_ec2_trafficmirrorfilterrule" "rulein" {
-///   destination_port_range = {
+/// resource "aws_ec2_traffic_mirror_filter_rule" "rulein" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   destination_port_range {
 ///     from_port = 22
 ///     to_port   = 53
 ///   }
-///   source_port_range = {
+///   source_port_range {
 ///     from_port = 0
 ///     to_port   = 10
 ///   }
 ///   description              = "test rule"
-///   traffic_mirror_filter_id = aws_ec2_trafficmirrorfilter.filter.id
+///   traffic_mirror_filter_id = aws_ec2_traffic_mirror_filter.filter.id
 ///   destination_cidr_block   = "10.0.0.0/8"
 ///   source_cidr_block        = "10.0.0.0/8"
 ///   rule_number              = 1
@@ -377,7 +386,7 @@ class TrafficMirrorFilterRule extends pulumi.CustomResource {
           'aws:ec2/trafficMirrorFilterRule:TrafficMirrorFilterRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

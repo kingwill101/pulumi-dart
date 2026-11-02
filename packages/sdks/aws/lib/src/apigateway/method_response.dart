@@ -133,7 +133,7 @@ import 'method_response_state.dart';
 /// 			return err
 /// 		}
 /// 		myDemoResource, err := apigateway.NewResource(ctx, "MyDemoResource", &apigateway.ResourceArgs{
-/// 			RestApi:  myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:  myDemoAPI.ID(),
 /// 			ParentId: myDemoAPI.RootResourceId,
 /// 			PathPart: pulumi.String("mydemoresource"),
 /// 		})
@@ -141,8 +141,8 @@ import 'method_response_state.dart';
 /// 			return err
 /// 		}
 /// 		myDemoMethod, err := apigateway.NewMethod(ctx, "MyDemoMethod", &apigateway.MethodArgs{
-/// 			RestApi:       myDemoAPI.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId:    myDemoResource.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:       myDemoAPI.ID(),
+/// 			ResourceId:    myDemoResource.ID(),
 /// 			HttpMethod:    pulumi.String("GET"),
 /// 			Authorization: pulumi.String("NONE"),
 /// 		})
@@ -150,8 +150,8 @@ import 'method_response_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewIntegration(ctx, "MyDemoIntegration", &apigateway.IntegrationArgs{
-/// 			RestApi:    myDemoAPI.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId: myDemoResource.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:    myDemoAPI.ID(),
+/// 			ResourceId: myDemoResource.ID(),
 /// 			HttpMethod: myDemoMethod.HttpMethod,
 /// 			Type:       pulumi.String("MOCK"),
 /// 		})
@@ -159,8 +159,8 @@ import 'method_response_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewMethodResponse(ctx, "response_200", &apigateway.MethodResponseArgs{
-/// 			RestApi:    myDemoAPI.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId: myDemoResource.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:    myDemoAPI.ID(),
+/// 			ResourceId: myDemoResource.ID(),
 /// 			HttpMethod: myDemoMethod.HttpMethod,
 /// 			StatusCode: pulumi.String("200"),
 /// 		})
@@ -172,7 +172,7 @@ import 'method_response_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -180,29 +180,44 @@ import 'method_response_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_restapi" "MyDemoAPI" {
+/// resource "aws_apigateway_rest_api" "MyDemoAPI" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "MyDemoAPI"
 ///   description = "This is my API for demonstration purposes"
 /// }
 /// resource "aws_apigateway_resource" "MyDemoResource" {
-///   rest_api  = aws_apigateway_restapi.MyDemoAPI.id
-///   parent_id = aws_apigateway_restapi.MyDemoAPI.root_resource_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api  = aws_apigateway_rest_api.MyDemoAPI.id
+///   parent_id = aws_apigateway_rest_api.MyDemoAPI.root_resource_id
 ///   path_part = "mydemoresource"
 /// }
 /// resource "aws_apigateway_method" "MyDemoMethod" {
-///   rest_api      = aws_apigateway_restapi.MyDemoAPI.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api      = aws_apigateway_rest_api.MyDemoAPI.id
 ///   resource_id   = aws_apigateway_resource.MyDemoResource.id
 ///   http_method   = "GET"
 ///   authorization = "NONE"
 /// }
 /// resource "aws_apigateway_integration" "MyDemoIntegration" {
-///   rest_api    = aws_apigateway_restapi.MyDemoAPI.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api    = aws_apigateway_rest_api.MyDemoAPI.id
 ///   resource_id = aws_apigateway_resource.MyDemoResource.id
 ///   http_method = aws_apigateway_method.MyDemoMethod.http_method
 ///   type        = "MOCK"
 /// }
-/// resource "aws_apigateway_methodresponse" "response_200" {
-///   rest_api    = aws_apigateway_restapi.MyDemoAPI.id
+/// resource "aws_apigateway_method_response" "response_200" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api    = aws_apigateway_rest_api.MyDemoAPI.id
 ///   resource_id = aws_apigateway_resource.MyDemoResource.id
 ///   http_method = aws_apigateway_method.MyDemoMethod.http_method
 ///   status_code = "200"
@@ -520,7 +535,7 @@ import 'method_response_state.dart';
 /// 			return err
 /// 		}
 /// 		myDemoResource, err := apigateway.NewResource(ctx, "MyDemoResource", &apigateway.ResourceArgs{
-/// 			RestApi:  myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:  myDemoAPI.ID(),
 /// 			ParentId: myDemoAPI.RootResourceId,
 /// 			PathPart: pulumi.String("mydemoresource"),
 /// 		})
@@ -528,8 +543,8 @@ import 'method_response_state.dart';
 /// 			return err
 /// 		}
 /// 		myDemoMethod, err := apigateway.NewMethod(ctx, "MyDemoMethod", &apigateway.MethodArgs{
-/// 			RestApi:       myDemoAPI.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId:    myDemoResource.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:       myDemoAPI.ID(),
+/// 			ResourceId:    myDemoResource.ID(),
 /// 			HttpMethod:    pulumi.String("GET"),
 /// 			Authorization: pulumi.String("NONE"),
 /// 		})
@@ -537,8 +552,8 @@ import 'method_response_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewIntegration(ctx, "MyDemoIntegration", &apigateway.IntegrationArgs{
-/// 			RestApi:    myDemoAPI.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId: myDemoResource.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:    myDemoAPI.ID(),
+/// 			ResourceId: myDemoResource.ID(),
 /// 			HttpMethod: myDemoMethod.HttpMethod,
 /// 			Type:       pulumi.String("MOCK"),
 /// 		})
@@ -560,7 +575,7 @@ import 'method_response_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = apigateway.NewModel(ctx, "MyDemoResponseModel", &apigateway.ModelArgs{
-/// 			RestApi:     myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:     myDemoAPI.ID(),
 /// 			Name:        pulumi.String("MyDemoResponseModel"),
 /// 			Description: pulumi.String("API response for MyDemoMethod"),
 /// 			ContentType: pulumi.String("application/json"),
@@ -570,8 +585,8 @@ import 'method_response_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewMethodResponse(ctx, "response_200", &apigateway.MethodResponseArgs{
-/// 			RestApi:    myDemoAPI.ID().ToIDOutput().ToStringOutput(),
-/// 			ResourceId: myDemoResource.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:    myDemoAPI.ID(),
+/// 			ResourceId: myDemoResource.ID(),
 /// 			HttpMethod: myDemoMethod.HttpMethod,
 /// 			StatusCode: pulumi.String("200"),
 /// 			ResponseModels: pulumi.StringMap{
@@ -590,7 +605,7 @@ import 'method_response_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -598,29 +613,44 @@ import 'method_response_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_restapi" "MyDemoAPI" {
+/// resource "aws_apigateway_rest_api" "MyDemoAPI" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "MyDemoAPI"
 ///   description = "This is my API for demonstration purposes"
 /// }
 /// resource "aws_apigateway_resource" "MyDemoResource" {
-///   rest_api  = aws_apigateway_restapi.MyDemoAPI.id
-///   parent_id = aws_apigateway_restapi.MyDemoAPI.root_resource_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api  = aws_apigateway_rest_api.MyDemoAPI.id
+///   parent_id = aws_apigateway_rest_api.MyDemoAPI.root_resource_id
 ///   path_part = "mydemoresource"
 /// }
 /// resource "aws_apigateway_method" "MyDemoMethod" {
-///   rest_api      = aws_apigateway_restapi.MyDemoAPI.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api      = aws_apigateway_rest_api.MyDemoAPI.id
 ///   resource_id   = aws_apigateway_resource.MyDemoResource.id
 ///   http_method   = "GET"
 ///   authorization = "NONE"
 /// }
 /// resource "aws_apigateway_integration" "MyDemoIntegration" {
-///   rest_api    = aws_apigateway_restapi.MyDemoAPI.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api    = aws_apigateway_rest_api.MyDemoAPI.id
 ///   resource_id = aws_apigateway_resource.MyDemoResource.id
 ///   http_method = aws_apigateway_method.MyDemoMethod.http_method
 ///   type        = "MOCK"
 /// }
 /// resource "aws_apigateway_model" "MyDemoResponseModel" {
-///   rest_api     = aws_apigateway_restapi.MyDemoAPI.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api     = aws_apigateway_rest_api.MyDemoAPI.id
 ///   name         = "MyDemoResponseModel"
 ///   description  = "API response for MyDemoMethod"
 ///   content_type = "application/json"
@@ -635,8 +665,11 @@ import 'method_response_state.dart';
 ///     }
 ///   })
 /// }
-/// resource "aws_apigateway_methodresponse" "response_200" {
-///   rest_api    = aws_apigateway_restapi.MyDemoAPI.id
+/// resource "aws_apigateway_method_response" "response_200" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api    = aws_apigateway_rest_api.MyDemoAPI.id
 ///   resource_id = aws_apigateway_resource.MyDemoResource.id
 ///   http_method = aws_apigateway_method.MyDemoMethod.http_method
 ///   status_code = "200"
@@ -852,7 +885,7 @@ class MethodResponse extends pulumi.CustomResource {
           'aws:apigateway/methodResponse:MethodResponse',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     httpMethod = registerOutput<String>('httpMethod');
     region = registerOutput<String>('region');

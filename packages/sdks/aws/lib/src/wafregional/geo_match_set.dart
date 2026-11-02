@@ -102,7 +102,7 @@ import 'geo_match_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -110,12 +110,15 @@ import 'geo_match_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafregional_geomatchset" "geo_match_set" {
-///   geo_match_constraints {
+/// resource "aws_wafregional_geo_match_set" "geo_match_set" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   geo_match_constraint {
 ///     type  = "Country"
 ///     value = "US"
 ///   }
-///   geo_match_constraints {
+///   geo_match_constraint {
 ///     type  = "Country"
 ///     value = "CA"
 ///   }
@@ -202,7 +205,7 @@ class GeoMatchSet extends pulumi.CustomResource {
           'aws:wafregional/geoMatchSet:GeoMatchSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     geoMatchConstraints = registerOutput<List<GeoMatchSetGeoMatchConstraint>?>('geoMatchConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GeoMatchSetGeoMatchConstraint>(guardedValue, (value) => GeoMatchSetGeoMatchConstraint.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');

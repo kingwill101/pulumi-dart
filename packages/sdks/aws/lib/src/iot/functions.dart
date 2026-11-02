@@ -144,7 +144,7 @@ import 'get_registration_code_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -155,10 +155,13 @@ import 'get_registration_code_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_iot_getendpoint" "example" {
+/// data "aws_iot_endpoint" "example" {
 /// }
 ///
 /// resource "kubernetes_pod" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metadata = [{
 ///     "name" = "my-device"
 ///   }]
@@ -166,7 +169,7 @@ import 'get_registration_code_result.dart';
 ///     "container" = [{
 ///       "env" = [{
 ///         "name"  = "IOT_ENDPOINT"
-///         "value" = data.aws_iot_getendpoint.example.endpoint_address
+///         "value" = data.aws_iot_endpoint.example.endpoint_address
 ///       }]
 ///       "image" = "gcr.io/my-project/image-name"
 ///       "name"  = "image-name"
@@ -364,7 +367,7 @@ pulumi.Output<GetEndpointResult> getEndpointOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -375,18 +378,24 @@ pulumi.Output<GetEndpointResult> getEndpointOutput(
 ///   }
 /// }
 ///
-/// data "aws_iot_getregistrationcode" "example" {
+/// data "aws_iot_registration_code" "example" {
 /// }
 ///
-/// resource "tls_privatekey" "verification" {
+/// resource "tls_private_key" "verification" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   algorithm = "RSA"
 /// }
-/// resource "tls_certrequest" "verification" {
-///   subject = [{
-///     "commonName" = data.aws_iot_getregistrationcode.example.registration_code
-///   }]
+/// resource "tls_cert_request" "verification" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   subject {
+///     common_name = data.aws_iot_registration_code.example.registration_code
+///   }
 ///   key_algorithm   = "RSA"
-///   private_key_pem = tls_privatekey.verification.private_key_pem
+///   private_key_pem = tls_private_key.verification.private_key_pem
 /// }
 /// ```
 /// ```java

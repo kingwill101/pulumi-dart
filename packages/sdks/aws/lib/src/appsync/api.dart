@@ -142,7 +142,7 @@ import 'api_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -151,19 +151,22 @@ import 'api_state.dart';
 /// }
 ///
 /// resource "aws_appsync_api" "example" {
-///   event_config = {
-///     auth_providers = [{
-///       "authType" = "API_KEY"
-///     }]
-///     connection_auth_modes = [{
-///       "authType" = "API_KEY"
-///     }]
-///     default_publish_auth_modes = [{
-///       "authType" = "API_KEY"
-///     }]
-///     default_subscribe_auth_modes = [{
-///       "authType" = "API_KEY"
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   event_config {
+///     auth_provider {
+///       auth_type = "API_KEY"
+///     }
+///     connection_auth_mode {
+///       auth_type = "API_KEY"
+///     }
+///     default_publish_auth_mode {
+///       auth_type = "API_KEY"
+///     }
+///     default_subscribe_auth_mode {
+///       auth_type = "API_KEY"
+///     }
 ///   }
 ///   name = "example-event-api"
 /// }
@@ -376,7 +379,7 @@ import 'api_state.dart';
 /// 				AuthProviders: appsync.ApiEventConfigAuthProviderArray{
 /// 					&appsync.ApiEventConfigAuthProviderArgs{
 /// 						CognitoConfig: &appsync.ApiEventConfigAuthProviderCognitoConfigArgs{
-/// 							UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
+/// 							UserPoolId: example.ID(),
 /// 							AwsRegion:  pulumi.String(current.Region),
 /// 						},
 /// 						AuthType: pulumi.String("AMAZON_COGNITO_USER_POOLS"),
@@ -408,7 +411,7 @@ import 'api_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -416,30 +419,36 @@ import 'api_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
 ///
-/// resource "aws_cognito_userpool" "example" {
+/// resource "aws_cognito_user_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-user-pool"
 /// }
 /// resource "aws_appsync_api" "example" {
-///   event_config = {
-///     auth_providers = [{
-///       "cognitoConfig" = {
-///         "userPoolId" = aws_cognito_userpool.example.id
-///         "awsRegion"  = data.aws_getregion.current.region
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   event_config {
+///     auth_provider {
+///       cognito_config {
+///         user_pool_id = aws_cognito_user_pool.example.id
+///         aws_region   = data.aws_region.current.region
 ///       }
-///       "authType" = "AMAZON_COGNITO_USER_POOLS"
-///     }]
-///     connection_auth_modes = [{
-///       "authType" = "AMAZON_COGNITO_USER_POOLS"
-///     }]
-///     default_publish_auth_modes = [{
-///       "authType" = "AMAZON_COGNITO_USER_POOLS"
-///     }]
-///     default_subscribe_auth_modes = [{
-///       "authType" = "AMAZON_COGNITO_USER_POOLS"
-///     }]
+///       auth_type = "AMAZON_COGNITO_USER_POOLS"
+///     }
+///     connection_auth_mode {
+///       auth_type = "AMAZON_COGNITO_USER_POOLS"
+///     }
+///     default_publish_auth_mode {
+///       auth_type = "AMAZON_COGNITO_USER_POOLS"
+///     }
+///     default_subscribe_auth_mode {
+///       auth_type = "AMAZON_COGNITO_USER_POOLS"
+///     }
 ///   }
 ///   name = "example-event-api"
 /// }
@@ -690,7 +699,7 @@ import 'api_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -699,23 +708,26 @@ import 'api_state.dart';
 /// }
 ///
 /// resource "aws_appsync_api" "example" {
-///   event_config = {
-///     auth_providers = [{
-///       "lambdaAuthorizerConfig" = {
-///         "authorizerUri"                = exampleAwsLambdaFunction.arn
-///         "authorizerResultTtlInSeconds" = 300
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   event_config {
+///     auth_provider {
+///       lambda_authorizer_config {
+///         authorizer_uri                   = exampleAwsLambdaFunction.arn
+///         authorizer_result_ttl_in_seconds = 300
 ///       }
-///       "authType" = "AWS_LAMBDA"
-///     }]
-///     connection_auth_modes = [{
-///       "authType" = "AWS_LAMBDA"
-///     }]
-///     default_publish_auth_modes = [{
-///       "authType" = "AWS_LAMBDA"
-///     }]
-///     default_subscribe_auth_modes = [{
-///       "authType" = "AWS_LAMBDA"
-///     }]
+///       auth_type = "AWS_LAMBDA"
+///     }
+///     connection_auth_mode {
+///       auth_type = "AWS_LAMBDA"
+///     }
+///     default_publish_auth_mode {
+///       auth_type = "AWS_LAMBDA"
+///     }
+///     default_subscribe_auth_mode {
+///       auth_type = "AWS_LAMBDA"
+///     }
 ///   }
 ///   name = "example-event-api"
 /// }
@@ -751,7 +763,7 @@ import 'api_state.dart';
 ///             .eventConfig(ApiEventConfigArgs.builder()
 ///                 .authProviders(ApiEventConfigAuthProviderArgs.builder()
 ///                     .lambdaAuthorizerConfig(ApiEventConfigAuthProviderLambdaAuthorizerConfigArgs.builder()
-///                         .authorizerUri(exampleAwsLambdaFunction.arn())
+///                         .authorizerUri(exampleAwsLambdaFunction.get("arn"))
 ///                         .authorizerResultTtlInSeconds(300)
 ///                         .build())
 ///                     .authType("AWS_LAMBDA")
@@ -838,7 +850,7 @@ class Api extends pulumi.CustomResource {
           'aws:appsync/api:Api',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     apiArn = registerOutput<String>('apiArn');
     apiId = registerOutput<String>('apiId');

@@ -62,7 +62,7 @@ import 'image_block_public_access_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,10 @@ import 'image_block_public_access_state.dart';
 /// }
 ///
 /// # Prevent making AMIs publicly accessible in the region and account for which the provider is configured
-/// resource "aws_ec2_imageblockpublicaccess" "test" {
+/// resource "aws_ec2_image_block_public_access" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   state = "block-new-sharing"
 /// }
 /// ```
@@ -140,7 +143,7 @@ class ImageBlockPublicAccess extends pulumi.CustomResource {
           'aws:ec2/imageBlockPublicAccess:ImageBlockPublicAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');

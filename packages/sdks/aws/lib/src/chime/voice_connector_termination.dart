@@ -102,7 +102,7 @@ import 'voice_connector_termination_state.dart';
 /// 				pulumi.String("US"),
 /// 				pulumi.String("CA"),
 /// 			},
-/// 			VoiceConnectorId: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			VoiceConnectorId: _default.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -112,7 +112,7 @@ import 'voice_connector_termination_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -120,16 +120,22 @@ import 'voice_connector_termination_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_chime_voiceconnector" "default" {
+/// resource "aws_chime_voice_connector" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "vc-name-test"
 ///   require_encryption = true
 /// }
-/// resource "aws_chime_voiceconnectortermination" "default" {
+/// resource "aws_chime_voice_connector_termination" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disabled           = false
 ///   cps_limit          = 1
-///   cidr_allow_lists   = ["50.35.78.96/31"]
+///   cidr_allow_list    = ["50.35.78.96/31"]
 ///   calling_regions    = ["US", "CA"]
-///   voice_connector_id = aws_chime_voiceconnector.default.id
+///   voice_connector_id = aws_chime_voice_connector.default.id
 /// }
 /// ```
 /// ```java
@@ -230,7 +236,7 @@ class VoiceConnectorTermination extends pulumi.CustomResource {
           'aws:chime/voiceConnectorTermination:VoiceConnectorTermination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     callingRegions = registerOutput<List<String>>('callingRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cidrAllowLists = registerOutput<List<String>>('cidrAllowLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

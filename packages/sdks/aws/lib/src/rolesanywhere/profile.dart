@@ -166,7 +166,7 @@ import 'profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -175,6 +175,9 @@ import 'profile_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test"
 ///   path = "/"
 ///   assume_role_policy = jsonencode({
@@ -190,6 +193,9 @@ import 'profile_state.dart';
 ///   })
 /// }
 /// resource "aws_rolesanywhere_profile" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "example"
 ///   role_arns = [aws_iam_role.test.arn]
 /// }
@@ -319,7 +325,7 @@ class Profile extends pulumi.CustomResource {
           'aws:rolesanywhere/profile:Profile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     acceptRoleSessionName = registerOutput<bool?>('acceptRoleSessionName');
     arn = registerOutput<String>('arn');

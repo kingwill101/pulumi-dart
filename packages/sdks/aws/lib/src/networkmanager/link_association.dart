@@ -66,7 +66,7 @@ import 'link_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'link_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkmanager_linkassociation" "example" {
+/// resource "aws_networkmanager_link_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_network_id = exampleAwsNetworkmanagerGlobalNetwork.id
 ///   link_id           = exampleAwsNetworkmanagerLink.id
 ///   device_id         = exampleAwsNetworkmanagerDevice.id
@@ -102,9 +105,9 @@ import 'link_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LinkAssociation("example", LinkAssociationArgs.builder()
-///             .globalNetworkId(exampleAwsNetworkmanagerGlobalNetwork.id())
-///             .linkId(exampleAwsNetworkmanagerLink.id())
-///             .deviceId(exampleAwsNetworkmanagerDevice.id())
+///             .globalNetworkId(exampleAwsNetworkmanagerGlobalNetwork.get("id"))
+///             .linkId(exampleAwsNetworkmanagerLink.get("id"))
+///             .deviceId(exampleAwsNetworkmanagerDevice.get("id"))
 ///             .build());
 ///
 ///     }
@@ -148,7 +151,7 @@ class LinkAssociation extends pulumi.CustomResource {
           'aws:networkmanager/linkAssociation:LinkAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     deviceId = registerOutput<String>('deviceId');
     globalNetworkId = registerOutput<String>('globalNetworkId');

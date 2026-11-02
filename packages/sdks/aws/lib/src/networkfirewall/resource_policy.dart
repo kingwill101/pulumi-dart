@@ -142,7 +142,7 @@ import 'resource_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -150,7 +150,10 @@ import 'resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_resourcepolicy" "example" {
+/// resource "aws_networkfirewall_resource_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_arn = exampleAwsNetworkfirewallFirewallPolicy.arn
 ///   policy = jsonencode({
 ///     "Statement" = [{
@@ -188,7 +191,7 @@ import 'resource_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourcePolicy("example", ResourcePolicyArgs.builder()
-///             .resourceArn(exampleAwsNetworkfirewallFirewallPolicy.arn())
+///             .resourceArn(exampleAwsNetworkfirewallFirewallPolicy.get("arn"))
 ///             .policy(serializeJson(
 ///                 jsonObject(
 ///                     jsonProperty("Statement", jsonArray(jsonObject(
@@ -199,7 +202,7 @@ import 'resource_policy_state.dart';
 ///                             "network-firewall:AssociateFirewallPolicy"
 ///                         )),
 ///                         jsonProperty("Effect", "Allow"),
-///                         jsonProperty("Resource", exampleAwsNetworkfirewallFirewallPolicy.arn()),
+///                         jsonProperty("Resource", exampleAwsNetworkfirewallFirewallPolicy.get("arn")),
 ///                         jsonProperty("Principal", jsonObject(
 ///                             jsonProperty("AWS", "arn:aws:iam::123456789012:root")
 ///                         ))
@@ -365,7 +368,7 @@ import 'resource_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -373,7 +376,10 @@ import 'resource_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_resourcepolicy" "example" {
+/// resource "aws_networkfirewall_resource_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_arn = exampleAwsNetworkfirewallRuleGroup.arn
 ///   policy = jsonencode({
 ///     "Statement" = [{
@@ -411,7 +417,7 @@ import 'resource_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResourcePolicy("example", ResourcePolicyArgs.builder()
-///             .resourceArn(exampleAwsNetworkfirewallRuleGroup.arn())
+///             .resourceArn(exampleAwsNetworkfirewallRuleGroup.get("arn"))
 ///             .policy(serializeJson(
 ///                 jsonObject(
 ///                     jsonProperty("Statement", jsonArray(jsonObject(
@@ -421,7 +427,7 @@ import 'resource_policy_state.dart';
 ///                             "network-firewall:UpdateFirewallPolicy"
 ///                         )),
 ///                         jsonProperty("Effect", "Allow"),
-///                         jsonProperty("Resource", exampleAwsNetworkfirewallRuleGroup.arn()),
+///                         jsonProperty("Resource", exampleAwsNetworkfirewallRuleGroup.get("arn")),
 ///                         jsonProperty("Principal", jsonObject(
 ///                             jsonProperty("AWS", "arn:aws:iam::123456789012:root")
 ///                         ))
@@ -480,7 +486,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:networkfirewall/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

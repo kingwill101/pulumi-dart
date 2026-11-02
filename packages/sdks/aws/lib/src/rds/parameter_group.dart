@@ -118,7 +118,7 @@ import 'parameter_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -126,7 +126,10 @@ import 'parameter_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rds_parametergroup" "default" {
+/// resource "aws_rds_parameter_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameters {
 ///     name  = "character_set_server"
 ///     value = "utf8"
@@ -280,7 +283,7 @@ import 'parameter_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -288,7 +291,10 @@ import 'parameter_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rds_parametergroup" "test" {
+/// resource "aws_rds_parameter_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameters {
 ///     name  = "default_password_lifetime"
 ///     value = "0"
@@ -406,7 +412,7 @@ import 'parameter_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -414,7 +420,10 @@ import 'parameter_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rds_parametergroup" "test" {
+/// resource "aws_rds_parameter_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "random-test-parameter"
 ///   family = "mysql5.7"
 /// }
@@ -540,7 +549,7 @@ import 'parameter_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -548,7 +557,10 @@ import 'parameter_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rds_parametergroup" "test" {
+/// resource "aws_rds_parameter_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameters {
 ///     name  = "default_password_lifetime"
 ///     value = "1"
@@ -692,7 +704,7 @@ import 'parameter_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -700,7 +712,10 @@ import 'parameter_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rds_parametergroup" "test" {
+/// resource "aws_rds_parameter_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameters {
 ///     apply_method = "pending-reboot"
 ///     name         = "default_password_lifetime"
@@ -814,7 +829,7 @@ class ParameterGroup extends pulumi.CustomResource {
           'aws:rds/parameterGroup:ParameterGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');

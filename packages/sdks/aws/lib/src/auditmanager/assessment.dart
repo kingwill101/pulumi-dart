@@ -152,7 +152,7 @@ import 'assessment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -161,17 +161,20 @@ import 'assessment_state.dart';
 /// }
 ///
 /// resource "aws_auditmanager_assessment" "test" {
-///   assessment_reports_destination = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   assessment_reports_destination {
 ///     destination      ="s3://${testAwsS3Bucket.id}"
 ///     destination_type = "S3"
 ///   }
-///   scope = {
-///     aws_accounts = [{
-///       "id" = current.accountId
-///     }]
-///     aws_services = [{
-///       "serviceName" = "S3"
-///     }]
+///   scope {
+///     aws_accounts {
+///       id = current.accountId
+///     }
+///     aws_services {
+///       service_name = "S3"
+///     }
 ///   }
 ///   roles {
 ///     role_arn  = testAwsIamRole.arn
@@ -209,23 +212,23 @@ import 'assessment_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var test = new Assessment("test", AssessmentArgs.builder()
 ///             .assessmentReportsDestination(AssessmentAssessmentReportsDestinationArgs.builder()
-///                 .destination(String.format("s3://%s", testAwsS3Bucket.id()))
+///                 .destination(String.format("s3://%s", testAwsS3Bucket.get("id")))
 ///                 .destinationType("S3")
 ///                 .build())
 ///             .scope(AssessmentScopeArgs.builder()
 ///                 .awsAccounts(AssessmentScopeAwsAccountArgs.builder()
-///                     .id(current.accountId())
+///                     .id(current.get("accountId"))
 ///                     .build())
 ///                 .awsServices(AssessmentScopeAwsServiceArgs.builder()
 ///                     .serviceName("S3")
 ///                     .build())
 ///                 .build())
 ///             .roles(AssessmentRoleArgs.builder()
-///                 .roleArn(testAwsIamRole.arn())
+///                 .roleArn(testAwsIamRole.get("arn"))
 ///                 .roleType("PROCESS_OWNER")
 ///                 .build())
 ///             .name("example")
-///             .frameworkId(testAwsAuditmanagerFramework.id())
+///             .frameworkId(testAwsAuditmanagerFramework.get("id"))
 ///             .build());
 ///
 ///     }
@@ -310,7 +313,7 @@ class Assessment extends pulumi.CustomResource {
           'aws:auditmanager/assessment:Assessment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     assessmentReportsDestination = registerOutput<AssessmentAssessmentReportsDestination?>('assessmentReportsDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssessmentAssessmentReportsDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });

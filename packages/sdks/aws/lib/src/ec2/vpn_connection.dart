@@ -97,8 +97,8 @@ import 'vpn_connection_vgw_telemetry.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpnConnection(ctx, "example", &ec2.VpnConnectionArgs{
-/// 			CustomerGatewayId: exampleCustomerGateway.ID().ToIDOutput().ToStringOutput(),
-/// 			TransitGatewayId:  example.ID().ToIDOutput().ToStringOutput(),
+/// 			CustomerGatewayId: exampleCustomerGateway.ID(),
+/// 			TransitGatewayId:  example.ID(),
 /// 			Type:              exampleCustomerGateway.Type,
 /// 		})
 /// 		if err != nil {
@@ -109,7 +109,7 @@ import 'vpn_connection_vgw_telemetry.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,17 +117,26 @@ import 'vpn_connection_vgw_telemetry.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_transitgateway" "example" {
+/// resource "aws_ec2transitgateway_transit_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_ec2_customergateway" "example" {
+/// resource "aws_ec2_customer_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bgp_asn    = 65000
 ///   ip_address = "172.0.0.1"
 ///   type       = "ipsec.1"
 /// }
-/// resource "aws_ec2_vpnconnection" "example" {
-///   customer_gateway_id = aws_ec2_customergateway.example.id
-///   transit_gateway_id  = aws_ec2transitgateway_transitgateway.example.id
-///   type                = aws_ec2_customergateway.example.type
+/// resource "aws_ec2_vpn_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   customer_gateway_id = aws_ec2_customer_gateway.example.id
+///   transit_gateway_id  = aws_ec2transitgateway_transit_gateway.example.id
+///   type                = aws_ec2_customer_gateway.example.type
 /// }
 /// ```
 /// ```java
@@ -281,7 +290,7 @@ import 'vpn_connection_vgw_telemetry.dart';
 /// 			return err
 /// 		}
 /// 		vpnGateway, err := ec2.NewVpnGateway(ctx, "vpn_gateway", &ec2.VpnGatewayArgs{
-/// 			VpcId: vpc.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: vpc.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -295,8 +304,8 @@ import 'vpn_connection_vgw_telemetry.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpnConnection(ctx, "main", &ec2.VpnConnectionArgs{
-/// 			VpnGatewayId:      vpnGateway.ID().ToIDOutput().ToStringOutput(),
-/// 			CustomerGatewayId: customerGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			VpnGatewayId:      vpnGateway.ID(),
+/// 			CustomerGatewayId: customerGateway.ID(),
 /// 			Type:              pulumi.String("ipsec.1"),
 /// 			StaticRoutesOnly:  pulumi.Bool(true),
 /// 		})
@@ -308,7 +317,7 @@ import 'vpn_connection_vgw_telemetry.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -317,19 +326,31 @@ import 'vpn_connection_vgw_telemetry.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "vpc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
-/// resource "aws_ec2_vpngateway" "vpn_gateway" {
+/// resource "aws_ec2_vpn_gateway" "vpn_gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = aws_ec2_vpc.vpc.id
 /// }
-/// resource "aws_ec2_customergateway" "customer_gateway" {
+/// resource "aws_ec2_customer_gateway" "customer_gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bgp_asn    = 65000
 ///   ip_address = "172.0.0.1"
 ///   type       = "ipsec.1"
 /// }
-/// resource "aws_ec2_vpnconnection" "main" {
-///   vpn_gateway_id      = aws_ec2_vpngateway.vpn_gateway.id
-///   customer_gateway_id = aws_ec2_customergateway.customer_gateway.id
+/// resource "aws_ec2_vpn_connection" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   vpn_gateway_id      = aws_ec2_vpn_gateway.vpn_gateway.id
+///   customer_gateway_id = aws_ec2_customer_gateway.customer_gateway.id
 ///   type                = "ipsec.1"
 ///   static_routes_only  = true
 /// }
@@ -598,8 +619,8 @@ import 'vpn_connection_vgw_telemetry.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directconnect.NewGatewayAssociation(ctx, "example", &directconnect.GatewayAssociationArgs{
-/// 			DxGatewayId:         exampleGateway.ID().ToIDOutput().ToStringOutput(),
-/// 			AssociatedGatewayId: exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			DxGatewayId:         exampleGateway.ID(),
+/// 			AssociatedGatewayId: exampleTransitGateway.ID(),
 /// 			AllowedPrefixes: pulumi.StringArray{
 /// 				pulumi.String("10.0.0.0/8"),
 /// 			},
@@ -608,13 +629,13 @@ import 'vpn_connection_vgw_telemetry.dart';
 /// 			return err
 /// 		}
 /// 		example := ec2transitgateway.GetDirectConnectGatewayAttachmentOutput(ctx, ec2transitgateway.GetDirectConnectGatewayAttachmentOutputArgs{
-/// 			TransitGatewayId: exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
-/// 			DxGatewayId:      exampleGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			TransitGatewayId: exampleTransitGateway.ID(),
+/// 			DxGatewayId:      exampleGateway.ID(),
 /// 		}, nil)
 /// 		_, err = ec2.NewVpnConnection(ctx, "example", &ec2.VpnConnectionArgs{
-/// 			CustomerGatewayId:                   exampleCustomerGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			CustomerGatewayId:                   exampleCustomerGateway.ID(),
 /// 			OutsideIpAddressType:                pulumi.String("PrivateIpv4"),
-/// 			TransitGatewayId:                    exampleTransitGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			TransitGatewayId:                    exampleTransitGateway.ID(),
 /// 			TransportTransitGatewayAttachmentId: example.Id(),
 /// 			Type:                                pulumi.String("ipsec.1"),
 /// 			Tags: pulumi.StringMap{
@@ -629,7 +650,7 @@ import 'vpn_connection_vgw_telemetry.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -637,21 +658,30 @@ import 'vpn_connection_vgw_telemetry.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2transitgateway_getdirectconnectgatewayattachment" "example" {
-///   transit_gateway_id = aws_ec2transitgateway_transitgateway.example.id
+/// data "aws_ec2transitgateway_direct_connect_gateway_attachment" "example" {
+///   transit_gateway_id = aws_ec2transitgateway_transit_gateway.example.id
 ///   dx_gateway_id      = aws_directconnect_gateway.example.id
 /// }
 ///
 /// resource "aws_directconnect_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example_ipsec_vpn_example"
 ///   amazon_side_asn = "64512"
 /// }
-/// resource "aws_ec2transitgateway_transitgateway" "example" {
+/// resource "aws_ec2transitgateway_transit_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   amazon_side_asn             = "64513"
 ///   description                 = "example_ipsec_vpn_example"
 ///   transit_gateway_cidr_blocks = ["10.0.0.0/24"]
 /// }
-/// resource "aws_ec2_customergateway" "example" {
+/// resource "aws_ec2_customer_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bgp_asn    = 64514
 ///   ip_address = "10.0.0.1"
 ///   type       = "ipsec.1"
@@ -659,16 +689,22 @@ import 'vpn_connection_vgw_telemetry.dart';
 ///     "Name" = "example_ipsec_vpn_example"
 ///   }
 /// }
-/// resource "aws_directconnect_gatewayassociation" "example" {
+/// resource "aws_directconnect_gateway_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dx_gateway_id         = aws_directconnect_gateway.example.id
-///   associated_gateway_id = aws_ec2transitgateway_transitgateway.example.id
+///   associated_gateway_id = aws_ec2transitgateway_transit_gateway.example.id
 ///   allowed_prefixes      = ["10.0.0.0/8"]
 /// }
-/// resource "aws_ec2_vpnconnection" "example" {
-///   customer_gateway_id                     = aws_ec2_customergateway.example.id
+/// resource "aws_ec2_vpn_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   customer_gateway_id                     = aws_ec2_customer_gateway.example.id
 ///   outside_ip_address_type                 = "PrivateIpv4"
-///   transit_gateway_id                      = aws_ec2transitgateway_transitgateway.example.id
-///   transport_transit_gateway_attachment_id = data.aws_ec2transitgateway_getdirectconnectgatewayattachment.example.id
+///   transit_gateway_id                      = aws_ec2transitgateway_transit_gateway.example.id
+///   transport_transit_gateway_attachment_id = data.aws_ec2transitgateway_direct_connect_gateway_attachment.example.id
 ///   type                                    = "ipsec.1"
 ///   tags = {
 ///     "Name" = "example_ipsec_vpn_example"
@@ -976,7 +1012,7 @@ class VpnConnection extends pulumi.CustomResource {
           'aws:ec2/vpnConnection:VpnConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['customerGatewayConfiguration', 'tunnel1PresharedKey', 'tunnel2PresharedKey'],
         ) {
     arn = registerOutput<String>('arn');

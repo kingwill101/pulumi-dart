@@ -99,7 +99,7 @@ import 'fsx_open_zfs_file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -107,7 +107,10 @@ import 'fsx_open_zfs_file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_datasync_fsxopenzfsfilesystem" "example" {
+/// resource "aws_datasync_fsx_open_zfs_file_system" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   protocol = {
 ///     nfs = {
 ///       mount_options = {
@@ -151,8 +154,8 @@ import 'fsx_open_zfs_file_system_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
-///             .fsxFilesystemArn(exampleAwsFsxOpenzfsFileSystem.arn())
-///             .securityGroupArns(exampleAwsSecurityGroup.arn())
+///             .fsxFilesystemArn(exampleAwsFsxOpenzfsFileSystem.get("arn"))
+///             .securityGroupArns(exampleAwsSecurityGroup.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -214,7 +217,7 @@ class FsxOpenZfsFileSystem extends pulumi.CustomResource {
           'aws:datasync/fsxOpenZfsFileSystem:FsxOpenZfsFileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');

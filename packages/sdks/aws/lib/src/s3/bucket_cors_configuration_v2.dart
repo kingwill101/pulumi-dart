@@ -159,7 +159,7 @@ import 'bucket_cors_configuration_v2_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -169,7 +169,7 @@ import 'bucket_cors_configuration_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -178,17 +178,23 @@ import 'bucket_cors_configuration_v2_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "mybucket"
 /// }
-/// resource "aws_s3_bucketcorsconfiguration" "example" {
-///   cors_rules {
+/// resource "aws_s3_bucket_cors_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cors_rule {
 ///     allowed_headers = ["*"]
 ///     allowed_methods = ["PUT", "POST"]
 ///     allowed_origins = ["https://s3-website-test.domain.example"]
 ///     expose_headers  = ["ETag"]
 ///     max_age_seconds = 3000
 ///   }
-///   cors_rules {
+///   cors_rule {
 ///     allowed_methods = ["GET"]
 ///     allowed_origins = ["*"]
 ///   }
@@ -325,7 +331,7 @@ class BucketCorsConfigurationV2 extends pulumi.CustomResource {
           'aws:s3/bucketCorsConfigurationV2:BucketCorsConfigurationV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     corsRules = registerOutput<List<BucketCorsConfigurationV2CorsRule>>('corsRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketCorsConfigurationV2CorsRule>(guardedValue, (value) => BucketCorsConfigurationV2CorsRule.fromMap((value as Map).cast<String, dynamic>())); });

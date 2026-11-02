@@ -226,7 +226,7 @@ import 'trust_anchor_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -234,12 +234,15 @@ import 'trust_anchor_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getpartition" "current" {
+/// data "aws_partition" "current" {
 /// }
 ///
-/// resource "aws_acmpca_certificateauthority" "example" {
-///   certificate_authority_configuration = {
-///     subject = {
+/// resource "aws_acmpca_certificate_authority" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate_authority_configuration {
+///     subject {
 ///       common_name = "example.com"
 ///     }
 ///     key_algorithm     = "RSA_4096"
@@ -249,25 +252,34 @@ import 'trust_anchor_state.dart';
 ///   type                            = "ROOT"
 /// }
 /// resource "aws_acmpca_certificate" "test" {
-///   validity = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   validity {
 ///     type  = "YEARS"
 ///     value = 1
 ///   }
-///   certificate_authority_arn   = aws_acmpca_certificateauthority.example.arn
-///   certificate_signing_request = aws_acmpca_certificateauthority.example.certificate_signing_request
+///   certificate_authority_arn   = aws_acmpca_certificate_authority.example.arn
+///   certificate_signing_request = aws_acmpca_certificate_authority.example.certificate_signing_request
 ///   signing_algorithm           = "SHA512WITHRSA"
-///   template_arn                ="arn:${data.aws_getpartition.current.partition}:acm-pca:::template/RootCACertificate/V1"
+///   template_arn                ="arn:${data.aws_partition.current.partition}:acm-pca:::template/RootCACertificate/V1"
 /// }
-/// resource "aws_acmpca_certificateauthoritycertificate" "example" {
-///   certificate_authority_arn = aws_acmpca_certificateauthority.example.arn
+/// resource "aws_acmpca_certificate_authority_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate_authority_arn = aws_acmpca_certificate_authority.example.arn
 ///   certificate               = exampleAwsAcmpcaCertificate.certificate
 ///   certificate_chain         = exampleAwsAcmpcaCertificate.certificateChain
 /// }
-/// resource "aws_rolesanywhere_trustanchor" "test" {
-///   depends_on = [aws_acmpca_certificateauthoritycertificate.example]
-///   source = {
-///     source_data = {
-///       acm_pca_arn = aws_acmpca_certificateauthority.example.arn
+/// resource "aws_rolesanywhere_trust_anchor" "test" {
+///   depends_on = [aws_acmpca_certificate_authority_certificate.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   source {
+///     source_data {
+///       acm_pca_arn = aws_acmpca_certificate_authority.example.arn
 ///     }
 ///     source_type = "AWS_ACM_PCA"
 ///   }
@@ -337,8 +349,8 @@ import 'trust_anchor_state.dart';
 ///
 ///         var exampleCertificateAuthorityCertificate = new CertificateAuthorityCertificate("exampleCertificateAuthorityCertificate", CertificateAuthorityCertificateArgs.builder()
 ///             .certificateAuthorityArn(example.arn())
-///             .certificate(exampleAwsAcmpcaCertificate.certificate())
-///             .certificateChain(exampleAwsAcmpcaCertificate.certificateChain())
+///             .certificate(exampleAwsAcmpcaCertificate.get("certificate"))
+///             .certificateChain(exampleAwsAcmpcaCertificate.get("certificateChain"))
 ///             .build());
 ///
 ///         var testTrustAnchor = new TrustAnchor("testTrustAnchor", TrustAnchorArgs.builder()
@@ -439,7 +451,7 @@ class TrustAnchor extends pulumi.CustomResource {
           'aws:rolesanywhere/trustAnchor:TrustAnchor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     enabled = registerOutput<bool>('enabled');

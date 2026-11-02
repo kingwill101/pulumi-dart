@@ -66,7 +66,7 @@ import 'local_gateway_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'local_gateway_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_localgatewayroute" "example" {
+/// resource "aws_ec2_local_gateway_route" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination_cidr_block                   = "172.16.0.0/16"
 ///   local_gateway_route_table_id             = exampleAwsEc2LocalGatewayRouteTable.id
 ///   local_gateway_virtual_interface_group_id = exampleAwsEc2LocalGatewayVirtualInterfaceGroup.id
@@ -103,8 +106,8 @@ import 'local_gateway_route_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new LocalGatewayRoute("example", LocalGatewayRouteArgs.builder()
 ///             .destinationCidrBlock("172.16.0.0/16")
-///             .localGatewayRouteTableId(exampleAwsEc2LocalGatewayRouteTable.id())
-///             .localGatewayVirtualInterfaceGroupId(exampleAwsEc2LocalGatewayVirtualInterfaceGroup.id())
+///             .localGatewayRouteTableId(exampleAwsEc2LocalGatewayRouteTable.get("id"))
+///             .localGatewayVirtualInterfaceGroupId(exampleAwsEc2LocalGatewayVirtualInterfaceGroup.get("id"))
 ///             .build());
 ///
 ///     }
@@ -150,7 +153,7 @@ class LocalGatewayRoute extends pulumi.CustomResource {
           'aws:ec2/localGatewayRoute:LocalGatewayRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
     localGatewayRouteTableId = registerOutput<String>('localGatewayRouteTableId');

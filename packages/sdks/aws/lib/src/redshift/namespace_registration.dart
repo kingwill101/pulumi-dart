@@ -148,7 +148,7 @@ import 'namespace_registration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -161,20 +161,29 @@ import 'namespace_registration_state.dart';
 ///
 /// data "std_format" "invoke_0" {
 ///   input = "DataCatalog/%s"
-///   args  = [data.aws_getcalleridentity.current.account_id]
+///   args  = [data.aws_caller_identity.current.account_id]
 /// }
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
 /// resource "aws_redshiftserverless_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_name = "example"
 ///   db_name        = "example"
 /// }
 /// resource "aws_redshiftserverless_workgroup" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_name = aws_redshiftserverless_namespace.example.namespace_name
 ///   workgroup_name = "example"
 /// }
-/// resource "aws_redshift_namespaceregistration" "example" {
+/// resource "aws_redshift_namespace_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   consumer_identifier             = data.std_format.invoke_0.result
 ///   namespace_type                  = "serverless"
 ///   serverless_namespace_identifier = aws_redshiftserverless_namespace.example.namespace_name
@@ -403,7 +412,7 @@ import 'namespace_registration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -416,12 +425,15 @@ import 'namespace_registration_state.dart';
 ///
 /// data "std_format" "invoke_0" {
 ///   input = "DataCatalog/%s"
-///   args  = [data.aws_getcalleridentity.current.account_id]
+///   args  = [data.aws_caller_identity.current.account_id]
 /// }
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
 /// resource "aws_redshift_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier = "example"
 ///   database_name      = "example"
 ///   master_username    = "exampleuser"
@@ -429,7 +441,10 @@ import 'namespace_registration_state.dart';
 ///   node_type          = "dc2.large"
 ///   cluster_type       = "single-node"
 /// }
-/// resource "aws_redshift_namespaceregistration" "example" {
+/// resource "aws_redshift_namespace_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   consumer_identifier            = data.std_format.invoke_0.result
 ///   namespace_type                 = "provisioned"
 ///   provisioned_cluster_identifier = aws_redshift_cluster.example.cluster_identifier
@@ -584,7 +599,7 @@ class NamespaceRegistration extends pulumi.CustomResource {
           'aws:redshift/namespaceRegistration:NamespaceRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     consumerIdentifier = registerOutput<String>('consumerIdentifier');
     namespaceType = registerOutput<String>('namespaceType');

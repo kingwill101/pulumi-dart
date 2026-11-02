@@ -62,7 +62,7 @@ import 'snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,6 +71,9 @@ import 'snapshot_state.dart';
 /// }
 ///
 /// resource "aws_redshiftserverless_snapshot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_name = exampleAwsRedshiftserverlessWorkgroup.namespaceName
 ///   snapshot_name  = "example"
 /// }
@@ -97,7 +100,7 @@ import 'snapshot_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Snapshot("example", SnapshotArgs.builder()
-///             .namespaceName(exampleAwsRedshiftserverlessWorkgroup.namespaceName())
+///             .namespaceName(exampleAwsRedshiftserverlessWorkgroup.get("namespaceName"))
 ///             .snapshotName("example")
 ///             .build());
 ///
@@ -157,7 +160,7 @@ class Snapshot extends pulumi.CustomResource {
           'aws:redshiftserverless/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountsWithProvisionedRestoreAccesses = registerOutput<List<String>>('accountsWithProvisionedRestoreAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     accountsWithRestoreAccesses = registerOutput<List<String>>('accountsWithRestoreAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

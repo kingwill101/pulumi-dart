@@ -62,7 +62,7 @@ import 'resolver_rule_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'resolver_rule_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_resolverruleassociation" "example" {
+/// resource "aws_route53_resolver_rule_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resolver_rule_id = sys.id
 ///   vpc_id           = foo.id
 /// }
@@ -97,8 +100,8 @@ import 'resolver_rule_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ResolverRuleAssociation("example", ResolverRuleAssociationArgs.builder()
-///             .resolverRuleId(sys.id())
-///             .vpcId(foo.id())
+///             .resolverRuleId(sys.get("id"))
+///             .vpcId(foo.get("id"))
 ///             .build());
 ///
 ///     }
@@ -155,7 +158,7 @@ class ResolverRuleAssociation extends pulumi.CustomResource {
           'aws:route53/resolverRuleAssociation:ResolverRuleAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

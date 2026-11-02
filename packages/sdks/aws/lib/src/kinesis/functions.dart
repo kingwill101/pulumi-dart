@@ -63,7 +63,7 @@ import 'get_stream_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,7 +71,7 @@ import 'get_stream_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_kinesis_getfirehosedeliverystream" "stream" {
+/// data "aws_kinesis_firehose_delivery_stream" "stream" {
 ///   name = "stream-name"
 /// }
 /// ```
@@ -195,7 +195,7 @@ pulumi.Output<GetFirehoseDeliveryStreamResult> getFirehoseDeliveryStreamOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -203,7 +203,7 @@ pulumi.Output<GetFirehoseDeliveryStreamResult> getFirehoseDeliveryStreamOutput(
 ///   }
 /// }
 ///
-/// data "aws_kinesis_getstream" "stream" {
+/// data "aws_kinesis_stream" "stream" {
 ///   name = "stream-name"
 /// }
 /// ```
@@ -330,7 +330,7 @@ pulumi.Output<GetStreamResult> getStreamOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -338,7 +338,7 @@ pulumi.Output<GetStreamResult> getStreamOutput(
 ///   }
 /// }
 ///
-/// data "aws_kinesis_getstreamconsumer" "example" {
+/// data "aws_kinesis_stream_consumer" "example" {
 ///   name       = "example-consumer"
 ///   stream_arn = exampleAwsKinesisStream.arn
 /// }
@@ -366,7 +366,7 @@ pulumi.Output<GetStreamResult> getStreamOutput(
 ///     public static void stack(Context ctx) {
 ///         final var example = KinesisFunctions.getStreamConsumer(GetStreamConsumerArgs.builder()
 ///             .name("example-consumer")
-///             .streamArn(exampleAwsKinesisStream.arn())
+///             .streamArn(exampleAwsKinesisStream.get("arn"))
 ///             .build());
 ///
 ///     }

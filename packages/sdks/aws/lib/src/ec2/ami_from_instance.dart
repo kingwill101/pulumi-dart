@@ -80,7 +80,7 @@ import 'ami_from_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,7 +88,10 @@ import 'ami_from_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_amifrominstance" "example" {
+/// resource "aws_ec2_ami_from_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   source_instance_id = "i-xxxxxxxx"
 /// }
@@ -211,7 +214,7 @@ class AmiFromInstance extends pulumi.CustomResource {
           'aws:ec2/amiFromInstance:AmiFromInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     architecture = registerOutput<String>('architecture');
     arn = registerOutput<String>('arn');

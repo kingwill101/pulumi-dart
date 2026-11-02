@@ -82,7 +82,7 @@ import 'organization_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,6 +91,9 @@ import 'organization_state.dart';
 /// }
 ///
 /// resource "aws_organizations_organization" "org" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   aws_service_access_principals = ["cloudtrail.amazonaws.com", "config.amazonaws.com"]
 ///   feature_set                   = "ALL"
 /// }
@@ -194,7 +197,7 @@ class Organization extends pulumi.CustomResource {
           'aws:organizations/organization:Organization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accounts = registerOutput<List<OrganizationAccount>>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationAccount>(guardedValue, (value) => OrganizationAccount.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

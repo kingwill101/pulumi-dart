@@ -130,7 +130,7 @@ import 'trust_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directoryservice.NewTrust(ctx, "one", &directoryservice.TrustArgs{
-/// 			DirectoryId:                 oneDirectory.ID().ToIDOutput().ToStringOutput(),
+/// 			DirectoryId:                 oneDirectory.ID(),
 /// 			RemoteDomainName:            twoDirectory.Name,
 /// 			TrustDirection:              pulumi.String("Two-Way"),
 /// 			TrustPassword:               pulumi.String("Some0therPassword"),
@@ -140,7 +140,7 @@ import 'trust_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directoryservice.NewTrust(ctx, "two", &directoryservice.TrustArgs{
-/// 			DirectoryId:                 twoDirectory.ID().ToIDOutput().ToStringOutput(),
+/// 			DirectoryId:                 twoDirectory.ID(),
 /// 			RemoteDomainName:            oneDirectory.Name,
 /// 			TrustDirection:              pulumi.String("Two-Way"),
 /// 			TrustPassword:               pulumi.String("Some0therPassword"),
@@ -154,7 +154,7 @@ import 'trust_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -163,6 +163,9 @@ import 'trust_state.dart';
 /// }
 ///
 /// resource "aws_directoryservice_trust" "one" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   directory_id                   = aws_directoryservice_directory.one.id
 ///   remote_domain_name             = aws_directoryservice_directory.two.name
 ///   trust_direction                = "Two-Way"
@@ -170,6 +173,9 @@ import 'trust_state.dart';
 ///   conditional_forwarder_ip_addrs = aws_directoryservice_directory.two.dns_ip_addresses
 /// }
 /// resource "aws_directoryservice_trust" "two" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   directory_id                   = aws_directoryservice_directory.two.id
 ///   remote_domain_name             = aws_directoryservice_directory.one.name
 ///   trust_direction                = "Two-Way"
@@ -177,10 +183,16 @@ import 'trust_state.dart';
 ///   conditional_forwarder_ip_addrs = aws_directoryservice_directory.one.dns_ip_addresses
 /// }
 /// resource "aws_directoryservice_directory" "one" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "one.example.com"
 ///   type = "MicrosoftAD"
 /// }
 /// resource "aws_directoryservice_directory" "two" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "two.example.com"
 ///   type = "MicrosoftAD"
 /// }
@@ -388,7 +400,7 @@ import 'trust_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directoryservice.NewTrust(ctx, "one", &directoryservice.TrustArgs{
-/// 			DirectoryId:                 oneDirectory.ID().ToIDOutput().ToStringOutput(),
+/// 			DirectoryId:                 oneDirectory.ID(),
 /// 			RemoteDomainName:            twoDirectory.Name,
 /// 			TrustDirection:              pulumi.String("One-Way: Incoming"),
 /// 			TrustPassword:               pulumi.String("Some0therPassword"),
@@ -398,7 +410,7 @@ import 'trust_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directoryservice.NewTrust(ctx, "two", &directoryservice.TrustArgs{
-/// 			DirectoryId:                 twoDirectory.ID().ToIDOutput().ToStringOutput(),
+/// 			DirectoryId:                 twoDirectory.ID(),
 /// 			RemoteDomainName:            oneDirectory.Name,
 /// 			TrustDirection:              pulumi.String("One-Way: Outgoing"),
 /// 			TrustPassword:               pulumi.String("Some0therPassword"),
@@ -412,7 +424,7 @@ import 'trust_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -421,6 +433,9 @@ import 'trust_state.dart';
 /// }
 ///
 /// resource "aws_directoryservice_trust" "one" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   directory_id                   = aws_directoryservice_directory.one.id
 ///   remote_domain_name             = aws_directoryservice_directory.two.name
 ///   trust_direction                = "One-Way: Incoming"
@@ -428,6 +443,9 @@ import 'trust_state.dart';
 ///   conditional_forwarder_ip_addrs = aws_directoryservice_directory.two.dns_ip_addresses
 /// }
 /// resource "aws_directoryservice_trust" "two" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   directory_id                   = aws_directoryservice_directory.two.id
 ///   remote_domain_name             = aws_directoryservice_directory.one.name
 ///   trust_direction                = "One-Way: Outgoing"
@@ -435,10 +453,16 @@ import 'trust_state.dart';
 ///   conditional_forwarder_ip_addrs = aws_directoryservice_directory.one.dns_ip_addresses
 /// }
 /// resource "aws_directoryservice_directory" "one" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "one.example.com"
 ///   type = "MicrosoftAD"
 /// }
 /// resource "aws_directoryservice_directory" "two" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "two.example.com"
 ///   type = "MicrosoftAD"
 /// }
@@ -587,7 +611,7 @@ class Trust extends pulumi.CustomResource {
           'aws:directoryservice/trust:Trust',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     conditionalForwarderIpAddrs = registerOutput<List<String>?>('conditionalForwarderIpAddrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createdDateTime = registerOutput<String>('createdDateTime');

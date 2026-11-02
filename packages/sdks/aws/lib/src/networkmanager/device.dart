@@ -66,7 +66,7 @@ import 'device_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,6 +75,9 @@ import 'device_state.dart';
 /// }
 ///
 /// resource "aws_networkmanager_device" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   global_network_id = exampleAwsNetworkmanagerGlobalNetwork.id
 ///   site_id           = exampleAwsNetworkmanagerSite.id
 /// }
@@ -101,8 +104,8 @@ import 'device_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Device("example", DeviceArgs.builder()
-///             .globalNetworkId(exampleAwsNetworkmanagerGlobalNetwork.id())
-///             .siteId(exampleAwsNetworkmanagerSite.id())
+///             .globalNetworkId(exampleAwsNetworkmanagerGlobalNetwork.get("id"))
+///             .siteId(exampleAwsNetworkmanagerSite.get("id"))
 ///             .build());
 ///
 ///     }
@@ -165,7 +168,7 @@ class Device extends pulumi.CustomResource {
           'aws:networkmanager/device:Device',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsLocation = registerOutput<DeviceAwsLocation?>('awsLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceAwsLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });

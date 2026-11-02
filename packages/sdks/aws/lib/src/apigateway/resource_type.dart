@@ -74,7 +74,7 @@ import 'resource_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewResource(ctx, "MyDemoResource", &apigateway.ResourceArgs{
-/// 			RestApi:  myDemoAPI.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:  myDemoAPI.ID(),
 /// 			ParentId: myDemoAPI.RootResourceId,
 /// 			PathPart: pulumi.String("mydemoresource"),
 /// 		})
@@ -86,7 +86,7 @@ import 'resource_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -94,13 +94,19 @@ import 'resource_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_restapi" "MyDemoAPI" {
+/// resource "aws_apigateway_rest_api" "MyDemoAPI" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "MyDemoAPI"
 ///   description = "This is my API for demonstration purposes"
 /// }
 /// resource "aws_apigateway_resource" "MyDemoResource" {
-///   rest_api  = aws_apigateway_restapi.MyDemoAPI.id
-///   parent_id = aws_apigateway_restapi.MyDemoAPI.root_resource_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rest_api  = aws_apigateway_rest_api.MyDemoAPI.id
+///   parent_id = aws_apigateway_rest_api.MyDemoAPI.root_resource_id
 ///   path_part = "mydemoresource"
 /// }
 /// ```
@@ -203,7 +209,7 @@ class ResourceType extends pulumi.CustomResource {
           'aws:apigateway/resource:Resource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     parentId = registerOutput<String>('parentId');
     path = registerOutput<String>('path');

@@ -219,7 +219,7 @@ import 'contact_flow_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -227,7 +227,10 @@ import 'contact_flow_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_contactflow" "test" {
+/// resource "aws_connect_contact_flow" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name        = "Test"
 ///   description = "Test Contact Flow Description"
@@ -479,7 +482,7 @@ import 'contact_flow_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -490,7 +493,10 @@ import 'contact_flow_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_contactflow" "test" {
+/// resource "aws_connect_contact_flow" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id  = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   name         = "Test"
 ///   description  = "Test Contact Flow Description"
@@ -614,7 +620,7 @@ class ContactFlow extends pulumi.CustomResource {
           'aws:connect/contactFlow:ContactFlow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     contactFlowId = registerOutput<String>('contactFlowId');

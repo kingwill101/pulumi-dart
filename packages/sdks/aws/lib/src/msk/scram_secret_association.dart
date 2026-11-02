@@ -250,7 +250,7 @@ import 'scram_secret_association_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		exampleSecretVersion, err := secretsmanager.NewSecretVersion(ctx, "example", &secretsmanager.SecretVersionArgs{
-/// 			SecretId:     exampleSecret.ID().ToIDOutput().ToStringOutput(),
+/// 			SecretId:     exampleSecret.ID(),
 /// 			SecretString: pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
@@ -301,7 +301,7 @@ import 'scram_secret_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -309,8 +309,8 @@ import 'scram_secret_association_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["kafka.amazonaws.com"]
@@ -322,36 +322,54 @@ import 'scram_secret_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_msk_scramsecretassociation" "example" {
-///   depends_on       = [aws_secretsmanager_secretversion.example]
-///   cluster_arn      = aws_msk_cluster.example.arn
-///   secret_arn_lists = [aws_secretsmanager_secret.example.arn]
+/// resource "aws_msk_scram_secret_association" "example" {
+///   depends_on = [aws_secretsmanager_secret_version.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_arn     = aws_msk_cluster.example.arn
+///   secret_arn_list = [aws_secretsmanager_secret.example.arn]
 /// }
 /// resource "aws_msk_cluster" "example" {
-///   client_authentication = {
-///     sasl = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   client_authentication {
+///     sasl {
 ///       scram = true
 ///     }
 ///   }
 ///   cluster_name = "example"
 /// }
 /// resource "aws_secretsmanager_secret" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "AmazonMSK_example"
 ///   kms_key_id = aws_kms_key.example.key_id
 /// }
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "Example Key for MSK Cluster Scram Secret Association"
 /// }
-/// resource "aws_secretsmanager_secretversion" "example" {
+/// resource "aws_secretsmanager_secret_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = aws_secretsmanager_secret.example.id
 ///   secret_string = jsonencode({
 ///     "username" = "user"
 ///     "password" = "pass"
 ///   })
 /// }
-/// resource "aws_secretsmanager_secretpolicy" "example" {
+/// resource "aws_secretsmanager_secret_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_arn = aws_secretsmanager_secret.example.arn
-///   policy     = data.aws_iam_getpolicydocument.example.json
+///   policy     = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -540,7 +558,7 @@ class ScramSecretAssociation extends pulumi.CustomResource {
           'aws:msk/scramSecretAssociation:ScramSecretAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     clusterArn = registerOutput<String>('clusterArn');
     region = registerOutput<String>('region');

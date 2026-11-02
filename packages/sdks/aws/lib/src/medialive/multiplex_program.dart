@@ -177,7 +177,7 @@ import 'multiplex_program_timeouts.dart';
 /// 				PreferredChannelPipeline: pulumi.String("CURRENTLY_ACTIVE"),
 /// 			},
 /// 			ProgramName: pulumi.String("example_program"),
-/// 			MultiplexId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			MultiplexId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -187,7 +187,7 @@ import 'multiplex_program_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -195,27 +195,33 @@ import 'multiplex_program_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
+/// data "aws_availability_zones" "available" {
 ///   state = "available"
 /// }
 ///
 /// resource "aws_medialive_multiplex" "example" {
-///   multiplex_settings = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   multiplex_settings {
 ///     transport_stream_bitrate                = 1000000
 ///     transport_stream_id                     = 1
 ///     transport_stream_reserved_bitrate       = 1
 ///     maximum_video_buffer_delay_milliseconds = 1000
 ///   }
 ///   name               = "example-multiplex-changed"
-///   availability_zones = [data.aws_getavailabilityzones.available.names[0], data.aws_getavailabilityzones.available.names[1]]
+///   availability_zones = [data.aws_availability_zones.available.names[0], data.aws_availability_zones.available.names[1]]
 ///   start_multiplex    = true
 ///   tags = {
 ///     "tag1" = "value1"
 ///   }
 /// }
-/// resource "aws_medialive_multiplexprogram" "example" {
-///   multiplex_program_settings = {
-///     video_settings = {
+/// resource "aws_medialive_multiplex_program" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   multiplex_program_settings {
+///     video_settings {
 ///       constant_bitrate = 100000
 ///     }
 ///     program_number             = 1
@@ -369,7 +375,7 @@ class MultiplexProgram extends pulumi.CustomResource {
           'aws:medialive/multiplexProgram:MultiplexProgram',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     multiplexId = registerOutput<String>('multiplexId');
     multiplexProgramSettings = registerOutput<MultiplexProgramMultiplexProgramSettings?>('multiplexProgramSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiplexProgramMultiplexProgramSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

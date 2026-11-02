@@ -77,7 +77,7 @@ import 'get_virtual_service_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -85,7 +85,7 @@ import 'get_virtual_service_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_appmesh_getgatewayroute" "test" {
+/// data "aws_appmesh_gateway_route" "test" {
 ///   name                 = "test-route"
 ///   mesh_name            = "test-mesh"
 ///   virtual_gateway_name = "test-gateway"
@@ -212,7 +212,7 @@ pulumi.Output<GetGatewayRouteResult> getGatewayRouteOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -220,7 +220,7 @@ pulumi.Output<GetGatewayRouteResult> getGatewayRouteOutput(
 ///   }
 /// }
 ///
-/// data "aws_appmesh_getmesh" "simple" {
+/// data "aws_appmesh_mesh" "simple" {
 ///   name = "simpleapp"
 /// }
 /// ```
@@ -326,7 +326,7 @@ pulumi.Output<GetGatewayRouteResult> getGatewayRouteOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -334,11 +334,11 @@ pulumi.Output<GetGatewayRouteResult> getGatewayRouteOutput(
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_appmesh_getmesh" "simple" {
+/// data "aws_appmesh_mesh" "simple" {
 ///   name       = "simpleapp"
-///   mesh_owner = data.aws_getcalleridentity.current.account_id
+///   mesh_owner = data.aws_caller_identity.current.account_id
 /// }
 /// ```
 /// ```java
@@ -477,7 +477,7 @@ pulumi.Output<GetMeshResult> getMeshOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -485,7 +485,7 @@ pulumi.Output<GetMeshResult> getMeshOutput(
 ///   }
 /// }
 ///
-/// data "aws_appmesh_getroute" "test" {
+/// data "aws_appmesh_route" "test" {
 ///   name                = "test-route"
 ///   mesh_name           = "test-mesh"
 ///   virtual_router_name = "test-router"
@@ -618,7 +618,7 @@ pulumi.Output<GetRouteResult> getRouteOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -626,7 +626,7 @@ pulumi.Output<GetRouteResult> getRouteOutput(
 ///   }
 /// }
 ///
-/// data "aws_appmesh_getvirtualgateway" "example" {
+/// data "aws_appmesh_virtual_gateway" "example" {
 ///   mesh_name = "mesh-gateway"
 ///   name      = "example-mesh"
 /// }
@@ -672,8 +672,74 @@ pulumi.Output<GetRouteResult> getRouteOutput(
 ///
 ///
 ///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const current = aws.getCallerIdentity({});
+/// const test = aws.appmesh.getVirtualGateway({
+///     name: "example.mesh.local",
+///     meshName: "example-mesh",
+///     meshOwner: current.then(current => current.accountId),
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// current = aws.get_caller_identity()
+/// test = aws.appmesh.get_virtual_gateway(name="example.mesh.local",
+///     mesh_name="example-mesh",
+///     mesh_owner=current.account_id)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var current = Aws.GetCallerIdentity.Invoke();
+///
+///     var test = Aws.AppMesh.GetVirtualGateway.Invoke(new()
+///     {
+///         Name = "example.mesh.local",
+///         MeshName = "example-mesh",
+///         MeshOwner = current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/appmesh"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		current, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = appmesh.LookupVirtualGateway(ctx, &appmesh.LookupVirtualGatewayArgs{
+/// 			Name:      "example.mesh.local",
+/// 			MeshName:  "example-mesh",
+/// 			MeshOwner: current.AccountId,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -681,12 +747,47 @@ pulumi.Output<GetRouteResult> getRouteOutput(
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_appmesh_getvirtualgateway" "test" {
+/// data "aws_appmesh_virtual_gateway" "test" {
 ///   name       = "example.mesh.local"
 ///   mesh_name  = "example-mesh"
-///   mesh_owner = data.aws_getcalleridentity.current.account_id
+///   mesh_owner = data.aws_caller_identity.current.account_id
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetCallerIdentityArgs;
+/// import com.pulumi.aws.appmesh.AppmeshFunctions;
+/// import com.pulumi.aws.appmesh.inputs.GetVirtualGatewayArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var current = AwsFunctions.getCallerIdentity(GetCallerIdentityArgs.builder()
+///             .build());
+///
+///         final var test = AppmeshFunctions.getVirtualGateway(GetVirtualGatewayArgs.builder()
+///             .name("example.mesh.local")
+///             .meshName("example-mesh")
+///             .meshOwner(current.accountId())
+///             .build());
+///
+///     }
 /// }
 /// ```
 /// ```yaml
@@ -788,7 +889,7 @@ pulumi.Output<GetVirtualGatewayResult> getVirtualGatewayOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -796,7 +897,7 @@ pulumi.Output<GetVirtualGatewayResult> getVirtualGatewayOutput(
 ///   }
 /// }
 ///
-/// data "aws_appmesh_getvirtualnode" "test" {
+/// data "aws_appmesh_virtual_node" "test" {
 ///   name      = "serviceBv1"
 ///   mesh_name = "example-mesh"
 /// }
@@ -924,7 +1025,7 @@ pulumi.Output<GetVirtualNodeResult> getVirtualNodeOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -932,7 +1033,7 @@ pulumi.Output<GetVirtualNodeResult> getVirtualNodeOutput(
 ///   }
 /// }
 ///
-/// data "aws_appmesh_getvirtualrouter" "test" {
+/// data "aws_appmesh_virtual_router" "test" {
 ///   name      = "example-router-name"
 ///   mesh_name = "example-mesh-name"
 /// }
@@ -1060,7 +1161,7 @@ pulumi.Output<GetVirtualRouterResult> getVirtualRouterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1068,7 +1169,7 @@ pulumi.Output<GetVirtualRouterResult> getVirtualRouterOutput(
 ///   }
 /// }
 ///
-/// data "aws_appmesh_getvirtualservice" "test" {
+/// data "aws_appmesh_virtual_service" "test" {
 ///   name      = "example.mesh.local"
 ///   mesh_name = "example-mesh"
 /// }
@@ -1181,7 +1282,7 @@ pulumi.Output<GetVirtualRouterResult> getVirtualRouterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1189,12 +1290,12 @@ pulumi.Output<GetVirtualRouterResult> getVirtualRouterOutput(
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_appmesh_getvirtualservice" "test" {
+/// data "aws_appmesh_virtual_service" "test" {
 ///   name       = "example.mesh.local"
 ///   mesh_name  = "example-mesh"
-///   mesh_owner = data.aws_getcalleridentity.current.account_id
+///   mesh_owner = data.aws_caller_identity.current.account_id
 /// }
 /// ```
 /// ```java

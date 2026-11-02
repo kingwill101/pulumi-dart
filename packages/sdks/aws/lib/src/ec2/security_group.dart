@@ -166,7 +166,7 @@ import 'security_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vpc.NewSecurityGroupIngressRule(ctx, "allow_tls_ipv4", &vpc.SecurityGroupIngressRuleArgs{
-/// 			SecurityGroupId: allowTls.ID().ToIDOutput().ToStringOutput(),
+/// 			SecurityGroupId: allowTls.ID(),
 /// 			CidrIpv4:        pulumi.Any(main.CidrBlock),
 /// 			FromPort:        pulumi.Int(443),
 /// 			IpProtocol:      pulumi.String("tcp"),
@@ -176,7 +176,7 @@ import 'security_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vpc.NewSecurityGroupIngressRule(ctx, "allow_tls_ipv6", &vpc.SecurityGroupIngressRuleArgs{
-/// 			SecurityGroupId: allowTls.ID().ToIDOutput().ToStringOutput(),
+/// 			SecurityGroupId: allowTls.ID(),
 /// 			CidrIpv6:        pulumi.Any(main.Ipv6CidrBlock),
 /// 			FromPort:        pulumi.Int(443),
 /// 			IpProtocol:      pulumi.String("tcp"),
@@ -186,7 +186,7 @@ import 'security_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vpc.NewSecurityGroupEgressRule(ctx, "allow_all_traffic_ipv4", &vpc.SecurityGroupEgressRuleArgs{
-/// 			SecurityGroupId: allowTls.ID().ToIDOutput().ToStringOutput(),
+/// 			SecurityGroupId: allowTls.ID(),
 /// 			CidrIpv4:        pulumi.String("0.0.0.0/0"),
 /// 			IpProtocol:      pulumi.String("-1"),
 /// 		})
@@ -194,7 +194,7 @@ import 'security_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vpc.NewSecurityGroupEgressRule(ctx, "allow_all_traffic_ipv6", &vpc.SecurityGroupEgressRuleArgs{
-/// 			SecurityGroupId: allowTls.ID().ToIDOutput().ToStringOutput(),
+/// 			SecurityGroupId: allowTls.ID(),
 /// 			CidrIpv6:        pulumi.String("::/0"),
 /// 			IpProtocol:      pulumi.String("-1"),
 /// 		})
@@ -206,7 +206,7 @@ import 'security_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -214,7 +214,10 @@ import 'security_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_securitygroup" "allow_tls" {
+/// resource "aws_ec2_security_group" "allow_tls" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "allow_tls"
 ///   description = "Allow TLS inbound traffic and all outbound traffic"
 ///   vpc_id      = main.id
@@ -222,27 +225,39 @@ import 'security_group_state.dart';
 ///     "Name" = "allow_tls"
 ///   }
 /// }
-/// resource "aws_vpc_securitygroupingressrule" "allow_tls_ipv4" {
-///   security_group_id = aws_ec2_securitygroup.allow_tls.id
+/// resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_group_id = aws_ec2_security_group.allow_tls.id
 ///   cidr_ipv4         = main.cidrBlock
 ///   from_port         = 443
 ///   ip_protocol       = "tcp"
 ///   to_port           = 443
 /// }
-/// resource "aws_vpc_securitygroupingressrule" "allow_tls_ipv6" {
-///   security_group_id = aws_ec2_securitygroup.allow_tls.id
+/// resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv6" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_group_id = aws_ec2_security_group.allow_tls.id
 ///   cidr_ipv6         = main.ipv6CidrBlock
 ///   from_port         = 443
 ///   ip_protocol       = "tcp"
 ///   to_port           = 443
 /// }
-/// resource "aws_vpc_securitygroupegressrule" "allow_all_traffic_ipv4" {
-///   security_group_id = aws_ec2_securitygroup.allow_tls.id
+/// resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_group_id = aws_ec2_security_group.allow_tls.id
 ///   cidr_ipv4         = "0.0.0.0/0"
 ///   ip_protocol       = "-1"
 /// }
-/// resource "aws_vpc_securitygroupegressrule" "allow_all_traffic_ipv6" {
-///   security_group_id = aws_ec2_securitygroup.allow_tls.id
+/// resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv6" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_group_id = aws_ec2_security_group.allow_tls.id
 ///   cidr_ipv6         = "::/0"
 ///   ip_protocol       = "-1"
 /// }
@@ -275,13 +290,13 @@ import 'security_group_state.dart';
 ///         var allowTls = new SecurityGroup("allowTls", SecurityGroupArgs.builder()
 ///             .name("allow_tls")
 ///             .description("Allow TLS inbound traffic and all outbound traffic")
-///             .vpcId(main.id())
+///             .vpcId(main.get("id"))
 ///             .tags(Map.of("Name", "allow_tls"))
 ///             .build());
 ///
 ///         var allowTlsIpv4 = new SecurityGroupIngressRule("allowTlsIpv4", SecurityGroupIngressRuleArgs.builder()
 ///             .securityGroupId(allowTls.id())
-///             .cidrIpv4(main.cidrBlock())
+///             .cidrIpv4(main.get("cidrBlock"))
 ///             .fromPort(443)
 ///             .ipProtocol("tcp")
 ///             .toPort(443)
@@ -289,7 +304,7 @@ import 'security_group_state.dart';
 ///
 ///         var allowTlsIpv6 = new SecurityGroupIngressRule("allowTlsIpv6", SecurityGroupIngressRuleArgs.builder()
 ///             .securityGroupId(allowTls.id())
-///             .cidrIpv6(main.ipv6CidrBlock())
+///             .cidrIpv6(main.get("ipv6CidrBlock"))
 ///             .fromPort(443)
 ///             .ipProtocol("tcp")
 ///             .toPort(443)
@@ -447,7 +462,7 @@ import 'security_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -455,7 +470,10 @@ import 'security_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_securitygroup" "example" {
+/// resource "aws_ec2_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   egress {
 ///     from_port        = 0
 ///     to_port          = 0
@@ -611,7 +629,7 @@ import 'security_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -619,15 +637,21 @@ import 'security_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_securitygroup" "example" {
+/// resource "aws_ec2_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   egress {
 ///     from_port       = 0
 ///     to_port         = 0
 ///     protocol        = "-1"
-///     prefix_list_ids = [aws_ec2_vpcendpoint.my_endpoint.prefix_list_id]
+///     prefix_list_ids = [aws_ec2_vpc_endpoint.my_endpoint.prefix_list_id]
 ///   }
 /// }
-/// resource "aws_ec2_vpcendpoint" "my_endpoint" {
+/// resource "aws_ec2_vpc_endpoint" "my_endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -724,8 +748,8 @@ import 'security_group_state.dart';
 ///     {
 ///         Name = "sg",
 ///         VpcId = exampleAwsVpc.Id,
-///         Ingress = new[] {},
-///         Egress = new[] {},
+///         Ingress = new() {},
+///         Egress = new() {},
 ///     });
 ///
 /// });
@@ -754,7 +778,7 @@ import 'security_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -762,7 +786,10 @@ import 'security_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_securitygroup" "example" {
+/// resource "aws_ec2_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "sg"
 ///   vpc_id = exampleAwsVpc.id
 /// }
@@ -790,7 +817,7 @@ import 'security_group_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new SecurityGroup("example", SecurityGroupArgs.builder()
 ///             .name("sg")
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .ingress()
 ///             .egress()
 ///             .build());
@@ -882,7 +909,7 @@ import 'security_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -890,7 +917,10 @@ import 'security_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_securitygroup" "example" {
+/// resource "aws_ec2_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   timeouts {
 ///     delete = "2m"
 ///   }
@@ -1152,7 +1182,7 @@ import 'security_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1166,34 +1196,50 @@ import 'security_group_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getsecuritygroup" "default" {
+/// data "aws_ec2_security_group" "default" {
 ///   name = "default"
 /// }
 ///
-/// resource "aws_ec2_securitygroup" "example" {
+/// resource "aws_ec2_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "sg"
 ///   tags = {
 ///     "workaround1" = "tagged-name"
-///     "workaround2" = data.aws_ec2_getsecuritygroup.default.id
+///     "workaround2" = data.aws_ec2_security_group.default.id
 ///   }
 /// }
 /// resource "command_local_command" "exampleProvisioner0" {
-///   depends_on = [aws_ec2_securitygroup.example]
-///   create     = "true"
-///   update     = "true"
-///   delete     ="            ENDPOINT_ID=`aws ec2 describe-vpc-endpoints --filters \"Name=tag:Name,Values=${aws_ec2_securitygroup.example.tags.workaround1}\" --query \"VpcEndpoints[0].VpcEndpointId\" --output text` &&
-///             aws ec2 modify-vpc-endpoint --vpc-endpoint-id ${ENDPOINT_ID} --add-security-group-ids ${aws_ec2_securitygroup.example.tags.workaround2} --remove-security-group-ids ${aws_ec2_securitygroup.example.id}
-/// "
+///   depends_on = [aws_ec2_security_group.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   create = "true"
+///   update = "true"
+///   delete = <<DOC
+///             ENDPOINT_ID=`aws ec2 describe-vpc-endpoints --filters \"Name=tag:Name,Values=${aws_ec2_security_group.example.tags.workaround1}\" --query \"VpcEndpoints[0].VpcEndpointId\" --output text` &&
+///             aws ec2 modify-vpc-endpoint --vpc-endpoint-id ${ENDPOINT_ID} --add-security-group-ids ${aws_ec2_security_group.example.tags.workaround2} --remove-security-group-ids ${aws_ec2_security_group.example.id}
+/// DOC
+///
 /// }
 /// resource "null_resource" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   triggers = {
 ///     "rerunUponChangeOf" = join(",", exampleAwsVpcEndpoint.securityGroupIds)
 ///   }
 /// }
 /// resource "command_local_command" "exampleResourceProvisioner0" {
 ///   depends_on = [null_resource.example]
-///   create     ="            aws ec2 modify-vpc-endpoint --vpc-endpoint-id ${exampleAwsVpcEndpoint.id} --remove-security-group-ids ${data.aws_ec2_getsecuritygroup.default.id}
-/// "
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   create = <<DOC
+///             aws ec2 modify-vpc-endpoint --vpc-endpoint-id ${exampleAwsVpcEndpoint.id} --remove-security-group-ids ${data.aws_ec2_security_group.default.id}
+/// DOC
+///
 /// }
 /// ```
 /// ```java
@@ -1252,14 +1298,14 @@ import 'security_group_state.dart';
 ///         var exampleResource = new Resource("exampleResource", ResourceArgs.builder()
 ///             .triggers(Map.of("rerunUponChangeOf", StdFunctions.join(JoinArgs.builder()
 ///                 .separator(",")
-///                 .input(exampleAwsVpcEndpoint.securityGroupIds())
+///                 .input(exampleAwsVpcEndpoint.get("securityGroupIds"))
 ///                 .build()).result()))
 ///             .build());
 ///
 ///         var exampleResourceProvisioner0 = new Command("exampleResourceProvisioner0", CommandArgs.builder()
 ///             .create("""
 ///             aws ec2 modify-vpc-endpoint --vpc-endpoint-id %s --remove-security-group-ids %s
-/// ", exampleAwsVpcEndpoint.id(),default_.id()))
+/// ", exampleAwsVpcEndpoint.get("id"),default_.id()))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(Arrays.asList(exampleResource))
 ///                 .build());
@@ -1373,7 +1419,7 @@ class SecurityGroup extends pulumi.CustomResource {
           'aws:ec2/securityGroup:SecurityGroup',
           name,
           pulumi.Input.mapToInputs((args ?? SecurityGroupArgs()).toMap()),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');

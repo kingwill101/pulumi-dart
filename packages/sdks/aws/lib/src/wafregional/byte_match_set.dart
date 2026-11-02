@@ -102,7 +102,7 @@ import 'byte_match_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -110,9 +110,12 @@ import 'byte_match_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafregional_bytematchset" "byte_set" {
+/// resource "aws_wafregional_byte_match_set" "byte_set" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   byte_match_tuples {
-///     field_to_match = {
+///     field_to_match {
 ///       type = "HEADER"
 ///       data = "referer"
 ///     }
@@ -206,7 +209,7 @@ class ByteMatchSet extends pulumi.CustomResource {
           'aws:wafregional/byteMatchSet:ByteMatchSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     byteMatchTuples = registerOutput<List<ByteMatchSetByteMatchTuple>?>('byteMatchTuples', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ByteMatchSetByteMatchTuple>(guardedValue, (value) => ByteMatchSetByteMatchTuple.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');

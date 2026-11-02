@@ -62,7 +62,7 @@ import 'organizations_access_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'organizations_access_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_notifications_organizationsaccess" "example" {
+/// resource "aws_notifications_organizations_access" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enabled = true
 /// }
 /// ```
@@ -135,7 +138,7 @@ class OrganizationsAccess extends pulumi.CustomResource {
           'aws:notifications/organizationsAccess:OrganizationsAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
     timeouts = registerOutput<OrganizationsAccessTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationsAccessTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

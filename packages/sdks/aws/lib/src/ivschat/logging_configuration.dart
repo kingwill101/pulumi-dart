@@ -85,7 +85,7 @@ import 'logging_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -93,12 +93,18 @@ import 'logging_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_ivschat_loggingconfiguration" "example" {
-///   destination_configuration = {
-///     cloudwatch_logs = {
-///       log_group_name = aws_cloudwatch_loggroup.example.name
+/// resource "aws_ivschat_logging_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   destination_configuration {
+///     cloudwatch_logs {
+///       log_group_name = aws_cloudwatch_log_group.example.name
 ///     }
 ///   }
 /// }
@@ -373,7 +379,7 @@ import 'logging_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
-/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: exampleBucket.ID(),
 /// 			Acl:    pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -394,7 +400,7 @@ import 'logging_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -402,8 +408,8 @@ import 'logging_configuration_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["firehose.amazonaws.com"]
@@ -413,8 +419,11 @@ import 'logging_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_kinesis_firehosedeliverystream" "example" {
-///   extended_s3_configuration = {
+/// resource "aws_kinesis_firehose_delivery_stream" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   extended_s3_configuration {
 ///     role_arn   = aws_iam_role.example.arn
 ///     bucket_arn = aws_s3_bucket.example.arn
 ///   }
@@ -425,20 +434,32 @@ import 'logging_configuration_state.dart';
 ///   }
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket_prefix = "tf-ivschat-logging-bucket"
 /// }
-/// resource "aws_s3_bucketacl" "example" {
+/// resource "aws_s3_bucket_acl" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
 ///   acl    = "private"
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "firehose_example_role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_ivschat_loggingconfiguration" "example" {
-///   destination_configuration = {
-///     firehose = {
-///       delivery_stream_name = aws_kinesis_firehosedeliverystream.example.name
+/// resource "aws_ivschat_logging_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   destination_configuration {
+///     firehose {
+///       delivery_stream_name = aws_kinesis_firehose_delivery_stream.example.name
 ///     }
 ///   }
 /// }
@@ -655,7 +676,7 @@ import 'logging_configuration_state.dart';
 /// 		_, err = ivschat.NewLoggingConfiguration(ctx, "example", &ivschat.LoggingConfigurationArgs{
 /// 			DestinationConfiguration: &ivschat.LoggingConfigurationDestinationConfigurationArgs{
 /// 				S3: &ivschat.LoggingConfigurationDestinationConfigurationS3Args{
-/// 					BucketName: example.ID().ToIDOutput().ToStringOutput(),
+/// 					BucketName: example.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -667,7 +688,7 @@ import 'logging_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -676,12 +697,18 @@ import 'logging_configuration_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket_name   = "tf-ivschat-logging"
 ///   force_destroy = true
 /// }
-/// resource "aws_ivschat_loggingconfiguration" "example" {
-///   destination_configuration = {
-///     s3 = {
+/// resource "aws_ivschat_logging_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   destination_configuration {
+///     s3 {
 ///       bucket_name = aws_s3_bucket.example.id
 ///     }
 ///   }
@@ -787,7 +814,7 @@ class LoggingConfiguration extends pulumi.CustomResource {
           'aws:ivschat/loggingConfiguration:LoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destinationConfiguration = registerOutput<LoggingConfigurationDestinationConfiguration?>('destinationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggingConfigurationDestinationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -164,7 +164,7 @@ import 'container_recipe_target_repository.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -172,17 +172,20 @@ import 'container_recipe_target_repository.dart';
 ///   }
 /// }
 ///
-/// resource "aws_imagebuilder_containerrecipe" "example" {
-///   target_repository = {
+/// resource "aws_imagebuilder_container_recipe" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target_repository {
 ///     repository_name = exampleAwsEcrRepository.name
 ///     service         = "ECR"
 ///   }
-///   components {
-///     parameters {
+///   component {
+///     parameter {
 ///       name  = "Parameter1"
 ///       value = "Value1"
 ///     }
-///     parameters {
+///     parameter {
 ///       name  = "Parameter2"
 ///       value = "Value2"
 ///     }
@@ -192,7 +195,12 @@ import 'container_recipe_target_repository.dart';
 ///   version                  = "1.0.0"
 ///   container_type           = "DOCKER"
 ///   parent_image             = "arn:aws:imagebuilder:eu-central-1:aws:image/amazon-linux-x86-latest/x.x.x"
-///   dockerfile_template_data = "FROM {{{ imagebuilder:parentImage }}}\n{{{ imagebuilder:environments }}}\n{{{ imagebuilder:components }}}\n"
+///   dockerfile_template_data = <<EOF
+/// FROM {{{ imagebuilder:parentImage }}}
+/// {{{ imagebuilder:environments }}}
+/// {{{ imagebuilder:components }}}
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -221,7 +229,7 @@ import 'container_recipe_target_repository.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ContainerRecipe("example", ContainerRecipeArgs.builder()
 ///             .targetRepository(ContainerRecipeTargetRepositoryArgs.builder()
-///                 .repositoryName(exampleAwsEcrRepository.name())
+///                 .repositoryName(exampleAwsEcrRepository.get("name"))
 ///                 .service("ECR")
 ///                 .build())
 ///             .components(ContainerRecipeComponentArgs.builder()
@@ -234,7 +242,7 @@ import 'container_recipe_target_repository.dart';
 ///                         .name("Parameter2")
 ///                         .value("Value2")
 ///                         .build())
-///                 .componentArn(exampleAwsImagebuilderComponent.arn())
+///                 .componentArn(exampleAwsImagebuilderComponent.get("arn"))
 ///                 .build())
 ///             .name("example")
 ///             .version("1.0.0")
@@ -348,7 +356,7 @@ class ContainerRecipe extends pulumi.CustomResource {
           'aws:imagebuilder/containerRecipe:ContainerRecipe',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     components = registerOutput<List<ContainerRecipeComponent>>('components', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerRecipeComponent>(guardedValue, (value) => ContainerRecipeComponent.fromMap((value as Map).cast<String, dynamic>())); });

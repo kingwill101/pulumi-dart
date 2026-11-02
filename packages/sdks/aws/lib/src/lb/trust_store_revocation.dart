@@ -92,7 +92,7 @@ import 'trust_store_revocation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -100,13 +100,19 @@ import 'trust_store_revocation_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lb_truststore" "test" {
+/// resource "aws_lb_trust_store" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                             = "tf-example-lb-ts"
 ///   ca_certificates_bundle_s3_bucket = "..."
 ///   ca_certificates_bundle_s3_key    = "..."
 /// }
-/// resource "aws_lb_truststorerevocation" "test" {
-///   trust_store_arn       = aws_lb_truststore.test.arn
+/// resource "aws_lb_trust_store_revocation" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   trust_store_arn       = aws_lb_trust_store.test.arn
 ///   revocations_s3_bucket = "..."
 ///   revocations_s3_key    = "..."
 /// }
@@ -200,7 +206,7 @@ class TrustStoreRevocation extends pulumi.CustomResource {
           'aws:lb/trustStoreRevocation:TrustStoreRevocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     revocationId = registerOutput<int>('revocationId');

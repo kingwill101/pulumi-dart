@@ -412,14 +412,14 @@ import 'flow_trigger_config.dart';
 /// 			return err
 /// 		}
 /// 		exampleSourceBucketPolicy, err := s3.NewBucketPolicy(ctx, "example_source", &s3.BucketPolicyArgs{
-/// 			Bucket: exampleSourceBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: exampleSourceBucket.ID(),
 /// 			Policy: pulumi.String(exampleSource.Json),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketObjectv2(ctx, "example", &s3.BucketObjectv2Args{
-/// 			Bucket: exampleSourceBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: exampleSourceBucket.ID(),
 /// 			Key:    pulumi.String("example_source.csv"),
 /// 			Source: pulumi.NewFileAsset("example_source.csv"),
 /// 		})
@@ -464,7 +464,7 @@ import 'flow_trigger_config.dart';
 /// 			return err
 /// 		}
 /// 		exampleDestinationBucketPolicy, err := s3.NewBucketPolicy(ctx, "example_destination", &s3.BucketPolicyArgs{
-/// 			Bucket: exampleDestinationBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: exampleDestinationBucket.ID(),
 /// 			Policy: pulumi.String(exampleDestination.Json),
 /// 		})
 /// 		if err != nil {
@@ -522,7 +522,7 @@ import 'flow_trigger_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -530,8 +530,8 @@ import 'flow_trigger_config.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "exampleSource" {
-///   statements {
+/// data "aws_iam_policy_document" "exampleSource" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["appflow.amazonaws.com"]
@@ -542,8 +542,8 @@ import 'flow_trigger_config.dart';
 ///     resources = ["arn:aws:s3:::example-source", "arn:aws:s3:::example-source/*"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "exampleDestination" {
-///   statements {
+/// data "aws_iam_policy_document" "exampleDestination" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["appflow.amazonaws.com"]
@@ -556,52 +556,70 @@ import 'flow_trigger_config.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example_source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example-source"
 /// }
-/// resource "aws_s3_bucketpolicy" "example_source" {
+/// resource "aws_s3_bucket_policy" "example_source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example_source.id
-///   policy = data.aws_iam_getpolicydocument.exampleSource.json
+///   policy = data.aws_iam_policy_document.exampleSource.json
 /// }
-/// resource "aws_s3_bucketobjectv2" "example" {
+/// resource "aws_s3_bucket_objectv2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example_source.id
 ///   key    = "example_source.csv"
-///   source = fileAsset("example_source.csv")
+///   source = fileasset("example_source.csv")
 /// }
 /// resource "aws_s3_bucket" "example_destination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example-destination"
 /// }
-/// resource "aws_s3_bucketpolicy" "example_destination" {
+/// resource "aws_s3_bucket_policy" "example_destination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example_destination.id
-///   policy = data.aws_iam_getpolicydocument.exampleDestination.json
+///   policy = data.aws_iam_policy_document.exampleDestination.json
 /// }
 /// resource "aws_appflow_flow" "example" {
-///   source_flow_config = {
-///     source_connector_properties = {
-///       s3 = {
-///         bucket_name   = aws_s3_bucketpolicy.example_source.bucket
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   source_flow_config {
+///     source_connector_properties {
+///       s3 {
+///         bucket_name   = aws_s3_bucket_policy.example_source.bucket
 ///         bucket_prefix = "example"
 ///       }
 ///     }
 ///     connector_type = "S3"
 ///   }
-///   trigger_config = {
+///   trigger_config {
 ///     trigger_type = "OnDemand"
 ///   }
-///   destination_flow_configs {
-///     destination_connector_properties = {
-///       s3 = {
-///         s3_output_format_config = {
-///           prefix_config = {
+///   destination_flow_config {
+///     destination_connector_properties {
+///       s3 {
+///         s3_output_format_config {
+///           prefix_config {
 ///             prefix_type = "PATH"
 ///           }
 ///         }
-///         bucket_name = aws_s3_bucketpolicy.example_destination.bucket
+///         bucket_name = aws_s3_bucket_policy.example_destination.bucket
 ///       }
 ///     }
 ///     connector_type = "S3"
 ///   }
-///   tasks {
-///     connector_operators {
+///   task {
+///     connector_operator {
 ///       s3 = "NO_OP"
 ///     }
 ///     source_fields     = ["exampleField"]
@@ -916,7 +934,7 @@ class Flow extends pulumi.CustomResource {
           'aws:appflow/flow:Flow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

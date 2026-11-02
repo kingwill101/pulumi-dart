@@ -243,7 +243,7 @@ import 'ssl_negotiation_policy_state.dart';
 /// 				},
 /// 			},
 /// 			Name:         pulumi.String("foo-policy"),
-/// 			LoadBalancer: lb.ID().ToIDOutput().ToStringOutput(),
+/// 			LoadBalancer: lb.ID(),
 /// 			LbPort:       pulumi.Int(443),
 /// 		})
 /// 		if err != nil {
@@ -254,7 +254,7 @@ import 'ssl_negotiation_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -262,7 +262,10 @@ import 'ssl_negotiation_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elb_loadbalancer" "lb" {
+/// resource "aws_elb_load_balancer" "lb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   listeners {
 ///     instance_port      = 8000
 ///     instance_protocol  = "https"
@@ -273,7 +276,10 @@ import 'ssl_negotiation_policy_state.dart';
 ///   name               = "test-lb"
 ///   availability_zones = ["us-east-1a"]
 /// }
-/// resource "aws_elb_sslnegotiationpolicy" "foo" {
+/// resource "aws_elb_ssl_negotiation_policy" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   attributes {
 ///     name  = "Protocol-TLSv1"
 ///     value = "false"
@@ -303,7 +309,7 @@ import 'ssl_negotiation_policy_state.dart';
 ///     value = "false"
 ///   }
 ///   name          = "foo-policy"
-///   load_balancer = aws_elb_loadbalancer.lb.id
+///   load_balancer = aws_elb_load_balancer.lb.id
 ///   lb_port       = 443
 /// }
 /// ```
@@ -451,7 +457,7 @@ class SslNegotiationPolicy extends pulumi.CustomResource {
           'aws:elb/sslNegotiationPolicy:SslNegotiationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     attributes = registerOutput<List<SslNegotiationPolicyAttribute>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SslNegotiationPolicyAttribute>(guardedValue, (value) => SslNegotiationPolicyAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     lbPort = registerOutput<int>('lbPort');

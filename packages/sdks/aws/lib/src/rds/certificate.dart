@@ -57,7 +57,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -66,6 +66,9 @@ import 'certificate_state.dart';
 /// }
 ///
 /// resource "aws_rds_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_identifier = "rds-ca-rsa4096-g1"
 /// }
 /// ```
@@ -139,7 +142,7 @@ class Certificate extends pulumi.CustomResource {
           'aws:rds/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     certificateIdentifier = registerOutput<String>('certificateIdentifier');
     region = registerOutput<String>('region');

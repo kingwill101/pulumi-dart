@@ -111,7 +111,7 @@ import 'sampling_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -119,7 +119,10 @@ import 'sampling_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_xray_samplingrule" "example" {
+/// resource "aws_xray_sampling_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   rule_name      = "example"
 ///   priority       = 9999
 ///   version        = 1
@@ -261,7 +264,7 @@ class SamplingRule extends pulumi.CustomResource {
           'aws:xray/samplingRule:SamplingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attributes = registerOutput<Map<String, String>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

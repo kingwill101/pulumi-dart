@@ -105,7 +105,7 @@ import 'kx_volume_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -113,8 +113,11 @@ import 'kx_volume_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_finspace_kxvolume" "example" {
-///   nas1_configurations {
+/// resource "aws_finspace_kx_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   nas1_configuration {
 ///     size = 1200
 ///     type = "SSD_250"
 ///   }
@@ -153,7 +156,7 @@ import 'kx_volume_state.dart';
 ///                 .type("SSD_250")
 ///                 .build())
 ///             .name("my-tf-kx-volume")
-///             .environmentId(exampleAwsFinspaceKxEnvironment.id())
+///             .environmentId(exampleAwsFinspaceKxEnvironment.get("id"))
 ///             .availabilityZones("use1-az2")
 ///             .azMode("SINGLE")
 ///             .type("NAS_1")
@@ -233,7 +236,7 @@ class KxVolume extends pulumi.CustomResource {
           'aws:finspace/kxVolume:KxVolume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachedClusters = registerOutput<List<KxVolumeAttachedCluster>>('attachedClusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxVolumeAttachedCluster>(guardedValue, (value) => KxVolumeAttachedCluster.fromMap((value as Map).cast<String, dynamic>())); });

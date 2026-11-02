@@ -341,7 +341,7 @@ import 'lifecycle_policy_state.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "dlm_lifecycle", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("dlm-lifecycle-policy"),
-/// 			Role:   dlmLifecycleRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   dlmLifecycleRole.ID(),
 /// 			Policy: pulumi.String(dlmLifecycle.Json),
 /// 		})
 /// 		if err != nil {
@@ -385,7 +385,7 @@ import 'lifecycle_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -393,8 +393,8 @@ import 'lifecycle_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["dlm.amazonaws.com"]
@@ -403,13 +403,13 @@ import 'lifecycle_policy_state.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "dlmLifecycle" {
-///   statements {
+/// data "aws_iam_policy_document" "dlmLifecycle" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["ec2:CreateSnapshot", "ec2:CreateSnapshots", "ec2:DeleteSnapshot", "ec2:DescribeInstances", "ec2:DescribeVolumes", "ec2:DescribeSnapshots"]
 ///     resources = ["*"]
 ///   }
-///   statements {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["ec2:CreateTags"]
 ///     resources = ["arn:aws:ec2:*::snapshot/*"]
@@ -417,31 +417,40 @@ import 'lifecycle_policy_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "dlm_lifecycle_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "dlm-lifecycle-role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "dlm_lifecycle" {
+/// resource "aws_iam_role_policy" "dlm_lifecycle" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "dlm-lifecycle-policy"
 ///   role   = aws_iam_role.dlm_lifecycle_role.id
-///   policy = data.aws_iam_getpolicydocument.dlmLifecycle.json
+///   policy = data.aws_iam_policy_document.dlmLifecycle.json
 /// }
-/// resource "aws_dlm_lifecyclepolicy" "example" {
-///   policy_details = {
-///     schedules = [{
-///       "createRule" = {
-///         "interval"     = 24
-///         "intervalUnit" = "HOURS"
-///         "times"        = "23:45"
+/// resource "aws_dlm_lifecycle_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy_details {
+///     schedule {
+///       create_rule {
+///         interval      = 24
+///         interval_unit = "HOURS"
+///         times         = "23:45"
 ///       }
-///       "retainRule" = {
-///         "count" = 14
+///       retain_rule {
+///         count = 14
 ///       }
-///       "name" = "2 weeks of daily snapshots"
-///       "tagsToAdd" = {
+///       name = "2 weeks of daily snapshots"
+///       tags_to_add = {
 ///         "SnapshotCreator" = "DLM"
 ///       }
-///       "copyTags" = false
-///     }]
+///       copy_tags = false
+///     }
 ///     resource_types = ["VOLUME"]
 ///     target_tags = {
 ///       "Snapshot" = "true"
@@ -744,7 +753,7 @@ import 'lifecycle_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -752,9 +761,12 @@ import 'lifecycle_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dlm_lifecyclepolicy" "example" {
-///   policy_details = {
-///     exclusions = {
+/// resource "aws_dlm_lifecycle_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy_details {
+///     exclusions {
 ///       exclude_boot_volumes = false
 ///       exclude_tags = {
 ///         "test" = "exclude"
@@ -805,7 +817,7 @@ import 'lifecycle_policy_state.dart';
 ///                 .policyLanguage("SIMPLIFIED")
 ///                 .build())
 ///             .description("tf-acc-basic")
-///             .executionRoleArn(exampleAwsIamRole.arn())
+///             .executionRoleArn(exampleAwsIamRole.get("arn"))
 ///             .defaultPolicy("VOLUME")
 ///             .build());
 ///
@@ -1157,7 +1169,7 @@ import 'lifecycle_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1165,13 +1177,13 @@ import 'lifecycle_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_iam_getpolicydocument" "key" {
-///   statements {
+/// data "aws_iam_policy_document" "key" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
-///       identifiers = ["arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"]
+///       identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
 ///     }
 ///     sid       = "Enable IAM User Permissions"
 ///     effect    = "Allow"
@@ -1181,36 +1193,42 @@ import 'lifecycle_policy_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "dlm_cross_region_copy_cmk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "Example Alternate Region KMS Key"
-///   policy      = data.aws_iam_getpolicydocument.key.json
+///   policy      = data.aws_iam_policy_document.key.json
 /// }
-/// resource "aws_dlm_lifecyclepolicy" "example" {
-///   policy_details = {
-///     schedules = [{
-///       "createRule" = {
-///         "interval"     = 24
-///         "intervalUnit" = "HOURS"
-///         "times"        = "23:45"
+/// resource "aws_dlm_lifecycle_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy_details {
+///     schedule {
+///       create_rule {
+///         interval      = 24
+///         interval_unit = "HOURS"
+///         times         = "23:45"
 ///       }
-///       "retainRule" = {
-///         "count" = 14
+///       retain_rule {
+///         count = 14
 ///       }
-///       "crossRegionCopyRules" = [{
-///         "retainRule" = {
-///           "interval"     = 30
-///           "intervalUnit" = "DAYS"
+///       cross_region_copy_rule {
+///         retain_rule {
+///           interval      = 30
+///           interval_unit = "DAYS"
 ///         }
-///         "target"    = "us-west-2"
-///         "encrypted" = true
-///         "cmkArn"    = aws_kms_key.dlm_cross_region_copy_cmk.arn
-///         "copyTags"  = true
-///       }]
-///       "name" = "2 weeks of daily snapshots"
-///       "tagsToAdd" = {
+///         target    = "us-west-2"
+///         encrypted = true
+///         cmk_arn   = aws_kms_key.dlm_cross_region_copy_cmk.arn
+///         copy_tags = true
+///       }
+///       name = "2 weeks of daily snapshots"
+///       tags_to_add = {
 ///         "SnapshotCreator" = "DLM"
 ///       }
-///       "copyTags" = false
-///     }]
+///       copy_tags = false
+///     }
 ///     resource_types = ["VOLUME"]
 ///     target_tags = {
 ///       "Snapshot" = "true"
@@ -1308,7 +1326,7 @@ import 'lifecycle_policy_state.dart';
 ///                 .targetTags(Map.of("Snapshot", "true"))
 ///                 .build())
 ///             .description("example DLM lifecycle policy")
-///             .executionRoleArn(dlmLifecycleRole.arn())
+///             .executionRoleArn(dlmLifecycleRole.get("arn"))
 ///             .state("ENABLED")
 ///             .build());
 ///
@@ -1584,7 +1602,7 @@ import 'lifecycle_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1592,30 +1610,34 @@ import 'lifecycle_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_iam_getpolicy" "example" {
+/// data "aws_iam_policy" "example" {
 ///   name = "AWSDataLifecycleManagerServiceRole"
 /// }
 ///
-/// resource "aws_dlm_lifecyclepolicy" "example" {
-///   policy_details = {
-///     action = {
-///       cross_region_copies = [{
-///         "encryptionConfiguration" = {}
-///         "retainRule" = {
-///           "interval"     = 15
-///           "intervalUnit" = "MONTHS"
+/// resource "aws_dlm_lifecycle_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy_details {
+///     action {
+///       cross_region_copy {
+///         encryption_configuration {
 ///         }
-///         "target" = "us-east-1"
-///       }]
+///         retain_rule {
+///           interval      = 15
+///           interval_unit = "MONTHS"
+///         }
+///         target = "us-east-1"
+///       }
 ///       name = "tf-acc-basic"
 ///     }
-///     event_source = {
-///       parameters = {
+///     event_source {
+///       parameters {
 ///         description_regex = "^.*Created for policy: policy-1234567890abcdef0.*$"
 ///         event_type        = "shareSnapshot"
-///         snapshot_owners   = [data.aws_getcalleridentity.current.account_id]
+///         snapshot_owner    = [data.aws_caller_identity.current.account_id]
 ///       }
 ///       type = "MANAGED_CWE"
 ///     }
@@ -1624,9 +1646,12 @@ import 'lifecycle_policy_state.dart';
 ///   description        = "tf-acc-basic"
 ///   execution_role_arn = exampleAwsIamRole.arn
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example" {
+/// resource "aws_iam_role_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = exampleAwsIamRole.id
-///   policy_arn = data.aws_iam_getpolicy.example.arn
+///   policy_arn = data.aws_iam_policy.example.arn
 /// }
 /// ```
 /// ```java
@@ -1691,7 +1716,7 @@ import 'lifecycle_policy_state.dart';
 ///                 .policyType("EVENT_BASED_POLICY")
 ///                 .build())
 ///             .description("tf-acc-basic")
-///             .executionRoleArn(exampleAwsIamRole.arn())
+///             .executionRoleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///         final var example = IamFunctions.getPolicy(GetPolicyArgs.builder()
@@ -1699,7 +1724,7 @@ import 'lifecycle_policy_state.dart';
 ///             .build());
 ///
 ///         var exampleRolePolicyAttachment = new RolePolicyAttachment("exampleRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
-///             .role(exampleAwsIamRole.id())
+///             .role(exampleAwsIamRole.get("id"))
 ///             .policyArn(example.arn())
 ///             .build());
 ///
@@ -1940,7 +1965,7 @@ import 'lifecycle_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1948,30 +1973,36 @@ import 'lifecycle_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicy" "test" {
+/// data "aws_iam_policy" "test" {
 ///   name = "AWSDataLifecycleManagerSSMFullAccess"
 /// }
 ///
-/// resource "aws_iam_rolepolicyattachment" "example" {
+/// resource "aws_iam_role_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = testAwsIamRole.id
 ///   policy_arn = exampleAwsIamPolicy.arn
 /// }
-/// resource "aws_dlm_lifecyclepolicy" "example" {
-///   policy_details = {
-///     schedules = [{
-///       "createRule" = {
-///         "scripts" = {
-///           "executeOperationOnScriptFailure" = false
-///           "executionHandler"                = "AWS_VSS_BACKUP"
-///           "maximumRetryCount"               = 2
+/// resource "aws_dlm_lifecycle_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   policy_details {
+///     schedule {
+///       create_rule {
+///         scripts {
+///           execute_operation_on_script_failure = false
+///           execution_handler                   = "AWS_VSS_BACKUP"
+///           maximum_retry_count                 = 2
 ///         }
-///         "interval" = 12
+///         interval = 12
 ///       }
-///       "retainRule" = {
-///         "count" = 10
+///       retain_rule {
+///         count = 10
 ///       }
-///       "name" = "Windows VSS"
-///     }]
+///       name = "Windows VSS"
+///     }
 ///     resource_types = ["INSTANCE"]
 ///     target_tags = {
 ///       "tag1" = "Windows"
@@ -2016,8 +2047,8 @@ import 'lifecycle_policy_state.dart';
 ///             .build());
 ///
 ///         var example = new RolePolicyAttachment("example", RolePolicyAttachmentArgs.builder()
-///             .role(testAwsIamRole.id())
-///             .policyArn(exampleAwsIamPolicy.arn())
+///             .role(testAwsIamRole.get("id"))
+///             .policyArn(exampleAwsIamPolicy.get("arn"))
 ///             .build());
 ///
 ///         var exampleLifecyclePolicy = new LifecyclePolicy("exampleLifecyclePolicy", LifecyclePolicyArgs.builder()
@@ -2040,7 +2071,7 @@ import 'lifecycle_policy_state.dart';
 ///                 .targetTags(Map.of("tag1", "Windows"))
 ///                 .build())
 ///             .description("tf-acc-basic")
-///             .executionRoleArn(exampleAwsIamRole.arn())
+///             .executionRoleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -2122,7 +2153,7 @@ class LifecyclePolicy extends pulumi.CustomResource {
           'aws:dlm/lifecyclePolicy:LifecyclePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultPolicy = registerOutput<String?>('defaultPolicy');

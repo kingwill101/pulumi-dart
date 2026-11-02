@@ -130,7 +130,7 @@ import 'route_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -138,7 +138,10 @@ import 'route_table_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_routetable" "example" {
+/// resource "aws_ec2_route_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   routes {
 ///     cidr_block = "10.0.1.0/24"
 ///     gateway_id = exampleAwsInternetGateway.id
@@ -179,13 +182,13 @@ import 'route_table_state.dart';
 ///             .routes(
 ///                 RouteTableRouteArgs.builder()
 ///                     .cidrBlock("10.0.1.0/24")
-///                     .gatewayId(exampleAwsInternetGateway.id())
+///                     .gatewayId(exampleAwsInternetGateway.get("id"))
 ///                     .build(),
 ///                 RouteTableRouteArgs.builder()
 ///                     .ipv6CidrBlock("::/0")
-///                     .egressOnlyGatewayId(exampleAwsEgressOnlyInternetGateway.id())
+///                     .egressOnlyGatewayId(exampleAwsEgressOnlyInternetGateway.get("id"))
 ///                     .build())
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .tags(Map.of("Name", "example"))
 ///             .build());
 ///
@@ -245,7 +248,7 @@ import 'route_table_state.dart';
 ///     var example = new Aws.Ec2.RouteTable("example", new()
 ///     {
 ///         VpcId = exampleAwsVpc.Id,
-///         Routes = new[] {},
+///         Routes = new() {},
 ///         Tags =
 ///         {
 ///             { "Name", "example" },
@@ -279,7 +282,7 @@ import 'route_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -287,7 +290,10 @@ import 'route_table_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_routetable" "example" {
+/// resource "aws_ec2_route_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = exampleAwsVpc.id
 ///   tags = {
 ///     "Name" = "example"
@@ -316,7 +322,7 @@ import 'route_table_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RouteTable("example", RouteTableArgs.builder()
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .routes()
 ///             .tags(Map.of("Name", "example"))
 ///             .build());
@@ -419,7 +425,7 @@ import 'route_table_state.dart';
 /// 					GatewayId: pulumi.String("local"),
 /// 				},
 /// 			},
-/// 			VpcId: test.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: test.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -429,7 +435,7 @@ import 'route_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -438,9 +444,15 @@ import 'route_table_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.0.0/16"
 /// }
-/// resource "aws_ec2_routetable" "test" {
+/// resource "aws_ec2_route_table" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   routes {
 ///     cidr_block = "10.1.0.0/16"
 ///     gateway_id = "local"
@@ -598,13 +610,13 @@ import 'route_table_state.dart';
 /// 		}
 /// 		testSubnet, err := ec2.NewSubnet(ctx, "test", &ec2.SubnetArgs{
 /// 			CidrBlock: pulumi.String("10.1.1.0/24"),
-/// 			VpcId:     test.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:     test.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		testNetworkInterface, err := ec2.NewNetworkInterface(ctx, "test", &ec2.NetworkInterfaceArgs{
-/// 			SubnetId: testSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId: testSubnet.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -613,10 +625,10 @@ import 'route_table_state.dart';
 /// 			Routes: ec2.RouteTableRouteArray{
 /// 				&ec2.RouteTableRouteArgs{
 /// 					CidrBlock:          test.CidrBlock,
-/// 					NetworkInterfaceId: testNetworkInterface.ID().ToIDOutput().ToStringOutput(),
+/// 					NetworkInterfaceId: testNetworkInterface.ID(),
 /// 				},
 /// 			},
-/// 			VpcId: test.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: test.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -626,7 +638,7 @@ import 'route_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -635,20 +647,32 @@ import 'route_table_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.0.0/16"
 /// }
-/// resource "aws_ec2_routetable" "test" {
+/// resource "aws_ec2_route_table" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   routes {
 ///     cidr_block           = aws_ec2_vpc.test.cidr_block
-///     network_interface_id = aws_ec2_networkinterface.test.id
+///     network_interface_id = aws_ec2_network_interface.test.id
 ///   }
 ///   vpc_id = aws_ec2_vpc.test.id
 /// }
 /// resource "aws_ec2_subnet" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.1.0/24"
 ///   vpc_id     = aws_ec2_vpc.test.id
 /// }
-/// resource "aws_ec2_networkinterface" "test" {
+/// resource "aws_ec2_network_interface" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id = aws_ec2_subnet.test.id
 /// }
 /// ```
@@ -786,7 +810,7 @@ class RouteTable extends pulumi.CustomResource {
           'aws:ec2/routeTable:RouteTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     ownerId = registerOutput<String>('ownerId');

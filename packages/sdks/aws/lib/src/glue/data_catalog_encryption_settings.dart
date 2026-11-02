@@ -99,7 +99,7 @@ import 'data_catalog_encryption_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -107,13 +107,16 @@ import 'data_catalog_encryption_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_glue_datacatalogencryptionsettings" "example" {
-///   data_catalog_encryption_settings = {
-///     connection_password_encryption = {
+/// resource "aws_glue_data_catalog_encryption_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   data_catalog_encryption_settings {
+///     connection_password_encryption {
 ///       aws_kms_key_id                       = test.arn
 ///       return_connection_password_encrypted = true
 ///     }
-///     encryption_at_rest = {
+///     encryption_at_rest {
 ///       catalog_encryption_mode         = "SSE-KMS"
 ///       catalog_encryption_service_role = testAwsIamRole.arn
 ///       sse_aws_kms_key_id              = test.arn
@@ -148,13 +151,13 @@ import 'data_catalog_encryption_settings_state.dart';
 ///         var example = new DataCatalogEncryptionSettings("example", DataCatalogEncryptionSettingsArgs.builder()
 ///             .dataCatalogEncryptionSettings(DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsArgs.builder()
 ///                 .connectionPasswordEncryption(DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryptionArgs.builder()
-///                     .awsKmsKeyId(test.arn())
+///                     .awsKmsKeyId(test.get("arn"))
 ///                     .returnConnectionPasswordEncrypted(true)
 ///                     .build())
 ///                 .encryptionAtRest(DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRestArgs.builder()
 ///                     .catalogEncryptionMode("SSE-KMS")
-///                     .catalogEncryptionServiceRole(testAwsIamRole.arn())
-///                     .sseAwsKmsKeyId(test.arn())
+///                     .catalogEncryptionServiceRole(testAwsIamRole.get("arn"))
+///                     .sseAwsKmsKeyId(test.get("arn"))
 ///                     .build())
 ///                 .build())
 ///             .build());
@@ -205,7 +208,7 @@ class DataCatalogEncryptionSettings extends pulumi.CustomResource {
           'aws:glue/dataCatalogEncryptionSettings:DataCatalogEncryptionSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     dataCatalogEncryptionSettings = registerOutput<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings>('dataCatalogEncryptionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

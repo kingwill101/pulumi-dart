@@ -165,7 +165,7 @@ import 'policy_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -176,8 +176,8 @@ import 'policy_attachment_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "pubsub" {
-///   statements {
+/// data "aws_iam_policy_document" "pubsub" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["iot:*"]
 ///     resources = ["*"]
@@ -185,14 +185,23 @@ import 'policy_attachment_state.dart';
 /// }
 ///
 /// resource "aws_iot_policy" "pubsub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "PubSubToAnyTopic"
-///   policy = data.aws_iam_getpolicydocument.pubsub.json
+///   policy = data.aws_iam_policy_document.pubsub.json
 /// }
 /// resource "aws_iot_certificate" "cert" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   csr    = file("csr.pem")
 ///   active = true
 /// }
-/// resource "aws_iot_policyattachment" "att" {
+/// resource "aws_iot_policy_attachment" "att" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy = aws_iot_policy.pubsub.name
 ///   target = aws_iot_certificate.cert.arn
 /// }
@@ -310,7 +319,7 @@ class PolicyAttachment extends pulumi.CustomResource {
           'aws:iot/policyAttachment:PolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

@@ -136,7 +136,7 @@ import 'rule_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -144,10 +144,13 @@ import 'rule_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_rulegroup" "example" {
-///   rule_group = {
-///     rules_source = {
-///       rules_source_list = {
+/// resource "aws_networkfirewall_rule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule_group {
+///     rules_source {
+///       rules_source_list {
 ///         generated_rules_type = "DENYLIST"
 ///         target_types         = ["HTTP_HOST"]
 ///         targets              = ["test.example.com"]
@@ -433,7 +436,7 @@ import 'rule_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -441,24 +444,30 @@ import 'rule_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_rulegroup" "example" {
-///   rule_group = {
-///     rules_source = {
-///       stateful_rules = [for entry in local.ips : {
-///         "header" = {
-///           "destination"     = "ANY"
-///           "destinationPort" = "ANY"
-///           "protocol"        = "HTTP"
-///           "direction"       = "ANY"
-///           "sourcePort"      = "ANY"
-///           "source"          = entry
+/// resource "aws_networkfirewall_rule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule_group {
+///     rules_source {
+///       dynamic "stateful_rule" {
+///         for_each = local.ips
+///         content {
+///           header {
+///             destination      = "ANY"
+///             destination_port = "ANY"
+///             protocol         = "HTTP"
+///             direction        = "ANY"
+///             source_port      = "ANY"
+///             source           = stateful_rule.value
+///           }
+///           rule_option {
+///             keyword  = "sid"
+///             settings = ["1"]
+///           }
+///           action = "PASS"
 ///         }
-///         "ruleOptions" = [{
-///           "keyword"  = "sid"
-///           "settings" = ["1"]
-///         }]
-///         "action" = "PASS"
-///       } ]
+///       }
 ///     }
 ///   }
 ///   capacity    = 50
@@ -650,7 +659,7 @@ import 'rule_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -658,24 +667,27 @@ import 'rule_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_rulegroup" "example" {
-///   rule_group = {
-///     rules_source = {
-///       stateful_rules = [{
-///         "header" = {
-///           "destination"     = "124.1.1.24/32"
-///           "destinationPort" = 53
-///           "direction"       = "ANY"
-///           "protocol"        = "TCP"
-///           "source"          = "1.2.3.4/32"
-///           "sourcePort"      = 53
+/// resource "aws_networkfirewall_rule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule_group {
+///     rules_source {
+///       stateful_rule {
+///         header {
+///           destination      = "124.1.1.24/32"
+///           destination_port = 53
+///           direction        = "ANY"
+///           protocol         = "TCP"
+///           source           = "1.2.3.4/32"
+///           source_port      = 53
 ///         }
-///         "ruleOptions" = [{
-///           "keyword"  = "sid"
-///           "settings" = ["1"]
-///         }]
-///         "action" = "DROP"
-///       }]
+///         rule_option {
+///           keyword  = "sid"
+///           settings = ["1"]
+///         }
+///         action = "DROP"
+///       }
 ///     }
 ///   }
 ///   capacity = 100
@@ -872,7 +884,7 @@ import 'rule_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -883,7 +895,10 @@ import 'rule_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_rulegroup" "example" {
+/// resource "aws_networkfirewall_rule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   capacity = 100
 ///   name     = "example"
 ///   type     = "STATEFUL"
@@ -1205,7 +1220,7 @@ import 'rule_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1216,28 +1231,32 @@ import 'rule_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_rulegroup" "example" {
-///   rule_group = {
-///     rule_variables = {
-///       ip_sets = [{
-///         "ipSet" = {
-///           "definitions" = ["10.0.0.0/16", "10.0.1.0/24", "192.168.0.0/16"]
+/// resource "aws_networkfirewall_rule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule_group {
+///     rule_variables {
+///       ip_sets {
+///         ip_set {
+///           definition = ["10.0.0.0/16", "10.0.1.0/24", "192.168.0.0/16"]
 ///         }
-///         "key" = "WEBSERVERS_HOSTS"
-///         }, {
-///         "ipSet" = {
-///           "definitions" = ["1.2.3.4/32"]
+///         key = "WEBSERVERS_HOSTS"
+///       }
+///       ip_sets {
+///         ip_set {
+///           definition = ["1.2.3.4/32"]
 ///         }
-///         "key" = "EXTERNAL_HOST"
-///       }]
-///       port_sets = [{
-///         "portSet" = {
-///           "definitions" = ["443", "80"]
+///         key = "EXTERNAL_HOST"
+///       }
+///       port_sets {
+///         port_set {
+///           definition = ["443", "80"]
 ///         }
-///         "key" = "HTTP_PORTS"
-///       }]
+///         key = "HTTP_PORTS"
+///       }
 ///     }
-///     rules_source = {
+///     rules_source {
 ///       rules_string = file("suricata_rules_file")
 ///     }
 ///   }
@@ -1712,7 +1731,7 @@ import 'rule_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1720,47 +1739,50 @@ import 'rule_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_rulegroup" "example" {
-///   rule_group = {
-///     rules_source = {
-///       stateless_rules_and_custom_actions = {
-///         custom_actions = [{
-///           "actionDefinition" = {
-///             "publishMetricAction" = {
-///               "dimensions" = [{
-///                 "value" = "2"
-///               }]
+/// resource "aws_networkfirewall_rule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule_group {
+///     rules_source {
+///       stateless_rules_and_custom_actions {
+///         custom_action {
+///           action_definition {
+///             publish_metric_action {
+///               dimension {
+///                 value = "2"
+///               }
 ///             }
 ///           }
-///           "actionName" = "ExampleMetricsAction"
-///         }]
-///         stateless_rules = [{
-///           "ruleDefinition" = {
-///             "matchAttributes" = {
-///               "destinationPorts" = [{
-///                 "fromPort" = 443
-///                 "toPort"   = 443
-///               }]
-///               "destinations" = [{
-///                 "addressDefinition" = "124.1.1.5/32"
-///               }]
-///               "sourcePorts" = [{
-///                 "fromPort" = 443
-///                 "toPort"   = 443
-///               }]
-///               "sources" = [{
-///                 "addressDefinition" = "1.2.3.4/32"
-///               }]
-///               "tcpFlags" = [{
-///                 "flags" = ["SYN"]
-///                 "masks" = ["SYN", "ACK"]
-///               }]
-///               "protocols" = [6]
+///           action_name = "ExampleMetricsAction"
+///         }
+///         stateless_rule {
+///           rule_definition {
+///             match_attributes {
+///               destination_port {
+///                 from_port = 443
+///                 to_port   = 443
+///               }
+///               destination {
+///                 address_definition = "124.1.1.5/32"
+///               }
+///               source_port {
+///                 from_port = 443
+///                 to_port   = 443
+///               }
+///               source {
+///                 address_definition = "1.2.3.4/32"
+///               }
+///               tcp_flag {
+///                 flags = ["SYN"]
+///                 masks = ["SYN", "ACK"]
+///               }
+///               protocols = [6]
 ///             }
-///             "actions" = ["aws:pass", "ExampleMetricsAction"]
+///             actions = ["aws:pass", "ExampleMetricsAction"]
 ///           }
-///           "priority" = 1
-///         }]
+///           priority = 1
+///         }
 ///       }
 ///     }
 ///   }
@@ -2093,7 +2115,7 @@ import 'rule_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2101,22 +2123,25 @@ import 'rule_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_networkfirewall_rulegroup" "example" {
-///   rule_group = {
-///     rules_source = {
-///       rules_source_list = {
+/// resource "aws_networkfirewall_rule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule_group {
+///     rules_source {
+///       rules_source_list {
 ///         generated_rules_type = "DENYLIST"
 ///         target_types         = ["HTTP_HOST"]
 ///         targets              = ["test.example.com"]
 ///       }
 ///     }
-///     reference_sets = {
-///       ip_set_references = [{
-///         "ipSetReferences" = [{
-///           "referenceArn" = this.arn
-///         }]
-///         "key" = "example"
-///       }]
+///     reference_sets {
+///       ip_set_references {
+///         ip_set_reference {
+///           reference_arn = this.arn
+///         }
+///         key = "example"
+///       }
 ///     }
 ///   }
 ///   capacity = 100
@@ -2167,7 +2192,7 @@ import 'rule_group_state.dart';
 ///                 .referenceSets(RuleGroupRuleGroupReferenceSetsArgs.builder()
 ///                     .ipSetReferences(RuleGroupRuleGroupReferenceSetsIpSetReferenceArgs.builder()
 ///                         .ipSetReferences(RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReferenceArgs.builder()
-///                             .referenceArn(this_.arn())
+///                             .referenceArn(this_.get("arn"))
 ///                             .build())
 ///                         .key("example")
 ///                         .build())
@@ -2430,7 +2455,7 @@ import 'rule_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -2438,29 +2463,32 @@ import 'rule_group_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_s3_getobject" "suricataRules" {
+/// data "aws_s3_object" "suricataRules" {
 ///   bucket = suricataRulesAwsS3Bucket.id
 ///   key    = "rules/custom.rules"
 /// }
 ///
-/// resource "aws_networkfirewall_rulegroup" "s3_rules_example" {
-///   rule_group = {
-///     rule_variables = {
-///       ip_sets = [{
-///         "ipSet" = {
-///           "definitions" = ["10.0.0.0/16", "192.168.0.0/16", "172.16.0.0/12"]
+/// resource "aws_networkfirewall_rule_group" "s3_rules_example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule_group {
+///     rule_variables {
+///       ip_sets {
+///         ip_set {
+///           definition = ["10.0.0.0/16", "192.168.0.0/16", "172.16.0.0/12"]
 ///         }
-///         "key" = "HOME_NET"
-///       }]
-///       port_sets = [{
-///         "portSet" = {
-///           "definitions" = ["443", "80"]
+///         key = "HOME_NET"
+///       }
+///       port_sets {
+///         port_set {
+///           definition = ["443", "80"]
 ///         }
-///         "key" = "HTTP_PORTS"
-///       }]
+///         key = "HTTP_PORTS"
+///       }
 ///     }
-///     rules_source = {
-///       rules_string = data.aws_s3_getobject.suricataRules.body
+///     rules_source {
+///       rules_string = data.aws_s3_object.suricataRules.body
 ///     }
 ///   }
 ///   capacity = 1000
@@ -2502,7 +2530,7 @@ import 'rule_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var suricataRules = S3Functions.getObject(GetObjectArgs.builder()
-///             .bucket(suricataRulesAwsS3Bucket.id())
+///             .bucket(suricataRulesAwsS3Bucket.get("id"))
 ///             .key("rules/custom.rules")
 ///             .build());
 ///
@@ -2623,7 +2651,7 @@ class RuleGroup extends pulumi.CustomResource {
           'aws:networkfirewall/ruleGroup:RuleGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capacity = registerOutput<int>('capacity');

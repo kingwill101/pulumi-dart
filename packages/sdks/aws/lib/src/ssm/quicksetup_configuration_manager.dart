@@ -22,7 +22,7 @@ import 'quicksetup_configuration_manager_timeouts.dart';
 /// const example = aws.ssm.getPatchBaselines({
 ///     defaultBaselines: true,
 /// });
-/// // transform the output of the aws_ssm_patch_baselines data source
+/// // transform the output of the aws_ssm_patch_baselines function
 /// // into the format expected by the SelectedPatchBaselines parameter
 /// const selectedPatchBaselines = JSON.stringify(example.then(example => .reduce((__obj, baseline) => ({ ...__obj, [baseline.operatingSystem]: {
 ///     value: baseline.baselineId,
@@ -64,7 +64,7 @@ import 'quicksetup_configuration_manager_timeouts.dart';
 /// current_get_partition = aws.get_partition()
 /// current_get_region = aws.get_region()
 /// example = aws.ssm.get_patch_baselines(default_baselines=True)
-/// # transform the output of the aws_ssm_patch_baselines data source
+/// # transform the output of the aws_ssm_patch_baselines function
 /// # into the format expected by the SelectedPatchBaselines parameter
 /// selected_patch_baselines = json.dumps({baseline.operating_system: {
 ///     "value": baseline.baseline_id,
@@ -116,7 +116,7 @@ import 'quicksetup_configuration_manager_timeouts.dart';
 ///         DefaultBaselines = true,
 ///     });
 ///
-///     // transform the output of the aws_ssm_patch_baselines data source
+///     // transform the output of the aws_ssm_patch_baselines function
 ///     // into the format expected by the SelectedPatchBaselines parameter
 ///     var selectedPatchBaselines = JsonSerializer.Serialize(.ToDictionary(item => {
 ///         var baseline = item.Value;
@@ -168,7 +168,7 @@ import 'quicksetup_configuration_manager_timeouts.dart';
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -176,26 +176,29 @@ import 'quicksetup_configuration_manager_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
-/// data "aws_getregion" "currentGetRegion" {
+/// data "aws_region" "currentGetRegion" {
 /// }
-/// data "aws_ssm_getpatchbaselines" "example" {
+/// data "aws_ssm_patch_baselines" "example" {
 ///   default_baselines = true
 /// }
 ///
-/// resource "aws_ssm_quicksetupconfigurationmanager" "example" {
+/// resource "aws_ssm_quicksetup_configuration_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_definition = {
-///     local_deployment_administration_role_arn ="arn:${data.aws_getpartition.currentGetPartition.partition}:iam::${data.aws_getcalleridentity.current.account_id}:role/AWS-QuickSetup-PatchPolicy-LocalAdministrationRole"
+///     local_deployment_administration_role_arn ="arn:${data.aws_partition.currentGetPartition.partition}:iam::${data.aws_caller_identity.current.account_id}:role/AWS-QuickSetup-PatchPolicy-LocalAdministrationRole"
 ///     local_deployment_execution_role_name     = "AWS-QuickSetup-PatchPolicy-LocalExecutionRole"
 ///     type                                     = "AWSQuickSetupType-PatchPolicy"
 ///     parameters = {
 ///       "ConfigurationOptionsPatchOperation"   = "Scan"
 ///       "ConfigurationOptionsScanValue"        = "cron(0 1 * * ? *)"
 ///       "ConfigurationOptionsScanNextInterval" = "false"
-///       "PatchBaselineRegion"                  = data.aws_getregion.currentGetRegion.region
+///       "PatchBaselineRegion"                  = data.aws_region.currentGetRegion.region
 ///       "PatchBaselineUseDefault"              = "default"
 ///       "PatchPolicyName"                      = "example"
 ///       "SelectedPatchBaselines"               = local.selectedPatchBaselines
@@ -203,17 +206,17 @@ import 'quicksetup_configuration_manager_timeouts.dart';
 ///       "RateControlConcurrency"               = "10%"
 ///       "RateControlErrorThreshold"            = "2%"
 ///       "IsPolicyAttachAllowed"                = "false"
-///       "TargetAccounts"                       = data.aws_getcalleridentity.current.account_id
-///       "TargetRegions"                        = data.aws_getregion.currentGetRegion.region
+///       "TargetAccounts"                       = data.aws_caller_identity.current.account_id
+///       "TargetRegions"                        = data.aws_region.currentGetRegion.region
 ///       "TargetType"                           = "*"
 ///     }
 ///   }
 ///   name = "example"
 /// }
-/// # transform the output of the aws_ssm_patch_baselines data source
+/// # transform the output of the aws_ssm_patch_baselines function
 /// # into the format expected by the SelectedPatchBaselines parameter
 /// locals {
-///   selectedPatchBaselines = jsonencode({for baseline in data.aws_ssm_getpatchbaselines.example.baseline_identities : baseline.operatingSystem => {
+///   selectedPatchBaselines = jsonencode({for baseline in data.aws_ssm_patch_baselines.example.baseline_identities : baseline.operatingSystem => {
 ///     "value"       = baseline.baselineId
 ///     "label"       = baseline.baselineName
 ///     "description" = baseline.baselineDescription
@@ -263,7 +266,7 @@ class QuicksetupConfigurationManager extends pulumi.CustomResource {
           'aws:ssm/quicksetupConfigurationManager:QuicksetupConfigurationManager',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     configurationDefinition = registerOutput<QuicksetupConfigurationManagerConfigurationDefinition>('configurationDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QuicksetupConfigurationManagerConfigurationDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');

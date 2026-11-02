@@ -54,7 +54,7 @@ import 'get_standards_control_associations_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -62,7 +62,7 @@ import 'get_standards_control_associations_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_securityhub_getenabledstandards" "example" {
+/// data "aws_securityhub_enabled_standards" "example" {
 /// }
 /// ```
 /// ```java
@@ -175,7 +175,7 @@ pulumi.Output<GetEnabledStandardsResult> getEnabledStandardsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -183,7 +183,7 @@ pulumi.Output<GetEnabledStandardsResult> getEnabledStandardsOutput(
 ///   }
 /// }
 ///
-/// data "aws_securityhub_getsecuritycontrols" "example" {
+/// data "aws_securityhub_security_controls" "example" {
 /// }
 /// ```
 /// ```java
@@ -276,13 +276,16 @@ pulumi.Output<GetEnabledStandardsResult> getEnabledStandardsOutput(
 ///         {
 ///             var example = values.Item1;
 ///             var invoke = values.Item2;
-///             return ;
+///             return .Where(d => invoke.Result).Select(d =>
+///             {
+///                 return d;
+///             }).ToList();
 ///         }),
 ///     };
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -293,11 +296,11 @@ pulumi.Output<GetEnabledStandardsResult> getEnabledStandardsOutput(
 ///   }
 /// }
 ///
-/// data "aws_securityhub_getsecuritycontrols" "example" {
+/// data "aws_securityhub_security_controls" "example" {
 /// }
 ///
 /// output "securityControlDefinitions" {
-///   value = [for d in data.aws_securityhub_getsecuritycontrols.example.security_control_definitions : d if contains(["HIGH", "CRITICAL"], d.severityRating)]
+///   value = [for d in data.aws_securityhub_security_controls.example.security_control_definitions : d if contains(["HIGH", "CRITICAL"], d.severityRating)]
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_securityhub_get_security_controls_get_security_controls_args_doc}
@@ -391,7 +394,7 @@ pulumi.Output<GetSecurityControlsResult> getSecurityControlsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -399,11 +402,14 @@ pulumi.Output<GetSecurityControlsResult> getSecurityControlsOutput(
 ///   }
 /// }
 ///
-/// data "aws_securityhub_getstandardscontrolassociations" "test" {
+/// data "aws_securityhub_standards_control_associations" "test" {
 ///   security_control_id = "IAM.1"
 /// }
 ///
 /// resource "aws_securityhub_account" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java

@@ -67,7 +67,7 @@ import 'bucket_metric_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketMetric(ctx, "example-entire-bucket", &s3.BucketMetricArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Name:   pulumi.String("EntireBucket"),
 /// 		})
 /// 		if err != nil {
@@ -78,7 +78,7 @@ import 'bucket_metric_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,9 +87,15 @@ import 'bucket_metric_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
-/// resource "aws_s3_bucketmetric" "example-entire-bucket" {
+/// resource "aws_s3_bucket_metric" "example-entire-bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
 ///   name   = "EntireBucket"
 /// }
@@ -233,7 +239,7 @@ import 'bucket_metric_state.dart';
 /// 					"class":    pulumi.String("blue"),
 /// 				},
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Name:   pulumi.String("ImportantBlueDocuments"),
 /// 		})
 /// 		if err != nil {
@@ -244,7 +250,7 @@ import 'bucket_metric_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -253,10 +259,16 @@ import 'bucket_metric_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
-/// resource "aws_s3_bucketmetric" "example-filtered" {
-///   filter = {
+/// resource "aws_s3_bucket_metric" "example-filtered" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filter {
 ///     prefix = "documents/"
 ///     tags = {
 ///       "priority" = "high"
@@ -425,7 +437,7 @@ import 'bucket_metric_state.dart';
 /// 			return err
 /// 		}
 /// 		example_access_point, err := s3.NewAccessPoint(ctx, "example-access-point", &s3.AccessPointArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Name:   pulumi.String("example-access-point"),
 /// 		})
 /// 		if err != nil {
@@ -439,7 +451,7 @@ import 'bucket_metric_state.dart';
 /// 					"class":    pulumi.String("blue"),
 /// 				},
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Name:   pulumi.String("ImportantBlueDocuments"),
 /// 		})
 /// 		if err != nil {
@@ -450,7 +462,7 @@ import 'bucket_metric_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -459,15 +471,24 @@ import 'bucket_metric_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
-/// resource "aws_s3_accesspoint" "example-access-point" {
+/// resource "aws_s3_access_point" "example-access-point" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
 ///   name   = "example-access-point"
 /// }
-/// resource "aws_s3_bucketmetric" "example-filtered" {
-///   filter = {
-///     access_point = aws_s3_accesspoint.example-access-point.arn
+/// resource "aws_s3_bucket_metric" "example-filtered" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filter {
+///     access_point = aws_s3_access_point.example-access-point.arn
 ///     tags = {
 ///       "priority" = "high"
 ///       "class"    = "blue"
@@ -669,7 +690,7 @@ import 'bucket_metric_state.dart';
 /// 			return err
 /// 		}
 /// 		example_access_point, err := s3.NewAccessPoint(ctx, "example-access-point", &s3.AccessPointArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Name:   pulumi.String("example--zoneId--xa-s3"),
 /// 		})
 /// 		if err != nil {
@@ -680,7 +701,7 @@ import 'bucket_metric_state.dart';
 /// 				AccessPoint: example_access_point.Arn,
 /// 				Prefix:      pulumi.String("documents/"),
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Name:   pulumi.String("ExampleBucketMetricForDirectoryBuckets"),
 /// 		})
 /// 		if err != nil {
@@ -691,7 +712,7 @@ import 'bucket_metric_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -699,26 +720,35 @@ import 'bucket_metric_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
+/// data "aws_availability_zones" "available" {
 ///   state = "available"
 /// }
 ///
-/// resource "aws_s3_directorybucket" "example" {
-///   location = {
-///     name = data.aws_getavailabilityzones.available.zone_ids[0]
+/// resource "aws_s3_directory_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location {
+///     name = data.aws_availability_zones.available.zone_ids[0]
 ///   }
 ///   bucket = "example--zoneId--x-s3"
 /// }
-/// resource "aws_s3_accesspoint" "example-access-point" {
-///   bucket = aws_s3_directorybucket.example.id
+/// resource "aws_s3_access_point" "example-access-point" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   bucket = aws_s3_directory_bucket.example.id
 ///   name   = "example--zoneId--xa-s3"
 /// }
-/// resource "aws_s3_bucketmetric" "example-bucket-metric" {
-///   filter = {
-///     access_point = aws_s3_accesspoint.example-access-point.arn
+/// resource "aws_s3_bucket_metric" "example-bucket-metric" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filter {
+///     access_point = aws_s3_access_point.example-access-point.arn
 ///     prefix       = "documents/"
 ///   }
-///   bucket = aws_s3_directorybucket.example.id
+///   bucket = aws_s3_directory_bucket.example.id
 ///   name   = "ExampleBucketMetricForDirectoryBuckets"
 /// }
 /// ```
@@ -838,7 +868,7 @@ class BucketMetric extends pulumi.CustomResource {
           'aws:s3/bucketMetric:BucketMetric',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     filter = registerOutput<BucketMetricFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketMetricFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });

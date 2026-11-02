@@ -78,7 +78,7 @@ import 'log_subscription_filter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,10 +86,13 @@ import 'log_subscription_filter_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_logsubscriptionfilter" "test_lambdafunction_logfilter" {
+/// resource "aws_cloudwatch_log_subscription_filter" "test_lambdafunction_logfilter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "test_lambdafunction_logfilter"
 ///   role_arn        = iamForLambda.arn
-///   log_group       = "/aws/lambda/example_lambda_name"
+///   log_group_name  = "/aws/lambda/example_lambda_name"
 ///   filter_pattern  = "logtype test"
 ///   destination_arn = testLogstream.arn
 ///   distribution    = "Random"
@@ -118,10 +121,10 @@ import 'log_subscription_filter_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var testLambdafunctionLogfilter = new LogSubscriptionFilter("testLambdafunctionLogfilter", LogSubscriptionFilterArgs.builder()
 ///             .name("test_lambdafunction_logfilter")
-///             .roleArn(iamForLambda.arn())
+///             .roleArn(iamForLambda.get("arn"))
 ///             .logGroup("/aws/lambda/example_lambda_name")
 ///             .filterPattern("logtype test")
-///             .destinationArn(testLogstream.arn())
+///             .destinationArn(testLogstream.get("arn"))
 ///             .distribution("Random")
 ///             .build());
 ///
@@ -195,7 +198,7 @@ class LogSubscriptionFilter extends pulumi.CustomResource {
           'aws:cloudwatch/logSubscriptionFilter:LogSubscriptionFilter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     applyOnTransformedLogs = registerOutput<bool>('applyOnTransformedLogs');
     destinationArn = registerOutput<String>('destinationArn');

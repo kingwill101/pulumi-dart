@@ -85,7 +85,7 @@ import 'observability_configuration_trace_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -93,8 +93,11 @@ import 'observability_configuration_trace_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apprunner_observabilityconfiguration" "example" {
-///   trace_configuration = {
+/// resource "aws_apprunner_observability_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   trace_configuration {
 ///     vendor = "AWSXRAY"
 ///   }
 ///   observability_configuration_name = "example"
@@ -195,7 +198,7 @@ class ObservabilityConfiguration extends pulumi.CustomResource {
           'aws:apprunner/observabilityConfiguration:ObservabilityConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     latest = registerOutput<bool>('latest');

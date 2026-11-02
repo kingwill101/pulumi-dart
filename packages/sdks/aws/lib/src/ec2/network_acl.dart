@@ -160,7 +160,7 @@ import 'network_acl_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -168,7 +168,10 @@ import 'network_acl_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_networkacl" "main" {
+/// resource "aws_ec2_network_acl" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   egress {
 ///     protocol   = "tcp"
 ///     rule_no    = 200
@@ -231,7 +234,7 @@ import 'network_acl_state.dart';
 ///                 .fromPort(80)
 ///                 .toPort(80)
 ///                 .build())
-///             .vpcId(mainAwsVpc.id())
+///             .vpcId(mainAwsVpc.get("id"))
 ///             .tags(Map.of("Name", "main"))
 ///             .build());
 ///
@@ -314,7 +317,7 @@ class NetworkAcl extends pulumi.CustomResource {
           'aws:ec2/networkAcl:NetworkAcl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     egress = registerOutput<List<NetworkAclEgress>>('egress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkAclEgress>(guardedValue, (value) => NetworkAclEgress.fromMap((value as Map).cast<String, dynamic>())); });

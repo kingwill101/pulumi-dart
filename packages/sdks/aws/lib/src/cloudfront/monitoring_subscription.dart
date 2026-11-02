@@ -81,7 +81,7 @@ import 'monitoring_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,9 +89,12 @@ import 'monitoring_subscription_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_monitoringsubscription" "example" {
-///   monitoring_subscription = {
-///     realtime_metrics_subscription_config = {
+/// resource "aws_cloudfront_monitoring_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   monitoring_subscription {
+///     realtime_metrics_subscription_config {
 ///       realtime_metrics_subscription_status = "Enabled"
 ///     }
 ///   }
@@ -127,7 +130,7 @@ import 'monitoring_subscription_state.dart';
 ///                     .realtimeMetricsSubscriptionStatus("Enabled")
 ///                     .build())
 ///                 .build())
-///             .distributionId(exampleAwsCloudfrontDistribution.id())
+///             .distributionId(exampleAwsCloudfrontDistribution.get("id"))
 ///             .build());
 ///
 ///     }
@@ -170,7 +173,7 @@ class MonitoringSubscription extends pulumi.CustomResource {
           'aws:cloudfront/monitoringSubscription:MonitoringSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     distributionId = registerOutput<String>('distributionId');
     monitoringSubscription = registerOutput<MonitoringSubscriptionMonitoringSubscription>('monitoringSubscription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitoringSubscriptionMonitoringSubscription.fromMap((guardedValue as Map).cast<String, dynamic>()); });

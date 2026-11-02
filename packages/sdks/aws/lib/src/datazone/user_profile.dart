@@ -70,7 +70,7 @@ import 'user_profile_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -78,7 +78,10 @@ import 'user_profile_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_datazone_userprofile" "example" {
+/// resource "aws_datazone_user_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_identifier   = exampleAwsIamUser.arn
 ///   domain_identifier = exampleAwsDatazoneDomain.id
 ///   user_type         = "IAM_USER"
@@ -106,8 +109,8 @@ import 'user_profile_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new UserProfile("example", UserProfileArgs.builder()
-///             .userIdentifier(exampleAwsIamUser.arn())
-///             .domainIdentifier(exampleAwsDatazoneDomain.id())
+///             .userIdentifier(exampleAwsIamUser.get("arn"))
+///             .domainIdentifier(exampleAwsDatazoneDomain.get("id"))
 ///             .userType("IAM_USER")
 ///             .build());
 ///
@@ -176,7 +179,7 @@ class UserProfile extends pulumi.CustomResource {
           'aws:datazone/userProfile:UserProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     details = registerOutput<List<UserProfileDetail>>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserProfileDetail>(guardedValue, (value) => UserProfileDetail.fromMap((value as Map).cast<String, dynamic>())); });
     domainIdentifier = registerOutput<String>('domainIdentifier');

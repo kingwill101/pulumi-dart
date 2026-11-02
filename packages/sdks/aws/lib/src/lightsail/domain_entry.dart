@@ -85,7 +85,7 @@ import 'domain_entry_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -94,9 +94,15 @@ import 'domain_entry_state.dart';
 /// }
 ///
 /// resource "aws_lightsail_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = "example.com"
 /// }
-/// resource "aws_lightsail_domainentry" "example" {
+/// resource "aws_lightsail_domain_entry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = aws_lightsail_domain.example.domain_name
 ///   name        = "www"
 ///   type        = "A"
@@ -192,7 +198,7 @@ class DomainEntry extends pulumi.CustomResource {
           'aws:lightsail/domainEntry:DomainEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     domainName = registerOutput<String>('domainName');
     isAlias = registerOutput<bool?>('isAlias');

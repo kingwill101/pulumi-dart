@@ -60,7 +60,7 @@ import 'get_services_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -68,11 +68,11 @@ import 'get_services_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_uxc_getservices" "example" {
+/// data "aws_uxc_services" "example" {
 /// }
 ///
 /// output "availableServices" {
-///   value = data.aws_uxc_getservices.example.services
+///   value = data.aws_uxc_services.example.services
 /// }
 /// ```
 /// ```java
@@ -178,7 +178,7 @@ import 'get_services_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -186,11 +186,14 @@ import 'get_services_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_uxc_getservices" "example" {
+/// data "aws_uxc_services" "example" {
 /// }
 ///
-/// resource "aws_uxc_accountcustomizations" "example" {
-///   visible_services = data.aws_uxc_getservices.example.services
+/// resource "aws_uxc_account_customizations" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   visible_services = data.aws_uxc_services.example.services
 /// }
 /// ```
 /// ```java

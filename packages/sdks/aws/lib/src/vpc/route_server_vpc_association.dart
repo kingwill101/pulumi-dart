@@ -65,7 +65,7 @@ import 'route_server_vpc_association_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,10 @@ import 'route_server_vpc_association_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_vpc_routeservervpcassociation" "example" {
+/// resource "aws_vpc_route_server_vpc_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   route_server_id = exampleAwsVpcRouteServer.routeServerId
 ///   vpc_id          = exampleAwsVpc.id
 /// }
@@ -100,8 +103,8 @@ import 'route_server_vpc_association_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RouteServerVpcAssociation("example", RouteServerVpcAssociationArgs.builder()
-///             .routeServerId(exampleAwsVpcRouteServer.routeServerId())
-///             .vpcId(exampleAwsVpc.id())
+///             .routeServerId(exampleAwsVpcRouteServer.get("routeServerId"))
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .build());
 ///
 ///     }
@@ -147,7 +150,7 @@ class RouteServerVpcAssociation extends pulumi.CustomResource {
           'aws:vpc/routeServerVpcAssociation:RouteServerVpcAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     routeServerId = registerOutput<String>('routeServerId');

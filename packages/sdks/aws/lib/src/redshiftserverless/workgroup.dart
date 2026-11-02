@@ -65,7 +65,7 @@ import 'workgroup_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,6 +74,9 @@ import 'workgroup_state.dart';
 /// }
 ///
 /// resource "aws_redshiftserverless_workgroup" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_name = "concurrency-scaling"
 ///   workgroup_name = "concurrency-scaling"
 /// }
@@ -176,7 +179,7 @@ class Workgroup extends pulumi.CustomResource {
           'aws:redshiftserverless/workgroup:Workgroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     baseCapacity = registerOutput<int>('baseCapacity');

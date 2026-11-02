@@ -195,7 +195,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -204,12 +204,15 @@ import 'policy_state.dart';
 /// }
 ///
 /// resource "aws_fms_policy" "example" {
-///   security_service_policy_data = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   security_service_policy_data {
 ///     type = "WAF"
 ///     managed_service_data = jsonencode({
 ///       "type" = "WAF"
 ///       "ruleGroups" = [{
-///         "id" = aws_wafregional_rulegroup.example.id
+///         "id" = aws_wafregional_rule_group.example.id
 ///         "overrideAction" = {
 ///           "type" = "COUNT"
 ///         }
@@ -228,7 +231,10 @@ import 'policy_state.dart';
 ///     "Name" = "example-fms-policy"
 ///   }
 /// }
-/// resource "aws_wafregional_rulegroup" "example" {
+/// resource "aws_wafregional_rule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metric_name = "WAFRuleGroupExample"
 ///   name        = "WAF-Rule-Group-Example"
 /// }
@@ -382,7 +388,7 @@ class Policy extends pulumi.CustomResource {
           'aws:fms/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deleteAllPolicyResources = registerOutput<bool?>('deleteAllPolicyResources');

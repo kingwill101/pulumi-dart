@@ -87,7 +87,7 @@ import 'control_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -96,6 +96,9 @@ import 'control_state.dart';
 /// }
 ///
 /// resource "aws_auditmanager_control" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   control_mapping_sources {
 ///     source_name          = "example"
 ///     source_set_up_option = "Procedural_Controls_Mapping"
@@ -207,7 +210,7 @@ class Control extends pulumi.CustomResource {
           'aws:auditmanager/control:Control',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     actionPlanInstructions = registerOutput<String?>('actionPlanInstructions');
     actionPlanTitle = registerOutput<String?>('actionPlanTitle');

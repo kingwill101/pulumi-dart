@@ -81,7 +81,7 @@ import 'v2models_slot_value_elicitation_setting.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,7 +89,10 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lex_v2modelsslot" "example" {
+/// resource "aws_lex_v2models_slot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bot_id      = exampleAwsLexv2modelsBot.id
 ///   bot_version = exampleAwsLexv2modelsBotVersion.botVersion
 ///   intent_id   = exampleAwsLexv2modelsIntent.id
@@ -119,10 +122,10 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new V2modelsSlot("example", V2modelsSlotArgs.builder()
-///             .botId(exampleAwsLexv2modelsBot.id())
-///             .botVersion(exampleAwsLexv2modelsBotVersion.botVersion())
-///             .intentId(exampleAwsLexv2modelsIntent.id())
-///             .localeId(exampleAwsLexv2modelsBotLocale.localeId())
+///             .botId(exampleAwsLexv2modelsBot.get("id"))
+///             .botVersion(exampleAwsLexv2modelsBotVersion.get("botVersion"))
+///             .intentId(exampleAwsLexv2modelsIntent.get("id"))
+///             .localeId(exampleAwsLexv2modelsBotLocale.get("localeId"))
 ///             .name("example")
 ///             .build());
 ///
@@ -499,7 +502,7 @@ import 'v2models_slot_value_elicitation_setting.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -507,62 +510,65 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lex_v2modelsslot" "example" {
+/// resource "aws_lex_v2models_slot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   value_elicitation_setting = {
 ///     prompt_specification = {
 ///       message_groups = [{
-///         "message" = {
-///           "plainTextMessage" = {
-///             "value" = "What is your favorite color?"
+///         message = {
+///           plain_text_message = {
+///             value = "What is your favorite color?"
 ///           }
 ///         }
 ///       }]
 ///       prompt_attempts_specifications = [{
-///         "allowedInputTypes" = {
-///           "allowAudioInput" = true
-///           "allowDtmfInput"  = true
+///         allowed_input_types = {
+///           allow_audio_input = true
+///           allow_dtmf_input  = true
 ///         }
-///         "audioAndDtmfInputSpecification" = {
-///           "audioSpecification" = {
-///             "endTimeoutMs" = 640
-///             "maxLengthMs"  = 15000
+///         audio_and_dtmf_input_specification = {
+///           audio_specification = {
+///             end_timeout_ms = 640
+///             max_length_ms  = 15000
 ///           }
-///           "dtmfSpecification" = {
-///             "deletionCharacter" = "*"
-///             "endCharacter"      = "#"
-///             "endTimeoutMs"      = 5000
-///             "maxLength"         = 513
+///           dtmf_specification = {
+///             deletion_character = "*"
+///             end_character      = "#"
+///             end_timeout_ms     = 5000
+///             max_length         = 513
 ///           }
-///           "startTimeoutMs" = 4000
+///           start_timeout_ms = 4000
 ///         }
-///         "textInputSpecification" = {
-///           "startTimeoutMs" = 30000
+///         text_input_specification = {
+///           start_timeout_ms = 30000
 ///         }
-///         "allowInterrupt" = true
-///         "mapBlockKey"    = "Initial"
+///         allow_interrupt = true
+///         map_block_key   = "Initial"
 ///         }, {
-///         "allowedInputTypes" = {
-///           "allowAudioInput" = true
-///           "allowDtmfInput"  = true
+///         allowed_input_types = {
+///           allow_audio_input = true
+///           allow_dtmf_input  = true
 ///         }
-///         "audioAndDtmfInputSpecification" = {
-///           "audioSpecification" = {
-///             "endTimeoutMs" = 640
-///             "maxLengthMs"  = 15000
+///         audio_and_dtmf_input_specification = {
+///           audio_specification = {
+///             end_timeout_ms = 640
+///             max_length_ms  = 15000
 ///           }
-///           "dtmfSpecification" = {
-///             "deletionCharacter" = "*"
-///             "endCharacter"      = "#"
-///             "endTimeoutMs"      = 5000
-///             "maxLength"         = 513
+///           dtmf_specification = {
+///             deletion_character = "*"
+///             end_character      = "#"
+///             end_timeout_ms     = 5000
+///             max_length         = 513
 ///           }
-///           "startTimeoutMs" = 4000
+///           start_timeout_ms = 4000
 ///         }
-///         "textInputSpecification" = {
-///           "startTimeoutMs" = 30000
+///         text_input_specification = {
+///           start_timeout_ms = 30000
 ///         }
-///         "allowInterrupt" = true
-///         "mapBlockKey"    = "Retry1"
+///         allow_interrupt = true
+///         map_block_key   = "Retry1"
 ///       }]
 ///       allow_interrupt            = true
 ///       max_retries                = 1
@@ -674,10 +680,10 @@ import 'v2models_slot_value_elicitation_setting.dart';
 ///                     .build())
 ///                 .slotConstraint("Required")
 ///                 .build())
-///             .botId(test.id())
-///             .botVersion(testAwsLexv2modelsBotLocale.botVersion())
-///             .intentId(testAwsLexv2modelsIntent.intentId())
-///             .localeId(testAwsLexv2modelsBotLocale.localeId())
+///             .botId(test.get("id"))
+///             .botVersion(testAwsLexv2modelsBotLocale.get("botVersion"))
+///             .intentId(testAwsLexv2modelsIntent.get("intentId"))
+///             .localeId(testAwsLexv2modelsBotLocale.get("localeId"))
 ///             .name("example")
 ///             .build());
 ///
@@ -799,7 +805,7 @@ class V2modelsSlot extends pulumi.CustomResource {
           'aws:lex/v2modelsSlot:V2modelsSlot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     botId = registerOutput<String>('botId');
     botVersion = registerOutput<String>('botVersion');

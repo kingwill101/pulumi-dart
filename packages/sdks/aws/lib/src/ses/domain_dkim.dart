@@ -37,10 +37,10 @@ import 'domain_dkim_state.dart';
 /// for example_amazonses_dkim_record_range in [{"value": i} for i in range(0, 3)]:
 ///     example_amazonses_dkim_record.append(aws.route53.Record(f"example_amazonses_dkim_record-{example_amazonses_dkim_record_range['value']}",
 ///         zone_id="ABCDEFGHIJ123",
-///         name=example_domain_dkim.dkim_tokens.apply(lambda dkim_tokens: f"{dkim_tokens[example_amazonses_dkim_record_range['value']]}._domainkey"),
+///         name=example_domain_dkim.dkim_tokens.apply(lambda dkim_tokens, _example_amazonses_dkim_record_range=example_amazonses_dkim_record_range: f"{dkim_tokens[_example_amazonses_dkim_record_range['value']]}._domainkey"),
 ///         type=aws.route53.RecordType.CNAME,
 ///         ttl=600,
-///         records=[example_domain_dkim.dkim_tokens.apply(lambda dkim_tokens: f"{dkim_tokens[example_amazonses_dkim_record_range['value']]}.dkim.amazonses.com")]))
+///         records=[example_domain_dkim.dkim_tokens.apply(lambda dkim_tokens, _example_amazonses_dkim_record_range=example_amazonses_dkim_record_range: f"{dkim_tokens[_example_amazonses_dkim_record_range['value']]}.dkim.amazonses.com")]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -130,7 +130,7 @@ import 'domain_dkim_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -138,19 +138,31 @@ import 'domain_dkim_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ses_domainidentity" "example" {
+/// resource "aws_ses_domain_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain = "example.com"
 /// }
-/// resource "aws_ses_domaindkim" "example" {
-///   domain = aws_ses_domainidentity.example.domain
+/// resource "aws_ses_domain_dkim" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   domain = aws_ses_domain_identity.example.domain
 /// }
 /// resource "aws_route53_record" "example_amazonses_dkim_record" {
-///   count   = 3
+///   count = 3
+///   pulumi {
+///     name ="example_amazonses_dkim_record-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "ABCDEFGHIJ123"
-///   name    ="${aws_ses_domaindkim.example.dkim_tokens[count.index]}._domainkey"
+///   name    ="${aws_ses_domain_dkim.example.dkim_tokens[count.index]}._domainkey"
 ///   type    = "CNAME"
 ///   ttl     = "600"
-///   records = ["${aws_ses_domaindkim.example.dkim_tokens[count.index]}.dkim.amazonses.com"]
+///   records = ["${aws_ses_domain_dkim.example.dkim_tokens[count.index]}.dkim.amazonses.com"]
 /// }
 /// ```
 /// ```java
@@ -230,7 +242,7 @@ class DomainDkim extends pulumi.CustomResource {
           'aws:ses/domainDkim:DomainDkim',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     dkimTokens = registerOutput<List<String>>('dkimTokens', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     domain = registerOutput<String>('domain');

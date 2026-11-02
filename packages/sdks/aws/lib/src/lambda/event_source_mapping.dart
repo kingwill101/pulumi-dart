@@ -93,7 +93,7 @@ import 'event_source_mapping_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -101,7 +101,10 @@ import 'event_source_mapping_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_eventsourcemapping" "example" {
+/// resource "aws_lambda_event_source_mapping" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   event_source_arn  = exampleAwsDynamodbTable.streamArn
 ///   function_name     = exampleAwsLambdaFunction.arn
 ///   starting_position = "LATEST"
@@ -132,8 +135,8 @@ import 'event_source_mapping_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new EventSourceMapping("example", EventSourceMappingArgs.builder()
-///             .eventSourceArn(exampleAwsDynamodbTable.streamArn())
-///             .functionName(exampleAwsLambdaFunction.arn())
+///             .eventSourceArn(exampleAwsDynamodbTable.get("streamArn"))
+///             .functionName(exampleAwsLambdaFunction.get("arn"))
 ///             .startingPosition("LATEST")
 ///             .tags(Map.of("Name", "dynamodb-stream-mapping"))
 ///             .build());
@@ -250,7 +253,7 @@ import 'event_source_mapping_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -258,9 +261,12 @@ import 'event_source_mapping_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_eventsourcemapping" "example" {
-///   destination_config = {
-///     on_failure = {
+/// resource "aws_lambda_event_source_mapping" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   destination_config {
+///     on_failure {
 ///       destination_arn = dlq.arn
 ///     }
 ///   }
@@ -298,11 +304,11 @@ import 'event_source_mapping_state.dart';
 ///         var example = new EventSourceMapping("example", EventSourceMappingArgs.builder()
 ///             .destinationConfig(EventSourceMappingDestinationConfigArgs.builder()
 ///                 .onFailure(EventSourceMappingDestinationConfigOnFailureArgs.builder()
-///                     .destinationArn(dlq.arn())
+///                     .destinationArn(dlq.get("arn"))
 ///                     .build())
 ///                 .build())
-///             .eventSourceArn(exampleAwsKinesisStream.arn())
-///             .functionName(exampleAwsLambdaFunction.arn())
+///             .eventSourceArn(exampleAwsKinesisStream.get("arn"))
+///             .functionName(exampleAwsLambdaFunction.get("arn"))
 ///             .startingPosition("LATEST")
 ///             .batchSize(100)
 ///             .maximumBatchingWindowInSeconds(5)
@@ -404,7 +410,7 @@ import 'event_source_mapping_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -412,8 +418,11 @@ import 'event_source_mapping_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_eventsourcemapping" "example" {
-///   scaling_config = {
+/// resource "aws_lambda_event_source_mapping" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scaling_config {
 ///     maximum_concurrency = 100
 ///   }
 ///   event_source_arn = exampleAwsSqsQueue.arn
@@ -447,8 +456,8 @@ import 'event_source_mapping_state.dart';
 ///             .scalingConfig(EventSourceMappingScalingConfigArgs.builder()
 ///                 .maximumConcurrency(100)
 ///                 .build())
-///             .eventSourceArn(exampleAwsSqsQueue.arn())
-///             .functionName(exampleAwsLambdaFunction.arn())
+///             .eventSourceArn(exampleAwsSqsQueue.get("arn"))
+///             .functionName(exampleAwsLambdaFunction.get("arn"))
 ///             .batchSize(10)
 ///             .build());
 ///
@@ -624,7 +633,7 @@ import 'event_source_mapping_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -632,10 +641,13 @@ import 'event_source_mapping_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_eventsourcemapping" "example" {
-///   filter_criteria = {
-///     filters = [{
-///       "pattern" = jsonencode({
+/// resource "aws_lambda_event_source_mapping" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filter_criteria {
+///     filter {
+///       pattern = jsonencode({
 ///         "body" = {
 ///           "Temperature" = [{
 ///             "numeric" = [">", 0, "<=", 100]
@@ -643,7 +655,7 @@ import 'event_source_mapping_state.dart';
 ///           "Location" = ["New York"]
 ///         }
 ///       })
-///     }]
+///     }
 ///   }
 ///   event_source_arn = exampleAwsSqsQueue.arn
 ///   function_name    = exampleAwsLambdaFunction.arn
@@ -692,8 +704,8 @@ import 'event_source_mapping_state.dart';
 ///                         )))
 ///                     .build())
 ///                 .build())
-///             .eventSourceArn(exampleAwsSqsQueue.arn())
-///             .functionName(exampleAwsLambdaFunction.arn())
+///             .eventSourceArn(exampleAwsSqsQueue.get("arn"))
+///             .functionName(exampleAwsLambdaFunction.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -818,7 +830,7 @@ import 'event_source_mapping_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -826,8 +838,11 @@ import 'event_source_mapping_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_eventsourcemapping" "example" {
-///   amazon_managed_kafka_event_source_config = {
+/// resource "aws_lambda_event_source_mapping" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   amazon_managed_kafka_event_source_config {
 ///     consumer_group_id = "lambda-consumer-group"
 ///   }
 ///   event_source_arn  = exampleAwsMskCluster.arn
@@ -863,8 +878,8 @@ import 'event_source_mapping_state.dart';
 ///             .amazonManagedKafkaEventSourceConfig(EventSourceMappingAmazonManagedKafkaEventSourceConfigArgs.builder()
 ///                 .consumerGroupId("lambda-consumer-group")
 ///                 .build())
-///             .eventSourceArn(exampleAwsMskCluster.arn())
-///             .functionName(exampleAwsLambdaFunction.arn())
+///             .eventSourceArn(exampleAwsMskCluster.get("arn"))
+///             .functionName(exampleAwsLambdaFunction.get("arn"))
 ///             .topics(
 ///                 "orders",
 ///                 "inventory")
@@ -1075,7 +1090,7 @@ import 'event_source_mapping_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1083,29 +1098,32 @@ import 'event_source_mapping_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_eventsourcemapping" "example" {
-///   self_managed_event_source = {
+/// resource "aws_lambda_event_source_mapping" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   self_managed_event_source {
 ///     endpoints = {
 ///       "KAFKA_BOOTSTRAP_SERVERS" = "kafka1.example.com:9092,kafka2.example.com:9092"
 ///     }
 ///   }
-///   self_managed_kafka_event_source_config = {
+///   self_managed_kafka_event_source_config {
 ///     consumer_group_id = "lambda-consumer-group"
 ///   }
-///   provisioned_poller_config = {
+///   provisioned_poller_config {
 ///     maximum_pollers   = 100
 ///     minimum_pollers   = 10
 ///     poller_group_name = "group-123"
 ///   }
-///   source_access_configurations {
+///   source_access_configuration {
 ///     type = "VPC_SUBNET"
 ///     uri  ="subnet:${example1.id}"
 ///   }
-///   source_access_configurations {
+///   source_access_configuration {
 ///     type = "VPC_SUBNET"
 ///     uri  ="subnet:${example2.id}"
 ///   }
-///   source_access_configurations {
+///   source_access_configuration {
 ///     type = "VPC_SECURITY_GROUP"
 ///     uri  ="security_group:${exampleAwsSecurityGroup.id}"
 ///   }
@@ -1154,17 +1172,17 @@ import 'event_source_mapping_state.dart';
 ///             .sourceAccessConfigurations(
 ///                 EventSourceMappingSourceAccessConfigurationArgs.builder()
 ///                     .type("VPC_SUBNET")
-///                     .uri(String.format("subnet:%s", example1.id()))
+///                     .uri(String.format("subnet:%s", example1.get("id")))
 ///                     .build(),
 ///                 EventSourceMappingSourceAccessConfigurationArgs.builder()
 ///                     .type("VPC_SUBNET")
-///                     .uri(String.format("subnet:%s", example2.id()))
+///                     .uri(String.format("subnet:%s", example2.get("id")))
 ///                     .build(),
 ///                 EventSourceMappingSourceAccessConfigurationArgs.builder()
 ///                     .type("VPC_SECURITY_GROUP")
-///                     .uri(String.format("security_group:%s", exampleAwsSecurityGroup.id()))
+///                     .uri(String.format("security_group:%s", exampleAwsSecurityGroup.get("id")))
 ///                     .build())
-///             .functionName(exampleAwsLambdaFunction.arn())
+///             .functionName(exampleAwsLambdaFunction.get("arn"))
 ///             .topics("orders")
 ///             .startingPosition("TRIM_HORIZON")
 ///             .build());
@@ -1288,7 +1306,7 @@ import 'event_source_mapping_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1296,8 +1314,11 @@ import 'event_source_mapping_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_eventsourcemapping" "example" {
-///   source_access_configurations {
+/// resource "aws_lambda_event_source_mapping" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   source_access_configuration {
 ///     type = "BASIC_AUTH"
 ///     uri  = exampleAwsSecretsmanagerSecretVersion.arn
 ///   }
@@ -1332,10 +1353,10 @@ import 'event_source_mapping_state.dart';
 ///         var example = new EventSourceMapping("example", EventSourceMappingArgs.builder()
 ///             .sourceAccessConfigurations(EventSourceMappingSourceAccessConfigurationArgs.builder()
 ///                 .type("BASIC_AUTH")
-///                 .uri(exampleAwsSecretsmanagerSecretVersion.arn())
+///                 .uri(exampleAwsSecretsmanagerSecretVersion.get("arn"))
 ///                 .build())
-///             .eventSourceArn(exampleAwsMqBroker.arn())
-///             .functionName(exampleAwsLambdaFunction.arn())
+///             .eventSourceArn(exampleAwsMqBroker.get("arn"))
+///             .functionName(exampleAwsLambdaFunction.get("arn"))
 ///             .queues("orders")
 ///             .batchSize(10)
 ///             .build());
@@ -1467,7 +1488,7 @@ import 'event_source_mapping_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1475,12 +1496,15 @@ import 'event_source_mapping_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_eventsourcemapping" "example" {
-///   source_access_configurations {
+/// resource "aws_lambda_event_source_mapping" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   source_access_configuration {
 ///     type = "VIRTUAL_HOST"
 ///     uri  = "/production"
 ///   }
-///   source_access_configurations {
+///   source_access_configuration {
 ///     type = "BASIC_AUTH"
 ///     uri  = exampleAwsSecretsmanagerSecretVersion.arn
 ///   }
@@ -1520,10 +1544,10 @@ import 'event_source_mapping_state.dart';
 ///                     .build(),
 ///                 EventSourceMappingSourceAccessConfigurationArgs.builder()
 ///                     .type("BASIC_AUTH")
-///                     .uri(exampleAwsSecretsmanagerSecretVersion.arn())
+///                     .uri(exampleAwsSecretsmanagerSecretVersion.get("arn"))
 ///                     .build())
-///             .eventSourceArn(exampleAwsMqBroker.arn())
-///             .functionName(exampleAwsLambdaFunction.arn())
+///             .eventSourceArn(exampleAwsMqBroker.get("arn"))
+///             .functionName(exampleAwsLambdaFunction.get("arn"))
 ///             .queues("orders")
 ///             .batchSize(1)
 ///             .build());
@@ -1653,7 +1677,7 @@ import 'event_source_mapping_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1661,13 +1685,16 @@ import 'event_source_mapping_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_lambda_eventsourcemapping" "example" {
-///   document_db_event_source_config = {
+/// resource "aws_lambda_event_source_mapping" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   document_db_event_source_config {
 ///     database_name   = "orders"
 ///     collection_name = "transactions"
 ///     full_document   = "UpdateLookup"
 ///   }
-///   source_access_configurations {
+///   source_access_configuration {
 ///     type = "BASIC_AUTH"
 ///     uri  = exampleAwsSecretsmanagerSecretVersion.arn
 ///   }
@@ -1707,10 +1734,10 @@ import 'event_source_mapping_state.dart';
 ///                 .build())
 ///             .sourceAccessConfigurations(EventSourceMappingSourceAccessConfigurationArgs.builder()
 ///                 .type("BASIC_AUTH")
-///                 .uri(exampleAwsSecretsmanagerSecretVersion.arn())
+///                 .uri(exampleAwsSecretsmanagerSecretVersion.get("arn"))
 ///                 .build())
-///             .eventSourceArn(exampleAwsDocdbCluster.arn())
-///             .functionName(exampleAwsLambdaFunction.arn())
+///             .eventSourceArn(exampleAwsDocdbCluster.get("arn"))
+///             .functionName(exampleAwsLambdaFunction.get("arn"))
 ///             .startingPosition("LATEST")
 ///             .build());
 ///
@@ -1844,7 +1871,7 @@ class EventSourceMapping extends pulumi.CustomResource {
           'aws:lambda/eventSourceMapping:EventSourceMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     amazonManagedKafkaEventSourceConfig = registerOutput<EventSourceMappingAmazonManagedKafkaEventSourceConfig>('amazonManagedKafkaEventSourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingAmazonManagedKafkaEventSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

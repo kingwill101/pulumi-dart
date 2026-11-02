@@ -126,7 +126,7 @@ import 'contacts_rotation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -134,12 +134,15 @@ import 'contacts_rotation_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssm_contactsrotation" "example" {
+/// resource "aws_ssm_contacts_rotation" "example" {
 ///   depends_on = [exampleAwsSsmincidentsReplicationSet]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   recurrence = {
 ///     daily_settings = [{
-///       "hourOfDay"    = 9
-///       "minuteOfHour" = 0
+///       hour_of_day    = 9
+///       minute_of_hour = 0
 ///     }]
 ///     number_of_on_calls    = 1
 ///     recurrence_multiplier = 1
@@ -182,7 +185,7 @@ import 'contacts_rotation_state.dart';
 ///                 .numberOfOnCalls(1)
 ///                 .recurrenceMultiplier(1)
 ///                 .build())
-///             .contactIds(exampleAwsSsmcontactsContact.arn())
+///             .contactIds(exampleAwsSsmcontactsContact.get("arn"))
 ///             .name("rotation")
 ///             .timeZoneId("Australia/Sydney")
 ///             .build(), CustomResourceOptions.builder()
@@ -464,7 +467,7 @@ import 'contacts_rotation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -472,34 +475,37 @@ import 'contacts_rotation_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssm_contactsrotation" "example" {
+/// resource "aws_ssm_contacts_rotation" "example" {
 ///   depends_on = [exampleAwsSsmincidentsReplicationSet]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   recurrence = {
 ///     shift_coverages = [{
-///       "coverageTimes" = [{
-///         "start" = {
-///           "hourOfDay"    = 1
-///           "minuteOfHour" = 0
+///       coverage_times = [{
+///         start = {
+///           hour_of_day    = 1
+///           minute_of_hour = 0
 ///         }
-///         "end" = {
-///           "hourOfDay"    = 23
-///           "minuteOfHour" = 0
+///         end = {
+///           hour_of_day    = 23
+///           minute_of_hour = 0
 ///         }
 ///       }]
-///       "mapBlockKey" = "MON"
+///       map_block_key = "MON"
 ///     }]
 ///     weekly_settings = [{
-///       "handOffTime" = {
-///         "hourOfDay"    = 4
-///         "minuteOfHour" = 25
+///       hand_off_time = {
+///         hour_of_day    = 4
+///         minute_of_hour = 25
 ///       }
-///       "dayOfWeek" = "WED"
+///       day_of_week = "WED"
 ///       }, {
-///       "handOffTime" = {
-///         "hourOfDay"    = 15
-///         "minuteOfHour" = 57
+///       hand_off_time = {
+///         hour_of_day    = 15
+///         minute_of_hour = 57
 ///       }
-///       "dayOfWeek" = "FRI"
+///       day_of_week = "FRI"
 ///     }]
 ///     number_of_on_calls    = 1
 ///     recurrence_multiplier = 1
@@ -576,7 +582,7 @@ import 'contacts_rotation_state.dart';
 ///                 .numberOfOnCalls(1)
 ///                 .recurrenceMultiplier(1)
 ///                 .build())
-///             .contactIds(exampleAwsSsmcontactsContact.arn())
+///             .contactIds(exampleAwsSsmcontactsContact.get("arn"))
 ///             .name("rotation")
 ///             .startTime("2023-07-20T02:21:49+00:00")
 ///             .timeZoneId("Australia/Sydney")
@@ -795,7 +801,7 @@ import 'contacts_rotation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -803,21 +809,24 @@ import 'contacts_rotation_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssm_contactsrotation" "example" {
+/// resource "aws_ssm_contacts_rotation" "example" {
 ///   depends_on = [exampleAwsSsmincidentsReplicationSet]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   recurrence = {
 ///     monthly_settings = [{
-///       "handOffTime" = {
-///         "hourOfDay"    = 8
-///         "minuteOfHour" = 0
+///       hand_off_time = {
+///         hour_of_day    = 8
+///         minute_of_hour = 0
 ///       }
-///       "dayOfMonth" = 20
+///       day_of_month = 20
 ///       }, {
-///       "handOffTime" = {
-///         "hourOfDay"    = 12
-///         "minuteOfHour" = 34
+///       hand_off_time = {
+///         hour_of_day    = 12
+///         minute_of_hour = 34
 ///       }
-///       "dayOfMonth" = 13
+///       day_of_month = 13
 ///     }]
 ///     number_of_on_calls    = 1
 ///     recurrence_multiplier = 1
@@ -872,7 +881,7 @@ import 'contacts_rotation_state.dart';
 ///                 .numberOfOnCalls(1)
 ///                 .recurrenceMultiplier(1)
 ///                 .build())
-///             .contactIds(exampleAwsSsmcontactsContact.arn())
+///             .contactIds(exampleAwsSsmcontactsContact.get("arn"))
 ///             .name("rotation")
 ///             .timeZoneId("Australia/Sydney")
 ///             .build(), CustomResourceOptions.builder()
@@ -957,7 +966,7 @@ class ContactsRotation extends pulumi.CustomResource {
           'aws:ssm/contactsRotation:ContactsRotation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     contactIds = registerOutput<List<String>>('contactIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

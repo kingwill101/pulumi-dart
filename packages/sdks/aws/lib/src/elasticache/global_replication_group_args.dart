@@ -39,7 +39,7 @@ class GlobalReplicationGroupArgs {
   /// An ElastiCache Parameter Group to use for the Global Replication Group.
   /// Required when upgrading a major engine version, but will be ignored if left configured after the upgrade is complete. Specifying without a major version upgrade will fail. When a replication group joins a global datastore, AWS auto-generates a new parameter group (prefixed `global-datastore-`) derived from the primary's parameter group. Note that ElastiCache creates a copy of this parameter group for each member replication group.
   final pulumi.Input<String?>? parameterGroupName;
-  /// The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. If `primaryReplicationGroupId` is changed, creates a new resource.
+  /// The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. Changing this value will trigger a failover to the specified replication group.
   final pulumi.Input<String> primaryReplicationGroupId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -53,7 +53,7 @@ class GlobalReplicationGroupArgs {
   /// [globalReplicationGroupIdSuffix] The suffix name of a Global Datastore. If `globalReplicationGroupIdSuffix` is changed, creates a new resource.
   /// [numNodeGroups] The number of node groups (shards) on the global replication group.
   /// [parameterGroupName] An ElastiCache Parameter Group to use for the Global Replication Group.
-  /// [primaryReplicationGroupId] The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. If `primaryReplicationGroupId` is changed, creates a new resource.
+  /// [primaryReplicationGroupId] The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. Changing this value will trigger a failover to the specified replication group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GlobalReplicationGroupArgs({
     this.automaticFailoverEnabled,

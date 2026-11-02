@@ -93,7 +93,7 @@ import 'member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -102,9 +102,15 @@ import 'member_state.dart';
 /// }
 ///
 /// resource "aws_macie2_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_macie2_member" "example" {
-///   depends_on                            = [aws_macie2_account.example]
+///   depends_on = [aws_macie2_account.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id                            = "AWS ACCOUNT ID"
 ///   email                                 = "EMAIL"
 ///   invite                                = true
@@ -220,7 +226,7 @@ class Member extends pulumi.CustomResource {
           'aws:macie2/member:Member',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     administratorAccountId = registerOutput<String>('administratorAccountId');

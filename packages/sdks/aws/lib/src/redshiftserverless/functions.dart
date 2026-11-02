@@ -61,7 +61,7 @@ import 'get_workgroup_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -69,7 +69,7 @@ import 'get_workgroup_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_redshiftserverless_getcredentials" "example" {
+/// data "aws_redshiftserverless_credentials" "example" {
 ///   workgroup_name = exampleAwsRedshiftserverlessWorkgroup.workgroupName
 /// }
 /// ```
@@ -95,7 +95,7 @@ import 'get_workgroup_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = RedshiftserverlessFunctions.getCredentials(GetCredentialsArgs.builder()
-///             .workgroupName(exampleAwsRedshiftserverlessWorkgroup.workgroupName())
+///             .workgroupName(exampleAwsRedshiftserverlessWorkgroup.get("workgroupName"))
 ///             .build());
 ///
 ///     }
@@ -190,7 +190,7 @@ pulumi.Output<GetCredentialsResult> getCredentialsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -198,7 +198,7 @@ pulumi.Output<GetCredentialsResult> getCredentialsOutput(
 ///   }
 /// }
 ///
-/// data "aws_redshiftserverless_getnamespace" "example" {
+/// data "aws_redshiftserverless_namespace" "example" {
 ///   namespace_name = "example-namespace"
 /// }
 /// ```
@@ -321,7 +321,7 @@ pulumi.Output<GetNamespaceResult> getNamespaceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -329,7 +329,7 @@ pulumi.Output<GetNamespaceResult> getNamespaceOutput(
 ///   }
 /// }
 ///
-/// data "aws_redshiftserverless_getworkgroup" "example" {
+/// data "aws_redshiftserverless_workgroup" "example" {
 ///   workgroup_name = exampleAwsRedshiftserverlessWorkgroup.workgroupName
 /// }
 /// ```
@@ -355,7 +355,7 @@ pulumi.Output<GetNamespaceResult> getNamespaceOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = RedshiftserverlessFunctions.getWorkgroup(GetWorkgroupArgs.builder()
-///             .workgroupName(exampleAwsRedshiftserverlessWorkgroup.workgroupName())
+///             .workgroupName(exampleAwsRedshiftserverlessWorkgroup.get("workgroupName"))
 ///             .build());
 ///
 ///     }

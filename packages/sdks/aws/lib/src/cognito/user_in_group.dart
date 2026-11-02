@@ -125,21 +125,21 @@ import 'user_in_group_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleUser, err := cognito.NewUser(ctx, "example", &cognito.UserArgs{
-/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: example.ID(),
 /// 			Username:   pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleUserGroup, err := cognito.NewUserGroup(ctx, "example", &cognito.UserGroupArgs{
-/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: example.ID(),
 /// 			Name:       pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewUserInGroup(ctx, "example", &cognito.UserInGroupArgs{
-/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: example.ID(),
 /// 			GroupName:  exampleUserGroup.Name,
 /// 			Username:   exampleUser.Username,
 /// 		})
@@ -151,7 +151,7 @@ import 'user_in_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -159,8 +159,11 @@ import 'user_in_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpool" "example" {
-///   password_policy = {
+/// resource "aws_cognito_user_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   password_policy {
 ///     temporary_password_validity_days = 7
 ///     minimum_length                   = 6
 ///     require_uppercase                = false
@@ -170,16 +173,25 @@ import 'user_in_group_state.dart';
 ///   name = "example"
 /// }
 /// resource "aws_cognito_user" "example" {
-///   user_pool_id = aws_cognito_userpool.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   user_pool_id = aws_cognito_user_pool.example.id
 ///   username     = "example"
 /// }
-/// resource "aws_cognito_usergroup" "example" {
-///   user_pool_id = aws_cognito_userpool.example.id
+/// resource "aws_cognito_user_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   user_pool_id = aws_cognito_user_pool.example.id
 ///   name         = "example"
 /// }
-/// resource "aws_cognito_useringroup" "example" {
-///   user_pool_id = aws_cognito_userpool.example.id
-///   group_name   = aws_cognito_usergroup.example.name
+/// resource "aws_cognito_user_in_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   user_pool_id = aws_cognito_user_pool.example.id
+///   group_name   = aws_cognito_user_group.example.name
 ///   username     = aws_cognito_user.example.username
 /// }
 /// ```
@@ -304,7 +316,7 @@ class UserInGroup extends pulumi.CustomResource {
           'aws:cognito/userInGroup:UserInGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     groupName = registerOutput<String>('groupName');
     region = registerOutput<String>('region');

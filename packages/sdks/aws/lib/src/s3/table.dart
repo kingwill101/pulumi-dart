@@ -108,7 +108,7 @@ import 'table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,16 +117,25 @@ import 'table_state.dart';
 /// }
 ///
 /// resource "aws_s3tables_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "example_table"
 ///   namespace        = aws_s3tables_namespace.example.namespace
 ///   table_bucket_arn = aws_s3tables_namespace.example.table_bucket_arn
 ///   format           = "ICEBERG"
 /// }
 /// resource "aws_s3tables_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace        = "example_namespace"
-///   table_bucket_arn = aws_s3tables_tablebucket.example.arn
+///   table_bucket_arn = aws_s3tables_table_bucket.example.arn
 /// }
-/// resource "aws_s3tables_tablebucket" "example" {
+/// resource "aws_s3tables_table_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-bucket"
 /// }
 /// ```
@@ -416,7 +425,7 @@ import 'table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -425,26 +434,32 @@ import 'table_state.dart';
 /// }
 ///
 /// resource "aws_s3tables_table" "example" {
-///   metadata = {
-///     iceberg = {
-///       schema = {
-///         fields = [{
-///           "name"     = "id"
-///           "type"     = "long"
-///           "required" = true
-///           }, {
-///           "name"     = "name"
-///           "type"     = "string"
-///           "required" = true
-///           }, {
-///           "name"     = "created_at"
-///           "type"     = "timestamp"
-///           "required" = false
-///           }, {
-///           "name"     = "price"
-///           "type"     = "decimal(10,2)"
-///           "required" = false
-///         }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   metadata {
+///     iceberg {
+///       schema {
+///         field {
+///           name     = "id"
+///           type     = "long"
+///           required = true
+///         }
+///         field {
+///           name     = "name"
+///           type     = "string"
+///           required = true
+///         }
+///         field {
+///           name     = "created_at"
+///           type     = "timestamp"
+///           required = false
+///         }
+///         field {
+///           name     = "price"
+///           type     = "decimal(10,2)"
+///           required = false
+///         }
 ///       }
 ///     }
 ///   }
@@ -454,10 +469,16 @@ import 'table_state.dart';
 ///   format           = "ICEBERG"
 /// }
 /// resource "aws_s3tables_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace        = "example_namespace"
-///   table_bucket_arn = aws_s3tables_tablebucket.example.arn
+///   table_bucket_arn = aws_s3tables_table_bucket.example.arn
 /// }
-/// resource "aws_s3tables_tablebucket" "example" {
+/// resource "aws_s3tables_table_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-bucket"
 /// }
 /// ```
@@ -638,7 +659,7 @@ class Table extends pulumi.CustomResource {
           'aws:s3tables/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');

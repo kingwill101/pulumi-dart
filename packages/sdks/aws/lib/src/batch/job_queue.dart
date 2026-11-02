@@ -114,7 +114,7 @@ import 'job_queue_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -122,12 +122,15 @@ import 'job_queue_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_batch_jobqueue" "test_queue" {
-///   compute_environment_orders {
+/// resource "aws_batch_job_queue" "test_queue" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   compute_environment_order {
 ///     order               = 1
 ///     compute_environment = testEnvironment1.arn
 ///   }
-///   compute_environment_orders {
+///   compute_environment_order {
 ///     order               = 2
 ///     compute_environment = testEnvironment2.arn
 ///   }
@@ -162,11 +165,11 @@ import 'job_queue_timeouts.dart';
 ///             .computeEnvironmentOrders(
 ///                 JobQueueComputeEnvironmentOrderArgs.builder()
 ///                     .order(1)
-///                     .computeEnvironment(testEnvironment1.arn())
+///                     .computeEnvironment(testEnvironment1.get("arn"))
 ///                     .build(),
 ///                 JobQueueComputeEnvironmentOrderArgs.builder()
 ///                     .order(2)
-///                     .computeEnvironment(testEnvironment2.arn())
+///                     .computeEnvironment(testEnvironment2.get("arn"))
 ///                     .build())
 ///             .name("tf-test-batch-job-queue")
 ///             .state("ENABLED")
@@ -357,7 +360,7 @@ import 'job_queue_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -365,28 +368,34 @@ import 'job_queue_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_batch_schedulingpolicy" "example" {
-///   fair_share_policy = {
-///     share_distributions = [{
-///       "shareIdentifier" = "A1*"
-///       "weightFactor"    = 0.1
-///     }]
+/// resource "aws_batch_scheduling_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   fair_share_policy {
+///     share_distribution {
+///       share_identifier = "A1*"
+///       weight_factor    = 0.1
+///     }
 ///     compute_reservation = 1
 ///     share_decay_seconds = 3600
 ///   }
 ///   name = "example"
 /// }
-/// resource "aws_batch_jobqueue" "example" {
-///   compute_environment_orders {
+/// resource "aws_batch_job_queue" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   compute_environment_order {
 ///     order               = 1
 ///     compute_environment = testEnvironment1.arn
 ///   }
-///   compute_environment_orders {
+///   compute_environment_order {
 ///     order               = 2
 ///     compute_environment = testEnvironment2.arn
 ///   }
 ///   name                  = "tf-test-batch-job-queue"
-///   scheduling_policy_arn = aws_batch_schedulingpolicy.example.arn
+///   scheduling_policy_arn = aws_batch_scheduling_policy.example.arn
 ///   state                 = "ENABLED"
 ///   priority              = 1
 /// }
@@ -433,11 +442,11 @@ import 'job_queue_timeouts.dart';
 ///             .computeEnvironmentOrders(
 ///                 JobQueueComputeEnvironmentOrderArgs.builder()
 ///                     .order(1)
-///                     .computeEnvironment(testEnvironment1.arn())
+///                     .computeEnvironment(testEnvironment1.get("arn"))
 ///                     .build(),
 ///                 JobQueueComputeEnvironmentOrderArgs.builder()
 ///                     .order(2)
-///                     .computeEnvironment(testEnvironment2.arn())
+///                     .computeEnvironment(testEnvironment2.get("arn"))
 ///                     .build())
 ///             .name("tf-test-batch-job-queue")
 ///             .schedulingPolicyArn(example.arn())
@@ -525,7 +534,7 @@ class JobQueue extends pulumi.CustomResource {
           'aws:batch/jobQueue:JobQueue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     computeEnvironmentOrders = registerOutput<List<JobQueueComputeEnvironmentOrder>?>('computeEnvironmentOrders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobQueueComputeEnvironmentOrder>(guardedValue, (value) => JobQueueComputeEnvironmentOrder.fromMap((value as Map).cast<String, dynamic>())); });

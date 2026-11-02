@@ -82,7 +82,7 @@ import 'resource_set_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,10 +90,13 @@ import 'resource_set_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fms_resourceset" "example" {
-///   resource_sets {
-///     name                = "testing"
-///     resource_type_lists = ["AWS::NetworkFirewall::Firewall"]
+/// resource "aws_fms_resource_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_set {
+///     name               = "testing"
+///     resource_type_list = ["AWS::NetworkFirewall::Firewall"]
 ///   }
 /// }
 /// ```
@@ -172,7 +175,7 @@ class ResourceSet extends pulumi.CustomResource {
           'aws:fms/resourceSet:ResourceSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');

@@ -172,7 +172,7 @@ import 'space_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -181,6 +181,9 @@ import 'space_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "cloudwatch-omni-data-access"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -194,10 +197,16 @@ import 'space_state.dart';
 ///   })
 /// }
 /// resource "aws_cloudwatchomni_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   identity_providers = ["IAM"]
 /// }
 /// resource "aws_cloudwatchomni_space" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
 ///   domain_id            = aws_cloudwatchomni_domain.example.domain_id
 ///   data_access_role_arn = aws_iam_role.example.arn
@@ -357,7 +366,7 @@ import 'space_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -366,6 +375,9 @@ import 'space_state.dart';
 /// }
 ///
 /// resource "aws_cloudwatchomni_space" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                           = "example"
 ///   domain_id                      = exampleAwsCloudwatchomniDomain.domainId
 ///   data_access_role_arn           = dataAccess.arn
@@ -395,9 +407,9 @@ import 'space_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Space("example", SpaceArgs.builder()
 ///             .name("example")
-///             .domainId(exampleAwsCloudwatchomniDomain.domainId())
-///             .dataAccessRoleArn(dataAccess.arn())
-///             .agentCoreEvaluationRoleArn(agentCore.arn())
+///             .domainId(exampleAwsCloudwatchomniDomain.get("domainId"))
+///             .dataAccessRoleArn(dataAccess.get("arn"))
+///             .agentCoreEvaluationRoleArn(agentCore.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -655,7 +667,7 @@ import 'space_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -663,10 +675,13 @@ import 'space_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "CloudWatch Omni Space encryption"
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -674,7 +689,7 @@ import 'space_state.dart';
 ///       "Sid"    = "EnableIAMUserPermissions"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///         "AWS" ="arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
 ///       }
 ///       "Action"   = "kms:*"
 ///       "Resource" = "*"
@@ -690,7 +705,10 @@ import 'space_state.dart';
 ///   })
 /// }
 /// resource "aws_cloudwatchomni_space" "example" {
-///   encryption_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   encryption_configuration {
 ///     encryption_strategy = "CUSTOMER_MANAGED"
 ///     kms_key_arn         = aws_kms_key.example.arn
 ///   }
@@ -769,8 +787,8 @@ import 'space_state.dart';
 ///                 .kmsKeyArn(example.arn())
 ///                 .build())
 ///             .name("example")
-///             .domainId(exampleAwsCloudwatchomniDomain.domainId())
-///             .dataAccessRoleArn(exampleAwsIamRole.arn())
+///             .domainId(exampleAwsCloudwatchomniDomain.get("domainId"))
+///             .dataAccessRoleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -876,7 +894,7 @@ class Space extends pulumi.CustomResource {
           'aws:cloudwatchomni/space:Space',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     agentCoreEvaluationRoleArn = registerOutput<String?>('agentCoreEvaluationRoleArn');
     dataAccessRoleArn = registerOutput<String>('dataAccessRoleArn');

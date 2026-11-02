@@ -279,7 +279,7 @@ import 'policy_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -287,8 +287,8 @@ import 'policy_attachment_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["ec2.amazonaws.com"]
@@ -297,8 +297,8 @@ import 'policy_attachment_state.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "policy" {
-///   statements {
+/// data "aws_iam_policy_document" "policy" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["ec2:Describe*"]
 ///     resources = ["*"]
@@ -306,21 +306,36 @@ import 'policy_attachment_state.dart';
 /// }
 ///
 /// resource "aws_iam_user" "user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-user"
 /// }
 /// resource "aws_iam_role" "role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
 /// resource "aws_iam_group" "group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-group"
 /// }
 /// resource "aws_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example-policy"
 ///   description = "An example policy"
-///   policy      = data.aws_iam_getpolicydocument.policy.json
+///   policy      = data.aws_iam_policy_document.policy.json
 /// }
-/// resource "aws_iam_policyattachment" "example-attach" {
+/// resource "aws_iam_policy_attachment" "example-attach" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-attachment"
 ///   users      = [aws_iam_user.user.name]
 ///   roles      = [aws_iam_role.role.name]
@@ -491,7 +506,7 @@ class PolicyAttachment extends pulumi.CustomResource {
           'aws:iam/policyAttachment:PolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     groups = registerOutput<List<String>?>('groups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');

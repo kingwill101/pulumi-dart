@@ -129,7 +129,7 @@ import 'firewall_subnet_mapping.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -138,12 +138,15 @@ import 'firewall_subnet_mapping.dart';
 /// }
 ///
 /// resource "aws_networkfirewall_firewall" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   timeouts {
 ///     create = "40m"
 ///     update = "50m"
 ///     delete = "1h"
 ///   }
-///   subnet_mappings {
+///   subnet_mapping {
 ///     subnet_id = exampleAwsSubnet.id
 ///   }
 ///   name                   = "example"
@@ -182,11 +185,11 @@ import 'firewall_subnet_mapping.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Firewall("example", FirewallArgs.builder()
 ///             .subnetMappings(FirewallSubnetMappingArgs.builder()
-///                 .subnetId(exampleAwsSubnet.id())
+///                 .subnetId(exampleAwsSubnet.get("id"))
 ///                 .build())
 ///             .name("example")
-///             .firewallPolicyArn(exampleAwsNetworkfirewallFirewallPolicy.arn())
-///             .vpcId(exampleAwsVpc.id())
+///             .firewallPolicyArn(exampleAwsNetworkfirewallFirewallPolicy.get("arn"))
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .enabledAnalysisTypes(
 ///                 "TLS_SNI",
 ///                 "HTTP_HOST")
@@ -342,7 +345,7 @@ import 'firewall_subnet_mapping.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -350,16 +353,19 @@ import 'firewall_subnet_mapping.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "example" {
+/// data "aws_availability_zones" "example" {
 ///   state = "available"
 /// }
 ///
 /// resource "aws_networkfirewall_firewall" "example" {
-///   availability_zone_mappings {
-///     availability_zone_id = data.aws_getavailabilityzones.example.zone_ids[0]
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   availability_zone_mappings {
-///     availability_zone_id = data.aws_getavailabilityzones.example.zone_ids[1]
+///   availability_zone_mapping {
+///     availability_zone_id = data.aws_availability_zones.example.zone_ids[0]
+///   }
+///   availability_zone_mapping {
+///     availability_zone_id = data.aws_availability_zones.example.zone_ids[1]
 ///   }
 ///   name                = "example"
 ///   firewall_policy_arn = exampleAwsNetworkfirewallFirewallPolicy.arn
@@ -403,8 +409,8 @@ import 'firewall_subnet_mapping.dart';
 ///                     .availabilityZoneId(example.zoneIds()[1])
 ///                     .build())
 ///             .name("example")
-///             .firewallPolicyArn(exampleAwsNetworkfirewallFirewallPolicy.arn())
-///             .transitGatewayId(exampleAwsEc2TransitGateway.id())
+///             .firewallPolicyArn(exampleAwsNetworkfirewallFirewallPolicy.get("arn"))
+///             .transitGatewayId(exampleAwsEc2TransitGateway.get("id"))
 ///             .build());
 ///
 ///     }
@@ -496,7 +502,7 @@ class Firewall extends pulumi.CustomResource {
           'aws:networkfirewall/firewall:Firewall',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZoneChangeProtection = registerOutput<bool?>('availabilityZoneChangeProtection');

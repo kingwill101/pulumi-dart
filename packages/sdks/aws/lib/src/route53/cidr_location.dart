@@ -77,7 +77,7 @@ import 'cidr_location_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewCidrLocation(ctx, "example", &route53.CidrLocationArgs{
-/// 			CidrCollectionId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			CidrCollectionId: example.ID(),
 /// 			Name:             pulumi.String("office"),
 /// 			CidrBlocks: pulumi.StringArray{
 /// 				pulumi.String("200.5.3.0/24"),
@@ -92,7 +92,7 @@ import 'cidr_location_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -100,11 +100,17 @@ import 'cidr_location_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_cidrcollection" "example" {
+/// resource "aws_route53_cidr_collection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "collection-1"
 /// }
-/// resource "aws_route53_cidrlocation" "example" {
-///   cidr_collection_id = aws_route53_cidrcollection.example.id
+/// resource "aws_route53_cidr_location" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cidr_collection_id = aws_route53_cidr_collection.example.id
 ///   name               = "office"
 ///   cidr_blocks        = ["200.5.3.0/24", "200.6.3.0/24"]
 /// }
@@ -192,7 +198,7 @@ class CidrLocation extends pulumi.CustomResource {
           'aws:route53/cidrLocation:CidrLocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     cidrBlocks = registerOutput<List<String>>('cidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cidrCollectionId = registerOutput<String>('cidrCollectionId');

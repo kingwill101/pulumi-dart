@@ -111,7 +111,7 @@ import 'bucket_object_lock_configuration_v2_state.dart';
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -123,7 +123,7 @@ import 'bucket_object_lock_configuration_v2_state.dart';
 /// 					Days: pulumi.Int(5),
 /// 				},
 /// 			},
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -133,7 +133,7 @@ import 'bucket_object_lock_configuration_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -142,17 +142,26 @@ import 'bucket_object_lock_configuration_v2_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "mybucket"
 /// }
-/// resource "aws_s3_bucketversioning" "example" {
-///   versioning_configuration = {
+/// resource "aws_s3_bucket_versioning" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   versioning_configuration {
 ///     status = "Enabled"
 ///   }
 ///   bucket = aws_s3_bucket.example.id
 /// }
-/// resource "aws_s3_bucketobjectlockconfiguration" "example" {
-///   rule = {
-///     default_retention = {
+/// resource "aws_s3_bucket_object_lock_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     default_retention {
 ///       mode = "COMPLIANCE"
 ///       days = 5
 ///     }
@@ -279,7 +288,7 @@ class BucketObjectLockConfigurationV2 extends pulumi.CustomResource {
           'aws:s3/bucketObjectLockConfigurationV2:BucketObjectLockConfigurationV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['token'],
         ) {
     bucket = registerOutput<String>('bucket');

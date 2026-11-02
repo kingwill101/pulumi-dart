@@ -117,7 +117,7 @@ import 'fleet_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -126,11 +126,14 @@ import 'fleet_vpc_config.dart';
 /// }
 ///
 /// resource "aws_codebuild_fleet" "test" {
-///   scaling_configuration = {
-///     target_tracking_scaling_configs = [{
-///       "metricType"  = "FLEET_UTILIZATION_RATE"
-///       "targetValue" = 97.5
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scaling_configuration {
+///     target_tracking_scaling_configs {
+///       metric_type  = "FLEET_UTILIZATION_RATE"
+///       target_value = 97.5
+///     }
 ///     max_capacity = 5
 ///     scaling_type = "TARGET_TRACKING_SCALING"
 ///   }
@@ -253,7 +256,7 @@ import 'fleet_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -262,6 +265,9 @@ import 'fleet_vpc_config.dart';
 /// }
 ///
 /// resource "aws_codebuild_fleet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-codebuild-fleet"
 /// }
 /// ```
@@ -365,7 +371,7 @@ class Fleet extends pulumi.CustomResource {
           'aws:codebuild/fleet:Fleet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     baseCapacity = registerOutput<int>('baseCapacity');

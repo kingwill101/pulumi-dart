@@ -66,7 +66,7 @@ import 'organization_delegated_admin_account_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,11 +74,14 @@ import 'organization_delegated_admin_account_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "delegated" {
+/// data "aws_caller_identity" "delegated" {
 /// }
 ///
-/// resource "aws_cloudtrail_organizationdelegatedadminaccount" "example" {
-///   account_id = data.aws_getcalleridentity.delegated.account_id
+/// resource "aws_cloudtrail_organization_delegated_admin_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   account_id = data.aws_caller_identity.delegated.account_id
 /// }
 /// ```
 /// ```java
@@ -159,7 +162,7 @@ class OrganizationDelegatedAdminAccount extends pulumi.CustomResource {
           'aws:cloudtrail/organizationDelegatedAdminAccount:OrganizationDelegatedAdminAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');

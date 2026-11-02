@@ -79,7 +79,7 @@ import 'vpc_endpoint_service_allowed_principle_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,12 +87,15 @@ import 'vpc_endpoint_service_allowed_principle_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
-/// resource "aws_ec2_vpcendpointserviceallowedprinciple" "allow_me_to_foo" {
+/// resource "aws_ec2_vpc_endpoint_service_allowed_principle" "allow_me_to_foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_endpoint_service_id = foo.id
-///   principal_arn           = data.aws_getcalleridentity.current.arn
+///   principal_arn           = data.aws_caller_identity.current.arn
 /// }
 /// ```
 /// ```java
@@ -122,7 +125,7 @@ import 'vpc_endpoint_service_allowed_principle_state.dart';
 ///             .build());
 ///
 ///         var allowMeToFoo = new VpcEndpointServiceAllowedPrinciple("allowMeToFoo", VpcEndpointServiceAllowedPrincipleArgs.builder()
-///             .vpcEndpointServiceId(foo.id())
+///             .vpcEndpointServiceId(foo.get("id"))
 ///             .principalArn(current.arn())
 ///             .build());
 ///
@@ -163,7 +166,7 @@ class VpcEndpointServiceAllowedPrinciple extends pulumi.CustomResource {
           'aws:ec2/vpcEndpointServiceAllowedPrinciple:VpcEndpointServiceAllowedPrinciple',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     principalArn = registerOutput<String>('principalArn');
     region = registerOutput<String>('region');

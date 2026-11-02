@@ -60,7 +60,7 @@ import 'email_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -68,7 +68,10 @@ import 'email_identity_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_emailidentity" "example" {
+/// resource "aws_sesv2_email_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   email_identity = "testing@example.com"
 /// }
 /// ```
@@ -160,7 +163,7 @@ import 'email_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -168,7 +171,10 @@ import 'email_identity_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_emailidentity" "example" {
+/// resource "aws_sesv2_email_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   email_identity = "example.com"
 /// }
 /// ```
@@ -280,7 +286,7 @@ import 'email_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -288,12 +294,18 @@ import 'email_identity_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_configurationset" "example" {
+/// resource "aws_sesv2_configuration_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_set_name = "example"
 /// }
-/// resource "aws_sesv2_emailidentity" "example" {
+/// resource "aws_sesv2_email_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   email_identity         = "example.com"
-///   configuration_set_name = aws_sesv2_configurationset.example.configuration_set_name
+///   configuration_set_name = aws_sesv2_configuration_set.example.configuration_set_name
 /// }
 /// ```
 /// ```java
@@ -417,7 +429,7 @@ import 'email_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -425,8 +437,11 @@ import 'email_identity_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_emailidentity" "example" {
-///   dkim_signing_attributes = {
+/// resource "aws_sesv2_email_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   dkim_signing_attributes {
 ///     domain_signing_private_key = "MIIJKAIBAAKCAgEA2Se7p8zvnI4yh+Gh9j2rG5e2aRXjg03Y8saiupLnadPH9xvM..."
 ///     domain_signing_selector    = "example"
 ///   }
@@ -522,7 +537,7 @@ class EmailIdentity extends pulumi.CustomResource {
           'aws:sesv2/emailIdentity:EmailIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configurationSetName = registerOutput<String?>('configurationSetName');

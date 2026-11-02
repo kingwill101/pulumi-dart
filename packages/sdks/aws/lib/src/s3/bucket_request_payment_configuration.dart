@@ -66,7 +66,7 @@ import 'bucket_request_payment_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'bucket_request_payment_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketrequestpaymentconfiguration" "example" {
+/// resource "aws_s3_bucket_request_payment_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = exampleAwsS3Bucket.id
 ///   payer  = "Requester"
 /// }
@@ -101,7 +104,7 @@ import 'bucket_request_payment_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BucketRequestPaymentConfiguration("example", BucketRequestPaymentConfigurationArgs.builder()
-///             .bucket(exampleAwsS3Bucket.id())
+///             .bucket(exampleAwsS3Bucket.get("id"))
 ///             .payer("Requester")
 ///             .build());
 ///
@@ -158,7 +161,7 @@ class BucketRequestPaymentConfiguration extends pulumi.CustomResource {
           'aws:s3/bucketRequestPaymentConfiguration:BucketRequestPaymentConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');

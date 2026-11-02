@@ -59,7 +59,7 @@ import 'get_stream_key_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,7 @@ import 'get_stream_key_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_ivs_getstreamkey" "example" {
+/// data "aws_ivs_stream_key" "example" {
 ///   channel_arn = "arn:aws:ivs:us-west-2:326937407773:channel/0Y1lcs4U7jk5"
 /// }
 /// ```

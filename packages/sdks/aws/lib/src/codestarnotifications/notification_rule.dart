@@ -210,7 +210,7 @@ import 'notification_rule_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -218,8 +218,8 @@ import 'notification_rule_target.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "notifAccess" {
-///   statements {
+/// data "aws_iam_policy_document" "notifAccess" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["codestar-notifications.amazonaws.com"]
@@ -230,17 +230,29 @@ import 'notification_rule_target.dart';
 /// }
 ///
 /// resource "aws_codecommit_repository" "code" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   repository_name = "example-code-repo"
 /// }
 /// resource "aws_sns_topic" "notif" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "notification"
 /// }
-/// resource "aws_sns_topicpolicy" "default" {
+/// resource "aws_sns_topic_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   arn    = aws_sns_topic.notif.arn
-///   policy = data.aws_iam_getpolicydocument.notifAccess.json
+///   policy = data.aws_iam_policy_document.notifAccess.json
 /// }
-/// resource "aws_codestarnotifications_notificationrule" "commits" {
-///   targets {
+/// resource "aws_codestarnotifications_notification_rule" "commits" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target {
 ///     address = aws_sns_topic.notif.arn
 ///   }
 ///   detail_type    = "BASIC"
@@ -409,7 +421,7 @@ class NotificationRule extends pulumi.CustomResource {
           'aws:codestarnotifications/notificationRule:NotificationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     detailType = registerOutput<String>('detailType');

@@ -71,7 +71,7 @@ import 'internet_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,7 +79,10 @@ import 'internet_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_internetgateway" "gw" {
+/// resource "aws_ec2_internet_gateway" "gw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = main.id
 ///   tags = {
 ///     "Name" = "main"
@@ -108,7 +111,7 @@ import 'internet_gateway_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var gw = new InternetGateway("gw", InternetGatewayArgs.builder()
-///             .vpcId(main.id())
+///             .vpcId(main.get("id"))
 ///             .tags(Map.of("Name", "main"))
 ///             .build());
 ///
@@ -225,7 +228,7 @@ class InternetGateway extends pulumi.CustomResource {
   /// }
   /// ```
   /// ```hcl
-  /// pulumi {
+  /// terraform {
   ///   required_providers {
   ///     aws = {
   ///       source = "pulumi/aws"
@@ -233,11 +236,17 @@ class InternetGateway extends pulumi.CustomResource {
   ///   }
   /// }
   ///
-  /// resource "aws_ec2_internetgateway" "gw" {
+  /// resource "aws_ec2_internet_gateway" "gw" {
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
   ///   vpc_id = main.id
   /// }
   /// resource "aws_ec2_instance" "foo" {
-  ///   depends_on = [aws_ec2_internetgateway.gw]
+  ///   depends_on = [aws_ec2_internet_gateway.gw]
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
   /// }
   /// ```
   /// ```java
@@ -265,7 +274,7 @@ class InternetGateway extends pulumi.CustomResource {
   ///
   ///     public static void stack(Context ctx) {
   ///         var gw = new InternetGateway("gw", InternetGatewayArgs.builder()
-  ///             .vpcId(main.id())
+  ///             .vpcId(main.get("id"))
   ///             .build());
   ///
   ///         var foo = new Instance("foo", InstanceArgs.Empty, CustomResourceOptions.builder()
@@ -305,7 +314,7 @@ class InternetGateway extends pulumi.CustomResource {
           'aws:ec2/internetGateway:InternetGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     ownerId = registerOutput<String>('ownerId');

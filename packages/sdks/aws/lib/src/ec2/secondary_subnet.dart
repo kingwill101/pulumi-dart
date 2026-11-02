@@ -103,7 +103,7 @@ import 'secondary_subnet_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewSecondarySubnet(ctx, "example", &ec2.SecondarySubnetArgs{
-/// 			SecondaryNetworkId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			SecondaryNetworkId: example.ID(),
 /// 			Ipv4CidrBlock:      pulumi.String("10.0.1.0/24"),
 /// 			AvailabilityZone:   pulumi.String("us-west-2a"),
 /// 			Tags: pulumi.StringMap{
@@ -118,7 +118,7 @@ import 'secondary_subnet_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -126,15 +126,21 @@ import 'secondary_subnet_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_secondarynetwork" "example" {
+/// resource "aws_ec2_secondary_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ipv4_cidr_block = "10.0.0.0/16"
 ///   network_type    = "rdma"
 ///   tags = {
 ///     "Name" = "example-secondary-network"
 ///   }
 /// }
-/// resource "aws_ec2_secondarysubnet" "example" {
-///   secondary_network_id = aws_ec2_secondarynetwork.example.id
+/// resource "aws_ec2_secondary_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secondary_network_id = aws_ec2_secondary_network.example.id
 ///   ipv4_cidr_block      = "10.0.1.0/24"
 ///   availability_zone    = "us-west-2a"
 ///   tags = {
@@ -338,7 +344,7 @@ import 'secondary_subnet_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewSecondarySubnet(ctx, "example", &ec2.SecondarySubnetArgs{
-/// 			SecondaryNetworkId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			SecondaryNetworkId: example.ID(),
 /// 			Ipv4CidrBlock:      pulumi.String("10.0.1.0/24"),
 /// 			AvailabilityZoneId: pulumi.String(available.ZoneIds[0]),
 /// 			Tags: pulumi.StringMap{
@@ -353,7 +359,7 @@ import 'secondary_subnet_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -361,25 +367,31 @@ import 'secondary_subnet_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_getavailabilityzones" "available" {
-///   filters {
+/// data "aws_availability_zones" "available" {
+///   filter {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
 ///   state = "available"
 /// }
 ///
-/// resource "aws_ec2_secondarynetwork" "example" {
+/// resource "aws_ec2_secondary_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ipv4_cidr_block = "10.0.0.0/16"
 ///   network_type    = "rdma"
 ///   tags = {
 ///     "Name" = "example-secondary-network"
 ///   }
 /// }
-/// resource "aws_ec2_secondarysubnet" "example" {
-///   secondary_network_id = aws_ec2_secondarynetwork.example.id
+/// resource "aws_ec2_secondary_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   secondary_network_id = aws_ec2_secondary_network.example.id
 ///   ipv4_cidr_block      = "10.0.1.0/24"
-///   availability_zone_id = data.aws_getavailabilityzones.available.zone_ids[0]
+///   availability_zone_id = data.aws_availability_zones.available.zone_ids[0]
 ///   tags = {
 ///     "Name" = "example-secondary-subnet"
 ///   }
@@ -526,7 +538,7 @@ class SecondarySubnet extends pulumi.CustomResource {
           'aws:ec2/secondarySubnet:SecondarySubnet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');

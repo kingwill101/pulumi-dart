@@ -83,7 +83,7 @@ import 'phone_number_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,7 +91,10 @@ import 'phone_number_status.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_phonenumber" "example" {
+/// resource "aws_connect_phone_number" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   target_arn   = exampleAwsConnectInstance.arn
 ///   country_code = "US"
 ///   type         = "DID"
@@ -122,7 +125,7 @@ import 'phone_number_status.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new PhoneNumber("example", PhoneNumberArgs.builder()
-///             .targetArn(exampleAwsConnectInstance.arn())
+///             .targetArn(exampleAwsConnectInstance.get("arn"))
 ///             .countryCode("US")
 ///             .type("DID")
 ///             .tags(Map.of("hello", "world"))
@@ -210,7 +213,7 @@ import 'phone_number_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -218,7 +221,10 @@ import 'phone_number_status.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_phonenumber" "example" {
+/// resource "aws_connect_phone_number" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   target_arn   = exampleAwsConnectInstance.arn
 ///   country_code = "US"
 ///   type         = "DID"
@@ -247,7 +253,7 @@ import 'phone_number_status.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new PhoneNumber("example", PhoneNumberArgs.builder()
-///             .targetArn(exampleAwsConnectInstance.arn())
+///             .targetArn(exampleAwsConnectInstance.get("arn"))
 ///             .countryCode("US")
 ///             .type("DID")
 ///             .description("example description")
@@ -334,7 +340,7 @@ import 'phone_number_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -342,7 +348,10 @@ import 'phone_number_status.dart';
 ///   }
 /// }
 ///
-/// resource "aws_connect_phonenumber" "example" {
+/// resource "aws_connect_phone_number" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   target_arn   = exampleAwsConnectInstance.arn
 ///   country_code = "US"
 ///   type         = "DID"
@@ -371,7 +380,7 @@ import 'phone_number_status.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new PhoneNumber("example", PhoneNumberArgs.builder()
-///             .targetArn(exampleAwsConnectInstance.arn())
+///             .targetArn(exampleAwsConnectInstance.get("arn"))
 ///             .countryCode("US")
 ///             .type("DID")
 ///             .prefix("+18005")
@@ -447,7 +456,7 @@ class PhoneNumber extends pulumi.CustomResource {
           'aws:connect/phoneNumber:PhoneNumber',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     countryCode = registerOutput<String>('countryCode');

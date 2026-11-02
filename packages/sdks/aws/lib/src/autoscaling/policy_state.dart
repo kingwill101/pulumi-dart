@@ -138,7 +138,7 @@ class PolicyState {
   /// }
   /// ```
   /// ```hcl
-  /// pulumi {
+  /// terraform {
   ///   required_providers {
   ///     aws = {
   ///       source = "pulumi/aws"
@@ -147,12 +147,15 @@ class PolicyState {
   /// }
   ///
   /// resource "aws_autoscaling_policy" "example" {
-  ///   step_adjustments {
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
+  ///   step_adjustment {
   ///     scaling_adjustment          = -1
   ///     metric_interval_lower_bound = 1
   ///     metric_interval_upper_bound = 2
   ///   }
-  ///   step_adjustments {
+  ///   step_adjustment {
   ///     scaling_adjustment          = 1
   ///     metric_interval_lower_bound = 2
   ///     metric_interval_upper_bound = 3
@@ -256,7 +259,7 @@ class PolicyState {
   ///             {
   ///                 PredefinedMetricType = "ASGAverageCPUUtilization",
   ///             },
-  ///             TargetValue = 40,
+  ///             TargetValue = 40.0,
   ///         },
   ///     });
   ///
@@ -288,7 +291,7 @@ class PolicyState {
   /// }
   /// ```
   /// ```hcl
-  /// pulumi {
+  /// terraform {
   ///   required_providers {
   ///     aws = {
   ///       source = "pulumi/aws"
@@ -297,8 +300,11 @@ class PolicyState {
   /// }
   ///
   /// resource "aws_autoscaling_policy" "example" {
-  ///   target_tracking_configuration = {
-  ///     predefined_metric_specification = {
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
+  ///   target_tracking_configuration {
+  ///     predefined_metric_specification {
   ///       predefined_metric_type = "ASGAverageCPUUtilization"
   ///     }
   ///     target_value = 40

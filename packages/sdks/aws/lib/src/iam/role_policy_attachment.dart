@@ -222,7 +222,7 @@ import 'role_policy_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -230,8 +230,8 @@ import 'role_policy_attachment_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["ec2.amazonaws.com"]
@@ -240,8 +240,8 @@ import 'role_policy_attachment_state.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "policy" {
-///   statements {
+/// data "aws_iam_policy_document" "policy" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["ec2:Describe*"]
 ///     resources = ["*"]
@@ -249,15 +249,24 @@ import 'role_policy_attachment_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "test-role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
 /// resource "aws_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test-policy"
 ///   description = "A test policy"
-///   policy      = data.aws_iam_getpolicydocument.policy.json
+///   policy      = data.aws_iam_policy_document.policy.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "test-attach" {
+/// resource "aws_iam_role_policy_attachment" "test-attach" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = aws_iam_role.role.name
 ///   policy_arn = aws_iam_policy.policy.arn
 /// }
@@ -411,7 +420,7 @@ class RolePolicyAttachment extends pulumi.CustomResource {
           'aws:iam/rolePolicyAttachment:RolePolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     policyArn = registerOutput<String>('policyArn');
     role = registerOutput<String>('role');

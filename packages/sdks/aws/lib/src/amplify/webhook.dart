@@ -80,14 +80,14 @@ import 'webhook_state.dart';
 /// 			return err
 /// 		}
 /// 		master, err := amplify.NewBranch(ctx, "master", &amplify.BranchArgs{
-/// 			AppId:      example.ID().ToIDOutput().ToStringOutput(),
+/// 			AppId:      example.ID(),
 /// 			BranchName: pulumi.String("master"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = amplify.NewWebhook(ctx, "master", &amplify.WebhookArgs{
-/// 			AppId:       example.ID().ToIDOutput().ToStringOutput(),
+/// 			AppId:       example.ID(),
 /// 			BranchName:  master.BranchName,
 /// 			Description: pulumi.String("triggermaster"),
 /// 		})
@@ -99,7 +99,7 @@ import 'webhook_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -108,13 +108,22 @@ import 'webhook_state.dart';
 /// }
 ///
 /// resource "aws_amplify_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "app"
 /// }
 /// resource "aws_amplify_branch" "master" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id      = aws_amplify_app.example.id
 ///   branch_name = "master"
 /// }
 /// resource "aws_amplify_webhook" "master" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id      = aws_amplify_app.example.id
 ///   branch_name = aws_amplify_branch.master.branch_name
 ///   description = "triggermaster"
@@ -217,7 +226,7 @@ class Webhook extends pulumi.CustomResource {
           'aws:amplify/webhook:Webhook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     arn = registerOutput<String>('arn');

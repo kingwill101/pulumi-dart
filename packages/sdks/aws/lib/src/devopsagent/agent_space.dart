@@ -57,7 +57,7 @@ import 'agent_space_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,10 @@ import 'agent_space_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_devopsagent_agentspace" "example" {
+/// resource "aws_devopsagent_agent_space" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-agent-space"
 /// }
 /// ```
@@ -177,7 +180,7 @@ import 'agent_space_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -185,7 +188,10 @@ import 'agent_space_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_devopsagent_agentspace" "example" {
+/// resource "aws_devopsagent_agent_space" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-agent-space"
 ///   description = "An example agent space"
 ///   tags = {
@@ -295,7 +301,7 @@ import 'agent_space_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -303,7 +309,10 @@ import 'agent_space_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_devopsagent_agentspace" "example" {
+/// resource "aws_devopsagent_agent_space" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-agent-space"
 ///   kms_key_arn = exampleAwsKmsKey.arn
 /// }
@@ -331,7 +340,7 @@ import 'agent_space_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentSpace("example", AgentSpaceArgs.builder()
 ///             .name("my-agent-space")
-///             .kmsKeyArn(exampleAwsKmsKey.arn())
+///             .kmsKeyArn(exampleAwsKmsKey.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -404,7 +413,7 @@ class AgentSpace extends pulumi.CustomResource {
           'aws:devopsagent/agentSpace:AgentSpace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     agentSpaceId = registerOutput<String>('agentSpaceId');
     arn = registerOutput<String>('arn');

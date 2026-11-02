@@ -107,7 +107,7 @@ import 'topic_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -116,6 +116,9 @@ import 'topic_timeouts.dart';
 /// }
 ///
 /// resource "aws_msk_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "Example"
 ///   cluster_arn        = exampleAwsMskCluster.arn
 ///   partition_count    = 2
@@ -152,7 +155,7 @@ import 'topic_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Topic("example", TopicArgs.builder()
 ///             .name("Example")
-///             .clusterArn(exampleAwsMskCluster.arn())
+///             .clusterArn(exampleAwsMskCluster.get("arn"))
 ///             .partitionCount(2)
 ///             .replicationFactor(2)
 ///             .configs(serializeJson(
@@ -238,7 +241,7 @@ class Topic extends pulumi.CustomResource {
           'aws:msk/topic:Topic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clusterArn = registerOutput<String>('clusterArn');

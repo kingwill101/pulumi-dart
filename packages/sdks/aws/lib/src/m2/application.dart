@@ -179,7 +179,7 @@ import 'application_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -188,8 +188,12 @@ import 'application_timeouts.dart';
 /// }
 ///
 /// resource "aws_m2_application" "example" {
-///   definition = {
-///     content ="{
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   definition {
+///     content = <<EOF
+/// {
 ///   \"definition\": {
 ///     \"listeners\": [
 ///       {
@@ -214,7 +218,8 @@ import 'application_timeouts.dart';
 ///   \"template-version\": \"2.0\"
 /// }
 ///
-/// "
+/// EOF
+///
 ///   }
 ///   name        = "Example"
 ///   engine_type = "bluage"
@@ -364,7 +369,7 @@ class Application extends pulumi.CustomResource {
           'aws:m2/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     arn = registerOutput<String>('arn');

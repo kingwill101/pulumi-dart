@@ -92,7 +92,7 @@ import 'organization_configuration_feature_state.dart';
 /// 					AutoEnable: pulumi.String("NEW"),
 /// 				},
 /// 			},
-/// 			DetectorId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			DetectorId: example.ID(),
 /// 			Name:       pulumi.String("EKS_RUNTIME_MONITORING"),
 /// 			AutoEnable: pulumi.String("ALL"),
 /// 		})
@@ -104,7 +104,7 @@ import 'organization_configuration_feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -113,10 +113,16 @@ import 'organization_configuration_feature_state.dart';
 /// }
 ///
 /// resource "aws_guardduty_detector" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enable = true
 /// }
-/// resource "aws_guardduty_organizationconfigurationfeature" "eks_runtime_monitoring" {
-///   additional_configurations {
+/// resource "aws_guardduty_organization_configuration_feature" "eks_runtime_monitoring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   additional_configuration {
 ///     name        = "EKS_ADDON_MANAGEMENT"
 ///     auto_enable = "NEW"
 ///   }
@@ -184,8 +190,8 @@ import 'organization_configuration_feature_state.dart';
 ///       autoEnable: ALL
 /// ```
 class OrganizationConfigurationFeature extends pulumi.CustomResource {
-  /// Additional feature configuration block for features `EKS_RUNTIME_MONITORING` or `RUNTIME_MONITORING`. See below.
-  late final pulumi.Output<List<OrganizationConfigurationFeatureAdditionalConfiguration>?> additionalConfigurations;
+  /// Additional feature configuration block for features `EKS_RUNTIME_MONITORING` or `RUNTIME_MONITORING`, or `RDS_LOGIN_EVENTS`. If omitted, Terraform does not track changes to additional configurations that AWS manages for the feature. Removing a previously declared `additionalConfiguration` block leaves the setting unchanged in AWS; to change a setting, update its `autoEnable` instead.  See below.
+  late final pulumi.Output<List<OrganizationConfigurationFeatureAdditionalConfiguration>> additionalConfigurations;
   /// Status of the feature that is configured for the member accounts within the organization. Valid values: `NEW`, `ALL`, `NONE`.
   late final pulumi.Output<String> autoEnable;
   /// ID of the detector that configures the delegated administrator.
@@ -207,9 +213,9 @@ class OrganizationConfigurationFeature extends pulumi.CustomResource {
           'aws:guardduty/organizationConfigurationFeature:OrganizationConfigurationFeature',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
-    additionalConfigurations = registerOutput<List<OrganizationConfigurationFeatureAdditionalConfiguration>?>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationConfigurationFeatureAdditionalConfiguration>(guardedValue, (value) => OrganizationConfigurationFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    additionalConfigurations = registerOutput<List<OrganizationConfigurationFeatureAdditionalConfiguration>>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationConfigurationFeatureAdditionalConfiguration>(guardedValue, (value) => OrganizationConfigurationFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     autoEnable = registerOutput<String>('autoEnable');
     detectorId = registerOutput<String>('detectorId');
     this.name = registerOutput<String>('name');
@@ -240,7 +246,7 @@ class OrganizationConfigurationFeature extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalConfigurations = registerOutput<List<OrganizationConfigurationFeatureAdditionalConfiguration>?>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationConfigurationFeatureAdditionalConfiguration>(guardedValue, (value) => OrganizationConfigurationFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    additionalConfigurations = registerOutput<List<OrganizationConfigurationFeatureAdditionalConfiguration>>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationConfigurationFeatureAdditionalConfiguration>(guardedValue, (value) => OrganizationConfigurationFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     autoEnable = registerOutput<String>('autoEnable');
     detectorId = registerOutput<String>('detectorId');
     this.name = registerOutput<String>('name');
@@ -256,7 +262,7 @@ class OrganizationConfigurationFeature extends pulumi.CustomResource {
         pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
         isResourceReference: true,
       ) {
-    additionalConfigurations = registerOutput<List<OrganizationConfigurationFeatureAdditionalConfiguration>?>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationConfigurationFeatureAdditionalConfiguration>(guardedValue, (value) => OrganizationConfigurationFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    additionalConfigurations = registerOutput<List<OrganizationConfigurationFeatureAdditionalConfiguration>>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationConfigurationFeatureAdditionalConfiguration>(guardedValue, (value) => OrganizationConfigurationFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     autoEnable = registerOutput<String>('autoEnable');
     detectorId = registerOutput<String>('detectorId');
     this.name = registerOutput<String>('name');

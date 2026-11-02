@@ -179,7 +179,7 @@ import 'file_system_policy_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = efs.NewFileSystemPolicy(ctx, "policy", &efs.FileSystemPolicyArgs{
-/// 			FileSystemId: fs.ID().ToIDOutput().ToStringOutput(),
+/// 			FileSystemId: fs.ID(),
 /// 			Policy:       policy.Json(),
 /// 		})
 /// 		if err != nil {
@@ -190,7 +190,7 @@ import 'file_system_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -198,9 +198,9 @@ import 'file_system_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "policy" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "policy" {
+///   statement {
+///     condition {
 ///       test     = "Bool"
 ///       variable = "aws:SecureTransport"
 ///       values   = ["true"]
@@ -212,16 +212,22 @@ import 'file_system_policy_state.dart';
 ///     sid       = "ExampleStatement01"
 ///     effect    = "Allow"
 ///     actions   = ["elasticfilesystem:ClientMount", "elasticfilesystem:ClientWrite"]
-///     resources = [aws_efs_filesystem.fs.arn]
+///     resources = [aws_efs_file_system.fs.arn]
 ///   }
 /// }
 ///
-/// resource "aws_efs_filesystem" "fs" {
+/// resource "aws_efs_file_system" "fs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   creation_token = "my-product"
 /// }
-/// resource "aws_efs_filesystempolicy" "policy" {
-///   file_system_id = aws_efs_filesystem.fs.id
-///   policy         = data.aws_iam_getpolicydocument.policy.json
+/// resource "aws_efs_file_system_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   file_system_id = aws_efs_file_system.fs.id
+///   policy         = data.aws_iam_policy_document.policy.json
 /// }
 /// ```
 /// ```java
@@ -364,7 +370,7 @@ class FileSystemPolicy extends pulumi.CustomResource {
           'aws:efs/fileSystemPolicy:FileSystemPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
     fileSystemId = registerOutput<String>('fileSystemId');

@@ -65,7 +65,7 @@ import 'resolver_rule_target_ip.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,10 @@ import 'resolver_rule_target_ip.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_resolverrule" "sys" {
+/// resource "aws_route53_resolver_rule" "sys" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = "subdomain.example.com"
 ///   rule_type   = "SYSTEM"
 /// }
@@ -214,7 +217,7 @@ import 'resolver_rule_target_ip.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -222,8 +225,11 @@ import 'resolver_rule_target_ip.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_resolverrule" "fwd" {
-///   target_ips {
+/// resource "aws_route53_resolver_rule" "fwd" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target_ip {
 ///     ip = "123.45.67.89"
 ///   }
 ///   domain_name          = "example.com"
@@ -264,7 +270,7 @@ import 'resolver_rule_target_ip.dart';
 ///             .domainName("example.com")
 ///             .name("example")
 ///             .ruleType("FORWARD")
-///             .resolverEndpointId(foo.id())
+///             .resolverEndpointId(foo.get("id"))
 ///             .tags(Map.of("Environment", "Prod"))
 ///             .build());
 ///
@@ -384,7 +390,7 @@ import 'resolver_rule_target_ip.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -392,8 +398,11 @@ import 'resolver_rule_target_ip.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_resolverrule" "fwd" {
-///   target_ips {
+/// resource "aws_route53_resolver_rule" "fwd" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target_ip {
 ///     ipv6 = "2600:1f18:1686:2000:4e60:6e3e:258:da36"
 ///   }
 ///   domain_name          = "example.com"
@@ -434,7 +443,7 @@ import 'resolver_rule_target_ip.dart';
 ///             .domainName("example.com")
 ///             .name("example")
 ///             .ruleType("FORWARD")
-///             .resolverEndpointId(foo.id())
+///             .resolverEndpointId(foo.get("id"))
 ///             .tags(Map.of("Environment", "Prod"))
 ///             .build());
 ///
@@ -515,7 +524,7 @@ class ResolverRule extends pulumi.CustomResource {
           'aws:route53/resolverRule:ResolverRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     domainName = registerOutput<String>('domainName');

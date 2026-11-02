@@ -69,7 +69,7 @@ import 'route_response_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,7 +77,10 @@ import 'route_response_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigatewayv2_routeresponse" "example" {
+/// resource "aws_apigatewayv2_route_response" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id             = exampleAwsApigatewayv2Api.id
 ///   route_id           = exampleAwsApigatewayv2Route.id
 ///   route_response_key = "$default"
@@ -105,8 +108,8 @@ import 'route_response_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RouteResponse("example", RouteResponseArgs.builder()
-///             .apiId(exampleAwsApigatewayv2Api.id())
-///             .routeId(exampleAwsApigatewayv2Route.id())
+///             .apiId(exampleAwsApigatewayv2Api.get("id"))
+///             .routeId(exampleAwsApigatewayv2Route.get("id"))
 ///             .routeResponseKey("$default")
 ///             .build());
 ///
@@ -159,7 +162,7 @@ class RouteResponse extends pulumi.CustomResource {
           'aws:apigatewayv2/routeResponse:RouteResponse',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     modelSelectionExpression = registerOutput<String?>('modelSelectionExpression');

@@ -106,7 +106,7 @@ import 'usage_plan_key_state.dart';
 /// 		myusageplan, err := apigateway.NewUsagePlan(ctx, "myusageplan", &apigateway.UsagePlanArgs{
 /// 			ApiStages: apigateway.UsagePlanApiStageArray{
 /// 				&apigateway.UsagePlanApiStageArgs{
-/// 					ApiId: test.ID().ToIDOutput().ToStringOutput(),
+/// 					ApiId: test.ID(),
 /// 					Stage: pulumi.Any(foo.StageName),
 /// 				},
 /// 			},
@@ -122,9 +122,9 @@ import 'usage_plan_key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigateway.NewUsagePlanKey(ctx, "main", &apigateway.UsagePlanKeyArgs{
-/// 			KeyId:       mykey.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyId:       mykey.ID(),
 /// 			KeyType:     pulumi.String("API_KEY"),
-/// 			UsagePlanId: myusageplan.ID().ToIDOutput().ToStringOutput(),
+/// 			UsagePlanId: myusageplan.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -134,7 +134,7 @@ import 'usage_plan_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -142,24 +142,36 @@ import 'usage_plan_key_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_restapi" "test" {
+/// resource "aws_apigateway_rest_api" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "MyDemoAPI"
 /// }
 /// # ...
-/// resource "aws_apigateway_usageplan" "myusageplan" {
+/// resource "aws_apigateway_usage_plan" "myusageplan" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_stages {
-///     api_id = aws_apigateway_restapi.test.id
+///     api_id = aws_apigateway_rest_api.test.id
 ///     stage  = foo.stageName
 ///   }
 ///   name = "my_usage_plan"
 /// }
-/// resource "aws_apigateway_apikey" "mykey" {
+/// resource "aws_apigateway_api_key" "mykey" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my_key"
 /// }
-/// resource "aws_apigateway_usageplankey" "main" {
-///   key_id        = aws_apigateway_apikey.mykey.id
+/// resource "aws_apigateway_usage_plan_key" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_id        = aws_apigateway_api_key.mykey.id
 ///   key_type      = "API_KEY"
-///   usage_plan_id = aws_apigateway_usageplan.myusageplan.id
+///   usage_plan_id = aws_apigateway_usage_plan.myusageplan.id
 /// }
 /// ```
 /// ```java
@@ -198,7 +210,7 @@ import 'usage_plan_key_state.dart';
 ///         var myusageplan = new UsagePlan("myusageplan", UsagePlanArgs.builder()
 ///             .apiStages(UsagePlanApiStageArgs.builder()
 ///                 .apiId(test.id())
-///                 .stage(foo.stageName())
+///                 .stage(foo.get("stageName"))
 ///                 .build())
 ///             .name("my_usage_plan")
 ///             .build());
@@ -276,7 +288,7 @@ class UsagePlanKey extends pulumi.CustomResource {
           'aws:apigateway/usagePlanKey:UsagePlanKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     keyId = registerOutput<String>('keyId');
     keyType = registerOutput<String>('keyType');

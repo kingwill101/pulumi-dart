@@ -106,7 +106,7 @@ import 'resource_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -114,18 +114,27 @@ import 'resource_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_dedicatedhost" "example" {
+/// resource "aws_ec2_dedicated_host" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_family   = "t3"
 ///   availability_zone = "us-east-1a"
 ///   host_recovery     = "off"
 ///   auto_placement    = "on"
 /// }
 /// resource "aws_resourcegroups_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_resourcegroups_resource" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_arn    = aws_resourcegroups_group.example.arn
-///   resource_arn = aws_ec2_dedicatedhost.example.arn
+///   resource_arn = aws_ec2_dedicated_host.example.arn
 /// }
 /// ```
 /// ```java
@@ -224,7 +233,7 @@ class ResourceType extends pulumi.CustomResource {
           'aws:resourcegroups/resource:Resource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     groupArn = registerOutput<String>('groupArn');
     region = registerOutput<String>('region');

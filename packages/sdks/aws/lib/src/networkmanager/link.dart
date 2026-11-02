@@ -84,7 +84,7 @@ import 'link_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -93,7 +93,10 @@ import 'link_state.dart';
 /// }
 ///
 /// resource "aws_networkmanager_link" "example" {
-///   bandwidth = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   bandwidth {
 ///     upload_speed   = 10
 ///     download_speed = 50
 ///   }
@@ -129,8 +132,8 @@ import 'link_state.dart';
 ///                 .uploadSpeed(10)
 ///                 .downloadSpeed(50)
 ///                 .build())
-///             .globalNetworkId(exampleAwsNetworkmanagerGlobalNetwork.id())
-///             .siteId(exampleAwsNetworkmanagerSite.id())
+///             .globalNetworkId(exampleAwsNetworkmanagerGlobalNetwork.get("id"))
+///             .siteId(exampleAwsNetworkmanagerSite.get("id"))
 ///             .providerName("MegaCorp")
 ///             .build());
 ///
@@ -192,7 +195,7 @@ class Link extends pulumi.CustomResource {
           'aws:networkmanager/link:Link',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bandwidth = registerOutput<LinkBandwidth>('bandwidth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkBandwidth.fromMap((guardedValue as Map).cast<String, dynamic>()); });

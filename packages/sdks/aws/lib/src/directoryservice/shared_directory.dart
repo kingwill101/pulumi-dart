@@ -109,7 +109,7 @@ import 'shared_directory_target.dart';
 /// Target: &directoryservice.SharedDirectoryTargetArgs{
 /// Id: pulumi.Any(receiver.AccountId),
 /// },
-/// DirectoryId: example.ID().ToIDOutput().ToStringOutput(),
+/// DirectoryId: example.ID(),
 /// Notes: pulumi.String("You wanna have a catch?"),
 /// })
 /// if err != nil {
@@ -120,7 +120,7 @@ import 'shared_directory_target.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -129,6 +129,9 @@ import 'shared_directory_target.dart';
 /// }
 ///
 /// resource "aws_directoryservice_directory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_settings = {
 ///     vpc_id     = exampleAwsVpc.id
 ///     subnet_ids = exampleAwsSubnet[*].id
@@ -138,7 +141,10 @@ import 'shared_directory_target.dart';
 ///   type     = "MicrosoftAD"
 ///   edition  = "Standard"
 /// }
-/// resource "aws_directoryservice_shareddirectory" "example" {
+/// resource "aws_directoryservice_shared_directory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   target = {
 ///     id = receiver.accountId
 ///   }
@@ -173,8 +179,8 @@ import 'shared_directory_target.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Directory("example", DirectoryArgs.builder()
 ///             .vpcSettings(DirectoryVpcSettingsArgs.builder()
-///                 .vpcId(exampleAwsVpc.id())
-///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///                 .vpcId(exampleAwsVpc.get("id"))
+///                 .subnetIds(exampleAwsSubnet.stream().map(element -> element.get("id")).collect(toList()))
 ///                 .build())
 ///             .name("tf-example")
 ///             .password("SuperSecretPassw0rd")
@@ -184,7 +190,7 @@ import 'shared_directory_target.dart';
 ///
 ///         var exampleSharedDirectory = new SharedDirectory("exampleSharedDirectory", SharedDirectoryArgs.builder()
 ///             .target(SharedDirectoryTargetArgs.builder()
-///                 .id(receiver.accountId())
+///                 .id(receiver.get("accountId"))
 ///                 .build())
 ///             .directoryId(example.id())
 ///             .notes("You wanna have a catch?")
@@ -230,7 +236,7 @@ class SharedDirectory extends pulumi.CustomResource {
           'aws:directoryservice/sharedDirectory:SharedDirectory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['notes'],
         ) {
     directoryId = registerOutput<String>('directoryId');

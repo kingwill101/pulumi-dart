@@ -320,7 +320,7 @@ import 'topic_rule_timestream.dart';
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "mypolicy", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("mypolicy"),
-/// 			Role:   myrole.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   myrole.ID(),
 /// 			Policy: mypolicy.Json(),
 /// 		})
 /// 		if err != nil {
@@ -331,7 +331,7 @@ import 'topic_rule_timestream.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -339,8 +339,8 @@ import 'topic_rule_timestream.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["iot.amazonaws.com"]
@@ -349,17 +349,20 @@ import 'topic_rule_timestream.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "mypolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "mypolicy" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["sns:Publish"]
 ///     resources = [aws_sns_topic.mytopic.arn]
 ///   }
 /// }
 ///
-/// resource "aws_iot_topicrule" "rule" {
-///   error_action = {
-///     sns = {
+/// resource "aws_iot_topic_rule" "rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   error_action {
+///     sns {
 ///       message_format = "RAW"
 ///       role_arn       = role.arn
 ///       target_arn     = aws_sns_topic.myerrortopic.arn
@@ -377,19 +380,31 @@ import 'topic_rule_timestream.dart';
 ///   sql_version = "2016-03-23"
 /// }
 /// resource "aws_sns_topic" "mytopic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "mytopic"
 /// }
 /// resource "aws_sns_topic" "myerrortopic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "myerrortopic"
 /// }
 /// resource "aws_iam_role" "myrole" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "myrole"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "mypolicy" {
+/// resource "aws_iam_role_policy" "mypolicy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "mypolicy"
 ///   role   = aws_iam_role.myrole.id
-///   policy = data.aws_iam_getpolicydocument.mypolicy.json
+///   policy = data.aws_iam_policy_document.mypolicy.json
 /// }
 /// ```
 /// ```java
@@ -438,13 +453,13 @@ import 'topic_rule_timestream.dart';
 ///             .errorAction(TopicRuleErrorActionArgs.builder()
 ///                 .sns(TopicRuleErrorActionSnsArgs.builder()
 ///                     .messageFormat("RAW")
-///                     .roleArn(role.arn())
+///                     .roleArn(role.get("arn"))
 ///                     .targetArn(myerrortopic.arn())
 ///                     .build())
 ///                 .build())
 ///             .sns(TopicRuleSnsArgs.builder()
 ///                 .messageFormat("RAW")
-///                 .roleArn(role.arn())
+///                 .roleArn(role.get("arn"))
 ///                 .targetArn(mytopic.arn())
 ///                 .build())
 ///             .name("MyRule")
@@ -612,7 +627,7 @@ class TopicRule extends pulumi.CustomResource {
           'aws:iot/topicRule:TopicRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cloudwatchAlarms = registerOutput<List<TopicRuleCloudwatchAlarm>?>('cloudwatchAlarms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TopicRuleCloudwatchAlarm>(guardedValue, (value) => TopicRuleCloudwatchAlarm.fromMap((value as Map).cast<String, dynamic>())); });

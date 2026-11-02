@@ -62,7 +62,7 @@ import 'group_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'group_membership_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_groupmembership" "example" {
+/// resource "aws_quicksight_group_membership" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_name  = "all-access-users"
 ///   member_name = "john_smith"
 /// }
@@ -147,7 +150,7 @@ class GroupMembership extends pulumi.CustomResource {
           'aws:quicksight/groupMembership:GroupMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

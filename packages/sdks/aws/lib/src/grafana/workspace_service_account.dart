@@ -71,7 +71,7 @@ import 'workspace_service_account_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,7 +79,10 @@ import 'workspace_service_account_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_grafana_workspaceserviceaccount" "example" {
+/// resource "aws_grafana_workspace_service_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-admin"
 ///   grafana_role = "ADMIN"
 ///   workspace_id = exampleAwsGrafanaWorkspace.id
@@ -109,7 +112,7 @@ import 'workspace_service_account_state.dart';
 ///         var example = new WorkspaceServiceAccount("example", WorkspaceServiceAccountArgs.builder()
 ///             .name("example-admin")
 ///             .grafanaRole("ADMIN")
-///             .workspaceId(exampleAwsGrafanaWorkspace.id())
+///             .workspaceId(exampleAwsGrafanaWorkspace.get("id"))
 ///             .build());
 ///
 ///     }
@@ -157,7 +160,7 @@ class WorkspaceServiceAccount extends pulumi.CustomResource {
           'aws:grafana/workspaceServiceAccount:WorkspaceServiceAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     grafanaRole = registerOutput<String>('grafanaRole');
     this.name = registerOutput<String>('name');

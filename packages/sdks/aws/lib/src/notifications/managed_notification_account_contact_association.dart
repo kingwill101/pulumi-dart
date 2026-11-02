@@ -64,7 +64,7 @@ import 'managed_notification_account_contact_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'managed_notification_account_contact_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_notifications_managednotificationaccountcontactassociation" "example" {
+/// resource "aws_notifications_managed_notification_account_contact_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   contact_identifier                     = "ACCOUNT_PRIMARY"
 ///   managed_notification_configuration_arn = "arn:aws:notifications::123456789012:managed-notification-configuration/category/AWS-Health/sub-category/Security"
 /// }
@@ -141,7 +144,7 @@ class ManagedNotificationAccountContactAssociation extends pulumi.CustomResource
           'aws:notifications/managedNotificationAccountContactAssociation:ManagedNotificationAccountContactAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     contactIdentifier = registerOutput<String>('contactIdentifier');
     managedNotificationConfigurationArn = registerOutput<String>('managedNotificationConfigurationArn');

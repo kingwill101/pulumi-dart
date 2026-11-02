@@ -119,7 +119,7 @@ import 'serverless_security_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -127,7 +127,10 @@ import 'serverless_security_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_opensearch_serverlesssecuritypolicy" "example" {
+/// resource "aws_opensearch_serverless_security_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   type        = "encryption"
 ///   description = "encryption security policy for example-collection"
@@ -308,7 +311,7 @@ import 'serverless_security_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -316,7 +319,10 @@ import 'serverless_security_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_opensearch_serverlesssecuritypolicy" "example" {
+/// resource "aws_opensearch_serverless_security_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   type        = "encryption"
 ///   description = "encryption security policy for collections that begin with \"example\""
@@ -501,7 +507,7 @@ import 'serverless_security_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -509,7 +515,10 @@ import 'serverless_security_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_opensearch_serverlesssecuritypolicy" "example" {
+/// resource "aws_opensearch_serverless_security_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   type        = "encryption"
 ///   description = "encryption security policy using customer KMS key"
@@ -695,7 +704,7 @@ import 'serverless_security_policy_state.dart';
 /// 		tmpJSON0, err := json.Marshal([]map[string]interface{}{
 /// 			map[string]interface{}{
 /// 				"Description": "Public access to collection and Dashboards endpoint for example collection",
-/// 				"Rules": []map[string]interface{}{
+/// 				"Rules": []interface{}{
 /// 					map[string]interface{}{
 /// 						"ResourceType": "collection",
 /// 						"Resource": []string{
@@ -730,7 +739,7 @@ import 'serverless_security_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -738,7 +747,10 @@ import 'serverless_security_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_opensearch_serverlesssecuritypolicy" "example" {
+/// resource "aws_opensearch_serverless_security_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   type        = "network"
 ///   description = "Public access"
@@ -940,7 +952,7 @@ import 'serverless_security_policy_state.dart';
 /// 		tmpJSON0, err := json.Marshal([]map[string]interface{}{
 /// 			map[string]interface{}{
 /// 				"Description": "VPC access to collection and Dashboards endpoint for example collection",
-/// 				"Rules": []map[string]interface{}{
+/// 				"Rules": []interface{}{
 /// 					map[string]interface{}{
 /// 						"ResourceType": "collection",
 /// 						"Resource": []string{
@@ -978,7 +990,7 @@ import 'serverless_security_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -986,7 +998,10 @@ import 'serverless_security_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_opensearch_serverlesssecuritypolicy" "example" {
+/// resource "aws_opensearch_serverless_security_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   type        = "network"
 ///   description = "VPC access"
@@ -1228,7 +1243,7 @@ import 'serverless_security_policy_state.dart';
 /// 		tmpJSON0, err := json.Marshal([]interface{}{
 /// 			map[string]interface{}{
 /// 				"Description": "Marketing access",
-/// 				"Rules": []map[string]interface{}{
+/// 				"Rules": []interface{}{
 /// 					map[string]interface{}{
 /// 						"ResourceType": "collection",
 /// 						"Resource": []string{
@@ -1278,7 +1293,7 @@ import 'serverless_security_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1286,7 +1301,10 @@ import 'serverless_security_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_opensearch_serverlesssecuritypolicy" "example" {
+/// resource "aws_opensearch_serverless_security_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   type        = "network"
 ///   description = "Mixed access for marketing and sales"
@@ -1446,7 +1464,7 @@ class ServerlessSecurityPolicy extends pulumi.CustomResource {
           'aws:opensearch/serverlessSecurityPolicy:ServerlessSecurityPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

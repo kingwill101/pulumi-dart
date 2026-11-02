@@ -82,7 +82,7 @@ import 'resource_collection_tags.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,8 +90,11 @@ import 'resource_collection_tags.dart';
 ///   }
 /// }
 ///
-/// resource "aws_devopsguru_resourcecollection" "example" {
-///   cloudformation = {
+/// resource "aws_devopsguru_resource_collection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cloudformation {
 ///     stack_names = ["*"]
 ///   }
 ///   type = "AWS_SERVICE"
@@ -213,7 +216,7 @@ import 'resource_collection_tags.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -221,8 +224,11 @@ import 'resource_collection_tags.dart';
 ///   }
 /// }
 ///
-/// resource "aws_devopsguru_resourcecollection" "example" {
-///   cloudformation = {
+/// resource "aws_devopsguru_resource_collection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cloudformation {
 ///     stack_names = ["ExampleStack"]
 ///   }
 ///   type = "AWS_CLOUD_FORMATION"
@@ -348,7 +354,7 @@ import 'resource_collection_tags.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -356,8 +362,11 @@ import 'resource_collection_tags.dart';
 ///   }
 /// }
 ///
-/// resource "aws_devopsguru_resourcecollection" "example" {
-///   tags = {
+/// resource "aws_devopsguru_resource_collection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   tags {
 ///     app_boundary_key = "DevOps-Guru-Example"
 ///     tag_values       = ["Example-Value"]
 ///   }
@@ -488,7 +497,7 @@ import 'resource_collection_tags.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -496,8 +505,11 @@ import 'resource_collection_tags.dart';
 ///   }
 /// }
 ///
-/// resource "aws_devopsguru_resourcecollection" "example" {
-///   tags = {
+/// resource "aws_devopsguru_resource_collection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   tags {
 ///     app_boundary_key = "DevOps-Guru-Example"
 ///     tag_values       = ["*"]
 ///   }
@@ -581,7 +593,7 @@ class ResourceCollection extends pulumi.CustomResource {
           'aws:devopsguru/resourceCollection:ResourceCollection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     cloudformation = registerOutput<ResourceCollectionCloudformation?>('cloudformation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceCollectionCloudformation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

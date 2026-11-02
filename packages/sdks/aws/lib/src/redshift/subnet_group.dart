@@ -139,7 +139,7 @@ import 'subnet_group_state.dart';
 /// 		fooSubnet, err := ec2.NewSubnet(ctx, "foo", &ec2.SubnetArgs{
 /// 			CidrBlock:        pulumi.String("10.1.1.0/24"),
 /// 			AvailabilityZone: pulumi.String("us-west-2a"),
-/// 			VpcId:            foo.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            foo.ID(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("tf-dbsubnet-test-1"),
 /// 			},
@@ -150,7 +150,7 @@ import 'subnet_group_state.dart';
 /// 		bar, err := ec2.NewSubnet(ctx, "bar", &ec2.SubnetArgs{
 /// 			CidrBlock:        pulumi.String("10.1.2.0/24"),
 /// 			AvailabilityZone: pulumi.String("us-west-2b"),
-/// 			VpcId:            foo.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:            foo.ID(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("tf-dbsubnet-test-2"),
 /// 			},
@@ -161,8 +161,8 @@ import 'subnet_group_state.dart';
 /// 		_, err = redshift.NewSubnetGroup(ctx, "foo", &redshift.SubnetGroupArgs{
 /// 			Name: pulumi.String("foo"),
 /// 			SubnetIds: pulumi.StringArray{
-/// 				fooSubnet.ID().ToIDOutput().ToStringOutput(),
-/// 				bar.ID().ToIDOutput().ToStringOutput(),
+/// 				fooSubnet.ID(),
+/// 				bar.ID(),
 /// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"environment": pulumi.String("Production"),
@@ -176,7 +176,7 @@ import 'subnet_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -185,9 +185,15 @@ import 'subnet_group_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.1.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block        = "10.1.1.0/24"
 ///   availability_zone = "us-west-2a"
 ///   vpc_id            = aws_ec2_vpc.foo.id
@@ -196,6 +202,9 @@ import 'subnet_group_state.dart';
 ///   }
 /// }
 /// resource "aws_ec2_subnet" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block        = "10.1.2.0/24"
 ///   availability_zone = "us-west-2b"
 ///   vpc_id            = aws_ec2_vpc.foo.id
@@ -203,7 +212,10 @@ import 'subnet_group_state.dart';
 ///     "Name" = "tf-dbsubnet-test-2"
 ///   }
 /// }
-/// resource "aws_redshift_subnetgroup" "foo" {
+/// resource "aws_redshift_subnet_group" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "foo"
 ///   subnet_ids = [aws_ec2_subnet.foo.id, aws_ec2_subnet.bar.id]
 ///   tags = {
@@ -336,7 +348,7 @@ class SubnetGroup extends pulumi.CustomResource {
           'aws:redshift/subnetGroup:SubnetGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');

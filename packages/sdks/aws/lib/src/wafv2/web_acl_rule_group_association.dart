@@ -168,7 +168,7 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -177,14 +177,16 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// }
 ///
 /// # Web ACL must use lifecycle.ignore_changes to prevent drift from this resource
-/// resource "aws_wafv2_webacl" "example" {
+/// resource "aws_wafv2_web_acl" "example" {
 ///   lifecycle {
-///     ignore_changes = [rules]
+///     ignore_changes        = [rules]
+///     create_before_destroy = true
 ///   }
-///   default_action = {
-///     allow = {}
+///   default_action {
+///     allow {
+///     }
 ///   }
-///   visibility_config = {
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = true
 ///     metric_name                = "example-web-acl"
 ///     sampled_requests_enabled   = true
@@ -193,13 +195,16 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///   scope = "REGIONAL"
 /// }
 /// # Associate a custom rule group
-/// resource "aws_wafv2_webaclrulegroupassociation" "example" {
-///   rule_group_reference = {
+/// resource "aws_wafv2_web_acl_rule_group_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule_group_reference {
 ///     arn = exampleAwsWafv2RuleGroup.arn
 ///   }
 ///   rule_name   = "example-rule-group-rule"
 ///   priority    = 100
-///   web_acl_arn = aws_wafv2_webacl.example.arn
+///   web_acl_arn = aws_wafv2_web_acl.example.arn
 /// }
 /// ```
 /// ```java
@@ -250,7 +255,7 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///         // Associate a custom rule group
 ///         var exampleWebAclRuleGroupAssociation = new WebAclRuleGroupAssociation("exampleWebAclRuleGroupAssociation", WebAclRuleGroupAssociationArgs.builder()
 ///             .ruleGroupReference(WebAclRuleGroupAssociationRuleGroupReferenceArgs.builder()
-///                 .arn(exampleAwsWafv2RuleGroup.arn())
+///                 .arn(exampleAwsWafv2RuleGroup.get("arn"))
 ///                 .build())
 ///             .ruleName("example-rule-group-rule")
 ///             .priority(100)
@@ -368,7 +373,7 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -376,8 +381,11 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_webaclrulegroupassociation" "example" {
-///   managed_rule_group = {
+/// resource "aws_wafv2_web_acl_rule_group_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   managed_rule_group {
 ///     name        = "AWSManagedRulesCommonRuleSet"
 ///     vendor_name = "AWS"
 ///   }
@@ -415,7 +423,7 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                 .build())
 ///             .ruleName("aws-common-rule-set")
 ///             .priority(50)
-///             .webAclArn(exampleAwsWafv2WebAcl.arn())
+///             .webAclArn(exampleAwsWafv2WebAcl.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -517,7 +525,7 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -525,8 +533,11 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_webaclrulegroupassociation" "example" {
-///   managed_rule_group = {
+/// resource "aws_wafv2_web_acl_rule_group_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   managed_rule_group {
 ///     name        = "AWSManagedRulesCommonRuleSet"
 ///     vendor_name = "AWS"
 ///     version     = "Version_1.0"
@@ -566,7 +577,7 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                 .build())
 ///             .ruleName("aws-common-rule-set-versioned")
 ///             .priority(60)
-///             .webAclArn(exampleAwsWafv2WebAcl.arn())
+///             .webAclArn(exampleAwsWafv2WebAcl.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -762,7 +773,7 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -770,26 +781,31 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_webaclrulegroupassociation" "example" {
-///   managed_rule_group = {
-///     rule_action_overrides = [{
-///       "actionToUse" = {
-///         "count" = {
-///           "customRequestHandling" = {
-///             "insertHeaders" = [{
-///               "name"  = "X-RFI-Override"
-///               "value" = "counted"
-///             }]
+/// resource "aws_wafv2_web_acl_rule_group_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   managed_rule_group {
+///     rule_action_override {
+///       action_to_use {
+///         count {
+///           custom_request_handling {
+///             insert_header {
+///               name  = "X-RFI-Override"
+///               value = "counted"
+///             }
 ///           }
 ///         }
 ///       }
-///       "name" = "GenericRFI_BODY"
-///       }, {
-///       "actionToUse" = {
-///         "captcha" = {}
+///       name = "GenericRFI_BODY"
+///     }
+///     rule_action_override {
+///       action_to_use {
+///         captcha {
+///         }
 ///       }
-///       "name" = "SizeRestrictions_BODY"
-///     }]
+///       name = "SizeRestrictions_BODY"
+///     }
 ///     name        = "AWSManagedRulesCommonRuleSet"
 ///     vendor_name = "AWS"
 ///   }
@@ -854,7 +870,7 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                 .build())
 ///             .ruleName("aws-common-rule-set-with-overrides")
 ///             .priority(70)
-///             .webAclArn(exampleAwsWafv2WebAcl.arn())
+///             .webAclArn(exampleAwsWafv2WebAcl.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1114,7 +1130,7 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1122,24 +1138,27 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_webaclrulegroupassociation" "example" {
-///   managed_rule_group = {
-///     managed_rule_group_configs = {
-///       aws_managed_rules_acfp_rule_set = {
-///         request_inspection = {
-///           email_field = {
+/// resource "aws_wafv2_web_acl_rule_group_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   managed_rule_group {
+///     managed_rule_group_configs {
+///       aws_managed_rules_acfp_rule_set {
+///         request_inspection {
+///           email_field {
 ///             identifier = "/email"
 ///           }
-///           password_field = {
+///           password_field {
 ///             identifier = "/password"
 ///           }
-///           phone_number_fields = {
+///           phone_number_fields {
 ///             identifiers = ["/phone1", "/phone2"]
 ///           }
-///           address_fields = {
+///           address_fields {
 ///             identifiers = ["home", "work"]
 ///           }
-///           username_field = {
+///           username_field {
 ///             identifier = "/username"
 ///           }
 ///           payload_type = "JSON"
@@ -1151,7 +1170,7 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///     name        = "AWSManagedRulesACFPRuleSet"
 ///     vendor_name = "AWS"
 ///   }
-///   visibility_config = {
+///   visibility_config {
 ///     cloudwatch_metrics_enabled = true
 ///     metric_name                = "friendly-metric-name"
 ///     sampled_requests_enabled   = true
@@ -1232,7 +1251,7 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                 .build())
 ///             .ruleName("acfp-ruleset-with-rule-config")
 ///             .priority(70)
-///             .webAclArn(exampleAwsWafv2WebAcl.arn())
+///             .webAclArn(exampleAwsWafv2WebAcl.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1354,7 +1373,7 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1362,8 +1381,11 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_webaclrulegroupassociation" "example" {
-///   rule_group_reference = {
+/// resource "aws_wafv2_web_acl_rule_group_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule_group_reference {
 ///     arn = exampleAwsWafv2RuleGroup.arn
 ///   }
 ///   rule_name       = "example-rule-group-rule"
@@ -1396,11 +1418,11 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new WebAclRuleGroupAssociation("example", WebAclRuleGroupAssociationArgs.builder()
 ///             .ruleGroupReference(WebAclRuleGroupAssociationRuleGroupReferenceArgs.builder()
-///                 .arn(exampleAwsWafv2RuleGroup.arn())
+///                 .arn(exampleAwsWafv2RuleGroup.get("arn"))
 ///                 .build())
 ///             .ruleName("example-rule-group-rule")
 ///             .priority(100)
-///             .webAclArn(exampleAwsWafv2WebAcl.arn())
+///             .webAclArn(exampleAwsWafv2WebAcl.get("arn"))
 ///             .overrideAction("count")
 ///             .build());
 ///
@@ -1628,7 +1650,7 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1636,33 +1658,37 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_webaclrulegroupassociation" "example" {
-///   rule_group_reference = {
-///     rule_action_overrides = [{
-///       "actionToUse" = {
-///         "count" = {
-///           "customRequestHandling" = {
-///             "insertHeaders" = [{
-///               "name"  = "X-Geo-Block-Override"
-///               "value" = "counted"
-///             }]
+/// resource "aws_wafv2_web_acl_rule_group_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule_group_reference {
+///     rule_action_override {
+///       action_to_use {
+///         count {
+///           custom_request_handling {
+///             insert_header {
+///               name  = "X-Geo-Block-Override"
+///               value = "counted"
+///             }
 ///           }
 ///         }
 ///       }
-///       "name" = "geo-block-rule"
-///       }, {
-///       "actionToUse" = {
-///         "captcha" = {
-///           "customRequestHandling" = {
-///             "insertHeaders" = [{
-///               "name"  = "X-Rate-Limit-Override"
-///               "value" = "captcha-required"
-///             }]
+///       name = "geo-block-rule"
+///     }
+///     rule_action_override {
+///       action_to_use {
+///         captcha {
+///           custom_request_handling {
+///             insert_header {
+///               name  = "X-Rate-Limit-Override"
+///               value = "captcha-required"
+///             }
 ///           }
 ///         }
 ///       }
-///       "name" = "rate-limit-rule"
-///     }]
+///       name = "rate-limit-rule"
+///     }
 ///     arn = exampleAwsWafv2RuleGroup.arn
 ///   }
 ///   rule_name   = "example-rule-group-rule"
@@ -1729,11 +1755,11 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                             .build())
 ///                         .name("rate-limit-rule")
 ///                         .build())
-///                 .arn(exampleAwsWafv2RuleGroup.arn())
+///                 .arn(exampleAwsWafv2RuleGroup.get("arn"))
 ///                 .build())
 ///             .ruleName("example-rule-group-rule")
 ///             .priority(100)
-///             .webAclArn(exampleAwsWafv2WebAcl.arn())
+///             .webAclArn(exampleAwsWafv2WebAcl.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1841,7 +1867,7 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1849,8 +1875,11 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///   }
 /// }
 ///
-/// resource "aws_wafv2_webaclrulegroupassociation" "example" {
-///   rule_group_reference = {
+/// resource "aws_wafv2_web_acl_rule_group_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule_group_reference {
 ///     arn = exampleAwsWafv2RuleGroup.arn
 ///   }
 ///   rule_name   = "cloudfront-rule-group-rule"
@@ -1882,11 +1911,11 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new WebAclRuleGroupAssociation("example", WebAclRuleGroupAssociationArgs.builder()
 ///             .ruleGroupReference(WebAclRuleGroupAssociationRuleGroupReferenceArgs.builder()
-///                 .arn(exampleAwsWafv2RuleGroup.arn())
+///                 .arn(exampleAwsWafv2RuleGroup.get("arn"))
 ///                 .build())
 ///             .ruleName("cloudfront-rule-group-rule")
 ///             .priority(50)
-///             .webAclArn(exampleAwsWafv2WebAcl.arn())
+///             .webAclArn(exampleAwsWafv2WebAcl.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1951,7 +1980,7 @@ class WebAclRuleGroupAssociation extends pulumi.CustomResource {
           'aws:wafv2/webAclRuleGroupAssociation:WebAclRuleGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     managedRuleGroup = registerOutput<WebAclRuleGroupAssociationManagedRuleGroup?>('managedRuleGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleGroupAssociationManagedRuleGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     overrideAction = registerOutput<String>('overrideAction');

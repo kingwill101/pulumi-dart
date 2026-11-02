@@ -88,7 +88,7 @@ import 'network_acl_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewNetworkAclRule(ctx, "bar", &ec2.NetworkAclRuleArgs{
-/// 			NetworkAclId: bar.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkAclId: bar.ID(),
 /// 			RuleNumber:   pulumi.Int(200),
 /// 			Egress:       pulumi.Bool(false),
 /// 			Protocol:     pulumi.String("tcp"),
@@ -105,7 +105,7 @@ import 'network_acl_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -113,11 +113,17 @@ import 'network_acl_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_networkacl" "bar" {
+/// resource "aws_ec2_network_acl" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id = foo.id
 /// }
-/// resource "aws_ec2_networkaclrule" "bar" {
-///   network_acl_id = aws_ec2_networkacl.bar.id
+/// resource "aws_ec2_network_acl_rule" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   network_acl_id = aws_ec2_network_acl.bar.id
 ///   rule_number    = 200
 ///   egress         = false
 ///   protocol       = "tcp"
@@ -151,7 +157,7 @@ import 'network_acl_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var bar = new NetworkAcl("bar", NetworkAclArgs.builder()
-///             .vpcId(foo.id())
+///             .vpcId(foo.get("id"))
 ///             .build());
 ///
 ///         var barNetworkAclRule = new NetworkAclRule("barNetworkAclRule", NetworkAclRuleArgs.builder()
@@ -160,7 +166,7 @@ import 'network_acl_rule_state.dart';
 ///             .egress(false)
 ///             .protocol("tcp")
 ///             .ruleAction("allow")
-///             .cidrBlock(foo.cidrBlock())
+///             .cidrBlock(foo.get("cidrBlock"))
 ///             .fromPort(22)
 ///             .toPort(22)
 ///             .build());
@@ -268,7 +274,7 @@ class NetworkAclRule extends pulumi.CustomResource {
           'aws:ec2/networkAclRule:NetworkAclRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     cidrBlock = registerOutput<String?>('cidrBlock');
     egress = registerOutput<bool?>('egress');

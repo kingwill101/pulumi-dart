@@ -110,7 +110,7 @@ import 'rule_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -118,10 +118,13 @@ import 'rule_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_mailmanager_ruleset" "example" {
-///   rules {
-///     actions {
-///       add_header = {
+/// resource "aws_mailmanager_rule_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     action {
+///       add_header {
 ///         header_name  = "X-Example"
 ///         header_value = "example"
 ///       }
@@ -237,7 +240,7 @@ class RuleSet extends pulumi.CustomResource {
           'aws:mailmanager/ruleSet:RuleSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');

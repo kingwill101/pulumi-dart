@@ -79,7 +79,7 @@ import 'ip_access_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,8 +87,11 @@ import 'ip_access_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_workspacesweb_ipaccesssettings" "example" {
-///   ip_rules {
+/// resource "aws_workspacesweb_ip_access_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ip_rule {
 ///     ip_range = "10.0.0.0/16"
 ///   }
 ///   display_name = "example"
@@ -238,7 +241,7 @@ import 'ip_access_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -246,12 +249,15 @@ import 'ip_access_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_workspacesweb_ipaccesssettings" "example" {
-///   ip_rules {
+/// resource "aws_workspacesweb_ip_access_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ip_rule {
 ///     ip_range    = "10.0.0.0/16"
 ///     description = "Main office"
 ///   }
-///   ip_rules {
+///   ip_rule {
 ///     ip_range    = "192.168.0.0/24"
 ///     description = "Branch office"
 ///   }
@@ -465,7 +471,7 @@ import 'ip_access_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -474,15 +480,21 @@ import 'ip_access_settings_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "KMS key for WorkSpaces Web IP Access Settings"
 ///   deletion_window_in_days = 7
 /// }
-/// resource "aws_workspacesweb_ipaccesssettings" "example" {
-///   ip_rules {
+/// resource "aws_workspacesweb_ip_access_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ip_rule {
 ///     ip_range    = "10.0.0.0/16"
 ///     description = "Main office"
 ///   }
-///   ip_rules {
+///   ip_rule {
 ///     ip_range    = "192.168.0.0/24"
 ///     description = "Branch office"
 ///   }
@@ -615,7 +627,7 @@ class IpAccessSettings extends pulumi.CustomResource {
           'aws:workspacesweb/ipAccessSettings:IpAccessSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

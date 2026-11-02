@@ -80,7 +80,7 @@ import 'connect_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2transitgateway.NewConnect(ctx, "attachment", &ec2transitgateway.ConnectArgs{
-/// 			TransportAttachmentId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			TransportAttachmentId: example.ID(),
 /// 			TransitGatewayId:      pulumi.Any(exampleAwsEc2TransitGateway.Id),
 /// 		})
 /// 		if err != nil {
@@ -91,7 +91,7 @@ import 'connect_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -99,13 +99,19 @@ import 'connect_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2transitgateway_vpcattachment" "example" {
+/// resource "aws_ec2transitgateway_vpc_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_ids         = [exampleAwsSubnet.id]
 ///   transit_gateway_id = exampleAwsEc2TransitGateway.id
 ///   vpc_id             = exampleAwsVpc.id
 /// }
 /// resource "aws_ec2transitgateway_connect" "attachment" {
-///   transport_attachment_id = aws_ec2transitgateway_vpcattachment.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   transport_attachment_id = aws_ec2transitgateway_vpc_attachment.example.id
 ///   transit_gateway_id      = exampleAwsEc2TransitGateway.id
 /// }
 /// ```
@@ -133,14 +139,14 @@ import 'connect_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcAttachment("example", VpcAttachmentArgs.builder()
-///             .subnetIds(exampleAwsSubnet.id())
-///             .transitGatewayId(exampleAwsEc2TransitGateway.id())
-///             .vpcId(exampleAwsVpc.id())
+///             .subnetIds(exampleAwsSubnet.get("id"))
+///             .transitGatewayId(exampleAwsEc2TransitGateway.get("id"))
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .build());
 ///
 ///         var attachment = new Connect("attachment", ConnectArgs.builder()
 ///             .transportAttachmentId(example.id())
-///             .transitGatewayId(exampleAwsEc2TransitGateway.id())
+///             .transitGatewayId(exampleAwsEc2TransitGateway.get("id"))
 ///             .build());
 ///
 ///     }
@@ -200,7 +206,7 @@ class Connect extends pulumi.CustomResource {
           'aws:ec2transitgateway/connect:Connect',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     protocol = registerOutput<String?>('protocol');
     region = registerOutput<String>('region');

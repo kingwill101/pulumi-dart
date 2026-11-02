@@ -68,7 +68,7 @@ import 'ingestion_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -77,6 +77,9 @@ import 'ingestion_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_ingestion" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_set_id    = exampleAwsQuicksightDataSet.dataSetId
 ///   ingestion_id   = "example-id"
 ///   ingestion_type = "FULL_REFRESH"
@@ -104,7 +107,7 @@ import 'ingestion_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Ingestion("example", IngestionArgs.builder()
-///             .dataSetId(exampleAwsQuicksightDataSet.dataSetId())
+///             .dataSetId(exampleAwsQuicksightDataSet.get("dataSetId"))
 ///             .ingestionId("example-id")
 ///             .ingestionType("FULL_REFRESH")
 ///             .build());
@@ -160,7 +163,7 @@ class Ingestion extends pulumi.CustomResource {
           'aws:quicksight/ingestion:Ingestion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

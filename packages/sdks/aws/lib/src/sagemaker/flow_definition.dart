@@ -114,7 +114,7 @@ import 'flow_definition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -122,8 +122,11 @@ import 'flow_definition_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_flowdefinition" "example" {
-///   human_loop_config = {
+/// resource "aws_sagemaker_flow_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   human_loop_config {
 ///     human_task_ui_arn                     = exampleAwsSagemakerHumanTaskUi.arn
 ///     task_availability_lifetime_in_seconds = 1
 ///     task_count                            = 1
@@ -131,7 +134,7 @@ import 'flow_definition_state.dart';
 ///     task_title                            = "example"
 ///     workteam_arn                          = exampleAwsSagemakerWorkteam.arn
 ///   }
-///   output_config = {
+///   output_config {
 ///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/"
 ///   }
 ///   flow_definition_name = "example"
@@ -163,18 +166,18 @@ import 'flow_definition_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new FlowDefinition("example", FlowDefinitionArgs.builder()
 ///             .humanLoopConfig(FlowDefinitionHumanLoopConfigArgs.builder()
-///                 .humanTaskUiArn(exampleAwsSagemakerHumanTaskUi.arn())
+///                 .humanTaskUiArn(exampleAwsSagemakerHumanTaskUi.get("arn"))
 ///                 .taskAvailabilityLifetimeInSeconds(1)
 ///                 .taskCount(1)
 ///                 .taskDescription("example")
 ///                 .taskTitle("example")
-///                 .workteamArn(exampleAwsSagemakerWorkteam.arn())
+///                 .workteamArn(exampleAwsSagemakerWorkteam.get("arn"))
 ///                 .build())
 ///             .outputConfig(FlowDefinitionOutputConfigArgs.builder()
-///                 .s3OutputPath(String.format("s3://%s/", exampleAwsS3Bucket.bucket()))
+///                 .s3OutputPath(String.format("s3://%s/", exampleAwsS3Bucket.get("bucket")))
 ///                 .build())
 ///             .flowDefinitionName("example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -329,7 +332,7 @@ import 'flow_definition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -337,10 +340,13 @@ import 'flow_definition_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_flowdefinition" "example" {
-///   human_loop_config = {
-///     public_workforce_task_price = {
-///       amount_in_usd = {
+/// resource "aws_sagemaker_flow_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   human_loop_config {
+///     public_workforce_task_price {
+///       amount_in_usd {
 ///         cents                     = 1
 ///         tenth_fractions_of_a_cent = 2
 ///       }
@@ -352,7 +358,7 @@ import 'flow_definition_state.dart';
 ///     task_title                            = "example"
 ///     workteam_arn                          ="arn:aws:sagemaker:${current.region}:394669845002:workteam/public-crowd/default"
 ///   }
-///   output_config = {
+///   output_config {
 ///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/"
 ///   }
 ///   flow_definition_name = "example"
@@ -392,18 +398,18 @@ import 'flow_definition_state.dart';
 ///                         .tenthFractionsOfACent(2)
 ///                         .build())
 ///                     .build())
-///                 .humanTaskUiArn(exampleAwsSagemakerHumanTaskUi.arn())
+///                 .humanTaskUiArn(exampleAwsSagemakerHumanTaskUi.get("arn"))
 ///                 .taskAvailabilityLifetimeInSeconds(1)
 ///                 .taskCount(1)
 ///                 .taskDescription("example")
 ///                 .taskTitle("example")
-///                 .workteamArn(String.format("arn:aws:sagemaker:%s:394669845002:workteam/public-crowd/default", current.region()))
+///                 .workteamArn(String.format("arn:aws:sagemaker:%s:394669845002:workteam/public-crowd/default", current.get("region")))
 ///                 .build())
 ///             .outputConfig(FlowDefinitionOutputConfigArgs.builder()
-///                 .s3OutputPath(String.format("s3://%s/", exampleAwsS3Bucket.bucket()))
+///                 .s3OutputPath(String.format("s3://%s/", exampleAwsS3Bucket.get("bucket")))
 ///                 .build())
 ///             .flowDefinitionName("example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -611,7 +617,7 @@ import 'flow_definition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -619,8 +625,11 @@ import 'flow_definition_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_flowdefinition" "example" {
-///   human_loop_config = {
+/// resource "aws_sagemaker_flow_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   human_loop_config {
 ///     human_task_ui_arn                     = exampleAwsSagemakerHumanTaskUi.arn
 ///     task_availability_lifetime_in_seconds = 1
 ///     task_count                            = 1
@@ -628,15 +637,27 @@ import 'flow_definition_state.dart';
 ///     task_title                            = "example"
 ///     workteam_arn                          = exampleAwsSagemakerWorkteam.arn
 ///   }
-///   human_loop_request_source = {
+///   human_loop_request_source {
 ///     aws_managed_human_loop_request_source = "AWS/Textract/AnalyzeDocument/Forms/V1"
 ///   }
-///   human_loop_activation_config = {
-///     human_loop_activation_conditions_config = {
-///       human_loop_activation_conditions = "        {\n\\t\\t\\t\\\"Conditions\\\": [\n\\t\\t\\t  {\n\\t\\t\\t\\t\\\"ConditionType\\\": \\\"Sampling\\\",\n\\t\\t\\t\\t\\\"ConditionParameters\\\": {\n\\t\\t\\t\\t  \\\"RandomSamplingPercentage\\\": 5\n\\t\\t\\t\\t}\n\\t\\t\\t  }\n\\t\\t\\t]\n\\t\\t}\n"
+///   human_loop_activation_config {
+///     human_loop_activation_conditions_config {
+///       human_loop_activation_conditions = <<EOF
+///         {
+/// \t\t\t\"Conditions\": [
+/// \t\t\t  {
+/// \t\t\t\t\"ConditionType\": \"Sampling\",
+/// \t\t\t\t\"ConditionParameters\": {
+/// \t\t\t\t  \"RandomSamplingPercentage\": 5
+/// \t\t\t\t}
+/// \t\t\t  }
+/// \t\t\t]
+/// \t\t}
+/// EOF
+///
 ///     }
 ///   }
-///   output_config = {
+///   output_config {
 ///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/"
 ///   }
 ///   flow_definition_name = "example"
@@ -671,12 +692,12 @@ import 'flow_definition_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new FlowDefinition("example", FlowDefinitionArgs.builder()
 ///             .humanLoopConfig(FlowDefinitionHumanLoopConfigArgs.builder()
-///                 .humanTaskUiArn(exampleAwsSagemakerHumanTaskUi.arn())
+///                 .humanTaskUiArn(exampleAwsSagemakerHumanTaskUi.get("arn"))
 ///                 .taskAvailabilityLifetimeInSeconds(1)
 ///                 .taskCount(1)
 ///                 .taskDescription("example")
 ///                 .taskTitle("example")
-///                 .workteamArn(exampleAwsSagemakerWorkteam.arn())
+///                 .workteamArn(exampleAwsSagemakerWorkteam.get("arn"))
 ///                 .build())
 ///             .humanLoopRequestSource(FlowDefinitionHumanLoopRequestSourceArgs.builder()
 ///                 .awsManagedHumanLoopRequestSource("AWS/Textract/AnalyzeDocument/Forms/V1")
@@ -698,10 +719,10 @@ import 'flow_definition_state.dart';
 ///                     .build())
 ///                 .build())
 ///             .outputConfig(FlowDefinitionOutputConfigArgs.builder()
-///                 .s3OutputPath(String.format("s3://%s/", exampleAwsS3Bucket.bucket()))
+///                 .s3OutputPath(String.format("s3://%s/", exampleAwsS3Bucket.get("bucket")))
 ///                 .build())
 ///             .flowDefinitionName("example")
-///             .roleArn(exampleAwsIamRole.arn())
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -782,7 +803,7 @@ class FlowDefinition extends pulumi.CustomResource {
           'aws:sagemaker/flowDefinition:FlowDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     flowDefinitionName = registerOutput<String>('flowDefinitionName');

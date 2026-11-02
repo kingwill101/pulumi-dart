@@ -78,7 +78,7 @@ import 'default_patch_baseline_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ssm.NewDefaultPatchBaseline(ctx, "example", &ssm.DefaultPatchBaselineArgs{
-/// 			BaselineId:      examplePatchBaseline.ID().ToIDOutput().ToStringOutput(),
+/// 			BaselineId:      examplePatchBaseline.ID(),
 /// 			OperatingSystem: examplePatchBaseline.OperatingSystem,
 /// 		})
 /// 		if err != nil {
@@ -89,7 +89,7 @@ import 'default_patch_baseline_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -97,11 +97,17 @@ import 'default_patch_baseline_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssm_defaultpatchbaseline" "example" {
-///   baseline_id      = aws_ssm_patchbaseline.example.id
-///   operating_system = aws_ssm_patchbaseline.example.operating_system
+/// resource "aws_ssm_default_patch_baseline" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   baseline_id      = aws_ssm_patch_baseline.example.id
+///   operating_system = aws_ssm_patch_baseline.example.operating_system
 /// }
-/// resource "aws_ssm_patchbaseline" "example" {
+/// resource "aws_ssm_patch_baseline" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "example"
 ///   approved_patches = ["KB123456"]
 /// }
@@ -223,7 +229,7 @@ class DefaultPatchBaseline extends pulumi.CustomResource {
           'aws:ssm/defaultPatchBaseline:DefaultPatchBaseline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     baselineId = registerOutput<String>('baselineId');
     operatingSystem = registerOutput<String>('operatingSystem');

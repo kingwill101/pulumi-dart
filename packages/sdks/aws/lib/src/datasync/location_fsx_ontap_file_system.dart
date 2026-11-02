@@ -105,7 +105,7 @@ import 'location_fsx_ontap_file_system_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -113,10 +113,13 @@ import 'location_fsx_ontap_file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_datasync_locationfsxontapfilesystem" "test" {
-///   protocol = {
-///     nfs = {
-///       mount_options = {
+/// resource "aws_datasync_location_fsx_ontap_file_system" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   protocol {
+///     nfs {
+///       mount_options {
 ///         version = "NFS3"
 ///       }
 ///     }
@@ -158,9 +161,9 @@ import 'location_fsx_ontap_file_system_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
-///             .fsxFilesystemArn(testAwsFsxOntapFileSystem.arn())
-///             .securityGroupArns(testAwsSecurityGroup.arn())
-///             .storageVirtualMachineArn(testAwsFsxOntapStorageVirtualMachine.arn())
+///             .fsxFilesystemArn(testAwsFsxOntapFileSystem.get("arn"))
+///             .securityGroupArns(testAwsSecurityGroup.get("arn"))
+///             .storageVirtualMachineArn(testAwsFsxOntapStorageVirtualMachine.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -227,7 +230,7 @@ class LocationFsxOntapFileSystem extends pulumi.CustomResource {
           'aws:datasync/locationFsxOntapFileSystem:LocationFsxOntapFileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');

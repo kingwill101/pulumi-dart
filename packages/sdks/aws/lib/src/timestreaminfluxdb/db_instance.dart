@@ -109,7 +109,7 @@ import 'db_instance_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,7 +117,10 @@ import 'db_instance_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_timestreaminfluxdb_dbinstance" "example" {
+/// resource "aws_timestreaminfluxdb_db_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage      = 20
 ///   bucket                 = "example-bucket-name"
 ///   db_instance_type       = "db.influx.medium"
@@ -160,7 +163,7 @@ import 'db_instance_timeouts.dart';
 ///             .port(8086)
 ///             .organization("organization")
 ///             .vpcSubnetIds(exampleid)
-///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.id())
+///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///             .name("example-db-instance")
 ///             .build());
 ///
@@ -303,7 +306,7 @@ import 'db_instance_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnet, err := ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
-/// 			VpcId:     example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:     example.ID(),
 /// 			CidrBlock: pulumi.String("10.0.1.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -311,7 +314,7 @@ import 'db_instance_timeouts.dart';
 /// 		}
 /// 		exampleSecurityGroup, err := ec2.NewSecurityGroup(ctx, "example", &ec2.SecurityGroupArgs{
 /// 			Name:  pulumi.String("example"),
-/// 			VpcId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -324,10 +327,10 @@ import 'db_instance_timeouts.dart';
 /// 			Password:         pulumi.String("example-password"),
 /// 			Organization:     pulumi.String("organization"),
 /// 			VpcSubnetIds: pulumi.StringArray{
-/// 				exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleSubnet.ID(),
 /// 			},
 /// 			VpcSecurityGroupIds: pulumi.StringArray{
-/// 				exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleSecurityGroup.ID(),
 /// 			},
 /// 			Name: pulumi.String("example-db-instance"),
 /// 		})
@@ -339,7 +342,7 @@ import 'db_instance_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -348,17 +351,29 @@ import 'db_instance_timeouts.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id     = aws_ec2_vpc.example.id
 ///   cidr_block = "10.0.1.0/24"
 /// }
-/// resource "aws_ec2_securitygroup" "example" {
+/// resource "aws_ec2_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example"
 ///   vpc_id = aws_ec2_vpc.example.id
 /// }
-/// resource "aws_timestreaminfluxdb_dbinstance" "example" {
+/// resource "aws_timestreaminfluxdb_db_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage      = 20
 ///   bucket                 = "example-bucket-name"
 ///   db_instance_type       = "db.influx.medium"
@@ -366,7 +381,7 @@ import 'db_instance_timeouts.dart';
 ///   password               = "example-password"
 ///   organization           = "organization"
 ///   vpc_subnet_ids         = [aws_ec2_subnet.example.id]
-///   vpc_security_group_ids = [aws_ec2_securitygroup.example.id]
+///   vpc_security_group_ids = [aws_ec2_security_group.example.id]
 ///   name                   = "example-db-instance"
 /// }
 /// ```
@@ -664,7 +679,7 @@ import 'db_instance_timeouts.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = s3.NewBucketPolicy(ctx, "example", &s3.BucketPolicyArgs{
-/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: exampleBucket.ID(),
 /// 			Policy: example.Json(),
 /// 		})
 /// 		if err != nil {
@@ -699,7 +714,7 @@ import 'db_instance_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -707,8 +722,8 @@ import 'db_instance_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["timestream-influxdb.amazonaws.com"]
@@ -719,16 +734,25 @@ import 'db_instance_timeouts.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "example-s3-bucket"
 ///   force_destroy = true
 /// }
-/// resource "aws_s3_bucketpolicy" "example" {
+/// resource "aws_s3_bucket_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
-///   policy = data.aws_iam_getpolicydocument.example.json
+///   policy = data.aws_iam_policy_document.example.json
 /// }
-/// resource "aws_timestreaminfluxdb_dbinstance" "example" {
-///   log_delivery_configuration = {
-///     s3_configuration = {
+/// resource "aws_timestreaminfluxdb_db_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   log_delivery_configuration {
+///     s3_configuration {
 ///       bucket_name = aws_s3_bucket.example.bucket
 ///       enabled     = true
 ///     }
@@ -809,8 +833,8 @@ import 'db_instance_timeouts.dart';
 ///             .username("admin")
 ///             .password("example-password")
 ///             .organization("organization")
-///             .vpcSubnetIds(exampleAwsSubnet.id())
-///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.id())
+///             .vpcSubnetIds(exampleAwsSubnet.get("id"))
+///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///             .name("example-db-instance")
 ///             .build());
 ///
@@ -1010,8 +1034,8 @@ import 'db_instance_timeouts.dart';
 /// 			Password:         pulumi.String("example-password"),
 /// 			Organization:     pulumi.String("organization"),
 /// 			VpcSubnetIds: pulumi.StringArray{
-/// 				example1.ID().ToIDOutput().ToStringOutput(),
-/// 				example2.ID().ToIDOutput().ToStringOutput(),
+/// 				example1.ID(),
+/// 				example2.ID(),
 /// 			},
 /// 			VpcSecurityGroupIds: pulumi.StringArray{
 /// 				exampleAwsSecurityGroup.Id,
@@ -1026,7 +1050,7 @@ import 'db_instance_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1035,16 +1059,25 @@ import 'db_instance_timeouts.dart';
 /// }
 ///
 /// resource "aws_ec2_subnet" "example_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = exampleAwsVpc.id
 ///   cidr_block        = "10.0.1.0/24"
 ///   availability_zone = "us-west-2a"
 /// }
 /// resource "aws_ec2_subnet" "example_2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id            = exampleAwsVpc.id
 ///   cidr_block        = "10.0.2.0/24"
 ///   availability_zone = "us-west-2b"
 /// }
-/// resource "aws_timestreaminfluxdb_dbinstance" "example" {
+/// resource "aws_timestreaminfluxdb_db_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage      = 20
 ///   bucket                 = "example-bucket-name"
 ///   db_instance_type       = "db.influx.medium"
@@ -1081,13 +1114,13 @@ import 'db_instance_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example1 = new Subnet("example1", SubnetArgs.builder()
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .cidrBlock("10.0.1.0/24")
 ///             .availabilityZone("us-west-2a")
 ///             .build());
 ///
 ///         var example2 = new Subnet("example2", SubnetArgs.builder()
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .cidrBlock("10.0.2.0/24")
 ///             .availabilityZone("us-west-2b")
 ///             .build());
@@ -1103,7 +1136,7 @@ import 'db_instance_timeouts.dart';
 ///             .vpcSubnetIds(
 ///                 example1.id(),
 ///                 example2.id())
-///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.id())
+///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///             .name("example-db-instance")
 ///             .build());
 ///
@@ -1231,7 +1264,7 @@ class DbInstance extends pulumi.CustomResource {
           'aws:timestreaminfluxdb/dbInstance:DbInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');

@@ -67,7 +67,7 @@ import 'policy_store_validation_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -75,8 +75,11 @@ import 'policy_store_validation_settings.dart';
 ///   }
 /// }
 ///
-/// resource "aws_verifiedpermissions_policystore" "example" {
-///   validation_settings = {
+/// resource "aws_verifiedpermissions_policy_store" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   validation_settings {
 ///     mode = "STRICT"
 ///   }
 /// }
@@ -161,7 +164,7 @@ class PolicyStore extends pulumi.CustomResource {
           'aws:verifiedpermissions/policyStore:PolicyStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtection = registerOutput<String>('deletionProtection');

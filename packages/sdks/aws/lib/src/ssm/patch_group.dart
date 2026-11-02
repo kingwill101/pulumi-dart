@@ -76,7 +76,7 @@ import 'patch_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ssm.NewPatchGroup(ctx, "example", &ssm.PatchGroupArgs{
-/// 			BaselineId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			BaselineId: example.ID(),
 /// 			PatchGroup: pulumi.String("patch-group-name"),
 /// 		})
 /// 		if err != nil {
@@ -87,7 +87,7 @@ import 'patch_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -95,12 +95,18 @@ import 'patch_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ssm_patchbaseline" "example" {
+/// resource "aws_ssm_patch_baseline" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "patch-baseline"
 ///   approved_patches = ["KB123456"]
 /// }
-/// resource "aws_ssm_patchgroup" "example" {
-///   baseline_id = aws_ssm_patchbaseline.example.id
+/// resource "aws_ssm_patch_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   baseline_id = aws_ssm_patch_baseline.example.id
 ///   patch_group = "patch-group-name"
 /// }
 /// ```
@@ -197,7 +203,7 @@ class PatchGroup extends pulumi.CustomResource {
           'aws:ssm/patchGroup:PatchGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     baselineId = registerOutput<String>('baselineId');
     patchGroup = registerOutput<String>('patchGroup');

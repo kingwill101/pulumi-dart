@@ -62,7 +62,7 @@ import 'account_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -71,6 +71,9 @@ import 'account_state.dart';
 /// }
 ///
 /// resource "aws_macie2_account" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   finding_publishing_frequency = "FIFTEEN_MINUTES"
 ///   status                       = "ENABLED"
 /// }
@@ -147,7 +150,7 @@ class Account extends pulumi.CustomResource {
           'aws:macie2/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     findingPublishingFrequency = registerOutput<String>('findingPublishingFrequency');

@@ -119,7 +119,7 @@ import 'replication_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -127,8 +127,11 @@ import 'replication_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_dms_replicationconfig" "name" {
-///   compute_config = {
+/// resource "aws_dms_replication_config" "name" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   compute_config {
 ///     replication_subnet_group_id  = default.replicationSubnetGroupId
 ///     max_capacity_units           = "64"
 ///     min_capacity_units           = "2"
@@ -139,7 +142,12 @@ import 'replication_config_state.dart';
 ///   replication_type              = "cdc"
 ///   source_endpoint_arn           = source.endpointArn
 ///   target_endpoint_arn           = target.endpointArn
-///   table_mappings                = "  {\n    \\\"rules\\\":[{\\\"rule-type\\\":\\\"selection\\\",\\\"rule-id\\\":\\\"1\\\",\\\"rule-name\\\":\\\"1\\\",\\\"rule-action\\\":\\\"include\\\",\\\"object-locator\\\":{\\\"schema-name\\\":\\\"%%\\\",\\\"table-name\\\":\\\"%%\\\"}}]\n  }\n"
+///   table_mappings                = <<EOF
+///   {
+///     \"rules\":[{\"rule-type\":\"selection\",\"rule-id\":\"1\",\"rule-name\":\"1\",\"rule-action\":\"include\",\"object-locator\":{\"schema-name\":\"%%\",\"table-name\":\"%%\"}}]
+///   }
+/// EOF
+///
 ///   start_replication             = true
 /// }
 /// ```
@@ -167,7 +175,7 @@ import 'replication_config_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var name = new ReplicationConfig("name", ReplicationConfigArgs.builder()
 ///             .computeConfig(ReplicationConfigComputeConfigArgs.builder()
-///                 .replicationSubnetGroupId(default_.replicationSubnetGroupId())
+///                 .replicationSubnetGroupId(default_.get("replicationSubnetGroupId"))
 ///                 .maxCapacityUnits(64)
 ///                 .minCapacityUnits(2)
 ///                 .preferredMaintenanceWindow("sun:23:45-mon:00:30")
@@ -175,8 +183,8 @@ import 'replication_config_state.dart';
 ///             .replicationConfigIdentifier("test-dms-serverless-replication-tf")
 ///             .resourceIdentifier("test-dms-serverless-replication-tf")
 ///             .replicationType("cdc")
-///             .sourceEndpointArn(source.endpointArn())
-///             .targetEndpointArn(target.endpointArn())
+///             .sourceEndpointArn(source.get("endpointArn"))
+///             .targetEndpointArn(target.get("endpointArn"))
 ///             .tableMappings("""
 ///   {
 ///     \"rules\":[{\"rule-type\":\"selection\",\"rule-id\":\"1\",\"rule-name\":\"1\",\"rule-action\":\"include\",\"object-locator\":{\"schema-name\":\"%%\",\"table-name\":\"%%\"}}]
@@ -267,7 +275,7 @@ class ReplicationConfig extends pulumi.CustomResource {
           'aws:dms/replicationConfig:ReplicationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     computeConfig = registerOutput<ReplicationConfigComputeConfig>('computeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationConfigComputeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

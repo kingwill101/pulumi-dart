@@ -82,7 +82,7 @@ import 'connection_function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,8 +90,11 @@ import 'connection_function_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_connectionfunction" "example" {
-///   connection_function_config = {
+/// resource "aws_cloudfront_connection_function" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   connection_function_config {
 ///     runtime = "cloudfront-js-2.0"
 ///     comment = "Example connection function"
 ///   }
@@ -225,7 +228,7 @@ import 'connection_function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -233,8 +236,11 @@ import 'connection_function_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_connectionfunction" "example" {
-///   connection_function_config = {
+/// resource "aws_cloudfront_connection_function" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   connection_function_config {
 ///     runtime = "cloudfront-js-2.0"
 ///     comment = "Example connection function"
 ///   }
@@ -400,7 +406,7 @@ import 'connection_function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -408,14 +414,20 @@ import 'connection_function_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_keyvaluestore" "example" {
+/// resource "aws_cloudfront_key_value_store" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example-kvs"
 ///   comment = "Example key value store"
 /// }
-/// resource "aws_cloudfront_connectionfunction" "example" {
-///   connection_function_config = {
-///     key_value_store_association = {
-///       key_value_store_arn = aws_cloudfront_keyvaluestore.example.arn
+/// resource "aws_cloudfront_connection_function" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   connection_function_config {
+///     key_value_store_association {
+///       key_value_store_arn = aws_cloudfront_key_value_store.example.arn
 ///     }
 ///     runtime = "cloudfront-js-2.0"
 ///     comment = "Example connection function"
@@ -582,7 +594,7 @@ import 'connection_function_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -590,8 +602,11 @@ import 'connection_function_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudfront_connectionfunction" "example" {
-///   connection_function_config = {
+/// resource "aws_cloudfront_connection_function" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   connection_function_config {
 ///     runtime = "cloudfront-js-2.0"
 ///     comment = "Example connection function"
 ///   }
@@ -700,7 +715,7 @@ class ConnectionFunction extends pulumi.CustomResource {
           'aws:cloudfront/connectionFunction:ConnectionFunction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     connectionFunctionArn = registerOutput<String>('connectionFunctionArn');
     connectionFunctionCode = registerOutput<String>('connectionFunctionCode');

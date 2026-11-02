@@ -79,7 +79,7 @@ import 'route_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigatewayv2.NewRoute(ctx, "example", &apigatewayv2.RouteArgs{
-/// 			ApiId:    example.ID().ToIDOutput().ToStringOutput(),
+/// 			ApiId:    example.ID(),
 /// 			RouteKey: pulumi.String("$default"),
 /// 		})
 /// 		if err != nil {
@@ -90,7 +90,7 @@ import 'route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -99,11 +99,17 @@ import 'route_state.dart';
 /// }
 ///
 /// resource "aws_apigatewayv2_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-websocket-api"
 ///   protocol_type              = "WEBSOCKET"
 ///   route_selection_expression = "$request.body.action"
 /// }
 /// resource "aws_apigatewayv2_route" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id    = aws_apigatewayv2_api.example.id
 ///   route_key = "$default"
 /// }
@@ -253,7 +259,7 @@ import 'route_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleIntegration, err := apigatewayv2.NewIntegration(ctx, "example", &apigatewayv2.IntegrationArgs{
-/// 			ApiId:             example.ID().ToIDOutput().ToStringOutput(),
+/// 			ApiId:             example.ID(),
 /// 			IntegrationType:   pulumi.String("HTTP_PROXY"),
 /// 			IntegrationMethod: pulumi.String("ANY"),
 /// 			IntegrationUri:    pulumi.String("https://example.com/{proxy}"),
@@ -262,7 +268,7 @@ import 'route_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apigatewayv2.NewRoute(ctx, "example", &apigatewayv2.RouteArgs{
-/// 			ApiId:    example.ID().ToIDOutput().ToStringOutput(),
+/// 			ApiId:    example.ID(),
 /// 			RouteKey: pulumi.String("ANY /example/{proxy+}"),
 /// 			Target: exampleIntegration.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("integrations/%v", id), nil
@@ -276,7 +282,7 @@ import 'route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -285,16 +291,25 @@ import 'route_state.dart';
 /// }
 ///
 /// resource "aws_apigatewayv2_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example-http-api"
 ///   protocol_type = "HTTP"
 /// }
 /// resource "aws_apigatewayv2_integration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id             = aws_apigatewayv2_api.example.id
 ///   integration_type   = "HTTP_PROXY"
 ///   integration_method = "ANY"
 ///   integration_uri    = "https://example.com/{proxy}"
 /// }
 /// resource "aws_apigatewayv2_route" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id    = aws_apigatewayv2_api.example.id
 ///   route_key = "ANY /example/{proxy+}"
 ///   target    ="integrations/${aws_apigatewayv2_integration.example.id}"
@@ -433,7 +448,7 @@ class Route extends pulumi.CustomResource {
           'aws:apigatewayv2/route:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     apiKeyRequired = registerOutput<bool?>('apiKeyRequired');

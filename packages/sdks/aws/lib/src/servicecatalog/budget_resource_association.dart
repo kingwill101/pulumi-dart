@@ -66,7 +66,7 @@ import 'budget_resource_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'budget_resource_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicecatalog_budgetresourceassociation" "example" {
+/// resource "aws_servicecatalog_budget_resource_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   budget_name = "budget-pjtvyakdlyo3m"
 ///   resource_id = "prod-dnigbtea24ste"
 /// }
@@ -145,7 +148,7 @@ class BudgetResourceAssociation extends pulumi.CustomResource {
           'aws:servicecatalog/budgetResourceAssociation:BudgetResourceAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     budgetName = registerOutput<String>('budgetName');
     region = registerOutput<String>('region');

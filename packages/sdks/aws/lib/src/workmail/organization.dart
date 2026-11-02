@@ -58,7 +58,7 @@ import 'organization_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,6 +67,9 @@ import 'organization_timeouts.dart';
 /// }
 ///
 /// resource "aws_workmail_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization_alias = "example-org"
 /// }
 /// ```
@@ -177,7 +180,7 @@ class Organization extends pulumi.CustomResource {
           'aws:workmail/organization:Organization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     completedDate = registerOutput<String>('completedDate');

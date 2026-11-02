@@ -151,7 +151,7 @@ import 'registry_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -159,8 +159,8 @@ import 'registry_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["109876543210"]
@@ -172,9 +172,12 @@ import 'registry_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_schemas_registrypolicy" "example" {
+/// resource "aws_schemas_registry_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   registry_name = "example"
-///   policy        = data.aws_iam_getpolicydocument.example.json
+///   policy        = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -280,7 +283,7 @@ class RegistryPolicy extends pulumi.CustomResource {
           'aws:schemas/registryPolicy:RegistryPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

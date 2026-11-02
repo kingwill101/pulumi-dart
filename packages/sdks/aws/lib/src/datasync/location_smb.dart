@@ -82,7 +82,7 @@ import 'location_smb_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -90,7 +90,10 @@ import 'location_smb_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_datasync_locationsmb" "example" {
+/// resource "aws_datasync_location_smb" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   server_hostname = "smb.example.com"
 ///   subdirectory    = "/exported/path"
 ///   user            = "Guest"
@@ -124,7 +127,7 @@ import 'location_smb_state.dart';
 ///             .subdirectory("/exported/path")
 ///             .user("Guest")
 ///             .password("ANotGreatPassword")
-///             .agentArns(exampleAwsDatasyncAgent.arn())
+///             .agentArns(exampleAwsDatasyncAgent.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -195,7 +198,7 @@ class LocationSmb extends pulumi.CustomResource {
           'aws:datasync/locationSmb:LocationSmb',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     agentArns = registerOutput<List<String>>('agentArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

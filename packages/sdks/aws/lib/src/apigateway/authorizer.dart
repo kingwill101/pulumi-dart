@@ -341,7 +341,7 @@ import 'authorizer_state.dart';
 /// 		}
 /// 		_, err = apigateway.NewAuthorizer(ctx, "demo", &apigateway.AuthorizerArgs{
 /// 			Name:                  pulumi.String("demo"),
-/// 			RestApi:               demoRestApi.ID().ToIDOutput().ToStringOutput(),
+/// 			RestApi:               demoRestApi.ID(),
 /// 			AuthorizerUri:         authorizer.InvokeArn,
 /// 			AuthorizerCredentials: invocationRole.Arn,
 /// 		})
@@ -363,7 +363,7 @@ import 'authorizer_state.dart';
 /// 		}, nil)
 /// 		_, err = iam.NewRolePolicy(ctx, "invocation_policy", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("default"),
-/// 			Role:   invocationRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   invocationRole.ID(),
 /// 			Policy: invocationPolicy.Json(),
 /// 		})
 /// 		if err != nil {
@@ -374,7 +374,7 @@ import 'authorizer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -385,8 +385,8 @@ import 'authorizer_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "invocationAssumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "invocationAssumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["apigateway.amazonaws.com"]
@@ -395,15 +395,15 @@ import 'authorizer_state.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "invocationPolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "invocationPolicy" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["lambda:InvokeFunction"]
 ///     resources = [aws_lambda_function.authorizer.arn]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "lambdaAssumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "lambdaAssumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["lambda.amazonaws.com"]
@@ -414,31 +414,49 @@ import 'authorizer_state.dart';
 /// }
 ///
 /// resource "aws_apigateway_authorizer" "demo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "demo"
-///   rest_api               = aws_apigateway_restapi.demo.id
+///   rest_api               = aws_apigateway_rest_api.demo.id
 ///   authorizer_uri         = aws_lambda_function.authorizer.invoke_arn
 ///   authorizer_credentials = aws_iam_role.invocation_role.arn
 /// }
-/// resource "aws_apigateway_restapi" "demo" {
+/// resource "aws_apigateway_rest_api" "demo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "auth-demo"
 /// }
 /// resource "aws_iam_role" "invocation_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "api_gateway_auth_invocation"
 ///   path               = "/"
-///   assume_role_policy = data.aws_iam_getpolicydocument.invocationAssumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.invocationAssumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "invocation_policy" {
+/// resource "aws_iam_role_policy" "invocation_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "default"
 ///   role   = aws_iam_role.invocation_role.id
-///   policy = data.aws_iam_getpolicydocument.invocationPolicy.json
+///   policy = data.aws_iam_policy_document.invocationPolicy.json
 /// }
 /// resource "aws_iam_role" "lambda" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "demo-lambda"
-///   assume_role_policy = data.aws_iam_getpolicydocument.lambdaAssumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.lambdaAssumeRole.json
 /// }
 /// resource "aws_lambda_function" "authorizer" {
-///   code             = fileArchive("lambda-function.zip")
-///   name             = "api_gateway_authorizer"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   filename         = filearchive("lambda-function.zip")
+///   function_name    = "api_gateway_authorizer"
 ///   role             = aws_iam_role.lambda.arn
 ///   handler          = "exports.example"
 ///   source_code_hash = filebase64sha256("lambda-function.zip")
@@ -679,7 +697,7 @@ class Authorizer extends pulumi.CustomResource {
           'aws:apigateway/authorizer:Authorizer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authorizerCredentials = registerOutput<String?>('authorizerCredentials');

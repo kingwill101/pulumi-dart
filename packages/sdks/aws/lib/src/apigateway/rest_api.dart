@@ -86,7 +86,7 @@ import 'rest_api_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -94,7 +94,10 @@ import 'rest_api_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_apigateway_restapi" "example" {
+/// resource "aws_apigateway_rest_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   endpoint_configuration = {
 ///     types = "REGIONAL"
 ///   }
@@ -219,7 +222,7 @@ class RestApi extends pulumi.CustomResource {
           'aws:apigateway/restApi:RestApi',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     apiKeySource = registerOutput<String>('apiKeySource');
     arn = registerOutput<String>('arn');

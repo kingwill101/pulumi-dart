@@ -125,7 +125,7 @@ import 'app_cookie_stickiness_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -133,7 +133,10 @@ import 'app_cookie_stickiness_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_elb_loadbalancer" "lb" {
+/// resource "aws_elb_load_balancer" "lb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   listeners {
 ///     instance_port     = 8000
 ///     instance_protocol = "http"
@@ -143,9 +146,12 @@ import 'app_cookie_stickiness_policy_state.dart';
 ///   name               = "test-lb"
 ///   availability_zones = ["us-east-1a"]
 /// }
-/// resource "aws_elb_appcookiestickinesspolicy" "foo" {
+/// resource "aws_elb_app_cookie_stickiness_policy" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "foo_policy"
-///   load_balancer = aws_elb_loadbalancer.lb.name
+///   load_balancer = aws_elb_load_balancer.lb.name
 ///   lb_port       = 80
 ///   cookie_name   = "MyAppCookie"
 /// }
@@ -249,7 +255,7 @@ class AppCookieStickinessPolicy extends pulumi.CustomResource {
           'aws:elb/appCookieStickinessPolicy:AppCookieStickinessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     cookieName = registerOutput<String>('cookieName');
     lbPort = registerOutput<int>('lbPort');

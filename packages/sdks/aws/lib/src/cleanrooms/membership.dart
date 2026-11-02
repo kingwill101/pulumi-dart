@@ -122,7 +122,7 @@ import 'membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -131,9 +131,12 @@ import 'membership_state.dart';
 /// }
 ///
 /// resource "aws_cleanrooms_membership" "test_membership" {
-///   default_result_configuration = {
-///     output_configuration = {
-///       s3 = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   default_result_configuration {
+///     output_configuration {
+///       s3 {
 ///         bucket        = "test-bucket"
 ///         result_format = "PARQUET"
 ///         key_prefix    = "test-prefix"
@@ -274,7 +277,7 @@ class Membership extends pulumi.CustomResource {
           'aws:cleanrooms/membership:Membership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     collaborationArn = registerOutput<String>('collaborationArn');

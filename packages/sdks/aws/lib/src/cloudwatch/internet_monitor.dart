@@ -57,7 +57,7 @@ import 'internet_monitor_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,10 @@ import 'internet_monitor_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_internetmonitor" "example" {
+/// resource "aws_cloudwatch_internet_monitor" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   monitor_name = "example"
 /// }
 /// ```
@@ -151,7 +154,7 @@ class InternetMonitor extends pulumi.CustomResource {
           'aws:cloudwatch/internetMonitor:InternetMonitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     healthEventsConfig = registerOutput<InternetMonitorHealthEventsConfig?>('healthEventsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternetMonitorHealthEventsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

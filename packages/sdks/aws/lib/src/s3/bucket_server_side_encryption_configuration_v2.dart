@@ -118,7 +118,7 @@ import 'bucket_server_side_encryption_configuration_v2_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			Bucket: mybucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: mybucket.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -128,7 +128,7 @@ import 'bucket_server_side_encryption_configuration_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -137,15 +137,24 @@ import 'bucket_server_side_encryption_configuration_v2_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "mykey" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "This key is used to encrypt bucket objects"
 ///   deletion_window_in_days = 10
 /// }
 /// resource "aws_s3_bucket" "mybucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "mybucket"
 /// }
-/// resource "aws_s3_bucketserversideencryptionconfiguration" "example" {
-///   rules {
-///     apply_server_side_encryption_by_default = {
+/// resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     apply_server_side_encryption_by_default {
 ///       kms_master_key_id = aws_kms_key.mykey.arn
 ///       sse_algorithm     = "aws:kms"
 ///     }
@@ -346,7 +355,7 @@ import 'bucket_server_side_encryption_configuration_v2_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			Bucket: mybucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: mybucket.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -356,7 +365,7 @@ import 'bucket_server_side_encryption_configuration_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -365,15 +374,24 @@ import 'bucket_server_side_encryption_configuration_v2_state.dart';
 /// }
 ///
 /// resource "aws_kms_key" "mykey" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "This key is used to encrypt bucket objects"
 ///   deletion_window_in_days = 10
 /// }
 /// resource "aws_s3_bucket" "mybucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "mybucket"
 /// }
-/// resource "aws_s3_bucketserversideencryptionconfiguration" "example" {
-///   rules {
-///     apply_server_side_encryption_by_default = {
+/// resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   rule {
+///     apply_server_side_encryption_by_default {
 ///       kms_master_key_id = aws_kms_key.mykey.arn
 ///       sse_algorithm     = "aws:kms"
 ///     }
@@ -511,7 +529,7 @@ class BucketServerSideEncryptionConfigurationV2 extends pulumi.CustomResource {
           'aws:s3/bucketServerSideEncryptionConfigurationV2:BucketServerSideEncryptionConfigurationV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');

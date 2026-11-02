@@ -62,7 +62,7 @@ import 'vpc_network_performance_metric_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -70,7 +70,10 @@ import 'vpc_network_performance_metric_subscription_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcnetworkperformancemetricsubscription" "example" {
+/// resource "aws_ec2_vpc_network_performance_metric_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source      = "us-east-1"
 ///   destination = "us-west-1"
 /// }
@@ -138,7 +141,7 @@ class VpcNetworkPerformanceMetricSubscription extends pulumi.CustomResource {
           'aws:ec2/vpcNetworkPerformanceMetricSubscription:VpcNetworkPerformanceMetricSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     destination = registerOutput<String>('destination');
     metric = registerOutput<String?>('metric');

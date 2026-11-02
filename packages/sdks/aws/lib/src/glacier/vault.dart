@@ -209,7 +209,7 @@ import 'vault_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -217,8 +217,8 @@ import 'vault_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "myArchive" {
-///   statements {
+/// data "aws_iam_policy_document" "myArchive" {
+///   statement {
 ///     principals {
 ///       type        = "*"
 ///       identifiers = ["*"]
@@ -231,15 +231,21 @@ import 'vault_state.dart';
 /// }
 ///
 /// resource "aws_sns_topic" "aws_sns_topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "glacier-sns-topic"
 /// }
 /// resource "aws_glacier_vault" "my_archive" {
-///   notification = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   notification {
 ///     sns_topic = aws_sns_topic.aws_sns_topic.arn
 ///     events    = ["ArchiveRetrievalCompleted", "InventoryRetrievalCompleted"]
 ///   }
 ///   name          = "MyArchive"
-///   access_policy = data.aws_iam_getpolicydocument.myArchive.json
+///   access_policy = data.aws_iam_policy_document.myArchive.json
 ///   tags = {
 ///     "Test" = "MyArchive"
 ///   }
@@ -384,7 +390,7 @@ class Vault extends pulumi.CustomResource {
           'aws:glacier/vault:Vault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accessPolicy = registerOutput<String?>('accessPolicy');
     arn = registerOutput<String>('arn');

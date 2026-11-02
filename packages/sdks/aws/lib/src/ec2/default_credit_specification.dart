@@ -65,7 +65,7 @@ import 'default_credit_specification_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -73,7 +73,10 @@ import 'default_credit_specification_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_defaultcreditspecification" "example" {
+/// resource "aws_ec2_default_credit_specification" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_family = "t2"
 ///   cpu_credits     = "standard"
 /// }
@@ -146,7 +149,7 @@ class DefaultCreditSpecification extends pulumi.CustomResource {
           'aws:ec2/defaultCreditSpecification:DefaultCreditSpecification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     cpuCredits = registerOutput<String>('cpuCredits');
     instanceFamily = registerOutput<String>('instanceFamily');

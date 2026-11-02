@@ -59,7 +59,7 @@ import 'get_input_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,7 @@ import 'get_input_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_medialive_getinput" "example" {
+/// data "aws_medialive_input" "example" {
 ///   id = exampleAwsMedialiveInput.id
 /// }
 /// ```
@@ -93,7 +93,7 @@ import 'get_input_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = MedialiveFunctions.getInput(GetInputArgs.builder()
-///             .id(exampleAwsMedialiveInput.id())
+///             .id(exampleAwsMedialiveInput.get("id"))
 ///             .build());
 ///
 ///     }

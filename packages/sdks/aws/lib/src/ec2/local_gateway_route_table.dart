@@ -78,7 +78,7 @@ import 'local_gateway_route_table_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,12 +86,15 @@ import 'local_gateway_route_table_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_ec2_getlocalgateway" "example" {
+/// data "aws_ec2_local_gateway" "example" {
 ///   id = "lgw-1234567890abcdef"
 /// }
 ///
-/// resource "aws_ec2_localgatewayroutetable" "example" {
-///   local_gateway_id = data.aws_ec2_getlocalgateway.example.id
+/// resource "aws_ec2_local_gateway_route_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   local_gateway_id = data.aws_ec2_local_gateway.example.id
 ///   mode             = "direct-vpc-routing"
 /// }
 /// ```
@@ -191,7 +194,7 @@ class LocalGatewayRouteTable extends pulumi.CustomResource {
           'aws:ec2/localGatewayRouteTable:LocalGatewayRouteTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     localGatewayId = registerOutput<String>('localGatewayId');

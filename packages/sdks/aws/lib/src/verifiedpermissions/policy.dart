@@ -83,7 +83,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -92,8 +92,11 @@ import 'policy_state.dart';
 /// }
 ///
 /// resource "aws_verifiedpermissions_policy" "test" {
-///   definition = {
-///     static = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   definition {
+///     static {
 ///       statement = "permit (principal, action == Action::\"view\", resource in Album:: \"test_album\");"
 ///     }
 ///   }
@@ -129,7 +132,7 @@ import 'policy_state.dart';
 ///                     .statement("permit (principal, action == Action::\"view\", resource in Album:: \"test_album\");")
 ///                     .build())
 ///                 .build())
-///             .policyStoreId(testAwsVerifiedpermissionsPolicyStore.id())
+///             .policyStoreId(testAwsVerifiedpermissionsPolicyStore.get("id"))
 ///             .build());
 ///
 ///     }
@@ -178,7 +181,7 @@ class Policy extends pulumi.CustomResource {
           'aws:verifiedpermissions/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     createdDate = registerOutput<String>('createdDate');
     definition = registerOutput<PolicyDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

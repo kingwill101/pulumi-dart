@@ -99,8 +99,8 @@ import 'connection_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = directconnect.NewConnectionAssociation(ctx, "example", &directconnect.ConnectionAssociationArgs{
-/// 			ConnectionId: example.ID().ToIDOutput().ToStringOutput(),
-/// 			LagId:        exampleLinkAggregationGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			ConnectionId: example.ID(),
+/// 			LagId:        exampleLinkAggregationGroup.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -110,7 +110,7 @@ import 'connection_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -119,18 +119,27 @@ import 'connection_association_state.dart';
 /// }
 ///
 /// resource "aws_directconnect_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "example"
 ///   bandwidth = "1Gbps"
 ///   location  = "EqSe2-EQ"
 /// }
-/// resource "aws_directconnect_linkaggregationgroup" "example" {
+/// resource "aws_directconnect_link_aggregation_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example"
 ///   connections_bandwidth = "1Gbps"
 ///   location              = "EqSe2-EQ"
 /// }
-/// resource "aws_directconnect_connectionassociation" "example" {
+/// resource "aws_directconnect_connection_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_id = aws_directconnect_connection.example.id
-///   lag_id        = aws_directconnect_linkaggregationgroup.example.id
+///   lag_id        = aws_directconnect_link_aggregation_group.example.id
 /// }
 /// ```
 /// ```java
@@ -220,7 +229,7 @@ class ConnectionAssociation extends pulumi.CustomResource {
           'aws:directconnect/connectionAssociation:ConnectionAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     connectionId = registerOutput<String>('connectionId');
     lagId = registerOutput<String>('lagId');

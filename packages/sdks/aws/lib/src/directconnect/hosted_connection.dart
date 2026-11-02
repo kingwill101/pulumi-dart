@@ -74,7 +74,7 @@ import 'hosted_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,7 +82,10 @@ import 'hosted_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_directconnect_hostedconnection" "hosted" {
+/// resource "aws_directconnect_hosted_connection" "hosted" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connection_id    = "dxcon-ffabc123"
 ///   bandwidth        = "100Mbps"
 ///   name             = "tf-dx-hosted-connection"
@@ -179,7 +182,7 @@ class HostedConnection extends pulumi.CustomResource {
           'aws:directconnect/hostedConnection:HostedConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     awsDevice = registerOutput<String>('awsDevice');
     bandwidth = registerOutput<String>('bandwidth');

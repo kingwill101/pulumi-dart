@@ -59,7 +59,7 @@ import 'log_storage_tier_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -67,7 +67,10 @@ import 'log_storage_tier_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_logstoragetierpolicy" "example" {
+/// resource "aws_cloudwatch_log_storage_tier_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   storage_tier = "INTELLIGENT_TIERING"
 /// }
 /// ```
@@ -144,7 +147,7 @@ class LogStorageTierPolicy extends pulumi.CustomResource {
           'aws:cloudwatch/logStorageTierPolicy:LogStorageTierPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     storageTier = registerOutput<String>('storageTier');

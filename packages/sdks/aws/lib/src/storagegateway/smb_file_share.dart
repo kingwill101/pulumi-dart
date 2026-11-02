@@ -75,7 +75,7 @@ import 'smb_file_share_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,7 +83,10 @@ import 'smb_file_share_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_storagegateway_smbfileshare" "example" {
+/// resource "aws_storagegateway_smb_file_share" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication = "ActiveDirectory"
 ///   gateway_arn    = exampleAwsStoragegatewayGateway.arn
 ///   location_arn   = exampleAwsS3Bucket.arn
@@ -113,9 +116,9 @@ import 'smb_file_share_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new SmbFileShare("example", SmbFileShareArgs.builder()
 ///             .authentication("ActiveDirectory")
-///             .gatewayArn(exampleAwsStoragegatewayGateway.arn())
-///             .locationArn(exampleAwsS3Bucket.arn())
-///             .roleArn(exampleAwsIamRole.arn())
+///             .gatewayArn(exampleAwsStoragegatewayGateway.get("arn"))
+///             .locationArn(exampleAwsS3Bucket.get("arn"))
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -201,7 +204,7 @@ import 'smb_file_share_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -209,7 +212,10 @@ import 'smb_file_share_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_storagegateway_smbfileshare" "example" {
+/// resource "aws_storagegateway_smb_file_share" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   authentication = "GuestAccess"
 ///   gateway_arn    = exampleAwsStoragegatewayGateway.arn
 ///   location_arn   = exampleAwsS3Bucket.arn
@@ -239,9 +245,9 @@ import 'smb_file_share_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new SmbFileShare("example", SmbFileShareArgs.builder()
 ///             .authentication("GuestAccess")
-///             .gatewayArn(exampleAwsStoragegatewayGateway.arn())
-///             .locationArn(exampleAwsS3Bucket.arn())
-///             .roleArn(exampleAwsIamRole.arn())
+///             .gatewayArn(exampleAwsStoragegatewayGateway.get("arn"))
+///             .locationArn(exampleAwsS3Bucket.get("arn"))
+///             .roleArn(exampleAwsIamRole.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -342,7 +348,7 @@ class SmbFileShare extends pulumi.CustomResource {
           'aws:storagegateway/smbFileShare:SmbFileShare',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accessBasedEnumeration = registerOutput<bool?>('accessBasedEnumeration');
     adminUserLists = registerOutput<List<String>?>('adminUserLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

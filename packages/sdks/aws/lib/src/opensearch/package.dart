@@ -139,7 +139,7 @@ import 'package_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -151,18 +151,27 @@ import 'package_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "my_opensearch_packages" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "my-opensearch-packages"
 /// }
-/// resource "aws_s3_bucketobjectv2" "example" {
+/// resource "aws_s3_bucket_objectv2" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.my_opensearch_packages.bucket
 ///   key    = "example.txt"
-///   source = fileAsset("./example.txt")
+///   source = fileasset("./example.txt")
 ///   etag   = filemd5("./example.txt")
 /// }
 /// resource "aws_opensearch_package" "example" {
-///   package_source = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   package_source {
 ///     s3_bucket_name = aws_s3_bucket.my_opensearch_packages.bucket
-///     s3_key         = aws_s3_bucketobjectv2.example.key
+///     s3_key         = aws_s3_bucket_objectv2.example.key
 ///   }
 ///   package_name = "example-txt"
 ///   package_type = "TXT-DICTIONARY"
@@ -290,7 +299,7 @@ class Package extends pulumi.CustomResource {
           'aws:opensearch/package:Package',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     availablePackageVersion = registerOutput<String>('availablePackageVersion');
     engineVersion = registerOutput<String?>('engineVersion');

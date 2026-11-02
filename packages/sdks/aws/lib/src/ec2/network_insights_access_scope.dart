@@ -124,7 +124,7 @@ import 'network_insights_access_scope_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -132,15 +132,18 @@ import 'network_insights_access_scope_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_networkinsightsaccessscope" "example" {
+/// resource "aws_ec2_network_insights_access_scope" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   match_paths {
-///     source = {
-///       resource_statement = {
+///     source {
+///       resource_statement {
 ///         resource_types = ["AWS::EC2::NetworkInterface"]
 ///       }
 ///     }
-///     destination = {
-///       resource_statement = {
+///     destination {
+///       resource_statement {
 ///         resource_types = ["AWS::EC2::InternetGateway"]
 ///       }
 ///     }
@@ -372,7 +375,7 @@ import 'network_insights_access_scope_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -380,22 +383,25 @@ import 'network_insights_access_scope_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_networkinsightsaccessscope" "example" {
+/// resource "aws_ec2_network_insights_access_scope" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   exclude_paths {
-///     source = {
-///       resource_statement = {
+///     source {
+///       resource_statement {
 ///         resource_types = ["AWS::EC2::InternetGateway"]
 ///       }
 ///     }
 ///     through_resources {
-///       resource_statement = {
+///       resource_statement {
 ///         resource_types = ["AWS::EC2::NatGateway"]
 ///       }
 ///     }
 ///   }
 ///   match_paths {
-///     source = {
-///       resource_statement = {
+///     source {
+///       resource_statement {
 ///         resource_types = ["AWS::EC2::NetworkInterface"]
 ///       }
 ///     }
@@ -530,7 +536,7 @@ class NetworkInsightsAccessScope extends pulumi.CustomResource {
           'aws:ec2/networkInsightsAccessScope:NetworkInsightsAccessScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     excludePaths = registerOutput<List<NetworkInsightsAccessScopeExcludePath>?>('excludePaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAccessScopeExcludePath>(guardedValue, (value) => NetworkInsightsAccessScopeExcludePath.fromMap((value as Map).cast<String, dynamic>())); });

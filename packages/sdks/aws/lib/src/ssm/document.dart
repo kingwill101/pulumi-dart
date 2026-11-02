@@ -141,7 +141,7 @@ import 'document_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -150,9 +150,31 @@ import 'document_state.dart';
 /// }
 ///
 /// resource "aws_ssm_document" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "test_document"
 ///   document_type = "Command"
-///   content       = "  {\n    \\\"schemaVersion\\\": \\\"1.2\\\",\n    \\\"description\\\": \\\"Check ip configuration of a Linux instance.\\\",\n    \\\"parameters\\\": {\n\n    },\n    \\\"runtimeConfig\\\": {\n      \\\"aws:runShellScript\\\": {\n        \\\"properties\\\": [\n          {\n            \\\"id\\\": \\\"0.aws:runShellScript\\\",\n            \\\"runCommand\\\": [\\\"ifconfig\\\"]\n          }\n        ]\n      }\n    }\n  }\n"
+///   content       = <<DOC
+///   {
+///     \"schemaVersion\": \"1.2\",
+///     \"description\": \"Check ip configuration of a Linux instance.\",
+///     \"parameters\": {
+///
+///     },
+///     \"runtimeConfig\": {
+///       \"aws:runShellScript\": {
+///         \"properties\": [
+///           {
+///             \"id\": \"0.aws:runShellScript\",
+///             \"runCommand\": [\"ifconfig\"]
+///           }
+///         ]
+///       }
+///     }
+///   }
+/// DOC
+///
 /// }
 /// ```
 /// ```java
@@ -333,7 +355,7 @@ import 'document_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -342,10 +364,24 @@ import 'document_state.dart';
 /// }
 ///
 /// resource "aws_ssm_document" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "test_document"
 ///   document_format = "YAML"
 ///   document_type   = "Command"
-///   content         = "schemaVersion: '1.2'\ndescription: Check ip configuration of a Linux instance.\nparameters: {}\nruntimeConfig:\n  'aws:runShellScript':\n    properties:\n      - id: '0.aws:runShellScript'\n        runCommand:\n          - ifconfig\n"
+///   content         = <<DOC
+/// schemaVersion: '1.2'
+/// description: Check ip configuration of a Linux instance.
+/// parameters: {}
+/// runtimeConfig:
+///   'aws:runShellScript':
+///     properties:
+///       - id: '0.aws:runShellScript'
+///         runCommand:
+///           - ifconfig
+/// DOC
+///
 /// }
 /// ```
 /// ```java
@@ -526,7 +562,7 @@ import 'document_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -536,9 +572,10 @@ import 'document_state.dart';
 ///
 /// resource "aws_ssm_document" "test" {
 ///   lifecycle {
-///     ignore_changes = [attachmentsSources]
+///     ignore_changes        = [attachmentsSources]
+///     create_before_destroy = true
 ///   }
-///   attachments_sources {
+///   attachments_source {
 ///     key    = "SourceUrl"
 ///     values = ["s3://${objectBucket.bucket}/test.zip"]
 ///   }
@@ -572,7 +609,7 @@ import 'document_state.dart';
 ///         var test = new Document("test", DocumentArgs.builder()
 ///             .attachmentsSources(DocumentAttachmentsSourceArgs.builder()
 ///                 .key("SourceUrl")
-///                 .values(String.format("s3://%s/test.zip", objectBucket.bucket()))
+///                 .values(String.format("s3://%s/test.zip", objectBucket.get("bucket")))
 ///                 .build())
 ///             .name("test_document")
 ///             .documentType("Package")
@@ -660,7 +697,7 @@ class Document extends pulumi.CustomResource {
           'aws:ssm/document:Document',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachmentsSources = registerOutput<List<DocumentAttachmentsSource>?>('attachmentsSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DocumentAttachmentsSource>(guardedValue, (value) => DocumentAttachmentsSource.fromMap((value as Map).cast<String, dynamic>())); });

@@ -272,7 +272,7 @@ import 'stack_user_setting.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -281,7 +281,10 @@ import 'stack_user_setting.dart';
 /// }
 ///
 /// resource "aws_appstream_stack" "example" {
-///   application_settings = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   application_settings {
 ///     enabled        = true
 ///     settings_group = "SettingsGroup"
 ///   }
@@ -497,7 +500,7 @@ class Stack extends pulumi.CustomResource {
           'aws:appstream/stack:Stack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accessEndpoints = registerOutput<List<StackAccessEndpoint>>('accessEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StackAccessEndpoint>(guardedValue, (value) => StackAccessEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     applicationSettings = registerOutput<StackApplicationSettings>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackApplicationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

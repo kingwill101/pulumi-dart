@@ -172,7 +172,7 @@ import 'service_vpc_lattice_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -182,12 +182,15 @@ import 'service_vpc_lattice_configuration.dart';
 ///
 /// resource "aws_ecs_service" "mongo" {
 ///   depends_on = [foo]
-///   load_balancers {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   load_balancer {
 ///     target_group_arn = fooAwsLbTargetGroup.arn
 ///     container_name   = "mongo"
 ///     container_port   = 8080
 ///   }
-///   ordered_placement_strategies {
+///   ordered_placement_strategy {
 ///     type  = "binpack"
 ///     field = "cpu"
 ///   }
@@ -229,7 +232,7 @@ import 'service_vpc_lattice_configuration.dart';
 ///     public static void stack(Context ctx) {
 ///         var mongo = new Service("mongo", ServiceArgs.builder()
 ///             .loadBalancers(ServiceLoadBalancerArgs.builder()
-///                 .targetGroupArn(fooAwsLbTargetGroup.arn())
+///                 .targetGroupArn(fooAwsLbTargetGroup.get("arn"))
 ///                 .containerName("mongo")
 ///                 .containerPort(8080)
 ///                 .build())
@@ -242,10 +245,10 @@ import 'service_vpc_lattice_configuration.dart';
 ///                 .expression("attribute:ecs.availability-zone in [us-west-2a, us-west-2b]")
 ///                 .build())
 ///             .name("mongodb")
-///             .cluster(fooAwsEcsCluster.id())
-///             .taskDefinition(mongoAwsEcsTaskDefinition.arn())
+///             .cluster(fooAwsEcsCluster.get("id"))
+///             .taskDefinition(mongoAwsEcsTaskDefinition.get("arn"))
 ///             .desiredCount(3)
-///             .iamRole(fooAwsIamRole.arn())
+///             .iamRole(fooAwsIamRole.get("arn"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(foo)
 ///                 .build());
@@ -343,7 +346,7 @@ import 'service_vpc_lattice_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -353,7 +356,8 @@ import 'service_vpc_lattice_configuration.dart';
 ///
 /// resource "aws_ecs_service" "example" {
 ///   lifecycle {
-///     ignore_changes = [desiredCount]
+///     ignore_changes        = [desiredCount]
+///     create_before_destroy = true
 ///   }
 ///   desired_count = 2
 /// }
@@ -467,7 +471,7 @@ import 'service_vpc_lattice_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -476,6 +480,9 @@ import 'service_vpc_lattice_configuration.dart';
 /// }
 ///
 /// resource "aws_ecs_service" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "bar"
 ///   cluster             = foo.id
 ///   task_definition     = barAwsEcsTaskDefinition.arn
@@ -505,8 +512,8 @@ import 'service_vpc_lattice_configuration.dart';
 ///     public static void stack(Context ctx) {
 ///         var bar = new Service("bar", ServiceArgs.builder()
 ///             .name("bar")
-///             .cluster(foo.id())
-///             .taskDefinition(barAwsEcsTaskDefinition.arn())
+///             .cluster(foo.get("id"))
+///             .taskDefinition(barAwsEcsTaskDefinition.get("arn"))
 ///             .schedulingStrategy("DAEMON")
 ///             .build());
 ///
@@ -609,7 +616,7 @@ import 'service_vpc_lattice_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -618,7 +625,10 @@ import 'service_vpc_lattice_configuration.dart';
 /// }
 ///
 /// resource "aws_ecs_service" "example" {
-///   alarms = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   alarms {
 ///     enable      = true
 ///     rollback    = true
 ///     alarm_names = [exampleAwsCloudwatchMetricAlarm.alarmName]
@@ -653,10 +663,10 @@ import 'service_vpc_lattice_configuration.dart';
 ///             .alarms(ServiceAlarmsArgs.builder()
 ///                 .enable(true)
 ///                 .rollback(true)
-///                 .alarmNames(exampleAwsCloudwatchMetricAlarm.alarmName())
+///                 .alarmNames(exampleAwsCloudwatchMetricAlarm.get("alarmName"))
 ///                 .build())
 ///             .name("example")
-///             .cluster(exampleAwsEcsCluster.id())
+///             .cluster(exampleAwsEcsCluster.get("id"))
 ///             .build());
 ///
 ///     }
@@ -748,7 +758,7 @@ import 'service_vpc_lattice_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -757,7 +767,10 @@ import 'service_vpc_lattice_configuration.dart';
 /// }
 ///
 /// resource "aws_ecs_service" "example" {
-///   deployment_controller = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   deployment_controller {
 ///     type = "EXTERNAL"
 ///   }
 ///   name    = "example"
@@ -791,7 +804,7 @@ import 'service_vpc_lattice_configuration.dart';
 ///                 .type("EXTERNAL")
 ///                 .build())
 ///             .name("example")
-///             .cluster(exampleAwsEcsCluster.id())
+///             .cluster(exampleAwsEcsCluster.get("id"))
 ///             .build());
 ///
 ///     }
@@ -888,7 +901,7 @@ import 'service_vpc_lattice_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -897,7 +910,10 @@ import 'service_vpc_lattice_configuration.dart';
 /// }
 ///
 /// resource "aws_ecs_service" "example" {
-///   deployment_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   deployment_configuration {
 ///     strategy = "BLUE_GREEN"
 ///   }
 ///   name                  = "example"
@@ -933,7 +949,7 @@ import 'service_vpc_lattice_configuration.dart';
 ///                 .strategy("BLUE_GREEN")
 ///                 .build())
 ///             .name("example")
-///             .cluster(exampleAwsEcsCluster.id())
+///             .cluster(exampleAwsEcsCluster.get("id"))
 ///             .sigintRollback(true)
 ///             .waitForSteadyState(true)
 ///             .build());
@@ -1005,7 +1021,7 @@ import 'service_vpc_lattice_configuration.dart';
 ///         {
 ///             LinearConfiguration = new Aws.Ecs.Inputs.ServiceDeploymentConfigurationLinearConfigurationArgs
 ///             {
-///                 StepPercent = 25,
+///                 StepPercent = 25.0,
 ///                 StepBakeTimeInMinutes = "5",
 ///             },
 ///             Strategy = "LINEAR",
@@ -1047,7 +1063,7 @@ import 'service_vpc_lattice_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1056,8 +1072,11 @@ import 'service_vpc_lattice_configuration.dart';
 /// }
 ///
 /// resource "aws_ecs_service" "example" {
-///   deployment_configuration = {
-///     linear_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   deployment_configuration {
+///     linear_configuration {
 ///       step_percent              = 25
 ///       step_bake_time_in_minutes = 5
 ///     }
@@ -1101,7 +1120,7 @@ import 'service_vpc_lattice_configuration.dart';
 ///                 .bakeTimeInMinutes("10")
 ///                 .build())
 ///             .name("example")
-///             .cluster(exampleAwsEcsCluster.id())
+///             .cluster(exampleAwsEcsCluster.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1173,7 +1192,7 @@ import 'service_vpc_lattice_configuration.dart';
 ///         {
 ///             CanaryConfiguration = new Aws.Ecs.Inputs.ServiceDeploymentConfigurationCanaryConfigurationArgs
 ///             {
-///                 CanaryPercent = 10,
+///                 CanaryPercent = 10.0,
 ///                 CanaryBakeTimeInMinutes = "5",
 ///             },
 ///             Strategy = "CANARY",
@@ -1215,7 +1234,7 @@ import 'service_vpc_lattice_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1224,8 +1243,11 @@ import 'service_vpc_lattice_configuration.dart';
 /// }
 ///
 /// resource "aws_ecs_service" "example" {
-///   deployment_configuration = {
-///     canary_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   deployment_configuration {
+///     canary_configuration {
 ///       canary_percent              = 10
 ///       canary_bake_time_in_minutes = 5
 ///     }
@@ -1269,7 +1291,7 @@ import 'service_vpc_lattice_configuration.dart';
 ///                 .bakeTimeInMinutes("15")
 ///                 .build())
 ///             .name("example")
-///             .cluster(exampleAwsEcsCluster.id())
+///             .cluster(exampleAwsEcsCluster.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1360,7 +1382,7 @@ import 'service_vpc_lattice_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1369,6 +1391,9 @@ import 'service_vpc_lattice_configuration.dart';
 /// }
 ///
 /// resource "aws_ecs_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   force_new_deployment = true
 ///   triggers = {
 ///     "redeployment" = "plantimestamp()"
@@ -1611,7 +1636,7 @@ import 'service_vpc_lattice_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1619,31 +1644,34 @@ import 'service_vpc_lattice_configuration.dart';
 ///   }
 /// }
 ///
-/// data "aws_getregion" "current" {
+/// data "aws_region" "current" {
 /// }
 ///
 /// resource "aws_ecs_service" "example" {
-///   service_connect_configuration = {
-///     log_configuration = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service_connect_configuration {
+///     log_configuration {
 ///       log_driver = "awslogs"
 ///       options = {
-///         "awslogs-group"         = aws_cloudwatch_loggroup.example.name
-///         "awslogs-region"        = data.aws_getregion.current.region
+///         "awslogs-group"         = aws_cloudwatch_log_group.example.name
+///         "awslogs-region"        = data.aws_region.current.region
 ///         "awslogs-stream-prefix" = "service-connect"
 ///       }
 ///     }
-///     access_log_configuration = {
+///     access_log_configuration {
 ///       format                   = "TEXT"
 ///       include_query_parameters = "ENABLED"
 ///     }
-///     services = [{
-///       "clientAlias" = {
-///         "dnsName" = "example"
-///         "port"    = 8080
+///     service {
+///       client_alias {
+///         dns_name = "example"
+///         port     = 8080
 ///       }
-///       "portName"      = "http"
-///       "discoveryName" = "example"
-///     }]
+///       port_name      = "http"
+///       discovery_name = "example"
+///     }
 ///     enabled   = true
 ///     namespace = exampleAwsServiceDiscoveryHttpNamespace.arn
 ///   }
@@ -1652,7 +1680,10 @@ import 'service_vpc_lattice_configuration.dart';
 ///   task_definition = exampleAwsEcsTaskDefinition.arn
 ///   desired_count   = 1
 /// }
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "/ecs/example/service-connect"
 /// }
 /// ```
@@ -1715,11 +1746,11 @@ import 'service_vpc_lattice_configuration.dart';
 ///                     .discoveryName("example")
 ///                     .build())
 ///                 .enabled(true)
-///                 .namespace(exampleAwsServiceDiscoveryHttpNamespace.arn())
+///                 .namespace(exampleAwsServiceDiscoveryHttpNamespace.get("arn"))
 ///                 .build())
 ///             .name("example")
-///             .cluster(exampleAwsEcsCluster.id())
-///             .taskDefinition(exampleAwsEcsTaskDefinition.arn())
+///             .cluster(exampleAwsEcsCluster.get("id"))
+///             .taskDefinition(exampleAwsEcsTaskDefinition.get("arn"))
 ///             .desiredCount(1)
 ///             .build());
 ///
@@ -1877,7 +1908,7 @@ class Service extends pulumi.CustomResource {
           'aws:ecs/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     alarms = registerOutput<ServiceAlarms?>('alarms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAlarms.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

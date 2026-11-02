@@ -105,7 +105,7 @@ import 'email_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -113,9 +113,12 @@ import 'email_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_pinpoint_emailtemplate" "test" {
-///   email_templates {
-///     headers {
+/// resource "aws_pinpoint_email_template" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   email_template {
+///     header {
 ///       name  = "testingname"
 ///       value = "testingvalue"
 ///     }
@@ -211,7 +214,7 @@ class EmailTemplate extends pulumi.CustomResource {
           'aws:pinpoint/emailTemplate:EmailTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     emailTemplates = registerOutput<List<EmailTemplateEmailTemplate>?>('emailTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailTemplateEmailTemplate>(guardedValue, (value) => EmailTemplateEmailTemplate.fromMap((value as Map).cast<String, dynamic>())); });

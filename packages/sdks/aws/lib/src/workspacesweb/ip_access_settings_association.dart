@@ -111,7 +111,7 @@ import 'ip_access_settings_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -120,16 +120,25 @@ import 'ip_access_settings_association_state.dart';
 /// }
 ///
 /// resource "aws_workspacesweb_portal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "aws_workspacesweb_ipaccesssettings" "example" {
-///   ip_rules {
+/// resource "aws_workspacesweb_ip_access_settings" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ip_rule {
 ///     ip_range = "10.0.0.0/16"
 ///   }
 ///   display_name = "example"
 /// }
-/// resource "aws_workspacesweb_ipaccesssettingsassociation" "example" {
-///   ip_access_settings_arn = aws_workspacesweb_ipaccesssettings.example.ip_access_settings_arn
+/// resource "aws_workspacesweb_ip_access_settings_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ip_access_settings_arn = aws_workspacesweb_ip_access_settings.example.ip_access_settings_arn
 ///   portal_arn             = aws_workspacesweb_portal.example.portal_arn
 /// }
 /// ```
@@ -220,7 +229,7 @@ class IpAccessSettingsAssociation extends pulumi.CustomResource {
           'aws:workspacesweb/ipAccessSettingsAssociation:IpAccessSettingsAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     ipAccessSettingsArn = registerOutput<String>('ipAccessSettingsArn');
     portalArn = registerOutput<String>('portalArn');

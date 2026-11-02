@@ -93,7 +93,7 @@ import 'key_registration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -101,11 +101,14 @@ import 'key_registration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_quicksight_keyregistration" "example" {
-///   key_registrations {
+/// resource "aws_quicksight_key_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_registration {
 ///     key_arn = example1.arn
 ///   }
-///   key_registrations {
+///   key_registration {
 ///     key_arn     = example2.arn
 ///     default_key = true
 ///   }
@@ -136,10 +139,10 @@ import 'key_registration_state.dart';
 ///         var example = new KeyRegistration("example", KeyRegistrationArgs.builder()
 ///             .keyRegistrations(
 ///                 KeyRegistrationKeyRegistrationArgs.builder()
-///                     .keyArn(example1.arn())
+///                     .keyArn(example1.get("arn"))
 ///                     .build(),
 ///                 KeyRegistrationKeyRegistrationArgs.builder()
-///                     .keyArn(example2.arn())
+///                     .keyArn(example2.get("arn"))
 ///                     .defaultKey(true)
 ///                     .build())
 ///             .build());
@@ -186,7 +189,7 @@ class KeyRegistration extends pulumi.CustomResource {
           'aws:quicksight/keyRegistration:KeyRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     keyRegistrations = registerOutput<List<KeyRegistrationKeyRegistration>>('keyRegistrations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyRegistrationKeyRegistration>(guardedValue, (value) => KeyRegistrationKeyRegistration.fromMap((value as Map).cast<String, dynamic>())); });

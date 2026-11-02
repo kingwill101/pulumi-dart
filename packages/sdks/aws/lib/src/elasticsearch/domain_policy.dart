@@ -142,7 +142,7 @@ import 'domain_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -151,12 +151,19 @@ import 'domain_policy_state.dart';
 /// }
 ///
 /// resource "aws_elasticsearch_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name           = "tf-test"
 ///   elasticsearch_version = "2.3"
 /// }
-/// resource "aws_elasticsearch_domainpolicy" "main" {
+/// resource "aws_elasticsearch_domain_policy" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name     = aws_elasticsearch_domain.example.domain_name
-///   access_policies ="{
+///   access_policies = <<POLICIES
+/// {
 ///     \"Version\": \"2012-10-17\",
 ///     \"Statement\": [
 ///         {
@@ -170,7 +177,8 @@ import 'domain_policy_state.dart';
 ///         }
 ///     ]
 /// }
-/// "
+/// POLICIES
+///
 /// }
 /// ```
 /// ```java
@@ -271,7 +279,7 @@ class DomainPolicy extends pulumi.CustomResource {
           'aws:elasticsearch/domainPolicy:DomainPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accessPolicies = registerOutput<String>('accessPolicies');
     domainName = registerOutput<String>('domainName');

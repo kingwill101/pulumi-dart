@@ -255,7 +255,7 @@ import 'flow_log_tag_field_specification.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
 /// 			Name:   pulumi.String("example"),
-/// 			Role:   exampleRole.ID().ToIDOutput().ToStringOutput(),
+/// 			Role:   exampleRole.ID(),
 /// 			Policy: pulumi.String(example.Json),
 /// 		})
 /// 		if err != nil {
@@ -266,7 +266,7 @@ import 'flow_log_tag_field_specification.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -274,8 +274,8 @@ import 'flow_log_tag_field_specification.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["vpc-flow-logs.amazonaws.com"]
@@ -284,31 +284,43 @@ import 'flow_log_tag_field_specification.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["logs:CreateLogGroup", "logs:CreateLogStream", "logs:PutLogEvents", "logs:DescribeLogGroups", "logs:DescribeLogStreams"]
 ///     resources = ["*"]
 ///   }
 /// }
 ///
-/// resource "aws_ec2_flowlog" "example" {
+/// resource "aws_ec2_flow_log" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iam_role_arn    = aws_iam_role.example.arn
-///   log_destination = aws_cloudwatch_loggroup.example.arn
+///   log_destination = aws_cloudwatch_log_group.example.arn
 ///   traffic_type    = "ALL"
 ///   vpc_id          = exampleAwsVpc.id
 /// }
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "example" {
+/// resource "aws_iam_role_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example"
 ///   role   = aws_iam_role.example.id
-///   policy = data.aws_iam_getpolicydocument.example.json
+///   policy = data.aws_iam_policy_document.example.json
 /// }
 /// ```
 /// ```java
@@ -366,7 +378,7 @@ import 'flow_log_tag_field_specification.dart';
 ///             .iamRoleArn(exampleRole.arn())
 ///             .logDestination(exampleLogGroup.arn())
 ///             .trafficType("ALL")
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .build());
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
@@ -452,8 +464,318 @@ import 'flow_log_tag_field_specification.dart';
 /// ### Amazon Data Firehose logging
 ///
 ///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const exampleBucket = new aws.s3.Bucket("example", {bucket: "example"});
+/// const assumeRole = aws.iam.getPolicyDocument({
+///     statements: [{
+///         principals: [{
+///             type: "Service",
+///             identifiers: ["firehose.amazonaws.com"],
+///         }],
+///         effect: "Allow",
+///         actions: ["sts:AssumeRole"],
+///     }],
+/// });
+/// const exampleRole = new aws.iam.Role("example", {
+///     name: "firehose_test_role",
+///     assumeRolePolicy: assumeRole.then(assumeRole => assumeRole.json),
+/// });
+/// const exampleFirehoseDeliveryStream = new aws.kinesis.FirehoseDeliveryStream("example", {
+///     extendedS3Configuration: {
+///         roleArn: exampleRole.arn,
+///         bucketArn: exampleBucket.arn,
+///     },
+///     name: "kinesis_firehose_test",
+///     destination: "extended_s3",
+///     tags: {
+///         LogDeliveryEnabled: "true",
+///     },
+/// });
+/// const exampleFlowLog = new aws.ec2.FlowLog("example", {
+///     logDestination: exampleFirehoseDeliveryStream.arn,
+///     logDestinationType: "kinesis-data-firehose",
+///     trafficType: "ALL",
+///     vpcId: exampleAwsVpc.id,
+/// });
+/// const exampleBucketAcl = new aws.s3.BucketAcl("example", {
+///     bucket: exampleBucket.id,
+///     acl: "private",
+/// });
+/// const example = aws.iam.getPolicyDocument({
+///     effect: "Allow",
+///     actions: [
+///         "logs:CreateLogDelivery",
+///         "logs:DeleteLogDelivery",
+///         "logs:ListLogDeliveries",
+///         "logs:GetLogDelivery",
+///         "firehose:TagDeliveryStream",
+///     ],
+///     resources: ["*"],
+/// });
+/// const exampleRolePolicy = new aws.iam.RolePolicy("example", {
+///     name: "test",
+///     role: exampleRole.id,
+///     policy: example.then(example => example.json),
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example_bucket = aws.s3.Bucket("example", bucket="example")
+/// assume_role = aws.iam.get_policy_document(statements=[{
+///     "principals": [{
+///         "type": "Service",
+///         "identifiers": ["firehose.amazonaws.com"],
+///     }],
+///     "effect": "Allow",
+///     "actions": ["sts:AssumeRole"],
+/// }])
+/// example_role = aws.iam.Role("example",
+///     name="firehose_test_role",
+///     assume_role_policy=assume_role.json)
+/// example_firehose_delivery_stream = aws.kinesis.FirehoseDeliveryStream("example",
+///     extended_s3_configuration={
+///         "role_arn": example_role.arn,
+///         "bucket_arn": example_bucket.arn,
+///     },
+///     name="kinesis_firehose_test",
+///     destination="extended_s3",
+///     tags={
+///         "LogDeliveryEnabled": "true",
+///     })
+/// example_flow_log = aws.ec2.FlowLog("example",
+///     log_destination=example_firehose_delivery_stream.arn,
+///     log_destination_type="kinesis-data-firehose",
+///     traffic_type="ALL",
+///     vpc_id=example_aws_vpc["id"])
+/// example_bucket_acl = aws.s3.BucketAcl("example",
+///     bucket=example_bucket.id,
+///     acl="private")
+/// example = aws.iam.get_policy_document(effect="Allow",
+///     actions=[
+///         "logs:CreateLogDelivery",
+///         "logs:DeleteLogDelivery",
+///         "logs:ListLogDeliveries",
+///         "logs:GetLogDelivery",
+///         "firehose:TagDeliveryStream",
+///     ],
+///     resources=["*"])
+/// example_role_policy = aws.iam.RolePolicy("example",
+///     name="test",
+///     role=example_role.id,
+///     policy=example.json)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleBucket = new Aws.S3.Bucket("example", new()
+///     {
+///         BucketName = "example",
+///     });
+///
+///     var assumeRole = Aws.Iam.GetPolicyDocument.Invoke(new()
+///     {
+///         Statements = new[]
+///         {
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
+///             {
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "Service",
+///                         Identifiers = new[]
+///                         {
+///                             "firehose.amazonaws.com",
+///                         },
+///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
+///                 },
+///             },
+///         },
+///     });
+///
+///     var exampleRole = new Aws.Iam.Role("example", new()
+///     {
+///         Name = "firehose_test_role",
+///         AssumeRolePolicy = assumeRole.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
+///     });
+///
+///     var exampleFirehoseDeliveryStream = new Aws.Kinesis.FirehoseDeliveryStream("example", new()
+///     {
+///         ExtendedS3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationArgs
+///         {
+///             RoleArn = exampleRole.Arn,
+///             BucketArn = exampleBucket.Arn,
+///         },
+///         Name = "kinesis_firehose_test",
+///         Destination = "extended_s3",
+///         Tags =
+///         {
+///             { "LogDeliveryEnabled", "true" },
+///         },
+///     });
+///
+///     var exampleFlowLog = new Aws.Ec2.FlowLog("example", new()
+///     {
+///         LogDestination = exampleFirehoseDeliveryStream.Arn,
+///         LogDestinationType = "kinesis-data-firehose",
+///         TrafficType = "ALL",
+///         VpcId = exampleAwsVpc.Id,
+///     });
+///
+///     var exampleBucketAcl = new Aws.S3.BucketAcl("example", new()
+///     {
+///         Bucket = exampleBucket.Id,
+///         Acl = "private",
+///     });
+///
+///     var example = Aws.Iam.GetPolicyDocument.Invoke(new()
+///     {
+///         Effect = "Allow",
+///         Actions = new[]
+///         {
+///             "logs:CreateLogDelivery",
+///             "logs:DeleteLogDelivery",
+///             "logs:ListLogDeliveries",
+///             "logs:GetLogDelivery",
+///             "firehose:TagDeliveryStream",
+///         },
+///         Resources = new[]
+///         {
+///             "*",
+///         },
+///     });
+///
+///     var exampleRolePolicy = new Aws.Iam.RolePolicy("example", new()
+///     {
+///         Name = "test",
+///         Role = exampleRole.Id,
+///         Policy = example.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/kinesis"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		exampleBucket, err := s3.NewBucket(ctx, "example", &s3.BucketArgs{
+/// 			Bucket: pulumi.String("example"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Statements: []iam.GetPolicyDocumentStatement{
+/// 				{
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "Service",
+/// 							Identifiers: []string{
+/// 								"firehose.amazonaws.com",
+/// 							},
+/// 						},
+/// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleRole, err := iam.NewRole(ctx, "example", &iam.RoleArgs{
+/// 			Name:             pulumi.String("firehose_test_role"),
+/// 			AssumeRolePolicy: pulumi.String(assumeRole.Json),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleFirehoseDeliveryStream, err := kinesis.NewFirehoseDeliveryStream(ctx, "example", &kinesis.FirehoseDeliveryStreamArgs{
+/// 			ExtendedS3Configuration: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationArgs{
+/// 				RoleArn:   exampleRole.Arn,
+/// 				BucketArn: exampleBucket.Arn,
+/// 			},
+/// 			Name:        pulumi.String("kinesis_firehose_test"),
+/// 			Destination: pulumi.String("extended_s3"),
+/// 			Tags: pulumi.StringMap{
+/// 				"LogDeliveryEnabled": pulumi.String("true"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = ec2.NewFlowLog(ctx, "example", &ec2.FlowLogArgs{
+/// 			LogDestination:     exampleFirehoseDeliveryStream.Arn,
+/// 			LogDestinationType: pulumi.String("kinesis-data-firehose"),
+/// 			TrafficType:        pulumi.String("ALL"),
+/// 			VpcId:              pulumi.Any(exampleAwsVpc.Id),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = s3.NewBucketAcl(ctx, "example", &s3.BucketAclArgs{
+/// 			Bucket: exampleBucket.ID(),
+/// 			Acl:    pulumi.String("private"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		example, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+/// 			Effect: "Allow",
+/// 			Actions: []string{
+/// 				"logs:CreateLogDelivery",
+/// 				"logs:DeleteLogDelivery",
+/// 				"logs:ListLogDeliveries",
+/// 				"logs:GetLogDelivery",
+/// 				"firehose:TagDeliveryStream",
+/// 			},
+/// 			Resources: []string{
+/// 				"*",
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iam.NewRolePolicy(ctx, "example", &iam.RolePolicyArgs{
+/// 			Name:   pulumi.String("test"),
+/// 			Role:   exampleRole.ID(),
+/// 			Policy: pulumi.String(example.Json),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -461,8 +783,8 @@ import 'flow_log_tag_field_specification.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["firehose.amazonaws.com"]
@@ -471,20 +793,26 @@ import 'flow_log_tag_field_specification.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "example" {
+/// data "aws_iam_policy_document" "example" {
 ///   effect    = "Allow"
 ///   actions   = ["logs:CreateLogDelivery", "logs:DeleteLogDelivery", "logs:ListLogDeliveries", "logs:GetLogDelivery", "firehose:TagDeliveryStream"]
 ///   resources = ["*"]
 /// }
 ///
-/// resource "aws_ec2_flowlog" "example" {
-///   log_destination      = aws_kinesis_firehosedeliverystream.example.arn
+/// resource "aws_ec2_flow_log" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   log_destination      = aws_kinesis_firehose_delivery_stream.example.arn
 ///   log_destination_type = "kinesis-data-firehose"
 ///   traffic_type         = "ALL"
 ///   vpc_id               = exampleAwsVpc.id
 /// }
-/// resource "aws_kinesis_firehosedeliverystream" "example" {
-///   extended_s3_configuration = {
+/// resource "aws_kinesis_firehose_delivery_stream" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   extended_s3_configuration {
 ///     role_arn   = aws_iam_role.example.arn
 ///     bucket_arn = aws_s3_bucket.example.arn
 ///   }
@@ -495,20 +823,130 @@ import 'flow_log_tag_field_specification.dart';
 ///   }
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
-/// resource "aws_s3_bucketacl" "example" {
+/// resource "aws_s3_bucket_acl" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
 ///   acl    = "private"
 /// }
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "firehose_test_role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicy" "example" {
+/// resource "aws_iam_role_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "test"
 ///   role   = aws_iam_role.example.id
-///   policy = data.aws_iam_getpolicydocument.example.json
+///   policy = data.aws_iam_policy_document.example.json
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.s3.Bucket;
+/// import com.pulumi.aws.s3.BucketArgs;
+/// import com.pulumi.aws.iam.IamFunctions;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
+/// import com.pulumi.aws.iam.Role;
+/// import com.pulumi.aws.iam.RoleArgs;
+/// import com.pulumi.aws.kinesis.FirehoseDeliveryStream;
+/// import com.pulumi.aws.kinesis.FirehoseDeliveryStreamArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationArgs;
+/// import com.pulumi.aws.ec2.FlowLog;
+/// import com.pulumi.aws.ec2.FlowLogArgs;
+/// import com.pulumi.aws.s3.BucketAcl;
+/// import com.pulumi.aws.s3.BucketAclArgs;
+/// import com.pulumi.aws.iam.RolePolicy;
+/// import com.pulumi.aws.iam.RolePolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var exampleBucket = new Bucket("exampleBucket", BucketArgs.builder()
+///             .bucket("example")
+///             .build());
+///
+///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+///             .statements(GetPolicyDocumentStatementArgs.builder()
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .type("Service")
+///                     .identifiers("firehose.amazonaws.com")
+///                     .build())
+///                 .effect("Allow")
+///                 .actions("sts:AssumeRole")
+///                 .build())
+///             .build());
+///
+///         var exampleRole = new Role("exampleRole", RoleArgs.builder()
+///             .name("firehose_test_role")
+///             .assumeRolePolicy(assumeRole.json())
+///             .build());
+///
+///         var exampleFirehoseDeliveryStream = new FirehoseDeliveryStream("exampleFirehoseDeliveryStream", FirehoseDeliveryStreamArgs.builder()
+///             .extendedS3Configuration(FirehoseDeliveryStreamExtendedS3ConfigurationArgs.builder()
+///                 .roleArn(exampleRole.arn())
+///                 .bucketArn(exampleBucket.arn())
+///                 .build())
+///             .name("kinesis_firehose_test")
+///             .destination("extended_s3")
+///             .tags(Map.of("LogDeliveryEnabled", "true"))
+///             .build());
+///
+///         var exampleFlowLog = new FlowLog("exampleFlowLog", FlowLogArgs.builder()
+///             .logDestination(exampleFirehoseDeliveryStream.arn())
+///             .logDestinationType("kinesis-data-firehose")
+///             .trafficType("ALL")
+///             .vpcId(exampleAwsVpc.get("id"))
+///             .build());
+///
+///         var exampleBucketAcl = new BucketAcl("exampleBucketAcl", BucketAclArgs.builder()
+///             .bucket(exampleBucket.id())
+///             .acl("private")
+///             .build());
+///
+///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+///             .effect("Allow")
+///             .actions(Arrays.asList(
+///                 "logs:CreateLogDelivery",
+///                 "logs:DeleteLogDelivery",
+///                 "logs:ListLogDeliveries",
+///                 "logs:GetLogDelivery",
+///                 "firehose:TagDeliveryStream"))
+///             .resources(Arrays.asList("*"))
+///             .build());
+///
+///         var exampleRolePolicy = new RolePolicy("exampleRolePolicy", RolePolicyArgs.builder()
+///             .name("test")
+///             .role(exampleRole.id())
+///             .policy(example.json())
+///             .build());
+///
+///     }
 /// }
 /// ```
 /// ```yaml
@@ -665,7 +1103,7 @@ import 'flow_log_tag_field_specification.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -673,13 +1111,19 @@ import 'flow_log_tag_field_specification.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_flowlog" "example" {
+/// resource "aws_ec2_flow_log" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   log_destination      = aws_s3_bucket.example.arn
 ///   log_destination_type = "s3"
 ///   traffic_type         = "ALL"
 ///   vpc_id               = exampleAwsVpc.id
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
 /// ```
@@ -714,7 +1158,7 @@ import 'flow_log_tag_field_specification.dart';
 ///             .logDestination(exampleBucket.arn())
 ///             .logDestinationType("s3")
 ///             .trafficType("ALL")
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .build());
 ///
 ///     }
@@ -834,7 +1278,7 @@ import 'flow_log_tag_field_specification.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -842,7 +1286,10 @@ import 'flow_log_tag_field_specification.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_flowlog" "example" {
+/// resource "aws_ec2_flow_log" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination_options = {
 ///     file_format        = "parquet"
 ///     per_hour_partition = true
@@ -853,6 +1300,9 @@ import 'flow_log_tag_field_specification.dart';
 ///   vpc_id               = exampleAwsVpc.id
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "example"
 /// }
 /// ```
@@ -892,7 +1342,7 @@ import 'flow_log_tag_field_specification.dart';
 ///             .logDestination(exampleBucket.arn())
 ///             .logDestinationType("s3")
 ///             .trafficType("ALL")
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1455,7 +1905,7 @@ import 'flow_log_tag_field_specification.dart';
 /// 			LogDestinationType:      pulumi.String("kinesis-data-firehose"),
 /// 			LogDestination:          dstFirehoseDeliveryStream.Arn,
 /// 			TrafficType:             pulumi.String("ALL"),
-/// 			VpcId:                   src.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:                   src.ID(),
 /// 			IamRoleArn:              srcRole.Arn,
 /// 			DeliverCrossAccountRole: dst.Arn,
 /// 		})
@@ -1492,7 +1942,7 @@ import 'flow_log_tag_field_specification.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1500,8 +1950,8 @@ import 'flow_log_tag_field_specification.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "srcAssumeRolePolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "srcAssumeRolePolicy" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["delivery.logs.amazonaws.com"]
@@ -1510,14 +1960,14 @@ import 'flow_log_tag_field_specification.dart';
 ///     effect  = "Allow"
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "srcRolePolicy" {
-///   statements {
-///     conditions {
+/// data "aws_iam_policy_document" "srcRolePolicy" {
+///   statement {
+///     condition {
 ///       test     = "StringEquals"
 ///       variable = "iam:PassedToService"
 ///       values   = ["delivery.logs.amazonaws.com"]
 ///     }
-///     conditions {
+///     condition {
 ///       test     = "StringLike"
 ///       variable = "iam:AssociatedResourceARN"
 ///       values   = [aws_ec2_vpc.src.arn]
@@ -1526,19 +1976,19 @@ import 'flow_log_tag_field_specification.dart';
 ///     actions   = ["iam:PassRole"]
 ///     resources = [aws_iam_role.src.arn]
 ///   }
-///   statements {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["logs:CreateLogDelivery", "logs:DeleteLogDelivery", "logs:ListLogDeliveries", "logs:GetLogDelivery"]
 ///     resources = ["*"]
 ///   }
-///   statements {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["sts:AssumeRole"]
 ///     resources = [aws_iam_role.dst.arn]
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "dstAssumeRolePolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "dstAssumeRolePolicy" {
+///   statement {
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = [aws_iam_role.src.arn]
@@ -1547,8 +1997,8 @@ import 'flow_log_tag_field_specification.dart';
 ///     effect  = "Allow"
 ///   }
 /// }
-/// data "aws_iam_getpolicydocument" "dstRolePolicy" {
-///   statements {
+/// data "aws_iam_policy_document" "dstRolePolicy" {
+///   statement {
 ///     effect    = "Allow"
 ///     actions   = ["iam:CreateServiceLinkedRole", "firehose:TagDeliveryStream"]
 ///     resources = ["*"]
@@ -1557,34 +2007,55 @@ import 'flow_log_tag_field_specification.dart';
 ///
 /// # For source account
 /// resource "aws_ec2_vpc" "src" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_iam_role" "src" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "tf-example-mySourceRole"
-///   assume_role_policy = data.aws_iam_getpolicydocument.srcAssumeRolePolicy.json
+///   assume_role_policy = data.aws_iam_policy_document.srcAssumeRolePolicy.json
 /// }
-/// resource "aws_iam_rolepolicy" "src_policy" {
+/// resource "aws_iam_role_policy" "src_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "tf-example-mySourceRolePolicy"
 ///   role   = aws_iam_role.src.name
-///   policy = data.aws_iam_getpolicydocument.srcRolePolicy.json
+///   policy = data.aws_iam_policy_document.srcRolePolicy.json
 /// }
-/// resource "aws_ec2_flowlog" "src" {
+/// resource "aws_ec2_flow_log" "src" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   log_destination_type       = "kinesis-data-firehose"
-///   log_destination            = aws_kinesis_firehosedeliverystream.dst.arn
+///   log_destination            = aws_kinesis_firehose_delivery_stream.dst.arn
 ///   traffic_type               = "ALL"
 ///   vpc_id                     = aws_ec2_vpc.src.id
 ///   iam_role_arn               = aws_iam_role.src.arn
 ///   deliver_cross_account_role = aws_iam_role.dst.arn
 /// }
 /// resource "aws_iam_role" "dst" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "AWSLogDeliveryFirehoseCrossAccountRole"
-///   assume_role_policy = data.aws_iam_getpolicydocument.dstAssumeRolePolicy.json
+///   assume_role_policy = data.aws_iam_policy_document.dstAssumeRolePolicy.json
 /// }
-/// resource "aws_iam_rolepolicy" "dst" {
+/// resource "aws_iam_role_policy" "dst" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "AWSLogDeliveryFirehoseCrossAccountRolePolicy"
 ///   role   = aws_iam_role.dst.name
-///   policy = data.aws_iam_getpolicydocument.dstRolePolicy.json
+///   policy = data.aws_iam_policy_document.dstRolePolicy.json
 /// }
-/// resource "aws_kinesis_firehosedeliverystream" "dst" {
+/// resource "aws_kinesis_firehose_delivery_stream" "dst" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tags = {
 ///     "LogDeliveryEnabled" = "true"
 ///   }
@@ -1923,7 +2394,7 @@ class FlowLog extends pulumi.CustomResource {
           'aws:ec2/flowLog:FlowLog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deliverCrossAccountRole = registerOutput<String?>('deliverCrossAccountRole');

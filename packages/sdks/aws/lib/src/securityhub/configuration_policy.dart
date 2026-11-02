@@ -178,7 +178,7 @@ import 'configuration_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -186,21 +186,30 @@ import 'configuration_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securityhub_findingaggregator" "example" {
+/// resource "aws_securityhub_finding_aggregator" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   linking_mode = "ALL_REGIONS"
 /// }
-/// resource "aws_securityhub_organizationconfiguration" "example" {
-///   depends_on = [aws_securityhub_findingaggregator.example]
-///   organization_configuration = {
+/// resource "aws_securityhub_organization_configuration" "example" {
+///   depends_on = [aws_securityhub_finding_aggregator.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   organization_configuration {
 ///     configuration_type = "CENTRAL"
 ///   }
 ///   auto_enable           = false
 ///   auto_enable_standards = "NONE"
 /// }
-/// resource "aws_securityhub_configurationpolicy" "example" {
-///   depends_on = [aws_securityhub_organizationconfiguration.example]
-///   configuration_policy = {
-///     security_controls_configuration = {
+/// resource "aws_securityhub_configuration_policy" "example" {
+///   depends_on = [aws_securityhub_organization_configuration.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration_policy {
+///     security_controls_configuration {
 ///       disabled_control_identifiers = []
 ///     }
 ///     service_enabled       = true
@@ -390,7 +399,7 @@ import 'configuration_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -398,9 +407,12 @@ import 'configuration_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securityhub_configurationpolicy" "disabled" {
+/// resource "aws_securityhub_configuration_policy" "disabled" {
 ///   depends_on = [example]
-///   configuration_policy = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration_policy {
 ///     service_enabled = false
 ///   }
 ///   name        = "Disabled"
@@ -722,7 +734,7 @@ import 'configuration_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -730,35 +742,40 @@ import 'configuration_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_securityhub_configurationpolicy" "disabled" {
+/// resource "aws_securityhub_configuration_policy" "disabled" {
 ///   depends_on = [example]
-///   configuration_policy = {
-///     security_controls_configuration = {
-///       security_control_custom_parameters = [{
-///         "parameters" = [{
-///           "enum" = {
-///             "value" = "INFO"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration_policy {
+///     security_controls_configuration {
+///       security_control_custom_parameter {
+///         parameter {
+///           enum {
+///             value = "INFO"
 ///           }
-///           "name"      = "loggingLevel"
-///           "valueType" = "CUSTOM"
-///         }]
-///         "securityControlId" = "APIGateway.1"
-///         }, {
-///         "parameters" = [{
-///           "bool" = {
-///             "value" = false
+///           name       = "loggingLevel"
+///           value_type = "CUSTOM"
+///         }
+///         security_control_id = "APIGateway.1"
+///       }
+///       security_control_custom_parameter {
+///         parameter {
+///           bool {
+///             value = false
 ///           }
-///           "name"      = "RequireLowercaseCharacters"
-///           "valueType" = "CUSTOM"
-///           }, {
-///           "int" = {
-///             "value" = 60
+///           name       = "RequireLowercaseCharacters"
+///           value_type = "CUSTOM"
+///         }
+///         parameter {
+///           int {
+///             value = 60
 ///           }
-///           "name"      = "MaxPasswordAge"
-///           "valueType" = "CUSTOM"
-///         }]
-///         "securityControlId" = "IAM.7"
-///       }]
+///           name       = "MaxPasswordAge"
+///           value_type = "CUSTOM"
+///         }
+///         security_control_id = "IAM.7"
+///       }
 ///       enabled_control_identifiers = ["APIGateway.1", "IAM.7"]
 ///     }
 ///     service_enabled       = true
@@ -928,7 +945,7 @@ class ConfigurationPolicy extends pulumi.CustomResource {
           'aws:securityhub/configurationPolicy:ConfigurationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configurationPolicy = registerOutput<ConfigurationPolicyConfigurationPolicy>('configurationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationPolicyConfigurationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });

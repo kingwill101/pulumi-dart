@@ -178,7 +178,7 @@ import 'bot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -187,20 +187,23 @@ import 'bot_state.dart';
 /// }
 ///
 /// resource "aws_lex_bot" "order_flowers_bot" {
-///   abort_statement = {
-///     messages = [{
-///       "content"     = "Sorry, I am not able to assist at this time"
-///       "contentType" = "PlainText"
-///     }]
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   clarification_prompt = {
-///     messages = [{
-///       "content"     = "I didn't understand you, what would you like to do?"
-///       "contentType" = "PlainText"
-///     }]
+///   abort_statement {
+///     message {
+///       content      = "Sorry, I am not able to assist at this time"
+///       content_type = "PlainText"
+///     }
+///   }
+///   clarification_prompt {
+///     message {
+///       content      = "I didn't understand you, what would you like to do?"
+///       content_type = "PlainText"
+///     }
 ///     max_attempts = 2
 ///   }
-///   intents {
+///   intent {
 ///     intent_name    = "OrderFlowers"
 ///     intent_version = "1"
 ///   }
@@ -368,7 +371,7 @@ class Bot extends pulumi.CustomResource {
           'aws:lex/bot:Bot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     abortStatement = registerOutput<BotAbortStatement>('abortStatement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BotAbortStatement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

@@ -111,12 +111,12 @@ import 'environment_blueprint_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		defaultDataLake := datazone.GetEnvironmentBlueprintOutput(ctx, datazone.GetEnvironmentBlueprintOutputArgs{
-/// 			DomainId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			DomainId: example.ID(),
 /// 			Name:     pulumi.String("DefaultDataLake"),
 /// 			Managed:  pulumi.Bool(true),
 /// 		}, nil)
 /// 		_, err = datazone.NewEnvironmentBlueprintConfiguration(ctx, "example", &datazone.EnvironmentBlueprintConfigurationArgs{
-/// 			DomainId:               example.ID().ToIDOutput().ToStringOutput(),
+/// 			DomainId:               example.ID(),
 /// 			EnvironmentBlueprintId: defaultDataLake.Id(),
 /// 			EnabledRegions: pulumi.StringArray{
 /// 				pulumi.String("us-east-1"),
@@ -135,7 +135,7 @@ import 'environment_blueprint_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -143,19 +143,25 @@ import 'environment_blueprint_configuration_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_datazone_getenvironmentblueprint" "defaultDataLake" {
+/// data "aws_datazone_environment_blueprint" "defaultDataLake" {
 ///   domain_id = aws_datazone_domain.example.id
 ///   name      = "DefaultDataLake"
 ///   managed   = true
 /// }
 ///
 /// resource "aws_datazone_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example_domain"
 ///   domain_execution_role = domainExecutionRole.arn
 /// }
-/// resource "aws_datazone_environmentblueprintconfiguration" "example" {
+/// resource "aws_datazone_environment_blueprint_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_id                = aws_datazone_domain.example.id
-///   environment_blueprint_id = data.aws_datazone_getenvironmentblueprint.defaultDataLake.id
+///   environment_blueprint_id = data.aws_datazone_environment_blueprint.defaultDataLake.id
 ///   enabled_regions          = ["us-east-1"]
 ///   regional_parameters = {
 ///     "us-east-1" = {
@@ -191,7 +197,7 @@ import 'environment_blueprint_configuration_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Domain("example", DomainArgs.builder()
 ///             .name("example_domain")
-///             .domainExecutionRole(domainExecutionRole.arn())
+///             .domainExecutionRole(domainExecutionRole.get("arn"))
 ///             .build());
 ///
 ///         final var defaultDataLake = DatazoneFunctions.getEnvironmentBlueprint(GetEnvironmentBlueprintArgs.builder()
@@ -291,7 +297,7 @@ class EnvironmentBlueprintConfiguration extends pulumi.CustomResource {
           'aws:datazone/environmentBlueprintConfiguration:EnvironmentBlueprintConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     domainId = registerOutput<String>('domainId');
     enabledRegions = registerOutput<List<String>>('enabledRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

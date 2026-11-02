@@ -71,7 +71,7 @@ import 'get_user_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -79,7 +79,7 @@ import 'get_user_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_elasticache_getcluster" "myCluster" {
+/// data "aws_elasticache_cluster" "myCluster" {
 ///   cluster_id = "my-cluster-id"
 /// }
 /// ```
@@ -200,7 +200,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -208,7 +208,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 ///   }
 /// }
 ///
-/// data "aws_elasticache_getreplicationgroup" "bar" {
+/// data "aws_elasticache_replication_group" "bar" {
 ///   replication_group_id = "example"
 /// }
 /// ```
@@ -341,7 +341,7 @@ pulumi.Output<GetReplicationGroupResult> getReplicationGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -349,7 +349,7 @@ pulumi.Output<GetReplicationGroupResult> getReplicationGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_elasticache_getreservedcachenodeoffering" "example" {
+/// data "aws_elasticache_reserved_cache_node_offering" "example" {
 ///   cache_node_type     = "cache.t4g.small"
 ///   duration            = "P1Y"
 ///   offering_type       = "No Upfront"
@@ -479,7 +479,7 @@ pulumi.Output<GetReservedCacheNodeOfferingResult> getReservedCacheNodeOfferingOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -487,7 +487,7 @@ pulumi.Output<GetReservedCacheNodeOfferingResult> getReservedCacheNodeOfferingOu
 ///   }
 /// }
 ///
-/// data "aws_elasticache_getserverlesscache" "example" {
+/// data "aws_elasticache_serverless_cache" "example" {
 ///   name = "example"
 /// }
 /// ```
@@ -623,7 +623,7 @@ pulumi.Output<GetServerlessCacheResult> getServerlessCacheOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -631,9 +631,9 @@ pulumi.Output<GetServerlessCacheResult> getServerlessCacheOutput(
 ///   }
 /// }
 ///
-/// data "aws_elasticache_getserviceupdateactions" "example" {
-///   cache_cluster_id        = exampleAwsElasticacheCluster.clusterId
-///   service_update_statuses = ["available"]
+/// data "aws_elasticache_service_update_actions" "example" {
+///   cache_cluster_id      = exampleAwsElasticacheCluster.clusterId
+///   service_update_status = ["available"]
 /// }
 /// ```
 /// ```java
@@ -658,7 +658,7 @@ pulumi.Output<GetServerlessCacheResult> getServerlessCacheOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = ElasticacheFunctions.getServiceUpdateActions(GetServiceUpdateActionsArgs.builder()
-///             .cacheClusterId(exampleAwsElasticacheCluster.clusterId())
+///             .cacheClusterId(exampleAwsElasticacheCluster.get("clusterId"))
 ///             .serviceUpdateStatuses("available")
 ///             .build());
 ///
@@ -763,7 +763,7 @@ pulumi.Output<GetServiceUpdateActionsResult> getServiceUpdateActionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -771,8 +771,8 @@ pulumi.Output<GetServiceUpdateActionsResult> getServiceUpdateActionsOutput(
 ///   }
 /// }
 ///
-/// data "aws_elasticache_getserviceupdates" "example" {
-///   statuses = ["available"]
+/// data "aws_elasticache_service_updates" "example" {
+///   status = ["available"]
 /// }
 /// ```
 /// ```java
@@ -893,7 +893,7 @@ pulumi.Output<GetServiceUpdatesResult> getServiceUpdatesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -901,7 +901,7 @@ pulumi.Output<GetServiceUpdatesResult> getServiceUpdatesOutput(
 ///   }
 /// }
 ///
-/// data "aws_elasticache_getsubnetgroup" "example" {
+/// data "aws_elasticache_subnet_group" "example" {
 ///   name = "my-subnet-group"
 /// }
 /// ```
@@ -1022,7 +1022,7 @@ pulumi.Output<GetSubnetGroupResult> getSubnetGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1030,7 +1030,7 @@ pulumi.Output<GetSubnetGroupResult> getSubnetGroupOutput(
 ///   }
 /// }
 ///
-/// data "aws_elasticache_getuser" "bar" {
+/// data "aws_elasticache_user" "bar" {
 ///   user_id = "example"
 /// }
 /// ```

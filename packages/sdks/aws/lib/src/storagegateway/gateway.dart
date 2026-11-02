@@ -110,7 +110,7 @@ import 'gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -118,18 +118,24 @@ import 'gateway_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_storagegateway_getlocaldisk" "test" {
-///   disk_node   = aws_ec2_volumeattachment.test.device_name
+/// data "aws_storagegateway_local_disk" "test" {
+///   disk_node   = aws_ec2_volume_attachment.test.device_name
 ///   gateway_arn = testAwsStoragegatewayGateway.arn
 /// }
 ///
-/// resource "aws_ec2_volumeattachment" "test" {
+/// resource "aws_ec2_volume_attachment" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   device_name = "/dev/xvdb"
 ///   volume_id   = testAwsEbsVolume.id
 ///   instance_id = testAwsInstance.id
 /// }
 /// resource "aws_storagegateway_cache" "test" {
-///   disk_id     = data.aws_storagegateway_getlocaldisk.test.disk_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   disk_id     = data.aws_storagegateway_local_disk.test.disk_id
 ///   gateway_arn = testAwsStoragegatewayGateway.arn
 /// }
 /// ```
@@ -160,18 +166,18 @@ import 'gateway_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var testVolumeAttachment = new VolumeAttachment("testVolumeAttachment", VolumeAttachmentArgs.builder()
 ///             .deviceName("/dev/xvdb")
-///             .volumeId(testAwsEbsVolume.id())
-///             .instanceId(testAwsInstance.id())
+///             .volumeId(testAwsEbsVolume.get("id"))
+///             .instanceId(testAwsInstance.get("id"))
 ///             .build());
 ///
 ///         final var test = StoragegatewayFunctions.getLocalDisk(GetLocalDiskArgs.builder()
 ///             .diskNode(testVolumeAttachment.deviceName())
-///             .gatewayArn(testAwsStoragegatewayGateway.arn())
+///             .gatewayArn(testAwsStoragegatewayGateway.get("arn"))
 ///             .build());
 ///
 ///         var testCache = new Cache("testCache", CacheArgs.builder()
 ///             .diskId(test.applyValue(_test -> _test.diskId()))
-///             .gatewayArn(testAwsStoragegatewayGateway.arn())
+///             .gatewayArn(testAwsStoragegatewayGateway.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -289,7 +295,7 @@ import 'gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -298,7 +304,10 @@ import 'gateway_state.dart';
 /// }
 ///
 /// resource "aws_storagegateway_gateway" "example" {
-///   smb_active_directory_settings = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   smb_active_directory_settings {
 ///     domain_name = "corp.example.com"
 ///     password    = "avoid-plaintext-passwords"
 ///     username    = "Admin"
@@ -428,7 +437,7 @@ import 'gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -437,6 +446,9 @@ import 'gateway_state.dart';
 /// }
 ///
 /// resource "aws_storagegateway_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gateway_ip_address = "1.2.3.4"
 ///   gateway_name       = "example"
 ///   gateway_timezone   = "GMT"
@@ -560,7 +572,7 @@ import 'gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -569,6 +581,9 @@ import 'gateway_state.dart';
 /// }
 ///
 /// resource "aws_storagegateway_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gateway_ip_address  = "1.2.3.4"
 ///   gateway_name        = "example"
 ///   gateway_timezone    = "GMT"
@@ -690,7 +705,7 @@ import 'gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -699,6 +714,9 @@ import 'gateway_state.dart';
 /// }
 ///
 /// resource "aws_storagegateway_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gateway_ip_address = "1.2.3.4"
 ///   gateway_name       = "example"
 ///   gateway_timezone   = "GMT"
@@ -814,7 +832,7 @@ import 'gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -823,6 +841,9 @@ import 'gateway_state.dart';
 /// }
 ///
 /// resource "aws_storagegateway_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   gateway_ip_address = "1.2.3.4"
 ///   gateway_name       = "example"
 ///   gateway_timezone   = "GMT"
@@ -942,7 +963,7 @@ import 'gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -952,7 +973,8 @@ import 'gateway_state.dart';
 ///
 /// resource "aws_storagegateway_gateway" "example" {
 ///   lifecycle {
-///     ignore_changes = [gatewayIpAddress]
+///     ignore_changes        = [gatewayIpAddress]
+///     create_before_destroy = true
 ///   }
 ///   gateway_ip_address = sgw.privateIp
 /// }
@@ -980,7 +1002,7 @@ import 'gateway_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Gateway("example", GatewayArgs.builder()
-///             .gatewayIpAddress(sgw.privateIp())
+///             .gatewayIpAddress(sgw.get("privateIp"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .ignoreChanges("gatewayIpAddress")
 ///                 .build());
@@ -1064,7 +1086,7 @@ class Gateway extends pulumi.CustomResource {
           'aws:storagegateway/gateway:Gateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['smbGuestPassword'],
         ) {
     activationKey = registerOutput<String>('activationKey');

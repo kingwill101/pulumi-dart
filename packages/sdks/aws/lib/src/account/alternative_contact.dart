@@ -74,7 +74,7 @@ import 'alternative_contact_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -82,7 +82,10 @@ import 'alternative_contact_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_account_alternativecontact" "operations" {
+/// resource "aws_account_alternative_contact" "operations" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alternate_contact_type = "OPERATIONS"
 ///   name                   = "Example"
 ///   title                  = "Example"
@@ -179,7 +182,7 @@ class AlternativeContact extends pulumi.CustomResource {
           'aws:account/alternativeContact:AlternativeContact',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     alternateContactType = registerOutput<String>('alternateContactType');

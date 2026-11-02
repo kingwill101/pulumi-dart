@@ -66,7 +66,7 @@ import 'open_zfs_volume_user_and_group_quota.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -74,7 +74,10 @@ import 'open_zfs_volume_user_and_group_quota.dart';
 ///   }
 /// }
 ///
-/// resource "aws_fsx_openzfsvolume" "test" {
+/// resource "aws_fsx_open_zfs_volume" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "testvolume"
 ///   parent_volume_id = testAwsFsxOpenzfsFileSystem.rootVolumeId
 /// }
@@ -102,7 +105,7 @@ import 'open_zfs_volume_user_and_group_quota.dart';
 ///     public static void stack(Context ctx) {
 ///         var test = new OpenZfsVolume("test", OpenZfsVolumeArgs.builder()
 ///             .name("testvolume")
-///             .parentVolumeId(testAwsFsxOpenzfsFileSystem.rootVolumeId())
+///             .parentVolumeId(testAwsFsxOpenzfsFileSystem.get("rootVolumeId"))
 ///             .build());
 ///
 ///     }
@@ -173,7 +176,7 @@ class OpenZfsVolume extends pulumi.CustomResource {
           'aws:fsx/openZfsVolume:OpenZfsVolume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     copyTagsToSnapshots = registerOutput<bool?>('copyTagsToSnapshots');

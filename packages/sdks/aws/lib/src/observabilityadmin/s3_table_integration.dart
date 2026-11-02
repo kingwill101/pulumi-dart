@@ -260,7 +260,7 @@ import 's3_table_integration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -269,6 +269,9 @@ import 's3_table_integration_timeouts.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-s3-table-integration"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -281,7 +284,10 @@ import 's3_table_integration_timeouts.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_iam_rolepolicy" "example" {
+/// resource "aws_iam_role_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role = aws_iam_role.example.name
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -292,8 +298,11 @@ import 's3_table_integration_timeouts.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_observabilityadmin_s3tableintegration" "example" {
-///   encryption = {
+/// resource "aws_observabilityadmin_s3_table_integration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   encryption {
 ///     sse_algorithm = "AES256"
 ///   }
 ///   role_arn = aws_iam_role.example.arn
@@ -589,7 +598,7 @@ import 's3_table_integration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -598,6 +607,9 @@ import 's3_table_integration_timeouts.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-s3-table-integration"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -611,11 +623,17 @@ import 's3_table_integration_timeouts.dart';
 ///   })
 /// }
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "S3 Table Integration KMS key"
 ///   deletion_window_in_days = 7
 /// }
-/// resource "aws_observabilityadmin_s3tableintegration" "example" {
-///   encryption = {
+/// resource "aws_observabilityadmin_s3_table_integration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   encryption {
 ///     sse_algorithm = "aws:kms"
 ///     kms_key_arn   = aws_kms_key.example.arn
 ///   }
@@ -754,7 +772,7 @@ class S3TableIntegration extends pulumi.CustomResource {
           'aws:observabilityadmin/s3TableIntegration:S3TableIntegration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destinationTableBucketArn = registerOutput<String>('destinationTableBucketArn');

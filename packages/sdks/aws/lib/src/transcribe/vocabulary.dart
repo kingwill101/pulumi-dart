@@ -126,7 +126,7 @@ import 'vocabulary_state.dart';
 /// 			return err
 /// 		}
 /// 		object, err := s3.NewBucketObjectv2(ctx, "object", &s3.BucketObjectv2Args{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: example.ID(),
 /// 			Key:    pulumi.String("transcribe/test1.txt"),
 /// 			Source: pulumi.NewFileAsset("test.txt"),
 /// 		})
@@ -156,7 +156,7 @@ import 'vocabulary_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -165,19 +165,28 @@ import 'vocabulary_state.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "example-vocab-123"
 ///   force_destroy = true
 /// }
-/// resource "aws_s3_bucketobjectv2" "object" {
+/// resource "aws_s3_bucket_objectv2" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
 ///   key    = "transcribe/test1.txt"
-///   source = fileAsset("test.txt")
+///   source = fileasset("test.txt")
 /// }
 /// resource "aws_transcribe_vocabulary" "example" {
-///   depends_on          = [aws_s3_bucketobjectv2.object]
+///   depends_on = [aws_s3_bucket_objectv2.object]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vocabulary_name     = "example"
 ///   language_code       = "en-US"
-///   vocabulary_file_uri ="s3://${aws_s3_bucket.example.id}/${aws_s3_bucketobjectv2.object.key}"
+///   vocabulary_file_uri ="s3://${aws_s3_bucket.example.id}/${aws_s3_bucket_objectv2.object.key}"
 ///   tags = {
 ///     "tag1" = "value1"
 ///     "tag2" = "value3"
@@ -311,7 +320,7 @@ class Vocabulary extends pulumi.CustomResource {
           'aws:transcribe/vocabulary:Vocabulary',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     downloadUri = registerOutput<String>('downloadUri');

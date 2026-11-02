@@ -121,7 +121,7 @@ import 'spot_instance_request_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -130,7 +130,10 @@ import 'spot_instance_request_state.dart';
 /// }
 ///
 /// # Request a spot instance at $0.03
-/// resource "aws_ec2_spotinstancerequest" "cheap_worker" {
+/// resource "aws_ec2_spot_instance_request" "cheap_worker" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ami           = "ami-1234"
 ///   spot_price    = "0.03"
 ///   instance_type = "c4.xlarge"
@@ -345,7 +348,7 @@ class SpotInstanceRequest extends pulumi.CustomResource {
           'aws:ec2/spotInstanceRequest:SpotInstanceRequest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     ami = registerOutput<String>('ami');
     arn = registerOutput<String>('arn');

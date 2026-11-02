@@ -79,7 +79,7 @@ import 'customer_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -87,7 +87,10 @@ import 'customer_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_customergateway" "main" {
+/// resource "aws_ec2_customer_gateway" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bgp_asn    = 65000
 ///   ip_address = "172.83.124.10"
 ///   type       = "ipsec.1"
@@ -182,7 +185,7 @@ class CustomerGateway extends pulumi.CustomResource {
           'aws:ec2/customerGateway:CustomerGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bgpAsn = registerOutput<String?>('bgpAsn');

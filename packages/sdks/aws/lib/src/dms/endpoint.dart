@@ -124,7 +124,7 @@ import 'endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -133,6 +133,9 @@ import 'endpoint_state.dart';
 /// }
 ///
 /// resource "aws_dms_endpoint" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   certificate_arn             = "arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012"
 ///   database_name               = "test"
 ///   endpoint_id                 = "test-dms-endpoint-tf"
@@ -294,7 +297,7 @@ class Endpoint extends pulumi.CustomResource {
           'aws:dms/endpoint:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     certificateArn = registerOutput<String>('certificateArn');

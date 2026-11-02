@@ -72,7 +72,7 @@ import 'workspace_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -81,6 +81,9 @@ import 'workspace_state.dart';
 /// }
 ///
 /// resource "aws_amp_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alias = "example"
 ///   tags = {
 ///     "Environment" = "production"
@@ -205,7 +208,7 @@ import 'workspace_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -213,12 +216,18 @@ import 'workspace_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_amp_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   logging_configuration = {
-///     log_group_arn ="${aws_cloudwatch_loggroup.example.arn}:*"
+///     log_group_arn ="${aws_cloudwatch_log_group.example.arn}:*"
 ///   }
 /// }
 /// ```
@@ -353,7 +362,7 @@ import 'workspace_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -362,10 +371,16 @@ import 'workspace_state.dart';
 /// }
 ///
 /// resource "aws_amp_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alias       = "example"
 ///   kms_key_arn = aws_kms_key.example.arn
 /// }
 /// resource "aws_kms_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description             = "example"
 ///   deletion_window_in_days = 7
 /// }
@@ -459,7 +474,7 @@ class Workspace extends pulumi.CustomResource {
           'aws:amp/workspace:Workspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     alias = registerOutput<String?>('alias');
     arn = registerOutput<String>('arn');

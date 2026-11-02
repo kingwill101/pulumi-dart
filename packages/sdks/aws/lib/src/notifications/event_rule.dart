@@ -150,7 +150,7 @@ import 'event_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -158,11 +158,17 @@ import 'event_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_notifications_notificationconfiguration" "example" {
+/// resource "aws_notifications_notification_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   description = "example configuration"
 /// }
-/// resource "aws_notifications_eventrule" "example" {
+/// resource "aws_notifications_event_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   event_pattern = jsonencode({
 ///     "detail" = {
 ///       "state" = {
@@ -171,7 +177,7 @@ import 'event_rule_state.dart';
 ///     }
 ///   })
 ///   event_type                     = "CloudWatch Alarm State Change"
-///   notification_configuration_arn = aws_notifications_notificationconfiguration.example.arn
+///   notification_configuration_arn = aws_notifications_notification_configuration.example.arn
 ///   regions                        = ["us-east-1", "us-west-2"]
 ///   source                         = "aws.cloudwatch"
 /// }
@@ -286,7 +292,7 @@ class EventRule extends pulumi.CustomResource {
           'aws:notifications/eventRule:EventRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     eventPattern = registerOutput<String?>('eventPattern');

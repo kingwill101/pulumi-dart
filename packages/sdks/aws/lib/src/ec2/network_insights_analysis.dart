@@ -73,7 +73,7 @@ import 'network_insights_analysis_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewNetworkInsightsAnalysis(ctx, "analysis", &ec2.NetworkInsightsAnalysisArgs{
-/// 			NetworkInsightsPathId: path.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkInsightsPathId: path.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -83,7 +83,7 @@ import 'network_insights_analysis_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,13 +91,19 @@ import 'network_insights_analysis_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_networkinsightspath" "path" {
+/// resource "aws_ec2_network_insights_path" "path" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source      = source.id
 ///   destination = destination.id
 ///   protocol    = "tcp"
 /// }
-/// resource "aws_ec2_networkinsightsanalysis" "analysis" {
-///   network_insights_path_id = aws_ec2_networkinsightspath.path.id
+/// resource "aws_ec2_network_insights_analysis" "analysis" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   network_insights_path_id = aws_ec2_network_insights_path.path.id
 /// }
 /// ```
 /// ```java
@@ -124,8 +130,8 @@ import 'network_insights_analysis_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var path = new NetworkInsightsPath("path", NetworkInsightsPathArgs.builder()
-///             .source(source.id())
-///             .destination(destination.id())
+///             .source(source.get("id"))
+///             .destination(destination.get("id"))
 ///             .protocol("tcp")
 ///             .build());
 ///
@@ -206,7 +212,7 @@ class NetworkInsightsAnalysis extends pulumi.CustomResource {
           'aws:ec2/networkInsightsAnalysis:NetworkInsightsAnalysis',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     alternatePathHints = registerOutput<List<NetworkInsightsAnalysisAlternatePathHint>>('alternatePathHints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAnalysisAlternatePathHint>(guardedValue, (value) => NetworkInsightsAnalysisAlternatePathHint.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

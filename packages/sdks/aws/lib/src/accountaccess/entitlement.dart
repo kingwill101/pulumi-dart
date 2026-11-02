@@ -109,7 +109,7 @@ import 'entitlement_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -118,10 +118,13 @@ import 'entitlement_state.dart';
 /// }
 ///
 /// resource "aws_accountaccess_entitlement" "example" {
-///   entitlement = {
-///     principal_role = {
-///       principal = {
-///         identity_center = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   entitlement {
+///     principal_role {
+///       principal {
+///         identity_center {
 ///           user_id = "11111111-2222-3333-4444-555555555555"
 ///         }
 ///       }
@@ -167,7 +170,7 @@ import 'entitlement_state.dart';
 ///                     .roleArn("arn:aws:iam::123456789012:role/Developer")
 ///                     .build())
 ///                 .build())
-///             .applicationArn(exampleAwsAccountaccessApplication.arn())
+///             .applicationArn(exampleAwsAccountaccessApplication.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -286,7 +289,7 @@ import 'entitlement_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -295,10 +298,13 @@ import 'entitlement_state.dart';
 /// }
 ///
 /// resource "aws_accountaccess_entitlement" "example" {
-///   entitlement = {
-///     principal_role = {
-///       principal = {
-///         identity_center = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   entitlement {
+///     principal_role {
+///       principal {
+///         identity_center {
 ///           group_id = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 ///         }
 ///       }
@@ -344,7 +350,7 @@ import 'entitlement_state.dart';
 ///                     .roleArn("arn:aws:iam::123456789012:role/Engineering")
 ///                     .build())
 ///                 .build())
-///             .applicationArn(exampleAwsAccountaccessApplication.arn())
+///             .applicationArn(exampleAwsAccountaccessApplication.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -604,7 +610,7 @@ import 'entitlement_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -612,19 +618,25 @@ import 'entitlement_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_ssoadmin_getinstances" "example" {
+/// data "aws_ssoadmin_instances" "example" {
 /// }
 ///
 /// resource "aws_accountaccess_application" "example" {
-///   identity_source = {
-///     identity_center = {
-///       instance_arn = data.aws_ssoadmin_getinstances.example.arns[0]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   identity_source {
+///     identity_center {
+///       instance_arn = data.aws_ssoadmin_instances.example.arns[0]
 ///     }
 ///   }
 /// }
 /// # The target role must allow the Account Access service to assume it.
 /// # sts:TagSession is required for credential retrieval to succeed.
 /// resource "aws_iam_role" "target" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-account-access-developer"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -638,10 +650,13 @@ import 'entitlement_state.dart';
 ///   })
 /// }
 /// resource "aws_accountaccess_entitlement" "example" {
-///   entitlement = {
-///     principal_role = {
-///       principal = {
-///         identity_center = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   entitlement {
+///     principal_role {
+///       principal {
+///         identity_center {
 ///           user_id = "11111111-2222-3333-4444-555555555555"
 ///         }
 ///       }
@@ -823,7 +838,7 @@ class Entitlement extends pulumi.CustomResource {
           'aws:accountaccess/entitlement:Entitlement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     applicationArn = registerOutput<String>('applicationArn');
     entitlement = registerOutput<EntitlementEntitlement>('entitlement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntitlementEntitlement.fromMap((guardedValue as Map).cast<String, dynamic>()); });

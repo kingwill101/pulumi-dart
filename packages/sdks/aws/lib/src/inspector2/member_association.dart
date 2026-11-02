@@ -57,7 +57,7 @@ import 'member_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -65,7 +65,10 @@ import 'member_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_inspector2_memberassociation" "example" {
+/// resource "aws_inspector2_member_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "123456789012"
 /// }
 /// ```
@@ -137,7 +140,7 @@ class MemberAssociation extends pulumi.CustomResource {
           'aws:inspector2/memberAssociation:MemberAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     delegatedAdminAccountId = registerOutput<String>('delegatedAdminAccountId');

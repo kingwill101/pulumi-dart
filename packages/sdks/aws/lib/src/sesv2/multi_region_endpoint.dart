@@ -85,7 +85,7 @@ import 'multi_region_endpoint_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -93,9 +93,12 @@ import 'multi_region_endpoint_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sesv2_multiregionendpoint" "example" {
-///   details = {
-///     routes_details = {
+/// resource "aws_sesv2_multi_region_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   details {
+///     routes_details {
 ///       region = "example-alternate-region"
 ///     }
 ///   }
@@ -180,7 +183,7 @@ class MultiRegionEndpoint extends pulumi.CustomResource {
           'aws:sesv2/multiRegionEndpoint:MultiRegionEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     details = registerOutput<MultiRegionEndpointDetails?>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiRegionEndpointDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });

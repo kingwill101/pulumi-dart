@@ -70,7 +70,7 @@ import 'detector_feature_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = guardduty.NewDetectorFeature(ctx, "s3_protection", &guardduty.DetectorFeatureArgs{
-/// 			DetectorId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			DetectorId: example.ID(),
 /// 			Name:       pulumi.String("S3_DATA_EVENTS"),
 /// 			Status:     pulumi.String("ENABLED"),
 /// 		})
@@ -82,7 +82,7 @@ import 'detector_feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,9 +91,15 @@ import 'detector_feature_state.dart';
 /// }
 ///
 /// resource "aws_guardduty_detector" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enable = true
 /// }
-/// resource "aws_guardduty_detectorfeature" "s3_protection" {
+/// resource "aws_guardduty_detector_feature" "s3_protection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   detector_id = aws_guardduty_detector.example.id
 ///   name        = "S3_DATA_EVENTS"
 ///   status      = "ENABLED"
@@ -248,7 +254,7 @@ import 'detector_feature_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = guardduty.NewDetectorFeature(ctx, "eks_protection", &guardduty.DetectorFeatureArgs{
-/// 			DetectorId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			DetectorId: example.ID(),
 /// 			Name:       pulumi.String("EKS_AUDIT_LOGS"),
 /// 			Status:     pulumi.String("ENABLED"),
 /// 		})
@@ -262,7 +268,7 @@ import 'detector_feature_state.dart';
 /// 					Status: pulumi.String("ENABLED"),
 /// 				},
 /// 			},
-/// 			DetectorId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			DetectorId: example.ID(),
 /// 			Name:       pulumi.String("EKS_RUNTIME_MONITORING"),
 /// 			Status:     pulumi.String("ENABLED"),
 /// 		})
@@ -274,7 +280,7 @@ import 'detector_feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -283,15 +289,24 @@ import 'detector_feature_state.dart';
 /// }
 ///
 /// resource "aws_guardduty_detector" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   enable = true
 /// }
-/// resource "aws_guardduty_detectorfeature" "eks_protection" {
+/// resource "aws_guardduty_detector_feature" "eks_protection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   detector_id = aws_guardduty_detector.example.id
 ///   name        = "EKS_AUDIT_LOGS"
 ///   status      = "ENABLED"
 /// }
-/// resource "aws_guardduty_detectorfeature" "eks_runtime_monitoring" {
-///   additional_configurations {
+/// resource "aws_guardduty_detector_feature" "eks_runtime_monitoring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   additional_configuration {
 ///     name   = "EKS_ADDON_MANAGEMENT"
 ///     status = "ENABLED"
 ///   }
@@ -372,8 +387,8 @@ import 'detector_feature_state.dart';
 ///       status: ENABLED
 /// ```
 class DetectorFeature extends pulumi.CustomResource {
-  /// Additional feature configuration block for features`EKS_RUNTIME_MONITORING` or `RUNTIME_MONITORING`. See below.
-  late final pulumi.Output<List<DetectorFeatureAdditionalConfiguration>?> additionalConfigurations;
+  /// Additional feature configuration block for features `EKS_RUNTIME_MONITORING`, `RUNTIME_MONITORING` or `RDS_LOGIN_EVENTS`. If omitted, Terraform does not track changes to additional configurations that AWS manages for the feature. Removing a previously declared `additionalConfiguration` block leaves the setting unchanged in AWS; to change a setting, update its `status` instead. See below.
+  late final pulumi.Output<List<DetectorFeatureAdditionalConfiguration>> additionalConfigurations;
   /// Amazon GuardDuty detector ID.
   late final pulumi.Output<String> detectorId;
   /// Name of the detector feature. Valid values: `S3_DATA_EVENTS`, `EKS_AUDIT_LOGS`, `EBS_MALWARE_PROTECTION`, `RDS_LOGIN_EVENTS`, `EKS_RUNTIME_MONITORING`, `LAMBDA_NETWORK_LOGS`, `RUNTIME_MONITORING`, `AI_PROTECTION`, `AI_ANALYST`. Only one of two features `EKS_RUNTIME_MONITORING` or `RUNTIME_MONITORING` can be added, adding both features will cause an error. Refer to the [AWS Documentation](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DetectorFeatureConfiguration.html) for the current list of supported values.
@@ -395,9 +410,9 @@ class DetectorFeature extends pulumi.CustomResource {
           'aws:guardduty/detectorFeature:DetectorFeature',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
-    additionalConfigurations = registerOutput<List<DetectorFeatureAdditionalConfiguration>?>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DetectorFeatureAdditionalConfiguration>(guardedValue, (value) => DetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    additionalConfigurations = registerOutput<List<DetectorFeatureAdditionalConfiguration>>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DetectorFeatureAdditionalConfiguration>(guardedValue, (value) => DetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     detectorId = registerOutput<String>('detectorId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -428,7 +443,7 @@ class DetectorFeature extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalConfigurations = registerOutput<List<DetectorFeatureAdditionalConfiguration>?>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DetectorFeatureAdditionalConfiguration>(guardedValue, (value) => DetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    additionalConfigurations = registerOutput<List<DetectorFeatureAdditionalConfiguration>>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DetectorFeatureAdditionalConfiguration>(guardedValue, (value) => DetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     detectorId = registerOutput<String>('detectorId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -444,7 +459,7 @@ class DetectorFeature extends pulumi.CustomResource {
         pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
         isResourceReference: true,
       ) {
-    additionalConfigurations = registerOutput<List<DetectorFeatureAdditionalConfiguration>?>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DetectorFeatureAdditionalConfiguration>(guardedValue, (value) => DetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    additionalConfigurations = registerOutput<List<DetectorFeatureAdditionalConfiguration>>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DetectorFeatureAdditionalConfiguration>(guardedValue, (value) => DetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     detectorId = registerOutput<String>('detectorId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

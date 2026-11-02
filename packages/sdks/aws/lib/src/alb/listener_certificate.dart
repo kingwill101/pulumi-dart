@@ -91,7 +91,7 @@ import 'listener_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -100,12 +100,24 @@ import 'listener_certificate_state.dart';
 /// }
 ///
 /// resource "aws_acm_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_lb_loadbalancer" "front_end" {
+/// resource "aws_lb_load_balancer" "front_end" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "aws_lb_listener" "front_end" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_lb_listenercertificate" "example" {
+/// resource "aws_lb_listener_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   listener_arn    = aws_lb_listener.front_end.arn
 ///   certificate_arn = aws_acm_certificate.example.arn
 /// }
@@ -194,7 +206,7 @@ class ListenerCertificate extends pulumi.CustomResource {
           'aws:alb/listenerCertificate:ListenerCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     certificateArn = registerOutput<String>('certificateArn');
     listenerArn = registerOutput<String>('listenerArn');

@@ -169,7 +169,7 @@ import 'cluster_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -177,12 +177,15 @@ import 'cluster_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
-/// data "aws_getpartition" "currentGetPartition" {
+/// data "aws_partition" "currentGetPartition" {
 /// }
 ///
-/// resource "aws_msk_clusterpolicy" "example" {
+/// resource "aws_msk_cluster_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_arn = exampleAwsMskCluster.arn
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -190,7 +193,7 @@ import 'cluster_policy_state.dart';
 ///       "Sid"    = "ExampleMskClusterPolicy"
 ///       "Effect" = "Allow"
 ///       "Principal" = {
-///         "AWS" ="arn:${data.aws_getpartition.currentGetPartition.partition}:iam::${data.aws_getcalleridentity.current.account_id}:root"
+///         "AWS" ="arn:${data.aws_partition.currentGetPartition.partition}:iam::${data.aws_caller_identity.current.account_id}:root"
 ///       }
 ///       "Action"   = ["kafka:Describe*", "kafka:Get*", "kafka:CreateVpcConnection", "kafka:GetBootstrapBrokers"]
 ///       "Resource" = exampleAwsMskCluster.arn
@@ -230,7 +233,7 @@ import 'cluster_policy_state.dart';
 ///             .build());
 ///
 ///         var example = new ClusterPolicy("example", ClusterPolicyArgs.builder()
-///             .clusterArn(exampleAwsMskCluster.arn())
+///             .clusterArn(exampleAwsMskCluster.get("arn"))
 ///             .policy(serializeJson(
 ///                 jsonObject(
 ///                     jsonProperty("Version", "2012-10-17"),
@@ -246,7 +249,7 @@ import 'cluster_policy_state.dart';
 ///                             "kafka:CreateVpcConnection",
 ///                             "kafka:GetBootstrapBrokers"
 ///                         )),
-///                         jsonProperty("Resource", exampleAwsMskCluster.arn())
+///                         jsonProperty("Resource", exampleAwsMskCluster.get("arn"))
 ///                     )))
 ///                 )))
 ///             .build());
@@ -315,7 +318,7 @@ class ClusterPolicy extends pulumi.CustomResource {
           'aws:msk/clusterPolicy:ClusterPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     clusterArn = registerOutput<String>('clusterArn');
     currentVersion = registerOutput<String>('currentVersion');

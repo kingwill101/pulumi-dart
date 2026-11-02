@@ -142,7 +142,7 @@ import 'engine_type.dart';
 /// 			val0 := index
 /// 			__res, err := rds.NewClusterInstance(ctx, fmt.Sprintf("cluster_instances-%v", key0), &rds.ClusterInstanceArgs{
 /// 				Identifier:        pulumi.Sprintf("aurora-cluster-demo-%v", val0),
-/// 				ClusterIdentifier: _default.ID().ToIDOutput().ToStringOutput(),
+/// 				ClusterIdentifier: _default.ID(),
 /// 				InstanceClass:     pulumi.String(rds.InstanceType_R4_Large),
 /// 				Engine:            _default.Engine.ApplyT(func(x *string) rds.EngineType { return rds.EngineType(*x) }).(rds.EngineTypeOutput),
 /// 				EngineVersion:     _default.EngineVersion,
@@ -157,7 +157,7 @@ import 'engine_type.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -165,8 +165,14 @@ import 'engine_type.dart';
 ///   }
 /// }
 ///
-/// resource "aws_rds_clusterinstance" "cluster_instances" {
-///   count              = 2
+/// resource "aws_rds_cluster_instance" "cluster_instances" {
+///   count = 2
+///   pulumi {
+///     name ="cluster_instances-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identifier         ="aurora-cluster-demo-${count.index}"
 ///   cluster_identifier = aws_rds_cluster.default.id
 ///   instance_class     = "db.r4.large"
@@ -174,6 +180,9 @@ import 'engine_type.dart';
 ///   engine_version     = aws_rds_cluster.default.engine_version
 /// }
 /// resource "aws_rds_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_identifier = "aurora-cluster-demo"
 ///   availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]
 ///   database_name      = "mydb"
@@ -363,7 +372,7 @@ class ClusterInstance extends pulumi.CustomResource {
           'aws:rds/clusterInstance:ClusterInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     applyImmediately = registerOutput<bool>('applyImmediately');
     arn = registerOutput<String>('arn');

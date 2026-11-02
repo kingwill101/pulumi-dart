@@ -81,7 +81,7 @@ import 'elastic_cluster_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -89,7 +89,10 @@ import 'elastic_cluster_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_docdb_elasticcluster" "example" {
+/// resource "aws_docdb_elastic_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "my-docdb-cluster"
 ///   admin_user_name     = "foo"
 ///   admin_user_password = "mustbeeightchars"
@@ -214,7 +217,7 @@ class ElasticCluster extends pulumi.CustomResource {
           'aws:docdb/elasticCluster:ElasticCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['adminUserPassword'],
         ) {
     adminUserName = registerOutput<String>('adminUserName');

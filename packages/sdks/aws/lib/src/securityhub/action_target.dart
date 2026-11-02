@@ -85,7 +85,7 @@ import 'action_target_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -94,9 +94,15 @@ import 'action_target_state.dart';
 /// }
 ///
 /// resource "aws_securityhub_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "aws_securityhub_actiontarget" "example" {
-///   depends_on  = [aws_securityhub_account.example]
+/// resource "aws_securityhub_action_target" "example" {
+///   depends_on = [aws_securityhub_account.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "Send notification to chat"
 ///   identifier  = "SendToChat"
 ///   description = "This is custom action sends selected findings to chat"
@@ -193,7 +199,7 @@ class ActionTarget extends pulumi.CustomResource {
           'aws:securityhub/actionTarget:ActionTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');

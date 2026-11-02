@@ -123,7 +123,7 @@ import 'db_cluster_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -131,7 +131,10 @@ import 'db_cluster_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_timestreaminfluxdb_dbcluster" "example" {
+/// resource "aws_timestreaminfluxdb_db_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage      = 20
 ///   bucket                 = "example-bucket-name"
 ///   db_instance_type       = "db.influx.medium"
@@ -176,9 +179,9 @@ import 'db_cluster_timeouts.dart';
 ///             .port(8086)
 ///             .organization("organization")
 ///             .vpcSubnetIds(
-///                 example1.id(),
-///                 example2.id())
-///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.id())
+///                 example1.get("id"),
+///                 example2.get("id"))
+///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///             .name("example-db-cluster")
 ///             .build());
 ///
@@ -343,14 +346,14 @@ import 'db_cluster_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		example1, err := ec2.NewSubnet(ctx, "example_1", &ec2.SubnetArgs{
-/// 			VpcId:     example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:     example.ID(),
 /// 			CidrBlock: pulumi.String("10.0.1.0/24"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		example2, err := ec2.NewSubnet(ctx, "example_2", &ec2.SubnetArgs{
-/// 			VpcId:     example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:     example.ID(),
 /// 			CidrBlock: pulumi.String("10.0.2.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -358,7 +361,7 @@ import 'db_cluster_timeouts.dart';
 /// 		}
 /// 		exampleSecurityGroup, err := ec2.NewSecurityGroup(ctx, "example", &ec2.SecurityGroupArgs{
 /// 			Name:  pulumi.String("example"),
-/// 			VpcId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -371,11 +374,11 @@ import 'db_cluster_timeouts.dart';
 /// 			Password:         pulumi.String("example-password"),
 /// 			Organization:     pulumi.String("organization"),
 /// 			VpcSubnetIds: pulumi.StringArray{
-/// 				example1.ID().ToIDOutput().ToStringOutput(),
-/// 				example2.ID().ToIDOutput().ToStringOutput(),
+/// 				example1.ID(),
+/// 				example2.ID(),
 /// 			},
 /// 			VpcSecurityGroupIds: pulumi.StringArray{
-/// 				exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleSecurityGroup.ID(),
 /// 			},
 /// 			Name: pulumi.String("example-db-cluster"),
 /// 		})
@@ -387,7 +390,7 @@ import 'db_cluster_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -396,21 +399,36 @@ import 'db_cluster_timeouts.dart';
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cidr_block = "10.0.0.0/16"
 /// }
 /// resource "aws_ec2_subnet" "example_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id     = aws_ec2_vpc.example.id
 ///   cidr_block = "10.0.1.0/24"
 /// }
 /// resource "aws_ec2_subnet" "example_2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id     = aws_ec2_vpc.example.id
 ///   cidr_block = "10.0.2.0/24"
 /// }
-/// resource "aws_ec2_securitygroup" "example" {
+/// resource "aws_ec2_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example"
 ///   vpc_id = aws_ec2_vpc.example.id
 /// }
-/// resource "aws_timestreaminfluxdb_dbcluster" "example" {
+/// resource "aws_timestreaminfluxdb_db_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   allocated_storage      = 20
 ///   bucket                 = "example-bucket-name"
 ///   db_instance_type       = "db.influx.medium"
@@ -418,7 +436,7 @@ import 'db_cluster_timeouts.dart';
 ///   password               = "example-password"
 ///   organization           = "organization"
 ///   vpc_subnet_ids         = [aws_ec2_subnet.example_1.id, aws_ec2_subnet.example_2.id]
-///   vpc_security_group_ids = [aws_ec2_securitygroup.example.id]
+///   vpc_security_group_ids = [aws_ec2_security_group.example.id]
 ///   name                   = "example-db-cluster"
 /// }
 /// ```
@@ -737,7 +755,7 @@ import 'db_cluster_timeouts.dart';
 /// 			},
 /// 		}, nil)
 /// 		_, err = s3.NewBucketPolicy(ctx, "example", &s3.BucketPolicyArgs{
-/// 			Bucket: exampleBucket.ID().ToIDOutput().ToStringOutput(),
+/// 			Bucket: exampleBucket.ID(),
 /// 			Policy: example.Json(),
 /// 		})
 /// 		if err != nil {
@@ -773,7 +791,7 @@ import 'db_cluster_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -781,8 +799,8 @@ import 'db_cluster_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "example" {
-///   statements {
+/// data "aws_iam_policy_document" "example" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["timestream-influxdb.amazonaws.com"]
@@ -793,16 +811,25 @@ import 'db_cluster_timeouts.dart';
 /// }
 ///
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "example-s3-bucket"
 ///   force_destroy = true
 /// }
-/// resource "aws_s3_bucketpolicy" "example" {
+/// resource "aws_s3_bucket_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = aws_s3_bucket.example.id
-///   policy = data.aws_iam_getpolicydocument.example.json
+///   policy = data.aws_iam_policy_document.example.json
 /// }
-/// resource "aws_timestreaminfluxdb_dbcluster" "example" {
-///   log_delivery_configuration = {
-///     s3_configuration = {
+/// resource "aws_timestreaminfluxdb_db_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   log_delivery_configuration {
+///     s3_configuration {
 ///       bucket_name = aws_s3_bucket.example.bucket
 ///       enabled     = true
 ///     }
@@ -884,9 +911,9 @@ import 'db_cluster_timeouts.dart';
 ///             .password("example-password")
 ///             .organization("organization")
 ///             .vpcSubnetIds(
-///                 example1.id(),
-///                 example2.id())
-///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.id())
+///                 example1.get("id"),
+///                 example2.get("id"))
+///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///             .name("example-db-cluster")
 ///             .build());
 ///
@@ -1051,7 +1078,7 @@ import 'db_cluster_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1059,8 +1086,11 @@ import 'db_cluster_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_timestreaminfluxdb_dbcluster" "example" {
-///   maintenance_schedule = {
+/// resource "aws_timestreaminfluxdb_db_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   maintenance_schedule {
 ///     preferred_maintenance_window = "Sun:02:00-Sun:06:00"
 ///     timezone                     = "America/New_York"
 ///   }
@@ -1102,9 +1132,9 @@ import 'db_cluster_timeouts.dart';
 ///             .dbInstanceType("db.influx.large")
 ///             .dbParameterGroupIdentifier("InfluxDBV3Core")
 ///             .vpcSubnetIds(
-///                 example1.id(),
-///                 example2.id())
-///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.id())
+///                 example1.get("id"),
+///                 example2.get("id"))
+///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1243,7 +1273,7 @@ class DbCluster extends pulumi.CustomResource {
           'aws:timestreaminfluxdb/dbCluster:DbCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     allocatedStorage = registerOutput<int?>('allocatedStorage');

@@ -79,7 +79,7 @@ import 'plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -88,7 +88,10 @@ import 'plan_state.dart';
 /// }
 ///
 /// resource "aws_ssmcontacts_plan" "example" {
-///   stages {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   stage {
 ///     duration_in_minutes = 1
 ///   }
 ///   contact_id = "arn:aws:ssm-contacts:us-west-2:123456789012:contact/contactalias"
@@ -229,7 +232,7 @@ import 'plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -238,11 +241,17 @@ import 'plan_state.dart';
 /// }
 ///
 /// resource "aws_ssmcontacts_contact" "contact" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alias = "alias"
 ///   type  = "PERSONAL"
 /// }
 /// resource "aws_ssmcontacts_plan" "plan" {
-///   stages {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   stage {
 ///     duration_in_minutes = 1
 ///   }
 ///   contact_id = aws_ssmcontacts_contact.contact.arn
@@ -522,7 +531,7 @@ import 'plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -531,33 +540,45 @@ import 'plan_state.dart';
 /// }
 ///
 /// resource "aws_ssmcontacts_contact" "escalation_plan" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alias = "escalation-plan-alias"
 ///   type  = "ESCALATION"
 /// }
 /// resource "aws_ssmcontacts_contact" "contact_one" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alias = "alias"
 ///   type  = "PERSONAL"
 /// }
 /// resource "aws_ssmcontacts_contact" "contact_two" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alias = "alias"
 ///   type  = "PERSONAL"
 /// }
 /// resource "aws_ssmcontacts_plan" "test" {
-///   stages {
-///     targets {
-///       contact_target_info = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   stage {
+///     target {
+///       contact_target_info {
 ///         is_essential = false
 ///         contact_id   = aws_ssmcontacts_contact.contact_one.arn
 ///       }
 ///     }
-///     targets {
-///       contact_target_info = {
+///     target {
+///       contact_target_info {
 ///         is_essential = true
 ///         contact_id   = aws_ssmcontacts_contact.contact_two.arn
 ///       }
 ///     }
-///     targets {
-///       channel_target_info = {
+///     target {
+///       channel_target_info {
 ///         retry_interval_in_minutes = 2
 ///         contact_channel_id        = channel.arn
 ///       }
@@ -627,7 +648,7 @@ import 'plan_state.dart';
 ///                     PlanStageTargetArgs.builder()
 ///                         .channelTargetInfo(PlanStageTargetChannelTargetInfoArgs.builder()
 ///                             .retryIntervalInMinutes(2)
-///                             .contactChannelId(channel.arn())
+///                             .contactChannelId(channel.get("arn"))
 ///                             .build())
 ///                         .build())
 ///                 .durationInMinutes(0)
@@ -704,7 +725,7 @@ class Plan extends pulumi.CustomResource {
           'aws:ssmcontacts/plan:Plan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     contactId = registerOutput<String>('contactId');
     region = registerOutput<String>('region');

@@ -113,7 +113,7 @@ import 'log_delivery_configuration_state.dart';
 /// 					LogLevel:    pulumi.String("ERROR"),
 /// 				},
 /// 			},
-/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -123,7 +123,7 @@ import 'log_delivery_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -131,21 +131,30 @@ import 'log_delivery_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpool" "example" {
+/// resource "aws_cognito_user_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_cognito_logdeliveryconfiguration" "example" {
+/// resource "aws_cognito_log_delivery_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   log_configurations {
-///     cloud_watch_logs_configuration = {
-///       log_group_arn = aws_cloudwatch_loggroup.example.arn
+///     cloud_watch_logs_configuration {
+///       log_group_arn = aws_cloudwatch_log_group.example.arn
 ///     }
 ///     event_source = "userNotification"
 ///     log_level    = "ERROR"
 ///   }
-///   user_pool_id = aws_cognito_userpool.example.id
+///   user_pool_id = aws_cognito_user_pool.example.id
 /// }
 /// ```
 /// ```java
@@ -550,7 +559,7 @@ import 'log_delivery_configuration_state.dart';
 /// 		}
 /// 		_, err = iam.NewRolePolicy(ctx, "firehose", &iam.RolePolicyArgs{
 /// 			Name: pulumi.String("firehose-policy"),
-/// 			Role: firehose.ID().ToIDOutput().ToStringOutput(),
+/// 			Role: firehose.ID(),
 /// 			Policy: exampleBucket.Arn.ApplyT(func(arn string) (pulumi.String, error) {
 /// 				var _zero pulumi.String
 /// 				tmpJSON1, err := json.Marshal(map[string]interface{}{
@@ -611,7 +620,7 @@ import 'log_delivery_configuration_state.dart';
 /// 					LogLevel:    pulumi.String("INFO"),
 /// 				},
 /// 			},
-/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -621,7 +630,7 @@ import 'log_delivery_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -629,18 +638,30 @@ import 'log_delivery_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpool" "example" {
+/// resource "aws_cognito_user_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example"
 ///   user_pool_tier = "PLUS"
 /// }
-/// resource "aws_cloudwatch_loggroup" "example" {
+/// resource "aws_cloudwatch_log_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "example-bucket"
 ///   force_destroy = true
 /// }
 /// resource "aws_iam_role" "firehose" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "firehose-role"
 ///   assume_role_policy = jsonencode({
 ///     "Version" = "2012-10-17"
@@ -653,7 +674,10 @@ import 'log_delivery_configuration_state.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_iam_rolepolicy" "firehose" {
+/// resource "aws_iam_role_policy" "firehose" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "firehose-policy"
 ///   role = aws_iam_role.firehose.id
 ///   policy = jsonencode({
@@ -665,30 +689,36 @@ import 'log_delivery_configuration_state.dart';
 ///     }]
 ///   })
 /// }
-/// resource "aws_kinesis_firehosedeliverystream" "example" {
-///   extended_s3_configuration = {
+/// resource "aws_kinesis_firehose_delivery_stream" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   extended_s3_configuration {
 ///     role_arn   = aws_iam_role.firehose.arn
 ///     bucket_arn = aws_s3_bucket.example.arn
 ///   }
 ///   name        = "example-stream"
 ///   destination = "extended_s3"
 /// }
-/// resource "aws_cognito_logdeliveryconfiguration" "example" {
+/// resource "aws_cognito_log_delivery_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   log_configurations {
-///     cloud_watch_logs_configuration = {
-///       log_group_arn = aws_cloudwatch_loggroup.example.arn
+///     cloud_watch_logs_configuration {
+///       log_group_arn = aws_cloudwatch_log_group.example.arn
 ///     }
 ///     event_source = "userNotification"
 ///     log_level    = "INFO"
 ///   }
 ///   log_configurations {
-///     firehose_configuration = {
-///       stream_arn = aws_kinesis_firehosedeliverystream.example.arn
+///     firehose_configuration {
+///       stream_arn = aws_kinesis_firehose_delivery_stream.example.arn
 ///     }
 ///     event_source = "userAuthEvents"
 ///     log_level    = "INFO"
 ///   }
-///   user_pool_id = aws_cognito_userpool.example.id
+///   user_pool_id = aws_cognito_user_pool.example.id
 /// }
 /// ```
 /// ```java
@@ -1010,7 +1040,7 @@ import 'log_delivery_configuration_state.dart';
 /// 					LogLevel:    pulumi.String("INFO"),
 /// 				},
 /// 			},
-/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			UserPoolId: example.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1020,7 +1050,7 @@ import 'log_delivery_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1028,23 +1058,32 @@ import 'log_delivery_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cognito_userpool" "example" {
+/// resource "aws_cognito_user_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example"
 ///   user_pool_tier = "PLUS"
 /// }
 /// resource "aws_s3_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = "example-bucket"
 ///   force_destroy = true
 /// }
-/// resource "aws_cognito_logdeliveryconfiguration" "example" {
+/// resource "aws_cognito_log_delivery_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   log_configurations {
-///     s3_configuration = {
+///     s3_configuration {
 ///       bucket_arn = aws_s3_bucket.example.arn
 ///     }
 ///     event_source = "userAuthEvents"
 ///     log_level    = "INFO"
 ///   }
-///   user_pool_id = aws_cognito_userpool.example.id
+///   user_pool_id = aws_cognito_user_pool.example.id
 /// }
 /// ```
 /// ```java
@@ -1165,7 +1204,7 @@ class LogDeliveryConfiguration extends pulumi.CustomResource {
           'aws:cognito/logDeliveryConfiguration:LogDeliveryConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     logConfigurations = registerOutput<List<LogDeliveryConfigurationLogConfiguration>>('logConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogDeliveryConfigurationLogConfiguration>(guardedValue, (value) => LogDeliveryConfigurationLogConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');

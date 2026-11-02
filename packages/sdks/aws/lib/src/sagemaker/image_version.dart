@@ -64,7 +64,7 @@ import 'image_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'image_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_imageversion" "example" {
+/// resource "aws_sagemaker_image_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_name = test.id
 ///   base_image = "012345678912.dkr.ecr.us-west-2.amazonaws.com/image:latest"
 /// }
@@ -99,7 +102,7 @@ import 'image_version_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ImageVersion("example", ImageVersionArgs.builder()
-///             .imageName(test.id())
+///             .imageName(test.get("id"))
 ///             .baseImage("012345678912.dkr.ecr.us-west-2.amazonaws.com/image:latest")
 ///             .build());
 ///
@@ -191,7 +194,7 @@ import 'image_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -199,7 +202,10 @@ import 'image_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_sagemaker_imageversion" "test" {
+/// resource "aws_sagemaker_image_version" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image_name = testAwsSagemakerImage.id
 ///   base_image = "012345678912.dkr.ecr.us-west-2.amazonaws.com/image:latest"
 ///   aliases    = ["latest", "stable"]
@@ -227,7 +233,7 @@ import 'image_version_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new ImageVersion("test", ImageVersionArgs.builder()
-///             .imageName(testAwsSagemakerImage.id())
+///             .imageName(testAwsSagemakerImage.get("id"))
 ///             .baseImage("012345678912.dkr.ecr.us-west-2.amazonaws.com/image:latest")
 ///             .aliases(
 ///                 "latest",
@@ -300,7 +306,7 @@ class ImageVersion extends pulumi.CustomResource {
           'aws:sagemaker/imageVersion:ImageVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     aliases = registerOutput<List<String>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');

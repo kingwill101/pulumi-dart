@@ -83,7 +83,7 @@ import 'agentcore_browser_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -91,7 +91,10 @@ import 'agentcore_browser_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcorebrowser" "example" {
+/// resource "aws_bedrock_agentcore_browser" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_configuration = {
 ///     network_mode = "PUBLIC"
 ///   }
@@ -250,7 +253,7 @@ import 'agentcore_browser_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -258,7 +261,10 @@ import 'agentcore_browser_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_bedrock_agentcorebrowser" "vpc_example" {
+/// resource "aws_bedrock_agentcore_browser" "vpc_example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_configuration = {
 ///     vpc_config = {
 ///       security_groups = ["sg-12345678"]
@@ -534,7 +540,7 @@ import 'agentcore_browser_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -542,8 +548,8 @@ import 'agentcore_browser_timeouts.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["bedrock-agentcore.amazonaws.com"]
@@ -554,13 +560,22 @@ import 'agentcore_browser_timeouts.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "bedrock-agentcore-browser-role"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
 /// resource "aws_s3_bucket" "recording" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = "browser-recording-bucket"
 /// }
-/// resource "aws_bedrock_agentcorebrowser" "example" {
+/// resource "aws_bedrock_agentcore_browser" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_configuration = {
 ///     network_mode = "PUBLIC"
 ///   }
@@ -738,7 +753,7 @@ class AgentcoreBrowser extends pulumi.CustomResource {
           'aws:bedrock/agentcoreBrowser:AgentcoreBrowser',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     browserArn = registerOutput<String>('browserArn');
     browserId = registerOutput<String>('browserId');

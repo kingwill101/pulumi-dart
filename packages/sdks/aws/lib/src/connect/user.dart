@@ -118,7 +118,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -127,11 +127,14 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_connect_user" "example" {
-///   identity_info = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   identity_info {
 ///     first_name = "example"
 ///     last_name  = "example2"
 ///   }
-///   phone_config = {
+///   phone_config {
 ///     after_contact_work_time_limit = 0
 ///     phone_type                    = "SOFT_PHONE"
 ///   }
@@ -174,11 +177,11 @@ import 'user_state.dart';
 ///                 .afterContactWorkTimeLimit(0)
 ///                 .phoneType("SOFT_PHONE")
 ///                 .build())
-///             .instanceId(exampleAwsConnectInstance.id())
+///             .instanceId(exampleAwsConnectInstance.get("id"))
 ///             .name("example")
 ///             .password("Password123")
-///             .routingProfileId(exampleAwsConnectRoutingProfile.routingProfileId())
-///             .securityProfileIds(exampleAwsConnectSecurityProfile.securityProfileId())
+///             .routingProfileId(exampleAwsConnectRoutingProfile.get("routingProfileId"))
+///             .securityProfileIds(exampleAwsConnectSecurityProfile.get("securityProfileId"))
 ///             .build());
 ///
 ///     }
@@ -317,7 +320,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -326,11 +329,14 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_connect_user" "example" {
-///   identity_info = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   identity_info {
 ///     first_name = "example"
 ///     last_name  = "example2"
 ///   }
-///   phone_config = {
+///   phone_config {
 ///     after_contact_work_time_limit = 0
 ///     phone_type                    = "SOFT_PHONE"
 ///   }
@@ -374,12 +380,12 @@ import 'user_state.dart';
 ///                 .afterContactWorkTimeLimit(0)
 ///                 .phoneType("SOFT_PHONE")
 ///                 .build())
-///             .instanceId(exampleAwsConnectInstance.id())
+///             .instanceId(exampleAwsConnectInstance.get("id"))
 ///             .name("example")
 ///             .password("Password123")
-///             .routingProfileId(exampleAwsConnectRoutingProfile.routingProfileId())
-///             .hierarchyGroupId(exampleAwsConnectUserHierarchyGroup.hierarchyGroupId())
-///             .securityProfileIds(exampleAwsConnectSecurityProfile.securityProfileId())
+///             .routingProfileId(exampleAwsConnectRoutingProfile.get("routingProfileId"))
+///             .hierarchyGroupId(exampleAwsConnectUserHierarchyGroup.get("hierarchyGroupId"))
+///             .securityProfileIds(exampleAwsConnectSecurityProfile.get("securityProfileId"))
 ///             .build());
 ///
 ///     }
@@ -523,7 +529,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -532,13 +538,16 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_connect_user" "example" {
-///   identity_info = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   identity_info {
 ///     email           = "example@example.com"
 ///     first_name      = "example"
 ///     last_name       = "example2"
 ///     secondary_email = "secondary@example.com"
 ///   }
-///   phone_config = {
+///   phone_config {
 ///     after_contact_work_time_limit = 0
 ///     phone_type                    = "SOFT_PHONE"
 ///   }
@@ -583,11 +592,11 @@ import 'user_state.dart';
 ///                 .afterContactWorkTimeLimit(0)
 ///                 .phoneType("SOFT_PHONE")
 ///                 .build())
-///             .instanceId(exampleAwsConnectInstance.id())
+///             .instanceId(exampleAwsConnectInstance.get("id"))
 ///             .name("example")
 ///             .password("Password123")
-///             .routingProfileId(exampleAwsConnectRoutingProfile.routingProfileId())
-///             .securityProfileIds(exampleAwsConnectSecurityProfile.securityProfileId())
+///             .routingProfileId(exampleAwsConnectRoutingProfile.get("routingProfileId"))
+///             .securityProfileIds(exampleAwsConnectSecurityProfile.get("securityProfileId"))
 ///             .build());
 ///
 ///     }
@@ -707,7 +716,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -716,7 +725,10 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_connect_user" "example" {
-///   phone_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   phone_config {
 ///     after_contact_work_time_limit = 0
 ///     phone_type                    = "SOFT_PHONE"
 ///   }
@@ -754,11 +766,11 @@ import 'user_state.dart';
 ///                 .afterContactWorkTimeLimit(0)
 ///                 .phoneType("SOFT_PHONE")
 ///                 .build())
-///             .instanceId(exampleAwsConnectInstance.id())
+///             .instanceId(exampleAwsConnectInstance.get("id"))
 ///             .name("example")
 ///             .password("Password123")
-///             .routingProfileId(exampleAwsConnectRoutingProfile.routingProfileId())
-///             .securityProfileIds(exampleAwsConnectSecurityProfile.securityProfileId())
+///             .routingProfileId(exampleAwsConnectRoutingProfile.get("routingProfileId"))
+///             .securityProfileIds(exampleAwsConnectSecurityProfile.get("securityProfileId"))
 ///             .build());
 ///
 ///     }
@@ -889,7 +901,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -898,7 +910,10 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_connect_user" "example" {
-///   phone_config = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   phone_config {
 ///     after_contact_work_time_limit = 0
 ///     auto_accept                   = false
 ///     desk_phone_number             = "+112345678912"
@@ -940,13 +955,13 @@ import 'user_state.dart';
 ///                 .deskPhoneNumber("+112345678912")
 ///                 .phoneType("DESK_PHONE")
 ///                 .build())
-///             .instanceId(exampleAwsConnectInstance.id())
+///             .instanceId(exampleAwsConnectInstance.get("id"))
 ///             .name("example")
 ///             .password("Password123")
-///             .routingProfileId(exampleAwsConnectRoutingProfile.routingProfileId())
+///             .routingProfileId(exampleAwsConnectRoutingProfile.get("routingProfileId"))
 ///             .securityProfileIds(
-///                 exampleAwsConnectSecurityProfile.securityProfileId(),
-///                 example2.securityProfileId())
+///                 exampleAwsConnectSecurityProfile.get("securityProfileId"),
+///                 example2.get("securityProfileId"))
 ///             .build());
 ///
 ///     }
@@ -1022,7 +1037,7 @@ class User extends pulumi.CustomResource {
           'aws:connect/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     arn = registerOutput<String>('arn');

@@ -64,7 +64,7 @@ import 'account_setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -72,7 +72,10 @@ import 'account_setting_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecr_accountsetting" "basic_scan_type_version" {
+/// resource "aws_ecr_account_setting" "basic_scan_type_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "BASIC_SCAN_TYPE_VERSION"
 ///   value = "AWS_NATIVE"
 /// }
@@ -175,7 +178,7 @@ import 'account_setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -183,7 +186,10 @@ import 'account_setting_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecr_accountsetting" "blob_mounting" {
+/// resource "aws_ecr_account_setting" "blob_mounting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "BLOB_MOUNTING"
 ///   value = "ENABLED"
 /// }
@@ -286,7 +292,7 @@ import 'account_setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -294,7 +300,10 @@ import 'account_setting_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ecr_accountsetting" "registry_policy_scope" {
+/// resource "aws_ecr_account_setting" "registry_policy_scope" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "REGISTRY_POLICY_SCOPE"
 ///   value = "V2"
 /// }
@@ -369,7 +378,7 @@ class AccountSetting extends pulumi.CustomResource {
           'aws:ecr/accountSetting:AccountSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

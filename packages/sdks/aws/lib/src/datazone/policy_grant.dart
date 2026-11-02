@@ -109,7 +109,7 @@ import 'policy_grant_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -117,13 +117,18 @@ import 'policy_grant_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_datazone_policygrant" "example" {
-///   detail = {
-///     create_domain_unit = {}
+/// resource "aws_datazone_policy_grant" "example" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   principal = {
-///     user = {
-///       all_users_grant_filter = {}
+///   detail {
+///     create_domain_unit {
+///     }
+///   }
+///   principal {
+///     user {
+///       all_users_grant_filter {
+///       }
 ///     }
 ///   }
 ///   domain_identifier = exampleAwsDatazoneDomain.id
@@ -169,8 +174,8 @@ import 'policy_grant_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
-///             .domainIdentifier(exampleAwsDatazoneDomain.id())
-///             .entityIdentifier(exampleAwsDatazoneDomain.rootDomainUnitId())
+///             .domainIdentifier(exampleAwsDatazoneDomain.get("id"))
+///             .entityIdentifier(exampleAwsDatazoneDomain.get("rootDomainUnitId"))
 ///             .entityType("DOMAIN_UNIT")
 ///             .policyType("CREATE_DOMAIN_UNIT")
 ///             .build());
@@ -305,7 +310,7 @@ import 'policy_grant_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -313,15 +318,19 @@ import 'policy_grant_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_datazone_policygrant" "example" {
-///   detail = {
-///     create_domain_unit = {
+/// resource "aws_datazone_policy_grant" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   detail {
+///     create_domain_unit {
 ///       include_child_domain_units = true
 ///     }
 ///   }
-///   principal = {
-///     user = {
-///       all_users_grant_filter = {}
+///   principal {
+///     user {
+///       all_users_grant_filter {
+///       }
 ///     }
 ///   }
 ///   domain_identifier = exampleAwsDatazoneDomain.id
@@ -368,8 +377,8 @@ import 'policy_grant_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
-///             .domainIdentifier(exampleAwsDatazoneDomain.id())
-///             .entityIdentifier(exampleAwsDatazoneDomain.rootDomainUnitId())
+///             .domainIdentifier(exampleAwsDatazoneDomain.get("id"))
+///             .entityIdentifier(exampleAwsDatazoneDomain.get("rootDomainUnitId"))
 ///             .entityType("DOMAIN_UNIT")
 ///             .policyType("CREATE_DOMAIN_UNIT")
 ///             .build());
@@ -500,7 +509,7 @@ import 'policy_grant_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -508,12 +517,16 @@ import 'policy_grant_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_datazone_policygrant" "example" {
-///   detail = {
-///     create_glossary = {}
+/// resource "aws_datazone_policy_grant" "example" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   principal = {
-///     project = {
+///   detail {
+///     create_glossary {
+///     }
+///   }
+///   principal {
+///     project {
 ///       project_designation = "OWNER"
 ///       project_identifier  = exampleAwsDatazoneProject.id
 ///     }
@@ -557,11 +570,11 @@ import 'policy_grant_state.dart';
 ///             .principal(PolicyGrantPrincipalArgs.builder()
 ///                 .project(PolicyGrantPrincipalProjectArgs.builder()
 ///                     .projectDesignation("OWNER")
-///                     .projectIdentifier(exampleAwsDatazoneProject.id())
+///                     .projectIdentifier(exampleAwsDatazoneProject.get("id"))
 ///                     .build())
 ///                 .build())
-///             .domainIdentifier(exampleAwsDatazoneDomain.id())
-///             .entityIdentifier(exampleAwsDatazoneDomain.rootDomainUnitId())
+///             .domainIdentifier(exampleAwsDatazoneDomain.get("id"))
+///             .entityIdentifier(exampleAwsDatazoneDomain.get("rootDomainUnitId"))
 ///             .entityType("DOMAIN_UNIT")
 ///             .policyType("CREATE_GLOSSARY")
 ///             .build());
@@ -646,7 +659,7 @@ class PolicyGrant extends pulumi.CustomResource {
           'aws:datazone/policyGrant:PolicyGrant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');

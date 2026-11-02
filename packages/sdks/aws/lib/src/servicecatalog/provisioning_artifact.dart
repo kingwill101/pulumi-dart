@@ -78,7 +78,7 @@ import 'provisioning_artifact_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -86,7 +86,10 @@ import 'provisioning_artifact_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_servicecatalog_provisioningartifact" "example" {
+/// resource "aws_servicecatalog_provisioning_artifact" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example"
 ///   product_id   = exampleAwsServicecatalogProduct.id
 ///   type         = "CLOUD_FORMATION_TEMPLATE"
@@ -116,9 +119,9 @@ import 'provisioning_artifact_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ProvisioningArtifact("example", ProvisioningArtifactArgs.builder()
 ///             .name("example")
-///             .productId(exampleAwsServicecatalogProduct.id())
+///             .productId(exampleAwsServicecatalogProduct.get("id"))
 ///             .type("CLOUD_FORMATION_TEMPLATE")
-///             .templateUrl(String.format("https://%s/%s", exampleAwsS3Bucket.bucketRegionalDomainName(),exampleAwsS3Object.key()))
+///             .templateUrl(String.format("https://%s/%s", exampleAwsS3Bucket.get("bucketRegionalDomainName"),exampleAwsS3Object.get("key")))
 ///             .build());
 ///
 ///     }
@@ -185,7 +188,7 @@ class ProvisioningArtifact extends pulumi.CustomResource {
           'aws:servicecatalog/provisioningArtifact:ProvisioningArtifact',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     active = registerOutput<bool?>('active');

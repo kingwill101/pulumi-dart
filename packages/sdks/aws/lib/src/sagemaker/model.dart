@@ -171,7 +171,7 @@ import 'model_vpc_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -179,8 +179,8 @@ import 'model_vpc_config.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["sagemaker.amazonaws.com"]
@@ -188,19 +188,25 @@ import 'model_vpc_config.dart';
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
-/// data "aws_sagemaker_getprebuiltecrimage" "test" {
+/// data "aws_sagemaker_prebuilt_ecr_image" "test" {
 ///   repository_name = "kmeans"
 /// }
 ///
 /// resource "aws_sagemaker_model" "example" {
-///   primary_container = {
-///     image = data.aws_sagemaker_getprebuiltecrimage.test.registry_path
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   primary_container {
+///     image = data.aws_sagemaker_prebuilt_ecr_image.test.registry_path
 ///   }
 ///   name               = "my-model"
 ///   execution_role_arn = aws_iam_role.example.arn
 /// }
 /// resource "aws_iam_role" "example" {
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
 /// ```
 /// ```java
@@ -339,7 +345,7 @@ class Model extends pulumi.CustomResource {
           'aws:sagemaker/model:Model',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     containers = registerOutput<List<ModelContainer>?>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ModelContainer>(guardedValue, (value) => ModelContainer.fromMap((value as Map).cast<String, dynamic>())); });

@@ -104,7 +104,7 @@ import 'rule_group_state.dart';
 /// 						Type: pulumi.String("COUNT"),
 /// 					},
 /// 					Priority: pulumi.Int(50),
-/// 					RuleId:   example.ID().ToIDOutput().ToStringOutput(),
+/// 					RuleId:   example.ID(),
 /// 				},
 /// 			},
 /// 			Name:       pulumi.String("example"),
@@ -118,7 +118,7 @@ import 'rule_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -127,12 +127,18 @@ import 'rule_group_state.dart';
 /// }
 ///
 /// resource "aws_waf_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example"
 ///   metric_name = "example"
 /// }
-/// resource "aws_waf_rulegroup" "example" {
-///   activated_rules {
-///     action = {
+/// resource "aws_waf_rule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   activated_rule {
+///     action {
 ///       type = "COUNT"
 ///     }
 ///     priority = 50
@@ -241,7 +247,7 @@ class RuleGroup extends pulumi.CustomResource {
           'aws:waf/ruleGroup:RuleGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     activatedRules = registerOutput<List<RuleGroupActivatedRule>?>('activatedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleGroupActivatedRule>(guardedValue, (value) => RuleGroupActivatedRule.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

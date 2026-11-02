@@ -169,7 +169,7 @@ import 'selection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -177,8 +177,8 @@ import 'selection_state.dart';
 ///   }
 /// }
 ///
-/// data "aws_iam_getpolicydocument" "assumeRole" {
-///   statements {
+/// data "aws_iam_policy_document" "assumeRole" {
+///   statement {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["backup.amazonaws.com"]
@@ -189,14 +189,23 @@ import 'selection_state.dart';
 /// }
 ///
 /// resource "aws_iam_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
-///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
+///   assume_role_policy = data.aws_iam_policy_document.assumeRole.json
 /// }
-/// resource "aws_iam_rolepolicyattachment" "example" {
+/// resource "aws_iam_role_policy_attachment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup"
 ///   role       = aws_iam_role.example.name
 /// }
 /// resource "aws_backup_selection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iam_role_arn = aws_iam_role.example.arn
 /// }
 /// ```
@@ -379,7 +388,7 @@ import 'selection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -388,7 +397,10 @@ import 'selection_state.dart';
 /// }
 ///
 /// resource "aws_backup_selection" "example" {
-///   selection_tags {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   selection_tag {
 ///     type  = "STRINGEQUALS"
 ///     key   = "foo"
 ///     value = "bar"
@@ -426,9 +438,9 @@ import 'selection_state.dart';
 ///                 .key("foo")
 ///                 .value("bar")
 ///                 .build())
-///             .iamRoleArn(exampleAwsIamRole.arn())
+///             .iamRoleArn(exampleAwsIamRole.get("arn"))
 ///             .name("my_example_backup_selection")
-///             .planId(exampleAwsBackupPlan.id())
+///             .planId(exampleAwsBackupPlan.get("id"))
 ///             .build());
 ///
 ///     }
@@ -622,7 +634,7 @@ import 'selection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -631,12 +643,15 @@ import 'selection_state.dart';
 /// }
 ///
 /// resource "aws_backup_selection" "example" {
-///   conditions {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   condition {
 ///     string_equals {
 ///       key   = "aws:ResourceTag/Component"
 ///       value = "rds"
 ///     }
-///     string_likes {
+///     string_like {
 ///       key   = "aws:ResourceTag/Application"
 ///       value = "app*"
 ///     }
@@ -644,7 +659,7 @@ import 'selection_state.dart';
 ///       key   = "aws:ResourceTag/Backup"
 ///       value = "false"
 ///     }
-///     string_not_likes {
+///     string_not_like {
 ///       key   = "aws:ResourceTag/Environment"
 ///       value = "test*"
 ///     }
@@ -700,9 +715,9 @@ import 'selection_state.dart';
 ///                     .value("test*")
 ///                     .build())
 ///                 .build())
-///             .iamRoleArn(exampleAwsIamRole.arn())
+///             .iamRoleArn(exampleAwsIamRole.get("arn"))
 ///             .name("my_example_backup_selection")
-///             .planId(exampleAwsBackupPlan.id())
+///             .planId(exampleAwsBackupPlan.get("id"))
 ///             .resources("*")
 ///             .build());
 ///
@@ -818,7 +833,7 @@ import 'selection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -827,6 +842,9 @@ import 'selection_state.dart';
 /// }
 ///
 /// resource "aws_backup_selection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iam_role_arn = exampleAwsIamRole.arn
 ///   name         = "my_example_backup_selection"
 ///   plan_id      = exampleAwsBackupPlan.id
@@ -855,13 +873,13 @@ import 'selection_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Selection("example", SelectionArgs.builder()
-///             .iamRoleArn(exampleAwsIamRole.arn())
+///             .iamRoleArn(exampleAwsIamRole.get("arn"))
 ///             .name("my_example_backup_selection")
-///             .planId(exampleAwsBackupPlan.id())
+///             .planId(exampleAwsBackupPlan.get("id"))
 ///             .resources(
-///                 exampleAwsDbInstance.arn(),
-///                 exampleAwsEbsVolume.arn(),
-///                 exampleAwsEfsFileSystem.arn())
+///                 exampleAwsDbInstance.get("arn"),
+///                 exampleAwsEbsVolume.get("arn"),
+///                 exampleAwsEfsFileSystem.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -965,7 +983,7 @@ import 'selection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -974,6 +992,9 @@ import 'selection_state.dart';
 /// }
 ///
 /// resource "aws_backup_selection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iam_role_arn  = exampleAwsIamRole.arn
 ///   name          = "my_example_backup_selection"
 ///   plan_id       = exampleAwsBackupPlan.id
@@ -1002,13 +1023,13 @@ import 'selection_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Selection("example", SelectionArgs.builder()
-///             .iamRoleArn(exampleAwsIamRole.arn())
+///             .iamRoleArn(exampleAwsIamRole.get("arn"))
 ///             .name("my_example_backup_selection")
-///             .planId(exampleAwsBackupPlan.id())
+///             .planId(exampleAwsBackupPlan.get("id"))
 ///             .notResources(
-///                 exampleAwsDbInstance.arn(),
-///                 exampleAwsEbsVolume.arn(),
-///                 exampleAwsEfsFileSystem.arn())
+///                 exampleAwsDbInstance.get("arn"),
+///                 exampleAwsEbsVolume.get("arn"),
+///                 exampleAwsEfsFileSystem.get("arn"))
 ///             .build());
 ///
 ///     }
@@ -1079,7 +1100,7 @@ class Selection extends pulumi.CustomResource {
           'aws:backup/selection:Selection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     conditions = registerOutput<List<SelectionCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SelectionCondition>(guardedValue, (value) => SelectionCondition.fromMap((value as Map).cast<String, dynamic>())); });
     iamRoleArn = registerOutput<String>('iamRoleArn');

@@ -131,7 +131,7 @@ import 'organization_custom_policy_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -139,10 +139,28 @@ import 'organization_custom_policy_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_cfg_organizationcustompolicyrule" "example" {
+/// resource "aws_cfg_organization_custom_policy_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example_rule_name"
 ///   policy_runtime        = "guard-2.x.x"
-///   policy_text           = "let status = ['ACTIVE']\n\nrule tableisactive when\n    resourceType == \\\"AWS::DynamoDB::Table\\\" {\n    configuration.tableStatus == %status\n}\n\nrule checkcompliance when\n    resourceType == \\\"AWS::DynamoDB::Table\\\"\n    tableisactive {\n        let pitr = supplementaryConfiguration.ContinuousBackupsDescription.pointInTimeRecoveryDescription.pointInTimeRecoveryStatus\n        %pitr == \\\"ENABLED\\\"\n    }\n"
+///   policy_text           = <<-EOF
+/// let status = ['ACTIVE']
+///
+/// rule tableisactive when
+///     resourceType == \"AWS::DynamoDB::Table\" {
+///     configuration.tableStatus == %status
+/// }
+///
+/// rule checkcompliance when
+///     resourceType == \"AWS::DynamoDB::Table\"
+///     tableisactive {
+///         let pitr = supplementaryConfiguration.ContinuousBackupsDescription.pointInTimeRecoveryDescription.pointInTimeRecoveryStatus
+///         %pitr == \"ENABLED\"
+///     }
+/// EOF
+///
 ///   resource_types_scopes = ["AWS::DynamoDB::Table"]
 /// }
 /// ```
@@ -282,7 +300,7 @@ class OrganizationCustomPolicyRule extends pulumi.CustomResource {
           'aws:cfg/organizationCustomPolicyRule:OrganizationCustomPolicyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     debugLogDeliveryAccounts = registerOutput<List<String>?>('debugLogDeliveryAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

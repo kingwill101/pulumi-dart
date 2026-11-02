@@ -75,7 +75,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -83,7 +83,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpoint" "s3" {
+/// resource "aws_ec2_vpc_endpoint" "s3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id       = main.id
 ///   service_name = "com.amazonaws.us-west-2.s3"
 /// }
@@ -110,7 +113,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var s3 = new VpcEndpoint("s3", VpcEndpointArgs.builder()
-///             .vpcId(main.id())
+///             .vpcId(main.get("id"))
 ///             .serviceName("com.amazonaws.us-west-2.s3")
 ///             .build());
 ///
@@ -198,7 +201,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -206,7 +209,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpoint" "s3" {
+/// resource "aws_ec2_vpc_endpoint" "s3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id       = main.id
 ///   service_name = "com.amazonaws.us-west-2.s3"
 ///   tags = {
@@ -236,7 +242,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var s3 = new VpcEndpoint("s3", VpcEndpointArgs.builder()
-///             .vpcId(main.id())
+///             .vpcId(main.get("id"))
 ///             .serviceName("com.amazonaws.us-west-2.s3")
 ///             .tags(Map.of("Environment", "test"))
 ///             .build());
@@ -335,7 +341,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -343,7 +349,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpoint" "s3" {
+/// resource "aws_ec2_vpc_endpoint" "s3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region         = "us-west-2"
 ///   vpc_id         = main.id
 ///   service_name   = "com.amazonaws.us-east-2.s3"
@@ -376,7 +385,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///     public static void stack(Context ctx) {
 ///         var s3 = new VpcEndpoint("s3", VpcEndpointArgs.builder()
 ///             .region("us-west-2")
-///             .vpcId(main.id())
+///             .vpcId(main.get("id"))
 ///             .serviceName("com.amazonaws.us-east-2.s3")
 ///             .serviceRegion("us-east-2")
 ///             .tags(Map.of("Environment", "test"))
@@ -474,7 +483,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -482,7 +491,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpoint" "ec2" {
+/// resource "aws_ec2_vpc_endpoint" "ec2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id              = main.id
 ///   service_name        = "com.amazonaws.us-west-2.ec2"
 ///   vpc_endpoint_type   = "Interface"
@@ -512,10 +524,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var ec2 = new VpcEndpoint("ec2", VpcEndpointArgs.builder()
-///             .vpcId(main.id())
+///             .vpcId(main.get("id"))
 ///             .serviceName("com.amazonaws.us-west-2.ec2")
 ///             .vpcEndpointType("Interface")
-///             .securityGroupIds(sg1.id())
+///             .securityGroupIds(sg1.get("id"))
 ///             .privateDnsEnabled(true)
 ///             .build());
 ///
@@ -658,7 +670,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -666,7 +678,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpoint" "ec2" {
+/// resource "aws_ec2_vpc_endpoint" "ec2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_configurations {
 ///     ipv4      = "10.0.1.10"
 ///     subnet_id = example1.id
@@ -707,18 +722,18 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///             .subnetConfigurations(
 ///                 VpcEndpointSubnetConfigurationArgs.builder()
 ///                     .ipv4("10.0.1.10")
-///                     .subnetId(example1.id())
+///                     .subnetId(example1.get("id"))
 ///                     .build(),
 ///                 VpcEndpointSubnetConfigurationArgs.builder()
 ///                     .ipv4("10.0.2.10")
-///                     .subnetId(example2.id())
+///                     .subnetId(example2.get("id"))
 ///                     .build())
-///             .vpcId(example.id())
+///             .vpcId(example.get("id"))
 ///             .serviceName("com.amazonaws.us-west-2.ec2")
 ///             .vpcEndpointType("Interface")
 ///             .subnetIds(
-///                 example1.id(),
-///                 example2.id())
+///                 example1.get("id"),
+///                 example2.get("id"))
 ///             .build());
 ///
 ///     }
@@ -857,7 +872,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -865,18 +880,24 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   }
 /// }
 ///
-/// data "aws_getcalleridentity" "current" {
+/// data "aws_caller_identity" "current" {
 /// }
 ///
-/// resource "aws_ec2_vpcendpointservice" "example" {
+/// resource "aws_ec2_vpc_endpoint_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   acceptance_required        = false
-///   allowed_principals         = [data.aws_getcalleridentity.current.arn]
+///   allowed_principals         = [data.aws_caller_identity.current.arn]
 ///   gateway_load_balancer_arns = [exampleAwsLb.arn]
 /// }
-/// resource "aws_ec2_vpcendpoint" "example" {
-///   service_name      = aws_ec2_vpcendpointservice.example.service_name
+/// resource "aws_ec2_vpc_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service_name      = aws_ec2_vpc_endpoint_service.example.service_name
 ///   subnet_ids        = [exampleAwsSubnet.id]
-///   vpc_endpoint_type = aws_ec2_vpcendpointservice.example.service_type
+///   vpc_endpoint_type = aws_ec2_vpc_endpoint_service.example.service_type
 ///   vpc_id            = exampleAwsVpc.id
 /// }
 /// ```
@@ -911,14 +932,14 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///         var example = new VpcEndpointService("example", VpcEndpointServiceArgs.builder()
 ///             .acceptanceRequired(false)
 ///             .allowedPrincipals(current.arn())
-///             .gatewayLoadBalancerArns(exampleAwsLb.arn())
+///             .gatewayLoadBalancerArns(exampleAwsLb.get("arn"))
 ///             .build());
 ///
 ///         var exampleVpcEndpoint = new VpcEndpoint("exampleVpcEndpoint", VpcEndpointArgs.builder()
 ///             .serviceName(example.serviceName())
-///             .subnetIds(exampleAwsSubnet.id())
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .vpcEndpointType(example.serviceType())
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1022,7 +1043,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1030,7 +1051,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpoint" "example" {
+/// resource "aws_ec2_vpc_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_configuration_arn = exampleAwsVpclatticeResourceConfiguration.arn
 ///   subnet_ids                 = [exampleAwsSubnet.id]
 ///   vpc_endpoint_type          = "Resource"
@@ -1059,10 +1083,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcEndpoint("example", VpcEndpointArgs.builder()
-///             .resourceConfigurationArn(exampleAwsVpclatticeResourceConfiguration.arn())
-///             .subnetIds(exampleAwsSubnet.id())
+///             .resourceConfigurationArn(exampleAwsVpclatticeResourceConfiguration.get("arn"))
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .vpcEndpointType("Resource")
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1152,7 +1176,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1160,7 +1184,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "aws_ec2_vpcendpoint" "example" {
+/// resource "aws_ec2_vpc_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_network_arn = exampleAwsVpclatticeServiceNetwork.arn
 ///   subnet_ids          = [exampleAwsSubnet.id]
 ///   vpc_endpoint_type   = "ServiceNetwork"
@@ -1189,10 +1216,10 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcEndpoint("example", VpcEndpointArgs.builder()
-///             .serviceNetworkArn(exampleAwsVpclatticeServiceNetwork.arn())
-///             .subnetIds(exampleAwsSubnet.id())
+///             .serviceNetworkArn(exampleAwsVpclatticeServiceNetwork.get("arn"))
+///             .subnetIds(exampleAwsSubnet.get("id"))
 ///             .vpcEndpointType("ServiceNetwork")
-///             .vpcId(exampleAwsVpc.id())
+///             .vpcId(exampleAwsVpc.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1236,7 +1263,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///     name: internal.then(internal => `ptfe.${internal.name}`),
 ///     type: aws.route53.RecordType.CNAME,
 ///     ttl: 300,
-///     records: [ptfeService.dnsEntries[0].dns_name.apply(x =>String(x))],
+///     records: [ptfeService.dnsEntries[0].dns_name],
 /// });
 /// ```
 /// ```python
@@ -1258,7 +1285,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///     name=f"ptfe.{internal.name}",
 ///     type=aws.route53.RecordType.CNAME,
 ///     ttl=300,
-///     records=[ptfe_service.dns_entries[0].dns_name.apply(lambda x: str(x))])
+///     records=[ptfe_service.dns_entries[0].dns_name])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1358,7 +1385,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -1366,13 +1393,16 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   }
 /// }
 ///
-/// data "aws_route53_getzone" "internal" {
+/// data "aws_route53_zone" "internal" {
 ///   name         = "vpc.internal."
 ///   private_zone = true
 ///   vpc_id       = vpcId
 /// }
 ///
-/// resource "aws_ec2_vpcendpoint" "ptfe_service" {
+/// resource "aws_ec2_vpc_endpoint" "ptfe_service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_id              = vpcId
 ///   service_name        = ptfeServiceConfig
 ///   vpc_endpoint_type   = "Interface"
@@ -1381,11 +1411,14 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///   private_dns_enabled = false
 /// }
 /// resource "aws_route53_record" "ptfe_service" {
-///   zone_id = data.aws_route53_getzone.internal.zone_id
-///   name    ="ptfe.${data.aws_route53_getzone.internal.name}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   zone_id = data.aws_route53_zone.internal.zone_id
+///   name    ="ptfe.${data.aws_route53_zone.internal.name}"
 ///   type    = "CNAME"
 ///   ttl     = "300"
-///   records = [aws_ec2_vpcendpoint.ptfe_service.dns_entries[0]["dns_name"]]
+///   records = [aws_ec2_vpc_endpoint.ptfe_service.dns_entries[0]["dns_name"]]
 /// }
 /// ```
 /// ```java
@@ -1417,7 +1450,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///             .vpcId(vpcId)
 ///             .serviceName(ptfeServiceConfig)
 ///             .vpcEndpointType("Interface")
-///             .securityGroupIds(ptfeServiceAwsSecurityGroup.id())
+///             .securityGroupIds(ptfeServiceAwsSecurityGroup.get("id"))
 ///             .subnetIds(subnetIds)
 ///             .privateDnsEnabled(false)
 ///             .build());
@@ -1433,7 +1466,7 @@ import 'vpc_endpoint_subnet_configuration.dart';
 ///             .name(String.format("ptfe.%s", internal.name()))
 ///             .type("CNAME")
 ///             .ttl(300)
-///             .records(ptfeService.dnsEntries().applyValue(_dnsEntries -> _dnsEntries[0].dns_name()))
+///             .records(ptfeService.dnsEntries().applyValue(_dnsEntries -> _dnsEntries.get(0).dns_name()))
 ///             .build());
 ///
 ///     }
@@ -1561,7 +1594,7 @@ class VpcEndpoint extends pulumi.CustomResource {
           'aws:ec2/vpcEndpoint:VpcEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoAccept = registerOutput<bool?>('autoAccept');

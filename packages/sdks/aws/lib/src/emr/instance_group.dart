@@ -76,7 +76,7 @@ import 'instance_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -84,7 +84,10 @@ import 'instance_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_emr_instancegroup" "task" {
+/// resource "aws_emr_instance_group" "task" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id     = tf-test-cluster.id
 ///   instance_count = 1
 ///   instance_type  = "m5.xlarge"
@@ -113,7 +116,7 @@ import 'instance_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var task = new InstanceGroup("task", InstanceGroupArgs.builder()
-///             .clusterId(tf_test_cluster.id())
+///             .clusterId(tf_test_cluster.get("id"))
 ///             .instanceCount(1)
 ///             .instanceType("m5.xlarge")
 ///             .name("my little instance group")
@@ -255,7 +258,7 @@ class InstanceGroup extends pulumi.CustomResource {
   /// }
   /// ```
   /// ```hcl
-  /// pulumi {
+  /// terraform {
   ///   required_providers {
   ///     aws = {
   ///       source = "pulumi/aws"
@@ -263,8 +266,27 @@ class InstanceGroup extends pulumi.CustomResource {
   ///   }
   /// }
   ///
-  /// resource "aws_emr_instancegroup" "task" {
-  ///   configurations_json = "[\n{\n\\\"Classification\\\": \\\"hadoop-env\\\",\n\\\"Configurations\\\": [\n{\n\\\"Classification\\\": \\\"export\\\",\n\\\"Properties\\\": {\n\\\"JAVA_HOME\\\": \\\"/usr/lib/jvm/java-1.8.0\\\"\n}\n}\n],\n\\\"Properties\\\": {}\n}\n]\n"
+  /// resource "aws_emr_instance_group" "task" {
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
+  ///   configurations_json = <<EOF
+  /// [
+  /// {
+  /// \"Classification\": \"hadoop-env\",
+  /// \"Configurations\": [
+  /// {
+  /// \"Classification\": \"export\",
+  /// \"Properties\": {
+  /// \"JAVA_HOME\": \"/usr/lib/jvm/java-1.8.0\"
+  /// }
+  /// }
+  /// ],
+  /// \"Properties\": {}
+  /// }
+  /// ]
+  /// EOF
+  ///
   /// }
   /// ```
   /// ```java
@@ -361,7 +383,7 @@ class InstanceGroup extends pulumi.CustomResource {
           'aws:emr/instanceGroup:InstanceGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     autoscalingPolicy = registerOutput<String?>('autoscalingPolicy');
     bidPrice = registerOutput<String?>('bidPrice');

@@ -110,7 +110,7 @@ import 'bucket_metadata_configuration_timeouts.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -118,13 +118,16 @@ import 'bucket_metadata_configuration_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_s3_bucketmetadataconfiguration" "example" {
-///   metadata_configuration = {
-///     inventory_table_configuration = {
+/// resource "aws_s3_bucket_metadata_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   metadata_configuration {
+///     inventory_table_configuration {
 ///       configuration_state = "ENABLED"
 ///     }
-///     journal_table_configuration = {
-///       record_expiration = {
+///     journal_table_configuration {
+///       record_expiration {
 ///         days       = 7
 ///         expiration = "ENABLED"
 ///       }
@@ -170,7 +173,7 @@ import 'bucket_metadata_configuration_timeouts.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
-///             .bucket(exampleAwsS3Bucket.bucket())
+///             .bucket(exampleAwsS3Bucket.get("bucket"))
 ///             .build());
 ///
 ///     }
@@ -236,7 +239,7 @@ class BucketMetadataConfiguration extends pulumi.CustomResource {
           'aws:s3/bucketMetadataConfiguration:BucketMetadataConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
+          pulumi.CustomResourceOptions(version: '7.52.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
