@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_state_get_local_reference_args_doc}
 class GetLocalReferenceArgs {
   /// The path to the tfstate file. This defaults to "terraform.tfstate" relative to the root module by default.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The path to non-default workspaces.
-  final pulumi.Input<String>? workspaceDir;
+  final pulumi.Input<String?>? workspaceDir;
 
   /// Creates a new [GetLocalReferenceArgs].
   /// [path] The path to the tfstate file. This defaults to "terraform.tfstate" relative to the root module by default.
