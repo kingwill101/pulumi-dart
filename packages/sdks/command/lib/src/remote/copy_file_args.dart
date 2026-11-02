@@ -15,7 +15,7 @@ class CopyFileArgs {
   /// The destination path in the remote host.
   final pulumi.Input<String> remotePath;
   /// Trigger replacements on changes to this input.
-  final pulumi.Input<List<dynamic>>? triggers;
+  final pulumi.Input<List<dynamic>?>? triggers;
 
   /// Creates a new [CopyFileArgs].
   /// [connection] The parameters with which to connect to the remote host.

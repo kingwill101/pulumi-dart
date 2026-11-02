@@ -4,11 +4,6 @@ import 'copy_to_remote_args.dart';
 
 /// Copy an Asset or Archive to a remote host.
 ///
-/// Supported source types:
-/// - `FileAsset`: Copy a local file to the remote host.
-/// - `StringAsset`: Copy text content directly to a remote file (useful for configuration files, certificates, etc.).
-/// - `FileArchive`: Copy a local directory or archive to the remote host.
-///
 /// {{% examples %}}
 ///
 /// ## Example usage
@@ -344,10 +339,10 @@ class CopyToRemote extends pulumi.CustomResource {
   late final pulumi.Output<Connection> connection;
   /// The destination path on the remote host. Any necessary parent directories will be created automatically. When the remote path is an existing directory, the source file or directory will be copied into that directory. When the source is a file and the remote path is an existing file, that file will be overwritten. When the source is a directory and the remote path an existing file, the copy will fail.
   late final pulumi.Output<String> remotePath;
-  /// An [asset or an archive](https://www.pulumi.com/docs/concepts/assets-archives/) to upload as the source of the copy. It must be a `FileAsset`, `StringAsset`, or a `FileArchive`. The item will be copied as-is; archives like .tgz will not be unpacked. Directories are copied recursively, overwriting existing files.
+  /// An [asset or an archive](https://www.pulumi.com/docs/concepts/assets-archives/) to upload as the source of the copy. The item will be copied as-is; archives like .tgz will not be unpacked. Directories are copied recursively, overwriting existing files.
   late final pulumi.Output<dynamic> source;
   /// Trigger replacements on changes to this input.
-  late final pulumi.Output<List<Map<String, dynamic>>?> triggers;
+  late final pulumi.Output<List<dynamic>?> triggers;
 
   /// Creates a new [CopyToRemote].
   /// [name] The Pulumi resource name.
@@ -361,11 +356,28 @@ class CopyToRemote extends pulumi.CustomResource {
           'command:remote:CopyToRemote',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['triggers[*]']).merge(options),
+          additionalSecretOutputs: const ['connection'],
         ) {
-    connection = registerOutput<Connection>('connection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Connection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connection = registerOutput<Connection>('connection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Connection.fromMap((guardedValue as Map).cast<String, dynamic>()); }, isSecret: true);
     remotePath = registerOutput<String>('remotePath');
     source = registerOutput<dynamic>('source');
-    triggers = registerOutput<List<Map<String, dynamic>>?>('triggers');
+    triggers = registerOutput<List<dynamic>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+  }
+
+  /// Creates a typed reference to an existing [CopyToRemote] resource.
+  CopyToRemote.reference(String urn)
+    : super(
+        'command:remote:CopyToRemote',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['connection'],
+        isResourceReference: true,
+      ) {
+    connection = registerOutput<Connection>('connection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Connection.fromMap((guardedValue as Map).cast<String, dynamic>()); }, isSecret: true);
+    remotePath = registerOutput<String>('remotePath');
+    source = registerOutput<dynamic>('source');
+    triggers = registerOutput<List<dynamic>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
   }
 }

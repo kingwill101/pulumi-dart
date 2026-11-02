@@ -737,7 +737,7 @@ class Command extends pulumi.CustomResource {
   ///
   /// Use `local.runOutput` if you need to run a command on every execution of your program.
   late final pulumi.Output<String?> create;
-  /// The command to run on resource delettion.
+  /// The command to run on resource deletion.
   ///
   /// The environment variables `PULUMI_COMMAND_STDOUT` and `PULUMI_COMMAND_STDERR` are set to the stdout and stderr properties of the Command resource from previous create or update steps.
   late final pulumi.Output<String?> delete;
@@ -766,7 +766,7 @@ class Command extends pulumi.CustomResource {
   /// If the `update` command was provided the resource will be updated, otherwise it will be replaced using the `create` command.
   ///
   /// Please see the resource documentation for examples.
-  late final pulumi.Output<List<Map<String, dynamic>>?> triggers;
+  late final pulumi.Output<List<dynamic>?> triggers;
   /// The command to run when the resource is updated.
   ///
   /// If empty, the create command will be executed instead.
@@ -790,23 +790,50 @@ class Command extends pulumi.CustomResource {
           'command:local:Command',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['triggers[*]']).merge(options),
         ) {
     addPreviousOutputInEnv = registerOutput<bool?>('addPreviousOutputInEnv');
     archive = registerOutput<dynamic>('archive');
-    archivePaths = registerOutput<List<String>?>('archivePaths');
-    assetPaths = registerOutput<List<String>?>('assetPaths');
-    assets = registerOutput<Map<String, dynamic>?>('assets');
+    archivePaths = registerOutput<List<String>?>('archivePaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    assetPaths = registerOutput<List<String>?>('assetPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    assets = registerOutput<Map<String, dynamic>?>('assets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
     create = registerOutput<String?>('create');
     delete = registerOutput<String?>('delete');
     dir = registerOutput<String?>('dir');
-    environment = registerOutput<Map<String, String>?>('environment');
-    interpreter = registerOutput<List<String>?>('interpreter');
+    environment = registerOutput<Map<String, String>?>('environment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    interpreter = registerOutput<List<String>?>('interpreter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     logging = registerOutput<Logging?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Logging.fromValue(guardedValue as String); });
     stderr = registerOutput<String>('stderr');
     stdin = registerOutput<String?>('stdin');
     stdout = registerOutput<String>('stdout');
-    triggers = registerOutput<List<Map<String, dynamic>>?>('triggers');
+    triggers = registerOutput<List<dynamic>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    update = registerOutput<String?>('update');
+  }
+
+  /// Creates a typed reference to an existing [Command] resource.
+  Command.reference(String urn)
+    : super(
+        'command:local:Command',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addPreviousOutputInEnv = registerOutput<bool?>('addPreviousOutputInEnv');
+    archive = registerOutput<dynamic>('archive');
+    archivePaths = registerOutput<List<String>?>('archivePaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    assetPaths = registerOutput<List<String>?>('assetPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    assets = registerOutput<Map<String, dynamic>?>('assets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
+    create = registerOutput<String?>('create');
+    delete = registerOutput<String?>('delete');
+    dir = registerOutput<String?>('dir');
+    environment = registerOutput<Map<String, String>?>('environment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    interpreter = registerOutput<List<String>?>('interpreter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    logging = registerOutput<Logging?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Logging.fromValue(guardedValue as String); });
+    stderr = registerOutput<String>('stderr');
+    stdin = registerOutput<String?>('stdin');
+    stdout = registerOutput<String>('stdout');
+    triggers = registerOutput<List<dynamic>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     update = registerOutput<String?>('update');
   }
 }
