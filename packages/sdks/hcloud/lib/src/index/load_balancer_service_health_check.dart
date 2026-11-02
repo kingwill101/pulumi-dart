@@ -5,7 +5,7 @@ import 'load_balancer_service_health_check_http.dart';
 
 class LoadBalancerServiceHealthCheck {
   /// HTTP configuration. Required if `protocol` is `http`.
-  final pulumi.Input<LoadBalancerServiceHealthCheckHttp>? http;
+  final pulumi.Input<LoadBalancerServiceHealthCheckHttp?>? http;
   /// Interval how often the health check will be performed, in seconds.
   final pulumi.Input<int> interval;
   /// Port the health check tries to connect to, required if protocol is `tcp`. Can be everything between `1` and `65535`. Must be unique per Load Balancer.
@@ -47,11 +47,11 @@ class LoadBalancerServiceHealthCheck {
   factory LoadBalancerServiceHealthCheck.fromMap(Map<String, dynamic> map) {
     return LoadBalancerServiceHealthCheck(
       http: (() { final guardedValue = map['http']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoadBalancerServiceHealthCheckHttp.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      interval: pulumi.Input.fromValue(map['interval'] as int),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      interval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['interval'])),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
-      retries: pulumi.Input.fromValue(map['retries'] as int),
-      timeout: pulumi.Input.fromValue(map['timeout'] as int),
+      retries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retries'])),
+      timeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeout'])),
     );
   }
 }

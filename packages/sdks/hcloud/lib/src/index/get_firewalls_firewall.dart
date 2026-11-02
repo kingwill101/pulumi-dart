@@ -5,11 +5,11 @@ import 'get_firewalls_firewall_apply_to.dart';
 import 'get_firewalls_firewall_rule.dart';
 
 class GetFirewallsFirewall {
-  final pulumi.Input<List<GetFirewallsFirewallApplyTo>>? applyTos;
-  final pulumi.Input<int>? id;
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<List<GetFirewallsFirewallApplyTo>?>? applyTos;
+  final pulumi.Input<int?>? id;
+  final pulumi.Input<Map<String, String>?>? labels;
   final pulumi.Input<String> name;
-  final pulumi.Input<List<GetFirewallsFirewallRule>>? rules;
+  final pulumi.Input<List<GetFirewallsFirewallRule>?>? rules;
 
   /// Creates a new [GetFirewallsFirewall].
   /// [applyTos] Optional.
@@ -38,7 +38,7 @@ class GetFirewallsFirewall {
   factory GetFirewallsFirewall.fromMap(Map<String, dynamic> map) {
     return GetFirewallsFirewall(
       applyTos: (() { final guardedValue = map['applyTos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetFirewallsFirewallApplyTo>(guardedValue, (value) => GetFirewallsFirewallApplyTo.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetFirewallsFirewallRule>(guardedValue, (value) => GetFirewallsFirewallRule.fromMap((value as Map).cast<String, dynamic>()))); })(),

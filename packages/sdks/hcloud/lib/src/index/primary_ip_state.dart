@@ -5,27 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering PrimaryIp resources.
 class PrimaryIpState {
   /// ID of the resource the Primary IP should be assigned to.
-  final pulumi.Input<int>? assigneeId;
+  final pulumi.Input<int?>? assigneeId;
   /// Type of the resource the Primary IP should be assigned to.
-  final pulumi.Input<String>? assigneeType;
+  final pulumi.Input<String?>? assigneeType;
   /// Whether auto delete is enabled. Setting `autoDelete` to `true` is not recommended, because if a server assigned to the managed ip is deleted, it will also delete the primary IP which will break the terraform state.
-  final pulumi.Input<bool>? autoDelete;
+  final pulumi.Input<bool?>? autoDelete;
   /// Name of the Datacenter for the Primary IP. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-datacenters-are-there) for more details about datacenters.
-  final pulumi.Input<String>? datacenter;
+  final pulumi.Input<String?>? datacenter;
   /// Whether delete protection is enabled.
-  final pulumi.Input<bool>? deleteProtection;
+  final pulumi.Input<bool?>? deleteProtection;
   /// IP address of the Primary IP.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// IP network of the Primary IP for IPv6 addresses. Only set if `type` is `ipv6`.
-  final pulumi.Input<String>? ipNetwork;
+  final pulumi.Input<String?>? ipNetwork;
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the Location for the Primary IP. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the Primary IP.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Type of the Primary IP (`ipv4` or `ipv6`).
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [PrimaryIpState].
   /// [assigneeId] ID of the resource the Primary IP should be assigned to.
@@ -71,7 +71,7 @@ class PrimaryIpState {
 
   factory PrimaryIpState.fromMap(Map<String, dynamic> map) {
     return PrimaryIpState(
-      assigneeId: (() { final guardedValue = map['assigneeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      assigneeId: (() { final guardedValue = map['assigneeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       assigneeType: (() { final guardedValue = map['assigneeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       autoDelete: (() { final guardedValue = map['autoDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       datacenter: (() { final guardedValue = map['datacenter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering Certificate resources.
 class CertificateState {
-  final pulumi.Input<String>? certificate;
-  final pulumi.Input<String>? created;
-  final pulumi.Input<List<String>>? domainNames;
-  final pulumi.Input<String>? fingerprint;
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? notValidAfter;
-  final pulumi.Input<String>? notValidBefore;
-  final pulumi.Input<String>? privateKey;
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? certificate;
+  final pulumi.Input<String?>? created;
+  final pulumi.Input<List<String>?>? domainNames;
+  final pulumi.Input<String?>? fingerprint;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? notValidAfter;
+  final pulumi.Input<String?>? notValidBefore;
+  final pulumi.Input<String?>? privateKey;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [CertificateState].
   /// [certificate] Optional.

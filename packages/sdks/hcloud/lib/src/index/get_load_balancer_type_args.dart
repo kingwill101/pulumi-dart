@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_load_balancer_type_get_load_balancer_type_args_doc}
 class GetLoadBalancerTypeArgs {
   /// ID of the Load Balancer Type.
-  final pulumi.Input<int>? id;
+  final pulumi.Input<int?>? id;
   /// Name of the Load Balancer Type.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GetLoadBalancerTypeArgs].
   /// [id] ID of the Load Balancer Type.
@@ -29,7 +29,7 @@ class GetLoadBalancerTypeArgs {
 
   factory GetLoadBalancerTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerTypeArgs(
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

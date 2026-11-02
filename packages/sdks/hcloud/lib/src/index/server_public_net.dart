@@ -3,10 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerPublicNet {
-  final pulumi.Input<int>? ipv4;
-  final pulumi.Input<bool>? ipv4Enabled;
-  final pulumi.Input<int>? ipv6;
-  final pulumi.Input<bool>? ipv6Enabled;
+  final pulumi.Input<int?>? ipv4;
+  final pulumi.Input<bool?>? ipv4Enabled;
+  final pulumi.Input<int?>? ipv6;
+  final pulumi.Input<bool?>? ipv6Enabled;
 
   /// Creates a new [ServerPublicNet].
   /// [ipv4] Optional.
@@ -31,9 +31,9 @@ class ServerPublicNet {
 
   factory ServerPublicNet.fromMap(Map<String, dynamic> map) {
     return ServerPublicNet(
-      ipv4: (() { final guardedValue = map['ipv4']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ipv4: (() { final guardedValue = map['ipv4']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipv4Enabled: (() { final guardedValue = map['ipv4Enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      ipv6: (() { final guardedValue = map['ipv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ipv6: (() { final guardedValue = map['ipv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipv6Enabled: (() { final guardedValue = map['ipv6Enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

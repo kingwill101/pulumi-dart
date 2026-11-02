@@ -58,9 +58,9 @@ class GetLocationsLocation {
       city: pulumi.Input.fromValue(map['city'] as String),
       country: pulumi.Input.fromValue(map['country'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      id: pulumi.Input.fromValue(map['id'] as int),
-      latitude: pulumi.Input.fromValue(map['latitude'] as double),
-      longitude: pulumi.Input.fromValue(map['longitude'] as double),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
+      latitude: pulumi.Input.fromValue((map['latitude'] as num).toDouble()),
+      longitude: pulumi.Input.fromValue((map['longitude'] as num).toDouble()),
       name: pulumi.Input.fromValue(map['name'] as String),
       networkZone: pulumi.Input.fromValue(map['networkZone'] as String),
     );

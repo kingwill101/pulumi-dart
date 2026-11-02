@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_storage_box_snapshot_storage_box_snapshot_args_doc}
 class StorageBoxSnapshotArgs {
   /// Description of the Storage Box Snapshot.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// ID of the Storage Box.
   final pulumi.Input<int> storageBoxId;
 
@@ -36,7 +36,7 @@ class StorageBoxSnapshotArgs {
     return StorageBoxSnapshotArgs(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      storageBoxId: pulumi.Input.fromValue(map['storageBoxId'] as int),
+      storageBoxId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['storageBoxId'])),
     );
   }
 }

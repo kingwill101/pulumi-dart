@@ -3,10 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerTarget {
-  final pulumi.Input<int>? serverId;
+  final pulumi.Input<int?>? serverId;
   /// (string) Type of the Load Balancer Algorithm. `roundRobin` or `leastConnections`
   final pulumi.Input<String> type;
-  final pulumi.Input<bool>? usePrivateIp;
+  final pulumi.Input<bool?>? usePrivateIp;
 
   /// Creates a new [LoadBalancerTarget].
   /// [serverId] Optional.
@@ -28,7 +28,7 @@ class LoadBalancerTarget {
 
   factory LoadBalancerTarget.fromMap(Map<String, dynamic> map) {
     return LoadBalancerTarget(
-      serverId: (() { final guardedValue = map['serverId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      serverId: (() { final guardedValue = map['serverId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       usePrivateIp: (() { final guardedValue = map['usePrivateIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

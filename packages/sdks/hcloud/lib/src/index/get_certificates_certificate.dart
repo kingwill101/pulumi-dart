@@ -9,7 +9,7 @@ class GetCertificatesCertificate {
   final pulumi.Input<String> fingerprint;
   final pulumi.Input<int> id;
   final pulumi.Input<Map<String, String>> labels;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> notValidAfter;
   final pulumi.Input<String> notValidBefore;
   final pulumi.Input<String> type;
@@ -59,7 +59,7 @@ class GetCertificatesCertificate {
       created: pulumi.Input.fromValue(map['created'] as String),
       domainNames: pulumi.Input.fromValue((map['domainNames'] as List).cast<String>()),
       fingerprint: pulumi.Input.fromValue(map['fingerprint'] as String),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notValidAfter: pulumi.Input.fromValue(map['notValidAfter'] as String),

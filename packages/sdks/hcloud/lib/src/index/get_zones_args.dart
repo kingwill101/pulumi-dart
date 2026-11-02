@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_zones_get_zones_args_doc}
 class GetZonesArgs {
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  final pulumi.Input<String>? withSelector;
+  final pulumi.Input<String?>? withSelector;
 
   /// Creates a new [GetZonesArgs].
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)

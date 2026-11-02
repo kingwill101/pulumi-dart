@@ -5,44 +5,44 @@ import 'get_datacenters_datacenter.dart';
 
 /// Result data returned by getDatacenters.
 class GetDatacentersResult {
-  final List<String> datacenterIds;
-  final List<GetDatacentersDatacenter> datacenters;
-  final List<String> descriptions;
+  final List<String>? datacenterIds;
+  final List<GetDatacentersDatacenter>? datacenters;
+  final List<String>? descriptions;
   /// The ID of this resource.
-  final String id;
-  final List<String> names;
+  final String? id;
+  final List<String>? names;
 
   /// Creates a new [GetDatacentersResult].
-  /// [datacenterIds] Required.
-  /// [datacenters] Required.
-  /// [descriptions] Required.
+  /// [datacenterIds] Optional.
+  /// [datacenters] Optional.
+  /// [descriptions] Optional.
   /// [id] The ID of this resource.
-  /// [names] Required.
+  /// [names] Optional.
   const GetDatacentersResult({
-    required this.datacenterIds,
-    required this.datacenters,
-    required this.descriptions,
-    required this.id,
-    required this.names,
+    this.datacenterIds,
+    this.datacenters,
+    this.descriptions,
+    this.id,
+    this.names,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'datacenterIds': datacenterIds,
-      'datacenters': pulumi.Input.encodeList<GetDatacentersDatacenter, Map<String, dynamic>>(datacenters, (value) => value.toMap()),
-      'descriptions': descriptions,
-      'id': id,
-      'names': names,
+      'datacenterIds': ?datacenterIds,
+      'datacenters': ?(() { final guardedValue = datacenters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDatacentersDatacenter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'descriptions': ?descriptions,
+      'id': ?id,
+      'names': ?names,
     };
   }
 
   factory GetDatacentersResult.fromMap(Map<String, dynamic> map) {
     return GetDatacentersResult(
-      datacenterIds: (map['datacenterIds'] as List).cast<String>(),
-      datacenters: pulumi.Input.decodeList<GetDatacentersDatacenter>(map['datacenters']!, (value) => GetDatacentersDatacenter.fromMap((value as Map).cast<String, dynamic>())),
-      descriptions: (map['descriptions'] as List).cast<String>(),
-      id: map['id'] as String,
-      names: (map['names'] as List).cast<String>(),
+      datacenterIds: (() { final guardedValue = map['datacenterIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      datacenters: (() { final guardedValue = map['datacenters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDatacentersDatacenter>(guardedValue, (value) => GetDatacentersDatacenter.fromMap((value as Map).cast<String, dynamic>())); })(),
+      descriptions: (() { final guardedValue = map['descriptions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      names: (() { final guardedValue = map['names']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

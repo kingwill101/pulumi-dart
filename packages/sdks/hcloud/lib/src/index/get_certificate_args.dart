@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_certificate_get_certificate_args_doc}
 class GetCertificateArgs {
   /// ID of the certificate.
-  final pulumi.Input<int>? id;
+  final pulumi.Input<int?>? id;
   /// Name of the certificate.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  final pulumi.Input<String>? withSelector;
+  final pulumi.Input<String?>? withSelector;
 
   /// Creates a new [GetCertificateArgs].
   /// [id] ID of the certificate.
@@ -34,7 +34,7 @@ class GetCertificateArgs {
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateArgs(
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

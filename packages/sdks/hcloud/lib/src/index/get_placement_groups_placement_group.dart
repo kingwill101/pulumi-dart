@@ -35,7 +35,7 @@ class GetPlacementGroupsPlacementGroup {
 
   factory GetPlacementGroupsPlacementGroup.fromMap(Map<String, dynamic> map) {
     return GetPlacementGroupsPlacementGroup(
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       servers: pulumi.Input.fromValue((map['servers'] as List).cast<int>()),

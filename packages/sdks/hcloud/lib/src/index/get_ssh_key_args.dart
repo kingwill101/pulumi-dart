@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_ssh_key_get_ssh_key_args_doc}
 class GetSshKeyArgs {
   /// Fingerprint of the SSH Key.
-  final pulumi.Input<String>? fingerprint;
+  final pulumi.Input<String?>? fingerprint;
   /// ID of the SSH Key.
-  final pulumi.Input<int>? id;
+  final pulumi.Input<int?>? id;
   /// Name of the SSH Key.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
-  final pulumi.Input<String>? withSelector;
+  final pulumi.Input<String?>? withSelector;
 
   /// Creates a new [GetSshKeyArgs].
   /// [fingerprint] Fingerprint of the SSH Key.
@@ -45,7 +45,7 @@ class GetSshKeyArgs {
   factory GetSshKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetSshKeyArgs(
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

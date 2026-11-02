@@ -7,21 +7,21 @@ import 'zone_primary_nameserver.dart';
 /// Input properties used for looking up and filtering Zone resources.
 class ZoneState {
   /// Authoritative nameservers of the Zone.
-  final pulumi.Input<ZoneAuthoritativeNameservers>? authoritativeNameservers;
+  final pulumi.Input<ZoneAuthoritativeNameservers?>? authoritativeNameservers;
   /// Whether delete protection is enabled.
-  final pulumi.Input<bool>? deleteProtection;
+  final pulumi.Input<bool?>? deleteProtection;
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Mode of the Zone.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Name of the Zone.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Primary nameservers of the Zone. Forbidden when mode is primary and required when mode is secondary.
-  final pulumi.Input<List<ZonePrimaryNameserver>>? primaryNameservers;
+  final pulumi.Input<List<ZonePrimaryNameserver>?>? primaryNameservers;
   /// Registrar of the Zone.
-  final pulumi.Input<String>? registrar;
+  final pulumi.Input<String?>? registrar;
   /// Default Time To Live (TTL) of the Zone.
-  final pulumi.Input<int>? ttl;
+  final pulumi.Input<int?>? ttl;
 
   /// Creates a new [ZoneState].
   /// [authoritativeNameservers] Authoritative nameservers of the Zone.
@@ -65,7 +65,7 @@ class ZoneState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       primaryNameservers: (() { final guardedValue = map['primaryNameservers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ZonePrimaryNameserver>(guardedValue, (value) => ZonePrimaryNameserver.fromMap((value as Map).cast<String, dynamic>()))); })(),
       registrar: (() { final guardedValue = map['registrar']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

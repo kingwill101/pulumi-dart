@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallRule {
   /// (Optional, string) Description of the firewall rule
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Required, List) List of CIDRs that are allowed within this Firewall Rule (when `direction` is `out`)
-  final pulumi.Input<List<String>>? destinationIps;
+  final pulumi.Input<List<String>?>? destinationIps;
   /// (Required, string) Direction of the Firewall Rule. `in`, `out`
   final pulumi.Input<String> direction;
   /// (Required, string) Port of the Firewall Rule. Required when `protocol` is `tcp` or `udp`
-  final pulumi.Input<String>? port;
+  final pulumi.Input<String?>? port;
   /// (Required, string) Protocol of the Firewall Rule. `tcp`, `icmp`, `udp`, `gre`, `esp`
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// (Required, List) List of CIDRs that are allowed within this Firewall Rule (when `direction` is `in`)
-  final pulumi.Input<List<String>>? sourceIps;
+  final pulumi.Input<List<String>?>? sourceIps;
 
   /// Creates a new [GetFirewallRule].
   /// [description] (Optional, string) Description of the firewall rule

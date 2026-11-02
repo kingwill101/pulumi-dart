@@ -6,10 +6,10 @@ import 'get_placement_groups_placement_group.dart';
 /// Result data returned by getPlacementGroups.
 class GetPlacementGroupsResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final bool? mostRecent;
   /// (list) List of all matching placement groups. See `data.hcloud_placement_group` for schema.
-  final List<GetPlacementGroupsPlacementGroup> placementGroups;
+  final List<GetPlacementGroupsPlacementGroup>? placementGroups;
   final String? withSelector;
 
   /// Creates a new [GetPlacementGroupsResult].
@@ -18,26 +18,26 @@ class GetPlacementGroupsResult {
   /// [placementGroups] (list) List of all matching placement groups. See `data.hcloud_placement_group` for schema.
   /// [withSelector] Optional.
   const GetPlacementGroupsResult({
-    required this.id,
+    this.id,
     this.mostRecent,
-    required this.placementGroups,
+    this.placementGroups,
     this.withSelector,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'id': ?id,
       'mostRecent': ?mostRecent,
-      'placementGroups': pulumi.Input.encodeList<GetPlacementGroupsPlacementGroup, Map<String, dynamic>>(placementGroups, (value) => value.toMap()),
+      'placementGroups': ?(() { final guardedValue = placementGroups; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPlacementGroupsPlacementGroup, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'withSelector': ?withSelector,
     };
   }
 
   factory GetPlacementGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetPlacementGroupsResult(
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      placementGroups: pulumi.Input.decodeList<GetPlacementGroupsPlacementGroup>(map['placementGroups']!, (value) => GetPlacementGroupsPlacementGroup.fromMap((value as Map).cast<String, dynamic>())),
+      placementGroups: (() { final guardedValue = map['placementGroups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPlacementGroupsPlacementGroup>(guardedValue, (value) => GetPlacementGroupsPlacementGroup.fromMap((value as Map).cast<String, dynamic>())); })(),
       withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
