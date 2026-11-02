@@ -25,7 +25,7 @@ class GetPagesProjectDeploymentConfigsProduction {
   final pulumi.Input<Map<String, GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets>> analyticsEngineDatasets;
   /// Browser bindings used for Pages Functions.
   final pulumi.Input<Map<String, Map<String, dynamic>>> browsers;
-  /// The major version of the build image to use for Pages Functions.
+  /// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
   final pulumi.Input<int> buildImageMajorVersion;
   /// Compatibility date used for Pages Functions.
   final pulumi.Input<String> compatibilityDate;
@@ -68,7 +68,7 @@ class GetPagesProjectDeploymentConfigsProduction {
   /// [alwaysUseLatestCompatibilityDate] Whether to always use the latest compatibility date for Pages Functions.
   /// [analyticsEngineDatasets] Analytics Engine bindings used for Pages Functions.
   /// [browsers] Browser bindings used for Pages Functions.
-  /// [buildImageMajorVersion] The major version of the build image to use for Pages Functions.
+  /// [buildImageMajorVersion] The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
   /// [compatibilityDate] Compatibility date used for Pages Functions.
   /// [compatibilityFlags] Compatibility flags used for Pages Functions.
   /// [d1Databases] D1 databases used for Pages Functions.
@@ -144,7 +144,7 @@ class GetPagesProjectDeploymentConfigsProduction {
       alwaysUseLatestCompatibilityDate: pulumi.Input.fromValue(map['alwaysUseLatestCompatibilityDate'] as bool),
       analyticsEngineDatasets: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets>(map['analyticsEngineDatasets']!, (value) => GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets.fromMap((value as Map).cast<String, dynamic>()))),
       browsers: pulumi.Input.fromValue((map['browsers'] as Map).cast<String, Map<String, dynamic>>()),
-      buildImageMajorVersion: pulumi.Input.fromValue((map['buildImageMajorVersion'] as num).toInt()),
+      buildImageMajorVersion: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['buildImageMajorVersion'])),
       compatibilityDate: pulumi.Input.fromValue(map['compatibilityDate'] as String),
       compatibilityFlags: pulumi.Input.fromValue((map['compatibilityFlags'] as List).cast<String>()),
       d1Databases: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<GetPagesProjectDeploymentConfigsProductionD1Databases>(map['d1Databases']!, (value) => GetPagesProjectDeploymentConfigsProductionD1Databases.fromMap((value as Map).cast<String, dynamic>()))),

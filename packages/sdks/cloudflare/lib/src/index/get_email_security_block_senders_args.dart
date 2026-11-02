@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_email_security_block_senders_get_email_security_block_senders_args_doc}
 class GetEmailSecurityBlockSendersArgs {
-  final pulumi.Input<String?>? accountId;
+  final pulumi.Input<String> accountId;
   final pulumi.Input<String?>? direction;
   final pulumi.Input<int?>? maxItems;
   final pulumi.Input<String?>? order;
@@ -16,7 +16,7 @@ class GetEmailSecurityBlockSendersArgs {
   final pulumi.Input<String?>? search;
 
   /// Creates a new [GetEmailSecurityBlockSendersArgs].
-  /// [accountId] Optional.
+  /// [accountId] Required.
   /// [direction] Optional.
   /// [maxItems] Optional.
   /// [order] Optional.
@@ -24,7 +24,7 @@ class GetEmailSecurityBlockSendersArgs {
   /// [patternType] Optional.
   /// [search] Optional.
   const GetEmailSecurityBlockSendersArgs({
-    this.accountId,
+    required this.accountId,
     this.direction,
     this.maxItems,
     this.order,
@@ -35,7 +35,7 @@ class GetEmailSecurityBlockSendersArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountId': ?accountId,
+      'accountId': accountId,
       'direction': ?direction,
       'maxItems': ?maxItems,
       'order': ?order,
@@ -47,9 +47,9 @@ class GetEmailSecurityBlockSendersArgs {
 
   factory GetEmailSecurityBlockSendersArgs.fromMap(Map<String, dynamic> map) {
     return GetEmailSecurityBlockSendersArgs(
-      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
       direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pattern: (() { final guardedValue = map['pattern']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       patternType: (() { final guardedValue = map['patternType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

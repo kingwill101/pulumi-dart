@@ -128,7 +128,7 @@ import 'zero_trust_dex_test_target_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -136,7 +136,10 @@ import 'zero_trust_dex_test_target_policy.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdextest" "example_zero_trust_dex_test" {
+/// resource "cloudflare_zero_trust_dex_test" "example_zero_trust_dex_test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "01a7362d577a6c3019a474fd6f485823"
 ///   data = {
 ///     host   = "https://dash.cloudflare.com"
@@ -147,11 +150,11 @@ import 'zero_trust_dex_test_target_policy.dart';
 ///   interval    = "30m"
 ///   name        = "HTTP dash health check"
 ///   description = "Checks the dash endpoint every 30 minutes"
-///   target_policies {
+///   target_policies = [{
 ///     id      = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///     default = true
 ///     name    = "name"
-///   }
+///   }]
 /// }
 /// ```
 /// ```java
@@ -256,7 +259,7 @@ class ZeroTrustDexTest extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.2').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     data = registerOutput<ZeroTrustDexTestData>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDexTestData.fromMap((guardedValue as Map).cast<String, dynamic>()); });

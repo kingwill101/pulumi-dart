@@ -23,8 +23,8 @@ class CustomSslArgs {
   /// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
   /// Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policyRestrictions".
   final pulumi.Input<String?>? policy;
-  /// The zone's private key.
-  final pulumi.Input<String> privateKey;
+  /// The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
+  final pulumi.Input<String?>? privateKey;
   /// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
   /// Available values: "legacy*custom", "sniCustom".
   final pulumi.Input<String?>? type;
@@ -38,7 +38,7 @@ class CustomSslArgs {
   /// [deploy] The environment to deploy the certificate to.
   /// [geoRestrictions] Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
   /// [policy] Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
-  /// [privateKey] The zone's private key.
+  /// [privateKey] The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
   /// [type] The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
   /// [zoneId] Identifier.
   const CustomSslArgs({
@@ -48,7 +48,7 @@ class CustomSslArgs {
     this.deploy,
     this.geoRestrictions,
     this.policy,
-    required this.privateKey,
+    this.privateKey,
     this.type,
     required this.zoneId,
   });
@@ -61,7 +61,7 @@ class CustomSslArgs {
       'deploy': ?deploy,
       'geoRestrictions': ?pulumi.Input.mapOptionalInputValue<CustomSslGeoRestrictions, Map<String, dynamic>>(geoRestrictions, (value) => value.toMap()),
       'policy': ?policy,
-      'privateKey': privateKey,
+      'privateKey': ?privateKey,
       'type': ?type,
       'zoneId': zoneId,
     };
@@ -75,7 +75,7 @@ class CustomSslArgs {
       deploy: (() { final guardedValue = map['deploy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       geoRestrictions: (() { final guardedValue = map['geoRestrictions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomSslGeoRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
+      privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );

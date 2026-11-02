@@ -38,7 +38,7 @@ class GetLoadBalancersResultRuleFixedResponse {
       contentType: pulumi.Input.fromValue(map['contentType'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       messageBody: pulumi.Input.fromValue(map['messageBody'] as String),
-      statusCode: pulumi.Input.fromValue((map['statusCode'] as num).toInt()),
+      statusCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['statusCode'])),
     );
   }
 }

@@ -8,18 +8,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_zero_trust_resource_library_categories_get_zero_trust_resource_library_categories_args_doc}
 class GetZeroTrustResourceLibraryCategoriesArgs {
   final pulumi.Input<String> accountId;
-  /// Limit of number of results to return.
+  /// Number of results to return. Defaults to 25; values are clamped to 1–250.
   final pulumi.Input<int?>? limit;
   /// Max items to fetch, default: 1000
   final pulumi.Input<int?>? maxItems;
-  /// Offset of results to return.
+  /// Number of results to skip. Defaults to 0; negative values are clamped to 0.
   final pulumi.Input<int?>? offset;
 
   /// Creates a new [GetZeroTrustResourceLibraryCategoriesArgs].
   /// [accountId] Required.
-  /// [limit] Limit of number of results to return.
+  /// [limit] Number of results to return. Defaults to 25; values are clamped to 1–250.
   /// [maxItems] Max items to fetch, default: 1000
-  /// [offset] Offset of results to return.
+  /// [offset] Number of results to skip. Defaults to 0; negative values are clamped to 0.
   const GetZeroTrustResourceLibraryCategoriesArgs({
     required this.accountId,
     this.limit,
@@ -39,9 +39,9 @@ class GetZeroTrustResourceLibraryCategoriesArgs {
   factory GetZeroTrustResourceLibraryCategoriesArgs.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustResourceLibraryCategoriesArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      offset: (() { final guardedValue = map['offset']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      offset: (() { final guardedValue = map['offset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

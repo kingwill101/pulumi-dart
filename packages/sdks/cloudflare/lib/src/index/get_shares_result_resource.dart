@@ -16,7 +16,7 @@ class GetSharesResultResource {
   /// Share Resource identifier.
   final pulumi.Input<String> resourceId;
   /// Resource Type.
-  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
   final pulumi.Input<String> resourceType;
   /// Resource Version.
   final pulumi.Input<int> resourceVersion;
@@ -69,7 +69,7 @@ class GetSharesResultResource {
       resourceAccountId: pulumi.Input.fromValue(map['resourceAccountId'] as String),
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
-      resourceVersion: pulumi.Input.fromValue((map['resourceVersion'] as num).toInt()),
+      resourceVersion: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['resourceVersion'])),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }

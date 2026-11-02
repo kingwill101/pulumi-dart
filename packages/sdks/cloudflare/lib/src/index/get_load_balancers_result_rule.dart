@@ -57,7 +57,7 @@ class GetLoadBalancersResultRule {
       fixedResponse: pulumi.Input.fromValue(GetLoadBalancersResultRuleFixedResponse.fromMap((map['fixedResponse']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
       overrides: pulumi.Input.fromValue(GetLoadBalancersResultRuleOverrides.fromMap((map['overrides']! as Map).cast<String, dynamic>())),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       terminates: pulumi.Input.fromValue(map['terminates'] as bool),
     );
   }

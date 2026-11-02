@@ -145,7 +145,7 @@ import 'managed_headers_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -153,16 +153,19 @@ import 'managed_headers_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_managedtransforms" "example_managed_transforms" {
+/// resource "cloudflare_managed_transforms" "example_managed_transforms" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "9f1839b6152d298aca64c4e906b6d074"
-///   managed_request_headers {
+///   managed_request_headers = [{
 ///     id      = "add_bot_protection_headers"
 ///     enabled = true
-///   }
-///   managed_response_headers {
+///   }]
+///   managed_response_headers = [{
 ///     id      = "add_security_headers"
 ///     enabled = true
-///   }
+///   }]
 /// }
 /// ```
 /// ```java
@@ -244,7 +247,7 @@ class ManagedHeaders extends pulumi.CustomResource {
           'cloudflare:index/managedHeaders:ManagedHeaders',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.2').merge(options),
         ) {
     managedRequestHeaders = registerOutput<List<ManagedHeadersManagedRequestHeader>?>('managedRequestHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedHeadersManagedRequestHeader>(guardedValue, (value) => ManagedHeadersManagedRequestHeader.fromMap((value as Map).cast<String, dynamic>())); });
     managedResponseHeaders = registerOutput<List<ManagedHeadersManagedResponseHeader>?>('managedResponseHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedHeadersManagedResponseHeader>(guardedValue, (value) => ManagedHeadersManagedResponseHeader.fromMap((value as Map).cast<String, dynamic>())); });

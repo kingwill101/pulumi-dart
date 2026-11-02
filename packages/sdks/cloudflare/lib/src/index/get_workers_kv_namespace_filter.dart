@@ -3,16 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWorkersKvNamespaceFilter {
-  /// Direction to order namespaces.
+  /// Sort namespaces in ascending (`asc`) or descending (`desc`) order.
   /// Available values: "asc", "desc".
   final pulumi.Input<String?>? direction;
-  /// Field to order results by.
+  /// Namespace field to sort by (`id` or `title`).
   /// Available values: "id", "title".
   final pulumi.Input<String?>? order;
 
   /// Creates a new [GetWorkersKvNamespaceFilter].
-  /// [direction] Direction to order namespaces.
-  /// [order] Field to order results by.
+  /// [direction] Sort namespaces in ascending (`asc`) or descending (`desc`) order.
+  /// [order] Namespace field to sort by (`id` or `title`).
   const GetWorkersKvNamespaceFilter({
     this.direction,
     this.order,

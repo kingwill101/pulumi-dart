@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_pages_projects_result_build_config.dart';
+import 'get_pages_projects_result_build_image_auto_upgrade.dart';
 import 'get_pages_projects_result_canonical_deployment.dart';
 import 'get_pages_projects_result_deployment_configs.dart';
 import 'get_pages_projects_result_latest_deployment.dart';
@@ -10,6 +11,8 @@ import 'get_pages_projects_result_source.dart';
 class GetPagesProjectsResult {
   /// Configs for the project build process.
   final pulumi.Input<GetPagesProjectsResultBuildConfig> buildConfig;
+  /// Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+  final pulumi.Input<GetPagesProjectsResultBuildImageAutoUpgrade> buildImageAutoUpgrade;
   /// Most recent production deployment of the project.
   final pulumi.Input<GetPagesProjectsResultCanonicalDeployment> canonicalDeployment;
   /// When the project was created.
@@ -26,7 +29,7 @@ class GetPagesProjectsResult {
   final pulumi.Input<String> id;
   /// Most recent deployment of the project.
   final pulumi.Input<GetPagesProjectsResultLatestDeployment> latestDeployment;
-  /// Name of the project.
+  /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   final pulumi.Input<String> name;
   /// Name of the preview script.
   final pulumi.Input<String> previewScriptName;
@@ -43,6 +46,7 @@ class GetPagesProjectsResult {
 
   /// Creates a new [GetPagesProjectsResult].
   /// [buildConfig] Configs for the project build process.
+  /// [buildImageAutoUpgrade] Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
   /// [canonicalDeployment] Most recent production deployment of the project.
   /// [createdOn] When the project was created.
   /// [deploymentConfigs] Configs for deployments in a project.
@@ -51,7 +55,7 @@ class GetPagesProjectsResult {
   /// [frameworkVersion] Version of the framework the project is using.
   /// [id] ID of the project.
   /// [latestDeployment] Most recent deployment of the project.
-  /// [name] Name of the project.
+  /// [name] Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   /// [previewScriptName] Name of the preview script.
   /// [productionBranch] Production branch of the project. Used to identify production deployments.
   /// [productionScriptName] Name of the production script.
@@ -60,6 +64,7 @@ class GetPagesProjectsResult {
   /// [usesFunctions] Whether the project uses functions.
   const GetPagesProjectsResult({
     required this.buildConfig,
+    required this.buildImageAutoUpgrade,
     required this.canonicalDeployment,
     required this.createdOn,
     required this.deploymentConfigs,
@@ -80,6 +85,7 @@ class GetPagesProjectsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'buildConfig': pulumi.Input.mapInputValue<GetPagesProjectsResultBuildConfig, Map<String, dynamic>>(buildConfig, (value) => value.toMap()),
+      'buildImageAutoUpgrade': pulumi.Input.mapInputValue<GetPagesProjectsResultBuildImageAutoUpgrade, Map<String, dynamic>>(buildImageAutoUpgrade, (value) => value.toMap()),
       'canonicalDeployment': pulumi.Input.mapInputValue<GetPagesProjectsResultCanonicalDeployment, Map<String, dynamic>>(canonicalDeployment, (value) => value.toMap()),
       'createdOn': createdOn,
       'deploymentConfigs': pulumi.Input.mapInputValue<GetPagesProjectsResultDeploymentConfigs, Map<String, dynamic>>(deploymentConfigs, (value) => value.toMap()),
@@ -101,6 +107,7 @@ class GetPagesProjectsResult {
   factory GetPagesProjectsResult.fromMap(Map<String, dynamic> map) {
     return GetPagesProjectsResult(
       buildConfig: pulumi.Input.fromValue(GetPagesProjectsResultBuildConfig.fromMap((map['buildConfig']! as Map).cast<String, dynamic>())),
+      buildImageAutoUpgrade: pulumi.Input.fromValue(GetPagesProjectsResultBuildImageAutoUpgrade.fromMap((map['buildImageAutoUpgrade']! as Map).cast<String, dynamic>())),
       canonicalDeployment: pulumi.Input.fromValue(GetPagesProjectsResultCanonicalDeployment.fromMap((map['canonicalDeployment']! as Map).cast<String, dynamic>())),
       createdOn: pulumi.Input.fromValue(map['createdOn'] as String),
       deploymentConfigs: pulumi.Input.fromValue(GetPagesProjectsResultDeploymentConfigs.fromMap((map['deploymentConfigs']! as Map).cast<String, dynamic>())),

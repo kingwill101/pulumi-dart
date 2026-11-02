@@ -7,6 +7,7 @@ import 'zero_trust_gateway_policy_schedule.dart';
 
 /// Input properties used for looking up and filtering ZeroTrustGatewayPolicy resources.
 class ZeroTrustGatewayPolicyState {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String?>? accountId;
   /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
   /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -49,7 +50,7 @@ class ZeroTrustGatewayPolicyState {
   final pulumi.Input<String?>? warningStatus;
 
   /// Creates a new [ZeroTrustGatewayPolicyState].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [action] Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
   /// [createdAt] Optional.
   /// [deletedAt] Indicate the date of deletion, if any.
@@ -133,7 +134,7 @@ class ZeroTrustGatewayPolicyState {
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      precedence: (() { final guardedValue = map['precedence']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      precedence: (() { final guardedValue = map['precedence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ruleSettings: (() { final guardedValue = map['ruleSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustGatewayPolicyRuleSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustGatewayPolicySchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -141,7 +142,7 @@ class ZeroTrustGatewayPolicyState {
       sourceAccount: (() { final guardedValue = map['sourceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       traffic: (() { final guardedValue = map['traffic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       warningStatus: (() { final guardedValue = map['warningStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

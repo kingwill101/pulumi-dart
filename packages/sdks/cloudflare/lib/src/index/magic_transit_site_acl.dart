@@ -182,7 +182,7 @@ import 'magic_transit_site_acl_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -190,17 +190,20 @@ import 'magic_transit_site_acl_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_magictransitsiteacl" "example_magic_transit_site_acl" {
+/// resource "cloudflare_magic_transit_site_acl" "example_magic_transit_site_acl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   site_id    = "023e105f4ecef8ad9ca31a8372d0c353"
-///   lan1 = {
+///   lan_1 = {
 ///     lan_id      = "lan_id"
 ///     lan_name    = "lan_name"
 ///     port_ranges = ["8080-9000"]
 ///     ports       = [1]
 ///     subnets     = ["192.0.2.1"]
 ///   }
-///   lan2 = {
+///   lan_2 = {
 ///     lan_id      = "lan_id"
 ///     lan_name    = "lan_name"
 ///     port_ranges = ["8080-9000"]
@@ -333,7 +336,7 @@ class MagicTransitSiteAcl extends pulumi.CustomResource {
           'cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.2').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     description = registerOutput<String?>('description');

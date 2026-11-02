@@ -96,7 +96,7 @@ class GetPageShieldCookiesListInvokeResult {
       export: (() { final guardedValue = map['export']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hosts: (() { final guardedValue = map['hosts']; if (guardedValue == null) return null; return guardedValue as String; })(),
       httpOnly: (() { final guardedValue = map['httpOnly']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       orderBy: (() { final guardedValue = map['orderBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       page: (() { final guardedValue = map['page']; if (guardedValue == null) return null; return guardedValue as String; })(),

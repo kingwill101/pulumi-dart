@@ -43,6 +43,10 @@ class GetZeroTrustAccessInfrastructureTargetFilter {
   /// The field to sort by.
   /// Available values: "hostname", "createdAt".
   final pulumi.Input<String?>? order;
+  /// Filter by tag key:value pairs. Multiple `tag` params are AND'd.
+  /// Format: `tag=key:value` (e.g., `tag=environment:production`).
+  /// Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+  final pulumi.Input<List<String>?>? tags;
   /// Filters for targets that have any of the following UUIDs. Specify
   /// `targetIds` multiple times in query parameter to build list of
   /// candidates.
@@ -67,6 +71,7 @@ class GetZeroTrustAccessInfrastructureTargetFilter {
   /// [modifiedAfter] Date and time at which the target was modified after (inclusive)
   /// [modifiedBefore] Date and time at which the target was modified before (inclusive)
   /// [order] The field to sort by.
+  /// [tags] Filter by tag key:value pairs. Multiple `tag` params are AND'd.
   /// [targetIds] Filters for targets that have any of the following UUIDs. Specify
   /// [virtualNetworkId] Private virtual network identifier of the target
   const GetZeroTrustAccessInfrastructureTargetFilter({
@@ -86,6 +91,7 @@ class GetZeroTrustAccessInfrastructureTargetFilter {
     this.modifiedAfter,
     this.modifiedBefore,
     this.order,
+    this.tags,
     this.targetIds,
     this.virtualNetworkId,
   });
@@ -108,6 +114,7 @@ class GetZeroTrustAccessInfrastructureTargetFilter {
       'modifiedAfter': ?modifiedAfter,
       'modifiedBefore': ?modifiedBefore,
       'order': ?order,
+      'tags': ?tags,
       'targetIds': ?targetIds,
       'virtualNetworkId': ?virtualNetworkId,
     };
@@ -131,6 +138,7 @@ class GetZeroTrustAccessInfrastructureTargetFilter {
       modifiedAfter: (() { final guardedValue = map['modifiedAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       modifiedBefore: (() { final guardedValue = map['modifiedBefore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       targetIds: (() { final guardedValue = map['targetIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       virtualNetworkId: (() { final guardedValue = map['virtualNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

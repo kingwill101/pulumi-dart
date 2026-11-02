@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_keyless_certificate_get_keyless_certificate_args_doc}
 class GetKeylessCertificateArgs {
-  /// Identifier.
+  /// Keyless certificate identifier tag.
   final pulumi.Input<String> keylessCertificateId;
   /// Identifier.
   final pulumi.Input<String?>? zoneId;
 
   /// Creates a new [GetKeylessCertificateArgs].
-  /// [keylessCertificateId] Identifier.
+  /// [keylessCertificateId] Keyless certificate identifier tag.
   /// [zoneId] Identifier.
   const GetKeylessCertificateArgs({
     required this.keylessCertificateId,

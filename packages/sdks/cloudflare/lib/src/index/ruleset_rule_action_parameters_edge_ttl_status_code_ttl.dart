@@ -31,9 +31,9 @@ class RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
 
   factory RulesetRuleActionParametersEdgeTtlStatusCodeTtl.fromMap(Map<String, dynamic> map) {
     return RulesetRuleActionParametersEdgeTtlStatusCodeTtl(
-      statusCode: (() { final guardedValue = map['statusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      statusCode: (() { final guardedValue = map['statusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       statusCodeRange: (() { final guardedValue = map['statusCodeRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      value: pulumi.Input.fromValue((map['value'] as num).toInt()),
+      value: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['value'])),
     );
   }
 }

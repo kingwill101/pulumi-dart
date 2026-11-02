@@ -73,7 +73,7 @@ import 'origin_tls_compliance_modes_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -81,9 +81,12 @@ import 'origin_tls_compliance_modes_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_origintlscompliancemodes" "example_origin_tls_compliance_modes" {
+/// resource "cloudflare_origin_tls_compliance_modes" "example_origin_tls_compliance_modes" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
-///   values  = ["fips", "pqh"]
+///   value   = ["fips", "pqh"]
 /// }
 /// ```
 /// ```java
@@ -157,7 +160,7 @@ class OriginTlsComplianceModes extends pulumi.CustomResource {
           'cloudflare:index/originTlsComplianceModes:OriginTlsComplianceModes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.2').merge(options),
         ) {
     editable = registerOutput<bool>('editable');
     modifiedOn = registerOutput<String>('modifiedOn');

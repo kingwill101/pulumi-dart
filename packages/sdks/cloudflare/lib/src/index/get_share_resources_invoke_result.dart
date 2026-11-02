@@ -10,7 +10,7 @@ class GetShareResourcesInvokeResult {
   /// Max items to fetch, default: 1000
   final int? maxItems;
   /// Filter share resources by resource_type.
-  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
   final String? resourceType;
   /// The items returned by the data source
   final List<GetShareResourcesResult>? results;
@@ -50,7 +50,7 @@ class GetShareResourcesInvokeResult {
   factory GetShareResourcesInvokeResult.fromMap(Map<String, dynamic> map) {
     return GetShareResourcesInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetShareResourcesResult>(guardedValue, (value) => GetShareResourcesResult.fromMap((value as Map).cast<String, dynamic>())); })(),
       shareId: (() { final guardedValue = map['shareId']; if (guardedValue == null) return null; return guardedValue as String; })(),

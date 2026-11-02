@@ -5,24 +5,24 @@ import 'get_workers_kv_namespaces_result.dart';
 
 /// Result data returned by getWorkersKvNamespaces.
 class GetWorkersKvNamespacesInvokeResult {
-  /// Identifier.
+  /// ID of the Cloudflare account that owns the Workers KV namespaces.
   final String? accountId;
-  /// Direction to order namespaces.
+  /// Sort namespaces in ascending (`asc`) or descending (`desc`) order.
   /// Available values: "asc", "desc".
   final String? direction;
   /// Max items to fetch, default: 1000
   final int? maxItems;
-  /// Field to order results by.
+  /// Namespace field to sort by (`id` or `title`).
   /// Available values: "id", "title".
   final String? order;
   /// The items returned by the data source
   final List<GetWorkersKvNamespacesResult>? results;
 
   /// Creates a new [GetWorkersKvNamespacesInvokeResult].
-  /// [accountId] Identifier.
-  /// [direction] Direction to order namespaces.
+  /// [accountId] ID of the Cloudflare account that owns the Workers KV namespaces.
+  /// [direction] Sort namespaces in ascending (`asc`) or descending (`desc`) order.
   /// [maxItems] Max items to fetch, default: 1000
-  /// [order] Field to order results by.
+  /// [order] Namespace field to sort by (`id` or `title`).
   /// [results] The items returned by the data source
   const GetWorkersKvNamespacesInvokeResult({
     this.accountId,
@@ -46,7 +46,7 @@ class GetWorkersKvNamespacesInvokeResult {
     return GetWorkersKvNamespacesInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return guardedValue as String; })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetWorkersKvNamespacesResult>(guardedValue, (value) => GetWorkersKvNamespacesResult.fromMap((value as Map).cast<String, dynamic>())); })(),
     );

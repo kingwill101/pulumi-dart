@@ -8,6 +8,10 @@ import 'get_api_token_policy.dart';
 /// Result data returned by getApiToken.
 class GetApiTokenResult {
   final GetApiTokenCondition? condition;
+  /// The email address of the user who created the token at the time of
+  /// creation. Only present for Account Owned API Tokens when a creator email
+  /// was available.
+  final String? creatorEmailAtCreation;
   /// The expiration time on or after which the JWT MUST NOT be accepted for processing.
   final String? expiresOn;
   final GetApiTokenFilter? filter;
@@ -25,6 +29,14 @@ class GetApiTokenResult {
   final String? notBefore;
   /// List of access policies assigned to the token.
   final List<GetApiTokenPolicy>? policies;
+  /// The identifier of the service that provisioned the token. For an
+  /// OAuth-provisioned token, this is the OAuth client identifier. Present
+  /// when `provisionerType` is present and null when the identifier is
+  /// unavailable.
+  final String? provisionerId;
+  /// The type of service that provisioned the token. Only present for
+  /// provisioned Account Owned API Tokens.
+  final String? provisionerType;
   /// Status of the token.
   /// Available values: "active", "disabled", "expired".
   final String? status;
@@ -33,6 +45,7 @@ class GetApiTokenResult {
 
   /// Creates a new [GetApiTokenResult].
   /// [condition] Optional.
+  /// [creatorEmailAtCreation] The email address of the user who created the token at the time of
   /// [expiresOn] The expiration time on or after which the JWT MUST NOT be accepted for processing.
   /// [filter] Optional.
   /// [id] Token identifier tag.
@@ -42,10 +55,13 @@ class GetApiTokenResult {
   /// [name] Token name.
   /// [notBefore] The time before which the token MUST NOT be accepted for processing.
   /// [policies] List of access policies assigned to the token.
+  /// [provisionerId] The identifier of the service that provisioned the token. For an
+  /// [provisionerType] The type of service that provisioned the token. Only present for
   /// [status] Status of the token.
   /// [tokenId] Token identifier tag.
   const GetApiTokenResult({
     this.condition,
+    this.creatorEmailAtCreation,
     this.expiresOn,
     this.filter,
     this.id,
@@ -55,6 +71,8 @@ class GetApiTokenResult {
     this.name,
     this.notBefore,
     this.policies,
+    this.provisionerId,
+    this.provisionerType,
     this.status,
     this.tokenId,
   });
@@ -62,6 +80,7 @@ class GetApiTokenResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'condition': ?condition?.toMap(),
+      'creatorEmailAtCreation': ?creatorEmailAtCreation,
       'expiresOn': ?expiresOn,
       'filter': ?filter?.toMap(),
       'id': ?id,
@@ -71,6 +90,8 @@ class GetApiTokenResult {
       'name': ?name,
       'notBefore': ?notBefore,
       'policies': ?(() { final guardedValue = policies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetApiTokenPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'provisionerId': ?provisionerId,
+      'provisionerType': ?provisionerType,
       'status': ?status,
       'tokenId': ?tokenId,
     };
@@ -79,6 +100,7 @@ class GetApiTokenResult {
   factory GetApiTokenResult.fromMap(Map<String, dynamic> map) {
     return GetApiTokenResult(
       condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return GetApiTokenCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      creatorEmailAtCreation: (() { final guardedValue = map['creatorEmailAtCreation']; if (guardedValue == null) return null; return guardedValue as String; })(),
       expiresOn: (() { final guardedValue = map['expiresOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return GetApiTokenFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -88,6 +110,8 @@ class GetApiTokenResult {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       notBefore: (() { final guardedValue = map['notBefore']; if (guardedValue == null) return null; return guardedValue as String; })(),
       policies: (() { final guardedValue = map['policies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetApiTokenPolicy>(guardedValue, (value) => GetApiTokenPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      provisionerId: (() { final guardedValue = map['provisionerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisionerType: (() { final guardedValue = map['provisionerType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tokenId: (() { final guardedValue = map['tokenId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

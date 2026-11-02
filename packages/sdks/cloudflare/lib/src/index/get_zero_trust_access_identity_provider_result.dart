@@ -30,7 +30,7 @@ class GetZeroTrustAccessIdentityProviderResult {
   /// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
   final GetZeroTrustAccessIdentityProviderScimConfig? scimConfig;
   /// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-  /// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
+  /// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare", "passkeys".
   final String? type;
   /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
   final String? zoneId;

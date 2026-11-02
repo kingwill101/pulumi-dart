@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering R2Bucket resources.
 class R2BucketState {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final pulumi.Input<String?>? accountId;
   /// Creation timestamp.
   final pulumi.Input<String?>? creationDate;
@@ -21,7 +21,7 @@ class R2BucketState {
   final pulumi.Input<String?>? storageClass;
 
   /// Creates a new [R2BucketState].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [creationDate] Creation timestamp.
   /// [jurisdiction] Jurisdiction where objects in this bucket are guaranteed to be stored.
   /// [location] Location of the bucket.

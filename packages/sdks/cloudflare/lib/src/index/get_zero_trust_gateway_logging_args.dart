@@ -7,10 +7,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_zero_trust_gateway_logging_get_zero_trust_gateway_logging_args_doc}
 class GetZeroTrustGatewayLoggingArgs {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String?>? accountId;
 
   /// Creates a new [GetZeroTrustGatewayLoggingArgs].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   const GetZeroTrustGatewayLoggingArgs({
     this.accountId,
   });

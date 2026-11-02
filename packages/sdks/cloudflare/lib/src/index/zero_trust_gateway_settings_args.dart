@@ -8,12 +8,13 @@ import 'zero_trust_gateway_settings_settings.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_zero_trust_gateway_settings_zero_trust_gateway_settings_args_doc}
 class ZeroTrustGatewaySettingsArgs {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String> accountId;
   /// Specify account settings.
   final pulumi.Input<ZeroTrustGatewaySettingsSettings?>? settings;
 
   /// Creates a new [ZeroTrustGatewaySettingsArgs].
-  /// [accountId] Required.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [settings] Specify account settings.
   const ZeroTrustGatewaySettingsArgs({
     required this.accountId,

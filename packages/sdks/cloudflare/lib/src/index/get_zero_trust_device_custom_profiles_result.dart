@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_zero_trust_device_custom_profiles_result_browser_extension_config.dart';
 import 'get_zero_trust_device_custom_profiles_result_dns_search_suffix.dart';
 import 'get_zero_trust_device_custom_profiles_result_exclude.dart';
 import 'get_zero_trust_device_custom_profiles_result_fallback_domain.dart';
@@ -18,9 +19,11 @@ class GetZeroTrustDeviceCustomProfilesResult {
   final pulumi.Input<bool> allowedToLeave;
   /// The amount of time in seconds to reconnect after having been disabled.
   final pulumi.Input<double> autoConnect;
+  /// Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+  final pulumi.Input<GetZeroTrustDeviceCustomProfilesResultBrowserExtensionConfig> browserExtensionConfig;
   /// Turn on the captive portal after the specified amount of time.
   final pulumi.Input<double> captivePortal;
-  /// Whether the policy is the default policy for an account.
+  /// Whether the policy is the account default. WARP group profiles cannot set this field.
   final pulumi.Input<bool> default_;
   /// A description of the policy.
   final pulumi.Input<String> description;
@@ -43,13 +46,16 @@ class GetZeroTrustDeviceCustomProfilesResult {
   final pulumi.Input<double> lanAllowMinutes;
   /// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
   final pulumi.Input<double> lanAllowSubnetSize;
-  /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+  /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
   final pulumi.Input<String> match;
   /// The name of the device settings profile.
   final pulumi.Input<String> name;
   final pulumi.Input<String> policyId;
   /// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
   final pulumi.Input<double> precedence;
+  /// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+  /// Available values: "warp", "browserExtension".
+  final pulumi.Input<String> profileType;
   /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
   final pulumi.Input<bool> registerInterfaceIpWithDns;
   /// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -62,6 +68,8 @@ class GetZeroTrustDeviceCustomProfilesResult {
   final pulumi.Input<List<GetZeroTrustDeviceCustomProfilesResultTargetTest>> targetTests;
   /// Determines which tunnel protocol to use.
   final pulumi.Input<String> tunnelProtocol;
+  /// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+  final pulumi.Input<bool> uninstallProtection;
   /// Virtual network access settings for the device.
   final pulumi.Input<GetZeroTrustDeviceCustomProfilesResultVirtualNetworks> virtualNetworks;
 
@@ -70,8 +78,9 @@ class GetZeroTrustDeviceCustomProfilesResult {
   /// [allowUpdates] Whether to receive update notifications when a new version of the client is available.
   /// [allowedToLeave] Whether to allow devices to leave the organization.
   /// [autoConnect] The amount of time in seconds to reconnect after having been disabled.
+  /// [browserExtensionConfig] Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
   /// [captivePortal] Turn on the captive portal after the specified amount of time.
-  /// [default_] Whether the policy is the default policy for an account.
+  /// [default_] Whether the policy is the account default. WARP group profiles cannot set this field.
   /// [description] A description of the policy.
   /// [disableAutoFallback] If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
   /// [dnsSearchSuffixes] List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
@@ -84,10 +93,11 @@ class GetZeroTrustDeviceCustomProfilesResult {
   /// [includes] List of routes included in the WARP client's tunnel.
   /// [lanAllowMinutes] The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
   /// [lanAllowSubnetSize] The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
-  /// [match] The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+  /// [match] The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
   /// [name] The name of the device settings profile.
   /// [policyId] Required.
   /// [precedence] The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
+  /// [profileType] The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
   /// [registerInterfaceIpWithDns] Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
   /// [sccmVpnBoundarySupport] Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
   /// [serviceModeV2] Required.
@@ -95,12 +105,14 @@ class GetZeroTrustDeviceCustomProfilesResult {
   /// [switchLocked] Whether to allow the user to turn off the WARP switch and disconnect the client.
   /// [targetTests] Required.
   /// [tunnelProtocol] Determines which tunnel protocol to use.
+  /// [uninstallProtection] Determines whether uninstalling the WARP client requires an override code. (Windows only).
   /// [virtualNetworks] Virtual network access settings for the device.
   const GetZeroTrustDeviceCustomProfilesResult({
     required this.allowModeSwitch,
     required this.allowUpdates,
     required this.allowedToLeave,
     required this.autoConnect,
+    required this.browserExtensionConfig,
     required this.captivePortal,
     required this.default_,
     required this.description,
@@ -119,6 +131,7 @@ class GetZeroTrustDeviceCustomProfilesResult {
     required this.name,
     required this.policyId,
     required this.precedence,
+    required this.profileType,
     required this.registerInterfaceIpWithDns,
     required this.sccmVpnBoundarySupport,
     required this.serviceModeV2,
@@ -126,6 +139,7 @@ class GetZeroTrustDeviceCustomProfilesResult {
     required this.switchLocked,
     required this.targetTests,
     required this.tunnelProtocol,
+    required this.uninstallProtection,
     required this.virtualNetworks,
   });
 
@@ -135,6 +149,7 @@ class GetZeroTrustDeviceCustomProfilesResult {
       'allowUpdates': allowUpdates,
       'allowedToLeave': allowedToLeave,
       'autoConnect': autoConnect,
+      'browserExtensionConfig': pulumi.Input.mapInputValue<GetZeroTrustDeviceCustomProfilesResultBrowserExtensionConfig, Map<String, dynamic>>(browserExtensionConfig, (value) => value.toMap()),
       'captivePortal': captivePortal,
       'default': default_,
       'description': description,
@@ -153,6 +168,7 @@ class GetZeroTrustDeviceCustomProfilesResult {
       'name': name,
       'policyId': policyId,
       'precedence': precedence,
+      'profileType': profileType,
       'registerInterfaceIpWithDns': registerInterfaceIpWithDns,
       'sccmVpnBoundarySupport': sccmVpnBoundarySupport,
       'serviceModeV2': pulumi.Input.mapInputValue<GetZeroTrustDeviceCustomProfilesResultServiceModeV2, Map<String, dynamic>>(serviceModeV2, (value) => value.toMap()),
@@ -160,6 +176,7 @@ class GetZeroTrustDeviceCustomProfilesResult {
       'switchLocked': switchLocked,
       'targetTests': pulumi.Input.mapInputValue<List<GetZeroTrustDeviceCustomProfilesResultTargetTest>, List<Map<String, dynamic>>>(targetTests, (value) => pulumi.Input.encodeList<GetZeroTrustDeviceCustomProfilesResultTargetTest, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tunnelProtocol': tunnelProtocol,
+      'uninstallProtection': uninstallProtection,
       'virtualNetworks': pulumi.Input.mapInputValue<GetZeroTrustDeviceCustomProfilesResultVirtualNetworks, Map<String, dynamic>>(virtualNetworks, (value) => value.toMap()),
     };
   }
@@ -170,6 +187,7 @@ class GetZeroTrustDeviceCustomProfilesResult {
       allowUpdates: pulumi.Input.fromValue(map['allowUpdates'] as bool),
       allowedToLeave: pulumi.Input.fromValue(map['allowedToLeave'] as bool),
       autoConnect: pulumi.Input.fromValue((map['autoConnect'] as num).toDouble()),
+      browserExtensionConfig: pulumi.Input.fromValue(GetZeroTrustDeviceCustomProfilesResultBrowserExtensionConfig.fromMap((map['browserExtensionConfig']! as Map).cast<String, dynamic>())),
       captivePortal: pulumi.Input.fromValue((map['captivePortal'] as num).toDouble()),
       default_: pulumi.Input.fromValue(map['default'] as bool),
       description: pulumi.Input.fromValue(map['description'] as String),
@@ -188,6 +206,7 @@ class GetZeroTrustDeviceCustomProfilesResult {
       name: pulumi.Input.fromValue(map['name'] as String),
       policyId: pulumi.Input.fromValue(map['policyId'] as String),
       precedence: pulumi.Input.fromValue((map['precedence'] as num).toDouble()),
+      profileType: pulumi.Input.fromValue(map['profileType'] as String),
       registerInterfaceIpWithDns: pulumi.Input.fromValue(map['registerInterfaceIpWithDns'] as bool),
       sccmVpnBoundarySupport: pulumi.Input.fromValue(map['sccmVpnBoundarySupport'] as bool),
       serviceModeV2: pulumi.Input.fromValue(GetZeroTrustDeviceCustomProfilesResultServiceModeV2.fromMap((map['serviceModeV2']! as Map).cast<String, dynamic>())),
@@ -195,6 +214,7 @@ class GetZeroTrustDeviceCustomProfilesResult {
       switchLocked: pulumi.Input.fromValue(map['switchLocked'] as bool),
       targetTests: pulumi.Input.fromValue(pulumi.Input.decodeList<GetZeroTrustDeviceCustomProfilesResultTargetTest>(map['targetTests']!, (value) => GetZeroTrustDeviceCustomProfilesResultTargetTest.fromMap((value as Map).cast<String, dynamic>()))),
       tunnelProtocol: pulumi.Input.fromValue(map['tunnelProtocol'] as String),
+      uninstallProtection: pulumi.Input.fromValue(map['uninstallProtection'] as bool),
       virtualNetworks: pulumi.Input.fromValue(GetZeroTrustDeviceCustomProfilesResultVirtualNetworks.fromMap((map['virtualNetworks']! as Map).cast<String, dynamic>())),
     );
   }

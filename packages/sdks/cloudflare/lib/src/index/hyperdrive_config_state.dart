@@ -12,12 +12,14 @@ class HyperdriveConfigState {
   final pulumi.Input<HyperdriveConfigCaching?>? caching;
   /// Defines the creation time of the Hyperdrive configuration.
   final pulumi.Input<String?>? createdOn;
+  final pulumi.Input<String?>? integration;
   /// Defines the last modified time of the Hyperdrive configuration.
   final pulumi.Input<String?>? modifiedOn;
   /// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
   final pulumi.Input<HyperdriveConfigMtls?>? mtls;
   /// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
   final pulumi.Input<String?>? name;
+  /// Combines database connection fields with exactly one supported network location.
   final pulumi.Input<HyperdriveConfigOrigin?>? origin;
   /// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
   final pulumi.Input<int?>? originConnectionLimit;
@@ -28,16 +30,18 @@ class HyperdriveConfigState {
   /// [accountId] Define configurations using a unique string identifier.
   /// [caching] Optional.
   /// [createdOn] Defines the creation time of the Hyperdrive configuration.
+  /// [integration] Optional.
   /// [modifiedOn] Defines the last modified time of the Hyperdrive configuration.
   /// [mtls] mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
   /// [name] The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
-  /// [origin] Optional.
+  /// [origin] Combines database connection fields with exactly one supported network location.
   /// [originConnectionLimit] The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
   /// [restartedOn] Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
   const HyperdriveConfigState({
     this.accountId,
     this.caching,
     this.createdOn,
+    this.integration,
     this.modifiedOn,
     this.mtls,
     this.name,
@@ -51,6 +55,7 @@ class HyperdriveConfigState {
       'accountId': ?accountId,
       'caching': ?pulumi.Input.mapOptionalInputValue<HyperdriveConfigCaching, Map<String, dynamic>>(caching, (value) => value.toMap()),
       'createdOn': ?createdOn,
+      'integration': ?integration,
       'modifiedOn': ?modifiedOn,
       'mtls': ?pulumi.Input.mapOptionalInputValue<HyperdriveConfigMtls, Map<String, dynamic>>(mtls, (value) => value.toMap()),
       'name': ?name,
@@ -65,11 +70,12 @@ class HyperdriveConfigState {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       caching: (() { final guardedValue = map['caching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HyperdriveConfigCaching.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createdOn: (() { final guardedValue = map['createdOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      integration: (() { final guardedValue = map['integration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       modifiedOn: (() { final guardedValue = map['modifiedOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mtls: (() { final guardedValue = map['mtls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HyperdriveConfigMtls.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       origin: (() { final guardedValue = map['origin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HyperdriveConfigOrigin.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      originConnectionLimit: (() { final guardedValue = map['originConnectionLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      originConnectionLimit: (() { final guardedValue = map['originConnectionLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       restartedOn: (() { final guardedValue = map['restartedOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

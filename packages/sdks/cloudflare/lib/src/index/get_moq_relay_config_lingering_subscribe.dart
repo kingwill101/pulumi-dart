@@ -25,7 +25,7 @@ class GetMoqRelayConfigLingeringSubscribe {
   factory GetMoqRelayConfigLingeringSubscribe.fromMap(Map<String, dynamic> map) {
     return GetMoqRelayConfigLingeringSubscribe(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      maxTimeoutMs: pulumi.Input.fromValue((map['maxTimeoutMs'] as num).toInt()),
+      maxTimeoutMs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxTimeoutMs'])),
     );
   }
 }
