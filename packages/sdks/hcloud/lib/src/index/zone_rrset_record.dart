@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ZoneRrsetRecord {
   /// Comment of the record.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// Value of the record.
   final pulumi.Input<String> value;
 

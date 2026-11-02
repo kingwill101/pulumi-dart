@@ -8,11 +8,11 @@ class GetSshKeyResult {
   /// ID of the SSH Key.
   final int? id;
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Name of the SSH Key.
   final String? name;
   /// Public key of the SSH Key pair.
-  final String publicKey;
+  final String? publicKey;
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
   final String? selector;
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
@@ -29,9 +29,9 @@ class GetSshKeyResult {
   const GetSshKeyResult({
     this.fingerprint,
     this.id,
-    required this.labels,
+    this.labels,
     this.name,
-    required this.publicKey,
+    this.publicKey,
     this.selector,
     this.withSelector,
   });
@@ -40,9 +40,9 @@ class GetSshKeyResult {
     return <String, dynamic>{
       'fingerprint': ?fingerprint,
       'id': ?id,
-      'labels': labels,
+      'labels': ?labels,
       'name': ?name,
-      'publicKey': publicKey,
+      'publicKey': ?publicKey,
       'selector': ?selector,
       'withSelector': ?withSelector,
     };
@@ -51,10 +51,10 @@ class GetSshKeyResult {
   factory GetSshKeyResult.fromMap(Map<String, dynamic> map) {
     return GetSshKeyResult(
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      labels: (map['labels'] as Map).cast<String, String>(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      publicKey: map['publicKey'] as String,
+      publicKey: (() { final guardedValue = map['publicKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
       selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return guardedValue as String; })(),
       withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

@@ -10,7 +10,7 @@ class GetFloatingIpsFloatingIp {
   final pulumi.Input<String> ipAddress;
   final pulumi.Input<String> ipNetwork;
   final pulumi.Input<Map<String, String>> labels;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<int> serverId;
   final pulumi.Input<String> type;
 
@@ -58,12 +58,12 @@ class GetFloatingIpsFloatingIp {
       deleteProtection: pulumi.Input.fromValue(map['deleteProtection'] as bool),
       description: pulumi.Input.fromValue(map['description'] as String),
       homeLocation: pulumi.Input.fromValue(map['homeLocation'] as String),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       ipNetwork: pulumi.Input.fromValue(map['ipNetwork'] as String),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      serverId: pulumi.Input.fromValue(map['serverId'] as int),
+      serverId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['serverId'])),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_zone_rrsets_get_zone_rrsets_args_doc}
 class GetZoneRrsetsArgs {
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  final pulumi.Input<String>? withSelector;
+  final pulumi.Input<String?>? withSelector;
   /// ID or Name of the parent Zone.
   final pulumi.Input<String> zone;
 

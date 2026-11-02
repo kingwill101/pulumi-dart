@@ -75,12 +75,12 @@ class GetPrimaryIpsPrimaryIp {
 
   factory GetPrimaryIpsPrimaryIp.fromMap(Map<String, dynamic> map) {
     return GetPrimaryIpsPrimaryIp(
-      assigneeId: pulumi.Input.fromValue(map['assigneeId'] as int),
+      assigneeId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['assigneeId'])),
       assigneeType: pulumi.Input.fromValue(map['assigneeType'] as String),
       autoDelete: pulumi.Input.fromValue(map['autoDelete'] as bool),
       datacenter: pulumi.Input.fromValue(map['datacenter'] as String),
       deleteProtection: pulumi.Input.fromValue(map['deleteProtection'] as bool),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       ipNetwork: pulumi.Input.fromValue(map['ipNetwork'] as String),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),

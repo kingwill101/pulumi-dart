@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering StorageBoxSnapshot resources.
 class StorageBoxSnapshotState {
   /// Description of the Storage Box Snapshot.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether the Storage Box Snapshot was created automatically.
-  final pulumi.Input<bool>? isAutomatic;
+  final pulumi.Input<bool?>? isAutomatic;
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the Storage Box Snapshot.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ID of the Storage Box.
-  final pulumi.Input<int>? storageBoxId;
+  final pulumi.Input<int?>? storageBoxId;
 
   /// Creates a new [StorageBoxSnapshotState].
   /// [description] Description of the Storage Box Snapshot.
@@ -45,7 +45,7 @@ class StorageBoxSnapshotState {
       isAutomatic: (() { final guardedValue = map['isAutomatic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageBoxId: (() { final guardedValue = map['storageBoxId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      storageBoxId: (() { final guardedValue = map['storageBoxId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

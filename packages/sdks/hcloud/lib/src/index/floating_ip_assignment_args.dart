@@ -29,8 +29,8 @@ class FloatingIpAssignmentArgs {
 
   factory FloatingIpAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return FloatingIpAssignmentArgs(
-      floatingIpId: pulumi.Input.fromValue(map['floatingIpId'] as int),
-      serverId: pulumi.Input.fromValue(map['serverId'] as int),
+      floatingIpId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['floatingIpId'])),
+      serverId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['serverId'])),
     );
   }
 }

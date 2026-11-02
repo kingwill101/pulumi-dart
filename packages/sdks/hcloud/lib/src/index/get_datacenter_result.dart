@@ -4,17 +4,17 @@
 /// Result data returned by getDatacenter.
 class GetDatacenterResult {
   /// List of currently available Server Types in the Datacenter.
-  final List<int> availableServerTypeIds;
+  final List<int>? availableServerTypeIds;
   /// Description of the Datacenter.
-  final String description;
+  final String? description;
   /// ID of the Datacenter.
   final int? id;
   /// Location of the Datacenter. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
-  final Map<String, String> location;
+  final Map<String, String>? location;
   /// Name of the Datacenter.
   final String? name;
   /// List of supported Server Types in the Datacenter.
-  final List<int> supportedServerTypeIds;
+  final List<int>? supportedServerTypeIds;
 
   /// Creates a new [GetDatacenterResult].
   /// [availableServerTypeIds] List of currently available Server Types in the Datacenter.
@@ -24,33 +24,33 @@ class GetDatacenterResult {
   /// [name] Name of the Datacenter.
   /// [supportedServerTypeIds] List of supported Server Types in the Datacenter.
   const GetDatacenterResult({
-    required this.availableServerTypeIds,
-    required this.description,
+    this.availableServerTypeIds,
+    this.description,
     this.id,
-    required this.location,
+    this.location,
     this.name,
-    required this.supportedServerTypeIds,
+    this.supportedServerTypeIds,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'availableServerTypeIds': availableServerTypeIds,
-      'description': description,
+      'availableServerTypeIds': ?availableServerTypeIds,
+      'description': ?description,
       'id': ?id,
-      'location': location,
+      'location': ?location,
       'name': ?name,
-      'supportedServerTypeIds': supportedServerTypeIds,
+      'supportedServerTypeIds': ?supportedServerTypeIds,
     };
   }
 
   factory GetDatacenterResult.fromMap(Map<String, dynamic> map) {
     return GetDatacenterResult(
-      availableServerTypeIds: (map['availableServerTypeIds'] as List).cast<int>(),
-      description: map['description'] as String,
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      location: (map['location'] as Map).cast<String, String>(),
+      availableServerTypeIds: (() { final guardedValue = map['availableServerTypeIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      supportedServerTypeIds: (map['supportedServerTypeIds'] as List).cast<int>(),
+      supportedServerTypeIds: (() { final guardedValue = map['supportedServerTypeIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); })(),
     );
   }
 }

@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_providers_provider_args_doc}
 class ProviderArgs {
   /// The Hetzner Cloud API endpoint, can be used to override the default API Endpoint https://api.hetzner.cloud/v1.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The Hetzner API endpoint, can be used to override the default API Endpoint https://api.hetzner.com/v1.
-  final pulumi.Input<String>? endpointHetzner;
+  final pulumi.Input<String?>? endpointHetzner;
   /// The type of function to be used during the polling.
-  final pulumi.Input<String>? pollFunction;
+  final pulumi.Input<String?>? pollFunction;
   /// The interval at which actions are polled by the client. Default `500ms`. Increase this interval if you run into rate limiting errors.
-  final pulumi.Input<String>? pollInterval;
+  final pulumi.Input<String?>? pollInterval;
   /// The Hetzner Cloud API token, can also be specified with the HCLOUD_TOKEN environment variable.
-  final pulumi.Input<String>? token;
+  final pulumi.Input<String?>? token;
 
   /// Creates a new [ProviderArgs].
   /// [endpoint] The Hetzner Cloud API endpoint, can be used to override the default API Endpoint https://api.hetzner.cloud/v1.

@@ -25,8 +25,8 @@ class GetStorageBoxSnapshotsSnapshotStats {
 
   factory GetStorageBoxSnapshotsSnapshotStats.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxSnapshotsSnapshotStats(
-      size: pulumi.Input.fromValue(map['size'] as int),
-      sizeFilesystem: pulumi.Input.fromValue(map['sizeFilesystem'] as int),
+      size: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['size'])),
+      sizeFilesystem: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeFilesystem'])),
     );
   }
 }

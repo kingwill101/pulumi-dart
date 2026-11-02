@@ -10,7 +10,7 @@ class GetStorageBoxSnapshotsArgs {
   /// ID of the Storage Box.
   final pulumi.Input<int> storageBoxId;
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  final pulumi.Input<String>? withSelector;
+  final pulumi.Input<String?>? withSelector;
 
   /// Creates a new [GetStorageBoxSnapshotsArgs].
   /// [storageBoxId] ID of the Storage Box.
@@ -29,7 +29,7 @@ class GetStorageBoxSnapshotsArgs {
 
   factory GetStorageBoxSnapshotsArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxSnapshotsArgs(
-      storageBoxId: pulumi.Input.fromValue(map['storageBoxId'] as int),
+      storageBoxId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['storageBoxId'])),
       withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

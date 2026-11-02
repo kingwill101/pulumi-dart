@@ -52,7 +52,7 @@ class GetServerTypeLocation {
     return GetServerTypeLocation(
       available: pulumi.Input.fromValue(map['available'] as bool),
       deprecationAnnounced: pulumi.Input.fromValue(map['deprecationAnnounced'] as String),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       isDeprecated: pulumi.Input.fromValue(map['isDeprecated'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
       recommended: pulumi.Input.fromValue(map['recommended'] as bool),

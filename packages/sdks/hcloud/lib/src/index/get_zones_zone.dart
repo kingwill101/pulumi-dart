@@ -64,13 +64,13 @@ class GetZonesZone {
     return GetZonesZone(
       authoritativeNameservers: pulumi.Input.fromValue(GetZonesZoneAuthoritativeNameservers.fromMap((map['authoritativeNameservers']! as Map).cast<String, dynamic>())),
       deleteProtection: pulumi.Input.fromValue(map['deleteProtection'] as bool),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       mode: pulumi.Input.fromValue(map['mode'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       primaryNameservers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetZonesZonePrimaryNameserver>(map['primaryNameservers']!, (value) => GetZonesZonePrimaryNameserver.fromMap((value as Map).cast<String, dynamic>()))),
       registrar: pulumi.Input.fromValue(map['registrar'] as String),
-      ttl: pulumi.Input.fromValue(map['ttl'] as int),
+      ttl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ttl'])),
     );
   }
 }

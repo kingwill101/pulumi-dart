@@ -7,13 +7,13 @@ import 'firewall_rule.dart';
 /// Input properties used for looking up and filtering Firewall resources.
 class FirewallState {
   /// Resources the firewall should be assigned to
-  final pulumi.Input<List<FirewallApplyTo>>? applyTos;
+  final pulumi.Input<List<FirewallApplyTo>?>? applyTos;
   /// User-defined labels (key-value pairs) should be created with.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the Firewall.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration of a Rule from this Firewall.
-  final pulumi.Input<List<FirewallRule>>? rules;
+  final pulumi.Input<List<FirewallRule>?>? rules;
 
   /// Creates a new [FirewallState].
   /// [applyTos] Resources the firewall should be assigned to

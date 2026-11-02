@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_primary_ips_get_primary_ips_args_doc}
 class GetPrimaryIpsArgs {
   /// The ID of this resource.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  final pulumi.Input<String>? withSelector;
+  final pulumi.Input<String?>? withSelector;
 
   /// Creates a new [GetPrimaryIpsArgs].
   /// [id] The ID of this resource.

@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering PlacementGroup resources.
 class PlacementGroupState {
   /// User-defined labels (key-value pairs) should be created with.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the Placement Group.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<List<int>>? servers;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<List<int>?>? servers;
   /// Type of the Placement Group.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [PlacementGroupState].
   /// [labels] User-defined labels (key-value pairs) should be created with.

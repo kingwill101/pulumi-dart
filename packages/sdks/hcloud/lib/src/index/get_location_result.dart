@@ -4,21 +4,21 @@
 /// Result data returned by getLocation.
 class GetLocationResult {
   /// Name of the closest city to the Location. City name and optionally state in short form.
-  final String city;
+  final String? city;
   /// Country the Location resides in. ISO 3166-1 alpha-2 code of the country.
-  final String country;
+  final String? country;
   /// Description of the Location.
-  final String description;
+  final String? description;
   /// ID of the Location.
   final int? id;
   /// Latitude of the city closest to the Location.
-  final double latitude;
+  final double? latitude;
   /// Longitude of the city closest to the Location.
-  final double longitude;
+  final double? longitude;
   /// Name of the Location.
   final String? name;
   /// Name of the Network Zone this Location resides in.
-  final String networkZone;
+  final String? networkZone;
 
   /// Creates a new [GetLocationResult].
   /// [city] Name of the closest city to the Location. City name and optionally state in short form.
@@ -30,39 +30,39 @@ class GetLocationResult {
   /// [name] Name of the Location.
   /// [networkZone] Name of the Network Zone this Location resides in.
   const GetLocationResult({
-    required this.city,
-    required this.country,
-    required this.description,
+    this.city,
+    this.country,
+    this.description,
     this.id,
-    required this.latitude,
-    required this.longitude,
+    this.latitude,
+    this.longitude,
     this.name,
-    required this.networkZone,
+    this.networkZone,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'city': city,
-      'country': country,
-      'description': description,
+      'city': ?city,
+      'country': ?country,
+      'description': ?description,
       'id': ?id,
-      'latitude': latitude,
-      'longitude': longitude,
+      'latitude': ?latitude,
+      'longitude': ?longitude,
       'name': ?name,
-      'networkZone': networkZone,
+      'networkZone': ?networkZone,
     };
   }
 
   factory GetLocationResult.fromMap(Map<String, dynamic> map) {
     return GetLocationResult(
-      city: map['city'] as String,
-      country: map['country'] as String,
-      description: map['description'] as String,
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      latitude: map['latitude'] as double,
-      longitude: map['longitude'] as double,
+      city: (() { final guardedValue = map['city']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      country: (() { final guardedValue = map['country']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      latitude: (() { final guardedValue = map['latitude']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      longitude: (() { final guardedValue = map['longitude']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      networkZone: map['networkZone'] as String,
+      networkZone: (() { final guardedValue = map['networkZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

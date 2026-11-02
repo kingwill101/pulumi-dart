@@ -12,9 +12,9 @@ class ManagedCertificateArgs {
   final pulumi.Input<List<String>> domainNames;
   /// User-defined labels (key-value pairs) the
   /// certificate should be created with.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the Certificate.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ManagedCertificateArgs].
   /// [domainNames] Domain names for which a certificate

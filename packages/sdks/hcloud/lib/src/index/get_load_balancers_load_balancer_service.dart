@@ -41,10 +41,10 @@ class GetLoadBalancersLoadBalancerService {
 
   factory GetLoadBalancersLoadBalancerService.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersLoadBalancerService(
-      destinationPort: pulumi.Input.fromValue(map['destinationPort'] as int),
+      destinationPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['destinationPort'])),
       healthChecks: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLoadBalancersLoadBalancerServiceHealthCheck>(map['healthChecks']!, (value) => GetLoadBalancersLoadBalancerServiceHealthCheck.fromMap((value as Map).cast<String, dynamic>()))),
       https: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLoadBalancersLoadBalancerServiceHttp>(map['https']!, (value) => GetLoadBalancersLoadBalancerServiceHttp.fromMap((value as Map).cast<String, dynamic>()))),
-      listenPort: pulumi.Input.fromValue(map['listenPort'] as int),
+      listenPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['listenPort'])),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       proxyprotocol: pulumi.Input.fromValue(map['proxyprotocol'] as bool),
     );

@@ -4,15 +4,15 @@
 /// Result data returned by getPlacementGroup.
 class GetPlacementGroupResult {
   /// (int) Unique ID of the Placement Group.
-  final int id;
+  final int? id;
   /// (map) User-defined labels (key-value pairs)
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   final bool? mostRecent;
   /// (string) Name of the Placement Group.
-  final String name;
-  final List<int> servers;
+  final String? name;
+  final List<int>? servers;
   /// (string) Type of the Placement Group.
-  final String type;
+  final String? type;
   final String? withSelector;
 
   /// Creates a new [GetPlacementGroupResult].
@@ -20,39 +20,39 @@ class GetPlacementGroupResult {
   /// [labels] (map) User-defined labels (key-value pairs)
   /// [mostRecent] Optional.
   /// [name] (string) Name of the Placement Group.
-  /// [servers] Required.
+  /// [servers] Optional.
   /// [type] (string) Type of the Placement Group.
   /// [withSelector] Optional.
   const GetPlacementGroupResult({
-    required this.id,
-    required this.labels,
+    this.id,
+    this.labels,
     this.mostRecent,
-    required this.name,
-    required this.servers,
-    required this.type,
+    this.name,
+    this.servers,
+    this.type,
     this.withSelector,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'labels': labels,
+      'id': ?id,
+      'labels': ?labels,
       'mostRecent': ?mostRecent,
-      'name': name,
-      'servers': servers,
-      'type': type,
+      'name': ?name,
+      'servers': ?servers,
+      'type': ?type,
       'withSelector': ?withSelector,
     };
   }
 
   factory GetPlacementGroupResult.fromMap(Map<String, dynamic> map) {
     return GetPlacementGroupResult(
-      id: map['id'] as int,
-      labels: (map['labels'] as Map).cast<String, String>(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      name: map['name'] as String,
-      servers: (map['servers'] as List).cast<int>(),
-      type: map['type'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      servers: (() { final guardedValue = map['servers']; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
