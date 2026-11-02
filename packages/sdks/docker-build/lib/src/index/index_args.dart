@@ -11,11 +11,11 @@ class IndexArgs {
   /// If true, push the index to the target registry.
   ///
   /// Defaults to `true`.
-  final pulumi.Input<bool>? push;
+  final pulumi.Input<bool?>? push;
   /// Authentication for the registry where the tagged index will be pushed.
   ///
   /// Credentials can also be included with the provider's configuration.
-  final pulumi.Input<Registry>? registry;
+  final pulumi.Input<Registry?>? registry;
   /// Existing images to include in the index.
   final pulumi.Input<List<String>> sources;
   /// The tag to apply to the index.
@@ -26,12 +26,12 @@ class IndexArgs {
   /// [registry] Authentication for the registry where the tagged index will be pushed.
   /// [sources] Existing images to include in the index.
   /// [tag] The tag to apply to the index.
-  const IndexArgs({
-    this.push,
+  IndexArgs({
+    pulumi.Input<bool?>? push,
     this.registry,
     required this.sources,
     required this.tag,
-  });
+  }) : push = push ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

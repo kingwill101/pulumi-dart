@@ -19,7 +19,7 @@ class BuildContext {
   /// statements when using Dockerfile 1.4+ syntax.
   ///
   /// Values can be local paths, HTTP URLs, or  `docker-image://` images.
-  final pulumi.Input<Map<String, Context>>? named;
+  final pulumi.Input<Map<String, Context>?>? named;
 
   /// Creates a new [BuildContext].
   /// [location] Resources to use for build context.

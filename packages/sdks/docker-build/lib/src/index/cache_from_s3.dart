@@ -4,25 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CacheFromS3 {
   /// Defaults to `$AWS_ACCESS_KEY_ID`.
-  final pulumi.Input<String>? accessKeyId;
+  final pulumi.Input<String?>? accessKeyId;
   /// Prefix to prepend to blob filenames.
-  final pulumi.Input<String>? blobsPrefix;
+  final pulumi.Input<String?>? blobsPrefix;
   /// Name of the S3 bucket.
   final pulumi.Input<String> bucket;
   /// Endpoint of the S3 bucket.
-  final pulumi.Input<String>? endpointUrl;
+  final pulumi.Input<String?>? endpointUrl;
   /// Prefix to prepend on manifest filenames.
-  final pulumi.Input<String>? manifestsPrefix;
+  final pulumi.Input<String?>? manifestsPrefix;
   /// Name of the cache image.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The geographic location of the bucket. Defaults to `$AWS_REGION`.
   final pulumi.Input<String> region;
   /// Defaults to `$AWS_SECRET_ACCESS_KEY`.
-  final pulumi.Input<String>? secretAccessKey;
+  final pulumi.Input<String?>? secretAccessKey;
   /// Defaults to `$AWS_SESSION_TOKEN`.
-  final pulumi.Input<String>? sessionToken;
+  final pulumi.Input<String?>? sessionToken;
   /// Uses `bucket` in the URL instead of hostname when `true`.
-  final pulumi.Input<bool>? usePathStyle;
+  final pulumi.Input<bool?>? usePathStyle;
 
   /// Creates a new [CacheFromS3].
   /// [accessKeyId] Defaults to `$AWS_ACCESS_KEY_ID`.
@@ -35,18 +35,18 @@ class CacheFromS3 {
   /// [secretAccessKey] Defaults to `$AWS_SECRET_ACCESS_KEY`.
   /// [sessionToken] Defaults to `$AWS_SESSION_TOKEN`.
   /// [usePathStyle] Uses `bucket` in the URL instead of hostname when `true`.
-  const CacheFromS3({
-    this.accessKeyId,
+  CacheFromS3({
+    pulumi.Input<String?>? accessKeyId,
     this.blobsPrefix,
     required this.bucket,
     this.endpointUrl,
     this.manifestsPrefix,
     this.name,
-    required this.region,
-    this.secretAccessKey,
-    this.sessionToken,
+    pulumi.Input<String>? region,
+    pulumi.Input<String?>? secretAccessKey,
+    pulumi.Input<String?>? sessionToken,
     this.usePathStyle,
-  });
+  }) : accessKeyId = accessKeyId ?? pulumi.Input.fromValue(''), region = region ?? pulumi.Input.fromValue(''), secretAccessKey = secretAccessKey ?? pulumi.Input.fromValue(''), sessionToken = sessionToken ?? pulumi.Input.fromValue('');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

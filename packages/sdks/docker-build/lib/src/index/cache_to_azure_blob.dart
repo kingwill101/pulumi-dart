@@ -5,15 +5,15 @@ import 'cache_mode.dart';
 
 class CacheToAzureBlob {
   /// Base URL of the storage account.
-  final pulumi.Input<String>? accountUrl;
+  final pulumi.Input<String?>? accountUrl;
   /// Ignore errors caused by failed cache exports.
-  final pulumi.Input<bool>? ignoreError;
+  final pulumi.Input<bool?>? ignoreError;
   /// The cache mode to use. Defaults to `min`.
-  final pulumi.Input<CacheMode>? mode;
+  final pulumi.Input<CacheMode?>? mode;
   /// The name of the cache image.
   final pulumi.Input<String> name;
   /// Blob storage account key.
-  final pulumi.Input<String>? secretAccessKey;
+  final pulumi.Input<String?>? secretAccessKey;
 
   /// Creates a new [CacheToAzureBlob].
   /// [accountUrl] Base URL of the storage account.
@@ -21,13 +21,13 @@ class CacheToAzureBlob {
   /// [mode] The cache mode to use. Defaults to `min`.
   /// [name] The name of the cache image.
   /// [secretAccessKey] Blob storage account key.
-  const CacheToAzureBlob({
+  CacheToAzureBlob({
     this.accountUrl,
-    this.ignoreError,
-    this.mode,
+    pulumi.Input<bool?>? ignoreError,
+    pulumi.Input<CacheMode?>? mode,
     required this.name,
     this.secretAccessKey,
-  });
+  }) : ignoreError = ignoreError ?? pulumi.Input.fromValue(false), mode = mode ?? pulumi.Input.fromValue(CacheMode.fromValue('min'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

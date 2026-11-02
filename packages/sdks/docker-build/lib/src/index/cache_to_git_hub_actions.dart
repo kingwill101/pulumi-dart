@@ -9,24 +9,24 @@ import 'cache_mode.dart';
 /// appropriate credentials to your GitHub workflow.
 class CacheToGitHubActions {
   /// Ignore errors caused by failed cache exports.
-  final pulumi.Input<bool>? ignoreError;
+  final pulumi.Input<bool?>? ignoreError;
   /// The cache mode to use. Defaults to `min`.
-  final pulumi.Input<CacheMode>? mode;
+  final pulumi.Input<CacheMode?>? mode;
   /// The scope to use for cache keys. Defaults to `buildkit`.
   ///
   /// This should be set if building and caching multiple images in one
   /// workflow, otherwise caches will overwrite each other.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [CacheToGitHubActions].
   /// [ignoreError] Ignore errors caused by failed cache exports.
   /// [mode] The cache mode to use. Defaults to `min`.
   /// [scope] The scope to use for cache keys. Defaults to `buildkit`.
-  const CacheToGitHubActions({
-    this.ignoreError,
-    this.mode,
-    this.scope,
-  });
+  CacheToGitHubActions({
+    pulumi.Input<bool?>? ignoreError,
+    pulumi.Input<CacheMode?>? mode,
+    pulumi.Input<String?>? scope,
+  }) : ignoreError = ignoreError ?? pulumi.Input.fromValue(false), mode = mode ?? pulumi.Input.fromValue(CacheMode.fromValue('min')), scope = scope ?? pulumi.Input.fromValue('buildkit');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -1,8 +1,11 @@
-enum CacheMode {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum CacheMode implements pulumi.PulumiEnum<String> {
   valueMin("min"),
   valueMax("max");
 
   const CacheMode(this.wireValue);
+  @override
   final String wireValue;
 
   static CacheMode fromValue(String value) {

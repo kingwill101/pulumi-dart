@@ -20,7 +20,7 @@ class ImageArgs {
   /// Custom `host:ip` mappings to use during the build.
   ///
   /// Equivalent to Docker's `--add-host` flag.
-  final pulumi.Input<List<String>>? addHosts;
+  final pulumi.Input<List<String>?>? addHosts;
   /// `ARG` names and values to set during the build.
   ///
   /// These variables are accessed like environment variables inside `RUN`
@@ -30,7 +30,7 @@ class ImageArgs {
   /// if these arguments are sensitive.
   ///
   /// Equivalent to Docker's `--build-arg` flag.
-  final pulumi.Input<Map<String, String>>? buildArgs;
+  final pulumi.Input<Map<String, String>?>? buildArgs;
   /// Setting this to `false` will always skip image builds during previews,
   /// and setting it to `true` will always build images during previews.
   ///
@@ -42,25 +42,25 @@ class ImageArgs {
   ///
   /// Defaults to `true` as a safeguard against broken images merging as part
   /// of CI pipelines.
-  final pulumi.Input<bool>? buildOnPreview;
+  final pulumi.Input<bool?>? buildOnPreview;
   /// Builder configuration.
-  final pulumi.Input<BuilderConfig>? builder;
+  final pulumi.Input<BuilderConfig?>? builder;
   /// Cache export configuration.
   ///
   /// Equivalent to Docker's `--cache-from` flag.
-  final pulumi.Input<List<CacheFrom>>? cacheFrom;
+  final pulumi.Input<List<CacheFrom>?>? cacheFrom;
   /// Cache import configuration.
   ///
   /// Equivalent to Docker's `--cache-to` flag.
-  final pulumi.Input<List<CacheTo>>? cacheTo;
+  final pulumi.Input<List<CacheTo>?>? cacheTo;
   /// Build context settings. Defaults to the current directory.
   ///
   /// Equivalent to Docker's `PATH | URL | -` positional argument.
-  final pulumi.Input<BuildContext>? context;
+  final pulumi.Input<BuildContext?>? context;
   /// Dockerfile settings.
   ///
   /// Equivalent to Docker's `--file` flag.
-  final pulumi.Input<Dockerfile>? dockerfile;
+  final pulumi.Input<Dockerfile?>? dockerfile;
   /// Use `exec` mode to build this image.
   ///
   /// By default the provider embeds a v25 Docker client with v0.12 buildx
@@ -81,7 +81,7 @@ class ImageArgs {
   /// to surface fine-grained errors and warnings. Additionally credentials
   /// are temporarily written to disk in order to provide them to the
   /// `docker-buildx` binary.
-  final pulumi.Input<bool>? exec;
+  final pulumi.Input<bool?>? exec;
   /// Controls where images are persisted after building.
   ///
   /// Images are only stored in the local cache unless `exports` are
@@ -91,42 +91,42 @@ class ImageArgs {
   /// 0.13 or later.
   ///
   /// Equivalent to Docker's `--output` flag.
-  final pulumi.Input<List<Export>>? exports;
+  final pulumi.Input<List<Export>?>? exports;
   /// A list of secret names to ignore when calculating diffs.
   ///
   /// These secrets will not be considered when calculating diffs, even if they
   /// are changed. Note: only applicable if the secret is present in both the old and the new state.
   ///
   /// This is useful when you want to avoid unnecessary rebuilds caused by short-lived secrets that change on every run.
-  final pulumi.Input<List<String>>? ignoreSecretsInDiffCalculation;
+  final pulumi.Input<List<String>?>? ignoreSecretsInDiffCalculation;
   /// Attach arbitrary key/value metadata to the image.
   ///
   /// Equivalent to Docker's `--label` flag.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// When `true` the build will automatically include a `docker` export.
   ///
   /// Defaults to `false`.
   ///
   /// Equivalent to Docker's `--load` flag.
-  final pulumi.Input<bool>? load;
+  final pulumi.Input<bool?>? load;
   /// Set the network mode for `RUN` instructions. Defaults to `default`.
   ///
   /// For custom networks, configure your builder with `--driver-opt network=...`.
   ///
   /// Equivalent to Docker's `--network` flag.
-  final pulumi.Input<NetworkMode>? network;
+  final pulumi.Input<NetworkMode?>? network;
   /// Do not import cache manifests when building the image.
   ///
   /// Equivalent to Docker's `--no-cache` flag.
-  final pulumi.Input<bool>? noCache;
+  final pulumi.Input<bool?>? noCache;
   /// Set target platform(s) for the build. Defaults to the host's platform.
   ///
   /// Equivalent to Docker's `--platform` flag.
-  final pulumi.Input<List<Platform>>? platforms;
+  final pulumi.Input<List<Platform>?>? platforms;
   /// Always pull referenced images.
   ///
   /// Equivalent to Docker's `--pull` flag.
-  final pulumi.Input<bool>? pull;
+  final pulumi.Input<bool?>? pull;
   /// When `true` the build will automatically include a `registry` export.
   ///
   /// Defaults to `false`.
@@ -140,7 +140,7 @@ class ImageArgs {
   /// credentials on the host.
   ///
   /// Similar to `docker login`.
-  final pulumi.Input<List<Registry>>? registries;
+  final pulumi.Input<List<Registry>?>? registries;
   /// A mapping of secret names to their corresponding values.
   ///
   /// Unlike the Docker CLI, these can be passed by value and do not need to
@@ -150,24 +150,24 @@ class ImageArgs {
   /// image, so you should use this for sensitive values.
   ///
   /// Similar to Docker's `--secret` flag.
-  final pulumi.Input<Map<String, String>>? secrets;
+  final pulumi.Input<Map<String, String>?>? secrets;
   /// SSH agent socket or keys to expose to the build.
   ///
   /// Equivalent to Docker's `--ssh` flag.
-  final pulumi.Input<List<SSH>>? ssh;
+  final pulumi.Input<List<SSH>?>? ssh;
   /// Name and optionally a tag (format: `name:tag`).
   ///
   /// If exporting to a registry, the name should include the fully qualified
   /// registry address (e.g. `docker.io/pulumi/pulumi:latest`).
   ///
   /// Equivalent to Docker's `--tag` flag.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// Set the target build stage(s) to build.
   ///
   /// If not specified all targets will be built by default.
   ///
   /// Equivalent to Docker's `--target` flag.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [ImageArgs].
   /// [addHosts] Custom `host:ip` mappings to use during the build.
@@ -193,10 +193,10 @@ class ImageArgs {
   /// [ssh] SSH agent socket or keys to expose to the build.
   /// [tags] Name and optionally a tag (format: `name:tag`).
   /// [target] Set the target build stage(s) to build.
-  const ImageArgs({
+  ImageArgs({
     this.addHosts,
     this.buildArgs,
-    this.buildOnPreview,
+    pulumi.Input<bool?>? buildOnPreview,
     this.builder,
     this.cacheFrom,
     this.cacheTo,
@@ -207,7 +207,7 @@ class ImageArgs {
     this.ignoreSecretsInDiffCalculation,
     this.labels,
     this.load,
-    this.network,
+    pulumi.Input<NetworkMode?>? network,
     this.noCache,
     this.platforms,
     this.pull,
@@ -217,7 +217,7 @@ class ImageArgs {
     this.ssh,
     this.tags,
     this.target,
-  });
+  }) : buildOnPreview = buildOnPreview ?? pulumi.Input.fromValue(true), network = network ?? pulumi.Input.fromValue(NetworkMode.fromValue('default'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

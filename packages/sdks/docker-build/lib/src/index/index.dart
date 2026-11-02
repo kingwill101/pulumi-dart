@@ -488,7 +488,7 @@ class Index extends pulumi.CustomResource {
   /// If true, push the index to the target registry.
   ///
   /// Defaults to `true`.
-  late final pulumi.Output<bool?> push;
+  late final pulumi.Output<bool> push;
   /// The pushed tag with digest.
   ///
   /// Identical to the tag if the index was not pushed.
@@ -516,10 +516,26 @@ class Index extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    push = registerOutput<bool?>('push');
+    push = registerOutput<bool>('push');
     ref = registerOutput<String>('ref');
     registry = registerOutput<Registry?>('registry', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Registry.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sources = registerOutput<List<String>>('sources');
+    sources = registerOutput<List<String>>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tag = registerOutput<String>('tag');
+  }
+
+  /// Creates a typed reference to an existing [Index] resource.
+  Index.reference(String urn)
+    : super(
+        'docker-build:index:Index',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    push = registerOutput<bool>('push');
+    ref = registerOutput<String>('ref');
+    registry = registerOutput<Registry?>('registry', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Registry.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sources = registerOutput<List<String>>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tag = registerOutput<String>('tag');
   }
 }

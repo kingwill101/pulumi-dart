@@ -9,28 +9,28 @@ import 'cache_to_s3.dart';
 
 class CacheTo {
   /// Push cache to Azure's blob storage service.
-  final pulumi.Input<CacheToAzureBlob>? azblob;
+  final pulumi.Input<CacheToAzureBlob?>? azblob;
   /// When `true` this entry will be excluded. Defaults to `false`.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Recommended for use with GitHub Actions workflows.
   ///
   /// An action like `crazy-max/ghaction-github-runtime` is recommended to
   /// expose appropriate credentials to your GitHub workflow.
-  final pulumi.Input<CacheToGitHubActions>? gha;
+  final pulumi.Input<CacheToGitHubActions?>? gha;
   /// The inline cache storage backend is the simplest implementation to get
   /// started with, but it does not handle multi-stage builds. Consider the
   /// `registry` cache backend instead.
-  final pulumi.Input<Map<String, dynamic>>? inline;
+  final pulumi.Input<Map<String, dynamic>?>? inline;
   /// A simple backend which caches imagines on your local filesystem.
-  final pulumi.Input<CacheToLocal>? local;
+  final pulumi.Input<CacheToLocal?>? local;
   /// A raw string as you would provide it to the Docker CLI (e.g.,
   /// `type=inline`)
-  final pulumi.Input<String>? raw;
+  final pulumi.Input<String?>? raw;
   /// Push caches to remote registries. Incompatible with the `docker` build
   /// driver.
-  final pulumi.Input<CacheToRegistry>? registry;
+  final pulumi.Input<CacheToRegistry?>? registry;
   /// Push cache to AWS S3 or S3-compatible services such as MinIO.
-  final pulumi.Input<CacheToS3>? s3;
+  final pulumi.Input<CacheToS3?>? s3;
 
   /// Creates a new [CacheTo].
   /// [azblob] Push cache to Azure's blob storage service.

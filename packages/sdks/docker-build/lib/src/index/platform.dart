@@ -1,4 +1,6 @@
-enum Platform {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum Platform implements pulumi.PulumiEnum<String> {
   valueDarwin386("darwin/386"),
   valueDarwinAmd64("darwin/amd64"),
   valueDarwinArm("darwin/arm"),
@@ -29,6 +31,7 @@ enum Platform {
   valueWindowsAmd64("windows/amd64");
 
   const Platform(this.wireValue);
+  @override
   final String wireValue;
 
   static Platform fromValue(String value) {
