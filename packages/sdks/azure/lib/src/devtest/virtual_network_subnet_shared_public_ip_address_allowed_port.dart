@@ -25,7 +25,7 @@ class VirtualNetworkSubnetSharedPublicIpAddressAllowedPort {
 
   factory VirtualNetworkSubnetSharedPublicIpAddressAllowedPort.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkSubnetSharedPublicIpAddressAllowedPort(
-      backendPort: (() { final guardedValue = map['backendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      backendPort: (() { final guardedValue = map['backendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       transportProtocol: (() { final guardedValue = map['transportProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

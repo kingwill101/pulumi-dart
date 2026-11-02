@@ -70,7 +70,7 @@ import 'get_server_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -78,13 +78,13 @@ import 'get_server_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_postgresql_getflexibleserver" "example" {
+/// data "azure_postgresql_flexible_server" "example" {
 ///   name                = "existing-postgresql-fs"
 ///   resource_group_name = "existing-postgresql-resgroup"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_postgresql_getflexibleserver.example.id
+///   value = data.azure_postgresql_flexible_server.example.id
 /// }
 /// ```
 /// ```java
@@ -230,7 +230,7 @@ pulumi.Output<GetFlexibleServerResult> getFlexibleServerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -238,13 +238,13 @@ pulumi.Output<GetFlexibleServerResult> getFlexibleServerOutput(
 ///   }
 /// }
 ///
-/// data "azure_postgresql_getserver" "example" {
+/// data "azure_postgresql_server" "example" {
 ///   name                = "postgresql-server-1"
 ///   resource_group_name = "api-rg-pro"
 /// }
 ///
 /// output "postgresqlServerId" {
-///   value = data.azure_postgresql_getserver.example.id
+///   value = data.azure_postgresql_server.example.id
 /// }
 /// ```
 /// ```java

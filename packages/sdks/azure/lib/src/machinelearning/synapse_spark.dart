@@ -322,9 +322,9 @@ import 'synapse_spark_state.dart';
 /// 			Name:                  pulumi.String("example-mlw"),
 /// 			Location:              example.Location,
 /// 			ResourceGroupName:     example.Name,
-/// 			ApplicationInsightsId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
-/// 			KeyVaultId:            exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
-/// 			StorageAccountId:      exampleAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			ApplicationInsightsId: exampleInsights.ID(),
+/// 			KeyVaultId:            exampleKeyVault.ID(),
+/// 			StorageAccountId:      exampleAccount.ID(),
 /// 			Identity: &machinelearning.WorkspaceIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
 /// 			},
@@ -334,7 +334,7 @@ import 'synapse_spark_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId: exampleAccount.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -343,7 +343,7 @@ import 'synapse_spark_state.dart';
 /// 			Name:                            pulumi.String("example"),
 /// 			ResourceGroupName:               example.Name,
 /// 			Location:                        example.Location,
-/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID(),
 /// 			SqlAdministratorLogin:           pulumi.String("sqladminuser"),
 /// 			SqlAdministratorLoginPassword:   pulumi.String("H@Sh1CoR3!"),
 /// 			Identity: &synapse.WorkspaceIdentityArgs{
@@ -355,7 +355,7 @@ import 'synapse_spark_state.dart';
 /// 		}
 /// 		exampleSparkPool, err := synapse.NewSparkPool(ctx, "example", &synapse.SparkPoolArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			SynapseWorkspaceId: exampleWorkspace2.ID().ToIDOutput().ToStringOutput(),
+/// 			SynapseWorkspaceId: exampleWorkspace2.ID(),
 /// 			NodeSizeFamily:     pulumi.String("MemoryOptimized"),
 /// 			NodeSize:           pulumi.String("Small"),
 /// 			NodeCount:          pulumi.Int(3),
@@ -365,9 +365,9 @@ import 'synapse_spark_state.dart';
 /// 		}
 /// 		_, err = machinelearning.NewSynapseSpark(ctx, "example", &machinelearning.SynapseSparkArgs{
 /// 			Name:                       pulumi.String("example"),
-/// 			MachineLearningWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			MachineLearningWorkspaceId: exampleWorkspace.ID(),
 /// 			Location:                   example.Location,
-/// 			SynapseSparkPoolId:         exampleSparkPool.ID().ToIDOutput().ToStringOutput(),
+/// 			SynapseSparkPoolId:         exampleSparkPool.ID(),
 /// 			Identity: &machinelearning.SynapseSparkIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
 /// 			},
@@ -380,7 +380,7 @@ import 'synapse_spark_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -388,10 +388,13 @@ import 'synapse_spark_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "west europe"
 ///   tags = {
@@ -399,65 +402,89 @@ import 'synapse_spark_state.dart';
 ///   }
 /// }
 /// resource "azure_appinsights_insights" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ai"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   application_type    = "web"
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-kv"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "standard"
 ///   purge_protection_enabled   = true
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplesa"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resource_group.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_machinelearning_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-mlw"
-///   location                = azure_core_resourcegroup.example.location
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   location                = azure_core_resource_group.example.location
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   application_insights_id = azure_appinsights_insights.example.id
-///   key_vault_id            = azure_keyvault_keyvault.example.id
+///   key_vault_id            = azure_keyvault_key_vault.example.id
 ///   storage_account_id      = azure_storage_account.example.id
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_storage_datalakegen2filesystem" "example" {
+/// resource "azure_storage_data_lake_gen2_filesystem" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   storage_account_id = azure_storage_account.example.id
 /// }
 /// resource "azure_synapse_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                 = "example"
-///   resource_group_name                  = azure_core_resourcegroup.example.name
-///   location                             = azure_core_resourcegroup.example.location
-///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   resource_group_name                  = azure_core_resource_group.example.name
+///   location                             = azure_core_resource_group.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_data_lake_gen2_filesystem.example.id
 ///   sql_administrator_login              = "sqladminuser"
 ///   sql_administrator_login_password     = "H@Sh1CoR3!"
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_synapse_sparkpool" "example" {
+/// resource "azure_synapse_spark_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
 ///   synapse_workspace_id = azure_synapse_workspace.example.id
 ///   node_size_family     = "MemoryOptimized"
 ///   node_size            = "Small"
 ///   node_count           = 3
 /// }
-/// resource "azure_machinelearning_synapsespark" "example" {
+/// resource "azure_machinelearning_synapse_spark" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "example"
 ///   machine_learning_workspace_id = azure_machinelearning_workspace.example.id
-///   location                      = azure_core_resourcegroup.example.location
-///   synapse_spark_pool_id         = azure_synapse_sparkpool.example.id
+///   location                      = azure_core_resource_group.example.location
+///   synapse_spark_pool_id         = azure_synapse_spark_pool.example.id
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
@@ -719,7 +746,7 @@ class SynapseSpark extends pulumi.CustomResource {
           'azure:machinelearning/synapseSpark:SynapseSpark',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     description = registerOutput<String?>('description');
     identity = registerOutput<SynapseSparkIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SynapseSparkIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });

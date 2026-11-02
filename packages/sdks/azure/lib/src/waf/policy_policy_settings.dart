@@ -68,14 +68,14 @@ class PolicyPolicySettings {
     return PolicyPolicySettings(
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       fileUploadEnforcement: (() { final guardedValue = map['fileUploadEnforcement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      fileUploadLimitInMb: (() { final guardedValue = map['fileUploadLimitInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      jsChallengeCookieExpirationInMinutes: (() { final guardedValue = map['jsChallengeCookieExpirationInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      fileUploadLimitInMb: (() { final guardedValue = map['fileUploadLimitInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      jsChallengeCookieExpirationInMinutes: (() { final guardedValue = map['jsChallengeCookieExpirationInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       logScrubbing: (() { final guardedValue = map['logScrubbing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyPolicySettingsLogScrubbing.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxRequestBodySizeInKb: (() { final guardedValue = map['maxRequestBodySizeInKb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxRequestBodySizeInKb: (() { final guardedValue = map['maxRequestBodySizeInKb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       requestBodyCheck: (() { final guardedValue = map['requestBodyCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       requestBodyEnforcement: (() { final guardedValue = map['requestBodyEnforcement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      requestBodyInspectLimitInKb: (() { final guardedValue = map['requestBodyInspectLimitInKb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      requestBodyInspectLimitInKb: (() { final guardedValue = map['requestBodyInspectLimitInKb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

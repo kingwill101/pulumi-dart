@@ -72,7 +72,7 @@ import 'get_workspace_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -80,13 +80,13 @@ import 'get_workspace_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_desktopvirtualization_getapplicationgroup" "example" {
+/// data "azure_desktopvirtualization_application_group" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_desktopvirtualization_getapplicationgroup.example.id
+///   value = data.azure_desktopvirtualization_application_group.example.id
 /// }
 /// ```
 /// ```java
@@ -223,7 +223,7 @@ pulumi.Output<GetApplicationGroupResult> getApplicationGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -231,7 +231,7 @@ pulumi.Output<GetApplicationGroupResult> getApplicationGroupOutput(
 ///   }
 /// }
 ///
-/// data "azure_desktopvirtualization_gethostpool" "example" {
+/// data "azure_desktopvirtualization_host_pool" "example" {
 ///   name                = "example-pool"
 ///   resource_group_name = "example-resources"
 /// }
@@ -374,7 +374,7 @@ pulumi.Output<GetHostPoolResult> getHostPoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -382,13 +382,13 @@ pulumi.Output<GetHostPoolResult> getHostPoolOutput(
 ///   }
 /// }
 ///
-/// data "azure_desktopvirtualization_getworkspace" "example" {
+/// data "azure_desktopvirtualization_workspace" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_desktopvirtualization_getworkspace.example.id
+///   value = data.azure_desktopvirtualization_workspace.example.id
 /// }
 /// ```
 /// ```java

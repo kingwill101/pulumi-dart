@@ -62,7 +62,7 @@ class GetAlertRuleTemplateScheduledTemplate {
       severity: pulumi.Input.fromValue(map['severity'] as String),
       tactics: pulumi.Input.fromValue((map['tactics'] as List).cast<String>()),
       triggerOperator: pulumi.Input.fromValue(map['triggerOperator'] as String),
-      triggerThreshold: pulumi.Input.fromValue((map['triggerThreshold'] as num).toInt()),
+      triggerThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['triggerThreshold'])),
     );
   }
 }

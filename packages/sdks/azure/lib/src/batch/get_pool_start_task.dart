@@ -57,7 +57,7 @@ class GetPoolStartTask {
       commonEnvironmentProperties: (() { final guardedValue = map['commonEnvironmentProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       containers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPoolStartTaskContainer>(map['containers']!, (value) => GetPoolStartTaskContainer.fromMap((value as Map).cast<String, dynamic>()))),
       resourceFiles: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPoolStartTaskResourceFile>(map['resourceFiles']!, (value) => GetPoolStartTaskResourceFile.fromMap((value as Map).cast<String, dynamic>()))),
-      taskRetryMaximum: pulumi.Input.fromValue((map['taskRetryMaximum'] as num).toInt()),
+      taskRetryMaximum: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['taskRetryMaximum'])),
       userIdentities: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPoolStartTaskUserIdentity>(map['userIdentities']!, (value) => GetPoolStartTaskUserIdentity.fromMap((value as Map).cast<String, dynamic>()))),
       waitForSuccess: pulumi.Input.fromValue(map['waitForSuccess'] as bool),
     );

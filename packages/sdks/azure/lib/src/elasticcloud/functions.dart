@@ -72,7 +72,7 @@ import 'get_elasticsearch_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -80,16 +80,16 @@ import 'get_elasticsearch_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_elasticcloud_getelasticsearch" "example" {
+/// data "azure_elasticcloud_elasticsearch" "example" {
 ///   name                = "my-elastic-search"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "elasticsearchEndpoint" {
-///   value = data.azure_elasticcloud_getelasticsearch.example.elasticsearch_service_url
+///   value = data.azure_elasticcloud_elasticsearch.example.elasticsearch_service_url
 /// }
 /// output "kibanaEndpoint" {
-///   value = data.azure_elasticcloud_getelasticsearch.example.kibana_service_url
+///   value = data.azure_elasticcloud_elasticsearch.example.kibana_service_url
 /// }
 /// ```
 /// ```java

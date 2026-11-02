@@ -37,7 +37,7 @@ class GetFirewallVirtualHub {
     return GetFirewallVirtualHub(
       privateIpAddress: pulumi.Input.fromValue(map['privateIpAddress'] as String),
       publicIpAddresses: pulumi.Input.fromValue((map['publicIpAddresses'] as List).cast<String>()),
-      publicIpCount: pulumi.Input.fromValue((map['publicIpCount'] as num).toInt()),
+      publicIpCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['publicIpCount'])),
       virtualHubId: pulumi.Input.fromValue(map['virtualHubId'] as String),
     );
   }

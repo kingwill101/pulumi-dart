@@ -71,7 +71,7 @@ class FirewallPolicyRuleCollectionGroupNatRuleCollectionRule {
       sourceIpGroups: (() { final guardedValue = map['sourceIpGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       translatedAddress: (() { final guardedValue = map['translatedAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       translatedFqdn: (() { final guardedValue = map['translatedFqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      translatedPort: pulumi.Input.fromValue((map['translatedPort'] as num).toInt()),
+      translatedPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['translatedPort'])),
     );
   }
 }

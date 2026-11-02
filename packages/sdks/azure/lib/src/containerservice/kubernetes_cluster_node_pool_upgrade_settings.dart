@@ -42,10 +42,10 @@ class KubernetesClusterNodePoolUpgradeSettings {
 
   factory KubernetesClusterNodePoolUpgradeSettings.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNodePoolUpgradeSettings(
-      drainTimeoutInMinutes: (() { final guardedValue = map['drainTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      drainTimeoutInMinutes: (() { final guardedValue = map['drainTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       maxSurge: (() { final guardedValue = map['maxSurge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maxUnavailable: (() { final guardedValue = map['maxUnavailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nodeSoakDurationInMinutes: (() { final guardedValue = map['nodeSoakDurationInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      nodeSoakDurationInMinutes: (() { final guardedValue = map['nodeSoakDurationInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       undrainableNodeBehavior: (() { final guardedValue = map['undrainableNodeBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

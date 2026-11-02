@@ -238,7 +238,7 @@ import 'network_manager_deployment_state.dart';
 /// 		}
 /// 		exampleNetworkManagerNetworkGroup, err := network.NewNetworkManagerNetworkGroup(ctx, "example", &network.NetworkManagerNetworkGroupArgs{
 /// 			Name:             pulumi.String("example-group"),
-/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkManagerId: exampleNetworkManager.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -257,16 +257,16 @@ import 'network_manager_deployment_state.dart';
 /// 		}
 /// 		exampleNetworkManagerConnectivityConfiguration, err := network.NewNetworkManagerConnectivityConfiguration(ctx, "example", &network.NetworkManagerConnectivityConfigurationArgs{
 /// 			Name:                 pulumi.String("example-connectivity-conf"),
-/// 			NetworkManagerId:     exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkManagerId:     exampleNetworkManager.ID(),
 /// 			ConnectivityTopology: pulumi.String("HubAndSpoke"),
 /// 			AppliesToGroups: network.NetworkManagerConnectivityConfigurationAppliesToGroupArray{
 /// 				&network.NetworkManagerConnectivityConfigurationAppliesToGroupArgs{
 /// 					GroupConnectivity: pulumi.String("None"),
-/// 					NetworkGroupId:    exampleNetworkManagerNetworkGroup.ID().ToIDOutput().ToStringOutput(),
+/// 					NetworkGroupId:    exampleNetworkManagerNetworkGroup.ID(),
 /// 				},
 /// 			},
 /// 			Hub: &network.NetworkManagerConnectivityConfigurationHubArgs{
-/// 				ResourceId:   exampleVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 				ResourceId:   exampleVirtualNetwork.ID(),
 /// 				ResourceType: pulumi.String("Microsoft.Network/virtualNetworks"),
 /// 			},
 /// 		})
@@ -274,11 +274,11 @@ import 'network_manager_deployment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewNetworkManagerDeployment(ctx, "example", &network.NetworkManagerDeploymentArgs{
-/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkManagerId: exampleNetworkManager.ID(),
 /// 			Location:         pulumi.String("eastus"),
 /// 			ScopeAccess:      pulumi.String("Connectivity"),
 /// 			ConfigurationIds: pulumi.StringArray{
-/// 				exampleNetworkManagerConnectivityConfiguration.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleNetworkManagerConnectivityConfiguration.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -289,7 +289,7 @@ import 'network_manager_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -297,52 +297,70 @@ import 'network_manager_deployment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networkmanager" "example" {
+/// resource "azure_network_network_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network-manager"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   scope = {
-///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///     subscription_ids = [data.azure_core_subscription.current.id]
 ///   }
 ///   scope_accesses = ["Connectivity", "SecurityAdmin"]
 ///   description    = "example network manager"
 /// }
-/// resource "azure_network_networkmanagernetworkgroup" "example" {
+/// resource "azure_network_network_manager_network_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-group"
-///   network_manager_id = azure_network_networkmanager.example.id
+///   network_manager_id = azure_network_network_manager.example.id
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-net"
-///   location                = azure_core_resourcegroup.example.location
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   location                = azure_core_resource_group.example.location
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   address_spaces          = ["10.0.0.0/16"]
 ///   flow_timeout_in_minutes = 10
 /// }
-/// resource "azure_network_networkmanagerconnectivityconfiguration" "example" {
+/// resource "azure_network_network_manager_connectivity_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-connectivity-conf"
-///   network_manager_id    = azure_network_networkmanager.example.id
+///   network_manager_id    = azure_network_network_manager.example.id
 ///   connectivity_topology = "HubAndSpoke"
 ///   applies_to_groups {
 ///     group_connectivity = "None"
-///     network_group_id   = azure_network_networkmanagernetworkgroup.example.id
+///     network_group_id   = azure_network_network_manager_network_group.example.id
 ///   }
 ///   hub = {
-///     resource_id   = azure_network_virtualnetwork.example.id
+///     resource_id   = azure_network_virtual_network.example.id
 ///     resource_type = "Microsoft.Network/virtualNetworks"
 ///   }
 /// }
-/// resource "azure_network_networkmanagerdeployment" "example" {
-///   network_manager_id = azure_network_networkmanager.example.id
+/// resource "azure_network_network_manager_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   network_manager_id = azure_network_network_manager.example.id
 ///   location           = "eastus"
 ///   scope_access       = "Connectivity"
-///   configuration_ids  = [azure_network_networkmanagerconnectivityconfiguration.example.id]
+///   configuration_ids  = [azure_network_network_manager_connectivity_configuration.example.id]
 /// }
 /// ```
 /// ```java
@@ -829,7 +847,7 @@ import 'network_manager_deployment_state.dart';
 /// 		}
 /// 		exampleNetworkManagerNetworkGroup, err := network.NewNetworkManagerNetworkGroup(ctx, "example", &network.NetworkManagerNetworkGroupArgs{
 /// 			Name:             pulumi.String("example-group"),
-/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkManagerId: exampleNetworkManager.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -848,16 +866,16 @@ import 'network_manager_deployment_state.dart';
 /// 		}
 /// 		exampleNetworkManagerSecurityAdminConfiguration, err := network.NewNetworkManagerSecurityAdminConfiguration(ctx, "example", &network.NetworkManagerSecurityAdminConfigurationArgs{
 /// 			Name:             pulumi.String("example-nmsac"),
-/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkManagerId: exampleNetworkManager.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleNetworkManagerAdminRuleCollection, err := network.NewNetworkManagerAdminRuleCollection(ctx, "example", &network.NetworkManagerAdminRuleCollectionArgs{
 /// 			Name:                         pulumi.String("example-nmarc"),
-/// 			SecurityAdminConfigurationId: exampleNetworkManagerSecurityAdminConfiguration.ID().ToIDOutput().ToStringOutput(),
+/// 			SecurityAdminConfigurationId: exampleNetworkManagerSecurityAdminConfiguration.ID(),
 /// 			NetworkGroupIds: pulumi.StringArray{
-/// 				exampleNetworkManagerNetworkGroup.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleNetworkManagerNetworkGroup.ID(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -865,7 +883,7 @@ import 'network_manager_deployment_state.dart';
 /// 		}
 /// 		exampleNetworkManagerAdminRule, err := network.NewNetworkManagerAdminRule(ctx, "example", &network.NetworkManagerAdminRuleArgs{
 /// 			Name:                  pulumi.String("example-nmar"),
-/// 			AdminRuleCollectionId: exampleNetworkManagerAdminRuleCollection.ID().ToIDOutput().ToStringOutput(),
+/// 			AdminRuleCollectionId: exampleNetworkManagerAdminRuleCollection.ID(),
 /// 			Action:                pulumi.String("Deny"),
 /// 			Description:           pulumi.String("example"),
 /// 			Direction:             pulumi.String("Inbound"),
@@ -894,11 +912,11 @@ import 'network_manager_deployment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewNetworkManagerDeployment(ctx, "example", &network.NetworkManagerDeploymentArgs{
-/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkManagerId: exampleNetworkManager.ID(),
 /// 			Location:         pulumi.String("eastus"),
 /// 			ScopeAccess:      pulumi.String("SecurityAdmin"),
 /// 			ConfigurationIds: pulumi.StringArray{
-/// 				exampleNetworkManagerSecurityAdminConfiguration.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleNetworkManagerSecurityAdminConfiguration.ID(),
 /// 			},
 /// 			Triggers: pulumi.StringMap{
 /// 				"source_port_ranges": std.JoinOutput(ctx, std.JoinOutputArgs{
@@ -917,7 +935,7 @@ import 'network_manager_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -928,46 +946,67 @@ import 'network_manager_deployment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networkmanager" "example" {
+/// resource "azure_network_network_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network-manager"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   scope = {
-///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///     subscription_ids = [data.azure_core_subscription.current.id]
 ///   }
 ///   scope_accesses = ["Connectivity", "SecurityAdmin"]
 ///   description    = "example network manager"
 /// }
-/// resource "azure_network_networkmanagernetworkgroup" "example" {
+/// resource "azure_network_network_manager_network_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-group"
-///   network_manager_id = azure_network_networkmanager.example.id
+///   network_manager_id = azure_network_network_manager.example.id
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-net"
-///   location                = azure_core_resourcegroup.example.location
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   location                = azure_core_resource_group.example.location
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   address_spaces          = ["10.0.0.0/16"]
 ///   flow_timeout_in_minutes = 10
 /// }
-/// resource "azure_network_networkmanagersecurityadminconfiguration" "example" {
+/// resource "azure_network_network_manager_security_admin_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-nmsac"
-///   network_manager_id = azure_network_networkmanager.example.id
+///   network_manager_id = azure_network_network_manager.example.id
 /// }
-/// resource "azure_network_networkmanageradminrulecollection" "example" {
+/// resource "azure_network_network_manager_admin_rule_collection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "example-nmarc"
-///   security_admin_configuration_id = azure_network_networkmanagersecurityadminconfiguration.example.id
-///   network_group_ids               = [azure_network_networkmanagernetworkgroup.example.id]
+///   security_admin_configuration_id = azure_network_network_manager_security_admin_configuration.example.id
+///   network_group_ids               = [azure_network_network_manager_network_group.example.id]
 /// }
-/// resource "azure_network_networkmanageradminrule" "example" {
+/// resource "azure_network_network_manager_admin_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-nmar"
-///   admin_rule_collection_id = azure_network_networkmanageradminrulecollection.example.id
+///   admin_rule_collection_id = azure_network_network_manager_admin_rule_collection.example.id
 ///   action                   = "Deny"
 ///   description              = "example"
 ///   direction                = "Inbound"
@@ -984,14 +1023,17 @@ import 'network_manager_deployment_state.dart';
 ///     address_prefix      = "*"
 ///   }
 /// }
-/// resource "azure_network_networkmanagerdeployment" "example" {
-///   depends_on         = [azure_network_networkmanageradminrule.example]
-///   network_manager_id = azure_network_networkmanager.example.id
+/// resource "azure_network_network_manager_deployment" "example" {
+///   depends_on = [azure_network_network_manager_admin_rule.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   network_manager_id = azure_network_network_manager.example.id
 ///   location           = "eastus"
 ///   scope_access       = "SecurityAdmin"
-///   configuration_ids  = [azure_network_networkmanagersecurityadminconfiguration.example.id]
+///   configuration_ids  = [azure_network_network_manager_security_admin_configuration.example.id]
 ///   triggers = {
-///     "source_port_ranges" = join(",", azure_network_networkmanageradminrule.example.source_port_ranges)
+///     "source_port_ranges" = join(",", azure_network_network_manager_admin_rule.example.source_port_ranges)
 ///   }
 /// }
 /// ```
@@ -1257,7 +1299,7 @@ class NetworkManagerDeployment extends pulumi.CustomResource {
           'azure:network/networkManagerDeployment:NetworkManagerDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     configurationIds = registerOutput<List<String>>('configurationIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');

@@ -61,7 +61,7 @@ import 'get_monitor_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -69,7 +69,7 @@ import 'get_monitor_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_dynatrace_getmonitor" "example" {
+/// data "azure_dynatrace_monitor" "example" {
 ///   name                = "example-dynatracemonitor"
 ///   resource_group_name = "example-resources"
 /// }

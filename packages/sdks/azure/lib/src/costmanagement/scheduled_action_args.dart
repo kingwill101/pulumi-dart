@@ -89,7 +89,7 @@ class ScheduledActionArgs {
 
   factory ScheduledActionArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledActionArgs(
-      dayOfMonth: (() { final guardedValue = map['dayOfMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      dayOfMonth: (() { final guardedValue = map['dayOfMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       daysOfWeeks: (() { final guardedValue = map['daysOfWeeks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       emailAddressSender: pulumi.Input.fromValue(map['emailAddressSender'] as String),
@@ -97,7 +97,7 @@ class ScheduledActionArgs {
       emailSubject: pulumi.Input.fromValue(map['emailSubject'] as String),
       endDate: pulumi.Input.fromValue(map['endDate'] as String),
       frequency: pulumi.Input.fromValue(map['frequency'] as String),
-      hourOfDay: (() { final guardedValue = map['hourOfDay']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      hourOfDay: (() { final guardedValue = map['hourOfDay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startDate: pulumi.Input.fromValue(map['startDate'] as String),

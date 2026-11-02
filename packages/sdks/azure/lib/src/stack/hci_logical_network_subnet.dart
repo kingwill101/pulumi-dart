@@ -48,7 +48,7 @@ class HciLogicalNetworkSubnet {
       ipAllocationMethod: pulumi.Input.fromValue(map['ipAllocationMethod'] as String),
       ipPools: (() { final guardedValue = map['ipPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HciLogicalNetworkSubnetIpPool>(guardedValue, (value) => HciLogicalNetworkSubnetIpPool.fromMap((value as Map).cast<String, dynamic>()))); })(),
       routes: (() { final guardedValue = map['routes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HciLogicalNetworkSubnetRoute>(guardedValue, (value) => HciLogicalNetworkSubnetRoute.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

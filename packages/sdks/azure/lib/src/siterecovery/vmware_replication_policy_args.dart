@@ -39,9 +39,9 @@ class VMWareReplicationPolicyArgs {
 
   factory VMWareReplicationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return VMWareReplicationPolicyArgs(
-      applicationConsistentSnapshotFrequencyInMinutes: pulumi.Input.fromValue((map['applicationConsistentSnapshotFrequencyInMinutes'] as num).toInt()),
+      applicationConsistentSnapshotFrequencyInMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['applicationConsistentSnapshotFrequencyInMinutes'])),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      recoveryPointRetentionInMinutes: pulumi.Input.fromValue((map['recoveryPointRetentionInMinutes'] as num).toInt()),
+      recoveryPointRetentionInMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['recoveryPointRetentionInMinutes'])),
       recoveryVaultId: pulumi.Input.fromValue(map['recoveryVaultId'] as String),
     );
   }

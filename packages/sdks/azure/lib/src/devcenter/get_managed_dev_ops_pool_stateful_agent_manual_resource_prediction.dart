@@ -67,7 +67,7 @@ class GetManagedDevOpsPoolStatefulAgentManualResourcePrediction {
 
   factory GetManagedDevOpsPoolStatefulAgentManualResourcePrediction.fromMap(Map<String, dynamic> map) {
     return GetManagedDevOpsPoolStatefulAgentManualResourcePrediction(
-      allWeekSchedule: pulumi.Input.fromValue((map['allWeekSchedule'] as num).toInt()),
+      allWeekSchedule: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['allWeekSchedule'])),
       fridaySchedules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetManagedDevOpsPoolStatefulAgentManualResourcePredictionFridaySchedule>(map['fridaySchedules']!, (value) => GetManagedDevOpsPoolStatefulAgentManualResourcePredictionFridaySchedule.fromMap((value as Map).cast<String, dynamic>()))),
       mondaySchedules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetManagedDevOpsPoolStatefulAgentManualResourcePredictionMondaySchedule>(map['mondaySchedules']!, (value) => GetManagedDevOpsPoolStatefulAgentManualResourcePredictionMondaySchedule.fromMap((value as Map).cast<String, dynamic>()))),
       saturdaySchedules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetManagedDevOpsPoolStatefulAgentManualResourcePredictionSaturdaySchedule>(map['saturdaySchedules']!, (value) => GetManagedDevOpsPoolStatefulAgentManualResourcePredictionSaturdaySchedule.fromMap((value as Map).cast<String, dynamic>()))),

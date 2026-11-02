@@ -78,7 +78,7 @@ import 'get_configuration_store_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -86,14 +86,14 @@ import 'get_configuration_store_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_appconfiguration_getconfigurationkey" "test" {
+/// data "azure_appconfiguration_configuration_key" "test" {
 ///   configuration_store_id = appconf.id
 ///   key                    = "appConfKey1"
 ///   label                  = "somelabel"
 /// }
 ///
 /// output "value" {
-///   value = data.azure_appconfiguration_getconfigurationkey.test.value
+///   value = data.azure_appconfiguration_configuration_key.test.value
 /// }
 /// ```
 /// ```java
@@ -118,7 +118,7 @@ import 'get_configuration_store_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = AppconfigurationFunctions.getConfigurationKey(GetConfigurationKeyArgs.builder()
-///             .configurationStoreId(appconf.id())
+///             .configurationStoreId(appconf.get("id"))
 ///             .key("appConfKey1")
 ///             .label("somelabel")
 ///             .build());
@@ -229,7 +229,7 @@ pulumi.Output<GetConfigurationKeyResult> getConfigurationKeyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -237,12 +237,12 @@ pulumi.Output<GetConfigurationKeyResult> getConfigurationKeyOutput(
 ///   }
 /// }
 ///
-/// data "azure_appconfiguration_getconfigurationkeys" "test" {
+/// data "azure_appconfiguration_configuration_keys" "test" {
 ///   configuration_store_id = appconf.id
 /// }
 ///
 /// output "value" {
-///   value = data.azure_appconfiguration_getconfigurationkeys.test.items
+///   value = data.azure_appconfiguration_configuration_keys.test.items
 /// }
 /// ```
 /// ```java
@@ -267,7 +267,7 @@ pulumi.Output<GetConfigurationKeyResult> getConfigurationKeyOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = AppconfigurationFunctions.getConfigurationKeys(GetConfigurationKeysArgs.builder()
-///             .configurationStoreId(appconf.id())
+///             .configurationStoreId(appconf.get("id"))
 ///             .build());
 ///
 ///         ctx.export("value", test.items());
@@ -376,7 +376,7 @@ pulumi.Output<GetConfigurationKeysResult> getConfigurationKeysOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -384,13 +384,13 @@ pulumi.Output<GetConfigurationKeysResult> getConfigurationKeysOutput(
 ///   }
 /// }
 ///
-/// data "azure_appconfiguration_getconfigurationstore" "example" {
+/// data "azure_appconfiguration_configuration_store" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_appconfiguration_getconfigurationstore.example.id
+///   value = data.azure_appconfiguration_configuration_store.example.id
 /// }
 /// ```
 /// ```java

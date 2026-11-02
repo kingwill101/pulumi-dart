@@ -31,8 +31,8 @@ class VirtualMachineAutoPatching {
   factory VirtualMachineAutoPatching.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAutoPatching(
       dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
-      maintenanceWindowDurationInMinutes: pulumi.Input.fromValue((map['maintenanceWindowDurationInMinutes'] as num).toInt()),
-      maintenanceWindowStartingHour: pulumi.Input.fromValue((map['maintenanceWindowStartingHour'] as num).toInt()),
+      maintenanceWindowDurationInMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maintenanceWindowDurationInMinutes'])),
+      maintenanceWindowStartingHour: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maintenanceWindowStartingHour'])),
     );
   }
 }

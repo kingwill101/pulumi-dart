@@ -94,7 +94,7 @@ import 'get_zone_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -102,14 +102,14 @@ import 'get_zone_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_dns_getaaaarecord" "example" {
+/// data "azure_dns_a_a_a_a_record" "example" {
 ///   name                = "test"
 ///   zone_name           = "test-zone"
 ///   resource_group_name = "test-rg"
 /// }
 ///
 /// output "dnsAaaaRecordId" {
-///   value = data.azure_dns_getaaaarecord.example.id
+///   value = data.azure_dns_a_a_a_a_record.example.id
 /// }
 /// ```
 /// ```java
@@ -261,7 +261,7 @@ pulumi.Output<GetAAAARecordResult> getAAAARecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -269,14 +269,14 @@ pulumi.Output<GetAAAARecordResult> getAAAARecordOutput(
 ///   }
 /// }
 ///
-/// data "azure_dns_getarecord" "example" {
+/// data "azure_dns_a_record" "example" {
 ///   name                = "test"
 ///   zone_name           = "test-zone"
 ///   resource_group_name = "test-rg"
 /// }
 ///
 /// output "dnsARecordId" {
-///   value = data.azure_dns_getarecord.example.id
+///   value = data.azure_dns_a_record.example.id
 /// }
 /// ```
 /// ```java
@@ -428,7 +428,7 @@ pulumi.Output<GetARecordResult> getARecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -436,14 +436,14 @@ pulumi.Output<GetARecordResult> getARecordOutput(
 ///   }
 /// }
 ///
-/// data "azure_dns_getcaarecord" "example" {
+/// data "azure_dns_c_a_a_record" "example" {
 ///   name                = "test"
 ///   zone_name           = "test-zone"
 ///   resource_group_name = "test-rg"
 /// }
 ///
 /// output "dnsCaaRecordId" {
-///   value = data.azure_dns_getcaarecord.example.id
+///   value = data.azure_dns_c_a_a_record.example.id
 /// }
 /// ```
 /// ```java
@@ -595,7 +595,7 @@ pulumi.Output<GetCAARecordResult> getCAARecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -603,14 +603,14 @@ pulumi.Output<GetCAARecordResult> getCAARecordOutput(
 ///   }
 /// }
 ///
-/// data "azure_dns_getcnamerecord" "example" {
+/// data "azure_dns_cname_record" "example" {
 ///   name                = "test"
 ///   zone_name           = "test-zone"
 ///   resource_group_name = "test-rg"
 /// }
 ///
 /// output "dnsCnameRecordId" {
-///   value = data.azure_dns_getcnamerecord.example.id
+///   value = data.azure_dns_cname_record.example.id
 /// }
 /// ```
 /// ```java
@@ -762,7 +762,7 @@ pulumi.Output<GetCnameRecordResult> getCnameRecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -770,14 +770,14 @@ pulumi.Output<GetCnameRecordResult> getCnameRecordOutput(
 ///   }
 /// }
 ///
-/// data "azure_dns_getmxrecord" "example" {
+/// data "azure_dns_mx_record" "example" {
 ///   name                = "test"
 ///   zone_name           = "test-zone"
 ///   resource_group_name = "test-rg"
 /// }
 ///
 /// output "dnsMxRecordId" {
-///   value = data.azure_dns_getmxrecord.example.id
+///   value = data.azure_dns_mx_record.example.id
 /// }
 /// ```
 /// ```java
@@ -929,7 +929,7 @@ pulumi.Output<GetMxRecordResult> getMxRecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -937,14 +937,14 @@ pulumi.Output<GetMxRecordResult> getMxRecordOutput(
 ///   }
 /// }
 ///
-/// data "azure_dns_getnsrecord" "example" {
+/// data "azure_dns_ns_record" "example" {
 ///   name                = "test"
 ///   zone_name           = "test-zone"
 ///   resource_group_name = "test-rg"
 /// }
 ///
 /// output "dnsNsRecordId" {
-///   value = data.azure_dns_getnsrecord.example.id
+///   value = data.azure_dns_ns_record.example.id
 /// }
 /// ```
 /// ```java
@@ -1096,7 +1096,7 @@ pulumi.Output<GetNsRecordResult> getNsRecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1104,14 +1104,14 @@ pulumi.Output<GetNsRecordResult> getNsRecordOutput(
 ///   }
 /// }
 ///
-/// data "azure_dns_getptrrecord" "example" {
+/// data "azure_dns_ptr_record" "example" {
 ///   name                = "test"
 ///   zone_name           = "test-zone"
 ///   resource_group_name = "test-rg"
 /// }
 ///
 /// output "dnsPtrRecordId" {
-///   value = data.azure_dns_getptrrecord.example.id
+///   value = data.azure_dns_ptr_record.example.id
 /// }
 /// ```
 /// ```java
@@ -1259,7 +1259,7 @@ pulumi.Output<GetPtrRecordResult> getPtrRecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1267,13 +1267,13 @@ pulumi.Output<GetPtrRecordResult> getPtrRecordOutput(
 ///   }
 /// }
 ///
-/// data "azure_dns_getsoarecord" "example" {
+/// data "azure_dns_soa_record" "example" {
 ///   zone_name           = "test-zone"
 ///   resource_group_name = "test-rg"
 /// }
 ///
 /// output "dnsSoaRecordId" {
-///   value = data.azure_dns_getsoarecord.example.id
+///   value = data.azure_dns_soa_record.example.id
 /// }
 /// ```
 /// ```java
@@ -1423,7 +1423,7 @@ pulumi.Output<GetSoaRecordResult> getSoaRecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1431,14 +1431,14 @@ pulumi.Output<GetSoaRecordResult> getSoaRecordOutput(
 ///   }
 /// }
 ///
-/// data "azure_dns_getsrvrecord" "example" {
+/// data "azure_dns_srv_record" "example" {
 ///   name                = "test"
 ///   zone_name           = "test-zone"
 ///   resource_group_name = "test-rg"
 /// }
 ///
 /// output "dnsSrvRecordId" {
-///   value = data.azure_dns_getsrvrecord.example.id
+///   value = data.azure_dns_srv_record.example.id
 /// }
 /// ```
 /// ```java
@@ -1590,7 +1590,7 @@ pulumi.Output<GetSrvRecordResult> getSrvRecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1598,14 +1598,14 @@ pulumi.Output<GetSrvRecordResult> getSrvRecordOutput(
 ///   }
 /// }
 ///
-/// data "azure_dns_gettxtrecord" "example" {
+/// data "azure_dns_txt_record" "example" {
 ///   name                = "test"
 ///   zone_name           = "test-zone"
 ///   resource_group_name = "test-rg"
 /// }
 ///
 /// output "dnsTxtRecordId" {
-///   value = data.azure_dns_gettxtrecord.example.id
+///   value = data.azure_dns_txt_record.example.id
 /// }
 /// ```
 /// ```java
@@ -1751,7 +1751,7 @@ pulumi.Output<GetTxtRecordResult> getTxtRecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1759,13 +1759,13 @@ pulumi.Output<GetTxtRecordResult> getTxtRecordOutput(
 ///   }
 /// }
 ///
-/// data "azure_dns_getzone" "example" {
+/// data "azure_dns_zone" "example" {
 ///   name                = "search-eventhubns"
 ///   resource_group_name = "search-service"
 /// }
 ///
 /// output "dnsZoneId" {
-///   value = data.azure_dns_getzone.example.id
+///   value = data.azure_dns_zone.example.id
 /// }
 /// ```
 /// ```java

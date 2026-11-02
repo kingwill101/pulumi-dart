@@ -102,7 +102,7 @@ class GetNetworkSecurityGroupSecurityRule {
       destinationPortRanges: pulumi.Input.fromValue((map['destinationPortRanges'] as List).cast<String>()),
       direction: pulumi.Input.fromValue(map['direction'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       sourceAddressPrefix: pulumi.Input.fromValue(map['sourceAddressPrefix'] as String),
       sourceAddressPrefixes: pulumi.Input.fromValue((map['sourceAddressPrefixes'] as List).cast<String>()),

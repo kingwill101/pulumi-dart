@@ -72,7 +72,7 @@ import 'get_service_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -80,13 +80,13 @@ import 'get_service_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_privatelink_getendpointconnection" "example" {
+/// data "azure_privatelink_endpoint_connection" "example" {
 ///   name                = "example-private-endpoint"
 ///   resource_group_name = "example-rg"
 /// }
 ///
 /// output "privateEndpointStatus" {
-///   value = data.azure_privatelink_getendpointconnection.example.private_service_connections[0].status
+///   value = data.azure_privatelink_endpoint_connection.example.private_service_connections[0].status
 /// }
 /// ```
 /// ```java
@@ -230,7 +230,7 @@ pulumi.Output<GetEndpointConnectionResult> getEndpointConnectionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -238,13 +238,13 @@ pulumi.Output<GetEndpointConnectionResult> getEndpointConnectionOutput(
 ///   }
 /// }
 ///
-/// data "azure_privatelink_getservice" "example" {
+/// data "azure_privatelink_service" "example" {
 ///   name                = "myPrivateLinkService"
 ///   resource_group_name = "PrivateLinkServiceRG"
 /// }
 ///
 /// output "privateLinkServiceId" {
-///   value = data.azure_privatelink_getservice.example.id
+///   value = data.azure_privatelink_service.example.id
 /// }
 /// ```
 /// ```java
@@ -388,7 +388,7 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -396,13 +396,13 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 ///   }
 /// }
 ///
-/// data "azure_privatelink_getserviceendpointconnections" "example" {
+/// data "azure_privatelink_service_endpoint_connections" "example" {
 ///   service_id          = exampleAzurermPrivateLinkService.id
 ///   resource_group_name = exampleAzurermResourceGroup.name
 /// }
 ///
 /// output "privateEndpointStatus" {
-///   value = data.azure_privatelink_getserviceendpointconnections.example.private_endpoint_connections[0].status
+///   value = data.azure_privatelink_service_endpoint_connections.example.private_endpoint_connections[0].status
 /// }
 /// ```
 /// ```java
@@ -427,8 +427,8 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = PrivatelinkFunctions.getServiceEndpointConnections(GetServiceEndpointConnectionsArgs.builder()
-///             .serviceId(exampleAzurermPrivateLinkService.id())
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
+///             .serviceId(exampleAzurermPrivateLinkService.get("id"))
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
 ///             .build());
 ///
 ///         ctx.export("privateEndpointStatus", example.privateEndpointConnections()[0].status());

@@ -63,11 +63,11 @@ class GetFrontdoorFirewallPolicyResult {
 
   factory GetFrontdoorFirewallPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetFrontdoorFirewallPolicyResult(
-      captchaCookieExpirationInMinutes: (() { final guardedValue = map['captchaCookieExpirationInMinutes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      captchaCookieExpirationInMinutes: (() { final guardedValue = map['captchaCookieExpirationInMinutes']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       frontendEndpointIds: (() { final guardedValue = map['frontendEndpointIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      jsChallengeCookieExpirationInMinutes: (() { final guardedValue = map['jsChallengeCookieExpirationInMinutes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      jsChallengeCookieExpirationInMinutes: (() { final guardedValue = map['jsChallengeCookieExpirationInMinutes']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       redirectUrl: (() { final guardedValue = map['redirectUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),

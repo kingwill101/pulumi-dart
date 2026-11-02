@@ -88,18 +88,18 @@ class JobStepArgs {
 
   factory JobStepArgs.fromMap(Map<String, dynamic> map) {
     return JobStepArgs(
-      initialRetryIntervalSeconds: (() { final guardedValue = map['initialRetryIntervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      initialRetryIntervalSeconds: (() { final guardedValue = map['initialRetryIntervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       jobCredentialId: (() { final guardedValue = map['jobCredentialId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jobId: pulumi.Input.fromValue(map['jobId'] as String),
-      jobStepIndex: pulumi.Input.fromValue((map['jobStepIndex'] as num).toInt()),
+      jobStepIndex: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['jobStepIndex'])),
       jobTargetGroupId: pulumi.Input.fromValue(map['jobTargetGroupId'] as String),
-      maximumRetryIntervalSeconds: (() { final guardedValue = map['maximumRetryIntervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximumRetryIntervalSeconds: (() { final guardedValue = map['maximumRetryIntervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       outputTarget: (() { final guardedValue = map['outputTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobStepOutputTarget.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      retryAttempts: (() { final guardedValue = map['retryAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retryAttempts: (() { final guardedValue = map['retryAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       retryIntervalBackoffMultiplier: (() { final guardedValue = map['retryIntervalBackoffMultiplier']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       sqlScript: pulumi.Input.fromValue(map['sqlScript'] as String),
-      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -193,7 +193,7 @@ import 'gateway_host_name_configuration_state.dart';
 /// 		}
 /// 		exampleGateway, err := apimanagement.NewGateway(ctx, "example", &apimanagement.GatewayArgs{
 /// 			Name:            pulumi.String("example-gateway"),
-/// 			ApiManagementId: exampleService.ID().ToIDOutput().ToStringOutput(),
+/// 			ApiManagementId: exampleService.ID(),
 /// 			Description:     pulumi.String("Example API Management gateway"),
 /// 			LocationData: &apimanagement.GatewayLocationDataArgs{
 /// 				Name:     pulumi.String("example name"),
@@ -222,9 +222,9 @@ import 'gateway_host_name_configuration_state.dart';
 /// 		}
 /// 		_, err = apimanagement.NewGatewayHostNameConfiguration(ctx, "example", &apimanagement.GatewayHostNameConfigurationArgs{
 /// 			Name:                            pulumi.String("example-host-name-configuration"),
-/// 			ApiManagementId:                 exampleService.ID().ToIDOutput().ToStringOutput(),
+/// 			ApiManagementId:                 exampleService.ID(),
 /// 			GatewayName:                     exampleGateway.Name,
-/// 			CertificateId:                   exampleCertificate.ID().ToIDOutput().ToStringOutput(),
+/// 			CertificateId:                   exampleCertificate.ID(),
 /// 			HostName:                        pulumi.String("example-host-name"),
 /// 			RequestClientCertificateEnabled: pulumi.Bool(true),
 /// 			Http2Enabled:                    pulumi.Bool(true),
@@ -239,7 +239,7 @@ import 'gateway_host_name_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -250,19 +250,28 @@ import 'gateway_host_name_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "pub1"
 ///   publisher_email     = "pub1@email.com"
 ///   sku_name            = "Consumption_0"
 /// }
 /// resource "azure_apimanagement_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-gateway"
 ///   api_management_id = azure_apimanagement_service.example.id
 ///   description       = "Example API Management gateway"
@@ -274,12 +283,18 @@ import 'gateway_host_name_configuration_state.dart';
 ///   }
 /// }
 /// resource "azure_apimanagement_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-cert"
 ///   api_management_name = azure_apimanagement_service.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   data                = filebase64("example.pfx")
 /// }
-/// resource "azure_apimanagement_gatewayhostnameconfiguration" "example" {
+/// resource "azure_apimanagement_gateway_host_name_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                               = "example-host-name-configuration"
 ///   api_management_id                  = azure_apimanagement_service.example.id
 ///   gateway_name                       = azure_apimanagement_gateway.example.name
@@ -477,7 +492,7 @@ class GatewayHostNameConfiguration extends pulumi.CustomResource {
           'azure:apimanagement/gatewayHostNameConfiguration:GatewayHostNameConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     certificateId = registerOutput<String>('certificateId');

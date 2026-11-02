@@ -50,12 +50,12 @@ class VirtualMachineStorageConfigurationTempDbSettings {
 
   factory VirtualMachineStorageConfigurationTempDbSettings.fromMap(Map<String, dynamic> map) {
     return VirtualMachineStorageConfigurationTempDbSettings(
-      dataFileCount: (() { final guardedValue = map['dataFileCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      dataFileGrowthInMb: (() { final guardedValue = map['dataFileGrowthInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      dataFileSizeMb: (() { final guardedValue = map['dataFileSizeMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      dataFileCount: (() { final guardedValue = map['dataFileCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      dataFileGrowthInMb: (() { final guardedValue = map['dataFileGrowthInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      dataFileSizeMb: (() { final guardedValue = map['dataFileSizeMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       defaultFilePath: pulumi.Input.fromValue(map['defaultFilePath'] as String),
-      logFileGrowthMb: (() { final guardedValue = map['logFileGrowthMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      logFileSizeMb: (() { final guardedValue = map['logFileSizeMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      logFileGrowthMb: (() { final guardedValue = map['logFileGrowthMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      logFileSizeMb: (() { final guardedValue = map['logFileSizeMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       luns: pulumi.Input.fromValue((map['luns'] as List).cast<int>()),
     );
   }

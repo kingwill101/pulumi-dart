@@ -134,7 +134,7 @@ import 'resource_group_policy_exemption_state.dart';
 /// 		}
 /// 		exampleResourceGroupPolicyAssignment, err := core.NewResourceGroupPolicyAssignment(ctx, "example", &core.ResourceGroupPolicyAssignmentArgs{
 /// 			Name:               pulumi.String("exampleAssignment"),
-/// 			ResourceGroupId:    exampleResourceGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceGroupId:    exampleResourceGroup.ID(),
 /// 			PolicyDefinitionId: pulumi.String(example.Id),
 /// 			Parameters: exampleResourceGroup.Location.ApplyT(func(location string) (pulumi.String, error) {
 /// 				var _zero pulumi.String
@@ -157,8 +157,8 @@ import 'resource_group_policy_exemption_state.dart';
 /// 		}
 /// 		_, err = core.NewResourceGroupPolicyExemption(ctx, "example", &core.ResourceGroupPolicyExemptionArgs{
 /// 			Name:               pulumi.String("exampleExemption"),
-/// 			ResourceGroupId:    exampleResourceGroup.ID().ToIDOutput().ToStringOutput(),
-/// 			PolicyAssignmentId: exampleResourceGroupPolicyAssignment.ID().ToIDOutput().ToStringOutput(),
+/// 			ResourceGroupId:    exampleResourceGroup.ID(),
+/// 			PolicyAssignmentId: exampleResourceGroupPolicyAssignment.ID(),
 /// 			ExemptionCategory:  pulumi.String("Mitigated"),
 /// 		})
 /// 		if err != nil {
@@ -169,7 +169,7 @@ import 'resource_group_policy_exemption_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -177,28 +177,37 @@ import 'resource_group_policy_exemption_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_policy_getpolicydefintion" "example" {
+/// data "azure_policy_policy_defintion" "example" {
 ///   display_name = "Allowed locations"
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "resourceGroup1"
 ///   location = "westus"
 /// }
-/// resource "azure_core_resourcegrouppolicyassignment" "example" {
+/// resource "azure_core_resource_group_policy_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "exampleAssignment"
-///   resource_group_id    = azure_core_resourcegroup.example.id
-///   policy_definition_id = data.azure_policy_getpolicydefintion.example.id
+///   resource_group_id    = azure_core_resource_group.example.id
+///   policy_definition_id = data.azure_policy_policy_defintion.example.id
 ///   parameters = jsonencode({
 ///     "listOfAllowedLocations" = {
-///       "value" = [azure_core_resourcegroup.example.location]
+///       "value" = [azure_core_resource_group.example.location]
 ///     }
 ///   })
 /// }
-/// resource "azure_core_resourcegrouppolicyexemption" "example" {
+/// resource "azure_core_resource_group_policy_exemption" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "exampleExemption"
-///   resource_group_id    = azure_core_resourcegroup.example.id
-///   policy_assignment_id = azure_core_resourcegrouppolicyassignment.example.id
+///   resource_group_id    = azure_core_resource_group.example.id
+///   policy_assignment_id = azure_core_resource_group_policy_assignment.example.id
 ///   exemption_category   = "Mitigated"
 /// }
 /// ```
@@ -337,7 +346,7 @@ class ResourceGroupPolicyExemption extends pulumi.CustomResource {
           'azure:core/resourceGroupPolicyExemption:ResourceGroupPolicyExemption',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');

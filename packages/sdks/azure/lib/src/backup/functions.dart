@@ -67,7 +67,7 @@ import 'get_policy_vmresult.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -75,7 +75,7 @@ import 'get_policy_vmresult.dart';
 ///   }
 /// }
 ///
-/// data "azure_backup_getpolicyfileshare" "policy" {
+/// data "azure_backup_policy_fileshare" "policy" {
 ///   name                = "policy"
 ///   recovery_vault_name = "recovery_vault"
 ///   resource_group_name = "resource_group"
@@ -210,7 +210,7 @@ pulumi.Output<GetPolicyFileshareResult> getPolicyFileshareOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -218,7 +218,7 @@ pulumi.Output<GetPolicyFileshareResult> getPolicyFileshareOutput(
 ///   }
 /// }
 ///
-/// data "azure_backup_getpolicyvm" "policy" {
+/// data "azure_backup_policy_v_m" "policy" {
 ///   name                = "policy"
 ///   recovery_vault_name = "recovery_vault"
 ///   resource_group_name = "resource_group"

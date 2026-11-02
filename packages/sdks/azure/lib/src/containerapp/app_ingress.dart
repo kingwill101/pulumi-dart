@@ -82,11 +82,11 @@ class AppIngress {
       clientCertificateMode: (() { final guardedValue = map['clientCertificateMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cors: (() { final guardedValue = map['cors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppIngressCors.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       customDomains: (() { final guardedValue = map['customDomains']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppIngressCustomDomain>(guardedValue, (value) => AppIngressCustomDomain.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      exposedPort: (() { final guardedValue = map['exposedPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      exposedPort: (() { final guardedValue = map['exposedPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       externalEnabled: (() { final guardedValue = map['externalEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipSecurityRestrictions: (() { final guardedValue = map['ipSecurityRestrictions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppIngressIpSecurityRestriction>(guardedValue, (value) => AppIngressIpSecurityRestriction.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      targetPort: pulumi.Input.fromValue((map['targetPort'] as num).toInt()),
+      targetPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetPort'])),
       trafficWeights: pulumi.Input.fromValue(pulumi.Input.decodeList<AppIngressTrafficWeight>(map['trafficWeights']!, (value) => AppIngressTrafficWeight.fromMap((value as Map).cast<String, dynamic>()))),
       transport: (() { final guardedValue = map['transport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

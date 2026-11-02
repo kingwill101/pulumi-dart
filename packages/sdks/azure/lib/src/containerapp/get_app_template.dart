@@ -85,16 +85,16 @@ class GetAppTemplate {
     return GetAppTemplate(
       azureQueueScaleRules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppTemplateAzureQueueScaleRule>(map['azureQueueScaleRules']!, (value) => GetAppTemplateAzureQueueScaleRule.fromMap((value as Map).cast<String, dynamic>()))),
       containers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppTemplateContainer>(map['containers']!, (value) => GetAppTemplateContainer.fromMap((value as Map).cast<String, dynamic>()))),
-      cooldownPeriodInSeconds: pulumi.Input.fromValue((map['cooldownPeriodInSeconds'] as num).toInt()),
+      cooldownPeriodInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cooldownPeriodInSeconds'])),
       customScaleRules: (() { final guardedValue = map['customScaleRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppTemplateCustomScaleRule>(guardedValue, (value) => GetAppTemplateCustomScaleRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       httpScaleRules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppTemplateHttpScaleRule>(map['httpScaleRules']!, (value) => GetAppTemplateHttpScaleRule.fromMap((value as Map).cast<String, dynamic>()))),
       initContainers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppTemplateInitContainer>(map['initContainers']!, (value) => GetAppTemplateInitContainer.fromMap((value as Map).cast<String, dynamic>()))),
-      maxReplicas: pulumi.Input.fromValue((map['maxReplicas'] as num).toInt()),
-      minReplicas: pulumi.Input.fromValue((map['minReplicas'] as num).toInt()),
-      pollingIntervalInSeconds: pulumi.Input.fromValue((map['pollingIntervalInSeconds'] as num).toInt()),
+      maxReplicas: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxReplicas'])),
+      minReplicas: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minReplicas'])),
+      pollingIntervalInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['pollingIntervalInSeconds'])),
       revisionSuffix: pulumi.Input.fromValue(map['revisionSuffix'] as String),
       tcpScaleRules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppTemplateTcpScaleRule>(map['tcpScaleRules']!, (value) => GetAppTemplateTcpScaleRule.fromMap((value as Map).cast<String, dynamic>()))),
-      terminationGracePeriodSeconds: pulumi.Input.fromValue((map['terminationGracePeriodSeconds'] as num).toInt()),
+      terminationGracePeriodSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['terminationGracePeriodSeconds'])),
       volumes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppTemplateVolume>(map['volumes']!, (value) => GetAppTemplateVolume.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

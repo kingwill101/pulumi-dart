@@ -117,7 +117,7 @@ class GetAutonomousDatabaseBackupResult {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       restorable: (() { final guardedValue = map['restorable']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      retentionPeriodInDays: (() { final guardedValue = map['retentionPeriodInDays']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      retentionPeriodInDays: (() { final guardedValue = map['retentionPeriodInDays']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       timeAvailableTil: (() { final guardedValue = map['timeAvailableTil']; if (guardedValue == null) return null; return guardedValue as String; })(),
       timeEnded: (() { final guardedValue = map['timeEnded']; if (guardedValue == null) return null; return guardedValue as String; })(),
       timeStarted: (() { final guardedValue = map['timeStarted']; if (guardedValue == null) return null; return guardedValue as String; })(),

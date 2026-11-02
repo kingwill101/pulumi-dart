@@ -204,7 +204,7 @@ import 'dataset_kusto_database_state.dart';
 /// 		}
 /// 		exampleShare, err := datashare.NewShare(ctx, "example", &datashare.ShareArgs{
 /// 			Name:      pulumi.String("example_ds"),
-/// 			AccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			AccountId: exampleAccount.ID(),
 /// 			Kind:      pulumi.String("InPlace"),
 /// 		})
 /// 		if err != nil {
@@ -232,7 +232,7 @@ import 'dataset_kusto_database_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleAssignment, err := authorization.NewAssignment(ctx, "example", &authorization.AssignmentArgs{
-/// 			Scope:              exampleCluster.ID().ToIDOutput().ToStringOutput(),
+/// 			Scope:              exampleCluster.ID(),
 /// 			RoleDefinitionName: pulumi.String("Contributor"),
 /// 			PrincipalId:        exampleAccount.Identity.PrincipalId(),
 /// 		})
@@ -241,8 +241,8 @@ import 'dataset_kusto_database_state.dart';
 /// 		}
 /// 		_, err = datashare.NewDatasetKustoDatabase(ctx, "example", &datashare.DatasetKustoDatabaseArgs{
 /// 			Name:            pulumi.String("example-dskd"),
-/// 			ShareId:         exampleShare.ID().ToIDOutput().ToStringOutput(),
-/// 			KustoDatabaseId: exampleDatabase.ID().ToIDOutput().ToStringOutput(),
+/// 			ShareId:         exampleShare.ID(),
+/// 			KustoDatabaseId: exampleDatabase.ID(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleAssignment,
 /// 		}))
@@ -254,7 +254,7 @@ import 'dataset_kusto_database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -262,45 +262,66 @@ import 'dataset_kusto_database_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_datashare_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-dsa"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
 /// resource "azure_datashare_share" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example_ds"
 ///   account_id = azure_datashare_account.example.id
 ///   kind       = "InPlace"
 /// }
 /// resource "azure_kusto_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplekc"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     name     = "Dev(No SLA)_Standard_D11_v2"
 ///     capacity = 1
 ///   }
 /// }
 /// resource "azure_kusto_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplekd"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   cluster_name        = azure_kusto_cluster.example.name
 /// }
 /// resource "azure_authorization_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   scope                = azure_kusto_cluster.example.id
 ///   role_definition_name = "Contributor"
 ///   principal_id         = azure_datashare_account.example.identity.principal_id
 /// }
-/// resource "azure_datashare_datasetkustodatabase" "example" {
-///   depends_on        = [azure_authorization_assignment.example]
+/// resource "azure_datashare_dataset_kusto_database" "example" {
+///   depends_on = [azure_authorization_assignment.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-dskd"
 ///   share_id          = azure_datashare_share.example.id
 ///   kusto_database_id = azure_kusto_database.example.id
@@ -495,7 +516,7 @@ class DatasetKustoDatabase extends pulumi.CustomResource {
           'azure:datashare/datasetKustoDatabase:DatasetKustoDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
     kustoClusterLocation = registerOutput<String>('kustoClusterLocation');

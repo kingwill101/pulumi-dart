@@ -84,17 +84,17 @@ class ClusterNodeType {
     return ClusterNodeType(
       applicationPorts: (() { final guardedValue = map['applicationPorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodeTypeApplicationPorts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       capacities: (() { final guardedValue = map['capacities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      clientEndpointPort: pulumi.Input.fromValue((map['clientEndpointPort'] as num).toInt()),
+      clientEndpointPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['clientEndpointPort'])),
       durabilityLevel: (() { final guardedValue = map['durabilityLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ephemeralPorts: (() { final guardedValue = map['ephemeralPorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodeTypeEphemeralPorts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      httpEndpointPort: pulumi.Input.fromValue((map['httpEndpointPort'] as num).toInt()),
-      instanceCount: pulumi.Input.fromValue((map['instanceCount'] as num).toInt()),
+      httpEndpointPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['httpEndpointPort'])),
+      instanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['instanceCount'])),
       isPrimary: pulumi.Input.fromValue(map['isPrimary'] as bool),
       isStateless: (() { final guardedValue = map['isStateless']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       multipleAvailabilityZones: (() { final guardedValue = map['multipleAvailabilityZones']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       placementProperties: (() { final guardedValue = map['placementProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      reverseProxyEndpointPort: (() { final guardedValue = map['reverseProxyEndpointPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      reverseProxyEndpointPort: (() { final guardedValue = map['reverseProxyEndpointPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

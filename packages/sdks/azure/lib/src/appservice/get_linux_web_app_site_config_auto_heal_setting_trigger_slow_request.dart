@@ -30,7 +30,7 @@ class GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest {
 
   factory GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest.fromMap(Map<String, dynamic> map) {
     return GetLinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest(
-      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
+      count: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['count'])),
       interval: pulumi.Input.fromValue(map['interval'] as String),
       timeTaken: pulumi.Input.fromValue(map['timeTaken'] as String),
     );

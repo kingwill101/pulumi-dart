@@ -85,7 +85,7 @@ class ExadataInfrastructureArgs {
 
   factory ExadataInfrastructureArgs.fromMap(Map<String, dynamic> map) {
     return ExadataInfrastructureArgs(
-      computeCount: pulumi.Input.fromValue((map['computeCount'] as num).toInt()),
+      computeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['computeCount'])),
       customerContacts: (() { final guardedValue = map['customerContacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       databaseServerType: (() { final guardedValue = map['databaseServerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
@@ -94,7 +94,7 @@ class ExadataInfrastructureArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       shape: pulumi.Input.fromValue(map['shape'] as String),
-      storageCount: pulumi.Input.fromValue((map['storageCount'] as num).toInt()),
+      storageCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['storageCount'])),
       storageServerType: (() { final guardedValue = map['storageServerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       zones: pulumi.Input.fromValue((map['zones'] as List).cast<String>()),

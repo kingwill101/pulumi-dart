@@ -41,7 +41,7 @@ class NetworkWatcherFlowLogTrafficAnalytics {
   factory NetworkWatcherFlowLogTrafficAnalytics.fromMap(Map<String, dynamic> map) {
     return NetworkWatcherFlowLogTrafficAnalytics(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      intervalInMinutes: (() { final guardedValue = map['intervalInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      intervalInMinutes: (() { final guardedValue = map['intervalInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
       workspaceRegion: pulumi.Input.fromValue(map['workspaceRegion'] as String),
       workspaceResourceId: pulumi.Input.fromValue(map['workspaceResourceId'] as String),

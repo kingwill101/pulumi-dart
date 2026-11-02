@@ -68,7 +68,7 @@ import 'get_custom_location_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -76,13 +76,13 @@ import 'get_custom_location_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_extendedlocation_getcustomlocation" "example" {
+/// data "azure_extendedlocation_custom_location" "example" {
 ///   name                = exampleAzurermExtendedLocationCustomLocation.name
 ///   resource_group_name = exampleAzurermResourceGroup.name
 /// }
 ///
 /// output "customLocationId" {
-///   value = data.azure_extendedlocation_getcustomlocation.example.id
+///   value = data.azure_extendedlocation_custom_location.example.id
 /// }
 /// ```
 /// ```java
@@ -107,8 +107,8 @@ import 'get_custom_location_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = ExtendedlocationFunctions.getCustomLocation(GetCustomLocationArgs.builder()
-///             .name(exampleAzurermExtendedLocationCustomLocation.name())
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
+///             .name(exampleAzurermExtendedLocationCustomLocation.get("name"))
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
 ///             .build());
 ///
 ///         ctx.export("customLocationId", example.id());

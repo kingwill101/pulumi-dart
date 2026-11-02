@@ -26,7 +26,7 @@ class ConfigurationFeatureTargetingFilterGroup {
   factory ConfigurationFeatureTargetingFilterGroup.fromMap(Map<String, dynamic> map) {
     return ConfigurationFeatureTargetingFilterGroup(
       name: pulumi.Input.fromValue(map['name'] as String),
-      rolloutPercentage: pulumi.Input.fromValue((map['rolloutPercentage'] as num).toInt()),
+      rolloutPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rolloutPercentage'])),
     );
   }
 }

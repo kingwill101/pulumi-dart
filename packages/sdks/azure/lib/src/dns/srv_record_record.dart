@@ -35,10 +35,10 @@ class SrvRecordRecord {
 
   factory SrvRecordRecord.fromMap(Map<String, dynamic> map) {
     return SrvRecordRecord(
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       target: pulumi.Input.fromValue(map['target'] as String),
-      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
+      weight: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['weight'])),
     );
   }
 }

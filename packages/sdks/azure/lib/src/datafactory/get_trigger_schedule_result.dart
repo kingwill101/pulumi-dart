@@ -87,7 +87,7 @@ class GetTriggerScheduleResult {
       endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pipelineName: (() { final guardedValue = map['pipelineName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       schedules: (() { final guardedValue = map['schedules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTriggerScheduleSchedule>(guardedValue, (value) => GetTriggerScheduleSchedule.fromMap((value as Map).cast<String, dynamic>())); })(),

@@ -50,7 +50,7 @@ class GetImageOsDisk {
       managedDiskId: pulumi.Input.fromValue(map['managedDiskId'] as String),
       osState: pulumi.Input.fromValue(map['osState'] as String),
       osType: pulumi.Input.fromValue(map['osType'] as String),
-      sizeGb: pulumi.Input.fromValue((map['sizeGb'] as num).toInt()),
+      sizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeGb'])),
     );
   }
 }

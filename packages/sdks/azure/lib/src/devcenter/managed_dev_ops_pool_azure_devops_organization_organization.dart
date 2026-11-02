@@ -34,7 +34,7 @@ class ManagedDevOpsPoolAzureDevopsOrganizationOrganization {
 
   factory ManagedDevOpsPoolAzureDevopsOrganizationOrganization.fromMap(Map<String, dynamic> map) {
     return ManagedDevOpsPoolAzureDevopsOrganizationOrganization(
-      parallelism: pulumi.Input.fromValue((map['parallelism'] as num).toInt()),
+      parallelism: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['parallelism'])),
       projects: (() { final guardedValue = map['projects']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       url: pulumi.Input.fromValue(map['url'] as String),
     );

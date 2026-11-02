@@ -39,7 +39,7 @@ class BackupPolicyPostgresqlRetentionRule {
       criteria: pulumi.Input.fromValue(BackupPolicyPostgresqlRetentionRuleCriteria.fromMap((map['criteria']! as Map).cast<String, dynamic>())),
       duration: pulumi.Input.fromValue(map['duration'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
     );
   }
 }

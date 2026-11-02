@@ -37,8 +37,8 @@ class LinkedServiceAzureDatabricksInstancePool {
     return LinkedServiceAzureDatabricksInstancePool(
       clusterVersion: pulumi.Input.fromValue(map['clusterVersion'] as String),
       instancePoolId: pulumi.Input.fromValue(map['instancePoolId'] as String),
-      maxNumberOfWorkers: (() { final guardedValue = map['maxNumberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minNumberOfWorkers: (() { final guardedValue = map['minNumberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxNumberOfWorkers: (() { final guardedValue = map['maxNumberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minNumberOfWorkers: (() { final guardedValue = map['minNumberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

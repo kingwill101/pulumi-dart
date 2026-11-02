@@ -104,7 +104,7 @@ import 'dicom_service_storage.dart';
 /// 		}
 /// 		_, err = healthcare.NewDicomService(ctx, "test", &healthcare.DicomServiceArgs{
 /// 			Name:        pulumi.String("tfexDicom"),
-/// 			WorkspaceId: test.ID().ToIDOutput().ToStringOutput(),
+/// 			WorkspaceId: test.ID(),
 /// 			Location:    pulumi.String("east us"),
 /// 			Identity: &healthcare.DicomServiceIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
@@ -121,7 +121,7 @@ import 'dicom_service_storage.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -130,11 +130,17 @@ import 'dicom_service_storage.dart';
 /// }
 ///
 /// resource "azure_healthcare_workspace" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfexworkspace"
 ///   resource_group_name = "tfex-resource_group"
 ///   location            = "east us"
 /// }
-/// resource "azure_healthcare_dicomservice" "test" {
+/// resource "azure_healthcare_dicom_service" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "tfexDicom"
 ///   workspace_id = azure_healthcare_workspace.test.id
 ///   location     = "east us"
@@ -264,7 +270,7 @@ class DicomService extends pulumi.CustomResource {
           'azure:healthcare/dicomService:DicomService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     authentications = registerOutput<List<DicomServiceAuthentication>>('authentications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DicomServiceAuthentication>(guardedValue, (value) => DicomServiceAuthentication.fromMap((value as Map).cast<String, dynamic>())); });
     cors = registerOutput<DicomServiceCors>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DicomServiceCors.fromMap((guardedValue as Map).cast<String, dynamic>()); });

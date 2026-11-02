@@ -240,12 +240,12 @@ import 'linked_service_azure_databricks_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceAzureDatabricks(ctx, "msi_linked", &datafactory.LinkedServiceAzureDatabricksArgs{
 /// 			Name:          pulumi.String("ADBLinkedServiceViaMSI"),
-/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
+/// 			DataFactoryId: exampleFactory.ID(),
 /// 			Description:   pulumi.String("ADB Linked Service via MSI"),
 /// 			AdbDomain: exampleWorkspace.WorkspaceUrl.ApplyT(func(workspaceUrl string) (string, error) {
 /// 				return fmt.Sprintf("https://%v", workspaceUrl), nil
 /// 			}).(pulumi.StringOutput),
-/// 			MsiWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			MsiWorkspaceId: exampleWorkspace.ID(),
 /// 			NewClusterConfig: &datafactory.LinkedServiceAzureDatabricksNewClusterConfigArgs{
 /// 				NodeType:           pulumi.String("Standard_NC12"),
 /// 				ClusterVersion:     pulumi.String("5.5.x-gpu-scala2.11"),
@@ -279,7 +279,7 @@ import 'linked_service_azure_databricks_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -287,27 +287,39 @@ import 'linked_service_azure_databricks_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "East US"
 /// }
 /// #Create a Linked Service using managed identity and new cluster config
 /// resource "azure_datafactory_factory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "TestDtaFactory92783401247"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
 /// #Create a databricks instance
 /// resource "azure_databricks_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "databricks-test"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku                 = "standard"
 /// }
-/// resource "azure_datafactory_linkedserviceazuredatabricks" "msi_linked" {
+/// resource "azure_datafactory_linked_service_azure_databricks" "msi_linked" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "ADBLinkedServiceViaMSI"
 ///   data_factory_id  = azure_datafactory_factory.example.id
 ///   description      = "ADB Linked Service via MSI"
@@ -624,7 +636,7 @@ import 'linked_service_azure_databricks_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceAzureDatabricks(ctx, "at_linked", &datafactory.LinkedServiceAzureDatabricksArgs{
 /// 			Name:              pulumi.String("ADBLinkedServiceViaAccessToken"),
-/// 			DataFactoryId:     exampleFactory.ID().ToIDOutput().ToStringOutput(),
+/// 			DataFactoryId:     exampleFactory.ID(),
 /// 			Description:       pulumi.String("ADB Linked Service via Access Token"),
 /// 			ExistingClusterId: pulumi.String("0308-201146-sly615"),
 /// 			AccessToken:       pulumi.String("SomeDatabricksAccessToken"),
@@ -640,7 +652,7 @@ import 'linked_service_azure_databricks_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -648,24 +660,36 @@ import 'linked_service_azure_databricks_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "East US"
 /// }
 /// #Link to an existing cluster via access token
 /// resource "azure_datafactory_factory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "TestDtaFactory92783401247"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// #Create a databricks instance
 /// resource "azure_databricks_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "databricks-test"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku                 = "standard"
 /// }
-/// resource "azure_datafactory_linkedserviceazuredatabricks" "at_linked" {
+/// resource "azure_datafactory_linked_service_azure_databricks" "at_linked" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "ADBLinkedServiceViaAccessToken"
 ///   data_factory_id     = azure_datafactory_factory.example.id
 ///   description         = "ADB Linked Service via Access Token"
@@ -820,7 +844,7 @@ class LinkedServiceAzureDatabricks extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceAzureDatabricks:LinkedServiceAzureDatabricks',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
           additionalSecretOutputs: const ['accessToken'],
         ) {
     accessToken = registerOutput<String?>('accessToken', isSecret: true);

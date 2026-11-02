@@ -70,7 +70,7 @@ import 'get_public_configurations_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -78,7 +78,7 @@ import 'get_public_configurations_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_maintenance_getconfiguration" "existing" {
+/// data "azure_maintenance_configuration" "existing" {
 ///   name                = "example-mc"
 ///   resource_group_name = "example-resources"
 /// }
@@ -113,7 +113,7 @@ import 'get_public_configurations_result.dart';
 ///             .resourceGroupName("example-resources")
 ///             .build());
 ///
-///         ctx.export("id", existingAzurermMaintenanceConfiguration.id());
+///         ctx.export("id", existingAzurermMaintenanceConfiguration.get("id"));
 ///     }
 /// }
 /// ```
@@ -232,7 +232,7 @@ pulumi.Output<GetConfigurationResult> getConfigurationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -240,14 +240,14 @@ pulumi.Output<GetConfigurationResult> getConfigurationOutput(
 ///   }
 /// }
 ///
-/// data "azure_maintenance_getpublicconfigurations" "existing" {
+/// data "azure_maintenance_public_configurations" "existing" {
 ///   location    = "West Europe"
 ///   scope       = "SQLManagedInstance"
 ///   recur_every = "Monday-Thursday"
 /// }
 ///
 /// output "name" {
-///   value = data.azure_maintenance_getpublicconfigurations.existing.configs[0].name
+///   value = data.azure_maintenance_public_configurations.existing.configs[0].name
 /// }
 /// ```
 /// ```java

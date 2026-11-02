@@ -36,7 +36,7 @@ class PoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule {
   factory PoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule.fromMap(Map<String, dynamic> map) {
     return PoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule(
       access: pulumi.Input.fromValue(map['access'] as String),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       sourceAddressPrefix: pulumi.Input.fromValue(map['sourceAddressPrefix'] as String),
       sourcePortRanges: (() { final guardedValue = map['sourcePortRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

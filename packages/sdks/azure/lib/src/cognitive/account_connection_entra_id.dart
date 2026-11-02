@@ -195,12 +195,12 @@ import 'account_connection_entra_id_state.dart';
 /// 		}
 /// 		_, err = cognitive.NewAccountConnectionEntraId(ctx, "example", &cognitive.AccountConnectionEntraIdArgs{
 /// 			Name:               pulumi.String("example-connection"),
-/// 			CognitiveAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			CognitiveAccountId: exampleAccount.ID(),
 /// 			Category:           pulumi.String("AzureOpenAI"),
 /// 			Target:             openai.Endpoint,
 /// 			Metadata: pulumi.StringMap{
 /// 				"ApiType":    pulumi.String("Azure"),
-/// 				"ResourceId": openai.ID().ToIDOutput().ToStringOutput(),
+/// 				"ResourceId": openai.ID(),
 /// 				"Location":   openai.Location,
 /// 			},
 /// 		})
@@ -212,7 +212,7 @@ import 'account_connection_entra_id_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -220,14 +220,20 @@ import 'account_connection_entra_id_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_cognitive_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-aiservices"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   kind                       = "AIServices"
 ///   sku_name                   = "S0"
 ///   project_management_enabled = true
@@ -237,16 +243,22 @@ import 'account_connection_entra_id_state.dart';
 ///   }
 /// }
 /// resource "azure_cognitive_account" "openai" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-openai"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   kind                = "OpenAI"
 ///   sku_name            = "S0"
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_cognitive_accountconnectionentraid" "example" {
+/// resource "azure_cognitive_account_connection_entra_id" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-connection"
 ///   cognitive_account_id = azure_cognitive_account.example.id
 ///   category             = "AzureOpenAI"
@@ -415,7 +427,7 @@ class AccountConnectionEntraId extends pulumi.CustomResource {
           'azure:cognitive/accountConnectionEntraId:AccountConnectionEntraId',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     category = registerOutput<String>('category');
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');

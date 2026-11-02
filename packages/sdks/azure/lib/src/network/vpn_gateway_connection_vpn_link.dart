@@ -97,11 +97,11 @@ class VpnGatewayConnectionVpnLink {
 
   factory VpnGatewayConnectionVpnLink.fromMap(Map<String, dynamic> map) {
     return VpnGatewayConnectionVpnLink(
-      bandwidthMbps: (() { final guardedValue = map['bandwidthMbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bandwidthMbps: (() { final guardedValue = map['bandwidthMbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       bgpEnabled: (() { final guardedValue = map['bgpEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       connectionMode: (() { final guardedValue = map['connectionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customBgpAddresses: (() { final guardedValue = map['customBgpAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VpnGatewayConnectionVpnLinkCustomBgpAddress>(guardedValue, (value) => VpnGatewayConnectionVpnLinkCustomBgpAddress.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      dpdTimeoutSeconds: (() { final guardedValue = map['dpdTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      dpdTimeoutSeconds: (() { final guardedValue = map['dpdTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       egressNatRuleIds: (() { final guardedValue = map['egressNatRuleIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ingressNatRuleIds: (() { final guardedValue = map['ingressNatRuleIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ipsecPolicies: (() { final guardedValue = map['ipsecPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VpnGatewayConnectionVpnLinkIpsecPolicy>(guardedValue, (value) => VpnGatewayConnectionVpnLinkIpsecPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -110,7 +110,7 @@ class VpnGatewayConnectionVpnLink {
       policyBasedTrafficSelectorEnabled: (() { final guardedValue = map['policyBasedTrafficSelectorEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ratelimitEnabled: (() { final guardedValue = map['ratelimitEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      routeWeight: (() { final guardedValue = map['routeWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      routeWeight: (() { final guardedValue = map['routeWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sharedKey: (() { final guardedValue = map['sharedKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpnSiteLinkId: pulumi.Input.fromValue(map['vpnSiteLinkId'] as String),
     );

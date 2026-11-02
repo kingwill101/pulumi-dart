@@ -31,8 +31,8 @@ class KubernetesClusterNetworkProfileNatGatewayProfile {
   factory KubernetesClusterNetworkProfileNatGatewayProfile.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNetworkProfileNatGatewayProfile(
       effectiveOutboundIps: (() { final guardedValue = map['effectiveOutboundIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      managedOutboundIpCount: (() { final guardedValue = map['managedOutboundIpCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      managedOutboundIpCount: (() { final guardedValue = map['managedOutboundIpCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

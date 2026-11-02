@@ -97,7 +97,7 @@ class KubernetesClusterAciConnectorLinux {
   /// }
   /// ```
   /// ```hcl
-  /// pulumi {
+  /// terraform {
   ///   required_providers {
   ///     azure = {
   ///       source = "pulumi/azure"
@@ -106,6 +106,9 @@ class KubernetesClusterAciConnectorLinux {
   /// }
   ///
   /// resource "azure_network_subnet" "virtual" {
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
   ///   delegations {
   ///     name = "aciDelegation"
   ///     service_delegation = {

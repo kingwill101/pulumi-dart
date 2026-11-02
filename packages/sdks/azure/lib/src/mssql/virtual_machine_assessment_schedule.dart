@@ -38,9 +38,9 @@ class VirtualMachineAssessmentSchedule {
   factory VirtualMachineAssessmentSchedule.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAssessmentSchedule(
       dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
-      monthlyOccurrence: (() { final guardedValue = map['monthlyOccurrence']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      monthlyOccurrence: (() { final guardedValue = map['monthlyOccurrence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
-      weeklyInterval: (() { final guardedValue = map['weeklyInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      weeklyInterval: (() { final guardedValue = map['weeklyInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

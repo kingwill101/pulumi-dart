@@ -38,7 +38,7 @@ class FirewallPolicyRuleCollectionGroupNetworkRuleCollection {
     return FirewallPolicyRuleCollectionGroupNetworkRuleCollection(
       action: pulumi.Input.fromValue(map['action'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       rules: pulumi.Input.fromValue(pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule>(map['rules']!, (value) => FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

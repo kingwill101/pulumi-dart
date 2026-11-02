@@ -147,7 +147,7 @@ import 'organization_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleParent, err := iotcentral.NewOrganization(ctx, "example_parent", &iotcentral.OrganizationArgs{
-/// 			IotcentralApplicationId: exampleApplication.ID().ToIDOutput().ToStringOutput(),
+/// 			IotcentralApplicationId: exampleApplication.ID(),
 /// 			OrganizationId:          pulumi.String("example-parent-organization-id"),
 /// 			DisplayName:             pulumi.String("Org example parent"),
 /// 		})
@@ -155,7 +155,7 @@ import 'organization_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = iotcentral.NewOrganization(ctx, "example", &iotcentral.OrganizationArgs{
-/// 			IotcentralApplicationId: exampleApplication.ID().ToIDOutput().ToStringOutput(),
+/// 			IotcentralApplicationId: exampleApplication.ID(),
 /// 			OrganizationId:          pulumi.String("example-child-organization-id"),
 /// 			DisplayName:             pulumi.String("Org example"),
 /// 			ParentOrganizationId:    exampleParent.OrganizationId,
@@ -168,7 +168,7 @@ import 'organization_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -176,14 +176,20 @@ import 'organization_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resource"
 ///   location = "West Europe"
 /// }
 /// resource "azure_iotcentral_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-iotcentral-app"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sub_domain          = "example-iotcentral-app-subdomain"
 ///   display_name        = "example-iotcentral-app-display-name"
 ///   sku                 = "ST1"
@@ -193,11 +199,17 @@ import 'organization_state.dart';
 ///   }
 /// }
 /// resource "azure_iotcentral_organization" "example_parent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iotcentral_application_id = azure_iotcentral_application.example.id
 ///   organization_id           = "example-parent-organization-id"
 ///   display_name              = "Org example parent"
 /// }
 /// resource "azure_iotcentral_organization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   iotcentral_application_id = azure_iotcentral_application.example.id
 ///   organization_id           = "example-child-organization-id"
 ///   display_name              = "Org example"
@@ -328,7 +340,7 @@ class Organization extends pulumi.CustomResource {
           'azure:iotcentral/organization:Organization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
     iotcentralApplicationId = registerOutput<String>('iotcentralApplicationId');

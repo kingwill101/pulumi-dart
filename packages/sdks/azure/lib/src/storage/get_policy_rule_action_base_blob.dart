@@ -86,19 +86,19 @@ class GetPolicyRuleActionBaseBlob {
   factory GetPolicyRuleActionBaseBlob.fromMap(Map<String, dynamic> map) {
     return GetPolicyRuleActionBaseBlob(
       autoTierToHotFromCoolEnabled: pulumi.Input.fromValue(map['autoTierToHotFromCoolEnabled'] as bool),
-      deleteAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue((map['deleteAfterDaysSinceCreationGreaterThan'] as num).toInt()),
-      deleteAfterDaysSinceLastAccessTimeGreaterThan: pulumi.Input.fromValue((map['deleteAfterDaysSinceLastAccessTimeGreaterThan'] as num).toInt()),
-      deleteAfterDaysSinceModificationGreaterThan: pulumi.Input.fromValue((map['deleteAfterDaysSinceModificationGreaterThan'] as num).toInt()),
-      tierToArchiveAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue((map['tierToArchiveAfterDaysSinceCreationGreaterThan'] as num).toInt()),
-      tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan: pulumi.Input.fromValue((map['tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan'] as num).toInt()),
-      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: pulumi.Input.fromValue((map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] as num).toInt()),
-      tierToArchiveAfterDaysSinceModificationGreaterThan: pulumi.Input.fromValue((map['tierToArchiveAfterDaysSinceModificationGreaterThan'] as num).toInt()),
-      tierToColdAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue((map['tierToColdAfterDaysSinceCreationGreaterThan'] as num).toInt()),
-      tierToColdAfterDaysSinceLastAccessTimeGreaterThan: pulumi.Input.fromValue((map['tierToColdAfterDaysSinceLastAccessTimeGreaterThan'] as num).toInt()),
-      tierToColdAfterDaysSinceModificationGreaterThan: pulumi.Input.fromValue((map['tierToColdAfterDaysSinceModificationGreaterThan'] as num).toInt()),
-      tierToCoolAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue((map['tierToCoolAfterDaysSinceCreationGreaterThan'] as num).toInt()),
-      tierToCoolAfterDaysSinceLastAccessTimeGreaterThan: pulumi.Input.fromValue((map['tierToCoolAfterDaysSinceLastAccessTimeGreaterThan'] as num).toInt()),
-      tierToCoolAfterDaysSinceModificationGreaterThan: pulumi.Input.fromValue((map['tierToCoolAfterDaysSinceModificationGreaterThan'] as num).toInt()),
+      deleteAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['deleteAfterDaysSinceCreationGreaterThan'])),
+      deleteAfterDaysSinceLastAccessTimeGreaterThan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['deleteAfterDaysSinceLastAccessTimeGreaterThan'])),
+      deleteAfterDaysSinceModificationGreaterThan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['deleteAfterDaysSinceModificationGreaterThan'])),
+      tierToArchiveAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tierToArchiveAfterDaysSinceCreationGreaterThan'])),
+      tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan'])),
+      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'])),
+      tierToArchiveAfterDaysSinceModificationGreaterThan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tierToArchiveAfterDaysSinceModificationGreaterThan'])),
+      tierToColdAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tierToColdAfterDaysSinceCreationGreaterThan'])),
+      tierToColdAfterDaysSinceLastAccessTimeGreaterThan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tierToColdAfterDaysSinceLastAccessTimeGreaterThan'])),
+      tierToColdAfterDaysSinceModificationGreaterThan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tierToColdAfterDaysSinceModificationGreaterThan'])),
+      tierToCoolAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tierToCoolAfterDaysSinceCreationGreaterThan'])),
+      tierToCoolAfterDaysSinceLastAccessTimeGreaterThan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tierToCoolAfterDaysSinceLastAccessTimeGreaterThan'])),
+      tierToCoolAfterDaysSinceModificationGreaterThan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tierToCoolAfterDaysSinceModificationGreaterThan'])),
     );
   }
 }

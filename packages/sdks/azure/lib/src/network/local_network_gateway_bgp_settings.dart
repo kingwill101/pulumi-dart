@@ -30,9 +30,9 @@ class LocalNetworkGatewayBgpSettings {
 
   factory LocalNetworkGatewayBgpSettings.fromMap(Map<String, dynamic> map) {
     return LocalNetworkGatewayBgpSettings(
-      asn: pulumi.Input.fromValue((map['asn'] as num).toInt()),
+      asn: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['asn'])),
       bgpPeeringAddress: pulumi.Input.fromValue(map['bgpPeeringAddress'] as String),
-      peerWeight: (() { final guardedValue = map['peerWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      peerWeight: (() { final guardedValue = map['peerWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -71,11 +71,11 @@ class EventHubArgs {
   factory EventHubArgs.fromMap(Map<String, dynamic> map) {
     return EventHubArgs(
       captureDescription: (() { final guardedValue = map['captureDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EventHubCaptureDescription.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      messageRetention: (() { final guardedValue = map['messageRetention']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      messageRetention: (() { final guardedValue = map['messageRetention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespaceId: (() { final guardedValue = map['namespaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespaceName: (() { final guardedValue = map['namespaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      partitionCount: pulumi.Input.fromValue((map['partitionCount'] as num).toInt()),
+      partitionCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['partitionCount'])),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       retentionDescription: (() { final guardedValue = map['retentionDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EventHubRetentionDescription.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -354,9 +354,9 @@ import 'inference_cluster_state.dart';
 /// 			Name:                  pulumi.String("example-mlw"),
 /// 			Location:              example.Location,
 /// 			ResourceGroupName:     example.Name,
-/// 			ApplicationInsightsId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
-/// 			KeyVaultId:            exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
-/// 			StorageAccountId:      exampleAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			ApplicationInsightsId: exampleInsights.ID(),
+/// 			KeyVaultId:            exampleKeyVault.ID(),
+/// 			StorageAccountId:      exampleAccount.ID(),
 /// 			Identity: &machinelearning.WorkspaceIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
 /// 			},
@@ -395,7 +395,7 @@ import 'inference_cluster_state.dart';
 /// 				Name:         pulumi.String("default"),
 /// 				NodeCount:    pulumi.Int(3),
 /// 				VmSize:       pulumi.String("Standard_D3_v2"),
-/// 				VnetSubnetId: exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 				VnetSubnetId: exampleSubnet.ID(),
 /// 			},
 /// 			Identity: &containerservice.KubernetesClusterIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
@@ -408,9 +408,9 @@ import 'inference_cluster_state.dart';
 /// 			Name:                       pulumi.String("example"),
 /// 			Location:                   example.Location,
 /// 			ClusterPurpose:             pulumi.String("FastProd"),
-/// 			KubernetesClusterId:        exampleKubernetesCluster.ID().ToIDOutput().ToStringOutput(),
+/// 			KubernetesClusterId:        exampleKubernetesCluster.ID(),
 /// 			Description:                pulumi.String("This is an example cluster used with Terraform"),
-/// 			MachineLearningWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			MachineLearningWorkspaceId: exampleWorkspace.ID(),
 /// 			Tags: pulumi.StringMap{
 /// 				"stage": pulumi.String("example"),
 /// 			},
@@ -423,7 +423,7 @@ import 'inference_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -431,10 +431,13 @@ import 'inference_cluster_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "west europe"
 ///   tags = {
@@ -442,54 +445,75 @@ import 'inference_cluster_state.dart';
 ///   }
 /// }
 /// resource "azure_appinsights_insights" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ai"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   application_type    = "web"
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-kv"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "standard"
 ///   purge_protection_enabled   = true
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplesa"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resource_group.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_machinelearning_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-mlw"
-///   location                = azure_core_resourcegroup.example.location
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   location                = azure_core_resource_group.example.location
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   application_insights_id = azure_appinsights_insights.example.id
-///   key_vault_id            = azure_keyvault_keyvault.example.id
+///   key_vault_id            = azure_keyvault_key_vault.example.id
 ///   storage_account_id      = azure_storage_account.example.id
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
 ///   address_spaces      = ["10.1.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.1.0.0/24"]
 /// }
-/// resource "azure_containerservice_kubernetescluster" "example" {
+/// resource "azure_containerservice_kubernetes_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-aks"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   dns_prefix_private_cluster = "prefix"
 ///   default_node_pool = {
 ///     name           = "default"
@@ -501,11 +525,14 @@ import 'inference_cluster_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_machinelearning_inferencecluster" "example" {
+/// resource "azure_machinelearning_inference_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "example"
-///   location                      = azure_core_resourcegroup.example.location
+///   location                      = azure_core_resource_group.example.location
 ///   cluster_purpose               = "FastProd"
-///   kubernetes_cluster_id         = azure_containerservice_kubernetescluster.example.id
+///   kubernetes_cluster_id         = azure_containerservice_kubernetes_cluster.example.id
 ///   description                   = "This is an example cluster used with Terraform"
 ///   machine_learning_workspace_id = azure_machinelearning_workspace.example.id
 ///   tags = {
@@ -794,7 +821,7 @@ class InferenceCluster extends pulumi.CustomResource {
           'azure:machinelearning/inferenceCluster:InferenceCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     clusterPurpose = registerOutput<String?>('clusterPurpose');
     description = registerOutput<String?>('description');

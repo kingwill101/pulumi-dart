@@ -54,7 +54,7 @@ class GetBudgetSubscriptionNotification {
       contactRoles: pulumi.Input.fromValue((map['contactRoles'] as List).cast<String>()),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       operator: pulumi.Input.fromValue(map['operator'] as String),
-      threshold: pulumi.Input.fromValue((map['threshold'] as num).toInt()),
+      threshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['threshold'])),
       thresholdType: pulumi.Input.fromValue(map['thresholdType'] as String),
     );
   }

@@ -342,8 +342,8 @@ import 'frontdoor_security_policy_state.dart';
 /// 		}
 /// 		exampleFrontdoorCustomDomain, err := cdn.NewFrontdoorCustomDomain(ctx, "example", &cdn.FrontdoorCustomDomainArgs{
 /// 			Name:                  pulumi.String("example-customDomain"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
-/// 			DnsZoneId:             exampleZone.ID().ToIDOutput().ToStringOutput(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
+/// 			DnsZoneId:             exampleZone.ID(),
 /// 			HostName: std.JoinOutput(ctx, std.JoinOutputArgs{
 /// 				Separator: pulumi.String("."),
 /// 				Input: pulumi.StringArray{
@@ -361,14 +361,14 @@ import 'frontdoor_security_policy_state.dart';
 /// 		}
 /// 		_, err = cdn.NewFrontdoorSecurityPolicy(ctx, "example", &cdn.FrontdoorSecurityPolicyArgs{
 /// 			Name:                  pulumi.String("Example-Security-Policy"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
 /// 			SecurityPolicies: &cdn.FrontdoorSecurityPolicySecurityPoliciesArgs{
 /// 				Firewall: &cdn.FrontdoorSecurityPolicySecurityPoliciesFirewallArgs{
-/// 					CdnFrontdoorFirewallPolicyId: exampleFrontdoorFirewallPolicy.ID().ToIDOutput().ToStringOutput(),
+/// 					CdnFrontdoorFirewallPolicyId: exampleFrontdoorFirewallPolicy.ID(),
 /// 					Association: &cdn.FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationArgs{
 /// 						Domains: cdn.FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomainArray{
 /// 							&cdn.FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomainArgs{
-/// 								CdnFrontdoorDomainId: exampleFrontdoorCustomDomain.ID().ToIDOutput().ToStringOutput(),
+/// 								CdnFrontdoorDomainId: exampleFrontdoorCustomDomain.ID(),
 /// 							},
 /// 						},
 /// 						PatternsToMatch: pulumi.String("/*"),
@@ -384,7 +384,7 @@ import 'frontdoor_security_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -395,19 +395,28 @@ import 'frontdoor_security_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-cdn-frontdoor"
 ///   location = "West Europe"
 /// }
-/// resource "azure_cdn_frontdoorprofile" "example" {
+/// resource "azure_cdn_frontdoor_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-profile"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Standard_AzureFrontDoor"
 /// }
-/// resource "azure_cdn_frontdoorfirewallpolicy" "example" {
+/// resource "azure_cdn_frontdoor_firewall_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                              = "exampleWAF"
-///   resource_group_name               = azure_core_resourcegroup.example.name
-///   sku_name                          = azure_cdn_frontdoorprofile.example.sku_name
+///   resource_group_name               = azure_core_resource_group.example.name
+///   sku_name                          = azure_cdn_frontdoor_profile.example.sku_name
 ///   enabled                           = true
 ///   mode                              = "Prevention"
 ///   redirect_url                      = "https://www.contoso.com"
@@ -430,12 +439,18 @@ import 'frontdoor_security_policy_state.dart';
 ///   }
 /// }
 /// resource "azure_dns_zone" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "sub-domain.domain.com"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_cdn_frontdoorcustomdomain" "example" {
+/// resource "azure_cdn_frontdoor_custom_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-customDomain"
-///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoor_profile.example.id
 ///   dns_zone_id              = azure_dns_zone.example.id
 ///   host_name                = join(".", ["contoso", azure_dns_zone.example.name])
 ///   tls = {
@@ -443,15 +458,18 @@ import 'frontdoor_security_policy_state.dart';
 ///     minimum_tls_version = "TLS12"
 ///   }
 /// }
-/// resource "azure_cdn_frontdoorsecuritypolicy" "example" {
+/// resource "azure_cdn_frontdoor_security_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "Example-Security-Policy"
-///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoor_profile.example.id
 ///   security_policies = {
 ///     firewall = {
-///       cdn_frontdoor_firewall_policy_id = azure_cdn_frontdoorfirewallpolicy.example.id
+///       cdn_frontdoor_firewall_policy_id = azure_cdn_frontdoor_firewall_policy.example.id
 ///       association = {
 ///         domains = [{
-///           "cdnFrontdoorDomainId" = azure_cdn_frontdoorcustomdomain.example.id
+///           cdn_frontdoor_domain_id = azure_cdn_frontdoor_custom_domain.example.id
 ///         }]
 ///         patterns_to_match = "/*"
 ///       }
@@ -694,7 +712,7 @@ class FrontdoorSecurityPolicy extends pulumi.CustomResource {
           'azure:cdn/frontdoorSecurityPolicy:FrontdoorSecurityPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     this.name = registerOutput<String>('name');

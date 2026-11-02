@@ -47,7 +47,7 @@ class RunCommandInstanceView {
       errorMessage: (() { final guardedValue = map['errorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       executionMessage: (() { final guardedValue = map['executionMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       executionState: (() { final guardedValue = map['executionState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      exitCode: (() { final guardedValue = map['exitCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      exitCode: (() { final guardedValue = map['exitCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       output: (() { final guardedValue = map['output']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

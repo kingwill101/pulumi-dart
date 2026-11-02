@@ -134,7 +134,7 @@ class RegistryTaskState {
       registryCredential: (() { final guardedValue = map['registryCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegistryTaskRegistryCredential.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sourceTriggers: (() { final guardedValue = map['sourceTriggers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegistryTaskSourceTrigger>(guardedValue, (value) => RegistryTaskSourceTrigger.fromMap((value as Map).cast<String, dynamic>()))); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       timerTriggers: (() { final guardedValue = map['timerTriggers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegistryTaskTimerTrigger>(guardedValue, (value) => RegistryTaskTimerTrigger.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

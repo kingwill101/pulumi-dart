@@ -47,7 +47,7 @@ class SpringCloudConfigurationServiceArgs {
     return SpringCloudConfigurationServiceArgs(
       generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      refreshIntervalInSeconds: (() { final guardedValue = map['refreshIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      refreshIntervalInSeconds: (() { final guardedValue = map['refreshIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       repositories: (() { final guardedValue = map['repositories']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SpringCloudConfigurationServiceRepository>(guardedValue, (value) => SpringCloudConfigurationServiceRepository.fromMap((value as Map).cast<String, dynamic>()))); })(),
       springCloudServiceId: pulumi.Input.fromValue(map['springCloudServiceId'] as String),
     );

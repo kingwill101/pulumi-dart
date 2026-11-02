@@ -64,7 +64,7 @@ import 'get_management_group_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -72,12 +72,12 @@ import 'get_management_group_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_management_getgroup" "example" {
+/// data "azure_management_group" "example" {
 ///   name = "00000000-0000-0000-0000-000000000000"
 /// }
 ///
 /// output "displayName" {
-///   value = data.azure_management_getgroup.example.display_name
+///   value = data.azure_management_group.example.display_name
 /// }
 /// ```
 /// ```java

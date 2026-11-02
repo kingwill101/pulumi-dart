@@ -119,7 +119,7 @@ class CacheState {
   factory CacheState.fromMap(Map<String, dynamic> map) {
     return CacheState(
       automaticallyRotateKeyToLatestEnabled: (() { final guardedValue = map['automaticallyRotateKeyToLatestEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      cacheSizeInGb: (() { final guardedValue = map['cacheSizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cacheSizeInGb: (() { final guardedValue = map['cacheSizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       defaultAccessPolicy: (() { final guardedValue = map['defaultAccessPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CacheDefaultAccessPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       directoryActiveDirectory: (() { final guardedValue = map['directoryActiveDirectory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CacheDirectoryActiveDirectory.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       directoryFlatFile: (() { final guardedValue = map['directoryFlatFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CacheDirectoryFlatFile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -129,7 +129,7 @@ class CacheState {
       keyVaultKeyId: (() { final guardedValue = map['keyVaultKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mountAddresses: (() { final guardedValue = map['mountAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ntpServer: (() { final guardedValue = map['ntpServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

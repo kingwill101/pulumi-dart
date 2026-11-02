@@ -90,7 +90,7 @@ import 'get_published_version_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -98,14 +98,14 @@ import 'get_published_version_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
-/// data "azure_management_getgroup" "root" {
-///   name = data.azure_core_getclientconfig.current.tenant_id
+/// data "azure_management_group" "root" {
+///   name = data.azure_core_client_config.current.tenant_id
 /// }
-/// data "azure_blueprint_getdefinition" "example" {
+/// data "azure_blueprint_definition" "example" {
 ///   name     = "exampleManagementGroupBP"
-///   scope_id = data.azure_management_getgroup.root.id
+///   scope_id = data.azure_management_group.root.id
 /// }
 /// ```
 /// ```java
@@ -272,7 +272,7 @@ pulumi.Output<GetDefinitionResult> getDefinitionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -280,10 +280,10 @@ pulumi.Output<GetDefinitionResult> getDefinitionOutput(
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
-/// data "azure_blueprint_getpublishedversion" "test" {
-///   scope_id       = data.azure_core_getsubscription.current.id
+/// data "azure_blueprint_published_version" "test" {
+///   scope_id       = data.azure_core_subscription.current.id
 ///   blueprint_name = "exampleBluePrint"
 ///   version        = "dev_v2.3"
 /// }

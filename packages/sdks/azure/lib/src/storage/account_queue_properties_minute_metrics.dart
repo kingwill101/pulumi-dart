@@ -31,7 +31,7 @@ class AccountQueuePropertiesMinuteMetrics {
   factory AccountQueuePropertiesMinuteMetrics.fromMap(Map<String, dynamic> map) {
     return AccountQueuePropertiesMinuteMetrics(
       includeApis: (() { final guardedValue = map['includeApis']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      retentionPolicyDays: (() { final guardedValue = map['retentionPolicyDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retentionPolicyDays: (() { final guardedValue = map['retentionPolicyDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }

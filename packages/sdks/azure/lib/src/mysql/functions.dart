@@ -68,7 +68,7 @@ import 'get_flexible_server_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -76,13 +76,13 @@ import 'get_flexible_server_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_mysql_getflexibleserver" "example" {
+/// data "azure_mysql_flexible_server" "example" {
 ///   name                = "existingMySqlFlexibleServer"
 ///   resource_group_name = "existingResGroup"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_mysql_getflexibleserver.example.id
+///   value = data.azure_mysql_flexible_server.example.id
 /// }
 /// ```
 /// ```java

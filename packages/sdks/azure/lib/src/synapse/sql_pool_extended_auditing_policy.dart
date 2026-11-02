@@ -208,7 +208,7 @@ import 'sql_pool_extended_auditing_policy_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId: exampleAccount.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -217,7 +217,7 @@ import 'sql_pool_extended_auditing_policy_state.dart';
 /// 			Name:                            pulumi.String("example"),
 /// 			ResourceGroupName:               example.Name,
 /// 			Location:                        example.Location,
-/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID(),
 /// 			SqlAdministratorLogin:           pulumi.String("sqladminuser"),
 /// 			SqlAdministratorLoginPassword:   pulumi.String("H@Sh1CoR3!"),
 /// 			Identity: &synapse.WorkspaceIdentityArgs{
@@ -229,7 +229,7 @@ import 'sql_pool_extended_auditing_policy_state.dart';
 /// 		}
 /// 		exampleSqlPool, err := synapse.NewSqlPool(ctx, "example", &synapse.SqlPoolArgs{
 /// 			Name:               pulumi.String("examplesqlpool"),
-/// 			SynapseWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			SynapseWorkspaceId: exampleWorkspace.ID(),
 /// 			SkuName:            pulumi.String("DW100c"),
 /// 			CreateMode:         pulumi.String("Default"),
 /// 		})
@@ -247,7 +247,7 @@ import 'sql_pool_extended_auditing_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = synapse.NewSqlPoolExtendedAuditingPolicy(ctx, "example", &synapse.SqlPoolExtendedAuditingPolicyArgs{
-/// 			SqlPoolId:                          exampleSqlPool.ID().ToIDOutput().ToStringOutput(),
+/// 			SqlPoolId:                          exampleSqlPool.ID(),
 /// 			StorageEndpoint:                    auditLogs.PrimaryBlobEndpoint,
 /// 			StorageAccountAccessKey:            auditLogs.PrimaryAccessKey,
 /// 			StorageAccountAccessKeyIsSecondary: pulumi.Bool(false),
@@ -261,7 +261,7 @@ import 'sql_pool_extended_auditing_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -269,48 +269,69 @@ import 'sql_pool_extended_auditing_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestorageacc"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 ///   account_kind             = "BlobStorage"
 /// }
-/// resource "azure_storage_datalakegen2filesystem" "example" {
+/// resource "azure_storage_data_lake_gen2_filesystem" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   storage_account_id = azure_storage_account.example.id
 /// }
 /// resource "azure_synapse_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                 = "example"
-///   resource_group_name                  = azure_core_resourcegroup.example.name
-///   location                             = azure_core_resourcegroup.example.location
-///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   resource_group_name                  = azure_core_resource_group.example.name
+///   location                             = azure_core_resource_group.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_data_lake_gen2_filesystem.example.id
 ///   sql_administrator_login              = "sqladminuser"
 ///   sql_administrator_login_password     = "H@Sh1CoR3!"
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_synapse_sqlpool" "example" {
+/// resource "azure_synapse_sql_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "examplesqlpool"
 ///   synapse_workspace_id = azure_synapse_workspace.example.id
 ///   sku_name             = "DW100c"
 ///   create_mode          = "Default"
 /// }
 /// resource "azure_storage_account" "audit_logs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplesa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_synapse_sqlpoolextendedauditingpolicy" "example" {
-///   sql_pool_id                             = azure_synapse_sqlpool.example.id
+/// resource "azure_synapse_sql_pool_extended_auditing_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   sql_pool_id                             = azure_synapse_sql_pool.example.id
 ///   storage_endpoint                        = azure_storage_account.audit_logs.primary_blob_endpoint
 ///   storage_account_access_key              = azure_storage_account.audit_logs.primary_access_key
 ///   storage_account_access_key_is_secondary = false
@@ -503,7 +524,7 @@ class SqlPoolExtendedAuditingPolicy extends pulumi.CustomResource {
           'azure:synapse/sqlPoolExtendedAuditingPolicy:SqlPoolExtendedAuditingPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
           additionalSecretOutputs: const ['storageAccountAccessKey'],
         ) {
     logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');

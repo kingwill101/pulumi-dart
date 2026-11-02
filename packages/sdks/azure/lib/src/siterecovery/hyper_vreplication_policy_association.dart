@@ -139,7 +139,7 @@ import 'hyper_vreplication_policy_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleHyperVSite, err := siterecovery.NewHyperVSite(ctx, "example", &siterecovery.HyperVSiteArgs{
-/// 			RecoveryVaultId: exampleVault.ID().ToIDOutput().ToStringOutput(),
+/// 			RecoveryVaultId: exampleVault.ID(),
 /// 			Name:            pulumi.String("example-site"),
 /// 		})
 /// 		if err != nil {
@@ -147,7 +147,7 @@ import 'hyper_vreplication_policy_association_state.dart';
 /// 		}
 /// 		exampleHyperVReplicationPolicy, err := siterecovery.NewHyperVReplicationPolicy(ctx, "example", &siterecovery.HyperVReplicationPolicyArgs{
 /// 			Name:                          pulumi.String("policy"),
-/// 			RecoveryVaultId:               exampleVault.ID().ToIDOutput().ToStringOutput(),
+/// 			RecoveryVaultId:               exampleVault.ID(),
 /// 			RecoveryPointRetentionInHours: pulumi.Int(2),
 /// 			ApplicationConsistentSnapshotFrequencyInHours: pulumi.Int(1),
 /// 			ReplicationIntervalInSeconds:                  pulumi.Int(300),
@@ -157,8 +157,8 @@ import 'hyper_vreplication_policy_association_state.dart';
 /// 		}
 /// 		_, err = siterecovery.NewHyperVReplicationPolicyAssociation(ctx, "example", &siterecovery.HyperVReplicationPolicyAssociationArgs{
 /// 			Name:         pulumi.String("example-association"),
-/// 			HypervSiteId: exampleHyperVSite.ID().ToIDOutput().ToStringOutput(),
-/// 			PolicyId:     exampleHyperVReplicationPolicy.ID().ToIDOutput().ToStringOutput(),
+/// 			HypervSiteId: exampleHyperVSite.ID(),
+/// 			PolicyId:     exampleHyperVReplicationPolicy.ID(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -168,7 +168,7 @@ import 'hyper_vreplication_policy_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -176,31 +176,46 @@ import 'hyper_vreplication_policy_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "East US"
 /// }
 /// resource "azure_recoveryservices_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-recovery-vault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_siterecovery_hypervsite" "example" {
+/// resource "azure_siterecovery_hyper_v_site" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   recovery_vault_id = azure_recoveryservices_vault.example.id
 ///   name              = "example-site"
 /// }
-/// resource "azure_siterecovery_hypervreplicationpolicy" "example" {
+/// resource "azure_siterecovery_hyper_v_replication_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                               = "policy"
 ///   recovery_vault_id                                  = azure_recoveryservices_vault.example.id
 ///   recovery_point_retention_in_hours                  = 2
 ///   application_consistent_snapshot_frequency_in_hours = 1
 ///   replication_interval_in_seconds                    = 300
 /// }
-/// resource "azure_siterecovery_hypervreplicationpolicyassociation" "example" {
+/// resource "azure_siterecovery_hyper_v_replication_policy_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example-association"
-///   hyperv_site_id = azure_siterecovery_hypervsite.example.id
-///   policy_id      = azure_siterecovery_hypervreplicationpolicy.example.id
+///   hyperv_site_id = azure_siterecovery_hyper_v_site.example.id
+///   policy_id      = azure_siterecovery_hyper_v_replication_policy.example.id
 /// }
 /// ```
 /// ```java
@@ -340,7 +355,7 @@ class HyperVReplicationPolicyAssociation extends pulumi.CustomResource {
           'azure:siterecovery/hyperVReplicationPolicyAssociation:HyperVReplicationPolicyAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
         ) {
     hypervSiteId = registerOutput<String>('hypervSiteId');
     this.name = registerOutput<String>('name');

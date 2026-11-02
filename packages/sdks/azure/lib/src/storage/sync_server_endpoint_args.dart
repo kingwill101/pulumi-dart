@@ -73,8 +73,8 @@ class SyncServerEndpointArgs {
       registeredServerId: pulumi.Input.fromValue(map['registeredServerId'] as String),
       serverLocalPath: pulumi.Input.fromValue(map['serverLocalPath'] as String),
       storageSyncGroupId: pulumi.Input.fromValue(map['storageSyncGroupId'] as String),
-      tierFilesOlderThanDays: (() { final guardedValue = map['tierFilesOlderThanDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      volumeFreeSpacePercent: (() { final guardedValue = map['volumeFreeSpacePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      tierFilesOlderThanDays: (() { final guardedValue = map['tierFilesOlderThanDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      volumeFreeSpacePercent: (() { final guardedValue = map['volumeFreeSpacePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

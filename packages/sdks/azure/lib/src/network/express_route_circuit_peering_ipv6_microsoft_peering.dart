@@ -37,7 +37,7 @@ class ExpressRouteCircuitPeeringIpv6MicrosoftPeering {
     return ExpressRouteCircuitPeeringIpv6MicrosoftPeering(
       advertisedCommunities: (() { final guardedValue = map['advertisedCommunities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       advertisedPublicPrefixes: (() { final guardedValue = map['advertisedPublicPrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      customerAsn: (() { final guardedValue = map['customerAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      customerAsn: (() { final guardedValue = map['customerAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       routingRegistryName: (() { final guardedValue = map['routingRegistryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

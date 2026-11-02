@@ -30,7 +30,7 @@ class VolumeCoolAccess {
 
   factory VolumeCoolAccess.fromMap(Map<String, dynamic> map) {
     return VolumeCoolAccess(
-      coolnessPeriodInDays: pulumi.Input.fromValue((map['coolnessPeriodInDays'] as num).toInt()),
+      coolnessPeriodInDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['coolnessPeriodInDays'])),
       retrievalPolicy: pulumi.Input.fromValue(map['retrievalPolicy'] as String),
       tieringPolicy: pulumi.Input.fromValue(map['tieringPolicy'] as String),
     );

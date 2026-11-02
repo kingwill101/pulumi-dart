@@ -38,7 +38,7 @@ class AutoscaleSettingProfileRuleScaleAction {
       cooldown: pulumi.Input.fromValue(map['cooldown'] as String),
       direction: pulumi.Input.fromValue(map['direction'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
-      value: pulumi.Input.fromValue((map['value'] as num).toInt()),
+      value: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['value'])),
     );
   }
 }

@@ -53,7 +53,7 @@ class ApplicationGatewayRewriteRuleSetRewriteRule {
       name: pulumi.Input.fromValue(map['name'] as String),
       requestHeaderConfigurations: (() { final guardedValue = map['requestHeaderConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration>(guardedValue, (value) => ApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       responseHeaderConfigurations: (() { final guardedValue = map['responseHeaderConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration>(guardedValue, (value) => ApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      ruleSequence: pulumi.Input.fromValue((map['ruleSequence'] as num).toInt()),
+      ruleSequence: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ruleSequence'])),
       url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationGatewayRewriteRuleSetRewriteRuleUrl.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

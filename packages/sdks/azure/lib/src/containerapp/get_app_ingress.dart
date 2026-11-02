@@ -78,11 +78,11 @@ class GetAppIngress {
       clientCertificateMode: pulumi.Input.fromValue(map['clientCertificateMode'] as String),
       cors: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppIngressCor>(map['cors']!, (value) => GetAppIngressCor.fromMap((value as Map).cast<String, dynamic>()))),
       customDomains: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppIngressCustomDomain>(map['customDomains']!, (value) => GetAppIngressCustomDomain.fromMap((value as Map).cast<String, dynamic>()))),
-      exposedPort: pulumi.Input.fromValue((map['exposedPort'] as num).toInt()),
+      exposedPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['exposedPort'])),
       externalEnabled: pulumi.Input.fromValue(map['externalEnabled'] as bool),
       fqdn: pulumi.Input.fromValue(map['fqdn'] as String),
       ipSecurityRestrictions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppIngressIpSecurityRestriction>(map['ipSecurityRestrictions']!, (value) => GetAppIngressIpSecurityRestriction.fromMap((value as Map).cast<String, dynamic>()))),
-      targetPort: pulumi.Input.fromValue((map['targetPort'] as num).toInt()),
+      targetPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetPort'])),
       trafficWeights: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppIngressTrafficWeight>(map['trafficWeights']!, (value) => GetAppIngressTrafficWeight.fromMap((value as Map).cast<String, dynamic>()))),
       transport: pulumi.Input.fromValue(map['transport'] as String),
     );

@@ -96,7 +96,7 @@ import 'get_lbrule_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -104,17 +104,17 @@ import 'get_lbrule_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_lb_getlb" "example" {
+/// data "azure_lb_l_b" "example" {
 ///   name                = "example-lb"
 ///   resource_group_name = "example-resources"
 /// }
-/// data "azure_lb_getbackendaddresspool" "exampleGetBackendAddressPool" {
+/// data "azure_lb_backend_address_pool" "exampleGetBackendAddressPool" {
 ///   name            = "first"
-///   loadbalancer_id = data.azure_lb_getlb.example.id
+///   loadbalancer_id = data.azure_lb_l_b.example.id
 /// }
 ///
 /// output "backendAddressPoolId" {
-///   value = data.azure_lb_getbackendaddresspool.exampleGetBackendAddressPool.id
+///   value = data.azure_lb_backend_address_pool.exampleGetBackendAddressPool.id
 /// }
 /// output "backendIpConfigurationIds" {
 ///   value = beap.backendIpConfigurations[*].id
@@ -153,7 +153,7 @@ import 'get_lbrule_result.dart';
 ///             .build());
 ///
 ///         ctx.export("backendAddressPoolId", exampleGetBackendAddressPool.id());
-///         ctx.export("backendIpConfigurationIds", beap.backendIpConfigurations().stream().map(element -> element.id()).collect(toList()));
+///         ctx.export("backendIpConfigurationIds", beap.get("backendIpConfigurations").stream().map(element -> element.get("id")).collect(toList()));
 ///     }
 /// }
 /// ```
@@ -257,7 +257,7 @@ pulumi.Output<GetBackendAddressPoolResult> getBackendAddressPoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -265,13 +265,13 @@ pulumi.Output<GetBackendAddressPoolResult> getBackendAddressPoolOutput(
 ///   }
 /// }
 ///
-/// data "azure_lb_getlb" "example" {
+/// data "azure_lb_l_b" "example" {
 ///   name                = "example-lb"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "loadbalancerId" {
-///   value = data.azure_lb_getlb.example.id
+///   value = data.azure_lb_l_b.example.id
 /// }
 /// ```
 /// ```java
@@ -415,7 +415,7 @@ pulumi.Output<GetLBResult> getLBOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -423,13 +423,13 @@ pulumi.Output<GetLBResult> getLBOutput(
 ///   }
 /// }
 ///
-/// data "azure_lb_getlboutboundrule" "example" {
+/// data "azure_lb_l_b_outbound_rule" "example" {
 ///   name            = "existing_lb_outbound_rule"
 ///   loadbalancer_id = "existing_load_balancer_id"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_lb_getlboutboundrule.example.id
+///   value = data.azure_lb_l_b_outbound_rule.example.id
 /// }
 /// ```
 /// ```java
@@ -512,8 +512,91 @@ pulumi.Output<GetLBOutboundRuleResult> getLBOutboundRuleOutput(
 /// ## Example Usage
 ///
 ///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure from "@pulumi/azure";
+///
+/// const example = azure.lb.getLB({
+///     name: "example-lb",
+///     resourceGroupName: "example-resources",
+/// });
+/// const exampleGetLBRule = example.then(example => azure.lb.getLBRule({
+///     name: "first",
+///     resourceGroupName: "example-resources",
+///     loadbalancerId: example.id,
+/// }));
+/// export const lbRuleId = exampleGetLBRule.then(exampleGetLBRule => exampleGetLBRule.id);
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_azure as azure
+///
+/// example = azure.lb.get_lb(name="example-lb",
+///     resource_group_name="example-resources")
+/// example_get_lb_rule = azure.lb.get_lb_rule(name="first",
+///     resource_group_name="example-resources",
+///     loadbalancer_id=example.id)
+/// pulumi.export("lbRuleId", example_get_lb_rule.id)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Azure = Pulumi.Azure;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Azure.Lb.GetLB.Invoke(new()
+///     {
+///         Name = "example-lb",
+///         ResourceGroupName = "example-resources",
+///     });
+///
+///     var exampleGetLBRule = Azure.Lb.GetLBRule.Invoke(new()
+///     {
+///         Name = "first",
+///         ResourceGroupName = "example-resources",
+///         LoadbalancerId = example.Apply(getLBResult => getLBResult.Id),
+///     });
+///
+///     return new Dictionary<string, object?>
+///     {
+///         ["lbRuleId"] = exampleGetLBRule.Apply(getLBRuleResult => getLBRuleResult.Id),
+///     };
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/lb"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := lb.GetLB(ctx, &lb.GetLBArgs{
+/// 			Name:              "example-lb",
+/// 			ResourceGroupName: "example-resources",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleGetLBRule, err := lb.GetLBRule(ctx, &lb.GetLBRuleArgs{
+/// 			Name:              "first",
+/// 			ResourceGroupName: "example-resources",
+/// 			LoadbalancerId:    example.Id,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ctx.Export("lbRuleId", exampleGetLBRule.Id)
+/// 		return nil
+/// 	})
+/// }
+/// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -521,18 +604,55 @@ pulumi.Output<GetLBOutboundRuleResult> getLBOutboundRuleOutput(
 ///   }
 /// }
 ///
-/// data "azure_lb_getlb" "example" {
+/// data "azure_lb_l_b" "example" {
 ///   name                = "example-lb"
 ///   resource_group_name = "example-resources"
 /// }
-/// data "azure_lb_getlbrule" "exampleGetLBRule" {
+/// data "azure_lb_l_b_rule" "exampleGetLBRule" {
 ///   name                = "first"
 ///   resource_group_name = "example-resources"
-///   loadbalancer_id     = data.azure_lb_getlb.example.id
+///   loadbalancer_id     = data.azure_lb_l_b.example.id
 /// }
 ///
 /// output "lbRuleId" {
-///   value = data.azure_lb_getlbrule.exampleGetLBRule.id
+///   value = data.azure_lb_l_b_rule.exampleGetLBRule.id
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azure.lb.LbFunctions;
+/// import com.pulumi.azure.lb.inputs.GetLBArgs;
+/// import com.pulumi.azure.lb.inputs.GetLBRuleArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = LbFunctions.getLB(GetLBArgs.builder()
+///             .name("example-lb")
+///             .resourceGroupName("example-resources")
+///             .build());
+///
+///         final var exampleGetLBRule = LbFunctions.getLBRule(GetLBRuleArgs.builder()
+///             .name("first")
+///             .resourceGroupName("example-resources")
+///             .loadbalancerId(example.id())
+///             .build());
+///
+///         ctx.export("lbRuleId", exampleGetLBRule.id());
+///     }
 /// }
 /// ```
 /// ```yaml

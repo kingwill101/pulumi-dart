@@ -124,7 +124,7 @@ import 'get_server_result.dart';
 /// 		}
 /// 		example := mssql.LookupDatabaseOutput(ctx, mssql.GetDatabaseOutputArgs{
 /// 			Name:     pulumi.String("example-mssql-db"),
-/// 			ServerId: exampleServer.ID().ToIDOutput().ToStringOutput(),
+/// 			ServerId: exampleServer.ID(),
 /// 		}, nil)
 /// 		ctx.Export("databaseId", example.Id())
 /// 		return nil
@@ -132,7 +132,7 @@ import 'get_server_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -140,25 +140,31 @@ import 'get_server_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_mssql_getdatabase" "example" {
+/// data "azure_mssql_database" "example" {
 ///   name      = "example-mssql-db"
 ///   server_id = azure_mssql_server.example.id
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_mssql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   version                      = "12.0"
 ///   administrator_login          = "4dm1n157r470r"
 ///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
 /// }
 /// output "databaseId" {
-///   value = data.azure_mssql_getdatabase.example.id
+///   value = data.azure_mssql_database.example.id
 /// }
 /// ```
 /// ```java
@@ -341,7 +347,7 @@ pulumi.Output<GetDatabaseResult> getDatabaseOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -349,14 +355,14 @@ pulumi.Output<GetDatabaseResult> getDatabaseOutput(
 ///   }
 /// }
 ///
-/// data "azure_mssql_getelasticpool" "example" {
+/// data "azure_mssql_elastic_pool" "example" {
 ///   name                = "mssqlelasticpoolname"
 ///   resource_group_name = "example-resources"
 ///   server_name         = "example-sql-server"
 /// }
 ///
 /// output "elasticpoolId" {
-///   value = data.azure_mssql_getelasticpool.example.id
+///   value = data.azure_mssql_elastic_pool.example.id
 /// }
 /// ```
 /// ```java
@@ -502,7 +508,7 @@ pulumi.Output<GetElasticPoolResult> getElasticPoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -510,13 +516,13 @@ pulumi.Output<GetElasticPoolResult> getElasticPoolOutput(
 ///   }
 /// }
 ///
-/// data "azure_mssql_getfailovergroup" "example" {
+/// data "azure_mssql_failover_group" "example" {
 ///   name      = "example"
 ///   server_id = "example-sql-server"
 /// }
 ///
 /// output "mssqlFailoverGroupId" {
-///   value = data.azure_mssql_getfailovergroup.example.id
+///   value = data.azure_mssql_failover_group.example.id
 /// }
 /// ```
 /// ```java
@@ -599,8 +605,65 @@ pulumi.Output<GetFailoverGroupResult> getFailoverGroupOutput(
 /// ## Example Usage
 ///
 ///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure from "@pulumi/azure";
+///
+/// const example = azure.mssql.getManagedDatabase({
+///     name: "example",
+///     resourceGroupName: exampleAzurermResourceGroup.name,
+///     managedInstanceName: exampleAzurermMssqlManagedInstance.name,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_azure as azure
+///
+/// example = azure.mssql.get_managed_database(name="example",
+///     resource_group_name=example_azurerm_resource_group["name"],
+///     managed_instance_name=example_azurerm_mssql_managed_instance["name"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Azure = Pulumi.Azure;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Azure.MSSql.GetManagedDatabase.Invoke(new()
+///     {
+///         Name = "example",
+///         ResourceGroupName = exampleAzurermResourceGroup.Name,
+///         ManagedInstanceName = exampleAzurermMssqlManagedInstance.Name,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/mssql"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := mssql.LookupManagedDatabase(ctx, &mssql.LookupManagedDatabaseArgs{
+/// 			Name:                "example",
+/// 			ResourceGroupName:   exampleAzurermResourceGroup.Name,
+/// 			ManagedInstanceName: exampleAzurermMssqlManagedInstance.Name,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -608,10 +671,40 @@ pulumi.Output<GetFailoverGroupResult> getFailoverGroupOutput(
 ///   }
 /// }
 ///
-/// data "azure_mssql_getmanageddatabase" "example" {
+/// data "azure_mssql_managed_database" "example" {
 ///   name                  = "example"
 ///   resource_group_name   = exampleAzurermResourceGroup.name
 ///   managed_instance_name = exampleAzurermMssqlManagedInstance.name
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azure.mssql.MssqlFunctions;
+/// import com.pulumi.azure.mssql.inputs.GetManagedDatabaseArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = MssqlFunctions.getManagedDatabase(GetManagedDatabaseArgs.builder()
+///             .name("example")
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
+///             .managedInstanceName(exampleAzurermMssqlManagedInstance.get("name"))
+///             .build());
+///
+///     }
 /// }
 /// ```
 /// ```yaml
@@ -717,7 +810,7 @@ pulumi.Output<GetManagedDatabaseResult> getManagedDatabaseOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -725,7 +818,7 @@ pulumi.Output<GetManagedDatabaseResult> getManagedDatabaseOutput(
 ///   }
 /// }
 ///
-/// data "azure_mssql_getmanagedinstance" "example" {
+/// data "azure_mssql_managed_instance" "example" {
 ///   name                = "managedsqlinstance"
 ///   resource_group_name = exampleAzurermResourceGroup.name
 /// }
@@ -753,7 +846,7 @@ pulumi.Output<GetManagedDatabaseResult> getManagedDatabaseOutput(
 ///     public static void stack(Context ctx) {
 ///         final var example = MssqlFunctions.getManagedInstance(GetManagedInstanceArgs.builder()
 ///             .name("managedsqlinstance")
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
 ///             .build());
 ///
 ///     }
@@ -868,7 +961,7 @@ pulumi.Output<GetManagedInstanceResult> getManagedInstanceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -876,13 +969,13 @@ pulumi.Output<GetManagedInstanceResult> getManagedInstanceOutput(
 ///   }
 /// }
 ///
-/// data "azure_mssql_getserver" "example" {
+/// data "azure_mssql_server" "example" {
 ///   name                = "existingMsSqlServer"
 ///   resource_group_name = "existingResGroup"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_mssql_getserver.example.id
+///   value = data.azure_mssql_server.example.id
 /// }
 /// ```
 /// ```java

@@ -37,7 +37,7 @@ class FirewallVirtualHub {
     return FirewallVirtualHub(
       privateIpAddress: (() { final guardedValue = map['privateIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publicIpAddresses: (() { final guardedValue = map['publicIpAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      publicIpCount: (() { final guardedValue = map['publicIpCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      publicIpCount: (() { final guardedValue = map['publicIpCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       virtualHubId: pulumi.Input.fromValue(map['virtualHubId'] as String),
     );
   }

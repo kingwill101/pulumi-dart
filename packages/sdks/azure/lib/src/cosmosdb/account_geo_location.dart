@@ -37,7 +37,7 @@ class AccountGeoLocation {
 
   factory AccountGeoLocation.fromMap(Map<String, dynamic> map) {
     return AccountGeoLocation(
-      failoverPriority: pulumi.Input.fromValue((map['failoverPriority'] as num).toInt()),
+      failoverPriority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['failoverPriority'])),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       zoneRedundant: (() { final guardedValue = map['zoneRedundant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

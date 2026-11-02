@@ -36,9 +36,9 @@ class JobEventTriggerConfigScale {
 
   factory JobEventTriggerConfigScale.fromMap(Map<String, dynamic> map) {
     return JobEventTriggerConfigScale(
-      maxExecutions: (() { final guardedValue = map['maxExecutions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minExecutions: (() { final guardedValue = map['minExecutions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      pollingIntervalInSeconds: (() { final guardedValue = map['pollingIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxExecutions: (() { final guardedValue = map['maxExecutions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minExecutions: (() { final guardedValue = map['minExecutions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      pollingIntervalInSeconds: (() { final guardedValue = map['pollingIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<JobEventTriggerConfigScaleRule>(guardedValue, (value) => JobEventTriggerConfigScaleRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

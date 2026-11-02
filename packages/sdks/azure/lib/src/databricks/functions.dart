@@ -72,7 +72,7 @@ import 'get_workspace_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -80,13 +80,13 @@ import 'get_workspace_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_databricks_getaccessconnector" "example" {
+/// data "azure_databricks_access_connector" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_databricks_getaccessconnector.example.id
+///   value = data.azure_databricks_access_connector.example.id
 /// }
 /// ```
 /// ```java
@@ -230,7 +230,7 @@ pulumi.Output<GetAccessConnectorResult> getAccessConnectorOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -238,13 +238,13 @@ pulumi.Output<GetAccessConnectorResult> getAccessConnectorOutput(
 ///   }
 /// }
 ///
-/// data "azure_databricks_getworkspace" "example" {
+/// data "azure_databricks_workspace" "example" {
 ///   name                = "example-workspace"
 ///   resource_group_name = "example-rg"
 /// }
 ///
 /// output "databricksWorkspaceId" {
-///   value = data.azure_databricks_getworkspace.example.workspace_id
+///   value = data.azure_databricks_workspace.example.workspace_id
 /// }
 /// ```
 /// ```java
@@ -388,7 +388,7 @@ pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -396,13 +396,13 @@ pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
 ///   }
 /// }
 ///
-/// data "azure_databricks_getworkspaceprivateendpointconnection" "example" {
+/// data "azure_databricks_workspace_private_endpoint_connection" "example" {
 ///   workspace_id        = exampleAzurermDatabricksWorkspace.id
 ///   private_endpoint_id = exampleAzurermPrivateEndpoint.id
 /// }
 ///
 /// output "databricksWorkspacePrivateEndpointConnectionStatus" {
-///   value = data.azure_databricks_getworkspaceprivateendpointconnection.example.connections[0].status
+///   value = data.azure_databricks_workspace_private_endpoint_connection.example.connections[0].status
 /// }
 /// ```
 /// ```java
@@ -427,8 +427,8 @@ pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = DatabricksFunctions.getWorkspacePrivateEndpointConnection(GetWorkspacePrivateEndpointConnectionArgs.builder()
-///             .workspaceId(exampleAzurermDatabricksWorkspace.id())
-///             .privateEndpointId(exampleAzurermPrivateEndpoint.id())
+///             .workspaceId(exampleAzurermDatabricksWorkspace.get("id"))
+///             .privateEndpointId(exampleAzurermPrivateEndpoint.get("id"))
 ///             .build());
 ///
 ///         ctx.export("databricksWorkspacePrivateEndpointConnectionStatus", example.connections()[0].status());

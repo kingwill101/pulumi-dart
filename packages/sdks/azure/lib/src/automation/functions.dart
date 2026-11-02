@@ -82,7 +82,7 @@ import 'get_variables_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -90,13 +90,13 @@ import 'get_variables_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_automation_getaccount" "example" {
+/// data "azure_automation_account" "example" {
 ///   name                = "example-account"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "automationAccountId" {
-///   value = data.azure_automation_getaccount.example.id
+///   value = data.azure_automation_account.example.id
 /// }
 /// ```
 /// ```java
@@ -244,7 +244,7 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -252,14 +252,14 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 ///   }
 /// }
 ///
-/// data "azure_automation_getboolvariable" "example" {
+/// data "azure_automation_bool_variable" "example" {
 ///   name                    = "tfex-example-var"
 ///   resource_group_name     = "tfex-example-rg"
 ///   automation_account_name = "tfex-example-account"
 /// }
 ///
 /// output "variableId" {
-///   value = data.azure_automation_getboolvariable.example.id
+///   value = data.azure_automation_bool_variable.example.id
 /// }
 /// ```
 /// ```java
@@ -401,7 +401,7 @@ pulumi.Output<GetBoolVariableResult> getBoolVariableOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -409,14 +409,14 @@ pulumi.Output<GetBoolVariableResult> getBoolVariableOutput(
 ///   }
 /// }
 ///
-/// data "azure_automation_getdatetimevariable" "example" {
+/// data "azure_automation_date_time_variable" "example" {
 ///   name                    = "tfex-example-var"
 ///   resource_group_name     = "tfex-example-rg"
 ///   automation_account_name = "tfex-example-account"
 /// }
 ///
 /// output "variableId" {
-///   value = data.azure_automation_getdatetimevariable.example.id
+///   value = data.azure_automation_date_time_variable.example.id
 /// }
 /// ```
 /// ```java
@@ -558,7 +558,7 @@ pulumi.Output<GetDateTimeVariableResult> getDateTimeVariableOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -566,14 +566,14 @@ pulumi.Output<GetDateTimeVariableResult> getDateTimeVariableOutput(
 ///   }
 /// }
 ///
-/// data "azure_automation_getintvariable" "example" {
+/// data "azure_automation_int_variable" "example" {
 ///   name                    = "tfex-example-var"
 ///   resource_group_name     = "tfex-example-rg"
 ///   automation_account_name = "tfex-example-account"
 /// }
 ///
 /// output "variableId" {
-///   value = data.azure_automation_getintvariable.example.id
+///   value = data.azure_automation_int_variable.example.id
 /// }
 /// ```
 /// ```java
@@ -715,7 +715,7 @@ pulumi.Output<GetIntVariableResult> getIntVariableOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -723,14 +723,14 @@ pulumi.Output<GetIntVariableResult> getIntVariableOutput(
 ///   }
 /// }
 ///
-/// data "azure_automation_getrunbook" "example" {
+/// data "azure_automation_runbook" "example" {
 ///   name                    = "existing-runbook"
 ///   resource_group_name     = "existing"
 ///   automation_account_name = "existing-automation"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_automation_getrunbook.example.id
+///   value = data.azure_automation_runbook.example.id
 /// }
 /// ```
 /// ```java
@@ -880,7 +880,7 @@ pulumi.Output<GetRunbookResult> getRunbookOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -888,14 +888,14 @@ pulumi.Output<GetRunbookResult> getRunbookOutput(
 ///   }
 /// }
 ///
-/// data "azure_automation_getstringvariable" "example" {
+/// data "azure_automation_string_variable" "example" {
 ///   name                    = "tfex-example-var"
 ///   resource_group_name     = "tfex-example-rg"
 ///   automation_account_name = "tfex-example-account"
 /// }
 ///
 /// output "variableId" {
-///   value = data.azure_automation_getstringvariable.example.id
+///   value = data.azure_automation_string_variable.example.id
 /// }
 /// ```
 /// ```java
@@ -1048,7 +1048,7 @@ pulumi.Output<GetStringVariableResult> getStringVariableOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1059,14 +1059,14 @@ pulumi.Output<GetStringVariableResult> getStringVariableOutput(
 ///   }
 /// }
 ///
-/// data "azure_automation_getvariableobject" "example" {
+/// data "azure_automation_variable_object" "example" {
 ///   name                    = "tfex-example-var"
 ///   resource_group_name     = "tfex-example-rg"
 ///   automation_account_name = "tfex-example-account"
 /// }
 ///
 /// output "variable" {
-///   value = jsondecode(data.azure_automation_getvariableobject.example.value)
+///   value = jsondecode(data.azure_automation_variable_object.example.value)
 /// }
 /// ```
 /// ```java
@@ -1228,7 +1228,7 @@ pulumi.Output<GetVariableObjectResult> getVariableObjectOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1236,12 +1236,12 @@ pulumi.Output<GetVariableObjectResult> getVariableObjectOutput(
 ///   }
 /// }
 ///
-/// data "azure_automation_getaccount" "example" {
+/// data "azure_automation_account" "example" {
 ///   name                = "example-account"
 ///   resource_group_name = "example-resources"
 /// }
-/// data "azure_automation_getvariables" "exampleGetVariables" {
-///   automation_account_id = data.azure_automation_getaccount.example.id
+/// data "azure_automation_variables" "exampleGetVariables" {
+///   automation_account_id = data.azure_automation_account.example.id
 /// }
 ///
 /// output "stringVars" {
@@ -1279,7 +1279,7 @@ pulumi.Output<GetVariableObjectResult> getVariableObjectOutput(
 ///             .automationAccountId(example.id())
 ///             .build());
 ///
-///         ctx.export("stringVars", exampleAzurermAutomationVariableString.string());
+///         ctx.export("stringVars", exampleAzurermAutomationVariableString.get("string"));
 ///     }
 /// }
 /// ```

@@ -74,7 +74,7 @@ import 'get_pool_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -82,13 +82,13 @@ import 'get_pool_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_batch_getaccount" "example" {
+/// data "azure_batch_account" "example" {
 ///   name                = "testbatchaccount"
 ///   resource_group_name = "test"
 /// }
 ///
 /// output "poolAllocationMode" {
-///   value = data.azure_batch_getaccount.example.pool_allocation_mode
+///   value = data.azure_batch_account.example.pool_allocation_mode
 /// }
 /// ```
 /// ```java
@@ -236,7 +236,7 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -244,14 +244,14 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 ///   }
 /// }
 ///
-/// data "azure_batch_getapplication" "example" {
+/// data "azure_batch_application" "example" {
 ///   name                = "testapplication"
 ///   resource_group_name = "test"
 ///   account_name        = "testbatchaccount"
 /// }
 ///
 /// output "batchApplicationId" {
-///   value = data.azure_batch_getapplication.example.id
+///   value = data.azure_batch_application.example.id
 /// }
 /// ```
 /// ```java
@@ -403,7 +403,7 @@ pulumi.Output<GetApplicationResult> getApplicationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -411,14 +411,14 @@ pulumi.Output<GetApplicationResult> getApplicationOutput(
 ///   }
 /// }
 ///
-/// data "azure_batch_getcertificate" "example" {
+/// data "azure_batch_certificate" "example" {
 ///   name                = "SHA1-42C107874FD0E4A9583292A2F1098E8FE4B2EDDA"
 ///   account_name        = "examplebatchaccount"
 ///   resource_group_name = "example"
 /// }
 ///
 /// output "thumbprint" {
-///   value = data.azure_batch_getcertificate.example.thumbprint
+///   value = data.azure_batch_certificate.example.thumbprint
 /// }
 /// ```
 /// ```java
@@ -561,7 +561,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -569,7 +569,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 ///   }
 /// }
 ///
-/// data "azure_batch_getpool" "example" {
+/// data "azure_batch_pool" "example" {
 ///   name                = "examplebatchpool"
 ///   account_name        = "examplebatchaccount"
 ///   resource_group_name = "example"

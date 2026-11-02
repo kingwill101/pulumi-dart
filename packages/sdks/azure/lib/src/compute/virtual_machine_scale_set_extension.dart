@@ -220,7 +220,7 @@ import 'virtual_machine_scale_set_extension_state.dart';
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = compute.NewVirtualMachineScaleSetExtension(ctx, "example", &compute.VirtualMachineScaleSetExtensionArgs{
 /// 			Name:                     pulumi.String("example"),
-/// 			VirtualMachineScaleSetId: exampleLinuxVirtualMachineScaleSet.ID().ToIDOutput().ToStringOutput(),
+/// 			VirtualMachineScaleSetId: exampleLinuxVirtualMachineScaleSet.ID(),
 /// 			Publisher:                pulumi.String("Microsoft.Azure.Extensions"),
 /// 			Type:                     pulumi.String("CustomScript"),
 /// 			TypeHandlerVersion:       pulumi.String("2.0"),
@@ -234,7 +234,7 @@ import 'virtual_machine_scale_set_extension_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -242,14 +242,20 @@ import 'virtual_machine_scale_set_extension_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "West Europe"
 /// }
-/// resource "azure_compute_linuxvirtualmachinescaleset" "example" {
+/// resource "azure_compute_linux_virtual_machine_scale_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku                 = "Standard_D4_v5"
 ///   admin_username      = "adminuser"
 ///   instances           = 1
@@ -270,9 +276,12 @@ import 'virtual_machine_scale_set_extension_state.dart';
 ///     caching              = "ReadWrite"
 ///   }
 /// }
-/// resource "azure_compute_virtualmachinescalesetextension" "example" {
+/// resource "azure_compute_virtual_machine_scale_set_extension" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example"
-///   virtual_machine_scale_set_id = azure_compute_linuxvirtualmachinescaleset.example.id
+///   virtual_machine_scale_set_id = azure_compute_linux_virtual_machine_scale_set.example.id
 ///   publisher                    = "Microsoft.Azure.Extensions"
 ///   type                         = "CustomScript"
 ///   type_handler_version         = "2.0"
@@ -470,7 +479,7 @@ class VirtualMachineScaleSetExtension extends pulumi.CustomResource {
           'azure:compute/virtualMachineScaleSetExtension:VirtualMachineScaleSetExtension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.2').merge(options),
           additionalSecretOutputs: const ['protectedSettings'],
         ) {
     autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');

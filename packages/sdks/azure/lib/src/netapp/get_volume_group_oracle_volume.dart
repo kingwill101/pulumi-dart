@@ -141,7 +141,7 @@ class GetVolumeGroupOracleVolume {
       securityStyle: pulumi.Input.fromValue(map['securityStyle'] as String),
       serviceLevel: pulumi.Input.fromValue(map['serviceLevel'] as String),
       snapshotDirectoryVisible: pulumi.Input.fromValue(map['snapshotDirectoryVisible'] as bool),
-      storageQuotaInGb: pulumi.Input.fromValue((map['storageQuotaInGb'] as num).toInt()),
+      storageQuotaInGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['storageQuotaInGb'])),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
       throughputInMibps: pulumi.Input.fromValue((map['throughputInMibps'] as num).toDouble()),

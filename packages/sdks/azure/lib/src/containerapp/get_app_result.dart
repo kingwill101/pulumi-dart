@@ -124,7 +124,7 @@ class GetAppResult {
       latestRevisionFqdn: (() { final guardedValue = map['latestRevisionFqdn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       latestRevisionName: (() { final guardedValue = map['latestRevisionName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxInactiveRevisions: (() { final guardedValue = map['maxInactiveRevisions']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxInactiveRevisions: (() { final guardedValue = map['maxInactiveRevisions']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       outboundIpAddresses: (() { final guardedValue = map['outboundIpAddresses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       readSecrets: (() { final guardedValue = map['readSecrets']; if (guardedValue == null) return null; return guardedValue as bool; })(),

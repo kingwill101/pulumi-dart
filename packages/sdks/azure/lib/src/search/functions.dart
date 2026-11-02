@@ -79,7 +79,7 @@ import 'get_service_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -87,12 +87,15 @@ import 'get_service_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_search_getservice" "example" {
+/// data "azure_search_service" "example" {
 ///   name                = "example-search-service"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }

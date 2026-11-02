@@ -42,7 +42,7 @@ class PolicyFileShareRetentionMonthly {
 
   factory PolicyFileShareRetentionMonthly.fromMap(Map<String, dynamic> map) {
     return PolicyFileShareRetentionMonthly(
-      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
+      count: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['count'])),
       days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
       includeLastDays: (() { final guardedValue = map['includeLastDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       weekdays: (() { final guardedValue = map['weekdays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

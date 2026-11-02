@@ -67,7 +67,7 @@ import 'get_environment_storage_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -75,7 +75,7 @@ import 'get_environment_storage_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_containerapp_getapp" "example" {
+/// data "azure_containerapp_app" "example" {
 ///   name                = "example-app"
 ///   resource_group_name = "example-resources"
 /// }
@@ -211,7 +211,7 @@ pulumi.Output<GetAppResult> getAppOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -219,7 +219,7 @@ pulumi.Output<GetAppResult> getAppOutput(
 ///   }
 /// }
 ///
-/// data "azure_containerapp_getenvironment" "example" {
+/// data "azure_containerapp_environment" "example" {
 ///   name                = "example-environment"
 ///   resource_group_name = "example-resources"
 /// }
@@ -377,7 +377,7 @@ pulumi.Output<GetEnvironmentResult> getEnvironmentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -385,13 +385,13 @@ pulumi.Output<GetEnvironmentResult> getEnvironmentOutput(
 ///   }
 /// }
 ///
-/// data "azure_containerapp_getenvironment" "example" {
+/// data "azure_containerapp_environment" "example" {
 ///   name                = "example-environment"
 ///   resource_group_name = "example-resources"
 /// }
-/// data "azure_containerapp_getenvironmentcertificate" "exampleGetEnvironmentCertificate" {
+/// data "azure_containerapp_environment_certificate" "exampleGetEnvironmentCertificate" {
 ///   name                         = "mycertificate"
-///   container_app_environment_id = data.azure_containerapp_getenvironment.example.id
+///   container_app_environment_id = data.azure_containerapp_environment.example.id
 /// }
 /// ```
 /// ```java
@@ -556,7 +556,7 @@ pulumi.Output<GetEnvironmentCertificateResult> getEnvironmentCertificateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -564,13 +564,13 @@ pulumi.Output<GetEnvironmentCertificateResult> getEnvironmentCertificateOutput(
 ///   }
 /// }
 ///
-/// data "azure_containerapp_getenvironment" "example" {
+/// data "azure_containerapp_environment" "example" {
 ///   name                = "existing-environment"
 ///   resource_group_name = "existing-resources"
 /// }
-/// data "azure_containerapp_getenvironmentstorage" "exampleGetEnvironmentStorage" {
+/// data "azure_containerapp_environment_storage" "exampleGetEnvironmentStorage" {
 ///   name                         = "existing-storage"
-///   container_app_environment_id = data.azure_containerapp_getenvironment.example.id
+///   container_app_environment_id = data.azure_containerapp_environment.example.id
 /// }
 /// ```
 /// ```java

@@ -58,8 +58,8 @@ class CacheDefaultAccessPolicyAccessRule {
   factory CacheDefaultAccessPolicyAccessRule.fromMap(Map<String, dynamic> map) {
     return CacheDefaultAccessPolicyAccessRule(
       access: pulumi.Input.fromValue(map['access'] as String),
-      anonymousGid: (() { final guardedValue = map['anonymousGid']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      anonymousUid: (() { final guardedValue = map['anonymousUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      anonymousGid: (() { final guardedValue = map['anonymousGid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      anonymousUid: (() { final guardedValue = map['anonymousUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rootSquashEnabled: (() { final guardedValue = map['rootSquashEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       scope: pulumi.Input.fromValue(map['scope'] as String),

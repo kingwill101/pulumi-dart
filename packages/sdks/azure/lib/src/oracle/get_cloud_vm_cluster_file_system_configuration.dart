@@ -26,7 +26,7 @@ class GetCloudVmClusterFileSystemConfiguration {
   factory GetCloudVmClusterFileSystemConfiguration.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClusterFileSystemConfiguration(
       mountPoint: pulumi.Input.fromValue(map['mountPoint'] as String),
-      sizeInGb: pulumi.Input.fromValue((map['sizeInGb'] as num).toInt()),
+      sizeInGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeInGb'])),
     );
   }
 }

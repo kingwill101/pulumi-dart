@@ -30,9 +30,9 @@ class GetFlexibleServerMaintenanceWindow {
 
   factory GetFlexibleServerMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GetFlexibleServerMaintenanceWindow(
-      dayOfWeek: pulumi.Input.fromValue((map['dayOfWeek'] as num).toInt()),
-      startHour: pulumi.Input.fromValue((map['startHour'] as num).toInt()),
-      startMinute: pulumi.Input.fromValue((map['startMinute'] as num).toInt()),
+      dayOfWeek: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dayOfWeek'])),
+      startHour: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['startHour'])),
+      startMinute: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['startMinute'])),
     );
   }
 }

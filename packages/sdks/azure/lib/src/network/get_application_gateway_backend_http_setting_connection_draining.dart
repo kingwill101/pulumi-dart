@@ -25,7 +25,7 @@ class GetApplicationGatewayBackendHttpSettingConnectionDraining {
 
   factory GetApplicationGatewayBackendHttpSettingConnectionDraining.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayBackendHttpSettingConnectionDraining(
-      drainTimeoutSec: pulumi.Input.fromValue((map['drainTimeoutSec'] as num).toInt()),
+      drainTimeoutSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['drainTimeoutSec'])),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }

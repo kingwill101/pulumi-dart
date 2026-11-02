@@ -81,7 +81,7 @@ class SpringCloudNewRelicApplicationPerformanceMonitoringArgs {
     return SpringCloudNewRelicApplicationPerformanceMonitoringArgs(
       agentEnabled: (() { final guardedValue = map['agentEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       appName: pulumi.Input.fromValue(map['appName'] as String),
-      appServerPort: (() { final guardedValue = map['appServerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      appServerPort: (() { final guardedValue = map['appServerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       auditModeEnabled: (() { final guardedValue = map['auditModeEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       autoAppNamingEnabled: (() { final guardedValue = map['autoAppNamingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       autoTransactionNamingEnabled: (() { final guardedValue = map['autoTransactionNamingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
