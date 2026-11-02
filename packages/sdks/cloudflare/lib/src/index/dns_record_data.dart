@@ -49,7 +49,7 @@ class DnsRecordData {
   final pulumi.Input<double?>? precisionVert;
   /// Preference.
   final pulumi.Input<double?>? preference;
-  /// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+  /// Priority.
   final pulumi.Input<double?>? priority;
   /// Protocol.
   final pulumi.Input<double?>? protocol;
@@ -67,7 +67,7 @@ class DnsRecordData {
   final pulumi.Input<double?>? size;
   /// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
   final pulumi.Input<String?>? tag;
-  /// A valid mail server hostname, or "." for a NULL MX record.
+  /// Target.
   final pulumi.Input<String?>? target;
   /// Type.
   final pulumi.Input<double?>? type;
@@ -101,7 +101,7 @@ class DnsRecordData {
   /// [precisionHorz] Horizontal precision of location.
   /// [precisionVert] Vertical precision of location.
   /// [preference] Preference.
-  /// [priority] Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+  /// [priority] Priority.
   /// [protocol] Protocol.
   /// [publicKey] Public Key.
   /// [regex] Regex.
@@ -110,7 +110,7 @@ class DnsRecordData {
   /// [service] Service.
   /// [size] Size of location in meters.
   /// [tag] Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
-  /// [target] A valid mail server hostname, or "." for a NULL MX record.
+  /// [target] Target.
   /// [type] Type.
   /// [usage] Usage.
   /// [value] Value of the record. This field's semantics depend on the chosen tag.

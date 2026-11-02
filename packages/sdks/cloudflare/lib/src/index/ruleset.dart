@@ -103,7 +103,7 @@ import 'ruleset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -112,17 +112,20 @@ import 'ruleset_state.dart';
 /// }
 ///
 /// resource "cloudflare_ruleset" "example_ruleset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id     = "9f1839b6152d298aca64c4e906b6d074"
 ///   name        = "My ruleset"
 ///   phase       = "http_request_firewall_custom"
 ///   kind        = "root"
 ///   description = "A description for my ruleset."
-///   rules {
+///   rules = [{
 ///     description = "Block the request."
 ///     expression  = "ip.src ne 1.1.1.1"
 ///     action      = "block"
 ///     ref         = "my_rule"
-///   }
+///   }]
 /// }
 /// ```
 /// ```java
@@ -222,7 +225,7 @@ class Ruleset extends pulumi.CustomResource {
           'cloudflare:index/ruleset:Ruleset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.2').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     description = registerOutput<String>('description');

@@ -5,6 +5,7 @@ import 'teams_list_item.dart';
 
 /// Input properties used for looking up and filtering TeamsList resources.
 class TeamsListState {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String?>? accountId;
   final pulumi.Input<String?>? createdAt;
   /// Provide the list description.
@@ -21,7 +22,7 @@ class TeamsListState {
   final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [TeamsListState].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [createdAt] Optional.
   /// [description] Provide the list description.
   /// [items] Add items to the list.

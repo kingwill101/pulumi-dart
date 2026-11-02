@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_worker_filter.dart';
 import 'get_worker_observability.dart';
+import 'get_worker_previews_base_config.dart';
 import 'get_worker_references.dart';
 import 'get_worker_subdomain.dart';
 import 'get_worker_tail_consumer.dart';
@@ -24,6 +25,8 @@ class GetWorkerResult {
   final String? name;
   /// Observability settings for the Worker.
   final GetWorkerObservability? observability;
+  /// Template configuration used when creating new Previews for this Worker.
+  final GetWorkerPreviewsBaseConfig? previewsBaseConfig;
   /// Other resources that reference the Worker and depend on it existing.
   final GetWorkerReferences? references;
   /// Subdomain settings for the Worker.
@@ -46,6 +49,7 @@ class GetWorkerResult {
   /// [logpush] Whether logpush is enabled for the Worker.
   /// [name] Name of the Worker.
   /// [observability] Observability settings for the Worker.
+  /// [previewsBaseConfig] Template configuration used when creating new Previews for this Worker.
   /// [references] Other resources that reference the Worker and depend on it existing.
   /// [subdomain] Subdomain settings for the Worker.
   /// [tags] Tags associated with the Worker.
@@ -61,6 +65,7 @@ class GetWorkerResult {
     this.logpush,
     this.name,
     this.observability,
+    this.previewsBaseConfig,
     this.references,
     this.subdomain,
     this.tags,
@@ -79,6 +84,7 @@ class GetWorkerResult {
       'logpush': ?logpush,
       'name': ?name,
       'observability': ?observability?.toMap(),
+      'previewsBaseConfig': ?previewsBaseConfig?.toMap(),
       'references': ?references?.toMap(),
       'subdomain': ?subdomain?.toMap(),
       'tags': ?tags,
@@ -98,6 +104,7 @@ class GetWorkerResult {
       logpush: (() { final guardedValue = map['logpush']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       observability: (() { final guardedValue = map['observability']; if (guardedValue == null) return null; return GetWorkerObservability.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      previewsBaseConfig: (() { final guardedValue = map['previewsBaseConfig']; if (guardedValue == null) return null; return GetWorkerPreviewsBaseConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       references: (() { final guardedValue = map['references']; if (guardedValue == null) return null; return GetWorkerReferences.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       subdomain: (() { final guardedValue = map['subdomain']; if (guardedValue == null) return null; return GetWorkerSubdomain.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),

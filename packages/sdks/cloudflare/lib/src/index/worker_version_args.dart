@@ -37,6 +37,8 @@ class WorkerVersionArgs {
   final pulumi.Input<List<String>?>? compatibilityFlags;
   /// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
   final pulumi.Input<List<WorkerVersionContainer>?>? containers;
+  /// If true, a deployment will be created that sends 100% of traffic to the new version.
+  final pulumi.Input<bool?>? deploy;
   /// Declarative exports for the version, including Durable Object
   /// classes (with their `storage` backend) and named Worker
   /// entrypoints. On reads, tombstoned lifecycle entries are
@@ -44,6 +46,9 @@ class WorkerVersionArgs {
   /// `expecting-transfer`) are returned. `exports` and `migrations`
   /// are mutually exclusive on upload.
   final pulumi.Input<Map<String, WorkerVersionExports>?>? exports;
+  /// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+  /// Available values: "modules".
+  final pulumi.Input<String?>? include;
   /// Resource limits enforced at runtime.
   final pulumi.Input<WorkerVersionLimits?>? limits;
   /// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
@@ -77,7 +82,9 @@ class WorkerVersionArgs {
   /// [compatibilityDate] Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
   /// [compatibilityFlags] Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
   /// [containers] List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+  /// [deploy] If true, a deployment will be created that sends 100% of traffic to the new version.
   /// [exports] Declarative exports for the version, including Durable Object
+  /// [include] Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
   /// [limits] Resource limits enforced at runtime.
   /// [mainModule] The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
   /// [migrations] Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
@@ -95,7 +102,9 @@ class WorkerVersionArgs {
     this.compatibilityDate,
     this.compatibilityFlags,
     this.containers,
+    this.deploy,
     this.exports,
+    this.include,
     this.limits,
     this.mainModule,
     this.migrations,
@@ -116,7 +125,9 @@ class WorkerVersionArgs {
       'compatibilityDate': ?compatibilityDate,
       'compatibilityFlags': ?compatibilityFlags,
       'containers': ?pulumi.Input.mapOptionalInputValue<List<WorkerVersionContainer>, List<Map<String, dynamic>>>(containers, (value) => pulumi.Input.encodeList<WorkerVersionContainer, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deploy': ?deploy,
       'exports': ?pulumi.Input.mapOptionalInputValue<Map<String, WorkerVersionExports>, Map<String, Map<String, dynamic>>>(exports, (value) => pulumi.Input.encodeMapValues<WorkerVersionExports, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'include': ?include,
       'limits': ?pulumi.Input.mapOptionalInputValue<WorkerVersionLimits, Map<String, dynamic>>(limits, (value) => value.toMap()),
       'mainModule': ?mainModule,
       'migrations': ?pulumi.Input.mapOptionalInputValue<WorkerVersionMigrations, Map<String, dynamic>>(migrations, (value) => value.toMap()),
@@ -138,7 +149,9 @@ class WorkerVersionArgs {
       compatibilityDate: (() { final guardedValue = map['compatibilityDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       compatibilityFlags: (() { final guardedValue = map['compatibilityFlags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       containers: (() { final guardedValue = map['containers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkerVersionContainer>(guardedValue, (value) => WorkerVersionContainer.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deploy: (() { final guardedValue = map['deploy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       exports: (() { final guardedValue = map['exports']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<WorkerVersionExports>(guardedValue, (value) => WorkerVersionExports.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      include: (() { final guardedValue = map['include']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       limits: (() { final guardedValue = map['limits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerVersionLimits.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       mainModule: (() { final guardedValue = map['mainModule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       migrations: (() { final guardedValue = map['migrations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerVersionMigrations.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

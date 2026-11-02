@@ -18,7 +18,7 @@ class AccountTokenArgs {
   final pulumi.Input<String> name;
   /// The time before which the token MUST NOT be accepted for processing.
   final pulumi.Input<String?>? notBefore;
-  /// Set of access policies assigned to the token.
+  /// List of access policies assigned to the token.
   final pulumi.Input<List<AccountTokenPolicy>> policies;
   /// Status of the token.
   /// Available values: "active", "disabled", "expired".
@@ -30,7 +30,7 @@ class AccountTokenArgs {
   /// [expiresOn] The expiration time on or after which the JWT MUST NOT be accepted for processing.
   /// [name] Token name.
   /// [notBefore] The time before which the token MUST NOT be accepted for processing.
-  /// [policies] Set of access policies assigned to the token.
+  /// [policies] List of access policies assigned to the token.
   /// [status] Status of the token.
   const AccountTokenArgs({
     required this.accountId,

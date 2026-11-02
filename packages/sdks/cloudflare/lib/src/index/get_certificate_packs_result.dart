@@ -18,7 +18,7 @@ class GetCertificatePacksResult {
   final pulumi.Input<List<GetCertificatePacksResultDcvDelegationRecord>> dcvDelegationRecords;
   /// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
   final pulumi.Input<List<String>> hosts;
-  /// Identifier.
+  /// The unique identifier for a certificate_pack.
   final pulumi.Input<String> id;
   /// Identifier of the primary certificate in a pack.
   final pulumi.Input<String> primaryCertificate;
@@ -45,7 +45,7 @@ class GetCertificatePacksResult {
   /// [cloudflareBranding] Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
   /// [dcvDelegationRecords] DCV Delegation records for domain validation.
   /// [hosts] Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
-  /// [id] Identifier.
+  /// [id] The unique identifier for a certificate_pack.
   /// [primaryCertificate] Identifier of the primary certificate in a pack.
   /// [status] Status of certificate pack.
   /// [type] Type of certificate pack.
@@ -101,7 +101,7 @@ class GetCertificatePacksResult {
       validationErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCertificatePacksResultValidationError>(map['validationErrors']!, (value) => GetCertificatePacksResultValidationError.fromMap((value as Map).cast<String, dynamic>()))),
       validationMethod: pulumi.Input.fromValue(map['validationMethod'] as String),
       validationRecords: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCertificatePacksResultValidationRecord>(map['validationRecords']!, (value) => GetCertificatePacksResultValidationRecord.fromMap((value as Map).cast<String, dynamic>()))),
-      validityDays: pulumi.Input.fromValue((map['validityDays'] as num).toInt()),
+      validityDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['validityDays'])),
     );
   }
 }

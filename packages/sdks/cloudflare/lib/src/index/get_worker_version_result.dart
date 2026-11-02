@@ -21,6 +21,8 @@ class GetWorkerVersionResult {
   final GetWorkerVersionAnnotations? annotations;
   /// Configuration for assets within a Worker.
   final GetWorkerVersionAssets? assets;
+  final String? authorEmail;
+  final String? authorId;
   final List<GetWorkerVersionBinding>? bindings;
   final GetWorkerVersionCacheOptions? cacheOptions;
   final String? compatibilityDate;
@@ -54,6 +56,8 @@ class GetWorkerVersionResult {
   /// [accountId] Identifier.
   /// [annotations] Metadata about the version.
   /// [assets] Configuration for assets within a Worker.
+  /// [authorEmail] Optional.
+  /// [authorId] Optional.
   /// [bindings] Optional.
   /// [cacheOptions] Optional.
   /// [compatibilityDate] Optional.
@@ -82,6 +86,8 @@ class GetWorkerVersionResult {
     this.accountId,
     this.annotations,
     this.assets,
+    this.authorEmail,
+    this.authorId,
     this.bindings,
     this.cacheOptions,
     this.compatibilityDate,
@@ -113,6 +119,8 @@ class GetWorkerVersionResult {
       'accountId': ?accountId,
       'annotations': ?annotations?.toMap(),
       'assets': ?assets?.toMap(),
+      'authorEmail': ?authorEmail,
+      'authorId': ?authorId,
       'bindings': ?(() { final guardedValue = bindings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetWorkerVersionBinding, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'cacheOptions': ?cacheOptions?.toMap(),
       'compatibilityDate': ?compatibilityDate,
@@ -145,6 +153,8 @@ class GetWorkerVersionResult {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return GetWorkerVersionAnnotations.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       assets: (() { final guardedValue = map['assets']; if (guardedValue == null) return null; return GetWorkerVersionAssets.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      authorEmail: (() { final guardedValue = map['authorEmail']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      authorId: (() { final guardedValue = map['authorId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       bindings: (() { final guardedValue = map['bindings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetWorkerVersionBinding>(guardedValue, (value) => GetWorkerVersionBinding.fromMap((value as Map).cast<String, dynamic>())); })(),
       cacheOptions: (() { final guardedValue = map['cacheOptions']; if (guardedValue == null) return null; return GetWorkerVersionCacheOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       compatibilityDate: (() { final guardedValue = map['compatibilityDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -160,11 +170,11 @@ class GetWorkerVersionResult {
       migrationTag: (() { final guardedValue = map['migrationTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       migrations: (() { final guardedValue = map['migrations']; if (guardedValue == null) return null; return GetWorkerVersionMigrations.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       modules: (() { final guardedValue = map['modules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetWorkerVersionModule>(guardedValue, (value) => GetWorkerVersionModule.fromMap((value as Map).cast<String, dynamic>())); })(),
-      number: (() { final guardedValue = map['number']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      number: (() { final guardedValue = map['number']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       packageDependencies: (() { final guardedValue = map['packageDependencies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetWorkerVersionPackageDependency>(guardedValue, (value) => GetWorkerVersionPackageDependency.fromMap((value as Map).cast<String, dynamic>())); })(),
       placement: (() { final guardedValue = map['placement']; if (guardedValue == null) return null; return GetWorkerVersionPlacement.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      startupTimeMs: (() { final guardedValue = map['startupTimeMs']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      startupTimeMs: (() { final guardedValue = map['startupTimeMs']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       urls: (() { final guardedValue = map['urls']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       usageModel: (() { final guardedValue = map['usageModel']; if (guardedValue == null) return null; return guardedValue as String; })(),
       versionId: (() { final guardedValue = map['versionId']; if (guardedValue == null) return null; return guardedValue as String; })(),

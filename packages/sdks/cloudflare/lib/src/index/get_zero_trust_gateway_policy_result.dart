@@ -1,11 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'get_zero_trust_gateway_policy_expiration.dart';
+import 'get_zero_trust_gateway_policy_filter.dart';
 import 'get_zero_trust_gateway_policy_rule_settings.dart';
 import 'get_zero_trust_gateway_policy_schedule.dart';
 
 /// Result data returned by getZeroTrustGatewayPolicy.
 class GetZeroTrustGatewayPolicyResult {
+  /// Specify the Cloudflare account identifier.
   final String? accountId;
   /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
   /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -21,6 +23,7 @@ class GetZeroTrustGatewayPolicyResult {
   final bool? enabled;
   /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
   final GetZeroTrustGatewayPolicyExpiration? expiration;
+  final GetZeroTrustGatewayPolicyFilter? filter;
   /// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
   final List<String>? filters;
   /// Identify the API resource with a UUID.
@@ -52,7 +55,7 @@ class GetZeroTrustGatewayPolicyResult {
   final String? warningStatus;
 
   /// Creates a new [GetZeroTrustGatewayPolicyResult].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [action] Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
   /// [createdAt] Optional.
   /// [deletedAt] Indicate the date of deletion, if any.
@@ -60,6 +63,7 @@ class GetZeroTrustGatewayPolicyResult {
   /// [devicePosture] Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
   /// [enabled] Specify whether the rule is enabled.
   /// [expiration] Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
+  /// [filter] Optional.
   /// [filters] Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
   /// [id] Identify the API resource with a UUID.
   /// [identity] Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
@@ -84,6 +88,7 @@ class GetZeroTrustGatewayPolicyResult {
     this.devicePosture,
     this.enabled,
     this.expiration,
+    this.filter,
     this.filters,
     this.id,
     this.identity,
@@ -111,6 +116,7 @@ class GetZeroTrustGatewayPolicyResult {
       'devicePosture': ?devicePosture,
       'enabled': ?enabled,
       'expiration': ?expiration?.toMap(),
+      'filter': ?filter?.toMap(),
       'filters': ?filters,
       'id': ?id,
       'identity': ?identity,
@@ -139,11 +145,12 @@ class GetZeroTrustGatewayPolicyResult {
       devicePosture: (() { final guardedValue = map['devicePosture']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       expiration: (() { final guardedValue = map['expiration']; if (guardedValue == null) return null; return GetZeroTrustGatewayPolicyExpiration.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return GetZeroTrustGatewayPolicyFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      precedence: (() { final guardedValue = map['precedence']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      precedence: (() { final guardedValue = map['precedence']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       ruleId: (() { final guardedValue = map['ruleId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ruleSettings: (() { final guardedValue = map['ruleSettings']; if (guardedValue == null) return null; return GetZeroTrustGatewayPolicyRuleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
@@ -152,7 +159,7 @@ class GetZeroTrustGatewayPolicyResult {
       sourceAccount: (() { final guardedValue = map['sourceAccount']; if (guardedValue == null) return null; return guardedValue as String; })(),
       traffic: (() { final guardedValue = map['traffic']; if (guardedValue == null) return null; return guardedValue as String; })(),
       updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       warningStatus: (() { final guardedValue = map['warningStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

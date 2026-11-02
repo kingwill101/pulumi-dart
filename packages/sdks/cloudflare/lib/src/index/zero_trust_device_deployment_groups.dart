@@ -92,7 +92,7 @@ import 'zero_trust_device_deployment_groups_version_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -100,13 +100,16 @@ import 'zero_trust_device_deployment_groups_version_config.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdevicedeploymentgroups" "example_zero_trust_device_deployment_groups" {
+/// resource "cloudflare_zero_trust_device_deployment_groups" "example_zero_trust_device_deployment_groups" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "account_id"
 ///   name       = "Engineering Ring 0"
-///   version_configs {
+///   version_config = [{
 ///     target_environment = "windows"
 ///     version            = "2026.6.234.0"
-///   }
+///   }]
 ///   policy_ids = ["string"]
 /// }
 /// ```
@@ -191,7 +194,7 @@ class ZeroTrustDeviceDeploymentGroups extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.2').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');

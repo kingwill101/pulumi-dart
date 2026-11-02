@@ -7,6 +7,7 @@ import 'teams_location_network.dart';
 
 /// Input properties used for looking up and filtering TeamsLocation resources.
 class TeamsLocationState {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String?>? accountId;
   /// Indicate whether this location is the default location.
   final pulumi.Input<bool?>? clientDefault;
@@ -36,7 +37,7 @@ class TeamsLocationState {
   final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [TeamsLocationState].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [clientDefault] Indicate whether this location is the default location.
   /// [createdAt] Optional.
   /// [dnsDestinationIpsId] Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.

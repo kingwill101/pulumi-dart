@@ -165,7 +165,7 @@ import 'zero_trust_access_policy_state.dart';
 ///         {
 ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyApprovalGroupArgs
 ///             {
-///                 ApprovalsNeeded = 1,
+///                 ApprovalsNeeded = 1.0,
 ///                 EmailAddresses = new[]
 ///                 {
 ///                     "test1@cloudflare.com",
@@ -175,7 +175,7 @@ import 'zero_trust_access_policy_state.dart';
 ///             },
 ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyApprovalGroupArgs
 ///             {
-///                 ApprovalsNeeded = 3,
+///                 ApprovalsNeeded = 3.0,
 ///                 EmailAddresses = new[]
 ///                 {
 ///                     "test@cloudflare.com",
@@ -316,7 +316,7 @@ import 'zero_trust_access_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -324,23 +324,25 @@ import 'zero_trust_access_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustaccesspolicy" "example_zero_trust_access_policy" {
+/// resource "cloudflare_zero_trust_access_policy" "example_zero_trust_access_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   decision   = "allow"
-///   includes {
+///   include = [{
 ///     certificate = {}
-///   }
+///   }]
 ///   name = "Allow devs"
-///   approval_groups {
+///   approval_groups = [{
 ///     approvals_needed = 1
 ///     email_addresses  = ["test1@cloudflare.com", "test2@cloudflare.com"]
 ///     email_list_uuid  = "email_list_uuid"
-///   }
-///   approval_groups {
+///     }, {
 ///     approvals_needed = 3
 ///     email_addresses  = ["test@cloudflare.com", "test2@cloudflare.com"]
 ///     email_list_uuid  = "597147a1-976b-4ef2-9af0-81d5d007fc34"
-///   }
+///   }]
 ///   approval_required = true
 ///   connection_rules = {
 ///     rdp = {
@@ -348,9 +350,9 @@ import 'zero_trust_access_policy_state.dart';
 ///       allowed_clipboard_remote_to_local_formats = ["text", "file"]
 ///     }
 ///   }
-///   excludes {
+///   exclude = [{
 ///     certificate = {}
-///   }
+///   }]
 ///   isolation_required = false
 ///   mfa_config = {
 ///     allowed_authenticators = ["totp", "biometrics", "security_key"]
@@ -359,9 +361,9 @@ import 'zero_trust_access_policy_state.dart';
 ///   }
 ///   purpose_justification_prompt   = "Please enter a justification for entering this protected domain."
 ///   purpose_justification_required = true
-///   requires {
+///   require = [{
 ///     certificate = {}
-///   }
+///   }]
 ///   session_duration = "24h"
 /// }
 /// ```
@@ -557,7 +559,7 @@ class ZeroTrustAccessPolicy extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.2').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     appCount = registerOutput<int>('appCount');

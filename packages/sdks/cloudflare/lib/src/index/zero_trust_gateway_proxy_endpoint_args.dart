@@ -7,6 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_zero_trust_gateway_proxy_endpoint_zero_trust_gateway_proxy_endpoint_args_doc}
 class ZeroTrustGatewayProxyEndpointArgs {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String> accountId;
   /// Specify the list of CIDRs to restrict ingress connections.
   final pulumi.Input<List<String>?>? ips;
@@ -17,7 +18,7 @@ class ZeroTrustGatewayProxyEndpointArgs {
   final pulumi.Input<String> name;
 
   /// Creates a new [ZeroTrustGatewayProxyEndpointArgs].
-  /// [accountId] Required.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [ips] Specify the list of CIDRs to restrict ingress connections.
   /// [kind] The proxy endpoint kind
   /// [name] Specify the name of the proxy endpoint.

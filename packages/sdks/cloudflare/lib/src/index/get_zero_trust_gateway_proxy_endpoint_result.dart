@@ -1,37 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'get_zero_trust_gateway_proxy_endpoint_filter.dart';
 
 /// Result data returned by getZeroTrustGatewayProxyEndpoint.
 class GetZeroTrustGatewayProxyEndpointResult {
   final String? accountId;
   final String? createdAt;
-  /// The ID of this resource.
+  final GetZeroTrustGatewayProxyEndpointFilter? filter;
   final String? id;
-  /// Specify the list of CIDRs to restrict ingress connections.
   final List<String>? ips;
-  /// The proxy endpoint kind
-  /// Available values: "ip", "identity".
   final String? kind;
-  /// Specify the name of the proxy endpoint.
   final String? name;
   final String? proxyEndpointId;
-  /// Specify the subdomain to use as the destination in the proxy client.
   final String? subdomain;
   final String? updatedAt;
 
   /// Creates a new [GetZeroTrustGatewayProxyEndpointResult].
   /// [accountId] Optional.
   /// [createdAt] Optional.
-  /// [id] The ID of this resource.
-  /// [ips] Specify the list of CIDRs to restrict ingress connections.
-  /// [kind] The proxy endpoint kind
-  /// [name] Specify the name of the proxy endpoint.
+  /// [filter] Optional.
+  /// [id] Optional.
+  /// [ips] Optional.
+  /// [kind] Optional.
+  /// [name] Optional.
   /// [proxyEndpointId] Optional.
-  /// [subdomain] Specify the subdomain to use as the destination in the proxy client.
+  /// [subdomain] Optional.
   /// [updatedAt] Optional.
   const GetZeroTrustGatewayProxyEndpointResult({
     this.accountId,
     this.createdAt,
+    this.filter,
     this.id,
     this.ips,
     this.kind,
@@ -45,6 +43,7 @@ class GetZeroTrustGatewayProxyEndpointResult {
     return <String, dynamic>{
       'accountId': ?accountId,
       'createdAt': ?createdAt,
+      'filter': ?filter?.toMap(),
       'id': ?id,
       'ips': ?ips,
       'kind': ?kind,
@@ -59,6 +58,7 @@ class GetZeroTrustGatewayProxyEndpointResult {
     return GetZeroTrustGatewayProxyEndpointResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return GetZeroTrustGatewayProxyEndpointFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ips: (() { final guardedValue = map['ips']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),

@@ -108,7 +108,7 @@ import 'magic_transit_cf1_site_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -116,9 +116,12 @@ import 'magic_transit_cf1_site_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_magictransitcf1site" "example_magic_transit_cf1_site" {
+/// resource "cloudflare_magic_transit_cf1_site" "example_magic_transit_cf1_site" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
-///   bodies {
+///   body = [{
 ///     name        = "Pad 34"
 ///     description = "Launch Pad 34"
 ///     location = {
@@ -126,7 +129,7 @@ import 'magic_transit_cf1_site_state.dart';
 ///       long = -80.56092644815843
 ///       name = "Cape Canaveral"
 ///     }
-///   }
+///   }]
 /// }
 /// ```
 /// ```java
@@ -214,7 +217,7 @@ class MagicTransitCf1Site extends pulumi.CustomResource {
           'cloudflare:index/magicTransitCf1Site:MagicTransitCf1Site',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.2').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     bodies = registerOutput<List<MagicTransitCf1SiteBody>>('bodies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MagicTransitCf1SiteBody>(guardedValue, (value) => MagicTransitCf1SiteBody.fromMap((value as Map).cast<String, dynamic>())); });

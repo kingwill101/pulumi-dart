@@ -9,13 +9,13 @@ import 'zone_dns_settings_soa.dart';
 class ZoneDnsSettingsState {
   /// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
   final pulumi.Input<bool?>? flattenAllCnames;
-  /// Whether to enable Foundation DNS Advanced Nameservers on the zone.
+  /// Deprecated. Use nameservers.type to configure Advanced Nameservers.
   final pulumi.Input<bool?>? foundationDns;
   /// Settings for this internal zone.
   final pulumi.Input<ZoneDnsSettingsInternalDns?>? internalDns;
   /// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
   final pulumi.Input<bool?>? multiProvider;
-  /// Settings determining the nameservers through which the zone should be available.
+  /// Controls the nameservers through which the zone is available.
   final pulumi.Input<ZoneDnsSettingsNameservers?>? nameservers;
   /// The time to live (TTL) of the zone's nameserver (NS) records.
   final pulumi.Input<double?>? nsTtl;
@@ -31,10 +31,10 @@ class ZoneDnsSettingsState {
 
   /// Creates a new [ZoneDnsSettingsState].
   /// [flattenAllCnames] Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
-  /// [foundationDns] Whether to enable Foundation DNS Advanced Nameservers on the zone.
+  /// [foundationDns] Deprecated. Use nameservers.type to configure Advanced Nameservers.
   /// [internalDns] Settings for this internal zone.
   /// [multiProvider] Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
-  /// [nameservers] Settings determining the nameservers through which the zone should be available.
+  /// [nameservers] Controls the nameservers through which the zone is available.
   /// [nsTtl] The time to live (TTL) of the zone's nameserver (NS) records.
   /// [secondaryOverrides] Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
   /// [soa] Components of the zone's SOA record.

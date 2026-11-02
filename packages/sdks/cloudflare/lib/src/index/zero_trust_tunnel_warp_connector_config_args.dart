@@ -12,7 +12,7 @@ class ZeroTrustTunnelWarpConnectorConfigArgs {
   final pulumi.Input<String> accountId;
   /// Provider-specific configuration. Required shape depends on ha_mode. For `aws`, must contain `fnrId`. For `local`, must contain `vips`. For `none` and `disabled`, must be empty or omitted.
   final pulumi.Input<ZeroTrustTunnelWarpConnectorConfigConfig?>? config;
-  /// High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+  /// High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
   /// Available values: "none", "disabled", "aws", "local".
   final pulumi.Input<String> haMode;
   /// UUID of the tunnel.
@@ -21,7 +21,7 @@ class ZeroTrustTunnelWarpConnectorConfigArgs {
   /// Creates a new [ZeroTrustTunnelWarpConnectorConfigArgs].
   /// [accountId] Identifier.
   /// [config] Provider-specific configuration. Required shape depends on ha_mode. For `aws`, must contain `fnrId`. For `local`, must contain `vips`. For `none` and `disabled`, must be empty or omitted.
-  /// [haMode] High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+  /// [haMode] High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
   /// [tunnelId] UUID of the tunnel.
   const ZeroTrustTunnelWarpConnectorConfigArgs({
     required this.accountId,

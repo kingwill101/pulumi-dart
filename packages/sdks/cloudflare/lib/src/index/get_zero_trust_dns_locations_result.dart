@@ -22,9 +22,9 @@ class GetZeroTrustDnsLocationsResult {
   final pulumi.Input<String> id;
   /// Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.
   final pulumi.Input<String> ip;
-  /// Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+  /// Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
   final pulumi.Input<String> ipv4Destination;
-  /// Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+  /// Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
   final pulumi.Input<String> ipv4DestinationBackup;
   /// Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
   final pulumi.Input<GetZeroTrustDnsLocationsResultMaxTtl> maxTtl;
@@ -44,8 +44,8 @@ class GetZeroTrustDnsLocationsResult {
   /// [endpoints] Configure the destination endpoints for this location.
   /// [id] Required.
   /// [ip] Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.
-  /// [ipv4Destination] Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
-  /// [ipv4DestinationBackup] Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+  /// [ipv4Destination] Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
+  /// [ipv4DestinationBackup] Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
   /// [maxTtl] Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
   /// [name] Specify the location name.
   /// [networks] Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.

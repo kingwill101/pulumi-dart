@@ -8,14 +8,14 @@ import 'get_certificate_pack_filter.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_certificate_pack_get_certificate_pack_args_doc}
 class GetCertificatePackArgs {
-  /// Identifier.
+  /// The unique identifier for a certificate_pack.
   final pulumi.Input<String?>? certificatePackId;
   final pulumi.Input<GetCertificatePackFilter?>? filter;
   /// Identifier.
   final pulumi.Input<String?>? zoneId;
 
   /// Creates a new [GetCertificatePackArgs].
-  /// [certificatePackId] Identifier.
+  /// [certificatePackId] The unique identifier for a certificate_pack.
   /// [filter] Optional.
   /// [zoneId] Identifier.
   const GetCertificatePackArgs({

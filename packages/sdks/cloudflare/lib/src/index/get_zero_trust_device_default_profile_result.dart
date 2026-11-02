@@ -40,6 +40,9 @@ class GetZeroTrustDeviceDefaultProfileResult {
   /// List of routes included in the WARP client's tunnel.
   final List<GetZeroTrustDeviceDefaultProfileInclude>? includes;
   final String? policyId;
+  /// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+  /// Available values: "warp", "browserExtension".
+  final String? profileType;
   /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
   final bool? registerInterfaceIpWithDns;
   /// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -51,6 +54,8 @@ class GetZeroTrustDeviceDefaultProfileResult {
   final bool? switchLocked;
   /// Determines which tunnel protocol to use.
   final String? tunnelProtocol;
+  /// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+  final bool? uninstallProtection;
   /// Virtual network access settings for the device.
   final GetZeroTrustDeviceDefaultProfileVirtualNetworks? virtualNetworks;
 
@@ -72,12 +77,14 @@ class GetZeroTrustDeviceDefaultProfileResult {
   /// [id] The ID of this resource.
   /// [includes] List of routes included in the WARP client's tunnel.
   /// [policyId] Optional.
+  /// [profileType] The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
   /// [registerInterfaceIpWithDns] Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
   /// [sccmVpnBoundarySupport] Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
   /// [serviceModeV2] Optional.
   /// [supportUrl] The URL to launch when the Send Feedback button is clicked.
   /// [switchLocked] Whether to allow the user to turn off the WARP switch and disconnect the client.
   /// [tunnelProtocol] Determines which tunnel protocol to use.
+  /// [uninstallProtection] Determines whether uninstalling the WARP client requires an override code. (Windows only).
   /// [virtualNetworks] Virtual network access settings for the device.
   const GetZeroTrustDeviceDefaultProfileResult({
     this.accountId,
@@ -97,12 +104,14 @@ class GetZeroTrustDeviceDefaultProfileResult {
     this.id,
     this.includes,
     this.policyId,
+    this.profileType,
     this.registerInterfaceIpWithDns,
     this.sccmVpnBoundarySupport,
     this.serviceModeV2,
     this.supportUrl,
     this.switchLocked,
     this.tunnelProtocol,
+    this.uninstallProtection,
     this.virtualNetworks,
   });
 
@@ -125,12 +134,14 @@ class GetZeroTrustDeviceDefaultProfileResult {
       'id': ?id,
       'includes': ?(() { final guardedValue = includes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetZeroTrustDeviceDefaultProfileInclude, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'policyId': ?policyId,
+      'profileType': ?profileType,
       'registerInterfaceIpWithDns': ?registerInterfaceIpWithDns,
       'sccmVpnBoundarySupport': ?sccmVpnBoundarySupport,
       'serviceModeV2': ?serviceModeV2?.toMap(),
       'supportUrl': ?supportUrl,
       'switchLocked': ?switchLocked,
       'tunnelProtocol': ?tunnelProtocol,
+      'uninstallProtection': ?uninstallProtection,
       'virtualNetworks': ?virtualNetworks?.toMap(),
     };
   }
@@ -154,12 +165,14 @@ class GetZeroTrustDeviceDefaultProfileResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       includes: (() { final guardedValue = map['includes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZeroTrustDeviceDefaultProfileInclude>(guardedValue, (value) => GetZeroTrustDeviceDefaultProfileInclude.fromMap((value as Map).cast<String, dynamic>())); })(),
       policyId: (() { final guardedValue = map['policyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      profileType: (() { final guardedValue = map['profileType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       registerInterfaceIpWithDns: (() { final guardedValue = map['registerInterfaceIpWithDns']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       sccmVpnBoundarySupport: (() { final guardedValue = map['sccmVpnBoundarySupport']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       serviceModeV2: (() { final guardedValue = map['serviceModeV2']; if (guardedValue == null) return null; return GetZeroTrustDeviceDefaultProfileServiceModeV2.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       supportUrl: (() { final guardedValue = map['supportUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       switchLocked: (() { final guardedValue = map['switchLocked']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       tunnelProtocol: (() { final guardedValue = map['tunnelProtocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uninstallProtection: (() { final guardedValue = map['uninstallProtection']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       virtualNetworks: (() { final guardedValue = map['virtualNetworks']; if (guardedValue == null) return null; return GetZeroTrustDeviceDefaultProfileVirtualNetworks.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }

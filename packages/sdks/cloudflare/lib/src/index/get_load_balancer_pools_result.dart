@@ -126,7 +126,7 @@ class GetLoadBalancerPoolsResult {
       latitude: pulumi.Input.fromValue((map['latitude'] as num).toDouble()),
       loadShedding: pulumi.Input.fromValue(GetLoadBalancerPoolsResultLoadShedding.fromMap((map['loadShedding']! as Map).cast<String, dynamic>())),
       longitude: pulumi.Input.fromValue((map['longitude'] as num).toDouble()),
-      minimumOrigins: pulumi.Input.fromValue((map['minimumOrigins'] as num).toInt()),
+      minimumOrigins: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minimumOrigins'])),
       modifiedOn: pulumi.Input.fromValue(map['modifiedOn'] as String),
       monitor: pulumi.Input.fromValue(map['monitor'] as String),
       monitorGroup: pulumi.Input.fromValue(map['monitorGroup'] as String),

@@ -30,9 +30,9 @@ class GetPipelineSinksResultConfigRollingPolicy {
 
   factory GetPipelineSinksResultConfigRollingPolicy.fromMap(Map<String, dynamic> map) {
     return GetPipelineSinksResultConfigRollingPolicy(
-      fileSizeBytes: pulumi.Input.fromValue((map['fileSizeBytes'] as num).toInt()),
-      inactivitySeconds: pulumi.Input.fromValue((map['inactivitySeconds'] as num).toInt()),
-      intervalSeconds: pulumi.Input.fromValue((map['intervalSeconds'] as num).toInt()),
+      fileSizeBytes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['fileSizeBytes'])),
+      inactivitySeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['inactivitySeconds'])),
+      intervalSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['intervalSeconds'])),
     );
   }
 }

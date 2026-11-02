@@ -32,7 +32,7 @@ class GetRulesetRuleActionParametersEdgeTtl {
 
   factory GetRulesetRuleActionParametersEdgeTtl.fromMap(Map<String, dynamic> map) {
     return GetRulesetRuleActionParametersEdgeTtl(
-      default_: pulumi.Input.fromValue((map['default'] as num).toInt()),
+      default_: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['default'])),
       mode: pulumi.Input.fromValue(map['mode'] as String),
       statusCodeTtls: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl>(map['statusCodeTtls']!, (value) => GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl.fromMap((value as Map).cast<String, dynamic>()))),
     );

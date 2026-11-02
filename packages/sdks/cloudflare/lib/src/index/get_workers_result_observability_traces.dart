@@ -11,7 +11,7 @@ class GetWorkersResultObservabilityTraces {
   final pulumi.Input<double> headSamplingRate;
   /// Whether trace persistence is enabled for the Worker.
   final pulumi.Input<bool> persist;
-  /// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+  /// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
   /// Available values: "authenticated", "accept".
   final pulumi.Input<String> propagationPolicy;
 
@@ -20,7 +20,7 @@ class GetWorkersResultObservabilityTraces {
   /// [enabled] Whether traces are enabled for the Worker.
   /// [headSamplingRate] The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
   /// [persist] Whether trace persistence is enabled for the Worker.
-  /// [propagationPolicy] Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+  /// [propagationPolicy] Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
   const GetWorkersResultObservabilityTraces({
     required this.destinations,
     required this.enabled,

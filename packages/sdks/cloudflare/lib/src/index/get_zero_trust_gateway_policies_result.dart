@@ -133,7 +133,7 @@ class GetZeroTrustGatewayPoliciesResult {
       id: pulumi.Input.fromValue(map['id'] as String),
       identity: pulumi.Input.fromValue(map['identity'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      precedence: pulumi.Input.fromValue((map['precedence'] as num).toInt()),
+      precedence: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['precedence'])),
       readOnly: pulumi.Input.fromValue(map['readOnly'] as bool),
       ruleSettings: pulumi.Input.fromValue(GetZeroTrustGatewayPoliciesResultRuleSettings.fromMap((map['ruleSettings']! as Map).cast<String, dynamic>())),
       schedule: pulumi.Input.fromValue(GetZeroTrustGatewayPoliciesResultSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())),
@@ -141,7 +141,7 @@ class GetZeroTrustGatewayPoliciesResult {
       sourceAccount: pulumi.Input.fromValue(map['sourceAccount'] as String),
       traffic: pulumi.Input.fromValue(map['traffic'] as String),
       updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
-      version: pulumi.Input.fromValue((map['version'] as num).toInt()),
+      version: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['version'])),
       warningStatus: pulumi.Input.fromValue(map['warningStatus'] as String),
     );
   }

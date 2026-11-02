@@ -11,13 +11,13 @@ class CallsSfuAppArgs {
   final pulumi.Input<String> accountId;
   /// A Cloudflare-generated unique identifier for a item.
   final pulumi.Input<String?>? appId;
-  /// A short description of Calls app, not shown to end users.
+  /// A short description of a Realtime SFU app, not shown to end users.
   final pulumi.Input<String?>? name;
 
   /// Creates a new [CallsSfuAppArgs].
   /// [accountId] The account identifier tag.
   /// [appId] A Cloudflare-generated unique identifier for a item.
-  /// [name] A short description of Calls app, not shown to end users.
+  /// [name] A short description of a Realtime SFU app, not shown to end users.
   const CallsSfuAppArgs({
     required this.accountId,
     this.appId,

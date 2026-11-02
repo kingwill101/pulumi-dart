@@ -138,7 +138,7 @@ import 'user_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -146,21 +146,23 @@ import 'user_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_usergroup" "example_user_group" {
+/// resource "cloudflare_user_group" "example_user_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name       = "My New User Group"
-///   policies {
+///   policies = [{
 ///     access = "allow"
-///     permission_groups {
+///     permission_groups = [{
 ///       id = "c8fed203ed3043cba015a93ad1616f1f"
-///     }
-///     permission_groups {
+///       }, {
 ///       id = "82e64a83756745bbbb1c9c2701bf816b"
-///     }
-///     resource_groups {
+///     }]
+///     resource_groups = [{
 ///       id = "6d7f2f5f5b1d4a0e9081fdc98d432fd1"
-///     }
-///   }
+///     }]
+///   }]
 /// }
 /// ```
 /// ```java
@@ -255,7 +257,7 @@ class UserGroup extends pulumi.CustomResource {
           'cloudflare:index/userGroup:UserGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.23.2').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdOn = registerOutput<String>('createdOn');

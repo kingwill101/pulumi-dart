@@ -11,13 +11,13 @@ class GetPagesDomainResult {
   final String? certificateAuthority;
   final String? createdOn;
   final String? domainId;
-  /// The domain name.
+  /// Fully qualified domain name for the Pages project, such as `example.com`.
   final String? domainName;
-  /// The domain name.
+  /// Fully qualified domain name for the Pages project, such as `example.com`.
   final String? id;
-  /// The domain name.
+  /// Fully qualified domain name for the Pages project, such as `example.com`.
   final String? name;
-  /// Name of the project.
+  /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   final String? projectName;
   /// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
   final String? status;
@@ -30,10 +30,10 @@ class GetPagesDomainResult {
   /// [certificateAuthority] Available values: "google", "letsEncrypt".
   /// [createdOn] Optional.
   /// [domainId] Optional.
-  /// [domainName] The domain name.
-  /// [id] The domain name.
-  /// [name] The domain name.
-  /// [projectName] Name of the project.
+  /// [domainName] Fully qualified domain name for the Pages project, such as `example.com`.
+  /// [id] Fully qualified domain name for the Pages project, such as `example.com`.
+  /// [name] Fully qualified domain name for the Pages project, such as `example.com`.
+  /// [projectName] Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   /// [status] Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
   /// [validationData] Optional.
   /// [verificationData] Optional.

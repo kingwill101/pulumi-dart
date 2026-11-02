@@ -8,13 +8,13 @@ class WorkerCronTriggerState {
   /// Identifier.
   final pulumi.Input<String?>? accountId;
   final pulumi.Input<List<WorkerCronTriggerSchedule>?>? schedules;
-  /// Name of the script, used in URLs and route configuration.
+  /// Name of the script.
   final pulumi.Input<String?>? scriptName;
 
   /// Creates a new [WorkerCronTriggerState].
   /// [accountId] Identifier.
   /// [schedules] Optional.
-  /// [scriptName] Name of the script, used in URLs and route configuration.
+  /// [scriptName] Name of the script.
   const WorkerCronTriggerState({
     this.accountId,
     this.schedules,
