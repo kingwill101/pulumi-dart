@@ -69,7 +69,7 @@ import 'reserved_ip_assignment_state.dart';
 ///     var exampleReservedIpAssignment = new DigitalOcean.ReservedIpAssignment("example", new()
 ///     {
 ///         IpAddress = example.IpAddress,
-///         DropletId = exampleDroplet.Id,
+///         DropletId = exampleDroplet.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///     });
 ///
 /// });
@@ -105,7 +105,7 @@ import 'reserved_ip_assignment_state.dart';
 /// 		}
 /// 		_, err = digitalocean.NewReservedIpAssignment(ctx, "example", &digitalocean.ReservedIpAssignmentArgs{
 /// 			IpAddress: example.IpAddress,
-/// 			DropletId: exampleDroplet.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+/// 			DropletId: exampleDroplet.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -115,7 +115,7 @@ import 'reserved_ip_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -123,10 +123,16 @@ import 'reserved_ip_assignment_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_reservedip" "example" {
+/// resource "digitalocean_reserved_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region = "nyc3"
 /// }
 /// resource "digitalocean_droplet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "baz"
 ///   size               = "s-1vcpu-1gb"
 ///   image              = "ubuntu-22-04-x64"
@@ -134,8 +140,11 @@ import 'reserved_ip_assignment_state.dart';
 ///   ipv6               = true
 ///   private_networking = true
 /// }
-/// resource "digitalocean_reservedipassignment" "example" {
-///   ip_address = digitalocean_reservedip.example.ip_address
+/// resource "digitalocean_reserved_ip_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ip_address = digitalocean_reserved_ip.example.ip_address
 ///   droplet_id = digitalocean_droplet.example.id
 /// }
 /// ```
@@ -236,7 +245,7 @@ class ReservedIpAssignment extends pulumi.CustomResource {
           'digitalocean:index/reservedIpAssignment:ReservedIpAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.2').merge(options),
         ) {
     dropletId = registerOutput<int>('dropletId');
     ipAddress = registerOutput<String>('ipAddress');
@@ -247,11 +256,12 @@ class ReservedIpAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReservedIpAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReservedIpAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -265,6 +275,19 @@ class ReservedIpAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dropletId = registerOutput<int>('dropletId');
+    ipAddress = registerOutput<String>('ipAddress');
+  }
+
+  /// Creates a typed reference to an existing [ReservedIpAssignment] resource.
+  ReservedIpAssignment.reference(String urn)
+    : super(
+        'digitalocean:index/reservedIpAssignment:ReservedIpAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dropletId = registerOutput<int>('dropletId');
     ipAddress = registerOutput<String>('ipAddress');
   }

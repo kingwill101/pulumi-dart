@@ -12,7 +12,7 @@ class GetDatabaseReplicaArgs {
   /// The name for the database replica.
   final pulumi.Input<String> name;
   /// A list of tag names to be applied to the database replica.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
 
   /// Creates a new [GetDatabaseReplicaArgs].
   /// [clusterId] The ID of the original source database cluster.

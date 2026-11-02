@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SpacesBucketLogging resources.
 class SpacesBucketLoggingState {
   /// The name of the bucket which will be logged.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// The region where the bucket resides.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the bucket which will store the logs.
-  final pulumi.Input<String>? targetBucket;
+  final pulumi.Input<String?>? targetBucket;
   /// The prefix for the log files.
-  final pulumi.Input<String>? targetPrefix;
+  final pulumi.Input<String?>? targetPrefix;
 
   /// Creates a new [SpacesBucketLoggingState].
   /// [bucket] The name of the bucket which will be logged.

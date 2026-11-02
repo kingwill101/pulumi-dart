@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiAgentOpenAiApiKey {
   /// OpenAI API Key
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
 
   /// Creates a new [GetGradientaiAgentOpenAiApiKey].
   /// [apiKey] OpenAI API Key

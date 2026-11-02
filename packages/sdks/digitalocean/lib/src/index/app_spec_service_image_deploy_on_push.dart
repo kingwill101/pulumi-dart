@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppSpecServiceImageDeployOnPush {
   /// Whether to automatically deploy images pushed to DOCR.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [AppSpecServiceImageDeployOnPush].
   /// [enabled] Whether to automatically deploy images pushed to DOCR.

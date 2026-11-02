@@ -7,11 +7,11 @@ class AppSpecFunctionLogDestinationOpenSearch {
   /// Basic authentication details.
   final pulumi.Input<AppSpecFunctionLogDestinationOpenSearchBasicAuth> basicAuth;
   /// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// OpenSearch endpoint.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// OpenSearch index name.
-  final pulumi.Input<String>? indexName;
+  final pulumi.Input<String?>? indexName;
 
   /// Creates a new [AppSpecFunctionLogDestinationOpenSearch].
   /// [basicAuth] Basic authentication details.

@@ -11,10 +11,10 @@ import 'get_spaces_buckets_sort.dart';
 class GetSpacesBucketsArgs {
   /// Filter the results.
   /// The `filter` block is documented below.
-  final pulumi.Input<List<GetSpacesBucketsFilter>>? filters;
+  final pulumi.Input<List<GetSpacesBucketsFilter>?>? filters;
   /// Sort the results.
   /// The `sort` block is documented below.
-  final pulumi.Input<List<GetSpacesBucketsSort>>? sorts;
+  final pulumi.Input<List<GetSpacesBucketsSort>?>? sorts;
 
   /// Creates a new [GetSpacesBucketsArgs].
   /// [filters] Filter the results.

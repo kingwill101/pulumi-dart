@@ -8,23 +8,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_providers_provider_args_doc}
 class ProviderArgs {
   /// The URL to use for the DigitalOcean API.
-  final pulumi.Input<String>? apiEndpoint;
+  final pulumi.Input<String?>? apiEndpoint;
   /// The maximum number of retries on a failed API request.
-  final pulumi.Input<int>? httpRetryMax;
+  final pulumi.Input<int?>? httpRetryMax;
   /// The maximum wait time (in seconds) between failed API requests.
-  final pulumi.Input<double>? httpRetryWaitMax;
+  final pulumi.Input<double?>? httpRetryWaitMax;
   /// The minimum wait time (in seconds) between failed API requests.
-  final pulumi.Input<double>? httpRetryWaitMin;
+  final pulumi.Input<double?>? httpRetryWaitMin;
   /// The rate of requests per second to limit the HTTP client.
-  final pulumi.Input<double>? requestsPerSecond;
+  final pulumi.Input<double?>? requestsPerSecond;
   /// The access key ID for Spaces API operations.
-  final pulumi.Input<String>? spacesAccessId;
+  final pulumi.Input<String?>? spacesAccessId;
   /// The URL to use for the DigitalOcean Spaces API.
-  final pulumi.Input<String>? spacesEndpoint;
+  final pulumi.Input<String?>? spacesEndpoint;
   /// The secret access key for Spaces API operations.
-  final pulumi.Input<String>? spacesSecretKey;
+  final pulumi.Input<String?>? spacesSecretKey;
   /// The token key for API operations.
-  final pulumi.Input<String>? token;
+  final pulumi.Input<String?>? token;
 
   /// Creates a new [ProviderArgs].
   /// [apiEndpoint] The URL to use for the DigitalOcean API.
@@ -36,8 +36,8 @@ class ProviderArgs {
   /// [spacesEndpoint] The URL to use for the DigitalOcean Spaces API.
   /// [spacesSecretKey] The secret access key for Spaces API operations.
   /// [token] The token key for API operations.
-  const ProviderArgs({
-    this.apiEndpoint,
+  ProviderArgs({
+    pulumi.Input<String?>? apiEndpoint,
     this.httpRetryMax,
     this.httpRetryWaitMax,
     this.httpRetryWaitMin,
@@ -46,7 +46,7 @@ class ProviderArgs {
     this.spacesEndpoint,
     this.spacesSecretKey,
     this.token,
-  });
+  }) : apiEndpoint = apiEndpoint ?? pulumi.Input.fromValue('https://api.digitalocean.com');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,10 +65,10 @@ class ProviderArgs {
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
       apiEndpoint: (() { final guardedValue = map['apiEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      httpRetryMax: (() { final guardedValue = map['httpRetryMax']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      httpRetryWaitMax: (() { final guardedValue = map['httpRetryWaitMax']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      httpRetryWaitMin: (() { final guardedValue = map['httpRetryWaitMin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      requestsPerSecond: (() { final guardedValue = map['requestsPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      httpRetryMax: (() { final guardedValue = map['httpRetryMax']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      httpRetryWaitMax: (() { final guardedValue = map['httpRetryWaitMax']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      httpRetryWaitMin: (() { final guardedValue = map['httpRetryWaitMin']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      requestsPerSecond: (() { final guardedValue = map['requestsPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       spacesAccessId: (() { final guardedValue = map['spacesAccessId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       spacesEndpoint: (() { final guardedValue = map['spacesEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       spacesSecretKey: (() { final guardedValue = map['spacesSecretKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

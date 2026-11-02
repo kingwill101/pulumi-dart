@@ -7,9 +7,9 @@ import 'gradientai_knowledge_base_data_source_web_crawler_data_source.dart';
 /// Input properties used for looking up and filtering GradientaiKnowledgeBaseDataSource resources.
 class GradientaiKnowledgeBaseDataSourceState {
   /// UUID of the Knowledge Base
-  final pulumi.Input<String>? knowledgeBaseUuid;
-  final pulumi.Input<GradientaiKnowledgeBaseDataSourceSpacesDataSource>? spacesDataSource;
-  final pulumi.Input<GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource>? webCrawlerDataSource;
+  final pulumi.Input<String?>? knowledgeBaseUuid;
+  final pulumi.Input<GradientaiKnowledgeBaseDataSourceSpacesDataSource?>? spacesDataSource;
+  final pulumi.Input<GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource?>? webCrawlerDataSource;
 
   /// Creates a new [GradientaiKnowledgeBaseDataSourceState].
   /// [knowledgeBaseUuid] UUID of the Knowledge Base

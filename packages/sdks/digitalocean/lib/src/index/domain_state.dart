@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Domain resources.
 class DomainState {
   /// The uniform resource name of the domain
-  final pulumi.Input<String>? domainUrn;
+  final pulumi.Input<String?>? domainUrn;
   /// The IP address of the domain. If specified, this IP
   /// is used to created an initial A record for the domain.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// The name of the domain
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The TTL value of the domain
-  final pulumi.Input<int>? ttl;
+  final pulumi.Input<int?>? ttl;
 
   /// Creates a new [DomainState].
   /// [domainUrn] The uniform resource name of the domain
@@ -40,7 +40,7 @@ class DomainState {
       domainUrn: (() { final guardedValue = map['domainUrn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

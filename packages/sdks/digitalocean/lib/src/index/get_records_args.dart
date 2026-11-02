@@ -13,10 +13,10 @@ class GetRecordsArgs {
   final pulumi.Input<String> domain;
   /// Filter the results.
   /// The `filter` block is documented below.
-  final pulumi.Input<List<GetRecordsFilter>>? filters;
+  final pulumi.Input<List<GetRecordsFilter>?>? filters;
   /// Sort the results.
   /// The `sort` block is documented below.
-  final pulumi.Input<List<GetRecordsSort>>? sorts;
+  final pulumi.Input<List<GetRecordsSort>?>? sorts;
 
   /// Creates a new [GetRecordsArgs].
   /// [domain] The domain name to search for DNS records

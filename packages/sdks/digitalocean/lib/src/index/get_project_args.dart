@@ -8,10 +8,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_project_get_project_args_doc}
 class GetProjectArgs {
   /// the ID of the project to retrieve
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// the name of the project to retrieve. The data source will raise an error if more than
   /// one project has the provided name or if no project has that name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GetProjectArgs].
   /// [id] the ID of the project to retrieve

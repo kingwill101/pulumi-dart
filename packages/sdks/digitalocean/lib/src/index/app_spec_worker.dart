@@ -15,43 +15,43 @@ import 'app_spec_worker_termination.dart';
 
 class AppSpecWorker {
   /// Describes an alert policy for the component.
-  final pulumi.Input<List<AppSpecWorkerAlert>>? alerts;
+  final pulumi.Input<List<AppSpecWorkerAlert>?>? alerts;
   /// Configuration for automatically scaling this component based on metrics.
-  final pulumi.Input<AppSpecWorkerAutoscaling>? autoscaling;
+  final pulumi.Input<AppSpecWorkerAutoscaling?>? autoscaling;
   /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-  final pulumi.Input<AppSpecWorkerBitbucket>? bitbucket;
+  final pulumi.Input<AppSpecWorkerBitbucket?>? bitbucket;
   /// An optional build command to run while building this component from source.
-  final pulumi.Input<String>? buildCommand;
+  final pulumi.Input<String?>? buildCommand;
   /// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
-  final pulumi.Input<String>? dockerfilePath;
+  final pulumi.Input<String?>? dockerfilePath;
   /// An environment slug describing the type of this app.
-  final pulumi.Input<String>? environmentSlug;
+  final pulumi.Input<String?>? environmentSlug;
   /// Describes an environment variable made available to an app competent.
-  final pulumi.Input<List<AppSpecWorkerEnv>>? envs;
+  final pulumi.Input<List<AppSpecWorkerEnv>?>? envs;
   /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
-  final pulumi.Input<AppSpecWorkerGit>? git;
+  final pulumi.Input<AppSpecWorkerGit?>? git;
   /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-  final pulumi.Input<AppSpecWorkerGithub>? github;
+  final pulumi.Input<AppSpecWorkerGithub?>? github;
   /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-  final pulumi.Input<AppSpecWorkerGitlab>? gitlab;
+  final pulumi.Input<AppSpecWorkerGitlab?>? gitlab;
   /// An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
-  final pulumi.Input<AppSpecWorkerImage>? image;
+  final pulumi.Input<AppSpecWorkerImage?>? image;
   /// The amount of instances that this component should be scaled to.
-  final pulumi.Input<int>? instanceCount;
+  final pulumi.Input<int?>? instanceCount;
   /// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
-  final pulumi.Input<String>? instanceSizeSlug;
+  final pulumi.Input<String?>? instanceSizeSlug;
   /// A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
-  final pulumi.Input<AppSpecWorkerLivenessHealthCheck>? livenessHealthCheck;
+  final pulumi.Input<AppSpecWorkerLivenessHealthCheck?>? livenessHealthCheck;
   /// Describes a log forwarding destination.
-  final pulumi.Input<List<AppSpecWorkerLogDestination>>? logDestinations;
+  final pulumi.Input<List<AppSpecWorkerLogDestination>?>? logDestinations;
   /// The name of the component.
   final pulumi.Input<String> name;
   /// An optional run command to override the component's default.
-  final pulumi.Input<String>? runCommand;
+  final pulumi.Input<String?>? runCommand;
   /// An optional path to the working directory to use for the build.
-  final pulumi.Input<String>? sourceDir;
+  final pulumi.Input<String?>? sourceDir;
   /// Contains a component's termination parameters.
-  final pulumi.Input<AppSpecWorkerTermination>? termination;
+  final pulumi.Input<AppSpecWorkerTermination?>? termination;
 
   /// Creates a new [AppSpecWorker].
   /// [alerts] Describes an alert policy for the component.
@@ -132,7 +132,7 @@ class AppSpecWorker {
       github: (() { final guardedValue = map['github']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppSpecWorkerGithub.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       gitlab: (() { final guardedValue = map['gitlab']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppSpecWorkerGitlab.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppSpecWorkerImage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceSizeSlug: (() { final guardedValue = map['instanceSizeSlug']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       livenessHealthCheck: (() { final guardedValue = map['livenessHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppSpecWorkerLivenessHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       logDestinations: (() { final guardedValue = map['logDestinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppSpecWorkerLogDestination>(guardedValue, (value) => AppSpecWorkerLogDestination.fromMap((value as Map).cast<String, dynamic>()))); })(),

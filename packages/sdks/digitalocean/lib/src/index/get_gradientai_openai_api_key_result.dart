@@ -5,59 +5,59 @@ import 'get_gradientai_openai_api_key_model.dart';
 
 /// Result data returned by getGradientaiOpenaiApiKey.
 class GetGradientaiOpenaiApiKeyResult {
-  final String createdAt;
-  final String createdBy;
-  final String deletedAt;
+  final String? createdAt;
+  final String? createdBy;
+  final String? deletedAt;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final List<GetGradientaiOpenaiApiKeyModel> models;
-  final String name;
-  final String updatedAt;
-  final String uuid;
+  final String? id;
+  final List<GetGradientaiOpenaiApiKeyModel>? models;
+  final String? name;
+  final String? updatedAt;
+  final String? uuid;
 
   /// Creates a new [GetGradientaiOpenaiApiKeyResult].
-  /// [createdAt] Required.
-  /// [createdBy] Required.
-  /// [deletedAt] Required.
+  /// [createdAt] Optional.
+  /// [createdBy] Optional.
+  /// [deletedAt] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [models] Required.
-  /// [name] Required.
-  /// [updatedAt] Required.
-  /// [uuid] Required.
+  /// [models] Optional.
+  /// [name] Optional.
+  /// [updatedAt] Optional.
+  /// [uuid] Optional.
   const GetGradientaiOpenaiApiKeyResult({
-    required this.createdAt,
-    required this.createdBy,
-    required this.deletedAt,
-    required this.id,
-    required this.models,
-    required this.name,
-    required this.updatedAt,
-    required this.uuid,
+    this.createdAt,
+    this.createdBy,
+    this.deletedAt,
+    this.id,
+    this.models,
+    this.name,
+    this.updatedAt,
+    this.uuid,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createdAt': createdAt,
-      'createdBy': createdBy,
-      'deletedAt': deletedAt,
-      'id': id,
-      'models': pulumi.Input.encodeList<GetGradientaiOpenaiApiKeyModel, Map<String, dynamic>>(models, (value) => value.toMap()),
-      'name': name,
-      'updatedAt': updatedAt,
-      'uuid': uuid,
+      'createdAt': ?createdAt,
+      'createdBy': ?createdBy,
+      'deletedAt': ?deletedAt,
+      'id': ?id,
+      'models': ?(() { final guardedValue = models; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGradientaiOpenaiApiKeyModel, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
+      'updatedAt': ?updatedAt,
+      'uuid': ?uuid,
     };
   }
 
   factory GetGradientaiOpenaiApiKeyResult.fromMap(Map<String, dynamic> map) {
     return GetGradientaiOpenaiApiKeyResult(
-      createdAt: map['createdAt'] as String,
-      createdBy: map['createdBy'] as String,
-      deletedAt: map['deletedAt'] as String,
-      id: map['id'] as String,
-      models: pulumi.Input.decodeList<GetGradientaiOpenaiApiKeyModel>(map['models']!, (value) => GetGradientaiOpenaiApiKeyModel.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      updatedAt: map['updatedAt'] as String,
-      uuid: map['uuid'] as String,
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletedAt: (() { final guardedValue = map['deletedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      models: (() { final guardedValue = map['models']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGradientaiOpenaiApiKeyModel>(guardedValue, (value) => GetGradientaiOpenaiApiKeyModel.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

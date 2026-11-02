@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion {
   /// Major version of the model
-  final pulumi.Input<int>? major;
+  final pulumi.Input<int?>? major;
   /// Minor version of the model
-  final pulumi.Input<int>? minor;
+  final pulumi.Input<int?>? minor;
   /// Patch version of the model
-  final pulumi.Input<int>? patch;
+  final pulumi.Input<int?>? patch;
 
   /// Creates a new [GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion].
   /// [major] Major version of the model
@@ -30,9 +30,9 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion {
 
   factory GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion(
-      major: (() { final guardedValue = map['major']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minor: (() { final guardedValue = map['minor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      patch: (() { final guardedValue = map['patch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      major: (() { final guardedValue = map['major']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minor: (() { final guardedValue = map['minor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      patch: (() { final guardedValue = map['patch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -5,8 +5,8 @@ import 'get_database_user_setting_acl.dart';
 import 'get_database_user_setting_opensearch_acl.dart';
 
 class GetDatabaseUserSetting {
-  final pulumi.Input<List<GetDatabaseUserSettingAcl>>? acls;
-  final pulumi.Input<List<GetDatabaseUserSettingOpensearchAcl>>? opensearchAcls;
+  final pulumi.Input<List<GetDatabaseUserSettingAcl>?>? acls;
+  final pulumi.Input<List<GetDatabaseUserSettingOpensearchAcl>?>? opensearchAcls;
 
   /// Creates a new [GetDatabaseUserSetting].
   /// [acls] Optional.

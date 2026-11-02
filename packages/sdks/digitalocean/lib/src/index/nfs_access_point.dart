@@ -128,7 +128,7 @@ import 'nfs_access_point_state.dart';
 /// 			Region:          pulumi.String("atl1"),
 /// 			Name:            pulumi.String("example-nfs"),
 /// 			Size:            pulumi.Int(50),
-/// 			VpcId:           foobar.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:           foobar.ID(),
 /// 			PerformanceTier: pulumi.String("standard"),
 /// 		})
 /// 		if err != nil {
@@ -136,9 +136,9 @@ import 'nfs_access_point_state.dart';
 /// 		}
 /// 		_, err = digitalocean.NewNfsAccessPoint(ctx, "foobar", &digitalocean.NfsAccessPointArgs{
 /// 			Name:    pulumi.String("example-access-point"),
-/// 			ShareId: foobarNfs.ID().ToIDOutput().ToStringOutput(),
+/// 			ShareId: foobarNfs.ID(),
 /// 			Path:    pulumi.String("/data"),
-/// 			VpcId:   foobar.ID().ToIDOutput().ToStringOutput(),
+/// 			VpcId:   foobar.ID(),
 /// 			AccessPolicy: &digitalocean.NfsAccessPointAccessPolicyArgs{
 /// 				Anonuid: pulumi.Int(65534),
 /// 				Anongid: pulumi.Int(65534),
@@ -157,7 +157,7 @@ import 'nfs_access_point_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -166,22 +166,31 @@ import 'nfs_access_point_state.dart';
 /// }
 ///
 /// resource "digitalocean_vpc" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example-vpc"
 ///   region = "atl1"
 /// }
 /// resource "digitalocean_nfs" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region           = "atl1"
 ///   name             = "example-nfs"
 ///   size             = 50
 ///   vpc_id           = digitalocean_vpc.foobar.id
 ///   performance_tier = "standard"
 /// }
-/// resource "digitalocean_nfsaccesspoint" "foobar" {
+/// resource "digitalocean_nfs_access_point" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-access-point"
 ///   share_id = digitalocean_nfs.foobar.id
 ///   path     = "/data"
 ///   vpc_id   = digitalocean_vpc.foobar.id
-///   access_policy = {
+///   access_policy {
 ///     anonuid                      = 65534
 ///     anongid                      = 65534
 ///     protocols                    = ["NFS4"]
@@ -319,7 +328,7 @@ class NfsAccessPoint extends pulumi.CustomResource {
           'digitalocean:index/nfsAccessPoint:NfsAccessPoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.2').merge(options),
         ) {
     accessPolicy = registerOutput<NfsAccessPointAccessPolicy>('accessPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NfsAccessPointAccessPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
@@ -337,11 +346,12 @@ class NfsAccessPoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NfsAccessPointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NfsAccessPoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -355,6 +365,26 @@ class NfsAccessPoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessPolicy = registerOutput<NfsAccessPointAccessPolicy>('accessPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NfsAccessPointAccessPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdAt = registerOutput<String>('createdAt');
+    isDefault = registerOutput<bool>('isDefault');
+    this.name = registerOutput<String>('name');
+    path = registerOutput<String>('path');
+    shareId = registerOutput<String>('shareId');
+    status = registerOutput<String>('status');
+    updatedAt = registerOutput<String>('updatedAt');
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [NfsAccessPoint] resource.
+  NfsAccessPoint.reference(String urn)
+    : super(
+        'digitalocean:index/nfsAccessPoint:NfsAccessPoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessPolicy = registerOutput<NfsAccessPointAccessPolicy>('accessPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NfsAccessPointAccessPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
     isDefault = registerOutput<bool>('isDefault');

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterMaintenancePolicy {
   /// The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
-  final pulumi.Input<String>? day;
+  final pulumi.Input<String?>? day;
   /// A string denoting the duration of the service window, e.g., "04:00".
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [KubernetesClusterMaintenancePolicy].
   /// [day] The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.

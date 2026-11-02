@@ -13,26 +13,26 @@ import 'get_app_spec_function_route.dart';
 
 class GetAppSpecFunction {
   /// Describes an alert policy for the component.
-  final pulumi.Input<List<GetAppSpecFunctionAlert>>? alerts;
+  final pulumi.Input<List<GetAppSpecFunctionAlert>?>? alerts;
   /// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
-  final pulumi.Input<GetAppSpecFunctionBitbucket>? bitbucket;
+  final pulumi.Input<GetAppSpecFunctionBitbucket?>? bitbucket;
   /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-  final pulumi.Input<GetAppSpecFunctionCors>? cors;
+  final pulumi.Input<GetAppSpecFunctionCors?>? cors;
   /// Describes an environment variable made available to an app competent.
-  final pulumi.Input<List<GetAppSpecFunctionEnv>>? envs;
+  final pulumi.Input<List<GetAppSpecFunctionEnv>?>? envs;
   /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
-  final pulumi.Input<GetAppSpecFunctionGit>? git;
+  final pulumi.Input<GetAppSpecFunctionGit?>? git;
   /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-  final pulumi.Input<GetAppSpecFunctionGithub>? github;
+  final pulumi.Input<GetAppSpecFunctionGithub?>? github;
   /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-  final pulumi.Input<GetAppSpecFunctionGitlab>? gitlab;
+  final pulumi.Input<GetAppSpecFunctionGitlab?>? gitlab;
   /// Describes a log forwarding destination.
-  final pulumi.Input<List<GetAppSpecFunctionLogDestination>>? logDestinations;
+  final pulumi.Input<List<GetAppSpecFunctionLogDestination>?>? logDestinations;
   /// The name of the component.
   final pulumi.Input<String> name;
   final pulumi.Input<List<GetAppSpecFunctionRoute>> routes;
   /// An optional path to the working directory to use for the build.
-  final pulumi.Input<String>? sourceDir;
+  final pulumi.Input<String?>? sourceDir;
 
   /// Creates a new [GetAppSpecFunction].
   /// [alerts] Describes an alert policy for the component.

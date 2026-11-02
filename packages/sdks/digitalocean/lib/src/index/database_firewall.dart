@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_firewall_args.dart';
+import 'database_firewall_rule.dart';
 import 'database_firewall_state.dart';
 
 /// Provides a DigitalOcean database firewall resource allowing you to restrict
@@ -121,7 +122,7 @@ import 'database_firewall_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
-/// 			ClusterId: postgres_example.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterId: postgres_example.ID(),
 /// 			Rules: digitalocean.DatabaseFirewallRuleArray{
 /// 				&digitalocean.DatabaseFirewallRuleArgs{
 /// 					Type:  pulumi.String("ip_addr"),
@@ -141,7 +142,7 @@ import 'database_firewall_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -149,18 +150,24 @@ import 'database_firewall_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databasefirewall" "example-fw" {
-///   cluster_id = digitalocean_databasecluster.postgres-example.id
-///   rules {
+/// resource "digitalocean_database_firewall" "example-fw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id = digitalocean_database_cluster.postgres-example.id
+///   rule {
 ///     type  = "ip_addr"
 ///     value = "192.168.1.1"
 ///   }
-///   rules {
+///   rule {
 ///     type  = "ip_addr"
 ///     value = "192.0.2.0"
 ///   }
 /// }
-/// resource "digitalocean_databasecluster" "postgres-example" {
+/// resource "digitalocean_database_cluster" "postgres-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-postgres-cluster"
 ///   engine     = "pg"
 ///   version    = "15"
@@ -365,11 +372,11 @@ import 'database_firewall_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
-/// 			ClusterId: postgres_example.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterId: postgres_example.ID(),
 /// 			Rules: digitalocean.DatabaseFirewallRuleArray{
 /// 				&digitalocean.DatabaseFirewallRuleArgs{
 /// 					Type:  pulumi.String("droplet"),
-/// 					Value: web.ID().ToIDOutput().ToStringOutput(),
+/// 					Value: web.ID(),
 /// 				},
 /// 			},
 /// 		})
@@ -381,7 +388,7 @@ import 'database_firewall_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -389,20 +396,29 @@ import 'database_firewall_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databasefirewall" "example-fw" {
-///   cluster_id = digitalocean_databasecluster.postgres-example.id
-///   rules {
+/// resource "digitalocean_database_firewall" "example-fw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id = digitalocean_database_cluster.postgres-example.id
+///   rule {
 ///     type  = "droplet"
 ///     value = digitalocean_droplet.web.id
 ///   }
 /// }
 /// resource "digitalocean_droplet" "web" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "web-01"
 ///   size   = "s-1vcpu-1gb"
 ///   image  = "ubuntu-22-04-x64"
 ///   region = "nyc3"
 /// }
-/// resource "digitalocean_databasecluster" "postgres-example" {
+/// resource "digitalocean_database_cluster" "postgres-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-postgres-cluster"
 ///   engine     = "pg"
 ///   version    = "15"
@@ -610,7 +626,7 @@ import 'database_firewall_state.dart';
 /// 			return err
 /// 		}
 /// 		replica_example, err := digitalocean.NewDatabaseReplica(ctx, "replica-example", &digitalocean.DatabaseReplicaArgs{
-/// 			ClusterId: postgres_example.ID().ToIDOutput().ToStringOutput(),
+/// 			ClusterId: postgres_example.ID(),
 /// 			Name:      pulumi.String("replica-example"),
 /// 			Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 /// 			Region:    pulumi.String(digitalocean.RegionNYC1),
@@ -636,7 +652,7 @@ import 'database_firewall_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -644,7 +660,10 @@ import 'database_firewall_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databasecluster" "postgres-example" {
+/// resource "digitalocean_database_cluster" "postgres-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-postgres-cluster"
 ///   engine     = "pg"
 ///   version    = "15"
@@ -652,16 +671,22 @@ import 'database_firewall_state.dart';
 ///   region     = "nyc1"
 ///   node_count = 1
 /// }
-/// resource "digitalocean_databasereplica" "replica-example" {
-///   cluster_id = digitalocean_databasecluster.postgres-example.id
+/// resource "digitalocean_database_replica" "replica-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id = digitalocean_database_cluster.postgres-example.id
 ///   name       = "replica-example"
 ///   size       = "db-s-1vcpu-1gb"
 ///   region     = "nyc1"
 /// }
 /// # Create firewall rule for database replica
-/// resource "digitalocean_databasefirewall" "example-fw" {
-///   cluster_id = digitalocean_databasereplica.replica-example.uuid
-///   rules {
+/// resource "digitalocean_database_firewall" "example-fw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id = digitalocean_database_replica.replica-example.uuid
+///   rule {
 ///     type  = "ip_addr"
 ///     value = "192.168.1.1"
 ///   }
@@ -762,7 +787,7 @@ class DatabaseFirewall extends pulumi.CustomResource {
   /// The ID of the target database cluster.
   late final pulumi.Output<String> clusterId;
   /// A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<DatabaseFirewallRule>> rules;
 
   /// Creates a new [DatabaseFirewall].
   /// [name] The Pulumi resource name.
@@ -776,10 +801,10 @@ class DatabaseFirewall extends pulumi.CustomResource {
           'digitalocean:index/databaseFirewall:DatabaseFirewall',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.2').merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<DatabaseFirewallRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseFirewallRule>(guardedValue, (value) => DatabaseFirewallRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [DatabaseFirewall] resource's state with the given [name] and [id].
@@ -787,11 +812,12 @@ class DatabaseFirewall extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseFirewallState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseFirewall._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -806,6 +832,19 @@ class DatabaseFirewall extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     clusterId = registerOutput<String>('clusterId');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<DatabaseFirewallRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseFirewallRule>(guardedValue, (value) => DatabaseFirewallRule.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DatabaseFirewall] resource.
+  DatabaseFirewall.reference(String urn)
+    : super(
+        'digitalocean:index/databaseFirewall:DatabaseFirewall',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterId = registerOutput<String>('clusterId');
+    rules = registerOutput<List<DatabaseFirewallRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseFirewallRule>(guardedValue, (value) => DatabaseFirewallRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

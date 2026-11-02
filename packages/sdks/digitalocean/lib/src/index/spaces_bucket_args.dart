@@ -11,19 +11,19 @@ import 'spaces_bucket_versioning.dart';
 /// {@macro pulumi_index_spaces_bucket_spaces_bucket_args_doc}
 class SpacesBucketArgs {
   /// Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
-  final pulumi.Input<String>? acl;
+  final pulumi.Input<String?>? acl;
   /// A rule of Cross-Origin Resource Sharing (documented below).
-  final pulumi.Input<List<SpacesBucketCorsRule>>? corsRules;
+  final pulumi.Input<List<SpacesBucketCorsRule>?>? corsRules;
   /// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// A configuration of object lifecycle management (documented below).
-  final pulumi.Input<List<SpacesBucketLifecycleRule>>? lifecycleRules;
+  final pulumi.Input<List<SpacesBucketLifecycleRule>?>? lifecycleRules;
   /// The name of the bucket
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The region where the bucket resides (Defaults to `nyc3`)
-  final pulumi.Input<String>? region;
+  final pulumi.Input<dynamic>? region;
   /// A state of versioning (documented below)
-  final pulumi.Input<SpacesBucketVersioning>? versioning;
+  final pulumi.Input<SpacesBucketVersioning?>? versioning;
 
   /// Creates a new [SpacesBucketArgs].
   /// [acl] Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
@@ -62,7 +62,7 @@ class SpacesBucketArgs {
       forceDestroy: (() { final guardedValue = map['forceDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       lifecycleRules: (() { final guardedValue = map['lifecycleRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SpacesBucketLifecycleRule>(guardedValue, (value) => SpacesBucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       versioning: (() { final guardedValue = map['versioning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SpacesBucketVersioning.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -11,37 +11,37 @@ import 'app_spec_static_site_route.dart';
 
 class AppSpecStaticSite {
   /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-  final pulumi.Input<AppSpecStaticSiteBitbucket>? bitbucket;
+  final pulumi.Input<AppSpecStaticSiteBitbucket?>? bitbucket;
   /// An optional build command to run while building this component from source.
-  final pulumi.Input<String>? buildCommand;
+  final pulumi.Input<String?>? buildCommand;
   /// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
-  final pulumi.Input<String>? catchallDocument;
+  final pulumi.Input<String?>? catchallDocument;
   /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-  final pulumi.Input<AppSpecStaticSiteCors>? cors;
+  final pulumi.Input<AppSpecStaticSiteCors?>? cors;
   /// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
-  final pulumi.Input<String>? dockerfilePath;
+  final pulumi.Input<String?>? dockerfilePath;
   /// An environment slug describing the type of this app.
-  final pulumi.Input<String>? environmentSlug;
+  final pulumi.Input<String?>? environmentSlug;
   /// Describes an environment variable made available to an app competent.
-  final pulumi.Input<List<AppSpecStaticSiteEnv>>? envs;
+  final pulumi.Input<List<AppSpecStaticSiteEnv>?>? envs;
   /// The name of the error document to use when serving this static site.
-  final pulumi.Input<String>? errorDocument;
+  final pulumi.Input<String?>? errorDocument;
   /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
-  final pulumi.Input<AppSpecStaticSiteGit>? git;
+  final pulumi.Input<AppSpecStaticSiteGit?>? git;
   /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-  final pulumi.Input<AppSpecStaticSiteGithub>? github;
+  final pulumi.Input<AppSpecStaticSiteGithub?>? github;
   /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-  final pulumi.Input<AppSpecStaticSiteGitlab>? gitlab;
+  final pulumi.Input<AppSpecStaticSiteGitlab?>? gitlab;
   /// The name of the index document to use when serving this static site.
-  final pulumi.Input<String>? indexDocument;
+  final pulumi.Input<String?>? indexDocument;
   /// The name of the component.
   final pulumi.Input<String> name;
   /// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
-  final pulumi.Input<String>? outputDir;
+  final pulumi.Input<String?>? outputDir;
   /// An HTTP paths that should be routed to this component.
-  final pulumi.Input<List<AppSpecStaticSiteRoute>>? routes;
+  final pulumi.Input<List<AppSpecStaticSiteRoute>?>? routes;
   /// An optional path to the working directory to use for the build.
-  final pulumi.Input<String>? sourceDir;
+  final pulumi.Input<String?>? sourceDir;
 
   /// Creates a new [AppSpecStaticSite].
   /// [bitbucket] A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.

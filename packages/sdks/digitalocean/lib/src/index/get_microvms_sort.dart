@@ -1,0 +1,34 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+class GetMicrovmsSort {
+  /// The sort direction. This may be either `asc` or `desc`.
+  final pulumi.Input<String?>? direction;
+  /// Sort the MicroVMs by this key. This may be one of `id`,
+  /// `name`, `region`, `networking`, `httpProtocol`, `currentState`,
+  /// `autoResume`, `urn`, or `createdAt`.
+  final pulumi.Input<String> key;
+
+  /// Creates a new [GetMicrovmsSort].
+  /// [direction] The sort direction. This may be either `asc` or `desc`.
+  /// [key] Sort the MicroVMs by this key. This may be one of `id`,
+  const GetMicrovmsSort({
+    this.direction,
+    required this.key,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'direction': ?direction,
+      'key': key,
+    };
+  }
+
+  factory GetMicrovmsSort.fromMap(Map<String, dynamic> map) {
+    return GetMicrovmsSort(
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+    );
+  }
+}

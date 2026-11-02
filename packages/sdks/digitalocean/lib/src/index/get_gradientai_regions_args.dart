@@ -9,8 +9,8 @@ import 'get_gradientai_regions_sort.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_gradientai_regions_get_gradientai_regions_args_doc}
 class GetGradientaiRegionsArgs {
-  final pulumi.Input<List<GetGradientaiRegionsFilter>>? filters;
-  final pulumi.Input<List<GetGradientaiRegionsSort>>? sorts;
+  final pulumi.Input<List<GetGradientaiRegionsFilter>?>? filters;
+  final pulumi.Input<List<GetGradientaiRegionsSort>?>? sorts;
 
   /// Creates a new [GetGradientaiRegionsArgs].
   /// [filters] Optional.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_args.dart';
+import 'app_dedicated_ip.dart';
 import 'app_spec.dart';
 import 'app_state.dart';
 
@@ -116,7 +117,7 @@ import 'app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -125,18 +126,21 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "digitalocean_app" "golang-sample" {
-///   spec = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
 ///     name   = "golang-sample"
 ///     region = "ams"
-///     services = [{
-///       "name"             = "go-service"
-///       "instanceCount"    = 1
-///       "instanceSizeSlug" = "apps-s-1vcpu-1gb"
-///       "git" = {
-///         "repoCloneUrl" = "https://github.com/digitalocean/sample-golang.git"
-///         "branch"       = "main"
+///     service {
+///       name               = "go-service"
+///       instance_count     = 1
+///       instance_size_slug = "apps-s-1vcpu-1gb"
+///       git {
+///         repo_clone_url = "https://github.com/digitalocean/sample-golang.git"
+///         branch         = "main"
 ///       }
-///     }]
+///     }
 ///   }
 /// }
 /// ```
@@ -308,7 +312,7 @@ import 'app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -317,18 +321,21 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "digitalocean_app" "static-site-example" {
-///   spec = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
 ///     name   = "static-site-example"
 ///     region = "ams"
-///     static_sites = [{
-///       "name"         = "sample-jekyll"
-///       "buildCommand" = "bundle exec jekyll build -d ./public"
-///       "outputDir"    = "/public"
-///       "git" = {
-///         "repoCloneUrl" = "https://github.com/digitalocean/sample-jekyll.git"
-///         "branch"       = "main"
+///     static_site {
+///       name          = "sample-jekyll"
+///       build_command = "bundle exec jekyll build -d ./public"
+///       output_dir    = "/public"
+///       git {
+///         repo_clone_url = "https://github.com/digitalocean/sample-jekyll.git"
+///         branch         = "main"
 ///       }
-///     }]
+///     }
 ///   }
 /// }
 /// ```
@@ -397,7 +404,7 @@ import 'app_state.dart';
 ///
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -406,92 +413,96 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "digitalocean_app" "mono-repo-example" {
-///   spec = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
 ///     name   = "mono-repo-example"
 ///     region = "ams"
 ///     domains = [{
 ///       "name" = "foo.example.com"
 ///     }]
-///     alerts = [{
-///       "rule" = "DEPLOYMENT_FAILED"
-///       "destinations" = {
-///         "emails" = ["team.member1@org.com", "team.member2@org.com"]
-///         "slackWebhooks" = [{
-///           "channel" = "@user1"
-///           "url"     = "https://hooks.slack.com/slack-url"
-///         }]
+///     alert {
+///       rule = "DEPLOYMENT_FAILED"
+///       destinations {
+///         emails = ["team.member1@org.com", "team.member2@org.com"]
+///         slack_webhooks {
+///           channel = "@user1"
+///           url     = "https://hooks.slack.com/slack-url"
+///         }
 ///       }
-///     }]
-///     services = [{
-///       "name"             = "go-api"
-///       "instanceCount"    = 2
-///       "instanceSizeSlug" = "apps-s-1vcpu-1gb"
-///       "github" = {
-///         "branch"       = "main"
-///         "deployOnPush" = true
-///         "repo"         = "username/repo"
-///       }
-///       "sourceDir" = "api/"
-///       "httpPort"  = 3000
-///       "alerts" = [{
-///         "value"    = 75
-///         "operator" = "GREATER_THAN"
-///         "window"   = "TEN_MINUTES"
-///         "rule"     = "CPU_UTILIZATION"
-///         "destinations" = {
-///           "emails" = ["team.member1@org.com", "team.member2@org.com"]
-///           "slackWebhooks" = [{
-///             "channel" = "@user1"
-///             "url"     = "https://hooks.slack.com/slack-url"
-///           }]
-///         }
-///       }]
-///       "logDestinations" = [{
-///         "name" = "MyLogs"
-///         "papertrail" = {
-///           "endpoint" = "syslog+tls://example.com:12345"
-///         }
-///       }]
-///       "runCommand" = "bin/api"
-///     }]
-///     static_sites = [{
-///       "name"         = "web"
-///       "buildCommand" = "npm run build"
-///       "bitbucket" = {
-///         "branch"       = "main"
-///         "deployOnPush" = true
-///         "repo"         = "username/repo"
-///       }
-///     }]
-///     databases = [{
-///       "name"       = "starter-db"
-///       "engine"     = "PG"
-///       "production" = false
-///     }]
-///     ingress = {
-///       rules = [{
-///         "component" = {
-///           "name" = "api"
-///         }
-///         "match" = {
-///           "path" = {
-///             "prefix" = "/api"
-///           }
-///         }
-///         }, {
-///         "component" = {
-///           "name" = "web"
-///         }
-///         "match" = {
-///           "path" = {
-///             "prefix" = "/"
-///           }
-///         }
-///       }]
 ///     }
-///     vpcs = [{
-///       "id" = "c22d8f48-4bc4-49f5-8ca0-58e7164427ac"
-///     }]
+///     service {
+///       name               = "go-api"
+///       instance_count     = 2
+///       instance_size_slug = "apps-s-1vcpu-1gb"
+///       github {
+///         branch         = "main"
+///         deploy_on_push = true
+///         repo           = "username/repo"
+///       }
+///       source_dir = "api/"
+///       http_port  = 3000
+///       alert {
+///         value    = 75
+///         operator = "GREATER_THAN"
+///         window   = "TEN_MINUTES"
+///         rule     = "CPU_UTILIZATION"
+///         destinations {
+///           emails = ["team.member1@org.com", "team.member2@org.com"]
+///           slack_webhooks {
+///             channel = "@user1"
+///             url     = "https://hooks.slack.com/slack-url"
+///           }
+///         }
+///       }
+///       log_destination {
+///         name = "MyLogs"
+///         papertrail {
+///           endpoint = "syslog+tls://example.com:12345"
+///         }
+///       }
+///       run_command = "bin/api"
+///     }
+///     static_site {
+///       name          = "web"
+///       build_command = "npm run build"
+///       bitbucket {
+///         branch         = "main"
+///         deploy_on_push = true
+///         repo           = "username/repo"
+///       }
+///     }
+///     database {
+///       name       = "starter-db"
+///       engine     = "PG"
+///       production = false
+///     }
+///     ingress {
+///       rule {
+///         component {
+///           name = "api"
+///         }
+///         match {
+///           path {
+///             prefix = "/api"
+///           }
+///         }
+///       }
+///       rule {
+///         component {
+///           name = "web"
+///         }
+///         match {
+///           path {
+///             prefix = "/"
+///           }
+///         }
+///       }
+///     }
+///     vpc {
+///       id = "c22d8f48-4bc4-49f5-8ca0-58e7164427ac"
+///     }
 ///   }
 /// }
 /// ```
@@ -724,7 +735,7 @@ import 'app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -733,28 +744,31 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "digitalocean_app" "golang-sample" {
-///   spec = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
 ///     name   = "golang-sample"
 ///     region = "ams"
-///     services = [{
-///       "name"             = "go-service"
-///       "instanceCount"    = 1
-///       "instanceSizeSlug" = "apps-s-1vcpu-1gb"
-///       "git" = {
-///         "repoCloneUrl" = "https://github.com/digitalocean/sample-golang.git"
-///         "branch"       = "main"
+///     service {
+///       name               = "go-service"
+///       instance_count     = 1
+///       instance_size_slug = "apps-s-1vcpu-1gb"
+///       git {
+///         repo_clone_url = "https://github.com/digitalocean/sample-golang.git"
+///         branch         = "main"
 ///       }
-///       "logDestinations" = [{
-///         "name" = "MyLogs"
-///         "openSearch" = {
-///           "endpoint" = "https://something:1234"
-///           "basicAuth" = {
-///             "user"     = "user"
-///             "password" = "hi"
+///       log_destination {
+///         name = "MyLogs"
+///         open_search {
+///           endpoint = "https://something:1234"
+///           basic_auth {
+///             user     = "user"
+///             password = "hi"
 ///           }
 ///         }
-///       }]
-///     }]
+///       }
+///     }
 ///   }
 /// }
 /// ```
@@ -958,7 +972,7 @@ import 'app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -967,21 +981,24 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "digitalocean_app" "golang-sample" {
-///   spec = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
 ///     name                            = "golang-sample"
 ///     region                          = "ams"
 ///     disable_edge_cache              = true
 ///     disable_email_obfuscation       = false
 ///     enhanced_threat_control_enabled = true
-///     services = [{
-///       "name"             = "go-service"
-///       "instanceCount"    = 1
-///       "instanceSizeSlug" = "apps-s-1vcpu-1gb"
-///       "git" = {
-///         "repoCloneUrl" = "https://github.com/digitalocean/sample-golang.git"
-///         "branch"       = "main"
+///     service {
+///       name               = "go-service"
+///       instance_count     = 1
+///       instance_size_slug = "apps-s-1vcpu-1gb"
+///       git {
+///         repo_clone_url = "https://github.com/digitalocean/sample-golang.git"
+///         branch         = "main"
 ///       }
-///     }]
+///     }
 ///   }
 /// }
 /// ```
@@ -1176,7 +1193,7 @@ import 'app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -1185,22 +1202,25 @@ import 'app_state.dart';
 /// }
 ///
 /// resource "digitalocean_app" "maintenance-example" {
-///   spec = {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   spec {
 ///     name   = "maintenance-example"
 ///     region = "ams"
-///     maintenance = {
+///     maintenance {
 ///       enabled          = true
 ///       offline_page_url = "https://example.com/maintenance.html"
 ///     }
-///     services = [{
-///       "name"             = "go-service"
-///       "instanceCount"    = 1
-///       "instanceSizeSlug" = "apps-s-1vcpu-1gb"
-///       "git" = {
-///         "repoCloneUrl" = "https://github.com/digitalocean/sample-golang.git"
-///         "branch"       = "main"
+///     service {
+///       name               = "go-service"
+///       instance_count     = 1
+///       instance_size_slug = "apps-s-1vcpu-1gb"
+///       git {
+///         repo_clone_url = "https://github.com/digitalocean/sample-golang.git"
+///         branch         = "main"
 ///       }
-///     }]
+///     }
 ///   }
 /// }
 /// ```
@@ -1288,7 +1308,7 @@ class App extends pulumi.CustomResource {
   /// The date and time of when the app was created.
   late final pulumi.Output<String> createdAt;
   /// The dedicated egress IP addresses associated with the app.
-  late final pulumi.Output<List<Map<String, dynamic>>> dedicatedIps;
+  late final pulumi.Output<List<AppDedicatedIp>> dedicatedIps;
   /// The default URL to access the app.
   late final pulumi.Output<String> defaultIngress;
   /// (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
@@ -1320,12 +1340,12 @@ class App extends pulumi.CustomResource {
           'digitalocean:index/app:App',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.2').merge(options),
         ) {
     activeDeploymentId = registerOutput<String>('activeDeploymentId');
     appUrn = registerOutput<String>('appUrn');
     createdAt = registerOutput<String>('createdAt');
-    dedicatedIps = registerOutput<List<Map<String, dynamic>>>('dedicatedIps');
+    dedicatedIps = registerOutput<List<AppDedicatedIp>>('dedicatedIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppDedicatedIp>(guardedValue, (value) => AppDedicatedIp.fromMap((value as Map).cast<String, dynamic>())); });
     defaultIngress = registerOutput<String>('defaultIngress');
     deploymentPerPage = registerOutput<int?>('deploymentPerPage');
     liveDomain = registerOutput<String>('liveDomain');
@@ -1340,11 +1360,12 @@ class App extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return App._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1361,7 +1382,29 @@ class App extends pulumi.CustomResource {
     activeDeploymentId = registerOutput<String>('activeDeploymentId');
     appUrn = registerOutput<String>('appUrn');
     createdAt = registerOutput<String>('createdAt');
-    dedicatedIps = registerOutput<List<Map<String, dynamic>>>('dedicatedIps');
+    dedicatedIps = registerOutput<List<AppDedicatedIp>>('dedicatedIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppDedicatedIp>(guardedValue, (value) => AppDedicatedIp.fromMap((value as Map).cast<String, dynamic>())); });
+    defaultIngress = registerOutput<String>('defaultIngress');
+    deploymentPerPage = registerOutput<int?>('deploymentPerPage');
+    liveDomain = registerOutput<String>('liveDomain');
+    liveUrl = registerOutput<String>('liveUrl');
+    projectId = registerOutput<String>('projectId');
+    spec = registerOutput<AppSpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updatedAt = registerOutput<String>('updatedAt');
+  }
+
+  /// Creates a typed reference to an existing [App] resource.
+  App.reference(String urn)
+    : super(
+        'digitalocean:index/app:App',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activeDeploymentId = registerOutput<String>('activeDeploymentId');
+    appUrn = registerOutput<String>('appUrn');
+    createdAt = registerOutput<String>('createdAt');
+    dedicatedIps = registerOutput<List<AppDedicatedIp>>('dedicatedIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppDedicatedIp>(guardedValue, (value) => AppDedicatedIp.fromMap((value as Map).cast<String, dynamic>())); });
     defaultIngress = registerOutput<String>('defaultIngress');
     deploymentPerPage = registerOutput<int?>('deploymentPerPage');
     liveDomain = registerOutput<String>('liveDomain');

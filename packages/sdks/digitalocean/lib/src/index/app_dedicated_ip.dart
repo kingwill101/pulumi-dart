@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppDedicatedIp {
   /// The ID of the app.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The IP address of the dedicated egress IP.
-  final pulumi.Input<String>? ip;
+  final pulumi.Input<String?>? ip;
   /// The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [AppDedicatedIp].
   /// [id] The ID of the app.

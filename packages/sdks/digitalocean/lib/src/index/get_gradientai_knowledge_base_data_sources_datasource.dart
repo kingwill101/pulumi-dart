@@ -10,17 +10,17 @@ class GetGradientaiKnowledgeBaseDataSourcesDatasource {
   /// Created At timestamp for the Knowledge Base
   final pulumi.Input<String> createdAt;
   /// File upload data source configuration
-  final pulumi.Input<List<GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource>>? fileUploadDataSources;
+  final pulumi.Input<List<GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource>?>? fileUploadDataSources;
   /// Last indexing job for the data source
-  final pulumi.Input<List<GetGradientaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob>>? lastIndexingJobs;
+  final pulumi.Input<List<GetGradientaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob>?>? lastIndexingJobs;
   /// Spaces data source configuration
-  final pulumi.Input<List<GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource>>? spacesDataSources;
+  final pulumi.Input<List<GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource>?>? spacesDataSources;
   /// Timestamp when the Knowledge Base was updated
   final pulumi.Input<String> updatedAt;
   /// UUID of the Knowledge Base
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
   /// Web crawler data source configuration
-  final pulumi.Input<List<GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource>>? webCrawlerDataSources;
+  final pulumi.Input<List<GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource>?>? webCrawlerDataSources;
 
   /// Creates a new [GetGradientaiKnowledgeBaseDataSourcesDatasource].
   /// [createdAt] Created At timestamp for the Knowledge Base

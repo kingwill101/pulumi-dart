@@ -18,11 +18,11 @@ class MonitorAlertArgs {
   /// The description of the alert.
   final pulumi.Input<String> description;
   /// The status of the alert.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// A list of IDs for the resources to which the alert policy applies.
-  final pulumi.Input<List<String>>? entities;
+  final pulumi.Input<List<String>?>? entities;
   /// A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// The type of the alert.
   /// This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
   /// `v1/insights/droplet/memory_utilization_percent`, `v1/insights/droplet/disk_utilization_percent`,
@@ -89,7 +89,7 @@ class MonitorAlertArgs {
       entities: (() { final guardedValue = map['entities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      value: pulumi.Input.fromValue(map['value'] as double),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
       window: pulumi.Input.fromValue(map['window'] as String),
     );
   }

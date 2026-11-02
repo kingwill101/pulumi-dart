@@ -29,7 +29,7 @@ class ReservedIpv6AssignmentArgs {
 
   factory ReservedIpv6AssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ReservedIpv6AssignmentArgs(
-      dropletId: pulumi.Input.fromValue(map['dropletId'] as int),
+      dropletId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dropletId'])),
       ip: pulumi.Input.fromValue(map['ip'] as String),
     );
   }

@@ -7,11 +7,11 @@ class GetAppSpecServiceLogDestinationOpenSearch {
   /// OpenSearch basic auth
   final pulumi.Input<GetAppSpecServiceLogDestinationOpenSearchBasicAuth> basicAuth;
   /// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://&lt;host&gt;:&lt;port&gt;.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The index name to use for the logs. If not set, the default index name is `logs`.
-  final pulumi.Input<String>? indexName;
+  final pulumi.Input<String?>? indexName;
 
   /// Creates a new [GetAppSpecServiceLogDestinationOpenSearch].
   /// [basicAuth] OpenSearch basic auth

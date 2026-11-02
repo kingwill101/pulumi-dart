@@ -16,7 +16,7 @@ class DropletAutoscaleArgs {
   /// are documented below.
   final pulumi.Input<DropletAutoscaleDropletTemplate> dropletTemplate;
   /// The name of the Droplet Autoscale pool.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DropletAutoscaleArgs].
   /// [config] The configuration parameters for Droplet Autoscale pool, the supported arguments are
