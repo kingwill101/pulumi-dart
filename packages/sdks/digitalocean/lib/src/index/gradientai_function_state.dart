@@ -4,32 +4,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering GradientaiFunction resources.
 class GradientaiFunctionState {
-  /// The name of the GradientAI resource.
-  final pulumi.Input<String>? agentId;
-  /// The region where the GradientAI resource will be created.
-  final pulumi.Input<String>? description;
-  /// The model to use for the GradientAI resource.
-  final pulumi.Input<String>? faasName;
-  /// The current status of the GradientAI resource.
-  final pulumi.Input<String>? faasNamespace;
-  /// The creation timestamp of the GradientAI resource.
-  final pulumi.Input<String>? functionName;
-  /// The unique identifier of the GradientAI function.
-  final pulumi.Input<String>? functionUuid;
-  /// The input schema of the GradientAI resource.
-  final pulumi.Input<String>? inputSchema;
-  /// The output schema of the GradientAI resource.
-  final pulumi.Input<String>? outputSchema;
+  /// The name of the Agent Platform resource.
+  final pulumi.Input<String?>? agentId;
+  /// The region where the Agent Platform resource will be created.
+  final pulumi.Input<String?>? description;
+  /// The model to use for the Agent Platform resource.
+  final pulumi.Input<String?>? faasName;
+  /// The current status of the Agent Platform resource.
+  final pulumi.Input<String?>? faasNamespace;
+  /// The creation timestamp of the Agent Platform resource.
+  final pulumi.Input<String?>? functionName;
+  /// The unique identifier of the Agent Platform function.
+  final pulumi.Input<String?>? functionUuid;
+  /// The input schema of the Agent Platform resource.
+  final pulumi.Input<String?>? inputSchema;
+  /// The output schema of the Agent Platform resource.
+  final pulumi.Input<String?>? outputSchema;
 
   /// Creates a new [GradientaiFunctionState].
-  /// [agentId] The name of the GradientAI resource.
-  /// [description] The region where the GradientAI resource will be created.
-  /// [faasName] The model to use for the GradientAI resource.
-  /// [faasNamespace] The current status of the GradientAI resource.
-  /// [functionName] The creation timestamp of the GradientAI resource.
-  /// [functionUuid] The unique identifier of the GradientAI function.
-  /// [inputSchema] The input schema of the GradientAI resource.
-  /// [outputSchema] The output schema of the GradientAI resource.
+  /// [agentId] The name of the Agent Platform resource.
+  /// [description] The region where the Agent Platform resource will be created.
+  /// [faasName] The model to use for the Agent Platform resource.
+  /// [faasNamespace] The current status of the Agent Platform resource.
+  /// [functionName] The creation timestamp of the Agent Platform resource.
+  /// [functionUuid] The unique identifier of the Agent Platform function.
+  /// [inputSchema] The input schema of the Agent Platform resource.
+  /// [outputSchema] The output schema of the Agent Platform resource.
   const GradientaiFunctionState({
     this.agentId,
     this.description,

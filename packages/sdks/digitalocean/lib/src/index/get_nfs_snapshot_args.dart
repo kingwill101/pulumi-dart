@@ -7,10 +7,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_nfs_snapshot_get_nfs_snapshot_args_doc}
 class GetNfsSnapshotArgs {
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? nameRegex;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? nameRegex;
   /// The region where the NFS snapshot is located.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   final pulumi.Input<String> shareId;
 
   /// Creates a new [GetNfsSnapshotArgs].

@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabasePostgresqlConfigTimescaledb {
-  final pulumi.Input<int>? maxBackgroundWorkers;
+  final pulumi.Input<int?>? maxBackgroundWorkers;
 
   /// Creates a new [DatabasePostgresqlConfigTimescaledb].
   /// [maxBackgroundWorkers] Optional.
@@ -19,7 +19,7 @@ class DatabasePostgresqlConfigTimescaledb {
 
   factory DatabasePostgresqlConfigTimescaledb.fromMap(Map<String, dynamic> map) {
     return DatabasePostgresqlConfigTimescaledb(
-      maxBackgroundWorkers: (() { final guardedValue = map['maxBackgroundWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxBackgroundWorkers: (() { final guardedValue = map['maxBackgroundWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

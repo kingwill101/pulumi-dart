@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DropletBackupPolicy {
   /// The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
-  final pulumi.Input<int>? hour;
+  final pulumi.Input<int?>? hour;
   /// The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
-  final pulumi.Input<String>? plan;
+  final pulumi.Input<String?>? plan;
   /// The day of the week on which the backup will occur (`SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`).
-  final pulumi.Input<String>? weekday;
+  final pulumi.Input<String?>? weekday;
 
   /// Creates a new [DropletBackupPolicy].
   /// [hour] The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
@@ -30,7 +30,7 @@ class DropletBackupPolicy {
 
   factory DropletBackupPolicy.fromMap(Map<String, dynamic> map) {
     return DropletBackupPolicy(
-      hour: (() { final guardedValue = map['hour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      hour: (() { final guardedValue = map['hour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       weekday: (() { final guardedValue = map['weekday']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

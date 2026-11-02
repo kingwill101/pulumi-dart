@@ -5,34 +5,34 @@ import 'get_gradientai_knowledge_base_data_sources_datasource.dart';
 
 /// Result data returned by getGradientaiKnowledgeBaseDataSources.
 class GetGradientaiKnowledgeBaseDataSourcesResult {
-  final List<GetGradientaiKnowledgeBaseDataSourcesDatasource> datasources;
+  final List<GetGradientaiKnowledgeBaseDataSourcesDatasource>? datasources;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String knowledgeBaseUuid;
+  final String? id;
+  final String? knowledgeBaseUuid;
 
   /// Creates a new [GetGradientaiKnowledgeBaseDataSourcesResult].
-  /// [datasources] Required.
+  /// [datasources] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [knowledgeBaseUuid] Required.
+  /// [knowledgeBaseUuid] Optional.
   const GetGradientaiKnowledgeBaseDataSourcesResult({
-    required this.datasources,
-    required this.id,
-    required this.knowledgeBaseUuid,
+    this.datasources,
+    this.id,
+    this.knowledgeBaseUuid,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'datasources': pulumi.Input.encodeList<GetGradientaiKnowledgeBaseDataSourcesDatasource, Map<String, dynamic>>(datasources, (value) => value.toMap()),
-      'id': id,
-      'knowledgeBaseUuid': knowledgeBaseUuid,
+      'datasources': ?(() { final guardedValue = datasources; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGradientaiKnowledgeBaseDataSourcesDatasource, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'knowledgeBaseUuid': ?knowledgeBaseUuid,
     };
   }
 
   factory GetGradientaiKnowledgeBaseDataSourcesResult.fromMap(Map<String, dynamic> map) {
     return GetGradientaiKnowledgeBaseDataSourcesResult(
-      datasources: pulumi.Input.decodeList<GetGradientaiKnowledgeBaseDataSourcesDatasource>(map['datasources']!, (value) => GetGradientaiKnowledgeBaseDataSourcesDatasource.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      knowledgeBaseUuid: map['knowledgeBaseUuid'] as String,
+      datasources: (() { final guardedValue = map['datasources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGradientaiKnowledgeBaseDataSourcesDatasource>(guardedValue, (value) => GetGradientaiKnowledgeBaseDataSourcesDatasource.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      knowledgeBaseUuid: (() { final guardedValue = map['knowledgeBaseUuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

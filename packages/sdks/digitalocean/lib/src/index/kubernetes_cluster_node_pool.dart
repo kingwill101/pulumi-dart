@@ -6,31 +6,31 @@ import 'kubernetes_cluster_node_pool_taint.dart';
 
 class KubernetesClusterNodePool {
   /// A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
-  final pulumi.Input<int>? actualNodeCount;
+  final pulumi.Input<int?>? actualNodeCount;
   /// Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
-  final pulumi.Input<bool>? autoScale;
+  final pulumi.Input<bool?>? autoScale;
   /// The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
-  final pulumi.Input<String>? gpuPartitionMode;
+  final pulumi.Input<String?>? gpuPartitionMode;
   /// A unique ID that can be used to identify and reference the node.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
-  final pulumi.Input<int>? maxNodes;
+  final pulumi.Input<int?>? maxNodes;
   /// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
-  final pulumi.Input<int>? minNodes;
+  final pulumi.Input<int?>? minNodes;
   /// A name for the node pool.
   final pulumi.Input<String> name;
   /// The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
-  final pulumi.Input<int>? nodeCount;
+  final pulumi.Input<int?>? nodeCount;
   /// A list of nodes in the pool. Each node exports the following attributes:
-  final pulumi.Input<List<KubernetesClusterNodePoolNode>>? nodes;
+  final pulumi.Input<List<KubernetesClusterNodePoolNode>?>? nodes;
   /// The slug identifier for the type of Droplet to be used as workers in the node pool.
   final pulumi.Input<String> size;
   /// A list of tag names applied to the node pool.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
-  final pulumi.Input<List<KubernetesClusterNodePoolTaint>>? taints;
+  final pulumi.Input<List<KubernetesClusterNodePoolTaint>?>? taints;
 
   /// Creates a new [KubernetesClusterNodePool].
   /// [actualNodeCount] A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
@@ -82,15 +82,15 @@ class KubernetesClusterNodePool {
 
   factory KubernetesClusterNodePool.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNodePool(
-      actualNodeCount: (() { final guardedValue = map['actualNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      actualNodeCount: (() { final guardedValue = map['actualNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       autoScale: (() { final guardedValue = map['autoScale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       gpuPartitionMode: (() { final guardedValue = map['gpuPartitionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      maxNodes: (() { final guardedValue = map['maxNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minNodes: (() { final guardedValue = map['minNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxNodes: (() { final guardedValue = map['maxNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minNodes: (() { final guardedValue = map['minNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nodes: (() { final guardedValue = map['nodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<KubernetesClusterNodePoolNode>(guardedValue, (value) => KubernetesClusterNodePoolNode.fromMap((value as Map).cast<String, dynamic>()))); })(),
       size: pulumi.Input.fromValue(map['size'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

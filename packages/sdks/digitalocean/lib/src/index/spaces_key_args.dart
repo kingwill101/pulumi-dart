@@ -9,9 +9,9 @@ import 'spaces_key_grant.dart';
 /// {@macro pulumi_index_spaces_key_spaces_key_args_doc}
 class SpacesKeyArgs {
   /// A grant for the key (documented below).
-  final pulumi.Input<List<SpacesKeyGrant>>? grants;
+  final pulumi.Input<List<SpacesKeyGrant>?>? grants;
   /// The name of the key
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SpacesKeyArgs].
   /// [grants] A grant for the key (documented below).

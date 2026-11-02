@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppSpecIngressRuleComponent {
   /// The name of the component.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An optional flag to preserve the path that is forwarded to the backend service.
-  final pulumi.Input<bool>? preservePathPrefix;
-  final pulumi.Input<String>? rewrite;
+  final pulumi.Input<bool?>? preservePathPrefix;
+  final pulumi.Input<String?>? rewrite;
 
   /// Creates a new [GetAppSpecIngressRuleComponent].
   /// [name] The name of the component.

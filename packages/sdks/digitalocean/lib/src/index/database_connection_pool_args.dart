@@ -14,11 +14,11 @@ class DatabaseConnectionPoolArgs {
   /// The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
   final pulumi.Input<String> mode;
   /// The name for the database connection pool.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The desired size of the PGBouncer connection pool.
   final pulumi.Input<int> size;
   /// The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [DatabaseConnectionPoolArgs].
   /// [clusterId] The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
@@ -53,7 +53,7 @@ class DatabaseConnectionPoolArgs {
       dbName: pulumi.Input.fromValue(map['dbName'] as String),
       mode: pulumi.Input.fromValue(map['mode'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      size: pulumi.Input.fromValue(map['size'] as int),
+      size: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['size'])),
       user: (() { final guardedValue = map['user']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

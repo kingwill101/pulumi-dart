@@ -12,19 +12,19 @@ class GetGradientaiAgentsAgentParentAgent {
   /// ID of the child agent
   final pulumi.Input<String> agentId;
   /// Anthropic API Key information
-  final pulumi.Input<List<GetGradientaiAgentsAgentParentAgentAnthropicApiKey>>? anthropicApiKeys;
+  final pulumi.Input<List<GetGradientaiAgentsAgentParentAgentAnthropicApiKey>?>? anthropicApiKeys;
   /// List of API Key Infos
-  final pulumi.Input<List<GetGradientaiAgentsAgentParentAgentApiKeyInfo>>? apiKeyInfos;
+  final pulumi.Input<List<GetGradientaiAgentsAgentParentAgentApiKeyInfo>?>? apiKeyInfos;
   /// List of API Keys
-  final pulumi.Input<List<GetGradientaiAgentsAgentParentAgentApiKey>>? apiKeys;
+  final pulumi.Input<List<GetGradientaiAgentsAgentParentAgentApiKey>?>? apiKeys;
   /// List of Chatbot Identifiers
-  final pulumi.Input<List<GetGradientaiAgentsAgentParentAgentChatbotIdentifier>>? chatbotIdentifiers;
+  final pulumi.Input<List<GetGradientaiAgentsAgentParentAgentChatbotIdentifier>?>? chatbotIdentifiers;
   /// ChatBot configuration
-  final pulumi.Input<List<GetGradientaiAgentsAgentParentAgentChatbot>>? chatbots;
+  final pulumi.Input<List<GetGradientaiAgentsAgentParentAgentChatbot>?>? chatbots;
   /// List of API Key Infos
-  final pulumi.Input<List<GetGradientaiAgentsAgentParentAgentDeployment>>? deployments;
+  final pulumi.Input<List<GetGradientaiAgentsAgentParentAgentDeployment>?>? deployments;
   /// Description for the Agent
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Instruction for the Agent
   final pulumi.Input<String> instruction;
   /// Model UUID of the Agent

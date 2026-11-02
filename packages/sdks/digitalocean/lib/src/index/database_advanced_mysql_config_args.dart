@@ -10,7 +10,7 @@ class DatabaseAdvancedMysqlConfigArgs {
   /// The ID of the target MySQL Advanced Edition cluster.
   final pulumi.Input<String> clusterId;
   /// A map of MySQL system variable names to their string values. Only parameters included in this map are managed by Terraform.
-  final pulumi.Input<Map<String, String>>? mysqlParameters;
+  final pulumi.Input<Map<String, String>?>? mysqlParameters;
 
   /// Creates a new [DatabaseAdvancedMysqlConfigArgs].
   /// [clusterId] The ID of the target MySQL Advanced Edition cluster.

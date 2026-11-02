@@ -9,8 +9,8 @@ import 'get_gradientai_openai_api_keys_sort.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_gradientai_openai_api_keys_get_gradientai_openai_api_keys_args_doc}
 class GetGradientaiOpenaiApiKeysArgs {
-  final pulumi.Input<List<GetGradientaiOpenaiApiKeysFilter>>? filters;
-  final pulumi.Input<List<GetGradientaiOpenaiApiKeysSort>>? sorts;
+  final pulumi.Input<List<GetGradientaiOpenaiApiKeysFilter>?>? filters;
+  final pulumi.Input<List<GetGradientaiOpenaiApiKeysSort>?>? sorts;
 
   /// Creates a new [GetGradientaiOpenaiApiKeysArgs].
   /// [filters] Optional.

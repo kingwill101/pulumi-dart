@@ -6,9 +6,9 @@ import 'database_firewall_rule.dart';
 /// Input properties used for looking up and filtering DatabaseFirewall resources.
 class DatabaseFirewallState {
   /// The ID of the target database cluster.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
-  final pulumi.Input<List<DatabaseFirewallRule>>? rules;
+  final pulumi.Input<List<DatabaseFirewallRule>?>? rules;
 
   /// Creates a new [DatabaseFirewallState].
   /// [clusterId] The ID of the target database cluster.

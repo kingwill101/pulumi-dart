@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppSpecStaticSiteGit {
   /// The name of the branch to use.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// The clone URL of the repo.
-  final pulumi.Input<String>? repoCloneUrl;
+  final pulumi.Input<String?>? repoCloneUrl;
 
   /// Creates a new [GetAppSpecStaticSiteGit].
   /// [branch] The name of the branch to use.

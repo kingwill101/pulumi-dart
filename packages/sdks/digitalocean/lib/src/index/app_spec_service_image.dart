@@ -5,19 +5,19 @@ import 'app_spec_service_image_deploy_on_push.dart';
 
 class AppSpecServiceImage {
   /// Configures automatically deploying images pushed to DOCR.
-  final pulumi.Input<List<AppSpecServiceImageDeployOnPush>>? deployOnPushes;
+  final pulumi.Input<List<AppSpecServiceImageDeployOnPush>?>? deployOnPushes;
   /// The image digest. Cannot be specified if `tag` is provided.
-  final pulumi.Input<String>? digest;
+  final pulumi.Input<String?>? digest;
   /// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
-  final pulumi.Input<String>? registry;
+  final pulumi.Input<String?>? registry;
   /// The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `&lt;username&gt;:&lt;token&gt;`.
-  final pulumi.Input<String>? registryCredentials;
+  final pulumi.Input<String?>? registryCredentials;
   /// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
   final pulumi.Input<String> registryType;
   /// The repository name.
   final pulumi.Input<String> repository;
   /// The repository tag. Defaults to `latest` if not provided.
-  final pulumi.Input<String>? tag;
+  final pulumi.Input<String?>? tag;
 
   /// Creates a new [AppSpecServiceImage].
   /// [deployOnPushes] Configures automatically deploying images pushed to DOCR.

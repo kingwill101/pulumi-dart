@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_vpc_get_vpc_args_doc}
 class GetVpcArgs {
   /// The unique identifier of an existing VPC.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of an existing VPC.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The DigitalOcean region slug for the VPC's location.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetVpcArgs].
   /// [id] The unique identifier of an existing VPC.

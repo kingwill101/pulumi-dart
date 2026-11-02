@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppSpecIngressRuleCorsAllowOrigins {
   /// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
-  final pulumi.Input<String>? exact;
+  final pulumi.Input<String?>? exact;
   /// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
-  final pulumi.Input<String>? regex;
+  final pulumi.Input<String?>? regex;
 
   /// Creates a new [GetAppSpecIngressRuleCorsAllowOrigins].
   /// [exact] The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.

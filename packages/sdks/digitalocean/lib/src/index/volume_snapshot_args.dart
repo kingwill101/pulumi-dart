@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_volume_snapshot_volume_snapshot_args_doc}
 class VolumeSnapshotArgs {
   /// A name for the volume snapshot.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of the tags to be applied to this volume snapshot.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// The ID of the volume from which the volume snapshot originated.
   final pulumi.Input<String> volumeId;
 

@@ -8,10 +8,10 @@ import 'get_partner_attachment_bgp.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_partner_attachment_get_partner_attachment_args_doc}
 class GetPartnerAttachmentArgs {
-  final pulumi.Input<GetPartnerAttachmentBgp>? bgp;
-  final pulumi.Input<String>? id;
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? redundancyZone;
+  final pulumi.Input<GetPartnerAttachmentBgp?>? bgp;
+  final pulumi.Input<String?>? id;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? redundancyZone;
 
   /// Creates a new [GetPartnerAttachmentArgs].
   /// [bgp] Optional.

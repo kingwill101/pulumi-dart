@@ -8,13 +8,13 @@ import 'app_spec_ingress_rule_redirect.dart';
 
 class AppSpecIngressRule {
   /// The component to route to. Only one of `component` or `redirect` may be set.
-  final pulumi.Input<AppSpecIngressRuleComponent>? component;
+  final pulumi.Input<AppSpecIngressRuleComponent?>? component;
   /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-  final pulumi.Input<AppSpecIngressRuleCors>? cors;
+  final pulumi.Input<AppSpecIngressRuleCors?>? cors;
   /// The match configuration for the rule
-  final pulumi.Input<AppSpecIngressRuleMatch>? match;
+  final pulumi.Input<AppSpecIngressRuleMatch?>? match;
   /// The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
-  final pulumi.Input<AppSpecIngressRuleRedirect>? redirect;
+  final pulumi.Input<AppSpecIngressRuleRedirect?>? redirect;
 
   /// Creates a new [AppSpecIngressRule].
   /// [component] The component to route to. Only one of `component` or `redirect` may be set.

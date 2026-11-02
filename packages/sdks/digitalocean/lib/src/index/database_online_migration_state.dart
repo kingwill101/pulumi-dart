@@ -6,17 +6,17 @@ import 'database_online_migration_source.dart';
 /// Input properties used for looking up and filtering DatabaseOnlineMigration resources.
 class DatabaseOnlineMigrationState {
   /// The ID of the target MySQL cluster.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// The date and time when the online migration was created
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// When set to true, enables SSL encryption when connecting to the source database.
-  final pulumi.Input<bool>? disableSsl;
+  final pulumi.Input<bool?>? disableSsl;
   /// A list of databases that should be ignored during migration.
-  final pulumi.Input<List<String>>? ignoreDbs;
+  final pulumi.Input<List<String>?>? ignoreDbs;
   /// Configuration for migration
-  final pulumi.Input<DatabaseOnlineMigrationSource>? source;
+  final pulumi.Input<DatabaseOnlineMigrationSource?>? source;
   /// The status of the online migration
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [DatabaseOnlineMigrationState].
   /// [clusterId] The ID of the target MySQL cluster.

@@ -6,9 +6,9 @@ class DatabaseClusterStorageAutoscale {
   /// Whether storage autoscaling is enabled for the cluster.
   final pulumi.Input<bool> enabled;
   /// The amount of storage, in GiB, to add when autoscaling is triggered.
-  final pulumi.Input<int>? incrementGib;
+  final pulumi.Input<int?>? incrementGib;
   /// The storage utilization percentage at which autoscaling is triggered.
-  final pulumi.Input<int>? thresholdPercent;
+  final pulumi.Input<int?>? thresholdPercent;
 
   /// Creates a new [DatabaseClusterStorageAutoscale].
   /// [enabled] Whether storage autoscaling is enabled for the cluster.
@@ -31,8 +31,8 @@ class DatabaseClusterStorageAutoscale {
   factory DatabaseClusterStorageAutoscale.fromMap(Map<String, dynamic> map) {
     return DatabaseClusterStorageAutoscale(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      incrementGib: (() { final guardedValue = map['incrementGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      thresholdPercent: (() { final guardedValue = map['thresholdPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      incrementGib: (() { final guardedValue = map['incrementGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      thresholdPercent: (() { final guardedValue = map['thresholdPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

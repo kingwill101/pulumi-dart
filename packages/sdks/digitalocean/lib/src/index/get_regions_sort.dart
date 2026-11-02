@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionsSort {
   /// The sort direction. This may be either `asc` or `desc`.
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<String?>? direction;
   /// Sort the regions by this key. This may be one of `slug`,
   /// `name`, or `available`.
   final pulumi.Input<String> key;

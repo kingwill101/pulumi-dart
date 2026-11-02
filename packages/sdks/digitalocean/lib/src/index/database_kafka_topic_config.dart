@@ -5,51 +5,51 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseKafkaTopicConfig {
   /// The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
   /// This may be one of "delete", "compact", or "compactDelete".
-  final pulumi.Input<String>? cleanupPolicy;
+  final pulumi.Input<String?>? cleanupPolicy;
   /// The topic compression codecs used for a given topic.
   /// This may be one of "uncompressed", "gzip", "snappy", "lz4", "producer", "zstd". "uncompressed" indicates that there is no compression and "producer" retains the original compression codec set by the producer.
-  final pulumi.Input<String>? compressionType;
+  final pulumi.Input<String?>? compressionType;
   /// The amount of time, in ms, that deleted records are retained.
-  final pulumi.Input<String>? deleteRetentionMs;
+  final pulumi.Input<String?>? deleteRetentionMs;
   /// The amount of time, in ms, to wait before deleting a topic log segment from the filesystem.
-  final pulumi.Input<String>? fileDeleteDelayMs;
+  final pulumi.Input<String?>? fileDeleteDelayMs;
   /// The number of messages accumulated on a topic partition before they are flushed to disk.
-  final pulumi.Input<String>? flushMessages;
+  final pulumi.Input<String?>? flushMessages;
   /// The maximum time, in ms, that a topic is kept in memory before being flushed to disk.
-  final pulumi.Input<String>? flushMs;
+  final pulumi.Input<String?>? flushMs;
   /// The interval, in bytes, in which entries are added to the offset index.
-  final pulumi.Input<String>? indexIntervalBytes;
+  final pulumi.Input<String?>? indexIntervalBytes;
   /// The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compressionType` is set to "uncompressed" or it is set to `producer` and the producer is not using compression.
-  final pulumi.Input<String>? maxCompactionLagMs;
+  final pulumi.Input<String?>? maxCompactionLagMs;
   /// The maximum size, in bytes, of a message.
-  final pulumi.Input<String>? maxMessageBytes;
+  final pulumi.Input<String?>? maxMessageBytes;
   /// Determines whether down-conversion of message formats for consumers is enabled.
-  final pulumi.Input<bool>? messageDownConversionEnable;
+  final pulumi.Input<bool?>? messageDownConversionEnable;
   /// The version of the inter-broker protocol that will be used. This may be one of "0.8.0", "0.8.1", "0.8.2", "0.9.0", "0.10.0", "0.10.0-IV0", "0.10.0-IV1", "0.10.1", "0.10.1-IV0", "0.10.1-IV1", "0.10.1-IV2", "0.10.2", "0.10.2-IV0", "0.11.0", "0.11.0-IV0", "0.11.0-IV1", "0.11.0-IV2", "1.0", "1.0-IV0", "1.1", "1.1-IV0", "2.0", "2.0-IV0", "2.0-IV1", "2.1", "2.1-IV0", "2.1-IV1", "2.1-IV2", "2.2", "2.2-IV0", "2.2-IV1", "2.3", "2.3-IV0", "2.3-IV1", "2.4", "2.4-IV0", "2.4-IV1", "2.5", "2.5-IV0", "2.6", "2.6-IV0", "2.7", "2.7-IV0", "2.7-IV1", "2.7-IV2", "2.8", "2.8-IV0", "2.8-IV1", "3.0", "3.0-IV0", "3.0-IV1", "3.1", "3.1-IV0", "3.2", "3.2-IV0", "3.3", "3.3-IV0", "3.3-IV1", "3.3-IV2", "3.3-IV3", "3.4", "3.4-IV0", "3.5", "3.5-IV0", "3.5-IV1", "3.5-IV2", "3.6", "3.6-IV0", "3.6-IV1", "3.6-IV2".
-  final pulumi.Input<String>? messageFormatVersion;
+  final pulumi.Input<String?>? messageFormatVersion;
   /// The maximum difference, in ms, between the timestamp specific in a message and when the broker receives the message.
-  final pulumi.Input<String>? messageTimestampDifferenceMaxMs;
+  final pulumi.Input<String?>? messageTimestampDifferenceMaxMs;
   /// Specifies which timestamp to use for the message. This may be one of "createTime" or "logAppendTime".
-  final pulumi.Input<String>? messageTimestampType;
+  final pulumi.Input<String?>? messageTimestampType;
   /// A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `maxCompactionLagMs` to control the compactor frequency.
-  final pulumi.Input<double>? minCleanableDirtyRatio;
-  final pulumi.Input<String>? minCompactionLagMs;
+  final pulumi.Input<double?>? minCleanableDirtyRatio;
+  final pulumi.Input<String?>? minCompactionLagMs;
   /// The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
-  final pulumi.Input<int>? minInsyncReplicas;
+  final pulumi.Input<int?>? minInsyncReplicas;
   /// Determines whether to preallocate a file on disk when creating a new log segment within a topic.
-  final pulumi.Input<bool>? preallocate;
+  final pulumi.Input<bool?>? preallocate;
   /// The maximum size, in bytes, of a topic before messages are deleted. -1 is a special setting indicating that this setting has no limit.
-  final pulumi.Input<String>? retentionBytes;
+  final pulumi.Input<String?>? retentionBytes;
   /// The maximum time, in ms, that a topic log file is retained before deleting it. -1 is a special setting indicating that this setting has no limit.
-  final pulumi.Input<String>? retentionMs;
+  final pulumi.Input<String?>? retentionMs;
   /// The maximum size, in bytes, of a single topic log file.
-  final pulumi.Input<String>? segmentBytes;
+  final pulumi.Input<String?>? segmentBytes;
   /// The maximum size, in bytes, of the offset index.
-  final pulumi.Input<String>? segmentIndexBytes;
+  final pulumi.Input<String?>? segmentIndexBytes;
   /// The maximum time, in ms, subtracted from the scheduled segment disk flush time to avoid the thundering herd problem for segment flushing.
-  final pulumi.Input<String>? segmentJitterMs;
+  final pulumi.Input<String?>? segmentJitterMs;
   /// The maximum time, in ms, before the topic log will flush to disk.
-  final pulumi.Input<String>? segmentMs;
+  final pulumi.Input<String?>? segmentMs;
 
   /// Creates a new [DatabaseKafkaTopicConfig].
   /// [cleanupPolicy] The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
@@ -144,9 +144,9 @@ class DatabaseKafkaTopicConfig {
       messageFormatVersion: (() { final guardedValue = map['messageFormatVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       messageTimestampDifferenceMaxMs: (() { final guardedValue = map['messageTimestampDifferenceMaxMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       messageTimestampType: (() { final guardedValue = map['messageTimestampType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minCleanableDirtyRatio: (() { final guardedValue = map['minCleanableDirtyRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      minCleanableDirtyRatio: (() { final guardedValue = map['minCleanableDirtyRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       minCompactionLagMs: (() { final guardedValue = map['minCompactionLagMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minInsyncReplicas: (() { final guardedValue = map['minInsyncReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minInsyncReplicas: (() { final guardedValue = map['minInsyncReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       preallocate: (() { final guardedValue = map['preallocate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       retentionBytes: (() { final guardedValue = map['retentionBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       retentionMs: (() { final guardedValue = map['retentionMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

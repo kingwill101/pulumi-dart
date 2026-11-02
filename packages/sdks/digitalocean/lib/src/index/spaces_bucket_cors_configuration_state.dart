@@ -6,11 +6,11 @@ import 'spaces_bucket_cors_configuration_cors_rule.dart';
 /// Input properties used for looking up and filtering SpacesBucketCorsConfiguration resources.
 class SpacesBucketCorsConfigurationState {
   /// The name of the bucket to which to apply the CORS configuration.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
-  final pulumi.Input<List<SpacesBucketCorsConfigurationCorsRule>>? corsRules;
+  final pulumi.Input<List<SpacesBucketCorsConfigurationCorsRule>?>? corsRules;
   /// The region where the bucket resides.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [SpacesBucketCorsConfigurationState].
   /// [bucket] The name of the bucket to which to apply the CORS configuration.

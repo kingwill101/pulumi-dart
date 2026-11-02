@@ -11,12 +11,12 @@ class DatabaseUserArgs {
   /// The ID of the original source database cluster.
   final pulumi.Input<String> clusterId;
   /// The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
-  final pulumi.Input<String>? mysqlAuthPlugin;
+  final pulumi.Input<String?>? mysqlAuthPlugin;
   /// The name for the database user.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Contains optional settings for the user.
   /// The `settings` block is documented below.
-  final pulumi.Input<List<DatabaseUserSetting>>? settings;
+  final pulumi.Input<List<DatabaseUserSetting>?>? settings;
 
   /// Creates a new [DatabaseUserArgs].
   /// [clusterId] The ID of the original source database cluster.
